@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/palabrasyfuentes",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/alpha_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "      stroke(0, 4);",
+   "      stroke(0, 40);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/alpha_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 184,
+   "md5": "968b035e17db705f2913c49c365d2001",
+   "bytes": 5007
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/alpha_40/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 336,
+   "md5": "f9b5ba68e8d5e1908565eca18c63dd2a",
+   "bytes": 51474
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/alpha_40/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1168,
+   "md5": "f9b5ba68e8d5e1908565eca18c63dd2a",
+   "bytes": 51474
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "palabrasyfuentes.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "      stroke(0, 4);",
+   "new": "      stroke(0, 40);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/alpha_40/frame_00001.png (snap) t=184ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/alpha_40/frame_00010.png (snap) t=336ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/alpha_40/frame_00060.png (snap) t=1168ms\n[harness] done frame=60 t=1154ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Mohave Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 184,
+ "diff_vs_baseline": {
+  "mean": 0.0004,
+  "changed_fraction": 0.001,
+  "label": "none"
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "sketch": "2012 y otros/Serielineas/serie2",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie2/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie2/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 170,
+   "md5": "de8861c943913a6dac6f4988a598dbdb",
+   "bytes": 676
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie2/baseline/frame_00002.png",
+   "frame": 2,
+   "tag": "snap",
+   "ms": 178,
+   "md5": "2c1537d89a33393e7cbc16aae12cacfe",
+   "bytes": 954
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie2/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 312,
+   "md5": "5ab396b7990d8073dc03a834dacfbddd",
+   "bytes": 4155
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie2/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1144,
+   "md5": "d402ffdec1e2e4c64750711164890501",
+   "bytes": 36639
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400,400",
+ "imports": [],
+ "tabs": [
+  "serie2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie2/baseline/frame_00001.png (snap) t=170ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie2/baseline/frame_00002.png (snap) t=178ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie2/baseline/frame_00010.png (snap) t=312ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie2/baseline/frame_00060.png (snap) t=1144ms\n[harness] done frame=60 t=1139ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 170,
+ "deterministic": true,
+ "rerun_frames": 4
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/castles",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/castles/variants/palette_cool",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#1A1312, #3C333B, #A84257, #D81D37, #D81D6E};",
+   "int colors[] = {#101418, #22405A, #2E86AB, #50B5D8, #8ECAE6};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/castles/variants/palette_cool/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1497,
+   "md5": "37a52a362869f3e3c4fdd6399acb45e1",
+   "bytes": 65660
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "castles.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#1A1312, #3C333B, #A84257, #D81D37, #D81D6E};",
+   "new": "int colors[] = {#101418, #22405A, #2E86AB, #50B5D8, #8ECAE6};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/castles/variants/palette_cool/frame_00001.png (snap) t=1497ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/castles/variants/palette_cool/frame_00010.png (snap) t=1705ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/castles/variants/palette_cool/frame_00060.png (snap) t=2965ms\n[harness] done frame=60 t=2939ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1497,
+ "diff_vs_baseline": {
+  "mean": 0.0074,
+  "changed_fraction": 0.025,
+  "label": "none"
+ }
+}

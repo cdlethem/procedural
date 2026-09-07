@@ -1,0 +1,65 @@
+{
+ "sketch": "2018/Generativos/futurismo",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1477,
+   "md5": "35373e6d22c5d0c5d0c46c54ed95ac62",
+   "bytes": 2276
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3645,
+   "md5": "2c6bc1718047399e81547c671984126e",
+   "bytes": 2339
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/baseline/frame_00037.png",
+   "frame": 37,
+   "tag": "budget",
+   "ms": 30644,
+   "md5": "0456fb95ea900d9e115166944ec26623",
+   "bytes": 2244
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*SCALE), int(sheight*SCALE), P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "futurismo.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 32.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/baseline/frame_00001.png (snap) t=1477ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/baseline/frame_00010.png (snap) t=3645ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/baseline/frame_00037.png (budget) t=30644ms\n[harness] done frame=37 t=30636ms\n[harness] dispose frame=38 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1477,
+ "deterministic": false,
+ "rerun_frames": 3
+}

@@ -1,0 +1,66 @@
+{
+ "sketch": "2019/nodesGrow",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/nodesGrow/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/nodesGrow/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1483,
+   "md5": "ee18d1856954956d61d72cbd61e5a3f5",
+   "bytes": 6142
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  1920,
+  1080
+ ],
+ "size_args": "1920, 1080, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "Particle.pde",
+  "nodesGrow.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/nodesGrow/baseline/frame_00001.png (snap) t=1483ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/nodesGrow/baseline/frame_00002.png (snap) t=1530ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/nodesGrow/baseline/frame_00010.png (snap) t=1737ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/nodesGrow/baseline/frame_00060.png (snap) t=3037ms\n[harness] done frame=60 t=2949ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1483,
+ "deterministic": true,
+ "rerun_frames": 1
+}

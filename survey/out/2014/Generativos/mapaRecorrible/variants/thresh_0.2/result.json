@@ -1,0 +1,72 @@
+{
+ "sketch": "2014/Generativos/mapaRecorrible",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/thresh_0.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float val = (noise((x+posX)*ns1,((y+posY)*ns1)));\n\t\t\tif(val < 0.5) val = sin(val*2*PI/2)*0.5;\n\t\t\tif(val > 0.5) val = 0.5-sin(((val*2))*PI/2)*0.5;\n\t\t\tfloat dim = map(val, 0, 1, tam, 0);\n\t\t\tif(val > 0.3) fill(20, 120, 255);",
+   "float val = (noise((x+posX)*ns1,((y+posY)*ns1)));\n\t\t\tif(val < 0.5) val = sin(val*2*PI/2)*0.5;\n\t\t\tif(val > 0.5) val = 0.5-sin(((val*2))*PI/2)*0.5;\n\t\t\tfloat dim = map(val, 0, 1, tam, 0);\n\t\t\tif(val > 0.2) fill(20, 120, 255);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/thresh_0.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 203,
+   "md5": "6f5d7461e5624aefe4c72d5b753dd998",
+   "bytes": 89646
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  400
+ ],
+ "size_args": "800, 400",
+ "imports": [],
+ "tabs": [
+  "mapaRecorrible.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float val = (noise((x+posX)*ns1,((y+posY)*ns1)));\n\t\t\tif(val < 0.5) val = sin(val*2*PI/2)*0.5;\n\t\t\tif(val > 0.5) val = 0.5-sin(((val*2))*PI/2)*0.5;\n\t\t\tfloat dim = map(val, 0, 1, tam, 0);\n\t\t\tif(val > 0.3) fill(20, 120, 255);",
+   "new": "float val = (noise((x+posX)*ns1,((y+posY)*ns1)));\n\t\t\tif(val < 0.5) val = sin(val*2*PI/2)*0.5;\n\t\t\tif(val > 0.5) val = 0.5-sin(((val*2))*PI/2)*0.5;\n\t\t\tfloat dim = map(val, 0, 1, tam, 0);\n\t\t\tif(val > 0.2) fill(20, 120, 255);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/thresh_0.2/frame_00001.png (snap) t=203ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/thresh_0.2/frame_00010.png (snap) t=361ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/thresh_0.2/frame_00060.png (snap) t=1194ms\n[harness] done frame=60 t=1185ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 203,
+ "diff_vs_baseline": {
+  "mean": 0.0,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "sketch": "2015/Munich/MunichApp09",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Munich/MunichApp09/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "TUIO.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  1920,
+  1080
+ ],
+ "size_args": "1920, 1080, P2D",
+ "imports": [
+  "TUIO.*",
+  "ddf.minim.*"
+ ],
+ "tabs": [
+  "Camera.pde",
+  "Cell.pde",
+  "MunichApp09.pde",
+  "Node.pde",
+  "SoundManager.pde",
+  "Touch.pde",
+  "Trend.pde",
+  "Tuio.pde",
+  "textView.pde",
+  "uiControl.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

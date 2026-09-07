@@ -1,0 +1,113 @@
+{
+ "sketch": "2018/Generativos/pely",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pely/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pely/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 30903,
+   "md5": "a336ce5e25f55c424899e9b24f67b002",
+   "bytes": 2994
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pely/baseline/self_20260903-014245.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 28523,
+   "md5": "fec8156a54e1026d04fb56fb6fb7d84d",
+   "bytes": 23674000
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pely/baseline/self_20260903-014238.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 21152,
+   "md5": "6d5c4728f722c6df9120456dd6225c86",
+   "bytes": 10954438
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pely/baseline/self_20260903-014231.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 14278,
+   "md5": "5b36ac1e74151543801b1039caf65c9f",
+   "bytes": 17575141
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pely/baseline/self_20260903-014224.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 7382,
+   "md5": "10110dad4b78e0324b8f7d7ab9c2f8d1",
+   "bytes": 13060967
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pely/baseline/self_20260903-014228.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 10977,
+   "md5": "2ac2c2fcb106d1250334946fa8bb3517",
+   "bytes": 19139718
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pely/baseline/self_20260903-014241.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 24655,
+   "md5": "30c3962c3cb066262ff2d595d16535d3",
+   "bytes": 15977265
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pely/baseline/self_20260903-014249.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 32197,
+   "md5": "a3e8f9315a65e250aaf0ea39736d2a06",
+   "bytes": 20181912
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pely/baseline/self_20260903-014235.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 17667,
+   "md5": "38dee27a274064db522a75330d491046",
+   "bytes": 12162103
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  700,
+  700
+ ],
+ "size_args": "700, 700, P2D",
+ "imports": [],
+ "tabs": [
+  "pely.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 32.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pely/baseline/frame_00001.png (dispose) t=30903ms\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 30903,
+ "deterministic": false,
+ "rerun_frames": 9
+}

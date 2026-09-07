@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/niponFLower",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/niponFLower/variants/cycles_1",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "fill(getColor(noise(desc+x*detc, desc+y*detc)*colors.length*4));",
+   "fill(getColor(noise(desc+x*detc, desc+y*detc)*colors.length*1));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/niponFLower/variants/cycles_1/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1477,
+   "md5": "c02ecb52351d16082b7417a790a87100",
+   "bytes": 481936
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "niponFLower.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "fill(getColor(noise(desc+x*detc, desc+y*detc)*colors.length*4));",
+   "new": "fill(getColor(noise(desc+x*detc, desc+y*detc)*colors.length*1));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/niponFLower/variants/cycles_1/frame_00001.png (snap) t=1477ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/niponFLower/variants/cycles_1/frame_00010.png (snap) t=1696ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/niponFLower/variants/cycles_1/frame_00060.png (snap) t=2950ms\n[harness] done frame=60 t=2917ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1477,
+ "diff_vs_baseline": {
+  "mean": 0.1464,
+  "changed_fraction": 0.515,
+  "label": "moderate"
+ }
+}

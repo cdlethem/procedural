@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/cirsis",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/cirsis/variants/dotSize_12",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float s = random(2, 6)*radius*0.12*pow((1-d*0.999), 0.9)*lerp(0.2, 1, pow(noise(x*det2, y*det2), 0.8));",
+   "float s = random(2, 12)*radius*0.12*pow((1-d*0.999), 0.9)*lerp(0.2, 1, pow(noise(x*det2, y*det2), 0.8));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/cirsis/variants/dotSize_12/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1509,
+   "md5": "60ea6930b345b2c3120b639d8a60e3d8",
+   "bytes": 393581
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "cirsis.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float s = random(2, 6)*radius*0.12*pow((1-d*0.999), 0.9)*lerp(0.2, 1, pow(noise(x*det2, y*det2), 0.8));",
+   "new": "float s = random(2, 12)*radius*0.12*pow((1-d*0.999), 0.9)*lerp(0.2, 1, pow(noise(x*det2, y*det2), 0.8));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/cirsis/variants/dotSize_12/frame_00001.png (snap) t=1509ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/cirsis/variants/dotSize_12/frame_00010.png (snap) t=1726ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/cirsis/variants/dotSize_12/frame_00060.png (snap) t=2987ms\n[harness] done frame=60 t=2951ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1509,
+ "diff_vs_baseline": {
+  "mean": 0.1914,
+  "changed_fraction": 0.513,
+  "label": "large"
+ }
+}

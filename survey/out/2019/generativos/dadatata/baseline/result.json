@@ -1,0 +1,70 @@
+{
+ "sketch": "2019/generativos/dadatata",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3616,
+   "md5": "8c079ea0da40adb4a0e8a2f1da88ffd6",
+   "bytes": 1290912
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3834,
+   "md5": "d2a1d8b24c24eb483c33d34de42cdd81",
+   "bytes": 88102
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5096,
+   "md5": "d2a1d8b24c24eb483c33d34de42cdd81",
+   "bytes": 88102
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "dadatata.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/baseline/frame_00001.png (snap) t=3616ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/baseline/frame_00010.png (snap) t=3834ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/baseline/frame_00060.png (snap) t=5096ms\n[harness] done frame=60 t=5072ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3616,
+ "deterministic": true,
+ "rerun_frames": 3
+}

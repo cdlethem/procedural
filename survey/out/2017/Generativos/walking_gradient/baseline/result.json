@@ -1,0 +1,63 @@
+{
+ "sketch": "2017/Generativos/walking_gradient",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 203,
+   "md5": "de10c79c5219679197714e5fbfb5d739",
+   "bytes": 59654
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 363,
+   "md5": "21ab5713921a2d7f96413b8a3613c63a",
+   "bytes": 174951
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1211,
+   "md5": "efa00877610d9f444582ccb2cff07f57",
+   "bytes": 523717
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "walking_gradient.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/baseline/frame_00001.png (snap) t=203ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/baseline/frame_00010.png (snap) t=363ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/baseline/frame_00060.png (snap) t=1211ms\n[harness] done frame=60 t=1183ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 203,
+ "deterministic": false,
+ "rerun_frames": 3
+}

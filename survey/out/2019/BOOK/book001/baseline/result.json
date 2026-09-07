@@ -1,0 +1,52 @@
+{
+ "sketch": "2019/BOOK/book001",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/BOOK/book001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/BOOK/book001/baseline/self_book001_20260902-191634_42.pdf",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1499,
+   "md5": "2f7c40740f34ec8dd7608375dfbab3f8",
+   "bytes": 110783
+  }
+ ],
+ "warnings": [
+  "timed out after frames were saved"
+ ],
+ "renderer": "PDF",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), PDF, filePDF",
+ "imports": [
+  "java.awt.Desktop",
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "book001.pde",
+  "grid001.pde",
+  "gridDot001.pde",
+  "page001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 60.4,
+ "rc": 143,
+ "timed_out": true,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] save failed: java.lang.RuntimeException: No save() for PGraphicsPDF",
+ "stderr_tail": "(papers:1330329): Gtk-WARNING **: 19:16:35.897: Trying to measure GtkGridView 0x56140ecc65f0 for height of 1188, but it needs at least 4475",
+ "ms_first_frame": 1499,
+ "deterministic": false,
+ "rerun_frames": 1
+}

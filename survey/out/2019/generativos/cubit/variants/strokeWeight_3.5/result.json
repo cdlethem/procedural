@@ -1,0 +1,73 @@
+{
+ "sketch": "2019/generativos/cubit",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/cubit/variants/strokeWeight_3.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    strokeWeight(1.4);",
+   "    strokeWeight(3.5);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/cubit/variants/strokeWeight_3.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1528,
+   "md5": "7e7f697926f68e247f5ff8c35bcd2db8",
+   "bytes": 72135
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "cubit.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "    strokeWeight(1.4);",
+   "new": "    strokeWeight(3.5);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/cubit/variants/strokeWeight_3.5/frame_00001.png (snap) t=1528ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/cubit/variants/strokeWeight_3.5/frame_00010.png (snap) t=1737ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/cubit/variants/strokeWeight_3.5/frame_00060.png (snap) t=2990ms\n[harness] done frame=60 t=2969ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1528,
+ "diff_vs_baseline": {
+  "mean": 0.0202,
+  "changed_fraction": 0.082,
+  "label": "subtle"
+ }
+}

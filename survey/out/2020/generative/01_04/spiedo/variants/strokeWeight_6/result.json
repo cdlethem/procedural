@@ -1,0 +1,91 @@
+{
+ "sketch": "2020/generative/01_04/spiedo",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/variants/strokeWeight_6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  strokeWeight(2);",
+   "  strokeWeight(6);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/variants/strokeWeight_6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1441,
+   "md5": "993ec1e037897f97bb842b9ff371b035",
+   "bytes": 100489
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/variants/strokeWeight_6/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1647,
+   "md5": "0f767939f2470dfac5da496e5479d572",
+   "bytes": 103515
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/variants/strokeWeight_6/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2903,
+   "md5": "69316823279828c20aa124a772fdf34e",
+   "bytes": 93033
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "spiedo.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  strokeWeight(2);",
+   "new": "  strokeWeight(6);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/variants/strokeWeight_6/frame_00001.png (snap) t=1441ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/variants/strokeWeight_6/frame_00010.png (snap) t=1647ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/variants/strokeWeight_6/frame_00060.png (snap) t=2903ms\n[harness] done frame=60 t=2884ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1441,
+ "diff_vs_baseline": {
+  "mean": 0.0315,
+  "changed_fraction": 0.083,
+  "label": "subtle"
+ }
+}

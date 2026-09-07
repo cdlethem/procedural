@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/quadFeos",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFeos/variants/quads_50",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "while (quads.size () < 200) {",
+   "while (quads.size () < 50) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFeos/variants/quads_50/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 336,
+   "md5": "42d0c7c9498e84c0a2be40ab0af25f6e",
+   "bytes": 331723,
+   "captured_frame": 10
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFeos/variants/quads_50/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1180,
+   "md5": "bd5724422fe0e42baa04d232e8274172",
+   "bytes": 331976
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [],
+ "tabs": [
+  "quadFeos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "while (quads.size () < 200) {",
+   "new": "while (quads.size () < 50) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "quadFeos.pde"
+ ],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 10 promoted to frame_00001.png"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFeos/variants/quads_50/frame_00001.png (snap) t=172ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFeos/variants/quads_50/frame_00010.png (snap) t=336ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFeos/variants/quads_50/frame_00060.png (snap) t=1180ms\n[harness] done frame=60 t=1153ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 336,
+ "diff_vs_baseline": {
+  "mean": 0.0037,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

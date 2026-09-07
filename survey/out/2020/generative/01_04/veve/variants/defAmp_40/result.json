@@ -1,0 +1,97 @@
+{
+ "sketch": "2020/generative/01_04/veve",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/defAmp_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "999)*2-1)*12",
+   "999)*2-1)*40"
+  ],
+  [
+   "111)*2-1)*12",
+   "111)*2-1)*40"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/defAmp_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2301,
+   "md5": "922f3120d390ea3823272cc15781e73f",
+   "bytes": 714499
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/defAmp_40/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2512,
+   "md5": "e07e40e8d4b0ba45d78011781c43a0f3",
+   "bytes": 74572
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/defAmp_40/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3774,
+   "md5": "e07e40e8d4b0ba45d78011781c43a0f3",
+   "bytes": 74572
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "veve.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "999)*2-1)*12",
+   "new": "999)*2-1)*40",
+   "count": 1
+  },
+  {
+   "old": "111)*2-1)*12",
+   "new": "111)*2-1)*40",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/defAmp_40/frame_00001.png (snap) t=2301ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/defAmp_40/frame_00010.png (snap) t=2512ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/defAmp_40/frame_00060.png (snap) t=3774ms\n[harness] done frame=60 t=3752ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2301,
+ "diff_vs_baseline": {
+  "mean": 0.1001,
+  "changed_fraction": 0.248,
+  "label": "moderate"
+ }
+}

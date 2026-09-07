@@ -1,0 +1,61 @@
+{
+ "sketch": "2012 y otros/Provisosrios o sin terminas o cosas feas/bichines",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/bichines/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/bichines/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 163,
+   "md5": "955b63e79b3ade0bcd2c3f11c88a9940",
+   "bytes": 1541
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/bichines/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 306,
+   "md5": "1327fcde42a306f73d6bc14921f7b306",
+   "bytes": 1594
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/bichines/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1137,
+   "md5": "a3cdc779b32d5a2ef80b2b69f0487e88",
+   "bytes": 1671
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "bichines.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/bichines/baseline/frame_00001.png (snap) t=163ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/bichines/baseline/frame_00010.png (snap) t=306ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/bichines/baseline/frame_00060.png (snap) t=1137ms\n[harness] done frame=60 t=1131ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 163,
+ "deterministic": true,
+ "rerun_frames": 3
+}

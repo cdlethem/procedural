@@ -1,0 +1,86 @@
+{
+ "sketch": "2019/generativos/galon",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/amp_50",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float amp = random(20);",
+   "float amp = random(50);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/amp_50/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1520,
+   "md5": "c26f14dc2c86bc81d19811c1ff9ef31c",
+   "bytes": 1888349
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/amp_50/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1729,
+   "md5": "212a01efac03d486c204d335f26c43f9",
+   "bytes": 5088
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/amp_50/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2984,
+   "md5": "212a01efac03d486c204d335f26c43f9",
+   "bytes": 5088
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "galon.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float amp = random(20);",
+   "new": "float amp = random(50);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/amp_50/frame_00001.png (snap) t=1520ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/amp_50/frame_00010.png (snap) t=1729ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/amp_50/frame_00060.png (snap) t=2984ms\n[harness] done frame=60 t=2962ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1520,
+ "diff_vs_baseline": {
+  "mean": 0.2666,
+  "changed_fraction": 0.954,
+  "label": "large"
+ }
+}

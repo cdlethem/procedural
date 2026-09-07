@@ -1,0 +1,64 @@
+{
+ "sketch": "2015/Generativos/cubitos",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/cubitos/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/cubitos/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1494,
+   "md5": "a0ef58fe87d6a4249e6da0eb77bda212",
+   "bytes": 26117
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/cubitos/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1710,
+   "md5": "698d3cc1fdc4a0a470e8dea888e4b425",
+   "bytes": 25552
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/cubitos/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2964,
+   "md5": "5bcaa4aa69f5c7fbbaf3dbe6dcd1f602",
+   "bytes": 25293
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  400
+ ],
+ "size_args": "800, 400, P3D",
+ "imports": [],
+ "tabs": [
+  "cubitos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "cubitos.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/cubitos/baseline/frame_00001.png (snap) t=1494ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/cubitos/baseline/frame_00010.png (snap) t=1710ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/cubitos/baseline/frame_00060.png (snap) t=2964ms\n[harness] done frame=60 t=2956ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1494,
+ "deterministic": true,
+ "rerun_frames": 3
+}

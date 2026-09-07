@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/palabrasAleatorias",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/bgval_60",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "background((h+128)%256, random(60, 120), random(180));",
+   "background((h+128)%256, random(60, 120), random(60));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/bgval_60/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2304,
+   "md5": "9128f8d4038ad46eebdd1f99b2e9704e",
+   "bytes": 3272
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/bgval_60/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2459,
+   "md5": "9d81f57e3454dbca179d062b092529d1",
+   "bytes": 48155
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/bgval_60/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3290,
+   "md5": "9d81f57e3454dbca179d062b092529d1",
+   "bytes": 48155
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "palabrasAleatorias.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "background((h+128)%256, random(60, 120), random(180));",
+   "new": "background((h+128)%256, random(60, 120), random(60));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/bgval_60/frame_00001.png (snap) t=2304ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/bgval_60/frame_00010.png (snap) t=2459ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/bgval_60/frame_00060.png (snap) t=3290ms\n[harness] done frame=60 t=3276ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 2304,
+ "diff_vs_baseline": {
+  "mean": 0.3019,
+  "changed_fraction": 1.0,
+  "label": "large"
+ }
+}

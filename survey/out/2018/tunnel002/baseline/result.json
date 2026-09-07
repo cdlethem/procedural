@@ -1,0 +1,68 @@
+{
+ "sketch": "2018/tunnel002",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/tunnel002/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/tunnel002/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1581,
+   "md5": "2affaee412be1f7fa917717be3b1c717",
+   "bytes": 920866
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/tunnel002/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1893,
+   "md5": "1b4e2ba2ba5ab0f64ef92ff7af4873cc",
+   "bytes": 928938
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/tunnel002/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6648,
+   "md5": "3fbcf45bd45250005ea2e5dfd9320784",
+   "bytes": 906268
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P3D",
+ "imports": [
+  "peasy.*"
+ ],
+ "tabs": [
+  "tunnel002.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 8.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/tunnel002/baseline/frame_00001.png (snap) t=1581ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/tunnel002/baseline/frame_00010.png (snap) t=1893ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/tunnel002/baseline/frame_00060.png (snap) t=6648ms\n[harness] done frame=60 t=6612ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1581,
+ "deterministic": false,
+ "rerun_frames": 3
+}

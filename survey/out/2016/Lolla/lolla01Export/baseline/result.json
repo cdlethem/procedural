@@ -1,0 +1,31 @@
+{
+ "sketch": "2016/Lolla/lolla01Export",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Lolla/lolla01Export/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "codeanticode.syphon.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  684,
+  768
+ ],
+ "size_args": "684, 768, P3D",
+ "imports": [
+  "codeanticode.syphon.*"
+ ],
+ "tabs": [
+  "Interface.pde",
+  "Scene.pde",
+  "Scene1.pde",
+  "Scene2.pde",
+  "Windows.pde",
+  "lolla01Export.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2"
+}

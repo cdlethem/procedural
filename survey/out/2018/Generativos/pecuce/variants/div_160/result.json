@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/pecuce",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pecuce/variants/div_160",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int div = int(random(10, 120));",
+   "int div = 160;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pecuce/variants/div_160/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1448,
+   "md5": "dc815d549e1bda0431a7fd64cd5d15b9",
+   "bytes": 99087
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "pecuce.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int div = int(random(10, 120));",
+   "new": "int div = 160;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pecuce/variants/div_160/frame_00001.png (snap) t=1448ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pecuce/variants/div_160/frame_00010.png (snap) t=1658ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pecuce/variants/div_160/frame_00060.png (snap) t=2917ms\n[harness] done frame=60 t=2889ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1448,
+ "diff_vs_baseline": {
+  "mean": 0.2815,
+  "changed_fraction": 0.741,
+  "label": "large"
+ }
+}

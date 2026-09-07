@@ -1,0 +1,67 @@
+{
+ "sketch": "2018/Generativos/OP/op_012",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_012/variants/amp_0.03",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "float amp = random(0.1, 0.4);=>float amp = 0.03;"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_012/variants/amp_0.03/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 3812,
+   "md5": "2d783a0ba5b8e52822d7cc9704160d9a",
+   "bytes": 392135
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_012/variants/amp_0.03/self_20260902-204018.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3264,
+   "md5": "2d783a0ba5b8e52822d7cc9704160d9a",
+   "bytes": 392135
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  6500,
+  6500
+ ],
+ "size_args": "6500, 6500, P2D",
+ "imports": [],
+ "tabs": [
+  "op_012.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float amp = random(0.1, 0.4);",
+   "new": "float amp = 0.03;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_012/variants/amp_0.03/frame_00001.png (dispose) t=3812ms\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 3812,
+ "diff_vs_baseline": {
+  "mean": 0.0356,
+  "changed_fraction": 0.087,
+  "label": "subtle"
+ }
+}

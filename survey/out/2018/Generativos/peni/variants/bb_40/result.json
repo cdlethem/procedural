@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/peni",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/peni/variants/bb_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float bb = 9;",
+   "float bb = 40;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/peni/variants/bb_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1484,
+   "md5": "93a69538b766e088fe3cf8667c5fd13e",
+   "bytes": 134584
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "peni.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float bb = 9;",
+   "new": "float bb = 40;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/peni/variants/bb_40/frame_00001.png (snap) t=1484ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/peni/variants/bb_40/frame_00010.png (snap) t=1696ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/peni/variants/bb_40/frame_00060.png (snap) t=2955ms\n[harness] done frame=60 t=2926ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1484,
+ "diff_vs_baseline": {
+  "mean": 0.0441,
+  "changed_fraction": 0.141,
+  "label": "subtle"
+ }
+}

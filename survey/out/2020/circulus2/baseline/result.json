@@ -1,0 +1,75 @@
+{
+ "sketch": "2020/circulus2",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/circulus2/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/circulus2/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1818,
+   "md5": "0d436e96d922a60c623753170f78a15b",
+   "bytes": 4670784
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/circulus2/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2863,
+   "md5": "300f00d183f01ef1a1b03f7104e584df",
+   "bytes": 4674962
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/circulus2/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 8142,
+   "md5": "554d290ae9df5c07ce64fe1139c1fdb5",
+   "bytes": 4713597
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "circulus2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 9.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/circulus2/baseline/frame_00001.png (snap) t=1818ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/circulus2/baseline/frame_00010.png (snap) t=2863ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/circulus2/baseline/frame_00060.png (snap) t=8142ms\n[harness] done frame=60 t=8001ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1818,
+ "deterministic": true,
+ "rerun_frames": 3
+}

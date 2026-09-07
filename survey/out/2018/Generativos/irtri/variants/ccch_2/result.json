@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/irtri",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/irtri/variants/ccch_2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "ccc = int(cc*cc*random(10));",
+   "ccc = int(cc*cc*random(2));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/irtri/variants/ccch_2/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 3762,
+   "md5": "acdbf3a94dc19eea86af5cd6225c3c14",
+   "bytes": 26479062
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/irtri/variants/ccch_2/self_20260905-093226.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3801,
+   "md5": "acdbf3a94dc19eea86af5cd6225c3c14",
+   "bytes": 26479062
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "irtri.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "ccc = int(cc*cc*random(10));",
+   "new": "ccc = int(cc*cc*random(2));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/irtri/variants/ccch_2/frame_00001.png (dispose) t=3762ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3762,
+ "diff_vs_baseline": {
+  "mean": 0.0262,
+  "changed_fraction": 0.004,
+  "label": "subtle"
+ }
+}

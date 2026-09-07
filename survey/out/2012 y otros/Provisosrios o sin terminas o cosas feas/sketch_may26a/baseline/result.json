@@ -1,0 +1,65 @@
+{
+ "sketch": "2012 y otros/Provisosrios o sin terminas o cosas feas/sketch_may26a",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/sketch_may26a/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/sketch_may26a/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 560,
+   "md5": "b8ecd797850b817fb7fc78f841ec34f3",
+   "bytes": 735138,
+   "captured_frame": 10
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/sketch_may26a/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1417,
+   "md5": "ad14740c6133a3e4b755d04a9e8efba5",
+   "bytes": 890560
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "sketch_may26a.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 10 promoted to frame_00001.png"
+  ],
+  [
+   2,
+   "blank"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/sketch_may26a/baseline/frame_00001.png (snap) t=334ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/sketch_may26a/baseline/frame_00002.png (snap) t=393ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/sketch_may26a/baseline/frame_00010.png (snap) t=560ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/sketch_may26a/baseline/frame_00060.png (snap) t=1417ms\n[harness] done frame=60 t=1385ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 560,
+ "deterministic": true,
+ "rerun_frames": 2
+}

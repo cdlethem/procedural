@@ -1,0 +1,89 @@
+{
+ "sketch": "2018/Generativos/sandi",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/threshold_0.05",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "SimplexNoise.noise(des+x*det, des+y*det, des+z*det) < 0.01",
+   "SimplexNoise.noise(des+x*det, des+y*det, des+z*det) < 0.05"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/threshold_0.05/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3531,
+   "md5": "4d8d5c49330eb9b402fd20928d8bcf40",
+   "bytes": 2448136
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/threshold_0.05/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3738,
+   "md5": "97e54ff4674381290a82fe455d3b2f23",
+   "bytes": 34378
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/threshold_0.05/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5005,
+   "md5": "97e54ff4674381290a82fe455d3b2f23",
+   "bytes": 34378
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "sandi.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "SimplexNoise.noise(des+x*det, des+y*det, des+z*det) < 0.01",
+   "new": "SimplexNoise.noise(des+x*det, des+y*det, des+z*det) < 0.05",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/threshold_0.05/frame_00001.png (snap) t=3531ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/threshold_0.05/frame_00010.png (snap) t=3738ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/threshold_0.05/frame_00060.png (snap) t=5005ms\n[harness] done frame=60 t=4972ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3531,
+ "diff_vs_baseline": {
+  "mean": 0.0124,
+  "changed_fraction": 0.003,
+  "label": "subtle"
+ }
+}

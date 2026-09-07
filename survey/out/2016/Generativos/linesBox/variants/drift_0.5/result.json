@@ -1,0 +1,77 @@
+{
+ "sketch": "2016/Generativos/linesBox",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/linesBox/variants/drift_0.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float vp = 0.1;",
+   "    float vp = 0.5;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/linesBox/variants/drift_0.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1459,
+   "md5": "73fdbaf39891062587f8c59695e43c7a",
+   "bytes": 4673
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/linesBox/variants/drift_0.5/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1671,
+   "md5": "7d4b44f685ac4763563d19171d00ea7d",
+   "bytes": 6002
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/linesBox/variants/drift_0.5/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2927,
+   "md5": "9171fd41471a05f0faf5199e278a546a",
+   "bytes": 9941
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720, P3D",
+ "imports": [],
+ "tabs": [
+  "linesBox.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float vp = 0.1;",
+   "new": "    float vp = 0.5;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/linesBox/variants/drift_0.5/frame_00001.png (snap) t=1459ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/linesBox/variants/drift_0.5/frame_00010.png (snap) t=1671ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/linesBox/variants/drift_0.5/frame_00060.png (snap) t=2927ms\n[harness] done frame=60 t=2900ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1459,
+ "diff_vs_baseline": {
+  "mean": 0.0,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

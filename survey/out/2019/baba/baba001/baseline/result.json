@@ -1,0 +1,49 @@
+{
+ "sketch": "2019/baba/baba001",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/baba/baba001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "runtime_error",
+ "detail": "baba001.pde:17:0:17:0: IllegalStateException: size() cannot be used here, see https://processing.org/reference/size_.html",
+ "frames": [],
+ "warnings": [
+  "sketch killed 2 s after the exception (launcher leaves it suspended)"
+ ],
+ "renderer": "P3D",
+ "size": [
+  1920,
+  1080
+ ],
+ "size_args": "1920, 1080, P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "baba001.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "compat_shims": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.5,
+ "rc": 143,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\nFinished.",
+ "stderr_tail": "When not using the PDE, size() can only be used inside settings().\nRemove the size() method from setup(), and add the following:\npublic void settings() {\n  size(2400, 2400, \"processing.opengl.PGraphics3D\");\n}\nbaba001.pde:17:0:17:0: IllegalStateException: size() cannot be used here, see https://processing.org/reference/size_.html\nCould not run the sketch (Target VM failed to initialize).\nFor more information, read Help \u2192 Troubleshooting.\nCould not run the sketch.",
+ "ms_first_frame": null
+}

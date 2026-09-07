@@ -1,0 +1,70 @@
+{
+ "sketch": "2016/Generativos/formitas",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/formitas/variants/sat_100",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "colours[1+i] = color((dd+dc*i)%256, random(180, 240), 255);",
+   "colours[1+i] = color((dd+dc*i)%256, random(80, 120), 255);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/formitas/variants/sat_100/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 160,
+   "md5": "1184f812bcf86dadd60ce8a3a331ed09",
+   "bytes": 45121
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "formitas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "colours[1+i] = color((dd+dc*i)%256, random(180, 240), 255);",
+   "new": "colours[1+i] = color((dd+dc*i)%256, random(80, 120), 255);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/formitas/variants/sat_100/frame_00001.png (snap) t=160ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/formitas/variants/sat_100/frame_00010.png (snap) t=315ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/formitas/variants/sat_100/frame_00060.png (snap) t=1157ms\n[harness] done frame=60 t=1132ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 160,
+ "diff_vs_baseline": {
+  "mean": 0.2197,
+  "changed_fraction": 0.962,
+  "label": "large"
+ }
+}

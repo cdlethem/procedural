@@ -1,0 +1,63 @@
+{
+ "sketch": "2017/Generativos/aros",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1574,
+   "md5": "594dde2489232ee2d0958fc9172b14b4",
+   "bytes": 85176
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1813,
+   "md5": "f016a7436f974ccfa31d144964ba8107",
+   "bytes": 84848
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3083,
+   "md5": "206a4b43b42dbc5eea9b6a22fbc042fb",
+   "bytes": 81166
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "aros.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/baseline/frame_00001.png (snap) t=1574ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/baseline/frame_00010.png (snap) t=1813ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/baseline/frame_00060.png (snap) t=3083ms\n[harness] done frame=60 t=3053ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1574,
+ "deterministic": false,
+ "rerun_frames": 3
+}

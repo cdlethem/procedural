@@ -1,0 +1,83 @@
+{
+ "sketch": "2015/Generativos/arcosCampestres",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/fill_blue",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "fill(random(255), random(100, 255), random(100));",
+   "fill(random(100), random(100, 255), random(255));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/fill_blue/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 180,
+   "md5": "3062ececa7f86e47593e9c7e59fe6292",
+   "bytes": 17198
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/fill_blue/self_1.pdf",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1063,
+   "md5": "265c87a14df954034e15c161c16c3313",
+   "bytes": 4391
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  400
+ ],
+ "size_args": "800, 400",
+ "imports": [
+  "java.io.FilenameFilter",
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "arcosCampestres.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "fill(random(255), random(100, 255), random(100));",
+   "new": "fill(random(100), random(100, 255), random(255));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "arcosCampestres.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/fill_blue/frame_00001.png (snap) t=180ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/fill_blue/frame_00010.png (snap) t=325ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/fill_blue/frame_00060.png (snap) t=1158ms\n[harness] done frame=60 t=1148ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 180,
+ "diff_vs_baseline": {
+  "mean": 0.0075,
+  "changed_fraction": 0.037,
+  "label": "none"
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "sketch": "2015/Shaders/ShaderEditor",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Shaders/ShaderEditor/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "processing.video.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  840,
+  480
+ ],
+ "size_args": "840, 480, P2D",
+ "imports": [
+  "java.util.Arrays",
+  "processing.video.*"
+ ],
+ "tabs": [
+  "Filter.pde",
+  "ShaderEditor.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2"
+}

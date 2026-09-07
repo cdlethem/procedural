@@ -1,0 +1,55 @@
+{
+ "sketch": "2018/Generativos/mantel",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mantel/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mantel/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 22521,
+   "md5": "91b3d8fc35ae7d5db79159685b19f263",
+   "bytes": 9167053
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mantel/baseline/self_20260902-190740.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 22878,
+   "md5": "91b3d8fc35ae7d5db79159685b19f263",
+   "bytes": 9167053
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "mantel.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 24.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mantel/baseline/frame_00001.png (dispose) t=22521ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 22521,
+ "deterministic": true,
+ "rerun_frames": 2
+}

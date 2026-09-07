@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/01_04/opena",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opena/variants/detAng_TAU6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  float ang = noise(x*detAng, y*detAng)*TAU*3;",
+   "  float ang = noise(x*detAng, y*detAng)*TAU*6;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opena/variants/detAng_TAU6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1651,
+   "md5": "25ab24aaa37cf95999d10e87adf134aa",
+   "bytes": 341115
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "opena.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  float ang = noise(x*detAng, y*detAng)*TAU*3;",
+   "new": "  float ang = noise(x*detAng, y*detAng)*TAU*6;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opena/variants/detAng_TAU6/frame_00001.png (snap) t=1651ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opena/variants/detAng_TAU6/frame_00010.png (snap) t=1866ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opena/variants/detAng_TAU6/frame_00060.png (snap) t=3125ms\n[harness] done frame=60 t=3084ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1651,
+ "diff_vs_baseline": {
+  "mean": 0.0165,
+  "changed_fraction": 0.047,
+  "label": "subtle"
+ }
+}

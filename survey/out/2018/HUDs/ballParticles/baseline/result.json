@@ -1,0 +1,68 @@
+{
+ "sketch": "2018/HUDs/ballParticles",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/HUDs/ballParticles/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/HUDs/ballParticles/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1457,
+   "md5": "86aa714be4e51385eee1c37b280b0b0e",
+   "bytes": 15077
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/HUDs/ballParticles/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1658,
+   "md5": "dc779edacf1850296f7c72085d61a708",
+   "bytes": 15285
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/HUDs/ballParticles/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 4993,
+   "md5": "bf64d5b674fb52274b75db903f9fa580",
+   "bytes": 16452
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P3D",
+ "imports": [
+  "peasy.*"
+ ],
+ "tabs": [
+  "ballParticles.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/HUDs/ballParticles/baseline/frame_00001.png (snap) t=1457ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/HUDs/ballParticles/baseline/frame_00010.png (snap) t=1658ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/HUDs/ballParticles/baseline/frame_00060.png (snap) t=4993ms\n[harness] done frame=60 t=4979ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1457,
+ "deterministic": false,
+ "rerun_frames": 3
+}

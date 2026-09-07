@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/05_08/rabia",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/rabia/variants/weight_12",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "strokeWeight(random(1, 8)*random(1));",
+   "strokeWeight(random(4, 12)*random(1));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/rabia/variants/weight_12/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1543,
+   "md5": "9ef971863af89b51f707dc8d5f645ac7",
+   "bytes": 302231
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "rabia.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "strokeWeight(random(1, 8)*random(1));",
+   "new": "strokeWeight(random(4, 12)*random(1));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/rabia/variants/weight_12/frame_00001.png (snap) t=1543ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/rabia/variants/weight_12/frame_00010.png (snap) t=1772ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/rabia/variants/weight_12/frame_00060.png (snap) t=3022ms\n[harness] done frame=60 t=2995ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1543,
+ "diff_vs_baseline": {
+  "mean": 0.0196,
+  "changed_fraction": 0.074,
+  "label": "subtle"
+ }
+}

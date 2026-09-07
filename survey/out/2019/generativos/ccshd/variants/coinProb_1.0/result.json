@@ -1,0 +1,80 @@
+{
+ "sketch": "2019/generativos/ccshd",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/ccshd/variants/coinProb_1.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    if (random(1) < 0.5) {",
+   "    if (random(1) < 1.0) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/ccshd/variants/coinProb_1.0/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2865,
+   "md5": "ae62d5d7c13f75cc9d3a24cced449f09",
+   "bytes": 16134396
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/ccshd/variants/coinProb_1.0/self_20260906-071242-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3045,
+   "md5": "ae62d5d7c13f75cc9d3a24cced449f09",
+   "bytes": 16134396
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "ccshd.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "    if (random(1) < 0.5) {",
+   "new": "    if (random(1) < 1.0) {",
+   "count": 2
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/ccshd/variants/coinProb_1.0/frame_00001.png (dispose) t=2865ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2865,
+ "diff_vs_baseline": {
+  "mean": 0.1691,
+  "changed_fraction": 0.551,
+  "label": "large"
+ }
+}

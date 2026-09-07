@@ -1,0 +1,55 @@
+{
+ "sketch": "2018/Generativos/irtri",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/irtri/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/irtri/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 4109,
+   "md5": "4920db265c190d4daa76dd3dfe7c239c",
+   "bytes": 25785812
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/irtri/baseline/self_20260902-190638.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 4363,
+   "md5": "4920db265c190d4daa76dd3dfe7c239c",
+   "bytes": 25785812
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "irtri.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/irtri/baseline/frame_00001.png (dispose) t=4109ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 4109,
+ "deterministic": true,
+ "rerun_frames": 2
+}

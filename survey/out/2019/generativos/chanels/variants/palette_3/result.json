@@ -1,0 +1,76 @@
+{
+ "sketch": "2019/generativos/chanels",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/palette_3",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#043387, #0199DC, #BAD474, #FBE710, #FFE032, #EB8066, #E7748C, #DF438A, #D9007E, #6A0E80, #242527, #FCFCFA};",
+   "int colors[] = {#043387, #FBE710, #D9007E};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/palette_3/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1503,
+   "md5": "d9e5da067c06229b0ae33da2ad7dd3b4",
+   "bytes": 593309
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/palette_3/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1711,
+   "md5": "7082606ab644c786f229220e4d46a273",
+   "bytes": 13495
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/palette_3/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2963,
+   "md5": "7082606ab644c786f229220e4d46a273",
+   "bytes": 13495
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [],
+ "tabs": [
+  "chanels.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#043387, #0199DC, #BAD474, #FBE710, #FFE032, #EB8066, #E7748C, #DF438A, #D9007E, #6A0E80, #242527, #FCFCFA};",
+   "new": "int colors[] = {#043387, #FBE710, #D9007E};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/palette_3/frame_00001.png (snap) t=1503ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/palette_3/frame_00010.png (snap) t=1711ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/palette_3/frame_00060.png (snap) t=2963ms\n[harness] done frame=60 t=2944ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1503,
+ "diff_vs_baseline": {
+  "mean": 0.19,
+  "changed_fraction": 0.763,
+  "label": "large"
+ }
+}

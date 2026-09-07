@@ -1,0 +1,64 @@
+{
+ "sketch": "2014/circuitos/prueba",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/circuitos/prueba/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/circuitos/prueba/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 202,
+   "md5": "53cf48ab568a65843c15332e46740d94",
+   "bytes": 10639
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/circuitos/prueba/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 371,
+   "md5": "eaa9470d70365e9cffc61aeb7e8f2f44",
+   "bytes": 73676
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/circuitos/prueba/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1203,
+   "md5": "125c3eeeda873b39ee641b8a7141abbb",
+   "bytes": 148868
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "prueba.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "prueba.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/circuitos/prueba/baseline/frame_00001.png (snap) t=202ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/circuitos/prueba/baseline/frame_00010.png (snap) t=371ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/circuitos/prueba/baseline/frame_00060.png (snap) t=1203ms\n[harness] done frame=60 t=1191ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 202,
+ "deterministic": true,
+ "rerun_frames": 3
+}

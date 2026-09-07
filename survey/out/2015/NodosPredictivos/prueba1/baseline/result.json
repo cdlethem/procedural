@@ -1,0 +1,53 @@
+{
+ "sketch": "2015/NodosPredictivos/prueba1",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/NodosPredictivos/prueba1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/NodosPredictivos/prueba1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1625,
+   "md5": "b781c818d21599820b5a6a40834e2d21",
+   "bytes": 3363
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/NodosPredictivos/prueba1/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1843,
+   "md5": "01e535def7e0917e234f38f647419afc",
+   "bytes": 3324
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "prueba1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/NodosPredictivos/prueba1/baseline/frame_00001.png (snap) t=1625ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/NodosPredictivos/prueba1/baseline/frame_00010.png (snap) t=1843ms\n[\n  \"starbucks\",\n  \"summit credit union\",\n  \"servicio de control de inmigraci\ufffdn y aduanas\",\n  \"selecci\ufffdn de f\ufffdtbol de m\ufffdxico\",\n  \"subway\",\n  \"shein\",\n  \"seguridad social\",\n  \"spotify\",\n  \"salmo 91\",\n  \"selecci\ufffdn de f\ufffdtbol de argentina\"\n][harness] saved ${GENART_SURVEY_ROOT}/out/2015/NodosPredictivos/prueba1/baseline/frame_00060.png (snap) t=3217ms\n[harness] done frame=60 t=3204ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1625,
+ "deterministic": true,
+ "rerun_frames": 2
+}

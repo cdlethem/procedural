@@ -1,0 +1,85 @@
+{
+ "sketch": "2020/generative/01_04/defRect",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/variants/palette_alt",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "int colors[] = {#4E87C5, #BA8FE7, #F76A0B};=>int colors[] = {#F7F5E8, #F1D7D7, #6AA6CB, #3E4884, #E36446, #BBCAB1};"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/variants/palette_alt/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1485,
+   "md5": "3d95424cb34a57a2ce0d5d8fd9a60814",
+   "bytes": 1227440
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/variants/palette_alt/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1705,
+   "md5": "92c638563bd6bd74fa33903e3f448390",
+   "bytes": 8235
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/variants/palette_alt/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2963,
+   "md5": "92c638563bd6bd74fa33903e3f448390",
+   "bytes": 8235
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "defRect.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#4E87C5, #BA8FE7, #F76A0B};",
+   "new": "int colors[] = {#F7F5E8, #F1D7D7, #6AA6CB, #3E4884, #E36446, #BBCAB1};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/variants/palette_alt/frame_00001.png (snap) t=1485ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/variants/palette_alt/frame_00010.png (snap) t=1705ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/variants/palette_alt/frame_00060.png (snap) t=2963ms\n[harness] done frame=60 t=2938ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1485,
+ "diff_vs_baseline": {
+  "mean": 0.1654,
+  "changed_fraction": 0.609,
+  "label": "large"
+ }
+}

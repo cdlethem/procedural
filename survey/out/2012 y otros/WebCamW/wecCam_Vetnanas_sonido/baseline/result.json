@@ -1,0 +1,28 @@
+{
+ "sketch": "2012 y otros/WebCamW/wecCam_Vetnanas_sonido",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/WebCamW/wecCam_Vetnanas_sonido/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "processing.video.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640, 480",
+ "imports": [
+  "ddf.minim.*",
+  "processing.video.*"
+ ],
+ "tabs": [
+  "Clases.pde",
+  "wecCam_Vetnanas_sonido.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

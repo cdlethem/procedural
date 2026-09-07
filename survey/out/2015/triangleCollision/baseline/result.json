@@ -1,0 +1,55 @@
+{
+ "sketch": "2015/triangleCollision",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/triangleCollision/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/triangleCollision/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 308,
+   "md5": "ae4f594421ed17d1affd3791916533ca",
+   "bytes": 9277
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "triangleCollision.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/triangleCollision/baseline/frame_00001.png (snap) t=308ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/triangleCollision/baseline/frame_00010.png (snap) t=461ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/triangleCollision/baseline/frame_00060.png (snap) t=1291ms\n[harness] done frame=60 t=1283ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 308,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

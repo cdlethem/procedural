@@ -1,0 +1,79 @@
+{
+ "sketch": "2016/Generativos/boxDepth",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/cc_30",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = 20;",
+   "int cc = 30;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/cc_30/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1489,
+   "md5": "8983520cd63ae8e147b6be73fad3b331",
+   "bytes": 601637
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/cc_30/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1713,
+   "md5": "242f79739289647ad5b81911b13ea6ae",
+   "bytes": 602225
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/cc_30/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2970,
+   "md5": "2c0439f06188b283871d3197b9f75603",
+   "bytes": 609839
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "boxDepth.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = 20;",
+   "new": "int cc = 30;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/cc_30/frame_00001.png (snap) t=1489ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/cc_30/frame_00010.png (snap) t=1713ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/cc_30/frame_00060.png (snap) t=2970ms\n[harness] done frame=60 t=2945ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "Your shader needs to be of COLOR type to render this geometry properly, using default shader instead.\nclear() can only be used with createGraphics()\nThe shader doesn't have a uniform called \"mouse\" OR the uniform was removed during compilation because it was unused.\nThe shader doesn't have a uniform called \"tDepth\" OR the uniform was removed during compilation because it was unused.",
+ "ms_first_frame": 1489,
+ "diff_vs_baseline": {
+  "mean": 0.1107,
+  "changed_fraction": 0.497,
+  "label": "moderate"
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "sketch": "2015/BoxFFT",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/BoxFFT/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "manoloide.ImageProcessor.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640, 480, P3D",
+ "imports": [
+  "ddf.minim.*",
+  "ddf.minim.analysis.*",
+  "manoloide.ImageProcessor.*"
+ ],
+ "tabs": [
+  "BoxFFT.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

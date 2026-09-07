@@ -1,0 +1,66 @@
+{
+ "sketch": "2020/generative/01_04/el_arlequin_y_la_zebra",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/el_arlequin_y_la_zebra/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/el_arlequin_y_la_zebra/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1495,
+   "md5": "2dd97dce011a4e0c7004daf303ae5115",
+   "bytes": 105280
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "el_arlequin_y_la_zebra.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 32.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/el_arlequin_y_la_zebra/baseline/frame_00001.png (snap) t=1495ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/el_arlequin_y_la_zebra/baseline/frame_00010.png (snap) t=2674ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/el_arlequin_y_la_zebra/baseline/frame_00038.png (budget) t=30677ms\n[harness] done frame=38 t=30657ms\n[harness] dispose frame=39 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1495,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   38,
+   "identical to frame 1"
+  ]
+ ]
+}

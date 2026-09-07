@@ -1,0 +1,62 @@
+{
+ "sketch": "2018/rotateNoiseColors",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/rotateNoiseColors/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/rotateNoiseColors/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1489,
+   "md5": "14150b375d6894c10333dfc9675a9e15",
+   "bytes": 8736
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P2D",
+ "imports": [],
+ "tabs": [
+  "rotateNoiseColors.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 14.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/rotateNoiseColors/baseline/frame_00001.png (snap) t=1489ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/rotateNoiseColors/baseline/frame_00002.png (snap) t=1508ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/rotateNoiseColors/baseline/frame_00010.png (snap) t=1714ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/rotateNoiseColors/baseline/frame_00060.png (snap) t=13164ms\n[harness] done frame=60 t=13152ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1489,
+ "deterministic": true,
+ "rerun_frames": 1
+}

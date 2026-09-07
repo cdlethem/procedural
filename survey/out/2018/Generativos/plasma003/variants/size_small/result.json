@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/plasma003",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/size_small",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float s = width*random(0.1, 0.25);",
+   "float s = width*random(0.04, 0.12);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/size_small/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2702,
+   "md5": "7ae576f08f59638e565ada5d1698fc01",
+   "bytes": 1958215
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/size_small/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2915,
+   "md5": "30fda2198e65e0d0ba7fd06adaa06536",
+   "bytes": 90848
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/size_small/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 4165,
+   "md5": "30fda2198e65e0d0ba7fd06adaa06536",
+   "bytes": 90848
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "plasma003.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float s = width*random(0.1, 0.25);",
+   "new": "float s = width*random(0.04, 0.12);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/size_small/frame_00001.png (snap) t=2702ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/size_small/frame_00010.png (snap) t=2915ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/size_small/frame_00060.png (snap) t=4165ms\n[harness] done frame=60 t=4141ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2702,
+ "diff_vs_baseline": {
+  "mean": 0.1608,
+  "changed_fraction": 0.492,
+  "label": "large"
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/caritas",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/caritas/variants/des_10",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "des = random(1000);",
+   "des = random(10);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/caritas/variants/des_10/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1892,
+   "md5": "dfed73d94ea68297ce6d7fbdff9d51f0",
+   "bytes": 1983748
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "caritas.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "des = random(1000);",
+   "new": "des = random(10);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/caritas/variants/des_10/frame_00001.png (snap) t=1892ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/caritas/variants/des_10/frame_00010.png (snap) t=2148ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/caritas/variants/des_10/frame_00060.png (snap) t=3431ms\n[harness] done frame=60 t=3364ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1892,
+ "diff_vs_baseline": {
+  "mean": 0.2,
+  "changed_fraction": 0.603,
+  "label": "large"
+ }
+}

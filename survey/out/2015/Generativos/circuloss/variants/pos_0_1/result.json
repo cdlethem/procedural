@@ -1,0 +1,81 @@
+{
+ "sketch": "2015/Generativos/circuloss",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/circuloss/variants/pos_0_1",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "width*random(0.2, 0.8)",
+   "width*random(0.0, 1.0)"
+  ],
+  [
+   "height* random(0.2, 0.8)",
+   "height* random(0.0, 1.0)"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/circuloss/variants/pos_0_1/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 162,
+   "md5": "3566f60c8633fc2b1b1a051d68968f9c",
+   "bytes": 9129
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [],
+ "tabs": [
+  "circuloss.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "width*random(0.2, 0.8)",
+   "new": "width*random(0.0, 1.0)",
+   "count": 1
+  },
+  {
+   "old": "height* random(0.2, 0.8)",
+   "new": "height* random(0.0, 1.0)",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "circuloss.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/circuloss/variants/pos_0_1/frame_00001.png (snap) t=162ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/circuloss/variants/pos_0_1/frame_00010.png (snap) t=315ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/circuloss/variants/pos_0_1/frame_00060.png (snap) t=1148ms\n[harness] done frame=60 t=1133ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 162,
+ "diff_vs_baseline": {
+  "mean": 0.0649,
+  "changed_fraction": 0.068,
+  "label": "moderate"
+ }
+}

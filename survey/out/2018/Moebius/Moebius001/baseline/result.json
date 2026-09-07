@@ -1,0 +1,60 @@
+{
+ "sketch": "2018/Moebius/Moebius001",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Moebius/Moebius001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Moebius/Moebius001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 155,
+   "md5": "643e6aea4145f4a8e56728341e2ab817",
+   "bytes": 5178
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540",
+ "imports": [],
+ "tabs": [
+  "Brush.pde",
+  "Canvas.pde",
+  "Layer.pde",
+  "Moebius001.pde",
+  "Stroke.pde",
+  "UI.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Moebius/Moebius001/baseline/frame_00001.png (snap) t=155ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Moebius/Moebius001/baseline/frame_00010.png (snap) t=303ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Moebius/Moebius001/baseline/frame_00060.png (snap) t=1137ms\n[harness] done frame=60 t=1125ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 155,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

@@ -1,0 +1,73 @@
+{
+ "sketch": "2019/generativos/arau",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/arau/variants/size_0.13",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float s = width*map(v, 0, 1, 0.1, 1)*0.26*random(0.6, 1);",
+   "float s = width*map(v, 0, 1, 0.1, 1)*0.13*random(0.6, 1);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/arau/variants/size_0.13/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3410,
+   "md5": "57d513c62559258c13c946f2836e6483",
+   "bytes": 1905555
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "arau.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float s = width*map(v, 0, 1, 0.1, 1)*0.26*random(0.6, 1);",
+   "new": "float s = width*map(v, 0, 1, 0.1, 1)*0.13*random(0.6, 1);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/arau/variants/size_0.13/frame_00001.png (snap) t=3410ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/arau/variants/size_0.13/frame_00010.png (snap) t=3655ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/arau/variants/size_0.13/frame_00060.png (snap) t=4939ms\n[harness] done frame=60 t=4869ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\nmap(NaN, 0, 1, 1.5707964, 4.712389) called, which returns NaN (not a number)",
+ "ms_first_frame": 3410,
+ "diff_vs_baseline": {
+  "mean": 0.2735,
+  "changed_fraction": 0.845,
+  "label": "large"
+ }
+}

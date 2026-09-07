@@ -1,0 +1,88 @@
+{
+ "sketch": "2015/Generativos/planetProblem",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/offset_30",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "line(0, 0, s+8, 0);",
+   "line(0, 0, s+30, 0);"
+  ],
+  [
+   "translate(s+8, 0, 0);",
+   "translate(s+30, 0, 0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/offset_30/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1483,
+   "md5": "c0ea9b74d09396ba94632bc5fe6bd97e",
+   "bytes": 308834
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/offset_30/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1693,
+   "md5": "94d6bd89bdeb5b3b6a0694f4b4be9975",
+   "bytes": 308955
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/offset_30/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2953,
+   "md5": "1d6eadd50cdfead300ef93460f3c95ec",
+   "bytes": 310120
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "planetProblem.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "line(0, 0, s+8, 0);",
+   "new": "line(0, 0, s+30, 0);",
+   "count": 1
+  },
+  {
+   "old": "translate(s+8, 0, 0);",
+   "new": "translate(s+30, 0, 0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/offset_30/frame_00001.png (snap) t=1483ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/offset_30/frame_00010.png (snap) t=1693ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/offset_30/frame_00060.png (snap) t=2953ms\n[harness] done frame=60 t=2926ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1483,
+ "diff_vs_baseline": {
+  "mean": 0.0053,
+  "changed_fraction": 0.01,
+  "label": "none"
+ }
+}

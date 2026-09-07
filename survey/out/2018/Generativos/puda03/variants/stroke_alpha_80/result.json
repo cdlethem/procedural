@@ -1,0 +1,84 @@
+{
+ "sketch": "2018/Generativos/puda03",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/puda03/variants/stroke_alpha_80",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "stroke(255, 20);",
+   "stroke(255, 80);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/puda03/variants/stroke_alpha_80/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1625,
+   "md5": "b17d0e3177bff0b4abc512a69edd1b77",
+   "bytes": 437884
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "puda03.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "stroke(255, 20);",
+   "new": "stroke(255, 80);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "blank"
+  ],
+  [
+   60,
+   "blank"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puda03/variants/stroke_alpha_80/frame_00001.png (snap) t=1625ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puda03/variants/stroke_alpha_80/frame_00010.png (snap) t=1833ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puda03/variants/stroke_alpha_80/frame_00060.png (snap) t=3090ms\n[harness] done frame=60 t=3066ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1625,
+ "diff_vs_baseline": {
+  "mean": 0.1148,
+  "changed_fraction": 0.475,
+  "label": "moderate"
+ }
+}

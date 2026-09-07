@@ -1,0 +1,67 @@
+{
+ "sketch": "2013/Sistema de particulas/version1",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/Sistema de particulas/version1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/Sistema de particulas/version1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 247,
+   "md5": "b19eaea85a468987f87b778ae3417a8e",
+   "bytes": 22532
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/Sistema de particulas/version1/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 417,
+   "md5": "d067219cd2c34028a02b4533527adf42",
+   "bytes": 20241
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/Sistema de particulas/version1/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1257,
+   "md5": "7c41744fbfd90221069c5e7421c77add",
+   "bytes": 21986
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720",
+ "imports": [
+  "java.util.Calendar"
+ ],
+ "tabs": [
+  "Gui.pde",
+  "version1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "version1.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2013/Sistema de particulas/version1/baseline/frame_00001.png (snap) t=247ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/Sistema de particulas/version1/baseline/frame_00010.png (snap) t=417ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/Sistema de particulas/version1/baseline/frame_00060.png (snap) t=1257ms\n[harness] done frame=60 t=1236ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 247,
+ "deterministic": true,
+ "rerun_frames": 3
+}

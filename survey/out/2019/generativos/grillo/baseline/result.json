@@ -1,0 +1,64 @@
+{
+ "sketch": "2019/generativos/grillo",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/grillo/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/grillo/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1482,
+   "md5": "3a1e8f8dd0e1570f09510837d2f0b775",
+   "bytes": 89694
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "grillo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/grillo/baseline/frame_00001.png (snap) t=1482ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/grillo/baseline/frame_00010.png (snap) t=1694ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/grillo/baseline/frame_00060.png (snap) t=2954ms\n[harness] done frame=60 t=2930ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1482,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

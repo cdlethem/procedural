@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/quadiiies",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/quadiiies/variants/subb_15",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int subb = int(random(3, 10));",
+   "int subb = 15;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/quadiiies/variants/subb_15/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 760,
+   "md5": "bc029d6e4df3ea4b7a6b47e7bb80a67e",
+   "bytes": 2604386
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "quadiiies.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int subb = int(random(3, 10));",
+   "new": "int subb = 15;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/quadiiies/variants/subb_15/frame_00001.png (snap) t=760ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/quadiiies/variants/subb_15/frame_00010.png (snap) t=964ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/quadiiies/variants/subb_15/frame_00060.png (snap) t=1859ms\n[harness] done frame=60 t=1781ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 760,
+ "diff_vs_baseline": {
+  "mean": 0.1763,
+  "changed_fraction": 0.79,
+  "label": "large"
+ }
+}

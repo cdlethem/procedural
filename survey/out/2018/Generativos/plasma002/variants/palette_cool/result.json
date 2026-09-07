@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/plasma002",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma002/variants/palette_cool",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#FF3D20, #FC9D43, #3998C2, #3E56A8, #090D0E};",
+   "int colors[] = {#687FA1, #AFE0CD, #FDECB4, #F63A49, #FE8141};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma002/variants/palette_cool/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1754,
+   "md5": "2faa99b4acd66bdeebf43dceb00cd0fd",
+   "bytes": 1441173
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma002/variants/palette_cool/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1972,
+   "md5": "1d539465385989425c182bf814a79149",
+   "bytes": 202303
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma002/variants/palette_cool/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3224,
+   "md5": "1d539465385989425c182bf814a79149",
+   "bytes": 202303
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "plasma002.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#FF3D20, #FC9D43, #3998C2, #3E56A8, #090D0E};",
+   "new": "int colors[] = {#687FA1, #AFE0CD, #FDECB4, #F63A49, #FE8141};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma002/variants/palette_cool/frame_00001.png (snap) t=1754ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma002/variants/palette_cool/frame_00010.png (snap) t=1972ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma002/variants/palette_cool/frame_00060.png (snap) t=3224ms\n[harness] done frame=60 t=3195ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1754,
+ "diff_vs_baseline": {
+  "mean": 0.036,
+  "changed_fraction": 0.079,
+  "label": "subtle"
+ }
+}

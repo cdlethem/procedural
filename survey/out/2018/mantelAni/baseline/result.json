@@ -1,0 +1,57 @@
+{
+ "sketch": "2018/mantelAni",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/mantelAni/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/mantelAni/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1707,
+   "md5": "a4f45719dc00c132602eaea1d29e9e51",
+   "bytes": 683554
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P2D",
+ "imports": [],
+ "tabs": [
+  "mantelAni.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 7.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\nEND BACK\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/mantelAni/baseline/frame_00001.png (snap) t=1707ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/mantelAni/baseline/frame_00010.png (snap) t=3866ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/mantelAni/baseline/frame_00060.png (snap) t=6257ms\n[harness] done frame=60 t=6231ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1707,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

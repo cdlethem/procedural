@@ -1,0 +1,55 @@
+{
+ "sketch": "2015/ColorHuntAPI",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/ColorHuntAPI/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/ColorHuntAPI/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1327,
+   "md5": "26ff57788d227787e1fc7d9e9f204f51",
+   "bytes": 435257
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [],
+ "tabs": [
+  "ColorHuntAPI.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "ion.push(code); \t\t$('.item[data-code=' + code +'] .like').attr('status','on'); \t\t$.post(\"/php/like.php\",  { code: code }, function(data){  }); \t\tcurlikes = $('.item[data-code=' + code + ']:last').find('.like span').text().replace(',',''); \t\tcurlikes++; \t\tcurlikes = formatThousands(curlikes); \t\t$('.item[data-code=' + code + ']').find('.like span').text(curlikes); \t\tplaceItem('likesList', code); \t\t$('.right .likes').show(); \t\tif ( $('#like_tip').length > 0 ) { \t\t\t$('#like_tip').remove(); \t\t} \t\t$('.likes').append(\"<div class='tip saved'>Saved!</div>\"); \t\t$('.tongue').addClass('animate'); \t\tsetTimeout(function() { $('.tongue').removeClass('animate'); }, 800) \t} else { \t\tmyCollection.splice(myCollection.indexOf(code), 1); \t\t$('.item[data-code=' + code +'] .like').attr('status','off'); \t\t$('.likes .palette[data-code=' + code +']').remove(); \t\tvar curlikes = $('.item[data-code=' + code + ']:last').find('.like span').text().replace(',',''); \t\tcurlikes--; \t\tcurlikes = formatThousands(curlikes); \t\t$('.item[data-code=' + code + ']').find('.like span').text(curlikes); \t} \tlocalStorage.setItem('myCollection',myCollection); } </script> <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a3506447ad074de7',t:'MTc4ODM5Mjc2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body></html>\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/ColorHuntAPI/baseline/frame_00001.png (snap) t=1327ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/ColorHuntAPI/baseline/frame_00010.png (snap) t=1499ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/ColorHuntAPI/baseline/frame_00060.png (snap) t=2343ms\n[harness] done frame=60 t=2317ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1327,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/tutela",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/cc_4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  int cc = int(random(4, 10));",
+   "  int cc = 4;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/cc_4/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1456,
+   "md5": "b79fb92ad4118ae0a5eab577e1fc99bb",
+   "bytes": 56151
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/cc_4/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1664,
+   "md5": "403375997cefbc9c1520a4f22a52d4af",
+   "bytes": 56776
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/cc_4/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2920,
+   "md5": "faa497df77335c4f2c8a44b2a92b88c9",
+   "bytes": 56718
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "tutela.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int cc = int(random(4, 10));",
+   "new": "  int cc = 4;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/cc_4/frame_00001.png (snap) t=1456ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/cc_4/frame_00010.png (snap) t=1664ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/cc_4/frame_00060.png (snap) t=2920ms\n[harness] done frame=60 t=2898ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1456,
+ "diff_vs_baseline": {
+  "mean": 0.2814,
+  "changed_fraction": 0.796,
+  "label": "large"
+ }
+}

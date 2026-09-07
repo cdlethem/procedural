@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/radigrafff",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/radigrafff/variants/bg_slate",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  background(#efcebf);",
+   "  background(#d8e3dc);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/radigrafff/variants/bg_slate/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 644,
+   "md5": "51f876d47253ee8862179ad6088e40e5",
+   "bytes": 614918
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "radigrafff.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  background(#efcebf);",
+   "new": "  background(#d8e3dc);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/radigrafff/variants/bg_slate/frame_00001.png (snap) t=644ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/radigrafff/variants/bg_slate/frame_00010.png (snap) t=811ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/radigrafff/variants/bg_slate/frame_00060.png (snap) t=1660ms\n[harness] done frame=60 t=1628ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 644,
+ "diff_vs_baseline": {
+  "mean": 0.0869,
+  "changed_fraction": 0.0,
+  "label": "moderate"
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2014/Generativos/mensajeAutopistas",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/mensajeAutopistas/variants/diag_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "        int cant = int(random(50, 100));",
+   "        int cant = int(random(10, 30));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/mensajeAutopistas/variants/diag_20/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 394,
+   "md5": "89374af9915defd4e3ae36e3078299e6",
+   "bytes": 395637
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "mensajeAutopistas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "        int cant = int(random(50, 100));",
+   "new": "        int cant = int(random(10, 30));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "mensajeAutopistas.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mensajeAutopistas/variants/diag_20/frame_00001.png (snap) t=394ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mensajeAutopistas/variants/diag_20/frame_00010.png (snap) t=550ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mensajeAutopistas/variants/diag_20/frame_00060.png (snap) t=1391ms\n[harness] done frame=60 t=1367ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 394,
+ "diff_vs_baseline": {
+  "mean": 0.2996,
+  "changed_fraction": 0.803,
+  "label": "large"
+ }
+}

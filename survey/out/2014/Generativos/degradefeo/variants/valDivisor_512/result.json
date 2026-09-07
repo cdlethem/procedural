@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/degradefeo",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/valDivisor_512",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    fill(lerpColor(col1, col2, val/256));",
+   "    fill(lerpColor(col1, col2, val/512));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/valDivisor_512/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 142,
+   "md5": "dfc6675189a24489bbb1d59b9993fd0d",
+   "bytes": 3905
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/valDivisor_512/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 287,
+   "md5": "825c280b1245db255633f3493d2a6688",
+   "bytes": 17538
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/valDivisor_512/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1118,
+   "md5": "c3ce10910e2f021f04a0e3bd2cd8928b",
+   "bytes": 84985
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  400
+ ],
+ "size_args": "600, 400",
+ "imports": [],
+ "tabs": [
+  "degradefeo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    fill(lerpColor(col1, col2, val/256));",
+   "new": "    fill(lerpColor(col1, col2, val/512));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/valDivisor_512/frame_00001.png (snap) t=142ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/valDivisor_512/frame_00010.png (snap) t=287ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/valDivisor_512/frame_00060.png (snap) t=1118ms\n[harness] done frame=60 t=1110ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 142,
+ "diff_vs_baseline": {
+  "mean": 0.0009,
+  "changed_fraction": 0.004,
+  "label": "none"
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "sketch": "2018/Generativos/azulejos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/azulejos/variants/stipple_200",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "fill(rcol(), 30);=>fill(rcol(), 200);"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/azulejos/variants/stipple_200/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 3850,
+   "md5": "e5a41672ffb9b949f6507c969adf040f",
+   "bytes": 2819019
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/azulejos/variants/stipple_200/self_20260902-235612.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3324,
+   "md5": "e5a41672ffb9b949f6507c969adf040f",
+   "bytes": 2819019
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  6500,
+  6500
+ ],
+ "size_args": "6500, 6500, P2D",
+ "imports": [],
+ "tabs": [
+  "azulejos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "fill(rcol(), 30);",
+   "new": "fill(rcol(), 200);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/azulejos/variants/stipple_200/frame_00001.png (dispose) t=3850ms\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 3850,
+ "diff_vs_baseline": {
+  "mean": 0.0003,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

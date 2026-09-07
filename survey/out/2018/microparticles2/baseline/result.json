@@ -1,0 +1,29 @@
+{
+ "sketch": "2018/microparticles2",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/microparticles2/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "geomerative.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P3D",
+ "imports": [
+  "geomerative.*",
+  "themidibus.*"
+ ],
+ "tabs": [
+  "Particle.pde",
+  "microparticles2.pde",
+  "water.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/gaming",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/aro_spawn",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "stroke(0, 20);",
+   "aros.add(new Aro(xx, yy));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/aro_spawn/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1454,
+   "md5": "7b743247b65baa35fe012fa499257586",
+   "bytes": 7052
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/aro_spawn/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1670,
+   "md5": "6de38689214b30dfbed9b462659cc559",
+   "bytes": 15171
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/aro_spawn/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2945,
+   "md5": "d6e865acb2fa652f0497e43a12f9afe3",
+   "bytes": 78969
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "gaming.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "stroke(0, 20);",
+   "new": "aros.add(new Aro(xx, yy));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/aro_spawn/frame_00001.png (snap) t=1454ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/aro_spawn/frame_00010.png (snap) t=1670ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/aro_spawn/frame_00060.png (snap) t=2945ms\n[harness] done frame=60 t=2921ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1454,
+ "diff_vs_baseline": {
+  "mean": 0.0008,
+  "changed_fraction": 0.002,
+  "label": "none"
+ }
+}

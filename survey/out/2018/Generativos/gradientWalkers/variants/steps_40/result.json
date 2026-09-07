@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/gradientWalkers",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gradientWalkers/variants/steps_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int j = 0; j < 200; j++) {",
+   "for (int j = 0; j < 40; j++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gradientWalkers/variants/steps_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1459,
+   "md5": "c4567c3007826b0caedd9045b28cdf85",
+   "bytes": 217930
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "gradientWalkers.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int j = 0; j < 200; j++) {",
+   "new": "for (int j = 0; j < 40; j++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gradientWalkers/variants/steps_40/frame_00001.png (snap) t=1459ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gradientWalkers/variants/steps_40/frame_00010.png (snap) t=1675ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gradientWalkers/variants/steps_40/frame_00060.png (snap) t=2934ms\n[harness] done frame=60 t=2902ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1459,
+ "diff_vs_baseline": {
+  "mean": 0.2508,
+  "changed_fraction": 0.615,
+  "label": "large"
+ }
+}

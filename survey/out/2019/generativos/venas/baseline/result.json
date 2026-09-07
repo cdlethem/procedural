@@ -1,0 +1,64 @@
+{
+ "sketch": "2019/generativos/venas",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/venas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/venas/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2685,
+   "md5": "0da1b9fc51031f3fcf659ceaee3cded5",
+   "bytes": 2345522
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "venas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/venas/baseline/frame_00001.png (snap) t=2685ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/venas/baseline/frame_00010.png (snap) t=2950ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/venas/baseline/frame_00060.png (snap) t=4250ms\n[harness] done frame=60 t=4181ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2685,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

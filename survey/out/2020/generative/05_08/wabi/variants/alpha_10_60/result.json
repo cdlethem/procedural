@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/05_08/wabi",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/wabi/variants/alpha_10_60",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "stroke(getColor(y*detCol*5+noise(x*des, y*des)*6), random(40, 170));",
+   "stroke(getColor(y*detCol*5+noise(x*des, y*des)*6), random(10, 60));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/wabi/variants/alpha_10_60/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3626,
+   "md5": "ea8dcad481acb4a9f238765f8cd0408c",
+   "bytes": 1601157
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "wabi.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "stroke(getColor(y*detCol*5+noise(x*des, y*des)*6), random(40, 170));",
+   "new": "stroke(getColor(y*detCol*5+noise(x*des, y*des)*6), random(10, 60));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   28,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 32.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/wabi/variants/alpha_10_60/frame_00001.png (snap) t=3626ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/wabi/variants/alpha_10_60/frame_00010.png (snap) t=12695ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/wabi/variants/alpha_10_60/frame_00028.png (budget) t=30661ms\n[harness] done frame=28 t=30598ms\n[harness] dispose frame=29 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3626,
+ "diff_vs_baseline": {
+  "mean": 0.0541,
+  "changed_fraction": 0.215,
+  "label": "moderate"
+ }
+}

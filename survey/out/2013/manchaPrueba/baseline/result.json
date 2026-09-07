@@ -1,0 +1,61 @@
+{
+ "sketch": "2013/manchaPrueba",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/manchaPrueba/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/manchaPrueba/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 203,
+   "md5": "185e5be96168fa982adf5576d9f06be2",
+   "bytes": 3102
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/manchaPrueba/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 346,
+   "md5": "cc197774c8e24a6b4b4ff36c334a2a84",
+   "bytes": 11145
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/manchaPrueba/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1179,
+   "md5": "a95758455ab5fcd760cb550b65d9f38c",
+   "bytes": 14141
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640, 480",
+ "imports": [],
+ "tabs": [
+  "manchaPrueba.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "92 45\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/manchaPrueba/baseline/frame_00001.png (snap) t=203ms\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/manchaPrueba/baseline/frame_00010.png (snap) t=346ms\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n92 45\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/manchaPrueba/baseline/frame_00060.png (snap) t=1179ms\n[harness] done frame=60 t=1172ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 203,
+ "deterministic": true,
+ "rerun_frames": 3
+}

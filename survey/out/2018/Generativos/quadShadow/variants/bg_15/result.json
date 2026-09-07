@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/quadShadow",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadShadow/variants/bg_15",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "background(240);",
+   "background(15);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadShadow/variants/bg_15/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1484,
+   "md5": "391d11e7bc20d2ca8bc5c8bc8b01b1cb",
+   "bytes": 1324460
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "quadShadow.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "background(240);",
+   "new": "background(15);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/quadShadow/variants/bg_15/frame_00001.png (snap) t=1484ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/quadShadow/variants/bg_15/frame_00010.png (snap) t=1721ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/quadShadow/variants/bg_15/frame_00060.png (snap) t=2984ms\n[harness] done frame=60 t=2934ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1484,
+ "diff_vs_baseline": {
+  "mean": 0.5252,
+  "changed_fraction": 0.852,
+  "label": "large"
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "sketch": "2012 y otros/practicas/6/prac2",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/6/prac2/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/6/prac2/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "static",
+   "ms": 138,
+   "md5": "ab7d77c0602adf91597b04febc5d5c05",
+   "bytes": 2048
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400,400",
+ "imports": [],
+ "tabs": [
+  "prac2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": true,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 1.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/6/prac2/baseline/frame_00001.png (static) t=138ms\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 138,
+ "deterministic": true,
+ "rerun_frames": 1
+}

@@ -1,0 +1,24 @@
+{
+ "sketch": "2013/Pd/primer_intento",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/Pd/primer_intento/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "oscP5.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "displayWidth, displayHeight, P3D",
+ "imports": [
+  "oscP5.*",
+  "processing.video.*"
+ ],
+ "tabs": [
+  "primer_intento.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

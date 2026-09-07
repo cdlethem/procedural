@@ -1,0 +1,61 @@
+{
+ "sketch": "2016/Cubes/cubes_00",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Cubes/cubes_00/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Cubes/cubes_00/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1503,
+   "md5": "da637723d8e28a1adc2baae5700bd13d",
+   "bytes": 341242
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Cubes/cubes_00/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1715,
+   "md5": "6bdfac6095cdb85fce9f1ab6213c6569",
+   "bytes": 345218
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Cubes/cubes_00/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2975,
+   "md5": "fc45919754eaf0a19722a2401a983b9f",
+   "bytes": 351926
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "cubes_00.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Cubes/cubes_00/baseline/frame_00001.png (snap) t=1503ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Cubes/cubes_00/baseline/frame_00010.png (snap) t=1715ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Cubes/cubes_00/baseline/frame_00060.png (snap) t=2975ms\n[harness] done frame=60 t=2949ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1503,
+ "deterministic": false,
+ "rerun_frames": 3
+}

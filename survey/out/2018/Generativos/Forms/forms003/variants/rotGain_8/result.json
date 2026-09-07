@@ -1,0 +1,69 @@
+{
+ "sketch": "2018/Generativos/Forms/forms003",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms003/variants/rotGain_8",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "    rotate(noise(des+x*det, des+y*det)*TAU*2);=>    rotate(noise(des+x*det, des+y*det)*TAU*8);"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms003/variants/rotGain_8/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 4136,
+   "md5": "3ee954f11fdfc7956b01f014092ac022",
+   "bytes": 2149895
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "forms003.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    rotate(noise(des+x*det, des+y*det)*TAU*2);",
+   "new": "    rotate(noise(des+x*det, des+y*det)*TAU*8);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 7.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms003/variants/rotGain_8/frame_00001.png (snap) t=4136ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms003/variants/rotGain_8/frame_00010.png (snap) t=4390ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms003/variants/rotGain_8/frame_00060.png (snap) t=5692ms\n[harness] done frame=60 t=5611ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 4136,
+ "diff_vs_baseline": {
+  "mean": 0.1062,
+  "changed_fraction": 0.438,
+  "label": "moderate"
+ },
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

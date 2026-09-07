@@ -1,0 +1,64 @@
+{
+ "sketch": "2015/synth",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/synth/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/synth/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 302,
+   "md5": "107d85b2db53b1ae24b1eaa63e8597c6",
+   "bytes": 275003
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/synth/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 573,
+   "md5": "df19bc9bf56f2d825672b65f36fb8b6c",
+   "bytes": 266857
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/synth/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1419,
+   "md5": "6e0529a03ece6c52f68f6b8f9b6095b4",
+   "bytes": 268642
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1000,
+  600
+ ],
+ "size_args": "1000, 600",
+ "imports": [],
+ "tabs": [
+  "synth.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "synth.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/synth/baseline/frame_00001.png (snap) t=302ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/synth/baseline/frame_00010.png (snap) t=573ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/synth/baseline/frame_00060.png (snap) t=1419ms\n[harness] done frame=60 t=1397ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Neue Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 302,
+ "deterministic": true,
+ "rerun_frames": 3
+}

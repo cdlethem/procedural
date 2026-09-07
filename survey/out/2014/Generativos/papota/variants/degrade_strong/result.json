@@ -1,0 +1,70 @@
+{
+ "sketch": "2014/Generativos/papota",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/papota/variants/degrade_strong",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  degrade(c1, c2, random(0.1, 0.6));",
+   "  degrade(c1, c2, random(0.7, 1));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/papota/variants/degrade_strong/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 193,
+   "md5": "afabf8a5d2f90901fb9df7f4cf06764f",
+   "bytes": 159829
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  200
+ ],
+ "size_args": "800, 200",
+ "imports": [],
+ "tabs": [
+  "papota.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  degrade(c1, c2, random(0.1, 0.6));",
+   "new": "  degrade(c1, c2, random(0.7, 1));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/papota/variants/degrade_strong/frame_00001.png (snap) t=193ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/papota/variants/degrade_strong/frame_00010.png (snap) t=340ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/papota/variants/degrade_strong/frame_00060.png (snap) t=1173ms\n[harness] done frame=60 t=1161ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 193,
+ "diff_vs_baseline": {
+  "mean": 0.0179,
+  "changed_fraction": 0.0,
+  "label": "subtle"
+ }
+}

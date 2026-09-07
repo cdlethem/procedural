@@ -1,0 +1,80 @@
+{
+ "sketch": "2019/generativos/mosaic002",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/mosaic002/variants/vertexDotSize_12",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "ellipse(p.x, p.y, 3, 3);",
+   "ellipse(p.x, p.y, 12, 12);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/mosaic002/variants/vertexDotSize_12/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2238,
+   "md5": "35dc225cbb450bc1c78df16e7a23db74",
+   "bytes": 903758
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/mosaic002/variants/vertexDotSize_12/self_20260906-200037-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2809,
+   "md5": "35dc225cbb450bc1c78df16e7a23db74",
+   "bytes": 903758
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "mosaic002.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "ellipse(p.x, p.y, 3, 3);",
+   "new": "ellipse(p.x, p.y, 12, 12);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/mosaic002/variants/vertexDotSize_12/frame_00001.png (dispose) t=2238ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2238,
+ "diff_vs_baseline": {
+  "mean": 0.0089,
+  "changed_fraction": 0.03,
+  "label": "none"
+ }
+}

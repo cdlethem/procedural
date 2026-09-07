@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/pesis",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pesis/variants/palette_cool",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#F35A00, #FD9800, #00777F, #703F3B};",
+   "int colors[] = {#264653, #2A9D8F, #E9C46A, #936639};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pesis/variants/palette_cool/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1552,
+   "md5": "15117bb4489bf21af02e15a61c4c5ae4",
+   "bytes": 526635
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "pesis.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#F35A00, #FD9800, #00777F, #703F3B};",
+   "new": "int colors[] = {#264653, #2A9D8F, #E9C46A, #936639};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pesis/variants/palette_cool/frame_00001.png (snap) t=1552ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pesis/variants/palette_cool/frame_00010.png (snap) t=1771ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pesis/variants/palette_cool/frame_00060.png (snap) t=3032ms\n[harness] done frame=60 t=2994ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1552,
+ "diff_vs_baseline": {
+  "mean": 0.199,
+  "changed_fraction": 0.847,
+  "label": "large"
+ }
+}

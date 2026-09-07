@@ -1,0 +1,58 @@
+{
+ "sketch": "2019/generativos/plalla",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/plalla/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/plalla/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1577,
+   "md5": "ba7a23c8cf5793053019db0b2df066a9",
+   "bytes": 251323
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "plalla.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/plalla/baseline/frame_00001.png (snap) t=1577ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/plalla/baseline/frame_00010.png (snap) t=1807ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/plalla/baseline/frame_00060.png (snap) t=3056ms\n[harness] done frame=60 t=3032ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1577,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

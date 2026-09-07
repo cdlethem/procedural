@@ -1,0 +1,67 @@
+{
+ "sketch": "2015/Generativos/pelosss_rever",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/pelosss_rever/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/pelosss_rever/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 20794,
+   "md5": "bed33d22233b3f0b709f4026da74576e",
+   "bytes": 1352375
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/pelosss_rever/baseline/self_42.pdf",
+   "frame": -1,
+   "tag": "self",
+   "ms": 21777,
+   "md5": "f30ba975fb01922995e398bd4eb49341",
+   "bytes": 66671133
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "pelosss_rever.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 23.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/pelosss_rever/baseline/frame_00001.png (snap) t=20794ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/pelosss_rever/baseline/frame_00010.png (snap) t=20976ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/pelosss_rever/baseline/frame_00060.png (snap) t=21842ms\n[harness] done frame=60 t=21794ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 20794,
+ "deterministic": false,
+ "rerun_frames": 4,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

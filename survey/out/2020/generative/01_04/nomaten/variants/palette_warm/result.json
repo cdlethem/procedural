@@ -1,0 +1,88 @@
+{
+ "sketch": "2020/generative/01_04/nomaten",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/palette_warm",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#4E87C5, #BA8FE7, #F76A0B};",
+   "int colors[] = {#12315E, #F7AA06, #EA79B7, #FF0739};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/palette_warm/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1475,
+   "md5": "f8ef561fabf5d364f85779bce7fbd316",
+   "bytes": 1263879
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/palette_warm/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1686,
+   "md5": "297526cbe2b5618e4e89389956df2315",
+   "bytes": 66171
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/palette_warm/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2943,
+   "md5": "297526cbe2b5618e4e89389956df2315",
+   "bytes": 66171
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "nomaten.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#4E87C5, #BA8FE7, #F76A0B};",
+   "new": "int colors[] = {#12315E, #F7AA06, #EA79B7, #FF0739};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/palette_warm/frame_00001.png (snap) t=1475ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/palette_warm/frame_00010.png (snap) t=1686ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/palette_warm/frame_00060.png (snap) t=2943ms\n[harness] done frame=60 t=2916ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1475,
+ "diff_vs_baseline": {
+  "mean": 0.0637,
+  "changed_fraction": 0.332,
+  "label": "moderate"
+ }
+}

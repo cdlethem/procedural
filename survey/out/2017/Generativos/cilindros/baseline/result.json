@@ -1,0 +1,57 @@
+{
+ "sketch": "2017/Generativos/cilindros",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/cilindros/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/cilindros/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1748,
+   "md5": "021204e0b1d17122fbf167be5d08df84",
+   "bytes": 254415
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  920,
+  920
+ ],
+ "size_args": "920, 920, P3D",
+ "imports": [],
+ "tabs": [
+  "cilindros.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/cilindros/baseline/frame_00001.png (snap) t=1748ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/cilindros/baseline/frame_00010.png (snap) t=1950ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/cilindros/baseline/frame_00060.png (snap) t=3211ms\n[harness] done frame=60 t=3185ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1748,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

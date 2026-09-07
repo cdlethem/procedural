@@ -1,0 +1,55 @@
+{
+ "sketch": "2012 y otros/Dibujos/hoja_de_dibujo1",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/hoja_de_dibujo1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/hoja_de_dibujo1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 283,
+   "md5": "6ee716a52f3fdab40f8047e8fe392af0",
+   "bytes": 7596
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "GUI.pde",
+  "hoja_de_dibujo1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/hoja_de_dibujo1/baseline/frame_00001.png (snap) t=283ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/hoja_de_dibujo1/baseline/frame_00010.png (snap) t=435ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/hoja_de_dibujo1/baseline/frame_00060.png (snap) t=1266ms\n[harness] done frame=60 t=1253ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 283,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

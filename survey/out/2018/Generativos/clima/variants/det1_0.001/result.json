@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/clima",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/clima/variants/det1_0.001",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float det1 = random(0.01);",
+   "    float det1 = random(0.001);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/clima/variants/det1_0.001/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1656,
+   "md5": "63e7579d1b423d6eb645ef8d98e194fc",
+   "bytes": 1347550
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "clima.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float det1 = random(0.01);",
+   "new": "    float det1 = random(0.001);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/clima/variants/det1_0.001/frame_00001.png (snap) t=1656ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/clima/variants/det1_0.001/frame_00010.png (snap) t=1897ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/clima/variants/det1_0.001/frame_00060.png (snap) t=3165ms\n[harness] done frame=60 t=3111ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1656,
+ "diff_vs_baseline": {
+  "mean": 0.008,
+  "changed_fraction": 0.001,
+  "label": "none"
+ }
+}

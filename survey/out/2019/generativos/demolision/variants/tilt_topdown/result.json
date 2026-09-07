@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/demolision",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/demolision/variants/tilt_topdown",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  rotateX(HALF_PI*random(0.4, 0.9));",
+   "  rotateX(HALF_PI*0.2);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/demolision/variants/tilt_topdown/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1456,
+   "md5": "bcbed75bc73dac0c1eea3de9de48f03a",
+   "bytes": 69402
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/demolision/variants/tilt_topdown/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1669,
+   "md5": "4f5a2afdc61166f26d84fd8973b42411",
+   "bytes": 68348
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/demolision/variants/tilt_topdown/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2923,
+   "md5": "e3aad526f1900abb893157515f528bae",
+   "bytes": 69493
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "demolision.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  rotateX(HALF_PI*random(0.4, 0.9));",
+   "new": "  rotateX(HALF_PI*0.2);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/demolision/variants/tilt_topdown/frame_00001.png (snap) t=1456ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/demolision/variants/tilt_topdown/frame_00010.png (snap) t=1669ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/demolision/variants/tilt_topdown/frame_00060.png (snap) t=2923ms\n[harness] done frame=60 t=2898ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1456,
+ "diff_vs_baseline": {
+  "mean": 0.359,
+  "changed_fraction": 0.797,
+  "label": "large"
+ }
+}

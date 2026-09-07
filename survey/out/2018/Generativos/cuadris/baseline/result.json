@@ -1,0 +1,57 @@
+{
+ "sketch": "2018/Generativos/cuadris",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cuadris/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cuadris/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3077,
+   "md5": "00d14871d6bad131dcb19b94526d597b",
+   "bytes": 1280518
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "cuadris.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cuadris/baseline/frame_00001.png (snap) t=3077ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cuadris/baseline/frame_00010.png (snap) t=3334ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cuadris/baseline/frame_00060.png (snap) t=4605ms\n[harness] done frame=60 t=4556ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3077,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

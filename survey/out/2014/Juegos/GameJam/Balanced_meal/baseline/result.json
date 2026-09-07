@@ -1,0 +1,82 @@
+{
+ "sketch": "2014/Juegos/GameJam/Balanced_meal",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Juegos/GameJam/Balanced_meal/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/GameJam/Balanced_meal/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 818,
+   "md5": "a3f2c53c6869f3f27ac48a802762de56",
+   "bytes": 236659
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/GameJam/Balanced_meal/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 987,
+   "md5": "93f762c2630bc703117e00e3c2ece628",
+   "bytes": 236819
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/GameJam/Balanced_meal/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1838,
+   "md5": "3b4b820bf4e8029e71c0c056c30fb04b",
+   "bytes": 236573
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [
+  "ddf.minim.*"
+ ],
+ "tabs": [
+  "Balanced_meal.pde",
+  "Bicho.pde",
+  "Draco.pde",
+  "Generador.pde",
+  "Gui.pde",
+  "Input.pde",
+  "Jugador.pde",
+  "Particulas.pde",
+  "Score.pde",
+  "Sonido.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "minim.jar",
+  "jsminim.jar",
+  "jl1.0.1.jar",
+  "mp3spi1.9.5.jar",
+  "tritonus_aos.jar",
+  "tritonus_share.jar"
+ ],
+ "subs_applied": [],
+ "compat_shims": [
+  "Balanced_meal.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "==== JavaSound Minim Error ====\n==== Don't know the ID3 code PRIV\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/GameJam/Balanced_meal/baseline/frame_00001.png (snap) t=818ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/GameJam/Balanced_meal/baseline/frame_00010.png (snap) t=987ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/GameJam/Balanced_meal/baseline/frame_00060.png (snap) t=1838ms\n[harness] done frame=60 t=1810ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 818,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,57 @@
+{
+ "sketch": "2017/Generativos/gradients",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/gradients/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/gradients/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1474,
+   "md5": "b402558453b4bae77f5c79c0f01dec4d",
+   "bytes": 63126
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "gradients.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/gradients/baseline/frame_00001.png (snap) t=1474ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/gradients/baseline/frame_00010.png (snap) t=1713ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/gradients/baseline/frame_00060.png (snap) t=2959ms\n[harness] done frame=60 t=2936ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1474,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

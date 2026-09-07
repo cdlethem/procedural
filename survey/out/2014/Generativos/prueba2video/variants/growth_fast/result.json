@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/prueba2video",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/variants/growth_fast",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "aux.dim += random(0.01,0.05);",
+   "aux.dim += random(0.2,0.8);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/variants/growth_fast/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 147,
+   "md5": "12a30d38bfd7b324be29b24dd89b5ee1",
+   "bytes": 2961
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/variants/growth_fast/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 299,
+   "md5": "f00b6e9abe85f0c38f6b6adbcd0d05b3",
+   "bytes": 3026
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/variants/growth_fast/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1128,
+   "md5": "409e2f399a118d6eff427837e199f2cd",
+   "bytes": 9084
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "prueba2video.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "aux.dim += random(0.01,0.05);",
+   "new": "aux.dim += random(0.2,0.8);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/variants/growth_fast/frame_00001.png (snap) t=147ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/variants/growth_fast/frame_00010.png (snap) t=299ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/variants/growth_fast/frame_00060.png (snap) t=1128ms\n[harness] done frame=60 t=1117ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "49, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)\nCould not save ${GENART_SURVEY_ROOT}/.build/5264c6ea7d/prueba2video/00050, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)\nCould not save ${GENART_SURVEY_ROOT}/.build/5264c6ea7d/prueba2video/00051, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)\nCould not save ${GENART_SURVEY_ROOT}/.build/5264c6ea7d/prueba2video/00052, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)\nCould not save ${GENART_SURVEY_ROOT}/.build/5264c6ea7d/prueba2video/00053, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)\nCould not save ${GENART_SURVEY_ROOT}/.build/5264c6ea7d/prueba2video/00054, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)\nCould not save ${GENART_SURVEY_ROOT}/.build/5264c6ea7d/prueba2video/00055, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)\nCould not save ${GENART_SURVEY_ROOT}/.build/5264c6ea7d/prueba2video/00056, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)\nCould not save ${GENART_SURVEY_ROOT}/.build/5264c6ea7d/prueba2video/00057, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)\nCould not save ${GENART_SURVEY_ROOT}/.build/5264c6ea7d/prueba2video/00058, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)\nCould not save ${GENART_SURVEY_ROOT}/.build/5264c6ea7d/prueba2video/00059, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)\nCould not save ${GENART_SURVEY_ROOT}/.build/5264c6ea7d/prueba2video/00060, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)",
+ "ms_first_frame": 147,
+ "diff_vs_baseline": {
+  "mean": 0.0,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

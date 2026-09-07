@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/notdata",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/notdata/variants/sub_300",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int sub = int(random(100));",
+   "int sub = 300;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/notdata/variants/sub_300/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2646,
+   "md5": "287eb6386b57fdbfdf21d4ccc5d3420a",
+   "bytes": 69475
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/notdata/variants/sub_300/self_20260906-154354.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3482,
+   "md5": "287eb6386b57fdbfdf21d4ccc5d3420a",
+   "bytes": 69475
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "notdata.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int sub = int(random(100));",
+   "new": "int sub = 300;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/notdata/variants/sub_300/frame_00001.png (dispose) t=2646ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\nsmooth() can only be used before beginDraw()",
+ "ms_first_frame": 2646,
+ "diff_vs_baseline": {
+  "mean": 0.0376,
+  "changed_fraction": 0.139,
+  "label": "subtle"
+ }
+}

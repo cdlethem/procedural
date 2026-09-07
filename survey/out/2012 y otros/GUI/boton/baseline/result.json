@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/GUI/boton",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/GUI/boton/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/GUI/boton/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 203,
+   "md5": "df1e5fd242a6bc6c866a35e10248ca04",
+   "bytes": 3330
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/GUI/boton/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 350,
+   "md5": "9a621e2855a8518e2c49c702256c2284",
+   "bytes": 3010
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/GUI/boton/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1175,
+   "md5": "cb8f18a6ce219b5ffb446c655b620dfa",
+   "bytes": 2908
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "boton.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/GUI/boton/baseline/frame_00001.png (snap) t=203ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/GUI/boton/baseline/frame_00010.png (snap) t=350ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/GUI/boton/baseline/frame_00060.png (snap) t=1175ms\n[harness] done frame=60 t=1171ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 203,
+ "deterministic": true,
+ "rerun_frames": 3
+}

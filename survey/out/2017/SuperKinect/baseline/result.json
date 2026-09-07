@@ -1,0 +1,29 @@
+{
+ "sketch": "2017/SuperKinect",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/SuperKinect/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "SimpleOpenNI.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720, P3D",
+ "imports": [
+  "SimpleOpenNI.*",
+  "controlP5.*",
+  "peasy.*"
+ ],
+ "tabs": [
+  "SuperKinect.pde",
+  "Timeline.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

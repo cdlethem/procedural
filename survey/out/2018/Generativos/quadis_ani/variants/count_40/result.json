@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/quadis_ani",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/count_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int c = 0; c < 20; c++) {",
+   "for (int c = 0; c < 40; c++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/count_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1566,
+   "md5": "325ddafb040214205d036b52b7b4ca8b",
+   "bytes": 722222
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/count_40/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1913,
+   "md5": "069d50f640cdc455c8fcf0895eb1a7ac",
+   "bytes": 718629
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/count_40/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3180,
+   "md5": "3c770578a8984d68a364dc4a4f4c5d0a",
+   "bytes": 674500
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P2D",
+ "imports": [],
+ "tabs": [
+  "quadis_ani.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int c = 0; c < 20; c++) {",
+   "new": "for (int c = 0; c < 40; c++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/count_40/frame_00001.png (snap) t=1566ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/count_40/frame_00010.png (snap) t=1913ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/count_40/frame_00060.png (snap) t=3180ms\n[harness] done frame=60 t=3148ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1566,
+ "diff_vs_baseline": {
+  "mean": 0.11,
+  "changed_fraction": 0.283,
+  "label": "moderate"
+ }
+}

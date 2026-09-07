@@ -1,0 +1,66 @@
+{
+ "sketch": "2017/aros",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/aros/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/aros/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1670,
+   "md5": "747d5155ae3cfa8cde5837478666c0c8",
+   "bytes": 188553
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/aros/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1885,
+   "md5": "8b85c9d249b22ecaddec4c7a453527b4",
+   "bytes": 188890
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/aros/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6077,
+   "md5": "cd7f336e7e4e936cd5156539cab7528d",
+   "bytes": 206904
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P3D",
+ "imports": [
+  "peasy.*"
+ ],
+ "tabs": [
+  "aros.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 7.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/aros/baseline/frame_00001.png (snap) t=1670ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/aros/baseline/frame_00010.png (snap) t=1885ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/aros/baseline/frame_00060.png (snap) t=6077ms\n[harness] done frame=60 t=6051ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1670,
+ "deterministic": false,
+ "rerun_frames": 3
+}

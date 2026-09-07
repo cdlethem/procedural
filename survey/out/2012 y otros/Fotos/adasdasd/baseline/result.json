@@ -1,0 +1,35 @@
+{
+ "sketch": "2012 y otros/Fotos/adasdasd",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/adasdasd/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "compile_error",
+ "detail": "adasdasd.pde:3:0:3:0: The method loadImage(String) in the type PApplet is not applicable for the arguments ()",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  400
+ ],
+ "size_args": "600, 400",
+ "imports": [],
+ "tabs": [
+  "adasdasd.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "seed_fields": [],
+ "wall_s": 1.2,
+ "rc": 1,
+ "timed_out": false,
+ "stdout_tail": "",
+ "stderr_tail": "adasdasd.pde:3:0:3:0: The method loadImage(String) in the type PApplet is not applicable for the arguments ()",
+ "ms_first_frame": null
+}

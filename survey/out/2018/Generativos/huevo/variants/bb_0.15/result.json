@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/huevo",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/huevo/variants/bb_0.15",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float bb = floor(min(r.w/cw, r.h/ch)*random(0.02, 0.06));",
+   "float bb = floor(min(r.w/cw, r.h/ch)*random(0.1, 0.2));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/huevo/variants/bb_0.15/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1610,
+   "md5": "8a3d194bc80dbfb293f3f8e357380ac1",
+   "bytes": 564851
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "huevo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float bb = floor(min(r.w/cw, r.h/ch)*random(0.02, 0.06));",
+   "new": "float bb = floor(min(r.w/cw, r.h/ch)*random(0.1, 0.2));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/huevo/variants/bb_0.15/frame_00001.png (snap) t=1610ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/huevo/variants/bb_0.15/frame_00010.png (snap) t=1830ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/huevo/variants/bb_0.15/frame_00060.png (snap) t=3092ms\n[harness] done frame=60 t=3052ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1610,
+ "diff_vs_baseline": {
+  "mean": 0.0972,
+  "changed_fraction": 0.242,
+  "label": "moderate"
+ }
+}

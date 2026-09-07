@@ -1,0 +1,79 @@
+{
+ "sketch": "2017/Generativos/datatata_animation",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/variants/thick_8_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "      circle(rr, random(1, 4));",
+   "      circle(rr, random(8, 20));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/variants/thick_8_20/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1636,
+   "md5": "8398842533ffd4196fdf89e03e171987",
+   "bytes": 107089
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/variants/thick_8_20/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2393,
+   "md5": "83d25a45fc1a6c98461ecd2fc311468b",
+   "bytes": 126400
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/variants/thick_8_20/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6217,
+   "md5": "702880a023092a3f612911a4e69e8319",
+   "bytes": 89566
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P3D",
+ "imports": [],
+ "tabs": [
+  "datatata_animation.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "      circle(rr, random(1, 4));",
+   "new": "      circle(rr, random(8, 20));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 7.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/variants/thick_8_20/frame_00001.png (snap) t=1636ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/variants/thick_8_20/frame_00010.png (snap) t=2393ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/variants/thick_8_20/frame_00060.png (snap) t=6217ms\n[harness] done frame=60 t=6203ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1636,
+ "diff_vs_baseline": {
+  "mean": 0.5696,
+  "changed_fraction": 0.797,
+  "label": "large"
+ }
+}

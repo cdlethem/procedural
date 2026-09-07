@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/Generativos/griiiids",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2537,
+   "md5": "7961b7663e7cb12b86167e084065f4b1",
+   "bytes": 926443
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 4380,
+   "md5": "03e5b6dbc15e6907b47072c1d4226bc2",
+   "bytes": 972488
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5670,
+   "md5": "eac1287829274ea6147c604334d5b13d",
+   "bytes": 962450
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  520
+ ],
+ "size_args": "960, 520, P2D",
+ "imports": [],
+ "tabs": [
+  "griiiids.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 7.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/baseline/frame_00001.png (snap) t=2537ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/baseline/frame_00010.png (snap) t=4380ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/baseline/frame_00060.png (snap) t=5670ms\n[harness] done frame=60 t=5631ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2537,
+ "deterministic": false,
+ "rerun_frames": 3
+}

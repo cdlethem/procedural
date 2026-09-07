@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/pelos",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/pelos/variants/sub_9",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int sub = int(random(2, 5));",
+   "int sub = int(random(2, 9));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/pelos/variants/sub_9/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 822,
+   "md5": "2001b44cf7efb62a5879470c19a77088",
+   "bytes": 1324291
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "pelos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int sub = int(random(2, 5));",
+   "new": "int sub = int(random(2, 9));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/pelos/variants/sub_9/frame_00001.png (snap) t=822ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/pelos/variants/sub_9/frame_00010.png (snap) t=1007ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/pelos/variants/sub_9/frame_00060.png (snap) t=1874ms\n[harness] done frame=60 t=1825ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 822,
+ "diff_vs_baseline": {
+  "mean": 0.1848,
+  "changed_fraction": 0.605,
+  "label": "large"
+ }
+}

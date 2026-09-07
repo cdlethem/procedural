@@ -1,0 +1,93 @@
+{
+ "sketch": "2020/generative/01_04/bluurrr",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/cc_250",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "for (int i = 0; i < 8; i++) {=>for (int i = 0; i < 0; i++) {",
+  "int cc = 100;=>int cc = 250;",
+  "float nwidth =  960;=>float nwidth =  480;",
+  "float swidth = 960;=>float swidth = 480;"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/cc_250/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1656,
+   "md5": "000ea9310f42b9a1b37eb69cc2b2b517",
+   "bytes": 35583
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/cc_250/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1805,
+   "md5": "ac365d79031ceaaa4b5923928d096038",
+   "bytes": 78401
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/cc_250/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2605,
+   "md5": "ac365d79031ceaaa4b5923928d096038",
+   "bytes": 78401
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "bluurrr.pde"
+ ],
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i < 8; i++) {",
+   "new": "for (int i = 0; i < 0; i++) {",
+   "count": 1
+  },
+  {
+   "old": "int cc = 100;",
+   "new": "int cc = 250;",
+   "count": 1
+  },
+  {
+   "old": "float nwidth =  960;",
+   "new": "float nwidth =  480;",
+   "count": 1
+  },
+  {
+   "old": "float swidth = 960;",
+   "new": "float swidth = 480;",
+   "count": 1
+  }
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/cc_250/frame_00001.png (snap) t=1656ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/cc_250/frame_00010.png (snap) t=1805ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/cc_250/frame_00060.png (snap) t=2605ms\n[harness] done frame=60 t=2592ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1656
+}

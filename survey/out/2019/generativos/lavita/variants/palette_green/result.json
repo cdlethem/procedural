@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/lavita",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/lavita/variants/palette_green",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int aux[] = {#F23602, #300F96, #C9FFF6, #F72C81, #09EFA6, #fac62a};",
+   "int aux[] = {#E1E8E0, #F5CE4B, #FC5801, #025DC4, #02201A, #489B4D};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lavita/variants/palette_green/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3312,
+   "md5": "25ee5ee2bf0a69c7efbcd670ada82129",
+   "bytes": 2356135
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lavita/variants/palette_green/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3523,
+   "md5": "0b460c5789bf80deb7074e98185c068c",
+   "bytes": 9132
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lavita/variants/palette_green/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 4772,
+   "md5": "0b460c5789bf80deb7074e98185c068c",
+   "bytes": 9132
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "lavita.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int aux[] = {#F23602, #300F96, #C9FFF6, #F72C81, #09EFA6, #fac62a};",
+   "new": "int aux[] = {#E1E8E0, #F5CE4B, #FC5801, #025DC4, #02201A, #489B4D};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lavita/variants/palette_green/frame_00001.png (snap) t=3312ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lavita/variants/palette_green/frame_00010.png (snap) t=3523ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lavita/variants/palette_green/frame_00060.png (snap) t=4772ms\n[harness] done frame=60 t=4754ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3312,
+ "diff_vs_baseline": {
+  "mean": 0.3437,
+  "changed_fraction": 0.888,
+  "label": "large"
+ }
+}

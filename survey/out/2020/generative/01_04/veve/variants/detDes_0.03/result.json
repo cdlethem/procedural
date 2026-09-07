@@ -1,0 +1,88 @@
+{
+ "sketch": "2020/generative/01_04/veve",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/detDes_0.03",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "detDes = random(0.01);",
+   "detDes = random(0.03);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/detDes_0.03/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2391,
+   "md5": "d2a97e088ca9260a317345fa766ac8ab",
+   "bytes": 726028
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/detDes_0.03/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2611,
+   "md5": "6b5523f566a2d775071e319e96ba6c2a",
+   "bytes": 75902
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/detDes_0.03/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3860,
+   "md5": "6b5523f566a2d775071e319e96ba6c2a",
+   "bytes": 75902
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "veve.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "detDes = random(0.01);",
+   "new": "detDes = random(0.03);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/detDes_0.03/frame_00001.png (snap) t=2391ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/detDes_0.03/frame_00010.png (snap) t=2611ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/detDes_0.03/frame_00060.png (snap) t=3860ms\n[harness] done frame=60 t=3840ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2391,
+ "diff_vs_baseline": {
+  "mean": 0.0823,
+  "changed_fraction": 0.21,
+  "label": "moderate"
+ }
+}

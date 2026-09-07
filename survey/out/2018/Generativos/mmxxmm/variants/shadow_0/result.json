@@ -1,0 +1,121 @@
+{
+ "sketch": "2018/Generativos/mmxxmm",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/shadow_0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "rectShadow(ss*1.25, 140, 0);",
+   "rectShadow(ss*1.25, 0, 0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/shadow_0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 14850,
+   "md5": "a745b0768bfd79d2ab3709473bdd6155",
+   "bytes": 6451696,
+   "captured_frame": 10
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/shadow_0/self_20260905-095503.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6417,
+   "md5": "260fe3413b2b2f548371640205cdd9e7",
+   "bytes": 2765131
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/shadow_0/self_20260905-095501.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 4490,
+   "md5": "31a58b4d613cb5c618dd320a52921313",
+   "bytes": 3387158
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/shadow_0/self_20260905-095504.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 7534,
+   "md5": "e4756cdb1d218c8a2129a57b52bd1d3c",
+   "bytes": 4640108
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/shadow_0/self_20260905-095506.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 9194,
+   "md5": "a745b0768bfd79d2ab3709473bdd6155",
+   "bytes": 6451696
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/shadow_0/self_20260905-095502.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 5704,
+   "md5": "993dda4f421c8bb8bfe17de27942dca6",
+   "bytes": 8242416
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/shadow_0/self_20260905-095505.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 8517,
+   "md5": "69d0a159edfea2f7a2f8561a7194f5ea",
+   "bytes": 4242510
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "mmxxmm.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "rectShadow(ss*1.25, 140, 0);",
+   "new": "rectShadow(ss*1.25, 0, 0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 10 promoted to frame_00001.png"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 18.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/shadow_0/frame_00001.png (snap) t=7996ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/shadow_0/frame_00010.png (snap) t=14850ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/shadow_0/frame_00060.png (snap) t=16437ms\n[harness] done frame=60 t=16058ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 14850,
+ "diff_vs_baseline": {
+  "mean": 0.0046,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

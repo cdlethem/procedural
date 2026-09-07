@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/Juegos/propotipoletas",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Juegos/propotipoletas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/propotipoletas/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 172,
+   "md5": "c5c8d84a1d81dc73edb8a24c733aac3f",
+   "bytes": 52096
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/propotipoletas/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 316,
+   "md5": "0414a722dbb7411d50863e7a89c47e0a",
+   "bytes": 51166
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/propotipoletas/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1148,
+   "md5": "70ccae1cda0ae3fdbbc44be7c6d25ae4",
+   "bytes": 49935
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "propotipoletas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/propotipoletas/baseline/frame_00001.png (snap) t=172ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/propotipoletas/baseline/frame_00010.png (snap) t=316ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/propotipoletas/baseline/frame_00060.png (snap) t=1148ms\n[harness] done frame=60 t=1139ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 172,
+ "deterministic": true,
+ "rerun_frames": 3
+}

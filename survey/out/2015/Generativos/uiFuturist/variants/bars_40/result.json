@@ -1,0 +1,81 @@
+{
+ "sketch": "2015/Generativos/uiFuturist",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/bars_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  for (int i = 0; i < 20; i++) {",
+   "  for (int i = 0; i < 40; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/bars_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1486,
+   "md5": "c816858f9daa21b0f256bba7ba996ff0",
+   "bytes": 244660
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/bars_40/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1695,
+   "md5": "aff2fa816d3e02dc4389c605721a64c1",
+   "bytes": 252398
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/bars_40/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2946,
+   "md5": "3fe185bec08bed0e543d68cd593b6271",
+   "bytes": 249992
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600, P2D",
+ "imports": [],
+ "tabs": [
+  "uiFuturist.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  for (int i = 0; i < 20; i++) {",
+   "new": "  for (int i = 0; i < 40; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "uiFuturist.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/bars_40/frame_00001.png (snap) t=1486ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/bars_40/frame_00010.png (snap) t=1695ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/bars_40/frame_00060.png (snap) t=2946ms\n[harness] done frame=60 t=2933ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1486,
+ "diff_vs_baseline": {
+  "mean": 0.0072,
+  "changed_fraction": 0.012,
+  "label": "none"
+ }
+}

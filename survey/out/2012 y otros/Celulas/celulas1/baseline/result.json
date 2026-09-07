@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/Celulas/celulas1",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Celulas/celulas1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Celulas/celulas1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 206,
+   "md5": "e46e33bcdda7c80e926c3cb8ede71cce",
+   "bytes": 2738
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Celulas/celulas1/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 359,
+   "md5": "917c2d1544089f170cf31e231ebf682b",
+   "bytes": 2682
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Celulas/celulas1/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1183,
+   "md5": "2e37c3cdcdfbf1fdc9cb2bc9d443f116",
+   "bytes": 2941
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  400
+ ],
+ "size_args": "600, 400",
+ "imports": [],
+ "tabs": [
+  "celulas1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "60.061592 0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Celulas/celulas1/baseline/frame_00001.png (snap) t=206ms\n114.8499 0\n169.79758 0\n224.9043 0\n280.2409 0\n335.5544 0\n391.4017 0\n447.35837 0\n503.5444 0\n559.9967 0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Celulas/celulas1/baseline/frame_00010.png (snap) t=359ms\n616.1208 0\n672.331 0\n728.79315 0\n785.2549 0\n841.87573 0\n898.77106 0\n955.83014 0\n1013.0665 0\n57.29334 1\n114.66917 1\n172.25948 1\n229.8868 1\n287.72278 1\n345.63745 1\n403.65536 1\n461.7 1\n519.89294 1\n578.1478 1\n636.4623 1\n694.96924 1\n753.4643 1\n812.1154 1\n870.78876 1\n929.48956 1\n988.2773 1\n1047.1971 1\n58.893154 2\n117.79746 2\n176.75801 2\n235.75148 2\n294.7861 2\n353.88937 2\n413.10196 2\n472.38843 2\n531.5846 2\n590.873 2\n650.2163 2\n709.6215 2\n769.07245 2\n828.5829 2\n887.96906 2\n947.403 2\n1006.8692 2\n59.452766 3\n118.97107 3\n178.57343 3\n238.20364 3\n297.86792 3\n357.58826 3\n417.20905 3\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Celulas/celulas1/baseline/frame_00060.png (snap) t=1183ms\n[harness] done frame=60 t=1177ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 206,
+ "deterministic": true,
+ "rerun_frames": 3
+}

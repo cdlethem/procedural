@@ -1,0 +1,69 @@
+{
+ "sketch": "2020/campos",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/campos/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/campos/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1463,
+   "md5": "9a94a4275c2f44203b272a8d85cb73e7",
+   "bytes": 112838
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/campos/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 5577,
+   "md5": "f505e97d110fc0577e71b812b07ecad3",
+   "bytes": 108576
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/campos/baseline/frame_00035.png",
+   "frame": 35,
+   "tag": "budget",
+   "ms": 30575,
+   "md5": "3426c6f73049756eb55bda962b49eebe",
+   "bytes": 107914
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "camera.pde",
+  "campos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 32.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/campos/baseline/frame_00001.png (snap) t=1463ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/campos/baseline/frame_00010.png (snap) t=5577ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/campos/baseline/frame_00035.png (budget) t=30575ms\n[harness] done frame=35 t=30557ms\n[harness] dispose frame=36 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1463,
+ "deterministic": false,
+ "rerun_frames": 3
+}

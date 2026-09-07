@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/formsbirds",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/formsbirds/variants/dd_2.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float dd = 1.2;",
+   "    float dd = 2.5;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/formsbirds/variants/dd_2.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1955,
+   "md5": "a0f4367159751cf5d9d564f7da6777ae",
+   "bytes": 549483
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "formsbirds.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float dd = 1.2;",
+   "new": "    float dd = 2.5;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/formsbirds/variants/dd_2.5/frame_00001.png (snap) t=1955ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/formsbirds/variants/dd_2.5/frame_00010.png (snap) t=2179ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/formsbirds/variants/dd_2.5/frame_00060.png (snap) t=3441ms\n[harness] done frame=60 t=3396ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1955,
+ "diff_vs_baseline": {
+  "mean": 0.063,
+  "changed_fraction": 0.251,
+  "label": "moderate"
+ }
+}

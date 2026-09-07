@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/circle_quad",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/circle_quad/variants/palette_cool",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#FF18C0, #FF4556, #FF6726, #EFA11C, #B5B346, #DA6548, #3A9FAB};",
+   "int colors[] = {#1E3A8A, #2563EB, #06B6D4, #34D399, #A7F3D0, #7C3AED, #0EA5E9};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/circle_quad/variants/palette_cool/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1674,
+   "md5": "59b7a7393509cca96ab85006e609c28b",
+   "bytes": 533591
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "circle_quad.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#FF18C0, #FF4556, #FF6726, #EFA11C, #B5B346, #DA6548, #3A9FAB};",
+   "new": "int colors[] = {#1E3A8A, #2563EB, #06B6D4, #34D399, #A7F3D0, #7C3AED, #0EA5E9};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/circle_quad/variants/palette_cool/frame_00001.png (snap) t=1674ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/circle_quad/variants/palette_cool/frame_00010.png (snap) t=1896ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/circle_quad/variants/palette_cool/frame_00060.png (snap) t=3162ms\n[harness] done frame=60 t=3116ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1674,
+ "diff_vs_baseline": {
+  "mean": 0.2606,
+  "changed_fraction": 1.0,
+  "label": "large"
+ }
+}

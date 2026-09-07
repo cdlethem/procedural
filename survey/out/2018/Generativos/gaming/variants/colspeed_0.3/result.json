@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/gaming",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/colspeed_0.3",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "getColor(frameCount*0.05)",
+   "getColor(frameCount*0.3)"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/colspeed_0.3/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1444,
+   "md5": "fb00a762d8e15e36a581e18e964f6192",
+   "bytes": 6427
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/colspeed_0.3/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1654,
+   "md5": "577f6045ef22f0b2144faf4eb1e08231",
+   "bytes": 11232
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/colspeed_0.3/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2906,
+   "md5": "551a7046b0ff22537af3e80f4809c697",
+   "bytes": 27475
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "gaming.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "getColor(frameCount*0.05)",
+   "new": "getColor(frameCount*0.3)",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/colspeed_0.3/frame_00001.png (snap) t=1444ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/colspeed_0.3/frame_00010.png (snap) t=1654ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/colspeed_0.3/frame_00060.png (snap) t=2906ms\n[harness] done frame=60 t=2885ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1444,
+ "diff_vs_baseline": {
+  "mean": 0.0002,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

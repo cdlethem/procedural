@@ -1,0 +1,40 @@
+{
+ "sketch": "2020/Hilo/hilo001",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/Hilo/hilo001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "compile_error",
+ "detail": "hilo001.pde:112:0:112:0: totalHilo cannot be resolved to a variable",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "hilo001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "compat_shims": [],
+ "seed_fields": [],
+ "wall_s": 1.0,
+ "rc": 1,
+ "timed_out": false,
+ "stdout_tail": "",
+ "stderr_tail": "hilo001.pde:112:0:112:0: totalHilo cannot be resolved to a variable",
+ "ms_first_frame": null
+}

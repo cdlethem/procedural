@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/cells",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cells/variants/alpha_80",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    arc2(x, y, 0, s, 0, TWO_PI, rcol(), random(250), 0);",
+   "    arc2(x, y, 0, s, 0, TWO_PI, rcol(), random(80), 0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cells/variants/alpha_80/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2002,
+   "md5": "7aa35e2c317fdea1bee97af9d97c1364",
+   "bytes": 1466502
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "cells.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    arc2(x, y, 0, s, 0, TWO_PI, rcol(), random(250), 0);",
+   "new": "    arc2(x, y, 0, s, 0, TWO_PI, rcol(), random(80), 0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cells/variants/alpha_80/frame_00001.png (snap) t=2002ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cells/variants/alpha_80/frame_00010.png (snap) t=2250ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cells/variants/alpha_80/frame_00060.png (snap) t=3538ms\n[harness] done frame=60 t=3465ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2002,
+ "diff_vs_baseline": {
+  "mean": 0.105,
+  "changed_fraction": 0.487,
+  "label": "moderate"
+ }
+}

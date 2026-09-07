@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/margaritas",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/size_28_56",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float s = random(14, 28);",
+   "float s = random(28, 56);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/size_28_56/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1891,
+   "md5": "f972c6e962a0eea88afba78ddc182734",
+   "bytes": 501769
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/size_28_56/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3576,
+   "md5": "f3926dbc78448f839d94605f45e44203",
+   "bytes": 521416
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/size_28_56/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 12293,
+   "md5": "b2b2b227255ceca78d48d859f8338c68",
+   "bytes": 520928
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "margaritas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float s = random(14, 28);",
+   "new": "float s = random(28, 56);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 13.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/size_28_56/frame_00001.png (snap) t=1891ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/size_28_56/frame_00010.png (snap) t=3576ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/size_28_56/frame_00060.png (snap) t=12293ms\n[harness] done frame=60 t=12257ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1891,
+ "diff_vs_baseline": {
+  "mean": 0.1699,
+  "changed_fraction": 0.506,
+  "label": "large"
+ }
+}

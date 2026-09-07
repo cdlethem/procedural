@@ -1,0 +1,55 @@
+{
+ "sketch": "2018/Generativos/OP/op_011",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_011/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_011/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1458,
+   "md5": "7f9fff5c9318d867aae9f9cb2a24025c",
+   "bytes": 140236
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "op_011.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_011/baseline/frame_00001.png (snap) t=1458ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_011/baseline/frame_00010.png (snap) t=1669ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_011/baseline/frame_00060.png (snap) t=2938ms\n[harness] done frame=60 t=2903ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1458,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

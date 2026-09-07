@@ -1,0 +1,61 @@
+{
+ "sketch": "2018/Drippin/Labos/interactive01",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/interactive01/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/interactive01/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1491,
+   "md5": "a9567a6571640e37eca402c89a0a025e",
+   "bytes": 5503
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/interactive01/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1715,
+   "md5": "e2f5d9a15ff30049cabe884f3daaf42c",
+   "bytes": 5511
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/interactive01/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5897,
+   "md5": "11df12c68c6d0e08bcb543da995096ea",
+   "bytes": 5511
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P2D",
+ "imports": [],
+ "tabs": [
+  "interactive01.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 7.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/interactive01/baseline/frame_00001.png (snap) t=1491ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/interactive01/baseline/frame_00010.png (snap) t=1715ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/interactive01/baseline/frame_00060.png (snap) t=5897ms\n[harness] done frame=60 t=5882ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1491,
+ "deterministic": true,
+ "rerun_frames": 3
+}

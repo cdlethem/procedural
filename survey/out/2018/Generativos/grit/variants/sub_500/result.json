@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/grit",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/grit/variants/sub_500",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  int sub = int(random(10000));",
+   "  int sub = 500;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/grit/variants/sub_500/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2410,
+   "md5": "e1f3bc53ca2c3851c4fb86f0092ef9f6",
+   "bytes": 2765550
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/grit/variants/sub_500/self_20260905-104409.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2902,
+   "md5": "e1f3bc53ca2c3851c4fb86f0092ef9f6",
+   "bytes": 2765550
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "grit.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int sub = int(random(10000));",
+   "new": "  int sub = 500;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/grit/variants/sub_500/frame_00001.png (dispose) t=2410ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2410,
+ "diff_vs_baseline": {
+  "mean": 0.198,
+  "changed_fraction": 0.869,
+  "label": "large"
+ }
+}

@@ -1,0 +1,111 @@
+{
+ "sketch": "2018/Generativos/neopla",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/cubes_3000",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int i = 0; i < 10000; i++) {",
+   "for (int i = 0; i < 3000; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/cubes_3000/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 8589,
+   "md5": "bc4b41a7da2e985ab7edd60851ea8719",
+   "bytes": 4708785
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/cubes_3000/self_20260905-114145.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 5125,
+   "md5": "e360cf9c451e2a256b2d4bd2849883e7",
+   "bytes": 3623245
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/cubes_3000/self_20260905-114144.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3806,
+   "md5": "47d92495cc8ca3c14ce69aade074a5b2",
+   "bytes": 5248237
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/cubes_3000/self_20260905-114146.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 5677,
+   "md5": "975e8e7adcc2d67e6e6e783bed2b7da8",
+   "bytes": 999986
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/cubes_3000/self_20260905-114147.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6824,
+   "md5": "320fcc77c6b8206b194024db51507c02",
+   "bytes": 1533151
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/cubes_3000/self_20260905-114143.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2980,
+   "md5": "fd61e53e59775648ad9d6b017d972fa0",
+   "bytes": 2470696
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/cubes_3000/self_20260905-114149.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 9081,
+   "md5": "bc4b41a7da2e985ab7edd60851ea8719",
+   "bytes": 4708785
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P3D",
+ "imports": [],
+ "tabs": [
+  "neopla.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i < 10000; i++) {",
+   "new": "for (int i = 0; i < 3000; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 10.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/cubes_3000/frame_00001.png (dispose) t=8589ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 8589,
+ "diff_vs_baseline": {
+  "mean": 0.3417,
+  "changed_fraction": 0.946,
+  "label": "large"
+ }
+}

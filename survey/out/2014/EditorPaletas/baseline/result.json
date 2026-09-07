@@ -1,0 +1,28 @@
+{
+ "sketch": "2014/EditorPaletas",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/EditorPaletas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "manoloide.Color.Paleta",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [
+  "manoloide.Color.Paleta",
+  "manoloide.Input.Input"
+ ],
+ "tabs": [
+  "EditorPaletas.pde",
+  "Gui.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

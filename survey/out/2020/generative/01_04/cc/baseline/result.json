@@ -1,0 +1,65 @@
+{
+ "sketch": "2020/generative/01_04/cc",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cc/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cc/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2069,
+   "md5": "3b23b0f19c531be1cfb3f6663dc8075b",
+   "bytes": 873204
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cc/baseline/self_20260902-192959-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3211,
+   "md5": "3b23b0f19c531be1cfb3f6663dc8075b",
+   "bytes": 873204
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "cc.pde",
+  "render.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cc/baseline/frame_00001.png (dispose) t=2069ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2069,
+ "deterministic": true,
+ "rerun_frames": 2
+}

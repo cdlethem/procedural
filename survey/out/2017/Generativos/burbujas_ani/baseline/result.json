@@ -1,0 +1,63 @@
+{
+ "sketch": "2017/Generativos/burbujas_ani",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1503,
+   "md5": "6b42664e3b74f663f75a7f6879a65128",
+   "bytes": 183425
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1719,
+   "md5": "e7666e07b43cb972205c1a6d6f10841a",
+   "bytes": 183024
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 15905,
+   "md5": "17157e3a338ae931702b0dba5f15a3a6",
+   "bytes": 182432
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  820,
+  820
+ ],
+ "size_args": "820, 820, P2D",
+ "imports": [],
+ "tabs": [
+  "burbujas_ani.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 17.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/baseline/frame_00001.png (snap) t=1503ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/baseline/frame_00010.png (snap) t=1719ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/baseline/frame_00060.png (snap) t=15905ms\n[harness] done frame=60 t=15882ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1503,
+ "deterministic": true,
+ "rerun_frames": 3
+}

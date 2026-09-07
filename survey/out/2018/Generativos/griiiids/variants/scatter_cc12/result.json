@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/griiiids",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/scatter_cc12",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  for (int i = 0; i < cc*3; i++) {",
+   "  for (int i = 0; i < cc*12; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/scatter_cc12/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1610,
+   "md5": "6f6222088aa7f6a01a02e0ff8e69d8ad",
+   "bytes": 1192518
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/scatter_cc12/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2158,
+   "md5": "df6f1a9fab49c5ca09bbc43c5e70ade3",
+   "bytes": 1202888
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/scatter_cc12/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 4551,
+   "md5": "7de090e7afb9d0e404902be902ee05ee",
+   "bytes": 1199425
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  520
+ ],
+ "size_args": "960, 520, P2D",
+ "imports": [],
+ "tabs": [
+  "griiiids.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  for (int i = 0; i < cc*3; i++) {",
+   "new": "  for (int i = 0; i < cc*12; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/scatter_cc12/frame_00001.png (snap) t=1610ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/scatter_cc12/frame_00010.png (snap) t=2158ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/scatter_cc12/frame_00060.png (snap) t=4551ms\n[harness] done frame=60 t=4515ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1610,
+ "diff_vs_baseline": {
+  "mean": 0.2384,
+  "changed_fraction": 0.784,
+  "label": "large"
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/01_04/nomate",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomate/variants/displace_25",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "noi.set(\"displace\", random(100));",
+   "noi.set(\"displace\", 25);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomate/variants/displace_25/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1565,
+   "md5": "d8edcf23ccbbd681752a3b841e90c9e4",
+   "bytes": 2074536
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "nomate.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "noi.set(\"displace\", random(100));",
+   "new": "noi.set(\"displace\", 25);",
+   "count": 2
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomate/variants/displace_25/frame_00001.png (snap) t=1565ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomate/variants/displace_25/frame_00010.png (snap) t=1825ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomate/variants/displace_25/frame_00060.png (snap) t=3128ms\n[harness] done frame=60 t=3039ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\nOpenGL error 1282 at top endDraw(): invalid operation",
+ "ms_first_frame": 1565,
+ "diff_vs_baseline": {
+  "mean": 0.097,
+  "changed_fraction": 0.447,
+  "label": "moderate"
+ }
+}

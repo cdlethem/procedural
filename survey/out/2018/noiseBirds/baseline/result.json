@@ -1,0 +1,68 @@
+{
+ "sketch": "2018/noiseBirds",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/noiseBirds/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/noiseBirds/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1544,
+   "md5": "3fefc6900247c8c6449447d93410d4ff",
+   "bytes": 42288
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/noiseBirds/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1766,
+   "md5": "3f3dbd1b0f92c7b85c77f23df6e808c6",
+   "bytes": 42186
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/noiseBirds/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3018,
+   "md5": "d1e8950888ac8f3fbbf03f743998f3b4",
+   "bytes": 48643
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "noiseBirds.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/noiseBirds/baseline/frame_00001.png (snap) t=1544ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/noiseBirds/baseline/frame_00010.png (snap) t=1766ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/noiseBirds/baseline/frame_00060.png (snap) t=3018ms\n[harness] done frame=60 t=2998ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1544,
+ "deterministic": false,
+ "rerun_frames": 3
+}

@@ -1,0 +1,73 @@
+{
+ "sketch": "2019/generativos/casca",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/casca/variants/lines_68000",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "(34000/5)/(1+k*0.8)",
+   "(68000/5)/(1+k*0.8)"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/casca/variants/lines_68000/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1665,
+   "md5": "a8dcf36f4ea5266e98d053f5e3449fc4",
+   "bytes": 1480231
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "casca.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "(34000/5)/(1+k*0.8)",
+   "new": "(68000/5)/(1+k*0.8)",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/casca/variants/lines_68000/frame_00001.png (snap) t=1665ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/casca/variants/lines_68000/frame_00010.png (snap) t=1905ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/casca/variants/lines_68000/frame_00060.png (snap) t=3179ms\n[harness] done frame=60 t=3120ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1665,
+ "diff_vs_baseline": {
+  "mean": 0.0834,
+  "changed_fraction": 0.339,
+  "label": "moderate"
+ }
+}

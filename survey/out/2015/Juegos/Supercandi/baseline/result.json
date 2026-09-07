@@ -1,0 +1,61 @@
+{
+ "sketch": "2015/Juegos/Supercandi",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Juegos/Supercandi/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/Supercandi/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 260,
+   "md5": "21529f25fb93d9e150beb457517ff551",
+   "bytes": 6812
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/Supercandi/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 427,
+   "md5": "941bcd5f29cb77b65d861f1d70a1f5b2",
+   "bytes": 37805
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/Supercandi/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1254,
+   "md5": "df15a60ca3f40c93a17984596bedb8a6",
+   "bytes": 38207
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  600
+ ],
+ "size_args": "400, 600",
+ "imports": [],
+ "tabs": [
+  "Supercandi.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/Supercandi/baseline/frame_00001.png (snap) t=260ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/Supercandi/baseline/frame_00010.png (snap) t=427ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/Supercandi/baseline/frame_00060.png (snap) t=1254ms\n[harness] done frame=60 t=1247ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 260,
+ "deterministic": true,
+ "rerun_frames": 3
+}

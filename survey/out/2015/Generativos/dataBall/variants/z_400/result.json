@@ -1,0 +1,79 @@
+{
+ "sketch": "2015/Generativos/dataBall",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/z_400",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "translate(width/2, height/2, -100);",
+   "translate(width/2, height/2, -400);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/z_400/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1501,
+   "md5": "e9615c31b6dc3c005172b125bee16662",
+   "bytes": 41288
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/z_400/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1700,
+   "md5": "509b0dc0527b0a3a2203f36904bdafc1",
+   "bytes": 41108
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/z_400/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2953,
+   "md5": "593c9fb53f24ef7274b3d276923e6cd7",
+   "bytes": 42871
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "dataBall.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "translate(width/2, height/2, -100);",
+   "new": "translate(width/2, height/2, -400);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/z_400/frame_00001.png (snap) t=1501ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/z_400/frame_00010.png (snap) t=1700ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/z_400/frame_00060.png (snap) t=2953ms\n[harness] done frame=60 t=2941ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Stockholm Mono\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1501,
+ "diff_vs_baseline": {
+  "mean": 0.0042,
+  "changed_fraction": 0.011,
+  "label": "none"
+ }
+}

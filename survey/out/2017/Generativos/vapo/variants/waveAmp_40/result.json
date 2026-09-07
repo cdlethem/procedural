@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/vapo",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/vapo/variants/waveAmp_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float amp = random(180);",
+   "float amp = random(40);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/vapo/variants/waveAmp_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 161,
+   "md5": "6560e4d986033a623da3e1a0e70e266c",
+   "bytes": 75658
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "vapo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float amp = random(180);",
+   "new": "float amp = random(40);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/vapo/variants/waveAmp_40/frame_00001.png (snap) t=161ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/vapo/variants/waveAmp_40/frame_00010.png (snap) t=317ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/vapo/variants/waveAmp_40/frame_00060.png (snap) t=1155ms\n[harness] done frame=60 t=1135ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 161,
+ "diff_vs_baseline": {
+  "mean": 0.0062,
+  "changed_fraction": 0.026,
+  "label": "none"
+ }
+}

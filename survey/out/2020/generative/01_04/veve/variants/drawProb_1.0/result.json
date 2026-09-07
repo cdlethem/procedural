@@ -1,0 +1,88 @@
+{
+ "sketch": "2020/generative/01_04/veve",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/drawProb_1.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "random(1) < 0.4",
+   "random(1) < 1.0"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/drawProb_1.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2978,
+   "md5": "620cc4ae48087d537e883db39aba78c1",
+   "bytes": 1429249
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/drawProb_1.0/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3190,
+   "md5": "75ecefcbdd05478a0cc24c53525de625",
+   "bytes": 105883
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/drawProb_1.0/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 4445,
+   "md5": "75ecefcbdd05478a0cc24c53525de625",
+   "bytes": 105883
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "veve.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "random(1) < 0.4",
+   "new": "random(1) < 1.0",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/drawProb_1.0/frame_00001.png (snap) t=2978ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/drawProb_1.0/frame_00010.png (snap) t=3190ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/drawProb_1.0/frame_00060.png (snap) t=4445ms\n[harness] done frame=60 t=4419ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2978,
+ "diff_vs_baseline": {
+  "mean": 0.2218,
+  "changed_fraction": 0.52,
+  "label": "large"
+ }
+}

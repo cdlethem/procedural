@@ -1,0 +1,71 @@
+{
+ "sketch": "2016/dataviz/lineasLoad",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/dataviz/lineasLoad/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/dataviz/lineasLoad/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1451,
+   "md5": "cdff36a1fd61488b5ad6e81cf8dbedb5",
+   "bytes": 30806
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/dataviz/lineasLoad/baseline/frame_00002.png",
+   "frame": 2,
+   "tag": "snap",
+   "ms": 1469,
+   "md5": "e68490393f105bb2a86dd0d87cf19478",
+   "bytes": 33119
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/dataviz/lineasLoad/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1658,
+   "md5": "c5a450a141efee2f1b4e2f41320f5c75",
+   "bytes": 41843
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/dataviz/lineasLoad/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2915,
+   "md5": "6f9ae83e73d9507b9c167fe04707181e",
+   "bytes": 53050
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "lineasLoad.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/dataviz/lineasLoad/baseline/frame_00001.png (snap) t=1451ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/dataviz/lineasLoad/baseline/frame_00002.png (snap) t=1469ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/dataviz/lineasLoad/baseline/frame_00010.png (snap) t=1658ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/dataviz/lineasLoad/baseline/frame_00060.png (snap) t=2915ms\n[harness] done frame=60 t=2904ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1451,
+ "deterministic": true,
+ "rerun_frames": 4
+}

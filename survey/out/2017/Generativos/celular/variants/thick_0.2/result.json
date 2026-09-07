@@ -1,0 +1,73 @@
+{
+ "sketch": "2017/Generativos/celular",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/celular/variants/thick_0.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    ss = s*0.8;",
+   "    ss = s*0.2;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/celular/variants/thick_0.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2067,
+   "md5": "331708a550b86a199624ee692946bd12",
+   "bytes": 529049
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "celular.pde",
+  "poly.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    ss = s*0.8;",
+   "new": "    ss = s*0.2;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/celular/variants/thick_0.2/frame_00001.png (snap) t=2067ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/celular/variants/thick_0.2/frame_00010.png (snap) t=2292ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/celular/variants/thick_0.2/frame_00060.png (snap) t=3549ms\n[harness] done frame=60 t=3509ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2067,
+ "diff_vs_baseline": {
+  "mean": 0.1698,
+  "changed_fraction": 0.507,
+  "label": "large"
+ }
+}

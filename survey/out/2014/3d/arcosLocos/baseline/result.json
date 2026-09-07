@@ -1,0 +1,63 @@
+{
+ "sketch": "2014/3d/arcosLocos",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/3d/arcosLocos/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/3d/arcosLocos/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1504,
+   "md5": "4d7aa87e769ad9ba4ba66d320a0908de",
+   "bytes": 6497
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/3d/arcosLocos/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1703,
+   "md5": "d17770f8d41d4e6101670ace5d09911c",
+   "bytes": 7166
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/3d/arcosLocos/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2957,
+   "md5": "64569512494fe1f2c6044ac83a5561e2",
+   "bytes": 23320
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "arcosLocos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/3d/arcosLocos/baseline/frame_00001.png (snap) t=1504ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/3d/arcosLocos/baseline/frame_00010.png (snap) t=1703ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/3d/arcosLocos/baseline/frame_00060.png (snap) t=2957ms\n[harness] done frame=60 t=2945ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1504,
+ "deterministic": true,
+ "rerun_frames": 3
+}

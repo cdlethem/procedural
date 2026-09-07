@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/marca",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/marca/variants/palette_green",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#F8C43D, #023390, #6AA6E2, #F35076, #F6F6F6};",
+   "int colors[] = {#2ECC71, #023390, #6AA6E2, #F35076, #F6F6F6};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/marca/variants/palette_green/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1824,
+   "md5": "b11b5199a9af004c81939ff153b4bbfa",
+   "bytes": 1032834
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "marca.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#F8C43D, #023390, #6AA6E2, #F35076, #F6F6F6};",
+   "new": "int colors[] = {#2ECC71, #023390, #6AA6E2, #F35076, #F6F6F6};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/marca/variants/palette_green/frame_00001.png (snap) t=1824ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/marca/variants/palette_green/frame_00010.png (snap) t=2057ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/marca/variants/palette_green/frame_00060.png (snap) t=3320ms\n[harness] done frame=60 t=3266ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1824,
+ "diff_vs_baseline": {
+  "mean": 0.0317,
+  "changed_fraction": 0.134,
+  "label": "subtle"
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "sketch": "2020/generative/01_04/nomaten",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/count_6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int i = 0; i < 3; i++)",
+   "for (int i = 0; i < 6; i++)"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/count_6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1746,
+   "md5": "c8d28c974653d5911d2a4b172372abfb",
+   "bytes": 1865401
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/count_6/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1957,
+   "md5": "0261d6efd5b68a5e7d46dadc7be1a7ea",
+   "bytes": 54348
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/count_6/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3216,
+   "md5": "0261d6efd5b68a5e7d46dadc7be1a7ea",
+   "bytes": 54348
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "nomaten.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i < 3; i++)",
+   "new": "for (int i = 0; i < 6; i++)",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/count_6/frame_00001.png (snap) t=1746ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/count_6/frame_00010.png (snap) t=1957ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/nomaten/variants/count_6/frame_00060.png (snap) t=3216ms\n[harness] done frame=60 t=3192ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1746,
+ "diff_vs_baseline": {
+  "mean": 0.1738,
+  "changed_fraction": 0.518,
+  "label": "large"
+ }
+}

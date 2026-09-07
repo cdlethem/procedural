@@ -1,0 +1,55 @@
+{
+ "sketch": "2012 y otros/Particulas/prueba2b",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Particulas/prueba2b/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Particulas/prueba2b/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 202,
+   "md5": "47f212d449d03280f2acf71cbff1713a",
+   "bytes": 1242
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "Particula.pde",
+  "prueba2b.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Particulas/prueba2b/baseline/frame_00001.png (snap) t=202ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Particulas/prueba2b/baseline/frame_00010.png (snap) t=355ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Particulas/prueba2b/baseline/frame_00060.png (snap) t=1182ms\n[harness] done frame=60 t=1173ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 202,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

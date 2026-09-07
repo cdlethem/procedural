@@ -1,0 +1,89 @@
+{
+ "sketch": "2015/Generativos/FFt/fft_prueba1",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/fft_prueba1/variants/bg_120",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "background(220);",
+   "background(120);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/fft_prueba1/variants/bg_120/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1808,
+   "md5": "b51d098130c4639de4e806aa9d0a5622",
+   "bytes": 125144
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/fft_prueba1/variants/bg_120/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2093,
+   "md5": "a18f0c52bcc2d6fd397a966a60059955",
+   "bytes": 179129
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/fft_prueba1/variants/bg_120/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3740,
+   "md5": "ad34d0df1fbd6051f796e1618d9e3da8",
+   "bytes": 145754
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [
+  "ddf.minim.*",
+  "ddf.minim.analysis.*"
+ ],
+ "tabs": [
+  "fft_prueba1.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "minim.jar",
+  "jsminim.jar",
+  "jl1.0.1.jar",
+  "mp3spi1.9.5.jar",
+  "tritonus_aos.jar",
+  "tritonus_share.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "background(220);",
+   "new": "background(120);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/fft_prueba1/variants/bg_120/frame_00001.png (snap) t=1808ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/fft_prueba1/variants/bg_120/frame_00010.png (snap) t=2093ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/fft_prueba1/variants/bg_120/frame_00060.png (snap) t=3740ms\n[harness] done frame=60 t=3727ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1808,
+ "diff_vs_baseline": {
+  "mean": 0.3731,
+  "changed_fraction": 1.0,
+  "label": "large"
+ }
+}

@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/chinasseForms",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/chinasseForms/variants/branchProb_0.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    if (random(1) < 0.6) {",
+   "    if (random(1) < 0.2) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/chinasseForms/variants/branchProb_0.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 246,
+   "md5": "73698229c5ec1981bb195195c5fb974a",
+   "bytes": 122462
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "chinasseForms.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    if (random(1) < 0.6) {",
+   "new": "    if (random(1) < 0.2) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "0.0 11.093332\n0.0 11.093332\n0.0 11.093332\n0.0 3.6977777\n0.0 5.546666\n0.0 11.093332\n0.0 11.093332\n0.0 11.093332\n0.0 1.8488889\n0.0 7.3955555\n0.0 3.6977777\n0.0 1.8488889\n0.0 11.093332\n0.0 3.6977777\n0.0 2.465185\n0.0 1.8488889\n0.0 3.6977777\n0.0 3.6977777\n0.0 3.6977777\n0.0 7.3955555\n0.0 1.8488889\n0.0 11.093332\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/chinasseForms/variants/branchProb_0.2/frame_00001.png (snap) t=246ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/chinasseForms/variants/branchProb_0.2/frame_00010.png (snap) t=403ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/chinasseForms/variants/branchProb_0.2/frame_00060.png (snap) t=1240ms\n[harness] done frame=60 t=1220ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 246,
+ "diff_vs_baseline": {
+  "mean": 0.1654,
+  "changed_fraction": 0.679,
+  "label": "large"
+ }
+}

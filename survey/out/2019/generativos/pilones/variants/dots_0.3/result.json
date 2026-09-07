@@ -1,0 +1,73 @@
+{
+ "sketch": "2019/generativos/pilones",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/pilones/variants/dots_0.3",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "if (random(1) < 0.8) rect(i, j, 2, 2);",
+   "if (random(1) < 0.3) rect(i, j, 2, 2);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/pilones/variants/dots_0.3/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1509,
+   "md5": "74ddab8c9d64ad01ed89bd10648286e9",
+   "bytes": 1244428
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "pilones.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "if (random(1) < 0.8) rect(i, j, 2, 2);",
+   "new": "if (random(1) < 0.3) rect(i, j, 2, 2);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/pilones/variants/dots_0.3/frame_00001.png (snap) t=1509ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/pilones/variants/dots_0.3/frame_00010.png (snap) t=1744ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/pilones/variants/dots_0.3/frame_00060.png (snap) t=3000ms\n[harness] done frame=60 t=2950ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1509,
+ "diff_vs_baseline": {
+  "mean": 0.0005,
+  "changed_fraction": 0.001,
+  "label": "none"
+ }
+}

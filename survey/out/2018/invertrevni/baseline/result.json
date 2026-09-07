@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/invertrevni",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/invertrevni/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/invertrevni/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1487,
+   "md5": "2a2214edd221d2540dfd3ae3c4062276",
+   "bytes": 2838
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/invertrevni/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1714,
+   "md5": "534b5da970a17268d64d1151157c77ae",
+   "bytes": 2836
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/invertrevni/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5889,
+   "md5": "bad4d5f858b400aa1c85e77095a08fae",
+   "bytes": 2686
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  760,
+  760
+ ],
+ "size_args": "760, 760, P2D",
+ "imports": [],
+ "tabs": [
+  "invertrevni.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 7.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/invertrevni/baseline/frame_00001.png (snap) t=1487ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/invertrevni/baseline/frame_00010.png (snap) t=1714ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/invertrevni/baseline/frame_00060.png (snap) t=5889ms\n[harness] done frame=60 t=5875ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1487,
+ "deterministic": false,
+ "rerun_frames": 3
+}

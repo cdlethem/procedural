@@ -1,0 +1,30 @@
+{
+ "sketch": "2020/noDataSynth002",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/noDataSynth002/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "themidibus.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400, P3D",
+ "imports": [
+  "javax.sound.midi.MidiMessage",
+  "javax.sound.midi.ShortMessage",
+  "javax.sound.midi.SysexMessage",
+  "themidibus.*"
+ ],
+ "tabs": [
+  "Midi.pde",
+  "noDataSynth002.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

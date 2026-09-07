@@ -1,0 +1,81 @@
+{
+ "sketch": "2014/Generativos/polys",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/sides_6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cant = int(random(3,6));",
+   "int cant = 6;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/sides_6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 170,
+   "md5": "f049d78efc295a08e68de334d9e26f3d",
+   "bytes": 95847
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/sides_6/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 334,
+   "md5": "a5fd6d6327f83a13b55f2101119909fb",
+   "bytes": 97956
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/sides_6/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1166,
+   "md5": "33a6f3cf8f820a92a3d6debfe8c07703",
+   "bytes": 94583
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "polys.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cant = int(random(3,6));",
+   "new": "int cant = 6;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "polys.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/sides_6/frame_00001.png (snap) t=170ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/sides_6/frame_00010.png (snap) t=334ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/sides_6/frame_00060.png (snap) t=1166ms\n[harness] done frame=60 t=1155ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 170,
+ "diff_vs_baseline": {
+  "mean": 0.1047,
+  "changed_fraction": 0.248,
+  "label": "moderate"
+ }
+}

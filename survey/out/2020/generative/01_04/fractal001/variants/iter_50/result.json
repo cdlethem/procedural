@@ -1,0 +1,31 @@
+{
+ "sketch": "2020/generative/01_04/fractal001",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fractal001/variants/iter_50",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    for(i = 0; i < 100 ; i++) {",
+   "    for(i = 0; i < 50 ; i++) {"
+  ]
+ ],
+ "status": "bad_sub",
+ "detail": "OLD text not found in any tab: '    for(i = 0; i < 100 ; i++) {'",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P2D",
+ "imports": [],
+ "tabs": [
+  "fractal001.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": []
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/trianglesLines2",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/trianglesLines2/variants/ringCount_3",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int k = 0; k < 6; k++) {",
+   "for (int k = 0; k < 3; k++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/trianglesLines2/variants/ringCount_3/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1573,
+   "md5": "b8d48315752c324e9450805a255763ff",
+   "bytes": 602324
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "trianglesLines2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int k = 0; k < 6; k++) {",
+   "new": "for (int k = 0; k < 3; k++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/trianglesLines2/variants/ringCount_3/frame_00001.png (snap) t=1573ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/trianglesLines2/variants/ringCount_3/frame_00010.png (snap) t=1794ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/trianglesLines2/variants/ringCount_3/frame_00060.png (snap) t=3057ms\n[harness] done frame=60 t=3015ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1573,
+ "diff_vs_baseline": {
+  "mean": 0.3813,
+  "changed_fraction": 0.912,
+  "label": "large"
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/Generativos/tutela",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1477,
+   "md5": "1b6dcb4a19f9990c181eb8f8e523cff7",
+   "bytes": 123164
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1702,
+   "md5": "0f0f3ee85204eb62afd0f7097fcae381",
+   "bytes": 122285
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 9794,
+   "md5": "4087bcfa989a98186c6f8376b0c764ed",
+   "bytes": 122673
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "tutela.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 11.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/baseline/frame_00001.png (snap) t=1477ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/baseline/frame_00010.png (snap) t=1702ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/baseline/frame_00060.png (snap) t=9794ms\n[harness] done frame=60 t=9770ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1477,
+ "deterministic": false,
+ "rerun_frames": 3
+}

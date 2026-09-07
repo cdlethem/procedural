@@ -1,0 +1,77 @@
+{
+ "sketch": "2015/ScreenCapture",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/ScreenCapture/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/ScreenCapture/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1737,
+   "md5": "4e46a50517d277c7956cf3ec00dfe8b7",
+   "bytes": 1981
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/ScreenCapture/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1937,
+   "md5": "eee83e9550ea01d263ffbbc66333d987",
+   "bytes": 1960
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/ScreenCapture/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3193,
+   "md5": "eee83e9550ea01d263ffbbc66333d987",
+   "bytes": 1960
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640, 480, P3D",
+ "imports": [
+  "ddf.minim.*",
+  "ddf.minim.analysis.*",
+  "java.awt.AWTException",
+  "java.awt.Rectangle",
+  "java.awt.Robot",
+  "peasy.*"
+ ],
+ "tabs": [
+  "ScreenCapture.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "minim.jar",
+  "jsminim.jar",
+  "jl1.0.1.jar",
+  "mp3spi1.9.5.jar",
+  "tritonus_aos.jar",
+  "tritonus_share.jar",
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/ScreenCapture/baseline/frame_00001.png (snap) t=1737ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/ScreenCapture/baseline/frame_00010.png (snap) t=1937ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/ScreenCapture/baseline/frame_00060.png (snap) t=3193ms\n[harness] done frame=60 t=3185ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1737,
+ "deterministic": true,
+ "rerun_frames": 3
+}

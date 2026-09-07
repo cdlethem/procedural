@@ -1,0 +1,55 @@
+{
+ "sketch": "2014/Juegos/Rapido",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Rapido/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Rapido/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 305,
+   "md5": "f0ca7f2eb78b41d859bc65ad39be5ec9",
+   "bytes": 12690
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "Rapido.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/Rapido/baseline/frame_00001.png (snap) t=305ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/Rapido/baseline/frame_00010.png (snap) t=458ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/Rapido/baseline/frame_00060.png (snap) t=1297ms\n[harness] done frame=60 t=1278ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 305,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

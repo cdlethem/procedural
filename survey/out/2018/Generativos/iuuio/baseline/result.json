@@ -1,0 +1,55 @@
+{
+ "sketch": "2018/Generativos/iuuio",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iuuio/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iuuio/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2435,
+   "md5": "09ff3fbcfb8c89db9832ef142d2cb35f",
+   "bytes": 1547020
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iuuio/baseline/self_20260902-190638.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3158,
+   "md5": "09ff3fbcfb8c89db9832ef142d2cb35f",
+   "bytes": 1547020
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P3D",
+ "imports": [],
+ "tabs": [
+  "iuuio.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/iuuio/baseline/frame_00001.png (dispose) t=2435ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2435,
+ "deterministic": true,
+ "rerun_frames": 2
+}

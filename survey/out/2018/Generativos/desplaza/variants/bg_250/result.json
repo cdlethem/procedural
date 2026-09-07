@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/desplaza",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/bg_250",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "background(10);",
+   "background(250);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/bg_250/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1452,
+   "md5": "a561a69228b568fae3efb3cd316b5aa7",
+   "bytes": 111731
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/bg_250/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1657,
+   "md5": "c0bcf837d6425f247ef654d25bb51267",
+   "bytes": 103754
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/bg_250/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2906,
+   "md5": "a702c4f8e4550eccbfb9a379453c5d54",
+   "bytes": 98826
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P2D",
+ "imports": [],
+ "tabs": [
+  "desplaza.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "background(10);",
+   "new": "background(250);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/bg_250/frame_00001.png (snap) t=1452ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/bg_250/frame_00010.png (snap) t=1657ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/bg_250/frame_00060.png (snap) t=2906ms\n[harness] done frame=60 t=2893ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1452,
+ "diff_vs_baseline": {
+  "mean": 0.2488,
+  "changed_fraction": 0.56,
+  "label": "large"
+ }
+}

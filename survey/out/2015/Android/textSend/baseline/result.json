@@ -1,0 +1,27 @@
+{
+ "sketch": "2015/Android/textSend",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Android/textSend/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "android.content.Context",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": null,
+ "imports": [
+  "android.content.Context",
+  "android.view.inputmethod.InputMethodManager",
+  "android.widget.EditText",
+  "netP5.*",
+  "oscP5.*"
+ ],
+ "tabs": [
+  "textSend.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

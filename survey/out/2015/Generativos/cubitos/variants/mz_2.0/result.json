@@ -1,0 +1,72 @@
+{
+ "sketch": "2015/Generativos/cubitos",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/cubitos/variants/mz_2.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float mz = 0.5;",
+   "float mz = 2.0;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/cubitos/variants/mz_2.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1436,
+   "md5": "d46af29bcf9e143bdd7a81459ff4b47c",
+   "bytes": 1910
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  400
+ ],
+ "size_args": "800, 400, P3D",
+ "imports": [],
+ "tabs": [
+  "cubitos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float mz = 0.5;",
+   "new": "float mz = 2.0;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "cubitos.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "blank"
+  ],
+  [
+   60,
+   "blank"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/cubitos/variants/mz_2.0/frame_00001.png (snap) t=1436ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/cubitos/variants/mz_2.0/frame_00010.png (snap) t=1634ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/cubitos/variants/mz_2.0/frame_00060.png (snap) t=2888ms\n[harness] done frame=60 t=2878ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1436,
+ "diff_vs_baseline": {
+  "mean": 0.2648,
+  "changed_fraction": 0.907,
+  "label": "large"
+ }
+}

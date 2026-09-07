@@ -1,0 +1,71 @@
+{
+ "sketch": "2016/Generativos/pelosNoise2",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1146,
+   "md5": "721a4850ed7f57bc955b742248daecb9",
+   "bytes": 1309125
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/baseline/self_0002.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2780,
+   "md5": "8d824bb948238f69423bb77d1b9e505f",
+   "bytes": 1310253
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/baseline/self_0003.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3211,
+   "md5": "b57ff90647f7aaca658ad243d4f7ed0a",
+   "bytes": 1308927
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/baseline/self_0001.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2309,
+   "md5": "721a4850ed7f57bc955b742248daecb9",
+   "bytes": 1309125
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "pelosNoise2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/baseline/frame_00001.png (snap) t=1146ms\n[harness] dispose frame=4 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1146,
+ "deterministic": true,
+ "rerun_frames": 4
+}

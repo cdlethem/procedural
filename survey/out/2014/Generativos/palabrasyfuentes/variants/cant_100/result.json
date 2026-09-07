@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/palabrasyfuentes",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/cant_100",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  int cant = int(random(500, 1000));",
+   "  int cant = int(random(50, 100));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/cant_100/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 186,
+   "md5": "35ce88edfdeceb985c360ab635e5c2fc",
+   "bytes": 4261
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/cant_100/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 334,
+   "md5": "ee2e1b0f4d8aab5d4aaf120fd782d50e",
+   "bytes": 38177
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/cant_100/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1171,
+   "md5": "ee2e1b0f4d8aab5d4aaf120fd782d50e",
+   "bytes": 38177
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "palabrasyfuentes.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int cant = int(random(500, 1000));",
+   "new": "  int cant = int(random(50, 100));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/cant_100/frame_00001.png (snap) t=186ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/cant_100/frame_00010.png (snap) t=334ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasyfuentes/variants/cant_100/frame_00060.png (snap) t=1171ms\n[harness] done frame=60 t=1154ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Mohave Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 186,
+ "diff_vs_baseline": {
+  "mean": 0.0,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

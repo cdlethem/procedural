@@ -1,0 +1,49 @@
+{
+ "sketch": "2012 y otros/practicas/7/prac3",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/7/prac3/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "no_frame",
+ "detail": "sketch exited without the harness saving a frame",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "prac3.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "blank"
+  ],
+  [
+   10,
+   "blank"
+  ],
+  [
+   60,
+   "blank"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "7 0 6 0 3 9 2 7 6 0 [harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/7/prac3/baseline/frame_00001.png (snap) t=134ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/7/prac3/baseline/frame_00002.png (snap) t=140ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/7/prac3/baseline/frame_00010.png (snap) t=273ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/7/prac3/baseline/frame_00060.png (snap) t=1106ms\n[harness] done frame=60 t=1101ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": null
+}

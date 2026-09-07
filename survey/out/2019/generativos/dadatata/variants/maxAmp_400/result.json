@@ -1,0 +1,86 @@
+{
+ "sketch": "2019/generativos/dadatata",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/maxAmp_400",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float maxAmp = random(100)*random(1);",
+   "float maxAmp = random(400)*random(1);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/maxAmp_400/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3424,
+   "md5": "37a8f7bf6180ef2aadfa260fca91a1fe",
+   "bytes": 1531934
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/maxAmp_400/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3637,
+   "md5": "3e469942dc0c851445f39a78f7f4637c",
+   "bytes": 114946
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/maxAmp_400/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 4892,
+   "md5": "3e469942dc0c851445f39a78f7f4637c",
+   "bytes": 114946
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "dadatata.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float maxAmp = random(100)*random(1);",
+   "new": "float maxAmp = random(400)*random(1);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/maxAmp_400/frame_00001.png (snap) t=3424ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/maxAmp_400/frame_00010.png (snap) t=3637ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/maxAmp_400/frame_00060.png (snap) t=4892ms\n[harness] done frame=60 t=4865ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3424,
+ "diff_vs_baseline": {
+  "mean": 0.0571,
+  "changed_fraction": 0.215,
+  "label": "moderate"
+ }
+}

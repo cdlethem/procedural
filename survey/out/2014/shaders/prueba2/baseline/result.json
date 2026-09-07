@@ -1,0 +1,64 @@
+{
+ "sketch": "2014/shaders/prueba2",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/shaders/prueba2/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/shaders/prueba2/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1634,
+   "md5": "632a8bce6564a816d95a8bac0137cf5c",
+   "bytes": 6389
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/shaders/prueba2/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1917,
+   "md5": "59ab8f8e50051c81e843d16aaacd5aa3",
+   "bytes": 97133
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/shaders/prueba2/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3574,
+   "md5": "e500b9144cde1477201650bb59940bf4",
+   "bytes": 556557
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  480
+ ],
+ "size_args": "720, 480, P2D",
+ "imports": [],
+ "tabs": [
+  "prueba2.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "prueba2.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/shaders/prueba2/baseline/frame_00001.png (snap) t=1634ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/shaders/prueba2/baseline/frame_00010.png (snap) t=1917ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/shaders/prueba2/baseline/frame_00060.png (snap) t=3574ms\n[harness] done frame=60 t=3554ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Neue Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1634,
+ "deterministic": false,
+ "rerun_frames": 3
+}

@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/Wannabe/marca_prueba1",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Wannabe/marca_prueba1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Wannabe/marca_prueba1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 499,
+   "md5": "f4b35c5a03569aa2a06f6394a3d55b8b",
+   "bytes": 11618
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Wannabe/marca_prueba1/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 660,
+   "md5": "b73f9aac11742117a0df27266378b7cc",
+   "bytes": 12143
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Wannabe/marca_prueba1/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1497,
+   "md5": "8d402af4a36b7ce54312baf8246d6ac9",
+   "bytes": 12149
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720",
+ "imports": [],
+ "tabs": [
+  "marca_prueba1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Wannabe/marca_prueba1/baseline/frame_00001.png (snap) t=499ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Wannabe/marca_prueba1/baseline/frame_00010.png (snap) t=660ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Wannabe/marca_prueba1/baseline/frame_00060.png (snap) t=1497ms\n[harness] done frame=60 t=1478ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "Ignoring <clipPath> tag.\n\"Exo Regular\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 499,
+ "deterministic": true,
+ "rerun_frames": 3
+}

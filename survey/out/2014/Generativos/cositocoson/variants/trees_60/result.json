@@ -1,0 +1,70 @@
+{
+ "sketch": "2014/Generativos/cositocoson",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/cositocoson/variants/trees_60",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int i = 0; i < 20; i++) {",
+   "for (int i = 0; i < 60; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/cositocoson/variants/trees_60/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 205,
+   "md5": "006ee82aeb2d1a4fab61a04742330edd",
+   "bytes": 173015
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "cositocoson.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i < 20; i++) {",
+   "new": "for (int i = 0; i < 60; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cositocoson/variants/trees_60/frame_00001.png (snap) t=205ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cositocoson/variants/trees_60/frame_00010.png (snap) t=356ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cositocoson/variants/trees_60/frame_00060.png (snap) t=1188ms\n[harness] done frame=60 t=1173ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 205,
+ "diff_vs_baseline": {
+  "mean": 0.1257,
+  "changed_fraction": 0.491,
+  "label": "moderate"
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "sketch": "2017/Pla/pla_007",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Pla/pla_007/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Pla/pla_007/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1646,
+   "md5": "c82132f34010cab7ae541cee0dfdf095",
+   "bytes": 1464138
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "pla_007.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Pla/pla_007/baseline/frame_00001.png (snap) t=1646ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Pla/pla_007/baseline/frame_00010.png (snap) t=1905ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Pla/pla_007/baseline/frame_00060.png (snap) t=3187ms\n[harness] done frame=60 t=3133ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1646,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

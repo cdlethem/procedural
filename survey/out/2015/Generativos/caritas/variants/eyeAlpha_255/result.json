@@ -1,0 +1,71 @@
+{
+ "sketch": "2015/Generativos/caritas",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/caritas/variants/eyeAlpha_255",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    fill(#28222C, random(80));",
+   "    fill(#28222C, random(255));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/caritas/variants/eyeAlpha_255/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 145,
+   "md5": "d23769ad567f308f097ef5a6660858bb",
+   "bytes": 6204
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640",
+ "imports": [],
+ "tabs": [
+  "Person.pde",
+  "caritas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    fill(#28222C, random(80));",
+   "new": "    fill(#28222C, random(255));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/caritas/variants/eyeAlpha_255/frame_00001.png (snap) t=145ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/caritas/variants/eyeAlpha_255/frame_00010.png (snap) t=291ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/caritas/variants/eyeAlpha_255/frame_00060.png (snap) t=1124ms\n[harness] done frame=60 t=1113ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 145,
+ "diff_vs_baseline": {
+  "mean": 0.0,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

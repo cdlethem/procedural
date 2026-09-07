@@ -1,0 +1,79 @@
+{
+ "sketch": "2015/Generativos/naves/naves01",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/alpha_160",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    fill(col, 20);",
+   "    fill(col, 160);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/alpha_160/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1459,
+   "md5": "2ea09e32963c7062c6aa0b7f00f4c4d7",
+   "bytes": 14012
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/alpha_160/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1660,
+   "md5": "e63b78473243ca4107f38ee1f48c9137",
+   "bytes": 17630
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/alpha_160/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2916,
+   "md5": "2c94c8f36c75fbc96bb3711dbb4589dc",
+   "bytes": 22633
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "naves01.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    fill(col, 20);",
+   "new": "    fill(col, 160);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/alpha_160/frame_00001.png (snap) t=1459ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/alpha_160/frame_00010.png (snap) t=1660ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/alpha_160/frame_00060.png (snap) t=2916ms\n[harness] done frame=60 t=2902ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1459,
+ "diff_vs_baseline": {
+  "mean": 0.0131,
+  "changed_fraction": 0.036,
+  "label": "subtle"
+ }
+}

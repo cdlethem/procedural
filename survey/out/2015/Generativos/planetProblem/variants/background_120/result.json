@@ -1,0 +1,79 @@
+{
+ "sketch": "2015/Generativos/planetProblem",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/background_120",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "background(20);",
+   "background(120);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/background_120/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1483,
+   "md5": "fa6eba92a3ced3b7fa048ed93a8720b0",
+   "bytes": 559925
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/background_120/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1696,
+   "md5": "c6d30c07bf94f09599f84d4493b73aa4",
+   "bytes": 559829
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/background_120/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2956,
+   "md5": "7752c461204614cfe28bf87496e3ae5b",
+   "bytes": 560573
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "planetProblem.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "background(20);",
+   "new": "background(120);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/background_120/frame_00001.png (snap) t=1483ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/background_120/frame_00010.png (snap) t=1696ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/background_120/frame_00060.png (snap) t=2956ms\n[harness] done frame=60 t=2927ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1483,
+ "diff_vs_baseline": {
+  "mean": 0.2341,
+  "changed_fraction": 0.857,
+  "label": "large"
+ }
+}

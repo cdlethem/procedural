@@ -1,0 +1,79 @@
+{
+ "sketch": "2015/Generativos/dataBall",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/background_200",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "background(10);",
+   "background(200);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/background_200/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1526,
+   "md5": "276fbb6c054cb50e383a15e9c503f935",
+   "bytes": 53980
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/background_200/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1726,
+   "md5": "f6000528a58fe79035fe3faf8e98d5bd",
+   "bytes": 53606
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/background_200/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2979,
+   "md5": "5eb5c2bbf1144438f18b86ef354780a7",
+   "bytes": 53524
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "dataBall.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "background(10);",
+   "new": "background(200);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/background_200/frame_00001.png (snap) t=1526ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/background_200/frame_00010.png (snap) t=1726ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/background_200/frame_00060.png (snap) t=2979ms\n[harness] done frame=60 t=2966ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Stockholm Mono\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1526,
+ "diff_vs_baseline": {
+  "mean": 0.9052,
+  "changed_fraction": 0.999,
+  "label": "large"
+ }
+}

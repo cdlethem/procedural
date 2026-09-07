@@ -1,0 +1,31 @@
+{
+ "sketch": "2018/Generativos/temor",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/temor/variants/blur_0.4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "vec3 sum = mix(col, blur(), 0.9);",
+   "vec3 sum = mix(col, blur(), 0.4);"
+  ]
+ ],
+ "status": "bad_sub",
+ "detail": "OLD text not found in any tab: 'vec3 sum = mix(col, blur(), 0.9);'",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  6500,
+  6500
+ ],
+ "size_args": "6500, 6500, P2D",
+ "imports": [],
+ "tabs": [
+  "temor.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": []
+}

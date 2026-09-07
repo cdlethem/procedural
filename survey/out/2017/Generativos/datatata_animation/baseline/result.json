@@ -1,0 +1,63 @@
+{
+ "sketch": "2017/Generativos/datatata_animation",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1778,
+   "md5": "1005b494a3b7888fd2930576eb7e1391",
+   "bytes": 187430
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3949,
+   "md5": "274e7e75f04c459959d1153e364f0227",
+   "bytes": 189158
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 14685,
+   "md5": "9fc6d307d1f2175a685ffdea0485d32b",
+   "bytes": 176716
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P3D",
+ "imports": [],
+ "tabs": [
+  "datatata_animation.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 16.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/baseline/frame_00001.png (snap) t=1778ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/baseline/frame_00010.png (snap) t=3949ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata_animation/baseline/frame_00060.png (snap) t=14685ms\n[harness] done frame=60 t=14668ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1778,
+ "deterministic": true,
+ "rerun_frames": 3
+}

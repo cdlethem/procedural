@@ -1,0 +1,61 @@
+{
+ "sketch": "2016/lineHexa",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/lineHexa/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/lineHexa/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1532,
+   "md5": "2bf7eba998ddb8cd000bf992da8f1927",
+   "bytes": 534438
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/lineHexa/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1784,
+   "md5": "040149d377f49222764d85a859e484ad",
+   "bytes": 535863
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/lineHexa/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3075,
+   "md5": "5e37bd705dee7a08ba5fbf467ba55e31",
+   "bytes": 544014
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "lineHexa.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/lineHexa/baseline/frame_00001.png (snap) t=1532ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/lineHexa/baseline/frame_00010.png (snap) t=1784ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/lineHexa/baseline/frame_00060.png (snap) t=3075ms\n[harness] done frame=60 t=3016ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1532,
+ "deterministic": false,
+ "rerun_frames": 3
+}

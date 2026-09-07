@@ -1,0 +1,62 @@
+{
+ "sketch": "2014/Image Effects/neon1",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Image Effects/neon1/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Image Effects/neon1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 258,
+   "md5": "d2a3757b29c2e629a496e84c503029c9",
+   "bytes": 1979
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  500
+ ],
+ "size_args": "600, 500",
+ "imports": [],
+ "tabs": [
+  "neon1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Image Effects/neon1/baseline/frame_00001.png (snap) t=258ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Image Effects/neon1/baseline/frame_00002.png (snap) t=270ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Image Effects/neon1/baseline/frame_00010.png (snap) t=403ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Image Effects/neon1/baseline/frame_00060.png (snap) t=1233ms\n[harness] done frame=60 t=1226ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Sawasdee\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 258,
+ "deterministic": true,
+ "rerun_frames": 1
+}

@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/Particulas/multiplicadoras",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Particulas/multiplicadoras/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Particulas/multiplicadoras/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 216,
+   "md5": "619d5620643cf5aca10a6aa243788ceb",
+   "bytes": 1497
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "multiplicadoras.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Particulas/multiplicadoras/baseline/frame_00001.png (snap) t=216ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Particulas/multiplicadoras/baseline/frame_00002.png (snap) t=236ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Particulas/multiplicadoras/baseline/frame_00010.png (snap) t=366ms\n0 59.66033\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Particulas/multiplicadoras/baseline/frame_00060.png (snap) t=1198ms\n[harness] done frame=60 t=1188ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 216,
+ "deterministic": true,
+ "rerun_frames": 1
+}

@@ -1,0 +1,34 @@
+{
+ "sketch": "2015/ProjectEuler/problem15",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/ProjectEuler/problem15/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "runtime_error",
+ "detail": "problem15.pde:16:0:16:0: OutOfMemoryError: Java heap space",
+ "frames": [],
+ "warnings": [
+  "sketch killed 2 s after the exception (launcher leaves it suspended)"
+ ],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": null,
+ "imports": [],
+ "tabs": [
+  "problem15.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "seed_fields": [],
+ "wall_s": 12.0,
+ "rc": 143,
+ "timed_out": false,
+ "stdout_tail": "LEVEL 0 1\nLEVEL 1 2\nLEVEL 2 4\nLEVEL 3 8\nLEVEL 4 16\nLEVEL 5 32\nLEVEL 6 64\nLEVEL 7 128\nLEVEL 8 256\nLEVEL 9 512\nLEVEL 10 1024\nLEVEL 11 2048\nLEVEL 12 4096\nLEVEL 13 8192\nLEVEL 14 16384\nLEVEL 15 32768\nLEVEL 16 65536\nLEVEL 17 131072\nLEVEL 18 262144\nLEVEL 19 524288\nLEVEL 20 1048576\nLEVEL 21 2097150\nLEVEL 22 4194258\nLEVEL 23 8388054\nLEVEL 24 16772566\nLEVEL 25 33523880\nLEVEL 26 66941500",
+ "stderr_tail": "problem15.pde:16:0:16:0: OutOfMemoryError: Java heap space\nOutOfMemoryError: You may need to increase the memory setting in Preferences.\nAn OutOfMemoryError means that your code is either using up too much memory\nbecause of a bug (e.g. creating an array that's too large, or unintentionally\nloading thousands of images), or that your sketch may need more memory to run.\nIf your sketch uses a lot of memory (for instance if it loads a lot of data files)\nyou can increase the memory available to your sketch using the Preferences window.",
+ "ms_first_frame": null
+}

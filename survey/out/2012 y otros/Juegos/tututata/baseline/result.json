@@ -1,0 +1,64 @@
+{
+ "sketch": "2012 y otros/Juegos/tututata",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/tututata/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/tututata/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 133,
+   "md5": "09433b320d3e6ef7e00cbfc5564e420c",
+   "bytes": 1876
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/tututata/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 274,
+   "md5": "2330ece91beadc066d5c458625bc3e80",
+   "bytes": 1929
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/tututata/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1105,
+   "md5": "3f0c2b1aa0c74e7481c4ffb15a7f2040",
+   "bytes": 2152
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "Disparo.pde",
+  "Malo.pde",
+  "Punto.pde",
+  "funciones.pde",
+  "tututata.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/tututata/baseline/frame_00001.png (snap) t=133ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/tututata/baseline/frame_00010.png (snap) t=274ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/tututata/baseline/frame_00060.png (snap) t=1105ms\n[harness] done frame=60 t=1101ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 133,
+ "deterministic": true,
+ "rerun_frames": 3
+}

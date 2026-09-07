@@ -1,0 +1,44 @@
+{
+ "sketch": "2016/Pdf/stickers",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Pdf/stickers/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Pdf/stickers/baseline/self_20260902-185218.pdf",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1448,
+   "md5": "969695d662dc2ebea24d23748cdc25ef",
+   "bytes": 465494
+  }
+ ],
+ "warnings": [],
+ "renderer": "PDF",
+ "size": null,
+ "size_args": "w, h, PDF, getTimestamp()+\".pdf\"",
+ "imports": [
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "stickers.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "Finished.\n[harness] save failed: java.lang.RuntimeException: No save() for PGraphicsPDF\n[harness] dispose frame=2 saved=false\n[harness] save failed: java.lang.RuntimeException: No save() for PGraphicsPDF\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1448,
+ "deterministic": false,
+ "rerun_frames": 1
+}

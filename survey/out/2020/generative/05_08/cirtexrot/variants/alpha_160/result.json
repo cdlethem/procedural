@@ -1,0 +1,88 @@
+{
+ "sketch": "2020/generative/05_08/cirtexrot",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/alpha_160",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    tint(rcol(), random(80)*random(1));",
+   "    tint(rcol(), random(160)*random(1));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/alpha_160/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1583,
+   "md5": "9d17075a52f6650a60e5382d8f57cf3b",
+   "bytes": 2190020
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/alpha_160/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1789,
+   "md5": "2fc88a750344a8442aa720c830725d51",
+   "bytes": 4795
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/alpha_160/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3051,
+   "md5": "2fc88a750344a8442aa720c830725d51",
+   "bytes": 4795
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "cirtexrot.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "    tint(rcol(), random(80)*random(1));",
+   "new": "    tint(rcol(), random(160)*random(1));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/alpha_160/frame_00001.png (snap) t=1583ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/alpha_160/frame_00010.png (snap) t=1789ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/alpha_160/frame_00060.png (snap) t=3051ms\n[harness] done frame=60 t=3024ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1583,
+ "diff_vs_baseline": {
+  "mean": 0.3267,
+  "changed_fraction": 0.986,
+  "label": "large"
+ }
+}

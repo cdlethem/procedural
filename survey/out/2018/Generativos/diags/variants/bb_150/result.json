@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/diags",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/diags/variants/bb_150",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float bb = 50;",
+   "float bb = 150;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/diags/variants/bb_150/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1451,
+   "md5": "b64a2e466bdac3055f3d59007005526e",
+   "bytes": 103147
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "diags.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float bb = 50;",
+   "new": "float bb = 150;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/diags/variants/bb_150/frame_00001.png (snap) t=1451ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/diags/variants/bb_150/frame_00010.png (snap) t=1662ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/diags/variants/bb_150/frame_00060.png (snap) t=2915ms\n[harness] done frame=60 t=2891ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1451,
+ "diff_vs_baseline": {
+  "mean": 0.1207,
+  "changed_fraction": 0.581,
+  "label": "moderate"
+ }
+}

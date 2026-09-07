@@ -1,0 +1,61 @@
+{
+ "sketch": "2018/rectLinesDiag",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/rectLinesDiag/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/rectLinesDiag/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 192,
+   "md5": "2226faf65c45a2724b134c7dd6513500",
+   "bytes": 3364
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/rectLinesDiag/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 337,
+   "md5": "f02ddd4237388120659d174247e685fb",
+   "bytes": 3379
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/rectLinesDiag/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1169,
+   "md5": "bbf23979ac35a12f935609ae4fa737e0",
+   "bytes": 3722
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640",
+ "imports": [],
+ "tabs": [
+  "rectLinesDiag.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2018/rectLinesDiag/baseline/frame_00001.png (snap) t=192ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/rectLinesDiag/baseline/frame_00010.png (snap) t=337ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/rectLinesDiag/baseline/frame_00060.png (snap) t=1169ms\n[harness] done frame=60 t=1160ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 192,
+ "deterministic": false,
+ "rerun_frames": 3
+}

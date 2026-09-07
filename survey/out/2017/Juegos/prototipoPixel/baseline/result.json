@@ -1,0 +1,58 @@
+{
+ "sketch": "2017/Juegos/prototipoPixel",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Juegos/prototipoPixel/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Juegos/prototipoPixel/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 345,
+   "md5": "5125b9c20c19aa268f73410b1cc395d9",
+   "bytes": 134820
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Juegos/prototipoPixel/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 522,
+   "md5": "853622f161a17ad3bb126ef37fe90964",
+   "bytes": 134836
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Juegos/prototipoPixel/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1365,
+   "md5": "059e6bde12417691c3eb809494a113b4",
+   "bytes": 134723
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": "WIDTH*scale, HEIGHT*scale",
+ "imports": [],
+ "tabs": [
+  "prototipoPixel.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Juegos/prototipoPixel/baseline/frame_00001.png (snap) t=345ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Juegos/prototipoPixel/baseline/frame_00010.png (snap) t=522ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Juegos/prototipoPixel/baseline/frame_00060.png (snap) t=1365ms\n[harness] done frame=60 t=1341ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 345,
+ "deterministic": true,
+ "rerun_frames": 3
+}

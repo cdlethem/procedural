@@ -1,0 +1,78 @@
+{
+ "sketch": "2020/generative/01_04/sabanas",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/sabanas/variants/palette_alt",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "#505050, #000000, #ff0000, #000000, #0000ff=>#50A85F, #DD2800, #F2AF3C, #5475A8"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/sabanas/variants/palette_alt/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2538,
+   "md5": "66502b1123e767220d3f7903f64d9d11",
+   "bytes": 2042616
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "sabanas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "#505050, #000000, #ff0000, #000000, #0000ff",
+   "new": "#50A85F, #DD2800, #F2AF3C, #5475A8",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "blank"
+  ],
+  [
+   60,
+   "blank"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/sabanas/variants/palette_alt/frame_00001.png (snap) t=2538ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/sabanas/variants/palette_alt/frame_00010.png (snap) t=2747ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/sabanas/variants/palette_alt/frame_00060.png (snap) t=4003ms\n[harness] done frame=60 t=3979ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2538,
+ "diff_vs_baseline": {
+  "mean": 0.1613,
+  "changed_fraction": 0.634,
+  "label": "large"
+ }
+}

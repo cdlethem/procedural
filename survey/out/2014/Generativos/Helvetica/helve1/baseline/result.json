@@ -1,0 +1,45 @@
+{
+ "sketch": "2014/Generativos/Helvetica/helve1",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Helvetica/helve1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Helvetica/helve1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 223,
+   "md5": "5a9d47927f2359e9474e6026390b0a99",
+   "bytes": 257988
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "helve1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 36.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Helvetica/helve1/baseline/frame_00001.png (snap) t=223ms\n[harness] dispose frame=2 saved=true\n[harness] watchdog: no draw() reached budget; frame=2 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.\nCould not save ${GENART_SURVEY_ROOT}/.build/583875ff0d/helve1/dormir, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)",
+ "ms_first_frame": 223,
+ "deterministic": true,
+ "rerun_frames": 1
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/noiseGrads",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/noiseGrads/variants/det_0.02",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float det = random(0.01);",
+   "float det = random(0.02);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/noiseGrads/variants/det_0.02/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1587,
+   "md5": "fe404e2cee21b91abfb439a68c1c1a39",
+   "bytes": 2402797
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "noiseGrads.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float det = random(0.01);",
+   "new": "float det = random(0.02);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n-0.18042022\n-0.19395085\n-0.20693044\n-0.21843651\n-0.23044322\n-0.24193618\n-0.2532377\n-0.26319003\n-0.27065822\n-0.27322674\n-0.2762713\n-0.2830854\n-0.29168993\n-0.2996869\n-0.30680087\n-0.31101036\n-0.30974993\n-0.29886645\n-0.2779256\n-0.24745664\n-0.20213701\n-0.14866896\n-0.10855127\n-0.0852292\n-0.0680032\n-0.053236034\n-0.04562516\n-0.03859779\n-0.036166884\n-0.03736776\n-0.03504546\n-0.035045374\n-0.031643607\n-0.02778607\n-0.020704918\n-0.009305848\n0.012076825\n0.03968654\n0.06897385\n0.08542782\n0.0914906\n0.094744116\n0.10013532\n0.10324689\n0.10442152\n0.10351013\n0.10554655\n0.10430297\n0.10208926\n0.09706929\n0.093837574\n0.089685306\n0.083465196\n0.077414975\n0.07128207\n0.06459616\n0.0581067\n0.052392237\n0.045390233\n0.038463864\n0.03236312\n0.02565558\n0.019897237\n0.019372517\n0.020340938\n0.030198988\n0.04319503\n0.057900395\n0.05896637\n0.07716202\n0.08637985\n0.086423\n0.08272988\n0.07712911\n0.0695578\n0.062822446\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/noiseGrads/variants/det_0.02/frame_00001.png (snap) t=1587ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/noiseGrads/variants/det_0.02/frame_00010.png (snap) t=1843ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/noiseGrads/variants/det_0.02/frame_00060.png (snap) t=3149ms\n[harness] done frame=60 t=3058ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1587,
+ "diff_vs_baseline": {
+  "mean": 0.0653,
+  "changed_fraction": 0.221,
+  "label": "moderate"
+ }
+}

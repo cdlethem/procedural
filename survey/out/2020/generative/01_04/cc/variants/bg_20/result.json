@@ -1,0 +1,78 @@
+{
+ "sketch": "2020/generative/01_04/cc",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cc/variants/bg_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "  background(230);//255);=>  background(20);//255);"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cc/variants/bg_20/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2056,
+   "md5": "1e34b011734ef24b844d65e7d1d13ae5",
+   "bytes": 498061
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cc/variants/bg_20/self_20260903-013524-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2874,
+   "md5": "1e34b011734ef24b844d65e7d1d13ae5",
+   "bytes": 498061
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "cc.pde",
+  "render.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  background(230);//255);",
+   "new": "  background(20);//255);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cc/variants/bg_20/frame_00001.png (dispose) t=2056ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2056,
+ "diff_vs_baseline": {
+  "mean": 0.718,
+  "changed_fraction": 1.0,
+  "label": "large"
+ }
+}

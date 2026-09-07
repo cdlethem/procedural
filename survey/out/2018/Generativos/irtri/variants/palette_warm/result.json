@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/irtri",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/irtri/variants/palette_warm",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#F6F2EC, #F5CE00, #FE84A9, #00A5D0, #0072B1, #004D4F};",
+   "int colors[] = {#F6F2EC, #FF7B00, #E63946, #A8DADC, #457B9D, #1D3557};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/irtri/variants/palette_warm/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 3769,
+   "md5": "f3b660c86cebcf56bea4f8af22db1889",
+   "bytes": 25462039
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/irtri/variants/palette_warm/self_20260905-093302.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3880,
+   "md5": "f3b660c86cebcf56bea4f8af22db1889",
+   "bytes": 25462039
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "irtri.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#F6F2EC, #F5CE00, #FE84A9, #00A5D0, #0072B1, #004D4F};",
+   "new": "int colors[] = {#F6F2EC, #FF7B00, #E63946, #A8DADC, #457B9D, #1D3557};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/irtri/variants/palette_warm/frame_00001.png (dispose) t=3769ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3769,
+ "diff_vs_baseline": {
+  "mean": 0.1009,
+  "changed_fraction": 0.507,
+  "label": "moderate"
+ }
+}

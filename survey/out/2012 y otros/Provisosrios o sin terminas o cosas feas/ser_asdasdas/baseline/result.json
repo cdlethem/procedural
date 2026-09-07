@@ -1,0 +1,57 @@
+{
+ "sketch": "2012 y otros/Provisosrios o sin terminas o cosas feas/ser_asdasdas",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/ser_asdasdas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/ser_asdasdas/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 307,
+   "md5": "82ca44ba4bf30ef7439244cc2a3b69aa",
+   "bytes": 1964
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "Comida.pde",
+  "Ser.pde",
+  "ser_asdasdas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/ser_asdasdas/baseline/frame_00001.png (snap) t=307ms\n990.0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/ser_asdasdas/baseline/frame_00010.png (snap) t=455ms\n980.0\n970.0\n960.0\n950.0\n940.0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/ser_asdasdas/baseline/frame_00060.png (snap) t=1282ms\n[harness] done frame=60 t=1278ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 307,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

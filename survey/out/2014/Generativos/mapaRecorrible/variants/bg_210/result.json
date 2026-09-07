@@ -1,0 +1,72 @@
+{
+ "sketch": "2014/Generativos/mapaRecorrible",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/bg_210",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "background(252);",
+   "background(210);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/bg_210/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 202,
+   "md5": "4b40bf8a32dbaf54bb31ee331535bd16",
+   "bytes": 87836
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  400
+ ],
+ "size_args": "800, 400",
+ "imports": [],
+ "tabs": [
+  "mapaRecorrible.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "background(252);",
+   "new": "background(210);",
+   "count": 2
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/bg_210/frame_00001.png (snap) t=202ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/bg_210/frame_00010.png (snap) t=354ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/bg_210/frame_00060.png (snap) t=1186ms\n[harness] done frame=60 t=1178ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 202,
+ "diff_vs_baseline": {
+  "mean": 0.0721,
+  "changed_fraction": 0.395,
+  "label": "moderate"
+ }
+}

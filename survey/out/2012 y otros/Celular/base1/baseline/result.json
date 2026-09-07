@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/Celular/base1",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Celular/base1/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Celular/base1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 202,
+   "md5": "3a29a38983c981f0fd384af3ce272cea",
+   "bytes": 795
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  320,
+  240
+ ],
+ "size_args": "320,240",
+ "imports": [],
+ "tabs": [
+  "base1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Celular/base1/baseline/frame_00001.png (snap) t=202ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Celular/base1/baseline/frame_00002.png (snap) t=207ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Celular/base1/baseline/frame_00010.png (snap) t=339ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Celular/base1/baseline/frame_00060.png (snap) t=1172ms\n[harness] done frame=60 t=1170ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 202,
+ "deterministic": true,
+ "rerun_frames": 1
+}

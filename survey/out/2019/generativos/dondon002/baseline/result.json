@@ -1,0 +1,54 @@
+{
+ "sketch": "2019/generativos/dondon002",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/dondon002/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/dondon002/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2473,
+   "md5": "c31d5e7e538cb9e5706df511953f5eec",
+   "bytes": 2355517
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [],
+ "tabs": [
+  "dondon002.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n0.045512743 -0.08906696 -1.0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dondon002/baseline/frame_00001.png (snap) t=2473ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dondon002/baseline/frame_00010.png (snap) t=2756ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dondon002/baseline/frame_00060.png (snap) t=4056ms\n[harness] done frame=60 t=3979ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2473,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

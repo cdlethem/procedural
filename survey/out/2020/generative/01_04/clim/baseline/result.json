@@ -1,0 +1,66 @@
+{
+ "sketch": "2020/generative/01_04/clim",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/clim/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/clim/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2566,
+   "md5": "1a4e35700c94715e53efe646aee8a14a",
+   "bytes": 2453547
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "clim.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/clim/baseline/frame_00001.png (snap) t=2566ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/clim/baseline/frame_00010.png (snap) t=2827ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/clim/baseline/frame_00060.png (snap) t=4135ms\n[harness] done frame=60 t=4060ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2566,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

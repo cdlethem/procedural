@@ -1,0 +1,64 @@
+{
+ "sketch": "2020/Games/Celulars",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/Games/Celulars/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/Games/Celulars/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1485,
+   "md5": "d1cf1eeceea49b4342e8af35bf3b8191",
+   "bytes": 14480
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/Games/Celulars/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 4065,
+   "md5": "294d3a177c0a207b4f1dcafe6109b3bd",
+   "bytes": 14250
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/Games/Celulars/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5325,
+   "md5": "d60927a44f6a40080967c94d39c003e5",
+   "bytes": 14408
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P3D",
+ "imports": [],
+ "tabs": [
+  "Cell.pde",
+  "Celulars.pde",
+  "Player.pde",
+  "global.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 6.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2020/Games/Celulars/baseline/frame_00001.png (snap) t=1485ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/Games/Celulars/baseline/frame_00010.png (snap) t=4065ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/Games/Celulars/baseline/frame_00060.png (snap) t=5325ms\n[harness] done frame=60 t=5313ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1485,
+ "deterministic": false,
+ "rerun_frames": 3
+}

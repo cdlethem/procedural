@@ -1,0 +1,57 @@
+{
+ "sketch": "2018/Generativos/metemete",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/metemete/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/metemete/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 747,
+   "md5": "eb1d7a92c8e4f5dcedd5c3f5ed85a9fe",
+   "bytes": 2350295
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "metemete.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/metemete/baseline/frame_00001.png (snap) t=747ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/metemete/baseline/frame_00010.png (snap) t=956ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/metemete/baseline/frame_00060.png (snap) t=1853ms\n[harness] done frame=60 t=1773ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 747,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

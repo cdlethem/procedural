@@ -1,0 +1,541 @@
+{
+ "sketch": "2019/Lorenz/lorenz02",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1489,
+   "md5": "d84419793ed308b3d6f6a4ebb3a796b5",
+   "bytes": 15142
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1702,
+   "md5": "d253d55addb4d94609d2b2911b6eaca7",
+   "bytes": 18437
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5896,
+   "md5": "72370ec0639d14a5b9243365cc91fd42",
+   "bytes": 15661
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0020.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2914,
+   "md5": "735534ec5545e7d18200f0d785f306e1",
+   "bytes": 15772
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0048.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6554,
+   "md5": "c5460b7f1e2d8b801d6ca3cc61515ae7",
+   "bytes": 8729
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0004.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2513,
+   "md5": "cedaf47899c9e29bedf795a3e860e43e",
+   "bytes": 12797
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0039.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6326,
+   "md5": "99328fe42ad6476badeee17803d41424",
+   "bytes": 6161
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0015.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2788,
+   "md5": "39791485b30c23c11c1455449e2f6f02",
+   "bytes": 17884
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0060.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6857,
+   "md5": "72370ec0639d14a5b9243365cc91fd42",
+   "bytes": 15661
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0055.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6731,
+   "md5": "a61195326cdacd22ab64c43e42020344",
+   "bytes": 12983
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0031.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6125,
+   "md5": "9ceb6c8fa64af7d386ff88799aa1f347",
+   "bytes": 9470
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0022.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2964,
+   "md5": "edd05bf410c751bf36fae921a5521112",
+   "bytes": 14756
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0054.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6705,
+   "md5": "d0b86e6381ebb256e50600074d4078a0",
+   "bytes": 12416
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0007.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2588,
+   "md5": "de5aff4a3bc5b7df3eb95dd8d12af06d",
+   "bytes": 16301
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0030.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6102,
+   "md5": "bdb3aa9947090c69d96f7fbdb606bfd3",
+   "bytes": 10124
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0003.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2489,
+   "md5": "e6381910b4f5313169d4067f785f1276",
+   "bytes": 13903
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0001.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2447,
+   "md5": "d84419793ed308b3d6f6a4ebb3a796b5",
+   "bytes": 15142
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0008.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2612,
+   "md5": "83aaab907da2297bc191dca89009b218",
+   "bytes": 17293
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0053.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6680,
+   "md5": "76c3d776d02f4108779982c0f902635f",
+   "bytes": 11802
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0025.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 4991,
+   "md5": "e29153af3606e703f95b2c4e451dad75",
+   "bytes": 13057
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0028.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6051,
+   "md5": "b5627e052c1286885fe10795997078b3",
+   "bytes": 11259
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0047.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6529,
+   "md5": "d061bd7ba67b5be55198fd15cb5f7016",
+   "bytes": 8134
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0018.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2863,
+   "md5": "a4e9f12d731c10dad6309ca851b55776",
+   "bytes": 16651
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0009.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2638,
+   "md5": "f69fb2690dd3c05247ebce25de47679b",
+   "bytes": 17868
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0052.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6654,
+   "md5": "70ddf3abb6e926f0b4dc8c1a5898a313",
+   "bytes": 11235
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0044.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6453,
+   "md5": "551cc7a50eb013334dae151f13e5c90b",
+   "bytes": 6593
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0035.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6226,
+   "md5": "d59ebc57acc74ec637856f0ffc61bde5",
+   "bytes": 6975
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0059.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6832,
+   "md5": "13b695b11fae3b9ad1e4c63a54789bea",
+   "bytes": 15281
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0045.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6479,
+   "md5": "5403c36ec3181efc35558a7fef63cb88",
+   "bytes": 7086
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0016.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2813,
+   "md5": "0a81659349aa08cd7bbf735ddc1181a5",
+   "bytes": 17506
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0027.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6027,
+   "md5": "be6623124e892ffd5fad8c09caeaf684",
+   "bytes": 11801
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0036.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6251,
+   "md5": "da9c90fc1aa3de8aec1074dbfc94acec",
+   "bytes": 6699
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0006.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2562,
+   "md5": "2f7345fe5e9559c563519b67bc40fe16",
+   "bytes": 15063
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0017.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2838,
+   "md5": "505d03ec4bf92a021ceb46f30806b9f2",
+   "bytes": 17255
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0041.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6378,
+   "md5": "994a3cc2e6fd5d82ec71802f1882bef9",
+   "bytes": 6203
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0042.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6403,
+   "md5": "b76edafd32f69b9af6d7648a5329baf4",
+   "bytes": 6363
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0024.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3993,
+   "md5": "13570e25a0832db2f87880deddf44ce8",
+   "bytes": 13632
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0049.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6579,
+   "md5": "50a3ae05f2f989708a27a8eb9b90fa02",
+   "bytes": 9305
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0051.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6629,
+   "md5": "7b48db2693e214fca951bc31a3aa6870",
+   "bytes": 10498
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0010.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2662,
+   "md5": "d253d55addb4d94609d2b2911b6eaca7",
+   "bytes": 18437
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0050.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6604,
+   "md5": "6633db6918a5605948f3d56ee8eae931",
+   "bytes": 9911
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0011.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2689,
+   "md5": "aafb23b334e9725a5e741e2c1a5af389",
+   "bytes": 18441
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0058.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6806,
+   "md5": "b94c5931f32ff64afd96b3c95fb2eb1c",
+   "bytes": 14591
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0040.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6352,
+   "md5": "e6afb3ca3370cf48668144162714094a",
+   "bytes": 6135
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0034.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6201,
+   "md5": "45cbf54d448738151542f2a6483789fa",
+   "bytes": 7556
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0014.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2763,
+   "md5": "b9b487960532cc4273f05c4b0be6783a",
+   "bytes": 18161
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0057.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6783,
+   "md5": "26f4788d08c3e3e8e6d973eec1bcd489",
+   "bytes": 14213
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0021.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2939,
+   "md5": "d64d649f129162450f8e61a79306c335",
+   "bytes": 15263
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0002.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2468,
+   "md5": "c62c2f5c9465f5c992615ab5cf551e52",
+   "bytes": 14620
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0043.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6428,
+   "md5": "2345da8621f5f0a1260d44be04a312b0",
+   "bytes": 6334
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0033.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6175,
+   "md5": "0af0ac284007c8eee4a8618e0a3be6f0",
+   "bytes": 8201
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0005.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2538,
+   "md5": "dea11c33b39f1eb7e4a75fd9750386b1",
+   "bytes": 13849
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0026.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 5996,
+   "md5": "59bbe421cf7ab20dbb077798ad10a159",
+   "bytes": 12312
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0038.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6301,
+   "md5": "2951e07caa3b42a78bc56a17506f9587",
+   "bytes": 6311
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0019.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2889,
+   "md5": "e85b8ca9318e46af53231332fc074594",
+   "bytes": 16343
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0023.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2990,
+   "md5": "746f0b50ba49e37e2b6f8dc83a96e334",
+   "bytes": 14170
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0037.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6276,
+   "md5": "501cbf78d5f1807f2084d65123d08f22",
+   "bytes": 6489
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0013.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2738,
+   "md5": "966d84c54536271bd88741382c90fb74",
+   "bytes": 18245
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0029.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6077,
+   "md5": "b033104707e1854b2fe759bb59148ce0",
+   "bytes": 10711
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0032.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6150,
+   "md5": "6ce0d684ea6ad2e12528d908de6d481f",
+   "bytes": 8858
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0056.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6756,
+   "md5": "857e3c1ef59905f540661c2581f5fce0",
+   "bytes": 13655
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0046.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6505,
+   "md5": "4142529343324b73a7c1952d48adf6d2",
+   "bytes": 7638
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/self_f0012.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2713,
+   "md5": "a8a6cf314426580868ae554074317572",
+   "bytes": 18472
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  500,
+  500
+ ],
+ "size_args": "500, 500, P3D",
+ "imports": [],
+ "tabs": [
+  "lorenz02.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 7.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/frame_00001.png (snap) t=1489ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/frame_00010.png (snap) t=1702ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Lorenz/lorenz02/baseline/frame_00060.png (snap) t=5896ms\n[harness] done frame=60 t=5891ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1489,
+ "deterministic": true,
+ "rerun_frames": 63
+}

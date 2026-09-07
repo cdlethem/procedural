@@ -1,0 +1,44 @@
+{
+ "sketch": "2016/Pdf/pelos",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Pdf/pelos/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Pdf/pelos/baseline/self_20260902-185217.pdf",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2863,
+   "md5": "c6bf59ea1a06b3103ce6410b8931bf49",
+   "bytes": 4716258
+  }
+ ],
+ "warnings": [],
+ "renderer": "PDF",
+ "size": null,
+ "size_args": "w, h, PDF, getTimestamp()+\".pdf\"",
+ "imports": [
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "pelos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "Size 826 826\nFinished.\n[harness] save failed: java.lang.RuntimeException: No save() for PGraphicsPDF\n[harness] dispose frame=2 saved=false\n[harness] save failed: java.lang.RuntimeException: No save() for PGraphicsPDF\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 2863,
+ "deterministic": false,
+ "rerun_frames": 1
+}

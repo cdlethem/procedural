@@ -1,0 +1,28 @@
+{
+ "sketch": "2012 y otros/Arduino/golpe",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Arduino/golpe/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "cc.arduino.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [
+  "cc.arduino.*",
+  "ddf.minim.*",
+  "processing.serial.*"
+ ],
+ "tabs": [
+  "golpe.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

@@ -1,0 +1,63 @@
+{
+ "sketch": "2017/rings_animate",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/rings_animate/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/rings_animate/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 242,
+   "md5": "30a65a0dbb8cceff1921ae76aa4451fa",
+   "bytes": 250958
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/rings_animate/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 479,
+   "md5": "853b3c0403382cf40ef351a120497896",
+   "bytes": 451461
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/rings_animate/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1339,
+   "md5": "ac06449128a15a827b75ba36ea2910e9",
+   "bytes": 812335
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "rings_animate.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/rings_animate/baseline/frame_00001.png (snap) t=242ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/rings_animate/baseline/frame_00010.png (snap) t=479ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/rings_animate/baseline/frame_00060.png (snap) t=1339ms\n[harness] done frame=60 t=1303ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 242,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/studio",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/studio/variants/strokeW_0.03_0.12",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float ss = max(1, p.z*random(0.01, 0.08));",
+   "    float ss = max(1, p.z*random(0.03, 0.12));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/studio/variants/strokeW_0.03_0.12/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 228,
+   "md5": "e29ffcad4843d6b835389ac9a3a0175b",
+   "bytes": 327257
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "studio.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float ss = max(1, p.z*random(0.01, 0.08));",
+   "new": "    float ss = max(1, p.z*random(0.03, 0.12));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/studio/variants/strokeW_0.03_0.12/frame_00001.png (snap) t=228ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/studio/variants/strokeW_0.03_0.12/frame_00010.png (snap) t=393ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/studio/variants/strokeW_0.03_0.12/frame_00060.png (snap) t=1239ms\n[harness] done frame=60 t=1210ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 228,
+ "diff_vs_baseline": {
+  "mean": 0.0205,
+  "changed_fraction": 0.067,
+  "label": "subtle"
+ }
+}

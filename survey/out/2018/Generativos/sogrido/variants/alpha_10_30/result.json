@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/sogrido",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/sogrido/variants/alpha_10_30",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float alp = random(40, 80)*1.;",
+   "    float alp = random(10, 30)*1.;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/sogrido/variants/alpha_10_30/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1762,
+   "md5": "f9c2d37b362099505c394b0e5bda4149",
+   "bytes": 2402494
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "sogrido.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float alp = random(40, 80)*1.;",
+   "new": "    float alp = random(10, 30)*1.;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/sogrido/variants/alpha_10_30/frame_00001.png (snap) t=1762ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/sogrido/variants/alpha_10_30/frame_00010.png (snap) t=2022ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/sogrido/variants/alpha_10_30/frame_00060.png (snap) t=3330ms\n[harness] done frame=60 t=3237ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1762,
+ "diff_vs_baseline": {
+  "mean": 0.1938,
+  "changed_fraction": 0.767,
+  "label": "large"
+ }
+}

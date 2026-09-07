@@ -1,0 +1,91 @@
+{
+ "sketch": "2020/generative/01_04/papalon",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/variants/points_30000",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  for (int i = 0; i < 120000; i++) {",
+   "  for (int i = 0; i < 30000; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/variants/points_30000/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1596,
+   "md5": "4943924d19a5da3f275ef46a48b363ad",
+   "bytes": 2376269
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/variants/points_30000/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1802,
+   "md5": "65242c0825eccc882ed3fd103bf8e545",
+   "bytes": 11062
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/variants/points_30000/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3071,
+   "md5": "65242c0825eccc882ed3fd103bf8e545",
+   "bytes": 11062
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "papalon.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  for (int i = 0; i < 120000; i++) {",
+   "new": "  for (int i = 0; i < 30000; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/variants/points_30000/frame_00001.png (snap) t=1596ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/variants/points_30000/frame_00010.png (snap) t=1802ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/variants/points_30000/frame_00060.png (snap) t=3071ms\n[harness] done frame=60 t=3037ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1596,
+ "diff_vs_baseline": {
+  "mean": 0.3191,
+  "changed_fraction": 0.878,
+  "label": "large"
+ }
+}

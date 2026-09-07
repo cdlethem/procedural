@@ -1,0 +1,63 @@
+{
+ "sketch": "2019/perlinMoving",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/perlinMoving/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/perlinMoving/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1540,
+   "md5": "22f7400559cbca14a18b53d237bbc09f",
+   "bytes": 17762
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/perlinMoving/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1763,
+   "md5": "53feb547956d3328bd22e964ffe78eba",
+   "bytes": 90537
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/perlinMoving/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3028,
+   "md5": "e813c822deedc281502537ba2ba024b2",
+   "bytes": 366651
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720, P2D",
+ "imports": [],
+ "tabs": [
+  "perlinMoving.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/perlinMoving/baseline/frame_00001.png (snap) t=1540ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/perlinMoving/baseline/frame_00010.png (snap) t=1763ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/perlinMoving/baseline/frame_00060.png (snap) t=3028ms\n[harness] done frame=60 t=2998ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1540,
+ "deterministic": false,
+ "rerun_frames": 3
+}

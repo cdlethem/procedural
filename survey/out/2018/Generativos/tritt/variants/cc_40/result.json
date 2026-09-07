@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/tritt",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tritt/variants/cc_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(3, 26));",
+   "int cc = 40;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tritt/variants/cc_40/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2727,
+   "md5": "533f2417f10ad3c7905bd2da2342099a",
+   "bytes": 7338186
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tritt/variants/cc_40/self_20260906-044058.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3077,
+   "md5": "533f2417f10ad3c7905bd2da2342099a",
+   "bytes": 7338186
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "tritt.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(3, 26));",
+   "new": "int cc = 40;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/tritt/variants/cc_40/frame_00001.png (dispose) t=2727ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2727,
+ "diff_vs_baseline": {
+  "mean": 0.0004,
+  "changed_fraction": 0.001,
+  "label": "none"
+ }
+}

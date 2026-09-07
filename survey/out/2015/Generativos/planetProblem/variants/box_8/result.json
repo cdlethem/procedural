@@ -1,0 +1,79 @@
+{
+ "sketch": "2015/Generativos/planetProblem",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/box_8",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "box(2);",
+   "box(8);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/box_8/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1496,
+   "md5": "260a49a4be18fbeaee3241bdcbe94990",
+   "bytes": 304544
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/box_8/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1707,
+   "md5": "500f2b11b0bfb74d62e6b562d40476ba",
+   "bytes": 305119
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/box_8/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2965,
+   "md5": "ec346bbc2092d8bc073ef90771fbed91",
+   "bytes": 305319
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "planetProblem.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "box(2);",
+   "new": "box(8);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/box_8/frame_00001.png (snap) t=1496ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/box_8/frame_00010.png (snap) t=1707ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/box_8/frame_00060.png (snap) t=2965ms\n[harness] done frame=60 t=2939ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1496,
+ "diff_vs_baseline": {
+  "mean": 0.0185,
+  "changed_fraction": 0.054,
+  "label": "subtle"
+ }
+}

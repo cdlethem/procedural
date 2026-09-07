@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/Curvitas/curvistas002",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Curvitas/curvistas002/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Curvitas/curvistas002/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1642,
+   "md5": "4a80b14195625b30b4bcdaefc07d543a",
+   "bytes": 128943
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Curvitas/curvistas002/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1930,
+   "md5": "98e71601bc864e1e6f4ab86db3b787df",
+   "bytes": 133194
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Curvitas/curvistas002/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3443,
+   "md5": "2739f4423e24f659e2ecd1021b88de15",
+   "bytes": 178943
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P2D",
+ "imports": [],
+ "tabs": [
+  "curvistas002.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Curvitas/curvistas002/baseline/frame_00001.png (snap) t=1642ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Curvitas/curvistas002/baseline/frame_00010.png (snap) t=1930ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Curvitas/curvistas002/baseline/frame_00060.png (snap) t=3443ms\n[harness] done frame=60 t=3422ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1642,
+ "deterministic": false,
+ "rerun_frames": 3
+}

@@ -1,0 +1,75 @@
+{
+ "sketch": "2020/generative/01_04/bluurrr",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/blurPasses_0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "for (int i = 0; i < 8; i++) {=>for (int i = 0; i < 0; i++) {"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/blurPasses_0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1618,
+   "md5": "f171386899aff85b0021c6358600ddbf",
+   "bytes": 60841
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/blurPasses_0/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1791,
+   "md5": "dcbc66567cb40996d461cc20f35dcc78",
+   "bytes": 101538
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/blurPasses_0/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2612,
+   "md5": "dcbc66567cb40996d461cc20f35dcc78",
+   "bytes": 101538
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "bluurrr.pde"
+ ],
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i < 8; i++) {",
+   "new": "for (int i = 0; i < 0; i++) {",
+   "count": 1
+  }
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/blurPasses_0/frame_00001.png (snap) t=1618ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/blurPasses_0/frame_00010.png (snap) t=1791ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/blurPasses_0/frame_00060.png (snap) t=2612ms\n[harness] done frame=60 t=2586ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1618
+}

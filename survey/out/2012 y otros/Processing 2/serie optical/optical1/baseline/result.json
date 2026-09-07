@@ -1,0 +1,62 @@
+{
+ "sketch": "2012 y otros/Processing 2/serie optical/optical1",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/serie optical/optical1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/serie optical/optical1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 323,
+   "md5": "d6b87fd940022863ecba68ccb5094c33",
+   "bytes": 516965
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/serie optical/optical1/baseline/self_image8.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1265,
+   "md5": "d6b87fd940022863ecba68ccb5094c33",
+   "bytes": 516965
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "optical1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/serie optical/optical1/baseline/frame_00001.png (snap) t=323ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/serie optical/optical1/baseline/frame_00010.png (snap) t=488ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/serie optical/optical1/baseline/frame_00060.png (snap) t=1330ms\n[harness] done frame=60 t=1306ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 323,
+ "deterministic": true,
+ "rerun_frames": 4,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

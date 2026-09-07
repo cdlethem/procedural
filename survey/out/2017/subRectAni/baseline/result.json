@@ -1,0 +1,61 @@
+{
+ "sketch": "2017/subRectAni",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/subRectAni/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/subRectAni/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 171,
+   "md5": "3bac6ab322a099b7fb849dddec4b0e46",
+   "bytes": 21166
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/subRectAni/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 328,
+   "md5": "6b41e1a23d01f0ed2c29fb079025c880",
+   "bytes": 21176
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/subRectAni/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1167,
+   "md5": "ca05f7c70026961d88a9e797a61f57cf",
+   "bytes": 20698
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "subRectAni.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/subRectAni/baseline/frame_00001.png (snap) t=171ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/subRectAni/baseline/frame_00010.png (snap) t=328ms\nsub false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/subRectAni/baseline/frame_00060.png (snap) t=1167ms\n[harness] done frame=60 t=1146ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 171,
+ "deterministic": true,
+ "rerun_frames": 3
+}

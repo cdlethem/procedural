@@ -1,0 +1,68 @@
+{
+ "sketch": "2018/Generativos/bbnn",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/bbnn/variants/camz_1",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "  translate(0, 0, -width*3);=>  translate(0, 0, -width*1);"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/bbnn/variants/camz_1/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2511,
+   "md5": "bf7eaf3b552d0bad5d57dc4f7e4792df",
+   "bytes": 312835
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/bbnn/variants/camz_1/self_20260903-010325.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3058,
+   "md5": "bf7eaf3b552d0bad5d57dc4f7e4792df",
+   "bytes": 312835
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P3D",
+ "imports": [],
+ "tabs": [
+  "bbnn.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  translate(0, 0, -width*3);",
+   "new": "  translate(0, 0, -width*1);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/bbnn/variants/camz_1/frame_00001.png (dispose) t=2511ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2511,
+ "diff_vs_baseline": {
+  "mean": 0.0001,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

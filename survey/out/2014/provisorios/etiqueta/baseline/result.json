@@ -1,0 +1,60 @@
+{
+ "sketch": "2014/provisorios/etiqueta",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/provisorios/etiqueta/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/provisorios/etiqueta/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 272,
+   "md5": "2a37c8e55c71f14fc884f0da2347d1ff",
+   "bytes": 3104
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "etiqueta.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/provisorios/etiqueta/baseline/frame_00001.png (snap) t=272ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/provisorios/etiqueta/baseline/frame_00002.png (snap) t=301ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/provisorios/etiqueta/baseline/frame_00010.png (snap) t=431ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/provisorios/etiqueta/baseline/frame_00060.png (snap) t=1262ms\n[harness] done frame=60 t=1252ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 272,
+ "deterministic": true,
+ "rerun_frames": 1
+}

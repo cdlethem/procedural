@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/Formas/agregar",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Formas/agregar/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Formas/agregar/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 363,
+   "md5": "f6912ca3acb1bee5e0d1e7eccaa61a4e",
+   "bytes": 9882
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Formas/agregar/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 544,
+   "md5": "2d68c677d1655c78b92849a44ed73d97",
+   "bytes": 9539
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Formas/agregar/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1371,
+   "md5": "6e32040b508fd43467fe87b30c3e59b3",
+   "bytes": 9657
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600,600",
+ "imports": [],
+ "tabs": [
+  "agregar.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Formas/agregar/baseline/frame_00001.png (snap) t=363ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Formas/agregar/baseline/frame_00010.png (snap) t=544ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Formas/agregar/baseline/frame_00060.png (snap) t=1371ms\n[harness] done frame=60 t=1362ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 363,
+ "deterministic": true,
+ "rerun_frames": 3
+}

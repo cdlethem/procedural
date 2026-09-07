@@ -1,0 +1,64 @@
+{
+ "sketch": "2018/Generativos/Forms/forms002d",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms002d/variants/density_13",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "  int cc = int(w*h)/26;=>  int cc = int(w*h)/13;"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms002d/variants/density_13/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 7346,
+   "md5": "3b7f8a91ac10b227076c3a69ee8a7654",
+   "bytes": 1314257
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "forms002d.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int cc = int(w*h)/26;",
+   "new": "  int cc = int(w*h)/13;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 10.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms002d/variants/density_13/frame_00001.png (snap) t=7346ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms002d/variants/density_13/frame_00010.png (snap) t=7585ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms002d/variants/density_13/frame_00060.png (snap) t=8870ms\n[harness] done frame=60 t=8808ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 7346,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

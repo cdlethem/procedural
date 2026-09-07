@@ -1,0 +1,72 @@
+{
+ "sketch": "2014/Generativos/minimalCirculines",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/minimalCirculines/variants/grain_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "noise(5);",
+   "noise(20);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/minimalCirculines/variants/grain_20/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 175,
+   "md5": "bcf4b1616e3dc1970e59f1d3f312f8b3",
+   "bytes": 247915
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "minimalCirculines.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "noise(5);",
+   "new": "noise(20);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "minimalCirculines.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/minimalCirculines/variants/grain_20/frame_00001.png (snap) t=175ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/minimalCirculines/variants/grain_20/frame_00010.png (snap) t=328ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/minimalCirculines/variants/grain_20/frame_00060.png (snap) t=1166ms\n[harness] done frame=60 t=1146ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 175,
+ "diff_vs_baseline": {
+  "mean": 0.0095,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

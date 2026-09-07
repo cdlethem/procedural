@@ -1,0 +1,66 @@
+{
+ "sketch": "2016/Lolla/lolla00",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Lolla/lolla00/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Lolla/lolla00/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1575,
+   "md5": "34eac95cc51fa3db1ea6b33ef35cbb59",
+   "bytes": 12495
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Lolla/lolla00/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1777,
+   "md5": "b912fcf063ad7183433c02507a64385c",
+   "bytes": 16112
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Lolla/lolla00/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6082,
+   "md5": "14d389255c82919fc78bf7b514f6e313",
+   "bytes": 34494
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  684,
+  768
+ ],
+ "size_args": "684, 768, P3D",
+ "imports": [],
+ "tabs": [
+  "Interface.pde",
+  "Scene.pde",
+  "Scene1.pde",
+  "Scene2.pde",
+  "Windows.pde",
+  "lolla00.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 7.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Lolla/lolla00/baseline/frame_00001.png (snap) t=1575ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Lolla/lolla00/baseline/frame_00010.png (snap) t=1777ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Lolla/lolla00/baseline/frame_00060.png (snap) t=6082ms\n[harness] done frame=60 t=6059ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1575,
+ "deterministic": true,
+ "rerun_frames": 3
+}

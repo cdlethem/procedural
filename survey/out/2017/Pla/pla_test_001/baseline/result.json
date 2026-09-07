@@ -1,0 +1,65 @@
+{
+ "sketch": "2017/Pla/pla_test_001",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1707,
+   "md5": "c4e4657c0993e914878c5e1690e90d2c",
+   "bytes": 31986,
+   "captured_frame": 10
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2959,
+   "md5": "e01443103341c157bc70243c46edac88",
+   "bytes": 35897
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  1280,
+  640
+ ],
+ "size_args": "1280, 640, P2D",
+ "imports": [],
+ "tabs": [
+  "pla_test_001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 10 promoted to frame_00001.png"
+  ],
+  [
+   2,
+   "blank"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/baseline/frame_00001.png (snap) t=1502ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/baseline/frame_00002.png (snap) t=1522ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/baseline/frame_00010.png (snap) t=1707ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/baseline/frame_00060.png (snap) t=2959ms\n[harness] done frame=60 t=2943ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1707,
+ "deterministic": true,
+ "rerun_frames": 2
+}

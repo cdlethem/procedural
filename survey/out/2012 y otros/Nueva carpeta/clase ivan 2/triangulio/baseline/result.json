@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/Nueva carpeta/clase ivan 2/triangulio",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 148,
+   "md5": "d70147eb6dc32be0f41a63ab6fb5ff0b",
+   "bytes": 10545
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 289,
+   "md5": "35ff3899ed2d776acbaf6bec13b0c24a",
+   "bytes": 8745
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1122,
+   "md5": "7cc177a0a1c3d7ef1f66aee803ca4f5f",
+   "bytes": 11014
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "triangulio.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio/baseline/frame_00001.png (snap) t=148ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio/baseline/frame_00010.png (snap) t=289ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio/baseline/frame_00060.png (snap) t=1122ms\n[harness] done frame=60 t=1116ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 148,
+ "deterministic": true,
+ "rerun_frames": 3
+}

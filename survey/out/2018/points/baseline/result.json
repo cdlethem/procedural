@@ -1,0 +1,60 @@
+{
+ "sketch": "2018/points",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/points/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/points/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1419,
+   "md5": "efcf4059082ffc04835a8b6788ea2f11",
+   "bytes": 2743
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P2D",
+ "imports": [],
+ "tabs": [
+  "points.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2018/points/baseline/frame_00001.png (snap) t=1419ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/points/baseline/frame_00002.png (snap) t=1439ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/points/baseline/frame_00010.png (snap) t=1618ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/points/baseline/frame_00060.png (snap) t=2883ms\n[harness] done frame=60 t=2868ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1419,
+ "deterministic": true,
+ "rerun_frames": 1
+}

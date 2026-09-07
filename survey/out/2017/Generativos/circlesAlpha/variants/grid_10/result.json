@@ -1,0 +1,79 @@
+{
+ "sketch": "2017/Generativos/circlesAlpha",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesAlpha/variants/grid_10",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int dw = int(random(2, random(20)));",
+   "int dw = 10; random(2, random(20));"
+  ],
+  [
+   "int dh = int(random(2, random(20)));",
+   "int dh = 10; random(2, random(20));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesAlpha/variants/grid_10/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 387,
+   "md5": "53c75f07c29be529a9558317687d7d3b",
+   "bytes": 894068
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "circlesAlpha.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int dw = int(random(2, random(20)));",
+   "new": "int dw = 10; random(2, random(20));",
+   "count": 1
+  },
+  {
+   "old": "int dh = int(random(2, random(20)));",
+   "new": "int dh = 10; random(2, random(20));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesAlpha/variants/grid_10/frame_00001.png (snap) t=387ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesAlpha/variants/grid_10/frame_00010.png (snap) t=563ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesAlpha/variants/grid_10/frame_00060.png (snap) t=1419ms\n[harness] done frame=60 t=1380ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 387,
+ "diff_vs_baseline": {
+  "mean": 0.2522,
+  "changed_fraction": 0.821,
+  "label": "large"
+ }
+}

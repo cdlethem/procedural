@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/tutela",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/alpha_120",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "      fill(0, 40);",
+   "      fill(0, 120);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/alpha_120/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1495,
+   "md5": "8992bd98efbc4d10030cf5a009a153b5",
+   "bytes": 127112
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/alpha_120/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1711,
+   "md5": "06fc460382f50ec18483cdfa1773d439",
+   "bytes": 126091
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/alpha_120/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2966,
+   "md5": "0eedfa3818d1024966ff2d0bdc476a11",
+   "bytes": 126825
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "tutela.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "      fill(0, 40);",
+   "new": "      fill(0, 120);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/alpha_120/frame_00001.png (snap) t=1495ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/alpha_120/frame_00010.png (snap) t=1711ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/tutela/variants/alpha_120/frame_00060.png (snap) t=2966ms\n[harness] done frame=60 t=2937ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1495,
+ "diff_vs_baseline": {
+  "mean": 0.0126,
+  "changed_fraction": 0.06,
+  "label": "subtle"
+ }
+}

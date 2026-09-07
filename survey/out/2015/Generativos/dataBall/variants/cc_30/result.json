@@ -1,0 +1,79 @@
+{
+ "sketch": "2015/Generativos/dataBall",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/cc_30",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(5, 22));",
+   "int cc = 30;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/cc_30/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1526,
+   "md5": "bcfed749192cc12a789fe9db2001e8f2",
+   "bytes": 66918
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/cc_30/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1724,
+   "md5": "7205af69872fede4b88d06df32f7877a",
+   "bytes": 66968
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/cc_30/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2980,
+   "md5": "373c4cb4a5149fefc09a360b07af3f09",
+   "bytes": 68079
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "dataBall.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(5, 22));",
+   "new": "int cc = 30;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/cc_30/frame_00001.png (snap) t=1526ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/cc_30/frame_00010.png (snap) t=1724ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/cc_30/frame_00060.png (snap) t=2980ms\n[harness] done frame=60 t=2968ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Stockholm Mono\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1526,
+ "diff_vs_baseline": {
+  "mean": 0.0174,
+  "changed_fraction": 0.036,
+  "label": "subtle"
+ }
+}

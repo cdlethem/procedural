@@ -1,0 +1,73 @@
+{
+ "sketch": "2018/Generativos/pelines3d002",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 9427,
+   "md5": "1861117cfaabee6cd815f51e6dd9fba1",
+   "bytes": 65481,
+   "captured_frame": 10
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 24613,
+   "md5": "959d32d76c25e36a4577aa363a2091fb",
+   "bytes": 75212
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "Lines.pde",
+  "pelines3d002.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 10 promoted to frame_00001.png"
+  ],
+  [
+   2,
+   "blank"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 26.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/baseline/frame_00001.png (snap) t=1505ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/baseline/frame_00002.png (snap) t=2476ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/baseline/frame_00010.png (snap) t=9427ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/baseline/frame_00060.png (snap) t=24613ms\n[harness] done frame=60 t=24600ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 9427,
+ "deterministic": true,
+ "rerun_frames": 2
+}

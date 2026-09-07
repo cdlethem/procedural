@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/pelines",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines/variants/an_TAU",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float an = noise(des1+xx*det1, des1+yy*det1)*TAU*2;",
+   "float an = noise(des1+xx*det1, des1+yy*det1)*TAU;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines/variants/an_TAU/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1571,
+   "md5": "7aedad7ef53caf5d13b227e3d5efe951",
+   "bytes": 1893637
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "pelines.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float an = noise(des1+xx*det1, des1+yy*det1)*TAU*2;",
+   "new": "float an = noise(des1+xx*det1, des1+yy*det1)*TAU;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines/variants/an_TAU/frame_00001.png (snap) t=1571ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines/variants/an_TAU/frame_00010.png (snap) t=1824ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines/variants/an_TAU/frame_00060.png (snap) t=3119ms\n[harness] done frame=60 t=3039ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1571,
+ "diff_vs_baseline": {
+  "mean": 0.0212,
+  "changed_fraction": 0.009,
+  "label": "subtle"
+ }
+}

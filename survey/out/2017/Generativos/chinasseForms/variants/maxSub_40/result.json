@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/chinasseForms",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/chinasseForms/variants/maxSub_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int maxSub = int(random(1, random(6, 20)));",
+   "int maxSub = int(random(1, random(6, 40)));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/chinasseForms/variants/maxSub_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 234,
+   "md5": "31e4b6463e6e9df968d6935ad4afd4b8",
+   "bytes": 116970
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "chinasseForms.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int maxSub = int(random(1, random(6, 20)));",
+   "new": "int maxSub = int(random(1, random(6, 40)));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "0.0 49.92\n0.0 24.96\n0.0 3.12\n0.0 3.12\n0.0 3.12\n0.0 3.12\n0.0 16.64\n0.0 4.16\n0.0 12.48\n0.0 5.546666\n0.0 49.92\n0.0 6.24\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 3.12\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 8.32\n0.0 8.32\n0.0 5.546666\n0.0 5.546666\n0.0 3.12\n0.0 3.12\n0.0 3.12\n0.0 3.12\n0.0 3.12\n0.0 4.68\n0.0 5.546666\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 12.48\n0.0 12.48\n0.0 8.32\n0.0 6.24\n0.0 9.36\n0.0 3.12\n0.0 3.12\n0.0 18.72\n0.0 1.8488889\n0.0 1.8488889\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 3.12\n0.0 3.12\n0.0 1.56\n0.0 1.56\n0.0 2.773333\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 4.16\n0.0 16.64\n0.0 16.64\n0.0 6.24\n0.0 1.3866665\n0.0 1.3866665\n0.0 1.3866665\n0.0 1.56\n0.0 1.56\n0.0 1.56\n0.0 1.56\n0.0 2.773333\n0.0 2.773333\n0.0 2.08\n0.0 4.68\n0.0 4.68\n0.0 4.68\n0.0 16.64\n0.0 16.64\n0.0 5.546666\n0.0 5.546666\n0.0 5.546666\n0.0 4.16\n0.0 6.24\n0.0 1.56\n0.0 1.56\n0.0 1.3866665\n0.0 1.3866665\n0.0 1.3866665\n0.0 18.72\n0.0 1.56\n0.0 1.56\n0.0 4.16\n0.0 4.16\n0.0 3.12\n0.0 3.12\n0.0 3.12\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/chinasseForms/variants/maxSub_40/frame_00001.png (snap) t=234ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/chinasseForms/variants/maxSub_40/frame_00010.png (snap) t=391ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/chinasseForms/variants/maxSub_40/frame_00060.png (snap) t=1227ms\n[harness] done frame=60 t=1207ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 234,
+ "diff_vs_baseline": {
+  "mean": 0.274,
+  "changed_fraction": 0.798,
+  "label": "large"
+ }
+}

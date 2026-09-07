@@ -1,0 +1,61 @@
+{
+ "sketch": "2012 y otros/noMio/sfsfsfd",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/noMio/sfsfsfd/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/noMio/sfsfsfd/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1447,
+   "md5": "46ed10133a80beb6008d26eb54dabbcd",
+   "bytes": 9334
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/noMio/sfsfsfd/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1645,
+   "md5": "c510e7c740ae99962f108651e0f90214",
+   "bytes": 8741
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/noMio/sfsfsfd/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2903,
+   "md5": "3685119d97b9c5cf36ec060d57c9fcc2",
+   "bytes": 9447
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400, P3D",
+ "imports": [],
+ "tabs": [
+  "sfsfsfd.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/noMio/sfsfsfd/baseline/frame_00001.png (snap) t=1447ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/noMio/sfsfsfd/baseline/frame_00010.png (snap) t=1645ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/noMio/sfsfsfd/baseline/frame_00060.png (snap) t=2903ms\n[harness] done frame=60 t=2898ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1447,
+ "deterministic": true,
+ "rerun_frames": 3
+}

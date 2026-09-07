@@ -1,0 +1,62 @@
+{
+ "sketch": "2016/Colliders/RayBox",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Colliders/RayBox/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Colliders/RayBox/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1503,
+   "md5": "9f04787766556c6c822da83a8368c7c9",
+   "bytes": 5561
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Colliders/RayBox/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1712,
+   "md5": "efe9887c32e9ee2e624c63dd93fe2045",
+   "bytes": 5352
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Colliders/RayBox/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2966,
+   "md5": "f0bd75d35dafec0c499c5af8302f9e57",
+   "bytes": 5195
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "Colliders.pde",
+  "RayBox.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Colliders/RayBox/baseline/frame_00001.png (snap) t=1503ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Colliders/RayBox/baseline/frame_00010.png (snap) t=1712ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Colliders/RayBox/baseline/frame_00060.png (snap) t=2966ms\n[harness] done frame=60 t=2946ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1503,
+ "deterministic": true,
+ "rerun_frames": 3
+}

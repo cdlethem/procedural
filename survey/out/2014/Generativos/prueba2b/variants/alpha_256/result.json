@@ -1,0 +1,71 @@
+{
+ "sketch": "2014/Generativos/prueba2b",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2b/variants/alpha_256",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    col = color(random(255), random(180, 255), random(240, 255), 256-(random(1)*random(256)));",
+   "    col = color(random(255), random(180, 255), random(240, 255), 256);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2b/variants/alpha_256/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1137,
+   "md5": "6a3592ab8ec353f39001be2a848f5bd1",
+   "bytes": 27301,
+   "captured_frame": 60
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "prueba2b.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    col = color(random(255), random(180, 255), random(240, 255), 256-(random(1)*random(256)));",
+   "new": "    col = color(random(255), random(180, 255), random(240, 255), 256);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 60 promoted to frame_00001.png"
+  ],
+  [
+   10,
+   "blank"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2b/variants/alpha_256/frame_00001.png (snap) t=155ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2b/variants/alpha_256/frame_00010.png (snap) t=308ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2b/variants/alpha_256/frame_00060.png (snap) t=1137ms\n[harness] done frame=60 t=1126ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1137,
+ "diff_vs_baseline": {
+  "mean": 0.0244,
+  "changed_fraction": 0.072,
+  "label": "subtle"
+ }
+}

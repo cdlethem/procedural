@@ -1,0 +1,72 @@
+{
+ "sketch": "2020/generative/01_04/veve",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2495,
+   "md5": "4c4c1e426fd576234612d968c4c51ae4",
+   "bytes": 722843
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2708,
+   "md5": "28306dd81f20ce189799e37504364e33",
+   "bytes": 76123
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3962,
+   "md5": "28306dd81f20ce189799e37504364e33",
+   "bytes": 76123
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "veve.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/baseline/frame_00001.png (snap) t=2495ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/baseline/frame_00010.png (snap) t=2708ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/baseline/frame_00060.png (snap) t=3962ms\n[harness] done frame=60 t=3937ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2495,
+ "deterministic": true,
+ "rerun_frames": 3
+}

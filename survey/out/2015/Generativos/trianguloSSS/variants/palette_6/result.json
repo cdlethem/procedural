@@ -1,0 +1,73 @@
+{
+ "sketch": "2015/Generativos/trianguloSSS",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/trianguloSSS/variants/palette_6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  pc.randomPaletta(2);",
+   "  pc.randomPaletta(6);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/trianguloSSS/variants/palette_6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1439,
+   "md5": "20f2fef73fa03c9dcf6b5abf8b889e43",
+   "bytes": 113200
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600, P2D",
+ "imports": [],
+ "tabs": [
+  "PColor.pde",
+  "trianguloSSS.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  pc.randomPaletta(2);",
+   "new": "  pc.randomPaletta(6);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "trianguloSSS.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "-20.0 2.120337\n-20.0 0.79873675\n-20.0 1.669075\n-20.0 1.1465676\n-20.0 1.8242252\n-20.0 1.7652689\n-20.0 0.9329613\n-20.0 1.9688823\n-20.0 2.010172\n-20.0 2.3095016\n-20.0 2.0885313\n-20.0 1.31635\n-20.0 0.95888835\n-20.0 1.6935374\n-20.0 2.1251957\n-20.0 1.1757144\n-20.0 1.548195\n-20.0 1.9908447\n-20.0 1.5020792\n-20.0 1.629311\n-20.0 0.6183485\n-20.0 1.3685766\n-20.0 0.94108105\n-20.0 0.75261915\n-20.0 1.5678351\n-20.0 0.9753564\n-20.0 2.2004032\n-20.0 1.8672825\n-20.0 1.6796348\n-20.0 1.9345338\n-20.0 1.3285488\n-20.0 1.649601\n-20.0 1.6779534\n-20.0 1.9429098\n-20.0 0.8987893\n-20.0 2.594487\n-20.0 1.015423\n-20.0 1.9749286\n-20.0 1.7240982\n-20.0 1.3348945\n-20.0 1.390773\n-20.0 0.59234107\n-20.0 1.5525566\n-20.0 1.316716\n-20.0 1.996967\n-20.0 1.3593334\n-20.0 1.2432252\n-20.0 1.3291452\n-20.0 1.99981\n-20.0 0.8631288\n-20.0 1.9224857\n-20.0 1.3905126\n-20.0 0.74702615\n-20.0 1.8400532\n-20.0 1.6208521\n-20.0 0.4895873\n-20.0 1.2078012\n-20.0 1.907074\n-20.0 1.8902487\n-20.0 1.6823485\n-20.0 2.1427975\n-20.0 1.3988047\n-20.0 1.9017584\n-20.0 2.0442252\n-20.0 1.5046352\n-20.0 1.8099797\n-20.0 1.5238391\n-20.0 1.9778054\n-20.0 0.56884396\n-20.0 1.3433965\n-20.0 1.8810089\n-20.0 1.3760126\n-20.0 1.2952816\n-20.0 2.0633297\n-20.0 0.8930012\n-20.0 1.1407535\n-20.0 1.4200239\n-20.0 1.154409\n-20.0 1.2943852\n-20.0 1.5570316\n-20.0 1.7777205\n-20.0 1.7859707\n-20.0 1.63466\n-20.0 1.022532\n-20.0 1.3544214\n-20.0 1.0818735\n-20.0 1.7588133\n-20.0 1.632673\n-20.0 1.5708723\n-20.0 1.6957886\n-20.0 1.2683511\n-20.0 1.1211284\n-20.0 1.2962763\n-20.0 1.491952\n-20.0 1.462795\n-20.0 1.6558163\n-20.0 2.0925279\n-20.0 1.8313911\n-20.0 2.2616496\n-20.0 1.9903587\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/trianguloSSS/variants/palette_6/frame_00001.png (snap) t=1439ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/trianguloSSS/variants/palette_6/frame_00010.png (snap) t=1638ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/trianguloSSS/variants/palette_6/frame_00060.png (snap) t=2890ms\n[harness] done frame=60 t=2878ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1439,
+ "diff_vs_baseline": {
+  "mean": 0.2518,
+  "changed_fraction": 0.735,
+  "label": "large"
+ }
+}

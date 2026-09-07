@@ -1,0 +1,74 @@
+{
+ "sketch": "2015/Generativos/lutFirst",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/lutFirst/variants/vignette_0.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "IPvignette(0.6);",
+   "IPvignette(0.2);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/lutFirst/variants/vignette_0.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 622,
+   "md5": "15f8fa320b18a0c311170c5397aa979f",
+   "bytes": 760685
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [],
+ "tabs": [
+  "ImageProcessor.pde",
+  "LutFilter.pde",
+  "lutFirst.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "IPvignette(0.6);",
+   "new": "IPvignette(0.2);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "lutFirst.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "${GENART_SURVEY_ROOT}/.build/b63e0fd50e/lutFirst/LUTs/Lomo-fi.cube\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/lutFirst/variants/vignette_0.2/frame_00001.png (snap) t=622ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/lutFirst/variants/vignette_0.2/frame_00010.png (snap) t=793ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/lutFirst/variants/vignette_0.2/frame_00060.png (snap) t=1649ms\n[harness] done frame=60 t=1610ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 622,
+ "diff_vs_baseline": {
+  "mean": 0.017,
+  "changed_fraction": 0.034,
+  "label": "subtle"
+ }
+}

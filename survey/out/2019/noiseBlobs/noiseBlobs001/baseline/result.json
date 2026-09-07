@@ -1,0 +1,61 @@
+{
+ "sketch": "2019/noiseBlobs/noiseBlobs001",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/noiseBlobs/noiseBlobs001/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/noiseBlobs/noiseBlobs001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1467,
+   "md5": "c49fee6328c566f6e39f0506a8ffc999",
+   "bytes": 443882
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P2D",
+ "imports": [],
+ "tabs": [
+  "Blob.pde",
+  "noiseBlobs001.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/noiseBlobs/noiseBlobs001/baseline/frame_00001.png (snap) t=1467ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/noiseBlobs/noiseBlobs001/baseline/frame_00002.png (snap) t=1500ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/noiseBlobs/noiseBlobs001/baseline/frame_00010.png (snap) t=1681ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/noiseBlobs/noiseBlobs001/baseline/frame_00060.png (snap) t=2951ms\n[harness] done frame=60 t=2921ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "OpenGL error 1282 at top endDraw(): invalid operation",
+ "ms_first_frame": 1467,
+ "deterministic": true,
+ "rerun_frames": 1
+}

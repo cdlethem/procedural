@@ -1,0 +1,80 @@
+{
+ "sketch": "2019/generativos/ccshd",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/ccshd/variants/rectSize_10",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float s = 20+int(random(30)*random(0.4, 1))*10;",
+   "float s = 20+int(random(10)*random(0.4, 1))*10;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/ccshd/variants/rectSize_10/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 3066,
+   "md5": "e3d9e4f9d3d93053e8f87a9d05704ff3",
+   "bytes": 20810716
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/ccshd/variants/rectSize_10/self_20260906-071202-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3175,
+   "md5": "e3d9e4f9d3d93053e8f87a9d05704ff3",
+   "bytes": 20810716
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "ccshd.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float s = 20+int(random(30)*random(0.4, 1))*10;",
+   "new": "float s = 20+int(random(10)*random(0.4, 1))*10;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/ccshd/variants/rectSize_10/frame_00001.png (dispose) t=3066ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3066,
+ "diff_vs_baseline": {
+  "mean": 0.1326,
+  "changed_fraction": 0.438,
+  "label": "moderate"
+ }
+}

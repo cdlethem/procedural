@@ -1,0 +1,47 @@
+{
+ "sketch": "2018/Generativos/plasma",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma/variants/mesh_12",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "sphere(s*0.5);",
+   "sphere(s*0.5, 12, 12);"
+  ]
+ ],
+ "status": "compile_error",
+ "detail": "plasma.pde:47:0:47:0: The method sphere(float) in the type PApplet is not applicable for the arguments (float, int, int)",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "plasma.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "sphere(s*0.5);",
+   "new": "sphere(s*0.5, 12, 12);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 1.0,
+ "rc": 1,
+ "timed_out": false,
+ "stdout_tail": "",
+ "stderr_tail": "plasma.pde:47:0:47:0: The method sphere(float) in the type PApplet is not applicable for the arguments (float, int, int)",
+ "ms_first_frame": null
+}

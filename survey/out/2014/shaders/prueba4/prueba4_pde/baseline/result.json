@@ -1,0 +1,44 @@
+{
+ "sketch": "2014/shaders/prueba4/prueba4_pde",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/shaders/prueba4/prueba4_pde/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/shaders/prueba4/prueba4_pde/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "static",
+   "ms": 145,
+   "md5": "f0510390727deb47ff521b32619dd99c",
+   "bytes": 307
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": null,
+ "imports": [],
+ "tabs": [
+  "prueba4_pde.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": true,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 1.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/shaders/prueba4/prueba4_pde/baseline/frame_00001.png (static) t=145ms\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 145,
+ "deterministic": true,
+ "rerun_frames": 1
+}

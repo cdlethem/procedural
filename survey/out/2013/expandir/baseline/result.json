@@ -1,0 +1,61 @@
+{
+ "sketch": "2013/expandir",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/expandir/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/expandir/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 167,
+   "md5": "a3b02dc6666d592c05c9bbfdf0e6be71",
+   "bytes": 2157
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/expandir/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 313,
+   "md5": "c974ab893fe9e45b1ace4bf4e94f3a17",
+   "bytes": 2106
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/expandir/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1146,
+   "md5": "c974ab893fe9e45b1ace4bf4e94f3a17",
+   "bytes": 2106
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640, 480",
+ "imports": [],
+ "tabs": [
+  "expandir.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "60.06399\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/expandir/baseline/frame_00001.png (snap) t=167ms\n55.264893\n55.354\n55.664265\n55.729088\n55.998314\n56.123306\n56.33679\n56.613857\n56.671177\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/expandir/baseline/frame_00010.png (snap) t=313ms\n56.91494\n57.055264\n57.213406\n57.30566\n57.396156\n57.466812\n57.608067\n57.8543\n57.829838\n57.96881\n58.09554\n58.192135\n58.3384\n58.401024\n58.41594\n58.478382\n58.524296\n58.607845\n58.76132\n58.788063\n58.85992\n58.915665\n58.983227\n59.054317\n59.088352\n59.08786\n59.21126\n59.164898\n59.129166\n59.27613\n59.222824\n59.418217\n59.28425\n59.46275\n59.399273\n59.37801\n59.485405\n59.593258\n59.55848\n59.578327\n59.599274\n59.622242\n59.647713\n59.647877\n59.601192\n59.58742\n59.715717\n59.730694\n59.75674\n59.666622\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/expandir/baseline/frame_00060.png (snap) t=1146ms\n[harness] done frame=60 t=1138ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 167,
+ "deterministic": true,
+ "rerun_frames": 3
+}

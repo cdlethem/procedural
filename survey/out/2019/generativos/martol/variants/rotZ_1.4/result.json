@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/martol",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/martol/variants/rotZ_1.4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  rotateZ(random(-0.4, 0.4));",
+   "  rotateZ(random(-1.4, 1.4));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/martol/variants/rotZ_1.4/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1579,
+   "md5": "42f692eaaa359a7316c9913f01cdd252",
+   "bytes": 123706
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/martol/variants/rotZ_1.4/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1787,
+   "md5": "62c7cef7041abf600987cf5bc0066fc0",
+   "bytes": 20748
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/martol/variants/rotZ_1.4/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3041,
+   "md5": "62c7cef7041abf600987cf5bc0066fc0",
+   "bytes": 20748
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "martol.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  rotateZ(random(-0.4, 0.4));",
+   "new": "  rotateZ(random(-1.4, 1.4));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/martol/variants/rotZ_1.4/frame_00001.png (snap) t=1579ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/martol/variants/rotZ_1.4/frame_00010.png (snap) t=1787ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/martol/variants/rotZ_1.4/frame_00060.png (snap) t=3041ms\n[harness] done frame=60 t=3020ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1579,
+ "diff_vs_baseline": {
+  "mean": 0.3703,
+  "changed_fraction": 0.768,
+  "label": "large"
+ }
+}

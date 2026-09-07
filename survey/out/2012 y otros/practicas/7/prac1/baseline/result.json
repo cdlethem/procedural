@@ -1,0 +1,55 @@
+{
+ "sketch": "2012 y otros/practicas/7/prac1",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/7/prac1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/7/prac1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 148,
+   "md5": "8c3d91d9c2331002591b68e9574eb66c",
+   "bytes": 5015
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "prac1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/7/prac1/baseline/frame_00001.png (snap) t=148ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/7/prac1/baseline/frame_00010.png (snap) t=289ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/7/prac1/baseline/frame_00060.png (snap) t=1120ms\n[harness] done frame=60 t=1115ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 148,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

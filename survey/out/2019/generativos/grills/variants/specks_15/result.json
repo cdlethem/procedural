@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/grills",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/grills/variants/specks_15",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int l = 0; l < 5; l++) {",
+   "for (int l = 0; l < 15; l++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/grills/variants/specks_15/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1972,
+   "md5": "2dcc320334ebd5d8fb435953842b3a78",
+   "bytes": 1033837
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "grills.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int l = 0; l < 5; l++) {",
+   "new": "for (int l = 0; l < 15; l++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/grills/variants/specks_15/frame_00001.png (snap) t=1972ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/grills/variants/specks_15/frame_00010.png (snap) t=2202ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/grills/variants/specks_15/frame_00060.png (snap) t=3453ms\n[harness] done frame=60 t=3414ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1972,
+ "diff_vs_baseline": {
+  "mean": 0.2448,
+  "changed_fraction": 0.798,
+  "label": "large"
+ }
+}

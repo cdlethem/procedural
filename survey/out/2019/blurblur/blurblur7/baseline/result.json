@@ -1,0 +1,73 @@
+{
+ "sketch": "2019/blurblur/blurblur7",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur7/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur7/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1644,
+   "md5": "41210e6a65b9dd49163ca80396374345",
+   "bytes": 430210
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur7/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1932,
+   "md5": "2234a0c19eacfbb6892e315752b868c5",
+   "bytes": 1548075
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur7/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3264,
+   "md5": "9b5bf708db0076d1bcb5a3252bdc1a0c",
+   "bytes": 2193008
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  1920,
+  1080
+ ],
+ "size_args": "1920, 1080, P2D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "blurblur7.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur7/baseline/frame_00001.png (snap) t=1644ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur7/baseline/frame_00010.png (snap) t=1932ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur7/baseline/frame_00060.png (snap) t=3264ms\n[harness] done frame=60 t=3155ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1644,
+ "deterministic": false,
+ "rerun_frames": 3
+}

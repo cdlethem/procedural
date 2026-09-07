@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/juice",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/juice/variants/blobAlpha_128",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "fill(col, 250);",
+   "fill(col, 128);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/juice/variants/blobAlpha_128/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1749,
+   "md5": "8f4fdc6c78510e583e2f8997bb9232ca",
+   "bytes": 1989941
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "juice.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "fill(col, 250);",
+   "new": "fill(col, 128);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/juice/variants/blobAlpha_128/frame_00001.png (snap) t=1749ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/juice/variants/blobAlpha_128/frame_00010.png (snap) t=1994ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/juice/variants/blobAlpha_128/frame_00060.png (snap) t=3283ms\n[harness] done frame=60 t=3209ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1749,
+ "diff_vs_baseline": {
+  "mean": 0.0523,
+  "changed_fraction": 0.24,
+  "label": "moderate"
+ }
+}

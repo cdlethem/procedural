@@ -1,0 +1,26 @@
+{
+ "sketch": "2013/prueba_wacom",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/prueba_wacom/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "cello.tablet.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640,480",
+ "imports": [
+  "cello.tablet.*"
+ ],
+ "tabs": [
+  "prueba_wacom.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

@@ -1,0 +1,70 @@
+{
+ "sketch": "2016/Generativos/celular",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/celular/variants/background_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  background(240);",
+   "  background(20);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/celular/variants/background_20/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 695,
+   "md5": "9f9b05cc04912a2a4d1a3fe3e2c1d453",
+   "bytes": 1083580
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "celular.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  background(240);",
+   "new": "  background(20);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "0.8660254\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/celular/variants/background_20/frame_00001.png (snap) t=695ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/celular/variants/background_20/frame_00010.png (snap) t=880ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/celular/variants/background_20/frame_00060.png (snap) t=1743ms\n[harness] done frame=60 t=1698ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Chivo Light\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 695,
+ "diff_vs_baseline": {
+  "mean": 0.2921,
+  "changed_fraction": 0.511,
+  "label": "large"
+ }
+}

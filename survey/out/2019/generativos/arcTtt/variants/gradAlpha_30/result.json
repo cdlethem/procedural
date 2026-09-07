@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/arcTtt",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/arcTtt/variants/gradAlpha_30",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float alp = random(110, 130);",
+   "float alp = random(30, 45);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/arcTtt/variants/gradAlpha_30/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1658,
+   "md5": "e41007a0c977080d5cfa2f5972700ceb",
+   "bytes": 811470
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "arcTtt.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float alp = random(110, 130);",
+   "new": "float alp = random(30, 45);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/arcTtt/variants/gradAlpha_30/frame_00001.png (snap) t=1658ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/arcTtt/variants/gradAlpha_30/frame_00010.png (snap) t=1980ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/arcTtt/variants/gradAlpha_30/frame_00060.png (snap) t=3295ms\n[harness] done frame=60 t=3195ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1658,
+ "diff_vs_baseline": {
+  "mean": 0.046,
+  "changed_fraction": 0.211,
+  "label": "subtle"
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "sketch": "2018/Generativos/Forms/forms001",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms001/variants/cc_8",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "  int cc = 16;=>  int cc = 8;"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms001/variants/cc_8/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2858,
+   "md5": "8f0bfbecf9fe4ef274988ea89fd79aaa",
+   "bytes": 2030631
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "forms001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int cc = 16;",
+   "new": "  int cc = 8;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms001/variants/cc_8/frame_00001.png (snap) t=2858ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms001/variants/cc_8/frame_00010.png (snap) t=3114ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Forms/forms001/variants/cc_8/frame_00060.png (snap) t=4435ms\n[harness] done frame=60 t=4347ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2858,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

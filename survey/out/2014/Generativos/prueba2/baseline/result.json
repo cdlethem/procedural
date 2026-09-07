@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/Generativos/prueba2",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 181,
+   "md5": "2e8ca7e1d226b6da38ea9b9417e2de1f",
+   "bytes": 4400
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 345,
+   "md5": "9df8a7dcb0268b6d65d2c9c716e82f62",
+   "bytes": 4797
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1174,
+   "md5": "24930c4b35b37bd9d49a780a9a1f7594",
+   "bytes": 11182
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "prueba2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/baseline/frame_00001.png (snap) t=181ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/baseline/frame_00010.png (snap) t=345ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/baseline/frame_00060.png (snap) t=1174ms\n[harness] done frame=60 t=1163ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 181,
+ "deterministic": true,
+ "rerun_frames": 3
+}

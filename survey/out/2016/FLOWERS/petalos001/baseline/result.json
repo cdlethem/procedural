@@ -1,0 +1,55 @@
+{
+ "sketch": "2016/FLOWERS/petalos001",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/FLOWERS/petalos001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/FLOWERS/petalos001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 173,
+   "md5": "9253312e5f28d6962ef17128b6baa811",
+   "bytes": 22435
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "petalos001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/FLOWERS/petalos001/baseline/frame_00001.png (snap) t=173ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/FLOWERS/petalos001/baseline/frame_00010.png (snap) t=333ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/FLOWERS/petalos001/baseline/frame_00060.png (snap) t=1172ms\n[harness] done frame=60 t=1152ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 173,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

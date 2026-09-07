@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/05_08/moje",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/moje/variants/shardsize_3",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float s = random(10, 40)*random(1)*random(10)*lerp(0.8, 1, ry);",
+   "    float s = random(10, 40)*random(1)*random(3)*lerp(0.8, 1, ry);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/moje/variants/shardsize_3/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1490,
+   "md5": "3b687e5351a135c012589cff3d93fcee",
+   "bytes": 136950
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "moje.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "    float s = random(10, 40)*random(1)*random(10)*lerp(0.8, 1, ry);",
+   "new": "    float s = random(10, 40)*random(1)*random(3)*lerp(0.8, 1, ry);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/moje/variants/shardsize_3/frame_00001.png (snap) t=1490ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/moje/variants/shardsize_3/frame_00010.png (snap) t=1713ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/moje/variants/shardsize_3/frame_00060.png (snap) t=2966ms\n[harness] done frame=60 t=2943ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1490,
+ "diff_vs_baseline": {
+  "mean": 0.3984,
+  "changed_fraction": 0.637,
+  "label": "large"
+ }
+}

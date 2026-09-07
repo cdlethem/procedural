@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/mountain4",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mountain4/variants/angle_wide",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float ang = map(noise(lx*det, ly*det), 0, 1, PI*1.5, PI*2.5);",
+   "float ang = map(noise(lx*det, ly*det), 0, 1, PI*1.25, PI*2.75);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mountain4/variants/angle_wide/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1540,
+   "md5": "cf976067f16506dae6794d7737ded7b0",
+   "bytes": 1153604
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "mountain4.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float ang = map(noise(lx*det, ly*det), 0, 1, PI*1.5, PI*2.5);",
+   "new": "float ang = map(noise(lx*det, ly*det), 0, 1, PI*1.25, PI*2.75);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mountain4/variants/angle_wide/frame_00001.png (snap) t=1540ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mountain4/variants/angle_wide/frame_00010.png (snap) t=1766ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mountain4/variants/angle_wide/frame_00060.png (snap) t=3031ms\n[harness] done frame=60 t=2980ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1540,
+ "diff_vs_baseline": {
+  "mean": 0.1628,
+  "changed_fraction": 0.481,
+  "label": "large"
+ }
+}

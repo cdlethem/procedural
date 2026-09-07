@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/Eyes/eyes002",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/Eyes/eyes002/variants/alpha_200-255",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "tint(255, map(j, 0, cc, 40, 240));",
+   "tint(255, map(j, 0, cc, 200, 255));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/Eyes/eyes002/variants/alpha_200-255/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1281,
+   "md5": "27830c320d4b2661f9c3febbb4ad6d05",
+   "bytes": 2496792
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "eyes002.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "tint(255, map(j, 0, cc, 40, 240));",
+   "new": "tint(255, map(j, 0, cc, 200, 255));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/Eyes/eyes002/variants/alpha_200-255/frame_00001.png (snap) t=1281ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/Eyes/eyes002/variants/alpha_200-255/frame_00010.png (snap) t=1486ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/Eyes/eyes002/variants/alpha_200-255/frame_00060.png (snap) t=2369ms\n[harness] done frame=60 t=2304ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1281,
+ "diff_vs_baseline": {
+  "mean": 0.0358,
+  "changed_fraction": 0.15,
+  "label": "subtle"
+ }
+}

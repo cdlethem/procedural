@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/sansiedad",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/sansiedad/variants/alpha_64",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "      stroke(getColor(noise(ic+dc*j)*colors.length*2), 16);",
+   "      stroke(getColor(noise(ic+dc*j)*colors.length*2), 64);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/sansiedad/variants/alpha_64/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1696,
+   "md5": "72df7534f2c446ea3e5e1c603028cdcb",
+   "bytes": 2124035
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/sansiedad/variants/alpha_64/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1913,
+   "md5": "8f2e58403fef81948fb876a0b2378b01",
+   "bytes": 6590
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/sansiedad/variants/alpha_64/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3159,
+   "md5": "8f2e58403fef81948fb876a0b2378b01",
+   "bytes": 6590
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "sansiedad.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "      stroke(getColor(noise(ic+dc*j)*colors.length*2), 16);",
+   "new": "      stroke(getColor(noise(ic+dc*j)*colors.length*2), 64);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/sansiedad/variants/alpha_64/frame_00001.png (snap) t=1696ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/sansiedad/variants/alpha_64/frame_00010.png (snap) t=1913ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/sansiedad/variants/alpha_64/frame_00060.png (snap) t=3159ms\n[harness] done frame=60 t=3137ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1696,
+ "diff_vs_baseline": {
+  "mean": 0.3526,
+  "changed_fraction": 0.976,
+  "label": "large"
+ }
+}

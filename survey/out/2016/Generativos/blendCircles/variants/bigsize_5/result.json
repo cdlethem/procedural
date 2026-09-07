@@ -1,0 +1,70 @@
+{
+ "sketch": "2016/Generativos/blendCircles",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/blendCircles/variants/bigsize_5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float s = 2*pow(2, 7+floor(random(5)*random(0, 1)));",
+   "float s = 2*pow(2, 5+floor(random(5)*random(0, 1)));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/blendCircles/variants/bigsize_5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 270,
+   "md5": "5584e921e0dd3e41ff7e21d0a6e8ca3d",
+   "bytes": 78289
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "blendCircles.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float s = 2*pow(2, 7+floor(random(5)*random(0, 1)));",
+   "new": "float s = 2*pow(2, 5+floor(random(5)*random(0, 1)));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/blendCircles/variants/bigsize_5/frame_00001.png (snap) t=270ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/blendCircles/variants/bigsize_5/frame_00010.png (snap) t=426ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/blendCircles/variants/bigsize_5/frame_00060.png (snap) t=1265ms\n[harness] done frame=60 t=1244ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Chivo Light\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 270,
+ "diff_vs_baseline": {
+  "mean": 0.6183,
+  "changed_fraction": 0.901,
+  "label": "large"
+ }
+}

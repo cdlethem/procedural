@@ -1,0 +1,73 @@
+{
+ "sketch": "2015/Generativos/Kaiovodo/kaiovodo01",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/Kaiovodo/kaiovodo01/variants/s_30",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float s = 60;",
+   "    float s = 30;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/Kaiovodo/kaiovodo01/variants/s_30/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3920,
+   "md5": "cd128eae08d91aa1fcce8ad79cad8394",
+   "bytes": 318607
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/Kaiovodo/kaiovodo01/variants/s_30/self_export.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 4793,
+   "md5": "cd128eae08d91aa1fcce8ad79cad8394",
+   "bytes": 318607
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  851,
+  315
+ ],
+ "size_args": "851 , 315",
+ "imports": [
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "kaiovodo01.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float s = 60;",
+   "new": "    float s = 30;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/Kaiovodo/kaiovodo01/variants/s_30/frame_00001.png (snap) t=3920ms\n[harness] dispose frame=2 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 3920,
+ "diff_vs_baseline": {
+  "mean": 0.0,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

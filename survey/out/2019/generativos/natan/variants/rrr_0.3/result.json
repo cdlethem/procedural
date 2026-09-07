@@ -1,0 +1,73 @@
+{
+ "sketch": "2019/generativos/natan",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/natan/variants/rrr_0.3",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float rrr = random(0.04, 0.12);",
+   "    float rrr = random(0.15, 0.35);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/natan/variants/rrr_0.3/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2660,
+   "md5": "ddd2c2291355d418b30d422aae30c083",
+   "bytes": 2567939
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale)",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "natan.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "    float rrr = random(0.04, 0.12);",
+   "new": "    float rrr = random(0.15, 0.35);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/natan/variants/rrr_0.3/frame_00001.png (snap) t=2660ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/natan/variants/rrr_0.3/frame_00010.png (snap) t=2861ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/natan/variants/rrr_0.3/frame_00060.png (snap) t=3742ms\n[harness] done frame=60 t=3678ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2660,
+ "diff_vs_baseline": {
+  "mean": 0.0993,
+  "changed_fraction": 0.35,
+  "label": "moderate"
+ }
+}

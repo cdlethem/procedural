@@ -1,0 +1,80 @@
+{
+ "sketch": "2018/Generativos/forest",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/forest/variants/ss_2.4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float ss = width*1.2/(ch+2-j);",
+   "float ss = width*2.4/(ch+2-j);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/forest/variants/ss_2.4/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1621,
+   "md5": "62c78e482df1bf2d287c778a9316be60",
+   "bytes": 404074
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/forest/variants/ss_2.4/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2010,
+   "md5": "93e46590d26c84e14f0a279ca11a0238",
+   "bytes": 402649
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/forest/variants/ss_2.4/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3623,
+   "md5": "14f8a2426df7c071c785ad2a7e7ebfc7",
+   "bytes": 404813
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "forest.pde",
+  "sky.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float ss = width*1.2/(ch+2-j);",
+   "new": "float ss = width*2.4/(ch+2-j);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/forest/variants/ss_2.4/frame_00001.png (snap) t=1621ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/forest/variants/ss_2.4/frame_00010.png (snap) t=2010ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/forest/variants/ss_2.4/frame_00060.png (snap) t=3623ms\n[harness] done frame=60 t=3592ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1621,
+ "diff_vs_baseline": {
+  "mean": 0.2016,
+  "changed_fraction": 0.753,
+  "label": "large"
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "sketch": "2014/Generativos/quadFlotantesAnimados",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/addPerFrame_100",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for(int i = 0; i < 20; i++) agregar();",
+   "for(int i = 0; i < 100; i++) agregar();"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/addPerFrame_100/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 184,
+   "md5": "b7f27a293a97b579d5cb303044d9e450",
+   "bytes": 19360
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/addPerFrame_100/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 490,
+   "md5": "e1b839a3abf76a8853d1c32f5f8d7b15",
+   "bytes": 54057
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/addPerFrame_100/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3317,
+   "md5": "9b29084c88cb043c272b42905b7e5817",
+   "bytes": 143597
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720",
+ "imports": [],
+ "tabs": [
+  "quadFlotantesAnimados.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for(int i = 0; i < 20; i++) agregar();",
+   "new": "for(int i = 0; i < 100; i++) agregar();",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "quadFlotantesAnimados.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/addPerFrame_100/frame_00001.png (snap) t=184ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/addPerFrame_100/frame_00010.png (snap) t=490ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/addPerFrame_100/frame_00060.png (snap) t=3317ms\n[harness] done frame=60 t=3297ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 184,
+ "diff_vs_baseline": {
+  "mean": 0.2297,
+  "changed_fraction": 0.504,
+  "label": "large"
+ }
+}

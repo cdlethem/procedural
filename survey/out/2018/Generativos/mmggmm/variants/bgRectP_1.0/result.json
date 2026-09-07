@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/mmggmm",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmggmm/variants/bgRectP_1.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "if (random(1) < 0.2) {",
+   "if (random(1) < 1.0) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmggmm/variants/bgRectP_1.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1447,
+   "md5": "f3bafeb4036f8e279bf50661ff1f722d",
+   "bytes": 41756
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "mmggmm.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "if (random(1) < 0.2) {",
+   "new": "if (random(1) < 1.0) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mmggmm/variants/bgRectP_1.0/frame_00001.png (snap) t=1447ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mmggmm/variants/bgRectP_1.0/frame_00010.png (snap) t=1657ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mmggmm/variants/bgRectP_1.0/frame_00060.png (snap) t=2914ms\n[harness] done frame=60 t=2889ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1447,
+ "diff_vs_baseline": {
+  "mean": 0.0403,
+  "changed_fraction": 0.084,
+  "label": "subtle"
+ }
+}

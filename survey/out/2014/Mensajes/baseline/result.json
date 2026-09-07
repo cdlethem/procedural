@@ -1,0 +1,59 @@
+{
+ "sketch": "2014/Mensajes",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Mensajes/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Mensajes/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 415,
+   "md5": "8e68b66c96f990fd604135b563620d98",
+   "bytes": 10350
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Mensajes/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1405,
+   "md5": "a7f7403d1bfbbb188c92b4ab3ac1b0e9",
+   "bytes": 11308
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "Mensajes.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Mensajes/baseline/frame_00001.png (snap) t=415ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Mensajes/baseline/frame_00010.png (snap) t=575ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Mensajes/baseline/frame_00060.png (snap) t=1405ms\n[harness] done frame=60 t=1394ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Neue Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 415,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ]
+ ]
+}

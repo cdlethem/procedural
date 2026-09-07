@@ -1,0 +1,71 @@
+{
+ "sketch": "2020/generative/01_04/cccxnn",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cccxnn/variants/palette_warm",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "int colors[] = {#240118, #6402F7, #F7A4EF, #F62C64, #00DACA};=>int colors[] = {#354998, #D0302B, #F76684, #FCFAEF, #FDC400};"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cccxnn/variants/palette_warm/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1608,
+   "md5": "fe4b52917de9ef737ebb9165951e1c79",
+   "bytes": 388850
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "cccxnn.pde"
+ ],
+ "uses_shader": false,
+ "display": "xvfb",
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#240118, #6402F7, #F7A4EF, #F62C64, #00DACA};",
+   "new": "int colors[] = {#354998, #D0302B, #F76684, #FCFAEF, #FDC400};",
+   "count": 1
+  }
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cccxnn/variants/palette_warm/frame_00001.png (snap) t=1608ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cccxnn/variants/palette_warm/frame_00010.png (snap) t=1836ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cccxnn/variants/palette_warm/frame_00060.png (snap) t=2722ms\n[harness] done frame=60 t=2693ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1608,
+ "dropped_frames": [
+  [
+   10,
+   "blank"
+  ],
+  [
+   60,
+   "blank"
+  ]
+ ]
+}

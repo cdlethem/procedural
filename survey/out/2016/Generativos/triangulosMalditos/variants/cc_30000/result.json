@@ -1,0 +1,70 @@
+{
+ "sketch": "2016/Generativos/triangulosMalditos",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/triangulosMalditos/variants/cc_30000",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = 8000;",
+   "int cc = 30000;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/triangulosMalditos/variants/cc_30000/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1022,
+   "md5": "dd04c439a4a4fc03bdd2fe44c7c7bac7",
+   "bytes": 123089
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "triangulosMalditos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = 8000;",
+   "new": "int cc = 30000;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/triangulosMalditos/variants/cc_30000/frame_00001.png (snap) t=1022ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/triangulosMalditos/variants/cc_30000/frame_00010.png (snap) t=1179ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/triangulosMalditos/variants/cc_30000/frame_00060.png (snap) t=2017ms\n[harness] done frame=60 t=1996ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1022,
+ "diff_vs_baseline": {
+  "mean": 0.4634,
+  "changed_fraction": 0.577,
+  "label": "large"
+ }
+}

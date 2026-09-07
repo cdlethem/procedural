@@ -1,0 +1,60 @@
+{
+ "sketch": "2019/led",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/led/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/led/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1596,
+   "md5": "95b11bcc2c7a132c31e6a976c9ce9b3d",
+   "bytes": 41448
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/led/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1798,
+   "md5": "3f2a3ed88f3d5acf9df7adad1d774659",
+   "bytes": 39588
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/led/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3054,
+   "md5": "3804ca4cb679224260b2351ca92413c9",
+   "bytes": 44102
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(h*ch), int(w*cw), P2D",
+ "imports": [],
+ "tabs": [
+  "led.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/led/baseline/frame_00001.png (snap) t=1596ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/led/baseline/frame_00010.png (snap) t=1798ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/led/baseline/frame_00060.png (snap) t=3054ms\n[harness] done frame=60 t=3048ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1596,
+ "deterministic": false,
+ "rerun_frames": 3
+}

@@ -1,0 +1,79 @@
+{
+ "sketch": "2015/Generativos/naves/naves01",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/amp_120",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float amp = random(5, 60);",
+   "    float amp = random(5, 120);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/amp_120/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1454,
+   "md5": "b404ec7fc9a7476c57aa9c68b6868ff6",
+   "bytes": 16421
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/amp_120/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1666,
+   "md5": "96a20d1526982fae835aed47c3fd1749",
+   "bytes": 18896
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/amp_120/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2909,
+   "md5": "b5c7f8e09ef3dada643956bde81b35cc",
+   "bytes": 23850
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "naves01.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float amp = random(5, 60);",
+   "new": "    float amp = random(5, 120);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/amp_120/frame_00001.png (snap) t=1454ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/amp_120/frame_00010.png (snap) t=1666ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/amp_120/frame_00060.png (snap) t=2909ms\n[harness] done frame=60 t=2897ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1454,
+ "diff_vs_baseline": {
+  "mean": 0.0093,
+  "changed_fraction": 0.026,
+  "label": "none"
+ }
+}

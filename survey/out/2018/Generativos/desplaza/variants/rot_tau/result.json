@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/desplaza",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/rot_tau",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float ang = noise(da+xx*ta, da+yy*ta, angTime)*TAU*4;",
+   "float ang = noise(da+xx*ta, da+yy*ta, angTime)*TAU*1;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/rot_tau/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1459,
+   "md5": "1d0578b9946129f0834fd16f1233f966",
+   "bytes": 113203
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/rot_tau/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1670,
+   "md5": "10552c7677b932eb0ef92486dc872490",
+   "bytes": 101892
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/rot_tau/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2920,
+   "md5": "e639594874be721ef2cfe114ab88d950",
+   "bytes": 108425
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P2D",
+ "imports": [],
+ "tabs": [
+  "desplaza.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float ang = noise(da+xx*ta, da+yy*ta, angTime)*TAU*4;",
+   "new": "float ang = noise(da+xx*ta, da+yy*ta, angTime)*TAU*1;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/rot_tau/frame_00001.png (snap) t=1459ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/rot_tau/frame_00010.png (snap) t=1670ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/variants/rot_tau/frame_00060.png (snap) t=2920ms\n[harness] done frame=60 t=2903ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1459,
+ "diff_vs_baseline": {
+  "mean": 0.3028,
+  "changed_fraction": 0.829,
+  "label": "large"
+ }
+}

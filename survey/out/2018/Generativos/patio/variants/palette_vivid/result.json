@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/patio",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/patio/variants/palette_vivid",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#272928, #2DC3BA, #BCEBD2, #F9F77A, #F8BDD3};",
+   "int colors[] = {#FACD00, #FB4F00, #F277C5, #7D57C6, #00B187, #3DC1CD};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/patio/variants/palette_vivid/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1462,
+   "md5": "83350b297c0a17fb12970a474a2d9742",
+   "bytes": 344832
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "patio.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#272928, #2DC3BA, #BCEBD2, #F9F77A, #F8BDD3};",
+   "new": "int colors[] = {#FACD00, #FB4F00, #F277C5, #7D57C6, #00B187, #3DC1CD};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/patio/variants/palette_vivid/frame_00001.png (snap) t=1462ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/patio/variants/palette_vivid/frame_00010.png (snap) t=1680ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/patio/variants/palette_vivid/frame_00060.png (snap) t=2936ms\n[harness] done frame=60 t=2904ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1462,
+ "diff_vs_baseline": {
+  "mean": 0.2131,
+  "changed_fraction": 0.989,
+  "label": "large"
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "sketch": "2019/vobTest",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/vobTest/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/vobTest/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1533,
+   "md5": "2e7bc9196ddbb2065ec1aecd3deed898",
+   "bytes": 34975
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/vobTest/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1775,
+   "md5": "8e739e79ddf6048752644f9b5e9bd53b",
+   "bytes": 71961
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/vobTest/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3046,
+   "md5": "e7343059c3d3839e3ce7e9a7ea7295ee",
+   "bytes": 91963
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  1920,
+  1080
+ ],
+ "size_args": "1920, 1080, P2D",
+ "imports": [],
+ "tabs": [
+  "vobTest.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/vobTest/baseline/frame_00001.png (snap) t=1533ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/vobTest/baseline/frame_00010.png (snap) t=1775ms\n40.37929\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/vobTest/baseline/frame_00060.png (snap) t=3046ms\n[harness] done frame=60 t=3000ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1533,
+ "deterministic": false,
+ "rerun_frames": 3
+}

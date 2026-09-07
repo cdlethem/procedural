@@ -1,0 +1,31 @@
+{
+ "sketch": "2014/Generativos/prueba2",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/variants/hue_30_70",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "color(random(255),random(180,255),random(240,255))",
+   "color(random(30,70),random(180,255),random(240,255))"
+  ]
+ ],
+ "status": "bad_sub",
+ "detail": "OLD text not found in any tab: 'color(random(255),random(180,255),random(240,255))'",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "prueba2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": []
+}

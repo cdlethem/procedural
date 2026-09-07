@@ -1,0 +1,88 @@
+{
+ "sketch": "2020/generative/01_04/grados",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/grados/variants/palette_warm",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#060606, #060606, #060606, #060606, #060606, #060606, #90ff00, #ffffff};",
+   "int colors[] = {#FFB401, #072457, #EF4C02, #ADC7C8, #FE6567};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/grados/variants/palette_warm/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1815,
+   "md5": "e8e85c936fa23758b88c5141c9ca42a3",
+   "bytes": 2504161
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/grados/variants/palette_warm/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2025,
+   "md5": "0c377e0382e0491016a6edc04a525891",
+   "bytes": 5314
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/grados/variants/palette_warm/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3282,
+   "md5": "0c377e0382e0491016a6edc04a525891",
+   "bytes": 5314
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "grados.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#060606, #060606, #060606, #060606, #060606, #060606, #90ff00, #ffffff};",
+   "new": "int colors[] = {#FFB401, #072457, #EF4C02, #ADC7C8, #FE6567};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/grados/variants/palette_warm/frame_00001.png (snap) t=1815ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/grados/variants/palette_warm/frame_00010.png (snap) t=2025ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/grados/variants/palette_warm/frame_00060.png (snap) t=3282ms\n[harness] done frame=60 t=3257ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1815,
+ "diff_vs_baseline": {
+  "mean": 0.259,
+  "changed_fraction": 0.833,
+  "label": "large"
+ }
+}

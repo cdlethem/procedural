@@ -1,0 +1,60 @@
+{
+ "sketch": "2015/Ejercicios/Raven/raven07",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven07/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven07/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1490,
+   "md5": "9e62a24d042d1201d84067e4a9429cff",
+   "bytes": 2586
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "raven07.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 7.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven07/baseline/frame_00001.png (snap) t=1490ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven07/baseline/frame_00002.png (snap) t=1504ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven07/baseline/frame_00010.png (snap) t=1703ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven07/baseline/frame_00060.png (snap) t=5890ms\n[harness] done frame=60 t=5881ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Neue Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1490,
+ "deterministic": true,
+ "rerun_frames": 1
+}

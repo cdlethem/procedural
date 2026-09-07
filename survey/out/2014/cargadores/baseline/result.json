@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/cargadores",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/cargadores/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/cargadores/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 200,
+   "md5": "83f486c3654831b1405e9c05aabf1bc1",
+   "bytes": 35922
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/cargadores/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 358,
+   "md5": "6a8b0110111fff013dc5ded969784b22",
+   "bytes": 44927
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/cargadores/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1189,
+   "md5": "499cb9c730ef1bf1567a9329ef21b252",
+   "bytes": 54975
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "cargadores.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/cargadores/baseline/frame_00001.png (snap) t=200ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/cargadores/baseline/frame_00010.png (snap) t=358ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/cargadores/baseline/frame_00060.png (snap) t=1189ms\n[harness] done frame=60 t=1177ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 200,
+ "deterministic": true,
+ "rerun_frames": 3
+}

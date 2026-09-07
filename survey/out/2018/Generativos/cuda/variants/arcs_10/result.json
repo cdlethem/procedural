@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/cuda",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cuda/variants/arcs_10",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int j = 0; j < 3; j++) {",
+   "for (int j = 0; j < 10; j++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cuda/variants/arcs_10/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 8624,
+   "md5": "6a72a858df74c45f6d3d8a7fd4b198a7",
+   "bytes": 10144083
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cuda/variants/arcs_10/self_20260905-022107.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 8864,
+   "md5": "6a72a858df74c45f6d3d8a7fd4b198a7",
+   "bytes": 10144083
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "cuda.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int j = 0; j < 3; j++) {",
+   "new": "for (int j = 0; j < 10; j++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 10.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cuda/variants/arcs_10/frame_00001.png (dispose) t=8624ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 8624,
+ "diff_vs_baseline": {
+  "mean": 0.0839,
+  "changed_fraction": 0.349,
+  "label": "moderate"
+ }
+}

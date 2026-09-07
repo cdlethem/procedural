@@ -1,0 +1,73 @@
+{
+ "sketch": "2018/Generativos/arc",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/arc/variants/w_thick",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "float w = random(30, 60)*0.6;=>float w = random(30, 60);"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/arc/variants/w_thick/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1486,
+   "md5": "8793038286e151bd7cf9c50e752f9874",
+   "bytes": 476391
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "arc.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float w = random(30, 60)*0.6;",
+   "new": "float w = random(30, 60);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/arc/variants/w_thick/frame_00001.png (snap) t=1486ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/arc/variants/w_thick/frame_00010.png (snap) t=1713ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/arc/variants/w_thick/frame_00060.png (snap) t=2964ms\n[harness] done frame=60 t=2928ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1486,
+ "diff_vs_baseline": {
+  "mean": 0.1424,
+  "changed_fraction": 0.425,
+  "label": "moderate"
+ }
+}

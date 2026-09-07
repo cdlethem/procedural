@@ -1,0 +1,57 @@
+{
+ "sketch": "2018/Generativos/capasAni",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/capasAni/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/capasAni/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1673,
+   "md5": "5375e6a44eb2b155ceed89340b7199b2",
+   "bytes": 1744677
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "capasAni.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/capasAni/baseline/frame_00001.png (snap) t=1673ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/capasAni/baseline/frame_00010.png (snap) t=1929ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/capasAni/baseline/frame_00060.png (snap) t=3205ms\n[harness] done frame=60 t=3142ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\nmap(0, 0, 0, 0, 1) called, which returns NaN (not a number)",
+ "ms_first_frame": 1673,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

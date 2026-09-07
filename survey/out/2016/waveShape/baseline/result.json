@@ -1,0 +1,61 @@
+{
+ "sketch": "2016/waveShape",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/waveShape/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/waveShape/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 153,
+   "md5": "1cf9a5a0a5de3ab1e2cf45418503b232",
+   "bytes": 5042
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/waveShape/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 299,
+   "md5": "21bd18c281233f5235de95dd7da360b0",
+   "bytes": 5045
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/waveShape/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1132,
+   "md5": "21bd18c281233f5235de95dd7da360b0",
+   "bytes": 5045
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  720,
+  480
+ ],
+ "size_args": "720, 480",
+ "imports": [],
+ "tabs": [
+  "waveShape.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/waveShape/baseline/frame_00001.png (snap) t=153ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/waveShape/baseline/frame_00010.png (snap) t=299ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/waveShape/baseline/frame_00060.png (snap) t=1132ms\n[harness] done frame=60 t=1121ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 153,
+ "deterministic": true,
+ "rerun_frames": 3
+}

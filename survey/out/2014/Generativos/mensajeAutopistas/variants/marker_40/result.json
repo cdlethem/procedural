@@ -1,0 +1,72 @@
+{
+ "sketch": "2014/Generativos/mensajeAutopistas",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/mensajeAutopistas/variants/marker_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    rect(x, y+2, 80, 10);",
+   "    rect(x, y+2, 40, 5);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/mensajeAutopistas/variants/marker_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 375,
+   "md5": "f7bb89bb97f40f724ee32c0a7dc8d9d4",
+   "bytes": 312184
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "mensajeAutopistas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    rect(x, y+2, 80, 10);",
+   "new": "    rect(x, y+2, 40, 5);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "mensajeAutopistas.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mensajeAutopistas/variants/marker_40/frame_00001.png (snap) t=375ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mensajeAutopistas/variants/marker_40/frame_00010.png (snap) t=529ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mensajeAutopistas/variants/marker_40/frame_00060.png (snap) t=1368ms\n[harness] done frame=60 t=1347ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 375,
+ "diff_vs_baseline": {
+  "mean": 0.0286,
+  "changed_fraction": 0.085,
+  "label": "subtle"
+ }
+}

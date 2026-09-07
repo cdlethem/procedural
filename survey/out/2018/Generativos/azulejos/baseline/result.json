@@ -1,0 +1,55 @@
+{
+ "sketch": "2018/Generativos/azulejos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/azulejos/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/azulejos/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 4143,
+   "md5": "eb9cf1252bf382b79a8d7164ec1ff901",
+   "bytes": 2819367
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/azulejos/baseline/self_20260902-190146.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3551,
+   "md5": "eb9cf1252bf382b79a8d7164ec1ff901",
+   "bytes": 2819367
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  6500,
+  6500
+ ],
+ "size_args": "6500, 6500, P2D",
+ "imports": [],
+ "tabs": [
+  "azulejos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/azulejos/baseline/frame_00001.png (dispose) t=4143ms\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 4143,
+ "deterministic": true,
+ "rerun_frames": 2
+}

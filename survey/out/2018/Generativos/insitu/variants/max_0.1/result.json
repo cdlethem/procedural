@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/insitu",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/insitu/variants/max_0.1",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float max = random(0.5);",
+   "float max = 0.1;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/insitu/variants/max_0.1/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2217,
+   "md5": "0c8d21b0c8be6b065792e154ec7bcb1f",
+   "bytes": 1117524
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/insitu/variants/max_0.1/self_20260905-122219.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2796,
+   "md5": "0c8d21b0c8be6b065792e154ec7bcb1f",
+   "bytes": 1117524
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "insitu.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float max = random(0.5);",
+   "new": "float max = 0.1;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/insitu/variants/max_0.1/frame_00001.png (dispose) t=2217ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2217,
+ "diff_vs_baseline": {
+  "mean": 0.2104,
+  "changed_fraction": 0.704,
+  "label": "large"
+ }
+}

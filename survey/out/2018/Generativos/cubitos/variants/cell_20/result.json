@@ -1,0 +1,102 @@
+{
+ "sketch": "2018/Generativos/cubitos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/cell_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "x -= (x%40)*0.5;",
+   "x -= (x%20)*0.5;"
+  ],
+  [
+   "y -= (y%40)*0.5;",
+   "y -= (y%20)*0.5;"
+  ],
+  [
+   "z -= (z%40)*0.5;",
+   "z -= (z%20)*0.5;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/cell_20/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1508,
+   "md5": "6c1c150f702e3ee5b8e31d0fde75af54",
+   "bytes": 108551
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/cell_20/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1793,
+   "md5": "1efe88c6218b7a36908fb1ce445313fa",
+   "bytes": 194568
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/cell_20/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3095,
+   "md5": "b6f1bff9f00cddc64d7f2066883cce7f",
+   "bytes": 243181
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "cubitos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "x -= (x%40)*0.5;",
+   "new": "x -= (x%20)*0.5;",
+   "count": 1
+  },
+  {
+   "old": "y -= (y%40)*0.5;",
+   "new": "y -= (y%20)*0.5;",
+   "count": 1
+  },
+  {
+   "old": "z -= (z%40)*0.5;",
+   "new": "z -= (z%20)*0.5;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/cell_20/frame_00001.png (snap) t=1508ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/cell_20/frame_00010.png (snap) t=1793ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/cell_20/frame_00060.png (snap) t=3095ms\n[harness] done frame=60 t=3067ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1508,
+ "diff_vs_baseline": {
+  "mean": 0.0094,
+  "changed_fraction": 0.034,
+  "label": "none"
+ }
+}

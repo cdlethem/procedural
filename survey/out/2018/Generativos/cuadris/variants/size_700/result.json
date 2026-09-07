@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/cuadris",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cuadris/variants/size_700",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float size = 500;",
+   "float size = 700;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cuadris/variants/size_700/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3048,
+   "md5": "87450c6a43c4549bd3b19331c997fc0c",
+   "bytes": 1167703
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "cuadris.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float size = 500;",
+   "new": "float size = 700;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cuadris/variants/size_700/frame_00001.png (snap) t=3048ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cuadris/variants/size_700/frame_00010.png (snap) t=3282ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cuadris/variants/size_700/frame_00060.png (snap) t=4542ms\n[harness] done frame=60 t=4489ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3048,
+ "diff_vs_baseline": {
+  "mean": 0.2063,
+  "changed_fraction": 0.805,
+  "label": "large"
+ }
+}

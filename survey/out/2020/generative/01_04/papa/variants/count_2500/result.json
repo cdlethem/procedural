@@ -1,0 +1,88 @@
+{
+ "sketch": "2020/generative/01_04/papa",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/count_2500",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "  for (int i = 0; i < 10000; i++) {=>  for (int i = 0; i < 2500; i++) {"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/count_2500/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1525,
+   "md5": "d1bfe0e12c14c37acda43a26bcbefd07",
+   "bytes": 2431167
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/count_2500/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1778,
+   "md5": "468684f2011eb2063eb8c17808653c26",
+   "bytes": 2432694
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/count_2500/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3064,
+   "md5": "f4a059069132058c986ecedffefeacb2",
+   "bytes": 2439087
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "papa.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  for (int i = 0; i < 10000; i++) {",
+   "new": "  for (int i = 0; i < 2500; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/count_2500/frame_00001.png (snap) t=1525ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/count_2500/frame_00010.png (snap) t=1778ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/count_2500/frame_00060.png (snap) t=3064ms\n[harness] done frame=60 t=2996ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1525,
+ "diff_vs_baseline": {
+  "mean": 0.208,
+  "changed_fraction": 0.756,
+  "label": "large"
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/noisub/noisub003",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/noisub/noisub003/variants/detSize_0.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float detSize = random(0.004, 0.006)*0.8;",
+   "float detSize = random(0.004, 0.006)*0.2;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/noisub/noisub003/variants/detSize_0.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1521,
+   "md5": "b4225efee9737f19657ac47431af8943",
+   "bytes": 308700
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "noisub003.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float detSize = random(0.004, 0.006)*0.8;",
+   "new": "float detSize = random(0.004, 0.006)*0.2;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/noisub/noisub003/variants/detSize_0.2/frame_00001.png (snap) t=1521ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/noisub/noisub003/variants/detSize_0.2/frame_00010.png (snap) t=1734ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/noisub/noisub003/variants/detSize_0.2/frame_00060.png (snap) t=2993ms\n[harness] done frame=60 t=2963ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1521,
+ "diff_vs_baseline": {
+  "mean": 0.2746,
+  "changed_fraction": 0.794,
+  "label": "large"
+ }
+}

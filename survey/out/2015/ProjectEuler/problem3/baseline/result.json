@@ -1,0 +1,44 @@
+{
+ "sketch": "2015/ProjectEuler/problem3",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/ProjectEuler/problem3/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/ProjectEuler/problem3/baseline/frame_00000.png",
+   "frame": 0,
+   "tag": "watchdog",
+   "ms": 35021,
+   "md5": "f0510390727deb47ff521b32619dd99c",
+   "bytes": 307
+  }
+ ],
+ "warnings": [
+  "frame saved by the watchdog before draw() finished: may be partial or blank; the sketch is too slow for the budget"
+ ],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": null,
+ "imports": [],
+ "tabs": [
+  "problem3.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 39.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "71\n839\n1471\n6857\n[harness] watchdog: no draw() reached budget; frame=0 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/ProjectEuler/problem3/baseline/frame_00000.png (watchdog) t=35021ms\n[harness] watchdog: hard exit\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 35021,
+ "deterministic": true,
+ "rerun_frames": 1
+}

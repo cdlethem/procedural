@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/zzpptt",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/zzpptt/variants/dotSize_0.9",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "ellipse(xx, yy, ss*0.5, ss*0.5);",
+   "ellipse(xx, yy, ss*0.9, ss*0.9);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/zzpptt/variants/dotSize_0.9/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2110,
+   "md5": "a0e5240439dcf04378ccc4d08f62396f",
+   "bytes": 520685
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/zzpptt/variants/dotSize_0.9/self_20260906-015311.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2600,
+   "md5": "a0e5240439dcf04378ccc4d08f62396f",
+   "bytes": 520685
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "zzpptt.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "ellipse(xx, yy, ss*0.5, ss*0.5);",
+   "new": "ellipse(xx, yy, ss*0.9, ss*0.9);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/zzpptt/variants/dotSize_0.9/frame_00001.png (dispose) t=2110ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2110,
+ "diff_vs_baseline": {
+  "mean": 0.005,
+  "changed_fraction": 0.012,
+  "label": "none"
+ }
+}

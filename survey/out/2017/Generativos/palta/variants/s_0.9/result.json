@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/palta",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/palta/variants/s_0.9",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  palta(width*0.5, height*0.5, width*0.6);",
+   "  palta(width*0.5, height*0.5, width*0.9);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/palta/variants/s_0.9/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 162,
+   "md5": "bd04679607727ede1c5bedbb01fa958f",
+   "bytes": 32252
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "palta.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  palta(width*0.5, height*0.5, width*0.6);",
+   "new": "  palta(width*0.5, height*0.5, width*0.9);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/palta/variants/s_0.9/frame_00001.png (snap) t=162ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/palta/variants/s_0.9/frame_00010.png (snap) t=310ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/palta/variants/s_0.9/frame_00060.png (snap) t=1142ms\n[harness] done frame=60 t=1130ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 162,
+ "diff_vs_baseline": {
+  "mean": 0.0313,
+  "changed_fraction": 0.064,
+  "label": "subtle"
+ }
+}

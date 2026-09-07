@@ -1,0 +1,72 @@
+{
+ "sketch": "2015/Generativos/taptap",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/taptap/variants/count_300",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for(int i = 0; i < 1000; i++){",
+   "for(int i = 0; i < 300; i++){"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/taptap/variants/count_300/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 241,
+   "md5": "384f4279957efd84eb60b6aaad928e1a",
+   "bytes": 127905
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  270,
+  480
+ ],
+ "size_args": "270, 480",
+ "imports": [],
+ "tabs": [
+  "taptap.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for(int i = 0; i < 1000; i++){",
+   "new": "for(int i = 0; i < 300; i++){",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "taptap.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/taptap/variants/count_300/frame_00001.png (snap) t=241ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/taptap/variants/count_300/frame_00010.png (snap) t=392ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/taptap/variants/count_300/frame_00060.png (snap) t=1226ms\n[harness] done frame=60 t=1209ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 241,
+ "diff_vs_baseline": {
+  "mean": 0.3293,
+  "changed_fraction": 0.728,
+  "label": "large"
+ }
+}

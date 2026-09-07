@@ -1,0 +1,64 @@
+{
+ "sketch": "2015/Juegos/RogueRpg",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Juegos/RogueRpg/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/RogueRpg/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 191,
+   "md5": "b0baa993b4af758b39eacbad6c44d8d1",
+   "bytes": 22916
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/RogueRpg/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 342,
+   "md5": "96a32849bdcc46dc242aa03a5b06329a",
+   "bytes": 30802
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/RogueRpg/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1176,
+   "md5": "5a4149ffef212c75dc2baa430edf448a",
+   "bytes": 32878
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "Camera.pde",
+  "Level.pde",
+  "Player.pde",
+  "RogueRpg.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/RogueRpg/baseline/frame_00001.png (snap) t=191ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/RogueRpg/baseline/frame_00010.png (snap) t=342ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/RogueRpg/baseline/frame_00060.png (snap) t=1176ms\n[harness] done frame=60 t=1162ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 191,
+ "deterministic": true,
+ "rerun_frames": 3
+}

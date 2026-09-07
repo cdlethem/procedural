@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/trianglesLines",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/trianglesLines/variants/sb_6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int sb = int(pow(2, int(random(2, 12))));//int(random(3, 60));",
+   "int sb = int(pow(2, int(random(2, 6))));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/trianglesLines/variants/sb_6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 245,
+   "md5": "ae8af91ec7b2d91be3e63461b777b101",
+   "bytes": 759892
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "trianglesLines.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int sb = int(pow(2, int(random(2, 12))));//int(random(3, 60));",
+   "new": "int sb = int(pow(2, int(random(2, 6))));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/trianglesLines/variants/sb_6/frame_00001.png (snap) t=245ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/trianglesLines/variants/sb_6/frame_00010.png (snap) t=413ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/trianglesLines/variants/sb_6/frame_00060.png (snap) t=1268ms\n[harness] done frame=60 t=1230ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 245,
+ "diff_vs_baseline": {
+  "mean": 0.0,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

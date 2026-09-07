@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/Generativos/iidd",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iidd/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iidd/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1520,
+   "md5": "8ff810a4e0f00f6f9eaaf915ead4932b",
+   "bytes": 80713
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iidd/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1759,
+   "md5": "53b88c59c29c4d6d46bb184c22b9d691",
+   "bytes": 185136
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iidd/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5280,
+   "md5": "7fd750a30f69b8462026a685de1301f6",
+   "bytes": 465217
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "iidd.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/iidd/baseline/frame_00001.png (snap) t=1520ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/iidd/baseline/frame_00010.png (snap) t=1759ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/iidd/baseline/frame_00060.png (snap) t=5280ms\n[harness] done frame=60 t=5248ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1520,
+ "deterministic": false,
+ "rerun_frames": 3
+}

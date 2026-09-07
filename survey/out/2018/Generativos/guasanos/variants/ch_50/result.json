@@ -1,0 +1,77 @@
+{
+ "sketch": "2018/Generativos/guasanos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/guasanos/variants/ch_50",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  int ch = 60;",
+   "  int ch = 50;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/guasanos/variants/ch_50/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 209,
+   "md5": "f59473c0e012ef17772b1a7beeaae8c7",
+   "bytes": 223853
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/guasanos/variants/ch_50/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 403,
+   "md5": "35ca4bd6c99da0f86aaed2edf8e28a52",
+   "bytes": 226104
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/guasanos/variants/ch_50/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1251,
+   "md5": "478e39abaf9e66e9953b8fa826f878d0",
+   "bytes": 232430
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [],
+ "tabs": [
+  "guasanos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int ch = 60;",
+   "new": "  int ch = 50;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/guasanos/variants/ch_50/frame_00001.png (snap) t=209ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/guasanos/variants/ch_50/frame_00010.png (snap) t=403ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/guasanos/variants/ch_50/frame_00060.png (snap) t=1251ms\n[harness] done frame=60 t=1233ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 209,
+ "diff_vs_baseline": {
+  "mean": 0.0939,
+  "changed_fraction": 0.222,
+  "label": "moderate"
+ }
+}

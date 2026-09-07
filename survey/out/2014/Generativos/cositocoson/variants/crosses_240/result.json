@@ -1,0 +1,70 @@
+{
+ "sketch": "2014/Generativos/cositocoson",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/cositocoson/variants/crosses_240",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "cant = int(random(20, 100));",
+   "cant = int(random(80, 240));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/cositocoson/variants/crosses_240/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 178,
+   "md5": "3799a3ec392144a6986a3edefc9a5c35",
+   "bytes": 148663
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "cositocoson.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "cant = int(random(20, 100));",
+   "new": "cant = int(random(80, 240));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cositocoson/variants/crosses_240/frame_00001.png (snap) t=178ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cositocoson/variants/crosses_240/frame_00010.png (snap) t=331ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cositocoson/variants/crosses_240/frame_00060.png (snap) t=1163ms\n[harness] done frame=60 t=1149ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 178,
+ "diff_vs_baseline": {
+  "mean": 0.0066,
+  "changed_fraction": 0.032,
+  "label": "none"
+ }
+}

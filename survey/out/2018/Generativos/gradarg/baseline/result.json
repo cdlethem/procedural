@@ -1,0 +1,54 @@
+{
+ "sketch": "2018/Generativos/gradarg",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gradarg/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gradarg/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1730,
+   "md5": "c53f95384c3ddd7443ed68bff6ed770c",
+   "bytes": 1481150
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*SCALE), int(sheight*SCALE), P3D",
+ "imports": [],
+ "tabs": [
+  "gradarg.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gradarg/baseline/frame_00001.png (snap) t=1730ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gradarg/baseline/frame_00010.png (snap) t=1981ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gradarg/baseline/frame_00060.png (snap) t=3262ms\n[harness] done frame=60 t=3202ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1730,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

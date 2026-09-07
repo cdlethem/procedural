@@ -1,0 +1,79 @@
+{
+ "sketch": "2014/Generativos/quadFlotantesAnimados",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/maxExp_6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int tt = int(pow(2, int(random(1, maxx))));",
+   "int tt = int(pow(2, int(random(1, 6))));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/maxExp_6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 177,
+   "md5": "d0a1ed383a3a9669cae29d447f259bfe",
+   "bytes": 5754
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/maxExp_6/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 466,
+   "md5": "52fc86ec069a3e63d76a7d5be089d951",
+   "bytes": 17451
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/maxExp_6/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2137,
+   "md5": "46abcf22bd362e86136a8191822315d9",
+   "bytes": 61116
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720",
+ "imports": [],
+ "tabs": [
+  "quadFlotantesAnimados.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int tt = int(pow(2, int(random(1, maxx))));",
+   "new": "int tt = int(pow(2, int(random(1, 6))));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "quadFlotantesAnimados.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/maxExp_6/frame_00001.png (snap) t=177ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/maxExp_6/frame_00010.png (snap) t=466ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/maxExp_6/frame_00060.png (snap) t=2137ms\n[harness] done frame=60 t=2117ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 177,
+ "diff_vs_baseline": {
+  "mean": 0.3527,
+  "changed_fraction": 0.631,
+  "label": "large"
+ }
+}

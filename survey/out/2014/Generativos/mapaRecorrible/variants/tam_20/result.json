@@ -1,0 +1,72 @@
+{
+ "sketch": "2014/Generativos/mapaRecorrible",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/tam_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float tam = 10;",
+   "float tam = 20;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/tam_20/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 195,
+   "md5": "4261de4086730e23aa7b555190947eea",
+   "bytes": 104769
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  400
+ ],
+ "size_args": "800, 400",
+ "imports": [],
+ "tabs": [
+  "mapaRecorrible.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float tam = 10;",
+   "new": "float tam = 20;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/tam_20/frame_00001.png (snap) t=195ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/tam_20/frame_00010.png (snap) t=344ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/mapaRecorrible/variants/tam_20/frame_00060.png (snap) t=1175ms\n[harness] done frame=60 t=1166ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 195,
+ "diff_vs_baseline": {
+  "mean": 0.2651,
+  "changed_fraction": 0.623,
+  "label": "large"
+ }
+}

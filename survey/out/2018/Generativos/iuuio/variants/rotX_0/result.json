@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/iuuio",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iuuio/variants/rotX_0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "rotateX(PI*random(0.0, 0.4));",
+   "rotateX(PI*0.0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iuuio/variants/rotX_0/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2150,
+   "md5": "05669fb54de672e79db52e1e2c1dea6c",
+   "bytes": 162028
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iuuio/variants/rotX_0/self_20260905-091129.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2707,
+   "md5": "05669fb54de672e79db52e1e2c1dea6c",
+   "bytes": 162028
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P3D",
+ "imports": [],
+ "tabs": [
+  "iuuio.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "rotateX(PI*random(0.0, 0.4));",
+   "new": "rotateX(PI*0.0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/iuuio/variants/rotX_0/frame_00001.png (dispose) t=2150ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2150,
+ "diff_vs_baseline": {
+  "mean": 0.3038,
+  "changed_fraction": 0.652,
+  "label": "large"
+ }
+}

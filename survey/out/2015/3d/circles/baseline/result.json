@@ -1,0 +1,63 @@
+{
+ "sketch": "2015/3d/circles",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/3d/circles/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/3d/circles/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1637,
+   "md5": "f10a0dd6758c842084e486e3accbed41",
+   "bytes": 16023
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/3d/circles/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1854,
+   "md5": "395c3f2065537df82fb2aa5c4fdb330b",
+   "bytes": 16522
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/3d/circles/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3112,
+   "md5": "36c02d1f25c8ccfa0d5104193664bdba",
+   "bytes": 15601
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "circles.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/3d/circles/baseline/frame_00001.png (snap) t=1637ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/3d/circles/baseline/frame_00010.png (snap) t=1854ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/3d/circles/baseline/frame_00060.png (snap) t=3112ms\n[harness] done frame=60 t=3101ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1637,
+ "deterministic": true,
+ "rerun_frames": 3
+}

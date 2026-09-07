@@ -1,0 +1,61 @@
+{
+ "sketch": "2013/isometria/letras1",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/isometria/letras1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/isometria/letras1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 199,
+   "md5": "5915ea8d24a2dabe2b556d6d2a323718",
+   "bytes": 11605
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/isometria/letras1/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 351,
+   "md5": "b86893e54cb11f93f866da64be23cb43",
+   "bytes": 35540
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/isometria/letras1/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1183,
+   "md5": "27413794025c8fcaa746a00d9c9df61c",
+   "bytes": 194365
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "letras1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2013/isometria/letras1/baseline/frame_00001.png (snap) t=199ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/isometria/letras1/baseline/frame_00010.png (snap) t=351ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/isometria/letras1/baseline/frame_00060.png (snap) t=1183ms\n[harness] done frame=60 t=1169ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 199,
+ "deterministic": true,
+ "rerun_frames": 3
+}

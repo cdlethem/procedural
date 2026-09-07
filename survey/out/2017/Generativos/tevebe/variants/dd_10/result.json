@@ -1,0 +1,79 @@
+{
+ "sketch": "2017/Generativos/tevebe",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float dd = random(50)/w;",
+   "float dd = 10/w;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1448,
+   "md5": "9c5227144de1c14b64475e4765b0dd60",
+   "bytes": 34024
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1655,
+   "md5": "fd7f58e8455c257f0a2716f2cb7081f0",
+   "bytes": 33630
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2912,
+   "md5": "0968094336cd6bac96fae76465d95ef0",
+   "bytes": 33135
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  720
+ ],
+ "size_args": "960, 720, P3D",
+ "imports": [],
+ "tabs": [
+  "tevebe.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float dd = random(50)/w;",
+   "new": "float dd = 10/w;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10/frame_00001.png (snap) t=1448ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10/frame_00010.png (snap) t=1655ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10/frame_00060.png (snap) t=2912ms\n[harness] done frame=60 t=2892ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1448,
+ "diff_vs_baseline": {
+  "mean": 0.3548,
+  "changed_fraction": 0.83,
+  "label": "large"
+ }
+}

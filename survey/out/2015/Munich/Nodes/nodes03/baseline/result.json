@@ -1,0 +1,62 @@
+{
+ "sketch": "2015/Munich/Nodes/nodes03",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes03/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes03/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 161,
+   "md5": "bd513ba650d4f28c38e0fb1ae3cb00d0",
+   "bytes": 7929
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes03/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 312,
+   "md5": "87602d113d01d0e1454303a179232a27",
+   "bytes": 15863
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes03/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1139,
+   "md5": "734f3c0e04f328c9d7ca57293c7564cd",
+   "bytes": 15459
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640",
+ "imports": [],
+ "tabs": [
+  "Node.pde",
+  "nodes03.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes03/baseline/frame_00001.png (snap) t=161ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes03/baseline/frame_00010.png (snap) t=312ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes03/baseline/frame_00060.png (snap) t=1139ms\n[harness] done frame=60 t=1130ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 161,
+ "deterministic": true,
+ "rerun_frames": 3
+}

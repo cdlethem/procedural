@@ -1,0 +1,70 @@
+{
+ "sketch": "2016/Generativos/blendCircles",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/blendCircles/variants/hatch_128",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "stroke(252);",
+   "stroke(128);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/blendCircles/variants/hatch_128/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 284,
+   "md5": "193446b9070f906a344b50fb85f3e5a2",
+   "bytes": 42594
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "blendCircles.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "stroke(252);",
+   "new": "stroke(128);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/blendCircles/variants/hatch_128/frame_00001.png (snap) t=284ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/blendCircles/variants/hatch_128/frame_00010.png (snap) t=441ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/blendCircles/variants/hatch_128/frame_00060.png (snap) t=1277ms\n[harness] done frame=60 t=1259ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Chivo Light\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 284,
+ "diff_vs_baseline": {
+  "mean": 0.2207,
+  "changed_fraction": 0.8,
+  "label": "large"
+ }
+}

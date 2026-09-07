@@ -1,0 +1,28 @@
+{
+ "sketch": "2014/Wacom/wacom1",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Wacom/wacom1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "codeanticode.tablet.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640, 480",
+ "imports": [
+  "codeanticode.tablet.*",
+  "manoloide.Gui.*",
+  "manoloide.Input.Input"
+ ],
+ "tabs": [
+  "wacom1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

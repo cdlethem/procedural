@@ -1,0 +1,73 @@
+{
+ "sketch": "2019/generativos/bab",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/bab/variants/step_1.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "x += cos(a)*0.4*scale;",
+   "x += cos(a)*1.5*scale;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/bab/variants/step_1.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 375,
+   "md5": "e74f2f0bd867094399b7c37d1d17e556",
+   "bytes": 788777
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale)",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "bab.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "x += cos(a)*0.4*scale;",
+   "new": "x += cos(a)*1.5*scale;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/bab/variants/step_1.5/frame_00001.png (snap) t=375ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/bab/variants/step_1.5/frame_00010.png (snap) t=546ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/bab/variants/step_1.5/frame_00060.png (snap) t=1407ms\n[harness] done frame=60 t=1364ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 375,
+ "diff_vs_baseline": {
+  "mean": 0.2571,
+  "changed_fraction": 0.582,
+  "label": "large"
+ }
+}

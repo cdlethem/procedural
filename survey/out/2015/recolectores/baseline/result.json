@@ -1,0 +1,66 @@
+{
+ "sketch": "2015/recolectores",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/recolectores/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/recolectores/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1593,
+   "md5": "e35243fce76f950e275d6b486811e776",
+   "bytes": 624541
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/recolectores/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1886,
+   "md5": "341ff9a07e2e8945dc7bcac3ac72e285",
+   "bytes": 718666
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/recolectores/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6199,
+   "md5": "6d9930f6250e3fd07f15b07857e5afdb",
+   "bytes": 98179
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P2D",
+ "imports": [],
+ "tabs": [
+  "recolectores.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "recolectores.pde"
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 7.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/recolectores/baseline/frame_00001.png (snap) t=1593ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/recolectores/baseline/frame_00010.png (snap) t=1886ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/recolectores/baseline/frame_00060.png (snap) t=6199ms\n[harness] done frame=60 t=6181ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1593,
+ "deterministic": true,
+ "rerun_frames": 3
+}

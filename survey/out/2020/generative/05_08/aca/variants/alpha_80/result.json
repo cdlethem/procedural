@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/05_08/aca",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/aca/variants/alpha_80",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    stroke(getColor(col), random(260)*random(1));",
+   "    stroke(getColor(col), random(80)*random(1));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/aca/variants/alpha_80/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1742,
+   "md5": "e58ed32b2ccee9ff5087fade92c43973",
+   "bytes": 2138155
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "aca.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "    stroke(getColor(col), random(260)*random(1));",
+   "new": "    stroke(getColor(col), random(80)*random(1));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/aca/variants/alpha_80/frame_00001.png (snap) t=1742ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/aca/variants/alpha_80/frame_00010.png (snap) t=2002ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/aca/variants/alpha_80/frame_00060.png (snap) t=3309ms\n[harness] done frame=60 t=3217ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1742,
+ "diff_vs_baseline": {
+  "mean": 0.065,
+  "changed_fraction": 0.228,
+  "label": "moderate"
+ }
+}

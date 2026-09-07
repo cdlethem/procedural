@@ -1,0 +1,62 @@
+{
+ "sketch": "2018/Generativos/puntis4",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis4/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis4/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2346,
+   "md5": "1ded41d3b14c3704a2506037107fc2ff",
+   "bytes": 1553155
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "Tipitos.pde",
+  "puntis4.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis4/baseline/frame_00001.png (snap) t=2346ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis4/baseline/frame_00010.png (snap) t=2596ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis4/baseline/frame_00060.png (snap) t=3876ms\n[harness] done frame=60 t=3816ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2346,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

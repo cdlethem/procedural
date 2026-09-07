@@ -1,0 +1,70 @@
+{
+ "sketch": "2014/Generativos/circulosdentrocirculos",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosdentrocirculos/variants/diamScale_0.55",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float tam = dist(0, 0, width, height);",
+   "float tam = dist(0, 0, width, height) * 0.55;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosdentrocirculos/variants/diamScale_0.55/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 167,
+   "md5": "5ad410619e1f1da45da6cb1e2fdcf6ba",
+   "bytes": 55397
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "circulosdentrocirculos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float tam = dist(0, 0, width, height);",
+   "new": "float tam = dist(0, 0, width, height) * 0.55;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosdentrocirculos/variants/diamScale_0.55/frame_00001.png (snap) t=167ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosdentrocirculos/variants/diamScale_0.55/frame_00010.png (snap) t=312ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosdentrocirculos/variants/diamScale_0.55/frame_00060.png (snap) t=1146ms\n[harness] done frame=60 t=1135ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 167,
+ "diff_vs_baseline": {
+  "mean": 0.3724,
+  "changed_fraction": 0.452,
+  "label": "large"
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/01_04/arbolbox",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/arbolbox/variants/pts_11.6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "  for (int k = 0; k < w*h*5.8; k++) {=>  for (int k = 0; k < w*h*11.6; k++) {"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/arbolbox/variants/pts_11.6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 12817,
+   "md5": "d2b90a25de3b088348fd55b0b9608f4d",
+   "bytes": 2160388
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "arbolbox.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  for (int k = 0; k < w*h*5.8; k++) {",
+   "new": "  for (int k = 0; k < w*h*11.6; k++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 15.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/arbolbox/variants/pts_11.6/frame_00001.png (snap) t=12817ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/arbolbox/variants/pts_11.6/frame_00010.png (snap) t=13068ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/arbolbox/variants/pts_11.6/frame_00060.png (snap) t=14370ms\n[harness] done frame=60 t=14283ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 12817,
+ "diff_vs_baseline": {
+  "mean": 0.311,
+  "changed_fraction": 0.809,
+  "label": "large"
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/05_08/tider",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tider/variants/angleStep_0.6283",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float da = random(0.3);",
+   "float da = random(0.6283);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tider/variants/angleStep_0.6283/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1459,
+   "md5": "3d037850a3be0e1ac946b806e45ab169",
+   "bytes": 33145
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "tider.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float da = random(0.3);",
+   "new": "float da = random(0.6283);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tider/variants/angleStep_0.6283/frame_00001.png (snap) t=1459ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tider/variants/angleStep_0.6283/frame_00010.png (snap) t=1668ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tider/variants/angleStep_0.6283/frame_00060.png (snap) t=2920ms\n[harness] done frame=60 t=2900ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1459,
+ "diff_vs_baseline": {
+  "mean": 0.0011,
+  "changed_fraction": 0.004,
+  "label": "none"
+ }
+}

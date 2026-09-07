@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/Nueva carpeta/Clase ivan/ejer3",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Clase ivan/ejer3/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Clase ivan/ejer3/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 173,
+   "md5": "b7cc94bfadba7bde60bba45f801b72fb",
+   "bytes": 2543
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Clase ivan/ejer3/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 315,
+   "md5": "ec2f7d4917926a1e99b90791029bc2cc",
+   "bytes": 3201
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Clase ivan/ejer3/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1145,
+   "md5": "0832a6917cb7d63e7444b044ef544eb2",
+   "bytes": 5601
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400,400",
+ "imports": [],
+ "tabs": [
+  "ejer3.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Clase ivan/ejer3/baseline/frame_00001.png (snap) t=173ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Clase ivan/ejer3/baseline/frame_00010.png (snap) t=315ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Clase ivan/ejer3/baseline/frame_00060.png (snap) t=1145ms\n[harness] done frame=60 t=1141ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 173,
+ "deterministic": true,
+ "rerun_frames": 3
+}

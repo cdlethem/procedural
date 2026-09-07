@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/Drippin/Labos/animation004",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation004/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation004/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 235,
+   "md5": "7fc330d73d44d54a3d6beca7ae6b63ce",
+   "bytes": 64197
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation004/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 577,
+   "md5": "598f028a55ddd06e254317cee2040a1c",
+   "bytes": 64512
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation004/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2570,
+   "md5": "637620a6be507a83a59bb7cc4a63a231",
+   "bytes": 67950
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540",
+ "imports": [],
+ "tabs": [
+  "animation004.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation004/baseline/frame_00001.png (snap) t=235ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation004/baseline/frame_00010.png (snap) t=577ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation004/baseline/frame_00060.png (snap) t=2570ms\n[harness] done frame=60 t=2557ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 235,
+ "deterministic": false,
+ "rerun_frames": 3
+}

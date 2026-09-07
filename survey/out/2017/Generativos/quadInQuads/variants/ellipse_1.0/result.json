@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/quadInQuads",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/quadInQuads/variants/ellipse_1.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "ss*0.8, ss*0.8);",
+   "ss*1.0, ss*1.0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/quadInQuads/variants/ellipse_1.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1793,
+   "md5": "ec18825038adb7d7f79707cec98f2f24",
+   "bytes": 194329
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "quadInQuads.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "ss*0.8, ss*0.8);",
+   "new": "ss*1.0, ss*1.0);",
+   "count": 2
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/quadInQuads/variants/ellipse_1.0/frame_00001.png (snap) t=1793ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/quadInQuads/variants/ellipse_1.0/frame_00010.png (snap) t=2005ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/quadInQuads/variants/ellipse_1.0/frame_00060.png (snap) t=3264ms\n[harness] done frame=60 t=3234ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\nTessellation Error: gluTessBeginContour() must precede a gluTessEndContour()",
+ "ms_first_frame": 1793,
+ "diff_vs_baseline": {
+  "mean": 0.0753,
+  "changed_fraction": 0.138,
+  "label": "moderate"
+ }
+}

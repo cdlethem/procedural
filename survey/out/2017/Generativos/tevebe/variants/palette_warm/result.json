@@ -1,0 +1,79 @@
+{
+ "sketch": "2017/Generativos/tevebe",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/palette_warm",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#F05638, #F5C748, #3FD189, #FFB9DB, #AF8AB4, #6FC4EA, #FFFFFF, #412A50};",
+   "int colors[] = {#45171D, #F03861, #FF847C, #FECEA8};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/palette_warm/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1446,
+   "md5": "771c26beba31b49a625f5719cee823bb",
+   "bytes": 39917
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/palette_warm/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1650,
+   "md5": "1ca0103e2d92f02b7f1d2eef9e6e794d",
+   "bytes": 40027
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/palette_warm/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2907,
+   "md5": "ba471faeff1a0502543a3933166b9694",
+   "bytes": 39529
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  720
+ ],
+ "size_args": "960, 720, P3D",
+ "imports": [],
+ "tabs": [
+  "tevebe.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#F05638, #F5C748, #3FD189, #FFB9DB, #AF8AB4, #6FC4EA, #FFFFFF, #412A50};",
+   "new": "int colors[] = {#45171D, #F03861, #FF847C, #FECEA8};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/palette_warm/frame_00001.png (snap) t=1446ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/palette_warm/frame_00010.png (snap) t=1650ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/palette_warm/frame_00060.png (snap) t=2907ms\n[harness] done frame=60 t=2888ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1446,
+ "diff_vs_baseline": {
+  "mean": 0.1809,
+  "changed_fraction": 0.628,
+  "label": "large"
+ }
+}

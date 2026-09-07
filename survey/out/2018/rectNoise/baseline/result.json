@@ -1,0 +1,74 @@
+{
+ "sketch": "2018/rectNoise",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/rectNoise/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/rectNoise/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1721,
+   "md5": "773c1158738debcd2bf8e8b936ec15b7",
+   "bytes": 2254
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/rectNoise/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1930,
+   "md5": "1413183bd97519c4bfe9319969a26f84",
+   "bytes": 2152
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/rectNoise/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3195,
+   "md5": "4cd1b2972c9514731f13c73c6cc6740d",
+   "bytes": 1987
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P3D",
+ "imports": [
+  "ddf.minim.*",
+  "ddf.minim.ugens.*"
+ ],
+ "tabs": [
+  "Rect.pde",
+  "rectNoise.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "minim.jar",
+  "jsminim.jar",
+  "jl1.0.1.jar",
+  "mp3spi1.9.5.jar",
+  "tritonus_aos.jar",
+  "tritonus_share.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/rectNoise/baseline/frame_00001.png (snap) t=1721ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/rectNoise/baseline/frame_00010.png (snap) t=1930ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/rectNoise/baseline/frame_00060.png (snap) t=3195ms\n[harness] done frame=60 t=3178ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1721,
+ "deterministic": false,
+ "rerun_frames": 3
+}

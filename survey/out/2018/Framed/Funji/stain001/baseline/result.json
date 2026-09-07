@@ -1,0 +1,52 @@
+{
+ "sketch": "2018/Framed/Funji/stain001",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Framed/Funji/stain001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Framed/Funji/stain001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1437,
+   "md5": "66a7962741d4458f6243ab206dc5b44c",
+   "bytes": 1012
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*SCALE), int(sheight*SCALE), P2D",
+ "imports": [],
+ "tabs": [
+  "stain001.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Framed/Funji/stain001/baseline/frame_00001.png (snap) t=1437ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Framed/Funji/stain001/baseline/frame_00010.png (snap) t=1640ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Framed/Funji/stain001/baseline/frame_00060.png (snap) t=2900ms\n[harness] done frame=60 t=2895ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1437,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

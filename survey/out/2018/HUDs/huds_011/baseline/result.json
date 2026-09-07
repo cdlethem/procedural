@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/HUDs/huds_011",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_011/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_011/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1559,
+   "md5": "e7a3a9a10c7ba696e5f08aa84c281781",
+   "bytes": 126359
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_011/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1863,
+   "md5": "8eb21f196214ff45e4c9fb6e5cbb277f",
+   "bytes": 126736
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_011/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3517,
+   "md5": "887ac72579abbb696ae4403ae361c807",
+   "bytes": 127511
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "huds_011.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_011/baseline/frame_00001.png (snap) t=1559ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_011/baseline/frame_00010.png (snap) t=1863ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_011/baseline/frame_00060.png (snap) t=3517ms\n[harness] done frame=60 t=3492ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1559,
+ "deterministic": false,
+ "rerun_frames": 3
+}

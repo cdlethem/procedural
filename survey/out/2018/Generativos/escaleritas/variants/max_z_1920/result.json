@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/escaleritas",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/escaleritas/variants/max_z_1920",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "translate(0, 0, random(-width*6, width*6));",
+   "translate(0, 0, random(-width*2, width*2));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/escaleritas/variants/max_z_1920/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1960,
+   "md5": "dabbb1e94728f9017c798a579f1f9661",
+   "bytes": 89488
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "escaleritas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "translate(0, 0, random(-width*6, width*6));",
+   "new": "translate(0, 0, random(-width*2, width*2));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/escaleritas/variants/max_z_1920/frame_00001.png (snap) t=1960ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/escaleritas/variants/max_z_1920/frame_00010.png (snap) t=2172ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/escaleritas/variants/max_z_1920/frame_00060.png (snap) t=3429ms\n[harness] done frame=60 t=3402ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1960,
+ "diff_vs_baseline": {
+  "mean": 0.2524,
+  "changed_fraction": 0.381,
+  "label": "large"
+ }
+}

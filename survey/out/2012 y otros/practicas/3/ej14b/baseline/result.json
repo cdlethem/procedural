@@ -1,0 +1,61 @@
+{
+ "sketch": "2012 y otros/practicas/3/ej14b",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej14b/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej14b/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 249,
+   "md5": "49196ae80bac56c213d68aad9063f649",
+   "bytes": 1356
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej14b/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 395,
+   "md5": "5d873a30e2eeeaee4d92fcc00fe25ce3",
+   "bytes": 1352
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej14b/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1221,
+   "md5": "5d873a30e2eeeaee4d92fcc00fe25ce3",
+   "bytes": 1352
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "ej14b.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej14b/baseline/frame_00001.png (snap) t=249ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej14b/baseline/frame_00010.png (snap) t=395ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej14b/baseline/frame_00060.png (snap) t=1221ms\n[harness] done frame=60 t=1217ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 249,
+ "deterministic": true,
+ "rerun_frames": 3
+}

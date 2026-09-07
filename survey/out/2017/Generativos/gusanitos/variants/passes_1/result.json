@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/gusanitos",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/gusanitos/variants/passes_1",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int k = 0; k < 2; k++) {",
+   "for (int k = 0; k < 1; k++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/gusanitos/variants/passes_1/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1456,
+   "md5": "583fdce0d2929a0aa3d3e123a5bc39a9",
+   "bytes": 162828
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P3D",
+ "imports": [],
+ "tabs": [
+  "gusanitos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int k = 0; k < 2; k++) {",
+   "new": "for (int k = 0; k < 1; k++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/gusanitos/variants/passes_1/frame_00001.png (snap) t=1456ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/gusanitos/variants/passes_1/frame_00010.png (snap) t=1669ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/gusanitos/variants/passes_1/frame_00060.png (snap) t=2921ms\n[harness] done frame=60 t=2898ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1456,
+ "diff_vs_baseline": {
+  "mean": 0.0796,
+  "changed_fraction": 0.316,
+  "label": "moderate"
+ }
+}

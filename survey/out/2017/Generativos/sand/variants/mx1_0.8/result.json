@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/sand",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/sand/variants/mx1_0.8",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  float mx1 = random(0.4, 0.6);",
+   "  float mx1 = 0.4 + random(0.4, 0.6);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/sand/variants/mx1_0.8/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1458,
+   "md5": "ada55cc3308fe8a0c2250c35565337e8",
+   "bytes": 141307
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "sand.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  float mx1 = random(0.4, 0.6);",
+   "new": "  float mx1 = 0.4 + random(0.4, 0.6);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/sand/variants/mx1_0.8/frame_00001.png (snap) t=1458ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/sand/variants/mx1_0.8/frame_00010.png (snap) t=1669ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/sand/variants/mx1_0.8/frame_00060.png (snap) t=2922ms\n[harness] done frame=60 t=2899ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1458,
+ "diff_vs_baseline": {
+  "mean": 0.0411,
+  "changed_fraction": 0.105,
+  "label": "subtle"
+ }
+}

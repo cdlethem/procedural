@@ -1,0 +1,67 @@
+{
+ "sketch": "2019/generativos/sandsea",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/sandsea/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/sandsea/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 5461,
+   "md5": "8a0755f4d9fa51ded1c968939ed5414d",
+   "bytes": 1829298
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "sandsea (Copia en conflicto de MacBook-Pro-de-Manuel.local 2019-07-03).pde",
+  "sandsea.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 8.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/sandsea/baseline/frame_00001.png (snap) t=5461ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/sandsea/baseline/frame_00010.png (snap) t=5721ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/sandsea/baseline/frame_00060.png (snap) t=6995ms\n[harness] done frame=60 t=6930ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 5461,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

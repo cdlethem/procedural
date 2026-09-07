@@ -1,0 +1,59 @@
+{
+ "sketch": "2014/Juegos/juegoClick",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Juegos/juegoClick/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/juegoClick/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 316,
+   "md5": "661a48e2690543a1543d6f1b0de03437",
+   "bytes": 15146
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/juegoClick/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1295,
+   "md5": "d134f9d4b6c849f2b60daac11436d47d",
+   "bytes": 15135
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  480,
+  680
+ ],
+ "size_args": "480, 680",
+ "imports": [],
+ "tabs": [
+  "juegoClick.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/juegoClick/baseline/frame_00001.png (snap) t=316ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/juegoClick/baseline/frame_00010.png (snap) t=467ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/juegoClick/baseline/frame_00060.png (snap) t=1295ms\n[harness] done frame=60 t=1286ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 316,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ]
+ ]
+}

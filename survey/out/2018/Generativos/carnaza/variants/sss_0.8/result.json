@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/carnaza",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/carnaza/variants/sss_0.8",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float sss = ss*0.2;",
+   "float sss = ss*0.8;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/carnaza/variants/sss_0.8/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1811,
+   "md5": "d8a81e087df5cdd3046c717e7406ca2e",
+   "bytes": 62167
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "carnaza.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float sss = ss*0.2;",
+   "new": "float sss = ss*0.8;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/carnaza/variants/sss_0.8/frame_00001.png (snap) t=1811ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/carnaza/variants/sss_0.8/frame_00010.png (snap) t=2021ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/carnaza/variants/sss_0.8/frame_00060.png (snap) t=3279ms\n[harness] done frame=60 t=3253ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1811,
+ "diff_vs_baseline": {
+  "mean": 0.1203,
+  "changed_fraction": 0.256,
+  "label": "moderate"
+ }
+}

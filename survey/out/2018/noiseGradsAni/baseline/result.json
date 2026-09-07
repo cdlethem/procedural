@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/noiseGradsAni",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/noiseGradsAni/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/noiseGradsAni/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1531,
+   "md5": "00db9ae117191e144c6a685a61cabe19",
+   "bytes": 1153714
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/noiseGradsAni/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1765,
+   "md5": "4ae43bdcd3f0914a7c19fdbe942c346a",
+   "bytes": 1151561
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/noiseGradsAni/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3023,
+   "md5": "d190b518fa162c00d9acba5a476ebb14",
+   "bytes": 1139566
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P2D",
+ "imports": [],
+ "tabs": [
+  "noiseGradsAni.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/noiseGradsAni/baseline/frame_00001.png (snap) t=1531ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/noiseGradsAni/baseline/frame_00010.png (snap) t=1765ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/noiseGradsAni/baseline/frame_00060.png (snap) t=3023ms\n[harness] done frame=60 t=2984ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1531,
+ "deterministic": false,
+ "rerun_frames": 3
+}

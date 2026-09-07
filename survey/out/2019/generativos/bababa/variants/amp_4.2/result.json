@@ -1,0 +1,86 @@
+{
+ "sketch": "2019/generativos/bababa",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/bababa/variants/amp_4.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float amp = random(10, 14)*1.4;",
+   "float amp = random(10, 14)*4.2;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/bababa/variants/amp_4.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1588,
+   "md5": "de96a9fb98390896d0314edf1906d244",
+   "bytes": 2613240
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/bababa/variants/amp_4.2/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1796,
+   "md5": "93a182edf22c7fd06138e978f0fecb4c",
+   "bytes": 8363
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/bababa/variants/amp_4.2/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3051,
+   "md5": "93a182edf22c7fd06138e978f0fecb4c",
+   "bytes": 8363
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "bababa.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float amp = random(10, 14)*1.4;",
+   "new": "float amp = random(10, 14)*4.2;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/bababa/variants/amp_4.2/frame_00001.png (snap) t=1588ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/bababa/variants/amp_4.2/frame_00010.png (snap) t=1796ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/bababa/variants/amp_4.2/frame_00060.png (snap) t=3051ms\n[harness] done frame=60 t=3028ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1588,
+ "diff_vs_baseline": {
+  "mean": 0.3625,
+  "changed_fraction": 0.903,
+  "label": "large"
+ }
+}

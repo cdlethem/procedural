@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/Generativos/prueba2video",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 151,
+   "md5": "12a30d38bfd7b324be29b24dd89b5ee1",
+   "bytes": 2961
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 303,
+   "md5": "7a5546ff8d6d8fff3b93a45e61dd1c31",
+   "bytes": 3019
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1134,
+   "md5": "44bd0a176f03ad5501b254a396902802",
+   "bytes": 6120
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "prueba2video.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/baseline/frame_00001.png (snap) t=151ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/baseline/frame_00010.png (snap) t=303ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2video/baseline/frame_00060.png (snap) t=1134ms\n[harness] done frame=60 t=1121ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "49, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)\nCould not save ${GENART_SURVEY_ROOT}/.build/315e478328/prueba2video/00050, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)\nCould not save ${GENART_SURVEY_ROOT}/.build/315e478328/prueba2video/00051, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)\nCould not save ${GENART_SURVEY_ROOT}/.build/315e478328/prueba2video/00052, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)\nCould not save ${GENART_SURVEY_ROOT}/.build/315e478328/prueba2video/00053, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)\nCould not save ${GENART_SURVEY_ROOT}/.build/315e478328/prueba2video/00054, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)\nCould not save ${GENART_SURVEY_ROOT}/.build/315e478328/prueba2video/00055, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)\nCould not save ${GENART_SURVEY_ROOT}/.build/315e478328/prueba2video/00056, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)\nCould not save ${GENART_SURVEY_ROOT}/.build/315e478328/prueba2video/00057, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)\nCould not save ${GENART_SURVEY_ROOT}/.build/315e478328/prueba2video/00058, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)\nCould not save ${GENART_SURVEY_ROOT}/.build/315e478328/prueba2video/00059, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)\nCould not save ${GENART_SURVEY_ROOT}/.build/315e478328/prueba2video/00060, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)",
+ "ms_first_frame": 151,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,41 @@
+{
+ "sketch": "2014/animator",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/animator/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "compile_error",
+ "detail": "animator.pde:41:0:41:0: Cannot find anything named \u201cframe\u201d",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  720,
+  480
+ ],
+ "size_args": "720, 480",
+ "imports": [],
+ "tabs": [
+  "Timers.pde",
+  "Video.pde",
+  "animator.pde",
+  "drawFunctions.pde",
+  "input.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "animator.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 1.0,
+ "rc": 1,
+ "timed_out": false,
+ "stdout_tail": "",
+ "stderr_tail": "animator.pde:41:0:41:0: Cannot find anything named \u201cframe\u201d",
+ "ms_first_frame": null
+}

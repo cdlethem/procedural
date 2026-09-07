@@ -1,0 +1,31 @@
+{
+ "sketch": "2018/Visuales/FABRI001",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Visuales/FABRI001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "codeanticode.syphon.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P2D",
+ "imports": [
+  "codeanticode.syphon.*"
+ ],
+ "tabs": [
+  "CS.pde",
+  "FABRI001.pde",
+  "Feedback.pde",
+  "Visual1.pde",
+  "Visual2.pde",
+  "Visual3.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2"
+}

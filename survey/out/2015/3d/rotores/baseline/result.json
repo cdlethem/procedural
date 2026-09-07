@@ -1,0 +1,61 @@
+{
+ "sketch": "2015/3d/rotores",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/3d/rotores/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/3d/rotores/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1586,
+   "md5": "f531c15f9bc4182be57160c9a925f228",
+   "bytes": 34089
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/3d/rotores/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1799,
+   "md5": "308bb50b9c6292852174192fe0f37963",
+   "bytes": 37677
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/3d/rotores/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3055,
+   "md5": "a1080d6340def239d3b76d02715c3c03",
+   "bytes": 9556
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "rotores.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/3d/rotores/baseline/frame_00001.png (snap) t=1586ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/3d/rotores/baseline/frame_00010.png (snap) t=1799ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/3d/rotores/baseline/frame_00060.png (snap) t=3055ms\n[harness] done frame=60 t=3042ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Neue Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1586,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,57 @@
+{
+ "sketch": "2017/Generativos/circlesincircles",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesincircles/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesincircles/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 251,
+   "md5": "5a0cb84b6eaee24af330a30afd3a690d",
+   "bytes": 43563
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "circlesincircles.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesincircles/baseline/frame_00001.png (snap) t=251ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesincircles/baseline/frame_00010.png (snap) t=418ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesincircles/baseline/frame_00060.png (snap) t=1257ms\n[harness] done frame=60 t=1236ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 251,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/deformBall",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/power_0.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float m = random(minMod, maxMod);",
+   "float m = 0.5;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/power_0.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 446,
+   "md5": "9ff586570eaf2e824cb9e71a7a29fa63",
+   "bytes": 2182327
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1920,
+  1920
+ ],
+ "size_args": "1920, 1920",
+ "imports": [],
+ "tabs": [
+  "deformBall.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float m = random(minMod, maxMod);",
+   "new": "float m = 0.5;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/power_0.5/frame_00001.png (snap) t=446ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/power_0.5/frame_00010.png (snap) t=700ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/power_0.5/frame_00060.png (snap) t=1641ms\n[harness] done frame=60 t=1518ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 446,
+ "diff_vs_baseline": {
+  "mean": 0.3088,
+  "changed_fraction": 0.679,
+  "label": "large"
+ }
+}

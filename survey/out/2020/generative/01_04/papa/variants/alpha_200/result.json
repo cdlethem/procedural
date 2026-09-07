@@ -1,0 +1,88 @@
+{
+ "sketch": "2020/generative/01_04/papa",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/alpha_200",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "    fill(col, 40);=>    fill(col, 200);"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/alpha_200/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1562,
+   "md5": "475a2bd3180817bb23c502c5fba6a6bd",
+   "bytes": 2248345
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/alpha_200/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1820,
+   "md5": "8819870030f6c338df186e0955301cde",
+   "bytes": 2247931
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/alpha_200/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3102,
+   "md5": "0363a9fd9c3772cd0c36b7724a20d527",
+   "bytes": 2247105
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "papa.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "    fill(col, 40);",
+   "new": "    fill(col, 200);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/alpha_200/frame_00001.png (snap) t=1562ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/alpha_200/frame_00010.png (snap) t=1820ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/alpha_200/frame_00060.png (snap) t=3102ms\n[harness] done frame=60 t=3041ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1562,
+ "diff_vs_baseline": {
+  "mean": 0.2055,
+  "changed_fraction": 0.761,
+  "label": "large"
+ }
+}

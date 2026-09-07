@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/grill",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/grill/variants/div_8",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int div = int(random(4, random(4, 64)));",
+   "int div = 8;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/grill/variants/div_8/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1481,
+   "md5": "1f89842e54b8770319dbe265f217cf0f",
+   "bytes": 96720
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "grill.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int div = int(random(4, random(4, 64)));",
+   "new": "int div = 8;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/grill/variants/div_8/frame_00001.png (snap) t=1481ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/grill/variants/div_8/frame_00010.png (snap) t=1691ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/grill/variants/div_8/frame_00060.png (snap) t=2949ms\n[harness] done frame=60 t=2922ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1481,
+ "diff_vs_baseline": {
+  "mean": 0.2436,
+  "changed_fraction": 0.836,
+  "label": "large"
+ }
+}

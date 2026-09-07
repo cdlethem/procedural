@@ -1,0 +1,72 @@
+{
+ "sketch": "2019/generativos/montanon",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/montanon/variants/trailSteps_120",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int k = 0; k < 40; k++) {",
+   "for (int k = 0; k < 120; k++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/montanon/variants/trailSteps_120/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 4972,
+   "md5": "610b28a05c61e9dcf54cedcdde4a3d90",
+   "bytes": 2388418
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "java.util.Random"
+ ],
+ "tabs": [
+  "montanon.pde",
+  "noiseDouble.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int k = 0; k < 40; k++) {",
+   "new": "for (int k = 0; k < 120; k++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 8.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/montanon/variants/trailSteps_120/frame_00001.png (snap) t=4972ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/montanon/variants/trailSteps_120/frame_00010.png (snap) t=5232ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/montanon/variants/trailSteps_120/frame_00060.png (snap) t=6513ms\n[harness] done frame=60 t=6447ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 4972,
+ "diff_vs_baseline": {
+  "mean": 0.1628,
+  "changed_fraction": 0.639,
+  "label": "large"
+ }
+}

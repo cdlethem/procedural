@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/databol",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/databol/variants/palette_blues",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#011731, #A12677, #EE3C7A, #EE2D30, #EC4532, #FFCA2A, #3DB98A, #16A5DF};",
+   "int colors[] = {#0B1D51, #123B7A, #1E5AA8, #3D85C6, #6FB1E3, #A9D4F5, #DFF0FD, #16213E};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/databol/variants/palette_blues/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1640,
+   "md5": "128a78d157d7c248c9986e3c9fef5d3c",
+   "bytes": 351011
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "databol.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#011731, #A12677, #EE3C7A, #EE2D30, #EC4532, #FFCA2A, #3DB98A, #16A5DF};",
+   "new": "int colors[] = {#0B1D51, #123B7A, #1E5AA8, #3D85C6, #6FB1E3, #A9D4F5, #DFF0FD, #16213E};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/databol/variants/palette_blues/frame_00001.png (snap) t=1640ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/databol/variants/palette_blues/frame_00010.png (snap) t=1854ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/databol/variants/palette_blues/frame_00060.png (snap) t=3117ms\n[harness] done frame=60 t=3081ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\n\"Chivo\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1640,
+ "diff_vs_baseline": {
+  "mean": 0.2607,
+  "changed_fraction": 0.966,
+  "label": "large"
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/ciscity",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/ciscity/variants/scale_3.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "scale(2.2);",
+   "scale(3.5);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/ciscity/variants/scale_3.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1614,
+   "md5": "27d56590520cbbcfccd6980ce769db48",
+   "bytes": 69352
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "ciscity.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "scale(2.2);",
+   "new": "scale(3.5);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/ciscity/variants/scale_3.5/frame_00001.png (snap) t=1614ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/ciscity/variants/scale_3.5/frame_00010.png (snap) t=1822ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/ciscity/variants/scale_3.5/frame_00060.png (snap) t=3079ms\n[harness] done frame=60 t=3055ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1614,
+ "diff_vs_baseline": {
+  "mean": 0.2531,
+  "changed_fraction": 0.445,
+  "label": "large"
+ }
+}

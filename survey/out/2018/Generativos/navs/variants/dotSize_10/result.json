@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/navs",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/navs/variants/dotSize_10",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float ss = random(1, 5);",
+   "float ss = 10;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/navs/variants/dotSize_10/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1490,
+   "md5": "513cae39e9d8a1e28375acd957561ff0",
+   "bytes": 343674
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "navs.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float ss = random(1, 5);",
+   "new": "float ss = 10;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/navs/variants/dotSize_10/frame_00001.png (snap) t=1490ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/navs/variants/dotSize_10/frame_00010.png (snap) t=1704ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/navs/variants/dotSize_10/frame_00060.png (snap) t=2965ms\n[harness] done frame=60 t=2931ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1490,
+ "diff_vs_baseline": {
+  "mean": 0.0743,
+  "changed_fraction": 0.247,
+  "label": "moderate"
+ }
+}

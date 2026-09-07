@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/toys",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/toys/variants/bar_ratio_0.05_0.4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float h = w*random(0.015, 0.1);",
+   "float h = w*random(0.05, 0.4);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/toys/variants/bar_ratio_0.05_0.4/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 4135,
+   "md5": "d49e5b07671f8e1bcc6ce6745f05a3bf",
+   "bytes": 4562902
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/toys/variants/bar_ratio_0.05_0.4/self_20260906-041144.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3514,
+   "md5": "d49e5b07671f8e1bcc6ce6745f05a3bf",
+   "bytes": 4562902
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  6500,
+  6500
+ ],
+ "size_args": "6500, 6500, P2D",
+ "imports": [],
+ "tabs": [
+  "toys.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float h = w*random(0.015, 0.1);",
+   "new": "float h = w*random(0.05, 0.4);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/toys/variants/bar_ratio_0.05_0.4/frame_00001.png (dispose) t=4135ms\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 4135,
+ "diff_vs_baseline": {
+  "mean": 0.184,
+  "changed_fraction": 0.629,
+  "label": "large"
+ }
+}

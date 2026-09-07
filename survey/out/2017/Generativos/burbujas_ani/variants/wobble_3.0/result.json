@@ -1,0 +1,79 @@
+{
+ "sketch": "2017/Generativos/burbujas_ani",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/wobble_3.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float des = s*random(1.2);",
+   "    float des = s*random(3.0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/wobble_3.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1468,
+   "md5": "edb0ce09f1ed1ae93ddc2ec84e69d319",
+   "bytes": 184551
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/wobble_3.0/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1681,
+   "md5": "c8d19f927557da5218cc53394677e1d9",
+   "bytes": 184090
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/wobble_3.0/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2935,
+   "md5": "b86e5d778aba696b7b644ca2b7c8dad1",
+   "bytes": 183143
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  820,
+  820
+ ],
+ "size_args": "820, 820, P2D",
+ "imports": [],
+ "tabs": [
+  "burbujas_ani.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float des = s*random(1.2);",
+   "new": "    float des = s*random(3.0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/wobble_3.0/frame_00001.png (snap) t=1468ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/wobble_3.0/frame_00010.png (snap) t=1681ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/wobble_3.0/frame_00060.png (snap) t=2935ms\n[harness] done frame=60 t=2914ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1468,
+ "diff_vs_baseline": {
+  "mean": 0.0593,
+  "changed_fraction": 0.159,
+  "label": "moderate"
+ }
+}

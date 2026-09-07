@@ -1,0 +1,74 @@
+{
+ "sketch": "2019/generativos/lightcityLines",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/lightcityLines/variants/height_100",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float h = random(300)*random(random(0.8,  1));",
+   "    float h = random(100)*random(random(0.8,  1));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lightcityLines/variants/height_100/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1616,
+   "md5": "ebfa1b4ae32442a4807f53801f1558b7",
+   "bytes": 256388
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "processing.svg.*"
+ ],
+ "tabs": [
+  "lightcityLines.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "    float h = random(300)*random(random(0.8,  1));",
+   "new": "    float h = random(100)*random(random(0.8,  1));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lightcityLines/variants/height_100/frame_00001.png (snap) t=1616ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lightcityLines/variants/height_100/frame_00010.png (snap) t=1840ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lightcityLines/variants/height_100/frame_00060.png (snap) t=3086ms\n[harness] done frame=60 t=3059ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1616,
+ "diff_vs_baseline": {
+  "mean": 0.1618,
+  "changed_fraction": 0.464,
+  "label": "large"
+ }
+}

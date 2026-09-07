@@ -1,0 +1,87 @@
+{
+ "sketch": "2016/Generativos/pelosNoise2",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/alpha_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  stroke(0, 120);",
+   "  stroke(0, 20);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/alpha_20/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 996,
+   "md5": "0e36f90ea880889885cff92d03debe55",
+   "bytes": 1332788
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/alpha_20/self_0002.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2273,
+   "md5": "31cc59a36323e3c2341deabe6db52a76",
+   "bytes": 1334542
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/alpha_20/self_0003.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2661,
+   "md5": "4e09e945e588d6bbe54c32e79b360d75",
+   "bytes": 1335043
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/alpha_20/self_0001.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1826,
+   "md5": "0e36f90ea880889885cff92d03debe55",
+   "bytes": 1332788
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "pelosNoise2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  stroke(0, 120);",
+   "new": "  stroke(0, 20);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/alpha_20/frame_00001.png (snap) t=996ms\n[harness] dispose frame=4 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 996,
+ "diff_vs_baseline": {
+  "mean": 0.5743,
+  "changed_fraction": 1.0,
+  "label": "large"
+ }
+}

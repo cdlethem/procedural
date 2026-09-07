@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/spiral",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/spiral/variants/overlap_8",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float r2 = map(j+4, 0, sub, 0, diag);",
+   "float r2 = map(j+8, 0, sub, 0, diag);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/spiral/variants/overlap_8/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1454,
+   "md5": "30a233d41172ae0283a0bca2934c7907",
+   "bytes": 263334
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "spiral.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float r2 = map(j+4, 0, sub, 0, diag);",
+   "new": "float r2 = map(j+8, 0, sub, 0, diag);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/spiral/variants/overlap_8/frame_00001.png (snap) t=1454ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/spiral/variants/overlap_8/frame_00010.png (snap) t=1668ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/spiral/variants/overlap_8/frame_00060.png (snap) t=2927ms\n[harness] done frame=60 t=2894ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1454,
+ "diff_vs_baseline": {
+  "mean": 0.0132,
+  "changed_fraction": 0.03,
+  "label": "subtle"
+ }
+}

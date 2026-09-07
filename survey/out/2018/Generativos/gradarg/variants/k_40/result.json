@@ -1,0 +1,44 @@
+{
+ "sketch": "2018/Generativos/gradarg",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gradarg/variants/k_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int k = 0; k < 20; k++) {",
+   "for (int k = 0; k < 40; k++) {"
+  ]
+ ],
+ "status": "timeout",
+ "detail": "no frame within 90s",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*SCALE), int(sheight*SCALE), P3D",
+ "imports": [],
+ "tabs": [
+  "gradarg.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int k = 0; k < 20; k++) {",
+   "new": "for (int k = 0; k < 40; k++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 90.4,
+ "rc": 143,
+ "timed_out": true,
+ "stdout_tail": "",
+ "stderr_tail": ".0-natives-android-aarch64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/core-4.5.6.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-android-x86_64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-macosx-universal.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-main-2.6.0.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-linux-armv6hf.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-windows-amd64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-linux-aarch64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-linux-armv6hf.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-freebsd-amd64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-linux-aarch64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-main-2.6.0.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/antlr-2.7.7.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-macosx-universal.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/annotations-13.0.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-android-x86_64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/kotlin-stdlib-2.3.21.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-windows-amd64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-freebsd-amd64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-android-aarch64.jar -ea --enable-native-access=ALL-UNNAMED processing.core.PApplet --display=-1 --sketch-path=${GENART_SURVEY_ROOT}/.build/d873120228/gradarg --disable-awt gradarg\nCould not run the sketch.",
+ "ms_first_frame": null
+}

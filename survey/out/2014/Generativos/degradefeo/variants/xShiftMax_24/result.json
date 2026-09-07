@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/degradefeo",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/xShiftMax_24",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "      t = int(random(1, 5));",
+   "      t = int(random(1, 25));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/xShiftMax_24/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 136,
+   "md5": "af2d7b89813562e1b1f05d0f5a964d33",
+   "bytes": 4195
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/xShiftMax_24/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 279,
+   "md5": "87c6d369afd0e8c474dd8c279e37e473",
+   "bytes": 53232
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/xShiftMax_24/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1115,
+   "md5": "9c6a3494d3c225e17e848685987e9c9a",
+   "bytes": 202667
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  400
+ ],
+ "size_args": "600, 400",
+ "imports": [],
+ "tabs": [
+  "degradefeo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "      t = int(random(1, 5));",
+   "new": "      t = int(random(1, 25));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/xShiftMax_24/frame_00001.png (snap) t=136ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/xShiftMax_24/frame_00010.png (snap) t=279ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/variants/xShiftMax_24/frame_00060.png (snap) t=1115ms\n[harness] done frame=60 t=1104ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 136,
+ "diff_vs_baseline": {
+  "mean": 0.0,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

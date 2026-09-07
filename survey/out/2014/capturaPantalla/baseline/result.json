@@ -1,0 +1,73 @@
+{
+ "sketch": "2014/capturaPantalla",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/capturaPantalla/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/capturaPantalla/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 151,
+   "md5": "f0434c472d8a73c00caf94da61daecc7",
+   "bytes": 558
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/capturaPantalla/baseline/frame_00002.png",
+   "frame": 2,
+   "tag": "snap",
+   "ms": 163,
+   "md5": "40eb2fdce22051ca9e50b62f86fb51c8",
+   "bytes": 538
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/capturaPantalla/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 430,
+   "md5": "d226b0b46c5499d1b520aa001d3d649c",
+   "bytes": 305
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  200,
+  180
+ ],
+ "size_args": "200, 180",
+ "imports": [
+  "java.awt.AWTException",
+  "java.awt.MouseInfo",
+  "java.awt.Point",
+  "java.awt.Robot"
+ ],
+ "tabs": [
+  "capturaPantalla.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   60,
+   "blank"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/capturaPantalla/baseline/frame_00001.png (snap) t=151ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/capturaPantalla/baseline/frame_00002.png (snap) t=163ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/capturaPantalla/baseline/frame_00010.png (snap) t=430ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/capturaPantalla/baseline/frame_00060.png (snap) t=2094ms\n[harness] done frame=60 t=2093ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 151,
+ "deterministic": false,
+ "rerun_frames": 3
+}

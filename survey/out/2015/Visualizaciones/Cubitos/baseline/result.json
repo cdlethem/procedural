@@ -1,0 +1,61 @@
+{
+ "sketch": "2015/Visualizaciones/Cubitos",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Visualizaciones/Cubitos/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Visualizaciones/Cubitos/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 138,
+   "md5": "faf8b84ef4c6c268ddb35ce76e7f54af",
+   "bytes": 2417
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Visualizaciones/Cubitos/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 283,
+   "md5": "1dbf76dd92e2ed0f77e3a52b0b01221f",
+   "bytes": 2729
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Visualizaciones/Cubitos/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1115,
+   "md5": "f831f0f8223c5c5b705be9cbd6e96562",
+   "bytes": 2518
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "Cubitos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Visualizaciones/Cubitos/baseline/frame_00001.png (snap) t=138ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Visualizaciones/Cubitos/baseline/frame_00010.png (snap) t=283ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Visualizaciones/Cubitos/baseline/frame_00060.png (snap) t=1115ms\n[harness] done frame=60 t=1106ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 138,
+ "deterministic": true,
+ "rerun_frames": 3
+}

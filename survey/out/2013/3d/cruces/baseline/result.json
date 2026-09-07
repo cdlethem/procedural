@@ -1,0 +1,61 @@
+{
+ "sketch": "2013/3d/cruces",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/3d/cruces/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/3d/cruces/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1502,
+   "md5": "6de72f664987cb2ed7f09aec1873ee57",
+   "bytes": 12014
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/3d/cruces/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 9182,
+   "md5": "731788127326c00a1f7b247862ceaace",
+   "bytes": 11934
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/3d/cruces/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 10831,
+   "md5": "f57de19a4f2ead5a73ceced8aa267a9c",
+   "bytes": 10732
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400, P3D",
+ "imports": [],
+ "tabs": [
+  "cruces.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 12.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2013/3d/cruces/baseline/frame_00001.png (snap) t=1502ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/3d/cruces/baseline/frame_00010.png (snap) t=9182ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/3d/cruces/baseline/frame_00060.png (snap) t=10831ms\n[harness] done frame=60 t=10824ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1502,
+ "deterministic": true,
+ "rerun_frames": 3
+}

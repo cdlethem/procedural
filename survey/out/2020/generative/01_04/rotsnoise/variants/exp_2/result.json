@@ -1,0 +1,40 @@
+{
+ "sketch": "2020/generative/01_04/rotsnoise",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/rotsnoise/variants/exp_2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int exp = int(random(6));",
+   "int exp = int(random(2));"
+  ]
+ ],
+ "status": "bad_sub",
+ "detail": "OLD text not found in any tab: 'int exp = int(random(6));'",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "rotsnoise.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ]
+}

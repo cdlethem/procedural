@@ -1,0 +1,73 @@
+{
+ "sketch": "2019/vago",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/vago/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/vago/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1504,
+   "md5": "cf956cf1a5115e6321f816edac26c3ab",
+   "bytes": 85947
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/vago/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1719,
+   "md5": "209072a2bb1fd3351af83a7a1358e638",
+   "bytes": 139428
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/vago/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2972,
+   "md5": "0efb6202edb90ce535e30a81fcfcf534",
+   "bytes": 218057
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "vago.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/vago/baseline/frame_00001.png (snap) t=1504ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/vago/baseline/frame_00010.png (snap) t=1719ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/vago/baseline/frame_00060.png (snap) t=2972ms\n[harness] done frame=60 t=2949ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1504,
+ "deterministic": false,
+ "rerun_frames": 3
+}

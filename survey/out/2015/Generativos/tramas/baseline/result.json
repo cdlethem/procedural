@@ -1,0 +1,37 @@
+{
+ "sketch": "2015/Generativos/tramas",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/tramas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "runtime_error",
+ "detail": "tramas.pde:68:0:68:0: NullPointerException",
+ "frames": [],
+ "warnings": [
+  "sketch killed 2 s after the exception (launcher leaves it suspended)"
+ ],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [],
+ "tabs": [
+  "tramas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 143,
+ "timed_out": false,
+ "stdout_tail": "Finished.",
+ "stderr_tail": "The file \"ref2.jpg\" is missing or inaccessible, make sure the URL is valid or that the file has been added to your sketch and is readable.\ntramas.pde:68:0:68:0: NullPointerException\nCould not run the sketch (Target VM failed to initialize).\nFor more information, read Help \u2192 Troubleshooting.\nCould not run the sketch.",
+ "ms_first_frame": null
+}

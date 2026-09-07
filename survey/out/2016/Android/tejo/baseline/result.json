@@ -1,0 +1,61 @@
+{
+ "sketch": "2016/Android/tejo",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Android/tejo/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Android/tejo/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1486,
+   "md5": "56e744248abf990bd1a92eb7147037eb",
+   "bytes": 2805
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P2D",
+ "imports": [],
+ "tabs": [
+  "Editor.pde",
+  "tejo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Android/tejo/baseline/frame_00001.png (snap) t=1486ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Android/tejo/baseline/frame_00002.png (snap) t=1504ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Android/tejo/baseline/frame_00010.png (snap) t=1696ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Android/tejo/baseline/frame_00060.png (snap) t=2951ms\n[harness] done frame=60 t=2942ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1486,
+ "deterministic": true,
+ "rerun_frames": 1
+}

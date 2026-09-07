@@ -1,0 +1,61 @@
+{
+ "sketch": "2019/Funji/funji003",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/Funji/funji003/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Funji/funji003/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1414,
+   "md5": "b8f2a6be37523d7d3ce55354aa9bf58c",
+   "bytes": 3031
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Funji/funji003/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1630,
+   "md5": "b04d56b2a6fbc60aecccdb3589f485c7",
+   "bytes": 3073
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Funji/funji003/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2889,
+   "md5": "2cfba8d099ddafd0d05c7d075752e512",
+   "bytes": 3299
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  560
+ ],
+ "size_args": "960, 560, P2D",
+ "imports": [],
+ "tabs": [
+  "funji003.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Funji/funji003/baseline/frame_00001.png (snap) t=1414ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Funji/funji003/baseline/frame_00010.png (snap) t=1630ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Funji/funji003/baseline/frame_00060.png (snap) t=2889ms\n[harness] done frame=60 t=2876ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1414,
+ "deterministic": false,
+ "rerun_frames": 3
+}

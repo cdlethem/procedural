@@ -1,0 +1,27 @@
+{
+ "sketch": "2015/Shaders/tilesShader",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Shaders/tilesShader/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "javax.media.opengl.GL",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P2D",
+ "imports": [
+  "javax.media.opengl.GL",
+  "javax.media.opengl.GL2"
+ ],
+ "tabs": [
+  "tilesShader.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2"
+}

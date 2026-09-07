@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/paper",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/paper/variants/palette_cool",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#F00050, #FF4E02, #F9E702, #028DF9, #1629C6};",
+   "int colors[] = {#010187, #0A49FF, #FF854E, #FFCAE3, #FFFFFF};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/paper/variants/palette_cool/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1776,
+   "md5": "12b7ba07f1055fdce33feac1c5d0d589",
+   "bytes": 114714
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "paper.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#F00050, #FF4E02, #F9E702, #028DF9, #1629C6};",
+   "new": "int colors[] = {#010187, #0A49FF, #FF854E, #FFCAE3, #FFFFFF};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/paper/variants/palette_cool/frame_00001.png (snap) t=1776ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/paper/variants/palette_cool/frame_00010.png (snap) t=1986ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/paper/variants/palette_cool/frame_00060.png (snap) t=3244ms\n[harness] done frame=60 t=3215ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1776,
+ "diff_vs_baseline": {
+  "mean": 0.4717,
+  "changed_fraction": 1.0,
+  "label": "large"
+ }
+}

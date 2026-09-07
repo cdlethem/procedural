@@ -1,0 +1,78 @@
+{
+ "sketch": "2018/Generativos/naifSelva",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/naifSelva/variants/colors_2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#FAA270, #B5CA53, #FE8AB4, #24ACCE, #B5140B, #B083A8, #167E68,#015928, #35B77D, #003172, #E87823, #D8B04A, #001C77, #001C77};",
+   "int colors[] = {#FAA270, #24ACCE};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/naifSelva/variants/colors_2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1791,
+   "md5": "a881ab293bc703121b14338230161b72",
+   "bytes": 340298
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "java.util.Arrays",
+  "java.util.Collections",
+  "java.util.Comparator",
+  "java.util.HashSet"
+ ],
+ "tabs": [
+  "Triangulator.pde",
+  "naifSelva.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#FAA270, #B5CA53, #FE8AB4, #24ACCE, #B5140B, #B083A8, #167E68,#015928, #35B77D, #003172, #E87823, #D8B04A, #001C77, #001C77};",
+   "new": "int colors[] = {#FAA270, #24ACCE};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/naifSelva/variants/colors_2/frame_00001.png (snap) t=1791ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/naifSelva/variants/colors_2/frame_00010.png (snap) t=2012ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/naifSelva/variants/colors_2/frame_00060.png (snap) t=3265ms\n[harness] done frame=60 t=3238ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1791,
+ "diff_vs_baseline": {
+  "mean": 0.0613,
+  "changed_fraction": 0.246,
+  "label": "moderate"
+ }
+}

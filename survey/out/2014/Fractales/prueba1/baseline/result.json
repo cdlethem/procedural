@@ -1,0 +1,45 @@
+{
+ "sketch": "2014/Fractales/prueba1",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Fractales/prueba1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Fractales/prueba1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 786,
+   "md5": "27a26ac165deb9deea2aeb1d13f7e14c",
+   "bytes": 968968
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [],
+ "tabs": [
+  "prueba1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 36.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Fractales/prueba1/baseline/frame_00001.png (snap) t=786ms\n[harness] dispose frame=2 saved=true\n[harness] watchdog: no draw() reached budget; frame=2 saved=true\nFinished.",
+ "stderr_tail": "Could not save ${GENART_SURVEY_ROOT}/.build/e71a278ea3/prueba1/f_20.34775, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, wbmp, jpeg)",
+ "ms_first_frame": 786,
+ "deterministic": true,
+ "rerun_frames": 1
+}

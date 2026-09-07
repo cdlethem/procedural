@@ -1,0 +1,83 @@
+{
+ "sketch": "2018/Generativos/floripanos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/variants/attempts_2000",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int i = 0; i < 8000; i++) {",
+   "for (int i = 0; i < 2000; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/variants/attempts_2000/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1452,
+   "md5": "4c71e7dbfe7f44e77bdef3e357a92e93",
+   "bytes": 104011
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/variants/attempts_2000/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1663,
+   "md5": "0bb5e1d7d038cb13e1e9525abdcaa828",
+   "bytes": 106194
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/variants/attempts_2000/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2917,
+   "md5": "a86ca8e5c383ac6c1e4b5f4e28894dfc",
+   "bytes": 163730
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "floripanos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i < 8000; i++) {",
+   "new": "for (int i = 0; i < 2000; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/variants/attempts_2000/frame_00001.png (snap) t=1452ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/variants/attempts_2000/frame_00010.png (snap) t=1663ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/variants/attempts_2000/frame_00060.png (snap) t=2917ms\n[harness] done frame=60 t=2893ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1452,
+ "diff_vs_baseline": {
+  "mean": 0.0072,
+  "changed_fraction": 0.019,
+  "label": "none"
+ }
+}

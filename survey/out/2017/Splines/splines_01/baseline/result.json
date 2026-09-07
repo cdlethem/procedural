@@ -1,0 +1,68 @@
+{
+ "sketch": "2017/Splines/splines_01",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Splines/splines_01/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Splines/splines_01/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1590,
+   "md5": "36609be0e20725d293263672f2dc05f3",
+   "bytes": 97074
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Splines/splines_01/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 5747,
+   "md5": "5898cb2a88600d11949e7de97570bbae",
+   "bytes": 91533
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Splines/splines_01/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6998,
+   "md5": "922351d9b74cadb86a6b38aa3d68ae05",
+   "bytes": 50268
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P3D",
+ "imports": [
+  "peasy.*"
+ ],
+ "tabs": [
+  "splines_01.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 8.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Splines/splines_01/baseline/frame_00001.png (snap) t=1590ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Splines/splines_01/baseline/frame_00010.png (snap) t=5747ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Splines/splines_01/baseline/frame_00060.png (snap) t=6998ms\n[harness] done frame=60 t=6989ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1590,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,37 @@
+{
+ "sketch": "2020/generative/01_04/cirpo",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cirpo/variants/det_0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "  float det = random(0.008);="
+ ],
+ "status": "bad_sub",
+ "detail": "substitution needs OLD=>NEW: '  float det = random(0.008);='",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "cirpo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ]
+}

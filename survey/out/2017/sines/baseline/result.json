@@ -1,0 +1,63 @@
+{
+ "sketch": "2017/sines",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/sines/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/sines/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1476,
+   "md5": "d80b965646ba83a8c6c3f3b9391cabfe",
+   "bytes": 132297
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/sines/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 10454,
+   "md5": "f7268e34ecfb51126e5ff6096bc134a9",
+   "bytes": 134298
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/sines/baseline/frame_00030.png",
+   "frame": 30,
+   "tag": "budget",
+   "ms": 30456,
+   "md5": "d8a426e616ddf4f8eadbc3c576f7007a",
+   "bytes": 129107
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  480,
+  480
+ ],
+ "size_args": "480, 480, P2D",
+ "imports": [],
+ "tabs": [
+  "sines.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 32.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/sines/baseline/frame_00001.png (snap) t=1476ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/sines/baseline/frame_00010.png (snap) t=10454ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/sines/baseline/frame_00030.png (budget) t=30456ms\n[harness] done frame=30 t=30441ms\n[harness] dispose frame=31 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1476,
+ "deterministic": false,
+ "rerun_frames": 3
+}

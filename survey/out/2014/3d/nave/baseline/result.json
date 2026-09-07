@@ -1,0 +1,26 @@
+{
+ "sketch": "2014/3d/nave",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/3d/nave/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "manoloide.Input.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [
+  "manoloide.Input.*"
+ ],
+ "tabs": [
+  "nave.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

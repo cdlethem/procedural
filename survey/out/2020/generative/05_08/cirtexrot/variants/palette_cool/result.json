@@ -1,0 +1,88 @@
+{
+ "sketch": "2020/generative/05_08/cirtexrot",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/palette_cool",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#FFFFFF, #FFB0D0, #F7DE20, #245C0E, #EB6117, #F72C11, #C6356B, #953DC4, #003399, #02060D};",
+   "int colors[] = {#FFFFFF, #9FD0FF, #00CFFF, #003399, #02060D, #003399, #9FD0FF, #00CFFF, #FFFFFF, #02060D};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/palette_cool/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1551,
+   "md5": "aba6a6d7931a9d2dc5f3fb483a3a1de9",
+   "bytes": 2623567
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/palette_cool/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1757,
+   "md5": "baaf7d5f5442e6db7dce49156a2b577d",
+   "bytes": 5164
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/palette_cool/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3019,
+   "md5": "baaf7d5f5442e6db7dce49156a2b577d",
+   "bytes": 5164
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "cirtexrot.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#FFFFFF, #FFB0D0, #F7DE20, #245C0E, #EB6117, #F72C11, #C6356B, #953DC4, #003399, #02060D};",
+   "new": "int colors[] = {#FFFFFF, #9FD0FF, #00CFFF, #003399, #02060D, #003399, #9FD0FF, #00CFFF, #FFFFFF, #02060D};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/palette_cool/frame_00001.png (snap) t=1551ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/palette_cool/frame_00010.png (snap) t=1757ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/cirtexrot/variants/palette_cool/frame_00060.png (snap) t=3019ms\n[harness] done frame=60 t=2991ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1551,
+ "diff_vs_baseline": {
+  "mean": 0.203,
+  "changed_fraction": 0.901,
+  "label": "large"
+ }
+}

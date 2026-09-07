@@ -1,0 +1,75 @@
+{
+ "sketch": "2020/generative/01_04/spiedo",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1505,
+   "md5": "31049eed936a2138532feb062c3a6dc6",
+   "bytes": 112544
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 10487,
+   "md5": "6c37d2b9f901cc4381d603c440293d18",
+   "bytes": 109253
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/baseline/frame_00030.png",
+   "frame": 30,
+   "tag": "budget",
+   "ms": 30489,
+   "md5": "602b75fe46acadfc989faed64dae4ae3",
+   "bytes": 100985
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "spiedo.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 32.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/baseline/frame_00001.png (snap) t=1505ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/baseline/frame_00010.png (snap) t=10487ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/spiedo/baseline/frame_00030.png (budget) t=30489ms\n[harness] done frame=30 t=30474ms\n[harness] dispose frame=31 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1505,
+ "deterministic": false,
+ "rerun_frames": 3
+}

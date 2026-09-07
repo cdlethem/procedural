@@ -1,0 +1,40 @@
+{
+ "sketch": "2020/generative/01_04/papalon",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/variants/det_0.0032",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "  float det = random(0.0016);="
+ ],
+ "status": "bad_sub",
+ "detail": "substitution needs OLD=>NEW: '  float det = random(0.0016);='",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "papalon.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ]
+}

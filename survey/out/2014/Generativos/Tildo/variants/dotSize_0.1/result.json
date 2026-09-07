@@ -1,0 +1,79 @@
+{
+ "sketch": "2014/Generativos/Tildo",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/dotSize_0.1",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "ellipse(x,y, width*0.05, width*0.05);",
+   "ellipse(x,y, width*0.1, width*0.1);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/dotSize_0.1/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 152,
+   "md5": "2a112a93d530d757d42b240a4caf554e",
+   "bytes": 7330
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/dotSize_0.1/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 297,
+   "md5": "7eff69b4084db6853dea7bca4a19ffc7",
+   "bytes": 7750
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/dotSize_0.1/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1122,
+   "md5": "7393c93d012235a087d70313f61e07db",
+   "bytes": 7850
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  200,
+  200
+ ],
+ "size_args": "200,200",
+ "imports": [],
+ "tabs": [
+  "Tildo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "ellipse(x,y, width*0.05, width*0.05);",
+   "new": "ellipse(x,y, width*0.1, width*0.1);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "Tildo.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/dotSize_0.1/frame_00001.png (snap) t=152ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/dotSize_0.1/frame_00010.png (snap) t=297ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/dotSize_0.1/frame_00060.png (snap) t=1122ms\n[harness] done frame=60 t=1120ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 152,
+ "diff_vs_baseline": {
+  "mean": 0.0073,
+  "changed_fraction": 0.034,
+  "label": "none"
+ }
+}

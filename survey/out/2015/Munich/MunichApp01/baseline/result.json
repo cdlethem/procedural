@@ -1,0 +1,31 @@
+{
+ "sketch": "2015/Munich/MunichApp01",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Munich/MunichApp01/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "TUIO.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1920,
+  1080
+ ],
+ "size_args": "1920, 1080",
+ "imports": [
+  "TUIO.*"
+ ],
+ "tabs": [
+  "Cell.pde",
+  "MunichApp01.pde",
+  "Node.pde",
+  "Touch.pde",
+  "Trend.pde",
+  "Tuio.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

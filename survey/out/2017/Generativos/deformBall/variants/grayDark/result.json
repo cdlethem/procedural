@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/deformBall",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/grayDark",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "fill(256*pow(random(1), random(1)));",
+   "fill(256*pow(random(1), 2));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/grayDark/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 410,
+   "md5": "bb25862cfb6bd77e76bb3be943058498",
+   "bytes": 2083040
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1920,
+  1920
+ ],
+ "size_args": "1920, 1920",
+ "imports": [],
+ "tabs": [
+  "deformBall.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "fill(256*pow(random(1), random(1)));",
+   "new": "fill(256*pow(random(1), 2));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/grayDark/frame_00001.png (snap) t=410ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/grayDark/frame_00010.png (snap) t=658ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/grayDark/frame_00060.png (snap) t=1589ms\n[harness] done frame=60 t=1475ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 410,
+ "diff_vs_baseline": {
+  "mean": 0.2433,
+  "changed_fraction": 0.595,
+  "label": "large"
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/Juegos/Cargadores",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Cargadores/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Cargadores/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 160,
+   "md5": "e455836037dc05b69d791b6578e2241d",
+   "bytes": 8139
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Cargadores/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 308,
+   "md5": "d06cc4bfaf9704a7943957f624a153cd",
+   "bytes": 7914
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Cargadores/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1138,
+   "md5": "f7b482c4214a30892f625ac6add171f9",
+   "bytes": 6228
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640, 480",
+ "imports": [],
+ "tabs": [
+  "Cargadores.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/Cargadores/baseline/frame_00001.png (snap) t=160ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/Cargadores/baseline/frame_00010.png (snap) t=308ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/Cargadores/baseline/frame_00060.png (snap) t=1138ms\n[harness] done frame=60 t=1128ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 160,
+ "deterministic": true,
+ "rerun_frames": 3
+}

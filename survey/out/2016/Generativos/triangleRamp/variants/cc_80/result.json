@@ -1,0 +1,71 @@
+{
+ "sketch": "2016/Generativos/triangleRamp",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/triangleRamp/variants/cc_80",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "\t\tint cc = int(random(3, 100*random(1)));",
+   "\t\tint cc = 80;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/triangleRamp/variants/cc_80/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1810,
+   "md5": "3efd5c75058debb07fedfb41210148ca",
+   "bytes": 687927,
+   "captured_frame": 10
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P2D",
+ "imports": [],
+ "tabs": [
+  "triangleRamp.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "\t\tint cc = int(random(3, 100*random(1)));",
+   "new": "\t\tint cc = 80;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 10 promoted to frame_00001.png"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/triangleRamp/variants/cc_80/frame_00001.png (snap) t=1579ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/triangleRamp/variants/cc_80/frame_00010.png (snap) t=1810ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/triangleRamp/variants/cc_80/frame_00060.png (snap) t=3062ms\n[harness] done frame=60 t=3034ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1810,
+ "diff_vs_baseline": {
+  "mean": 0.167,
+  "changed_fraction": 0.725,
+  "label": "large"
+ }
+}

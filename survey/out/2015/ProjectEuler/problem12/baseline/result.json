@@ -1,0 +1,44 @@
+{
+ "sketch": "2015/ProjectEuler/problem12",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/ProjectEuler/problem12/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/ProjectEuler/problem12/baseline/frame_00000.png",
+   "frame": 0,
+   "tag": "watchdog",
+   "ms": 35023,
+   "md5": "f0510390727deb47ff521b32619dd99c",
+   "bytes": 307
+  }
+ ],
+ "warnings": [
+  "frame saved by the watchdog before draw() finished: may be partial or blank; the sketch is too slow for the budget"
+ ],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": null,
+ "imports": [],
+ "tabs": [
+  "problem12.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 39.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "897445 48\nnop 26904780 144\nnop 26912116 96\nnop 26919453 32\nnop 26926791 16\nnop 26934130 32\nnop 26941470 32\nnop 26948811 8\nnop 26956153 8\nnop 26963496 128\nnop 26970840 256\nnop 26978185 16\nnop 26985531 16\nnop 26992878 64\nnop 27000226 16\nnop 27007575 36\nnop 27014925 36\nnop 27022276 12\nnop 27029628 72\nnop 27036981 24\nnop 27044335 8\nnop 27051690 32\nnop 27059046 32\nnop 27066403 16\nnop 27073761 32\nnop 27081120 192\nnop 27088480 96\nnop 27095841 24\nnop 27103203 24\nnop 27110566 32\nnop 27117930 64\nnop 27125295 32\nnop 27132661 16\nnop 27140028 48\nnop 27147396 24\nnop 27154765 16\nnop 27162135 160\nnop 27169506 160\nnop 27176878 32\nnop 27184251 16\nnop 27191625 32\nnop 27199000 64\nnop 27206376 32\nnop 27213753 32\nnop 27221131 32\nnop 27228510 96\nnop 27235890 144\nnop 27243271 12\nnop 27250653 16\nnop 27258036 96\nnop 27265420 96\nnop 27272805 32\nnop 27280191 16\nnop 27287578 16\nnop 27294966 24\nnop 27302355 24\nnop 27309745 16\nnop 27317136 160\nnop 27324528 80\nnop 27331921 4\nnop 27339315 32\nnop 27346710 96\nnop 27354106 24\nnop 27361503 32\nnop 27368901 48\nnop 27376300 108\nnop 27383700 72\nnop 27391101 8\nnop 27398503 8\nnop 27405906 32\nnop 27413310 32\nnop 27420715 24\nnop 27428121 36\nnop 27435528 48\nnop 27442936 32\nnop 27450345 64\nnop 27457755 32\nnop 27465166 16\nnop 27472578 64\nnop 27479991 32\nnop 27487405 16\nnop 27494820 72\nnop 27502236 36\nnop 27509653 4\nnop 27517071 8\nnop 27524490 64\nnop 27531910 64\nnop 27539331 16\nnop 27546753 16\nnop 27554176 64\nnop 27561600 384\nnop 27569025 96\nnop 27576451 16\nnop 27583878 32\nnop 27591306 64\nnop 27598735 32\nnop 27606165 16\nnop 27613596 24\nnop 27621028 12\nnop 27628461 24\nnop 27635895 48\nnop 27643330 48\nnop 27650766 96\nnop 27658203 16\nnop 27665641 8\nnop 27673080 128\nnop 27680520 128\nnop 27687961 12\nnop 27695403 18\nnop 27702846 24\nnop 27710290 16\nnop 27717735 32\nnop 27725181 32\nnop 27732628 72\nnop 27740076 144\nnop 27747525 48\nnop 27754975 12\nnop 27762426 40\nnop 27769878 80\nnop 27777331 8\nnop 27784785 32\nnop 27792240 160\nnop 27799696 20\nnop 27807153 16\nnop 27814611 16\nnop 27822070 16\nnop 27829530 48\nnop 27836991 48\nnop 27844453 32\nnop 27851916 48\nnop 27859380 48\nnop 27866845 8\nnop 27874311 16\nnop 27881778 32\nnop 27889246 32\nnop 27896715 96\nnop 27904185 48\nnop 27911656 32\nnop 27919128 64\nnop 27926601 32\nnop 27934075 48\nnop 27941550 192\nnop 27949026 32\nnop 27956503 4\nnop 27963981 16\nnop 27971460 192\nnop 27978940 48\nnop 27986421 16\nnop 27993903 32\nnop 28001386 16\nnop 28008870 32\nnop 28016355 32\nnop 28023841 8\nnop 28031328 72\n[harness] watchdog: hard exit\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 35023,
+ "deterministic": true,
+ "rerun_frames": 1
+}

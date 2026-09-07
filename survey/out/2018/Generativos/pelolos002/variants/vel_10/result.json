@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/pelolos002",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pelolos002/variants/vel_10",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    vel *= 5;",
+   "    vel *= 10;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pelolos002/variants/vel_10/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1876,
+   "md5": "a67ae832ba464531da52e87405c6d084",
+   "bytes": 2032792
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "pelolos002.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    vel *= 5;",
+   "new": "    vel *= 10;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelolos002/variants/vel_10/frame_00001.png (snap) t=1876ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelolos002/variants/vel_10/frame_00010.png (snap) t=2127ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelolos002/variants/vel_10/frame_00060.png (snap) t=3418ms\n[harness] done frame=60 t=3340ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1876,
+ "diff_vs_baseline": {
+  "mean": 0.1612,
+  "changed_fraction": 0.735,
+  "label": "large"
+ }
+}

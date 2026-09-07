@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/spiral",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/spiral/variants/dc_full",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float dc = random(colors.length*2)*random(1)*random(1);",
+   "float dc = random(colors.length*2);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/spiral/variants/dc_full/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1441,
+   "md5": "e2b34827d6630efa04bfae2ef8563987",
+   "bytes": 104391
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "spiral.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float dc = random(colors.length*2)*random(1)*random(1);",
+   "new": "float dc = random(colors.length*2);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/spiral/variants/dc_full/frame_00001.png (snap) t=1441ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/spiral/variants/dc_full/frame_00010.png (snap) t=1652ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/spiral/variants/dc_full/frame_00060.png (snap) t=2907ms\n[harness] done frame=60 t=2881ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1441,
+ "diff_vs_baseline": {
+  "mean": 0.2522,
+  "changed_fraction": 0.786,
+  "label": "large"
+ }
+}

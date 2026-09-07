@@ -1,0 +1,66 @@
+{
+ "sketch": "2019/Music/basicSynth",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/Music/basicSynth/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Music/basicSynth/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1712,
+   "md5": "61561b72c711f0343056f8da67809dda",
+   "bytes": 417
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  512,
+  200
+ ],
+ "size_args": "512, 200, P3D",
+ "imports": [
+  "ddf.minim.*",
+  "ddf.minim.ugens.*"
+ ],
+ "tabs": [
+  "Sine.pde",
+  "basicSynth.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "minim.jar",
+  "jsminim.jar",
+  "jl1.0.1.jar",
+  "mp3spi1.9.5.jar",
+  "tritonus_aos.jar",
+  "tritonus_share.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 10.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Music/basicSynth/baseline/frame_00001.png (snap) t=1712ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Music/basicSynth/baseline/frame_00010.png (snap) t=4369ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Music/basicSynth/baseline/frame_00060.png (snap) t=8552ms\n[harness] done frame=60 t=8548ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1712,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

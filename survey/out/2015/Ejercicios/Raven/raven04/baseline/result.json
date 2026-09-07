@@ -1,0 +1,61 @@
+{
+ "sketch": "2015/Ejercicios/Raven/raven04",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven04/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven04/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1502,
+   "md5": "a773ac2d6ee8ec7b50bac56d96e8405f",
+   "bytes": 107924
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven04/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1743,
+   "md5": "380f17d8e6b0308232e077af83e04440",
+   "bytes": 208730
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven04/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2998,
+   "md5": "88924f32f4ccba9613755d36943103cf",
+   "bytes": 172657
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "raven04.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven04/baseline/frame_00001.png (snap) t=1502ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven04/baseline/frame_00010.png (snap) t=1743ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Ejercicios/Raven/raven04/baseline/frame_00060.png (snap) t=2998ms\n[harness] done frame=60 t=2968ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1502,
+ "deterministic": true,
+ "rerun_frames": 3
+}

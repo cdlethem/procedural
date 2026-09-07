@@ -1,0 +1,86 @@
+{
+ "sketch": "2019/generativos/galon",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/palette_cool",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#BF0505, #F7B72E, #A6BED8, #EA529B, #DDDAC9};",
+   "int colors[] = {#1E3A8A, #22D3EE, #A5B4FC, #34D399, #E2E8F0};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/palette_cool/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1473,
+   "md5": "5ea34f7b19288dedb34431aa315c1005",
+   "bytes": 1900335
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/palette_cool/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1681,
+   "md5": "c181a54560fb6e6256aa67c747d4c233",
+   "bytes": 6010
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/palette_cool/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2932,
+   "md5": "c181a54560fb6e6256aa67c747d4c233",
+   "bytes": 6010
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "galon.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#BF0505, #F7B72E, #A6BED8, #EA529B, #DDDAC9};",
+   "new": "int colors[] = {#1E3A8A, #22D3EE, #A5B4FC, #34D399, #E2E8F0};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/palette_cool/frame_00001.png (snap) t=1473ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/palette_cool/frame_00010.png (snap) t=1681ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/galon/variants/palette_cool/frame_00060.png (snap) t=2932ms\n[harness] done frame=60 t=2913ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1473,
+ "diff_vs_baseline": {
+  "mean": 0.1721,
+  "changed_fraction": 0.726,
+  "label": "large"
+ }
+}

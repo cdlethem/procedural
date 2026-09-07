@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/3d/prueba1",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/3d/prueba1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/3d/prueba1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1512,
+   "md5": "1e23fe9d0ae708f919782e1730973d9a",
+   "bytes": 32748
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/3d/prueba1/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1711,
+   "md5": "5c9101e7a46f3864bc7d5340e643de7f",
+   "bytes": 37919
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/3d/prueba1/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2965,
+   "md5": "9b3debcd6efb479613346bdb7a646eba",
+   "bytes": 35497
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "prueba1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 5.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/3d/prueba1/baseline/frame_00001.png (snap) t=1512ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/3d/prueba1/baseline/frame_00010.png (snap) t=1711ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/3d/prueba1/baseline/frame_00060.png (snap) t=2965ms\n[harness] done frame=60 t=2955ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1512,
+ "deterministic": true,
+ "rerun_frames": 3
+}

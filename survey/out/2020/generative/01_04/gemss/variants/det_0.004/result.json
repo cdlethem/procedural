@@ -1,0 +1,85 @@
+{
+ "sketch": "2020/generative/01_04/gemss",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/gemss/variants/det_0.004",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "float det = random(0.0016, 0.002)*random(1);=>float det = 0.004;"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/gemss/variants/det_0.004/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2024,
+   "md5": "1498dc4a6546969e8ded567b76076a14",
+   "bytes": 1215849
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/gemss/variants/det_0.004/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2235,
+   "md5": "bf746b57837b6430430cf02adffb14cb",
+   "bytes": 22513
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/gemss/variants/det_0.004/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3490,
+   "md5": "bf746b57837b6430430cf02adffb14cb",
+   "bytes": 22513
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "gemss.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float det = random(0.0016, 0.002)*random(1);",
+   "new": "float det = 0.004;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/gemss/variants/det_0.004/frame_00001.png (snap) t=2024ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/gemss/variants/det_0.004/frame_00010.png (snap) t=2235ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/gemss/variants/det_0.004/frame_00060.png (snap) t=3490ms\n[harness] done frame=60 t=3464ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2024,
+ "diff_vs_baseline": {
+  "mean": 0.2101,
+  "changed_fraction": 0.469,
+  "label": "large"
+ }
+}

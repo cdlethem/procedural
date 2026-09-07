@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/practicas/3/ej5",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej5/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej5/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 145,
+   "md5": "2ab938c27752855cd1fc7dc2aed3e136",
+   "bytes": 2354
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "ej5.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "36.378185\n-44.533478\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej5/baseline/frame_00001.png (snap) t=145ms\n34.16117\n-45.20607\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej5/baseline/frame_00002.png (snap) t=159ms\n15.43597\n44.20735\n13.853923\n20.771057\n33.277447\n-40.867542\n45.16861\n-4.874283\n18.439144\n-11.835693\n13.787401\n19.042572\n23.182678\n26.209015\n39.14509\n49.817856\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej5/baseline/frame_00010.png (snap) t=291ms\n45.966385\n-34.804176\n21.824547\n-6.0200195\n37.495308\n43.063118\n19.32834\n29.82866\n8.868924\n-34.945255\n29.717493\n-16.169209\n10.488376\n-24.933868\n41.29829\n-13.483883\n8.610895\n-34.13455\n29.371368\n-22.582745\n37.56402\n14.362213\n28.552017\n-41.97141\n29.001242\n-40.933556\n37.625496\n29.861694\n1.5709102\n-18.34675\n17.895994\n-30.091846\n40.889843\n-48.893368\n20.884377\n26.953522\n48.701782\n-41.934563\n35.67031\n3.3007965\n24.028725\n37.345146\n14.582825\n-28.04749\n47.493004\n9.588379\n41.02459\n-31.125366\n31.832228\n-12.157131\n18.456074\n-36.357643\n18.012741\n-6.3717117\n21.733051\n14.879364\n22.865852\n19.596916\n23.634418\n45.093246\n23.451126\n4.8927383\n41.36612\n-46.26274\n7.5515776\n-44.742104\n41.69331\n28.861443\n23.015318\n26.125114\n14.028597\n13.137974\n9.798208\n-15.517162\n8.963672\n46.248688\n43.28434\n-1.8672066\n24.32953\n4.8164024\n21.048584\n-49.185043\n31.64349\n25.76355\n34.99293\n13.10371\n15.766421\n-42.974884\n28.581015\n-15.655033\n18.550613\n-20.928389\n43.59073\n-34.618073\n40.28655\n-24.83042\n30.810684\n-11.6035385\n18.717966\n-38.50955\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/practicas/3/ej5/baseline/frame_00060.png (snap) t=1121ms\n[harness] done frame=60 t=1113ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 145,
+ "deterministic": true,
+ "rerun_frames": 1
+}

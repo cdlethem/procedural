@@ -1,0 +1,61 @@
+{
+ "sketch": "2017/Juegos/AirBall",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Juegos/AirBall/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Juegos/AirBall/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 183,
+   "md5": "cdce32bf11558105d4c078803268d4bf",
+   "bytes": 18073
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Juegos/AirBall/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 328,
+   "md5": "0b9e45cba3504ed370ba0fe9ffdb7621",
+   "bytes": 17166
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Juegos/AirBall/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1166,
+   "md5": "39a23da564b28af3fb84f8b2783794e8",
+   "bytes": 17213
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  480,
+  720
+ ],
+ "size_args": "480, 720",
+ "imports": [],
+ "tabs": [
+  "AirBall.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Juegos/AirBall/baseline/frame_00001.png (snap) t=183ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Juegos/AirBall/baseline/frame_00010.png (snap) t=328ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Juegos/AirBall/baseline/frame_00060.png (snap) t=1166ms\n[harness] done frame=60 t=1154ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 183,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/05_08/tiger",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tiger/variants/palette_cool",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#CD5102, #971C1E, #35292F, #CDB4C0};",
+   "int colors[] = {#2B349E, #F57E15, #ED491C, #9B407D, #B48DC0, #E3E8EA};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tiger/variants/palette_cool/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1438,
+   "md5": "7656e50df47e28b29134f3af16ff5dcf",
+   "bytes": 117218
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "tiger.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#CD5102, #971C1E, #35292F, #CDB4C0};",
+   "new": "int colors[] = {#2B349E, #F57E15, #ED491C, #9B407D, #B48DC0, #E3E8EA};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tiger/variants/palette_cool/frame_00001.png (snap) t=1438ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tiger/variants/palette_cool/frame_00010.png (snap) t=1648ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tiger/variants/palette_cool/frame_00060.png (snap) t=2909ms\n[harness] done frame=60 t=2880ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1438,
+ "diff_vs_baseline": {
+  "mean": 0.3301,
+  "changed_fraction": 0.985,
+  "label": "large"
+ }
+}

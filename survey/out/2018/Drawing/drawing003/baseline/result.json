@@ -1,0 +1,69 @@
+{
+ "sketch": "2018/Drawing/drawing003",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing003/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing003/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1459,
+   "md5": "567640d68a1f80e5e1c2fe8c951c2621",
+   "bytes": 2724,
+   "captured_frame": 2
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing003/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1626,
+   "md5": "54fd44be03513a7dd389bea00a9396ae",
+   "bytes": 3334
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing003/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2894,
+   "md5": "ebfd1dd4a3df8fe95feee85da98b7bef",
+   "bytes": 8251
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P2D",
+ "imports": [],
+ "tabs": [
+  "drawing003.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 2 promoted to frame_00001.png"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing003/baseline/frame_00001.png (snap) t=1432ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing003/baseline/frame_00002.png (snap) t=1459ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing003/baseline/frame_00010.png (snap) t=1626ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing003/baseline/frame_00060.png (snap) t=2894ms\n[harness] done frame=60 t=2882ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1459,
+ "deterministic": false,
+ "rerun_frames": 3
+}

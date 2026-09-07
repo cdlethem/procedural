@@ -1,0 +1,35 @@
+{
+ "sketch": "2012 y otros/Particulas/prueba2",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Particulas/prueba2/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "compile_error",
+ "detail": "prueba2.pde:18:0:18:0: Cannot find a class or type named \u201cParticula\u201d",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "prueba2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "seed_fields": [],
+ "wall_s": 1.6,
+ "rc": 1,
+ "timed_out": false,
+ "stdout_tail": "",
+ "stderr_tail": "prueba2.pde:18:0:18:0: Cannot find a class or type named \u201cParticula\u201d",
+ "ms_first_frame": null
+}

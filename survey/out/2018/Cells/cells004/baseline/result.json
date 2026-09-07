@@ -1,0 +1,80 @@
+{
+ "sketch": "2018/Cells/cells004",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Cells/cells004/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Cells/cells004/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1491,
+   "md5": "f79aacceee3eff6b041bee8cc88f5ced",
+   "bytes": 7116,
+   "captured_frame": 2
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Cells/cells004/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1666,
+   "md5": "92741dfa66a4d86dc9d30e8fb638c8af",
+   "bytes": 19213
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Cells/cells004/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2931,
+   "md5": "e053181b803dce754081c56b0fbed765",
+   "bytes": 20754
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  540,
+  960
+ ],
+ "size_args": "540, 960, P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "Cell.pde",
+  "cells004.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 2 promoted to frame_00001.png"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Cells/cells004/baseline/frame_00001.png (snap) t=1462ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Cells/cells004/baseline/frame_00002.png (snap) t=1491ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Cells/cells004/baseline/frame_00010.png (snap) t=1666ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Cells/cells004/baseline/frame_00060.png (snap) t=2931ms\n[harness] done frame=60 t=2918ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1491,
+ "deterministic": false,
+ "rerun_frames": 3
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/circity",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/circity/variants/ver_0.6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float ver = random(0.8, 0.9);",
+   "float ver = 0.6;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/circity/variants/ver_0.6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1447,
+   "md5": "312f5960c6e175250079439368d4fbda",
+   "bytes": 76146
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "circity.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float ver = random(0.8, 0.9);",
+   "new": "float ver = 0.6;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/circity/variants/ver_0.6/frame_00001.png (snap) t=1447ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/circity/variants/ver_0.6/frame_00010.png (snap) t=1655ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/circity/variants/ver_0.6/frame_00060.png (snap) t=2913ms\n[harness] done frame=60 t=2888ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1447,
+ "diff_vs_baseline": {
+  "mean": 0.3186,
+  "changed_fraction": 0.727,
+  "label": "large"
+ }
+}

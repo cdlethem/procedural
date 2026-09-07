@@ -1,0 +1,63 @@
+{
+ "sketch": "2016/Shaders/aberrationPato",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Shaders/aberrationPato/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Shaders/aberrationPato/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2177,
+   "md5": "7856c25f1dba3043b0f156e8a2beb9f2",
+   "bytes": 1049247
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Shaders/aberrationPato/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2392,
+   "md5": "1169bca1353784e0045ce9ec8621dfae",
+   "bytes": 1050773
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Shaders/aberrationPato/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3655,
+   "md5": "aafdae92cff1a044c72e9d0095c5c2ce",
+   "bytes": 1048475
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "aberrationPato.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Shaders/aberrationPato/baseline/frame_00001.png (snap) t=2177ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Shaders/aberrationPato/baseline/frame_00010.png (snap) t=2392ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Shaders/aberrationPato/baseline/frame_00060.png (snap) t=3655ms\n[harness] done frame=60 t=3620ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "The shader doesn't have a uniform called \"textureResolution\" OR the uniform was removed during compilation because it was unused.",
+ "ms_first_frame": 2177,
+ "deterministic": true,
+ "rerun_frames": 3
+}

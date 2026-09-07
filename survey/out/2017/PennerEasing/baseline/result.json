@@ -1,0 +1,61 @@
+{
+ "sketch": "2017/PennerEasing",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/PennerEasing/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/PennerEasing/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 459,
+   "md5": "8be762b6cbb7ec6ac61557550ad2df9f",
+   "bytes": 12771
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/PennerEasing/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 634,
+   "md5": "782285df79c2d89d1ec64127845b22da",
+   "bytes": 12103
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/PennerEasing/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1479,
+   "md5": "8b48f76f90251126b65fcce2a9cb4b8a",
+   "bytes": 9458
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "PennerEasing.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/PennerEasing/baseline/frame_00001.png (snap) t=459ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/PennerEasing/baseline/frame_00010.png (snap) t=634ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/PennerEasing/baseline/frame_00060.png (snap) t=1479ms\n[harness] done frame=60 t=1453ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 459,
+ "deterministic": true,
+ "rerun_frames": 3
+}

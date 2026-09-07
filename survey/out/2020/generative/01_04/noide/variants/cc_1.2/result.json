@@ -1,0 +1,80 @@
+{
+ "sketch": "2020/generative/01_04/noide",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/noide/variants/cc_1.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(140, 200)*0.6);",
+   "int cc = int(random(140, 200)*1.2);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/noide/variants/cc_1.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 8456,
+   "md5": "4a7ab8ff70abcae2ceec084cd52b2817",
+   "bytes": 2354859
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "noide.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(140, 200)*0.6);",
+   "new": "int cc = int(random(140, 200)*1.2);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   8,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 34.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/noide/variants/cc_1.2/frame_00001.png (snap) t=8456ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/noide/variants/cc_1.2/frame_00008.png (budget) t=32868ms\n[harness] done frame=8 t=32791ms\n[harness] dispose frame=9 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 8456,
+ "diff_vs_baseline": {
+  "mean": 0.1247,
+  "changed_fraction": 0.457,
+  "label": "moderate"
+ }
+}

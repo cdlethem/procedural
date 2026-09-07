@@ -1,0 +1,68 @@
+{
+ "sketch": "2015/Generativos/ParticulasFanny",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/ParticulasFanny/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/ParticulasFanny/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 266,
+   "md5": "a22ac11663c4e9a82d46e659cab6ac2e",
+   "bytes": 3989
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/ParticulasFanny/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 438,
+   "md5": "8e21baec18bdce75b49ac821f222a370",
+   "bytes": 3978
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/ParticulasFanny/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1267,
+   "md5": "626302220b52f509211be2c33c162fbf",
+   "bytes": 3982
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "ParticulasFanny.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/ParticulasFanny/baseline/frame_00001.png (snap) t=266ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/ParticulasFanny/baseline/frame_00002.png (snap) t=302ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/ParticulasFanny/baseline/frame_00010.png (snap) t=438ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/ParticulasFanny/baseline/frame_00060.png (snap) t=1267ms\n[harness] done frame=60 t=1261ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 266,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/zzpptt",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/zzpptt/variants/cc_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(8, random(20, 120)));",
+   "int cc = 20;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/zzpptt/variants/cc_20/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2101,
+   "md5": "0466c57813e0a2e8c86e27eb82d57b03",
+   "bytes": 528859
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/zzpptt/variants/cc_20/self_20260906-015304.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2592,
+   "md5": "0466c57813e0a2e8c86e27eb82d57b03",
+   "bytes": 528859
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "zzpptt.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(8, random(20, 120)));",
+   "new": "int cc = 20;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/zzpptt/variants/cc_20/frame_00001.png (dispose) t=2101ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2101,
+ "diff_vs_baseline": {
+  "mean": 0.3085,
+  "changed_fraction": 0.913,
+  "label": "large"
+ }
+}

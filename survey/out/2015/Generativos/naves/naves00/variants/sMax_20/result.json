@@ -1,0 +1,79 @@
+{
+ "sketch": "2015/Generativos/naves/naves00",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves00/variants/sMax_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int s = int(random(1, random(1, 10)));",
+   "int s = int(random(1, random(1, 20)));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves00/variants/sMax_20/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1440,
+   "md5": "b0add9ae9bb23e066996c16cc7f8bb1e",
+   "bytes": 18181
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves00/variants/sMax_20/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1646,
+   "md5": "425cac4f2d5b22fe6e087c75f430fcd3",
+   "bytes": 21294
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves00/variants/sMax_20/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2895,
+   "md5": "cdf571dad3124b4a6f15c97c8a95ba0d",
+   "bytes": 21912
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "naves00.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int s = int(random(1, random(1, 10)));",
+   "new": "int s = int(random(1, random(1, 20)));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves00/variants/sMax_20/frame_00001.png (snap) t=1440ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves00/variants/sMax_20/frame_00010.png (snap) t=1646ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves00/variants/sMax_20/frame_00060.png (snap) t=2895ms\n[harness] done frame=60 t=2880ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1440,
+ "diff_vs_baseline": {
+  "mean": 0.013,
+  "changed_fraction": 0.037,
+  "label": "subtle"
+ }
+}

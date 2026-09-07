@@ -1,0 +1,70 @@
+{
+ "sketch": "2014/Generativos/pastelines",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/pastelines/variants/tam_10_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float tam = random(10, 160);",
+   "float tam = random(10, 40);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/pastelines/variants/tam_10_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1553,
+   "md5": "a865b6cb6eff5b0e059a3e5a40f8f16e",
+   "bytes": 192772
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800, P2D",
+ "imports": [],
+ "tabs": [
+  "pastelines.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float tam = random(10, 160);",
+   "new": "float tam = random(10, 40);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/pastelines/variants/tam_10_40/frame_00001.png (snap) t=1553ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/pastelines/variants/tam_10_40/frame_00010.png (snap) t=1757ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/pastelines/variants/tam_10_40/frame_00060.png (snap) t=3016ms\n[harness] done frame=60 t=2996ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1553,
+ "diff_vs_baseline": {
+  "mean": 0.098,
+  "changed_fraction": 0.468,
+  "label": "moderate"
+ }
+}

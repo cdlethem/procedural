@@ -1,0 +1,85 @@
+{
+ "sketch": "2018/Generativos/persons06",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/headWidth_0.3",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "headWidth = size*0.12;",
+   "headWidth = size*0.3;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/headWidth_0.3/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1452,
+   "md5": "43f4ddd9f77e650315482cb4538db4fb",
+   "bytes": 45125
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/headWidth_0.3/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1657,
+   "md5": "7dcab6abb69a94ac68ebaed00a16c182",
+   "bytes": 46653
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/headWidth_0.3/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2908,
+   "md5": "32fbdc4a55f424f1eaa4a5e11634c3fd",
+   "bytes": 46762
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P2D",
+ "imports": [
+  "java.util.*",
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "Person.pde",
+  "persons06.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "headWidth = size*0.12;",
+   "new": "headWidth = size*0.3;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n60.21962\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/headWidth_0.3/frame_00001.png (snap) t=1452ms\n53.32353\n53.635887\n53.704723\n52.77381\n51.927353\n51.14674\n50.41715\n49.75796\n49.141457\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/headWidth_0.3/frame_00010.png (snap) t=1657ms\n48.555748\n48.02566\n47.545692\n47.07637\n46.64743\n46.243435\n45.865364\n45.52262\n45.187172\n44.885353\n44.59469\n44.321465\n44.06187\n43.832664\n43.617725\n43.405945\n43.21816\n43.036766\n42.8526\n42.693325\n42.5366\n42.389515\n42.25274\n42.129612\n41.99149\n41.88721\n41.78627\n41.677383\n41.576252\n41.474705\n41.38256\n41.302944\n41.222717\n41.148205\n41.090275\n41.025845\n40.95499\n40.89341\n40.848278\n40.800148\n40.749638\n40.7087\n40.657585\n40.612076\n40.58263\n40.544247\n40.51063\n40.482265\n40.440018\n40.41001\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/headWidth_0.3/frame_00060.png (snap) t=2908ms\n[harness] done frame=60 t=2896ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1452,
+ "diff_vs_baseline": {
+  "mean": 0.0047,
+  "changed_fraction": 0.015,
+  "label": "none"
+ }
+}

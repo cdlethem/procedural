@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/desertSpace",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desertSpace/variants/uh_0.7",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  float uh = 1.1;",
+   "  float uh = 0.7;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desertSpace/variants/uh_0.7/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1864,
+   "md5": "28703d852f2e4be6eb8bd59afb27d0c0",
+   "bytes": 1325648
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  1280,
+  960
+ ],
+ "size_args": "1280, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "desertSpace.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  float uh = 1.1;",
+   "new": "  float uh = 0.7;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/desertSpace/variants/uh_0.7/frame_00001.png (snap) t=1864ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/desertSpace/variants/uh_0.7/frame_00010.png (snap) t=2126ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/desertSpace/variants/uh_0.7/frame_00060.png (snap) t=3398ms\n[harness] done frame=60 t=3338ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1864,
+ "diff_vs_baseline": {
+  "mean": 0.1508,
+  "changed_fraction": 0.574,
+  "label": "large"
+ }
+}

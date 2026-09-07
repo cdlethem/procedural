@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/oscoscosc",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/variants/ywidth_0.8",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float y = random(-0.5, 0.5)*1.6;",
+   "float y = random(-0.5, 0.5)*0.8;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/variants/ywidth_0.8/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3213,
+   "md5": "718002b4eba788f219cde4911b1839b2",
+   "bytes": 1322236
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/variants/ywidth_0.8/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3422,
+   "md5": "400ece11505b71bb0b20d983788756f2",
+   "bytes": 69725
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/variants/ywidth_0.8/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 4679,
+   "md5": "400ece11505b71bb0b20d983788756f2",
+   "bytes": 69725
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "oscoscosc.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float y = random(-0.5, 0.5)*1.6;",
+   "new": "float y = random(-0.5, 0.5)*0.8;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n140.0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/variants/ywidth_0.8/frame_00001.png (snap) t=3213ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/variants/ywidth_0.8/frame_00010.png (snap) t=3422ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/variants/ywidth_0.8/frame_00060.png (snap) t=4679ms\n[harness] done frame=60 t=4654ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3213,
+ "diff_vs_baseline": {
+  "mean": 0.147,
+  "changed_fraction": 0.625,
+  "label": "moderate"
+ }
+}

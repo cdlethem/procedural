@@ -1,0 +1,68 @@
+{
+ "sketch": "2018/Drippin/Labos/animation001",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation001/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 265,
+   "md5": "673fa248278e4d652e6a02eff533b301",
+   "bytes": 2730
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation001/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 603,
+   "md5": "f338212645da63478c509c944b2e271d",
+   "bytes": 2751
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation001/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2597,
+   "md5": "65db5cc720feba4007cf6ad6058cc8e8",
+   "bytes": 3050
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540",
+ "imports": [],
+ "tabs": [
+  "animation001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation001/baseline/frame_00001.png (snap) t=265ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation001/baseline/frame_00002.png (snap) t=285ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation001/baseline/frame_00010.png (snap) t=603ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drippin/Labos/animation001/baseline/frame_00060.png (snap) t=2597ms\n[harness] done frame=60 t=2587ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 265,
+ "deterministic": true,
+ "rerun_frames": 3
+}

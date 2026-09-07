@@ -1,0 +1,82 @@
+{
+ "sketch": "2018/Generativos/florecitas",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/florecitas/variants/flowers_1040",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  for (int i = 0; i < 520; i++) {",
+   "  for (int i = 0; i < 1040; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/florecitas/variants/flowers_1040/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3983,
+   "md5": "9cb21c8a350e20c221ff12f6e82c5c92",
+   "bytes": 1224562
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "florecitas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  for (int i = 0; i < 520; i++) {",
+   "new": "  for (int i = 0; i < 1040; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 7.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\nseed 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/florecitas/variants/flowers_1040/frame_00001.png (snap) t=3983ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/florecitas/variants/flowers_1040/frame_00010.png (snap) t=4219ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/florecitas/variants/flowers_1040/frame_00060.png (snap) t=5481ms\n[harness] done frame=60 t=5435ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3983,
+ "diff_vs_baseline": {
+  "mean": 0.1906,
+  "changed_fraction": 0.555,
+  "label": "large"
+ }
+}

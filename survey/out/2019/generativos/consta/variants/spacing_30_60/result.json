@@ -1,0 +1,79 @@
+{
+ "sketch": "2019/generativos/consta",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/consta/variants/spacing_30_60",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float sss = random(10, 20);",
+   "float sss = random(30, 60);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/consta/variants/spacing_30_60/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1473,
+   "md5": "6c88bf2b8bd015feb74c194e99a55132",
+   "bytes": 80519
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "consta.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float sss = random(10, 20);",
+   "new": "float sss = random(30, 60);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/consta/variants/spacing_30_60/frame_00001.png (snap) t=1473ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/consta/variants/spacing_30_60/frame_00010.png (snap) t=1682ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/consta/variants/spacing_30_60/frame_00060.png (snap) t=2941ms\n[harness] done frame=60 t=2914ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1473,
+ "diff_vs_baseline": {
+  "mean": 0.0435,
+  "changed_fraction": 0.103,
+  "label": "subtle"
+ }
+}

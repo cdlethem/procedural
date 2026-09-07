@@ -1,0 +1,64 @@
+{
+ "sketch": "2019/OP/op_023e",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023e/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023e/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2095,
+   "md5": "b17df79eb558b69c8357008e66d80b08",
+   "bytes": 2118632
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "twidth, theight, P2D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "op_023e.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/OP/op_023e/baseline/frame_00001.png (snap) t=2095ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/OP/op_023e/baseline/frame_00010.png (snap) t=2357ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/OP/op_023e/baseline/frame_00060.png (snap) t=3645ms\n[harness] done frame=60 t=3571ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2095,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

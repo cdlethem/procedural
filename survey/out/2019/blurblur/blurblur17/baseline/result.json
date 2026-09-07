@@ -1,0 +1,73 @@
+{
+ "sketch": "2019/blurblur/blurblur17",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur17/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur17/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1705,
+   "md5": "bc058a510dc48de9b772fdb7882a9fd4",
+   "bytes": 151557
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur17/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2030,
+   "md5": "f4097f6fa125d01af68275f8a9c9ca5f",
+   "bytes": 635224
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur17/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3726,
+   "md5": "9cc393933cae5c7ea0bad9832f37e596",
+   "bytes": 934705
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  1920,
+  1080
+ ],
+ "size_args": "1920, 1080, P2D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "blurblur17.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n52.01064\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur17/baseline/frame_00001.png (snap) t=1705ms\n34.123055\n35.69944\n35.40259\n35.099453\n34.806305\n34.560883\n34.29108\n34.088196\n33.861702\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur17/baseline/frame_00010.png (snap) t=2030ms\n32.161648\n32.079136\n31.980616\n31.882368\n31.800371\n31.72534\n31.642838\n31.596455\n31.522776\n31.448397\n31.40361\n31.323547\n31.284744\n31.245071\n31.196787\n31.143738\n31.093021\n31.034382\n30.992876\n31.003294\n30.958158\n30.911175\n30.87446\n30.843548\n30.811752\n30.8072\n30.794367\n30.76603\n30.707657\n30.6858\n30.687813\n30.66811\n30.655994\n30.600393\n30.584759\n30.528221\n30.483932\n30.501108\n30.455702\n30.428415\n30.429523\n30.42617\n30.421043\n30.404287\n30.400473\n30.373436\n30.365139\n30.361984\n30.354088\n30.359352\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/blurblur/blurblur17/baseline/frame_00060.png (snap) t=3726ms\n[harness] done frame=60 t=3653ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1705,
+ "deterministic": true,
+ "rerun_frames": 3
+}

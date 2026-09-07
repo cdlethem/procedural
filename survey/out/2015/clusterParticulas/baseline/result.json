@@ -1,0 +1,63 @@
+{
+ "sketch": "2015/clusterParticulas",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/clusterParticulas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/clusterParticulas/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 255,
+   "md5": "187dbe2ed52e0c9e59c3a79f08d7f56d",
+   "bytes": 264185
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/clusterParticulas/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 473,
+   "md5": "a9cf8e370288ed12610e80c2444a3b60",
+   "bytes": 229613
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/clusterParticulas/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1306,
+   "md5": "57ff3f401177ef235961e996b901eb98",
+   "bytes": 71597
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640",
+ "imports": [],
+ "tabs": [
+  "Cluster.pde",
+  "Particle.pde",
+  "clusterParticulas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/clusterParticulas/baseline/frame_00001.png (snap) t=255ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/clusterParticulas/baseline/frame_00010.png (snap) t=473ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/clusterParticulas/baseline/frame_00060.png (snap) t=1306ms\n[harness] done frame=60 t=1296ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 255,
+ "deterministic": false,
+ "rerun_frames": 3
+}

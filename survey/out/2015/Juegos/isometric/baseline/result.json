@@ -1,0 +1,61 @@
+{
+ "sketch": "2015/Juegos/isometric",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Juegos/isometric/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/isometric/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 373,
+   "md5": "acca206c8fd722796fc435dc372ac3f3",
+   "bytes": 12386
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/isometric/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2148,
+   "md5": "4bbc387221d6a924129e9f01a848a0ac",
+   "bytes": 12240
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/isometric/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 12145,
+   "md5": "9202a20049847e2ce5997b2902c3b856",
+   "bytes": 12223
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  720,
+  480
+ ],
+ "size_args": "720, 480",
+ "imports": [],
+ "tabs": [
+  "isometric.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 13.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/isometric/baseline/frame_00001.png (snap) t=373ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/isometric/baseline/frame_00010.png (snap) t=2148ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/isometric/baseline/frame_00060.png (snap) t=12145ms\n[harness] done frame=60 t=12136ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 373,
+ "deterministic": true,
+ "rerun_frames": 3
+}

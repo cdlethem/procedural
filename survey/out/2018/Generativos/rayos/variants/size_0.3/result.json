@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/rayos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/rayos/variants/size_0.3",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    tris.add(new Triangle(random(width), random(height), random(TAU), width*random(0.6)*random(0.1, 1)));",
+   "    tris.add(new Triangle(random(width), random(height), random(TAU), width*random(0.3)*random(0.1, 1)));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/rayos/variants/size_0.3/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2259,
+   "md5": "ecf4c597c9c161b8c5443170cf8d2885",
+   "bytes": 1873436
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/rayos/variants/size_0.3/self_20260906-004911.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2749,
+   "md5": "ecf4c597c9c161b8c5443170cf8d2885",
+   "bytes": 1873436
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "rayos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    tris.add(new Triangle(random(width), random(height), random(TAU), width*random(0.6)*random(0.1, 1)));",
+   "new": "    tris.add(new Triangle(random(width), random(height), random(TAU), width*random(0.3)*random(0.1, 1)));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/rayos/variants/size_0.3/frame_00001.png (dispose) t=2259ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2259,
+ "diff_vs_baseline": {
+  "mean": 0.3101,
+  "changed_fraction": 0.847,
+  "label": "large"
+ }
+}

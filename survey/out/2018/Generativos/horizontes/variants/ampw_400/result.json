@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/horizontes",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/horizontes/variants/ampw_400",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float ampw = random(100);",
+   "float ampw = 400;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/horizontes/variants/ampw_400/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1506,
+   "md5": "a8f530e6c7cd629a59a17a6e4020ed21",
+   "bytes": 21567
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "horizontes.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float ampw = random(100);",
+   "new": "float ampw = 400;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/horizontes/variants/ampw_400/frame_00001.png (snap) t=1506ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/horizontes/variants/ampw_400/frame_00010.png (snap) t=1713ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/horizontes/variants/ampw_400/frame_00060.png (snap) t=2973ms\n[harness] done frame=60 t=2946ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1506,
+ "diff_vs_baseline": {
+  "mean": 0.0595,
+  "changed_fraction": 0.188,
+  "label": "moderate"
+ }
+}

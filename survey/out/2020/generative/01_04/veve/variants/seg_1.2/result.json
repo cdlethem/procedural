@@ -1,0 +1,56 @@
+{
+ "sketch": "2020/generative/01_04/veve",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/veve/variants/seg_1.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int seg = int(dis*random(30, 40)*0.6);",
+   "int seg = int(dis*random(30, 40)*1.2);"
+  ]
+ ],
+ "status": "timeout",
+ "detail": "no frame within 90s",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "veve.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int seg = int(dis*random(30, 40)*0.6);",
+   "new": "int seg = int(dis*random(30, 40)*1.2);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 90.1,
+ "rc": 143,
+ "timed_out": true,
+ "stdout_tail": "",
+ "stderr_tail": "ll-2.6.0-natives-android-aarch64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/core-4.5.6.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-android-x86_64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-macosx-universal.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-main-2.6.0.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-linux-armv6hf.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-windows-amd64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-linux-aarch64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-linux-armv6hf.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-freebsd-amd64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-linux-aarch64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-main-2.6.0.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/antlr-2.7.7.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-macosx-universal.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/annotations-13.0.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-android-x86_64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/kotlin-stdlib-2.3.21.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/jogl-all-2.6.0-natives-windows-amd64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-freebsd-amd64.jar:${HOME}/opt/processing-4.5.6/lib/app/resources/core/library/gluegen-rt-2.6.0-natives-android-aarch64.jar -ea --enable-native-access=ALL-UNNAMED processing.core.PApplet --display=-1 --sketch-path=${GENART_SURVEY_ROOT}/.build/32130f4922/veve --disable-awt veve\nCould not run the sketch.",
+ "ms_first_frame": null
+}

@@ -1,0 +1,70 @@
+{
+ "sketch": "2014/Generativos/cosasfeas",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/cosasfeas/variants/cc_4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  int cc = int(random(1, 50));",
+   "  int cc = int(random(1, 4));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/cosasfeas/variants/cc_4/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 210,
+   "md5": "17a5a4d27fd46d9ad45f40b2e40ee2cc",
+   "bytes": 719865
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "cosasfeas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int cc = int(random(1, 50));",
+   "new": "  int cc = int(random(1, 4));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cosasfeas/variants/cc_4/frame_00001.png (snap) t=210ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cosasfeas/variants/cc_4/frame_00010.png (snap) t=374ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cosasfeas/variants/cc_4/frame_00060.png (snap) t=1225ms\n[harness] done frame=60 t=1191ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 210,
+ "diff_vs_baseline": {
+  "mean": 0.237,
+  "changed_fraction": 0.586,
+  "label": "large"
+ }
+}

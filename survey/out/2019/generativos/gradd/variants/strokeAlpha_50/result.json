@@ -1,0 +1,79 @@
+{
+ "sketch": "2019/generativos/gradd",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/gradd/variants/strokeAlpha_50",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "stroke(getColor((float) SimplexNoise.noise(i*detCol, 0)*colors.length*40), 10);",
+   "stroke(getColor((float) SimplexNoise.noise(i*detCol, 0)*colors.length*40), 50);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/gradd/variants/strokeAlpha_50/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 8373,
+   "md5": "1587665b2c92167d7a5b1e894ced9fb3",
+   "bytes": 2018738
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "gradd.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "stroke(getColor((float) SimplexNoise.noise(i*detCol, 0)*colors.length*40), 10);",
+   "new": "stroke(getColor((float) SimplexNoise.noise(i*detCol, 0)*colors.length*40), 50);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 11.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/gradd/variants/strokeAlpha_50/frame_00001.png (snap) t=8373ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/gradd/variants/strokeAlpha_50/frame_00010.png (snap) t=8627ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/gradd/variants/strokeAlpha_50/frame_00060.png (snap) t=9905ms\n[harness] done frame=60 t=9842ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 8373,
+ "diff_vs_baseline": {
+  "mean": 0.1395,
+  "changed_fraction": 0.704,
+  "label": "moderate"
+ }
+}

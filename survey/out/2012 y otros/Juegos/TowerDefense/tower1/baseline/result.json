@@ -1,0 +1,62 @@
+{
+ "sketch": "2012 y otros/Juegos/TowerDefense/tower1",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/TowerDefense/tower1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/TowerDefense/tower1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 168,
+   "md5": "19f7fd363e60b21f184ca0030730371d",
+   "bytes": 4595
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/TowerDefense/tower1/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 313,
+   "md5": "d0cac2f7c1b3f7b3d6d06a66b10c8804",
+   "bytes": 4595
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/TowerDefense/tower1/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1140,
+   "md5": "afa12b2a0320916472f33ede6818d67f",
+   "bytes": 4591
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "Clases.pde",
+  "Funciones.pde",
+  "tower1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/TowerDefense/tower1/baseline/frame_00001.png (snap) t=168ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/TowerDefense/tower1/baseline/frame_00010.png (snap) t=313ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/TowerDefense/tower1/baseline/frame_00060.png (snap) t=1140ms\n[harness] done frame=60 t=1136ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 168,
+ "deterministic": true,
+ "rerun_frames": 3
+}

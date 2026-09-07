@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "captured_at_utc": "2026-09-07T03:53:25.680105+00:00",
+  "survey_revision": "b64fadf8cc484025f58a112b95630a7b0c420ea3",
+  "source_corpus": {
+    "name": "Manolo Gamboa Naon's AllSketchs",
+    "url": "https://github.com/manoloide/AllSketchs",
+    "revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+    "license": "MIT"
+  },
+  "counts": {
+    "notes": 826,
+    "baseline_results": 2127,
+    "variant_results": 4584
+  },
+  "included": [
+    "out/**/notes.md",
+    "out/**/baseline/result.json",
+    "out/**/variants/*/result.json",
+    "out/catalog.md",
+    "out/index.jsonl",
+    "out/loop-status.jsonl",
+    "methodology/*",
+    "provenance/*"
+  ],
+  "excluded": [
+    "rendered PNG/PDF files",
+    "worker logs and errors",
+    "temporary builds and environments",
+    "copied sketch assets and preview output"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/perlinTextures",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/perlinTextures/variants/fill_alpha_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "fill(rcol(), 6);",
+   "fill(rcol(), 20);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/perlinTextures/variants/fill_alpha_20/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1138,
+   "md5": "5b5d67c046bee9fad8a7b471f88dd42e",
+   "bytes": 4786
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "perlinTextures.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "fill(rcol(), 6);",
+   "new": "fill(rcol(), 20);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/perlinTextures/variants/fill_alpha_20/frame_00001.png (snap) t=1138ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/perlinTextures/variants/fill_alpha_20/frame_00010.png (snap) t=1292ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/perlinTextures/variants/fill_alpha_20/frame_00060.png (snap) t=2132ms\n[harness] done frame=60 t=2110ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1138,
+ "diff_vs_baseline": {
+  "mean": 0.1965,
+  "changed_fraction": 0.637,
+  "label": "large"
+ }
+}

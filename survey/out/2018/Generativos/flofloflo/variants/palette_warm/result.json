@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/flofloflo",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/flofloflo/variants/palette_warm",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#FFDA05, #E01C54, #E92B1E, #E94F17, #125FA4, #6F84C5, #54A18C, #F9AB9D, #FFEA9F, #131423};",
+   "int colors[] = {#FACD00, #FB4F00, #F277C5, #7D57C6, #00B187, #3DC1CD};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/flofloflo/variants/palette_warm/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1522,
+   "md5": "84e21a6e3f4c16caddab8b4b62dd9d9d",
+   "bytes": 164873
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "flofloflo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#FFDA05, #E01C54, #E92B1E, #E94F17, #125FA4, #6F84C5, #54A18C, #F9AB9D, #FFEA9F, #131423};",
+   "new": "int colors[] = {#FACD00, #FB4F00, #F277C5, #7D57C6, #00B187, #3DC1CD};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/flofloflo/variants/palette_warm/frame_00001.png (snap) t=1522ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/flofloflo/variants/palette_warm/frame_00010.png (snap) t=1732ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/flofloflo/variants/palette_warm/frame_00060.png (snap) t=2992ms\n[harness] done frame=60 t=2962ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1522,
+ "diff_vs_baseline": {
+  "mean": 0.3135,
+  "changed_fraction": 0.93,
+  "label": "large"
+ }
+}

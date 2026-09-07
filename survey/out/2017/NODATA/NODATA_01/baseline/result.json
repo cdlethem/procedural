@@ -1,0 +1,61 @@
+{
+ "sketch": "2017/NODATA/NODATA_01",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/NODATA/NODATA_01/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/NODATA/NODATA_01/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 284,
+   "md5": "fcfc7470cbd8ccdff34b2fc0edb40ea6",
+   "bytes": 78836
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/NODATA/NODATA_01/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 441,
+   "md5": "2fa79a00bd9fbcc0e209c0f75793b70d",
+   "bytes": 78754
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/NODATA/NODATA_01/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1277,
+   "md5": "efa493e51b45ee331596480ff2c5537d",
+   "bytes": 76843
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720",
+ "imports": [],
+ "tabs": [
+  "NODATA_01.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/NODATA/NODATA_01/baseline/frame_00001.png (snap) t=284ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/NODATA/NODATA_01/baseline/frame_00010.png (snap) t=441ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/NODATA/NODATA_01/baseline/frame_00060.png (snap) t=1277ms\n[harness] done frame=60 t=1259ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Chivo-Light\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 284,
+ "deterministic": true,
+ "rerun_frames": 3
+}

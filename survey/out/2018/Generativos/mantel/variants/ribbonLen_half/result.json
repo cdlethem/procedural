@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/mantel",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mantel/variants/ribbonLen_half",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float dis = width/9.6;",
+   "float dis = width/19.2;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mantel/variants/ribbonLen_half/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 9701,
+   "md5": "36ff6862ce8183a3eb43c2fc8e99ffbf",
+   "bytes": 8924295
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mantel/variants/ribbonLen_half/self_20260905-092751.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 10060,
+   "md5": "36ff6862ce8183a3eb43c2fc8e99ffbf",
+   "bytes": 8924295
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "mantel.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float dis = width/9.6;",
+   "new": "float dis = width/19.2;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 11.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mantel/variants/ribbonLen_half/frame_00001.png (dispose) t=9701ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 9701,
+ "diff_vs_baseline": {
+  "mean": 0.1193,
+  "changed_fraction": 0.296,
+  "label": "moderate"
+ }
+}

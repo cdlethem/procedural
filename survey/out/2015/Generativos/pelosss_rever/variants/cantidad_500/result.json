@@ -1,0 +1,82 @@
+{
+ "sketch": "2015/Generativos/pelosss_rever",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/pelosss_rever/variants/cantidad_500",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cantidad = 2000;",
+   "int cantidad = 500;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/pelosss_rever/variants/cantidad_500/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 4922,
+   "md5": "0f18e882b4685a6521e92de71d105861",
+   "bytes": 1287125
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/pelosss_rever/variants/cantidad_500/self_42.pdf",
+   "frame": -1,
+   "tag": "self",
+   "ms": 5742,
+   "md5": "34d8c633e33131844610183316e696ec",
+   "bytes": 16695159
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "pelosss_rever.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cantidad = 2000;",
+   "new": "int cantidad = 500;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 7.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/pelosss_rever/variants/cantidad_500/frame_00001.png (snap) t=4922ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/pelosss_rever/variants/cantidad_500/frame_00010.png (snap) t=5100ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/pelosss_rever/variants/cantidad_500/frame_00060.png (snap) t=5960ms\n[harness] done frame=60 t=5917ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 4922,
+ "diff_vs_baseline": {
+  "mean": 0.2086,
+  "changed_fraction": 0.823,
+  "label": "large"
+ }
+}

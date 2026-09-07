@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/datatata",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata/variants/cc_100",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = 200;",
+   "int cc = 100;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata/variants/cc_100/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1861,
+   "md5": "2e009fa02c0a6b3267c2105c4c2cb6a7",
+   "bytes": 250687
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "datatata.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = 200;",
+   "new": "int cc = 100;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata/variants/cc_100/frame_00001.png (snap) t=1861ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata/variants/cc_100/frame_00010.png (snap) t=2076ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/datatata/variants/cc_100/frame_00060.png (snap) t=3336ms\n[harness] done frame=60 t=3302ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1861,
+ "diff_vs_baseline": {
+  "mean": 0.2877,
+  "changed_fraction": 0.565,
+  "label": "large"
+ }
+}

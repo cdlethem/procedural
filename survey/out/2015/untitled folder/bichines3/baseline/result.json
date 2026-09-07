@@ -1,0 +1,71 @@
+{
+ "sketch": "2015/untitled folder/bichines3",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/untitled folder/bichines3/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/untitled folder/bichines3/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 195,
+   "md5": "2887fa5bcf9158e1fedbaebfacfb880f",
+   "bytes": 22034,
+   "captured_frame": 2
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/untitled folder/bichines3/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 326,
+   "md5": "78cc790829fa637d4e30a1e062bb7205",
+   "bytes": 45050
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/untitled folder/bichines3/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1158,
+   "md5": "af57c746647d0ff5f05dae66ca1dfc42",
+   "bytes": 60873
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "bichines3.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "bichines3.pde"
+ ],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 2 promoted to frame_00001.png"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/untitled folder/bichines3/baseline/frame_00001.png (snap) t=180ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/untitled folder/bichines3/baseline/frame_00002.png (snap) t=195ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/untitled folder/bichines3/baseline/frame_00010.png (snap) t=326ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/untitled folder/bichines3/baseline/frame_00060.png (snap) t=1158ms\n[harness] done frame=60 t=1147ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Exo-Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 195,
+ "deterministic": false,
+ "rerun_frames": 1
+}

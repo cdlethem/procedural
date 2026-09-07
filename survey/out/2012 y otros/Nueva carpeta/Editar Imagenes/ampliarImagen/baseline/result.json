@@ -1,0 +1,55 @@
+{
+ "sketch": "2012 y otros/Nueva carpeta/Editar Imagenes/ampliarImagen",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Editar Imagenes/ampliarImagen/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Editar Imagenes/ampliarImagen/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 151,
+   "md5": "4c8291da24442c6f106df578ef01653f",
+   "bytes": 2029
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  180,
+  280
+ ],
+ "size_args": "180, 280",
+ "imports": [],
+ "tabs": [
+  "ampliarImagen.pde",
+  "funciones.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Editar Imagenes/ampliarImagen/baseline/frame_00001.png (snap) t=151ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Editar Imagenes/ampliarImagen/baseline/frame_00010.png (snap) t=289ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Editar Imagenes/ampliarImagen/baseline/frame_00060.png (snap) t=1122ms\n[harness] done frame=60 t=1119ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 151,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

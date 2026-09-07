@@ -1,0 +1,88 @@
+{
+ "sketch": "2020/generative/01_04/papa",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/palette_green_gold_lavender",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "int colors[] = {#EA2E73, #F7AA06, #1577D8};=>int colors[] = {#28422E, #EFA300, #CED1E2};"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/palette_green_gold_lavender/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1542,
+   "md5": "ae0eb508891b80cdf81bf14b9b113cc4",
+   "bytes": 2307621
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/palette_green_gold_lavender/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1803,
+   "md5": "d35dfd70098c53a43f3183062cad0429",
+   "bytes": 2304899
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/palette_green_gold_lavender/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3088,
+   "md5": "c906c8698871e54eb7f9079de42255b9",
+   "bytes": 2313634
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "papa.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#EA2E73, #F7AA06, #1577D8};",
+   "new": "int colors[] = {#28422E, #EFA300, #CED1E2};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/palette_green_gold_lavender/frame_00001.png (snap) t=1542ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/palette_green_gold_lavender/frame_00010.png (snap) t=1803ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/palette_green_gold_lavender/frame_00060.png (snap) t=3088ms\n[harness] done frame=60 t=3024ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1542,
+ "diff_vs_baseline": {
+  "mean": 0.2285,
+  "changed_fraction": 0.816,
+  "label": "large"
+ }
+}

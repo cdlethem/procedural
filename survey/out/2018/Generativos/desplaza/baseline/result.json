@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/Generativos/desplaza",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2571,
+   "md5": "a255499fcf832e21303e554efda8cd6d",
+   "bytes": 113793
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 10593,
+   "md5": "410c6463697f9eb1d0637429fb87aff9",
+   "bytes": 101082
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/baseline/frame_00034.png",
+   "frame": 34,
+   "tag": "budget",
+   "ms": 30589,
+   "md5": "98d886b529415dbb3214b0203310fc0d",
+   "bytes": 111440
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P2D",
+ "imports": [],
+ "tabs": [
+  "desplaza.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 32.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/baseline/frame_00001.png (snap) t=2571ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/baseline/frame_00010.png (snap) t=10593ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/desplaza/baseline/frame_00034.png (budget) t=30589ms\n[harness] done frame=34 t=30574ms\n[harness] dispose frame=35 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2571,
+ "deterministic": false,
+ "rerun_frames": 3
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/fabri",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/fabri/variants/hor_true",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "boolean hor = false;//random(1) < 0.5;",
+   "boolean hor = true;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/fabri/variants/hor_true/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1588,
+   "md5": "6bcbd227966ef4621a2abf566a69003a",
+   "bytes": 772846
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  2048,
+  2048
+ ],
+ "size_args": "2048, 2048, P2D",
+ "imports": [],
+ "tabs": [
+  "fabri.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "boolean hor = false;//random(1) < 0.5;",
+   "new": "boolean hor = true;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/fabri/variants/hor_true/frame_00001.png (snap) t=1588ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/fabri/variants/hor_true/frame_00010.png (snap) t=1912ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/fabri/variants/hor_true/frame_00060.png (snap) t=3224ms\n[harness] done frame=60 t=3125ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1588,
+ "diff_vs_baseline": {
+  "mean": 0.3862,
+  "changed_fraction": 0.86,
+  "label": "large"
+ }
+}

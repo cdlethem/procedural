@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/temor",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/temor/variants/vel_4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float vel = 0.71;",
+   "float vel = 4;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/temor/variants/vel_4/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 5994,
+   "md5": "d99fc07afd7aebc7235eb26c4433dd22",
+   "bytes": 113025828
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/temor/variants/vel_4/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 9182,
+   "md5": "bfb24c5f7b059c6e7e5db1887c369939",
+   "bytes": 113025960
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/temor/variants/vel_4/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 13368,
+   "md5": "bfb24c5f7b059c6e7e5db1887c369939",
+   "bytes": 113025960
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  6500,
+  6500
+ ],
+ "size_args": "6500, 6500, P2D",
+ "imports": [],
+ "tabs": [
+  "temor.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float vel = 0.71;",
+   "new": "float vel = 4;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 14.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/temor/variants/vel_4/frame_00001.png (snap) t=5994ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/temor/variants/vel_4/frame_00010.png (snap) t=9182ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/temor/variants/vel_4/frame_00060.png (snap) t=13368ms\n[harness] done frame=60 t=10398ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 5994,
+ "diff_vs_baseline": {
+  "mean": 0.2694,
+  "changed_fraction": 0.916,
+  "label": "large"
+ }
+}

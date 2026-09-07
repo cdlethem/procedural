@@ -1,0 +1,62 @@
+{
+ "sketch": "2014/shaders/preuba1",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/shaders/preuba1/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/shaders/preuba1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1645,
+   "md5": "47ee359c5dedad9847c3f8cd979082e5",
+   "bytes": 2145
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  480
+ ],
+ "size_args": "720, 480, P2D",
+ "imports": [],
+ "tabs": [
+  "preuba1.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "preuba1.pde"
+ ],
+ "dropped_frames": [
+  [
+   2,
+   "blank"
+  ],
+  [
+   10,
+   "blank"
+  ],
+  [
+   60,
+   "blank"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/shaders/preuba1/baseline/frame_00001.png (snap) t=1645ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/shaders/preuba1/baseline/frame_00002.png (snap) t=1657ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/shaders/preuba1/baseline/frame_00010.png (snap) t=1855ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/shaders/preuba1/baseline/frame_00060.png (snap) t=3118ms\n[harness] done frame=60 t=3110ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Neue Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1645,
+ "deterministic": true,
+ "rerun_frames": 1
+}

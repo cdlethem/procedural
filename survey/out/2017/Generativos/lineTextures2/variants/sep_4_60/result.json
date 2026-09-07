@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/lineTextures2",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/lineTextures2/variants/sep_4_60",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    sep = random(2, random(30));",
+   "    sep = random(4, random(60));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/lineTextures2/variants/sep_4_60/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 408,
+   "md5": "30cb25dd87b22f7f4e03a62a471950ac",
+   "bytes": 1501290
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1920,
+  1920
+ ],
+ "size_args": "1920, 1920",
+ "imports": [],
+ "tabs": [
+  "lineTextures2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    sep = random(2, random(30));",
+   "new": "    sep = random(4, random(60));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/lineTextures2/variants/sep_4_60/frame_00001.png (snap) t=408ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/lineTextures2/variants/sep_4_60/frame_00010.png (snap) t=642ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/lineTextures2/variants/sep_4_60/frame_00060.png (snap) t=1562ms\n[harness] done frame=60 t=1459ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 408,
+ "diff_vs_baseline": {
+  "mean": 0.3171,
+  "changed_fraction": 0.876,
+  "label": "large"
+ }
+}

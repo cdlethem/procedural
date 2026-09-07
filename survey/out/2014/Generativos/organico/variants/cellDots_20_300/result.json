@@ -1,0 +1,72 @@
+{
+ "sketch": "2014/Generativos/organico",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/organico/variants/cellDots_20_300",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "circle(random(width), random(height), random(30,200), int(random(20, 1000)));",
+   "circle(random(width), random(height), random(30,200), int(random(20, 300)));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/organico/variants/cellDots_20_300/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1551,
+   "md5": "93f0888907d75b431638c38954cf4313",
+   "bytes": 708491
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "organico.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "circle(random(width), random(height), random(30,200), int(random(20, 1000)));",
+   "new": "circle(random(width), random(height), random(30,200), int(random(20, 300)));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "organico.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/organico/variants/cellDots_20_300/frame_00001.png (snap) t=1551ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/organico/variants/cellDots_20_300/frame_00010.png (snap) t=1714ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/organico/variants/cellDots_20_300/frame_00060.png (snap) t=2556ms\n[harness] done frame=60 t=2531ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1551,
+ "diff_vs_baseline": {
+  "mean": 0.0245,
+  "changed_fraction": 0.086,
+  "label": "subtle"
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "sketch": "2012 y otros/paint",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/paint/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/paint/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 186,
+   "md5": "ae61f7d8b0d9f14025c79e5d8bc8dfe0",
+   "bytes": 6247
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  620
+ ],
+ "size_args": "800, 620",
+ "imports": [],
+ "tabs": [
+  "ScrollH.pde",
+  "paint.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "60.046974\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/paint/baseline/frame_00001.png (snap) t=186ms\n55.59375\n55.641953\n55.974518\n56.164265\n56.35374\n56.380215\n56.547993\n56.832943\n56.90387\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/paint/baseline/frame_00010.png (snap) t=340ms\n56.516727\n56.651676\n56.77533\n56.884468\n56.99293\n57.147785\n57.283108\n57.393425\n57.51721\n57.643616\n57.758934\n57.97069\n58.01889\n58.042744\n58.295788\n58.338543\n58.410866\n58.478577\n58.533066\n58.557556\n58.608383\n58.683872\n58.7437\n58.92493\n58.927074\n58.935055\n58.942757\n59.1166\n59.089268\n59.117798\n59.14513\n59.204548\n59.37082\n59.381382\n59.39194\n59.43542\n59.42893\n59.424183\n59.409676\n59.439896\n59.444847\n59.485996\n59.532562\n59.564426\n59.5904\n59.613472\n59.641712\n59.66708\n59.698704\n59.667244\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/paint/baseline/frame_00060.png (snap) t=1169ms\n[harness] done frame=60 t=1158ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 186,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

@@ -1,0 +1,62 @@
+{
+ "sketch": "2018/HUDs/huds_021",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_021/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_021/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 6173,
+   "md5": "408dabb1441b637c50943d0d3cb9b6c9",
+   "bytes": 123325
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_021/baseline/self_20260903-014234.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 5173,
+   "md5": "105ab8a78fed401c5affeab29fe664eb",
+   "bytes": 46483285
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  6500,
+  6500
+ ],
+ "size_args": "6500, 6500, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "huds_021.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 7.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_021/baseline/frame_00001.png (dispose) t=6173ms\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 6173,
+ "deterministic": false,
+ "rerun_frames": 2
+}

@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/subdivisionRect",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/subdivisionRect/variants/palette_2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#1e3888, #47a8bd, #f5e663, #ffad69, #9c3848};",
+   "int colors[] = {#1e3888, #47a8bd};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/subdivisionRect/variants/palette_2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 445,
+   "md5": "48566a3a3a56152d7ce1e71fdf402b45",
+   "bytes": 566700
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "subdivisionRect.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#1e3888, #47a8bd, #f5e663, #ffad69, #9c3848};",
+   "new": "int colors[] = {#1e3888, #47a8bd};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/subdivisionRect/variants/palette_2/frame_00001.png (snap) t=445ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/subdivisionRect/variants/palette_2/frame_00010.png (snap) t=609ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/subdivisionRect/variants/palette_2/frame_00060.png (snap) t=1459ms\n[harness] done frame=60 t=1427ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 445,
+ "diff_vs_baseline": {
+  "mean": 0.2341,
+  "changed_fraction": 0.854,
+  "label": "large"
+ }
+}

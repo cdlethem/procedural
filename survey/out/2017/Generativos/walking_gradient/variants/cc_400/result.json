@@ -1,0 +1,79 @@
+{
+ "sketch": "2017/Generativos/walking_gradient",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/variants/cc_400",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(1200));",
+   "int cc = int(random(400));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/variants/cc_400/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 176,
+   "md5": "8bda97438f2971f6b142edb42a428f63",
+   "bytes": 23574
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/variants/cc_400/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 334,
+   "md5": "73bb6831f956226bb4f53d7647b7718e",
+   "bytes": 63314
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/variants/cc_400/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1173,
+   "md5": "3702498cc833ee4a5b1de8365ccd1b63",
+   "bytes": 196671
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "walking_gradient.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(1200));",
+   "new": "int cc = int(random(400));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/variants/cc_400/frame_00001.png (snap) t=176ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/variants/cc_400/frame_00010.png (snap) t=334ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/walking_gradient/variants/cc_400/frame_00060.png (snap) t=1173ms\n[harness] done frame=60 t=1153ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 176,
+ "diff_vs_baseline": {
+  "mean": 0.0009,
+  "changed_fraction": 0.001,
+  "label": "none"
+ }
+}

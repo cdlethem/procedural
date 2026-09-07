@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/circir",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/circir/variants/size_60",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    s = random(120);",
+   "    s = random(60);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/circir/variants/size_60/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1853,
+   "md5": "30c252aecbe3b92a4fde322b976369fe",
+   "bytes": 1691224
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "circir.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    s = random(120);",
+   "new": "    s = random(60);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/circir/variants/size_60/frame_00001.png (snap) t=1853ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/circir/variants/size_60/frame_00010.png (snap) t=2101ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/circir/variants/size_60/frame_00060.png (snap) t=3392ms\n[harness] done frame=60 t=3316ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1853,
+ "diff_vs_baseline": {
+  "mean": 0.1445,
+  "changed_fraction": 0.696,
+  "label": "moderate"
+ }
+}

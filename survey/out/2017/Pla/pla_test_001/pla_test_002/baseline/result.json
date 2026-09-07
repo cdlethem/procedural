@@ -1,0 +1,61 @@
+{
+ "sketch": "2017/Pla/pla_test_001/pla_test_002",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/pla_test_002/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/pla_test_002/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1444,
+   "md5": "38aaa45a828ea6fcd095d650235d8f67",
+   "bytes": 18100
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/pla_test_002/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 4589,
+   "md5": "2e243c34d8fc86e0090952f3ad59fac5",
+   "bytes": 17975
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/pla_test_002/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6238,
+   "md5": "5a69cea66735785202245cd4f03c79ff",
+   "bytes": 22235
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P2D",
+ "imports": [],
+ "tabs": [
+  "pla_test_002.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 7.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/pla_test_002/baseline/frame_00001.png (snap) t=1444ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/pla_test_002/baseline/frame_00010.png (snap) t=4589ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Pla/pla_test_001/pla_test_002/baseline/frame_00060.png (snap) t=6238ms\n[harness] done frame=60 t=6222ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1444,
+ "deterministic": true,
+ "rerun_frames": 3
+}

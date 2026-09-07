@@ -1,0 +1,60 @@
+{
+ "sketch": "2017/Generativos/grill",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/grill/variants/maxpwr_1",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "y1 = defs(y1, 0, height, 4, random(1, 6));",
+   "y1 = defs(y1, 0, height, 4, random(1, 1));"
+  ],
+  [
+   "y2 = defs(y2, 0, height, 4, random(1, 6));",
+   "y2 = defs(y2, 0, height, 4, random(1, 1));"
+  ]
+ ],
+ "status": "runtime_error",
+ "detail": "java.lang.RuntimeException: java.lang.AssertionError",
+ "frames": [],
+ "warnings": [
+  "sketch killed 2 s after the exception (launcher leaves it suspended)"
+ ],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "grill.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "y1 = defs(y1, 0, height, 4, random(1, 6));",
+   "new": "y1 = defs(y1, 0, height, 4, random(1, 1));",
+   "count": 1
+  },
+  {
+   "old": "y2 = defs(y2, 0, height, 4, random(1, 6));",
+   "new": "y2 = defs(y2, 0, height, 4, random(1, 1));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.5,
+ "rc": 143,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\nmap(1, 1, 1, 1, 1) called, which returns NaN (not a number)\nmap(NaN, 0, 1, 0, 0.67955893) called, which returns NaN (not a number)\nmap(NaN, 0, 1, 0, 960) called, which returns NaN (not a number)\nmap(NaN, 0, 1, 1, 0.67955893) called, which returns NaN (not a number)\nmap(NaN, 0, 960, 0, 1) called, which returns NaN (not a number)\nmap(NaN, 1, 0.312545, 0, 1) called, which returns NaN (not a number)\nmap(NaN, 0, 1, 1, 0.312545) called, which returns NaN (not a number)\nmap(NaN, 1, 0.28153688, 0, 1) called, which returns NaN (not a number)\nmap(NaN, 0, 1, 1, 0.28153688) called, which returns NaN (not a number)\nmap(NaN, 1, 0.66223794, 0, 1) called, which returns NaN (not a number)\nmap(NaN, 0, 1, 1, 0.66223794) called, which returns NaN (not a number)\nmap(NaN, 0, 1, 0, 0.8953048) called, which returns NaN (not a number)\nmap(NaN, 0, 1, 1, 0.8953048) called, which returns NaN (not a number)\nmap(NaN, 1, 0.3714072, 0, 1) called, which returns NaN (not a number)\nmap(NaN, 0, 1, 1, 0.3714072) called, which returns NaN (not a number)\nmap(NaN, 1, 0.28023306, 0, 1) called, which returns NaN (not a number)\nmap(NaN, 0, 1, 1, 0.28023306) called, which returns NaN (not a number)\nmap(NaN, 1, 0.4643805, 0, 1) called, which returns NaN (not a number)\nmap(NaN, 0, 1, 1, 0.4643805) called, which returns NaN (not a number)\nmap(0, 0, 960, NaN, NaN) called, which returns NaN (not a number)\nmap(0.039904084, 0, 960, NaN, NaN) called, which returns NaN (not a number)\nmap(0.05986537, 0, 960, NaN, NaN) called, which returns NaN (not a number)\njava.lang.RuntimeException: java.lang.AssertionError\nCaused by: java.lang.AssertionError\nCould not run the sketch (Target VM failed to initialize).\nFor more information, read Help \u2192 Troubleshooting.\nCould not run the sketch.",
+ "ms_first_frame": null
+}

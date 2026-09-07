@@ -1,0 +1,82 @@
+{
+ "sketch": "2019/generativos/nosenose",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/nosenose/variants/detAng_0.16",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  detAng = 0.012*random(0.8, 1)*0.08;",
+   "  detAng = 0.012*random(0.8, 1)*0.16;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/nosenose/variants/detAng_0.16/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1592,
+   "md5": "3d0d0bc8a97acdba391ba3583a3669ec",
+   "bytes": 331366
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "fbm.pde",
+  "nosenose.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  detAng = 0.012*random(0.8, 1)*0.08;",
+   "new": "  detAng = 0.012*random(0.8, 1)*0.16;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/nosenose/variants/detAng_0.16/frame_00001.png (snap) t=1592ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/nosenose/variants/detAng_0.16/frame_00010.png (snap) t=1809ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/nosenose/variants/detAng_0.16/frame_00060.png (snap) t=3061ms\n[harness] done frame=60 t=3034ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1592,
+ "diff_vs_baseline": {
+  "mean": 0.0183,
+  "changed_fraction": 0.055,
+  "label": "subtle"
+ }
+}

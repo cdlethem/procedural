@@ -15,124 +15,94 @@ for evidence-backed decisions over speed.
 
 # The evidence base
 
-Survey data: ~/dev/genart-survey. Source corpus (READ-ONLY, never modify): ~/dev/processing_sketches
-Your own work lives here, in ~/dev/procedurals.
+The publishable survey snapshot lives in `survey/`. The upstream source corpus is Manolo
+Gamboa Naon's MIT-licensed
+[`AllSketchs`](https://github.com/manoloide/AllSketchs) repository. Source sketches are
+provenance, not project-owned code.
 
-- out/<sketch>/notes.md — one per surveyed sketch. YAML frontmatter (schema in
-  NOTES_TEMPLATE.md; controlled vocabularies in AGENTS.md) plus four prose sections:
-  "What it draws", "How the code works" (cites .pde line numbers), "Experiments"
-  (parameter substitutions with measured pixel-diff scores), "Modularisation notes"
-  (the surveying agent's own generic-vs-one-off judgement).
-- out/index.jsonl — per-sketch render facts: renderer (P2D/P3D/JAVA2D), size, imports,
-  jars, deterministic, animated, uses_shader, ms_first_frame, per-frame md5, year.
-- out/<sketch>/baseline/frame_0000{1,10,60}.png + result.json — ground-truth renders (seed 42).
-- out/<sketch>/variants/<param>_<value>/ — parameter experiments, each result.json
-  carrying diff_vs_baseline (none | subtle | moderate | large, with mean + pixel fraction).
-- out/loop-status.jsonl — run log; status ok | needs_retry per sketch.
+- `survey/out/<sketch>/notes.md` — one report per surveyed sketch. YAML frontmatter uses
+  the schema in `survey/methodology/NOTES_TEMPLATE.md`; prose covers the drawing, code,
+  measured parameter experiments, and modularisation judgement.
+- `survey/out/index.jsonl` — per-sketch renderer, size, import, determinism, animation,
+  shader, timing, frame-hash, and year facts.
+- `survey/out/<sketch>/baseline/result.json` — seeded baseline render metadata.
+- `survey/out/<sketch>/variants/<variant>/result.json` — parameter substitutions and
+  objective pixel-difference measurements.
+- `survey/out/loop-status.jsonl` — survey run history.
+- `survey/snapshot.json` — capture time, source revisions, counts, and explicit exclusions.
+- `data/corpus.sqlite` — normalized query layer. `reports/corpus.md` and
+  `reports/parameter-sensitivity.csv` are its generated human-facing analyses.
 
-Scale to expect at completion: ~901 notes, ~1,800 proposed reusable_candidates,
-~3,400 parameter-sensitivity records.
+Rendered images are deliberately not tracked: the full survey output exceeds 9 GB. Visual
+conformance requires a separate full survey-output checkout passed to the benchmark tool.
+Corpus querying, parameter analysis, and Phase 2 clustering use the checked-in text and JSON.
 
-Available libraries (jars in tools/libs, auto-copied into builds): toxiclibs 0021,
-triangulate, PeasyCam, Minim. Nothing else is installable.
+Current checked-in snapshot: 826 reports, including 26 blank/unrenderable stubs; 3,560
+parameter records; 1,934 reusable-candidate records; and 4,578 variant result records.
+The final target is 901 reports.
 
-## Known data quality problems — handle these, don't be surprised by them
+## Known data quality
 
-- tools/aggregate.py is BROKEN: its fallback YAML parser throws AttributeError and pyyaml
-  is not in the uv env. Fixing/replacing it is your first concrete task.
-- ~5 notes have unparseable frontmatter; ~26 sketches are stubs (blank/unrenderable);
-  ~52 runs are needs_retry and may land later.
-- Controlled vocabularies leaked: "scattered" appears as a technique (it's a composition
-  value), "random-hsb" as a palette selection, "arc"/"box" as primitives. Normalize,
-  and record every normalization you apply.
-- Headless GLSL caveat: sketches rendered under xvfb (result.json display "xvfb" +
-  uses_shader true) may have mis-rendered shaders. Those notes' visual claims are suspect;
-  weight them accordingly and prefer sketches rendered on ":2".
-- The survey is STILL RUNNING and notes keep arriving. Build ingestion to be idempotent
-  and re-runnable; start work on the completed subset and re-ingest as the corpus grows.
+- Some frontmatter is malformed. `tools/ingest.py` recovers reachable records, preserves
+  raw frontmatter, and emits provenance-linked diagnostics.
+- Controlled vocabularies leaked during surveying. Every correction or dropped value is
+  recorded in the `normalizations` table and reported in `reports/corpus.md`.
+- A `none` or `subtle` measured change is evidence against exposing a parameter even when
+  the code suggests otherwise.
+- Non-deterministic renders weaken small-difference evidence.
+- Headless shader renders marked with `display: xvfb` and `uses_shader: true` are suspect.
 
 # Hard constraints
 
-- Never modify anything under ~/dev/processing_sketches. Read only.
-- Do not stop, restart, or reconfigure the running survey (systemd user units
-  genart-survey-0/1/2) or the shared model server (llama-qwen.service). Another session
-  owns those.
-- GPU/CPU contention is real: the 3 survey shards plus a 27B llama-server are using the
-  machine. Any batch rendering you do must be throttled, run one at a time, and be
-  pausable. Prefer reusing tools/render.py and the existing headless setup over inventing
-  a second rendering path.
-- Keep everything you produce inside ~/dev/procedurals. Do not scatter files into
-  genart-survey/out.
+- Never copy source sketch code into the library without preserving the upstream MIT
+  notice and explicit provenance. Prefer independently specified operations over copied
+  implementation.
+- Do not hand-edit generated files under `survey/`, `data/`, `reports/`, or
+  `benchmarks/corpus.json`. Refresh them through the checked-in tools.
+- Do not add rendered survey images, logs, temporary builds, environments, or copied
+  assets to Git.
+- Keep all new project work inside this repository.
 
-# Phase gating — IMPORTANT
+# Phase gate
 
-Do Phase 0 and Phase 1 NOW, on the sketches surveyed so far.
+Phase 0 and Phase 1 are complete. Phase 2 is blocked until the maintainer publishes a
+snapshot with all 901 target reports. The checked-in `survey/snapshot.json` is the public
+source of truth; a contributor should not need access to the maintainer's services or
+filesystem to determine the phase.
 
-Then STOP and wait for the survey to finish before starting Phase 2. Clustering ~1,800
-candidate functions is the decision that shapes the entire API, and doing it on a partial
-corpus means redoing it. Rare techniques (flow-field, voronoi, physics, l-system) appear a
-handful of times across the whole corpus and may not have landed yet at all.
-
-The survey is complete when `cd ~/dev/genart-survey && uv run tools/status_report.py`
-reports 0 remaining (target 901 generative sketches) and
-`systemctl --user list-units --plain --no-legend 'genart-survey*'` shows no running units.
-Check on resume; do not poll in a tight loop.
-
-While waiting, useful work that does NOT commit you to an API shape: harden the ingestion,
-extend corpus analysis and reporting, build and test the render/diff validation harness you
-will need in Phase 3, and deepen your reading of notes as they arrive. Do not begin
-clustering, do not design signatures, do not start implementing library functions.
+While the snapshot remains incomplete, useful work includes ingestion hardening, corpus
+analysis, benchmark tooling, documentation corrections, and deeper reading of existing
+evidence. Do not cluster candidates, design public signatures, or implement the drawing
+library from a partial corpus.
 
 # Phases
 
-## Phase 0 — Orient and choose the target form (do this first, timebox it)
+## Phase 0 — Complete: target form
 
-Read genart-survey's AGENTS.md, NOTES_TEMPLATE.md, tools/render.py, and 15-20 notes.md
-spanning different years, renderers, and techniques (include at least one shader sketch,
-one 3D, one animated, one non-deterministic).
+Reference implementation: a Processing 4 native Java library distributed as a JAR.
+Portable behavior is specified independently of Java and implemented for p5.js, py5, and
+Processing for Android. PDE files remain examples and templates, not the reusable core.
+Rationale: `docs/target-form.md`; portability contract: `docs/portability.md`.
 
-Then decide and write down, with rationale, the deliverable's form. The corpus is
-Processing/Java .pde; the user's rig renders Processing headlessly. Weigh at minimum:
-(a) a Processing-native library — .java compiled to a jar, usable from the PDE;
-(b) a set of .pde template tabs + a copy-in "core" tab, zero build step;
-(c) py5 or another host language.
-Recommend one, state the trade-offs in one page, proceed with it, and flag the decision
-prominently in your first checkpoint so the user can veto cheaply. Do not silently
-re-litigate this later.
+## Phase 1 — Complete: queryable corpus
 
-Also produce a throwaway end-to-end spike: reproduce ONE surveyed sketch's baseline image
-using your chosen form and diff it against out/<sketch>/baseline/frame_00001.png. If you
-cannot close that loop, everything downstream is guesswork — solve it before Phase 1.
+`tools/ingest.py` converts the publishable snapshot into an atomic normalized SQLite
+database. `tools/report.py` produces technique associations, candidate distributions,
+normalization diagnostics, and the complete parameter-sensitivity table. Rebuild with:
 
-## Phase 1 — Build a queryable corpus, not a pile of markdown
+```sh
+uv run python tools/ingest.py
+uv run python tools/report.py
+```
 
-Replace/repair aggregate.py into a robust ingestion that emits a single structured dataset
-(SQLite or a well-shaped JSON/parquet — your call) containing, per sketch: all frontmatter
-fields normalized against the controlled vocabularies, plus every parameter record
-(name, default, values tried, change score, effect text) and every reusable_candidate
-(name, signature, note), each carrying a provenance pointer back to sketch + notes path.
-
-Keep your copy of the ingestion in this repo; do not edit genart-survey's tools in place.
-
-Report the shape of the corpus once you can query it: technique co-occurrence, which
-techniques cluster with which primitives/renderers/compositions, how candidate proposals
-distribute, and — most importantly — which parameters actually produced "large"/"moderate"
-visual change versus "none"/"subtle".
-
-That last table is the highest-value artifact in the whole survey. A parameter that
-repeatedly scored "none" is evidence AGAINST exposing it in an API. Treat measured
-sensitivity as the primary signal for what belongs in your function signatures and what
-the sane default ranges are.
-
-Phase 1 output is a report and a re-runnable pipeline, not an API. End of phase: stop and
-wait for survey completion (see Phase gating above).
+Every parameter and reusable candidate carries provenance back to a checked-in note.
+Measured sensitivity remains the primary evidence for public parameters and ranges.
 
 ## Phase 2 — Cluster candidates into an API surface (GATED: full corpus only)
 
-~1,800 proposed candidates are mostly near-duplicates of each other. Cluster them by what
-they actually compute (not by name), and for each cluster identify the sketches that
-motivate it, the union of parameters observed, and the minimal general signature that
-covers the real usages.
+The completed corpus will contain roughly two thousand proposed candidates, mostly
+near-duplicates. Cluster them by what they compute, not by name. For each cluster identify
+the motivating sketches, observed parameter union, and minimal general signature.
 
 For every cluster, make an explicit keep/merge/reject call and record the reason. Reject
 aggressively: the notes' "Modularisation notes" sections already separate generic
@@ -145,24 +115,20 @@ parameter-object convention — BEFORE implementing. Include what you deliberate
 and why. Target roughly 30-80 well-chosen functions, not 400; if you find yourself
 approaching several hundred, you have failed to cluster.
 
-Cover the long tail deliberately: grid and noise-field are over-represented (94 and 92
-sketches in the first quarter of the corpus), but flow-field, voronoi-delaunay, physics,
-l-system and typography appear a handful of times each and are exactly the techniques a
-user cannot re-derive easily. Decide explicitly whether each rare technique is in or out;
-don't let it fall off the edge by accident.
+Cover the long tail deliberately. Grid and noise-field dominate the current snapshot, but
+flow-field, voronoi-delaunay, physics, l-system, and typography are rarer and often harder
+to re-derive. Make an explicit in/out decision for every rare family.
 
 ## Phase 3 — Implement with reproduction as the test
 
-Implement in dependency order, and validate empirically: pick a representative set of
-surveyed sketches (spanning renderers, techniques, 2D/3D, static/animated) and rewrite
-each on top of your library, then render and diff against its stored baseline using the
-existing harness.
+Implement in dependency order and validate empirically. Rewrite a representative set of
+surveyed sketches spanning renderers, techniques, 2D/3D, and static/animated work, then
+render and diff against baselines from a full external survey-output checkout.
 
-You will not get pixel-identical output — random streams differ, and 61 sketches are
-non-deterministic anyway. Define up front what "successfully reproduced" means (structural
-/ perceptual similarity, technique-level equivalence, human-judgeable side-by-side) and
-apply it consistently. Reproduction failures are findings: they usually mean the
-abstraction is wrong, not that the sketch is special.
+Pixel identity is not a universal target: random streams and non-deterministic sketches
+can diverge. Define reproduction success up front (exact, structural/perceptual, or
+technique-level) and apply it consistently. Treat reproduction failures as evidence that
+the abstraction may be wrong.
 
 Every public function needs a docstring that cites at least one motivating sketch path and
 gives the observed-useful parameter ranges from the sensitivity data.
@@ -172,12 +138,12 @@ gives the observed-useful parameter ranges from the sensitivity data.
 - Project templates: a small number of ready-to-run starting points, each a real working
   piece, derived from the dominant composition/technique clusters you found (full-bleed
   noise field, scattered/packed forms, polar/radial, grid-with-jitter, 3D mesh, etc.).
-- Helper scripts: seeded render, parameter sweep (reuse the --sub/diff machinery that
-  already exists), contact-sheet generation, palette extraction/application.
+- Helper scripts: seeded render, parameter sweep, contact-sheet generation, and palette
+  extraction/application.
 - Documentation: a getting-started path; a per-module reference; and — the piece that
   makes this worth more than the sum of its functions — a "techniques" guide that explains
   each idiom, when it's used, which parameters actually matter, and what they do visually,
-  with example images. You have baseline and variant renders for all of it; use them.
+  with example images supplied by a full external survey-output checkout.
 
 # Working discipline
 
@@ -190,10 +156,58 @@ gives the observed-useful parameter ranges from the sensitivity data.
   a note.
 - Distinguish what the corpus shows from what you think would be good design, explicitly
   and out loud, whenever they diverge.
-- Prefer reading and reasoning over rendering. Renders are expensive and the machine is busy.
-- Surface to the user: the Phase 0 form decision; any large rejection (a whole technique
-  family you're dropping); and any point where the survey data is too thin or too dirty to
-  support a decision. Otherwise keep moving without asking permission.
+- Prefer reading and reasoning over rendering. Render only when visual evidence is needed.
+- Surface major technique-family rejections and any point where the survey data is too
+  thin or dirty to support a decision. Otherwise keep moving without asking permission.
+
+## Implementation workflow skills
+
+These workflows do not relax the Phase 2 gate. Use them only at their stated lifecycle
+point:
+
+- Before exposing, defaulting, bounding, or documenting an inadequately evidenced
+  parameter, follow
+  [`skills/parameter-evidence/SKILL.md`](skills/parameter-evidence/SKILL.md).
+- After a completed-corpus Phase 2 keep/merge decision, define the language-neutral
+  operation through
+  [`skills/operation-contract/SKILL.md`](skills/operation-contract/SKILL.md) before code.
+- If its semantics consume RNG, noise, time, observable iteration order, or portable
+  floating-point calculations, follow
+  [`skills/deterministic-generative-semantics/SKILL.md`](skills/deterministic-generative-semantics/SKILL.md).
+- Implement the portable core and every claimed target through
+  [`skills/portable-operation-implementation/SKILL.md`](skills/portable-operation-implementation/SKILL.md).
+- For renderer, shader, font, image, pixel, asset, lifecycle, or third-party behavior,
+  apply
+  [`skills/capability-and-adapter-boundaries/SKILL.md`](skills/capability-and-adapter-boundaries/SKILL.md).
+- Validate each runnable operation and port against motivating survey work through
+  [`skills/corpus-reproduction/SKILL.md`](skills/corpus-reproduction/SKILL.md).
+
+Parallelize frozen-contract investigation and target-port work through available capacity.
+Keep one integration owner for the catalog and shared fixtures. Serialize Processing
+renders through one pausable executor and keep their multi-gigabyte output outside Git.
+
+### Deferred skill creation gates
+
+Add the following skills only when their real inputs and surfaces exist; record each in
+`PROJECT_STATE.md` when added:
+
+- At Phase 3 implementation kickoff, before the first per-frame, count-, resolution-, or
+  mesh-sensitive operation, add `skills/generative-performance/SKILL.md`. It must cover
+  allocation-free inner loops, bounded work, representative-range benchmarks, memory, and
+  output-preserving optimization.
+- As soon as the operation catalog has a generated or mirrored consumer—and before the
+  first MCP schema, web control, exporter, or duplicated target metadata—add
+  `skills/catalog-surface-synchronization/SKILL.md`. It must make the catalog the only
+  authority and verify every derived surface.
+- After Phase 2 defines the recipe schema and before accepting the first persisted recipe,
+  executor, or exporter, add `skills/recipe-execution-and-validation/SKILL.md`. It must
+  cover schema/type/capability validation, explicit environment, deterministic execution,
+  round-trip serialization, and all claimed targets.
+- After the catalog and recipe executor work, but before implementing natural-language MCP
+  planning or its first prompt benchmark, add
+  `skills/prompt-to-recipe-evaluation/SKILL.md`. It must score semantic predicates,
+  provenance, execution, cross-target behavior, visual results, and coverage rather than
+  one exact recipe syntax tree.
 
 # Done means
 

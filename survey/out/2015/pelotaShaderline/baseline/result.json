@@ -1,0 +1,63 @@
+{
+ "sketch": "2015/pelotaShaderline",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/pelotaShaderline/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/pelotaShaderline/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1559,
+   "md5": "657b824ee818a289f5f5ec870bacc4a5",
+   "bytes": 61127
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/pelotaShaderline/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1849,
+   "md5": "6d10207dd684efaf93d0ac0832deaa23",
+   "bytes": 63073
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/pelotaShaderline/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3502,
+   "md5": "35ce2b4bbe131f5a1b23e6fb6f61fdef",
+   "bytes": 94164
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "pelotaShaderline.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/pelotaShaderline/baseline/frame_00001.png (snap) t=1559ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/pelotaShaderline/baseline/frame_00010.png (snap) t=1849ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/pelotaShaderline/baseline/frame_00060.png (snap) t=3502ms\n[harness] done frame=60 t=3487ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Stockholm Mono\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Oslo II Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1559,
+ "deterministic": false,
+ "rerun_frames": 3
+}

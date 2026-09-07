@@ -1,0 +1,69 @@
+{
+ "sketch": "2019/generativos/caritas",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/caritas/variants/faceScale_1.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float sca = random(0.7, 0.9)*1.0;",
+   "float sca = random(0.9, 1.2)*1.0;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/caritas/variants/faceScale_1.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3182,
+   "md5": "c1fad62a87244d8b25d0ad0cbf443f18",
+   "bytes": 1238518
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [],
+ "tabs": [
+  "caritas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float sca = random(0.7, 0.9)*1.0;",
+   "new": "float sca = random(0.9, 1.2)*1.0;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/caritas/variants/faceScale_1.2/frame_00001.png (snap) t=3182ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/caritas/variants/faceScale_1.2/frame_00010.png (snap) t=3421ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/caritas/variants/faceScale_1.2/frame_00060.png (snap) t=4693ms\n[harness] done frame=60 t=4645ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3182,
+ "diff_vs_baseline": {
+  "mean": 0.0759,
+  "changed_fraction": 0.259,
+  "label": "moderate"
+ }
+}

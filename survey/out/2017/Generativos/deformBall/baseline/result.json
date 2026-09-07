@@ -1,0 +1,55 @@
+{
+ "sketch": "2017/Generativos/deformBall",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 568,
+   "md5": "c188e875a60fcd409970a6573ba304c8",
+   "bytes": 2326309
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1920,
+  1920
+ ],
+ "size_args": "1920, 1920",
+ "imports": [],
+ "tabs": [
+  "deformBall.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/baseline/frame_00001.png (snap) t=568ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/baseline/frame_00010.png (snap) t=829ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/baseline/frame_00060.png (snap) t=1767ms\n[harness] done frame=60 t=1646ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 568,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

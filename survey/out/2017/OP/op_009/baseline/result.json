@@ -1,0 +1,59 @@
+{
+ "sketch": "2017/OP/op_009",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/OP/op_009/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/OP/op_009/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1648,
+   "md5": "bac92f3abdb576a9b5a44b1485070667",
+   "bytes": 401818
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/OP/op_009/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3169,
+   "md5": "af7c6686f4ba5a5d6f927bf26e63f59e",
+   "bytes": 454839
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "op_009.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/OP/op_009/baseline/frame_00001.png (snap) t=1648ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/OP/op_009/baseline/frame_00010.png (snap) t=1873ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/OP/op_009/baseline/frame_00060.png (snap) t=3169ms\n[harness] done frame=60 t=3139ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1648,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ]
+ ]
+}

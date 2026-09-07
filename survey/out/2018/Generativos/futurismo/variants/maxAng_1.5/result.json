@@ -1,0 +1,81 @@
+{
+ "sketch": "2018/Generativos/futurismo",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/maxAng_1.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float maxAng = random(0.8)*random(1);",
+   "float maxAng = random(1.5)*random(1);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/maxAng_1.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1440,
+   "md5": "3327260e5e810ab5b472577e3d27ff73",
+   "bytes": 2309
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/maxAng_1.5/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1637,
+   "md5": "5a13788162b233b2fb159ace304d438d",
+   "bytes": 2341
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/maxAng_1.5/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2893,
+   "md5": "02c5d0628022403c9faa3c1adc4254e0",
+   "bytes": 2404
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*SCALE), int(sheight*SCALE), P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "futurismo.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float maxAng = random(0.8)*random(1);",
+   "new": "float maxAng = random(1.5)*random(1);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/maxAng_1.5/frame_00001.png (snap) t=1440ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/maxAng_1.5/frame_00010.png (snap) t=1637ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/maxAng_1.5/frame_00060.png (snap) t=2893ms\n[harness] done frame=60 t=2884ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1440,
+ "diff_vs_baseline": {
+  "mean": 0.0007,
+  "changed_fraction": 0.002,
+  "label": "none"
+ }
+}

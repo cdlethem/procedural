@@ -1,0 +1,86 @@
+{
+ "sketch": "2018/Generativos/acui",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/alpha_255",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "stroke(getColor((float)SimplexNoise.noise(desc+x*detc, desc+y*detc, desc+z*detc)), 130);=>stroke(getColor((float)SimplexNoise.noise(desc+x*detc, desc+y*detc, desc+z*detc)), 255);"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/alpha_255/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3415,
+   "md5": "a0cbe65cd22a7ff53bb4d60b580061f1",
+   "bytes": 2684889
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/alpha_255/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3621,
+   "md5": "11db70578b0df15a5dc94e16b287aa9f",
+   "bytes": 39603
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/alpha_255/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 4884,
+   "md5": "11db70578b0df15a5dc94e16b287aa9f",
+   "bytes": 39603
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "acui.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "stroke(getColor((float)SimplexNoise.noise(desc+x*detc, desc+y*detc, desc+z*detc)), 130);",
+   "new": "stroke(getColor((float)SimplexNoise.noise(desc+x*detc, desc+y*detc, desc+z*detc)), 255);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/alpha_255/frame_00001.png (snap) t=3415ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/alpha_255/frame_00010.png (snap) t=3621ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/alpha_255/frame_00060.png (snap) t=4884ms\n[harness] done frame=60 t=4858ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3415,
+ "diff_vs_baseline": {
+  "mean": 0.213,
+  "changed_fraction": 0.912,
+  "label": "large"
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "sketch": "2018/Drawing/drawing001",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing001/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 208,
+   "md5": "9a93df325c6bf7c606af2565fdcba2d5",
+   "bytes": 2585
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640",
+ "imports": [],
+ "tabs": [
+  "drawing001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing001/baseline/frame_00001.png (snap) t=208ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing001/baseline/frame_00002.png (snap) t=223ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing001/baseline/frame_00010.png (snap) t=359ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Drawing/drawing001/baseline/frame_00060.png (snap) t=1189ms\n[harness] done frame=60 t=1177ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 208,
+ "deterministic": true,
+ "rerun_frames": 1
+}

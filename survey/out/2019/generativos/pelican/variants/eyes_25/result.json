@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/pelican",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/pelican/variants/eyes_25",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int i = 0; i < 60; i++) {",
+   "for (int i = 0; i < 25; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/pelican/variants/eyes_25/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2104,
+   "md5": "3370854c20aa16922402815cba3d22cd",
+   "bytes": 1074084
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "pelican.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i < 60; i++) {",
+   "new": "for (int i = 0; i < 25; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/pelican/variants/eyes_25/frame_00001.png (snap) t=2104ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/pelican/variants/eyes_25/frame_00010.png (snap) t=2333ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/pelican/variants/eyes_25/frame_00060.png (snap) t=3588ms\n[harness] done frame=60 t=3546ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2104,
+ "diff_vs_baseline": {
+  "mean": 0.2105,
+  "changed_fraction": 0.612,
+  "label": "large"
+ }
+}

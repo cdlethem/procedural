@@ -1,0 +1,58 @@
+{
+ "sketch": "2014/Generativos/cables",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/cables/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/cables/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 214,
+   "md5": "4bc139c81b0de57bffc78416eed99fb6",
+   "bytes": 105628
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "cables.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "cables.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cables/baseline/frame_00001.png (snap) t=214ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cables/baseline/frame_00010.png (snap) t=361ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cables/baseline/frame_00060.png (snap) t=1196ms\n[harness] done frame=60 t=1182ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 214,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

@@ -1,0 +1,79 @@
+{
+ "sketch": "2014/Generativos/Tildo",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/amp_0.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float amp = width*0.2;",
+   "float amp = width*0.5;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/amp_0.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 147,
+   "md5": "cd51c94fc3e9bbd47ce2610efae3400e",
+   "bytes": 8326
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/amp_0.5/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 286,
+   "md5": "0deb93e8593939a65aa6dd3493c0ad03",
+   "bytes": 8983
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/amp_0.5/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1122,
+   "md5": "963070c38a34a78f90c5e7a06fc05563",
+   "bytes": 9300
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  200,
+  200
+ ],
+ "size_args": "200,200",
+ "imports": [],
+ "tabs": [
+  "Tildo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float amp = width*0.2;",
+   "new": "float amp = width*0.5;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "Tildo.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/amp_0.5/frame_00001.png (snap) t=147ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/amp_0.5/frame_00010.png (snap) t=286ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/amp_0.5/frame_00060.png (snap) t=1122ms\n[harness] done frame=60 t=1115ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 147,
+ "diff_vs_baseline": {
+  "mean": 0.06,
+  "changed_fraction": 0.267,
+  "label": "moderate"
+ }
+}

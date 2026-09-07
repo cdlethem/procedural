@@ -1,0 +1,71 @@
+{
+ "sketch": "2019/NAVE/nave006",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/NAVE/nave006/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "runtime_error",
+ "detail": "audio.pde:34:0:34:0: NullPointerException",
+ "frames": [],
+ "warnings": [
+  "sketch killed 2 s after the exception (launcher leaves it suspended)"
+ ],
+ "renderer": "P3D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720, P3D",
+ "imports": [
+  "ddf.minim.*",
+  "ddf.minim.analysis.*",
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "Camera.pde",
+  "Chunk.pde",
+  "Gem.pde",
+  "Hud.pde",
+  "Map.pde",
+  "Particles.pde",
+  "Ship.pde",
+  "World.pde",
+  "audio.pde",
+  "nave006.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "minim.jar",
+  "jsminim.jar",
+  "jl1.0.1.jar",
+  "mp3spi1.9.5.jar",
+  "tritonus_aos.jar",
+  "tritonus_share.jar",
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "compat_shims": [
+  "Map.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 4.9,
+ "rc": 143,
+ "timed_out": false,
+ "stdout_tail": "==== JavaSound Minim Error ====\n==== java.io.FileNotFoundException: music.aiff\n=== Minim Error ===\n=== Couldn't load the file music.aiff\nFinished.",
+ "stderr_tail": "audio.pde:34:0:34:0: NullPointerException\nCould not run the sketch (Target VM failed to initialize).\nFor more information, read Help \u2192 Troubleshooting.\nCould not run the sketch.",
+ "ms_first_frame": null
+}

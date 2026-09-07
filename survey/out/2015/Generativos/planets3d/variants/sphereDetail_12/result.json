@@ -1,0 +1,78 @@
+{
+ "sketch": "2015/Generativos/planets3d",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planets3d/variants/sphereDetail_12",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    sphereDetail(40);",
+   "    sphereDetail(12);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planets3d/variants/sphereDetail_12/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1564,
+   "md5": "51dc089ae62bda64be97fadfc8c86da1",
+   "bytes": 63547
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planets3d/variants/sphereDetail_12/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1769,
+   "md5": "81255a970ec809a6e8c56f49c17803bd",
+   "bytes": 94320
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planets3d/variants/sphereDetail_12/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3022,
+   "md5": "56e88dd0217811eeb32fa56b955c18bf",
+   "bytes": 96156
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "Planet.pde",
+  "planets3d.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    sphereDetail(40);",
+   "new": "    sphereDetail(12);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planets3d/variants/sphereDetail_12/frame_00001.png (snap) t=1564ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planets3d/variants/sphereDetail_12/frame_00010.png (snap) t=1769ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planets3d/variants/sphereDetail_12/frame_00060.png (snap) t=3022ms\n[harness] done frame=60 t=3005ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1564,
+ "diff_vs_baseline": {
+  "mean": 0.608,
+  "changed_fraction": 0.965,
+  "label": "large"
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "sketch": "2018/Generativos/sandi",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/alpha_200",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "stroke(getColor((float)SimplexNoise.noise(desc+x*detc, desc+y*detc, desc+z*detc)), 80);",
+   "stroke(getColor((float)SimplexNoise.noise(desc+x*detc, desc+y*detc, desc+z*detc)), 200);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/alpha_200/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3412,
+   "md5": "dd9860dbc528fb43541e0e8a39560904",
+   "bytes": 2686250
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/alpha_200/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3622,
+   "md5": "d1bf646e1b0c776558ed95ce21db60a0",
+   "bytes": 38283
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/alpha_200/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 4879,
+   "md5": "d1bf646e1b0c776558ed95ce21db60a0",
+   "bytes": 38283
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "sandi.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "stroke(getColor((float)SimplexNoise.noise(desc+x*detc, desc+y*detc, desc+z*detc)), 80);",
+   "new": "stroke(getColor((float)SimplexNoise.noise(desc+x*detc, desc+y*detc, desc+z*detc)), 200);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/alpha_200/frame_00001.png (snap) t=3412ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/alpha_200/frame_00010.png (snap) t=3622ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/sandi/variants/alpha_200/frame_00060.png (snap) t=4879ms\n[harness] done frame=60 t=4854ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3412,
+ "diff_vs_baseline": {
+  "mean": 0.2904,
+  "changed_fraction": 0.946,
+  "label": "large"
+ }
+}

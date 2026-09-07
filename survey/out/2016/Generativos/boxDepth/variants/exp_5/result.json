@@ -1,0 +1,79 @@
+{
+ "sketch": "2016/Generativos/boxDepth",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/exp_5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float h = pow(0.8+noi, 13.8)*1.2;",
+   "float h = pow(0.8+noi, 5.0)*1.2;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/exp_5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1472,
+   "md5": "ece3e25f380cd3924be45b954df90ff2",
+   "bytes": 611092
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/exp_5/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1688,
+   "md5": "8d5b39ed66e809c766e688843307b113",
+   "bytes": 607377
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/exp_5/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2952,
+   "md5": "413630a973cf932b4268718440984d18",
+   "bytes": 607984
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "boxDepth.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float h = pow(0.8+noi, 13.8)*1.2;",
+   "new": "float h = pow(0.8+noi, 5.0)*1.2;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/exp_5/frame_00001.png (snap) t=1472ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/exp_5/frame_00010.png (snap) t=1688ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/boxDepth/variants/exp_5/frame_00060.png (snap) t=2952ms\n[harness] done frame=60 t=2917ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "Your shader needs to be of COLOR type to render this geometry properly, using default shader instead.\nclear() can only be used with createGraphics()\nThe shader doesn't have a uniform called \"mouse\" OR the uniform was removed during compilation because it was unused.\nThe shader doesn't have a uniform called \"tDepth\" OR the uniform was removed during compilation because it was unused.",
+ "ms_first_frame": 1472,
+ "diff_vs_baseline": {
+  "mean": 0.0921,
+  "changed_fraction": 0.37,
+  "label": "moderate"
+ }
+}

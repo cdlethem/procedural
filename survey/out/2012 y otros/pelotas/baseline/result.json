@@ -1,0 +1,62 @@
+{
+ "sketch": "2012 y otros/pelotas",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/pelotas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/pelotas/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 293,
+   "md5": "8804ccfbc14c84c23405a61905c6b72e",
+   "bytes": 25680
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/pelotas/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 473,
+   "md5": "adbf35c6f0aee69a632e2ef1e7421b77",
+   "bytes": 25886
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/pelotas/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1300,
+   "md5": "6b5c9a6dfb7923ac517ad7a3e725d968",
+   "bytes": 25879
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "Pelota.pde",
+  "pelotas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/pelotas/baseline/frame_00001.png (snap) t=293ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/pelotas/baseline/frame_00010.png (snap) t=473ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/pelotas/baseline/frame_00060.png (snap) t=1300ms\n[harness] done frame=60 t=1294ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 293,
+ "deterministic": true,
+ "rerun_frames": 3
+}

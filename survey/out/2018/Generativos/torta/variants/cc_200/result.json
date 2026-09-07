@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/torta",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/torta/variants/cc_200",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(600)*random(0.2, 1));",
+   "int cc = int(random(200)*random(0.2, 1));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/torta/variants/cc_200/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1476,
+   "md5": "8317563571cf5987f8347ca54b0ef938",
+   "bytes": 55458
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "torta.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(600)*random(0.2, 1));",
+   "new": "int cc = int(random(200)*random(0.2, 1));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/torta/variants/cc_200/frame_00001.png (snap) t=1476ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/torta/variants/cc_200/frame_00010.png (snap) t=1688ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/torta/variants/cc_200/frame_00060.png (snap) t=2941ms\n[harness] done frame=60 t=2917ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1476,
+ "diff_vs_baseline": {
+  "mean": 0.0653,
+  "changed_fraction": 0.133,
+  "label": "moderate"
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "sketch": "2016/circleInterception",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/circleInterception/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/circleInterception/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 259,
+   "md5": "fa01001b57e773cc2e25d5cab1774335",
+   "bytes": 79910
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/circleInterception/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 453,
+   "md5": "176e8e434b1d2967ccad5a808896dd0d",
+   "bytes": 81237
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/circleInterception/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1295,
+   "md5": "de45de4b2dc9c89c6cd595c330e6c651",
+   "bytes": 85247
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "circleInterception.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/circleInterception/baseline/frame_00001.png (snap) t=259ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/circleInterception/baseline/frame_00010.png (snap) t=453ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/circleInterception/baseline/frame_00060.png (snap) t=1295ms\n[harness] done frame=60 t=1274ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 259,
+ "deterministic": true,
+ "rerun_frames": 3
+}

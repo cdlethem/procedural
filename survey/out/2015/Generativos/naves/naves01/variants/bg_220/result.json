@@ -1,0 +1,79 @@
+{
+ "sketch": "2015/Generativos/naves/naves01",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/bg_220",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  background(20);",
+   "  background(220);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/bg_220/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1458,
+   "md5": "f2725f523bf28813038444bf8411e93f",
+   "bytes": 13893
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/bg_220/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1669,
+   "md5": "9405f091f3196b5a55a9062303f1cd72",
+   "bytes": 17523
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/bg_220/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2915,
+   "md5": "929c16d094d51d9f853b92420b3aefb8",
+   "bytes": 22607
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "naves01.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  background(20);",
+   "new": "  background(220);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/bg_220/frame_00001.png (snap) t=1458ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/bg_220/frame_00010.png (snap) t=1669ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/naves/naves01/variants/bg_220/frame_00060.png (snap) t=2915ms\n[harness] done frame=60 t=2900ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1458,
+ "diff_vs_baseline": {
+  "mean": 0.7618,
+  "changed_fraction": 0.997,
+  "label": "large"
+ }
+}

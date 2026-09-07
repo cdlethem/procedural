@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/grit",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/grit/variants/dot_0.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float ss = noise(des+xx*det, des+yy*det)*min(r.w, r.h);",
+   "    float ss = noise(des+xx*det, des+yy*det)*min(r.w, r.h)*0.5;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/grit/variants/dot_0.5/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2573,
+   "md5": "0e5807b427043f03b8d5c9b8c5a0938c",
+   "bytes": 1686637
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/grit/variants/dot_0.5/self_20260905-104422.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3117,
+   "md5": "0e5807b427043f03b8d5c9b8c5a0938c",
+   "bytes": 1686637
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "grit.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float ss = noise(des+xx*det, des+yy*det)*min(r.w, r.h);",
+   "new": "    float ss = noise(des+xx*det, des+yy*det)*min(r.w, r.h)*0.5;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/grit/variants/dot_0.5/frame_00001.png (dispose) t=2573ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2573,
+ "diff_vs_baseline": {
+  "mean": 0.0097,
+  "changed_fraction": 0.042,
+  "label": "none"
+ }
+}

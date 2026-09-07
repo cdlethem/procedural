@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/momito",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/momito/variants/scale_4.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  scale(2.2);",
+   "  scale(4.0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/momito/variants/scale_4.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1496,
+   "md5": "684c5cac1f293269ea83e390eaa8f596",
+   "bytes": 68607
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "momito.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  scale(2.2);",
+   "new": "  scale(4.0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/momito/variants/scale_4.0/frame_00001.png (snap) t=1496ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/momito/variants/scale_4.0/frame_00010.png (snap) t=1702ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/momito/variants/scale_4.0/frame_00060.png (snap) t=2963ms\n[harness] done frame=60 t=2941ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1496,
+ "diff_vs_baseline": {
+  "mean": 0.0127,
+  "changed_fraction": 0.015,
+  "label": "subtle"
+ }
+}

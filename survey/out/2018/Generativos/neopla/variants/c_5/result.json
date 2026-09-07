@@ -1,0 +1,103 @@
+{
+ "sketch": "2018/Generativos/neopla",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/c_5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int c = int(random(40)*random(1));",
+   "int c = 5;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/c_5/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 6202,
+   "md5": "e6c38f44f459cd81ea95ff4dcd32feb6",
+   "bytes": 1932074
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/c_5/self_20260905-114023.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3774,
+   "md5": "0739094bbd07ad0b29e25dd0176d92eb",
+   "bytes": 2787982
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/c_5/self_20260905-114025.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 5950,
+   "md5": "a72cee76d8a2187d28315e363fd739f1",
+   "bytes": 1141919
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/c_5/self_20260905-114024.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 4652,
+   "md5": "415d89a40eb68cd86625bce02869102c",
+   "bytes": 2575334
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/c_5/self_20260905-114022.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2880,
+   "md5": "95025b3b7566cdc0bfa7a9cb87dbc1e1",
+   "bytes": 2243331
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/c_5/self_20260905-114026.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6767,
+   "md5": "e6c38f44f459cd81ea95ff4dcd32feb6",
+   "bytes": 1932074
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P3D",
+ "imports": [],
+ "tabs": [
+  "neopla.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int c = int(random(40)*random(1));",
+   "new": "int c = 5;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 7.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/neopla/variants/c_5/frame_00001.png (dispose) t=6202ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 6202,
+ "diff_vs_baseline": {
+  "mean": 0.3204,
+  "changed_fraction": 0.796,
+  "label": "large"
+ }
+}

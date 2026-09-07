@@ -1,0 +1,31 @@
+{
+ "sketch": "2018/Generativos/cubeNoises",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cubeNoises/variants/sub_400",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    int sub = int(random(200));",
+   "    int sub = int(random(400));"
+  ]
+ ],
+ "status": "bad_sub",
+ "detail": "OLD text not found in any tab: '    int sub = int(random(200));'",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "cubeNoises.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": []
+}

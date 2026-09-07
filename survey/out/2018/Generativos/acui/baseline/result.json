@@ -1,0 +1,73 @@
+{
+ "sketch": "2018/Generativos/acui",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3696,
+   "md5": "0e3c0bd1c5e8705a411cae9100ce5354",
+   "bytes": 2587374
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3921,
+   "md5": "cca5088d9ef024a43397bb463721ccc1",
+   "bytes": 40585
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5170,
+   "md5": "cca5088d9ef024a43397bb463721ccc1",
+   "bytes": 40585
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "acui.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/baseline/frame_00001.png (snap) t=3696ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/baseline/frame_00010.png (snap) t=3921ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/baseline/frame_00060.png (snap) t=5170ms\n[harness] done frame=60 t=5149ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3696,
+ "deterministic": true,
+ "rerun_frames": 3
+}

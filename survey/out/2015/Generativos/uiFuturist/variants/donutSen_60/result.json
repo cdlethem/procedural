@@ -1,0 +1,81 @@
+{
+ "sketch": "2015/Generativos/uiFuturist",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/donutSen_60",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  donut(475, 475, width*0.05, width*0.1, 100, 16, colors[1]);",
+   "  donut(475, 475, width*0.05, width*0.1, 100, 60, colors[1]);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/donutSen_60/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1503,
+   "md5": "363450ebfb06e38d4ea3601a40cb24bc",
+   "bytes": 252731
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/donutSen_60/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1712,
+   "md5": "c9512b842863a2a116e82631be91a1d0",
+   "bytes": 260430
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/donutSen_60/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2965,
+   "md5": "a5710173b9c7ea9198409b1d4b231b5d",
+   "bytes": 257677
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600, P2D",
+ "imports": [],
+ "tabs": [
+  "uiFuturist.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  donut(475, 475, width*0.05, width*0.1, 100, 16, colors[1]);",
+   "new": "  donut(475, 475, width*0.05, width*0.1, 100, 60, colors[1]);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "uiFuturist.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/donutSen_60/frame_00001.png (snap) t=1503ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/donutSen_60/frame_00010.png (snap) t=1712ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/donutSen_60/frame_00060.png (snap) t=2965ms\n[harness] done frame=60 t=2950ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1503,
+ "diff_vs_baseline": {
+  "mean": 0.009,
+  "changed_fraction": 0.02,
+  "label": "none"
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "sketch": "2015/planetTree",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/planetTree/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/planetTree/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 191,
+   "md5": "df4eb822974d3999026fb2e88ae063e4",
+   "bytes": 5074
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/planetTree/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 339,
+   "md5": "a0b7d9f2b92622fe2d6fa59b6e2e44c4",
+   "bytes": 4871
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/planetTree/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1169,
+   "md5": "aa4b69d45a59aad3d5078b71d0957fa3",
+   "bytes": 6578
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "planetTree.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/planetTree/baseline/frame_00001.png (snap) t=191ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/planetTree/baseline/frame_00010.png (snap) t=339ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/planetTree/baseline/frame_00060.png (snap) t=1169ms\n[harness] done frame=60 t=1160ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 191,
+ "deterministic": false,
+ "rerun_frames": 3
+}

@@ -1,0 +1,90 @@
+{
+ "sketch": "2020/generative/01_04/fieldop",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fieldop/variants/amp_240",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "q.x += (noise(desDes+detDes*q.x, desDes+detDes*q.y, 777)*2-1)*120;",
+   "q.x += (noise(desDes+detDes*q.x, desDes+detDes*q.y, 777)*2-1)*240;"
+  ],
+  [
+   "q.y += (noise(desDes+detDes*q.x, desDes+detDes*q.y, 333)*2-1)*120;",
+   "q.y += (noise(desDes+detDes*q.x, desDes+detDes*q.y, 333)*2-1)*240;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fieldop/variants/amp_240/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1672,
+   "md5": "609e17490eba1435b400a9a3054fe472",
+   "bytes": 293319
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "fieldop.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "q.x += (noise(desDes+detDes*q.x, desDes+detDes*q.y, 777)*2-1)*120;",
+   "new": "q.x += (noise(desDes+detDes*q.x, desDes+detDes*q.y, 777)*2-1)*240;",
+   "count": 1
+  },
+  {
+   "old": "q.y += (noise(desDes+detDes*q.x, desDes+detDes*q.y, 333)*2-1)*120;",
+   "new": "q.y += (noise(desDes+detDes*q.x, desDes+detDes*q.y, 333)*2-1)*240;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fieldop/variants/amp_240/frame_00001.png (snap) t=1672ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fieldop/variants/amp_240/frame_00010.png (snap) t=1889ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fieldop/variants/amp_240/frame_00060.png (snap) t=3150ms\n[harness] done frame=60 t=3112ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1672,
+ "diff_vs_baseline": {
+  "mean": 0.3951,
+  "changed_fraction": 0.85,
+  "label": "large"
+ }
+}

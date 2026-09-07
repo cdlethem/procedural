@@ -1,0 +1,58 @@
+{
+ "sketch": "2014/Dise\u00f1o/p5bsasFlyer",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Dise\u00f1o/p5bsasFlyer/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Dise\u00f1o/p5bsasFlyer/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 498,
+   "md5": "4796704473c740738860d6d9cd5d9f32",
+   "bytes": 324663
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1000,
+  680
+ ],
+ "size_args": "1000, 680",
+ "imports": [],
+ "tabs": [
+  "p5bsasFlyer.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "p5bsasFlyer.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Dise\u00f1o/p5bsasFlyer/baseline/frame_00001.png (snap) t=498ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Dise\u00f1o/p5bsasFlyer/baseline/frame_00010.png (snap) t=657ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Dise\u00f1o/p5bsasFlyer/baseline/frame_00060.png (snap) t=1495ms\n[harness] done frame=60 t=1474ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Roboto Black\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Roboto Black Italic\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Roboto Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Roboto Bold Italic\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Roboto Italic\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Roboto Light\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Roboto Light Italic\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Roboto Medium\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Roboto Medium Italic\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Roboto Regular\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Roboto Thin\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Roboto Thin Italic\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 498,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

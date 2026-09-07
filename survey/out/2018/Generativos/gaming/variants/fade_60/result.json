@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/gaming",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/fade_60",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "fill(0, 20);",
+   "fill(0, 60);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/fade_60/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1472,
+   "md5": "024d222a2d910acc40882197a13a4bc4",
+   "bytes": 6461
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/fade_60/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1683,
+   "md5": "f6e1e85b4271331a3c0aaaf1f7b01caa",
+   "bytes": 10730
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/fade_60/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2938,
+   "md5": "fb9d878643e7259690f05151a640f106",
+   "bytes": 19689
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "gaming.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "fill(0, 20);",
+   "new": "fill(0, 60);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/fade_60/frame_00001.png (snap) t=1472ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/fade_60/frame_00010.png (snap) t=1683ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/fade_60/frame_00060.png (snap) t=2938ms\n[harness] done frame=60 t=2915ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1472,
+ "diff_vs_baseline": {
+  "mean": 0.1247,
+  "changed_fraction": 0.992,
+  "label": "moderate"
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "sketch": "2018/subnoise3d",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/subnoise3d/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/subnoise3d/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1486,
+   "md5": "52a4d169e92ea99b95c15b401b533e39",
+   "bytes": 21323
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/subnoise3d/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1706,
+   "md5": "ac5d5d342b53bb26d6885a0ad71236e4",
+   "bytes": 21315
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/subnoise3d/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2971,
+   "md5": "2fd174512d941149be46a303bfcbbe28",
+   "bytes": 21027
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "subnoise3d.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/subnoise3d/baseline/frame_00001.png (snap) t=1486ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/subnoise3d/baseline/frame_00010.png (snap) t=1706ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/subnoise3d/baseline/frame_00060.png (snap) t=2971ms\n[harness] done frame=60 t=2944ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1486,
+ "deterministic": false,
+ "rerun_frames": 3
+}

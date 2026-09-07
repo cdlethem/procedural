@@ -1,0 +1,61 @@
+{
+ "sketch": "2012 y otros/Serielineas/serie4",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie4/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie4/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 178,
+   "md5": "a1f2e13c679264e28ea6eb3a81e9648a",
+   "bytes": 1253
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie4/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 324,
+   "md5": "14e451846b22362e2670946ce5304d3a",
+   "bytes": 4275
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie4/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1153,
+   "md5": "74681b88c3ccd608953933dc4369074c",
+   "bytes": 21210
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "serie4.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie4/baseline/frame_00001.png (snap) t=178ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie4/baseline/frame_00010.png (snap) t=324ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Serielineas/serie4/baseline/frame_00060.png (snap) t=1153ms\n[harness] done frame=60 t=1145ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 178,
+ "deterministic": true,
+ "rerun_frames": 3
+}

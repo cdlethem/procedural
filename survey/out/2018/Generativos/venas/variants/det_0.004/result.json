@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/venas",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/venas/variants/det_0.004",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float det = random(0.001);",
+   "float det = random(0.004);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/venas/variants/det_0.004/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2289,
+   "md5": "b28d35b0b6d597a6794e75feb9f5dac0",
+   "bytes": 1780262
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "venas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float det = random(0.001);",
+   "new": "float det = random(0.004);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/venas/variants/det_0.004/frame_00001.png (snap) t=2289ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/venas/variants/det_0.004/frame_00010.png (snap) t=2533ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/venas/variants/det_0.004/frame_00060.png (snap) t=3821ms\n[harness] done frame=60 t=3747ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2289,
+ "diff_vs_baseline": {
+  "mean": 0.2451,
+  "changed_fraction": 0.836,
+  "label": "large"
+ }
+}

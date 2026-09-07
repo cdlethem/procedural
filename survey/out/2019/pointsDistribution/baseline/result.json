@@ -1,0 +1,55 @@
+{
+ "sketch": "2019/pointsDistribution",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/pointsDistribution/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/pointsDistribution/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2092,
+   "md5": "5ab7f7802e733a72f43f8721510822f2",
+   "bytes": 2780
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/pointsDistribution/baseline/self_render.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3183,
+   "md5": "fd995355a2cb1d7120a14733ae6c5c26",
+   "bytes": 727656
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "pointsDistribution.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 36.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/pointsDistribution/baseline/frame_00001.png (snap) t=2092ms\n[harness] watchdog: no draw() reached budget; frame=2 saved=true\n[harness] dispose frame=2 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2092,
+ "deterministic": true,
+ "rerun_frames": 2
+}

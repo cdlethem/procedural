@@ -1,0 +1,70 @@
+{
+ "sketch": "2016/Generativos/rosita",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/rosita/variants/jitter_1.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "a += random(-0.4, 0.4);",
+   "a += random(-1.2, 1.2);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/rosita/variants/jitter_1.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1069,
+   "md5": "978813d4923e1b0aa6ea0e961c44dab3",
+   "bytes": 2261229
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "rosita.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "a += random(-0.4, 0.4);",
+   "new": "a += random(-1.2, 1.2);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/rosita/variants/jitter_1.2/frame_00001.png (snap) t=1069ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/rosita/variants/jitter_1.2/frame_00010.png (snap) t=1267ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/rosita/variants/jitter_1.2/frame_00060.png (snap) t=2146ms\n[harness] done frame=60 t=2084ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1069,
+ "diff_vs_baseline": {
+  "mean": 0.0902,
+  "changed_fraction": 0.319,
+  "label": "moderate"
+ }
+}

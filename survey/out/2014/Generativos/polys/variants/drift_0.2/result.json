@@ -1,0 +1,81 @@
+{
+ "sketch": "2014/Generativos/polys",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/drift_0.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float det = frame*random(0.02);",
+   "float det = frame*random(0.2);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/drift_0.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 170,
+   "md5": "4ce4713823195579397bd6094a575874",
+   "bytes": 115221
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/drift_0.2/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 357,
+   "md5": "1ec85a19de488953b1bbb1251169faa7",
+   "bytes": 113765
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/drift_0.2/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1189,
+   "md5": "e2c4f66956d292f31fdd0175a0e696ec",
+   "bytes": 106578
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "polys.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float det = frame*random(0.02);",
+   "new": "float det = frame*random(0.2);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "polys.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/drift_0.2/frame_00001.png (snap) t=170ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/drift_0.2/frame_00010.png (snap) t=357ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/drift_0.2/frame_00060.png (snap) t=1189ms\n[harness] done frame=60 t=1177ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 170,
+ "diff_vs_baseline": {
+  "mean": 0.0,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

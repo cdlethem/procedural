@@ -1,0 +1,72 @@
+{
+ "sketch": "2014/Generativos/pelosss",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/pelosss/variants/speed_0.8",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float vel = random(0.4, 2);",
+   "    float vel = random(0.2, 0.8);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/pelosss/variants/speed_0.8/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1085,
+   "md5": "8bd1dcb67615076c97a0bcc99518a102",
+   "bytes": 1619135
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [],
+ "tabs": [
+  "pelosss.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float vel = random(0.4, 2);",
+   "new": "    float vel = random(0.2, 0.8);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "pelosss.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/pelosss/variants/speed_0.8/frame_00001.png (snap) t=1085ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/pelosss/variants/speed_0.8/frame_00010.png (snap) t=1269ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/pelosss/variants/speed_0.8/frame_00060.png (snap) t=2137ms\n[harness] done frame=60 t=2087ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1085,
+ "diff_vs_baseline": {
+  "mean": 0.1662,
+  "changed_fraction": 0.699,
+  "label": "large"
+ }
+}

@@ -1,0 +1,86 @@
+{
+ "sketch": "2020/generative/01_04/popi",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/popi/variants/bg_0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "background(190);",
+   "background(0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/popi/variants/bg_0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1668,
+   "md5": "9b1716ae5b143a8457f5c97a2c70503d",
+   "bytes": 3320,
+   "captured_frame": 10
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/popi/variants/bg_0/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2927,
+   "md5": "79246faf23a4ceec958be7f104967e25",
+   "bytes": 3905
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "popi.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "background(190);",
+   "new": "background(0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 10 promoted to frame_00001.png"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/popi/variants/bg_0/frame_00001.png (snap) t=1461ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/popi/variants/bg_0/frame_00010.png (snap) t=1668ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/popi/variants/bg_0/frame_00060.png (snap) t=2927ms\n[harness] done frame=60 t=2902ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1668,
+ "diff_vs_baseline": {
+  "mean": 0.7373,
+  "changed_fraction": 0.991,
+  "label": "large"
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/starmod",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/starmod/variants/palette_blue",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#ADFE03, #FDFEFA, #FC4627, #070708};",
+   "int colors[] = {#ADFE03, #FDFEFA, #FC4627, #1133AA};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/starmod/variants/palette_blue/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2500,
+   "md5": "6b33bfcda4716bd10958446a352b6f23",
+   "bytes": 2626459
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "starmod.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#ADFE03, #FDFEFA, #FC4627, #070708};",
+   "new": "int colors[] = {#ADFE03, #FDFEFA, #FC4627, #1133AA};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/starmod/variants/palette_blue/frame_00001.png (snap) t=2500ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/starmod/variants/palette_blue/frame_00010.png (snap) t=2754ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/starmod/variants/palette_blue/frame_00060.png (snap) t=4050ms\n[harness] done frame=60 t=3968ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2500,
+ "diff_vs_baseline": {
+  "mean": 0.0465,
+  "changed_fraction": 0.129,
+  "label": "subtle"
+ }
+}

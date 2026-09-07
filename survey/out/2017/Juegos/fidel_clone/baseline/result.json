@@ -1,0 +1,55 @@
+{
+ "sketch": "2017/Juegos/fidel_clone",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Juegos/fidel_clone/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Juegos/fidel_clone/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 219,
+   "md5": "aa6f4853b8fe1b7d26bff30cda5e7d1c",
+   "bytes": 9246
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720",
+ "imports": [],
+ "tabs": [
+  "fidel_clone.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Juegos/fidel_clone/baseline/frame_00001.png (snap) t=219ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Juegos/fidel_clone/baseline/frame_00010.png (snap) t=377ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Juegos/fidel_clone/baseline/frame_00060.png (snap) t=1208ms\n[harness] done frame=60 t=1195ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 219,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

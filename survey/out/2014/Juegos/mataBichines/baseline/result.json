@@ -1,0 +1,55 @@
+{
+ "sketch": "2014/Juegos/mataBichines",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Juegos/mataBichines/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/mataBichines/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 157,
+   "md5": "aca8a12a29fcb74b93098385989decc9",
+   "bytes": 2002
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640, 480",
+ "imports": [],
+ "tabs": [
+  "mataBichines.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/mataBichines/baseline/frame_00001.png (snap) t=157ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/mataBichines/baseline/frame_00010.png (snap) t=303ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/mataBichines/baseline/frame_00060.png (snap) t=1132ms\n[harness] done frame=60 t=1124ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 157,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/05_08/roscas",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/roscas/variants/meshPasses_12",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  for (int k = 0; k < 4; k++) {",
+   "  for (int k = 0; k < 12; k++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/roscas/variants/meshPasses_12/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2316,
+   "md5": "d9268d310779d15e76efb02a87f6709a",
+   "bytes": 1280134
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "roscas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  for (int k = 0; k < 4; k++) {",
+   "new": "  for (int k = 0; k < 12; k++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 18.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/roscas/variants/meshPasses_12/frame_00001.png (snap) t=2316ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/roscas/variants/meshPasses_12/frame_00010.png (snap) t=4736ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/roscas/variants/meshPasses_12/frame_00060.png (snap) t=17429ms\n[harness] done frame=60 t=17376ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2316,
+ "diff_vs_baseline": {
+  "mean": 0.2507,
+  "changed_fraction": 0.754,
+  "label": "large"
+ }
+}

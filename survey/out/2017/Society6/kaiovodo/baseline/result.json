@@ -1,0 +1,57 @@
+{
+ "sketch": "2017/Society6/kaiovodo",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Society6/kaiovodo/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Society6/kaiovodo/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 4529,
+   "md5": "72a11f942b2b8c9c97e4a0ed525c3dac",
+   "bytes": 1221089
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Society6/kaiovodo/baseline/self_export.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 5344,
+   "md5": "72a11f942b2b8c9c97e4a0ed525c3dac",
+   "bytes": 1221089
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  2000,
+  500
+ ],
+ "size_args": "2000 , 500",
+ "imports": [
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "kaiovodo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Society6/kaiovodo/baseline/frame_00001.png (snap) t=4529ms\n[harness] dispose frame=2 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 4529,
+ "deterministic": true,
+ "rerun_frames": 2
+}

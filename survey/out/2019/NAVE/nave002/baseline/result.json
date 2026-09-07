@@ -1,0 +1,77 @@
+{
+ "sketch": "2019/NAVE/nave002",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/NAVE/nave002/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/NAVE/nave002/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1738,
+   "md5": "ad036416e12dd90d7a283c5ee8a229da",
+   "bytes": 129344
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/NAVE/nave002/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2050,
+   "md5": "d01a4814d2df692747704d2e701e0dde",
+   "bytes": 159915
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/NAVE/nave002/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3395,
+   "md5": "d01a4814d2df692747704d2e701e0dde",
+   "bytes": 159915
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "displayWidth, displayHeight, P3D",
+ "imports": [
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "Camera.pde",
+  "Chunk.pde",
+  "Map.pde",
+  "Particles.pde",
+  "Ship.pde",
+  "World.pde",
+  "nave002.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/NAVE/nave002/baseline/frame_00001.png (snap) t=1738ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/NAVE/nave002/baseline/frame_00010.png (snap) t=2050ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/NAVE/nave002/baseline/frame_00060.png (snap) t=3395ms\n[harness] done frame=60 t=3270ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "Your shader needs to be of TEXTURE type to render this geometry properly, using default shader instead.",
+ "ms_first_frame": 1738,
+ "deterministic": true,
+ "rerun_frames": 3
+}

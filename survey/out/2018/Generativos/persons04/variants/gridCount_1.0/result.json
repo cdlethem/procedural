@@ -1,0 +1,85 @@
+{
+ "sketch": "2018/Generativos/persons04",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/variants/gridCount_1.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "gridCount = int(random(40, 60)*0.5);",
+   "gridCount = int(random(40, 60)*1.0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/variants/gridCount_1.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1442,
+   "md5": "4c555b55ab16d3f106d8fe523287b10b",
+   "bytes": 68068
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/variants/gridCount_1.0/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1648,
+   "md5": "4122c93981b6dc0c6b9c08adc15ce89d",
+   "bytes": 67998
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/variants/gridCount_1.0/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2904,
+   "md5": "322e39bb1c3b839d232b9a9df17f588a",
+   "bytes": 68257
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P2D",
+ "imports": [
+  "java.util.*",
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "Person.pde",
+  "persons04.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "gridCount = int(random(40, 60)*0.5);",
+   "new": "gridCount = int(random(40, 60)*1.0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n59.299812\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/variants/gridCount_1.0/frame_00001.png (snap) t=1442ms\n50.776512\n51.317505\n51.357327\n50.612022\n49.938026\n49.300636\n48.715477\n48.172756\n47.668594\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/variants/gridCount_1.0/frame_00010.png (snap) t=1648ms\n47.21233\n46.78341\n46.37148\n45.98333\n45.62405\n45.29122\n44.9819\n44.683823\n44.42109\n44.164368\n43.90948\n43.692482\n43.47811\n43.278503\n43.104946\n42.92353\n42.748604\n42.595963\n42.44991\n42.315044\n42.18423\n42.055084\n41.922016\n41.816837\n41.717117\n41.61766\n41.526127\n41.434628\n41.34402\n41.24738\n41.185894\n41.105453\n41.049824\n40.989822\n40.927444\n40.86215\n40.808846\n40.76486\n40.71375\n40.671555\n40.620327\n40.57529\n40.540535\n40.509163\n40.464966\n40.424946\n40.40767\n40.365753\n40.33111\n40.301258\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/variants/gridCount_1.0/frame_00060.png (snap) t=2904ms\n[harness] done frame=60 t=2888ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1442,
+ "diff_vs_baseline": {
+  "mean": 0.0713,
+  "changed_fraction": 0.144,
+  "label": "moderate"
+ }
+}

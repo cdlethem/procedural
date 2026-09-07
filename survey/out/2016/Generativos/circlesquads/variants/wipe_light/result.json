@@ -1,0 +1,70 @@
+{
+ "sketch": "2016/Generativos/circlesquads",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/circlesquads/variants/wipe_light",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "background(0);",
+   "background(250);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/circlesquads/variants/wipe_light/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1674,
+   "md5": "5ab7f7802e733a72f43f8721510822f2",
+   "bytes": 2780
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "circlesquads.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "background(0);",
+   "new": "background(250);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "blank"
+  ],
+  [
+   60,
+   "blank"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/circlesquads/variants/wipe_light/frame_00001.png (snap) t=1674ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/circlesquads/variants/wipe_light/frame_00010.png (snap) t=1882ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/circlesquads/variants/wipe_light/frame_00060.png (snap) t=3135ms\n[harness] done frame=60 t=3115ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1674,
+ "diff_vs_baseline": {
+  "mean": 0.0007,
+  "changed_fraction": 0.002,
+  "label": "none"
+ }
+}

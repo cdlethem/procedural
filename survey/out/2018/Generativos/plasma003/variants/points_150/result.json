@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/plasma003",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/points_150",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int k = 0; k < 500; k++) {",
+   "for (int k = 0; k < 150; k++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/points_150/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1736,
+   "md5": "f7a799f6dcf536bf790cc568f47c8b8e",
+   "bytes": 1081213
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/points_150/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1956,
+   "md5": "3bd4dc6b2bb8d253d1bd0e69e01a7656",
+   "bytes": 238977
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/points_150/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3206,
+   "md5": "3bd4dc6b2bb8d253d1bd0e69e01a7656",
+   "bytes": 238977
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "plasma003.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int k = 0; k < 500; k++) {",
+   "new": "for (int k = 0; k < 150; k++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/points_150/frame_00001.png (snap) t=1736ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/points_150/frame_00010.png (snap) t=1956ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma003/variants/points_150/frame_00060.png (snap) t=3206ms\n[harness] done frame=60 t=3176ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1736,
+ "diff_vs_baseline": {
+  "mean": 0.054,
+  "changed_fraction": 0.157,
+  "label": "moderate"
+ }
+}

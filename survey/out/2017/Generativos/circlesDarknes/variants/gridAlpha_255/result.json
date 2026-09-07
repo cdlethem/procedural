@@ -1,0 +1,74 @@
+{
+ "sketch": "2017/Generativos/circlesDarknes",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesDarknes/variants/gridAlpha_255",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "stroke(rcol(), 100);",
+   "stroke(rcol(), 255);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesDarknes/variants/gridAlpha_255/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 160,
+   "md5": "eb639d9df562f1e148b5eedafca9b0a3",
+   "bytes": 27829
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesDarknes/variants/gridAlpha_255/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1158,
+   "md5": "225c0b03195c0fe7d8d773e167851976",
+   "bytes": 72970
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "circlesDarknes.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "stroke(rcol(), 100);",
+   "new": "stroke(rcol(), 255);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesDarknes/variants/gridAlpha_255/frame_00001.png (snap) t=160ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesDarknes/variants/gridAlpha_255/frame_00010.png (snap) t=317ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/circlesDarknes/variants/gridAlpha_255/frame_00060.png (snap) t=1158ms\n[harness] done frame=60 t=1135ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 160,
+ "diff_vs_baseline": {
+  "mean": 0.006,
+  "changed_fraction": 0.029,
+  "label": "none"
+ }
+}

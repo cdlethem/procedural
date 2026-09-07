@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/planos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/planos/variants/stroke_14",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "stroke(color(0), 6);",
+   "stroke(color(0), 14);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/planos/variants/stroke_14/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1451,
+   "md5": "0a44591cef12661ab6c6f13498cad21a",
+   "bytes": 21361
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "planos.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "stroke(color(0), 6);",
+   "new": "stroke(color(0), 14);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/planos/variants/stroke_14/frame_00001.png (snap) t=1451ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/planos/variants/stroke_14/frame_00010.png (snap) t=1659ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/planos/variants/stroke_14/frame_00060.png (snap) t=2914ms\n[harness] done frame=60 t=2893ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1451,
+ "diff_vs_baseline": {
+  "mean": 0.0009,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

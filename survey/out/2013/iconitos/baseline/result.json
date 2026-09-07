@@ -1,0 +1,63 @@
+{
+ "sketch": "2013/iconitos",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/iconitos/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/iconitos/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 172,
+   "md5": "b694c45deae37b0d8700b3c9e340861c",
+   "bytes": 73516
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/iconitos/baseline/self_holis.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1051,
+   "md5": "b694c45deae37b0d8700b3c9e340861c",
+   "bytes": 73516
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  851,
+  315
+ ],
+ "size_args": "851, 315",
+ "imports": [],
+ "tabs": [
+  "iconitos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2013/iconitos/baseline/frame_00001.png (snap) t=172ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/iconitos/baseline/frame_00010.png (snap) t=319ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/iconitos/baseline/frame_00060.png (snap) t=1151ms\n[harness] done frame=60 t=1142ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 172,
+ "deterministic": true,
+ "rerun_frames": 4,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

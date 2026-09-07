@@ -1,0 +1,64 @@
+{
+ "sketch": "2014/MoneyFlow",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/MoneyFlow/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/MoneyFlow/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 290,
+   "md5": "16c7376ae5e734e85cbc6f52919335b1",
+   "bytes": 31353
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/MoneyFlow/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 442,
+   "md5": "181016a818ad2f3bf11cc4cb4ebb3679",
+   "bytes": 31383
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/MoneyFlow/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1272,
+   "md5": "181016a818ad2f3bf11cc4cb4ebb3679",
+   "bytes": 31383
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640, 480",
+ "imports": [],
+ "tabs": [
+  "MoneyFlow.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "MoneyFlow.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/MoneyFlow/baseline/frame_00001.png (snap) t=290ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/MoneyFlow/baseline/frame_00010.png (snap) t=442ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/MoneyFlow/baseline/frame_00060.png (snap) t=1272ms\n[harness] done frame=60 t=1261ms\nadioosss\nFinished.",
+ "stderr_tail": "\"Helvetica Neue Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 290,
+ "deterministic": true,
+ "rerun_frames": 3
+}

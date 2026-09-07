@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/fachada2",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/fachada2/variants/zstep_1.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "translate(ss*i-dd, ss*i-dd, j*ss*0.5-dd);",
+   "translate(ss*i-dd, ss*i-dd, j*ss*1.0-dd);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/fachada2/variants/zstep_1.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1490,
+   "md5": "32e492d588ab9509da9cc23683c5b639",
+   "bytes": 35374
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "fachada2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "translate(ss*i-dd, ss*i-dd, j*ss*0.5-dd);",
+   "new": "translate(ss*i-dd, ss*i-dd, j*ss*1.0-dd);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/fachada2/variants/zstep_1.0/frame_00001.png (snap) t=1490ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/fachada2/variants/zstep_1.0/frame_00010.png (snap) t=1699ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/fachada2/variants/zstep_1.0/frame_00060.png (snap) t=2958ms\n[harness] done frame=60 t=2932ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1490,
+ "diff_vs_baseline": {
+  "mean": 0.4039,
+  "changed_fraction": 0.91,
+  "label": "large"
+ }
+}

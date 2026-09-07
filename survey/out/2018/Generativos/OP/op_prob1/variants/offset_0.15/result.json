@@ -1,0 +1,87 @@
+{
+ "sketch": "2018/Generativos/OP/op_prob1",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_prob1/variants/offset_0.15",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "if (noise(des1+i*det1, des1+j*det1) < 0.5) rect(xx-ss*0.3, yy-ss*0.3, ss*0.2, ss*0.2);=>if (noise(des1+i*det1, des1+j*det1) < 0.5) rect(xx-ss*0.15, yy-ss*0.15, ss*0.2, ss*0.2);",
+  "if (noise(des2+i*det2, des2+j*det2) < 0.5) rect(xx+ss*0.3, yy-ss*0.3, ss*0.2, ss*0.2);=>if (noise(des2+i*det2, des2+j*det2) < 0.5) rect(xx+ss*0.15, yy-ss*0.15, ss*0.2, ss*0.2);",
+  "if (noise(des3+i*det3, des3+j*det3) < 0.5) rect(xx+ss*0.3, yy+ss*0.3, ss*0.2, ss*0.2);=>if (noise(des3+i*det3, des3+j*det3) < 0.5) rect(xx+ss*0.15, yy+ss*0.15, ss*0.2, ss*0.2);",
+  "if (noise(des4+i*det4, des4+j*det4) < 0.5) rect(xx-ss*0.3, yy+ss*0.3, ss*0.2, ss*0.2);=>if (noise(des4+i*det4, des4+j*det4) < 0.5) rect(xx-ss*0.15, yy+ss*0.15, ss*0.2, ss*0.2);"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_prob1/variants/offset_0.15/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1452,
+   "md5": "356364020d4cba7ba9b0fb8b7377b9ef",
+   "bytes": 114985
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "op_prob1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "if (noise(des1+i*det1, des1+j*det1) < 0.5) rect(xx-ss*0.3, yy-ss*0.3, ss*0.2, ss*0.2);",
+   "new": "if (noise(des1+i*det1, des1+j*det1) < 0.5) rect(xx-ss*0.15, yy-ss*0.15, ss*0.2, ss*0.2);",
+   "count": 1
+  },
+  {
+   "old": "if (noise(des2+i*det2, des2+j*det2) < 0.5) rect(xx+ss*0.3, yy-ss*0.3, ss*0.2, ss*0.2);",
+   "new": "if (noise(des2+i*det2, des2+j*det2) < 0.5) rect(xx+ss*0.15, yy-ss*0.15, ss*0.2, ss*0.2);",
+   "count": 1
+  },
+  {
+   "old": "if (noise(des3+i*det3, des3+j*det3) < 0.5) rect(xx+ss*0.3, yy+ss*0.3, ss*0.2, ss*0.2);",
+   "new": "if (noise(des3+i*det3, des3+j*det3) < 0.5) rect(xx+ss*0.15, yy+ss*0.15, ss*0.2, ss*0.2);",
+   "count": 1
+  },
+  {
+   "old": "if (noise(des4+i*det4, des4+j*det4) < 0.5) rect(xx-ss*0.3, yy+ss*0.3, ss*0.2, ss*0.2);",
+   "new": "if (noise(des4+i*det4, des4+j*det4) < 0.5) rect(xx-ss*0.15, yy+ss*0.15, ss*0.2, ss*0.2);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_prob1/variants/offset_0.15/frame_00001.png (snap) t=1452ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_prob1/variants/offset_0.15/frame_00010.png (snap) t=1666ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_prob1/variants/offset_0.15/frame_00060.png (snap) t=2921ms\n[harness] done frame=60 t=2894ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1452,
+ "diff_vs_baseline": {
+  "mean": 0.2076,
+  "changed_fraction": 0.314,
+  "label": "large"
+ },
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

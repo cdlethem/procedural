@@ -1,0 +1,75 @@
+{
+ "sketch": "2020/oport",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/oport/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/oport/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1557,
+   "md5": "583acc33d1f21a8ec5b297ede0b93a9c",
+   "bytes": 898799
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/oport/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1812,
+   "md5": "aa1de20797664a2988ce9fbc23e8341e",
+   "bytes": 891573
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/oport/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3084,
+   "md5": "fcab5cfefbf33e016f445356285bc25f",
+   "bytes": 873671
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "oport.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/oport/baseline/frame_00001.png (snap) t=1557ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/oport/baseline/frame_00010.png (snap) t=1812ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/oport/baseline/frame_00060.png (snap) t=3084ms\n[harness] done frame=60 t=3039ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1557,
+ "deterministic": false,
+ "rerun_frames": 3
+}

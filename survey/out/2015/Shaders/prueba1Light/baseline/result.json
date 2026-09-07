@@ -1,0 +1,61 @@
+{
+ "sketch": "2015/Shaders/prueba1Light",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Shaders/prueba1Light/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Shaders/prueba1Light/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1448,
+   "md5": "c0c90e7c333e942f3946094013d1a587",
+   "bytes": 11772
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Shaders/prueba1Light/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1671,
+   "md5": "4500a261502148317152ba6e0aa85991",
+   "bytes": 13158
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Shaders/prueba1Light/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2925,
+   "md5": "f287209fc9f1dba43064ba28911c73b4",
+   "bytes": 39511
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "prueba1Light.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Shaders/prueba1Light/baseline/frame_00001.png (snap) t=1448ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Shaders/prueba1Light/baseline/frame_00010.png (snap) t=1671ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Shaders/prueba1Light/baseline/frame_00060.png (snap) t=2925ms\n[harness] done frame=60 t=2913ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "OpenGL error 1282 at top endDraw(): invalid operation\nOpenGL error 1282 at bot endDraw(): invalid operation",
+ "ms_first_frame": 1448,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2019/generativos/oscoscosc",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3346,
+   "md5": "be7cc823cbe95ac230215293c5e91d8c",
+   "bytes": 1999805
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3571,
+   "md5": "f9f886e29da7b349f60b050fac3c4d7a",
+   "bytes": 65797
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 4827,
+   "md5": "f9f886e29da7b349f60b050fac3c4d7a",
+   "bytes": 65797
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "oscoscosc.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n140.0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/baseline/frame_00001.png (snap) t=3346ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/baseline/frame_00010.png (snap) t=3571ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/oscoscosc/baseline/frame_00060.png (snap) t=4827ms\n[harness] done frame=60 t=4804ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3346,
+ "deterministic": true,
+ "rerun_frames": 3
+}

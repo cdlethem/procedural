@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/citylab",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/citylab/variants/balls2_3000",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "balls(300);",
+   "balls(3000);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/citylab/variants/balls2_3000/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2408,
+   "md5": "f7ee3c60fde26f6ec820ba7fada3d3d9",
+   "bytes": 1682785
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/citylab/variants/balls2_3000/self_20260905-030041.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2887,
+   "md5": "f7ee3c60fde26f6ec820ba7fada3d3d9",
+   "bytes": 1682785
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "citylab.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "balls(300);",
+   "new": "balls(3000);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/citylab/variants/balls2_3000/frame_00001.png (dispose) t=2408ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2408,
+ "diff_vs_baseline": {
+  "mean": 0.0006,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

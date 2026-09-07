@@ -1,0 +1,69 @@
+{
+ "sketch": "2019/generativos/dondon",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/dondon/variants/tiltX_0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "rotateX(HALF_PI*0.2);",
+   "rotateX(0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/dondon/variants/tiltX_0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2147,
+   "md5": "2684654d676119dc6119829e84839edb",
+   "bytes": 1613536
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [],
+ "tabs": [
+  "dondon.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "rotateX(HALF_PI*0.2);",
+   "new": "rotateX(0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n0.045512743 -0.08906696 -1.0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dondon/variants/tiltX_0/frame_00001.png (snap) t=2147ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dondon/variants/tiltX_0/frame_00010.png (snap) t=2396ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dondon/variants/tiltX_0/frame_00060.png (snap) t=3674ms\n[harness] done frame=60 t=3611ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2147,
+ "diff_vs_baseline": {
+  "mean": 0.1246,
+  "changed_fraction": 0.538,
+  "label": "moderate"
+ }
+}

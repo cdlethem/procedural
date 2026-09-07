@@ -1,0 +1,62 @@
+{
+ "sketch": "2014/Generativos/violetica",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/violetica/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/violetica/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 299,
+   "md5": "2a37c8e55c71f14fc884f0da2347d1ff",
+   "bytes": 3104
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "violetica.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "violetica.pde"
+ ],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/violetica/baseline/frame_00001.png (snap) t=299ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/violetica/baseline/frame_00002.png (snap) t=319ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/violetica/baseline/frame_00010.png (snap) t=459ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/violetica/baseline/frame_00060.png (snap) t=1288ms\n[harness] done frame=60 t=1278ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 299,
+ "deterministic": true,
+ "rerun_frames": 1
+}

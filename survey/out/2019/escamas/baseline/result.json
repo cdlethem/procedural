@@ -1,0 +1,72 @@
+{
+ "sketch": "2019/escamas",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/escamas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/escamas/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1501,
+   "md5": "1909cd14110269ab972ea223db532e0c",
+   "bytes": 252279
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/escamas/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1744,
+   "md5": "dbc0bf5cd30c9bf2d8f4b4c6e9575662",
+   "bytes": 250903
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/escamas/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 9815,
+   "md5": "23d059b1b84623758eea35dd7c10de9d",
+   "bytes": 256336
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "escamas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 11.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/escamas/baseline/frame_00001.png (snap) t=1501ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/escamas/baseline/frame_00010.png (snap) t=1744ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/escamas/baseline/frame_00060.png (snap) t=9815ms\n[harness] done frame=60 t=9788ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1501,
+ "deterministic": false,
+ "rerun_frames": 3
+}

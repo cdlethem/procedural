@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/01_04/bluurrr",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/palette_4c",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "for (int i = 0; i < 8; i++) {=>for (int i = 0; i < 0; i++) {",
+  "int colors[] = {#B85807, #FAC440, #F4C8BF, #A0B9A6, #A1B2EA};=>int colors[] = {#6402F7, #F7A4EF, #F62C64, #00DACA};"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/palette_4c/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1634,
+   "md5": "680b8d2c6f0211de69a10fe8454fa8e1",
+   "bytes": 60646
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/palette_4c/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1808,
+   "md5": "a35536f9d3df6a1bc72197f70c5dedd4",
+   "bytes": 102641
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/palette_4c/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2626,
+   "md5": "a35536f9d3df6a1bc72197f70c5dedd4",
+   "bytes": 102641
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "bluurrr.pde"
+ ],
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i < 8; i++) {",
+   "new": "for (int i = 0; i < 0; i++) {",
+   "count": 1
+  },
+  {
+   "old": "int colors[] = {#B85807, #FAC440, #F4C8BF, #A0B9A6, #A1B2EA};",
+   "new": "int colors[] = {#6402F7, #F7A4EF, #F62C64, #00DACA};",
+   "count": 1
+  }
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/palette_4c/frame_00001.png (snap) t=1634ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/palette_4c/frame_00010.png (snap) t=1808ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/palette_4c/frame_00060.png (snap) t=2626ms\n[harness] done frame=60 t=2601ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1634
+}

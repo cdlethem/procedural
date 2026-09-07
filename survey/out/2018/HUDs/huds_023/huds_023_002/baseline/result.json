@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/HUDs/huds_023/huds_023_002",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_023/huds_023_002/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_023/huds_023_002/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1589,
+   "md5": "3a5d57b8734429d043cd0edaaad5e277",
+   "bytes": 71148
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_023/huds_023_002/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1805,
+   "md5": "5fbc3f7adb92bd3931a080835622c423",
+   "bytes": 72206
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_023/huds_023_002/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3063,
+   "md5": "07200e83aa8470caaf65e47ae77b20b9",
+   "bytes": 73975
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P2D",
+ "imports": [],
+ "tabs": [
+  "huds_023_002.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_023/huds_023_002/baseline/frame_00001.png (snap) t=1589ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_023/huds_023_002/baseline/frame_00010.png (snap) t=1805ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/HUDs/huds_023/huds_023_002/baseline/frame_00060.png (snap) t=3063ms\n[harness] done frame=60 t=3046ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1589,
+ "deterministic": false,
+ "rerun_frames": 3
+}

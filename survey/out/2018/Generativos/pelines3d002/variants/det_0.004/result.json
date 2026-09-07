@@ -1,0 +1,83 @@
+{
+ "sketch": "2018/Generativos/pelines3d002",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/variants/det_0.004",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "det = random(0.001);",
+   "det = random(0.004);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/variants/det_0.004/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1648,
+   "md5": "87c8358bc081d7cff54d761435436009",
+   "bytes": 67472,
+   "captured_frame": 10
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/variants/det_0.004/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2897,
+   "md5": "f003f8014d94c065adfe2ae100f5c2e1",
+   "bytes": 71095
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "Lines.pde",
+  "pelines3d002.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "det = random(0.001);",
+   "new": "det = random(0.004);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 10 promoted to frame_00001.png"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/variants/det_0.004/frame_00001.png (snap) t=1441ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/variants/det_0.004/frame_00010.png (snap) t=1648ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelines3d002/variants/det_0.004/frame_00060.png (snap) t=2897ms\n[harness] done frame=60 t=2885ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1648,
+ "diff_vs_baseline": {
+  "mean": 0.0178,
+  "changed_fraction": 0.072,
+  "label": "subtle"
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "sketch": "2016/walkersPixel",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/walkersPixel/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/walkersPixel/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1533,
+   "md5": "c851906d50222e88b6be5d6b158b427d",
+   "bytes": 511385
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/walkersPixel/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1768,
+   "md5": "7571f03997fa241dd21d28d4f5104387",
+   "bytes": 512338
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/walkersPixel/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3046,
+   "md5": "118432362c0dd17ebcf449da07462134",
+   "bytes": 511407
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "walkersPixel.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/walkersPixel/baseline/frame_00001.png (snap) t=1533ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/walkersPixel/baseline/frame_00010.png (snap) t=1768ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/walkersPixel/baseline/frame_00060.png (snap) t=3046ms\n[harness] done frame=60 t=3003ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1533,
+ "deterministic": false,
+ "rerun_frames": 3
+}

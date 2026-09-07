@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/process_02",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/process_02/variants/det_0.02",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float det = random(0.1);",
+   "float det = random(0.02);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/process_02/variants/det_0.02/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1490,
+   "md5": "19408c06c9ed7f65e3a104a47330a61a",
+   "bytes": 399675
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/process_02/variants/det_0.02/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1710,
+   "md5": "54f4990cc8b034a4260cbe29091b6497",
+   "bytes": 399780
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/process_02/variants/det_0.02/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2970,
+   "md5": "fd833ab84808f7c3aa0b464518ad21d7",
+   "bytes": 397774
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P3D",
+ "imports": [],
+ "tabs": [
+  "process_02.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float det = random(0.1);",
+   "new": "float det = random(0.02);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/process_02/variants/det_0.02/frame_00001.png (snap) t=1490ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/process_02/variants/det_0.02/frame_00010.png (snap) t=1710ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/process_02/variants/det_0.02/frame_00060.png (snap) t=2970ms\n[harness] done frame=60 t=2935ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1490,
+ "diff_vs_baseline": {
+  "mean": 0.0651,
+  "changed_fraction": 0.186,
+  "label": "moderate"
+ }
+}

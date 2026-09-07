@@ -1,0 +1,72 @@
+{
+ "sketch": "2019/generativos/martol",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/martol/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/martol/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1623,
+   "md5": "93e89e21615706423143c356a3103538",
+   "bytes": 93347
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/martol/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1834,
+   "md5": "c576d9c80198e3fc8aaa969606e4203e",
+   "bytes": 22438
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/martol/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3093,
+   "md5": "c576d9c80198e3fc8aaa969606e4203e",
+   "bytes": 22438
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "martol.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/martol/baseline/frame_00001.png (snap) t=1623ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/martol/baseline/frame_00010.png (snap) t=1834ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/martol/baseline/frame_00060.png (snap) t=3093ms\n[harness] done frame=60 t=3072ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1623,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/margaritas",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/tilt_flat",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "rotateX(PI*random(0.15, 0.3));",
+   "rotateX(PI*random(0.0, 0.05));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/tilt_flat/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1674,
+   "md5": "29a70bd87fa49d706074d954e57f8a36",
+   "bytes": 435952
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/tilt_flat/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2532,
+   "md5": "c14314602bed78207413a28354cdad7f",
+   "bytes": 448688
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/tilt_flat/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6992,
+   "md5": "0ee976ead2c2975f9506184be45cf0c0",
+   "bytes": 447747
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "margaritas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "rotateX(PI*random(0.15, 0.3));",
+   "new": "rotateX(PI*random(0.0, 0.05));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 8.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/tilt_flat/frame_00001.png (snap) t=1674ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/tilt_flat/frame_00010.png (snap) t=2532ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/tilt_flat/frame_00060.png (snap) t=6992ms\n[harness] done frame=60 t=6957ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1674,
+ "diff_vs_baseline": {
+  "mean": 0.0446,
+  "changed_fraction": 0.131,
+  "label": "subtle"
+ }
+}

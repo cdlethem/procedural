@@ -1,0 +1,83 @@
+{
+ "sketch": "2015/Generativos/arcosCampestres",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/tt_big",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float tt = height*random(0.8)*random(0.1, 1);",
+   "float tt = height*random(0.8)*random(0.5, 1);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/tt_big/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 178,
+   "md5": "a0faa3414ca0f405afb8d9c4229d391e",
+   "bytes": 22585
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/tt_big/self_1.pdf",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1032,
+   "md5": "e8e5b0ea4e1d33d363f9b91b9230bd6a",
+   "bytes": 2316
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  400
+ ],
+ "size_args": "800, 400",
+ "imports": [
+  "java.io.FilenameFilter",
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "arcosCampestres.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float tt = height*random(0.8)*random(0.1, 1);",
+   "new": "float tt = height*random(0.8)*random(0.5, 1);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "arcosCampestres.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/tt_big/frame_00001.png (snap) t=178ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/tt_big/frame_00010.png (snap) t=323ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/tt_big/frame_00060.png (snap) t=1155ms\n[harness] done frame=60 t=1146ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 178,
+ "diff_vs_baseline": {
+  "mean": 0.1276,
+  "changed_fraction": 0.336,
+  "label": "moderate"
+ }
+}

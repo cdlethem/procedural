@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/globologia",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/globeCurves_800",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    for (int k = 0; k < 2400; k++) {",
+   "    for (int k = 0; k < 800; k++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/globeCurves_800/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1835,
+   "md5": "2709086d2ac8f61312badc2e2e82820c",
+   "bytes": 1869247
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/globeCurves_800/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2047,
+   "md5": "b8b798ab9dabc67ce10d1181ec69affe",
+   "bytes": 48972
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/globeCurves_800/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3296,
+   "md5": "b8b798ab9dabc67ce10d1181ec69affe",
+   "bytes": 48972
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "globologia.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "    for (int k = 0; k < 2400; k++) {",
+   "new": "    for (int k = 0; k < 800; k++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/globeCurves_800/frame_00001.png (snap) t=1835ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/globeCurves_800/frame_00010.png (snap) t=2047ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/globeCurves_800/frame_00060.png (snap) t=3296ms\n[harness] done frame=60 t=3276ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1835,
+ "diff_vs_baseline": {
+  "mean": 0.173,
+  "changed_fraction": 0.581,
+  "label": "large"
+ }
+}

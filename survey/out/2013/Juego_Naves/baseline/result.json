@@ -1,0 +1,61 @@
+{
+ "sketch": "2013/Juego_Naves",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/Juego_Naves/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/Juego_Naves/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 165,
+   "md5": "7d34a25d1e9a76060ce490b19031ad3e",
+   "bytes": 2768
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/Juego_Naves/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 310,
+   "md5": "7e95edb073b6909cd44754800cef5edf",
+   "bytes": 5274
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/Juego_Naves/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1139,
+   "md5": "4c766c972b77d91d9d5a7cb1e16bad31",
+   "bytes": 5255
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  480,
+  640
+ ],
+ "size_args": "480, 640",
+ "imports": [],
+ "tabs": [
+  "Juego_Naves.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2013/Juego_Naves/baseline/frame_00001.png (snap) t=165ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/Juego_Naves/baseline/frame_00010.png (snap) t=310ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/Juego_Naves/baseline/frame_00060.png (snap) t=1139ms\n[harness] done frame=60 t=1133ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 165,
+ "deterministic": true,
+ "rerun_frames": 3
+}

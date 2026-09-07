@@ -1,0 +1,87 @@
+{
+ "sketch": "2016/Generativos/pelosNoise2",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/sep_4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  int sep = 2;",
+   "  int sep = 4;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/sep_4/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 507,
+   "md5": "5ade9ba5798f707ae19df8ce84393b0e",
+   "bytes": 1350645
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/sep_4/self_0002.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1554,
+   "md5": "cc430f6d69b733f120fcd958f4d1424a",
+   "bytes": 1355561
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/sep_4/self_0003.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1693,
+   "md5": "b589563c9dbedf2d0079f7b82ee09113",
+   "bytes": 1348904
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/sep_4/self_0001.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1354,
+   "md5": "5ade9ba5798f707ae19df8ce84393b0e",
+   "bytes": 1350645
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "pelosNoise2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int sep = 2;",
+   "new": "  int sep = 4;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/sep_4/frame_00001.png (snap) t=507ms\n[harness] dispose frame=4 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 507,
+ "diff_vs_baseline": {
+  "mean": 0.4578,
+  "changed_fraction": 0.997,
+  "label": "large"
+ }
+}

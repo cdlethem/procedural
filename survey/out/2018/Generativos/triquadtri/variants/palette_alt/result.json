@@ -1,0 +1,81 @@
+{
+ "sketch": "2018/Generativos/triquadtri",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/triquadtri/variants/palette_alt",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#18171C, #BEBAB6, #FE0302, #18171C, #BEBAB6, #FDC200, #18171C, #BEBAB6, #0124B8, #BEBAB6, #0050FF, #058B51};",
+   "//int colors[] = {#18171C, #BEBAB6, #FE0302, #18171C, #BEBAB6, #FDC200, #18171C, #BEBAB6, #0124B8, #BEBAB6, #0050FF, #058B51};"
+  ],
+  [
+   "//int colors[] = {#52F3FF, #000308, #FD6B01, #084E8B};",
+   "int colors[] = {#52F3FF, #000308, #FD6B01, #084E8B};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/triquadtri/variants/palette_alt/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1447,
+   "md5": "b8c3b822c5162fe919b26836ef03868d",
+   "bytes": 358291
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "triquadtri.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#18171C, #BEBAB6, #FE0302, #18171C, #BEBAB6, #FDC200, #18171C, #BEBAB6, #0124B8, #BEBAB6, #0050FF, #058B51};",
+   "new": "//int colors[] = {#18171C, #BEBAB6, #FE0302, #18171C, #BEBAB6, #FDC200, #18171C, #BEBAB6, #0124B8, #BEBAB6, #0050FF, #058B51};",
+   "count": 1
+  },
+  {
+   "old": "//int colors[] = {#52F3FF, #000308, #FD6B01, #084E8B};",
+   "new": "int colors[] = {#52F3FF, #000308, #FD6B01, #084E8B};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/triquadtri/variants/palette_alt/frame_00001.png (snap) t=1447ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/triquadtri/variants/palette_alt/frame_00010.png (snap) t=1665ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/triquadtri/variants/palette_alt/frame_00060.png (snap) t=2915ms\n[harness] done frame=60 t=2888ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1447,
+ "diff_vs_baseline": {
+  "mean": 0.4205,
+  "changed_fraction": 0.864,
+  "label": "large"
+ }
+}

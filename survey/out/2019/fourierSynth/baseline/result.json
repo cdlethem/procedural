@@ -1,0 +1,66 @@
+{
+ "sketch": "2019/fourierSynth",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/fourierSynth/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/fourierSynth/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1840,
+   "md5": "5c47bf9a73ae482c56a157c54ac44692",
+   "bytes": 5697
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  430
+ ],
+ "size_args": "720, 430, P2D",
+ "imports": [
+  "ddf.minim.*",
+  "ddf.minim.ugens.*"
+ ],
+ "tabs": [
+  "Voice.pde",
+  "fourierSynth.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "minim.jar",
+  "jsminim.jar",
+  "jl1.0.1.jar",
+  "mp3spi1.9.5.jar",
+  "tritonus_aos.jar",
+  "tritonus_share.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 32.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/fourierSynth/baseline/frame_00001.png (snap) t=1840ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/fourierSynth/baseline/frame_00010.png (snap) t=10802ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/fourierSynth/baseline/frame_00048.png (budget) t=30765ms\n[harness] done frame=48 t=30757ms\nadios\n[harness] dispose frame=49 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1840,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   48,
+   "identical to frame 1"
+  ]
+ ]
+}

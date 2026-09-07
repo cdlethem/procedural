@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/prueba2c",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2c/variants/tiempo_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    tiempo = int(random(400));",
+   "    tiempo = int(random(20));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2c/variants/tiempo_20/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 145,
+   "md5": "44a7ba08683188827a83ac877b4ad72d",
+   "bytes": 4796
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2c/variants/tiempo_20/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 296,
+   "md5": "985c88741da8e37f079a0219dc2db5f0",
+   "bytes": 4323
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2c/variants/tiempo_20/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1125,
+   "md5": "ca8282c339f319581a0c35458dfb6c52",
+   "bytes": 21352
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "prueba2c.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    tiempo = int(random(400));",
+   "new": "    tiempo = int(random(20));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2c/variants/tiempo_20/frame_00001.png (snap) t=145ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2c/variants/tiempo_20/frame_00010.png (snap) t=296ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2c/variants/tiempo_20/frame_00060.png (snap) t=1125ms\n[harness] done frame=60 t=1115ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 145,
+ "diff_vs_baseline": {
+  "mean": 0.0443,
+  "changed_fraction": 0.11,
+  "label": "subtle"
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "sketch": "2014/Generativos/Tildo",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/des_0.05",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float des = frameCount*0.5;",
+   "float des = frameCount*0.05;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/des_0.05/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 143,
+   "md5": "b615a71b20f6d2d05fbe448b3234699f",
+   "bytes": 6339
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/des_0.05/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 281,
+   "md5": "4a69f9e3c3b723d2a87e62f2790159f3",
+   "bytes": 6671
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/des_0.05/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1113,
+   "md5": "b20eaa01f4221ebbe783204acdde909d",
+   "bytes": 7092
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  200,
+  200
+ ],
+ "size_args": "200,200",
+ "imports": [],
+ "tabs": [
+  "Tildo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float des = frameCount*0.5;",
+   "new": "float des = frameCount*0.05;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "Tildo.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/des_0.05/frame_00001.png (snap) t=143ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/des_0.05/frame_00010.png (snap) t=281ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Tildo/variants/des_0.05/frame_00060.png (snap) t=1113ms\n[harness] done frame=60 t=1110ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 143,
+ "diff_vs_baseline": {
+  "mean": 0.0091,
+  "changed_fraction": 0.051,
+  "label": "none"
+ }
+}

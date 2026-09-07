@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/petis",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/petis/variants/count1_150000",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int i = 0; i < 600000; i++) {",
+   "for (int i = 0; i < 150000; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/petis/variants/count1_150000/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1681,
+   "md5": "ee8ebdad762af6d26442300bd0b45d33",
+   "bytes": 1037726
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/petis/variants/count1_150000/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1901,
+   "md5": "f1772c486bc5fe5ee2909073683185d2",
+   "bytes": 259871
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/petis/variants/count1_150000/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3154,
+   "md5": "f1772c486bc5fe5ee2909073683185d2",
+   "bytes": 259871
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "petis.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i < 600000; i++) {",
+   "new": "for (int i = 0; i < 150000; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/petis/variants/count1_150000/frame_00001.png (snap) t=1681ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/petis/variants/count1_150000/frame_00010.png (snap) t=1901ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/petis/variants/count1_150000/frame_00060.png (snap) t=3154ms\n[harness] done frame=60 t=3123ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1681,
+ "diff_vs_baseline": {
+  "mean": 0.1278,
+  "changed_fraction": 0.488,
+  "label": "moderate"
+ }
+}

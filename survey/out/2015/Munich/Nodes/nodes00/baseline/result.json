@@ -1,0 +1,62 @@
+{
+ "sketch": "2015/Munich/Nodes/nodes00",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes00/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes00/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 182,
+   "md5": "6f2a3054d3892f23068dd64e42c7860a",
+   "bytes": 60911
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes00/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 330,
+   "md5": "dc2feb903c7e32a0fc8a1f431908d54c",
+   "bytes": 62443
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes00/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1160,
+   "md5": "c645a66f932c4d928ccc9169c1449868",
+   "bytes": 61569
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640",
+ "imports": [],
+ "tabs": [
+  "Node.pde",
+  "nodes00.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "59.93228 400\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes00/baseline/frame_00001.png (snap) t=182ms\n52.81812 400\n53.06769 400\n53.321274 400\n53.69159 400\n53.886402 400\n54.25439 400\n54.436687 400\n54.71336 400\n55.010235 400\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes00/baseline/frame_00010.png (snap) t=330ms\n55.193283 400\n55.451904 400\n55.717808 400\n55.784607 400\n56.01295 400\n56.249477 400\n56.478165 400\n56.518776 400\n56.75112 400\n56.830307 400\n57.051773 400\n57.11758 400\n57.35614 400\n57.519825 400\n57.50286 400\n57.65251 400\n57.795265 400\n57.946434 400\n57.916397 400\n58.151134 400\n58.206497 400\n58.254 400\n58.30073 400\n58.509727 400\n58.445484 400\n58.654167 400\n58.668385 400\n58.717075 400\n58.843166 400\n58.75667 400\n58.86733 400\n59.001614 400\n58.968204 400\n59.092903 400\n59.04754 400\n59.12756 400\n59.16487 400\n59.26044 400\n59.29501 400\n59.39099 400\n59.326965 400\n59.441853 400\n59.368877 400\n59.47955 400\n59.38211 400\n59.42955 400\n59.533344 400\n59.573742 400\n59.48072 400\n59.595398 400\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes00/baseline/frame_00060.png (snap) t=1160ms\n[harness] done frame=60 t=1151ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 182,
+ "deterministic": true,
+ "rerun_frames": 3
+}

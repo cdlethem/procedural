@@ -1,0 +1,55 @@
+{
+ "sketch": "2012 y otros/Processing 2/serie optical/optical4",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/serie optical/optical4/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/serie optical/optical4/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 284,
+   "md5": "6e01249468108b7dc1a98b552f8ff7f8",
+   "bytes": 117250
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "optical4.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/serie optical/optical4/baseline/frame_00001.png (snap) t=284ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/serie optical/optical4/baseline/frame_00010.png (snap) t=434ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/serie optical/optical4/baseline/frame_00060.png (snap) t=1264ms\n[harness] done frame=60 t=1251ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 284,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

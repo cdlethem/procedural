@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+.venv/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+build/
+dist/
+*.egg-info/
+
+.DS_Store
+.idea/
+.vscode/
+
+# Generated benchmark runs and candidate renders.
+reports/benchmark-result.json
+reports/benchmark-result.md
+
+# The public survey snapshot intentionally excludes multi-gigabyte render output.
+survey/out/**/*.png
+survey/out/**/*.pdf
+survey/out/**/omp.log
+survey/out/**/omp.err

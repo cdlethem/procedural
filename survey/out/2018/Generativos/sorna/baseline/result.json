@@ -1,0 +1,57 @@
+{
+ "sketch": "2018/Generativos/sorna",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/sorna/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/sorna/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3321,
+   "md5": "40a3c62ba1446e005872f5323988a032",
+   "bytes": 1989742
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "sorna.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/sorna/baseline/frame_00001.png (snap) t=3321ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/sorna/baseline/frame_00010.png (snap) t=3564ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/sorna/baseline/frame_00060.png (snap) t=4853ms\n[harness] done frame=60 t=4787ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3321,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

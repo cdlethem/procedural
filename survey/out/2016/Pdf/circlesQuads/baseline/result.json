@@ -1,0 +1,44 @@
+{
+ "sketch": "2016/Pdf/circlesQuads",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Pdf/circlesQuads/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Pdf/circlesQuads/baseline/self_20260902-185213.pdf",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1960,
+   "md5": "da5a684c795e6c61873aefa0d0bea023",
+   "bytes": 1575442
+  }
+ ],
+ "warnings": [],
+ "renderer": "PDF",
+ "size": null,
+ "size_args": "w, h, PDF, getTimestamp()+\".pdf\"",
+ "imports": [
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "circlesQuads.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "1181 1181Finished.\n[harness] save failed: java.lang.RuntimeException: No save() for PGraphicsPDF\n[harness] dispose frame=2 saved=false\n[harness] save failed: java.lang.RuntimeException: No save() for PGraphicsPDF\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1960,
+ "deterministic": false,
+ "rerun_frames": 1
+}

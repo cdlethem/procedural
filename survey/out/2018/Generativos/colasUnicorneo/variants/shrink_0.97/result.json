@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/colasUnicorneo",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/colasUnicorneo/variants/shrink_0.97",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "s *= 0.99;",
+   "s *= 0.97;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/colasUnicorneo/variants/shrink_0.97/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1531,
+   "md5": "eb7ef8b20f18351e3885c4a83bb28884",
+   "bytes": 365405
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "colasUnicorneo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "s *= 0.99;",
+   "new": "s *= 0.97;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/colasUnicorneo/variants/shrink_0.97/frame_00001.png (snap) t=1531ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/colasUnicorneo/variants/shrink_0.97/frame_00010.png (snap) t=1747ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/colasUnicorneo/variants/shrink_0.97/frame_00060.png (snap) t=3002ms\n[harness] done frame=60 t=2971ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1531,
+ "diff_vs_baseline": {
+  "mean": 0.3043,
+  "changed_fraction": 0.878,
+  "label": "large"
+ }
+}

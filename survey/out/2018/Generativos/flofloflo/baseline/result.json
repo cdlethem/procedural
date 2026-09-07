@@ -1,0 +1,57 @@
+{
+ "sketch": "2018/Generativos/flofloflo",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/flofloflo/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/flofloflo/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1607,
+   "md5": "a5f5f33be7eb7e7e0c2b0cb25b7c6bb4",
+   "bytes": 175634
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "flofloflo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/flofloflo/baseline/frame_00001.png (snap) t=1607ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/flofloflo/baseline/frame_00010.png (snap) t=1816ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/flofloflo/baseline/frame_00060.png (snap) t=3084ms\n[harness] done frame=60 t=3053ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1607,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

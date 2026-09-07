@@ -1,0 +1,79 @@
+{
+ "sketch": "2016/Generativos/triangulosMalditos",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/triangulosMalditos/variants/grid_150",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "xx -= xx%50;",
+   "xx -= xx%150;"
+  ],
+  [
+   "yy -= yy%50;",
+   "yy -= yy%150;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/triangulosMalditos/variants/grid_150/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 561,
+   "md5": "381cff9fc03c003e99e1a03cfb888d6f",
+   "bytes": 75851
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "triangulosMalditos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "xx -= xx%50;",
+   "new": "xx -= xx%150;",
+   "count": 1
+  },
+  {
+   "old": "yy -= yy%50;",
+   "new": "yy -= yy%150;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/triangulosMalditos/variants/grid_150/frame_00001.png (snap) t=561ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/triangulosMalditos/variants/grid_150/frame_00010.png (snap) t=719ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/triangulosMalditos/variants/grid_150/frame_00060.png (snap) t=1560ms\n[harness] done frame=60 t=1537ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 561,
+ "diff_vs_baseline": {
+  "mean": 0.3828,
+  "changed_fraction": 0.472,
+  "label": "large"
+ }
+}

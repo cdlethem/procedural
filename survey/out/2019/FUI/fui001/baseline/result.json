@@ -1,0 +1,64 @@
+{
+ "sketch": "2019/FUI/fui001",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/FUI/fui001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/FUI/fui001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1847,
+   "md5": "e4fd597c01b3db43e5c94a3d8577c5e5",
+   "bytes": 515248
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/FUI/fui001/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 5118,
+   "md5": "da63a5a4b3e42eb83a3a2b7f0fbcc63a",
+   "bytes": 516801
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/FUI/fui001/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6424,
+   "md5": "c422927575f2e5a1faddc9265e6f282e",
+   "bytes": 512107
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "Grid.pde",
+  "fui001.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 8.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/FUI/fui001/baseline/frame_00001.png (snap) t=1847ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/FUI/fui001/baseline/frame_00010.png (snap) t=5118ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/FUI/fui001/baseline/frame_00060.png (snap) t=6424ms\n[harness] done frame=60 t=6374ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1847,
+ "deterministic": false,
+ "rerun_frames": 3
+}

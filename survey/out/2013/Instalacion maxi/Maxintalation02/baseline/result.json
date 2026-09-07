@@ -1,0 +1,24 @@
+{
+ "sketch": "2013/Instalacion maxi/Maxintalation02",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/Instalacion maxi/Maxintalation02/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "processing.serial.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": "width_principal, height_principal",
+ "imports": [
+  "java.awt.Frame",
+  "processing.serial.*"
+ ],
+ "tabs": [
+  "Maxintalation02.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

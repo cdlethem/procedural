@@ -1,0 +1,63 @@
+{
+ "sketch": "2017/Fonts/prueba_001",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Fonts/prueba_001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Fonts/prueba_001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 290,
+   "md5": "52694b61b6fec6c91f54ea283c9da884",
+   "bytes": 121432
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Fonts/prueba_001/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 443,
+   "md5": "e868adc721576aa8bc5d60c691e3f13b",
+   "bytes": 121154
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Fonts/prueba_001/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1276,
+   "md5": "a9d25c0db151b9f861dc089aa16d8b77",
+   "bytes": 121733
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720",
+ "imports": [],
+ "tabs": [
+  "prueba_001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Fonts/prueba_001/baseline/frame_00001.png (snap) t=290ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Fonts/prueba_001/baseline/frame_00010.png (snap) t=443ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Fonts/prueba_001/baseline/frame_00060.png (snap) t=1276ms\n[harness] done frame=60 t=1262ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\n\"Saira-Black\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Saira-ExtraBold\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Saira-Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Saira-SemiBold\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Saira-Medium\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Saira-Regular\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Saira-Light\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Saira-ExtraLight\" is not available, so another font will be used. Use PFont.list() to show available fonts.\n\"Saira-Thin\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 290,
+ "deterministic": false,
+ "rerun_frames": 3
+}

@@ -1,0 +1,48 @@
+{
+ "sketch": "2013/Organizador/organizador",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/Organizador/organizador/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "compile_error",
+ "detail": "organizador.pde:78:0:78:0: The function addMouseWheelListener(new MouseWheelListener(){}) does not exist.",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": "480, int(tconfig[0])",
+ "imports": [
+  "java.awt.AWTException",
+  "java.awt.MenuItem",
+  "java.awt.PopupMenu",
+  "java.awt.SystemTray",
+  "java.awt.Toolkit",
+  "java.awt.TrayIcon",
+  "java.awt.TrayIcon.MessageType",
+  "java.awt.datatransfer.*",
+  "java.awt.event.*",
+  "java.awt.event.MouseListener",
+  "javax.swing.ImageIcon",
+  "javax.swing.JFrame"
+ ],
+ "tabs": [
+  "gui.pde",
+  "organizador.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "organizador.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 1.0,
+ "rc": 1,
+ "timed_out": false,
+ "stdout_tail": "",
+ "stderr_tail": "organizador.pde:78:0:78:0: The function addMouseWheelListener(new MouseWheelListener(){}) does not exist.",
+ "ms_first_frame": null
+}

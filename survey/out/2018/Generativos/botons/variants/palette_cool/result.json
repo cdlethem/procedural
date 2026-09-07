@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/botons",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/botons/variants/palette_cool",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cols2[] = {#DF603E, #BC3820, #810B0C};",
+   "int cols2[] = {#223593, #1B6B90, #17838D};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/botons/variants/palette_cool/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1599,
+   "md5": "eaa178a4966bbaa0313d84dd1dc31229",
+   "bytes": 108171
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "botons.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cols2[] = {#DF603E, #BC3820, #810B0C};",
+   "new": "int cols2[] = {#223593, #1B6B90, #17838D};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/botons/variants/palette_cool/frame_00001.png (snap) t=1599ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/botons/variants/palette_cool/frame_00010.png (snap) t=1807ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/botons/variants/palette_cool/frame_00060.png (snap) t=3072ms\n[harness] done frame=60 t=3040ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1599,
+ "diff_vs_baseline": {
+  "mean": 0.0049,
+  "changed_fraction": 0.013,
+  "label": "none"
+ }
+}

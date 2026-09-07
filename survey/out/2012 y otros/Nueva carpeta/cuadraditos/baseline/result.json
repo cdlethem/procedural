@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/Nueva carpeta/cuadraditos",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/cuadraditos/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/cuadraditos/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 239,
+   "md5": "427cd006bc48d7439e0b61c2fa950dec",
+   "bytes": 2357
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "cuadraditos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "blank"
+  ],
+  [
+   10,
+   "blank"
+  ],
+  [
+   60,
+   "blank"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/cuadraditos/baseline/frame_00001.png (snap) t=239ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/cuadraditos/baseline/frame_00002.png (snap) t=253ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/cuadraditos/baseline/frame_00010.png (snap) t=387ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/cuadraditos/baseline/frame_00060.png (snap) t=1214ms\n[harness] done frame=60 t=1207ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 239,
+ "deterministic": true,
+ "rerun_frames": 1
+}

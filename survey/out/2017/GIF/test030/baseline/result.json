@@ -1,0 +1,55 @@
+{
+ "sketch": "2017/GIF/test030",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/GIF/test030/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/GIF/test030/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2138,
+   "md5": "7c63524de586badd74b47193b761d815",
+   "bytes": 104650
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "test030.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 31.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/GIF/test030/baseline/frame_00001.png (snap) t=2138ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/GIF/test030/baseline/frame_00010.png (snap) t=8776ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/GIF/test030/baseline/frame_00031.png (budget) t=30367ms\n[harness] done frame=31 t=30356ms\n[harness] dispose frame=32 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 2138,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   31,
+   "identical to frame 1"
+  ]
+ ]
+}

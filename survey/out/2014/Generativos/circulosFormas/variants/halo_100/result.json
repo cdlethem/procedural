@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/circulosFormas",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosFormas/variants/halo_100",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "        stroke(0, 4);",
+   "        stroke(0, 100);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosFormas/variants/halo_100/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 190,
+   "md5": "2920263af7e73594a07575855b8639f8",
+   "bytes": 4912
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosFormas/variants/halo_100/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 338,
+   "md5": "5fbbbed27e8e31611feb620f03fc4941",
+   "bytes": 72747
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosFormas/variants/halo_100/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1169,
+   "md5": "5fbbbed27e8e31611feb620f03fc4941",
+   "bytes": 72747
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "circulosFormas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "        stroke(0, 4);",
+   "new": "        stroke(0, 100);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosFormas/variants/halo_100/frame_00001.png (snap) t=190ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosFormas/variants/halo_100/frame_00010.png (snap) t=338ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosFormas/variants/halo_100/frame_00060.png (snap) t=1169ms\n[harness] done frame=60 t=1158ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Mohave Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 190,
+ "diff_vs_baseline": {
+  "mean": 0.0007,
+  "changed_fraction": 0.001,
+  "label": "none"
+ }
+}

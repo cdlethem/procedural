@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/Logo/prueba1",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Logo/prueba1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Logo/prueba1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 412,
+   "md5": "11deaf0afbdbea14051282b2aa487055",
+   "bytes": 4259
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Logo/prueba1/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 562,
+   "md5": "5b1c113162ffda025528422952478219",
+   "bytes": 5120
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Logo/prueba1/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1390,
+   "md5": "aa644e4e537bcd868f85ee71bd74bce8",
+   "bytes": 1705
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  160,
+  160
+ ],
+ "size_args": "160, 160",
+ "imports": [],
+ "tabs": [
+  "prueba1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Logo/prueba1/baseline/frame_00001.png (snap) t=412ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Logo/prueba1/baseline/frame_00010.png (snap) t=562ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Logo/prueba1/baseline/frame_00060.png (snap) t=1390ms\n[harness] done frame=60 t=1386ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Neue Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 412,
+ "deterministic": false,
+ "rerun_frames": 3
+}

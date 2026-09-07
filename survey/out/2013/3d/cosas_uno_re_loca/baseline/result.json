@@ -1,0 +1,61 @@
+{
+ "sketch": "2013/3d/cosas_uno_re_loca",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/3d/cosas_uno_re_loca/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/3d/cosas_uno_re_loca/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1516,
+   "md5": "bba4b0ca63d68bb7cd5219f79155194e",
+   "bytes": 94855
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/3d/cosas_uno_re_loca/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1763,
+   "md5": "5c3724603183589aee792cfed68c7570",
+   "bytes": 91309
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/3d/cosas_uno_re_loca/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3008,
+   "md5": "db2fa3eda8b31e46739b893beea8f05d",
+   "bytes": 91012
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "cosas_uno_re_loca.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2013/3d/cosas_uno_re_loca/baseline/frame_00001.png (snap) t=1516ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/3d/cosas_uno_re_loca/baseline/frame_00010.png (snap) t=1763ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/3d/cosas_uno_re_loca/baseline/frame_00060.png (snap) t=3008ms\n[harness] done frame=60 t=2993ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1516,
+ "deterministic": true,
+ "rerun_frames": 3
+}

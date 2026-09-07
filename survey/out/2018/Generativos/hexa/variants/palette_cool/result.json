@@ -1,0 +1,70 @@
+{
+ "sketch": "2018/Generativos/hexa",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/hexa/variants/palette_cool",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#4100DB, #EFC6D0, #FFA305, #FF2D2D, #E56299};",
+   "int colors[] = {#000080, #8080FF, #00FFFF, #004040, #FFFFFF};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/hexa/variants/palette_cool/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1506,
+   "md5": "75429725f0f1153002f18188a8019648",
+   "bytes": 251526
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "hexa.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#4100DB, #EFC6D0, #FFA305, #FF2D2D, #E56299};",
+   "new": "int colors[] = {#000080, #8080FF, #00FFFF, #004040, #FFFFFF};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/hexa/variants/palette_cool/frame_00001.png (snap) t=1506ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/hexa/variants/palette_cool/frame_00010.png (snap) t=1718ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/hexa/variants/palette_cool/frame_00060.png (snap) t=2981ms\n[harness] done frame=60 t=2948ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1506,
+ "diff_vs_baseline": {
+  "mean": 0.3128,
+  "changed_fraction": 0.881,
+  "label": "large"
+ }
+}

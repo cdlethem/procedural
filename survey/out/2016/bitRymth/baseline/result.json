@@ -1,0 +1,55 @@
+{
+ "sketch": "2016/bitRymth",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/bitRymth/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/bitRymth/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 198,
+   "md5": "bc0915e66e74843aa8b90d8a9c2715fa",
+   "bytes": 6450
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "bitRymth.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/bitRymth/baseline/frame_00001.png (snap) t=198ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/bitRymth/baseline/frame_00010.png (snap) t=353ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/bitRymth/baseline/frame_00060.png (snap) t=1205ms\n[harness] done frame=60 t=1173ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Neue Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 198,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

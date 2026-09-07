@@ -1,0 +1,23 @@
+{
+ "sketch": "2014/Generativos/Zonas/zonas1",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Zonas/zonas1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "manoloide.Color.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": "borde_externo*2+cantidad_w*tamano_matriz+(cantidad_w-1)*borde_interno, borde_externo*2+cantidad_h*tamano_matriz+(cantidad_h-1)*borde_interno",
+ "imports": [
+  "manoloide.Color.*"
+ ],
+ "tabs": [
+  "zonas1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

@@ -1,0 +1,75 @@
+{
+ "sketch": "2018/Generativos/pelones",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pelones/variants/ballsize_0.4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "points.add(new PVector(random(width), random(height), width*random(0.2)));",
+   "points.add(new PVector(random(width), random(height), width*random(0.4)));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pelones/variants/ballsize_0.4/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1800,
+   "md5": "17e3ce73cd20486ce72d9105bd639145",
+   "bytes": 1063611
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "balls.pde",
+  "olas.pde",
+  "pelones.pde",
+  "pelos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "points.add(new PVector(random(width), random(height), width*random(0.2)));",
+   "new": "points.add(new PVector(random(width), random(height), width*random(0.4)));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelones/variants/ballsize_0.4/frame_00001.png (snap) t=1800ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelones/variants/ballsize_0.4/frame_00010.png (snap) t=2033ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pelones/variants/ballsize_0.4/frame_00060.png (snap) t=3284ms\n[harness] done frame=60 t=3240ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1800,
+ "diff_vs_baseline": {
+  "mean": 0.0543,
+  "changed_fraction": 0.161,
+  "label": "moderate"
+ }
+}

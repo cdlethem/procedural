@@ -1,0 +1,72 @@
+{
+ "sketch": "2019/Sound/noise",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/Sound/noise/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Sound/noise/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 247,
+   "md5": "cdf3ad5e5265170a9df4a69554d78791",
+   "bytes": 2935
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Sound/noise/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 386,
+   "md5": "b08d954341409a07b5d6bc9f25bacf88",
+   "bytes": 2852
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Sound/noise/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1219,
+   "md5": "7c1da33495ad3fe01543a388d42fe006",
+   "bytes": 2939
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  200
+ ],
+ "size_args": "400, 200",
+ "imports": [
+  "ddf.minim.*",
+  "ddf.minim.effects.*",
+  "ddf.minim.ugens.*"
+ ],
+ "tabs": [
+  "noise.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "minim.jar",
+  "jsminim.jar",
+  "jl1.0.1.jar",
+  "mp3spi1.9.5.jar",
+  "tritonus_aos.jar",
+  "tritonus_share.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Sound/noise/baseline/frame_00001.png (snap) t=247ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Sound/noise/baseline/frame_00010.png (snap) t=386ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Sound/noise/baseline/frame_00060.png (snap) t=1219ms\n[harness] done frame=60 t=1216ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 247,
+ "deterministic": false,
+ "rerun_frames": 3
+}

@@ -1,0 +1,29 @@
+{
+ "sketch": "2014/Dise\u00f1o/podernipon",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Dise\u00f1o/podernipon/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "manoloide.Color.Paleta",
+ "frames": [],
+ "warnings": [],
+ "renderer": "PDF",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800, PDF, \"podernipon.pdf\"",
+ "imports": [
+  "java.awt.Desktop",
+  "java.io.File",
+  "manoloide.Color.Paleta",
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "podernipon.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

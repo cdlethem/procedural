@@ -1,0 +1,84 @@
+{
+ "sketch": "2017/Generativos/torus",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/torus/variants/cc_10",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(2, random(21)));",
+   "int cc = 10;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/torus/variants/cc_10/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1556,
+   "md5": "368b9d9176c56d0cdc5250e3a9f91633",
+   "bytes": 28017
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/torus/variants/cc_10/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1790,
+   "md5": "6325e007fe93c9872bfb88108cd8e8e6",
+   "bytes": 28120
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/torus/variants/cc_10/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3026,
+   "md5": "8fe9f576a94caa9c0c5ebbbcc8deb253",
+   "bytes": 28135
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P3D",
+ "imports": [
+  "peasy.*"
+ ],
+ "tabs": [
+  "torus.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(2, random(21)));",
+   "new": "int cc = 10;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/torus/variants/cc_10/frame_00001.png (snap) t=1556ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/torus/variants/cc_10/frame_00010.png (snap) t=1790ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/torus/variants/cc_10/frame_00060.png (snap) t=3026ms\n[harness] done frame=60 t=3015ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1556,
+ "diff_vs_baseline": {
+  "mean": 0.0011,
+  "changed_fraction": 0.001,
+  "label": "none"
+ }
+}

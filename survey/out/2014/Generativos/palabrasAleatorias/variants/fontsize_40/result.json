@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/palabrasAleatorias",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/fontsize_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "fgrande = createFont(\"Helvetica Bold\", 96, false);",
+   "fgrande = createFont(\"Helvetica Bold\", 40, false);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/fontsize_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 893,
+   "md5": "f5ea96a7b87122fe7fb93ad392477cc8",
+   "bytes": 3254
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/fontsize_40/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1040,
+   "md5": "ac8a6f4d6c3ae3df35371ee0e9939d54",
+   "bytes": 44875
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/fontsize_40/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1878,
+   "md5": "ac8a6f4d6c3ae3df35371ee0e9939d54",
+   "bytes": 44875
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "palabrasAleatorias.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "fgrande = createFont(\"Helvetica Bold\", 96, false);",
+   "new": "fgrande = createFont(\"Helvetica Bold\", 40, false);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/fontsize_40/frame_00001.png (snap) t=893ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/fontsize_40/frame_00010.png (snap) t=1040ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/variants/fontsize_40/frame_00060.png (snap) t=1878ms\n[harness] done frame=60 t=1861ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 893,
+ "diff_vs_baseline": {
+  "mean": 0.0,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

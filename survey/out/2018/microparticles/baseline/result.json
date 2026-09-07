@@ -1,0 +1,27 @@
+{
+ "sketch": "2018/microparticles",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/microparticles/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "geomerative.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P2D",
+ "imports": [
+  "geomerative.*",
+  "themidibus.*"
+ ],
+ "tabs": [
+  "microparticles.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

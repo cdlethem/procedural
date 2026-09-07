@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/cuadraditos",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/cuadraditos/variants/ccc_1_5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int ccc = int(random(1, 20));",
+   "int ccc = int(random(1, 5));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/cuadraditos/variants/ccc_1_5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 222,
+   "md5": "d97268e7f409ed90027f9d32fbfa4943",
+   "bytes": 727037
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1920,
+  1920
+ ],
+ "size_args": "1920, 1920",
+ "imports": [],
+ "tabs": [
+  "cuadraditos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int ccc = int(random(1, 20));",
+   "new": "int ccc = int(random(1, 5));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/cuadraditos/variants/ccc_1_5/frame_00001.png (snap) t=222ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/cuadraditos/variants/ccc_1_5/frame_00010.png (snap) t=444ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/cuadraditos/variants/ccc_1_5/frame_00060.png (snap) t=1346ms\n[harness] done frame=60 t=1262ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 222,
+ "diff_vs_baseline": {
+  "mean": 0.1212,
+  "changed_fraction": 0.439,
+  "label": "moderate"
+ }
+}

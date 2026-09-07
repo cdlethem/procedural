@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/lavita02",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/lavita02/variants/detAng_0.003",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float detAng = random(0.001);",
+   "float detAng = random(0.003);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lavita02/variants/detAng_0.003/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3930,
+   "md5": "5c622e35c2fdcbfd2e29e03d7bfb71cd",
+   "bytes": 2249537
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lavita02/variants/detAng_0.003/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 4139,
+   "md5": "eec3141f4d7e9ba8541b146293aa1844",
+   "bytes": 11776
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lavita02/variants/detAng_0.003/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5392,
+   "md5": "eec3141f4d7e9ba8541b146293aa1844",
+   "bytes": 11776
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "lavita02.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float detAng = random(0.001);",
+   "new": "float detAng = random(0.003);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lavita02/variants/detAng_0.003/frame_00001.png (snap) t=3930ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lavita02/variants/detAng_0.003/frame_00010.png (snap) t=4139ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lavita02/variants/detAng_0.003/frame_00060.png (snap) t=5392ms\n[harness] done frame=60 t=5373ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3930,
+ "diff_vs_baseline": {
+  "mean": 0.0,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

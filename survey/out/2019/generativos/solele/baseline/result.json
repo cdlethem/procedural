@@ -1,0 +1,64 @@
+{
+ "sketch": "2019/generativos/solele",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/solele/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/solele/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1753,
+   "md5": "f5a743abfb01247dfc6cff055b7eed9e",
+   "bytes": 2387972
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/solele/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1980,
+   "md5": "15932b0940dc6c79d9e080b3e78a87b5",
+   "bytes": 93093
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/solele/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3244,
+   "md5": "15932b0940dc6c79d9e080b3e78a87b5",
+   "bytes": 93093
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "solele.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/solele/baseline/frame_00001.png (snap) t=1753ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/solele/baseline/frame_00010.png (snap) t=1980ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/solele/baseline/frame_00060.png (snap) t=3244ms\n[harness] done frame=60 t=3215ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1753,
+ "deterministic": true,
+ "rerun_frames": 3
+}

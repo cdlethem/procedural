@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/griiiids",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/detail_5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  noiseDetail(2);",
+   "  noiseDetail(5);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/detail_5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1540,
+   "md5": "2ede173dd6ac9e6337e183f64cc43e6d",
+   "bytes": 944894
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/detail_5/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1799,
+   "md5": "d95e517709de8717b9022791c0186112",
+   "bytes": 976649
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/detail_5/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3060,
+   "md5": "f91e79ec42322cf5460fe1f6e430fc74",
+   "bytes": 992184
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  520
+ ],
+ "size_args": "960, 520, P2D",
+ "imports": [],
+ "tabs": [
+  "griiiids.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  noiseDetail(2);",
+   "new": "  noiseDetail(5);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/detail_5/frame_00001.png (snap) t=1540ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/detail_5/frame_00010.png (snap) t=1799ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/griiiids/variants/detail_5/frame_00060.png (snap) t=3060ms\n[harness] done frame=60 t=3027ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1540,
+ "diff_vs_baseline": {
+  "mean": 0.0544,
+  "changed_fraction": 0.165,
+  "label": "moderate"
+ }
+}

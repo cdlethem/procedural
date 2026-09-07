@@ -1,0 +1,80 @@
+{
+ "sketch": "2015/Generativos/uiFuturistGrid",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturistGrid/variants/graphV_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "graph(f.x, f.y, f.w, f.h, 10);",
+   "graph(f.x, f.y, f.w, f.h, 40);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturistGrid/variants/graphV_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1518,
+   "md5": "0b79df4c9428925a213b2c7af4f5be33",
+   "bytes": 294800
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturistGrid/variants/graphV_40/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1737,
+   "md5": "28cdc632d849b6e5cc943e7664566439",
+   "bytes": 292864
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturistGrid/variants/graphV_40/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2991,
+   "md5": "7ef147da4d679560520b0e5f5215c9d6",
+   "bytes": 289751
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P2D",
+ "imports": [],
+ "tabs": [
+  "Grid.pde",
+  "uiFuturistGrid.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "graph(f.x, f.y, f.w, f.h, 10);",
+   "new": "graph(f.x, f.y, f.w, f.h, 40);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturistGrid/variants/graphV_40/frame_00001.png (snap) t=1518ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturistGrid/variants/graphV_40/frame_00010.png (snap) t=1737ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturistGrid/variants/graphV_40/frame_00060.png (snap) t=2991ms\n[harness] done frame=60 t=2973ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1518,
+ "diff_vs_baseline": {
+  "mean": 0.003,
+  "changed_fraction": 0.008,
+  "label": "none"
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "sketch": "2017/animationGrids",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/animationGrids/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/animationGrids/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1599,
+   "md5": "3106fa4f8c4172c6eb50ab9075f90748",
+   "bytes": 214901
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/animationGrids/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1828,
+   "md5": "1ad0589414cb9b8212f238ac3cd052cd",
+   "bytes": 195935
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/animationGrids/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3085,
+   "md5": "21e7502d3658f107159e7470caca3fa3",
+   "bytes": 204157
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P2D",
+ "imports": [],
+ "tabs": [
+  "animationGrids.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/animationGrids/baseline/frame_00001.png (snap) t=1599ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/animationGrids/baseline/frame_00010.png (snap) t=1828ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/animationGrids/baseline/frame_00060.png (snap) t=3085ms\n[harness] done frame=60 t=3072ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "The shader doesn't have a uniform called \"textureResolution\" OR the uniform was removed during compilation because it was unused.",
+ "ms_first_frame": 1599,
+ "deterministic": false,
+ "rerun_frames": 3
+}

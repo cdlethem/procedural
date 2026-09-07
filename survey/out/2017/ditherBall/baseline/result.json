@@ -1,0 +1,61 @@
+{
+ "sketch": "2017/ditherBall",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/ditherBall/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/ditherBall/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2675,
+   "md5": "5c207ee185a28d713116dc3273eab2a8",
+   "bytes": 24365
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/ditherBall/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 4953,
+   "md5": "6a0458a7e75d9bfa1533c3d7272db6c0",
+   "bytes": 21121
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/ditherBall/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6221,
+   "md5": "dc7360fdc9e22c1e3e92bd06583ea42c",
+   "bytes": 13763
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P3D",
+ "imports": [],
+ "tabs": [
+  "ditherBall.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 7.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": " Bold Noto Serif CJK TC Noto Serif CJK TC Bold Noto Serif Devanagari Bold Noto Serif Devanagari Regular Noto Serif Display Bold Noto Serif Display Bold Italic Noto Serif Display Italic Noto Serif Display Regular Noto Serif Dogra Regular Noto Serif Ethiopic Bold Noto Serif Ethiopic Regular Noto Serif Georgian Bold Noto Serif Georgian Regular Noto Serif Grantha Regular Noto Serif Gujarati Bold Noto Serif Gujarati Regular Noto Serif Gurmukhi Bold Noto Serif Gurmukhi Regular Noto Serif Hebrew Bold Noto Serif Hebrew Regular Noto Serif Hmong Nyiakeng Bold Noto Serif Hmong Nyiakeng Regular Noto Serif Italic Noto Serif Kannada Bold Noto Serif Kannada Regular Noto Serif Khmer Bold Noto Serif Khmer Regular Noto Serif Khojki Bold Noto Serif Khojki Regular Noto Serif Lao Bold Noto Serif Lao Regular Noto Serif Malayalam Bold Noto Serif Malayalam Regular Noto Serif Myanmar Bold Noto Serif Myanmar Regular Noto Serif Regular Noto Serif Sinhala Bold Noto Serif Sinhala Regular Noto Serif Tamil Bold Noto Serif Tamil Regular Noto Serif Tamil Slanted Bold Noto Serif Tamil Slanted Regular Noto Serif Tangut Regular Noto Serif Telugu Bold Noto Serif Telugu Regular Noto Serif Thai Bold Noto Serif Thai Regular Noto Serif Tibetan Bold Noto Serif Tibetan Regular Noto Serif Yezidi Bold Noto Serif Yezidi Regular Noto Traditional Nushu Regular P052 Bold P052 Bold Italic P052 Italic P052 Roman P052-Bold P052-BoldItalic P052-Italic P052-Roman SansSerif.bold SansSerif.bolditalic SansSerif.italic SansSerif.plain Serif.bold Serif.bolditalic Serif.italic Serif.plain Standard Symbols PS URW Bookman Demi URW Bookman Demi Italic URW Bookman Light URW Bookman Light Italic URW Gothic Book URW Gothic Book Oblique URW Gothic Demi URW Gothic Demi Oblique URWBookman-Demi URWBookman-DemiItalic URWBookman-Light URWBookman-LightItalic URWGothic-Book URWGothic-BookOblique URWGothic-Demi URWGothic-DemiOblique Ubuntu Italic Ubuntu Mono Italic Ubuntu Mono Regular Ubuntu Regular Ubuntu Sans Italic Ubuntu Sans Mono Italic Ubuntu Sans Mono Regular Ubuntu Sans Regular Weather Icons Z003 Medium Italic Z003-MediumItalic\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/ditherBall/baseline/frame_00001.png (snap) t=2675ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/ditherBall/baseline/frame_00010.png (snap) t=4953ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/ditherBall/baseline/frame_00060.png (snap) t=6221ms\n[harness] done frame=60 t=6205ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Chivo-Black\" is not available, so another font will be used. Use PFont.list() to show available fonts.\nThe shader doesn't have a uniform called \"time\" OR the uniform was removed during compilation because it was unused.",
+ "ms_first_frame": 2675,
+ "deterministic": true,
+ "rerun_frames": 3
+}

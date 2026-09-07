@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/Nueva carpeta/clase ivan 2/triangulio_reloco",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio_reloco/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio_reloco/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 175,
+   "md5": "5d8d032fa24750e9eff1b75598860f53",
+   "bytes": 74338
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio_reloco/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 328,
+   "md5": "3824f5eeba1f08effe0383af0b9bc191",
+   "bytes": 76828
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio_reloco/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1153,
+   "md5": "edf8a7707e9ea8c9643e87eb5e70a844",
+   "bytes": 76456
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "triangulio_reloco.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio_reloco/baseline/frame_00001.png (snap) t=175ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio_reloco/baseline/frame_00010.png (snap) t=328ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/clase ivan 2/triangulio_reloco/baseline/frame_00060.png (snap) t=1153ms\n[harness] done frame=60 t=1147ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 175,
+ "deterministic": true,
+ "rerun_frames": 3
+}

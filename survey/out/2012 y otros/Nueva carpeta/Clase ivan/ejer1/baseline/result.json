@@ -1,0 +1,45 @@
+{
+ "sketch": "2012 y otros/Nueva carpeta/Clase ivan/ejer1",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Clase ivan/ejer1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Clase ivan/ejer1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "static",
+   "ms": 132,
+   "md5": "c775f9cb8939df9405675277d4327b76",
+   "bytes": 5603
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400,400",
+ "imports": [],
+ "tabs": [
+  "ejer1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": true,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/Clase ivan/ejer1/baseline/frame_00001.png (static) t=132ms\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 132,
+ "deterministic": true,
+ "rerun_frames": 1
+}

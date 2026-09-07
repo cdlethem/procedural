@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/Generativos/Helvetica/helve1",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Helvetica/helve1/variants/sat_80",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "fill(random(360), random(0,20), 80);",
+   "fill(random(360), random(0,80), 80);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Helvetica/helve1/variants/sat_80/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 229,
+   "md5": "48d4b2aee6d0670d42d49bf80d8571cd",
+   "bytes": 319537
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "helve1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "fill(random(360), random(0,20), 80);",
+   "new": "fill(random(360), random(0,80), 80);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 36.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Helvetica/helve1/variants/sat_80/frame_00001.png (snap) t=229ms\n[harness] dispose frame=2 saved=true\n[harness] watchdog: no draw() reached budget; frame=2 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.\nCould not save ${GENART_SURVEY_ROOT}/.build/ff76ba836d/helve1/dormir, make sure it ends with a supported extension (JPG, jpg, tiff, bmp, BMP, gif, GIF, WBMP, png, PNG, JPEG, tif, TIF, TIFF, jpeg, wbmp)",
+ "ms_first_frame": 229,
+ "diff_vs_baseline": {
+  "mean": 0.0949,
+  "changed_fraction": 0.43,
+  "label": "moderate"
+ }
+}

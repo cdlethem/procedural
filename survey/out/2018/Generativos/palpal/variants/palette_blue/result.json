@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/palpal",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/palpal/variants/palette_blue",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#FEB63F, #F29AAA, #297CCA, #003151, #E1DBDB};",
+   "int colors[] = {#297CCA, #003151, #E1DBDB, #4FA3E0, #003151};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/palpal/variants/palette_blue/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1518,
+   "md5": "b79cb92f7494a42775caf79b35c32961",
+   "bytes": 21156
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/palpal/variants/palette_blue/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1732,
+   "md5": "6b3a1452e42229853f02a31c1aa04dea",
+   "bytes": 15843
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/palpal/variants/palette_blue/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2984,
+   "md5": "aa0c079a48618b8938c4a12b55bf4964",
+   "bytes": 28476
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "palpal.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#FEB63F, #F29AAA, #297CCA, #003151, #E1DBDB};",
+   "new": "int colors[] = {#297CCA, #003151, #E1DBDB, #4FA3E0, #003151};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/palpal/variants/palette_blue/frame_00001.png (snap) t=1518ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/palpal/variants/palette_blue/frame_00010.png (snap) t=1732ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/palpal/variants/palette_blue/frame_00060.png (snap) t=2984ms\n[harness] done frame=60 t=2963ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1518,
+ "diff_vs_baseline": {
+  "mean": 0.4416,
+  "changed_fraction": 0.997,
+  "label": "large"
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "sketch": "2019/openGL_example",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/openGL_example/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/openGL_example/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1411,
+   "md5": "9706cbf18f6be2c759bae72934048ea0",
+   "bytes": 134474
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/openGL_example/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1629,
+   "md5": "df231a29a8e1c609b4c18922fc676051",
+   "bytes": 174808
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/openGL_example/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2900,
+   "md5": "0ccb829a825ce39b510a4525b6722b21",
+   "bytes": 233091
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [
+  "com.jogamp.opengl.GL",
+  "com.jogamp.opengl.GL2ES2",
+  "java.nio.ByteBuffer",
+  "java.nio.ByteOrder",
+  "java.nio.FloatBuffer",
+  "java.nio.IntBuffer"
+ ],
+ "tabs": [
+  "openGL_example.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/openGL_example/baseline/frame_00001.png (snap) t=1411ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/openGL_example/baseline/frame_00010.png (snap) t=1629ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/openGL_example/baseline/frame_00060.png (snap) t=2900ms\n[harness] done frame=60 t=2881ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1411,
+ "deterministic": false,
+ "rerun_frames": 3
+}

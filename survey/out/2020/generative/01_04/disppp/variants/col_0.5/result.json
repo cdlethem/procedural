@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/01_04/disppp",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/disppp/variants/col_0.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "if (random(1) < 0.1) fill(rcol());",
+   "if (random(1) < 0.5) fill(rcol());"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/disppp/variants/col_0.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 9893,
+   "md5": "016077d8d97ad2b920ab46c00f7f060f",
+   "bytes": 271053
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "disppp.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "if (random(1) < 0.1) fill(rcol());",
+   "new": "if (random(1) < 0.5) fill(rcol());",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 12.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/disppp/variants/col_0.5/frame_00001.png (snap) t=9893ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/disppp/variants/col_0.5/frame_00010.png (snap) t=10107ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/disppp/variants/col_0.5/frame_00060.png (snap) t=11365ms\n[harness] done frame=60 t=11333ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 9893,
+ "diff_vs_baseline": {
+  "mean": 0.1537,
+  "changed_fraction": 0.335,
+  "label": "large"
+ }
+}

@@ -1,0 +1,69 @@
+{
+ "sketch": "2018/Generativos/persons04",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1533,
+   "md5": "28ba89e013827b8e3b7cc7c23eba462c",
+   "bytes": 48935
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1737,
+   "md5": "9efe03a8eb899363ffc013598c785929",
+   "bytes": 48482
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 16649,
+   "md5": "4b79a4e2f796d2fbb2b2a57689d2bd6a",
+   "bytes": 50562
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P2D",
+ "imports": [
+  "java.util.*",
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "Person.pde",
+  "persons04.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 18.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n60.141144\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/baseline/frame_00001.png (snap) t=1533ms\n53.530613\n53.904297\n54.386604\n53.968174\n53.00644\n52.125095\n51.30946\n50.578503\n49.891335\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/baseline/frame_00010.png (snap) t=1737ms\n49.219612\n48.618504\n48.074127\n47.54557\n47.07168\n46.63519\n46.237038\n45.853992\n45.49995\n45.151073\n44.826984\n44.52458\n44.24019\n43.976067\n43.7367\n43.511597\n43.306496\n43.097057\n42.91807\n42.730835\n42.57508\n42.427074\n42.284233\n42.14718\n42.01803\n41.896873\n41.779823\n41.66445\n41.55278\n41.456318\n41.366837\n41.272778\n41.195896\n41.10886\n41.048576\n40.976456\n13.657591\n8.362955\n6.1129174\n4.867117\n4.0777025\n3.5334256\n3.136203\n2.8336084\n2.59551\n2.403462\n2.2456107\n2.1141107\n2.002434\n1.906927\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons04/baseline/frame_00060.png (snap) t=16649ms\n[harness] done frame=60 t=16628ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1533,
+ "deterministic": false,
+ "rerun_frames": 3
+}

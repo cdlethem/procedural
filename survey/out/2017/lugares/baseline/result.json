@@ -1,0 +1,37 @@
+{
+ "sketch": "2017/lugares",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/lugares/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "runtime_error",
+ "detail": "java.io.IOException: Server returned HTTP response code: 403 for URL: http://maps.google.com/maps/api/staticmap?center=40.961456,-160.32053&zoom=17&size=1280x750&maptype=satellite&sensor=true&scale=2&key=AIzaSyBruIg8UYRGAMoG6vOpyO88ngjMATAuCn8",
+ "frames": [],
+ "warnings": [
+  "sketch killed 2 s after the exception (launcher leaves it suspended)"
+ ],
+ "renderer": "JAVA2D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720",
+ "imports": [],
+ "tabs": [
+  "lugares.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "seed_fields": [],
+ "wall_s": 3.5,
+ "rc": 143,
+ "timed_out": false,
+ "stdout_tail": "",
+ "stderr_tail": "sor=true&scale=2&key=AIzaSyBruIg8UYRGAMoG6vOpyO88ngjMATAuCn8\nCaused by: java.io.IOException: Server returned HTTP response code: 403 for URL: http://maps.google.com/maps/api/staticmap?center=-54.16532,114.40689&zoom=15&size=1280x750&maptype=satellite&sensor=true&scale=2&key=AIzaSyBruIg8UYRGAMoG6vOpyO88ngjMATAuCn8\n\t... 8 more\njava.io.IOException: Server returned HTTP response code: 403 for URL: http://maps.google.com/maps/api/staticmap?center=-14.816246,97.032684&zoom=18&size=1280x750&maptype=satellite&sensor=true&scale=2&key=AIzaSyBruIg8UYRGAMoG6vOpyO88ngjMATAuCn8\nCaused by: java.io.IOException: Server returned HTTP response code: 403 for URL: http://maps.google.com/maps/api/staticmap?center=-14.816246,97.032684&zoom=18&size=1280x750&maptype=satellite&sensor=true&scale=2&key=AIzaSyBruIg8UYRGAMoG6vOpyO88ngjMATAuCn8\n\t... 8 more\njava.io.IOException: Server returned HTTP response code: 403 for URL: http://maps.google.com/maps/api/staticmap?center=-75.48221,76.82623&zoom=17&size=1280x750&maptype=satellite&sensor=true&scale=2&key=AIzaSyBruIg8UYRGAMoG6vOpyO88ngjMATAuCn8\nCaused by: java.io.IOException: Server returned HTTP response code: 403 for URL: http://maps.google.com/maps/api/staticmap?center=-75.48221,76.82623&zoom=17&size=1280x750&maptype=satellite&sensor=true&scale=2&key=AIzaSyBruIg8UYRGAMoG6vOpyO88ngjMATAuCn8\n\t... 8 more\njava.io.IOException: Server returned HTTP response code: 403 for URL: http://maps.google.com/maps/api/staticmap?center=-3.4965897,134.44254&zoom=16&size=1280x750&maptype=satellite&sensor=true&scale=2&key=AIzaSyBruIg8UYRGAMoG6vOpyO88ngjMATAuCn8\nCaused by: java.io.IOException: Server returned HTTP response code: 403 for URL: http://maps.google.com/maps/api/staticmap?center=-3.4965897,134.44254&zoom=16&size=1280x750&maptype=satellite&sensor=true&scale=2&key=AIzaSyBruIg8UYRGAMoG6vOpyO88ngjMATAuCn8\n\t... 8 more\njava.io.IOException: Server returned HTTP response code: 403 for URL: http://maps.google.com/maps/api/staticmap?center=-50.48548,161.94965&zoom=17&size=1280x750&maptype=satellite&sensor=true&scale=2&key=AIzaSyBruIg8UYRGAMoG6vOpyO88ngjMATAuCn8\nCaused by: java.io.IOException: Server returned HTTP response code: 403 for URL: http://maps.google.com/maps/api/staticmap?center=-50.48548,161.94965&zoom=17&size=1280x750&maptype=satellite&sensor=true&scale=2&key=AIzaSyBruIg8UYRGAMoG6vOpyO88ngjMATAuCn8\n\t... 8 more\nCould not run the sketch (Target VM failed to initialize).\nFor more information, read Help \u2192 Troubleshooting.\nCould not run the sketch.",
+ "ms_first_frame": null
+}

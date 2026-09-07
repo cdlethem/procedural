@@ -1,0 +1,79 @@
+{
+ "sketch": "2019/generativos/escaleras",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/escaleras/variants/keep_0.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "        if (random(1) < 0.9) continue;",
+   "        if (random(1) < 0.5) continue;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/escaleras/variants/keep_0.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2194,
+   "md5": "f3804585274b3655c616cad408a59950",
+   "bytes": 408264
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "escaleras.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "        if (random(1) < 0.9) continue;",
+   "new": "        if (random(1) < 0.5) continue;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/escaleras/variants/keep_0.5/frame_00001.png (snap) t=2194ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/escaleras/variants/keep_0.5/frame_00010.png (snap) t=2412ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/escaleras/variants/keep_0.5/frame_00060.png (snap) t=3665ms\n[harness] done frame=60 t=3635ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2194,
+ "diff_vs_baseline": {
+  "mean": 0.2954,
+  "changed_fraction": 0.886,
+  "label": "large"
+ }
+}

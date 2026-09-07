@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/virus",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/virus/variants/amp_1.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float amp = random(0.2, 0.8);",
+   "    float amp = random(0.6, 1.0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/virus/variants/amp_1.0/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 9447,
+   "md5": "3d0d1313958cb10504f58cee94907c7b",
+   "bytes": 54897105
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/virus/variants/amp_1.0/self_20260906-024142.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 7664,
+   "md5": "3d0d1313958cb10504f58cee94907c7b",
+   "bytes": 54897105
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  6500,
+  6500
+ ],
+ "size_args": "6500, 6500, P2D",
+ "imports": [],
+ "tabs": [
+  "virus.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float amp = random(0.2, 0.8);",
+   "new": "    float amp = random(0.6, 1.0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 10.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/virus/variants/amp_1.0/frame_00001.png (dispose) t=9447ms\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 9447,
+ "diff_vs_baseline": {
+  "mean": 0.0459,
+  "changed_fraction": 0.176,
+  "label": "subtle"
+ }
+}

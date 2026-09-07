@@ -1,0 +1,58 @@
+{
+ "sketch": "2017/Juegos/lofi",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Juegos/lofi/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Juegos/lofi/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 223,
+   "md5": "f545c3772345153cdfa1009ec156d005",
+   "bytes": 30887
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Juegos/lofi/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 378,
+   "md5": "09e6dba363a40f22fb3f7c2a1fea47a1",
+   "bytes": 41461
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Juegos/lofi/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1215,
+   "md5": "aba438a54b9823aa9ceb07602ac53f0d",
+   "bytes": 41097
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": "WIDTH*scale, HEIGHT*scale",
+ "imports": [],
+ "tabs": [
+  "lofi.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Juegos/lofi/baseline/frame_00001.png (snap) t=223ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Juegos/lofi/baseline/frame_00010.png (snap) t=378ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Juegos/lofi/baseline/frame_00060.png (snap) t=1215ms\n[harness] done frame=60 t=1197ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 223,
+ "deterministic": true,
+ "rerun_frames": 3
+}

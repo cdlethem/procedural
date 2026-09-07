@@ -1,0 +1,70 @@
+{
+ "sketch": "2016/Generativos/forms2",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/forms2/variants/arcs_3.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "gra.strokeWeight(random(1.2));",
+   "gra.strokeWeight(random(3.5));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/forms2/variants/arcs_3.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 714,
+   "md5": "c04f93e4e9be530b89f0fa7cdcac20b2",
+   "bytes": 148402
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1333,
+  768
+ ],
+ "size_args": "1333, 768",
+ "imports": [],
+ "tabs": [
+  "forms2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "gra.strokeWeight(random(1.2));",
+   "new": "gra.strokeWeight(random(3.5));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/forms2/variants/arcs_3.5/frame_00001.png (snap) t=714ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/forms2/variants/arcs_3.5/frame_00010.png (snap) t=873ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/forms2/variants/arcs_3.5/frame_00060.png (snap) t=1719ms\n[harness] done frame=60 t=1691ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 714,
+ "diff_vs_baseline": {
+  "mean": 0.0001,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

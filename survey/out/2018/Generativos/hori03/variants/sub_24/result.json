@@ -1,0 +1,76 @@
+{
+ "sketch": "2018/Generativos/hori03",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/sub_24",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int sub = int(random(120));",
+   "int sub = int(random(24));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/sub_24/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1500,
+   "md5": "8599e3947de20bba4a2ca827930635c7",
+   "bytes": 1002870
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/sub_24/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1724,
+   "md5": "cf5165bdc89ca7a45fc62053417cbad6",
+   "bytes": 993992
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/sub_24/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2982,
+   "md5": "99b6961cb48c81aa146d2618e6dc4967",
+   "bytes": 1010491
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*SCALE), int(sheight*SCALE), P3D",
+ "imports": [],
+ "tabs": [
+  "hori03.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int sub = int(random(120));",
+   "new": "int sub = int(random(24));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/sub_24/frame_00001.png (snap) t=1500ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/sub_24/frame_00010.png (snap) t=1724ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/sub_24/frame_00060.png (snap) t=2982ms\n[harness] done frame=60 t=2943ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1500,
+ "diff_vs_baseline": {
+  "mean": 0.1817,
+  "changed_fraction": 0.658,
+  "label": "large"
+ }
+}

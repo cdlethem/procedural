@@ -1,0 +1,24 @@
+{
+ "sketch": "2017/BAUTI",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/BAUTI/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "themidibus.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "displayWidth, displayHeight, P2D",
+ "imports": [
+  "themidibus.*"
+ ],
+ "tabs": [
+  "BAUTI.pde",
+  "CS.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2"
+}

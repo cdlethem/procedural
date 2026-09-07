@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/lislis",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/det_0.004",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float det = random(0.08, 0.1)*0.012;",
+   "float det = random(0.32, 0.4)*0.012;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/det_0.004/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1886,
+   "md5": "96e9a4cb745570d0dd7971e61f75f486",
+   "bytes": 1131309
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/det_0.004/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2095,
+   "md5": "4637b806354751e9bcf6b551abd11d77",
+   "bytes": 5179
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/det_0.004/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3346,
+   "md5": "4637b806354751e9bcf6b551abd11d77",
+   "bytes": 5179
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "lislis.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float det = random(0.08, 0.1)*0.012;",
+   "new": "float det = random(0.32, 0.4)*0.012;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/det_0.004/frame_00001.png (snap) t=1886ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/det_0.004/frame_00010.png (snap) t=2095ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/det_0.004/frame_00060.png (snap) t=3346ms\n[harness] done frame=60 t=3325ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1886,
+ "diff_vs_baseline": {
+  "mean": 0.5883,
+  "changed_fraction": 0.984,
+  "label": "large"
+ }
+}

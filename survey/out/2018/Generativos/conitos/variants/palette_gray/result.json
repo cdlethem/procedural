@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/conitos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/conitos/variants/palette_gray",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#FACC02, #FB0603, #0365BC, #0D6305, #000000, #FFFFFF};",
+   "int colors[] = {#111111, #444444, #888888, #BBBBBB, #DDDDDD, #FFFFFF};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/conitos/variants/palette_gray/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2384,
+   "md5": "4621774cc51c38d7c72c14417d2803b1",
+   "bytes": 75467
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/conitos/variants/palette_gray/self_20260905-012901.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2882,
+   "md5": "4621774cc51c38d7c72c14417d2803b1",
+   "bytes": 75467
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P3D",
+ "imports": [],
+ "tabs": [
+  "conitos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#FACC02, #FB0603, #0365BC, #0D6305, #000000, #FFFFFF};",
+   "new": "int colors[] = {#111111, #444444, #888888, #BBBBBB, #DDDDDD, #FFFFFF};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/conitos/variants/palette_gray/frame_00001.png (dispose) t=2384ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2384,
+ "diff_vs_baseline": {
+  "mean": 0.77,
+  "changed_fraction": 0.927,
+  "label": "large"
+ }
+}

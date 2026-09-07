@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/prueba2",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/variants/dim_160",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "circulos.add(new Circulo(62+i*95,65+j*95,10,80));",
+   "circulos.add(new Circulo(62+i*95,65+j*95,10,160));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/variants/dim_160/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 141,
+   "md5": "859fd2b4f140e3f6f284c77cf755475d",
+   "bytes": 5612
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/variants/dim_160/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 292,
+   "md5": "f92cbb3c1e406514b2927c730bbe1f98",
+   "bytes": 6427
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/variants/dim_160/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1120,
+   "md5": "00964c49e28a2f30941d1e7634c9deca",
+   "bytes": 18881
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "prueba2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "circulos.add(new Circulo(62+i*95,65+j*95,10,80));",
+   "new": "circulos.add(new Circulo(62+i*95,65+j*95,10,160));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/variants/dim_160/frame_00001.png (snap) t=141ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/variants/dim_160/frame_00010.png (snap) t=292ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2/variants/dim_160/frame_00060.png (snap) t=1120ms\n[harness] done frame=60 t=1110ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 141,
+ "diff_vs_baseline": {
+  "mean": 0.0033,
+  "changed_fraction": 0.009,
+  "label": "none"
+ }
+}

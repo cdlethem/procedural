@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/cuerpos",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/cuerpos/variants/desMag_120",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "*50;",
+   "*120;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/cuerpos/variants/desMag_120/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1461,
+   "md5": "da30b93ce9d0b210f6acadf7de959ee8",
+   "bytes": 22150
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "cuerpos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "*50;",
+   "new": "*120;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/cuerpos/variants/desMag_120/frame_00001.png (snap) t=1461ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/cuerpos/variants/desMag_120/frame_00010.png (snap) t=1671ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/cuerpos/variants/desMag_120/frame_00060.png (snap) t=2926ms\n[harness] done frame=60 t=2906ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1461,
+ "diff_vs_baseline": {
+  "mean": 0.0379,
+  "changed_fraction": 0.065,
+  "label": "subtle"
+ }
+}

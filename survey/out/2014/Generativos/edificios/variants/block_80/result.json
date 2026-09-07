@@ -1,0 +1,71 @@
+{
+ "sketch": "2014/Generativos/edificios",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/edificios/variants/block_80",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float ww = random(10, 40);",
+   "    float ww = random(30, 80);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/edificios/variants/block_80/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 318,
+   "md5": "4848a4dc0a3b3b24bcfb65684a3c4bdf",
+   "bytes": 40991,
+   "captured_frame": 10
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "edificios.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float ww = random(10, 40);",
+   "new": "    float ww = random(30, 80);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 10 promoted to frame_00001.png"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/edificios/variants/block_80/frame_00001.png (snap) t=149ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/edificios/variants/block_80/frame_00010.png (snap) t=318ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/edificios/variants/block_80/frame_00060.png (snap) t=1150ms\n[harness] done frame=60 t=1136ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 318,
+ "diff_vs_baseline": {
+  "mean": 0.002,
+  "changed_fraction": 0.008,
+  "label": "none"
+ }
+}

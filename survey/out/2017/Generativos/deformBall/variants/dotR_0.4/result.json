@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/deformBall",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/dotR_0.4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "Circle c = new Circle(i, j, s*0.2);",
+   "Circle c = new Circle(i, j, s*0.4);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/dotR_0.4/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 456,
+   "md5": "061106a152af7a58514ef4edf70df3bc",
+   "bytes": 2846569
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1920,
+  1920
+ ],
+ "size_args": "1920, 1920",
+ "imports": [],
+ "tabs": [
+  "deformBall.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "Circle c = new Circle(i, j, s*0.2);",
+   "new": "Circle c = new Circle(i, j, s*0.4);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/dotR_0.4/frame_00001.png (snap) t=456ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/dotR_0.4/frame_00010.png (snap) t=731ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/deformBall/variants/dotR_0.4/frame_00060.png (snap) t=1685ms\n[harness] done frame=60 t=1548ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 456,
+ "diff_vs_baseline": {
+  "mean": 0.0358,
+  "changed_fraction": 0.151,
+  "label": "subtle"
+ }
+}

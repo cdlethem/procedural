@@ -1,0 +1,78 @@
+{
+ "sketch": "2018/Generativos/datata",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/datata/variants/palette_green",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#121435, #FAF9F0, #EDEBCA, #FF5722};",
+   "int colors[] = {#121435, #FAF9F0, #EDEBCA, #2E7D32};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/datata/variants/palette_green/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1460,
+   "md5": "6d5268e9c26112ec4d8f392297404186",
+   "bytes": 95490
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "java.util.Arrays",
+  "java.util.Collections",
+  "java.util.Comparator",
+  "java.util.HashSet"
+ ],
+ "tabs": [
+  "datata.pde",
+  "triangulator.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#121435, #FAF9F0, #EDEBCA, #FF5722};",
+   "new": "int colors[] = {#121435, #FAF9F0, #EDEBCA, #2E7D32};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n43\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/datata/variants/palette_green/frame_00001.png (snap) t=1460ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/datata/variants/palette_green/frame_00010.png (snap) t=1671ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/datata/variants/palette_green/frame_00060.png (snap) t=2928ms\n[harness] done frame=60 t=2901ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1460,
+ "diff_vs_baseline": {
+  "mean": 0.0132,
+  "changed_fraction": 0.043,
+  "label": "subtle"
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "sketch": "2019/isladeloshelados",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/isladeloshelados/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/isladeloshelados/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1441,
+   "md5": "8a15de0ce1a3dea52ff405468ec47a72",
+   "bytes": 12571
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/isladeloshelados/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1728,
+   "md5": "de93aaf61ca029c57f70c9941a417f2e",
+   "bytes": 11013
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/isladeloshelados/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6285,
+   "md5": "7c6eb9c08cde1c0fffe341d642f3a44f",
+   "bytes": 12520
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "isladeloshelados.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 7.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/isladeloshelados/baseline/frame_00001.png (snap) t=1441ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/isladeloshelados/baseline/frame_00010.png (snap) t=1728ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/isladeloshelados/baseline/frame_00060.png (snap) t=6285ms\n[harness] done frame=60 t=6273ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1441,
+ "deterministic": false,
+ "rerun_frames": 3
+}

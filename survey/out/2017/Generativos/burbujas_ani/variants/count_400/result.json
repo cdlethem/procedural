@@ -1,0 +1,79 @@
+{
+ "sketch": "2017/Generativos/burbujas_ani",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/count_400",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  for (int i = 0; i < 100; i++) {",
+   "  for (int i = 0; i < 400; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/count_400/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1483,
+   "md5": "a1480955a18942f53dd0d802866f4390",
+   "bytes": 100748
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/count_400/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1696,
+   "md5": "12bbb07c88532ef138381d6b2eeb1e42",
+   "bytes": 100705
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/count_400/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2948,
+   "md5": "5873f973535b894bbf068768b2426732",
+   "bytes": 99984
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  820,
+  820
+ ],
+ "size_args": "820, 820, P2D",
+ "imports": [],
+ "tabs": [
+  "burbujas_ani.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  for (int i = 0; i < 100; i++) {",
+   "new": "  for (int i = 0; i < 400; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/count_400/frame_00001.png (snap) t=1483ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/count_400/frame_00010.png (snap) t=1696ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/count_400/frame_00060.png (snap) t=2948ms\n[harness] done frame=60 t=2933ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1483,
+ "diff_vs_baseline": {
+  "mean": 0.2668,
+  "changed_fraction": 0.761,
+  "label": "large"
+ }
+}

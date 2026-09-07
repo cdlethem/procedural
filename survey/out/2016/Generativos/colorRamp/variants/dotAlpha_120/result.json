@@ -1,0 +1,70 @@
+{
+ "sketch": "2016/Generativos/colorRamp",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/variants/dotAlpha_120",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "fill(cr.getColor(random(1)), 240);",
+   "fill(cr.getColor(random(1)), 120);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/variants/dotAlpha_120/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 579,
+   "md5": "73b96bf357579ec7ef3a35a427448979",
+   "bytes": 713542
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640",
+ "imports": [],
+ "tabs": [
+  "colorRamp.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "fill(cr.getColor(random(1)), 240);",
+   "new": "fill(cr.getColor(random(1)), 120);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/variants/dotAlpha_120/frame_00001.png (snap) t=579ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/variants/dotAlpha_120/frame_00010.png (snap) t=741ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/variants/dotAlpha_120/frame_00060.png (snap) t=1585ms\n[harness] done frame=60 t=1558ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 579,
+ "diff_vs_baseline": {
+  "mean": 0.0178,
+  "changed_fraction": 0.07,
+  "label": "subtle"
+ }
+}

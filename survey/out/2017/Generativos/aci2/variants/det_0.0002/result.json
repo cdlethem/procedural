@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/aci2",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aci2/variants/det_0.0002",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float det = random(0.01)*random(1);",
+   "float det = 0.0002;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aci2/variants/det_0.0002/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 488,
+   "md5": "5cdbf534aa0bd4b468983e61d11ee2bf",
+   "bytes": 1083737
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "aci2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float det = random(0.01)*random(1);",
+   "new": "float det = 0.0002;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/aci2/variants/det_0.0002/frame_00001.png (snap) t=488ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/aci2/variants/det_0.0002/frame_00010.png (snap) t=670ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/aci2/variants/det_0.0002/frame_00060.png (snap) t=1536ms\n[harness] done frame=60 t=1487ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 488,
+ "diff_vs_baseline": {
+  "mean": 0.3535,
+  "changed_fraction": 0.895,
+  "label": "large"
+ }
+}

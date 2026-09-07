@@ -1,0 +1,72 @@
+{
+ "sketch": "2015/Generativos/cityPink3d",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/cityPink3d/variants/towers_3000",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  int ccc = int(random(600, 2000));",
+   "  int ccc = int(random(600, 3000));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/cityPink3d/variants/towers_3000/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1824,
+   "md5": "d55a4b4340ee737038b9515267e0bfba",
+   "bytes": 1195158
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800, P3D",
+ "imports": [],
+ "tabs": [
+  "cityPink3d.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int ccc = int(random(600, 2000));",
+   "new": "  int ccc = int(random(600, 3000));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "cityPink3d.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/cityPink3d/variants/towers_3000/frame_00001.png (snap) t=1824ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/cityPink3d/variants/towers_3000/frame_00010.png (snap) t=2056ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/cityPink3d/variants/towers_3000/frame_00060.png (snap) t=3316ms\n[harness] done frame=60 t=3264ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "clear() can only be used with createGraphics()\nThe shader doesn't have a uniform called \"iGlobalTime\" OR the uniform was removed during compilation because it was unused.",
+ "ms_first_frame": 1824,
+ "diff_vs_baseline": {
+  "mean": 0.0493,
+  "changed_fraction": 0.168,
+  "label": "subtle"
+ }
+}

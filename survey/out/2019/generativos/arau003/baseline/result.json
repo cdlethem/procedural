@@ -1,0 +1,58 @@
+{
+ "sketch": "2019/generativos/arau003",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/arau003/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/arau003/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1651,
+   "md5": "d86fe53af3792b4d7f7ef321138b282b",
+   "bytes": 584802
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "arau003.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/arau003/baseline/frame_00001.png (snap) t=1651ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/arau003/baseline/frame_00010.png (snap) t=1886ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/arau003/baseline/frame_00060.png (snap) t=3136ms\n[harness] done frame=60 t=3103ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\nmap(NaN, 0, 1, 1.5707964, 4.712389) called, which returns NaN (not a number)",
+ "ms_first_frame": 1651,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

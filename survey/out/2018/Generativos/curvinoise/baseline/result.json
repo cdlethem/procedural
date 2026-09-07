@@ -1,0 +1,49 @@
+{
+ "sketch": "2018/Generativos/curvinoise",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/curvinoise/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "runtime_error",
+ "detail": "curvinoise.pde:53:0:53:0: ArrayIndexOutOfBoundsException: Index 921600 out of bounds for length 921600",
+ "frames": [],
+ "warnings": [
+  "sketch killed 2 s after the exception (launcher leaves it suspended)"
+ ],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "curvinoise.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "compat_shims": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.7,
+ "rc": 143,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\ncurvinoise.pde:53:0:53:0: ArrayIndexOutOfBoundsException: Index 921600 out of bounds for length 921600\nCould not run the sketch (Target VM failed to initialize).\nFor more information, read Help \u2192 Troubleshooting.\nCould not run the sketch.",
+ "ms_first_frame": null
+}

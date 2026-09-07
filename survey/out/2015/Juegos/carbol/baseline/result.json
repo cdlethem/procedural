@@ -1,0 +1,62 @@
+{
+ "sketch": "2015/Juegos/carbol",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Juegos/carbol/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/carbol/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 370,
+   "md5": "45a9096bf2276a3838ac9826de898434",
+   "bytes": 652358
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/carbol/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 546,
+   "md5": "12c1061f0458916a3184b6ed6e6539a7",
+   "bytes": 619512
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/carbol/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1405,
+   "md5": "7b24bc942a3305d4fac77173ef801da0",
+   "bytes": 598533
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640",
+ "imports": [],
+ "tabs": [
+  "Collision.pde",
+  "carbol.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/carbol/baseline/frame_00001.png (snap) t=370ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/carbol/baseline/frame_00010.png (snap) t=546ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/carbol/baseline/frame_00060.png (snap) t=1405ms\n[harness] done frame=60 t=1376ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 370,
+ "deterministic": true,
+ "rerun_frames": 3
+}

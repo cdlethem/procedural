@@ -1,0 +1,61 @@
+{
+ "sketch": "2019/infinit001/infinit002",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/infinit001/infinit002/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/infinit001/infinit002/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1470,
+   "md5": "875f4143ebf80870852412c86b6f7d97",
+   "bytes": 8608
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/infinit001/infinit002/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1681,
+   "md5": "b8ede9cce419101d15d93915ee657200",
+   "bytes": 8562
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/infinit001/infinit002/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2941,
+   "md5": "8ae165b81fc0dd9dac12d74ddb959f17",
+   "bytes": 5322
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P2D",
+ "imports": [],
+ "tabs": [
+  "infinit002.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/infinit001/infinit002/baseline/frame_00001.png (snap) t=1470ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/infinit001/infinit002/baseline/frame_00010.png (snap) t=1681ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/infinit001/infinit002/baseline/frame_00060.png (snap) t=2941ms\n[harness] done frame=60 t=2927ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1470,
+ "deterministic": false,
+ "rerun_frames": 3
+}

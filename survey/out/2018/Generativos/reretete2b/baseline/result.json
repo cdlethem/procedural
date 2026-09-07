@@ -1,0 +1,57 @@
+{
+ "sketch": "2018/Generativos/reretete2b",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/reretete2b/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/reretete2b/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2079,
+   "md5": "fb85fdce36314d409d4e1a95cda2d909",
+   "bytes": 2291185
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "reretete2b.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/reretete2b/baseline/frame_00001.png (snap) t=2079ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/reretete2b/baseline/frame_00010.png (snap) t=2352ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/reretete2b/baseline/frame_00060.png (snap) t=3652ms\n[harness] done frame=60 t=3579ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2079,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

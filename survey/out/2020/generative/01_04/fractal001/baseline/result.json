@@ -1,0 +1,61 @@
+{
+ "sketch": "2020/generative/01_04/fractal001",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fractal001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fractal001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1432,
+   "md5": "cde73184eb6c996487f453899810ea1e",
+   "bytes": 78736
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fractal001/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1644,
+   "md5": "9ed4662aa03305bb3502c0abb572103e",
+   "bytes": 79191
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fractal001/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2906,
+   "md5": "9ed4662aa03305bb3502c0abb572103e",
+   "bytes": 79191
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P2D",
+ "imports": [],
+ "tabs": [
+  "fractal001.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fractal001/baseline/frame_00001.png (snap) t=1432ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fractal001/baseline/frame_00010.png (snap) t=1644ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fractal001/baseline/frame_00060.png (snap) t=2906ms\n[harness] done frame=60 t=2894ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "The shader doesn't have a uniform called \"time\" OR the uniform was removed during compilation because it was unused.",
+ "ms_first_frame": 1432,
+ "deterministic": true,
+ "rerun_frames": 3
+}

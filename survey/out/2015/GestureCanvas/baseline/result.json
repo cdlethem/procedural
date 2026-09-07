@@ -1,0 +1,62 @@
+{
+ "sketch": "2015/GestureCanvas",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/GestureCanvas/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/GestureCanvas/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 297,
+   "md5": "35b506069c15ae2488c3eaa511bd7cb3",
+   "bytes": 8271
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "GestureCanvas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "GestureCanvas.pde"
+ ],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GestureCanvas/baseline/frame_00001.png (snap) t=297ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GestureCanvas/baseline/frame_00002.png (snap) t=327ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GestureCanvas/baseline/frame_00010.png (snap) t=463ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GestureCanvas/baseline/frame_00060.png (snap) t=1295ms\n[harness] done frame=60 t=1284ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 297,
+ "deterministic": true,
+ "rerun_frames": 1
+}

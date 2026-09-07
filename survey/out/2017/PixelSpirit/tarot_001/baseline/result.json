@@ -1,0 +1,59 @@
+{
+ "sketch": "2017/PixelSpirit/tarot_001",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/PixelSpirit/tarot_001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/PixelSpirit/tarot_001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 250,
+   "md5": "b14fdf3e3a91f00ce658e78a67e4ff28",
+   "bytes": 18262
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720",
+ "imports": [
+  "java.util.Random",
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "tarot_001.pde",
+  "ui.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/PixelSpirit/tarot_001/baseline/frame_00001.png (snap) t=250ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/PixelSpirit/tarot_001/baseline/frame_00010.png (snap) t=415ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/PixelSpirit/tarot_001/baseline/frame_00060.png (snap) t=1252ms\n[harness] done frame=60 t=1233ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 250,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

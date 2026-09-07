@@ -1,0 +1,61 @@
+{
+ "sketch": "2015/GameIdeas/taptap",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/taptap/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/taptap/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 145,
+   "md5": "ffbcc826b0139af9f13b25657bca8b65",
+   "bytes": 7352
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/taptap/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 285,
+   "md5": "bd447d98edb05b95972bc1c4984f6f20",
+   "bytes": 7506
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/taptap/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1120,
+   "md5": "99442f44407023b3addb64bd694676f2",
+   "bytes": 7807
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  270,
+  480
+ ],
+ "size_args": "270, 480",
+ "imports": [],
+ "tabs": [
+  "taptap.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GameIdeas/taptap/baseline/frame_00001.png (snap) t=145ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GameIdeas/taptap/baseline/frame_00010.png (snap) t=285ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GameIdeas/taptap/baseline/frame_00060.png (snap) t=1120ms\n[harness] done frame=60 t=1113ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 145,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/prueba2b",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2b/variants/arcs_per_hub_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "      circulos.add(new Circulo(62+i*95, 65+j*95, 10, 80));",
+   "      circulos.add(new Circulo(62+i*95, 65+j*95, 40, 80));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2b/variants/arcs_per_hub_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 159,
+   "md5": "907f6f11078dcb081c3116f3b2c3423c",
+   "bytes": 5208
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2b/variants/arcs_per_hub_40/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 308,
+   "md5": "f30596c7ff0d4828626b309bf3113bc4",
+   "bytes": 6814
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2b/variants/arcs_per_hub_40/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1144,
+   "md5": "332fc86e8d0fd964d333d83365f1e59e",
+   "bytes": 92306
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "prueba2b.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "      circulos.add(new Circulo(62+i*95, 65+j*95, 10, 80));",
+   "new": "      circulos.add(new Circulo(62+i*95, 65+j*95, 40, 80));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2b/variants/arcs_per_hub_40/frame_00001.png (snap) t=159ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2b/variants/arcs_per_hub_40/frame_00010.png (snap) t=308ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/prueba2b/variants/arcs_per_hub_40/frame_00060.png (snap) t=1144ms\n[harness] done frame=60 t=1131ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 159,
+ "diff_vs_baseline": {
+  "mean": 0.0027,
+  "changed_fraction": 0.008,
+  "label": "none"
+ }
+}

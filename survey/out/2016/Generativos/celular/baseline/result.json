@@ -1,0 +1,55 @@
+{
+ "sketch": "2016/Generativos/celular",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/celular/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/celular/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1109,
+   "md5": "a666419d111bdb49739933f9298f85a1",
+   "bytes": 1229702
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "celular.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "0.8660254\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/celular/baseline/frame_00001.png (snap) t=1109ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/celular/baseline/frame_00010.png (snap) t=1296ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/celular/baseline/frame_00060.png (snap) t=2162ms\n[harness] done frame=60 t=2113ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Chivo Light\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1109,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

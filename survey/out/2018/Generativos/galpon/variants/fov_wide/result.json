@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/galpon",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/galpon/variants/fov_wide",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  float fov = PI/random(3, 5);",
+   "  float fov = PI/2.0;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/galpon/variants/fov_wide/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1797,
+   "md5": "616148038c0b6292dabb3b85d667b8d3",
+   "bytes": 1856884
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "galpon.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  float fov = PI/random(3, 5);",
+   "new": "  float fov = PI/2.0;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/galpon/variants/fov_wide/frame_00001.png (snap) t=1797ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/galpon/variants/fov_wide/frame_00010.png (snap) t=2047ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/galpon/variants/fov_wide/frame_00060.png (snap) t=3341ms\n[harness] done frame=60 t=3261ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1797,
+ "diff_vs_baseline": {
+  "mean": 0.0744,
+  "changed_fraction": 0.284,
+  "label": "moderate"
+ }
+}

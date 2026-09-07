@@ -1,0 +1,85 @@
+{
+ "sketch": "2020/generative/05_08/comun",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/comun/variants/dotCount_3000",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int k = 0; k < points.size(); i++) {",
+   "for (int k = 0; k < points.size(); k++) {"
+  ],
+  [
+   "for (int i = 0; i < 10000; i++) {",
+   "for (int i = 0; i < 3000; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/comun/variants/dotCount_3000/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1824,
+   "md5": "97b630768913f5ce74d6302eeac6a8b2",
+   "bytes": 507764
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "comun.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int k = 0; k < points.size(); i++) {",
+   "new": "for (int k = 0; k < points.size(); k++) {",
+   "count": 1
+  },
+  {
+   "old": "for (int i = 0; i < 10000; i++) {",
+   "new": "for (int i = 0; i < 3000; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/comun/variants/dotCount_3000/frame_00001.png (snap) t=1824ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/comun/variants/dotCount_3000/frame_00010.png (snap) t=2042ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/comun/variants/dotCount_3000/frame_00060.png (snap) t=3292ms\n[harness] done frame=60 t=3263ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1824
+}

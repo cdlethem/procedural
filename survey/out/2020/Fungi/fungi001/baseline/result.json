@@ -1,0 +1,74 @@
+{
+ "sketch": "2020/Fungi/fungi001",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/Fungi/fungi001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/Fungi/fungi001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1640,
+   "md5": "784f5e1f62980651fdf1269c09310e8f",
+   "bytes": 295711
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/Fungi/fungi001/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1873,
+   "md5": "7e5e6c843a7b1ce2e05870219595991a",
+   "bytes": 296443
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/Fungi/fungi001/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3132,
+   "md5": "2cdbfbfdfeb6829a7644a0a8c8db32dc",
+   "bytes": 299405
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720, P3D",
+ "imports": [
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "fungi001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2020/Fungi/fungi001/baseline/frame_00001.png (snap) t=1640ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/Fungi/fungi001/baseline/frame_00010.png (snap) t=1873ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/Fungi/fungi001/baseline/frame_00060.png (snap) t=3132ms\n[harness] done frame=60 t=3103ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1640,
+ "deterministic": false,
+ "rerun_frames": 3
+}

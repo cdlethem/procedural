@@ -1,0 +1,66 @@
+{
+ "sketch": "2020/generative/05_08/ficall",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/ficall/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/ficall/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 5621,
+   "md5": "6bd1d318f3d580e3160046c5cad4d0bd",
+   "bytes": 1629822
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "ficall.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 32.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/ficall/baseline/frame_00001.png (snap) t=5621ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/ficall/baseline/frame_00010.png (snap) t=24527ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/ficall/baseline/frame_00013.png (budget) t=30937ms\n[harness] done frame=13 t=30862ms\n[harness] dispose frame=14 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 5621,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   13,
+   "identical to frame 1"
+  ]
+ ]
+}

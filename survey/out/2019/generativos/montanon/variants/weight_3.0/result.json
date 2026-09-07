@@ -1,0 +1,72 @@
+{
+ "sketch": "2019/generativos/montanon",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/montanon/variants/weight_3.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "strokeWeight(random(0.2, random(0.4, 1.8)));",
+   "strokeWeight(random(0.6, random(0.8, 3.0)));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/montanon/variants/weight_3.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 5291,
+   "md5": "511f4fccf24f8153b92a0ea9e571fe3f",
+   "bytes": 2574984
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "java.util.Random"
+ ],
+ "tabs": [
+  "montanon.pde",
+  "noiseDouble.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "strokeWeight(random(0.2, random(0.4, 1.8)));",
+   "new": "strokeWeight(random(0.6, random(0.8, 3.0)));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 8.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/montanon/variants/weight_3.0/frame_00001.png (snap) t=5291ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/montanon/variants/weight_3.0/frame_00010.png (snap) t=5548ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/montanon/variants/weight_3.0/frame_00060.png (snap) t=6828ms\n[harness] done frame=60 t=6762ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 5291,
+ "diff_vs_baseline": {
+  "mean": 0.2055,
+  "changed_fraction": 0.738,
+  "label": "large"
+ }
+}

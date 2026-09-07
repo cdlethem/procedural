@@ -1,0 +1,70 @@
+{
+ "sketch": "2014/Generativos/cosasfeas",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/cosasfeas/variants/bg_0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  background(180);",
+   "  background(0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/cosasfeas/variants/bg_0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 619,
+   "md5": "1af7fae11305756c9945202f7dcbae43",
+   "bytes": 846978
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "cosasfeas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  background(180);",
+   "new": "  background(0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cosasfeas/variants/bg_0/frame_00001.png (snap) t=619ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cosasfeas/variants/bg_0/frame_00010.png (snap) t=785ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/cosasfeas/variants/bg_0/frame_00060.png (snap) t=1633ms\n[harness] done frame=60 t=1602ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 619,
+ "diff_vs_baseline": {
+  "mean": 0.1779,
+  "changed_fraction": 0.272,
+  "label": "large"
+ }
+}

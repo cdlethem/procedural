@@ -1,0 +1,66 @@
+{
+ "sketch": "2019/generativos/metro",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/metro/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/metro/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 415,
+   "md5": "816430f5b39e4aa25b1eba34d82a63c1",
+   "bytes": 881143
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale)",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "metro.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\nangDiv 8\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/metro/baseline/frame_00001.png (snap) t=415ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/metro/baseline/frame_00010.png (snap) t=588ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/metro/baseline/frame_00060.png (snap) t=1446ms\n[harness] done frame=60 t=1405ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 415,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

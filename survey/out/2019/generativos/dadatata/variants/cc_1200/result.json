@@ -1,0 +1,86 @@
+{
+ "sketch": "2019/generativos/dadatata",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/cc_1200",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(400));",
+   "int cc = int(random(1200));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/cc_1200/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 7444,
+   "md5": "f3a4f93e2dddf0e54184e1130ef5f73f",
+   "bytes": 1605540
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/cc_1200/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 7655,
+   "md5": "cd53ba1ec28b82769b01eb03b3f99498",
+   "bytes": 91934
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/cc_1200/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 8911,
+   "md5": "cd53ba1ec28b82769b01eb03b3f99498",
+   "bytes": 91934
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "dadatata.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(400));",
+   "new": "int cc = int(random(1200));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 10.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/cc_1200/frame_00001.png (snap) t=7444ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/cc_1200/frame_00010.png (snap) t=7655ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/dadatata/variants/cc_1200/frame_00060.png (snap) t=8911ms\n[harness] done frame=60 t=8883ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 7444,
+ "diff_vs_baseline": {
+  "mean": 0.1459,
+  "changed_fraction": 0.455,
+  "label": "moderate"
+ }
+}

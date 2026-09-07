@@ -1,0 +1,83 @@
+{
+ "sketch": "2015/Generativos/arcosCampestres",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/mc_3",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int mc = 8;",
+   "int mc = 3;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/mc_3/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 190,
+   "md5": "346a555f358607dd5b42c60637d0b18d",
+   "bytes": 8824
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/mc_3/self_1.pdf",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1092,
+   "md5": "3123d2a1656556daf5b53c3a8a8df185",
+   "bytes": 2558
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  400
+ ],
+ "size_args": "800, 400",
+ "imports": [
+  "java.io.FilenameFilter",
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "arcosCampestres.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int mc = 8;",
+   "new": "int mc = 3;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "arcosCampestres.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/mc_3/frame_00001.png (snap) t=190ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/mc_3/frame_00010.png (snap) t=333ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/arcosCampestres/variants/mc_3/frame_00060.png (snap) t=1167ms\n[harness] done frame=60 t=1158ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 190,
+ "diff_vs_baseline": {
+  "mean": 0.0194,
+  "changed_fraction": 0.06,
+  "label": "subtle"
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/05_08/tiger",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tiger/variants/rects_8",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  for (int k = 0; k < 4; k++) {\n    float xx = lerp(random(-ss, width+ss*2), width*0.5, random(random(0.2), 1));\n    float yy = lerp(random(-ss, height+ss*2), height*0.5, random(random(0.2), 1));\n    float s = width*random(0.8);\n    xx -= xx%ss;\n    yy -= yy%ss;\n    fill(rcol());",
+   "  for (int k = 0; k < 8; k++) {\n    float xx = lerp(random(-ss, width+ss*2), width*0.5, random(random(0.2), 1));\n    float yy = lerp(random(-ss, height+ss*2), height*0.5, random(random(0.2), 1));\n    float s = width*random(0.8);\n    xx -= xx%ss;\n    yy -= yy%ss;\n    fill(rcol());"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tiger/variants/rects_8/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1447,
+   "md5": "360e3d7af9a410a8b4d58f01e47bd143",
+   "bytes": 70406
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "tiger.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  for (int k = 0; k < 4; k++) {\n    float xx = lerp(random(-ss, width+ss*2), width*0.5, random(random(0.2), 1));\n    float yy = lerp(random(-ss, height+ss*2), height*0.5, random(random(0.2), 1));\n    float s = width*random(0.8);\n    xx -= xx%ss;\n    yy -= yy%ss;\n    fill(rcol());",
+   "new": "  for (int k = 0; k < 8; k++) {\n    float xx = lerp(random(-ss, width+ss*2), width*0.5, random(random(0.2), 1));\n    float yy = lerp(random(-ss, height+ss*2), height*0.5, random(random(0.2), 1));\n    float s = width*random(0.8);\n    xx -= xx%ss;\n    yy -= yy%ss;\n    fill(rcol());",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tiger/variants/rects_8/frame_00001.png (snap) t=1447ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tiger/variants/rects_8/frame_00010.png (snap) t=1658ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/tiger/variants/rects_8/frame_00060.png (snap) t=2917ms\n[harness] done frame=60 t=2890ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1447,
+ "diff_vs_baseline": {
+  "mean": 0.1331,
+  "changed_fraction": 0.394,
+  "label": "moderate"
+ }
+}

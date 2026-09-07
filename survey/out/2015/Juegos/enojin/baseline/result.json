@@ -1,0 +1,63 @@
+{
+ "sketch": "2015/Juegos/enojin",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Juegos/enojin/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/enojin/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 186,
+   "md5": "f197c185c99363d03e670c2bee3b71fb",
+   "bytes": 3560
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  560,
+  920
+ ],
+ "size_args": "560, 920",
+ "imports": [
+  "java.util.Collections"
+ ],
+ "tabs": [
+  "Entidades.pde",
+  "enojin.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/enojin/baseline/frame_00001.png (snap) t=186ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/enojin/baseline/frame_00002.png (snap) t=203ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/enojin/baseline/frame_00010.png (snap) t=335ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/enojin/baseline/frame_00060.png (snap) t=1173ms\n[harness] done frame=60 t=1155ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 186,
+ "deterministic": true,
+ "rerun_frames": 1
+}

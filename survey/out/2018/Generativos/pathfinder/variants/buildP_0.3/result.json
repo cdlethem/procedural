@@ -1,0 +1,94 @@
+{
+ "sketch": "2018/Generativos/pathfinder",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pathfinder/variants/buildP_0.3",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "boolean build = (random(1) < 0.08) && !sand;",
+   "boolean build = (random(1) < 0.3) && !sand;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pathfinder/variants/buildP_0.3/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1760,
+   "md5": "0d435463c7162fca4138b5555bc290fb",
+   "bytes": 913173
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "java.util.List",
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "arboles.pde",
+  "autos.pde",
+  "back.pde",
+  "barcos.pde",
+  "globos.pde",
+  "ico.pde",
+  "nubes.pde",
+  "pathfinder.pde",
+  "personitas.pde",
+  "tren.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "boolean build = (random(1) < 0.08) && !sand;",
+   "new": "boolean build = (random(1) < 0.3) && !sand;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pathfinder/variants/buildP_0.3/frame_00001.png (snap) t=1760ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pathfinder/variants/buildP_0.3/frame_00010.png (snap) t=1989ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pathfinder/variants/buildP_0.3/frame_00060.png (snap) t=3254ms\n[harness] done frame=60 t=3202ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1760,
+ "diff_vs_baseline": {
+  "mean": 0.081,
+  "changed_fraction": 0.25,
+  "label": "moderate"
+ }
+}

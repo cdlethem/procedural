@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/3d/Orbitas",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/3d/Orbitas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/3d/Orbitas/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1448,
+   "md5": "3bd21c44d6146429c32876d877a3c8d9",
+   "bytes": 15414
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/3d/Orbitas/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1658,
+   "md5": "638595e97d791b1e35d0614d2032aab4",
+   "bytes": 15548
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/3d/Orbitas/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2917,
+   "md5": "327f8c5145da6607edfa769ca158e6b6",
+   "bytes": 15496
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "Orbitas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/3d/Orbitas/baseline/frame_00001.png (snap) t=1448ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/3d/Orbitas/baseline/frame_00010.png (snap) t=1658ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/3d/Orbitas/baseline/frame_00060.png (snap) t=2917ms\n[harness] done frame=60 t=2904ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1448,
+ "deterministic": true,
+ "rerun_frames": 3
+}

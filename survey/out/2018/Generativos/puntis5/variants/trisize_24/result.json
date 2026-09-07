@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/puntis5",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis5/variants/trisize_24",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float s = noise(des+x*det, des+y*det)*6;",
+   "    float s = noise(des+x*det, des+y*det)*24;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis5/variants/trisize_24/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3281,
+   "md5": "17054fd4a626a201aabb0fab7d1e791f",
+   "bytes": 2408928
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "Tipitos.pde",
+  "pointsFunctions.pde",
+  "puntis5.pde",
+  "utils.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "    float s = noise(des+x*det, des+y*det)*6;",
+   "new": "    float s = noise(des+x*det, des+y*det)*24;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis5/variants/trisize_24/frame_00001.png (snap) t=3281ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis5/variants/trisize_24/frame_00010.png (snap) t=3542ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis5/variants/trisize_24/frame_00060.png (snap) t=4832ms\n[harness] done frame=60 t=4757ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3281,
+ "diff_vs_baseline": {
+  "mean": 0.0126,
+  "changed_fraction": 0.039,
+  "label": "subtle"
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/Fotos/dibujador3",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/dibujador3/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/dibujador3/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 284,
+   "md5": "e21ebda0e7af67eedb88560d9e99ea38",
+   "bytes": 13463
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/dibujador3/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 457,
+   "md5": "de72ca408e1d4593f85073ce841280ac",
+   "bytes": 50233
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/dibujador3/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1317,
+   "md5": "58394d9906955fcb79e6ea36c80927fc",
+   "bytes": 232598
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1500,
+  1208
+ ],
+ "size_args": "1500, 1208",
+ "imports": [],
+ "tabs": [
+  "dibujador3.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/dibujador3/baseline/frame_00001.png (snap) t=284ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/dibujador3/baseline/frame_00010.png (snap) t=457ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/dibujador3/baseline/frame_00060.png (snap) t=1317ms\n[harness] done frame=60 t=1275ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 284,
+ "deterministic": true,
+ "rerun_frames": 3
+}

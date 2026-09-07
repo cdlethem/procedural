@@ -1,0 +1,79 @@
+{
+ "sketch": "2015/Generativos/dataBall",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/ruler_14",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float y = i*6;",
+   "float y = i*14;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/ruler_14/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1495,
+   "md5": "a092426be52ae892f09dc1131a16e417",
+   "bytes": 48132
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/ruler_14/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1694,
+   "md5": "38b4e54aeaf717fdd39412e89fc9279d",
+   "bytes": 47346
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/ruler_14/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2950,
+   "md5": "df6ee240a4e1dec03ea760e2e59dc27d",
+   "bytes": 49490
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "dataBall.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float y = i*6;",
+   "new": "float y = i*14;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/ruler_14/frame_00001.png (snap) t=1495ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/ruler_14/frame_00010.png (snap) t=1694ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/dataBall/variants/ruler_14/frame_00060.png (snap) t=2950ms\n[harness] done frame=60 t=2938ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Stockholm Mono\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1495,
+ "diff_vs_baseline": {
+  "mean": 0.0044,
+  "changed_fraction": 0.012,
+  "label": "none"
+ }
+}

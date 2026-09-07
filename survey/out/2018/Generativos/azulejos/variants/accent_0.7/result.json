@@ -1,0 +1,68 @@
+{
+ "sketch": "2018/Generativos/azulejos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/azulejos/variants/accent_0.7",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "if (random(1) < 0.2) {=>if (random(1) < 0.7) {"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/azulejos/variants/accent_0.7/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 3871,
+   "md5": "4d16613a981341187829454aab716281",
+   "bytes": 2813545
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/azulejos/variants/accent_0.7/self_20260902-235607.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3325,
+   "md5": "4d16613a981341187829454aab716281",
+   "bytes": 2813545
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  6500,
+  6500
+ ],
+ "size_args": "6500, 6500, P2D",
+ "imports": [],
+ "tabs": [
+  "azulejos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "if (random(1) < 0.2) {",
+   "new": "if (random(1) < 0.7) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/azulejos/variants/accent_0.7/frame_00001.png (dispose) t=3871ms\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 3871,
+ "diff_vs_baseline": {
+  "mean": 0.2407,
+  "changed_fraction": 0.659,
+  "label": "large"
+ }
+}

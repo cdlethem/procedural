@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/culebra02_169",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/culebra02_169/variants/palette_alt",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#EDFFFC, #FFFF3D, #F393FF, #01CCCC, #5967FF}; //",
+   "int colors[] = {#E1E8E0, #F5CE4B, #FC5801, #025DC4, #02201A, #489B4D}; //"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/culebra02_169/variants/palette_alt/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1594,
+   "md5": "53ba8433adaeaf63a02e41c4856a879c",
+   "bytes": 977464
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "culebra02_169.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#EDFFFC, #FFFF3D, #F393FF, #01CCCC, #5967FF}; //",
+   "new": "int colors[] = {#E1E8E0, #F5CE4B, #FC5801, #025DC4, #02201A, #489B4D}; //",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/culebra02_169/variants/palette_alt/frame_00001.png (snap) t=1594ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/culebra02_169/variants/palette_alt/frame_00010.png (snap) t=1855ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/culebra02_169/variants/palette_alt/frame_00060.png (snap) t=3149ms\n[harness] done frame=60 t=3070ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1594,
+ "diff_vs_baseline": {
+  "mean": 0.1198,
+  "changed_fraction": 0.455,
+  "label": "moderate"
+ }
+}

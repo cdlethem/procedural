@@ -1,0 +1,55 @@
+{
+ "sketch": "2016/Generativos/colorRamp",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 588,
+   "md5": "ac754bc8b012db37d3de81464ef4b353",
+   "bytes": 706986
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640",
+ "imports": [],
+ "tabs": [
+  "colorRamp.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/baseline/frame_00001.png (snap) t=588ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/baseline/frame_00010.png (snap) t=757ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/baseline/frame_00060.png (snap) t=1603ms\n[harness] done frame=60 t=1574ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 588,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/Generativos/quadis_ani",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1555,
+   "md5": "a7f7ea18028f955e3d6079577cb6258e",
+   "bytes": 629105
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1853,
+   "md5": "474fcf9c5be7806e8dcd27ab46707a20",
+   "bytes": 628836
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5322,
+   "md5": "455cf2e6982b76ea540607283243b27f",
+   "bytes": 637863
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P2D",
+ "imports": [],
+ "tabs": [
+  "quadis_ani.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/baseline/frame_00001.png (snap) t=1555ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/baseline/frame_00010.png (snap) t=1853ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/baseline/frame_00060.png (snap) t=5322ms\n[harness] done frame=60 t=5291ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1555,
+ "deterministic": false,
+ "rerun_frames": 3
+}

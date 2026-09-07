@@ -1,0 +1,85 @@
+{
+ "sketch": "2020/generative/01_04/opop",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/alpha_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "    float alp = 10*sin(val*PI);=>    float alp = 40*sin(val*PI);"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/alpha_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1522,
+   "md5": "ab2212b96eeefbb4fdb922b73289c078",
+   "bytes": 309492
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/alpha_40/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1729,
+   "md5": "7bcef4b9c7a566e7e0636c5cc757a3b0",
+   "bytes": 16741
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/alpha_40/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2987,
+   "md5": "7bcef4b9c7a566e7e0636c5cc757a3b0",
+   "bytes": 16741
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "opop.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "    float alp = 10*sin(val*PI);",
+   "new": "    float alp = 40*sin(val*PI);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/alpha_40/frame_00001.png (snap) t=1522ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/alpha_40/frame_00010.png (snap) t=1729ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/alpha_40/frame_00060.png (snap) t=2987ms\n[harness] done frame=60 t=2962ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1522,
+ "diff_vs_baseline": {
+  "mean": 0.3073,
+  "changed_fraction": 0.706,
+  "label": "large"
+ }
+}

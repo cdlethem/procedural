@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/poop",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/poop/variants/ss_6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    int ss = 3;",
+   "    int ss = 6;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/poop/variants/ss_6/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2087,
+   "md5": "69e6ceddbad04178634355a58e70630e",
+   "bytes": 335570
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/poop/variants/ss_6/self_20260905-213549.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2649,
+   "md5": "69e6ceddbad04178634355a58e70630e",
+   "bytes": 335570
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "poop.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    int ss = 3;",
+   "new": "    int ss = 6;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/poop/variants/ss_6/frame_00001.png (dispose) t=2087ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2087,
+ "diff_vs_baseline": {
+  "mean": 0.1044,
+  "changed_fraction": 0.522,
+  "label": "moderate"
+ }
+}

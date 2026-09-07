@@ -1,0 +1,80 @@
+{
+ "sketch": "2019/generativos/nana",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/nana/variants/ss_s2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float ss = random(s*10);",
+   "float ss = random(s*2);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/nana/variants/ss_s2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1440,
+   "md5": "eb3b67efefa1e754a007f3f24bb835df",
+   "bytes": 59683
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/nana/variants/ss_s2/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1651,
+   "md5": "d1217b18b58e8c37149af6ceac950cc5",
+   "bytes": 60296
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/nana/variants/ss_s2/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2900,
+   "md5": "d1217b18b58e8c37149af6ceac950cc5",
+   "bytes": 60296
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "nana.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float ss = random(s*10);",
+   "new": "float ss = random(s*2);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/nana/variants/ss_s2/frame_00001.png (snap) t=1440ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/nana/variants/ss_s2/frame_00010.png (snap) t=1651ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/nana/variants/ss_s2/frame_00060.png (snap) t=2900ms\n[harness] done frame=60 t=2880ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1440,
+ "diff_vs_baseline": {
+  "mean": 0.3625,
+  "changed_fraction": 0.613,
+  "label": "large"
+ }
+}

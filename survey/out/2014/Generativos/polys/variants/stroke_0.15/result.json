@@ -1,0 +1,81 @@
+{
+ "sketch": "2014/Generativos/polys",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/stroke_0.15",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "strokeWeight(max(dim*random(0.05), 1));",
+   "strokeWeight(max(dim*random(0.15), 1));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/stroke_0.15/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 173,
+   "md5": "f698a1488f027cda50f3b96c74046550",
+   "bytes": 124069
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/stroke_0.15/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 326,
+   "md5": "f862790358705606e042d961eeab1628",
+   "bytes": 128397
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/stroke_0.15/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1158,
+   "md5": "1e011ecd9133c73c0e4e6027b842a4d5",
+   "bytes": 117264
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "polys.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "strokeWeight(max(dim*random(0.05), 1));",
+   "new": "strokeWeight(max(dim*random(0.15), 1));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "polys.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/stroke_0.15/frame_00001.png (snap) t=173ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/stroke_0.15/frame_00010.png (snap) t=326ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/stroke_0.15/frame_00060.png (snap) t=1158ms\n[harness] done frame=60 t=1147ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 173,
+ "diff_vs_baseline": {
+  "mean": 0.0812,
+  "changed_fraction": 0.132,
+  "label": "moderate"
+ }
+}

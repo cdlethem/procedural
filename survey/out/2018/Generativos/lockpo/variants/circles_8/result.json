@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/lockpo",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/lockpo/variants/circles_8",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(-2, 4));",
+   "int cc = int(random(-2, 8));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/lockpo/variants/circles_8/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3089,
+   "md5": "162b5719382b41a72575334ddb1e4031",
+   "bytes": 2035003
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "lockpo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(-2, 4));",
+   "new": "int cc = int(random(-2, 8));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/lockpo/variants/circles_8/frame_00001.png (snap) t=3089ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/lockpo/variants/circles_8/frame_00010.png (snap) t=3338ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/lockpo/variants/circles_8/frame_00060.png (snap) t=4634ms\n[harness] done frame=60 t=4552ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\ntranslate() with x, y, and z coordinates can only be used with a renderer that supports 3D, such as P3D. Use a version without a z-coordinate instead.",
+ "ms_first_frame": 3089,
+ "diff_vs_baseline": {
+  "mean": 0.14,
+  "changed_fraction": 0.654,
+  "label": "moderate"
+ }
+}

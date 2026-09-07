@@ -1,0 +1,79 @@
+{
+ "sketch": "2019/generativos/humo",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/humo/variants/color_F7C93B",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#F7743B, #9DAAAB, #6789AA, #4F4873, #3A3A3A};",
+   "int colors[] = {#F7C93B, #9DAAAB, #6789AA, #4F4873, #3A3A3A};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/humo/variants/color_F7C93B/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1660,
+   "md5": "7c2b5b52857918ad82bb0256ce7c6aa0",
+   "bytes": 393233
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "humo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#F7743B, #9DAAAB, #6789AA, #4F4873, #3A3A3A};",
+   "new": "int colors[] = {#F7C93B, #9DAAAB, #6789AA, #4F4873, #3A3A3A};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/humo/variants/color_F7C93B/frame_00001.png (snap) t=1660ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/humo/variants/color_F7C93B/frame_00010.png (snap) t=1881ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/humo/variants/color_F7C93B/frame_00060.png (snap) t=3131ms\n[harness] done frame=60 t=3100ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1660,
+ "diff_vs_baseline": {
+  "mean": 0.0531,
+  "changed_fraction": 0.124,
+  "label": "moderate"
+ }
+}

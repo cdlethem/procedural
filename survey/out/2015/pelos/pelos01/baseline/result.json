@@ -1,0 +1,63 @@
+{
+ "sketch": "2015/pelos/pelos01",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/pelos/pelos01/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/pelos/pelos01/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 320,
+   "md5": "65c2fc2861f465da9bbce7197d72c449",
+   "bytes": 45780
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/pelos/pelos01/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 682,
+   "md5": "0f5220c93cf2dc662663da13294bacc0",
+   "bytes": 46357
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/pelos/pelos01/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2368,
+   "md5": "e11bfdc8428156ae5a25d7259bd4b2f9",
+   "bytes": 45319
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "pelos01.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/pelos/pelos01/baseline/frame_00001.png (snap) t=320ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/pelos/pelos01/baseline/frame_00010.png (snap) t=682ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/pelos/pelos01/baseline/frame_00060.png (snap) t=2368ms\n[harness] done frame=60 t=2349ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 320,
+ "deterministic": true,
+ "rerun_frames": 3
+}

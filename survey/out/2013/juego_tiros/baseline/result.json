@@ -1,0 +1,60 @@
+{
+ "sketch": "2013/juego_tiros",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/juego_tiros/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/juego_tiros/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 148,
+   "md5": "b6cb029cea60c11c557975fa2087e14d",
+   "bytes": 993
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640,480",
+ "imports": [],
+ "tabs": [
+  "juego_tiros.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2013/juego_tiros/baseline/frame_00001.png (snap) t=148ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/juego_tiros/baseline/frame_00002.png (snap) t=160ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/juego_tiros/baseline/frame_00010.png (snap) t=290ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/juego_tiros/baseline/frame_00060.png (snap) t=1130ms\n[harness] done frame=60 t=1116ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 148,
+ "deterministic": true,
+ "rerun_frames": 1
+}

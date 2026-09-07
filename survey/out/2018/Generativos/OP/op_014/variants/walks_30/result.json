@@ -1,0 +1,69 @@
+{
+ "sketch": "2018/Generativos/OP/op_014",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_014/variants/walks_30",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "  for (int i = 0; i < 100; i++) {=>  for (int i = 0; i < 30; i++) {"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_014/variants/walks_30/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1453,
+   "md5": "e7af7e00731c9bae9a72c66ebf7c02a9",
+   "bytes": 209803
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "op_014.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  for (int i = 0; i < 100; i++) {",
+   "new": "  for (int i = 0; i < 30; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_014/variants/walks_30/frame_00001.png (snap) t=1453ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_014/variants/walks_30/frame_00010.png (snap) t=1668ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_014/variants/walks_30/frame_00060.png (snap) t=2930ms\n[harness] done frame=60 t=2898ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1453,
+ "diff_vs_baseline": {
+  "mean": 0.248,
+  "changed_fraction": 0.605,
+  "label": "large"
+ },
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

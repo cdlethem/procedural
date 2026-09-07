@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/Fotos/Ignacio2",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/Ignacio2/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/Ignacio2/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 229,
+   "md5": "856e72fa1cc18a4231f8d6c232a3f0a7",
+   "bytes": 575130
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/Ignacio2/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 387,
+   "md5": "4d3a973336738cc2c822fe3fb1f33607",
+   "bytes": 605439
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/Ignacio2/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1238,
+   "md5": "81468450743189fca0f86dc5ed48bd64",
+   "bytes": 601038
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640, 480",
+ "imports": [],
+ "tabs": [
+  "Ignacio2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/Ignacio2/baseline/frame_00001.png (snap) t=229ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/Ignacio2/baseline/frame_00010.png (snap) t=387ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Fotos/Ignacio2/baseline/frame_00060.png (snap) t=1238ms\n[harness] done frame=60 t=1208ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 229,
+ "deterministic": false,
+ "rerun_frames": 3
+}

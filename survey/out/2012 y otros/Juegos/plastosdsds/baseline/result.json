@@ -1,0 +1,44 @@
+{
+ "sketch": "2012 y otros/Juegos/plastosdsds",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/plastosdsds/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/plastosdsds/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 149,
+   "md5": "f3e2d94333e116aa2dcff932f5b0832a",
+   "bytes": 2896
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "plastosdsds.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 36.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Juegos/plastosdsds/baseline/frame_00001.png (snap) t=149ms\n[harness] dispose frame=2 saved=true\n[harness] watchdog: no draw() reached budget; frame=2 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 149,
+ "deterministic": true,
+ "rerun_frames": 1
+}

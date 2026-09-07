@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://procedurals.local/schemas/corpus-benchmark-v1.json",
+  "title": "Procedurals corpus visual benchmark",
+  "type": "object",
+  "required": ["schema_version", "metric_version", "targets", "profiles", "summary", "cases", "excluded"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "metric_version": {"const": 1},
+    "source": {"type": "object"},
+    "path_contract": {"type": "object"},
+    "targets": {
+      "type": "object",
+      "required": ["processing-java", "p5js", "py5", "processing-android"],
+      "additionalProperties": {
+        "type": "object",
+        "required": ["label", "runtime", "adapter"],
+        "properties": {
+          "label": {"type": "string"},
+          "runtime": {"type": "string"},
+          "adapter": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "profiles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["description", "gates"],
+        "properties": {
+          "description": {"type": "string"},
+          "informational": {"type": "boolean"},
+          "gates": {
+            "type": "object",
+            "additionalProperties": {"type": ["number", "boolean"]}
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["cases", "required_cases", "informational_cases", "sketches", "excluded_sketches", "profiles"]
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "sketch", "frame", "reference", "candidate", "reference_sha256", "width", "height", "seed", "profile", "required", "metadata"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "sketch": {"type": "string", "minLength": 1},
+          "frame": {"type": "integer", "minimum": 0},
+          "reference": {"type": "string", "pattern": "^out/.+\\.png$"},
+          "candidate": {"type": "string", "pattern": "^.+/frame_[0-9]+\\.png$"},
+          "reference_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "reference_bytes": {"type": "integer", "minimum": 1},
+          "width": {"type": "integer", "minimum": 1},
+          "height": {"type": "integer", "minimum": 1},
+          "seed": {"type": ["integer", "string", "null"]},
+          "profile": {"type": "string", "minLength": 1},
+          "required": {"type": "boolean"},
+          "metadata": {
+            "type": "object",
+            "required": ["notes_path", "renderer", "deterministic", "animated", "composition", "techniques", "baseline_display", "uses_shader"]
+          },
+          "gates": {"type": "object"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "excluded": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sketch", "reason"],
+        "properties": {
+          "sketch": {"type": "string"},
+          "reason": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/rayos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/rayos/variants/count_3000",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  for (int i = 0; i < 1000; i++) {",
+   "  for (int i = 0; i < 3000; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/rayos/variants/count_3000/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2299,
+   "md5": "54d3eb694d4263ab4d935e696b1a5cc5",
+   "bytes": 1655925
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/rayos/variants/count_3000/self_20260906-004907.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2774,
+   "md5": "54d3eb694d4263ab4d935e696b1a5cc5",
+   "bytes": 1655925
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "rayos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  for (int i = 0; i < 1000; i++) {",
+   "new": "  for (int i = 0; i < 3000; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/rayos/variants/count_3000/frame_00001.png (dispose) t=2299ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2299,
+ "diff_vs_baseline": {
+  "mean": 0.337,
+  "changed_fraction": 0.858,
+  "label": "large"
+ }
+}

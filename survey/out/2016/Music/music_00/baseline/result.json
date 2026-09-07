@@ -1,0 +1,46 @@
+{
+ "sketch": "2016/Music/music_00",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Music/music_00/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  640
+ ],
+ "size_args": "960, 640",
+ "imports": [],
+ "tabs": [
+  "music_00.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "A: c  e  b  d  B: g  g  c  b  f  e  e  d  C: g  f  a  a  [harness] saved ${GENART_SURVEY_ROOT}/out/2016/Music/music_00/baseline/frame_00001.png (snap) t=154ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Music/music_00/baseline/frame_00010.png (snap) t=304ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Music/music_00/baseline/frame_00060.png (snap) t=1135ms\n[harness] done frame=60 t=1122ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 304,
+ "deterministic": true,
+ "rerun_frames": 2,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

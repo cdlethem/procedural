@@ -1,0 +1,61 @@
+{
+ "sketch": "2017/desformPoly",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/desformPoly/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/desformPoly/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 201,
+   "md5": "82adada5e38529cbd1dd9efc0aa1315c",
+   "bytes": 247237
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/desformPoly/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 396,
+   "md5": "b0d504cfc83015333ed1fb69ff160055",
+   "bytes": 264855
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/desformPoly/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1252,
+   "md5": "60848d5d031c160a01937e14f9706640",
+   "bytes": 219394
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720",
+ "imports": [],
+ "tabs": [
+  "desformPoly.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/desformPoly/baseline/frame_00001.png (snap) t=201ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/desformPoly/baseline/frame_00010.png (snap) t=396ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/desformPoly/baseline/frame_00060.png (snap) t=1252ms\n[harness] done frame=60 t=1235ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 201,
+ "deterministic": true,
+ "rerun_frames": 3
+}

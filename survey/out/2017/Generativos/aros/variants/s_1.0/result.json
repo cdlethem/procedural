@@ -1,0 +1,79 @@
+{
+ "sketch": "2017/Generativos/aros",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/s_1.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    aro(width*random(0.4, 0.8), width*random(0.04, 0.1), width*random(0.008, 0.012));",
+   "    aro(width*random(0.9, 1.1), width*random(0.04, 0.1), width*random(0.008, 0.012));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/s_1.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1536,
+   "md5": "1c8f53d42498a109ae8c73e7b728c18b",
+   "bytes": 198272
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/s_1.0/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1768,
+   "md5": "2e4a7941eda32d247b8b8ec474e7384f",
+   "bytes": 195783
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/s_1.0/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3014,
+   "md5": "3fe9007d63566f1ff0160787e5d8b9ff",
+   "bytes": 181155
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "aros.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    aro(width*random(0.4, 0.8), width*random(0.04, 0.1), width*random(0.008, 0.012));",
+   "new": "    aro(width*random(0.9, 1.1), width*random(0.04, 0.1), width*random(0.008, 0.012));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/s_1.0/frame_00001.png (snap) t=1536ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/s_1.0/frame_00010.png (snap) t=1768ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/s_1.0/frame_00060.png (snap) t=3014ms\n[harness] done frame=60 t=2991ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1536,
+ "diff_vs_baseline": {
+  "mean": 0.0476,
+  "changed_fraction": 0.13,
+  "label": "subtle"
+ }
+}

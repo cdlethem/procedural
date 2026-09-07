@@ -1,0 +1,61 @@
+{
+ "sketch": "2016/ditherBall",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/ditherBall/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/ditherBall/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1553,
+   "md5": "bdbbec5c88dc56b3422637fe99c0ee9f",
+   "bytes": 15840
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/ditherBall/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1766,
+   "md5": "6a38d17b31cee4d3b5d0bd4df74b865e",
+   "bytes": 13967
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/ditherBall/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3022,
+   "md5": "d301c3e326a83474931c4651a9d18ec6",
+   "bytes": 10867
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "ditherBall.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/ditherBall/baseline/frame_00001.png (snap) t=1553ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/ditherBall/baseline/frame_00010.png (snap) t=1766ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/ditherBall/baseline/frame_00060.png (snap) t=3022ms\n[harness] done frame=60 t=3003ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "The shader doesn't have a uniform called \"time\" OR the uniform was removed during compilation because it was unused.",
+ "ms_first_frame": 1553,
+ "deterministic": true,
+ "rerun_frames": 3
+}

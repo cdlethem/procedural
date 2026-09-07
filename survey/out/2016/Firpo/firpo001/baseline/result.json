@@ -1,0 +1,37 @@
+{
+ "sketch": "2016/Firpo/firpo001",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Firpo/firpo001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "runtime_error",
+ "detail": "firpo001.pde:57:0:57:0: NullPointerException",
+ "frames": [],
+ "warnings": [
+  "sketch killed 2 s after the exception (launcher leaves it suspended)"
+ ],
+ "renderer": "JAVA2D",
+ "size": [
+  900,
+  900
+ ],
+ "size_args": "900, 900",
+ "imports": [],
+ "tabs": [
+  "firpo001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "seed_fields": [],
+ "wall_s": 3.5,
+ "rc": 143,
+ "timed_out": false,
+ "stdout_tail": "Finished.",
+ "stderr_tail": "java.net.UnknownHostException: scontent.fgru3-2.fna.fbcdn.net\nfirpo001.pde:57:0:57:0: NullPointerException\nCould not run the sketch (Target VM failed to initialize).\nFor more information, read Help \u2192 Troubleshooting.\nCould not run the sketch.",
+ "ms_first_frame": null
+}

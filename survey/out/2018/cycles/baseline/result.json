@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/cycles",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/cycles/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/cycles/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 148,
+   "md5": "660a348b0e239644abc34b8f91e0183c",
+   "bytes": 4752
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/cycles/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 295,
+   "md5": "a4e4520ac9157a1d56240cf3c8948da6",
+   "bytes": 4735
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/cycles/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1125,
+   "md5": "fe4c46b8af995a09aadf73e05d415cbb",
+   "bytes": 4779
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640",
+ "imports": [],
+ "tabs": [
+  "cycles.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/cycles/baseline/frame_00001.png (snap) t=148ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/cycles/baseline/frame_00010.png (snap) t=295ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/cycles/baseline/frame_00060.png (snap) t=1125ms\n[harness] done frame=60 t=1116ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 148,
+ "deterministic": false,
+ "rerun_frames": 3
+}

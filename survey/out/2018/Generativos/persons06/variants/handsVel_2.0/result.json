@@ -1,0 +1,85 @@
+{
+ "sketch": "2018/Generativos/persons06",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/handsVel_2.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "handsVel = random(-0.8, 0.8);",
+   "handsVel = random(-2.0, 2.0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/handsVel_2.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1444,
+   "md5": "b79c2a3d2675be656f1136099a6e06a7",
+   "bytes": 46453
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/handsVel_2.0/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1649,
+   "md5": "0df1b4b783fab857fd3312b0ec2dc1fc",
+   "bytes": 45588
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/handsVel_2.0/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2902,
+   "md5": "0f7e80362580253d9d5ecee08ab32510",
+   "bytes": 47708
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P2D",
+ "imports": [
+  "java.util.*",
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "Person.pde",
+  "persons06.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "handsVel = random(-0.8, 0.8);",
+   "new": "handsVel = random(-2.0, 2.0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n60.210793\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/handsVel_2.0/frame_00001.png (snap) t=1444ms\n53.168205\n53.65501\n53.587486\n52.65417\n51.808777\n51.026512\n50.314342\n49.649208\n49.038925\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/handsVel_2.0/frame_00010.png (snap) t=1649ms\n48.476006\n47.94076\n47.471333\n47.00278\n46.584747\n46.191654\n45.82135\n45.49203\n45.167076\n44.851032\n44.56596\n44.307636\n44.04066\n43.813072\n43.583363\n43.369553\n43.17469\n43.000362\n42.822662\n42.66373\n42.508736\n42.35958\n42.221306\n42.099804\n41.96711\n41.862377\n41.76295\n41.64676\n41.55308\n41.444492\n41.37381\n41.291508\n41.22265\n41.134823\n41.063904\n40.999485\n40.94148\n40.885406\n40.82823\n40.760372\n40.72392\n40.679535\n40.628727\n40.593872\n40.547737\n40.49753\n40.48205\n40.4512\n40.41537\n40.391666\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons06/variants/handsVel_2.0/frame_00060.png (snap) t=2902ms\n[harness] done frame=60 t=2889ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1444,
+ "diff_vs_baseline": {
+  "mean": 0.0073,
+  "changed_fraction": 0.023,
+  "label": "none"
+ }
+}

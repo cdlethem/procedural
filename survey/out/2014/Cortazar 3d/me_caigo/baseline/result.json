@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/Cortazar 3d/me_caigo",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Cortazar 3d/me_caigo/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Cortazar 3d/me_caigo/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1547,
+   "md5": "c089dd8f62fc406ddb798e7a897f8395",
+   "bytes": 9318
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Cortazar 3d/me_caigo/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1797,
+   "md5": "1b29fdac5b3070fdd94f74352394244e",
+   "bytes": 14412
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Cortazar 3d/me_caigo/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3073,
+   "md5": "bbe2fc9785e9def263492a6528dc2aad",
+   "bytes": 31098
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  1920,
+  1080
+ ],
+ "size_args": "1920, 1080, P3D",
+ "imports": [],
+ "tabs": [
+  "me_caigo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Cortazar 3d/me_caigo/baseline/frame_00001.png (snap) t=1547ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Cortazar 3d/me_caigo/baseline/frame_00010.png (snap) t=1797ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Cortazar 3d/me_caigo/baseline/frame_00060.png (snap) t=3073ms\n[harness] done frame=60 t=3027ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1547,
+ "deterministic": true,
+ "rerun_frames": 3
+}

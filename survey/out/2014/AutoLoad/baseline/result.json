@@ -1,0 +1,55 @@
+{
+ "sketch": "2014/AutoLoad",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/AutoLoad/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/AutoLoad/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 171,
+   "md5": "e0b16bba22ba366fc677792d9fe60bc5",
+   "bytes": 3267
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  200,
+  400
+ ],
+ "size_args": "200, 400",
+ "imports": [],
+ "tabs": [
+  "AutoLoad.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "30280291\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/AutoLoad/baseline/frame_00001.png (snap) t=171ms\n198200\n274370\n240030\n230191\n194480\n172610\n204850\n158340\n172311\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/AutoLoad/baseline/frame_00010.png (snap) t=311ms\n151250\n203300\n211340\n217230\n217730\n182840\n175730\n100510\n134360\n166560\n139390\n142480\n124100\n140600\n192750\n161860\n184250\n136440\n133360\n184480\n131990\n88490\n111930\n81270\n74430\n58820\n47630\n80310\n103180\n111190\n77420\n67780\n71330\n102740\n135360\n60080\n186070\n120370\n85760\n124930\n112750\n126340\n66980\n52410\n104080\n59540\n139420\n55250\n46500\n76280\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/AutoLoad/baseline/frame_00060.png (snap) t=1142ms\n[harness] done frame=60 t=1139ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 171,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

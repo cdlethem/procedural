@@ -1,0 +1,79 @@
+{
+ "sketch": "2017/Generativos/burbujas_ani",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/griddens_90",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "      rects(0, 0, width*1.4, height*1.4, int(random(5, random(5, 40))), random(0.02), random(40));",
+   "      rects(0, 0, width*1.4, height*1.4, int(random(5, random(5, 90))), random(0.02), random(40));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/griddens_90/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1495,
+   "md5": "5e8808679afcc21dea57ef5d3ca21f85",
+   "bytes": 325593
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/griddens_90/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1716,
+   "md5": "e9e60ba50ed47b54b3dca22a76005037",
+   "bytes": 325666
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/griddens_90/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2965,
+   "md5": "ac3efb2c794c3a56dd8389aedcc62017",
+   "bytes": 325033
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  820,
+  820
+ ],
+ "size_args": "820, 820, P2D",
+ "imports": [],
+ "tabs": [
+  "burbujas_ani.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "      rects(0, 0, width*1.4, height*1.4, int(random(5, random(5, 40))), random(0.02), random(40));",
+   "new": "      rects(0, 0, width*1.4, height*1.4, int(random(5, random(5, 90))), random(0.02), random(40));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/griddens_90/frame_00001.png (snap) t=1495ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/griddens_90/frame_00010.png (snap) t=1716ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/burbujas_ani/variants/griddens_90/frame_00060.png (snap) t=2965ms\n[harness] done frame=60 t=2942ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1495,
+ "diff_vs_baseline": {
+  "mean": 0.0807,
+  "changed_fraction": 0.289,
+  "label": "moderate"
+ }
+}

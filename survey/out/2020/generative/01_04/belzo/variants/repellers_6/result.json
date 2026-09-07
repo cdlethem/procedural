@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/01_04/belzo",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/belzo/variants/repellers_6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int i = 0; i < 20; i++) {",
+   "for (int i = 0; i < 6; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/belzo/variants/repellers_6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2303,
+   "md5": "aeeaae8cd4db7edc7515db2b28642323",
+   "bytes": 923357
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "belzo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i < 20; i++) {",
+   "new": "for (int i = 0; i < 6; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/belzo/variants/repellers_6/frame_00001.png (snap) t=2303ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/belzo/variants/repellers_6/frame_00010.png (snap) t=2535ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/belzo/variants/repellers_6/frame_00060.png (snap) t=3785ms\n[harness] done frame=60 t=3745ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2303,
+ "diff_vs_baseline": {
+  "mean": 0.1622,
+  "changed_fraction": 0.568,
+  "label": "large"
+ }
+}

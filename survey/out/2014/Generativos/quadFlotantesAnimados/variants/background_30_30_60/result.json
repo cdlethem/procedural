@@ -1,0 +1,79 @@
+{
+ "sketch": "2014/Generativos/quadFlotantesAnimados",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/background_30_30_60",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "background(255, 0, 0);",
+   "background(30, 30, 60);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/background_30_30_60/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 176,
+   "md5": "68ee81a2a25a161c0971eb71d3e226cb",
+   "bytes": 10537
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/background_30_30_60/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 469,
+   "md5": "f7a7a5303c734d22bbc2aa59e72184f5",
+   "bytes": 25712
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/background_30_30_60/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2151,
+   "md5": "c49a251f698ab43144c0064a1b97f59a",
+   "bytes": 59386
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720",
+ "imports": [],
+ "tabs": [
+  "quadFlotantesAnimados.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "background(255, 0, 0);",
+   "new": "background(30, 30, 60);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "quadFlotantesAnimados.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/background_30_30_60/frame_00001.png (snap) t=176ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/background_30_30_60/frame_00010.png (snap) t=469ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/quadFlotantesAnimados/variants/background_30_30_60/frame_00060.png (snap) t=2151ms\n[harness] done frame=60 t=2128ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 176,
+ "diff_vs_baseline": {
+  "mean": 0.1326,
+  "changed_fraction": 0.37,
+  "label": "moderate"
+ }
+}

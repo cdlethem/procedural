@@ -1,0 +1,31 @@
+{
+ "sketch": "2018/Generativos/temor",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/temor/variants/vig_1.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float dis = 1.0-pow(clamp(distance(st, vec2(0.5)), 0.0, 1.0), 2.4)*0.5;",
+   "float dis = 1.0-pow(clamp(distance(st, vec2(0.5)), 0.0, 1.0), 1.0)*0.5;"
+  ]
+ ],
+ "status": "bad_sub",
+ "detail": "OLD text not found in any tab: 'float dis = 1.0-pow(clamp(distance(st, vec2(0.5)), 0.0, 1.0), 2.4)*0.5;'",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  6500,
+  6500
+ ],
+ "size_args": "6500, 6500, P2D",
+ "imports": [],
+ "tabs": [
+  "temor.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": []
+}

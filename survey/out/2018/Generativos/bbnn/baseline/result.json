@@ -1,0 +1,55 @@
+{
+ "sketch": "2018/Generativos/bbnn",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/bbnn/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/bbnn/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2648,
+   "md5": "01ffa4c7b889a6f99e06274024aeb586",
+   "bytes": 324508
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/bbnn/baseline/self_20260902-190203.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3486,
+   "md5": "01ffa4c7b889a6f99e06274024aeb586",
+   "bytes": 324508
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P3D",
+ "imports": [],
+ "tabs": [
+  "bbnn.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/bbnn/baseline/frame_00001.png (dispose) t=2648ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2648,
+ "deterministic": true,
+ "rerun_frames": 2
+}

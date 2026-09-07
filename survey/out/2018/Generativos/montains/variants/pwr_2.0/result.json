@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/montains",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/montains/variants/pwr_2.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float pwr = random(0.8, 1.2);",
+   "float pwr = 2.0;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/montains/variants/pwr_2.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1517,
+   "md5": "21b38f7915bb0f93d4e798997d97b4ae",
+   "bytes": 399450
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "montains.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float pwr = random(0.8, 1.2);",
+   "new": "float pwr = 2.0;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/montains/variants/pwr_2.0/frame_00001.png (snap) t=1517ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/montains/variants/pwr_2.0/frame_00010.png (snap) t=1736ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/montains/variants/pwr_2.0/frame_00060.png (snap) t=2998ms\n[harness] done frame=60 t=2958ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1517,
+ "diff_vs_baseline": {
+  "mean": 0.1616,
+  "changed_fraction": 0.659,
+  "label": "large"
+ }
+}

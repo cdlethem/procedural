@@ -1,0 +1,70 @@
+{
+ "sketch": "2016/Generativos/gridAndPoints",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/gridAndPoints/variants/layers_2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int k = 0; k < 5; k++) {",
+   "for (int k = 0; k < 2; k++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/gridAndPoints/variants/layers_2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 179,
+   "md5": "d6bfe09422f78cb7a82b48f213cbaeeb",
+   "bytes": 178583
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "gridAndPoints.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int k = 0; k < 5; k++) {",
+   "new": "for (int k = 0; k < 2; k++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/gridAndPoints/variants/layers_2/frame_00001.png (snap) t=179ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/gridAndPoints/variants/layers_2/frame_00010.png (snap) t=341ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/gridAndPoints/variants/layers_2/frame_00060.png (snap) t=1181ms\n[harness] done frame=60 t=1158ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 179,
+ "diff_vs_baseline": {
+  "mean": 0.5229,
+  "changed_fraction": 0.663,
+  "label": "large"
+ }
+}

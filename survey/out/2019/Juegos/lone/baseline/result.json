@@ -1,0 +1,71 @@
+{
+ "sketch": "2019/Juegos/lone",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/Juegos/lone/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Juegos/lone/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1467,
+   "md5": "caa81ae790b80084fffffdb864670dc8",
+   "bytes": 14116
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Juegos/lone/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 4866,
+   "md5": "5ae78f61a8556e296a60a59c3425a23b",
+   "bytes": 14241
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/Juegos/lone/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6129,
+   "md5": "b311274a850726de188860b60c099cfb",
+   "bytes": 14133
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "lone.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 7.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Juegos/lone/baseline/frame_00001.png (snap) t=1467ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Juegos/lone/baseline/frame_00010.png (snap) t=4866ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/Juegos/lone/baseline/frame_00060.png (snap) t=6129ms\n[harness] done frame=60 t=6111ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1467,
+ "deterministic": false,
+ "rerun_frames": 3
+}

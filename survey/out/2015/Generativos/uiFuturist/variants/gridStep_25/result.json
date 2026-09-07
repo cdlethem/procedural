@@ -1,0 +1,81 @@
+{
+ "sketch": "2015/Generativos/uiFuturist",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/gridStep_25",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  grid(50, 50, width-100, height-100, 50);",
+   "  grid(50, 50, width-100, height-100, 25);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/gridStep_25/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1509,
+   "md5": "daae4197b0068a4dc40440f20750ecd1",
+   "bytes": 257779
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/gridStep_25/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1723,
+   "md5": "6ffa6ab71a8087702639d2f3fb0dd747",
+   "bytes": 266151
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/gridStep_25/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2970,
+   "md5": "2e638151ad3a4a0d867e91e014eeeec9",
+   "bytes": 263329
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600, P2D",
+ "imports": [],
+ "tabs": [
+  "uiFuturist.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  grid(50, 50, width-100, height-100, 50);",
+   "new": "  grid(50, 50, width-100, height-100, 25);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "uiFuturist.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/gridStep_25/frame_00001.png (snap) t=1509ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/gridStep_25/frame_00010.png (snap) t=1723ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/uiFuturist/variants/gridStep_25/frame_00060.png (snap) t=2970ms\n[harness] done frame=60 t=2956ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1509,
+ "diff_vs_baseline": {
+  "mean": 0.0018,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

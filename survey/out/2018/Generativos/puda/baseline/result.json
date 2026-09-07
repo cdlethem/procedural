@@ -1,0 +1,69 @@
+{
+ "sketch": "2018/Generativos/puda",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/puda/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/puda/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1691,
+   "md5": "0966271cc7f269baeaf494f956b415b3",
+   "bytes": 517483
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "puda.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puda/baseline/frame_00001.png (snap) t=1691ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puda/baseline/frame_00010.png (snap) t=1909ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puda/baseline/frame_00060.png (snap) t=3166ms\n[harness] done frame=60 t=3133ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1691,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

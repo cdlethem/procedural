@@ -1,0 +1,76 @@
+{
+ "sketch": "2018/Generativos/peligths",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/peligths/variants/inner_0.7",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "circle(x, y, s*0.4);",
+   "circle(x, y, s*0.7);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/peligths/variants/inner_0.7/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1536,
+   "md5": "67d4c2b4c480304ad5846f04b935ae73",
+   "bytes": 1074053
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "peligths.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "circle(x, y, s*0.4);",
+   "new": "circle(x, y, s*0.7);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/peligths/variants/inner_0.7/frame_00001.png (snap) t=1536ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/peligths/variants/inner_0.7/frame_00010.png (snap) t=1773ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/peligths/variants/inner_0.7/frame_00060.png (snap) t=3050ms\n[harness] done frame=60 t=2988ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1536,
+ "diff_vs_baseline": {
+  "mean": 0.0689,
+  "changed_fraction": 0.229,
+  "label": "moderate"
+ }
+}

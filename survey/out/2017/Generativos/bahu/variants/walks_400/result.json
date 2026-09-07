@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/bahu",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/bahu/variants/walks_400",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  cc = int(random(200));",
+   "  cc = 400;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/bahu/variants/walks_400/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 378,
+   "md5": "3e3512655a3b94a868f9fbb442ec1cef",
+   "bytes": 743282
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "bahu.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  cc = int(random(200));",
+   "new": "  cc = 400;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/bahu/variants/walks_400/frame_00001.png (snap) t=378ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/bahu/variants/walks_400/frame_00010.png (snap) t=553ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/bahu/variants/walks_400/frame_00060.png (snap) t=1412ms\n[harness] done frame=60 t=1371ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 378,
+ "diff_vs_baseline": {
+  "mean": 0.0731,
+  "changed_fraction": 0.225,
+  "label": "moderate"
+ }
+}

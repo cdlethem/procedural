@@ -1,0 +1,72 @@
+{
+ "sketch": "2020/generative/01_04/defRect",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1584,
+   "md5": "3f449204a2c3fab210e844be3c9c2347",
+   "bytes": 1152283
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1797,
+   "md5": "8bc8e9c0a868edf6cda5130fc932c09d",
+   "bytes": 10292
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3058,
+   "md5": "8bc8e9c0a868edf6cda5130fc932c09d",
+   "bytes": 10292
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "defRect.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/baseline/frame_00001.png (snap) t=1584ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/baseline/frame_00010.png (snap) t=1797ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/defRect/baseline/frame_00060.png (snap) t=3058ms\n[harness] done frame=60 t=3038ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1584,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,55 @@
+{
+ "sketch": "2013/3d/nodos",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/3d/nodos/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/3d/nodos/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1455,
+   "md5": "e3c72ac3df7533852411be06d473c961",
+   "bytes": 2303
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "nodos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2013/3d/nodos/baseline/frame_00001.png (snap) t=1455ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/3d/nodos/baseline/frame_00010.png (snap) t=1668ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/3d/nodos/baseline/frame_00060.png (snap) t=2928ms\n[harness] done frame=60 t=2918ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1455,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

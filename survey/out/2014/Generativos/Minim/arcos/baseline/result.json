@@ -1,0 +1,32 @@
+{
+ "sketch": "2014/Generativos/Minim/arcos",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Minim/arcos/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "compile_error",
+ "detail": "arcos.pde:4:0:4:0: The method setup() in the type arcos is not applicable for the arguments (int, int)",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": null,
+ "imports": [],
+ "tabs": [
+  "arcos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "seed_fields": [],
+ "wall_s": 1.2,
+ "rc": 1,
+ "timed_out": false,
+ "stdout_tail": "",
+ "stderr_tail": "arcos.pde:4:0:4:0: The method setup() in the type arcos is not applicable for the arguments (int, int)",
+ "ms_first_frame": null
+}

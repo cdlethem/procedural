@@ -1,0 +1,71 @@
+{
+ "sketch": "2015/Generativos/FFt/prueba4",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1714,
+   "md5": "cfaeb8d6a4b2fc92261b56d9670dc30c",
+   "bytes": 3926
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 7209,
+   "md5": "0c5c85e951a61b9ef727df38e0345b5e",
+   "bytes": 4630
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 21766,
+   "md5": "5cf825ba7d90d95f935f0c9e5dd8ed05",
+   "bytes": 5882
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [
+  "ddf.minim.*",
+  "ddf.minim.analysis.*"
+ ],
+ "tabs": [
+  "prueba4.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "minim.jar",
+  "jsminim.jar",
+  "jl1.0.1.jar",
+  "mp3spi1.9.5.jar",
+  "tritonus_aos.jar",
+  "tritonus_share.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 23.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/baseline/frame_00001.png (snap) t=1714ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/baseline/frame_00010.png (snap) t=7209ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/baseline/frame_00060.png (snap) t=21766ms\n[harness] done frame=60 t=21755ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1714,
+ "deterministic": true,
+ "rerun_frames": 3
+}

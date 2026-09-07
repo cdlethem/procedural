@@ -1,0 +1,55 @@
+{
+ "sketch": "2018/Generativos/circles004",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/circles004/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/circles004/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 3087,
+   "md5": "8505f215f5df040d9a6b594b5c0fe700",
+   "bytes": 4115671
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/circles004/baseline/self_20260902-190319.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3518,
+   "md5": "8505f215f5df040d9a6b594b5c0fe700",
+   "bytes": 4115671
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P3D",
+ "imports": [],
+ "tabs": [
+  "circles004.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/circles004/baseline/frame_00001.png (dispose) t=3087ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3087,
+ "deterministic": true,
+ "rerun_frames": 2
+}

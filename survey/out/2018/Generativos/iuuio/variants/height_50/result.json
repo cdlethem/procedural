@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/iuuio",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iuuio/variants/height_50",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float hh = min(r.w, r.h)*random(10)*pow(noise(des+r.x*det, des+r.y*det), 1.4);",
+   "float hh = min(r.w, r.h)*random(50)*pow(noise(des+r.x*det, des+r.y*det), 1.4);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iuuio/variants/height_50/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 3043,
+   "md5": "e5996f2b32d9af947ee7264ef4eda238",
+   "bytes": 1729990
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/iuuio/variants/height_50/self_20260905-091209.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3541,
+   "md5": "e5996f2b32d9af947ee7264ef4eda238",
+   "bytes": 1729990
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P3D",
+ "imports": [],
+ "tabs": [
+  "iuuio.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float hh = min(r.w, r.h)*random(10)*pow(noise(des+r.x*det, des+r.y*det), 1.4);",
+   "new": "float hh = min(r.w, r.h)*random(50)*pow(noise(des+r.x*det, des+r.y*det), 1.4);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/iuuio/variants/height_50/frame_00001.png (dispose) t=3043ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3043,
+ "diff_vs_baseline": {
+  "mean": 0.2831,
+  "changed_fraction": 0.672,
+  "label": "large"
+ }
+}

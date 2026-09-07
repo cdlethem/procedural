@@ -1,0 +1,63 @@
+{
+ "sketch": "2015/3d/planetaaaa",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/3d/planetaaaa/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/3d/planetaaaa/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1554,
+   "md5": "61a68ce23cb7c155ea861867bb6342b2",
+   "bytes": 271517
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/3d/planetaaaa/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1807,
+   "md5": "54d8002519e3aecfe75f2cdf556863ae",
+   "bytes": 315930
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/3d/planetaaaa/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3069,
+   "md5": "7d1dfcc78528310b12dc636ea116c006",
+   "bytes": 311750
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "planetaaaa.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/3d/planetaaaa/baseline/frame_00001.png (snap) t=1554ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/3d/planetaaaa/baseline/frame_00010.png (snap) t=1807ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/3d/planetaaaa/baseline/frame_00060.png (snap) t=3069ms\n[harness] done frame=60 t=3044ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1554,
+ "deterministic": true,
+ "rerun_frames": 3
+}

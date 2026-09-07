@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/geogeo",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/geogeo/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/geogeo/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 5323,
+   "md5": "1679be55de44a8b4ae38623edf44a16e",
+   "bytes": 8104358,
+   "captured_frame": 2
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/geogeo/baseline/self_20260903-014151.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3818,
+   "md5": "1679be55de44a8b4ae38623edf44a16e",
+   "bytes": 8104358
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  6500,
+  6500
+ ],
+ "size_args": "6500, 6500, P2D",
+ "imports": [],
+ "tabs": [
+  "geogeo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 2 promoted to frame_00001.png"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 18.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/geogeo/baseline/frame_00001.png (snap) t=3639ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/geogeo/baseline/frame_00002.png (snap) t=5323ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/geogeo/baseline/frame_00010.png (snap) t=13234ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/geogeo/baseline/frame_00060.png (snap) t=17141ms\n[harness] done frame=60 t=16197ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 5323,
+ "deterministic": true,
+ "rerun_frames": 2
+}

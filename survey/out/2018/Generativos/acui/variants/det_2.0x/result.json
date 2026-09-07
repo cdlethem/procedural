@@ -1,0 +1,86 @@
+{
+ "sketch": "2018/Generativos/acui",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/det_2.0x",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "float det = random(0.006, 0.008)*0.5;=>float det = random(0.006, 0.008)*2.0;"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/det_2.0x/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3444,
+   "md5": "d293308fe657a2c14edbf60a9a770a80",
+   "bytes": 2608746
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/det_2.0x/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3653,
+   "md5": "c1a4fd9bba2c1a1a8c8147f3a90553ad",
+   "bytes": 21131
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/det_2.0x/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 4911,
+   "md5": "c1a4fd9bba2c1a1a8c8147f3a90553ad",
+   "bytes": 21131
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "acui.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float det = random(0.006, 0.008)*0.5;",
+   "new": "float det = random(0.006, 0.008)*2.0;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/det_2.0x/frame_00001.png (snap) t=3444ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/det_2.0x/frame_00010.png (snap) t=3653ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/acui/variants/det_2.0x/frame_00060.png (snap) t=4911ms\n[harness] done frame=60 t=4885ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3444,
+ "diff_vs_baseline": {
+  "mean": 0.1005,
+  "changed_fraction": 0.406,
+  "label": "moderate"
+ }
+}

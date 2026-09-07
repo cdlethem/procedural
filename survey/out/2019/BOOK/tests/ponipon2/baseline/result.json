@@ -1,0 +1,49 @@
+{
+ "sketch": "2019/BOOK/tests/ponipon2",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/BOOK/tests/ponipon2/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/BOOK/tests/ponipon2/baseline/self_ponipon2.pdf",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1875,
+   "md5": "5b1ce79586c07af5178d7ad12f4dca7b",
+   "bytes": 445140
+  }
+ ],
+ "warnings": [],
+ "renderer": "PDF",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800, PDF, \"ponipon2.pdf\"",
+ "imports": [
+  "java.awt.Desktop",
+  "java.io.File",
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "ponipon2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] dispose frame=1 saved=false\n[harness] save failed: java.lang.RuntimeException: No save() for PGraphicsPDF\nFinished.",
+ "stderr_tail": "\"HC Maru Gothic\" is not available, so another font will be used. Use PFont.list() to show available fonts.\nSome characters not available in the current font, use createFont() to specify a typeface the includes them.",
+ "ms_first_frame": 1875,
+ "deterministic": false,
+ "rerun_frames": 1
+}

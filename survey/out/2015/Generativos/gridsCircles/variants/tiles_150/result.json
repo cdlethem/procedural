@@ -1,0 +1,70 @@
+{
+ "sketch": "2015/Generativos/gridsCircles",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/gridsCircles/variants/tiles_150",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  for (int c = 0; c < 50; c++) {",
+   "  for (int c = 0; c < 150; c++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/gridsCircles/variants/tiles_150/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1614,
+   "md5": "860e491016b6421b13e3ec152c087012",
+   "bytes": 978573
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800, P2D",
+ "imports": [],
+ "tabs": [
+  "gridsCircles.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  for (int c = 0; c < 50; c++) {",
+   "new": "  for (int c = 0; c < 150; c++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/gridsCircles/variants/tiles_150/frame_00001.png (snap) t=1614ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/gridsCircles/variants/tiles_150/frame_00010.png (snap) t=1839ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/gridsCircles/variants/tiles_150/frame_00060.png (snap) t=3103ms\n[harness] done frame=60 t=3056ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1614,
+ "diff_vs_baseline": {
+  "mean": 0.0329,
+  "changed_fraction": 0.105,
+  "label": "subtle"
+ }
+}

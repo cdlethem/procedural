@@ -1,0 +1,63 @@
+{
+ "sketch": "2014/Juegos/Avion",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Avion/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Avion/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 166,
+   "md5": "944cc8881ed79099fd71671c8ba27806",
+   "bytes": 2448
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Avion/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 313,
+   "md5": "88d9248b499f7d48a3f28348ef22e931",
+   "bytes": 2452
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Avion/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1147,
+   "md5": "e804971633b67d71cd604ecf7d5f865b",
+   "bytes": 2653
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  720,
+  480
+ ],
+ "size_args": "720, 480",
+ "imports": [],
+ "tabs": [
+  "Avion.pde",
+  "Camera.pde",
+  "Input.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/Avion/baseline/frame_00001.png (snap) t=166ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/Avion/baseline/frame_00010.png (snap) t=313ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/Avion/baseline/frame_00060.png (snap) t=1147ms\n[harness] done frame=60 t=1136ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 166,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,29 @@
+{
+ "sketch": "2016/Juegos/pinball",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Juegos/pinball/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "org.jbox2d.collision.shapes.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  480,
+  720
+ ],
+ "size_args": "480, 720",
+ "imports": [
+  "org.jbox2d.collision.shapes.*",
+  "org.jbox2d.common.*",
+  "org.jbox2d.dynamics.*",
+  "shiffman.box2d.*"
+ ],
+ "tabs": [
+  "pinball.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

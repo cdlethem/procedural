@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/linescurvis",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/linescurvis/variants/speckle_3000",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int i = 0; i < 1000; i++) {",
+   "for (int i = 0; i < 3000; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/linescurvis/variants/speckle_3000/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1629,
+   "md5": "520ed182f2762febcf2544f000386d13",
+   "bytes": 1550471
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "linescurvis.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i < 1000; i++) {",
+   "new": "for (int i = 0; i < 3000; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/linescurvis/variants/speckle_3000/frame_00001.png (snap) t=1629ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/linescurvis/variants/speckle_3000/frame_00010.png (snap) t=1869ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/linescurvis/variants/speckle_3000/frame_00060.png (snap) t=3136ms\n[harness] done frame=60 t=3083ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\nmap(0, 0, 0, 0, 1) called, which returns NaN (not a number)",
+ "ms_first_frame": 1629,
+ "diff_vs_baseline": {
+  "mean": 0.2384,
+  "changed_fraction": 0.812,
+  "label": "large"
+ }
+}

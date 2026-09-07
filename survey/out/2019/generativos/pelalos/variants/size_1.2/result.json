@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/pelalos",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/pelalos/variants/size_1.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float ss = random(20, random(60, 180)*random(0.5, 1.8))*2.2;",
+   "    float ss = random(20, random(60, 180)*random(0.5, 1.8))*1.2;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/pelalos/variants/size_1.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1723,
+   "md5": "96f81e13cebfb88a5c2eb0c380df6257",
+   "bytes": 438085
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "pelalos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "    float ss = random(20, random(60, 180)*random(0.5, 1.8))*2.2;",
+   "new": "    float ss = random(20, random(60, 180)*random(0.5, 1.8))*1.2;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/pelalos/variants/size_1.2/frame_00001.png (snap) t=1723ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/pelalos/variants/size_1.2/frame_00010.png (snap) t=1942ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/pelalos/variants/size_1.2/frame_00060.png (snap) t=3193ms\n[harness] done frame=60 t=3165ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1723,
+ "diff_vs_baseline": {
+  "mean": 0.1837,
+  "changed_fraction": 0.612,
+  "label": "large"
+ }
+}

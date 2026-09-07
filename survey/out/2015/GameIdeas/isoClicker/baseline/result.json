@@ -1,0 +1,61 @@
+{
+ "sketch": "2015/GameIdeas/isoClicker",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoClicker/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoClicker/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1577,
+   "md5": "d16148ee403767fb9061efcde11f6010",
+   "bytes": 4539
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoClicker/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1806,
+   "md5": "c3b047c35a8d625131011bd07f4f91f0",
+   "bytes": 4540
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoClicker/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3063,
+   "md5": "187ddbda2da50142e2c7acc3830bdcbb",
+   "bytes": 4543
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600, P3D",
+ "imports": [],
+ "tabs": [
+  "isoClicker.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoClicker/baseline/frame_00001.png (snap) t=1577ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoClicker/baseline/frame_00010.png (snap) t=1806ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoClicker/baseline/frame_00060.png (snap) t=3063ms\n[harness] done frame=60 t=3050ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Neue Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1577,
+ "deterministic": true,
+ "rerun_frames": 3
+}

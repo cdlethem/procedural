@@ -1,0 +1,69 @@
+{
+ "sketch": "2016/gridTokyo",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/gridTokyo/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/gridTokyo/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 214,
+   "md5": "571b113bd7ddf9dc83ad13372d63c2bd",
+   "bytes": 5191,
+   "captured_frame": 2
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/gridTokyo/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 351,
+   "md5": "cb0258aa25245bb2cc2fa703d7a4ed4a",
+   "bytes": 5208
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/gridTokyo/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1191,
+   "md5": "ba2aac470d77ecb84dec6f8090f4e347",
+   "bytes": 6053
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "gridTokyo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 2 promoted to frame_00001.png"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/gridTokyo/baseline/frame_00001.png (snap) t=191ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/gridTokyo/baseline/frame_00002.png (snap) t=214ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/gridTokyo/baseline/frame_00010.png (snap) t=351ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/gridTokyo/baseline/frame_00060.png (snap) t=1191ms\n[harness] done frame=60 t=1169ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 214,
+ "deterministic": true,
+ "rerun_frames": 3
+}

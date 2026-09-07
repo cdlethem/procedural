@@ -1,0 +1,76 @@
+{
+ "sketch": "2019/generativos/chanels",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/alpha_255",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    fill(rcol(), 80);",
+   "    fill(rcol(), 255);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/alpha_255/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1502,
+   "md5": "da351539403645e0704de0755afd4c19",
+   "bytes": 326450
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/alpha_255/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1723,
+   "md5": "2554904ed0eea43ed2412dae62aeaca0",
+   "bytes": 6090
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/alpha_255/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2976,
+   "md5": "2554904ed0eea43ed2412dae62aeaca0",
+   "bytes": 6090
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [],
+ "tabs": [
+  "chanels.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    fill(rcol(), 80);",
+   "new": "    fill(rcol(), 255);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/alpha_255/frame_00001.png (snap) t=1502ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/alpha_255/frame_00010.png (snap) t=1723ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/variants/alpha_255/frame_00060.png (snap) t=2976ms\n[harness] done frame=60 t=2957ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1502,
+ "diff_vs_baseline": {
+  "mean": 0.3196,
+  "changed_fraction": 0.908,
+  "label": "large"
+ }
+}

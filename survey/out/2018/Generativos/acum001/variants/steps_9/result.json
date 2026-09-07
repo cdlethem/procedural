@@ -1,0 +1,69 @@
+{
+ "sketch": "2018/Generativos/acum001",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acum001/variants/steps_9",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "int vv = gg*int(random(1, 5));=>int vv = gg*int(random(1, 9));"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/acum001/variants/steps_9/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1532,
+   "md5": "4694c930c465e2f1690f8eccd7073ddd",
+   "bytes": 449381
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "acum001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int vv = gg*int(random(1, 5));",
+   "new": "int vv = gg*int(random(1, 9));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/acum001/variants/steps_9/frame_00001.png (snap) t=1532ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/acum001/variants/steps_9/frame_00010.png (snap) t=1750ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/acum001/variants/steps_9/frame_00060.png (snap) t=3012ms\n[harness] done frame=60 t=2974ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1532,
+ "diff_vs_baseline": {
+  "mean": 0.0412,
+  "changed_fraction": 0.136,
+  "label": "subtle"
+ }
+}

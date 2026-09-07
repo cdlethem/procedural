@@ -1,0 +1,70 @@
+{
+ "sketch": "2014/Generativos/papota",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/papota/variants/centerCono_small",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  cono(width/2, height/2, random(width*0.2, width*0.6), int(random(10, 100)), random(TWO_PI), random(1), col);",
+   "  cono(width/2, height/2, random(width*0.05, width*0.15), int(random(10, 100)), random(TWO_PI), random(1), col);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/papota/variants/centerCono_small/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 186,
+   "md5": "d61f96c9e68dc72faf6d4fffe77f6fd4",
+   "bytes": 166642
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  200
+ ],
+ "size_args": "800, 200",
+ "imports": [],
+ "tabs": [
+  "papota.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  cono(width/2, height/2, random(width*0.2, width*0.6), int(random(10, 100)), random(TWO_PI), random(1), col);",
+   "new": "  cono(width/2, height/2, random(width*0.05, width*0.15), int(random(10, 100)), random(TWO_PI), random(1), col);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/papota/variants/centerCono_small/frame_00001.png (snap) t=186ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/papota/variants/centerCono_small/frame_00010.png (snap) t=331ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/papota/variants/centerCono_small/frame_00060.png (snap) t=1165ms\n[harness] done frame=60 t=1155ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 186,
+ "diff_vs_baseline": {
+  "mean": 0.0136,
+  "changed_fraction": 0.0,
+  "label": "subtle"
+ }
+}

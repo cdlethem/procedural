@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/gricula",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/gricula/variants/c1_150",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  int c1 = int(random(40, random(40, 800)));",
+   "  int c1 = 150;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/gricula/variants/c1_150/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1510,
+   "md5": "482f61ce0183a8c50c53a01e47424b41",
+   "bytes": 314192
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "gricula.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int c1 = int(random(40, random(40, 800)));",
+   "new": "  int c1 = 150;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/gricula/variants/c1_150/frame_00001.png (snap) t=1510ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/gricula/variants/c1_150/frame_00010.png (snap) t=1721ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/gricula/variants/c1_150/frame_00060.png (snap) t=2985ms\n[harness] done frame=60 t=2954ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1510,
+ "diff_vs_baseline": {
+  "mean": 0.3061,
+  "changed_fraction": 0.857,
+  "label": "large"
+ }
+}

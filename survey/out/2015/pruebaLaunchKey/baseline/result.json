@@ -1,0 +1,27 @@
+{
+ "sketch": "2015/pruebaLaunchKey",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/pruebaLaunchKey/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "themidibus.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  400
+ ],
+ "size_args": "800, 400",
+ "imports": [
+  "themidibus.*"
+ ],
+ "tabs": [
+  "LaunchKey.pde",
+  "pruebaLaunchKey.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

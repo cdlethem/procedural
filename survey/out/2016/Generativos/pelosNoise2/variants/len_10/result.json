@@ -1,0 +1,87 @@
+{
+ "sketch": "2016/Generativos/pelosNoise2",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/len_10",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "      float d = map(n, 0, 1, 2, 30);",
+   "      float d = map(n, 0, 1, 2, 10);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/len_10/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 718,
+   "md5": "07219b53aa41c3db29d4c954502acba4",
+   "bytes": 1438854
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/len_10/self_0002.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1837,
+   "md5": "6b873fdecf553a7c8a73d8d079bb72fc",
+   "bytes": 1451299
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/len_10/self_0003.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2088,
+   "md5": "3412d2f7fb1222018f290aed44caf54e",
+   "bytes": 1450095
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/len_10/self_0001.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1522,
+   "md5": "07219b53aa41c3db29d4c954502acba4",
+   "bytes": 1438854
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "pelosNoise2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "      float d = map(n, 0, 1, 2, 30);",
+   "new": "      float d = map(n, 0, 1, 2, 10);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/len_10/frame_00001.png (snap) t=718ms\n[harness] dispose frame=4 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 718,
+ "diff_vs_baseline": {
+  "mean": 0.2829,
+  "changed_fraction": 0.996,
+  "label": "large"
+ }
+}

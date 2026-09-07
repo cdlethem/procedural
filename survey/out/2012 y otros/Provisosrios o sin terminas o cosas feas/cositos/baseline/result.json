@@ -1,0 +1,61 @@
+{
+ "sketch": "2012 y otros/Provisosrios o sin terminas o cosas feas/cositos",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/cositos/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/cositos/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 200,
+   "md5": "ebbdde1911d890def386399fbb7c03fb",
+   "bytes": 1655
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/cositos/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 341,
+   "md5": "b748e0710212d7a7f3aff9422a44fff5",
+   "bytes": 1631
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/cositos/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1171,
+   "md5": "f4014c146a423936339db3399defbff0",
+   "bytes": 1637
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "cositos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/cositos/baseline/frame_00001.png (snap) t=200ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/cositos/baseline/frame_00010.png (snap) t=341ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Provisosrios o sin terminas o cosas feas/cositos/baseline/frame_00060.png (snap) t=1171ms\n[harness] done frame=60 t=1167ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 200,
+ "deterministic": true,
+ "rerun_frames": 3
+}

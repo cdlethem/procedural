@@ -1,0 +1,76 @@
+{
+ "sketch": "2018/Generativos/hori03",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/cc_30",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(200)*random(0.2, 1));",
+   "int cc = 30;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/cc_30/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1530,
+   "md5": "7170654b80a1c959fe4ee9c8ad14f264",
+   "bytes": 1055106
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/cc_30/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1759,
+   "md5": "378d55e310978307447145c3db5849e8",
+   "bytes": 1065083
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/cc_30/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3011,
+   "md5": "a1cf13f716db3734ed414b2df809ac2f",
+   "bytes": 1067640
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*SCALE), int(sheight*SCALE), P3D",
+ "imports": [],
+ "tabs": [
+  "hori03.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(200)*random(0.2, 1));",
+   "new": "int cc = 30;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/cc_30/frame_00001.png (snap) t=1530ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/cc_30/frame_00010.png (snap) t=1759ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/hori03/variants/cc_30/frame_00060.png (snap) t=3011ms\n[harness] done frame=60 t=2975ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1530,
+ "diff_vs_baseline": {
+  "mean": 0.1694,
+  "changed_fraction": 0.657,
+  "label": "large"
+ }
+}

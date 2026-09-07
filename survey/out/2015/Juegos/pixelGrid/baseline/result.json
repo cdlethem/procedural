@@ -1,0 +1,61 @@
+{
+ "sketch": "2015/Juegos/pixelGrid",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Juegos/pixelGrid/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/pixelGrid/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 191,
+   "md5": "20379868ed6dbaa5a69c2a469d83816a",
+   "bytes": 35135
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/pixelGrid/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 343,
+   "md5": "7d7c9c07bacc6fe88b29bac806a54afc",
+   "bytes": 36254
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Juegos/pixelGrid/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1178,
+   "md5": "8c4d161542995b4505bfdc1d69005515",
+   "bytes": 34763
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  600
+ ],
+ "size_args": "400, 600",
+ "imports": [],
+ "tabs": [
+  "pixelGrid.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/pixelGrid/baseline/frame_00001.png (snap) t=191ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/pixelGrid/baseline/frame_00010.png (snap) t=343ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Juegos/pixelGrid/baseline/frame_00060.png (snap) t=1178ms\n[harness] done frame=60 t=1169ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "noSmooth() can only be used before beginDraw()\nnoSmooth() can only be used inside settings()",
+ "ms_first_frame": 191,
+ "deterministic": true,
+ "rerun_frames": 3
+}

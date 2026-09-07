@@ -1,0 +1,23 @@
+{
+ "sketch": "2018/Framed/GRRD/grrd_004",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Framed/GRRD/grrd_004/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "themidibus.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*SCALE), int(sheight*SCALE), P3D",
+ "imports": [
+  "themidibus.*"
+ ],
+ "tabs": [
+  "grrd_004.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

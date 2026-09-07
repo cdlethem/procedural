@@ -1,0 +1,31 @@
+{
+ "sketch": "2020/generative/01_04/fractal001",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fractal001/variants/center_0.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    vec2 center = vec2(0.2, 0.9);",
+   "    vec2 center = vec2(0.0, 0.0);"
+  ]
+ ],
+ "status": "bad_sub",
+ "detail": "OLD text not found in any tab: '    vec2 center = vec2(0.2, 0.9);'",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P2D",
+ "imports": [],
+ "tabs": [
+  "fractal001.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": []
+}

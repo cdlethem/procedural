@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/pera",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pera/variants/alpha_128",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float alp = map(i, 0, planets, 0, 255);",
+   "    float alp = map(i, 0, planets, 0, 128);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/pera/variants/alpha_128/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1524,
+   "md5": "cecb51d018567863a72f173e1aa6219c",
+   "bytes": 961869
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "pera.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float alp = map(i, 0, planets, 0, 255);",
+   "new": "    float alp = map(i, 0, planets, 0, 128);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pera/variants/alpha_128/frame_00001.png (snap) t=1524ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pera/variants/alpha_128/frame_00010.png (snap) t=1759ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/pera/variants/alpha_128/frame_00060.png (snap) t=3026ms\n[harness] done frame=60 t=2974ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1524,
+ "diff_vs_baseline": {
+  "mean": 0.0358,
+  "changed_fraction": 0.102,
+  "label": "subtle"
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/espo",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/espo/variants/cc_15",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(r*r*PI*random(1, 5));",
+   "int cc = int(r*r*PI*random(1, 15));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/espo/variants/cc_15/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 11880,
+   "md5": "a2adc829c081d195e4af7d34ad6608f1",
+   "bytes": 1626781
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "espo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int cc = int(r*r*PI*random(1, 5));",
+   "new": "int cc = int(r*r*PI*random(1, 15));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "blank"
+  ],
+  [
+   60,
+   "blank"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 15.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/espo/variants/cc_15/frame_00001.png (snap) t=11880ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/espo/variants/cc_15/frame_00010.png (snap) t=12108ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/espo/variants/cc_15/frame_00060.png (snap) t=13367ms\n[harness] done frame=60 t=13344ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 11880,
+ "diff_vs_baseline": {
+  "mean": 0.2323,
+  "changed_fraction": 0.694,
+  "label": "large"
+ }
+}

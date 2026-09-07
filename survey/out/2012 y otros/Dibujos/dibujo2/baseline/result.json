@@ -1,0 +1,61 @@
+{
+ "sketch": "2012 y otros/Dibujos/dibujo2",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/dibujo2/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/dibujo2/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 165,
+   "md5": "b4dee47d8694f0f343b44d52b4272928",
+   "bytes": 9145
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/dibujo2/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 317,
+   "md5": "dd9d88171040db1d52602d3f190dc473",
+   "bytes": 46658
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/dibujo2/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1160,
+   "md5": "5940883ee43d0c133c1d2a553ebabfbd",
+   "bytes": 259776
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  800
+ ],
+ "size_args": "400, 800",
+ "imports": [],
+ "tabs": [
+  "Dibujador.pde",
+  "dibujo2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/dibujo2/baseline/frame_00001.png (snap) t=165ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/dibujo2/baseline/frame_00010.png (snap) t=317ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/dibujo2/baseline/frame_00060.png (snap) t=1160ms\n[harness] done frame=60 t=1135ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 165,
+ "deterministic": true,
+ "rerun_frames": 3
+}

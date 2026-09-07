@@ -1,0 +1,129 @@
+{
+ "sketch": "2018/Generativos/mmxxmm",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/rot_0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "rotate(PI*0.25);",
+   "rotate(0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/rot_0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 17815,
+   "md5": "e487e9cf70712ac5959d4a3292e6a80a",
+   "bytes": 8592028,
+   "captured_frame": 10
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/rot_0/self_20260905-095503.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6637,
+   "md5": "2e224e87691760e23583aab82586399e",
+   "bytes": 3597725
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/rot_0/self_20260905-095501.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 4512,
+   "md5": "47bac07f511e0a904b9c694f6a6daad0",
+   "bytes": 4542820
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/rot_0/self_20260905-095504.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 7350,
+   "md5": "43b3ae835f8dc0bfe96a7956e6402ef1",
+   "bytes": 8162023
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/rot_0/self_20260905-095500.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 4083,
+   "md5": "d2fa4665eb3079829ec043d760ffad26",
+   "bytes": 10246328
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/rot_0/self_20260905-095506.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 9846,
+   "md5": "e487e9cf70712ac5959d4a3292e6a80a",
+   "bytes": 8592028
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/rot_0/self_20260905-095502.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 5874,
+   "md5": "2c422d9272b20f0082a909c8e535b79b",
+   "bytes": 10966781
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/rot_0/self_20260905-095505.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 8601,
+   "md5": "77c2b7d85eedaf9757bc1590dc4e3200",
+   "bytes": 7929930
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "mmxxmm.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "rotate(PI*0.25);",
+   "new": "rotate(0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 10 promoted to frame_00001.png"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 23.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/rot_0/frame_00001.png (snap) t=8688ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/rot_0/frame_00010.png (snap) t=17815ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/rot_0/frame_00060.png (snap) t=21103ms\n[harness] done frame=60 t=20683ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 17815,
+ "diff_vs_baseline": {
+  "mean": 0.0005,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

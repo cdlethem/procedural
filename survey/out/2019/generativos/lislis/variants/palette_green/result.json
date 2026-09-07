@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/lislis",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/palette_green",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#152425, #1D3740, #06263E, #074B7D, #094D88, #1D6C9E, #ff2000, #1D6C9E, #ff2010};",
+   "int colors[] = {#50A85F, #DD2800, #F2AF3C, #5475A8};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/palette_green/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1840,
+   "md5": "8faa910619904d3c99f552c45b5f2390",
+   "bytes": 1377285
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/palette_green/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2049,
+   "md5": "c7704ed87a45e563744ddd195c07c63b",
+   "bytes": 29318
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/palette_green/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3307,
+   "md5": "c7704ed87a45e563744ddd195c07c63b",
+   "bytes": 29318
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "lislis.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#152425, #1D3740, #06263E, #074B7D, #094D88, #1D6C9E, #ff2000, #1D6C9E, #ff2010};",
+   "new": "int colors[] = {#50A85F, #DD2800, #F2AF3C, #5475A8};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/palette_green/frame_00001.png (snap) t=1840ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/palette_green/frame_00010.png (snap) t=2049ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/lislis/variants/palette_green/frame_00060.png (snap) t=3307ms\n[harness] done frame=60 t=3281ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1840,
+ "diff_vs_baseline": {
+  "mean": 0.2733,
+  "changed_fraction": 0.72,
+  "label": "large"
+ }
+}

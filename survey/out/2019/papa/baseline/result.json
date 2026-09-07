@@ -1,0 +1,55 @@
+{
+ "sketch": "2019/papa",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/papa/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/papa/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 199,
+   "md5": "70370e266f6948d6a15cc25b6d8206b5",
+   "bytes": 7208
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540",
+ "imports": [],
+ "tabs": [
+  "papa.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2019/papa/baseline/frame_00001.png (snap) t=199ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/papa/baseline/frame_00010.png (snap) t=355ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/papa/baseline/frame_00060.png (snap) t=1192ms\n[harness] done frame=60 t=1173ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 199,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

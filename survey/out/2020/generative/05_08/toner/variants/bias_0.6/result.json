@@ -1,0 +1,90 @@
+{
+ "sketch": "2020/generative/05_08/toner",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/toner/variants/bias_0.6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float xx = lerp(random(-ss, width+ss*2), width*0.5, random(random(0.2), 1));",
+   "float xx = lerp(random(-ss, width+ss*2), width*0.5, random(random(0.6), 1));"
+  ],
+  [
+   "float yy = lerp(random(-ss, height+ss*2), height*0.5, random(random(0.2), 1));",
+   "float yy = lerp(random(-ss, height+ss*2), height*0.5, random(random(0.6), 1));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/05_08/toner/variants/bias_0.6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1452,
+   "md5": "33ba96163f55b5c3bef745b0584ec397",
+   "bytes": 309276
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "toner.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float xx = lerp(random(-ss, width+ss*2), width*0.5, random(random(0.2), 1));",
+   "new": "float xx = lerp(random(-ss, width+ss*2), width*0.5, random(random(0.6), 1));",
+   "count": 1
+  },
+  {
+   "old": "float yy = lerp(random(-ss, height+ss*2), height*0.5, random(random(0.2), 1));",
+   "new": "float yy = lerp(random(-ss, height+ss*2), height*0.5, random(random(0.6), 1));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/toner/variants/bias_0.6/frame_00001.png (snap) t=1452ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/toner/variants/bias_0.6/frame_00010.png (snap) t=1673ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/05_08/toner/variants/bias_0.6/frame_00060.png (snap) t=2926ms\n[harness] done frame=60 t=2894ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1452,
+ "diff_vs_baseline": {
+  "mean": 0.08,
+  "changed_fraction": 0.332,
+  "label": "moderate"
+ }
+}

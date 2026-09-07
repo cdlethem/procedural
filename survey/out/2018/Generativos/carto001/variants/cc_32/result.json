@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/carto001",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/carto001/variants/cc_32",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  int cc = int(random(8, 33));",
+   "  int cc = 32;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/carto001/variants/cc_32/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1537,
+   "md5": "7e895f613aee8846ce5782fe087c4c83",
+   "bytes": 72357
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "carto001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int cc = int(random(8, 33));",
+   "new": "  int cc = 32;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/carto001/variants/cc_32/frame_00001.png (snap) t=1537ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/carto001/variants/cc_32/frame_00010.png (snap) t=1750ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/carto001/variants/cc_32/frame_00060.png (snap) t=3000ms\n[harness] done frame=60 t=2980ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1537,
+ "diff_vs_baseline": {
+  "mean": 0.0541,
+  "changed_fraction": 0.173,
+  "label": "moderate"
+ }
+}

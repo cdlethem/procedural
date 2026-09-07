@@ -1,0 +1,23 @@
+{
+ "sketch": "2016/kinectRecord",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/kinectRecord/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "SimpleOpenNI.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": "640*2, 480",
+ "imports": [
+  "SimpleOpenNI.*"
+ ],
+ "tabs": [
+  "kinectRecord.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

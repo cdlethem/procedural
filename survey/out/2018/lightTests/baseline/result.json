@@ -1,0 +1,69 @@
+{
+ "sketch": "2018/lightTests",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/lightTests/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/lightTests/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1464,
+   "md5": "7876a3ee65a3f8dbda574f5371fd61eb",
+   "bytes": 152381
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/lightTests/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2667,
+   "md5": "7a744902c11e0ef319b2d24758a2bb88",
+   "bytes": 144060
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/lightTests/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5847,
+   "md5": "39c7f58010f21c89a9e8d80c48c77543",
+   "bytes": 121698
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "Lights.pde",
+  "lightTests.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 7.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/lightTests/baseline/frame_00001.png (snap) t=1464ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/lightTests/baseline/frame_00010.png (snap) t=2667ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/lightTests/baseline/frame_00060.png (snap) t=5847ms\n[harness] done frame=60 t=5832ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1464,
+ "deterministic": false,
+ "rerun_frames": 3
+}

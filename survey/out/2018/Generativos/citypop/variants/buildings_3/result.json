@@ -1,0 +1,77 @@
+{
+ "sketch": "2018/Generativos/citypop",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/citypop/variants/buildings_3",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  int cc = 8; ",
+   "  int cc = 3; "
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/citypop/variants/buildings_3/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1621,
+   "md5": "375defe52d436f558a8d839c04caff31",
+   "bytes": 187795
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "city.pde",
+  "citypop.pde",
+  "clouds.pde",
+  "flowers.pde",
+  "formsSky.pde",
+  "montains.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int cc = 8; ",
+   "new": "  int cc = 3; ",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/citypop/variants/buildings_3/frame_00001.png (snap) t=1621ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/citypop/variants/buildings_3/frame_00010.png (snap) t=1823ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/citypop/variants/buildings_3/frame_00060.png (snap) t=3081ms\n[harness] done frame=60 t=3063ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1621,
+ "diff_vs_baseline": {
+  "mean": 0.013,
+  "changed_fraction": 0.032,
+  "label": "subtle"
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "sketch": "2018/Generativos/futurismo",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/shrink_0.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "s *= 0.8;",
+   "s *= 0.5;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/shrink_0.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1425,
+   "md5": "f250acc16955e7573303f850f97e9441",
+   "bytes": 1579
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/shrink_0.5/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1624,
+   "md5": "8169b6e6192d5288173f045abb9c6691",
+   "bytes": 1595
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/shrink_0.5/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2879,
+   "md5": "e9c2c166eeae0d87e76d8bb91ab461fb",
+   "bytes": 1614
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*SCALE), int(sheight*SCALE), P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "futurismo.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "s *= 0.8;",
+   "new": "s *= 0.5;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/shrink_0.5/frame_00001.png (snap) t=1425ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/shrink_0.5/frame_00010.png (snap) t=1624ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/shrink_0.5/frame_00060.png (snap) t=2879ms\n[harness] done frame=60 t=2869ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1425,
+ "diff_vs_baseline": {
+  "mean": 0.0013,
+  "changed_fraction": 0.003,
+  "label": "none"
+ }
+}

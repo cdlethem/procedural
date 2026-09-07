@@ -1,0 +1,58 @@
+{
+ "sketch": "2015/Generativos/bolaParticulas",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/bolaParticulas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/bolaParticulas/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 356,
+   "md5": "ab886de38de1c0aac7f3f0f7d50c9a61",
+   "bytes": 255101
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [],
+ "tabs": [
+  "bolaParticulas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "bolaParticulas.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/bolaParticulas/baseline/frame_00001.png (snap) t=356ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/bolaParticulas/baseline/frame_00010.png (snap) t=510ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/bolaParticulas/baseline/frame_00060.png (snap) t=1351ms\n[harness] done frame=60 t=1328ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 356,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

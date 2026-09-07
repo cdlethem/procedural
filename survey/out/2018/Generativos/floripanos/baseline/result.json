@@ -1,0 +1,67 @@
+{
+ "sketch": "2018/Generativos/floripanos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1661,
+   "md5": "fa1ac469e1426f8e0292a6111cf62ab1",
+   "bytes": 142374
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1896,
+   "md5": "ccec775ef66409608b34299883211f60",
+   "bytes": 138835
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3155,
+   "md5": "e50d9d3de1065edb4821781cb67ed38c",
+   "bytes": 267463
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "floripanos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/baseline/frame_00001.png (snap) t=1661ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/baseline/frame_00010.png (snap) t=1896ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/floripanos/baseline/frame_00060.png (snap) t=3155ms\n[harness] done frame=60 t=3128ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1661,
+ "deterministic": false,
+ "rerun_frames": 3
+}

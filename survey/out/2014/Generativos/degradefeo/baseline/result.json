@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/Generativos/degradefeo",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 137,
+   "md5": "af2d7b89813562e1b1f05d0f5a964d33",
+   "bytes": 4195
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 279,
+   "md5": "043dae865cf6273c1a2e87925a0fee9d",
+   "bytes": 19955
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1113,
+   "md5": "039743500fe85f4863ac1e65f7f3e6c2",
+   "bytes": 97527
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  400
+ ],
+ "size_args": "600, 400",
+ "imports": [],
+ "tabs": [
+  "degradefeo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/baseline/frame_00001.png (snap) t=137ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/baseline/frame_00010.png (snap) t=279ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/degradefeo/baseline/frame_00060.png (snap) t=1113ms\n[harness] done frame=60 t=1105ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 137,
+ "deterministic": true,
+ "rerun_frames": 3
+}

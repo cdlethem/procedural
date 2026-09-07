@@ -1,0 +1,84 @@
+{
+ "sketch": "2018/Generativos/rectssss",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/rectssss/variants/depth_0.5",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float d = min(r.w, r.h)*0.1;",
+   "float d = min(r.w, r.h)*0.5;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/rectssss/variants/depth_0.5/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1462,
+   "md5": "776ddf72d6355be39ee3eafcfab7bbb2",
+   "bytes": 13643
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/rectssss/variants/depth_0.5/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1665,
+   "md5": "e5c7b35adc5123f53a31797bde3ce47a",
+   "bytes": 15198
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/rectssss/variants/depth_0.5/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2924,
+   "md5": "6a055eeed1955a83a346b425810eb573",
+   "bytes": 15456
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "rectssss.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float d = min(r.w, r.h)*0.1;",
+   "new": "float d = min(r.w, r.h)*0.5;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/rectssss/variants/depth_0.5/frame_00001.png (snap) t=1462ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/rectssss/variants/depth_0.5/frame_00010.png (snap) t=1665ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/rectssss/variants/depth_0.5/frame_00060.png (snap) t=2924ms\n[harness] done frame=60 t=2904ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1462,
+ "diff_vs_baseline": {
+  "mean": 0.0124,
+  "changed_fraction": 0.058,
+  "label": "subtle"
+ }
+}

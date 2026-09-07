@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/linescurvis",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/linescurvis/variants/palette_warm",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#ffffff, #B0E7FF, #143585, #4c7f60, #D08714, #F98FC0};",
+   "int colors[] = {#DFAB56, #E5463E, #366A51, #2884BC};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/linescurvis/variants/palette_warm/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1605,
+   "md5": "7f2cfb8d403ccbea7bcdfc41aa1b4bbc",
+   "bytes": 1620595
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "linescurvis.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#ffffff, #B0E7FF, #143585, #4c7f60, #D08714, #F98FC0};",
+   "new": "int colors[] = {#DFAB56, #E5463E, #366A51, #2884BC};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/linescurvis/variants/palette_warm/frame_00001.png (snap) t=1605ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/linescurvis/variants/palette_warm/frame_00010.png (snap) t=1846ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/linescurvis/variants/palette_warm/frame_00060.png (snap) t=3113ms\n[harness] done frame=60 t=3061ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\nmap(0, 0, 0, 0, 1) called, which returns NaN (not a number)",
+ "ms_first_frame": 1605,
+ "diff_vs_baseline": {
+  "mean": 0.1451,
+  "changed_fraction": 0.643,
+  "label": "moderate"
+ }
+}

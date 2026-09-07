@@ -1,0 +1,64 @@
+{
+ "sketch": "2014/formas_movedizas",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/formas_movedizas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/formas_movedizas/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 209,
+   "md5": "a13b3908d056c718b7da0263117546ab",
+   "bytes": 33651
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/formas_movedizas/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 353,
+   "md5": "ba7a90d7237596aa11cb92a5cb546fc5",
+   "bytes": 39265
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/formas_movedizas/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1183,
+   "md5": "9d7e68ef4241a08fea7463f9d4a10302",
+   "bytes": 41505
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "formas_movedizas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "formas_movedizas.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/formas_movedizas/baseline/frame_00001.png (snap) t=209ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/formas_movedizas/baseline/frame_00010.png (snap) t=353ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/formas_movedizas/baseline/frame_00060.png (snap) t=1183ms\n[harness] done frame=60 t=1178ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 209,
+ "deterministic": true,
+ "rerun_frames": 3
+}

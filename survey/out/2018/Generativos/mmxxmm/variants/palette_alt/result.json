@@ -1,0 +1,129 @@
+{
+ "sketch": "2018/Generativos/mmxxmm",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/palette_alt",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#F19617, #251207, #15727F, #CEAB81, #BD3E36};",
+   "int colors[] = {#F5BFDF, #FBD872, #F36B7F, #9D87D2, #98B6F2, #1F5CB6};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/palette_alt/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 9601,
+   "md5": "d74b201a2e5d24b520b6b47a86904530",
+   "bytes": 9656021,
+   "captured_frame": 10
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/palette_alt/self_20260905-095503.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 6630,
+   "md5": "a39afc2efee589002cd7cb4697fb1ea8",
+   "bytes": 3957125
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/palette_alt/self_20260905-095507.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 10013,
+   "md5": "d74b201a2e5d24b520b6b47a86904530",
+   "bytes": 9656021
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/palette_alt/self_20260905-095501.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 4585,
+   "md5": "c875f189a5a54db315cbbcd3b66a10d4",
+   "bytes": 5076747
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/palette_alt/self_20260905-095504.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 7473,
+   "md5": "52389560096bf877a90ccf2c7dbee47b",
+   "bytes": 9076395
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/palette_alt/self_20260905-095506.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 9277,
+   "md5": "159a6c9ab3317b1063012e3c240fac39",
+   "bytes": 6495830
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/palette_alt/self_20260905-095502.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 5875,
+   "md5": "ca2d01385997bd774cddb57873dace6c",
+   "bytes": 12009937
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/palette_alt/self_20260905-095505.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 8802,
+   "md5": "3aaa518c290943ebded8a9297d4d7bd4",
+   "bytes": 8938583
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "mmxxmm.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#F19617, #251207, #15727F, #CEAB81, #BD3E36};",
+   "new": "int colors[] = {#F5BFDF, #FBD872, #F36B7F, #9D87D2, #98B6F2, #1F5CB6};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   1,
+   "blank; frame 10 promoted to frame_00001.png"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 13.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/palette_alt/frame_00001.png (snap) t=8822ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/palette_alt/frame_00010.png (snap) t=9601ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/mmxxmm/variants/palette_alt/frame_00060.png (snap) t=11279ms\n[harness] done frame=60 t=10818ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 9601,
+ "diff_vs_baseline": {
+  "mean": 0.2765,
+  "changed_fraction": 0.971,
+  "label": "large"
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/quadInQuads",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/quadInQuads/variants/minDiv_12",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int minDiv = int(random(3, random(3, 20)));",
+   "int minDiv = 12;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/quadInQuads/variants/minDiv_12/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2149,
+   "md5": "b67383955aa16fa31d41c8bfbfff333a",
+   "bytes": 227014
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "quadInQuads.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int minDiv = int(random(3, random(3, 20)));",
+   "new": "int minDiv = 12;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/quadInQuads/variants/minDiv_12/frame_00001.png (snap) t=2149ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/quadInQuads/variants/minDiv_12/frame_00010.png (snap) t=2361ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/quadInQuads/variants/minDiv_12/frame_00060.png (snap) t=3623ms\n[harness] done frame=60 t=3590ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2149,
+ "diff_vs_baseline": {
+  "mean": 0.2782,
+  "changed_fraction": 0.491,
+  "label": "large"
+ }
+}

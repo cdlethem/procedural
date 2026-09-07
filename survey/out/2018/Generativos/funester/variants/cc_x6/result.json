@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/funester",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/funester/variants/cc_x6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(5, random(5, 15)))*2;",
+   "int cc = int(random(5, random(5, 15)))*6;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/funester/variants/cc_x6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1895,
+   "md5": "4d12c9ea6dca45538fb08b8f7a79f2d8",
+   "bytes": 2345448
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "funester.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(5, random(5, 15)))*2;",
+   "new": "int cc = int(random(5, random(5, 15)))*6;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/funester/variants/cc_x6/frame_00001.png (snap) t=1895ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/funester/variants/cc_x6/frame_00010.png (snap) t=2150ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/funester/variants/cc_x6/frame_00060.png (snap) t=3433ms\n[harness] done frame=60 t=3366ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1895,
+ "diff_vs_baseline": {
+  "mean": 0.1009,
+  "changed_fraction": 0.355,
+  "label": "moderate"
+ }
+}

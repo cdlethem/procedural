@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/paraisooscuro",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/paraisooscuro/variants/bands_16",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int k = 0; k < 4; k++) {",
+   "for (int k = 0; k < 16; k++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/paraisooscuro/variants/bands_16/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1635,
+   "md5": "a0c4446605170f3623d7c75d927a4fcf",
+   "bytes": 1027972
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/paraisooscuro/variants/bands_16/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1843,
+   "md5": "b237b44121937476f7dff4d4dd873169",
+   "bytes": 10778
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/paraisooscuro/variants/bands_16/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3098,
+   "md5": "b237b44121937476f7dff4d4dd873169",
+   "bytes": 10778
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "paraisooscuro.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int k = 0; k < 4; k++) {",
+   "new": "for (int k = 0; k < 16; k++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/paraisooscuro/variants/bands_16/frame_00001.png (snap) t=1635ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/paraisooscuro/variants/bands_16/frame_00010.png (snap) t=1843ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/paraisooscuro/variants/bands_16/frame_00060.png (snap) t=3098ms\n[harness] done frame=60 t=3078ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1635,
+ "diff_vs_baseline": {
+  "mean": 0.1289,
+  "changed_fraction": 0.506,
+  "label": "moderate"
+ }
+}

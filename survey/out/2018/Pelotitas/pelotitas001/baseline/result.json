@@ -1,0 +1,64 @@
+{
+ "sketch": "2018/Pelotitas/pelotitas001",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Pelotitas/pelotitas001/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Pelotitas/pelotitas001/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1450,
+   "md5": "1ad1a7d3501e887374dfc204f6ccdfe2",
+   "bytes": 3755
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Pelotitas/pelotitas001/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1646,
+   "md5": "a10aa9fee4bf1b68e04db46e7b27dde0",
+   "bytes": 6718
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Pelotitas/pelotitas001/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2902,
+   "md5": "50e00728bef00ef48ac1dd5400a80458",
+   "bytes": 9587
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P2D",
+ "imports": [],
+ "tabs": [
+  "Node.pde",
+  "pelotitas001.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Pelotitas/pelotitas001/baseline/frame_00001.png (snap) t=1450ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Pelotitas/pelotitas001/baseline/frame_00010.png (snap) t=1646ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Pelotitas/pelotitas001/baseline/frame_00060.png (snap) t=2902ms\n[harness] done frame=60 t=2890ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1450,
+ "deterministic": true,
+ "rerun_frames": 3
+}

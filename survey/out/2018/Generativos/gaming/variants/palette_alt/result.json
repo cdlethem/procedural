@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/gaming",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/palette_alt",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#FFFCF7, #FDDA02, #EE78AC, #3155A3, #028B88};",
+   "int colors[] = {#01AFD8, #009A91, #E46952, #784391, #1B2D53};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/palette_alt/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1466,
+   "md5": "f287985849b76515cabe0fa773d74328",
+   "bytes": 6426
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/palette_alt/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1678,
+   "md5": "fb7a78ff9e67c428bc87cf03c7a6d26e",
+   "bytes": 10192
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/palette_alt/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2930,
+   "md5": "40bb2fe3a725c53bfdeb1c41441079fe",
+   "bytes": 24777
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "gaming.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#FFFCF7, #FDDA02, #EE78AC, #3155A3, #028B88};",
+   "new": "int colors[] = {#01AFD8, #009A91, #E46952, #784391, #1B2D53};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/palette_alt/frame_00001.png (snap) t=1466ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/palette_alt/frame_00010.png (snap) t=1678ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/gaming/variants/palette_alt/frame_00060.png (snap) t=2930ms\n[harness] done frame=60 t=2907ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1466,
+ "diff_vs_baseline": {
+  "mean": 0.002,
+  "changed_fraction": 0.004,
+  "label": "none"
+ }
+}

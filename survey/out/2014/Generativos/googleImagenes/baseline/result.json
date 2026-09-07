@@ -1,0 +1,60 @@
+{
+ "sketch": "2014/Generativos/googleImagenes",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/googleImagenes/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/googleImagenes/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 678,
+   "md5": "2ab938c27752855cd1fc7dc2aed3e136",
+   "bytes": 2354
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "googleImagenes.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "+\".\"+a:a;b=new Date;b.setSeconds(b.getSeconds()+(Number(ce)||300));c=\"SG_SS=\"+a;var h=document.cookie.length+c.length;r&&(h<4093&&!ss_cgi&&(document.cookie=c+(\"; expires=\"+b.toUTCString())),window.td?R():Q(),ss_cgi||document.cookie.indexOf(\"SG_SS=\")<0?T(a):U(S()))},function(a){X(a);V(\"bset\")})}function V(a){sctm&&google.tick(\"load\",a)};navigator||(C.navigator={});typeof navigator.sendBeacon!==\"function\"&&(navigator.sendBeacon=function(a){(new Image).src=a});window.onerror=function(a,b,c,h,e){a=\"?emsg=\"+(e instanceof Error?e.message:a)+\"&srcpg=sgs&jsr=1&jsel=3\";navigator.sendBeacon(\"/gen_204\"+a);navigator.sendBeacon(\"/httpservice/retry/jserror\"+a)};if(sclm){var Y;window.td=(Y=window.td)!=null?Y:{};performance&&performance.timing&&(window.td.ns=performance.timing.navigationStart,window.td.rs=performance.timing.responseStart)}V(\"sst\");var Z;window.sgs&&ussv&&sp?(V(\"ssst\"),Z=window.sgs(sp).then(function(a){V(\"sset\");r&&(window.td?R():Q(),ka(a));return!0},function(){return!1})):Z=Promise.resolve(!1);Z.then(function(a){a||la()}).catch(function(a){X(a)});}).call(this);})();</script><script nonce=\"nPjqiVSL7bfmiXNtAzu2uA\">(function(){var cssId='yvlrue';var eid='1BWZapDkCuWrqtsPvZ3_6A4';(function(){setTimeout(function(){document.getElementById(cssId).setAttribute(\"style\",\"\");navigator.sendBeacon(\"/gen_204?cad=sg_trbl&ei=\"+eid,\"\")},2E3);}).call(this);})();</script><style>div{font-family:sans-serif;color:#545454;background-color:#fff}a{color:#1558d6;font-size:inherit;text-decoration:none}a:visited{color:#681da8}</style><div id=\"yvlrue\" style=\"display:none\">If you're having trouble accessing Google Search, please&nbsp;<a href=\"/search?q=arbol&amp;sca_esv=4665041cdc874088&amp;ie=UTF-8&amp;tbm=isch&amp;sxsrf=APpeQnsU48mpLFLvZbj_g47Q-M3pDtihjQ:1788417492182&amp;emsg=SG_REL&amp;sei=1BWZapDkCuWrqtsPvZ3_6A4\">click here</a>, or send&nbsp;<a href=\"https://support.google.com/websearch\">feedback</a>.</div></body></html>\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/googleImagenes/baseline/frame_00001.png (snap) t=678ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/googleImagenes/baseline/frame_00002.png (snap) t=693ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/googleImagenes/baseline/frame_00010.png (snap) t=821ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/googleImagenes/baseline/frame_00060.png (snap) t=1658ms\n[harness] done frame=60 t=1645ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 678,
+ "deterministic": true,
+ "rerun_frames": 1
+}

@@ -1,0 +1,31 @@
+{
+ "sketch": "2020/generative/01_04/fractal001",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/fractal001/variants/mix_0.1",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "        x = mix(x, cos(x*80.2), 0.01);",
+   "        x = mix(x, cos(x*80.2), 0.1);"
+  ]
+ ],
+ "status": "bad_sub",
+ "detail": "OLD text not found in any tab: '        x = mix(x, cos(x*80.2), 0.01);'",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P2D",
+ "imports": [],
+ "tabs": [
+  "fractal001.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": []
+}

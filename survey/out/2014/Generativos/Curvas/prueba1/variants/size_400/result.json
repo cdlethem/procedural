@@ -1,0 +1,70 @@
+{
+ "sketch": "2014/Generativos/Curvas/prueba1",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Curvas/prueba1/variants/size_400",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float dist = random(40, 200);",
+   "float dist = random(100, 400);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Curvas/prueba1/variants/size_400/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 235,
+   "md5": "a426ff05266b17eb0021e9a143199609",
+   "bytes": 463171
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "prueba1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float dist = random(40, 200);",
+   "new": "float dist = random(100, 400);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Curvas/prueba1/variants/size_400/frame_00001.png (snap) t=235ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Curvas/prueba1/variants/size_400/frame_00010.png (snap) t=393ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Curvas/prueba1/variants/size_400/frame_00060.png (snap) t=1239ms\n[harness] done frame=60 t=1211ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 235,
+ "diff_vs_baseline": {
+  "mean": 0.1494,
+  "changed_fraction": 0.464,
+  "label": "moderate"
+ }
+}

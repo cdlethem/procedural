@@ -1,0 +1,57 @@
+{
+ "sketch": "2018/Generativos/datitos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/datitos/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/datitos/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2019,
+   "md5": "d94a5d4f0339b31f910467f47f027ae4",
+   "bytes": 2518017
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "datitos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/datitos/baseline/frame_00001.png (snap) t=2019ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/datitos/baseline/frame_00010.png (snap) t=2268ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/datitos/baseline/frame_00060.png (snap) t=3554ms\n[harness] done frame=60 t=3485ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2019,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

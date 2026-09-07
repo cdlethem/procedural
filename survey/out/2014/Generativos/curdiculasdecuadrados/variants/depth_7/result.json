@@ -1,0 +1,77 @@
+{
+ "sketch": "2014/Generativos/curdiculasdecuadrados",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/curdiculasdecuadrados/variants/depth_7",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "generar(0, 0, width, height, 5);",
+   "generar(0, 0, width, height, 7);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/curdiculasdecuadrados/variants/depth_7/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 159,
+   "md5": "041f0c9c0baab7b16de6bdfa5ab6a162",
+   "bytes": 53786
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/curdiculasdecuadrados/variants/depth_7/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 308,
+   "md5": "0b844612bc332162d71d418c61181eb0",
+   "bytes": 56660
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/curdiculasdecuadrados/variants/depth_7/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1137,
+   "md5": "7a84f05505ac720c5801999e9f663825",
+   "bytes": 60932
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "curdiculasdecuadrados.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "generar(0, 0, width, height, 5);",
+   "new": "generar(0, 0, width, height, 7);",
+   "count": 2
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/curdiculasdecuadrados/variants/depth_7/frame_00001.png (snap) t=159ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/curdiculasdecuadrados/variants/depth_7/frame_00010.png (snap) t=308ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/curdiculasdecuadrados/variants/depth_7/frame_00060.png (snap) t=1137ms\n[harness] done frame=60 t=1128ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 159,
+ "diff_vs_baseline": {
+  "mean": 0.4677,
+  "changed_fraction": 0.603,
+  "label": "large"
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "sketch": "2013/Circulos imagenes/prueba1",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/Circulos imagenes/prueba1/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/Circulos imagenes/prueba1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 165,
+   "md5": "76c922c649cc049949f0890f4afa02d7",
+   "bytes": 4310
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1280,
+  716
+ ],
+ "size_args": "1280, 716",
+ "imports": [],
+ "tabs": [
+  "prueba1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2013/Circulos imagenes/prueba1/baseline/frame_00001.png (snap) t=165ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/Circulos imagenes/prueba1/baseline/frame_00002.png (snap) t=189ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/Circulos imagenes/prueba1/baseline/frame_00010.png (snap) t=324ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/Circulos imagenes/prueba1/baseline/frame_00060.png (snap) t=1163ms\n[harness] done frame=60 t=1142ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 165,
+ "deterministic": true,
+ "rerun_frames": 1
+}

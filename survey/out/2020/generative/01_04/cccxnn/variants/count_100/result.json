@@ -1,0 +1,68 @@
+{
+ "sketch": "2020/generative/01_04/cccxnn",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cccxnn/variants/count_100",
+ "seed": 42,
+ "snaps": "1",
+ "budget_s": 30.0,
+ "subs": [
+  "  for (int i = 0; i < 220; i++) {=>  for (int i = 0; i < 100; i++) {"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cccxnn/variants/count_100/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1429,
+   "md5": "7cf92e395d54311e9657ee4da03eb2ed",
+   "bytes": 345305
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "cccxnn.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  for (int i = 0; i < 220; i++) {",
+   "new": "  for (int i = 0; i < 100; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/cccxnn/variants/count_100/frame_00001.png (snap) t=1429ms\n[harness] done frame=1 t=1376ms\n[harness] dispose frame=2 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1429,
+ "diff_vs_baseline": {
+  "mean": 0.2353,
+  "changed_fraction": 0.769,
+  "label": "large"
+ }
+}

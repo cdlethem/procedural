@@ -1,0 +1,81 @@
+{
+ "sketch": "2014/Generativos/polys",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/dim_60_260",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float dim = random(20, 200);",
+   "float dim = random(60, 260);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/dim_60_260/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 169,
+   "md5": "dc5954ee2c928ab6b62df3326171d7f1",
+   "bytes": 149948
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/dim_60_260/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 331,
+   "md5": "7c70c125b3ff635a5219a09f45ef596f",
+   "bytes": 155430
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/dim_60_260/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1192,
+   "md5": "3771ba22c653e87806ce36247c2ca589",
+   "bytes": 139228
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "polys.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float dim = random(20, 200);",
+   "new": "float dim = random(60, 260);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "polys.pde"
+ ],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/dim_60_260/frame_00001.png (snap) t=169ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/dim_60_260/frame_00010.png (snap) t=331ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/polys/variants/dim_60_260/frame_00060.png (snap) t=1192ms\n[harness] done frame=60 t=1180ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 169,
+ "diff_vs_baseline": {
+  "mean": 0.1013,
+  "changed_fraction": 0.241,
+  "label": "moderate"
+ }
+}

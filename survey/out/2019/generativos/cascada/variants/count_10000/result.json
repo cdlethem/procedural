@@ -1,0 +1,85 @@
+{
+ "sketch": "2019/generativos/cascada",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/cascada/variants/count_10000",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int count = 40000;",
+   "int count = 10000;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/cascada/variants/count_10000/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1551,
+   "md5": "ef573f74f0b3d09afb201dcbb0ab4fed",
+   "bytes": 703883
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "Particle.pde",
+  "cascada.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int count = 40000;",
+   "new": "int count = 10000;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/cascada/variants/count_10000/frame_00001.png (snap) t=1551ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/cascada/variants/count_10000/frame_00010.png (snap) t=1775ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/cascada/variants/count_10000/frame_00060.png (snap) t=3040ms\n[harness] done frame=60 t=2993ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1551,
+ "diff_vs_baseline": {
+  "mean": 0.1895,
+  "changed_fraction": 0.704,
+  "label": "large"
+ }
+}

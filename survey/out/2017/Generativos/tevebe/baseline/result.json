@@ -1,0 +1,63 @@
+{
+ "sketch": "2017/Generativos/tevebe",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1507,
+   "md5": "d36ec1adf122e039d55f2bbe7ccd0c1e",
+   "bytes": 37554
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1717,
+   "md5": "973da0cc564b8502815660a9ce7291e7",
+   "bytes": 37839
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2970,
+   "md5": "8ab4a6da14623e091080408cdfa25535",
+   "bytes": 37917
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  720
+ ],
+ "size_args": "960, 720, P3D",
+ "imports": [],
+ "tabs": [
+  "tevebe.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/baseline/frame_00001.png (snap) t=1507ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/baseline/frame_00010.png (snap) t=1717ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/baseline/frame_00060.png (snap) t=2970ms\n[harness] done frame=60 t=2954ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1507,
+ "deterministic": true,
+ "rerun_frames": 3
+}

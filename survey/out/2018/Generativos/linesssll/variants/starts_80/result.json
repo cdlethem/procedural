@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/linesssll",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/linesssll/variants/starts_80",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    for (int i = 0; i < 30; i++) {",
+   "    for (int i = 0; i < 80; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/linesssll/variants/starts_80/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 10919,
+   "md5": "c46d11a10ad98ef61b0365123d39050f",
+   "bytes": 304529
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "linesssll.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    for (int i = 0; i < 30; i++) {",
+   "new": "    for (int i = 0; i < 80; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 13.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/linesssll/variants/starts_80/frame_00001.png (snap) t=10919ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/linesssll/variants/starts_80/frame_00010.png (snap) t=11135ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/linesssll/variants/starts_80/frame_00060.png (snap) t=12388ms\n[harness] done frame=60 t=12362ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 10919,
+ "diff_vs_baseline": {
+  "mean": 0.2182,
+  "changed_fraction": 0.524,
+  "label": "large"
+ }
+}

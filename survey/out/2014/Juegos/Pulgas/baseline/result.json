@@ -1,0 +1,55 @@
+{
+ "sketch": "2014/Juegos/Pulgas",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Pulgas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Pulgas/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 154,
+   "md5": "8561a4b12d34f4ab163a1769722a1506",
+   "bytes": 5937
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "Pulgas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/Pulgas/baseline/frame_00001.png (snap) t=154ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/Pulgas/baseline/frame_00010.png (snap) t=316ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Juegos/Pulgas/baseline/frame_00060.png (snap) t=1146ms\n[harness] done frame=60 t=1134ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 154,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

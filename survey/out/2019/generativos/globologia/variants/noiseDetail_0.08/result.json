@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/globologia",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/noiseDetail_0.08",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  float det = random(0.1, 0.2)*0.02;",
+   "  float det = random(0.1, 0.2)*0.08;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/noiseDetail_0.08/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2451,
+   "md5": "45917283fb17190d0cd6ca7acfb9b39a",
+   "bytes": 2009381
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/noiseDetail_0.08/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2663,
+   "md5": "7e75c1fe7241490c1a2489bac55714f8",
+   "bytes": 32484
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/noiseDetail_0.08/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3914,
+   "md5": "7e75c1fe7241490c1a2489bac55714f8",
+   "bytes": 32484
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "globologia.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  float det = random(0.1, 0.2)*0.02;",
+   "new": "  float det = random(0.1, 0.2)*0.08;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/noiseDetail_0.08/frame_00001.png (snap) t=2451ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/noiseDetail_0.08/frame_00010.png (snap) t=2663ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/globologia/variants/noiseDetail_0.08/frame_00060.png (snap) t=3914ms\n[harness] done frame=60 t=3893ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2451,
+ "diff_vs_baseline": {
+  "mean": 0.1137,
+  "changed_fraction": 0.442,
+  "label": "moderate"
+ }
+}

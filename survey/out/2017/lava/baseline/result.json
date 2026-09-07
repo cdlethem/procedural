@@ -1,0 +1,60 @@
+{
+ "sketch": "2017/lava",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/lava/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/lava/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1425,
+   "md5": "b8dc4be0de49376542e5bd90da2e821d",
+   "bytes": 1292
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P2D",
+ "imports": [],
+ "tabs": [
+  "lava.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/lava/baseline/frame_00001.png (snap) t=1425ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/lava/baseline/frame_00002.png (snap) t=1444ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/lava/baseline/frame_00010.png (snap) t=1614ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/lava/baseline/frame_00060.png (snap) t=2878ms\n[harness] done frame=60 t=2864ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1425,
+ "deterministic": true,
+ "rerun_frames": 1
+}

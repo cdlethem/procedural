@@ -1,0 +1,79 @@
+{
+ "sketch": "2019/generativos/circNoi",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/circNoi/variants/count_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int k = 0; k < 80; k++) {",
+   "for (int k = 0; k < 20; k++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/circNoi/variants/count_20/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1458,
+   "md5": "0459c2796e69321ae06a0e457ff47d14",
+   "bytes": 243474
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "circNoi.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "for (int k = 0; k < 80; k++) {",
+   "new": "for (int k = 0; k < 20; k++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/circNoi/variants/count_20/frame_00001.png (snap) t=1458ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/circNoi/variants/count_20/frame_00010.png (snap) t=1675ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/circNoi/variants/count_20/frame_00060.png (snap) t=2924ms\n[harness] done frame=60 t=2900ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1458,
+ "diff_vs_baseline": {
+  "mean": 0.385,
+  "changed_fraction": 0.844,
+  "label": "large"
+ }
+}

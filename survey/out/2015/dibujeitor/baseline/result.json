@@ -1,0 +1,28 @@
+{
+ "sketch": "2015/dibujeitor",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/dibujeitor/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "codeanticode.tablet.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [
+  "codeanticode.tablet.*"
+ ],
+ "tabs": [
+  "Layer.pde",
+  "Stroke.pde",
+  "dibujeitor.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

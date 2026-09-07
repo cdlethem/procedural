@@ -1,0 +1,57 @@
+{
+ "sketch": "2018/Generativos/labios",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/labios/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/labios/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2199,
+   "md5": "f7c8ae8b70cac3e29b5d1848ae66aa5e",
+   "bytes": 896497
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "labios.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/labios/baseline/frame_00001.png (snap) t=2199ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/labios/baseline/frame_00010.png (snap) t=2427ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/labios/baseline/frame_00060.png (snap) t=3685ms\n[harness] done frame=60 t=3646ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2199,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

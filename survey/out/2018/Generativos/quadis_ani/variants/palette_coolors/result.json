@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/quadis_ani",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/palette_coolors",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#B14027, #476086, #659173, #9293A2, #262A2C, #D38644};",
+   "int colors[] = {#F2F2E8, #FFE41C, #EF3434, #ED0007, #3F9AFC, #262A2C};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/palette_coolors/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1503,
+   "md5": "d8de58508faa4890e7bacf64c3788334",
+   "bytes": 617855
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/palette_coolors/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1758,
+   "md5": "d2c452bc49228892c6b36e0e8282b1cd",
+   "bytes": 621617
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/palette_coolors/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3013,
+   "md5": "6a53706e2e6dc74b8fc5b66e2f434d43",
+   "bytes": 594482
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  540
+ ],
+ "size_args": "960, 540, P2D",
+ "imports": [],
+ "tabs": [
+  "quadis_ani.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#B14027, #476086, #659173, #9293A2, #262A2C, #D38644};",
+   "new": "int colors[] = {#F2F2E8, #FFE41C, #EF3434, #ED0007, #3F9AFC, #262A2C};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/palette_coolors/frame_00001.png (snap) t=1503ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/palette_coolors/frame_00010.png (snap) t=1758ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/quadis_ani/variants/palette_coolors/frame_00060.png (snap) t=3013ms\n[harness] done frame=60 t=2984ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1503,
+ "diff_vs_baseline": {
+  "mean": 0.4796,
+  "changed_fraction": 1.0,
+  "label": "large"
+ }
+}

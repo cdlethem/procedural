@@ -1,0 +1,51 @@
+{
+ "sketch": "2018/Generativos/portals",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/portals/variants/vel_0.05",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float vel = random(0.01)*2;",
+   "float vel = random(0.05)*2;"
+  ]
+ ],
+ "status": "runtime_error",
+ "detail": "java.lang.RuntimeException: java.lang.AssertionError",
+ "frames": [],
+ "warnings": [
+  "sketch killed 2 s after the exception (launcher leaves it suspended)"
+ ],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "portals.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float vel = random(0.01)*2;",
+   "new": "float vel = random(0.05)*2;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.7,
+ "rc": 143,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42",
+ "stderr_tail": "pixelDensity(2) is not available for this display\n\"Chivo\" is not available, so another font will be used. Use PFont.list() to show available fonts.\nTessellation Error: a coordinate is too large\njava.lang.RuntimeException: java.lang.AssertionError\nCaused by: java.lang.AssertionError",
+ "ms_first_frame": null
+}

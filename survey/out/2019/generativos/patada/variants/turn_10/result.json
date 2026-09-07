@@ -1,0 +1,86 @@
+{
+ "sketch": "2019/generativos/patada",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/patada/variants/turn_10",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "(noise(i*det, j*det)-ia)*2.1",
+   "(noise(i*det, j*det)-ia)*10"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/patada/variants/turn_10/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2144,
+   "md5": "5602e7b3d67ed79d5c4b91ddb90d9a61",
+   "bytes": 1912637
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/patada/variants/turn_10/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2353,
+   "md5": "e80d7e38ead46bc2667abb157ee1fd18",
+   "bytes": 71849
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/patada/variants/turn_10/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3612,
+   "md5": "e80d7e38ead46bc2667abb157ee1fd18",
+   "bytes": 71849
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "patada.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "(noise(i*det, j*det)-ia)*2.1",
+   "new": "(noise(i*det, j*det)-ia)*10",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/patada/variants/turn_10/frame_00001.png (snap) t=2144ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/patada/variants/turn_10/frame_00010.png (snap) t=2353ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/patada/variants/turn_10/frame_00060.png (snap) t=3612ms\n[harness] done frame=60 t=3585ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2144,
+ "diff_vs_baseline": {
+  "mean": 0.043,
+  "changed_fraction": 0.091,
+  "label": "subtle"
+ }
+}

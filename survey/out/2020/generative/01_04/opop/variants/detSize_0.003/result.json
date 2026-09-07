@@ -1,0 +1,88 @@
+{
+ "sketch": "2020/generative/01_04/opop",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/detSize_0.003",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  float detSize = random(0.007, 0.01)*0.5;",
+   "  float detSize = random(0.003, 0.004)*0.5;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/detSize_0.003/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1538,
+   "md5": "f4b8ae8515e8e92e1c7a1a40e366ee99",
+   "bytes": 936959
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/detSize_0.003/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1746,
+   "md5": "81d5bb0052144af7f2e13b26a422ab8a",
+   "bytes": 12039
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/detSize_0.003/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3000,
+   "md5": "81d5bb0052144af7f2e13b26a422ab8a",
+   "bytes": 12039
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "opop.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  float detSize = random(0.007, 0.01)*0.5;",
+   "new": "  float detSize = random(0.003, 0.004)*0.5;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/detSize_0.003/frame_00001.png (snap) t=1538ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/detSize_0.003/frame_00010.png (snap) t=1746ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/opop/variants/detSize_0.003/frame_00060.png (snap) t=3000ms\n[harness] done frame=60 t=2982ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1538,
+ "diff_vs_baseline": {
+  "mean": 0.3777,
+  "changed_fraction": 0.819,
+  "label": "large"
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "sketch": "2015/Generativos/planetProblem",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/grid_80",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int i = 0; i <= 640; i+=20) {",
+   "for (int i = 0; i <= 640; i+=80) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/grid_80/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1488,
+   "md5": "1c14876b9748cbd09424904ab74eaf9c",
+   "bytes": 258736
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/grid_80/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1694,
+   "md5": "c3026cda3f57438b204457080f6ee2d8",
+   "bytes": 258341
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/grid_80/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2951,
+   "md5": "fdb76771e1380fa5fc0b283517d9488e",
+   "bytes": 258746
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "planetProblem.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i <= 640; i+=20) {",
+   "new": "for (int i = 0; i <= 640; i+=80) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/grid_80/frame_00001.png (snap) t=1488ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/grid_80/frame_00010.png (snap) t=1694ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/variants/grid_80/frame_00060.png (snap) t=2951ms\n[harness] done frame=60 t=2930ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1488,
+ "diff_vs_baseline": {
+  "mean": 0.0031,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

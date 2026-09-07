@@ -1,0 +1,102 @@
+{
+ "sketch": "2018/Generativos/cubitos",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/range_400",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float x = random(200)*random(1)-100;",
+   "float x = random(400)*random(1)-200;"
+  ],
+  [
+   "float y = random(200)*random(1)-100;",
+   "float y = random(400)*random(1)-200;"
+  ],
+  [
+   "float z = random(200)*random(1)-100;",
+   "float z = random(400)*random(1)-200;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/range_400/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1525,
+   "md5": "583c3fae2af28202372db0d9694ed6e0",
+   "bytes": 214505
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/range_400/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1796,
+   "md5": "a0a3c4e0bf7346d448843f9136636b28",
+   "bytes": 561613
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/range_400/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3071,
+   "md5": "39b18262df8ac5a920ed2afbff76eda8",
+   "bytes": 842588
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "cubitos.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float x = random(200)*random(1)-100;",
+   "new": "float x = random(400)*random(1)-200;",
+   "count": 1
+  },
+  {
+   "old": "float y = random(200)*random(1)-100;",
+   "new": "float y = random(400)*random(1)-200;",
+   "count": 1
+  },
+  {
+   "old": "float z = random(200)*random(1)-100;",
+   "new": "float z = random(400)*random(1)-200;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/range_400/frame_00001.png (snap) t=1525ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/range_400/frame_00010.png (snap) t=1796ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/cubitos/variants/range_400/frame_00060.png (snap) t=3071ms\n[harness] done frame=60 t=3032ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1525,
+ "diff_vs_baseline": {
+  "mean": 0.0176,
+  "changed_fraction": 0.056,
+  "label": "subtle"
+ }
+}

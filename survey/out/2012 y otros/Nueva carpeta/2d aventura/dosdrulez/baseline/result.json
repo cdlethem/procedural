@@ -1,0 +1,54 @@
+{
+ "sketch": "2012 y otros/Nueva carpeta/2d aventura/dosdrulez",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/2d aventura/dosdrulez/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/2d aventura/dosdrulez/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 149,
+   "md5": "605534640220db1d6c1497a166bf8d8f",
+   "bytes": 17988
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  480
+ ],
+ "size_args": "640, 480",
+ "imports": [],
+ "tabs": [
+  "dosdrulez.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/2d aventura/dosdrulez/baseline/frame_00001.png (snap) t=149ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/2d aventura/dosdrulez/baseline/frame_00010.png (snap) t=297ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Nueva carpeta/2d aventura/dosdrulez/baseline/frame_00060.png (snap) t=1124ms\n[harness] done frame=60 t=1117ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 149,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/sand",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/sand/variants/dy_8",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  int dy = 2;",
+   "  int dy = 8;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/sand/variants/dy_8/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1509,
+   "md5": "720add0bbaa2fcceccfbb92e2fc0025a",
+   "bytes": 256372
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "sand.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int dy = 2;",
+   "new": "  int dy = 8;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/sand/variants/dy_8/frame_00001.png (snap) t=1509ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/sand/variants/dy_8/frame_00010.png (snap) t=1725ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/sand/variants/dy_8/frame_00060.png (snap) t=2980ms\n[harness] done frame=60 t=2952ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1509,
+ "diff_vs_baseline": {
+  "mean": 0.004,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

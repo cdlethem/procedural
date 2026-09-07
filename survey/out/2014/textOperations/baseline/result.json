@@ -1,0 +1,29 @@
+{
+ "sketch": "2014/textOperations",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/textOperations/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "controlP5.*",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  700,
+  400
+ ],
+ "size_args": "700, 400",
+ "imports": [
+  "controlP5.*",
+  "javax.script.ScriptEngine",
+  "javax.script.ScriptEngineManager",
+  "javax.script.ScriptException"
+ ],
+ "tabs": [
+  "textOperations.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

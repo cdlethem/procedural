@@ -1,0 +1,73 @@
+{
+ "sketch": "2018/boxis",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/boxis/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/boxis/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1498,
+   "md5": "add53384eface51269c65b279aa07890",
+   "bytes": 609116
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/boxis/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1747,
+   "md5": "99de738be0d040afef7404042718caff",
+   "bytes": 604328
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/boxis/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3002,
+   "md5": "f871e55128a7b1e8544dbb9d17f022ed",
+   "bytes": 591824
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "boxis.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/boxis/baseline/frame_00001.png (snap) t=1498ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/boxis/baseline/frame_00010.png (snap) t=1747ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/boxis/baseline/frame_00060.png (snap) t=3002ms\n[harness] done frame=60 t=2967ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1498,
+ "deterministic": false,
+ "rerun_frames": 3
+}

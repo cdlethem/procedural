@@ -1,0 +1,23 @@
+{
+ "sketch": "2019/generativos/tela",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/tela/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "bad_layout",
+ "detail": "no tela.pde in folder",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "op_021.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

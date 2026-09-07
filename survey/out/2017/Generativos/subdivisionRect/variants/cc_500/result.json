@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/subdivisionRect",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/subdivisionRect/variants/cc_500",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(100, 5000));",
+   "int cc = 500;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/subdivisionRect/variants/cc_500/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 283,
+   "md5": "b186085b5d0a04bb6fb50b42455026fd",
+   "bytes": 282662
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "subdivisionRect.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(100, 5000));",
+   "new": "int cc = 500;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/subdivisionRect/variants/cc_500/frame_00001.png (snap) t=283ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/subdivisionRect/variants/cc_500/frame_00010.png (snap) t=441ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/subdivisionRect/variants/cc_500/frame_00060.png (snap) t=1281ms\n[harness] done frame=60 t=1258ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 283,
+ "diff_vs_baseline": {
+  "mean": 0.3066,
+  "changed_fraction": 0.881,
+  "label": "large"
+ }
+}

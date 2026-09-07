@@ -1,0 +1,43 @@
+{
+ "sketch": "2020/generative/01_04/papa",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papa/variants/detCol_0.0002",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float detCol = random(0.0005, 0.002);",
+   "    float detCol = random(0.0002, 0.0004);"
+  ]
+ ],
+ "status": "bad_sub",
+ "detail": "OLD text not found in any tab: '    float detCol = random(0.0005, 0.002);'",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "papa.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ]
+}

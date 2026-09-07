@@ -1,0 +1,153 @@
+{
+ "sketch": "2019/OP/op_023d",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/frame_00000.png",
+   "frame": 0,
+   "tag": "watchdog",
+   "ms": 35228,
+   "md5": "9be0274ae795db8f055f4846f829c4e0",
+   "bytes": 5264642
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/self_20260902-191828-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 35137,
+   "md5": "9be0274ae795db8f055f4846f829c4e0",
+   "bytes": 5264642
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/self_20260902-191806-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 12925,
+   "md5": "04fdbc8aa74038a7887c51bc5d3da7b9",
+   "bytes": 6331353
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/self_20260902-191815-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 22225,
+   "md5": "596c5a9c9dde242fabd4b8f621919624",
+   "bytes": 6198586
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/self_20260902-191803-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 10531,
+   "md5": "8eab02e0f517e21bb706c4c7b88e0b74",
+   "bytes": 6979617
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/self_20260902-191808-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 15712,
+   "md5": "eb9697ecb4224ca09dac3281d1ebfa37",
+   "bytes": 6488869
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/self_20260902-191758-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 5085,
+   "md5": "1394f3f5348ea2ccb642938b4497080b",
+   "bytes": 5283688
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/self_20260902-191831-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 38216,
+   "md5": "63516f369a6a8a26b40051ba64948ac9",
+   "bytes": 6044394
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/self_20260902-191818-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 25106,
+   "md5": "98debe06e6fae7b5b3518ecebf71b9eb",
+   "bytes": 6720027
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/self_20260902-191821-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 28188,
+   "md5": "3dea05a8a6dea30c03fe750608ad86f7",
+   "bytes": 6190040
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/self_20260902-191801-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 7858,
+   "md5": "b1ef708c87946227ba21f5c10c2f929d",
+   "bytes": 6398451
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/self_20260902-191812-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 18940,
+   "md5": "25c384c95492d8ac26bcd9a00e2407e1",
+   "bytes": 4746025
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/self_20260902-191824-42.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 31597,
+   "md5": "9dd1f4f39c6b3fcd34d65fcfc5cdfa06",
+   "bytes": 6424716
+  }
+ ],
+ "warnings": [
+  "runtime_error: java.lang.RuntimeException: java.lang.ThreadDeath",
+  "frame saved by the watchdog before draw() finished: may be partial or blank; the sketch is too slow for the budget"
+ ],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "twidth, theight, P2D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "op_023d.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 41.5,
+ "rc": 143,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n42\n42\n42\n42\n42\n42\n42\n42\n42\n42\n42\n42\n[harness] watchdog: no draw() reached budget; frame=0 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/OP/op_023d/baseline/frame_00000.png (watchdog) t=35228ms\n42\n[harness] watchdog: hard exit",
+ "stderr_tail": "java.lang.RuntimeException: java.lang.ThreadDeath\nCaused by: java.lang.ThreadDeath\n\t... 1 more",
+ "ms_first_frame": 35228,
+ "deterministic": false,
+ "rerun_frames": 13
+}

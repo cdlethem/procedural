@@ -1,0 +1,30 @@
+{
+ "sketch": "2014/Juegos/Mineria",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Juegos/Mineria/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "manoloide.Input.Input",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  300
+ ],
+ "size_args": "400, 300",
+ "imports": [
+  "manoloide.Input.Input"
+ ],
+ "tabs": [
+  "Jugador.pde",
+  "Mineral.pde",
+  "Mineria.pde",
+  "Mundo.pde",
+  "Tile.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

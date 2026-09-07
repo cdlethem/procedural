@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/Generativos/palabrasAleatorias",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 950,
+   "md5": "187d928e5051b960a95045afff1d1b2d",
+   "bytes": 3287
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1104,
+   "md5": "cfc41b64ced98a38e4ed848e0ec45e04",
+   "bytes": 46521
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1934,
+   "md5": "cfc41b64ced98a38e4ed848e0ec45e04",
+   "bytes": 46521
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "palabrasAleatorias.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/baseline/frame_00001.png (snap) t=950ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/baseline/frame_00010.png (snap) t=1104ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/palabrasAleatorias/baseline/frame_00060.png (snap) t=1934ms\n[harness] done frame=60 t=1922ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 950,
+ "deterministic": false,
+ "rerun_frames": 3
+}

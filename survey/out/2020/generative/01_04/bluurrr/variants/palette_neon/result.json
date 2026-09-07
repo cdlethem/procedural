@@ -1,0 +1,81 @@
+{
+ "sketch": "2020/generative/01_04/bluurrr",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/palette_neon",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#B85807, #FAC440, #F4C8BF, #A0B9A6, #A1B2EA};",
+   "int colors[] = {#6402F7, #F7A4EF, #F62C64, #00DACA};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/palette_neon/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1540,
+   "md5": "1793130d9531b0b225b4a91cee68bc7b",
+   "bytes": 1122847
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "bluurrr.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#B85807, #FAC440, #F4C8BF, #A0B9A6, #A1B2EA};",
+   "new": "int colors[] = {#6402F7, #F7A4EF, #F62C64, #00DACA};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/palette_neon/frame_00001.png (snap) t=1540ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/palette_neon/frame_00010.png (snap) t=1772ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/bluurrr/variants/palette_neon/frame_00060.png (snap) t=3034ms\n[harness] done frame=60 t=2981ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1540,
+ "diff_vs_baseline": {
+  "mean": 0.2878,
+  "changed_fraction": 0.986,
+  "label": "large"
+ }
+}

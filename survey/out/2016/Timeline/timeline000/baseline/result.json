@@ -1,0 +1,62 @@
+{
+ "sketch": "2016/Timeline/timeline000",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Timeline/timeline000/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Timeline/timeline000/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 164,
+   "md5": "33db7aa1bb78c3a80755b7db2f25c512",
+   "bytes": 4349
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Timeline/timeline000/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 319,
+   "md5": "e34eccd6019a168f77d9cac0c5e61c8d",
+   "bytes": 4350
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Timeline/timeline000/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1158,
+   "md5": "3482b6fe4cba74167eab83d74a570721",
+   "bytes": 4350
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720",
+ "imports": [],
+ "tabs": [
+  "Timeline.pde",
+  "timeline000.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Timeline/timeline000/baseline/frame_00001.png (snap) t=164ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Timeline/timeline000/baseline/frame_00010.png (snap) t=319ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Timeline/timeline000/baseline/frame_00060.png (snap) t=1158ms\n[harness] done frame=60 t=1137ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 164,
+ "deterministic": true,
+ "rerun_frames": 3
+}

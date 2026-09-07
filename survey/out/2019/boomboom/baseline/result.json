@@ -1,0 +1,68 @@
+{
+ "sketch": "2019/boomboom",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/boomboom/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/boomboom/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1509,
+   "md5": "3bd168fde7e91f1288d92cd1fda929ea",
+   "bytes": 10726
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/boomboom/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 5309,
+   "md5": "6d76f2ff5dcc135055da9cb4aa88b96c",
+   "bytes": 18823
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/boomboom/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6565,
+   "md5": "767abd6e3b6bd3a47f9d144fe3d359ce",
+   "bytes": 21695
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "boomboom.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 8.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/boomboom/baseline/frame_00001.png (snap) t=1509ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/boomboom/baseline/frame_00010.png (snap) t=5309ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/boomboom/baseline/frame_00060.png (snap) t=6565ms\n[harness] done frame=60 t=6545ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1509,
+ "deterministic": false,
+ "rerun_frames": 3
+}

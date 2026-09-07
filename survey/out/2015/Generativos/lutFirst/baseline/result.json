@@ -1,0 +1,60 @@
+{
+ "sketch": "2015/Generativos/lutFirst",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/lutFirst/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/lutFirst/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 809,
+   "md5": "58c7d499081de3a9e89e9e15c8979f2a",
+   "bytes": 731324
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [],
+ "tabs": [
+  "ImageProcessor.pde",
+  "LutFilter.pde",
+  "lutFirst.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "lutFirst.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "${GENART_SURVEY_ROOT}/.build/ab72520829/lutFirst/LUTs/Lomo-fi.cube\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/lutFirst/baseline/frame_00001.png (snap) t=809ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/lutFirst/baseline/frame_00010.png (snap) t=984ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/lutFirst/baseline/frame_00060.png (snap) t=1837ms\n[harness] done frame=60 t=1802ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 809,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

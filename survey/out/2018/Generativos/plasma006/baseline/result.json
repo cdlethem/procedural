@@ -1,0 +1,57 @@
+{
+ "sketch": "2018/Generativos/plasma006",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma006/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma006/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1545,
+   "md5": "3c8bca0fdb1b74d8360ff394c3a617cd",
+   "bytes": 379916
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "plasma006.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n261.9229\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma006/baseline/frame_00001.png (snap) t=1545ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma006/baseline/frame_00010.png (snap) t=1755ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma006/baseline/frame_00060.png (snap) t=3011ms\n[harness] done frame=60 t=2983ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1545,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

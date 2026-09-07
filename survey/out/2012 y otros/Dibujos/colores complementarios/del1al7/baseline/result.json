@@ -1,0 +1,60 @@
+{
+ "sketch": "2012 y otros/Dibujos/colores complementarios/del1al7",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/colores complementarios/del1al7/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/colores complementarios/del1al7/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 165,
+   "md5": "2d7b69b5d2aeee76bc20eb85b4815b88",
+   "bytes": 9628
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/colores complementarios/del1al7/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 312,
+   "md5": "2ec1a111d02c7b85cb98c45e2e656c2b",
+   "bytes": 19621
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/colores complementarios/del1al7/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1143,
+   "md5": "5fbea2715e23dd601a61c268ea13b348",
+   "bytes": 39488
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "del1al7.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "Arranco un thread\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/colores complementarios/del1al7/baseline/frame_00001.png (snap) t=165ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/colores complementarios/del1al7/baseline/frame_00010.png (snap) t=312ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Dibujos/colores complementarios/del1al7/baseline/frame_00060.png (snap) t=1143ms\n[harness] done frame=60 t=1133ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 165,
+ "deterministic": false,
+ "rerun_frames": 3
+}

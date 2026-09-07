@@ -1,0 +1,61 @@
+{
+ "sketch": "2017/GIF/test004",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/GIF/test004/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/GIF/test004/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1521,
+   "md5": "07d7413b69e28676cb6f12e0bbd0c8d5",
+   "bytes": 29322
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/GIF/test004/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1869,
+   "md5": "c84418303f91ea605ed03260d83863ed",
+   "bytes": 29480
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/GIF/test004/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3603,
+   "md5": "6b01afba2af64c4d5def3a3200a70461",
+   "bytes": 29493
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "test004.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/GIF/test004/baseline/frame_00001.png (snap) t=1521ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/GIF/test004/baseline/frame_00010.png (snap) t=1869ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/GIF/test004/baseline/frame_00060.png (snap) t=3603ms\n[harness] done frame=60 t=3594ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1521,
+ "deterministic": true,
+ "rerun_frames": 3
+}

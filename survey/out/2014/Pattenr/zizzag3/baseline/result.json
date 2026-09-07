@@ -1,0 +1,61 @@
+{
+ "sketch": "2014/Pattenr/zizzag3",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Pattenr/zizzag3/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Pattenr/zizzag3/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 201,
+   "md5": "88948a7653a1ad1c47099f65f72b5766",
+   "bytes": 5906
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Pattenr/zizzag3/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 352,
+   "md5": "29f42ef5f7f31368523bf9dd63a8ec55",
+   "bytes": 12466
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Pattenr/zizzag3/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1189,
+   "md5": "eae2b33ff20b8441fb2142f3e9dc9a50",
+   "bytes": 12859
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  400
+ ],
+ "size_args": "800, 400",
+ "imports": [],
+ "tabs": [
+  "zizzag3.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Pattenr/zizzag3/baseline/frame_00001.png (snap) t=201ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Pattenr/zizzag3/baseline/frame_00010.png (snap) t=352ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Pattenr/zizzag3/baseline/frame_00060.png (snap) t=1189ms\n[harness] done frame=60 t=1177ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 201,
+ "deterministic": true,
+ "rerun_frames": 3
+}

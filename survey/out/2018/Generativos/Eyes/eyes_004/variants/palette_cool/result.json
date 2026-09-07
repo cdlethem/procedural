@@ -1,0 +1,64 @@
+{
+ "sketch": "2018/Generativos/Eyes/eyes_004",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/Eyes/eyes_004/variants/palette_cool",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "int colors[] = {#D81D03, #101A9D, #1C7E4E, #F6A402, #EFD4BF, #E2E0EF, #050400};=>int colors[] = {#0B1E3F, #19376D, #576CBC, #A5B7C6, #D6E4F0, #E2E0EF, #050400};"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/Eyes/eyes_004/variants/palette_cool/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1646,
+   "md5": "3ec7b9d026bc68c2f7175221ae83b7a3",
+   "bytes": 404492
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "eyes_004.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#D81D03, #101A9D, #1C7E4E, #F6A402, #EFD4BF, #E2E0EF, #050400};",
+   "new": "int colors[] = {#0B1E3F, #19376D, #576CBC, #A5B7C6, #D6E4F0, #E2E0EF, #050400};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Eyes/eyes_004/variants/palette_cool/frame_00001.png (snap) t=1646ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Eyes/eyes_004/variants/palette_cool/frame_00010.png (snap) t=1872ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Eyes/eyes_004/variants/palette_cool/frame_00060.png (snap) t=3123ms\n[harness] done frame=60 t=3095ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1646,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

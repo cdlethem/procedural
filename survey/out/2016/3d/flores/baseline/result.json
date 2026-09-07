@@ -1,0 +1,55 @@
+{
+ "sketch": "2016/3d/flores",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/3d/flores/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/3d/flores/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2028,
+   "md5": "5c27088eace1cc11a1332ab76e6c0ea0",
+   "bytes": 158874
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "flores.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/3d/flores/baseline/frame_00001.png (snap) t=2028ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/3d/flores/baseline/frame_00010.png (snap) t=2240ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/3d/flores/baseline/frame_00060.png (snap) t=3493ms\n[harness] done frame=60 t=3480ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 2028,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

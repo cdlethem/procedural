@@ -1,0 +1,65 @@
+{
+ "sketch": "2014/3d/lineas",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/3d/lineas/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/3d/lineas/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1626,
+   "md5": "57ea26fa0a6edf28d0d47ebd35d955ec",
+   "bytes": 23150
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/3d/lineas/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1850,
+   "md5": "8f942f7a5a4ade0b1affc217ea9e38cb",
+   "bytes": 40232
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/3d/lineas/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3105,
+   "md5": "84958a790789da6ec940abc37b9761e8",
+   "bytes": 46480
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  720,
+  480
+ ],
+ "size_args": "720, 480, P3D",
+ "imports": [],
+ "tabs": [
+  "lineas.pde",
+  "mesh.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "lineas.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/3d/lineas/baseline/frame_00001.png (snap) t=1626ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/3d/lineas/baseline/frame_00010.png (snap) t=1850ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/3d/lineas/baseline/frame_00060.png (snap) t=3105ms\n[harness] done frame=60 t=3094ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1626,
+ "deterministic": true,
+ "rerun_frames": 3
+}

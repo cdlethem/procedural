@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/mantad",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/mantad/variants/shadow_alpha_full",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "fill(col, random(120, 220)*0.4);",
+   "fill(col, random(120, 220));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/mantad/variants/shadow_alpha_full/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1568,
+   "md5": "fa5ade2a93f33120900b7c07a43ff8d1",
+   "bytes": 2341726
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "mantad.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "fill(col, random(120, 220)*0.4);",
+   "new": "fill(col, random(120, 220));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/mantad/variants/shadow_alpha_full/frame_00001.png (snap) t=1568ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/mantad/variants/shadow_alpha_full/frame_00010.png (snap) t=1830ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/mantad/variants/shadow_alpha_full/frame_00060.png (snap) t=3112ms\n[harness] done frame=60 t=3042ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1568,
+ "diff_vs_baseline": {
+  "mean": 0.1223,
+  "changed_fraction": 0.601,
+  "label": "moderate"
+ }
+}

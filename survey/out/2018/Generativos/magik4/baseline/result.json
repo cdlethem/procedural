@@ -1,0 +1,67 @@
+{
+ "sketch": "2018/Generativos/magik4",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/magik4/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/magik4/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2188,
+   "md5": "aaaa85ea2f7fb9c67f6ce7f68b48ee6e",
+   "bytes": 2305560
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "magik4.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/magik4/baseline/frame_00001.png (snap) t=2188ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/magik4/baseline/frame_00010.png (snap) t=2476ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/magik4/baseline/frame_00060.png (snap) t=3769ms\n[harness] done frame=60 t=3696ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2188,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

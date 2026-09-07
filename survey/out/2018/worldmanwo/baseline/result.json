@@ -1,0 +1,65 @@
+{
+ "sketch": "2018/worldmanwo",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/worldmanwo/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/worldmanwo/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1563,
+   "md5": "b1a503d04a1d0a557a8a50c6cde3ef35",
+   "bytes": 844
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/worldmanwo/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1787,
+   "md5": "b571bbb12a035ac667bd39a548426af6",
+   "bytes": 2579
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/worldmanwo/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 6599,
+   "md5": "d2a4fa176b439a719968b4df4638f21a",
+   "bytes": 29660
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "960*2/3, 540*2/3, P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "worldmanwo.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 8.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/worldmanwo/baseline/frame_00001.png (snap) t=1563ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/worldmanwo/baseline/frame_00010.png (snap) t=1787ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/worldmanwo/baseline/frame_00060.png (snap) t=6599ms\n[harness] done frame=60 t=6591ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1563,
+ "deterministic": true,
+ "rerun_frames": 3
+}

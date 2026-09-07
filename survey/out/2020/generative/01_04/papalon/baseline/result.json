@@ -1,0 +1,75 @@
+{
+ "sketch": "2020/generative/01_04/papalon",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1715,
+   "md5": "59913bd36ea7ab0692bd1f652e704c16",
+   "bytes": 2533973
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1938,
+   "md5": "b8eda1fd6c4e9e4b258a325ef0e0ea8f",
+   "bytes": 9999
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3196,
+   "md5": "b8eda1fd6c4e9e4b258a325ef0e0ea8f",
+   "bytes": 9999
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "peasy.PeasyCam",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "papalon.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "peasycam.jar",
+  "peasy-math.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/baseline/frame_00001.png (snap) t=1715ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/baseline/frame_00010.png (snap) t=1938ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/papalon/baseline/frame_00060.png (snap) t=3196ms\n[harness] done frame=60 t=3177ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1715,
+ "deterministic": false,
+ "rerun_frames": 3
+}

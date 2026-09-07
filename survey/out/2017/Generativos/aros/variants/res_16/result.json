@@ -1,0 +1,79 @@
+{
+ "sketch": "2017/Generativos/aros",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/res_16",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  int res = 128;",
+   "  int res = 16;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/res_16/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1471,
+   "md5": "cbe413e90238ab6aed9a632548b63bda",
+   "bytes": 86706
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/res_16/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1685,
+   "md5": "20408146584cf091842a5bf251f3d80f",
+   "bytes": 86123
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/res_16/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2942,
+   "md5": "cfe4b9e35637c09712e8230923201d1e",
+   "bytes": 83846
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "aros.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int res = 128;",
+   "new": "  int res = 16;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/res_16/frame_00001.png (snap) t=1471ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/res_16/frame_00010.png (snap) t=1685ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/aros/variants/res_16/frame_00060.png (snap) t=2942ms\n[harness] done frame=60 t=2917ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1471,
+ "diff_vs_baseline": {
+  "mean": 0.0076,
+  "changed_fraction": 0.024,
+  "label": "none"
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "sketch": "2019/generativos/pluma",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/pluma/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/pluma/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 3301,
+   "md5": "4f14c3c227b67ec2f2fedc652b719492",
+   "bytes": 2196273
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/pluma/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3519,
+   "md5": "5db8e2c0cc8be082afadfef9b7335ac6",
+   "bytes": 22544
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/pluma/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 4786,
+   "md5": "5db8e2c0cc8be082afadfef9b7335ac6",
+   "bytes": 22544
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "fbm.pde",
+  "pluma.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/pluma/baseline/frame_00001.png (snap) t=3301ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/pluma/baseline/frame_00010.png (snap) t=3519ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/pluma/baseline/frame_00060.png (snap) t=4786ms\n[harness] done frame=60 t=4760ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3301,
+ "deterministic": true,
+ "rerun_frames": 3
+}

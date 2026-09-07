@@ -1,0 +1,55 @@
+{
+ "sketch": "2014/texturas/textura2",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/texturas/textura2/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/texturas/textura2/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 747,
+   "md5": "f856eff6c089b8b8bf48e9e2dbd4d1be",
+   "bytes": 1378557
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "textura2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/texturas/textura2/baseline/frame_00001.png (snap) t=747ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/texturas/textura2/baseline/frame_00010.png (snap) t=918ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/texturas/textura2/baseline/frame_00060.png (snap) t=1770ms\n[harness] done frame=60 t=1735ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 747,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

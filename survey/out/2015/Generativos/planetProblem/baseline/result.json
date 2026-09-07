@@ -1,0 +1,63 @@
+{
+ "sketch": "2015/Generativos/planetProblem",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1564,
+   "md5": "d100310b1316b59acdf8f01b261f61c7",
+   "bytes": 292440
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1809,
+   "md5": "cd9099cd3def7452e933985e7061f8f9",
+   "bytes": 292399
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3062,
+   "md5": "b088a44a780a18232b6e004c4224e3a1",
+   "bytes": 292790
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "planetProblem.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/baseline/frame_00001.png (snap) t=1564ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/baseline/frame_00010.png (snap) t=1809ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/planetProblem/baseline/frame_00060.png (snap) t=3062ms\n[harness] done frame=60 t=3042ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1564,
+ "deterministic": false,
+ "rerun_frames": 3
+}

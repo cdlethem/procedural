@@ -1,0 +1,64 @@
+{
+ "sketch": "2014/Disen\u0303o/p5bsasFlyer2",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Disen\u0303o/p5bsasFlyer2/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Disen\u0303o/p5bsasFlyer2/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1658,
+   "md5": "f313e07c10cfa7e6e394d3e0bfbf208d",
+   "bytes": 8283
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Disen\u0303o/p5bsasFlyer2/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1956,
+   "md5": "4c29a901feab2aa3b3d82be4ec4ac5e5",
+   "bytes": 136165
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Disen\u0303o/p5bsasFlyer2/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3612,
+   "md5": "110f137f8ef5e8c7e2ae69141e7cc621",
+   "bytes": 664455
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  800,
+  1000
+ ],
+ "size_args": "800, 1000, P2D",
+ "imports": [],
+ "tabs": [
+  "p5bsasFlyer2.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "p5bsasFlyer2.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Disen\u0303o/p5bsasFlyer2/baseline/frame_00001.png (snap) t=1658ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Disen\u0303o/p5bsasFlyer2/baseline/frame_00010.png (snap) t=1956ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Disen\u0303o/p5bsasFlyer2/baseline/frame_00060.png (snap) t=3612ms\n[harness] done frame=60 t=3581ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "\"Helvetica Neue Bold\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1658,
+ "deterministic": false,
+ "rerun_frames": 3
+}

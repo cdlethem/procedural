@@ -1,0 +1,39 @@
+{
+ "sketch": "2014/Generativos/perurumrum",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/perurumrum/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "joons",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600, P3D",
+ "imports": [
+  "joons.*"
+ ],
+ "tabs": [
+  "perurumrum.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "perurumrum.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 1.2,
+ "rc": 1,
+ "timed_out": false,
+ "stdout_tail": "",
+ "stderr_tail": "No library found for joons\nLibraries must be installed in a folder named 'libraries' inside the sketchbook folder (see the Preferences window).\nperurumrum.pde:0:0:0:0: The package \u201cjoons\u201d does not exist. You might be missing a library.",
+ "ms_first_frame": null
+}

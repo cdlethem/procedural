@@ -1,0 +1,44 @@
+{
+ "sketch": "2015/ProjectEuler/problem8",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/ProjectEuler/problem8/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/ProjectEuler/problem8/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 124,
+   "md5": "f0510390727deb47ff521b32619dd99c",
+   "bytes": 307
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": null,
+ "imports": [],
+ "tabs": [
+  "problem8.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 36.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "23514624000\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/ProjectEuler/problem8/baseline/frame_00001.png (snap) t=124ms\n[harness] dispose frame=2 saved=true\n[harness] watchdog: no draw() reached budget; frame=2 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 124,
+ "deterministic": true,
+ "rerun_frames": 1
+}

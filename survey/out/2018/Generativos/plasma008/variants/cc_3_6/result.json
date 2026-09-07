@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/plasma008",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma008/variants/cc_3_6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(3, 20));",
+   "int cc = int(random(3, 6));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma008/variants/cc_3_6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1450,
+   "md5": "f30396d5e2a26ad912e1418ba6c92d9d",
+   "bytes": 206385
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "plasma008.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(3, 20));",
+   "new": "int cc = int(random(3, 6));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n261.9229\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma008/variants/cc_3_6/frame_00001.png (snap) t=1450ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma008/variants/cc_3_6/frame_00010.png (snap) t=1666ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/plasma008/variants/cc_3_6/frame_00060.png (snap) t=2922ms\n[harness] done frame=60 t=2892ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1450,
+ "diff_vs_baseline": {
+  "mean": 0.2749,
+  "changed_fraction": 0.897,
+  "label": "large"
+ }
+}

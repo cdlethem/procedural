@@ -1,0 +1,88 @@
+{
+ "sketch": "2019/generativos/margaritas",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/webAlpha_200",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "stroke(255, 60);",
+   "stroke(255, 200);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/webAlpha_200/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1700,
+   "md5": "d768b55e25b7c69dd1baf85b7ed5db4e",
+   "bytes": 406382
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/webAlpha_200/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 2558,
+   "md5": "93fee90f18dc04c23af2cc5bdc4ee905",
+   "bytes": 411815
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/webAlpha_200/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 7001,
+   "md5": "92589132f07774a5761ee8349bb3dce8",
+   "bytes": 411834
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "margaritas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "stroke(255, 60);",
+   "new": "stroke(255, 200);",
+   "count": 2
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 8.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/webAlpha_200/frame_00001.png (snap) t=1700ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/webAlpha_200/frame_00010.png (snap) t=2558ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/margaritas/variants/webAlpha_200/frame_00060.png (snap) t=7001ms\n[harness] done frame=60 t=6968ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1700,
+ "diff_vs_baseline": {
+  "mean": 0.0147,
+  "changed_fraction": 0.057,
+  "label": "subtle"
+ }
+}

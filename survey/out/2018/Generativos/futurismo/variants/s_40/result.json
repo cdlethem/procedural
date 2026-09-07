@@ -1,0 +1,81 @@
+{
+ "sketch": "2018/Generativos/futurismo",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/s_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float s = 16;",
+   "float s = 40;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/s_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1435,
+   "md5": "adbb8df6eec6cc5e5e5cf3d6603de338",
+   "bytes": 4000
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/s_40/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1632,
+   "md5": "85c3e8dcf03ae04e30f717c8bac7b39d",
+   "bytes": 3849
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/s_40/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2888,
+   "md5": "db79356e85af422743e4aff0126875b4",
+   "bytes": 4063
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*SCALE), int(sheight*SCALE), P3D",
+ "imports": [
+  "peasy.PeasyCam"
+ ],
+ "tabs": [
+  "futurismo.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "peasycam.jar",
+  "peasy-math.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float s = 16;",
+   "new": "float s = 40;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/s_40/frame_00001.png (snap) t=1435ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/s_40/frame_00010.png (snap) t=1632ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/futurismo/variants/s_40/frame_00060.png (snap) t=2888ms\n[harness] done frame=60 t=2878ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1435,
+ "diff_vs_baseline": {
+  "mean": 0.006,
+  "changed_fraction": 0.014,
+  "label": "none"
+ }
+}

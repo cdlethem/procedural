@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/piopio",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/piopio/variants/amp_2.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float amp = 1.25;",
+   "float amp = 2.2;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/piopio/variants/amp_2.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2331,
+   "md5": "3f3dfc8983589dbfbfea9652949d986a",
+   "bytes": 1527870
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "piopio.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float amp = 1.25;",
+   "new": "float amp = 2.2;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/piopio/variants/amp_2.2/frame_00001.png (snap) t=2331ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/piopio/variants/amp_2.2/frame_00010.png (snap) t=2575ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/piopio/variants/amp_2.2/frame_00060.png (snap) t=3858ms\n[harness] done frame=60 t=3789ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2331,
+ "diff_vs_baseline": {
+  "mean": 0.021,
+  "changed_fraction": 0.001,
+  "label": "subtle"
+ }
+}

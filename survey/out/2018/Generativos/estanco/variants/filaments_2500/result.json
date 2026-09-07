@@ -1,0 +1,82 @@
+{
+ "sketch": "2018/Generativos/estanco",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/estanco/variants/filaments_2500",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  float lar = random(32, 42);\n  for (int i = 0; i < 8000; i++) {",
+   "  float lar = random(32, 42);\n  for (int i = 0; i < 2500; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/estanco/variants/filaments_2500/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1673,
+   "md5": "bb95c528b24d2655976891b74bfcdb34",
+   "bytes": 764756
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "estanco.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "  float lar = random(32, 42);\n  for (int i = 0; i < 8000; i++) {",
+   "new": "  float lar = random(32, 42);\n  for (int i = 0; i < 2500; i++) {",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/estanco/variants/filaments_2500/frame_00001.png (snap) t=1673ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/estanco/variants/filaments_2500/frame_00010.png (snap) t=1899ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/estanco/variants/filaments_2500/frame_00060.png (snap) t=3166ms\n[harness] done frame=60 t=3116ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1673,
+ "diff_vs_baseline": {
+  "mean": 0.1181,
+  "changed_fraction": 0.383,
+  "label": "moderate"
+ }
+}

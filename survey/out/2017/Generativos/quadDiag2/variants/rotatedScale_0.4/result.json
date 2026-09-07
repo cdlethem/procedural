@@ -1,0 +1,70 @@
+{
+ "sketch": "2017/Generativos/quadDiag2",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/quadDiag2/variants/rotatedScale_0.4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "      Quad n = new Quad(q.x, q.y, q.s*sqrt(2)*0.5, q.a+HALF_PI/2);",
+   "      Quad n = new Quad(q.x, q.y, q.s*sqrt(2)*0.4, q.a+HALF_PI/2);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/quadDiag2/variants/rotatedScale_0.4/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1531,
+   "md5": "6e53f1f73acc754a2d8a77c312dd4468",
+   "bytes": 1908657
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "quadDiag2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "      Quad n = new Quad(q.x, q.y, q.s*sqrt(2)*0.5, q.a+HALF_PI/2);",
+   "new": "      Quad n = new Quad(q.x, q.y, q.s*sqrt(2)*0.4, q.a+HALF_PI/2);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/quadDiag2/variants/rotatedScale_0.4/frame_00001.png (snap) t=1531ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/quadDiag2/variants/rotatedScale_0.4/frame_00010.png (snap) t=1776ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/quadDiag2/variants/rotatedScale_0.4/frame_00060.png (snap) t=3062ms\n[harness] done frame=60 t=2991ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1531,
+ "diff_vs_baseline": {
+  "mean": 0.0385,
+  "changed_fraction": 0.151,
+  "label": "subtle"
+ }
+}

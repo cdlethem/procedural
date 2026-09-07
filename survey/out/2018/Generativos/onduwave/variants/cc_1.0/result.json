@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/onduwave",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/onduwave/variants/cc_1.0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(60, 80)*0.4)*1;",
+   "int cc = int(random(60, 80)*1.0)*1;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/onduwave/variants/cc_1.0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2128,
+   "md5": "bd97f5e2f14803d294026daabe26f93d",
+   "bytes": 1200565
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P3D",
+ "imports": [],
+ "tabs": [
+  "onduwave.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(60, 80)*0.4)*1;",
+   "new": "int cc = int(random(60, 80)*1.0)*1;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/onduwave/variants/cc_1.0/frame_00001.png (snap) t=2128ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/onduwave/variants/cc_1.0/frame_00010.png (snap) t=2363ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/onduwave/variants/cc_1.0/frame_00060.png (snap) t=3629ms\n[harness] done frame=60 t=3576ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2128,
+ "diff_vs_baseline": {
+  "mean": 0.1023,
+  "changed_fraction": 0.37,
+  "label": "moderate"
+ }
+}

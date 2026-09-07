@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/salchis",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/salchis/variants/cellSize_90",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float ss = random(180, 320);",
+   "float ss = random(90, 160);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/salchis/variants/cellSize_90/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1931,
+   "md5": "33e898c90c48d2f7ea0ad3ee5de80eb9",
+   "bytes": 4380723
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  2048,
+  2048
+ ],
+ "size_args": "2048, 2048, P2D",
+ "imports": [],
+ "tabs": [
+  "salchis.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float ss = random(180, 320);",
+   "new": "float ss = random(90, 160);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/salchis/variants/cellSize_90/frame_00001.png (snap) t=1931ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/salchis/variants/cellSize_90/frame_00010.png (snap) t=2356ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/salchis/variants/cellSize_90/frame_00060.png (snap) t=3782ms\n[harness] done frame=60 t=3571ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\n\"Saira-Thin\" is not available, so another font will be used. Use PFont.list() to show available fonts.",
+ "ms_first_frame": 1931,
+ "diff_vs_baseline": {
+  "mean": 0.0435,
+  "changed_fraction": 0.081,
+  "label": "subtle"
+ }
+}

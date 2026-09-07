@@ -1,0 +1,70 @@
+{
+ "sketch": "2016/Generativos/noiseGrids",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/noiseGrids/variants/noiseRects_120",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "for (int i = 0; i < 40; i++) {",
+   "for (int i = 0; i < 120; i++) {"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/noiseGrids/variants/noiseRects_120/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 395,
+   "md5": "f4b3d03b6832c3d424fefb8ece8b36df",
+   "bytes": 1458681
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  1920,
+  960
+ ],
+ "size_args": "1920, 960",
+ "imports": [],
+ "tabs": [
+  "noiseGrids.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "for (int i = 0; i < 40; i++) {",
+   "new": "for (int i = 0; i < 120; i++) {",
+   "count": 2
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/noiseGrids/variants/noiseRects_120/frame_00001.png (snap) t=395ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/noiseGrids/variants/noiseRects_120/frame_00010.png (snap) t=608ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/noiseGrids/variants/noiseRects_120/frame_00060.png (snap) t=1504ms\n[harness] done frame=60 t=1426ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 395,
+ "diff_vs_baseline": {
+  "mean": 0.0603,
+  "changed_fraction": 0.141,
+  "label": "moderate"
+ }
+}

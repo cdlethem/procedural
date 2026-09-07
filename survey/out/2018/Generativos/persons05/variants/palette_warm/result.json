@@ -1,0 +1,85 @@
+{
+ "sketch": "2018/Generativos/persons05",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons05/variants/palette_warm",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#2B00BE, #2B00BE, #F73859, #9896F1, #D59BF6, #EDB1F0};",
+   "int colors[] = {#107F40, #107F40, #F07148, #2474AF, #F0CA4B, #E6E7E9};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons05/variants/palette_warm/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1481,
+   "md5": "582e1348781dbb45fd982f823f4cd6df",
+   "bytes": 45008
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons05/variants/palette_warm/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 3979,
+   "md5": "6ce10fe639f038776fdcafa2eeae2ac7",
+   "bytes": 46023
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/persons05/variants/palette_warm/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 5231,
+   "md5": "003e86762107ed1a9696156e94d2c84c",
+   "bytes": 46083
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P2D",
+ "imports": [
+  "java.util.*",
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "Person.pde",
+  "persons05.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#2B00BE, #2B00BE, #F73859, #9896F1, #D59BF6, #EDB1F0};",
+   "new": "int colors[] = {#107F40, #107F40, #F07148, #2474AF, #F0CA4B, #E6E7E9};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n60.34263\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons05/variants/palette_warm/frame_00001.png (snap) t=1481ms\n15.20172\n8.889716\n7.945469\n8.276994\n8.617612\n8.968456\n9.329351\n9.7000065\n10.081857\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons05/variants/palette_warm/frame_00010.png (snap) t=3979ms\n10.472349\n10.87225\n11.282214\n11.700948\n12.128191\n12.564539\n13.009087\n13.46227\n13.920901\n14.388455\n14.863872\n15.342382\n15.827565\n16.317497\n16.811926\n17.31032\n17.811249\n18.314867\n18.821209\n19.32852\n19.836525\n20.344969\n20.85082\n21.358528\n21.862946\n22.362036\n22.86115\n23.349718\n23.837397\n24.324741\n24.806793\n25.281069\n25.748182\n26.208164\n26.665495\n27.115652\n27.549889\n27.979149\n28.401653\n28.814009\n29.21397\n29.60652\n29.991528\n30.367577\n30.731668\n31.081978\n31.433483\n31.760113\n32.084373\n32.397312\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/persons05/variants/palette_warm/frame_00060.png (snap) t=5231ms\n[harness] done frame=60 t=5219ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1481,
+ "diff_vs_baseline": {
+  "mean": 0.2149,
+  "changed_fraction": 1.0,
+  "label": "large"
+ }
+}

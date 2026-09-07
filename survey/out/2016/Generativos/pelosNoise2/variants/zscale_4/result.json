@@ -1,0 +1,87 @@
+{
+ "sketch": "2016/Generativos/pelosNoise2",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/zscale_4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  float z = cos(da/4)*1;",
+   "  float z = cos(da/4)*4;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/zscale_4/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 938,
+   "md5": "a0b0adad2e8cd72d2a86913ea4a8c4b0",
+   "bytes": 1236349
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/zscale_4/self_0002.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2256,
+   "md5": "6fc83b19f93a8bd3f44dbf7da04e3d83",
+   "bytes": 1241535
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/zscale_4/self_0003.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2656,
+   "md5": "ab54dc0a2ce8d834549a10dd32296d31",
+   "bytes": 1246049
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/zscale_4/self_0001.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1768,
+   "md5": "a0b0adad2e8cd72d2a86913ea4a8c4b0",
+   "bytes": 1236349
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "pelosNoise2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  float z = cos(da/4)*1;",
+   "new": "  float z = cos(da/4)*4;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/pelosNoise2/variants/zscale_4/frame_00001.png (snap) t=938ms\n[harness] dispose frame=4 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 938,
+ "diff_vs_baseline": {
+  "mean": 0.0807,
+  "changed_fraction": 0.31,
+  "label": "moderate"
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "sketch": "2019/generativos/circNoi",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/circNoi/variants/palette_green",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#ED61DA, #200C2B, #0029BF, #FFE760, #DBD1CB};",
+   "int colors[] = {#ED61DA, #200C2B, #0029BF, #7FFF00, #DBD1CB};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/circNoi/variants/palette_green/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1528,
+   "md5": "17dc454496871eb1522bb6ac9b5b7bc1",
+   "bytes": 320496
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "circNoi.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#ED61DA, #200C2B, #0029BF, #FFE760, #DBD1CB};",
+   "new": "int colors[] = {#ED61DA, #200C2B, #0029BF, #7FFF00, #DBD1CB};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/circNoi/variants/palette_green/frame_00001.png (snap) t=1528ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/circNoi/variants/palette_green/frame_00010.png (snap) t=1745ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/circNoi/variants/palette_green/frame_00060.png (snap) t=3008ms\n[harness] done frame=60 t=2970ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1528,
+ "diff_vs_baseline": {
+  "mean": 0.0503,
+  "changed_fraction": 0.287,
+  "label": "moderate"
+ }
+}

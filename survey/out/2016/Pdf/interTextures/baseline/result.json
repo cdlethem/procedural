@@ -1,0 +1,47 @@
+{
+ "sketch": "2016/Pdf/interTextures",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Pdf/interTextures/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Pdf/interTextures/baseline/self_20260902-185216.pdf",
+   "frame": -1,
+   "tag": "self",
+   "ms": 1053,
+   "md5": "89db652d380da54fb246a3c2b1fe8c63",
+   "bytes": 40439
+  }
+ ],
+ "warnings": [],
+ "renderer": "PDF",
+ "size": [
+  1920,
+  1920
+ ],
+ "size_args": "1920, 1920, PDF, getTimestamp()+\".pdf\"",
+ "imports": [
+  "processing.pdf.*"
+ ],
+ "tabs": [
+  "interTextures.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 1.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] save failed: java.lang.RuntimeException: No save() for PGraphicsPDF\n[harness] dispose frame=2 saved=false\n[harness] save failed: java.lang.RuntimeException: No save() for PGraphicsPDF\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1053,
+ "deterministic": false,
+ "rerun_frames": 1
+}

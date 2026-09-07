@@ -1,0 +1,62 @@
+{
+ "sketch": "2017/timeline000",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/timeline000/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/timeline000/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1535,
+   "md5": "7fb441ba2d1c98b52b465357b1892f80",
+   "bytes": 18263
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/timeline000/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1755,
+   "md5": "4b5517f557dd23f7753d915b074a7fad",
+   "bytes": 18262
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/timeline000/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3004,
+   "md5": "4b5517f557dd23f7753d915b074a7fad",
+   "bytes": 18262
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720, P2D",
+ "imports": [],
+ "tabs": [
+  "Timeline.pde",
+  "timeline000.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/timeline000/baseline/frame_00001.png (snap) t=1535ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/timeline000/baseline/frame_00010.png (snap) t=1755ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/timeline000/baseline/frame_00060.png (snap) t=3004ms\n[harness] done frame=60 t=2983ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1535,
+ "deterministic": true,
+ "rerun_frames": 3
+}

@@ -1,0 +1,79 @@
+{
+ "sketch": "2018/Generativos/puntis6",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis6/variants/darkband_120",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "arc2(cx, cy, q.z*0.1, q.z*0.8, 0, TAU, color(0), 20, 0);",
+   "arc2(cx, cy, q.z*0.1, q.z*0.8, 0, TAU, color(0), 120, 0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis6/variants/darkband_120/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1846,
+   "md5": "27fabd92871c9e6d5f960d31cc0a8f2e",
+   "bytes": 1067630
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "Tipitos.pde",
+  "pointsFunctions.pde",
+  "puntis6.pde",
+  "utils.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "arc2(cx, cy, q.z*0.1, q.z*0.8, 0, TAU, color(0), 20, 0);",
+   "new": "arc2(cx, cy, q.z*0.1, q.z*0.8, 0, TAU, color(0), 120, 0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis6/variants/darkband_120/frame_00001.png (snap) t=1846ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis6/variants/darkband_120/frame_00010.png (snap) t=2078ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/puntis6/variants/darkband_120/frame_00060.png (snap) t=3341ms\n[harness] done frame=60 t=3288ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1846,
+ "diff_vs_baseline": {
+  "mean": 0.0008,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

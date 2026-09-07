@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/circles004",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/circles004/variants/sizeExp_1",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float s = width*random(1)*random(1)*random(1);",
+   "float s = width*random(1);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/circles004/variants/sizeExp_1/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 3154,
+   "md5": "94dfce17f317c5d3790223838ad5690c",
+   "bytes": 1273490
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/circles004/variants/sizeExp_1/self_20260905-022455.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3648,
+   "md5": "94dfce17f317c5d3790223838ad5690c",
+   "bytes": 1273490
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P3D",
+ "imports": [],
+ "tabs": [
+  "circles004.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float s = width*random(1)*random(1)*random(1);",
+   "new": "float s = width*random(1);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/circles004/variants/sizeExp_1/frame_00001.png (dispose) t=3154ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 3154,
+ "diff_vs_baseline": {
+  "mean": 0.2898,
+  "changed_fraction": 0.871,
+  "label": "large"
+ }
+}

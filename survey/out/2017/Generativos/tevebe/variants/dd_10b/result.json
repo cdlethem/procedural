@@ -1,0 +1,79 @@
+{
+ "sketch": "2017/Generativos/tevebe",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10b",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float dd = random(50)/w;",
+   "float dd = random(50)*0 + 10/w;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10b/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1433,
+   "md5": "68f8ba8f5090c3b017e0cb818bfb286f",
+   "bytes": 36867
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10b/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1639,
+   "md5": "798ffa46fda39f132b15e0507239b6f5",
+   "bytes": 38396
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10b/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 2895,
+   "md5": "a84ba7dddc481e776cc2ffdeba627691",
+   "bytes": 39511
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  960,
+  720
+ ],
+ "size_args": "960, 720, P3D",
+ "imports": [],
+ "tabs": [
+  "tevebe.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float dd = random(50)/w;",
+   "new": "float dd = random(50)*0 + 10/w;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10b/frame_00001.png (snap) t=1433ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10b/frame_00010.png (snap) t=1639ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/tevebe/variants/dd_10b/frame_00060.png (snap) t=2895ms\n[harness] done frame=60 t=2876ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1433,
+ "diff_vs_baseline": {
+  "mean": 0.3059,
+  "changed_fraction": 0.658,
+  "label": "large"
+ }
+}

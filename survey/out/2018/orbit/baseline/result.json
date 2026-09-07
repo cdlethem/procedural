@@ -1,0 +1,63 @@
+{
+ "sketch": "2018/orbit",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/orbit/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/orbit/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1589,
+   "md5": "90a2556f02e03357117f2584cdd1a951",
+   "bytes": 18763
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/orbit/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1809,
+   "md5": "a6816c9ba4977fa5900f304dd54fc269",
+   "bytes": 17855
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/orbit/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 15999,
+   "md5": "4ed22e4e92118992356381e27576a3a5",
+   "bytes": 13057
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720, P3D",
+ "imports": [],
+ "tabs": [
+  "orbit.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 17.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/orbit/baseline/frame_00001.png (snap) t=1589ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/orbit/baseline/frame_00010.png (snap) t=1809ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/orbit/baseline/frame_00060.png (snap) t=15999ms\n[harness] done frame=60 t=15986ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1589,
+ "deterministic": false,
+ "rerun_frames": 3
+}

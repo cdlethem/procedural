@@ -1,0 +1,71 @@
+{
+ "sketch": "2018/Generativos/insitu",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/insitu/variants/colors_mono",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int colors[] = {#3A3C39, #3854A8, #A5C9D5, #F3B62A, #F64D3A};",
+   "int colors[] = {#222222, #444444, #666666, #888888, #AAAAAA};"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/insitu/variants/colors_mono/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 2220,
+   "md5": "6075448e488b597c1753996cbabf9e27",
+   "bytes": 905536
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/insitu/variants/colors_mono/self_20260905-122227.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 2763,
+   "md5": "6075448e488b597c1753996cbabf9e27",
+   "bytes": 905536
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  3250,
+  3250
+ ],
+ "size_args": "3250, 3250, P2D",
+ "imports": [],
+ "tabs": [
+  "insitu.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#3A3C39, #3854A8, #A5C9D5, #F3B62A, #F64D3A};",
+   "new": "int colors[] = {#222222, #444444, #666666, #888888, #AAAAAA};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 3.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/insitu/variants/colors_mono/frame_00001.png (dispose) t=2220ms\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2220,
+ "diff_vs_baseline": {
+  "mean": 0.2188,
+  "changed_fraction": 0.763,
+  "label": "large"
+ }
+}

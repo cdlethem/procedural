@@ -1,0 +1,36 @@
+{
+ "sketch": "2018/Generativos/flowers",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/flowers/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "compile_error",
+ "detail": "flowers.pde:38:0:38:0: Duplicate method settings() in type flowers",
+ "frames": [],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "CS.pde",
+  "flowers.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "seed_fields": [],
+ "wall_s": 1.0,
+ "rc": 1,
+ "timed_out": false,
+ "stdout_tail": "",
+ "stderr_tail": "flowers.pde:38:0:38:0: Duplicate method settings() in type flowers",
+ "ms_first_frame": null
+}

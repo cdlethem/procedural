@@ -1,0 +1,64 @@
+{
+ "sketch": "2018/Generativos/Eyes/eyes_004",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/Eyes/eyes_004/variants/sub_20",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "  int sub = int(random(100));=>  int sub = 20;"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/Eyes/eyes_004/variants/sub_20/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1587,
+   "md5": "745c3a7e0d00463521082c6e2325e211",
+   "bytes": 470158
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "eyes_004.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  int sub = int(random(100));",
+   "new": "  int sub = 20;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Eyes/eyes_004/variants/sub_20/frame_00001.png (snap) t=1587ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Eyes/eyes_004/variants/sub_20/frame_00010.png (snap) t=1805ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/Eyes/eyes_004/variants/sub_20/frame_00060.png (snap) t=3065ms\n[harness] done frame=60 t=3028ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1587,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

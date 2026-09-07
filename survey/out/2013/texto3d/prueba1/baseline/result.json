@@ -1,0 +1,55 @@
+{
+ "sketch": "2013/texto3d/prueba1",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/texto3d/prueba1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/texto3d/prueba1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1513,
+   "md5": "d26e3d6ff74acd4a5ee729afd6cd71b1",
+   "bytes": 6838
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800,600,P3D",
+ "imports": [],
+ "tabs": [
+  "prueba1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2013/texto3d/prueba1/baseline/frame_00001.png (snap) t=1513ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/texto3d/prueba1/baseline/frame_00010.png (snap) t=1720ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/texto3d/prueba1/baseline/frame_00060.png (snap) t=2976ms\n[harness] done frame=60 t=2963ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1513,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

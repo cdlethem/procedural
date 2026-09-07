@@ -1,0 +1,60 @@
+{
+ "sketch": "2016/Juegos/capitan",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Juegos/capitan/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Juegos/capitan/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1462,
+   "md5": "9e75066d711efca28337b006db407121",
+   "bytes": 168153
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600, P2D",
+ "imports": [],
+ "tabs": [
+  "capitan.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "blank"
+  ],
+  [
+   10,
+   "blank"
+  ],
+  [
+   60,
+   "blank"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Juegos/capitan/baseline/frame_00001.png (snap) t=1462ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Juegos/capitan/baseline/frame_00002.png (snap) t=1499ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Juegos/capitan/baseline/frame_00010.png (snap) t=1676ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Juegos/capitan/baseline/frame_00060.png (snap) t=2933ms\n[harness] done frame=60 t=2913ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "The shader doesn't have a uniform called \"mouse\" OR the uniform was removed during compilation because it was unused.",
+ "ms_first_frame": 1462,
+ "deterministic": false,
+ "rerun_frames": 1
+}

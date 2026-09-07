@@ -1,0 +1,70 @@
+{
+ "sketch": "2014/Generativos/Forms/forms1",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Forms/forms1/variants/vertices_6",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "Form f = new Form(random(width), random(height), 4, tam);",
+   "Form f = new Form(random(width), random(height), 6, tam);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Forms/forms1/variants/vertices_6/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 234,
+   "md5": "b99e4a2558e4d01de7929646ec0b8496",
+   "bytes": 507379
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  800
+ ],
+ "size_args": "600, 800",
+ "imports": [],
+ "tabs": [
+  "forms1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "Form f = new Form(random(width), random(height), 4, tam);",
+   "new": "Form f = new Form(random(width), random(height), 6, tam);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Forms/forms1/variants/vertices_6/frame_00001.png (snap) t=234ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Forms/forms1/variants/vertices_6/frame_00010.png (snap) t=393ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Forms/forms1/variants/vertices_6/frame_00060.png (snap) t=1233ms\n[harness] done frame=60 t=1210ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 234,
+ "diff_vs_baseline": {
+  "mean": 0.1475,
+  "changed_fraction": 0.606,
+  "label": "moderate"
+ }
+}

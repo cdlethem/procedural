@@ -1,0 +1,57 @@
+{
+ "sketch": "2012 y otros/Processing 2/Juegos/tiros_red",
+ "out": "${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/Juegos/tiros_red/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/Juegos/tiros_red/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 177,
+   "md5": "4d933340c4ca9ff8a4a5d5a7cd14ee10",
+   "bytes": 5481
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  400,
+  400
+ ],
+ "size_args": "400, 400",
+ "imports": [],
+ "tabs": [
+  "Clases.pde",
+  "Funciones.pde",
+  "No_va.pde",
+  "tiros_red.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/Juegos/tiros_red/baseline/frame_00001.png (snap) t=177ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/Juegos/tiros_red/baseline/frame_00010.png (snap) t=322ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2012 y otros/Processing 2/Juegos/tiros_red/baseline/frame_00060.png (snap) t=1152ms\n[harness] done frame=60 t=1146ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 177,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

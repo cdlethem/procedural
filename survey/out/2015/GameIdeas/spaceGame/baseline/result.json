@@ -1,0 +1,25 @@
+{
+ "sketch": "2015/GameIdeas/spaceGame",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/spaceGame/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "android.view.MotionEvent",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": null,
+ "size_args": null,
+ "imports": [
+  "android.view.MotionEvent"
+ ],
+ "tabs": [
+  "controller.pde",
+  "spaceGame.pde",
+  "stars.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/intersecCirclesGrid",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/intersecCirclesGrid/variants/grid_8_16",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cw = int(random(10, 100)*random(0.1, 1));",
+   "int cw = int(random(8, 16)*random(0.5, 1));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/intersecCirclesGrid/variants/grid_8_16/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1802,
+   "md5": "f7c22198d4992e5af259f3d65ee27645",
+   "bytes": 266138
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "intersecCirclesGrid.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cw = int(random(10, 100)*random(0.1, 1));",
+   "new": "int cw = int(random(8, 16)*random(0.5, 1));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/intersecCirclesGrid/variants/grid_8_16/frame_00001.png (snap) t=1802ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/intersecCirclesGrid/variants/grid_8_16/frame_00010.png (snap) t=2017ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/intersecCirclesGrid/variants/grid_8_16/frame_00060.png (snap) t=3277ms\n[harness] done frame=60 t=3244ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1802,
+ "diff_vs_baseline": {
+  "mean": 0.2733,
+  "changed_fraction": 0.889,
+  "label": "large"
+ }
+}

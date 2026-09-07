@@ -1,0 +1,76 @@
+{
+ "sketch": "2018/Generativos/seaa",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/seaa/variants/stippleSize_16",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float s = map(noise(des+x*det, des+y*det), 0, 1, 1*amp, 8*amp);",
+   "float s = map(noise(des+x*det, des+y*det), 0, 1, 1*amp, 16*amp);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/seaa/variants/stippleSize_16/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1976,
+   "md5": "33db2698e6078b213dee1965fc683b9f",
+   "bytes": 1587138
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*"
+ ],
+ "tabs": [
+  "seaa.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float s = map(noise(des+x*det, des+y*det), 0, 1, 1*amp, 8*amp);",
+   "new": "float s = map(noise(des+x*det, des+y*det), 0, 1, 1*amp, 16*amp);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/seaa/variants/stippleSize_16/frame_00001.png (snap) t=1976ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/seaa/variants/stippleSize_16/frame_00010.png (snap) t=2215ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/seaa/variants/stippleSize_16/frame_00060.png (snap) t=3484ms\n[harness] done frame=60 t=3429ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1976,
+ "diff_vs_baseline": {
+  "mean": 0.0313,
+  "changed_fraction": 0.099,
+  "label": "subtle"
+ }
+}

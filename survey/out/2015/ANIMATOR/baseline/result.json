@@ -1,0 +1,31 @@
+{
+ "sketch": "2015/ANIMATOR",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/ANIMATOR/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "missing_library",
+ "detail": "manoloide.Input.Input",
+ "frames": [],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [
+  "manoloide.Input.Input"
+ ],
+ "tabs": [
+  "ANIMATOR.pde",
+  "Actions.pde",
+  "Canvas.pde",
+  "Frame.pde",
+  "Layers.pde",
+  "Shape.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2"
+}

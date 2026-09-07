@@ -1,0 +1,69 @@
+{
+ "sketch": "2019/generativos/buibui002b",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/buibui002b/variants/pwr_2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "  float pwr = random(20)*random(1);",
+   "  float pwr = random(0, 2)*random(1);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/buibui002b/variants/pwr_2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1616,
+   "md5": "6f7e5bc1c5ec38f04666482b23c8ff82",
+   "bytes": 933965
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [],
+ "tabs": [
+  "buibui002b.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "  float pwr = random(20)*random(1);",
+   "new": "  float pwr = random(0, 2)*random(1);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/buibui002b/variants/pwr_2/frame_00001.png (snap) t=1616ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/buibui002b/variants/pwr_2/frame_00010.png (snap) t=1844ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/buibui002b/variants/pwr_2/frame_00060.png (snap) t=3096ms\n[harness] done frame=60 t=3059ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1616,
+ "diff_vs_baseline": {
+  "mean": 0.0422,
+  "changed_fraction": 0.166,
+  "label": "subtle"
+ }
+}

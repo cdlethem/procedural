@@ -1,0 +1,57 @@
+{
+ "sketch": "2020/Games/cells",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/Games/cells/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/Games/cells/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 188,
+   "md5": "57d81ce1e24ec14ffc6507278af2b49e",
+   "bytes": 19370
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  720,
+  720
+ ],
+ "size_args": "720, 720",
+ "imports": [],
+ "tabs": [
+  "Level.pde",
+  "Player.pde",
+  "cells.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2020/Games/cells/baseline/frame_00001.png (snap) t=188ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/Games/cells/baseline/frame_00010.png (snap) t=344ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/Games/cells/baseline/frame_00060.png (snap) t=1174ms\n[harness] done frame=60 t=1163ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 188,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

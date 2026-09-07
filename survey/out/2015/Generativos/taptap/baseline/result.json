@@ -1,0 +1,58 @@
+{
+ "sketch": "2015/Generativos/taptap",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/taptap/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/taptap/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 539,
+   "md5": "214ec21e4a649fbdfefff198d43fc982",
+   "bytes": 156836
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  270,
+  480
+ ],
+ "size_args": "270, 480",
+ "imports": [],
+ "tabs": [
+  "taptap.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [
+  "taptap.pde"
+ ],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/taptap/baseline/frame_00001.png (snap) t=539ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/taptap/baseline/frame_00010.png (snap) t=693ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/taptap/baseline/frame_00060.png (snap) t=1528ms\n[harness] done frame=60 t=1510ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 539,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

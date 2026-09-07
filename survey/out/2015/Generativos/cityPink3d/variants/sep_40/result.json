@@ -1,0 +1,72 @@
+{
+ "sketch": "2015/Generativos/cityPink3d",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/cityPink3d/variants/sep_40",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float sep = 20;",
+   "    float sep = 40;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/cityPink3d/variants/sep_40/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1781,
+   "md5": "cd82f5192601d15d68b076a0be195ce9",
+   "bytes": 1117015
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800, P3D",
+ "imports": [],
+ "tabs": [
+  "cityPink3d.pde"
+ ],
+ "uses_shader": true,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float sep = 20;",
+   "new": "    float sep = 40;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "cityPink3d.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/cityPink3d/variants/sep_40/frame_00001.png (snap) t=1781ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/cityPink3d/variants/sep_40/frame_00010.png (snap) t=2011ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/cityPink3d/variants/sep_40/frame_00060.png (snap) t=3262ms\n[harness] done frame=60 t=3223ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "clear() can only be used with createGraphics()\nThe shader doesn't have a uniform called \"iGlobalTime\" OR the uniform was removed during compilation because it was unused.",
+ "ms_first_frame": 1781,
+ "diff_vs_baseline": {
+  "mean": 0.0027,
+  "changed_fraction": 0.0,
+  "label": "none"
+ }
+}

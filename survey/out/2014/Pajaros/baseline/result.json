@@ -1,0 +1,55 @@
+{
+ "sketch": "2014/Pajaros",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Pajaros/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Pajaros/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 273,
+   "md5": "7fd25ca10fff56bc4d50c588746e9939",
+   "bytes": 5594
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800, 600",
+ "imports": [],
+ "tabs": [
+  "Pajaros.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Pajaros/baseline/frame_00001.png (snap) t=273ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Pajaros/baseline/frame_00010.png (snap) t=424ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Pajaros/baseline/frame_00060.png (snap) t=1254ms\n[harness] done frame=60 t=1242ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 273,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

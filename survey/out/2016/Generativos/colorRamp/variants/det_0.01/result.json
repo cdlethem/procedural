@@ -1,0 +1,70 @@
+{
+ "sketch": "2016/Generativos/colorRamp",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/variants/det_0.01",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float det = random(0.02)*random(1);",
+   "float det = 0.01;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/variants/det_0.01/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 580,
+   "md5": "d9d8afd95df802e026ccae14e2aad28f",
+   "bytes": 867854
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640",
+ "imports": [],
+ "tabs": [
+  "colorRamp.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "float det = random(0.02)*random(1);",
+   "new": "float det = 0.01;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 3.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/variants/det_0.01/frame_00001.png (snap) t=580ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/variants/det_0.01/frame_00010.png (snap) t=747ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Generativos/colorRamp/variants/det_0.01/frame_00060.png (snap) t=1593ms\n[harness] done frame=60 t=1565ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 580,
+ "diff_vs_baseline": {
+  "mean": 0.132,
+  "changed_fraction": 0.577,
+  "label": "moderate"
+ }
+}

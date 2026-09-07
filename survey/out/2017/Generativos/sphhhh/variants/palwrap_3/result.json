@@ -1,0 +1,72 @@
+{
+ "sketch": "2017/Generativos/sphhhh",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/sphhhh/variants/palwrap_3",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "z1+z3)*det+des)*9));",
+   "z1+z3)*det+des)*3));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/sphhhh/variants/palwrap_3/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1520,
+   "md5": "284b0a30c3c937f2cc3c69135eed2674",
+   "bytes": 174737
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  1280,
+  720
+ ],
+ "size_args": "1280, 720, P3D",
+ "imports": [],
+ "tabs": [
+  "sphhhh.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "z1+z3)*det+des)*9));",
+   "new": "z1+z3)*det+des)*3));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/sphhhh/variants/palwrap_3/frame_00001.png (snap) t=1520ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/sphhhh/variants/palwrap_3/frame_00010.png (snap) t=1731ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/sphhhh/variants/palwrap_3/frame_00060.png (snap) t=2986ms\n[harness] done frame=60 t=2961ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1520,
+ "diff_vs_baseline": {
+  "mean": 0.2944,
+  "changed_fraction": 0.869,
+  "label": "large"
+ }
+}

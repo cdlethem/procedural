@@ -1,0 +1,61 @@
+{
+ "sketch": "2013/isometria/prueba1",
+ "out": "${GENART_SURVEY_ROOT}/out/2013/isometria/prueba1/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/isometria/prueba1/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 156,
+   "md5": "9fc1ff5b6bc99d662e09de50bb5cad66",
+   "bytes": 1990
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/isometria/prueba1/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 307,
+   "md5": "22386064d13dacb4d500757547fcf27a",
+   "bytes": 10295
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2013/isometria/prueba1/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1137,
+   "md5": "ae6f41afa497a97899b5ee3e29e65e36",
+   "bytes": 47295
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  600
+ ],
+ "size_args": "800 , 600",
+ "imports": [],
+ "tabs": [
+  "prueba1.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2013/isometria/prueba1/baseline/frame_00001.png (snap) t=156ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/isometria/prueba1/baseline/frame_00010.png (snap) t=307ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2013/isometria/prueba1/baseline/frame_00060.png (snap) t=1137ms\n[harness] done frame=60 t=1126ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 156,
+ "deterministic": true,
+ "rerun_frames": 3
+}

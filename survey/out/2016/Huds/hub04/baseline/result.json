@@ -1,0 +1,55 @@
+{
+ "sketch": "2016/Huds/hub04",
+ "out": "${GENART_SURVEY_ROOT}/out/2016/Huds/hub04/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2016/Huds/hub04/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1528,
+   "md5": "160d5cb604d3efe2d16a782ca10f74e2",
+   "bytes": 2857
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [],
+ "tabs": [
+  "hub04.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 7.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Huds/hub04/baseline/frame_00001.png (snap) t=1528ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Huds/hub04/baseline/frame_00010.png (snap) t=3922ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2016/Huds/hub04/baseline/frame_00060.png (snap) t=6156ms\n[harness] done frame=60 t=6146ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1528,
+ "deterministic": true,
+ "rerun_frames": 3,
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ]
+}

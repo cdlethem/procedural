@@ -1,0 +1,61 @@
+{
+ "sketch": "2015/GameIdeas/isoIdle",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoIdle/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoIdle/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 175,
+   "md5": "ceb90b62b2d365eb29b96a1b81b7f266",
+   "bytes": 10779
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoIdle/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 323,
+   "md5": "7407326955203ce264bf9892be5e0468",
+   "bytes": 10788
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoIdle/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1160,
+   "md5": "b5d4ce6f0a464719aa5de0ae06e32fd5",
+   "bytes": 10816
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "isoIdle.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoIdle/baseline/frame_00001.png (snap) t=175ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoIdle/baseline/frame_00010.png (snap) t=323ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/GameIdeas/isoIdle/baseline/frame_00060.png (snap) t=1160ms\n[harness] done frame=60 t=1145ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 175,
+ "deterministic": true,
+ "rerun_frames": 3
+}

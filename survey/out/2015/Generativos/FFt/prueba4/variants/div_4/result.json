@@ -1,0 +1,87 @@
+{
+ "sketch": "2015/Generativos/FFt/prueba4",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/variants/div_4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "div = 10;",
+   "div = 4;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/variants/div_4/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1713,
+   "md5": "bfdcbeca679abd0f3da62f34c032ed47",
+   "bytes": 3425
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/variants/div_4/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1995,
+   "md5": "8781e73ba462abdd702f4c1e7aebe327",
+   "bytes": 3768
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/variants/div_4/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3644,
+   "md5": "bc8b7c774c12bec40e18ae81d94698b4",
+   "bytes": 4874
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640, P3D",
+ "imports": [
+  "ddf.minim.*",
+  "ddf.minim.analysis.*"
+ ],
+ "tabs": [
+  "prueba4.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "minim.jar",
+  "jsminim.jar",
+  "jl1.0.1.jar",
+  "mp3spi1.9.5.jar",
+  "tritonus_aos.jar",
+  "tritonus_share.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "div = 10;",
+   "new": "div = 4;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [],
+ "seed_fields": [],
+ "wall_s": 5.0,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/variants/div_4/frame_00001.png (snap) t=1713ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/variants/div_4/frame_00010.png (snap) t=1995ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Generativos/FFt/prueba4/variants/div_4/frame_00060.png (snap) t=3644ms\n[harness] done frame=60 t=3630ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 1713,
+ "diff_vs_baseline": {
+  "mean": 0.0063,
+  "changed_fraction": 0.01,
+  "label": "none"
+ }
+}

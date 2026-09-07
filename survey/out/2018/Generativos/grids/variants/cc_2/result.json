@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/grids",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/grids/variants/cc_2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(random(1, 7));",
+   "int cc = 2;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/grids/variants/cc_2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 2669,
+   "md5": "477ca84fa5e1d2ec49d37fb2f4312b68",
+   "bytes": 446271
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "grids.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(random(1, 7));",
+   "new": "int cc = 2;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/grids/variants/cc_2/frame_00001.png (snap) t=2669ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/grids/variants/cc_2/frame_00010.png (snap) t=2890ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/grids/variants/cc_2/frame_00060.png (snap) t=4149ms\n[harness] done frame=60 t=4112ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 2669,
+ "diff_vs_baseline": {
+  "mean": 0.2493,
+  "changed_fraction": 0.818,
+  "label": "large"
+ }
+}

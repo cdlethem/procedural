@@ -1,0 +1,73 @@
+{
+ "sketch": "2018/Generativos/OP/op_012",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_012/variants/grid_14",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "int cw = int(random(14, random(20, 40)));=>int cw = int(14);",
+  "int ch = int(random(14, random(20, 40)));=>int ch = int(14);"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_012/variants/grid_14/frame_00001.png",
+   "frame": 1,
+   "tag": "dispose",
+   "ms": 3779,
+   "md5": "706a517a7e08f838f1137a0d1c8e0cb8",
+   "bytes": 438099
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_012/variants/grid_14/self_20260902-204023.png",
+   "frame": -1,
+   "tag": "self",
+   "ms": 3243,
+   "md5": "706a517a7e08f838f1137a0d1c8e0cb8",
+   "bytes": 438099
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  6500,
+  6500
+ ],
+ "size_args": "6500, 6500, P2D",
+ "imports": [],
+ "tabs": [
+  "op_012.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cw = int(random(14, random(20, 40)));",
+   "new": "int cw = int(14);",
+   "count": 1
+  },
+  {
+   "old": "int ch = int(random(14, random(20, 40)));",
+   "new": "int ch = int(14);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 5.2,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] dispose frame=1 saved=false\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/OP/op_012/variants/grid_14/frame_00001.png (dispose) t=3779ms\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 3779,
+ "diff_vs_baseline": {
+  "mean": 0.3542,
+  "changed_fraction": 0.997,
+  "label": "large"
+ }
+}

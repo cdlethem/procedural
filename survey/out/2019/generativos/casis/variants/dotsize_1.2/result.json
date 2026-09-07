@@ -1,0 +1,81 @@
+{
+ "sketch": "2019/generativos/casis",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/casis/variants/dotsize_1.2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "float ww = r.w*random(0.1, 0.2)*0.4;",
+   "float ww = r.w*random(0.1, 0.2)*1.2;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/casis/variants/dotsize_1.2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1493,
+   "md5": "6b4e17ecb0572eab2ef5268bdddada6d",
+   "bytes": 144683
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "casis.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "float ww = r.w*random(0.1, 0.2)*0.4;",
+   "new": "float ww = r.w*random(0.1, 0.2)*1.2;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/casis/variants/dotsize_1.2/frame_00001.png (snap) t=1493ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/casis/variants/dotsize_1.2/frame_00010.png (snap) t=1715ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/casis/variants/dotsize_1.2/frame_00060.png (snap) t=2976ms\n[harness] done frame=60 t=2946ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1493,
+ "diff_vs_baseline": {
+  "mean": 0.069,
+  "changed_fraction": 0.189,
+  "label": "moderate"
+ }
+}

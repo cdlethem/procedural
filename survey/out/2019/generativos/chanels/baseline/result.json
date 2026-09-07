@@ -1,0 +1,60 @@
+{
+ "sketch": "2019/generativos/chanels",
+ "out": "${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/baseline",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1523,
+   "md5": "1e2197604ba1e09044b632e64caf1a6e",
+   "bytes": 592823
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/baseline/frame_00010.png",
+   "frame": 10,
+   "tag": "snap",
+   "ms": 1728,
+   "md5": "21b4e55f12d9824fb02322b82d632eb4",
+   "bytes": 7031
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/baseline/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 3003,
+   "md5": "21b4e55f12d9824fb02322b82d632eb4",
+   "bytes": 7031
+  }
+ ],
+ "warnings": [],
+ "renderer": "P3D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P3D",
+ "imports": [],
+ "tabs": [
+  "chanels.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/baseline/frame_00001.png (snap) t=1523ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/baseline/frame_00010.png (snap) t=1728ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2019/generativos/chanels/baseline/frame_00060.png (snap) t=3003ms\n[harness] done frame=60 t=2973ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1523,
+ "deterministic": true,
+ "rerun_frames": 3
+}

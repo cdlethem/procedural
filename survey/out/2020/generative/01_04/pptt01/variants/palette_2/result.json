@@ -1,0 +1,78 @@
+{
+ "sketch": "2020/generative/01_04/pptt01",
+ "out": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/pptt01/variants/palette_2",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  "int colors[] = {#F3B2DB, #518DB2, #02B59E, #DCE404, #82023B};=>int colors[] = {#7D7FD8, #F7AA06, #EA79B7, #FF0739, #12315E};"
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2020/generative/01_04/pptt01/variants/palette_2/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1507,
+   "md5": "317e58a081cccfe4395974e065290335",
+   "bytes": 43214
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": null,
+ "size_args": "int(swidth*scale), int(sheight*scale), P2D",
+ "imports": [
+  "org.processing.wiki.triangulate.*",
+  "toxi.math.noise.SimplexNoise"
+ ],
+ "tabs": [
+  "pptt01.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [
+  "triangulate.jar",
+  "toxiclibscore.jar",
+  "colorutils.jar",
+  "verletphysics.jar",
+  "datautils.jar",
+  "toxiclibs_p5.jar",
+  "simutils.jar",
+  "volumeutils.jar"
+ ],
+ "subs_applied": [
+  {
+   "old": "int colors[] = {#F3B2DB, #518DB2, #02B59E, #DCE404, #82023B};",
+   "new": "int colors[] = {#7D7FD8, #F7AA06, #EA79B7, #FF0739, #12315E};",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 4.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/pptt01/variants/palette_2/frame_00001.png (snap) t=1507ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/pptt01/variants/palette_2/frame_00010.png (snap) t=1716ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2020/generative/01_04/pptt01/variants/palette_2/frame_00060.png (snap) t=2972ms\n[harness] done frame=60 t=2948ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display",
+ "ms_first_frame": 1507,
+ "diff_vs_baseline": {
+  "mean": 0.3657,
+  "changed_fraction": 0.999,
+  "label": "large"
+ }
+}

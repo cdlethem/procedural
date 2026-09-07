@@ -1,0 +1,70 @@
+{
+ "sketch": "2014/Generativos/circulosdentrocirculos2",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosdentrocirculos2/variants/thick_30",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "    float t = int(random(10)+1)*10;",
+   "    float t = int(random(10)+1)*30;"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosdentrocirculos2/variants/thick_30/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 307,
+   "md5": "fea70b20b99dcbdffa6b1964d1e0f35c",
+   "bytes": 176549
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  600,
+  600
+ ],
+ "size_args": "600, 600",
+ "imports": [],
+ "tabs": [
+  "circulosdentrocirculos2.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "    float t = int(random(10)+1)*10;",
+   "new": "    float t = int(random(10)+1)*30;",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.6,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosdentrocirculos2/variants/thick_30/frame_00001.png (snap) t=307ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosdentrocirculos2/variants/thick_30/frame_00010.png (snap) t=456ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/circulosdentrocirculos2/variants/thick_30/frame_00060.png (snap) t=1289ms\n[harness] done frame=60 t=1275ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 307,
+ "diff_vs_baseline": {
+  "mean": 0.1712,
+  "changed_fraction": 0.45,
+  "label": "large"
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "sketch": "2017/Generativos/forms",
+ "out": "${GENART_SURVEY_ROOT}/out/2017/Generativos/forms/variants/gridrot_0",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "rotate(PI*0.25);",
+   "rotate(0);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/forms/variants/gridrot_0/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 159,
+   "md5": "3c502b61f9c8af8c0e2de61a7f4d9911",
+   "bytes": 30471
+  },
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2017/Generativos/forms/variants/gridrot_0/frame_00060.png",
+   "frame": 60,
+   "tag": "snap",
+   "ms": 1179,
+   "md5": "c4b0904eb474778c0839a29f37853f49",
+   "bytes": 111117
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960",
+ "imports": [],
+ "tabs": [
+  "forms.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "rotate(PI*0.25);",
+   "new": "rotate(0);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/forms/variants/gridrot_0/frame_00001.png (snap) t=159ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/forms/variants/gridrot_0/frame_00010.png (snap) t=319ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2017/Generativos/forms/variants/gridrot_0/frame_00060.png (snap) t=1179ms\n[harness] done frame=60 t=1154ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 159,
+ "diff_vs_baseline": {
+  "mean": 0.0009,
+  "changed_fraction": 0.003,
+  "label": "none"
+ }
+}

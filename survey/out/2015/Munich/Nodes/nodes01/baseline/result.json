@@ -1,0 +1,61 @@
+{
+ "sketch": "2015/Munich/Nodes/nodes01",
+ "out": "${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes01/baseline",
+ "seed": 42,
+ "snaps": "1,2,10,60",
+ "budget_s": 30.0,
+ "subs": [],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes01/baseline/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 226,
+   "md5": "9a93df325c6bf7c606af2565fdcba2d5",
+   "bytes": 2585
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  640,
+  640
+ ],
+ "size_args": "640, 640",
+ "imports": [],
+ "tabs": [
+  "Node.pde",
+  "nodes01.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   2,
+   "identical to frame 1"
+  ],
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.8,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "60.00767 0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes01/baseline/frame_00001.png (snap) t=226ms\n54.634792 0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes01/baseline/frame_00002.png (snap) t=245ms\n54.572105 0\n54.673134 0\n55.01795 0\n55.21889 0\n55.43348 0\n55.61461 0\n55.802376 0\n55.988705 0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes01/baseline/frame_00010.png (snap) t=379ms\n56.224495 0\n56.359974 0\n56.511856 0\n56.670414 0\n56.82812 0\n56.97996 0\n57.064205 0\n57.200584 0\n57.354023 0\n57.508118 0\n57.6393 0\n57.768223 0\n57.89439 0\n57.85606 0\n58.118904 0\n58.07689 0\n58.19678 0\n58.296818 0\n58.364693 0\n58.4614 0\n58.542645 0\n58.627014 0\n58.717777 0\n58.79229 0\n58.85903 0\n58.909058 0\n58.931664 0\n58.993813 0\n59.07851 0\n58.981926 0\n59.029457 0\n59.07687 0\n59.290894 0\n59.170372 0\n59.3448 0\n59.362354 0\n59.36142 0\n59.376377 0\n59.430176 0\n59.488373 0\n59.517086 0\n59.53931 0\n59.587246 0\n59.45284 0\n59.488136 0\n59.536663 0\n59.54684 0\n59.57268 0\n59.580074 0\n59.706566 0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2015/Munich/Nodes/nodes01/baseline/frame_00060.png (snap) t=1209ms\n[harness] done frame=60 t=1197ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 226,
+ "deterministic": true,
+ "rerun_frames": 1
+}

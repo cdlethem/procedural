@@ -1,0 +1,72 @@
+{
+ "sketch": "2014/Generativos/Arboles",
+ "out": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Arboles/variants/struc_255",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "stroke(#4B9EFF, 80);",
+   "stroke(#4B9EFF, 255);"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2014/Generativos/Arboles/variants/struc_255/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 154,
+   "md5": "e9fbc9c74590a960a5ed7e093fc70086",
+   "bytes": 35526
+  }
+ ],
+ "warnings": [],
+ "renderer": "JAVA2D",
+ "size": [
+  800,
+  800
+ ],
+ "size_args": "800, 800",
+ "imports": [],
+ "tabs": [
+  "Arboles.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "stroke(#4B9EFF, 80);",
+   "new": "stroke(#4B9EFF, 255);",
+   "count": 1
+  }
+ ],
+ "compat_shims": [
+  "Arboles.pde"
+ ],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [],
+ "wall_s": 2.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "5\n4\n3\n2\n1\n0\n1\n0\n0\n0\n4\n3\n2\n1\n0\n1\n0\n1\n0\n0\n2\n1\n0\n0\n0\n1\n0\n2\n1\n0\n3\n2\n1\n0\n2\n1\n0\n2\n1\n0\n0\n0\n1\n0\n0\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Arboles/variants/struc_255/frame_00001.png (snap) t=154ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Arboles/variants/struc_255/frame_00010.png (snap) t=307ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2014/Generativos/Arboles/variants/struc_255/frame_00060.png (snap) t=1143ms\n[harness] done frame=60 t=1125ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "",
+ "ms_first_frame": 154,
+ "diff_vs_baseline": {
+  "mean": 0.001,
+  "changed_fraction": 0.004,
+  "label": "none"
+ }
+}

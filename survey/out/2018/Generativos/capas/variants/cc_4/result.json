@@ -1,0 +1,72 @@
+{
+ "sketch": "2018/Generativos/capas",
+ "out": "${GENART_SURVEY_ROOT}/out/2018/Generativos/capas/variants/cc_4",
+ "seed": 42,
+ "snaps": "1,10,60",
+ "budget_s": 30.0,
+ "subs": [
+  [
+   "int cc = int(max(1, random(50)*random(1)));",
+   "int cc = int(max(1, random(50)*random(4)));"
+  ]
+ ],
+ "status": "ok",
+ "detail": null,
+ "frames": [
+  {
+   "path": "${GENART_SURVEY_ROOT}/out/2018/Generativos/capas/variants/cc_4/frame_00001.png",
+   "frame": 1,
+   "tag": "snap",
+   "ms": 1736,
+   "md5": "8b87811e773828a5ba122b1aefdaba38",
+   "bytes": 1837881
+  }
+ ],
+ "warnings": [],
+ "renderer": "P2D",
+ "size": [
+  960,
+  960
+ ],
+ "size_args": "960, 960, P2D",
+ "imports": [],
+ "tabs": [
+  "capas.pde"
+ ],
+ "uses_shader": false,
+ "display": ":2",
+ "static_mode": false,
+ "jars": [],
+ "subs_applied": [
+  {
+   "old": "int cc = int(max(1, random(50)*random(1)));",
+   "new": "int cc = int(max(1, random(50)*random(4)));",
+   "count": 1
+  }
+ ],
+ "compat_shims": [],
+ "dropped_frames": [
+  [
+   10,
+   "identical to frame 1"
+  ],
+  [
+   60,
+   "identical to frame 1"
+  ]
+ ],
+ "seed_fields": [
+  "seed"
+ ],
+ "wall_s": 6.4,
+ "rc": 0,
+ "timed_out": false,
+ "stdout_tail": "[harness] seed field seed := 42\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/capas/variants/cc_4/frame_00001.png (snap) t=1736ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/capas/variants/cc_4/frame_00010.png (snap) t=2327ms\n[harness] saved ${GENART_SURVEY_ROOT}/out/2018/Generativos/capas/variants/cc_4/frame_00060.png (snap) t=5047ms\n[harness] done frame=60 t=4983ms\n[harness] dispose frame=61 saved=true\nFinished.",
+ "stderr_tail": "pixelDensity(2) is not available for this display\nmap(0, 0, 0, 0, 1) called, which returns NaN (not a number)",
+ "ms_first_frame": 1736,
+ "diff_vs_baseline": {
+  "mean": 0.2718,
+  "changed_fraction": 0.834,
+  "label": "large"
+ }
+}
