@@ -149,3 +149,8 @@ Known data-quality limitations are reported rather than hidden: malformed frontm
 with diagnostics, unsupported vocabulary values are normalized explicitly, non-deterministic
 renders are marked, and shader output produced under Xvfb is treated as suspect. See the final
 sections of [`reports/corpus.md`](reports/corpus.md) for the current normalization and warning tables.
+
+## License
+
+Procedurals is released under the [MIT License](LICENSE). The upstream `AllSketchs`
+material remains copyright Manolo ide under its separately preserved MIT notice.
