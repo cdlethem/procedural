@@ -447,7 +447,8 @@
               },
               "body": [
                 {
-                  "kind": "emit",
+                  "kind": "bind",
+                  "name": "candidateCommand",
                   "value": {
                     "kind": "record",
                     "fields": [
@@ -513,6 +514,311 @@
                       }
                     ]
                   }
+                },
+                {
+                  "kind": "when",
+                  "condition": {
+                    "kind": "if",
+                    "condition": {
+                      "kind": "if",
+                      "condition": {
+                        "kind": "if",
+                        "condition": {
+                          "kind": "math",
+                          "op": "lt",
+                          "args": [
+                            {
+                              "kind": "index",
+                              "value": {
+                                "kind": "get",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "candidateCommand"
+                                },
+                                "key": "from"
+                              },
+                              "index": {
+                                "kind": "literal",
+                                "value": 0
+                              }
+                            },
+                            {
+                              "kind": "literal",
+                              "value": -1
+                            }
+                          ]
+                        },
+                        "then": {
+                          "kind": "math",
+                          "op": "lt",
+                          "args": [
+                            {
+                              "kind": "index",
+                              "value": {
+                                "kind": "get",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "candidateCommand"
+                                },
+                                "key": "to"
+                              },
+                              "index": {
+                                "kind": "literal",
+                                "value": 0
+                              }
+                            },
+                            {
+                              "kind": "literal",
+                              "value": -1
+                            }
+                          ]
+                        },
+                        "else": {
+                          "kind": "literal",
+                          "value": false
+                        }
+                      },
+                      "then": {
+                        "kind": "literal",
+                        "value": false
+                      },
+                      "else": {
+                        "kind": "literal",
+                        "value": true
+                      }
+                    },
+                    "then": {
+                      "kind": "if",
+                      "condition": {
+                        "kind": "if",
+                        "condition": {
+                          "kind": "if",
+                          "condition": {
+                            "kind": "math",
+                            "op": "lt",
+                            "args": [
+                              {
+                                "kind": "literal",
+                                "value": 641
+                              },
+                              {
+                                "kind": "index",
+                                "value": {
+                                  "kind": "get",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "candidateCommand"
+                                  },
+                                  "key": "from"
+                                },
+                                "index": {
+                                  "kind": "literal",
+                                  "value": 0
+                                }
+                              }
+                            ]
+                          },
+                          "then": {
+                            "kind": "math",
+                            "op": "lt",
+                            "args": [
+                              {
+                                "kind": "literal",
+                                "value": 641
+                              },
+                              {
+                                "kind": "index",
+                                "value": {
+                                  "kind": "get",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "candidateCommand"
+                                  },
+                                  "key": "to"
+                                },
+                                "index": {
+                                  "kind": "literal",
+                                  "value": 0
+                                }
+                              }
+                            ]
+                          },
+                          "else": {
+                            "kind": "literal",
+                            "value": false
+                          }
+                        },
+                        "then": {
+                          "kind": "literal",
+                          "value": false
+                        },
+                        "else": {
+                          "kind": "literal",
+                          "value": true
+                        }
+                      },
+                      "then": {
+                        "kind": "if",
+                        "condition": {
+                          "kind": "if",
+                          "condition": {
+                            "kind": "if",
+                            "condition": {
+                              "kind": "math",
+                              "op": "lt",
+                              "args": [
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "get",
+                                    "value": {
+                                      "kind": "ref",
+                                      "name": "candidateCommand"
+                                    },
+                                    "key": "from"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 1
+                                  }
+                                },
+                                {
+                                  "kind": "literal",
+                                  "value": -1
+                                }
+                              ]
+                            },
+                            "then": {
+                              "kind": "math",
+                              "op": "lt",
+                              "args": [
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "get",
+                                    "value": {
+                                      "kind": "ref",
+                                      "name": "candidateCommand"
+                                    },
+                                    "key": "to"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 1
+                                  }
+                                },
+                                {
+                                  "kind": "literal",
+                                  "value": -1
+                                }
+                              ]
+                            },
+                            "else": {
+                              "kind": "literal",
+                              "value": false
+                            }
+                          },
+                          "then": {
+                            "kind": "literal",
+                            "value": false
+                          },
+                          "else": {
+                            "kind": "literal",
+                            "value": true
+                          }
+                        },
+                        "then": {
+                          "kind": "if",
+                          "condition": {
+                            "kind": "if",
+                            "condition": {
+                              "kind": "math",
+                              "op": "lt",
+                              "args": [
+                                {
+                                  "kind": "literal",
+                                  "value": 641
+                                },
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "get",
+                                    "value": {
+                                      "kind": "ref",
+                                      "name": "candidateCommand"
+                                    },
+                                    "key": "from"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 1
+                                  }
+                                }
+                              ]
+                            },
+                            "then": {
+                              "kind": "math",
+                              "op": "lt",
+                              "args": [
+                                {
+                                  "kind": "literal",
+                                  "value": 641
+                                },
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "get",
+                                    "value": {
+                                      "kind": "ref",
+                                      "name": "candidateCommand"
+                                    },
+                                    "key": "to"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 1
+                                  }
+                                }
+                              ]
+                            },
+                            "else": {
+                              "kind": "literal",
+                              "value": false
+                            }
+                          },
+                          "then": {
+                            "kind": "literal",
+                            "value": false
+                          },
+                          "else": {
+                            "kind": "literal",
+                            "value": true
+                          }
+                        },
+                        "else": {
+                          "kind": "literal",
+                          "value": false
+                        }
+                      },
+                      "else": {
+                        "kind": "literal",
+                        "value": false
+                      }
+                    },
+                    "else": {
+                      "kind": "literal",
+                      "value": false
+                    }
+                  },
+                  "body": [
+                    {
+                      "kind": "emit",
+                      "value": {
+                        "kind": "ref",
+                        "name": "candidateCommand"
+                      }
+                    }
+                  ]
                 }
               ]
             },
@@ -648,7 +954,8 @@
                   }
                 },
                 {
-                  "kind": "emit",
+                  "kind": "bind",
+                  "name": "candidateCommand",
                   "value": {
                     "kind": "record",
                     "fields": [
@@ -789,6 +1096,311 @@
                       }
                     ]
                   }
+                },
+                {
+                  "kind": "when",
+                  "condition": {
+                    "kind": "if",
+                    "condition": {
+                      "kind": "if",
+                      "condition": {
+                        "kind": "if",
+                        "condition": {
+                          "kind": "math",
+                          "op": "lt",
+                          "args": [
+                            {
+                              "kind": "index",
+                              "value": {
+                                "kind": "get",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "candidateCommand"
+                                },
+                                "key": "from"
+                              },
+                              "index": {
+                                "kind": "literal",
+                                "value": 0
+                              }
+                            },
+                            {
+                              "kind": "literal",
+                              "value": -1
+                            }
+                          ]
+                        },
+                        "then": {
+                          "kind": "math",
+                          "op": "lt",
+                          "args": [
+                            {
+                              "kind": "index",
+                              "value": {
+                                "kind": "get",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "candidateCommand"
+                                },
+                                "key": "to"
+                              },
+                              "index": {
+                                "kind": "literal",
+                                "value": 0
+                              }
+                            },
+                            {
+                              "kind": "literal",
+                              "value": -1
+                            }
+                          ]
+                        },
+                        "else": {
+                          "kind": "literal",
+                          "value": false
+                        }
+                      },
+                      "then": {
+                        "kind": "literal",
+                        "value": false
+                      },
+                      "else": {
+                        "kind": "literal",
+                        "value": true
+                      }
+                    },
+                    "then": {
+                      "kind": "if",
+                      "condition": {
+                        "kind": "if",
+                        "condition": {
+                          "kind": "if",
+                          "condition": {
+                            "kind": "math",
+                            "op": "lt",
+                            "args": [
+                              {
+                                "kind": "literal",
+                                "value": 641
+                              },
+                              {
+                                "kind": "index",
+                                "value": {
+                                  "kind": "get",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "candidateCommand"
+                                  },
+                                  "key": "from"
+                                },
+                                "index": {
+                                  "kind": "literal",
+                                  "value": 0
+                                }
+                              }
+                            ]
+                          },
+                          "then": {
+                            "kind": "math",
+                            "op": "lt",
+                            "args": [
+                              {
+                                "kind": "literal",
+                                "value": 641
+                              },
+                              {
+                                "kind": "index",
+                                "value": {
+                                  "kind": "get",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "candidateCommand"
+                                  },
+                                  "key": "to"
+                                },
+                                "index": {
+                                  "kind": "literal",
+                                  "value": 0
+                                }
+                              }
+                            ]
+                          },
+                          "else": {
+                            "kind": "literal",
+                            "value": false
+                          }
+                        },
+                        "then": {
+                          "kind": "literal",
+                          "value": false
+                        },
+                        "else": {
+                          "kind": "literal",
+                          "value": true
+                        }
+                      },
+                      "then": {
+                        "kind": "if",
+                        "condition": {
+                          "kind": "if",
+                          "condition": {
+                            "kind": "if",
+                            "condition": {
+                              "kind": "math",
+                              "op": "lt",
+                              "args": [
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "get",
+                                    "value": {
+                                      "kind": "ref",
+                                      "name": "candidateCommand"
+                                    },
+                                    "key": "from"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 1
+                                  }
+                                },
+                                {
+                                  "kind": "literal",
+                                  "value": -1
+                                }
+                              ]
+                            },
+                            "then": {
+                              "kind": "math",
+                              "op": "lt",
+                              "args": [
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "get",
+                                    "value": {
+                                      "kind": "ref",
+                                      "name": "candidateCommand"
+                                    },
+                                    "key": "to"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 1
+                                  }
+                                },
+                                {
+                                  "kind": "literal",
+                                  "value": -1
+                                }
+                              ]
+                            },
+                            "else": {
+                              "kind": "literal",
+                              "value": false
+                            }
+                          },
+                          "then": {
+                            "kind": "literal",
+                            "value": false
+                          },
+                          "else": {
+                            "kind": "literal",
+                            "value": true
+                          }
+                        },
+                        "then": {
+                          "kind": "if",
+                          "condition": {
+                            "kind": "if",
+                            "condition": {
+                              "kind": "math",
+                              "op": "lt",
+                              "args": [
+                                {
+                                  "kind": "literal",
+                                  "value": 641
+                                },
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "get",
+                                    "value": {
+                                      "kind": "ref",
+                                      "name": "candidateCommand"
+                                    },
+                                    "key": "from"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 1
+                                  }
+                                }
+                              ]
+                            },
+                            "then": {
+                              "kind": "math",
+                              "op": "lt",
+                              "args": [
+                                {
+                                  "kind": "literal",
+                                  "value": 641
+                                },
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "get",
+                                    "value": {
+                                      "kind": "ref",
+                                      "name": "candidateCommand"
+                                    },
+                                    "key": "to"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 1
+                                  }
+                                }
+                              ]
+                            },
+                            "else": {
+                              "kind": "literal",
+                              "value": false
+                            }
+                          },
+                          "then": {
+                            "kind": "literal",
+                            "value": false
+                          },
+                          "else": {
+                            "kind": "literal",
+                            "value": true
+                          }
+                        },
+                        "else": {
+                          "kind": "literal",
+                          "value": false
+                        }
+                      },
+                      "else": {
+                        "kind": "literal",
+                        "value": false
+                      }
+                    },
+                    "else": {
+                      "kind": "literal",
+                      "value": false
+                    }
+                  },
+                  "body": [
+                    {
+                      "kind": "emit",
+                      "value": {
+                        "kind": "ref",
+                        "name": "candidateCommand"
+                      }
+                    }
+                  ]
                 }
               ]
             }

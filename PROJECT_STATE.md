@@ -1,5 +1,25 @@
 # Project state
 
+## Java recipe evaluator prototype underway
+
+Previous turn pushed static validation 60ed990c. Root selected command-level prototype
+implementation against the current four immutable operation contracts and draft expression/
+accounting rules. Terra owns packages/java-recipe-prototype/.../RecipeEvaluator.java outside
+the accepted core/package. Root owns tools/run_recipe_java_prototype.py, which reuses the
+established Java literal fixture generator and compares existing full Java streams across
+nine baseline/edit scenarios. No new JSON parser, renderer or copied generative algorithm.
+Initial runner passed seven raw command cases, then found Path distance outside the drawing
+profile. Root added the source workflow's explicit canvas visibility expressions to the
+Path draft and switched its comparison target to streamForCanvas; checks stay intact.
+Worker corrected query shape/native errors and reran: all nine command scenarios pass.
+Luna expanded formatting and verified bytecode instruction equivalence. Root reran final
+source-bound comparison at .work/recipe-prototype-root3: all nine scenarios pass exact
+raw numeric/structural comparisons (PathMarks after explicit canvas visibility). Structured
+prototype evidence: evidence/conformance/recipe-java-prototype-commands.json.
+Runtime failure/accounting/diagnostic/invalidation review remains pending; no acceptance. Runtime failure/budget cases and native/export work remain after
+command equivalence. Catalog/execution schema are still drafts; prototype does not grant
+shared support. Full goal active.
+
 ## Bounded static recipe validator implemented
 
 Previous turn made progress by pushing 55c7a971. Added the required
@@ -3608,3 +3628,6 @@ Representative paths:
    typography, branching and 3D investigations visible without making them an initial quota.
    Define scoped reproduction acceptance before runs; never confuse it with full-corpus
    certification. Reconcile affected decisions as new survey evidence arrives.
+
+Current integration note: unrelated packages/javascript/src/index.js export edit was observed
+during this batch and is preserved unstaged; it is not part of this Java prototype review.

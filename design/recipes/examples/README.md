@@ -13,9 +13,11 @@ Geometry and styling are separate retain/frame stages. No cache invalidation is 
 `path-marks.draft.json` translates PathMarkComposition's raw stream: 24 ordered starts,
 retained paths, exact remainder-based palette phase, every-step traces or every-fourth-step
 perpendicular marks. Root factored repeated endpoint/trigonometric expressions into local
-bindings and preserved lazy branches. It deliberately omits the example's fixed-canvas
-culling; no general clipping capability is implied. Native acceptance must resolve drawing
-profile limits and assess that omission, after full unculled command comparison.
+bindings and preserved lazy branches. The first unculled draft failed the distance edit at the drawing-profile bounds during
+prototype execution. The draft now expresses the original fixed-canvas culling using
+ordinary comparisons and conditional statements before emission. No general clipping
+capability is implied. The runnable comparison target is `streamForCanvas`; full raw-stream
+coverage remains separate from this native-workflow composition.
 
 Root inspected the original project-owned Java compositions and ran schema plus lexical
 reference/shadow checks on both drafts. Those checks establish neither runtime types,

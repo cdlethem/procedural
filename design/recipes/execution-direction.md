@@ -121,3 +121,12 @@ a strict grammar draft; `execution-bindings.json` points at the existing four co
 Four grammar tests and schema-pointer checks pass. No complete recipe execution, lexical
 validation, budget enforcement or export has been accepted. Full CP1/CP2 translations are
 the next architecture check before freezing this surface.
+
+## Prototype finding: PathMarks visibility
+
+Seven initial raw command cases matched before the distance edit hit the fresh-raster
+profile coordinate bounds. The original runnable workflow uses `streamForCanvas`. Root
+therefore added its fixed 640x640, one-pixel-padded bounding-box visibility decision to the
+draft via existing `if`, `lt` and `when` expressions. Compare the resulting emitted stream
+against `streamForCanvas`; do not weaken the profile or claim a general clipping operation.
+The predicates are equivalent for the finite coordinates already required by the core.

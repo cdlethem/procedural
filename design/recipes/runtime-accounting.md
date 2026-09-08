@@ -28,7 +28,7 @@ Proposed initial desktop limits:
 | --- | ---: | --- |
 | Expression/statement visits | 10,000,000 | Before each evaluated AST expression/statement, including every repeated body visit |
 | Operation API calls | 200,000 | Before construct/query/values; failed calls consume their reservation |
-| Core work units | 200,000 | Before each call using the binding-specific cost below |
+| Core work units | 500,000 | Before each call using the binding-specific cost below |
 | Aggregate loop iterations | 200,000 | Before entering each map/for body, summed across nesting and retain/frame |
 | Single array length | 100,000 | Before range/map/materialized array allocation |
 | Cumulative created value units | 5,000,000 | Reserve before creating arrays/records/materialized operation values/commands |
@@ -86,3 +86,12 @@ Include zero-size traversal, lazy invalid arithmetic, negative remainder, duplic
 bindings, wrong instance port, huge path steps and tiny array/command/work budgets. Test
 round-trip values and preserve source recipes. Only later target fixtures can establish
 cross-target numeric tolerance or renderer support.
+
+## Prototype preflight correction
+
+Root recalculated materialized path output as `4*steps+6` value units. For 24 paths
+of 2000 steps, constructors plus values calls alone consume 240,192 work units before
+grid/palette calls. The initial provisional 200,000 work limit was insufficient; the
+prototype profile is therefore 500,000. Keep the full cost instead of undercounting it.
+Native positions storage also contains `2*(steps+1)` scalars and must pass the single-array
+limit before construction. These are reviewed calculations, not executed budget evidence.
