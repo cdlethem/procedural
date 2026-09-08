@@ -23,7 +23,9 @@ LandscapeMarks adds a reviewed structural recreation of `parapara`, also without
 CutBranchMarks adds mutable interior-cut branching with retained geometry and scoped P2D acceptance.
 Ports of these newer workflows to JavaScript, py5 and Android are deferred. The local Java 0.15.0 package
 contains all fifteen starters and fifteen reusable operations. It is not a published registry
-release. Portable recipes, MCP and web tools remain in the roadmap.
+release. An experimental [Java recipe preview](docs/java-recipe-preview.md) exports FieldMarks
+and PathMarks as editable standalone projects. General portable recipes, MCP and web tools
+remain in the roadmap.
 
 Build from a fresh checkout with [the Java source-bundle instructions](docs/building-java-from-source.md).
 

@@ -1,7 +1,7 @@
 {
   "status": "prototype-data-roundtrip-passed",
   "reviewer": "root",
-  "scope": "Private binary resource export on Java. No new raster, general exporter acceptance or operation claim.",
+  "scope": "Private binary resource export on Java; two exact native JAVA2D cases inspected by root. General exporter acceptance and other target execution remain pending.",
   "motivating_failure": "Valid 12000-number parameter array exceeded generated Java method size in the prior literal exporter.",
   "cases": [
     {
@@ -140,5 +140,41 @@
     "tests/native/RecipeExportDataProbe.java": "f49f2a61e193b4b0628e7290d8f18c61dd77a43a43207c09efc8b0e6acd70c00",
     "tests/test_recipe_export_data.py": "01f5928de6c1d768dbdab76713b05cfa9fc63e84789215e17b3449f305281b0b"
   },
-  "validation": "6 focused Python tests; exported native Java probe compares decoded recipes and commands against the established RecipePrototypeComparison driver. Corrupt-resource probes isolate decoder errors by supplying the actual corrupted digest; wrong-digest case separately verified."
+  "validation": "6 focused Python tests; exported native Java probe compares decoded recipes and commands against the established RecipePrototypeComparison driver. Corrupt-resource probes isolate decoder errors by supplying the actual corrupted digest; wrong-digest case separately verified.",
+  "native_renders": [
+    {
+      "case": "large-field",
+      "renderer": "Processing 4.5.6 JAVA2D / xvfb",
+      "shared_machine_lock": true,
+      "exit_code": 0,
+      "png_sha256": "e7d6d75e32f65a6a78efd3641c426abcc1eb2486f1f0db535e0cf88c35bfbd7f",
+      "reference_png_sha256": "e7d6d75e32f65a6a78efd3641c426abcc1eb2486f1f0db535e0cf88c35bfbd7f",
+      "dimensions": [
+        640,
+        640
+      ],
+      "rgba_sha256": "d534f2fd76c5efba72c3b6bb3f967f3d1589b81213b0be9d30714ebf203f7ce4",
+      "exact_rgba": true,
+      "mae": 0,
+      "changed_pixel_fraction": 0,
+      "root_visual_review": "Dense curved arrangement of short colored marks matches the FieldMarks reference."
+    },
+    {
+      "case": "path",
+      "renderer": "Processing 4.5.6 JAVA2D / xvfb",
+      "shared_machine_lock": true,
+      "exit_code": 0,
+      "png_sha256": "be9e33c1193b7d0a9478f2c8582afb9968300166fccf8bb5e850510a0b959705",
+      "reference_png_sha256": "320f2108ff170bb857d72883ebf34ed05e4cc41bf015a732ee860f39594145d4",
+      "dimensions": [
+        640,
+        640
+      ],
+      "rgba_sha256": "201958d9fe12a0955eec2090d650b2b165626c0145a5bd63e515f779915c44b0",
+      "exact_rgba": true,
+      "mae": 0,
+      "changed_pixel_fraction": 0,
+      "root_visual_review": "Separated curved paths carry short perpendicular colored marks against a light background, matching PathMarks."
+    }
+  ]
 }

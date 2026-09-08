@@ -196,3 +196,20 @@ session entry points enforce the same checks; malformed admission must not destr
 successful retained cache. Target availability in this Java implementation is a fixed binding
 capability; byte-verified target support remains the exporter admission's responsibility.
 This change does not accept the executor or claim JSON parsing inside Java.
+
+## Next recipe capability: seeded placement with independent mark styling
+
+The first four bindings now have native export and edit evidence. Next expose the accepted
+`sampling.seeded-circle-placement-2d` constructor and its existing `toValues()` output through
+recipe bindings. This removes the need for a recipe-specific packing implementation. Start
+with separated bars whose lengths derive from retained radii; use existing segment commands
+and palette queries. No new circle sink or new operation is required for this composition.
+
+Keep constructor input/output schemas authoritative. Budget proposals and worst-case ordered
+pair comparisons before calling the native core; bound backing coordinate-array capacity and
+cumulative growing-buffer allocation, not only accepted count. Preserve native arithmetic
+failure code, candidate index and stage. Materialized centres/radii/sourceIndices/attempts
+remain detached data. Test zero proposals, a small ordinary case, work/allocation rejection,
+and style-only reuse versus seed/proposal invalidation. Compare geometry and commands against
+the existing CirclePlacements2D implementation plus an independent small mark composition.
+This is the next binding expansion, not evidence that it is already supported.

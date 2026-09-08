@@ -1,5 +1,19 @@
 # Project state
 
+## Current exporter native checkpoint and next recipe binding
+
+Root rendered the binary-resource FieldMarks and PathMarks exports through the shared
+machine lock. Both native images match accepted references exactly; root inspected both.
+Existing binary export evidence now records these cases with exact source/build provenance
+and PNG/RGBA hashes. Added docs/java-recipe-preview.md and linked it from README with explicit
+experimental scope and practical export/edit/build instructions. No general executor release
+or new operation count is claimed.
+Next concrete expansion: seed-based circle placement as retained recipe data with independently
+styled bars, using the accepted core and existing segment sink. Root recorded boundary,
+resource/error requirements and comparison cases in execution-direction.md; implementation
+is not started. Full recipe/port/asset/animation and later milestones remain active.
+
+
 ## Large-data export correction verified as a prototype
 
 Root reproduced javac code-too-large from valid12000-element parameters. Replaced literal
