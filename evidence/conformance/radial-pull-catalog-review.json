@@ -1,0 +1,18 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java radial-pull core and scoped JAVA2D PullMarks; no distribution or other-target acceptance",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/geometry/RadialPull2D.java": "1ddc552adbca746442c993d5340b924a139c4de48bb37c64fbe4a5591da79d85",
+    "packages/java/src/main/java/org/procedurals/paths/ClosedSpline2D.java": "df436d30d51ec73b8a1265168fd8bc6cb1498dc90caec9ea024766d795682fcb",
+    "packages/java-processing/examples/PullMarks/PullMarks.pde": "a2f1a5cfb382b4579a09488d22149f1cd40f3da3dcf7ff3415051f1994c59c38"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/radial-pull-java.json": "41be7dbe415ae94e110792c9d94a0a52764903cc0a9281703def5178aefd96b7",
+    "evidence/conformance/radial-pull-java-root-review.json": "1f83f5ddaa3a4c1d6b08b9317943eebed9faa8ff51854ec72a3b63e64c123678",
+    "fixtures/operations/radial-pull-2d.json": "370d82a3b5fae503a3058edb24f7405799377d5b4863a52888771e2c2582ae0f",
+    "evidence/reproductions/cp19-pull/native.json": "56eca006a8e5a9aaf942308ff55ce89c58f27b82b6b79120256015cd8a8950e7",
+    "evidence/reproductions/cp19-pull/root-review.json": "144cc9410f6a85ae111c57ea8002be13721689906397581d8ba37dc173c128ff"
+  }
+}

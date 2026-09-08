@@ -1,5 +1,31 @@
 # Project state
 
+## CP19 Java0.22 accepted for publishing
+
+22 operations and22 editable workflows. RadialPull2D/PullMarks provide localized radial
+folding, radius/power edits and retained contour drawing. Exact core, actual native
+JAVA2D edits/recolor/transfer/reset/cached-save and extracted distribution review pass.
+See evidence/distribution/cp19-java-review.json. All22 extracted PDEs compile;7 PNGs equal
+root-inspected candidate pixels. All94 prior core classes, one adapter class and41 prior
+example/font members preserved byte-for-byte. Four generated RadialPull2D class files added.
+Archive .work/dist/cp19-java-source1/procedurals-java-source-dev.zip SHA256
+93feeb8c05987891ba281916be4abd3006df5a8294e1f15a5652301ff10f93c2.
+
+Root reviewed actual sample retention, field-output correspondence, draw/reset/save and
+all distinct views. Corrected draft grid allocation (62 lines, not64 with nulls), explicit
+noFill and misleading unused seed before native rendering. Guide separates immutable field
+from sketch-owned output arrays and states discontinuity/folding honestly. No extra original
+recreation is counted; still three demonstrated. Ports/Sol remain paused, queue updated in
+docs/porting-resume.md. Unrelated Android resume draft remains untouched and unaccepted.
+No worker/native task remains active.
+
+Next address another concrete Java completeness gap from docs/java-completion-plan.md,
+or execute a curvespace structural recreation to test the newly closed algorithmic gap.
+Prefer a bounded useful capability/coverage milestone; do not infer completeness from22
+operations or reopen whole-corpus triage. General render/animation helper and broader idiom
+coverage remain open. Root retains architecture and final acceptance, with strict disjoint
+worker ownership and focused established validation.
+
 ## CP19 radial pull core accepted — public workflow next
 
 Root admitted curvespace#0 as geometry.radial-pull-2d, froze the exact ordered-sum contract

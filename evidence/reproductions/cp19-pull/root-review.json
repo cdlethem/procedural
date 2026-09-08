@@ -1,0 +1,23 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Actual source-built RadialPull2D PullMarks JAVA2D workflow; distribution separate",
+  "native_sha256": "56eca006a8e5a9aaf942308ff55ce89c58f27b82b6b79120256015cd8a8950e7",
+  "verified": [
+    "512x512 density1 JAVA2D; source-built field and spline classes.",
+    "Every transformed sample checked against field descriptor and current original input.",
+    "Radius/power rebuild field and outputs; input sample collections and spline objects retained.",
+    "Palette/mode preserve field and transformed arrays; exact baseline reset and cached save after quiet period.",
+    "Root inspected baseline/wider/falloff/recolored/contours contact sheet and verified live source/runtime/class/image hashes."
+  ],
+  "observations": [
+    "Two localized rosettes interrupt the baseline colored grid.",
+    "Larger radius creates wider overlapping folds and a dense central tangle.",
+    "Lower power reduces the folded area at fixed larger radius.",
+    "Recolor retains line geometry; contour mode displays three hooked/looping colored outlines."
+  ],
+  "limits": [
+    "No source recreation, smoothness/invertibility or non-Java claim."
+  ]
+}

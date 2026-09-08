@@ -7,6 +7,7 @@ open the named example from Processing's contributed-library examples, and save 
 | Your idea | Start here | What the library supplies |
 | --- | --- | --- |
 | Cover a surface with related strokes or bars | [FieldMarks](getting-started.md) | Grid positions and repeatable spatial attributes; replace the drawn mark. |
+| Bend a grid or closed contour around chosen centers | [PullMarks](pull-marks.md) | Local radius/power edits; retain the computed lines for recoloring or contour drawing. |
 | Change a field slice or color a3D form | [DepthMarks](depth-marks.md) | Three-coordinate scalar samples, cached attribute values and retained mesh geometry. |
 | Divide a surface into unequal rectangular panels | [PanelMarks](techniques/panel-marks.md) | Attempt-bounded integer-cell cuts with random or longer-axis selection; retain cells for different decoration. |
 | Shape a smooth closed outline and place marks along it | [LoopMarks](loop-marks.md) | Retained uniform curves, approximate distance queries and raw tangents. |

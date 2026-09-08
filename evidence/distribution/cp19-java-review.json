@@ -1,0 +1,59 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.22.0",
+  "scope": "Source-built Java bundle with22 operations and22 editable workflows; all extracted PDE compilation and native PullMarks. Local artifact, not registry release.",
+  "archive": {
+    "path": ".work/dist/cp19-java-source1/procedurals-java-source-dev.zip",
+    "sha256": "93feeb8c05987891ba281916be4abd3006df5a8294e1f15a5652301ff10f93c2",
+    "members": 210
+  },
+  "build_report": {
+    "path": "evidence/distribution/cp19-java-source.json",
+    "sha256": "84e3f72d97e514ee9dce571aab08e7ccafb48b7c372f0d2bc8fb953b65a40645"
+  },
+  "consumer_report": {
+    "path": "evidence/distribution/cp19-java-consumer.json",
+    "sha256": "8bb908c45da3887a41482d883c5aa40c1cea75af5041512aebac598393c12e93"
+  },
+  "implementation_sha256": {
+    "packages/java/source-bundle.json": "19626eb82e9346f006c377d6e3cab339e7ec098f0d6e0d46680e7f6c43082d2f",
+    "tools/build_java_source_bundle.py": "6780a918b138f21636c8bcad006c9d9c0ece964628f95ce34189a1acf2c3dc2e",
+    "tools/check_java_source_bundle.py": "9c37ffadfb3b909f40124fb11ee44800e280592a43c84a84f25af0bfcf7bea0a",
+    "tools/run_warp_marks_java.py": "b278ae523ce67824f6d2f36d060808debde2d86fde71d06f8301838a78bebad2",
+    "packages/java/src/main/java/org/procedurals/geometry/RadialPull2D.java": "1ddc552adbca746442c993d5340b924a139c4de48bb37c64fbe4a5591da79d85",
+    "packages/java-processing/examples/PullMarks/PullMarks.pde": "a2f1a5cfb382b4579a09488d22149f1cd40f3da3dcf7ff3415051f1994c59c38",
+    "tests/native/PullMarksProbe.java": "50674c6a2931d1f75b8ca9e54bc428eb4bc54a76d43212d8234d8a6d16cfa99a"
+  },
+  "checks": {
+    "procedurals.jar": {
+      "preserved_classes": 94,
+      "added_classes": [
+        "org/procedurals/geometry/RadialPull2D$1.class",
+        "org/procedurals/geometry/RadialPull2D$Point.class",
+        "org/procedurals/geometry/RadialPull2D$PullException.class",
+        "org/procedurals/geometry/RadialPull2D.class"
+      ]
+    },
+    "procedurals-processing-adapter.jar": {
+      "preserved_classes": 1,
+      "added_classes": []
+    },
+    "preserved_example_members": 41,
+    "normative_document_in_archive": "procedurals/design/operations/radial-pull-contract.md",
+    "extracted_native_frames_equal_candidate": 7
+  },
+  "verified": [
+    "Root verified live build/consumer inputs and all22 actual extracted PDE compilations.",
+    "Extracted radius/power/recolor/contour/reset/save checks pass;7 PNGs match root-inspected candidate exactly.",
+    "Prior core/adapter classes and example/font members preserved byte-for-byte.",
+    "Normative radial-pull contract, artist guide and provenance travel with bundle.",
+    "Core/native acceptance recorded separately; seven packaging tests and catalog/reference validation pass."
+  ],
+  "limits": [
+    "No additional original recreation or non-Java support claim.",
+    "Requires pinned external toolchain and font/notice inputs.",
+    "Acceptance binds this exact archive, not future changed inputs."
+  ]
+}

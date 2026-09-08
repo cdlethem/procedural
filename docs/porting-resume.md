@@ -84,3 +84,9 @@ CP18 adds GradientNoise3D01/DepthMarks after binary panels. Preserve safe-corner
 three-stage hash, unsigned modulo12 gradients and exact x/y/z interpolation. Its z=0 slice
 is deliberately distinct from the2D field. Native mesh transfer requires target-specific
 P3D-equivalent evidence; the Java source bundle review is evidence/distribution/cp18-java-review.json.
+
+CP19 adds RadialPull2D/PullMarks after3D noise. Preserve fdlibm hypot/pow, original-query
+ordered displacement summation, adding the query once, exact-center zero and atomic target
+writes on overflow. Fold/self-intersection behavior is intentional. Use the Java0.22
+distribution checkpoint identified by evidence/distribution/cp19-java-review.json; core-only
+9e702ab1 is not the packaged baseline. Root retains port acceptance ownership.
