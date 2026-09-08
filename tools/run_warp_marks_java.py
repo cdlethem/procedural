@@ -28,6 +28,8 @@ PROFILES = {
     'LayerMarks': ('layer-marks', ['baseline', 'local', 'feather', 'crossfade', 'restored'], 'mmmms'),
     'MaskMarks': ('mask-marks', ['baseline', 'image', 'crossfade', 'mask-view', 'crossfade-restored', 'baseline-restored'], 'mmvvms'),
     'PlacementImageMarks': ('placement-image-marks', ['baseline', 'cover', 'stretch', 'contain-restored', 'cropped', 'aligned-end', 'masked', 'unmasked-restored'], 'fffcamms'),
+    'ImageFieldMarks': ('image-field-marks', ['baseline', 'visibility', 'size-restored', 'alternate-image', 'sampled-colors', 'colors-restored', 'baseline-restored'], 'mmiccis'),
+    'BlurMarks': ('blur-marks', ['sharp', 'soft', 'horizontal', 'vertical', 'blended', 'vertical-restored', 'sharp-restored'], 'mmmbbms'),
     'RampMarks': ('ramp-marks', ['baseline', 'shifted', 'recolored', 'radial', 'reset'], 'tcf0s'),
     'LoopMarks': ('loop-marks', ['baseline', 'moved', 'recolored', 'fans', 'reset'], 'tcm0s'),
     'BandMarks': ('band-marks', ['baseline', 'wider', 'recolored', 'marks', 'reset'], 'tcm0s'),
@@ -70,7 +72,7 @@ def main():
     lease = ROOT / 'tools/with_native_render_lock.py'
     sources = sorted((ROOT / 'packages/java/src/main/java').rglob('*.java'))
     adapter_sources = (sorted((ROOT / 'packages/java-processing/src/main/java').rglob('*.java'))
-                       if sketch in ('LayerMarks', 'MaskMarks', 'PlacementImageMarks') else [])
+                       if sketch in ('LayerMarks', 'MaskMarks', 'PlacementImageMarks', 'ImageFieldMarks', 'BlurMarks') else [])
     inputs = [pde, probe, plan, bridge, lease, Path(__file__), core, archive,
               ROOT / 'tools/check_field_marks_pde.py', ROOT / 'tools/check_processing_runtime.py',
               *sources, *adapter_sources, *pre,
@@ -138,6 +140,15 @@ def main():
                 expected_sources = {'placement': str(jar), 'layers': str(jar), 'compositor': str(jar)}
                 if native.get('code_sources') != expected_sources:
                     raise ValueError('Wrong placement image workflow class code sources')
+            if sketch == 'ImageFieldMarks':
+                expected_sources = {'grid': str(jar), 'remap': str(jar), 'field': str(jar), 'layers': str(jar)}
+                if native.get('code_sources') != expected_sources:
+                    raise ValueError('Wrong image field workflow class code sources')
+            if sketch == 'BlurMarks':
+                expected_sources = {'filter': str(jar), 'compositor': str(jar), 'crossfade': str(jar),
+                                    'filters': str(jar), 'layers': str(jar)}
+                if native.get('code_sources') != expected_sources:
+                    raise ValueError('Wrong blur workflow class code sources')
             report['native'] = native
             report['images'] = {name: {'path': label(native_out / (name + '.png')),
                                       'sha256': sha(native_out / (name + '.png'))}

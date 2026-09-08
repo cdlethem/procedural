@@ -7,6 +7,10 @@ or replace the project's mission with the current operation count.
 
 Execution now follows [the remaining-scope map and parallel batches](java-buildout-batches.md).
 
+Current remaining-work review: [CP25 reconciliation](../design/capabilities/java-completion-cp25-review.md).
+Image-driven controls and postprocessing are the next concrete gaps; spatial masks and
+explicit image placement are now delivered.
+
 ## Completion requirements
 
 1. A competent Processing user can install the source-built Java library and reach a
@@ -30,7 +34,7 @@ The broader corpus benchmark remains a separate strict certification claim.
 
 ## Existing capability baseline
 
-Java0.26 source milestone assembles26 operations and27 workflows: field marks, integrated paths, constrained
+Java0.28 source milestone assembles26 operations and29 workflows: field marks, integrated paths, constrained
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
 paths, raster remapping, positioned color ramps, noise-band paths, smooth closed curves and binary panel layouts,

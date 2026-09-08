@@ -1,6 +1,6 @@
 {
-  "version": "0.28.0",
-  "processing_version": 28,
+  "version": "0.29.0",
+  "processing_version": 29,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -31,7 +31,8 @@
     "packages/java/src/main/java/org/procedurals/fields/GradientNoise3D01.java": "4874c28ff020ce28ab1eeeab463b140779a531627cb09a660dbb55ef5ae3ee91",
     "packages/java/src/main/java/org/procedurals/geometry/RadialPull2D.java": "1ddc552adbca746442c993d5340b924a139c4de48bb37c64fbe4a5591da79d85",
     "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4",
-    "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c"
+    "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
+    "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e2254766043ed5f5d7da2f13d92090b1c457deb098774267dcfb219982661d88"
   },
   "examples": {
     "procedurals/examples/BranchMarks/BranchComposition.java": {
@@ -221,6 +222,14 @@
     "procedurals/examples/PlacementImageMarks/PlacementImageMarks.pde": {
       "source": "packages/java-processing/examples/PlacementImageMarks/PlacementImageMarks.pde",
       "sha256": "b576d02e96c61520a8354712b8af5cabe7a7e47365f905b25b29cc07cdd2842a"
+    },
+    "procedurals/examples/ImageFieldMarks/ImageFieldMarks.pde": {
+      "source": "packages/java-processing/examples/ImageFieldMarks/ImageFieldMarks.pde",
+      "sha256": "4cb2c225a2e1c783096aaf2099f872d4402281ae9c04ffd22d901fe8fedda130"
+    },
+    "procedurals/examples/BlurMarks/BlurMarks.pde": {
+      "source": "packages/java-processing/examples/BlurMarks/BlurMarks.pde",
+      "sha256": "82fc5d56ddba9e36081805d370f24433c805a23c05b10ce5c7c589b8c4e894d8"
     }
   },
   "operation_files": [
@@ -247,6 +256,7 @@
     "seeded-line-pool-2d.json",
     "seeded-quadrant-partition.json",
     "seeded-triangle-points.json",
+    "separable-blur-2d.json",
     "stop-ramp.json",
     "target-springs-2d.json",
     "triangle-coordinate-map.json"
@@ -257,7 +267,9 @@
     "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
     "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "780ade5bff5b57773dcb7982eeca46e9f8627664c897261f16ff78d1d38682e6",
     "packages/java-processing/src/main/java/org/procedurals/processing/Java2DLayers.java": "23e363a4d5e52ce1ad944f5915ddfee850e3d1e16edb6d9b3c1a19ace53b2f98",
-    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DImagePlacement.java": "f858ecac45bce24fb17472ef1083326febaec018b2f52b44000e747235153123"
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DImagePlacement.java": "f858ecac45bce24fb17472ef1083326febaec018b2f52b44000e747235153123",
+    "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageField.java": "86173f6c8de2ba0f008615034ea73b5a201ae5f2be0ac14713b6fec7333e2ad6",
+    "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageFilters.java": "f1f077deb7944cc4a5a57c5e39bafb7b7d984a28b197a40595eebdc634d101e2"
   },
   "processing_core_sha256": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4"
 }

@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "operation": "raster.separable-blur-2d",
+  "fixture_cases": 20,
+  "valid_cases_both_entrypoints": 13,
+  "vectors": {
+    "status": "passed",
+    "cases": 20,
+    "assertions": 177
+  },
+  "native": {
+    "status": "passed",
+    "assertions": 21
+  },
+  "source_sha256_before": {
+    "catalog/operations/separable-blur-2d.json": "f17c33f68218f36bdbecf131377bc868d409b0c1db9844cad39e6f6f1c59743f",
+    "fixtures/operations/separable-blur-2d.json": "5cb3a31df923cf32af558baa92f9e0486124e4929579bfc4732c7338b9323532",
+    "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e2254766043ed5f5d7da2f13d92090b1c457deb098774267dcfb219982661d88",
+    "tests/native/SeparableBlurNative.java": "de4c4f3997c179afbf338e3c8e56dc0cf8773c4c8e36e2611c0323c90bfafdd0",
+    "tools/run_separable_blur_java.py": "20c11a20ebc448c164e557388563b9c2fcfa23b69306214899167bb73209c50d",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "source_sha256_after": {
+    "catalog/operations/separable-blur-2d.json": "f17c33f68218f36bdbecf131377bc868d409b0c1db9844cad39e6f6f1c59743f",
+    "fixtures/operations/separable-blur-2d.json": "5cb3a31df923cf32af558baa92f9e0486124e4929579bfc4732c7338b9323532",
+    "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e2254766043ed5f5d7da2f13d92090b1c457deb098774267dcfb219982661d88",
+    "tests/native/SeparableBlurNative.java": "de4c4f3997c179afbf338e3c8e56dc0cf8773c4c8e36e2611c0323c90bfafdd0",
+    "tools/run_separable_blur_java.py": "20c11a20ebc448c164e557388563b9c2fcfa23b69306214899167bb73209c50d",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "javac_release": "8",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Java core exact vectors and focused ownership/carrier/index checks; no renderer or support claim."
+}

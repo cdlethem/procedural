@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "scope": "Focused native PImage snapshot and batch-sampling scenarios; no renderer, workflow, distribution, or target-support claim.",
+  "javac_release": "8",
+  "commands": [
+    [".work/toolchains/jdk-17.0.20.1+1/bin/javac", "--release", "8", "-cp", ".work/dist/cp25-java-source-root1/procedurals.jar:.work/toolchains/processing-4.5.6/core-4.5.6.jar", "-d", ".work/image-field-native1/classes-final", "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageField.java", "tests/native/ProcessingImageFieldNative.java"],
+    [".work/toolchains/jdk-17.0.20.1+1/bin/java", "-cp", ".work/image-field-native1/classes-final:.work/dist/cp25-java-source-root1/procedurals.jar:.work/toolchains/processing-4.5.6/core-4.5.6.jar", "ProcessingImageFieldNative"]
+  ],
+  "scenarios": ["asymmetric-clamp", "fractional-remap-parity", "scalar-separation", "ownership-reuse", "invalid-and-indexes", "regular-grid-consumers"],
+  "input_sha256_before": {
+    "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageField.java": "86173f6c8de2ba0f008615034ea73b5a201ae5f2be0ac14713b6fec7333e2ad6",
+    "tests/native/ProcessingImageFieldNative.java": "ccd4f79a91144ce1254c0ec9f81c03bcf5f4e1de9c9798ee58a2df429dab497d",
+    "packages/java/src/main/java/org/procedurals/raster/RasterRemap2D.java": "433615a7fba0b09773fbfc88caa9a5b939e73213b182024feb6c3a04e46e90d4",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    ".work/dist/cp25-java-source-root1/procedurals.jar": "c1474f3d0dacf609711472d08feed1ad0aa7ecc51268867303200d43368c6544",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4"
+  },
+  "input_sha256_after": {
+    "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageField.java": "86173f6c8de2ba0f008615034ea73b5a201ae5f2be0ac14713b6fec7333e2ad6",
+    "tests/native/ProcessingImageFieldNative.java": "ccd4f79a91144ce1254c0ec9f81c03bcf5f4e1de9c9798ee58a2df429dab497d",
+    "packages/java/src/main/java/org/procedurals/raster/RasterRemap2D.java": "433615a7fba0b09773fbfc88caa9a5b939e73213b182024feb6c3a04e46e90d4",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    ".work/dist/cp25-java-source-root1/procedurals.jar": "c1474f3d0dacf609711472d08feed1ad0aa7ecc51268867303200d43368c6544",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4"
+  },
+  "artifact_sha256_before": {
+    "ProcessingImageField.class": "20043bc89e9834cf6092070b28c4b2b98ca6ca961836f2c5a63244a19448507e",
+    "ProcessingImageFieldNative.class": "8fe1878ace4a1d0fbca061b0a8ed18fd21e49969f314f3dc00b3d2c20ecb5cd2",
+    "ProcessingImageFieldNative$MalformedPixelsImage.class": "79a4c5d1c86e00deacec34876135c8ea1f608a17fadcc596dae3a03370cfe755"
+  },
+  "artifact_sha256_after": {
+    "ProcessingImageField.class": "20043bc89e9834cf6092070b28c4b2b98ca6ca961836f2c5a63244a19448507e",
+    "ProcessingImageFieldNative.class": "8fe1878ace4a1d0fbca061b0a8ed18fd21e49969f314f3dc00b3d2c20ecb5cd2",
+    "ProcessingImageFieldNative$MalformedPixelsImage.class": "79a4c5d1c86e00deacec34876135c8ea1f608a17fadcc596dae3a03370cfe755"
+  }
+}

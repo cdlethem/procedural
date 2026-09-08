@@ -2338,6 +2338,105 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/seeded-triangle-points.json).
 
+## raster.separable-blur-2d (0.1.0)
+
+Normalize two caller-supplied one-dimensional kernels and filter a straight ARGB8 raster horizontally then vertically in premultiplied encoded RGB.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source",
+    "kernelX",
+    "kernelY",
+    "maxSamples"
+  ],
+  "properties": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "pixels"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        }
+      }
+    },
+    "kernelX": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxItems": 2147483647
+    },
+    "kernelY": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxItems": 2147483647
+    },
+    "maxSamples": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| source | straight packed ARGB8 raster | null | null | Caller retained drawing or image content. |
+| kernelX | nonnegative odd horizontal weights | null | null | Caller data; no measured artistic kernel range. |
+| kernelY | nonnegative odd vertical weights | null | null | Caller data; no measured artistic kernel range. |
+| maxSamples | declared tap work budget | null | null | Explicit resource bound; all supplied taps count. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/separable-blur-catalog-review.json) | [validated-scoped](../../evidence/conformance/separable-blur-catalog-review.json) | unvalidated | [review](../../evidence/conformance/separable-blur-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2015/Generativos/cityPink3d#2`](../../survey/out/2015/Generativos/cityPink3d/notes.md)
+- [`2020/generative/01_04/rgblur#0`](../../survey/out/2020/generative/01_04/rgblur/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/separable-blur-2d.json).
+
 ## color.stop-ramp (0.1.0)
 
 Immutable noncyclic positioned RGB24 color stops with piecewise linear sampling and endpoint holds.

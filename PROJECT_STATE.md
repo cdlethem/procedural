@@ -1,5 +1,180 @@
 # Project state
 
+## CP26 integration checkpoint ready for main
+
+Accepted Java0.29 archive and extracted workflow evidence recorded; docs updated to
+accepted package status, handoff in docs/cp26-porting-handoff.md. Root fetched origin:
+main0/0 versus HEAD; remote porting/backlog advanced but port integration remains paused.
+Commit includes project-owned source, contracts, fixtures, docs and evidence only.
+Unrelated Android ProfileMarks draft remains excluded. Previous goal turn completed
+package acceptance; this turn integrates the reviewed milestone for commit/push.
+
+
+## Java0.29 distribution accepted locally — CP26 commit/push next
+
+Root accepted evidence/distribution/cp26-java-review.json. Archive
+.work/dist/cp26-java-source-root1/procedurals-java-source-dev.zip SHA256
+8a4175e2ffc36dc99467e42e7a843b4daa35cc0f4f93384ba927a9e58851fec9,402members.
+27 operations,31 workflows,33 source class pages. Catalog support attestation added for
+Java blur core/native only; technique remains unvalidated. Catalog and9 package tests pass.
+All31 extracted PDEs compile. Both new workflows pass7-state actual native checks in
+separate-core/adapter extracted bundles, every PNG equals reviewed candidate. Root
+verified input/extracted hashes and preserved113 old core+11 old adapter class bytes.
+Javadoc711warnings recorded, no documentation completeness claim. Initial root audit
+script corrected expected build status and consumer-relative hash paths; all actual
+assertions now pass, no checks weakened. Next review/stage all project-owned work,
+preserve Android draft, fetch remote and commit/push accepted CP26 checkpoint.
+Main stillJava0.28 eb9278b3 until that push. Prior turn progressed manifest/final native;
+this turn completed support integration and extracted distribution acceptance.
+
+
+## Java0.29 packaging inventory prepared, not accepted
+
+Candidate source manifest now includes27 operations/27 core source files,6 adapter
+source files and49 example tabs/31 PDEs (D1 ImageFieldMarks and D2 BlurMarks added).
+Updated exact inventory test expectations; tests/build intentionally await the required
+new blur attestation and final core hashes. No checker relaxed; no archive/release claim.
+Root found objectRaster/objectKernel indexed generic List reads in blur core could be
+quadratic for LinkedList. Terra layer_marks_probe assigned sequential traversal plus
+LinkedList parity and precise provenance Javadocs; no further native run assigned.
+Root reviewed final sequential loops and LinkedList parity;20 fixtures pass on final
+e2254766 core with provenance docs. Manifest/conformance refreshed. Native final-source
+run .work/blur-marks-native-root-final completed passed; root verified all bindings
+and PNG identity to reviewed candidate, refreshed native/root review evidence. Next add
+evidence, root support attestation, generated reference and extracted package acceptance.
+Prior goal turn progressed native acceptance; this turn progresses integration inventory
+and catches an object-input complexity gap. Main remainsJava0.28 eb9278b3.
+
+
+## D2 native accepted; combined D1+D2 packaging next
+
+Root accepted evidence/workflows/blur-marks/root-review.json after reading corrected
+per-element image identity probe and verifying all53 inputs/136 artifacts and PNG hashes.
+Corrected agent2 outputs are byte-identical to the five previously inspected distinct views
+and restores/save.7-state dirty-loop sequence mmmbbms passes; filterCalls stays3.
+Supporting core/adapter/performance records all bind current e8cfa314 source. Earlier
+worker-summary3f4158 is unsupported by current files; do not infer an unproven source edit.
+Gallery now labels BlurMarks native accepted, packaging pending. No distribution release
+or portable-target acceptance follows. Next source Javadoc provenance cleanup with bound
+checks, attest Java core/native scope, update source manifest and package D1+D2 together,
+compile all extracted examples and run representative extracted native workflow.
+Previous turn advanced performance/visual review; this turn closes corrected native acceptance.
+Latest shipped baseline remainsJava0.28 eb9278b3,26 operations/29 workflows.
+
+
+## D2 artist visuals inspected; retention probe correction pending
+
+Root inspected five native BlurMarks images from .work/blur-marks-native-agent1: sharp,
+soft, horizontal, vertical and blended. Directional spread and gradual sharp/filter mix
+are visible, background remains crisp. Added candidate group to centralized gallery.
+Root caught missing per-element layer identity snapshots in probe (array identity alone
+is insufficient); Terra layer_marks_probe correcting and rerunning. Do not accept first
+probe summary as proving individual identities. Native source/core hashes match root
+adapter/performance evidence at e8cfa314; earlier worker summary3f4158 needs explanation.
+Desktop performance .work/separable-blur-performance1/result.json copied to conformance:
+16x16,720x480/radius12 and1440x960/radius24,3 measurements each after warmup; stable
+checksums. Typical example core ~35ms and12.44MB allocated; stress ~161ms/49.77MB.
+These exclude adapter/render/checksum costs and are observations, not latency guarantees.
+Next corrected probe review, source-doc provenance cleanup with evidence binding, native
+acceptance and combined D1+D2 package. Previous turn progressed code/adapter tests; this
+turn progressed performance and visual review and caught a validation gap.
+
+
+## D2 implemented candidate; native artist workflow next
+
+Root reviewed complete SeparableBlur2D core: normalization, ordered premultiplied passes,
+long coordinate/work arithmetic, final quantization, errors and detached outputs align.
+Reviewed fixture runner/native probe and verified bound hashes.20 object fixtures pass;
+13 successful fixtures also run through typed form; extra native checks cover carriers,
+ownership and index/order. Error fixtures are not all duplicated through typed form.
+Root authored ProcessingImageFiltersNative, compiled Java8 and passed actual PImage
+transport parity, RGB opacity, ARGB identity/ownership, format/density/count rejection
+and delegated work errors. Bound reports copied into evidence/conformance; no support
+attestation or distribution acceptance yet. Root authored BlurMarks PDE and docs.
+Terra layer_marks_probe now owns actual7-state workflow probe/runner registration/native
+run. retained_rect_core returned terminal unable to complete that assignment; no wait
+on it remains. Root must inspect native images and probe, add exact provenance paths
+to core docs, and close meaningful performance evidence before combined D1+D2 packaging.
+Previous goal turn progressed contract/fixtures; this turn progressed implementation review,
+real adapter validation and artist example. Latest shippedJava0.28 remains unchanged.
+
+
+## D2 contract frozen; core implementation delegated
+
+Root integrated catalog/operations/separable-blur-2d.json and20 shared fixture scenarios
+(13 independently checked successful vectors). Source-note hashes verified; phase2 gate
+and catalog/schema/reference check pass. Numeric review fixed asymmetric-alpha prose,
+added asymmetricY/zero-tap-budget/invalid-before-work cases. Native carrier/ownership/index
+checks remain required. Generated catalog reference refreshed through its tool.
+Terra layer_marks_probe is assigned core implementation plus focused existing-harness tests;
+no acceptance or packaging authority delegated. Root froze ProcessingImageFilters transport
+boundary in design/capabilities/processing-image-filters-adapter.md and authored the
+ProcessingImageFilters.java candidate (not yet compiled/native validated). Next review
+core/tests, validate transport and BlurMarks actual native workflow, then combine D1+D2 packaging.
+Latest shipped baseline remainsJava0.28 eb9278b3,26 accepted operations/29 workflows.
+The new27th contract is not yet a shipped operation. Ports/Sol paused; Android draft preserved.
+Previous goal turn clarified composition but changed no authoritative state (no progress);
+this turn advanced reviewed contract/fixtures and initiated bounded implementation.
+
+
+## D2 separable blur dependency admitted; catalog draft next
+
+Root recorded separable-blur-admission.md and capability-dependency cluster
+raster.separable-blur-2d. Phase2 contract-cluster checker passes after correcting remainder
+vocabulary to deferred. Sources are motivating composites, not reassigned as equivalents.
+Numeric drafting brief specifies normalized odd kernels, maxSamples preflight, horizontal
+then vertical premultiplied binary64 with final-only quantization and exact identity branch.
+Root preregistered BlurMarks native plan: retained sharp/soft/horizontal/vertical layers,
+mask-controlled crossfade, real display edits and cache save; no per-edit refiltering.
+Next: translate brief to authoritative catalog and independent fixtures, root freeze review,
+then Java implementation/native workflow. No filter code or accepted support yet.
+D1 image field native accepted remains queued for combined D1+D2 packaging. Ports/Sol
+paused; latest mainJava0.28 eb9278b3; Android draft untouched.
+
+## D1 image field native accepted; D2 alpha-safe filter next
+
+Root review evidence/workflows/image-field-marks/root-review.json. Four native views
+inspected,7-state actual workflow passed with1350 retained positions and sampled attributes,
+all source/artifact/image bindings verified. Standalone actual PImage scalar/ownership/
+remapper-parity probe reviewed. Gallery163images/36groups. D1 packaging remains pending
+planned D2 filter slice; latest pushed baselineJava0.28 eb9278b3.
+
+D2 private33x33 native BLUR study proves hiddenRGB contaminates visible edges; reject thin
+PImage.filter wrapper for alpha-safe blur. Next freeze independently specified normalized
+premultiplied image filtering contract, implement and native-review a retained-source/mask
+workflow, then integrate D1+D2 together. No new filter implementation admitted yet.
+Prior goal turn progressed D1 implementation/source review; this turn completed D1 native
+workflow/adapter acceptance and meaningful D2 defect evidence. Ports/Sol paused.
+
+## D1 image field implemented candidate; D2 source reviewed
+
+Root froze processing-image-field-adapter.md and directly implemented ProcessingImageField:
+owned snapshot, batch RasterRemap2D sampling, explicit ARGB/alpha/maxRGB attributes.
+Focused actual-PImage probe .work/image-field-native1 passed; root reviewed distinguishing
+scalar/parity/ownership/error/grid cases and verified source hashes; evidence/conformance/
+processing-image-field-native.json. Root authored ImageFieldMarks + native plan/docs;
+layer_marks_probe now owns actual7-state workflow/runner/consumer validation. No native
+artist workflow/acceptance yet. Current accepted source bundle remainsJava0.28.
+Root read crb source, correcting note interpretation: endpoint trials shrink until color
+difference<=30, not generic edge following. D2 cityPink3d/rgblur source review recorded in
+evidence/parameter-experiments/spatial-composition/filter-source-review.json; normalization
+and alpha policy must be designed explicitly rather than copied opaque/gain behavior.
+D2 native BLUR experiment found165 visible hidden-RGB differences on33x33 alpha image;
+root rejected thin native wrapper as transparency-safe. Evidence in native-blur-alpha-study.json.
+Next: review ImageFieldMarks workflow; freeze normalized premultiplied filter before code.
+Batch packaging after both slices accepted. Ports/Sol paused, Android draft untouched.
+
+## CP25 remaining-scope review completed
+
+Root recorded design/capabilities/java-completion-cp25-review.md against all5 completion
+requirements. Actual crb note establishes brightness-driven size/stroke gates; active
+cityPink3d/rgblur filters establish postprocessing gap. Next D1 image attributes and D2
+postprocessing source/contract decisions before implementation. No guessed parameter defaults.
+Bounded typography/Voronoi review does not establish outlines/nearest-site cells; colidion
+disc deformation remains a separate assessed gap, not silently covered by Delaunay.
+Full Java completion remains unproven. Prior turn shipped CP25; this turn changed the
+authoritative remaining-work plan using direct evidence. Ports/Sol paused.
+
 ## Java0.28 accepted — CP25
 
 Root distribution review evidence/distribution/cp25-java-review.json. Archive
@@ -7,7 +182,8 @@ Root distribution review evidence/distribution/cp25-java-review.json. Archive
 2e44847da80a46969b62da4b157be1a56ebbea5dbc4b5eeb7ab23eae2c918ed8,387members.26 operations/29 workflows/30 class reference pages.
 All29 extracted PDEs compile;8-state native PlacementImageMarks passes, every PNG equals
 root-reviewed candidate. All prior core/adapter class bytes unchanged. Javadoc warnings
-remain explicitly recorded. Commit/push pending final remote check.
+remain explicitly recorded. Published main at eb9278b3deeb6272e5147a252e39ee18d7cd2371
+after remote0/0 check; only unrelated Android draft remained modified after push.
 
 Next bounded root architecture work: reconcile remaining Java completion requirements
 against current capabilities; select evidenced image-derived controls or postprocessing
