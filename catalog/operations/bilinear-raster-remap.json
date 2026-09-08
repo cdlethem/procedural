@@ -1,0 +1,217 @@
+{
+  "id": "raster.bilinear-remap-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability": "CP13",
+  "description": "Remap an owned packed ARGB8 raster through explicit source coordinates using edge-clamped bilinear interpolation.",
+  "decision_cluster": "raster.bilinear-remap-2d",
+  "capability_decision": "design/capabilities/cp13-raster-admission.md",
+  "design_review": "design/capabilities/cp13-raster-admission.md",
+  "provenance": [
+    {
+      "candidate_id": "2016/Generativos/colorRamp#1",
+      "notes_path": "survey/out/2016/Generativos/colorRamp/notes.md",
+      "note_sha256": "d51a83b7acc0e479910dc629e3dce0a1563dec1b684060f100ddc067396375b2",
+      "evidence_sha256": "1511c15794abb392b51105c8e0d044129f9129aff484c1ad88ee2238d7653e72",
+      "relationship": "Active source-coordinate pull remapping motivates the independent raster dependency; noise displacement, capture, pattern and styling remain outside."
+    },
+    {
+      "candidate_id": "2016/Generativos/colorRamp#2",
+      "notes_path": "survey/out/2016/Generativos/colorRamp/notes.md",
+      "note_sha256": "d51a83b7acc0e479910dc629e3dce0a1563dec1b684060f100ddc067396375b2",
+      "evidence_sha256": "1511c15794abb392b51105c8e0d044129f9129aff484c1ad88ee2238d7653e72",
+      "relationship": "Bilinear clamped pixel sampling supplies the extracted computation; host image transport and source color interpolation remain outside."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "source",
+      "outputWidth",
+      "outputHeight",
+      "sourceCoordinates"
+    ],
+    "properties": {
+      "source": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "width",
+          "height",
+          "pixels"
+        ],
+        "properties": {
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "pixels": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            }
+          }
+        }
+      },
+      "outputWidth": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "outputHeight": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "sourceCoordinates": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    }
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "width",
+      "height",
+      "pixels"
+    ],
+    "properties": {
+      "width": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "height": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "pixels": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        }
+      }
+    }
+  },
+  "fixture_format": "bilinear-raster-remap-output",
+  "output_invariants": "Output has exactly width, height and pixels. width/outputWidth and height/outputHeight are positive; pixels is row-major unsigned32 ARGB8 with exactly width*height entries. The result owns detached storage.",
+  "behavior": {
+    "input": "Validate exactly source, outputWidth, outputHeight and sourceCoordinates. Source dimensions are positive integral values and pixels has exactly source.width*source.height unsigned32 values. The coordinate list has exactly outputWidth*outputHeight pairs, each finite binary64. Validate all static shape, dimensions, pixels and coordinates before output allocation or sampling. No defaults, modes or maxPixels.",
+    "sampling": "For each row-major destination coordinate, clamp x and y independently to [0,width-1] and [0,height-1]. Let x0=floor(x), x1=min(x0+1,width-1), fx=x-x0 and likewise y0,y1,fy. Read four packed source pixels and interpolate A,R,G,B independently as straight stored ARGB8 channels: top=a+(b-a)*fx, bottom=c+(d-c)*fx, value=top+(bottom-top)*fy, with each operation separately rounded binary64. Clamp each value to [0,255], then compute floor(value+0.5) once and repack ARGB8. Integer coordinates preserve all 32 bits, including hidden RGB in transparent pixels. No FMA, intermediate integer lerps, gamma conversion or premultiplication.",
+    "ownership": "The completed result owns a detached packed raster. It retains neither source pixels nor sourceCoordinates, and has no in-place form. Later caller mutation cannot affect the result. A failed call exposes no partial output.",
+    "access": "width() and height() return dimensions. pixelAt(index) validates index as a finite safe nonnegative integer, then checks index < width*height; INVALID_INDEX precedes INDEX_OUT_OF_RANGE. pixels() returns a detached int[] in Java (unsigned32 bit patterns), and toValues() returns detached {width,height,pixels}. Safe means at most 9007199254740991; negative zero is accepted as zero. pixelAt returns the Java int ARGB bit pattern; portable toValues pixels are unsigned32 numbers. Object indices accept only the same six numeric carriers as input.",
+    "typed_java": "Java also accepts sourceW, sourceH, int[] sourcePixels, outW, outH and double[] packedXY. It executes the same kernel, validation order, interpolation and ownership semantics as the portable object form. Typed arrays use row-major pixels and x,y pairs.",
+    "numeric": "Coordinates use caller-defined pixel-center units with top-left origin. Clamp whole coordinates before floor/fraction, including extreme finite coordinates. Basic arithmetic is IEEE binary64 round-to-nearest ties-to-even in the stated order; final channel quantization is floor(value+0.5).",
+    "native_forms": "Java org.procedurals.raster.RasterRemap2D.remap(Object), the typed packed-buffer overload, width(), height(), pixelAt(Object or long), pixels(), and toValues(). Java-only implementation is pending; other targets remain deferred.",
+    "environment": "No RNG, noise, time, renderer, host image, callback, color mode or third-party dependency is retained or consulted.",
+    "limits": "Source width*height <= 2147483647; outputWidth*outputHeight <= 1073741823. Compute products without signed32 overflow and reject excess before buffer allocation. These are representation limits, not promised allocatable sizes; allocation failure is not INVALID_INPUT.",
+    "carriers": "Java object records are Map with exact keys; arrays are List, coordinate pairs are List of exactly two elements. Numeric carriers are only Byte, Short, Integer, Long, Float and Double; reject boolean, strings, BigInteger, BigDecimal and arbitrary Number subclasses. Dimension and unsigned32 pixel values must be finite integral numbers in their bounds. Coordinates convert to finite double. Typed overload takes int dimensions, int[] pixels and double[] packedXY; reject null buffers. Passive stable inputs are assumed; concurrent caller mutation during a call is outside contract."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed static configuration, wrong keys/carriers, nonpositive or nonintegral dimensions, pixel length/value violation, coordinate shape/value violation, nonfinite coordinate, or output coordinate-count mismatch.",
+    "INVALID_INDEX": "Pixel index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "Pixel index is representable but outside the retained output raster."
+  },
+  "error_order": [
+    "Validate top-level exact Map keys; source exact Map keys; source width, height and product; source pixel carrier/count then values in row order; outputWidth, outputHeight and product; sourceCoordinates carrier/count then each pair shape and x,y values in row order. Typed overload follows the corresponding dimension/product, pixel buffer/count, output dimension/product, coordinate buffer/count then finite XY order. All static errors are INVALID_INPUT; complete validation precedes output allocation and sampling.",
+    "For pixelAt, INVALID_INDEX precedes INDEX_OUT_OF_RANGE."
+  ],
+  "parameters": {
+    "source": {
+      "unit": "row-major unsigned32 packed straight ARGB8 raster",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "colorRamp#1/#2 capture and sample a source image; dimensions and pixels are caller data."
+    },
+    "outputWidth": {
+      "unit": "destination pixels",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit remap destination dimensions are a compositional input; no artistic range is established."
+    },
+    "outputHeight": {
+      "unit": "destination pixels",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit remap destination dimensions are a compositional input; no artistic range is established."
+    },
+    "sourceCoordinates": {
+      "unit": "source pixel-center coordinates in row-major destination order",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "colorRamp#1 pull-samples each destination through a displaced source coordinate; caller-defined fields remain composable."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    }
+  },
+  "fixtures": "fixtures/operations/bilinear-raster-remap.json",
+  "comparison": "Exact dimensions, unsigned32 pixels and error codes. Shared analytic vectors plus target tests for ownership, passive carriers, nonfinite coordinates, accessor errors and typed/object parity.",
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "approved"
+  },
+  "exclusions": [
+    "noise fields and displacement generation",
+    "PGraphics/PImage capture or display",
+    "color ramps, palettes, patterns, shadows and grain",
+    "gamma-correct or premultiplied filtering",
+    "in-place mutation",
+    "performance defaults or maxPixels",
+    "non-Java target support"
+  ]
+}

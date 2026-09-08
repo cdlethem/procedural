@@ -1,0 +1,450 @@
+{
+  "operation": "raster.bilinear-remap-2d",
+  "version": "0.1.0",
+  "fixture_format": "bilinear-raster-remap-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "catalog_sha256": "515a5251d1d9ab8c6ec96938a8926aa40683e4cf033f6300674094c116e4deac",
+  "cases": [
+    {
+      "id": "identity_hidden_rgb",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            0,
+            4279383126,
+            255,
+            2155872384
+          ]
+        },
+        "outputWidth": 2,
+        "outputHeight": 2,
+        "sourceCoordinates": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "output": {
+        "width": 2,
+        "height": 2,
+        "pixels": [
+          0,
+          4279383126,
+          255,
+          2155872384
+        ]
+      }
+    },
+    {
+      "id": "single_final_round",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4278190080,
+            4278255873,
+            4278255873,
+            4278321666
+          ]
+        },
+        "outputWidth": 1,
+        "outputHeight": 1,
+        "sourceCoordinates": [
+          [
+            0.5,
+            0.5
+          ]
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          4278255873
+        ]
+      }
+    },
+    {
+      "id": "straight_alpha_half",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 1,
+          "pixels": [
+            4294901760,
+            255
+          ]
+        },
+        "outputWidth": 2,
+        "outputHeight": 1,
+        "sourceCoordinates": [
+          [
+            0.5,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      },
+      "output": {
+        "width": 2,
+        "height": 1,
+        "pixels": [
+          2155872384,
+          255
+        ]
+      }
+    },
+    {
+      "id": "clamp_and_destination_order",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4278190080,
+            4294901760,
+            4278255360,
+            4278190335
+          ]
+        },
+        "outputWidth": 3,
+        "outputHeight": 1,
+        "sourceCoordinates": [
+          [
+            1e+308,
+            -1e+308
+          ],
+          [
+            -1e+308,
+            1e+308
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "output": {
+        "width": 3,
+        "height": 1,
+        "pixels": [
+          4294901760,
+          4278255360,
+          4278190335
+        ]
+      }
+    },
+    {
+      "id": "one_pixel_repeat",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            305419896
+          ]
+        },
+        "outputWidth": 1,
+        "outputHeight": 3,
+        "sourceCoordinates": [
+          [
+            -1e+308,
+            1e+308
+          ],
+          [
+            0.5,
+            -0.5
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 3,
+        "pixels": [
+          305419896,
+          305419896,
+          305419896
+        ]
+      }
+    },
+    {
+      "id": "vertical_half_tie",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 2,
+          "pixels": [
+            4278190080,
+            4278255873
+          ]
+        },
+        "outputWidth": 1,
+        "outputHeight": 1,
+        "sourceCoordinates": [
+          [
+            0,
+            0.5
+          ]
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          4278255873
+        ]
+      }
+    },
+    {
+      "id": "two_axis_channels",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4278190080,
+            4282384384,
+            4278222848,
+            4282417407
+          ]
+        },
+        "outputWidth": 1,
+        "outputHeight": 1,
+        "sourceCoordinates": [
+          [
+            0.25,
+            0.5
+          ]
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          4279255072
+        ]
+      }
+    },
+    {
+      "id": "missing_field",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            0,
+            4279383126,
+            255,
+            2155872384
+          ]
+        },
+        "outputWidth": 2,
+        "outputHeight": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "unsigned_pixel",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            0,
+            4279383126,
+            255,
+            -1
+          ]
+        },
+        "outputWidth": 2,
+        "outputHeight": 2,
+        "sourceCoordinates": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "late_bad_pair",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            0,
+            4279383126,
+            255,
+            2155872384
+          ]
+        },
+        "outputWidth": 2,
+        "outputHeight": 2,
+        "sourceCoordinates": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero_dimension",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            0,
+            4279383126,
+            255,
+            2155872384
+          ]
+        },
+        "outputWidth": 0,
+        "outputHeight": 2,
+        "sourceCoordinates": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "source_product_overflow",
+      "input": {
+        "source": {
+          "width": 2147483647,
+          "height": 2,
+          "pixels": [
+            0,
+            4279383126,
+            255,
+            2155872384
+          ]
+        },
+        "outputWidth": 2,
+        "outputHeight": 2,
+        "sourceCoordinates": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "output_product_overflow",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            0,
+            4279383126,
+            255,
+            2155872384
+          ]
+        },
+        "outputWidth": 1073741824,
+        "outputHeight": 1,
+        "sourceCoordinates": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

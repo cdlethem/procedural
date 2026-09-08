@@ -1838,6 +1838,77 @@
         "review": "design/capabilities/cp11-admission-review.md",
         "reviewer": "root direct note/source and capability review"
       }
+    },
+    {
+      "id": "raster.bilinear-remap-2d",
+      "status": "reviewed_provisional",
+      "reason": "Root-admitted generic pull-raster remapping dependency for CP13; not whole noiseWarp equivalence.",
+      "admission_kind": "capability_dependency",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Owned-by-caller source ARGB8 raster and explicit row-major source coordinates/output dimensions; finite binary64 queries.",
+        "outputs": "Detached retained output raster with exact unsigned32 portable pixels and typed Java ARGB bit patterns.",
+        "invariants": "Four-tap edge-clamped bilinear interpolation of stored straight channels with one final round-half-up; no noise, host images, callbacks or in-place mutation.",
+        "open_questions": [],
+        "review": "design/capabilities/cp13-raster-admission.md",
+        "reviewer": "root direct source and architecture review"
+      },
+      "dependency_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/cp13-raster-admission.md",
+        "rationale": "Reusable image sampling and reconstruction removes raster-warp algorithmic work while caller-defined fields and patterns remain composable.",
+        "motivating_candidates": [
+          {
+            "candidate_id": "2016/Generativos/colorRamp#1",
+            "source_sha256": "d51a83b7acc0e479910dc629e3dce0a1563dec1b684060f100ddc067396375b2",
+            "evidence_sha256": "1511c15794abb392b51105c8e0d044129f9129aff484c1ad88ee2238d7653e72",
+            "dependency": "Explicit source-coordinate bilinear raster reconstruction, independently specified without Processing color-mode state.",
+            "remainder": [
+              {
+                "component": "Noise angle field and displacement strength",
+                "disposition": "recipe",
+                "reason": "Caller generates coordinates using accepted field operations or analytic transforms."
+              },
+              {
+                "component": "PGraphics capture and display",
+                "disposition": "adapter",
+                "reason": "Native image/pixel transport stays outside core."
+              },
+              {
+                "component": "Positioned color ramp, pattern, shadows and grain",
+                "disposition": "deferred",
+                "reason": "Separate algorithms/composition choices; no complete-original recreation claim."
+              }
+            ]
+          },
+          {
+            "candidate_id": "2016/Generativos/colorRamp#2",
+            "source_sha256": "d51a83b7acc0e479910dc629e3dce0a1563dec1b684060f100ddc067396375b2",
+            "evidence_sha256": "1511c15794abb392b51105c8e0d044129f9129aff484c1ad88ee2238d7653e72",
+            "dependency": "Explicit source-coordinate bilinear raster reconstruction, independently specified without Processing color-mode state.",
+            "remainder": [
+              {
+                "component": "Noise angle field and displacement strength",
+                "disposition": "recipe",
+                "reason": "Caller generates coordinates using accepted field operations or analytic transforms."
+              },
+              {
+                "component": "PGraphics capture and display",
+                "disposition": "adapter",
+                "reason": "Native image/pixel transport stays outside core."
+              },
+              {
+                "component": "Positioned color ramp, pattern, shadows and grain",
+                "disposition": "deferred",
+                "reason": "Separate algorithms/composition choices; no complete-original recreation claim."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "records": {

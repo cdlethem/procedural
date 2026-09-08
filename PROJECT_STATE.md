@@ -1,5 +1,29 @@
 # Project state
 
+## CP13 contract reviewed; Java implementation delegated
+
+Root reviewed catalog/operations/bilinear-raster-remap.json and authored 13 analytic shared
+fixtures before code. Added explicit size products, Java numeric carriers, accessor signed
+bit patterns/unsigned exports and validation order. Catalog tests pass (29 scenarios).
+Terra owns RasterRemap2D, focused native core checks and runner; Luna maps the smallest
+existing WarpMarks integration route read-only. Root owns contract/fixtures and final review.
+Ports remain paused with docs/porting-resume.md as the resume checklist. Java still has
+15 accepted operations; specification approval is not implementation or release acceptance.
+Next review core/parity/ownership/performance results, then editable JAVA2D WarpMarks under
+the shared machine render lock and extracted distribution validation.
+
+
+## CP13 raster dependency admitted; exact contract drafting
+
+Root froze architecture in design/capabilities/cp13-raster-admission.md: one batch pull
+remap, straight stored ARGB8, whole-coordinate edge clamp, separatelyrounded64 bilinear
+with one final half-up channel quantization; packed Java overload avoids boxedpixelgrids.
+Ledger dependency raster.bilinear-remap-2d added without reassigning composite candidates;
+contract-cluster structural gate passes. Root authored distinguishing analytic pixel cases.
+Luna owns one draft catalog file; root must review it before Java implementation.
+No new operation shipped yet; Java remains15. Next exactcontract/fixture review then
+Terra Java implementation against that boundary, focused native WarpMarks afterward.
+
 ## Java completion plan and next raster capability selected for specification
 
 Active objective is feature-complete Java. docs/java-completion-plan.md defines acceptance
