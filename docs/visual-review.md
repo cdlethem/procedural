@@ -8,7 +8,7 @@ review stage, and click an image to open the full-size original. Baselines and m
 edits sit together. Private studies and early experiments are labelled separately from
 accepted workflows and structural recreations; their review records define the scope.
 
-The initial collection contains118 distinct images in25 groups, spanning the existing Java
+The initial collection contains122 distinct images in26 groups, spanning the existing Java
 workflows, four original-sketch recreations and the current polygon-placement study. This
 is a curated review collection, not an inventory of every diagnostic frame or a feature count.
 

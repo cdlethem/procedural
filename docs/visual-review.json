@@ -2,6 +2,35 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "cp21-private",
+      "title": "Retained rectangle cuts \u2014 private study",
+      "category": "Private study",
+      "description": "Aligned/staggered supplied cuts, alternate decoration and explicit holes. Public admission and interactive selected-cell review pending.",
+      "evidence": "evidence/parameter-experiments/cp21-retained-cuts/decision.md",
+      "images": [
+        {
+          "label": "Aligned cuts",
+          "path": ".work/cp21-study-aligned1/variant-00/render.png",
+          "sha256": "b8aa917c34e09dd63b4f5a65e010c522dd3927d4892016926cf3ad83188148de"
+        },
+        {
+          "label": "Staggered cuts",
+          "path": ".work/cp21-study-staggered1/variant-00/render.png",
+          "sha256": "86244f87e3496d9d9e390b15c025d5844b643ab83d6326e0411fc6c90894509b"
+        },
+        {
+          "label": "Outline decoration",
+          "path": ".work/cp21-study-decoration1/variant-00/render.png",
+          "sha256": "1fca402275134a6322c3bba15d5d3f1993df60be586d912cb2b7900a964741d0"
+        },
+        {
+          "label": "Explicit holes",
+          "path": ".work/cp21-study-holes1/variant-00/render.png",
+          "sha256": "bb1e8a2e8d5c5523dd18b720602689ba5b6f54b006c526b9af6e78bcfb352c67"
+        }
+      ]
+    },
+    {
       "id": "polygon-marks",
       "title": "PolygonMarks \u2014 noncircular placement",
       "category": "Accepted workflow",

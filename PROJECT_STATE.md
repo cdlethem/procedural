@@ -4,10 +4,14 @@
 
 Root read griton, pliegues, peces and araniaaas source and corrected shortlist errors.
 Direction: design/capabilities/cp21-next-capability-direction.md; exact source/note bindings
-in adjacent cp21-gap-source-bindings.json. No new API admitted. Next private retained-region
-specification and editable prototype, comparing aligned unequal and staggered cuts.
+in adjacent cp21-gap-source-bindings.json. No new API admitted. Root wrote cp21-private-prototype-spec.md and pre-registered
+evidence/parameter-experiments/cp21-retained-cuts/experiment.json. Terra completed private RetainedRects/CutStudy. Root fixed finite-extent checks and added
+actual signed-zero/unrelated-ID/remove-last assertions. Four native studies passed and
+root inspected all images; evidence/parameter-experiments/cp21-retained-cuts/decision.md.
+Next direct selected-leaf editing demonstration before public admission/contract.
+Single supplied binary cut, stable live IDs, explicit removal; compare aligned/staggered cuts.
 Do not invent pliegues#0 (no frontmatter candidates), a peces history buffer, or griton
-late-list bias/5-child behavior. Workers finished; native work has not started.
+late-list bias/5-child behavior. Workers/native finished. Gallery122 images/26 groups.
 Java0.23 remains23 operations/workflows. Ports/Sol paused; Android draft preserved.
 
 ## Java0.23 accepted: 23 operations and 23 packaged workflows
