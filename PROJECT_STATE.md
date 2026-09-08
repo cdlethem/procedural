@@ -1,5 +1,23 @@
 # Project state
 
+## Recipe execution architecture started (D3 prerequisite to X1)
+
+Previous turn made progress: contact-sheet helper pushed as 5de3c712. Root inspected the
+actual FieldMarks/PathMarks compositions and four existing contracts; Luna independently
+returned a bounded schema/binding inventory. Root direction is recorded in
+design/recipes/execution-direction.md: explicit ordered composition, constructed instances
+versus values, catalog-owned expression/traversal/sink infrastructure, retained/frame split,
+and resource budgets. This is an architectural draft; no recipe schema, executor or export
+is accepted. Existing operation and target claims remain unchanged.
+Key gap: native method bindings are prose and schemas are heterogeneous; arithmetic/iteration
+and mark construction are currently example-owned code. A wrapper around starter parameters
+would not satisfy the declarative composition requirement. First schema acceptance must cover
+both FieldMarks and PathMarks, then Java execution/command equivalence, then native export.
+Next resolve exact expression, traversal and instance semantics and execution descriptors,
+apply catalog synchronization, then create the required recipe skill before persisted inputs.
+Full scope still includes all retained capabilities, explicit animation/assets, four-target
+exports and downstream MCP/web; separate porting ownership is unchanged.
+
 ## Contact-sheet helper accepted (X2 partial)
 
 Previous turn made progress by pushing adapter correction ebdf1ee4. Terra implemented

@@ -186,6 +186,10 @@ still require repeated reference evidence.
 
 ### X1 — Recipes, execution, and project exports
 
+The [root execution direction](../design/recipes/execution-direction.md) records the
+current D3 gaps and first two composition walkthroughs. It is an architectural draft,
+not an accepted schema, executor or exporter.
+
 Requires D3 recipe schema and validated library behavior. Implement one validator/execution
 contract followed by four target exporters. Recipes contain catalog operations, explicit
 seed/canvas/time/assets/capabilities, and no arbitrary host-language code.
