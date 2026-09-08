@@ -21,8 +21,10 @@ unchanged.
   - `0e678dcf` checked conformance reports + proposed attestations
   - final docs commit (checkpoint finalization + this handoff) = branch HEAD at
     push; list with `git log --oneline porting/batch-01`
-- origin/main advanced to `bf70f72c` during the batch (contact sheets + recipe
-  design drafts only); no porting input changed, evidence carries forward.
+- origin/main advanced by exactly one commit to `bf70f72c` during the batch (draft
+  recipe grammar + catalog execution bindings; only `PROJECT_STATE.md`,
+  `design/recipes/*` and `tests/test_recipe_draft_schema.py`); no porting input
+  changed, evidence carries forward.
 
 ## Contract versions and source hashes
 

@@ -96,9 +96,10 @@ actual target under the shared lease.
 
 ## Notes for the next batch
 
-- origin/main advanced to `bf70f72c` while this branch was active; the advance
-  touches only `PROJECT_STATE.md` and `design/recipes/*` — no porting inputs
-  changed, evidence carries forward unchanged.
+- origin/main advanced by exactly one commit to `bf70f72c` while this branch was
+  active (draft recipe grammar + catalog execution bindings; only
+  `PROJECT_STATE.md`, `design/recipes/*` and `tests/test_recipe_draft_schema.py`)
+  — no porting inputs changed, evidence carries forward unchanged.
 - Android attempt history: attempt1 failed a version-bump check on ignored taps;
   attempt2 recorded the plan renderer as the declared family instead of the actual
   `AndroidSurface` runtime class (fixed to match the accepted cp2 evidence value);

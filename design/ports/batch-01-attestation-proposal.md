@@ -7,10 +7,11 @@ accepted: the `acceptance_review` fields are placeholders and the rows must
 not be published until root creates acceptance records and fills them in.
 
 - Baseline commit: `467eafd2d1fc9ea4492698f5763091a775eddbb1` (branch base, origin/main
-  tip at porting start). origin/main has since advanced to
-  `bf70f72c` (contact sheets + recipe design drafts); the advance touches only
-  `PROJECT_STATE.md` and `design/recipes/*`, so all porting inputs and evidence
-  bindings are byte-stable and carry forward unchanged.
+  tip at porting start). origin/main advanced by exactly one commit to
+  `bf70f72c` (draft recipe grammar + catalog execution bindings); it touches only
+  `PROJECT_STATE.md`, `design/recipes/*` and `tests/test_recipe_draft_schema.py`,
+  so all porting inputs and evidence bindings are byte-stable and carry forward
+  unchanged.
 - Branch: `porting/batch-01`
 - Slice commits:
   - `99110da5` — JavaScript core export (filter + placement)
