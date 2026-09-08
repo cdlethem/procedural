@@ -121,32 +121,32 @@
       "core": {
         "status": "conformant",
         "implementation_sha256": {
-          "packages/javascript/src/branch-tree.js": "675f30861d3fe667e249082a8cdab00581526c6e13169a94c81435ce0765e6be",
+          "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
           "tests/native/branch-tree-javascript.mjs": "ee355b81bfa5e6a35d165311c7a05410cf3c938b902edb21d9d91ae7378d0d47"
         },
         "evidence_sha256": {
-          "evidence/conformance/branch-tree-javascript.json": "47965c4d0589c97cc07710d96e269109f36e46008ab5b082da13e7d6961944d9"
+          "evidence/conformance/branch-tree-javascript-output-correction.json": "0ac80acaca96b58d9ed5111849cbc798f41b08fe7235031784f42a6efd01dd13"
         },
         "evidence_predicates": [
           {
-            "path": "evidence/conformance/branch-tree-javascript.json",
+            "path": "evidence/conformance/branch-tree-javascript-output-correction.json",
             "pointer": "/status",
             "equals": "passed"
           },
           {
-            "path": "evidence/conformance/branch-tree-javascript.json",
+            "path": "evidence/conformance/branch-tree-javascript-output-correction.json",
             "pointer": "/fixture_cases",
             "equals": 40
           },
           {
-            "path": "evidence/conformance/branch-tree-javascript.json",
+            "path": "evidence/conformance/branch-tree-javascript-output-correction.json",
             "pointer": "/seed_vectors",
             "equals": 5
           }
         ],
         "acceptance_review": {
-          "path": "evidence/conformance/branch-tree-javascript-root-review.json",
-          "sha256": "e18e96d5fffd422f5a1efb8085cd6b5913fd14803a2aaf57aea89ba29efbf729"
+          "path": "evidence/conformance/javascript-retained-output-root-review.json",
+          "sha256": "6efddbbe64c73885734a99bea973cb031368b9f96acb09d4c66d00f661070587"
         },
         "runtime_profile": {
           "name": "Node v22.22.1 linux/x64",
@@ -159,7 +159,7 @@
           "packages/javascript/examples/branch-marks/sketch.js": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1",
           "packages/javascript/examples/branch-marks/index.html": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70",
           "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
-          "packages/javascript/src/branch-tree.js": "675f30861d3fe667e249082a8cdab00581526c6e13169a94c81435ce0765e6be",
+          "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
           "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
           "tools/run_p5_branch_marks.mjs": "eb496324495b607f78767b053d2e57eea949652429c6d4662010d352cfb9a379",
           "tests/native/branch-marks-browser.mjs": "8988ada4f7245861f66456f59bd9023ed3f6ccb275796a1def1ca9b650a4ecb4",
@@ -188,8 +188,8 @@
           }
         ],
         "acceptance_review": {
-          "path": "evidence/conformance/branch-p5js-native-root-review.json",
-          "sha256": "117587e8b77c72a4ea11b402f174b49c3aa3ad3f15b2cf4de5707e01c37c0529"
+          "path": "evidence/conformance/javascript-retained-output-root-review.json",
+          "sha256": "6efddbbe64c73885734a99bea973cb031368b9f96acb09d4c66d00f661070587"
         },
         "runtime_profile": {
           "name": "p5.js2.3.2 Chromium153 canvas2D density1",

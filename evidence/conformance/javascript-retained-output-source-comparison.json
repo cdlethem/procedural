@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "baseline_commit": "4905c054bf6540bdade201f3e64e78423b24d53e",
+  "scope": "Exact text comparison after removing only the named added helper and replacing the single old/new ordinary-array preflight block with one marker. No whitespace normalization or geometry exclusions.",
+  "sources": {
+    "packages/javascript/src/branch-tree.js": {
+      "before_sha256": "675f30861d3fe667e249082a8cdab00581526c6e13169a94c81435ce0765e6be",
+      "after_sha256": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+      "unchanged_outside_helper_and_array_preflight": true,
+      "common_remainder_sha256": "4ce2fc002a28cdaa877ea28af3d84834fc253ba62b0020d3cf6f980cdfb39aef"
+    },
+    "packages/javascript/src/triangle-points.js": {
+      "before_sha256": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044",
+      "after_sha256": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+      "unchanged_outside_helper_and_array_preflight": true,
+      "common_remainder_sha256": "26ee98dea1a2ff684939f78fd9e17757a555e7b7745ba82626daaf9ec92a311f"
+    }
+  },
+  "native_path": {
+    "BranchMarks": "Unchanged sketch uses Float64Array(4) for segmentInto.",
+    "GrainMarks": "Unchanged sketch uses Float64Array(2) for pointInto.",
+    "inference": "Changed Array.isArray branch is not executed by these native drawing loops; geometry, RNG, typed output writes, rendering, input and cached save source are unchanged."
+  }
+}

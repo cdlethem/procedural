@@ -74,6 +74,17 @@ class Storage {
   append(x0, y0, x1, y1, heading, length, parent, generation) { this.grow(); const i = this.size++; this.startX[i] = x0; this.startY[i] = y0; this.endX[i] = x1; this.endY[i] = y1; this.headings[i] = heading; this.lengths[i] = length; this.parents[i] = parent; this.generations[i] = generation; this.childCounts[i] = 0; }
   finish() { for (const name of ["startX", "startY", "endX", "endY", "headings", "lengths", "parents", "generations", "childCounts"]) this[name] = this[name].slice(0, this.size); return this; }
 }
+function writableArraySlot(array, index) {
+  const key = String(index), own = Object.getOwnPropertyDescriptor(array, key);
+  if (own !== undefined) return "value" in own && own.writable === true;
+  if (!Object.isExtensible(array)) return false;
+  for (let prototype = Object.getPrototypeOf(array); prototype !== null; prototype = Object.getPrototypeOf(prototype)) {
+    const inherited = Object.getOwnPropertyDescriptor(prototype, key);
+    if (inherited !== undefined) return "value" in inherited && inherited.writable === true;
+  }
+  return true;
+}
+
 class Result {
   #storage;
   constructor(storage) { this.#storage = storage; Object.freeze(this); }
@@ -85,7 +96,7 @@ class Result {
   parentAt(index) { return this.#storage.parents[this.#index(index)]; }
   generationAt(index) { return this.#storage.generations[this.#index(index)]; }
   childCountAt(index) { return this.#storage.childCounts[this.#index(index)]; }
-  segmentInto(index, out, offset = 0) { const i = this.#index(index); if (!(out instanceof Float64Array) && !(Array.isArray(out) && Object.getPrototypeOf(out) === Array.prototype)) fail("INVALID_OUTPUT"); if (!finite(offset) || !Number.isSafeInteger(offset) || offset < 0 || offset > out.length - 4) fail("INVALID_OUTPUT"); if (Array.isArray(out)) for (let n = 0; n < 4; n += 1) { const descriptor = Object.getOwnPropertyDescriptor(out, String(offset + n)); if (descriptor !== undefined && (!("value" in descriptor) || descriptor.writable !== true) || descriptor === undefined && !Object.isExtensible(out)) fail("INVALID_OUTPUT"); } const s = this.#storage; out[offset] = zero(s.startX[i]); out[offset + 1] = zero(s.startY[i]); out[offset + 2] = zero(s.endX[i]); out[offset + 3] = zero(s.endY[i]); return out; }
+  segmentInto(index, out, offset = 0) { const i = this.#index(index); if (!(out instanceof Float64Array) && !(Array.isArray(out) && Object.getPrototypeOf(out) === Array.prototype)) fail("INVALID_OUTPUT"); if (!finite(offset) || !Number.isSafeInteger(offset) || offset < 0 || offset > out.length - 4) fail("INVALID_OUTPUT"); if (Array.isArray(out)) for (let n = 0; n < 4; n += 1) { if (!writableArraySlot(out, offset + n)) fail("INVALID_OUTPUT"); } const s = this.#storage; out[offset] = zero(s.startX[i]); out[offset + 1] = zero(s.startY[i]); out[offset + 2] = zero(s.endX[i]); out[offset + 3] = zero(s.endY[i]); return out; }
   toValues() { const s = this.#storage, result = { segments: new Array(this.size), headings: new Array(this.size), lengths: new Array(this.size), parents: new Array(this.size), generations: new Array(this.size), childCounts: new Array(this.size) }; for (let i = 0; i < this.size; i += 1) { result.segments[i] = this.segmentAt(i); result.headings[i] = zero(s.headings[i]); result.lengths[i] = zero(s.lengths[i]); result.parents[i] = s.parents[i]; result.generations[i] = s.generations[i]; result.childCounts[i] = s.childCounts[i]; } return result; }
 }
 

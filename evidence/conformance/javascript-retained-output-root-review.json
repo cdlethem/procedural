@@ -1,0 +1,55 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Corrected JavaScript retained ordinary-array output validation for branching and two triangle operations. Core accepted with fresh fixtures; previous scoped native evidence carried forward only through exact unchanged typed-array drawing-path review. Local distribution rebuild remains pending.",
+  "implementation_sha256": {
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "tests/native/branch-tree-javascript.mjs": "ee355b81bfa5e6a35d165311c7a05410cf3c938b902edb21d9d91ae7378d0d47",
+    "packages/javascript/examples/branch-marks/sketch.js": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1",
+    "packages/javascript/examples/branch-marks/index.html": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70",
+    "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "tools/run_p5_branch_marks.mjs": "eb496324495b607f78767b053d2e57eea949652429c6d4662010d352cfb9a379",
+    "tests/native/branch-marks-browser.mjs": "8988ada4f7245861f66456f59bd9023ed3f6ccb275796a1def1ca9b650a4ecb4",
+    "design/capabilities/branch-marks-p5-acceptance.md": "4367888a0cf86b9cfb8f122dba4e095023b2e1932bbdad8eb4e81f7790f81c25",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17",
+    "packages/javascript/examples/grain-marks/index.html": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "tools/run_p5_grain_marks.mjs": "7e3554ba3408725173c3912e3b3007896c9353170a23e348dd2a141cb0c53b5e",
+    "tests/native/grain-marks-browser.mjs": "8b0d0149f1740693bb55fdec395e9d93d47eb87fd94a1bd2134a63fe133f93ba",
+    "design/capabilities/grain-marks-p5-acceptance.md": "e662eb0e501033dbe8d1c6a1d39d7e2c84c1e309d2adef58640fa30fb8c5b03d",
+    "tests/native/retained-output-javascript.mjs": "67f462878be2d68c25b40d73754204df636cd6043bff277991b30b202d397b22",
+    "tests/native/triangle-points-javascript.mjs": "70c2448fff8e13df23205f48a87d0f82e9c47608ac8b56eef75429d241c02b05"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/branch-tree-javascript-root-review.json": "e18e96d5fffd422f5a1efb8085cd6b5913fd14803a2aaf57aea89ba29efbf729",
+    "evidence/conformance/branch-tree-javascript-output-correction.json": "0ac80acaca96b58d9ed5111849cbc798f41b08fe7235031784f42a6efd01dd13",
+    "evidence/conformance/branch-p5js-native-root-review.json": "117587e8b77c72a4ea11b402f174b49c3aa3ad3f15b2cf4de5707e01c37c0529",
+    "evidence/conformance/p5js-branch-marks.json": "3c2cfc59697216bfb884ac70b760cb4fe0101edc8073b97bd77b5280b78d95c9",
+    "evidence/conformance/branch-marks-javascript-root-review.json": "47c810f06c05ee78a5cdddafe232b719ba570f82136693c464b8458c1d043fd1",
+    "evidence/conformance/triangle-p5js-native-root-review.json": "4ea01a2b503c7f7a38ed77e023790c8eecbc84fb1136a8000808324f6dc336a0",
+    "evidence/conformance/triangle-points-javascript-output-correction.json": "29bc685cd72d8606fd5dcb9bb6303312f521b2640def4bb3c10205961c521349",
+    "evidence/conformance/p5js-grain-marks.json": "3f589362e2032ad1c97fe7505cd16ce3e3a86fc6d0daf89c46e86f73c4a97759",
+    "evidence/conformance/triangle-javascript-implementation-review.json": "fc58f4870b23e8f24726b0250bb3096587c7daae4d3cbebd102e1807c292f835",
+    "evidence/conformance/grain-marks-javascript-parity.json": "3a46d8e63d142d6dc6afdb0eb7a1cb618584d0b5b3a6d1bb8af3e26232f84d25",
+    "evidence/conformance/javascript-retained-output-correction.json": "ea0c64d929694c3045fdd5549be8db476ca94ec173d79da175cef78901f9648c",
+    "evidence/conformance/javascript-retained-output-source-comparison.json": "08dc2e1312f29e7b203c19a081b3835c64d270264d12c7bf50774069f9f95b66"
+  },
+  "supersedes": {
+    "evidence/conformance/branch-tree-javascript-root-review.json": "e18e96d5fffd422f5a1efb8085cd6b5913fd14803a2aaf57aea89ba29efbf729",
+    "evidence/conformance/branch-p5js-native-root-review.json": "117587e8b77c72a4ea11b402f174b49c3aa3ad3f15b2cf4de5707e01c37c0529",
+    "evidence/conformance/triangle-p5js-native-root-review.json": "4ea01a2b503c7f7a38ed77e023790c8eecbc84fb1136a8000808324f6dc336a0"
+  },
+  "root_findings": [
+    "Root reproduced partial writes before TypeError with an inherited non-writable slot. Reviewed preflight now validates own/inherited descriptors and extensibility before writing; no setters are invoked.",
+    "Fresh40 branch and27+32 triangle fixture cases pass. Focused inherited readonly/setter/nonextensible and sparse success checks cover all three retained APIs. Existing Java/JavaScript model checks pass for eight branch and six grain configurations.",
+    "Exact source comparison proves the only executable change is ordinary-array destination preflight and its helper. All RNG, geometry, retained storage, typed-array writes, drawing and cached-save code is unchanged.",
+    "Native evidence carry-forward is an inference from this exact source isolation and the reviewed sketches using Float64Array destinations. No new browser run is claimed; old native results and root reviews are preserved byte-for-byte."
+  ],
+  "remaining": [
+    "Rebuild and review corrected local JavaScript packages.",
+    "ProfileMarks native workflow and remaining operation ports/roadmap."
+  ]
+}

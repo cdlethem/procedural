@@ -1,0 +1,239 @@
+{
+  "status": "passed",
+  "scope": "ProfileMarks p5.js WEBGL workflow only; no release or support acceptance",
+  "input_sha256_before": {
+    "tools/run_p5_profile_marks.mjs": "d6c671e11f42bead9068548e68690caad79c8167d6d9817ad12e55e7b9a293a4",
+    "tests/native/profile-marks-browser.mjs": "400c4764faf80eb4d9b7161fed3c0655ead46a2fbc27b9d1163cab284b99693d",
+    "packages/javascript/examples/profile-marks/index.html": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867",
+    "packages/javascript/examples/profile-marks/sketch.js": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c",
+    "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+    "packages/javascript/examples/profile-marks/README.md": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "design/capabilities/profile-marks-port-boundary.md": "e1f1f12cb9a643606eedbb1c90088107ab1a421259b92b611333ecdd579292e7",
+    "design/capabilities/profile-marks-p5-acceptance.md": "f5ce3ed4643e933cf116a65b4a5ee5e9bcbfa559186388be1cf6b6ee87ad1eb5",
+    ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  },
+  "states": [
+    {
+      "id": "baseline",
+      "revision": 1,
+      "faces": 1088,
+      "settings": {
+        "profile": 0,
+        "slices": 32,
+        "capStart": true,
+        "capEnd": true,
+        "alternate": false,
+        "trio": false
+      },
+      "retained": false,
+      "acknowledged": true,
+      "png_sha256": "e754c339a6636e8bd181fb16305be84fd1250769f034b4170e89e4f65605ca1d",
+      "display_png": "baseline-display.png"
+    },
+    {
+      "id": "waist",
+      "revision": 2,
+      "faces": 1088,
+      "settings": {
+        "profile": 1,
+        "slices": 32,
+        "capStart": true,
+        "capEnd": true,
+        "alternate": false,
+        "trio": false
+      },
+      "retained": true,
+      "acknowledged": true,
+      "png_sha256": "26df2e6d6fb1d677d4d28c516ee969ee748b5c4310977b54258ae0814f563679",
+      "display_png": "waist-display.png"
+    },
+    {
+      "id": "pointed",
+      "revision": 3,
+      "faces": 1024,
+      "settings": {
+        "profile": 2,
+        "slices": 32,
+        "capStart": true,
+        "capEnd": true,
+        "alternate": false,
+        "trio": false
+      },
+      "retained": true,
+      "acknowledged": true,
+      "png_sha256": "b33de07a0a28b63dcca085e77aacaa8842307fa1a2840574a073d538ca0919c0",
+      "display_png": "pointed-display.png"
+    },
+    {
+      "id": "coarse",
+      "revision": 4,
+      "faces": 256,
+      "settings": {
+        "profile": 2,
+        "slices": 8,
+        "capStart": true,
+        "capEnd": true,
+        "alternate": false,
+        "trio": false
+      },
+      "retained": false,
+      "acknowledged": true,
+      "png_sha256": "29b543a85b88e171b15adba6852302e56d3641399c6bfa03ef36aa8881e464a4",
+      "display_png": "coarse-display.png"
+    },
+    {
+      "id": "cylinder",
+      "revision": 5,
+      "faces": 272,
+      "settings": {
+        "profile": 0,
+        "slices": 8,
+        "capStart": true,
+        "capEnd": true,
+        "alternate": false,
+        "trio": false
+      },
+      "retained": true,
+      "acknowledged": true,
+      "png_sha256": "12533f0ac78f8fe51b5c6bf0e3351039c4fee848bb8ac2aa9f5044385eb7fbdf",
+      "display_png": "cylinder-display.png"
+    },
+    {
+      "id": "start-open",
+      "revision": 6,
+      "faces": 264,
+      "settings": {
+        "profile": 0,
+        "slices": 8,
+        "capStart": false,
+        "capEnd": true,
+        "alternate": false,
+        "trio": false
+      },
+      "retained": false,
+      "acknowledged": true,
+      "png_sha256": "f70d4ede49378ef57c105e93b067f78defbb2540211a0e65b2423ae9ac44fa77",
+      "display_png": "start-open-display.png"
+    },
+    {
+      "id": "both-open",
+      "revision": 7,
+      "faces": 256,
+      "settings": {
+        "profile": 0,
+        "slices": 8,
+        "capStart": false,
+        "capEnd": false,
+        "alternate": false,
+        "trio": false
+      },
+      "retained": false,
+      "acknowledged": true,
+      "png_sha256": "e2704c02452865a36cb10c03387b1343a4ad14e6f33e25a3a9e678febcddfac8",
+      "display_png": "both-open-display.png"
+    },
+    {
+      "id": "palette",
+      "revision": 8,
+      "faces": 256,
+      "settings": {
+        "profile": 0,
+        "slices": 8,
+        "capStart": false,
+        "capEnd": false,
+        "alternate": true,
+        "trio": false
+      },
+      "retained": true,
+      "acknowledged": true,
+      "png_sha256": "e64f93bd24bc8d4b7b30e4b6443edc0c6e8fc4ba4c4d62f2fd92c10b102893a2",
+      "display_png": "palette-display.png"
+    },
+    {
+      "id": "trio",
+      "revision": 9,
+      "faces": 760,
+      "settings": {
+        "profile": 0,
+        "slices": 8,
+        "capStart": false,
+        "capEnd": false,
+        "alternate": true,
+        "trio": true
+      },
+      "retained": true,
+      "acknowledged": true,
+      "png_sha256": "9f90e9f706e35e1a1254b583f164eb656f4bb70584d42c48a998b383287b5e1c",
+      "display_png": "trio-display.png"
+    },
+    {
+      "id": "reset",
+      "revision": 10,
+      "faces": 1088,
+      "settings": {
+        "profile": 0,
+        "slices": 32,
+        "capStart": true,
+        "capEnd": true,
+        "alternate": false,
+        "trio": false
+      },
+      "retained": false,
+      "acknowledged": true,
+      "png_sha256": "e754c339a6636e8bd181fb16305be84fd1250769f034b4170e89e4f65605ca1d",
+      "display_png": "reset-display.png"
+    }
+  ],
+  "errors": [],
+  "trio_save": {
+    "revision": 9,
+    "faces": 760,
+    "settings": {
+      "profile": 0,
+      "slices": 8,
+      "capStart": false,
+      "capEnd": false,
+      "alternate": true,
+      "trio": true
+    },
+    "retained": true,
+    "acknowledged": true
+  },
+  "reset_save": {
+    "revision": 10,
+    "faces": 1088,
+    "settings": {
+      "profile": 0,
+      "slices": 32,
+      "capStart": true,
+      "capEnd": true,
+      "alternate": false,
+      "trio": false
+    },
+    "retained": true,
+    "acknowledged": true
+  },
+  "input_sha256_after": {
+    "tools/run_p5_profile_marks.mjs": "d6c671e11f42bead9068548e68690caad79c8167d6d9817ad12e55e7b9a293a4",
+    "tests/native/profile-marks-browser.mjs": "400c4764faf80eb4d9b7161fed3c0655ead46a2fbc27b9d1163cab284b99693d",
+    "packages/javascript/examples/profile-marks/index.html": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867",
+    "packages/javascript/examples/profile-marks/sketch.js": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c",
+    "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+    "packages/javascript/examples/profile-marks/README.md": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "design/capabilities/profile-marks-port-boundary.md": "e1f1f12cb9a643606eedbb1c90088107ab1a421259b92b611333ecdd579292e7",
+    "design/capabilities/profile-marks-p5-acceptance.md": "f5ce3ed4643e933cf116a65b4a5ee5e9bcbfa559186388be1cf6b6ee87ad1eb5",
+    ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  }
+}

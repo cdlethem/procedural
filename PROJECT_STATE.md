@@ -1,5 +1,141 @@
 # Project state
 
+## Corrected JavaScript packages accepted; integration commit next
+
+Session95438 terminal passed both package/starter builds in .work/dist/retained-output2.
+Root independently verified current inputs and every archive member/hash; existing installed
+and extracted consumers pass. Accepted evidence/distribution/javascript-retained-output*.json.
+First attempt41301 failed missing internal/noise-hash; root added all existing retained
+internal modules to explicit whitelist. Historical builders untouched. New installation guide
+documents versions and local-only scope. Next focused catalog/checks and explicit commit/push
+of reviewed correction plus accepted scoped radial work; keep unfinished Python workflow out.
+
+## Python radial core accepted after root corrections
+
+Root fixed private result storage/destination types and scalar inner-loop allocation,
+formatted Python for maintenance and added source provenance. Root4 report passes43cases
+plus subclass rejection, full accessor correspondence and indexed/offset atomic checks.
+Accepted radial-profile-python.json and radial-profile-python-root-review.json bind current
+source/harness; no py5 workflow/export/package claim. Next Python ProfileMarks model/native.
+Luna package builder handoff was only an input gate; returned to worker to complete actual
+archive/install/extracted-consumer logic before root review. No build/render process live.
+Agent brief now explicitly requires complete assigned handoffs and source-level obligation
+review; do not stop at input gates/counts/syntax or skip existing tests.
+
+## Retained-output archival bridge integrated and focused checks pass
+
+Root corrected worker bridge: mandatory current source/evidence bindings, nonempty exact
+source remainder check, and no skipped legacy-chain test. Added mutation coverage for
+missing bindings, forged historical helper and rehashed geometry drift. Accepted scoped
+export successor stores exact old two-source/helper bytes only for archival bindings.
+41 focused export/attestation/drawing tests pass; catalog regeneration checked in session77750.
+Corrected local JS package rebuild still pending before next integration commit.
+Python radial core/harness delivered by Terra:43cases pass in .work/radial-profile-python2.json;
+root source/harness review pending, no Python native acceptance. No render sessions live.
+
+## ProfileMarks p5 WEBGL workflow accepted
+
+Session62679 terminal passed ten states in .work/native/profile-marks-p5-2. First launch
+failed before browser start due missing parent output directory; root repaired mkdir parent.
+Root added quiet post-save observations for trio/reset, reviewed source and model6 hashes,
+and viewed baseline/both-open/trio actual screenshots. Records profile-marks-javascript-parity,
+p5js-profile-marks and profile-p5js-native-root-review under evidence/conformance.
+Native/model accepted only; public exports/packages/other-target ports pending. No render
+session live. Next finish Luna export bridge review and package correction integration.
+
+## ProfileMarks full-model parity first pass reviewed
+
+Terra model5 now compares actual Java/JS complete topology/metadata and both meshes against
+existing CP7 interval enclosures for four settings; model accepts16 slices. Palette now
+uses package interpolation and drawing uses p.draw/redraw. Root read harness and requested
+binding imported interval dependencies, finite/nonnegative allowance checks, canonical+0
+checks on all values, and exact Java face record count. Terra also completing previously
+requested runner revision waits, trio/reset saves, source bindings and screenshots.
+No native run; no model acceptance until final source-bound report is reviewed.
+
+## ProfileMarks browser review corrections requested before launch
+
+Root read full sketch/runner/browser probe. Current draft uses hand-coded swatch selection
+instead of Java CyclicPalette interpolation and direct event paint instead of p.draw;
+Terra tasked to fix package-native palette and redraw lifecycle. Runner must wait each
+revision, bind palette/catalog/fixture/root plan, save both trio and reset without redraw,
+and capture actual canvas screenshots. Pinned p5 source confirms preserveDrawingBuffer
+default true; no workaround needed. Model parity strengthening remains with Terra.
+Luna archival export correction bridge still in progress; no native render is active.
+
+## Retained-output successor prepared; export-chain bridge pending
+
+Root exact source comparison proves branch/triangle code unchanged outside added writable
+slot helper and ordinary-array preflight. Native sketches use Float64Array, so scoped
+historical native evidence is carried forward explicitly as source-path inference; no new
+render claimed. Added javascript-retained-output-root-review.json and fresh core records;
+updated only three affected p5js attestations. Catalog session12723 failed old archival
+export-chain binding checks (index.js/Python init themselves unchanged). Luna inventory
+agent now implements a narrow tested bridge with draft-only record proposal for root review.
+Do not commit acceptance until catalog passes.
+Terra ProfileMarks prep delivered but root rejected count-only geometry parity and UI-only
+8/32 restriction in model. Terra strengthens example geometry/config comparison and accepts
+other contract-valid slices; native still unlaunched. Broader milestones remain open.
+
+## Older JavaScript retained-output correction tested, integration pending
+
+Root corrected branch-tree segmentInto and triangle-points pointInto preflight for absent
+own slots/inherited properties. New retained-output-javascript.mjs covers three APIs with
+atomic rejection for inherited readonly/setter/nonextensible slots and sparse success.
+Branch40 and triangle27+32 fixtures pass; eight BranchMarks and six GrainMarks Java/JS model
+configurations pass. Evidence javascript-retained-output-correction.json is explicitly
+integration-pending. Catalog bindings are now stale for these corrected sources: do not
+commit as accepted until successor native/core/package review. Historical records untouched.
+Terra profile_javascript_core preparing ProfileMarks model/browser source and exact plan;
+no native launch authorized yet. Luna affected-binding inventory complete.
+
+## Radial-profile JavaScript core accepted, native workflow pending
+
+Root reviewed corrected source/harness and current reviewfix report hashes. Records:
+evidence/conformance/radial-profile-javascript.json and radial-profile-javascript-root-review.json.
+43 shared cases pass with focused ownership/access/replay checks. Core-only acceptance;
+no catalog support/export/package claim. Terra implementation assignment complete. Next
+bounded ProfileMarks JavaScript model/native preparation and older Into atomicity correction.
+
+## First radial JavaScript core checkpoint under root review
+
+Terra added radial-profile.js and Node harness; initial43 fixture cases pass. Root read
+full source and harness. Corrections requested before acceptance: missing extensibility
+check when sparse output inherits writable data slot; inherited regression must have
+adequate length; exact output shapes/counts and successful Into triple values; metadata
+At correspondence and positive null-prototype/sparse-output cases; generator provenance
+JSDoc. Terra owns fixes and fresh focused rerun. Do not accept initial report as final.
+Native workflow remains unassigned.
+
+## Radial-profile JavaScript core implementation active
+
+Terra profile_javascript_core owns new radial-profile.js and focused Node harness only;
+no exports/catalog/acceptance edits. Luna inventory completed:43 shared cases, no auxiliary
+access sections; reuse triangle/branch native harness patterns plus contract-specific
+ownership/access checks. Root reviewed Java ProfileMarks and composition, and wrote draft
+design/capabilities/profile-marks-port-boundary.md separating mesh semantics from native3D
+lighting/camera/lifecycle/save evidence. No native run is active. Next inspect Terra core
+and exact fixture/atomic-write coverage, then accept core before assigning native workflow.
+Root identified inherited numeric Array.prototype slot hazard in reused Into preflight;
+Terra notified to handle it in radial port with a focused restored-prototype regression.
+Root reproduced the older branch segmentInto hazard in Node: sparse destination with
+inherited non-writable slot2 throws TypeError after slots0/1 changed from99/98 to0/0.
+Prototype was restored in finally. Queue a focused existing-Into correction after radial
+core review; do not extend native/package claims until affected bindings are reviewed.
+Assess older retained JS Into methods separately after this core review; no existing source
+or acceptance was silently changed. Native draft now has ten contract-derived states and
+explicit vertex/face counts; these are predictions, not observed native results.
+
+## Restoration checkpoint pushed; radial-profile batch scoped
+
+Main pushed at 4905c054bf6540bdade201f3e64e78423b24d53e. All58 checkpoint files
+are project-owned source, fixtures, docs and text evidence; ignored builds remain local.
+Final49 focused tests and catalog validation passed. Handoff now records ten completed
+ports and five pending. New design/port-batch-05.md scopes radial-profile core/native/package
+work; root read its full behavioral contract. Luna profile_port_inventory is read-only
+inventorying reusable target harnesses and fixture sections. No native/build session live.
+Next review inventory, then bounded Terra JavaScript core assignment against frozen contract.
+
 ## Android restoration package rebuild reviewed
 
 Session87789 completed successfully: adapter0.3.0 and all six extracted patch starter APKs

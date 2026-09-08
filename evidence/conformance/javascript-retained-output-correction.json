@@ -1,0 +1,28 @@
+{
+  "status": "checks_passed_integration_pending",
+  "scope": "Inherited sparse-array output correction for JavaScript branch and both triangle operations; no successor catalog/native/distribution acceptance yet.",
+  "input_sha256": {
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "tests/native/retained-output-javascript.mjs": "67f462878be2d68c25b40d73754204df636cd6043bff277991b30b202d397b22",
+    "tests/native/branch-tree-javascript.mjs": "ee355b81bfa5e6a35d165311c7a05410cf3c938b902edb21d9d91ae7378d0d47",
+    "tests/native/triangle-points-javascript.mjs": "70c2448fff8e13df23205f48a87d0f82e9c47608ac8b56eef75429d241c02b05",
+    "tests/native/branch-marks-javascript.mjs": "484327bbbd8d84756dc8acfa63571c0d6311def85425b063b76900a3dea517e2",
+    "tests/native/grain-marks-javascript.mjs": "da2f878b40fbea55768f376ca1d209be186d2ec36ba7cd56355752d1c77e2565"
+  },
+  "local_results_sha256": {
+    ".work/branch-tree-output-correction1.json": "0ac80acaca96b58d9ed5111849cbc798f41b08fe7235031784f42a6efd01dd13",
+    ".work/triangle-points-output-correction1.json": "29bc685cd72d8606fd5dcb9bb6303312f521b2640def4bb3c10205961c521349",
+    ".work/branch-marks-output-correction1": "cd57f53641ff95f351cac829e20439fa8a5fb464ebb6d3e7c7f912aed4e25de0",
+    ".work/grain-marks-output-correction1/result.json": "fc720a43eb461d96acbd1b37b8c92b09b057a302cf22d3eb527ce7aa1c7f5d7d"
+  },
+  "checks": [
+    "Focused inherited non-writable/setter/non-extensible atomic failure and ordinary sparse success across three retained outputs.",
+    "Existing branch40 and triangle27+32 shared fixture cases passed.",
+    "Java/JavaScript composition parity passed: eight BranchMarks configurations and six GrainMarks configurations."
+  ],
+  "remaining": [
+    "Review and update affected catalog source bindings via successor acceptance without mutating historical results.",
+    "Review unchanged native drawing path and rebuild corrected local JavaScript distributions at a useful integration checkpoint."
+  ]
+}

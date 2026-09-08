@@ -179,3 +179,18 @@ Record corrections in the ledger history and preserve deferred component work ex
 Use [artist-capabilities.md](artist-capabilities.md) for current CP1/CP2 priorities.
 The [triangle scope](first-composition-scope.md) is optional engineering work, not the next
 artist milestone. No agent may freeze shared stochastic or command semantics alone.
+
+
+## Bounded implementation handoff
+
+Complete every assigned deliverable before returning a final implementation handoff.
+A syntax check or input gate is a progress checkpoint when fixture execution, packaging,
+or consumer checks were also assigned. Send progress while continuing; identify a concrete
+blocker when work cannot continue. Do not silently shrink an assignment to its first stage.
+
+Before handoff, compare source against ownership, destination types, allocation and error
+requirements as well as running fixtures. Frozen wrappers do not make mutable backing arrays
+immutable. Count-only comparisons do not establish example geometry parity. A no-op build
+check does not establish that archive construction is implemented. Root still reviews the
+important decisions and representative outputs; never skip existing tests to make a
+prospective successor pass.

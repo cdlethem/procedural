@@ -121,41 +121,41 @@
       "core": {
         "status": "conformant",
         "implementation_sha256": {
-          "packages/javascript/src/triangle-points.js": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044"
+          "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290"
         },
         "evidence_sha256": {
-          "evidence/conformance/triangle-points-javascript.json": "98fe1a815fb603d1c59f0867f7e23c043d11b3bddfc8ac46d83adb081d75edb9"
+          "evidence/conformance/triangle-points-javascript-output-correction.json": "29bc685cd72d8606fd5dcb9bb6303312f521b2640def4bb3c10205961c521349"
         },
         "evidence_predicates": [
           {
-            "path": "evidence/conformance/triangle-points-javascript.json",
+            "path": "evidence/conformance/triangle-points-javascript-output-correction.json",
             "pointer": "/status",
             "equals": "passed"
           },
           {
-            "path": "evidence/conformance/triangle-points-javascript.json",
+            "path": "evidence/conformance/triangle-points-javascript-output-correction.json",
             "pointer": "/fixture_cases/seeded",
             "equals": 27
           },
           {
-            "path": "evidence/conformance/triangle-points-javascript.json",
+            "path": "evidence/conformance/triangle-points-javascript-output-correction.json",
             "pointer": "/fixture_cases/mapping",
             "equals": 32
           },
           {
-            "path": "evidence/conformance/triangle-points-javascript.json",
+            "path": "evidence/conformance/triangle-points-javascript-output-correction.json",
             "pointer": "/seed_vectors",
             "equals": 5
           },
           {
-            "path": "evidence/conformance/triangle-points-javascript.json",
+            "path": "evidence/conformance/triangle-points-javascript-output-correction.json",
             "pointer": "/cross_case_checks",
             "equals": 4
           }
         ],
         "acceptance_review": {
-          "path": "evidence/conformance/triangle-p5js-native-root-review.json",
-          "sha256": "4ea01a2b503c7f7a38ed77e023790c8eecbc84fb1136a8000808324f6dc336a0"
+          "path": "evidence/conformance/javascript-retained-output-root-review.json",
+          "sha256": "6efddbbe64c73885734a99bea973cb031368b9f96acb09d4c66d00f661070587"
         },
         "runtime_profile": {
           "name": "Node JavaScript binary64 portable stream",
@@ -168,7 +168,7 @@
           "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17",
           "packages/javascript/examples/grain-marks/index.html": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8",
           "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
-          "packages/javascript/src/triangle-points.js": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044",
+          "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
           "tools/run_p5_grain_marks.mjs": "7e3554ba3408725173c3912e3b3007896c9353170a23e348dd2a141cb0c53b5e",
           "tests/native/grain-marks-browser.mjs": "8b0d0149f1740693bb55fdec395e9d93d47eb87fd94a1bd2134a63fe133f93ba",
           "design/capabilities/grain-marks-p5-acceptance.md": "e662eb0e501033dbe8d1c6a1d39d7e2c84c1e309d2adef58640fa30fb8c5b03d"
@@ -196,8 +196,8 @@
           }
         ],
         "acceptance_review": {
-          "path": "evidence/conformance/triangle-p5js-native-root-review.json",
-          "sha256": "4ea01a2b503c7f7a38ed77e023790c8eecbc84fb1136a8000808324f6dc336a0"
+          "path": "evidence/conformance/javascript-retained-output-root-review.json",
+          "sha256": "6efddbbe64c73885734a99bea973cb031368b9f96acb09d4c66d00f661070587"
         },
         "runtime_profile": {
           "name": "p5.js2.3.2 Chromium153 canvas2D density1",

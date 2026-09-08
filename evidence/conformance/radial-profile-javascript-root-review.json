@@ -1,0 +1,27 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "JavaScript radial-profile core source and focused Node conformance only; no browser drawing, public root export, distribution or four-target support acceptance.",
+  "implementation_sha256": {
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "tests/native/radial-profile-javascript.mjs": "cf65e9d538b28f88350eef156c10486b4c41d1d41d59f1dff89f2345aef8dc58"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/radial-profile-javascript.json": "ec55cc08e1cadc7a414e55e705ea008fc81a56380e25970f767667bbb0ac09e5",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88"
+  },
+  "root_findings": [
+    "Root reviewed complete implementation against frozen count, topology, normal arithmetic, ownership and access semantics. Exact BigInt count calculation precedes retained geometry allocation; normal operation order matches the contract.",
+    "All43 shared cases pass:24 successes with fixed component allowances and19 exact errors, including face/stage witnesses. Same-runtime binary64 replay and canonical positive zero are checked before JSON serialization.",
+    "Root requested and reviewed corrections to sparse-output preflight and test coverage. Absent own slots require extensibility and compatible inherited descriptors; rejected writes leave all slots unchanged. Tests now cover actual inherited-slot paths, exact output shapes/counts, accessor correspondence and written triples.",
+    "Motivating notes and observed-setting caveats are cited. No fixture tolerance, public operation semantics or historical acceptance was changed."
+  ],
+  "remaining": [
+    "ProfileMarks model parity and native p5 WEBGL workflow, then packaging and target attestation.",
+    "Python and Android profile ports.",
+    "Separate focused correction for inherited sparse-output atomicity reproduced in older branch-tree Into implementation.",
+    "Remaining four operation ports and broader roadmap."
+  ]
+}

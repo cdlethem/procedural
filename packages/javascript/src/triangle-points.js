@@ -112,6 +112,17 @@ function splitMix(state) {
   return (state ^ (state >> 31n)) & MASK64;
 }
 
+function writableArraySlot(array, index) {
+  const key = String(index), own = Object.getOwnPropertyDescriptor(array, key);
+  if (own !== undefined) return "value" in own && own.writable === true;
+  if (!Object.isExtensible(array)) return false;
+  for (let prototype = Object.getPrototypeOf(array); prototype !== null; prototype = Object.getPrototypeOf(prototype)) {
+    const inherited = Object.getOwnPropertyDescriptor(prototype, key);
+    if (inherited !== undefined) return "value" in inherited && inherited.writable === true;
+  }
+  return true;
+}
+
 class Result {
   #points;
   constructor(points) { this.#points = points; Object.freeze(this); }
@@ -130,9 +141,7 @@ class Result {
     if (!(out instanceof Float64Array) && !(Array.isArray(out) && Object.getPrototypeOf(out) === Array.prototype)) fail("INVALID_OUTPUT");
     if (!finite(offset) || !Number.isSafeInteger(offset) || offset < 0 || offset > out.length - 2) fail("INVALID_OUTPUT");
     if (Array.isArray(out)) for (let n = 0; n < 2; n += 1) {
-      const descriptor = Object.getOwnPropertyDescriptor(out, String(offset + n));
-      if (descriptor !== undefined && (!("value" in descriptor) || descriptor.writable !== true)) fail("INVALID_OUTPUT");
-      if (descriptor === undefined && !Object.isExtensible(out)) fail("INVALID_OUTPUT");
+      if (!writableArraySlot(out, offset + n)) fail("INVALID_OUTPUT");
     }
     out[offset] = zero(this.#points[i]); out[offset + 1] = zero(this.#points[i + 1]);
     return out;

@@ -1,13 +1,88 @@
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 
-from tools.reviewed_export_extension import historical_export_bytes, PATHS, REVIEW
+from tools.reviewed_export_extension import (CORRECTION, HELPER, PATHS, REVIEW,
+                                             CORRECTED_SOURCES, ROOT_CORRECTION, SOURCE_COMPARISON,
+                                             _validate_retained_output_correction,
+                                             historical_export_bytes)
 
 
 class ReviewedExportTests(unittest.TestCase):
+    def test_retained_output_successor_is_narrow_and_fail_closed(self):
+        import shutil
+        repository = Path(__file__).resolve().parents[1]
+        root_review = json.loads((repository / ROOT_CORRECTION).read_text())
+        comparison = json.loads((repository / SOURCE_COMPARISON).read_text())
+        files = {ROOT_CORRECTION, SOURCE_COMPARISON, HELPER, *CORRECTED_SOURCES}
+        files.update(root_review['implementation_sha256'])
+        files.update(root_review['evidence_sha256'])
+        with tempfile.TemporaryDirectory(dir=repository / '.work') as temporary:
+            root = Path(temporary)
+            for name in files:
+                source = repository / name
+                if source.exists():
+                    (root / name).parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copyfile(source, root / name)
+            previous_bytes = {
+                name: subprocess.check_output(['git', 'show', f'4905c054bf6540bdade201f3e64e78423b24d53e:{name}'], cwd=repository).decode()
+                for name in (*CORRECTED_SOURCES, HELPER)
+            }
+            current = {name: (repository / name).read_text() for name in (*CORRECTED_SOURCES, HELPER)}
+            digest = lambda data: hashlib.sha256(data.encode()).hexdigest()
+            correction = {
+                'status': 'accepted', 'owner': 'root', 'reviewer': 'root',
+                'previous_review_sha256': digest((repository / ROOT_CORRECTION).read_text()),
+                'implementation_sha256': {name: digest(text) for name, text in current.items()},
+                'evidence_sha256': {ROOT_CORRECTION: digest((repository / ROOT_CORRECTION).read_text()), SOURCE_COMPARISON: digest((repository / SOURCE_COMPARISON).read_text())},
+                'previous_bytes': previous_bytes,
+                'extensions': {name: {'before': previous_bytes[name], 'after': current[name]} for name in current},
+            }
+            (root / CORRECTION).parent.mkdir(parents=True, exist_ok=True)
+            (root / CORRECTION).write_text(json.dumps(correction))
+            snapshots = {}
+            self.assertTrue(_validate_retained_output_correction(root, snapshots))
+            forged = json.loads(json.dumps(correction)); forged['previous_bytes'][next(iter(CORRECTED_SOURCES))] += 'forged'
+            (root / CORRECTION).write_text(json.dumps(forged))
+            self.assertFalse(_validate_retained_output_correction(root, {}))
+            forged = json.loads(json.dumps(correction)); forged['extensions']['arbitrary.py'] = {'before': '', 'after': ''}
+            (root / CORRECTION).write_text(json.dumps(forged))
+            self.assertFalse(_validate_retained_output_correction(root, {}))
+
+            for key, name in [('implementation_sha256', HELPER), ('evidence_sha256', SOURCE_COMPARISON)]:
+                forged = json.loads(json.dumps(correction))
+                del forged[key][name]
+                (root / CORRECTION).write_text(json.dumps(forged))
+                self.assertFalse(_validate_retained_output_correction(root, {}))
+            forged = json.loads(json.dumps(correction))
+            forged['previous_bytes'][HELPER] += 'forged'
+            forged['extensions'][HELPER]['before'] += 'forged'
+            (root / CORRECTION).write_text(json.dumps(forged))
+            self.assertFalse(_validate_retained_output_correction(root, {}))
+            # Even self-consistent rehashed source claims cannot authorize a geometry edit.
+            name = 'packages/javascript/src/branch-tree.js'
+            changed = current[name].replace('Math.cos(', 'Math.sin(')
+            self.assertNotEqual(changed, current[name])
+            (root / name).write_text(changed)
+            revised_root = json.loads((root / ROOT_CORRECTION).read_text())
+            revised_root['implementation_sha256'][name] = digest(changed)
+            revised_comparison = json.loads((root / SOURCE_COMPARISON).read_text())
+            revised_comparison['sources'][name]['after_sha256'] = digest(changed)
+            (root / SOURCE_COMPARISON).write_text(json.dumps(revised_comparison))
+            revised_root['evidence_sha256'][SOURCE_COMPARISON] = digest((root / SOURCE_COMPARISON).read_text())
+            (root / ROOT_CORRECTION).write_text(json.dumps(revised_root))
+            forged = json.loads(json.dumps(correction))
+            forged['implementation_sha256'][name] = digest(changed)
+            forged['extensions'][name]['after'] = changed
+            forged['previous_review_sha256'] = digest((root / ROOT_CORRECTION).read_text())
+            for evidence in (ROOT_CORRECTION, SOURCE_COMPARISON):
+                forged['evidence_sha256'][evidence] = digest((root / evidence).read_text())
+            (root / CORRECTION).write_text(json.dumps(forged))
+            self.assertFalse(_validate_retained_output_correction(root, {}))
+
     def test_exact_review_and_fail_closed_mutations(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -49,7 +124,12 @@ class ReviewedExportTests(unittest.TestCase):
         successor = json.loads((repository / SUCCESSOR).read_text())
         triangle = json.loads((repository / TRIANGLE).read_text())
         branch = json.loads((repository / BRANCH).read_text())
-        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, *PATHS}
+        correction = json.loads((repository / CORRECTION).read_text())
+        root_correction = json.loads((repository / ROOT_CORRECTION).read_text())
+        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, CORRECTION, ROOT_CORRECTION, SOURCE_COMPARISON, *PATHS}
+        for record in (correction, root_correction):
+            files.update(record['implementation_sha256'])
+            files.update(record['evidence_sha256'])
         for review in (previous, successor, triangle, branch):
             files.update(review['implementation_sha256'])
             files.update(review['evidence_sha256'])

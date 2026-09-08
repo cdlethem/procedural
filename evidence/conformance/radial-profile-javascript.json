@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "operation": "mesh.radial-profile-surface-3d",
+  "fixture_cases": 43,
+  "successful_cases": 24,
+  "error_cases": 19,
+  "source_sha256": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+  "input_sha256_before": {
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "tests/native/radial-profile-javascript.mjs": "cf65e9d538b28f88350eef156c10486b4c41d1d41d59f1dff89f2345aef8dc58",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa"
+  },
+  "input_sha256_after": {
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "tests/native/radial-profile-javascript.mjs": "cf65e9d538b28f88350eef156c10486b4c41d1d41d59f1dff89f2345aef8dc58",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa"
+  },
+  "runtime": {
+    "node": "v22.22.1",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "scope": "JavaScript CP7 core fixture, topology/normal allowance, exact same-runtime bits, passive carrier, ownership and atomic retained-access checks; no rendering or support claim."
+}

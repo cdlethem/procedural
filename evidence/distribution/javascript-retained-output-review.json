@@ -1,0 +1,27 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local corrected BranchMarks0.6.1 and GrainMarks0.5.1 JavaScript tarballs/starter archives with installed and extracted consumer checks; no registry release or radial-profile package claim.",
+  "implementation_sha256": {
+    "tools/build_retained_output_javascript.mjs": "fbb6d18ea697b7df5b9ed0503ca816ea3e8134008d01dffafd27cc535394177d"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/javascript-retained-output.json": "50637a8c7b490edc8e13034f42c2083c9518256d865000078498021021a7a578",
+    "evidence/distribution/javascript-retained-output-branch.json": "e523a5ac89f4f79838149e9ca47fa5a579eae592f843205440649b224f447f1b",
+    "evidence/distribution/javascript-retained-output-grain.json": "92bac15290f4f0b7d8d578a0e1caaf59d703651a6b9177dec4de79a4b5bfb438",
+    "evidence/conformance/javascript-retained-output-root-review.json": "6efddbbe64c73885734a99bea973cb031368b9f96acb09d4c66d00f661070587",
+    "evidence/conformance/javascript-retained-output-export-successor.json": "1b5766fd1f85349ef2e7f553142347c6829d95f1cd721c7a21daf0214a706986"
+  },
+  "root_findings": [
+    "Root reviewed and corrected builder adaptations: explicit repository root, exact single replacements, recursive example copies, complete retained internal dependency whitelist, current successor review selection, fresh output directories and pre/post source checks. Historical builders/evidence remain unchanged.",
+    "Both npm tarballs and browser starter ZIPs passed staged and extracted installed-consumer geometry checks. Root independently verified current input hashes, artifact hashes and every archive member manifest.",
+    "Artifacts contain the retained ten-operation source surface and six prior examples, including required internal drawing/noise modules; radial-profile source/example and tools/environments are excluded. Notices are preserved.",
+    "First attempt failed the installed-consumer check because internal/noise-hash.js was omitted. Attempt2 adds existing internal dependencies; failed output remains local and is not accepted."
+  ],
+  "remaining": [
+    "Push this reviewed correction checkpoint.",
+    "Radial-profile package integration and Python/Android workflows.",
+    "Remaining operation ports and broader roadmap."
+  ]
+}

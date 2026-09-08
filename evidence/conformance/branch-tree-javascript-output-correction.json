@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "runtime": {
+    "node": "v22.22.1",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "operation": "topology.seeded-endpoint-branches-2d",
+  "fixture_cases": 40,
+  "seed_vectors": 5,
+  "executed_native_only_requirements": [
+    "nonfinite-input",
+    "numeric-carriers",
+    "container-carriers",
+    "negative-zero",
+    "access-domains",
+    "atomic-segment-into",
+    "detached-input",
+    "detached-output",
+    "capacity-without-preallocation",
+    "iterative-chain"
+  ],
+  "source_reviewed_limitations": [
+    "Host allocation failure is not injected; constructor validates statics before storage/RNG and uses packed growable arrays."
+  ],
+  "fixture_sha256": "5368de8f8e268ac2f376a45f08d97e690a3192708b4d42a2b6d393894f88a13c",
+  "catalog_sha256": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+  "input_sha256_before": {
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "tests/native/branch-tree-javascript.mjs": "ee355b81bfa5e6a35d165311c7a05410cf3c938b902edb21d9d91ae7378d0d47",
+    "fixtures/operations/seeded-endpoint-branches.json": "5368de8f8e268ac2f376a45f08d97e690a3192708b4d42a2b6d393894f88a13c",
+    "catalog/operations/seeded-endpoint-branches.json": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881"
+  },
+  "input_sha256_after": {
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "tests/native/branch-tree-javascript.mjs": "ee355b81bfa5e6a35d165311c7a05410cf3c938b902edb21d9d91ae7378d0d47",
+    "fixtures/operations/seeded-endpoint-branches.json": "5368de8f8e268ac2f376a45f08d97e690a3192708b4d42a2b6d393894f88a13c",
+    "catalog/operations/seeded-endpoint-branches.json": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881"
+  },
+  "source_sha256": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+  "scope": "JavaScript CP6 fixture output, per-case trig tolerance, private stream traces, scalar/carrier validation, errors, ownership, atomic access, large-cap and iterative-chain checks; no rendering or support claim."
+}

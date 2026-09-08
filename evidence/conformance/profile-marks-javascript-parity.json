@@ -1,0 +1,108 @@
+{
+  "status": "passed",
+  "scope": "ProfileMarks JavaScript/Java example translation: complete retained topology, metadata, positions and normals for four selected settings, plus editable 16-slice acceptance; no browser/native render or support claim.",
+  "states": [
+    {
+      "slices": 32,
+      "capStart": true,
+      "capEnd": true,
+      "counts": [
+        [
+          546,
+          1088
+        ],
+        [
+          546,
+          1088
+        ],
+        [
+          514,
+          1024
+        ]
+      ]
+    },
+    {
+      "slices": 8,
+      "capStart": true,
+      "capEnd": true,
+      "counts": [
+        [
+          138,
+          272
+        ],
+        [
+          138,
+          272
+        ],
+        [
+          130,
+          256
+        ]
+      ]
+    },
+    {
+      "slices": 8,
+      "capStart": false,
+      "capEnd": true,
+      "counts": [
+        [
+          137,
+          264
+        ],
+        [
+          137,
+          264
+        ],
+        [
+          129,
+          248
+        ]
+      ]
+    },
+    {
+      "slices": 8,
+      "capStart": false,
+      "capEnd": false,
+      "counts": [
+        [
+          136,
+          256
+        ],
+        [
+          136,
+          256
+        ],
+        [
+          129,
+          248
+        ]
+      ]
+    }
+  ],
+  "source_sha256_before": {
+    "tests/native/profile-marks-javascript.mjs": "b842223041af982b96ab58aa7bd63007536cae1b089ffb3b34363a36d6f21dd0",
+    "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/java/examples/ProfileMarks/ProfileComposition.java": "634fc9b390c48e96ded5fd5c6e1152724d7bbb416eb10c02708cadf546324036",
+    "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+    "tools/diagnostics/cp7/profile_intervals.py": "2d4bb98c5bb2c52b9a45272463b8ca30062e8767e85d39f8f90dfa0f54430f6a",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "design/operations/cp7-profile-fixture-policy.md": "8e7ef08de5e1abb251de884634896b9c807b954431ebe62eb5a0213e5ecbaf7d"
+  },
+  "source_sha256_after": {
+    "tests/native/profile-marks-javascript.mjs": "b842223041af982b96ab58aa7bd63007536cae1b089ffb3b34363a36d6f21dd0",
+    "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/java/examples/ProfileMarks/ProfileComposition.java": "634fc9b390c48e96ded5fd5c6e1152724d7bbb416eb10c02708cadf546324036",
+    "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+    "tools/diagnostics/cp7/profile_intervals.py": "2d4bb98c5bb2c52b9a45272463b8ca30062e8767e85d39f8f90dfa0f54430f6a",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "design/operations/cp7-profile-fixture-policy.md": "8e7ef08de5e1abb251de884634896b9c807b954431ebe62eb5a0213e5ecbaf7d"
+  },
+  "runtime": {
+    "node": "v22.22.1",
+    "java_home": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1"
+  }
+}

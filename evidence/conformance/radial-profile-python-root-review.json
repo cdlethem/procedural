@@ -1,0 +1,26 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Python radial-profile core and focused fixture/access checks only; no py5 drawing, public root export or distribution acceptance.",
+  "implementation_sha256": {
+    "packages/python/procedurals/radial_profile.py": "5e808574fb55b822aea205981aaea4df53cf487723d42a05204c9c6066716735",
+    "tests/native/radial-profile-python.py": "dbe43c637608b59a34f1dc820b1a2d2466486fc3ac667bc0315a5657f424054f"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/radial-profile-python.json": "862ba78178e901b33bc228af3d097be75afca573213fda3ec8f2e020c5916138",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88"
+  },
+  "root_findings": [
+    "Root read implementation and harness, corrected exposed mutable backing buffers and unauthorized triangle array destination, then replaced temporary per-vertex/per-face containers with scalar packed writes and the specified scalar normal arithmetic.",
+    "Forty-three shared cases pass with unchanged component allowances, canonical positive zero and repeated same-runtime bits. Dynamic errors retain first face/stage.",
+    "Focused native Python checks cover input/export detachment, private frozen storage, fresh triples, exact built-in carriers, triangle list-only writes, float destinations, surrounding sentinels, invalid-index/range/output precedence and rejected-write atomicity.",
+    "Count arithmetic uses exact Python integers before mesh allocation. Resource failures remain host failures; no renderer state, RNG, defaults or profile presets introduced."
+  ],
+  "remaining": [
+    "ProfileMarks Python model parity and native py5 workflow.",
+    "Public exports/packages and Android profile port.",
+    "Other pending operation ports and full roadmap."
+  ]
+}

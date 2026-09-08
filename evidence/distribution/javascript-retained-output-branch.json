@@ -1,0 +1,736 @@
+{
+  "status": "passed",
+  "scope": "Retained-output JavaScript 0.6.1 local package and installed BranchMarks starter checks only; no browser launch, render, registry publication, or support acceptance.",
+  "package_version": "0.6.1",
+  "input_sha256": {
+    "packages/javascript/package.json": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8",
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/index.js": "ef714f7681d94ad28ebd463e01a1636c608d366f80f6f8678ce48cb13a17f932",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "packages/javascript/examples/branch-marks/README.md": "befac22e2fc186dc3358d83645a35b33be5e638060ce33ac4e2c8f7a18960cc6",
+    "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+    "packages/javascript/examples/branch-marks/index.html": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70",
+    "packages/javascript/examples/branch-marks/sketch.js": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1",
+    "packages/javascript/examples/field-marks/README.md": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27",
+    "packages/javascript/examples/field-marks/index.html": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d",
+    "packages/javascript/examples/field-marks/mark-field.js": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf",
+    "packages/javascript/examples/field-marks/sketch.js": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b",
+    "packages/javascript/examples/grain-marks/README.md": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "packages/javascript/examples/grain-marks/index.html": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8",
+    "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17",
+    "packages/javascript/examples/path-marks/README.md": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291",
+    "packages/javascript/examples/path-marks/index.html": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f",
+    "packages/javascript/examples/path-marks/path-marks.js": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743",
+    "packages/javascript/examples/path-marks/sketch.js": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473",
+    "packages/javascript/examples/placement-marks/README.md": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1",
+    "packages/javascript/examples/placement-marks/index.html": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318",
+    "packages/javascript/examples/placement-marks/placement-marks.js": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382",
+    "packages/javascript/examples/placement-marks/sketch.js": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c",
+    "packages/javascript/examples/profile-marks/README.md": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6",
+    "packages/javascript/examples/profile-marks/index.html": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867",
+    "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+    "packages/javascript/examples/profile-marks/sketch.js": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c",
+    "packages/javascript/examples/region-marks/README.md": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010",
+    "packages/javascript/examples/region-marks/index.html": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d",
+    "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+    "packages/javascript/examples/region-marks/sketch.js": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "catalog/operations/regular-grid.json": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
+    "catalog/operations/gradient-noise-2d-01.json": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+    "catalog/operations/cyclic-palette.json": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+    "catalog/operations/gradient-path.json": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "catalog/operations/seeded-endpoint-branches.json": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+    "fixtures/operations/regular-grid.json": "2913f45daccdd9e2094ad6988547e7625e409af122807bf1a274f9484da06175",
+    "fixtures/operations/gradient-noise-2d-01.json": "33f4bda581aba490ab1885ec44bb46578c798c47ee60fe0bac3fd761fae08ed3",
+    "fixtures/operations/cyclic-palette.json": "a4cdf6349ed5e204700964e14fc738cdf25dbd58abf486a277e3c173d0410881",
+    "fixtures/operations/gradient-path.json": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+    "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+    "fixtures/operations/seeded-endpoint-branches.json": "5368de8f8e268ac2f376a45f08d97e690a3192708b4d42a2b6d393894f88a13c",
+    "evidence/conformance/branch-marks-javascript-parity.json": "2419fd4c061cb2bcce0333b8aee71efb5dcdebe743044a46fa1be5738909686d",
+    "evidence/conformance/branch-marks-javascript-root-review.json": "47c810f06c05ee78a5cdddafe232b719ba570f82136693c464b8458c1d043fd1",
+    "evidence/conformance/branch-export-compatibility-review.json": "9e5e2e2da594792bc38328a724863ed4bda8e4f09246fb853ab34f82720205c2",
+    "evidence/conformance/branch-tree-javascript-root-review.json": "e18e96d5fffd422f5a1efb8085cd6b5913fd14803a2aaf57aea89ba29efbf729",
+    "evidence/conformance/branch-p5js-native-root-review.json": "117587e8b77c72a4ea11b402f174b49c3aa3ad3f15b2cf4de5707e01c37c0529",
+    "design/port-batch-04.md": "f317fa9e91293fd24657d494ee7414ca4fd3d8dabddf4971f6461e927c2acba9",
+    ".work/dist/retained-output2/builders/branch.mjs": "c43640da564eca91def8ffeec3a51a7fb41714ae3f5719dc4149da6f8f4b5ccf"
+  },
+  "accepted_operations": [
+    {
+      "id": "layout.regular-grid",
+      "module": "regular-grid.js",
+      "export": "regularGrid"
+    },
+    {
+      "id": "fields.gradient-noise-2d-01",
+      "module": "gradient-noise-2d-01.js",
+      "export": "gradientNoise2D01"
+    },
+    {
+      "id": "color.cyclic-palette",
+      "module": "cyclic-palette.js",
+      "export": "cyclicPalette"
+    },
+    {
+      "id": "paths.gradient-path",
+      "module": "gradient-path.js",
+      "export": "gradientPath2D"
+    },
+    {
+      "id": "sampling.ordered-circle-filter",
+      "module": "circle-placements.js",
+      "export": "orderedCircleFilter2D"
+    },
+    {
+      "id": "sampling.seeded-circle-placement",
+      "module": "circle-placements.js",
+      "export": "seededCirclePlacement2D"
+    },
+    {
+      "id": "layout.seeded-quadrant-partition",
+      "module": "quadrant-partition.js",
+      "export": "seededQuadrantPartition2D"
+    },
+    {
+      "id": "sampling.seeded-triangle-points",
+      "module": "triangle-points.js",
+      "export": "seededTrianglePoints2D"
+    },
+    {
+      "id": "sampling.triangle-coordinate-map",
+      "module": "triangle-points.js",
+      "export": "mapTriangleCoordinates2D"
+    },
+    {
+      "id": "topology.seeded-endpoint-branches-2d",
+      "module": "branch-tree.js",
+      "export": "seededEndpointBranches2D"
+    }
+  ],
+  "review_bindings": [
+    {
+      "path": "evidence/conformance/javascript-retained-output-export-successor.json",
+      "status": "accepted",
+      "owner": "root",
+      "reviewer": "root",
+      "bindings": {
+        "implementation_sha256": {
+          "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+          "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+          "tools/reviewed_export_extension.py": "6e80c1e797186611cfecbffab6f8e5f0e29e69d46ae76f336d76f1f28b2bfb16"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/javascript-retained-output-root-review.json": "6efddbbe64c73885734a99bea973cb031368b9f96acb09d4c66d00f661070587",
+          "evidence/conformance/javascript-retained-output-source-comparison.json": "08dc2e1312f29e7b203c19a081b3835c64d270264d12c7bf50774069f9f95b66"
+        }
+      }
+    },
+    {
+      "path": "evidence/conformance/javascript-retained-output-root-review.json",
+      "status": "accepted",
+      "owner": "root",
+      "reviewer": "root",
+      "bindings": {
+        "implementation_sha256": {
+          "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+          "tests/native/branch-tree-javascript.mjs": "ee355b81bfa5e6a35d165311c7a05410cf3c938b902edb21d9d91ae7378d0d47",
+          "packages/javascript/examples/branch-marks/sketch.js": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1",
+          "packages/javascript/examples/branch-marks/index.html": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70",
+          "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+          "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+          "tools/run_p5_branch_marks.mjs": "eb496324495b607f78767b053d2e57eea949652429c6d4662010d352cfb9a379",
+          "tests/native/branch-marks-browser.mjs": "8988ada4f7245861f66456f59bd9023ed3f6ccb275796a1def1ca9b650a4ecb4",
+          "design/capabilities/branch-marks-p5-acceptance.md": "4367888a0cf86b9cfb8f122dba4e095023b2e1932bbdad8eb4e81f7790f81c25",
+          "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+          "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17",
+          "packages/javascript/examples/grain-marks/index.html": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8",
+          "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+          "tools/run_p5_grain_marks.mjs": "7e3554ba3408725173c3912e3b3007896c9353170a23e348dd2a141cb0c53b5e",
+          "tests/native/grain-marks-browser.mjs": "8b0d0149f1740693bb55fdec395e9d93d47eb87fd94a1bd2134a63fe133f93ba",
+          "design/capabilities/grain-marks-p5-acceptance.md": "e662eb0e501033dbe8d1c6a1d39d7e2c84c1e309d2adef58640fa30fb8c5b03d",
+          "tests/native/retained-output-javascript.mjs": "67f462878be2d68c25b40d73754204df636cd6043bff277991b30b202d397b22",
+          "tests/native/triangle-points-javascript.mjs": "70c2448fff8e13df23205f48a87d0f82e9c47608ac8b56eef75429d241c02b05"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/branch-tree-javascript-root-review.json": "e18e96d5fffd422f5a1efb8085cd6b5913fd14803a2aaf57aea89ba29efbf729",
+          "evidence/conformance/branch-tree-javascript-output-correction.json": "0ac80acaca96b58d9ed5111849cbc798f41b08fe7235031784f42a6efd01dd13",
+          "evidence/conformance/branch-p5js-native-root-review.json": "117587e8b77c72a4ea11b402f174b49c3aa3ad3f15b2cf4de5707e01c37c0529",
+          "evidence/conformance/p5js-branch-marks.json": "3c2cfc59697216bfb884ac70b760cb4fe0101edc8073b97bd77b5280b78d95c9",
+          "evidence/conformance/branch-marks-javascript-root-review.json": "47c810f06c05ee78a5cdddafe232b719ba570f82136693c464b8458c1d043fd1",
+          "evidence/conformance/triangle-p5js-native-root-review.json": "4ea01a2b503c7f7a38ed77e023790c8eecbc84fb1136a8000808324f6dc336a0",
+          "evidence/conformance/triangle-points-javascript-output-correction.json": "29bc685cd72d8606fd5dcb9bb6303312f521b2640def4bb3c10205961c521349",
+          "evidence/conformance/p5js-grain-marks.json": "3f589362e2032ad1c97fe7505cd16ce3e3a86fc6d0daf89c46e86f73c4a97759",
+          "evidence/conformance/triangle-javascript-implementation-review.json": "fc58f4870b23e8f24726b0250bb3096587c7daae4d3cbebd102e1807c292f835",
+          "evidence/conformance/grain-marks-javascript-parity.json": "3a46d8e63d142d6dc6afdb0eb7a1cb618584d0b5b3a6d1bb8af3e26232f84d25",
+          "evidence/conformance/javascript-retained-output-correction.json": "ea0c64d929694c3045fdd5549be8db476ca94ec173d79da175cef78901f9648c",
+          "evidence/conformance/javascript-retained-output-source-comparison.json": "08dc2e1312f29e7b203c19a081b3835c64d270264d12c7bf50774069f9f95b66"
+        }
+      }
+    }
+  ],
+  "artifacts": {
+    "npm_tarball": {
+      "path": ".work/dist/retained-output2/branch/procedurals-javascript-0.6.1.tgz",
+      "sha256": "a095fccc06a22aec2dd2cd2195520b67f9f74fbdd1a11d70ea546bb8b2cb52c9",
+      "entries": [
+        {
+          "path": "LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "README.md",
+          "sha256": "030fc6ab22b78debbf12b8d44d0b2d7c79ddf138312ccef7163825c47cf19d45"
+        },
+        {
+          "path": "THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "examples/branch-marks/README.md",
+          "sha256": "befac22e2fc186dc3358d83645a35b33be5e638060ce33ac4e2c8f7a18960cc6"
+        },
+        {
+          "path": "examples/branch-marks/branch-marks.js",
+          "sha256": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780"
+        },
+        {
+          "path": "examples/branch-marks/index.html",
+          "sha256": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70"
+        },
+        {
+          "path": "examples/branch-marks/sketch.js",
+          "sha256": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1"
+        },
+        {
+          "path": "examples/field-marks/README.md",
+          "sha256": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27"
+        },
+        {
+          "path": "examples/field-marks/index.html",
+          "sha256": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d"
+        },
+        {
+          "path": "examples/field-marks/mark-field.js",
+          "sha256": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf"
+        },
+        {
+          "path": "examples/field-marks/sketch.js",
+          "sha256": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b"
+        },
+        {
+          "path": "examples/grain-marks/README.md",
+          "sha256": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381"
+        },
+        {
+          "path": "examples/grain-marks/grain-marks.js",
+          "sha256": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce"
+        },
+        {
+          "path": "examples/grain-marks/index.html",
+          "sha256": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8"
+        },
+        {
+          "path": "examples/grain-marks/sketch.js",
+          "sha256": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17"
+        },
+        {
+          "path": "examples/path-marks/README.md",
+          "sha256": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291"
+        },
+        {
+          "path": "examples/path-marks/index.html",
+          "sha256": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f"
+        },
+        {
+          "path": "examples/path-marks/path-marks.js",
+          "sha256": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743"
+        },
+        {
+          "path": "examples/path-marks/sketch.js",
+          "sha256": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473"
+        },
+        {
+          "path": "examples/placement-marks/README.md",
+          "sha256": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1"
+        },
+        {
+          "path": "examples/placement-marks/index.html",
+          "sha256": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318"
+        },
+        {
+          "path": "examples/placement-marks/placement-marks.js",
+          "sha256": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382"
+        },
+        {
+          "path": "examples/placement-marks/sketch.js",
+          "sha256": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c"
+        },
+        {
+          "path": "examples/region-marks/README.md",
+          "sha256": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010"
+        },
+        {
+          "path": "examples/region-marks/index.html",
+          "sha256": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d"
+        },
+        {
+          "path": "examples/region-marks/region-marks.js",
+          "sha256": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8"
+        },
+        {
+          "path": "examples/region-marks/sketch.js",
+          "sha256": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a"
+        },
+        {
+          "path": "package.json",
+          "sha256": "2391140c8bff3dfc9b94993dd56509464c6cbb643163e47aa91c457ee8808538"
+        },
+        {
+          "path": "src/branch-tree.js",
+          "sha256": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6"
+        },
+        {
+          "path": "src/circle-placements.js",
+          "sha256": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567"
+        },
+        {
+          "path": "src/cyclic-palette.js",
+          "sha256": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b"
+        },
+        {
+          "path": "src/gradient-noise-2d-01.js",
+          "sha256": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e"
+        },
+        {
+          "path": "src/gradient-path.js",
+          "sha256": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a"
+        },
+        {
+          "path": "src/index.js",
+          "sha256": "ef714f7681d94ad28ebd463e01a1636c608d366f80f6f8678ce48cb13a17f932"
+        },
+        {
+          "path": "src/internal/drawing-state.js",
+          "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+        },
+        {
+          "path": "src/internal/drawing.js",
+          "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+        },
+        {
+          "path": "src/internal/noise-hash.js",
+          "sha256": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6"
+        },
+        {
+          "path": "src/internal/p5-frame.js",
+          "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+        },
+        {
+          "path": "src/quadrant-partition.js",
+          "sha256": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f"
+        },
+        {
+          "path": "src/regular-grid.js",
+          "sha256": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278"
+        },
+        {
+          "path": "src/triangle-points.js",
+          "sha256": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290"
+        }
+      ]
+    },
+    "browser_starter_zip": {
+      "path": ".work/dist/retained-output2/branch/procedurals-branch-marks-browser-0.6.1.zip",
+      "sha256": "ec3e3772f10efb54ae6de6f03ad741d20dd726d072861a57781f3b1d26676f6b",
+      "entries": [
+        {
+          "path": "procedurals-branch-marks-browser/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "procedurals-branch-marks-browser/README.md",
+          "sha256": "047dd4afcaa25e1c4da9ad13f948c726828c5a70fdf8a8d9a80f8f02abeb34e1"
+        },
+        {
+          "path": "procedurals-branch-marks-browser/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "procedurals-branch-marks-browser/branch-marks.js",
+          "sha256": "e1f722919783f4e690f630121d2ed1678aea6ba3db01bcafc8523be95fb943f2"
+        },
+        {
+          "path": "procedurals-branch-marks-browser/index.html",
+          "sha256": "a995afc6b27bfaaa6b024fd31bb825a624e2b9f92d88d8ba4949bede6cff49f4"
+        },
+        {
+          "path": "procedurals-branch-marks-browser/package-lock.json",
+          "sha256": "01c45529ac6097792d6c643a2b29b6be547a491a04524cf8cfa59e0b18e0d6e9"
+        },
+        {
+          "path": "procedurals-branch-marks-browser/package.json",
+          "sha256": "162806d434c5c98fe890b104d89e8cc7401196a82e342c9b6026d4219857ffe4"
+        },
+        {
+          "path": "procedurals-branch-marks-browser/server.mjs",
+          "sha256": "f7fe9b8b5ee65fba785bd08bc898089ac3dc034321ea5d42e3ac3f30b73de3bd"
+        },
+        {
+          "path": "procedurals-branch-marks-browser/sketch.js",
+          "sha256": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1"
+        },
+        {
+          "path": "procedurals-branch-marks-browser/vendor/procedurals-javascript-0.6.1.tgz",
+          "sha256": "a095fccc06a22aec2dd2cd2195520b67f9f74fbdd1a11d70ea546bb8b2cb52c9"
+        }
+      ]
+    }
+  },
+  "installed_consumer": {
+    "branch_marks": {
+      "operations": [
+        "layout.regular-grid",
+        "fields.gradient-noise-2d-01",
+        "color.cyclic-palette",
+        "paths.gradient-path",
+        "sampling.ordered-circle-filter",
+        "sampling.seeded-circle-placement",
+        "layout.seeded-quadrant-partition",
+        "sampling.seeded-triangle-points",
+        "sampling.triangle-coordinate-map",
+        "topology.seeded-endpoint-branches-2d"
+      ],
+      "branch_export": true,
+      "branch_url": "file:///home/colin/dev/procedural/.work/dist/retained-output2/branch/build/procedurals-branch-marks-browser/node_modules/@procedurals/javascript/src/branch-tree.js",
+      "resolved": "file:///home/colin/dev/procedural/.work/dist/retained-output2/branch/build/procedurals-branch-marks-browser/node_modules/@procedurals/javascript/src/index.js",
+      "cases": [
+        "baseline",
+        "extended",
+        "narrowing",
+        "wider",
+        "binary",
+        "forest",
+        "forestextended",
+        "forestseed"
+      ],
+      "geometry_fingerprints": [
+        "4ba4fb84672c6cf27e187bf4f824f9a6d6108032e25b32ca82198bfae7ea5c88",
+        "f25166061313aa09d2201bc3f923e9954ee0954bd6f17eca8bb8cef1e7abd428",
+        "7dd990c12c503750c15ef54ad256cc0d5131307d20c36b1a4204620914d58c3d",
+        "c42fe88b097c82840284d4bd8fb356d99278f71a408e12f23bd58cc267929e5f",
+        "70890b1ee83a82d81560a31436ed45ba016f622732d65a7f5f0145a757822a82",
+        "4683c43a012b97e794a137160e65934b7194b2e8707cc557ba8295ec871bb5e0",
+        "97c2f8e5fca496da0b2b31fa1c86fb53767af99500f95b42f760a68909b8bc03",
+        "466312a5a3a8f0a3b4311123a675a4202702c4aa36ab037a2c93fdef197328f0"
+      ],
+      "source_geometry_fingerprints": [
+        "4ba4fb84672c6cf27e187bf4f824f9a6d6108032e25b32ca82198bfae7ea5c88",
+        "f25166061313aa09d2201bc3f923e9954ee0954bd6f17eca8bb8cef1e7abd428",
+        "7dd990c12c503750c15ef54ad256cc0d5131307d20c36b1a4204620914d58c3d",
+        "c42fe88b097c82840284d4bd8fb356d99278f71a408e12f23bd58cc267929e5f",
+        "70890b1ee83a82d81560a31436ed45ba016f622732d65a7f5f0145a757822a82",
+        "4683c43a012b97e794a137160e65934b7194b2e8707cc557ba8295ec871bb5e0",
+        "97c2f8e5fca496da0b2b31fa1c86fb53767af99500f95b42f760a68909b8bc03",
+        "466312a5a3a8f0a3b4311123a675a4202702c4aa36ab037a2c93fdef197328f0"
+      ]
+    },
+    "extracted_archive": {
+      "operations": [
+        "layout.regular-grid",
+        "fields.gradient-noise-2d-01",
+        "color.cyclic-palette",
+        "paths.gradient-path",
+        "sampling.ordered-circle-filter",
+        "sampling.seeded-circle-placement",
+        "layout.seeded-quadrant-partition",
+        "sampling.seeded-triangle-points",
+        "sampling.triangle-coordinate-map",
+        "topology.seeded-endpoint-branches-2d"
+      ],
+      "branch_export": true,
+      "branch_url": "file:///home/colin/dev/procedural/.work/dist/retained-output2/branch/build/archive-consumer/procedurals-branch-marks-browser/node_modules/@procedurals/javascript/src/branch-tree.js",
+      "resolved": "file:///home/colin/dev/procedural/.work/dist/retained-output2/branch/build/archive-consumer/procedurals-branch-marks-browser/node_modules/@procedurals/javascript/src/index.js",
+      "cases": [
+        "baseline",
+        "extended",
+        "narrowing",
+        "wider",
+        "binary",
+        "forest",
+        "forestextended",
+        "forestseed"
+      ],
+      "geometry_fingerprints": [
+        "4ba4fb84672c6cf27e187bf4f824f9a6d6108032e25b32ca82198bfae7ea5c88",
+        "f25166061313aa09d2201bc3f923e9954ee0954bd6f17eca8bb8cef1e7abd428",
+        "7dd990c12c503750c15ef54ad256cc0d5131307d20c36b1a4204620914d58c3d",
+        "c42fe88b097c82840284d4bd8fb356d99278f71a408e12f23bd58cc267929e5f",
+        "70890b1ee83a82d81560a31436ed45ba016f622732d65a7f5f0145a757822a82",
+        "4683c43a012b97e794a137160e65934b7194b2e8707cc557ba8295ec871bb5e0",
+        "97c2f8e5fca496da0b2b31fa1c86fb53767af99500f95b42f760a68909b8bc03",
+        "466312a5a3a8f0a3b4311123a675a4202702c4aa36ab037a2c93fdef197328f0"
+      ],
+      "source_geometry_fingerprints": [
+        "4ba4fb84672c6cf27e187bf4f824f9a6d6108032e25b32ca82198bfae7ea5c88",
+        "f25166061313aa09d2201bc3f923e9954ee0954bd6f17eca8bb8cef1e7abd428",
+        "7dd990c12c503750c15ef54ad256cc0d5131307d20c36b1a4204620914d58c3d",
+        "c42fe88b097c82840284d4bd8fb356d99278f71a408e12f23bd58cc267929e5f",
+        "70890b1ee83a82d81560a31436ed45ba016f622732d65a7f5f0145a757822a82",
+        "4683c43a012b97e794a137160e65934b7194b2e8707cc557ba8295ec871bb5e0",
+        "97c2f8e5fca496da0b2b31fa1c86fb53767af99500f95b42f760a68909b8bc03",
+        "466312a5a3a8f0a3b4311123a675a4202702c4aa36ab037a2c93fdef197328f0"
+      ]
+    },
+    "package_lock_sha256": "01c45529ac6097792d6c643a2b29b6be547a491a04524cf8cfa59e0b18e0d6e9",
+    "starter_rewrites": {
+      "index.html": {
+        "inserted": "<script type=\"importmap\">{\"imports\":{\"@procedurals/javascript\":\"/node_modules/@procedurals/javascript/src/index.js\",\"@procedurals/javascript/\":\"/node_modules/@procedurals/javascript/\"}}</script>"
+      },
+      "branch-marks.js": {
+        "from": [
+          "../../src/circle-placements.js",
+          "../../src/branch-tree.js"
+        ],
+        "to": "@procedurals/javascript"
+      },
+      "sketch.js": {
+        "byte_identical": true
+      }
+    }
+  },
+  "included_file_manifest": {
+    "staged_package": [
+      {
+        "path": "LICENSE",
+        "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+      },
+      {
+        "path": "README.md",
+        "sha256": "030fc6ab22b78debbf12b8d44d0b2d7c79ddf138312ccef7163825c47cf19d45"
+      },
+      {
+        "path": "THIRD_PARTY_NOTICES.md",
+        "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+      },
+      {
+        "path": "examples/branch-marks/README.md",
+        "sha256": "befac22e2fc186dc3358d83645a35b33be5e638060ce33ac4e2c8f7a18960cc6"
+      },
+      {
+        "path": "examples/branch-marks/branch-marks.js",
+        "sha256": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780"
+      },
+      {
+        "path": "examples/branch-marks/index.html",
+        "sha256": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70"
+      },
+      {
+        "path": "examples/branch-marks/sketch.js",
+        "sha256": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1"
+      },
+      {
+        "path": "examples/field-marks/README.md",
+        "sha256": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27"
+      },
+      {
+        "path": "examples/field-marks/index.html",
+        "sha256": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d"
+      },
+      {
+        "path": "examples/field-marks/mark-field.js",
+        "sha256": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf"
+      },
+      {
+        "path": "examples/field-marks/sketch.js",
+        "sha256": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b"
+      },
+      {
+        "path": "examples/grain-marks/README.md",
+        "sha256": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381"
+      },
+      {
+        "path": "examples/grain-marks/grain-marks.js",
+        "sha256": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce"
+      },
+      {
+        "path": "examples/grain-marks/index.html",
+        "sha256": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8"
+      },
+      {
+        "path": "examples/grain-marks/sketch.js",
+        "sha256": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17"
+      },
+      {
+        "path": "examples/path-marks/README.md",
+        "sha256": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291"
+      },
+      {
+        "path": "examples/path-marks/index.html",
+        "sha256": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f"
+      },
+      {
+        "path": "examples/path-marks/path-marks.js",
+        "sha256": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743"
+      },
+      {
+        "path": "examples/path-marks/sketch.js",
+        "sha256": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473"
+      },
+      {
+        "path": "examples/placement-marks/README.md",
+        "sha256": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1"
+      },
+      {
+        "path": "examples/placement-marks/index.html",
+        "sha256": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318"
+      },
+      {
+        "path": "examples/placement-marks/placement-marks.js",
+        "sha256": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382"
+      },
+      {
+        "path": "examples/placement-marks/sketch.js",
+        "sha256": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c"
+      },
+      {
+        "path": "examples/region-marks/README.md",
+        "sha256": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010"
+      },
+      {
+        "path": "examples/region-marks/index.html",
+        "sha256": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d"
+      },
+      {
+        "path": "examples/region-marks/region-marks.js",
+        "sha256": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8"
+      },
+      {
+        "path": "examples/region-marks/sketch.js",
+        "sha256": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a"
+      },
+      {
+        "path": "package.json",
+        "sha256": "2391140c8bff3dfc9b94993dd56509464c6cbb643163e47aa91c457ee8808538"
+      },
+      {
+        "path": "src/branch-tree.js",
+        "sha256": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6"
+      },
+      {
+        "path": "src/circle-placements.js",
+        "sha256": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567"
+      },
+      {
+        "path": "src/cyclic-palette.js",
+        "sha256": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b"
+      },
+      {
+        "path": "src/gradient-noise-2d-01.js",
+        "sha256": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e"
+      },
+      {
+        "path": "src/gradient-path.js",
+        "sha256": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a"
+      },
+      {
+        "path": "src/index.js",
+        "sha256": "ef714f7681d94ad28ebd463e01a1636c608d366f80f6f8678ce48cb13a17f932"
+      },
+      {
+        "path": "src/internal/drawing-state.js",
+        "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+      },
+      {
+        "path": "src/internal/drawing.js",
+        "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+      },
+      {
+        "path": "src/internal/noise-hash.js",
+        "sha256": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6"
+      },
+      {
+        "path": "src/internal/p5-frame.js",
+        "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+      },
+      {
+        "path": "src/quadrant-partition.js",
+        "sha256": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f"
+      },
+      {
+        "path": "src/regular-grid.js",
+        "sha256": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278"
+      },
+      {
+        "path": "src/triangle-points.js",
+        "sha256": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290"
+      }
+    ],
+    "starter": [
+      {
+        "path": "procedurals-branch-marks-browser/LICENSE",
+        "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+      },
+      {
+        "path": "procedurals-branch-marks-browser/README.md",
+        "sha256": "047dd4afcaa25e1c4da9ad13f948c726828c5a70fdf8a8d9a80f8f02abeb34e1"
+      },
+      {
+        "path": "procedurals-branch-marks-browser/THIRD_PARTY_NOTICES.md",
+        "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+      },
+      {
+        "path": "procedurals-branch-marks-browser/branch-marks.js",
+        "sha256": "e1f722919783f4e690f630121d2ed1678aea6ba3db01bcafc8523be95fb943f2"
+      },
+      {
+        "path": "procedurals-branch-marks-browser/index.html",
+        "sha256": "a995afc6b27bfaaa6b024fd31bb825a624e2b9f92d88d8ba4949bede6cff49f4"
+      },
+      {
+        "path": "procedurals-branch-marks-browser/package-lock.json",
+        "sha256": "01c45529ac6097792d6c643a2b29b6be547a491a04524cf8cfa59e0b18e0d6e9"
+      },
+      {
+        "path": "procedurals-branch-marks-browser/package.json",
+        "sha256": "162806d434c5c98fe890b104d89e8cc7401196a82e342c9b6026d4219857ffe4"
+      },
+      {
+        "path": "procedurals-branch-marks-browser/server.mjs",
+        "sha256": "f7fe9b8b5ee65fba785bd08bc898089ac3dc034321ea5d42e3ac3f30b73de3bd"
+      },
+      {
+        "path": "procedurals-branch-marks-browser/sketch.js",
+        "sha256": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1"
+      },
+      {
+        "path": "procedurals-branch-marks-browser/vendor/procedurals-javascript-0.6.1.tgz",
+        "sha256": "a095fccc06a22aec2dd2cd2195520b67f9f74fbdd1a11d70ea546bb8b2cb52c9"
+      }
+    ]
+  },
+  "environment": {
+    "node": "v22.22.1",
+    "npm": "9.2.0"
+  }
+}

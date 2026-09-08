@@ -1,0 +1,48 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "ProfileMarks JavaScript model and p5 WEBGL ten-state artist workflow. No package release, other-target support or original-sketch recreation acceptance.",
+  "implementation_sha256": {
+    "tools/run_p5_profile_marks.mjs": "d6c671e11f42bead9068548e68690caad79c8167d6d9817ad12e55e7b9a293a4",
+    "tests/native/profile-marks-browser.mjs": "400c4764faf80eb4d9b7161fed3c0655ead46a2fbc27b9d1163cab284b99693d",
+    "packages/javascript/examples/profile-marks/index.html": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867",
+    "packages/javascript/examples/profile-marks/sketch.js": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c",
+    "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+    "packages/javascript/examples/profile-marks/README.md": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "design/capabilities/profile-marks-port-boundary.md": "e1f1f12cb9a643606eedbb1c90088107ab1a421259b92b611333ecdd579292e7",
+    "design/capabilities/profile-marks-p5-acceptance.md": "f5ce3ed4643e933cf116a65b4a5ee5e9bcbfa559186388be1cf6b6ee87ad1eb5",
+    "tests/native/profile-marks-javascript.mjs": "b842223041af982b96ab58aa7bd63007536cae1b089ffb3b34363a36d6f21dd0",
+    "packages/java/examples/ProfileMarks/ProfileComposition.java": "634fc9b390c48e96ded5fd5c6e1152724d7bbb416eb10c02708cadf546324036",
+    "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+    "tools/diagnostics/cp7/profile_intervals.py": "2d4bb98c5bb2c52b9a45272463b8ca30062e8767e85d39f8f90dfa0f54430f6a",
+    "design/operations/cp7-profile-fixture-policy.md": "8e7ef08de5e1abb251de884634896b9c807b954431ebe62eb5a0213e5ecbaf7d"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/profile-marks-javascript-parity.json": "b3fd4672e83ee7cd02a839c5371779166a15e8f2889ff2f0a1f7e5eb5c781618",
+    "evidence/conformance/p5js-profile-marks.json": "ca430bbed379ae08748d978e35bdf35316f80a6a6b391ed13c9cc44185dfd12b",
+    "evidence/conformance/radial-profile-javascript-root-review.json": "4fc7de8cf59c9fc434b052babf8a2af159a49eda179a554623026284fda944c1"
+  },
+  "root_findings": [
+    "Root reviewed full example/model/probe/runner and corrected count-only model comparison, UI-only subdivision restriction, swatch substitution and drawing outside the p5 lifecycle before rendering.",
+    "Actual Java and JavaScript selected models have exact matching topology/metadata; positions and normals pass the existing CP7 interval policy. The model also accepts16 slices independently of the8/32 UI toggle.",
+    "Ten actual button-driven browser compositions passed expected counts and object-retention checks. Native drawing consumes supplied normals and package-native cyclic palette interpolation. Reset reproduces baseline pixels.",
+    "Trio and reset downloads match the respective acknowledged PNG; revisions9 and10 and retained geometry remain unchanged after save. Root viewed actual baseline, both-open and trio canvas screenshots: populated surfaces, visible open rim, facets, waist and pointed form.",
+    "Camera/lighting are explicit p5 workflow choices; this is scoped native technique validation, not Processing/p5 pixel identity."
+  ],
+  "reviewed_images": {
+    ".work/native/profile-marks-p5-2/baseline-display.png": "a49c3fa986046e0870894729e38f5c7dc09e83b6b004c4861d633ad8ef1d7f51",
+    ".work/native/profile-marks-p5-2/both-open-display.png": "08cab07b1b8cd1f1fc3da1c49451ec65dea5ba15b3d9499d21cbcdc341cc046a",
+    ".work/native/profile-marks-p5-2/trio-display.png": "47713c72df642de20542049505305b31dd34b36e13199f33ab69063c57e78e17"
+  },
+  "remaining": [
+    "Local JavaScript package and public export integration.",
+    "Python and Android profile ports.",
+    "Retained-output export-review bridge and corrected JavaScript package rebuild.",
+    "Four later operation ports and broader roadmap."
+  ]
+}
