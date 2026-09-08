@@ -1,5 +1,23 @@
 # Project state
 
+## CP17 private partition experiment reviewed — public contract next
+
+Root specified binary integer-cell layout semantics and reviewed corrected worker core,
+eight exact golden layouts, ten geometry/ownership scenarios and validation checks.
+Five native frames compare attempt counts20/80/240, longer-axis cuts and style transfer.
+Root inspected results and retains count plus RANDOM/LONGEST for contract preparation;
+see evidence/parameter-experiments/cp17-binary-partition/decision.md. No encouraged ranges.
+Private sources/tests are under tools/diagnostics/binarypartition, excluded from distribution.
+One PDE preprocessing failure was corrected before rendering; no native task remains live.
+
+Next record reviewed candidate extraction/remainders, freeze catalog/JSON fixtures and
+implement the public Java operation plus PanelMarks. Private prototype is not API acceptance.
+Remaining acceptance includes meaningful native key edits, unsaturated performance workload,
+packaging and root integration. Still19 accepted operations/19 workflows; ports/Sol paused.
+An independently appearing Android ProfileMarksActivity resume edit was left untouched and
+excluded from this checkpoint. Its implementation/validation status is unreviewed; do not
+infer port acceptance or discard it when continuing Java work.
+
 ## Java functionality refocus — CP17 selected for investigation
 
 Maintainer reiterated new Java functionality over port integration. Deferred work and the

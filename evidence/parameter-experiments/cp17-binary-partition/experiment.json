@@ -1,0 +1,50 @@
+{
+  "id": "cp17-binary-partition",
+  "status": "completed-private-investigation",
+  "question": "Do attempt count and the two source-supported axis policies produce useful editable panel layouts without adding continuous bias parameters?",
+  "decision": "retain-unbounded or internalize axis policy after visual review",
+  "hypothesis": "Attempt count changes panel granularity; longest-axis cuts reduce elongated panels relative to random-axis cuts. Saturation can make attempts fail and is not a request for a final leaf count.",
+  "source_sketches": [
+    "2018/Generativos/poop",
+    "2018/Generativos/barab"
+  ],
+  "note_sha256": {
+    "2018/Generativos/poop": "bcf627ff891884e6ead42010a58c0f48dd28ddf7078ad61e12c36bc13393e976",
+    "2018/Generativos/barab": "f2820be3c72bd3d76d34777182a0745010f6fcf163edf50b90e5deabfa62f3c9"
+  },
+  "specification": "design/capabilities/cp17-prototype-spec.md",
+  "baseline": {
+    "type": "independently specified private Java prototype",
+    "seed": 42,
+    "renderer": "JAVA2D",
+    "frame": 1,
+    "columns": 60,
+    "rows": 60,
+    "attempts": 80,
+    "policy": 0,
+    "decoration": 0
+  },
+  "variants": [
+    {
+      "attempts": 20
+    },
+    {
+      "attempts": 240
+    },
+    {
+      "policy": 1
+    },
+    {
+      "decoration": 1
+    }
+  ],
+  "comparison": "Same-seed native first frames, decoded pixel differences and root visual inspection; geometry equality on decoration transfer. No source-pixel equivalence claim.",
+  "decision_rule": "Retain attempt count if the tested layouts make distinct usable coarseness edits. Retain both axis choices only if both remain legible and structurally distinct. Do not recommend an interval from three samples; no default or new resource bound follows from this experiment.",
+  "constraints": [
+    "at most eight native attempts including failures",
+    "shared machine render lease",
+    "images and build outputs only under ignored .work",
+    "prototype excluded from released package"
+  ],
+  "results": "root-review.json"
+}

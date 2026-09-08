@@ -1,0 +1,48 @@
+{
+  "status": "private-investigation-reviewed-not-operation-acceptance",
+  "reviewer": "root",
+  "comparisons": [
+    {
+      "run": "count",
+      "variant": 0,
+      "mean_absolute_rgb_difference_0_1": 0.09849300449346404,
+      "changed_pixel_fraction": 0.3972998046875
+    },
+    {
+      "run": "count",
+      "variant": 2,
+      "mean_absolute_rgb_difference_0_1": 0.09355268969566993,
+      "changed_pixel_fraction": 0.32337646484375
+    },
+    {
+      "run": "longest",
+      "variant": 0,
+      "mean_absolute_rgb_difference_0_1": 0.14229910258374184,
+      "changed_pixel_fraction": 0.45512939453125
+    },
+    {
+      "run": "transfer",
+      "variant": 0,
+      "mean_absolute_rgb_difference_0_1": 0.15453776041666667,
+      "changed_pixel_fraction": 0.84275390625
+    }
+  ],
+  "core_checks": "8 ordered golden vectors; 10 geometry/ownership scenarios; validation and atomic output checks passed on final formatted source",
+  "sources": {
+    "tools/diagnostics/binarypartition/BinaryPartitionProbe.java": "4731e64183a2b2af04ececfd6525a9e14899d3a8407ecb35dbf0abc570ba9131",
+    "tools/diagnostics/binarypartition/BinaryPartitionCheck.java": "efffff3adeb927e5fa79933326fb14ff9fedd69b0a0355309c30304e1587e08f",
+    "tools/diagnostics/binarypartition/PanelStudy/PanelStudy.pde": "c23d58e574207a30c4c69ef44c89aaadf2b8a7363e102cf1c25c8bd189a46dac",
+    "design/capabilities/cp17-prototype-spec.md": "23556c3d0009b18ce85c89ff5347b00f4d024e956aae111ac6669d2dd975cd80"
+  },
+  "binding_note": "Native helper reports bind pre-format prototype snapshot. Root reviewed final formatting/added braces as behavior-preserving and reran exact core checks. PDE is identical to native snapshot. No public support attestation.",
+  "failed_attempts": [
+    {
+      "path": ".work/cp17-panels-count/report.json",
+      "stage": "PDE preprocessing before native execution",
+      "cause": "worker used Processing reserved color token as local variable",
+      "resolution": "renamed to swatch; fresh output directory, no overwrite"
+    }
+  ],
+  "native_frames": 5,
+  "native_review": "Root inspected count contact sheet, full longest-policy image and full transfer image."
+}
