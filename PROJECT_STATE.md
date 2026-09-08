@@ -1,5 +1,17 @@
 # Project state
 
+## GrainMarks p5 native workflow reviewed after point-render correction
+
+Native3 passes nine compositions, retained style edits, reset/quiet/cached-save equality
+and baseline raster-envelope check. Root inspected five representative images and verified
+all source/image hashes. Evidence: p5js-grain-marks.json and triangle-p5js-native-root-review.json.
+Attempts1/2 are preserved and not accepted: root found dot baseline clipped at x≈256.
+Pinned p5 point creates epsilon lines; explicit1px filled circles fix the example motif.
+This is a renderer choice, not a sampling/geometry change or Java pixel-identity claim.
+All three shared-lock runs terminal; no native process pending. No public exports or
+shared target attestations added yet. Next Python triangle core/workflow, then Android
+and batch public-export/package integration. Java remains15/15; seven fully ported ops.
+
 ## Triangle JavaScript core and GrainMarks model checkpoint
 
 Root reviewed/corrected Luna triangle module and runner: removed prevalidation O(N) copy

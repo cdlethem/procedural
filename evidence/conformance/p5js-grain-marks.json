@@ -1,0 +1,308 @@
+{
+  "status": "passed",
+  "scope": "GrainMarks p5.js browser workflow only; no release or support acceptance",
+  "input_sha256_before": {
+    "tools/run_p5_grain_marks.mjs": "7e3554ba3408725173c3912e3b3007896c9353170a23e348dd2a141cb0c53b5e",
+    "tests/native/grain-marks-browser.mjs": "8b0d0149f1740693bb55fdec395e9d93d47eb87fd94a1bd2134a63fe133f93ba",
+    "packages/javascript/examples/grain-marks/index.html": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8",
+    "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "packages/javascript/examples/grain-marks/README.md": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381",
+    "packages/javascript/src/triangle-points.js": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "design/capabilities/grain-marks-p5-acceptance.md": "e662eb0e501033dbe8d1c6a1d39d7e2c84c1e309d2adef58640fa30fb8c5b03d",
+    ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  },
+  "states": [
+    {
+      "id": "baseline",
+      "revision": 1,
+      "regions": 1,
+      "points": 15680,
+      "drawnMarks": 15680,
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 0,
+        "strokes": false,
+        "alternate": false,
+        "cells": false
+      },
+      "retained": false,
+      "sameGeometryAsBaseline": true,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "4c877f9ac24f8a98118362e53afda18d929c6840220ae4db1f169bc3fa860316",
+      "image": "baseline.png"
+    },
+    {
+      "id": "strokes",
+      "revision": 2,
+      "regions": 1,
+      "points": 15680,
+      "drawnMarks": 15680,
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 0,
+        "strokes": true,
+        "alternate": false,
+        "cells": false
+      },
+      "retained": true,
+      "sameGeometryAsBaseline": true,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "928b3f685a23d5048ecd349c183a59c82cd1d08f44fdc20e5bbe740aedbe83ad",
+      "image": "strokes.png"
+    },
+    {
+      "id": "colour",
+      "revision": 3,
+      "regions": 1,
+      "points": 15680,
+      "drawnMarks": 15680,
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 0,
+        "strokes": true,
+        "alternate": true,
+        "cells": false
+      },
+      "retained": true,
+      "sameGeometryAsBaseline": true,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "7c2e5c45f105634d3a131cc4cb31dab4a9fd8cf4f14b4c167b6cce3c2445738a",
+      "image": "colour.png"
+    },
+    {
+      "id": "bias1",
+      "revision": 4,
+      "regions": 1,
+      "points": 15680,
+      "drawnMarks": 15680,
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 1,
+        "strokes": true,
+        "alternate": true,
+        "cells": false
+      },
+      "retained": false,
+      "sameGeometryAsBaseline": false,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "789359f0db5e0bdca4ec006a46ab5881f3aff0cb13d1a54004636a8b453f5144",
+      "image": "bias1.png"
+    },
+    {
+      "id": "bias2",
+      "revision": 5,
+      "regions": 1,
+      "points": 15680,
+      "drawnMarks": 15680,
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 2,
+        "strokes": true,
+        "alternate": true,
+        "cells": false
+      },
+      "retained": false,
+      "sameGeometryAsBaseline": false,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "846d9c8a02011281718b66617ef73ee812fd930c9a3090ba8ae91c3025f1ac2c",
+      "image": "bias2.png"
+    },
+    {
+      "id": "density",
+      "revision": 6,
+      "regions": 1,
+      "points": 31360,
+      "drawnMarks": 31360,
+      "settings": {
+        "seed": 42,
+        "density": 0.2,
+        "distribution": 2,
+        "strokes": true,
+        "alternate": true,
+        "cells": false
+      },
+      "retained": false,
+      "sameGeometryAsBaseline": false,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "ea4275af21a01e581a81e873f6f2ce67509a473c87b7fefffd62fc92481f5a3d"
+    },
+    {
+      "id": "seed",
+      "revision": 7,
+      "regions": 1,
+      "points": 31360,
+      "drawnMarks": 31360,
+      "settings": {
+        "seed": 43,
+        "density": 0.2,
+        "distribution": 2,
+        "strokes": true,
+        "alternate": true,
+        "cells": false
+      },
+      "retained": false,
+      "sameGeometryAsBaseline": false,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "fa6b9f465f52f661b6bf28c05d2b512a5c000b464648e69b8382ebb2a0332030"
+    },
+    {
+      "id": "cells",
+      "revision": 8,
+      "regions": 26,
+      "points": 81920,
+      "drawnMarks": 81920,
+      "settings": {
+        "seed": 43,
+        "density": 0.2,
+        "distribution": 2,
+        "strokes": true,
+        "alternate": true,
+        "cells": true
+      },
+      "retained": false,
+      "sameGeometryAsBaseline": false,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "adef3c8779051c4098c1c0397e3653b221a1f823f251d7b4a0cd8318cacf0c2b",
+      "image": "cells.png"
+    },
+    {
+      "id": "reset",
+      "revision": 9,
+      "regions": 1,
+      "points": 15680,
+      "drawnMarks": 15680,
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 0,
+        "strokes": false,
+        "alternate": false,
+        "cells": false
+      },
+      "retained": false,
+      "sameGeometryAsBaseline": true,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "4c877f9ac24f8a98118362e53afda18d929c6840220ae4db1f169bc3fa860316",
+      "image": "reset.png"
+    },
+    {
+      "id": "quiet",
+      "revision": 9,
+      "regions": 1,
+      "points": 15680,
+      "drawnMarks": 15680,
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 0,
+        "strokes": false,
+        "alternate": false,
+        "cells": false
+      },
+      "retained": true,
+      "sameGeometryAsBaseline": true,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "4c877f9ac24f8a98118362e53afda18d929c6840220ae4db1f169bc3fa860316"
+    },
+    {
+      "id": "save",
+      "revision": 9,
+      "regions": 1,
+      "points": 15680,
+      "drawnMarks": 15680,
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 0,
+        "strokes": false,
+        "alternate": false,
+        "cells": false
+      },
+      "retained": true,
+      "sameGeometryAsBaseline": true,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "4c877f9ac24f8a98118362e53afda18d929c6840220ae4db1f169bc3fa860316"
+    }
+  ],
+  "errors": [],
+  "browser": "153.0.8010.12",
+  "browser_executable_sha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e",
+  "p5": "2.3.2",
+  "baseline_envelope": {
+    "expected": [
+      42.40926799072996,
+      43.81856927190938,
+      597.7827230860719,
+      599.9845428426659
+    ],
+    "actual": [
+      41,
+      43,
+      598,
+      600
+    ],
+    "tolerance_pixels": 2
+  },
+  "saved_png_sha256": "4c877f9ac24f8a98118362e53afda18d929c6840220ae4db1f169bc3fa860316",
+  "quiet_delay_ms": 250,
+  "input_sha256_after": {
+    "tools/run_p5_grain_marks.mjs": "7e3554ba3408725173c3912e3b3007896c9353170a23e348dd2a141cb0c53b5e",
+    "tests/native/grain-marks-browser.mjs": "8b0d0149f1740693bb55fdec395e9d93d47eb87fd94a1bd2134a63fe133f93ba",
+    "packages/javascript/examples/grain-marks/index.html": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8",
+    "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "packages/javascript/examples/grain-marks/README.md": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381",
+    "packages/javascript/src/triangle-points.js": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "design/capabilities/grain-marks-p5-acceptance.md": "e662eb0e501033dbe8d1c6a1d39d7e2c84c1e309d2adef58640fa30fb8c5b03d",
+    ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  },
+  "prior_attempts": [
+    {
+      "path": ".work/reproductions/p5js-grain-marks-native1",
+      "result_sha256": "43bb96de394d1e0e751a660d10e8783eadbe377bff82963681d3d63a727d4d8a",
+      "root_status": "not-accepted",
+      "reason": "Palette assertion defect and visually truncated point baseline."
+    },
+    {
+      "path": ".work/reproductions/p5js-grain-marks-native2",
+      "result_sha256": "a7cc73137649cf65e7e06fb8bd9e1550322a6b06d64a6c1a25fa898d8b3a9922",
+      "root_status": "not-accepted",
+      "reason": "Root rejected truncated point baseline despite runner pass; corrected motif and added raster envelope check before native3."
+    }
+  ]
+}

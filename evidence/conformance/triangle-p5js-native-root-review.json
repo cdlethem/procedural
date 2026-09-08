@@ -1,0 +1,30 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Scoped GrainMarks p5.js2.3.2/Chromium153 native workflow using reviewed triangle core. Public exports, shared support attestations and distribution remain pending.",
+  "implementation_sha256": {
+    "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17",
+    "packages/javascript/examples/grain-marks/index.html": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "packages/javascript/src/triangle-points.js": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044",
+    "tools/run_p5_grain_marks.mjs": "7e3554ba3408725173c3912e3b3007896c9353170a23e348dd2a141cb0c53b5e",
+    "tests/native/grain-marks-browser.mjs": "8b0d0149f1740693bb55fdec395e9d93d47eb87fd94a1bd2134a63fe133f93ba",
+    "design/capabilities/grain-marks-p5-acceptance.md": "e662eb0e501033dbe8d1c6a1d39d7e2c84c1e309d2adef58640fa30fb8c5b03d"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/p5js-grain-marks.json": "3f589362e2032ad1c97fe7505cd16ce3e3a86fc6d0daf89c46e86f73c4a97759",
+    "evidence/conformance/triangle-javascript-implementation-review.json": "fc58f4870b23e8f24726b0250bb3096587c7daae4d3cbebd102e1807c292f835",
+    "evidence/conformance/grain-marks-javascript-parity.json": "3a46d8e63d142d6dc6afdb0eb7a1cb618584d0b5b3a6d1bb8af3e26232f84d25"
+  },
+  "findings": [
+    "Root inspected corrected baseline, strokes, both biased-coordinate images and26-triangle transfer. Uniform dots cover the triangle; concentration changes and retained style edits are visible.",
+    "Nine compositions plus quiet unknown-key/save observations pass. Geometry identity is retained for style/save; reset matches baseline bytes; saved PNG matches displayed canvas; native raster envelope lies within2px of retained-point extrema.",
+    "Root verified every native input/image hash. Prior two attempts are preserved and explicitly not accepted. The corrected180s runner ran under240s shared machine lease and completed with cleanup.",
+    "The p5 point implementation constructs epsilon lines; cutoff was observed in native2. Explicit1px filled-circle motif in native3 corrects coverage. Exact browser-internal rounding cause remains an inference."
+  ],
+  "limits": [
+    "No original-sketch or Java pixel-identity claim. Dot motif is an explicit target renderer choice; retained composition parity is independently bit-exact.",
+    "Automated browser events, not a human usability study. Python/Android triangle ports, exports and package acceptance remain pending."
+  ]
+}
