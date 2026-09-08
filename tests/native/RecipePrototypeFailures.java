@@ -64,6 +64,28 @@ public final class RecipePrototypeFailures {
         failure(placementRecipe(overflow),work,"LIMIT_WORK");
         System.out.println("placement-budgets-and-native-errors passed");
     }
+    @SuppressWarnings("unchecked") static Map<String,Object> obj(Object value) { return (Map<String,Object>)value; }
+    static Map<String,Object> triangleRecipe(int count) {
+        return operationRecipe("sampling.seeded-triangle-points-2d",map("kind","construct",
+                "operation","sampling.seeded-triangle-points-2d","input",literal(map(
+                "seed",42,"count",count,"triangle",list(list(0,0),list(1,0),list(0,1))))));
+    }
+    static void triangleAdmission() {
+        RecipeEvaluator.evaluate(triangleRecipe(0),new RecipeEvaluator.Limits());
+        RecipeEvaluator.Limits packed=new RecipeEvaluator.Limits();packed.arrayLength=100;
+        failure(triangleRecipe(64),packed,"LIMIT_ARRAY_LENGTH");
+        RecipeEvaluator.Limits work=new RecipeEvaluator.Limits();work.work=1000;
+        failure(triangleRecipe(64),work,"LIMIT_WORK");
+        RecipeEvaluator.Limits units=new RecipeEvaluator.Limits();units.valueUnits=100;
+        failure(triangleRecipe(64),units,"LIMIT_VALUE_UNITS");
+        // The representational ceiling must fail before attempting a multi-gigabyte allocation.
+        failure(triangleRecipe(1073741823),new RecipeEvaluator.Limits(),"LIMIT_ARRAY_LENGTH");
+        Map<String,Object> malformed=triangleRecipe(0);
+        Map<String,Object> construct=obj(obj(((List<?>)malformed.get("retain")).get(0)).get("value"));
+        obj(obj(construct.get("input")).get("value")).put("triangle",list(list(0,0),list(1,0),list(0)));
+        failure(malformed,new RecipeEvaluator.Limits(),"INPUT_SCHEMA");
+        System.out.println("triangle-packed-capacity-and-schema passed");
+    }
     static Map<String,Object> partitionInput(int replacements) {
         return map("seed",42,"replacements",replacements,"origin",list(32,32),"extent",list(576,576),"selectionFraction",0.5);
     }
@@ -320,6 +342,7 @@ public final class RecipePrototypeFailures {
         structuralAdmission();
         placementAdmission();
         partitionAdmission();
+        triangleAdmission();
         System.out.println("PROTOTYPE_FAILURE_CASES_PASSED");
     }
 }

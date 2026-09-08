@@ -1,7 +1,7 @@
 # Java recipe evaluator prototype
 
 This directory is outside the accepted Java library and source-bundle manifest. It is an
-implementation experiment for the draft composition model and six reviewed immutable
+implementation experiment for the draft composition model and seven reviewed immutable
 operations, not an accepted executor, exporter or target support attestation.
 
 `RecipeEvaluator.evaluate(recipe, limits)` consumes an in-memory Map and performs bounded structural and lexical
@@ -25,8 +25,8 @@ accurate heap limit. Elapsed time is a supervised safeguard, not a deterministic
 
 ## Current evidence
 
-The established runner serializes and reparses both draft recipes, then compares actual
-Java output across twenty-three FieldMarks/PathMarks/placement-bars/region-panels baseline/edit scenarios, comparing both fresh and session
+The established runner serializes and reparses five draft recipes, then compares actual
+Java output across thirty FieldMarks/PathMarks/placement-bars/region-panels/triangle-grain baseline/edit scenarios, comparing both fresh and session
 execution. FieldMarks covers
 length, palette and segment/quad edits. PathMarks compares the existing `streamForCanvas`
 workflow with explicit recipe visibility predicates; it is not a general clipping operation.

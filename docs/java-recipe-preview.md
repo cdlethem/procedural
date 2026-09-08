@@ -79,3 +79,11 @@ For hierarchical colored panels, export `design/recipes/examples/region-panels.d
 `replacements` changes subdivision count; `seed` changes the arrangement. `insetFraction`
 and `colors` change painting while the direct Session retains the partition. As with the
 other snapshots, standalone edits rebuild into a fresh output directory.
+
+For grain within a supplied triangle, the draft
+`design/recipes/examples/triangle-grain.draft.json` exposes `triangle` (three ordered
+vertices) and `count` (an explicit point count). `markLength`, `strokeWidth` and `colors`
+control the marks independently of sampling. There is no automatic area-to-count rule;
+these settings are example choices. The direct Session can retain points during style
+edits; standalone exports still rebuild. The default and longer-mark/alternate-palette exports have scoped native preview evidence
+in `evidence/distribution/recipe-triangle-preview.json`.

@@ -1,6 +1,6 @@
 {
   "status": "draft",
-  "scope": "Six immutable operation binding proposals for field, path and placement compositions; no accepted executor claim. Contract schema pointers remain authoritative. Native binding strings are review notation, never reflective execution.",
+  "scope": "Seven immutable operation binding proposals including triangle compositions; no accepted executor claim. Contract schema pointers remain authoritative. Native binding strings are review notation, never reflective execution.",
   "operations": [
     {
       "id": "layout.regular-grid",
@@ -94,6 +94,19 @@
       "values_output": "/output_schema",
       "java_binding_proposal": {
         "construct": "QuadrantPartition2D.generate(input)",
+        "values": "instance.toValues()"
+      },
+      "ports": {}
+    },
+    {
+      "id": "sampling.seeded-triangle-points-2d",
+      "version": "0.1.0",
+      "contract": "catalog/operations/seeded-triangle-points.json",
+      "contract_sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+      "construct_input": "/input_schema",
+      "values_output": "/output_schema",
+      "java_binding_proposal": {
+        "construct": "TrianglePoints2D.seeded(input)",
         "values": "instance.toValues()"
       },
       "ports": {}

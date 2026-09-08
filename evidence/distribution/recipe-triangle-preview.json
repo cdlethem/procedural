@@ -1,0 +1,456 @@
+{
+  "status": "prototype-native-cases-passed",
+  "reviewer": "root",
+  "scope": "Fifth recipe composition using an existing accepted Java operation. Seven bindings; no new package operation, accepted starter or original-sketch recreation. General executor/exporter acceptance remains pending.",
+  "recipe": {
+    "path": "design/recipes/examples/triangle-grain.draft.json",
+    "sha256": "b256573a9fca6a1dcd98fa73174b8393ef590d62cb7623c6808f8bafb628f5b7"
+  },
+  "design": {
+    "path": "design/recipes/triangle-grain-binding.md",
+    "sha256": "d7be612f94bcac367c3283a13017832ff550bb53a33fffacc90ce681655c38e0"
+  },
+  "command_evidence_sha256": "b9e4e94636c9e0ab7cd336e0e8e5681829e1bc0fe8f516e1326722621978e7ff",
+  "export_manifest_sha256": "bf742bfce6858f5feebf033711483979163d1879ef450a38c05d54f032eb717c",
+  "export_manifest": {
+    "files": {
+      "README.md": "1c347b6eaa641ee3f50c4e672cdc8298f875e05a7e35ab00588885af89ea6182",
+      "build.py": "eabbd666e84806a61d3d5d068d951a389f8b08c9c6163dcb679c8d94874bd795",
+      "metadata/LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+      "metadata/THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+      "metadata/catalog/drawing/fresh-raster-2d.json": "8fd5d39bb1196d689aa8ca7a88e9f22bb75987c23bc8716e0fe00493b0432346",
+      "metadata/catalog/operations/cyclic-palette.json": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+      "metadata/catalog/operations/gradient-noise-2d-01.json": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+      "metadata/catalog/operations/gradient-path.json": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+      "metadata/catalog/operations/regular-grid.json": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
+      "metadata/catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+      "metadata/catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+      "metadata/catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+      "metadata/catalog/recipes/execution-bindings.json": "7d58cb8b075ff1bde5cc1855cf4dd750f7e99672193ed077cba9e58d9efa7e56",
+      "metadata/catalog/recipes/recipe.schema.json": "935c9f28c832da5931d3ed74d3707f0d1a69b5878ed9d98725d151d656a1529f",
+      "metadata/evidence/distribution/line-pool-review.json": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee",
+      "metadata/packages/java/source-bundle.json": "bdb82e0c1d2f86e1d3b6b14cd4f321d7017796c7d8a687565b410912ded80cb8",
+      "recipe.json": "07194fcea31e0690261b3d1e6db3074df92a6e4fdab60c7e102db75ba0f51fd6",
+      "src/RecipeExport.java": "906379046f5eb9c83ca9c476bbca2a65f08d5c5d70d0835b4643a3cb30a02a0c",
+      "src/RecipeExportData.java": "88ee370587ad1d4af8303d5e081db02df8f1f7c6c789d055639dce1366b532e6",
+      "src/adapter/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
+      "src/core/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+      "src/core/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+      "src/core/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+      "src/core/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+      "src/core/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+      "src/core/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+      "src/core/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+      "src/core/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+      "src/core/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+      "src/core/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+      "src/core/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+      "src/core/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+      "src/core/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+      "src/core/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+      "src/core/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+      "src/prototype/org/procedurals/recipe/RecipeEvaluator.java": "5428cd0a0a96168f0ce1bdb4ff8f0fc034015c68778fc16e49e289ce4de306e1",
+      "src/prototype/org/procedurals/recipe/RecipeGrammar.java": "8bdf2db70d79aa58798966dbeec1448a403acb31447fb543148062d5f1004ec7",
+      "src/prototype/org/procedurals/recipe/RecipeInputValidation.java": "914b5569bd6b072c48d34c4418d36a79d0ef601cf75a5ee828bbf48607e63a36",
+      "src/prototype/org/procedurals/recipe/RecipeRetainedKey.java": "2847d6476ed5d2ea2bdcf40558b18ea7c3a4be46f37ac6e7a78b60c3eb756d85",
+      "src/prototype/org/procedurals/recipe/RecipeSchemas.java": "5948e6426ac59363fed66a14da498b2e8902f78efa8705601b4ed5d1318fad88",
+      "src/prototype/org/procedurals/recipe/RecipeStructureValidation.java": "760d5fe2f693781558488adea31c300d8e1e920e178053039c36cd7702c3a835"
+    },
+    "java_sources": [
+      "src/RecipeExport.java",
+      "src/RecipeExportData.java",
+      "src/adapter/org/procedurals/processing/internal/Java2DFrame.java",
+      "src/core/org/procedurals/color/CyclicPalette.java",
+      "src/core/org/procedurals/fields/GradientNoise2D01.java",
+      "src/core/org/procedurals/internal/DrawingFrameState.java",
+      "src/core/org/procedurals/internal/DrawingValues.java",
+      "src/core/org/procedurals/layout/QuadrantPartition2D.java",
+      "src/core/org/procedurals/layout/RegularGrid.java",
+      "src/core/org/procedurals/mesh/RadialProfile3D.java",
+      "src/core/org/procedurals/motion/TargetSprings2D.java",
+      "src/core/org/procedurals/paths/GradientPath2D.java",
+      "src/core/org/procedurals/paths/OccupiedLatticePaths2D.java",
+      "src/core/org/procedurals/sampling/CirclePlacements2D.java",
+      "src/core/org/procedurals/sampling/TrianglePoints2D.java",
+      "src/core/org/procedurals/topology/BranchTree2D.java",
+      "src/core/org/procedurals/topology/Delaunay2D.java",
+      "src/core/org/procedurals/topology/LinePool2D.java",
+      "src/prototype/org/procedurals/recipe/RecipeEvaluator.java",
+      "src/prototype/org/procedurals/recipe/RecipeGrammar.java",
+      "src/prototype/org/procedurals/recipe/RecipeInputValidation.java",
+      "src/prototype/org/procedurals/recipe/RecipeRetainedKey.java",
+      "src/prototype/org/procedurals/recipe/RecipeSchemas.java",
+      "src/prototype/org/procedurals/recipe/RecipeStructureValidation.java"
+    ],
+    "parameters": {
+      "default_canonical_sha256": "7431aa924f619459197a84908ed28d8707f99de4c992210cba4eef368e67d229",
+      "default_file_sha256": "9e764bb9ac27d9faa5b3d790e169935704aa3463b620514722536ea116d214c8",
+      "path": "parameters.json",
+      "sealed": false
+    },
+    "processing_core_sha256": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "provenance": {
+      "encode_recipe_source_sha256": "035ded2f0390c45397b3a71e110183cccea263ffc9b6b0487f0ee61c45cb503c",
+      "exporter_sha256": "46c18fc5f41f924ec1904ca43435699d903ed53ee2969cef4e3ed6ced88c4665",
+      "schema_generator_sha256": "66cbac6fabfaaed7a4b96fe9707ffa7617af9ce2ac7a313fd1743776537cfc47",
+      "source_revision": "31ce00b96ab1831933e014fc805b2355f0b22e99"
+    },
+    "status": "prototype-unaccepted",
+    "target_admission": {
+      "operations": [
+        {
+          "dimensions": {
+            "core": {
+              "acceptance_review": {
+                "path": "evidence/distribution/cp5-review.json",
+                "sha256": "e69694606a70473ea567dc4bc1355e3b0fd23e3349a3df06df88419b8f7bd421"
+              },
+              "evidence_predicates": [
+                {
+                  "equals": "passed",
+                  "path": "evidence/conformance/triangle-points-java.json",
+                  "pointer": "/vectors/status"
+                },
+                {
+                  "equals": 59,
+                  "path": "evidence/conformance/triangle-points-java.json",
+                  "pointer": "/vectors/fixture_cases"
+                },
+                {
+                  "equals": "passed",
+                  "path": "evidence/conformance/triangle-points-java.json",
+                  "pointer": "/native/status"
+                }
+              ],
+              "evidence_sha256": {
+                "evidence/conformance/triangle-points-java.json": "a62c4566f4c2594b38b06ae89363998e6b8ef7edc6c3d43115a3a64e3c08a494",
+                "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e"
+              },
+              "implementation_sha256": {
+                "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7"
+              },
+              "runtime_profile": {
+                "name": "OpenJDK17.0.20.1; Java8 strictfp core; Processing4.5.6 JAVA2D",
+                "scope": "Java exact fixtures, ownership/access and bounded workload observations."
+              },
+              "status": "conformant"
+            },
+            "native": {
+              "acceptance_review": {
+                "path": "evidence/distribution/cp5-review.json",
+                "sha256": "e69694606a70473ea567dc4bc1355e3b0fd23e3349a3df06df88419b8f7bd421"
+              },
+              "evidence_predicates": [
+                {
+                  "equals": "passed",
+                  "path": "evidence/reproductions/cp5-java2d/pde-result.json",
+                  "pointer": "/status"
+                },
+                {
+                  "equals": 15,
+                  "path": "evidence/reproductions/cp5-java2d/pde-result.json",
+                  "pointer": "/native/compositions"
+                },
+                {
+                  "equals": "passed",
+                  "path": "evidence/distribution/cp5-java.json",
+                  "pointer": "/status"
+                }
+              ],
+              "evidence_sha256": {
+                "evidence/distribution/cp5-java.json": "c84b17cfdf650f9052761e90c8f679ab81d187ffd3e91d07ff8dd52c5ae84ea8",
+                "evidence/reproductions/cp5-java2d/pde-result.json": "ff6045bd0733e66b56cdbaa8a207effd147fd5e183df37c710d57221a5d2df48"
+              },
+              "implementation_sha256": {
+                "packages/java-processing/examples/GrainMarks/GrainMarks.pde": "ea025f34174d525976c2b4ad05b528d3c1eec8a4eb63aed5c8374b90582cecdf",
+                "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+                "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7"
+              },
+              "runtime_profile": {
+                "name": "OpenJDK17.0.20.1; Java8 strictfp core; Processing4.5.6 JAVA2D",
+                "scope": "Installed local0.5.0 JAVA2D GrainMarks,640x640 density1; edits and displayed save."
+              },
+              "status": "validated-scoped"
+            },
+            "technique": {
+              "acceptance_review": {
+                "path": "evidence/distribution/cp5-review.json",
+                "sha256": "e69694606a70473ea567dc4bc1355e3b0fd23e3349a3df06df88419b8f7bd421"
+              },
+              "evidence_predicates": [
+                {
+                  "equals": "accepted",
+                  "path": "evidence/reproductions/cp5-java2d/root-review.json",
+                  "pointer": "/visual_review/status"
+                },
+                {
+                  "equals": true,
+                  "path": "evidence/reproductions/cp5-java2d/pde-result.json",
+                  "pointer": "/native/cell_transfer"
+                }
+              ],
+              "evidence_sha256": {
+                "evidence/reproductions/cp5-java2d/pde-result.json": "ff6045bd0733e66b56cdbaa8a207effd147fd5e183df37c710d57221a5d2df48",
+                "evidence/reproductions/cp5-java2d/root-review.json": "8064db7220db3204312858d4e617b6b8a4d223e09f3970a0c7061cd0cc65affe"
+              },
+              "implementation_sha256": {
+                "packages/java-processing/examples/GrainMarks/GrainMarks.pde": "ea025f34174d525976c2b4ad05b528d3c1eec8a4eb63aed5c8374b90582cecdf",
+                "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+                "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7"
+              },
+              "runtime_profile": {
+                "name": "OpenJDK17.0.20.1; Java8 strictfp core; Processing4.5.6 JAVA2D",
+                "scope": "Root-inspected supplied-triangle grain and cell transfer; distribution and style substitution, no source-pixel claim."
+              },
+              "status": "validated-scoped"
+            }
+          },
+          "operation": {
+            "catalog_path": "catalog/operations/seeded-triangle-points.json",
+            "catalog_sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+            "id": "sampling.seeded-triangle-points-2d",
+            "version": "0.1.0"
+          },
+          "target": "processing-java"
+        },
+        {
+          "dimensions": {
+            "core": {
+              "acceptance_review": {
+                "path": "evidence/reproductions/cp2-java2d/review.json",
+                "sha256": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f"
+              },
+              "evidence_predicates": [
+                {
+                  "equals": "color.cyclic-palette",
+                  "path": "evidence/conformance/cyclic-palette.json",
+                  "pointer": "/operation"
+                },
+                {
+                  "equals": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+                  "path": "evidence/conformance/cyclic-palette.json",
+                  "pointer": "/contract_sha256"
+                },
+                {
+                  "equals": "a4cdf6349ed5e204700964e14fc738cdf25dbd58abf486a277e3c173d0410881",
+                  "path": "evidence/conformance/cyclic-palette.json",
+                  "pointer": "/fixture_sha256"
+                },
+                {
+                  "equals": true,
+                  "path": "evidence/conformance/cyclic-palette.json",
+                  "pointer": "/results/java/native_checks_passed"
+                }
+              ],
+              "evidence_sha256": {
+                "evidence/conformance/cyclic-palette.json": "6afccd220ce9385d7a4d8262984a44a03588a1eb14146deaa487c00404ffc8fe",
+                "fixtures/operations/cyclic-palette.json": "a4cdf6349ed5e204700964e14fc738cdf25dbd58abf486a277e3c173d0410881"
+              },
+              "implementation_sha256": {
+                "packages/java-processing/examples/PathMarks/PathMarks.pde": "d3bc9311cc0161644657e0243498dc10d98ebba2688714c679650173a9d15a15",
+                "packages/java-processing/examples/PathMarks/PathMarksCanvas.java": "4190d0f07f48b10b916e5a499ca8a8afbd9c54a35e94066d07dfe1b23f5ce62d",
+                "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
+                "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
+                "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+                "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+                "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+                "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+                "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+                "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52"
+              },
+              "runtime_profile": {
+                "name": "Host OpenJDK 17.0.20.1+1",
+                "scope": "Operation-specific shared fixtures and Java host checks on the recorded JDK; native Processing integration is separately attested."
+              },
+              "status": "conformant"
+            },
+            "native": {
+              "acceptance_review": {
+                "path": "evidence/reproductions/cp2-java2d/review.json",
+                "sha256": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f"
+              },
+              "evidence_predicates": [
+                {
+                  "equals": "passed",
+                  "path": "evidence/reproductions/cp2-java2d/pde-visible-result.json",
+                  "pointer": "/status"
+                }
+              ],
+              "evidence_sha256": {
+                "evidence/reproductions/cp2-java2d/pde-visible-result.json": "c7ba13095426622e8dfe81d4f472d57f08fd5a6ddcae2bf201cbadfc13df3e92",
+                "evidence/reproductions/cp2-java2d/review.json": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f"
+              },
+              "implementation_sha256": {
+                "packages/java-processing/examples/PathMarks/PathMarks.pde": "d3bc9311cc0161644657e0243498dc10d98ebba2688714c679650173a9d15a15",
+                "packages/java-processing/examples/PathMarks/PathMarksCanvas.java": "4190d0f07f48b10b916e5a499ca8a8afbd9c54a35e94066d07dfe1b23f5ce62d",
+                "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
+                "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
+                "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+                "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+                "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+                "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+                "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+                "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52"
+              },
+              "runtime_profile": {
+                "name": "Processing 4.5.6 JAVA2D; JDK17 core",
+                "scope": "Actual editable PathMarks example and cached save on the recorded runtime; no physical-device or general renderer certification."
+              },
+              "status": "validated-scoped"
+            },
+            "technique": {
+              "acceptance_review": {
+                "path": "evidence/reproductions/cp2-java2d/review.json",
+                "sha256": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f"
+              },
+              "evidence_predicates": [
+                {
+                  "equals": "accepted",
+                  "path": "evidence/reproductions/cp2-java2d/review.json",
+                  "pointer": "/status"
+                }
+              ],
+              "evidence_sha256": {
+                "evidence/reproductions/cp2-java2d/review.json": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f"
+              },
+              "implementation_sha256": {
+                "packages/java-processing/examples/PathMarks/PathMarks.pde": "d3bc9311cc0161644657e0243498dc10d98ebba2688714c679650173a9d15a15",
+                "packages/java-processing/examples/PathMarks/PathMarksCanvas.java": "4190d0f07f48b10b916e5a499ca8a8afbd9c54a35e94066d07dfe1b23f5ce62d",
+                "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
+                "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
+                "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+                "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+                "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+                "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+                "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+                "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52"
+              },
+              "runtime_profile": {
+                "name": "Processing 4.5.6 JAVA2D; JDK17 core",
+                "scope": "Root and Sol inspected PathMarks trace, perpendicular marks and length edit. Technique-level composition only; no upstream pixel or full-corpus reproduction claim."
+              },
+              "status": "validated-scoped"
+            }
+          },
+          "operation": {
+            "catalog_path": "catalog/operations/cyclic-palette.json",
+            "catalog_sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+            "id": "color.cyclic-palette",
+            "version": "0.1.0"
+          },
+          "target": "processing-java"
+        }
+      ],
+      "scope": "Declared operation support only; recipe executor and export remain unaccepted.",
+      "status": "prototype-target-inputs-verified",
+      "target": "processing-java",
+      "validated_recipe_sha256": "abbed9b37e74f51370caab701ac61be7d3f35715803c8b692bf1f98195d5b33d",
+      "validation_inputs": {
+        "catalog/recipes/execution-bindings.json": "7d58cb8b075ff1bde5cc1855cf4dd750f7e99672193ed077cba9e58d9efa7e56",
+        "catalog/recipes/recipe.schema.json": "935c9f28c832da5931d3ed74d3707f0d1a69b5878ed9d98725d151d656a1529f",
+        "tools/operation_attestations.py": "1a1e0a7508c507051a8b95dd755a684af6823b302f87a28d6aa3295602a36f6b",
+        "tools/validate_recipe_draft.py": "4c2443d1bf1ec8064bde4faab3f19fb1167961208adbfd91afc028a9c8e94d59"
+      }
+    }
+  },
+  "images": [
+    {
+      "case": "base",
+      "build_manifest": {
+        "generated_identity_sha256": "6590b7e14746ae97002a3868ee4a7c42aa40511905806435786138df884d1b3c",
+        "java_source_sha256": {
+          "src/RecipeExport.java": "906379046f5eb9c83ca9c476bbca2a65f08d5c5d70d0835b4643a3cb30a02a0c",
+          "src/RecipeExportData.java": "88ee370587ad1d4af8303d5e081db02df8f1f7c6c789d055639dce1366b532e6",
+          "src/adapter/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
+          "src/core/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+          "src/core/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+          "src/core/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+          "src/core/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+          "src/core/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+          "src/core/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+          "src/core/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+          "src/core/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+          "src/core/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+          "src/core/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+          "src/core/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+          "src/core/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+          "src/core/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+          "src/core/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+          "src/core/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+          "src/prototype/org/procedurals/recipe/RecipeEvaluator.java": "5428cd0a0a96168f0ce1bdb4ff8f0fc034015c68778fc16e49e289ce4de306e1",
+          "src/prototype/org/procedurals/recipe/RecipeGrammar.java": "8bdf2db70d79aa58798966dbeec1448a403acb31447fb543148062d5f1004ec7",
+          "src/prototype/org/procedurals/recipe/RecipeInputValidation.java": "914b5569bd6b072c48d34c4418d36a79d0ef601cf75a5ee828bbf48607e63a36",
+          "src/prototype/org/procedurals/recipe/RecipeRetainedKey.java": "2847d6476ed5d2ea2bdcf40558b18ea7c3a4be46f37ac6e7a78b60c3eb756d85",
+          "src/prototype/org/procedurals/recipe/RecipeSchemas.java": "5948e6426ac59363fed66a14da498b2e8902f78efa8705601b4ed5d1318fad88",
+          "src/prototype/org/procedurals/recipe/RecipeStructureValidation.java": "760d5fe2f693781558488adea31c300d8e1e920e178053039c36cd7702c3a835"
+        },
+        "jdk_sha256": {
+          "bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+          "bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+          "lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+          "release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711"
+        },
+        "parameters_canonical_sha256": "7431aa924f619459197a84908ed28d8707f99de4c992210cba4eef368e67d229",
+        "parameters_file_sha256": "9e764bb9ac27d9faa5b3d790e169935704aa3463b620514722536ea116d214c8",
+        "processing_core_sha256": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+        "recipe_data_sha256": "4a1386984c845d4ff45b7acf6a9a493f2040ff757eba37c93ba2458ba5882e4c",
+        "status": "compiled"
+      },
+      "build_manifest_sha256": "9ec6d1a62a62cc5b25ed48cb3537d2e5d40de98ba37ad9e07a52e98ddd6b13e7",
+      "png_sha256": "7b9de21a8f5644c4d3d2aa4b3938567f5e8e944f36c06ae638f508cec5cab4ad",
+      "commands": 2400,
+      "root_observation": "Small multicolored marks occupy an upright triangular region on a light background.",
+      "render_lock": "tools/with_native_render_lock.py (shared machine lock)",
+      "renderer": "JAVA2D"
+    },
+    {
+      "case": "style",
+      "build_manifest": {
+        "generated_identity_sha256": "f20f9162f40010a34a53a6e61919acbcde8854a1bdeb9ed5ed9504c67922e3c1",
+        "java_source_sha256": {
+          "src/RecipeExport.java": "906379046f5eb9c83ca9c476bbca2a65f08d5c5d70d0835b4643a3cb30a02a0c",
+          "src/RecipeExportData.java": "88ee370587ad1d4af8303d5e081db02df8f1f7c6c789d055639dce1366b532e6",
+          "src/adapter/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
+          "src/core/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+          "src/core/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+          "src/core/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+          "src/core/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+          "src/core/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+          "src/core/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+          "src/core/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+          "src/core/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+          "src/core/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+          "src/core/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+          "src/core/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+          "src/core/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+          "src/core/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+          "src/core/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+          "src/core/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+          "src/prototype/org/procedurals/recipe/RecipeEvaluator.java": "5428cd0a0a96168f0ce1bdb4ff8f0fc034015c68778fc16e49e289ce4de306e1",
+          "src/prototype/org/procedurals/recipe/RecipeGrammar.java": "8bdf2db70d79aa58798966dbeec1448a403acb31447fb543148062d5f1004ec7",
+          "src/prototype/org/procedurals/recipe/RecipeInputValidation.java": "914b5569bd6b072c48d34c4418d36a79d0ef601cf75a5ee828bbf48607e63a36",
+          "src/prototype/org/procedurals/recipe/RecipeRetainedKey.java": "2847d6476ed5d2ea2bdcf40558b18ea7c3a4be46f37ac6e7a78b60c3eb756d85",
+          "src/prototype/org/procedurals/recipe/RecipeSchemas.java": "5948e6426ac59363fed66a14da498b2e8902f78efa8705601b4ed5d1318fad88",
+          "src/prototype/org/procedurals/recipe/RecipeStructureValidation.java": "760d5fe2f693781558488adea31c300d8e1e920e178053039c36cd7702c3a835"
+        },
+        "jdk_sha256": {
+          "bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+          "bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+          "lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+          "release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711"
+        },
+        "parameters_canonical_sha256": "1da78c9cb35568a706d11cc8b59ae99a2c92358e3a63309183927f6eae8c5932",
+        "parameters_file_sha256": "6116466e42e5334e43865e2d25440151db769341eb4be2ba830798b7f80fdf05",
+        "processing_core_sha256": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+        "recipe_data_sha256": "d00eb8e14075e09956116dd2ec2622e715215cbac30f7afe96904a1209a75ab9",
+        "status": "compiled"
+      },
+      "build_manifest_sha256": "c987b9456c5e15925befacb63517e1da4ed3eeb394670759ac88163cece993a4",
+      "png_sha256": "1b1b202891b6944a340c7aadc2fe9564149130052bf7cc9c1bf4b78de991f225",
+      "commands": 2400,
+      "root_observation": "Longer horizontal marks and alternate colors occupy the same triangular arrangement. Command comparisons establish retained point identity; image inspection is technique-level only.",
+      "render_lock": "tools/with_native_render_lock.py (shared machine lock)",
+      "renderer": "JAVA2D"
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "format": "procedurals.recipe",
+  "version": "0.1.0",
+  "status": "draft",
+  "parameters": {
+    "seed": 42,
+    "colors": [
+      3252561,
+      16754462,
+      329804,
+      14566968,
+      4046263
+    ],
+    "strokeWidth": 1.5,
+    "count": 2400,
+    "triangle": [
+      [
+        64,
+        560
+      ],
+      [
+        320,
+        64
+      ],
+      [
+        576,
+        560
+      ]
+    ],
+    "markLength": 1.5
+  },
+  "operations": [
+    {
+      "id": "sampling.seeded-triangle-points-2d",
+      "version": "0.1.0"
+    },
+    {
+      "id": "color.cyclic-palette",
+      "version": "0.1.0"
+    }
+  ],
+  "drawing": {
+    "id": "drawing.fresh-raster-2d",
+    "version": "0.1.0"
+  },
+  "environment": {
+    "kind": "literal",
+    "value": {
+      "width": 640,
+      "height": 640,
+      "density": 1,
+      "background": 15591642
+    }
+  },
+  "retain": [
+    {
+      "name": "placement",
+      "value": {
+        "kind": "construct",
+        "operation": "sampling.seeded-triangle-points-2d",
+        "input": {
+          "kind": "record",
+          "fields": [
+            {
+              "name": "seed",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "seed"
+              }
+            },
+            {
+              "name": "count",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "count"
+              }
+            },
+            {
+              "name": "triangle",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "triangle"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "layout",
+      "value": {
+        "kind": "values",
+        "instance": {
+          "kind": "ref",
+          "name": "placement"
+        }
+      }
+    }
+  ],
+  "frame": [
+    {
+      "kind": "bind",
+      "name": "palette",
+      "value": {
+        "kind": "construct",
+        "operation": "color.cyclic-palette",
+        "input": {
+          "kind": "record",
+          "fields": [
+            {
+              "name": "colors",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "colors"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "for",
+      "items": {
+        "kind": "get",
+        "value": {
+          "kind": "ref",
+          "name": "layout"
+        },
+        "key": "points"
+      },
+      "as": "centre",
+      "indexAs": "index",
+      "body": [
+        {
+          "kind": "bind",
+          "name": "halfLength",
+          "value": {
+            "kind": "math",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "markLength"
+              },
+              {
+                "kind": "literal",
+                "value": 0.5
+              }
+            ]
+          }
+        },
+        {
+          "kind": "emit",
+          "value": {
+            "kind": "record",
+            "fields": [
+              {
+                "name": "kind",
+                "value": {
+                  "kind": "literal",
+                  "value": "segment2"
+                }
+              },
+              {
+                "name": "from",
+                "value": {
+                  "kind": "array",
+                  "items": [
+                    {
+                      "kind": "math",
+                      "op": "sub",
+                      "args": [
+                        {
+                          "kind": "index",
+                          "value": {
+                            "kind": "ref",
+                            "name": "centre"
+                          },
+                          "index": {
+                            "kind": "literal",
+                            "value": 0
+                          }
+                        },
+                        {
+                          "kind": "ref",
+                          "name": "halfLength"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "index",
+                      "value": {
+                        "kind": "ref",
+                        "name": "centre"
+                      },
+                      "index": {
+                        "kind": "literal",
+                        "value": 1
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "to",
+                "value": {
+                  "kind": "array",
+                  "items": [
+                    {
+                      "kind": "math",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "index",
+                          "value": {
+                            "kind": "ref",
+                            "name": "centre"
+                          },
+                          "index": {
+                            "kind": "literal",
+                            "value": 0
+                          }
+                        },
+                        {
+                          "kind": "ref",
+                          "name": "halfLength"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "index",
+                      "value": {
+                        "kind": "ref",
+                        "name": "centre"
+                      },
+                      "index": {
+                        "kind": "literal",
+                        "value": 1
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "rgb",
+                "value": {
+                  "kind": "query",
+                  "instance": {
+                    "kind": "ref",
+                    "name": "palette"
+                  },
+                  "port": "sample",
+                  "input": {
+                    "kind": "math",
+                    "op": "div",
+                    "args": [
+                      {
+                        "kind": "ref",
+                        "name": "index"
+                      },
+                      {
+                        "kind": "math",
+                        "op": "length",
+                        "args": [
+                          {
+                            "kind": "get",
+                            "value": {
+                              "kind": "ref",
+                              "name": "layout"
+                            },
+                            "key": "points"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "name": "opacity8",
+                "value": {
+                  "kind": "literal",
+                  "value": 255
+                }
+              },
+              {
+                "name": "width",
+                "value": {
+                  "kind": "get",
+                  "value": {
+                    "kind": "ref",
+                    "name": "params"
+                  },
+                  "key": "strokeWidth"
+                }
+              },
+              {
+                "name": "cap",
+                "value": {
+                  "kind": "literal",
+                  "value": "round"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

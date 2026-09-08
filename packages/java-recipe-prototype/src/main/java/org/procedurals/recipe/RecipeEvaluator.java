@@ -8,6 +8,7 @@ import org.procedurals.layout.RegularGrid;
 import org.procedurals.layout.QuadrantPartition2D;
 import org.procedurals.paths.GradientPath2D;
 import org.procedurals.sampling.CirclePlacements2D;
+import org.procedurals.sampling.TrianglePoints2D;
 
 /** Draft-only ordered evaluator for the catalog bindings in execution-bindings.json. */
 public strictfp final class RecipeEvaluator {
@@ -578,6 +579,14 @@ public strictfp final class RecipeEvaluator {
                 s.call(p, 1 + steps);
                 return new Instance(id, GradientPath2D.trace(input), steps);
             }
+            if ("sampling.seeded-triangle-points-2d".equals(id)) {
+                long n=index(map(input,p).get("count"),p);
+                // Packed output, six-coordinate temporary and fixed stream/instance state.
+                s.checkArray(p,Math.max(6,2*n));
+                s.units(p,2*n+16);
+                s.call(p,32+128*n);
+                return new Instance(id,TrianglePoints2D.seeded(input),n);
+            }
             if ("layout.seeded-quadrant-partition-2d".equals(id)) {
                 long n=index(map(input,p).get("replacements"),p);
                 // The catalog count ceiling keeps all these expressions within signed long.
@@ -703,6 +712,12 @@ public strictfp final class RecipeEvaluator {
                 s.units(p, 4 * n + 6);
                 s.call(p, 4 * n + 7);
                 return path.toValues();
+            }
+            if ("sampling.seeded-triangle-points-2d".equals(x.id)) {
+                long n=x.size;
+                s.checkArray(p,n); if(n>0)s.checkArray(p,2);
+                s.units(p,3*n+2); s.call(p,4*n+3);
+                return ((TrianglePoints2D)x.value).toValues();
             }
             if ("layout.seeded-quadrant-partition-2d".equals(x.id)) {
                 long k=x.size;
@@ -903,6 +918,8 @@ public strictfp final class RecipeEvaluator {
                 ? ((RegularGrid.GridException)e).code
                 : e instanceof GradientNoise2D01.NoiseException
                 ? ((GradientNoise2D01.NoiseException)e).code
+                : e instanceof TrianglePoints2D.TrianglePointsException
+                ? ((TrianglePoints2D.TrianglePointsException)e).code
                 : e instanceof CyclicPalette.PaletteException
                 ? ((CyclicPalette.PaletteException)e).code
                 : e.getMessage();

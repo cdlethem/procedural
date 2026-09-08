@@ -1,5 +1,22 @@
 # Project state
 
+## Seventh recipe binding: triangle grain verified
+
+Luna added the seeded-triangle binding and local-definition resolution in generated operation
+schemas. Root reviewed and corrected the proposed generation path before final validation,
+then implemented runtime accounting, composition and direct-core oracle.27 focused metadata/
+static tests pass; .work/recipe-triangle-root1 passes30 exact fresh/session scenarios and15
+failure groups. Triangle cases cover length/palette reuse, seed/count/vertex invalidation,
+zero points, packed storage limits and nested vertex validation even at zero count.
+Root inspected two standalone JAVA2D previews under the shared machine lock:2400 marks form
+an upright triangle; longer marks/new colors preserve the sampled arrangement. Evidence:
+evidence/distribution/recipe-triangle-preview.json. Recipe layer:7 bindings/5 compositions.
+Accepted Java remains15 operations/15 starters; recipe/executor/export acceptance stays open.
+Next address broader execution capabilities and deferred targets against X1 requirements;
+do not count binding expansion as new library capability or blanket executor acceptance.
+Preserve unrelated JavaScript source work. Full roadmap remains incomplete.
+
+
 ## Sixth recipe binding: region panels verified
 
 Luna added catalog metadata/generation for seeded quadrant partition. Root implemented

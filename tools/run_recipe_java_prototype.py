@@ -29,7 +29,7 @@ def main():
         parser.error('Processing core differs from reviewed dependency')
     recipes = []
     recipe_paths = []
-    for name in ('field-marks', 'path-marks', 'placement-bars', 'region-panels'):
+    for name in ('field-marks', 'path-marks', 'placement-bars', 'region-panels', 'triangle-grain'):
         path = ROOT / 'design/recipes/examples' / (name + '.draft.json')
         recipe = load_json(path)
         validate(recipe)
@@ -49,6 +49,7 @@ public class RecipePrototypeComparison {
  static final RecipeEvaluator.Session fieldSession=new RecipeEvaluator.Session();
  static final RecipeEvaluator.Session pathSession=new RecipeEvaluator.Session();
  static final RecipeEvaluator.Session placementSession=new RecipeEvaluator.Session();
+ static final RecipeEvaluator.Session triangleSession=new RecipeEvaluator.Session();
  static final RecipeEvaluator.Session regionSession=new RecipeEvaluator.Session();
  static void session(RecipeEvaluator.Session session,Map<String,Object> recipe,RecipeEvaluator.Result fresh,String label,boolean reuse){
   RecipeEvaluator.Result cached=session.evaluate(recipe,new RecipeEvaluator.Limits());
@@ -91,6 +92,13 @@ public class RecipePrototypeComparison {
   same(expected,result.commands,label);session(regionSession,recipe,result,label,reuse);
   System.out.println(label+" "+expected.size()+" "+result.counters);
  }
+ static void triangle(Map<String,Object> recipe,String label,boolean reuse){
+  List<Object> expected=TriangleRecipeComposition.commands(obj(recipe.get("parameters")));
+  RecipeEvaluator.Result result=RecipeEvaluator.evaluate(recipe,new RecipeEvaluator.Limits());
+  same(expected,result.commands,label);session(triangleSession,recipe,result,label,reuse);
+  System.out.println(label+" "+expected.size()+" "+result.counters);
+ }
+ static Map<String,Object> triangleRecipe(){return __TRIANGLE__;}
  static Map<String,Object> regionRecipe(){return __REGION__;}
  static Map<String,Object> placementRecipe(){return __PLACEMENT__;}
  static Map<String,Object> fieldRecipe(){return __FIELD__;}
@@ -110,10 +118,17 @@ public class RecipePrototypeComparison {
   obj(regions.get("parameters")).put("seed",43.0);region(regions,"region-seed",false);
   obj(regions.get("parameters")).put("replacements",64.0);region(regions,"region-count",false);
   obj(regions.get("parameters")).put("replacements",0.0);region(regions,"region-root",false);
+  Map<String,Object> grain=triangleRecipe();triangle(grain,"triangle-baseline",false);
+  obj(grain.get("parameters")).put("markLength",6.0);triangle(grain,"triangle-length",true);
+  obj(grain.get("parameters")).put("colors",list(0x2E0551,0xFF00C7,0x01AFC2,0xFDBE03,0xF4F9FD));triangle(grain,"triangle-palette",true);
+  obj(grain.get("parameters")).put("seed",43.0);triangle(grain,"triangle-seed",false);
+  obj(grain.get("parameters")).put("count",1600.0);triangle(grain,"triangle-count",false);
+  obj(grain.get("parameters")).put("triangle",list(list(64.0,64.0),list(576.0,320.0),list(64.0,576.0)));triangle(grain,"triangle-shape",false);
+  obj(grain.get("parameters")).put("count",0.0);triangle(grain,"triangle-empty",false);
   System.out.println("COMMAND_COMPARISON_PASSED");
  }
 }
-'''.replace('__FIELD__', java_value(recipes[0])).replace('__PATH__', java_value(recipes[1])).replace('__PLACEMENT__', java_value(recipes[2])).replace('__REGION__', java_value(recipes[3]))
+'''.replace('__FIELD__', java_value(recipes[0])).replace('__PATH__', java_value(recipes[1])).replace('__PLACEMENT__', java_value(recipes[2])).replace('__REGION__', java_value(recipes[3])).replace('__TRIANGLE__', java_value(recipes[4]))
     inputs = sorted((ROOT / 'packages/java/src/main/java').rglob('*.java'))
     inputs += sorted((ROOT / 'packages/java-processing/src/main/java').rglob('*.java'))
     inputs += sorted((ROOT / 'packages/java-recipe-prototype/src/main/java').rglob('*.java'))
@@ -121,12 +136,12 @@ public class RecipePrototypeComparison {
         'packages/java/examples/FieldMarks/MarkField.java',
         'packages/java-processing/examples/FieldMarks/MarkCommands.java',
         'packages/java/examples/PathMarks/PathMarkComposition.java',
-        'tests/native/RecipePrototypeFailures.java', 'tests/native/PlacementRecipeComposition.java', 'tests/native/RegionRecipeComposition.java')]
+        'tests/native/RecipePrototypeFailures.java', 'tests/native/PlacementRecipeComposition.java', 'tests/native/RegionRecipeComposition.java', 'tests/native/TriangleRecipeComposition.java')]
     home = java_home(args.java_home)
     metadata = [ROOT / name for name in (
         'catalog/recipes/recipe.schema.json', 'catalog/recipes/execution-bindings.json',
         'design/recipes/expression-model.md', 'design/recipes/runtime-accounting.md',
-        'design/recipes/retained-session.md',
+        'design/recipes/retained-session.md', 'design/recipes/triangle-grain-binding.md',
         'tools/validate_recipe_draft.py', 'tools/run_grid_conformance.py',
         'tools/generate_recipe_java_schemas.py', 'tools/generate_recipe_java_grammar.py')]
     binding_data = json.loads((ROOT / 'catalog/recipes/execution-bindings.json').read_text())
@@ -155,7 +170,7 @@ public class RecipePrototypeComparison {
         raise RuntimeError('focused failure probes did not finish')
     if hashes != {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in bound}:
         raise RuntimeError('comparison input changed during execution')
-    report = {'status': 'prototype-command-comparison-passed', 'scope': 'Twenty-three fresh/session command scenarios and focused failure probes; complete budget/type/replay, cache, export and native acceptance remain pending.',
+    report = {'status': 'prototype-command-comparison-passed', 'scope': 'Thirty fresh/session command scenarios and focused failure probes; complete budget/type/replay, cache, export and native acceptance remain pending.',
               'input_sha256': hashes, 'roundtripped_recipes': [p.name for p in recipe_paths], 'stdout': result.stdout, 'failure_stdout': failures.stdout}
     (output / 'result.json').write_text(json.dumps(report, indent=2) + '\n')
     print(result.stdout + failures.stdout)

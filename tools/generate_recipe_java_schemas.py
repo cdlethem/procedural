@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -60,6 +61,51 @@ def validate_schema(value, path=""):
             raise ValueError(f"{key} must be a string array at {path or '/'}")
 
 
+def resolve_schema(value, document, path="", stack=()):
+    """Expand local definition references into the supported runtime subset."""
+    if not isinstance(value, dict):
+        raise ValueError(f"schema at {path or '/'} is not an object")
+    if "$ref" in value:
+        reference = value["$ref"]
+        if not isinstance(reference, str) or not reference.startswith("#/$defs/"):
+            raise ValueError(f"only local $defs refs are supported at {path or '/'}: {reference!r}")
+        semantic = set(value) - (ANNOTATIONS | {"$ref"})
+        if semantic:
+            raise ValueError(f"semantic siblings beside $ref at {path or '/'}: {sorted(semantic)}")
+        if reference in stack:
+            raise ValueError(f"cyclic local schema ref at {path or '/'}: {reference}")
+        current = document
+        for token in reference[2:].split("/"):
+            token = token.replace("~1", "/").replace("~0", "~")
+            if not isinstance(current, dict) or token not in current:
+                raise ValueError(f"unresolved local schema ref at {path or '/'}: {reference}")
+            current = current[token]
+        resolved = resolve_schema(current, document, path, stack + (reference,))
+        for annotation in ANNOTATIONS & set(value):
+            resolved[annotation] = copy.deepcopy(value[annotation])
+        return resolved
+    result = {}
+    for key, child in value.items():
+        if key == "$defs":
+            if not isinstance(child, dict):
+                raise ValueError(f"$defs must be an object at {path or '/'}")
+            for name, definition in child.items():
+                resolved = resolve_schema(definition, document, f"{path}/$defs/{name}", stack)
+                validate_schema(resolved, f"{path}/$defs/{name}")
+            continue
+        if key == "properties":
+            result[key] = {name: resolve_schema(item, document, f"{path}/properties/{name}", stack)
+                           for name, item in child.items()}
+        elif key in ("prefixItems", "oneOf", "allOf"):
+            result[key] = [resolve_schema(item, document, f"{path}/{key}/{index}", stack)
+                           for index, item in enumerate(child)]
+        elif key in ("items", "additionalProperties") and child is not False:
+            result[key] = resolve_schema(child, document, f"{path}/{key}", stack)
+        else:
+            result[key] = copy.deepcopy(child)
+    return result
+
+
 def load(root: Path):
     bindings_path = root / "catalog/recipes/execution-bindings.json"
     bindings = json.loads(bindings_path.read_text())
@@ -79,16 +125,31 @@ def load(root: Path):
             schema = contract
             for part in pointer.strip("/").split("/"):
                 schema = schema[part]
+            try:
+                Draft202012Validator.check_schema(schema)
+            except Exception as exc:
+                raise ValueError(f"invalid operation schema: {binding['contract']}{pointer}: {exc}") from exc
+            schema = resolve_schema(schema, schema, f"{binding['contract']}{pointer}")
             validate_schema(schema, f"{binding['contract']}{pointer}")
         schema = contract
         for part in binding["construct_input"].strip("/").split("/"):
             schema = schema[part]
+        try:
+            Draft202012Validator.check_schema(schema)
+        except Exception as exc:
+            raise ValueError(f"invalid operation schema: {binding['contract']}{binding['construct_input']}: {exc}") from exc
+        schema = resolve_schema(schema, schema, f"{binding['contract']}{binding['construct_input']}")
         schemas[(binding["id"], None)] = schema
         for port, port_binding in binding.get("ports", {}).items():
             pointer = port_binding["input_schema"]
             schema = contract
             for part in pointer.strip("/").split("/"):
                 schema = schema[part]
+            try:
+                Draft202012Validator.check_schema(schema)
+            except Exception as exc:
+                raise ValueError(f"invalid operation schema: {binding['contract']}{pointer}: {exc}") from exc
+            schema = resolve_schema(schema, schema, f"{binding['contract']}{pointer}")
             validate_schema(schema, f"{binding['contract']}{pointer}")
             schemas[(binding["id"], port)] = schema
         metadata.append((binding["id"], binding["version"], binding["contract"], actual_hash))

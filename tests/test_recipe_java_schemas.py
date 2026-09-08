@@ -34,6 +34,11 @@ class RecipeJavaSchemasTest(unittest.TestCase):
             self.assertIn(binding["id"], text)
         self.assertIn("sample", text)
 
+    def test_generated_constructor_schemas_are_expanded(self):
+        text = OUTPUT.read_text()
+        self.assertNotIn('"$ref"', text)
+        self.assertNotIn('"$defs"', text)
+
     def test_unknown_schema_keyword_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             scratch = Path(directory)
@@ -48,6 +53,19 @@ class RecipeJavaSchemasTest(unittest.TestCase):
             bindings = json.loads((scratch / "catalog/recipes/execution-bindings.json").read_text())
             binding = bindings["operations"][0]
             binding["contract_sha256"] = hashlib.sha256(contract.read_bytes()).hexdigest()
+            (scratch / "catalog/recipes/execution-bindings.json").write_text(json.dumps(bindings))
+            result = self.run_generator("--root", scratch, "--output", scratch / "RecipeSchemas.java")
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("unknown schema keyword", result.stderr)
+
+            triangle = scratch / "catalog/operations/seeded-triangle-points.json"
+            value = json.loads(triangle.read_text())
+            value["input_schema"]["$defs"]["unused"] = {"type": "number", "unevaluatedProperties": False}
+            triangle.write_text(json.dumps(value))
+            bindings = json.loads((scratch / "catalog/recipes/execution-bindings.json").read_text())
+            binding = next(record for record in bindings["operations"]
+                           if record["contract"] == "catalog/operations/seeded-triangle-points.json")
+            binding["contract_sha256"] = hashlib.sha256(triangle.read_bytes()).hexdigest()
             (scratch / "catalog/recipes/execution-bindings.json").write_text(json.dumps(bindings))
             result = self.run_generator("--root", scratch, "--output", scratch / "RecipeSchemas.java")
             self.assertNotEqual(result.returncode, 0)
@@ -96,6 +114,40 @@ class RecipeJavaSchemasTest(unittest.TestCase):
             result = self.run_generator("--root", scratch, "--output", scratch / "RecipeSchemas.java")
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("binding identity drift", result.stderr)
+
+    def test_local_definition_resolution_rejects_bad_reference_shapes(self):
+        from tools.generate_recipe_java_schemas import resolve_schema
+        nested = {
+            "$defs": {"pair": {"type": "array", "prefixItems": [
+                {"type": "number"}, {"type": "number"}], "items": False}},
+            "type": "array", "items": {"$ref": "#/$defs/pair"}}
+        resolved = resolve_schema(nested, nested)
+        self.assertNotIn("$defs", resolved)
+        self.assertEqual(resolved["items"]["prefixItems"][0]["type"], "number")
+        cases = (
+            ({"$defs": {"loop": {"$ref": "#/$defs/loop"}}, "type": "object",
+              "properties": {"x": {"$ref": "#/$defs/loop"}}}, "cyclic"),
+            ({"$ref": "#/$defs/missing"}, "unresolved"),
+            ({"$ref": "https://example.test/schema"}, "only local"),
+            ({"$defs": {"x": {"type": "number"}}, "$ref": "#/$defs/x", "type": "number"}, "semantic siblings"),
+        )
+        for schema, message in cases:
+            with self.subTest(message=message), self.assertRaisesRegex(ValueError, message):
+                resolve_schema(schema, schema)
+
+    def test_generation_does_not_mutate_contract_json(self):
+        with tempfile.TemporaryDirectory() as directory:
+            scratch = Path(directory)
+            for relative in ("catalog/recipes/execution-bindings.json",) + binding_contracts():
+                target = scratch / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((ROOT / relative).read_bytes())
+            before = {relative: (scratch / relative).read_bytes()
+                      for relative in binding_contracts()}
+            result = self.run_generator("--root", scratch, "--output", scratch / "RecipeSchemas.java")
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(before, {relative: (scratch / relative).read_bytes()
+                                      for relative in binding_contracts()})
 
 
 if __name__ == "__main__":
