@@ -22,11 +22,77 @@ from tools.contact_sheet import source_images, compose, publish
 
 IDENTIFIER = re.compile(r"[A-Za-z_][A-Za-z0-9_]*\Z")
 RUNTIME = ROOT / ".work/toolchains/processing-4.5.6"
+ASSET_MAX_FILES = 4096
+ASSET_MAX_BYTES = 256 * 1024 * 1024
 
 
 def digest(path):
     with Path(path).open("rb") as stream:
         return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def asset_inventory(root):
+    """Return a deterministic regular-file inventory for an explicit asset root."""
+    root = Path(root).expanduser()
+    if root.is_symlink() or not root.is_dir():
+        raise ValueError("assets must be a non-symlink directory")
+    root = root.absolute()
+    records = []
+    total = 0
+
+    def visit(directory, depth=0):
+        nonlocal total
+        if depth > 256:
+            raise ValueError("asset directory nesting exceeds 256 levels")
+        try:
+            entries = sorted(os.scandir(directory), key=lambda entry: entry.name)
+        except OSError as error:
+            raise ValueError("cannot inventory assets: " + str(error)) from error
+        for entry in entries:
+            path = Path(entry.path)
+            if "\\" in entry.name or entry.name in (".", ".."):
+                raise ValueError("ambiguous asset path: " + str(path))
+            if entry.is_symlink():
+                raise ValueError("asset symlinks are not allowed: " + str(path))
+            if entry.is_dir(follow_symlinks=False):
+                visit(path, depth + 1)
+                continue
+            if not entry.is_file(follow_symlinks=False):
+                raise ValueError("asset special files are not allowed: " + str(path))
+            resolved = path.absolute()
+            try:
+                relative = resolved.relative_to(root).as_posix()
+            except ValueError as error:
+                raise ValueError("asset path escapes root: " + str(path)) from error
+            size = entry.stat(follow_symlinks=False).st_size
+            total += size
+            if len(records) >= ASSET_MAX_FILES:
+                raise ValueError("asset file budget exceeds 4096 files")
+            if total > ASSET_MAX_BYTES:
+                raise ValueError("asset byte budget exceeds 256 MiB")
+            records.append({"path": relative, "size": size, "sha256": digest(path)})
+
+    visit(root)
+    records.sort(key=lambda record: record["path"])
+    return {"root": str(root), "files": records, "bytes": total}
+
+
+def verify_asset_inventory(root, expected):
+    actual = asset_inventory(root)
+    expected_files = expected["files"]
+    if actual["files"] != expected_files or actual["bytes"] != expected["bytes"]:
+        raise RuntimeError("asset inventory changed: " + str(root))
+    return actual
+
+
+def stage_assets(source, destination, expected):
+    destination.mkdir(parents=True)
+    for record in expected["files"]:
+        source_file = Path(source) / Path(record["path"])
+        destination_file = destination / Path(record["path"])
+        destination_file.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source_file, destination_file)
+    verify_asset_inventory(destination, expected)
 
 
 def parameter(text):
@@ -141,6 +207,8 @@ def main(argv=None):
     parser.add_argument("--frame", type=int, default=1, help="completed draw ordinal, 1 through 10000")
     parser.add_argument("--param", action="append", default=[], metavar="NAME=VALUE")
     parser.add_argument("--sweep", metavar="NAME=VALUE,VALUE")
+    parser.add_argument("--assets", type=Path,
+                        help="explicit regular-file asset root staged as data/ per variant")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--java-home", type=Path, default=ROOT / ".work/toolchains/jdk-17.0.20.1+1")
     args = parser.parse_args(argv)
@@ -158,7 +226,8 @@ def main(argv=None):
             raise ValueError("RenderSnapshot is reserved by the helper")
         if len(list(sketch.parent.glob("*.pde"))) != 1:
             raise ValueError("this helper accepts one PDE plus adjacent Java tabs")
-        if (sketch.parent / "data").exists():
+        assets = asset_inventory(args.assets) if args.assets is not None else None
+        if assets is None and (sketch.parent / "data").exists():
             raise ValueError("asset-bearing sketches are not supported by this helper")
         if not output.is_relative_to(ROOT / ".work") or output == ROOT / ".work" or output.exists():
             raise ValueError("require a fresh output directory beneath repository .work")
@@ -180,6 +249,8 @@ def main(argv=None):
         inputs = [*source, library, core, archive, *pre, bridge, lease, Path(__file__),
                   ROOT / "tools/contact_sheet.py", *[jdk / p for p in
                   ("bin/java", "bin/javac", "release", "lib/modules")]]
+        if assets is not None:
+            inputs.extend(Path(assets["root"]) / record["path"] for record in assets["files"])
         before = {str(p): digest(p) for p in inputs}
     except (ValueError, OSError) as error:
         parser.error(str(error))
@@ -187,6 +258,8 @@ def main(argv=None):
     report = {"status": "running", "seed": args.seed, "variants": [], "inputs_before": before,
               "selected_frame": args.frame,
               "scope": "Configured selected-frame JAVA2D render; not conformance or recreation acceptance"}
+    if assets is not None:
+        report["assets"] = assets
     environment = os.environ.copy()
     for name in ("XDG_CONFIG_HOME", "SNAP_USER_COMMON", "APPDATA"):
         environment.pop(name, None)
@@ -213,6 +286,9 @@ def main(argv=None):
         for i, parameters in enumerate(batch):
             variant = output / ("variant-%02d" % i)
             variant.mkdir()
+            staged_assets = variant / "data" if assets is not None else None
+            if staged_assets is not None:
+                stage_assets(Path(assets["root"]), staged_assets, assets)
             run([sys.executable, lease, "--timeout", "30", "--", "xvfb-run", "-a", java,
                  "-Duser.home=" + str(home), "-cp", classpath, "RenderSnapshot", args.seed, variant, args.frame,
                  *[key + "=" + str(value) for key, value in parameters.items()]], output, environment, 90)
@@ -229,11 +305,15 @@ def main(argv=None):
             named_image = variant / (label + ".png")
             image.rename(named_image)
             image = named_image
+            if staged_assets is not None:
+                verify_asset_inventory(staged_assets, assets)
             report["variants"].append({"parameters": parameters, "image": str(image),
                                        "image_sha256": digest(image), "native": native})
         images = [Path(v["image"]) for v in report["variants"]]
         sheet = output / "contact-sheet.png"
         publish(compose(source_images(images), min(4, len(images)), 240), sheet)
+        if assets is not None:
+            report["assets_after"] = verify_asset_inventory(Path(assets["root"]), assets)
         after = {str(p): digest(p) for p in inputs}
         compiled_after = {str(p): digest(p) for p in classes.rglob("*.class")}
         if after != before or compiled_before != compiled_after:

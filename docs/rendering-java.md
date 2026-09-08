@@ -63,9 +63,10 @@ artistic recommendation; even valid counts can exceed the existing render timeou
 ## Current scope
 
 The helper captures one selected completed `draw()`, then exits. The sketch must use JAVA2D,
-pixel density1, and at most32 million pixels. This version has no asset/data directory,
-extra dependency JAR, P2D/P3D, multi-frame export or interaction replay support.
-Those are remaining helper capabilities, not exclusions from the Java drawing library.
+pixel density1, and at most32 million pixels. This version stages assets only through an
+explicit `--assets` directory; it has no implicit adjacent `data/` support, extra
+dependency JAR, P2D/P3D, multi-frame export or interaction replay support. Those are
+helper boundaries, not exclusions from the Java drawing library.
 Existing library starters do not automatically implement this configuration hook.
 
 `--seed` accepts unsigned32 integers. `--param name=value` supplies finite numeric values;
@@ -79,3 +80,24 @@ Repeatability depends on the sketch honoring its seed/parameter hook and on the 
 runtime and assets. A completed image or contact sheet is not visual-conformance acceptance
 or an original-sketch recreation claim. Use the existing benchmark/review process for those.
 For other saved images, use the [contact-sheet helper](comparing-variants.md).
+
+## Stage explicit assets
+
+A sketch that reads files may receive an explicit asset root with `--assets`:
+
+```sh
+uv run python tools/render_java.py /path/to/MySketch/MySketch.pde \
+  --library /path/to/procedurals/library/procedurals.jar --seed 42 \
+  --assets /path/to/assets --output .work/asset-render
+```
+
+The helper inventories regular files recursively in sorted POSIX path order, records their
+sizes and SHA-256 hashes, and stages exactly those bytes as `data/` inside every fresh
+variant. Symlinks, special files, ambiguous paths, roots that are not directories, and
+roots exceeding 4096 files or 256 MiB are rejected before output creation. The source
+inventory is checked before and after the batch, and each staged variant is checked before
+the sketch runs and after it finishes; a source or staged mutation fails the batch. An
+empty explicit asset root is valid. The sketch and its assets execute with the same trust
+as any other Java code; this helper provides integrity checks, not a sandbox. Without
+`--assets`, an adjacent sketch `data/` directory remains rejected so assets are never
+silently included.

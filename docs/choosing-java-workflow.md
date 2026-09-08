@@ -14,6 +14,7 @@ open the named example from Processing's contributed-library examples, and save 
 | Make lines wander through a field | [PathMarks](path-marks.md) | Connected positions and headings from repeated movement. |
 | Keep wandering lines near a noise level | [BandMarks](band-marks.md) | Proposal acceptance inside a scalar band; retain paths for different marks. |
 | Scatter differently sized forms with room between them | [PlacementMarks](placement-marks.md) | Seeded circle placements and explicit overlap filtering. |
+| Pack supplied noncircular outlines | [PolygonMarks](polygon-marks.md) | Ordered filtering of supplied strictly convex polygons; retain geometry for alternate decoration. |
 | Divide a surface into changing rectangular regions | [RegionMarks](region-marks.md) | Retained quadrant subdivisions to fill or decorate independently. |
 | Add grain inside a triangle | [GrainMarks](grain-marks.md) | Repeatable points inside supplied geometry. |
 | Grow a tree from segment endpoints | [BranchMarks](branch-marks.md) | Retained branching geometry with explicit stopping. |
@@ -28,6 +29,7 @@ open the named example from Processing's contributed-library examples, and save 
 | Layer a banded landscape | [LandscapeMarks](landscape-marks.md) | A working composition of retained regions and marks. |
 | Bend an already drawn pattern | [WarpMarks](warp-marks.md) | Bilinear raster sampling from supplied displacement coordinates. |
 | Decide where colors transition | [RampMarks](ramp-marks.md) | Unequally spaced color stops, independent of geometry. |
+| Recreate the Curvespace composition | [Curvespace recreation guide](curvespace-recreation.md) | A separately maintained P2D example using accepted operations; it is not packaged as a shipped starter. |
 
 For your first session, choose one example, run it unchanged, make one structural edit,
 then change its palette or mark. Save each result. [Compare saved variants](comparing-variants.md)
@@ -49,6 +51,3 @@ FacetMarks does not supply Voronoi cells, ProfileMarks is not arbitrary solid ex
 and glyph placement is not font-outline extraction or general text shaping. BandMarks
 is not a complete contour extractor. Other renderers and language ports have their own
 recorded support limits; the links above describe the Java workflows.
-
-For noncircular packing, use [PolygonMarks](polygon-marks.md): supply convex outlines,
-filter overlaps, then edit thickness or replace rounded shapes with diamonds.

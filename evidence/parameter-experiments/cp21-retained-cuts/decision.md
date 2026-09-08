@@ -13,3 +13,17 @@ Proceed to a direct selected-leaf edit demonstration and representation review b
 freezing a public contract. Current A control rebuilds the complete layout; D retains the
 model. Static renders alone do not demonstrate a user's incremental selected-cell edit.
 Source provenance and corrections remain in design/capabilities/cp21-gap-source-bindings.json.
+
+
+## Selected-cell follow-up
+
+Root reviewed edit0/edit1 native images in selected-edit-native.json. Edit0 matches the
+previous staggered study; edit1 splits only the upper-left retained region and highlights
+its lower child. Callback-level SelectedEditCheck separately exercises mouse selection,
+X cut, unchanged unrelated Leaf identity, D retention, deletion and reset. It is not an
+OS event-injection test. Root fixed initial-edit reset and per-frame stroke-weight leakage.
+The same cutSelected method is exercised by key callback and native configured edit.
+
+The retained-state boundary now demonstrates its intended private editing value. Next root
+freezes a production contract and admission, including access cost, identity exhaustion,
+serialization/state scope and exact error rules. No public support is accepted by this study.

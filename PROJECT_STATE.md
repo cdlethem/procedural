@@ -2,13 +2,18 @@
 
 ## Batch execution active — user-directed scheduling revision
 
-Remaining scope and dependency queue: docs/java-buildout-batches.md. AGENTS and agent
-briefs now require parallel independent lanes and batched integration, preserving root
-architecture and acceptance. A1 Terra owns private CutStudy selected-cell edit only;
-A2 Luna owns chooser/API authored-doc reconciliation only. Root owns A3 asset-render brief
-at design/capabilities/java-render-assets-brief.md and next implementation. No shared-file
-worker overlap; no new render task started. Package accepted batch, not each private edit.
-Java0.23 remains23 operations/workflows; CP21 private, ports/Sol paused.
+First parallel batch complete: A1 private local edit demonstrated with native images and
+callback-level checks; public production contract/admission remains next. A2 authored
+chooser/API docs reconciled. A3 asset-aware JAVA2D rendering accepted:14 focused Python
+checks and2 actual native tests (asset variants and existing frame accumulation) pass.
+Evidence: evidence/tooling/java-render-assets-review.json. Root reviewed code and tests;
+fixed test-marker antialiasing assumption, prototype reset/stroke leakage and stale doc
+scope. Gallery123 images/26 groups. No new shipped core count or distribution rebuild.
+
+Next advance accepted CP21 production semantics/admission in parallel with B1/B2 tooling
+briefs; tools/render_java.py must have only one implementation owner. Native shared lease
+unchanged. All workers/native sessions finished. Java0.23 remains23/23, ports/Sol paused.
+Preserve unrelated Android draft. Remaining queue: docs/java-buildout-batches.md.
 
 ## CP21 source review: editable unequal subdivision selected for investigation
 

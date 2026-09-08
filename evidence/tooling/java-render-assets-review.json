@@ -1,0 +1,27 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Explicit asset staging in existing JAVA2D render helper; not new renderer or library operation acceptance",
+  "implementation_sha256": {
+    "tools/render_java.py": "2fb7878e77f9ef3a85e02fe2a7d917b4bee7433a1f88c878db2f8142bfd11ce4",
+    "tests/test_render_java.py": "a0aa27f17fb4fc019a7908a242a93a66fb30f6030c34842757eeea41d3f46170",
+    "tests/test_render_java_assets_native.py": "868adf0b0a60e75b69c42669ee735c46c1715f65278f217b2339be0369051283",
+    "tests/test_render_java_native.py": "a7b4aab90b56dd7032fbd9a0bdd75acf537d9f663865cf5f5469db15278fb271",
+    "tests/native/AssetRender/AssetRender.pde": "2cfa675bb5588e0b35f1cabe1942337f7c19134cc033e10562842db14610c2ea",
+    "docs/rendering-java.md": "f952c7ca7b04052ef3622c7472358a199cc0406c49a556e375da60d10b400092"
+  },
+  "checks": [
+    "14 focused Python tests pass, including deterministic order, invalid roots/symlinks, budgets, mutation and inventory additions/removals.",
+    "Actual Processing nested PNG load and two-variant sweep pass exact pixel comparison; original bytes unchanged, staged files separate regular-file inodes.",
+    "Existing default/fifth/repeated-frame accumulation native test passes unchanged."
+  ],
+  "native_command": "PROCEDURALS_TEST_JAR=.work/cp20-source-consumer-root2/extract/procedurals/library/procedurals.jar python3 -m unittest tests.test_render_java_assets_native tests.test_render_java_native",
+  "library_sha256": "8fecefea0a923d8294fab0f2a57782bbc5adf5f0ada3dd86435eeff2a6ff565d",
+  "limitations": [
+    "Native fixtures use temporary generated PNGs; not a font-rendering or P2D/P3D certification.",
+    "The helper runs trusted Java code; asset integrity checks are not a sandbox.",
+    "Concurrent changed inputs fail; this does not provide adversarial filesystem isolation."
+  ],
+  "resolved_test_issue": "Initial point marker was antialiased; exact set pixel makes image-load assertions unambiguous."
+}
