@@ -1,0 +1,18 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java core and scoped JAVA2D PanelMarks; no distribution or other target acceptance",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/layout/BinaryCellPartition2D.java": "5406bf9ae61e8cc1edc028974de848ba6ac79d2efe52dc7d9c845d6333d4c389",
+    "packages/java-processing/examples/PanelMarks/PanelMarks.pde": "9bab1be5e9d3f097b35c79fdc651dace846f137a38736850503b57d934e843eb",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/binary-cell-partition-java.json": "6dd59f1c76238d4198035f38ac5e6274c62a574135751c47e2644481aa30295d",
+    "evidence/conformance/binary-cell-partition-java-root-review.json": "56f21752285d6dfb4004545a5612c59eed34e3001c9682b3e41901ae4152e884",
+    "fixtures/operations/binary-cell-partition-2d.json": "32f304c82ad12264191eec5574c03e3e761749e729ea0f2534bdcef3f9b49340",
+    "evidence/reproductions/cp17-java2d/native.json": "912ad6b7fdec1df05c5f094e4d8ba29fa100af346f68aa1e0c603d5e155e4b12",
+    "evidence/reproductions/cp17-java2d/root-review.json": "68bda2a52fdbf5c2e6badd6572dc6f2c40c3f50da7a1a7279670f31497e0b505"
+  }
+}

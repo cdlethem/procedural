@@ -3,7 +3,7 @@
 Current maintainer objective: build a feature-complete Java implementation. Ports are
 paused per `porting-resume.md`; recipes/MCP/web remain a separate roadmap, not prerequisites
 for making the native Java library useful. This plan does not claim feature completeness
-or replace the project's mission with the current19 operations.
+or replace the project's mission with the current20 operations.
 
 ## Completion requirements
 
@@ -28,10 +28,11 @@ The broader corpus benchmark remains a separate strict certification claim.
 
 ## Existing capability baseline
 
-Java0.19 assembles19 operations and19 workflows: field marks, integrated paths, constrained
+Java0.20 assembles20 operations and20 workflows: field marks, integrated paths, constrained
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
-paths, raster remapping, positioned color ramps and noise-band paths, plus relief/city/landscape compositions. Only three selected original structural
+paths, raster remapping, positioned color ramps, noise-band paths, smooth closed curves and binary panel layouts,
+plus relief/city/landscape compositions. Only three selected original structural
 recreations are demonstrated. Consult current operation attestations rather than historical
 status paragraphs in the provisional API design.
 
@@ -115,8 +116,8 @@ and missing helper workflows must not silently count as complete.
 
 ClosedSpline2D and LoopMarks supply retained uniform curves, approximate per-chord distance
 lookup and analytic raw tangents. Control edits and tile-to-fan transfer preserve the
-computation/drawing boundary. Core and native review precede separate extracted Java0.19
-distribution acceptance. No additional original recreation is claimed. General seeded-render
+computation/drawing boundary. Java0.19 distribution acceptance is recorded in
+`evidence/distribution/cp16-java-review.json`. No additional original recreation is claimed. General seeded-render
 and parameter-sweep tooling and broader evidence-based idiom coverage remain incomplete.
 
 ## Artist render tooling after CP16
@@ -125,3 +126,8 @@ The opt-in JAVA2D first-frame helper tools/render_java.py supplies explicit seed
 parameters, one-axis sweeps and contact sheets; docs/rendering-java.md describes the hook.
 This closes a concrete static comparison workflow, not all renderer/animation tooling.
 P2D/P3D, assets and animation batching remain open, alongside broader major-idiom coverage.
+
+CP17 adds BinaryCellPartition2D and PanelMarks: irregular two-way integer-cell cuts,
+attempted-versus-successful split accounting, and independent decoration of retained cells.
+This extends equal-quadrant layouts; it does not cover unequal four-way splitting, cell
+deletion or general polygon subdivision. No new original recreation is claimed.

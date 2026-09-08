@@ -1,5 +1,26 @@
 # Project state
 
+## CP17 Java0.20 accepted for publishing
+
+BinaryCellPartition2D/PanelMarks now pass exact core, native edit/transfer/reset/save and
+extracted distribution review: evidence/distribution/cp17-java-review.json.
+20 operations/20 editable workflows. All20 extracted PDEs compile; seven PanelMarks PNGs
+equal reviewed candidate; all90 prior core classes, one adapter class and39 example/font
+members preserved byte-for-byte. Two new BinaryCellPartition2D class files added.
+Archive .work/dist/cp17-java-source1/procedurals-java-source-dev.zip SHA256
+306202ccd06598f9c6bf8f6b2cc833f2e9d4208bd0ba0a52e23f01032af7a7c8.
+
+Root accepted scoped catalog attestations and reviewed the artist guide. No new original
+recreation; still three demonstrated. Ports/Sol remain paused; Android resume edit remains
+unaccepted and outside this milestone. No worker or native process remains active.
+
+Next choose another concrete Java capability gap using docs/java-completion-plan.md and
+existing bounded evidence, or deepen an original recreation where missing algorithms are
+clear. Avoid equating20 operations with feature completeness or restarting a whole-corpus
+audit. Renderer/animation helper coverage and broader major-idiom coverage remain open.
+Port integration remains queued in docs/porting-resume.md; the Java0.20 accepted artifact
+is authoritative through the explicit review above, beyond that file's earlier pinned SHA.
+
 ## CP17 core and PanelMarks native accepted — distribution next
 
 Root froze the binary-cell partition contract and21 shared fixtures after reviewed ledger

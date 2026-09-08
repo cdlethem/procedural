@@ -7,6 +7,7 @@ open the named example from Processing's contributed-library examples, and save 
 | Your idea | Start here | What the library supplies |
 | --- | --- | --- |
 | Cover a surface with related strokes or bars | [FieldMarks](getting-started.md) | Grid positions and repeatable spatial attributes; replace the drawn mark. |
+| Divide a surface into unequal rectangular panels | [PanelMarks](techniques/panel-marks.md) | Attempt-bounded integer-cell cuts with random or longer-axis selection; retain cells for different decoration. |
 | Shape a smooth closed outline and place marks along it | [LoopMarks](loop-marks.md) | Retained uniform curves, approximate distance queries and raw tangents. |
 | Make lines wander through a field | [PathMarks](path-marks.md) | Connected positions and headings from repeated movement. |
 | Keep wandering lines near a noise level | [BandMarks](band-marks.md) | Proposal acceptance inside a scalar band; retain paths for different marks. |

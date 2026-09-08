@@ -1,0 +1,58 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.20.0",
+  "scope": "Source-built Java bundle with20 operations and20 editable starters; all extracted PDE compilation and native PanelMarks. Local artifact, not registry release.",
+  "archive": {
+    "path": ".work/dist/cp17-java-source1/procedurals-java-source-dev.zip",
+    "sha256": "306202ccd06598f9c6bf8f6b2cc833f2e9d4208bd0ba0a52e23f01032af7a7c8",
+    "members": 198
+  },
+  "build_report": {
+    "path": "evidence/distribution/cp17-java-source.json",
+    "sha256": "1977e4f3d7593e367311296b4056b3bbd2efd83b110dc29879c298515970b968"
+  },
+  "consumer_report": {
+    "path": "evidence/distribution/cp17-java-consumer.json",
+    "sha256": "4e71b4f04148fe59e3c232253b26d3e011404df0f1f0c4d9e46bcb15ec40fa74"
+  },
+  "implementation_sha256": {
+    "packages/java/source-bundle.json": "a3f2c6ecc3ad4d6ab3b5cd9acff8d66eaf09049041c4ade2c67e2958f2048ebe",
+    "tools/build_java_source_bundle.py": "6780a918b138f21636c8bcad006c9d9c0ece964628f95ce34189a1acf2c3dc2e",
+    "tools/check_java_source_bundle.py": "33f3bce46b88d1fb67f61a4a7aeab4e7a05abc9bcaf91d27f4f4b2cfce665d5e",
+    "tools/run_warp_marks_java.py": "bcc75774ff599c42ab699f52d41959d51fda9db24c9069b6ff3468af101b3014",
+    "packages/java/src/main/java/org/procedurals/layout/BinaryCellPartition2D.java": "5406bf9ae61e8cc1edc028974de848ba6ac79d2efe52dc7d9c845d6333d4c389",
+    "packages/java-processing/examples/PanelMarks/PanelMarks.pde": "9bab1be5e9d3f097b35c79fdc651dace846f137a38736850503b57d934e843eb",
+    "tests/native/PanelMarksProbe.java": "11db28ff976f3bbd1e97f1c58e504b312dc937da4f2a961cba7ca6d49323f8a9"
+  },
+  "checks": {
+    "procedurals.jar": {
+      "preserved_classes": 90,
+      "added_classes": [
+        "org/procedurals/layout/BinaryCellPartition2D$PartitionException.class",
+        "org/procedurals/layout/BinaryCellPartition2D.class"
+      ]
+    },
+    "procedurals-processing-adapter.jar": {
+      "preserved_classes": 1,
+      "added_classes": []
+    },
+    "preserved_example_members": 39,
+    "normative_document_in_archive": "design/operations/binary-cell-partition-contract.md",
+    "extracted_native_frames_equal_candidate": 7
+  },
+  "verified": [
+    "Root verified live build/consumer input hashes and all20 actual extracted PDE compilations.",
+    "Extracted six-state PanelMarks edits/retained-layout transfer/reset/save pass; all7 PNGs equal root-inspected candidate pixels.",
+    "Every prior core/adapter class and example/font member preserved byte-for-byte.",
+    "Normative binary partition contract and artist guide travel with package; licensing and external font notice preserved.",
+    "21 exact shared core cases, focused ownership/geometry checks and actual workloads accepted separately.",
+    "Seven source-bundle tests and catalog/reference validation pass."
+  ],
+  "limits": [
+    "No additional original recreation or non-Java support claim.",
+    "Source build requires pinned external JDK, Processing core and font/notice inputs.",
+    "Acceptance binds this exact archive, not future builds from changed inputs."
+  ]
+}

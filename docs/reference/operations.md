@@ -171,10 +171,10 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | not attested | not attested | not attested | not attested |
-| p5js | not attested | not attested | not attested | not attested |
-| py5 | not attested | not attested | not attested | not attested |
-| processing-android | not attested | not attested | not attested | not attested |
+| processing-java | [conformant](../../evidence/conformance/binary-cell-partition-catalog-review.json) | [validated-scoped](../../evidence/conformance/binary-cell-partition-catalog-review.json) | [validated-scoped](../../evidence/conformance/binary-cell-partition-catalog-review.json) | [review](../../evidence/conformance/binary-cell-partition-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
 Motivating evidence:
 

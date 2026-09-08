@@ -1,6 +1,6 @@
 import org.procedurals.layout.BinaryCellPartition2D;
 
-// Candidate CP17 workflow, pending native edit/reset/save and distribution acceptance.
+// CP17 workflow; scoped native and distribution evidence is recorded separately.
 // A changes attempted cuts, P changes axis policy, C recolors, M changes decoration,
 // 0 resets, S saves the displayed frame. Settings are artwork choices, not defaults.
 // Independently composed from the integer panel idioms in poop and barab.

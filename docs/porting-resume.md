@@ -72,3 +72,8 @@ CP16 adds ClosedSpline2D/LoopMarks to the Java queue after noise-band paths. Its
 lookup, periodic seam/plateau choices, raw tangents and exact fdlibm hypot behavior must be
 ported from the frozen contract and fixtures, not inferred from the source Spline helper.
 Use a pushed revision with accepted Java0.19 distribution evidence when this batch resumes.
+
+CP17 adds BinaryCellPartition2D/PanelMarks after closed splines. Preserve exact integer
+bounds, survivor-then-child ordering, failed-attempt RNG consumption, RANDOM/LONGEST axis
+semantics and all-interior cut mapping. Use the accepted Java0.20 distribution checkpoint
+when published; do not port the earlier private probe or claim Processing source replay.
