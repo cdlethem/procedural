@@ -6,15 +6,18 @@ document is the reviewable diff, not an applied change. Nothing here is
 accepted: the `acceptance_review` fields are placeholders and the rows must
 not be published until root creates acceptance records and fills them in.
 
-## Binding
-
-- Baseline commit: `5de3c712` (porting baseline; see batch-01-checkpoint.md)
+- Baseline commit: `467eafd2d1fc9ea4492698f5763091a775eddbb1` (branch base, origin/main
+  tip at porting start). origin/main has since advanced to
+  `bf70f72c` (contact sheets + recipe design drafts); the advance touches only
+  `PROJECT_STATE.md` and `design/recipes/*`, so all porting inputs and evidence
+  bindings are byte-stable and carry forward unchanged.
 - Branch: `porting/batch-01`
 - Slice commits:
   - `99110da5` — JavaScript core export (filter + placement)
   - `688670b8` — p5 browser acceptance harness + evidence
   - `e04c165e` — Python core + py5 PlacementMarks workflow
   - `a8681d8a` — Android example + native acceptance evidence
+  - `0e678dcf` — checked conformance reports + this proposal
 - Contracts (unchanged by this batch):
   - `sampling.ordered-circle-filter-2d` v0.1.0, catalog `catalog/operations/ordered-circle-filter.json`
     sha256 `d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083`

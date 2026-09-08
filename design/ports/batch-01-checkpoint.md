@@ -81,8 +81,29 @@ actual target under the shared lease.
 - [x] Baseline checkout + branch pinned.
 - [x] JS fixture runner passed in fresh checkout (37+31 cases, host ownership/access).
 - [x] Draft semantics/ownership reviewed against both contracts (see handoff notes).
-- [ ] Index export + JS core commit.
-- [ ] p5 native acceptance run.
-- [ ] Python core + fixtures + py5 workflow.
-- [ ] Android core + fixtures + workflow.
-- [ ] Proposed attestations + batch handoff.
+- [x] Index export + JS core commit (`99110da5`).
+- [x] p5 native acceptance run (`688670b8`): 21 rendered states, 10 declared images,
+      restoration hashes, cached Save PNG, keyboard edit, 300ms quiet.
+- [x] Python core + fixtures + py5 workflow (`e04c165e`): 37+31 cases, 36 native
+      invariants, 17-composition py5 sequence, save decode equality.
+- [x] Android core + fixtures + workflow (`a8681d8a`): probe APK on pinned API33
+      emulator, 17 compositions with Java-matching counts, ignored-edit window,
+      radial band structure verified against a JVM dump, MediaStore save round-trip.
+- [x] Checked conformance reports + proposed attestations (`0e678dcf`): every
+      predicate pre-verified against recorded evidence; acceptance records pending
+      root review per the proposal.
+- [x] Batch handoff doc: `design/ports/batch-01-handoff.md`.
+
+## Notes for the next batch
+
+- origin/main advanced to `bf70f72c` while this branch was active; the advance
+  touches only `PROJECT_STATE.md` and `design/recipes/*` — no porting inputs
+  changed, evidence carries forward unchanged.
+- Android attempt history: attempt1 failed a version-bump check on ignored taps;
+  attempt2 recorded the plan renderer as the declared family instead of the actual
+  `AndroidSurface` runtime class (fixed to match the accepted cp2 evidence value);
+  attempt3 passed. Failed attempts preserved outside Git.
+- The p5 acceptance document
+  (`design/capabilities/placement-marks-p5-acceptance.md`) remains the frozen
+  sequence authority for the p5 target; the py5 and Android slices follow the same
+  composition sequence so counts are directly comparable.
