@@ -6,7 +6,7 @@ from jsonschema import Draft202012Validator
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SCHEMA = json.loads((ROOT / "design/recipes/recipe.schema.json").read_text())
+SCHEMA = json.loads((ROOT / "catalog/recipes/recipe.schema.json").read_text())
 Draft202012Validator.check_schema(SCHEMA)
 VALIDATOR = Draft202012Validator(SCHEMA)
 

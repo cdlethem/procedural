@@ -2,7 +2,7 @@ package org.procedurals.recipe;
 
 import java.util.*;
 
-/** Generated from design/recipes/execution-bindings.json and catalog contracts. */
+/** Generated from catalog/recipes/execution-bindings.json and catalog contracts. */
 final class RecipeSchemas {
     private RecipeSchemas() {
     }

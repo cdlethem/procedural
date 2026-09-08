@@ -1,5 +1,19 @@
 # Project state
 
+## Catalog authority migration reviewed
+
+Root admission review identified two remaining boundaries: schema/bindings still live under
+design, and the Java Map evaluator assumes prior static validation. Terra moved the two
+draft metadata files under catalog/recipes and updated active consumers and focused tests;
+historical evidence remains tied to its original paths and hashes. This is authority cleanup,
+not acceptance or semantic expansion. Root documented the direct-Java precondition and next
+validated-composition/target-admission requirement in the prototype README. Luna supplied a
+read-only consumer inventory. Root reviewed the migration: 23 focused tests and generation
+drift check pass; a fresh FieldMarks export at .work/recipe-catalog-migration1 succeeds.
+Generated Java differs only in its provenance comment; no native rerender was needed.
+Next implement explicit validated-composition and target admission before public execution.
+
+
 ## Standalone parameter editing verified as a prototype
 
 Copied FieldMarks exports now allow editing parameters.json and rebuilding independently.

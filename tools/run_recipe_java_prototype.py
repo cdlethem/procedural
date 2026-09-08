@@ -95,12 +95,12 @@ public class RecipePrototypeComparison {
         'tests/native/RecipePrototypeFailures.java')]
     home = java_home(args.java_home)
     metadata = [ROOT / name for name in (
-        'design/recipes/recipe.schema.json', 'design/recipes/execution-bindings.json',
+        'catalog/recipes/recipe.schema.json', 'catalog/recipes/execution-bindings.json',
         'design/recipes/expression-model.md', 'design/recipes/runtime-accounting.md',
         'design/recipes/retained-session.md',
         'tools/validate_recipe_draft.py', 'tools/run_grid_conformance.py',
         'tools/generate_recipe_java_schemas.py')]
-    binding_data = json.loads((ROOT / 'design/recipes/execution-bindings.json').read_text())
+    binding_data = json.loads((ROOT / 'catalog/recipes/execution-bindings.json').read_text())
     metadata += [ROOT / row['contract'] for row in binding_data['operations']]
     metadata += list((ROOT / 'catalog/drawing').glob('*.json'))
     bound = inputs + recipe_paths + metadata + [processing, Path(__file__).resolve(),

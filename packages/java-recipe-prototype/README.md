@@ -43,10 +43,19 @@ in `evidence/conformance/recipe-java-prototype-commands.json`.
 
 ## Remaining acceptance work
 
-General project export support, catalog promotion and complete admission review remain
-separate gates. Later operation
-bindings, assets, animation, other target exporters and MCP/web are unfinished. Root owns
-acceptance; successful command comparison alone does not establish those capabilities.
+Catalog relocation establishes a single metadata authority; draft status remains in force.
+The public execution boundary still needs explicit target admission and an enforced static
+validation precondition. The current Java Map API assumes prior structural/lexical validation;
+it does not itself check the document format, drawing declaration or unselected branches.
+The Python export path performs that static validation before sealing the composition, so
+its tested exports do not establish that arbitrary direct Java submissions are validated.
+
+Next admission work must bind a statically validated composition to its catalog identities
+and requested target before evaluation, and reject unsupported requests precisely. Keep the
+existing evaluator as execution machinery rather than duplicating operation implementations.
+Later operation bindings, assets, animation, other target exporters and MCP/web remain
+unfinished. Root owns acceptance; command comparisons and catalog relocation alone do not
+establish those capabilities.
 
 ## Snapshot export experiment
 

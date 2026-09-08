@@ -104,7 +104,7 @@ def resolve_pointer(document, value):
 
 
 def load_bindings(root):
-    metadata = read_json(root / "design/recipes/execution-bindings.json")
+    metadata = read_json(root / "catalog/recipes/execution-bindings.json")
     bindings = {}
     for record in metadata.get("operations", []):
         operation_id = record.get("id")
@@ -142,7 +142,7 @@ def drawing_declarations(root):
 
 
 def schema_validate(document, root):
-    schema = read_json(root / "design/recipes/recipe.schema.json")
+    schema = read_json(root / "catalog/recipes/recipe.schema.json")
     error = next(Draft202012Validator(schema).iter_errors(document), None)
     if error is not None:
         raise RecipeError("SCHEMA_INVALID", pointer(error.absolute_path), error.message)

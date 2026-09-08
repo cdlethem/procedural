@@ -61,7 +61,7 @@ def validate_schema(value, path=""):
 
 
 def load(root: Path):
-    bindings_path = root / "design/recipes/execution-bindings.json"
+    bindings_path = root / "catalog/recipes/execution-bindings.json"
     bindings = json.loads(bindings_path.read_text())
     schemas = {}
     metadata = []
@@ -102,7 +102,7 @@ def generate(root: Path) -> str:
         "",
         "import java.util.*;",
         "",
-        "/** Generated from design/recipes/execution-bindings.json and catalog contracts. */",
+        "/** Generated from catalog/recipes/execution-bindings.json and catalog contracts. */",
         "final class RecipeSchemas {",
         "    private RecipeSchemas() {",
         "    }",

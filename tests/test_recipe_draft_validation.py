@@ -44,7 +44,7 @@ class RecipeDraftValidationTests(unittest.TestCase):
         self.assert_error(document, "OPERATION_VERSION")
 
     def test_stale_binding_is_reported(self):
-        metadata_path = Path("design/recipes/execution-bindings.json")
+        metadata_path = Path("catalog/recipes/execution-bindings.json")
         metadata = json.loads((ROOT / metadata_path).read_text())
         target = self.base / metadata_path
         target.parent.mkdir(parents=True)

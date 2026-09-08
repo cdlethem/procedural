@@ -116,8 +116,9 @@ boundary. Later operations, animation and assets are explicit remaining X1 oblig
 
 ## Draft implementation inputs
 
-`expression-model.md` specifies the proposed evaluation model. `recipe.schema.json` is
-a strict grammar draft; `execution-bindings.json` points at the existing four contracts.
+`expression-model.md` specifies the proposed evaluation model.
+`catalog/recipes/recipe.schema.json` is a strict grammar draft;
+`catalog/recipes/execution-bindings.json` points at the existing four contracts.
 Four grammar tests and schema-pointer checks pass. No complete recipe execution, lexical
 validation, budget enforcement or export has been accepted. Full CP1/CP2 translations are
 the next architecture check before freezing this surface.
@@ -135,7 +136,7 @@ The predicates are equivalent for the finite coordinates already required by the
 ## Runtime admission decision before evaluator acceptance
 
 Root inspected the four constructor schemas and their native validators. Runtime input
-validation will consume the schema pointers in execution-bindings.json, with the existing
+validation will consume the schema pointers in `catalog/recipes/execution-bindings.json`, with the existing
 contract hashes checked at generation time. Generate a Java schema-data class for the
 prototype using the established Java literal emitter; keep dispatch explicit. A small
 validator interprets that data. Do not copy parameter bounds into handwritten branches or
