@@ -1,0 +1,383 @@
+{
+  "format": "procedurals.recipe",
+  "version": "0.1.0",
+  "status": "draft",
+  "parameters": {
+    "seed": 42,
+    "attempts": 256,
+    "origin": [
+      32,
+      32
+    ],
+    "extent": [
+      576,
+      576
+    ],
+    "radiusRange": [
+      4,
+      28
+    ],
+    "separationScale": 1,
+    "colors": [
+      3252561,
+      16754462,
+      329804,
+      14566968,
+      4046263
+    ],
+    "lengthScale": 1.5,
+    "strokeWidth": 2
+  },
+  "operations": [
+    {
+      "id": "sampling.seeded-circle-placement-2d",
+      "version": "0.1.0"
+    },
+    {
+      "id": "color.cyclic-palette",
+      "version": "0.1.0"
+    }
+  ],
+  "drawing": {
+    "id": "drawing.fresh-raster-2d",
+    "version": "0.1.0"
+  },
+  "environment": {
+    "kind": "literal",
+    "value": {
+      "width": 640,
+      "height": 640,
+      "density": 1,
+      "background": 15591642
+    }
+  },
+  "retain": [
+    {
+      "name": "placement",
+      "value": {
+        "kind": "construct",
+        "operation": "sampling.seeded-circle-placement-2d",
+        "input": {
+          "kind": "record",
+          "fields": [
+            {
+              "name": "seed",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "seed"
+              }
+            },
+            {
+              "name": "attempts",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "attempts"
+              }
+            },
+            {
+              "name": "origin",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "origin"
+              }
+            },
+            {
+              "name": "extent",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "extent"
+              }
+            },
+            {
+              "name": "radiusRange",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "radiusRange"
+              }
+            },
+            {
+              "name": "separationScale",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "separationScale"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "layout",
+      "value": {
+        "kind": "values",
+        "instance": {
+          "kind": "ref",
+          "name": "placement"
+        }
+      }
+    }
+  ],
+  "frame": [
+    {
+      "kind": "bind",
+      "name": "palette",
+      "value": {
+        "kind": "construct",
+        "operation": "color.cyclic-palette",
+        "input": {
+          "kind": "record",
+          "fields": [
+            {
+              "name": "colors",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "colors"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "for",
+      "items": {
+        "kind": "get",
+        "value": {
+          "kind": "ref",
+          "name": "layout"
+        },
+        "key": "centres"
+      },
+      "as": "centre",
+      "indexAs": "index",
+      "body": [
+        {
+          "kind": "bind",
+          "name": "halfLength",
+          "value": {
+            "kind": "math",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "math",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "index",
+                    "value": {
+                      "kind": "get",
+                      "value": {
+                        "kind": "ref",
+                        "name": "layout"
+                      },
+                      "key": "radii"
+                    },
+                    "index": {
+                      "kind": "ref",
+                      "name": "index"
+                    }
+                  },
+                  {
+                    "kind": "get",
+                    "value": {
+                      "kind": "ref",
+                      "name": "params"
+                    },
+                    "key": "lengthScale"
+                  }
+                ]
+              },
+              {
+                "kind": "literal",
+                "value": 0.5
+              }
+            ]
+          }
+        },
+        {
+          "kind": "emit",
+          "value": {
+            "kind": "record",
+            "fields": [
+              {
+                "name": "kind",
+                "value": {
+                  "kind": "literal",
+                  "value": "segment2"
+                }
+              },
+              {
+                "name": "from",
+                "value": {
+                  "kind": "array",
+                  "items": [
+                    {
+                      "kind": "math",
+                      "op": "sub",
+                      "args": [
+                        {
+                          "kind": "index",
+                          "value": {
+                            "kind": "ref",
+                            "name": "centre"
+                          },
+                          "index": {
+                            "kind": "literal",
+                            "value": 0
+                          }
+                        },
+                        {
+                          "kind": "ref",
+                          "name": "halfLength"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "index",
+                      "value": {
+                        "kind": "ref",
+                        "name": "centre"
+                      },
+                      "index": {
+                        "kind": "literal",
+                        "value": 1
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "to",
+                "value": {
+                  "kind": "array",
+                  "items": [
+                    {
+                      "kind": "math",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "index",
+                          "value": {
+                            "kind": "ref",
+                            "name": "centre"
+                          },
+                          "index": {
+                            "kind": "literal",
+                            "value": 0
+                          }
+                        },
+                        {
+                          "kind": "ref",
+                          "name": "halfLength"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "index",
+                      "value": {
+                        "kind": "ref",
+                        "name": "centre"
+                      },
+                      "index": {
+                        "kind": "literal",
+                        "value": 1
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "rgb",
+                "value": {
+                  "kind": "query",
+                  "instance": {
+                    "kind": "ref",
+                    "name": "palette"
+                  },
+                  "port": "sample",
+                  "input": {
+                    "kind": "math",
+                    "op": "div",
+                    "args": [
+                      {
+                        "kind": "ref",
+                        "name": "index"
+                      },
+                      {
+                        "kind": "math",
+                        "op": "length",
+                        "args": [
+                          {
+                            "kind": "get",
+                            "value": {
+                              "kind": "ref",
+                              "name": "layout"
+                            },
+                            "key": "centres"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "name": "opacity8",
+                "value": {
+                  "kind": "literal",
+                  "value": 255
+                }
+              },
+              {
+                "name": "width",
+                "value": {
+                  "kind": "get",
+                  "value": {
+                    "kind": "ref",
+                    "name": "params"
+                  },
+                  "key": "strokeWidth"
+                }
+              },
+              {
+                "name": "cap",
+                "value": {
+                  "kind": "literal",
+                  "value": "round"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -11,6 +11,11 @@ GENERATOR = ROOT / "tools/generate_recipe_java_schemas.py"
 OUTPUT = ROOT / "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeSchemas.java"
 
 
+def binding_contracts():
+    bindings = json.loads((ROOT / "catalog/recipes/execution-bindings.json").read_text())
+    return tuple(record["contract"] for record in bindings["operations"])
+
+
 class RecipeJavaSchemasTest(unittest.TestCase):
     def run_generator(self, *args):
         return subprocess.run([sys.executable, str(GENERATOR), *map(str, args)], cwd=ROOT,
@@ -32,7 +37,7 @@ class RecipeJavaSchemasTest(unittest.TestCase):
     def test_unknown_schema_keyword_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             scratch = Path(directory)
-            for relative in ("catalog/recipes/execution-bindings.json", "catalog/operations/regular-grid.json"):
+            for relative in ("catalog/recipes/execution-bindings.json",) + binding_contracts():
                 target = scratch / relative
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes((ROOT / relative).read_bytes())
@@ -65,13 +70,13 @@ class RecipeJavaSchemasTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             scratch = Path(directory)
             bindings = json.loads((ROOT / "catalog/recipes/execution-bindings.json").read_text())
-            for relative in ("catalog/recipes/execution-bindings.json",) + tuple(
-                    "catalog/operations/" + name + ".json"
-                    for name in ("regular-grid", "gradient-noise-2d-01", "cyclic-palette", "gradient-path")):
+            for relative in ("catalog/recipes/execution-bindings.json",) + binding_contracts():
                 target = scratch / relative
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes((ROOT / relative).read_bytes())
-            bindings["operations"][3]["construct_input"] = "/output_schema"
+            path_binding = next(record for record in bindings["operations"]
+                                if record["id"] == "path.gradient-trace-2d")
+            path_binding["construct_input"] = "/output_schema"
             (scratch / "catalog/recipes/execution-bindings.json").write_text(json.dumps(bindings))
             output = scratch / "RecipeSchemas.java"
             result = self.run_generator("--root", scratch, "--output", output)
@@ -81,7 +86,7 @@ class RecipeJavaSchemasTest(unittest.TestCase):
     def test_binding_identity_drift_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             scratch = Path(directory)
-            for relative in ("catalog/recipes/execution-bindings.json", "catalog/operations/regular-grid.json"):
+            for relative in ("catalog/recipes/execution-bindings.json",) + binding_contracts():
                 target = scratch / relative
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes((ROOT / relative).read_bytes())

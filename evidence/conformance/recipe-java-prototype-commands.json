@@ -1,6 +1,6 @@
 {
   "status": "prototype-command-comparison-passed",
-  "scope": "Eleven exact fresh/session command scenarios and twelve focused failure groups, including enforced structural/lexical admission and admission-failure cache recovery. General executor/exporter acceptance remains pending.",
+  "scope": "Seventeen exact fresh/session command scenarios across field, path and placement recipes; thirteen focused failure groups. General executor/exporter acceptance remains pending.",
   "input_sha256": {
     "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
     "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
@@ -18,24 +18,26 @@
     "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
     "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
     "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
-    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeEvaluator.java": "df6ff3a6fc2084d84d0548f6e2db86cbefe00d86d1f48ae43452f1b3868e0826",
-    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeGrammar.java": "32da7accecc3de6f5e42c99f956bc7b755d7269e3a35093b292869d6108a9717",
+    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeEvaluator.java": "595124ce6950c26f1cb22621185bec6321cf261ae2934c3f1e5555ae0afb48a7",
+    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeGrammar.java": "87e44d3f35ae143892f093eade6b54364437f92b8f4f9e9106215669ad169ad9",
     "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeInputValidation.java": "914b5569bd6b072c48d34c4418d36a79d0ef601cf75a5ee828bbf48607e63a36",
     "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeRetainedKey.java": "2847d6476ed5d2ea2bdcf40558b18ea7c3a4be46f37ac6e7a78b60c3eb756d85",
-    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeSchemas.java": "1054b859e1ed0c60fe6f9ea0614f949193a5293f2c6496021635639596218227",
+    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeSchemas.java": "ea79e12609e655907a4ce6c9efcfb1da2e29ff05af4f81d79ff8fcde918e8a4f",
     "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeStructureValidation.java": "760d5fe2f693781558488adea31c300d8e1e920e178053039c36cd7702c3a835",
     "packages/java/examples/FieldMarks/MarkField.java": "398dcf002dc35076f7af97e7a44f21a48a2ce6e10facf2d370dfac3b9e453ea7",
     "packages/java-processing/examples/FieldMarks/MarkCommands.java": "5d382de16edd6472e14659481c2c20bc1fe7118677c4c68e1d070bc3f59a66ad",
     "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
-    "tests/native/RecipePrototypeFailures.java": "8e74ec4a1eab8611ae79b81e93559005575b319a736c8321efae09abac3217bc",
+    "tests/native/RecipePrototypeFailures.java": "64f3216b89f7338dcb929d4396adf877d0079f6ec1d2cc5d10b7cee419aa768b",
+    "tests/native/PlacementRecipeComposition.java": "689af85166af8af67a0c48c91cc388d2bf5e5d452eab7b0c566c63517f36efa8",
     "design/recipes/examples/field-marks.draft.json": "b8f55f0dc2c948fe91d310f084655fe97e445ab739aabc660eb1b5eee2c19231",
     "design/recipes/examples/path-marks.draft.json": "c84d315ad2acbf96773ba85e0600e3a1294a78a72616bbafeac27a02bcc204fe",
+    "design/recipes/examples/placement-bars.draft.json": "0a750ab00ddc576d94343359f9d3bb9f952cdb26d4405f86336991486abb14ce",
     "catalog/recipes/recipe.schema.json": "935c9f28c832da5931d3ed74d3707f0d1a69b5878ed9d98725d151d656a1529f",
-    "catalog/recipes/execution-bindings.json": "486b37e51cb209c726d13bce3becf9e0b09def3d7a1442961947efdeee6d0b27",
+    "catalog/recipes/execution-bindings.json": "e523fc56f62719f7a789957c80179a9091a5b77871aba57113067aa63847c6bc",
     "design/recipes/expression-model.md": "0e688b2554a9f6f7e208fcc54ebf433ce26244b74298402ba9415286914454a3",
-    "design/recipes/runtime-accounting.md": "bf3c59b85916dd14f05a096a6ede29cfea203b9e2b806050faa40a71c8688e95",
+    "design/recipes/runtime-accounting.md": "d40b652f1c7ba26fd9d5dc4f58a0fc27d713f506f08ed61063d97b51152e9fda",
     "design/recipes/retained-session.md": "5c55a38bc6370fd645bca29e70648db32725cff318b87d8959765eb9009052a7",
-    "tools/validate_recipe_draft.py": "631300eeb119f001aba66840271019118bbf9717003d27d4b66199acf6b05445",
+    "tools/validate_recipe_draft.py": "4c2443d1bf1ec8064bde4faab3f19fb1167961208adbfd91afc028a9c8e94d59",
     "tools/run_grid_conformance.py": "392d23b61f713c7d204e215a9b468874f78b213741dc1e163b4b5fcb5553b180",
     "tools/generate_recipe_java_schemas.py": "bde7a979d28aa4ae1cc5066c870ea38d7ef06da293b77e5be30acff5ff011f88",
     "tools/generate_recipe_java_grammar.py": "7323a6830a92ec9560e36d43cb91a25f5f4f78cc3ec52f39d1fbd7918599f191",
@@ -43,9 +45,10 @@
     "catalog/operations/gradient-noise-2d-01.json": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
     "catalog/operations/cyclic-palette.json": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
     "catalog/operations/gradient-path.json": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
     "catalog/drawing/fresh-raster-2d.json": "8fd5d39bb1196d689aa8ca7a88e9f22bb75987c23bc8716e0fe00493b0432346",
     ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
-    "tools/run_recipe_java_prototype.py": "61d412f38f903d1c93f18a5163f5827368047579e83cbe88736c3adc5a16f53e",
+    "tools/run_recipe_java_prototype.py": "cbf457328b14b33c0d63dc4ed58b9edc8dcb5ed54c195a52179a6e636635bdbf",
     ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
     ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
     ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
@@ -53,7 +56,8 @@
   },
   "roundtripped_recipes": [
     "field-marks.draft.json",
-    "path-marks.draft.json"
+    "path-marks.draft.json",
+    "placement-bars.draft.json"
   ],
   "scenarios": [
     {
@@ -187,6 +191,78 @@
         "valueUnits": 793384,
         "commands": 5500
       }
+    },
+    {
+      "name": "placement-baseline",
+      "commands": 164,
+      "counters": {
+        "visits": 7104,
+        "calls": 167,
+        "work": 34661,
+        "iterations": 164,
+        "valueUnits": 13080,
+        "commands": 164
+      }
+    },
+    {
+      "name": "placement-length",
+      "commands": 164,
+      "counters": {
+        "visits": 7104,
+        "calls": 167,
+        "work": 34661,
+        "iterations": 164,
+        "valueUnits": 13080,
+        "commands": 164
+      }
+    },
+    {
+      "name": "placement-palette",
+      "commands": 164,
+      "counters": {
+        "visits": 7104,
+        "calls": 167,
+        "work": 34661,
+        "iterations": 164,
+        "valueUnits": 13080,
+        "commands": 164
+      }
+    },
+    {
+      "name": "placement-seed",
+      "commands": 173,
+      "counters": {
+        "visits": 7491,
+        "calls": 176,
+        "work": 34715,
+        "iterations": 173,
+        "valueUnits": 13566,
+        "commands": 173
+      }
+    },
+    {
+      "name": "placement-count",
+      "commands": 204,
+      "counters": {
+        "visits": 8824,
+        "calls": 207,
+        "work": 53557,
+        "iterations": 204,
+        "valueUnits": 17123,
+        "commands": 204
+      }
+    },
+    {
+      "name": "placement-empty",
+      "commands": 0,
+      "counters": {
+        "visits": 52,
+        "calls": 3,
+        "work": 13,
+        "iterations": 0,
+        "valueUnits": 43,
+        "commands": 0
+      }
     }
   ],
   "failure_groups": [
@@ -201,7 +277,8 @@
     "runtime-schema-admission",
     "visit-call-remainder-empty-and-operation-recovery",
     "retained-session-cache-and-reservations",
-    "structural-admission-and-session-recovery"
+    "structural-admission-and-session-recovery",
+    "placement-budgets-and-native-errors"
   ],
   "reviewer": "root",
   "session_scenarios": [
@@ -270,6 +347,42 @@
       "retained_reused": true,
       "retained_executed_calls": 0,
       "retained_reserved_units": 144488
+    },
+    {
+      "name": "placement-baseline",
+      "retained_reused": false,
+      "retained_executed_calls": 2,
+      "retained_reserved_units": 0
+    },
+    {
+      "name": "placement-length",
+      "retained_reused": true,
+      "retained_executed_calls": 0,
+      "retained_reserved_units": 5856
+    },
+    {
+      "name": "placement-palette",
+      "retained_reused": true,
+      "retained_executed_calls": 0,
+      "retained_reserved_units": 5856
+    },
+    {
+      "name": "placement-seed",
+      "retained_reused": false,
+      "retained_executed_calls": 2,
+      "retained_reserved_units": 0
+    },
+    {
+      "name": "placement-count",
+      "retained_reused": false,
+      "retained_executed_calls": 2,
+      "retained_reserved_units": 0
+    },
+    {
+      "name": "placement-empty",
+      "retained_reused": false,
+      "retained_executed_calls": 2,
+      "retained_reserved_units": 0
     }
   ],
   "structural_admission": {
@@ -287,11 +400,5 @@
     "java_json_parser": false,
     "reviewer": "root",
     "notes": "Root completed schema interpreter and explicit lexical traversal after rejecting incomplete scaffolding. Known-port/wrong-instance probe still reaches PORT; nonfinite literal now correctly rejects earlier as NONFINITE_NUMBER."
-  },
-  "standalone_compile": {
-    "status": "compiled",
-    "export_manifest_sha256": "1cb6adfe235851b4159643712ed31d521dcc73390b7e4e4a7118f7fa1f4386dc",
-    "build_manifest_sha256": "ab03a6a97ca9ce4d8e21928eec1b62177503b35a6eed13fdfdd2c55db9db22cb",
-    "scope": "Compilation only; no new native render claim."
   }
 }

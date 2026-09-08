@@ -46,7 +46,6 @@ class RecipeJavaGrammarTest(unittest.TestCase):
         sys.path.insert(0, str(ROOT))
         from tools.run_grid_conformance import java_value
         self.assertIn("freeze(" + java_value(schema) + ");", text)
-        self.assertEqual(len(bindings["operations"]), 4)
 
     def test_unknown_keyword_and_unresolved_ref_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:

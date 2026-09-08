@@ -6,8 +6,9 @@ import org.procedurals.fields.GradientNoise2D01;
 import org.procedurals.internal.DrawingValues;
 import org.procedurals.layout.RegularGrid;
 import org.procedurals.paths.GradientPath2D;
+import org.procedurals.sampling.CirclePlacements2D;
 
-/** Draft-only ordered evaluator for the four bindings in execution-bindings.json. */
+/** Draft-only ordered evaluator for the catalog bindings in execution-bindings.json. */
 public strictfp final class RecipeEvaluator {
     private RecipeEvaluator() {
     }
@@ -196,7 +197,7 @@ public strictfp final class RecipeEvaluator {
         s.units("", 2);
         return new Result(env, commands, s.counters(), reused, retainedCalls, reserved);
     }
-    /** Single-threaded, one-entry coarse retain cache for the four immutable draft bindings. */
+    /** Single-threaded, one-entry coarse retain cache for the immutable draft bindings. */
     public static final class Session {
         private Object key;
         private RetainStage cached;
@@ -291,11 +292,7 @@ public strictfp final class RecipeEvaluator {
             if (!out.add(id)) {
                 fail("DUPLICATE_OPERATION", "/operations", "duplicate operation");
             }
-            if (!"0.1.0".equals(v)
-                    || !(id.equals("layout.regular-grid")
-                    || id.equals("field.gradient-noise-2d-01")
-                    || id.equals("color.cyclic-palette")
-                    || id.equals("path.gradient-trace-2d"))) {
+            if (!v.equals(RecipeGrammar.declarations().get(id))) {
                 fail("DECLARATION", "/operations", "unsupported draft binding");
             }
         }
@@ -580,8 +577,17 @@ public strictfp final class RecipeEvaluator {
                 s.call(p, 1 + steps);
                 return new Instance(id, GradientPath2D.trace(input), steps);
             }
+            if ("sampling.seeded-circle-placement-2d".equals(id)) {
+                long n=index(map(input,p).get("attempts"),p); long cap=Math.min(n,16), slots=4*cap+3;
+                while(cap<n){long next=cap+Math.max(1,cap>>>1);if(next>1073741823L)next=1073741823L;slots+=4*next+3;cap=next;}
+                s.checkArray(p,2*cap); s.units(p,slots+4*n+19); s.call(p,1+4*n+n*(n-1)/2);
+                CirclePlacements2D circles=CirclePlacements2D.seeded(input); return new Instance(id,circles,circles.size());
+            }
         } catch (RecipeFailure e) {
             throw e;
+        } catch (CirclePlacements2D.PlacementArithmeticException e) {
+            throw new RecipeFailure("OPERATION_FAILURE", p, e.getMessage(), s.iteration,
+                    id, e.code + " candidate=" + e.candidateIndex + " stage=" + e.stage);
         } catch (GradientPath2D.TraceException e) {
             throw traceFail(p, id, e, s);
         } catch (IllegalArgumentException e) {
@@ -677,6 +683,9 @@ public strictfp final class RecipeEvaluator {
                 s.units(p, 4 * n + 6);
                 s.call(p, 4 * n + 7);
                 return path.toValues();
+            }
+            if ("sampling.seeded-circle-placement-2d".equals(x.id)) {
+                long k=x.size; s.checkArray(p,k); if(k>0)s.checkArray(p,2); s.units(p,5*k+5); s.call(p,5*k+6); return ((CirclePlacements2D)x.value).toValues();
             }
         } catch (RecipeFailure e) {
             throw e;

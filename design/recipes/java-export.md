@@ -83,3 +83,12 @@ The native JVM probe is `tests/native/RecipeExportDataProbe.java`; it compiles a
 exported classes and established recipe-comparison classes. Corrupt-resource cases call the
 reader with the actual corrupt digest to test decoding separately from digest rejection.
 No renderer is needed when proving this data round trip and exact command equality.
+
+## Placement-bars native preview plan
+
+After the six exact direct-core command/session comparisons pass, render the standalone
+placement-bars default and an edit changing only lengthScale to0.75 and colors to the existing
+CP1 alternate palette. Both must show164 horizontal marks with unchanged centres; command
+comparisons are the geometry oracle. Root inspects mark separation, palette and shortened
+lengths. This is a technique-level recipe transfer, not reproduction of an original corpus
+image. Native runs use the shared machine lease; record source/build/image identities.

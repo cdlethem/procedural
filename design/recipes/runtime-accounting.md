@@ -120,3 +120,20 @@ These clarify the existing created-value rule; they do not authorize increasing 
 budget to hide incorrect accounting. Boundary probes and the existing nine command cases
 must be rerun after the correction. Full schema admission and native/export support remain
 separate gates.
+
+## Seeded placement binding reservation
+
+Before calling CirclePlacements2D.seeded, use attempts n to reserve a worst-case proposal
+budget of1+4n+n(n-1)/2 work units: construction, four RNG draws per proposal and every ordered
+pair comparison when all proposals survive. This is a work-unit definition, not elapsed time
+or a count of individual floating-point instructions. No packing loop is duplicated.
+
+Reproduce only the core's backing-capacity schedule for allocation accounting: initial
+capacity min(n,16), grow by max(1,floor(capacity/2)) until capacity>=n, capped at1073741823.
+Sum4*capacity+3 units for each allocation generation (coordinates/radii/source indices and
+array containers). Reserve another4n+19 for worst-case final trimming and fixed state.
+Check maximum coordinate-array length2*finalCapacity against the host array limit before
+calling the core. Reservations are deliberately conservative when many proposals reject.
+For k accepted circles, values() costs5k+5 output units and5k+6 work units; its arrays require
+length k and each nonempty centre requires length2. Session reuse reserves the original
+retained reservation as with the existing immutable bindings.

@@ -128,8 +128,8 @@ def load_bindings(root):
         except (KeyError, IndexError, TypeError, ValueError) as error:
             raise RecipeError("BINDING_STALE", "", "binding schema pointer changed: " + operation_id) from error
         bindings[operation_id] = record
-    if len(bindings) != 4:
-        raise RecipeError("BINDING_INVALID", "", "expected four draft operation bindings")
+    if not bindings:
+        raise RecipeError("BINDING_INVALID", "", "expected at least one draft operation binding")
     return bindings
 
 

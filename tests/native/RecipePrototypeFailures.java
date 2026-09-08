@@ -36,6 +36,34 @@ public final class RecipePrototypeFailures {
         try { RecipeEvaluator.evaluate(recipe,limits); throw new AssertionError("expected "+code); }
         catch(RecipeEvaluator.RecipeFailure error) { check(code.equals(error.code),"expected "+code+", got "+error.code); return error; }
     }
+    static Map<String,Object> placementInput(int attempts) {
+        return map("seed",42,"attempts",attempts,"origin",list(32,32),"extent",list(576,576),
+                "radiusRange",list(4,28),"separationScale",1);
+    }
+    static Map<String,Object> placementRecipe(Map<String,Object> input) {
+        return operationRecipe("sampling.seeded-circle-placement-2d",map("kind","construct",
+                "operation","sampling.seeded-circle-placement-2d","input",literal(input)));
+    }
+    static void placementAdmission() {
+        RecipeEvaluator.evaluate(placementRecipe(placementInput(0)),new RecipeEvaluator.Limits());
+        RecipeEvaluator.evaluate(placementRecipe(placementInput(64)),new RecipeEvaluator.Limits());
+        RecipeEvaluator.Limits work=new RecipeEvaluator.Limits();work.work=1;
+        failure(placementRecipe(placementInput(64)),work,"LIMIT_WORK");
+        RecipeEvaluator.Limits array=new RecipeEvaluator.Limits();array.arrayLength=64;
+        failure(placementRecipe(placementInput(64)),array,"LIMIT_ARRAY_LENGTH");
+        RecipeEvaluator.Limits values=new RecipeEvaluator.Limits();values.valueUnits=100;
+        failure(placementRecipe(placementInput(64)),values,"LIMIT_VALUE_UNITS");
+        Map<String,Object> reversed=placementInput(1);reversed.put("radiusRange",list(28,4));
+        RecipeEvaluator.RecipeFailure error=failure(placementRecipe(reversed),new RecipeEvaluator.Limits(),"OPERATION_FAILURE");
+        check("INVALID_INPUT".equals(error.original),"placement native input code");
+        Map<String,Object> overflow=placementInput(1);overflow.put("origin",list(Double.MAX_VALUE,0));overflow.put("extent",list(Double.MAX_VALUE,1));
+        error=failure(placementRecipe(overflow),new RecipeEvaluator.Limits(),"OPERATION_FAILURE");
+        check(error.original.equals("PLACEMENT_ARITHMETIC_INVALID candidate=0 stage=proposal_x"),"placement arithmetic metadata");
+        check(error.operation.equals("sampling.seeded-circle-placement-2d"),"placement operation identity");
+        // Exhausted work rejects before the deliberately overflowing core proposal runs.
+        failure(placementRecipe(overflow),work,"LIMIT_WORK");
+        System.out.println("placement-budgets-and-native-errors passed");
+    }
     static void structuralAdmission() {
         Map<String,Object> bad=recipe(list(),list());bad.put("format","other");
         failure(bad,new RecipeEvaluator.Limits(),"SCHEMA_INVALID");
@@ -266,6 +294,7 @@ public final class RecipePrototypeFailures {
         check(!recovery.evaluate(failedCold,new RecipeEvaluator.Limits()).retainedReused,"failed frame published new cache");
         System.out.println("retained-session-cache-and-reservations passed");
         structuralAdmission();
+        placementAdmission();
         System.out.println("PROTOTYPE_FAILURE_CASES_PASSED");
     }
 }

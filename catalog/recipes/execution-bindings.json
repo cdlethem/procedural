@@ -1,6 +1,6 @@
 {
   "status": "draft",
-  "scope": "Four immutable CP1/CP2 binding proposals; no callable executor or target support claim. Contract schema pointers remain authoritative. Native binding strings are review notation, never reflective execution.",
+  "scope": "Five immutable operation binding proposals for field, path and placement compositions; no accepted executor claim. Contract schema pointers remain authoritative. Native binding strings are review notation, never reflective execution.",
   "operations": [
     {
       "id": "layout.regular-grid",
@@ -68,6 +68,19 @@
       "values_output": "/output_schema",
       "java_binding_proposal": {
         "construct": "GradientPath2D.trace(input)",
+        "values": "instance.toValues()"
+      },
+      "ports": {}
+    },
+    {
+      "id": "sampling.seeded-circle-placement-2d",
+      "version": "0.1.0",
+      "contract": "catalog/operations/seeded-circle-placement.json",
+      "contract_sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+      "construct_input": "/input_schema",
+      "values_output": "/output_schema",
+      "java_binding_proposal": {
+        "construct": "CirclePlacements2D.seeded(input)",
         "values": "instance.toValues()"
       },
       "ports": {}

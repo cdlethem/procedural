@@ -1,7 +1,7 @@
 # Java recipe evaluator prototype
 
 This directory is outside the accepted Java library and source-bundle manifest. It is an
-implementation experiment for the draft composition model and four reviewed immutable
+implementation experiment for the draft composition model and five reviewed immutable
 operations, not an accepted executor, exporter or target support attestation.
 
 `RecipeEvaluator.evaluate(recipe, limits)` consumes an in-memory Map and performs bounded structural and lexical
@@ -26,7 +26,7 @@ accurate heap limit. Elapsed time is a supervised safeguard, not a deterministic
 ## Current evidence
 
 The established runner serializes and reparses both draft recipes, then compares actual
-Java output across eleven FieldMarks/PathMarks baseline/edit scenarios, comparing both fresh and session
+Java output across seventeen FieldMarks/PathMarks/placement-bars baseline/edit scenarios, comparing both fresh and session
 execution. FieldMarks covers
 length, palette and segment/quad edits. PathMarks compares the existing `streamForCanvas`
 workflow with explicit recipe visibility predicates; it is not a general clipping operation.
@@ -85,7 +85,7 @@ state and never enter exported recipe JSON.
 Cached data and keys are detached from callers. Each warm call checks current array limits
 and reserves cached capacity against valueUnits before frame work. Result diagnostics expose
 `retainedReused`, `retainedExecutedCalls` and `retainedReservedUnits`; calls count actual work,
-not hypothetical reconstruction. The eleven exact comparisons and focused failure groups
+not hypothetical reconstruction. The seventeen exact comparisons and focused failure groups
 cover style reuse, geometry invalidation, alias detachment, budget rejection and recovery.
 This establishes the scoped prototype behavior, not accepted general executor support.
 
@@ -100,3 +100,8 @@ The private binary resource avoids Java method/constant-size limits for valid re
 A12000-value array and70000-character Unicode string compile and decode exactly; PathMarks
 and FieldMarks command comparisons remain exact. The reader bounds allocation and rejects
 corrupt resources before evaluation. This is still prototype export behavior.
+
+The placement-bars draft adds seeded placement through the existing CirclePlacements2D core.
+Its default256 proposals produce164 marks. Palette and length edits reuse placements in a
+Session; seed and proposal edits rebuild them. Packing and growing storage are reserved before
+native execution. This adds a recipe binding, not a sixteenth package operation.

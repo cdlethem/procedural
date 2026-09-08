@@ -198,7 +198,8 @@ def main():
  base=dict(recipe); parameters=base.pop('parameters');base['parameters']={}; output.mkdir(parents=True); hashes={}
  for source_root,prefix in ((ROOT/'packages/java/src/main/java','src/core'),(ROOT/'packages/java-processing/src/main/java','src/adapter'),(ROOT/'packages/java-recipe-prototype/src/main/java','src/prototype')):
   for source in sorted(source_root.rglob('*.java')): copy_file(source,output/prefix/source.relative_to(source_root),hashes,output)
- for name in ('LICENSE','THIRD_PARTY_NOTICES.md','catalog/recipes/execution-bindings.json','catalog/recipes/recipe.schema.json','catalog/drawing/fresh-raster-2d.json','packages/java/source-bundle.json',source_manifest['accepted_distribution_review']['path'],'catalog/operations/regular-grid.json','catalog/operations/gradient-noise-2d-01.json','catalog/operations/cyclic-palette.json','catalog/operations/gradient-path.json'): copy_file(ROOT/name,output/'metadata'/name,hashes,output)
+ metadata_operation_files=tuple(binding['contract'] for binding in load_bindings(ROOT).values())
+ for name in ('LICENSE','THIRD_PARTY_NOTICES.md','catalog/recipes/execution-bindings.json','catalog/recipes/recipe.schema.json','catalog/drawing/fresh-raster-2d.json','packages/java/source-bundle.json',source_manifest['accepted_distribution_review']['path'],*metadata_operation_files): copy_file(ROOT/name,output/'metadata'/name,hashes,output)
  (output/'recipe.json').write_text(json.dumps(base,indent=2,sort_keys=True)+'\n',encoding='utf-8');hashes['recipe.json']=sha(output/'recipe.json')
  (output/'parameters.json').write_text(json.dumps(parameters,indent=2,sort_keys=True,ensure_ascii=False,allow_nan=False)+'\n',encoding='utf-8')
  copy_file(ROOT/'tools/templates/RecipeExportData.java',output/'src/RecipeExportData.java',hashes,output)

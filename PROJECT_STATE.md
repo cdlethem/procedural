@@ -1,5 +1,23 @@
 # Project state
 
+## Fifth recipe binding and placement preview verified
+
+Added seeded-circle-placement-2d to recipe metadata and evaluator using the accepted Java
+core. Root specified conservative pair-work and growing-buffer reservations, completed native
+arithmetic error wrapping and probes, and authored placement-bars plus its independent command
+oracle. Luna updated metadata consumers/generation and tests; initial Terra implementation
+required root completion. No new public core operation.
+Final .work/recipe-placement-root2 passes17 exact fresh/session command scenarios and13 focused
+groups. Placement contributes6 cases: baseline, length, palette, seed, proposal count and zero.
+Style edits reuse geometry; seed/count edits rebuild.26 focused Python checks pass. Two native
+standalone renders succeeded under the shared lock; root inspected unchanged164-centre layout
+with shorter/recolored marks. Evidence: evidence/distribution/recipe-placement-preview.json.
+The recipe preview now binds5 operations and demonstrates3 compositions; Java library count
+remains15 operations/15 accepted starters. Next extend recipe capabilities from the existing
+Java catalog in dependency order, preserving explicit budget and target evidence. Remaining
+ports/assets/animation and later milestones stay open. Preserve unrelated JS work.
+
+
 ## Current exporter native checkpoint and next recipe binding
 
 Root rendered the binary-resource FieldMarks and PathMarks exports through the shared
