@@ -91,6 +91,15 @@ implementation bugs without root reviewing every iteration. Before the next buil
 record a prioritized bounded deliverable list, model ownership and stopping conditions.
 Do not invent quota balances, prices or a reliable finish-date estimate.
 
+## Current scheduling — maintainer revision: return to Java
+
+Pause port integration and prioritize new Java functionality. Preserve accepted port work
+and unfinished Android ProfileMarks as explicitly unaccepted drafts. Resume instructions
+and remaining integration obligations are in `docs/porting-resume.md`. Root selects the next
+artist capability from concrete algorithmic gaps and bounded evidence, delegates frozen
+implementation work, and retains final design/native review. Sol review remains paused.
+Do not resume ports simply because a previous milestone sequence put them next.
+
 # The evidence base
 
 The publishable survey snapshot lives in `survey/`. The upstream source corpus is Manolo

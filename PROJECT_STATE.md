@@ -1,5 +1,59 @@
 # Project state
 
+## Maintainer refocus: Java capability development; ports paused
+
+Pause all port integration now. Accepted latestbaseline88ac268d retained; no native process
+is live. Full deferred port checklist and Android resume hypothesis documented in
+docs/porting-resume.md. Android files remain unaccepted drafts, not a shipped milestone.
+Root opens a bounded next-Java capability decision. Luna retrieves at most3 actual Voronoi
+cell examples (distinguish Delaunay tags); root compares their algorithmic gap/API cost
+to existing CP12 evidence. No new signature or operation accepted from search matches.
+Next write one artist capability decision, then frozen contract and delegated Java slice.
+
+## Android native attempt2 draws/saves; resume remains unresolved
+
+Session31384 terminal failed and emulator cleaned up. Workflow-local PFragment dispatch
+fix enabled9states through trio and actual MediaStore save with250ms no-redraw check.
+Root inspected before-resume-screen.png: three separated colored profile forms visible
+in square viewport with readable two-row controls. Native probe timed out awaiting
+post-resume draw; no resumed display/next-reset acceptance. Artifacts preserved under
+.work/native/profile-marks-android2. Terra performs bounded read-only pinned-runtime
+lifecycle investigation; root will choose minimal correction/diagnostic next. No native
+job live; Android support still unaccepted. Do not repeat native run without new cause
+or instrumentation. Latest pushed accepted baseline remains88ac268d.
+
+## Android ProfileMarks second native attempt live after dispatch fix
+
+Session20412 terminal failed: probe timed out with zero frames; emulator cleaned up.
+Root read pinned PFragment.canDraw isLooping gate and added workflow-local dispatch
+correction; noLoop/redraw decision remains PApplet.handleDraw, no 2D support carryover.
+Probe3 compiled (session9821 terminal). Session31384 now runs locked emulator startup
+and .work/native/profile-marks-android2 using .work/android-profile-probe3. Poll same
+handle; native support still unaccepted. First native/build failures preserved.
+
+## Android ProfileMarks first native attempt live
+
+Probe1 compile failed checked JSONException; root corrected signature, probe2 compilation
+passed. Root reviewed corrected MediaStore-read,250ms save quiet, settings, baseline/reset
+and ignored-pole checks. Host verifies nonempty square viewport bounds and observer hashes.
+Session20412 now runs shared-lock emulator startup + native runner via
+.work/run-profile-android-session.py, stage .work/android-profile-probe2, output
+.work/native/profile-marks-android1. Initial lease attempt reported busy; next acquired it.
+Poll this same live handle; do not restart based on observation timeout. No native result
+or Android support acceptance yet. Startup/runner owns emulator cleanup on completion.
+
+## Android ProfileMarks source corrections compile; native probe preparation
+
+Root reviewed Activity and corrected reset-on-resume regeneration, atomic PNG/revision
+snapshot publication, actual submission counts, post/endDraw acknowledgment, square
+viewport/default-camera scaling and edits arriving during draw. Builder now binds itself,
+JDK/SDK and staged project before/after compilation, with fresh .work stages and probe
+Activity/source overrides. Session41873 terminal passed compile6; APKc16643df073f36a6148b7c3a23f804393e2eb0690d2d9e630ec81191a7e9938c.
+Root prepared host runner from existing BranchMarks lifecycle runner; Terra owns native
+ProfileMarksProbeActivity against current snapshot/save hooks. Neither probe compiled
+nor run yet; all Android ProfileMarks files remain draft, no support acceptance.
+Next review probe/hostrunner together, compile probe fresh and launch under sharedlock.
+
 ## Python ProfileMarks0.7 distribution accepted
 
 Root reviewed/corrected worker packaging: required evidence schemas, native before/after
