@@ -1,0 +1,188 @@
+{
+  "id": "layout.binary-cell-partition-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "layout.binary-cell-partition-2d",
+  "description": "Generate retained ordered integer-cell rectangles by attempt-bounded binary cuts with random or longer-axis selection.",
+  "capability_decision": "design/capabilities/cp17-rectangle-partition-direction.md",
+  "design_review": "design/operations/binary-cell-partition-contract.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/poop#0",
+      "notes_path": "survey/out/2018/Generativos/poop/notes.md",
+      "note_sha256": "bcf627ff891884e6ead42010a58c0f48dd28ddf7078ad61e12c36bc13393e976",
+      "evidence_sha256": "a5325b855b5634f7107ad72c00cddd21c8b7a52b0439e6bfa94f55df52ae4199",
+      "upstream_pde_sha256": "300681a08a14988303c125caa8ca97dcf9ae31f5e78a7fac0d5f51e05ffb0c78",
+      "relationship": "Extract integer-cell binary layout with explicit axis policy; source RNG quirks and decorative composition remain outside."
+    },
+    {
+      "candidate_id": "2018/Generativos/barab#0",
+      "notes_path": "survey/out/2018/Generativos/barab/notes.md",
+      "note_sha256": "f2820be3c72bd3d76d34777182a0745010f6fcf163edf50b90e5deabfa62f3c9",
+      "evidence_sha256": "a01a9394c45dca08de81104092a7645c01dbee778d68137dd9514e6d88c4079e",
+      "upstream_pde_sha256": "2a741c599feae77ee7799e2ffde26aed289b9978f597e303f71a9f2b9f448068",
+      "relationship": "Extract integer-cell binary layout with explicit axis policy; source RNG quirks and decorative composition remain outside."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "seed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "columns": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "attempts": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483646
+      },
+      "axisPolicy": {
+        "type": "string",
+        "enum": [
+          "RANDOM",
+          "LONGEST"
+        ]
+      }
+    },
+    "required": [
+      "seed",
+      "columns",
+      "rows",
+      "attempts",
+      "axisPolicy"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "bounds": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          }
+        }
+      },
+      "splits": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483646
+      }
+    },
+    "required": [
+      "bounds",
+      "splits"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Exact ordered positive nonoverlapping integer rectangles cover the root; size=splits+1, splits<=attempts; detached exports.",
+  "behavior": {
+    "normative": "design/operations/binary-cell-partition-contract.md",
+    "generation": "Private seeded ordered live-leaf selection, RANDOM or LONGEST axis, failed unit-axis attempts consume no cut; successful cuts cover every interior integer boundary under unit mapping; remove parent preserving survivors then append low/high children. Exact consumption and arithmetic in normative contract.",
+    "environment": "Private xoshiro128**1.1/SplitMix64 as seeded-quadrant-partition; no host globals, renderer, time or assets.",
+    "ownership": "Immutable retained values; copied exports; boundsInto validates before allocation-free writes.",
+    "native_forms": "BinaryCellPartition2D.generate(Object) or generate(long,int,int,int,String); size,splits,boundsAt(long),boundsInto(long,int[4]),toValues.",
+    "complexity": "O(attempts*maximumLiveCount) worst-case work; O(finalLiveCount) storage; grow by actual successes. Representation bounds are not memory promises."
+  },
+  "errors": {
+    "INVALID_INPUT": "Invalid configuration carrier, keys or values.",
+    "INVALID_INDEX": "Negative or greater-than-safe-integer index.",
+    "INDEX_OUT_OF_RANGE": "Valid numeric index outside retained sequence.",
+    "INVALID_OUTPUT": "Null or non-length4 destination; index checked first, no partial writes."
+  },
+  "parameters": {
+    "seed": {
+      "unit": "uint32 private stream seed",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit deterministic design, no source stream replay."
+    },
+    "columns": {
+      "unit": "integer horizontal cells",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Both source layouts use integer cells; representation domain not visual recommendation."
+    },
+    "rows": {
+      "unit": "integer vertical cells",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Both source layouts use integer cells; caller scales to drawing units."
+    },
+    "attempts": {
+      "unit": "attempted leaf replacements",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "CP17 private experiment20/80/240; fewer actual splits with saturation; no encouraged interval."
+    },
+    "axisPolicy": {
+      "unit": "RANDOM or LONGEST",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "poop random-axis and barab longer-axis; CP17 native comparison supports retaining both."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Java first; implementation and native review pending."
+    },
+    "p5js": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/binary-cell-partition-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "PanelMarks count/policy/edit/style/reset/save and retained-layout transfer; private study is investigation only."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root approved normative contract for Java implementation; native and distribution acceptance pending."
+  }
+}

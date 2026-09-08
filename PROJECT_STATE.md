@@ -1,5 +1,25 @@
 # Project state
 
+## CP17 core and PanelMarks native accepted — distribution next
+
+Root froze the binary-cell partition contract and21 shared fixtures after reviewed ledger
+extraction of poop#0/barab#0. BinaryCellPartition2D passes shared Object/typed vectors,
+geometry/ownership/carrier/access checks and actual tiny/source-scale/unsaturated workloads.
+The20k-attempt case produced17632 leaves in7.37ms on the pinned desktop runtime; no guarantee.
+See evidence/conformance/binary-cell-partition-java-root-review.json.
+
+Root wrote and reviewed PanelMarks and its six-state native probe. Count/policy edits,
+retained-layout recolor/decoration, exact reset and cached save all pass; root inspected
+five distinct rendered states. See evidence/reproductions/cp17-java2d/root-review.json.
+No native process remains active. Workers finished; root corrected incomplete worker
+documentation/readability and retained implementation/test ownership.
+
+Next integrate scoped catalog attestations, Java0.20 manifest/docs and PanelMarks guide,
+build/extract the source bundle and verify consumer compilation/native pixel equivalence.
+The public core and staged example are tracked, but shipped count remains19 operations/19
+workflows until distribution acceptance. Ports/Sol paused; unrelated Android resume edit
+remains untouched/unaccepted outside this Java checkpoint. No new original recreation.
+
 ## CP17 private partition experiment reviewed — public contract next
 
 Root specified binary integer-cell layout semantics and reviewed corrected worker core,

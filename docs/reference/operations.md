@@ -107,6 +107,82 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/bilinear-raster-remap.json).
 
+## layout.binary-cell-partition-2d (0.1.0)
+
+Generate retained ordered integer-cell rectangles by attempt-bounded binary cuts with random or longer-axis selection.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2147483647
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2147483647
+    },
+    "attempts": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483646
+    },
+    "axisPolicy": {
+      "type": "string",
+      "enum": [
+        "RANDOM",
+        "LONGEST"
+      ]
+    }
+  },
+  "required": [
+    "seed",
+    "columns",
+    "rows",
+    "attempts",
+    "axisPolicy"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| seed | uint32 private stream seed | null | null | Explicit deterministic design, no source stream replay. |
+| columns | integer horizontal cells | null | null | Both source layouts use integer cells; representation domain not visual recommendation. |
+| rows | integer vertical cells | null | null | Both source layouts use integer cells; caller scales to drawing units. |
+| attempts | attempted leaf replacements | null | null | CP17 private experiment20/80/240; fewer actual splits with saturation; no encouraged interval. |
+| axisPolicy | RANDOM or LONGEST | null | null | poop random-axis and barab longer-axis; CP17 native comparison supports retaining both. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | not attested | not attested | not attested | not attested |
+| p5js | not attested | not attested | not attested | not attested |
+| py5 | not attested | not attested | not attested | not attested |
+| processing-android | not attested | not attested | not attested | not attested |
+
+Motivating evidence:
+
+- [`2018/Generativos/poop#0`](../../survey/out/2018/Generativos/poop/notes.md)
+- [`2018/Generativos/barab#0`](../../survey/out/2018/Generativos/barab/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/binary-cell-partition-2d.json).
+
 ## geometry.closed-spline-2d (0.1.0)
 
 Retain a closed uniform Catmull-Rom spline from explicit planar controls with direct parameter and approximate distance queries.

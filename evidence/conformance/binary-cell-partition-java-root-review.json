@@ -1,0 +1,26 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "BinaryCellPartition2D Java core only; PanelMarks native workflow and distribution remain pending",
+  "raw_evidence": "evidence/conformance/binary-cell-partition-java.json",
+  "raw_evidence_sha256": "6dd59f1c76238d4198035f38ac5e6274c62a574135751c47e2644481aa30295d",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/layout/BinaryCellPartition2D.java": "5406bf9ae61e8cc1edc028974de848ba6ac79d2efe52dc7d9c845d6333d4c389",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "tests/native/BinaryCellPartitionNative.java": "5fa39077edd515c177529d50196bb3502b359a276d1fc29417474681f0392a6f",
+    "tools/run_binary_cell_partition_java.py": "db1b30038abe8f273ad791d592ceb5f92529ac1de0c61a08f519c1623a886853"
+  },
+  "verified": [
+    "Root reviewed exact binary64 RNG mapping, both axis branches, failed attempts, survivor order and lower/upper append.",
+    "Root completed readable implementation, public docs and capacity overflow handling; grow by actual successes, allocation-free atomic boundsInto.",
+    "21 shared cases:13 successful vectors via Object and typed generation and8 error cases. Ten geometry/ownership scenarios plus numeric-carrier and accessor error checks.",
+    "Actual tiny/source-scale/stress native workloads:2,356,17632 leaves; stress20k attempts measured7.37ms once after5 warmups.",
+    "Live source/runtime/class hashes match before/after evidence."
+  ],
+  "limits": [
+    "No Processing source RNG replay, renderer acceptance, port support or original recreation credit.",
+    "Coordinate payload is16*leafCount bytes, excluding headers/transients; memory exhaustion remains host failure.",
+    "Timing is one observation on pinned runtime; O(attempts*liveLeaves) worst-case remains. No universal runtime guarantee."
+  ]
+}

@@ -19,17 +19,17 @@
   },
   "summary": {
     "dispositions": {
-      "keep": 29,
-      "merge": 101,
+      "keep": 30,
+      "merge": 102,
       "reject": 18,
-      "review_required": 1786
+      "review_required": 1784
     },
     "statuses": {
       "blocked_data_quality": 5,
       "reviewed_data_gap": 1,
       "reviewed_defer": 197,
-      "reviewed_provisional": 184,
-      "unreviewed": 1547
+      "reviewed_provisional": 186,
+      "unreviewed": 1545
     }
   },
   "clusters": [
@@ -1932,6 +1932,30 @@
         "invariants": "Strict band acceptance; rejected proposals leave position unchanged but perturb heading; explicit private seeded policy; no canvas clamp, drawing or callback.",
         "open_questions": [],
         "review": "design/capabilities/cp15-band-boundary-review.md",
+        "reviewer": "root"
+      }
+    },
+    {
+      "id": "layout.binary-cell-partition-2d",
+      "triage_suggestion": "keep",
+      "status": "reviewed_provisional",
+      "reason": "Extract ordered integer-cell binary subdivision with evidenced random or longer-axis choice; not a universal rectangle subdivision engine.",
+      "aliases": [
+        "randomRectSubdivision",
+        "guillotineSplit"
+      ],
+      "required_evidence_any": [
+        "rect",
+        "split"
+      ],
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Explicit uint32 seed, positive integer columns/rows, attempted splits and RANDOM/LONGEST axis policy.",
+        "outputs": "Retained ordered integer leaf bounds and actual successful split count.",
+        "invariants": "Exact area-preserving binary cuts; no retry on failed axis; immutable output; no rendering, source replay, or continuous-coordinate mode.",
+        "open_questions": [],
+        "review": "design/capabilities/cp17-rectangle-partition-direction.md",
         "reviewer": "root"
       }
     }
@@ -15876,16 +15900,37 @@
         "section_judgement": "contains_one_off_guidance",
         "excerpt": "Generic, library-ready: the guillotine subdivision (long-axis recursive split of a rect list), `ll()` lollipop connector, `arc2()` annular band, `getColor()` palette lerp, and the dot-matrix ground (grid of two-size rects, noise-tinted). One-off art decisions: the specific 4-color palette, the 10% diamond overlay, the `1.8*sep` connector threshold, the halo layering recipe (alpha-8 ellipse + three 50/20/20 bands), corner-radius scale. A clean parameter object: `{sep, sub, palette[], diamondP, l"
       },
-      "disposition": "review_required",
-      "status": "unreviewed",
-      "reason": "No computation-level adjudication has been recorded.",
+      "disposition": "merge",
+      "status": "reviewed_provisional",
+      "reason": "Extract binary integer-cell layout; explicit axis policy unifies the two evidenced selection rules. Portable stream and all-interior cut mapping deliberately differ from source replay.",
       "triage": {
         "cluster_id": "layout.rect-subdivide",
         "disposition": "keep",
         "status": "proposed",
         "reason": "iterative or recursive axis-aligned rectangle partitioning"
       },
-      "evidence_sha256": "a01a9394c45dca08de81104092a7645c01dbee778d68137dd9514e6d88c4079e"
+      "evidence_sha256": "a01a9394c45dca08de81104092a7645c01dbee778d68137dd9514e6d88c4079e",
+      "cluster_id": "layout.binary-cell-partition-2d",
+      "review_basis": "out/2018/Generativos/barab/notes.md#modularisation-notes",
+      "decision_audit": {
+        "status": "verified",
+        "scope": "component_extraction",
+        "computation": "Attempt-bounded ordered binary partition of integer cells with random or longer-axis cuts.",
+        "remainder": [
+          {
+            "component": "Processing global random prelude, unused axis draw in barab, float cut mapping and endpoint behavior",
+            "disposition": "out_of_scope",
+            "reason": "Independent portable semantics specified and privately tested; no exact source replay."
+          },
+          {
+            "component": "Canvas origin, cell-to-pixel scale, decoration, palette and source composition",
+            "disposition": "recipe",
+            "reason": "Caller drawing and explicit geometry transforms, not partition topology; barab connectors/halos and poop insets are not admitted here."
+          }
+        ],
+        "reviewer": "root",
+        "review": "design/capabilities/cp17-rectangle-partition-direction.md"
+      }
     },
     "2018/Generativos/barab#1": {
       "sketch": "2018/Generativos/barab",
@@ -32622,16 +32667,37 @@
         "section_judgement": "contains_one_off_guidance",
         "excerpt": "- Generic, library-ready: the recursive random rect subdivision (Mondrian tiling) is a clean function of (seed, cell, iteration count, orientation bias) and is the core reusable algorithm. The concentric-inset painter (step size + two colors) is a second generic primitive, independent of the tiling. - One-off art decisions: the 20 px cell / 3 px inset step (they fix the \"wireframe\" density), the 5-color palette, the black alternate color, and the faint background dot grid (barely visi"
       },
-      "disposition": "review_required",
-      "status": "unreviewed",
-      "reason": "No computation-level adjudication has been recorded.",
+      "disposition": "keep",
+      "status": "reviewed_provisional",
+      "reason": "Extract binary integer-cell layout; explicit axis policy unifies the two evidenced selection rules. Portable stream and all-interior cut mapping deliberately differ from source replay.",
       "triage": {
         "cluster_id": "layout.rect-subdivide",
         "disposition": "keep",
         "status": "proposed",
         "reason": "iterative or recursive axis-aligned rectangle partitioning"
       },
-      "evidence_sha256": "a5325b855b5634f7107ad72c00cddd21c8b7a52b0439e6bfa94f55df52ae4199"
+      "evidence_sha256": "a5325b855b5634f7107ad72c00cddd21c8b7a52b0439e6bfa94f55df52ae4199",
+      "cluster_id": "layout.binary-cell-partition-2d",
+      "review_basis": "out/2018/Generativos/poop/notes.md#modularisation-notes",
+      "decision_audit": {
+        "status": "verified",
+        "scope": "component_extraction",
+        "computation": "Attempt-bounded ordered binary partition of integer cells with random or longer-axis cuts.",
+        "remainder": [
+          {
+            "component": "Processing global random prelude, unused axis draw in barab, float cut mapping and endpoint behavior",
+            "disposition": "out_of_scope",
+            "reason": "Independent portable semantics specified and privately tested; no exact source replay."
+          },
+          {
+            "component": "Canvas origin, cell-to-pixel scale, decoration, palette and source composition",
+            "disposition": "recipe",
+            "reason": "Caller drawing and explicit geometry transforms, not partition topology; barab connectors/halos and poop insets are not admitted here."
+          }
+        ],
+        "reviewer": "root",
+        "review": "design/capabilities/cp17-rectangle-partition-direction.md"
+      }
     },
     "2018/Generativos/poop#1": {
       "sketch": "2018/Generativos/poop",

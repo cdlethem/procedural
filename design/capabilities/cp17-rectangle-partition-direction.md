@@ -1,6 +1,9 @@
 # CP17 direction: irregular rectangular layouts
 
-Status: investigation selected; no frozen contract, implementation or acceptance.
+Status: root reviewed admission and contract direction after the private native experiment.
+Normative semantics: `design/operations/binary-cell-partition-contract.md`; schemas and
+shared fixtures: `catalog/operations/binary-cell-partition-2d.json` and its fixture path.
+No implementation, native workflow or distribution acceptance follows from this decision.
 
 Artist task: divide a surface into unequal panels, then reuse the same retained panels
 for nested outlines, fills or other ordinary drawing. The package should remove the
@@ -32,13 +35,13 @@ This is a design priority, not a claim that subdivision is the largest remaining
 
 ## Next bounded work and acceptance boundary
 
-Root resolves integer versus continuous coordinates, axis policy, attempt versus success
-counts, minimum cell size, child ordering and random consumption from the two decisive
-sources. Prefer one clear operation over a configurable universal subdivision engine.
+Root resolved integer coordinates, RANDOM/LONGEST axis policy, attempted split counts,
+one-cell minimum extent, survivor-then-child ordering and exact private stream consumption.
+The native investigation supports these two policies without adjustable probabilities.
 No useful parameter range is established by the two reports' empty experiment lists.
 Example settings can be authored settings, explicitly distinguished from measured ranges.
 
-Freeze the language-neutral contract and analytic fixtures before delegating Java code.
+The language-neutral contract and21 shared fixtures are frozen before delegating Java code.
 Reuse existing seeded stream, validation, packaging and native render infrastructure.
 Review coverage/area conservation, non-overlap, degenerate bounds, stable ordering,
 determinism and bounded work with focused checks. A native panel workflow must demonstrate

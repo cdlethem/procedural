@@ -1,0 +1,123 @@
+{
+  "status": "passed",
+  "operation": "layout.binary-cell-partition-2d",
+  "fixture_cases_executed": 21,
+  "vectors": {
+    "status": "passed",
+    "cases": 21,
+    "assertions": 34
+  },
+  "native": {
+    "status": "passed",
+    "ordered_vectors": 8,
+    "geometry_scenarios": 10,
+    "workloads": [
+      {
+        "columns": 2,
+        "rows": 2,
+        "attempts": 1,
+        "leaves": 2,
+        "warmup_runs": 5,
+        "measured_runs": 1,
+        "generation_ns": 980,
+        "coordinate_payload_bytes": 32,
+        "checksum": "58182848"
+      },
+      {
+        "columns": 160,
+        "rows": 160,
+        "attempts": 400,
+        "leaves": 356,
+        "warmup_runs": 5,
+        "measured_runs": 1,
+        "generation_ns": 105929,
+        "coordinate_payload_bytes": 5696,
+        "checksum": "3730479372522775205"
+      },
+      {
+        "columns": 10000,
+        "rows": 10000,
+        "attempts": 20000,
+        "leaves": 17632,
+        "warmup_runs": 5,
+        "measured_runs": 1,
+        "generation_ns": 7374526,
+        "coordinate_payload_bytes": 282112,
+        "checksum": "8363441909821975989"
+      }
+    ]
+  },
+  "source_sha256_before": {
+    "catalog/operations/binary-cell-partition-2d.json": "62f7b5c8c0dc020a639d821c9e2114e1792cb3da29623035491255294c89e345",
+    "fixtures/operations/binary-cell-partition-2d.json": "32f304c82ad12264191eec5574c03e3e761749e729ea0f2534bdcef3f9b49340",
+    "design/operations/binary-cell-partition-contract.md": "e06a3e65ab51c257bb8611c74b9e4fcc18d8bcb9d45d26754dbe7a74d122a214",
+    "packages/java/src/main/java/org/procedurals/layout/BinaryCellPartition2D.java": "5406bf9ae61e8cc1edc028974de848ba6ac79d2efe52dc7d9c845d6333d4c389",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "tests/native/BinaryCellPartitionNative.java": "5fa39077edd515c177529d50196bb3502b359a276d1fc29417474681f0392a6f",
+    "tools/run_binary_cell_partition_java.py": "db1b30038abe8f273ad791d592ceb5f92529ac1de0c61a08f519c1623a886853",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "source_sha256_after": {
+    "catalog/operations/binary-cell-partition-2d.json": "62f7b5c8c0dc020a639d821c9e2114e1792cb3da29623035491255294c89e345",
+    "fixtures/operations/binary-cell-partition-2d.json": "32f304c82ad12264191eec5574c03e3e761749e729ea0f2534bdcef3f9b49340",
+    "design/operations/binary-cell-partition-contract.md": "e06a3e65ab51c257bb8611c74b9e4fcc18d8bcb9d45d26754dbe7a74d122a214",
+    "packages/java/src/main/java/org/procedurals/layout/BinaryCellPartition2D.java": "5406bf9ae61e8cc1edc028974de848ba6ac79d2efe52dc7d9c845d6333d4c389",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "tests/native/BinaryCellPartitionNative.java": "5fa39077edd515c177529d50196bb3502b359a276d1fc29417474681f0392a6f",
+    "tools/run_binary_cell_partition_java.py": "db1b30038abe8f273ad791d592ceb5f92529ac1de0c61a08f519c1623a886853",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "artifact_sha256_before": {
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartition2D$PartitionException.class": "54de8e9f91bc7c275ef87cf08811f9b3f55bf4cf605a7800dc83705cf14cb435",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartition2D.class": "1562ce245087752d483ab8793641f1913f15626eebbcea5230df2b75e19b6848",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionNative$1.class": "98f1c1ea498671d2a4df5f9195a29604a14024558bf92bf03604b771b8c32e2d",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionNative.class": "26aa3a0e64ddf931fdd1dd7701dd013adcdab63a2735cca3f971bf6e42f3419b",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$1.class": "bf90b4f02171bcc4e625a9d51739e4a3fb6eee1c76672d21191916526491b528",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$2.class": "f97a78525d982171ca6d97966cc32d7d3cf618265050e5bf7aacc657e0e8acf9",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$3.class": "a9ae5e5c2b1541bc848be08e686a25f3c7c700f4ea7ff9d4e1293ae70a4097e9",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$4.class": "5819eab8089e30c8e4a69143861ce0110a6959eddb3f337a9a544f64aec24313",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$5.class": "b072ff7f9d72e83fd6b39a4091dafaf6535992238d20a5fdd6035ab63d7c7032",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$6.class": "8d292ff44c0ff8bd200180898d32dc1ae1369a1c6394f2fbd2766c8393c578e7",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$7.class": "c65968ccdaf375d62f4a43a7c5788104337e399b24900d3d70b64154b8ea2806",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$8.class": "11cff4d6605d8e987d488609fbe56ea9fee850fd029596e9edd0967fe510efe4",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$Action.class": "b9f7e227182d35639f5ddcd5fc3cc23abb960d88a7dfd2eebed610163bc2637a",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors.class": "45320f4fefc76d5782f2395208d0621be82694a1e1f392d4cf5cbc85a57ca91e",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/QuadrantPartition2D$1.class": "7cb8c49f38b51b69462ab7bda4452a55080fdfaa24c5d74777c9c8b6bf964c31",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/QuadrantPartition2D$Builder.class": "b33053b4a119d7ca0dcd932dcff1ad2149f15463edf44d46758a42cc7f57a513",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/QuadrantPartition2D$PartitionArithmeticException.class": "387ef0a49db60ed076df2503982b788b2357f5c7c0c9c9cc2c2398a28d7507c1",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/QuadrantPartition2D$PartitionException.class": "0de68f5efdcea1959843cfb25bcb9dd8af868e5a86dda2e968a6f68af60f8071",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/QuadrantPartition2D$Xoshiro128StarStar11.class": "96d3df428ea1c878c46518db56f2b338a975b76fb54ed363176080be6e13ec63",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/QuadrantPartition2D.class": "8dfa8edbf3d13c2b5c112509abe93201173812cd459395ae832ecafb3a18bd2d"
+  },
+  "artifact_sha256_after": {
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartition2D$PartitionException.class": "54de8e9f91bc7c275ef87cf08811f9b3f55bf4cf605a7800dc83705cf14cb435",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartition2D.class": "1562ce245087752d483ab8793641f1913f15626eebbcea5230df2b75e19b6848",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionNative$1.class": "98f1c1ea498671d2a4df5f9195a29604a14024558bf92bf03604b771b8c32e2d",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionNative.class": "26aa3a0e64ddf931fdd1dd7701dd013adcdab63a2735cca3f971bf6e42f3419b",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$1.class": "bf90b4f02171bcc4e625a9d51739e4a3fb6eee1c76672d21191916526491b528",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$2.class": "f97a78525d982171ca6d97966cc32d7d3cf618265050e5bf7aacc657e0e8acf9",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$3.class": "a9ae5e5c2b1541bc848be08e686a25f3c7c700f4ea7ff9d4e1293ae70a4097e9",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$4.class": "5819eab8089e30c8e4a69143861ce0110a6959eddb3f337a9a544f64aec24313",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$5.class": "b072ff7f9d72e83fd6b39a4091dafaf6535992238d20a5fdd6035ab63d7c7032",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$6.class": "8d292ff44c0ff8bd200180898d32dc1ae1369a1c6394f2fbd2766c8393c578e7",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$7.class": "c65968ccdaf375d62f4a43a7c5788104337e399b24900d3d70b64154b8ea2806",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$8.class": "11cff4d6605d8e987d488609fbe56ea9fee850fd029596e9edd0967fe510efe4",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors$Action.class": "b9f7e227182d35639f5ddcd5fc3cc23abb960d88a7dfd2eebed610163bc2637a",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/BinaryCellPartitionVectors.class": "45320f4fefc76d5782f2395208d0621be82694a1e1f392d4cf5cbc85a57ca91e",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/QuadrantPartition2D$1.class": "7cb8c49f38b51b69462ab7bda4452a55080fdfaa24c5d74777c9c8b6bf964c31",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/QuadrantPartition2D$Builder.class": "b33053b4a119d7ca0dcd932dcff1ad2149f15463edf44d46758a42cc7f57a513",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/QuadrantPartition2D$PartitionArithmeticException.class": "387ef0a49db60ed076df2503982b788b2357f5c7c0c9c9cc2c2398a28d7507c1",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/QuadrantPartition2D$PartitionException.class": "0de68f5efdcea1959843cfb25bcb9dd8af868e5a86dda2e968a6f68af60f8071",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/QuadrantPartition2D$Xoshiro128StarStar11.class": "96d3df428ea1c878c46518db56f2b338a975b76fb54ed363176080be6e13ec63",
+    ".work/build/binary-cell-partition-xwvg2mow/org/procedurals/layout/QuadrantPartition2D.class": "8dfa8edbf3d13c2b5c112509abe93201173812cd459395ae832ecafb3a18bd2d"
+  },
+  "javac_release": "8",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Java core exact vectors and focused native ownership check; no renderer, distribution or port acceptance."
+}

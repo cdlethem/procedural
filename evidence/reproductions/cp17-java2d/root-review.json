@@ -1,0 +1,27 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Candidate BinaryCellPartition2D and actual PanelMarks native JAVA2D workflow only; package acceptance pending",
+  "native_evidence": "evidence/reproductions/cp17-java2d/native.json",
+  "native_sha256": "1aa6f6e188e3dd3353de58215d02bc78d1d3c2327bfd0d108d0e543afbe8ebfb",
+  "verified": [
+    "Six-state apcm0s sequence on actual PDE; core JAR code source, renderer, density, dimensions and exact geometry hashes verified.",
+    "Attempt and policy edits create different retained layouts; color and decoration edits retain object identity and every bound.",
+    "Reset exact geometry/pixels and cached save exact decoded PNG after300ms no-redraw interval.",
+    "Root inspected contact sheet of all five distinct states: compact panels, finer panels, broad random-axis strips, recolored strips and inset-panel transfer.",
+    "Bound source/runtime/class hashes checked against live files after completion."
+  ],
+  "visual_observations": [
+    "Baseline longer-axis layout has nested compact panels with a few large blocks.",
+    "240 attempts breaks many blocks into smaller panels while some large cells remain.",
+    "Random-axis edit creates broad horizontal strips and large cells among thin slivers.",
+    "Recolor preserves every outline in blue/purple/green/rose/ochre.",
+    "Decoration transfer uses translucent flat panels and center lines on identical cells."
+  ],
+  "limits": [
+    "Technique-level composition, not original source recreation; three demonstrated original recreations unchanged.",
+    "Java0.20 archive, extracted consumer and target attestations remain to be integrated.",
+    "No p5.js, py5, Android or source P2D support claim."
+  ]
+}

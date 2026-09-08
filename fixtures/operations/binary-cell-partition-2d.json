@@ -1,0 +1,601 @@
+{
+  "operation": "layout.binary-cell-partition-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "oracle": "Eight ordered vectors independently calculated with Python integer stream/reference list before prototype validation; five analytic zero/saturation/single-cut cases.",
+  "cases": [
+    {
+      "id": "ordered_0_random",
+      "input": {
+        "seed": 0,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "RANDOM"
+      },
+      "output": {
+        "bounds": [
+          [
+            0,
+            4,
+            3,
+            6
+          ],
+          [
+            3,
+            4,
+            8,
+            5
+          ],
+          [
+            3,
+            5,
+            8,
+            6
+          ],
+          [
+            0,
+            0,
+            6,
+            4
+          ],
+          [
+            6,
+            0,
+            8,
+            4
+          ]
+        ],
+        "splits": 4
+      }
+    },
+    {
+      "id": "ordered_0_longest",
+      "input": {
+        "seed": 0,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "LONGEST"
+      },
+      "output": {
+        "bounds": [
+          [
+            0,
+            0,
+            5,
+            6
+          ],
+          [
+            5,
+            4,
+            8,
+            6
+          ],
+          [
+            5,
+            0,
+            8,
+            2
+          ],
+          [
+            7,
+            2,
+            8,
+            4
+          ],
+          [
+            5,
+            2,
+            7,
+            3
+          ],
+          [
+            5,
+            3,
+            7,
+            4
+          ]
+        ],
+        "splits": 5
+      }
+    },
+    {
+      "id": "ordered_1_random",
+      "input": {
+        "seed": 1,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "RANDOM"
+      },
+      "output": {
+        "bounds": [
+          [
+            2,
+            0,
+            8,
+            6
+          ],
+          [
+            0,
+            0,
+            1,
+            6
+          ],
+          [
+            1,
+            4,
+            2,
+            6
+          ],
+          [
+            1,
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2,
+            4
+          ]
+        ],
+        "splits": 4
+      }
+    },
+    {
+      "id": "ordered_1_longest",
+      "input": {
+        "seed": 1,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "LONGEST"
+      },
+      "output": {
+        "bounds": [
+          [
+            0,
+            0,
+            3,
+            2
+          ],
+          [
+            0,
+            2,
+            3,
+            6
+          ],
+          [
+            3,
+            0,
+            8,
+            5
+          ],
+          [
+            6,
+            5,
+            8,
+            6
+          ],
+          [
+            3,
+            5,
+            5,
+            6
+          ],
+          [
+            5,
+            5,
+            6,
+            6
+          ]
+        ],
+        "splits": 5
+      }
+    },
+    {
+      "id": "ordered_42_random",
+      "input": {
+        "seed": 42,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "RANDOM"
+      },
+      "output": {
+        "bounds": [
+          [
+            0,
+            0,
+            8,
+            1
+          ],
+          [
+            0,
+            4,
+            8,
+            5
+          ],
+          [
+            0,
+            5,
+            8,
+            6
+          ],
+          [
+            0,
+            1,
+            8,
+            3
+          ],
+          [
+            0,
+            3,
+            8,
+            4
+          ]
+        ],
+        "splits": 4
+      }
+    },
+    {
+      "id": "ordered_42_longest",
+      "input": {
+        "seed": 42,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "LONGEST"
+      },
+      "output": {
+        "bounds": [
+          [
+            7,
+            0,
+            8,
+            6
+          ],
+          [
+            4,
+            0,
+            7,
+            6
+          ],
+          [
+            0,
+            3,
+            4,
+            6
+          ],
+          [
+            0,
+            0,
+            2,
+            3
+          ],
+          [
+            2,
+            0,
+            4,
+            2
+          ],
+          [
+            2,
+            2,
+            4,
+            3
+          ]
+        ],
+        "splits": 5
+      }
+    },
+    {
+      "id": "ordered_2147483648_random",
+      "input": {
+        "seed": 2147483648,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "RANDOM"
+      },
+      "output": {
+        "bounds": [
+          [
+            0,
+            3,
+            1,
+            6
+          ],
+          [
+            1,
+            0,
+            8,
+            2
+          ],
+          [
+            1,
+            2,
+            8,
+            6
+          ],
+          [
+            0,
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            1,
+            3
+          ]
+        ],
+        "splits": 4
+      }
+    },
+    {
+      "id": "ordered_2147483648_longest",
+      "input": {
+        "seed": 2147483648,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "LONGEST"
+      },
+      "output": {
+        "bounds": [
+          [
+            0,
+            3,
+            1,
+            6
+          ],
+          [
+            1,
+            0,
+            4,
+            6
+          ],
+          [
+            4,
+            0,
+            8,
+            3
+          ],
+          [
+            4,
+            3,
+            8,
+            6
+          ],
+          [
+            0,
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            1,
+            3
+          ]
+        ],
+        "splits": 5
+      }
+    },
+    {
+      "id": "zero",
+      "input": {
+        "seed": 42,
+        "columns": 2147483647,
+        "rows": 2147483647,
+        "attempts": 0,
+        "axisPolicy": "RANDOM"
+      },
+      "output": {
+        "bounds": [
+          [
+            0,
+            0,
+            2147483647,
+            2147483647
+          ]
+        ],
+        "splits": 0
+      }
+    },
+    {
+      "id": "saturated_random",
+      "input": {
+        "seed": 42,
+        "columns": 1,
+        "rows": 1,
+        "attempts": 10,
+        "axisPolicy": "RANDOM"
+      },
+      "output": {
+        "bounds": [
+          [
+            0,
+            0,
+            1,
+            1
+          ]
+        ],
+        "splits": 0
+      }
+    },
+    {
+      "id": "saturated_longest",
+      "input": {
+        "seed": 42,
+        "columns": 1,
+        "rows": 1,
+        "attempts": 10,
+        "axisPolicy": "LONGEST"
+      },
+      "output": {
+        "bounds": [
+          [
+            0,
+            0,
+            1,
+            1
+          ]
+        ],
+        "splits": 0
+      }
+    },
+    {
+      "id": "one_vertical",
+      "input": {
+        "seed": 42,
+        "columns": 1,
+        "rows": 2,
+        "attempts": 1,
+        "axisPolicy": "LONGEST"
+      },
+      "output": {
+        "bounds": [
+          [
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            1,
+            2
+          ]
+        ],
+        "splits": 1
+      }
+    },
+    {
+      "id": "one_horizontal",
+      "input": {
+        "seed": 42,
+        "columns": 2,
+        "rows": 1,
+        "attempts": 1,
+        "axisPolicy": "LONGEST"
+      },
+      "output": {
+        "bounds": [
+          [
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            2,
+            1
+          ]
+        ],
+        "splits": 1
+      }
+    },
+    {
+      "id": "invalid_seed_-1",
+      "input": {
+        "seed": -1,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "RANDOM"
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid_seed_4294967296",
+      "input": {
+        "seed": 4294967296,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "RANDOM"
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid_columns_0",
+      "input": {
+        "seed": 42,
+        "columns": 0,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "RANDOM"
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid_rows_1.5",
+      "input": {
+        "seed": 42,
+        "columns": 8,
+        "rows": 1.5,
+        "attempts": 5,
+        "axisPolicy": "RANDOM"
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid_attempts_2147483647",
+      "input": {
+        "seed": 42,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 2147483647,
+        "axisPolicy": "RANDOM"
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid_attempts_True",
+      "input": {
+        "seed": 42,
+        "columns": 8,
+        "rows": 6,
+        "attempts": true,
+        "axisPolicy": "RANDOM"
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid_axisPolicy_random",
+      "input": {
+        "seed": 42,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "random"
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid_extra_1",
+      "input": {
+        "seed": 42,
+        "columns": 8,
+        "rows": 6,
+        "attempts": 5,
+        "axisPolicy": "RANDOM",
+        "extra": 1
+      },
+      "error": "INVALID_INPUT"
+    }
+  ],
+  "catalog_sha256": "62f7b5c8c0dc020a639d821c9e2114e1792cb3da29623035491255294c89e345"
+}
