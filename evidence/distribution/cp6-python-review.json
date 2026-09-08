@@ -1,0 +1,29 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local python0.6 BranchMarks package and installed/extracted consumer only; native support remains separately scoped.",
+  "implementation_sha256": {
+    "tools/build_branch_marks_python.py": "aee9bb1ce41647ae357a4b591f2c06909c8c8cf4bb3deff60573769e100c4dcc",
+    "packages/python/procedurals/__init__.py": "15e86749c921d32713e4f7e3f43ccfdb18b1ed0e2497355f60a3bedf3f199a0a",
+    "packages/python/procedurals/branch_tree.py": "dcaa5ee3da7ab9a99d93f0cb8d370d308c719292b2a40cb27dec20a953230458",
+    "packages/python/examples/branch_marks/branch_composition.py": "2abb9cb2e12b45e1513a376f5c6e063c4f522085e17f24e92e6ef26032b54c3d",
+    "packages/python/examples/branch_marks/sketch.py": "2d126a0cb9f7477f51975f545c0118d88f11d6f6819a2dd84784b2503aca8629"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp6-python.json": "4b82e2b19937b526a2d97ad8f3863959c4781bd9254e7f6fe5a061c482367a9d",
+    "evidence/conformance/branch-export-compatibility-review.json": "9e5e2e2da594792bc38328a724863ed4bda8e4f09246fb853ab34f82720205c2",
+    "evidence/conformance/branch-tree-python-root-review.json": "1d72c43e01fc9ea0554992450ca26842e25797246b911ab1fbdc3661135693ef",
+    "evidence/conformance/branch-py5-native-root-review.json": "74055e166938687380465e6ed3313c86aa4e9f7fd062a77207cabe3c0ab14181"
+  },
+  "root_findings": [
+    "Root reviewed complete builder and required byte equality for every portable wheel module, exact review status, post-build evidence checks, shared lock binding and artist handoff instructions.",
+    "Root verified all current inputs/evidence and raw wheel/ZIP members, byte-exact core/model and sketch-only checkout sys.path removal.",
+    "Installed site-packages origin, branch function/error identities and ten callable root operations pass. Eight full binary64 geometry cases match source and extracted consumer.",
+    "Extracted starter imports with pinned py5 through shared lock and xvfb; no sketch execution/rerender. Notices retained; earlier mechanical build failure preserved."
+  ],
+  "remaining": [
+    "Focused restore-path review of older Android starters",
+    "Five remaining operation ports and downstream roadmap milestones"
+  ]
+}

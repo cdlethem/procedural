@@ -1055,7 +1055,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/distribution/cp6-review.json) | [validated-scoped](../../evidence/distribution/cp6-review.json) | [validated-scoped](../../evidence/distribution/cp6-review.json) | [review](../../evidence/distribution/cp6-review.json) |
+| processing-java | [conformant](../../evidence/distribution/cp6-docs-port-update-review.json) | [validated-scoped](../../evidence/distribution/cp6-docs-port-update-review.json) | [validated-scoped](../../evidence/distribution/cp6-docs-port-update-review.json) | [review](../../evidence/distribution/cp6-docs-port-update-review.json) |
 | p5js | [conformant](../../evidence/conformance/branch-tree-javascript-root-review.json) | [validated-scoped](../../evidence/conformance/branch-p5js-native-root-review.json) | unvalidated | [review](../../evidence/conformance/branch-p5js-native-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/branch-tree-python-root-review.json) | [validated-scoped](../../evidence/conformance/branch-py5-native-root-review.json) | unvalidated | [review](../../evidence/conformance/branch-py5-native-root-review.json) |
 | processing-android | [conformant](../../evidence/conformance/branch-tree-android-root-review.json) | [validated-scoped](../../evidence/conformance/branch-android-native-root-review.json) | unvalidated | [review](../../evidence/conformance/branch-android-native-root-review.json) |

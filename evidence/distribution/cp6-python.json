@@ -1,0 +1,227 @@
+{
+  "status": "passed",
+  "scope": "CP6 Python 0.6.0 installed wheel and extracted BranchMarks starter checks; no sketch execution, native render, publication, or support attestation.",
+  "package_version": "0.6.0",
+  "input_sha256": {
+    "packages/python/pyproject.toml": "1dc6fe17d11aac151a10c1601b6050230fe233bddfec74390c15ec3eb88a076b",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "evidence/conformance/branch-tree-python-root-review.json": "1d72c43e01fc9ea0554992450ca26842e25797246b911ab1fbdc3661135693ef",
+    "evidence/conformance/branch-marks-python-root-review.json": "2a352c4d13d9d3fbaaefeba23550bd89df8102cf22a3f502ba114c67c62db878",
+    "evidence/conformance/branch-py5-native-root-review.json": "74055e166938687380465e6ed3313c86aa4e9f7fd062a77207cabe3c0ab14181",
+    "evidence/conformance/py5-branch-marks.json": "bbe7d3b788fb0c89affb090a6846409b68c76c22d95caa873752fa88ece8c2bb",
+    "evidence/conformance/branch-export-compatibility-review.json": "9e5e2e2da594792bc38328a724863ed4bda8e4f09246fb853ab34f82720205c2",
+    "packages/python/procedurals/__init__.py": "15e86749c921d32713e4f7e3f43ccfdb18b1ed0e2497355f60a3bedf3f199a0a",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/branch_tree.py": "dcaa5ee3da7ab9a99d93f0cb8d370d308c719292b2a40cb27dec20a953230458",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+    "packages/python/examples/branch_marks/README.md": "ff3106d090c01c8cf51dd7cbf71a841a8efb6f6f3152a8b84aace4caa4914252",
+    "packages/python/examples/branch_marks/branch_composition.py": "2abb9cb2e12b45e1513a376f5c6e063c4f522085e17f24e92e6ef26032b54c3d",
+    "packages/python/examples/branch_marks/sketch.py": "2d126a0cb9f7477f51975f545c0118d88f11d6f6819a2dd84784b2503aca8629",
+    "tools/build_branch_marks_python.py": "aee9bb1ce41647ae357a4b591f2c06909c8c8cf4bb3deff60573769e100c4dcc",
+    "tools/build_grain_marks_python.py": "a284bc4950c8d3986d745359bfa489642eb34ed83d90365edde57822b8a744e0",
+    "tools/build_region_marks_python.py": "03ded1293808531eebb096364a614158c98078566f86be3fef28e213ea711bbf",
+    "tools/build_path_marks_python.py": "358e601bf292184f834e47889142586dd2a1f69405b76c06a282340f55015775",
+    "tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d"
+  },
+  "accepted_evidence_sha256": {
+    "evidence/conformance/branch-tree-python-root-review.json": "1d72c43e01fc9ea0554992450ca26842e25797246b911ab1fbdc3661135693ef",
+    "evidence/conformance/branch-marks-python-root-review.json": "2a352c4d13d9d3fbaaefeba23550bd89df8102cf22a3f502ba114c67c62db878",
+    "evidence/conformance/branch-py5-native-root-review.json": "74055e166938687380465e6ed3313c86aa4e9f7fd062a77207cabe3c0ab14181",
+    "evidence/conformance/py5-branch-marks.json": "bbe7d3b788fb0c89affb090a6846409b68c76c22d95caa873752fa88ece8c2bb",
+    "evidence/conformance/branch-export-compatibility-review.json": "9e5e2e2da594792bc38328a724863ed4bda8e4f09246fb853ab34f82720205c2"
+  },
+  "artifacts": {
+    "wheel": {
+      "path": ".work/dist/cp6/python-branch2/build/wheelhouse/procedurals_python-0.6.0-py3-none-any.whl",
+      "sha256": "3bc656d3059288b3d7dfedd83ba8021e0fdf7902f646637bc0e8676288bab707",
+      "entries": [
+        {
+          "path": "procedurals/__init__.py",
+          "sha256": "15e86749c921d32713e4f7e3f43ccfdb18b1ed0e2497355f60a3bedf3f199a0a"
+        },
+        {
+          "path": "procedurals/_drawing.py",
+          "sha256": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3"
+        },
+        {
+          "path": "procedurals/_drawing_state.py",
+          "sha256": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8"
+        },
+        {
+          "path": "procedurals/_py5_frame.py",
+          "sha256": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295"
+        },
+        {
+          "path": "procedurals/branch_tree.py",
+          "sha256": "dcaa5ee3da7ab9a99d93f0cb8d370d308c719292b2a40cb27dec20a953230458"
+        },
+        {
+          "path": "procedurals/colors.py",
+          "sha256": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6"
+        },
+        {
+          "path": "procedurals/fields.py",
+          "sha256": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae"
+        },
+        {
+          "path": "procedurals/layout.py",
+          "sha256": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3"
+        },
+        {
+          "path": "procedurals/paths.py",
+          "sha256": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+        },
+        {
+          "path": "procedurals/placements.py",
+          "sha256": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d"
+        },
+        {
+          "path": "procedurals/quadrant_partition.py",
+          "sha256": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed"
+        },
+        {
+          "path": "procedurals/triangle_points.py",
+          "sha256": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34"
+        },
+        {
+          "path": "procedurals_python-0.6.0.dist-info/METADATA",
+          "sha256": "315602a2a5fc1394fe55ff2131f9acebc359a9a3d72d3d7affcbff4b0b725563"
+        },
+        {
+          "path": "procedurals_python-0.6.0.dist-info/RECORD",
+          "sha256": "b0ac48a73025c37e61f6ba9b2d9823a754b0e36fabe0d9bdefddf8306a87021a"
+        },
+        {
+          "path": "procedurals_python-0.6.0.dist-info/WHEEL",
+          "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+        },
+        {
+          "path": "procedurals_python-0.6.0.dist-info/licenses/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "procedurals_python-0.6.0.dist-info/licenses/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "procedurals_python-0.6.0.dist-info/top_level.txt",
+          "sha256": "edcc1c114ddfc860af6c9b58052e7ad2cd35e36533efd2dafd308010ee165b72"
+        }
+      ]
+    },
+    "starter_zip": {
+      "path": ".work/dist/cp6/python-branch2/procedurals-branch-marks-python-starter-0.6.0.zip",
+      "sha256": "8f6b5482a77dea946f29e268815799ed3c74d87e2492909fb3d93eacbe91b136",
+      "entries": [
+        {
+          "path": "branch-marks/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "branch-marks/README.md",
+          "sha256": "cae5fef9d0965dd54c3dd4cb1bb69d175ed3760db625fafa2de9a2a8e9f551fe"
+        },
+        {
+          "path": "branch-marks/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "branch-marks/branch_composition.py",
+          "sha256": "2abb9cb2e12b45e1513a376f5c6e063c4f522085e17f24e92e6ef26032b54c3d"
+        },
+        {
+          "path": "branch-marks/output/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "path": "branch-marks/sketch.py",
+          "sha256": "6f6da952bc1101ef3ffe680ec9360490b417bcb742eceb6b1bd70102a05a827f"
+        },
+        {
+          "path": "procedurals_python-0.6.0-py3-none-any.whl",
+          "sha256": "3bc656d3059288b3d7dfedd83ba8021e0fdf7902f646637bc0e8676288bab707"
+        }
+      ]
+    }
+  },
+  "consumer": {
+    "status": "passed",
+    "imported_path": "/home/colin/dev/procedural/.work/dist/cp6/python-branch2/build/consumer-venv/lib/python3.13/site-packages/procedurals/branch_tree.py",
+    "site_packages": [
+      "/home/colin/dev/procedural/.work/dist/cp6/python-branch2/build/consumer-venv/lib/python3.13/site-packages"
+    ],
+    "cases": [
+      {
+        "id": "baseline",
+        "trees": 1,
+        "segments": 101,
+        "raw_binary64_sha256": "6f0e01a4416770dfdb8478ddea5bfddeed2b8efc47332148a205aa8a70f5ba02"
+      },
+      {
+        "id": "more",
+        "trees": 1,
+        "segments": 192,
+        "raw_binary64_sha256": "0785080a50d4d72582fa2074acd40d1c7b999ab6480071da8bed6c8a2edd07a2"
+      },
+      {
+        "id": "narrowing",
+        "trees": 1,
+        "segments": 101,
+        "raw_binary64_sha256": "5ab466afdc5ec2a50871a76df31ecb85088946ae268a08dd10ecc34908867b3f"
+      },
+      {
+        "id": "wider",
+        "trees": 1,
+        "segments": 101,
+        "raw_binary64_sha256": "82bc170c8ed4d5f09e98c2a75e1e39b9cec918017cf14844318b93467c27350a"
+      },
+      {
+        "id": "binary",
+        "trees": 1,
+        "segments": 38,
+        "raw_binary64_sha256": "5260559a82c311d345da2fcbdcc89407ad2a1d0ccf267a66f7053ff125695634"
+      },
+      {
+        "id": "forest",
+        "trees": 7,
+        "segments": 288,
+        "raw_binary64_sha256": "25a98ecf8de5d7d1e1258c0149a9c6060f4823fd95ae05803e6911c75e753fe5"
+      },
+      {
+        "id": "forestextended",
+        "trees": 7,
+        "segments": 560,
+        "raw_binary64_sha256": "b64b88a53e2947f687f3364e1c2253b9b3c7e3dba73b58b14497c7cd03c61eb2"
+      },
+      {
+        "id": "forestseed",
+        "trees": 8,
+        "segments": 332,
+        "raw_binary64_sha256": "923d1e073ae0f5751bbfa4a8f2e1d129b91c3621e578df11df13bd4a769742a0"
+      }
+    ],
+    "operation_count": 10
+  },
+  "starter": {
+    "transform": {
+      "kind": "remove_checkout_sys_path_block",
+      "removed": "sys.path.insert(0, str(Path(__file__).resolve().parents[2]))",
+      "class_ast_unchanged": true
+    },
+    "bundled_verified": true,
+    "py5_load": {
+      "status": "passed",
+      "py5": "0.10.11a0",
+      "branch_tree": "/home/colin/dev/procedural/.work/dist/cp6/python-branch2/build/consumer-venv/lib/python3.13/site-packages/procedurals/branch_tree.py"
+    }
+  }
+}

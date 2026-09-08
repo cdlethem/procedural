@@ -82,4 +82,5 @@ L-system. Those are separate computations, not hidden modes of this generator.
 
 See the [contract](../catalog/operations/seeded-endpoint-branches.json) for exact data,
 error and numerical rules, and [review](../design/operations/branch-tree-contract-review.md)
-for the accepted semantics and remaining delivery obligations. Other target ports are deferred.
+for the accepted semantics and remaining delivery obligations. Reviewed local ports are available for [p5.js](installing-branch-marks-javascript.md),
+[py5](installing-branch-marks-python.md) and [Android](installing-branch-marks-android.md).

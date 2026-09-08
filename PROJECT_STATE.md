@@ -1,5 +1,20 @@
 # Project state
 
+## Branch distribution batch complete on all four targets
+
+Root accepted revised JavaScript check3 and Python branch2 package outputs. Verified
+current input/review bindings, every raw archive member, core/model byte identity and
+eight installed/extracted full-geometry cases. Explicit root exports include branch
+function/error; generated handoff docs cover controls/provenance and runtime setup.
+Records cp6-javascript/python.json and root reviews; installer docs linked from README.
+No native rerender; Python extracted import used shared lease. Earlier mechanical failed
+package attempts retained outside Git. All package workers released file ownership.
+Ten operations now have four-target core/native validation AND reviewed local packages;
+five remain to port. Java remains15operations/15starters. No registry release or new
+original-sketch recreation count. Next close focused older-Android restoration follow-up
+(Flagged Field,Path,Placement,Region,Grain), then bounded radial-profile batch. Preserve
+historical evidence; no broad support assertion for the newly discovered restore case.
+
 ## Branch root exports and Android distribution accepted
 
 Added exact JavaScript/Python branch root exports; direct function/error identity and

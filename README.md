@@ -49,7 +49,8 @@ Start with [a field of independent marks](docs/getting-started.md),
 Earlier scoped artifacts retain their installation instructions:
 [FieldMarks 0.1](docs/installing.md), [PathMarks 0.2](docs/installing-path-marks.md),
 [PlacementMarks 0.3](docs/installing-placement-marks.md),
-[RegionMarks 0.4](docs/installing-region-marks.md), and [GrainMarks 0.5](docs/installing-grain-marks.md).
+[RegionMarks 0.4](docs/installing-region-marks.md), [GrainMarks 0.5](docs/installing-grain-marks.md),
+and [BranchMarks 0.6](docs/installing-branch-marks.md), now packaged for all four targets.
 The survey, parameter analysis and
 benchmark tools provide the evidence behind the library's decisions. Phase 2 remains
 active; decisions are versioned against their evidence and revisited as reports arrive.

@@ -1,0 +1,29 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local javascript0.6 BranchMarks package and installed/extracted consumer only; native support remains separately scoped.",
+  "implementation_sha256": {
+    "tools/build_branch_marks_javascript.mjs": "36a9d3889958d74cc4ac1ecd166856209917a9f3d4c6a711ace994f31da64fc1",
+    "packages/javascript/src/index.js": "ef714f7681d94ad28ebd463e01a1636c608d366f80f6f8678ce48cb13a17f932",
+    "packages/javascript/src/branch-tree.js": "675f30861d3fe667e249082a8cdab00581526c6e13169a94c81435ce0765e6be",
+    "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+    "packages/javascript/examples/branch-marks/sketch.js": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp6-javascript.json": "8843646ca9e699110e555797ecc88f70f626bbef0293da19417c7246cf97174e",
+    "evidence/conformance/branch-export-compatibility-review.json": "9e5e2e2da594792bc38328a724863ed4bda8e4f09246fb853ab34f82720205c2",
+    "evidence/conformance/branch-tree-javascript-root-review.json": "e18e96d5fffd422f5a1efb8085cd6b5913fd14803a2aaf57aea89ba29efbf729",
+    "evidence/conformance/branch-p5js-native-root-review.json": "117587e8b77c72a4ea11b402f174b49c3aa3ad3f15b2cf4de5707e01c37c0529"
+  },
+  "root_findings": [
+    "Root reviewed complete builder and requested full artist controls/provenance instructions plus explicit root review bindings.",
+    "Root verified every current input/review binding and raw tarball/ZIP member hash, with exact core source bytes.",
+    "Installed direct-module/root identities cover ten operations and BranchTreeError; eight full retained-value fingerprints match source, installed starter and extracted archive.",
+    "Only two model imports and HTML import map are transformed; sketch bytes remain exact. Pinned p5 dependency, notices and local tarball included; no native rerender or registry publication."
+  ],
+  "remaining": [
+    "Focused restore-path review of older Android starters",
+    "Five remaining operation ports and downstream roadmap milestones"
+  ]
+}
