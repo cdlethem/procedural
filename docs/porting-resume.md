@@ -15,8 +15,10 @@ Those scoped records do not establish Android or completed shared radial support
 
 ## Java buildout additions to the deferred queue
 
-Latest accepted Java library baseline: `5197dc6e2d4754699bbafb2cd1e5418a75ab9f08`
-(Java0.19, 19 operations and 19 workflows). Repository tooling checkpoint `1dabca75`
+Latest accepted Java library baseline: `7d5c941f`
+(Java0.20, 20 operations and 20 workflows), reviewed in
+`evidence/distribution/cp17-java-review.json`. Earlier Java0.19 baseline:
+`5197dc6e2d4754699bbafb2cd1e5418a75ab9f08`. Repository tooling checkpoint `1dabca75`
 adds seeded JAVA2D rendering and sweeps without changing the accepted library archive.
 The earlier `88ac268d` records the scheduling-change checkpoint.
 RasterRemap2D/WarpMarks and StopRamp/RampMarks are accepted Java additions awaiting ports.
@@ -76,4 +78,4 @@ Use a pushed revision with accepted Java0.19 distribution evidence when this bat
 CP17 adds BinaryCellPartition2D/PanelMarks after closed splines. Preserve exact integer
 bounds, survivor-then-child ordering, failed-attempt RNG consumption, RANDOM/LONGEST axis
 semantics and all-interior cut mapping. Use the accepted Java0.20 distribution checkpoint
-when published; do not port the earlier private probe or claim Processing source replay.
+at `7d5c941f`; do not port the earlier private probe or claim Processing source replay.

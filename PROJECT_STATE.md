@@ -1,5 +1,22 @@
 # Project state
 
+## CP18 private3D field investigated — dependency contract next
+
+Root selected a three-coordinate scalar field after reading pelosNoise2 and conitos notes
+and pinned source. Private Java probe and four native frames demonstrate fixed-origin depth
+slices and reuse on a projected hemisphere; six independent dyadic vectors and bounded
+continuity/purity checks pass. Decision: retain seed-only3D field, no octave/detail controls.
+See design/capabilities/cp18-noise3d-direction.md and
+evidence/parameter-experiments/cp18-noise3d/decision.md. Hemisphere ring overlap is an authored
+point-layout limitation; it establishes neither native P3D support nor a sphere mesher.
+
+Next record capability-dependency admission (not a whole-computation merge), freeze exact
+safe-corner/hash/interpolation/query semantics and shared fixtures, then implement Java and
+native mesh transfer. Preserve GradientNoise2D01 behavior and existing lowbias32 provenance.
+Private +/-1e6 bounds are not public limits. No new operation accepted: Java0.20 remains20
+operations/20 workflows at7d5c941f. No worker or native process remains active; ports/Sol paused.
+Unrelated Android resume draft remains untouched. Overall feature completeness remains open.
+
 ## CP17 Java0.20 accepted for publishing
 
 BinaryCellPartition2D/PanelMarks now pass exact core, native edit/transfer/reset/save and

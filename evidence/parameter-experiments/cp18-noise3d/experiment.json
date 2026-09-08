@@ -1,0 +1,48 @@
+{
+  "id": "cp18-noise3d",
+  "status": "completed-private-investigation",
+  "question": "Does the independent 3D field give readable coherent planar slices and a useful depth edit without requiring an octave stack or adjustable hash/gradient choices?",
+  "decision": "retain seed-only 3D field or revise/internalize algorithm",
+  "source_sketches": [
+    "2016/Generativos/pelosNoise2",
+    "2018/Generativos/conitos"
+  ],
+  "baseline": {
+    "type": "private Java field investigation",
+    "seed": 42,
+    "renderer": "JAVA2D",
+    "frame": 1,
+    "depth": 0.25
+  },
+  "values": [
+    0.25,
+    0.5,
+    1.25
+  ],
+  "transfer": "Same3D field sampled on a sphere surface using fixed authored software projection; not P3D/native mesh support",
+  "decision_rule": "Retain only if nearby samples show coherent regions, depth changes alter the pattern without changing sample positions, and volumetric samples support an independently styled surface. Record distracting axis artifacts rather than claiming isotropy. No default, encouraged range or resource limit from these samples.",
+  "constraints": [
+    "at most six native frames including failures",
+    "no survey changes",
+    "existing render helper and shared machine lease",
+    "private probe excluded from package"
+  ],
+  "comparison": "fixed-seed decoded image differences and root visual inspection; no source-pixel equivalence",
+  "provenance": {
+    "2016/Generativos/pelosNoise2#0": {
+      "notes_path": "survey/out/2016/Generativos/pelosNoise2/notes.md",
+      "note_sha256": "e32fae01f91fb680b5b32b035ea15dba95e1d1c1dca2efaabbeee9dad134c4d6",
+      "evidence_sha256": "7e8377899b91d30aec6c93b14c4e08ac149c08434945e3d131c591917b4d08b9",
+      "upstream_pde_sha256": "a712734657620f483ba0c14697a95a19e34c488a3a7dda98b8333acb2bfdc599",
+      "candidate_disposition": "review_required"
+    },
+    "2018/Generativos/conitos#0": {
+      "notes_path": "survey/out/2018/Generativos/conitos/notes.md",
+      "note_sha256": "48ac1a0429eb8ffc7d8b2843f7b00f87e278f646052a06d7b476f3e8a5b4f963",
+      "evidence_sha256": "9128366c30a3861dbcafadfd19d627ac0e0083db1e14511451d2f64865c7c106",
+      "upstream_pde_sha256": "e540422b682ca82fb4a4f70cd0bca23ecf96550f0e82670905a1554c564f1de0",
+      "candidate_disposition": "review_required"
+    }
+  },
+  "results": "root-review.json"
+}

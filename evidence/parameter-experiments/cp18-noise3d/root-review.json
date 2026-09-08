@@ -1,0 +1,25 @@
+{
+  "status": "private-investigation-reviewed",
+  "reviewer": "root",
+  "native_frames": 4,
+  "comparisons": [
+    {
+      "depth": 0.5,
+      "mean_absolute_rgb_difference_0_1": 0.1291409983915441,
+      "changed_pixel_fraction": 0.5696142578125
+    },
+    {
+      "depth": 1.25,
+      "mean_absolute_rgb_difference_0_1": 0.13317138991013072,
+      "changed_pixel_fraction": 0.5803759765625
+    }
+  ],
+  "sources": {
+    "tools/diagnostics/noise3d/DepthStudy/Noise3DProbe.java": "47f0cfb3eac161d5aebcbe89e23fa09f14c0abdf6ebdd5c908a958f660137bd6",
+    "tools/diagnostics/noise3d/DepthStudy/DepthStudy.pde": "99e2dd16730b3083b2d4795150bf5e7a1f7ea94de887737b75ee429f9b2dead9",
+    "tools/diagnostics/noise3d/Noise3DCheck.java": "099e1695d397abc0e865ac15f27d5b33c7022faff6e1d117ad04d417ee04f316"
+  },
+  "numeric_checks": "Six independently calculated dyadic vectors pass; exact lattice-center values, repeated-query purity and bounded continuity observations across each axis pass. Not full public-domain conformance.",
+  "visual_review": "Root viewed all three slice contact-sheet panels and the full hemisphere study.",
+  "scope": "Supports proceeding to public dependency admission/contract; no implementation or release acceptance, P3D support or original recreation credit."
+}
