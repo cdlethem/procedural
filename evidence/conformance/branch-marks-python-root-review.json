@@ -1,0 +1,29 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Python BranchMarks retained model parity only; native drawing and packages pending.",
+  "implementation_sha256": {
+    "tests/native/branch-marks-python.py": "6bccf7d322a9073f216088ab05c6c98b7f60a4dc02ce99941a1a070e1fc808fe",
+    "packages/python/examples/branch_marks/branch_composition.py": "2abb9cb2e12b45e1513a376f5c6e063c4f522085e17f24e92e6ef26032b54c3d",
+    "packages/python/procedurals/branch_tree.py": "dcaa5ee3da7ab9a99d93f0cb8d370d308c719292b2a40cb27dec20a953230458",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+    "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "tools/generate_branch_tree_fixtures.py": "10d97521fa1763ac8fce853df34c021459307619802515c64a63901d71219b92"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/branch-marks-python-parity.json": "8d6c4f94fb14499091987514c38ab0237fb2701925d7f791d498326e863d2191",
+    "evidence/conformance/branch-tree-python-root-review.json": "1d72c43e01fc9ea0554992450ca26842e25797246b911ab1fbdc3661135693ef"
+  },
+  "findings": [
+    "Root reviewed all rule construction and forest placement against Java: absolute-generation narrowing, seed wrap, explicit example budget and independent circle placement preserved.",
+    "Independent pinned Python run compiled and executed actual Java for eight configurations, checking every tree, exact topology/headings/lengths, bounded coordinates, endpoint attachment and child tallies.",
+    "Root added explicit all-tree prefix count/growth requirements, runtime and Java binary bindings, bounded subprocess deadlines and motivating report documentation."
+  ],
+  "limits": [
+    "Model parity does not establish native draw treatment, style retention or saved pixels.",
+    "Coordinate allowances are the existing case-specific propagated trig bounds, not a universal tolerance."
+  ]
+}

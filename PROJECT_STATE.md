@@ -1,5 +1,16 @@
 # Project state
 
+## Python BranchMarks model parity accepted; native work assigned
+
+Root independently passed all eight actual Java comparisons with pinned Python at
+.work/branch-marks-python/root-reviewed. All-tree growth/prefix assertions, runtime and
+Java binary bindings,60-second deadlines and provenance added. Model-only acceptance
+records branch-marks-python-parity/root-review; no native or package claim.
+Terra triangle_python owns branch_marks/sketch.py and README.md; Luna
+quadrant_python_package owns tests/native/py5_branch_marks.py. Root preregistered the
+17-composition native sequence in branch-marks-py5-acceptance.md. No native run started.
+Next review both files and execute once under the shared lock, then inspect native images.
+
 ## Branch Python and Android core accepted
 
 Root reviewed Python implementation and independently passed40 shared cases/five streams

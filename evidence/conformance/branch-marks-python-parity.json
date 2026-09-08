@@ -1,0 +1,91 @@
+{
+  "status": "passed",
+  "runtime": {
+    "python": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]",
+    "implementation": "CPython"
+  },
+  "configurations": [
+    "baseline",
+    "extended",
+    "narrowing",
+    "wider",
+    "binary",
+    "forest",
+    "forestextended",
+    "forestseed"
+  ],
+  "java_tree_counts": [
+    [
+      101
+    ],
+    [
+      192
+    ],
+    [
+      101
+    ],
+    [
+      101
+    ],
+    [
+      38
+    ],
+    [
+      24,
+      30,
+      88,
+      33,
+      19,
+      38,
+      56
+    ],
+    [
+      50,
+      53,
+      179,
+      57,
+      38,
+      77,
+      106
+    ],
+    [
+      30,
+      88,
+      33,
+      19,
+      38,
+      56,
+      2,
+      66
+    ]
+  ],
+  "coordinate_allowances": "tools/generate_branch_tree_fixtures.py coordinate_comparison",
+  "input_sha256_before": {
+    "tests/native/branch-marks-python.py": "6bccf7d322a9073f216088ab05c6c98b7f60a4dc02ce99941a1a070e1fc808fe",
+    "packages/python/examples/branch_marks/branch_composition.py": "2abb9cb2e12b45e1513a376f5c6e063c4f522085e17f24e92e6ef26032b54c3d",
+    "packages/python/procedurals/branch_tree.py": "dcaa5ee3da7ab9a99d93f0cb8d370d308c719292b2a40cb27dec20a953230458",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+    "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "tools/generate_branch_tree_fixtures.py": "10d97521fa1763ac8fce853df34c021459307619802515c64a63901d71219b92",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d"
+  },
+  "input_sha256_after": {
+    "tests/native/branch-marks-python.py": "6bccf7d322a9073f216088ab05c6c98b7f60a4dc02ce99941a1a070e1fc808fe",
+    "packages/python/examples/branch_marks/branch_composition.py": "2abb9cb2e12b45e1513a376f5c6e063c4f522085e17f24e92e6ef26032b54c3d",
+    "packages/python/procedurals/branch_tree.py": "dcaa5ee3da7ab9a99d93f0cb8d370d308c719292b2a40cb27dec20a953230458",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+    "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "tools/generate_branch_tree_fixtures.py": "10d97521fa1763ac8fce853df34c021459307619802515c64a63901d71219b92",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d"
+  }
+}
