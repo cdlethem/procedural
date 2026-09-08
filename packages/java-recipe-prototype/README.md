@@ -45,3 +45,9 @@ revalidates them, then executes those round-tripped values in all nine command c
 It preserves expression/statement array order. Allocation probes also reject a count above
 Java's signed-int collection limit even when host budgets are widened. Broader accounting
 and retained-edit caching remain unaccepted.
+
+Accounting now includes fresh scalar results, operation materialization, temporary command
+normalization, detached publication and owned native arrays. Eight focused failure groups
+include limits mutated during evaluation and descriptor work/copy boundaries. The nine
+command comparisons pass within unchanged default limits. This remains a prototype: full
+schema-driven admission and complete budget failure coverage precede runtime acceptance.

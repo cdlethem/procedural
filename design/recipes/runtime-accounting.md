@@ -94,4 +94,29 @@ of 2000 steps, constructors plus values calls alone consume 240,192 work units b
 grid/palette calls. The initial provisional 200,000 work limit was insufficient; the
 prototype profile is therefore 500,000. Keep the full cost instead of undercounting it.
 Native positions storage also contains `2*(steps+1)` scalars and must pass the single-array
-limit before construction. These are reviewed calculations, not executed budget evidence.
+limit before construction. These costs now have prototype command evidence; complete accounting and boundary admission
+remain under review.
+
+
+## Root accounting clarification for the prototype correction
+
+Value units count recipe-visible values and owned native numeric buffers, not JVM object
+headers, hash-table capacity or lexical-scope bookkeeping. Visits and iterations separately
+bound that bookkeeping. This is a deterministic work budget, not a byte-accurate heap limit.
+
+- Array/record/map construction charges the new container; referenced children are not
+  copied and do not incur a second recursive charge. Newly evaluated children pay their
+  own allocation charges. A range additionally creates one scalar per element.
+- Each evaluated math result, scalar query result and generated loop index costs one scalar
+  unit, independent of whether a particular JVM caches its boxed representation.
+- Native materialization and detached publication copies cost their complete value trees.
+  Temporary command normalization is also a copy and must be reserved before calling the
+  normalizer; discarding it does not refund the cost.
+- Host limits are snapshotted on entry. Changing the caller's mutable configuration must
+  not change the budget of an execution already underway. Concurrent mutation of the input
+  recipe during evaluation is outside the prototype's supported input contract.
+
+These clarify the existing created-value rule; they do not authorize increasing the default
+budget to hide incorrect accounting. Boundary probes and the existing nine command cases
+must be rerun after the correction. Full schema admission and native/export support remain
+separate gates.

@@ -130,3 +130,34 @@ therefore added its fixed 640x640, one-pixel-padded bounding-box visibility deci
 draft via existing `if`, `lt` and `when` expressions. Compare the resulting emitted stream
 against `streamForCanvas`; do not weaken the profile or claim a general clipping operation.
 The predicates are equivalent for the finite coordinates already required by the core.
+
+
+## Runtime admission decision before evaluator acceptance
+
+Root inspected the four constructor schemas and their native validators. Runtime input
+validation will consume the schema pointers in execution-bindings.json, with the existing
+contract hashes checked at generation time. Generate a Java schema-data class for the
+prototype using the established Java literal emitter; keep dispatch explicit. A small
+validator interprets that data. Do not copy parameter bounds into handwritten branches or
+execute the Java binding proposal strings. Generation must reject unknown schema keywords
+and provide deterministic drift checking before this becomes an accepted consumer.
+
+The initial subset needs object properties/required/additionalProperties, tuple prefixItems,
+homogeneous items schemas (palette colors), items:false, array length constraints, numeric
+bounds and object/array/number/integer types. Annotation keys do not affect admission.
+Runtime numbers must be finite supported Java numeric wrappers, with boolean distinct from
+number and integral binary64 values allowed for integer schemas. This is a closed subset
+for these four bindings, not a claim of general JSON Schema implementation.
+
+Order is: resolve instance/declaration/port; evaluate input expressions in declared order;
+validate resulting input shape and scalar bounds; calculate and reserve operation costs;
+invoke the existing native method. Expression evaluation can itself exhaust budgets before
+an operation input exists. Native semantic failures remain native failures: grid product/
+coordinate overflow, instance-dependent point index bounds and path trace failures should
+not be reimplemented in the schema validator. Cost reservation may therefore precede those
+native semantic failures. This is consistent with failed calls consuming reservations.
+
+Focused admission evidence must include malformed path input with huge steps (schema error
+before allocation reservation), a schema-valid path over the host work budget (limit error
+before trace), a wrong instance port, and a schema-valid native semantic failure preserving
+its original code. No runtime acceptance follows merely from generating schema data.

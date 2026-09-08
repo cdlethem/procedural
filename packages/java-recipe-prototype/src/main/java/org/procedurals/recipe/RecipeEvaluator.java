@@ -98,10 +98,13 @@ public strictfp final class RecipeEvaluator {
             }
         }
         void array(String p, long n) {
+            checkArray(p, n);
+            units(p, n + 1);
+        }
+        void checkArray(String p, long n) {
             if (n < 0 || n > Integer.MAX_VALUE || n > l.arrayLength) {
                 fail("LIMIT_ARRAY_LENGTH", p, "array length limit");
             }
-            units(p, n + 1);
         }
         void units(String p, long n) {
             if (n < 0 || units > l.valueUnits - n) {
@@ -126,8 +129,9 @@ public strictfp final class RecipeEvaluator {
         }
     }
     public static Result evaluate(Map<String,Object> recipe,Limits limits) {
-        checkLimits(limits);
-        State s = new State(limits);
+        Limits frozen = snapshot(limits);
+        checkLimits(frozen);
+        State s = new State(frozen);
         Set<String> declared = declared(recipe);
         Map<String,Object> outer = new LinkedHashMap<String,Object>();
         outer.put("params", recipe.get("parameters"));
@@ -145,6 +149,7 @@ public strictfp final class RecipeEvaluator {
         Object envValue=expr(recipe.get("environment"),outer,"/environment",s,declared);
         Map<String,Object> env;
         try {
+            s.units("/environment", 5);
             env = DrawingValues.validateEnvironment(envValue);
         } catch (RecipeFailure e) {
             throw e;
@@ -155,6 +160,7 @@ public strictfp final class RecipeEvaluator {
         s.units("/frame", 1);
         statements(list(recipe.get("frame"), "/frame"), outer, "/frame", s,
                 declared, commands, env);
+        s.units("", 2);
         return new Result(env, commands, s.counters());
     }
     private static void checkLimits(Limits l) {
@@ -163,6 +169,14 @@ public strictfp final class RecipeEvaluator {
                 || l.commands <= 0 || l.millis <= 0) {
             fail("INVALID_LIMITS", "", "limits must be positive");
         }
+    }
+    private static Limits snapshot(Limits source) {
+        if (source == null) return null;
+        Limits copy = new Limits();
+        copy.visits=source.visits; copy.calls=source.calls; copy.work=source.work;
+        copy.iterations=source.iterations; copy.arrayLength=source.arrayLength;
+        copy.valueUnits=source.valueUnits; copy.commands=source.commands; copy.millis=source.millis;
+        return copy;
     }
     private static Set<String> declared(Map<String,Object> r) {
         Set<String> out = new HashSet<String>();
@@ -200,6 +214,8 @@ public strictfp final class RecipeEvaluator {
             } else if ("emit".equals(k)) {
                 Object raw = expr(st.get("value"), local, path(q, "value"), s, declared);
                 s.command(q);
+                s.units(q, normalizationTemporaryUnits(raw, q));
+                s.units(q, units(raw));
                 try {
                     DrawingValues.normalizeCommand(raw, environment);
                 } catch (RecipeFailure e) {
@@ -207,7 +223,6 @@ public strictfp final class RecipeEvaluator {
                 } catch (IllegalArgumentException e) {
                     throw nativeFail("DRAWING_FAILURE", q, "drawing.fresh-raster-2d", e, s);
                 }
-                s.units(q, units(raw));
                 commands.add(freezeValue(raw));
             } else if ("when".equals(k)) {
                 if (bool(expr(st.get("condition"), local, path(q, "condition"), s, declared),
@@ -228,6 +243,7 @@ public strictfp final class RecipeEvaluator {
                     s.iteration = iterationContext(prior, q, j);
                     try {
                         s.iter(q);
+                        s.units(q, 1);
                         Map<String,Object> child = new LinkedHashMap<String,Object>(local);
                         child.put(as, values.get(j));
                         child.put(ix, Double.valueOf(j));
@@ -260,7 +276,8 @@ public strictfp final class RecipeEvaluator {
         }
         if ("array".equals(k)) {
             List<?> a = list(n.get("items"), path(p, "items"));
-            s.array(p, a.size());
+            s.checkArray(p, a.size());
+            s.units(p, 1);
             List<Object> out = new ArrayList<Object>(a.size());
             for (int i = 0; i < a.size(); i++) {
                 out.add(expr(a.get(i), scope, path(path(p, "items"), i), s, declared));
@@ -269,7 +286,8 @@ public strictfp final class RecipeEvaluator {
         }
         if ("record".equals(k)) {
             List<?> fs = list(n.get("fields"), path(p, "fields"));
-            s.array(p, fs.size());
+            s.checkArray(p, fs.size());
+            s.units(p, 1);
             Map<String,Object> out = new LinkedHashMap<String,Object>();
             for (int i = 0; i < fs.size(); i++) {
                 Map<?,?> f = map(fs.get(i), path(path(p, "fields"), i));
@@ -333,13 +351,15 @@ public strictfp final class RecipeEvaluator {
             if (as.equals(ix) || scope.containsKey(as) || scope.containsKey(ix)) {
                 fail("SHADOWED_NAME", p, "iteration name visible");
             }
-            s.array(p, a.size());
+            s.checkArray(p, a.size());
+            s.units(p, 1);
             List<Object> out = new ArrayList<Object>(a.size());
             for (int i = 0; i < a.size(); i++) {
                 String prior = s.iteration;
                 s.iteration = iterationContext(prior, p, i);
                 try {
                     s.iter(p);
+                    s.units(p, 1);
                     Map<String,Object> child = new LinkedHashMap<String,Object>(scope);
                     child.put(as, a.get(i));
                     child.put(ix, Double.valueOf(i));
@@ -375,6 +395,7 @@ public strictfp final class RecipeEvaluator {
             if (a.size() != 1) {
                 fail("TYPE", p, "arity");
             }
+            s.units(p, 1);
             return Double.valueOf(list(expr(a.get(0), scope, path(path(p, "args"), 0), s, d), p).size());
         }
         if ("neg".equals(op) || "sin".equals(op) || "cos".equals(op) || "floor".equals(op)) {
@@ -384,6 +405,7 @@ public strictfp final class RecipeEvaluator {
             double x = num(expr(a.get(0), scope, path(path(p, "args"), 0), s, d), p);
             double z = "neg".equals(op) ? -x : "sin".equals(op) ? Math.sin(x)
                     : "cos".equals(op) ? Math.cos(x) : Math.floor(x);
+            s.units(p, 1);
             return finite(z, p);
         }
         if (a.size() != 2) {
@@ -392,12 +414,15 @@ public strictfp final class RecipeEvaluator {
         double x = num(expr(a.get(0), scope, path(path(p, "args"), 0), s, d), p);
         double y = num(expr(a.get(1), scope, path(path(p, "args"), 1), s, d), p);
         if ("lt".equals(op)) {
+            s.units(p, 1);
             return Boolean.valueOf(x < y);
         }
         if ("le".equals(op)) {
+            s.units(p, 1);
             return Boolean.valueOf(x <= y);
         }
         if ("eq".equals(op)) {
+            s.units(p, 1);
             return Boolean.valueOf(x == y);
         }
         if (("div".equals(op) || "rem".equals(op)) && y == 0) {
@@ -406,6 +431,7 @@ public strictfp final class RecipeEvaluator {
         double z = "add".equals(op) ? x + y : "sub".equals(op) ? x - y
                 : "mul".equals(op) ? x * y : "div".equals(op) ? x / y
                 : "rem".equals(op) ? x % y : Double.NaN;
+        s.units(p, 1);
         return finite(z, p);
     }
     private static Object construct(String id, Object input, String p, State s, Set<String> d) {
@@ -425,7 +451,7 @@ public strictfp final class RecipeEvaluator {
                 Map<?,?> m = map(input, p);
                 Object c = m.get("colors");
                 int z = list(c, p).size();
-                s.units(p, z);
+                s.array(p, z);
                 s.call(p, 1 + z);
                 return new Instance(id, CyclicPalette.create(input), z);
             }
@@ -462,6 +488,8 @@ public strictfp final class RecipeEvaluator {
                 if (in.size() != 1 || !in.containsKey("index")) {
                     fail("TYPE", p, "grid point input must be {index}");
                 }
+                // pointAt creates a native double[2], then this evaluator creates a detached List.
+                s.array(p, 2);
                 s.array(p, 2);
                 s.call(p, 1);
                 return point(((RegularGrid)x.value).pointAt(index(in.get("index"), p)));
@@ -471,10 +499,12 @@ public strictfp final class RecipeEvaluator {
                 if (q.size() != 2) {
                     fail("TYPE", p, "noise sample input must have two values");
                 }
+                s.units(p, 1);
                 s.call(p, 1);
                 return Double.valueOf(((GradientNoise2D01)x.value).sample(input));
             }
             if ("color.cyclic-palette".equals(x.id) && "sample".equals(port)) {
+                s.units(p, 1);
                 s.call(p, 1);
                 return Double.valueOf(((CyclicPalette)x.value).sample(num(input, p)));
             }
@@ -493,18 +523,21 @@ public strictfp final class RecipeEvaluator {
         Instance x = (Instance)value;
         try {
             if ("layout.regular-grid".equals(x.id)) {
+                s.checkArray(p, 2);
+                s.checkArray(p, 2);
                 s.units(p, 9);
-                s.call(p, 1);
+                s.call(p, 10);
                 return ((RegularGrid)x.value).toMap();
             }
             if ("field.gradient-noise-2d-01".equals(x.id)) {
                 s.units(p, 2);
-                s.call(p, 1);
+                s.call(p, 3);
                 return ((GradientNoise2D01)x.value).serialize();
             }
             if ("color.cyclic-palette".equals(x.id)) {
+                s.checkArray(p, x.size);
                 s.units(p, x.size + 2);
-                s.call(p, 1 + x.size);
+                s.call(p, x.size + 3);
                 return ((CyclicPalette)x.value).serialize();
             }
             if ("path.gradient-trace-2d".equals(x.id)) {
@@ -513,6 +546,9 @@ public strictfp final class RecipeEvaluator {
                 if (n > lmax(s) / 4) {
                     fail("LIMIT_VALUE_UNITS", p, "path output size");
                 }
+                s.checkArray(p, n + 1);
+                s.checkArray(p, n);
+                s.checkArray(p, 2);
                 s.units(p, 4 * n + 6);
                 s.call(p, 4 * n + 7);
                 return path.toValues();
@@ -558,6 +594,17 @@ public strictfp final class RecipeEvaluator {
             return n;
         }
         return 1;
+    }
+    /** Detached normalized command tree plus DrawingValues' temporary point buffers. */
+    private static long normalizationTemporaryUnits(Object raw, String path) {
+        if (!(raw instanceof Map)) return 36;
+        Object kind = ((Map<?,?>)raw).get("kind");
+        // segment: normalized tree 19, native double[][]/point buffers 7.
+        if ("segment2".equals(kind)) return 26;
+        // quad: normalized tree 23, native double[][]/point buffers 13.
+        if ("quad2".equals(kind)) return 36;
+        // Reserve the largest reviewed temporary before DrawingValues reports its precise error.
+        return 36;
     }
     private static List<Double> point(double[] p) {
         return Arrays.asList(Double.valueOf(p[0]), Double.valueOf(p[1]));

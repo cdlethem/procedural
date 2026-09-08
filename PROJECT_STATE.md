@@ -1,5 +1,24 @@
 # Project state
 
+## Accounting correction reviewed; runtime admission next
+
+Previous checkpoint33d73f5f pushed array-ceiling and JSON round-trip checks. Root reviewed
+accounting against actual evaluator/native sources and assigned Terra the bounded correction
+in RecipeEvaluator.java plus the existing failure probe. Root clarified container/reference,
+scalar, normalization-copy and host-limit ownership costs in runtime-accounting.md. Luna
+returned a schema inventory; root checked the catalog directly and included palette's
+homogeneous items schema, then recorded a catalog-driven pre-cost validation decision in
+execution-direction.md. Native semantic errors remain native after reservation; do not copy
+core algorithms into admission validation.
+
+Root reviewed the first diff and required actual mutation-during-execution testing, explicit
+loop-index charges, nested array ceilings and preserved native drawing error identity.
+Final .work/recipe-prototype-accounting-run5 passes all nine command cases and eight focused
+groups; root verified every recorded input hash against current sources. No budget increase.
+Prototype evidence refreshed. Next implement schema-driven input admission, then finish
+budget failure/ordering coverage before evaluator acceptance. Do not count this as operation16.
+The unrelated JavaScript export remains outside root's work. Full milestone goal active.
+
 ## Native allocation ceiling and JSON round-trip checks
 
 Previous turn pushed ownership fix 836f1e7d. Root demonstrated widened host budgets let

@@ -16,6 +16,14 @@ public final class RecipePrototypeFailures {
                 "environment",literal(map("width",64,"height",64,"density",1,"background",0)));
     }
     static Object binding(Object value) { return list(map("name","value","value",value)); }
+    static Map<String,Object> gridValuesRecipe() {
+        Object input=literal(map("origin",list(0,0),"spacing",list(1,1),"columns",1,"rows",1));
+        Object grid=map("kind","construct","operation","layout.regular-grid","input",input);
+        Object values=map("kind","values","instance",map("kind","ref","name","grid"));
+        Map<String,Object> result=recipe(list(map("name","grid","value",grid),map("name","descriptor","value",values)),list());
+        result.put("operations",list(map("id","layout.regular-grid","version","0.1.0")));
+        return result;
+    }
     static void check(boolean yes,String message) { if(!yes)throw new AssertionError(message); }
     static RecipeEvaluator.RecipeFailure failure(Map<String,Object> recipe, RecipeEvaluator.Limits limits,String code) {
         try { RecipeEvaluator.evaluate(recipe,limits); throw new AssertionError("expected "+code); }
@@ -75,6 +83,23 @@ public final class RecipePrototypeFailures {
         Object huge=map("kind","range","start",literal(0),"stop",literal(2147483648.0),"step",literal(1));
         failure(recipe(binding(huge),list()),widened,"LIMIT_ARRAY_LENGTH");
         System.out.println("native-array-index-ceiling passed");
+        RecipeEvaluator.Limits copyUnits=new RecipeEvaluator.Limits();copyUnits.valueUnits=8;
+        failure(gridValuesRecipe(),copyUnits,"LIMIT_VALUE_UNITS");
+        RecipeEvaluator.Limits copyWork=new RecipeEvaluator.Limits();copyWork.work=10;
+        failure(gridValuesRecipe(),copyWork,"LIMIT_WORK");
+        RecipeEvaluator.Limits snapshot=new RecipeEvaluator.Limits();snapshot.valueUnits=1000;
+        final RecipeEvaluator.Limits callerLimits=snapshot;
+        Map<String,Object> changingRecipe=new LinkedHashMap<String,Object>(gridValuesRecipe()) {
+            @Override public Object get(Object key) {
+                if ("parameters".equals(key)) callerLimits.valueUnits=1;
+                return super.get(key);
+            }
+        };
+        RecipeEvaluator.Result descriptor=RecipeEvaluator.evaluate(changingRecipe,snapshot);
+        check(descriptor.counters.get("work").longValue()==11,"grid values work reservation");
+        RecipeEvaluator.Limits gridArrays=new RecipeEvaluator.Limits();gridArrays.arrayLength=1;
+        failure(gridValuesRecipe(),gridArrays,"LIMIT_ARRAY_LENGTH");
+        System.out.println("values-copy-boundaries-and-limit-snapshot passed");
         System.out.println("PROTOTYPE_FAILURE_CASES_PASSED");
     }
 }
