@@ -1,0 +1,46 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Actual py5 BranchMarks callback and JAVA2D workflow only; package and source recreation pending.",
+  "implementation_sha256": {
+    "packages/python/procedurals/branch_tree.py": "dcaa5ee3da7ab9a99d93f0cb8d370d308c719292b2a40cb27dec20a953230458",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "packages/python/examples/branch_marks/branch_composition.py": "2abb9cb2e12b45e1513a376f5c6e063c4f522085e17f24e92e6ef26032b54c3d",
+    "packages/python/examples/branch_marks/sketch.py": "2d126a0cb9f7477f51975f545c0118d88f11d6f6819a2dd84784b2503aca8629",
+    "tests/native/py5_branch_marks.py": "a6238ec315044d6b0d035217d1f370cca2b6fe985824141d90aa5931a9242ea3",
+    "design/capabilities/branch-marks-py5-acceptance.md": "35cb7d3602c7c97bbc134cabcef34895be9ea1918ba9c420acefb2e632caaebc",
+    "catalog/operations/seeded-endpoint-branches.json": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+    "fixtures/operations/seeded-endpoint-branches.json": "5368de8f8e268ac2f376a45f08d97e690a3192708b4d42a2b6d393894f88a13c",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/py5-branch-marks.json": "bbe7d3b788fb0c89affb090a6846409b68c76c22d95caa873752fa88ece8c2bb",
+    "evidence/conformance/branch-marks-python-root-review.json": "2a352c4d13d9d3fbaaefeba23550bd89df8102cf22a3f502ba114c67c62db878",
+    "evidence/conformance/branch-tree-python-root-review.json": "1d72c43e01fc9ea0554992450ca26842e25797246b911ab1fbdc3661135693ef"
+  },
+  "findings": [
+    "Root reviewed complete sketch against Java draw treatment, including binary32 transport, nominal taper, generation palette and actual child-count terminal dots.",
+    "Root corrected draft harness state expectations, binary geometry packing, actual-versus-drawn tip counts, all-tree prefix/growth and cached save identity before rendering.",
+    "Native1 passed17 compositions, actual line/ellipse counts, all settings, geometry retention, exact extension prefixes, reset and cached save pixels. Root verified source/runtime and all PNG hashes; session88935 terminal exit0."
+  ],
+  "visual_review": {
+    "status": "accepted",
+    "images": [
+      "initial",
+      "extended",
+      "narrowing",
+      "binary",
+      "thin",
+      "forest",
+      "forest-taper",
+      "forest-extended"
+    ],
+    "observations": "Added crown branches, compact narrowing, slender binary form, thin unmarked branches and seven-root forest with restored terminal dots are visible."
+  },
+  "limits": [
+    "Native callbacks are exercised programmatically; physical keyboard interaction and human usability are not claimed.",
+    "No cross-renderer pixel identity, package distribution or source-sketch recreation acceptance."
+  ]
+}

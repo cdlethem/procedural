@@ -1,5 +1,16 @@
 # Project state
 
+## py5 BranchMarks native workflow accepted
+
+Native1 passed17 compositions at .work/reproductions/py5-branch-marks-native1. Root
+reviewed sketch and corrected harness before running; inspected eight representative
+images and verified all source/runtime/PNG hashes. Session88935 terminal exit0.
+Records py5-branch-marks.json and branch-py5-native-root-review.json; native-only
+py5 attestation added. Packaging and source recreation remain pending.
+Terra has partial Android BranchMarks files (renderer converted, Activity incomplete);
+no Android build/render acceptance. Continue that bounded task then native workflow.
+Counts remain Java15/15, nine fully packaged four-target operations.
+
 ## Python BranchMarks model parity accepted; native work assigned
 
 Root independently passed all eight actual Java comparisons with pinned Python at
