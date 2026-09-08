@@ -1,5 +1,51 @@
 # Project state
 
+## Quadrant JavaScript core and RegionMarks native checkpoint reviewed
+
+Root completed the delegated core corrections and readable implementation. All34 golden
+cases,5 private test-copy RNG vectors,4 crosschecks and native ownership/carrier groups pass.
+Five actual Java/JS model comparisons are bit-exact. The shared-lock p5 run passes seven
+frames, three ignored controls and cached save; root inspected baseline/grid/layout/authored.
+Tracked review: evidence/conformance/quadrant-p5js-implementation-review.json.
+No index export or shared target support was changed. Next integrate public exports with
+an exact reviewed extension of historical entrypoint compatibility, then target support;
+continue Python/Android quadrant ports and local packaging. Java count remains15/15.
+
+## RegionMarks browser workflow drafted
+
+Root ported the existing Java composition and controls to
+packages/javascript/examples/region-marks. Pure smoke checks cover301/601/11 cells and
+all interior3×3 marks; syntax check passes. Java/JavaScript model parity now passes five actual-runtime scenarios
+(301/301/601/601/11 cells), comparing raw binary64 ordered bounds, IDs and every mark.
+Runner: tests/native/region-marks-javascript.mjs; source-bound report:
+.work/conformance/region-marks-javascript-parity1/result.json. Native execution remains
+pending. The preregistered bounded scenario plan is
+design/capabilities/region-marks-p5-acceptance.md. No browser support claim or render yet.
+The second Luna core review still found missing promised checks/formatting; returned the
+same two files with explicit corrections, including private test-only RNG instrumentation.
+
+## Quadrant JavaScript first-pass review: corrections required
+
+Root executed a passive destination regression against the first draft: a four-slot array
+with slot2 read-only produced TypeError after overwriting slots0/1 with10/20. The contract
+requires INVALID_OUTPUT and no writes. No target acceptance is granted. Luna is correcting
+full-slot prevalidation and adding executable ownership/native-carrier checks. The initial
+runner executed34 JSON cases and5 seed vectors but merely copied cross-case/native
+requirements; those copied sections are not conformance evidence. Root also requested
+removal of the uncontracted exported RNG helper, readable implementation/provenance docs,
+and fresh --output handling. Keep the contract-authorized offset=0 default; no output-array
+default is authorized. Root must review the corrected sources and fresh report before
+public exports, native workflow or support records. The worker owns only the two new JS files.
+
+## I2 batch02: quadrant partition port started
+
+Root selected the existing nested-region capability as the next deferred port, following
+the completed placement package batch. Read the full frozen quadrant semantics and34-case
+fixture structure, including the non-prefix replacement history and midpoint failure order.
+Bounded ownership/stopping conditions are in design/port-batch-02.md. Luna owns only the new
+JavaScript core module and fixture runner; root owns semantics, native workflow and integration.
+No new public signature, target claim or Java operation is implied by this work in progress.
+
 ## Placement port distribution batch complete
 
 Android starter0.3 ZIP now includes accepted core0.3 and unchanged adapter0.2 JARs,

@@ -1,0 +1,246 @@
+{
+  "status": "passed",
+  "scope": "RegionMarks p5.js native workflow only; no release or reproduction acceptance",
+  "input_sha256_before": {
+    "tools/run_p5_region_marks.mjs": "9c68c35bc9eafd2d4cbd4192d7098d5d580ad25e4c051329b696c1f8aa60d6ae",
+    "tests/native/region-marks-browser.mjs": "75fc8fd80364c6daefb9403c711ed76d110436b0fcbdb5e1c504e42ebff616d2",
+    "packages/javascript/examples/region-marks/index.html": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d",
+    "packages/javascript/examples/region-marks/sketch.js": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a",
+    "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+    "packages/javascript/examples/region-marks/README.md": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "design/capabilities/region-marks-p5-acceptance.md": "47af3be780e3f975e383420eed6099f1d39596ea069da7f687579972c8c6f1d8",
+    ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  },
+  "states": [
+    {
+      "id": "baseline",
+      "revision": 1,
+      "cells": 301,
+      "marks": 301,
+      "settings": {
+        "seed": 42,
+        "replacements": 100,
+        "fraction": 0.5,
+        "grid": false,
+        "alternate": false,
+        "authored": false
+      },
+      "retained": null,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "f22e5b186a04e93b5559a861ae7d42c9035e5482155c3268065eaf026290901b",
+      "image": "baseline.png"
+    },
+    {
+      "id": "grid",
+      "revision": 2,
+      "cells": 301,
+      "marks": 2709,
+      "settings": {
+        "seed": 42,
+        "replacements": 100,
+        "fraction": 0.5,
+        "grid": true,
+        "alternate": false,
+        "authored": false
+      },
+      "retained": true,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "1269938a56205f0e8c2896679416444b8cb763e0da559efe92afce2f9ec57feb",
+      "image": "grid.png"
+    },
+    {
+      "id": "colour",
+      "revision": 3,
+      "cells": 301,
+      "marks": 2709,
+      "settings": {
+        "seed": 42,
+        "replacements": 100,
+        "fraction": 0.5,
+        "grid": true,
+        "alternate": true,
+        "authored": false
+      },
+      "retained": true,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "755ed4e45a60ca98842ffc5ce3cddcc848505394b2fc3ee34a0b05751bda9fa9",
+      "image": "colour.png"
+    },
+    {
+      "id": "layout",
+      "revision": 4,
+      "cells": 301,
+      "marks": 2709,
+      "settings": {
+        "seed": 42,
+        "replacements": 100,
+        "fraction": 1,
+        "grid": true,
+        "alternate": true,
+        "authored": false
+      },
+      "retained": false,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "a28694ffe053a37b2df490d6d1447b109cc9b14dbdac28cec19a63acca1d127a",
+      "image": "layout.png"
+    },
+    {
+      "id": "count",
+      "revision": 5,
+      "cells": 601,
+      "marks": 5409,
+      "settings": {
+        "seed": 42,
+        "replacements": 200,
+        "fraction": 1,
+        "grid": true,
+        "alternate": true,
+        "authored": false
+      },
+      "retained": false,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "cbd3f8432e7a2bbd2537f27b6004c1f2a54c1c035f1399541017cdc87c515492"
+    },
+    {
+      "id": "seed",
+      "revision": 6,
+      "cells": 601,
+      "marks": 5409,
+      "settings": {
+        "seed": 43,
+        "replacements": 200,
+        "fraction": 1,
+        "grid": true,
+        "alternate": true,
+        "authored": false
+      },
+      "retained": false,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "8c04616dc280c5c0096540dc4a185127d5b204dee5b499c7fae68bc321d83a99"
+    },
+    {
+      "id": "authored",
+      "revision": 7,
+      "cells": 11,
+      "marks": 99,
+      "settings": {
+        "seed": 43,
+        "replacements": 200,
+        "fraction": 1,
+        "grid": true,
+        "alternate": true,
+        "authored": true
+      },
+      "retained": false,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "43af1ec73e801e883104822a142d25c24a0858479c846e9809b23d719646f8c2",
+      "image": "authored.png"
+    },
+    {
+      "id": "ignored-r",
+      "revision": 7,
+      "cells": 11,
+      "marks": 99,
+      "settings": {
+        "seed": 43,
+        "replacements": 200,
+        "fraction": 1,
+        "grid": true,
+        "alternate": true,
+        "authored": true
+      },
+      "retained": true,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "43af1ec73e801e883104822a142d25c24a0858479c846e9809b23d719646f8c2"
+    },
+    {
+      "id": "ignored-n",
+      "revision": 7,
+      "cells": 11,
+      "marks": 99,
+      "settings": {
+        "seed": 43,
+        "replacements": 200,
+        "fraction": 1,
+        "grid": true,
+        "alternate": true,
+        "authored": true
+      },
+      "retained": true,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "43af1ec73e801e883104822a142d25c24a0858479c846e9809b23d719646f8c2"
+    },
+    {
+      "id": "ignored-g",
+      "revision": 7,
+      "cells": 11,
+      "marks": 99,
+      "settings": {
+        "seed": 43,
+        "replacements": 200,
+        "fraction": 1,
+        "grid": true,
+        "alternate": true,
+        "authored": true
+      },
+      "retained": true,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "43af1ec73e801e883104822a142d25c24a0858479c846e9809b23d719646f8c2"
+    },
+    {
+      "id": "save",
+      "revision": 7,
+      "cells": 11,
+      "marks": 99,
+      "settings": {
+        "seed": 43,
+        "replacements": 200,
+        "fraction": 1,
+        "grid": true,
+        "alternate": true,
+        "authored": true
+      },
+      "retained": true,
+      "width": 640,
+      "height": 640,
+      "png_sha256": "43af1ec73e801e883104822a142d25c24a0858479c846e9809b23d719646f8c2"
+    }
+  ],
+  "errors": [],
+  "browser": "153.0.8010.12",
+  "browser_executable_sha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e",
+  "p5": "2.3.2",
+  "saved_png_sha256": "43af1ec73e801e883104822a142d25c24a0858479c846e9809b23d719646f8c2",
+  "input_sha256_after": {
+    "tools/run_p5_region_marks.mjs": "9c68c35bc9eafd2d4cbd4192d7098d5d580ad25e4c051329b696c1f8aa60d6ae",
+    "tests/native/region-marks-browser.mjs": "75fc8fd80364c6daefb9403c711ed76d110436b0fcbdb5e1c504e42ebff616d2",
+    "packages/javascript/examples/region-marks/index.html": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d",
+    "packages/javascript/examples/region-marks/sketch.js": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a",
+    "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+    "packages/javascript/examples/region-marks/README.md": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "design/capabilities/region-marks-p5-acceptance.md": "47af3be780e3f975e383420eed6099f1d39596ea069da7f687579972c8c6f1d8",
+    ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  }
+}

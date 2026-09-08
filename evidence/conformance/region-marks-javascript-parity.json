@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "scope": "Five actual Java/JavaScript composition comparisons; no native render or acceptance claim",
+  "cell_counts": [
+    301,
+    301,
+    601,
+    601,
+    11
+  ],
+  "comparison": "Ordered IDs and raw binary64 bounds plus all nine mark positions per cell",
+  "input_sha256_before": {
+    "tests/native/region-marks-javascript.mjs": "73f8c8ea4d15c93bc467f621fd60beaefc9a4ff3df9342fdc61355361650c56d",
+    "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc"
+  },
+  "input_sha256_after": {
+    "tests/native/region-marks-javascript.mjs": "73f8c8ea4d15c93bc467f621fd60beaefc9a4ff3df9342fdc61355361650c56d",
+    "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc"
+  },
+  "java_home": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1",
+  "java_release_sha256": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+  "java_modules_sha256": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+  "node_version": "v22.22.1"
+}

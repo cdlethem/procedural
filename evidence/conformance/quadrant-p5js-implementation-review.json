@@ -1,0 +1,34 @@
+{
+  "status": "accepted-scoped-implementation-checkpoint",
+  "reviewer": "root",
+  "scope": "Quadrant JavaScript private-module core and p5.js RegionMarks native workflow. Public entrypoint, shared target attestations and distribution remain pending.",
+  "evidence_sha256": {
+    "evidence/conformance/quadrant-partition-javascript.json": "73e76517fd24be9cef9ef2af8604c6797c28040e446d5ddf5136768ec4904c0f",
+    "evidence/conformance/region-marks-javascript-parity.json": "cbea311417d025dddeb7345a0f0ac0544f2d4412c99f88fab177969a4cf22f8c",
+    "evidence/conformance/p5js-region-marks.json": "c06492648a054b760433bebbb13c803607d851e8864e128b2af2057854310d77"
+  },
+  "native_lock": {
+    "wrapper": "tools/with_native_render_lock.py",
+    "path": "/home/colin/dev/procedural/.work/native-render-machine.lock",
+    "timeout_seconds": 240,
+    "execution": "root invoked wrapper; terminal exit0"
+  },
+  "core_review": [
+    "All34 actual-module cases and5 test-copy private RNG state vectors pass; all4 cross-case requirements checked.",
+    "Root corrected atomic destination writes, private index validation, detached exports, append/remove order and readable contract documentation.",
+    "Native nonfinite and wrong-carrier checks pass. Allocation-failure injection not executed; exports/generation expose no partial retained result by source inspection."
+  ],
+  "parity": "Five actual Java/JavaScript comparisons: raw binary64 bounds and all mark positions plus ordered birth IDs.",
+  "native": "p5.js2.3.2/Chromium153; seven compositions, three ignored controls, cached save exactly matching displayed PNG; no browser errors.",
+  "visual_review": {
+    "baseline": "Coloured square cells at several nested sizes, each with a centred white circle.",
+    "grid": "Same cell geometry with3x3 white circles within each cell.",
+    "layout": "Full-list selection leaves a large lower-right anchor and concentrated small-cell clusters in this example.",
+    "authored": "Eleven rectangular cells with interior3x3 marks; independent cell source works."
+  },
+  "limits": [
+    "No new original-sketch recreation or cross-host pixel identity.",
+    "No Python/Android quadrant port or package acceptance.",
+    "Existing README draft wording describes pre-integration delivery state; current execution scope is recorded here."
+  ]
+}

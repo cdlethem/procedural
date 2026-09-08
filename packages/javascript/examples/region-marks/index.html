@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Region marks — procedurals</title><link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head><body><main>
+<h1>Region marks</h1>
+<p>Divide a rectangle into nested cells, then choose what belongs inside each one. Colour and motif edits reuse the layout.</p>
+<div id="controls" aria-label="Region marks controls">
+<button data-action="r"><kbd>R</kbd> next seed</button>
+<button data-action="n"><kbd>N</kbd> 100 / 200 splits</button>
+<button data-action="g"><kbd>G</kbd> selection fraction 0.5 / 1</button>
+<button data-action="m"><kbd>M</kbd> single / grid marks</button>
+<button data-action="c"><kbd>C</kbd> change palette</button>
+<button data-action="x"><kbd>X</kbd> seeded / authored cells</button>
+<button data-action="s"><kbd>S</kbd> save PNG</button>
+</div><div id="art" aria-label="Nested coloured cells with white marks"></div>
+<p id="status" role="status">Preparing regions…</p>
+<p>Edit <code>region-marks.js</code> to supply your own cells, or <code>sketch.js</code> to draw different content. Seed, split count and selection fraction apply to seeded layouts.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body></html>
