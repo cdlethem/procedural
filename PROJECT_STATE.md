@@ -1,5 +1,19 @@
 # Project state
 
+## BranchMarks JavaScript model parity accepted
+
+Root corrected the worker runner: all-tree counts and prefixes instead of first-tree/min
+length, exact topology/attributes, child-count/attachment checks, full source bindings and
+60-second subprocess deadlines with fresh per-run build. Actual Java comparison passes
+all eight configurations at .work/conformance/branch-marks-javascript-root.json. Recorded
+branch-marks-javascript-parity.json and branch-marks-javascript-root-review.json; no native
+or package claim. Root added model provenance/no-defaults documentation.
+
+Terra triangle_python now owns ONLY p5 BranchMarks sketch.js/index.html/README.md, adapting
+accepted Java draw treatment and existing GrainMarks browser workflow. Root owns native
+plan/observer/runner and final image review. Core/model sources remain frozen. No branch
+renders pending; nine complete ports, Java15/15 unchanged. Next p5 native workflow.
+
 ## JavaScript endpoint-branch core accepted
 
 Root independently reran strengthened40-case/5-stream core checks at

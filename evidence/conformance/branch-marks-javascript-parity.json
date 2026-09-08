@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "runtime": {
+    "node": "v22.22.1",
+    "java_home": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1"
+  },
+  "operation": "topology.seeded-endpoint-branches-2d",
+  "scope": "BranchMarks JavaScript model parity against actual Java BranchComposition; exact topology/attributes, fixture-derived per-case trig allowances, same-runtime prefixes; no renderer or support claim.",
+  "configurations": [
+    "baseline",
+    "extended",
+    "narrowing",
+    "wider",
+    "binary",
+    "forest",
+    "forestextended",
+    "forestseed"
+  ],
+  "java_tree_counts": [
+    [
+      101
+    ],
+    [
+      192
+    ],
+    [
+      101
+    ],
+    [
+      101
+    ],
+    [
+      38
+    ],
+    [
+      24,
+      30,
+      88,
+      33,
+      19,
+      38,
+      56
+    ],
+    [
+      50,
+      53,
+      179,
+      57,
+      38,
+      77,
+      106
+    ],
+    [
+      30,
+      88,
+      33,
+      19,
+      38,
+      56,
+      2,
+      66
+    ]
+  ],
+  "coordinate_allowances": "tools/generate_branch_tree_fixtures.py coordinate_comparison",
+  "source_sha256_before": {
+    "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+    "packages/javascript/src/branch-tree.js": "675f30861d3fe667e249082a8cdab00581526c6e13169a94c81435ce0765e6be",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "fixtures/operations/seeded-endpoint-branches.json": "5368de8f8e268ac2f376a45f08d97e690a3192708b4d42a2b6d393894f88a13c",
+    "catalog/operations/seeded-endpoint-branches.json": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+    "tests/native/branch-marks-javascript.mjs": "484327bbbd8d84756dc8acfa63571c0d6311def85425b063b76900a3dea517e2",
+    "tools/generate_branch_tree_fixtures.py": "10d97521fa1763ac8fce853df34c021459307619802515c64a63901d71219b92",
+    "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+    "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "design/operations/branch-tree-contract-review.md": "bbbe49ecc940dcf95faccf067f0bf080cfcbc566540b98ae5a108f1378eee592",
+    "design/port-batch-04.md": "f317fa9e91293fd24657d494ee7414ca4fd3d8dabddf4971f6461e927c2acba9"
+  },
+  "source_sha256_after": {
+    "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+    "packages/javascript/src/branch-tree.js": "675f30861d3fe667e249082a8cdab00581526c6e13169a94c81435ce0765e6be",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "fixtures/operations/seeded-endpoint-branches.json": "5368de8f8e268ac2f376a45f08d97e690a3192708b4d42a2b6d393894f88a13c",
+    "catalog/operations/seeded-endpoint-branches.json": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+    "tests/native/branch-marks-javascript.mjs": "484327bbbd8d84756dc8acfa63571c0d6311def85425b063b76900a3dea517e2",
+    "tools/generate_branch_tree_fixtures.py": "10d97521fa1763ac8fce853df34c021459307619802515c64a63901d71219b92",
+    "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+    "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "design/operations/branch-tree-contract-review.md": "bbbe49ecc940dcf95faccf067f0bf080cfcbc566540b98ae5a108f1378eee592",
+    "design/port-batch-04.md": "f317fa9e91293fd24657d494ee7414ca4fd3d8dabddf4971f6461e927c2acba9"
+  }
+}

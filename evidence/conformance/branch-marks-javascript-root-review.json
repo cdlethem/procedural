@@ -1,0 +1,28 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "BranchMarks JavaScript retained composition parity only; native drawing and package integration remain pending.",
+  "implementation_sha256": {
+    "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+    "tests/native/branch-marks-javascript.mjs": "484327bbbd8d84756dc8acfa63571c0d6311def85425b063b76900a3dea517e2",
+    "packages/javascript/src/branch-tree.js": "675f30861d3fe667e249082a8cdab00581526c6e13169a94c81435ce0765e6be",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "tools/generate_branch_tree_fixtures.py": "10d97521fa1763ac8fce853df34c021459307619802515c64a63901d71219b92"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/branch-marks-javascript-parity.json": "2419fd4c061cb2bcce0333b8aee71efb5dcdebe743044a46fa1be5738909686d",
+    "evidence/conformance/branch-tree-javascript-root-review.json": "e18e96d5fffd422f5a1efb8085cd6b5913fd14803a2aaf57aea89ba29efbf729"
+  },
+  "findings": [
+    "Root reviewed literal rule schedule/root placement against accepted Java, including absolute-generation narrowing, seed wrap and20k preflight.",
+    "Actual Java compilation and execution compare eight complete configurations. Every tree count, segment, exact heading/length/topology and per-coordinate engineering allowance checked.",
+    "Root replaced first-tree/minimum-length prefix check with all-tree extension/growth checks, added independently tallied child counts/attachment, missing circle source hash, fresh per-run build directory and60-second subprocess deadlines. Independent root run passes.",
+    "Source and runner hashes remain stable; no new renderer or source-recreation claim."
+  ],
+  "limits": [
+    "Coordinate comparison uses existing two-neighbor trig interval propagation for these model cases, not universal host-math accuracy.",
+    "Native style retention, drawing counts, browser input and saved image are not established by model parity."
+  ]
+}
