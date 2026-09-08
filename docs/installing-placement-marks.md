@@ -82,3 +82,40 @@ transfer, and cached-save equality.
 Those checks are scoped to this Processing Java/JAVA2D starter. They do not establish a
 registry release, a human installation study, JavaScript/py5/Android support, arbitrary
 parameter ranges, maximal packing, or pixel reproduction of the surveyed source sketches.
+
+
+## p5.js and py5 local packages
+
+Both ports now provide six core operations, including circle filtering and seeded
+placement. Their local package version is0.3.0; Java's larger operation library has
+its own version. These builders preserve earlier evidence and do not publish to a registry.
+Use a fresh output directory each time:
+
+```sh
+node tools/build_placement_marks_javascript.mjs --output .work/dist/cp3/javascript
+python3 tools/build_placement_marks_python.py --output .work/dist/cp3/python
+```
+
+The Python builder uses an existing py5 environment for a class-import check; specify
+`--py5-python /path/to/py5-environment/bin/python` and `--java-home /path/to/jdk17`
+when they differ from the documented local toolchains. It creates an isolated wheel
+consumer and does not render. Both builds require their normal package tooling and
+access to cached or downloadable dependencies.
+
+Extract `procedurals-placement-marks-browser-0.3.0.zip`, enter its directory, run
+`npm install` and `npm start`, then open the printed URL. The ZIP includes the local
+npm tarball and pins p5 2.3.2. Edit `placement-marks.js` to change the composition.
+
+Extract `procedurals-placement-marks-python-0.3.0.zip`, then run:
+
+```sh
+python -m pip install "./procedurals_python-0.3.0-py3-none-any.whl[py5]"
+python placement-marks/sketch.py
+```
+
+Python requires3.11+, Java17 and the pinned py5 dependency. Motif and palette changes
+reuse placements; seed, budget and spacing changes rebuild them. The starter README
+lists all controls. Source changes are limited to removing checkout-dependent imports;
+reviewed drawing behavior is preserved. Distribution review:
+[`cp3-ports-review.json`](../evidence/distribution/cp3-ports-review.json).
+Android's source/native support is recorded separately; its distribution is still pending.

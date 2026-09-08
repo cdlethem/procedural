@@ -1,5 +1,16 @@
 # Project state
 
+## Placement JavaScript/Python distributions reviewed
+
+Built npm tarball/browser ZIP and Python wheel/py5 ZIP at version0.3.0 with six core
+operations each. Root corrected JavaScript consumer coverage to use the extracted actual
+composition; Python imports its packaged sketch class with real py5 and the installed wheel.
+Both pass424/517 placement counts, exact retained prefix, radial160 proposals and earlier
+exports. Source/archive/license bindings verified; no new render or registry publication.
+Evidence: evidence/distribution/cp3-ports-review.json and target build reports.
+Artifacts: .work/dist/cp3/javascript-reviewed1 and .work/dist/cp3/python-placement3.
+Next finish Android distribution using the existing build/consumer infrastructure.
+
 ## Android placement core executed and support recorded
 
 Root reused the Java vector generator and Luna prepared an Android dex with the exact

@@ -1,0 +1,878 @@
+{
+  "status": "passed",
+  "scope": "Local wheel, extracted starter model and installed public-core checks. Includes real py5 class import with the installed wheel; no native render, publication or distribution acceptance claim.",
+  "version": "0.3.0",
+  "input_sha256": {
+    "packages/python/procedurals/__init__.py": "9f00137c84bdbcd62f2fdaa9c3aa37e732578eef63e04ecf7ddd5dfdad645209",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "packages/python/examples/placement_marks/README.md": "a37dfb3383eabfa9a3aed507a8779e9cdbed11717f495dbbe55ab3c8b2f55ba1",
+    "packages/python/examples/placement_marks/placement_marks.py": "a50aaa217801422b90d9146ac2670e0a612d62ffc081228ad23f0f6962ea36d0",
+    "packages/python/examples/placement_marks/sketch.py": "dc51f15358a1ed3ba8342aff3ebd994d24ac3ebd6e751a43f8cb0a43bb9ace7b",
+    "packages/python/pyproject.toml": "1dc6fe17d11aac151a10c1601b6050230fe233bddfec74390c15ec3eb88a076b",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "tools/build_placement_marks_python.py": "c006560afdb6a549255707e26fa719aaf29cc3ebf56c11a5e876093b23c4b50d",
+    "tools/build_path_marks_python.py": "358e601bf292184f834e47889142586dd2a1f69405b76c06a282340f55015775",
+    "tools/operation_attestations.py": "696f9b59eab61507eafd72f1a3770565c958639d44af295f840a2479a02604d8",
+    "tools/reviewed_export_extension.py": "efa2d0f00676c5b305c52712213d0a3b267bc8f7b46d05843efd8539cf2c0a1d"
+  },
+  "support": [
+    {
+      "target": "py5",
+      "operation": {
+        "id": "layout.regular-grid",
+        "version": "0.1.0",
+        "catalog_path": "catalog/operations/regular-grid.json",
+        "catalog_sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+      },
+      "dimensions": {
+        "core": {
+          "status": "conformant",
+          "implementation_sha256": {
+            "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+            "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+            "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+            "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+            "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+            "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+            "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+            "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+            "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+            "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+          },
+          "evidence_sha256": {
+            "evidence/conformance/regular-grid.json": "83a631ca0da2e6b8da72eaca659072e648d814eaf7876cad7b3fcf021ec1e5e8",
+            "fixtures/operations/regular-grid.json": "2913f45daccdd9e2094ad6988547e7625e409af122807bf1a274f9484da06175",
+            "evidence/reproductions/cp2-export-extension-review.json": "be3bbbb4171462e4483f9adbfe2334a576210464d5758abcdc476eb779a91383"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/conformance/regular-grid.json",
+              "pointer": "/operation",
+              "equals": "layout.regular-grid"
+            },
+            {
+              "path": "evidence/conformance/regular-grid.json",
+              "pointer": "/contract_sha256",
+              "equals": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+            },
+            {
+              "path": "evidence/conformance/regular-grid.json",
+              "pointer": "/fixture_sha256",
+              "equals": "2913f45daccdd9e2094ad6988547e7625e409af122807bf1a274f9484da06175"
+            },
+            {
+              "path": "evidence/conformance/regular-grid.json",
+              "pointer": "/results/python/failures",
+              "equals": []
+            },
+            {
+              "path": "evidence/reproductions/cp2-export-extension-review.json",
+              "pointer": "/status",
+              "equals": "accepted"
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/reproductions/cp2-py5/review.json",
+            "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "runtime_profile": {
+            "name": "Python 3.13.15",
+            "scope": "Operation-specific shared fixtures and Python host checks on the recorded Python runtime; py5 integration is separately attested."
+          }
+        },
+        "native": {
+          "status": "validated-scoped",
+          "implementation_sha256": {
+            "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+            "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+            "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+            "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+            "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+            "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+            "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+            "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+            "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+            "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+          },
+          "evidence_sha256": {
+            "evidence/reproductions/cp2-py5/result.json": "093860c920033fe0485f022ab404e8acc38bc0945f3de2e7d141fe3e14f10ef8",
+            "evidence/reproductions/cp2-py5/review.json": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/reproductions/cp2-py5/result.json",
+              "pointer": "/status",
+              "equals": "passed"
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/reproductions/cp2-py5/review.json",
+            "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "runtime_profile": {
+            "name": "py5 0.10.11a0; Python3.13; JDK17; canvas density1",
+            "scope": "Actual editable PathMarks example and cached save on the recorded runtime; no physical-device or general renderer certification."
+          }
+        },
+        "technique": {
+          "status": "validated-scoped",
+          "implementation_sha256": {
+            "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+            "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+            "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+            "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+            "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+            "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+            "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+            "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+            "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+            "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+          },
+          "evidence_sha256": {
+            "evidence/reproductions/cp2-py5/review.json": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/reproductions/cp2-py5/review.json",
+              "pointer": "/status",
+              "equals": "accepted"
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/reproductions/cp2-py5/review.json",
+            "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "runtime_profile": {
+            "name": "py5 0.10.11a0; Python3.13; JDK17; canvas density1",
+            "scope": "Root and Sol inspected PathMarks trace, perpendicular marks and length edit. Technique-level composition only; no upstream pixel or full-corpus reproduction claim."
+          }
+        }
+      }
+    },
+    {
+      "target": "py5",
+      "operation": {
+        "id": "field.gradient-noise-2d-01",
+        "version": "0.1.0",
+        "catalog_path": "catalog/operations/gradient-noise-2d-01.json",
+        "catalog_sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+      },
+      "dimensions": {
+        "core": {
+          "status": "conformant",
+          "implementation_sha256": {
+            "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+            "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+            "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+            "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+            "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+            "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+            "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+            "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+            "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+            "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+          },
+          "evidence_sha256": {
+            "evidence/conformance/gradient-noise-2d-01.json": "21ce3f2cf69f1405951e971459b4768cc7da67edc324494bab70e67cd6ca8840",
+            "fixtures/operations/gradient-noise-2d-01.json": "33f4bda581aba490ab1885ec44bb46578c798c47ee60fe0bac3fd761fae08ed3",
+            "evidence/reproductions/cp2-export-extension-review.json": "be3bbbb4171462e4483f9adbfe2334a576210464d5758abcdc476eb779a91383"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/conformance/gradient-noise-2d-01.json",
+              "pointer": "/operation",
+              "equals": "field.gradient-noise-2d-01"
+            },
+            {
+              "path": "evidence/conformance/gradient-noise-2d-01.json",
+              "pointer": "/contract_sha256",
+              "equals": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+            },
+            {
+              "path": "evidence/conformance/gradient-noise-2d-01.json",
+              "pointer": "/fixture_sha256",
+              "equals": "33f4bda581aba490ab1885ec44bb46578c798c47ee60fe0bac3fd761fae08ed3"
+            },
+            {
+              "path": "evidence/conformance/gradient-noise-2d-01.json",
+              "pointer": "/results/python/failures",
+              "equals": []
+            },
+            {
+              "path": "evidence/reproductions/cp2-export-extension-review.json",
+              "pointer": "/status",
+              "equals": "accepted"
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/reproductions/cp2-py5/review.json",
+            "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "runtime_profile": {
+            "name": "Python 3.13.15",
+            "scope": "Operation-specific shared fixtures and Python host checks on the recorded Python runtime; py5 integration is separately attested."
+          }
+        },
+        "native": {
+          "status": "validated-scoped",
+          "implementation_sha256": {
+            "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+            "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+            "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+            "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+            "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+            "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+            "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+            "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+            "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+            "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+          },
+          "evidence_sha256": {
+            "evidence/reproductions/cp2-py5/result.json": "093860c920033fe0485f022ab404e8acc38bc0945f3de2e7d141fe3e14f10ef8",
+            "evidence/reproductions/cp2-py5/review.json": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/reproductions/cp2-py5/result.json",
+              "pointer": "/status",
+              "equals": "passed"
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/reproductions/cp2-py5/review.json",
+            "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "runtime_profile": {
+            "name": "py5 0.10.11a0; Python3.13; JDK17; canvas density1",
+            "scope": "Actual editable PathMarks example and cached save on the recorded runtime; no physical-device or general renderer certification."
+          }
+        },
+        "technique": {
+          "status": "validated-scoped",
+          "implementation_sha256": {
+            "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+            "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+            "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+            "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+            "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+            "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+            "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+            "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+            "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+            "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+          },
+          "evidence_sha256": {
+            "evidence/reproductions/cp2-py5/review.json": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/reproductions/cp2-py5/review.json",
+              "pointer": "/status",
+              "equals": "accepted"
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/reproductions/cp2-py5/review.json",
+            "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "runtime_profile": {
+            "name": "py5 0.10.11a0; Python3.13; JDK17; canvas density1",
+            "scope": "Root and Sol inspected PathMarks trace, perpendicular marks and length edit. Technique-level composition only; no upstream pixel or full-corpus reproduction claim."
+          }
+        }
+      }
+    },
+    {
+      "target": "py5",
+      "operation": {
+        "id": "color.cyclic-palette",
+        "version": "0.1.0",
+        "catalog_path": "catalog/operations/cyclic-palette.json",
+        "catalog_sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
+      },
+      "dimensions": {
+        "core": {
+          "status": "conformant",
+          "implementation_sha256": {
+            "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+            "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+            "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+            "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+            "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+            "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+            "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+            "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+            "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+            "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+          },
+          "evidence_sha256": {
+            "evidence/conformance/cyclic-palette.json": "6afccd220ce9385d7a4d8262984a44a03588a1eb14146deaa487c00404ffc8fe",
+            "fixtures/operations/cyclic-palette.json": "a4cdf6349ed5e204700964e14fc738cdf25dbd58abf486a277e3c173d0410881",
+            "evidence/reproductions/cp2-export-extension-review.json": "be3bbbb4171462e4483f9adbfe2334a576210464d5758abcdc476eb779a91383"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/conformance/cyclic-palette.json",
+              "pointer": "/operation",
+              "equals": "color.cyclic-palette"
+            },
+            {
+              "path": "evidence/conformance/cyclic-palette.json",
+              "pointer": "/contract_sha256",
+              "equals": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
+            },
+            {
+              "path": "evidence/conformance/cyclic-palette.json",
+              "pointer": "/fixture_sha256",
+              "equals": "a4cdf6349ed5e204700964e14fc738cdf25dbd58abf486a277e3c173d0410881"
+            },
+            {
+              "path": "evidence/conformance/cyclic-palette.json",
+              "pointer": "/results/python/failures",
+              "equals": []
+            },
+            {
+              "path": "evidence/reproductions/cp2-export-extension-review.json",
+              "pointer": "/status",
+              "equals": "accepted"
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/reproductions/cp2-py5/review.json",
+            "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "runtime_profile": {
+            "name": "Python 3.13.15",
+            "scope": "Operation-specific shared fixtures and Python host checks on the recorded Python runtime; py5 integration is separately attested."
+          }
+        },
+        "native": {
+          "status": "validated-scoped",
+          "implementation_sha256": {
+            "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+            "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+            "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+            "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+            "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+            "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+            "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+            "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+            "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+            "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+          },
+          "evidence_sha256": {
+            "evidence/reproductions/cp2-py5/result.json": "093860c920033fe0485f022ab404e8acc38bc0945f3de2e7d141fe3e14f10ef8",
+            "evidence/reproductions/cp2-py5/review.json": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/reproductions/cp2-py5/result.json",
+              "pointer": "/status",
+              "equals": "passed"
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/reproductions/cp2-py5/review.json",
+            "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "runtime_profile": {
+            "name": "py5 0.10.11a0; Python3.13; JDK17; canvas density1",
+            "scope": "Actual editable PathMarks example and cached save on the recorded runtime; no physical-device or general renderer certification."
+          }
+        },
+        "technique": {
+          "status": "validated-scoped",
+          "implementation_sha256": {
+            "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+            "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+            "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+            "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+            "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+            "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+            "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+            "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+            "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+            "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+          },
+          "evidence_sha256": {
+            "evidence/reproductions/cp2-py5/review.json": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/reproductions/cp2-py5/review.json",
+              "pointer": "/status",
+              "equals": "accepted"
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/reproductions/cp2-py5/review.json",
+            "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "runtime_profile": {
+            "name": "py5 0.10.11a0; Python3.13; JDK17; canvas density1",
+            "scope": "Root and Sol inspected PathMarks trace, perpendicular marks and length edit. Technique-level composition only; no upstream pixel or full-corpus reproduction claim."
+          }
+        }
+      }
+    },
+    {
+      "target": "py5",
+      "operation": {
+        "id": "path.gradient-trace-2d",
+        "version": "0.1.0",
+        "catalog_path": "catalog/operations/gradient-path.json",
+        "catalog_sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c"
+      },
+      "dimensions": {
+        "core": {
+          "status": "conformant",
+          "implementation_sha256": {
+            "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+            "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+            "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+            "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+            "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+            "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+            "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+            "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+            "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+            "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+          },
+          "evidence_sha256": {
+            "evidence/conformance/gradient-path.json": "cfb57280c821a72c23272e8b057bbf33ce11d3f66a1053cadef86f154433e14d",
+            "fixtures/operations/gradient-path.json": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+            "evidence/reproductions/cp2-export-extension-review.json": "be3bbbb4171462e4483f9adbfe2334a576210464d5758abcdc476eb779a91383"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/conformance/gradient-path.json",
+              "pointer": "/operation",
+              "equals": "path.gradient-trace-2d"
+            },
+            {
+              "path": "evidence/conformance/gradient-path.json",
+              "pointer": "/contract_sha256",
+              "equals": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c"
+            },
+            {
+              "path": "evidence/conformance/gradient-path.json",
+              "pointer": "/fixture_sha256",
+              "equals": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b"
+            },
+            {
+              "path": "evidence/conformance/gradient-path.json",
+              "pointer": "/results/python/failures",
+              "equals": []
+            },
+            {
+              "path": "evidence/reproductions/cp2-export-extension-review.json",
+              "pointer": "/status",
+              "equals": "accepted"
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/reproductions/cp2-py5/review.json",
+            "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "runtime_profile": {
+            "name": "Python 3.13.15",
+            "scope": "Operation-specific shared fixtures and Python host checks on the recorded Python runtime; py5 integration is separately attested."
+          }
+        },
+        "native": {
+          "status": "validated-scoped",
+          "implementation_sha256": {
+            "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+            "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+            "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+            "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+            "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+            "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+            "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+            "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+            "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+            "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+          },
+          "evidence_sha256": {
+            "evidence/reproductions/cp2-py5/result.json": "093860c920033fe0485f022ab404e8acc38bc0945f3de2e7d141fe3e14f10ef8",
+            "evidence/reproductions/cp2-py5/review.json": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/reproductions/cp2-py5/result.json",
+              "pointer": "/status",
+              "equals": "passed"
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/reproductions/cp2-py5/review.json",
+            "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "runtime_profile": {
+            "name": "py5 0.10.11a0; Python3.13; JDK17; canvas density1",
+            "scope": "Actual editable PathMarks example and cached save on the recorded runtime; no physical-device or general renderer certification."
+          }
+        },
+        "technique": {
+          "status": "validated-scoped",
+          "implementation_sha256": {
+            "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+            "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+            "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+            "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+            "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+            "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+            "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+            "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+            "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+            "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+          },
+          "evidence_sha256": {
+            "evidence/reproductions/cp2-py5/review.json": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/reproductions/cp2-py5/review.json",
+              "pointer": "/status",
+              "equals": "accepted"
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/reproductions/cp2-py5/review.json",
+            "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+          },
+          "runtime_profile": {
+            "name": "py5 0.10.11a0; Python3.13; JDK17; canvas density1",
+            "scope": "Root and Sol inspected PathMarks trace, perpendicular marks and length edit. Technique-level composition only; no upstream pixel or full-corpus reproduction claim."
+          }
+        }
+      }
+    },
+    {
+      "target": "py5",
+      "operation": {
+        "id": "sampling.ordered-circle-filter-2d",
+        "version": "0.1.0",
+        "catalog_path": "catalog/operations/ordered-circle-filter.json",
+        "catalog_sha256": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083"
+      },
+      "dimensions": {
+        "core": {
+          "status": "conformant",
+          "implementation_sha256": {
+            "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+            "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+            "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+            "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+            "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+            "tests/native/circle-placements-python.py": "9704cec7d99c16a1d36e203211b31679c7b921fad0e704c114b7810d40e39db3",
+            "packages/python/examples/placement_marks/placement_marks.py": "a50aaa217801422b90d9146ac2670e0a612d62ffc081228ad23f0f6962ea36d0",
+            "packages/python/examples/placement_marks/sketch.py": "dc51f15358a1ed3ba8342aff3ebd994d24ac3ebd6e751a43f8cb0a43bb9ace7b",
+            "packages/python/procedurals/__init__.py": "9f00137c84bdbcd62f2fdaa9c3aa37e732578eef63e04ecf7ddd5dfdad645209",
+            "tests/native/py5_placement_marks.py": "4949eb5bb71553e1cc3627578856598040749739f41d98835ca8ba4bdfc41674"
+          },
+          "evidence_sha256": {
+            "evidence/conformance/circle-placements-python.json": "aa48f1b47f7c27e44fc0df89da6b4d029fe7e48a19dab4b2e9755528bb3a635d",
+            "evidence/conformance/py5-placement-marks.json": "c100f0aa2d4b71ac9b4ae41072238d52174b1be1b156574b31edbe0290d7b008",
+            "design/port-batch-01-root-review.md": "bc80b5a4c1e63c2bdd828f7e2ad1a1e10aff4b7d5c88b9b5af4e0215a1b0b6fc",
+            "evidence/conformance/placement-export-compatibility-review.json": "5b4415214d1a88d2558efefbcda38f3f7400409e61c3c11a8e0c5824c0172615"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/conformance/circle-placements-python.json",
+              "pointer": "/status",
+              "equals": "passed"
+            },
+            {
+              "path": "evidence/conformance/circle-placements-python.json",
+              "pointer": "/fixtures/ordered_cases",
+              "equals": 37
+            },
+            {
+              "path": "evidence/conformance/circle-placements-python.json",
+              "pointer": "/fixtures/seeded_cases",
+              "equals": 31
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/conformance/placement-py5-root-review.json",
+            "sha256": "896c68a9fe5cc86ccf0a4a77ddda5dc9d2e7c1f050a6aac0d5cc0b84748e23e9"
+          },
+          "runtime_profile": {
+            "name": "CPython 3.13/3.14; py5 0.10.11a0; JDK17 JAVA2D",
+            "scope": "Exact portable core and host access."
+          }
+        },
+        "native": {
+          "status": "validated-scoped",
+          "implementation_sha256": {
+            "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+            "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+            "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+            "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+            "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+            "tests/native/circle-placements-python.py": "9704cec7d99c16a1d36e203211b31679c7b921fad0e704c114b7810d40e39db3",
+            "packages/python/examples/placement_marks/placement_marks.py": "a50aaa217801422b90d9146ac2670e0a612d62ffc081228ad23f0f6962ea36d0",
+            "packages/python/examples/placement_marks/sketch.py": "dc51f15358a1ed3ba8342aff3ebd994d24ac3ebd6e751a43f8cb0a43bb9ace7b",
+            "packages/python/procedurals/__init__.py": "9f00137c84bdbcd62f2fdaa9c3aa37e732578eef63e04ecf7ddd5dfdad645209",
+            "tests/native/py5_placement_marks.py": "4949eb5bb71553e1cc3627578856598040749739f41d98835ca8ba4bdfc41674"
+          },
+          "evidence_sha256": {
+            "evidence/conformance/circle-placements-python.json": "aa48f1b47f7c27e44fc0df89da6b4d029fe7e48a19dab4b2e9755528bb3a635d",
+            "evidence/conformance/py5-placement-marks.json": "c100f0aa2d4b71ac9b4ae41072238d52174b1be1b156574b31edbe0290d7b008",
+            "design/port-batch-01-root-review.md": "bc80b5a4c1e63c2bdd828f7e2ad1a1e10aff4b7d5c88b9b5af4e0215a1b0b6fc",
+            "evidence/conformance/placement-export-compatibility-review.json": "5b4415214d1a88d2558efefbcda38f3f7400409e61c3c11a8e0c5824c0172615"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/conformance/py5-placement-marks.json",
+              "pointer": "/status",
+              "equals": "passed"
+            },
+            {
+              "path": "evidence/conformance/circle-placements-python.json",
+              "pointer": "/fixtures/ordered_cases",
+              "equals": 37
+            },
+            {
+              "path": "evidence/conformance/circle-placements-python.json",
+              "pointer": "/fixtures/seeded_cases",
+              "equals": 31
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/conformance/placement-py5-root-review.json",
+            "sha256": "896c68a9fe5cc86ccf0a4a77ddda5dc9d2e7c1f050a6aac0d5cc0b84748e23e9"
+          },
+          "runtime_profile": {
+            "name": "CPython 3.13/3.14; py5 0.10.11a0; JDK17 JAVA2D",
+            "scope": "PlacementMarks controls, retained result, authored radial source transfer and cached save only."
+          }
+        },
+        "technique": {
+          "status": "unvalidated"
+        }
+      }
+    },
+    {
+      "target": "py5",
+      "operation": {
+        "id": "sampling.seeded-circle-placement-2d",
+        "version": "0.1.0",
+        "catalog_path": "catalog/operations/seeded-circle-placement.json",
+        "catalog_sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267"
+      },
+      "dimensions": {
+        "core": {
+          "status": "conformant",
+          "implementation_sha256": {
+            "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+            "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+            "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+            "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+            "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+            "tests/native/circle-placements-python.py": "9704cec7d99c16a1d36e203211b31679c7b921fad0e704c114b7810d40e39db3",
+            "packages/python/examples/placement_marks/placement_marks.py": "a50aaa217801422b90d9146ac2670e0a612d62ffc081228ad23f0f6962ea36d0",
+            "packages/python/examples/placement_marks/sketch.py": "dc51f15358a1ed3ba8342aff3ebd994d24ac3ebd6e751a43f8cb0a43bb9ace7b",
+            "packages/python/procedurals/__init__.py": "9f00137c84bdbcd62f2fdaa9c3aa37e732578eef63e04ecf7ddd5dfdad645209",
+            "tests/native/py5_placement_marks.py": "4949eb5bb71553e1cc3627578856598040749739f41d98835ca8ba4bdfc41674"
+          },
+          "evidence_sha256": {
+            "evidence/conformance/circle-placements-python.json": "aa48f1b47f7c27e44fc0df89da6b4d029fe7e48a19dab4b2e9755528bb3a635d",
+            "evidence/conformance/py5-placement-marks.json": "c100f0aa2d4b71ac9b4ae41072238d52174b1be1b156574b31edbe0290d7b008",
+            "design/port-batch-01-root-review.md": "bc80b5a4c1e63c2bdd828f7e2ad1a1e10aff4b7d5c88b9b5af4e0215a1b0b6fc",
+            "evidence/conformance/placement-export-compatibility-review.json": "5b4415214d1a88d2558efefbcda38f3f7400409e61c3c11a8e0c5824c0172615"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/conformance/circle-placements-python.json",
+              "pointer": "/status",
+              "equals": "passed"
+            },
+            {
+              "path": "evidence/conformance/circle-placements-python.json",
+              "pointer": "/fixtures/ordered_cases",
+              "equals": 37
+            },
+            {
+              "path": "evidence/conformance/circle-placements-python.json",
+              "pointer": "/fixtures/seeded_cases",
+              "equals": 31
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/conformance/placement-py5-root-review.json",
+            "sha256": "896c68a9fe5cc86ccf0a4a77ddda5dc9d2e7c1f050a6aac0d5cc0b84748e23e9"
+          },
+          "runtime_profile": {
+            "name": "CPython 3.13/3.14; py5 0.10.11a0; JDK17 JAVA2D",
+            "scope": "Exact portable core and host access."
+          }
+        },
+        "native": {
+          "status": "validated-scoped",
+          "implementation_sha256": {
+            "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+            "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+            "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+            "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+            "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+            "tests/native/circle-placements-python.py": "9704cec7d99c16a1d36e203211b31679c7b921fad0e704c114b7810d40e39db3",
+            "packages/python/examples/placement_marks/placement_marks.py": "a50aaa217801422b90d9146ac2670e0a612d62ffc081228ad23f0f6962ea36d0",
+            "packages/python/examples/placement_marks/sketch.py": "dc51f15358a1ed3ba8342aff3ebd994d24ac3ebd6e751a43f8cb0a43bb9ace7b",
+            "packages/python/procedurals/__init__.py": "9f00137c84bdbcd62f2fdaa9c3aa37e732578eef63e04ecf7ddd5dfdad645209",
+            "tests/native/py5_placement_marks.py": "4949eb5bb71553e1cc3627578856598040749739f41d98835ca8ba4bdfc41674"
+          },
+          "evidence_sha256": {
+            "evidence/conformance/circle-placements-python.json": "aa48f1b47f7c27e44fc0df89da6b4d029fe7e48a19dab4b2e9755528bb3a635d",
+            "evidence/conformance/py5-placement-marks.json": "c100f0aa2d4b71ac9b4ae41072238d52174b1be1b156574b31edbe0290d7b008",
+            "design/port-batch-01-root-review.md": "bc80b5a4c1e63c2bdd828f7e2ad1a1e10aff4b7d5c88b9b5af4e0215a1b0b6fc",
+            "evidence/conformance/placement-export-compatibility-review.json": "5b4415214d1a88d2558efefbcda38f3f7400409e61c3c11a8e0c5824c0172615"
+          },
+          "evidence_predicates": [
+            {
+              "path": "evidence/conformance/py5-placement-marks.json",
+              "pointer": "/status",
+              "equals": "passed"
+            },
+            {
+              "path": "evidence/conformance/circle-placements-python.json",
+              "pointer": "/fixtures/ordered_cases",
+              "equals": 37
+            },
+            {
+              "path": "evidence/conformance/circle-placements-python.json",
+              "pointer": "/fixtures/seeded_cases",
+              "equals": 31
+            }
+          ],
+          "acceptance_review": {
+            "path": "evidence/conformance/placement-py5-root-review.json",
+            "sha256": "896c68a9fe5cc86ccf0a4a77ddda5dc9d2e7c1f050a6aac0d5cc0b84748e23e9"
+          },
+          "runtime_profile": {
+            "name": "CPython 3.13/3.14; py5 0.10.11a0; JDK17 JAVA2D",
+            "scope": "PlacementMarks controls, retained result, authored radial source transfer and cached save only."
+          }
+        },
+        "technique": {
+          "status": "unvalidated"
+        }
+      }
+    }
+  ],
+  "wheel_sha256": "5ddcb4f065a90f495b81501cf18e92469a26bec0f4fccb4ad86ed71ed6c0afcd",
+  "wheel_entries": [
+    {
+      "path": "procedurals/__init__.py",
+      "sha256": "9f00137c84bdbcd62f2fdaa9c3aa37e732578eef63e04ecf7ddd5dfdad645209"
+    },
+    {
+      "path": "procedurals/_drawing.py",
+      "sha256": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3"
+    },
+    {
+      "path": "procedurals/_drawing_state.py",
+      "sha256": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8"
+    },
+    {
+      "path": "procedurals/_py5_frame.py",
+      "sha256": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295"
+    },
+    {
+      "path": "procedurals/colors.py",
+      "sha256": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6"
+    },
+    {
+      "path": "procedurals/fields.py",
+      "sha256": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae"
+    },
+    {
+      "path": "procedurals/layout.py",
+      "sha256": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3"
+    },
+    {
+      "path": "procedurals/paths.py",
+      "sha256": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+    },
+    {
+      "path": "procedurals/placements.py",
+      "sha256": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d"
+    },
+    {
+      "path": "procedurals_python-0.3.0.dist-info/METADATA",
+      "sha256": "d90db8757e6baf4a7ef9f7d447b293bb8ee7c16f994d5af0291c6b638d3729b6"
+    },
+    {
+      "path": "procedurals_python-0.3.0.dist-info/RECORD",
+      "sha256": "96f97c88ee1cd24c563aebb89009d293d5abcca9d6ace9a1efacf6ba9f7b21fe"
+    },
+    {
+      "path": "procedurals_python-0.3.0.dist-info/WHEEL",
+      "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+    },
+    {
+      "path": "procedurals_python-0.3.0.dist-info/licenses/LICENSE",
+      "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+    },
+    {
+      "path": "procedurals_python-0.3.0.dist-info/licenses/THIRD_PARTY_NOTICES.md",
+      "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+    },
+    {
+      "path": "procedurals_python-0.3.0.dist-info/top_level.txt",
+      "sha256": "edcc1c114ddfc860af6c9b58052e7ad2cd35e36533efd2dafd308010ee165b72"
+    }
+  ],
+  "starter_sha256": "a08c74e898c36fe9eb7685a15b8873a34956e92ea522354861cf1decaefa2809",
+  "starter_entries": [
+    {
+      "path": "placement-marks/LICENSE",
+      "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+    },
+    {
+      "path": "placement-marks/README.md",
+      "sha256": "c10e4a910c9d82e66710fd6f891400ed063e8675ab4664fb2813b5bea279acf8"
+    },
+    {
+      "path": "placement-marks/THIRD_PARTY_NOTICES.md",
+      "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+    },
+    {
+      "path": "placement-marks/placement_marks.py",
+      "sha256": "a50aaa217801422b90d9146ac2670e0a612d62ffc081228ad23f0f6962ea36d0"
+    },
+    {
+      "path": "placement-marks/sketch.py",
+      "sha256": "44caaa1f60a4ba4bf6fcd7c84ddee18d95e727fab4d88208d71b356920b623aa"
+    },
+    {
+      "path": "procedurals_python-0.3.0-py3-none-any.whl",
+      "sha256": "5ddcb4f065a90f495b81501cf18e92469a26bec0f4fccb4ad86ed71ed6c0afcd"
+    }
+  ],
+  "sketch_transform": {
+    "removed": "# Run directly from this repository checkout; packaged starters may omit this path.\nsys.path.insert(0, str(Path(__file__).resolve().parents[2]))\n",
+    "class_ast_preserved": true
+  },
+  "consumer": {
+    "status": "passed",
+    "baseline": 424,
+    "extended": 517,
+    "prefix": true,
+    "imported": "/home/colin/dev/procedural/.work/dist/cp3/python-placement3/consumer-venv/lib/python3.13/site-packages/procedurals/__init__.py"
+  },
+  "py5_load": {
+    "status": "passed",
+    "py5": "0.10.11a0",
+    "scope": "class import only; no sketch instantiation or render"
+  }
+}

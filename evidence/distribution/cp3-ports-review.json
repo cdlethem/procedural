@@ -1,0 +1,39 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local JavaScript0.3 npm package/browser starter and Python0.3 wheel/py5 starter distribution. Six operations per target. No registry publication, new raster fidelity claim or Android distribution acceptance.",
+  "implementation_sha256": {
+    "tools/build_placement_marks_javascript.mjs": "56839a2c194f2772bbdadccee68be2706564e9735ceb901d25365063d70c2461",
+    "tools/build_placement_marks_python.py": "c006560afdb6a549255707e26fa719aaf29cc3ebf56c11a5e876093b23c4b50d"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp3-javascript.json": "7371e8fd89147ef52c161115a4abeb1bf944c2510788cb27405a304040081d09",
+    "evidence/distribution/cp3-python.json": "708ad97e86bc329727fd4d5ff41ec26df695a39a67bb224695818a3dc992abe3"
+  },
+  "target_support": {
+    "targets": [
+      "p5js",
+      "py5"
+    ],
+    "attestation_sha256": {
+      "catalog/validation/regular-grid.json": "e22c7dbabe4a5e14bb84c01789c87fedd04f1fe43e4b0f421e503834e1111902",
+      "catalog/validation/gradient-noise-2d-01.json": "c98e79c9b143721968bad48953cb29e9d6a8eb3a4631bc96d1ca799bc7431c49",
+      "catalog/validation/cyclic-palette.json": "a6a3f264418a29055856fda6d45e3cd8f93e5ec44fa18ca48a08ec86da70263a",
+      "catalog/validation/gradient-path.json": "819c05e16d4d12a4dd69369222a3c6786494f75670bd0894414bc4e11cb63525",
+      "catalog/validation/ordered-circle-filter.json": "b2c61914c77525ab9ee624dae9649f24cf12bdf8df6a571716fdb0090131947d",
+      "catalog/validation/seeded-circle-placement.json": "66976b9211f3ee17e8c175442a7856a5a6dbf5cedbda71b496fcb82629dd6d2a"
+    }
+  },
+  "root_findings": [
+    "Installed consumer examples use the packaged placement operations:424 baseline,517 extended, exact retained prefix and160 authored radial proposals. Previous operation exports remain present.",
+    "JavaScript consumer imports transformed actual composition, including from extracted ZIP. Tarball payload matches staged source, all three examples and notices. Final ZIP payload hashes independently verified.",
+    "Python wheel payload matches all current core files; extracted ZIP contains the identical wheel/model and class-preserving sketch transformation. Real py5 imports the packaged sketch class with that installed wheel, without instantiation or rendering.",
+    "Only checkout import plumbing/metadata changed. Existing native source evidence supplies renderer semantics; package tests are scoped to artifact delivery/import/composition."
+  ],
+  "remaining": [
+    "Android distribution",
+    "Nine deferred operation ports",
+    "Other roadmap milestones"
+  ]
+}
