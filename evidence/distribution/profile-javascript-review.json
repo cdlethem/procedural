@@ -1,0 +1,21 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "JavaScript0.7.0 local package and ProfileMarks browser starter; no registry publication or Android/shared support claim.",
+  "implementation_sha256": {
+    "tools/build_profile_marks_javascript.mjs": "14219bc27831652587e1585f2bdb05839aff73e6b43a5d304c7a27da172109a9"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/profile-javascript.json": "882a870fc94a0e5919b06306c81b79be3b535f9a1571469b4a67987e1fe234e0",
+    "evidence/conformance/profile-export-compatibility-review.json": "c96081a9713f83c6518c17e8d3b9c1c376706ec09fea3c34723be7de4d1f25cc",
+    "evidence/conformance/profile-p5js-native-root-review.json": "a6202225f6c6c93a0fd6c58593a9c5b81a38681e62bc2c606bd4267c016fd651"
+  },
+  "findings": [
+    "Root verified every current input binding and archive member hash independently.",
+    "Both installed and extracted consumers resolve public exports from installed node_modules and compare12 full meshes against source;16-slice editability passes.",
+    "Starter transformation changes only exact imports and inserts import map. Core sources remain byte-identical.",
+    "Notices and source example provenance included; no rendered assets, caches or installed dependencies in deliverables.",
+    "Existing source-bound WEBGL native evidence is retained; no new browser render claimed."
+  ]
+}

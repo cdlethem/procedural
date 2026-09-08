@@ -1,5 +1,17 @@
 # Project state
 
+## JavaScript ProfileMarks0.7 distribution accepted
+
+Session37931 terminal passed .work/dist/cp7/javascript-profile1. Root independently
+verified all current input bindings and every tarball/starter ZIP member hash; installed
+and extracted consumers compare12 full meshes to source and exercise16 slices through
+installed root exports. Eleven operations included, pinned p5 dependency and notices;
+no render or registry release claimed. Accepted profile-javascript distribution records
+and installing-profile-marks-javascript guide. Historical builders remain unchanged.
+Luna Python package and Terra Android compile preparation remain in flight; no native job
+launched. Root flagged Android staging must be fresh under .work with no prior deletion.
+Next review those handoffs and prepare bounded Android native lifecycle validation.
+
 ## Radial profile root exports reviewed; Android and Python packaging delegated
 
 Added exact RadialProfile3D/RadialProfileError root exports for JS/Python. Root checked

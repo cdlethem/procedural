@@ -1,0 +1,76 @@
+#!/usr/bin/env node
+/** Build the local CP7 JavaScript package and installable ProfileMarks starter. */
+import {createHash} from "node:crypto";
+import {cpSync,existsSync,mkdirSync,readdirSync,readFileSync,rmSync,writeFileSync} from "node:fs";
+import {basename,dirname,join,relative,resolve,sep} from "node:path";
+import {spawnSync} from "node:child_process";
+import {fileURLToPath,pathToFileURL} from "node:url";
+
+const ROOT=resolve(dirname(fileURLToPath(import.meta.url)),".."),PACKAGE=join(ROOT,"packages/javascript"),PROFILE=join(PACKAGE,"examples/profile-marks");
+const OUTPUT_ROOT=join(ROOT,".work/dist/cp7"),VERSION="0.7.0",NAME="@procedurals/javascript";
+const NOTICES=[join(ROOT,"LICENSE"),join(ROOT,"THIRD_PARTY_NOTICES.md")];
+const BOUND=["catalog/operations/radial-profile-surface.json","fixtures/operations/radial-profile-surface.json","evidence/conformance/profile-marks-javascript-parity.json","evidence/conformance/profile-export-compatibility-review.json","evidence/conformance/radial-profile-javascript-root-review.json","evidence/conformance/profile-p5js-native-root-review.json","design/port-batch-05.md"];
+const OPERATIONS=[
+  ["layout.regular-grid","regular-grid.js","regularGrid"],
+  ["fields.gradient-noise-2d-01","gradient-noise-2d-01.js","gradientNoise2D01"],
+  ["color.cyclic-palette","cyclic-palette.js","cyclicPalette"],
+  ["paths.gradient-path","gradient-path.js","gradientPath2D"],
+  ["sampling.ordered-circle-filter","circle-placements.js","orderedCircleFilter2D"],
+  ["sampling.seeded-circle-placement","circle-placements.js","seededCirclePlacement2D"],
+  ["layout.seeded-quadrant-partition","quadrant-partition.js","seededQuadrantPartition2D"],
+  ["sampling.seeded-triangle-points","triangle-points.js","seededTrianglePoints2D"],
+  ["sampling.triangle-coordinate-map","triangle-points.js","mapTriangleCoordinates2D"],
+  ["topology.seeded-endpoint-branches-2d","branch-tree.js","seededEndpointBranches2D"],
+  ["mesh.radial-profile-surface-3d","radial-profile.js","RadialProfile3D"],
+];
+function hash(file){return createHash("sha256").update(readFileSync(file)).digest("hex");}
+function display(file){return relative(ROOT,file).split(sep).join("/");}
+function files(root){const out=[];for(const entry of readdirSync(root,{withFileTypes:true})){const file=join(root,entry.name);if(entry.isDirectory())out.push(...files(file));else if(entry.isFile())out.push(file);}return out.sort();}
+function manifest(root,prefix=root){return files(root).map(file=>({path:relative(prefix,file).split(sep).join("/"),sha256:hash(file)}));}
+function write(file,value){mkdirSync(dirname(file),{recursive:true});writeFileSync(file,value);}
+function copy(source,target){mkdirSync(dirname(target),{recursive:true});cpSync(source,target);}
+function required(file){if(!existsSync(file))throw new Error("Missing CP7 input: "+display(file));return file;}
+function run(command,args,options={}){const result=spawnSync(command,args,{cwd:ROOT,encoding:"utf8",timeout:options.timeout??300000,...options});if(result.error)throw result.error;if(result.status!==0)throw new Error(`Command failed: ${command} ${args.join(" ")}\n${result.stdout}${result.stderr}`);return result;}
+function json(text,label){text=text.trim();if(!text)throw new Error("Expected JSON from "+label);return JSON.parse(text);}
+function sourceHashes(paths){return Object.fromEntries(paths.map(file=>[display(file),hash(file)]));}
+function stable(input){for(const [file,value] of Object.entries(input))if(hash(join(ROOT,file))!==value)throw new Error("Source changed during build: "+file);}
+function reviewBinding(file){const record=JSON.parse(readFileSync(join(ROOT,file)));if(record.status!=="accepted"||record.owner!=="root"||record.reviewer!=="root")throw new Error("Unaccepted ProfileMarks review: "+file);const bindings={};for(const key of ["implementation_sha256","evidence_sha256"]){const values=record[key];if(!values||typeof values!=="object")throw new Error("Missing "+key+" in "+file);bindings[key]={};for(const [path,expected] of Object.entries(values)){const actual=hash(required(join(ROOT,path)));if(actual!==expected)throw new Error("Review binding changed: "+path+" in "+file);bindings[key][path]=actual;}}return {path:file,status:record.status,owner:record.owner,reviewer:record.reviewer,bindings};}
+function metadata(){const source=JSON.parse(readFileSync(join(PACKAGE,"package.json")));if(source.name!==NAME||source.version!=="0.1.0")throw new Error("Unexpected source package metadata");return {source,staged:{...source,version:VERSION},transformation:{kind:"staged_package_metadata_version",path:"packages/javascript/package.json",from:"0.1.0",to:VERSION}};}
+function server(){return `import {createServer} from 'node:http';import {readFile} from 'node:fs/promises';import {extname,join,normalize,resolve} from 'node:path';const root=resolve('.');const port=Number.parseInt(process.env.PORT??'8765',10);const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8'};function target(value){if(value==='/')return join(root,'index.html');if(value==='/p5.js')return join(root,'node_modules/p5/lib/p5.min.js');if(value.startsWith('/node_modules/@procedurals/javascript/'))return join(root,value.slice(1));if(/^\\/[a-z0-9-]+\\.(html|js)$/i.test(value))return join(root,value.slice(1));return null;}const server=createServer(async(req,res)=>{const file=target(new URL(req.url,'http://localhost').pathname);if(!file||!normalize(file).startsWith(root)){res.writeHead(404);res.end();return;}try{res.writeHead(200,{'content-type':types[extname(file)]||'application/octet-stream'});res.end(await readFile(file));}catch{res.writeHead(404);res.end();}});server.listen(port,'127.0.0.1',()=>{const a=server.address();console.log(JSON.stringify({event:'ready',url:'http://127.0.0.1:'+(typeof a==='object'&&a?a.port:port)}));});\n`;}
+function starterPackage(tarball){return JSON.stringify({name:"procedurals-profile-marks-starter",private:true,version:VERSION,type:"module",scripts:{start:"node server.mjs"},dependencies:{[NAME]:`file:vendor/${tarball}`,p5:"2.3.2"}},null,2)+"\n";}
+function starterReadme(tarball){return `# ProfileMarks browser starter
+
+Run npm install, then npm start and open the printed URL. The local ${tarball} provides eleven operations; p5 is pinned to2.3.2.
+
+P selects a form, D changes subdivisions, B/T toggle endpoint caps, C changes palette, X shows all three forms, 0 resets and S saves the acknowledged image. Edit profile-marks.js to supply increasing axial/radius pairs and sketch.js to change lights or placement. These settings are editable composition choices, not measured recommended ranges. See the source example README and operation catalog for provenance.
+`;}
+function transform(starter){
+ const index=readFileSync(join(PROFILE,"index.html"),"utf8"),model=readFileSync(join(PROFILE,"profile-marks.js"),"utf8"),sketch=readFileSync(join(PROFILE,"sketch.js"),"utf8");
+ const map=`<script type="importmap">${JSON.stringify({imports:{[NAME]:"./node_modules/@procedurals/javascript/src/index.js"}})}</script>`;
+ function replaceOnce(text,from,to){if(text.split(from).length!==2)throw new Error("Unexpected starter import shape");return text.replace(from,to);}
+ const generatedIndex=replaceOnce(index,'<script type="module"',map+'<script type="module"');
+ const generatedModel=replaceOnce(model,'../../src/radial-profile.js',NAME);
+ const generatedSketch=replaceOnce(sketch,'../../src/cyclic-palette.js',NAME);
+ write(join(starter,"index.html"),generatedIndex);write(join(starter,"profile-marks.js"),generatedModel);write(join(starter,"sketch.js"),generatedSketch);
+ copy(join(PROFILE,"README.md"),join(starter,"EXAMPLE.md"));
+ return {rewrites:{"index.html":{inserted:map},"profile-marks.js":{from:"../../src/radial-profile.js",to:NAME},"sketch.js":{from:"../../src/cyclic-palette.js",to:NAME}}};
+}
+function consumerSmoke(starter,sourceModel){
+ const script=join(starter,".consumer-smoke.mjs");
+ write(script,`import {createHash} from 'node:crypto';
+import {createProfileComposition} from './profile-marks.js';
+import {createProfileComposition as source} from ${JSON.stringify(pathToFileURL(sourceModel).href)};
+import * as api from '${NAME}';
+const resolved=import.meta.resolve('${NAME}');
+if(!resolved.includes('/node_modules/@procedurals/javascript/src/index.js'))throw Error('checkout import leakage');
+for(const [,module,name] of ${JSON.stringify(OPERATIONS)}){const direct=await import(new URL('./'+module,resolved));if(typeof api[name]!=='function'||api[name]!==direct[name])throw Error('export identity '+name);}
+const direct=await import(new URL('./radial-profile.js',resolved));if(api.RadialProfileError!==direct.RadialProfileError)throw Error('error export identity');
+const cases=[[32,true,true],[8,true,true],[8,false,true],[8,false,false]];
+const geometry_fingerprints=[];
+for(const args of cases){const a=createProfileComposition(...args),b=source(...args);const values=c=>Array.from({length:3},(_,i)=>c.meshAt(i).toValues());const x=values(a),y=values(b);if(JSON.stringify(x)!==JSON.stringify(y))throw Error('installed full geometry mismatch');geometry_fingerprints.push(createHash('sha256').update(JSON.stringify(x)).digest('hex'));}
+if(createProfileComposition(16,true,false).meshAt(0).faceCount()!==528)throw Error('editable slices');
+console.log(JSON.stringify({resolved,cases,meshes:12,geometry_fingerprints}));`);
+ const result=json(run("node",[".consumer-smoke.mjs"],{cwd:starter,timeout:180000}).stdout,"installed ProfileMarks consumer");rmSync(script,{force:true});return result;
+}
+async function main(){let output=join(OUTPUT_ROOT,"javascript-profile1");const args=process.argv.slice(2);for(let i=0;i<args.length;i++){if(args[i]==="--output")output=resolve(args[++i]??"");else throw new Error("Unknown argument: "+args[i]);}output=resolve(output);if(!output.startsWith(OUTPUT_ROOT+sep)||existsSync(output))throw new Error("Output must be a fresh directory under .work/dist/cp7/javascript-profile1");const meta=metadata();const inputs=[join(PACKAGE,"package.json"),...files(join(PACKAGE,"src")),...files(join(PACKAGE,"examples")),...NOTICES,...BOUND.map(file=>join(ROOT,file)),fileURLToPath(import.meta.url)].map(required);const hashes=sourceHashes(inputs);const reviews=["evidence/conformance/profile-export-compatibility-review.json","evidence/conformance/radial-profile-javascript-root-review.json","evidence/conformance/profile-p5js-native-root-review.json"].map(reviewBinding);for(const [,module,name] of OPERATIONS){required(join(PACKAGE,"src",module));if(!readFileSync(join(PACKAGE,"src/index.js"),"utf8").includes(name))throw new Error("Root package export missing: "+name);}if(!readFileSync(join(PACKAGE,"src/index.js"),"utf8").includes("RadialProfileError"))throw new Error("Root package export missing: RadialProfileError");mkdirSync(output,{recursive:true});const build=join(output,"build"),cache=join(output,".npm-cache");mkdirSync(build);mkdirSync(cache);const env={...process.env,npm_config_cache:cache};const staged=join(build,"package");cpSync(join(PACKAGE,"src"),join(staged,"src"),{recursive:true});cpSync(join(PACKAGE,"examples"),join(staged,"examples"),{recursive:true});for(const notice of NOTICES)copy(notice,join(staged,basename(notice)));write(join(staged,"package.json"),JSON.stringify(meta.staged,null,2)+"\n");write(join(staged,"README.md"),`# Procedurals JavaScript ${VERSION}\n\nLocal operations and ProfileMarks retained radial profile surfaces.\n`);const stagedManifest=manifest(staged);const packed=json(run("npm",["pack","--json"],{cwd:staged,env,timeout:180000}).stdout,"npm pack")[0];if(!packed?.filename)throw new Error("npm pack produced no filename");const tarball=join(output,packed.filename);copy(join(staged,packed.filename),tarball);const unpacked=join(build,"unpacked");mkdirSync(unpacked);run("tar",["-xzf",tarball,"-C",unpacked]);for(const path of ["package/src/index.js","package/src/radial-profile.js","package/src/circle-placements.js","package/examples/profile-marks/index.html","package/examples/profile-marks/profile-marks.js","package/LICENSE","package/THIRD_PARTY_NOTICES.md"])if(!existsSync(join(unpacked,path)))throw new Error("Tarball omitted "+path);if(JSON.stringify(stagedManifest)!==JSON.stringify(manifest(join(unpacked,"package"))))throw new Error("npm tarball differs from staged package");const starter=join(build,"procedurals-profile-marks-browser");mkdirSync(starter);const source=transform(starter);copy(tarball,join(starter,"vendor",packed.filename));for(const notice of NOTICES)copy(notice,join(starter,basename(notice)));write(join(starter,"package.json"),starterPackage(packed.filename));write(join(starter,"README.md"),starterReadme(packed.filename));write(join(starter,"server.mjs"),server());for(const path of ["profile-marks.js","sketch.js","server.mjs"])run("node",["--check",join(starter,path)]);run("npm",["install","--ignore-scripts","--no-audit","--no-fund"],{cwd:starter,env,timeout:180000});const lock=JSON.parse(readFileSync(join(starter,"package-lock.json")));if(!lock.packages?.["node_modules/p5"]?.integrity||lock.packages?.["node_modules/@procedurals/javascript"]?.resolved!==`file:vendor/${packed.filename}`)throw new Error("starter dependencies are not pinned/local");const consumer=consumerSmoke(starter,join(PROFILE,"profile-marks.js"));rmSync(join(starter,"node_modules"),{recursive:true,force:true});const starterManifest=manifest(starter,build),zip=join(output,`procedurals-profile-marks-browser-${VERSION}.zip`);run("zip",["-q","-r",zip,basename(starter)],{cwd:build,timeout:180000});const archiveRoot=join(build,"archive-consumer");mkdirSync(archiveRoot);run("unzip",["-q",zip,"-d",archiveRoot],{timeout:180000});const extracted=join(archiveRoot,basename(starter));run("npm",["ci","--ignore-scripts","--no-audit","--no-fund"],{cwd:extracted,env,timeout:180000});const archiveConsumer=consumerSmoke(extracted,join(PROFILE,"profile-marks.js"));if(JSON.stringify(consumer.geometry_fingerprints)!==JSON.stringify(archiveConsumer.geometry_fingerprints))throw new Error("Extracted consumer geometry differs");rmSync(join(extracted,"node_modules"),{recursive:true,force:true});stable(hashes);const report={status:"passed",scope:"CP7 JavaScript 0.7.0 local package and installed ProfileMarks starter checks only; no browser launch, render, registry publication, or support acceptance.",package_version:VERSION,input_sha256:hashes,accepted_operations:OPERATIONS.map(([id,module,name])=>({id,module,export:name})),review_bindings:reviews,artifacts:{npm_tarball:{path:display(tarball),sha256:hash(tarball),entries:manifest(join(unpacked,"package"))},browser_starter_zip:{path:display(zip),sha256:hash(zip),entries:starterManifest}},installed_consumer:{profile_marks:consumer,extracted_archive:archiveConsumer,package_lock_sha256:hash(join(starter,"package-lock.json")),starter_rewrites:source.rewrites},included_file_manifest:{staged_package:stagedManifest,starter:starterManifest},environment:{node:process.version,npm:run("npm",["--version"],{env,timeout:30000}).stdout.trim()}};write(join(output,"build-result.json"),JSON.stringify(report,null,2)+"\n");console.log(JSON.stringify({status:report.status,tarball:display(tarball),starter_zip:display(zip)}));}
+main().catch(error=>{console.error(error?.stack??error);process.exitCode=1;});

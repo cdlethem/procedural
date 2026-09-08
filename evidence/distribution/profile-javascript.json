@@ -1,0 +1,750 @@
+{
+  "status": "passed",
+  "scope": "CP7 JavaScript 0.7.0 local package and installed ProfileMarks starter checks only; no browser launch, render, registry publication, or support acceptance.",
+  "package_version": "0.7.0",
+  "input_sha256": {
+    "packages/javascript/package.json": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8",
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/index.js": "878a3034e6ceb0c7951ac688ff6f7f28330c704ed3068baa990a4a004a5cbd10",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "packages/javascript/examples/branch-marks/README.md": "befac22e2fc186dc3358d83645a35b33be5e638060ce33ac4e2c8f7a18960cc6",
+    "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+    "packages/javascript/examples/branch-marks/index.html": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70",
+    "packages/javascript/examples/branch-marks/sketch.js": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1",
+    "packages/javascript/examples/field-marks/README.md": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27",
+    "packages/javascript/examples/field-marks/index.html": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d",
+    "packages/javascript/examples/field-marks/mark-field.js": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf",
+    "packages/javascript/examples/field-marks/sketch.js": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b",
+    "packages/javascript/examples/grain-marks/README.md": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "packages/javascript/examples/grain-marks/index.html": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8",
+    "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17",
+    "packages/javascript/examples/path-marks/README.md": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291",
+    "packages/javascript/examples/path-marks/index.html": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f",
+    "packages/javascript/examples/path-marks/path-marks.js": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743",
+    "packages/javascript/examples/path-marks/sketch.js": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473",
+    "packages/javascript/examples/placement-marks/README.md": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1",
+    "packages/javascript/examples/placement-marks/index.html": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318",
+    "packages/javascript/examples/placement-marks/placement-marks.js": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382",
+    "packages/javascript/examples/placement-marks/sketch.js": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c",
+    "packages/javascript/examples/profile-marks/README.md": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6",
+    "packages/javascript/examples/profile-marks/index.html": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867",
+    "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+    "packages/javascript/examples/profile-marks/sketch.js": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c",
+    "packages/javascript/examples/region-marks/README.md": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010",
+    "packages/javascript/examples/region-marks/index.html": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d",
+    "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+    "packages/javascript/examples/region-marks/sketch.js": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "evidence/conformance/profile-marks-javascript-parity.json": "b3fd4672e83ee7cd02a839c5371779166a15e8f2889ff2f0a1f7e5eb5c781618",
+    "evidence/conformance/profile-export-compatibility-review.json": "c96081a9713f83c6518c17e8d3b9c1c376706ec09fea3c34723be7de4d1f25cc",
+    "evidence/conformance/radial-profile-javascript-root-review.json": "4fc7de8cf59c9fc434b052babf8a2af159a49eda179a554623026284fda944c1",
+    "evidence/conformance/profile-p5js-native-root-review.json": "a6202225f6c6c93a0fd6c58593a9c5b81a38681e62bc2c606bd4267c016fd651",
+    "design/port-batch-05.md": "a2e60443d64c54f993994f962135032e3a411f971ca9cd4d86136737e72d93a8",
+    "tools/build_profile_marks_javascript.mjs": "14219bc27831652587e1585f2bdb05839aff73e6b43a5d304c7a27da172109a9"
+  },
+  "accepted_operations": [
+    {
+      "id": "layout.regular-grid",
+      "module": "regular-grid.js",
+      "export": "regularGrid"
+    },
+    {
+      "id": "fields.gradient-noise-2d-01",
+      "module": "gradient-noise-2d-01.js",
+      "export": "gradientNoise2D01"
+    },
+    {
+      "id": "color.cyclic-palette",
+      "module": "cyclic-palette.js",
+      "export": "cyclicPalette"
+    },
+    {
+      "id": "paths.gradient-path",
+      "module": "gradient-path.js",
+      "export": "gradientPath2D"
+    },
+    {
+      "id": "sampling.ordered-circle-filter",
+      "module": "circle-placements.js",
+      "export": "orderedCircleFilter2D"
+    },
+    {
+      "id": "sampling.seeded-circle-placement",
+      "module": "circle-placements.js",
+      "export": "seededCirclePlacement2D"
+    },
+    {
+      "id": "layout.seeded-quadrant-partition",
+      "module": "quadrant-partition.js",
+      "export": "seededQuadrantPartition2D"
+    },
+    {
+      "id": "sampling.seeded-triangle-points",
+      "module": "triangle-points.js",
+      "export": "seededTrianglePoints2D"
+    },
+    {
+      "id": "sampling.triangle-coordinate-map",
+      "module": "triangle-points.js",
+      "export": "mapTriangleCoordinates2D"
+    },
+    {
+      "id": "topology.seeded-endpoint-branches-2d",
+      "module": "branch-tree.js",
+      "export": "seededEndpointBranches2D"
+    },
+    {
+      "id": "mesh.radial-profile-surface-3d",
+      "module": "radial-profile.js",
+      "export": "RadialProfile3D"
+    }
+  ],
+  "review_bindings": [
+    {
+      "path": "evidence/conformance/profile-export-compatibility-review.json",
+      "status": "accepted",
+      "owner": "root",
+      "reviewer": "root",
+      "bindings": {
+        "implementation_sha256": {
+          "tools/reviewed_export_extension.py": "846b93477950f373062f0116b6e25939161225b821277c79df70492bafcbf179",
+          "packages/javascript/src/index.js": "878a3034e6ceb0c7951ac688ff6f7f28330c704ed3068baa990a4a004a5cbd10",
+          "packages/python/procedurals/__init__.py": "65aca11f7fe747e7956ca90cd1811f3666f317122ca1ce93bf60d027e10ae4d0",
+          "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+          "packages/python/procedurals/radial_profile.py": "5e808574fb55b822aea205981aaea4df53cf487723d42a05204c9c6066716735"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/javascript-retained-output-export-successor.json": "1b5766fd1f85349ef2e7f553142347c6829d95f1cd721c7a21daf0214a706986",
+          "evidence/conformance/radial-profile-javascript-root-review.json": "4fc7de8cf59c9fc434b052babf8a2af159a49eda179a554623026284fda944c1",
+          "evidence/conformance/radial-profile-python-root-review.json": "1caf2eda83c3d8dd0a0fae428b85890205751ca2054e8af4054dcc33d146ae84",
+          "evidence/conformance/profile-p5js-native-root-review.json": "a6202225f6c6c93a0fd6c58593a9c5b81a38681e62bc2c606bd4267c016fd651",
+          "evidence/conformance/profile-py5-native-root-review.json": "9a79712ced107c407577ecf438c2747e9259a23bd90ac8e478c8e4154f22e657"
+        }
+      }
+    },
+    {
+      "path": "evidence/conformance/radial-profile-javascript-root-review.json",
+      "status": "accepted",
+      "owner": "root",
+      "reviewer": "root",
+      "bindings": {
+        "implementation_sha256": {
+          "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+          "tests/native/radial-profile-javascript.mjs": "cf65e9d538b28f88350eef156c10486b4c41d1d41d59f1dff89f2345aef8dc58"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/radial-profile-javascript.json": "ec55cc08e1cadc7a414e55e705ea008fc81a56380e25970f767667bbb0ac09e5",
+          "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+          "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88"
+        }
+      }
+    },
+    {
+      "path": "evidence/conformance/profile-p5js-native-root-review.json",
+      "status": "accepted",
+      "owner": "root",
+      "reviewer": "root",
+      "bindings": {
+        "implementation_sha256": {
+          "tools/run_p5_profile_marks.mjs": "d6c671e11f42bead9068548e68690caad79c8167d6d9817ad12e55e7b9a293a4",
+          "tests/native/profile-marks-browser.mjs": "400c4764faf80eb4d9b7161fed3c0655ead46a2fbc27b9d1163cab284b99693d",
+          "packages/javascript/examples/profile-marks/index.html": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867",
+          "packages/javascript/examples/profile-marks/sketch.js": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c",
+          "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+          "packages/javascript/examples/profile-marks/README.md": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6",
+          "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+          "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+          "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+          "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+          "design/capabilities/profile-marks-port-boundary.md": "e1f1f12cb9a643606eedbb1c90088107ab1a421259b92b611333ecdd579292e7",
+          "design/capabilities/profile-marks-p5-acceptance.md": "f5ce3ed4643e933cf116a65b4a5ee5e9bcbfa559186388be1cf6b6ee87ad1eb5",
+          "tests/native/profile-marks-javascript.mjs": "b842223041af982b96ab58aa7bd63007536cae1b089ffb3b34363a36d6f21dd0",
+          "packages/java/examples/ProfileMarks/ProfileComposition.java": "634fc9b390c48e96ded5fd5c6e1152724d7bbb416eb10c02708cadf546324036",
+          "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+          "tools/diagnostics/cp7/profile_intervals.py": "2d4bb98c5bb2c52b9a45272463b8ca30062e8767e85d39f8f90dfa0f54430f6a",
+          "design/operations/cp7-profile-fixture-policy.md": "8e7ef08de5e1abb251de884634896b9c807b954431ebe62eb5a0213e5ecbaf7d"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/profile-marks-javascript-parity.json": "b3fd4672e83ee7cd02a839c5371779166a15e8f2889ff2f0a1f7e5eb5c781618",
+          "evidence/conformance/p5js-profile-marks.json": "ca430bbed379ae08748d978e35bdf35316f80a6a6b391ed13c9cc44185dfd12b",
+          "evidence/conformance/radial-profile-javascript-root-review.json": "4fc7de8cf59c9fc434b052babf8a2af159a49eda179a554623026284fda944c1"
+        }
+      }
+    }
+  ],
+  "artifacts": {
+    "npm_tarball": {
+      "path": ".work/dist/cp7/javascript-profile1/procedurals-javascript-0.7.0.tgz",
+      "sha256": "24ee3a788118a4ab8a6b7536f50727a859e3c8bd49da86bab157aea53c767ed5",
+      "entries": [
+        {
+          "path": "LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "README.md",
+          "sha256": "864610119b2b0019cd3b961afdb732b014508253c987d32c949315823dbcb6f0"
+        },
+        {
+          "path": "THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "examples/branch-marks/README.md",
+          "sha256": "befac22e2fc186dc3358d83645a35b33be5e638060ce33ac4e2c8f7a18960cc6"
+        },
+        {
+          "path": "examples/branch-marks/branch-marks.js",
+          "sha256": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780"
+        },
+        {
+          "path": "examples/branch-marks/index.html",
+          "sha256": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70"
+        },
+        {
+          "path": "examples/branch-marks/sketch.js",
+          "sha256": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1"
+        },
+        {
+          "path": "examples/field-marks/README.md",
+          "sha256": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27"
+        },
+        {
+          "path": "examples/field-marks/index.html",
+          "sha256": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d"
+        },
+        {
+          "path": "examples/field-marks/mark-field.js",
+          "sha256": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf"
+        },
+        {
+          "path": "examples/field-marks/sketch.js",
+          "sha256": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b"
+        },
+        {
+          "path": "examples/grain-marks/README.md",
+          "sha256": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381"
+        },
+        {
+          "path": "examples/grain-marks/grain-marks.js",
+          "sha256": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce"
+        },
+        {
+          "path": "examples/grain-marks/index.html",
+          "sha256": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8"
+        },
+        {
+          "path": "examples/grain-marks/sketch.js",
+          "sha256": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17"
+        },
+        {
+          "path": "examples/path-marks/README.md",
+          "sha256": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291"
+        },
+        {
+          "path": "examples/path-marks/index.html",
+          "sha256": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f"
+        },
+        {
+          "path": "examples/path-marks/path-marks.js",
+          "sha256": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743"
+        },
+        {
+          "path": "examples/path-marks/sketch.js",
+          "sha256": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473"
+        },
+        {
+          "path": "examples/placement-marks/README.md",
+          "sha256": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1"
+        },
+        {
+          "path": "examples/placement-marks/index.html",
+          "sha256": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318"
+        },
+        {
+          "path": "examples/placement-marks/placement-marks.js",
+          "sha256": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382"
+        },
+        {
+          "path": "examples/placement-marks/sketch.js",
+          "sha256": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c"
+        },
+        {
+          "path": "examples/profile-marks/README.md",
+          "sha256": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6"
+        },
+        {
+          "path": "examples/profile-marks/index.html",
+          "sha256": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867"
+        },
+        {
+          "path": "examples/profile-marks/profile-marks.js",
+          "sha256": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c"
+        },
+        {
+          "path": "examples/profile-marks/sketch.js",
+          "sha256": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c"
+        },
+        {
+          "path": "examples/region-marks/README.md",
+          "sha256": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010"
+        },
+        {
+          "path": "examples/region-marks/index.html",
+          "sha256": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d"
+        },
+        {
+          "path": "examples/region-marks/region-marks.js",
+          "sha256": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8"
+        },
+        {
+          "path": "examples/region-marks/sketch.js",
+          "sha256": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a"
+        },
+        {
+          "path": "package.json",
+          "sha256": "ac41ebb36b82766b7d7bd874a1a307c8dad8c0cb7d12e3f1ac24bf6d63ede055"
+        },
+        {
+          "path": "src/branch-tree.js",
+          "sha256": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6"
+        },
+        {
+          "path": "src/circle-placements.js",
+          "sha256": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567"
+        },
+        {
+          "path": "src/cyclic-palette.js",
+          "sha256": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b"
+        },
+        {
+          "path": "src/gradient-noise-2d-01.js",
+          "sha256": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e"
+        },
+        {
+          "path": "src/gradient-path.js",
+          "sha256": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a"
+        },
+        {
+          "path": "src/index.js",
+          "sha256": "878a3034e6ceb0c7951ac688ff6f7f28330c704ed3068baa990a4a004a5cbd10"
+        },
+        {
+          "path": "src/internal/drawing-state.js",
+          "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+        },
+        {
+          "path": "src/internal/drawing.js",
+          "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+        },
+        {
+          "path": "src/internal/noise-hash.js",
+          "sha256": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6"
+        },
+        {
+          "path": "src/internal/p5-frame.js",
+          "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+        },
+        {
+          "path": "src/quadrant-partition.js",
+          "sha256": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f"
+        },
+        {
+          "path": "src/radial-profile.js",
+          "sha256": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d"
+        },
+        {
+          "path": "src/regular-grid.js",
+          "sha256": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278"
+        },
+        {
+          "path": "src/triangle-points.js",
+          "sha256": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290"
+        }
+      ]
+    },
+    "browser_starter_zip": {
+      "path": ".work/dist/cp7/javascript-profile1/procedurals-profile-marks-browser-0.7.0.zip",
+      "sha256": "56bedaeb701382de3d985c49a5e8787ba6ded2b0434b7f10916dd27b386ac53f",
+      "entries": [
+        {
+          "path": "procedurals-profile-marks-browser/EXAMPLE.md",
+          "sha256": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6"
+        },
+        {
+          "path": "procedurals-profile-marks-browser/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "procedurals-profile-marks-browser/README.md",
+          "sha256": "9676b951cf48af4f1a6aa5ced74a38b3793499056d1ea47157cdef409de399ec"
+        },
+        {
+          "path": "procedurals-profile-marks-browser/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "procedurals-profile-marks-browser/index.html",
+          "sha256": "51cb7a4b04e1b641a89f0e1f77a81dd247638ade33dfb2e449924c38a75eeb88"
+        },
+        {
+          "path": "procedurals-profile-marks-browser/package-lock.json",
+          "sha256": "8220be0547af32755c2970ef19302f3174590dca854e83f763a414485836a40d"
+        },
+        {
+          "path": "procedurals-profile-marks-browser/package.json",
+          "sha256": "fd063d45d4696c1c5af400492aa74225d16225980c57ab239305d244c146605f"
+        },
+        {
+          "path": "procedurals-profile-marks-browser/profile-marks.js",
+          "sha256": "2c310e2bf0c3e3f1282643813e2ff8250475c095f938f23ba74c5e6846e8dce7"
+        },
+        {
+          "path": "procedurals-profile-marks-browser/server.mjs",
+          "sha256": "f7fe9b8b5ee65fba785bd08bc898089ac3dc034321ea5d42e3ac3f30b73de3bd"
+        },
+        {
+          "path": "procedurals-profile-marks-browser/sketch.js",
+          "sha256": "8c477e21dd056691b878a62956a48490eeba61f137744d47ccfa2e63198a790d"
+        },
+        {
+          "path": "procedurals-profile-marks-browser/vendor/procedurals-javascript-0.7.0.tgz",
+          "sha256": "24ee3a788118a4ab8a6b7536f50727a859e3c8bd49da86bab157aea53c767ed5"
+        }
+      ]
+    }
+  },
+  "installed_consumer": {
+    "profile_marks": {
+      "resolved": "file:///home/colin/dev/procedural/.work/dist/cp7/javascript-profile1/build/procedurals-profile-marks-browser/node_modules/@procedurals/javascript/src/index.js",
+      "cases": [
+        [
+          32,
+          true,
+          true
+        ],
+        [
+          8,
+          true,
+          true
+        ],
+        [
+          8,
+          false,
+          true
+        ],
+        [
+          8,
+          false,
+          false
+        ]
+      ],
+      "meshes": 12,
+      "geometry_fingerprints": [
+        "6bea2a91aebd651310d4a63061ee6240a461cf5485019131f4f881c620998885",
+        "455b4ab4be8cc1d647a7a1eb276729c002d75d723a9b02ffd854629751dc55e6",
+        "b328a646e404ce1285696d979bc29769ede96354dc5030c03d986b9d4425f11a",
+        "6936c6fe59acb0ca1a54ebe8cf4c4c970ff03fecd8f2dc5477374037a8ec5bb6"
+      ]
+    },
+    "extracted_archive": {
+      "resolved": "file:///home/colin/dev/procedural/.work/dist/cp7/javascript-profile1/build/archive-consumer/procedurals-profile-marks-browser/node_modules/@procedurals/javascript/src/index.js",
+      "cases": [
+        [
+          32,
+          true,
+          true
+        ],
+        [
+          8,
+          true,
+          true
+        ],
+        [
+          8,
+          false,
+          true
+        ],
+        [
+          8,
+          false,
+          false
+        ]
+      ],
+      "meshes": 12,
+      "geometry_fingerprints": [
+        "6bea2a91aebd651310d4a63061ee6240a461cf5485019131f4f881c620998885",
+        "455b4ab4be8cc1d647a7a1eb276729c002d75d723a9b02ffd854629751dc55e6",
+        "b328a646e404ce1285696d979bc29769ede96354dc5030c03d986b9d4425f11a",
+        "6936c6fe59acb0ca1a54ebe8cf4c4c970ff03fecd8f2dc5477374037a8ec5bb6"
+      ]
+    },
+    "package_lock_sha256": "8220be0547af32755c2970ef19302f3174590dca854e83f763a414485836a40d",
+    "starter_rewrites": {
+      "index.html": {
+        "inserted": "<script type=\"importmap\">{\"imports\":{\"@procedurals/javascript\":\"./node_modules/@procedurals/javascript/src/index.js\"}}</script>"
+      },
+      "profile-marks.js": {
+        "from": "../../src/radial-profile.js",
+        "to": "@procedurals/javascript"
+      },
+      "sketch.js": {
+        "from": "../../src/cyclic-palette.js",
+        "to": "@procedurals/javascript"
+      }
+    }
+  },
+  "included_file_manifest": {
+    "staged_package": [
+      {
+        "path": "LICENSE",
+        "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+      },
+      {
+        "path": "README.md",
+        "sha256": "864610119b2b0019cd3b961afdb732b014508253c987d32c949315823dbcb6f0"
+      },
+      {
+        "path": "THIRD_PARTY_NOTICES.md",
+        "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+      },
+      {
+        "path": "examples/branch-marks/README.md",
+        "sha256": "befac22e2fc186dc3358d83645a35b33be5e638060ce33ac4e2c8f7a18960cc6"
+      },
+      {
+        "path": "examples/branch-marks/branch-marks.js",
+        "sha256": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780"
+      },
+      {
+        "path": "examples/branch-marks/index.html",
+        "sha256": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70"
+      },
+      {
+        "path": "examples/branch-marks/sketch.js",
+        "sha256": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1"
+      },
+      {
+        "path": "examples/field-marks/README.md",
+        "sha256": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27"
+      },
+      {
+        "path": "examples/field-marks/index.html",
+        "sha256": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d"
+      },
+      {
+        "path": "examples/field-marks/mark-field.js",
+        "sha256": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf"
+      },
+      {
+        "path": "examples/field-marks/sketch.js",
+        "sha256": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b"
+      },
+      {
+        "path": "examples/grain-marks/README.md",
+        "sha256": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381"
+      },
+      {
+        "path": "examples/grain-marks/grain-marks.js",
+        "sha256": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce"
+      },
+      {
+        "path": "examples/grain-marks/index.html",
+        "sha256": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8"
+      },
+      {
+        "path": "examples/grain-marks/sketch.js",
+        "sha256": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17"
+      },
+      {
+        "path": "examples/path-marks/README.md",
+        "sha256": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291"
+      },
+      {
+        "path": "examples/path-marks/index.html",
+        "sha256": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f"
+      },
+      {
+        "path": "examples/path-marks/path-marks.js",
+        "sha256": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743"
+      },
+      {
+        "path": "examples/path-marks/sketch.js",
+        "sha256": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473"
+      },
+      {
+        "path": "examples/placement-marks/README.md",
+        "sha256": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1"
+      },
+      {
+        "path": "examples/placement-marks/index.html",
+        "sha256": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318"
+      },
+      {
+        "path": "examples/placement-marks/placement-marks.js",
+        "sha256": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382"
+      },
+      {
+        "path": "examples/placement-marks/sketch.js",
+        "sha256": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c"
+      },
+      {
+        "path": "examples/profile-marks/README.md",
+        "sha256": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6"
+      },
+      {
+        "path": "examples/profile-marks/index.html",
+        "sha256": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867"
+      },
+      {
+        "path": "examples/profile-marks/profile-marks.js",
+        "sha256": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c"
+      },
+      {
+        "path": "examples/profile-marks/sketch.js",
+        "sha256": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c"
+      },
+      {
+        "path": "examples/region-marks/README.md",
+        "sha256": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010"
+      },
+      {
+        "path": "examples/region-marks/index.html",
+        "sha256": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d"
+      },
+      {
+        "path": "examples/region-marks/region-marks.js",
+        "sha256": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8"
+      },
+      {
+        "path": "examples/region-marks/sketch.js",
+        "sha256": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a"
+      },
+      {
+        "path": "package.json",
+        "sha256": "ac41ebb36b82766b7d7bd874a1a307c8dad8c0cb7d12e3f1ac24bf6d63ede055"
+      },
+      {
+        "path": "src/branch-tree.js",
+        "sha256": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6"
+      },
+      {
+        "path": "src/circle-placements.js",
+        "sha256": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567"
+      },
+      {
+        "path": "src/cyclic-palette.js",
+        "sha256": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b"
+      },
+      {
+        "path": "src/gradient-noise-2d-01.js",
+        "sha256": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e"
+      },
+      {
+        "path": "src/gradient-path.js",
+        "sha256": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a"
+      },
+      {
+        "path": "src/index.js",
+        "sha256": "878a3034e6ceb0c7951ac688ff6f7f28330c704ed3068baa990a4a004a5cbd10"
+      },
+      {
+        "path": "src/internal/drawing-state.js",
+        "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+      },
+      {
+        "path": "src/internal/drawing.js",
+        "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+      },
+      {
+        "path": "src/internal/noise-hash.js",
+        "sha256": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6"
+      },
+      {
+        "path": "src/internal/p5-frame.js",
+        "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+      },
+      {
+        "path": "src/quadrant-partition.js",
+        "sha256": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f"
+      },
+      {
+        "path": "src/radial-profile.js",
+        "sha256": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d"
+      },
+      {
+        "path": "src/regular-grid.js",
+        "sha256": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278"
+      },
+      {
+        "path": "src/triangle-points.js",
+        "sha256": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290"
+      }
+    ],
+    "starter": [
+      {
+        "path": "procedurals-profile-marks-browser/EXAMPLE.md",
+        "sha256": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6"
+      },
+      {
+        "path": "procedurals-profile-marks-browser/LICENSE",
+        "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+      },
+      {
+        "path": "procedurals-profile-marks-browser/README.md",
+        "sha256": "9676b951cf48af4f1a6aa5ced74a38b3793499056d1ea47157cdef409de399ec"
+      },
+      {
+        "path": "procedurals-profile-marks-browser/THIRD_PARTY_NOTICES.md",
+        "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+      },
+      {
+        "path": "procedurals-profile-marks-browser/index.html",
+        "sha256": "51cb7a4b04e1b641a89f0e1f77a81dd247638ade33dfb2e449924c38a75eeb88"
+      },
+      {
+        "path": "procedurals-profile-marks-browser/package-lock.json",
+        "sha256": "8220be0547af32755c2970ef19302f3174590dca854e83f763a414485836a40d"
+      },
+      {
+        "path": "procedurals-profile-marks-browser/package.json",
+        "sha256": "fd063d45d4696c1c5af400492aa74225d16225980c57ab239305d244c146605f"
+      },
+      {
+        "path": "procedurals-profile-marks-browser/profile-marks.js",
+        "sha256": "2c310e2bf0c3e3f1282643813e2ff8250475c095f938f23ba74c5e6846e8dce7"
+      },
+      {
+        "path": "procedurals-profile-marks-browser/server.mjs",
+        "sha256": "f7fe9b8b5ee65fba785bd08bc898089ac3dc034321ea5d42e3ac3f30b73de3bd"
+      },
+      {
+        "path": "procedurals-profile-marks-browser/sketch.js",
+        "sha256": "8c477e21dd056691b878a62956a48490eeba61f137744d47ccfa2e63198a790d"
+      },
+      {
+        "path": "procedurals-profile-marks-browser/vendor/procedurals-javascript-0.7.0.tgz",
+        "sha256": "24ee3a788118a4ab8a6b7536f50727a859e3c8bd49da86bab157aea53c767ed5"
+      }
+    ]
+  },
+  "environment": {
+    "node": "v22.22.1",
+    "npm": "9.2.0"
+  }
+}
