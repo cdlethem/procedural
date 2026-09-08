@@ -4,3 +4,4 @@ export { cyclicPalette, CyclicPaletteError } from "./cyclic-palette.js";
 export { gradientPath2D, GradientPathError } from "./gradient-path.js";
 export { orderedCircleFilter2D, seededCirclePlacement2D, CirclePlacementError } from "./circle-placements.js";
 export { seededQuadrantPartition2D, PartitionError } from "./quadrant-partition.js";
+export { seededTrianglePoints2D, mapTriangleCoordinates2D, TrianglePointsError } from "./triangle-points.js";

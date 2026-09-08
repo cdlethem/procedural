@@ -4,6 +4,7 @@ import json
 
 REVIEW = 'evidence/conformance/placement-export-compatibility-review.json'
 SUCCESSOR = 'evidence/conformance/quadrant-export-compatibility-review.json'
+TRIANGLE = 'evidence/conformance/triangle-export-compatibility-review.json'
 HELPER = 'tools/reviewed_export_extension.py'
 PATHS = frozenset(('packages/javascript/src/index.js', 'packages/python/procedurals/__init__.py'))
 
@@ -46,31 +47,40 @@ def historical_export_bytes(root, relative, expected):
     try:
         snapshots = {}
         successor_match = None
-        successor_path = root / SUCCESSOR
-        if successor_path.exists():
-            successor = json.loads(successor_path.read_text())
-            if not _accepted(successor) or not _bindings(root, successor, {}):
+        # Only these two frozen export transitions are authorized. Walking newest to
+        # oldest keeps earlier reviews immutable without allowing arbitrary overlays.
+        stages = (
+            (TRIANGLE, SUCCESSOR, PATHS,
+             {HELPER, *PATHS, 'packages/javascript/src/triangle-points.js',
+              'packages/python/procedurals/triangle_points.py',
+              'packages/python/procedurals/quadrant_partition.py'}),
+            (SUCCESSOR, REVIEW, {'packages/javascript/src/index.js'},
+             {HELPER, 'packages/javascript/src/index.js',
+              'packages/javascript/src/quadrant-partition.js'}),
+        )
+        for record, previous, changed, required in stages:
+            if not (root / record).exists():
+                continue
+            successor = json.loads(_read(root, record))
+            if not _accepted(successor) or not _bindings(root, successor, snapshots):
                 return None
-            required = {HELPER, 'packages/javascript/src/index.js',
-                        'packages/javascript/src/quadrant-partition.js'}
             if not required.issubset(successor['implementation_sha256']):
                 return None
-            if successor['previous_review_sha256'] != _digest(_read(root, REVIEW)):
+            if successor['previous_review_sha256'] != _digest(_read(root, previous)):
                 return None
             prior = successor['previous_bytes']
-            # This exact scope is an audited export addition, not a general source overlay.
-            if set(prior) != {HELPER, 'packages/javascript/src/index.js'}:
+            if set(prior) != {HELPER, *changed} or set(successor['extensions']) != changed:
                 return None
-            snapshots = {name: text.encode('utf-8') for name, text in prior.items()}
-            if set(successor['extensions']) != {'packages/javascript/src/index.js'}:
-                return None
-            entry = successor['extensions']['packages/javascript/src/index.js']
-            if entry['before'].encode('utf-8') != snapshots['packages/javascript/src/index.js']:
-                return None
-            if entry['after'].encode('utf-8') != _read(root, 'packages/javascript/src/index.js'):
-                return None
-            if relative in successor['extensions'] and _digest(entry['before'].encode('utf-8')) == expected:
-                successor_match = entry['before'].encode('utf-8')
+            for name, entry in successor['extensions'].items():
+                current = snapshots[name] if name in snapshots else _read(root, name)
+                if entry['after'].encode('utf-8') != current:
+                    return None
+                before = entry['before'].encode('utf-8')
+                if before != prior[name].encode('utf-8'):
+                    return None
+                if name == relative and _digest(before) == expected:
+                    successor_match = before
+            snapshots.update({name: text.encode('utf-8') for name, text in prior.items()})
 
         review = json.loads(_read(root, REVIEW))
         if not _accepted(review) or not _bindings(root, review, snapshots):
