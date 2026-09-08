@@ -1,7 +1,8 @@
 import examples.recreations.curvespace.CurvespaceComposition;
+import org.procedurals.geometry.RadialPull2D; // Explicit library discovery in Processing.
 
 // C recolours; R regenerates seeded inputs; 0 resets; S saves the cached frame.
-// Draft independent recreation of 2018/Generativos/curvespace. Native review pending.
+// Independent recreation of 2018/Generativos/curvespace; see its repository review.
 // Package owns radial deformation; this example owns scalar choices and drawing.
 final int SIDE = 960;
 final int[] COLORS = {0xFF5949, 0xFFC956, 0x1CEA64, 0x53EFF4};

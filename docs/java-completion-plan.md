@@ -32,8 +32,9 @@ Java0.22 assembles22 operations and22 workflows: field marks, integrated paths, 
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
 paths, raster remapping, positioned color ramps, noise-band paths, smooth closed curves and binary panel layouts,
-plus relief/city/landscape compositions. Only three selected original structural
-recreations are demonstrated. Consult current operation attestations rather than historical
+plus relief/city/landscape compositions. Four selected original structural
+recreations are demonstrated; Curvespace is a separate repository example, outside the
+accepted Java0.22 archive. Consult current operation attestations rather than historical
 status paragraphs in the provisional API design.
 
 ## Completed batch: raster warping (CP13)
@@ -141,3 +142,8 @@ CP19 adds RadialPull2D/PullMarks: ordered localized radial folding, radius/power
 retained contour transfer. Center discontinuities and self-intersections are explicit;
 sequential pushes and stochastic attraction are distinct remaining computations. No new
 original recreation is claimed.
+
+Curvespace now demonstrates a fourth complete structural recreation using RegularGrid and
+RadialPull2D, with actual P2D additive drawing and reviewed edits/reset/cached save. See
+[curvespace-recreation.md](curvespace-recreation.md). This adds composition evidence rather
+than another operation; general render/animation helper scope remains incomplete.

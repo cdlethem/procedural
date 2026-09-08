@@ -36,6 +36,10 @@ remain in the roadmap.
 
 [Render a seeded sketch or parameter sweep](docs/rendering-java.md) with the opt-in JAVA2D helper.
 
+The separate [Curvespace recreation](docs/curvespace-recreation.md) demonstrates a complete
+additive P2D grid composition using existing operations. Four original structural recreations
+are now demonstrated; Curvespace is not an extra starter in the Java0.22 archive.
+
 Choose an example by what you want to make in [the Java starting-point guide](docs/choosing-java-workflow.md).
 Build from a fresh checkout with [the Java source-bundle instructions](docs/building-java-from-source.md).
 

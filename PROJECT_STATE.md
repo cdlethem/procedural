@@ -1,5 +1,29 @@
 # Project state
 
+## Curvespace structural recreation accepted
+
+Root reviewed actual P2D960x960 density1 additive drawing of the complete composition.
+Baseline/recolor/regenerate/reset/cached-save pass using the exact accepted Java0.22 JAR.
+All visible components remain: unwarped dots, faint influence circles, two dense sampled
+line families and luminous folded/tangled strands. Recolor retains geometry; seed change
+regenerates; reset and cached save match exactly. Four original structural recreations are
+now demonstrated; the accepted source-bundle remains22 operations/22 starters.
+
+Evidence: evidence/reproductions/curvespace/root-review.json and native.json. Final run
+.work/curvespace-native2/result.json binds current source/runtime/classes/images; all5 PNGs
+equal inspected native1 after the explicit library-discovery import/stale-comment update.
+Root verified library bytes against accepted cp19 extracted-consumer evidence. Runner reuses
+pinned runtime checks and shared machine lease. No P2D fallback, source-pixel benchmark or
+other-target acceptance is claimed. Guide: docs/curvespace-recreation.md. This repository
+example is separate from the Java0.22 archive; do not silently count it as a packaged starter.
+
+No native process or worker remains active. Ports/Sol remain paused in this task; unrelated
+Android resume and JavaScript Delaunay-export edits preserved and excluded. Next address
+remaining Java completeness gaps in docs/java-completion-plan.md with a bounded capability
+or reusable rendering/animation helper milestone. Keep root source/contract/native review,
+strict worker file ownership and focused established checks. Whole-goal completion remains
+unproven; four selected recreations do not establish full-corpus or major-idiom coverage.
+
 ## Curvespace full-composition draft compiled — native P2D next
 
 Previous turn shipped Java0.22 at838eb1da. Root now maps the complete curvespace source

@@ -1,0 +1,214 @@
+{
+  "status": "passed",
+  "scope": "Curvespace P2D recreation with adjacent composition tab; no workflow or acceptance claim",
+  "input_sha256_before": {
+    "examples/recreations/Curvespace/Curvespace.pde": "c76ae8b97e3101685e9fba71fa236f21b56dc8e470dc3a8a0ec27f105179048e",
+    "examples/recreations/Curvespace/CurvespaceComposition.java": "61c56751f6720c0623df604b01748878a1868c2aeb9b619119b0b0075a35bd98",
+    "tests/native/CurvespaceProbe.java": "184d0ca77691aa92b58df585f27373eb177ebeaa732934359b12c51b7cf33d07",
+    "design/capabilities/curvespace-recreation-walkthrough.md": "ffce20a40aac4a0aa6bd42f1071d4ab69b577c569e5fa9c8ffe4bce61f435709",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    "tools/run_curvespace_java.py": "e1ad93aa1f2dcb83cef7f6185e9a50f598782af43d66b29721495160f15ccd51",
+    ".work/cp19-consumer-root1/extract/procedurals/library/procedurals.jar": "3bd25b8af7c1e6473c25e0e4f3f7b6f8688c192735b23ee005dbbf403429f5bc",
+    "tools/check_field_marks_pde.py": "49668c561ebb5b2c585544fe17cbd25128539c1fd01dfea1587d1f7e80c265c1",
+    "tools/check_processing_runtime.py": "266825d35ac2859a97b61ebe360a225c41f69aee068badcd1439becd3104c70c",
+    "tools/diagnostics/cp7/run_profiles.py": "dbbf6858057635fb497d4ffd8efe283e3a686c0f4ff6707a4fe1d81446e9d5b6",
+    "tools/run_depth_marks_java.py": "32b4a2750cabb35b88b43455a2c0ffd4120acb190d16ce7baaaef51c24839d89",
+    "tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d",
+    ".work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar": "34c919bc6073c2d9e73cbe7558c4e9de6b5c58146f3658e2bcc5f23ec3fccc9f",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar": "465bbc8d410b872a76b5b901cdb9c2c07905edd5e61a7120dc6a4d007880ec2f",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar": "3d0ed2674059fc207166ce1351de8d30e0b6102af12ca8b84fbf1bc3f246038a",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar": "d500a38dedcbd6dfa89c5ae943a22d1051b1dbf1502f8544337bbe57d118f2c5",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "commands": [
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "17",
+        "-cp",
+        "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar",
+        "-d",
+        "/home/colin/dev/procedural/.work/curvespace-native2/pre-classes",
+        "/home/colin/dev/procedural/tests/native/PreprocessSketch.java"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-Duser.home=/home/colin/dev/procedural/.work/curvespace-native2/home",
+        "-cp",
+        "/home/colin/dev/procedural/.work/curvespace-native2/pre-classes:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar",
+        "PreprocessSketch",
+        "/home/colin/dev/procedural/examples/recreations/Curvespace/Curvespace.pde",
+        "/home/colin/dev/procedural/.work/curvespace-native2/Curvespace.java",
+        "Curvespace"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "8",
+        "-cp",
+        "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar:/home/colin/dev/procedural/.work/cp19-consumer-root1/extract/procedurals/library/procedurals.jar",
+        "-d",
+        "/home/colin/dev/procedural/.work/curvespace-native2/classes",
+        "/home/colin/dev/procedural/.work/curvespace-native2/Curvespace.java",
+        "/home/colin/dev/procedural/examples/recreations/Curvespace/CurvespaceComposition.java",
+        "/home/colin/dev/procedural/tests/native/CurvespaceProbe.java"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-version"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)\n"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/colin/dev/procedural/tools/with_native_render_lock.py",
+        "--timeout",
+        "120",
+        "--",
+        "xvfb-run",
+        "-a",
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-Duser.home=/home/colin/dev/procedural/.work/curvespace-native2/home",
+        "-cp",
+        "/home/colin/dev/procedural/.work/curvespace-native2/classes:/home/colin/dev/procedural/.work/cp19-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar",
+        "CurvespaceProbe",
+        "/home/colin/dev/procedural/.work/curvespace-native2/native",
+        "/home/colin/dev/procedural/.work/cp19-consumer-root1/extract/procedurals/library/procedurals.jar"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "X11Util.Display: Shutdown (JVM shutdown: true, open (no close attempt): 3/3, reusable (open, marked uncloseable): 0, pending (open in creation order): 3)\nX11Util: Open X11 Display Connections: 3\nX11Util: Open[0]: NamedX11Display[:112, 0x73f78066de60, refCount 1, unCloseable false]\nX11Util: Open[1]: NamedX11Display[:112, 0x73f3d4001080, refCount 1, unCloseable false]\nX11Util: Open[2]: NamedX11Display[:112, 0x73f3d40122c0, refCount 1, unCloseable false]\n"
+    }
+  ],
+  "artifact_sha256_before": {
+    ".work/curvespace-native2/Curvespace.java": "af171574486fe9e5bc33a36970a7b57f65d04b2da3f446908a3adb3add1a9dfa",
+    ".work/curvespace-native2/classes/CurvespaceProbe.class": "430b5eb591d089a75b504d3232b881fa3ada4191b12d03c3166d8f511136f2f6",
+    ".work/curvespace-native2/classes/Curvespace.class": "23bb59142e855d2944e7853097061b2ddc0d66d06d63827e40574407d191727d",
+    ".work/curvespace-native2/classes/examples/recreations/curvespace/CurvespaceComposition.class": "0684b905c4ea51e9f9816e30d7755b33ccfd0b0db28085ae6fa61d56d40a3fde",
+    ".work/curvespace-native2/pre-classes/PreprocessSketch.class": "2fc98864fe0e6ffe6e00204da0071fb0897d9799e8857c9b2f38887b444fa70d"
+  },
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "native": {
+    "status": "passed",
+    "frames": 4,
+    "keys": "cr0s",
+    "frame_records": [
+      {
+        "id": "baseline",
+        "pixel_sha256": "56bcc3e054febc026256d4771266cc3df6e9733fbd22da388699381142e2fa5e",
+        "geometry_sha256": "96641d7a6fc09db34943d3253603f633518b2a0688164a6bb4b6060c7d97c2f3"
+      },
+      {
+        "id": "recolored",
+        "pixel_sha256": "5c2971458ad6de8c776f8e9c082f531520ad2606528e9d2ed06ab264ad4fafdd",
+        "geometry_sha256": "96641d7a6fc09db34943d3253603f633518b2a0688164a6bb4b6060c7d97c2f3"
+      },
+      {
+        "id": "regenerated",
+        "pixel_sha256": "524872aeb82fa59186f2dfced49549c0dd29d0ac2b6cafa8514f2624fc3609fe",
+        "geometry_sha256": "f7a317ed34f080ddda5ca51d755988d9b1f44ca41be46938c4f54221fd6efc78"
+      },
+      {
+        "id": "reset",
+        "pixel_sha256": "56bcc3e054febc026256d4771266cc3df6e9733fbd22da388699381142e2fa5e",
+        "geometry_sha256": "96641d7a6fc09db34943d3253603f633518b2a0688164a6bb4b6060c7d97c2f3"
+      }
+    ],
+    "quiet_ms": 300,
+    "core_code_source": "/home/colin/dev/procedural/.work/cp19-consumer-root1/extract/procedurals/library/procedurals.jar",
+    "expected_jar": "/home/colin/dev/procedural/.work/cp19-consumer-root1/extract/procedurals/library/procedurals.jar",
+    "renderer": "processing.opengl.PGraphics2D",
+    "density": 1,
+    "width": 960,
+    "height": 960
+  },
+  "images": {
+    "baseline": {
+      "path": ".work/curvespace-native2/native/baseline.png",
+      "sha256": "af5b3a2737554ecbb38df7a63418f0352f340a1dde5b8f4587bcc128b9dd99fd"
+    },
+    "recolored": {
+      "path": ".work/curvespace-native2/native/recolored.png",
+      "sha256": "4926364e4f909e73f298f9120c87fb7b8286b0e55be8c5c64f696ba171e789a1"
+    },
+    "regenerated": {
+      "path": ".work/curvespace-native2/native/regenerated.png",
+      "sha256": "0f0ebe95da2a63c27ab1a661254fdece113478fd47be008c54f19e86eba76573"
+    },
+    "reset": {
+      "path": ".work/curvespace-native2/native/reset.png",
+      "sha256": "af5b3a2737554ecbb38df7a63418f0352f340a1dde5b8f4587bcc128b9dd99fd"
+    },
+    "curvespace": {
+      "path": ".work/curvespace-native2/native/curvespace.png",
+      "sha256": "684a045cb05a15b9bdbb38840f2ce311f7f72d1cf81fa2c693e1280b0ab92073"
+    }
+  },
+  "input_sha256_after": {
+    "examples/recreations/Curvespace/Curvespace.pde": "c76ae8b97e3101685e9fba71fa236f21b56dc8e470dc3a8a0ec27f105179048e",
+    "examples/recreations/Curvespace/CurvespaceComposition.java": "61c56751f6720c0623df604b01748878a1868c2aeb9b619119b0b0075a35bd98",
+    "tests/native/CurvespaceProbe.java": "184d0ca77691aa92b58df585f27373eb177ebeaa732934359b12c51b7cf33d07",
+    "design/capabilities/curvespace-recreation-walkthrough.md": "ffce20a40aac4a0aa6bd42f1071d4ab69b577c569e5fa9c8ffe4bce61f435709",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    "tools/run_curvespace_java.py": "e1ad93aa1f2dcb83cef7f6185e9a50f598782af43d66b29721495160f15ccd51",
+    ".work/cp19-consumer-root1/extract/procedurals/library/procedurals.jar": "3bd25b8af7c1e6473c25e0e4f3f7b6f8688c192735b23ee005dbbf403429f5bc",
+    "tools/check_field_marks_pde.py": "49668c561ebb5b2c585544fe17cbd25128539c1fd01dfea1587d1f7e80c265c1",
+    "tools/check_processing_runtime.py": "266825d35ac2859a97b61ebe360a225c41f69aee068badcd1439becd3104c70c",
+    "tools/diagnostics/cp7/run_profiles.py": "dbbf6858057635fb497d4ffd8efe283e3a686c0f4ff6707a4fe1d81446e9d5b6",
+    "tools/run_depth_marks_java.py": "32b4a2750cabb35b88b43455a2c0ffd4120acb190d16ce7baaaef51c24839d89",
+    "tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d",
+    ".work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar": "34c919bc6073c2d9e73cbe7558c4e9de6b5c58146f3658e2bcc5f23ec3fccc9f",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar": "465bbc8d410b872a76b5b901cdb9c2c07905edd5e61a7120dc6a4d007880ec2f",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar": "3d0ed2674059fc207166ce1351de8d30e0b6102af12ca8b84fbf1bc3f246038a",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar": "d500a38dedcbd6dfa89c5ae943a22d1051b1dbf1502f8544337bbe57d118f2c5",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "artifact_sha256_after": {
+    ".work/curvespace-native2/Curvespace.java": "af171574486fe9e5bc33a36970a7b57f65d04b2da3f446908a3adb3add1a9dfa",
+    ".work/curvespace-native2/classes/CurvespaceProbe.class": "430b5eb591d089a75b504d3232b881fa3ada4191b12d03c3166d8f511136f2f6",
+    ".work/curvespace-native2/classes/Curvespace.class": "23bb59142e855d2944e7853097061b2ddc0d66d06d63827e40574407d191727d",
+    ".work/curvespace-native2/classes/examples/recreations/curvespace/CurvespaceComposition.class": "0684b905c4ea51e9f9816e30d7755b33ccfd0b0db28085ae6fa61d56d40a3fde",
+    ".work/curvespace-native2/pre-classes/PreprocessSketch.class": "2fc98864fe0e6ffe6e00204da0071fb0897d9799e8857c9b2f38887b444fa70d"
+  }
+}
