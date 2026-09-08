@@ -25,10 +25,10 @@ recreations; starter count is not original-sketch coverage.
 
 ## Start here
 
-Six operations now have core/native records on all four targets: grid, palette, gradient
-noise, gradient paths, circle filtering and seeded circle placement. Placement Android
-core evidence is API33 ART; its native Activity evidence is scoped separately. The other
-nine operations still require deferred target ports and workflow validation. Follow
+Seven operations now have core/native records on all four targets: grid, palette, gradient
+noise, gradient paths, circle filtering, seeded circle placement and quadrant partition. Placement Android
+core evidence is API33 ART; its native Activity evidence is scoped separately. Quadrant native integration is pushed at `d2bc673a`; its port distributions remain pending.
+The other eight operations still require deferred target ports and workflow validation. Follow
 dependency order for the next bounded batch; see
 `design/port-batch-01.md` and the frozen contracts, including all auxiliary fixture sections.
 

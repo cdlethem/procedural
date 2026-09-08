@@ -1,0 +1,227 @@
+{
+  "status": "completed-audit",
+  "scope": "Exact local-distribution APK baseline/HOME/resume UI audit; not acceptance",
+  "runner_sha256": "15f3c947a12beb5a9c2345dca1bf5b41f615e366754f2636570c66ad6d9b59a5",
+  "cases": [
+    {
+      "name": "fieldmarks",
+      "apk_sha256": "5f678b09245a8764c9c3353bc7f591a7f4d09bc1f14625e75ca32d5baac122e3",
+      "distribution_evidence": "evidence/distribution/android.json",
+      "distribution_evidence_sha256": "16c266a39572953c1353d2d0afb67916c5fba4b325c192ef7ffa87f302be0708",
+      "before": [
+        {
+          "text": "Length",
+          "enabled": true
+        },
+        {
+          "text": "Palette",
+          "enabled": true
+        },
+        {
+          "text": "Marks",
+          "enabled": true
+        },
+        {
+          "text": "Save PNG",
+          "enabled": true
+        }
+      ],
+      "after": [
+        {
+          "text": "Length",
+          "enabled": true
+        },
+        {
+          "text": "Palette",
+          "enabled": true
+        },
+        {
+          "text": "Marks",
+          "enabled": true
+        },
+        {
+          "text": "Save PNG",
+          "enabled": true
+        }
+      ],
+      "finding": "controls-recovered",
+      "artifact_sha256": {
+        "before.png": "0d4b2405f1c1da766c482a66dacf986f2063f4ce309277e7889d3e83688cb96f",
+        "after.png": "0d4b2405f1c1da766c482a66dacf986f2063f4ce309277e7889d3e83688cb96f",
+        "before.xml": "93cb7bd0f1b41f05210797e489b194b0f5d030d6b9aae299dbc42443ae1fd970",
+        "after.xml": "93cb7bd0f1b41f05210797e489b194b0f5d030d6b9aae299dbc42443ae1fd970",
+        "home.xml": "b0e0d051dc5a519af5cf856f6b32bb4e288dbaf2aa5eafcc54ca8ed287af6d35"
+      }
+    },
+    {
+      "name": "pathmarks",
+      "apk_sha256": "d182ce2cebe9c91c3134d44cb3e6a72e9142f4acb56aa35340bcb326caf0e0fd",
+      "distribution_evidence": "evidence/distribution/cp2-android.json",
+      "distribution_evidence_sha256": "8fe60e2a6ef2b288c153e0997ad9ce172600ed34d9141406f4d5f89070d44c38",
+      "before": [
+        {
+          "text": "Mode",
+          "enabled": true
+        },
+        {
+          "text": "Length",
+          "enabled": true
+        },
+        {
+          "text": "Palette",
+          "enabled": true
+        },
+        {
+          "text": "Count",
+          "enabled": true
+        },
+        {
+          "text": "Distance",
+          "enabled": true
+        },
+        {
+          "text": "Save PNG",
+          "enabled": true
+        }
+      ],
+      "after": [
+        {
+          "text": "Mode",
+          "enabled": true
+        },
+        {
+          "text": "Length",
+          "enabled": true
+        },
+        {
+          "text": "Palette",
+          "enabled": true
+        },
+        {
+          "text": "Count",
+          "enabled": true
+        },
+        {
+          "text": "Distance",
+          "enabled": true
+        },
+        {
+          "text": "Save PNG",
+          "enabled": true
+        }
+      ],
+      "finding": "controls-recovered",
+      "artifact_sha256": {
+        "before.png": "c2dac8163c7658188c4a16f94a9c304e466ed016afb93e71d11f3b16cb7832f6",
+        "after.png": "c2dac8163c7658188c4a16f94a9c304e466ed016afb93e71d11f3b16cb7832f6",
+        "before.xml": "8d82f38c308f898333bd3fbc30361e9a1941b81e23347e77e18be5be19d16dd2",
+        "after.xml": "8d82f38c308f898333bd3fbc30361e9a1941b81e23347e77e18be5be19d16dd2",
+        "home.xml": "6e8ae58116e53fbd094e9705212cfbf53b8256da0aade0754210dbf33a117027"
+      }
+    },
+    {
+      "name": "placementmarks",
+      "apk_sha256": "0c07602e0199a3f5140d8377b1c4d16ca34888322fba308055eb03e2d5456fdb",
+      "distribution_evidence": "evidence/distribution/cp3-android.json",
+      "distribution_evidence_sha256": "4ba601a26d314e26cfcad291ad32bc34388404b978aaa98c145badf3b926beef",
+      "before": [
+        {
+          "text": "Seed",
+          "enabled": true
+        },
+        {
+          "text": "Budget",
+          "enabled": true
+        },
+        {
+          "text": "Source",
+          "enabled": true
+        },
+        {
+          "text": "Separation",
+          "enabled": true
+        },
+        {
+          "text": "Min",
+          "enabled": true
+        },
+        {
+          "text": "Max",
+          "enabled": true
+        },
+        {
+          "text": "Motif",
+          "enabled": true
+        },
+        {
+          "text": "Palette",
+          "enabled": true
+        },
+        {
+          "text": "Save PNG",
+          "enabled": true
+        }
+      ],
+      "after": [
+        {
+          "text": "Seed",
+          "enabled": true
+        },
+        {
+          "text": "Budget",
+          "enabled": true
+        },
+        {
+          "text": "Source",
+          "enabled": true
+        },
+        {
+          "text": "Separation",
+          "enabled": true
+        },
+        {
+          "text": "Min",
+          "enabled": true
+        },
+        {
+          "text": "Max",
+          "enabled": true
+        },
+        {
+          "text": "Motif",
+          "enabled": true
+        },
+        {
+          "text": "Palette",
+          "enabled": true
+        },
+        {
+          "text": "Save PNG",
+          "enabled": true
+        }
+      ],
+      "finding": "controls-recovered",
+      "artifact_sha256": {
+        "before.png": "ea0c0f833dabe94d710ff8f5c6ddd6786cd305fea4f67b6bafb5911a78c5287a",
+        "after.png": "ea0c0f833dabe94d710ff8f5c6ddd6786cd305fea4f67b6bafb5911a78c5287a",
+        "before.xml": "0a5b0fbab9cf086063772358e7fe0016c7c17be1b56d8167157bcfeefd3de0de",
+        "after.xml": "0a5b0fbab9cf086063772358e7fe0016c7c17be1b56d8167157bcfeefd3de0de",
+        "home.xml": "75956710400a2828dae1b0d9f6204db18e084ae09ad6676612b306c1cdec8346"
+      }
+    }
+  ],
+  "api": "33",
+  "elapsed_seconds": 26.16134544200031,
+  "root_review": {
+    "reviewer": "root",
+    "decision": "No corrective source change justified for these three delivered APKs by this audit. RegionMarks fix remains scoped to RegionMarks.",
+    "observations": "Inspected all three after screenshots; before/after PNG and XML hashes match within each app. All expected controls enabled after HOME/return.",
+    "limitations": [
+      "One baseline HOME/return sequence per app on API33.",
+      "Activity instance identity was not instrumented; no retained-instance or general lifecycle acceptance claim.",
+      "Enabled-state observation does not independently exercise every control action."
+    ],
+    "artifacts": ".work/android-resume-audit/native1",
+    "acceptance_change": false
+  }
+}

@@ -1,5 +1,17 @@
 # Project state
 
+## Existing Android starter resume audit complete
+
+The exact delivered FieldMarks0.1, PathMarks0.2 and PlacementMarks0.3 APKs all recover
+their 4/6/9 enabled controls after HOME/return on API33. Root inspected all three
+window screenshots and verified runner, distribution and artifact hashes; before/after
+PNG and XML bytes match per app. Evidence: evidence/conformance/android-starter-resume-audit.json.
+No older Activity changes are justified by this audit. Activity identity was not
+instrumented, so this establishes UI recovery only, not retained-instance acceptance.
+The shared-lock session completed; no native rerun is needed. Next package quadrant
+ports using existing distribution infrastructure. Java remains15 operations/15 starters;
+seven operations have four-target core/native evidence, eight ports remain.
+
 ## Android RegionMarks workflow accepted; quadrant native ports complete
 
 Native3 passes the unchanged seven-state suite, real HOME/resume, ignored controls and
