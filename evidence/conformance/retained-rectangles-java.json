@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "inputs_before": {
+    "packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java": "24a1800f9a410763f82672bbb8cbbce9e9598298d2ca0651f3527085b4280cf3",
+    "fixtures/operations/retained-rectangle-cuts-2d.json": "94a83902ba3294115a70690de97e4d4c65515c672379cddfef58ee762bf4b1ba",
+    "catalog/operations/retained-rectangle-cuts-2d.json": "e8797eb0b44201752042091b568090d1355a9f2338ae27164b1671a505829e4c",
+    "design/operations/retained-rectangle-cuts-contract.md": "6e3d913adc27eabd08cdf128dda0e9aa25e789c85e1cd5a9797243dfeee8d4af",
+    "tools/run_retained_rectangles_java.py": "113fff4efda8aa6be2769169d70b79d9e0a76bfe505e9a25f70057ae539cec0f",
+    "tools/run_convex_polygon_java.py": "aebb786ecbbe6a78e6aa4dadff3d2f5da344ea508c5619bdf0f04b7011d251a9",
+    "tools/run_noise3d_java.py": "4b9ae3f269f239f74f585d7805e839e956db620b9324ee688023d181eae58256",
+    "tests/native/RetainedRectanglesNative.java": "adabcc172407b4d9f68308c76bc8240946ed2aa487a5256e571b626fd26640ed",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711"
+  },
+  "creation_cases": 5,
+  "command_cases": 9,
+  "commands": [
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "8",
+        "-d",
+        "/home/colin/dev/procedural/.work/retained-rectangles-root2/classes",
+        "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java",
+        "/home/colin/dev/procedural/.work/retained-rectangles-root2/RectVectors.java",
+        "/home/colin/dev/procedural/tests/native/RetainedRectanglesNative.java"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Note: /home/colin/dev/procedural/tests/native/RetainedRectanglesNative.java uses unchecked or unsafe operations.\nNote: Recompile with -Xlint:unchecked for details.\n"
+    },
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/retained-rectangles-root2/classes",
+        "RectVectors"
+      ],
+      "exit_code": 0,
+      "stdout": "creation and command fixtures passed\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/retained-rectangles-root2/classes",
+        "RetainedRectanglesNative"
+      ],
+      "exit_code": 0,
+      "stdout": "edits=1200 elapsed_ns=273510 checksum=3600.0\nedits=10000 elapsed_ns=1844580 checksum=30000.0\nretained_leaves=10001 elapsed_ns=2264322 area=10001.0\nnative ownership/carriers/precedence/identity limits passed\n",
+      "stderr": ""
+    }
+  ],
+  "inputs_after": {
+    "packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java": "24a1800f9a410763f82672bbb8cbbce9e9598298d2ca0651f3527085b4280cf3",
+    "fixtures/operations/retained-rectangle-cuts-2d.json": "94a83902ba3294115a70690de97e4d4c65515c672379cddfef58ee762bf4b1ba",
+    "catalog/operations/retained-rectangle-cuts-2d.json": "e8797eb0b44201752042091b568090d1355a9f2338ae27164b1671a505829e4c",
+    "design/operations/retained-rectangle-cuts-contract.md": "6e3d913adc27eabd08cdf128dda0e9aa25e789c85e1cd5a9797243dfeee8d4af",
+    "tools/run_retained_rectangles_java.py": "113fff4efda8aa6be2769169d70b79d9e0a76bfe505e9a25f70057ae539cec0f",
+    "tools/run_convex_polygon_java.py": "aebb786ecbbe6a78e6aa4dadff3d2f5da344ea508c5619bdf0f04b7011d251a9",
+    "tools/run_noise3d_java.py": "4b9ae3f269f239f74f585d7805e839e956db620b9324ee688023d181eae58256",
+    "tests/native/RetainedRectanglesNative.java": "adabcc172407b4d9f68308c76bc8240946ed2aa487a5256e571b626fd26640ed",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711"
+  },
+  "generated_sha256": "cec8a808b7ba0fabcd0409d7986af518caa05e218aeb5d9333e6c715b76bd533",
+  "compiled_sha256": {
+    "classes/RetainedRectanglesNative.class": "3570ca6c64ecacf4e5cfc4b6a28a4354df5f5d774321846433fbbc0167ccc58d",
+    "classes/RectVectors.class": "53dcb7b1bdaf32748994c2cafa91591069e6c75445025daf4917655661d66dbc",
+    "classes/org/procedurals/layout/RetainedRectangles2D.class": "924282ea2b74e03496f94789b2d8ab8859e6b04550df8fd2c0d3e3216e04e7dd",
+    "classes/org/procedurals/layout/RetainedRectangles2D$Leaf.class": "598d4b2ff930fab521162a0842174ecd0a680f3b9921fd7970b094a3463b4aeb",
+    "classes/org/procedurals/layout/RetainedRectangles2D$EditException.class": "d60573290aadab7d8ec6cce9372eed48185ce73e3496a740c2c25fcd47bb3da6",
+    "classes/org/procedurals/layout/RetainedRectangles2D$1.class": "85cdc0e8253cbfe8eccef2ff5410b276e7371c7da6c672d9d3bc3152f50acafb"
+  }
+}

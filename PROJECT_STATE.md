@@ -7,12 +7,14 @@ Actual layering/depth, two-frame sequences, selected single P3D and mismatch rej
 JAVA2D regression native tests and16 focused Python checks pass. Root fixed worker renderer
 constant comparisons/JSON closing and fixture color-stop domain. No native process live.
 
-CP21 contract/catalog/fixtures frozen; catalog check/reference generation passed. Core
-RetainedRectangles2D.java written by Terra and compiles --release8, but UNREVIEWED and not
-accepted. Next root review and command fixture/native ownership/limits execution; public
-workflow/packaging still pending. Generic checker covers only creation fixture cases;
-command_cases require actual executor, after_error/recovery assertions included.
-All workers finished. Do not confuse count24 catalog entries with23 accepted operations.
+CP21 Java core reviewed and accepted in evidence/conformance/retained-rectangles-java-root-review.json.
+Actual5 creation and9 command fixtures execute, including after-error/recovery checks.
+Native ownership/carriers/IDs/precedence/exhaustion and retained-growth workloads pass.
+Root owns accepted core; Terra retained_rect_core adapts public CutMarks PDE/docs and
+bounded native probe/profile preparation. No public workflow or catalog support accepted yet.
+Next inspect CutMarks/probe, execute real native edit/decoration/removal/reset/save and
+batch packaging with tooling. Generic catalog creation checks do not replace command runner.
+Public workflow worker active; no native render live. Do not confuse count24 catalog entries with23 accepted operations.
 Java0.23 remains23/23. Ports/Sol paused, Android draft preserved. Next batch queue in
  docs/java-buildout-batches.md; gallery123 images/26 groups.
 
