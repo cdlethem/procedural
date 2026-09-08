@@ -27,6 +27,7 @@ For combining them, see [composing drawings, partitions and image effects](compo
 | Pull an arrangement with pointer input | [PointerMarks](pointer-marks.md) | Supplied-target springs with replay and retained initial connectivity. |
 | Draw tapered bodies along a field | [BodyMarks](body-marks.md) | Backward field paths and headings, retained across body/centerline and taper edits. |
 | Give an arrangement spring motion | [SpringMarks](spring-marks.md) | Explicit target-driven stepping and replay. |
+| Build a ring with inner and outer walls | [AnnularMarks](annular-marks.md) | Retained annular triangles and normals; independent width, depth, facets and appearance. |
 | Build a three-dimensional form from a radius profile | [ProfileMarks](profile-marks.md) | Indexed ring surfaces and caps from an axial profile. |
 | Use letters as repeated marks along a path | [GlyphMarks](glyph-marks.md) | Path-based placement with an explicit font in the native example. |
 | Build clustered relief | [ReliefMarks](relief-marks.md) | A composition of existing subdivision and triangulation operations. |

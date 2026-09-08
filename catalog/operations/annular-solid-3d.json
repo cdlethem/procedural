@@ -1,0 +1,318 @@
+{
+  "id": "mesh.annular-solid-3d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "capability": "annular-mesh",
+  "description": "Generate an owned indexed-triangle closed annular solid from explicit inner and outer radii, two axial planes, angular subdivision, and a required face budget. It retains local positions, flat unit normals, face kinds, and angular-cell identity; it does not draw.",
+  "decision_cluster": "mesh.annular-solid-3d",
+  "capability_decision": "design/capabilities/annular-mesh-admission.md",
+  "design_review": "design/operations/annular-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2017/Generativos/aros#0",
+      "notes_path": "survey/out/2017/Generativos/aros/notes.md",
+      "note_sha256": "13aedb8ce1603129b8e07c1453f58dd7abc8f67a6bbc42e523fe6c4f4eaaa891",
+      "evidence_sha256": "f74b7777360b47f319a2b175634ef3518757e45c968ca3ace9831a7bb48eba51",
+      "relationship": "Capability dependency from 2017/Generativos/aros#0 for annular boundary geometry. Source colors, time, duplicate internal faces and winding/axial discrepancies remain outside; see annular-mesh admission and private study decision."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "outerRadius": {
+        "type": "number",
+        "description": "Finite caller local outer radius, strictly greater than innerRadius.",
+        "exclusiveMinimum": 0
+      },
+      "innerRadius": {
+        "type": "number",
+        "description": "Finite caller local hole radius, strictly positive and less than outerRadius.",
+        "exclusiveMinimum": 0
+      },
+      "bottomZ": {
+        "type": "number",
+        "description": "Finite caller local lower axial coordinate, strictly less than topZ."
+      },
+      "topZ": {
+        "type": "number",
+        "description": "Finite caller local upper axial coordinate, strictly greater than bottomZ."
+      },
+      "slices": {
+        "type": "integer",
+        "minimum": 3,
+        "maximum": 89478485,
+        "description": "Angular cell count. This floor(INT_MAX/24) ceiling is representational only, not a useful-resolution or allocation promise."
+      },
+      "maxFaces": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 715827881,
+        "description": "Required caller face-work limit. Its signed-int packed-representation ceiling is not a practical-work or artistic recommendation."
+      }
+    },
+    "required": [
+      "outerRadius",
+      "innerRadius",
+      "bottomZ",
+      "topZ",
+      "slices",
+      "maxFaces"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "positions": {
+        "type": "array",
+        "minItems": 12,
+        "maxItems": 357913940,
+        "items": {
+          "$ref": "#/$defs/triple"
+        },
+        "description": "Owned local [x,y,z] vertices in outerBottom, outerTop, innerBottom, innerTop ring order, each ring in increasing cell order."
+      },
+      "triangles": {
+        "type": "array",
+        "minItems": 24,
+        "maxItems": 715827880,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 357913939
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 357913939
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 357913939
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "normals": {
+        "type": "array",
+        "minItems": 24,
+        "maxItems": 715827880,
+        "items": {
+          "$ref": "#/$defs/triple"
+        },
+        "description": "Owned local flat unit [x,y,z] normals aligned one-to-one with triangles."
+      },
+      "faceKinds": {
+        "type": "array",
+        "minItems": 24,
+        "maxItems": 715827880,
+        "items": {
+          "type": "string",
+          "enum": [
+            "outer-wall",
+            "inner-wall",
+            "top-annulus",
+            "bottom-annulus"
+          ]
+        }
+      },
+      "cells": {
+        "type": "array",
+        "minItems": 24,
+        "maxItems": 715827880,
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 89478484
+        }
+      }
+    },
+    "required": [
+      "positions",
+      "triangles",
+      "normals",
+      "faceKinds",
+      "cells"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "triple": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 3,
+        "maxItems": 3
+      }
+    }
+  },
+  "fixture_format": "annular-solid-3d-output",
+  "output_invariants": "S=slices, V=positions.length=4*S and F=triangles.length=normals.length=faceKinds.length=cells.length=8*S, with F<=maxFaces. Every position and normal component is finite binary64 with completed zero canonical +0. Each triangle has three distinct valid position indices. Positions, triangles, normals and metadata are detached owned result data and contain no input configuration, RNG state, style, renderer, callback, preset, count alias, or serialized replay. cells are canonical angular topology identity; each cell has exactly two outer, two inner, two top, and two bottom triangles in that traversal order.",
+  "behavior": {
+    "input": "Input has exactly outerRadius,innerRadius,bottomZ,topZ,slices,maxFaces. Static validation order is outer passive record/exact keys; outerRadius; innerRadius and outerRadius>innerRadius>0; bottomZ; topZ and bottomZ<topZ; slices; maxFaces. Every accepted number is finite binary64 and never bool. Integral slices/maxFaces carriers validate their stated domains before narrowing. Normalize accepted zeros to +0. No default, sort, callback, contour interpolation, renderer, or later-field short circuit. Complete static validation precedes count capacity, allocation, topology, and normal arithmetic.",
+    "counts_and_layout": "Let S=slices. Compute F=8*S and V=4*S with exact wide integer arithmetic after static validation and before geometry allocation. FACE_LIMIT_EXCEEDED if F>maxFaces. S<=89478485=floor(2147483647/24) keeps positions packed as 3*V and topology/normal arrays within signed-int addressability; F<=715827880. maxFaces may be715827881 but cannot authorize more than the operation's representable F. These values do not guarantee allocation success, latency, or a useful artistic range. Host resource allocation failure returns no result and is never INVALID_INPUT or partial success. Core retained work/storage is O(S), indexed reads O(1), detached export O(V+F).",
+    "topology": "Local axis is Z. Angles increase from +X toward +Y. Set TAU=6.283185307179586 and evaluate theta=(TAU*cell)/slices in increasing cell order using named-target binary64 trigonometry. Position=(radius*cos(theta),radius*sin(theta),z). Append four shared rings in this order: outerBottom, outerTop, innerBottom, innerTop. Each ring appends S vertices in increasing cell order; no 2pi seam vertex is evaluated or stored. For each cell in increasing order, next=(cell+1) moduloS. Visit face kinds outer-wall, inner-wall, top-annulus, bottom-annulus. Their ordered quad perimeters are respectively (outerBottom/current,outerBottom/next,outerTop/next,outerTop/current), (innerBottom/current,innerTop/current,innerTop/next,innerBottom/next), (outerTop/current,outerTop/next,innerTop/next,innerTop/current), and (outerBottom/current,innerBottom/current,innerBottom/next,outerBottom/next). Every quad(a,b,c,d) appends triangles(a,b,c),(a,c,d). This gives outward wall normals, +Z top normals, -Z bottom normals, a welded angular seam, and no interior radial faces.",
+    "normals": "For each ordered triangle(a,b,c) after positions/topology are generated, calculate u=b-a and v=c-a componentwise in x/y/z order. Reject a nonfinite edge component with MESH_ARITHMETIC_INVALID stage edge. Let su=max(abs(ux),abs(uy),abs(uz)) and sv likewise; reject zero su or sv at stage edge_scale. Divide every u component directly by su and every v component directly by sv. Compute qRaw=cross(uScaled,vScaled) through separate binary64 multiply/subtract operations in x/y/z order, no FMA or reassociation. Let sn=max(abs(qRaw.x),abs(qRaw.y),abs(qRaw.z)); reject zero sn at stage cross_scale. Divide qRaw directly by sn, then length=sqrt((qx*qx+qy*qy)+qz*qz); normal=q/length componentwise. Canonicalize completed zeros. No epsilon, analytic normal, binary32 narrowing, smooth interpolation, or silent dropped face is permitted. Dynamic failure returns no result and carries faceIndex/stage. The selected algorithm does not claim all-finite robustness.",
+    "ownership": "Result stores packed owned primitive data and never retains caller record containers. Inputs are passive immutable interchange during eager generation. Result is immutable. vertexAt, triangleAt and normalAt return fresh triples; faceKindAt and cellAt are direct retained reads; toValues deep-copies exactly output_schema. vertexInto, triangleInto, and normalInto validate all access and destination conditions before three writes; failure leaves destination unchanged and successful writes leave slots outside the target triple unchanged. Materialization allocation failure does not corrupt retained data. No config serialization/replay, aliases, callbacks, iterator inputs, or draw side effect.",
+    "access": "vertexCount() and faceCount() return retained counts. vertexAt, triangleAt and normalAt return fresh three-element carriers; faceKindAt and cellAt return aligned scalar data. Index must be finite safe nonnegative integer<=9007199254740991 and never bool; integral floating indices are accepted by dynamic-language targets. INVALID_INDEX precedes INDEX_OUT_OF_RANGE, which precedes INVALID_OUTPUT for vertexInto, triangleInto and normalInto. Each Into offset is finite safe nonnegative integral and the destination provides three writable slots of its required native element type: binary64 for vertex/normal, integer for triangle. Rejected reads leave every destination slot unchanged; success leaves slots outside the target triple unchanged. Java uses typed required int offsets and returns void; wrong/unrepresentable typed Java calls are host-call errors. JavaScript returns its destination and Python returns None. Deferred target bindings follow native_forms and native_types; no support is claimed before implementation and native validation.",
+    "native_forms": "Java org.procedurals.mesh.AnnularMesh3D.generate(Object config) returns AnnularMesh3D with vertexCount(), faceCount(), vertexAt(Object or long), triangleAt(Object or long), normalAt(Object or long), faceKindAt(Object or long), cellAt(Object or long), vertexInto(Object or long,double[],int), triangleInto(Object or long,int[],int), normalInto(Object or long,double[],int), and toValues(). No typed factory, aliases, presets, callbacks, iterator forms, or configuration serializer are proposed initially. Deferred JavaScript bindings use the same camelCase member names; Python uses vertex_count, face_count, vertex_at, triangle_at, normal_at, face_kind_at, cell_at, vertex_into, triangle_into, normal_into and to_values. Factory export/module locations are deferred target packaging decisions, not extra operation semantics. All targets remain unimplemented and unvalidated.",
+    "native_types": "Follow the retained-operation passive-carrier convention: Java accepts Map outer records; accepted Java numeric carriers are only Byte, Short, Integer, Long, Float and Double, rejecting BigInteger, BigDecimal and custom Number before conversion. Java At/Into numeric index overloads accept Object or long as listed; Java vertexInto/normalInto require double[] and triangleInto requires int[]. Deferred JavaScript accepts passive Object/null-prototype records and ordinary Arrays; Python accepts exact builtin dict with int/float but never bool. JavaScript vertex/normal destinations are Float64Array or writable ordinary Array; triangle destinations are Int32Array or writable ordinary Array. Python vertex/normal destinations are exact builtin list or array(d); triangle destinations are exact builtin list. Destination validation must precede writes, including writable-slot checks for ordinary JavaScript Arrays. Host geometry/renderer carriers, class instances, active getters/proxies and custom dynamic-language mapping containers are outside portable interchange.",
+    "units": "Caller-defined local Cartesian distance units. Positions use [x,y,z] with +Z from bottomZ toward topZ and angular coordinates around Z from +X toward +Y. No canvas mapping, camera, object transform, clipping, style, palette, lighting setup, renderer, shader, texture, callback, preset, or drawing command is part of generation.",
+    "numerics": "Specified basic arithmetic is IEEE754 binary64 round-to-nearest ties-to-even with separate operation rounding. TAU is the stated binary64 literal. No FMA, reassociation, binary32 conversion, RNG, host global state, implicit epsilon, smoothing or coordinate clamp. Input and completed output zeros canonicalize to +0. Topology, counts, face metadata, indices and same-runtime binary64 output bits compare exactly. Cross-runtime fixture positions and normals compare with a separately generated nonnegative absolute allowance per component and case. Zero allowances require exact reference bits; exported zero is always positive zero. Bounds derive from reference sin/cos widened by two adjacent binary64 values each way (clipped to [-1,1], theta zero exact) and interval propagation through specified arithmetic. Inconclusive bounds block fixture acceptance; no global epsilon, relative fallback or automatic expansion. This selected-case engineering envelope is not a universal host-trigonometry guarantee. Near-collapse arbitrary inputs can differ in success/error across runtimes; registered error witnesses must match exact code, faceIndex and stage. Same-target/runtime repeated generation matches retained bits, without requiring Python reference bits for nonzero-allowance values.",
+    "environment": [
+      "IEEE754 binary64 basic arithmetic, round-to-nearest ties-to-even",
+      "Java/Android Math.sin, Math.cos and Math.sqrt; JavaScript Math.sin, Math.cos and Math.sqrt; Python math.sin, math.cos and math.sqrt. No implicit angle reduction."
+    ],
+    "complexity": "O(S) eager retained geometry and face-normal generation, O(1) indexed reads, and O(V+F) detached export. Avoid per-face object/vector allocation in generation or ordinary drawing loops. The representational ceiling is not a memory or throughput promise.",
+    "native_errors": "Static/access errors expose stable code. MESH_ARITHMETIC_INVALID also exposes faceIndex and stage, serialized as error_detail:{faceIndex,stage}. FACE_LIMIT_EXCEEDED has no partial result. Host allocation/resource failure remains a host resource exception and is not converted to validation error. No renderer/adapter result is produced by core generation."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed/nonfinite/out-of-domain static input, including wrong passive carrier/keys, bool numeric, outerRadius<=innerRadius, innerRadius<=0, bottomZ>=topZ, slices outside3..89478485, or maxFaces outside1..715827881.",
+    "FACE_LIMIT_EXCEEDED": "Complete static input is valid but exact preallocation face count F=8*slices exceeds required maxFaces. No geometry/output allocation or partial result occurs.",
+    "MESH_ARITHMETIC_INVALID": "Generated face has nonfinite edge component, zero edge scale, or zero rounded scaled cross. error_detail has faceIndex and edge,edge_scale,or cross_scale stage; no output is returned.",
+    "INVALID_INDEX": "Index is not a finite nonnegative safe integer.",
+    "INDEX_OUT_OF_RANGE": "Representable index is outside the requested retained array range.",
+    "INVALID_OUTPUT": "An Into destination/offset does not provide three writable slots of the required native element type."
+  },
+  "error_order": [
+    "INVALID_INPUT during complete static input validation",
+    "FACE_LIMIT_EXCEEDED after static validation and exact count calculation, before geometry allocation",
+    "MESH_ARITHMETIC_INVALID during canonical face-normal traversal after topology/positions are generated",
+    "INVALID_INDEX, INDEX_OUT_OF_RANGE, INVALID_OUTPUT during retained-result access in that order"
+  ],
+  "dynamic_error_stages": [
+    "edge",
+    "edge_scale",
+    "cross_scale"
+  ],
+  "parameters": {
+    "outerRadius": {
+      "unit": "caller local distance",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "aros motivates an outer annular boundary; the private study uses150 only as a discrete setting, not a default or range."
+    },
+    "innerRadius": {
+      "unit": "caller local hole radius",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "aros motivates a visible inner boundary; private110 and60 settings demonstrate a width edit, not a range."
+    },
+    "bottomZ": {
+      "unit": "caller local axial distance",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "The private study changes the paired axial endpoints from\u00b115 to\u00b145 for depth; no independent default or range is established."
+    },
+    "topZ": {
+      "unit": "caller local axial distance",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "The private study changes the paired axial endpoints from\u00b115 to\u00b145 for depth; no independent default or range is established."
+    },
+    "slices": {
+      "unit": "integer angular cells",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Private48 and12 settings demonstrate a facet edit.89478485 is representation-only."
+    },
+    "maxFaces": {
+      "unit": "retained triangle work limit",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit all-or-error resource boundary.715827881 is an index-representation ceiling, not an allocation guarantee or artistic range."
+    }
+  },
+  "design_divergences": [
+    "Independent owned indexed triangles and retained flat normals replace upstream immediate quad emission.",
+    "Closed outward-oriented annular topology deliberately omits upstream repeated radial interior faces and corrects inner-wall/axial discrepancies.",
+    "Explicit caller radii, axial planes, slices, and maxFaces replace source scene choices and resolution subdivision policy."
+  ],
+  "exclusions": [
+    "general closed-meridian, lathe, contour, self-intersection, or arbitrary-solid generation",
+    "RNG, time, noise, source global streams and source replay",
+    "smooth normals, creases, texture coordinates, colours, palette/style, lights, camera, transforms, P3D adapter, shader, clipping and drawing",
+    "configuration serialization/replay, aliases, count aliases and mutable mesh editing"
+  ],
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "signed-int packed primitive storage"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Draft Java-first operation; core generation has no renderer dependency."
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    }
+  },
+  "verification": {
+    "status": "26 shared cases reviewed for Java-first implementation; native implementation and access checks remain required.",
+    "fixture_obligations": [
+      "26 source-bound shared geometry, static/budget and arithmetic-failure cases",
+      "distinguishing inner-wall reversal, duplicate radial interior face, seam, budget, malformed-input, normal-arithmetic, ownership, and atomic indexed-read cases",
+      "native workflow evidence for width/depth/facet edits and retained colour/arrangement transfer"
+    ],
+    "numeric_policy": "design/operations/annular-fixture-plan.md"
+  },
+  "fixtures": "fixtures/operations/annular-solid-3d.json",
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "The private study supports boundary selection only. No source reproduction, public core, installed example, or target acceptance claim is made."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root accepts semantics and shared fixture plan for Java-first implementation; no implementation, native or distribution acceptance."
+  }
+}

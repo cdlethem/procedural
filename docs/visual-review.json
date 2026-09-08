@@ -2,8 +2,86 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "annular-marks",
+      "title": "AnnularMarks \u2014 public-core native candidate",
+      "category": "Native workflow accepted",
+      "description": "Width,depth,facets,color and retained arrangement; extracted package pending.",
+      "evidence": "evidence/workflows/annular-marks/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/annular-marks-native-root1/native/baseline.png",
+          "sha256": "964ea8e70bbc9259131d63a227ea4988126f4c90035136ae86ab1cb42c998362"
+        },
+        {
+          "label": "wide",
+          "path": ".work/annular-marks-native-root1/native/wide.png",
+          "sha256": "b2e762ba805eb3dbc5be82f9fc758c225cc46c9f26bd33ba66065b5cd2ee97e7"
+        },
+        {
+          "label": "deep",
+          "path": ".work/annular-marks-native-root1/native/deep.png",
+          "sha256": "23fe635458877b61003bced80b12b533a0eeab2b6e6a0df44f35915fbda46cad"
+        },
+        {
+          "label": "facets",
+          "path": ".work/annular-marks-native-root1/native/facets.png",
+          "sha256": "9ebe0c27e724dda383c20853aa397fc13fd44dc7aa1d1d9b950c8e9f78bb6131"
+        },
+        {
+          "label": "recolored",
+          "path": ".work/annular-marks-native-root1/native/recolored.png",
+          "sha256": "e0085b8f2b6f20518f5f44b601ec1ff8f3a5a1cf1290b22f5cf3be6619dc0996"
+        },
+        {
+          "label": "arrangement",
+          "path": ".work/annular-marks-native-root1/native/arrangement.png",
+          "sha256": "908ebd9c4d01525ba149a8ab65d9c9dbf22650befed62aec25b3915ec42f1780"
+        }
+      ]
+    },
+    {
+      "id": "annular-mesh-study",
+      "title": "Annular forms \u2014 private study",
+      "category": "Private study",
+      "description": "Root-reviewed P3D width, depth, facet, color and arrangement comparison; not shipped API.",
+      "evidence": "evidence/parameter-experiments/annular-mesh/decision.md",
+      "images": [
+        {
+          "label": "arrangement",
+          "path": ".work/annular-study/native-attempt1/arrangement.png",
+          "sha256": "60e190fd41ed1307c5d8974c6e66cc44cbdfb501b8aa37914454eaa546bc3f41"
+        },
+        {
+          "label": "wide",
+          "path": ".work/annular-study/native-attempt1/wide.png",
+          "sha256": "7ed0eee39561c3060a97d5689d65869c17ee494b816cff1686b7f04a337be7c3"
+        },
+        {
+          "label": "facets",
+          "path": ".work/annular-study/native-attempt1/facets.png",
+          "sha256": "4eec4712ffd433bbfecb1cc92d892f9983937af6500c269a2cdf32cf9921eb1f"
+        },
+        {
+          "label": "deep",
+          "path": ".work/annular-study/native-attempt1/deep.png",
+          "sha256": "1e4d77d81ca557e7d95d98fc6028f9d0052df3bdcd18410ac2f1a4124f24e52c"
+        },
+        {
+          "label": "recolor",
+          "path": ".work/annular-study/native-attempt1/recolor.png",
+          "sha256": "d5977c601f8e51642645fa20e1f0adb180ea86e8297bb503c27761db3af22f47"
+        },
+        {
+          "label": "baseline",
+          "path": ".work/annular-study/native-attempt1/baseline.png",
+          "sha256": "df2264ab82e03d343d896831ba27a821c0b6ae9491b9f5f659c327d821fadaac"
+        }
+      ]
+    },
+    {
       "id": "projection-marks",
-      "title": "Sequential deformation — ProjectionMarks",
+      "title": "Sequential deformation \u2014 ProjectionMarks",
       "category": "Accepted native workflow",
       "description": "Contour and line transfer with explicit strength/order; packaging pending.",
       "evidence": "evidence/workflows/projection-marks/root-review.json",
@@ -37,7 +115,7 @@
     },
     {
       "id": "disc-projection-study",
-      "title": "Sequential disc projection — private admission study",
+      "title": "Sequential disc projection \u2014 private admission study",
       "category": "Private study",
       "description": "Root inspected contour/line transfer and reversed order. Retained for contract design; no shipped operation.",
       "evidence": "evidence/parameter-experiments/disc-projection/root-review.json",
@@ -66,7 +144,7 @@
     },
     {
       "id": "blur-marks",
-      "title": "Retained image filtering — BlurMarks",
+      "title": "Retained image filtering \u2014 BlurMarks",
       "category": "Accepted native workflow",
       "description": "Root-reviewed directional blur and masked transition. Corrected retention probe passed; packaging pending.",
       "evidence": "evidence/workflows/blur-marks/root-review.json",
@@ -101,7 +179,7 @@
     {
       "id": "image-field-marks",
       "title": "Image attributes: sizes, visibility and color",
-      "category": "Accepted native Java workflow — packaging pending",
+      "category": "Accepted native Java workflow \u2014 packaging pending",
       "description": "One retained grid samples two images. Reuse attributes for size, threshold visibility and mark color.",
       "evidence": "evidence/workflows/image-field-marks/root-review.json",
       "images": [
@@ -130,7 +208,7 @@
     {
       "id": "placement-image-marks",
       "title": "Image placement: crop, fit, align and mask",
-      "category": "Accepted native Java workflow — packaging pending",
+      "category": "Accepted native Java workflow \u2014 packaging pending",
       "description": "Same source and frame: contain, cover, stretch, central crop, end alignment and shared ellipse mask.",
       "evidence": "evidence/workflows/placement-image-marks/root-review.json",
       "images": [
@@ -169,7 +247,7 @@
     {
       "id": "mask-marks",
       "title": "MaskMarks: shared shape masks for images and marks",
-      "category": "Accepted Java workflow — packaging pending",
+      "category": "Accepted Java workflow \u2014 packaging pending",
       "description": "One alpha mask reveals stripes or a generated picture, or blends the two. Opaque ellipse and half-alpha triangle; raw mask shown over gray.",
       "evidence": "evidence/workflows/mask-marks/root-review.json",
       "images": [
@@ -198,7 +276,7 @@
     {
       "id": "layer-marks",
       "title": "LayerMarks: regional content and crossfade",
-      "category": "Accepted Java workflow — packaging pending",
+      "category": "Accepted Java workflow \u2014 packaging pending",
       "description": "Global rings, local image snippets and fans, feathered cutouts, and true crossfade.",
       "evidence": "evidence/workflows/layer-marks/root-review.json",
       "images": [
@@ -227,7 +305,7 @@
     {
       "id": "partition-content-private",
       "title": "Partition content: images, marks and soft cutouts",
-      "category": "Private native study — public adapter pending",
+      "category": "Private native study \u2014 public adapter pending",
       "description": "Generated image source, global windows, local crops plus marks, and feathering to background; not crossfade.",
       "evidence": "evidence/parameter-experiments/spatial-composition/partition-visual-review.json",
       "images": [
@@ -256,7 +334,7 @@
     {
       "id": "spatial-composition-private",
       "title": "Spatial composition: private clipping study",
-      "category": "Private study — boundary semantics open",
+      "category": "Private study \u2014 boundary semantics open",
       "description": "Global windows, local placement and circle transfer; strict ellipse-edge pixel criterion remains unresolved.",
       "evidence": "evidence/parameter-experiments/spatial-composition/root-review.json",
       "images": [
@@ -303,7 +381,7 @@
     },
     {
       "id": "body-marks",
-      "title": "BodyMarks — retained backward spines",
+      "title": "BodyMarks \u2014 retained backward spines",
       "category": "Accepted workflow",
       "description": "Tapered bodies, profile edits, centerline transfer and explicit head motion; native accepted, packaging separate.",
       "evidence": "evidence/workflows/body-marks/root-review.json",
@@ -332,7 +410,7 @@
     },
     {
       "id": "pointer-marks",
-      "title": "PointerMarks — supplied targets and retained wire",
+      "title": "PointerMarks \u2014 supplied targets and retained wire",
       "category": "Accepted workflow",
       "description": "Native Java held-pointer pull, fixed connectivity transfer and release. Replay and actual run/pause validated; distribution pending.",
       "evidence": "evidence/workflows/pointer-marks/root-review.json",
@@ -361,7 +439,7 @@
     },
     {
       "id": "cut-marks",
-      "title": "CutMarks — edit retained regions",
+      "title": "CutMarks \u2014 edit retained regions",
       "category": "Accepted workflow",
       "description": "Native Java selected cut, retained decoration and explicit deletion; exact reset and cached save verified.",
       "evidence": "evidence/workflows/cut-marks/root-review.json",
@@ -390,7 +468,7 @@
     },
     {
       "id": "cp21-private",
-      "title": "Retained rectangle cuts — private study",
+      "title": "Retained rectangle cuts \u2014 private study",
       "category": "Private study",
       "description": "Private retained rectangles: aligned/staggered cuts, decoration, holes and a selected-cell split. Historical study preceding the accepted public core.",
       "evidence": "evidence/parameter-experiments/cp21-retained-cuts/decision.md",
@@ -424,7 +502,7 @@
     },
     {
       "id": "polygon-marks",
-      "title": "PolygonMarks — noncircular placement",
+      "title": "PolygonMarks \u2014 noncircular placement",
       "category": "Accepted workflow",
       "description": "Reviewed native Java workflow: thickness, recolor, diamond transfer and regeneration. Source-bundle packaging pending.",
       "evidence": "evidence/workflows/polygon-marks/root-review.json",
@@ -458,7 +536,7 @@
     },
     {
       "id": "cp20",
-      "title": "Outline packing — private study",
+      "title": "Outline packing \u2014 private study",
       "category": "Private study",
       "description": "Private design study of broad rounded outlines, thin dashes and angular tiles. The public PolygonMarks workflow is shown separately.",
       "evidence": "evidence/parameter-experiments/cp20-convex-placement/review.json",
@@ -482,7 +560,7 @@
     },
     {
       "id": "curvespace",
-      "title": "Curvespace — folded luminous lines",
+      "title": "Curvespace \u2014 folded luminous lines",
       "category": "Accepted recreation",
       "description": "Complete structural recreation with additive P2D drawing. Compare recoloring and regeneration.",
       "evidence": "evidence/reproductions/curvespace/root-review.json",
@@ -506,7 +584,7 @@
     },
     {
       "id": "cp19",
-      "title": "Radial folding — PullMarks",
+      "title": "Radial folding \u2014 PullMarks",
       "category": "Accepted workflow",
       "description": "Bend retained grids and contours with localized influences; edit reach, falloff and color.",
       "evidence": "evidence/reproductions/cp19-pull/root-review.json",
@@ -540,7 +618,7 @@
     },
     {
       "id": "cp18",
-      "title": "Depth fields — DepthMarks",
+      "title": "Depth fields \u2014 DepthMarks",
       "category": "Accepted workflow",
       "description": "Sample a 3D field on a plane or across a mesh; edit depth independently of color.",
       "evidence": "evidence/reproductions/cp18-p3d/root-review.json",
@@ -570,7 +648,7 @@
     },
     {
       "id": "cp17",
-      "title": "Irregular panels — PanelMarks",
+      "title": "Irregular panels \u2014 PanelMarks",
       "category": "Accepted workflow",
       "description": "Unequal rectangular subdivision with density, axis policy and decoration edits.",
       "evidence": "evidence/reproductions/cp17-java2d/root-review.json",
@@ -604,7 +682,7 @@
     },
     {
       "id": "cp16",
-      "title": "Smooth loops — LoopMarks",
+      "title": "Smooth loops \u2014 LoopMarks",
       "category": "Accepted workflow",
       "description": "Move curve controls, recolor retained geometry and transfer tiles into fans.",
       "evidence": "evidence/reproductions/cp16-java2d/root-review.json",
@@ -633,7 +711,7 @@
     },
     {
       "id": "cp15",
-      "title": "Noise bands — BandMarks",
+      "title": "Noise bands \u2014 BandMarks",
       "category": "Accepted workflow",
       "description": "Constrain wandering paths to noise bands, widen them and change the marks along each path.",
       "evidence": "evidence/reproductions/cp15-java2d/root-review.json",
@@ -662,7 +740,7 @@
     },
     {
       "id": "cp14",
-      "title": "Positioned color — RampMarks",
+      "title": "Positioned color \u2014 RampMarks",
       "category": "Accepted workflow",
       "description": "Shift color transitions and reuse the ramp in a radial composition.",
       "evidence": "evidence/reproductions/cp14-java2d/root-review.json",
@@ -691,7 +769,7 @@
     },
     {
       "id": "cp13",
-      "title": "Raster warping — WarpMarks",
+      "title": "Raster warping \u2014 WarpMarks",
       "category": "Accepted workflow",
       "description": "Compare an unwarped image, stronger displacement, a sinusoidal field and stripes.",
       "evidence": "evidence/reproductions/cp13-java2d/root-review.json",
@@ -725,7 +803,7 @@
     },
     {
       "id": "r3",
-      "title": "Parapara — landscape",
+      "title": "Parapara \u2014 landscape",
       "category": "Accepted recreation",
       "description": "Structural recreation: mountain and landscape layers, color and regeneration.",
       "evidence": "evidence/reproductions/r3-p2d/root-review.json",
@@ -754,7 +832,7 @@
     },
     {
       "id": "r2",
-      "title": "ciscis002 — city",
+      "title": "ciscis002 \u2014 city",
       "category": "Accepted recreation",
       "description": "Structural recreation: clustered city geometry, height and palette edits.",
       "evidence": "evidence/reproductions/r2-p3d/root-review.json",
@@ -783,7 +861,7 @@
     },
     {
       "id": "r1",
-      "title": "Momito — relief",
+      "title": "Momito \u2014 relief",
       "category": "Accepted recreation",
       "description": "Structural recreation: colored raised forms with height and seed edits.",
       "evidence": "evidence/reproductions/r1-p3d/root-review.json",
@@ -812,7 +890,7 @@
     },
     {
       "id": "line-pool",
-      "title": "Cut branches — CutBranchMarks",
+      "title": "Cut branches \u2014 CutBranchMarks",
       "category": "Accepted workflow",
       "description": "Grow branches by cutting into a retained line pool; compare density, angle and drawing style.",
       "evidence": "evidence/reproductions/line-pool-p2d/edits-review.json",
@@ -846,7 +924,7 @@
     },
     {
       "id": "cp11",
-      "title": "Occupied paths — LatticeMarks",
+      "title": "Occupied paths \u2014 LatticeMarks",
       "category": "Accepted workflow",
       "description": "Walk an occupied orthogonal lattice; change path length, width and mark style.",
       "evidence": "evidence/reproductions/cp11-java2d/root-review.json",
@@ -885,7 +963,7 @@
     },
     {
       "id": "cp10",
-      "title": "Spring motion — SpringMarks",
+      "title": "Spring motion \u2014 SpringMarks",
       "category": "Accepted workflow",
       "description": "Selected animation ticks and controls for target-driven spring motion.",
       "evidence": "evidence/reproductions/cp10-java2d/root-review.json",
@@ -925,7 +1003,7 @@
     },
     {
       "id": "cp9",
-      "title": "Facets — FacetMarks",
+      "title": "Facets \u2014 FacetMarks",
       "category": "Accepted workflow",
       "description": "Triangulate supplied sites; compare wire, grain and cell-derived layouts.",
       "evidence": "evidence/reproductions/cp9-java2d/root-review.json",
@@ -964,7 +1042,7 @@
     },
     {
       "id": "cp8",
-      "title": "Glyph placement — GlyphMarks",
+      "title": "Glyph placement \u2014 GlyphMarks",
       "category": "Accepted workflow",
       "description": "Reuse placements with letters and dots; adjust spacing and field scale.",
       "evidence": "evidence/reproductions/cp8-java2d/root-review.json",
@@ -1003,7 +1081,7 @@
     },
     {
       "id": "cp7",
-      "title": "Radial profiles — ProfileMarks",
+      "title": "Radial profiles \u2014 ProfileMarks",
       "category": "Accepted workflow",
       "description": "P3D forms from supplied profiles, including open ends and multiple forms.",
       "evidence": "evidence/reproductions/cp7-p3d-savefix/root-review.json",
@@ -1043,7 +1121,7 @@
     },
     {
       "id": "cp6",
-      "title": "Endpoint branches — BranchMarks",
+      "title": "Endpoint branches \u2014 BranchMarks",
       "category": "Accepted workflow",
       "description": "Recursive endpoint trees, branching edits and a forest composition.",
       "evidence": "evidence/reproductions/cp6-java2d/root-review.json",
@@ -1082,7 +1160,7 @@
     },
     {
       "id": "cp5",
-      "title": "Triangle grain — GrainMarks",
+      "title": "Triangle grain \u2014 GrainMarks",
       "category": "Accepted workflow",
       "description": "Place grain within triangles; compare sampling, density and stroke transfer.",
       "evidence": "evidence/reproductions/cp5-java2d/root-review.json",
@@ -1121,7 +1199,7 @@
     },
     {
       "id": "cp4",
-      "title": "Quadrant regions — RegionMarks",
+      "title": "Quadrant regions \u2014 RegionMarks",
       "category": "Accepted workflow",
       "description": "Recursive equal-quadrant layouts with retained cells and grid transfer.",
       "evidence": "evidence/reproductions/cp4-java2d/root-review.json",
@@ -1145,7 +1223,7 @@
     },
     {
       "id": "cp3",
-      "title": "Circle spacing — PlacementMarks",
+      "title": "Circle spacing \u2014 PlacementMarks",
       "category": "Accepted workflow",
       "description": "Keep room between variable-size circular proposals and reuse accepted placements.",
       "evidence": "evidence/reproductions/cp3-java2d/root-review.json",
@@ -1189,7 +1267,7 @@
     },
     {
       "id": "cp2",
-      "title": "Integrated paths — PathMarks",
+      "title": "Integrated paths \u2014 PathMarks",
       "category": "Accepted workflow",
       "description": "Retained field-driven movement, path drawing and perpendicular marks.",
       "evidence": "evidence/reproductions/cp2-java2d/review.json",
@@ -1213,7 +1291,7 @@
     },
     {
       "id": "cp1",
-      "title": "Field-oriented marks — early study",
+      "title": "Field-oriented marks \u2014 early study",
       "category": "Early study",
       "description": "Early JAVA2D design outputs showing mark length, palette and bar substitution.",
       "evidence": "evidence/reproductions/cp1-java2d-adapter/decision.md",

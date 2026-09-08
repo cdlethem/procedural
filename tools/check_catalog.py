@@ -28,6 +28,7 @@ PARTITION_OUTPUT = 'partition-output'
 TRIANGLE_POINTS_OUTPUT = 'triangle-points-output'
 BRANCH_TREE_OUTPUT = 'branch-tree-output'
 RADIAL_PROFILE_OUTPUT = 'radial-profile-surface-output'
+ANNULAR_SOLID_OUTPUT = 'annular-solid-3d-output'
 DELAUNAY_OUTPUT = 'delaunay-output'
 SPRING_OUTPUT = 'target-spring-state-output'
 CIRCLE_PLACEMENT_IDS = {
@@ -1578,7 +1579,7 @@ def check(root: Path = ROOT, *, write_reference: bool = False) -> list[str]:
         input_validator = Draft202012Validator(op['input_schema'])
         output_validator = Draft202012Validator(op['output_schema'])
         fixture_format = op.get('fixture_format')
-        if fixture_format is not None and fixture_format not in {EXACT_JSON_OUTPUT, MATERIALIZED_OUTPUT, CIRCLE_PLACEMENT_OUTPUT, PARTITION_OUTPUT, TRIANGLE_POINTS_OUTPUT, BRANCH_TREE_OUTPUT, RADIAL_PROFILE_OUTPUT, DELAUNAY_OUTPUT, SPRING_OUTPUT}:
+        if fixture_format is not None and fixture_format not in {EXACT_JSON_OUTPUT, MATERIALIZED_OUTPUT, CIRCLE_PLACEMENT_OUTPUT, PARTITION_OUTPUT, TRIANGLE_POINTS_OUTPUT, BRANCH_TREE_OUTPUT, RADIAL_PROFILE_OUTPUT, ANNULAR_SOLID_OUTPUT, DELAUNAY_OUTPUT, SPRING_OUTPUT}:
             errors.append(f'{prefix}: unknown fixture_format {fixture_format!r}')
         if fixture_format == BRANCH_TREE_OUTPUT:
             from tools.check_branch_fixtures import validate as validate_branch_fixtures
@@ -1588,6 +1589,9 @@ def check(root: Path = ROOT, *, write_reference: bool = False) -> list[str]:
         if fixture_format == RADIAL_PROFILE_OUTPUT:
             from tools.check_profile_fixtures import validate as validate_profile_fixtures
             errors.extend(validate_profile_fixtures(root, prefix, op, fixture))
+        if fixture_format == ANNULAR_SOLID_OUTPUT:
+            from tools.check_annular_fixtures import validate as validate_annular_fixtures
+            errors.extend(validate_annular_fixtures(root, prefix, op, fixture))
         if fixture_format == DELAUNAY_OUTPUT:
             from tools.check_delaunay_fixtures import validate as validate_delaunay_fixtures
             errors.extend(validate_delaunay_fixtures(root, prefix, op, fixture))
@@ -1650,7 +1654,7 @@ def check(root: Path = ROOT, *, write_reference: bool = False) -> list[str]:
         if triangle_points_output:
             errors.extend(validate_triangle_cross_checks(root, prefix, op, fixture))
         for case in cases:
-            if fixture_format in {BRANCH_TREE_OUTPUT, RADIAL_PROFILE_OUTPUT, DELAUNAY_OUTPUT, SPRING_OUTPUT}:
+            if fixture_format in {BRANCH_TREE_OUTPUT, RADIAL_PROFILE_OUTPUT, ANNULAR_SOLID_OUTPUT, DELAUNAY_OUTPUT, SPRING_OUTPUT}:
                 # The dedicated validator handles complete cases and retained topology.
                 continue
             if not isinstance(case, dict):

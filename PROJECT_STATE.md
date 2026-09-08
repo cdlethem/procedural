@@ -1,5 +1,125 @@
 # Project state
 
+## Java0.31 distribution accepted locally — CP28
+
+Root accepted cp28-java-review.json:29operations,33workflows,35source pages;423members.
+Archive SHA256 ade77c4fe5ef05a1653a90cffd0e15b9d5fd39d43643c29f08d9cde3e537a075.
+All33 extracted PDEs compile;11-state AnnularMarks passes with correct core origin and
+all PNGs byte-identical to reviewed native candidate. Source/extracted hashes verified;
+118 prior core and15adapter classes unchanged. Catalog/9package tests pass.775Javadoc
+warnings remain. Next review/stage coherent milestone, fetch and push to main, preserve
+Android draft. Further documentation completion remains; full Java goal stays active.
+
+## Annular native workflow accepted; distribution remains
+
+Root reviewed stable core topology/numerics/access and actual11-state P3D output at
+.work/annular-marks-native-root1. Verified source/artifact/image hashes and inspected
+six distinct views. evidence/workflows/annular-marks/root-review.json accepts native
+workflow only. Performance3/48/10000 slices measured: example~0.04–0.06ms,stress~2.5–2.6ms
+and3840080bytes; stable checksums. No new render needed before packaging changes.
+Next finalize core conformance review and support attestation, integrate source manifest
+and extracted AnnularMarks consumer, docs and reviewed checkpoint. Shipped count28.
+
+## Root finds remaining annular access-test gaps
+
+During Terra cleanup, root read actual tests and requested normalInto success/failure
+atomicity, valid-index negative offset, unsafe Object index, nested numeric export
+mutation and detached normal/triangle At checks. Worker faceKinds-only export check
+was insufficient for the promised ownership scope. Workload XOR is not repeated-run
+stability evidence; root dedicated performance diagnostic handles explicit equality.
+Await final three-file worker result before native run; no acceptance weakened.
+
+## Annular performance diagnostic prepared
+
+Root added AnnularMeshPerformance.java using existing ThreadMXBean measurement pattern:
+slices3/48/10000, two warmups, three measurements, retained geometry/normal/topology
+checksums. Input construction and checksum allocation excluded from generation measurement.
+Await final core cleanup before executing/binding measurements; no results claimed yet.
+
+## Annular native probe compiles; core review cleanup delegated
+
+Root authored tests/native/AnnularMarksProbe.java and reused DepthMarks runner route as
+tools/run_annular_marks_java.py. Actual PDE/preprocessor/core/probe compile passes in
+.work/annular-marks-compile-root1, no rendering yet. Probe enforces11states,7builds,
+geometry identity/hash reuse, exact restored pixels and cached save/core origin.
+Terra returned26 pure cases passing but compressed core/tests/runner omitted required
+readability and complete runtime bindings. Root sent three-file cleanup followup; inspect
+agent before reviewing final source. Public native rendering awaits reviewed stable core.
+
+## Annular artist example authored against frozen API
+
+Root added candidate AnnularMarks.pde, docs/annular-marks.md and native acceptance plan.
+Width/depth/facet keys rebuild; color and arrangement reuse mesh; cached S save; reset
+rebuilds only when geometry inputs differ. Native sequence wwddffccm0s expects11 frames
+and7 builds, plus exact cached save. Not yet compiled or rendered against public core.
+Terra still owns core/native pure tests/runner; next inspect its actual completion and
+prepare native probe via established P3D harness. No public support/packaging updates.
+
+## Annular contract frozen; Java implementation delegated
+
+Root accepted design/operations/annular-contract-review.md, froze reviewed catalog and
+26 shared fixtures, and regenerated reference. Full catalog checker passes. Annular
+validator rejects reversed triangle, negative allowance and stale hash; root caught
+and Terra fixed inherited profile fallback path. Terra /root/annular_study now owns
+AnnularMesh3D.java, tests/native/AnnularMeshNative.java, tools/run_annular_mesh_java.py
+per annular-implementation-brief.md. No native rendering or acceptance delegated.
+Next root native workflow/performance and review complete worker code/output; public
+core remains unimplemented/unvalidated in support records. Shipped count remains28.
+
+## Annular shared draft fixtures integrated; checker work running
+
+Root fixed draft contract null review path and noncandidate provenance entry; positive
+radius schema bounds explicit. design/operations/annular-contract-review.md is pending.
+Generated fixtures/operations/annular-solid-3d.json (26cases,review_pending), bound to
+current catalog and numeric source files. Both JSON schemas and six decoded success
+outputs validate. Terra /root/annular_study owns tools/check_annular_fixtures.py plus
+annular dispatch in tools/check_catalog.py; inspect agent and files before continuing.
+Catalog remains draft, so aggregate acceptance is intentionally not green yet. Next
+checker mutation review, final bindings and explicit root contract acceptance; no Java
+production started. Do not overwrite worker checker edits.
+
+## Annular draft expanded to26 cases
+
+Root added18 static/budget cases and2 exact first-face arithmetic witnesses to the six
+success cases; private generator passes. Uses existing scaled-normal oracle and interval
+functions with source hashes. design/operations/annular-fixture-plan.md records remaining
+Java ownership/index/atomic-write checks and no-skipped-dispatch requirement.
+Terra catalog draft received; root aligned face-kind enum with fixtures (outer-wall,
+inner-wall, top-annulus, bottom-annulus). Full root schema/semantic review remains next. No shared fixture acceptance or production implementation yet.
+
+## Annular contract draft and numeric fixtures in progress
+
+Terra /root/annular_study assigned only catalog/operations/annular-solid-3d.json draft,
+using frozen root field/topology brief; no production or acceptance authority. Root
+authored tools/diagnostics/annular/build_fixture_draft.py, reusing existing CP7 interval
+arithmetic. Six success cases generated in .work/annular-study/fixture-draft.json,
+including minimum3/four slices and four study geometries; edge orientation and Euler
+checks pass. These are private drafts, not catalog fixtures accepted for implementation.
+Next inspect worker contract, add invalid/numeric-error and indexed-access obligations,
+then validate catalog/fixtures and root review. Contract slice ceiling89478485 ensures
+24*S packed face components fit signed-int storage; face count8*S, vertices4*S.
+
+## Annular architecture admitted; prerequisite check passes
+
+Root wrote design/capabilities/annular-mesh-admission.md and added capability-dependency
+cluster mesh.annular-solid-3d without changing candidate ownership. Source remainder
+accounts for composition and intentionally excluded internal faces/winding artifacts.
+check_phase2_design.py --contract-cluster mesh.annular-solid-3d passes. An initial
+invalid remainder label was corrected to the established out_of_scope vocabulary.
+This passes architecture prerequisites only; catalog contract/fixtures still pending.
+Next reuse radial-profile normal arithmetic and indexed-access terminology while freezing
+annular counts, ordering, ownership, validation and numeric failure rules. No production
+code authorized yet; shipped Java remains28 operations/32 workflows.
+
+## Annular study reviewed; contract preparation next
+
+Terra pure washer corrected and checked; root authored AnnularMeshView and inspected
+all six P3D views from .work/annular-study/native-attempt1. Root selected minimal annular
+mesh for contract preparation; decision/evidence in evidence/parameter-experiments/annular-mesh/.
+No public admission or new shipped count. Next contract/ledger prerequisites and numeric
+semantics, then bounded implementation. Native warnings preserved; no repeat render needed.
+Discovery/family checkpoint pushed as9a60a122; Android draft untouched.
+
 ## Annular private study in flight
 
 Root registered evidence/parameter-experiments/annular-mesh/experiment.json: six bounded

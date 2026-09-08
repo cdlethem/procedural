@@ -1,6 +1,6 @@
 {
-  "version": "0.30.0",
-  "processing_version": 30,
+  "version": "0.31.0",
+  "processing_version": 31,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -33,7 +33,8 @@
     "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4",
     "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
     "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e2254766043ed5f5d7da2f13d92090b1c457deb098774267dcfb219982661d88",
-    "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c"
+    "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c",
+    "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java": "784ba20b7b83e6ce7f7240b045eb8f2611395493e7aea273b003c58de3b8b5aa"
   },
   "examples": {
     "procedurals/examples/BranchMarks/BranchComposition.java": {
@@ -235,9 +236,14 @@
     "procedurals/examples/ProjectionMarks/ProjectionMarks.pde": {
       "source": "packages/java-processing/examples/ProjectionMarks/ProjectionMarks.pde",
       "sha256": "1ee3d6daaf6a57e50af86fcc2846ded9b6a40cff79160ed0178dad2d3ba92d56"
+    },
+    "procedurals/examples/AnnularMarks/AnnularMarks.pde": {
+      "source": "packages/java-processing/examples/AnnularMarks/AnnularMarks.pde",
+      "sha256": "1de55e61678895841783111a66027985e0fad78e9945fe01ba23e989da6fc183"
     }
   },
   "operation_files": [
+    "annular-solid-3d.json",
     "bilinear-raster-remap.json",
     "binary-cell-partition-2d.json",
     "closed-spline-2d.json",

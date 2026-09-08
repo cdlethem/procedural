@@ -2397,6 +2397,49 @@
           }
         ]
       }
+    },
+    {
+      "id": "mesh.annular-solid-3d",
+      "status": "reviewed_provisional",
+      "reason": "Closed annular geometry removes inner-wall and closing-face topology work; width/depth/facet edits and retained consumers demonstrated.",
+      "admission_kind": "capability_dependency",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Explicit inner/outer radii, bottom/top Z, angular slices and face budget.",
+        "outputs": "Owned indexed positions, triangles, flat normals, face-kind and angular-cell identity.",
+        "invariants": "Closed outward-oriented annular solid; four shared vertex rings, welded seam, no internal radial faces or implicit renderer state.",
+        "open_questions": [],
+        "review": "design/capabilities/annular-mesh-admission.md",
+        "reviewer": "root"
+      },
+      "dependency_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/annular-mesh-admission.md",
+        "rationale": "Independently specify the reusable annular boundary from the composite source, correcting duplicate internal faces and winding.",
+        "motivating_candidates": [
+          {
+            "candidate_id": "2017/Generativos/aros#0",
+            "source_sha256": "13aedb8ce1603129b8e07c1453f58dd7abc8f67a6bbc42e523fe6c4f4eaaa891",
+            "evidence_sha256": "f74b7777360b47f319a2b175634ef3518757e45c968ca3ace9831a7bb48eba51",
+            "dependency": "Closed annular solid with distinct inner/outer walls and axial closing faces.",
+            "remainder": [
+              {
+                "component": "Noise-derived colors, lights, camera and wall-clock rotation",
+                "disposition": "recipe",
+                "reason": "Independent appearance and scene behavior remain outside retained mesh generation."
+              },
+              {
+                "component": "Repeated internal faces and original winding/height discrepancies",
+                "disposition": "out_of_scope",
+                "reason": "Source artifacts deliberately not reproduced by the independently specified closed solid."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "records": {

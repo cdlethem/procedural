@@ -4,6 +4,86 @@
 
 Contracts describe intended behavior. Implementation and native/reproduction evidence are separate.
 
+## mesh.annular-solid-3d (0.1.0)
+
+Generate an owned indexed-triangle closed annular solid from explicit inner and outer radii, two axial planes, angular subdivision, and a required face budget. It retains local positions, flat unit normals, face kinds, and angular-cell identity; it does not draw.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "outerRadius": {
+      "type": "number",
+      "description": "Finite caller local outer radius, strictly greater than innerRadius.",
+      "exclusiveMinimum": 0
+    },
+    "innerRadius": {
+      "type": "number",
+      "description": "Finite caller local hole radius, strictly positive and less than outerRadius.",
+      "exclusiveMinimum": 0
+    },
+    "bottomZ": {
+      "type": "number",
+      "description": "Finite caller local lower axial coordinate, strictly less than topZ."
+    },
+    "topZ": {
+      "type": "number",
+      "description": "Finite caller local upper axial coordinate, strictly greater than bottomZ."
+    },
+    "slices": {
+      "type": "integer",
+      "minimum": 3,
+      "maximum": 89478485,
+      "description": "Angular cell count. This floor(INT_MAX/24) ceiling is representational only, not a useful-resolution or allocation promise."
+    },
+    "maxFaces": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 715827881,
+      "description": "Required caller face-work limit. Its signed-int packed-representation ceiling is not a practical-work or artistic recommendation."
+    }
+  },
+  "required": [
+    "outerRadius",
+    "innerRadius",
+    "bottomZ",
+    "topZ",
+    "slices",
+    "maxFaces"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| outerRadius | caller local distance | null | null | aros motivates an outer annular boundary; the private study uses150 only as a discrete setting, not a default or range. |
+| innerRadius | caller local hole radius | null | null | aros motivates a visible inner boundary; private110 and60 settings demonstrate a width edit, not a range. |
+| bottomZ | caller local axial distance | null | null | The private study changes the paired axial endpoints from±15 to±45 for depth; no independent default or range is established. |
+| topZ | caller local axial distance | null | null | The private study changes the paired axial endpoints from±15 to±45 for depth; no independent default or range is established. |
+| slices | integer angular cells | null | null | Private48 and12 settings demonstrate a facet edit.89478485 is representation-only. |
+| maxFaces | retained triangle work limit | null | null | Explicit all-or-error resource boundary.715827881 is an index-representation ceiling, not an allocation guarantee or artistic range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/annular-mesh-catalog-review.json) | [validated-scoped](../../evidence/conformance/annular-mesh-catalog-review.json) | unvalidated | [review](../../evidence/conformance/annular-mesh-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2017/Generativos/aros#0`](../../survey/out/2017/Generativos/aros/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/annular-solid-3d.json).
+
 ## raster.bilinear-remap-2d (0.1.0)
 
 Remap an owned packed ARGB8 raster through explicit source coordinates using edge-clamped bilinear interpolation.

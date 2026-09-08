@@ -1,0 +1,19 @@
+{
+  "status": "accepted-native-workflow",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Public AnnularMesh3D candidate P3D workflow only; distribution and non-Java support not accepted.",
+  "evidence_sha256": {
+    "evidence/workflows/annular-marks/native.json": "6051acaf736c3355b3e7f06a9290a9f74f916d4a5f7deff1e135efce7c632eab"
+  },
+  "verified": [
+    "11 actual queued states;7 mesh builds; appearance/arrangement preserve retained geometry identity and values.",
+    "Exact restored pixels and cached save after quiet interval; actual core JAR origin, P3D and density1 asserted.",
+    "Root inspected baseline,wide,deep,facets,recolored,arrangement views and verified source/artifact/image hashes."
+  ],
+  "limits": [
+    "Private study and native workflow are not whole-aros reproduction.",
+    "Desktop Xvfb diagnostics preserved in native evidence; no GPU performance claim.",
+    "Source-bundle integration and extracted consumer still pending."
+  ]
+}

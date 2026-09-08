@@ -1,0 +1,71 @@
+{
+  "status": "rendered-awaiting-root-review",
+  "input_sha256": {
+    "tools/diagnostics/annular/AnnularMeshView.java": "a0fbf1d9b928b7ff8e3869fee67d9bc238aed1f91c0b1018bd071b6dad2bc3ee",
+    "tools/diagnostics/annular/AnnularMeshStudy.java": "93458180524c3266242cf6e196f1af2286e9d1d64b43b4a030f51d2730c7b3b1",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar": "34c919bc6073c2d9e73cbe7558c4e9de6b5c58146f3658e2bcc5f23ec3fccc9f",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar": "465bbc8d410b872a76b5b901cdb9c2c07905edd5e61a7120dc6a4d007880ec2f",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar": "3d0ed2674059fc207166ce1351de8d30e0b6102af12ca8b84fbf1bc3f246038a",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar": "d500a38dedcbd6dfa89c5ae943a22d1051b1dbf1502f8544337bbe57d118f2c5",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "runs": [
+    {
+      "command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "8",
+        "-cp",
+        "/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar",
+        "-d",
+        "/home/colin/dev/procedural/.work/annular-study/native-attempt1/classes",
+        "/home/colin/dev/procedural/tools/diagnostics/annular/AnnularMeshView.java",
+        "/home/colin/dev/procedural/tools/diagnostics/annular/AnnularMeshStudy.java"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/annular-study/native-attempt1/classes",
+        "AnnularMeshStudy"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\":\"passed\",\"flatNormals\":true,\"retainedGeometry\":true,\"consumers\":{\"color\":\"face-kind palette\",\"arrangement\":\"reuse one indexed mesh at multiple transforms\"},\"cases\":[{\"id\":\"baseline\",\"vertices\":192,\"triangles\":384,\"edges\":576,\"euler\":0},{\"id\":\"innerRadius60\",\"vertices\":192,\"triangles\":384,\"edges\":576,\"euler\":0},{\"id\":\"depthPlusMinus45\",\"vertices\":192,\"triangles\":384,\"edges\":576,\"euler\":0},{\"id\":\"slices12\",\"vertices\":48,\"triangles\":96,\"edges\":144,\"euler\":0}]}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "tools/with_native_render_lock.py",
+        "--timeout",
+        "90",
+        "--",
+        "xvfb-run",
+        "-a",
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/annular-study/native-attempt1/classes:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar",
+        "AnnularMeshView",
+        "/home/colin/dev/procedural/.work/annular-study/native-attempt1"
+      ],
+      "returncode": 0,
+      "stdout": "saved baseline\nsaved wide\nsaved deep\nsaved facets\nsaved recolor\nsaved arrangement\n",
+      "stderr": "libEGL warning: DRI3 error: Could not get DRI3 device\nlibEGL warning: Ensure your X server supports DRI3 to get accelerated rendering\nX11Util.Display: Shutdown (JVM shutdown: true, open (no close attempt): 3/3, reusable (open, marked uncloseable): 0, pending (open in creation order): 3)\nX11Util: Open X11 Display Connections: 3\nX11Util: Open[0]: NamedX11Display[:112, 0x7dc764701be0, refCount 1, unCloseable false]\nX11Util: Open[1]: NamedX11Display[:112, 0x7dc3ac001080, refCount 1, unCloseable false]\nX11Util: Open[2]: NamedX11Display[:112, 0x7dc3ac012150, refCount 1, unCloseable false]\n"
+    }
+  ],
+  "images": {
+    "arrangement.png": "60e190fd41ed1307c5d8974c6e66cc44cbdfb501b8aa37914454eaa546bc3f41",
+    "wide.png": "7ed0eee39561c3060a97d5689d65869c17ee494b816cff1686b7f04a337be7c3",
+    "facets.png": "4eec4712ffd433bbfecb1cc92d892f9983937af6500c269a2cdf32cf9921eb1f",
+    "deep.png": "1e4d77d81ca557e7d95d98fc6028f9d0052df3bdcd18410ac2f1a4124f24e52c",
+    "recolor.png": "d5977c601f8e51642645fa20e1f0adb180ea86e8297bb503c27761db3af22f47",
+    "baseline.png": "df2264ab82e03d343d896831ba27a821c0b6ae9491b9f5f659c327d821fadaac"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "class_sha256": {},
+  "compile": {
+    "command": [
+      "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+      "--release",
+      "8",
+      "-d",
+      "/home/colin/dev/procedural/.work/annular-study/java",
+      "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java",
+      "/home/colin/dev/procedural/tests/native/AnnularMeshNative.java",
+      "/home/colin/dev/procedural/.work/annular-study/java/AnnularMeshVectors.java"
+    ],
+    "stderr": "Note: /home/colin/dev/procedural/tests/native/AnnularMeshNative.java uses unchecked or unsafe operations.\nNote: Recompile with -Xlint:unchecked for details.\n"
+  },
+  "generated_vectors_sha256": "770e456d8f760d96d3a329ef45db7cf9e2dde02c13b30f3043aeb16e641a4545",
+  "operation": "mesh.annular-solid-3d",
+  "results": {
+    "AnnularMeshNative": {
+      "command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/annular-study/java",
+        "org.procedurals.mesh.AnnularMeshNative"
+      ],
+      "stdout": "{\"status\":\"passed\",\"assertions\":43,\"workloads\":[{\"id\":\"tiny\",\"faces\":24,\"warmups\":2,\"repetitions\":3,\"elapsed_nanos\":49960,\"checksum\":\"461913f142e94e2a\"},{\"id\":\"study\",\"faces\":384,\"warmups\":2,\"repetitions\":3,\"elapsed_nanos\":138710,\"checksum\":\"2be762adb4af20a8\"},{\"id\":\"bounded\",\"faces\":80000,\"warmups\":2,\"repetitions\":3,\"elapsed_nanos\":7516557,\"checksum\":\"25d5b4afeb7117b6\"}]}\n",
+      "value": {
+        "assertions": 43,
+        "status": "passed",
+        "workloads": [
+          {
+            "checksum": "461913f142e94e2a",
+            "elapsed_nanos": 49960,
+            "faces": 24,
+            "id": "tiny",
+            "repetitions": 3,
+            "warmups": 2
+          },
+          {
+            "checksum": "2be762adb4af20a8",
+            "elapsed_nanos": 138710,
+            "faces": 384,
+            "id": "study",
+            "repetitions": 3,
+            "warmups": 2
+          },
+          {
+            "checksum": "25d5b4afeb7117b6",
+            "elapsed_nanos": 7516557,
+            "faces": 80000,
+            "id": "bounded",
+            "repetitions": 3,
+            "warmups": 2
+          }
+        ]
+      }
+    },
+    "AnnularMeshVectors": {
+      "command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/annular-study/java",
+        "org.procedurals.mesh.AnnularMeshVectors"
+      ],
+      "stdout": "{\"status\":\"passed\",\"cases\":26,\"assertions\":17576}\n",
+      "value": {
+        "assertions": 17576,
+        "cases": 26,
+        "status": "passed"
+      }
+    }
+  },
+  "scope": "Java core vectors and native access/workload checks only; no renderer or target-support claim.",
+  "source_sha256_after": {
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    "catalog/operations/annular-solid-3d.json": "856da2ea0449233334c5e152f9eae1c589a9b2b6656ced8af93e73daac39ee6a",
+    "fixtures/operations/annular-solid-3d.json": "15871df03df6886c2a26706cc4d99ca6310254065ba0bde24359b6c7eb573b08",
+    "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java": "784ba20b7b83e6ce7f7240b045eb8f2611395493e7aea273b003c58de3b8b5aa",
+    "tests/native/AnnularMeshNative.java": "2369b6aa1ab6c61f753c7710eb82b9674bceee99a9c92d7c9253e91849e7c3f4",
+    "tools/check_annular_fixtures.py": "8e451485cd579876ff7ebe472608d565b50650588f332e84ce5187312701e955",
+    "tools/run_annular_mesh_java.py": "44791f7e301bbcebe8dc312481e0d68dd1d2274949c5ad8085c8f782971b9cd4"
+  },
+  "source_sha256_before": {
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    "catalog/operations/annular-solid-3d.json": "856da2ea0449233334c5e152f9eae1c589a9b2b6656ced8af93e73daac39ee6a",
+    "fixtures/operations/annular-solid-3d.json": "15871df03df6886c2a26706cc4d99ca6310254065ba0bde24359b6c7eb573b08",
+    "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java": "784ba20b7b83e6ce7f7240b045eb8f2611395493e7aea273b003c58de3b8b5aa",
+    "tests/native/AnnularMeshNative.java": "2369b6aa1ab6c61f753c7710eb82b9674bceee99a9c92d7c9253e91849e7c3f4",
+    "tools/check_annular_fixtures.py": "8e451485cd579876ff7ebe472608d565b50650588f332e84ce5187312701e955",
+    "tools/run_annular_mesh_java.py": "44791f7e301bbcebe8dc312481e0d68dd1d2274949c5ad8085c8f782971b9cd4"
+  },
+  "status": "passed"
+}
