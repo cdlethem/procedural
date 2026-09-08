@@ -1,0 +1,137 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "sampling.ordered-convex-polygon-filter-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/ordered-convex-polygon-filter-2d.json",
+    "catalog_sha256": "64ec6cbf60c04c612cbf2f8ad0c427853b48c3c7585ebf2cdd0938151604599e"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/sampling/ConvexPolygonPlacements2D.java": "b0c6e8359636668e5540d33aaaad927b0953635905d43853ce3ebc6821b9a209",
+          "packages/java-processing/examples/PolygonMarks/PolygonMarks.pde": "2e28997234c40e57b910219d0a6868627f9332c5176719a6bbab293daad2f9ad"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/convex-polygon-java.json": "c17058b5640b53b51073db52a2162c418c9c46c942952ea74ce7f9e6845c05c7",
+          "evidence/conformance/convex-polygon-java-root-review.json": "4fcadb804d117555b4a64887775e5081ad3852e5cbf3d09256c26a66d0b3bc89",
+          "fixtures/operations/ordered-convex-polygon-filter-2d.json": "86c4eda2f617e4dbd1f4f1f766b9982ab07f887e20f248d71b9aca3e4c6edf7b",
+          "evidence/workflows/polygon-marks/native.json": "134cc7c46b75e6855d3b6f15b189305b147d86f8cee17c91f9e7a03a10a38c99",
+          "evidence/workflows/polygon-marks/root-review.json": "15d2b6471dea01aed636c4c66ce1b45cc26f181172c5a46eca0451c383163bfd"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/convex-polygon-java.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/convex-polygon-catalog-review.json",
+          "sha256": "a8a4f92948b0313552173dcda579143905efd01c09c2483c700bf78fbef73071"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1 Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact convex-polygon core and six-state PolygonMarks; no source replay or non-Java support."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/sampling/ConvexPolygonPlacements2D.java": "b0c6e8359636668e5540d33aaaad927b0953635905d43853ce3ebc6821b9a209",
+          "packages/java-processing/examples/PolygonMarks/PolygonMarks.pde": "2e28997234c40e57b910219d0a6868627f9332c5176719a6bbab293daad2f9ad"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/convex-polygon-java.json": "c17058b5640b53b51073db52a2162c418c9c46c942952ea74ce7f9e6845c05c7",
+          "evidence/conformance/convex-polygon-java-root-review.json": "4fcadb804d117555b4a64887775e5081ad3852e5cbf3d09256c26a66d0b3bc89",
+          "fixtures/operations/ordered-convex-polygon-filter-2d.json": "86c4eda2f617e4dbd1f4f1f766b9982ab07f887e20f248d71b9aca3e4c6edf7b",
+          "evidence/workflows/polygon-marks/native.json": "134cc7c46b75e6855d3b6f15b189305b147d86f8cee17c91f9e7a03a10a38c99",
+          "evidence/workflows/polygon-marks/root-review.json": "15d2b6471dea01aed636c4c66ce1b45cc26f181172c5a46eca0451c383163bfd"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/workflows/polygon-marks/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/convex-polygon-catalog-review.json",
+          "sha256": "a8a4f92948b0313552173dcda579143905efd01c09c2483c700bf78fbef73071"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1 Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact convex-polygon core and six-state PolygonMarks; no source replay or non-Java support."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/sampling/ConvexPolygonPlacements2D.java": "b0c6e8359636668e5540d33aaaad927b0953635905d43853ce3ebc6821b9a209",
+          "packages/java-processing/examples/PolygonMarks/PolygonMarks.pde": "2e28997234c40e57b910219d0a6868627f9332c5176719a6bbab293daad2f9ad"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/convex-polygon-java.json": "c17058b5640b53b51073db52a2162c418c9c46c942952ea74ce7f9e6845c05c7",
+          "evidence/conformance/convex-polygon-java-root-review.json": "4fcadb804d117555b4a64887775e5081ad3852e5cbf3d09256c26a66d0b3bc89",
+          "fixtures/operations/ordered-convex-polygon-filter-2d.json": "86c4eda2f617e4dbd1f4f1f766b9982ab07f887e20f248d71b9aca3e4c6edf7b",
+          "evidence/workflows/polygon-marks/native.json": "134cc7c46b75e6855d3b6f15b189305b147d86f8cee17c91f9e7a03a10a38c99",
+          "evidence/workflows/polygon-marks/root-review.json": "15d2b6471dea01aed636c4c66ce1b45cc26f181172c5a46eca0451c383163bfd"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/workflows/polygon-marks/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/convex-polygon-catalog-review.json",
+          "sha256": "a8a4f92948b0313552173dcda579143905efd01c09c2483c700bf78fbef73071"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1 Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact convex-polygon core and six-state PolygonMarks; no source replay or non-Java support."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

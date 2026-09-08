@@ -1,0 +1,17 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java exact convex-polygon rejection filter and scoped JAVA2D PolygonMarks; no distribution, source recreation or other-target acceptance",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/sampling/ConvexPolygonPlacements2D.java": "b0c6e8359636668e5540d33aaaad927b0953635905d43853ce3ebc6821b9a209",
+    "packages/java-processing/examples/PolygonMarks/PolygonMarks.pde": "2e28997234c40e57b910219d0a6868627f9332c5176719a6bbab293daad2f9ad"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/convex-polygon-java.json": "c17058b5640b53b51073db52a2162c418c9c46c942952ea74ce7f9e6845c05c7",
+    "evidence/conformance/convex-polygon-java-root-review.json": "4fcadb804d117555b4a64887775e5081ad3852e5cbf3d09256c26a66d0b3bc89",
+    "fixtures/operations/ordered-convex-polygon-filter-2d.json": "86c4eda2f617e4dbd1f4f1f766b9982ab07f887e20f248d71b9aca3e4c6edf7b",
+    "evidence/workflows/polygon-marks/native.json": "134cc7c46b75e6855d3b6f15b189305b147d86f8cee17c91f9e7a03a10a38c99",
+    "evidence/workflows/polygon-marks/root-review.json": "15d2b6471dea01aed636c4c66ce1b45cc26f181172c5a46eca0451c383163bfd"
+  }
+}

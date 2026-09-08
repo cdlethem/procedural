@@ -1,6 +1,6 @@
 {
-  "version": "0.22.0",
-  "processing_version": 22,
+  "version": "0.23.0",
+  "processing_version": 23,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -18,6 +18,7 @@
     "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
     "packages/java/src/main/java/org/procedurals/raster/RasterRemap2D.java": "433615a7fba0b09773fbfc88caa9a5b939e73213b182024feb6c3a04e46e90d4",
     "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "packages/java/src/main/java/org/procedurals/sampling/ConvexPolygonPlacements2D.java": "b0c6e8359636668e5540d33aaaad927b0953635905d43853ce3ebc6821b9a209",
     "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
     "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
     "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
@@ -189,6 +190,10 @@
     "procedurals/examples/PullMarks/PullMarks.pde": {
       "source": "packages/java-processing/examples/PullMarks/PullMarks.pde",
       "sha256": "a2f1a5cfb382b4579a09488d22149f1cd40f3da3dcf7ff3415051f1994c59c38"
+    },
+    "procedurals/examples/PolygonMarks/PolygonMarks.pde": {
+      "source": "packages/java-processing/examples/PolygonMarks/PolygonMarks.pde",
+      "sha256": "2e28997234c40e57b910219d0a6868627f9332c5176719a6bbab293daad2f9ad"
     }
   },
   "operation_files": [
@@ -203,6 +208,7 @@
     "noise-band-path.json",
     "occupied-lattice-paths-2d.json",
     "ordered-circle-filter.json",
+    "ordered-convex-polygon-filter-2d.json",
     "radial-profile-surface.json",
     "radial-pull-2d.json",
     "regular-grid.json",

@@ -1,15 +1,20 @@
 # Project state
 
-## CP20 public native workflow accepted; packaging next
+## Java0.23 accepted: 23 operations and 23 packaged workflows
 
-PolygonMarks passed native2 after root fixed Processing float-literal rewriting and probe
-state comparisons/error exit. Six native states verify edits, retained recolor, regeneration,
-reset and cached save. Root inspected all five distinct images. Evidence:
-evidence/workflows/polygon-marks/root-review.json and native.json. Gallery now118 images
-across25 groups. Native1 failed and is preserved locally. No render process remains active.
-Next integrate CP20 into source-bundle/catalog workflow delivery and validate extracted use;
-Java0.22 remains22 packaged operations/workflows. Core28532369 accepted. Ports/Sol paused;
-unrelated Android draft preserved. No whole recreation or distribution acceptance added.
+CP20 distribution accepted in evidence/distribution/cp20-java-review.json. Archive:
+.work/dist/cp20-java-source-root1/procedurals-java-source-dev.zip, 218 members.
+All 23 extracted PDE examples compile; PolygonMarks native six-state sequence and cached
+save pass. Seven PNGs match root-inspected candidate. Prior98 core classes, adapter class
+and42 example/font members preserved byte-for-byte. Focused7 packaging tests and catalog
+check pass. Root added Java support attestation and generated reference; ports deferred.
+
+Next bounded architectural selection: Luna identified candidate unequal four-way subdivision
+(griton#0), persistent field-advection/trails (peces#0/#1), and mouse-conditioned target
+updates (araniaaas#1). These are evidence leads, NOT admitted APIs: root must distinguish
+reusable algorithm from ordinary composition glue before selecting. Broader completion
+requirements remain in docs/java-completion-plan.md. Ports/Sol paused, Android draft
+preserved. No worker or native process remains live. Gallery118 images/25 groups.
 
 
 ## Central visual-review gallery delivered

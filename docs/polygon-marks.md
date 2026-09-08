@@ -3,7 +3,7 @@
 PolygonMarks proposes rounded elongated polygons, filters them with
 `ConvexPolygonPlacements2D`, then draws the retained outlines. Replace those proposals with
 rotated diamonds without rewriting overlap rejection. This example passed [native workflow review](../evidence/workflows/polygon-marks/root-review.json);
-Java0.22 does not yet include it in its accepted source bundle.
+Java0.23 includes it in the [reviewed source bundle](../evidence/distribution/cp20-java-review.json).
 
 Open `packages/java-processing/examples/PolygonMarks/PolygonMarks.pde`. The seed determines
 600 centers, lengths and angles. Those descriptors remain unchanged while you edit thickness

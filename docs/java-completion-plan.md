@@ -3,7 +3,7 @@
 Current maintainer objective: build a feature-complete Java implementation. Ports are
 paused per `porting-resume.md`; recipes/MCP/web remain a separate roadmap, not prerequisites
 for making the native Java library useful. This plan does not claim feature completeness
-or replace the project's mission with the current22 operations.
+or replace the project's mission with the current23 operations.
 
 ## Completion requirements
 
@@ -28,13 +28,13 @@ The broader corpus benchmark remains a separate strict certification claim.
 
 ## Existing capability baseline
 
-Java0.22 assembles22 operations and22 workflows: field marks, integrated paths, constrained
+Java0.23 assembles23 operations and23 workflows: field marks, integrated paths, constrained
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
 paths, raster remapping, positioned color ramps, noise-band paths, smooth closed curves and binary panel layouts,
 plus relief/city/landscape compositions. Four selected original structural
 recreations are demonstrated; Curvespace is a separate repository example, outside the
-accepted Java0.22 archive. Consult current operation attestations rather than historical
+accepted Java0.23 archive. Consult current operation attestations rather than historical
 status paragraphs in the provisional API design.
 
 ## Completed batch: raster warping (CP13)
@@ -148,3 +148,13 @@ Curvespace now demonstrates a fourth complete structural recreation using Regula
 RadialPull2D, with actual P2D additive drawing and reviewed edits/reset/cached save. See
 [curvespace-recreation.md](curvespace-recreation.md). This adds composition evidence rather
 than another operation; general render/animation helper scope remains incomplete.
+
+## CP20: noncircular placement
+
+ConvexPolygonPlacements2D and PolygonMarks now provide greedy rejection of overlapping
+supplied strict convex polygons. Thickness/shape edits reuse proposal poses; recolor retains
+placements, and diamond transfer uses the same filter. Exact symmetric containment/contact
+intentionally corrects the celular helpers rather than replaying their nesting bug.
+Core, native workflow and Java0.23 source-bundle acceptance are recorded separately in
+`evidence/distribution/cp20-java-review.json`.
+No additional original recreation or non-Java target is claimed.

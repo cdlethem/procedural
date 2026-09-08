@@ -1,0 +1,50 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.23.0",
+  "scope": "Source-built Java bundle with 23 operations and 23 editable workflows; all extracted PDE compilation and native PolygonMarks. Local artifact, not registry release.",
+  "archive": {
+    "path": ".work/dist/cp20-java-source-root1/procedurals-java-source-dev.zip",
+    "sha256": "5d140c2b26a880526fda5268f46fc18daf7af7507123f1bb8fafd79826f8c4c3",
+    "members": 218
+  },
+  "build_report": {
+    "path": "evidence/distribution/cp20-java-source.json",
+    "sha256": "e5b239c259ae4e983b819bc7470307dbdd3a607fd9d809eccefe1cdb70952967"
+  },
+  "consumer_report": {
+    "path": "evidence/distribution/cp20-java-consumer.json",
+    "sha256": "ad488c3b750db0d0492fc94dfcfd0fdd0718671a488989de0b219938ef930efc"
+  },
+  "checks": {
+    "procedurals.jar": {
+      "preserved_classes": 98,
+      "added_classes": [
+        "org/procedurals/sampling/ConvexPolygonPlacements2D$1.class",
+        "org/procedurals/sampling/ConvexPolygonPlacements2D$D.class",
+        "org/procedurals/sampling/ConvexPolygonPlacements2D$PlacementException.class",
+        "org/procedurals/sampling/ConvexPolygonPlacements2D$Polygon.class",
+        "org/procedurals/sampling/ConvexPolygonPlacements2D.class"
+      ]
+    },
+    "procedurals-processing-adapter.jar": {
+      "preserved_classes": 1,
+      "added_classes": []
+    },
+    "preserved_example_members": 42,
+    "extracted_native_frames_equal_candidate": 7
+  },
+  "verified": [
+    "Root verified live build and consumer inputs; all 23 extracted PDE examples compiled.",
+    "Six native states and cached save pass; all seven PNGs match root-inspected candidate images exactly.",
+    "All prior core/adapter classes and example/font members preserved byte-for-byte.",
+    "Normative convex-polygon contract and artist guide included; licensing and font notices preserved.",
+    "Seven focused packaging tests and catalog/reference check passed."
+  ],
+  "limits": [
+    "No additional original recreation or non-Java support claim.",
+    "Pinned external toolchain and font/notice inputs required.",
+    "Acceptance binds this archive; future builds require their own review."
+  ]
+}

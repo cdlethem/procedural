@@ -49,3 +49,6 @@ FacetMarks does not supply Voronoi cells, ProfileMarks is not arbitrary solid ex
 and glyph placement is not font-outline extraction or general text shaping. BandMarks
 is not a complete contour extractor. Other renderers and language ports have their own
 recorded support limits; the links above describe the Java workflows.
+
+For noncircular packing, use [PolygonMarks](polygon-marks.md): supply convex outlines,
+filter overlaps, then edit thickness or replace rounded shapes with diamonds.
