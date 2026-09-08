@@ -1,5 +1,18 @@
 # Project state
 
+## Large-data export correction verified as a prototype
+
+Root reproduced javac code-too-large from valid12000-element parameters. Replaced literal
+data emission with a private bounded, hash-verified binary build resource; JSON remains the
+public interchange. Terra supplied the reader and lifecycle correction; Luna supplied an
+independent exact byte-vector test. Root implemented export/build integration and native data
+probes. PathMarks and large FieldMarks decode exactly and produce the same7002/25600 commands;
+large case checks all12000 numbers and70000 Unicode characters. Six malformed-resource cases
+reject. Six focused Python tests pass. Evidence: evidence/distribution/recipe-binary-export-
+prototype.json. No new native raster claim or general exporter acceptance. Next final review
+of the static Java execution/export delivery before more bindings and target ports.
+
+
 ## Direct Java structural admission verified as a prototype
 
 Both evaluator entrypoints now enforce bounded detached JSON, generated catalog grammar,

@@ -4,7 +4,6 @@ import argparse, hashlib, inspect, json, shutil, subprocess, sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; sys.path.insert(0,str(ROOT))
 from tools.build_java_source_bundle import fresh_output, require_hash
-from tools.run_grid_conformance import java_value
 from tools.validate_recipe_draft import load_json, validate, load_bindings, RecipeError
 from tools.operation_attestations import validate_target_attestation
 
@@ -54,14 +53,79 @@ def admit_target(recipe, target, root=ROOT):
                 "catalog/recipes/recipe.schema.json", "catalog/recipes/execution-bindings.json")}}
 
 def export_java(recipe):
-    return '''import java.nio.file.*;\nimport java.util.*;\nimport processing.core.PApplet;\nimport processing.awt.PGraphicsJava2D;\nimport org.procedurals.processing.internal.Java2DFrame;\nimport org.procedurals.recipe.RecipeEvaluator;\n\npublic final class RecipeExport {\n    static Map<String,Object> map(Object... x) { Map<String,Object> r=new LinkedHashMap<String,Object>(); for(int i=0;i<x.length;i+=2) r.put((String)x[i],x[i+1]); return r; }\n    static List<Object> list(Object... x) { return new ArrayList<Object>(Arrays.asList(x)); }\n    static Map<String,Object> baseRecipe() { return %s; }\n    static Map<String,Object> recipe() { Map<String,Object> r=baseRecipe(); r.put("parameters",RecipeParameters.values()); return r; }\n    public static void main(String[] arguments) throws Throwable {\n        if(arguments.length!=1) throw new IllegalArgumentException("provide fresh PNG path");\n        Path output=Paths.get(arguments[0]).toAbsolutePath();\n        if(!output.getFileName().toString().toLowerCase(Locale.ROOT).endsWith(".png")) throw new IllegalArgumentException("output must end in .png");\n        if(Files.exists(output)) throw new IllegalArgumentException("PNG exists");\n        RecipeEvaluator.Result result=RecipeEvaluator.evaluate(recipe(),new RecipeEvaluator.Limits());\n        Java2DFrame frame=new Java2DFrame(new PApplet()); PGraphicsJava2D completed=null; Throwable primary=null;\n        try {\n            frame.begin(result.environment);\n            for(int i=0;i<result.commands.size();i+=4096) frame.batch(result.commands.subList(i,Math.min(i+4096,result.commands.size())));\n            completed=frame.end(); if(!completed.save(output.toString())) throw new IllegalStateException("PNG save failed");\n        } catch(Throwable error) { primary=error; throw error; }\n        finally { try { if(completed!=null) Java2DFrame.releaseCompleted(completed); else if(!"completed".equals(frame.state())) frame.abort(); } catch(Throwable cleanup) { if(primary==null) throw cleanup; if(cleanup!=primary) primary.addSuppressed(cleanup); } }\n    }\n}\n''' % java_value(recipe)
+    return '''import java.nio.file.*;
+import java.util.*;
+import processing.core.PApplet;
+import processing.awt.PGraphicsJava2D;
+import org.procedurals.processing.internal.Java2DFrame;
+import org.procedurals.recipe.RecipeEvaluator;
+
+public final class RecipeExport {
+    static Map<String,Object> recipe() {
+        return RecipeExportData.read(RecipeDataIdentity.SHA256);
+    }
+    public static void main(String[] arguments) throws Throwable {
+        if(arguments.length!=1) throw new IllegalArgumentException("provide fresh PNG path");
+        Path output=Paths.get(arguments[0]).toAbsolutePath();
+        if(!output.getFileName().toString().toLowerCase(Locale.ROOT).endsWith(".png")) throw new IllegalArgumentException("output must end in .png");
+        if(Files.exists(output)) throw new IllegalArgumentException("PNG exists");
+        RecipeEvaluator.Result result=RecipeEvaluator.evaluate(recipe(),new RecipeEvaluator.Limits());
+        Java2DFrame frame=new Java2DFrame(new PApplet()); PGraphicsJava2D completed=null; Throwable primary=null;
+        try {
+            frame.begin(result.environment);
+            for(int i=0;i<result.commands.size();i+=4096) frame.batch(result.commands.subList(i,Math.min(i+4096,result.commands.size())));
+            completed=frame.end(); if(!completed.save(output.toString())) throw new IllegalStateException("PNG save failed");
+        } catch(Throwable error) { primary=error; throw error; }
+        finally { try { if(completed!=null) Java2DFrame.releaseCompleted(completed); else if(!"completed".equals(frame.state())) frame.abort(); } catch(Throwable cleanup) { if(primary==null) throw cleanup; if(cleanup!=primary) primary.addSuppressed(cleanup); } }
+    }
+}
+'''
+
+def encode_recipe(value):
+    """Private build artifact; the catalog recipe JSON remains the interchange format."""
+    import io
+    import struct
+    output = io.BytesIO()
+    output.write(b"PRD1")
+    def string(text):
+        data = text.encode("utf-8")
+        output.write(struct.pack(">I", len(data)))
+        output.write(data)
+    def write(item):
+        if item is None:
+            output.write(b"\x00")
+        elif item is False:
+            output.write(b"\x01")
+        elif item is True:
+            output.write(b"\x02")
+        elif isinstance(item, (int, float)):
+            output.write(b"\x03" + struct.pack(">d", float(item)))
+        elif isinstance(item, str):
+            output.write(b"\x04")
+            string(item)
+        elif isinstance(item, list):
+            output.write(b"\x05" + struct.pack(">I", len(item)))
+            for child in item:
+                write(child)
+        elif isinstance(item, dict):
+            output.write(b"\x06" + struct.pack(">I", len(item)))
+            for key, child in item.items():
+                string(key)
+                write(child)
+        else:
+            raise ValueError("recipe value is not JSON")
+    write(value)
+    data = output.getvalue()
+    if len(data) > 4 * 1024 * 1024:
+        raise ValueError("recipe binary artifact exceeds 4 MiB")
+    return data
 
 BUILD='''#!/usr/bin/env python3
 import argparse, hashlib, json, math, os, shlex, subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 MAX_BYTES=2*1024*1024; MAX_DEPTH=64; MAX_VALUES=20000
-{java_value_source}
+{encode_recipe_source}
 def sha_bytes(data): return hashlib.sha256(data).hexdigest()
 def pairs(items):
  r={{}}
@@ -107,13 +171,15 @@ def main():
   combined=json.loads(sealed["recipe.json"].decode("utf-8")); combined["parameters"]=parameters; bounds(combined)
   if len(json.dumps(combined,separators=(",",":"),ensure_ascii=False,allow_nan=False).encode("utf-8"))>MAX_BYTES: raise ValueError("combined recipe exceeds 2 MiB")
  except (OSError,UnicodeDecodeError,json.JSONDecodeError,ValueError) as e: raise SystemExit(str(e))
+ data_bytes=encode_recipe(combined)
  out.mkdir(parents=True); sources=[]; source_hashes={{}}
  for name in manifest["java_sources"]:
   dst=out/"sealed-src"/name; dst.parent.mkdir(parents=True,exist_ok=True); dst.write_bytes(sealed[name]); sources.append(dst); source_hashes[name]=sha_bytes(sealed[name])
- generated=out/"generated-src"/"RecipeParameters.java"; generated.parent.mkdir()
- generated.write_text("import java.util.*;\\npublic final class RecipeParameters {{ static Map<String,Object> map(Object... x) {{ Map<String,Object> r=new LinkedHashMap<String,Object>(); for(int i=0;i<x.length;i+=2) r.put((String)x[i],x[i+1]); return r; }} static List<Object> list(Object... x) {{ return new ArrayList<Object>(Arrays.asList(x)); }} public static Map<String,Object> values() {{ return "+java_value(parameters)+"; }} }}\\n",encoding="utf-8")
+ data_path=out/"recipe-data.bin"; data_path.write_bytes(data_bytes)
+ generated=out/"generated-src"/"RecipeDataIdentity.java"; generated.parent.mkdir()
+ generated.write_text('public final class RecipeDataIdentity {{ static final String SHA256="'+sha_bytes(data_bytes)+'"; }}\\n',encoding="utf-8")
  jdk={{n:sha_bytes((home/n).read_bytes()) for n in ("release","bin/javac","bin/java","lib/modules")}}
- report={{"status":"inputs-verified","parameters_file_sha256":sha_bytes(parameter_bytes),"parameters_canonical_sha256":sha_bytes(json.dumps(parameters,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False).encode("utf-8")),"java_source_sha256":source_hashes,"generated_parameters_sha256":sha_bytes(generated.read_bytes()),"processing_core_sha256":sha_bytes(core_bytes),"jdk_sha256":jdk}}
+ report={{"status":"inputs-verified","parameters_file_sha256":sha_bytes(parameter_bytes),"parameters_canonical_sha256":sha_bytes(json.dumps(parameters,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False).encode("utf-8")),"java_source_sha256":source_hashes,"generated_identity_sha256":sha_bytes(generated.read_bytes()),"recipe_data_sha256":sha_bytes(data_bytes),"processing_core_sha256":sha_bytes(core_bytes),"jdk_sha256":jdk}}
  (out/"build-manifest.json").write_text(json.dumps(report,indent=2,sort_keys=True)+"\\n",encoding="utf-8")
  subprocess.run([str(home/"bin/javac"),"--release","8","-encoding","UTF-8","-classpath",str(core),"-d",str(out),*[str(x) for x in sources],str(generated)],check=True)
  report["status"]="compiled"
@@ -121,7 +187,7 @@ def main():
  print("Run: "+shlex.join([str(home/"bin/java"),"-cp",str(out)+os.pathsep+str(core),"RecipeExport","/absolute/fresh-output.png"]))
 if __name__=="__main__": main()
 '''
-def build_script(): return BUILD.format(java_value_source=inspect.getsource(java_value).rstrip())
+def build_script(): return BUILD.format(encode_recipe_source=inspect.getsource(encode_recipe).rstrip())
 def copy_file(source,destination,hashes,output):
  destination.parent.mkdir(parents=True,exist_ok=True); shutil.copyfile(source,destination); hashes[str(destination.relative_to(output))]=sha(destination)
 def main():
@@ -135,9 +201,10 @@ def main():
  for name in ('LICENSE','THIRD_PARTY_NOTICES.md','catalog/recipes/execution-bindings.json','catalog/recipes/recipe.schema.json','catalog/drawing/fresh-raster-2d.json','packages/java/source-bundle.json',source_manifest['accepted_distribution_review']['path'],'catalog/operations/regular-grid.json','catalog/operations/gradient-noise-2d-01.json','catalog/operations/cyclic-palette.json','catalog/operations/gradient-path.json'): copy_file(ROOT/name,output/'metadata'/name,hashes,output)
  (output/'recipe.json').write_text(json.dumps(base,indent=2,sort_keys=True)+'\n',encoding='utf-8');hashes['recipe.json']=sha(output/'recipe.json')
  (output/'parameters.json').write_text(json.dumps(parameters,indent=2,sort_keys=True,ensure_ascii=False,allow_nan=False)+'\n',encoding='utf-8')
+ copy_file(ROOT/'tools/templates/RecipeExportData.java',output/'src/RecipeExportData.java',hashes,output)
  source=output/'src/RecipeExport.java';source.parent.mkdir(exist_ok=True);source.write_text(export_java(base),encoding='utf-8');hashes['src/RecipeExport.java']=sha(source)
  (output/'build.py').write_text(build_script(),encoding='utf-8');hashes['build.py']=sha(output/'build.py')
  readme=output/'README.md';readme.write_text('# Recipe Java prototype export\n\nPrototype-unaccepted snapshot; no support or native acceptance claim. `recipe.json` and Java sources are sealed by `manifest.json`. Edit `parameters.json`, then build a fresh output: `python3 build.py --java-home /path/jdk --processing-core /path/core.jar --output /fresh/classes`. Run the printed command. On this machine use `/home/colin/dev/procedural/tools/with_native_render_lock.py -- xvfb-run -a java ...`. The build records exact editable parameter bytes and canonical parameter values in `build-manifest.json`. Recipe structure, operations, drawing, or Java source changes require a new export.\n',encoding='utf-8');hashes['README.md']=sha(readme)
- manifest={'status':'prototype-unaccepted','target_admission':admission,'processing_core_sha256':source_manifest['processing_core_sha256'],'files':hashes,'java_sources':sorted(x for x in hashes if x.endswith('.java')),'parameters':{'path':'parameters.json','default_file_sha256':sha(output/'parameters.json'),'default_canonical_sha256':sha_bytes(json.dumps(parameters,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode()),'sealed':False},'provenance':{'schema_generator_sha256':sha(ROOT/'tools/generate_recipe_java_schemas.py'),'exporter_sha256':sha(Path(__file__)),'java_value_source_sha256':sha_bytes(inspect.getsource(java_value).encode()),'source_revision':subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,capture_output=True,text=True,check=True).stdout.strip()}}
+ manifest={'status':'prototype-unaccepted','target_admission':admission,'processing_core_sha256':source_manifest['processing_core_sha256'],'files':hashes,'java_sources':sorted(x for x in hashes if x.endswith('.java')),'parameters':{'path':'parameters.json','default_file_sha256':sha(output/'parameters.json'),'default_canonical_sha256':sha_bytes(json.dumps(parameters,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode()),'sealed':False},'provenance':{'schema_generator_sha256':sha(ROOT/'tools/generate_recipe_java_schemas.py'),'exporter_sha256':sha(Path(__file__)),'encode_recipe_source_sha256':sha_bytes(inspect.getsource(encode_recipe).encode()),'source_revision':subprocess.run(['git','rev-parse','HEAD'],cwd=ROOT,capture_output=True,text=True,check=True).stdout.strip()}}
  (output/'manifest.json').write_text(json.dumps(manifest,indent=2,sort_keys=True)+'\n',encoding='utf-8');print(output)
 if __name__=='__main__': main()

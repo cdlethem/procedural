@@ -63,10 +63,10 @@ establish those capabilities.
 ## Snapshot export experiment
 
 `tools/export_recipe_java_prototype.py --recipe <draft.json> --output .work/<fresh-name>`
-produces recipe JSON, embedded Java data, library/adapter sources, licenses, source hashes
+produces recipe JSON, a bounded data-resource reader, library/adapter sources, licenses, source hashes
 and a standalone build script. Supply an explicit JDK and Processing core to that script.
 Edit `parameters.json` in the exported folder and build a fresh output to change values.
-The standalone build validates that JSON and generates data-only Java; no runtime JSON
+The standalone build validates that JSON and generates a hash-identified binary resource; no runtime JSON
 parser is claimed. Composition and library sources must match their manifest before building.
 
 Copied FieldMarks baseline and PathMarks baseline/trace-edit exports compiled independently
@@ -91,7 +91,12 @@ This establishes the scoped prototype behavior, not accepted general executor su
 
 Standalone parameter editing now has a copied-project native case: default FieldMarks and
 an edit to its palette both match the accepted native references exactly. The build records
-actual parameter bytes, canonical values, generated data source and JDK/core identities.
+actual parameter bytes, canonical values, generated data identity and JDK/core identities.
 Malformed JSON fails before compilation; invalid operation values fail in the evaluator
 before the exported entry point requests a renderer. Composition changes still require a
 new export. Evidence: `evidence/distribution/recipe-parameter-edit-prototype.json`.
+
+The private binary resource avoids Java method/constant-size limits for valid recipe data.
+A12000-value array and70000-character Unicode string compile and decode exactly; PathMarks
+and FieldMarks command comparisons remain exact. The reader bounds allocation and rejects
+corrupt resources before evaluation. This is still prototype export behavior.

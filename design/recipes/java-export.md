@@ -58,3 +58,28 @@ with `.work/reproductions/cp1-java2d-adapter/palette.png` using its verified evi
 Also reject duplicate keys/nonfinite JSON before compilation and dynamically invalid inputs
 before PNG creation. This establishes standalone parameter editing, not mutable composition
 source acceptance or general installed exporter support.
+
+## Large-data export correction
+
+A valid12000-value parameter array reproduced javac's `code too large` failure with the
+literal-emitting prototype. Arbitrary valid strings can also exceed constant-pool limits.
+Keep JSON as the recipe interchange format, but encode the combined validated recipe into a
+private `recipe-data.bin` build resource. Generated Java contains only its SHA256 identity;
+the bounded reader verifies that identity before decoding and structural admission.
+
+Private artifact layout: ASCII `PRD1`, followed by one tagged value. Tags0/1/2 are null/false/
+true;3 is a big-endian binary64;4 is a UTF8 string with a nonnegative32-bit byte length;5 is
+an array with a32-bit count and tagged elements;6 is an object with a32-bit count and string
+keys (length+UTF8 without a tag), each followed by its tagged value. Integers in the encoding
+are big-endian. Bound resource bytes to4MiB, depth to64 and values to20000. Reject nonfinite
+numbers, malformed UTF8, duplicate keys, unknown tags, invalid lengths and trailing bytes.
+This is build plumbing, not a second public recipe format or Java JSON-parser claim.
+
+Validation uses the existing command-comparison driver's complete FieldMarks/PathMarks
+recipe constructors as independent expected data. Check default PathMarks and FieldMarks
+with12000 extra numeric values plus a70000-character Unicode string. Both decoded recipes
+and evaluated command streams must match; verify each extra value and character explicitly.
+The native JVM probe is `tests/native/RecipeExportDataProbe.java`; it compiles against the
+exported classes and established recipe-comparison classes. Corrupt-resource cases call the
+reader with the actual corrupt digest to test decoding separately from digest rejection.
+No renderer is needed when proving this data round trip and exact command equality.
