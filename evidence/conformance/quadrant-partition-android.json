@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "scope": "API33 ART pure quadrant vectors and ownership/access only; no renderer or performance claim.",
+  "dex_sha256": "3026e6ca8b47cda645e53ec2cc5850cf71bed4d48ddbbf21a9f488245567fb19",
+  "runner_sha256": "0a17fdb7110289fe861efa1d7e44d81f82da26b5ac458cb0f87c4a0193f024df",
+  "adb_sha256": "a902be8f45c6c62e76c9efaf6947a0fa747c9cabd89a2ac8e0d16ecb30b3ed01",
+  "serial": "emulator-5582",
+  "preparation": {
+    "status": "passed",
+    "scope": "Desktop quadrant fixtures/access and API33 dex preparation only; no ART/native support claim",
+    "inputs_sha256": {
+      "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+      "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+      "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+      "tests/native/QuadrantPartitionNative.java": "0169881f20520b0a9130ee94939b059839bd408482fbb52b1b2d7bbba0f0b492",
+      "tools/prepare_quadrant_partition_android_core.py": "40964e587feea19aa80e43af1386a9e1c4752dff28069b8cf274346475b7f564",
+      "tools/run_quadrant_partition_java.py": "1abf2d5149fc069d7beea86b83bdeba1f2510ec2752b6899efc2cb2155297de6",
+      "tools/prepare_circle_placement_android_core.py": "6769d7ca164b5c070296aea8c33afb2c1a0ae374442862d63cb49b07a97a681f"
+    },
+    "toolchain_sha256": {
+      "java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+      "javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+      "java.release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+      "java.modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+      "android.jar": "fd628aa21321859a9035c6aae4b084b7d3fdb3f230be5cd5ec76541e32f7c963",
+      "d8": "d30e6d3332cc3f85ca03e6031d55da21e7716cb508114e8a1f275351521948a9",
+      "d8.jar": "3958eda74eb298337361e974c9b733856eae08795516bf78a0dd16df620e83bc"
+    },
+    "toolchain_paths": {
+      "java": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+      "javac": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+      "java.release": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/release",
+      "java.modules": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/lib/modules",
+      "android.jar": "/home/colin/dev/procedural/.work/toolchains/android/sdk/platforms/android-33/android.jar",
+      "d8": "/home/colin/dev/procedural/.work/toolchains/android/sdk/build-tools/30.0.3/d8",
+      "d8.jar": "/home/colin/dev/procedural/.work/toolchains/android/sdk/build-tools/30.0.3/lib/d8.jar"
+    },
+    "generated_sources_sha256": {
+      "QuadrantPartitionVectors.java": "166fa8e3377997ea91255f3bc0bb547b8040451b5271f3b6ab07dcf8c97bbcca",
+      "QuadrantPartitionAndroidAccess.java": "c531dd0b6ba938c2f4ab40eccfffde3b7d84fc890a4754d29d03764f0331eac0"
+    },
+    "generated_classes_sha256": {
+      "org/procedurals/layout/QuadrantPartition2D$1.class": "7cb8c49f38b51b69462ab7bda4452a55080fdfaa24c5d74777c9c8b6bf964c31",
+      "org/procedurals/layout/QuadrantPartition2D$Builder.class": "b33053b4a119d7ca0dcd932dcff1ad2149f15463edf44d46758a42cc7f57a513",
+      "org/procedurals/layout/QuadrantPartition2D$PartitionArithmeticException.class": "387ef0a49db60ed076df2503982b788b2357f5c7c0c9c9cc2c2398a28d7507c1",
+      "org/procedurals/layout/QuadrantPartition2D$PartitionException.class": "0de68f5efdcea1959843cfb25bcb9dd8af868e5a86dda2e968a6f68af60f8071",
+      "org/procedurals/layout/QuadrantPartition2D$Xoshiro128StarStar11.class": "96d3df428ea1c878c46518db56f2b338a975b76fb54ed363176080be6e13ec63",
+      "org/procedurals/layout/QuadrantPartition2D.class": "8dfa8edbf3d13c2b5c112509abe93201173812cd459395ae832ecafb3a18bd2d",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$1.class": "249f68d4f31f5a98340959e159bf67a9a2a466838a98964545afc32d86a6ded5",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$10.class": "1b83adc40a4d4d00a16468188db167461ed920d0133c3017cf857011d4b574df",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$11.class": "89454f946608d8763e70e09ab660ead597132904259ad18ea7bc14a006b5991c",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$12.class": "e99fa408ed14d40042ab9f86c3efc1dcfe770a1f3a45d29cf401c4f0c1a910ec",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$13.class": "f252d7f3738ff12e79c487355484277c59e31f28c04f7db2be6052c3e5719f04",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$14.class": "f0b2c15fa7bf77805de08cc3d96044eb49f34fed5d9931e6631687481f0535c3",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$15.class": "3839d260792b789ac1f1f2fbf59c6fe1d9f1586075fdfd24249bee02fc71e31c",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$16.class": "560610fc4376acc374a641a339951601f4f2a557338e2f6b52164342fa58f942",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$17.class": "aa8764582c1a05dbef8b184d63d48659aa1ebc8b904eb5cbf922e232ccafb793",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$2.class": "6a2812ff5efac8017dc4ceda56421ae9b92bb3223e014210cd1ef3655e3b38cd",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$3.class": "1b0a86c6d7281f46d1cf18b2322778f22ba19fa753d78f4849d06097c7978e3d",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$4.class": "f5c690722200426b9c85a8f5851a4f6273246216eb4d530e10747e6c1dd2f389",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$5.class": "8842b1958531197b5e4d2f8764d7a448e063520bb4c25a2d8b454be4b7e9eafe",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$6.class": "b5815184d640687c2ddd6f8fb86d4c06f0ef332f372c9ccaa5cd4cb01c94e7ae",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$7.class": "543156ca235898c81cd70c4cea22d66af9900554fc4e6b566399b3398f23ed42",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$8.class": "11f1f06cf2df927535d2e7d59936335b9839cc7fe6903c64402687409c5ba245",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$9.class": "a25938ec2a27770799e3835a1372d9ece2858d2fded1f43801332714bbf49de2",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$Action.class": "4061086401dea125c9261479d6ef7ad2c16964b8bd3b991110364ffeaaa6f715",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess$OddNumber.class": "ce58f340f612a7690c28c3969110469d1157f5445f395b132fa1d2e7398b0434",
+      "org/procedurals/layout/QuadrantPartitionAndroidAccess.class": "04dd5195b96f83fe81f16199547f3d26d67dc7e3d909c2c31098cc8bbeebed6a",
+      "org/procedurals/layout/QuadrantPartitionVectors.class": "dfb91a5088da1498f1fe6898ab6404556af751751155f287de40db66593c5b84"
+    },
+    "dex_sha256": "3026e6ca8b47cda645e53ec2cc5850cf71bed4d48ddbbf21a9f488245567fb19",
+    "desktop_preflight": {
+      "QuadrantPartitionVectors": {
+        "status": "passed",
+        "fixture_cases": 34,
+        "trace_cases": 11,
+        "assertions": 685
+      },
+      "QuadrantPartitionAndroidAccess": {
+        "status": "passed",
+        "assertions": 27,
+        "native_ownership_access": true
+      }
+    }
+  },
+  "api": "33",
+  "fingerprint": "google/sdk_gphone64_x86_64/emu64x:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+  "vm": "libart.so",
+  "results": {
+    "QuadrantPartitionVectors": {
+      "status": "passed",
+      "fixture_cases": 34,
+      "trace_cases": 11,
+      "assertions": 685
+    },
+    "QuadrantPartitionAndroidAccess": {
+      "status": "passed",
+      "assertions": 27,
+      "native_ownership_access": true
+    }
+  },
+  "cleanup": "removed exact temporary dex",
+  "elapsed_seconds": 1.8765091320383362,
+  "shared_lease": {
+    "wrapper": "tools/with_native_render_lock.py",
+    "timeout_seconds": 500,
+    "session_sha256": "eb24799f7b6d692d92e7fe22cee221d0094246fe4b5f418393b047e4a6b417d3",
+    "scope": "root session booted existing API33 AVD, ran ART checks and stopped its process; terminal exit0"
+  },
+  "negative_check": "A copied preparation with appended dex bytes was rejected by verify_prepared before device access."
+}

@@ -1,5 +1,18 @@
 # Project state
 
+## Android quadrant ART core accepted; native drawing remains next
+
+Root verified the preparation chain, rejected a tampered dex before device access, and ran
+both generated mains on API33 ART under a500-second shared emulator lease. Terminal exit0;
+34 cases,11 successful traces,5 embedded RNG vectors and27 ownership/access assertions pass.
+Exact temporary dex removed and session-owned emulator stopped. Evidence:
+evidence/conformance/quadrant-partition-android.json; root core review and attestation added.
+Android now has7 conformant cores but only6 validated artist/native workflows.
+Next implement RegionMarks using native Processing rectangle/circle primitives. Existing
+Android2DFrame command vocabulary supports segment2/quad2 only; root will not substitute
+approximate motifs or expand the shared command contract merely to fit this starter.
+Keep portable RegionComposition unchanged; native drawing/lifecycle belongs in the example.
+
 ## Android quadrant dex prepared; actual ART run pending
 
 Root reused the frozen Java vector generator and extracted the unchanged ownership/access

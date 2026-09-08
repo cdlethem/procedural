@@ -1250,7 +1250,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | processing-java | [conformant](../../evidence/distribution/cp4-review.json) | [validated-scoped](../../evidence/distribution/cp4-review.json) | [validated-scoped](../../evidence/distribution/cp4-review.json) | [review](../../evidence/distribution/cp4-review.json) |
 | p5js | [conformant](../../evidence/conformance/quadrant-p5js-root-review.json) | [validated-scoped](../../evidence/conformance/quadrant-p5js-root-review.json) | unvalidated | [review](../../evidence/conformance/quadrant-p5js-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/quadrant-py5-root-review.json) | [validated-scoped](../../evidence/conformance/quadrant-py5-root-review.json) | unvalidated | [review](../../evidence/conformance/quadrant-py5-root-review.json) |
-| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | [conformant](../../evidence/conformance/quadrant-android-core-root-review.json) | unvalidated | unvalidated | [review](../../evidence/conformance/quadrant-android-core-root-review.json) |
 
 Motivating evidence:
 

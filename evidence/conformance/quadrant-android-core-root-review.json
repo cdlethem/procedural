@@ -1,0 +1,21 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Android API33 ART quadrant pure core only. RegionMarks native drawing/workflow and distribution remain unvalidated.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "tests/native/QuadrantPartitionNative.java": "0169881f20520b0a9130ee94939b059839bd408482fbb52b1b2d7bbba0f0b492",
+    "tools/run_quadrant_partition_java.py": "1abf2d5149fc069d7beea86b83bdeba1f2510ec2752b6899efc2cb2155297de6",
+    "tools/prepare_quadrant_partition_android_core.py": "40964e587feea19aa80e43af1386a9e1c4752dff28069b8cf274346475b7f564",
+    "tools/run_quadrant_partition_android_core.py": "0a17fdb7110289fe861efa1d7e44d81f82da26b5ac458cb0f87c4a0193f024df"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/quadrant-partition-android.json": "36c0691b3e4c51a75cc4b9e3afd80c193ddec53f7e40b21a61bebff3abf75bfc"
+  },
+  "findings": [
+    "Actual ART execution passed34 shared cases,11 successful selection traces,5 embedded RNG vectors and27 ownership/access assertions.",
+    "Root verified generated source/class/dex/toolchain chain before device execution and after; device dex hash matched; exact temporary dex removed.",
+    "Access probe contains unchanged existing ownershipAndAccess code, excluding unrelated desktop workload benchmarks. Failure-draw ordering also remains established by unchanged core source; no new allocation-failure injection."
+  ]
+}
