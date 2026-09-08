@@ -1,0 +1,31 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "scope": "Native JAVA2D image-placement adapter and PlacementImageMarks workflow only; packaging pending.",
+  "native": "evidence/workflows/placement-image-marks/native.json",
+  "native_sha256": "edbad8de9c1d38d232a806ecda57f87b81bb6ca5787e05b74addd71c8f5b77b3",
+  "adapter_probe": "evidence/conformance/java2d-image-placement-native.json",
+  "adapter_probe_sha256": "b78181a001c36cda212ff0abd32fd2e37d7b0e8cb45849642ac8faa42403399a",
+  "implementation_sha256": {
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DImagePlacement.java": "f858ecac45bce24fb17472ef1083326febaec018b2f52b44000e747235153123",
+    "packages/java-processing/examples/PlacementImageMarks/PlacementImageMarks.pde": "b576d02e96c61520a8354712b8af5cabe7a7e47365f905b25b29cc07cdd2842a",
+    "tests/native/Java2DImagePlacementNative.java": "d482b7a3232901b6912f5d641caea008239013d0e1426084dc7e5c7a7722e7a3",
+    "tests/native/PlacementImageMarksProbe.java": "f49d4f34a4a0964d5297932af53dd787d79c62d2487f679c8e6a2de1dee29a7c"
+  },
+  "verified": [
+    "Root reviewed adapter, rewrote insufficient standalone probe and ran pinned Java8/JAVA2D checks under machine lease.",
+    "Both contain/cover alignment axes, distinct stretch behavior, crop isolation, full outside-frame coverage, RGB opacity, hidden-color invariance, input ownership and invalid dimensions/density pass.",
+    "Root inspected six distinct workflow views: contain margins, cover clipping, stretch distortion, selected square crop, end alignment and mask intersection.",
+    "Eight real queued states retain source/ground/masks, recompute placement only for fit/crop/alignment, preserve placed pixels on mask edits, restore named states and save cached output after300ms quiet.",
+    "All source/artifact/image hashes match current files."
+  ],
+  "failed_attempts": [
+    "Standalone root1 used an exact-color sample in a native interpolated boundary; root2 samples the interior. No interpolation threshold changed.",
+    "Workflow root1 had an incorrect probe fit-state expectation after fff; root2 fixes the predicate and compares each edit to its prior frame. PDE unchanged."
+  ],
+  "limits": [
+    "Native JAVA2D density1 RGB/ARGB transport and sampling, not portable raster output or source-sketch recreation.",
+    "Explicit integer crop and destination frame; no automatic extraction, rotation or minification quality claim.",
+    "Source bundle and extracted consumer pending."
+  ]
+}

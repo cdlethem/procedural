@@ -2,6 +2,45 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "placement-image-marks",
+      "title": "Image placement: crop, fit, align and mask",
+      "category": "Accepted native Java workflow \u2014 packaging pending",
+      "description": "Same source and frame: contain, cover, stretch, central crop, end alignment and shared ellipse mask.",
+      "evidence": "evidence/workflows/placement-image-marks/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/placement-image-marks-native-root2/native/baseline.png",
+          "sha256": "11a0fcc2fd63ecaf01eac6a019bbfea6af1ea0ce128d3c6857fd1585e2780683"
+        },
+        {
+          "label": "cover",
+          "path": ".work/placement-image-marks-native-root2/native/cover.png",
+          "sha256": "69f85c42ff7c760c3785152c49ef07c00b28f570050269b315d2688ce13ca966"
+        },
+        {
+          "label": "stretch",
+          "path": ".work/placement-image-marks-native-root2/native/stretch.png",
+          "sha256": "4fd4fba8068a0c44aec76b10f187672d9236e19e746fb4fd76fdff16954bff3c"
+        },
+        {
+          "label": "cropped",
+          "path": ".work/placement-image-marks-native-root2/native/cropped.png",
+          "sha256": "9909b9492ad8420556bb53678cae7962e255050404c6a91d62f8ea5556fe6f48"
+        },
+        {
+          "label": "aligned-end",
+          "path": ".work/placement-image-marks-native-root2/native/aligned-end.png",
+          "sha256": "eccf19443a6273c9ec2400a7f85f3a21febc1a1b6df9c6ed69beaaedfe022da7"
+        },
+        {
+          "label": "masked",
+          "path": ".work/placement-image-marks-native-root2/native/masked.png",
+          "sha256": "e419cfa85dedd841dd63552508867a29d570d0efe7cd97c71d855dd2faa15b89"
+        }
+      ]
+    },
+    {
       "id": "mask-marks",
       "title": "MaskMarks: shared shape masks for images and marks",
       "category": "Accepted Java workflow \u2014 packaging pending",

@@ -32,6 +32,7 @@ open the named example from Processing's contributed-library examples, and save 
 | Layer a banded landscape | [LandscapeMarks](landscape-marks.md) | A working composition of retained regions and marks. |
 | Bend an already drawn pattern | [WarpMarks](warp-marks.md) | Bilinear raster sampling from supplied displacement coordinates. |
 | Fill partitions with local drawings or windows onto a larger image | [LayerMarks](layer-marks.md) | Independent region layout, content callbacks, coordinate origins and feathered visibility. |
+| Fit a picture or selected snippet into a frame | [PlacementImageMarks](placement-image-marks.md) | Explicit crop, contain/cover/stretch and alignment; reuse the placed layer with masks. |
 | Reveal different drawings through the same shapes | [MaskMarks](mask-marks.md) | Retained transparent layers, reusable alpha masks and explicit two-content crossfades. |
 | Decide where colors transition | [RampMarks](ramp-marks.md) | Unequally spaced color stops, independent of geometry. |
 | Recreate the Curvespace composition | [Curvespace recreation guide](curvespace-recreation.md) | A separately maintained P2D example using accepted operations; it is not packaged as a shipped starter. |

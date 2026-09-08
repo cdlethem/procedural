@@ -1,5 +1,32 @@
 # Project state
 
+## Java0.28 accepted — CP25
+
+Root distribution review evidence/distribution/cp25-java-review.json. Archive
+.work/dist/cp25-java-source-root1/procedurals-java-source-dev.zip SHA256
+2e44847da80a46969b62da4b157be1a56ebbea5dbc4b5eeb7ab23eae2c918ed8,387members.26 operations/29 workflows/30 class reference pages.
+All29 extracted PDEs compile;8-state native PlacementImageMarks passes, every PNG equals
+root-reviewed candidate. All prior core/adapter class bytes unchanged. Javadoc warnings
+remain explicitly recorded. Commit/push pending final remote check.
+
+Next bounded root architecture work: reconcile remaining Java completion requirements
+against current capabilities; select evidenced image-derived controls or postprocessing
+gaps, and close rare-family dispositions with honest in/out/unknown reasons. Do not infer
+feature-completeness from29 workflows. Ports/Sol paused; Android draft untouched.
+Previous turn progressed native acceptance; this turn completed distribution acceptance.
+
+## Image placement native accepted; packaging next
+
+Root review: evidence/workflows/placement-image-marks/root-review.json. Current adapter
+Java2DImagePlacement native accepted with explicit crop/contain/cover/stretch/alignment;
+PlacementImageMarks8-state workflow passed .work/placement-image-marks-native-root2.
+Root inspected6 actual views and verified every source/artifact/image hash. Root rewrote
+the insufficient worker standalone probe; root-review2 passed both axes/clip/alpha/errors.
+Preserved failed attempts and reasons in review. Gallery159images/35groups.
+Next: integrate Java0.28 source manifest/example/docs and extracted native distribution,
+then reviewed commit/push. Latest pushed baseline remains2885324e (Java0.27).
+No new portable operation:26 operations remain. Ports/Sol paused; Android draft untouched.
+
 ## Java0.27 accepted — CP24
 
 Root distribution review: evidence/distribution/cp24-java-review.json. Archive
@@ -11,9 +38,26 @@ and all PNGs identical to root-reviewed candidate. All113 prior core classes unc
 only Java2DRegions prior adapter class changed for tested RGB opacity normalization.
 Javadoc664warnings, no errors; no documentation-completeness claim.
 
-Next: commit/push reviewed CP24 checkpoint after final remote check. Then explicit image
-crop/fit and transparency-safe placement is next composition gap; specification needed
-before implementation. Ports/Sol paused; preserve unrelated Android ProfileMarks edit.
+Published CP24 on main at2885324e8af65b124be64293085139cb990d12f6 after remote0/0 check.
+Root image-placement-brief.md now records explicit crop/fit/alignment and alpha-edge requirements.
+Native study complete: all512 pixels of hidden blue/green/black variants equal; visible
+RGB stays red and isolated crop stays red. Root chose native adapter and froze
+design/capabilities/java2d-image-placement-adapter.md. Terra retained_rect_core implements
+new adapter/probe only. Root authored candidate PlacementImageMarks PDE with fit/crop/
+alignment/mask edits and cached save; compilation/native workflow proof pending.
+Root reviewed first implementation/probe: fixed provenance year; first green probe missed
+required align/cover/alpha/offcanvas/error scenarios and is explicitly insufficient.
+Root found the second worker probe still omitted required cases and took over. Rewritten
+Java2DImagePlacementNative.java now covers both axes/cover versus stretch/alpha/full outside
+buffers/errors. Root native .work/image-placement-root-review2/result.json passes. Prior
+root1 failed because an intended exact cover sample lay in a native interpolated boundary;
+root2 uses interior samples, preserving the failure. Adapter hash f858ecac45bce24fb17472ef1083326febaec018b2f52b44000e747235153123 frozen.
+layer_marks_probe prepared workflow tooling and first native root1 failed on its wrong
+fit-state expectation after fff (sketch correctly stays CONTAIN). Root identified this and
+a vacuous null-hash edit comparison; worker authorized probe-only fixes and fresh run.
+Root preregistered placement-image-marks-native-plan.md and authored user guide. Private
+scaling study observation is recorded in evidence/parameter-experiments/spatial-composition/
+image-placement-study.json. No public image-placement acceptance yet. Ports/Sol paused; preserve unrelated Android ProfileMarks edit.
 Previous goal turn was progress: native acceptance and candidate integration. Current turn
 completed archive/extracted-consumer evidence and distribution acceptance.
 

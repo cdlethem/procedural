@@ -1,16 +1,16 @@
 # Build the Java library from source
 
-The source-bundle builder assembles Java0.27 from checked-in sources: 26 operations and
-28 editable workflows. LayerMarks adds partition content callbacks, image snippets, soft
-cutouts and two-input crossfades; MaskMarks reuses drawn alpha masks across images and marks. The archive also includes source-derived Java reference
+The source-bundle builder assembles Java0.28 from checked-in sources: 26 operations and
+29 editable workflows. LayerMarks adds partition content callbacks, image snippets, soft
+cutouts and two-input crossfades; MaskMarks reuses drawn alpha masks across images and marks. PlacementImageMarks adds explicit crop, fit and alignment before mask composition. The archive also includes source-derived Java reference
 pages for core and Processing adapter classes in `reference/index.html`.
 Build reports record assembly; distribution acceptance requires a separate root review.
-The prior Java0.26 review remains in `evidence/distribution/cp23-java-review.json`.
+The prior Java0.27 review remains in `evidence/distribution/cp24-java-review.json`.
 
 Supply Python 3.11 or newer, a JDK supporting `javac --release 8`, the audited
 Processing 4.5.6 `core.jar`, the accepted GlyphMarks DejaVu Sans font,
 and its complete license notice. Fonts and toolchains are external inputs, not tracked
-project assets. The font is needed to preserve the complete28-starter bundle; it is not
+project assets. The font is needed to preserve the complete29-starter bundle; it is not
 silently omitted or replaced by a system fallback.
 
 ```sh

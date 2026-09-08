@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "inputs_before": {
+    "/home/colin/dev/procedural/packages/java-processing/src/main/java/org/procedurals/processing/Java2DImagePlacement.java": "f858ecac45bce24fb17472ef1083326febaec018b2f52b44000e747235153123",
+    "/home/colin/dev/procedural/tests/native/Java2DImagePlacementNative.java": "d482b7a3232901b6912f5d641caea008239013d0e1426084dc7e5c7a7722e7a3",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "/home/colin/dev/procedural/.work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals.jar": "c1474f3d0dacf609711472d08feed1ad0aa7ecc51268867303200d43368c6544",
+    "/home/colin/dev/procedural/.work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals-processing-adapter.jar": "1a6b2b67f13d1f45bb3833b805e31a690fecbaa0a6bcfe50827d86df8fea2d19",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    "/home/colin/dev/procedural/tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d"
+  },
+  "commands": [
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "8",
+        "-cp",
+        "/home/colin/dev/procedural/.work/image-placement-root-review2/classes:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar:/home/colin/dev/procedural/.work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals-processing-adapter.jar",
+        "-d",
+        "/home/colin/dev/procedural/.work/image-placement-root-review2/classes",
+        "/home/colin/dev/procedural/packages/java-processing/src/main/java/org/procedurals/processing/Java2DImagePlacement.java",
+        "/home/colin/dev/procedural/tests/native/Java2DImagePlacementNative.java"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "tools/with_native_render_lock.py",
+        "--timeout",
+        "60",
+        "--",
+        "xvfb-run",
+        "-a",
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/image-placement-root-review2/classes:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar:/home/colin/dev/procedural/.work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals-processing-adapter.jar",
+        "Java2DImagePlacementNative"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"measurement\":{\"width\":720,\"height\":480,\"elapsed_ns\":6381814,\"checksum\":\"16835570403249335456\"}}\n{\"status\":\"passed\"}\n",
+      "stderr": ""
+    }
+  ],
+  "inputs_after": {
+    "/home/colin/dev/procedural/packages/java-processing/src/main/java/org/procedurals/processing/Java2DImagePlacement.java": "f858ecac45bce24fb17472ef1083326febaec018b2f52b44000e747235153123",
+    "/home/colin/dev/procedural/tests/native/Java2DImagePlacementNative.java": "d482b7a3232901b6912f5d641caea008239013d0e1426084dc7e5c7a7722e7a3",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "/home/colin/dev/procedural/.work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals.jar": "c1474f3d0dacf609711472d08feed1ad0aa7ecc51268867303200d43368c6544",
+    "/home/colin/dev/procedural/.work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals-processing-adapter.jar": "1a6b2b67f13d1f45bb3833b805e31a690fecbaa0a6bcfe50827d86df8fea2d19",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    "/home/colin/dev/procedural/tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d"
+  }
+}
