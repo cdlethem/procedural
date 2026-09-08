@@ -1,5 +1,18 @@
 # Project state
 
+## JavaScript GrainMarks distribution reviewed; Python consumer build in progress
+
+Root accepted revised javascript-grain2 npm/browser archives after verifying all input/
+member hashes, exact source copies, two model import rewrites and prior native/export
+bindings. Root required meaningful installed direct-module identity and full source-to-
+consumer geometry checks; six configurations pass for installed and extracted consumers.
+Evidence: cp5-javascript.json and cp5-javascript-review.json. No browser rerender.
+Python Terra build .work/dist/cp5/python-grain2 was live PID2781702 at last observation;
+agent owns process and will report terminal result. Earliergrain1 staging failure retained.
+Root has prepared design/port-batch-04.md for endpoint branching, but implementation waits
+for triangle distribution closure. Counts unchanged: Java15/15, nine core/native ports,
+seven complete four-target distributions until Python CP5 acceptance.
+
 ## Android GrainMarks local distribution accepted
 
 Built .work/dist/cp5/android-grain1/procedurals-grain-marks-android-0.5.0.zip and compiled

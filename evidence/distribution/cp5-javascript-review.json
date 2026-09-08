@@ -1,0 +1,28 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local JavaScript0.5 npm tarball and installable GrainMarks browser starter; no registry publication or new native-render claim.",
+  "implementation_sha256": {
+    "tools/build_grain_marks_javascript.mjs": "4bd384b1c70ae33c75176f6724b80116267e9247aee9b364687808cde21f8818",
+    "packages/javascript/src/index.js": "ed34f0110894b8cc0e47cf6ae1b291130ecf9d90a93f98536a1d2f20fef16d68",
+    "packages/javascript/src/triangle-points.js": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp5-javascript.json": "91483015bba65ece0bcec0f214a3d92ebaa78146ca617ed84831dddde0e9212c",
+    "evidence/conformance/triangle-p5js-native-root-review.json": "4ea01a2b503c7f7a38ed77e023790c8eecbc84fb1136a8000808324f6dc336a0",
+    "evidence/conformance/triangle-export-compatibility-review.json": "d4079ee17ac9a4bdd5f1232600de6c29a5f51f4b156bf6338c64cc148e2a840b"
+  },
+  "root_findings": [
+    "Root required installed direct triangle-module identity instead of reimporting the same index, and original-source geometry comparison instead of only comparing two packaged consumers. Revised build passes those checks for six complete compositions.",
+    "Verified all input and archive member hashes; source module/example copies are byte-exact. Browser model changes only two imports, sketch unchanged, HTML adds import map and local dependencies are pinned.",
+    "Actual installed and extracted consumers resolve installed modules and match full source point fingerprints for uniform, both biased modes, density/seed edits and26-triangle transfer. Generated server.mjs syntax checked.",
+    "Prior core/native/export acceptance bindings remain unchanged and valid. No native rerender required for these exact source copies."
+  ],
+  "remaining": [
+    "Python CP5 local distribution",
+    "Six further operation ports and later roadmap milestones"
+  ]
+}
