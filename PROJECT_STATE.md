@@ -1,5 +1,15 @@
 # Project state
 
+## Quadrant p5.js public integration accepted
+
+Added the exact quadrant re-export and root-reviewed successor compatibility record,
+preserving old placement review bytes and validating all unchanged dependencies. Negative
+checks reject edited helpers, source, evidence and historical snapshots. Seven operations
+now have p5.js core/native attestations; quadrant technique/recreation and distribution
+remain pending, as do Python/Android quadrant ports. Native evidence still binds the
+unchanged directly imported module. Root review: evidence/conformance/quadrant-p5js-root-review.json.
+Next batch the remaining target implementations against the same frozen contract.
+
 ## Quadrant JavaScript core and RegionMarks native checkpoint reviewed
 
 Root completed the delegated core corrections and readable implementation. All34 golden

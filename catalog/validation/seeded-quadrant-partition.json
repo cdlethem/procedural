@@ -119,10 +119,76 @@
     },
     "p5js": {
       "core": {
-        "status": "unvalidated"
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/javascript/src/index.js": "e3e44c53386361215a9f709b011884128be047878c446f4ed3fe407294a1522c",
+          "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+          "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+          "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+          "packages/javascript/examples/region-marks/sketch.js": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a",
+          "packages/javascript/examples/region-marks/index.html": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d",
+          "tests/native/quadrant-partition-javascript.mjs": "dde5371705801cfeaf235777b6c5eae6580bf192385b4591aafe5b5b683c10c4",
+          "tests/native/region-marks-browser.mjs": "75fc8fd80364c6daefb9403c711ed76d110436b0fcbdb5e1c504e42ebff616d2",
+          "tests/native/region-marks-javascript.mjs": "73f8c8ea4d15c93bc467f621fd60beaefc9a4ff3df9342fdc61355361650c56d",
+          "tools/run_p5_region_marks.mjs": "9c68c35bc9eafd2d4cbd4192d7098d5d580ad25e4c051329b696c1f8aa60d6ae"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/quadrant-partition-javascript.json": "73e76517fd24be9cef9ef2af8604c6797c28040e446d5ddf5136768ec4904c0f",
+          "evidence/conformance/region-marks-javascript-parity.json": "cbea311417d025dddeb7345a0f0ac0544f2d4412c99f88fab177969a4cf22f8c"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/quadrant-partition-javascript.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/region-marks-javascript-parity.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/quadrant-p5js-root-review.json",
+          "sha256": "b79e978815ee974a824ff09dd6bca44988a0777dcc4117f0aeecbd4e5bcebbcb"
+        },
+        "runtime_profile": {
+          "name": "Node v22.22.1; p5.js2.3.2; Chromium153.0.8010.12",
+          "scope": "Actual Node module fixtures and native carriers; private test-copy RNG states, five Java/JS bit-exact compositions."
+        }
       },
       "native": {
-        "status": "unvalidated"
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/javascript/src/index.js": "e3e44c53386361215a9f709b011884128be047878c446f4ed3fe407294a1522c",
+          "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+          "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+          "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+          "packages/javascript/examples/region-marks/sketch.js": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a",
+          "packages/javascript/examples/region-marks/index.html": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d",
+          "tests/native/quadrant-partition-javascript.mjs": "dde5371705801cfeaf235777b6c5eae6580bf192385b4591aafe5b5b683c10c4",
+          "tests/native/region-marks-browser.mjs": "75fc8fd80364c6daefb9403c711ed76d110436b0fcbdb5e1c504e42ebff616d2",
+          "tests/native/region-marks-javascript.mjs": "73f8c8ea4d15c93bc467f621fd60beaefc9a4ff3df9342fdc61355361650c56d",
+          "tools/run_p5_region_marks.mjs": "9c68c35bc9eafd2d4cbd4192d7098d5d580ad25e4c051329b696c1f8aa60d6ae"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/p5js-region-marks.json": "c06492648a054b760433bebbb13c803607d851e8864e128b2af2057854310d77"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/p5js-region-marks.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/quadrant-p5js-root-review.json",
+          "sha256": "b79e978815ee974a824ff09dd6bca44988a0777dcc4117f0aeecbd4e5bcebbcb"
+        },
+        "runtime_profile": {
+          "name": "Node v22.22.1; p5.js2.3.2; Chromium153.0.8010.12",
+          "scope": "p5.js2.3.2/Chromium153;640x640 density1; seven composed frames, retained edits, authored substitution and cached save."
+        }
       },
       "technique": {
         "status": "unvalidated"

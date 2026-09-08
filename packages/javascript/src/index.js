@@ -3,3 +3,4 @@ export { gradientNoise2D01, GradientNoise2D01Error } from "./gradient-noise-2d-0
 export { cyclicPalette, CyclicPaletteError } from "./cyclic-palette.js";
 export { gradientPath2D, GradientPathError } from "./gradient-path.js";
 export { orderedCircleFilter2D, seededCirclePlacement2D, CirclePlacementError } from "./circle-placements.js";
+export { seededQuadrantPartition2D, PartitionError } from "./quadrant-partition.js";

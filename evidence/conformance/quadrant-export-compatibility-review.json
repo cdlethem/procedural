@@ -1,0 +1,33 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Exact additive quadrant JavaScript export; preserve immutable placement export review and its prior verifier bytes. No operation semantics or native evidence is replaced.",
+  "previous_review_sha256": "5b4415214d1a88d2558efefbcda38f3f7400409e61c3c11a8e0c5824c0172615",
+  "implementation_sha256": {
+    "tools/reviewed_export_extension.py": "3006a86c71b03ba3b9c17e72f4851025aef60ea772918ff5201b3b013aeffdac",
+    "packages/javascript/src/index.js": "e3e44c53386361215a9f709b011884128be047878c446f4ed3fe407294a1522c",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/quadrant-p5js-implementation-review.json": "f84de3309c0b1dbdf13a6ef1328d8084b8e0e7a594684732c26da913d4edfa36",
+    "evidence/conformance/quadrant-partition-javascript.json": "73e76517fd24be9cef9ef2af8604c6797c28040e446d5ddf5136768ec4904c0f",
+    "evidence/conformance/p5js-region-marks.json": "c06492648a054b760433bebbb13c803607d851e8864e128b2af2057854310d77"
+  },
+  "previous_bytes": {
+    "packages/javascript/src/index.js": "export { regularGrid, RegularGridError } from \"./regular-grid.js\";\nexport { gradientNoise2D01, GradientNoise2D01Error } from \"./gradient-noise-2d-01.js\";\nexport { cyclicPalette, CyclicPaletteError } from \"./cyclic-palette.js\";\nexport { gradientPath2D, GradientPathError } from \"./gradient-path.js\";\nexport { orderedCircleFilter2D, seededCirclePlacement2D, CirclePlacementError } from \"./circle-placements.js\";\n",
+    "tools/reviewed_export_extension.py": "\"\"\"Exact, root-reviewed entrypoint compatibility; never rewrites historical evidence.\"\"\"\nimport hashlib\nimport json\n\nREVIEW = 'evidence/conformance/placement-export-compatibility-review.json'\nPATHS = frozenset(('packages/javascript/src/index.js', 'packages/python/procedurals/__init__.py'))\n\n\ndef historical_export_bytes(root, relative, expected):\n    \"\"\"Return reviewed prior bytes only for the exact current exports and dependencies.\"\"\"\n    if relative not in PATHS:\n        return None\n    try:\n        review = json.loads((root / REVIEW).read_text())\n        if (review.get('status'), review.get('owner'), review.get('reviewer')) != ('accepted', 'root', 'root'):\n            return None\n        entries = review['extensions']\n        if set(entries) != PATHS:\n            return None\n        for key in ('implementation_sha256', 'evidence_sha256'):\n            values = review[key]\n            if not isinstance(values, dict) or not values:\n                return None\n            for name, digest in values.items():\n                path = (root / name).resolve()\n                path.relative_to(root.resolve())\n                if hashlib.sha256(path.read_bytes()).hexdigest() != digest:\n                    return None\n        entry = entries[relative]\n        before = entry['before'].encode('utf-8')\n        after = entry['after'].encode('utf-8')\n        if hashlib.sha256(before).hexdigest() != expected or (root / relative).read_bytes() != after:\n            return None\n        return before\n    except (OSError, ValueError, KeyError, TypeError, AttributeError):\n        return None\n"
+  },
+  "extensions": {
+    "packages/javascript/src/index.js": {
+      "before": "export { regularGrid, RegularGridError } from \"./regular-grid.js\";\nexport { gradientNoise2D01, GradientNoise2D01Error } from \"./gradient-noise-2d-01.js\";\nexport { cyclicPalette, CyclicPaletteError } from \"./cyclic-palette.js\";\nexport { gradientPath2D, GradientPathError } from \"./gradient-path.js\";\nexport { orderedCircleFilter2D, seededCirclePlacement2D, CirclePlacementError } from \"./circle-placements.js\";\n",
+      "after": "export { regularGrid, RegularGridError } from \"./regular-grid.js\";\nexport { gradientNoise2D01, GradientNoise2D01Error } from \"./gradient-noise-2d-01.js\";\nexport { cyclicPalette, CyclicPaletteError } from \"./cyclic-palette.js\";\nexport { gradientPath2D, GradientPathError } from \"./gradient-path.js\";\nexport { orderedCircleFilter2D, seededCirclePlacement2D, CirclePlacementError } from \"./circle-placements.js\";\nexport { seededQuadrantPartition2D, PartitionError } from \"./quadrant-partition.js\";\n"
+    }
+  },
+  "review": [
+    "Root reviewed the sole appended re-export line and definitions-only quadrant module.",
+    "Node imported all seven operation exports; both quadrant export identities match the reviewed direct module.",
+    "Root verified the before bytes against the unchanged placement review. Only entrypoints may be returned by the compatibility helper; historical helper bytes exist solely to validate the prior immutable review.",
+    "Earlier operation source/fixture/native records must still validate independently; this review does not grant target support."
+  ]
+}
