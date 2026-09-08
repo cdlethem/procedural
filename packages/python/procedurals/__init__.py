@@ -56,3 +56,5 @@ from .target_springs import SpringError, target_springs_2d
 __all__ += ["SpringError", "target_springs_2d"]
 from .occupied_lattice_paths import LatticeError, occupied_lattice_paths_2d
 __all__ += ["LatticeError", "occupied_lattice_paths_2d"]
+from .line_pool import LinePoolError, seeded_line_pool_2d
+__all__ += ["LinePoolError", "seeded_line_pool_2d"]

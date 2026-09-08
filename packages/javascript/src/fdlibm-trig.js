@@ -1,11 +1,12 @@
 /**
- * fdlibm5.3 sin/cos, ported directly from the netlib fdlibm 5.3 distribution
- * (s_sin.c, s_cos.c, k_sin.c, k_cos.c, e_rem_pio2.c, k_rem_pio2.c, s_scalbn.c;
- * Copyright (C) 1993 by Sun Microsystems, Inc.; "Permission to use, copy,
- * modify, and distribute this software is freely granted, provided that this
- * notice is preserved.") for bit-exact parity with java.lang.StrictMath.sin/cos,
- * which is specified to match fdlibm5.3. Every function below is a line-for-line
- * translation of the corresponding C function; comments cite the source file.
+ * fdlibm5.3 sin/cos/atan/atan2, ported directly from the netlib fdlibm 5.3
+ * distribution (s_sin.c, s_cos.c, k_sin.c, k_cos.c, e_rem_pio2.c, k_rem_pio2.c,
+ * s_scalbn.c, s_atan.c, e_atan2.c; Copyright (C) 1993 by Sun Microsystems, Inc.;
+ * "Permission to use, copy, modify, and distribute this software is freely
+ * granted, provided that this notice is preserved.") for bit-exact parity with
+ * java.lang.StrictMath.sin/cos/atan2, which is specified to match fdlibm5.3.
+ * Every function below is a line-for-line translation of the corresponding C
+ * function; comments cite the source file.
  */
 
 // --- shared 64-bit bit-pattern scratch (high/low 32-bit words, big-endian). ---
@@ -376,5 +377,104 @@ export function fdlibmCos(x) {
     case 1: return -kernelSin(y[0], y[1], 1);
     case 2: return -kernelCos(y[0], y[1]);
     default: return kernelSin(y[0], y[1], 1);
+  }
+}
+
+// s_atan.c
+const ATAN_HI = [
+  4.63647609000806093515e-01, 7.85398163397448278999e-01,
+  9.82793723247329054082e-01, 1.57079632679489655800e+00,
+];
+const ATAN_LO = [
+  2.26987774529616870924e-17, 3.06161699786838301793e-17,
+  1.39033110312309984516e-17, 6.12323399573676603587e-17,
+];
+const ATAN_AT = [
+  3.33333333333329318027e-01, -1.99999999998764832476e-01,
+  1.42857142725034663711e-01, -1.11111104054623557880e-01,
+  9.09088713343650656196e-02, -7.69187620504482999495e-02,
+  6.66107313738753120669e-02, -5.83357013379057348645e-02,
+  4.97687799461593236017e-02, -3.65315727442169155270e-02,
+  1.62858201153657823623e-02,
+];
+const ATAN_HUGE = 1.0e300;
+export function fdlibmAtan(x) {
+  let hx = hi32(x);
+  let ix = hx & 0x7fffffff;
+  if (ix >= 0x44100000) {
+    if (ix > 0x7ff00000 || (ix === 0x7ff00000 && lo32(x) !== 0)) return x + x;
+    return hx > 0 ? ATAN_HI[3] + ATAN_LO[3] : -ATAN_HI[3] - ATAN_LO[3];
+  }
+  let id;
+  if (ix < 0x3fdc0000) {
+    if (ix < 0x3e200000) {
+      if (ATAN_HUGE + x > 1.0) return x;
+    }
+    id = -1;
+  } else {
+    x = Math.abs(x);
+    if (ix < 0x3ff30000) {
+      if (ix < 0x3fe60000) { id = 0; x = (2.0 * x - 1.0) / (2.0 + x); }
+      else { id = 1; x = (x - 1.0) / (x + 1.0); }
+    } else if (ix < 0x40038000) { id = 2; x = (x - 1.5) / (1.0 + 1.5 * x); }
+    else { id = 3; x = -1.0 / x; }
+  }
+  const z = x * x;
+  const w = z * z;
+  const s1 = z * (ATAN_AT[0] + w * (ATAN_AT[2] + w * (ATAN_AT[4] + w * (ATAN_AT[6] + w * (ATAN_AT[8] + w * ATAN_AT[10])))));
+  const s2 = w * (ATAN_AT[1] + w * (ATAN_AT[3] + w * (ATAN_AT[5] + w * (ATAN_AT[7] + w * ATAN_AT[9]))));
+  if (id < 0) return x - x * (s1 + s2);
+  const result = ATAN_HI[id] - ((x * (s1 + s2) - ATAN_LO[id]) - x);
+  return hx < 0 ? -result : result;
+}
+
+// e_atan2.c
+const ATAN2_TINY = 1.0e-300;
+const ATAN2_PI_O_4 = 7.8539816339744827900e-01;
+const ATAN2_PI_O_2 = 1.5707963267948965580e+00;
+const ATAN2_PI = 3.1415926535897931160e+00;
+const ATAN2_PI_LO = 1.2246467991473531772e-16;
+function lowNonzeroMask(lx) { return (lx | -lx) >>> 31; }
+export function fdlibmAtan2(y, x) {
+  const hx = hi32(x), ix = hx & 0x7fffffff, lx = lo32(x);
+  const hy = hi32(y), iy = hy & 0x7fffffff, ly = lo32(y);
+  if ((ix | lowNonzeroMask(lx)) > 0x7ff00000 || (iy | lowNonzeroMask(ly)) > 0x7ff00000) return x + y;
+  if ((((hx - 0x3ff00000) | lx) >>> 0) === 0) return fdlibmAtan(y);
+  const m = ((hy >>> 31) & 1) | ((hx >>> 30) & 2);
+  if ((iy | ly) === 0) {
+    switch (m) {
+      case 0: case 1: return y;
+      case 2: return ATAN2_PI + ATAN2_TINY;
+      default: return -ATAN2_PI - ATAN2_TINY;
+    }
+  }
+  if ((ix | lx) === 0) return hy < 0 ? -ATAN2_PI_O_2 - ATAN2_TINY : ATAN2_PI_O_2 + ATAN2_TINY;
+  if (ix === 0x7ff00000) {
+    if (iy === 0x7ff00000) {
+      switch (m) {
+        case 0: return ATAN2_PI_O_4 + ATAN2_TINY;
+        case 1: return -ATAN2_PI_O_4 - ATAN2_TINY;
+        case 2: return 3.0 * ATAN2_PI_O_4 + ATAN2_TINY;
+        default: return -3.0 * ATAN2_PI_O_4 - ATAN2_TINY;
+      }
+    }
+    switch (m) {
+      case 0: return 0.0;
+      case 1: return -0.0;
+      case 2: return ATAN2_PI + ATAN2_TINY;
+      default: return -ATAN2_PI - ATAN2_TINY;
+    }
+  }
+  if (iy === 0x7ff00000) return hy < 0 ? -ATAN2_PI_O_2 - ATAN2_TINY : ATAN2_PI_O_2 + ATAN2_TINY;
+  const k = (iy - ix) >> 20;
+  let z;
+  if (k > 60) z = ATAN2_PI_O_2 + 0.5 * ATAN2_PI_LO;
+  else if (hx < 0 && k < -60) z = 0.0;
+  else z = fdlibmAtan(Math.abs(y / x));
+  switch (m) {
+    case 0: return z;
+    case 1: return withHi(z, hi32(z) ^ 0x80000000);
+    case 2: return ATAN2_PI - (z - ATAN2_PI_LO);
+    default: return (z - ATAN2_PI_LO) - ATAN2_PI;
   }
 }

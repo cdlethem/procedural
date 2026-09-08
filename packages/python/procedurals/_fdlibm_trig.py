@@ -1,15 +1,16 @@
-"""fdlibm5.3 sin/cos, ported directly from the netlib fdlibm 5.3 distribution
-(s_sin.c, s_cos.c, k_sin.c, k_cos.c, e_rem_pio2.c, k_rem_pio2.c, s_scalbn.c;
-Copyright (C) 1993 by Sun Microsystems, Inc.; "Permission to use, copy, modify,
-and distribute this software is freely granted, provided that this notice is
-preserved.") for bit-exact parity with java.lang.StrictMath.sin/cos, which is
-specified to match fdlibm5.3. Every function below is a line-for-line
-translation of the corresponding C function; comments cite the source file.
+"""fdlibm5.3 sin/cos/atan/atan2, ported directly from the netlib fdlibm 5.3
+distribution (s_sin.c, s_cos.c, k_sin.c, k_cos.c, e_rem_pio2.c, k_rem_pio2.c,
+s_scalbn.c, s_atan.c, e_atan2.c; Copyright (C) 1993 by Sun Microsystems, Inc.;
+"Permission to use, copy, modify, and distribute this software is freely
+granted, provided that this notice is preserved.") for bit-exact parity with
+java.lang.StrictMath.sin/cos/atan2, which is specified to match fdlibm5.3.
+Every function below is a line-for-line translation of the corresponding C
+function; comments cite the source file.
 """
 import math
 import struct
 
-__all__ = ["fdlibm_sin", "fdlibm_cos"]
+__all__ = ["fdlibm_sin", "fdlibm_cos", "fdlibm_atan", "fdlibm_atan2"]
 
 
 def _bits(x):
@@ -448,3 +449,135 @@ def fdlibm_cos(x):
     if branch == 2:
         return -_kernel_cos(y[0], y[1])
     return _kernel_sin(y[0], y[1], 1)
+
+
+# s_atan.c
+_ATAN_HI = [
+    4.63647609000806093515e-01, 7.85398163397448278999e-01,
+    9.82793723247329054082e-01, 1.57079632679489655800e+00,
+]
+_ATAN_LO = [
+    2.26987774529616870924e-17, 3.06161699786838301793e-17,
+    1.39033110312309984516e-17, 6.12323399573676603587e-17,
+]
+_ATAN_AT = [
+    3.33333333333329318027e-01, -1.99999999998764832476e-01,
+    1.42857142725034663711e-01, -1.11111104054623557880e-01,
+    9.09088713343650656196e-02, -7.69187620504482999495e-02,
+    6.66107313738753120669e-02, -5.83357013379057348645e-02,
+    4.97687799461593236017e-02, -3.65315727442169155270e-02,
+    1.62858201153657823623e-02,
+]
+_ATAN_HUGE = 1.0e300
+
+
+def fdlibm_atan(x):
+    """fdlibm5.3 atan(x); bit-exact with java.lang.StrictMath.atan."""
+    hx = _hi32(x)
+    ix = hx & 0x7fffffff
+    if ix >= 0x44100000:
+        if ix > 0x7ff00000 or (ix == 0x7ff00000 and _lo32(x) != 0):
+            return x + x
+        return _ATAN_HI[3] + _ATAN_LO[3] if hx > 0 else -_ATAN_HI[3] - _ATAN_LO[3]
+    if ix < 0x3fdc0000:
+        if ix < 0x3e200000:
+            if _ATAN_HUGE + x > 1.0:
+                return x
+        id_ = -1
+    else:
+        x = abs(x)
+        if ix < 0x3ff30000:
+            if ix < 0x3fe60000:
+                id_ = 0
+                x = (2.0 * x - 1.0) / (2.0 + x)
+            else:
+                id_ = 1
+                x = (x - 1.0) / (x + 1.0)
+        elif ix < 0x40038000:
+            id_ = 2
+            x = (x - 1.5) / (1.0 + 1.5 * x)
+        else:
+            id_ = 3
+            x = -1.0 / x
+    z = x * x
+    w = z * z
+    s1 = z * (_ATAN_AT[0] + w * (_ATAN_AT[2] + w * (_ATAN_AT[4] + w * (_ATAN_AT[6] + w * (_ATAN_AT[8] + w * _ATAN_AT[10])))))
+    s2 = w * (_ATAN_AT[1] + w * (_ATAN_AT[3] + w * (_ATAN_AT[5] + w * (_ATAN_AT[7] + w * _ATAN_AT[9]))))
+    if id_ < 0:
+        return x - x * (s1 + s2)
+    result = _ATAN_HI[id_] - ((x * (s1 + s2) - _ATAN_LO[id_]) - x)
+    return -result if hx < 0 else result
+
+
+# e_atan2.c
+_ATAN2_TINY = 1.0e-300
+_ATAN2_PI_O_4 = 7.8539816339744827900e-01
+_ATAN2_PI_O_2 = 1.5707963267948965580e+00
+_ATAN2_PI = 3.1415926535897931160e+00
+_ATAN2_PI_LO = 1.2246467991473531772e-16
+
+
+def _ulo32(x):
+    return _bits(x) & 0xFFFFFFFF
+
+
+def _low_nonzero_mask(ulx):
+    neg = (-ulx) & 0xFFFFFFFF
+    return (ulx | neg) >> 31
+
+
+def fdlibm_atan2(y, x):
+    """fdlibm5.3 atan2(y, x); bit-exact with java.lang.StrictMath.atan2."""
+    hx = _hi32(x)
+    ix = hx & 0x7fffffff
+    ulx = _ulo32(x)
+    lx = _lo32(x)
+    hy = _hi32(y)
+    iy = hy & 0x7fffffff
+    uly = _ulo32(y)
+    ly = _lo32(y)
+    if (ix | _low_nonzero_mask(ulx)) > 0x7ff00000 or (iy | _low_nonzero_mask(uly)) > 0x7ff00000:
+        return x + y
+    if (hx - 0x3ff00000) | lx == 0:
+        return fdlibm_atan(y)
+    m = ((hy >> 31) & 1) | ((hx >> 30) & 2)
+    if (iy | ly) == 0:
+        if m in (0, 1):
+            return y
+        if m == 2:
+            return _ATAN2_PI + _ATAN2_TINY
+        return -_ATAN2_PI - _ATAN2_TINY
+    if (ix | lx) == 0:
+        return -_ATAN2_PI_O_2 - _ATAN2_TINY if hy < 0 else _ATAN2_PI_O_2 + _ATAN2_TINY
+    if ix == 0x7ff00000:
+        if iy == 0x7ff00000:
+            if m == 0:
+                return _ATAN2_PI_O_4 + _ATAN2_TINY
+            if m == 1:
+                return -_ATAN2_PI_O_4 - _ATAN2_TINY
+            if m == 2:
+                return 3.0 * _ATAN2_PI_O_4 + _ATAN2_TINY
+            return -3.0 * _ATAN2_PI_O_4 - _ATAN2_TINY
+        if m == 0:
+            return 0.0
+        if m == 1:
+            return -0.0
+        if m == 2:
+            return _ATAN2_PI + _ATAN2_TINY
+        return -_ATAN2_PI - _ATAN2_TINY
+    if iy == 0x7ff00000:
+        return -_ATAN2_PI_O_2 - _ATAN2_TINY if hy < 0 else _ATAN2_PI_O_2 + _ATAN2_TINY
+    k = (iy - ix) >> 20
+    if k > 60:
+        z = _ATAN2_PI_O_2 + 0.5 * _ATAN2_PI_LO
+    elif hx < 0 and k < -60:
+        z = 0.0
+    else:
+        z = fdlibm_atan(abs(y / x))
+    if m == 0:
+        return z
+    if m == 1:
+        return _with_hi(z, _hi32(z) ^ 0x80000000)
+    if m == 2:
+        return _ATAN2_PI - (z - _ATAN2_PI_LO)
+    return (z - _ATAN2_PI_LO) - _ATAN2_PI

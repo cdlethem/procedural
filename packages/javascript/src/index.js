@@ -14,3 +14,4 @@ export { bilinearRasterRemap2D, RasterRemapError } from "./raster-remap.js";
 export { noiseBandPath2D, NoiseBandPathError } from "./noise-band-path.js";
 export { targetSprings2D, SpringError } from "./target-springs.js";
 export { occupiedLatticePaths2D, LatticeError } from "./occupied-lattice-paths.js";
+export { seededLinePool2D, LinePoolError } from "./line-pool.js";
