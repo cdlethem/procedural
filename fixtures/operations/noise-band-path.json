@@ -1,0 +1,639 @@
+{
+  "operation": "path.noise-band-trace-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "catalog_sha256": "245c3350d3cc139d9f208fa768f14e5439bd434c58afaf2e4f63d6f66763588f",
+  "oracle": "Root analytic zero/error/resource cases; independently evaluated xoshiro uniforms in Python and fdlibm/accepted field in BandOracle.java for short nontrivial paths. Created before implementation.",
+  "cases": [
+    {
+      "id": "constant",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 1.0,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 13
+      },
+      "output": {
+        "positions": [
+          [
+            320.0,
+            320.0
+          ],
+          [
+            320.9835440317834,
+            320.18066858482644
+          ],
+          [
+            321.8629822771274,
+            320.65668158110526
+          ],
+          [
+            322.3876245291502,
+            321.50800437969133
+          ],
+          [
+            321.91589020471645,
+            322.3897451166152
+          ]
+        ],
+        "headings": [
+          0.18166617998164747,
+          0.4961155405555474,
+          1.0185014941412085,
+          2.0620530046562866
+        ],
+        "attempts": 4,
+        "accepted": 4,
+        "rejected": 0
+      }
+    },
+    {
+      "id": "mixed",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 12,
+        "stepDistance": 1.0,
+        "fieldScale": 0.006,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 13
+      },
+      "output": {
+        "positions": [
+          [
+            320.0,
+            320.0
+          ],
+          [
+            320.9835440317834,
+            320.18066858482644
+          ],
+          [
+            321.8629822771274,
+            320.65668158110526
+          ],
+          [
+            322.6646888031363,
+            320.05896371609305
+          ],
+          [
+            323.6641384062092,
+            320.02579006815665
+          ],
+          [
+            324.28660956655347,
+            320.80843280564267
+          ],
+          [
+            325.2455703348615,
+            320.5248940166806
+          ],
+          [
+            325.8406655576232,
+            319.72123881956793
+          ]
+        ],
+        "headings": [
+          0.18166617998164747,
+          0.4961155405555474,
+          -0.6406514813410396,
+          -0.033179735501284946,
+          0.8989001166294759,
+          -0.28748233984749827,
+          -0.9334121962067289
+        ],
+        "attempts": 12,
+        "accepted": 7,
+        "rejected": 5
+      }
+    },
+    {
+      "id": "stationary",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 0.0,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 13
+      },
+      "output": {
+        "positions": [
+          [
+            320.0,
+            320.0
+          ],
+          [
+            320.0,
+            320.0
+          ],
+          [
+            320.0,
+            320.0
+          ],
+          [
+            320.0,
+            320.0
+          ],
+          [
+            320.0,
+            320.0
+          ]
+        ],
+        "headings": [
+          0.18166617998164747,
+          0.4961155405555474,
+          1.0185014941412085,
+          2.0620530046562866
+        ],
+        "attempts": 4,
+        "accepted": 4,
+        "rejected": 0
+      }
+    },
+    {
+      "id": "equal",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 1,
+        "stepDistance": 1.0,
+        "fieldScale": 0.006,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.0003907932907060152,
+        "maxVertices": 13
+      },
+      "output": {
+        "positions": [
+          [
+            320.0,
+            320.0
+          ]
+        ],
+        "headings": [],
+        "attempts": 1,
+        "accepted": 0,
+        "rejected": 1
+      }
+    },
+    {
+      "id": "above",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 1,
+        "stepDistance": 1.0,
+        "fieldScale": 0.006,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.00039079329070601526,
+        "maxVertices": 13
+      },
+      "output": {
+        "positions": [
+          [
+            320.0,
+            320.0
+          ],
+          [
+            320.9835440317834,
+            320.18066858482644
+          ]
+        ],
+        "headings": [
+          0.18166617998164747
+        ],
+        "attempts": 1,
+        "accepted": 1,
+        "rejected": 0
+      }
+    },
+    {
+      "id": "zero_work_skips_query",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          1e+308,
+          -0.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 0,
+        "stepDistance": 1.0,
+        "fieldScale": 2.0,
+        "fieldOffset": [
+          1e+308,
+          0
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 1
+      },
+      "output": {
+        "positions": [
+          [
+            1e+308,
+            0.0
+          ]
+        ],
+        "headings": [],
+        "attempts": 0,
+        "accepted": 0,
+        "rejected": 0
+      }
+    },
+    {
+      "id": "zero_tolerance_at_capacity",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 1.0,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.0,
+        "maxVertices": 1
+      },
+      "output": {
+        "positions": [
+          [
+            320.0,
+            320.0
+          ]
+        ],
+        "headings": [],
+        "attempts": 4,
+        "accepted": 0,
+        "rejected": 4
+      }
+    },
+    {
+      "id": "accepted_at_capacity",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 1.0,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 1
+      },
+      "error": "VERTEX_LIMIT_EXCEEDED",
+      "error_detail": {
+        "attemptIndex": 0,
+        "stage": "append"
+      }
+    },
+    {
+      "id": "late_capacity",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 1.0,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 4
+      },
+      "error": "VERTEX_LIMIT_EXCEEDED",
+      "error_detail": {
+        "attemptIndex": 3,
+        "stage": "append"
+      }
+    },
+    {
+      "id": "initial_multiply_overflow",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          1e+308,
+          0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 1.0,
+        "fieldScale": 2.0,
+        "fieldOffset": [
+          -1e+308,
+          0
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 13
+      },
+      "error": "TRACE_QUERY_INVALID",
+      "error_detail": {
+        "attemptIndex": -1,
+        "stage": "start_query_x"
+      }
+    },
+    {
+      "id": "initial_lattice_upper_excluded",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          9007199254740991,
+          0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 1.0,
+        "fieldScale": 1.0,
+        "fieldOffset": [
+          0,
+          0
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 13
+      },
+      "error": "TRACE_QUERY_INVALID",
+      "error_detail": {
+        "attemptIndex": -1,
+        "stage": "start_query_x"
+      }
+    },
+    {
+      "id": "candidate_lattice_escape",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          9007199254740990,
+          0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 32.0,
+        "fieldScale": 1.0,
+        "fieldOffset": [
+          0,
+          0
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 13
+      },
+      "error": "TRACE_QUERY_INVALID",
+      "error_detail": {
+        "attemptIndex": 0,
+        "stage": "candidate_query_x"
+      }
+    },
+    {
+      "id": "position_overflow",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          1.7976931348623157e+308,
+          0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 1.7976931348623157e+308,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 13
+      },
+      "error": "TRACE_ARITHMETIC_INVALID",
+      "error_detail": {
+        "attemptIndex": 0,
+        "stage": "position_x"
+      }
+    },
+    {
+      "id": "negative_tolerance",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 1.0,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": -0.001,
+        "maxVertices": 13
+      },
+      "error": "INVALID_INPUT",
+      "error_detail": {}
+    },
+    {
+      "id": "boolean_attempts",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": true,
+        "stepDistance": 1.0,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 13
+      },
+      "error": "INVALID_INPUT",
+      "error_detail": {}
+    },
+    {
+      "id": "invalid_field",
+      "input": {
+        "field": {
+          "seed": 0,
+          "extra": 1
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 1.0,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 13
+      },
+      "error": "INVALID_INPUT",
+      "error_detail": {}
+    },
+    {
+      "id": "zero_vertex_cap",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 1.0,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 0
+      },
+      "error": "INVALID_INPUT",
+      "error_detail": {}
+    },
+    {
+      "id": "oversized_vertex_cap",
+      "input": {
+        "field": {
+          "seed": 177
+        },
+        "start": [
+          320.0,
+          320.0
+        ],
+        "heading": 0.0,
+        "seed": 0,
+        "attempts": 4,
+        "stepDistance": 1.0,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          7.3,
+          11.7
+        ],
+        "tolerance": 0.002,
+        "maxVertices": 1073741824
+      },
+      "error": "INVALID_INPUT",
+      "error_detail": {}
+    }
+  ],
+  "source_bindings": {
+    "tools/diagnostics/noiseband/BandOracle.java": "ccb131503de84cce7c273718f1b9366530eea1c445101b8fda624863947f8767",
+    "tools/diagnostics/noiseband/make_oracle.py": "a83c614a5ef88505755bdcb99ea311964b03727676515b3cf60c2d4b052df58c",
+    "design/operations/noise-band-path-contract.md": "3687e060202a47b3a13db34dd5b313210756bbaed849e9175a456c9a7ff46c20"
+  }
+}

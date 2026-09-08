@@ -447,6 +447,135 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/gradient-path.json).
 
+## path.noise-band-trace-2d (0.1.0)
+
+Retain an attempt-bounded connected path whose accepted proposals remain within a strict scalar band around the starting noise value.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "field": {
+      "type": "object",
+      "properties": {
+        "seed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        }
+      },
+      "required": [
+        "seed"
+      ],
+      "additionalProperties": false
+    },
+    "start": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "heading": {
+      "type": "number"
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "attempts": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "stepDistance": {
+      "type": "number",
+      "minimum": 0
+    },
+    "fieldScale": {
+      "type": "number"
+    },
+    "fieldOffset": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "tolerance": {
+      "type": "number",
+      "minimum": 0
+    },
+    "maxVertices": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1073741823
+    }
+  },
+  "required": [
+    "field",
+    "start",
+    "heading",
+    "seed",
+    "attempts",
+    "stepDistance",
+    "fieldScale",
+    "fieldOffset",
+    "tolerance",
+    "maxVertices"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| field | seed-only gradient-noise configuration | null | null | Existing field.gradient-noise-2d-01 descriptor; no public callback or source noise compatibility. |
+| start | coordinate pair | null | null | Explicit start retained as the first path vertex; no recommended range. |
+| heading | radians | null | null | Explicit initial heading; no normalization or recommended range. |
+| seed | uint32 private walk stream | null | null | Portable stream is an explicit design divergence from source host state. |
+| attempts | proposal attempts | null | null | Source uses 10000 attempts per walker; work budget, not retained-output count; no recommended range. |
+| stepDistance | coordinate units | null | null | Source uses one-pixel proposals; explicit coordinate input and zero stationary case are contract choices. |
+| fieldScale | field lattice units per coordinate unit | null | null | Source scale substitutions visibly affect bands; no portable recommended range. |
+| fieldOffset | field coordinate pair | null | null | Explicit sampling translation; no recommended range. |
+| tolerance | scalar-value units | null | null | Source strict .002 threshold and measured .008 substitution; no public recommended interval. |
+| maxVertices | retained vertices including start | null | null | Resource cap required for retained output; representation bound, not artistic range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/noise-band-path-catalog-review.json) | [validated-scoped](../../evidence/conformance/noise-band-path-catalog-review.json) | [validated-scoped](../../evidence/conformance/noise-band-path-catalog-review.json) | [review](../../evidence/conformance/noise-band-path-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2018/Generativos/venas#0`](../../survey/out/2018/Generativos/venas/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/noise-band-path.json).
+
 ## path.occupied-lattice-paths-2d (0.1.0)
 
 Generate ordered retained cardinal cell paths whose cells are claimed by one call-local occupancy set.

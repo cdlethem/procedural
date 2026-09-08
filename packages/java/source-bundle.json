@@ -1,6 +1,6 @@
 {
-  "version": "0.17.0",
-  "processing_version": 17,
+  "version": "0.18.0",
+  "processing_version": 18,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -22,7 +22,8 @@
     "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
     "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
     "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
-    "packages/java/src/main/java/org/procedurals/color/StopRamp.java": "9230378dcd2a1e34717ad8130d66e8d93d5af944b383b353e5d1665c06d051e5"
+    "packages/java/src/main/java/org/procedurals/color/StopRamp.java": "9230378dcd2a1e34717ad8130d66e8d93d5af944b383b353e5d1665c06d051e5",
+    "packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java": "dab540f63272c963b3b00997d6924f46bae609d8f2d05e4f90e612df5f10e82b"
   },
   "examples": {
     "procedurals/examples/BranchMarks/BranchComposition.java": {
@@ -164,6 +165,10 @@
     "procedurals/examples/RampMarks/RampMarks.pde": {
       "source": "packages/java-processing/examples/RampMarks/RampMarks.pde",
       "sha256": "930f148a45c7cea6da35608ef29dd6d45b59685cc14614beb6eb5b9259bcfc96"
+    },
+    "procedurals/examples/BandMarks/BandMarks.pde": {
+      "source": "packages/java-processing/examples/BandMarks/BandMarks.pde",
+      "sha256": "16e4fc4a03fd85bc65005ea56f73b204516fceb02055f8149c264eb3b1fddfa8"
     }
   },
   "operation_files": [
@@ -172,6 +177,7 @@
     "delaunay-2d.json",
     "gradient-noise-2d-01.json",
     "gradient-path.json",
+    "noise-band-path.json",
     "occupied-lattice-paths-2d.json",
     "ordered-circle-filter.json",
     "radial-profile-surface.json",

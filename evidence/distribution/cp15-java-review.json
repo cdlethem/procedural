@@ -1,0 +1,65 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.18.0",
+  "scope": "Source-built Java bundle with18 operations and18 editable starters; extracted compilation and native BandMarks. Local artifact, not registry release.",
+  "archive": {
+    "path": ".work/dist/cp15-java-source3/procedurals-java-source-dev.zip",
+    "sha256": "4da671e5912e78c3ea85636722212eba61fcfec98f5736ca34924ac9d30f46fc",
+    "members": 167
+  },
+  "build_report": {
+    "path": "evidence/distribution/cp15-java-source.json",
+    "sha256": "c549d176b237d9657d4852210c507cadd236a3ed64b34651aca519d617e15e95"
+  },
+  "consumer_report": {
+    "path": "evidence/distribution/cp15-java-consumer.json",
+    "sha256": "18e031c54b2cde17ed7fa951f9ee597d21277399ed460b37bfb41c7b6754ffa4"
+  },
+  "implementation_sha256": {
+    "packages/java/source-bundle.json": "fccb7bb1b2837be133e8b07ad085560ad3c35c1501e35d8c1dd503240a60e34a",
+    "tools/build_java_source_bundle.py": "05ca6c7087b2473e606202ffe598e4cfc2fad4634f506bfc4b0253b6fb617cc5",
+    "tools/check_java_source_bundle.py": "33f3bce46b88d1fb67f61a4a7aeab4e7a05abc9bcaf91d27f4f4b2cfce665d5e",
+    "tools/run_warp_marks_java.py": "654e373ff6f241928b580f81d0a6acc8fc2c40791860d9ee975d8c924d4c4f8e",
+    "packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java": "dab540f63272c963b3b00997d6924f46bae609d8f2d05e4f90e612df5f10e82b",
+    "packages/java-processing/examples/BandMarks/BandMarks.pde": "16e4fc4a03fd85bc65005ea56f73b204516fceb02055f8149c264eb3b1fddfa8",
+    "tests/native/BandMarksProbe.java": "50bc8153b4fd6743456846c93ceb957fa8ff5e8ff7c7f325237d0dca2a2c3b2b"
+  },
+  "checks": {
+    "baseline_archive": {
+      "path": ".work/dist/cp14-java-source2/procedurals-java-source-dev.zip",
+      "sha256": "2549ab4a7640414d86680d6968223051823543bff01561a26d37580a13d5b538",
+      "members": 162
+    },
+    "procedurals.jar": {
+      "preserved_classes": 81,
+      "added_classes": [
+        "org/procedurals/paths/NoiseBandPath2D$PathException.class",
+        "org/procedurals/paths/NoiseBandPath2D$TraceException.class",
+        "org/procedurals/paths/NoiseBandPath2D$VertexLimitException.class",
+        "org/procedurals/paths/NoiseBandPath2D$Xoshiro.class",
+        "org/procedurals/paths/NoiseBandPath2D.class"
+      ]
+    },
+    "procedurals-processing-adapter.jar": {
+      "preserved_classes": 1,
+      "added_classes": []
+    },
+    "preserved_prior_example_members": 37,
+    "extracted_native_frames_equal_candidate": 6
+  },
+  "verified": [
+    "Root verified live source/build/consumer bindings; all18 extracted starters compile with the official Processing preprocessor.",
+    "Extracted JAR consumer passes; BandMarks native five-state edit/retention/transfer/reset/save checks pass under shared lease, with all six images equal reviewed candidate output.",
+    "All82 previous core/adapter classes and37 example/font members preserved byte-for-byte; only five NoiseBandPath2D class files added.",
+    "MIT, third-party and font notices preserved. Rendered images/builds/toolchains remain excluded from Git.",
+    "18 exact core fixtures, focused ownership/error checks and actual10million-attempt workload accepted separately; misleading worker workload claims were corrected before root acceptance.",
+    "36 catalog/source-bundle tests, full catalog/reference check and contract-cluster structural gate pass."
+  ],
+  "limits": [
+    "No original-recreation increment or non-Java support claim.",
+    "Externally supplied pinned JDK/Processing/font inputs remain required.",
+    "Acceptance identifies this exact archive; changed future inputs require appropriate review."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java core and scoped JAVA2D BandMarks; no distribution or other target acceptance",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java": "dab540f63272c963b3b00997d6924f46bae609d8f2d05e4f90e612df5f10e82b",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java-processing/examples/BandMarks/BandMarks.pde": "16e4fc4a03fd85bc65005ea56f73b204516fceb02055f8149c264eb3b1fddfa8"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/noise-band-path-java.json": "21b3f4c58682dfc7baa7ff5392656fd8a6ee9fdcafe11128a300e18b7fa40de3",
+    "evidence/conformance/noise-band-path-java-root-review.json": "eb0c0b66ed32e1d9835ff6061673e7d72f1167161620333dbfcf2a213f17cf68",
+    "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8",
+    "evidence/reproductions/cp15-java2d/native.json": "b157d13bbddfa09f1cbdd056223ca13d616422b2bd7c4d45afa6b0674bdd5514",
+    "evidence/reproductions/cp15-java2d/root-review.json": "bd5ed93681c0f5c7b04f9cab137519b209973a52855838a33bb71e94a9916607"
+  }
+}

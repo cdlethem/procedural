@@ -1,0 +1,145 @@
+{
+  "status": "passed",
+  "operation": "path.noise-band-trace-2d",
+  "scope": "Java core fixtures, focused ownership/errors and bounded workload; no renderer/package/port acceptance",
+  "source_sha256_before": {
+    "packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java": "dab540f63272c963b3b00997d6924f46bae609d8f2d05e4f90e612df5f10e82b",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "tests/native/NoiseBandPathNative.java": "7d9cfc60d8a0fd51d552420edfe0078e8fa5d4766689c7b44d78b66ca6e9df6b",
+    "catalog/operations/noise-band-path.json": "245c3350d3cc139d9f208fa768f14e5439bd434c58afaf2e4f63d6f66763588f",
+    "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8",
+    "tools/run_noise_band_path_java.py": "aca83a87591578dcc5922e370356174c5f01e9196e7fcbb1c86eeb65c0b30e32",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "source_sha256_after": {
+    "packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java": "dab540f63272c963b3b00997d6924f46bae609d8f2d05e4f90e612df5f10e82b",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "tests/native/NoiseBandPathNative.java": "7d9cfc60d8a0fd51d552420edfe0078e8fa5d4766689c7b44d78b66ca6e9df6b",
+    "catalog/operations/noise-band-path.json": "245c3350d3cc139d9f208fa768f14e5439bd434c58afaf2e4f63d6f66763588f",
+    "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8",
+    "tools/run_noise_band_path_java.py": "aca83a87591578dcc5922e370356174c5f01e9196e7fcbb1c86eeb65c0b30e32",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "artifact_sha256_before": {
+    ".work/build/noise-band-i2yphexj/NoiseBandPathVectors.java": "b0a06c1fb51699d3bf9dbadb179422c919816bf11a7a12f85eab6ff0dcd02076",
+    ".work/build/noise-band-i2yphexj/org/procedurals/fields/GradientNoise2D01$NoiseException.class": "4bfde8858a309400e9afe8f23db3dd3dd11fead18a18f7defdfdb507050be23e",
+    ".work/build/noise-band-i2yphexj/org/procedurals/fields/GradientNoise2D01.class": "85319ef3187624f438b9d5a5e68b90d15ffe825ce93434eee120545d3d47a91a",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPath2D$PathException.class": "8477d4f9749196ccd9baa3fc04cc8adbbcb7d257a8ea34cc45b802798e44c187",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPath2D$TraceException.class": "3ff4b26647a4c07efe6db83b1c7c00405183a875e1de7f1a511b1f1d8e8b5733",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPath2D$VertexLimitException.class": "0d44fe835b2716262f2e88ebef316745163137fd6166bb22776456dbf113762f",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPath2D$Xoshiro.class": "5f3cadca81e04618501a949f04150dc9a1f413332935da4ef2032079ebc21900",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPath2D.class": "329f571c5b71add0982df7103f93d8508f7b704a1244c45f5408f9f28c1765ae",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPathNative.class": "57183e491dd6d8c0aa5df41169630ade50ca6bc5b9b5b0f5d251eafd1f4c6c59",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPathVectors.class": "8f616cc9c8439df0a4e658ac8c3e3c6249618b6df932e0a55062206abe221c90"
+  },
+  "artifact_sha256_after": {
+    ".work/build/noise-band-i2yphexj/NoiseBandPathVectors.java": "b0a06c1fb51699d3bf9dbadb179422c919816bf11a7a12f85eab6ff0dcd02076",
+    ".work/build/noise-band-i2yphexj/org/procedurals/fields/GradientNoise2D01$NoiseException.class": "4bfde8858a309400e9afe8f23db3dd3dd11fead18a18f7defdfdb507050be23e",
+    ".work/build/noise-band-i2yphexj/org/procedurals/fields/GradientNoise2D01.class": "85319ef3187624f438b9d5a5e68b90d15ffe825ce93434eee120545d3d47a91a",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPath2D$PathException.class": "8477d4f9749196ccd9baa3fc04cc8adbbcb7d257a8ea34cc45b802798e44c187",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPath2D$TraceException.class": "3ff4b26647a4c07efe6db83b1c7c00405183a875e1de7f1a511b1f1d8e8b5733",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPath2D$VertexLimitException.class": "0d44fe835b2716262f2e88ebef316745163137fd6166bb22776456dbf113762f",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPath2D$Xoshiro.class": "5f3cadca81e04618501a949f04150dc9a1f413332935da4ef2032079ebc21900",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPath2D.class": "329f571c5b71add0982df7103f93d8508f7b704a1244c45f5408f9f28c1765ae",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPathNative.class": "57183e491dd6d8c0aa5df41169630ade50ca6bc5b9b5b0f5d251eafd1f4c6c59",
+    ".work/build/noise-band-i2yphexj/org/procedurals/paths/NoiseBandPathVectors.class": "8f616cc9c8439df0a4e658ac8c3e3c6249618b6df932e0a55062206abe221c90"
+  },
+  "fixture_cases_executed": 18,
+  "vectors": {
+    "status": "passed",
+    "cases": 18,
+    "assertions": 211
+  },
+  "native": {
+    "status": "passed",
+    "checks": 50,
+    "warmup": {
+      "paths": 16,
+      "attempts_per_path": 256
+    },
+    "measurements": [
+      {
+        "paths": 1,
+        "attempts_per_path": 4,
+        "attempts_executed": 4,
+        "accepted": 3,
+        "rejected": 1,
+        "generation_nanos": 18750,
+        "max_single_path_numeric_payload_bytes": 88,
+        "checksum": "a7402f653a163f3b"
+      },
+      {
+        "paths": 96,
+        "attempts_per_path": 2048,
+        "attempts_executed": 196608,
+        "accepted": 66397,
+        "rejected": 130211,
+        "generation_nanos": 28631854,
+        "max_single_path_numeric_payload_bytes": 22408,
+        "checksum": "16133a01f5d42b6d"
+      },
+      {
+        "paths": 1000,
+        "attempts_per_path": 10000,
+        "attempts_executed": 10000000,
+        "accepted": 3362067,
+        "rejected": 6637933,
+        "generation_nanos": 741136558,
+        "max_single_path_numeric_payload_bytes": 106768,
+        "checksum": "7a617dc30106caf3"
+      }
+    ]
+  },
+  "commands": [
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "8",
+        "-d",
+        "/home/colin/dev/procedural/.work/build/noise-band-i2yphexj",
+        "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java",
+        "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java",
+        "/home/colin/dev/procedural/tests/native/NoiseBandPathNative.java",
+        "/home/colin/dev/procedural/.work/build/noise-band-i2yphexj/NoiseBandPathVectors.java"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Note: /home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java uses unchecked or unsafe operations.\nNote: Recompile with -Xlint:unchecked for details.\n"
+    },
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-Xmx512m",
+        "-cp",
+        "/home/colin/dev/procedural/.work/build/noise-band-i2yphexj",
+        "org.procedurals.paths.NoiseBandPathVectors"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\":\"passed\",\"cases\":18,\"assertions\":211}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-Xmx512m",
+        "-cp",
+        "/home/colin/dev/procedural/.work/build/noise-band-i2yphexj",
+        "org.procedurals.paths.NoiseBandPathNative"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\":\"passed\",\"checks\":50,\"warmup\":{\"paths\":16,\"attempts_per_path\":256},\"measurements\":[{\"paths\":1,\"attempts_per_path\":4,\"attempts_executed\":4,\"accepted\":3,\"rejected\":1,\"generation_nanos\":18750,\"max_single_path_numeric_payload_bytes\":88,\"checksum\":\"a7402f653a163f3b\"},{\"paths\":96,\"attempts_per_path\":2048,\"attempts_executed\":196608,\"accepted\":66397,\"rejected\":130211,\"generation_nanos\":28631854,\"max_single_path_numeric_payload_bytes\":22408,\"checksum\":\"16133a01f5d42b6d\"},{\"paths\":1000,\"attempts_per_path\":10000,\"attempts_executed\":10000000,\"accepted\":3362067,\"rejected\":6637933,\"generation_nanos\":741136558,\"max_single_path_numeric_payload_bytes\":106768,\"checksum\":\"7a617dc30106caf3\"}]}\n",
+      "stderr": ""
+    }
+  ],
+  "javac_release": "8",
+  "jdk_home": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1",
+  "max_heap": "512m",
+  "measurement_limits": "One measured traversal per size after16x256 warmup; payload excludes headers/spare capacity; no cross-device guarantee."
+}

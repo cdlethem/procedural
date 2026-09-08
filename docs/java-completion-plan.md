@@ -3,7 +3,7 @@
 Current maintainer objective: build a feature-complete Java implementation. Ports are
 paused per `porting-resume.md`; recipes/MCP/web remain a separate roadmap, not prerequisites
 for making the native Java library useful. This plan does not claim feature completeness
-or replace the project's mission with the current17 operations.
+or replace the project's mission with the current18 operations.
 
 ## Completion requirements
 
@@ -28,10 +28,10 @@ The broader corpus benchmark remains a separate strict certification claim.
 
 ## Existing capability baseline
 
-Java0.17 assembles17 operations and17 workflows: field marks, integrated paths, constrained
+Java0.18 assembles18 operations and18 workflows: field marks, integrated paths, constrained
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
-paths, raster remapping and positioned color ramps, plus relief/city/landscape compositions. Only three selected original structural
+paths, raster remapping, positioned color ramps and noise-band paths, plus relief/city/landscape compositions. Only three selected original structural
 recreations are demonstrated. Consult current operation attestations rather than historical
 status paragraphs in the provisional API design.
 
@@ -71,8 +71,8 @@ Delivery order:
 
 This is the first batch, not the entire definition of Java completeness. After it, assess
 remaining real gaps in color control, field/path constraints, region construction and
-renderer-bound raster/text/mesh workflows against the checklist above. CP12 band-constrained
-walking remains an explicit unresolved capability; general grammar engines and Voronoi cells
+renderer-bound raster/text/mesh workflows against the checklist above. CP15 now implements the CP12 band-constrained
+walking capability with explicitly independent noise/RNG semantics; general grammar engines and Voronoi cells
 are not inferred from mislabeled line-pool/Delaunay examples.
 
 ## Decisions from the initial bounded screens
@@ -88,7 +88,7 @@ Root owns admission and final acceptance. Luna/Terra perform bounded evidence an
 implementation work. Sol remains paused. Reuse existing infrastructure and run focused
 checks once per meaningful change; repair failures without widening acceptance criteria.
 
-## Current bounded batch: positioned color stops (CP14)
+## Completed batch: positioned color stops (CP14)
 
 Root admitted color.stop-ramp after reviewing colorRamp, boxDepth, celular and triangleRamp.
 The contract and analytic fixtures are frozen; Java core review passes, and native
@@ -97,9 +97,16 @@ workflow review passes. Extracted distribution acceptance is recorded separately
 change its width independently of geometry, using unequal noncyclic stops. CyclicPalette
 remains the equally spaced repeating alternative.
 
-Fresh Terra assignment owns only StopRamp Java core, focused native core tests and its
-runner. Root owns contract/fixtures, native RampMarks edit/transfer review, shared support
-and integration. Preserve the existing source-bundle builder and consumer infrastructure;
-do not add another historical chain of archive packagers. Next stop is a reviewed core,
-then one bounded native example and extracted Java distribution. Stop-position and palette
-values remain caller artwork; no unsupported recommended ranges are introduced.
+Java0.17 shipped this capability at346d6f53, with source-bundle acceptance in
+`evidence/distribution/cp14-java-review.json`. Stop-position and palette values remain
+caller artwork; no unsupported recommended ranges are introduced.
+
+## CP15: noise-band paths
+
+NoiseBandPath2D retains accepted proposals near each start's noise level. BandMarks supplies
+tolerance edits and retained perpendicular-mark transfer; exact source reproduction is not
+claimed. Contract/fixture/core review and native scope are recorded separately from source
+bundle acceptance. The private prototype and failed worker checks are not shipped evidence.
+After CP15 integration, audit the Java completion requirements above against current
+capabilities and artist tooling before selecting another operation. Unknown family coverage
+and missing helper workflows must not silently count as complete.

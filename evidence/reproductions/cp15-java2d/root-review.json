@@ -1,0 +1,28 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "CP15 JAVA2D BandMarks edit/transfer/save workflow; distribution pending",
+  "native": "evidence/reproductions/cp15-java2d/native.json",
+  "native_sha256": "b157d13bbddfa09f1cbdd056223ca13d616422b2bd7c4d45afa6b0674bdd5514",
+  "plan": "design/capabilities/band-marks-native-plan.md",
+  "plan_sha256": "17f07c85799589fb29187f557281d2c1f9be163c3ae8f7d2244a80e388321472",
+  "verified": [
+    "Five actual draw states and ordered tcm0s events; exact renderer/density and cached framebuffer equality.",
+    "64 paths each with2048 attempts; tolerance rebuilds geometry. Palette and mark changes preserve both path array and cloned individual identity references and geometry/heading hashes.",
+    "Reset exactly restores baseline geometry and pixels; saved PNG equals final display with300ms quiet.",
+    "Root inspected all four edited states. Final candidate after instructional-comment edit yields identical pixels in all six images.",
+    "All source/runtime/JAR/generated/class bindings verified unchanged and matched live files."
+  ],
+  "visual_observations": {
+    "baseline": "Thin winding lines and nested loop-like bands, with a few small denser curls on cream background.",
+    "wider": "Broader tangled bands with changed trajectories and extents; isolated small regions become scribbles.",
+    "recolored": "Same wider geometry with warmer coral/brown and muted green/blue styling.",
+    "marks": "Separated short perpendicular strokes follow the retained wider-band trajectories; dense regions read as clusters of small marks."
+  },
+  "limits": [
+    "No original venas recreation, contour completeness, other renderer or non-Java support claim.",
+    "Injected Processing events, not physical keyboard automation.",
+    "Distribution acceptance remains a separate extracted-artifact gate."
+  ]
+}

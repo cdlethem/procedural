@@ -1,5 +1,55 @@
 # Project state
 
+## CP15 delivered locally: Java0.18 noise-band paths and BandMarks
+
+Root accepted exact NoiseBandPath2D, native BandMarks and extracted Java0.18 bundle in
+evidence/distribution/cp15-java-review.json. All18 extracted starters compile; six native
+images equal reviewed candidates; all82 prior classes and37 example/font members preserved.
+18 operations/18 workflows accepted locally; publish this integration checkpoint next.
+Core18 fixtures include exact error details; actual10million-attempt measurement is recorded.
+Root corrected worker index/zero/growth errors, incomplete workload claims, missing runtime
+bindings and probe identity comparisons before acceptance. No worker record alone established
+acceptance. No native process or worker remains live; ports and Sol stay paused.
+
+Next audit docs/java-completion-plan.md requirements against current Java capabilities,
+entry points and helper tooling. Select a bounded concrete gap from that audit rather than
+assuming another operation is needed. No whole-corpus re-audit or full-completion claim.
+Still three demonstrated original recreations; CP15 is technique-level capability.
+
+## CP15 Java core accepted; candidate native run next
+
+Root directly corrected worker core/test-runner gaps and accepted root2 evidence at
+evidence/conformance/noise-band-path-java-root-review.json. Exact18fixtures now compare
+error details;50 native checks pass; full1000x10000 workload executes10million attempts
+(3362067 accepted), checksum7a617dc30106caf3. Sources/runtime/classes verified live.
+Earlier worker performance/binding claims were not accepted.
+BandMarks PDE and corrected probe ready; registered in shared candidate runner.
+Next native candidate compile/render through shared machine lease, root image inspection,
+then catalog support and extracted bundle. Still17 shipped operations; CP15 is local.
+No worker remains active; ports/Sol paused.
+
+## CP15 contract frozen; Java core implementation in flight
+
+Root froze noise-band-path catalog and18 exact fixtures after prototype admission.
+Normative transition: design/operations/noise-band-path-contract.md; review and bound
+inputs in noise-band-path-contract-review.json beside it. Full catalog/reference check
+passes. Mixed path has7 acceptances/5 rejections; strict equality/nextUp pair distinguishes
+threshold semantics. Existing xoshiro stream plus fdlibm is required for exact branch behavior.
+
+Terra /root/profile_port_inventory now owns NoiseBandPath2D.java, NoiseBandPathNative.java
+and run_noise_band_path_java.py, including focused vectors/ownership and bounded costs.
+It must not alter catalog/fixtures/acceptance. Root owns final review. Native pre-render
+plan: design/capabilities/band-marks-native-plan.md. Root drafted BandMarks PDE/guide;
+Luna /root/band_catalog now owns its native probe only. No native acceptance yet.
+Root reviewed first core draft and requested corrections: INVALID_INDEX carrier errors,
+canonical -0 for distance/scale/tolerance, strictfp Java8 behavior, overflow-safe capacity
+growth bounded by maxVertices, readable arithmetic and focused accessor/alias checks.
+Worker1 raw pass is NOT root acceptance; runtime hashes and workload measurements also
+required. Root corrected probe to clone wider path identities, avoiding alias-tautology.
+Next review corrected worker output, then native editable workflow and extracted bundle. Java remains
+17 accepted operations;18 catalog specifications do not establish18 shipped operations.
+Source-bundle manifest intentionally remains17 pending new acceptance. Ports/Sol paused.
+
 ## CP15 prototype reviewed; noise-band operation admitted for contract
 
 Root reviewed all three private prototype images and source. Narrow/wide tolerance gives

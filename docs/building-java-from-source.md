@@ -1,16 +1,16 @@
 # Build the Java library from source
 
-The source-bundle builder assembles Java0.17 directly from the checked-in sources, including
-17 operations and 17 editable starters. RampMarks adds positioned color transitions to the
-Java0.16 raster-remapping surface. The prior clean-checkout packaging proof is recorded in
-`evidence/distribution/java-source-bundle-review.json`; CP14 native scope is recorded in
-`evidence/reproductions/cp14-java2d/root-review.json`. Each generated report records assembly
+The source-bundle builder assembles Java0.18 directly from the checked-in sources, including
+18 operations and 18 editable starters. BandMarks adds retained noise-band paths to the
+Java0.17 color-ramp surface. The prior clean-checkout packaging proof is recorded in
+`evidence/distribution/java-source-bundle-review.json`; CP15 native scope is recorded in
+`evidence/reproductions/cp15-java2d/root-review.json`. Each generated report records assembly
 rather than automatically approving future changed inputs.
 
 Supply Python 3.11 or newer, a JDK supporting `javac --release 8`, the audited
 Processing 4.5.6 `core.jar`, the accepted GlyphMarks DejaVu Sans font,
 and its complete license notice. Fonts and toolchains are external inputs, not tracked
-project assets. The font is needed to preserve the complete17-starter bundle; it is not
+project assets. The font is needed to preserve the complete18-starter bundle; it is not
 silently omitted or replaced by a system fallback.
 
 ```sh

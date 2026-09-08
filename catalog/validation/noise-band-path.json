@@ -1,0 +1,139 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "path.noise-band-trace-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/noise-band-path.json",
+    "catalog_sha256": "245c3350d3cc139d9f208fa768f14e5439bd434c58afaf2e4f63d6f66763588f"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java": "dab540f63272c963b3b00997d6924f46bae609d8f2d05e4f90e612df5f10e82b",
+          "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/noise-band-path-java.json": "21b3f4c58682dfc7baa7ff5392656fd8a6ee9fdcafe11128a300e18b7fa40de3",
+          "evidence/conformance/noise-band-path-java-root-review.json": "eb0c0b66ed32e1d9835ff6061673e7d72f1167161620333dbfcf2a213f17cf68",
+          "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8",
+          "evidence/reproductions/cp15-java2d/native.json": "b157d13bbddfa09f1cbdd056223ca13d616422b2bd7c4d45afa6b0674bdd5514",
+          "evidence/reproductions/cp15-java2d/root-review.json": "bd5ed93681c0f5c7b04f9cab137519b209973a52855838a33bb71e94a9916607"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/noise-band-path-java.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/noise-band-path-catalog-review.json",
+          "sha256": "ac57c07cd4ee4c252f6f57c01b721ade98c9aecea48675fd3ceccf787eb5d1c7"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact fdlibm noise-band traversal and five-state JAVA2D BandMarks edit/transfer/save; no original recreation or other target claim."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java": "dab540f63272c963b3b00997d6924f46bae609d8f2d05e4f90e612df5f10e82b",
+          "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+          "packages/java-processing/examples/BandMarks/BandMarks.pde": "16e4fc4a03fd85bc65005ea56f73b204516fceb02055f8149c264eb3b1fddfa8"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/noise-band-path-java.json": "21b3f4c58682dfc7baa7ff5392656fd8a6ee9fdcafe11128a300e18b7fa40de3",
+          "evidence/conformance/noise-band-path-java-root-review.json": "eb0c0b66ed32e1d9835ff6061673e7d72f1167161620333dbfcf2a213f17cf68",
+          "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8",
+          "evidence/reproductions/cp15-java2d/native.json": "b157d13bbddfa09f1cbdd056223ca13d616422b2bd7c4d45afa6b0674bdd5514",
+          "evidence/reproductions/cp15-java2d/root-review.json": "bd5ed93681c0f5c7b04f9cab137519b209973a52855838a33bb71e94a9916607"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp15-java2d/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/noise-band-path-catalog-review.json",
+          "sha256": "ac57c07cd4ee4c252f6f57c01b721ade98c9aecea48675fd3ceccf787eb5d1c7"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact fdlibm noise-band traversal and five-state JAVA2D BandMarks edit/transfer/save; no original recreation or other target claim."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java": "dab540f63272c963b3b00997d6924f46bae609d8f2d05e4f90e612df5f10e82b",
+          "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+          "packages/java-processing/examples/BandMarks/BandMarks.pde": "16e4fc4a03fd85bc65005ea56f73b204516fceb02055f8149c264eb3b1fddfa8"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/noise-band-path-java.json": "21b3f4c58682dfc7baa7ff5392656fd8a6ee9fdcafe11128a300e18b7fa40de3",
+          "evidence/conformance/noise-band-path-java-root-review.json": "eb0c0b66ed32e1d9835ff6061673e7d72f1167161620333dbfcf2a213f17cf68",
+          "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8",
+          "evidence/reproductions/cp15-java2d/native.json": "b157d13bbddfa09f1cbdd056223ca13d616422b2bd7c4d45afa6b0674bdd5514",
+          "evidence/reproductions/cp15-java2d/root-review.json": "bd5ed93681c0f5c7b04f9cab137519b209973a52855838a33bb71e94a9916607"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp15-java2d/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/noise-band-path-catalog-review.json",
+          "sha256": "ac57c07cd4ee4c252f6f57c01b721ade98c9aecea48675fd3ceccf787eb5d1c7"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact fdlibm noise-band traversal and five-state JAVA2D BandMarks edit/transfer/save; no original recreation or other target claim."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

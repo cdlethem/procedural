@@ -1,0 +1,26 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java NoiseBandPath2D core only; native BandMarks and distribution pending",
+  "raw_evidence": "evidence/conformance/noise-band-path-java.json",
+  "raw_evidence_sha256": "21b3f4c58682dfc7baa7ff5392656fd8a6ee9fdcafe11128a300e18b7fa40de3",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java": "dab540f63272c963b3b00997d6924f46bae609d8f2d05e4f90e612df5f10e82b",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "tests/native/NoiseBandPathNative.java": "7d9cfc60d8a0fd51d552420edfe0078e8fa5d4766689c7b44d78b66ca6e9df6b",
+    "tools/run_noise_band_path_java.py": "aca83a87591578dcc5922e370356174c5f01e9196e7fcbb1c86eeb65c0b30e32"
+  },
+  "verified": [
+    "Root reviewed full core and corrected malformed-index error code, input signed-zero canonicalization, strictfp profile and capacity growth including smallest heading cap.",
+    "Root expanded ordered arithmetic, reused established readable RNG, verified18 preimplementation fixtures including exact dynamic error details.",
+    "50 focused native checks cover input/nested-export ownership, replay, accessor carriers/precedence, atomic output writes and negative-zero export.",
+    "Real measured batches executed4,196608 and10000000 attempts; final large checksum7a617dc30106caf3,3362067 accepted and6637933 rejected.",
+    "All source/runtime/generated-vector/class hashes checked unchanged and matched live files at review."
+  ],
+  "limitations": [
+    "Earlier worker summaries overstated workload coverage and runtime bindings; worker1/worker3 reports were not accepted. Root corrected runner/native checks and used root2 result.",
+    "Timing is one measured traversal after warmup; no universal performance guarantee.",
+    "No Processing render, source recreation, packaged distribution or non-Java support accepted here."
+  ]
+}

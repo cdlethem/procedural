@@ -1,0 +1,328 @@
+{
+  "id": "path.noise-band-trace-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "capability": "CP15",
+  "description": "Retain an attempt-bounded connected path whose accepted proposals remain within a strict scalar band around the starting noise value.",
+  "decision_cluster": "path.noise-band-trace-2d",
+  "design_review": "design/operations/noise-band-path-contract.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/venas#0",
+      "notes_path": "survey/out/2018/Generativos/venas/notes.md",
+      "note_sha256": "0ac9dbed8216643e357b5da6c8078d891d3505949409029f75e689a7f4658f2b",
+      "upstream_pde_sha256": "0379c0d0853af3908bf96a5ed72f1a3bf0830292b24c8316a731cab1ef8091f4",
+      "evidence_sha256": "f7fcca26b72ce6fbc532247d2b6e4df6c3b767743f8407d190ca251e04b0a94d",
+      "relationship": "Extracted attempt-bounded noise-band traversal with accepted/rejected heading transitions; source placement, drawing, palette and lifecycle remain composition or out of scope."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "field": {
+        "type": "object",
+        "properties": {
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        },
+        "required": [
+          "seed"
+        ],
+        "additionalProperties": false
+      },
+      "start": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "heading": {
+        "type": "number"
+      },
+      "seed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "attempts": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      },
+      "stepDistance": {
+        "type": "number",
+        "minimum": 0
+      },
+      "fieldScale": {
+        "type": "number"
+      },
+      "fieldOffset": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "tolerance": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxVertices": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 1073741823
+      }
+    },
+    "required": [
+      "field",
+      "start",
+      "heading",
+      "seed",
+      "attempts",
+      "stepDistance",
+      "fieldScale",
+      "fieldOffset",
+      "tolerance",
+      "maxVertices"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "positions": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 1073741823,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "headings": {
+        "type": "array",
+        "maxItems": 1073741822,
+        "items": {
+          "type": "number"
+        }
+      },
+      "attempts": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      },
+      "accepted": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1073741822
+      },
+      "rejected": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      }
+    },
+    "required": [
+      "positions",
+      "headings",
+      "attempts",
+      "accepted",
+      "rejected"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "positions length=size=accepted+1 and headings length=accepted; attempts=accepted+rejected; rejected proposals add no position or heading; the first position is the supplied start; retained values and exported zeros are finite canonical binary64 values.",
+  "behavior": {
+    "input": "Validate passive input outer shape and exact keys, then field exactly {seed:uint32}, start exactly two finite binary64 coordinates x then y, heading finite binary64 radians without normalization, seed integer0..4294967295, attempts integer0..2147483647, stepDistance finite binary64 >=0, fieldScale finite binary64 including negative and zero, fieldOffset exactly two finite binary64 field coordinates, tolerance finite binary64 >=0, and maxVertices integer1..1073741823, in that order. Reject booleans, null, strings and arbitrary Number classes. All static failures are INVALID_INPUT. There are no defaults, recommended ranges or host fields/callbacks. Canonicalize -0 to +0 before computation and detached configuration export.",
+    "rng": "Portable xoshiro128**1.1 private to each call. Zero-extend uint32 seed to uint64 SplitMix64 state. Twice advance state by0x9e3779b97f4a7c15 modulo2^64; z=state; z=(z xor(z>>>30))*0xbf58476d1ce4e5b9 mod2^64; z=(z xor(z>>>27))*0x94d049bb133111eb mod2^64; q=z xor(z>>>31). Pack q0/q1 as s0=low32(q0),s1=high32(q0),s2=low32(q1),s3=high32(q1). next output=rotl32(s1*5 mod2^32,7)*9 mod2^32; then t=s1<<9 mod2^32; sequentially s2 xor=s0; s3 xor=s1; s1 xor=s2; s0 xor=s3; s2 xor=t; s3=rotl32(s3,11), all words uint32. Map output to u=unsigned_u32/4294967296 exactly in[0,1). State is private/discarded and never shares Processing/source/background/palette state. The all-zero state is unreachable and an internal invariant.",
+    "transition": "Use fdlibm5.3 binary64 sin/cos as provided by Java StrictMath; no caller angle reduction. All basic operators round separately to binary64, with no FMA or reassociation. HALF_PI=0x1.921fb54442d18p0; decimal .1 and .2 mean nearest binary64 values. C(v,stage) raises TRACE_ARITHMETIC_INVALID with attemptIndex and stage if v is nonfinite. Q(x,y,prefix) evaluates qx=x*fieldScale, checks that product finite, then qx=qx+offsetX, checks that final value is finite and -9007199254740991 <= qx < 9007199254740991; then does the same qy with the x/y prefix stages. An invalid product or final value raises TRACE_QUERY_INVALID. Query existing field.sample(qx,qy), whose finite [0,1] output is guaranteed. After static validation retain start and heading. If attempts=0 return immediately with no RNG draws, field sample, coordinate transform or trig. Otherwise attemptIndex=-1; level=Q(startX,startY,start_query); then create private RNG. For attemptIndex 0..attempts-1: u0=U(); low=(-HALF_PI)*u0; u1=U(); high=HALF_PI*u1; span=high-low; u2=U(); delta=span*u2; turn=low+delta; proposal=C(heading+turn,proposal_heading); dx=C(stepDistance*fdlibmCos(proposal),delta_x); nx=C(x+dx,position_x); dy=C(stepDistance*fdlibmSin(proposal),delta_y); ny=C(y+dy,position_y); value=Q(nx,ny,candidate_query); u3=U(); driftProduct=.2*u3; drift=-.1+driftProduct; rejectionHeading=C(heading+drift,rejection_heading); difference=value-level; bandError=abs(difference). If bandError < tolerance, fail VERTEX_LIMIT_EXCEEDED with attemptIndex and append stage when size==maxVertices, then canonicalize nx,ny,proposal, append point and heading, update x,y,heading and accepted. Otherwise canonicalize rejectionHeading into heading and increment rejected. Every completed attempt consumes four draws; rejection drift is calculated and validated even on acceptance. No retry, early stop, boundary handling or partial result.",
+    "canonicalization": "Every stored coordinate and heading is canonical positive zero when equal to zero. Canonicalize updated x, y and heading before they feed the next attempt; do not canonicalize every temporary. Subnormal values and arithmetic underflow are permitted, with no flush-to-zero profile. The difference of two field samples cannot overflow. Trig and field are evaluated for zero distance. Resource failure is tested only for an actually accepted append, after candidate query and rejection-heading checks.",
+    "storage": "O(attempts) work and O(accepted) retained numeric payload, 24 bytes per accepted move plus 16-byte starting coordinates excluding headers/capacity. Grow bounded packed arrays lazily; never preallocate maxVertices, retain rejected coordinates or create per-attempt objects. Resource failure is checked only for an actually accepted append, after candidate query and rejection-heading checks. Host allocation failures remain host errors.",
+    "native_surface": "Java reference class is org.procedurals.paths.NoiseBandPath2D with static trace(Object). size(), attempts(), accepted(), rejected() return int; pointAt(Object/long) returns new double[2]; pointInto(Object/long,double[],int) writes two coordinates; headingAt(Object/long) returns the proposal heading for accepted segment i; serialize() returns detached validated configuration; toValues() returns exactly {positions:[[x,y],...],headings:[...],attempts,accepted,rejected}. No mutable state, shared RNG, drawing, implicit seed layout or incremental execution API.",
+    "access": "For point and heading access, reject nonfinite, negative, fractional or >9007199254740991 index as INVALID_INDEX; a valid index >=size (point) or >=accepted (heading) is INDEX_OUT_OF_RANGE. pointInto validates index before output; null/insufficient double[] or negative/overflowing offset gives INVALID_OUTPUT with no writes. Failed queries leave the result usable.",
+    "native_representations": "Java interchange: passive Map records and List pairs; only Byte,Short,Integer,Long,Float,Double numeric carriers. Reject BigInteger,BigDecimal,custom Number and booleans before conversion. pointInto accepts double[] and int offset; no partial writes. No arbitrary field/callback inputs. JSON ordinary records/arrays define future portable interchange; no runtime support is implied.",
+    "complexity": "Eager O(attempts) transition work and O(accepted) retained storage; O(1) point/heading access and O(size) detached export.",
+    "normative_transition": "design/operations/noise-band-path-contract.md; transition and ordered arithmetic there are normative together with this catalog. No new host-dependent semantics may be inferred.",
+    "numeric_details": "Canonicalize input and stored coordinate/heading zeros to +0 before subsequent use; intermediate signed zeros remain IEEE754. Subnormals and underflow are permitted; no flush-to-zero. Trig and field queries execute even at zero stepDistance. Four draws per completed attempt even when bounds coincide or tolerance is zero; dynamic errors stop before later draws. Query product is checked finite only; final product+offset must also meet lattice bounds. Error detail is exactly {attemptIndex,stage}, with -1 for initial query and zero-based attempts thereafter; static and access errors have no dynamic detail.",
+    "ownership": "Copy input configuration; construct privately; serialize and toValues deeply detached. Caller modifications before/after export cannot alter retained path. Host allocation errors remain host errors and no partial result escapes."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed static carrier/key/value, nonfinite value or out-of-domain static field.",
+    "TRACE_QUERY_INVALID": "Dynamic field coordinate invalid; includes attemptIndex and query stage.",
+    "TRACE_ARITHMETIC_INVALID": "Dynamic nonfinite heading, displacement or endpoint; includes attemptIndex and stage.",
+    "VERTEX_LIMIT_EXCEEDED": "An accepted append would exceed maxVertices; includes attemptIndex and append stage.",
+    "INVALID_INDEX": "Index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "Index exceeds retained point or heading range.",
+    "INVALID_OUTPUT": "pointInto destination or offset cannot hold two binary64 values."
+  },
+  "parameters": {
+    "field": {
+      "unit": "seed-only gradient-noise configuration",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Existing field.gradient-noise-2d-01 descriptor; no public callback or source noise compatibility."
+    },
+    "start": {
+      "unit": "coordinate pair",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit start retained as the first path vertex; no recommended range."
+    },
+    "heading": {
+      "unit": "radians",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit initial heading; no normalization or recommended range."
+    },
+    "seed": {
+      "unit": "uint32 private walk stream",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Portable stream is an explicit design divergence from source host state."
+    },
+    "attempts": {
+      "unit": "proposal attempts",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source uses 10000 attempts per walker; work budget, not retained-output count; no recommended range."
+    },
+    "stepDistance": {
+      "unit": "coordinate units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source uses one-pixel proposals; explicit coordinate input and zero stationary case are contract choices."
+    },
+    "fieldScale": {
+      "unit": "field lattice units per coordinate unit",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source scale substitutions visibly affect bands; no portable recommended range."
+    },
+    "fieldOffset": {
+      "unit": "field coordinate pair",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit sampling translation; no recommended range."
+    },
+    "tolerance": {
+      "unit": "scalar-value units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source strict .002 threshold and measured .008 substitution; no public recommended interval."
+    },
+    "maxVertices": {
+      "unit": "retained vertices including start",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Resource cap required for retained output; representation bound, not artistic range."
+    }
+  },
+  "design_divergences": [
+    "Named gradient-noise carrier replaces source Processing noise.",
+    "Private portable xoshiro stream replaces source global RNG and seed behavior.",
+    "One explicit start and one retained path replace source random walker placement and direct drawing.",
+    "Rejected proposals retain only heading drift; colours, alpha, palette, canvas and lifecycle remain caller composition."
+  ],
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "gradient-noise-2d-01",
+        "fdlibm5.3-trigonometry"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Java first; pending implementation and validation; no support claim."
+    },
+    "p5js": {
+      "required": false,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "gradient-noise-2d-01",
+        "fdlibm5.3-trigonometry"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "py5": {
+      "required": false,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "gradient-noise-2d-01",
+        "fdlibm5.3-trigonometry"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "gradient-noise-2d-01",
+        "fdlibm5.3-trigonometry"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/noise-band-path.json",
+  "reproduction": {
+    "level": "technique",
+    "acceptance": "Native BandMarks must transfer one retained path to repeated perpendicular marks, demonstrate tolerance editing and saved-display equality. No venas recreation credit until separately demonstrated under the recreation policy.",
+    "status": "planned"
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root direct review under paused-Sol sprint",
+    "status": "Root reviewed exact transition and preimplementation fixtures; approved for Java implementation only."
+  },
+  "capability_decision": "design/capabilities/cp15-band-boundary-review.md"
+}

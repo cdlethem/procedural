@@ -15,18 +15,18 @@ Those scoped records do not establish Android or completed shared radial support
 
 ## Java buildout additions to the deferred queue
 
-Current accepted Java baseline: `19365d83` (Java0.16, 16 operations and16 workflows).
-The earlier `88ac268d` above records the scheduling-change checkpoint, not the latest
-Java baseline. RasterRemap2D and WarpMarks are accepted Java additions awaiting ports.
-StopRamp and RampMarks are in local Java development; their core review and candidate
-native results do not yet establish a packaged baseline. Port only an explicitly accepted,
-pushed revision after integration resumes.
+Last pushed release baseline before CP15 packaging: `346d6f53` (Java0.17,17 operations
+and17 workflows). The earlier `88ac268d` records the scheduling-change checkpoint.
+RasterRemap2D/WarpMarks and StopRamp/RampMarks are accepted Java additions awaiting ports.
+CP15 adds NoiseBandPath2D/BandMarks; use its explicit distribution review and a pushed
+revision containing accepted implementation, not the earlier prototype-only checkpoint.
 
 Keep deferred work in this order: finish Android ProfileMarks lifecycle validation and
-root integration; then port the accepted Delaunay, target-spring, occupied-lattice,
-line-pool and raster capabilities in bounded batches. Add StopRamp only after Java
-package acceptance. Preserve shared fixtures and contracts; workers must not author root
-acceptance records. No port task is required to finish the current Java milestone.
+root integration; then port accepted Delaunay, target-spring, occupied-lattice, line-pool,
+raster, positioned-ramp and noise-band capabilities in bounded batches. NoiseBandPath2D,
+like LinePool2D, requires exact elementary math for branch-sensitive decisions. Preserve
+shared fixtures and contracts; workers must not author root acceptance records. No port
+task is required to finish the current Java milestone.
 
 ## Android ProfileMarks draft
 

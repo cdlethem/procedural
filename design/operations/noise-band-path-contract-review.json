@@ -1,0 +1,25 @@
+{
+  "status": "approved-for-implementation",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Frozen CP15 catalog and preimplementation fixtures; no implementation/native/distribution acceptance",
+  "inputs_sha256": {
+    "catalog/operations/noise-band-path.json": "245c3350d3cc139d9f208fa768f14e5439bd434c58afaf2e4f63d6f66763588f",
+    "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8",
+    "design/operations/noise-band-path-contract.md": "3687e060202a47b3a13db34dd5b313210756bbaed849e9175a456c9a7ff46c20",
+    "tools/diagnostics/noiseband/BandOracle.java": "ccb131503de84cce7c273718f1b9366530eea1c445101b8fda624863947f8767",
+    "tools/diagnostics/noiseband/make_oracle.py": "a83c614a5ef88505755bdcb99ea311964b03727676515b3cf60c2d4b052df58c"
+  },
+  "verified": [
+    "Root read source mechanism, prototype and catalog; verified independent RNG arithmetic and the oracle transition before implementation.",
+    "18 exact-json fixtures: seven successful outputs and eleven static/dynamic errors; constant and mixed acceptance, stationary motion, strict threshold equality/nextUp, zero work, capacity and query/coordinate failures.",
+    "Root mixed trace has12 attempts:7 accepted and5 rejected; error chronology shows rejection-heading changes feed subsequent proposals.",
+    "Catalog/source bindings/schema/fixture check passes; no blanket floating tolerance.",
+    "Java source and runtime acceptance remain pending. Native BandMarks pre-render plan records edit, retained mark transfer, reset and save criteria."
+  ],
+  "limits": [
+    "Oracle uses accepted field implementation for numeric queries; this is composition evidence, not an independent revalidation of that field algorithm.",
+    "Prototype xorshift/grouping/first-segment omissions are intentionally not the public semantics.",
+    "Deferred targets require the explicit fdlibm profile before exact branch-sensitive support."
+  ]
+}
