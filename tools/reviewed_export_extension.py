@@ -5,6 +5,7 @@ import json
 REVIEW = 'evidence/conformance/placement-export-compatibility-review.json'
 SUCCESSOR = 'evidence/conformance/quadrant-export-compatibility-review.json'
 TRIANGLE = 'evidence/conformance/triangle-export-compatibility-review.json'
+BRANCH = 'evidence/conformance/branch-export-compatibility-review.json'
 HELPER = 'tools/reviewed_export_extension.py'
 PATHS = frozenset(('packages/javascript/src/index.js', 'packages/python/procedurals/__init__.py'))
 
@@ -47,9 +48,12 @@ def historical_export_bytes(root, relative, expected):
     try:
         snapshots = {}
         successor_match = None
-        # Only these two frozen export transitions are authorized. Walking newest to
+        # Only these frozen export transitions are authorized. Walking newest to
         # oldest keeps earlier reviews immutable without allowing arbitrary overlays.
         stages = (
+            (BRANCH, TRIANGLE, PATHS,
+             {HELPER, *PATHS, 'packages/javascript/src/branch-tree.js',
+              'packages/python/procedurals/branch_tree.py'}),
             (TRIANGLE, SUCCESSOR, PATHS,
              {HELPER, *PATHS, 'packages/javascript/src/triangle-points.js',
               'packages/python/procedurals/triangle_points.py',

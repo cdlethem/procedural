@@ -42,14 +42,15 @@ class ReviewedExportTests(unittest.TestCase):
             self.assertIsNone(historical_export_bytes(root, relative, digest('before')))
 
     def test_successor_preserves_both_historical_exports_and_rejects_mutation(self):
-        from tools.reviewed_export_extension import SUCCESSOR, HELPER, TRIANGLE
+        from tools.reviewed_export_extension import SUCCESSOR, HELPER, TRIANGLE, BRANCH
         import shutil
         repository = Path(__file__).resolve().parents[1]
         previous = json.loads((repository / REVIEW).read_text())
         successor = json.loads((repository / SUCCESSOR).read_text())
         triangle = json.loads((repository / TRIANGLE).read_text())
-        files = {REVIEW, SUCCESSOR, TRIANGLE, *PATHS}
-        for review in (previous, successor, triangle):
+        branch = json.loads((repository / BRANCH).read_text())
+        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, *PATHS}
+        for review in (previous, successor, triangle, branch):
             files.update(review['implementation_sha256'])
             files.update(review['evidence_sha256'])
         with tempfile.TemporaryDirectory(dir=repository / '.work') as temporary:
@@ -84,6 +85,26 @@ class ReviewedExportTests(unittest.TestCase):
                 (root / name).write_bytes(original + b'\nchanged')
                 self.assertIsNone(historical_export_bytes(root, relative, digest(old)), name)
                 (root / name).write_bytes(original)
+            for name in ('packages/javascript/src/branch-tree.js',
+                         'packages/python/procedurals/branch_tree.py'):
+                original = (root / name).read_bytes()
+                (root / name).write_bytes(original + b'changed')
+                self.assertIsNone(historical_export_bytes(root, relative, digest(old)), name)
+                (root / name).write_bytes(original)
+            for path in PATHS:
+                retained = branch['extensions'][path]['before']
+                self.assertEqual(historical_export_bytes(root, path, digest(retained)), retained.encode())
+            for mutate in (
+                lambda r: r.update(status='draft'),
+                lambda r: r['implementation_sha256'].pop(HELPER),
+                lambda r: r['previous_bytes'].update({'arbitrary.py': 'forbidden'}),
+                lambda r: r.update(previous_review_sha256='0' * 64),
+                lambda r: r['extensions'][python].update(after='wrong'),
+            ):
+                record = json.loads(json.dumps(branch)); mutate(record)
+                (root / BRANCH).write_text(json.dumps(record))
+                self.assertIsNone(historical_export_bytes(root, relative, digest(old)))
+            (root / BRANCH).write_text(json.dumps(branch))
             for mutate in (
                 lambda r: r.update(status='draft'),
                 lambda r: r['implementation_sha256'].pop(HELPER),

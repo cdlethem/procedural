@@ -1,9 +1,9 @@
 # BranchMarks Android starter
 
-This draft native example draws retained endpoint trees with the shared Java
+This native example draws retained endpoint trees with the shared Java
 `BranchComposition`. It preserves the Java example's generation colours, nominal-length
 taper and actual terminal dots. Root placement uses circle placement to reserve root
-space; tree canopies may overlap. Native validation and standalone packaging are pending.
+space; tree canopies may overlap. The scoped native workflow is validated; standalone packaging is tracked separately.
 
 Controls: Seed (R), Generations (N), Narrow (G), Wide (W), Binary (B), Forest (X),
 Taper (M), Palette (C), Reset (0), Save PNG (S). Taper and palette retain geometry;

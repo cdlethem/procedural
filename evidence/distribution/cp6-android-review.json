@@ -1,0 +1,33 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Android BranchMarks0.6 starter ZIP and extracted APK compilation; native workflow remains scoped to separate API33 evidence.",
+  "implementation_sha256": {
+    "tools/build_branch_marks_android.py": "cef6ab199a4d71f2ac9c34307cdab42004dd5671e1b1260eef19497a6b848808",
+    "packages/java-android/examples/BranchMarks/BranchMarksActivity.java": "48bea7c7deb5ac63834231e720665c42f66c1bb03858d579f6e0777c0868e950",
+    "packages/java-android/examples/BranchMarks/BranchMarksRenderer.java": "604719ba3ca4e878e242c18fee870d7198dba516120b5403a81b02c06124d13c",
+    "packages/java-android/examples/BranchMarks/README.md": "8bc55fcb87644fb5c24c38f73718e2aa5511309e188b7fa6f65ccae51d132b54",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp6-android.json": "56cb82f476aab0ec720ff3ddecd36cf939a3237015ce716cf6f5b4140c32accc",
+    "evidence/distribution/cp6-java.json": "d1ff531f7aebb3a6ca573b46be3b51d463999c28aa24e96c0d39f6eb04884e70",
+    "evidence/distribution/cp2-android.json": "8fe60e2a6ef2b288c153e0997ad9ce172600ed34d9141406f4d5f89070d44c38",
+    "evidence/conformance/branch-tree-android.json": "190378fa50124af68dbdeed1f1e56a972f17988eb1b734b00cd75b834c1b8a96",
+    "evidence/conformance/branch-android-native-root-review.json": "d02c4c679af706661119b80e54a47084fb745bceee709262738279e9cfd7af1c",
+    "evidence/conformance/branch-android-readme-review.json": "60860791fb5ac9964ede3de172ea01445a24d5bb513bcb078e748dc9b823d434"
+  },
+  "root_findings": [
+    "Root reviewed adapted existing package builder, exact source copies, external runtime/SDK and archive exclusions.",
+    "All input/artifact/archive member hashes verified; extracted starter compiles. Packaged branch classes match accepted ART bytes; core0.6 and adapter0.2 JARs match accepted records.",
+    "Reviewed README-only delta matches exact historical native README bytes and current updated text; executable native sources and historical evidence unchanged.",
+    "Notices and provenance retained; no runtime, SDK, signing key, build output or rendered image in archive."
+  ],
+  "remaining": [
+    "JavaScript and Python branch distribution review",
+    "Focused restoration-path review of older Android starters",
+    "Five later operation port batches and remaining roadmap milestones"
+  ]
+}

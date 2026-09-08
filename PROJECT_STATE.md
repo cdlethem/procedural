@@ -1,5 +1,18 @@
 # Project state
 
+## Branch root exports and Android distribution accepted
+
+Added exact JavaScript/Python branch root exports; direct function/error identity and
+root import execution passed. Extended frozen historical-export chain with branch review;
+18 focused tests/catalog passed, prior records unchanged. Android0.6 starter build at
+.work/dist/cp6/android-branch1 passed extracted APK compile. Root verified all hashes,
+ART branch class identity, exact sources and README-only historical/current delta.
+Records cp6-android.json/review; docs/installing-branch-marks-android.md added.
+Terra branch_android_probe owns tools/build_branch_marks_javascript.mjs; fresh Terra
+branch_python_package owns tools/build_branch_marks_python.py. Root owns acceptance.
+Next review those package outputs; older Android restore follow-up and laterfive ports
+remain. Java15/15, ten native/core targets, nine complete four-target distributions.
+
 ## Android BranchMarks native3 accepted
 
 Root added Probe.resume g.surfaceChanged hook to arm pinned cached restoration before

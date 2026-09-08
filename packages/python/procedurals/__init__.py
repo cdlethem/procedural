@@ -17,7 +17,11 @@ from .triangle_points import (
     map_triangle_coordinates_2d,
 )
 
+from .branch_tree import BranchTreeError, seeded_endpoint_branches_2d
+
 __all__ = [
+ "BranchTreeError",
+ "seeded_endpoint_branches_2d",
  "PartitionError",
  "TrianglePointsError",
  "seeded_quadrant_partition_2d",
