@@ -1,5 +1,17 @@
 # Project state
 
+## JavaScript RegionMarks local distribution accepted; Python build in flight
+
+Root built npm tarball and browser starter at .work/dist/cp4/javascript-region1.
+Installed tarball and extracted ZIP both pass five composition checks; root independently
+compared every ID, bound and nine marks per cell via matching geometry fingerprints.
+All archive member/source hashes and unchanged prior native-review bindings verified.
+Review: evidence/distribution/cp4-javascript-review.json. No new render or registry claim.
+Luna owns only tools/build_region_marks_python.py and optional Python installation doc;
+its draft needs actual installed-wheel debugging and root review. Do not accept or commit
+that slice before it passes. Root requested direct submodule import, installed origin,
+all-cell/mark checks and no HOME override. Next complete Python packaging to close batch02.
+
 ## Android RegionMarks local distribution accepted
 
 Built .work/dist/cp4/android-region1/procedurals-region-marks-android-0.4.0.zip and

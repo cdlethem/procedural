@@ -29,7 +29,8 @@ Seven operations now have core/native records on all four targets: grid, palette
 noise, gradient paths, circle filtering, seeded circle placement and quadrant partition. Placement Android
 core evidence is API33 ART; its native Activity evidence is scoped separately. Quadrant native integration is pushed at `d2bc673a`; its Android distribution is accepted in
 `evidence/distribution/cp4-android-review.json` (see [installation](installing-region-marks-android.md));
-JavaScript/Python distributions remain pending.
+JavaScript distribution is accepted in `evidence/distribution/cp4-javascript-review.json`
+(see [installation](installing-region-marks-javascript.md)); Python distribution remains pending.
 The other eight operations still require deferred target ports and workflow validation. Follow
 dependency order for the next bounded batch; see
 `design/port-batch-01.md` and the frozen contracts, including all auxiliary fixture sections.

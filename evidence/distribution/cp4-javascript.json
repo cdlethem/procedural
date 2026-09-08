@@ -1,0 +1,448 @@
+{
+  "status": "passed",
+  "scope": "CP4 JavaScript 0.4.0 local package and installed RegionMarks starter checks only; no browser launch, render, registry publication, or target acceptance.",
+  "package_version": "0.4.0",
+  "input_sha256": {
+    "packages/javascript/package.json": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/index.js": "e3e44c53386361215a9f709b011884128be047878c446f4ed3fe407294a1522c",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/examples/field-marks/README.md": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27",
+    "packages/javascript/examples/field-marks/index.html": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d",
+    "packages/javascript/examples/field-marks/mark-field.js": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf",
+    "packages/javascript/examples/field-marks/sketch.js": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b",
+    "packages/javascript/examples/path-marks/README.md": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291",
+    "packages/javascript/examples/path-marks/index.html": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f",
+    "packages/javascript/examples/path-marks/path-marks.js": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743",
+    "packages/javascript/examples/path-marks/sketch.js": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473",
+    "packages/javascript/examples/placement-marks/README.md": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1",
+    "packages/javascript/examples/placement-marks/index.html": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318",
+    "packages/javascript/examples/placement-marks/placement-marks.js": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382",
+    "packages/javascript/examples/placement-marks/sketch.js": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c",
+    "packages/javascript/examples/region-marks/README.md": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010",
+    "packages/javascript/examples/region-marks/index.html": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d",
+    "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+    "packages/javascript/examples/region-marks/sketch.js": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "tools/build_region_marks_javascript.mjs": "1c3d3d7c6dfba0511c0ff61782d0f048c343df172ea4e4ad4f97445c7d798dac"
+  },
+  "artifacts": {
+    "npm_tarball": {
+      "path": ".work/dist/cp4/javascript-region1/procedurals-javascript-0.4.0.tgz",
+      "sha256": "4b600a1916aff51b25b3188d0f966970399cdcc96ecce65f18adcfbb09b93c4b",
+      "entries": [
+        {
+          "path": "LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "README.md",
+          "sha256": "f573157f25ec8c0f13518fb32c09d6805cac0fed1aafd4477de8ce76287ebab0"
+        },
+        {
+          "path": "THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "examples/field-marks/README.md",
+          "sha256": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27"
+        },
+        {
+          "path": "examples/field-marks/index.html",
+          "sha256": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d"
+        },
+        {
+          "path": "examples/field-marks/mark-field.js",
+          "sha256": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf"
+        },
+        {
+          "path": "examples/field-marks/sketch.js",
+          "sha256": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b"
+        },
+        {
+          "path": "examples/path-marks/README.md",
+          "sha256": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291"
+        },
+        {
+          "path": "examples/path-marks/index.html",
+          "sha256": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f"
+        },
+        {
+          "path": "examples/path-marks/path-marks.js",
+          "sha256": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743"
+        },
+        {
+          "path": "examples/path-marks/sketch.js",
+          "sha256": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473"
+        },
+        {
+          "path": "examples/placement-marks/README.md",
+          "sha256": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1"
+        },
+        {
+          "path": "examples/placement-marks/index.html",
+          "sha256": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318"
+        },
+        {
+          "path": "examples/placement-marks/placement-marks.js",
+          "sha256": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382"
+        },
+        {
+          "path": "examples/placement-marks/sketch.js",
+          "sha256": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c"
+        },
+        {
+          "path": "examples/region-marks/README.md",
+          "sha256": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010"
+        },
+        {
+          "path": "examples/region-marks/index.html",
+          "sha256": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d"
+        },
+        {
+          "path": "examples/region-marks/region-marks.js",
+          "sha256": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8"
+        },
+        {
+          "path": "examples/region-marks/sketch.js",
+          "sha256": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a"
+        },
+        {
+          "path": "package.json",
+          "sha256": "0d321dc02f50e06d26ddf1eeae9be22c56a177503de6ec3de1c931f59a24552e"
+        },
+        {
+          "path": "src/circle-placements.js",
+          "sha256": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567"
+        },
+        {
+          "path": "src/cyclic-palette.js",
+          "sha256": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b"
+        },
+        {
+          "path": "src/gradient-noise-2d-01.js",
+          "sha256": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e"
+        },
+        {
+          "path": "src/gradient-path.js",
+          "sha256": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a"
+        },
+        {
+          "path": "src/index.js",
+          "sha256": "e3e44c53386361215a9f709b011884128be047878c446f4ed3fe407294a1522c"
+        },
+        {
+          "path": "src/internal/drawing-state.js",
+          "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+        },
+        {
+          "path": "src/internal/drawing.js",
+          "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+        },
+        {
+          "path": "src/internal/noise-hash.js",
+          "sha256": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6"
+        },
+        {
+          "path": "src/internal/p5-frame.js",
+          "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+        },
+        {
+          "path": "src/quadrant-partition.js",
+          "sha256": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f"
+        },
+        {
+          "path": "src/regular-grid.js",
+          "sha256": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278"
+        }
+      ]
+    },
+    "browser_starter_zip": {
+      "path": ".work/dist/cp4/javascript-region1/procedurals-region-marks-browser-0.4.0.zip",
+      "sha256": "2bdcd8d8665d37da8c967630bb62e3a4201a54123cd19d5d3cc22320098e0e58",
+      "entries": [
+        {
+          "path": "procedurals-region-marks-browser/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "procedurals-region-marks-browser/README.md",
+          "sha256": "004f75ecc65287b454773ee2f6bc4bcad2dc9f733db6361323b60af4cdbba6df"
+        },
+        {
+          "path": "procedurals-region-marks-browser/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "procedurals-region-marks-browser/index.html",
+          "sha256": "6c6fe2f7d73a955bb6c604cb9053f98d1dd011295b604f5f65b19b5de3197ed3"
+        },
+        {
+          "path": "procedurals-region-marks-browser/package-lock.json",
+          "sha256": "7f3c0341f473b25f328b011e1debc378f0f283938e1be61f68191ec91fb46c28"
+        },
+        {
+          "path": "procedurals-region-marks-browser/package.json",
+          "sha256": "a86a080204283cc8e7ee23e058f744aca40c78ec8acd4f6a7d7816ef72df9a96"
+        },
+        {
+          "path": "procedurals-region-marks-browser/region-marks.js",
+          "sha256": "d9acfb967f300eb8cc8e4384b58e7d0609e1768aa52921f90757e47926f70553"
+        },
+        {
+          "path": "procedurals-region-marks-browser/server.mjs",
+          "sha256": "bcdb35d16ee8fcf99b8008e3775abf57ad318229981cf04d337517128216357c"
+        },
+        {
+          "path": "procedurals-region-marks-browser/sketch.js",
+          "sha256": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a"
+        },
+        {
+          "path": "procedurals-region-marks-browser/vendor/procedurals-javascript-0.4.0.tgz",
+          "sha256": "4b600a1916aff51b25b3188d0f966970399cdcc96ecce65f18adcfbb09b93c4b"
+        }
+      ]
+    }
+  },
+  "installed_consumer": {
+    "region_marks": {
+      "counts": [
+        301,
+        301,
+        601,
+        601,
+        11
+      ],
+      "geometry_fingerprints": [
+        "9d314e48976f3ee0c41d80dce40798b78fdd4b478bdf2630c2d9c1e5770436dd",
+        "e7479f5e24a1d7b28b91abe10a5c44d9bc9617f29b53324e45598ee7cf3355ad",
+        "0c24e0a3b61f40b4b22f762d7fabef2fc08f15ab028be7f7bbd138f349d591da",
+        "322e3e38027a6ad75c4381a90bf6e64cb91395f047a76227b23028f076fa5ed7",
+        "f9b7d5befbf2e0e91889f237eec36863c0f730447583b40a62f625b4deaee50c"
+      ],
+      "previous_exports": true,
+      "resolved": "file:///home/colin/dev/procedural/.work/dist/cp4/javascript-region1/build/procedurals-region-marks-browser/node_modules/@procedurals/javascript/src/index.js",
+      "p5_version": "2.3.2"
+    },
+    "extracted_archive": {
+      "counts": [
+        301,
+        301,
+        601,
+        601,
+        11
+      ],
+      "geometry_fingerprints": [
+        "9d314e48976f3ee0c41d80dce40798b78fdd4b478bdf2630c2d9c1e5770436dd",
+        "e7479f5e24a1d7b28b91abe10a5c44d9bc9617f29b53324e45598ee7cf3355ad",
+        "0c24e0a3b61f40b4b22f762d7fabef2fc08f15ab028be7f7bbd138f349d591da",
+        "322e3e38027a6ad75c4381a90bf6e64cb91395f047a76227b23028f076fa5ed7",
+        "f9b7d5befbf2e0e91889f237eec36863c0f730447583b40a62f625b4deaee50c"
+      ],
+      "previous_exports": true,
+      "resolved": "file:///home/colin/dev/procedural/.work/dist/cp4/javascript-region1/build/archive-consumer/procedurals-region-marks-browser/node_modules/@procedurals/javascript/src/index.js",
+      "p5_version": "2.3.2"
+    },
+    "p5_version": "2.3.2",
+    "package_lock_sha256": "7f3c0341f473b25f328b011e1debc378f0f283938e1be61f68191ec91fb46c28",
+    "starter_rewrites": {
+      "index.html": {
+        "inserted": "<script type=\"importmap\">{\"imports\":{\"@procedurals/javascript\":\"/node_modules/@procedurals/javascript/src/index.js\",\"@procedurals/javascript/\":\"/node_modules/@procedurals/javascript/\"}}</script>"
+      },
+      "region-marks.js": {
+        "from": [
+          "../../src/quadrant-partition.js",
+          "../../src/regular-grid.js"
+        ],
+        "to": "@procedurals/javascript"
+      },
+      "sketch.js": {
+        "byte_identical": true
+      }
+    }
+  },
+  "included_file_manifest": {
+    "staged_package": [
+      {
+        "path": "LICENSE",
+        "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+      },
+      {
+        "path": "README.md",
+        "sha256": "f573157f25ec8c0f13518fb32c09d6805cac0fed1aafd4477de8ce76287ebab0"
+      },
+      {
+        "path": "THIRD_PARTY_NOTICES.md",
+        "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+      },
+      {
+        "path": "examples/field-marks/README.md",
+        "sha256": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27"
+      },
+      {
+        "path": "examples/field-marks/index.html",
+        "sha256": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d"
+      },
+      {
+        "path": "examples/field-marks/mark-field.js",
+        "sha256": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf"
+      },
+      {
+        "path": "examples/field-marks/sketch.js",
+        "sha256": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b"
+      },
+      {
+        "path": "examples/path-marks/README.md",
+        "sha256": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291"
+      },
+      {
+        "path": "examples/path-marks/index.html",
+        "sha256": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f"
+      },
+      {
+        "path": "examples/path-marks/path-marks.js",
+        "sha256": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743"
+      },
+      {
+        "path": "examples/path-marks/sketch.js",
+        "sha256": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473"
+      },
+      {
+        "path": "examples/placement-marks/README.md",
+        "sha256": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1"
+      },
+      {
+        "path": "examples/placement-marks/index.html",
+        "sha256": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318"
+      },
+      {
+        "path": "examples/placement-marks/placement-marks.js",
+        "sha256": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382"
+      },
+      {
+        "path": "examples/placement-marks/sketch.js",
+        "sha256": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c"
+      },
+      {
+        "path": "examples/region-marks/README.md",
+        "sha256": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010"
+      },
+      {
+        "path": "examples/region-marks/index.html",
+        "sha256": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d"
+      },
+      {
+        "path": "examples/region-marks/region-marks.js",
+        "sha256": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8"
+      },
+      {
+        "path": "examples/region-marks/sketch.js",
+        "sha256": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a"
+      },
+      {
+        "path": "package.json",
+        "sha256": "0d321dc02f50e06d26ddf1eeae9be22c56a177503de6ec3de1c931f59a24552e"
+      },
+      {
+        "path": "src/circle-placements.js",
+        "sha256": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567"
+      },
+      {
+        "path": "src/cyclic-palette.js",
+        "sha256": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b"
+      },
+      {
+        "path": "src/gradient-noise-2d-01.js",
+        "sha256": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e"
+      },
+      {
+        "path": "src/gradient-path.js",
+        "sha256": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a"
+      },
+      {
+        "path": "src/index.js",
+        "sha256": "e3e44c53386361215a9f709b011884128be047878c446f4ed3fe407294a1522c"
+      },
+      {
+        "path": "src/internal/drawing-state.js",
+        "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+      },
+      {
+        "path": "src/internal/drawing.js",
+        "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+      },
+      {
+        "path": "src/internal/noise-hash.js",
+        "sha256": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6"
+      },
+      {
+        "path": "src/internal/p5-frame.js",
+        "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+      },
+      {
+        "path": "src/quadrant-partition.js",
+        "sha256": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f"
+      },
+      {
+        "path": "src/regular-grid.js",
+        "sha256": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278"
+      }
+    ],
+    "starter": [
+      {
+        "path": "procedurals-region-marks-browser/LICENSE",
+        "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+      },
+      {
+        "path": "procedurals-region-marks-browser/README.md",
+        "sha256": "004f75ecc65287b454773ee2f6bc4bcad2dc9f733db6361323b60af4cdbba6df"
+      },
+      {
+        "path": "procedurals-region-marks-browser/THIRD_PARTY_NOTICES.md",
+        "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+      },
+      {
+        "path": "procedurals-region-marks-browser/index.html",
+        "sha256": "6c6fe2f7d73a955bb6c604cb9053f98d1dd011295b604f5f65b19b5de3197ed3"
+      },
+      {
+        "path": "procedurals-region-marks-browser/package-lock.json",
+        "sha256": "7f3c0341f473b25f328b011e1debc378f0f283938e1be61f68191ec91fb46c28"
+      },
+      {
+        "path": "procedurals-region-marks-browser/package.json",
+        "sha256": "a86a080204283cc8e7ee23e058f744aca40c78ec8acd4f6a7d7816ef72df9a96"
+      },
+      {
+        "path": "procedurals-region-marks-browser/region-marks.js",
+        "sha256": "d9acfb967f300eb8cc8e4384b58e7d0609e1768aa52921f90757e47926f70553"
+      },
+      {
+        "path": "procedurals-region-marks-browser/server.mjs",
+        "sha256": "bcdb35d16ee8fcf99b8008e3775abf57ad318229981cf04d337517128216357c"
+      },
+      {
+        "path": "procedurals-region-marks-browser/sketch.js",
+        "sha256": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a"
+      },
+      {
+        "path": "procedurals-region-marks-browser/vendor/procedurals-javascript-0.4.0.tgz",
+        "sha256": "4b600a1916aff51b25b3188d0f966970399cdcc96ecce65f18adcfbb09b93c4b"
+      }
+    ]
+  },
+  "environment": {
+    "node": "v22.22.1",
+    "npm": "9.2.0"
+  }
+}

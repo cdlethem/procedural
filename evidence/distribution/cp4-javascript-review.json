@@ -1,0 +1,28 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local JavaScript0.4 npm tarball and extracted RegionMarks browser starter consumer checks; no new browser render or registry publication.",
+  "implementation_sha256": {
+    "tools/build_region_marks_javascript.mjs": "1c3d3d7c6dfba0511c0ff61782d0f048c343df172ea4e4ad4f97445c7d798dac",
+    "packages/javascript/src/index.js": "e3e44c53386361215a9f709b011884128be047878c446f4ed3fe407294a1522c",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+    "packages/javascript/examples/region-marks/sketch.js": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a",
+    "packages/javascript/examples/region-marks/index.html": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp4-javascript.json": "31c028efd3457d7580a682a8e3569da677d982a1eb128ee8348346bfdf55bbfb",
+    "evidence/conformance/quadrant-p5js-root-review.json": "b79e978815ee974a824ff09dd6bca44988a0777dcc4117f0aeecbd4e5bcebbcb"
+  },
+  "findings": [
+    "Reviewed adaptation of established builder. Package sources copied byte for byte; starter transforms only two imports to public package entrypoint and adds HTML import map. Sketch remains identical.",
+    "Verified every input hash and archive member; notices included. Installed local tarball and npm-ci extracted starter both resolve public package from their own node_modules.",
+    "Five composition counts301/301/601/601/11 pass finite ordered bounds, unique IDs and all nine marks within each cell. Root independently compared full installed geometry fingerprints with unchanged source model for all five cases.",
+    "Prior core/native root review bindings still match. No historical render evidence was rewritten."
+  ],
+  "remaining": [
+    "Python quadrant package review",
+    "Eight other operation ports and downstream milestones"
+  ]
+}
