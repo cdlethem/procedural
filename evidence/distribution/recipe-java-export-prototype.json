@@ -1,0 +1,84 @@
+{
+  "status": "prototype-native-case-passed",
+  "reviewer": "root",
+  "scope": "One copied FieldMarks source snapshot compiled independently and rendered via Processing JAVA2D; no general exporter or executor acceptance.",
+  "export_manifest": {
+    "files": {
+      "README.md": "e3b434b78009c9853e8591d286f7d2fb6a12807bc5087e04ffc2f65dd0ac1a53",
+      "build.py": "86db9b94a513b763fd234f9bea0d6a573a02c044f44b7a085a21d69d39cc6106",
+      "metadata/LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+      "metadata/THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+      "metadata/catalog/drawing/fresh-raster-2d.json": "8fd5d39bb1196d689aa8ca7a88e9f22bb75987c23bc8716e0fe00493b0432346",
+      "metadata/catalog/operations/cyclic-palette.json": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+      "metadata/catalog/operations/gradient-noise-2d-01.json": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+      "metadata/catalog/operations/gradient-path.json": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+      "metadata/catalog/operations/regular-grid.json": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
+      "metadata/design/recipes/execution-bindings.json": "389964147f04fd02c3b5e267e2d86a474ed9ebb83e31cf5bec27f0dae2dbcdb2",
+      "metadata/design/recipes/recipe.schema.json": "935c9f28c832da5931d3ed74d3707f0d1a69b5878ed9d98725d151d656a1529f",
+      "metadata/evidence/distribution/line-pool-review.json": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee",
+      "metadata/packages/java/source-bundle.json": "bdb82e0c1d2f86e1d3b6b14cd4f321d7017796c7d8a687565b410912ded80cb8",
+      "recipe.json": "0d1230aa29d9e2aad07ca1278db8b0825d42266be16180c890addc12f8a0ce37",
+      "src/RecipeExport.java": "99c873347c74e1e62b70920ad8b7023fa229d095e507c9f8624662b0b5e96d79",
+      "src/adapter/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
+      "src/core/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+      "src/core/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+      "src/core/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+      "src/core/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+      "src/core/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+      "src/core/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+      "src/core/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+      "src/core/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+      "src/core/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+      "src/core/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+      "src/core/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+      "src/core/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+      "src/core/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+      "src/core/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+      "src/core/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+      "src/prototype/org/procedurals/recipe/RecipeEvaluator.java": "27e7f31c55333418ba70b5645e8e2d675eed234b775d63de49c312e20fc97e9a",
+      "src/prototype/org/procedurals/recipe/RecipeInputValidation.java": "914b5569bd6b072c48d34c4418d36a79d0ef601cf75a5ee828bbf48607e63a36",
+      "src/prototype/org/procedurals/recipe/RecipeSchemas.java": "d43416fc194fab63bfcbc25cf5520e8f1752c4ea9d45fcbe06a4803fb9e427a7"
+    },
+    "processing_core_sha256": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "provenance": {
+      "exporter_sha256": "91ff61c821de4ed934d4b6e6a79feb571a856b2c56f53c4e45ee00794d9bb60b",
+      "schema_generator_sha256": "f4ba7c4fe7b642da636dc6ced35cd93cc4d29c47fe8624a5fc6c3353b6dc0f1d",
+      "source_revision": "b9324df3ebb07b1a645467f8571b396e40cbf1fa"
+    },
+    "status": "prototype-unaccepted"
+  },
+  "export_manifest_sha256": "6f3e169ef9a9e362893bd82bf7f9918d53e0068d8009f2930e608fc5edfb6218",
+  "validation": {
+    "command_scenarios": 9,
+    "failure_groups": 10,
+    "command_evidence_sha256": "ffe18635bb1440c9faa8703f5529fd64f64a9b4efb41a091cb898177585472e0",
+    "modified_recipe_rejected_before_compilation": true
+  },
+  "runtime_inputs": {
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    "tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d"
+  },
+  "image": {
+    "path": ".work/recipe-field-export-copy1/field.png",
+    "size": [
+      640,
+      640
+    ],
+    "png_sha256": "e7d6d75e32f65a6a78efd3641c426abcc1eb2486f1f0db535e0cf88c35bfbd7f",
+    "rgba_sha256": "d534f2fd76c5efba72c3b6bb3f967f3d1589b81213b0be9d30714ebf203f7ce4",
+    "reference": "evidence/reproductions/cp1-java2d-adapter/result.json#images/base",
+    "exact_rgba": true,
+    "root_visual_review": "Inspected the 640x640 result: continuous colored field of short curved-orientation marks; complete image matches the verified baseline."
+  },
+  "pending": [
+    "PathMarks native export",
+    "retained geometry reuse/invalidation",
+    "catalog execution promotion",
+    "general exported recipe validation",
+    "other operations, targets, assets and animation"
+  ]
+}

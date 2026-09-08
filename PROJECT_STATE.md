@@ -1,5 +1,27 @@
 # Project state
 
+## First Java recipe snapshot native case passed
+
+Previous b9324df3 pushed catalog-driven input admission. Terra corrected command-container
+reservation order and added call/visit limits, negative remainder, empty traversal and
+post-failure recovery cases. Root's .work/recipe-budget-root1 passes nine commands and ten
+focused groups. Root selected the existing CP1 JAVA2D base image as the first export oracle
+and verified its stored RGBA hash; criteria in design/recipes/java-export.md precede renders.
+Terra is implementing a bounded standalone source snapshot exporter; root requires existing
+source acceptance checks, no copied runtime/assets, embedded recipe with canonical JSON,
+manifest hashes and independent compilation. Adapter commands must use <=4096 batches.
+Root reviewed exporter, required ordered batches and existing literal/schema helpers, and
+added exact source inventory plus accepted distribution-review hash verification. The full
+cross-target source-bundle checker currently rejects the unrelated unstaged JS export hash;
+this Java-only prototype verifies its distribution baseline, not all target attestations.
+Copied .work/recipe-field-export-root1 to recipe-field-export-copy1, independently compiled
+it and rendered under the shared lease. Exact RGBA matches the verified CP1 base; root
+inspected output. Modified recipe fails before build output creation. Evidence at
+ evidence/distribution/recipe-java-export-prototype.json is explicitly prototype-native-case-
+passed, not acceptance. Next PathMarks export/edit case, retained reuse and catalog promotion
+before general executor/exporter support. No images/toolchains copied into Git.
+Full milestone goal active; unrelated JS export edit preserved.
+
 ## Catalog-driven runtime admission reviewed
 
 Previous checkpoint3b813b89 pushed reviewed accounting corrections. Root split admission

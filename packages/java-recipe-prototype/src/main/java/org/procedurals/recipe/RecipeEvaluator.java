@@ -156,8 +156,8 @@ public strictfp final class RecipeEvaluator {
         } catch (IllegalArgumentException e) {
             throw nativeFail("DRAWING_FAILURE", "/environment", "drawing.fresh-raster-2d", e, s);
         }
-        List<Object> commands = new ArrayList<Object>();
         s.units("/frame", 1);
+        List<Object> commands = new ArrayList<Object>();
         statements(list(recipe.get("frame"), "/frame"), outer, "/frame", s,
                 declared, commands, env);
         s.units("", 2);

@@ -1,6 +1,6 @@
 {
   "status": "prototype-command-comparison-passed",
-  "scope": "Prototype command equivalence after JSON round trips with catalog-derived input admission and nine focused failure groups; full budget failure coverage, cache/export/native acceptance remains pending.",
+  "scope": "Prototype command equivalence and ten focused failure groups; elapsed-time supervision, retained cache, catalog promotion and general exporter acceptance remain separate.",
   "input_sha256": {
     "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
     "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
@@ -18,13 +18,13 @@
     "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
     "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
     "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
-    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeEvaluator.java": "c83af0a9bdc283a1217567efeb0ab9b5270365ca9051843a4102262680d4299d",
+    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeEvaluator.java": "27e7f31c55333418ba70b5645e8e2d675eed234b775d63de49c312e20fc97e9a",
     "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeInputValidation.java": "914b5569bd6b072c48d34c4418d36a79d0ef601cf75a5ee828bbf48607e63a36",
     "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeSchemas.java": "d43416fc194fab63bfcbc25cf5520e8f1752c4ea9d45fcbe06a4803fb9e427a7",
     "packages/java/examples/FieldMarks/MarkField.java": "398dcf002dc35076f7af97e7a44f21a48a2ce6e10facf2d370dfac3b9e453ea7",
     "packages/java-processing/examples/FieldMarks/MarkCommands.java": "5d382de16edd6472e14659481c2c20bc1fe7118677c4c68e1d070bc3f59a66ad",
     "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
-    "tests/native/RecipePrototypeFailures.java": "0c802ad5cdf5bd1d65b49672cc7e11bfe8f9233121fd82ea0c254c068173c4d4",
+    "tests/native/RecipePrototypeFailures.java": "f520b15bc660d8ce096564ef9c4c077a341da87c487466b776867c20d45f2fce",
     "design/recipes/examples/field-marks.draft.json": "b8f55f0dc2c948fe91d310f084655fe97e445ab739aabc660eb1b5eee2c19231",
     "design/recipes/examples/path-marks.draft.json": "c84d315ad2acbf96773ba85e0600e3a1294a78a72616bbafeac27a02bcc204fe",
     "design/recipes/recipe.schema.json": "935c9f28c832da5931d3ed74d3707f0d1a69b5878ed9d98725d151d656a1529f",
@@ -169,7 +169,8 @@
     "detached-results-and-fresh-replay",
     "native-array-index-ceiling",
     "values-copy-boundaries-and-limit-snapshot",
-    "runtime-schema-admission"
+    "runtime-schema-admission",
+    "visit-call-remainder-empty-and-operation-recovery"
   ],
   "reviewer": "root"
 }

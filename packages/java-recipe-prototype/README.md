@@ -1,20 +1,31 @@
 # Java recipe evaluator prototype
 
 This directory is outside the accepted Java library and source-bundle manifest. It is an
-implementation experiment against the draft expression model and four reviewed immutable
-operations. It is not an accepted recipe executor, exporter or target support attestation.
+implementation experiment for the draft composition model and four reviewed immutable
+operations, not an accepted executor, exporter or target support attestation.
 
-`RecipeEvaluator.evaluate(recipe, limits)` consumes an in-memory Map after the static
-validator. It calls existing library implementations, creates ordered raw command records,
-and checks commands using the existing drawing-value validator. No renderer or JSON parser
-is implemented here. A native dependency's presence on the compilation classpath does not
-mean a renderer ran.
+`RecipeEvaluator.evaluate(recipe, limits)` consumes an in-memory Map after static recipe
+validation. It uses existing operation implementations and returns a complete detached,
+read-only command list plus environment and diagnostic counters. It does not parse JSON,
+render, or cache retained geometry between evaluations.
 
-The comparison tool uses the established Java fixture literal generator and compares actual
-FieldMarks/PathMarks Java composition output. PathMarks uses its source workflow's canvas
-visibility decision, now represented explicitly in the draft recipe. The first unculled
-prototype passed seven scenarios before the distance edit failed drawing-profile bounds;
-that failure prompted the composition correction, not a weakened profile.
+Constructor/query inputs are checked against immutable data generated from catalog schema
+pointers. `tools/generate_recipe_java_schemas.py --check` detects drift. The closed validator
+checks finite numeric types, shapes and bounds before operation allocation reservations.
+Errors identify the input expression and separately locate the invalid computed value;
+native semantic failures preserve their original operation codes.
+
+Host limits are copied on entry. Accounting covers expression/input traversal, calls, core
+work, loops, native array lengths, generated values, temporary command normalization,
+detached result copies and command counts. These deterministic work units are not a byte-
+accurate heap limit. Elapsed time is a supervised safeguard, not a deterministic recipe input.
+
+## Current evidence
+
+The established runner serializes and reparses both draft recipes, then compares actual
+Java output across nine FieldMarks/PathMarks baseline/edit scenarios. FieldMarks covers
+length, palette and segment/quad edits. PathMarks compares the existing `streamForCanvas`
+workflow with explicit recipe visibility predicates; it is not a general clipping operation.
 
 ```sh
 uv run python tools/run_recipe_java_prototype.py \
@@ -23,39 +34,27 @@ uv run python tools/run_recipe_java_prototype.py \
   --output .work/recipe-comparison-fresh
 ```
 
-Before acceptance, review runtime type and error precedence, cumulative allocation accounting,
-limit snapshots/native allocation sizes, nested iteration diagnostics, low-budget atomicity,
-round-trip replay and retained-edit invalidation. Run meaningful failure cases in addition to
-command comparisons. Catalog ownership/synchronization, native exports, animation/assets and
-all later operation bindings remain incomplete. Root writes acceptance only after review.
+Focused probes exercise lazy arithmetic, types, allocation/call/visit/work/iteration/command
+limits, error precedence and locations, detached ownership, host-limit mutation, fresh replay,
+zero traversal and negative remainder. Structured evidence remains explicitly prototype-only
+in `evidence/conformance/recipe-java-prototype-commands.json`.
 
-Focused failure probes now run through the same tool. They cover lazy arithmetic/type
-errors, array preallocation limits, command limits and recovery, nested map diagnostics,
-and statement/attempted-iteration budget diagnostics. Root found and corrected missing
-iteration context; nine composition comparisons remain exact. This is partial failure
-coverage, not acceptance of the complete accounting or replay contract.
+## Remaining acceptance work
 
-Result ownership now has a regression case: changing an input literal cannot change a prior
-result, nested result containers are read-only, and fresh execution sees an edited recipe.
-Emitted snapshots reserve their detached copy cost. This establishes fresh evaluation
-isolation; retained-geometry cache invalidation remains unverified.
+Native project export and representative render evidence, retained-geometry reuse/invalidation,
+catalog promotion and complete budget failure review remain separate gates. Later operation
+bindings, assets, animation, other target exporters and MCP/web are unfinished. Root owns
+acceptance; successful command comparison alone does not establish those capabilities.
 
-The runner now serializes both draft recipes with reordered object keys, deserializes and
-revalidates them, then executes those round-tripped values in all nine command comparisons.
-It preserves expression/statement array order. Allocation probes also reject a count above
-Java's signed-int collection limit even when host budgets are widened. Broader accounting
-and retained-edit caching remain unaccepted.
+## Snapshot export experiment
 
-Accounting now includes fresh scalar results, operation materialization, temporary command
-normalization, detached publication and owned native arrays. Eight focused failure groups
-include limits mutated during evaluation and descriptor work/copy boundaries. The nine
-command comparisons pass within unchanged default limits. This remains a prototype: full
-schema-driven admission and complete budget failure coverage precede runtime acceptance.
+`tools/export_recipe_java_prototype.py --recipe <draft.json> --output .work/<fresh-name>`
+produces recipe JSON, embedded Java data, library/adapter sources, licenses, source hashes
+and a standalone build script. Supply an explicit JDK and Processing core to that script.
+Edit the source recipe and re-export to change this snapshot; no runtime JSON parser is
+claimed. Sources must match their manifest before building.
 
-Constructor and query admission now uses immutable schema data generated from catalog
-pointers by `tools/generate_recipe_java_schemas.py` (`--check` detects drift). The closed
-validator checks finite numeric types, shape and bounds before operation reservations;
-it reports the input expression and relative invalid value location separately. Native
-semantic errors remain native errors. Nine failure groups and nine command comparisons
-pass; six generator tests cover generation and rejection behavior. These are prototype
-checks, not accepted runtime, target or exporter support.
+The first copied FieldMarks export compiled independently and matched the accepted baseline
+exactly in native JAVA2D. Root inspected it; evidence is in
+`evidence/distribution/recipe-java-export-prototype.json`. This is one native case, with
+PathMarks export, retained reuse, catalog promotion and general support still pending.

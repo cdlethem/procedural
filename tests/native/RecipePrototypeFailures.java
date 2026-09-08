@@ -141,6 +141,21 @@ public final class RecipePrototypeFailures {
         error=failure(operationRecipe("color.cyclic-palette",nestedSchema),new RecipeEvaluator.Limits(),"INPUT_SCHEMA");
         check(error.iteration != null && error.path.endsWith("/input"),"nested schema diagnostic location");
         System.out.println("runtime-schema-admission passed");
+
+        RecipeEvaluator.Limits visits=new RecipeEvaluator.Limits();visits.visits=1;
+        failure(recipe(binding(literal(1)),list()),visits,"LIMIT_VISITS");
+        RecipeEvaluator.Limits calls=new RecipeEvaluator.Limits();calls.calls=1;
+        failure(gridValuesRecipe(),calls,"LIMIT_CALLS");
+        Object negativeRemainder=map("kind","if","condition",arithmetic("eq",
+                arithmetic("rem",literal(-3),literal(2)),literal(-1)),"then",literal(1),"else",division);
+        RecipeEvaluator.evaluate(recipe(binding(negativeRemainder),list()),new RecipeEvaluator.Limits());
+        Object emptyRange=map("kind","map","items",map("kind","range","start",literal(5),"stop",literal(0),"step",literal(1)),
+                "as","item","indexAs","index","value",division);
+        RecipeEvaluator.evaluate(recipe(binding(emptyRange),list()),new RecipeEvaluator.Limits());
+        RecipeEvaluator.Limits rejectedWork=new RecipeEvaluator.Limits();rejectedWork.work=1;
+        failure(operationRecipe("path.gradient-trace-2d",smallPath),rejectedWork,"LIMIT_WORK");
+        RecipeEvaluator.evaluate(operationRecipe("path.gradient-trace-2d",smallPath),new RecipeEvaluator.Limits());
+        System.out.println("visit-call-remainder-empty-and-operation-recovery passed");
         System.out.println("PROTOTYPE_FAILURE_CASES_PASSED");
     }
 }
