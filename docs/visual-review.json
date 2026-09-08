@@ -2,6 +2,69 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "projection-marks",
+      "title": "Sequential deformation — ProjectionMarks",
+      "category": "Accepted native workflow",
+      "description": "Contour and line transfer with explicit strength/order; packaging pending.",
+      "evidence": "evidence/workflows/projection-marks/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/projection-marks-native-root2/native/baseline.png",
+          "sha256": "43f2110769ec6120533e61f627c8cc3d7c54080e155bf9676b8977097404e105"
+        },
+        {
+          "label": "full",
+          "path": ".work/projection-marks-native-root2/native/full.png",
+          "sha256": "5f284fdc5b83ba5bfe4e23631bca4f7ba92b173acfaf4e4bc00a1000706da1e7"
+        },
+        {
+          "label": "zero",
+          "path": ".work/projection-marks-native-root2/native/zero.png",
+          "sha256": "cd00cf14527f7868d0666ba26eb4c209792818800fcf8dfd930b161c6a359b06"
+        },
+        {
+          "label": "reversed",
+          "path": ".work/projection-marks-native-root2/native/reversed.png",
+          "sha256": "cb8e5a467474a4d641ab68b0ae0a8dfa770ff6e933b4fbc1fdde7cfb83653757"
+        },
+        {
+          "label": "recolored",
+          "path": ".work/projection-marks-native-root2/native/recolored.png",
+          "sha256": "1d03d33de749e31637c09ab9535ecfd307b16f770ae08c6403d4bc6e3e55328e"
+        }
+      ]
+    },
+    {
+      "id": "disc-projection-study",
+      "title": "Sequential disc projection — private admission study",
+      "category": "Private study",
+      "description": "Root inspected contour/line transfer and reversed order. Retained for contract design; no shipped operation.",
+      "evidence": "evidence/parameter-experiments/disc-projection/root-review.json",
+      "images": [
+        {
+          "label": "strength-0",
+          "path": ".work/disc-projection-study/attempt2-corrected/strength-0.png",
+          "sha256": "bec83283f667b7e7c1ae1335da53a657618114766043ab225b711d133103ca8b"
+        },
+        {
+          "label": "strength-045",
+          "path": ".work/disc-projection-study/attempt2-corrected/strength-045.png",
+          "sha256": "87c0a223a84193e630c8ca5c5abf94f76167183e5233156c994a66413dda3dbd"
+        },
+        {
+          "label": "strength-1",
+          "path": ".work/disc-projection-study/attempt2-corrected/strength-1.png",
+          "sha256": "256583761e37030cfd5de697db9c0c73812192746f728e1040fa191c4a7ef8a7"
+        },
+        {
+          "label": "order-reversed",
+          "path": ".work/disc-projection-study/attempt2-corrected/order-reversed.png",
+          "sha256": "34e182bcde50622437365f800e639763dc12e6043816b0442d5b5e5039afbb19"
+        }
+      ]
+    },
+    {
       "id": "blur-marks",
       "title": "Retained image filtering — BlurMarks",
       "category": "Accepted native workflow",

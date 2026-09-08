@@ -1,5 +1,217 @@
 # Project state
 
+## CP27 final archive reconciled
+
+Pre-commit hash audit caught four documentation edits after root1 packaging. Root2
+rebuild includes those edits and CP27 handoff (413 members); every other archive
+member is byte-identical. Archive SHA256 17ac050e30c2dcd02e1a5bf32e16e0ec071f2a5fdfebdaa10af650f7f3185b7c.
+Catalog and nine package tests pass; all32 extracted examples compile and eight-state
+ProjectionMarks passes with identical pixels. Evidence/review now bind root2.
+Ready to commit/push; Android draft remains excluded. Remaining C3 discovery/family
+review and composition extension decisions keep the full Java goal active.
+
+## CP27 integration ready for main
+
+Root reconciled Java0.30 workflow chooser/completion/batch docs and wrote CP27 porting
+handoff. Composition guide and reviewed projection source/contracts/fixtures/evidence
+are included in this milestone; private study is explicitly diagnostic, not shipped API.
+Remote fetched; porting/backlog advanced independently, port integration still paused.
+Next commit/push accepted CP27; Android draft excluded. Previous turn completed
+extracted acceptance; this turn integrates coherent documentation and reviewed files.
+
+
+## Java0.30 distribution accepted locally — CP27
+
+Root accepted evidence/distribution/cp27-java-review.json. Archive
+.work/dist/cp27-java-source-root1/procedurals-java-source-dev.zip SHA256
+fef61d219826c00101497f1a982dd6ac6a196d7052bb67d22578610fb1cf11bd,412members.
+28 operations,32 workflows,34 source class pages. Catalog/support and9 package tests pass.
+All32 extracted PDEs compile; actual8-state ProjectionMarks passes separate core/adapter
+origins and every PNG equals reviewed native candidate. Root verified source/extracted
+hashes;116 old core and15 adapter classes unchanged.725Javadocwarnings recorded.
+Next reconcile user docs/latest handoff, review/stage project text and commit/push CP27
+after remote check; preserve Android draft. Main remainsJava0.29 8b51a3b3 until push.
+Previous turn accepted core/native; this turn completes extracted package acceptance.
+
+
+## Projection core/native accepted; packaging next
+
+Root accepted evidence/workflows/projection-marks/root-review.json after inspecting all5
+revised views and verifying final native source/artifact/PNG hashes.8states pass;
+6 retained results and color/order/strength restores/cache save verified.
+Conformance runner now binds pinned JDK executables/modules and uses timeouts;15 shared
+object cases plus successful typed vectors and expanded focused tests pass. Evidence
+copied to conformance. Performance tiny/example/stress stable:1693points*4discs about1ms,
+100000*64 about18ms, primitive output allocation. Not renderer/latency guarantees.
+Gallery native group added. Next root support attestation and next source bundle,
+extracted ProjectionMarks native validation and reviewed checkpoint. Prior turn rewrote
+core/strengthened visual example; this turn completes native/performance acceptance.
+Shipped baseline remainsJava0.29,27 operations/31 workflows until packaging.
+
+
+## Root projection core rewrite passes; visual order edit being strengthened
+
+Root rewrote core into readable validated conversion/arithmetic/access methods and added
+focused forbidden-carrier, typed malformed/nonfinite, exported/input ownership, safe index
+precedence and atomic target checks. Shared fixture runner passes; actual8-state
+ProjectionMarks .work/projection-marks-native-root1 passes. Root inspected all5 views.
+Strength and color edits clear, but reversed order is too visually subtle because line
+influences barely overlap. Root changed second line disc to585,270,r72 for a stronger
+order demonstration; rerender required before acceptance. Core/semantics unchanged.
+No acceptance evidence published yet; performance and final conformance runtime bindings
+still need review. Previous turn prepared harness; this turn closes code/test gaps and
+uses actual visual review to improve artist clarity.
+
+
+## Root takes over projection core completion; workflow probe ready
+
+Root authored ProjectionMarksProbe and registered candidate/extracted runner profiles.
+Probe snapshots each input/disc/result/coordinate identity and values,6 setup calls,
+8states/restores/cache-save, core/adapter origins. Runner Python compilation passes;
+actual sketch/probe compile/native run still pending stable core.
+Terra repeatedly returned incomplete formatting/focused tests; root explicitly stopped
+its edits and takes ownership. Current core186d3d3 has15 shared fixture successes but
+only10 focused assertions. Root read native probe: missing several promised ownership,
+carrier and index-precedence cases; do not accept worker wording as coverage.
+Next root rewrite readable core methods without changing math, complete meaningful
+focused checks, rerun shared vectors and actual native workflow. Previous turn authored
+example/reviewed prototype; this turn adds native harness and resolves ownership of
+remaining implementation quality work.
+
+
+## ProjectionMarks candidate authored; core implementation completion requested
+
+Root authored ProjectionMarks PDE/docs using frozen DiscProjection2D and Java2DLayers.
+1693 supplied points,4 discs,6 retained strength/order outputs;8-state mmmoccos controls
+as preregistered. No private deformation algorithm copied into workflow. Compile/native
+validation awaits stable core. Root read preliminary core: ordered math present, but
+compressed one-line implementation and missing public docs require completion. Requested
+readable named arithmetic/loops, explicit imports/docs and typed validation order.
+Terra initial runner omitted15 shared fixtures; worker accurately flagged preliminary
+status. Root followup requires completing both entrypoint fixture execution and focused
+carrier/ownership/access cases before final report. No core acceptance recorded.
+Previous turn froze contract; this turn adds artist workflow and reviews preliminary code.
+
+
+## Disc projection contract frozen with15 shared scenarios
+
+Root integrated catalog/operations/sequential-disc-projection-2d.json and shared fixtures,
+independently evaluated successful vectors, separated native-only checks, added norm
+overflow and explicit strength-zero shortcut. Catalog/generated reference check passes.
+Draft claimed N*M could overflow signed64; root resolved by exact count multiplication
+under packed-array bounds (well below signed64 maximum). No invented new error.
+Next bounded Java core/test implementation against frozen contract, then root review
+and ProjectionMarks native plan. Prior turn preregistered acceptance; this turn closes
+portable contract/fixture gate. No increase from27 shipped operations yet.
+
+
+## Projection native acceptance plan preregistered while contract drafts
+
+Root added design/capabilities/projection-marks-native-plan.md: contour/open-line consumers,
+retained6 strength/order outputs,8 actual display states with color transfer and cache save.
+Root recorded exact3-4-5, displacement/distance overflow-as-outside and output-overflow
+counterexamples; subnormal rounding and segment-exclusion limits explicit.
+Draft files not yet present at inspection; Terra assignment remains pending. No production
+implementation authorized before root catalog/fixture freeze. Previous turn admitted
+boundary; this turn prepares distinguishing native and numerical acceptance cases.
+
+
+## Disc projection dependency admitted; contract draft assigned
+
+Root wrote design/capabilities/disc-projection-admission.md with selected batch API,
+ordered finite arithmetic, overflow-as-outside distance handling versus failed output
+overflow, positiveX center convention, strength domain, work preflight and atomic output.
+Recorded capability-dependency cluster geometry.sequential-disc-projection-2d; focused
+phase2 prerequisite check passes. Whole flattenCircle remains distinct, remainder tracked.
+Terra layer_marks_probe drafting catalog/fixtures privately in .work/disc-projection-contract-draft;
+no production code until root freeze. Review needs all independent golden values and
+any numeric ambiguity. Existing27 shipped operations unchanged. Previous turn reviewed
+visual study; this turn advances formal admission and portable numeric specification.
+
+
+## Disc projection private study reviewed: retain for contract design
+
+Root inspected all4 corrected study images and source; verified source/runtime/output
+hashes, preserved independent diagnostic Java under tools/diagnostics/spatial-composition.
+Study review in evidence/parameter-experiments/disc-projection/root-review.json. Both
+contour and line consumers show meaningful strength changes; reversed order shows a
+distinct overlap shape. Retain small sequential point projection, not whole flattenCircle.
+No default/encouraged range, collision solver, polygon containment or Voronoi claim.
+Next root formal admission/ledger and portable numerical/error/ownership/work contract,
+then distinguishing fixtures before production code. Existing27 operations unchanged.
+Gallery study group added. Previous turn found experimental confound; this turn closes
+corrected empirical admission evidence and enables contract work.
+
+
+## Projection study lifecycle repair; analytic counterexamples recorded
+
+Terra confirmed first private noLoop/redraw run stalled after one frame and terminated
+its concrete wrapper/lock/Java processes. Lone image and interruption preserved in
+.work/disc-projection-study/attempt1-incomplete. Corrected local-coordinate/y230 order
+comparison now uses a simple four-frame loop; agent preparing distinct attempt2.
+Root recorded exact order and reentry counterexamples in the investigation: half-strength
+A/B yields2 versus-1.25; full-strength A/B can reenter A. These preclude collision-solver
+or all-discs-exclusion claims and will distinguish future semantics if admitted.
+Previous turn identified an experimental confound; this turn resolves lifecycle status
+and adds mathematical evidence for the boundary. Await actual study before admission.
+
+
+## Private projection study source reviewed; order comparison corrected before acceptance
+
+Root inspected .work/disc-projection-study/DiscProjectionStudy.java and runner while
+Terra remains active. Found right-hand order panel shifted input points by360 but left
+discs unshifted; it would compare different geometry rather than only reversed order.
+Sent correction: project identical local points, apply display translation afterward;
+use a slightly off-center common line to make deflection visible. No result accepted.
+Normal contour/open-line study is otherwise consistent with private math. Next verify
+corrected source and actual source-bound renders; no additional public API decisions yet.
+Previous turn added composition guide; this turn found a concrete experimental confound
+that would invalidate admission evidence.
+
+
+## Composition guide added while private geometry study runs
+
+Root authored docs/composing-java-effects.md and linked the workflow chooser. Explains
+CANVAS windows versus LOCAL origins, source-over versus crossfade, arbitrary raster masks,
+image attributes, and ordering of crop/filter/mask/deformation. It explicitly distinguishes
+visibility clipping from boundary-aware geometry and local origin from target resize.
+Guide uses existing accepted APIs; no new operation/workflow count or render required.
+Terra layer_marks_probe was confirmed running on the registered disc projection private
+study; no result available at inspection. Next root reads prototype/results and inspects
+images before admission. Prior turn registered the study; this turn closes a concrete
+artist-facing composition documentation gap during independent investigation.
+
+
+## Sequential disc projection: private admission study registered
+
+Root read decisive colidion loop and parameter note, reviewed Terra evidence draft.
+Distinct gap: sequential outward boundary movement versus existing original-point inward
+radial sum. Root rejected treating source distance-by-original-angle envelope as polygon
+containment; displaced vertices need not retain their angle. Survey flatten variant edits
+x only and cannot support a recommended symmetric-strength range.
+Root recorded design/capabilities/disc-projection-investigation.md and parameter experiment
+brief. Terra assigned private native contour/open-line consumers at0/.45/1 and reversed
+influence order under shared lock, output .work/disc-projection-study only. No production
+API/operation admitted. Root must inspect actual results then keep/revise/reject; do not
+proceed directly from worker summary. Prior turn progressed discovery/source reading;
+this turn resolves boundary/evidence errors and registers a distinguishing admission study.
+
+
+## CP26 pushed; discovery and remaining geometry review active
+
+Java0.29 pushed main at8b51a3b382be235d8bc1a7ada171bc877e6d6bf0 (remote0/0),
+27 operations/31 workflows. Android draft remains the only unrelated change.
+Root updated completion/batch baseline and added ImageFieldMarks/BlurMarks to the artist
+workflow chooser. C3 remains required: explicit family dispositions and discovery review.
+Terra layer_marks_probe assigned bounded colidion source/note plus at most one neighbor
+review to .work/colidion-review/findings.md; no public signatures/code admission yet.
+Root independently read source: contour samples are sequentially pushed toward neighboring
+disc boundaries when inside, unlike existing inward radial pull. Need center-degeneracy,
+order/strength and compositional value decisions before admitting any reusable operation.
+Previous goal turn shipped CP26; this turn progresses documentation consistency and
+source-based next capability investigation. No new rendering or port work scheduled.
+
+
 ## CP26 integration checkpoint ready for main
 
 Accepted Java0.29 archive and extracted workflow evidence recorded; docs updated to

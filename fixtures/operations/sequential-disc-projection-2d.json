@@ -1,0 +1,426 @@
+{
+  "operation": "geometry.sequential-disc-projection-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "catalog_sha256": "f7e90d17f37d87fe1ae63975ed5fcae3e79e3d1d59d0eb7b78da6114078dd206",
+  "cases": [
+    {
+      "id": "empty",
+      "input": {
+        "points": [],
+        "discs": [],
+        "strength": 0,
+        "maxTests": 0
+      },
+      "output": {
+        "points": []
+      }
+    },
+    {
+      "id": "empty_discs_identity",
+      "input": {
+        "points": [
+          [
+            -0.0,
+            2
+          ]
+        ],
+        "discs": [],
+        "strength": 1,
+        "maxTests": 0
+      },
+      "output": {
+        "points": [
+          [
+            0.0,
+            2.0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "strength_zero_budget_still_counts",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "discs": [
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "strength": 0,
+        "maxTests": 1
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "strength_zero_short_budget",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "discs": [
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "strength": 0,
+        "maxTests": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "inside_on_outside_center",
+      "input": {
+        "points": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "discs": [
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "strength": 1,
+        "maxTests": 4
+      },
+      "output": {
+        "points": [
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "fractional_axis",
+      "input": {
+        "points": [
+          [
+            1,
+            0
+          ]
+        ],
+        "discs": [
+          [
+            0,
+            0,
+            5
+          ]
+        ],
+        "strength": 0.25,
+        "maxTests": 1
+      },
+      "output": {
+        "points": [
+          [
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "order_a_then_b",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "discs": [
+          [
+            0,
+            0,
+            2
+          ],
+          [
+            1,
+            0,
+            2
+          ]
+        ],
+        "strength": 0.5,
+        "maxTests": 2
+      },
+      "output": {
+        "points": [
+          [
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "order_b_then_a",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "discs": [
+          [
+            1,
+            0,
+            2
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "strength": 0.5,
+        "maxTests": 2
+      },
+      "output": {
+        "points": [
+          [
+            -1.25,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reentry",
+      "input": {
+        "points": [
+          [
+            1.5,
+            0
+          ]
+        ],
+        "discs": [
+          [
+            0,
+            0,
+            2
+          ],
+          [
+            3,
+            0,
+            2
+          ]
+        ],
+        "strength": 1,
+        "maxTests": 2
+      },
+      "output": {
+        "points": [
+          [
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "three_four_five",
+      "input": {
+        "points": [
+          [
+            3,
+            4
+          ]
+        ],
+        "discs": [
+          [
+            0,
+            0,
+            10
+          ]
+        ],
+        "strength": 0.5,
+        "maxTests": 1
+      },
+      "output": {
+        "points": [
+          [
+            4.5,
+            6.0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "subnormal_center_displacement",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "discs": [
+          [
+            0,
+            0,
+            5e-324
+          ]
+        ],
+        "strength": 1,
+        "maxTests": 1
+      },
+      "output": {
+        "points": [
+          [
+            5e-324,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "difference_overflow_is_outside",
+      "input": {
+        "points": [
+          [
+            1.7e+308,
+            0
+          ]
+        ],
+        "discs": [
+          [
+            -1.7e+308,
+            0,
+            1
+          ]
+        ],
+        "strength": 1,
+        "maxTests": 1
+      },
+      "output": {
+        "points": [
+          [
+            1.7e+308,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "exact_center_max_final_overflow",
+      "input": {
+        "points": [
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "discs": [
+          [
+            1e+308,
+            0,
+            1.7976931348623157e+308
+          ]
+        ],
+        "strength": 1,
+        "maxTests": 1
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "invalid_before_work",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "discs": [
+          [
+            0,
+            0,
+            -1
+          ]
+        ],
+        "strength": 1,
+        "maxTests": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "distance_overflow_is_outside",
+      "input": {
+        "points": [
+          [
+            1.7e+308,
+            1.7e+308
+          ]
+        ],
+        "discs": [
+          [
+            0,
+            0,
+            1.7976931348623157e+308
+          ]
+        ],
+        "strength": 1,
+        "maxTests": 1
+      },
+      "output": {
+        "points": [
+          [
+            1.7e+308,
+            1.7e+308
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 # Remaining Java buildout: architecture and execution
 
 Root integration owner. This plan replaces serial CP-by-CP scheduling, not the completion
-requirements in java-completion-plan.md. Source milestone: Java0.28, 26 accepted operations and
-29 workflows (distribution review separate); four demonstrated original structural recreations. Inventory is
+requirements in java-completion-plan.md. Source milestone: Java0.30, 28 accepted operations and
+32 workflows (distribution review separate); four demonstrated original structural recreations. Inventory is
 not a completeness claim. Port integration and Sol review remain paused.
 
 ## Capability map
@@ -28,8 +28,11 @@ Unassessed rows require an explicit disposition before final completion, not ind
 feature accumulation. New corpus evidence can reopen a decision; missing reports never
 prove absence. Recipe/MCP/web and cross-language ports remain separate roadmap deliverables.
 
-Current next batch: [CP25 reconciliation](../design/capabilities/java-completion-cp25-review.md),
-D1 image attributes and D2 postprocessing. Earlier rows below retain their historical decisions.
+Completed latest batch: D1 image attributes and D2 normalized separable filtering, accepted
+in CP26. Next bounded lane is C3: root audits discovery and family dispositions after CP27 delivered the independently specified sequential point projection from colidion.
+The full source composition and general Voronoi cells remain distinct; next close remaining
+family dispositions and install-to-edit/reference consistency before declaring completion.
+Earlier rows below retain their historical decisions.
 
 ## Execution queue
 

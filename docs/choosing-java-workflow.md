@@ -3,10 +3,12 @@
 Start with the decision you want to make. Each link opens an editable Processing example
 and explains its controls. [Build and install the Java library](building-java-from-source.md),
 open the named example from Processing's contributed-library examples, and save your own copy.
+For combining them, see [composing drawings, partitions and image effects](composing-java-effects.md).
 
 | Your idea | Start here | What the library supplies |
 | --- | --- | --- |
 | Cover a surface with related strokes or bars | [FieldMarks](getting-started.md) | Grid positions and repeatable spatial attributes; replace the drawn mark. |
+| Push a contour or line family around local circular influences | [ProjectionMarks](projection-marks.md) | Sequential outward deformation with explicit strength and influence order; retained points for alternate drawing. |
 | Bend a grid or closed contour around chosen centers | [PullMarks](pull-marks.md) | Local radius/power edits; retain the computed lines for recoloring or contour drawing. |
 | Change a field slice or color a3D form | [DepthMarks](depth-marks.md) | Three-coordinate scalar samples, cached attribute values and retained mesh geometry. |
 | Select, split and remove individual rectangle regions | [CutMarks](cut-marks.md) | Supplied-coordinate cuts with stable live IDs; retain unrelated regions and replace their decoration. |
@@ -34,6 +36,8 @@ open the named example from Processing's contributed-library examples, and save 
 | Fill partitions with local drawings or windows onto a larger image | [LayerMarks](layer-marks.md) | Independent region layout, content callbacks, coordinate origins and feathered visibility. |
 | Fit a picture or selected snippet into a frame | [PlacementImageMarks](placement-image-marks.md) | Explicit crop, contain/cover/stretch and alignment; reuse the placed layer with masks. |
 | Reveal different drawings through the same shapes | [MaskMarks](mask-marks.md) | Retained transparent layers, reusable alpha masks and explicit two-content crossfades. |
+| Let an image control mark size, visibility or color | [ImageFieldMarks](image-field-marks.md) | Retained image sampling at supplied positions; independent alpha and maximum-RGB attributes. |
+| Soften a drawing and blend it with its sharp version | [BlurMarks](blur-marks.md) | Independent horizontal/vertical kernels, transparent image filtering and retained masked transitions. |
 | Decide where colors transition | [RampMarks](ramp-marks.md) | Unequally spaced color stops, independent of geometry. |
 | Recreate the Curvespace composition | [Curvespace recreation guide](curvespace-recreation.md) | A separately maintained P2D example using accepted operations; it is not packaged as a shipped starter. |
 

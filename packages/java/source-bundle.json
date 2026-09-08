@@ -1,6 +1,6 @@
 {
-  "version": "0.29.0",
-  "processing_version": 29,
+  "version": "0.30.0",
+  "processing_version": 30,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -32,7 +32,8 @@
     "packages/java/src/main/java/org/procedurals/geometry/RadialPull2D.java": "1ddc552adbca746442c993d5340b924a139c4de48bb37c64fbe4a5591da79d85",
     "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4",
     "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
-    "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e2254766043ed5f5d7da2f13d92090b1c457deb098774267dcfb219982661d88"
+    "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e2254766043ed5f5d7da2f13d92090b1c457deb098774267dcfb219982661d88",
+    "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c"
   },
   "examples": {
     "procedurals/examples/BranchMarks/BranchComposition.java": {
@@ -230,6 +231,10 @@
     "procedurals/examples/BlurMarks/BlurMarks.pde": {
       "source": "packages/java-processing/examples/BlurMarks/BlurMarks.pde",
       "sha256": "82fc5d56ddba9e36081805d370f24433c805a23c05b10ce5c7c589b8c4e894d8"
+    },
+    "procedurals/examples/ProjectionMarks/ProjectionMarks.pde": {
+      "source": "packages/java-processing/examples/ProjectionMarks/ProjectionMarks.pde",
+      "sha256": "1ee3d6daaf6a57e50af86fcc2846ded9b6a40cff79160ed0178dad2d3ba92d56"
     }
   },
   "operation_files": [
@@ -257,6 +262,7 @@
     "seeded-quadrant-partition.json",
     "seeded-triangle-points.json",
     "separable-blur-2d.json",
+    "sequential-disc-projection-2d.json",
     "stop-ramp.json",
     "target-springs-2d.json",
     "triangle-coordinate-map.json"

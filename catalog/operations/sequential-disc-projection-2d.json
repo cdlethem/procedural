@@ -1,0 +1,192 @@
+{
+  "id": "geometry.sequential-disc-projection-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability": "Geometry deformation",
+  "description": "Sequentially move supplied points outward toward the boundaries of ordered supplied discs.",
+  "decision_cluster": "geometry.sequential-disc-projection-2d",
+  "capability_decision": "design/capabilities/disc-projection-admission.md",
+  "provenance": [
+    {
+      "candidate_id": "2019/generativos/colidion#1",
+      "notes_path": "survey/out/2019/generativos/colidion/notes.md",
+      "note_sha256": "83b2b257c17bbedb28aa89ccb71ceddf6637712c2202f681a3ef8412a97613e0",
+      "evidence_sha256": "2d20645edff708caadf6e5ca50f0fbba2c9da076691b3d833e13fd5a750f3341",
+      "relationship": "Dependency extraction: ordered outward point displacement only; owner sampling/blending, neighbourhood construction and fill remain outside."
+    }
+  ],
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "points",
+      "discs",
+      "strength",
+      "maxTests"
+    ],
+    "properties": {
+      "points": {
+        "type": "array",
+        "maxItems": 1073741823,
+        "items": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false
+        }
+      },
+      "discs": {
+        "type": "array",
+        "maxItems": 715827882,
+        "items": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          ],
+          "items": false
+        }
+      },
+      "strength": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "maxTests": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "points"
+    ],
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false
+        }
+      }
+    }
+  },
+  "behavior": {
+    "input": "Exactly points,discs,strength,maxTests. Empty arrays are valid. Object records use exact-key Map and List rows traversed sequentially; values and Object numeric carriers are only Byte,Short,Integer,Long,Float,Double. All coordinates/strength are finite binary64; radius>0; strength in [0,1]; maxTests safe integer [0,9007199254740991]. No defaults.",
+    "typed": "project(double[] packedXY,double[] packedDiscs,double strength,long maxTests); packedXY length even and packedDiscs length divisible by3. Validate point count/values, discs/count/values, strength, then budget. Both typed arrays must be non-null; size() is point count and points() returns detached packedXY.",
+    "preflight": "Validate points then discs then strength then maxTests. Declared signed64 work N*M counts every disc including strength-zero. INVALID_INPUT precedes WORK_LIMIT; work-limit failure precedes output allocation/geometric traversal. Conversion buffers may be allocated before preflight. Object validates exact top-level keys before fields. Array maxima imply N<=1073741823 and M<=715827882; their product fits signed64. No new work-overflow error exists.",
+    "algorithm": "At strength==0, after full validation and work preflight, copy points with positive-zero normalization without disc arithmetic. For each point in input order, visit discs in supplied order and update current coordinates. dx=x-cx and dy=y-cy; if either is infinite, skip that disc. hi=max(abs(dx),abs(dy)), lo=min(...); d=0 if hi=0 else hi*sqrt(1+(lo/hi)*(lo/hi)). Infinite d is outside. If d>=radius skip. Otherwise direction=(dx/d,dy/d), except d=0 uses (1,0); gap=radius-d; movement=strength*gap; newX=x+(ux*movement), newY=y+(uy*movement), each ordered binary64 operation. Nonfinite new coordinate fails NUMERIC_OVERFLOW atomically.",
+    "numeric": "Separate IEEE binary64 round-to-nearest ties-even; correctly rounded sqrt; no FMA, reassociation, epsilon, trigonometry, RNG/time/host/renderer state. Normalize completed output zeros to positive zero. Axis vectors compare exactly; nonaxis vector coordinates use abs 1e-12 plus relative 1e-12 fixture tolerance.",
+    "ownership": "Immutable owned result; result size equals N and preserves order. points() and toValues() detach. Inputs are stable for call and never retained; failure publishes no result.",
+    "access": "size(); pointInto(long index,double[] target,int offset). Validate index in [0,MAX_SAFE] first (INVALID_INDEX), then index<size (INDEX_OUT_OF_RANGE), then non-null target and overflow-safe offset>=0 and offset+2<=length (INVALID_OUTPUT), with no partial target write.",
+    "limits": "O(N*M+N+M) work and primitive-array storage; no typed-loop per-point objects. This is one-pass deformation, not containment, collision resolution, clipping, Voronoi or a non-overlap guarantee.",
+    "native_forms": "org.procedurals.geometry.DiscProjection2D.project(Object) and project(double[] packedXY,double[] packedDiscs,double strength,long maxTests); result size(),points(),toValues(),pointInto(long index,double[] target,int offset). No Object index overload."
+  },
+  "errors": {
+    "INVALID_INPUT": "Shape/carrier/nonfinite/radius/strength/budget representation error.",
+    "WORK_LIMIT": "Validated N*M exceeds maxTests.",
+    "NUMERIC_OVERFLOW": "A completed projected coordinate is nonfinite.",
+    "INVALID_INDEX": "pointInto index is not a permitted long index.",
+    "INDEX_OUT_OF_RANGE": "Valid index is outside result.",
+    "INVALID_OUTPUT": "target/offset cannot receive two values atomically."
+  },
+  "parameters": {
+    "points": {
+      "unit": "caller coordinate pairs",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit caller geometry or resource budget; independently specified reusable dependency. No artistic default or encouraged range."
+    },
+    "discs": {
+      "unit": "ordered [centerX,centerY,radius] caller geometry",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit caller geometry or resource budget; independently specified reusable dependency. No artistic default or encouraged range."
+    },
+    "strength": {
+      "unit": "fraction of remaining radial gap",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Private 0/0.45/1 study distinguishes identity, fractional and full behaviour; no recommended range."
+    },
+    "maxTests": {
+      "unit": "disc tests",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit caller geometry or resource budget; independently specified reusable dependency. No artistic default or encouraged range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    }
+  },
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "ProjectionMarks contour and line transfer planned; no complete original recreation.",
+    "plan": "design/capabilities/projection-marks-native-plan.md"
+  },
+  "design_review": "design/capabilities/disc-projection-admission.md",
+  "fixture_format": "exact-json-output",
+  "fixtures": "fixtures/operations/sequential-disc-projection-2d.json",
+  "comparison": "Exact JSON vectors cover axis, exactly representable3-4-5, subnormal and unchanged extreme coordinates. Native nonaxis comparisons may use per-coordinate abs1e-12+rel1e-12. Sizes, order, errors and positive-zero bits exact.",
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "approved"
+  }
+}

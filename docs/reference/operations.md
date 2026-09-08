@@ -2437,6 +2437,101 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/separable-blur-2d.json).
 
+## geometry.sequential-disc-projection-2d (0.1.0)
+
+Sequentially move supplied points outward toward the boundaries of ordered supplied discs.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "points",
+    "discs",
+    "strength",
+    "maxTests"
+  ],
+  "properties": {
+    "points": {
+      "type": "array",
+      "maxItems": 1073741823,
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false
+      }
+    },
+    "discs": {
+      "type": "array",
+      "maxItems": 715827882,
+      "items": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "items": false
+      }
+    },
+    "strength": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "maxTests": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | caller coordinate pairs | null | null | Explicit caller geometry or resource budget; independently specified reusable dependency. No artistic default or encouraged range. |
+| discs | ordered [centerX,centerY,radius] caller geometry | null | null | Explicit caller geometry or resource budget; independently specified reusable dependency. No artistic default or encouraged range. |
+| strength | fraction of remaining radial gap | null | null | Private 0/0.45/1 study distinguishes identity, fractional and full behaviour; no recommended range. |
+| maxTests | disc tests | null | null | Explicit caller geometry or resource budget; independently specified reusable dependency. No artistic default or encouraged range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/disc-projection-catalog-review.json) | [validated-scoped](../../evidence/conformance/disc-projection-catalog-review.json) | unvalidated | [review](../../evidence/conformance/disc-projection-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2019/generativos/colidion#1`](../../survey/out/2019/generativos/colidion/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/sequential-disc-projection-2d.json).
+
 ## color.stop-ramp (0.1.0)
 
 Immutable noncyclic positioned RGB24 color stops with piecewise linear sampling and endpoint holds.

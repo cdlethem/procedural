@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "scope": "Typed desktop core only; no renderer or latency guarantee. Timed region excludes setup/checksum; thread allocation is not peak heap.",
+  "warmup": "One reference plus two warmups per workload; three measurements.",
+  "source_sha256": {
+    "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c",
+    "tools/diagnostics/spatial-composition/DiscProjectionPerformance.java": "c4177e891e989b6873b6c7c2454ff677e7ab9df86932cfb3c8a40b6e67b0fb75",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "compile_command": [
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac",
+    "-d",
+    ".work/disc-projection-performance1",
+    "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java",
+    "tools/diagnostics/spatial-composition/DiscProjectionPerformance.java"
+  ],
+  "run_command": [
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java",
+    "-Xms64m",
+    "-Xmx512m",
+    "-cp",
+    ".work/disc-projection-performance1",
+    "DiscProjectionPerformance"
+  ],
+  "measurements": [
+    {
+      "points": 8,
+      "discs": 2,
+      "tests": 16,
+      "elapsed_ns": 14800,
+      "allocated_bytes": 376,
+      "checksum": 1169.4369109140544
+    },
+    {
+      "points": 8,
+      "discs": 2,
+      "tests": 16,
+      "elapsed_ns": 13600,
+      "allocated_bytes": 160,
+      "checksum": 1169.4369109140544
+    },
+    {
+      "points": 8,
+      "discs": 2,
+      "tests": 16,
+      "elapsed_ns": 12820,
+      "allocated_bytes": 160,
+      "checksum": 1169.4369109140544
+    },
+    {
+      "points": 1693,
+      "discs": 4,
+      "tests": 6772,
+      "elapsed_ns": 991189,
+      "allocated_bytes": 27120,
+      "checksum": 1013129.0365438741
+    },
+    {
+      "points": 1693,
+      "discs": 4,
+      "tests": 6772,
+      "elapsed_ns": 989249,
+      "allocated_bytes": 27120,
+      "checksum": 1013129.0365438741
+    },
+    {
+      "points": 1693,
+      "discs": 4,
+      "tests": 6772,
+      "elapsed_ns": 959339,
+      "allocated_bytes": 27120,
+      "checksum": 1013129.0365438741
+    },
+    {
+      "points": 100000,
+      "discs": 64,
+      "tests": 6400000,
+      "elapsed_ns": 17613457,
+      "allocated_bytes": 1600032,
+      "checksum": 59537424.26798425
+    },
+    {
+      "points": 100000,
+      "discs": 64,
+      "tests": 6400000,
+      "elapsed_ns": 17725927,
+      "allocated_bytes": 1600032,
+      "checksum": 59537424.26798425
+    },
+    {
+      "points": 100000,
+      "discs": 64,
+      "tests": 6400000,
+      "elapsed_ns": 17567247,
+      "allocated_bytes": 1600032,
+      "checksum": 59537424.26798425
+    }
+  ]
+}

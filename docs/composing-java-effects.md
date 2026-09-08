@@ -1,0 +1,80 @@
+# Compose drawings, regions and image effects
+
+Start by deciding what you want to reuse: positions, a contour, a region layout, a completed
+drawing, or attributes sampled from an image. Keep that result, then change how you draw or
+combine it. The Java0.29 examples demonstrate these choices without a recipe executor.
+
+## Put content inside partitions
+
+[LayerMarks](layer-marks.md) separates region layout from a drawing callback. The layout
+supplies rectangular regions; `Java2DRegions.render` invokes your callback for each region
+and constrains its visible output afterward. A mark or path can extend beyond the region
+without appearing outside its mask. The callback receives the region's bounds and stable ID,
+so different regions can choose different content while using the same layout.
+
+Choose `Space.CANVAS` for windows onto a larger composition. Draw a retained full-canvas
+image at `(0,0)` for each region; each mask reveals the corresponding part, preserving
+continuity between neighboring windows. Render expensive content once with
+`Java2DLayers.render`, then reuse that image in the callbacks.
+
+Choose `Space.LOCAL` to draw from each region's upper-left corner. This translates the
+origin; it does not scale your drawing or change the target's width/height to the region
+size. Compute local dimensions from `region.right-region.left` and
+`region.bottom-region.top`. Use `region.id` to select retained content. The adapter owns
+the temporary drawing target; the callback draws into it without beginning or ending it.
+
+For a picture or a selected snip, [PlacementImageMarks](placement-image-marks.md) supplies
+explicit crop, frame, contain/cover/stretch and alignment. A generated drawing is also a
+`PImage`, so the same placement call works for both. This is a reusable content layer;
+partition generation need not know whether it contains a photograph or generated marks.
+
+The region callback adapter currently supports rectangles in JAVA2D. For a curved or
+irregular visible region, draw that shape into a transparent layer and extract its alpha
+with `Java2DLayers.alphaMask`, as in [MaskMarks](mask-marks.md). This masks image content;
+it does not produce clipped vector paths or make geometry follow the boundary.
+
+## Blend two effects across a boundary
+
+A mask answers how much of each result appears at each pixel. It need not be a binary
+inside/outside decision. `Java2DLayers.crossfade` mixes two equal-sized images using an
+explicit scalar array: zero selects the first, one selects the second, and intermediate
+values blend their premultiplied encoded colors and alpha.
+
+`Java2DLayers.composite` instead puts a source over a destination with mask coverage.
+Use it when transparent parts of the source should reveal the destination. The region
+adapter's feather uses this source-over interpretation. Feathering adjacent regions is
+not automatically a normalized two-image transition; choose crossfade when that is what
+you mean. An alpha mask reads transparency, so opaque black and opaque white both select
+fully. Draw the desired transparency when creating it.
+
+[BlurMarks](blur-marks.md) retains a sharp drawing and filtered variants, then applies a
+left-to-right crossfade. Replace either input with a different effect's image without
+changing the mask. Keep the filtered images when changing only the transition.
+
+## Choose the order deliberately
+
+| Sequence | Resulting behavior |
+| --- | --- |
+| Draw a complete field, then reveal it through regions | Regions show parts of one continuous field. |
+| Generate a field separately using each region's local coordinates | Each region has its own field composition. |
+| Filter a full drawing, then mask it | Content outside the visible region can contribute to pixels inside it before masking. |
+| Mask a transparent drawing, then blur it | The filtered alpha can spread beyond the original mask; mask again if the final visible boundary must remain fixed. |
+| Crop an image, then filter the crop | Filtering uses the crop's own clamped edges. |
+| Deform geometry, then draw it | Strokes follow the changed coordinates; retained paths remain available. |
+| Draw geometry, then remap its image | All captured pixels move together; the result is a raster, not updated paths. |
+
+These are explicit call sequences, not interchangeable arrangements. A visibility mask
+cannot make a path bend around an obstacle, and smoothing a contour does not establish
+polygon containment. Use an operation that computes the needed geometry when the boundary
+must affect movement or shape rather than only visibility.
+
+## Let an image guide a new drawing
+
+[ImageFieldMarks](image-field-marks.md) snapshots a completed image and samples it at retained
+positions. Its ARGB, alpha and maximum-RGB values can choose mark color, size or visibility.
+The example changes the input image while preserving the layout, then changes the mark
+interpretation while preserving the samples. Maximum RGB ignores alpha and is not luminance.
+
+This gives two distinct uses for images: visible content you place/mask/filter, and data
+that guides another drawing. They can share the same source. Start with the
+[workflow chooser](choosing-java-workflow.md), then substitute one retained result at a time.

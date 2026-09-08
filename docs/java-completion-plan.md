@@ -8,8 +8,9 @@ or replace the project's mission with the current operation count.
 Execution now follows [the remaining-scope map and parallel batches](java-buildout-batches.md).
 
 Current remaining-work review: [CP25 reconciliation](../design/capabilities/java-completion-cp25-review.md).
-Image-driven controls and postprocessing are the next concrete gaps; spatial masks and
-explicit image placement are now delivered.
+CP26 delivered image-driven controls and normalized separable postprocessing. Spatial masks
+and explicit image placement are delivered. Remaining family dispositions and discovery
+consistency still require review; source-specific shader behaviors are not implied.
 
 ## Completion requirements
 
@@ -34,7 +35,7 @@ The broader corpus benchmark remains a separate strict certification claim.
 
 ## Existing capability baseline
 
-Java0.28 source milestone assembles26 operations and29 workflows: field marks, integrated paths, constrained
+Java0.30 source milestone assembles28 operations and32 workflows: field marks, integrated paths, constrained
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
 paths, raster remapping, positioned color ramps, noise-band paths, smooth closed curves and binary panel layouts,
@@ -166,3 +167,21 @@ intentionally corrects the celular helpers rather than replaying their nesting b
 Core, native workflow and Java0.23 source-bundle acceptance are recorded separately in
 `evidence/distribution/cp20-java-review.json`.
 No additional original recreation or non-Java target is claimed.
+
+## CP26: image controls and composable filtering
+
+ProcessingImageField samples retained image attributes for independent mark decisions.
+SeparableBlur2D and ProcessingImageFilters soften retained content, with BlurMarks showing
+axis edits and a masked sharp/filter transition. ImageFieldMarks demonstrates size, visibility
+and color consumers with fixed positions. Both extracted workflows pass; see
+`evidence/distribution/cp26-java-review.json`. No additional original recreation is claimed.
+
+## CP27: sequential outward deformation
+
+DiscProjection2D and ProjectionMarks add outward point movement through supplied ordered
+discs, with contour/line transfer and explicit strength/order edits. This addresses the
+projection component of colidion; owner-ray recovery, its fill heuristic and full original
+recreation remain outside the claim. It is not Voronoi or guaranteed collision avoidance.
+See `evidence/distribution/cp27-java-review.json`. The composition guide now explains
+partition callbacks, image content, masks and effect ordering. Remaining family
+dispositions, reference completeness and the final user journey still need reconciliation.
