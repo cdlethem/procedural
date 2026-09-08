@@ -1,8 +1,9 @@
-# Retained rectangle cuts — contract draft 0.1.0
+# Retained rectangle cuts — normative contract 0.1.0
 
 Operation layout.retained-rectangle-cuts-2d. Root admission:
-../capabilities/cp21-retained-cuts-admission.md. This draft precedes catalog schema and
-fixtures; do not implement production until root freezes those together. Java first.
+../capabilities/cp21-retained-cuts-admission.md. Root froze catalog schema and analytic fixtures with this contract. Java implementation
+and runtime support remain pending. Generic catalog checks cover creation cases only;
+command_cases require explicit native execution, including post-error state and recovery.
 
 ## Values and identity
 
@@ -43,7 +44,7 @@ allocation failure is a host failure, not a fabricated validation code; no guara
 recovering from exhausted process memory. Validate counts before attempting growth.
 Single commands are atomic for specified failures; multiple cuts are not a transaction.
 
-## Java surface proposed for catalog freeze
+## Java surface
 
 org.procedurals.layout.RetainedRectangles2D, final mutable class:
 create(Object config); create(double left,double top,double right,double bottom);
@@ -55,7 +56,7 @@ same immutable instance; unrelated retained Leaf identity must survive edits.
 
 Creation Object route accepts Map exact key bounds and List exactly four numeric values;
 only Byte/Short/Integer/Long/Float/Double carriers, finite after conversion. Reject arbitrary
-Number, Boolean, string, null, arrays and unknown keys. This draft has no Object command
+Number, Boolean, string, null, arrays and unknown keys. There are no Object command
 adapters: language-neutral command fixtures call the typed native equivalents.
 
 Nested final EditException extends IllegalArgumentException, public final String code:

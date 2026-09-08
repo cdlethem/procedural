@@ -19,6 +19,8 @@ sys.path.insert(0, str(ROOT))
 from tools.check_field_marks_pde import NAMES, SHA256
 from tools.check_processing_runtime import CORE_SHA256
 from tools.contact_sheet import source_images, compose, publish
+from tools.run_depth_marks_java import (check_runtime, P3D_RUNTIME, JARS,
+                                        KNOWN_STDERR, SHUTDOWN_STDERR)
 
 IDENTIFIER = re.compile(r"[A-Za-z_][A-Za-z0-9_]*\Z")
 RUNTIME = ROOT / ".work/toolchains/processing-4.5.6"
@@ -123,7 +125,7 @@ def variants(parameters, sweep):
     return [dict(values, **{name: parameter(name + "=" + value)[1]}) for value in parts]
 
 
-def run(command, cwd, environment, timeout=60):
+def run(command, cwd, environment, timeout=60, capture=False):
     # Terminate the full native process group on timeout, releasing its shared lease.
     process = subprocess.Popen(list(map(str, command)), cwd=cwd, env=environment,
                                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -140,7 +142,7 @@ def run(command, cwd, environment, timeout=60):
         raise RuntimeError("command timed out: " + str(command[0]))
     if process.returncode:
         raise RuntimeError("command failed: " + stdout + stderr)
-    return stdout
+    return (stdout, stderr) if capture else stdout
 
 
 def parse_frames(text):
@@ -160,9 +162,31 @@ def parse_frames(text):
     return values
 
 
-def wrapper(name, sequence=False):
+def renderer_checks(renderer):
+    expected = {
+        "JAVA2D": "processing.awt.PGraphicsJava2D",
+        "P2D": "processing.opengl.PGraphics2D",
+        "P3D": "processing.opengl.PGraphics3D",
+    }[renderer]
+    return ('if (!%s.equals(sketchRenderer()) || !g.getClass().getName().equals("%s") || pixelDensity!=1) '
+            'throw new IllegalStateException("renderer or density mismatch");' % (renderer, expected))
+
+
+def renderer_metadata(renderer):
+    if renderer == "JAVA2D":
+        return ""
+    return '+",\\"renderer\\":\\""+sketchRenderer()+"\\""'
+
+
+def sequence_renderer_metadata(renderer):
+    if renderer == "JAVA2D":
+        return ""
+    return 'record.append(",\\"renderer\\":\\"").append(sketchRenderer()).append("\\"");'
+
+
+def wrapper(name, sequence=False, renderer="JAVA2D"):
     if sequence:
-        return sequence_wrapper(name)
+        return sequence_wrapper(name, renderer)
     # Only the validated class identifier enters Java source; values travel as arguments.
     return '''import java.nio.file.*;
 import java.nio.charset.StandardCharsets;
@@ -180,23 +204,22 @@ public final class RenderSnapshot extends CLASSNAME {
     @Override public void settings() {
         configureRender(suppliedSeed, Collections.unmodifiableMap(suppliedParameters));
         super.settings();
-        if (!JAVA2D.equals(sketchRenderer()) || sketchPixelDensity()!=1)
-            throw new IllegalArgumentException("render helper requires JAVA2D density1");
+        if (!RENDERER.equals(sketchRenderer()) || sketchPixelDensity()!=1)
+            throw new IllegalArgumentException("render helper renderer or density mismatch");
         if (sketchWidth()<1 || sketchHeight()<1 || (long)sketchWidth()*sketchHeight()>32000000L)
             throw new IllegalArgumentException("render dimensions exceed helper limit");
     }
     @Override public void draw() {
         if (++draws>selectedFrame) throw new IllegalStateException("unexpected additional draw");
         super.draw();
-        if (!g.getClass().getName().equals("processing.awt.PGraphicsJava2D") || pixelDensity!=1)
-            throw new IllegalStateException("unsupported render environment");
+        RENDERER_CHECK
         if (draws<selectedFrame) { loop(); return; }
         noLoop();
         save(destination.resolve("frame.png").toString());
         try {
             String record="{\\"hook\\":\\"configureRender-v1\\",\\"frames\\":1,\\"width\\":"+width
                 +",\\"draws\\":"+draws+",\\"selected_frame\\":"+selectedFrame
-                +",\\"height\\":"+height+",\\"seed\\":"+suppliedSeed+"}";
+                +",\\"height\\":"+height+",\\"seed\\":"+suppliedSeedRENDERER_META+"}";
             Files.write(destination.resolve("frame.json"), record.getBytes(StandardCharsets.UTF_8));
         } catch (Exception error) { throw new IllegalStateException(error); }
         exit();
@@ -215,10 +238,10 @@ public final class RenderSnapshot extends CLASSNAME {
             new RenderSnapshot(seed,parameters,output,frame));
     }
 }
-'''.replace("CLASSNAME", name)
+'''.replace("CLASSNAME", name).replace("RENDERER_CHECK", renderer_checks(renderer)).replace("RENDERER_META", renderer_metadata(renderer)).replace("RENDERER", renderer)
 
 
-def sequence_wrapper(name):
+def sequence_wrapper(name, renderer="JAVA2D"):
     return '''import java.nio.file.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -237,8 +260,8 @@ public final class RenderSnapshot extends CLASSNAME {
     @Override public void settings() {
         configureRender(suppliedSeed, Collections.unmodifiableMap(suppliedParameters));
         super.settings();
-        if (!JAVA2D.equals(sketchRenderer()) || sketchPixelDensity()!=1)
-            throw new IllegalArgumentException("render helper requires JAVA2D density1");
+        if (!RENDERER.equals(sketchRenderer()) || sketchPixelDensity()!=1)
+            throw new IllegalArgumentException("render helper renderer or density mismatch");
         if (sketchWidth()<1 || sketchHeight()<1 || (long)sketchWidth()*sketchHeight()>32000000L)
             throw new IllegalArgumentException("render dimensions exceed helper limit");
     }
@@ -247,8 +270,7 @@ public final class RenderSnapshot extends CLASSNAME {
         if (draws>requestedFrames[requestedFrames.length-1])
             throw new IllegalStateException("unexpected additional draw");
         super.draw();
-        if (!JAVA2D.equals(sketchRenderer()) || !g.getClass().getName().equals("processing.awt.PGraphicsJava2D") || pixelDensity!=1)
-            throw new IllegalStateException("unsupported render environment");
+        RENDERER_CHECK
         if (captures<requestedFrames.length && draws==requestedFrames[captures]) {
             PImage snapshot=get();
             snapshot.save(destination.resolve(String.format("frame-%05d.png", draws)).toString());
@@ -263,7 +285,8 @@ public final class RenderSnapshot extends CLASSNAME {
                 .append(",\\"draws\\":").append(draws).append(",\\"seed\\":").append(suppliedSeed)
                 .append(",\\"requested_frames\\":[");
             for(int i=0;i<requestedFrames.length;i++) { if(i>0) record.append(','); record.append(requestedFrames[i]); }
-            record.append("]}");
+            record.append("]");RENDERER_SEQUENCE_META
+            record.append("}");
             Files.write(destination.resolve("frame.json"), record.toString().getBytes(StandardCharsets.UTF_8));
         } catch (Exception error) { throw new IllegalStateException(error); }
         exit();
@@ -278,7 +301,7 @@ public final class RenderSnapshot extends CLASSNAME {
         PApplet.runSketch(new String[]{"--sketch-path="+output,"RenderSnapshot"}, new RenderSnapshot(seed,parameters,output,frames));
     }
 }
-'''.replace("CLASSNAME", name)
+'''.replace("CLASSNAME", name).replace("RENDERER_CHECK", renderer_checks(renderer)).replace("RENDERER_META", renderer_metadata(renderer)).replace("RENDERER_SEQUENCE_META", sequence_renderer_metadata(renderer)).replace("RENDERER", renderer)
 
 
 def main(argv=None):
@@ -294,6 +317,7 @@ def main(argv=None):
                         help="explicit regular-file asset root staged as data/ per variant")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--java-home", type=Path, default=ROOT / ".work/toolchains/jdk-17.0.20.1+1")
+    parser.add_argument("--renderer", choices=("JAVA2D", "P2D", "P3D"), default="JAVA2D")
     args = parser.parse_args(argv)
     try:
         batch = variants(args.param, args.sweep)
@@ -341,6 +365,11 @@ def main(argv=None):
         inputs = [*source, library, core, archive, *pre, bridge, lease, Path(__file__),
                   ROOT / "tools/contact_sheet.py", *[jdk / p for p in
                   ("bin/java", "bin/javac", "release", "lib/modules")]]
+        if args.renderer != "JAVA2D":
+            inputs.extend([Path(check_runtime.__code__.co_filename),
+                           ROOT / "tools/diagnostics/cp7/run_profiles.py",
+                           ROOT / "tools/check_field_marks_pde.py",
+                           ROOT / "tools/check_processing_runtime.py", *check_runtime()])
         if assets is not None:
             inputs.extend(Path(assets["root"]) / record["path"] for record in assets["files"])
         before = {str(p): digest(p) for p in inputs}
@@ -349,13 +378,16 @@ def main(argv=None):
     output.mkdir(parents=True)
     report = {"status": "running", "seed": args.seed, "variants": [], "inputs_before": before,
               "selected_frame": selected_frame,
-              "scope": "Configured selected-frame JAVA2D render; not conformance or recreation acceptance"}
+              "scope": "Configured selected-frame %s render; not conformance or recreation acceptance" % args.renderer,
+              "renderer": args.renderer}
     if sequence_mode:
         report.pop("selected_frame")
         report["requested_frames"] = requested_frames
     if assets is not None:
         report["assets"] = assets
     environment = os.environ.copy()
+    if args.renderer != "JAVA2D":
+        environment["LIBGL_ALWAYS_SOFTWARE"] = "1"
     for name in ("XDG_CONFIG_HOME", "SNAP_USER_COMMON", "APPDATA"):
         environment.pop(name, None)
     try:
@@ -368,13 +400,14 @@ def main(argv=None):
                 raise RuntimeError("sketch changed while copying")
         java, javac = jdk / "bin/java", jdk / "bin/javac"
         preclasspath = os.pathsep.join(map(str, pre))
-        classpath = os.pathsep.join(map(str, [classes, library, core]))
+        processing_dependencies = [P3D_RUNTIME / name for name in JARS] if args.renderer != "JAVA2D" else []
+        classpath = os.pathsep.join(map(str, [classes, library, core, *processing_dependencies]))
         run([javac, "--release", "17", "-cp", preclasspath, "-d", classes, bridge], output, environment)
         generated = output / (sketch.stem + ".java")
         run([java, "-Duser.home=" + str(home), "-cp", str(classes) + os.pathsep + preclasspath,
              "PreprocessSketch", snapshot / sketch.name, generated, sketch.stem], output, environment)
         host = output / "RenderSnapshot.java"
-        host.write_text(wrapper(sketch.stem, sequence_mode))
+        host.write_text(wrapper(sketch.stem, sequence_mode, args.renderer))
         run([javac, "--release", "17", "-cp", classpath, "-d", classes, generated, host,
              *[snapshot / p.name for p in tabs]], output, environment)
         compiled_before = {str(p): digest(p) for p in classes.rglob("*.class")}
@@ -384,10 +417,13 @@ def main(argv=None):
             staged_assets = variant / "data" if assets is not None else None
             if staged_assets is not None:
                 stage_assets(Path(assets["root"]), staged_assets, assets)
-            run([sys.executable, lease, "--timeout", "30", "--", "xvfb-run", "-a", java,
+            native_stdout, native_stderr = run([sys.executable, lease, "--timeout", "30", "--", "xvfb-run", "-a", java,
                  "-Duser.home=" + str(home), "-cp", classpath, "RenderSnapshot", args.seed, variant,
                  ",".join(map(str, requested_frames)) if sequence_mode else requested_frames[0],
-                 *[key + "=" + str(value) for key, value in parameters.items()]], output, environment, 90)
+                 *[key + "=" + str(value) for key, value in parameters.items()]], output, environment, 90,
+                 capture=True)
+            if args.renderer != "JAVA2D" and native_stderr and not (KNOWN_STDERR.fullmatch(native_stderr) or SHUTDOWN_STDERR.fullmatch(native_stderr)):
+                raise RuntimeError("unexpected OpenGL diagnostics: " + native_stderr)
             native = json.loads((variant / "frame.json").read_text())
             expected_count = len(requested_frames) if sequence_mode else 1
             if native.get("hook") != "configureRender-v1" or native.get("frames") != expected_count or native.get("seed") != args.seed:
@@ -398,6 +434,11 @@ def main(argv=None):
                 raise RuntimeError("incomplete selected-frame execution")
             if sequence_mode and native.get("requested_frames") != requested_frames:
                 raise RuntimeError("incomplete requested-frame execution")
+            if args.renderer != "JAVA2D":
+                native["renderer_profile"] = args.renderer
+                native["stdout"] = native_stdout
+                native["stderr"] = native_stderr
+                native["exit_code"] = 0
             if sequence_mode:
                 captures = []
                 for frame in requested_frames:

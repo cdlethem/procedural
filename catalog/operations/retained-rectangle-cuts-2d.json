@@ -1,0 +1,186 @@
+{
+  "id": "layout.retained-rectangle-cuts-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability": "CP21",
+  "description": "Retain caller-directed unequal rectangle regions with stable identities and atomic single cuts/removals.",
+  "decision_cluster": "layout.retained-rectangle-cuts-2d",
+  "capability_decision": "design/capabilities/cp21-retained-cuts-admission.md",
+  "design_review": "design/operations/retained-rectangle-cuts-contract.md",
+  "provenance": [
+    {
+      "candidate_id": "2019/generativos/griton#0",
+      "notes_path": "survey/out/2019/generativos/griton/notes.md",
+      "note_sha256": "33afce321d584c6e963aa51bd37277e2f2fe5cd07091b3ef080f65668d40e8e0",
+      "upstream_pde_sha256": "fd9e9f8582ed0aefcb92a30ce175ccd8c39f7cbb56283a63e38194b930dd478f",
+      "relationship": "Capability-dependency admission motivated by retained supplied rectangle edits; corrected source selection/ratios/omission behavior remains outside this independently specified stateful operation.",
+      "evidence_sha256": "b5937065e48e89f7adeef1a6450fb2b0b9fde162da15ebb45dc69eb25eaa4ef3"
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "bounds": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 4,
+        "maxItems": 4,
+        "description": "[left,top,right,bottom] finite binary64 bounds with positive width and height."
+      }
+    },
+    "required": [
+      "bounds"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "nextId": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      },
+      "leaves": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740990
+            },
+            "bounds": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 4,
+              "maxItems": 4
+            }
+          },
+          "required": [
+            "id",
+            "bounds"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 2147483647
+      }
+    },
+    "required": [
+      "nextId",
+      "leaves"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "nextId is the next never-reused leaf identity; leaves are live immutable regions in stable order, with canonical finite bounds. Commands are applied sequentially to one owned model per case; failed commands expose no output mutation and consume no identity.",
+  "behavior": {
+    "normative": "design/operations/retained-rectangle-cuts-contract.md",
+    "creation": "Exactly {bounds:[left,top,right,bottom]}; finite binary64 coordinates, left<right and top<bottom, separately finite rounded extents; normalize negative zero. Root leaf has id0 and nextId1.",
+    "commands": "Typed command narrative: cut(long id,String axis,double coordinate) returns fresh long[2] allocated IDs; remove(long id) returns void. Axis is exactly X or Y. Each successful cut appends low-coordinate then high-coordinate children after removing the parent; remove deletes only the selected live leaf. Each command validates fully before mutation.",
+    "validation": "Creation accepts exact Map key bounds and exactly four supported numeric List values; command precedence and errors follow the normative contract. No Object command adapters are part of the portable interchange fixture; native tests use typed commands.",
+    "ownership": "Live leaves are owned immutable values. leaf returns an immutable live value; leaves returns a detached membership list; toValues returns detached mutable values; caller inputs and prior returned containers cannot mutate the model. Removed IDs are never reused.",
+    "identity": "Root id0, nextId1; each successful cut allocates two IDs and increments nextId by2. 9007199254740991 is exhausted nextId sentinel, never a leaf ID.",
+    "complexity": "Expected O(1) lookup/cut/removal with ordered identity storage; O(live count) detached snapshot materialization. Representation limits are not workload recommendations.",
+    "java_surface": "org.procedurals.layout.RetainedRectangles2D: create(Object), create(double,double,double,double), cut(long,String,double), remove(long), leaf(long), leaves(), size(), toValues(); nested immutable Leaf and EditException."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed creation/configuration, unsupported carrier, nonfinite coordinate, invalid bounds, axis, or nonfinite cut.",
+    "INVALID_ID": "ID outside 0..9007199254740990.",
+    "UNKNOWN_ID": "Valid-domain ID is not currently live.",
+    "INVALID_CUT": "Finite cut is not strictly inside the selected live bound.",
+    "LIMIT_EXCEEDED": "Live-count or identity capacity limit would be exceeded."
+  },
+  "parameters": {
+    "bounds": {
+      "unit": "caller-coordinate rectangle [left,top,right,bottom]",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "CP21 retained supplied-region boundary; finite positive extents and identity limits are representational, not artistic ranges."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Java first; implementation/native review pending."
+    },
+    "p5js": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/retained-rectangle-cuts-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Native retained-cuts workflow must demonstrate selected cuts, independent decoration, removal, reset and cached save; no original recreation claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root reviewed contract/schema and analytic fixtures frozen for Java implementation; no runtime support accepted."
+  },
+  "deliberately_excluded": [
+    "seeded selection",
+    "random ratios",
+    "four-way mode",
+    "implicit omission",
+    "undo/history",
+    "restore from snapshot",
+    "rendering",
+    "polygon splitting",
+    "thread synchronization"
+  ]
+}

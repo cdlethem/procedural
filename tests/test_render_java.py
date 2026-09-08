@@ -170,6 +170,13 @@ class RenderJavaTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             render_java.parse_frames(",".join(str(i) for i in range(1, 66)))
 
+    def test_renderer_profiles_are_explicit_and_check_actual_graphics_class(self):
+        self.assertIn("processing.awt.PGraphicsJava2D", render_java.renderer_checks("JAVA2D"))
+        self.assertIn("processing.opengl.PGraphics2D", render_java.renderer_checks("P2D"))
+        self.assertIn("processing.opengl.PGraphics3D", render_java.renderer_checks("P3D"))
+        self.assertIn('P3D.equals(sketchRenderer())', render_java.wrapper("Sketch", renderer="P3D"))
+        self.assertNotIn("PGraphicsJava2D", render_java.wrapper("Sketch", renderer="P3D"))
+
     def _frame_cli_error(self, frame_args):
         arguments = [
             str(self.base / "missing.pde"), "--library", str(self.base / "missing.jar"),

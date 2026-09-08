@@ -98,6 +98,25 @@ runtime and assets. A completed image or contact sheet is not visual-conformance
 or an original-sketch recreation claim. Use the existing benchmark/review process for those.
 For other saved images, use the [contact-sheet helper](comparing-variants.md).
 
+## Choose an OpenGL profile
+
+JAVA2D is the default. A sketch that explicitly requests Processing OpenGL may be run
+with `--renderer P2D` or `--renderer P3D`:
+
+```sh
+uv run python tools/render_java.py sketch.pde \
+  --library /path/to/procedurals/library/procedurals.jar --seed 42 \
+  --renderer P2D --output .work/p2d-render
+```
+
+The selected profile is checked against both `sketchRenderer()` and the actual Processing
+graphics class (`PGraphics2D` or `PGraphics3D`); a mismatch fails rather than falling back.
+OpenGL profiles use the pinned JOGL dependencies audited by the CP7 runner, set software
+OpenGL, and retain the shared render lease, timeout, density1 and 32-million-pixel limits.
+The report records the requested and observed profile. Native stdout/stderr and exit status
+are captured; successful OpenGL stderr must be empty or match the established pinned
+diagnostic sequence. This helper does not make a GPU performance or support claim.
+
 ## Stage explicit assets
 
 A sketch that reads files may receive an explicit asset root with `--assets`:

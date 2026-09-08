@@ -1,0 +1,575 @@
+{
+  "operation": "layout.retained-rectangle-cuts-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "catalog_sha256": "e8797eb0b44201752042091b568090d1355a9f2338ae27164b1671a505829e4c",
+  "source_bindings": {
+    "design/capabilities/cp21-gap-source-bindings.json": "690fa9e3432c4af79319fcb443dec2b6717c02f28720d23e2d75acc2745b065c",
+    "design/capabilities/cp21-retained-cuts-admission.md": "b3af86b9a755d8110ab2cc4409db2ed487314ce51b9bba49cdb348b626a96798"
+  },
+  "cases": [
+    {
+      "id": "create-root",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          10,
+          8
+        ]
+      },
+      "output": {
+        "nextId": 1,
+        "leaves": [
+          {
+            "id": 0,
+            "bounds": [
+              0,
+              0,
+              10,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "negative-zero-canonical",
+      "input": {
+        "bounds": [
+          -0.0,
+          -0.0,
+          2,
+          3
+        ]
+      },
+      "output": {
+        "nextId": 1,
+        "leaves": [
+          {
+            "id": 0,
+            "bounds": [
+              0,
+              0,
+              2,
+              3
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "invalid-bounds",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          0,
+          2
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "overflow-width",
+      "input": {
+        "bounds": [
+          -1.7976931348623157e+308,
+          0,
+          1.7976931348623157e+308,
+          1
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "unknown-config-key",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "seed": 42
+      },
+      "error": "INVALID_INPUT"
+    }
+  ],
+  "command_cases": [
+    {
+      "id": "cut-x-order",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          10,
+          8
+        ]
+      },
+      "commands": [
+        {
+          "op": "cut",
+          "id": 0,
+          "axis": "X",
+          "coordinate": 4
+        }
+      ],
+      "output": {
+        "nextId": 3,
+        "leaves": [
+          {
+            "id": 1,
+            "bounds": [
+              0,
+              0,
+              4,
+              8
+            ]
+          },
+          {
+            "id": 2,
+            "bounds": [
+              4,
+              0,
+              10,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cut-y-order",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          10,
+          8
+        ]
+      },
+      "commands": [
+        {
+          "op": "cut",
+          "id": 0,
+          "axis": "Y",
+          "coordinate": 3
+        }
+      ],
+      "output": {
+        "nextId": 3,
+        "leaves": [
+          {
+            "id": 1,
+            "bounds": [
+              0,
+              0,
+              10,
+              3
+            ]
+          },
+          {
+            "id": 2,
+            "bounds": [
+              0,
+              3,
+              10,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "staggered-two-stage",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          10,
+          8
+        ]
+      },
+      "commands": [
+        {
+          "op": "cut",
+          "id": 0,
+          "axis": "X",
+          "coordinate": 4
+        },
+        {
+          "op": "cut",
+          "id": 1,
+          "axis": "Y",
+          "coordinate": 5
+        },
+        {
+          "op": "cut",
+          "id": 2,
+          "axis": "Y",
+          "coordinate": 2
+        }
+      ],
+      "output": {
+        "nextId": 7,
+        "leaves": [
+          {
+            "id": 3,
+            "bounds": [
+              0,
+              0,
+              4,
+              5
+            ]
+          },
+          {
+            "id": 4,
+            "bounds": [
+              0,
+              5,
+              4,
+              8
+            ]
+          },
+          {
+            "id": 5,
+            "bounds": [
+              4,
+              0,
+              10,
+              2
+            ]
+          },
+          {
+            "id": 6,
+            "bounds": [
+              4,
+              2,
+              10,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "stable-unrelated-order",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          10,
+          8
+        ]
+      },
+      "commands": [
+        {
+          "op": "cut",
+          "id": 0,
+          "axis": "X",
+          "coordinate": 4
+        },
+        {
+          "op": "cut",
+          "id": 2,
+          "axis": "Y",
+          "coordinate": 2
+        }
+      ],
+      "output": {
+        "nextId": 5,
+        "leaves": [
+          {
+            "id": 1,
+            "bounds": [
+              0,
+              0,
+              4,
+              8
+            ]
+          },
+          {
+            "id": 3,
+            "bounds": [
+              4,
+              0,
+              10,
+              2
+            ]
+          },
+          {
+            "id": 4,
+            "bounds": [
+              4,
+              2,
+              10,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "remove-first-survivor",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          10,
+          8
+        ]
+      },
+      "commands": [
+        {
+          "op": "cut",
+          "id": 0,
+          "axis": "X",
+          "coordinate": 4
+        },
+        {
+          "op": "cut",
+          "id": 1,
+          "axis": "Y",
+          "coordinate": 5
+        },
+        {
+          "op": "remove",
+          "id": 2
+        }
+      ],
+      "output": {
+        "nextId": 5,
+        "leaves": [
+          {
+            "id": 3,
+            "bounds": [
+              0,
+              0,
+              4,
+              5
+            ]
+          },
+          {
+            "id": 4,
+            "bounds": [
+              0,
+              5,
+              4,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "remove-last-empty",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          10,
+          8
+        ]
+      },
+      "commands": [
+        {
+          "op": "remove",
+          "id": 0
+        }
+      ],
+      "output": {
+        "nextId": 1,
+        "leaves": []
+      }
+    },
+    {
+      "id": "stale-remove",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          10,
+          8
+        ]
+      },
+      "commands": [
+        {
+          "op": "cut",
+          "id": 0,
+          "axis": "X",
+          "coordinate": 4
+        },
+        {
+          "op": "remove",
+          "id": 0
+        }
+      ],
+      "error": "UNKNOWN_ID",
+      "after_error": {
+        "nextId": 3,
+        "leaves": [
+          {
+            "id": 1,
+            "bounds": [
+              0,
+              0,
+              4,
+              8
+            ]
+          },
+          {
+            "id": 2,
+            "bounds": [
+              4,
+              0,
+              10,
+              8
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "invalid-axis-atomic",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          10,
+          8
+        ]
+      },
+      "commands": [
+        {
+          "op": "cut",
+          "id": 0,
+          "axis": "Z",
+          "coordinate": 4
+        }
+      ],
+      "error": "INVALID_INPUT",
+      "after_error": {
+        "nextId": 1,
+        "leaves": [
+          {
+            "id": 0,
+            "bounds": [
+              0,
+              0,
+              10,
+              8
+            ]
+          }
+        ]
+      },
+      "recovery": {
+        "command": {
+          "op": "cut",
+          "id": 0,
+          "axis": "X",
+          "coordinate": 4
+        },
+        "returns": [
+          1,
+          2
+        ],
+        "output": {
+          "nextId": 3,
+          "leaves": [
+            {
+              "id": 1,
+              "bounds": [
+                0,
+                0,
+                4,
+                8
+              ]
+            },
+            {
+              "id": 2,
+              "bounds": [
+                4,
+                0,
+                10,
+                8
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "invalid-cut-atomic",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          10,
+          8
+        ]
+      },
+      "commands": [
+        {
+          "op": "cut",
+          "id": 0,
+          "axis": "X",
+          "coordinate": 0
+        }
+      ],
+      "error": "INVALID_CUT",
+      "after_error": {
+        "nextId": 1,
+        "leaves": [
+          {
+            "id": 0,
+            "bounds": [
+              0,
+              0,
+              10,
+              8
+            ]
+          }
+        ]
+      },
+      "recovery": {
+        "command": {
+          "op": "cut",
+          "id": 0,
+          "axis": "X",
+          "coordinate": 4
+        },
+        "returns": [
+          1,
+          2
+        ],
+        "output": {
+          "nextId": 3,
+          "leaves": [
+            {
+              "id": 1,
+              "bounds": [
+                0,
+                0,
+                4,
+                8
+              ]
+            },
+            {
+              "id": 2,
+              "bounds": [
+                4,
+                0,
+                10,
+                8
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "command_execution": "Separate native command executor required; generic catalog checker validates creation cases only. Execute commands in order; errors attach to final command, verify after_error state and optional recovery command/output."
+}

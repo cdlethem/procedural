@@ -1477,6 +1477,67 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/regular-grid.json).
 
+## layout.retained-rectangle-cuts-2d (0.1.0)
+
+Retain caller-directed unequal rectangle regions with stable identities and atomic single cuts/removals.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "bounds": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4,
+      "description": "[left,top,right,bottom] finite binary64 bounds with positive width and height."
+    }
+  },
+  "required": [
+    "bounds"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| bounds | caller-coordinate rectangle [left,top,right,bottom] | null | null | CP21 retained supplied-region boundary; finite positive extents and identity limits are representational, not artistic ranges. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | not attested | not attested | not attested | not attested |
+| p5js | not attested | not attested | not attested | not attested |
+| py5 | not attested | not attested | not attested | not attested |
+| processing-android | not attested | not attested | not attested | not attested |
+
+Motivating evidence:
+
+- [`2019/generativos/griton#0`](../../survey/out/2019/generativos/griton/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/retained-rectangle-cuts-2d.json).
+
 ## sampling.seeded-circle-placement-2d (0.1.0)
 
 Place differently sized circles from an explicit seed and finite proposal budget, retaining geometry for independent drawing.

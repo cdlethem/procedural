@@ -1,0 +1,30 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Explicit pinned software OpenGL P2D/P3D profiles in Java render helper",
+  "implementation_sha256": {
+    "tools/render_java.py": "1d7eb545c8e7b05301e737ced9f4699bce05c08c0595ffd93121a52e51469c99",
+    "tests/test_render_java.py": "b78aa9dfff3d7c26cae10087bc6d63cec35f98e8986c4921a281cd72529dbff6",
+    "tests/test_render_java_opengl_native.py": "1556da93caf7516ae96a7a3446e2c1a7b2733178901e53ea629240cdd3d11f30",
+    "tests/native/Renderer2D/Renderer2D.pde": "ebabba0a711eda5737670a6b82740914e5835c8d195de282548b228ed752aa24",
+    "tests/native/Renderer3D/Renderer3D.pde": "776342d013ed6d50e6ecc0999b9b7223f925907b7f2d770a0e26dad8180568d5",
+    "docs/rendering-java.md": "46eff01c1eeb5d48926fef4b0cb0ab4f1ef956f999103557385325c5b9700a0d"
+  },
+  "verified": [
+    "Native two-frame P2D layering and P3D depth occlusion pass exact interior-pixel assertions.",
+    "P3D selected single frame2 reports success and matches expected depth/color pixels.",
+    "P3D sketch requested as P2D fails before capture; no fallback.",
+    "16 focused Python checks pass; existing JAVA2D sequence, early-exit, asset and accumulation native tests pass.",
+    "Pinned JOGL validation reused, shared lease preserved, successful stderr restricted to established full diagnostics."
+  ],
+  "resolved": [
+    "Root corrected Processing renderer constant comparison and incomplete sequence JSON.",
+    "Root corrected fixture StopRamp positions to valid normalized coordinates; this was test data, not a weakened operation check."
+  ],
+  "limits": [
+    "Software OpenGL on pinned Linux runtime only; no hardware GPU performance claim.",
+    "No shader or arbitrary third-party dependency coverage.",
+    "Representative native scenes are diagnostic fixtures, not corpus recreations."
+  ]
+}
