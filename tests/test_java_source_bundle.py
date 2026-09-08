@@ -99,11 +99,12 @@ class SourceBundleTests(unittest.TestCase):
 
     def test_current_release_admission_and_exact_tabs(self):
         manifest, inputs = source_inputs(ROOT)
-        self.assertEqual(len(manifest['operation_files']), 15)
-        self.assertEqual(len(manifest['core_sources']), 15)
+        self.assertEqual(len(manifest['operation_files']), 16)
+        self.assertEqual(len(manifest['core_sources']), 16)
         self.assertEqual(len(manifest['adapter_sources']), 1)
         self.assertIn('processing_core_sha256', manifest)
-        self.assertEqual(len(manifest['examples']), 33)
+        self.assertEqual(len(manifest['examples']), 34)
         self.assertIn('procedurals/examples/FieldMarks/MarkCommands.java', manifest['examples'])
         self.assertIn('procedurals/examples/PathMarks/PathMarksCanvas.java', manifest['examples'])
+        self.assertIn('procedurals/examples/WarpMarks/WarpMarks.pde', manifest['examples'])
         self.assertTrue(inputs)

@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "operation": "raster.bilinear-remap-2d",
+  "fixture_cases": 13,
+  "valid_cases_both_entrypoints": 7,
+  "vectors": {
+    "status": "passed",
+    "cases": 13,
+    "assertions": 92
+  },
+  "native": {
+    "status": "passed",
+    "assertions": 23
+  },
+  "source_sha256_before": {
+    "catalog/operations/bilinear-raster-remap.json": "b8fe845f220644ee7c3bf24e7df9c3aecf5195edcce7b69f51fe530f176ee176",
+    "fixtures/operations/bilinear-raster-remap.json": "2b9a1912e315977b219b1b5dace6cafdffd649346f3b43d0ec13f2a59cf7ff0f",
+    "packages/java/src/main/java/org/procedurals/raster/RasterRemap2D.java": "433615a7fba0b09773fbfc88caa9a5b939e73213b182024feb6c3a04e46e90d4",
+    "tests/native/RasterRemapNative.java": "fb337f7da7d286445b401ae53ff4618a15e0f5d5c7c14c6e909afeb1b15c31a6",
+    "tools/run_raster_remap_java.py": "3d6d489ad6fa9cca4a9cf17ba78bc39a77209f76afec5df4692fb412896f8e7a",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711"
+  },
+  "source_sha256_after": {
+    "catalog/operations/bilinear-raster-remap.json": "b8fe845f220644ee7c3bf24e7df9c3aecf5195edcce7b69f51fe530f176ee176",
+    "fixtures/operations/bilinear-raster-remap.json": "2b9a1912e315977b219b1b5dace6cafdffd649346f3b43d0ec13f2a59cf7ff0f",
+    "packages/java/src/main/java/org/procedurals/raster/RasterRemap2D.java": "433615a7fba0b09773fbfc88caa9a5b939e73213b182024feb6c3a04e46e90d4",
+    "tests/native/RasterRemapNative.java": "fb337f7da7d286445b401ae53ff4618a15e0f5d5c7c14c6e909afeb1b15c31a6",
+    "tools/run_raster_remap_java.py": "3d6d489ad6fa9cca4a9cf17ba78bc39a77209f76afec5df4692fb412896f8e7a",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711"
+  },
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "javac_release": "8",
+  "benchmark_timing_scope": "typed remap plus pixels export/checksum; static bytes are estimates, not allocation measurement",
+  "benchmarks": [
+    {
+      "edge": 8,
+      "repetitions": 200,
+      "warmups": 2,
+      "elapsed_ns_remap_plus_export_checksum": 1607831,
+      "checksum_unsigned64": "11554445814749261120",
+      "static_buffer_bytes_estimate": {
+        "source": 256,
+        "coordinates": 1024,
+        "output": 256,
+        "export_clone": 256
+      }
+    },
+    {
+      "edge": 640,
+      "repetitions": 4,
+      "warmups": 2,
+      "elapsed_ns_remap_plus_export_checksum": 30558866,
+      "checksum_unsigned64": "17323836789510386176",
+      "static_buffer_bytes_estimate": {
+        "source": 1638400,
+        "coordinates": 6553600,
+        "output": 1638400,
+        "export_clone": 1638400
+      }
+    },
+    {
+      "edge": 1024,
+      "repetitions": 2,
+      "warmups": 2,
+      "elapsed_ns_remap_plus_export_checksum": 37785730,
+      "checksum_unsigned64": "13834276236167063552",
+      "static_buffer_bytes_estimate": {
+        "source": 4194304,
+        "coordinates": 16777216,
+        "output": 4194304,
+        "export_clone": 4194304
+      }
+    }
+  ],
+  "scope": "Java core exact vectors/native evidence only; no renderer or support claim."
+}

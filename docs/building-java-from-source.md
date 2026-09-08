@@ -1,14 +1,16 @@
 # Build the Java library from source
 
-The source-bundle builder assembles Java0.15 directly from the checked-in sources.
-Root verified a clean-checkout build against the accepted Java0.15 core and adapter class, example-tab and
-font payloads; see `evidence/distribution/java-source-bundle-review.json`. Each generated
-report still records assembly rather than automatically approving future changed inputs.
+The source-bundle builder assembles Java0.16 directly from the checked-in sources, including
+16 operations and 16 editable starters. WarpMarks adds retained raster remapping to the
+previous Java0.15 surface. The prior clean-checkout packaging proof is recorded in
+`evidence/distribution/java-source-bundle-review.json`; CP13 native scope is recorded in
+`evidence/reproductions/cp13-java2d/root-review.json`. Each generated report records assembly
+rather than automatically approving future changed inputs.
 
 Supply Python 3.11 or newer, a JDK supporting `javac --release 8`, the audited
 Processing 4.5.6 `core.jar`, the accepted GlyphMarks DejaVu Sans font,
 and its complete license notice. Fonts and toolchains are external inputs, not tracked
-project assets. The font is needed to preserve the complete15-starter bundle; it is not
+project assets. The font is needed to preserve the complete16-starter bundle; it is not
 silently omitted or replaced by a system fallback.
 
 ```sh

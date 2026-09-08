@@ -1,0 +1,63 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "CP13 WarpMarks JAVA2D native and technique-level workflow only; distribution acceptance pending",
+  "native": "evidence/reproductions/cp13-java2d/native.json",
+  "native_sha256": "d14b291c56915b6085dd103c0cdf0818f4ec46595ed9d7430392bafe450246f2",
+  "plan": "design/capabilities/warp-marks-native-plan.md",
+  "plan_sha256": "7f421f4367f201643e8b3e453108296f1dcdd0786206d7020af1de81e45abf29",
+  "verified": [
+    "Seven actual Processing draw states via injected key events; renderer/density and exact cached/framebuffer pixels verified.",
+    "Source object and pixel hash preserved through field/strength edits; pattern/reset recapture.",
+    "Zero displacement equals source; restored/reset equal baseline; changed field/strength/pattern produce changed frames.",
+    "Actual saved PNG decodes equal to final display; 300ms quiet without extra draw.",
+    "Runtime/source/JAR/generated classes unchanged and loaded core code source is candidate JAR."
+  ],
+  "visual_observations": {
+    "baseline": "Multicolored dots stretched into curved marks and varying row directions across cream background.",
+    "zero": "Regular, evenly spaced round dots with diagonal color progression; exact source identity confirmed.",
+    "sinusoidal": "Repeated diagonal bands of stretched dots with recognizable alternating curvature.",
+    "stripes": "Clear repeating horizontal colored waves, demonstrating the same sampler on a different pattern."
+  },
+  "edit_metrics": {
+    "baseline": {
+      "changed_pixel_fraction_vs_baseline": 0.0,
+      "mean_absolute_rgb_difference_vs_baseline": 0.0
+    },
+    "strength64": {
+      "changed_pixel_fraction_vs_baseline": 0.42314697265625,
+      "mean_absolute_rgb_difference_vs_baseline": 30.6994287109375
+    },
+    "zero": {
+      "changed_pixel_fraction_vs_baseline": 0.41880126953125,
+      "mean_absolute_rgb_difference_vs_baseline": 33.59896728515625
+    },
+    "restored": {
+      "changed_pixel_fraction_vs_baseline": 0.0,
+      "mean_absolute_rgb_difference_vs_baseline": 0.0
+    },
+    "sinusoidal": {
+      "changed_pixel_fraction_vs_baseline": 0.453203125,
+      "mean_absolute_rgb_difference_vs_baseline": 34.59560791015625
+    },
+    "stripes": {
+      "changed_pixel_fraction_vs_baseline": 0.64944091796875,
+      "mean_absolute_rgb_difference_vs_baseline": 59.51500162760417
+    },
+    "reset": {
+      "changed_pixel_fraction_vs_baseline": 0.0,
+      "mean_absolute_rgb_difference_vs_baseline": 0.0
+    },
+    "warp-marks": {
+      "changed_pixel_fraction_vs_baseline": 0.0,
+      "mean_absolute_rgb_difference_vs_baseline": 0.0
+    }
+  },
+  "limits": [
+    "No original-sketch recreation credit or baseline similarity claim.",
+    "Opaque JAVA2D transport only; other renderers and ports unclaimed.",
+    "Injected event execution is not physical keyboard automation.",
+    "Candidate source-built JAR validation is not extracted release acceptance."
+  ]
+}

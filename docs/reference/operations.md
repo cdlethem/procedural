@@ -4,6 +4,109 @@
 
 Contracts describe intended behavior. Implementation and native/reproduction evidence are separate.
 
+## raster.bilinear-remap-2d (0.1.0)
+
+Remap an owned packed ARGB8 raster through explicit source coordinates using edge-clamped bilinear interpolation.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source",
+    "outputWidth",
+    "outputHeight",
+    "sourceCoordinates"
+  ],
+  "properties": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "pixels"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        }
+      }
+    },
+    "outputWidth": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2147483647
+    },
+    "outputHeight": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2147483647
+    },
+    "sourceCoordinates": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      }
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| source | row-major unsigned32 packed straight ARGB8 raster | null | null | colorRamp#1/#2 capture and sample a source image; dimensions and pixels are caller data. |
+| outputWidth | destination pixels | null | null | Explicit remap destination dimensions are a compositional input; no artistic range is established. |
+| outputHeight | destination pixels | null | null | Explicit remap destination dimensions are a compositional input; no artistic range is established. |
+| sourceCoordinates | source pixel-center coordinates in row-major destination order | null | null | colorRamp#1 pull-samples each destination through a displaced source coordinate; caller-defined fields remain composable. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/bilinear-raster-remap-catalog-review.json) | [validated-scoped](../../evidence/conformance/bilinear-raster-remap-catalog-review.json) | [validated-scoped](../../evidence/conformance/bilinear-raster-remap-catalog-review.json) | [review](../../evidence/conformance/bilinear-raster-remap-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2016/Generativos/colorRamp#1`](../../survey/out/2016/Generativos/colorRamp/notes.md)
+- [`2016/Generativos/colorRamp#2`](../../survey/out/2016/Generativos/colorRamp/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/bilinear-raster-remap.json).
+
 ## color.cyclic-palette (0.1.0)
 
 Immutable ordered opaque sRGB8 palette sampled by a phase in cycles, with linear encoded-channel interpolation and fixed RGB24 quantization.

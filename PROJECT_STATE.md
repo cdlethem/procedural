@@ -1,5 +1,26 @@
 # Project state
 
+## CP13 delivered: Java0.16 raster remapping and WarpMarks
+
+Root accepted RasterRemap2D core, 13 analytic cases (seven valid cases through both APIs),
+focused ownership/carrier/index tests and bounded fractional-sampling timings. Root fixed
+safe-index validation, preserved typed ownership coverage and removed generic List quadratic
+traversal. Native WarpMarks passed seven edit states plus save/quiet and source-reuse checks;
+root viewed baseline/zero/sinusoidal/stripe renders. Technique-level only, no recreation credit.
+Source-built .work/dist/cp13-java-source1/procedurals-java-source-dev.zip is accepted by
+ evidence/distribution/cp13-java-review.json: 16 operations/16 starters, all extracted PDEs
+compile, extracted JAR consumer and native WarpMarks pass, all eight images equal candidate.
+Preserved78 prior classes and35 example/font assets against accepted0.15 source bundle.
+Port integration stays paused; raster now joins deferred ports. No native process live.
+
+Next bounded batch: assess the remaining positioned color-ramp gap already isolated in
+colorRamp evidence; root decides whether it adds enough independent capability, then freezes
+one contract before delegation. Java completeness remains open per docs/java-completion-plan.md;
+CP12 constrained walking and other family gaps remain unresolved. Do not launch a corpus-wide
+re-audit, resume ports, or equate16 operations with full goal completion. Keep focused checks
+and review complete native examples and extracted packages at useful integration checkpoints.
+
+
 ## CP13 contract reviewed; Java implementation delegated
 
 Root reviewed catalog/operations/bilinear-raster-remap.json and authored 13 analytic shared

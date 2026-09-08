@@ -1,0 +1,21 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "scope": "Java core semantics and bounded packed-buffer performance only; native workflow and distribution pending",
+  "operation": "raster.bilinear-remap-2d",
+  "core_sha256": "433615a7fba0b09773fbfc88caa9a5b939e73213b182024feb6c3a04e46e90d4",
+  "conformance": "evidence/conformance/bilinear-raster-remap-java.json",
+  "conformance_sha256": "edc0411b6480d7fb0948d28aaeaa18d79f059f80083c6c89a6b314bceda78290",
+  "verified": [
+    "Root reviewed complete validation, unsigned conversion, clamp/tap bounds, separately rounded channel math and ownership against contract.",
+    "All 13 analytic fixture cases pass; seven successful cases pass through both Object and typed packed-buffer entrypoints.",
+    "Focused Java checks cover typed and object input ownership, detached exports, rejected carriers, nonfinite queries, index boundaries and representation overflow.",
+    "Root corrected safe long index bound, preserved typed ownership coverage and changed generic List traversal to linear iteration.",
+    "No per-pixel allocation in packed kernel; native timings exercise fractional queries at 8, 640 and 1024 square with bound JDK17 and source hashes."
+  ],
+  "limits": [
+    "No renderer/native WarpMarks acceptance or extracted package acceptance.",
+    "Other targets deferred; original sketch recreation not claimed.",
+    "Reported static buffer bytes omit VM/object overhead and garbage collection; elapsed includes output clone and checksum, not a universal performance guarantee."
+  ]
+}

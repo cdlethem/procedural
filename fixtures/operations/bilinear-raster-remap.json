@@ -1,10 +1,10 @@
 {
   "operation": "raster.bilinear-remap-2d",
   "version": "0.1.0",
-  "fixture_format": "bilinear-raster-remap-output",
+  "fixture_format": "exact-json-output",
   "fixture_status": "reviewed",
   "comparison": "exact",
-  "catalog_sha256": "515a5251d1d9ab8c6ec96938a8926aa40683e4cf033f6300674094c116e4deac",
+  "catalog_sha256": "b8fe845f220644ee7c3bf24e7df9c3aecf5195edcce7b69f51fe530f176ee176",
   "cases": [
     {
       "id": "identity_hidden_rgb",

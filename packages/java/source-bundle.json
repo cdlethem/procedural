@@ -1,6 +1,6 @@
 {
-  "version": "0.15.0",
-  "processing_version": 15,
+  "version": "0.16.0",
+  "processing_version": 16,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -16,6 +16,7 @@
     "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
     "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
     "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+    "packages/java/src/main/java/org/procedurals/raster/RasterRemap2D.java": "433615a7fba0b09773fbfc88caa9a5b939e73213b182024feb6c3a04e46e90d4",
     "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
     "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
     "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
@@ -154,9 +155,14 @@
     "procedurals/examples/CutBranchMarks/CutBranchMarks.pde": {
       "source": "packages/java-processing/examples/CutBranchMarks/CutBranchMarks.pde",
       "sha256": "80055e16c4a51019a3e59aff2f0eddf1df0402ac1f4012954ea7ff00414e6145"
+    },
+    "procedurals/examples/WarpMarks/WarpMarks.pde": {
+      "source": "packages/java-processing/examples/WarpMarks/WarpMarks.pde",
+      "sha256": "94eab7ad636addf0deaed8ec79abc844fd413c3e005eadb05abc4d2455b06161"
     }
   },
   "operation_files": [
+    "bilinear-raster-remap.json",
     "cyclic-palette.json",
     "delaunay-2d.json",
     "gradient-noise-2d-01.json",

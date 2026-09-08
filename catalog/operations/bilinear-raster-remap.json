@@ -123,7 +123,7 @@
       }
     }
   },
-  "fixture_format": "bilinear-raster-remap-output",
+  "fixture_format": "exact-json-output",
   "output_invariants": "Output has exactly width, height and pixels. width/outputWidth and height/outputHeight are positive; pixels is row-major unsigned32 ARGB8 with exactly width*height entries. The result owns detached storage.",
   "behavior": {
     "input": "Validate exactly source, outputWidth, outputHeight and sourceCoordinates. Source dimensions are positive integral values and pixels has exactly source.width*source.height unsigned32 values. The coordinate list has exactly outputWidth*outputHeight pairs, each finite binary64. Validate all static shape, dimensions, pixels and coordinates before output allocation or sampling. No defaults, modes or maxPixels.",
@@ -213,5 +213,10 @@
     "in-place mutation",
     "performance defaults or maxPixels",
     "non-Java target support"
-  ]
+  ],
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "Java JAVA2D WarpMarks technique-level plan; native and extracted distribution acceptance pending.",
+    "plan": "design/capabilities/warp-marks-native-plan.md"
+  }
 }

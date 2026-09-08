@@ -1,0 +1,60 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.16.0",
+  "scope": "Source-built Java bundle with 16 operations and 16 starters; extracted compilation and native WarpMarks acceptance. Local artifact, not registry release.",
+  "archive": {
+    "path": ".work/dist/cp13-java-source1/procedurals-java-source-dev.zip",
+    "sha256": "aa8cc7c0d3b1ee6c5123d9efadcb3ac138572f6ad4ec80005a0414018fe474e9",
+    "members": 157
+  },
+  "build_report": {
+    "path": "evidence/distribution/cp13-java-source.json",
+    "sha256": "448bfbc9f5fd30dbe8080d9a8cf136b2488e3f7f1ed3e6e730a947a9ff961ba3"
+  },
+  "consumer_report": {
+    "path": "evidence/distribution/cp13-java-consumer.json",
+    "sha256": "b9f9792343b4a415855a37a0b20ed19632970f3f9cd09636f85a983e2bd5dd99"
+  },
+  "implementation_sha256": {
+    "packages/java/source-bundle.json": "542237fb2eee1947a4a5377eac943a7753dd00b5e728753c728accf001a3bb30",
+    "tools/build_java_source_bundle.py": "05ca6c7087b2473e606202ffe598e4cfc2fad4634f506bfc4b0253b6fb617cc5",
+    "tools/check_java_source_bundle.py": "a7a1df83a8c561fa748fa9f7a72d7ef51f19026415a724116db64e094b052b80",
+    "packages/java/src/main/java/org/procedurals/raster/RasterRemap2D.java": "433615a7fba0b09773fbfc88caa9a5b939e73213b182024feb6c3a04e46e90d4",
+    "packages/java-processing/examples/WarpMarks/WarpMarks.pde": "94eab7ad636addf0deaed8ec79abc844fd413c3e005eadb05abc4d2455b06161"
+  },
+  "checks": {
+    "baseline_archive": {
+      "path": ".work/source-bundle-adapter-clean/.work/build1/procedurals-java-source-dev.zip",
+      "sha256": "23d0d06cb0ac39a2b57cdcfd37b33063f9da2cc61fcdfdccb4670c4bce68c1dd"
+    },
+    "procedurals.jar": {
+      "preserved_classes": 77,
+      "added_classes": [
+        "org/procedurals/raster/RasterRemap2D$RasterRemapException.class",
+        "org/procedurals/raster/RasterRemap2D.class"
+      ]
+    },
+    "procedurals-processing-adapter.jar": {
+      "preserved_classes": 1,
+      "added_classes": []
+    },
+    "preserved_prior_example_members": 35,
+    "extracted_native_frames_equal_candidate": 8
+  },
+  "verified": [
+    "All input/installed hashes verified against live payloads at acceptance; official PDE preprocessor compiled all 16 extracted starters.",
+    "Extracted JAR consumer independently verifies half-alpha interpolation, input/output detachment and exact JAR code source.",
+    "Extracted WarpMarks runs seven native states plus saved output under shared lease; all eight PNGs pixel-equal to root-inspected candidate frames.",
+    "Preserved all 78 prior library/adapter classes and 35 prior example/font assets from accepted Java0.15 source bundle; adds only two RasterRemap2D class files.",
+    "Complete font notice, MIT license and third-party notices preserved; generated PNGs/toolchains/builds remain outside Git.",
+    "36 focused catalog/source-bundle tests pass; full catalog check passes."
+  ],
+  "limits": [
+    "No other-target or original-sketch recreation claim.",
+    "Source builder still requires externally supplied pinned JDK/Processing/font inputs.",
+    "Each future source build records assembly and requires review for changed payloads; this acceptance identifies one archive.",
+    "The prior source bundle already omitted an obsolete PathMarks README as documented in its accepted review; this milestone introduces no further omission."
+  ]
+}
