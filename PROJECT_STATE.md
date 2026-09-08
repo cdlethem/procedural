@@ -1,5 +1,22 @@
 # Project state
 
+## Contact-sheet helper accepted (X2 partial)
+
+Previous turn made progress by pushing adapter correction ebdf1ee4. Terra implemented
+tools/contact_sheet.py and five focused tests; root reviewed input bounds, source reopening,
+no-overwrite publication and docs. Root tightened decompression/IO error reporting.
+`uv run python -m unittest tests.test_contact_sheet` passes. Actual CLI built a 720x240
+sheet from saved CP10 baseline frames 0,30,120; root inspected requested order, readable
+labels and preserved proportions in .work/comparisons/contact-sheet-root1.png. No native
+render was launched and no source assets/images are tracked.
+Guide docs/comparing-variants.md is linked from getting started. This enables comparison
+of saved PNG/JPEG variants, not automatic sweeps or conformance claims. Five focused cases
+cover aspect/alpha/order, corrupt input, output preservation/location, CLI limits and JPEG.
+Next commit/push this helper, then continue remaining roadmap work. Seeded sweep execution,
+palette extraction, recipe schema/executor/exporters and MCP/web remain incomplete; ports
+remain owned by the separate checkout. Full goal active.
+
+
 ## Source-bundle adapter correction accepted
 
 Previous turn pushed 631f26aa, but root and Luna onboarding audit found its source builder

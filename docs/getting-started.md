@@ -22,6 +22,9 @@ In the first tab, try these edits one at a time and run again:
 | Recolour the piece | replace `COLORS` with the alternate list in the comment | mark geometry |
 | Use heavier marks | `DRAW_BARS = true` | positions, headings, lengths and colours |
 
+Save your edits with distinct filenames and use [a contact sheet](comparing-variants.md)
+to compare them side by side.
+
 The example's constants describe this piece, not universally useful ranges. Keeping
 the seed fixed makes reruns repeatable. A palette phase of one means one full trip
 through the palette, regardless of how many entries it contains; repeated colours
