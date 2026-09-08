@@ -1,5 +1,12 @@
 # Project state
 
+## Placement port review in progress
+
+Root verified p5.js/py5 source and environment hashes,20 PNG identities and inspected
+three representative images per target. Recorded bounded findings and remaining integration
+steps in design/port-batch-01-root-review.md. No port merge or shared support promotion yet.
+The separate checkout has live uncommitted Android work; preserve it and the root JS export edit.
+
 ## Spring simulation commands and native preview verified
 
 Root implemented an ordered scan expression and a one-step spring snapshot binding after
