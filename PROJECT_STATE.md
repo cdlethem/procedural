@@ -1,5 +1,19 @@
 # Project state
 
+## Triangle JavaScript core and GrainMarks model checkpoint
+
+Root reviewed/corrected Luna triangle module and runner: removed prevalidation O(N) copy
+and per-point arrays; replaced vacuous ownership check and bound all test inputs. Fresh
+root2 passes27 seeded/32 mapping cases,5 streams and mapping/prefix/access checks. Six
+actual Java/JS full GrainComposition comparisons pass bit-exactly, including biased caller
+sequences and quadrant transfer. Evidence: triangle-javascript-implementation-review.json
+and two reports under evidence/conformance. These are implementation checkpoints only;
+no exports or shared target attestations added. Next implement the p5 GrainMarks sketch
+and bounded browser workflow using existing harness, then review native images.
+Python distribution checkpoint855da42f is now pushed. Earlier fetch transport stalled
+with11 TCP retransmissions; root terminated that exact request, confirmed terminal, then
+bounded retry and push succeeded. No pending fetch/native sessions from that work.
+
 ## Quadrant port batch complete through local distributions
 
 Python RegionMarks0.4 wheel/starter passes installed-submodule and extracted py5 import

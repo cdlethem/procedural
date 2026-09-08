@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "scope": "Six actual Java/JavaScript grain composition comparisons; no native render or acceptance claim",
+  "triangle_counts": [
+    1,
+    1,
+    1,
+    1,
+    26,
+    26
+  ],
+  "comparison": "Region/point counts and every point in raw binary64, including caller Java Random substitutions",
+  "input_sha256_before": {
+    "tests/native/grain-marks-javascript.mjs": "da2f878b40fbea55768f376ca1d209be186d2ec36ba7cd56355752d1c77e2565",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/triangle-points.js": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496"
+  },
+  "input_sha256_after": {
+    "tests/native/grain-marks-javascript.mjs": "da2f878b40fbea55768f376ca1d209be186d2ec36ba7cd56355752d1c77e2565",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/triangle-points.js": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496"
+  },
+  "java_home": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1",
+  "java_release_sha256": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+  "java_modules_sha256": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+  "node_version": "v22.22.1"
+}

@@ -1,0 +1,47 @@
+{
+  "input_sha256_before": {
+    "packages/javascript/src/triangle-points.js": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044",
+    "tests/native/triangle-points-javascript.mjs": "70c2448fff8e13df23205f48a87d0f82e9c47608ac8b56eef75429d241c02b05",
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f"
+  },
+  "input_sha256_after": {
+    "packages/javascript/src/triangle-points.js": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044",
+    "tests/native/triangle-points-javascript.mjs": "70c2448fff8e13df23205f48a87d0f82e9c47608ac8b56eef75429d241c02b05",
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f"
+  },
+  "status": "passed",
+  "operations": [
+    "sampling.seeded-triangle-points-2d",
+    "sampling.triangle-coordinate-map-2d"
+  ],
+  "scope": "Actual JavaScript triangle fixture, RNG, equivalence, ownership and access checks; no rendering or support claim.",
+  "contract_sha256": {
+    "seeded": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "mapping": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f"
+  },
+  "fixture_sha256": {
+    "seeded": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "mapping": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607"
+  },
+  "fixture_cases": {
+    "seeded": 27,
+    "mapping": 32
+  },
+  "seed_vectors": 5,
+  "cross_case_checks": 4,
+  "source_sha256": {
+    "before": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044",
+    "after": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044"
+  },
+  "ownership_access": true,
+  "allocation_failure": {
+    "executed": false,
+    "source_review": "No output-sized allocation precedes full validation; no per-point temporary arrays. Zero-count stream initialization absence is source-reviewed, draw absence executed. Host allocation failure is not injected."
+  }
+}

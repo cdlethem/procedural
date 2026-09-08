@@ -1,0 +1,26 @@
+{
+  "status": "implementation-checkpoint",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Reviewed JavaScript triangle private module and complete GrainMarks model parity. Public exports, browser workflow and target attestations pending.",
+  "implementation_sha256": {
+    "packages/javascript/src/triangle-points.js": "8e14be34f19efc2b64a5e7ebe994f7d316779ef5936f399259a54ba85c80d044",
+    "tests/native/triangle-points-javascript.mjs": "70c2448fff8e13df23205f48a87d0f82e9c47608ac8b56eef75429d241c02b05",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "tests/native/grain-marks-javascript.mjs": "da2f878b40fbea55768f376ca1d209be186d2ec36ba7cd56355752d1c77e2565"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/triangle-points-javascript.json": "98fe1a815fb603d1c59f0867f7e23c043d11b3bddfc8ac46d83adb081d75edb9",
+    "evidence/conformance/grain-marks-javascript-parity.json": "3a46d8e63d142d6dc6afdb0eb7a1cb618584d0b5b3a6d1bb8af3e26232f84d25"
+  },
+  "findings": [
+    "Root read both complete behavior contracts and CP5 boundary/review. Shared endpoint-aware nested interpolation, finite collapsed triangles, private stream, no area validity gate and exact outputs preserved.",
+    "Root removed O(N) coordinate copies before completed validation and per-point temporary allocations. Only bounded triangle metadata is copied early; output owns packed values, no input or RNG references.",
+    "All27 seeded/32 mapping cases execute with raw output bits; five stream vectors, generated unit draws, prefix/equivalence and strengthened actual mutation/access checks pass. Root corrected a vacuous ownership assertion and added complete input/runner hash stability.",
+    "Six actual Java/JS GrainComposition comparisons are bit-exact for every retained point, including both biased examples, seed/density change and26-triangle cell transfer. Example-only Java Random sequence is separate from the public sampling stream."
+  ],
+  "limits": [
+    "Allocation failure not injected; zero-count lack of RNG initialization source-reviewed while absence of draws executed.",
+    "No browser render, event/cached-save validation, export integration, package or target-support acceptance yet."
+  ]
+}
