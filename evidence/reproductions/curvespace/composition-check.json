@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "grid_count": 60,
+  "dots": 3600,
+  "influences": 7,
+  "line_samples": 339840,
+  "pde_compile": "passed",
+  "scope": "Composition and compilation only; no native P2D/visual acceptance",
+  "inputs_sha256": {
+    "examples/recreations/Curvespace/Curvespace.pde": "e8029a2524c43205e2e1cbcc8e3d39703efa52e6e56071bf3d566aacb92d836f",
+    "examples/recreations/Curvespace/CurvespaceComposition.java": "61c56751f6720c0623df604b01748878a1868c2aeb9b619119b0b0075a35bd98",
+    ".work/cp19-consumer-root1/extract/procedurals/library/procedurals.jar": "3bd25b8af7c1e6473c25e0e4f3f7b6f8688c192735b23ee005dbbf403429f5bc",
+    ".work/curvespace-root1/CompositionCheck.java": "16f57c257bc07256e51f82808beb1c373ace6f5c4deac6b40d4fd35d03821806"
+  },
+  "tracked_check": {
+    "path": "tools/diagnostics/curvespace/CompositionCheck.java",
+    "sha256": "16f57c257bc07256e51f82808beb1c373ace6f5c4deac6b40d4fd35d03821806",
+    "relationship": "Exact bytes of the executed temporary check"
+  }
+}

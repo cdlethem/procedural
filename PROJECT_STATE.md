@@ -1,5 +1,32 @@
 # Project state
 
+## Curvespace full-composition draft compiled — native P2D next
+
+Previous turn shipped Java0.22 at838eb1da. Root now maps the complete curvespace source
+through RegularGrid, RadialPull2D and ordinary scalar/drawing glue. See
+ design/capabilities/curvespace-recreation-walkthrough.md. Source seed is never applied to
+Processing RNG; explicit JavaRandom42 recreation promises structural fidelity only.
+
+Draft examples/recreations/Curvespace contains retained composition and actual P2D PDE.
+Root corrected worker deformation/enlargement of the original dot grid: dots remain
+unwarped point marks. Corrected opaque dark background, explicit stroke/noFill state and
+retained field access. Seed42 composition check passes:60x60 dots,7 influences and339840
+line samples across both families; all outputs match accepted package field queries.
+Reset generation repeats descriptors; changed seed changes them. Corrected PDE compiles
+against the accepted Java0.22 JAR. Evidence: evidence/reproductions/curvespace/composition-check.json.
+This is compilation/pure-composition evidence, NOT native P2D or recreation acceptance.
+
+Next implement bounded native P2D C/R/0/S probe and runner using the existing pinned JOGL
+runtime/check_runtime from tools/run_depth_marks_java.py, preprocessing/tab compilation and
+retained-state probes. Always tools/with_native_render_lock.py shared machine lease;
+legacy processing-render.lock recommendations are not sufficient. Bind the accepted JAR,
+composition/PDE/probe/runtime/classes and strict native diagnostics. Inspect additive strands,
+unwarped dots and influence outlines before counting the whole recreation. No JAVA2D fallback.
+No native process or worker remains active.22 operations/workflows and three demonstrated
+originals remain shipped; this tracked draft is excluded from source-bundle acceptance.
+Ports/Sol paused in this task; unrelated Android draft and concurrently appearing JavaScript
+Delaunay export edit are untouched and excluded. Java feature completeness remains open.
+
 ## CP19 Java0.22 accepted for publishing
 
 22 operations and22 editable workflows. RadialPull2D/PullMarks provide localized radial
