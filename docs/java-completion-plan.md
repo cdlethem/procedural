@@ -123,10 +123,11 @@ and parameter-sweep tooling and broader evidence-based idiom coverage remain inc
 
 ## Artist render tooling after CP16
 
-The opt-in JAVA2D first-frame helper tools/render_java.py supplies explicit seed/numeric
+The opt-in JAVA2D selected-frame helper tools/render_java.py supplies explicit seed/numeric
 parameters, one-axis sweeps and contact sheets; docs/rendering-java.md describes the hook.
 This closes a concrete static comparison workflow, not all renderer/animation tooling.
-P2D/P3D, assets and animation batching remain open, alongside broader major-idiom coverage.
+Frame selection now executes every preceding draw, including accumulating/noLoop sketches.
+P2D/P3D, assets and multi-frame animation export remain open, alongside broader major-idiom coverage.
 
 CP17 adds BinaryCellPartition2D and PanelMarks: irregular two-way integer-cell cuts,
 attempted-versus-successful split accounting, and independent decoration of retained cells.

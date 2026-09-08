@@ -1,5 +1,20 @@
 # Project state
 
+## Selected Java animation frame helper accepted
+
+Existing tools/render_java.py now accepts --frame1..10000, default1. Every preceding native
+ draw executes; one selected image is captured per fresh variant. Root reviewed lifecycle,
+count metadata, unchanged process budgets and shared lease. Luna supplied bounded CLI tests;
+root added actual Processing accumulation/noLoop/default/repeat checks. All11 focused tests
+pass. Evidence: evidence/tooling/java-frame-selection-review.json. No clocks are simulated;
+P2D/P3D, assets, multi-frame export and interaction replay remain open. Java0.22 still has
+22 accepted operations/22 starters; no new operation or recreation is counted here.
+
+Ports/Sol remain paused, pending integration retained in docs/porting-resume.md. Unrelated
+Android resume/JavaScript export edits preserved and excluded. No worker/native task active.
+Next select an evidence-backed Java capability gap or another bounded helper improvement;
+whole-goal completion remains unproven. Keep sustainable batches and root architectural review.
+
 ## Curvespace structural recreation accepted
 
 Root reviewed actual P2D960x960 density1 additive drawing of the complete composition.

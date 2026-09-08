@@ -1,5 +1,7 @@
 import tempfile
 import unittest
+from contextlib import redirect_stderr
+from io import StringIO
 from pathlib import Path
 
 from tools import render_java
@@ -70,6 +72,31 @@ class RenderJavaTests(unittest.TestCase):
                 str(self.base / "missing.pde"), "--library", str(self.base / "missing.jar"),
                 "--seed", "4294967296", "--output", str(ROOT / ".work" / "tmp" / "seed-invalid"),
             ])
+
+    def test_frame_defaults_to_first_draw(self):
+        error = self._frame_cli_error([])
+        self.assertNotIn("frame", error.lower())
+
+    def test_frame_accepts_one_through_ten_thousand(self):
+        for frame in ("1", "10000"):
+            error = self._frame_cli_error(["--frame", frame])
+            self.assertNotIn("frame", error.lower())
+
+    def test_frame_rejects_out_of_range_and_noninteger_before_runtime(self):
+        for frame in ("0", "-1", "10001", "not-an-integer"):
+            error = self._frame_cli_error(["--frame", frame])
+            self.assertIn("frame", error.lower())
+
+    def _frame_cli_error(self, frame_args):
+        arguments = [
+            str(self.base / "missing.pde"), "--library", str(self.base / "missing.jar"),
+            "--seed", "42", "--output", str(self.base / "frame-output"),
+            *frame_args,
+        ]
+        stderr = StringIO()
+        with redirect_stderr(stderr), self.assertRaises(SystemExit):
+            render_java.main(arguments)
+        return stderr.getvalue().splitlines()[-1]
 
 
 if __name__ == "__main__":

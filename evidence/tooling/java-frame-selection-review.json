@@ -1,0 +1,30 @@
+{
+  "status": "accepted",
+  "scope": "JAVA2D selected completed draw; one image per fresh variant, no operation or recreation acceptance",
+  "reviewer": "root",
+  "checks": {
+    "command": "PROCEDURALS_TEST_JAR=.work/cp19-consumer-root1/extract/procedurals/library/procedurals.jar python3 -m unittest tests.test_render_java tests.test_render_java_native",
+    "tests": 11,
+    "result": "passed",
+    "native_scenarios": [
+      "default first draw",
+      "fifth draw with retained state and accumulated pixels despite noLoop in setup and draw",
+      "repeat fifth draw exact pixels"
+    ],
+    "native_assertions": "Actual Processing frameCount equals consecutive state count; every pixel matches independently specified accumulated columns; metadata matches requested ordinal."
+  },
+  "retained_native_report": ".work/frame-selection-five1/report.json",
+  "inputs_sha256": {
+    "tools/render_java.py": "3b89d7d3572aa75d8206b6587cb6758444f5ef40aa0f2b239a3af77f12473f46",
+    "tests/test_render_java.py": "f896006454a5bebd77ef620459c1a8983004998af1dea345e91df182fc8e4723",
+    "tests/test_render_java_native.py": "a7b4aab90b56dd7032fbd9a0bdd75acf537d9f663865cf5f5469db15278fb271",
+    "tests/native/FrameSelection/FrameSelection.pde": "4d54451f3a9889f46971aaa5c0de60888b50088706b97ae0862bb95a928fc009",
+    "docs/rendering-java.md": "1b9227fba23f9e36bc3958daae634df9f3bc3a719b95642b4a65db12c841c1c0"
+  },
+  "limitations": [
+    "wall-clock time is not simulated",
+    "JAVA2D density1 only",
+    "frame count bounded 1..10000, existing 90-second native command timeout still applies",
+    "native integration test is opt-in and requires accepted JAR and pinned runtime"
+  ]
+}

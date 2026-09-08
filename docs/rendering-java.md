@@ -46,11 +46,25 @@ within its intended layout/work budget; they are not recommended library paramet
 The seed feeds its local Java Random, while ClosedSpline2D itself consumes no randomness.
 Spacing affects only the mark loop, which retains the same curve for a fixed seed/radius.
 
+## Select an animation frame
+
+Add `--frame 120` to capture the120th completed `draw()`. The default is1. Each variant
+starts a fresh sketch and executes all preceding draws, preserving accumulated geometry,
+pixels and RNG consumption. The helper resumes drawing after `noLoop()` in setup or draw,
+then captures one image and exits. `report.json` records `selected_frame` and the native
+completed-draw count; `frames: 1` means one captured image.
+
+Use frame number or explicit fixed simulation steps for repeatable animation. This option
+does not simulate elapsed seconds, change the sketch frame rate or replay interaction.
+Wall-clock reads such as `millis()` remain dependent on execution speed. A sketch that
+exits early cannot supply a later frame. The1–10000 frame limit is a work cap, not an
+artistic recommendation; even valid counts can exceed the existing render timeout.
+
 ## Current scope
 
-The helper captures the first completed `draw()`, then exits. The sketch must use JAVA2D,
+The helper captures one selected completed `draw()`, then exits. The sketch must use JAVA2D,
 pixel density1, and at most32 million pixels. This version has no asset/data directory,
-extra dependency JAR, P2D/P3D, animation-frame selection or interaction replay support.
+extra dependency JAR, P2D/P3D, multi-frame export or interaction replay support.
 Those are remaining helper capabilities, not exclusions from the Java drawing library.
 Existing library starters do not automatically implement this configuration hook.
 

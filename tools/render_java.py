@@ -87,9 +87,10 @@ public final class RenderSnapshot extends CLASSNAME {
     private final long suppliedSeed;
     private final Map<String,Double> suppliedParameters;
     private final Path destination;
+    private final int selectedFrame;
     private int draws;
-    RenderSnapshot(long seed, Map<String,Double> parameters, Path output) {
-        suppliedSeed=seed; suppliedParameters=parameters; destination=output;
+    RenderSnapshot(long seed, Map<String,Double> parameters, Path output, int frame) {
+        suppliedSeed=seed; suppliedParameters=parameters; destination=output; selectedFrame=frame;
     }
     @Override public void settings() {
         configureRender(suppliedSeed, Collections.unmodifiableMap(suppliedParameters));
@@ -100,14 +101,16 @@ public final class RenderSnapshot extends CLASSNAME {
             throw new IllegalArgumentException("render dimensions exceed helper limit");
     }
     @Override public void draw() {
-        if (++draws!=1) throw new IllegalStateException("unexpected additional draw");
-        noLoop();
+        if (++draws>selectedFrame) throw new IllegalStateException("unexpected additional draw");
         super.draw();
         if (!g.getClass().getName().equals("processing.awt.PGraphicsJava2D") || pixelDensity!=1)
             throw new IllegalStateException("unsupported render environment");
+        if (draws<selectedFrame) { loop(); return; }
+        noLoop();
         save(destination.resolve("frame.png").toString());
         try {
             String record="{\\"hook\\":\\"configureRender-v1\\",\\"frames\\":1,\\"width\\":"+width
+                +",\\"draws\\":"+draws+",\\"selected_frame\\":"+selectedFrame
                 +",\\"height\\":"+height+",\\"seed\\":"+suppliedSeed+"}";
             Files.write(destination.resolve("frame.json"), record.getBytes(StandardCharsets.UTF_8));
         } catch (Exception error) { throw new IllegalStateException(error); }
@@ -118,12 +121,13 @@ public final class RenderSnapshot extends CLASSNAME {
         long seed=Long.parseLong(args[0]);
         Path output=Paths.get(args[1]);
         Map<String,Double> parameters=new LinkedHashMap<String,Double>();
-        for(int i=2;i<args.length;i++) {
+        int frame=Integer.parseInt(args[2]);
+        for(int i=3;i<args.length;i++) {
             String[] pair=args[i].split("=",2);
             parameters.put(pair[0],Double.valueOf(pair[1]));
         }
         PApplet.runSketch(new String[]{"--sketch-path="+output,"RenderSnapshot"},
-            new RenderSnapshot(seed,parameters,output));
+            new RenderSnapshot(seed,parameters,output,frame));
     }
 }
 '''.replace("CLASSNAME", name)
@@ -134,6 +138,7 @@ def main(argv=None):
     parser.add_argument("sketch", type=Path, help="main PDE; adjacent Java tabs are compiled")
     parser.add_argument("--library", type=Path, required=True, help="explicit procedurals.jar")
     parser.add_argument("--seed", type=int, required=True)
+    parser.add_argument("--frame", type=int, default=1, help="completed draw ordinal, 1 through 10000")
     parser.add_argument("--param", action="append", default=[], metavar="NAME=VALUE")
     parser.add_argument("--sweep", metavar="NAME=VALUE,VALUE")
     parser.add_argument("--output", type=Path, required=True)
@@ -143,6 +148,8 @@ def main(argv=None):
         batch = variants(args.param, args.sweep)
         if not 0 <= args.seed <= 4294967295:
             raise ValueError("seed must be an unsigned32 integer")
+        if not 1 <= args.frame <= 10000:
+            raise ValueError("frame must be 1 through 10000")
         sketch, library, output, jdk = [p.resolve() for p in
                                       (args.sketch, args.library, args.output, args.java_home)]
         if not sketch.is_file() or sketch.suffix != ".pde" or not IDENTIFIER.fullmatch(sketch.stem):
@@ -178,7 +185,8 @@ def main(argv=None):
         parser.error(str(error))
     output.mkdir(parents=True)
     report = {"status": "running", "seed": args.seed, "variants": [], "inputs_before": before,
-              "scope": "Configured first-frame JAVA2D render; not conformance or recreation acceptance"}
+              "selected_frame": args.frame,
+              "scope": "Configured selected-frame JAVA2D render; not conformance or recreation acceptance"}
     environment = os.environ.copy()
     for name in ("XDG_CONFIG_HOME", "SNAP_USER_COMMON", "APPDATA"):
         environment.pop(name, None)
@@ -206,11 +214,13 @@ def main(argv=None):
             variant = output / ("variant-%02d" % i)
             variant.mkdir()
             run([sys.executable, lease, "--timeout", "30", "--", "xvfb-run", "-a", java,
-                 "-Duser.home=" + str(home), "-cp", classpath, "RenderSnapshot", args.seed, variant,
+                 "-Duser.home=" + str(home), "-cp", classpath, "RenderSnapshot", args.seed, variant, args.frame,
                  *[key + "=" + str(value) for key, value in parameters.items()]], output, environment, 90)
             native = json.loads((variant / "frame.json").read_text())
             if native.get("hook") != "configureRender-v1" or native.get("frames") != 1 or native.get("seed") != args.seed:
                 raise RuntimeError("incomplete native frame record")
+            if native.get("draws") != args.frame or native.get("selected_frame") != args.frame:
+                raise RuntimeError("incomplete selected-frame execution")
             image = variant / "frame.png"
             _, width, height = source_images([image])[0]
             if [width, height] != [native["width"], native["height"]]:
