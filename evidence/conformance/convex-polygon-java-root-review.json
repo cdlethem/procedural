@@ -1,0 +1,74 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "ConvexPolygonPlacements2D Java core only; public artist workflow/distribution/ports pending",
+  "evidence": {
+    "path": "evidence/conformance/convex-polygon-java.json",
+    "sha256": "c17058b5640b53b51073db52a2162c418c9c46c942952ea74ce7f9e6845c05c7"
+  },
+  "contract": {
+    "path": "design/operations/convex-polygon-placement-contract.md",
+    "sha256": "5860ab874c1fec48a505138d558e5be16bef7877406153881729fd46fd2d314b"
+  },
+  "verified": [
+    "36 shared exact cases,30 also through typed input; full output and primitive accessors checked.",
+    "Independent Fraction separating-axis oracle with authored survivor expectations regenerates identically.",
+    "Root read all-validation-before-filtering, exact geometry decisions, immutable ownership and long-index guards.",
+    "Native mutations cover typed input, nested Object input, every toValues container and independent materialization.",
+    "Actual six allowed carriers, real BigInteger/BigDecimal and arbitrary Number rejection; malformed/index/count/error precedence checks.",
+    "Certified interval filter and exact dyadic fallback reused privately from project Delaunay; accepted triangulator unchanged.",
+    "Live source/runtime/generated-vector-source/generated-class hashes match final passed run.",
+    "Source-bound catalog passes intended integration snapshot; unrelated unfinished port exports are preserved outside the checkpoint."
+  ],
+  "corrections": [
+    "Replaced worker unproved4-ulp/BigDecimal predicate with existing certified interval/dyadic mechanism.",
+    "Made innermost output lists fully mutable and detached.",
+    "Removed duplicate source-index fields and avoided per-proposal iterator allocation.",
+    "Replaced fake big-number test classes with real BigInteger/BigDecimal; strengthened actual nested mutation and carrier/count checks.",
+    "Required native execution in conformance runner; preserved malformed typed rows and structural null handling; bound generated source."
+  ],
+  "performance": {
+    "warmup": "3 runs of100 rotated12-vertex overlapping proposals",
+    "workloads": [
+      {
+        "proposals": 500,
+        "scenario": "rotated-4-overlap-false",
+        "survivors": 500,
+        "checksum": 1360750.0,
+        "elapsed_ns": 3933353,
+        "allocated_bytes": 182360
+      },
+      {
+        "proposals": 500,
+        "scenario": "rotated-12-overlap-true",
+        "survivors": 11,
+        "checksum": 2225.006293847187,
+        "elapsed_ns": 3872473,
+        "allocated_bytes": 367416
+      },
+      {
+        "proposals": 5000,
+        "scenario": "seed42-variable-ellipse-outlines",
+        "survivors": 1059,
+        "checksum": 8452054.0079722,
+        "elapsed_ns": 54217222,
+        "allocated_bytes": 3714856
+      },
+      {
+        "proposals": 500,
+        "scenario": "identical-triangles-exact-contact",
+        "survivors": 1,
+        "checksum": 2.0,
+        "elapsed_ns": 1735071,
+        "allocated_bytes": 805720
+      }
+    ],
+    "interpretation": "Observed pinned OpenJDK17, Java8 bytecode. Full filtering time/allocation excludes proposal generation and result checksum. Exact-contact workload separately exercises fallback. No guaranteed frame rate or extrapolation to other targets."
+  },
+  "limits": [
+    "No public native artist workflow, release bundle or new original recreation accepted.",
+    "Java0.22 remains22 packaged operations and22 workflows.",
+    "No concave/hole/nesting/source-bug compatibility; core reference is independently specified."
+  ]
+}

@@ -2058,6 +2058,101 @@
         "review": "design/capabilities/cp19-radial-warp-direction.md",
         "reviewer": "root"
       }
+    },
+    {
+      "id": "sampling.ordered-convex-polygon-filter-2d",
+      "status": "reviewed_provisional",
+      "reason": "Reviewed private native CP20 study demonstrates oriented-outline placement and diamond transfer; source defects require independent dependency semantics.",
+      "aliases": [],
+      "admission_kind": "capability_dependency",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Ordered supplied finite binary64 strictly convex polygon vertex cycles; no repeated or collinear vertices; either winding.",
+        "outputs": "Immutable retained polygons and original proposal indices in order; attempt count.",
+        "invariants": "Exact symmetric inclusive intersection rejects later touching/overlapping/nested proposals. Explicit malformed-input failure; no renderer/RNG or coordinate transformation.",
+        "open_questions": [],
+        "review": "design/capabilities/cp20-convex-placement-direction.md",
+        "reviewer": "root"
+      },
+      "dependency_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/cp20-convex-placement-direction.md",
+        "rationale": "Directional spacing for elongated/angled shapes cannot be expressed by circle filtering. Independently specified strict disjoint polygons avoid copied source containment defects; three native private studies establish artist edit and transfer value.",
+        "motivating_candidates": [
+          {
+            "candidate_id": "2017/Generativos/celular#0",
+            "source_sha256": "ffede68b2e6fa93117688882d8fd640ba524a333904f03e07fa4994722cb71e4",
+            "evidence_sha256": "fe337bd56a6f24a414f0ce682f5ef12d1847a124ee222fae864be9bd7f9ddc6a",
+            "dependency": "Independently specified ordered filtering of strictly convex supplied outlines; symmetric inclusive intersection corrects source containment/contact defects, not source equivalence.",
+            "remainder": [
+              {
+                "component": "Source proposal generation and capsule geometry",
+                "disposition": "recipe",
+                "reason": "Caller authors finite polygons and metadata; no implicit source random stream or shape factory."
+              },
+              {
+                "component": "Source asymmetric nesting and general polygon helper",
+                "disposition": "deferred",
+                "reason": "Not equivalent to strict convex disjoint filtering; concave/general/nesting policies remain outside this admission."
+              },
+              {
+                "component": "Gradient dots, color and renderer",
+                "disposition": "adapter",
+                "reason": "Retained geometry/source indices feed ordinary drawing; no drawing or source rendering replay claim."
+              }
+            ]
+          },
+          {
+            "candidate_id": "2017/Generativos/celular2#0",
+            "source_sha256": "de80ab80dc19fc473be70e7e1786e11fe2e64661caf10894afb8afc30d48e6d2",
+            "evidence_sha256": "2a7513ed73445cf6958e7fa97de11db270051564abade25afb3c4ab805e9380f",
+            "dependency": "Independently specified ordered filtering of strictly convex supplied outlines; symmetric inclusive intersection corrects source containment/contact defects, not source equivalence.",
+            "remainder": [
+              {
+                "component": "Source proposal generation and capsule geometry",
+                "disposition": "recipe",
+                "reason": "Caller authors finite polygons and metadata; no implicit source random stream or shape factory."
+              },
+              {
+                "component": "Source asymmetric nesting and general polygon helper",
+                "disposition": "deferred",
+                "reason": "Not equivalent to strict convex disjoint filtering; concave/general/nesting policies remain outside this admission."
+              },
+              {
+                "component": "Gradient dots, color and renderer",
+                "disposition": "adapter",
+                "reason": "Retained geometry/source indices feed ordinary drawing; no drawing or source rendering replay claim."
+              }
+            ]
+          },
+          {
+            "candidate_id": "2017/Generativos/celular2#1",
+            "source_sha256": "de80ab80dc19fc473be70e7e1786e11fe2e64661caf10894afb8afc30d48e6d2",
+            "evidence_sha256": "2a7513ed73445cf6958e7fa97de11db270051564abade25afb3c4ab805e9380f",
+            "dependency": "Independently specified ordered filtering of strictly convex supplied outlines; symmetric inclusive intersection corrects source containment/contact defects, not source equivalence.",
+            "remainder": [
+              {
+                "component": "Source proposal generation and capsule geometry",
+                "disposition": "recipe",
+                "reason": "Caller authors finite polygons and metadata; no implicit source random stream or shape factory."
+              },
+              {
+                "component": "Source asymmetric nesting and general polygon helper",
+                "disposition": "deferred",
+                "reason": "Not equivalent to strict convex disjoint filtering; concave/general/nesting policies remain outside this admission."
+              },
+              {
+                "component": "Gradient dots, color and renderer",
+                "disposition": "adapter",
+                "reason": "Retained geometry/source indices feed ordinary drawing; no drawing or source rendering replay claim."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "records": {

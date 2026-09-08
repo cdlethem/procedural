@@ -1105,6 +1105,70 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/ordered-circle-filter.json).
 
+## sampling.ordered-convex-polygon-filter-2d (0.1.0)
+
+Ordered greedy filtering of supplied strictly convex polygon outlines using exact inclusive intersection; retained geometry and original proposal indices.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "polygons"
+  ],
+  "properties": {
+    "polygons": {
+      "type": "array",
+      "maxItems": 357913941,
+      "items": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 1073741823,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| polygons | ordered caller-coordinate polygon cycles | null | null | celular/celular2 source outlines and CP20 reviewed private shape/aspect transfer. Strict convexity is validity, packed-coordinate limits are representational; no measured artistic range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | not attested | not attested | not attested | not attested |
+| p5js | not attested | not attested | not attested | not attested |
+| py5 | not attested | not attested | not attested | not attested |
+| processing-android | not attested | not attested | not attested | not attested |
+
+Motivating evidence:
+
+- [`2017/Generativos/celular#0`](../../survey/out/2017/Generativos/celular/notes.md)
+- [`2017/Generativos/celular2#0`](../../survey/out/2017/Generativos/celular2/notes.md)
+- [`2017/Generativos/celular2#1`](../../survey/out/2017/Generativos/celular2/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/ordered-convex-polygon-filter-2d.json).
+
 ## mesh.radial-profile-surface-3d (0.1.0)
 
 Generate an owned indexed-triangle radial surface from a caller-supplied ordered local axial radius profile, angular subdivision, independent endpoint closures, and explicit face bound. It computes retained local geometry, topology metadata, and flat unit normals only.

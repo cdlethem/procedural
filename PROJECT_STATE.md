@@ -1,5 +1,25 @@
 # Project state
 
+## CP20 convex polygon Java core accepted; public workflow next
+
+Root reviewed ConvexPolygonPlacements2D against frozen contract and36 exact fixtures (30 also
+through typed input). Native ownership/carrier/index/count and four workload checks pass.
+Root replaced the worker unproved tolerance heuristic with the established certified interval
+and exact dyadic predicate mechanism, made all output lists mutable/detached and repaired
+weak native ownership/carrier tests. Final source/runtime/generated-source/classes bound in
+ evidence/conformance/convex-polygon-java.json; root acceptance in adjacent root-review.json.
+5000 variable elliptical outlines measured roughly40ms on pinned JDK (see exact report),
+not a guarantee. Accepted Delaunay stays unchanged; no new whole recreation is claimed.
+
+Next deliver an editable public native workflow using actual core (aspect/shape edits,
+retained recolor, reset, cached save), then extracted distribution acceptance. Java0.22 still
+ships22 operations/22 workflows; new core is not yet a shipped23rd workflow. No worker/native
+process is running for core. Ports/Sol paused; Android/JS/Python drafts remain excluded.
+
+User additionally requested centralized visual review. Root is building a local gallery
+under .work/visual-review, with tracked curation/builder and existing images linked in place.
+Luna is doing read-only inventory of earlier accepted Java visuals; no port work resumed.
+
 ## CP20 convex-outline placement private study reviewed
 
 Root selected ordered supplied convex-polygon filtering as the next Java capability after
