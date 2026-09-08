@@ -563,7 +563,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | processing-java | [conformant](../../evidence/distribution/cp3-review.json) | [validated-scoped](../../evidence/distribution/cp3-review.json) | [validated-scoped](../../evidence/distribution/cp3-review.json) | [review](../../evidence/distribution/cp3-review.json) |
 | p5js | [conformant](../../evidence/conformance/placement-p5js-root-review.json) | [validated-scoped](../../evidence/conformance/placement-p5js-root-review.json) | unvalidated | [review](../../evidence/conformance/placement-p5js-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/placement-py5-root-review.json) | [validated-scoped](../../evidence/conformance/placement-py5-root-review.json) | unvalidated | [review](../../evidence/conformance/placement-py5-root-review.json) |
-| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | [conformant](../../evidence/conformance/placement-android-core-root-review.json) | [validated-scoped](../../evidence/reproductions/placement-marks-android/root-review.json) | unvalidated | [review](../../evidence/reproductions/placement-marks-android/root-review.json) |
 
 Motivating evidence:
 
@@ -879,7 +879,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | processing-java | [conformant](../../evidence/distribution/cp3-review.json) | [validated-scoped](../../evidence/distribution/cp3-review.json) | [validated-scoped](../../evidence/distribution/cp3-review.json) | [review](../../evidence/distribution/cp3-review.json) |
 | p5js | [conformant](../../evidence/conformance/placement-p5js-root-review.json) | [validated-scoped](../../evidence/conformance/placement-p5js-root-review.json) | unvalidated | [review](../../evidence/conformance/placement-p5js-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/placement-py5-root-review.json) | [validated-scoped](../../evidence/conformance/placement-py5-root-review.json) | unvalidated | [review](../../evidence/conformance/placement-py5-root-review.json) |
-| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | [conformant](../../evidence/conformance/placement-android-core-root-review.json) | [validated-scoped](../../evidence/reproductions/placement-marks-android/root-review.json) | unvalidated | [review](../../evidence/reproductions/placement-marks-android/root-review.json) |
 
 Motivating evidence:
 

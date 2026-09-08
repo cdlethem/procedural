@@ -1,0 +1,31 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "API33 x86_64 ART pure placement core conformance. Complements separately accepted PlacementMarks workflow. No Android performance, resource-exhaustion, physical-device or distribution claim.",
+  "implementation_sha256": {
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "tests/native/CirclePlacementsNative.java": "93a05013f1d6bfc444e68f2303b97773c04fcdc94354f3b928a340a28fc2eb7d",
+    "tools/prepare_circle_placement_android_core.py": "6769d7ca164b5c070296aea8c33afb2c1a0ae374442862d63cb49b07a97a681f",
+    "tools/run_circle_placement_java.py": "5020d8720c183ed696ea8783b257ae7949b162efca5991aceec6c91882a864ee",
+    "tools/run_circle_placement_android_core.py": "7e20f82273fe283a29b3b65b0411f7275b26683e7d25985258cbf4cc97b39f3d"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/circle-placements-android.json": "2b410e97a8688d73f81a7a8204e596a67dc26c79a92cc22ada4b73fc0a1096f7"
+  },
+  "root_findings": [
+    "Exact Java core compiled with --release8 and dexed using pinned d8.jar; source/toolchain/generation/dex identities verified before and after execution.",
+    "Shared generator executes68 cases, RNG and mapping vectors and cross-case checks on ART. Raw binary64 and staged failure comparisons unchanged.",
+    "Ownership/access probe derives the exact existing28 assertions, excluding desktop management/performance code; no new numerical implementation.",
+    "Actual ART mains returned passed; temporary remote dex removed; edited-dex negative probe rejected."
+  ],
+  "remaining": [
+    "Distribution packaging",
+    "Other deferred operation ports",
+    "Physical-device/performance support beyond this runtime"
+  ]
+}

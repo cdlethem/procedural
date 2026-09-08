@@ -1,5 +1,16 @@
 # Project state
 
+## Android placement core executed and support recorded
+
+Root reused the Java vector generator and Luna prepared an Android dex with the exact
+core plus28 ownership/access assertions extracted from the existing Java probe. Root
+added preparation-chain verification, bounded ART invocation and exact temporary-file cleanup.
+The shared-lease API33 run passed68 cases plus RNG/mapping/cross checks and28 access checks.
+Dex identity matched on device; a modified copied dex was refused before device use.
+Evidence: evidence/conformance/circle-placements-android.json and root core review.
+Placement core/native attestations now cover all four targets. Technique/recreation and
+port packaging remain separate. Next use existing packaging infrastructure to deliver ports.
+
 ## Android PlacementMarks source/native workflow reviewed
 
 The separate worker run is terminal passed on API33. Root verified all source inputs and

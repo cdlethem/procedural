@@ -1,0 +1,117 @@
+{
+  "status": "passed",
+  "scope": "API33 ART pure placement vectors and ownership/access only; no renderer or performance claim.",
+  "dex_sha256": "d8cb212be770593cadfb4510cdf3d4e50e3d3e89aa78665373c4db2fe4156a94",
+  "runner_sha256": "7e20f82273fe283a29b3b65b0411f7275b26683e7d25985258cbf4cc97b39f3d",
+  "adb_sha256": "a902be8f45c6c62e76c9efaf6947a0fa747c9cabd89a2ac8e0d16ecb30b3ed01",
+  "serial": "emulator-5582",
+  "preparation": {
+    "dex_sha256": {
+      "classes.dex": "d8cb212be770593cadfb4510cdf3d4e50e3d3e89aa78665373c4db2fe4156a94"
+    },
+    "generated_access_source_sha256": "d24a2aad2f6409d350676e37ec87e433330ef5cb6fb449135a1b7bc99e7262d2",
+    "generated_classes_sha256": {
+      "org/procedurals/sampling/CirclePlacements2D$1.class": "1cbc4fa9c4226efc4bc4e13d27e9ed8d6aecdc13e045d96112a8653bee103c1b",
+      "org/procedurals/sampling/CirclePlacements2D$Builder.class": "8bb02b60f02e64acd72a44a5d644dcc0ba90866a94a52805fb1eb05efd3d19e1",
+      "org/procedurals/sampling/CirclePlacements2D$Candidate.class": "2913544d88dff36d4ea027c8dde7f266f9fe04d3ac0443f55344b599a58845d5",
+      "org/procedurals/sampling/CirclePlacements2D$PlacementArithmeticException.class": "8aabad0173befc1d009b3cb75112f149e7b58124b1338af77e113cae31946cff",
+      "org/procedurals/sampling/CirclePlacements2D$PlacementException.class": "028b106106f7061af749f2fcbd3ec5caaa286213d4a944065d510c2be94769c3",
+      "org/procedurals/sampling/CirclePlacements2D$Xoshiro128StarStar11.class": "f038ecf6aa5cb92755ad3eadb24e065dfb1aabae8f84dcc13558147a32517faf",
+      "org/procedurals/sampling/CirclePlacements2D.class": "ec32126026c5806f249e9e6aa70f7236eb5a09b8e00294c54ac12544eb48b6fb",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$1.class": "23870d378678d5c10b7a21e6c033a5ceddcfcd9fe0816df0feed56cd55e3f29d",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$10.class": "495c687f59c3e878341fd2ec2f4d29af8327ad7368929002dc7d90150eaff425",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$11.class": "1b92ed8df5c7343796e6cb20b9b3cab2ead76b55f847886588f733a4b52231da",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$12.class": "3bac114fe402b863aed8a32d844a788413a1723da47d24d9e4f1aeeddc7a3ad9",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$13.class": "262889821096db258db40a871f178545df81546f44bd415ebabdd8b03573f1a7",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$14.class": "d47254c983f6e471a0eeedec4bb67c88923d6d662d4738a0fbc4ac2d412a79f9",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$15.class": "718f9f7ac3b261ff3887aa5d5a556007fb4c28c5943683c586f480bc10e5ca7e",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$16.class": "6f482baa0839f0b6b210da3448a072be618798e55c102cc7b7c6d720e64ff679",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$17.class": "c41ad21d65c873408a20135fc0cb3dbb4eb2c46efcde167249c3606ea3f5d220",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$2.class": "c7a5af0b00e00013b6a75f75244fb03d14a4b6b376ed1bb80af3c9e606f8a770",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$3.class": "a0f21aec57adf8407143cda582f05ad08687225c3ee50c419961a0a94bef4e46",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$4.class": "96ffe6fa13b0afb37fe940533ae222bd19c9ffc5d29809e58648addcc08e5bba",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$5.class": "596d6524aecce7988aa040d2f4eaebb7819027c52d317a9e4af168351fc8225b",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$6.class": "410ca2b87e93b68e65e0aefc99b668444aa98ff0f9225f6f1047ffa98d0c97be",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$7.class": "b3eaaa8f8dcc37c0506ee99b6d6511ca5c39a7ca7aa50dcd8cc15aabb7b8b35d",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$8.class": "f07a19c2c3040558e4c84d8cf0b9386f7e690b84734a348d972e25ae9634dc3d",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$9.class": "044ff7eca19fd33bdf5bc9eff5fc90c48a8e2a5097a6d7795236e0c61e6ba81f",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$Action.class": "f0bd0f8771419017c5d9d9b2d9ca58dbca45a1c96e2b3f886b0e3545e0aad892",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess$OddNumber.class": "7259f1762409c8683a9dd9a056be74e8ab7cf6a872b0708339aca81707a6fc46",
+      "org/procedurals/sampling/CirclePlacementsAndroidAccess.class": "81c75d214e3e3cb3f9921c74b17290c64a982636752f340eaa92b34d409ea393",
+      "org/procedurals/sampling/CirclePlacementsVectors.class": "3fddaaca24d0f47a3423e880b10cc6b0aad839755e61dfb7977e929a334ea895"
+    },
+    "generated_source_sha256": "ad91b11b4f2e56b1df45a9e66b94ef01453fd3dc4afe2d309d22f4158bf9f083",
+    "inputs_sha256": {
+      "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+      "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+      "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+      "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+      "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+      "tests/native/CirclePlacementsNative.java": "93a05013f1d6bfc444e68f2303b97773c04fcdc94354f3b928a340a28fc2eb7d",
+      "tools/prepare_circle_placement_android_core.py": "6769d7ca164b5c070296aea8c33afb2c1a0ae374442862d63cb49b07a97a681f",
+      "tools/run_circle_placement_java.py": "5020d8720c183ed696ea8783b257ae7949b162efca5991aceec6c91882a864ee"
+    },
+    "operations": [
+      "sampling.ordered-circle-filter-2d",
+      "sampling.seeded-circle-placement-2d"
+    ],
+    "ownership_access": {
+      "assertions": 28,
+      "native_ownership_access": true,
+      "status": "passed"
+    },
+    "paths": {
+      "classes": ".work/android-placement-core/prepared2/classes",
+      "dex": ".work/android-placement-core/prepared2/classes.dex",
+      "generated_source": ".work/android-placement-core/prepared2/CirclePlacementsVectors.java"
+    },
+    "scope": "desktop circle-placement vector preflight and API 33 dex preparation only; no emulator, install, or render",
+    "status": "passed",
+    "toolchain_paths": {
+      "android.jar": "/home/colin/dev/procedural/.work/toolchains/android/sdk/platforms/android-33/android.jar",
+      "d8": "/home/colin/dev/procedural/.work/toolchains/android/sdk/build-tools/30.0.3/d8",
+      "d8.jar": "/home/colin/dev/procedural/.work/toolchains/android/sdk/build-tools/30.0.3/lib/d8.jar",
+      "java": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+      "java.modules": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/lib/modules",
+      "java.release": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/release",
+      "javac": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac"
+    },
+    "toolchain_sha256": {
+      "android.jar": "fd628aa21321859a9035c6aae4b084b7d3fdb3f230be5cd5ec76541e32f7c963",
+      "d8": "d30e6d3332cc3f85ca03e6031d55da21e7716cb508114e8a1f275351521948a9",
+      "d8.jar": "3958eda74eb298337361e974c9b733856eae08795516bf78a0dd16df620e83bc",
+      "java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+      "java.modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+      "java.release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+      "javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d"
+    },
+    "vectors": {
+      "fixture_cases": 68,
+      "status": "passed"
+    }
+  },
+  "api": "33",
+  "fingerprint": "google/sdk_gphone64_x86_64/emu64x:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+  "vm": "libart.so",
+  "results": {
+    "CirclePlacementsVectors": {
+      "status": "passed",
+      "fixture_cases": 68
+    },
+    "CirclePlacementsAndroidAccess": {
+      "status": "passed",
+      "assertions": 28,
+      "native_ownership_access": true
+    }
+  },
+  "cleanup": "removed exact temporary dex",
+  "elapsed_seconds": 2.3588855580310337,
+  "session": {
+    "script_sha256": "de54ae9334eb932c27151988d50c441978f8725f482e7838ef5e233d52e16795",
+    "shared_lock": "/home/colin/dev/procedural/.work/native-render-machine.lock",
+    "wrapper_sha256": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d",
+    "timeout_seconds": 500,
+    "scope": "Root launched and stopped API33 emulator under shared lease; pure ART mains only, no additional rendered frames."
+  },
+  "negative_check": "A copied preparation with altered dex rejected before device use."
+}

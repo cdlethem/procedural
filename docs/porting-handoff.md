@@ -25,18 +25,19 @@ recreations; starter count is not original-sketch coverage.
 
 ## Start here
 
-Four core operations already have all four recorded target scopes: grid, palette, gradient
-noise and gradient paths. FieldMarks/PathMarks have scoped native target evidence. The other
-11 operations still require deferred target ports and workflow validation. Begin with the
-shared circle placement/filter result, then follow dependency order; see
+Six operations now have core/native records on all four targets: grid, palette, gradient
+noise, gradient paths, circle filtering and seeded circle placement. Placement Android
+core evidence is API33 ART; its native Activity evidence is scoped separately. The other
+nine operations still require deferred target ports and workflow validation. Follow
+dependency order for the next bounded batch; see
 `design/port-batch-01.md` and the frozen contracts, including all auxiliary fixture sections.
 
 Root integrated the reviewed p5.js/py5 circle placement cores, public exports and
 PlacementMarks workflows in `a7ea7ec5`. The exact source-bound native evidence and
 root integration findings are in `design/port-batch-01-root-review.md`. Python's
 integrated core conformance report is tracked; both native workflows have reviewed
-representative images. Placement core/native target attestations are now recorded for p5.js/py5; Android,
-technique/recreation support and port distribution acceptance remain pending.
+representative images. Placement core/native target attestations are recorded for p5.js, py5 and Android API33.
+Technique/recreation support and port distribution acceptance remain pending.
 Do not infer package release acceptance from source integration alone.
 
 The older FieldMarks/PathMarks evidence remains historical. An exact root-reviewed
@@ -87,3 +88,32 @@ The Java bundle can now be assembled without prior local archives using
 external JDK and font/license inputs. A spring atomicity proof formerly stored in ignored
 scratch was preserved verbatim in tracked evidence and its attestation reference updated;
 this changes no operation semantics or target support.
+
+## Placement core check on Android
+
+Reuse the frozen Java vector generator and ownership/access checks. Preparation performs
+only desktop preflight and dexing; use a fresh ignored output directory:
+
+```sh
+python3 tools/prepare_circle_placement_android_core.py \
+  --java-home .work/toolchains/jdk-17.0.20.1+1 \
+  --android-sdk .work/toolchains/android/sdk \
+  --output .work/placement-art-prepared
+```
+
+With the existing API33 emulator booted, run under the shared lease (or inside a session
+already holding it; do not acquire the same lease twice):
+
+```sh
+python3 tools/with_native_render_lock.py --timeout 300 -- \
+  python3 tools/run_circle_placement_android_core.py \
+  --prepared .work/placement-art-prepared \
+  --android-sdk .work/toolchains/android/sdk \
+  --serial emulator-5582 --adb-port 5038 \
+  --output .work/placement-art-result
+```
+
+The runner verifies the preparation chain and remote dex, runs two pure ART mains and
+removes only its temporary dex. It does not install an APK, draw, or start/stop the
+emulator. The owner of the emulator session handles its lifecycle. The ownership probe
+excludes desktop allocation/performance measurements; no Android performance claim follows.
