@@ -15,8 +15,8 @@ Those scoped records do not establish Android or completed shared radial support
 
 ## Java buildout additions to the deferred queue
 
-Last pushed release baseline before CP15 packaging: `346d6f53` (Java0.17,17 operations
-and17 workflows). The earlier `88ac268d` records the scheduling-change checkpoint.
+Latest accepted Java baseline: `4d61438862d4f93fa617f228ac44424e64db26e7`
+(Java0.18, 18 operations and 18 workflows). The earlier `88ac268d` records the scheduling-change checkpoint.
 RasterRemap2D/WarpMarks and StopRamp/RampMarks are accepted Java additions awaiting ports.
 CP15 adds NoiseBandPath2D/BandMarks; use its explicit distribution review and a pushed
 revision containing accepted implementation, not the earlier prototype-only checkpoint.

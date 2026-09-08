@@ -1,11 +1,25 @@
 # Project state
 
-## CP15 delivered locally: Java0.18 noise-band paths and BandMarks
+## Java artist tooling checkpoint
+
+Root reviewed the bounded Pillow palette extractor and its eight focused tests; direct CLI,
+color/count ordering, matte compositing, downsampling and rejection/preservation paths pass.
+The helper emits RGB24 values usable in FieldMarks; it adds no Java operation or support claim.
+Added an intent-based guide for all18 workflows and corrected stale getting-started count.
+Port obligations remain in docs/porting-resume.md, now pinned to accepted Java0.18.
+The accepted CP15 archive is unchanged; these are repository helper/documentation additions.
+
+Next prioritize a concrete Java algorithmic gap against recreation coverage; do not resume
+ports or Sol. General user-facing seeded rendering and parameter sweeps remain unfinished,
+as do broader major-idiom coverage and original-sketch recreation assessment. No claim of
+full Java completion. No worker or native render remains active.
+
+## CP15 pushed: Java0.18 noise-band paths and BandMarks
 
 Root accepted exact NoiseBandPath2D, native BandMarks and extracted Java0.18 bundle in
 evidence/distribution/cp15-java-review.json. All18 extracted starters compile; six native
 images equal reviewed candidates; all82 prior classes and37 example/font members preserved.
-18 operations/18 workflows accepted locally; publish this integration checkpoint next.
+18 operations/18 workflows pushed to main at4d614388.
 Core18 fixtures include exact error details; actual10million-attempt measurement is recorded.
 Root corrected worker index/zero/growth errors, incomplete workload claims, missing runtime
 bindings and probe identity comparisons before acceptance. No worker record alone established

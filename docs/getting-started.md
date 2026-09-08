@@ -1,11 +1,13 @@
 # Make a field of marks
 
+For another kind of piece, [choose a Java starting point](choosing-java-workflow.md).
+
 Start with a working piece, then change its length, palette or mark. The example
 uses three operations: a regular grid supplies positions, a seeded field supplies
 spatial attributes, and a cyclic palette supplies colours. Drawing remains ordinary
 Processing code that you can change.
 
-Build and install the current fifteen-starter Java package using the
+Build and install the current Java package using the
 [source-bundle guide](building-java-from-source.md). It lists the required external inputs.
 Open its **FieldMarks** library example in Processing 4 and save a copy into your own
 sketch folder. Keep both installed library JARs: this example uses the desktop drawing
