@@ -141,7 +141,48 @@
     },
     "processing-android": {
       "core": {
-        "status": "unvalidated"
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+          "tests/native/TrianglePointsNative.java": "e7ccdb158dea31c7173096344e4a7bbc3ab32055e81de0da30d62cde9f481949",
+          "tools/run_triangle_points_java.py": "43a20656f854c95c468ddabf744b1175f38d1f080cde78a0164c24cc35b56792",
+          "tools/prepare_triangle_points_android_core.py": "180898fcec340a158b7ed94de2e38968b9664af3ef7ca55c2617d3cb5af362c0",
+          "tools/run_triangle_points_android_core.py": "b5efe92ac01fc68f006b440e962eb4e85797dbf22b9696bf889de4064cf55501"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/triangle-points-android.json": "18279fe5c5d59d8148c4382a47e05b8b7b9b75418dd6a4f9108333ce43746e05",
+          "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/triangle-points-android.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/triangle-points-android.json",
+            "pointer": "/api",
+            "equals": "33"
+          },
+          {
+            "path": "evidence/conformance/triangle-points-android.json",
+            "pointer": "/results/TrianglePointsVectors/fixture_cases",
+            "equals": 59
+          },
+          {
+            "path": "evidence/conformance/triangle-points-android.json",
+            "pointer": "/results/TrianglePointsAndroidAccess/assertions",
+            "equals": 356
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/triangle-android-core-root-review.json",
+          "sha256": "9bebf4196bc24536f45564eff9b2a86181dadc99d0e739c730df6c5565e4a854"
+        },
+        "runtime_profile": {
+          "name": "Android API33 x86_64 ART; unchanged Java8 core",
+          "scope": "Exact triangle fixtures, ownership/access and private stream vectors only; native drawing remains unvalidated."
+        }
       },
       "native": {
         "status": "unvalidated"

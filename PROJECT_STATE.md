@@ -1,5 +1,17 @@
 # Project state
 
+## Both triangle cores pass actual Android ART execution
+
+Prepared unchanged Java core plus59 existing vectors, extracted ownership/access and5
+private stream vectors. API33 ART passes209 vector and356 access/stream assertions;
+root verified prep/source/class/dex chain, rejected tampered dex before device access,
+and confirmed exact remote cleanup and terminal emulator session. Core-only Android
+attestations added for both triangle operations. Native GrainMarks remains unvalidated.
+Evidence: triangle-points-android.json and triangle-android-core-root-review.json.
+Terra agent triangle_python owns only new Python triangle_points.py and native runner;
+its core work remains in flight/unaccepted. Next review Python and native GrainMarks
+workflows before public-export/package integration. Java remains15/15; seven complete ports.
+
 ## GrainMarks p5 native workflow reviewed after point-render correction
 
 Native3 passes nine compositions, retained style edits, reset/quiet/cached-save equality

@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "scope": "API33 ART pure triangle vectors and ownership/access only; no renderer or performance claim.",
+  "dex_sha256": "9c43fb230480a8e37ba8c9c8da530cb1fa05f63327794e4c9e2e0bbf872b8f9b",
+  "runner_sha256": "b5efe92ac01fc68f006b440e962eb4e85797dbf22b9696bf889de4064cf55501",
+  "adb_sha256": "a902be8f45c6c62e76c9efaf6947a0fa747c9cabd89a2ac8e0d16ecb30b3ed01",
+  "serial": "emulator-5582",
+  "preparation": {
+    "status": "passed",
+    "scope": "Desktop triangle fixtures/access and API33 dex preparation only; no ART/native support claim",
+    "inputs_sha256": {
+      "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+      "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+      "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+      "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+      "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+      "tests/native/TrianglePointsNative.java": "e7ccdb158dea31c7173096344e4a7bbc3ab32055e81de0da30d62cde9f481949",
+      "tools/prepare_triangle_points_android_core.py": "180898fcec340a158b7ed94de2e38968b9664af3ef7ca55c2617d3cb5af362c0",
+      "tools/run_triangle_points_java.py": "43a20656f854c95c468ddabf744b1175f38d1f080cde78a0164c24cc35b56792",
+      "tools/prepare_circle_placement_android_core.py": "6769d7ca164b5c070296aea8c33afb2c1a0ae374442862d63cb49b07a97a681f"
+    },
+    "toolchain_sha256": {
+      "java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+      "javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+      "java.release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+      "java.modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+      "android.jar": "fd628aa21321859a9035c6aae4b084b7d3fdb3f230be5cd5ec76541e32f7c963",
+      "d8": "d30e6d3332cc3f85ca03e6031d55da21e7716cb508114e8a1f275351521948a9",
+      "d8.jar": "3958eda74eb298337361e974c9b733856eae08795516bf78a0dd16df620e83bc"
+    },
+    "toolchain_paths": {
+      "java": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+      "javac": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+      "java.release": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/release",
+      "java.modules": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/lib/modules",
+      "android.jar": "/home/colin/dev/procedural/.work/toolchains/android/sdk/platforms/android-33/android.jar",
+      "d8": "/home/colin/dev/procedural/.work/toolchains/android/sdk/build-tools/30.0.3/d8",
+      "d8.jar": "/home/colin/dev/procedural/.work/toolchains/android/sdk/build-tools/30.0.3/lib/d8.jar"
+    },
+    "generated_sources_sha256": {
+      "TrianglePointsVectors.java": "f4de4794b128f06a69146c372e589640b9ef3fe4d52fe4c8c8e9e1c1547fdebe",
+      "TrianglePointsAndroidAccess.java": "683bf686546fec82b85c4c182fc21738835d00c0462f4abff754ef1aee6ce6b6"
+    },
+    "generated_classes_sha256": {
+      "org/procedurals/sampling/TrianglePoints2D$TrianglePointsException.class": "83969d835569c006874acca50c12cc0f7747512a7eedd4d59bbe8c1a2b027118",
+      "org/procedurals/sampling/TrianglePoints2D$Xoshiro128StarStar11.class": "f8df6f16a22cb4f2a46e8f01f6b31a28762203102a662c1c74bf0f2c230321f6",
+      "org/procedurals/sampling/TrianglePoints2D.class": "2ee49f7326160ce8c1f3eb351128d04559bb669ee229a14e955663d352a7885a",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$1.class": "875d1813409524898a3ad4df5e4abdbda86bade372af0374b821a8b6abbf3c25",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$10.class": "5dd0df88c26140da7df5ddba0a8751978c5df723ef22c1425ce1688913ce85b1",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$11.class": "7820866a0b00bf2d94dba640913f73212dbc7a52b2a391d1be75b35e9c7fe972",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$12.class": "ce298cd70a5bfb7368a9dfcd105c523e0cb07cc674732a766b6d688ccb32606a",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$13.class": "ec808b5261ec645b48e121272c0a98096acc5ce6349c7b4c17c808f9b50e56ba",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$14.class": "d6a96a9506df25be6c5e321d6286b4ed97e5489a2cc7ab4cb99aaa4a024091b9",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$15.class": "c6349b8e119620cc9b5d98908a45316aef76c47c09a60ca37098e17e0f4a9bb2",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$16.class": "0dd86fb1a15a2427b27f5988f8d8548c917cdaf316e18446cc86389c928bf309",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$17.class": "5c4a563e8a106ae13efe66b32c7cbb95b207a3f1828c06c9ac6fd5eabace933e",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$18.class": "259bc96a911a2d3d2fae8164d3e5079111264cfd3c00476816e293e5f8ed90c1",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$19.class": "53cb47334c7aa0283375eb750f01d58b72c789734bdd185814e731c06c6fd2f5",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$2.class": "736d7ee047c80009e30d39cbf66ef42765cc9caa757134d7c3c8da4ff4fcb060",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$20.class": "9aefefb0ce4dba07bc0d099b4d30f0eb56cdc9b9a91a65b794587f07fff4068e",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$21.class": "3b3f60633b15de237dad1e8febbd743c426ca52e0f923c7d4525c1e0aa9562c9",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$22.class": "bbb64f77fc4b790f376dc259012d310eb98dc96598f02bd5c7cbb2e02e1f0a10",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$23.class": "3b1fcf1d173f33ba0b96d0efab40a755e3846e68361e9ecebd2057cac6178111",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$24.class": "4f32e0ee62ea8da94cb801f7aa6c1ba4cff03480f15fac6bd7f801b9b9fab4ba",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$25.class": "eff00492a1ebfc4c80517222aea9f775cef775b1e45bc23e54d092b9bb9a4bc5",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$26.class": "4e8c08857e7f47adf1f95d36e3c0d2810cee1c1f423c337ab3abb3db72cd80cb",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$3.class": "fb5a188f7aa198149929fdcfec536abe65543304045d0edae4637d21e8f1a7f4",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$4.class": "418dbd6e89a4f96f4afb9913894fd47a37f7c0ce105a01151fb452de454153fe",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$5.class": "43d1ef540adfa6aa8dc4d6897c6f5da30fd132ca8c95e9032c407364b2979bad",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$6.class": "101ad544edacaaf0b1ccc4f73f89b4455e3713be0cd8cb6e2086aa77114970c5",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$7.class": "b76e8138f5d158d23414e7cfafc5f656025d98dbd4f9f36f0c4cd4683d03cd2c",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$8.class": "38fa74ec50b052d5163d089017a8d69aee80756dfe17a100b40b511bcd05beed",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$9.class": "b2d2cb93157f388ed6701032f383302d2bcedda06f1ccf40df968b69004fb7cf",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$Action.class": "c344a667dff2c5adcb884236cbf9963e1caeaf4628c0ce14ea55d9c2143170f0",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess$OddNumber.class": "d61618f67da084f24d4602c49ff638d74bc030201a8d10f8582af512fcf9f2a3",
+      "org/procedurals/sampling/TrianglePointsAndroidAccess.class": "78ad5538ba3d540f247be2cfb8b3c1589c4e253f47c54a86da399388aa71a5c2",
+      "org/procedurals/sampling/TrianglePointsVectors.class": "5e83347dbad68ba714c704d9e9b4c71493358cfe6f2312d0d7208f714715bbff"
+    },
+    "dex_sha256": "9c43fb230480a8e37ba8c9c8da530cb1fa05f63327794e4c9e2e0bbf872b8f9b",
+    "desktop_preflight": {
+      "TrianglePointsVectors": {
+        "status": "passed",
+        "fixture_cases": 59,
+        "assertions": 209
+      },
+      "TrianglePointsAndroidAccess": {
+        "status": "passed",
+        "assertions": 356,
+        "native_ownership_access": true
+      }
+    }
+  },
+  "api": "33",
+  "fingerprint": "google/sdk_gphone64_x86_64/emu64x:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+  "vm": "libart.so",
+  "results": {
+    "TrianglePointsVectors": {
+      "status": "passed",
+      "fixture_cases": 59,
+      "assertions": 209
+    },
+    "TrianglePointsAndroidAccess": {
+      "status": "passed",
+      "assertions": 356,
+      "native_ownership_access": true
+    }
+  },
+  "cleanup": "removed exact temporary dex",
+  "elapsed_seconds": 1.9146310680080205,
+  "session_script_sha256": "cef6af224070daf65458f23deef5c668e7a5ec61ace3d3ba0134b4b82eaafaaa"
+}
