@@ -120,3 +120,18 @@ The concrete amendment to the initial static expression model is
 and two standalone native snapshot checks in `evidence/distribution/recipe-explicit-time-preview.json`.
 This is single-frame evaluation, not a playback scheduler or stateful simulation. Context
 is sealed with composition during export; changing it currently requires a fresh export.
+
+## Bounded command sequences
+
+`RecipeSequence.evaluate(recipe, contexts, perFrameLimits, totalLimits, maxFrames)` returns
+all ordered frame results and their detached contexts, or throws `SequenceFailure` with a
+sequence position and the original recipe error as its cause. The recipe must contain
+`frameContext`; each supplied context replaces it for that frame. One private Session
+retains geometry across the sequence, then clears it. Repeated/backward times are valid.
+
+Limits apply to each frame and the complete sequence. The total value budget includes
+sequence overhead and conservative retained reservations; it is not a heap-byte estimate.
+An empty sequence is valid after input admission. Excess frame count fails before copying
+contexts. No successful prefix is returned if a later frame fails. The API returns commands;
+it does not render, write image sequences, schedule playback or integrate simulation state.
+See `design/recipes/bounded-sequences.md` for the exact budget and failure policy.

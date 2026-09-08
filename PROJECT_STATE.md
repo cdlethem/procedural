@@ -1,5 +1,25 @@
 # Project state
 
+## Bounded sequence command evaluation verified
+
+Root implemented RecipeSequence after rejecting a delegated implementation that misplaced
+frameContext and lost failure metadata. The final class owns a private Session, validates
+all contexts before evaluation, preserves repeated/backward order, enforces per-frame and
+aggregate budgets, and returns a complete immutable result or a positioned underlying error.
+Requirement: design/recipes/bounded-sequences.md. The source-bound established harness at
+.work/recipe-sequence-root1 passes35 composition comparisons,16 focused groups and the new
+four-frame sequence probe (fresh equality, retained reuse, aggregate counts/depletion,
+pre-copy count rejection, empty/invalid input, ownership and runtime error position).
+Evidence: evidence/conformance/recipe-java-prototype-commands.json, sequence subsection.
+No renderer was invoked for this command-only layer; prior time-snapshot native evidence
+remains historical/source-bound. Next integrate explicit sequence inputs into the standalone
+export workflow, recording each context/output and leaving failed artifacts incomplete.
+Keep7 bindings,15 accepted Java operations/15 starters. General executor/export acceptance,
+stateful animation, assets and other target executors remain open. Preserve unrelated JS.
+Use Luna for bounded mechanical tasks; retain core sequence semantics under direct root
+ownership after the incomplete Terra delivery. Full project goal remains active.
+
+
 ## Explicit frame context verified
 
 Added optional catalog-owned frameContext {index,timeSeconds}; clock is exposed only after

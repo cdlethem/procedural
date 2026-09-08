@@ -16,6 +16,17 @@ final class RecipeStructureValidation {
         declarations(recipe); lexical(recipe);
         return recipe;
     }
+    static List<Object> admitContexts(List<?> input) {
+        Object value=new Copy().copy(input,"/contexts",0);
+        if(!(value instanceof List))fail("SCHEMA_INVALID","/contexts","contexts must be an array");
+        @SuppressWarnings("unchecked") Map<String,Object> schema=(Map<String,Object>)RecipeGrammar.schema();
+        Object contextSchema=((Map<?,?>)schema.get("$defs")).get("frameContext");
+        Schema validator=new Schema(schema);
+        List<?> contexts=(List<?>)value;
+        for(int i=0;i<contexts.size();i++)validator.validate(contexts.get(i),contextSchema,"/contexts/"+i,0);
+        @SuppressWarnings("unchecked") List<Object> result=(List<Object>)value;
+        return result;
+    }
     static void fail(String code,String path,String message) { throw new RecipeEvaluator.RecipeFailure(code,path,message); }
     private static String path(String p,Object token) { String s=String.valueOf(token).replace("~","~0").replace("/","~1"); return p+"/"+s; }
     private static final class Copy {

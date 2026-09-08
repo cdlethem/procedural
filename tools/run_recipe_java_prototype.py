@@ -154,12 +154,12 @@ public class RecipePrototypeComparison {
         'packages/java/examples/FieldMarks/MarkField.java',
         'packages/java-processing/examples/FieldMarks/MarkCommands.java',
         'packages/java/examples/PathMarks/PathMarkComposition.java',
-        'tests/native/RecipePrototypeFailures.java', 'tests/native/PlacementRecipeComposition.java', 'tests/native/RegionRecipeComposition.java', 'tests/native/TriangleRecipeComposition.java')]
+        'tests/native/RecipeSequenceProbe.java', 'tests/native/RecipePrototypeFailures.java', 'tests/native/PlacementRecipeComposition.java', 'tests/native/RegionRecipeComposition.java', 'tests/native/TriangleRecipeComposition.java')]
     home = java_home(args.java_home)
     metadata = [ROOT / name for name in (
         'catalog/recipes/recipe.schema.json', 'catalog/recipes/execution-bindings.json',
         'design/recipes/expression-model.md', 'design/recipes/runtime-accounting.md',
-        'design/recipes/retained-session.md', 'design/recipes/triangle-grain-binding.md', 'design/recipes/explicit-frame-context.md',
+        'design/recipes/retained-session.md', 'design/recipes/triangle-grain-binding.md', 'design/recipes/explicit-frame-context.md', 'design/recipes/bounded-sequences.md',
         'tools/validate_recipe_draft.py', 'tools/run_grid_conformance.py',
         'tools/generate_recipe_java_schemas.py', 'tools/generate_recipe_java_grammar.py')]
     binding_data = json.loads((ROOT / 'catalog/recipes/execution-bindings.json').read_text())
@@ -186,12 +186,16 @@ public class RecipePrototypeComparison {
                     'RecipePrototypeFailures'], timeout=30)
     if 'PROTOTYPE_FAILURE_CASES_PASSED' not in failures.stdout:
         raise RuntimeError('focused failure probes did not finish')
+    sequence = run([home / 'bin/java', '-Xmx512m', '-cp', str(classes),
+                    'RecipeSequenceProbe'], timeout=60)
+    if 'SEQUENCE_PROBES_PASSED' not in sequence.stdout:
+        raise RuntimeError('sequence probes did not finish')
     if hashes != {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in bound}:
         raise RuntimeError('comparison input changed during execution')
     report = {'status': 'prototype-command-comparison-passed', 'scope': 'Thirty-five fresh/session command scenarios and focused failure probes; complete budget/type/replay, cache, export and native acceptance remain pending.',
-              'input_sha256': hashes, 'roundtripped_recipes': [p.name for p in recipe_paths], 'stdout': result.stdout, 'failure_stdout': failures.stdout}
+              'input_sha256': hashes, 'roundtripped_recipes': [p.name for p in recipe_paths], 'stdout': result.stdout, 'failure_stdout': failures.stdout, 'sequence_stdout': sequence.stdout}
     (output / 'result.json').write_text(json.dumps(report, indent=2) + '\n')
-    print(result.stdout + failures.stdout)
+    print(result.stdout + failures.stdout + sequence.stdout)
 
 
 if __name__ == '__main__':
