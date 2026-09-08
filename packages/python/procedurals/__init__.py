@@ -52,3 +52,5 @@ from .raster_remap import RasterRemapError, bilinear_raster_remap_2d
 __all__ += ["RasterRemapError", "bilinear_raster_remap_2d"]
 from .noise_band_path import NoiseBandPathError, noise_band_path_2d
 __all__ += ["NoiseBandPathError", "noise_band_path_2d"]
+from .target_springs import SpringError, target_springs_2d
+__all__ += ["SpringError", "target_springs_2d"]
