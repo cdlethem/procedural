@@ -31,6 +31,8 @@ release. An experimental [Java recipe preview](docs/java-recipe-preview.md) expo
 PathMarks, placement-bars and region-panels as editable standalone projects. General portable recipes, MCP and web tools
 remain in the roadmap.
 
+[Render a seeded sketch or parameter sweep](docs/rendering-java.md) with the opt-in JAVA2D helper.
+
 Choose an example by what you want to make in [the Java starting-point guide](docs/choosing-java-workflow.md).
 Build from a fresh checkout with [the Java source-bundle instructions](docs/building-java-from-source.md).
 

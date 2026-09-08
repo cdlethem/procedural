@@ -118,3 +118,10 @@ lookup and analytic raw tangents. Control edits and tile-to-fan transfer preserv
 computation/drawing boundary. Core and native review precede separate extracted Java0.19
 distribution acceptance. No additional original recreation is claimed. General seeded-render
 and parameter-sweep tooling and broader evidence-based idiom coverage remain incomplete.
+
+## Artist render tooling after CP16
+
+The opt-in JAVA2D first-frame helper tools/render_java.py supplies explicit seed/numeric
+parameters, one-axis sweeps and contact sheets; docs/rendering-java.md describes the hook.
+This closes a concrete static comparison workflow, not all renderer/animation tooling.
+P2D/P3D, assets and animation batching remain open, alongside broader major-idiom coverage.

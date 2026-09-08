@@ -1,5 +1,20 @@
 # Project state
 
+## Seeded JAVA2D render/sweep helper accepted
+
+Repository helper tools/render_java.py compiles a private sketch snapshot against an explicit
+JAR, calls configureRender(seed,params), renders one JAVA2D/density1 frame per variant under
+the shared machine lease and creates a labeled contact sheet. LoopSweep is an authored
+helper template, not a twentieth packaged starter or operation. Root reviewed code and
+native output: spacing10/18/30 with fixed seed, independent exact-pixel repeat, changed seed.
+evidence/tooling/java-render/root-review.json records scope and verified bindings.
+
+P2D/P3D, assets and animation batch support remain open helper work; broad Java completion
+is still unproven. Next extend the explicit render workflow where artist capability warrants
+it and assess remaining major-idiom gaps, without restarting a full corpus audit.
+Java0.19 baseline remains5197dc6e,19 operations/19 workflows. Ports/Sol paused; no worker or
+native process remains active. No new original recreation.
+
 ## CP16 Java0.19 accepted for publishing
 
 ClosedSpline2D and LoopMarks accepted through exact core and native edit/transfer evidence

@@ -29,5 +29,6 @@ up to 64 images, 1–8 columns and cell sizes of 64–512 pixels, within a 20-mi
 
 A contact sheet helps you inspect composition and differences. It does not measure visual
 conformance or establish recreation coverage; those claims still require the existing
-benchmark and review process. A general seeded-render and parameter-sweep helper remains pending.
+benchmark and review process. For an opt-in JAVA2D sketch, [render a seeded image or parameter sweep](rendering-java.md).
+Other renderers and animation batch rendering remain pending.
 For palette extraction, see [Use colors from an image](extracting-palettes.md).

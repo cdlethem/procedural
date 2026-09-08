@@ -1,0 +1,29 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Repository opt-in JAVA2D first-frame seed/one-parameter-sweep helper; not a new core operation, packaged starter, or original recreation",
+  "inputs": {
+    "tools/render_java.py": "171ebec4c1aeb4eb26a5e82117d27f917f6b7d54e7ac6218e1b76cd5a809f195",
+    "tools/templates/LoopSweep/LoopSweep.pde": "ba856291b86d3b17d273fc7072136f3595cd263ee00aeb0557e574b03f0c9ab3",
+    "tests/test_render_java.py": "15e14401f50c03c7a58773cf55007e89b5821212fb9536afce3f83f1be08fbc5"
+  },
+  "evidence_sha256": {
+    "evidence/tooling/java-render/sweep.json": "2c434a9be0200bb29d87d40f2cdc68c4ff8ef932e64c4e14b75e2f3d1bef4496",
+    "evidence/tooling/java-render/repeat.json": "dd7a2b8d8783176cfd9debfbf9ceae8f668a0523419448ce3aaab776ddb220ef",
+    "evidence/tooling/java-render/changed-seed.json": "3dbebd0a4a4409e1eb02a3eb13895437028ea8e0b2290d7050ea0ad7e9208310"
+  },
+  "verified": [
+    "Three spacing variants10,18,30 rendered with radius110/seed42 through shared native lease; root inspected contact sheet: same closed outline, denser/sparser oriented marks.",
+    "Independent repeated seed42/radius110/spacing18 has exactly equal decoded RGBA pixels; seed43 changes decoded pixels.",
+    "Sources,JAR,runtime,generated class and image hashes verified unchanged/live; first-frame native record and PNG dimensions agree.",
+    "Seven focused CLI/input tests cover finite values, duplicate/colliding names, variant bounds, existingoutput preservation and invalid seeds.",
+    "A parallel repeat exhausted the30-second lease wait and remained explicitly failed; serial retry used a fresh output. No completed render was overwritten."
+  ],
+  "limits": [
+    "Only JAVA2D,density1,first draw,one PDE plusJava tabs,no data/assets/extraJAR dependencies.",
+    "Caller configureRender hook owns seed propagation and parameter semantics; no claim arbitrary sketches become deterministic.",
+    "No P2D/P3D or animation batch support; existing release starter files remain unchanged.",
+    "Timing/lease limits are tooling budgets, not artistic recommendations."
+  ]
+}

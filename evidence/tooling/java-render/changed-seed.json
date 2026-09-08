@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "seed": 43,
+  "variants": [
+    {
+      "parameters": {
+        "radius": 110.0,
+        "spacing": 18.0
+      },
+      "image": "/home/colin/dev/procedural/.work/java-render-seed43-root2/variant-00/render.png",
+      "image_sha256": "0f1f01115b5038096422863f9dab73463fd9bbb8fad5b6d3b7ff0a90073115f9",
+      "native": {
+        "hook": "configureRender-v1",
+        "frames": 1,
+        "width": 512,
+        "height": 512,
+        "seed": 43
+      }
+    }
+  ],
+  "inputs_before": {
+    "/home/colin/dev/procedural/tools/templates/LoopSweep/LoopSweep.pde": "ba856291b86d3b17d273fc7072136f3595cd263ee00aeb0557e574b03f0c9ab3",
+    "/home/colin/dev/procedural/.work/cp16-consumer-root2/extract/procedurals/library/procedurals.jar": "dc15279a09cf33a89fb495896c1ae1480b9ce255387e5d98ff1f87c861448196",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "/home/colin/dev/procedural/tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    "/home/colin/dev/procedural/tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d",
+    "/home/colin/dev/procedural/tools/render_java.py": "171ebec4c1aeb4eb26a5e82117d27f917f6b7d54e7ac6218e1b76cd5a809f195",
+    "/home/colin/dev/procedural/tools/contact_sheet.py": "33e2d6492491ef415cacb121c274f863aac40e92f00d92498ab5acb09fac1e42",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "scope": "Configured first-frame JAVA2D render; not conformance or recreation acceptance",
+  "inputs_after": {
+    "/home/colin/dev/procedural/tools/templates/LoopSweep/LoopSweep.pde": "ba856291b86d3b17d273fc7072136f3595cd263ee00aeb0557e574b03f0c9ab3",
+    "/home/colin/dev/procedural/.work/cp16-consumer-root2/extract/procedurals/library/procedurals.jar": "dc15279a09cf33a89fb495896c1ae1480b9ce255387e5d98ff1f87c861448196",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "/home/colin/dev/procedural/tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    "/home/colin/dev/procedural/tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d",
+    "/home/colin/dev/procedural/tools/render_java.py": "171ebec4c1aeb4eb26a5e82117d27f917f6b7d54e7ac6218e1b76cd5a809f195",
+    "/home/colin/dev/procedural/tools/contact_sheet.py": "33e2d6492491ef415cacb121c274f863aac40e92f00d92498ab5acb09fac1e42",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "contact_sheet": "/home/colin/dev/procedural/.work/java-render-seed43-root2/contact-sheet.png",
+  "contact_sheet_sha256": "7174129238ef34cd549d179e8987f0185d77835456777f9a92a57d089b1bd01e",
+  "generated_sha256": {
+    "/home/colin/dev/procedural/.work/java-render-seed43-root2/LoopSweep.java": "a7913d918ff2c9c250bf4cebe0e1e2dc34fc544486dd2999f7c240d5327e1b4f",
+    "/home/colin/dev/procedural/.work/java-render-seed43-root2/RenderSnapshot.java": "2a466b5186ab989ed656f4b201d1ee9c9dbcacd76b772069b1fcf031e877fa8d"
+  },
+  "class_sha256_before": {
+    "/home/colin/dev/procedural/.work/java-render-seed43-root2/classes/LoopSweep.class": "66e85625430c9f10515c63b6face663a64a37cbef79c4e901a92e972b4ea5935",
+    "/home/colin/dev/procedural/.work/java-render-seed43-root2/classes/RenderSnapshot.class": "b6c72ec44712a4549953acaea7be97d131be3a04078612c3b410ffc921ea82b3",
+    "/home/colin/dev/procedural/.work/java-render-seed43-root2/classes/PreprocessSketch.class": "2fc98864fe0e6ffe6e00204da0071fb0897d9799e8857c9b2f38887b444fa70d"
+  },
+  "class_sha256_after": {
+    "/home/colin/dev/procedural/.work/java-render-seed43-root2/classes/LoopSweep.class": "66e85625430c9f10515c63b6face663a64a37cbef79c4e901a92e972b4ea5935",
+    "/home/colin/dev/procedural/.work/java-render-seed43-root2/classes/RenderSnapshot.class": "b6c72ec44712a4549953acaea7be97d131be3a04078612c3b410ffc921ea82b3",
+    "/home/colin/dev/procedural/.work/java-render-seed43-root2/classes/PreprocessSketch.class": "2fc98864fe0e6ffe6e00204da0071fb0897d9799e8857c9b2f38887b444fa70d"
+  }
+}
