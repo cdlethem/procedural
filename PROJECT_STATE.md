@@ -1,5 +1,29 @@
 # Project state
 
+## Android quadrant dex prepared; actual ART run pending
+
+Root reused the frozen Java vector generator and extracted the unchanged ownership/access
+prefix before checksum/workload methods. No desktop-only imports exist in this probe.
+New tool: tools/prepare_quadrant_partition_android_core.py. Final preparation:
+.work/android-quadrant-core/prepared2/result.json;34 cases,11 successful selection traces,
+5 RNG vectors embedded in generated checks,27 ownership/access assertions; one API33 dex.
+Initial prepared1 stopped on an incorrect18-trace expectation from delegated investigation;
+root inspected generator/current output and derives the expected count from applicable
+fixture cases (11), preserving the failed directory. This is no ART execution or Android
+support claim. Next adapt the established verified-dex ART invocation and run under the
+shared emulator lease; then implement RegionMarks Android workflow.
+
+## Quadrant Python direct-module support accepted
+
+Root promoted the reviewed core/native evidence to scoped py5 target attestations.
+The public import is `from procedurals.quadrant_partition import seeded_quadrant_partition_2d`.
+Package-root convenience imports will be batched with packaging, avoiding a separate
+historical-export compatibility change for each Python operation. This does not change
+contract semantics or relax source binding. Java remains15 operations, p5.js/py5 now7,
+Android6. Quadrant technique/recreation and distribution remain pending. Next run the
+unchanged accepted Java quadrant implementation and access fixtures on Android ART, then
+port the existing RegionMarks native workflow through established host infrastructure.
+
 ## Python quadrant and py5 RegionMarks native checkpoint reviewed
 
 Root implemented the editable starter and a preregistered native callback probe using

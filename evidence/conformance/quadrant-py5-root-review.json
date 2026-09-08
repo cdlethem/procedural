@@ -1,0 +1,34 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Python direct-module quadrant core conformance and scoped py5 RegionMarks native callback workflow. Convenience exports and distribution remain pending.",
+  "implementation_sha256": {
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/examples/region_marks/region_marks.py": "8b262cd56e4809caf5826a1880f887d092ee151a17f5d67adc58ca65352f5837",
+    "packages/python/examples/region_marks/sketch.py": "3c77776d352d8624576cd0bf10edefa1b5710eaaaaf8a8204e730208d66a7ebf",
+    "tests/native/quadrant-partition-python.py": "5883674e3eba35f2df97301ca3aeea2f52804aaf41bf3a306f2ec370d70f3232",
+    "tests/native/py5_region_marks.py": "99d44f52a8c4233d4ce26377e4f847b07798242f84046d278cf436c970281e21"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/quadrant-partition-python.json": "4114102bb90afb66a7143b8e89fd41bb0f7e9a7ebc4ce5616533f513f96a0233",
+    "evidence/conformance/py5-region-marks.json": "cecab589f3486969968165c72aa8fd3173605ffadd0dfaa8b3c66520349469e1",
+    "evidence/conformance/quadrant-py5-implementation-review.json": "463ed84a469b2bbe682b787d4293a1511bd47024bab20308d5868896f14e4edf"
+  },
+  "core_review": [
+    "Root implemented exact validation/RNG/midpoint/mutation semantics;34 fixtures,5 RNG vectors,4 crosschecks and11 native/ownership groups pass.",
+    "Root expanded delegated runner with omitted nonfinite/bool/huge integers, index/range/offset precedence and valid array(d) checks.",
+    "No controlled allocation failure injected; failed exports allocate detached containers without changing retained arrays. Private attributes are implementation internals, as in the existing Python package."
+  ],
+  "native_review": [
+    "Seven actual setup/key_pressed callback compositions; ellipse calls instrumented without argument changes;3 ignored controls; save reuses existing canvas.",
+    "Root verified before/after source/runtime hashes and all saved PNG hashes; py50.10.11a0 and Java17 under shared180-second lock wrapper; process exited0.",
+    "Root inspected baseline/grid/layout/authored: nested square cells, retained3x3 marks, changed full-list layout and eleven authored rectangular cells remain legible."
+  ],
+  "limits": [
+    "Callback execution is not physical-keyboard usability.",
+    "No original-sketch recreation, cross-host pixel identity or local distribution acceptance."
+  ],
+  "public_import": "from procedurals.quadrant_partition import seeded_quadrant_partition_2d, PartitionError"
+}

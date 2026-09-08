@@ -196,10 +196,62 @@
     },
     "py5": {
       "core": {
-        "status": "unvalidated"
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+          "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+          "packages/python/examples/region_marks/region_marks.py": "8b262cd56e4809caf5826a1880f887d092ee151a17f5d67adc58ca65352f5837",
+          "packages/python/examples/region_marks/sketch.py": "3c77776d352d8624576cd0bf10edefa1b5710eaaaaf8a8204e730208d66a7ebf",
+          "tests/native/quadrant-partition-python.py": "5883674e3eba35f2df97301ca3aeea2f52804aaf41bf3a306f2ec370d70f3232",
+          "tests/native/py5_region_marks.py": "99d44f52a8c4233d4ce26377e4f847b07798242f84046d278cf436c970281e21"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/quadrant-partition-python.json": "4114102bb90afb66a7143b8e89fd41bb0f7e9a7ebc4ce5616533f513f96a0233"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/quadrant-partition-python.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/quadrant-py5-root-review.json",
+          "sha256": "0fbdeebc92cded8f926e5692b377056b8875393d4041529cc93a035c6b9b757f"
+        },
+        "runtime_profile": {
+          "name": "Python3.13; py50.10.11a0; OpenJDK17.0.20.1; JAVA2D",
+          "scope": "Python direct-module34 fixtures,5 RNG vectors,4 crosschecks,11 native/ownership groups."
+        }
       },
       "native": {
-        "status": "unvalidated"
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+          "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+          "packages/python/examples/region_marks/region_marks.py": "8b262cd56e4809caf5826a1880f887d092ee151a17f5d67adc58ca65352f5837",
+          "packages/python/examples/region_marks/sketch.py": "3c77776d352d8624576cd0bf10edefa1b5710eaaaaf8a8204e730208d66a7ebf",
+          "tests/native/quadrant-partition-python.py": "5883674e3eba35f2df97301ca3aeea2f52804aaf41bf3a306f2ec370d70f3232",
+          "tests/native/py5_region_marks.py": "99d44f52a8c4233d4ce26377e4f847b07798242f84046d278cf436c970281e21"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/py5-region-marks.json": "cecab589f3486969968165c72aa8fd3173605ffadd0dfaa8b3c66520349469e1"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/py5-region-marks.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/quadrant-py5-root-review.json",
+          "sha256": "0fbdeebc92cded8f926e5692b377056b8875393d4041529cc93a035c6b9b757f"
+        },
+        "runtime_profile": {
+          "name": "Python3.13; py50.10.11a0; OpenJDK17.0.20.1; JAVA2D",
+          "scope": "py5 JAVA2D640x640 density1;7 paints, instrumented mark counts, retained edits, ignored controls and cached save; callback evidence only."
+        }
       },
       "technique": {
         "status": "unvalidated"
