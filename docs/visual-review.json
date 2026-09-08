@@ -2,10 +2,44 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "polygon-marks",
+      "title": "PolygonMarks \u2014 noncircular placement",
+      "category": "Accepted workflow",
+      "description": "Reviewed native Java workflow: thickness, recolor, diamond transfer and regeneration. Source-bundle packaging pending.",
+      "evidence": "evidence/workflows/polygon-marks/root-review.json",
+      "images": [
+        {
+          "label": "Broad outlines",
+          "path": ".work/cp20-polygon-native2/native/baseline.png",
+          "sha256": "ffdb5fab45634b7c64a7ec37d17cde86bb005add81c198d70876ba41bac6a136"
+        },
+        {
+          "label": "Thin outlines",
+          "path": ".work/cp20-polygon-native2/native/thin.png",
+          "sha256": "498039904f31c04e8fd714f57609b30b138ff6f063b6d3e92097f806f1532b66"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/cp20-polygon-native2/native/recolored.png",
+          "sha256": "09d2c1357d7e2d8a413842ace697685acd8b7f3e1281d5a121f2691b861c22c3"
+        },
+        {
+          "label": "Diamonds",
+          "path": ".work/cp20-polygon-native2/native/diamonds.png",
+          "sha256": "cd203f69de747e104d0619e56c55345e29202b18971e955edc22f7e0cc8097ec"
+        },
+        {
+          "label": "Regenerated",
+          "path": ".work/cp20-polygon-native2/native/regenerated.png",
+          "sha256": "09a61946a7aa4d88e1751a0d3b7350bb029bd2500bd3ae656c0117248c9aaab2"
+        }
+      ]
+    },
+    {
       "id": "cp20",
       "title": "Outline packing \u2014 private study",
       "category": "Private study",
-      "description": "Broad rounded outlines, thin dashes and angular tiles. This is the private design study; the new public core has passed checks but its artist workflow is still pending.",
+      "description": "Private design study of broad rounded outlines, thin dashes and angular tiles. The public PolygonMarks workflow is shown separately.",
       "evidence": "evidence/parameter-experiments/cp20-convex-placement/review.json",
       "images": [
         {

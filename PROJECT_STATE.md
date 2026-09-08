@@ -1,5 +1,17 @@
 # Project state
 
+## CP20 public native workflow accepted; packaging next
+
+PolygonMarks passed native2 after root fixed Processing float-literal rewriting and probe
+state comparisons/error exit. Six native states verify edits, retained recolor, regeneration,
+reset and cached save. Root inspected all five distinct images. Evidence:
+evidence/workflows/polygon-marks/root-review.json and native.json. Gallery now118 images
+across25 groups. Native1 failed and is preserved locally. No render process remains active.
+Next integrate CP20 into source-bundle/catalog workflow delivery and validate extracted use;
+Java0.22 remains22 packaged operations/workflows. Core28532369 accepted. Ports/Sol paused;
+unrelated Android draft preserved. No whole recreation or distribution acceptance added.
+
+
 ## Central visual-review gallery delivered
 
 User requested one place to inspect actual artwork. Local gallery:
