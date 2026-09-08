@@ -1,0 +1,27 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "scope": "Java CutMarks native repository workflow; distribution reviewed separately",
+  "native_evidence": {
+    "path": "evidence/workflows/cut-marks/native.json",
+    "sha256": "9223d15df3c0fe66325a4c42dd556000472c0e3273b7d113aab154aed919ee04"
+  },
+  "verified": [
+    "Actual Processing JAVA2D 512x512 density1; retained rectangle core loaded from supplied candidate JAR.",
+    "Five posted key events X/D/Delete/0/S; mouse selection simulated through actual callback inside X event.",
+    "Leaf counts37/38/38/37/37; selected low child exact midpoint bounds; stale parent/deleted IDs rejected.",
+    "Unrelated leaf identity survives edit, decoration and deletion; decoration retains selected leaf and model.",
+    "Reset snapshot and pixels exactly match baseline; cached save equals completed framebuffer without extra draw.",
+    "Root inspected baseline, selected-x, decorated and deleted PNGs."
+  ],
+  "visual_observations": [
+    "Large upper-left rectangle splits into two differently colored children with selected low child outlined.",
+    "Decoration transfers the same edited partition into outlines and crossing centerlines.",
+    "Deletion leaves blank space in the selected upper-left child while other regions remain."
+  ],
+  "limitations": [
+    "No source-sketch reproduction, OS mouse injection, other-target support or general performance claim.",
+    "A/H/Y controls inspected in code; this bounded native event sequence exercises X/D/Delete/reset/save."
+  ],
+  "resolved_failure": "First attempt safely rejected occupied machine lease; second attempt passed after the other session ended."
+}

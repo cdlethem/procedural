@@ -1,22 +1,40 @@
 # Project state
 
-## Batch execution active — user-directed scheduling revision
+## Java0.24 accepted — parallel batch checkpoint
 
-B1 explicit P2D/P3D render helper accepted in evidence/tooling/java-opengl-render-review.json.
-Actual layering/depth, two-frame sequences, selected single P3D and mismatch rejection pass.
-JAVA2D regression native tests and16 focused Python checks pass. Root fixed worker renderer
-constant comparisons/JSON closing and fixture color-stop domain. No native process live.
+24 operations and24 packaged workflows. New RetainedRectangles2D core and CutMarks selected
+cut/retained decoration/deletion/reset/save workflow accepted. Distribution review:
+evidence/distribution/cp21-java-review.json. Archive .work/dist/cp21-java-source-root1/
+procedurals-java-source-dev.zip (226members); extracted consumer .work/cp21-source-consumer-root2.
+All24 PDE examples compile; six native PNGs equal root-inspected candidate. Prior103 core
+classes, adapter class and43 example/font members preserved byte-for-byte. Seven focused
+packaging tests and catalog/reference check pass. Gallery127 images/27groups.
 
-CP21 Java core reviewed and accepted in evidence/conformance/retained-rectangles-java-root-review.json.
-Actual5 creation and9 command fixtures execute, including after-error/recovery checks.
-Native ownership/carriers/IDs/precedence/exhaustion and retained-growth workloads pass.
-Root owns accepted core; Terra retained_rect_core adapts public CutMarks PDE/docs and
-bounded native probe/profile preparation. No public workflow or catalog support accepted yet.
-Next inspect CutMarks/probe, execute real native edit/decoration/removal/reset/save and
-batch packaging with tooling. Generic catalog creation checks do not replace command runner.
-Public workflow worker active; no native render live. Do not confuse count24 catalog entries with23 accepted operations.
-Java0.23 remains23/23. Ports/Sol paused, Android draft preserved. Next batch queue in
- docs/java-buildout-batches.md; gallery123 images/26 groups.
+Shared native access caused two safe rejected attempts while separate porting Android
+sessions held the machine lease. Both were preserved; root waited for live processes to end,
+then validated under the same lease. No root native process remains live at this checkpoint.
+
+Root reviewed and accepted existing palette helper hardening (9 focused tests): captured
+image bytes revalidated against shared format/size limits before decoding; source-hash and
+nonoverwrite publication preserved. Existing docs already explain extraction/application;
+C2 native application demonstration still pending. evidence/tooling/palette-extraction-review.json.
+
+Next bounded batch (docs/java-buildout-batches.md):
+- B3 PointerMarks draft PDE/guide compiled; root fixed lifecycle via Terra. New probe and
+  plan prepared; root found async redraw/first-M transition/core-origin report issues and
+  assigned fixes; final corrected probe compiles and root checked the affected transitions.
+  Add existing runner profile, then native/replay
+  review. No operation/catalog/distribution acceptance; existing SpringMarks unchanged.
+- C1 root reread peces and GradientPath2D: backward positions/headings already support a
+  tapered-body composition. design/capabilities/tapered-field-body-direction.md records
+  exact reuse and terminal-heading boundary. Demonstrate body/centerline transfer and
+  explicit head ticks; no history-buffer or arbitrary-field API admitted.
+- C2 actual palette application; C3 remaining family dispositions/install-to-edit review.
+
+Root owns final architecture/integration; Terra handles frozen implementation/probe slices.
+Ports integration and Sol review remain paused. Preserve unrelated Android ProfileMarks
+working edit. New native runs always use the common machine lease, never a checkout-local
+replacement. Current24-count is accepted scope, not feature-completeness or corpus coverage.
 
 ## CP21 source review: editable unequal subdivision selected for investigation
 

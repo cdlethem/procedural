@@ -2,10 +2,39 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "cut-marks",
+      "title": "CutMarks \u2014 edit retained regions",
+      "category": "Accepted workflow",
+      "description": "Native Java selected cut, retained decoration and explicit deletion; exact reset and cached save verified.",
+      "evidence": "evidence/workflows/cut-marks/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/cp21-cut-native2/native/baseline.png",
+          "sha256": "b8aa917c34e09dd63b4f5a65e010c522dd3927d4892016926cf3ad83188148de"
+        },
+        {
+          "label": "Selected local cut",
+          "path": ".work/cp21-cut-native2/native/selected-x.png",
+          "sha256": "90b3c1b00d2f5c71135c45f4eb0349ff56b7109fd6ded82ef7c3390ce87e4684"
+        },
+        {
+          "label": "Same regions, line decoration",
+          "path": ".work/cp21-cut-native2/native/decorated.png",
+          "sha256": "dcb1fff9ec51ed4d9ccdb2f0ae23eab796f6303cbed445c85b88899b635abae7"
+        },
+        {
+          "label": "Selected child removed",
+          "path": ".work/cp21-cut-native2/native/deleted.png",
+          "sha256": "c8f0da53648ea048aa7c203ad2e6e92ac0e30e0023c1458c5a1e7a578e023010"
+        }
+      ]
+    },
+    {
       "id": "cp21-private",
       "title": "Retained rectangle cuts \u2014 private study",
       "category": "Private study",
-      "description": "Private retained rectangles: aligned/staggered cuts, decoration, holes and a selected-cell split. Public contract/admission pending.",
+      "description": "Private retained rectangles: aligned/staggered cuts, decoration, holes and a selected-cell split. Historical study preceding the accepted public core.",
       "evidence": "evidence/parameter-experiments/cp21-retained-cuts/decision.md",
       "images": [
         {

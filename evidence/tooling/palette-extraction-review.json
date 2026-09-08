@@ -1,0 +1,31 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "scope": "Existing Pillow palette extraction helper and captured-byte validation hardening; no new Java core or source recreation",
+  "input_sha256": {
+    "tools/extract_palette.py": "ed53e06bcb3cfe776f0ebfe1abfde29b0e708616a78b441843fce5240c31ad69",
+    "tools/contact_sheet.py": "33e2d6492491ef415cacb121c274f863aac40e92f00d92498ab5acb09fac1e42",
+    "tests/test_extract_palette.py": "a69211c24a91551e8a9bcd390467f903540068ff26ddf88491689a045d2fb541",
+    "docs/extracting-palettes.md": "1cd7f20a5cafde3eabe07f6a693ed41468b3012a7e7f790b56f2dca2388a1ad8"
+  },
+  "validation": {
+    "command": "python3 -m unittest tests.test_extract_palette",
+    "result": "9 tests passed",
+    "coverage": [
+      "known colors and deterministic count/RGB order",
+      "uniform color and reduced sample counts",
+      "explicit alpha matte",
+      "CLI output and preserved existing output",
+      "unsupported format and replacement between preflight and byte capture rejected before publication"
+    ]
+  },
+  "review": [
+    "Captured immutable bytes are checked against shared PNG/JPEG, pixel and byte limits before pixel decoding.",
+    "Decompression warning/error becomes controlled ValueError; source hash is checked again before publishing.",
+    "Existing documented application is a manual array replacement in FieldMarks; JSON is evidence, not a Java runtime schema."
+  ],
+  "limitations": [
+    "Pillow-version-dependent quantization, no ICC/EXIF processing or optimal cyclic order.",
+    "This review does not establish new native palette-application evidence; C2 application demonstration remains pending."
+  ]
+}

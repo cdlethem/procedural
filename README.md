@@ -24,13 +24,14 @@ CutBranchMarks adds mutable interior-cut branching with retained geometry and sc
 WarpMarks adds reusable raster remapping with retained sources and scoped JAVA2D edit/save validation.
 RampMarks adds unequal noncyclic color stops with geometry-preserving edits and radial transfer.
 BandMarks adds retained noise-band paths with tolerance edits and independent perpendicular marks.
+CutMarks adds selected-region subdivision and deletion with retained decoration.
 PolygonMarks adds noncircular outline placement with thickness and shape edits.
 PullMarks adds localized radial folds with retained grid and contour drawing.
 DepthMarks adds explicit field-depth edits and volumetric coloring on retained meshes.
 PanelMarks adds irregular integer-cell panels with reusable decoration.
 LoopMarks adds smooth closed curves with distance-based tiles and retained fan drawing.
-Ports of these newer workflows to JavaScript, py5 and Android are deferred. The local Java 0.23.0 source bundle
-contains 23 starters and 23 reusable operations. It is not a published registry
+Ports of these newer workflows to JavaScript, py5 and Android are deferred. The local Java 0.24.0 source bundle
+contains 24 starters and 24 reusable operations. It is not a published registry
 release. An experimental [Java recipe preview](docs/java-recipe-preview.md) exports FieldMarks,
 PathMarks, placement-bars and region-panels as editable standalone projects. General portable recipes, MCP and web tools
 remain in the roadmap.
@@ -38,15 +39,16 @@ remain in the roadmap.
 [Browse the local visual-review gallery](docs/visual-review.md) for actual workflow images,
 structural edits and private studies collected in one place.
 
-[Render a seeded sketch or parameter sweep](docs/rendering-java.md) with the opt-in JAVA2D helper.
+[Render a seeded sketch or parameter sweep](docs/rendering-java.md) with explicit JAVA2D, P2D or P3D rendering, assets and selected frame sequences.
 
 The separate [Curvespace recreation](docs/curvespace-recreation.md) demonstrates a complete
 additive P2D grid composition using existing operations. Four original structural recreations
-are now demonstrated; Curvespace is not an extra starter in the Java0.23 archive.
+are now demonstrated; Curvespace is not an extra starter in the Java0.24 archive.
 
 Choose an example by what you want to make in [the Java starting-point guide](docs/choosing-java-workflow.md).
 Build from a fresh checkout with [the Java source-bundle instructions](docs/building-java-from-source.md).
 
+Open [CutMarks](docs/cut-marks.md) to select, subdivide and remove regions.
 Open [PolygonMarks](docs/polygon-marks.md) to pack supplied convex outlines.
 Open [PullMarks](docs/pull-marks.md) to bend grids and closed contours.
 Open [DepthMarks](docs/depth-marks.md) to change a field slice or color a 3D form.
@@ -55,7 +57,7 @@ Open [LoopMarks](docs/loop-marks.md) to shape smooth loops and place marks along
 Open [BandMarks](docs/band-marks.md) to keep winding lines near a noise level.
 Open [RampMarks](docs/ramp-marks.md) to control where colors transition.
 Open [WarpMarks](docs/warp-marks.md) to bend a captured pattern through noise or an analytic field.
-The accepted local archive is identified in [the Java0.23 review](evidence/distribution/cp20-java-review.json).
+The accepted local archive is identified in [the Java0.24 review](evidence/distribution/cp21-java-review.json).
 
 Start with [a field of independent marks](docs/getting-started.md),
 [paths and their marks](docs/path-marks.md),
@@ -71,7 +73,7 @@ Start with [a field of independent marks](docs/getting-started.md),
 [clustered 3D relief](docs/relief-marks.md), or
 [faceted cities](docs/city-marks.md), or
 [banded landscapes](docs/landscape-marks.md).
-[Build and install Java 0.23.0](docs/building-java-from-source.md) for all 23 starters.
+[Build and install Java 0.24.0](docs/building-java-from-source.md) for all 24 starters.
 [Build the Android restoration patches](docs/installing-android-restoration.md) for the six
 ported starters, preserving their existing core versions.
 

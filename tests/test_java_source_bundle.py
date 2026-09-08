@@ -99,11 +99,11 @@ class SourceBundleTests(unittest.TestCase):
 
     def test_current_release_admission_and_exact_tabs(self):
         manifest, inputs = source_inputs(ROOT)
-        self.assertEqual(len(manifest['operation_files']), 23)
-        self.assertEqual(len(manifest['core_sources']), 23)
+        self.assertEqual(len(manifest['operation_files']), 24)
+        self.assertEqual(len(manifest['core_sources']), 24)
         self.assertEqual(len(manifest['adapter_sources']), 1)
         self.assertIn('processing_core_sha256', manifest)
-        self.assertEqual(len(manifest['examples']), 41)
+        self.assertEqual(len(manifest['examples']), 42)
         self.assertIn('procedurals/examples/FieldMarks/MarkCommands.java', manifest['examples'])
         self.assertIn('procedurals/examples/PathMarks/PathMarksCanvas.java', manifest['examples'])
         self.assertIn('procedurals/examples/WarpMarks/WarpMarks.pde', manifest['examples'])
@@ -113,9 +113,15 @@ class SourceBundleTests(unittest.TestCase):
         self.assertIn('procedurals/examples/PullMarks/PullMarks.pde', manifest['examples'])
         self.assertIn('procedurals/examples/PolygonMarks/PolygonMarks.pde', manifest['examples'])
         self.assertIn('packages/java/src/main/java/org/procedurals/sampling/ConvexPolygonPlacements2D.java', manifest['core_sources'])
+        self.assertIn('packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java', manifest['core_sources'])
+        self.assertIn('procedurals/examples/CutMarks/CutMarks.pde', manifest['examples'])
+        self.assertIn('retained-rectangle-cuts-2d.json', manifest['operation_files'])
         self.assertIn('closed-spline-2d.json', manifest['operation_files'])
         self.assertIn('ordered-convex-polygon-filter-2d.json', manifest['operation_files'])
         polygon_contract = json.loads((ROOT / 'catalog/operations/ordered-convex-polygon-filter-2d.json').read_text())['design_review']
         self.assertEqual(polygon_contract, 'design/operations/convex-polygon-placement-contract.md')
         self.assertTrue((ROOT / polygon_contract).is_file())
+        retained_contract = json.loads((ROOT / 'catalog/operations/retained-rectangle-cuts-2d.json').read_text())['design_review']
+        self.assertEqual(retained_contract, 'design/operations/retained-rectangle-cuts-contract.md')
+        self.assertTrue((ROOT / retained_contract).is_file())
         self.assertTrue(inputs)
