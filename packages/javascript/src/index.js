@@ -10,3 +10,4 @@ export { delaunay2D, DelaunayError } from "./delaunay.js";
 export { RadialProfile3D, RadialProfileError } from "./radial-profile.js";
 export { closedSpline2D, SplineError } from "./closed-spline.js";
 export { stopRamp, StopRampError } from "./stop-ramp.js";
+export { bilinearRasterRemap2D, RasterRemapError } from "./raster-remap.js";

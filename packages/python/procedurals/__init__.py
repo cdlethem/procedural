@@ -48,3 +48,5 @@ from .closed_spline import SplineError, closed_spline_2d
 __all__ += ["SplineError", "closed_spline_2d"]
 from .stop_ramp import StopRampError, stop_ramp
 __all__ += ["StopRampError", "stop_ramp"]
+from .raster_remap import RasterRemapError, bilinear_raster_remap_2d
+__all__ += ["RasterRemapError", "bilinear_raster_remap_2d"]
