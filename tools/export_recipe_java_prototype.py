@@ -127,7 +127,8 @@ def copy_file(source,destination,hashes,output):
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--recipe',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--target',default='processing-java');args=p.parse_args()
  output=fresh_output(ROOT,args.output); recipe=load_json(args.recipe);admission=admit_target(recipe,args.target)
- subprocess.run([sys.executable,str(ROOT/'tools/generate_recipe_java_schemas.py'),'--check'],check=True); source_manifest=accepted_java_manifest()
+ subprocess.run([sys.executable,str(ROOT/'tools/generate_recipe_java_schemas.py'),'--check'],check=True)
+ subprocess.run([sys.executable,str(ROOT/'tools/generate_recipe_java_grammar.py'),'--check'],check=True); source_manifest=accepted_java_manifest()
  base=dict(recipe); parameters=base.pop('parameters');base['parameters']={}; output.mkdir(parents=True); hashes={}
  for source_root,prefix in ((ROOT/'packages/java/src/main/java','src/core'),(ROOT/'packages/java-processing/src/main/java','src/adapter'),(ROOT/'packages/java-recipe-prototype/src/main/java','src/prototype')):
   for source in sorted(source_root.rglob('*.java')): copy_file(source,output/prefix/source.relative_to(source_root),hashes,output)

@@ -12,7 +12,9 @@ public final class RecipePrototypeFailures {
     static Map<String,Object> literal(Object value) { return map("kind","literal","value",value); }
     static Map<String,Object> arithmetic(String op,Object... args) { return map("kind","math","op",op,"args",list(args)); }
     static Map<String,Object> recipe(Object retain,Object frame) {
-        return map("parameters",map(),"operations",list(),"retain",retain,"frame",frame,
+        return map("format","procedurals.recipe","version","0.1.0","status","draft",
+                "drawing",map("id","drawing.fresh-raster-2d","version","0.1.0"),
+                "parameters",map(),"operations",list(),"retain",retain,"frame",frame,
                 "environment",literal(map("width",64,"height",64,"density",1,"background",0)));
     }
     static Object binding(Object value) { return list(map("name","value","value",value)); }
@@ -33,6 +35,38 @@ public final class RecipePrototypeFailures {
     static RecipeEvaluator.RecipeFailure failure(Map<String,Object> recipe, RecipeEvaluator.Limits limits,String code) {
         try { RecipeEvaluator.evaluate(recipe,limits); throw new AssertionError("expected "+code); }
         catch(RecipeEvaluator.RecipeFailure error) { check(code.equals(error.code),"expected "+code+", got "+error.code); return error; }
+    }
+    static void structuralAdmission() {
+        Map<String,Object> bad=recipe(list(),list());bad.put("format","other");
+        failure(bad,new RecipeEvaluator.Limits(),"SCHEMA_INVALID");
+        bad=recipe(list(),list());bad.put("drawing",map("id","other","version","0.1.0"));
+        failure(bad,new RecipeEvaluator.Limits(),"UNKNOWN_DRAWING");
+        Object unbound=map("kind","ref","name","missing");
+        Object branch=map("kind","if","condition",literal(true),"then",literal(1),"else",unbound);
+        RecipeEvaluator.RecipeFailure e=failure(recipe(binding(branch),list()),new RecipeEvaluator.Limits(),"UNBOUND_NAME");
+        check(e.path.equals("/retain/0/value/else/name"),"unselected lexical path");
+        Map<String,Object> extra=literal(1);extra.put("unexpected",0);
+        branch=map("kind","if","condition",literal(true),"then",literal(1),"else",extra);
+        failure(recipe(binding(branch),list()),new RecipeEvaluator.Limits(),"SCHEMA_INVALID");
+        failure(recipe(binding(arithmetic("add",literal(1))),list()),new RecipeEvaluator.Limits(),"SCHEMA_INVALID");
+        Object duplicate=map("kind","record","fields",list(map("name","x","value",literal(1)),map("name","x","value",literal(2))));
+        failure(recipe(binding(duplicate),list()),new RecipeEvaluator.Limits(),"DUPLICATE_FIELD");
+        failure(recipe(list(),list(map("kind","when","condition",literal(false),"body",list(map("kind","emit","value",unbound))))),new RecipeEvaluator.Limits(),"UNBOUND_NAME");
+        // Literal records resembling syntax remain data.
+        RecipeEvaluator.evaluate(recipe(binding(literal(unbound)),list()),new RecipeEvaluator.Limits());
+        failure(recipe(binding(literal(new Object())),list()),new RecipeEvaluator.Limits(),"SCHEMA_INVALID");
+        failure(recipe(binding(literal(new java.math.BigDecimal("1"))),list()),new RecipeEvaluator.Limits(),"SCHEMA_INVALID");
+        List<Object> cycle=new ArrayList<>();cycle.add(cycle);
+        failure(recipe(binding(literal(cycle)),list()),new RecipeEvaluator.Limits(),"AST_DEPTH_LIMIT");
+        failure(recipe(binding(literal(Collections.nCopies(20001,0))),list()),new RecipeEvaluator.Limits(),"AST_SIZE_LIMIT");
+        Object nested=0;for(int i=0;i<60;i++)nested=list(nested);
+        RecipeEvaluator.evaluate(recipe(binding(literal(nested)),list()),new RecipeEvaluator.Limits());
+        Map<String,Object> valid=recipe(binding(literal(1)),list());
+        RecipeEvaluator.Session session=new RecipeEvaluator.Session();session.evaluate(valid,new RecipeEvaluator.Limits());
+        try {session.evaluate(bad,new RecipeEvaluator.Limits());throw new AssertionError("session admitted wrong drawing");}
+        catch(RecipeEvaluator.RecipeFailure error){check("UNKNOWN_DRAWING".equals(error.code),"session admission error");}
+        check(session.evaluate(valid,new RecipeEvaluator.Limits()).retainedReused,"admission failure evicted retained cache");
+        System.out.println("structural-admission-and-session-recovery passed");
     }
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
@@ -126,6 +160,7 @@ public final class RecipePrototypeFailures {
                 "origin",list(0,0),"spacing",list(1,1),"columns",1,"rows",1)));
         Object badPort=map("kind","query","instance",grid,"port","sample","input",division);
         Map<String,Object> portRecipe=operationRecipe("layout.regular-grid",badPort);
+        ((List<Object>)portRecipe.get("operations")).add(map("id","field.gradient-noise-2d-01","version","0.1.0"));
         failure(portRecipe,new RecipeEvaluator.Limits(),"PORT");
         Object undeclared=map("kind","construct","operation","path.gradient-trace-2d","input",division);
         failure(recipe(binding(undeclared),list()),new RecipeEvaluator.Limits(),"UNDECLARED_CONSTRUCT");
@@ -135,7 +170,7 @@ public final class RecipePrototypeFailures {
         RecipeEvaluator.RecipeFailure reordered=failure(operationRecipe("layout.regular-grid",map("kind","construct","operation","layout.regular-grid","input",literal(badTwo))),new RecipeEvaluator.Limits(),"INPUT_SCHEMA");
         check(error.path.equals(reordered.path) && error.getMessage().equals(reordered.getMessage()),"input order changed schema diagnostic");
         Object nonfinite=map("kind","construct","operation","color.cyclic-palette","input",literal(map("colors",list(Double.NaN))));
-        failure(operationRecipe("color.cyclic-palette",nonfinite),new RecipeEvaluator.Limits(),"INPUT_SCHEMA");
+        failure(operationRecipe("color.cyclic-palette",nonfinite),new RecipeEvaluator.Limits(),"NONFINITE_NUMBER");
         Object nestedSchema=map("kind","map","items",literal(list(0)),"as","item","indexAs","index",
                 "value",map("kind","construct","operation","color.cyclic-palette","input",literal(map("colors",list(true)))));
         error=failure(operationRecipe("color.cyclic-palette",nestedSchema),new RecipeEvaluator.Limits(),"INPUT_SCHEMA");
@@ -230,6 +265,7 @@ public final class RecipePrototypeFailures {
         failedCold.put("frame",list());
         check(!recovery.evaluate(failedCold,new RecipeEvaluator.Limits()).retainedReused,"failed frame published new cache");
         System.out.println("retained-session-cache-and-reservations passed");
+        structuralAdmission();
         System.out.println("PROTOTYPE_FAILURE_CASES_PASSED");
     }
 }

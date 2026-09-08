@@ -19,6 +19,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     run([sys.executable, ROOT / 'tools/generate_recipe_java_schemas.py', '--check'], timeout=30)
+    run([sys.executable, ROOT / 'tools/generate_recipe_java_grammar.py', '--check'], timeout=30)
     output = args.output.resolve()
     if (ROOT / '.work').resolve() not in output.parents or output.exists():
         parser.error('output must be a fresh directory below repository .work')
@@ -99,7 +100,7 @@ public class RecipePrototypeComparison {
         'design/recipes/expression-model.md', 'design/recipes/runtime-accounting.md',
         'design/recipes/retained-session.md',
         'tools/validate_recipe_draft.py', 'tools/run_grid_conformance.py',
-        'tools/generate_recipe_java_schemas.py')]
+        'tools/generate_recipe_java_schemas.py', 'tools/generate_recipe_java_grammar.py')]
     binding_data = json.loads((ROOT / 'catalog/recipes/execution-bindings.json').read_text())
     metadata += [ROOT / row['contract'] for row in binding_data['operations']]
     metadata += list((ROOT / 'catalog/drawing').glob('*.json'))

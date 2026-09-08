@@ -1,0 +1,50 @@
+package org.procedurals.recipe;
+
+import java.util.*;
+
+/** Generated from catalog/recipes/recipe.schema.json and execution-bindings.json. */
+final class RecipeGrammar {
+    static final String SCHEMA_SHA256 = "935c9f28c832da5931d3ed74d3707f0d1a69b5878ed9d98725d151d656a1529f";
+    static final String BINDINGS_SHA256 = "486b37e51cb209c726d13bce3becf9e0b09def3d7a1442961947efdeee6d0b27";
+    private static final Object SCHEMA = freeze(map("$schema","https://json-schema.org/draft/2020-12/schema","$id","urn:procedurals:recipe:draft:0.1.0","title","Procedurals recipe draft 0.1.0","type","object","additionalProperties",Boolean.FALSE,"required",list("format","version","status","parameters","operations","drawing","environment","retain","frame"),"properties",map("format",map("const","procedurals.recipe"),"version",map("const","0.1.0"),"status",map("const","draft"),"parameters",map("type","object"),"operations",map("type","array","items",map("$ref","#/$defs/declaration")),"drawing",map("$ref","#/$defs/declaration"),"environment",map("$ref","#/$defs/expression"),"retain",map("type","array","items",map("$ref","#/$defs/binding")),"frame",map("type","array","items",map("$ref","#/$defs/statement"))),"$defs",map("name",map("type","string","pattern","^[A-Za-z][A-Za-z0-9_]*$"),"declaration",map("type","object","additionalProperties",Boolean.FALSE,"required",list("id","version"),"properties",map("id",map("type","string","minLength",Double.valueOf("1")),"version",map("type","string","minLength",Double.valueOf("1")))),"binding",map("type","object","additionalProperties",Boolean.FALSE,"required",list("name","value"),"properties",map("name",map("$ref","#/$defs/name"),"value",map("$ref","#/$defs/expression"))),"json",map("oneOf",list(map("type","null"),map("type","boolean"),map("type","number"),map("type","string"),map("type","array","items",map("$ref","#/$defs/json")),map("type","object","additionalProperties",map("$ref","#/$defs/json")))),"expression",map("oneOf",list(map("$ref","#/$defs/literal"),map("$ref","#/$defs/ref"),map("$ref","#/$defs/array"),map("$ref","#/$defs/record"),map("$ref","#/$defs/get"),map("$ref","#/$defs/index"),map("$ref","#/$defs/math"),map("$ref","#/$defs/if"),map("$ref","#/$defs/range"),map("$ref","#/$defs/map"),map("$ref","#/$defs/construct"),map("$ref","#/$defs/query"),map("$ref","#/$defs/values"))),"literal",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","value"),"properties",map("kind",map("const","literal"),"value",map("$ref","#/$defs/json"))),"ref",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","name"),"properties",map("kind",map("const","ref"),"name",map("$ref","#/$defs/name"))),"array",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","items"),"properties",map("kind",map("const","array"),"items",map("type","array","items",map("$ref","#/$defs/expression")))),"recordField",map("type","object","additionalProperties",Boolean.FALSE,"required",list("name","value"),"properties",map("name",map("type","string"),"value",map("$ref","#/$defs/expression"))),"record",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","fields"),"properties",map("kind",map("const","record"),"fields",map("type","array","items",map("$ref","#/$defs/recordField")))),"get",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","value","key"),"properties",map("kind",map("const","get"),"value",map("$ref","#/$defs/expression"),"key",map("type","string"))),"index",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","value","index"),"properties",map("kind",map("const","index"),"value",map("$ref","#/$defs/expression"),"index",map("$ref","#/$defs/expression"))),"math",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","op","args"),"properties",map("kind",map("const","math"),"op",map("enum",list("add","sub","mul","div","rem","lt","le","eq","neg","sin","cos","floor","length")),"args",map("type","array","items",map("$ref","#/$defs/expression"))),"allOf",list(map("oneOf",list(map("properties",map("op",map("enum",list("add","sub","mul","div","rem","lt","le","eq")),"args",map("minItems",Double.valueOf("2"),"maxItems",Double.valueOf("2")))),map("properties",map("op",map("enum",list("neg","sin","cos","floor","length")),"args",map("minItems",Double.valueOf("1"),"maxItems",Double.valueOf("1")))))))),"if",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","condition","then","else"),"properties",map("kind",map("const","if"),"condition",map("$ref","#/$defs/expression"),"then",map("$ref","#/$defs/expression"),"else",map("$ref","#/$defs/expression"))),"range",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","start","stop","step"),"properties",map("kind",map("const","range"),"start",map("$ref","#/$defs/expression"),"stop",map("$ref","#/$defs/expression"),"step",map("$ref","#/$defs/expression"))),"map",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","items","as","indexAs","value"),"properties",map("kind",map("const","map"),"items",map("$ref","#/$defs/expression"),"as",map("$ref","#/$defs/name"),"indexAs",map("$ref","#/$defs/name"),"value",map("$ref","#/$defs/expression"))),"construct",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","operation","input"),"properties",map("kind",map("const","construct"),"operation",map("type","string","minLength",Double.valueOf("1")),"input",map("$ref","#/$defs/expression"))),"query",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","instance","port","input"),"properties",map("kind",map("const","query"),"instance",map("$ref","#/$defs/expression"),"port",map("type","string","minLength",Double.valueOf("1")),"input",map("$ref","#/$defs/expression"))),"values",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","instance"),"properties",map("kind",map("const","values"),"instance",map("$ref","#/$defs/expression"))),"statement",map("oneOf",list(map("$ref","#/$defs/bindStatement"),map("$ref","#/$defs/emitStatement"),map("$ref","#/$defs/forStatement"),map("$ref","#/$defs/whenStatement"))),"bindStatement",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","name","value"),"properties",map("kind",map("const","bind"),"name",map("$ref","#/$defs/name"),"value",map("$ref","#/$defs/expression"))),"emitStatement",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","value"),"properties",map("kind",map("const","emit"),"value",map("$ref","#/$defs/expression"))),"forStatement",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","items","as","indexAs","body"),"properties",map("kind",map("const","for"),"items",map("$ref","#/$defs/expression"),"as",map("$ref","#/$defs/name"),"indexAs",map("$ref","#/$defs/name"),"body",map("type","array","items",map("$ref","#/$defs/statement")))),"whenStatement",map("type","object","additionalProperties",Boolean.FALSE,"required",list("kind","condition","body"),"properties",map("kind",map("const","when"),"condition",map("$ref","#/$defs/expression"),"body",map("type","array","items",map("$ref","#/$defs/statement")))))));
+    private static final Map<String,String> DECLARATIONS = freezeMap(map("layout.regular-grid","0.1.0","field.gradient-noise-2d-01","0.1.0","color.cyclic-palette","0.1.0","path.gradient-trace-2d","0.1.0"));
+    private static final Map<String,Set<String>> PORTS = freezePorts(map("layout.regular-grid",set("point"),"field.gradient-noise-2d-01",set("sample"),"color.cyclic-palette",set("sample"),"path.gradient-trace-2d",set()));
+    private RecipeGrammar() { }
+
+    static Object schema() { return SCHEMA; }
+    static Map<String,String> declarations() { return DECLARATIONS; }
+    static Set<String> ports(String id) { return PORTS.get(id); }
+
+    private static Map<String,Object> map(Object... values) {
+        Map<String,Object> result = new LinkedHashMap<String,Object>();
+        for (int i = 0; i < values.length; i += 2) result.put((String)values[i], values[i + 1]);
+        return result;
+    }
+    private static List<Object> list(Object... values) {
+        return new ArrayList<Object>(Arrays.asList(values));
+    }
+    private static Set<String> set(Object... values) {
+        Set<String> result = new LinkedHashSet<String>();
+        for (Object value : values) result.add((String)value);
+        return result;
+    }
+    private static Map<String,String> freezeMap(Map<String,Object> value) {
+        Map<String,String> result = new LinkedHashMap<String,String>();
+        for (Map.Entry<String,Object> entry : value.entrySet()) result.put(entry.getKey(), (String)entry.getValue());
+        return Collections.unmodifiableMap(result);
+    }
+    private static Map<String,Set<String>> freezePorts(Map<String,Object> value) {
+        Map<String,Set<String>> result = new LinkedHashMap<String,Set<String>>();
+        for (Map.Entry<String,Object> entry : value.entrySet()) result.put(entry.getKey(), Collections.unmodifiableSet((Set<String>)entry.getValue()));
+        return Collections.unmodifiableMap(result);
+    }
+    private static Object freeze(Object value) {
+        if (value instanceof Map) { Map<String,Object> copy = new LinkedHashMap<String,Object>();
+            for (Map.Entry<?,?> entry : ((Map<?,?>)value).entrySet()) copy.put((String)entry.getKey(), freeze(entry.getValue()));
+            return Collections.unmodifiableMap(copy); }
+        if (value instanceof List) { List<Object> copy = new ArrayList<Object>();
+            for (Object item : (List<?>)value) copy.add(freeze(item));
+            return Collections.unmodifiableList(copy); }
+        return value;
+    }
+}

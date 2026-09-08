@@ -179,3 +179,20 @@ parameters remain data-only and are separately checked at build/evaluation time;
 hashes identify the actual edit, while the validated recipe hash identifies the export input.
 The next execution-boundary work is a validated-composition interface before exposing Java
 submission to application callers. Other target executors, assets and animation remain open.
+
+## Direct Java structural admission decision
+
+Both existing Java entry points will validate and detach each submitted document before
+execution or cache lookup. This closes the Map API precondition without introducing a second
+public prepared-program type. Generate immutable grammar/declaration data from catalog
+metadata; use a closed schema interpreter and lexical walk corresponding to the existing
+Python validator. All branches must be structurally valid even when runtime evaluation is
+lazy. Input numbers normalize to finite binary64, and bounded detached JSON prevents caller
+mutation from changing the document being executed. No runtime instance is valid input JSON.
+
+The static limits remain depth64 and20000 values; schema traversal also has a finite work
+ceiling. Static admission is separate from evaluator operation/work counters. Both fresh and
+session entry points enforce the same checks; malformed admission must not destroy a prior
+successful retained cache. Target availability in this Java implementation is a fixed binding
+capability; byte-verified target support remains the exporter admission's responsibility.
+This change does not accept the executor or claim JSON parsing inside Java.

@@ -149,6 +149,7 @@ public strictfp final class RecipeEvaluator {
         }
     }
     public static Result evaluate(Map<String,Object> recipe,Limits limits) {
+        recipe = RecipeStructureValidation.admit(recipe);
         Limits frozen = snapshot(limits);
         checkLimits(frozen);
         State s = new State(frozen);
@@ -206,6 +207,7 @@ public strictfp final class RecipeEvaluator {
         }
 
         public Result evaluate(Map<String,Object> recipe, Limits limits) {
+            recipe = RecipeStructureValidation.admit(recipe);
             Limits frozen = snapshot(limits);
             checkLimits(frozen);
             State state = new State(frozen);

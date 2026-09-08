@@ -1,5 +1,22 @@
 # Project state
 
+## Direct Java structural admission verified as a prototype
+
+Both evaluator entrypoints now enforce bounded detached JSON, generated catalog grammar,
+exact declarations and lexical scope before execution/cache lookup. Luna supplied grammar
+generation with contract validation; Terra supplied initial integration and scope traversal.
+Root rejected incomplete scaffolding, completed the schema interpreter and explicit lexical
+traversal, and added focused admission probes. Invalid unselected branches, duplicate fields,
+nonJSON/cyclic/oversize values reject; lazy runtime arithmetic and session cache recovery pass.
+The wrong-instance port probe still exercises dynamic PORT with a declared known port;
+nonfinite literal admission now correctly precedes operation validation.
+Final .work/recipe-structure-root3 verifies eleven exact fresh/session command scenarios
+and twelve focused groups. Current source hashes verified; conformance evidence refreshed.
+Eleven focused generator/export tests pass; a fresh standalone export compiles with admission.
+No new native raster claim. Next review the complete static Java execution/export surface for
+scoped admission and distribution, then remaining bindings/targets/assets/animation. Full
+roadmap remains active; accepted operation count is unchanged. Preserve unrelated JS work.
+
 ## Explicit Java export target admission reviewed
 
 Root added target admission to the exporter using the existing static validator and a

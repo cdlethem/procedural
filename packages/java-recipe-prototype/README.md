@@ -4,8 +4,10 @@ This directory is outside the accepted Java library and source-bundle manifest. 
 implementation experiment for the draft composition model and four reviewed immutable
 operations, not an accepted executor, exporter or target support attestation.
 
-`RecipeEvaluator.evaluate(recipe, limits)` consumes an in-memory Map after static recipe
-validation. It uses existing operation implementations and returns a complete detached,
+`RecipeEvaluator.evaluate(recipe, limits)` consumes an in-memory Map and performs bounded structural and lexical
+validation before execution. Both fresh and session entry points detach the submitted JSON
+data, normalize supported numbers to binary64, and validate all branches against generated
+catalog grammar. It uses existing operation implementations and returns a complete detached,
 read-only command list plus environment and diagnostic counters. It does not parse JSON,
 or render. Static evaluate performs fresh replay; an optional single-threaded Session can
 reuse one completed retain stage between edits.
@@ -44,15 +46,16 @@ in `evidence/conformance/recipe-java-prototype-commands.json`.
 ## Remaining acceptance work
 
 Catalog relocation establishes a single metadata authority; draft status remains in force.
-The public execution boundary still needs explicit target admission and an enforced static
-validation precondition. The current Java Map API assumes prior structural/lexical validation;
-it does not itself check the document format, drawing declaration or unselected branches.
-The Python export path performs that static validation before sealing the composition, so
-its tested exports do not establish that arbitrary direct Java submissions are validated.
+The Java Map API now validates the document format, drawing declaration and unselected
+branches before execution or cache lookup. Static admission bounds input depth to64 and
+values to20000, with a separate schema traversal ceiling of1000000 visits and512 schema
+levels. These are engineering limits, separate from runtime counters. Raw JSON syntax,
+duplicate keys and the2MiB byte limit remain enforced by the Python reader; Java does not
+parse JSON. Admission failure preserves an existing successful session cache.
 
-Next admission work must bind a statically validated composition to its catalog identities
-and requested target before evaluation, and reject unsupported requests precisely. Keep the
-existing evaluator as execution machinery rather than duplicating operation implementations.
+The exporter separately verifies the requested target's source-bound support evidence.
+This closes the known static-validation precondition; general executor/distribution admission
+still requires final review of the complete supported surface.
 Later operation bindings, assets, animation, other target exporters and MCP/web remain
 unfinished. Root owns acceptance; command comparisons and catalog relocation alone do not
 establish those capabilities.
