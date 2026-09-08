@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.procedurals.placementmarks">
+  <application android:theme="@style/Theme.AppCompat.Light.NoActionBar" android:label="Placement marks">
+    <activity android:name="org.procedurals.examples.placementmarks.PlacementMarksActivity" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+  </application>
+</manifest>

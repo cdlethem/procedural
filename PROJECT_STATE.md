@@ -1,5 +1,16 @@
 # Project state
 
+## Android PlacementMarks source/native workflow reviewed
+
+The separate worker run is terminal passed on API33. Root verified all source inputs and
+27 image hashes, inspected baseline/diamonds/radial, reviewed Activity/model/render lifecycle
+and copied the nine project-owned source/harness/evidence files without changing the worker
+checkout. Root review records the observed outer shared lease, post-build runner deadline
+and force-stop-only cleanup. The desktop pure preflight does not prove Android execution
+of every shared core fixture; core attestation remains pending that target-specific check.
+No Android distribution or physical-device support is claimed. Next run the shared core
+fixtures on Android through established infrastructure, then integrate support/package records.
+
 ## Placement core/native support recorded for p5.js and py5
 
 Root admitted circle filtering and seeded placement core conformance plus scoped
