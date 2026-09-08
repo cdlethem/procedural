@@ -1,5 +1,22 @@
 # Project state
 
+## Catalog-driven runtime admission reviewed
+
+Previous checkpoint3b813b89 pushed reviewed accounting corrections. Root split admission
+implementation between Luna (catalog-derived Java schema data/generator/drift tests) and
+Terra (closed runtime validator, evaluator integration, focused native failures). Root
+updated the established runner to compile all prototype sources and check generation drift.
+Root clarified expression-node versus computed-value diagnostics in expression-model.md.
+Initial generator review caught constructor-pointer bypass and per-call schema allocation;
+requested actual pointer resolution, immutable static data, identity/version provenance and
+schema meta-validation. Runtime review requires deterministic object diagnostics and bounded
+schema traversal. Root reviewed corrected immutable generation and runtime traversal/diagnostics, required
+constructor/port error precedence cases and removal of mutable diagnostic globals. Six
+focused generator tests pass. Final .work/recipe-admission-root1 passes nine exact command
+scenarios and nine failure groups; root verified source hashes and refreshed prototype
+evidence. Budget failure coverage, retained cache and Java export/native evidence remain
+pending. No accepted executor or additional operation is claimed. Full goal active.
+
 ## Accounting correction reviewed; runtime admission next
 
 Previous checkpoint33d73f5f pushed array-ceiling and JSON round-trip checks. Root reviewed

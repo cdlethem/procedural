@@ -18,6 +18,7 @@ def main():
     parser.add_argument('--processing-core', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
+    run([sys.executable, ROOT / 'tools/generate_recipe_java_schemas.py', '--check'], timeout=30)
     output = args.output.resolve()
     if (ROOT / '.work').resolve() not in output.parents or output.exists():
         parser.error('output must be a fresh directory below repository .work')
@@ -77,8 +78,8 @@ public class RecipePrototypeComparison {
 '''.replace('__FIELD__', java_value(recipes[0])).replace('__PATH__', java_value(recipes[1]))
     inputs = sorted((ROOT / 'packages/java/src/main/java').rglob('*.java'))
     inputs += sorted((ROOT / 'packages/java-processing/src/main/java').rglob('*.java'))
+    inputs += sorted((ROOT / 'packages/java-recipe-prototype/src/main/java').rglob('*.java'))
     inputs += [ROOT / p for p in (
-        'packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeEvaluator.java',
         'packages/java/examples/FieldMarks/MarkField.java',
         'packages/java-processing/examples/FieldMarks/MarkCommands.java',
         'packages/java/examples/PathMarks/PathMarkComposition.java',
@@ -87,7 +88,8 @@ public class RecipePrototypeComparison {
     metadata = [ROOT / name for name in (
         'design/recipes/recipe.schema.json', 'design/recipes/execution-bindings.json',
         'design/recipes/expression-model.md', 'design/recipes/runtime-accounting.md',
-        'tools/validate_recipe_draft.py', 'tools/run_grid_conformance.py')]
+        'tools/validate_recipe_draft.py', 'tools/run_grid_conformance.py',
+        'tools/generate_recipe_java_schemas.py')]
     binding_data = json.loads((ROOT / 'design/recipes/execution-bindings.json').read_text())
     metadata += [ROOT / row['contract'] for row in binding_data['operations']]
     metadata += list((ROOT / 'catalog/drawing').glob('*.json'))

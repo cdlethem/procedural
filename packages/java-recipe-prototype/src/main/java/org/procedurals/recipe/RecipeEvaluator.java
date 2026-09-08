@@ -373,13 +373,19 @@ public strictfp final class RecipeEvaluator {
             return out;
         }
         if ("construct".equals(k)) {
-            return construct(str(n.get("operation"), path(p, "operation")),
-                    expr(n.get("input"), scope, path(p, "input"), s, declared), p, s, declared);
+            String operation = str(n.get("operation"), path(p, "operation"));
+            if (!declared.contains(operation)) {
+                fail("UNDECLARED_CONSTRUCT", path(p, "operation"), "operation not declared");
+            }
+            return construct(operation,
+                    expr(n.get("input"), scope, path(p, "input"), s, declared), path(p, "input"), s, declared);
         }
         if ("query".equals(k)) {
-            return query(expr(n.get("instance"), scope, path(p, "instance"), s, declared),
-                    str(n.get("port"), path(p, "port")),
-                    expr(n.get("input"), scope, path(p, "input"), s, declared), p, s);
+            Object instance = expr(n.get("instance"), scope, path(p, "instance"), s, declared);
+            String port = str(n.get("port"), path(p, "port"));
+            checkPort(instance, port, p);
+            Object input = expr(n.get("input"), scope, path(p, "input"), s, declared);
+            return query(instance, port, input, path(p, "input"), s);
         }
         if ("values".equals(k)) {
             return values(expr(n.get("instance"), scope, path(p, "instance"), s, declared), p, s);
@@ -439,6 +445,9 @@ public strictfp final class RecipeEvaluator {
             fail("UNDECLARED_CONSTRUCT", p, "operation not declared");
         }
         try {
+            RecipeInputValidation.construct(id, input, p, s.iteration, new RecipeInputValidation.Visitor() {
+                public void visit(String ignored) { s.visit(p); }
+            });
             if ("layout.regular-grid".equals(id)) {
                 s.call(p, 1);
                 return new Instance(id, RegularGrid.create(castMap(input, p)));
@@ -483,6 +492,9 @@ public strictfp final class RecipeEvaluator {
         }
         Instance x = (Instance)value;
         try {
+            RecipeInputValidation.query(x.id, port, input, p, s.iteration, new RecipeInputValidation.Visitor() {
+                public void visit(String ignored) { s.visit(p); }
+            });
             if ("layout.regular-grid".equals(x.id) && "point".equals(port)) {
                 Map<?,?> in = map(input, p);
                 if (in.size() != 1 || !in.containsKey("index")) {
@@ -515,6 +527,15 @@ public strictfp final class RecipeEvaluator {
         }
         fail("PORT", p, "port is not available on instance");
         return null;
+    }
+    private static void checkPort(Object value, String port, String path) {
+        if (!(value instanceof Instance)) fail("TYPE", path, "query requires instance");
+        String id = ((Instance)value).id;
+        if (!("layout.regular-grid".equals(id) && "point".equals(port))
+                && !("field.gradient-noise-2d-01".equals(id) && "sample".equals(port))
+                && !("color.cyclic-palette".equals(id) && "sample".equals(port))) {
+            fail("PORT", path, "port is not available on instance");
+        }
     }
     private static Object values(Object value, String p, State s) {
         if (!(value instanceof Instance)) {

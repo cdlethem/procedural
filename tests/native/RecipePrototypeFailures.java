@@ -16,6 +16,11 @@ public final class RecipePrototypeFailures {
                 "environment",literal(map("width",64,"height",64,"density",1,"background",0)));
     }
     static Object binding(Object value) { return list(map("name","value","value",value)); }
+    static Map<String,Object> operationRecipe(String id,Object value) {
+        Map<String,Object> result=recipe(binding(value),list());
+        result.put("operations",list(map("id",id,"version","0.1.0")));
+        return result;
+    }
     static Map<String,Object> gridValuesRecipe() {
         Object input=literal(map("origin",list(0,0),"spacing",list(1,1),"columns",1,"rows",1));
         Object grid=map("kind","construct","operation","layout.regular-grid","input",input);
@@ -100,6 +105,42 @@ public final class RecipePrototypeFailures {
         RecipeEvaluator.Limits gridArrays=new RecipeEvaluator.Limits();gridArrays.arrayLength=1;
         failure(gridValuesRecipe(),gridArrays,"LIMIT_ARRAY_LENGTH");
         System.out.println("values-copy-boundaries-and-limit-snapshot passed");
+        Object badPalette=map("kind","construct","operation","color.cyclic-palette",
+                "input",literal(map("colors",list(true))));
+        error=failure(operationRecipe("color.cyclic-palette",badPalette),new RecipeEvaluator.Limits(),"INPUT_SCHEMA");
+        check("/retain/0/value/input".equals(error.path) && error.getMessage().contains("/colors/0"),"palette schema diagnostic");
+        Object hugePath=map("kind","construct","operation","path.gradient-trace-2d","input",literal(map(
+                "field",map("seed",0),"start",list(0,0),"steps",1073741823L,"stepDistance",0,
+                "fieldScale",1,"fieldOffset",list(0,0),"angleBase",0,"angleScale",1)));
+        failure(operationRecipe("path.gradient-trace-2d",hugePath),new RecipeEvaluator.Limits(),"INPUT_SCHEMA");
+        Object gridOverflow=map("kind","construct","operation","layout.regular-grid","input",literal(map(
+                "origin",list(0,0),"spacing",list(1,1),"columns",2147483647L,"rows",2147483647L)));
+        error=failure(operationRecipe("layout.regular-grid",gridOverflow),new RecipeEvaluator.Limits(),"OPERATION_FAILURE");
+        check("GRID_SIZE_OVERFLOW".equals(error.original),"native grid error changed");
+        Object smallPath=map("kind","construct","operation","path.gradient-trace-2d","input",literal(map(
+                "field",map("seed",0),"start",list(0,0),"steps",10,"stepDistance",0,
+                "fieldScale",1,"fieldOffset",list(0,0),"angleBase",0,"angleScale",1)));
+        RecipeEvaluator.Limits pathWork=new RecipeEvaluator.Limits();pathWork.work=1;
+        failure(operationRecipe("path.gradient-trace-2d",smallPath),pathWork,"LIMIT_WORK");
+        Object grid=map("kind","construct","operation","layout.regular-grid","input",literal(map(
+                "origin",list(0,0),"spacing",list(1,1),"columns",1,"rows",1)));
+        Object badPort=map("kind","query","instance",grid,"port","sample","input",division);
+        Map<String,Object> portRecipe=operationRecipe("layout.regular-grid",badPort);
+        failure(portRecipe,new RecipeEvaluator.Limits(),"PORT");
+        Object undeclared=map("kind","construct","operation","path.gradient-trace-2d","input",division);
+        failure(recipe(binding(undeclared),list()),new RecipeEvaluator.Limits(),"UNDECLARED_CONSTRUCT");
+        Map<String,Object> badOne=map("origin",list(0,0),"spacing",list(1,1),"columns",true,"rows",true);
+        Map<String,Object> badTwo=map("rows",true,"columns",true,"spacing",list(1,1),"origin",list(0,0));
+        error=failure(operationRecipe("layout.regular-grid",map("kind","construct","operation","layout.regular-grid","input",literal(badOne))),new RecipeEvaluator.Limits(),"INPUT_SCHEMA");
+        RecipeEvaluator.RecipeFailure reordered=failure(operationRecipe("layout.regular-grid",map("kind","construct","operation","layout.regular-grid","input",literal(badTwo))),new RecipeEvaluator.Limits(),"INPUT_SCHEMA");
+        check(error.path.equals(reordered.path) && error.getMessage().equals(reordered.getMessage()),"input order changed schema diagnostic");
+        Object nonfinite=map("kind","construct","operation","color.cyclic-palette","input",literal(map("colors",list(Double.NaN))));
+        failure(operationRecipe("color.cyclic-palette",nonfinite),new RecipeEvaluator.Limits(),"INPUT_SCHEMA");
+        Object nestedSchema=map("kind","map","items",literal(list(0)),"as","item","indexAs","index",
+                "value",map("kind","construct","operation","color.cyclic-palette","input",literal(map("colors",list(true)))));
+        error=failure(operationRecipe("color.cyclic-palette",nestedSchema),new RecipeEvaluator.Limits(),"INPUT_SCHEMA");
+        check(error.iteration != null && error.path.endsWith("/input"),"nested schema diagnostic location");
+        System.out.println("runtime-schema-admission passed");
         System.out.println("PROTOTYPE_FAILURE_CASES_PASSED");
     }
 }

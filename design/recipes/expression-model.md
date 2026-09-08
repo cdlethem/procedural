@@ -42,8 +42,8 @@ order. A JSON literal is never inferred to be an executable node.
 | `{kind:"if", condition:expr, then:expr, else:expr}` | Require boolean; evaluate only selected branch |
 | `{kind:"range", start:expr, stop:expr, step:expr}` | Evaluate start, stop, step; safe nonnegative integers, positive step; ascending half-open sequence; stop<=start yields empty |
 | `{kind:"map", items:expr, as:string, indexAs:string, value:expr}` | Evaluate finite array; bind element and zero-based index; evaluate body in array order; return ordered results |
-| `{kind:"construct", operation:string, input:expr}` | Evaluate input, validate against declared operation input schema, construct opaque instance through reviewed binding |
-| `{kind:"query", instance:expr, port:string, input:expr}` | Evaluate instance then input; validate port input and return value using referenced schemas |
+| `{kind:"construct", operation:string, input:expr}` | Resolve declared operation, evaluate input, validate against operation input schema, construct opaque instance through reviewed binding |
+| `{kind:"query", instance:expr, port:string, input:expr}` | Evaluate instance and resolve its port, then evaluate input; validate port input and return value using referenced schemas |
 | `{kind:"values", instance:expr}` | Return detached data matching operation output_schema through its binding; not generic serialization of native object internals |
 
 `map` cannot bind the same name twice or shadow any visible name. Structural validation
@@ -128,3 +128,10 @@ Concrete first-operation schema pointers and inspected Java access forms are rec
 
 See `runtime-accounting.md` for the static input limits and proposed runtime reservations.
 The static validator does not implement those runtime reservations.
+
+Runtime schema errors use `INPUT_SCHEMA`. Their recipe `path` identifies the input
+expression that produced the invalid value; the message separately identifies the relative
+value pointer (for example `/colors/0`). Computed record fields are not necessarily JSON
+nodes in the submitted recipe, so do not append their names to the recipe pointer. Preserve
+the operation ID and enclosing iteration context. Native semantic failures retain their
+existing operation codes after successful schema admission and resource reservation.

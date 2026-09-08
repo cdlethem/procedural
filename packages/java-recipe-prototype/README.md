@@ -51,3 +51,11 @@ normalization, detached publication and owned native arrays. Eight focused failu
 include limits mutated during evaluation and descriptor work/copy boundaries. The nine
 command comparisons pass within unchanged default limits. This remains a prototype: full
 schema-driven admission and complete budget failure coverage precede runtime acceptance.
+
+Constructor and query admission now uses immutable schema data generated from catalog
+pointers by `tools/generate_recipe_java_schemas.py` (`--check` detects drift). The closed
+validator checks finite numeric types, shape and bounds before operation reservations;
+it reports the input expression and relative invalid value location separately. Native
+semantic errors remain native errors. Nine failure groups and nine command comparisons
+pass; six generator tests cover generation and rejection behavior. These are prototype
+checks, not accepted runtime, target or exporter support.
