@@ -1,5 +1,15 @@
 # Project state
 
+## Android RegionMarks local distribution accepted
+
+Built .work/dist/cp4/android-region1/procedurals-region-marks-android-0.4.0.zip and
+compiled its extracted consumer APK. Root verified all input/member hashes, byte-exact
+example sources against the native run and all6 quadrant class files against ART inputs.
+Notices preserved; runtime, SDK, signing key and build output excluded. Review:
+evidence/distribution/cp4-android-review.json. Reused existing packaging infrastructure;
+no new native run or support claim. Next package JavaScript/Python quadrant distributions.
+Java remains15/15; seven operations have four-target core/native evidence; eight ports remain.
+
 ## Existing Android starter resume audit complete
 
 The exact delivered FieldMarks0.1, PathMarks0.2 and PlacementMarks0.3 APKs all recover

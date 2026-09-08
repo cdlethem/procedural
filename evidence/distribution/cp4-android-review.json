@@ -1,0 +1,32 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Android RegionMarks0.4 starter ZIP and extracted debug APK compile with accepted core0.4/adapter0.2 JARs. No registry publication, new native render or physical-device claim.",
+  "implementation_sha256": {
+    "tools/build_region_marks_android.py": "064ac1b2357cb78608d5d8ec8e6ebfbf7c3901fc519d6f0de281fba340d2a4a0",
+    "packages/java-android/examples/RegionMarks/RegionMarksActivity.java": "ab92346ffa6ee15d5b9a3b303298786cc5a7b876034c9fd2770f210a63fe220e",
+    "packages/java-android/examples/RegionMarks/RegionMarksRenderer.java": "dcf268dab5d097b4f53f2037ba7805239c46f24da2b86910bc2862476dff72d4",
+    "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+    "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp4-android.json": "e1ea911acf082bbb01a40b5e358bb511c2a239b804d135a7d7298eff9cc5b3ad",
+    "evidence/distribution/cp4-java.json": "09902920f8ca32873f616678440d7493158a1121282f6869216e2f7be9cdb790",
+    "evidence/distribution/cp2-android.json": "8fe60e2a6ef2b288c153e0997ad9ce172600ed34d9141406f4d5f89070d44c38",
+    "evidence/conformance/quadrant-partition-android.json": "36c0691b3e4c51a75cc4b9e3afd80c193ddec53f7e40b21a61bebff3abf75bfc",
+    "evidence/conformance/quadrant-android-native-root-review.json": "8fc63330584e4efa259653b45323985c9c2ca68271a118056702e43c8910732f",
+    "evidence/conformance/android-region-marks.json": "052c16a7cd11f4ff32abd974a47c20bab8c07b7e95de574057b9a0f293ffe0b1"
+  },
+  "root_findings": [
+    "Reviewed the bounded adaptation of the existing PlacementMarks packaging builder; unchanged extraction, dependency pinning and exclusion checks.",
+    "Verified all source/toolchain hashes and ZIP member hashes. Four example Java files match accepted native-run inputs byte for byte. Extracted ZIP compiled successfully with external pinned runtime and SDK.",
+    "All six quadrant class files in packaged core match the compiled inputs used by the accepted API33 ART execution.",
+    "Inspected packaged README controls, toolchain instructions and runtime provenance. Notices retained; runtime, SDK, debug key and build output excluded."
+  ],
+  "remaining": [
+    "JavaScript and Python quadrant local distributions",
+    "Eight other operation ports",
+    "Further artist workflows, recreation coverage and recipe milestones"
+  ]
+}
