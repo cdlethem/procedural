@@ -1,0 +1,241 @@
+{
+  "id": "cp19-radial-warp",
+  "status": "completed-private-investigation",
+  "question": "Does deterministic summed radial pull offer useful localized geometry edits and transfer without hiding discontinuous center behavior?",
+  "decision": "retain for contract work; no default or recommended range established",
+  "hypothesis": "Changing influence radius and power bends retained grid paths differently; the same computation transfers to sampled closed curves.",
+  "source": "2018/Generativos/curvespace",
+  "source_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+  "candidate": "2018/Generativos/curvespace#0",
+  "configuration": {
+    "canvas": [
+      512,
+      512
+    ],
+    "renderer": "JAVA2D",
+    "seed": 42,
+    "centers": [
+      [
+        200,
+        240
+      ],
+      [
+        350,
+        320
+      ]
+    ],
+    "baseline_radius": 120,
+    "baseline_power": 2,
+    "grid_spacing": 16,
+    "line_sample_spacing": 2,
+    "center_policy": "zero contribution at exact center; explicit divergence from source atan2(0,0) positive-x displacement",
+    "sum_policy": "evaluate each influence at original input, then sum in supplied order"
+  },
+  "variants": [
+    {
+      "mode": 0,
+      "radius": 120,
+      "power": 2,
+      "purpose": "baseline grid"
+    },
+    {
+      "mode": 0,
+      "radius": 180,
+      "power": 2,
+      "purpose": "radius edit"
+    },
+    {
+      "mode": 0,
+      "radius": 120,
+      "power": 0.5,
+      "purpose": "power edit"
+    },
+    {
+      "mode": 1,
+      "radius": 120,
+      "power": 2,
+      "purpose": "transfer to closed-spline contours"
+    }
+  ],
+  "acceptance": [
+    "Root inspect all four native images before public admission.",
+    "Check empty influence identity, exact center policy, exact radius identity, analytic cardinal-axis case, and distinguish summed from sequential overlapping influence behavior.",
+    "Record center discontinuity explicitly; reject or change boundary if point-center instability makes intended workflow misleading.",
+    "No recommended range from unscored curvespace notes; render configurations remain examples."
+  ],
+  "attempt_budget": 4,
+  "results": [
+    {
+      "id": "baseline",
+      "status": "ok",
+      "parameters": {
+        "mode": 0.0,
+        "power": 2.0,
+        "radius": 120.0
+      },
+      "render_path": ".work/cp19-radial-baseline/variant-00/render.png",
+      "image_sha256": "0d9a4bdf1d1d66c34a12d5058a3c9d8c67e6f5898108d1a711dd57c5acc3a8cf",
+      "report_path": ".work/cp19-radial-baseline/report.json",
+      "report_sha256": "d67e176f9ddcdd8441e817a977d5f1af60519905f9c799c4a5a357d6c4ba70e3",
+      "native": {
+        "hook": "configureRender-v1",
+        "frames": 1,
+        "width": 512,
+        "height": 512,
+        "seed": 42
+      },
+      "diff_from_baseline": {
+        "mean_rgb_01": 0.0,
+        "changed_pixel_fraction": 0.0,
+        "interpretation": "raw decoded pixel difference; no universal quality threshold"
+      },
+      "observation": "Two localized radial rosettes interrupt the otherwise straight grid; central folds and straight connecting segments are visible.",
+      "warnings": [],
+      "acceptable": true
+    },
+    {
+      "id": "radius",
+      "status": "ok",
+      "parameters": {
+        "mode": 0.0,
+        "power": 2.0,
+        "radius": 180.0
+      },
+      "render_path": ".work/cp19-radial-radius/variant-00/render.png",
+      "image_sha256": "9f5b49a918e9f84154cf1b505631628c7886ea3b89bc65e6ee8b1d272a00c644",
+      "report_path": ".work/cp19-radial-radius/report.json",
+      "report_sha256": "bc8199050d1bf8fef31839e143d3d6e288d2347d69e47166efdc3389236f05f2",
+      "native": {
+        "hook": "configureRender-v1",
+        "frames": 1,
+        "width": 512,
+        "height": 512,
+        "seed": 42
+      },
+      "diff_from_baseline": {
+        "mean_rgb_01": 0.09885426938923356,
+        "changed_pixel_fraction": 0.30117034912109375,
+        "interpretation": "raw decoded pixel difference; no universal quality threshold"
+      },
+      "observation": "Influence expands across most of the grid; overlapping folds create a dense central tangle and some paths reach the canvas boundary.",
+      "warnings": [],
+      "acceptable": true
+    },
+    {
+      "id": "power",
+      "status": "ok",
+      "parameters": {
+        "mode": 0.0,
+        "power": 0.5,
+        "radius": 120.0
+      },
+      "render_path": ".work/cp19-radial-power/variant-00/render.png",
+      "image_sha256": "32f30da55b5d16549769859e08f47ca00bc63abfeb474c8a032a018ef7ea9824",
+      "report_path": ".work/cp19-radial-power/report.json",
+      "report_sha256": "b49b1339edbef45d596c1303856b9f27d52a57662af32bef2dbeeada6c94c9b4",
+      "native": {
+        "hook": "configureRender-v1",
+        "frames": 1,
+        "width": 512,
+        "height": 512,
+        "seed": 42
+      },
+      "diff_from_baseline": {
+        "mean_rgb_01": 0.04816737455480239,
+        "changed_pixel_fraction": 0.153350830078125,
+        "interpretation": "raw decoded pixel difference; no universal quality threshold"
+      },
+      "observation": "Smaller folded regions and a tighter pinch; more of the grid remains recognizable inside the same influence radius.",
+      "warnings": [],
+      "acceptable": true
+    },
+    {
+      "id": "transfer",
+      "status": "ok",
+      "parameters": {
+        "mode": 1.0,
+        "power": 2.0,
+        "radius": 120.0
+      },
+      "render_path": ".work/cp19-radial-transfer/variant-00/render.png",
+      "image_sha256": "5d8a7bef94d6efbfa2d6fde14fe92a07ddc8182ab5f7f441284b72cc4923034f",
+      "report_path": ".work/cp19-radial-transfer/report.json",
+      "report_sha256": "5f44d6e1dd428b120a2519af20fe5285846887363fae7eb295a8ea6ad29505c4",
+      "native": {
+        "hook": "configureRender-v1",
+        "frames": 1,
+        "width": 512,
+        "height": 512,
+        "seed": 42
+      },
+      "diff_from_baseline": {
+        "mean_rgb_01": 0.08775454253153084,
+        "changed_pixel_fraction": 0.20903778076171875,
+        "interpretation": "transfer changes drawing mode, not a parameter sensitivity comparison"
+      },
+      "observation": "Three retained closed contours deform into hooked and looping shapes; self-intersections are visible.",
+      "warnings": [],
+      "acceptable": true
+    }
+  ],
+  "source_sketches": [
+    "2018/Generativos/curvespace"
+  ],
+  "parameter": {
+    "names": [
+      "radius",
+      "power"
+    ],
+    "default": "none; study baseline 120 and 2",
+    "unit": [
+      "canvas units",
+      "dimensionless"
+    ]
+  },
+  "baseline": {
+    "path": ".work/cp19-radial-baseline",
+    "deterministic": true,
+    "renderer": "JAVA2D",
+    "kind": "independent candidate; not original source baseline"
+  },
+  "values": {
+    "radius": [
+      120,
+      180
+    ],
+    "power": [
+      2,
+      0.5
+    ]
+  },
+  "comparison": "first completed draw, fixed seed 42; decoded RGBA differences plus root inspection",
+  "constraints": [
+    "One causal parameter changed per comparison",
+    "At most four render attempts including baseline and transfer",
+    "No default or continuous useful range inferred"
+  ],
+  "provenance": [
+    "survey/out/2018/Generativos/curvespace/notes.md",
+    "design/capabilities/cp19-radial-warp-direction.md"
+  ],
+  "verified_input_sha256": {
+    "/home/colin/dev/procedural/tools/diagnostics/cp19-radial-warp/RadialWarpStudy/RadialWarpStudy.pde": "b2930850278227d0aea28107bd49e4ac36946023342ad46c242bee5fcb85a5ae",
+    "/home/colin/dev/procedural/tools/diagnostics/cp19-radial-warp/RadialWarpStudy/RadialPullStudyMath.java": "57a4d6ad1c332557e4bddce38afe2e089b02cc75fc43bca782ebf2128f8994c3",
+    "/home/colin/dev/procedural/.work/cp18-consumer-root1/extract/procedurals/library/procedurals.jar": "15d29ecb5ab38014a430ca35a41f6712f2314b916f36bfe59d2fcb2b4c1bfec1",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "/home/colin/dev/procedural/tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    "/home/colin/dev/procedural/tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d",
+    "/home/colin/dev/procedural/tools/render_java.py": "171ebec4c1aeb4eb26a5e82117d27f917f6b7d54e7ac6218e1b76cd5a809f195",
+    "/home/colin/dev/procedural/tools/contact_sheet.py": "33e2d6492491ef415cacb121c274f863aac40e92f00d92498ab5acb09fac1e42",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  }
+}

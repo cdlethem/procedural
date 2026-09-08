@@ -1,5 +1,24 @@
 # Project state
 
+## CP19 localized radial pull investigated — contract next
+
+Root read curvespace, curves_str and culin notes and pinned source. These differ in summed,
+sequential and stochastic behavior; no generic attractor merge is approved. Four bounded
+private JAVA2D configurations passed and were visually inspected: baseline grid, radius edit,
+power edit and retained-spline transfer. Live inputs/classes/images verified. Root retained
+summed radial pull for contract work, with explicit center discontinuity and possible folds;
+no smoothness, invertibility, recommended range or original recreation claim.
+
+See design/capabilities/cp19-radial-warp-direction.md and
+ evidence/parameter-experiments/cp19-radial-warp/decision.md. Private study is under
+ tools/diagnostics/cp19-radial-warp/RadialWarpStudy. Worker draft arithmetic and fixture errors
+were corrected before rendering. All four attempts passed; no worker or native task remains.
+
+Next record evidence-versioned admission for curvespace#0 and freeze center/rim behavior,
+ordered accumulation, finite-value validation/overflow, ownership, work bounds and portable
+math policy before Java implementation. Keep source sampling/drawing separate. Java0.21 at
+758dede6 remains21 shipped operations/workflows. Ports/Sol paused; Android draft untouched.
+
 ## CP18 Java 0.21 accepted for publishing
 
 21 reusable operations and 21 editable workflows. GradientNoise3D01 and DepthMarks add
