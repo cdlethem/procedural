@@ -64,6 +64,30 @@ public final class RecipePrototypeFailures {
         failure(placementRecipe(overflow),work,"LIMIT_WORK");
         System.out.println("placement-budgets-and-native-errors passed");
     }
+    static Map<String,Object> partitionInput(int replacements) {
+        return map("seed",42,"replacements",replacements,"origin",list(32,32),"extent",list(576,576),"selectionFraction",0.5);
+    }
+    static Map<String,Object> partitionRecipe(Map<String,Object> input) {
+        return operationRecipe("layout.seeded-quadrant-partition-2d",map("kind","construct",
+                "operation","layout.seeded-quadrant-partition-2d","input",literal(input)));
+    }
+    static void partitionAdmission() {
+        RecipeEvaluator.evaluate(partitionRecipe(partitionInput(0)),new RecipeEvaluator.Limits());
+        RecipeEvaluator.Limits transientArray=new RecipeEvaluator.Limits();transientArray.arrayLength=4;
+        failure(partitionRecipe(partitionInput(1)),transientArray,"LIMIT_ARRAY_LENGTH");
+        RecipeEvaluator.Limits work=new RecipeEvaluator.Limits();work.work=1;
+        failure(partitionRecipe(partitionInput(48)),work,"LIMIT_WORK");
+        RecipeEvaluator.Limits units=new RecipeEvaluator.Limits();units.valueUnits=100;
+        failure(partitionRecipe(partitionInput(48)),units,"LIMIT_VALUE_UNITS");
+        Map<String,Object> rectangle=partitionInput(0);rectangle.put("origin",list(Double.MAX_VALUE,0));rectangle.put("extent",list(Double.MAX_VALUE,1));
+        RecipeEvaluator.RecipeFailure error=failure(partitionRecipe(rectangle),new RecipeEvaluator.Limits(),"OPERATION_FAILURE");
+        check(error.original.equals("INVALID_RECTANGLE"),"partition root arithmetic error");
+        Map<String,Object> midpoint=partitionInput(1);midpoint.put("origin",list(1,0));midpoint.put("extent",list(Math.ulp(1.0),1));
+        error=failure(partitionRecipe(midpoint),new RecipeEvaluator.Limits(),"OPERATION_FAILURE");
+        check(error.original.equals("PARTITION_ARITHMETIC_INVALID replacement=0 stage=midpoint_x"),"partition midpoint context");
+        failure(partitionRecipe(midpoint),work,"LIMIT_WORK");
+        System.out.println("partition-transient-capacity-and-native-errors passed");
+    }
     static void structuralAdmission() {
         Map<String,Object> bad=recipe(list(),list());bad.put("format","other");
         failure(bad,new RecipeEvaluator.Limits(),"SCHEMA_INVALID");
@@ -295,6 +319,7 @@ public final class RecipePrototypeFailures {
         System.out.println("retained-session-cache-and-reservations passed");
         structuralAdmission();
         placementAdmission();
+        partitionAdmission();
         System.out.println("PROTOTYPE_FAILURE_CASES_PASSED");
     }
 }

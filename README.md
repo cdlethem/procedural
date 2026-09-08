@@ -24,7 +24,7 @@ CutBranchMarks adds mutable interior-cut branching with retained geometry and sc
 Ports of these newer workflows to JavaScript, py5 and Android are deferred. The local Java 0.15.0 package
 contains all fifteen starters and fifteen reusable operations. It is not a published registry
 release. An experimental [Java recipe preview](docs/java-recipe-preview.md) exports FieldMarks,
-PathMarks and placement-bars as editable standalone projects. General portable recipes, MCP and web tools
+PathMarks, placement-bars and region-panels as editable standalone projects. General portable recipes, MCP and web tools
 remain in the roadmap.
 
 Build from a fresh checkout with [the Java source-bundle instructions](docs/building-java-from-source.md).

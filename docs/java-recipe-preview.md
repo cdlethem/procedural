@@ -1,9 +1,9 @@
 # Java recipe preview
 
-This is a Java-only experimental route for exporting the draft field, path and placement compositions. It is
+This is a Java-only experimental route for exporting the draft field, path, placement and region compositions. It is
 separate from the accepted Processing starters and does not establish a general recipe
-executor or exporter. The current slice binds five operations: regular grid, gradient
-noise, cyclic palette, gradient path, and seeded circle placement. Its drawing output is static JAVA2D using the
+executor or exporter. The current slice binds six operations: regular grid, gradient
+noise, cyclic palette, gradient path, seeded circle placement, and seeded quadrant partition. Its drawing output is static JAVA2D using the
 segment and single-fill convex-quad commands.
 
 The established artist entry points remain the accepted [FieldMarks starter](getting-started.md)
@@ -74,3 +74,8 @@ For separated marks, export `design/recipes/examples/placement-bars.draft.json`.
 `colors`, `lengthScale` or `strokeWidth` to restyle; edit `seed` to make a new arrangement.
 The default settings are example choices, not measured artistic ranges. Native rendering
 validation for this newly added composition is tracked separately from FieldMarks/PathMarks.
+
+For hierarchical colored panels, export `design/recipes/examples/region-panels.draft.json`.
+`replacements` changes subdivision count; `seed` changes the arrangement. `insetFraction`
+and `colors` change painting while the direct Session retains the partition. As with the
+other snapshots, standalone edits rebuild into a fresh output directory.

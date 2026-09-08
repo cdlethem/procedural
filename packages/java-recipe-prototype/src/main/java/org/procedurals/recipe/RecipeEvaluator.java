@@ -5,6 +5,7 @@ import org.procedurals.color.CyclicPalette;
 import org.procedurals.fields.GradientNoise2D01;
 import org.procedurals.internal.DrawingValues;
 import org.procedurals.layout.RegularGrid;
+import org.procedurals.layout.QuadrantPartition2D;
 import org.procedurals.paths.GradientPath2D;
 import org.procedurals.sampling.CirclePlacements2D;
 
@@ -577,6 +578,22 @@ public strictfp final class RecipeEvaluator {
                 s.call(p, 1 + steps);
                 return new Instance(id, GradientPath2D.trace(input), steps);
             }
+            if ("layout.seeded-quadrant-partition-2d".equals(id)) {
+                long n=index(map(input,p).get("replacements"),p);
+                // The catalog count ceiling keeps all these expressions within signed long.
+                long leaves=1+3*n, capacity=Math.min(leaves,16), slots=5*capacity+5;
+                long needed=leaves+(n>0?1:0); // Append four children before deleting the parent.
+                while(capacity<needed) {
+                    long next=capacity+Math.max(capacity,16);
+                    capacity=next>536870911L?needed:next;
+                    slots+=5*capacity+5;
+                }
+                long reservation=slots+5*leaves+21;
+                s.checkArray(p,capacity);
+                s.units(p,reservation);
+                s.call(p,1+10*n+5*(4*n+3*n*(n-1)/2)+2*reservation);
+                return new Instance(id,QuadrantPartition2D.generate(input),leaves);
+            }
             if ("sampling.seeded-circle-placement-2d".equals(id)) {
                 long n=index(map(input,p).get("attempts"),p); long cap=Math.min(n,16), slots=4*cap+3;
                 while(cap<n){long next=cap+Math.max(1,cap>>>1);if(next>1073741823L)next=1073741823L;slots+=4*next+3;cap=next;}
@@ -585,6 +602,9 @@ public strictfp final class RecipeEvaluator {
             }
         } catch (RecipeFailure e) {
             throw e;
+        } catch (QuadrantPartition2D.PartitionArithmeticException e) {
+            throw new RecipeFailure("OPERATION_FAILURE", p, e.getMessage(), s.iteration,
+                    id, e.code + " replacement=" + e.replacementIndex + " stage=" + e.stage);
         } catch (CirclePlacements2D.PlacementArithmeticException e) {
             throw new RecipeFailure("OPERATION_FAILURE", p, e.getMessage(), s.iteration,
                     id, e.code + " candidate=" + e.candidateIndex + " stage=" + e.stage);
@@ -683,6 +703,12 @@ public strictfp final class RecipeEvaluator {
                 s.units(p, 4 * n + 6);
                 s.call(p, 4 * n + 7);
                 return path.toValues();
+            }
+            if ("layout.seeded-quadrant-partition-2d".equals(x.id)) {
+                long k=x.size;
+                s.checkArray(p,k);s.checkArray(p,4);
+                s.units(p,6*k+4);s.call(p,6*k+5);
+                return ((QuadrantPartition2D)x.value).toValues();
             }
             if ("sampling.seeded-circle-placement-2d".equals(x.id)) {
                 long k=x.size; s.checkArray(p,k); if(k>0)s.checkArray(p,2); s.units(p,5*k+5); s.call(p,5*k+6); return ((CirclePlacements2D)x.value).toValues();

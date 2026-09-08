@@ -1,6 +1,6 @@
 {
   "status": "draft",
-  "scope": "Five immutable operation binding proposals for field, path and placement compositions; no accepted executor claim. Contract schema pointers remain authoritative. Native binding strings are review notation, never reflective execution.",
+  "scope": "Six immutable operation binding proposals for field, path and placement compositions; no accepted executor claim. Contract schema pointers remain authoritative. Native binding strings are review notation, never reflective execution.",
   "operations": [
     {
       "id": "layout.regular-grid",
@@ -81,6 +81,19 @@
       "values_output": "/output_schema",
       "java_binding_proposal": {
         "construct": "CirclePlacements2D.seeded(input)",
+        "values": "instance.toValues()"
+      },
+      "ports": {}
+    },
+    {
+      "id": "layout.seeded-quadrant-partition-2d",
+      "version": "0.1.0",
+      "contract": "catalog/operations/seeded-quadrant-partition.json",
+      "contract_sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+      "construct_input": "/input_schema",
+      "values_output": "/output_schema",
+      "java_binding_proposal": {
+        "construct": "QuadrantPartition2D.generate(input)",
         "values": "instance.toValues()"
       },
       "ports": {}

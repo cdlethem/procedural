@@ -29,7 +29,7 @@ def main():
         parser.error('Processing core differs from reviewed dependency')
     recipes = []
     recipe_paths = []
-    for name in ('field-marks', 'path-marks', 'placement-bars'):
+    for name in ('field-marks', 'path-marks', 'placement-bars', 'region-panels'):
         path = ROOT / 'design/recipes/examples' / (name + '.draft.json')
         recipe = load_json(path)
         validate(recipe)
@@ -49,6 +49,7 @@ public class RecipePrototypeComparison {
  static final RecipeEvaluator.Session fieldSession=new RecipeEvaluator.Session();
  static final RecipeEvaluator.Session pathSession=new RecipeEvaluator.Session();
  static final RecipeEvaluator.Session placementSession=new RecipeEvaluator.Session();
+ static final RecipeEvaluator.Session regionSession=new RecipeEvaluator.Session();
  static void session(RecipeEvaluator.Session session,Map<String,Object> recipe,RecipeEvaluator.Result fresh,String label,boolean reuse){
   RecipeEvaluator.Result cached=session.evaluate(recipe,new RecipeEvaluator.Limits());
   same(fresh.commands,cached.commands,label+"-session");same(fresh.environment,cached.environment,label+"-environment");
@@ -84,6 +85,13 @@ public class RecipePrototypeComparison {
   same(expected,result.commands,label);session(placementSession,recipe,result,label,reuse);
   System.out.println(label+" "+expected.size()+" "+result.counters);
  }
+ static void region(Map<String,Object> recipe,String label,boolean reuse){
+  List<Object> expected=RegionRecipeComposition.commands(obj(recipe.get("parameters")));
+  RecipeEvaluator.Result result=RecipeEvaluator.evaluate(recipe,new RecipeEvaluator.Limits());
+  same(expected,result.commands,label);session(regionSession,recipe,result,label,reuse);
+  System.out.println(label+" "+expected.size()+" "+result.counters);
+ }
+ static Map<String,Object> regionRecipe(){return __REGION__;}
  static Map<String,Object> placementRecipe(){return __PLACEMENT__;}
  static Map<String,Object> fieldRecipe(){return __FIELD__;}
  static Map<String,Object> pathRecipe(){return __PATH__;}
@@ -96,10 +104,16 @@ public class RecipePrototypeComparison {
   obj(q.get("parameters")).put("seed",43.0);placement(q,"placement-seed",false);
   obj(q.get("parameters")).put("attempts",320.0);placement(q,"placement-count",false);
   obj(q.get("parameters")).put("attempts",0.0);placement(q,"placement-empty",false);
+  Map<String,Object> regions=regionRecipe();region(regions,"region-baseline",false);
+  obj(regions.get("parameters")).put("insetFraction",0.22);region(regions,"region-inset",true);
+  obj(regions.get("parameters")).put("colors",list(0x2E0551,0xFF00C7,0x01AFC2,0xFDBE03,0xF4F9FD));region(regions,"region-palette",true);
+  obj(regions.get("parameters")).put("seed",43.0);region(regions,"region-seed",false);
+  obj(regions.get("parameters")).put("replacements",64.0);region(regions,"region-count",false);
+  obj(regions.get("parameters")).put("replacements",0.0);region(regions,"region-root",false);
   System.out.println("COMMAND_COMPARISON_PASSED");
  }
 }
-'''.replace('__FIELD__', java_value(recipes[0])).replace('__PATH__', java_value(recipes[1])).replace('__PLACEMENT__', java_value(recipes[2]))
+'''.replace('__FIELD__', java_value(recipes[0])).replace('__PATH__', java_value(recipes[1])).replace('__PLACEMENT__', java_value(recipes[2])).replace('__REGION__', java_value(recipes[3]))
     inputs = sorted((ROOT / 'packages/java/src/main/java').rglob('*.java'))
     inputs += sorted((ROOT / 'packages/java-processing/src/main/java').rglob('*.java'))
     inputs += sorted((ROOT / 'packages/java-recipe-prototype/src/main/java').rglob('*.java'))
@@ -107,7 +121,7 @@ public class RecipePrototypeComparison {
         'packages/java/examples/FieldMarks/MarkField.java',
         'packages/java-processing/examples/FieldMarks/MarkCommands.java',
         'packages/java/examples/PathMarks/PathMarkComposition.java',
-        'tests/native/RecipePrototypeFailures.java', 'tests/native/PlacementRecipeComposition.java')]
+        'tests/native/RecipePrototypeFailures.java', 'tests/native/PlacementRecipeComposition.java', 'tests/native/RegionRecipeComposition.java')]
     home = java_home(args.java_home)
     metadata = [ROOT / name for name in (
         'catalog/recipes/recipe.schema.json', 'catalog/recipes/execution-bindings.json',
@@ -141,7 +155,7 @@ public class RecipePrototypeComparison {
         raise RuntimeError('focused failure probes did not finish')
     if hashes != {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in bound}:
         raise RuntimeError('comparison input changed during execution')
-    report = {'status': 'prototype-command-comparison-passed', 'scope': 'Seventeen fresh/session command scenarios and focused failure probes; complete budget/type/replay, cache, export and native acceptance remain pending.',
+    report = {'status': 'prototype-command-comparison-passed', 'scope': 'Twenty-three fresh/session command scenarios and focused failure probes; complete budget/type/replay, cache, export and native acceptance remain pending.',
               'input_sha256': hashes, 'roundtripped_recipes': [p.name for p in recipe_paths], 'stdout': result.stdout, 'failure_stdout': failures.stdout}
     (output / 'result.json').write_text(json.dumps(report, indent=2) + '\n')
     print(result.stdout + failures.stdout)

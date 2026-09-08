@@ -1,5 +1,22 @@
 # Project state
 
+## Sixth recipe binding: region panels verified
+
+Luna added catalog metadata/generation for seeded quadrant partition. Root implemented
+constructor/materialization binding, transient capacity and ordered-shift reservations, native
+error preservation, region-panels recipe and direct-core oracle. Terra independently inspected
+the capacity/shift reasoning.23 exact fresh/session scenarios and14 focused groups pass in
+.work/recipe-regions-root1. New cases cover inset/palette reuse, seed/count invalidation and
+zero replacements. Native plan and accounting: design/recipes/region-panels-binding.md.
+Both standalone native previews rendered under the shared lock and were inspected by root:145
+panels retain the partition while insets/colors change.24 focused metadata/static tests pass.
+Evidence: evidence/distribution/recipe-regions-preview.json. The recipe layer now binds6
+operations and demonstrates4 compositions; accepted Java remains15 operations/15 starters.
+Next binding work should add a distinct existing capability with an explicit artist composition,
+then continue remaining target/asset/animation and later roadmap obligations.
+No new core operation or general recipe acceptance is claimed.
+
+
 ## Fifth recipe binding and placement preview verified
 
 Added seeded-circle-placement-2d to recipe metadata and evaluator using the accepted Java
