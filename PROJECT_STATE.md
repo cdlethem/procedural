@@ -1,5 +1,20 @@
 # Project state
 
+## Standalone parameter editing verified as a prototype
+
+Copied FieldMarks exports now allow editing parameters.json and rebuilding independently.
+Root reviewed sealed source verification, bounded finite JSON, combined recipe limits and
+actual source/parameter/JDK provenance. Default and palette-only builds match their native
+references exactly in RGBA; root inspected the palette result. Four focused reader/emitter
+tests pass. Duplicate keys, nonfinite values and combined value overflow reject before build
+output creation. Exported negative seed fails INPUT_SCHEMA in a headless evaluator probe;
+the invalid native entrypoint was not run while another worker held the shared render lease.
+Evidence: evidence/distribution/recipe-parameter-edit-prototype.json, explicitly prototype
+only. Historical snapshot evidence remains bound to its original source hashes.
+Next: catalog/executor admission review against the declared milestone requirements;
+remaining operation bindings, ports, assets and animation are still pending. Accepted Java
+count remains 15 operations / 15 starters. Preserve the unrelated JavaScript port edit.
+
 ## Retained-stage session prototype verified
 
 Previous10d188df pushed three native export cases. Root defined one-entry whole-retain-stage

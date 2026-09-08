@@ -53,8 +53,9 @@ acceptance; successful command comparison alone does not establish those capabil
 `tools/export_recipe_java_prototype.py --recipe <draft.json> --output .work/<fresh-name>`
 produces recipe JSON, embedded Java data, library/adapter sources, licenses, source hashes
 and a standalone build script. Supply an explicit JDK and Processing core to that script.
-Edit the source recipe and re-export to change this snapshot; no runtime JSON parser is
-claimed. Sources must match their manifest before building.
+Edit `parameters.json` in the exported folder and build a fresh output to change values.
+The standalone build validates that JSON and generates data-only Java; no runtime JSON
+parser is claimed. Composition and library sources must match their manifest before building.
 
 Copied FieldMarks baseline and PathMarks baseline/trace-edit exports compiled independently
 and matched their accepted references exactly in native JAVA2D. Root inspected all three; evidence is in
@@ -75,3 +76,10 @@ and reserves cached capacity against valueUnits before frame work. Result diagno
 not hypothetical reconstruction. The eleven exact comparisons and focused failure groups
 cover style reuse, geometry invalidation, alias detachment, budget rejection and recovery.
 This establishes the scoped prototype behavior, not accepted general executor support.
+
+Standalone parameter editing now has a copied-project native case: default FieldMarks and
+an edit to its palette both match the accepted native references exactly. The build records
+actual parameter bytes, canonical values, generated data source and JDK/core identities.
+Malformed JSON fails before compilation; invalid operation values fail in the evaluator
+before the exported entry point requests a renderer. Composition changes still require a
+new export. Evidence: `evidence/distribution/recipe-parameter-edit-prototype.json`.

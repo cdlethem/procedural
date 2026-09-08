@@ -42,3 +42,19 @@ from `evidence/reproductions/cp2-java2d/review.json`: `marks.png` and `trace.png
 `.work/reproductions/cp2-public-pde-visible-stream/`. Verify both recorded PNG hashes first.
 Both exported projects must compile from copies and match reference RGBA exactly. This
 checks the second composition and an actual recipe-data edit, not retained geometry reuse.
+
+## Standalone parameter-edit correction
+
+Sealed source snapshots required repository re-export for every palette or mark edit. That
+is inadequate for an editable project. Export an explicit editable `parameters.json` beside
+the sealed composition. The standalone stdlib build validates bounded finite JSON and the
+combined recipe size/depth, generates only data literals, and records actual parameter and
+compiled source hashes. Dynamic operation validation still occurs before renderer creation.
+No arbitrary AST or host code is interpreted from the parameter file.
+
+Select FieldMarks baseline and the accepted CP1 `palette` case for native checking. Change
+only `parameters.json` in a copied export, rebuild there, then require exact RGBA equality
+with `.work/reproductions/cp1-java2d-adapter/palette.png` using its verified evidence hash.
+Also reject duplicate keys/nonfinite JSON before compilation and dynamically invalid inputs
+before PNG creation. This establishes standalone parameter editing, not mutable composition
+source acceptance or general installed exporter support.
