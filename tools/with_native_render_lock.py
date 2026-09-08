@@ -28,17 +28,26 @@ def main():
             fcntl.flock(lease, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
             raise SystemExit('Native renderer busy: shared machine lease held; retry later.')
-        process = subprocess.Popen(command, start_new_session=True)
+        # Keep the same lease open in the child if this supervisor exits unexpectedly.
+        process = subprocess.Popen(command, start_new_session=True, pass_fds=(lease.fileno(),))
+        def interrupted(signum, frame):
+            raise KeyboardInterrupt
+        previous_handler = signal.signal(signal.SIGTERM, interrupted)
         try:
             raise SystemExit(process.wait(timeout=args.timeout))
         except (subprocess.TimeoutExpired, KeyboardInterrupt):
-            os.killpg(process.pid, signal.SIGTERM)
+            try:
+                os.killpg(process.pid, signal.SIGTERM)
+            except ProcessLookupError:
+                pass
             try:
                 process.wait(timeout=5)
             except subprocess.TimeoutExpired:
                 os.killpg(process.pid, signal.SIGKILL)
                 process.wait()
             raise SystemExit('Native command stopped; preserve its incomplete attempt.')
+        finally:
+            signal.signal(signal.SIGTERM, previous_handler)
 
 if __name__ == '__main__':
     main()

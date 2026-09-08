@@ -1,0 +1,178 @@
+{
+  "version": "0.15.0",
+  "processing_version": 15,
+  "accepted_distribution_review": {
+    "path": "evidence/distribution/line-pool-review.json",
+    "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
+  },
+  "core_sources": {
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+    "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+    "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+    "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+    "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+    "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+    "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+    "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1"
+  },
+  "examples": {
+    "procedurals/examples/BranchMarks/BranchComposition.java": {
+      "source": "packages/java/examples/BranchMarks/BranchComposition.java",
+      "sha256": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795"
+    },
+    "procedurals/examples/BranchMarks/BranchMarks.pde": {
+      "source": "packages/java-processing/examples/BranchMarks/BranchMarks.pde",
+      "sha256": "a027fb071ec9be9dd29607b7ce7dccb86772e2ab1680945ddd0973df66113e2c"
+    },
+    "procedurals/examples/FieldMarks/FieldMarks.pde": {
+      "source": "packages/java-processing/examples/FieldMarks/FieldMarks.pde",
+      "sha256": "332b225fe14cffc1ca7fd4f5c004f2986313e3e5ba7b0e08fda3ef83811d4d23"
+    },
+    "procedurals/examples/FieldMarks/MarkCommands.java": {
+      "source": "packages/java-processing/examples/FieldMarks/MarkCommands.java",
+      "sha256": "5d382de16edd6472e14659481c2c20bc1fe7118677c4c68e1d070bc3f59a66ad"
+    },
+    "procedurals/examples/FieldMarks/MarkField.java": {
+      "source": "packages/java/examples/FieldMarks/MarkField.java",
+      "sha256": "398dcf002dc35076f7af97e7a44f21a48a2ce6e10facf2d370dfac3b9e453ea7"
+    },
+    "procedurals/examples/GrainMarks/GrainComposition.java": {
+      "source": "packages/java/examples/GrainMarks/GrainComposition.java",
+      "sha256": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496"
+    },
+    "procedurals/examples/GrainMarks/GrainMarks.pde": {
+      "source": "packages/java-processing/examples/GrainMarks/GrainMarks.pde",
+      "sha256": "ea025f34174d525976c2b4ad05b528d3c1eec8a4eb63aed5c8374b90582cecdf"
+    },
+    "procedurals/examples/PathMarks/PathMarkComposition.java": {
+      "source": "packages/java/examples/PathMarks/PathMarkComposition.java",
+      "sha256": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256"
+    },
+    "procedurals/examples/PathMarks/PathMarks.pde": {
+      "source": "packages/java-processing/examples/PathMarks/PathMarks.pde",
+      "sha256": "d3bc9311cc0161644657e0243498dc10d98ebba2688714c679650173a9d15a15"
+    },
+    "procedurals/examples/PathMarks/PathMarksCanvas.java": {
+      "source": "packages/java-processing/examples/PathMarks/PathMarksCanvas.java",
+      "sha256": "4190d0f07f48b10b916e5a499ca8a8afbd9c54a35e94066d07dfe1b23f5ce62d"
+    },
+    "procedurals/examples/PlacementMarks/PlacementComposition.java": {
+      "source": "packages/java/examples/PlacementMarks/PlacementComposition.java",
+      "sha256": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615"
+    },
+    "procedurals/examples/PlacementMarks/PlacementMarks.pde": {
+      "source": "packages/java-processing/examples/PlacementMarks/PlacementMarks.pde",
+      "sha256": "2138e14197eaed823affb56db5980420f72576459e68ad0fe88c68214a433fd3"
+    },
+    "procedurals/examples/ProfileMarks/ProfileComposition.java": {
+      "source": "packages/java/examples/ProfileMarks/ProfileComposition.java",
+      "sha256": "634fc9b390c48e96ded5fd5c6e1152724d7bbb416eb10c02708cadf546324036"
+    },
+    "procedurals/examples/ProfileMarks/ProfileMarks.pde": {
+      "source": "packages/java-processing/examples/ProfileMarks/ProfileMarks.pde",
+      "sha256": "0c27374c075a0c325a1e8b2bd785df0d06fc4c91f901206ffa1c008112785bc4"
+    },
+    "procedurals/examples/RegionMarks/RegionComposition.java": {
+      "source": "packages/java/examples/RegionMarks/RegionComposition.java",
+      "sha256": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc"
+    },
+    "procedurals/examples/RegionMarks/RegionMarks.pde": {
+      "source": "packages/java-processing/examples/RegionMarks/RegionMarks.pde",
+      "sha256": "6d41157878f7f6ca82b6f6b663a05ea13b16214b525a8fe25047243901d552ec"
+    },
+    "procedurals/examples/GlyphMarks/GlyphMarks.pde": {
+      "source": "packages/java-processing/examples/GlyphMarks/GlyphMarks.pde",
+      "sha256": "2d6792238cb5f7bfeb6023c86fa6a64f7deb96e1ccd991a5dfb939d65df2bc81"
+    },
+    "procedurals/examples/GlyphMarks/GlyphComposition.java": {
+      "source": "packages/java/examples/GlyphMarks/GlyphComposition.java",
+      "sha256": "fd83d036e43942434fb588dcdc7a8e9fb66e3da36627fdc48f3c6d8fed5cbc93"
+    },
+    "procedurals/examples/GlyphMarks/GlyphFont.java": {
+      "source": "packages/java/examples/GlyphMarks/GlyphFont.java",
+      "sha256": "d5bb50f46e632927904b1f00c40761ea6049e0dc2eddc83d95fc64a4f2bba988"
+    },
+    "procedurals/examples/FacetMarks/FacetMarks.pde": {
+      "source": "packages/java-processing/examples/FacetMarks/FacetMarks.pde",
+      "sha256": "c620098fb4ae981ee0ad2325d394a2bc7708c471296ef49bf18e800336b2271a"
+    },
+    "procedurals/examples/FacetMarks/FacetComposition.java": {
+      "source": "packages/java/examples/FacetMarks/FacetComposition.java",
+      "sha256": "e3db603debd40fa5fe1910b334a5ac54a453e72e3bd9b9daa9c548616b49e2bb"
+    },
+    "procedurals/examples/SpringMarks/SpringComposition.java": {
+      "source": "packages/java/examples/SpringMarks/SpringComposition.java",
+      "sha256": "a6f1263c08cc902070d11ce5d6de52e22cbac16f625b63f668733654748d6735"
+    },
+    "procedurals/examples/SpringMarks/SpringMarks.pde": {
+      "source": "packages/java-processing/examples/SpringMarks/SpringMarks.pde",
+      "sha256": "b813a8f1dfa60fc49b366dce57813a4d91ac0022478c30927abd5a4e9256f82b"
+    },
+    "procedurals/examples/LatticeMarks/LatticeComposition.java": {
+      "source": "packages/java/examples/LatticeMarks/LatticeComposition.java",
+      "sha256": "a4044221220888e89dba9508747867f48e4cf028fb5ddd20f2f0c492567ee641"
+    },
+    "procedurals/examples/LatticeMarks/LatticeMarks.pde": {
+      "source": "packages/java-processing/examples/LatticeMarks/LatticeMarks.pde",
+      "sha256": "3b8cb0d7a3345f931fdd8558b083f8b02ee13971a952a66546a009ed3d1dd634"
+    },
+    "procedurals/examples/ReliefMarks/ReliefComposition.java": {
+      "source": "packages/java/examples/ReliefMarks/ReliefComposition.java",
+      "sha256": "748ab5545966f495d7fa51b55f50fbe8822ef8415a21c8c29e406e01be712bf5"
+    },
+    "procedurals/examples/ReliefMarks/ReliefMarks.pde": {
+      "source": "packages/java-processing/examples/ReliefMarks/ReliefMarks.pde",
+      "sha256": "a5b471e567a25bc213a7da31d39f4ebf3fabdb9baba8e26a048c98989606d4aa"
+    },
+    "procedurals/examples/CityMarks/CityComposition.java": {
+      "source": "packages/java/examples/CityMarks/CityComposition.java",
+      "sha256": "0cdc095ea49a9a39b58bc6cc8b7d6d9d7592061984fb22dc22e4f9f5836e5b70"
+    },
+    "procedurals/examples/CityMarks/CityMarks.pde": {
+      "source": "packages/java-processing/examples/CityMarks/CityMarks.pde",
+      "sha256": "95f461ce72dba9cd23530b1e795ff29cf9a5302cebed4914c58d02e453aac225"
+    },
+    "procedurals/examples/LandscapeMarks/LandscapeComposition.java": {
+      "source": "packages/java/examples/LandscapeMarks/LandscapeComposition.java",
+      "sha256": "265bf82c153e80eff11720616c75d376665979b8de7be644c2b8a07f99bc0da8"
+    },
+    "procedurals/examples/LandscapeMarks/LandscapeMarks.pde": {
+      "source": "packages/java-processing/examples/LandscapeMarks/LandscapeMarks.pde",
+      "sha256": "c825f59674c040a1c82bc07021e47b77a06fdb5cedbde22ec0ecdd03efd6810a"
+    },
+    "procedurals/examples/CutBranchMarks/CutBranchComposition.java": {
+      "source": "packages/java/examples/CutBranchMarks/CutBranchComposition.java",
+      "sha256": "4ff4769b2579844684ea45b8b76854709d42f17f24bb8fe196e1c572eb21f2a2"
+    },
+    "procedurals/examples/CutBranchMarks/CutBranchMarks.pde": {
+      "source": "packages/java-processing/examples/CutBranchMarks/CutBranchMarks.pde",
+      "sha256": "80055e16c4a51019a3e59aff2f0eddf1df0402ac1f4012954ea7ff00414e6145"
+    }
+  },
+  "operation_files": [
+    "cyclic-palette.json",
+    "delaunay-2d.json",
+    "gradient-noise-2d-01.json",
+    "gradient-path.json",
+    "occupied-lattice-paths-2d.json",
+    "ordered-circle-filter.json",
+    "radial-profile-surface.json",
+    "regular-grid.json",
+    "seeded-circle-placement.json",
+    "seeded-endpoint-branches.json",
+    "seeded-line-pool-2d.json",
+    "seeded-quadrant-partition.json",
+    "seeded-triangle-points.json",
+    "target-springs-2d.json",
+    "triangle-coordinate-map.json"
+  ],
+  "font_sha256": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+  "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9"
+}

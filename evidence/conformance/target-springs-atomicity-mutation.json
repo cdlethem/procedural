@@ -1,0 +1,9 @@
+{
+  "status": "mutation_rejected",
+  "mutation": "Commit each completed body before whole batch succeeds",
+  "source_sha256": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+  "native_sha256": "f5756e8a31e929dd77cb7d4037c95fde61c8727a2ca5d6cbbfcf81815b697bbc",
+  "exit_code": 1,
+  "stdout": "{\"status\":\"failed\",\"assertions\":1199,\"error\":\"java.lang.AssertionError: late arithmetic failure atomic/bodies/0/position/0\"}\n",
+  "stderr": ""
+}

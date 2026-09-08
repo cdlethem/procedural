@@ -1,5 +1,60 @@
 # Project state
 
+## Source-only Java builder accepted for identical Java0.15 payloads
+
+Root took over stalled builder assignment and completed readable implementation plus5focused
+unittests. Clean baseline checkout build initially caught a .work-only spring mutation proof;
+promoted exact JSON to evidence/conformance/target-springs-atomicity-mutation.json, preserved
+original review, added portable review and updated affected attestation references. No
+semantic/support changes.5builder+11attestation tests and catalog checker pass.
+Two isolated builds byteidentical; all77classfiles and33exampletabs+2font/licenseassets match
+acceptedJava0.15. Initial overly broad comparison included obsolete pending-validation
+PathMarksREADME; intentionally omitted that stale doc while including current guides.
+Root acceptance evidence/distribution/java-source-bundle-review.json. New tool uses explicit
+JDK/font/license, frozen sourcebundle input manifest and accepted attestations; no prior
+archives/stages/renders needed. Updated usage docs. Shared render SIGTERM hardening included
+in this checkpoint. Final current-docs builds also match each other and all accepted executable/example payloads.
+Next commit/push reviewed integration, then select bounded Java artist
+capability/helper work independently of separate porting checkout. Fullgoalactive.
+
+
+## Shared native lease termination hardened
+
+While sourcebundle worker remains live, root reviewed sharedrender supervisor lifecycle.
+Child now inherits lease descriptor and wrapper handles SIGTERM by terminating its process
+group before releasing the lease. Focused subprocess checks passed: second checkout-style
+command blocked while held, child gone after supervisor SIGTERM, next command reacquires.
+No renderer was launched. This prevents early lease release on ordinary supervisor termination;
+SIGKILL cannot provide process-group cleanup guarantees. Changes await coherent integration
+commit with sourcebuilder. Previous turn preparedcleancheckout; currentturn strengthens the
+cross-checkout coordination explicitly requested bymaintainer. Fullgoalactive.
+
+
+## Clean-checkout source-bundle test environment prepared
+
+Root extracted only pushed baseline tracked files into .work/source-bundle-clean1; verified
+it has no prior.work artifacts. Accepted font/license supplied separately under ignored
+.work/source-bundle-external-inputs. Final builder will be copied into that checkout after
+Terra freezes implementation/tests. Prepared source-build usage doc clearly marked underreview.
+No sourcebundle acceptance or commit yet; current Java0.15 remains accepted. Next execute
+final builder in isolated checkout and compare exact class/example/font payloads. Previous
+turn assignedsourcebuilder; this turn prepares the meaningful clean-input validation.
+
+
+## Pushed baseline; source-only Java packaging underway
+
+Baseline e5a604acc42e9e47f5d843888350a8672d786485 was pushed to origin/main and remote SHA
+verified; worktree was clean. Separate porting work stays outside root's Java batch.
+Root identified current historical package builders' dependency on prior ignored archives.
+New bounded source-only builder task assigned Terra line_pool_java: builder+focused tests,
+explicit JDK/font/license, acceptedsource bindings,15starter assembly, deterministic archive.
+Root acceptance plan design/java-source-bundle-acceptance.md. Independent fresh javac--release8
+output matches all77 accepted Java0.15 classfiles exactly, so identical final executable/font/
+example payloads can reuse native acceptance without redundant rendering. No new release or
+builder acceptance yet. Next review/test actual sourcebundle and document clean-checkout use;
+commit/push only the completed integration checkpoint. Full goal active.
+
+
 ## Baseline publication and port ownership handoff
 
 Maintainer authorizes reviewed commits/pushes directly to main, no approval required.

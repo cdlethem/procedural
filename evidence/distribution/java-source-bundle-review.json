@@ -1,0 +1,29 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Clean-checkout source assembly matches accepted Java0.15 executable/example-tab/font payloads; no new operation or native support",
+  "tool_sha256": "1c6642072fbb0754083e17a8dbb2cf32fbb21fcf10f6d44074f2d1daca1fa1cd",
+  "manifest_sha256": "7b0ba7364e27f6a2fc7ee1aefe4f16f10ce67a32f65f9dd7411f9ca9df1c519f",
+  "archive": {
+    "path": ".work/source-bundle-clean1/.work/build3/procedurals-java-source-dev.zip",
+    "sha256": "c89fa3c4d7609de91cf4df21f7c7789b578b66671bb6f1bfa3bace22d31b359d"
+  },
+  "checks": {
+    "deterministic_two_builds": true,
+    "exact_class_payloads": 77,
+    "exact_example_tabs_and_assets": 35,
+    "fresh_checkout_without_prior_archives": true,
+    "focused_bundle_tests": 5,
+    "attestation_regression_tests": 11
+  },
+  "evidence_correction": "Identical spring atomicity mutation result promoted to tracked evidence; original review preserved; attestation points to portable review.",
+  "package_differences": [
+    "Source files and support metadata included; JAR container metadata and library description rebuilt",
+    "Current repository docs included; obsolete pre-acceptance PathMarks example README omitted intentionally"
+  ],
+  "limits": [
+    "Explicit external JDK/font/license required",
+    "Build success remains assembly evidence, not automatic acceptance of future changed payloads"
+  ]
+}

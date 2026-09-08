@@ -79,3 +79,11 @@ root's checkout; coordinate contract/evidence changes when rebasing ports. Recip
 exporters, MCP/web, further guides/tools and remaining port/reproduction milestones remain
 unfinished. Keep batches bounded and report capabilities/scenarios rather than expanded
 assertion counts.
+
+## Source build follow-up
+
+The Java bundle can now be assembled without prior local archives using
+[the source-build instructions](building-java-from-source.md). It still requires explicit
+external JDK and font/license inputs. A spring atomicity proof formerly stored in ignored
+scratch was preserved verbatim in tracked evidence and its attestation reference updated;
+this changes no operation semantics or target support.
