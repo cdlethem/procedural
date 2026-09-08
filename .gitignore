@@ -17,6 +17,9 @@ dist/
 # Repository-local scratch work, test temporaries, and render output.
 .work/
 
+# Local py5 example render scratch (each example saves its shown canvas under output/).
+packages/python/examples/*/output/
+
 # Generated benchmark runs and candidate renders.
 reports/benchmark-result.json
 reports/benchmark-result.md
