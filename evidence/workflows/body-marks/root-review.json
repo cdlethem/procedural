@@ -1,0 +1,38 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "scope": "BodyMarks native repository composition using existing path/noise/palette/grid operations; distribution separate",
+  "native_evidence": {
+    "path": "evidence/workflows/body-marks/native.json",
+    "sha256": "ad6bfe2972eff332f9bb4e99244db18aa0802c4e83c68a299d4e1426a89fb8d2"
+  },
+  "verified": [
+    "Actual JAVA2D640 density1 and candidate JAR origins for all four operations.",
+    "Six posted key events W/M/M/./0/S produce six captures.",
+    "Width-profile and centerline transfer preserve head array, individual retained spine identities and values; body restore matches tapered pixels.",
+    "Actual single-step gesture advances one tick, replaces heads/spines and starts each spine at its corresponding current head.",
+    "Reset restores baseline geometry/pixels; cached save matches completed framebuffer with no additional meaningful render.",
+    "24 non-render ticks replay exact head/spine state after reset; bounded300 path steps per tick.",
+    "Root inspected baseline, tapered, centerlines and advanced PNGs."
+  ],
+  "measured_recomputation": {
+    "ticks": 24,
+    "path_steps_per_tick": 300,
+    "elapsed_nanos": 2561526,
+    "scope": "Single pinned-runtime observed workload, no FPS/allocation guarantee"
+  },
+  "visual_observations": [
+    "Twelve broad curved tapered strips become finer after increasing the taper exponent.",
+    "Centerlines follow the same retained spines.",
+    "A tick shifts the heads and changes the reconstructed body geometry."
+  ],
+  "limits": [
+    "No source peces reproduction, history/agent engine, arbitrary supplied field or generic offset/join/cap guarantee.",
+    "Continuous run/pause uses the reviewed PointerMarks/SpringMarks pattern; this bounded BodyMarks native scenario exercises paused stepping.",
+    "Numeric constants are authored piece settings, not measured useful ranges."
+  ],
+  "review_corrections": [
+    "Fixed blue-channel mask mistaken for alpha argument.",
+    "Probe retains a clone of spine references so identity checks cannot pass by aliasing a mutated array."
+  ]
+}

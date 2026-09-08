@@ -22,9 +22,10 @@ The probe verifies that fixed edges retain the initial mesh object and use each 
 `sourceIndexAt` mapping back to a valid original body. It does not assert a current Delaunay
 mesh or non-crossing geometry.
 
-Separately, the probe posts **Space** to start the actual `loop()` path. It observes at least
+Separately, the probe posts **Space** to start the actual continuously serviced display-loop path. It observes at least
 three running draw callbacks, each advancing exactly one tick, posts **Space** to pause, and
-checks the subsequent redraw does not advance. It does not assert a wall-clock-derived or
+checks the subsequent dirty paused draw does not advance. Clean paused callbacks return
+before drawing or stepping. It does not assert a wall-clock-derived or
 exact running-frame count. It posts **S** only after that paused frame and compares the cached
 image to the saved PNG without an additional draw.
 

@@ -1,5 +1,45 @@
 # Project state
 
+## Java0.25 accepted — two reusable compositions and palette application
+
+24 operations and26 packaged workflows; no core API additions in this batch.
+PointerMarks demonstrates explicit pointer targets, fixed initial wire connectivity,
+24-held/24-released replay, actual animation/pause and cached save. Root fixed a native
+pause-redraw failure with the existing SpringMarks active-display-loop/dirty-frame pattern.
+BodyMarks demonstrates12 backward field spines, taper/centerline transfer, one explicit tick,
+reset and cached save. Its24-tick geometry replay passes; observed recomputation of300 path
+steps per tick took about2.56ms total for24 ticks on pinned runtime (not FPS/allocation claim).
+
+Distribution acceptance: evidence/distribution/cp22-java-review.json. Archive
+.work/dist/cp22-java-source-root1/procedurals-java-source-dev.zip,229members. All26 extracted
+PDE examples compile; both changed native consumers pass. Seven deterministic PNGs each
+match candidates; PointerMarks asynchronous lifecycle final frame is checked within its own
+run, not against a wall-clock-dependent candidate tick. Core107 classes, adapter1 class and
+all44 prior example/font members preserved. Gallery137 images/30groups.
+
+C2 palette extraction/application accepted in evidence/tooling/palette-application-review.json:
+actual CutMarks image to five extracted colors to existing FieldMarks, same42 seed/layout.
+Root inspected original/recolored images. Source/extracted adapter files remain untouched;
+no new helper algorithm, core API or automatic runtime palette JSON schema.
+
+Next C3 root capability-boundary and usability review:
+- Bounded rare-family screen still supports Delaunay and native glyph placement rather than
+  nearest-site Voronoi cells or font-outline extraction. Root query found61 notes mentioning
+  Voronoi, almost entirely technique tags; non-tag mentions are colidion deformation,
+  dadatata visual analogy, kidmi non-Voronoi disclaimer and plasma007 line trimming. No
+  glyph/font outline, geomerative, getGlyphOutline or RFont matches in current notes.
+  These are search/evidence limits, not proof of corpus-wide absence. Final explicit in/out
+  scope decisions and source rationale remain to record; do not claim unknown support.
+- Review mesh/grammar/shader boundaries alongside existing capability map.
+- Actual Java API discovery remains weak: generated operation reference leads with JSON
+  schemas. Assess standard source-derived Javadoc and a concise Java entry path, preserving
+  catalog authority rather than duplicating metadata manually.
+- Complete install-to-edit walkthrough/coverage audit against docs/java-completion-plan.md.
+Do not mark full goal complete from counts or this packaged batch alone.
+
+Workers/native jobs finished. Ports integration and Sol review remain paused; unrelated
+Android ProfileMarks edit preserved. Root remains final architecture/integration owner.
+
 ## Java0.24 accepted — parallel batch checkpoint
 
 24 operations and24 packaged workflows. New RetainedRectangles2D core and CutMarks selected

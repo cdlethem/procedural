@@ -1,0 +1,30 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "scope": "Actual Java palette extraction/application helper demonstration; no new core operation",
+  "input_sha256": {
+    "tests/test_palette_application_native.py": "a6b074e19811ce67d7fa48333c72ad2729cbfe484273ec7a5396a7cd5811be55",
+    "tools/extract_palette.py": "ed53e06bcb3cfe776f0ebfe1abfde29b0e708616a78b441843fce5240c31ad69",
+    "tools/render_java.py": "1d7eb545c8e7b05301e737ced9f4699bce05c08c0595ffd93121a52e51469c99",
+    "evidence/tooling/palette-application-native.json": "5ff864c60e87119cae3f838d589e3e26416a5e8bf03c606830db0b01f6ffbf54",
+    "evidence/tooling/palette-application-extraction.json": "a5c3448a5f4974f347331150ec83efcbce0093789c83439beb669b8464e912b9"
+  },
+  "validation": "RUN_PALETTE_APPLICATION_NATIVE=1 PALETTE_APPLICATION_OUTPUT=.work/palette-application-root3 python3 -m unittest tests.test_palette_application_native: one native test passed",
+  "verified": [
+    "Extracted5 colors from actual accepted CutMarks baseline, preserving source hash and existing JSON provenance format.",
+    "Staged accepted Java0.24 FieldMarks PDE/tabs and extracted adapter source; original installed example files unchanged after rendering.",
+    "Only appended render hook selects seed and original/extracted palette; same42 seed, layout and MarkCommands drawing in both native variants.",
+    "Two640x640 JAVA2D outputs have distinct hashes; root inspected both images."
+  ],
+  "visual_observations": [
+    "The field retains its visible flow pattern while colors become more muted after applying the image-derived palette."
+  ],
+  "limits": [
+    "No new portable quantization or runtime palette JSON schema.",
+    "This demonstrates the documented manual palette-array handoff, not automatic semantic palette selection or an exact geometry-buffer comparison."
+  ],
+  "resolved_attempts": [
+    "Initial attempt omitted required desktop adapter and failed before rendering.",
+    "Final run uses adapter source from the accepted extracted distribution and confines persistent output to repository .work."
+  ]
+}

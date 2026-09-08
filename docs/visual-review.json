@@ -2,6 +2,83 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "palette-application",
+      "title": "Palette extraction applied to FieldMarks",
+      "category": "Accepted tooling",
+      "description": "Same seed and layout, original colors versus colors extracted from the CutMarks baseline.",
+      "evidence": "evidence/tooling/palette-application-review.json",
+      "images": [
+        {
+          "label": "Original palette",
+          "path": ".work/palette-application-root3/render/variant-00/extracted0-0.0.png",
+          "sha256": "191dc4ffafa9abfff2cf1340b83b030fb94decdf1cf1e303f08c17778747ae45"
+        },
+        {
+          "label": "Extracted palette",
+          "path": ".work/palette-application-root3/render/variant-01/extracted0-1.0.png",
+          "sha256": "93ebe4448b0c11cd81e37f4ac510531b5eb598f8c26ce12c5ad05647dc266484"
+        }
+      ]
+    },
+    {
+      "id": "body-marks",
+      "title": "BodyMarks \u2014 retained backward spines",
+      "category": "Accepted workflow",
+      "description": "Tapered bodies, profile edits, centerline transfer and explicit head motion; native accepted, packaging separate.",
+      "evidence": "evidence/workflows/body-marks/root-review.json",
+      "images": [
+        {
+          "label": "Broad body profile",
+          "path": ".work/body-marks-native-root1/native/baseline.png",
+          "sha256": "16b2a00663b418a5493e081ea650f6d9e1e85565de2253a247a5e9005153597c"
+        },
+        {
+          "label": "Sharper taper",
+          "path": ".work/body-marks-native-root1/native/tapered.png",
+          "sha256": "797cb2b9a9e76e19bbf21a4bb9c7d446c8d7658e3d31cfa0ff3147c8da8128f0"
+        },
+        {
+          "label": "Same retained centerlines",
+          "path": ".work/body-marks-native-root1/native/centerlines.png",
+          "sha256": "3e0a028dabb0f9fb06567b1595f2346700bdbc830e1e6873327aeaf079e1b136"
+        },
+        {
+          "label": "One head-motion tick",
+          "path": ".work/body-marks-native-root1/native/advanced.png",
+          "sha256": "bbe421a057b91e3cfd6e3967f789e0f4fffebf743d3130a47e64937b2a63ab38"
+        }
+      ]
+    },
+    {
+      "id": "pointer-marks",
+      "title": "PointerMarks \u2014 supplied targets and retained wire",
+      "category": "Accepted workflow",
+      "description": "Native Java held-pointer pull, fixed connectivity transfer and release. Replay and actual run/pause validated; distribution pending.",
+      "evidence": "evidence/workflows/pointer-marks/root-review.json",
+      "images": [
+        {
+          "label": "Initial arrangement",
+          "path": ".work/pointer-marks-native-root2/native/baseline.png",
+          "sha256": "014c437fa9ab138ec7d3d2c335df7818b5dd2af53e8dc417679e4a170a755c2e"
+        },
+        {
+          "label": "Pointer pull",
+          "path": ".work/pointer-marks-native-root2/native/held-dots.png",
+          "sha256": "151dd30d479345ab64b2181f8995504e11c99d1924d042797faad56cddb82b78"
+        },
+        {
+          "label": "Same positions, fixed wire",
+          "path": ".work/pointer-marks-native-root2/native/held-wire.png",
+          "sha256": "455c3165fd24e9a771a217fe6d8010a6e02f635d1d2558d9c8b53b6bcbb1a75b"
+        },
+        {
+          "label": "Released targets",
+          "path": ".work/pointer-marks-native-root2/native/released-dots.png",
+          "sha256": "337f943f577541cbf39cc0bccc7dc8ea86ab86d46f80f2ac801f807df733bd06"
+        }
+      ]
+    },
+    {
       "id": "cut-marks",
       "title": "CutMarks \u2014 edit retained regions",
       "category": "Accepted workflow",

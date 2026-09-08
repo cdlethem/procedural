@@ -18,6 +18,8 @@ from tools.check_processing_runtime import CORE_SHA256
 
 RUNTIME = ROOT / '.work/toolchains/processing-4.5.6'
 PROFILES = {
+    'BodyMarks': ('body-marks', ['baseline', 'tapered', 'centerlines', 'body-restored', 'advanced', 'reset'], 'wmm.0s'),
+    'PointerMarks': ('pointer-marks', ['baseline', 'held-dots', 'held-wire', 'released-dots', 'reset', 'replay-held-dots', 'replay-released-dots', 'lifecycle-paused'], 'mm0SPACESPACEs'),
     'PolygonMarks': ('polygon-marks', ['baseline', 'thin', 'recolored', 'diamonds', 'regenerated', 'reset'], 'acmr0s'),
     'CutMarks': ('cut-marks', ['baseline', 'selected-x', 'decorated', 'deleted', 'reset'], 'xdDELETE0s'),
     'PullMarks': ('pull-marks', ['baseline', 'wider', 'falloff', 'recolored', 'contours', 'reset'], 'rpcm0s'),

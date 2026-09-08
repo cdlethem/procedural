@@ -1,6 +1,6 @@
 {
-  "version": "0.24.0",
-  "processing_version": 24,
+  "version": "0.25.0",
+  "processing_version": 25,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -199,6 +199,14 @@
     "procedurals/examples/CutMarks/CutMarks.pde": {
       "source": "packages/java-processing/examples/CutMarks/CutMarks.pde",
       "sha256": "1a51b11b1c1e7c4dccd5cb96d109cbaceff7873e65cfded28f29ec4db18586e9"
+    },
+    "procedurals/examples/PointerMarks/PointerMarks.pde": {
+      "source": "packages/java-processing/examples/PointerMarks/PointerMarks.pde",
+      "sha256": "c6a9531722ce4d1dc2398eb52ba0847b34b48adb0c1a0d1c8827bf3445565b8e"
+    },
+    "procedurals/examples/BodyMarks/BodyMarks.pde": {
+      "source": "packages/java-processing/examples/BodyMarks/BodyMarks.pde",
+      "sha256": "aa35fe48066afdf0f35199b893d1ae4cdd13dd90f361af4eb5298db80a54d505"
     }
   },
   "operation_files": [

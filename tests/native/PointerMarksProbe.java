@@ -61,6 +61,7 @@ public final class PointerMarksProbe extends PointerMarks {
     }
 
     @Override public void draw() {
+        if (!running && !dirty) return;
         callbacks++;
         try {
             require(width == 640 && height == 640 && pixelDensity == 1
@@ -89,7 +90,6 @@ public final class PointerMarksProbe extends PointerMarks {
         require(tick == 24L, "held tick count");
         dirty = true;
         phase = 1;
-        requestNextFrame();
     }
 
     private void heldDots() throws Exception {
@@ -127,7 +127,6 @@ public final class PointerMarksProbe extends PointerMarks {
         replay(true, 24);
         dirty = true;
         phase = 5;
-        requestNextFrame();
     }
 
     private void replayHeldDots() throws Exception {
@@ -137,7 +136,6 @@ public final class PointerMarksProbe extends PointerMarks {
         replay(false, 24);
         dirty = true;
         phase = 6;
-        requestNextFrame();
     }
 
     private void replayReleasedDots() throws Exception {
@@ -220,10 +218,6 @@ public final class PointerMarksProbe extends PointerMarks {
     private void post(char key) {
         events.schedule(() -> postEvent(new KeyEvent(null, System.currentTimeMillis(), KeyEvent.PRESS, 0, key, 0)),
             180, TimeUnit.MILLISECONDS);
-    }
-
-    private void requestNextFrame() {
-        events.schedule(this::redraw, 180, TimeUnit.MILLISECONDS);
     }
 
     private void finish() {

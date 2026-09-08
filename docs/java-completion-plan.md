@@ -30,13 +30,14 @@ The broader corpus benchmark remains a separate strict certification claim.
 
 ## Existing capability baseline
 
-Java0.24 assembles24 operations and24 workflows: field marks, integrated paths, constrained
+Java0.25 assembles24 operations and26 workflows: field marks, integrated paths, constrained
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
 paths, raster remapping, positioned color ramps, noise-band paths, smooth closed curves and binary panel layouts,
-plus retained caller-selected rectangle cuts and relief/city/landscape compositions. Four selected original structural
+plus retained caller-selected rectangle cuts, pointer-target and tapered-body workflows,
+and relief/city/landscape compositions. Four selected original structural
 recreations are demonstrated; Curvespace is a separate repository example, outside the
-accepted Java0.24 archive. Consult current operation attestations rather than historical
+accepted Java0.25 archive. Consult current operation attestations rather than historical
 status paragraphs in the provisional API design.
 
 ## Completed batch: raster warping (CP13)

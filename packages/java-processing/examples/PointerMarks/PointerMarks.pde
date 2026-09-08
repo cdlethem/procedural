@@ -37,7 +37,7 @@ void settings() { size(640, 640, JAVA2D); pixelDensity(1); }
 
 void setup() {
   buildInitialState();
-  noLoop();
+  // Keep the display loop active; paused clean callbacks do no drawing or stepping.
 }
 
 void buildInitialState() {
@@ -187,15 +187,12 @@ void keyPressed() {
   if (key == ' ') {
     running = !running;
     dirty = true;
-    if (running) loop();
-    else { noLoop(); redraw(); }
     return;
   }
   if (key == '.') {
     if (!running) {
       stepWithInput(pointerHeld, pointerX, pointerY);
       dirty = true;
-      redraw();
     }
     return;
   }
@@ -206,10 +203,9 @@ void keyPressed() {
   }
   if (pressed == 'm') wire = !wire;
   else if (pressed == 't') showTargets = !showTargets;
-  else if (pressed == '0') { resetState(); noLoop(); }
+  else if (pressed == '0') resetState();
   else return;
   dirty = true;
-  redraw();
 }
 
 List<Object> pair(double x, double y) {
