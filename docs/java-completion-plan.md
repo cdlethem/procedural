@@ -3,7 +3,7 @@
 Current maintainer objective: build a feature-complete Java implementation. Ports are
 paused per `porting-resume.md`; recipes/MCP/web remain a separate roadmap, not prerequisites
 for making the native Java library useful. This plan does not claim feature completeness
-or replace the project's mission with the current24 operations.
+or replace the project's mission with the current operation count.
 
 Execution now follows [the remaining-scope map and parallel batches](java-buildout-batches.md).
 
@@ -30,12 +30,13 @@ The broader corpus benchmark remains a separate strict certification claim.
 
 ## Existing capability baseline
 
-Java0.25 assembles24 operations and26 workflows: field marks, integrated paths, constrained
+Java0.26 source milestone assembles26 operations and27 workflows: field marks, integrated paths, constrained
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
 paths, raster remapping, positioned color ramps, noise-band paths, smooth closed curves and binary panel layouts,
 plus retained caller-selected rectangle cuts, pointer-target and tapered-body workflows,
-and relief/city/landscape compositions. Four selected original structural
+and relief/city/landscape compositions. LayerMarks adds image/callback region content, masked
+source-over and two-input crossfade. Four selected original structural
 recreations are demonstrated; Curvespace is a separate repository example, outside the
 accepted Java0.25 archive. Consult current operation attestations rather than historical
 status paragraphs in the provisional API design.

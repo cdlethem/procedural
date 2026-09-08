@@ -1,6 +1,6 @@
 {
-  "version": "0.25.0",
-  "processing_version": 25,
+  "version": "0.26.0",
+  "processing_version": 26,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -29,7 +29,9 @@
     "packages/java/src/main/java/org/procedurals/layout/BinaryCellPartition2D.java": "5406bf9ae61e8cc1edc028974de848ba6ac79d2efe52dc7d9c845d6333d4c389",
     "packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java": "24a1800f9a410763f82672bbb8cbbce9e9598298d2ca0651f3527085b4280cf3",
     "packages/java/src/main/java/org/procedurals/fields/GradientNoise3D01.java": "4874c28ff020ce28ab1eeeab463b140779a531627cb09a660dbb55ef5ae3ee91",
-    "packages/java/src/main/java/org/procedurals/geometry/RadialPull2D.java": "1ddc552adbca746442c993d5340b924a139c4de48bb37c64fbe4a5591da79d85"
+    "packages/java/src/main/java/org/procedurals/geometry/RadialPull2D.java": "1ddc552adbca746442c993d5340b924a139c4de48bb37c64fbe4a5591da79d85",
+    "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4",
+    "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c"
   },
   "examples": {
     "procedurals/examples/BranchMarks/BranchComposition.java": {
@@ -207,6 +209,10 @@
     "procedurals/examples/BodyMarks/BodyMarks.pde": {
       "source": "packages/java-processing/examples/BodyMarks/BodyMarks.pde",
       "sha256": "aa35fe48066afdf0f35199b893d1ae4cdd13dd90f361af4eb5298db80a54d505"
+    },
+    "procedurals/examples/LayerMarks/LayerMarks.pde": {
+      "source": "packages/java-processing/examples/LayerMarks/LayerMarks.pde",
+      "sha256": "41f5b8dc14ac0810f84cb2affd8b8735536bd7c21755a97792132266c8dcdfa8"
     }
   },
   "operation_files": [
@@ -218,12 +224,14 @@
     "gradient-noise-2d-01.json",
     "gradient-noise-3d-01.json",
     "gradient-path.json",
+    "masked-source-over.json",
     "noise-band-path.json",
     "occupied-lattice-paths-2d.json",
     "ordered-circle-filter.json",
     "ordered-convex-polygon-filter-2d.json",
     "radial-profile-surface.json",
     "radial-pull-2d.json",
+    "raster-crossfade.json",
     "regular-grid.json",
     "retained-rectangle-cuts-2d.json",
     "seeded-circle-placement.json",
@@ -238,7 +246,8 @@
   "font_sha256": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
   "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
   "adapter_sources": {
-    "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24"
+    "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "c64580c062108838f51bc53de6a1c964ffa09fd96c49a03f28f8cbb2eca724b5"
   },
   "processing_core_sha256": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4"
 }

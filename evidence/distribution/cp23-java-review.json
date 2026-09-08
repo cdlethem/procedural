@@ -1,0 +1,50 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.26.0",
+  "scope": "26 Java operations,27 packaged workflows, rectangular region-content adapter and source-derived Java reference; no registry publication or new port support.",
+  "archive": {
+    "path": ".work/dist/cp23-java-source-root2/procedurals-java-source-dev.zip",
+    "sha256": "1ae2aef610ed8be6507f552c023367449844441a164e46e093c38ed4f6a6ff12",
+    "members": 375
+  },
+  "reports": {
+    "source": {
+      "path": "evidence/distribution/cp23-java-source.json",
+      "sha256": "09e6a4b0cdd8a8fc0d577100736d5c19308655de6e787119c5b8d58a4e27144e"
+    },
+    "first-source": {
+      "path": "evidence/distribution/cp23-java-first-source.json",
+      "sha256": "ed34272b7b079e7110341ede5e98e1fc35b54a4d0dbed52e9a30a658a2a9101e"
+    },
+    "layer-consumer": {
+      "path": "evidence/distribution/cp23-java-layer-consumer.json",
+      "sha256": "a174674e67636e240ae2e4fa7a95e6f149d214e46e6b95338da1bc97ff424306"
+    },
+    "final-consumer": {
+      "path": "evidence/distribution/cp23-java-final-consumer.json",
+      "sha256": "868641c853c744ab4fafd94988a27b7a796cd2fdc20b86109f0df759b800da07"
+    }
+  },
+  "verified": [
+    "Final extracted archive compiles all27 PDE examples and verifies complete28-class core/adapter Javadoc inventory and hashes.",
+    "First extracted archive passed native LayerMarks queued mode cycle, cached save, retained source/background, outside-region preservation and separate core/adapter JAR origins.",
+    "Final documentation rebuild preserves every tested library/example member byte-for-byte, so native result transfers without duplicate render.",
+    "All107 prior core classes and1 prior adapter class remain byte-identical.",
+    "Root inspected four LayerMarks modes and accepted Java core/adapter scoped evidence; crossfade is visibly distinct from feathered cutouts."
+  ],
+  "checks": {
+    "unchanged_tested_library_example_members": 49,
+    "unchanged_prior_core_classes": 107,
+    "unchanged_prior_adapter_classes": 1,
+    "reference_declared_class_pages": 28,
+    "javadoc_warnings": 646
+  },
+  "limits": [
+    "JAVA2D density1 rectangular regions only; no polygon masks, image-fit convenience or automatic feature extraction.",
+    "Javadoc generation passes with missing documentation warnings; reference is not claimed warning-free.",
+    "Port integration remains paused; prior accepted ports unchanged.",
+    "Clearly labelled historical design/private studies and candidate-stage comments do not supersede this scoped distribution record."
+  ]
+}

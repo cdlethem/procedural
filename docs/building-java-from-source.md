@@ -1,15 +1,16 @@
 # Build the Java library from source
 
-The source-bundle builder assembles Java0.25 directly from the checked-in sources, including
-24 operations and 26 editable starters. PullMarks adds localized geometry warping; DepthMarks adds 3D fields and mesh coloring. PanelMarks adds irregular retained panels to the
-closed-curve, noise-band, field, path, mesh and other workflows. The Java0.25 artifact
-review is recorded in `evidence/distribution/cp22-java-review.json`. Each generated report records assembly
-rather than automatically approving future changed inputs.
+The source-bundle builder assembles Java0.26 from checked-in sources: 26 operations and
+27 editable workflows. LayerMarks adds partition content callbacks, image snippets, soft
+cutouts and two-input crossfades. The archive also includes source-derived Java reference
+pages for core and Processing adapter classes in `reference/index.html`.
+Build reports record assembly; distribution acceptance requires a separate root review.
+The prior Java0.25 review remains in `evidence/distribution/cp22-java-review.json`.
 
 Supply Python 3.11 or newer, a JDK supporting `javac --release 8`, the audited
 Processing 4.5.6 `core.jar`, the accepted GlyphMarks DejaVu Sans font,
 and its complete license notice. Fonts and toolchains are external inputs, not tracked
-project assets. The font is needed to preserve the complete26-starter bundle; it is not
+project assets. The font is needed to preserve the complete27-starter bundle; it is not
 silently omitted or replaced by a system fallback.
 
 ```sh

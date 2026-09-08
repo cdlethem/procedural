@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "scope": "Root native adapter probe against source-bound LayerMarks candidate JAR",
+  "inputs_before": {
+    ".work/layer-marks-native-root3/procedurals-core-candidate.jar": "5227c3aca521c4df31bec37642ffefa7904600e1f3ecee9c120d6ec1fefcfe3c",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "tests/native/Java2DRegionsNative.java": "4213e948dcab731ef1a949994cac00ea52324f4f68b34bd0a77f76f11879d6f4",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "c64580c062108838f51bc53de6a1c964ffa09fd96c49a03f28f8cbb2eca724b5"
+  },
+  "inputs_after": {
+    ".work/layer-marks-native-root3/procedurals-core-candidate.jar": "5227c3aca521c4df31bec37642ffefa7904600e1f3ecee9c120d6ec1fefcfe3c",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "tests/native/Java2DRegionsNative.java": "4213e948dcab731ef1a949994cac00ea52324f4f68b34bd0a77f76f11879d6f4",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "c64580c062108838f51bc53de6a1c964ffa09fd96c49a03f28f8cbb2eca724b5"
+  },
+  "commands": [
+    {
+      "command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "8",
+        "-cp",
+        "/home/colin/dev/procedural/.work/layer-marks-native-root3/procedurals-core-candidate.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+        "-d",
+        "/home/colin/dev/procedural/.work/java2d-regions-root-review1",
+        "/home/colin/dev/procedural/tests/native/Java2DRegionsNative.java"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "tools/with_native_render_lock.py",
+        "--timeout",
+        "60",
+        "--",
+        "xvfb-run",
+        "-a",
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/java2d-regions-root-review1:/home/colin/dev/procedural/.work/layer-marks-native-root3/procedurals-core-candidate.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+        "Java2DRegionsNative"
+      ],
+      "returncode": 0,
+      "stdout": "{\"measurement\":{\"regions\":4,\"width\":720,\"height\":480,\"warmups\":2,\"repetitions\":1,\"elapsed_ns\":6128545,\"checksum\":\"17284405515086430208\"}}\n{\"status\":\"passed\"}\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -48,7 +49,7 @@ def java_home(value):
     if not supplied and not found:
         raise ValueError('Supply --java-home, JAVA_HOME or javac on PATH')
     home = Path(supplied).expanduser().resolve() if supplied else Path(found).resolve().parents[1]
-    for name in ('bin/javac', 'bin/java', 'release', 'lib/modules'):
+    for name in ('bin/javac', 'bin/java', 'bin/javadoc', 'release', 'lib/modules'):
         if not (home / name).is_file():
             raise ValueError('Missing JDK input: ' + str(home / name))
     return home
@@ -95,6 +96,38 @@ def source_inputs(root):
     return manifest, inputs
 
 
+def generate_javadoc(javadoc, sources, output, classpath=None):
+    """Generate strict source-derived HTML and verify every declared class page."""
+    output.mkdir(parents=True, exist_ok=True)
+    command = [str(javadoc), '--release', '8', '-encoding', 'UTF-8',
+               '-docencoding', 'UTF-8', '-charset', 'UTF-8', '-locale', 'en',
+               '-notimestamp', '-Xdoclint:all', '-Xmaxwarns', '10000',
+               '-d', str(output)]
+    if classpath:
+        command += ['-classpath', os.pathsep.join(map(str, classpath))]
+    command += [str(path) for path in sources]
+    result = subprocess.run(command, capture_output=True, text=True, timeout=120)
+    report = {'command': command, 'exit_code': result.returncode,
+              'stdout': result.stdout, 'stderr': result.stderr}
+    (output.parent / 'javadoc.json').write_text(json.dumps(report, indent=2) + '\n')
+    if result.returncode:
+        raise RuntimeError('javadoc failed; preserve javadoc.json')
+    expected_pages = []
+    for path in sources:
+        package = re.search(r'^package\s+([A-Za-z_][\w.]*)\s*;', path.read_text(), re.MULTILINE)
+        prefix = package.group(1).replace('.', '/') + '/' if package else ''
+        expected_pages.append(prefix + path.stem + '.html')
+    missing = [name for name in expected_pages if not (output / name).is_file()]
+    if not (output / 'index.html').is_file() or missing:
+        raise RuntimeError('javadoc output is incomplete: ' + ', '.join(missing or ['index.html']))
+    generated = sorted(path for path in output.rglob('*') if path.is_file())
+    return {'files': [str(path.relative_to(output)).replace(os.sep, '/') for path in generated],
+            'sha256': {str(path.relative_to(output)).replace(os.sep, '/'): sha(path)
+                       for path in generated},
+            'declared_class_pages': len(sources), 'class_pages': sorted(expected_pages),
+            'warning_count': result.stdout.count('warning:') + result.stderr.count('warning:')}
+
+
 def build(root, output, jdk, font, notice, processing_core):
     output = fresh_output(root, output)
     manifest, inputs = source_inputs(root)
@@ -123,7 +156,7 @@ def build(root, output, jdk, font, notice, processing_core):
     files['procedurals/examples/GlyphMarks/data/FONT-LICENSE.txt'] = notice
     files['procedurals/GlyphMarks-FONT-LICENSE.txt'] = notice
     inputs += [Path(__file__).resolve(), root / 'tools/operation_attestations.py', root / 'tools/reviewed_export_extension.py', processing_core, *files.values(),
-               *[jdk / n for n in ('bin/java', 'bin/javac', 'release', 'lib/modules')]]
+               *[jdk / n for n in ('bin/java', 'bin/javac', 'bin/javadoc', 'release', 'lib/modules')]]
     inputs = sorted(set(p.resolve() for p in inputs))
     label = lambda p: str(p.relative_to(root)) if p.is_relative_to(root) else str(p)
     before = {label(p): sha(p) for p in inputs}
@@ -141,6 +174,20 @@ def build(root, output, jdk, font, notice, processing_core):
     class_payloads = {p.relative_to(classes).as_posix(): p.read_bytes() for p in classes.rglob('*.class')}
     if not class_payloads:
         raise RuntimeError('No compiled Java classes')
+    reference = output / 'javadoc'
+    reference_report = generate_javadoc(jdk / 'bin/javadoc',
+                                        [root / name for name in [*manifest['core_sources'],
+                                                                  *manifest['adapter_sources']]],
+                                        reference, [processing_core])
+    reference_files = {'procedurals/reference/' + name: (reference / name).read_bytes()
+                       for name in reference_report['files']}
+    for legal_name in ('LICENSE', 'THIRD_PARTY_NOTICES.md'):
+        legal_path = root / legal_name
+        reference_name = 'procedurals/reference/' + legal_name
+        reference_files[reference_name] = legal_path.read_bytes()
+        reference_report['files'].append(legal_name)
+        reference_report['sha256'][legal_name] = sha(legal_path)
+    payloads.update(reference_files)
     jar = output / 'procedurals.jar'
     write_zip(jar, class_payloads)
     payloads['procedurals/library/procedurals.jar'] = jar.read_bytes()
@@ -181,6 +228,7 @@ def build(root, output, jdk, font, notice, processing_core):
               'archive': {'path': str(archive.relative_to(root)), 'sha256': sha(archive), 'members': len(payloads)},
               'class_sha256': {n: hashlib.sha256(b).hexdigest() for n, b in sorted(class_payloads.items())},
               'adapter_class_sha256': {n: hashlib.sha256(b).hexdigest() for n, b in sorted(adapter_payloads.items())},
+              'reference': reference_report,
               'example_tabs': len(manifest['examples']), 'operations': len(manifest['operation_files'])}
     (output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
     return report

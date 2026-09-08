@@ -1,0 +1,19 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "operation": "raster.crossfade-2d",
+  "scope": "Java core semantics and bounded typed-buffer measurements only; native workflow and distribution pending.",
+  "core_sha256": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
+  "conformance": "evidence/conformance/raster-crossfade-java.json",
+  "conformance_sha256": "b8506ca23fcc1594378b83c911bf424f8a0edea49fa07db6e2af05d912cdd770",
+  "verified": [
+    "Root reviewed complete core: exact endpoint identity, ordered premultiplied alpha/channel math, underflow and zero-quantized-alpha guards.",
+    "Shared eleven cases cover translucent midpoint distinct from source-over, hidden endpoint RGB, transparent color suppression, subnormal weight and invalid weights. Successful cases run in both forms; invalid fixture cases object form with separate typed validation checks.",
+    "Detached inputs/exports, strict carriers, dimension/product bounds and safe accessor indexes reviewed; generic lists traverse sequentially.",
+    "Three warmups and three measured compose/export/checksum repetitions at 8x8,720x480,1024x1024 pass analytic checksums."
+  ],
+  "limits": [
+    "Typed kernel has no per-pixel allocation; buffer-byte counts omit VM overhead and garbage collection and do not measure peak heap.",
+    "No native compositional workflow, public adapter, release, cross-target support or original-sketch recreation acceptance."
+  ]
+}

@@ -2197,6 +2197,102 @@
           }
         ]
       }
+    },
+    {
+      "id": "raster.masked-source-over-2d",
+      "status": "reviewed_provisional",
+      "reason": "Independent masked compositing dependency for image/generated-content composition; not full imageTrail equivalence.",
+      "admission_kind": "capability_dependency",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Same-sized straight ARGB8 source and destination rasters, explicit finite scalar mask in [0,1].",
+        "outputs": "Detached owned raster of matching dimensions.",
+        "invariants": "Masked source-over in premultiplied working encoded channels; zero mask preserves destination bits; no placement, resampling, hidden state or input mutation.",
+        "open_questions": [],
+        "review": "design/capabilities/masked-composite-admission.md",
+        "reviewer": "root"
+      },
+      "dependency_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/masked-composite-admission.md",
+        "rationale": "Alpha-controlled image stamping motivates reusable raster composition; spatial mask is an explicit maintainer-requested design dependency.",
+        "motivating_candidates": [
+          {
+            "candidate_id": "2017/Generativos/Eyes/eyes002#1",
+            "source_sha256": "b1f89e7d82335956d5faccc6c715151467b044ecfa5b0908734ae7c547ba1d45",
+            "evidence_sha256": "b54bd2dd4fb03e10395a2672a473259f623ae7998af7a1fe4f22033c88e202a4",
+            "dependency": "Independent alpha-controlled raster combination; not whole native stamping behavior.",
+            "remainder": [
+              {
+                "component": "Drifting walk, step count and scale decay",
+                "disposition": "deferred",
+                "reason": "Separate motion and authored composition; not computed by compositor."
+              },
+              {
+                "component": "Image loading, placement, rotation and drawing",
+                "disposition": "adapter",
+                "reason": "Host image transport and coordinate placement remain separate."
+              },
+              {
+                "component": "Photographic eye asset and alpha ramp",
+                "disposition": "recipe",
+                "reason": "Caller content and artistic choices; no asset redistribution or opacity recommendation."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "raster.crossfade-2d",
+      "status": "reviewed_provisional",
+      "reason": "Independent two-input premultiplied crossfade for requested effect transitions; distinct from source-over.",
+      "admission_kind": "capability_dependency",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Same-sized straight ARGB8 first and second rasters and finite per-pixel weights in [0,1].",
+        "outputs": "Detached owned raster of matching dimensions.",
+        "invariants": "Endpoint identity; weighted premultiplied encoded channels and alpha; owned output; no source-over destination term, input mutation or host state.",
+        "open_questions": [],
+        "review": "design/capabilities/raster-crossfade-admission.md",
+        "reviewer": "root"
+      },
+      "dependency_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/raster-crossfade-admission.md",
+        "rationale": "Explicit effect-to-effect blending dependency; private feathered partitions reveal background gutters and do not establish crossfade.",
+        "motivating_candidates": [
+          {
+            "candidate_id": "2017/Generativos/Eyes/eyes002#1",
+            "source_sha256": "b1f89e7d82335956d5faccc6c715151467b044ecfa5b0908734ae7c547ba1d45",
+            "evidence_sha256": "b54bd2dd4fb03e10395a2672a473259f623ae7998af7a1fe4f22033c88e202a4",
+            "dependency": "Independent two-input layer mixing requested by maintainer; source imageTrail motivates alpha-controlled content, not crossfade equivalence.",
+            "remainder": [
+              {
+                "component": "Drifting walk, step count and scale decay",
+                "disposition": "deferred",
+                "reason": "Separate motion and authored composition; not computed by compositor."
+              },
+              {
+                "component": "Image loading, placement, rotation and drawing",
+                "disposition": "adapter",
+                "reason": "Host image transport and coordinate placement remain separate."
+              },
+              {
+                "component": "Photographic eye asset and alpha ramp",
+                "disposition": "recipe",
+                "reason": "Caller content and artistic choices; no asset redistribution or opacity recommendation."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "records": {

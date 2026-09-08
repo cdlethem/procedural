@@ -1,10 +1,12 @@
 import json
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 import zipfile
 from unittest import mock
-from tools.build_java_source_bundle import build, fresh_output, require_hash, sha, source_inputs, write_zip
+from tools.build_java_source_bundle import (build, fresh_output, generate_javadoc,
+                                             require_hash, sha, source_inputs, write_zip)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -97,16 +99,54 @@ class SourceBundleTests(unittest.TestCase):
                 build(root, output, self.base / 'jdk', font, notice, processing_core)
         self.assertFalse(output.exists())
 
+    def test_javadoc_generation_records_command_coverage_and_warnings(self):
+        source_a = self.base / 'A.java'
+        source_b = self.base / 'B.java'
+        source_a.write_text('class A {}')
+        source_b.write_text('class B {}')
+        output = self.base / 'javadoc'
+        output.mkdir()
+        (output / 'index.html').write_text('index')
+        (output / 'A.html').write_text('A')
+        (output / 'B.html').write_text('B')
+        completed = subprocess.CompletedProcess(['javadoc'], 0, '', 'warning: incomplete docs')
+        with mock.patch('tools.build_java_source_bundle.subprocess.run', return_value=completed) as invoke:
+            report = generate_javadoc(self.base / 'javadoc-bin', [source_a, source_b], output)
+        command = invoke.call_args.args[0]
+        self.assertIn('--release', command)
+        self.assertIn('-Xdoclint:all', command)
+        self.assertIn('-notimestamp', command)
+        self.assertEqual(report['declared_class_pages'], 2)
+        self.assertEqual(report['warning_count'], 1)
+        self.assertNotIn('LICENSE', report['files'])
+        self.assertTrue((output.parent / 'javadoc.json').is_file())
+
+    def test_javadoc_generation_rejects_failure_and_missing_declared_page(self):
+        source = self.base / 'A.java'
+        source.write_text('class A {}')
+        failed = self.base / 'failed'
+        with mock.patch('tools.build_java_source_bundle.subprocess.run', return_value=subprocess.CompletedProcess([], 1, '', 'bad')):
+            with self.assertRaisesRegex(RuntimeError, 'javadoc failed'):
+                generate_javadoc(self.base / 'javadoc-bin', [source], failed)
+        source.write_text('package org.example;\npublic class A {}')
+        incomplete = self.base / 'incomplete'
+        incomplete.mkdir()
+        (incomplete / 'index.html').write_text('index')
+        (incomplete / 'A.html').write_text('wrong package page must not pass')
+        with mock.patch('tools.build_java_source_bundle.subprocess.run', return_value=subprocess.CompletedProcess([], 0, '', '')):
+            with self.assertRaisesRegex(RuntimeError, 'incomplete'):
+                generate_javadoc(self.base / 'javadoc-bin', [source], incomplete)
+
     def test_current_release_admission_and_exact_tabs(self):
         manifest, inputs = source_inputs(ROOT)
-        self.assertEqual(manifest['version'], '0.25.0')
-        self.assertEqual(manifest['processing_version'], 25)
-        self.assertEqual(len(manifest['operation_files']), 24)
-        self.assertEqual(len(manifest['core_sources']), 24)
-        self.assertEqual(len(manifest['adapter_sources']), 1)
+        self.assertEqual(manifest['version'], '0.26.0')
+        self.assertEqual(manifest['processing_version'], 26)
+        self.assertEqual(len(manifest['operation_files']), 26)
+        self.assertEqual(len(manifest['core_sources']), 26)
+        self.assertEqual(len(manifest['adapter_sources']), 2)
         self.assertIn('processing_core_sha256', manifest)
-        self.assertEqual(len(manifest['examples']), 44)
-        self.assertEqual(sum(name.endswith('.pde') for name in manifest['examples']), 26)
+        self.assertEqual(len(manifest['examples']), 45)
+        self.assertEqual(sum(name.endswith('.pde') for name in manifest['examples']), 27)
         self.assertIn('procedurals/examples/FieldMarks/MarkCommands.java', manifest['examples'])
         self.assertIn('procedurals/examples/PathMarks/PathMarksCanvas.java', manifest['examples'])
         self.assertIn('procedurals/examples/WarpMarks/WarpMarks.pde', manifest['examples'])

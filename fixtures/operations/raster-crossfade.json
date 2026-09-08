@@ -1,0 +1,309 @@
+{
+  "operation": "raster.crossfade-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "catalog_sha256": "bdf78f9411fe1f6c2d9b9ec998b5f952e8b7c951fa6e347682bd86f3c025aac0",
+  "cases": [
+    {
+      "id": "first_hidden",
+      "input": {
+        "first": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            1193046
+          ]
+        },
+        "second": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294967295
+          ]
+        },
+        "weights": [
+          0
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          1193046
+        ]
+      }
+    },
+    {
+      "id": "second_hidden",
+      "input": {
+        "first": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294967295
+          ]
+        },
+        "second": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            11259375
+          ]
+        },
+        "weights": [
+          1
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          11259375
+        ]
+      }
+    },
+    {
+      "id": "opaque_midpoint",
+      "input": {
+        "first": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294901760
+          ]
+        },
+        "second": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4278190335
+          ]
+        },
+        "weights": [
+          0.5
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          4286578816
+        ]
+      }
+    },
+    {
+      "id": "translucent_midpoint",
+      "input": {
+        "first": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            2164195328
+          ]
+        },
+        "second": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            2147483903
+          ]
+        },
+        "weights": [
+          0.5
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          2155872384
+        ]
+      }
+    },
+    {
+      "id": "transparent_color_ignored",
+      "input": {
+        "first": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            16711680
+          ]
+        },
+        "second": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4278190335
+          ]
+        },
+        "weights": [
+          0.5
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          2147483903
+        ]
+      }
+    },
+    {
+      "id": "both_transparent",
+      "input": {
+        "first": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            16711680
+          ]
+        },
+        "second": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            255
+          ]
+        },
+        "weights": [
+          0.5
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "quantized_zero",
+      "input": {
+        "first": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            0
+          ]
+        },
+        "second": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            33554431
+          ]
+        },
+        "weights": [
+          0.001
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "underflow",
+      "input": {
+        "first": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            0
+          ]
+        },
+        "second": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            33554431
+          ]
+        },
+        "weights": [
+          5e-324
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "negative_weight",
+      "input": {
+        "first": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            1193046
+          ]
+        },
+        "second": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294967295
+          ]
+        },
+        "weights": [
+          -0.1
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "excess_weight",
+      "input": {
+        "first": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            1193046
+          ]
+        },
+        "second": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294967295
+          ]
+        },
+        "weights": [
+          1.1
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "missing_weight",
+      "input": {
+        "first": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            1193046
+          ]
+        },
+        "second": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294967295
+          ]
+        },
+        "weights": []
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

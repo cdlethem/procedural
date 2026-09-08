@@ -1,0 +1,20 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "scope": "Java JAVA2D LayerMarks workflow and rectangular region adapter; distribution pending.",
+  "native": "evidence/workflows/layer-marks/native.json",
+  "native_sha256": "478942e17ada33534114ca7a1e804220c6f238ee66fbeee26cae796a73bfaf94",
+  "adapter_probe": "evidence/conformance/java2d-regions-native.json",
+  "adapter_probe_sha256": "cc7c52392946c6650cf7d47a8f24b847b67b4358e94994cc639f995813fb8e62",
+  "verified": [
+    "Root inspected all four compositions; crossfade transitions rings into local fans without feather gutters. Final root3 images equal inspected native1 images byte-for-byte.",
+    "Root removed probe noLoop/redraw overrides; actual example continuous dirty-frame loop passes queued mmmms, baseline restoration and cached save.",
+    "Runtime class origins bound to candidate JAR; source and background identity/pixels and all outside-layout pixels preserved.",
+    "Root reviewed adapter source and native probe; exact four-region coverage, callback/coordinate/image/feather/error scenarios pass."
+  ],
+  "limits": [
+    "Rectangular density-one JAVA2D only; no image-fit or polygon-mask claim.",
+    "Example image generated locally; no semantic crop extraction or photographic asset distribution claimed.",
+    "Public source bundle integration and extracted-consumer validation pending."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java core and scoped JAVA2D LayerMarks workflow/region adapter only; other targets and distribution pending.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "c64580c062108838f51bc53de6a1c964ffa09fd96c49a03f28f8cbb2eca724b5",
+    "packages/java-processing/examples/LayerMarks/LayerMarks.pde": "41f5b8dc14ac0810f84cb2affd8b8735536bd7c21755a97792132266c8dcdfa8",
+    "packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java": "24a1800f9a410763f82672bbb8cbbce9e9598298d2ca0651f3527085b4280cf3",
+    "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/masked-source-over-java.json": "1ad4fd1c5bb13469df844ad4aae7305c74a1f8c10339b18999d3d54c45c604d4",
+    "evidence/conformance/masked-source-over-java-root-review.json": "68e6615c922e75761e5d39a918a8ba5cea69926ad0c6a1d8a97ad359b4c19d04",
+    "fixtures/operations/masked-source-over.json": "5d51fb824d7c5a6097884b3545b19f747f5011ba2eaf3b045f3d9203647f2e2c",
+    "evidence/workflows/layer-marks/native.json": "478942e17ada33534114ca7a1e804220c6f238ee66fbeee26cae796a73bfaf94",
+    "evidence/workflows/layer-marks/root-review.json": "05297ff1b638405b3d84c4c55d9da2c2ca2ed39787eb2102995351fa79597a22",
+    "evidence/conformance/java2d-regions-native.json": "cc7c52392946c6650cf7d47a8f24b847b67b4358e94994cc639f995813fb8e62"
+  }
+}

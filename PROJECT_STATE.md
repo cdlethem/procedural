@@ -1,5 +1,189 @@
 # Project state
 
+## Java0.26 accepted — composition milestone CP23
+
+Distribution review: evidence/distribution/cp23-java-review.json. Final archive
+.work/dist/cp23-java-source-root2/procedurals-java-source-dev.zip, SHA256
+1ae2aef610ed8be6507f552c023367449844441a164e46e093c38ed4f6a6ff12,375members.
+26 operations/27 packaged workflows. New: MaskedComposite2D source-over, RasterCrossfade2D,
+Java2DRegions rectangular content callbacks and LayerMarks global/local/image/feather/crossfade
+workflow. Source-derived reference includes28 core/adapter class pages (646 warnings, no errors).
+All27 extracted PDEs compile. Native extracted LayerMarks passed; final documentation rebuild
+preserves49 library/example members. Prior107 core classes and1 adapter class unchanged.
+
+Next: publish this reviewed checkpoint; continue Java composition capability gaps (nonrectangular
+regions, explicit image-fit/transparent resampling, reusable image-derived fields/marks), chosen
+by artist capability rather than counts. Ports/Sol review remain paused; ports may pin this
+checkpoint and port the two new pure raster contracts independently. Java2DRegions is explicitly
+host-specific: do not claim portable callbacks or root support attestations for other targets.
+Below is historical integration work, superseded by this accepted checkpoint where applicable.
+
+## Active: spatial composability request and Java API discovery
+
+CP23 archive root1 built and fresh extracted consumer passed all27 PDE compiles plus native
+LayerMarks with separate adapter/core JAR origins. Root corrected stale build-guide counts
+and built final-doc archive .work/dist/cp23-java-source-root2 (SHA256
+1ae2aef610ed8be6507f552c023367449844441a164e46e093c38ed4f6a6ff12,375members).
+Fresh root2 extracted compile/reference verification is live tool session92795; no native
+rerun required if root verifies all JAR/example bytes equal root1. Final distribution review,
+commit/push pending. git fetch succeeded and HEAD...origin/main is0/0 at this checkpoint.
+
+Root created accepted scoped Java support attestations for masked-source-over and crossfade;
+catalog validator and regenerated reference pass. Candidate source manifest0.26 now includes
+26 operations,26 core source classes,2 adapter sources,27 PDE workflows/45 example tabs.
+Nine source-bundle tests pass. This is not distributed0.26 acceptance yet. LayerMarks probe
+worker is adding explicit separate adapter-JAR origin for extracted consumer, preserving
+combined candidate-JAR path, then rerunning source candidate; root build/consumer next.
+
+Root accepted LayerMarks native workflow and Java2DRegions scoped adapter in
+evidence/workflows/layer-marks/root-review.json. Root3 run preserves actual PDE dirty loop
+(removed probe noLoop/redraw overrides), passes mmmms/cached save/source/outside checks;
+all final images byte-identical to root-inspected earlier images. Root independently ran
+expanded adapter probe with exact four-region solid-color coverage; bound record at
+evidence/conformance/java2d-regions-native.json. Gallery149 images/33groups. Next integration:
+shared support attestations, source-bundle26 operations/27 workflows + adapter/reference,
+extracted consumer, reviewed commit and safe main push. Current shipped baseline still0.25.
+
+Root caught authoritative adapter mismatch: worker acknowledged failed earlier patch. Actual
+corrected source hash c64580c062108838f51bc53de6a1c964ffa09fd96c49a03f28f8cbb2eca724b5 now
+contains explicit state initialization and docs, verified by root; native worker rerun passed.
+LayerMarks worker authorized fresh final native run against that source. Root extended Javadoc
+builder/consumer to cover adapter sources as well as core, with Processing classpath. Focused
+Javadoc tests pass; actual all-source generation at .work/java-reference-all-candidate1 passes.
+No source-release acceptance was inferred from worker claims or documentation generation.
+
+Java2DRegions worker completed expanded native cases and clean process exit; source frozen.
+Four-region720x480 single measurement after2 warmups was~6.34ms (worker report; root final
+source/probe review pending). Root wrote layer-marks-native-plan.md and candidate user guide
+docs/layer-marks.md. Terra layer_marks_probe owns established runner registration plus queued
+M/S native lifecycle/retention/outside-pixel checks, authorized to render now against frozen
+adapter/example. Root owns final visual/evidence/distribution acceptance.
+
+Root identified "busy" lease as own stalled Java2DRegionsNative process (wrapper4027501,
+Java4027575), jstack showed AWT shutdown wait, then TERM'd wrapper for scoped cleanup.
+Terra now fixes probe termination, completes missing required scenarios, formats adapter and
+adds explicit drawing-state initialization/Javadocs. No external renderer was interrupted.
+LayerMarks official PDE preprocessing and Java8-target compilation pass at
+.work/layer-marks-compile2/commands.json against candidate adapter classes; initial compile1
+failed from accidentally including preprocessor sources JAR, corrected classpath excludes it.
+Native LayerMarks render still pending final adapter candidate.
+
+Root accepted crossfade Java core in evidence/conformance/raster-crossfade-java-root-review.json
+after full source/runner/fixture review and current hash verification. Native workflow and
+distribution still pending. Root authored candidate LayerMarks.pde with four composition modes
+(global, local image snippets/marks, feather, true two-input crossfade), cached draw/save and
+M switch. It uses frozen Java2DRegions API, whose worker implementation remains in flight;
+candidate example has not compiled/rendered yet and is not added to package manifest.
+
+Root froze Processing adapter contract design/capabilities/java2d-regions-adapter.md and
+delegated Java2DRegions implementation/native tests to Terra retained_rect_core. Independent
+rectangle Region values + retained-leaf conversion, PImage inputs/output, explicit CANVAS/
+LOCAL callback space, inward feather, all-input preflight and whole-result failure isolation.
+Public adapter acceptance remains pending. Crossfade core candidate returned passing11
+fixtures/focused checks and three sizes at .work/conformance/raster-crossfade-java-candidate.json;
+root complete review remains next. No package/support count change.
+
+Root admitted raster.crossfade-2d, passed contract prerequisite, froze catalog and11 analytic
+fixtures, and regenerated/validated reference. Terra retained_rect_core implements bounded
+RasterCrossfade2D core/tests next. This is separate from source-over: half-weight two half-alpha
+layers retains half alpha, instead of accumulating source-over coverage. Endpoint hidden RGB,
+transparent input color, underflow and quantized zero are explicit. No runtime/support claim.
+
+Root reviewed and hash-verified four artist-scale partition images; gallery now145 images/
+32groups. Review: evidence/parameter-experiments/spatial-composition/partition-visual-review.json.
+Global continuity, local marks and image crops work visually. Feathering produces background
+gutters, not inter-effect blending; explicit two-input crossfade remains required. Adopt
+owned-output whole-call failure for public callback adapter (input unchanged, no partial
+returned result), matching private helper; update supersedes incremental painting proposal.
+
+Masked compositor Java core accepted in evidence/conformance/masked-source-over-java-root-review.json,
+with bound conformance report and tiny/720x480/1024-square checks. Public adapter/native workflow
+and distribution remain pending, so shipped count is unchanged. Root hardened private callback
+cleanup to attempt all releases and preserve primary artist exceptions; native probe passes.
+
+Root reviewed compositor kernel/carriers/ownership and fixed indexed generic List traversal
+to linear iteration for linked lists. Fresh core runner passes at
+.work/conformance/masked-source-over-java-root1.json (11 shared cases plus focused checks).
+Private native PartitionContentProbe now also passes actual PImage snippet transfer and exact
+quarter-alpha feather-edge output. Terra is producing artist-scale global/local/image/feather
+visuals with the private adapter; root visual review and public adapter acceptance remain.
+
+Root implemented private PartitionContentStudy.java and PartitionContentProbe.java under
+tools/diagnostics/spatial-composition/. Native JAVA2D probe passed through shared lease:
+existing retained partitions, exact hard rectangle mask pixels, local callback placement,
+once-per-region invocation, unchanged background and callback-error recovery. Compiled with
+Java8 release target into .work/partition-content-compile1 using candidate compositor source
+and accepted CP22 JAR. This is private, allocation-heavy exploration, not packaged adapter
+acceptance. Feather implementation still needs numeric/native checks; image-content transfer
+and artist-scale visual review remain. No release/support count change.
+
+Root closed compositor underflow behavior: after identity branches, v==0 returns transparent
+black without division. Shared fixtures now11, including subnormal mask, quantized zero alpha
+and invalid masks; catalog checker passes and Terra notified. Direct Javadoc helper check
+against hash-verified accepted24 sources passes (586 warnings), output
+.work/java-reference-helper-check1/result.json. Bundle attempt correctly rejected pending
+operation inventory at .work/dist/java-reference-candidate1; packaging waits for accepted
+composition integration, with no weakened inventory check or new release claim.
+
+Masked source-over catalog contract and six analytic pixel fixtures are frozen:
+catalog/operations/masked-source-over.json, fixtures/operations/masked-source-over.json.
+Catalog schema/source/fixture checker and regenerated reference pass; no runtime support
+claimed. Zero mask or transparent source preserves destination bits, including hidden RGB;
+other output whose quantized alpha is zero becomes transparent black. Arithmetic and
+validation/ownership are explicit. Terra retained_rect_core now owns bounded Java core and
+focused tests only; root owns shared metadata and final acceptance. Java API guide compiled
+unchanged with official Processing preprocessing against accepted CP22 JAR (exit 0).
+
+Root admitted raster.masked-source-over-2d as a capability dependency in the authored ledger;
+tools/check_phase2_design.py --contract-cluster raster.masked-source-over-2d passes.
+Admission: design/capabilities/masked-composite-admission.md. Root read eyes002 notes and
+pinned native imageTrail source: photographic PNG stamps with changing alpha, not extraction.
+Motivating candidate is zero-based #1 (imageTrail); #2 is imageRosette. Original candidate
+status remains untouched. Next: freeze catalog arithmetic/validation and fixtures, then Java
+implementation; the structural gate is not contract approval. Java reference focused tests
+passed (9); Terra is compiling the direct-core guide using the official preprocessor.
+
+Root implementation brief: design/capabilities/composition-batch.md now fixes the next
+deliverable and distinguishes masked source-over from premultiplied two-input crossfade.
+Existing straight-channel RasterRemap2D must not silently become transparency-safe filtering.
+Callback direction uses isolated scratch targets and explicit region order/local-vs-global
+frames; no hidden simulation/RNG advance. Catalog admissions/contracts remain next, before
+public code. Bounded Luna image evidence retrieval is in flight (image_composition_evidence).
+
+Root reviewed the four private spatial-study renders and registered them in the centralized
+gallery (141 images/31 groups). Geometry hashes match before/after and across all modes.
+Strict analytic pixel-center clipping comparison found one ellipse-edge pixel outside in
+each of modes 1 and 2; acceptance remains open, recorded in spatial-composition/root-review.json.
+Latest partition/content callback request is now in the design direction: portable region
+values plus a Processing callback convenience, with explicit global-window/local placement,
+invocation/state/seed semantics and retained raster reuse. Public contract remains to freeze.
+
+Latest maintainer steering broadens spatial composition to image inputs/crops, image-derived
+marks and soft transitions between effects. Root expanded
+design/capabilities/spatial-composition-direction.md with a shared raster/mask/placement
+direction and bounded next batch. Flow paths are only one demonstration. Explicit crop/mask
+selection is distinct from automatic eye detection; the latter is not admitted or implemented.
+No new public operation or support claim has been accepted from this design update.
+
+Maintainer asks how to apply generated work only within selected canvas regions and compose
+operations spatially. Root direction: design/capabilities/spatial-composition-direction.md.
+Separate placement of values, visibility clipping/masking, and boundary-dependent generation.
+Prioritize a private regional-composition demonstration; no frozen signatures or accepted
+new APIs yet. Preserve this requirement in the feature-complete Java objective.
+
+API discovery work remains in progress: docs/java-api.md is a new authored direct-core guide.
+Terra added strict source-derived Javadoc generation to tools/build_java_source_bundle.py and
+focused tests (9 passed), with generated reference assets/legal notices outsideGit. Actual
+24-class generation passes with586 missing-documentation warnings, no errors. Root has not
+yet reviewed that implementation, extended extracted consumer verification, compiled/rendered
+the guide, built a new bundle or accepted reference support. Current accepted release remains
+Java0.25. Do not mistake these local builder changes for an accepted documentation release.
+
+C3 evidence reading found affirmative reusable postprocessing in cityPink3d#2 (9-tap blur,
+scanlines and vignette), while terrain controls are occluded none/subtle. Therefore shader/
+postprocessing remains a real open capability review, not a justified rejection merely from
+missing implementation. Scope and useful parameter evidence still need root judgment.
+
 ## Java0.25 accepted — two reusable compositions and palette application
 
 24 operations and26 packaged workflows; no core API additions in this batch.

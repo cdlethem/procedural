@@ -1,0 +1,145 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "raster.crossfade-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/raster-crossfade.json",
+    "catalog_sha256": "bdf78f9411fe1f6c2d9b9ec998b5f952e8b7c951fa6e347682bd86f3c025aac0"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/raster-crossfade-java.json": "b8506ca23fcc1594378b83c911bf424f8a0edea49fa07db6e2af05d912cdd770",
+          "evidence/conformance/raster-crossfade-java-root-review.json": "6e38c9266dd37f14ce9809bd6fa6087452b0d1cb23c2e3d43ef8c8a7aadeeb97",
+          "fixtures/operations/raster-crossfade.json": "a5adc26d08f2b43609442dcdaaaf49aa1955aa3b388563bf829aa73797701722",
+          "evidence/workflows/layer-marks/native.json": "478942e17ada33534114ca7a1e804220c6f238ee66fbeee26cae796a73bfaf94",
+          "evidence/workflows/layer-marks/root-review.json": "05297ff1b638405b3d84c4c55d9da2c2ca2ed39787eb2102995351fa79597a22",
+          "evidence/conformance/java2d-regions-native.json": "cc7c52392946c6650cf7d47a8f24b847b67b4358e94994cc639f995813fb8e62"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/raster-crossfade-java.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/raster-crossfade-catalog-review.json",
+          "sha256": "2b2cc49371408dc17ac51c5a305359b68f12d5fe8ccd95ec1a74ae934fe8a4ec"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact ARGB8 pixel computation and LayerMarks content substitution/cached save. No other renderer, other target or original recreation claim."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
+          "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "c64580c062108838f51bc53de6a1c964ffa09fd96c49a03f28f8cbb2eca724b5",
+          "packages/java-processing/examples/LayerMarks/LayerMarks.pde": "41f5b8dc14ac0810f84cb2affd8b8735536bd7c21755a97792132266c8dcdfa8",
+          "packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java": "24a1800f9a410763f82672bbb8cbbce9e9598298d2ca0651f3527085b4280cf3",
+          "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/raster-crossfade-java.json": "b8506ca23fcc1594378b83c911bf424f8a0edea49fa07db6e2af05d912cdd770",
+          "evidence/conformance/raster-crossfade-java-root-review.json": "6e38c9266dd37f14ce9809bd6fa6087452b0d1cb23c2e3d43ef8c8a7aadeeb97",
+          "fixtures/operations/raster-crossfade.json": "a5adc26d08f2b43609442dcdaaaf49aa1955aa3b388563bf829aa73797701722",
+          "evidence/workflows/layer-marks/native.json": "478942e17ada33534114ca7a1e804220c6f238ee66fbeee26cae796a73bfaf94",
+          "evidence/workflows/layer-marks/root-review.json": "05297ff1b638405b3d84c4c55d9da2c2ca2ed39787eb2102995351fa79597a22",
+          "evidence/conformance/java2d-regions-native.json": "cc7c52392946c6650cf7d47a8f24b847b67b4358e94994cc639f995813fb8e62"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/workflows/layer-marks/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/raster-crossfade-catalog-review.json",
+          "sha256": "2b2cc49371408dc17ac51c5a305359b68f12d5fe8ccd95ec1a74ae934fe8a4ec"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact ARGB8 pixel computation and LayerMarks content substitution/cached save. No other renderer, other target or original recreation claim."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
+          "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "c64580c062108838f51bc53de6a1c964ffa09fd96c49a03f28f8cbb2eca724b5",
+          "packages/java-processing/examples/LayerMarks/LayerMarks.pde": "41f5b8dc14ac0810f84cb2affd8b8735536bd7c21755a97792132266c8dcdfa8",
+          "packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java": "24a1800f9a410763f82672bbb8cbbce9e9598298d2ca0651f3527085b4280cf3",
+          "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/raster-crossfade-java.json": "b8506ca23fcc1594378b83c911bf424f8a0edea49fa07db6e2af05d912cdd770",
+          "evidence/conformance/raster-crossfade-java-root-review.json": "6e38c9266dd37f14ce9809bd6fa6087452b0d1cb23c2e3d43ef8c8a7aadeeb97",
+          "fixtures/operations/raster-crossfade.json": "a5adc26d08f2b43609442dcdaaaf49aa1955aa3b388563bf829aa73797701722",
+          "evidence/workflows/layer-marks/native.json": "478942e17ada33534114ca7a1e804220c6f238ee66fbeee26cae796a73bfaf94",
+          "evidence/workflows/layer-marks/root-review.json": "05297ff1b638405b3d84c4c55d9da2c2ca2ed39787eb2102995351fa79597a22",
+          "evidence/conformance/java2d-regions-native.json": "cc7c52392946c6650cf7d47a8f24b847b67b4358e94994cc639f995813fb8e62"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/workflows/layer-marks/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/raster-crossfade-catalog-review.json",
+          "sha256": "2b2cc49371408dc17ac51c5a305359b68f12d5fe8ccd95ec1a74ae934fe8a4ec"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact ARGB8 pixel computation and LayerMarks content substitution/cached save. No other renderer, other target or original recreation claim."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

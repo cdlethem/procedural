@@ -1,0 +1,309 @@
+{
+  "operation": "raster.masked-source-over-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "catalog_sha256": "c8e2077cd3a238ec5c7a1242892d0d3215e103761fbb0d5031daef08c42d16c2",
+  "cases": [
+    {
+      "id": "zero_mask_hidden",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294967295
+          ]
+        },
+        "destination": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            1193046
+          ]
+        },
+        "mask": [
+          0
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          1193046
+        ]
+      }
+    },
+    {
+      "id": "transparent_source",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            16711680
+          ]
+        },
+        "destination": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            2151961958
+          ]
+        },
+        "mask": [
+          1
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          2151961958
+        ]
+      }
+    },
+    {
+      "id": "opaque_replace",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4279383126
+          ]
+        },
+        "destination": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4289449455
+          ]
+        },
+        "mask": [
+          1
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          4279383126
+        ]
+      }
+    },
+    {
+      "id": "half_red_blue",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294901760
+          ]
+        },
+        "destination": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4278190335
+          ]
+        },
+        "mask": [
+          0.5
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          4286578816
+        ]
+      }
+    },
+    {
+      "id": "half_white_clear",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294967295
+          ]
+        },
+        "destination": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            0
+          ]
+        },
+        "mask": [
+          0.5
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          2164260863
+        ]
+      }
+    },
+    {
+      "id": "both_half",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            2164195328
+          ]
+        },
+        "destination": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            2147483903
+          ]
+        },
+        "mask": [
+          1
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          3232366677
+        ]
+      }
+    },
+    {
+      "id": "negative_mask",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294967295
+          ]
+        },
+        "destination": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            1193046
+          ]
+        },
+        "mask": [
+          -0.1
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "mask_above_one",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294967295
+          ]
+        },
+        "destination": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            1193046
+          ]
+        },
+        "mask": [
+          1.1
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "wrong_mask_count",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294967295
+          ]
+        },
+        "destination": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            1193046
+          ]
+        },
+        "mask": []
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "underflow_effective_alpha",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            33488896
+          ]
+        },
+        "destination": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            255
+          ]
+        },
+        "mask": [
+          5e-324
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "quantized_transparent",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            33488896
+          ]
+        },
+        "destination": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            255
+          ]
+        },
+        "mask": [
+          0.001
+        ]
+      },
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          0
+        ]
+      }
+    }
+  ]
+}

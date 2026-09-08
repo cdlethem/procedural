@@ -44,6 +44,13 @@ def main():
   if set(z.namelist())!=set(build['adapter_class_sha256']):raise RuntimeError('adapter JAR member set mismatch')
   for name,expected in build['adapter_class_sha256'].items():
    if hashlib.sha256(z.read(name)).hexdigest()!=expected:raise RuntimeError('adapter class mismatch '+name)
+ reference=build.get('reference',{})
+ reference_root=base/'reference'
+ actual_reference={p.relative_to(reference_root).as_posix():sha(p) for p in reference_root.rglob('*') if p.is_file()}
+ expected_pages=sorted(name.split('/src/main/java/',1)[1].removesuffix('.java')+'.html' for name in [*manifest['core_sources'],*manifest['adapter_sources']])
+ if not reference or actual_reference!=reference.get('sha256'):raise RuntimeError('Java reference inventory/hash mismatch')
+ if reference.get('class_pages')!=expected_pages or reference.get('declared_class_pages')!=len(expected_pages):raise RuntimeError('Java reference class coverage mismatch')
+ if not {'index.html',*expected_pages}.issubset(actual_reference):raise RuntimeError('Java reference pages missing')
  for name,expected in manifest['core_sources'].items():
   installed=base/'src'/name.removeprefix('packages/java/src/')
   if not installed.is_file() or sha(installed)!=expected:raise RuntimeError('installed source mismatch '+name)
@@ -81,10 +88,11 @@ def main():
    native_result['process']={'stdout':native_process.stdout,'stderr':native_process.stderr,'exit_code':native_process.returncode}
    native_result['images']=DEPTH.validate_native(native_result,out/'native',jar)
   else:
-   run([str(jdk/'bin/javac'),'--release','17','-cp',str(classes)+os.pathsep+cp,'-d',str(classes),str(probe)],out);run(['python3',str(ROOT/'tools/with_native_render_lock.py'),'--timeout','120','--','xvfb-run','-a',str(jdk/'bin/java'),'-Duser.home='+str(out/'home'),'-cp',str(classes)+os.pathsep+cp,a.native_sketch+'Probe',str(out/'native'),str(jar)],out,150)
+   run([str(jdk/'bin/javac'),'--release','17','-cp',str(classes)+os.pathsep+cp,'-d',str(classes),str(probe)],out);native_args=[str(out/'native'),str(jar)];native_args += [str(adapter)] if a.native_sketch=='LayerMarks' else [];run(['python3',str(ROOT/'tools/with_native_render_lock.py'),'--timeout','120','--','xvfb-run','-a',str(jdk/'bin/java'),'-Duser.home='+str(out/'home'),'-cp',str(classes)+os.pathsep+cp,a.native_sketch+'Probe',*native_args],out,150)
    native_result=json.loads((out/'native/native.json').read_text())
   if native_result.get('status')!='passed' or native_result.get('frames')!=len(frame_ids) or native_result.get('keys')!=keys or native_result.get('core_code_source')!=str(jar):raise RuntimeError('incomplete extracted native proof')
   if [frame['id'] for frame in native_result.get('frame_records',[])]!=frame_ids:raise RuntimeError('unexpected extracted native frame records')
+  if a.native_sketch=='LayerMarks' and native_result.get('code_sources')!={'compositor':str(jar),'crossfade':str(jar),'adapter':str(adapter)}:raise RuntimeError('wrong extracted LayerMarks class code sources')
  extracted_after={str(p.relative_to(out)):sha(p) for p in (out/'extract').rglob('*') if p.is_file()}
  if extracted_before!=extracted_after:raise RuntimeError('extracted files changed during consumer validation')
  after={str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p):sha(p) for p in inputs}

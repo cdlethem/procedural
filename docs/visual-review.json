@@ -2,6 +2,93 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "layer-marks",
+      "title": "LayerMarks: regional content and crossfade",
+      "category": "Accepted Java workflow \u2014 packaging pending",
+      "description": "Global rings, local image snippets and fans, feathered cutouts, and true crossfade.",
+      "evidence": "evidence/workflows/layer-marks/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/layer-marks-native-root3/native/baseline.png",
+          "sha256": "572f5de62e2463febae09d926ab4fd6faf33c1363a331faced6e0fd434868e4b"
+        },
+        {
+          "label": "local",
+          "path": ".work/layer-marks-native-root3/native/local.png",
+          "sha256": "613f3b177878cf17af8944878d6ac8ed967c33e9300dff87e9a00b05d10ba133"
+        },
+        {
+          "label": "feather",
+          "path": ".work/layer-marks-native-root3/native/feather.png",
+          "sha256": "77febfe5c7c0f349fee9ac453474ee5e2402b44242897e2c97f537ed51b5c85d"
+        },
+        {
+          "label": "crossfade",
+          "path": ".work/layer-marks-native-root3/native/crossfade.png",
+          "sha256": "855cd3c6ac7fb700145a2b9d5171eee454361db8bd1357a2b8802089e48a3151"
+        }
+      ]
+    },
+    {
+      "id": "partition-content-private",
+      "title": "Partition content: images, marks and soft cutouts",
+      "category": "Private native study \u2014 public adapter pending",
+      "description": "Generated image source, global windows, local crops plus marks, and feathering to background; not crossfade.",
+      "evidence": "evidence/parameter-experiments/spatial-composition/partition-visual-review.json",
+      "images": [
+        {
+          "label": "source-generated",
+          "path": ".work/partition-content-visual1/source-generated.png",
+          "sha256": "b5b1dd2d565772e7cfb8b4ff78fc8ed8ed550d30d9c27fcb97922d08922b1aed"
+        },
+        {
+          "label": "global-panels",
+          "path": ".work/partition-content-visual1/global-panels.png",
+          "sha256": "054e0b3955d59c1567d9ce031c871837f83342dcc4063fb3ba976258688c2f42"
+        },
+        {
+          "label": "local-panels",
+          "path": ".work/partition-content-visual1/local-panels.png",
+          "sha256": "e5310178594cbf937b4bbeab02099d125ca6d060e516d1fefc7738c3199dbd2b"
+        },
+        {
+          "label": "feathered-panels",
+          "path": ".work/partition-content-visual1/feathered-panels.png",
+          "sha256": "642f7e0c55d912e8d84eaa3ef2f6e327a2bf9ce8cbd07af4eddefb740ea3a6e0"
+        }
+      ]
+    },
+    {
+      "id": "spatial-composition-private",
+      "title": "Spatial composition: private clipping study",
+      "category": "Private study \u2014 boundary semantics open",
+      "description": "Global windows, local placement and circle transfer; strict ellipse-edge pixel criterion remains unresolved.",
+      "evidence": "evidence/parameter-experiments/spatial-composition/root-review.json",
+      "images": [
+        {
+          "label": "Global drawing through windows",
+          "path": ".work/spatial-composition-root1/variant-00/mode-0.0.png",
+          "sha256": "b4f02dcba6d37c0f34c807b16e396d9f5a40099b66ea50ad598516326b63e44d"
+        },
+        {
+          "label": "Independent local placement",
+          "path": ".work/spatial-composition-root1/variant-01/mode-1.0.png",
+          "sha256": "9b65c713f993be6608f9de55ffeb21a2c2fdeed2530e07164de88bf1f4e453a1"
+        },
+        {
+          "label": "Same paths as circle marks",
+          "path": ".work/spatial-composition-root1/variant-02/mode-2.0.png",
+          "sha256": "b25546cd213ed8e080e5005feb6acfb7a53ce068b1ec54fb4d242854ffaf2fb1"
+        },
+        {
+          "label": "Parent-only control",
+          "path": ".work/spatial-composition-root1/variant-03/mode-3.0.png",
+          "sha256": "3548df7c4c02aefa32f9ad6fa9e76aaafb55c50429db3d8220d62d67b9abc7a8"
+        }
+      ]
+    },
+    {
       "id": "palette-application",
       "title": "Palette extraction applied to FieldMarks",
       "category": "Accepted tooling",

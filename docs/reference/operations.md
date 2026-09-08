@@ -747,6 +747,116 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/gradient-path.json).
 
+## raster.masked-source-over-2d (0.1.0)
+
+Composite same-sized straight ARGB8 rasters using an explicit scalar visibility mask.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source",
+    "destination",
+    "mask"
+  ],
+  "properties": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "pixels"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        }
+      }
+    },
+    "destination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "pixels"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        }
+      }
+    },
+    "mask": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| source | straight packed ARGB8 raster | null | null | eyes002 imageTrail alpha-controlled image stamps; content is caller data. |
+| destination | straight packed ARGB8 raster | null | null | Existing composition receiving image stamps; dimensions are caller data. |
+| mask | unitless visibility per pixel in [0,1] | null | null | Maintainer-requested spatial visibility dependency. Mathematical bounds, no recommended artistic opacity or feather range; source alpha experiment subtle. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/masked-source-over-catalog-review.json) | [validated-scoped](../../evidence/conformance/masked-source-over-catalog-review.json) | [validated-scoped](../../evidence/conformance/masked-source-over-catalog-review.json) | [review](../../evidence/conformance/masked-source-over-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2017/Generativos/Eyes/eyes002#1`](../../survey/out/2017/Generativos/Eyes/eyes002/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/masked-source-over.json).
+
 ## path.noise-band-trace-2d (0.1.0)
 
 Retain an attempt-bounded connected path whose accepted proposals remain within a strict scalar band around the starting noise value.
@@ -1389,6 +1499,116 @@ Motivating evidence:
 - [`2018/Generativos/curvespace#0`](../../survey/out/2018/Generativos/curvespace/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/radial-pull-2d.json).
+
+## raster.crossfade-2d (0.1.0)
+
+Crossfade two same-sized straight ARGB8 rasters using explicit per-pixel weights and premultiplied working channels.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "first",
+    "second",
+    "weights"
+  ],
+  "properties": {
+    "first": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "pixels"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        }
+      }
+    },
+    "second": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "pixels"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        }
+      }
+    },
+    "weights": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| first | straight packed ARGB8 raster | null | null | Caller-supplied layer; image/draw-callback content motivated by eyes002 imageTrail. |
+| second | straight packed ARGB8 raster | null | null | Second independent layer; project dependency for requested effect transitions. |
+| weights | unitless second-input contribution per pixel | null | null | Explicit project design; mathematical [0,1] bounds. No useful opacity/feather recommendation established. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/raster-crossfade-catalog-review.json) | [validated-scoped](../../evidence/conformance/raster-crossfade-catalog-review.json) | [validated-scoped](../../evidence/conformance/raster-crossfade-catalog-review.json) | [review](../../evidence/conformance/raster-crossfade-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2017/Generativos/Eyes/eyes002#1`](../../survey/out/2017/Generativos/Eyes/eyes002/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/raster-crossfade.json).
 
 ## layout.regular-grid (0.1.0)
 

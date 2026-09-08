@@ -1,0 +1,218 @@
+{
+  "id": "raster.masked-source-over-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability": "Composition",
+  "description": "Composite same-sized straight ARGB8 rasters using an explicit scalar visibility mask.",
+  "decision_cluster": "raster.masked-source-over-2d",
+  "capability_decision": "design/capabilities/masked-composite-admission.md",
+  "design_review": "design/capabilities/masked-composite-admission.md",
+  "provenance": [
+    {
+      "candidate_id": "2017/Generativos/Eyes/eyes002#1",
+      "notes_path": "survey/out/2017/Generativos/Eyes/eyes002/notes.md",
+      "note_sha256": "b1f89e7d82335956d5faccc6c715151467b044ecfa5b0908734ae7c547ba1d45",
+      "evidence_sha256": "b54bd2dd4fb03e10395a2672a473259f623ae7998af7a1fe4f22033c88e202a4",
+      "relationship": "Alpha-controlled image stamps motivate independent masked composition; motion, placement and photographic content remain outside."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "source",
+      "destination",
+      "mask"
+    ],
+    "properties": {
+      "source": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "width",
+          "height",
+          "pixels"
+        ],
+        "properties": {
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "pixels": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            }
+          }
+        }
+      },
+      "destination": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "width",
+          "height",
+          "pixels"
+        ],
+        "properties": {
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "pixels": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            }
+          }
+        }
+      },
+      "mask": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "width",
+      "height",
+      "pixels"
+    ],
+    "properties": {
+      "width": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "height": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "pixels": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        }
+      }
+    }
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Owned straight ARGB8 raster with dimensions matching both inputs and exactly width*height unsigned32 row-major pixels.",
+  "behavior": {
+    "input": "Exactly source,destination,mask. Both raster records have exactly width,height,pixels. Positive integral dimensions; identical source/destination dimensions; exact pixel and mask counts. All pixels unsigned32; masks finite binary64 in [0,1]. No defaults.",
+    "compositing": "For each pixel in row order: if mask == 0 or source alpha byte == 0, copy destination bits exactly. Otherwise let a=(sourceAlpha/255.0)*mask; b=destinationAlpha/255.0; t=1.0-a; u=b*t; v=a+u. If v == 0 (possible through underflow), output transparent black without division. Otherwise for each stored R,G,B byte pair s,d compute p=s*a; q=d*u; c=(p+q)/v. Output alpha byte Q(v*255.0), colors Q(c), where Q(x)=floor(min(255,max(0,x))+0.5). If quantized alpha is zero, output transparent black. Each stated arithmetic step is separately rounded binary64, ties-to-even; no FMA/reassociation or gamma conversion. The transparent-source/zero-mask identity branches precede transparent-black normalization and preserve hidden destination RGB.",
+    "ownership": "The completed result owns a detached packed raster. It retains neither source pixels, destination pixels nor mask, and has no in-place form. Later caller mutation cannot affect the result. A failed call exposes no partial output.",
+    "access": "width() and height() return dimensions. pixelAt(index) validates index as a finite safe nonnegative integer, then checks index < width*height; INVALID_INDEX precedes INDEX_OUT_OF_RANGE. pixels() returns a detached int[] in Java (unsigned32 bit patterns), and toValues() returns detached {width,height,pixels}. Safe means at most 9007199254740991; negative zero is accepted as zero. pixelAt returns the Java int ARGB bit pattern; portable toValues pixels are unsigned32 numbers. Object indices accept only the same six numeric carriers as input.",
+    "numeric": "IEEE binary64 arithmetic in stated order, one final byte quantization. Premultiplied working encoded RGB; no linear-light claim. Negative-zero mask equals zero.",
+    "native_forms": "Java org.procedurals.raster.MaskedComposite2D.compose(Object) and compose(int width,int height,int[] source,int[] destination,double[] mask). Result width(),height(),pixelAt(Object or long),pixels(),toValues(). Java implementation pending.",
+    "environment": "No RNG, time, noise, host image, renderer, callback or mutable global state.",
+    "limits": "width*height <= 2147483647, checked without signed32 overflow before allocation. Representation limit only; allocation failure is not INVALID_INPUT. O(width*height) time and owned output storage; no per-pixel allocation in typed kernel.",
+    "carriers": "Object records are exact-key Map, arrays List. Numeric values accept only Byte,Short,Integer,Long,Float,Double; reject boolean, strings, BigInteger,BigDecimal, arbitrary Number subclasses. Dimensions and pixels integral within schema bounds, mask converts to finite double. Typed buffers non-null. Passive stable inputs required; concurrent input mutation outside contract.",
+    "validation": "Object: top keys; source keys/dimensions/product/pixel count then values; destination keys/dimensions/product/matching dimensions/pixel count then values; mask count then values. Typed: dimensions/product; source count; destination count; mask count then values. Complete validation before output allocation. Failure exposes no partial result."
+  },
+  "errors": {
+    "INVALID_INPUT": "Wrong shape/carriers, dimensions/product, unequal dimensions, pixel count/value, mask count/nonfinite/outside [0,1], null typed buffers.",
+    "INVALID_INDEX": "Pixel index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "Pixel index is representable but outside the retained output raster."
+  },
+  "error_order": [
+    "Follow behavior.validation; all configuration failures INVALID_INPUT.",
+    "pixelAt INVALID_INDEX precedes INDEX_OUT_OF_RANGE."
+  ],
+  "parameters": {
+    "source": {
+      "unit": "straight packed ARGB8 raster",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "eyes002 imageTrail alpha-controlled image stamps; content is caller data."
+    },
+    "destination": {
+      "unit": "straight packed ARGB8 raster",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Existing composition receiving image stamps; dimensions are caller data."
+    },
+    "mask": {
+      "unit": "unitless visibility per pixel in [0,1]",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Maintainer-requested spatial visibility dependency. Mathematical bounds, no recommended artistic opacity or feather range; source alpha experiment subtle."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    }
+  },
+  "fixtures": "fixtures/operations/masked-source-over.json",
+  "comparison": "Exact output dimensions, packed pixels and error codes. Analytic pixel fixtures plus Java carrier, ownership, index and typed/object parity checks.",
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "approved"
+  },
+  "exclusions": [
+    "image decoding and assets",
+    "placement, cropping and resampling",
+    "mask generation",
+    "two-input crossfade",
+    "linear-light color conversion",
+    "in-place writes",
+    "non-Java support"
+  ],
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "Composition batch native image/generated-content workflow pending; no original recreation claimed.",
+    "plan": "design/capabilities/composition-batch.md"
+  }
+}

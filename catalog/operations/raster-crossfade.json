@@ -1,0 +1,218 @@
+{
+  "id": "raster.crossfade-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability": "Composition",
+  "description": "Crossfade two same-sized straight ARGB8 rasters using explicit per-pixel weights and premultiplied working channels.",
+  "decision_cluster": "raster.crossfade-2d",
+  "capability_decision": "design/capabilities/raster-crossfade-admission.md",
+  "design_review": "design/capabilities/raster-crossfade-admission.md",
+  "provenance": [
+    {
+      "candidate_id": "2017/Generativos/Eyes/eyes002#1",
+      "notes_path": "survey/out/2017/Generativos/Eyes/eyes002/notes.md",
+      "note_sha256": "b1f89e7d82335956d5faccc6c715151467b044ecfa5b0908734ae7c547ba1d45",
+      "evidence_sha256": "b54bd2dd4fb03e10395a2672a473259f623ae7998af7a1fe4f22033c88e202a4",
+      "relationship": "Alpha-controlled image layering motivates independent requested content mixing; source algorithm is not crossfade equivalence."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "first",
+      "second",
+      "weights"
+    ],
+    "properties": {
+      "first": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "width",
+          "height",
+          "pixels"
+        ],
+        "properties": {
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "pixels": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            }
+          }
+        }
+      },
+      "second": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "width",
+          "height",
+          "pixels"
+        ],
+        "properties": {
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "pixels": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            }
+          }
+        }
+      },
+      "weights": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "width",
+      "height",
+      "pixels"
+    ],
+    "properties": {
+      "width": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "height": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "pixels": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        }
+      }
+    }
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Owned straight ARGB8 raster with dimensions matching both inputs and exactly width*height unsigned32 row-major pixels.",
+  "behavior": {
+    "input": "Exactly first,second,weights. Both rasters have exactly width,height,pixels; positive integral dimensions with equal sizes, unsigned32 pixels, exact counts. Weights finite binary64 [0,1]. No defaults.",
+    "compositing": "For each pixel, w==0 copies first packed bits, w==1 copies second packed bits. Otherwise compute t=1.0-w; af=firstAlpha/255.0; as=secondAlpha/255.0; u=af*t; v=as*w; a=u+v. If a==0 output transparent black without division. Let Q(x)=floor(min(255,max(0,x))+0.5). Compute output alpha Q(a*255.0); if it is zero return transparent black. For each encoded RGB byte pair f,s: p=f*u; q=s*v; c=(p+q)/a; output channel Q(c). Each arithmetic step separately rounded IEEE binary64 ties-to-even; no FMA, reassociation or gamma conversion. Endpoint identity precedes normalization of transparent black, preserving hidden RGB.",
+    "ownership": "Completed result owns detached packed pixels, retaining neither input nor weights. No in-place form. Failed call exposes no partial output; later caller mutation cannot affect the result.",
+    "access": "width() and height() return dimensions. pixelAt(index) validates index as a finite safe nonnegative integer, then checks index < width*height; INVALID_INDEX precedes INDEX_OUT_OF_RANGE. pixels() returns a detached int[] in Java (unsigned32 bit patterns), and toValues() returns detached {width,height,pixels}. Safe means at most 9007199254740991; negative zero is accepted as zero. pixelAt returns the Java int ARGB bit pattern; portable toValues pixels are unsigned32 numbers. Object indices accept only the same six numeric carriers as input.",
+    "numeric": "Ordered binary64 arithmetic with final byte quantization as stated. Premultiplied working encoded RGB; no linear-light claim. Negative-zero weight equals zero.",
+    "native_forms": "Java org.procedurals.raster.RasterCrossfade2D.mix(Object) and mix(int width,int height,int[] first,int[] second,double[] weights); result width(),height(),pixelAt(Object or long),pixels(),toValues(). Implementation pending.",
+    "environment": "No RNG, time, noise, host image, renderer, callback or mutable global state.",
+    "limits": "width*height <= 2147483647, checked without signed32 overflow before allocation. Representation limit only; allocation failure is not INVALID_INPUT. O(width*height) time and owned output storage; no per-pixel allocation in typed kernel.",
+    "carriers": "Object records are exact-key Map, arrays List. Numeric values accept only Byte,Short,Integer,Long,Float,Double; reject boolean, strings, BigInteger,BigDecimal, arbitrary Number subclasses. Dimensions and pixels integral within schema bounds, weight converts to finite double. Typed buffers non-null. Passive stable inputs required; concurrent input mutation outside contract.",
+    "validation": "Object: exact top keys; first raster keys/dimensions/product/pixel count then values; second keys/dimensions/product/matching dimensions/pixel count then values; weights count then values. Typed: dimensions/product; first count; second count; weights count then values. All validation before output allocation. All input failures INVALID_INPUT."
+  },
+  "errors": {
+    "INVALID_INPUT": "Wrong shapes/carriers, dimensions/products, unequal raster dimensions, pixel counts/values, weights count/nonfinite/outside [0,1], null typed buffers.",
+    "INVALID_INDEX": "Pixel index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "Pixel index is representable but outside the retained output raster."
+  },
+  "error_order": [
+    "Follow behavior.validation; all configuration failures INVALID_INPUT.",
+    "pixelAt INVALID_INDEX precedes INDEX_OUT_OF_RANGE."
+  ],
+  "parameters": {
+    "first": {
+      "unit": "straight packed ARGB8 raster",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Caller-supplied layer; image/draw-callback content motivated by eyes002 imageTrail."
+    },
+    "second": {
+      "unit": "straight packed ARGB8 raster",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Second independent layer; project dependency for requested effect transitions."
+    },
+    "weights": {
+      "unit": "unitless second-input contribution per pixel",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit project design; mathematical [0,1] bounds. No useful opacity/feather recommendation established."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    }
+  },
+  "fixtures": "fixtures/operations/raster-crossfade.json",
+  "comparison": "Exact output dimensions, packed pixels and error codes. Analytic pixel fixtures plus Java carrier, ownership, index and typed/object parity checks.",
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "approved"
+  },
+  "exclusions": [
+    "image decoding and assets",
+    "placement/cropping/resampling",
+    "weight generation",
+    "source-over compositing",
+    "linear-light mixing",
+    "in-place writes",
+    "non-Java support"
+  ],
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "Composition batch native image/generated-content workflow pending; no original recreation claimed.",
+    "plan": "design/capabilities/composition-batch.md"
+  }
+}

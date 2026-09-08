@@ -1,8 +1,8 @@
 # Remaining Java buildout: architecture and execution
 
 Root integration owner. This plan replaces serial CP-by-CP scheduling, not the completion
-requirements in java-completion-plan.md. Baseline: Java0.25, 24 accepted operations and
-26 packaged workflows; four demonstrated original structural recreations. Inventory is
+requirements in java-completion-plan.md. Source milestone: Java0.26, 26 accepted operations and
+27 workflows (distribution review separate); four demonstrated original structural recreations. Inventory is
 not a completeness claim. Port integration and Sol review remain paused.
 
 ## Capability map

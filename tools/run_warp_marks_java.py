@@ -25,6 +25,7 @@ PROFILES = {
     'PullMarks': ('pull-marks', ['baseline', 'wider', 'falloff', 'recolored', 'contours', 'reset'], 'rpcm0s'),
     'PanelMarks': ('panel-marks', ['baseline', 'denser', 'random_axis', 'recolored', 'panels', 'reset'], 'apcm0s'),
     'WarpMarks': ('warp-marks', ['baseline', 'strength64', 'zero', 'restored', 'sinusoidal', 'stripes', 'reset'], 'wwwfp0s'),
+    'LayerMarks': ('layer-marks', ['baseline', 'local', 'feather', 'crossfade', 'restored'], 'mmmms'),
     'RampMarks': ('ramp-marks', ['baseline', 'shifted', 'recolored', 'radial', 'reset'], 'tcf0s'),
     'LoopMarks': ('loop-marks', ['baseline', 'moved', 'recolored', 'fans', 'reset'], 'tcm0s'),
     'BandMarks': ('band-marks', ['baseline', 'wider', 'recolored', 'marks', 'reset'], 'tcm0s'),
@@ -66,9 +67,12 @@ def main():
     bridge = ROOT / 'tests/native/PreprocessSketch.java'
     lease = ROOT / 'tools/with_native_render_lock.py'
     sources = sorted((ROOT / 'packages/java/src/main/java').rglob('*.java'))
+    adapter_sources = (sorted((ROOT / 'packages/java-processing/src/main/java').rglob('*.java'))
+                       if sketch == 'LayerMarks' else [])
     inputs = [pde, probe, plan, bridge, lease, Path(__file__), core, archive,
               ROOT / 'tools/check_field_marks_pde.py', ROOT / 'tools/check_processing_runtime.py',
-              *sources, *pre, *[jdk / name for name in ('bin/java', 'bin/javac', 'bin/jar', 'release', 'lib/modules')]]
+              *sources, *adapter_sources, *pre,
+              *[jdk / name for name in ('bin/java', 'bin/javac', 'bin/jar', 'release', 'lib/modules')]]
     before = {label(path): sha(path) for path in inputs}
     output.mkdir(parents=True)
     core_classes, classes, prep, home = [output / name for name in ('core-classes', 'classes', 'pre-classes', 'home')]
@@ -94,6 +98,10 @@ def main():
     try:
         jar, generated = output / 'procedurals-core-candidate.jar', output / (sketch + '.java')
         run([jdk / 'bin/javac', '--release', '8', '-d', core_classes, *sources])
+        if adapter_sources:
+            run([jdk / 'bin/javac', '--release', '8',
+                 '-cp', os.pathsep.join(map(str, [core, core_classes])),
+                 '-d', core_classes, *adapter_sources])
         run([jdk / 'bin/jar', 'cf', jar, '-C', core_classes, 'org'])
         prepath = os.pathsep.join(map(str, [core, *pre]))
         run([jdk / 'bin/javac', '-cp', prepath, '-d', prep, bridge])
@@ -119,6 +127,11 @@ def main():
                 raise ValueError('Unexpected frame records')
             if native['core_code_source'] != str(jar) or native['expected_jar'] != str(jar):
                 raise ValueError('Wrong native core code source')
+            if sketch == 'LayerMarks':
+                expected_sources = {
+                    'compositor': str(jar), 'crossfade': str(jar), 'adapter': str(jar)}
+                if native.get('code_sources') != expected_sources:
+                    raise ValueError('Wrong LayerMarks class code sources')
             report['native'] = native
             report['images'] = {name: {'path': label(native_out / (name + '.png')),
                                       'sha256': sha(native_out / (name + '.png'))}

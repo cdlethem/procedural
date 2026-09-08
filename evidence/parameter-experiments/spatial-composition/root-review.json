@@ -1,0 +1,60 @@
+{
+  "status": "reviewed-private-study-with-open-boundary-semantics",
+  "owner": "root",
+  "native_report": ".work/spatial-composition-root1/report.json",
+  "native_report_sha256": "4415150b585b0e74d9437854c2e58e2ab38da60978fa7cfe99767b86e7ce2070",
+  "cases": [
+    {
+      "mode": 0,
+      "changed_pixels": 22664,
+      "outside_pixel_center_region": [],
+      "geometry_hashes": [
+        "bbb77bd1764552950df14048a953582a6ab1d0f6ada51638be3e6ec66d19aeb0",
+        "bbb77bd1764552950df14048a953582a6ab1d0f6ada51638be3e6ec66d19aeb0"
+      ]
+    },
+    {
+      "mode": 1,
+      "changed_pixels": 53234,
+      "outside_pixel_center_region": [
+        [
+          622,
+          352
+        ]
+      ],
+      "geometry_hashes": [
+        "bbb77bd1764552950df14048a953582a6ab1d0f6ada51638be3e6ec66d19aeb0",
+        "bbb77bd1764552950df14048a953582a6ab1d0f6ada51638be3e6ec66d19aeb0"
+      ]
+    },
+    {
+      "mode": 2,
+      "changed_pixels": 31461,
+      "outside_pixel_center_region": [
+        [
+          600,
+          374
+        ]
+      ],
+      "geometry_hashes": [
+        "bbb77bd1764552950df14048a953582a6ab1d0f6ada51638be3e6ec66d19aeb0",
+        "bbb77bd1764552950df14048a953582a6ab1d0f6ada51638be3e6ec66d19aeb0"
+      ]
+    },
+    {
+      "mode": 3,
+      "changed_pixels": 0,
+      "outside_pixel_center_region": [],
+      "geometry_hashes": [
+        "bbb77bd1764552950df14048a953582a6ab1d0f6ada51638be3e6ec66d19aeb0",
+        "bbb77bd1764552950df14048a953582a6ab1d0f6ada51638be3e6ec66d19aeb0"
+      ]
+    }
+  ],
+  "visual_review": "Root inspected contact sheet: global windows differ from repeated local composition; circle marks reuse local paths; surrounding grid and sentinel remain visible.",
+  "decision": "Geometry retention and placement are promising. Strict pixel-center outside-region criterion fails at one ellipse-edge pixel in modes 1 and 2. Do not claim full experiment acceptance or public adapter support. Define raster edge coverage explicitly before implementation acceptance.",
+  "limits": [
+    "Current parent context does not establish nested transformed-context correctness.",
+    "Hard clipping only; no soft mask, image callback or public API validated."
+  ]
+}
