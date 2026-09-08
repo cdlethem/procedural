@@ -1,5 +1,8 @@
 # Delivery roadmap
 
+Current Java feature-completion execution is tracked in [java-completion-plan.md](java-completion-plan.md).
+Port integration is paused; the historical packet sequence below does not override that priority.
+
 ## Policy and intended outcome
 
 The maintainer authorized Phase 2 on the 826/901-report snapshot, superseding the former

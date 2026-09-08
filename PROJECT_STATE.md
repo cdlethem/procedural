@@ -1,5 +1,17 @@
 # Project state
 
+## Java completion plan and next raster capability selected for specification
+
+Active objective is feature-complete Java. docs/java-completion-plan.md defines acceptance
+requirements without a function quota and selects bounded raster warping as next capability
+for source/contract investigation. Root read full colorRamp note: actual bilinear displaced
+image sampling beyond current core, with parameter/confound caveats. Terra retrieves exact
+sampler/source behavior and at most2 neighbors. No public signature or feature accepted yet.
+Voronoi/ribbon screens did not establish general nearest-site cells or arbitrary path-offset
+semantics; do not implement those from labels. Ports remain paused; latest checkpoint8a5bf423.
+Next read source audit, apply parameter/operation/adapter/performance workflows, freeze
+one Java raster boundary and delegate implementation.
+
 ## Maintainer refocus: Java capability development; ports paused
 
 Pause all port integration now. Accepted latestbaseline88ac268d retained; no native process
