@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "scope": "JavaScript pure core fixtures and host ownership/access only; no p5 renderer claim.",
+  "source_sha256_before": {
+    "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "tests/native/circle-placements-javascript.mjs": "814e783fa5ecdd781c5fa0ca3f8818a0b768c120c5a2e1a0f8ceb88d09f62c05",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567"
+  },
+  "source_sha256_after": {
+    "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "tests/native/circle-placements-javascript.mjs": "814e783fa5ecdd781c5fa0ca3f8818a0b768c120c5a2e1a0f8ceb88d09f62c05",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567"
+  },
+  "fixtures": {
+    "ordered_cases": 37,
+    "seeded_cases": 31,
+    "seeded_cross_case_checks": 3,
+    "seeded_seed_vectors_consumed": 5,
+    "seeded_mapping_vectors_consumed": 5,
+    "ordered_native_only_cases": 3,
+    "seeded_native_only_cases": 4
+  },
+  "host_access_ownership": "passed"
+}

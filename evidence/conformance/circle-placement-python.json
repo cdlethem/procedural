@@ -1,0 +1,34 @@
+{
+  "failures": [],
+  "fixtures": {
+    "ordered_cases": 37,
+    "ordered_native_only_cases": 3,
+    "seeded_cases": 31,
+    "seeded_cross_case_checks": 3,
+    "seeded_mapping_vectors_consumed": 5,
+    "seeded_native_only_cases": 4,
+    "seeded_seed_vectors_consumed": 5
+  },
+  "host_access_ownership": "passed",
+  "implementation": "python",
+  "native_invariants": 36,
+  "runtime": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]",
+  "scope": "Python pure core fixtures and host ownership/access only; no py5 renderer claim.",
+  "source_sha256_after": {
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "tests/native/circle-placements-python.py": "9704cec7d99c16a1d36e203211b31679c7b921fad0e704c114b7810d40e39db3"
+  },
+  "source_sha256_before": {
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "tests/native/circle-placements-python.py": "9704cec7d99c16a1d36e203211b31679c7b921fad0e704c114b7810d40e39db3"
+  },
+  "status": "passed"
+}
