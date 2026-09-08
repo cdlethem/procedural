@@ -39,3 +39,6 @@ __all__ = [
  "regular_grid",
  "seeded_circle_placement_2d",
 ]
+
+from .radial_profile import RadialProfile3D, RadialProfileError
+__all__ += ["RadialProfile3D", "RadialProfileError"]

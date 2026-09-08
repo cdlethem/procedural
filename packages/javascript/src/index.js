@@ -6,3 +6,4 @@ export { orderedCircleFilter2D, seededCirclePlacement2D, CirclePlacementError } 
 export { seededQuadrantPartition2D, PartitionError } from "./quadrant-partition.js";
 export { seededTrianglePoints2D, mapTriangleCoordinates2D, TrianglePointsError } from "./triangle-points.js";
 export { seededEndpointBranches2D, BranchTreeError } from "./branch-tree.js";
+export { RadialProfile3D, RadialProfileError } from "./radial-profile.js";

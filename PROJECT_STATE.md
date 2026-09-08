@@ -1,5 +1,19 @@
 # Project state
 
+## Radial profile root exports reviewed; Android and Python packaging delegated
+
+Added exact RadialProfile3D/RadialProfileError root exports for JS/Python. Root checked
+class/error identity and root-import mesh generation in both runtimes. Frozen additive
+export successor retains historical records unchanged;41 focused export/attestation/drawing
+tests pass and catalog bindings/reference check passes (session87759 terminal).
+Tests include missing bindings, forged snapshots and rehashed unrelated export rejection.
+Native/model Python checkpoint pushed at cdcd77db. Export checkpoint is next.
+Terra is completing workflow-local Android PApplet/PFragment P3D source and APK builder;
+confirmed installed runtime supports this path, no new generic adapter prerequisite.
+Luna owns new Python0.7 wheel/starter builder and installed/extracted consumers. Root owns
+JS packaging, source/build review, native launch and shared support integration.
+No native job live; worker Android files remain draft until compile/lifecycle review.
+
 ## Python ProfileMarks native workflow accepted
 
 Root replaced invalid setup-loop probe directly after worker could not complete the handoff.

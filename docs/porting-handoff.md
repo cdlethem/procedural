@@ -39,9 +39,12 @@ core versions and supplies adapter0.3.0; old package records describe historical
 Actual API33 resumed viewport equality is checked before the next edit. This does not
 extend the claim to other renderers or physical devices.
 
-Five operations remain to port: radial-profile surface, Delaunay topology, target springs,
-occupied lattice paths and mutable line-pool branching. Radial-profile surface is next;
-read its frozen contract and every auxiliary fixture section before implementation.
+Five operations remain to finish across all targets: radial-profile surface, Delaunay topology,
+target springs, occupied lattice paths and mutable line-pool branching. Radial-profile
+JavaScript/Python cores and both ProfileMarks native workflows are now root-reviewed;
+py5 integration was pushed at `cdcd77db`. Root exports are integrated separately from
+package/support acceptance. Android P3D and radial distributions remain pending; do not
+redo the accepted cores. Read the frozen contract and current target evidence before work.
 
 Root integrated the reviewed p5.js/py5 circle placement cores, public exports and
 PlacementMarks workflows in `a7ea7ec5`. The exact source-bound native evidence and

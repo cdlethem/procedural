@@ -6,6 +6,7 @@ REVIEW = 'evidence/conformance/placement-export-compatibility-review.json'
 SUCCESSOR = 'evidence/conformance/quadrant-export-compatibility-review.json'
 TRIANGLE = 'evidence/conformance/triangle-export-compatibility-review.json'
 BRANCH = 'evidence/conformance/branch-export-compatibility-review.json'
+PROFILE = 'evidence/conformance/profile-export-compatibility-review.json'
 CORRECTION = 'evidence/conformance/javascript-retained-output-export-successor.json'
 HELPER = 'tools/reviewed_export_extension.py'
 PATHS = frozenset(('packages/javascript/src/index.js', 'packages/python/procedurals/__init__.py'))
@@ -89,7 +90,7 @@ def _validate_retained_output_correction(root, snapshots):
         return False
     if correction.get('previous_review_sha256') != _digest(_read(root, ROOT_CORRECTION)):
         return False
-    if not _bindings(root, root_review, {}):
+    if not _bindings(root, root_review, snapshots):
         return False
     if not isinstance(correction.get('implementation_sha256'), dict) or not isinstance(correction.get('evidence_sha256'), dict):
         return False
@@ -97,7 +98,7 @@ def _validate_retained_output_correction(root, snapshots):
         return False
     if not {ROOT_CORRECTION, SOURCE_COMPARISON}.issubset(correction['evidence_sha256']):
         return False
-    if not _bindings(root, correction, {}):
+    if not _bindings(root, correction, snapshots):
         return False
     sources = comparison.get('sources')
     if not isinstance(sources, dict) or set(sources) != CORRECTED_SOURCES:
@@ -127,7 +128,7 @@ def _validate_retained_output_correction(root, snapshots):
     helper = extensions[HELPER]
     if not isinstance(helper, dict) or set(helper) != {'before', 'after'} or helper['before'] != prior[HELPER]:
         return False
-    if helper['after'].encode('utf-8') != _read(root, HELPER):
+    if helper['after'].encode('utf-8') != snapshots.get(HELPER, _read(root, HELPER)):
         return False
     # The helper's prior bytes are fixed by the pushed baseline; the correction
     # successor may only carry this exact historical snapshot forward.
@@ -150,6 +151,37 @@ def historical_export_bytes(root, relative, expected):
     try:
         snapshots = {}
         successor_match = None
+        if (root / PROFILE).exists():
+            profile = json.loads(_read(root, PROFILE))
+            required = {HELPER, *PATHS, 'packages/javascript/src/radial-profile.js',
+                        'packages/python/procedurals/radial_profile.py'}
+            evidence = {CORRECTION, 'evidence/conformance/radial-profile-javascript-root-review.json',
+                        'evidence/conformance/radial-profile-python-root-review.json',
+                        'evidence/conformance/profile-p5js-native-root-review.json',
+                        'evidence/conformance/profile-py5-native-root-review.json'}
+            if (not _accepted(profile) or not _bindings(root, profile, {})
+                    or not required.issubset(profile['implementation_sha256'])
+                    or not evidence.issubset(profile['evidence_sha256'])
+                    or profile['previous_review_sha256'] != _digest(_read(root, CORRECTION))):
+                return None
+            prior = profile['previous_bytes']
+            if set(prior) != {HELPER, *PATHS} or set(profile['extensions']) != PATHS:
+                return None
+            if _digest(prior[HELPER].encode()) != '6e80c1e797186611cfecbffab6f8e5f0e29e69d46ae76f336d76f1f28b2bfb16':
+                return None
+            additions = {
+                'packages/javascript/src/index.js': 'export { RadialProfile3D, RadialProfileError } from "./radial-profile.js";\n',
+                'packages/python/procedurals/__init__.py': '\nfrom .radial_profile import RadialProfile3D, RadialProfileError\n__all__ += ["RadialProfile3D", "RadialProfileError"]\n',
+            }
+            for name in PATHS:
+                entry = profile['extensions'][name]
+                if (set(entry) != {'before', 'after'} or entry['before'] != prior[name]
+                        or entry['after'] != entry['before'] + additions[name]
+                        or entry['after'].encode() != _read(root, name)):
+                    return None
+                if name == relative and _digest(entry['before'].encode()) == expected:
+                    successor_match = entry['before'].encode()
+            snapshots.update({name: value.encode() for name, value in prior.items()})
         if (root / CORRECTION).exists() and not _validate_retained_output_correction(root, snapshots):
             return None
         # Only these frozen export transitions are authorized. Walking newest to

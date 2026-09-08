@@ -117,7 +117,7 @@ class ReviewedExportTests(unittest.TestCase):
             self.assertIsNone(historical_export_bytes(root, relative, digest('before')))
 
     def test_successor_preserves_both_historical_exports_and_rejects_mutation(self):
-        from tools.reviewed_export_extension import SUCCESSOR, HELPER, TRIANGLE, BRANCH
+        from tools.reviewed_export_extension import SUCCESSOR, HELPER, TRIANGLE, BRANCH, PROFILE
         import shutil
         repository = Path(__file__).resolve().parents[1]
         previous = json.loads((repository / REVIEW).read_text())
@@ -126,8 +126,9 @@ class ReviewedExportTests(unittest.TestCase):
         branch = json.loads((repository / BRANCH).read_text())
         correction = json.loads((repository / CORRECTION).read_text())
         root_correction = json.loads((repository / ROOT_CORRECTION).read_text())
-        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, CORRECTION, ROOT_CORRECTION, SOURCE_COMPARISON, *PATHS}
-        for record in (correction, root_correction):
+        profile = json.loads((repository / PROFILE).read_text())
+        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, CORRECTION, ROOT_CORRECTION, SOURCE_COMPARISON, PROFILE, *PATHS}
+        for record in (correction, root_correction, profile):
             files.update(record['implementation_sha256'])
             files.update(record['evidence_sha256'])
         for review in (previous, successor, triangle, branch):
@@ -184,7 +185,7 @@ class ReviewedExportTests(unittest.TestCase):
                 record = json.loads(json.dumps(branch)); mutate(record)
                 (root / BRANCH).write_text(json.dumps(record))
                 self.assertIsNone(historical_export_bytes(root, relative, digest(old)))
-            (root / BRANCH).write_text(json.dumps(branch))
+            (root / BRANCH).write_bytes((repository / BRANCH).read_bytes())
             for mutate in (
                 lambda r: r.update(status='draft'),
                 lambda r: r['implementation_sha256'].pop(HELPER),
@@ -196,7 +197,7 @@ class ReviewedExportTests(unittest.TestCase):
                 record = json.loads(json.dumps(triangle)); mutate(record)
                 (root / TRIANGLE).write_text(json.dumps(record))
                 self.assertIsNone(historical_export_bytes(root, relative, digest(old)))
-            (root / TRIANGLE).write_text(json.dumps(triangle))
+            (root / TRIANGLE).write_bytes((repository / TRIANGLE).read_bytes())
             for mutate in (
                 lambda r: r.update(status='draft'),
                 lambda r: r['implementation_sha256'].pop(HELPER),
@@ -210,3 +211,27 @@ class ReviewedExportTests(unittest.TestCase):
                 (root / SUCCESSOR).write_text(json.dumps(record))
                 self.assertIsNone(historical_export_bytes(root, relative, digest(old)))
                 self.assertIsNone(historical_export_bytes(root, relative, digest(middle)))
+
+            (root / SUCCESSOR).write_bytes((repository / SUCCESSOR).read_bytes())
+            for path in PATHS:
+                retained = profile['extensions'][path]['before']
+                self.assertEqual(historical_export_bytes(root, path, digest(retained)), retained.encode())
+            for mutate in (
+                lambda r: r.update(status='draft'),
+                lambda r: r['implementation_sha256'].pop(HELPER),
+                lambda r: r['evidence_sha256'].pop(CORRECTION),
+                lambda r: r['previous_bytes'].update({HELPER: 'forged'}),
+                lambda r: r['extensions'][relative].update(before='forged'),
+            ):
+                record = json.loads(json.dumps(profile)); mutate(record)
+                (root / PROFILE).write_text(json.dumps(record))
+                self.assertIsNone(historical_export_bytes(root, relative, digest(old)))
+            (root / PROFILE).write_bytes((repository / PROFILE).read_bytes())
+            original = (root / relative).read_text()
+            altered = original + 'export const unrelated = 1;\n'
+            (root / relative).write_text(altered)
+            record = json.loads(json.dumps(profile))
+            record['implementation_sha256'][relative] = digest(altered)
+            record['extensions'][relative]['after'] = altered
+            (root / PROFILE).write_text(json.dumps(record))
+            self.assertIsNone(historical_export_bytes(root, relative, digest(old)))
