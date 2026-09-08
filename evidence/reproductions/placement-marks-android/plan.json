@@ -1,0 +1,71 @@
+{
+  "id": "placement-marks-public-android",
+  "status": "planned",
+  "scope": "Actual Android API33 editable PlacementMarks Activity on the existing Processing Android renderer. The shared PlacementComposition is staged without modification; motif outlines are submitted as round-capped segment2 sequences, the accepted Android polyline convention. This validates native controls, retained composition, ignored edits while radial, drawing submission, cached PNG transfer, and MediaStore output. It does not claim upstream pixel reproduction, cross-host raster identity, physical-device support, or human usability.",
+  "brief": "design/capabilities/placement-marks-p5-acceptance.md",
+  "operations": ["sampling.ordered-circle-filter-2d", "sampling.seeded-circle-placement-2d"],
+  "runtime": {
+    "application_id": "org.procedurals.placementmarksprobe",
+    "activity": "org.procedurals.examples.placementmarks.PlacementMarksProbeActivity",
+    "adb_port": 5038,
+    "serial": "emulator-5580",
+    "api": 33,
+    "renderer": "org.procedurals.android.internal.AndroidSurface"
+  },
+  "dimensions": [640, 640],
+  "density": 1,
+  "background_rgb": "ECE7DA",
+  "attempt_budget": 1,
+  "composition_budget": 17,
+  "timeout_seconds": 2460,
+  "execution_timeout_seconds": 2400,
+  "cleanup_timeout_seconds": 60,
+  "output": ".work/reproductions/placement-marks-android",
+  "pure_preflight": {
+    "tool": "tools/run_circle_placement_java.py",
+    "output": ".work/reproductions/placement-marks-android/pure-placement-java.json",
+    "checks": ["all ordered-circle-filter shared fixture cases", "all seeded-circle-placement shared fixture cases", "seed and mapping vectors", "cross-case prefix and proposal identity", "Java CirclePlacements2D bit-exact against frozen vectors"]
+  },
+  "states": [
+    {"ordinal": 1, "id": "baseline", "trigger": "initial Activity frame", "seed": 42, "attempts": 5000, "radial": false, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 424, "proposals": 5000, "submitted_commands": 27136},
+    {"ordinal": 2, "id": "diamonds", "trigger": "Motif tap", "seed": 42, "attempts": 5000, "radial": false, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": true, "alternate": false, "accepted": 424, "proposals": 5000, "submitted_commands": 1696},
+    {"ordinal": 3, "id": "rings-restored", "trigger": "Motif tap", "seed": 42, "attempts": 5000, "radial": false, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 424, "proposals": 5000, "submitted_commands": 27136},
+    {"ordinal": 4, "id": "palette", "trigger": "Palette tap", "seed": 42, "attempts": 5000, "radial": false, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": true, "accepted": 424, "proposals": 5000, "submitted_commands": 27136},
+    {"ordinal": 5, "id": "palette-restored", "trigger": "Palette tap", "seed": 42, "attempts": 5000, "radial": false, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 424, "proposals": 5000, "submitted_commands": 27136},
+    {"ordinal": 6, "id": "spacing", "trigger": "Separation tap", "seed": 42, "attempts": 5000, "radial": false, "separation": 1.2, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 353, "proposals": 5000, "submitted_commands": 22592},
+    {"ordinal": 7, "id": "spacing-restored", "trigger": "Separation tap", "seed": 42, "attempts": 5000, "radial": false, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 424, "proposals": 5000, "submitted_commands": 27136},
+    {"ordinal": 8, "id": "size-min", "trigger": "Min tap", "seed": 42, "attempts": 5000, "radial": false, "separation": 1.0, "minimum": 8.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 239, "proposals": 5000, "submitted_commands": 15296},
+    {"ordinal": 9, "id": "size-min-restored", "trigger": "Min tap", "seed": 42, "attempts": 5000, "radial": false, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 424, "proposals": 5000, "submitted_commands": 27136},
+    {"ordinal": 10, "id": "size-max", "trigger": "Max tap", "seed": 42, "attempts": 5000, "radial": false, "separation": 1.0, "minimum": 4.0, "maximum": 32.0, "diamonds": false, "alternate": false, "accepted": 613, "proposals": 5000, "submitted_commands": 39232},
+    {"ordinal": 11, "id": "size-max-restored", "trigger": "Max tap", "seed": 42, "attempts": 5000, "radial": false, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 424, "proposals": 5000, "submitted_commands": 27136},
+    {"ordinal": 12, "id": "count-extended", "trigger": "Budget tap", "seed": 42, "attempts": 10000, "radial": false, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 517, "proposals": 10000, "submitted_commands": 33088},
+    {"ordinal": 13, "id": "count-restored", "trigger": "Budget tap", "seed": 42, "attempts": 5000, "radial": false, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 424, "proposals": 5000, "submitted_commands": 27136},
+    {"ordinal": 14, "id": "seed", "trigger": "Seed tap", "seed": 43, "attempts": 5000, "radial": false, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 432, "proposals": 5000, "submitted_commands": 27648},
+    {"ordinal": 15, "id": "radial", "trigger": "Source tap", "seed": 43, "attempts": 5000, "radial": true, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 111, "proposals": 160, "submitted_commands": 7104},
+    {"ordinal": 16, "id": "radial-spacing", "trigger": "Separation tap while radial", "seed": 43, "attempts": 5000, "radial": true, "separation": 1.2, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 95, "proposals": 160, "submitted_commands": 6080},
+    {"ordinal": 17, "id": "radial-spacing-restored", "trigger": "Separation tap while radial", "seed": 43, "attempts": 5000, "radial": true, "separation": 1.0, "minimum": 4.0, "maximum": 64.0, "diamonds": false, "alternate": false, "accepted": 111, "proposals": 160, "submitted_commands": 7104}
+  ],
+  "ignored_while_radial": {
+    "triggers": ["Seed tap", "Budget tap", "Min tap", "Max tap"],
+    "checks": ["no new frame marker within 1.5s of each ignored tap", "no completed-frame advance visible at the next registered frame"]
+  },
+  "visual_images": ["baseline.png", "diamonds.png", "palette.png", "spacing.png", "size-min.png", "size-max.png", "count.png", "seed.png", "radial.png", "radial-spacing.png"],
+  "save": {
+    "trigger": "Save PNG tap after ordinal 17",
+    "checks": ["saved URI bytes exactly equal acknowledged cached frame-17 PNG", "decoded save is opaque 640x640", "MediaStore row is published image/png under Pictures/Procedurals", "after save, a UI-thread delayed observation measures a finite elapsed interval of at least 300ms and rechecks the same snapshot/composition/cached bytes/final counts 17 compositions and 18 completed frames before terminal result"]
+  },
+  "native_checks": [
+    "all nine actual visible controls are enabled only after the acknowledged frame",
+    "all seventeen exact state/settings/version transitions occur through observed Android button centers",
+    "motif and palette edits retain the exact PlacementComposition object; every effective geometry edit rebuilds it",
+    "seed, budget, minimum, and maximum taps while radial produce no frame, no revision change, and no completed-frame advance",
+    "the extended-budget composition keeps the exact 424 accepted prefix of the baseline in binary64",
+    "accepted and proposal counts match the registered Java evidence on every frame",
+    "submitted segment command counts equal accepted times motif vertex count on every frame",
+    "restoration frames are pixel-identical to the baseline; radial-spacing-restored is pixel-identical to radial",
+    "ten registered visual PNGs and the final save are opaque nonempty 640x640",
+    "only cached acknowledged image bytes are saved; no redraw or composition happens during save"
+  ],
+  "visual_acceptance": "Root inspects the ten registered visual PNGs for the retained ring/diamond motifs, palette change, density change, budget extension, seed change, and authored radial bands, without claiming cross-renderer raster identity.",
+  "failure_policy": "Before a native launch, the executor rejects stale attempt/image artifacts, runs the pure Java fixture preflight, builds one isolated APK, checks source/runtime bindings, then reserves one attempt under the checkout-local render lock while the host holds the shared machine render lease. The total host budget is 2460 seconds: execution/ADB/pulls use the first 2400 seconds, leaving a separately bounded 60 seconds for force-stop cleanup before terminal evidence publication. Any install, launch, ADB, timeout, assertion, cleanup, or process failure consumes that one attempt and preserves evidence. No automatic retry, emulator restart, or second execution is available from this executor."
+}

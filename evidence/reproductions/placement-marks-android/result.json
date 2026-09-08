@@ -1,0 +1,4539 @@
+{
+  "api": 33,
+  "apk_sha256": "f50c95be7035b09ba4cfc066e476a18664eeebd741258948c50305b79cde4270",
+  "cleanup": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "clicks": [
+    {
+      "before_frame": 1,
+      "center_x": 409,
+      "center_y": 344,
+      "control": "motif",
+      "stdout": ""
+    },
+    {
+      "before_frame": 2,
+      "center_x": 409,
+      "center_y": 344,
+      "control": "motif",
+      "stdout": ""
+    },
+    {
+      "before_frame": 3,
+      "center_x": 669,
+      "center_y": 344,
+      "control": "palette",
+      "stdout": ""
+    },
+    {
+      "before_frame": 4,
+      "center_x": 669,
+      "center_y": 344,
+      "control": "palette",
+      "stdout": ""
+    },
+    {
+      "before_frame": 5,
+      "center_x": 747,
+      "center_y": 218,
+      "control": "separation",
+      "stdout": ""
+    },
+    {
+      "before_frame": 6,
+      "center_x": 747,
+      "center_y": 218,
+      "control": "separation",
+      "stdout": ""
+    },
+    {
+      "before_frame": 7,
+      "center_x": 955,
+      "center_y": 218,
+      "control": "min",
+      "stdout": ""
+    },
+    {
+      "before_frame": 8,
+      "center_x": 955,
+      "center_y": 218,
+      "control": "min",
+      "stdout": ""
+    },
+    {
+      "before_frame": 9,
+      "center_x": 150,
+      "center_y": 344,
+      "control": "max",
+      "stdout": ""
+    },
+    {
+      "before_frame": 10,
+      "center_x": 150,
+      "center_y": 344,
+      "control": "max",
+      "stdout": ""
+    },
+    {
+      "before_frame": 11,
+      "center_x": 331,
+      "center_y": 218,
+      "control": "budget",
+      "stdout": ""
+    },
+    {
+      "before_frame": 12,
+      "center_x": 331,
+      "center_y": 218,
+      "control": "budget",
+      "stdout": ""
+    },
+    {
+      "before_frame": 13,
+      "center_x": 124,
+      "center_y": 218,
+      "control": "seed",
+      "stdout": ""
+    },
+    {
+      "before_frame": 14,
+      "center_x": 539,
+      "center_y": 218,
+      "control": "source",
+      "stdout": ""
+    },
+    {
+      "before_frame": 15,
+      "center_x": 124,
+      "center_y": 218,
+      "control": "seed-ignored",
+      "stdout": ""
+    },
+    {
+      "before_frame": 15,
+      "center_x": 331,
+      "center_y": 218,
+      "control": "budget-ignored",
+      "stdout": ""
+    },
+    {
+      "before_frame": 15,
+      "center_x": 955,
+      "center_y": 218,
+      "control": "min-ignored",
+      "stdout": ""
+    },
+    {
+      "before_frame": 15,
+      "center_x": 150,
+      "center_y": 344,
+      "control": "max-ignored",
+      "stdout": ""
+    },
+    {
+      "before_frame": 15,
+      "center_x": 747,
+      "center_y": 218,
+      "control": "separation",
+      "stdout": ""
+    },
+    {
+      "before_frame": 16,
+      "center_x": 747,
+      "center_y": 218,
+      "control": "separation",
+      "stdout": ""
+    },
+    {
+      "before_frame": 17,
+      "center_x": 929,
+      "center_y": 344,
+      "control": "save",
+      "stdout": ""
+    }
+  ],
+  "fingerprint": "google/sdk_gphone64_x86_64/emu64x:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+  "focus_checks": [
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    },
+    {
+      "focused": [
+        "mCurrentFocus=Window{94ee698 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity}"
+      ],
+      "resumed": [
+        "topResumedActivity=ActivityRecord{b749433 u0 org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity} t19}"
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "accepted": 424,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 2,
+      "composition_count": 1,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "baseline",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "seed": 42,
+      "separation": 1,
+      "sequence": 1,
+      "state_version": 0,
+      "submitted_commands": 27136,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 424,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 3,
+      "composition_count": 2,
+      "diamonds": true,
+      "event": "frame-ready",
+      "id": "diamonds",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "3f3a46639127eba5eb009e18820853262fff75c28a4e3788e89daaaf2b0ef790",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": true,
+      "seed": 42,
+      "separation": 1,
+      "sequence": 2,
+      "state_version": 1,
+      "submitted_commands": 1696,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 424,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 4,
+      "composition_count": 3,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "rings-restored",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": true,
+      "seed": 42,
+      "separation": 1,
+      "sequence": 3,
+      "state_version": 2,
+      "submitted_commands": 27136,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 424,
+      "alternate": true,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 5,
+      "composition_count": 4,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "palette",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "ba734b748b7cd5b848b25ad87dd3b682b4679981a66c0a2a5c6a8f825993b7f9",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": true,
+      "seed": 42,
+      "separation": 1,
+      "sequence": 4,
+      "state_version": 3,
+      "submitted_commands": 27136,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 424,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 6,
+      "composition_count": 5,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "palette-restored",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": true,
+      "seed": 42,
+      "separation": 1,
+      "sequence": 5,
+      "state_version": 4,
+      "submitted_commands": 27136,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 353,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 7,
+      "composition_count": 6,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "spacing",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "6248c4ec36481ebcee1e5cd4121ca1b00a6935fc8a1976966c823af4b49da0ce",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": false,
+      "seed": 42,
+      "separation": 1.2,
+      "sequence": 6,
+      "state_version": 5,
+      "submitted_commands": 22592,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 424,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 8,
+      "composition_count": 7,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "spacing-restored",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": false,
+      "seed": 42,
+      "separation": 1,
+      "sequence": 7,
+      "state_version": 6,
+      "submitted_commands": 27136,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 239,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 9,
+      "composition_count": 8,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "size-min",
+      "maximum": 64,
+      "minimum": 8,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "597723904d1a28016e9dd15725b2514b13c9e18541873a64bae0dcc9de1b0d41",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": false,
+      "seed": 42,
+      "separation": 1,
+      "sequence": 8,
+      "state_version": 7,
+      "submitted_commands": 15296,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 424,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 10,
+      "composition_count": 9,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "size-min-restored",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": false,
+      "seed": 42,
+      "separation": 1,
+      "sequence": 9,
+      "state_version": 8,
+      "submitted_commands": 27136,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 613,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 11,
+      "composition_count": 10,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "size-max",
+      "maximum": 32,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "ae77ec91d83cdb9a7d464f005f47bc3e8c51d2120318cd4ba5cf55e01fb77086",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": false,
+      "seed": 42,
+      "separation": 1,
+      "sequence": 10,
+      "state_version": 9,
+      "submitted_commands": 39232,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 424,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 12,
+      "composition_count": 11,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "size-max-restored",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": false,
+      "seed": 42,
+      "separation": 1,
+      "sequence": 11,
+      "state_version": 10,
+      "submitted_commands": 27136,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 517,
+      "alternate": false,
+      "attempts": 10000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 13,
+      "composition_count": 12,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "count-extended",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "6c1e5dfd07dc237ebe51000a2fdf23f1fabbf915494d7f0ec03b66280a48efa9",
+      "prefix_checked": true,
+      "proposals": 10000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": false,
+      "seed": 42,
+      "separation": 1,
+      "sequence": 12,
+      "state_version": 11,
+      "submitted_commands": 33088,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 424,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 14,
+      "composition_count": 13,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "count-restored",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": false,
+      "seed": 42,
+      "separation": 1,
+      "sequence": 13,
+      "state_version": 12,
+      "submitted_commands": 27136,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 432,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 15,
+      "composition_count": 14,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "seed",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "08f7ddffcb69a73fc63dfcde10d8709375bafe8a733ab92211b06273bc3d889c",
+      "prefix_checked": false,
+      "proposals": 5000,
+      "radial": false,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": false,
+      "seed": 43,
+      "separation": 1,
+      "sequence": 14,
+      "state_version": 13,
+      "submitted_commands": 27648,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 111,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 16,
+      "composition_count": 15,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "radial",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "256f687a52073e046fe09cfd939962f46963cf5ebdb8c24ddf93df3bcf4a8dc7",
+      "prefix_checked": false,
+      "proposals": 160,
+      "radial": true,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": false,
+      "seed": 43,
+      "separation": 1,
+      "sequence": 15,
+      "state_version": 14,
+      "submitted_commands": 7104,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 95,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 17,
+      "composition_count": 16,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "radial-spacing",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "566038bd701b14aa77316b287bd56a8463fc8328bb5f6ba41a2dcfd247ec94fa",
+      "prefix_checked": false,
+      "proposals": 160,
+      "radial": true,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": false,
+      "seed": 43,
+      "separation": 1.2,
+      "sequence": 16,
+      "state_version": 15,
+      "submitted_commands": 6080,
+      "thread_id": 2,
+      "thread_name": "main"
+    },
+    {
+      "accepted": 111,
+      "alternate": false,
+      "attempts": 5000,
+      "button_center_bounds": [
+        {
+          "center_x": 124,
+          "center_y": 218,
+          "height": 126,
+          "id": "seed",
+          "left": 21,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 331,
+          "center_y": 218,
+          "height": 126,
+          "id": "budget",
+          "left": 228,
+          "top": 155,
+          "width": 207
+        },
+        {
+          "center_x": 539,
+          "center_y": 218,
+          "height": 126,
+          "id": "source",
+          "left": 435,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 747,
+          "center_y": 218,
+          "height": 126,
+          "id": "separation",
+          "left": 643,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 955,
+          "center_y": 218,
+          "height": 126,
+          "id": "min",
+          "left": 851,
+          "top": 155,
+          "width": 208
+        },
+        {
+          "center_x": 150,
+          "center_y": 344,
+          "height": 126,
+          "id": "max",
+          "left": 21,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 409,
+          "center_y": 344,
+          "height": 126,
+          "id": "motif",
+          "left": 280,
+          "top": 281,
+          "width": 259
+        },
+        {
+          "center_x": 669,
+          "center_y": 344,
+          "height": 126,
+          "id": "palette",
+          "left": 539,
+          "top": 281,
+          "width": 260
+        },
+        {
+          "center_x": 929,
+          "center_y": 344,
+          "height": 126,
+          "id": "save",
+          "left": 799,
+          "top": 281,
+          "width": 260
+        }
+      ],
+      "completed_frame_count": 18,
+      "composition_count": 17,
+      "diamonds": false,
+      "event": "frame-ready",
+      "id": "radial-spacing-restored",
+      "maximum": 64,
+      "minimum": 4,
+      "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+      "png_sha256": "256f687a52073e046fe09cfd939962f46963cf5ebdb8c24ddf93df3bcf4a8dc7",
+      "prefix_checked": false,
+      "proposals": 160,
+      "radial": true,
+      "renderer": "org.procedurals.android.internal.AndroidSurface",
+      "retained_identity": false,
+      "seed": 43,
+      "separation": 1,
+      "sequence": 17,
+      "state_version": 16,
+      "submitted_commands": 7104,
+      "thread_id": 2,
+      "thread_name": "main"
+    }
+  ],
+  "ignored_while_radial": {
+    "elapsed_seconds": 1.519,
+    "frame_16_present": false,
+    "result_present": false,
+    "taps": [
+      "seed",
+      "budget",
+      "min",
+      "max"
+    ],
+    "window_seconds": 1.5
+  },
+  "images": {
+    "baseline.png": {
+      "nonbackground_pixels": 40703,
+      "path": ".work/reproductions/placement-marks-android/baseline.png",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "rgba_sha256": "cb03d6b41ff48546a58ca8474f82fb3bf6a82acfd5c23fc2f66146f9672045d3"
+    },
+    "count.png": {
+      "nonbackground_pixels": 46474,
+      "path": ".work/reproductions/placement-marks-android/count.png",
+      "png_sha256": "6c1e5dfd07dc237ebe51000a2fdf23f1fabbf915494d7f0ec03b66280a48efa9",
+      "rgba_sha256": "520ea396d178e5154f898fea6f966111c2b7078f5419d4eafd334a042e301568"
+    },
+    "diamonds.png": {
+      "nonbackground_pixels": 30329,
+      "path": ".work/reproductions/placement-marks-android/diamonds.png",
+      "png_sha256": "3f3a46639127eba5eb009e18820853262fff75c28a4e3788e89daaaf2b0ef790",
+      "rgba_sha256": "3b7ba12af32fbf37519654c7591cecf7520c56c043dee409cdcb4b4f940f2db1"
+    },
+    "frame-1": {
+      "nonbackground_pixels": 40703,
+      "path": ".work/reproductions/placement-marks-android/frame-1.png",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "rgba_sha256": "cb03d6b41ff48546a58ca8474f82fb3bf6a82acfd5c23fc2f66146f9672045d3"
+    },
+    "frame-10": {
+      "nonbackground_pixels": 49378,
+      "path": ".work/reproductions/placement-marks-android/frame-10.png",
+      "png_sha256": "ae77ec91d83cdb9a7d464f005f47bc3e8c51d2120318cd4ba5cf55e01fb77086",
+      "rgba_sha256": "0a323def5780a695bd185d247cd7cc3808d3047924c44b6d67d7b82dfbe3a59b"
+    },
+    "frame-11": {
+      "nonbackground_pixels": 40703,
+      "path": ".work/reproductions/placement-marks-android/frame-11.png",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "rgba_sha256": "cb03d6b41ff48546a58ca8474f82fb3bf6a82acfd5c23fc2f66146f9672045d3"
+    },
+    "frame-12": {
+      "nonbackground_pixels": 46474,
+      "path": ".work/reproductions/placement-marks-android/frame-12.png",
+      "png_sha256": "6c1e5dfd07dc237ebe51000a2fdf23f1fabbf915494d7f0ec03b66280a48efa9",
+      "rgba_sha256": "520ea396d178e5154f898fea6f966111c2b7078f5419d4eafd334a042e301568"
+    },
+    "frame-13": {
+      "nonbackground_pixels": 40703,
+      "path": ".work/reproductions/placement-marks-android/frame-13.png",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "rgba_sha256": "cb03d6b41ff48546a58ca8474f82fb3bf6a82acfd5c23fc2f66146f9672045d3"
+    },
+    "frame-14": {
+      "nonbackground_pixels": 40405,
+      "path": ".work/reproductions/placement-marks-android/frame-14.png",
+      "png_sha256": "08f7ddffcb69a73fc63dfcde10d8709375bafe8a733ab92211b06273bc3d889c",
+      "rgba_sha256": "6162c79d05865e3e02e79c386923b5a782b758ae97eb8aa1b2af4c52c7bb9fa6"
+    },
+    "frame-15": {
+      "nonbackground_pixels": 16304,
+      "path": ".work/reproductions/placement-marks-android/frame-15.png",
+      "png_sha256": "256f687a52073e046fe09cfd939962f46963cf5ebdb8c24ddf93df3bcf4a8dc7",
+      "rgba_sha256": "d4220bcaf47415e722a5944126ed924c2e4063f254c13a494e2adff6c9aec933"
+    },
+    "frame-16": {
+      "nonbackground_pixels": 13805,
+      "path": ".work/reproductions/placement-marks-android/frame-16.png",
+      "png_sha256": "566038bd701b14aa77316b287bd56a8463fc8328bb5f6ba41a2dcfd247ec94fa",
+      "rgba_sha256": "5158bbb01cd09577f598649d1bcca22c60f69c33fd845028c525fb2b17af123f"
+    },
+    "frame-17": {
+      "nonbackground_pixels": 16304,
+      "path": ".work/reproductions/placement-marks-android/frame-17.png",
+      "png_sha256": "256f687a52073e046fe09cfd939962f46963cf5ebdb8c24ddf93df3bcf4a8dc7",
+      "rgba_sha256": "d4220bcaf47415e722a5944126ed924c2e4063f254c13a494e2adff6c9aec933"
+    },
+    "frame-2": {
+      "nonbackground_pixels": 30329,
+      "path": ".work/reproductions/placement-marks-android/frame-2.png",
+      "png_sha256": "3f3a46639127eba5eb009e18820853262fff75c28a4e3788e89daaaf2b0ef790",
+      "rgba_sha256": "3b7ba12af32fbf37519654c7591cecf7520c56c043dee409cdcb4b4f940f2db1"
+    },
+    "frame-3": {
+      "nonbackground_pixels": 40703,
+      "path": ".work/reproductions/placement-marks-android/frame-3.png",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "rgba_sha256": "cb03d6b41ff48546a58ca8474f82fb3bf6a82acfd5c23fc2f66146f9672045d3"
+    },
+    "frame-4": {
+      "nonbackground_pixels": 40352,
+      "path": ".work/reproductions/placement-marks-android/frame-4.png",
+      "png_sha256": "ba734b748b7cd5b848b25ad87dd3b682b4679981a66c0a2a5c6a8f825993b7f9",
+      "rgba_sha256": "5aafbe9b7a17240c817ea64c3a189453ab7a9914f061d992705ce1ed9726d551"
+    },
+    "frame-5": {
+      "nonbackground_pixels": 40703,
+      "path": ".work/reproductions/placement-marks-android/frame-5.png",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "rgba_sha256": "cb03d6b41ff48546a58ca8474f82fb3bf6a82acfd5c23fc2f66146f9672045d3"
+    },
+    "frame-6": {
+      "nonbackground_pixels": 31434,
+      "path": ".work/reproductions/placement-marks-android/frame-6.png",
+      "png_sha256": "6248c4ec36481ebcee1e5cd4121ca1b00a6935fc8a1976966c823af4b49da0ce",
+      "rgba_sha256": "755ff64076386e7ef491fbd24b5acdf1c98459ca44dd22dbf8acb7fd4a2a5919"
+    },
+    "frame-7": {
+      "nonbackground_pixels": 40703,
+      "path": ".work/reproductions/placement-marks-android/frame-7.png",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "rgba_sha256": "cb03d6b41ff48546a58ca8474f82fb3bf6a82acfd5c23fc2f66146f9672045d3"
+    },
+    "frame-8": {
+      "nonbackground_pixels": 33849,
+      "path": ".work/reproductions/placement-marks-android/frame-8.png",
+      "png_sha256": "597723904d1a28016e9dd15725b2514b13c9e18541873a64bae0dcc9de1b0d41",
+      "rgba_sha256": "1b060b80d30f159d70a220bc7db0448bdab5e74db6b80f91183901ef5d39b6cd"
+    },
+    "frame-9": {
+      "nonbackground_pixels": 40703,
+      "path": ".work/reproductions/placement-marks-android/frame-9.png",
+      "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+      "rgba_sha256": "cb03d6b41ff48546a58ca8474f82fb3bf6a82acfd5c23fc2f66146f9672045d3"
+    },
+    "palette.png": {
+      "nonbackground_pixels": 40352,
+      "path": ".work/reproductions/placement-marks-android/palette.png",
+      "png_sha256": "ba734b748b7cd5b848b25ad87dd3b682b4679981a66c0a2a5c6a8f825993b7f9",
+      "rgba_sha256": "5aafbe9b7a17240c817ea64c3a189453ab7a9914f061d992705ce1ed9726d551"
+    },
+    "radial-spacing.png": {
+      "nonbackground_pixels": 13805,
+      "path": ".work/reproductions/placement-marks-android/radial-spacing.png",
+      "png_sha256": "566038bd701b14aa77316b287bd56a8463fc8328bb5f6ba41a2dcfd247ec94fa",
+      "rgba_sha256": "5158bbb01cd09577f598649d1bcca22c60f69c33fd845028c525fb2b17af123f"
+    },
+    "radial.png": {
+      "nonbackground_pixels": 16304,
+      "path": ".work/reproductions/placement-marks-android/radial.png",
+      "png_sha256": "256f687a52073e046fe09cfd939962f46963cf5ebdb8c24ddf93df3bcf4a8dc7",
+      "rgba_sha256": "d4220bcaf47415e722a5944126ed924c2e4063f254c13a494e2adff6c9aec933"
+    },
+    "seed.png": {
+      "nonbackground_pixels": 40405,
+      "path": ".work/reproductions/placement-marks-android/seed.png",
+      "png_sha256": "08f7ddffcb69a73fc63dfcde10d8709375bafe8a733ab92211b06273bc3d889c",
+      "rgba_sha256": "6162c79d05865e3e02e79c386923b5a782b758ae97eb8aa1b2af4c52c7bb9fa6"
+    },
+    "size-max.png": {
+      "nonbackground_pixels": 49378,
+      "path": ".work/reproductions/placement-marks-android/size-max.png",
+      "png_sha256": "ae77ec91d83cdb9a7d464f005f47bc3e8c51d2120318cd4ba5cf55e01fb77086",
+      "rgba_sha256": "0a323def5780a695bd185d247cd7cc3808d3047924c44b6d67d7b82dfbe3a59b"
+    },
+    "size-min.png": {
+      "nonbackground_pixels": 33849,
+      "path": ".work/reproductions/placement-marks-android/size-min.png",
+      "png_sha256": "597723904d1a28016e9dd15725b2514b13c9e18541873a64bae0dcc9de1b0d41",
+      "rgba_sha256": "1b060b80d30f159d70a220bc7db0448bdab5e74db6b80f91183901ef5d39b6cd"
+    },
+    "spacing.png": {
+      "nonbackground_pixels": 31434,
+      "path": ".work/reproductions/placement-marks-android/spacing.png",
+      "png_sha256": "6248c4ec36481ebcee1e5cd4121ca1b00a6935fc8a1976966c823af4b49da0ce",
+      "rgba_sha256": "755ff64076386e7ef491fbd24b5acdf1c98459ca44dd22dbf8acb7fd4a2a5919"
+    }
+  },
+  "input_sha256": {
+    ".work/reproductions/placement-marks-android/pure-placement-java.json": "d5bcd604774792c010c90bf8538d30439ca9ae5964bcdc939bbf2404efaa0b84",
+    "/home/colin/dev/procedural/.work/environments/android/bootstrap/debug.keystore": "6608f86266dea2d246767b4d7d0e0688bfa2d47b73295fe5545ec3e3a72a9aea",
+    "/home/colin/dev/procedural/.work/toolchains/android/gradle-7.4.2/bin/gradle": "677db28e59ce22feb54def6637181481fa3903bb28d88e7b9ff5bd13ecf36cda",
+    "/home/colin/dev/procedural/.work/toolchains/android/mode-412/AndroidMode/processing-core.zip": "0cdd89e2511a97728092619e89148b46a52700e5957d81f234db8fd3b1652338",
+    "/home/colin/dev/procedural/.work/toolchains/android/sdk/platforms/android-33/android.jar": "fd628aa21321859a9035c6aae4b084b7d3fdb3f230be5cd5ec76541e32f7c963",
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "design/capabilities/placement-marks-p5-acceptance.md": "5cebfa956b5b6a8932eae12d1cbd9ae6589b7d088b8577ab3acef234287256c0",
+    "evidence/reproductions/placement-marks-android/plan.json": "88c1244c873279bb8e12a709ee96d6d95d7b3c8e451a981da0d659d0f3482539",
+    "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+    "packages/java-android/examples/PlacementMarks/AndroidManifest.xml": "5b508021536f85b637fae1ee7c64788ebf009434dd735f9f49a83fa5ce655c01",
+    "packages/java-android/examples/PlacementMarks/PlacementMarksActivity.java": "e7fee124da66464cb6240780c9f9fa73872d6f11ba653d7e5330b5342d96c050",
+    "packages/java-android/examples/PlacementMarks/PlacementMarksRenderer.java": "c4b6d9780da7c7dae0a6b5d1d9e4d4a69b44d8e641d36ecc85d2914a84905f2a",
+    "packages/java-android/examples/PlacementMarks/README.md": "dbbe20e5f2a2ebd510e54df874f147f950a3de5dd8fe0267b4d4a07352f48425",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFrame.java": "835daf36db3736adad6834209c39fe2b6530362dc0f57febc449143e6c09b570",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidFrameHost.java": "64a3ec481e69dc0bf9597ea03d4ed0864dc7002a8f05f1a0b852809503f9e2c7",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSurface.java": "bb2efe0fcce61461e847f9415b6cb7dae80a4f7ccb2e220b1e0009083c8c3604",
+    "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+    "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+    "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+    "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+    "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+    "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+    "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+    "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+    "tests/native/android-bootstrap/app/build.gradle": "ccbeb0814b1137d7858219ea9575d6aa110b123cdcf8cd8a9af0d5f63614ee39",
+    "tests/native/android-bootstrap/app/src/main/AndroidManifest.xml": "7b68272a76ba2caeb51a270ccc0c059f2420e1f9ce03e41e4ace05a7a65e9d2c",
+    "tests/native/android-bootstrap/app/src/main/java/org/procedurals/bootstrap/MainActivity.java": "8cb812c28df7278e16ae894f3f9b4bf872f6b3464d71e807e4f694d5332b761d",
+    "tests/native/android-bootstrap/build.gradle": "301b72f0f10c630de8eca0a5a8374b2fe5e0c69724ba49720793da15cf95b083",
+    "tests/native/android-bootstrap/gradle.properties": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e",
+    "tests/native/android-bootstrap/settings.gradle": "acaba98235948bfc23736254a68c0796d822a33f513f0c5b86cb47af43acf398",
+    "tests/native/android-placement-marks/PlacementMarksProbeActivity.java": "f24e11d9c4fcd1653c060eb31f8ccfb5fb16c8b144fee2394498ac7ce9a7a2f8",
+    "tools/build_android_placement_marks.py": "c173f9eb5fc8c0e28eef75156c2808fac1c2942db25dde37dfafa13b4d829c18",
+    "tools/run_android_placement_marks.py": "15d8c2a179ce150871ad7bfdf344ccbbaa63e85e7286046b1dc4d4d1ffe9c405",
+    "tools/run_circle_placement_java.py": "5020d8720c183ed696ea8783b257ae7949b162efca5991aceec6c91882a864ee"
+  },
+  "install": "Performing Streamed Install\nSuccess\n",
+  "launch": "Starting: Intent { cmp=org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity }\nStatus: ok\nLaunchState: COLD\nActivity: org.procedurals.placementmarksprobe/org.procedurals.examples.placementmarks.PlacementMarksProbeActivity\nTotalTime: 326\nWaitTime: 327\nComplete\n",
+  "native": {
+    "api": 33,
+    "completed_frame_count": 18,
+    "composition_count": 17,
+    "event": "result",
+    "frames": [
+      {
+        "accepted": 424,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 2,
+        "composition_count": 1,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "baseline",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "seed": 42,
+        "separation": 1,
+        "sequence": 1,
+        "state_version": 0,
+        "submitted_commands": 27136,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 424,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 3,
+        "composition_count": 2,
+        "diamonds": true,
+        "event": "frame-ready",
+        "id": "diamonds",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "3f3a46639127eba5eb009e18820853262fff75c28a4e3788e89daaaf2b0ef790",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": true,
+        "seed": 42,
+        "separation": 1,
+        "sequence": 2,
+        "state_version": 1,
+        "submitted_commands": 1696,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 424,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 4,
+        "composition_count": 3,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "rings-restored",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": true,
+        "seed": 42,
+        "separation": 1,
+        "sequence": 3,
+        "state_version": 2,
+        "submitted_commands": 27136,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 424,
+        "alternate": true,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 5,
+        "composition_count": 4,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "palette",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "ba734b748b7cd5b848b25ad87dd3b682b4679981a66c0a2a5c6a8f825993b7f9",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": true,
+        "seed": 42,
+        "separation": 1,
+        "sequence": 4,
+        "state_version": 3,
+        "submitted_commands": 27136,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 424,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 6,
+        "composition_count": 5,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "palette-restored",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": true,
+        "seed": 42,
+        "separation": 1,
+        "sequence": 5,
+        "state_version": 4,
+        "submitted_commands": 27136,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 353,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 7,
+        "composition_count": 6,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "spacing",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "6248c4ec36481ebcee1e5cd4121ca1b00a6935fc8a1976966c823af4b49da0ce",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": false,
+        "seed": 42,
+        "separation": 1.2,
+        "sequence": 6,
+        "state_version": 5,
+        "submitted_commands": 22592,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 424,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 8,
+        "composition_count": 7,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "spacing-restored",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": false,
+        "seed": 42,
+        "separation": 1,
+        "sequence": 7,
+        "state_version": 6,
+        "submitted_commands": 27136,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 239,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 9,
+        "composition_count": 8,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "size-min",
+        "maximum": 64,
+        "minimum": 8,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "597723904d1a28016e9dd15725b2514b13c9e18541873a64bae0dcc9de1b0d41",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": false,
+        "seed": 42,
+        "separation": 1,
+        "sequence": 8,
+        "state_version": 7,
+        "submitted_commands": 15296,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 424,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 10,
+        "composition_count": 9,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "size-min-restored",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": false,
+        "seed": 42,
+        "separation": 1,
+        "sequence": 9,
+        "state_version": 8,
+        "submitted_commands": 27136,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 613,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 11,
+        "composition_count": 10,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "size-max",
+        "maximum": 32,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "ae77ec91d83cdb9a7d464f005f47bc3e8c51d2120318cd4ba5cf55e01fb77086",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": false,
+        "seed": 42,
+        "separation": 1,
+        "sequence": 10,
+        "state_version": 9,
+        "submitted_commands": 39232,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 424,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 12,
+        "composition_count": 11,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "size-max-restored",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": false,
+        "seed": 42,
+        "separation": 1,
+        "sequence": 11,
+        "state_version": 10,
+        "submitted_commands": 27136,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 517,
+        "alternate": false,
+        "attempts": 10000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 13,
+        "composition_count": 12,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "count-extended",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "6c1e5dfd07dc237ebe51000a2fdf23f1fabbf915494d7f0ec03b66280a48efa9",
+        "prefix_checked": true,
+        "proposals": 10000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": false,
+        "seed": 42,
+        "separation": 1,
+        "sequence": 12,
+        "state_version": 11,
+        "submitted_commands": 33088,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 424,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 14,
+        "composition_count": 13,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "count-restored",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "eecd4aeecad7a3129532a42d6b0d69874d5136037b869bf438b957eb8bd7fdb3",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": false,
+        "seed": 42,
+        "separation": 1,
+        "sequence": 13,
+        "state_version": 12,
+        "submitted_commands": 27136,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 432,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 15,
+        "composition_count": 14,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "seed",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "08f7ddffcb69a73fc63dfcde10d8709375bafe8a733ab92211b06273bc3d889c",
+        "prefix_checked": false,
+        "proposals": 5000,
+        "radial": false,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": false,
+        "seed": 43,
+        "separation": 1,
+        "sequence": 14,
+        "state_version": 13,
+        "submitted_commands": 27648,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 111,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 16,
+        "composition_count": 15,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "radial",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "256f687a52073e046fe09cfd939962f46963cf5ebdb8c24ddf93df3bcf4a8dc7",
+        "prefix_checked": false,
+        "proposals": 160,
+        "radial": true,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": false,
+        "seed": 43,
+        "separation": 1,
+        "sequence": 15,
+        "state_version": 14,
+        "submitted_commands": 7104,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 95,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 17,
+        "composition_count": 16,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "radial-spacing",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "566038bd701b14aa77316b287bd56a8463fc8328bb5f6ba41a2dcfd247ec94fa",
+        "prefix_checked": false,
+        "proposals": 160,
+        "radial": true,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": false,
+        "seed": 43,
+        "separation": 1.2,
+        "sequence": 16,
+        "state_version": 15,
+        "submitted_commands": 6080,
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "accepted": 111,
+        "alternate": false,
+        "attempts": 5000,
+        "button_center_bounds": [
+          {
+            "center_x": 124,
+            "center_y": 218,
+            "height": 126,
+            "id": "seed",
+            "left": 21,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 331,
+            "center_y": 218,
+            "height": 126,
+            "id": "budget",
+            "left": 228,
+            "top": 155,
+            "width": 207
+          },
+          {
+            "center_x": 539,
+            "center_y": 218,
+            "height": 126,
+            "id": "source",
+            "left": 435,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 747,
+            "center_y": 218,
+            "height": 126,
+            "id": "separation",
+            "left": 643,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 955,
+            "center_y": 218,
+            "height": 126,
+            "id": "min",
+            "left": 851,
+            "top": 155,
+            "width": 208
+          },
+          {
+            "center_x": 150,
+            "center_y": 344,
+            "height": 126,
+            "id": "max",
+            "left": 21,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 409,
+            "center_y": 344,
+            "height": 126,
+            "id": "motif",
+            "left": 280,
+            "top": 281,
+            "width": 259
+          },
+          {
+            "center_x": 669,
+            "center_y": 344,
+            "height": 126,
+            "id": "palette",
+            "left": 539,
+            "top": 281,
+            "width": 260
+          },
+          {
+            "center_x": 929,
+            "center_y": 344,
+            "height": 126,
+            "id": "save",
+            "left": 799,
+            "top": 281,
+            "width": 260
+          }
+        ],
+        "completed_frame_count": 18,
+        "composition_count": 17,
+        "diamonds": false,
+        "event": "frame-ready",
+        "id": "radial-spacing-restored",
+        "maximum": 64,
+        "minimum": 4,
+        "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+        "png_sha256": "256f687a52073e046fe09cfd939962f46963cf5ebdb8c24ddf93df3bcf4a8dc7",
+        "prefix_checked": false,
+        "proposals": 160,
+        "radial": true,
+        "renderer": "org.procedurals.android.internal.AndroidSurface",
+        "retained_identity": false,
+        "seed": 43,
+        "separation": 1,
+        "sequence": 17,
+        "state_version": 16,
+        "submitted_commands": 7104,
+        "thread_id": 2,
+        "thread_name": "main"
+      }
+    ],
+    "nonce": "1d467f9c-11c1-4714-9804-1e66e448492d",
+    "passed": true,
+    "renderer": "org.procedurals.android.internal.AndroidSurface",
+    "save_quiet_ms": 300,
+    "saved": {
+      "byte_sha256": "256f687a52073e046fe09cfd939962f46963cf5ebdb8c24ddf93df3bcf4a8dc7",
+      "is_pending": 0,
+      "metadata_height": 640,
+      "metadata_width": 640,
+      "mime_type": "image/png",
+      "png_height": 640,
+      "png_width": 640,
+      "relative_path": "Pictures/Procedurals/",
+      "uri": "content://media/external_primary/images/media/1000000022"
+    },
+    "sequence": 18,
+    "thread_id": 2,
+    "thread_name": "main"
+  },
+  "prepared": {
+    "activity_class": "org.procedurals.examples.placementmarks.PlacementMarksProbeActivity",
+    "application_id": "org.procedurals.placementmarksprobe",
+    "scope": "compile preparation only; no install, emulator launch, render, or Android support acceptance",
+    "shared_composition": {
+      "path": "packages/java/examples/PlacementMarks/PlacementComposition.java",
+      "sha256": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+      "staging": "exact source copied without package rewriting"
+    },
+    "source_hashes": {
+      "/home/colin/dev/procedural/.work/environments/android/bootstrap/debug.keystore": "6608f86266dea2d246767b4d7d0e0688bfa2d47b73295fe5545ec3e3a72a9aea",
+      "/home/colin/dev/procedural/.work/toolchains/android/gradle-7.4.2/bin/gradle": "677db28e59ce22feb54def6637181481fa3903bb28d88e7b9ff5bd13ecf36cda",
+      "/home/colin/dev/procedural/.work/toolchains/android/mode-412/AndroidMode/processing-core.zip": "0cdd89e2511a97728092619e89148b46a52700e5957d81f234db8fd3b1652338",
+      "/home/colin/dev/procedural/.work/toolchains/android/sdk/platforms/android-33/android.jar": "fd628aa21321859a9035c6aae4b084b7d3fdb3f230be5cd5ec76541e32f7c963",
+      "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+      "packages/java-android/examples/PlacementMarks/AndroidManifest.xml": "5b508021536f85b637fae1ee7c64788ebf009434dd735f9f49a83fa5ce655c01",
+      "packages/java-android/examples/PlacementMarks/PlacementMarksActivity.java": "e7fee124da66464cb6240780c9f9fa73872d6f11ba653d7e5330b5342d96c050",
+      "packages/java-android/examples/PlacementMarks/PlacementMarksRenderer.java": "c4b6d9780da7c7dae0a6b5d1d9e4d4a69b44d8e641d36ecc85d2914a84905f2a",
+      "packages/java-android/examples/PlacementMarks/README.md": "dbbe20e5f2a2ebd510e54df874f147f950a3de5dd8fe0267b4d4a07352f48425",
+      "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
+      "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFrame.java": "835daf36db3736adad6834209c39fe2b6530362dc0f57febc449143e6c09b570",
+      "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidFrameHost.java": "64a3ec481e69dc0bf9597ea03d4ed0864dc7002a8f05f1a0b852809503f9e2c7",
+      "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSurface.java": "bb2efe0fcce61461e847f9415b6cb7dae80a4f7ccb2e220b1e0009083c8c3604",
+      "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+      "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+      "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+      "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+      "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+      "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+      "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+      "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+      "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+      "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+      "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+      "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+      "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+      "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+      "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+      "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+      "tests/native/android-bootstrap/app/build.gradle": "ccbeb0814b1137d7858219ea9575d6aa110b123cdcf8cd8a9af0d5f63614ee39",
+      "tests/native/android-bootstrap/app/src/main/AndroidManifest.xml": "7b68272a76ba2caeb51a270ccc0c059f2420e1f9ce03e41e4ace05a7a65e9d2c",
+      "tests/native/android-bootstrap/app/src/main/java/org/procedurals/bootstrap/MainActivity.java": "8cb812c28df7278e16ae894f3f9b4bf872f6b3464d71e807e4f694d5332b761d",
+      "tests/native/android-bootstrap/build.gradle": "301b72f0f10c630de8eca0a5a8374b2fe5e0c69724ba49720793da15cf95b083",
+      "tests/native/android-bootstrap/gradle.properties": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e",
+      "tests/native/android-bootstrap/settings.gradle": "acaba98235948bfc23736254a68c0796d822a33f513f0c5b86cb47af43acf398",
+      "tests/native/android-placement-marks/PlacementMarksProbeActivity.java": "f24e11d9c4fcd1653c060eb31f8ccfb5fb16c8b144fee2394498ac7ce9a7a2f8",
+      "tools/build_android_placement_marks.py": "c173f9eb5fc8c0e28eef75156c2808fac1c2942db25dde37dfafa13b4d829c18"
+    },
+    "stage": ".work/environments/android/placement-marks-ui",
+    "staged_project_sha256": {
+      "app/build.gradle": "e4fa84a83cf0738cc165bd9fe93bbc43d677278b08219031959ccb09c70522b2",
+      "app/libs/processing-core.jar": "0cdd89e2511a97728092619e89148b46a52700e5957d81f234db8fd3b1652338",
+      "app/src/main/AndroidManifest.xml": "805e2ee3e77431f6e375ae22f9ef0d5c988987a0e8cb686369019bd179593dbf",
+      "app/src/main/java/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
+      "app/src/main/java/Android2DFrame.java": "835daf36db3736adad6834209c39fe2b6530362dc0f57febc449143e6c09b570",
+      "app/src/main/java/AndroidFrameHost.java": "64a3ec481e69dc0bf9597ea03d4ed0864dc7002a8f05f1a0b852809503f9e2c7",
+      "app/src/main/java/AndroidSurface.java": "bb2efe0fcce61461e847f9415b6cb7dae80a4f7ccb2e220b1e0009083c8c3604",
+      "app/src/main/java/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+      "app/src/main/java/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+      "app/src/main/java/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+      "app/src/main/java/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+      "app/src/main/java/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+      "app/src/main/java/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+      "app/src/main/java/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+      "app/src/main/java/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+      "app/src/main/java/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+      "app/src/main/java/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+      "app/src/main/java/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+      "app/src/main/java/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+      "app/src/main/java/PlacementMarksActivity.java": "e7fee124da66464cb6240780c9f9fa73872d6f11ba653d7e5330b5342d96c050",
+      "app/src/main/java/PlacementMarksProbeActivity.java": "f24e11d9c4fcd1653c060eb31f8ccfb5fb16c8b144fee2394498ac7ce9a7a2f8",
+      "app/src/main/java/PlacementMarksRenderer.java": "c4b6d9780da7c7dae0a6b5d1d9e4d4a69b44d8e641d36ecc85d2914a84905f2a",
+      "app/src/main/java/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+      "app/src/main/java/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+      "app/src/main/java/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+      "app/src/main/java/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+      "app/src/main/java/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+      "build.gradle": "301b72f0f10c630de8eca0a5a8374b2fe5e0c69724ba49720793da15cf95b083",
+      "debug.keystore": "6608f86266dea2d246767b4d7d0e0688bfa2d47b73295fe5545ec3e3a72a9aea",
+      "gradle.properties": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e",
+      "local.properties": "4c53d84696ad9e5fd860ea727f639ccb3378c1b77bb1eedbd9031326d47966e6",
+      "settings.gradle": "acaba98235948bfc23736254a68c0796d822a33f513f0c5b86cb47af43acf398"
+    }
+  },
+  "pure_preflight": {
+    "contract_sha256": {
+      "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+      "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267"
+    },
+    "fixture_sha256": {
+      "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+      "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699"
+    },
+    "native": {
+      "assertions": 28,
+      "native_ownership_access": true,
+      "performance": [
+        {
+          "allocation_scope": "kernel total excludes post-timing full-geometry checksum; checksum total includes fresh pointAt pairs",
+          "attempts": 0,
+          "average_nanos": 9230,
+          "elapsed_nanos": [
+            16250,
+            6400,
+            5040
+          ],
+          "geometry_checksum": "d7e4fcfa299d713d",
+          "retained_count_last_rep": 0,
+          "retained_payload_scope": "final packed 2*N binary64 coordinates, N binary64 radii, N int source indices; excludes array headers and temporary growth arrays",
+          "retained_raw_payload_bytes_last_rep": 0,
+          "thread_allocated_bytes_checksum_total": 0,
+          "thread_allocated_bytes_kernel_total": 744,
+          "timing_reps": 3,
+          "timing_scope": "seeded_retained_kernel",
+          "warmup_reps": 2
+        },
+        {
+          "allocation_scope": "kernel total excludes post-timing full-geometry checksum; checksum total includes fresh pointAt pairs",
+          "attempts": 1,
+          "average_nanos": 7880,
+          "elapsed_nanos": [
+            8960,
+            7050,
+            7630
+          ],
+          "geometry_checksum": "2c4e69203f3760d6",
+          "retained_count_last_rep": 1,
+          "retained_payload_scope": "final packed 2*N binary64 coordinates, N binary64 radii, N int source indices; excludes array headers and temporary growth arrays",
+          "retained_raw_payload_bytes_last_rep": 28,
+          "thread_allocated_bytes_checksum_total": 96,
+          "thread_allocated_bytes_kernel_total": 936,
+          "timing_reps": 3,
+          "timing_scope": "seeded_retained_kernel",
+          "warmup_reps": 2
+        },
+        {
+          "allocation_scope": "kernel total excludes post-timing full-geometry checksum; checksum total includes fresh pointAt pairs",
+          "attempts": 5000,
+          "average_nanos": 1316448,
+          "elapsed_nanos": [
+            1324700,
+            1317611,
+            1312590,
+            1307071,
+            1320270
+          ],
+          "geometry_checksum": "a58d7d0e7fb3790e",
+          "retained_count_last_rep": 424,
+          "retained_payload_scope": "final packed 2*N binary64 coordinates, N binary64 radii, N int source indices; excludes array headers and temporary growth arrays",
+          "retained_raw_payload_bytes_last_rep": 11872,
+          "thread_allocated_bytes_checksum_total": 67840,
+          "thread_allocated_bytes_kernel_total": 315120,
+          "timing_reps": 5,
+          "timing_scope": "seeded_retained_kernel",
+          "warmup_reps": 3
+        },
+        {
+          "allocation_scope": "kernel total excludes post-timing full-geometry checksum; checksum total includes fresh pointAt pairs",
+          "attempts": 10000,
+          "average_nanos": 1978478,
+          "elapsed_nanos": [
+            2004591,
+            1964221,
+            1957010,
+            2006221,
+            1960351
+          ],
+          "geometry_checksum": "38f433e7a3a89c53",
+          "retained_count_last_rep": 517,
+          "retained_payload_scope": "final packed 2*N binary64 coordinates, N binary64 radii, N int source indices; excludes array headers and temporary growth arrays",
+          "retained_raw_payload_bytes_last_rep": 14476,
+          "thread_allocated_bytes_checksum_total": 82720,
+          "thread_allocated_bytes_kernel_total": 328160,
+          "timing_reps": 5,
+          "timing_scope": "seeded_retained_kernel",
+          "warmup_reps": 3
+        },
+        {
+          "allocation_scope": "kernel total excludes post-timing full-geometry checksum; checksum total includes fresh pointAt pairs",
+          "attempts": 200000,
+          "average_nanos": 40578030,
+          "elapsed_nanos": [
+            40611985,
+            40544076
+          ],
+          "geometry_checksum": "d668c99085a85b5d",
+          "retained_count_last_rep": 930,
+          "retained_payload_scope": "final packed 2*N binary64 coordinates, N binary64 radii, N int source indices; excludes array headers and temporary growth arrays",
+          "retained_raw_payload_bytes_last_rep": 26040,
+          "thread_allocated_bytes_checksum_total": 59520,
+          "thread_allocated_bytes_kernel_total": 282240,
+          "timing_reps": 2,
+          "timing_scope": "seeded_retained_kernel",
+          "warmup_reps": 1
+        }
+      ],
+      "resource_failure_mechanism": "not executed; host allocation failure remains a host exception",
+      "status": "passed"
+    },
+    "operations": [
+      "sampling.ordered-circle-filter-2d",
+      "sampling.seeded-circle-placement-2d"
+    ],
+    "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+    "scope": "Java core pure conformance, ownership/access and bounded workload observations only; no renderer, Android, JavaScript or Python claim.",
+    "source_sha256_after": {
+      "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+      "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+      "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+      "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+      "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+      "tests/native/CirclePlacementsNative.java": "93a05013f1d6bfc444e68f2303b97773c04fcdc94354f3b928a340a28fc2eb7d",
+      "tools/run_circle_placement_java.py": "5020d8720c183ed696ea8783b257ae7949b162efca5991aceec6c91882a864ee"
+    },
+    "source_sha256_before": {
+      "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+      "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+      "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+      "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+      "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+      "tests/native/CirclePlacementsNative.java": "93a05013f1d6bfc444e68f2303b97773c04fcdc94354f3b928a340a28fc2eb7d",
+      "tools/run_circle_placement_java.py": "5020d8720c183ed696ea8783b257ae7949b162efca5991aceec6c91882a864ee"
+    },
+    "vectors": {
+      "fixture_cases": 68,
+      "status": "passed"
+    }
+  },
+  "saved": {
+    "bytes_equal_frame_17": true,
+    "native": {
+      "byte_sha256": "256f687a52073e046fe09cfd939962f46963cf5ebdb8c24ddf93df3bcf4a8dc7",
+      "is_pending": 0,
+      "metadata_height": 640,
+      "metadata_width": 640,
+      "mime_type": "image/png",
+      "png_height": 640,
+      "png_width": 640,
+      "relative_path": "Pictures/Procedurals/",
+      "uri": "content://media/external_primary/images/media/1000000022"
+    },
+    "path": ".work/reproductions/placement-marks-android/saved.png",
+    "png_sha256": "256f687a52073e046fe09cfd939962f46963cf5ebdb8c24ddf93df3bcf4a8dc7"
+  },
+  "scope": "Actual Android API33 editable PlacementMarks Activity on the existing Processing Android renderer. The shared PlacementComposition is staged without modification; motif outlines are submitted as round-capped segment2 sequences, the accepted Android polyline convention. This validates native controls, retained composition, ignored edits while radial, drawing submission, cached PNG transfer, and MediaStore output. It does not claim upstream pixel reproduction, cross-host raster identity, physical-device support, or human usability.",
+  "status": "passed",
+  "timeout": {
+    "cleanup_seconds": 60,
+    "execution_seconds": 2400,
+    "total_seconds": 2460
+  },
+  "visual_review": "pending"
+}
