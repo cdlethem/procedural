@@ -4,7 +4,7 @@ Procedurals is an evidence-backed generative-art toolkit in development. It is b
 from a systematic survey of 901 Processing sketches into a small, composable set of generators,
 transforms, drawing operations, templates, and tools.
 
-Nineteen editable starters begin from artistic decisions: place independent marks, trace paths,
+The editable starters begin from artistic decisions: place independent marks, trace paths,
 scatter differently sized forms, divide a surface into cells, give shapes grain, grow branches,
 build a 3D form from an axial radius profile, use letters as repeated marks along paths,
 turn point arrangements into connected facets, wire and grain, or give an arrangement
@@ -33,6 +33,9 @@ contains 22 starters and 22 reusable operations. It is not a published registry
 release. An experimental [Java recipe preview](docs/java-recipe-preview.md) exports FieldMarks,
 PathMarks, placement-bars and region-panels as editable standalone projects. General portable recipes, MCP and web tools
 remain in the roadmap.
+
+[Browse the local visual-review gallery](docs/visual-review.md) for actual workflow images,
+structural edits and private studies collected in one place.
 
 [Render a seeded sketch or parameter sweep](docs/rendering-java.md) with the opt-in JAVA2D helper.
 

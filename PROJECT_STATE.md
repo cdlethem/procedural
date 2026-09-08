@@ -1,5 +1,20 @@
 # Project state
 
+## Central visual-review gallery delivered
+
+User requested one place to inspect actual artwork. Local gallery:
+.work/visual-review/index.html; contact sheet overview.png;113 distinct images across24
+groups. Includes Java workflows, four original recreations, CP20 private study and early
+CP1 study with distinct labels. Original files unchanged; descriptive symlinks provide
+central access without copying assets. All registered images available with matching hashes.
+Builder tools/build_visual_review.py and curation docs/visual-review.json are tracked;
+AGENTS now requires refreshing at visual checkpoints. Guide docs/visual-review.md.
+
+CP20 core accepted/pushed28532369; next public native polygon workflow and distribution
+remain. Existing Java0.22 still22 packaged operations/workflows. No core/render worker
+is active. Port drafts (Android/JS/Python) remain preserved and excluded.
+
+
 ## CP20 convex polygon Java core accepted; public workflow next
 
 Root reviewed ConvexPolygonPlacements2D against frozen contract and36 exact fixtures (30 also
@@ -16,9 +31,8 @@ retained recolor, reset, cached save), then extracted distribution acceptance. J
 ships22 operations/22 workflows; new core is not yet a shipped23rd workflow. No worker/native
 process is running for core. Ports/Sol paused; Android/JS/Python drafts remain excluded.
 
-User additionally requested centralized visual review. Root is building a local gallery
-under .work/visual-review, with tracked curation/builder and existing images linked in place.
-Luna is doing read-only inventory of earlier accepted Java visuals; no port work resumed.
+Central visual review is delivered above. Luna completed the read-only earlier-render
+inventory; root assembled and checked the gallery. No port work resumed.
 
 ## CP20 convex-outline placement private study reviewed
 

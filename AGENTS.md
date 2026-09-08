@@ -91,6 +91,15 @@ implementation bugs without root reviewing every iteration. Before the next buil
 record a prioritized bounded deliverable list, model ownership and stopping conditions.
 Do not invent quota balances, prices or a reliable finish-date estimate.
 
+## Visual review — maintainer request
+
+Keep a centralized local gallery at `.work/visual-review/index.html`. Register new artist
+renders and meaningful variants in `docs/visual-review.json`, with precise review-stage
+labels and links to existing evidence, then run `python3 tools/build_visual_review.py` at
+visual checkpoints. Include private studies without implying shipped acceptance. Preserve
+original files; use links instead of copied render assets. The gallery and contact sheet
+stay ignored. Gallery inclusion is navigation, never a replacement for acceptance review.
+
 ## Current scheduling — maintainer revision: return to Java
 
 Pause port integration and prioritize new Java functionality. Preserve accepted port work
