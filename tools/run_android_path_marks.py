@@ -19,9 +19,6 @@ from build_android_path_marks import ROOT, SDK, build, digest, prepare
 
 APP = "org.procedurals.pathmarksprobe"
 ACTIVITY = "org.procedurals.examples.pathmarks.PathMarksProbeActivity"
-STAGE = ROOT / ".work/environments/android/path-marks-ui"
-OUTPUT = ROOT / ".work/reproductions/cp2-android"
-EVIDENCE = ROOT / "evidence/reproductions/cp2-android/result.json"
 PLAN_PATH = ROOT / "evidence/reproductions/cp2-android/plan.json"
 PROBE = ROOT / "tests/native/android-path-marks/PathMarksProbeActivity.java"
 PURE_TOOL = ROOT / "tools/check_path_marks_commands.py"
@@ -34,8 +31,10 @@ def atomic(path: Path, value: object) -> None:
     temporary.replace(path)
 
 
+SERIAL = ""
+
 def adb(*arguments: str, timeout: int = 120, check: bool = True) -> subprocess.CompletedProcess[str]:
-    return subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", "emulator-5580", *arguments],
+    return subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", SERIAL, *arguments],
                           text=True, capture_output=True, timeout=timeout, check=check)
 
 
@@ -96,19 +95,18 @@ def verify_sources(values: dict[str, str]) -> None:
             raise RuntimeError("source input changed: " + relative)
 
 
-def pure_preflight(plan: dict[str, object]) -> tuple[Path, dict[str, object]]:
-    output = ROOT / str(plan["pure_preflight"]["output"])
-    output.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run([os.environ.get("PYTHON", "python3"), str(PURE_TOOL), "--output", str(output)], cwd=ROOT, check=True,
+def pure_preflight(plan: dict[str, object], output: Path) -> tuple[Path, dict[str, object]]:
+    destination = output / "pure-preflight.json"
+    subprocess.run([os.environ.get("PYTHON", "python3"), str(PURE_TOOL), "--output", str(destination)], cwd=ROOT, check=True,
                    capture_output=True, text=True, timeout=120)
-    report = json.loads(output.read_text())
+    report = json.loads(destination.read_text())
     result = report.get("result", {})
     if report.get("status") != "passed" or result.get("prefix_passed") is not True or result.get("distance_feedback_passed") is not True or result.get("unchanged_movement_passed") is not True:
         raise RuntimeError("PathMarks pure Java preflight failed")
     expected = [state["submitted_commands"] for state in plan["states"]]
     if result.get("submitted_commands_by_state") != expected:
         raise RuntimeError("pure Java submitted counts differ from Android registration")
-    return output, report
+    return destination, report
 
 
 def read_private_json(deadline: float, name: str) -> dict[str, object] | None:
@@ -119,8 +117,17 @@ def read_private_json(deadline: float, name: str) -> dict[str, object] | None:
 def pull_binary(deadline: float, remote: str, destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     with destination.open("wb") as stream:
-        subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", "emulator-5580", "exec-out", "run-as", APP, "cat", remote],
+        subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", SERIAL, "exec-out", "run-as", APP, "cat", remote],
                        stdout=stream, stderr=subprocess.PIPE, timeout=remaining_timeout(deadline), check=True)
+
+
+def capture_screen(deadline: float, output: Path, name: str) -> Path:
+    destination = output / name
+    with destination.open("wb") as stream:
+        subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", SERIAL,
+                        "exec-out", "screencap", "-p"], stdout=stream, stderr=subprocess.PIPE,
+                       timeout=remaining_timeout(deadline), check=True)
+    return destination
 
 
 def image_record(path: Path) -> dict[str, object]:
@@ -194,22 +201,33 @@ def check_frames(frames: list[dict[str, object]], images: dict[str, dict[str, ob
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--render", action="store_true", help="reserve and execute the one Android native attempt")
+    parser.add_argument("--stage", type=Path, required=True, help="fresh ignored Android build stage under .work")
+    parser.add_argument("--output", type=Path, required=True, help="fresh ignored follow-up output directory under .work")
+    parser.add_argument("--serial", required=True, help="existing emulator serial; historical plan remains immutable")
     args = parser.parse_args()
+    global SERIAL
+    SERIAL = args.serial
+    stage, output = args.stage.resolve(), args.output.resolve()
+    if stage == output: raise ValueError("stage and output must be separate fresh .work paths")
+    for label, path in (("stage", stage), ("output", output)):
+        try: path.relative_to(ROOT / ".work")
+        except ValueError as error: raise ValueError(label + " must stay under .work") from error
+        if path.exists(): raise RuntimeError("refusing occupied follow-up " + label + ": " + str(path))
     plan = json.loads(PLAN_PATH.read_text())
     validate_plan(plan)
-    OUTPUT.mkdir(parents=True, exist_ok=True)
-    attempt = OUTPUT / "attempt.json"
+    output.mkdir(parents=True)
+    attempt = output / "attempt.json"
     if args.render:
         if attempt.exists():
             raise RuntimeError("attempt already reserved; inspect terminal evidence before any rebuild or execution")
-        allowed = {str(plan["pure_preflight"]["output"]).split("/")[-1]}
-        stale = [path.name for path in OUTPUT.iterdir() if path.name not in allowed]
+        allowed = {"pure-preflight.json"}
+        stale = [path.name for path in output.iterdir() if path.name not in allowed]
         if stale:
             raise RuntimeError("stale native/image artifacts must be preserved outside this new attempt: " + ", ".join(sorted(stale)))
-    pure_path, pure = pure_preflight(plan)
-    prepared = prepare(STAGE, APP, ACTIVITY, (PROBE,))
+    pure_path, pure = pure_preflight(plan, output)
+    prepared = prepare(stage, APP, ACTIVITY, (PROBE,))
     inputs = source_hashes(prepared, pure_path)
-    apk = build(STAGE)
+    apk = build(stage)
     verify_sources(inputs)
     if not args.render:
         print(json.dumps({"prepared": True, "scope": "pure Java preflight and isolated Android APK build only; no install, emulator launch, or render",
@@ -221,13 +239,16 @@ def main() -> int:
     with lock_path.open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         started = time.monotonic()
-        execution_deadline = started + int(plan["execution_timeout_seconds"])
-        cleanup_deadline = started + int(plan["timeout_seconds"])
+        execution_deadline = started + 210
+        cleanup_deadline = started + 240
+        followup = {"kind": "android-path-marks-restore-followup", "renderer": "org.procedurals.android.internal.AndroidSurface", "serial": SERIAL, "execution_seconds": 210, "total_seconds": 240, "cleanup_seconds": 30}
+        followup_hash = hashlib.sha256(json.dumps(followup, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
         with attempt.open("x") as stream:
             json.dump({"status": "reserved", "composition_budget": 7, "input_sha256": inputs}, stream, indent=2, sort_keys=True)
         report: dict[str, object] = {"status": "failed", "scope": plan["scope"], "input_sha256": inputs,
                                      "prepared": prepared, "pure_preflight": pure, "apk_sha256": sha(apk),
-                                     "timeout": {"total_seconds": 1800, "execution_seconds": 1770, "cleanup_seconds": 30},
+                                     "historical_plan_sha256": sha(PLAN_PATH), "followup": followup, "followup_plan_sha256": followup_hash,
+                                     "timeout": {"total_seconds": 240, "execution_seconds": 210, "cleanup_seconds": 30},
                                      "frames": [], "images": {}, "clicks": [], "focus_checks": [], "visual_review": "pending"}
         nonce = None
         try:
@@ -261,7 +282,7 @@ def main() -> int:
                         report["frames"].append(marker)
                         return marker
                     terminal = read_private_json(execution_deadline, "result.json")
-                    if terminal is not None and terminal.get("passed") is not True:
+                    if terminal is not None and terminal.get("passed") is not True and terminal.get("status") not in ("awaiting-pause", "resumed"):
                         report["native"] = terminal
                         raise AssertionError("PathMarks Probe failed before " + filename)
                     if not adb_before(execution_deadline, "shell", "pidof", APP, check=False).stdout.strip():
@@ -270,6 +291,42 @@ def main() -> int:
                 raise TimeoutError("no marker " + filename)
 
             marker = wait_frame(1)
+            def pause_resume() -> None:
+                while time.monotonic() < execution_deadline:
+                    state = read_private_json(execution_deadline, "result.json")
+                    if state is not None and state.get("status") == "awaiting-pause": break
+                    if state is not None and state.get("passed") is not True: raise AssertionError("PathMarks Probe failed before pause handshake")
+                    if not adb_before(execution_deadline, "shell", "pidof", APP, check=False).stdout.strip(): raise RuntimeError("PathMarks Probe exited before pause handshake")
+                    time.sleep(.25)
+                else: raise TimeoutError("PathMarks Probe did not reach stable pause handshake")
+                report["pause_resume"] = {"awaiting": state}
+                require_front(report, execution_deadline)
+                time.sleep(1.0)
+                before_resume = capture_screen(execution_deadline, output, "before-resume-screen.png")
+                adb_before(execution_deadline, "shell", "input", "keyevent", "KEYCODE_HOME")
+                time.sleep(.5)
+                report["resume_launch"] = adb_before(execution_deadline, "shell", "am", "start", "-W", "--activity-reorder-to-front", "-n", APP + "/" + ACTIVITY).stdout
+                require_front(report, execution_deadline)
+                while time.monotonic() < execution_deadline:
+                    state = read_private_json(execution_deadline, "result.json")
+                    if state is not None and state.get("status") == "resumed":
+                        if state.get("missing_surface_callback_checked") is not True or state.get("resume_acknowledgments") != 1: raise AssertionError("PathMarks lifecycle regression did not pass")
+                        report["pause_resume"]["resumed"] = state;break
+                    if state is not None and state.get("passed") is not True and state.get("status") != "awaiting-pause": raise AssertionError("PathMarks Probe failed during pause handshake")
+                    if not adb_before(execution_deadline, "shell", "pidof", APP, check=False).stdout.strip(): raise RuntimeError("PathMarks Probe exited during pause handshake")
+                    time.sleep(.25)
+                else: raise TimeoutError("PathMarks Probe did not acknowledge reordered resume")
+                time.sleep(1.0)
+                require_front(report, execution_deadline)
+                after_resume = capture_screen(execution_deadline, output, "after-resume-screen.png")
+                bounds = tuple(marker.get("viewport_bounds", ()))
+                if len(bounds) != 4 or any(type(value) is not int for value in bounds) or bounds[2] <= bounds[0] or bounds[3] <= bounds[1]: raise AssertionError("invalid PathMarks viewport bounds")
+                with Image.open(before_resume) as first, Image.open(after_resume) as second:
+                    before_pixels = first.convert("RGBA").crop(bounds).tobytes()
+                    after_pixels = second.convert("RGBA").crop(bounds).tobytes()
+                report["display_restore"] = {"bounds": bounds, "before_sha256": sha(before_resume), "after_sha256": sha(after_resume), "equal": before_pixels == after_pixels}
+                if before_pixels != after_pixels: raise AssertionError("displayed PathMarks viewport differs after resume before any edit")
+            pause_resume()
             for number, control in enumerate(("mode", "mode", "length", "palette", "count", "distance"), 2):
                 require_front(report, execution_deadline)
                 x, y = button_center(marker, control)
@@ -283,7 +340,7 @@ def main() -> int:
             native = None
             while time.monotonic() < execution_deadline:
                 native = read_private_json(execution_deadline, "result.json")
-                if native is not None:
+                if native is not None and native.get("status") not in ("awaiting-pause", "resumed"):
                     break
                 if not adb_before(execution_deadline, "shell", "pidof", APP, check=False).stdout.strip():
                     raise RuntimeError("PathMarks Probe exited before save result")
@@ -295,22 +352,23 @@ def main() -> int:
                 raise AssertionError("PathMarks Probe terminal result failed")
             quiet = native.get("save_quiet_ms")
             if (type(quiet) not in (int, float) or not math.isfinite(quiet) or quiet < 300 or
-                    native.get("api") != 33 or native.get("renderer") != plan["runtime"]["renderer"] or native.get("composition_count") != 7 or native.get("completed_frame_count") != 8):
+                    native.get("api") != 33 or native.get("renderer") != followup["renderer"] or native.get("composition_count") != 7 or native.get("completed_frame_count") != 8
+                    or native.get("missing_surface_callback_checked") is not True or native.get("paused") is not True or native.get("resumed") is not True or native.get("resume_acknowledgments") != 1):
                 raise AssertionError("unexpected PathMarks Android runtime/final counts")
             if native.get("frames") != report["frames"] or read_private_json(execution_deadline, "frame-8.json") is not None:
                 raise AssertionError("save altered PathMarks frame journal")
             for number in range(1, 8):
-                target = OUTPUT / ("frame-" + str(number) + ".png")
+                target = output / ("frame-" + str(number) + ".png")
                 pull_binary(execution_deadline, "files/path-marks-probe/frame-" + str(number) + ".png", target)
                 report["images"]["frame-" + str(number)] = image_record(target)
             check_frames(report["frames"], report["images"], plan)
             for image_name, frame_number in (("marks.png", 1), ("trace.png", 2), ("long-marks.png", 4)):
-                target = OUTPUT / image_name
-                shutil.copyfile(OUTPUT / ("frame-" + str(frame_number) + ".png"), target)
+                target = output / image_name
+                shutil.copyfile(output / ("frame-" + str(frame_number) + ".png"), target)
                 report["images"][image_name] = image_record(target)
-            saved = OUTPUT / "saved.png"
+            saved = output / "saved.png"
             pull_binary(execution_deadline, "files/path-marks-probe/saved.png", saved)
-            if saved.read_bytes() != (OUTPUT / "frame-7.png").read_bytes():
+            if saved.read_bytes() != (output / "frame-7.png").read_bytes():
                 raise AssertionError("MediaStore save differs from cached frame seven bytes")
             saved_info = native.get("saved")
             if not isinstance(saved_info, dict) or saved_info.get("byte_sha256") != sha(saved):
@@ -336,7 +394,7 @@ def main() -> int:
                 report["cleanup_failure"] = str(cleanup_error)
             for value in report["images"].values():
                 value.pop("_rgba", None)
-            atomic(EVIDENCE, report)
+            atomic(output / "result.json", report)
             atomic(attempt, {"status": report["status"], "composition_budget": 7, "input_sha256": inputs})
     print(json.dumps({"status": report["status"], "failure": report.get("failure"), "visual_review": report["visual_review"]}, sort_keys=True))
     return 0 if report["status"] == "passed" else 1

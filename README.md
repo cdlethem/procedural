@@ -46,6 +46,9 @@ Start with [a field of independent marks](docs/getting-started.md),
 [faceted cities](docs/city-marks.md), or
 [banded landscapes](docs/landscape-marks.md).
 [Build and install Java 0.15.0](docs/building-java-from-source.md) for all fifteen starters.
+[Build the Android restoration patches](docs/installing-android-restoration.md) for the six
+ported starters, preserving their existing core versions.
+
 Earlier scoped artifacts retain their installation instructions:
 [FieldMarks 0.1](docs/installing.md), [PathMarks 0.2](docs/installing-path-marks.md),
 [PlacementMarks 0.3](docs/installing-placement-marks.md),

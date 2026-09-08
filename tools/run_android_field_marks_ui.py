@@ -10,13 +10,19 @@ import time
 
 from PIL import Image
 from prepare_android_field_marks import ROOT, SDK, build, prepare, sha256
-from run_android_adapter import adb, digest
+from run_android_adapter import digest
 
 APP = "org.procedurals.fieldmarksprobe"
 ACTIVITY = "org.procedurals.examples.fieldmarks.FieldMarksProbeActivity"
 STAGE = ROOT / ".work/environments/android/field-marks-ui"
 OUTPUT = ROOT / ".work/reproductions/android-field-marks-ui"
 EVIDENCE = ROOT / "evidence/reproductions/android-field-marks-ui/result.json"
+SERIAL = "emulator-5580"
+
+def adb(*arguments, timeout=45, check=True):
+    return subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", SERIAL, *arguments],
+                          text=True, capture_output=True, timeout=timeout, check=check)
+
 PROBE = ROOT / "tests/native/android-field-marks/FieldMarksProbeActivity.java"
 CP1 = ROOT / "evidence/reproductions/cp1-android/result.json"
 DESIGN = ROOT / "design/android-editable-example.md"
@@ -51,7 +57,7 @@ def verify_sources(values):
 def pull_binary(remote, destination):
     destination.parent.mkdir(parents=True, exist_ok=True)
     with destination.open("wb") as stream:
-        subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", "emulator-5580",
+        subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", SERIAL,
                         "exec-out", "run-as", APP, "cat", remote], stdout=stream,
                        stderr=subprocess.PIPE, timeout=120, check=True)
 
@@ -183,9 +189,17 @@ def check_frames(frames, cp1_images, report):
 
 
 def main():
+    global STAGE, OUTPUT, EVIDENCE, SERIAL
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--render", action="store_true")
+    parser.add_argument("--stage", type=Path, default=STAGE)
+    parser.add_argument("--output", type=Path, default=OUTPUT)
+    parser.add_argument("--serial", default=SERIAL)
     args = parser.parse_args()
+    STAGE, OUTPUT, SERIAL = args.stage.resolve(), args.output.resolve(), args.serial
+    STAGE.relative_to(ROOT / '.work'); OUTPUT.relative_to(ROOT / '.work')
+    EVIDENCE = OUTPUT / 'result.json'
+    if args.render and OUTPUT.exists(): raise FileExistsError('fresh output required')
     prepared = prepare(STAGE, APP, ACTIVITY, extra_sources=(PROBE,))
     inputs = source_hashes(prepared)
     cp1_images = expected_cp1()
@@ -209,7 +223,7 @@ def main():
               "input_sha256": inputs, "prepared": prepared, "apk_sha256": digest(apk),
               "api": 33, "fingerprint": fingerprint,
               "frames": [], "images": {}, "focus_checks": [], "clicks": []}
-    deadline = time.monotonic() + 1800
+    deadline = time.monotonic() + 210
     nonce = None
     sequence = -1
 
@@ -249,6 +263,44 @@ def main():
             raise RuntimeError("Probe Activity did not launch")
         marker = wait_frame(1)
         for number, control in enumerate(("length", "length", "palette", "palette", "marks", "length", "palette"), 2):
+            if number == 4:
+                require_front(report, deadline)
+                def capture_screen(name):
+                    target = OUTPUT / name
+                    with target.open("wb") as stream:
+                        subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", SERIAL,
+                                        "exec-out", "screencap", "-p"], stdout=stream,
+                                       stderr=subprocess.PIPE, timeout=15, check=True)
+                    return target
+                before_resume = capture_screen("before-resume-screen.png")
+                adb("shell", "input", "keyevent", "KEYCODE_HOME")
+                time.sleep(.5)
+                adb("shell", "am", "start", "-W", "--activity-reorder-to-front", "-n", APP + "/" + ACTIVITY)
+                while time.monotonic() < deadline:
+                    resumed = read_private_json("resume.json")
+                    if resumed is not None:
+                        if resumed.get('passed') is not True or resumed.get('resume_acknowledgments') != 1:
+                            raise AssertionError('cached resume failed')
+                        report['resume'] = resumed
+                        break
+                    failure = read_private_json('result.json')
+                    if failure is not None: raise AssertionError('probe failed during resume: ' + str(failure))
+                    time.sleep(.2)
+                else: raise TimeoutError('resume acknowledgment missing')
+                # am start -W can return before the reordered window accepts touches.
+                # Allow the native transition to settle before the one registered tap.
+                time.sleep(1.0)
+                require_front(report, deadline)
+                after_resume = capture_screen("after-resume-screen.png")
+                bounds = tuple(marker["viewport_bounds"])
+                with Image.open(before_resume) as first, Image.open(after_resume) as second:
+                    before_pixels = first.convert("RGBA").crop(bounds).tobytes()
+                    after_pixels = second.convert("RGBA").crop(bounds).tobytes()
+                report["display_restore"] = {"bounds": bounds,
+                    "before_sha256": digest(before_resume), "after_sha256": digest(after_resume),
+                    "equal": before_pixels == after_pixels}
+                if before_pixels != after_pixels:
+                    raise AssertionError("displayed viewport differs after resume before any edit")
             require_front(report, deadline)
             x, y = button_center(marker, control)
             click = adb("shell", "input", "tap", str(x), str(y))
@@ -271,6 +323,8 @@ def main():
         if native is None:
             raise TimeoutError("No saved Field Marks result")
         report["native"] = native
+        if not native.get("missing_surface_callback_checked") or not native.get("paused") or not native.get("resumed") or native.get("resume_acknowledgments") != 1:
+            raise AssertionError("restore regression incomplete")
         if native.get("event") != "result" or native.get("passed") is not True or native.get("nonce") != nonce:
             raise AssertionError("Probe result failed")
         if native.get("sequence") != 9:
@@ -302,7 +356,7 @@ def main():
         screenshot = OUTPUT / "example-screen.png"
         require_front(report, deadline)
         with screenshot.open("wb") as stream:
-            subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", "emulator-5580",
+            subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", SERIAL,
                             "exec-out", "screencap", "-p"], stdout=stream,
                            stderr=subprocess.PIPE, timeout=120, check=True)
         report["screenshot"] = {"path": str(screenshot.relative_to(ROOT)), "sha256": digest(screenshot)}
@@ -316,6 +370,24 @@ def main():
         for value in report["images"].values():
             value.pop("_image", None)
             value.pop("_rgba", None)
+        try:
+            diagnostic = read_private_json("diagnostics.json")
+            if diagnostic is not None:
+                report["diagnostics"] = diagnostic
+            if report["status"] != "passed":
+                for frame in report["frames"]:
+                    name = "frame-" + str(frame["composition_count"]) + ".png"
+                    pull_binary("files/field-marks-probe/" + name, OUTPUT / name)
+                with (OUTPUT / "failure-screen.png").open("wb") as stream:
+                    subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", SERIAL,
+                                    "exec-out", "screencap", "-p"], stdout=stream,
+                                   stderr=subprocess.PIPE, timeout=15, check=True)
+        except Exception as capture_error:
+            report["capture_failure"] = str(capture_error)
+        try:
+            adb("shell", "am", "force-stop", APP)
+        except Exception as cleanup_error:
+            report.update(status="failed", cleanup_failure=str(cleanup_error))
         atomic(EVIDENCE, report)
         atomic(attempt, {"status": report["status"], "input_sha256": inputs})
     adb("shell", "am", "force-stop", APP)

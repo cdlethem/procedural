@@ -1,0 +1,1361 @@
+{
+  "adapter": {
+    "compile_core": ".work/dist/java/procedurals-core-0.1.0.jar",
+    "entries": [
+      {
+        "path": "META-INF/LICENSE",
+        "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+      },
+      {
+        "path": "META-INF/THIRD_PARTY_NOTICES.md",
+        "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+      },
+      {
+        "path": "org/procedurals/android/internal/Android2DFragment.class",
+        "sha256": "2692a7212781cb8ab91242e587cd668c63335fb411cdad3cb51332407ecfae56"
+      },
+      {
+        "path": "org/procedurals/android/internal/Android2DFrame$Factory.class",
+        "sha256": "4ccf2d168da2e795c0c42bd0fb82ab7c19d825e02f377b9740acee1805ede0df"
+      },
+      {
+        "path": "org/procedurals/android/internal/Android2DFrame$LifecycleChanged.class",
+        "sha256": "69e22e3d2f69fd1fa84c24a722140f4b452869dc401f4f547bb5dd313cb87ef7"
+      },
+      {
+        "path": "org/procedurals/android/internal/Android2DFrame.class",
+        "sha256": "30a8728e7bc144c68bd7f983d9cad0c2e6c5eeac377ce8eebdb7adf58c580ca5"
+      },
+      {
+        "path": "org/procedurals/android/internal/AndroidFrameHost$Lease.class",
+        "sha256": "f22363cb44326c944a18970910becafa3c772fe47a6f6fed2a0abbdb51092acd"
+      },
+      {
+        "path": "org/procedurals/android/internal/AndroidFrameHost$SurfaceConsumer.class",
+        "sha256": "0b24c418886fcaaad7eff9e0b8c06868e2deffdec035141cd971642e4c2d9cf3"
+      },
+      {
+        "path": "org/procedurals/android/internal/AndroidFrameHost.class",
+        "sha256": "ea37cb9067abaf641c473a726db3de4df3d54a0e0c8df8a6b00e5b82c3a1d74c"
+      },
+      {
+        "path": "org/procedurals/android/internal/AndroidSnapshotPresentation.class",
+        "sha256": "4c58532fb06192bfe6fd811ca494f0ee6227e321f101ff342347780bb0af747a"
+      },
+      {
+        "path": "org/procedurals/android/internal/AndroidSurface.class",
+        "sha256": "6027424746e196e7d6f7049143aec714144bcc107f4fa9528a109e5678457d41"
+      },
+      {
+        "path": "org/procedurals/android/internal/BuildConfig.class",
+        "sha256": "bf5c34049e2c1d3593ab8f3f99ea44bf5473f64adb8ac755aea60b22de63e09a"
+      }
+    ],
+    "five_sources": {
+      "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
+      "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFrame.java": "835daf36db3736adad6834209c39fe2b6530362dc0f57febc449143e6c09b570",
+      "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidFrameHost.java": "64a3ec481e69dc0bf9597ea03d4ed0864dc7002a8f05f1a0b852809503f9e2c7",
+      "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77",
+      "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSurface.java": "bb2efe0fcce61461e847f9415b6cb7dae80a4f7ccb2e220b1e0009083c8c3604"
+    },
+    "path": ".work/dist/android-restoration1/procedurals-android-0.3.0.jar",
+    "sha256": "31b658242a0c0afa2049d981914b4bfe85b9ef4c85040c2acc66c0fb5d7877be",
+    "version": "0.3.0"
+  },
+  "drawing_frame_state_sha256": {
+    ".work/dist/cp2/java/procedurals-core-0.2.0.jar": "d1cf643d67be78074aa392b2ddc0ef5590ea526b446cc4d850ca3d9b50eda705",
+    ".work/dist/cp3/java/procedurals-core-0.3.0.jar": "d1cf643d67be78074aa392b2ddc0ef5590ea526b446cc4d850ca3d9b50eda705",
+    ".work/dist/cp4/java/procedurals-core-0.4.0.jar": "d1cf643d67be78074aa392b2ddc0ef5590ea526b446cc4d850ca3d9b50eda705",
+    ".work/dist/cp5/java/procedurals-core-0.5.0.jar": "d1cf643d67be78074aa392b2ddc0ef5590ea526b446cc4d850ca3d9b50eda705",
+    ".work/dist/cp6/java/procedurals-core-0.6.0.jar": "d1cf643d67be78074aa392b2ddc0ef5590ea526b446cc4d850ca3d9b50eda705",
+    ".work/dist/java/procedurals-core-0.1.0.jar": "d1cf643d67be78074aa392b2ddc0ef5590ea526b446cc4d850ca3d9b50eda705"
+  },
+  "historical_core_provenance": {
+    "BranchMarks": {
+      "core": ".work/dist/cp6/java/procedurals-core-0.6.0.jar",
+      "evidence": "evidence/distribution/cp6-android.json",
+      "evidence_artifact": {
+        "path": ".work/dist/cp6/java/procedurals-core-0.6.0.jar",
+        "sha256": "477543460ab56b551acb737b5e9729e6b9999450c685ad0aceefb73b9c8b57a6"
+      },
+      "sha256": "477543460ab56b551acb737b5e9729e6b9999450c685ad0aceefb73b9c8b57a6"
+    },
+    "FieldMarks": {
+      "core": ".work/dist/java/procedurals-core-0.1.0.jar",
+      "evidence": "evidence/distribution/android.json",
+      "evidence_artifact": {
+        "path": ".work/dist/java/procedurals-core-0.1.0.jar",
+        "sha256": "39a48549b323acaf63d51a129dc2fc41b6ee79c1e806aed90e3ef0a6963131e2"
+      },
+      "sha256": "39a48549b323acaf63d51a129dc2fc41b6ee79c1e806aed90e3ef0a6963131e2"
+    },
+    "GrainMarks": {
+      "core": ".work/dist/cp5/java/procedurals-core-0.5.0.jar",
+      "evidence": "evidence/distribution/cp5-android.json",
+      "evidence_artifact": {
+        "path": ".work/dist/cp5/java/procedurals-core-0.5.0.jar",
+        "sha256": "99b1815d10be2708f6e752e7662f90f915026ccd1a1c0f917eec52a8d5bbad9d"
+      },
+      "sha256": "99b1815d10be2708f6e752e7662f90f915026ccd1a1c0f917eec52a8d5bbad9d"
+    },
+    "PathMarks": {
+      "core": ".work/dist/cp2/java/procedurals-core-0.2.0.jar",
+      "evidence": "evidence/distribution/cp2-android.json",
+      "evidence_artifact": {
+        "path": ".work/dist/cp2/java/procedurals-core-0.2.0.jar",
+        "sha256": "cbbbfd08dbe442595f7c18022e1a03d95058fc177c3107d647d668dc22d4291c"
+      },
+      "sha256": "cbbbfd08dbe442595f7c18022e1a03d95058fc177c3107d647d668dc22d4291c"
+    },
+    "PlacementMarks": {
+      "core": ".work/dist/cp3/java/procedurals-core-0.3.0.jar",
+      "evidence": "evidence/distribution/cp3-android.json",
+      "evidence_artifact": {
+        "path": ".work/dist/cp3/java/procedurals-core-0.3.0.jar",
+        "sha256": "73b5d6914c2222b3bce1100e5bee906815f38fb1d14ba9d8397db5a069c36004"
+      },
+      "sha256": "73b5d6914c2222b3bce1100e5bee906815f38fb1d14ba9d8397db5a069c36004"
+    },
+    "RegionMarks": {
+      "core": ".work/dist/cp4/java/procedurals-core-0.4.0.jar",
+      "evidence": "evidence/distribution/cp4-android.json",
+      "evidence_artifact": {
+        "path": ".work/dist/cp4/java/procedurals-core-0.4.0.jar",
+        "sha256": "613cf476945213ea55846bb400eefa1d21a24ef52a465674c654a34157b207f7"
+      },
+      "sha256": "613cf476945213ea55846bb400eefa1d21a24ef52a465674c654a34157b207f7"
+    }
+  },
+  "input_sha256_after": {
+    ".work/dist/cp2/java/procedurals-core-0.2.0.jar": "cbbbfd08dbe442595f7c18022e1a03d95058fc177c3107d647d668dc22d4291c",
+    ".work/dist/cp3/java/procedurals-core-0.3.0.jar": "73b5d6914c2222b3bce1100e5bee906815f38fb1d14ba9d8397db5a069c36004",
+    ".work/dist/cp4/java/procedurals-core-0.4.0.jar": "613cf476945213ea55846bb400eefa1d21a24ef52a465674c654a34157b207f7",
+    ".work/dist/cp5/java/procedurals-core-0.5.0.jar": "99b1815d10be2708f6e752e7662f90f915026ccd1a1c0f917eec52a8d5bbad9d",
+    ".work/dist/cp6/java/procedurals-core-0.6.0.jar": "477543460ab56b551acb737b5e9729e6b9999450c685ad0aceefb73b9c8b57a6",
+    ".work/dist/java/procedurals-core-0.1.0.jar": "39a48549b323acaf63d51a129dc2fc41b6ee79c1e806aed90e3ef0a6963131e2",
+    ".work/toolchains/android/gradle-7.4.2/bin/gradle": "677db28e59ce22feb54def6637181481fa3903bb28d88e7b9ff5bd13ecf36cda",
+    ".work/toolchains/android/gradle-7.4.2/lib/annotations-20.1.0.jar": "edc8e3ec9796a5f41c1ae44b2d318507ee6ac1212f121d93d33699b3d0aff638",
+    ".work/toolchains/android/gradle-7.4.2/lib/ant-1.10.11.jar": "88c0b89bbbaae01e0d9fcae93be792f5abbe3409106f8eee858fdf365dbc0754",
+    ".work/toolchains/android/gradle-7.4.2/lib/ant-antlr-1.10.11.jar": "ff253b3699f859115378c0c4322c94d591499eac97285942722f53a7e85182f1",
+    ".work/toolchains/android/gradle-7.4.2/lib/ant-junit-1.10.11.jar": "02267c1233cde1bc196f5aed40b6b8b61b79c47c2f6729ae1acf24ebfe89e815",
+    ".work/toolchains/android/gradle-7.4.2/lib/ant-launcher-1.10.11.jar": "dab530df7a980b5ac8fd7e8d208243ae0d3ebd6de09b1aa2ce756360cc2ed256",
+    ".work/toolchains/android/gradle-7.4.2/lib/antlr4-runtime-4.7.2.jar": "4c518b87d4bdff8b44cd8cbc1af816e944b62a3fe5b80b781501cf1f4759bbc4",
+    ".work/toolchains/android/gradle-7.4.2/lib/asm-9.2.jar": "b9d4fe4d71938df38839f0eca42aaaa64cf8b313d678da036f0cb3ca199b47f5",
+    ".work/toolchains/android/gradle-7.4.2/lib/asm-analysis-9.2.jar": "878fbe521731c072d14d2d65b983b1beae6ad06fda0007b6a8bae81f73f433c4",
+    ".work/toolchains/android/gradle-7.4.2/lib/asm-commons-9.2.jar": "be4ce53138a238bb522cd781cf91f3ba5ce2f6ca93ec62d46a162a127225e0a6",
+    ".work/toolchains/android/gradle-7.4.2/lib/asm-tree-9.2.jar": "aabf9bd23091a4ebfc109c1f3ee7cf3e4b89f6ba2d3f51c5243f16b3cffae011",
+    ".work/toolchains/android/gradle-7.4.2/lib/commons-compress-1.21.jar": "6aecfd5459728a595601cfa07258d131972ffc39b492eb48bdd596577a2f244a",
+    ".work/toolchains/android/gradle-7.4.2/lib/commons-io-2.6.jar": "f877d304660ac2a142f3865badfc971dec7ed73c747c7f8d5d2f5139ca736513",
+    ".work/toolchains/android/gradle-7.4.2/lib/commons-lang-2.6.jar": "50f11b09f877c294d56f24463f47d28f929cf5044f648661c0f0cfbae9a2f49c",
+    ".work/toolchains/android/gradle-7.4.2/lib/failureaccess-1.0.1.jar": "a171ee4c734dd2da837e4b16be9df4661afab72a41adaf31eb84dfdaf936ca26",
+    ".work/toolchains/android/gradle-7.4.2/lib/fastutil-8.5.2-min.jar": "efe3505b9619ffb045c25a3ad63da546230c0dac3774e1ba0b963d7049179945",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-0.22-milestone-23.jar": "38d9bbb86eb47560d44f9ac739d202ba52e4327b3d45b01bf19b71491d35e5a4",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-linux-aarch64-0.22-milestone-23.jar": "cd93ce8ca1a1fea1b48acfbad91cc5a5b97ea3f24170cfdf7ed4055fd687191d",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-linux-amd64-0.22-milestone-23.jar": "62bc6ff64ca4410060301feced8871ec0697a74051d4d77c583fdbd3130ec650",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-osx-aarch64-0.22-milestone-23.jar": "d68be99ff6e256aede033ce29fb3f5358a3ec0f8e53f7f2b209d5e895c5236c8",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-osx-amd64-0.22-milestone-23.jar": "306a2cd21aeff3e1ef29db477b769c19f19a787d86d833daf5b492856fb3cab3",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-windows-amd64-0.22-milestone-23.jar": "937f6a624fc1ba0c1e9c25c0a44143cdf48d88e7af1e2d4b9b70dee9be3f1e0e",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-windows-amd64-min-0.22-milestone-23.jar": "9f50bbecfbd300ceb02ad09ab13564f36f5050344b06c285f58b7fef66e9a87c",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-windows-i386-0.22-milestone-23.jar": "99f653adda0758ffe54e7d2b836e301c1573ff02d17b2f13a10d4feda913baaa",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-windows-i386-min-0.22-milestone-23.jar": "efe32cf74e50f19bfe7f2947059e00643cdca15499be038ef9f115ecb891c16e",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-api-metadata-7.4.2.jar": "63ac9c70b215ba9dc9a45ad8b74c14ee3303ea952bda0b39d2da179c17a228a0",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-base-annotations-7.4.2.jar": "eaf25b84a69be11e8bead437ebcfdf77423c5e057dfb36d19c1ecdfa1d3dfe7b",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-base-services-7.4.2.jar": "8d29715e14a72399d24cb903300dc8f50b808fdc72ee19e6f18c1fd1256581df",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-base-services-groovy-7.4.2.jar": "61bfc784b5b60144184c821f2e90e26f23b8e165bccd31211e33930ced9dffaf",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-bootstrap-7.4.2.jar": "60f575a611bd318a0ade73617cd3d662ee0cc1aa7fc8a839a992bd7c23f45129",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-build-cache-7.4.2.jar": "5f754a2488713c1c0c33a8860b038bc658ffc7e1cbb1b183e6b32d237d8105a9",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-build-cache-base-7.4.2.jar": "eefa7e1a71cf47a684b34f15a5fd7ff69aaf8a7733191e6f0cdc028e67dfad8d",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-build-cache-packaging-7.4.2.jar": "f404397b72019284a0155afadc63499bf3bd3cd5f04bf2256385c43ab4091d82",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-build-events-7.4.2.jar": "99a12f4de632fa529c2f312c0cf8f11462c2b9989dd78767cd9a1122fb2bec82",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-build-operations-7.4.2.jar": "55a5f41cd7e7f81272901572f8999c149c4e1ac78dec4182681e36a966c4ff39",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-build-option-7.4.2.jar": "d8ecee3b5190e82560f33adff2a0e7a01cb2a9786f01196605181b25a4f6a70b",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-cli-7.4.2.jar": "17ffab5bb15da9fcc48c570bbd711c97d13fc62300809d4fd37e36c3f167a93b",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-core-7.4.2.jar": "4d0f042ae159aba78ac405a9e2e53353dbbbb7ffd88f6c5af94007ec134f6f6e",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-core-api-7.4.2.jar": "c02a37ca4fd595628f87bbb7d44ad1e5d21a85864b010e8630d1a91ace953594",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-enterprise-operations-7.4.2.jar": "7471ff194c2c9bd4a90badee3555aa73d4f40f3a6071c11c419a5c387a52ab1e",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-enterprise-workers-7.4.2.jar": "e485417d4d3ba8aa42fbead4398e441f50a57d42f08084a691e5ba77c0355ddf",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-execution-7.4.2.jar": "c811821b03db30e7d097cd7c6ae2a0d6a7d4e8d5aa7d2cbd5d57aa2d8c79fe2d",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-file-collections-7.4.2.jar": "ad88c2ac3dd80a1819bd2e7086354bff4740f7b28d606177d56351bb390b7640",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-file-temp-7.4.2.jar": "487817052746f54934f518f4bd1d3c75a8b49dd3feba43119b8ebd6b9b570820",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-file-watching-7.4.2.jar": "871315e851c86df5ab8ddb00def4d8b5b124e74f7acfda1abbdba220db03380b",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-files-7.4.2.jar": "acdc8f6c9b792a8c2cd6ab56fa2a4959ead4232c85cc36d8f0eb4c658875de42",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-functional-7.4.2.jar": "43b5d7ebaf11d245d02580eba32f903eaa16e73b1300b15a82d56ce897afe723",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-hashing-7.4.2.jar": "414321ecf384d613ffa64d3429910f28f06bb88ccc60031e2893476cd3615cd6",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-installation-beacon-7.4.2.jar": "176ee6b22674140e59331f90f8ad8f0a5cd8a506527c829d345a379ebbb36f00",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-jvm-services-7.4.2.jar": "7deee5101a9a0a3d1a5e2329d26a11b7669bf3f66210f333bc3e575ef5232380",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-kotlin-dsl-7.4.2.jar": "9a1ec799235d7199d8944eb298e2218f4de7c1ccf48fb1b61b469a526f2b3dca",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-kotlin-dsl-tooling-models-7.4.2.jar": "df7d2a654fc8098e94b45e03ba94989ebeeba04774b4e93770793a8fe19c44dc",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-launcher-7.4.2.jar": "20f9db800fc255e95d044f90cfe48fe3f9c21b53b3e559116f9cd1acca404a11",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-logging-7.4.2.jar": "b242cc7c78e63ff6690523d0c031d99a712f86df4fe64d03a3b4bdb09280b9ab",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-messaging-7.4.2.jar": "09ed11c35d9a9cefc702228c3735511e5aa955b49d0c29a74dd414b16222f503",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-model-core-7.4.2.jar": "fd96d3d78ec0b166d02400bf429720972a4806843537bc4117e0ec7ef11dafe1",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-model-groovy-7.4.2.jar": "9e671d05ac2931e1835e9a3121afeeac2d9c9a7fcbe41251f5a774d700772ddd",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-native-7.4.2.jar": "a459c8d5bb6c1689398840e85b95c192b5bd3b6d2f1c11e4a40aa29ef8e12522",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-normalization-java-7.4.2.jar": "e4abe0a66bd042a53bbe669de15ca19ea5308ebda70c73b59734fedb0c78324a",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-persistent-cache-7.4.2.jar": "fe832938c84a621ca1363ee9ba7d21b004d3cf4484daeac9b414a508d9de0cbc",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-problems-7.4.2.jar": "848663bdf3bfb8f2890607b738f8be00b8e5e1aed305125083a0d414fca9dd74",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-process-services-7.4.2.jar": "ad24849cf5e76433162c118b47d11e829a6ed806f1031fb249bf3912271105e0",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-resources-7.4.2.jar": "7cf4f7497a2305816f02db3b60033e16b0d3ca4519f7f102a4122bb6082c2ab4",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-runtime-api-info-7.4.2.jar": "965de7c776efe01678c956c9b69de365a5634067fb6636aa750c28e4d83d91fb",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-snapshots-7.4.2.jar": "580713a4a7ecac173824fade4dd5579585440db7147306aa3bb9da009137812b",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-tooling-api-7.4.2.jar": "d584b8e7b8d2e5137a9fe7c47faef931245d91c54b3b101bb85bf416aed9aa81",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-worker-processes-7.4.2.jar": "ff737a59d6b81702f29a62b917d18039df9d77e61779fbd4508d54a43d79a710",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-worker-services-7.4.2.jar": "4d46ca1e39893a9cfcc90243b1ceec83633dcb005cd8a02ecf6f7e5fbed1580c",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-wrapper-7.4.2.jar": "52c84106aa3daed3afef1bb3c8e23750bb9beb76e80e61990ba5bdcfa67642cd",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-3.0.9.jar": "77bf86897f295f8cae2e1f46b1eca109f487ba81b66ef24a2b6dcba1eb7d6ce7",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-ant-3.0.9.jar": "b22c2f153a67af2abbbbccf768cfb333181c7d089aee113b36d8ef04e5ae8581",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-astbuilder-3.0.9.jar": "8e21d9c9e3428da501cd810ea89fcd2092acf5feab4cfa49540c07d0f64a0cb5",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-console-3.0.9.jar": "dc07954995af1d13d5324be6474a17ee5fb2347c1b6ea4b218cda662c0a7d750",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-datetime-3.0.9.jar": "f52c2632e3f30f5cd7d6862c515506f0f585dd7069b69485ae37cef34179b159",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-dateutil-3.0.9.jar": "6132d39b0bc8b7a25f49156d7f2055c34b3492fa73e131778bfa26baf7feac45",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-docgenerator-3.0.9.jar": "861647dfbd80077090c0b9eb14a695f25eaf02ed422e0b12daf5473ac2cb9609",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-groovydoc-3.0.9.jar": "73710df42537355e9831add7cdc4393e036f040b1ae5f1927c25635e8f8baeee",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-json-3.0.9.jar": "fb8edd9f367e0a5debc03f31523755a95e9eedae8bd1c0e9df1493188e350263",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-nio-3.0.9.jar": "009a4b40c22ce20f2a1ad22dad70170cdc2d060a65e49ae2b8f6603fab0d7f1f",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-sql-3.0.9.jar": "b69e30ffbcbf862bf1f92c041711463672a6636731088719a7db22188a706fc7",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-swing-3.0.9.jar": "466ead440564af451c1499ffc67199d909f2c522d94ab7c88c1aa57d4ec527d2",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-templates-3.0.9.jar": "6188c3be1f2db4c562976339464847345c38ae43136c9334c9e2c027c6f38059",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-test-3.0.9.jar": "17750aa2722d3595d7a0bc1f2e892126bd7f5e5dbc7dc007689c505b6c3c3b3f",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-xml-3.0.9.jar": "2bcecd848caed3975358a5c556aa49154b2d66f0c8a5c17043dd7b7d8985b6fe",
+    ".work/toolchains/android/gradle-7.4.2/lib/guava-30.1.1-jre.jar": "44ce229ce26d880bf3afc362bbfcec34d7e6903d195bbb1db9f3b6e0d9834f06",
+    ".work/toolchains/android/gradle-7.4.2/lib/hamcrest-core-1.3.jar": "66fdef91e9739348df7a096aa384a5685f4e875584cce89386a7a47251c4d8e9",
+    ".work/toolchains/android/gradle-7.4.2/lib/jansi-1.18.jar": "109e64fc65767c7a1a3bd654709d76f107b0a3b39db32cbf11139e13a6f5229b",
+    ".work/toolchains/android/gradle-7.4.2/lib/javaparser-core-3.17.0.jar": "23f5c982e1c7771423d37d52c774e8d2e80fd7ea7305ebe448797a96f67e6fca",
+    ".work/toolchains/android/gradle-7.4.2/lib/javax.inject-1.jar": "91c77044a50c481636c32d916fd89c9118a72195390452c81065080f957de7ff",
+    ".work/toolchains/android/gradle-7.4.2/lib/jcl-over-slf4j-1.7.30.jar": "71e9ee37b9e4eb7802a2acc5f41728a4cf3915e7483d798db3b4ff2ec8847c50",
+    ".work/toolchains/android/gradle-7.4.2/lib/jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+    ".work/toolchains/android/gradle-7.4.2/lib/jul-to-slf4j-1.7.30.jar": "bbcbfdaa72572255c4f85207a9bfdb24358dc993e41252331bd4d0913e4988b9",
+    ".work/toolchains/android/gradle-7.4.2/lib/junit-4.13.2.jar": "8e495b634469d64fb8acfa3495a065cbacc8a0fff55ce1e31007be4c16dc57d3",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-compiler-embeddable-1.5.31-patched-for-gradle-7.4.2.jar": "778ab0a52cb8c4fb29dd0b5262859366163970e3343e1a56d9318c0bb8d115e1",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-daemon-embeddable-1.5.31.jar": "f61eaf89e5e3848631650b25cdfb66fe8cae0281a054d9d986716000a15ba8d6",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-reflect-1.5.31.jar": "6e0f5490e6b9649ddd2670534e4d3a03bd283c3358b8eef5d1304fd5f8a5a4fb",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-sam-with-receiver-compiler-plugin-1.5.31.jar": "ae8ce1f9ee135fd606e6fc2a052a9f0bb390fb167c0b4980096f103b0464b6a9",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-script-runtime-1.5.31.jar": "24e450fee7645ed3590981dddccf397c0d9ebb725815c94c4f555cc3db2f9f96",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-scripting-common-1.5.31.jar": "219edf00aed8288c71d8002f159852d535ec9af7aebfb07df836e8479a8347ef",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-scripting-compiler-embeddable-1.5.31.jar": "c8621fae36f8d9b84916aa4c047d298165fa32fd3d203d16d2651de491a8453d",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-scripting-compiler-impl-embeddable-1.5.31.jar": "7a5bc8534843e0b01c635f98b3c58b2d0303c7f1a87315b7f44226b93af2e673",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-scripting-jvm-1.5.31.jar": "6fae70ec5d83730ad47d012dde230d6dd4975c3d8c0e89adec9abd43fa6fe6de",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-scripting-jvm-host-1.5.31.jar": "b870f95c2b81e1e86ed4b074477fcedae754567043475d9d3e508c8baaa4f44b",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-stdlib-1.5.31.jar": "4800ceacb2ec0bb9959a087154b8e35318ead1ea4eba32d4bb1b9734222a7e68",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-stdlib-common-1.5.31.jar": "dfa2a18e26b028388ee1968d199bf6f166f737ab7049c25a5e2da614404e22ad",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-stdlib-jdk7-1.5.31.jar": "a25bf47353ce899d843cbddee516d621a73473e7fba97f8d0301e7b4aed7c15f",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-stdlib-jdk8-1.5.31.jar": "b548f7767aacf029d2417e47440742bd6d3ebede19b60386e23554ce5c4c5fdc",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlinx-metadata-jvm-0.3.0.jar": "fdaf7ba158465f6b6e9ce5762e0300fd681a976fbfeb5ed50fa5a2b26868cec8",
+    ".work/toolchains/android/gradle-7.4.2/lib/kryo-2.24.0.jar": "7e56b32c635058f9aa2820f88919ab702d029cbcd15285da9992e36cc0ae52f2",
+    ".work/toolchains/android/gradle-7.4.2/lib/log4j-over-slf4j-1.7.30.jar": "ad9d34d0b7f0bf576be2b5f844988fd872bb99f87ecffa41d54a8ebaad79a10b",
+    ".work/toolchains/android/gradle-7.4.2/lib/minlog-1.2.jar": "a678cb1aa8f5d03d901c992c75741841d98a9bc3d55dad02e84d65315c4e60f2",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-0.22-milestone-23.jar": "ec36891db814fc0e7e12baa796002cc95de587c0943edabf0d3df353432c2e8c",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-freebsd-amd64-libcpp-0.22-milestone-23.jar": "957615724870d57991e8baefe34c1b50db1fa1875b35a410b3fb4982e6caabd6",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-linux-aarch64-0.22-milestone-23.jar": "acbb2784599c16b121455b2362046a61377dfb765d948e755ac2fe85ab68e659",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-linux-aarch64-ncurses5-0.22-milestone-23.jar": "d16af8aeddad73e0feb62cb82f9895993c3dd24424130b2e6f6f2c24032db27c",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-linux-aarch64-ncurses6-0.22-milestone-23.jar": "ee78d1d22cbc011fc02db646dee7d53503a41b09bd3ff88a0d89352408166a3e",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-linux-amd64-0.22-milestone-23.jar": "f45ca2f8e1defe5e5a7c64abc2d901dc64a6c441ba30dd1e73481e5cce5a2f17",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-linux-amd64-ncurses5-0.22-milestone-23.jar": "ce486694f08616de8c3c433b49d5815896cfafe26ba3484b0cf6058120ab7a73",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-linux-amd64-ncurses6-0.22-milestone-23.jar": "b7dd8e1b1a3efd39c2833a1d481b2e792f5fce7f03e2239c23f0965f676a9e8b",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-osx-aarch64-0.22-milestone-23.jar": "6a9c5d7f44f1e6ee73badcdab38b56b6dc28bac8bb668f29ee876c646fd06726",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-osx-amd64-0.22-milestone-23.jar": "a109c1c8bc28ef35f16ada3cebc397237cc61d2939baacaede111432e1fbf7e1",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-windows-amd64-0.22-milestone-23.jar": "95a40589fe1607d0ad2894c0e226d7ce151db48935d94f650453063cdc6ba13c",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-windows-amd64-min-0.22-milestone-23.jar": "ef899f16b81ef89e558db072f466d41cc2c344c75acbaa30247cf7216e45c590",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-windows-i386-0.22-milestone-23.jar": "8d2c499ecd7e2b536b4509b949151bc36831a9744e8e88aa3e6a722c8a5f13db",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-windows-i386-min-0.22-milestone-23.jar": "98379469cdd330a954e8e4d68f77f4a3657cee163520ea7db1ac46d42384e82c",
+    ".work/toolchains/android/gradle-7.4.2/lib/objenesis-2.6.jar": "5e168368fbc250af3c79aa5fef0c3467a2d64e5a7bd74005f25d8399aeb0708d",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/apiguardian-api-1.1.0.jar": "a9aae9ff8ae3e17a2a18f79175e82b16267c246fbbd3ca9dfbbb290b08dcfdd4",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/aws-java-sdk-core-1.11.948.jar": "b288ed83cf8903daf35305e9b262e29878d5ab08cb1b74610f49de028fcc44ba",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/aws-java-sdk-kms-1.11.948.jar": "6b94d6e956b9069ad0f3da4eb522be839c1f67bcd87b6b952be5b11252812370",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/aws-java-sdk-s3-1.11.948.jar": "97eb5df2a62e4ecdf02ebab7d1376567aa8cb096c2cca4d71650a0ba88677114",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/aws-java-sdk-sts-1.11.948.jar": "59f0f3fb71e9b3a9dd32f6cea3353fd2f3109913a14c5f3fbce852c51e5b9647",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/bcpg-jdk15on-1.68.jar": "2251d9c9faa0ee534ab159a6dac1193a69b8a831f0a0e593dc79e34e7e256a4f",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/bcpkix-jdk15on-1.68.jar": "fb8d0f8f673ad6e16c604732093d7aa31b26ff4e0bd9cae1d7f99984c06b8a0f",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/bcprov-jdk15on-1.68.jar": "f732a46c8de7e2232f2007c682a21d1f4cc8a8a0149b6b7bd6aa1afdc65a0f8d",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/bsh-2.0b6.jar": "a17955976070c0573235ee662f2794a78082758b61accffce8d3f8aedcd91047",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/capsule-0.6.3.jar": "38df64de67bd7c953f3643bdc34fe5fc674eb7e42b8f65f01e2233b8e5006a09",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/commons-codec-1.15.jar": "b3e9f6d63a790109bf0d056611fbed1cf69055826defeb9894a71369d246ed63",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/dd-plist-1.21.jar": "019c61abd93ecf614e3d214e9fed942dcf47d9d2d9548fe59d70f0840ba32fb6",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/google-api-client-1.25.0.jar": "24e1a69d6c04e6e72e3e16757d46d32daa7dd43cb32c3895f832f25358be1402",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/google-api-services-storage-v1-rev171-1.25.0.jar": "8f31591db5ea6a8b84bae6a56cfdaf2e4586c59d740d34c8a865d83e7f240f08",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/google-http-client-1.25.0.jar": "fb7d80a515da4618e2b402e1fef96999e07621b381a5889ef091482c5a3e961d",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/google-http-client-jackson2-1.25.0.jar": "f9e7e0d318860a2092d70b56331976280c4e9348a065ede3b99c92aa032fd853",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/google-oauth-client-1.25.0.jar": "7e2929133d4231e702b5956a7e5dc8347a352acc1e97082b40c3585b81cd3501",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-antlr-7.4.2.jar": "a5d246d5fbc5937eed0524d9d4ebfd82b79223fa1292b55afcc4e57ef40a5569",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-build-cache-http-7.4.2.jar": "1cf0e976659f2885d719a605f450d831f6529941a8dfcceabc1b416dd7336022",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-build-init-7.4.2.jar": "d72a4e4d053f7e8fb155206936eebf3f44627237415e47b3dc35dc6bdce06827",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-build-profile-7.4.2.jar": "d562a7032be3f6c827c073ae201c7ed1ce38feb0d1c370810e0ee338520cfeee",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-code-quality-7.4.2.jar": "ed1c2165be7768375a56e78ae3d99f65de36a83238fe9192fc82c9b256ad22cf",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-composite-builds-7.4.2.jar": "2cf95f9110de2b1a6122e4f9efa3439a607594e5ad146c3e569993f0ef6c2304",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-configuration-cache-7.4.2.jar": "32ba9eb5722a3745a30e24dffcaeea4e8b866d5317f42fe51adceff3e5c2e873",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-dependency-management-7.4.2.jar": "01d64834813d6cb593cae0409f2de34f9e564ef1b3a855388e337b9d325cbb28",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-diagnostics-7.4.2.jar": "dbdb17b30d65cdb935abf7599738e6eab4faa077f4853545a79291bf1ff690a5",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-ear-7.4.2.jar": "08cb620fe2a0a82de0bb323b0248246bd98e18714d8e400cfd736adc6b4cad14",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-enterprise-7.4.2.jar": "61da8dfddfaf706eb7c609ad6a46a40c850f84e5bd9302e1a264a88654ea0022",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-ide-7.4.2.jar": "77a0a9ec03a28b3d01332c31ca3f451190d89f408ee7712302b4857db154c81e",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-ide-native-7.4.2.jar": "8e46d775e7a4c39a2af4234739a2fd3de4bfc364f7628147d91ac34d0d35ecdb",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-ivy-7.4.2.jar": "b2b0a5966dc85db124c2ff10df7b68c2993313692e6853fbea14e1fd72ee5bd1",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-jacoco-7.4.2.jar": "ebf121e0b8fe7e3121f7ed67f482b66e7021bd4ae93a9b3e94a996d1116467aa",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-java-compiler-plugin-7.4.2.jar": "e5270f52da1a65c0b708acc3f9185f906462a904a936b0c1c3012fd0d68e48e6",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-kotlin-dsl-provider-plugins-7.4.2.jar": "782ac9a13d9b1b9f7336eafbb75ddc4282f6c647f62265b64f52bb1e60bea1c9",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-kotlin-dsl-tooling-builders-7.4.2.jar": "47d346cf9d66a7fa4e59c75fcc4e5ff147a20d6b34aa248ddf76480089868ddf",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-language-groovy-7.4.2.jar": "2324d51138778f9c8000e976ffea60279daba041a4d41d3e1cc1c8f812fe7e1f",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-language-java-7.4.2.jar": "1dff89d6fd9ad3d0e01c81de4fe6393521c527d4c8824ae81cc4cf8576aa8d37",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-language-jvm-7.4.2.jar": "ad8dff4ea5161b9548f3cd3dccd6c06b7dad13f160d1af23d0ea7fe0193aacee",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-language-native-7.4.2.jar": "dd9d953d22411981a50a977b705eca6d300913aea30f0201ff5e94c22e099542",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-maven-7.4.2.jar": "d354927e8878b3fbe4d21adaeacdb8ad4da0e5ffda94ff5269a9d9fadc9fd15e",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-platform-base-7.4.2.jar": "8896bcb6eaa805ed9eb526d6e62e549f5e0238f18bab8894efabc5de9dbc6bfc",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-platform-jvm-7.4.2.jar": "36e3982657480c02aa7c7093dfb2516848608e16182b73678934406f315638cb",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-platform-native-7.4.2.jar": "75fee1ba6490b611ae169f6a4cee377c13473dd26e27764ef3bfb5c108c2b939",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-plugin-development-7.4.2.jar": "b87884dd84435e1a663924d5693e2140a3d821fc45a4e3b04496e3dfb174d865",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-plugin-use-7.4.2.jar": "e33a7480892251c87ddf5c8ec9e80c35319a2406a7af4cbda75121416d951602",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-plugins-7.4.2.jar": "bb071485f070c01138ffc55a91bb3621572ada25ddbd04ed8583469eb549d55b",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-publish-7.4.2.jar": "b2917c216df43399b207a67d194293977c6bd1d7558e6704954642aee1462309",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-reporting-7.4.2.jar": "a28e2c3efad453eaec5a44a1aa3b3a9dc11046adac9cb4dcdc0ccfee3d1401f9",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-resources-gcs-7.4.2.jar": "5d393b602e952a990946e922174191fafc958b5510735035a4d82bb139556ccc",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-resources-http-7.4.2.jar": "d23b21c83bfb0710cd23ad9655052eccf697e0666f26722102b88f60c1f959e8",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-resources-s3-7.4.2.jar": "332c835b5760b134d61d2577607c49de050b74b4ae83cf678ce33644d1af6388",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-resources-sftp-7.4.2.jar": "ceade6bff5fe800b72d42c95b1ff2476070ddcbbf2701730bd0276574910a3d8",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-scala-7.4.2.jar": "ac42c3d46477f7634e76ac8f94d81f8eedd21c93db32021857e4b4a9bad28458",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-security-7.4.2.jar": "96fb7c46b4c57070ee0ef921b24a7c478b50b81a51701060e07d88a99eeffca8",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-signing-7.4.2.jar": "39d05152565f41fe84e54152c8c11afcae3e3f545b0e544660ff04ee14d85fe3",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-test-kit-7.4.2.jar": "851480ba6d97b9916177fb2927ce3c5bef556079e1e4e1178c6746031941dc16",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-testing-base-7.4.2.jar": "d57920244041612466bf63d4c07a5c3e696418bf509699fccbe59aea7fa3e21d",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-testing-junit-platform-7.4.2.jar": "006acadc35b3db0547d3f8324df5d97015f95f5d6868521bc46354405693ed5b",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-testing-jvm-7.4.2.jar": "1b8b2a16206302a58ff184e90a5f28650c25b8a762a30c74557a3877c7553f30",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-testing-native-7.4.2.jar": "dedf8e61dfad51668ec88b0c841affe1e807ff20021ee97c5963beac53ce8d49",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-tooling-api-builders-7.4.2.jar": "0f5180332fbfc721ccf33e81c0cf1144dafce3fda8002adbdbff90c98b81171a",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-tooling-native-7.4.2.jar": "ab0b5ee7e13fdfe3c44a4d5cf9b9fb49f8edce3d888f5a03bb909e0614bfae6e",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-version-control-7.4.2.jar": "0de3a87b497ebdfee91d0d8b4088521f83a832bed2f5c8747f38129f8716a375",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-workers-7.4.2.jar": "141b7a02ba06abed9890f43185a33d7ac1c925f47a72e2b80cdff902c8a8bb03",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gson-2.8.6.jar": "c8fb4839054d280b3033f800d1f5a97de2f028eb8ba2eb458ad287e536f3f25f",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/httpclient-4.5.13.jar": "6fe9026a566c6a5001608cf3fc32196641f6c1e5e1986d1037ccdbd5f31ef743",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/httpcore-4.4.14.jar": "f956209e450cb1d0c51776dfbd23e53e9dd8db9a1298ed62b70bf0944ba63b28",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/ion-java-1.0.2.jar": "0d127b205a1fce0abc2a3757a041748651bc66c15cf4c059bac5833b27d471a5",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/ivy-2.3.0.jar": "ff3543305c62f23d1a4cafc66fab9c9f55ea169ccf2b6c040d3fa23254b86b18",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jackson-annotations-2.12.1.jar": "203cefdfa6c81e6aa84e11f292f29ca97344a3c3bc0293abea065cd837592873",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jackson-core-2.12.1.jar": "cc899cb6eae0c80b87d590eea86528797369cc4feb7b79463207d6bb18f0c257",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jackson-databind-2.12.1.jar": "f2ca3c28ebded59c98447d51afe945323df961540af66a063c015597af936aa0",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jakarta.activation-2.0.0.jar": "db9c7e30f4d61ec33fd47942c9b7cf6e094025e7d5d8e20db73fce5a912a4366",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jakarta.xml.bind-api-3.0.0.jar": "0037ab1eba33a969b36119c61a9f28313460a85eea9b800470a70cb2227d35f4",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jatl-0.2.3.jar": "93ee3810f7275244f5f6311d50c587d8fe43ab5047dfa3291aa96fe50587501c",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jaxb-core-3.0.0.jar": "b1e4b8137505333ed59b08e748c46c3894795fa1d524d042354609fd9ca6754f",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jaxb-impl-3.0.0.jar": "6d5a3cddb6948b6adc6707b121d627c3b50bc23334e072e8ddd8e82b894f384e",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jcifs-1.3.17.jar": "12603c9dfe7a3d16b2d7f1df8bf5b0168728b15be441382cb1a2b209fde0c553",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jcommander-1.78.jar": "7891debb84b5f83e9bd57593ebece3399abbe0fd938cf306b3534c57913b9615",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jmespath-java-1.11.948.jar": "b540a2831d7092e05246c55feb0fd7bc26211d7b8add16ff080d0067fb01522b",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/joda-time-2.10.4.jar": "ac6fda8989775776f428df8b5a4517cdb06d923465abf9bda0746ec07dfcc657",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jsch-0.1.55.jar": "d492b15a6d2ea3f1cc39c422c953c40c12289073dbe8360d98c0f6f9ec74fc44",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/junit-platform-commons-1.7.2.jar": "738d0df021a0611fff5d277634e890cc91858fa72227cf0bcf36232a7caf014c",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/junit-platform-engine-1.7.2.jar": "abebbfa420fa8ffdc51083c06807e8692dd9bf8c52455dcdb72474ab90425573",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/junit-platform-launcher-1.7.2.jar": "a5923c861c27ff3ee79b11d6396896e7169a76967801b18b49488f9b16480b4e",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jzlib-1.1.3.jar": "89b1360f407381bf61fde411019d8cbd009ebb10cff715f3669017a031027560",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/maven-builder-support-3.6.3.jar": "3285308ea243a9967785417af5e21ae0c094099b20dfb0b7e1c3d211a87a5e59",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/maven-model-3.6.3.jar": "17cef1f58e146ef0d7d9e96b3b92d98a1d6fd7d2b3288ba538e8ff1e0d9160cf",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/maven-repository-metadata-3.6.3.jar": "2e7f850b20664a151e6ca73dd3af34e639901435c2fe717717e3cbc7ddead3d4",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/maven-settings-3.6.3.jar": "d3904bcac30f11fb49e44f5cecaaebb2e9a7a5e4a9a55f20484fbb9fcc1bb66c",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/maven-settings-builder-3.6.3.jar": "ba611bdc73b691a73b704443bcd7606f625f06cb79588968e101271acbfa0b15",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/nekohtml-1.9.22.jar": "452978e8b6667c7b8357fd3f0a2f2f405e4560a7148143a69181735da5d19045",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/opentest4j-1.2.0.jar": "58812de60898d976fb81ef3b62da05c6604c18fd4a249f5044282479fc286af2",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/org.eclipse.jgit-5.7.0.202003110725-r.jar": "ee13076c3f832048f1a0ca272b221d2b69f10919e3bfd5d1b1e5ff7cf661e417",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/plexus-cipher-1.7.jar": "114859861ff10f987b880d6f34e3215274af3cc92b3a73831c84d596e37c6511",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/plexus-interpolation-1.26.jar": "b3b5412ce17889103ea564bcdfcf9fb3dfa540344ffeac6b538a73c9d7182662",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/plexus-sec-dispatcher-1.4.jar": "da73e32b58132e64daf12269fd9d011c0b303f234840f179908725a632b6b57c",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/plexus-utils-3.3.0.jar": "76d174792540e2775af94d03d10fb2d3c776e2cd0ac0ebf427d3e570072bb9ce",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/snakeyaml-1.28.jar": "35446a1421435d45e4c6ac0de3b5378527d5cc2446c07183e24447730ce1fffa",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/testng-6.3.1.jar": "57ed8e83e357c3838daad81b789a2753227fee8cfb86aa31a61b765c4093d6ad",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/xercesImpl-2.12.0.jar": "b50d3a4ca502faa4d1c838acb8aa9480446953421f7327e338c5dda3da5e76d0",
+    ".work/toolchains/android/gradle-7.4.2/lib/qdox-1.12.1.jar": "21fba22f830e9268f07cf4ab2d99e8181abbdcb0cb91ee0228eb3cb918dcdd1d",
+    ".work/toolchains/android/gradle-7.4.2/lib/slf4j-api-1.7.30.jar": "cdba07964d1bb40a0761485c6b1e8c2f8fd9eb1d19c53928ac0d7f9510105c57",
+    ".work/toolchains/android/gradle-7.4.2/lib/tomlj-1.0.0.jar": "32697c7567b2921c473678a820b13fc64700aa87bb14576eeb48d0ed5847cfd4",
+    ".work/toolchains/android/gradle-7.4.2/lib/trove4j-1.0.20181211.jar": "affb7c85a3c87bdcf69ff1dbb84de11f63dc931293934bc08cd7ab18de083601",
+    ".work/toolchains/android/gradle-7.4.2/lib/xml-apis-1.4.01.jar": "a840968176645684bb01aed376e067ab39614885f9eee44abe35a5f20ebe7fad",
+    ".work/toolchains/android/mode-412/AndroidMode/processing-core.zip": "0cdd89e2511a97728092619e89148b46a52700e5957d81f234db8fd3b1652338",
+    ".work/toolchains/android/sdk/build-tools/30.0.3/source.properties": "615acc6b54a12b078860cd6c0f3d40da05c05b93824ee6ea808c7f5ec2638b52",
+    ".work/toolchains/android/sdk/platforms/android-33/android.jar": "fd628aa21321859a9035c6aae4b084b7d3fdb3f230be5cd5ec76541e32f7c963",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "evidence/conformance/android-snapshot-restoration-root-review.json": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8",
+    "evidence/distribution/android.json": "16c266a39572953c1353d2d0afb67916c5fba4b325c192ef7ffa87f302be0708",
+    "evidence/distribution/cp2-android.json": "8fe60e2a6ef2b288c153e0997ad9ce172600ed34d9141406f4d5f89070d44c38",
+    "evidence/distribution/cp3-android.json": "4ba601a26d314e26cfcad291ad32bc34388404b978aaa98c145badf3b926beef",
+    "evidence/distribution/cp4-android.json": "e1ea911acf082bbb01a40b5e358bb511c2a239b804d135a7d7298eff9cc5b3ad",
+    "evidence/distribution/cp5-android.json": "f16e976db36fb2ccdb70f3b5f4f64ee60e7583b365e7695e3e8e9af1d30154ad",
+    "evidence/distribution/cp6-android.json": "56cb82f476aab0ec720ff3ddecd36cf939a3237015ce716cf6f5b4140c32accc",
+    "packages/java-android/distribution/templates/adapter-AndroidManifest.xml": "f4447fb4d9a6be45859b79d59482ecd09a933bc6cd294a08d5739373580794ab",
+    "packages/java-android/distribution/templates/adapter-build.gradle": "a3eabb4d2be27261559ab8f106baacf9053de96556e5435eb9e6c88f1949f65d",
+    "packages/java-android/distribution/templates/build.gradle": "3b35599bef70fadbc0f0c7d81be8de7b863661d11bfd1104a2f2d4812a64f993",
+    "packages/java-android/distribution/templates/gradle.properties": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e",
+    "packages/java-android/distribution/templates/sample-app-build.gradle": "5cec415c74374618d977cef597d8e795cc53dcce20b104d388f725c97f9137ea",
+    "packages/java-android/distribution/templates/settings.gradle": "590977829f99d67a1886967de12c43cfacbb41ca1855b4cfc2e887e6be1ee9b2",
+    "packages/java-android/examples/BranchMarks/AndroidManifest.xml": "1a8eed9fafa67ae8c9a241b002e74f01381c9690a26783b23329c7c4ca2ca2d1",
+    "packages/java-android/examples/BranchMarks/BranchMarksActivity.java": "dc1a7fe814bc8d3fe2ef26c22a5b844d14bdc7bb09318de6dff123079de6ad49",
+    "packages/java-android/examples/BranchMarks/BranchMarksRenderer.java": "604719ba3ca4e878e242c18fee870d7198dba516120b5403a81b02c06124d13c",
+    "packages/java-android/examples/BranchMarks/README.md": "8bc55fcb87644fb5c24c38f73718e2aa5511309e188b7fa6f65ccae51d132b54",
+    "packages/java-android/examples/FieldMarks/AndroidManifest.xml": "7ae57f4e3c1e8cb4089f609e16cf5e440c9f6074546dde4e722c6355c1bddfee",
+    "packages/java-android/examples/FieldMarks/FieldMarksActivity.java": "ec1968190c38cd0fce5cf084db78d5348e16d6ed2ca80c9c363486a68f70fe57",
+    "packages/java-android/examples/FieldMarks/FieldMarksRenderer.java": "416da450bc05ea1c006d6fac6ab0811997bcc230cf856207ceb3f4da44c68c93",
+    "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+    "packages/java-android/examples/FieldMarks/README.md": "f1cf61a50c72d926edae74e53abe985aff0c35a58685ced8b6fc3c083267e8ed",
+    "packages/java-android/examples/GrainMarks/AndroidManifest.xml": "60989fc959f64f589b30beff0748deb97f675e417c3d2999ba939a31c7fae478",
+    "packages/java-android/examples/GrainMarks/GrainMarksActivity.java": "53e851cb2ec144e378c2ef45706cf854362786bbd1cf710c14ddb1c73f2921c1",
+    "packages/java-android/examples/GrainMarks/GrainMarksRenderer.java": "868e6b2d488de4a862c192c3a611aa1a4122278a35068aab65f039e1bd9a30ab",
+    "packages/java-android/examples/GrainMarks/README.md": "a23e3ae6afb7dd2e502e907766ef043f1c6891abbaeaef7b049e81b6c74920a4",
+    "packages/java-android/examples/PathMarks/AndroidManifest.xml": "17609fe3c2401f9c821ad63875084fc8e33ec1cdbb8cd9350bc72c63345b7be1",
+    "packages/java-android/examples/PathMarks/PathMarksActivity.java": "e60e5c368d6a5f00214b8cfa71793c9135b23e4dfeeff2c905dc1f9cb9abd0a2",
+    "packages/java-android/examples/PathMarks/PathMarksRenderer.java": "1768092f1fe19332fdec1a4d1eda773b5a1c2453dd61df9b217ff06dc75a3d7f",
+    "packages/java-android/examples/PathMarks/README.md": "b8a04f32d9cd356301ff87a4e0c4d95254860fbe14bdb14116b99edef9f8c716",
+    "packages/java-android/examples/PlacementMarks/AndroidManifest.xml": "5b508021536f85b637fae1ee7c64788ebf009434dd735f9f49a83fa5ce655c01",
+    "packages/java-android/examples/PlacementMarks/PlacementMarksActivity.java": "da30b0f05a5a2574602f32feb14f1f3845188d72ddc94155c249d88010aa36dc",
+    "packages/java-android/examples/PlacementMarks/PlacementMarksRenderer.java": "c4b6d9780da7c7dae0a6b5d1d9e4d4a69b44d8e641d36ecc85d2914a84905f2a",
+    "packages/java-android/examples/PlacementMarks/README.md": "dbbe20e5f2a2ebd510e54df874f147f950a3de5dd8fe0267b4d4a07352f48425",
+    "packages/java-android/examples/RegionMarks/AndroidManifest.xml": "6a0ada7d0c8eaf73c9186a13a9c8e2de21be629894fc9770e90403ada9ab51bd",
+    "packages/java-android/examples/RegionMarks/README.md": "e572fd5f1394df9432c586268d6e8b308ea66636a9d143e204115eb52924c1f3",
+    "packages/java-android/examples/RegionMarks/RegionMarksActivity.java": "303b34e01eb8742cec5cc5a1c08277def0581a5d7e7a94aef11cf6c089f8d8d7",
+    "packages/java-android/examples/RegionMarks/RegionMarksRenderer.java": "dcf268dab5d097b4f53f2037ba7805239c46f24da2b86910bc2862476dff72d4",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFrame.java": "835daf36db3736adad6834209c39fe2b6530362dc0f57febc449143e6c09b570",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidFrameHost.java": "64a3ec481e69dc0bf9597ea03d4ed0864dc7002a8f05f1a0b852809503f9e2c7",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSurface.java": "bb2efe0fcce61461e847f9415b6cb7dae80a4f7ccb2e220b1e0009083c8c3604",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "packages/java/examples/FieldMarks/MarkField.java": "398dcf002dc35076f7af97e7a44f21a48a2ce6e10facf2d370dfac3b9e453ea7",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
+    "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+    "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+    "tools/build_android_artifacts.py": "cba67bf5124d49786883b21fa206285d1f43579722bbf08a38c561add0c7fe1e",
+    "tools/build_android_restoration_starters.py": "1f0198dc01606a6d444db04c16157433a49c2d6a453bc0937cfad361a7de72a0"
+  },
+  "input_sha256_before": {
+    ".work/dist/cp2/java/procedurals-core-0.2.0.jar": "cbbbfd08dbe442595f7c18022e1a03d95058fc177c3107d647d668dc22d4291c",
+    ".work/dist/cp3/java/procedurals-core-0.3.0.jar": "73b5d6914c2222b3bce1100e5bee906815f38fb1d14ba9d8397db5a069c36004",
+    ".work/dist/cp4/java/procedurals-core-0.4.0.jar": "613cf476945213ea55846bb400eefa1d21a24ef52a465674c654a34157b207f7",
+    ".work/dist/cp5/java/procedurals-core-0.5.0.jar": "99b1815d10be2708f6e752e7662f90f915026ccd1a1c0f917eec52a8d5bbad9d",
+    ".work/dist/cp6/java/procedurals-core-0.6.0.jar": "477543460ab56b551acb737b5e9729e6b9999450c685ad0aceefb73b9c8b57a6",
+    ".work/dist/java/procedurals-core-0.1.0.jar": "39a48549b323acaf63d51a129dc2fc41b6ee79c1e806aed90e3ef0a6963131e2",
+    ".work/toolchains/android/gradle-7.4.2/bin/gradle": "677db28e59ce22feb54def6637181481fa3903bb28d88e7b9ff5bd13ecf36cda",
+    ".work/toolchains/android/gradle-7.4.2/lib/annotations-20.1.0.jar": "edc8e3ec9796a5f41c1ae44b2d318507ee6ac1212f121d93d33699b3d0aff638",
+    ".work/toolchains/android/gradle-7.4.2/lib/ant-1.10.11.jar": "88c0b89bbbaae01e0d9fcae93be792f5abbe3409106f8eee858fdf365dbc0754",
+    ".work/toolchains/android/gradle-7.4.2/lib/ant-antlr-1.10.11.jar": "ff253b3699f859115378c0c4322c94d591499eac97285942722f53a7e85182f1",
+    ".work/toolchains/android/gradle-7.4.2/lib/ant-junit-1.10.11.jar": "02267c1233cde1bc196f5aed40b6b8b61b79c47c2f6729ae1acf24ebfe89e815",
+    ".work/toolchains/android/gradle-7.4.2/lib/ant-launcher-1.10.11.jar": "dab530df7a980b5ac8fd7e8d208243ae0d3ebd6de09b1aa2ce756360cc2ed256",
+    ".work/toolchains/android/gradle-7.4.2/lib/antlr4-runtime-4.7.2.jar": "4c518b87d4bdff8b44cd8cbc1af816e944b62a3fe5b80b781501cf1f4759bbc4",
+    ".work/toolchains/android/gradle-7.4.2/lib/asm-9.2.jar": "b9d4fe4d71938df38839f0eca42aaaa64cf8b313d678da036f0cb3ca199b47f5",
+    ".work/toolchains/android/gradle-7.4.2/lib/asm-analysis-9.2.jar": "878fbe521731c072d14d2d65b983b1beae6ad06fda0007b6a8bae81f73f433c4",
+    ".work/toolchains/android/gradle-7.4.2/lib/asm-commons-9.2.jar": "be4ce53138a238bb522cd781cf91f3ba5ce2f6ca93ec62d46a162a127225e0a6",
+    ".work/toolchains/android/gradle-7.4.2/lib/asm-tree-9.2.jar": "aabf9bd23091a4ebfc109c1f3ee7cf3e4b89f6ba2d3f51c5243f16b3cffae011",
+    ".work/toolchains/android/gradle-7.4.2/lib/commons-compress-1.21.jar": "6aecfd5459728a595601cfa07258d131972ffc39b492eb48bdd596577a2f244a",
+    ".work/toolchains/android/gradle-7.4.2/lib/commons-io-2.6.jar": "f877d304660ac2a142f3865badfc971dec7ed73c747c7f8d5d2f5139ca736513",
+    ".work/toolchains/android/gradle-7.4.2/lib/commons-lang-2.6.jar": "50f11b09f877c294d56f24463f47d28f929cf5044f648661c0f0cfbae9a2f49c",
+    ".work/toolchains/android/gradle-7.4.2/lib/failureaccess-1.0.1.jar": "a171ee4c734dd2da837e4b16be9df4661afab72a41adaf31eb84dfdaf936ca26",
+    ".work/toolchains/android/gradle-7.4.2/lib/fastutil-8.5.2-min.jar": "efe3505b9619ffb045c25a3ad63da546230c0dac3774e1ba0b963d7049179945",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-0.22-milestone-23.jar": "38d9bbb86eb47560d44f9ac739d202ba52e4327b3d45b01bf19b71491d35e5a4",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-linux-aarch64-0.22-milestone-23.jar": "cd93ce8ca1a1fea1b48acfbad91cc5a5b97ea3f24170cfdf7ed4055fd687191d",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-linux-amd64-0.22-milestone-23.jar": "62bc6ff64ca4410060301feced8871ec0697a74051d4d77c583fdbd3130ec650",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-osx-aarch64-0.22-milestone-23.jar": "d68be99ff6e256aede033ce29fb3f5358a3ec0f8e53f7f2b209d5e895c5236c8",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-osx-amd64-0.22-milestone-23.jar": "306a2cd21aeff3e1ef29db477b769c19f19a787d86d833daf5b492856fb3cab3",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-windows-amd64-0.22-milestone-23.jar": "937f6a624fc1ba0c1e9c25c0a44143cdf48d88e7af1e2d4b9b70dee9be3f1e0e",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-windows-amd64-min-0.22-milestone-23.jar": "9f50bbecfbd300ceb02ad09ab13564f36f5050344b06c285f58b7fef66e9a87c",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-windows-i386-0.22-milestone-23.jar": "99f653adda0758ffe54e7d2b836e301c1573ff02d17b2f13a10d4feda913baaa",
+    ".work/toolchains/android/gradle-7.4.2/lib/file-events-windows-i386-min-0.22-milestone-23.jar": "efe32cf74e50f19bfe7f2947059e00643cdca15499be038ef9f115ecb891c16e",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-api-metadata-7.4.2.jar": "63ac9c70b215ba9dc9a45ad8b74c14ee3303ea952bda0b39d2da179c17a228a0",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-base-annotations-7.4.2.jar": "eaf25b84a69be11e8bead437ebcfdf77423c5e057dfb36d19c1ecdfa1d3dfe7b",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-base-services-7.4.2.jar": "8d29715e14a72399d24cb903300dc8f50b808fdc72ee19e6f18c1fd1256581df",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-base-services-groovy-7.4.2.jar": "61bfc784b5b60144184c821f2e90e26f23b8e165bccd31211e33930ced9dffaf",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-bootstrap-7.4.2.jar": "60f575a611bd318a0ade73617cd3d662ee0cc1aa7fc8a839a992bd7c23f45129",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-build-cache-7.4.2.jar": "5f754a2488713c1c0c33a8860b038bc658ffc7e1cbb1b183e6b32d237d8105a9",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-build-cache-base-7.4.2.jar": "eefa7e1a71cf47a684b34f15a5fd7ff69aaf8a7733191e6f0cdc028e67dfad8d",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-build-cache-packaging-7.4.2.jar": "f404397b72019284a0155afadc63499bf3bd3cd5f04bf2256385c43ab4091d82",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-build-events-7.4.2.jar": "99a12f4de632fa529c2f312c0cf8f11462c2b9989dd78767cd9a1122fb2bec82",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-build-operations-7.4.2.jar": "55a5f41cd7e7f81272901572f8999c149c4e1ac78dec4182681e36a966c4ff39",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-build-option-7.4.2.jar": "d8ecee3b5190e82560f33adff2a0e7a01cb2a9786f01196605181b25a4f6a70b",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-cli-7.4.2.jar": "17ffab5bb15da9fcc48c570bbd711c97d13fc62300809d4fd37e36c3f167a93b",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-core-7.4.2.jar": "4d0f042ae159aba78ac405a9e2e53353dbbbb7ffd88f6c5af94007ec134f6f6e",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-core-api-7.4.2.jar": "c02a37ca4fd595628f87bbb7d44ad1e5d21a85864b010e8630d1a91ace953594",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-enterprise-operations-7.4.2.jar": "7471ff194c2c9bd4a90badee3555aa73d4f40f3a6071c11c419a5c387a52ab1e",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-enterprise-workers-7.4.2.jar": "e485417d4d3ba8aa42fbead4398e441f50a57d42f08084a691e5ba77c0355ddf",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-execution-7.4.2.jar": "c811821b03db30e7d097cd7c6ae2a0d6a7d4e8d5aa7d2cbd5d57aa2d8c79fe2d",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-file-collections-7.4.2.jar": "ad88c2ac3dd80a1819bd2e7086354bff4740f7b28d606177d56351bb390b7640",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-file-temp-7.4.2.jar": "487817052746f54934f518f4bd1d3c75a8b49dd3feba43119b8ebd6b9b570820",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-file-watching-7.4.2.jar": "871315e851c86df5ab8ddb00def4d8b5b124e74f7acfda1abbdba220db03380b",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-files-7.4.2.jar": "acdc8f6c9b792a8c2cd6ab56fa2a4959ead4232c85cc36d8f0eb4c658875de42",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-functional-7.4.2.jar": "43b5d7ebaf11d245d02580eba32f903eaa16e73b1300b15a82d56ce897afe723",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-hashing-7.4.2.jar": "414321ecf384d613ffa64d3429910f28f06bb88ccc60031e2893476cd3615cd6",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-installation-beacon-7.4.2.jar": "176ee6b22674140e59331f90f8ad8f0a5cd8a506527c829d345a379ebbb36f00",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-jvm-services-7.4.2.jar": "7deee5101a9a0a3d1a5e2329d26a11b7669bf3f66210f333bc3e575ef5232380",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-kotlin-dsl-7.4.2.jar": "9a1ec799235d7199d8944eb298e2218f4de7c1ccf48fb1b61b469a526f2b3dca",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-kotlin-dsl-tooling-models-7.4.2.jar": "df7d2a654fc8098e94b45e03ba94989ebeeba04774b4e93770793a8fe19c44dc",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-launcher-7.4.2.jar": "20f9db800fc255e95d044f90cfe48fe3f9c21b53b3e559116f9cd1acca404a11",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-logging-7.4.2.jar": "b242cc7c78e63ff6690523d0c031d99a712f86df4fe64d03a3b4bdb09280b9ab",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-messaging-7.4.2.jar": "09ed11c35d9a9cefc702228c3735511e5aa955b49d0c29a74dd414b16222f503",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-model-core-7.4.2.jar": "fd96d3d78ec0b166d02400bf429720972a4806843537bc4117e0ec7ef11dafe1",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-model-groovy-7.4.2.jar": "9e671d05ac2931e1835e9a3121afeeac2d9c9a7fcbe41251f5a774d700772ddd",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-native-7.4.2.jar": "a459c8d5bb6c1689398840e85b95c192b5bd3b6d2f1c11e4a40aa29ef8e12522",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-normalization-java-7.4.2.jar": "e4abe0a66bd042a53bbe669de15ca19ea5308ebda70c73b59734fedb0c78324a",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-persistent-cache-7.4.2.jar": "fe832938c84a621ca1363ee9ba7d21b004d3cf4484daeac9b414a508d9de0cbc",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-problems-7.4.2.jar": "848663bdf3bfb8f2890607b738f8be00b8e5e1aed305125083a0d414fca9dd74",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-process-services-7.4.2.jar": "ad24849cf5e76433162c118b47d11e829a6ed806f1031fb249bf3912271105e0",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-resources-7.4.2.jar": "7cf4f7497a2305816f02db3b60033e16b0d3ca4519f7f102a4122bb6082c2ab4",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-runtime-api-info-7.4.2.jar": "965de7c776efe01678c956c9b69de365a5634067fb6636aa750c28e4d83d91fb",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-snapshots-7.4.2.jar": "580713a4a7ecac173824fade4dd5579585440db7147306aa3bb9da009137812b",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-tooling-api-7.4.2.jar": "d584b8e7b8d2e5137a9fe7c47faef931245d91c54b3b101bb85bf416aed9aa81",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-worker-processes-7.4.2.jar": "ff737a59d6b81702f29a62b917d18039df9d77e61779fbd4508d54a43d79a710",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-worker-services-7.4.2.jar": "4d46ca1e39893a9cfcc90243b1ceec83633dcb005cd8a02ecf6f7e5fbed1580c",
+    ".work/toolchains/android/gradle-7.4.2/lib/gradle-wrapper-7.4.2.jar": "52c84106aa3daed3afef1bb3c8e23750bb9beb76e80e61990ba5bdcfa67642cd",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-3.0.9.jar": "77bf86897f295f8cae2e1f46b1eca109f487ba81b66ef24a2b6dcba1eb7d6ce7",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-ant-3.0.9.jar": "b22c2f153a67af2abbbbccf768cfb333181c7d089aee113b36d8ef04e5ae8581",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-astbuilder-3.0.9.jar": "8e21d9c9e3428da501cd810ea89fcd2092acf5feab4cfa49540c07d0f64a0cb5",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-console-3.0.9.jar": "dc07954995af1d13d5324be6474a17ee5fb2347c1b6ea4b218cda662c0a7d750",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-datetime-3.0.9.jar": "f52c2632e3f30f5cd7d6862c515506f0f585dd7069b69485ae37cef34179b159",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-dateutil-3.0.9.jar": "6132d39b0bc8b7a25f49156d7f2055c34b3492fa73e131778bfa26baf7feac45",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-docgenerator-3.0.9.jar": "861647dfbd80077090c0b9eb14a695f25eaf02ed422e0b12daf5473ac2cb9609",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-groovydoc-3.0.9.jar": "73710df42537355e9831add7cdc4393e036f040b1ae5f1927c25635e8f8baeee",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-json-3.0.9.jar": "fb8edd9f367e0a5debc03f31523755a95e9eedae8bd1c0e9df1493188e350263",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-nio-3.0.9.jar": "009a4b40c22ce20f2a1ad22dad70170cdc2d060a65e49ae2b8f6603fab0d7f1f",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-sql-3.0.9.jar": "b69e30ffbcbf862bf1f92c041711463672a6636731088719a7db22188a706fc7",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-swing-3.0.9.jar": "466ead440564af451c1499ffc67199d909f2c522d94ab7c88c1aa57d4ec527d2",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-templates-3.0.9.jar": "6188c3be1f2db4c562976339464847345c38ae43136c9334c9e2c027c6f38059",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-test-3.0.9.jar": "17750aa2722d3595d7a0bc1f2e892126bd7f5e5dbc7dc007689c505b6c3c3b3f",
+    ".work/toolchains/android/gradle-7.4.2/lib/groovy-xml-3.0.9.jar": "2bcecd848caed3975358a5c556aa49154b2d66f0c8a5c17043dd7b7d8985b6fe",
+    ".work/toolchains/android/gradle-7.4.2/lib/guava-30.1.1-jre.jar": "44ce229ce26d880bf3afc362bbfcec34d7e6903d195bbb1db9f3b6e0d9834f06",
+    ".work/toolchains/android/gradle-7.4.2/lib/hamcrest-core-1.3.jar": "66fdef91e9739348df7a096aa384a5685f4e875584cce89386a7a47251c4d8e9",
+    ".work/toolchains/android/gradle-7.4.2/lib/jansi-1.18.jar": "109e64fc65767c7a1a3bd654709d76f107b0a3b39db32cbf11139e13a6f5229b",
+    ".work/toolchains/android/gradle-7.4.2/lib/javaparser-core-3.17.0.jar": "23f5c982e1c7771423d37d52c774e8d2e80fd7ea7305ebe448797a96f67e6fca",
+    ".work/toolchains/android/gradle-7.4.2/lib/javax.inject-1.jar": "91c77044a50c481636c32d916fd89c9118a72195390452c81065080f957de7ff",
+    ".work/toolchains/android/gradle-7.4.2/lib/jcl-over-slf4j-1.7.30.jar": "71e9ee37b9e4eb7802a2acc5f41728a4cf3915e7483d798db3b4ff2ec8847c50",
+    ".work/toolchains/android/gradle-7.4.2/lib/jsr305-3.0.2.jar": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+    ".work/toolchains/android/gradle-7.4.2/lib/jul-to-slf4j-1.7.30.jar": "bbcbfdaa72572255c4f85207a9bfdb24358dc993e41252331bd4d0913e4988b9",
+    ".work/toolchains/android/gradle-7.4.2/lib/junit-4.13.2.jar": "8e495b634469d64fb8acfa3495a065cbacc8a0fff55ce1e31007be4c16dc57d3",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-compiler-embeddable-1.5.31-patched-for-gradle-7.4.2.jar": "778ab0a52cb8c4fb29dd0b5262859366163970e3343e1a56d9318c0bb8d115e1",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-daemon-embeddable-1.5.31.jar": "f61eaf89e5e3848631650b25cdfb66fe8cae0281a054d9d986716000a15ba8d6",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-reflect-1.5.31.jar": "6e0f5490e6b9649ddd2670534e4d3a03bd283c3358b8eef5d1304fd5f8a5a4fb",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-sam-with-receiver-compiler-plugin-1.5.31.jar": "ae8ce1f9ee135fd606e6fc2a052a9f0bb390fb167c0b4980096f103b0464b6a9",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-script-runtime-1.5.31.jar": "24e450fee7645ed3590981dddccf397c0d9ebb725815c94c4f555cc3db2f9f96",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-scripting-common-1.5.31.jar": "219edf00aed8288c71d8002f159852d535ec9af7aebfb07df836e8479a8347ef",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-scripting-compiler-embeddable-1.5.31.jar": "c8621fae36f8d9b84916aa4c047d298165fa32fd3d203d16d2651de491a8453d",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-scripting-compiler-impl-embeddable-1.5.31.jar": "7a5bc8534843e0b01c635f98b3c58b2d0303c7f1a87315b7f44226b93af2e673",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-scripting-jvm-1.5.31.jar": "6fae70ec5d83730ad47d012dde230d6dd4975c3d8c0e89adec9abd43fa6fe6de",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-scripting-jvm-host-1.5.31.jar": "b870f95c2b81e1e86ed4b074477fcedae754567043475d9d3e508c8baaa4f44b",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-stdlib-1.5.31.jar": "4800ceacb2ec0bb9959a087154b8e35318ead1ea4eba32d4bb1b9734222a7e68",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-stdlib-common-1.5.31.jar": "dfa2a18e26b028388ee1968d199bf6f166f737ab7049c25a5e2da614404e22ad",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-stdlib-jdk7-1.5.31.jar": "a25bf47353ce899d843cbddee516d621a73473e7fba97f8d0301e7b4aed7c15f",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlin-stdlib-jdk8-1.5.31.jar": "b548f7767aacf029d2417e47440742bd6d3ebede19b60386e23554ce5c4c5fdc",
+    ".work/toolchains/android/gradle-7.4.2/lib/kotlinx-metadata-jvm-0.3.0.jar": "fdaf7ba158465f6b6e9ce5762e0300fd681a976fbfeb5ed50fa5a2b26868cec8",
+    ".work/toolchains/android/gradle-7.4.2/lib/kryo-2.24.0.jar": "7e56b32c635058f9aa2820f88919ab702d029cbcd15285da9992e36cc0ae52f2",
+    ".work/toolchains/android/gradle-7.4.2/lib/log4j-over-slf4j-1.7.30.jar": "ad9d34d0b7f0bf576be2b5f844988fd872bb99f87ecffa41d54a8ebaad79a10b",
+    ".work/toolchains/android/gradle-7.4.2/lib/minlog-1.2.jar": "a678cb1aa8f5d03d901c992c75741841d98a9bc3d55dad02e84d65315c4e60f2",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-0.22-milestone-23.jar": "ec36891db814fc0e7e12baa796002cc95de587c0943edabf0d3df353432c2e8c",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-freebsd-amd64-libcpp-0.22-milestone-23.jar": "957615724870d57991e8baefe34c1b50db1fa1875b35a410b3fb4982e6caabd6",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-linux-aarch64-0.22-milestone-23.jar": "acbb2784599c16b121455b2362046a61377dfb765d948e755ac2fe85ab68e659",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-linux-aarch64-ncurses5-0.22-milestone-23.jar": "d16af8aeddad73e0feb62cb82f9895993c3dd24424130b2e6f6f2c24032db27c",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-linux-aarch64-ncurses6-0.22-milestone-23.jar": "ee78d1d22cbc011fc02db646dee7d53503a41b09bd3ff88a0d89352408166a3e",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-linux-amd64-0.22-milestone-23.jar": "f45ca2f8e1defe5e5a7c64abc2d901dc64a6c441ba30dd1e73481e5cce5a2f17",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-linux-amd64-ncurses5-0.22-milestone-23.jar": "ce486694f08616de8c3c433b49d5815896cfafe26ba3484b0cf6058120ab7a73",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-linux-amd64-ncurses6-0.22-milestone-23.jar": "b7dd8e1b1a3efd39c2833a1d481b2e792f5fce7f03e2239c23f0965f676a9e8b",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-osx-aarch64-0.22-milestone-23.jar": "6a9c5d7f44f1e6ee73badcdab38b56b6dc28bac8bb668f29ee876c646fd06726",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-osx-amd64-0.22-milestone-23.jar": "a109c1c8bc28ef35f16ada3cebc397237cc61d2939baacaede111432e1fbf7e1",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-windows-amd64-0.22-milestone-23.jar": "95a40589fe1607d0ad2894c0e226d7ce151db48935d94f650453063cdc6ba13c",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-windows-amd64-min-0.22-milestone-23.jar": "ef899f16b81ef89e558db072f466d41cc2c344c75acbaa30247cf7216e45c590",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-windows-i386-0.22-milestone-23.jar": "8d2c499ecd7e2b536b4509b949151bc36831a9744e8e88aa3e6a722c8a5f13db",
+    ".work/toolchains/android/gradle-7.4.2/lib/native-platform-windows-i386-min-0.22-milestone-23.jar": "98379469cdd330a954e8e4d68f77f4a3657cee163520ea7db1ac46d42384e82c",
+    ".work/toolchains/android/gradle-7.4.2/lib/objenesis-2.6.jar": "5e168368fbc250af3c79aa5fef0c3467a2d64e5a7bd74005f25d8399aeb0708d",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/apiguardian-api-1.1.0.jar": "a9aae9ff8ae3e17a2a18f79175e82b16267c246fbbd3ca9dfbbb290b08dcfdd4",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/aws-java-sdk-core-1.11.948.jar": "b288ed83cf8903daf35305e9b262e29878d5ab08cb1b74610f49de028fcc44ba",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/aws-java-sdk-kms-1.11.948.jar": "6b94d6e956b9069ad0f3da4eb522be839c1f67bcd87b6b952be5b11252812370",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/aws-java-sdk-s3-1.11.948.jar": "97eb5df2a62e4ecdf02ebab7d1376567aa8cb096c2cca4d71650a0ba88677114",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/aws-java-sdk-sts-1.11.948.jar": "59f0f3fb71e9b3a9dd32f6cea3353fd2f3109913a14c5f3fbce852c51e5b9647",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/bcpg-jdk15on-1.68.jar": "2251d9c9faa0ee534ab159a6dac1193a69b8a831f0a0e593dc79e34e7e256a4f",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/bcpkix-jdk15on-1.68.jar": "fb8d0f8f673ad6e16c604732093d7aa31b26ff4e0bd9cae1d7f99984c06b8a0f",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/bcprov-jdk15on-1.68.jar": "f732a46c8de7e2232f2007c682a21d1f4cc8a8a0149b6b7bd6aa1afdc65a0f8d",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/bsh-2.0b6.jar": "a17955976070c0573235ee662f2794a78082758b61accffce8d3f8aedcd91047",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/capsule-0.6.3.jar": "38df64de67bd7c953f3643bdc34fe5fc674eb7e42b8f65f01e2233b8e5006a09",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/commons-codec-1.15.jar": "b3e9f6d63a790109bf0d056611fbed1cf69055826defeb9894a71369d246ed63",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/dd-plist-1.21.jar": "019c61abd93ecf614e3d214e9fed942dcf47d9d2d9548fe59d70f0840ba32fb6",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/google-api-client-1.25.0.jar": "24e1a69d6c04e6e72e3e16757d46d32daa7dd43cb32c3895f832f25358be1402",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/google-api-services-storage-v1-rev171-1.25.0.jar": "8f31591db5ea6a8b84bae6a56cfdaf2e4586c59d740d34c8a865d83e7f240f08",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/google-http-client-1.25.0.jar": "fb7d80a515da4618e2b402e1fef96999e07621b381a5889ef091482c5a3e961d",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/google-http-client-jackson2-1.25.0.jar": "f9e7e0d318860a2092d70b56331976280c4e9348a065ede3b99c92aa032fd853",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/google-oauth-client-1.25.0.jar": "7e2929133d4231e702b5956a7e5dc8347a352acc1e97082b40c3585b81cd3501",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-antlr-7.4.2.jar": "a5d246d5fbc5937eed0524d9d4ebfd82b79223fa1292b55afcc4e57ef40a5569",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-build-cache-http-7.4.2.jar": "1cf0e976659f2885d719a605f450d831f6529941a8dfcceabc1b416dd7336022",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-build-init-7.4.2.jar": "d72a4e4d053f7e8fb155206936eebf3f44627237415e47b3dc35dc6bdce06827",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-build-profile-7.4.2.jar": "d562a7032be3f6c827c073ae201c7ed1ce38feb0d1c370810e0ee338520cfeee",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-code-quality-7.4.2.jar": "ed1c2165be7768375a56e78ae3d99f65de36a83238fe9192fc82c9b256ad22cf",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-composite-builds-7.4.2.jar": "2cf95f9110de2b1a6122e4f9efa3439a607594e5ad146c3e569993f0ef6c2304",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-configuration-cache-7.4.2.jar": "32ba9eb5722a3745a30e24dffcaeea4e8b866d5317f42fe51adceff3e5c2e873",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-dependency-management-7.4.2.jar": "01d64834813d6cb593cae0409f2de34f9e564ef1b3a855388e337b9d325cbb28",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-diagnostics-7.4.2.jar": "dbdb17b30d65cdb935abf7599738e6eab4faa077f4853545a79291bf1ff690a5",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-ear-7.4.2.jar": "08cb620fe2a0a82de0bb323b0248246bd98e18714d8e400cfd736adc6b4cad14",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-enterprise-7.4.2.jar": "61da8dfddfaf706eb7c609ad6a46a40c850f84e5bd9302e1a264a88654ea0022",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-ide-7.4.2.jar": "77a0a9ec03a28b3d01332c31ca3f451190d89f408ee7712302b4857db154c81e",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-ide-native-7.4.2.jar": "8e46d775e7a4c39a2af4234739a2fd3de4bfc364f7628147d91ac34d0d35ecdb",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-ivy-7.4.2.jar": "b2b0a5966dc85db124c2ff10df7b68c2993313692e6853fbea14e1fd72ee5bd1",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-jacoco-7.4.2.jar": "ebf121e0b8fe7e3121f7ed67f482b66e7021bd4ae93a9b3e94a996d1116467aa",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-java-compiler-plugin-7.4.2.jar": "e5270f52da1a65c0b708acc3f9185f906462a904a936b0c1c3012fd0d68e48e6",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-kotlin-dsl-provider-plugins-7.4.2.jar": "782ac9a13d9b1b9f7336eafbb75ddc4282f6c647f62265b64f52bb1e60bea1c9",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-kotlin-dsl-tooling-builders-7.4.2.jar": "47d346cf9d66a7fa4e59c75fcc4e5ff147a20d6b34aa248ddf76480089868ddf",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-language-groovy-7.4.2.jar": "2324d51138778f9c8000e976ffea60279daba041a4d41d3e1cc1c8f812fe7e1f",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-language-java-7.4.2.jar": "1dff89d6fd9ad3d0e01c81de4fe6393521c527d4c8824ae81cc4cf8576aa8d37",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-language-jvm-7.4.2.jar": "ad8dff4ea5161b9548f3cd3dccd6c06b7dad13f160d1af23d0ea7fe0193aacee",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-language-native-7.4.2.jar": "dd9d953d22411981a50a977b705eca6d300913aea30f0201ff5e94c22e099542",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-maven-7.4.2.jar": "d354927e8878b3fbe4d21adaeacdb8ad4da0e5ffda94ff5269a9d9fadc9fd15e",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-platform-base-7.4.2.jar": "8896bcb6eaa805ed9eb526d6e62e549f5e0238f18bab8894efabc5de9dbc6bfc",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-platform-jvm-7.4.2.jar": "36e3982657480c02aa7c7093dfb2516848608e16182b73678934406f315638cb",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-platform-native-7.4.2.jar": "75fee1ba6490b611ae169f6a4cee377c13473dd26e27764ef3bfb5c108c2b939",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-plugin-development-7.4.2.jar": "b87884dd84435e1a663924d5693e2140a3d821fc45a4e3b04496e3dfb174d865",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-plugin-use-7.4.2.jar": "e33a7480892251c87ddf5c8ec9e80c35319a2406a7af4cbda75121416d951602",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-plugins-7.4.2.jar": "bb071485f070c01138ffc55a91bb3621572ada25ddbd04ed8583469eb549d55b",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-publish-7.4.2.jar": "b2917c216df43399b207a67d194293977c6bd1d7558e6704954642aee1462309",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-reporting-7.4.2.jar": "a28e2c3efad453eaec5a44a1aa3b3a9dc11046adac9cb4dcdc0ccfee3d1401f9",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-resources-gcs-7.4.2.jar": "5d393b602e952a990946e922174191fafc958b5510735035a4d82bb139556ccc",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-resources-http-7.4.2.jar": "d23b21c83bfb0710cd23ad9655052eccf697e0666f26722102b88f60c1f959e8",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-resources-s3-7.4.2.jar": "332c835b5760b134d61d2577607c49de050b74b4ae83cf678ce33644d1af6388",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-resources-sftp-7.4.2.jar": "ceade6bff5fe800b72d42c95b1ff2476070ddcbbf2701730bd0276574910a3d8",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-scala-7.4.2.jar": "ac42c3d46477f7634e76ac8f94d81f8eedd21c93db32021857e4b4a9bad28458",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-security-7.4.2.jar": "96fb7c46b4c57070ee0ef921b24a7c478b50b81a51701060e07d88a99eeffca8",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-signing-7.4.2.jar": "39d05152565f41fe84e54152c8c11afcae3e3f545b0e544660ff04ee14d85fe3",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-test-kit-7.4.2.jar": "851480ba6d97b9916177fb2927ce3c5bef556079e1e4e1178c6746031941dc16",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-testing-base-7.4.2.jar": "d57920244041612466bf63d4c07a5c3e696418bf509699fccbe59aea7fa3e21d",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-testing-junit-platform-7.4.2.jar": "006acadc35b3db0547d3f8324df5d97015f95f5d6868521bc46354405693ed5b",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-testing-jvm-7.4.2.jar": "1b8b2a16206302a58ff184e90a5f28650c25b8a762a30c74557a3877c7553f30",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-testing-native-7.4.2.jar": "dedf8e61dfad51668ec88b0c841affe1e807ff20021ee97c5963beac53ce8d49",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-tooling-api-builders-7.4.2.jar": "0f5180332fbfc721ccf33e81c0cf1144dafce3fda8002adbdbff90c98b81171a",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-tooling-native-7.4.2.jar": "ab0b5ee7e13fdfe3c44a4d5cf9b9fb49f8edce3d888f5a03bb909e0614bfae6e",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-version-control-7.4.2.jar": "0de3a87b497ebdfee91d0d8b4088521f83a832bed2f5c8747f38129f8716a375",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gradle-workers-7.4.2.jar": "141b7a02ba06abed9890f43185a33d7ac1c925f47a72e2b80cdff902c8a8bb03",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/gson-2.8.6.jar": "c8fb4839054d280b3033f800d1f5a97de2f028eb8ba2eb458ad287e536f3f25f",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/httpclient-4.5.13.jar": "6fe9026a566c6a5001608cf3fc32196641f6c1e5e1986d1037ccdbd5f31ef743",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/httpcore-4.4.14.jar": "f956209e450cb1d0c51776dfbd23e53e9dd8db9a1298ed62b70bf0944ba63b28",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/ion-java-1.0.2.jar": "0d127b205a1fce0abc2a3757a041748651bc66c15cf4c059bac5833b27d471a5",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/ivy-2.3.0.jar": "ff3543305c62f23d1a4cafc66fab9c9f55ea169ccf2b6c040d3fa23254b86b18",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jackson-annotations-2.12.1.jar": "203cefdfa6c81e6aa84e11f292f29ca97344a3c3bc0293abea065cd837592873",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jackson-core-2.12.1.jar": "cc899cb6eae0c80b87d590eea86528797369cc4feb7b79463207d6bb18f0c257",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jackson-databind-2.12.1.jar": "f2ca3c28ebded59c98447d51afe945323df961540af66a063c015597af936aa0",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jakarta.activation-2.0.0.jar": "db9c7e30f4d61ec33fd47942c9b7cf6e094025e7d5d8e20db73fce5a912a4366",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jakarta.xml.bind-api-3.0.0.jar": "0037ab1eba33a969b36119c61a9f28313460a85eea9b800470a70cb2227d35f4",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jatl-0.2.3.jar": "93ee3810f7275244f5f6311d50c587d8fe43ab5047dfa3291aa96fe50587501c",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jaxb-core-3.0.0.jar": "b1e4b8137505333ed59b08e748c46c3894795fa1d524d042354609fd9ca6754f",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jaxb-impl-3.0.0.jar": "6d5a3cddb6948b6adc6707b121d627c3b50bc23334e072e8ddd8e82b894f384e",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jcifs-1.3.17.jar": "12603c9dfe7a3d16b2d7f1df8bf5b0168728b15be441382cb1a2b209fde0c553",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jcommander-1.78.jar": "7891debb84b5f83e9bd57593ebece3399abbe0fd938cf306b3534c57913b9615",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jmespath-java-1.11.948.jar": "b540a2831d7092e05246c55feb0fd7bc26211d7b8add16ff080d0067fb01522b",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/joda-time-2.10.4.jar": "ac6fda8989775776f428df8b5a4517cdb06d923465abf9bda0746ec07dfcc657",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jsch-0.1.55.jar": "d492b15a6d2ea3f1cc39c422c953c40c12289073dbe8360d98c0f6f9ec74fc44",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/junit-platform-commons-1.7.2.jar": "738d0df021a0611fff5d277634e890cc91858fa72227cf0bcf36232a7caf014c",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/junit-platform-engine-1.7.2.jar": "abebbfa420fa8ffdc51083c06807e8692dd9bf8c52455dcdb72474ab90425573",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/junit-platform-launcher-1.7.2.jar": "a5923c861c27ff3ee79b11d6396896e7169a76967801b18b49488f9b16480b4e",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/jzlib-1.1.3.jar": "89b1360f407381bf61fde411019d8cbd009ebb10cff715f3669017a031027560",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/maven-builder-support-3.6.3.jar": "3285308ea243a9967785417af5e21ae0c094099b20dfb0b7e1c3d211a87a5e59",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/maven-model-3.6.3.jar": "17cef1f58e146ef0d7d9e96b3b92d98a1d6fd7d2b3288ba538e8ff1e0d9160cf",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/maven-repository-metadata-3.6.3.jar": "2e7f850b20664a151e6ca73dd3af34e639901435c2fe717717e3cbc7ddead3d4",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/maven-settings-3.6.3.jar": "d3904bcac30f11fb49e44f5cecaaebb2e9a7a5e4a9a55f20484fbb9fcc1bb66c",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/maven-settings-builder-3.6.3.jar": "ba611bdc73b691a73b704443bcd7606f625f06cb79588968e101271acbfa0b15",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/nekohtml-1.9.22.jar": "452978e8b6667c7b8357fd3f0a2f2f405e4560a7148143a69181735da5d19045",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/opentest4j-1.2.0.jar": "58812de60898d976fb81ef3b62da05c6604c18fd4a249f5044282479fc286af2",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/org.eclipse.jgit-5.7.0.202003110725-r.jar": "ee13076c3f832048f1a0ca272b221d2b69f10919e3bfd5d1b1e5ff7cf661e417",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/plexus-cipher-1.7.jar": "114859861ff10f987b880d6f34e3215274af3cc92b3a73831c84d596e37c6511",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/plexus-interpolation-1.26.jar": "b3b5412ce17889103ea564bcdfcf9fb3dfa540344ffeac6b538a73c9d7182662",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/plexus-sec-dispatcher-1.4.jar": "da73e32b58132e64daf12269fd9d011c0b303f234840f179908725a632b6b57c",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/plexus-utils-3.3.0.jar": "76d174792540e2775af94d03d10fb2d3c776e2cd0ac0ebf427d3e570072bb9ce",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/snakeyaml-1.28.jar": "35446a1421435d45e4c6ac0de3b5378527d5cc2446c07183e24447730ce1fffa",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/testng-6.3.1.jar": "57ed8e83e357c3838daad81b789a2753227fee8cfb86aa31a61b765c4093d6ad",
+    ".work/toolchains/android/gradle-7.4.2/lib/plugins/xercesImpl-2.12.0.jar": "b50d3a4ca502faa4d1c838acb8aa9480446953421f7327e338c5dda3da5e76d0",
+    ".work/toolchains/android/gradle-7.4.2/lib/qdox-1.12.1.jar": "21fba22f830e9268f07cf4ab2d99e8181abbdcb0cb91ee0228eb3cb918dcdd1d",
+    ".work/toolchains/android/gradle-7.4.2/lib/slf4j-api-1.7.30.jar": "cdba07964d1bb40a0761485c6b1e8c2f8fd9eb1d19c53928ac0d7f9510105c57",
+    ".work/toolchains/android/gradle-7.4.2/lib/tomlj-1.0.0.jar": "32697c7567b2921c473678a820b13fc64700aa87bb14576eeb48d0ed5847cfd4",
+    ".work/toolchains/android/gradle-7.4.2/lib/trove4j-1.0.20181211.jar": "affb7c85a3c87bdcf69ff1dbb84de11f63dc931293934bc08cd7ab18de083601",
+    ".work/toolchains/android/gradle-7.4.2/lib/xml-apis-1.4.01.jar": "a840968176645684bb01aed376e067ab39614885f9eee44abe35a5f20ebe7fad",
+    ".work/toolchains/android/mode-412/AndroidMode/processing-core.zip": "0cdd89e2511a97728092619e89148b46a52700e5957d81f234db8fd3b1652338",
+    ".work/toolchains/android/sdk/build-tools/30.0.3/source.properties": "615acc6b54a12b078860cd6c0f3d40da05c05b93824ee6ea808c7f5ec2638b52",
+    ".work/toolchains/android/sdk/platforms/android-33/android.jar": "fd628aa21321859a9035c6aae4b084b7d3fdb3f230be5cd5ec76541e32f7c963",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "evidence/conformance/android-snapshot-restoration-root-review.json": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8",
+    "evidence/distribution/android.json": "16c266a39572953c1353d2d0afb67916c5fba4b325c192ef7ffa87f302be0708",
+    "evidence/distribution/cp2-android.json": "8fe60e2a6ef2b288c153e0997ad9ce172600ed34d9141406f4d5f89070d44c38",
+    "evidence/distribution/cp3-android.json": "4ba601a26d314e26cfcad291ad32bc34388404b978aaa98c145badf3b926beef",
+    "evidence/distribution/cp4-android.json": "e1ea911acf082bbb01a40b5e358bb511c2a239b804d135a7d7298eff9cc5b3ad",
+    "evidence/distribution/cp5-android.json": "f16e976db36fb2ccdb70f3b5f4f64ee60e7583b365e7695e3e8e9af1d30154ad",
+    "evidence/distribution/cp6-android.json": "56cb82f476aab0ec720ff3ddecd36cf939a3237015ce716cf6f5b4140c32accc",
+    "packages/java-android/distribution/templates/adapter-AndroidManifest.xml": "f4447fb4d9a6be45859b79d59482ecd09a933bc6cd294a08d5739373580794ab",
+    "packages/java-android/distribution/templates/adapter-build.gradle": "a3eabb4d2be27261559ab8f106baacf9053de96556e5435eb9e6c88f1949f65d",
+    "packages/java-android/distribution/templates/build.gradle": "3b35599bef70fadbc0f0c7d81be8de7b863661d11bfd1104a2f2d4812a64f993",
+    "packages/java-android/distribution/templates/gradle.properties": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e",
+    "packages/java-android/distribution/templates/sample-app-build.gradle": "5cec415c74374618d977cef597d8e795cc53dcce20b104d388f725c97f9137ea",
+    "packages/java-android/distribution/templates/settings.gradle": "590977829f99d67a1886967de12c43cfacbb41ca1855b4cfc2e887e6be1ee9b2",
+    "packages/java-android/examples/BranchMarks/AndroidManifest.xml": "1a8eed9fafa67ae8c9a241b002e74f01381c9690a26783b23329c7c4ca2ca2d1",
+    "packages/java-android/examples/BranchMarks/BranchMarksActivity.java": "dc1a7fe814bc8d3fe2ef26c22a5b844d14bdc7bb09318de6dff123079de6ad49",
+    "packages/java-android/examples/BranchMarks/BranchMarksRenderer.java": "604719ba3ca4e878e242c18fee870d7198dba516120b5403a81b02c06124d13c",
+    "packages/java-android/examples/BranchMarks/README.md": "8bc55fcb87644fb5c24c38f73718e2aa5511309e188b7fa6f65ccae51d132b54",
+    "packages/java-android/examples/FieldMarks/AndroidManifest.xml": "7ae57f4e3c1e8cb4089f609e16cf5e440c9f6074546dde4e722c6355c1bddfee",
+    "packages/java-android/examples/FieldMarks/FieldMarksActivity.java": "ec1968190c38cd0fce5cf084db78d5348e16d6ed2ca80c9c363486a68f70fe57",
+    "packages/java-android/examples/FieldMarks/FieldMarksRenderer.java": "416da450bc05ea1c006d6fac6ab0811997bcc230cf856207ceb3f4da44c68c93",
+    "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+    "packages/java-android/examples/FieldMarks/README.md": "f1cf61a50c72d926edae74e53abe985aff0c35a58685ced8b6fc3c083267e8ed",
+    "packages/java-android/examples/GrainMarks/AndroidManifest.xml": "60989fc959f64f589b30beff0748deb97f675e417c3d2999ba939a31c7fae478",
+    "packages/java-android/examples/GrainMarks/GrainMarksActivity.java": "53e851cb2ec144e378c2ef45706cf854362786bbd1cf710c14ddb1c73f2921c1",
+    "packages/java-android/examples/GrainMarks/GrainMarksRenderer.java": "868e6b2d488de4a862c192c3a611aa1a4122278a35068aab65f039e1bd9a30ab",
+    "packages/java-android/examples/GrainMarks/README.md": "a23e3ae6afb7dd2e502e907766ef043f1c6891abbaeaef7b049e81b6c74920a4",
+    "packages/java-android/examples/PathMarks/AndroidManifest.xml": "17609fe3c2401f9c821ad63875084fc8e33ec1cdbb8cd9350bc72c63345b7be1",
+    "packages/java-android/examples/PathMarks/PathMarksActivity.java": "e60e5c368d6a5f00214b8cfa71793c9135b23e4dfeeff2c905dc1f9cb9abd0a2",
+    "packages/java-android/examples/PathMarks/PathMarksRenderer.java": "1768092f1fe19332fdec1a4d1eda773b5a1c2453dd61df9b217ff06dc75a3d7f",
+    "packages/java-android/examples/PathMarks/README.md": "b8a04f32d9cd356301ff87a4e0c4d95254860fbe14bdb14116b99edef9f8c716",
+    "packages/java-android/examples/PlacementMarks/AndroidManifest.xml": "5b508021536f85b637fae1ee7c64788ebf009434dd735f9f49a83fa5ce655c01",
+    "packages/java-android/examples/PlacementMarks/PlacementMarksActivity.java": "da30b0f05a5a2574602f32feb14f1f3845188d72ddc94155c249d88010aa36dc",
+    "packages/java-android/examples/PlacementMarks/PlacementMarksRenderer.java": "c4b6d9780da7c7dae0a6b5d1d9e4d4a69b44d8e641d36ecc85d2914a84905f2a",
+    "packages/java-android/examples/PlacementMarks/README.md": "dbbe20e5f2a2ebd510e54df874f147f950a3de5dd8fe0267b4d4a07352f48425",
+    "packages/java-android/examples/RegionMarks/AndroidManifest.xml": "6a0ada7d0c8eaf73c9186a13a9c8e2de21be629894fc9770e90403ada9ab51bd",
+    "packages/java-android/examples/RegionMarks/README.md": "e572fd5f1394df9432c586268d6e8b308ea66636a9d143e204115eb52924c1f3",
+    "packages/java-android/examples/RegionMarks/RegionMarksActivity.java": "303b34e01eb8742cec5cc5a1c08277def0581a5d7e7a94aef11cf6c089f8d8d7",
+    "packages/java-android/examples/RegionMarks/RegionMarksRenderer.java": "dcf268dab5d097b4f53f2037ba7805239c46f24da2b86910bc2862476dff72d4",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFrame.java": "835daf36db3736adad6834209c39fe2b6530362dc0f57febc449143e6c09b570",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidFrameHost.java": "64a3ec481e69dc0bf9597ea03d4ed0864dc7002a8f05f1a0b852809503f9e2c7",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSurface.java": "bb2efe0fcce61461e847f9415b6cb7dae80a4f7ccb2e220b1e0009083c8c3604",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "packages/java/examples/FieldMarks/MarkField.java": "398dcf002dc35076f7af97e7a44f21a48a2ce6e10facf2d370dfac3b9e453ea7",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
+    "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+    "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+    "tools/build_android_artifacts.py": "cba67bf5124d49786883b21fa206285d1f43579722bbf08a38c561add0c7fe1e",
+    "tools/build_android_restoration_starters.py": "1f0198dc01606a6d444db04c16157433a49c2d6a453bc0937cfad361a7de72a0"
+  },
+  "review_bindings": {
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "design/android-activity-lifecycle-v2.md": "ba3be256a42798ef293aa26510d1cea380f6d273e42a78193ab8d2d529618a10",
+    "design/android-adapter-boundary.md": "120a37186b52c54d3b7c9d3226633a89289c5475d09be4fe30df52fd280c70b1",
+    "design/android-adapter-integration-decision.md": "dc3a6c7ee32dcd738dda23cb4ae4b33be36bf49dda690a5225c1f169843d4071",
+    "design/android-cp1-decision.md": "611ba1b3bbfaa43096567068d249a8cc393b7a8b504ff82d30c596d94ac6b40e",
+    "design/android-editable-example.md": "0805e50e66e8b55ee524c690dfb1abb13dbe2980c80ca21829126860631880d9",
+    "design/android-example-decision.md": "6f691b72c122ec3ba3580f939d3cfab2466768ce3215690dd0f286d389b945cf",
+    "design/android-failure-decision.md": "06ab94ac62ffa044a75f664529f3c1dd89e919da1f1103cfad6b3551c43c3588",
+    "design/android-lifecycle-v2-decision.md": "7862879a452d6d663e66ffd1b28b3602b16e847385df39b303530378d31cea6a",
+    "design/android-native-review.md": "7099c4105dc7010f1dda9d8e1e4d64793891ae89ff99a804cc6777cfbfcd9140",
+    "design/android-pixel-decision.md": "809ee696b11baa55bc7870ee70130e5da0bb2a4318c7eae613809e63516f2423",
+    "design/android-redraw-integration-finding.md": "55fd392add66df7560601ce31f367c87a22571c6551eb4388f4c3978759f7e3a",
+    "design/capabilities/android-retained-restore-followup.md": "4903c3e844cd5391cc73a8edc65c3d95161c1ff0086f2b29216752f2d6d16d85",
+    "design/capabilities/branch-marks-android-acceptance.md": "49075ab9bd4d561a21e3e6499e7fd5e98bf08792ffe50c7c4bfae350ea290c97",
+    "design/capabilities/grain-marks-android-acceptance.md": "c5a588d5976eb6e78f4624fdf5baa26c3cd3f5e23fa5b5e19509ec59c7843f05",
+    "design/capabilities/grain-marks-android-resume-correction.md": "67a966342003e46add314f6093288f6e3cbe93ebdba8d353746673ab1a91fee9",
+    "design/capabilities/region-marks-android-boundary.md": "24a36dec493251967ee6d673a1de2f0006f3dbd2d27e30ca72a6d724756f23b1",
+    "evidence/conformance/android-adapter-failures.json": "9bd7bf4265ac57abc81ab8e2217c7334b171d7a8eb38bbad4d39e0f8dbd123d7",
+    "evidence/conformance/android-adapter-lifecycle-corrective.json": "c7cbbbf500068d13fc290d5b0f53017431f7d5087f0cdb67fd8431ec23de7315",
+    "evidence/conformance/android-adapter-lifecycle-initial.json": "46706559b5eb82c46ec1738d093fbc36cefd1a36b3b0080b772483aa12d1e4b8",
+    "evidence/conformance/android-adapter-lifecycle-v2.json": "bda1c34734e0ddd33b312f01c264267979299743bc3d103bf7628520bd6102ea",
+    "evidence/conformance/android-adapter-pixels.json": "6b2f9961d9a832ad70363b9198aea0450920cefadf0b132789279bf2b0d8e388",
+    "evidence/conformance/android-branch-marks-resume-diagnostics2.json": "f4d69df64cb63cbc9ba353d8a6a75d225e8233573d4c443f8a7ad4a1f73567a5",
+    "evidence/conformance/android-branch-marks-resume-diagnostics3.json": "7b5b10a1a18b71abcf091aa6ef2e199c8edd1f871da0bff85561dcb5184a7565",
+    "evidence/conformance/android-branch-marks.json": "bc171607b7a4a3fde89d7fa23ffe53446f6e7b6e348c617cf3310291697184ad",
+    "evidence/conformance/android-branch-restore-attempt5.json": "14bd2f991e7ef399c1b81e1584fc05ff2af16d0f9c8cc4f4e14db6c20e20aab6",
+    "evidence/conformance/android-field-restore-attempt7.json": "2f41d3416e4fcce982d8cbfd15317d8728f1dd4a8d908028cd4af8c237ebe22b",
+    "evidence/conformance/android-grain-marks.json": "2662fe6c4547ad9aaa74a121ef6033969555a15ee40bb07b35fac492df8a5da2",
+    "evidence/conformance/android-grain-restore-attempt1.json": "f89bd59c9884fd1b33c2538c43747e5927e74ebec96d89eeaacdc0e753e06231",
+    "evidence/conformance/android-native-review.json": "e1eaac39aee72376f273f014fef1cce4c9b88db8d32ab1cb7ea437521e3a4136",
+    "evidence/conformance/android-path-restore-attempt4.json": "04567893c99dec61e1864f5c48369376b9b6f02c39c738a9f35e81ad4376dad2",
+    "evidence/conformance/android-placement-restore-attempt3.json": "71ba0eddd77410ce2352e582fb786d472bc80e09bd2074361a1d2da12571d842",
+    "evidence/conformance/android-region-marks.json": "052c16a7cd11f4ff32abd974a47c20bab8c07b7e95de574057b9a0f293ffe0b1",
+    "evidence/conformance/android-region-restore-attempt1.json": "286e1990e98deefd770097cd1d7abafb04db72873831f88a4ea368f40df8bf00",
+    "evidence/conformance/branch-android-native-root-review.json": "d02c4c679af706661119b80e54a47084fb745bceee709262738279e9cfd7af1c",
+    "evidence/conformance/quadrant-android-native-root-review.json": "8fc63330584e4efa259653b45323985c9c2ca68271a118056702e43c8910732f",
+    "evidence/conformance/triangle-android-native-root-review.json": "b2c03a3e799b295b0c9f1b48d31c3974a872047da778723c63eafc6e1fb7f8b3",
+    "evidence/reproductions/android-field-marks-ui/result.json": "8457bb8eb5224c0e030ca7290dd5922ec9c213e355598268eb99a011a0056cf7",
+    "evidence/reproductions/cp1-android/result.json": "3318f74bdc09910b57574e95f8f468003c4609f65bdf54541b9c6a11008930ec",
+    "evidence/reproductions/cp2-android/plan.json": "cb688cfa6b9374f45f76625cb109059bb066bb61330de7cf886a44b8c7dce878",
+    "evidence/reproductions/cp2-android/recovery-plan.json": "7181bea2b3fe4eb9295432462f276d9785279c06f3268b715f4c8ca61e2f21a2",
+    "evidence/reproductions/cp2-android/recovery-result.json": "eef42215adc508fe7fd9742622f3b698ba41e68a49399ef84c234d0fcb2648cf",
+    "evidence/reproductions/cp2-android/result.json": "e20cbceacee5d8555f6729ff5a54264221907a162ebb6972242e53da4c562976",
+    "evidence/reproductions/cp2-android/review.json": "53dbfafbb7c59e7bfda8575a2b1ba7b97f6c1199cec9640db15070f3f6b260f4",
+    "evidence/reproductions/placement-marks-android/plan.json": "88c1244c873279bb8e12a709ee96d6d95d7b3c8e451a981da0d659d0f3482539",
+    "evidence/reproductions/placement-marks-android/result.json": "b46910af5b00f170061e123e3dd476dcf67713ecd281ca23003da7c49e2b7180",
+    "evidence/reproductions/placement-marks-android/root-review.json": "1b53e713152fa1e916743bba711662fc3fff61600e470272194eb404054c1090",
+    "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "packages/java-android/examples/BranchMarks/AndroidManifest.xml": "1a8eed9fafa67ae8c9a241b002e74f01381c9690a26783b23329c7c4ca2ca2d1",
+    "packages/java-android/examples/BranchMarks/BranchMarksActivity.java": "dc1a7fe814bc8d3fe2ef26c22a5b844d14bdc7bb09318de6dff123079de6ad49",
+    "packages/java-android/examples/BranchMarks/BranchMarksRenderer.java": "604719ba3ca4e878e242c18fee870d7198dba516120b5403a81b02c06124d13c",
+    "packages/java-android/examples/FieldMarks/FieldMarksActivity.java": "ec1968190c38cd0fce5cf084db78d5348e16d6ed2ca80c9c363486a68f70fe57",
+    "packages/java-android/examples/FieldMarks/FieldMarksRenderer.java": "416da450bc05ea1c006d6fac6ab0811997bcc230cf856207ceb3f4da44c68c93",
+    "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+    "packages/java-android/examples/GrainMarks/GrainMarksActivity.java": "53e851cb2ec144e378c2ef45706cf854362786bbd1cf710c14ddb1c73f2921c1",
+    "packages/java-android/examples/GrainMarks/GrainMarksRenderer.java": "868e6b2d488de4a862c192c3a611aa1a4122278a35068aab65f039e1bd9a30ab",
+    "packages/java-android/examples/PathMarks/AndroidManifest.xml": "17609fe3c2401f9c821ad63875084fc8e33ec1cdbb8cd9350bc72c63345b7be1",
+    "packages/java-android/examples/PathMarks/PathMarksActivity.java": "e60e5c368d6a5f00214b8cfa71793c9135b23e4dfeeff2c905dc1f9cb9abd0a2",
+    "packages/java-android/examples/PathMarks/PathMarksRenderer.java": "1768092f1fe19332fdec1a4d1eda773b5a1c2453dd61df9b217ff06dc75a3d7f",
+    "packages/java-android/examples/PathMarks/README.md": "b8a04f32d9cd356301ff87a4e0c4d95254860fbe14bdb14116b99edef9f8c716",
+    "packages/java-android/examples/PlacementMarks/AndroidManifest.xml": "5b508021536f85b637fae1ee7c64788ebf009434dd735f9f49a83fa5ce655c01",
+    "packages/java-android/examples/PlacementMarks/PlacementMarksActivity.java": "da30b0f05a5a2574602f32feb14f1f3845188d72ddc94155c249d88010aa36dc",
+    "packages/java-android/examples/PlacementMarks/PlacementMarksRenderer.java": "c4b6d9780da7c7dae0a6b5d1d9e4d4a69b44d8e641d36ecc85d2914a84905f2a",
+    "packages/java-android/examples/PlacementMarks/README.md": "dbbe20e5f2a2ebd510e54df874f147f950a3de5dd8fe0267b4d4a07352f48425",
+    "packages/java-android/examples/RegionMarks/RegionMarksActivity.java": "303b34e01eb8742cec5cc5a1c08277def0581a5d7e7a94aef11cf6c089f8d8d7",
+    "packages/java-android/examples/RegionMarks/RegionMarksRenderer.java": "dcf268dab5d097b4f53f2037ba7805239c46f24da2b86910bc2862476dff72d4",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFrame.java": "835daf36db3736adad6834209c39fe2b6530362dc0f57febc449143e6c09b570",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidFrameHost.java": "64a3ec481e69dc0bf9597ea03d4ed0864dc7002a8f05f1a0b852809503f9e2c7",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSurface.java": "bb2efe0fcce61461e847f9415b6cb7dae80a4f7ccb2e220b1e0009083c8c3604",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "packages/java/examples/FieldMarks/MarkField.java": "398dcf002dc35076f7af97e7a44f21a48a2ce6e10facf2d370dfac3b9e453ea7",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
+    "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+    "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+    "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+    "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+    "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+    "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+    "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+    "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+    "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+    "tests/native/android-bootstrap/app/build.gradle": "ccbeb0814b1137d7858219ea9575d6aa110b123cdcf8cd8a9af0d5f63614ee39",
+    "tests/native/android-bootstrap/app/src/main/AndroidManifest.xml": "7b68272a76ba2caeb51a270ccc0c059f2420e1f9ce03e41e4ace05a7a65e9d2c",
+    "tests/native/android-bootstrap/app/src/main/java/org/procedurals/bootstrap/MainActivity.java": "8cb812c28df7278e16ae894f3f9b4bf872f6b3464d71e807e4f694d5332b761d",
+    "tests/native/android-bootstrap/build.gradle": "301b72f0f10c630de8eca0a5a8374b2fe5e0c69724ba49720793da15cf95b083",
+    "tests/native/android-bootstrap/gradle.properties": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e",
+    "tests/native/android-bootstrap/settings.gradle": "acaba98235948bfc23736254a68c0796d822a33f513f0c5b86cb47af43acf398",
+    "tests/native/android-branch-marks/BranchMarksProbeActivity.java": "a717ec206e05b38d25b2a40ce39c4d118391af7fdfed635a39aef6f0f477d225",
+    "tests/native/android-field-marks/FieldMarksProbeActivity.java": "83441364ea3a255b314bc07d60b058ae9340f984481a6b9a2218b0ebc7fe09ec",
+    "tests/native/android-grain-marks/GrainMarksProbeActivity.java": "07a2fb22dc83912dc519b22544394c3abe1ca1d4de7af37bce81f2d0c89203ae",
+    "tests/native/android-path-marks/PathMarksProbeActivity.java": "28351f469090d1bd881ca52ad274c78586ec5eebdaa99bb44f3d4b943e0b790f",
+    "tests/native/android-placement-marks/PlacementMarksProbeActivity.java": "27dff7801728f33cbd8fc624ac42f5d1dfa8b73039d62db37a90ee1edaf9fb90",
+    "tests/native/android-region-marks/RegionMarksProbeActivity.java": "fd13198b4c5b781d5cbc636d6444a781040d45adf2a5307aa5d4d02a533d4816",
+    "tools/android_restoration_review.py": "445eca7aadac966552ea84dee9982ab3f104c65fdae488e0ba23f0e1027ceef7",
+    "tools/build_android_branch_marks.py": "c9f246e20f3caaa6d7c78836028623dc9983aecac7f82abd900a3ea74131cf85",
+    "tools/build_android_grain_marks.py": "d487dd438f2bbad58c9e3c8247842aff44e068e2da39a59d01950bb64f55f55a",
+    "tools/build_android_placement_marks.py": "c173f9eb5fc8c0e28eef75156c2808fac1c2942db25dde37dfafa13b4d829c18",
+    "tools/build_android_region_marks.py": "7978f61b7b54daf52216e586f1dce72ebe97cbbf7863daf6a8d4a3b64bd334b1",
+    "tools/drawing_native_evidence.py": "bff1675a82ae79d1305d5843f511a694f161d3a3d0ec6ac35886ece506d79412",
+    "tools/run_android_branch_marks.py": "1bcc679154f90f65d6fc6101e70bc3e7f2688eb01f235810850dfcd47dd1c02d",
+    "tools/run_android_field_marks_ui.py": "4ccd2ea87053077fcd97877dfcbe36cb3f7a8b4c1d68c4b77f05b39546c34a3b",
+    "tools/run_android_grain_marks.py": "646ed1c5f1a4f60f9a93f68f10c3683333e61815f007073c112878979a76a514",
+    "tools/run_android_path_marks.py": "ccc53cd1d05cc52c0bc002e3fd285b4769d76069d9735f5f62e5155fe4b8e18f",
+    "tools/run_android_placement_marks.py": "f6b80201fb01170b9ef8d5db433a7f9a2f6878a491a1a6414bf608f72db23f21",
+    "tools/run_android_region_marks.py": "cafe8350b17c66d79b463e71e9a6242f2288828e80f5905bd329bc0a94bf1ad6",
+    "tools/run_circle_placement_java.py": "5020d8720c183ed696ea8783b257ae7949b162efca5991aceec6c91882a864ee"
+  },
+  "scope": "six extracted Android starter debug APK compilation checks only; no install, launch, render, or Android support acceptance",
+  "starters": {
+    "BranchMarks": {
+      "compiled_apk_sha256": "42eb7dfe837765a7b73f6d69c8ad479d6a00633f53a2f5411c7bd4404e5b01b3",
+      "extracted_adapter_byte_exact": true,
+      "extracted_core_byte_exact": true,
+      "extracted_notices_byte_exact": true,
+      "source_transforms": [],
+      "sources_byte_exact": {
+        "packages/java-android/examples/BranchMarks/AndroidManifest.xml": "1a8eed9fafa67ae8c9a241b002e74f01381c9690a26783b23329c7c4ca2ca2d1",
+        "packages/java-android/examples/BranchMarks/BranchMarksActivity.java": "dc1a7fe814bc8d3fe2ef26c22a5b844d14bdc7bb09318de6dff123079de6ad49",
+        "packages/java-android/examples/BranchMarks/BranchMarksRenderer.java": "604719ba3ca4e878e242c18fee870d7198dba516120b5403a81b02c06124d13c",
+        "packages/java-android/examples/BranchMarks/README.md": "8bc55fcb87644fb5c24c38f73718e2aa5511309e188b7fa6f65ccae51d132b54",
+        "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+        "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795"
+      },
+      "starter": {
+        "entries": [
+          {
+            "path": "procedurals-branch-marks-android/LICENSE",
+            "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+          },
+          {
+            "path": "procedurals-branch-marks-android/README.md",
+            "sha256": "4befa955bbe74bdd5071a596dc2979b1e6e4024c9d54144878118c8bee972dfc"
+          },
+          {
+            "path": "procedurals-branch-marks-android/THIRD_PARTY_NOTICES.md",
+            "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+          },
+          {
+            "path": "procedurals-branch-marks-android/USAGE.md",
+            "sha256": "8bc55fcb87644fb5c24c38f73718e2aa5511309e188b7fa6f65ccae51d132b54"
+          },
+          {
+            "path": "procedurals-branch-marks-android/app/build.gradle",
+            "sha256": "fc6ebfb761c5595b0a6cf8ecbe91421a2395640b5b23e81533efe550105df835"
+          },
+          {
+            "path": "procedurals-branch-marks-android/app/libs/procedurals-android.jar",
+            "sha256": "31b658242a0c0afa2049d981914b4bfe85b9ef4c85040c2acc66c0fb5d7877be"
+          },
+          {
+            "path": "procedurals-branch-marks-android/app/libs/procedurals-core.jar",
+            "sha256": "477543460ab56b551acb737b5e9729e6b9999450c685ad0aceefb73b9c8b57a6"
+          },
+          {
+            "path": "procedurals-branch-marks-android/app/src/main/AndroidManifest.xml",
+            "sha256": "1a8eed9fafa67ae8c9a241b002e74f01381c9690a26783b23329c7c4ca2ca2d1"
+          },
+          {
+            "path": "procedurals-branch-marks-android/app/src/main/java/org/procedurals/examples/branchmarks/BranchComposition.java",
+            "sha256": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795"
+          },
+          {
+            "path": "procedurals-branch-marks-android/app/src/main/java/org/procedurals/examples/branchmarks/BranchMarksActivity.java",
+            "sha256": "dc1a7fe814bc8d3fe2ef26c22a5b844d14bdc7bb09318de6dff123079de6ad49"
+          },
+          {
+            "path": "procedurals-branch-marks-android/app/src/main/java/org/procedurals/examples/branchmarks/BranchMarksRenderer.java",
+            "sha256": "604719ba3ca4e878e242c18fee870d7198dba516120b5403a81b02c06124d13c"
+          },
+          {
+            "path": "procedurals-branch-marks-android/app/src/main/java/org/procedurals/examples/fieldmarks/GalleryWriter.java",
+            "sha256": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63"
+          },
+          {
+            "path": "procedurals-branch-marks-android/build.gradle",
+            "sha256": "3b35599bef70fadbc0f0c7d81be8de7b863661d11bfd1104a2f2d4812a64f993"
+          },
+          {
+            "path": "procedurals-branch-marks-android/gradle.properties",
+            "sha256": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e"
+          },
+          {
+            "path": "procedurals-branch-marks-android/settings.gradle",
+            "sha256": "9684459c2a9504528f56595f05fdfc58086898f65bf31d5453dc124305328fd0"
+          }
+        ],
+        "path": ".work/dist/android-restoration1/procedurals-branch-marks-android-0.6.1.zip",
+        "sha256": "d9ab36f2e8f4019e4c07310c820bd41444e51812936b3f0fc34d1b11bcb91c56"
+      },
+      "version": "0.6.1"
+    },
+    "FieldMarks": {
+      "compiled_apk_sha256": "1ab8fbd4cc10d4655a7a278fcffb126e5b325122d9a690552c885c8df1a7ed4c",
+      "extracted_adapter_byte_exact": true,
+      "extracted_core_byte_exact": true,
+      "extracted_notices_byte_exact": true,
+      "source_transforms": [
+        {
+          "kind": "Field MarkField package-prefix",
+          "source": "packages/java/examples/FieldMarks/MarkField.java",
+          "source_sha256": "398dcf002dc35076f7af97e7a44f21a48a2ce6e10facf2d370dfac3b9e453ea7",
+          "target": "app/src/main/java/org/procedurals/examples/fieldmarks/MarkField.java",
+          "target_sha256": "0799f50cefae0abdd6bffc522b8704df2fc73690ca4aeb0afd01c1f738b96ee4"
+        }
+      ],
+      "sources_byte_exact": {
+        "packages/java-android/examples/FieldMarks/AndroidManifest.xml": "7ae57f4e3c1e8cb4089f609e16cf5e440c9f6074546dde4e722c6355c1bddfee",
+        "packages/java-android/examples/FieldMarks/FieldMarksActivity.java": "ec1968190c38cd0fce5cf084db78d5348e16d6ed2ca80c9c363486a68f70fe57",
+        "packages/java-android/examples/FieldMarks/FieldMarksRenderer.java": "416da450bc05ea1c006d6fac6ab0811997bcc230cf856207ceb3f4da44c68c93",
+        "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+        "packages/java-android/examples/FieldMarks/README.md": "f1cf61a50c72d926edae74e53abe985aff0c35a58685ced8b6fc3c083267e8ed"
+      },
+      "starter": {
+        "entries": [
+          {
+            "path": "procedurals-field-marks-android/LICENSE",
+            "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+          },
+          {
+            "path": "procedurals-field-marks-android/README.md",
+            "sha256": "250d9fc83bb3488d5989e44e3efff8ab72770541de325c24db604b778d6b8211"
+          },
+          {
+            "path": "procedurals-field-marks-android/THIRD_PARTY_NOTICES.md",
+            "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+          },
+          {
+            "path": "procedurals-field-marks-android/USAGE.md",
+            "sha256": "f1cf61a50c72d926edae74e53abe985aff0c35a58685ced8b6fc3c083267e8ed"
+          },
+          {
+            "path": "procedurals-field-marks-android/app/build.gradle",
+            "sha256": "642163dcf5584a95a8cab317bb4ecee9377db2194c73799591354533e4c6ad5d"
+          },
+          {
+            "path": "procedurals-field-marks-android/app/libs/procedurals-android.jar",
+            "sha256": "31b658242a0c0afa2049d981914b4bfe85b9ef4c85040c2acc66c0fb5d7877be"
+          },
+          {
+            "path": "procedurals-field-marks-android/app/libs/procedurals-core.jar",
+            "sha256": "39a48549b323acaf63d51a129dc2fc41b6ee79c1e806aed90e3ef0a6963131e2"
+          },
+          {
+            "path": "procedurals-field-marks-android/app/src/main/AndroidManifest.xml",
+            "sha256": "7ae57f4e3c1e8cb4089f609e16cf5e440c9f6074546dde4e722c6355c1bddfee"
+          },
+          {
+            "path": "procedurals-field-marks-android/app/src/main/java/org/procedurals/examples/fieldmarks/FieldMarksActivity.java",
+            "sha256": "ec1968190c38cd0fce5cf084db78d5348e16d6ed2ca80c9c363486a68f70fe57"
+          },
+          {
+            "path": "procedurals-field-marks-android/app/src/main/java/org/procedurals/examples/fieldmarks/FieldMarksRenderer.java",
+            "sha256": "416da450bc05ea1c006d6fac6ab0811997bcc230cf856207ceb3f4da44c68c93"
+          },
+          {
+            "path": "procedurals-field-marks-android/app/src/main/java/org/procedurals/examples/fieldmarks/GalleryWriter.java",
+            "sha256": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63"
+          },
+          {
+            "path": "procedurals-field-marks-android/app/src/main/java/org/procedurals/examples/fieldmarks/MarkField.java",
+            "sha256": "0799f50cefae0abdd6bffc522b8704df2fc73690ca4aeb0afd01c1f738b96ee4"
+          },
+          {
+            "path": "procedurals-field-marks-android/build.gradle",
+            "sha256": "3b35599bef70fadbc0f0c7d81be8de7b863661d11bfd1104a2f2d4812a64f993"
+          },
+          {
+            "path": "procedurals-field-marks-android/gradle.properties",
+            "sha256": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e"
+          },
+          {
+            "path": "procedurals-field-marks-android/settings.gradle",
+            "sha256": "cf3f57837d548cb9472f62d325d4e0e139f3c56225df1cffabc2e184cd139599"
+          }
+        ],
+        "path": ".work/dist/android-restoration1/procedurals-field-marks-android-0.1.1.zip",
+        "sha256": "75b8c851a6374f554e87168f972962437311e11d246e7e599382f1bc58aa7869"
+      },
+      "version": "0.1.1"
+    },
+    "GrainMarks": {
+      "compiled_apk_sha256": "dc37a7026631ce796294f655a3bebeea052bad33cbe5a3a96faf4e9e2502ee62",
+      "extracted_adapter_byte_exact": true,
+      "extracted_core_byte_exact": true,
+      "extracted_notices_byte_exact": true,
+      "source_transforms": [],
+      "sources_byte_exact": {
+        "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+        "packages/java-android/examples/GrainMarks/AndroidManifest.xml": "60989fc959f64f589b30beff0748deb97f675e417c3d2999ba939a31c7fae478",
+        "packages/java-android/examples/GrainMarks/GrainMarksActivity.java": "53e851cb2ec144e378c2ef45706cf854362786bbd1cf710c14ddb1c73f2921c1",
+        "packages/java-android/examples/GrainMarks/GrainMarksRenderer.java": "868e6b2d488de4a862c192c3a611aa1a4122278a35068aab65f039e1bd9a30ab",
+        "packages/java-android/examples/GrainMarks/README.md": "a23e3ae6afb7dd2e502e907766ef043f1c6891abbaeaef7b049e81b6c74920a4",
+        "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496"
+      },
+      "starter": {
+        "entries": [
+          {
+            "path": "procedurals-grain-marks-android/LICENSE",
+            "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+          },
+          {
+            "path": "procedurals-grain-marks-android/README.md",
+            "sha256": "7424b1ee4d62d9c003ef45e208a292d10f3738dc0aa30e37535cb172e1dd88dd"
+          },
+          {
+            "path": "procedurals-grain-marks-android/THIRD_PARTY_NOTICES.md",
+            "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+          },
+          {
+            "path": "procedurals-grain-marks-android/USAGE.md",
+            "sha256": "a23e3ae6afb7dd2e502e907766ef043f1c6891abbaeaef7b049e81b6c74920a4"
+          },
+          {
+            "path": "procedurals-grain-marks-android/app/build.gradle",
+            "sha256": "97ff9b65a187074ea9a964d6e4d42e84d37a8fda1bc5956ef225afb63b06800c"
+          },
+          {
+            "path": "procedurals-grain-marks-android/app/libs/procedurals-android.jar",
+            "sha256": "31b658242a0c0afa2049d981914b4bfe85b9ef4c85040c2acc66c0fb5d7877be"
+          },
+          {
+            "path": "procedurals-grain-marks-android/app/libs/procedurals-core.jar",
+            "sha256": "99b1815d10be2708f6e752e7662f90f915026ccd1a1c0f917eec52a8d5bbad9d"
+          },
+          {
+            "path": "procedurals-grain-marks-android/app/src/main/AndroidManifest.xml",
+            "sha256": "60989fc959f64f589b30beff0748deb97f675e417c3d2999ba939a31c7fae478"
+          },
+          {
+            "path": "procedurals-grain-marks-android/app/src/main/java/org/procedurals/examples/fieldmarks/GalleryWriter.java",
+            "sha256": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63"
+          },
+          {
+            "path": "procedurals-grain-marks-android/app/src/main/java/org/procedurals/examples/grainmarks/GrainComposition.java",
+            "sha256": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496"
+          },
+          {
+            "path": "procedurals-grain-marks-android/app/src/main/java/org/procedurals/examples/grainmarks/GrainMarksActivity.java",
+            "sha256": "53e851cb2ec144e378c2ef45706cf854362786bbd1cf710c14ddb1c73f2921c1"
+          },
+          {
+            "path": "procedurals-grain-marks-android/app/src/main/java/org/procedurals/examples/grainmarks/GrainMarksRenderer.java",
+            "sha256": "868e6b2d488de4a862c192c3a611aa1a4122278a35068aab65f039e1bd9a30ab"
+          },
+          {
+            "path": "procedurals-grain-marks-android/build.gradle",
+            "sha256": "3b35599bef70fadbc0f0c7d81be8de7b863661d11bfd1104a2f2d4812a64f993"
+          },
+          {
+            "path": "procedurals-grain-marks-android/gradle.properties",
+            "sha256": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e"
+          },
+          {
+            "path": "procedurals-grain-marks-android/settings.gradle",
+            "sha256": "49f88cd0e8a58d6f660287d5e11593e9b54fdade2c72c7a0b92ca85eb869384b"
+          }
+        ],
+        "path": ".work/dist/android-restoration1/procedurals-grain-marks-android-0.5.1.zip",
+        "sha256": "77dcffbaa49a103cd667c6013ea58bdef189610c456237cc1506281ce16bd2ac"
+      },
+      "version": "0.5.1"
+    },
+    "PathMarks": {
+      "compiled_apk_sha256": "3297ab78ee5dfcbe40aee2098e43510e3adc638a133f7ce79e073742a866acbe",
+      "extracted_adapter_byte_exact": true,
+      "extracted_core_byte_exact": true,
+      "extracted_notices_byte_exact": true,
+      "source_transforms": [],
+      "sources_byte_exact": {
+        "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+        "packages/java-android/examples/PathMarks/AndroidManifest.xml": "17609fe3c2401f9c821ad63875084fc8e33ec1cdbb8cd9350bc72c63345b7be1",
+        "packages/java-android/examples/PathMarks/PathMarksActivity.java": "e60e5c368d6a5f00214b8cfa71793c9135b23e4dfeeff2c905dc1f9cb9abd0a2",
+        "packages/java-android/examples/PathMarks/PathMarksRenderer.java": "1768092f1fe19332fdec1a4d1eda773b5a1c2453dd61df9b217ff06dc75a3d7f",
+        "packages/java-android/examples/PathMarks/README.md": "b8a04f32d9cd356301ff87a4e0c4d95254860fbe14bdb14116b99edef9f8c716",
+        "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256"
+      },
+      "starter": {
+        "entries": [
+          {
+            "path": "procedurals-path-marks-android/LICENSE",
+            "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+          },
+          {
+            "path": "procedurals-path-marks-android/README.md",
+            "sha256": "79846208f4d210fa3bc6ee8995d1799dcf96a9b74f7b0391c328be86b2c545f4"
+          },
+          {
+            "path": "procedurals-path-marks-android/THIRD_PARTY_NOTICES.md",
+            "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+          },
+          {
+            "path": "procedurals-path-marks-android/USAGE.md",
+            "sha256": "b8a04f32d9cd356301ff87a4e0c4d95254860fbe14bdb14116b99edef9f8c716"
+          },
+          {
+            "path": "procedurals-path-marks-android/app/build.gradle",
+            "sha256": "e9aa45a0706aad622711b2ad51776a078e77bceda1d43c302e6fb0ec682f0728"
+          },
+          {
+            "path": "procedurals-path-marks-android/app/libs/procedurals-android.jar",
+            "sha256": "31b658242a0c0afa2049d981914b4bfe85b9ef4c85040c2acc66c0fb5d7877be"
+          },
+          {
+            "path": "procedurals-path-marks-android/app/libs/procedurals-core.jar",
+            "sha256": "cbbbfd08dbe442595f7c18022e1a03d95058fc177c3107d647d668dc22d4291c"
+          },
+          {
+            "path": "procedurals-path-marks-android/app/src/main/AndroidManifest.xml",
+            "sha256": "17609fe3c2401f9c821ad63875084fc8e33ec1cdbb8cd9350bc72c63345b7be1"
+          },
+          {
+            "path": "procedurals-path-marks-android/app/src/main/java/org/procedurals/examples/fieldmarks/GalleryWriter.java",
+            "sha256": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63"
+          },
+          {
+            "path": "procedurals-path-marks-android/app/src/main/java/org/procedurals/examples/pathmarks/PathMarkComposition.java",
+            "sha256": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256"
+          },
+          {
+            "path": "procedurals-path-marks-android/app/src/main/java/org/procedurals/examples/pathmarks/PathMarksActivity.java",
+            "sha256": "e60e5c368d6a5f00214b8cfa71793c9135b23e4dfeeff2c905dc1f9cb9abd0a2"
+          },
+          {
+            "path": "procedurals-path-marks-android/app/src/main/java/org/procedurals/examples/pathmarks/PathMarksRenderer.java",
+            "sha256": "1768092f1fe19332fdec1a4d1eda773b5a1c2453dd61df9b217ff06dc75a3d7f"
+          },
+          {
+            "path": "procedurals-path-marks-android/build.gradle",
+            "sha256": "3b35599bef70fadbc0f0c7d81be8de7b863661d11bfd1104a2f2d4812a64f993"
+          },
+          {
+            "path": "procedurals-path-marks-android/gradle.properties",
+            "sha256": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e"
+          },
+          {
+            "path": "procedurals-path-marks-android/settings.gradle",
+            "sha256": "2e3abcf11e46832bc6bf03a2ac062c6f4d6f74ffe740b1ca6b3ab8edbcef8278"
+          }
+        ],
+        "path": ".work/dist/android-restoration1/procedurals-path-marks-android-0.2.1.zip",
+        "sha256": "74167b0b9f35a2d8228f4b1c3f6cff338cf4800f0fd2419f7bd6a9be62283947"
+      },
+      "version": "0.2.1"
+    },
+    "PlacementMarks": {
+      "compiled_apk_sha256": "caf298b25329211b1807261e19e52197b7609be826c69bf82f06aa9ee510864a",
+      "extracted_adapter_byte_exact": true,
+      "extracted_core_byte_exact": true,
+      "extracted_notices_byte_exact": true,
+      "source_transforms": [],
+      "sources_byte_exact": {
+        "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+        "packages/java-android/examples/PlacementMarks/AndroidManifest.xml": "5b508021536f85b637fae1ee7c64788ebf009434dd735f9f49a83fa5ce655c01",
+        "packages/java-android/examples/PlacementMarks/PlacementMarksActivity.java": "da30b0f05a5a2574602f32feb14f1f3845188d72ddc94155c249d88010aa36dc",
+        "packages/java-android/examples/PlacementMarks/PlacementMarksRenderer.java": "c4b6d9780da7c7dae0a6b5d1d9e4d4a69b44d8e641d36ecc85d2914a84905f2a",
+        "packages/java-android/examples/PlacementMarks/README.md": "dbbe20e5f2a2ebd510e54df874f147f950a3de5dd8fe0267b4d4a07352f48425",
+        "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615"
+      },
+      "starter": {
+        "entries": [
+          {
+            "path": "procedurals-placement-marks-android/LICENSE",
+            "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+          },
+          {
+            "path": "procedurals-placement-marks-android/README.md",
+            "sha256": "0be9bc542b2434b241d3d5e77716bfffd9762e3001e6235286126de759124543"
+          },
+          {
+            "path": "procedurals-placement-marks-android/THIRD_PARTY_NOTICES.md",
+            "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+          },
+          {
+            "path": "procedurals-placement-marks-android/USAGE.md",
+            "sha256": "dbbe20e5f2a2ebd510e54df874f147f950a3de5dd8fe0267b4d4a07352f48425"
+          },
+          {
+            "path": "procedurals-placement-marks-android/app/build.gradle",
+            "sha256": "62e780010724bdc8c768546dba74a2e40f15ffa190e49a1c95d9d393286c0a13"
+          },
+          {
+            "path": "procedurals-placement-marks-android/app/libs/procedurals-android.jar",
+            "sha256": "31b658242a0c0afa2049d981914b4bfe85b9ef4c85040c2acc66c0fb5d7877be"
+          },
+          {
+            "path": "procedurals-placement-marks-android/app/libs/procedurals-core.jar",
+            "sha256": "73b5d6914c2222b3bce1100e5bee906815f38fb1d14ba9d8397db5a069c36004"
+          },
+          {
+            "path": "procedurals-placement-marks-android/app/src/main/AndroidManifest.xml",
+            "sha256": "5b508021536f85b637fae1ee7c64788ebf009434dd735f9f49a83fa5ce655c01"
+          },
+          {
+            "path": "procedurals-placement-marks-android/app/src/main/java/org/procedurals/examples/fieldmarks/GalleryWriter.java",
+            "sha256": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63"
+          },
+          {
+            "path": "procedurals-placement-marks-android/app/src/main/java/org/procedurals/examples/placementmarks/PlacementComposition.java",
+            "sha256": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615"
+          },
+          {
+            "path": "procedurals-placement-marks-android/app/src/main/java/org/procedurals/examples/placementmarks/PlacementMarksActivity.java",
+            "sha256": "da30b0f05a5a2574602f32feb14f1f3845188d72ddc94155c249d88010aa36dc"
+          },
+          {
+            "path": "procedurals-placement-marks-android/app/src/main/java/org/procedurals/examples/placementmarks/PlacementMarksRenderer.java",
+            "sha256": "c4b6d9780da7c7dae0a6b5d1d9e4d4a69b44d8e641d36ecc85d2914a84905f2a"
+          },
+          {
+            "path": "procedurals-placement-marks-android/build.gradle",
+            "sha256": "3b35599bef70fadbc0f0c7d81be8de7b863661d11bfd1104a2f2d4812a64f993"
+          },
+          {
+            "path": "procedurals-placement-marks-android/gradle.properties",
+            "sha256": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e"
+          },
+          {
+            "path": "procedurals-placement-marks-android/settings.gradle",
+            "sha256": "8a66defba332b00d11d7aabe7943609da19f773ee682b6479c92540e8ffea88e"
+          }
+        ],
+        "path": ".work/dist/android-restoration1/procedurals-placement-marks-android-0.3.1.zip",
+        "sha256": "5885d5dae9da294d25a5fd3a9f7f2019362f35ca25acc7e82a96464588a2ad95"
+      },
+      "version": "0.3.1"
+    },
+    "RegionMarks": {
+      "compiled_apk_sha256": "15ed37cdc0a79981a4c24856bc300f2e9975145447083c0feee543f05dd42e1b",
+      "extracted_adapter_byte_exact": true,
+      "extracted_core_byte_exact": true,
+      "extracted_notices_byte_exact": true,
+      "source_transforms": [],
+      "sources_byte_exact": {
+        "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+        "packages/java-android/examples/RegionMarks/AndroidManifest.xml": "6a0ada7d0c8eaf73c9186a13a9c8e2de21be629894fc9770e90403ada9ab51bd",
+        "packages/java-android/examples/RegionMarks/README.md": "e572fd5f1394df9432c586268d6e8b308ea66636a9d143e204115eb52924c1f3",
+        "packages/java-android/examples/RegionMarks/RegionMarksActivity.java": "303b34e01eb8742cec5cc5a1c08277def0581a5d7e7a94aef11cf6c089f8d8d7",
+        "packages/java-android/examples/RegionMarks/RegionMarksRenderer.java": "dcf268dab5d097b4f53f2037ba7805239c46f24da2b86910bc2862476dff72d4",
+        "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc"
+      },
+      "starter": {
+        "entries": [
+          {
+            "path": "procedurals-region-marks-android/LICENSE",
+            "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+          },
+          {
+            "path": "procedurals-region-marks-android/README.md",
+            "sha256": "60a0cdf2e967e2712dd6d5135a633d4e7bcf65c131314dbe4aa08def1a6bd63f"
+          },
+          {
+            "path": "procedurals-region-marks-android/THIRD_PARTY_NOTICES.md",
+            "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+          },
+          {
+            "path": "procedurals-region-marks-android/USAGE.md",
+            "sha256": "e572fd5f1394df9432c586268d6e8b308ea66636a9d143e204115eb52924c1f3"
+          },
+          {
+            "path": "procedurals-region-marks-android/app/build.gradle",
+            "sha256": "ced43e956861aaa1b6341741b93da58198370f39919c4a318fa6dfdde50052b4"
+          },
+          {
+            "path": "procedurals-region-marks-android/app/libs/procedurals-android.jar",
+            "sha256": "31b658242a0c0afa2049d981914b4bfe85b9ef4c85040c2acc66c0fb5d7877be"
+          },
+          {
+            "path": "procedurals-region-marks-android/app/libs/procedurals-core.jar",
+            "sha256": "613cf476945213ea55846bb400eefa1d21a24ef52a465674c654a34157b207f7"
+          },
+          {
+            "path": "procedurals-region-marks-android/app/src/main/AndroidManifest.xml",
+            "sha256": "6a0ada7d0c8eaf73c9186a13a9c8e2de21be629894fc9770e90403ada9ab51bd"
+          },
+          {
+            "path": "procedurals-region-marks-android/app/src/main/java/org/procedurals/examples/fieldmarks/GalleryWriter.java",
+            "sha256": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63"
+          },
+          {
+            "path": "procedurals-region-marks-android/app/src/main/java/org/procedurals/examples/regionmarks/RegionComposition.java",
+            "sha256": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc"
+          },
+          {
+            "path": "procedurals-region-marks-android/app/src/main/java/org/procedurals/examples/regionmarks/RegionMarksActivity.java",
+            "sha256": "303b34e01eb8742cec5cc5a1c08277def0581a5d7e7a94aef11cf6c089f8d8d7"
+          },
+          {
+            "path": "procedurals-region-marks-android/app/src/main/java/org/procedurals/examples/regionmarks/RegionMarksRenderer.java",
+            "sha256": "dcf268dab5d097b4f53f2037ba7805239c46f24da2b86910bc2862476dff72d4"
+          },
+          {
+            "path": "procedurals-region-marks-android/build.gradle",
+            "sha256": "3b35599bef70fadbc0f0c7d81be8de7b863661d11bfd1104a2f2d4812a64f993"
+          },
+          {
+            "path": "procedurals-region-marks-android/gradle.properties",
+            "sha256": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e"
+          },
+          {
+            "path": "procedurals-region-marks-android/settings.gradle",
+            "sha256": "002e7b296ff7fd2fa10817df79dc986195a2e498fbf723ccfe21f52ed025baa2"
+          }
+        ],
+        "path": ".work/dist/android-restoration1/procedurals-region-marks-android-0.4.1.zip",
+        "sha256": "ef443bfcedc37757a6108748e61dafa7b748635310fdc236d0100f0f9adde5fc"
+      },
+      "version": "0.4.1"
+    }
+  },
+  "status": "passed",
+  "zip_exclusions": {
+    "build_output": true,
+    "debug_key": true,
+    "gradle_cache": true,
+    "local_properties": true,
+    "processing_runtime": true,
+    "sdk": true
+  }
+}

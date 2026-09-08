@@ -389,7 +389,7 @@
         "implementation_sha256": {
           "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
           "packages/java-android/examples/PathMarks/AndroidManifest.xml": "17609fe3c2401f9c821ad63875084fc8e33ec1cdbb8cd9350bc72c63345b7be1",
-          "packages/java-android/examples/PathMarks/PathMarksActivity.java": "2e4af58d7cd70b2949748f1c078d44808788e540bc4eed7edd7146c2ed34c1d9",
+          "packages/java-android/examples/PathMarks/PathMarksActivity.java": "e60e5c368d6a5f00214b8cfa71793c9135b23e4dfeeff2c905dc1f9cb9abd0a2",
           "packages/java-android/examples/PathMarks/PathMarksRenderer.java": "1768092f1fe19332fdec1a4d1eda773b5a1c2453dd61df9b217ff06dc75a3d7f",
           "packages/java-android/examples/PathMarks/README.md": "b8a04f32d9cd356301ff87a4e0c4d95254860fbe14bdb14116b99edef9f8c716",
           "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
@@ -402,11 +402,14 @@
           "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
           "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
           "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
-          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52"
+          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+          "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77"
         },
         "evidence_sha256": {
           "evidence/conformance/gradient-path.json": "cfb57280c821a72c23272e8b057bbf33ce11d3f66a1053cadef86f154433e14d",
-          "fixtures/operations/gradient-path.json": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b"
+          "fixtures/operations/gradient-path.json": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+          "evidence/conformance/android-field-restore-attempt7.json": "2f41d3416e4fcce982d8cbfd15317d8728f1dd4a8d908028cd4af8c237ebe22b",
+          "evidence/conformance/android-path-restore-attempt4.json": "04567893c99dec61e1864f5c48369376b9b6f02c39c738a9f35e81ad4376dad2"
         },
         "evidence_predicates": [
           {
@@ -428,11 +431,41 @@
             "path": "evidence/conformance/gradient-path.json",
             "pointer": "/results/java/passed",
             "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-field-restore-attempt7.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/android-field-restore-attempt7.json",
+            "pointer": "/display_restore/equal",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-field-restore-attempt7.json",
+            "pointer": "/native/missing_surface_callback_checked",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-path-restore-attempt4.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/android-path-restore-attempt4.json",
+            "pointer": "/display_restore/equal",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-path-restore-attempt4.json",
+            "pointer": "/native/missing_surface_callback_checked",
+            "equals": true
           }
         ],
         "acceptance_review": {
-          "path": "evidence/reproductions/cp2-android/review.json",
-          "sha256": "53dbfafbb7c59e7bfda8575a2b1ba7b97f6c1199cec9640db15070f3f6b260f4"
+          "path": "evidence/conformance/android-snapshot-restoration-root-review.json",
+          "sha256": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8"
         },
         "runtime_profile": {
           "name": "Host OpenJDK 17.0.20.1+1, shared Java implementation",
@@ -444,7 +477,7 @@
         "implementation_sha256": {
           "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
           "packages/java-android/examples/PathMarks/AndroidManifest.xml": "17609fe3c2401f9c821ad63875084fc8e33ec1cdbb8cd9350bc72c63345b7be1",
-          "packages/java-android/examples/PathMarks/PathMarksActivity.java": "2e4af58d7cd70b2949748f1c078d44808788e540bc4eed7edd7146c2ed34c1d9",
+          "packages/java-android/examples/PathMarks/PathMarksActivity.java": "e60e5c368d6a5f00214b8cfa71793c9135b23e4dfeeff2c905dc1f9cb9abd0a2",
           "packages/java-android/examples/PathMarks/PathMarksRenderer.java": "1768092f1fe19332fdec1a4d1eda773b5a1c2453dd61df9b217ff06dc75a3d7f",
           "packages/java-android/examples/PathMarks/README.md": "b8a04f32d9cd356301ff87a4e0c4d95254860fbe14bdb14116b99edef9f8c716",
           "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
@@ -457,12 +490,15 @@
           "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
           "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
           "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
-          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52"
+          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+          "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77"
         },
         "evidence_sha256": {
           "evidence/reproductions/cp2-android/recovery-result.json": "eef42215adc508fe7fd9742622f3b698ba41e68a49399ef84c234d0fcb2648cf",
           "evidence/reproductions/cp2-android/review.json": "53dbfafbb7c59e7bfda8575a2b1ba7b97f6c1199cec9640db15070f3f6b260f4",
-          "evidence/reproductions/cp2-android/result.json": "e20cbceacee5d8555f6729ff5a54264221907a162ebb6972242e53da4c562976"
+          "evidence/reproductions/cp2-android/result.json": "e20cbceacee5d8555f6729ff5a54264221907a162ebb6972242e53da4c562976",
+          "evidence/conformance/android-field-restore-attempt7.json": "2f41d3416e4fcce982d8cbfd15317d8728f1dd4a8d908028cd4af8c237ebe22b",
+          "evidence/conformance/android-path-restore-attempt4.json": "04567893c99dec61e1864f5c48369376b9b6f02c39c738a9f35e81ad4376dad2"
         },
         "evidence_predicates": [
           {
@@ -484,11 +520,41 @@
             "path": "evidence/reproductions/cp2-android/recovery-result.json",
             "pointer": "/native/composition_count",
             "equals": 7
+          },
+          {
+            "path": "evidence/conformance/android-field-restore-attempt7.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/android-field-restore-attempt7.json",
+            "pointer": "/display_restore/equal",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-field-restore-attempt7.json",
+            "pointer": "/native/missing_surface_callback_checked",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-path-restore-attempt4.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/android-path-restore-attempt4.json",
+            "pointer": "/display_restore/equal",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-path-restore-attempt4.json",
+            "pointer": "/native/missing_surface_callback_checked",
+            "equals": true
           }
         ],
         "acceptance_review": {
-          "path": "evidence/reproductions/cp2-android/review.json",
-          "sha256": "53dbfafbb7c59e7bfda8575a2b1ba7b97f6c1199cec9640db15070f3f6b260f4"
+          "path": "evidence/conformance/android-snapshot-restoration-root-review.json",
+          "sha256": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8"
         },
         "runtime_profile": {
           "name": "Android API33 emulator; AndroidSurface/PGraphicsAndroid2D; shared Java core",
@@ -500,7 +566,7 @@
         "implementation_sha256": {
           "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
           "packages/java-android/examples/PathMarks/AndroidManifest.xml": "17609fe3c2401f9c821ad63875084fc8e33ec1cdbb8cd9350bc72c63345b7be1",
-          "packages/java-android/examples/PathMarks/PathMarksActivity.java": "2e4af58d7cd70b2949748f1c078d44808788e540bc4eed7edd7146c2ed34c1d9",
+          "packages/java-android/examples/PathMarks/PathMarksActivity.java": "e60e5c368d6a5f00214b8cfa71793c9135b23e4dfeeff2c905dc1f9cb9abd0a2",
           "packages/java-android/examples/PathMarks/PathMarksRenderer.java": "1768092f1fe19332fdec1a4d1eda773b5a1c2453dd61df9b217ff06dc75a3d7f",
           "packages/java-android/examples/PathMarks/README.md": "b8a04f32d9cd356301ff87a4e0c4d95254860fbe14bdb14116b99edef9f8c716",
           "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
@@ -513,21 +579,54 @@
           "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
           "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
           "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
-          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52"
+          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+          "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77"
         },
         "evidence_sha256": {
-          "evidence/reproductions/cp2-android/review.json": "53dbfafbb7c59e7bfda8575a2b1ba7b97f6c1199cec9640db15070f3f6b260f4"
+          "evidence/reproductions/cp2-android/review.json": "53dbfafbb7c59e7bfda8575a2b1ba7b97f6c1199cec9640db15070f3f6b260f4",
+          "evidence/conformance/android-field-restore-attempt7.json": "2f41d3416e4fcce982d8cbfd15317d8728f1dd4a8d908028cd4af8c237ebe22b",
+          "evidence/conformance/android-path-restore-attempt4.json": "04567893c99dec61e1864f5c48369376b9b6f02c39c738a9f35e81ad4376dad2"
         },
         "evidence_predicates": [
           {
             "path": "evidence/reproductions/cp2-android/review.json",
             "pointer": "/status",
             "equals": "accepted"
+          },
+          {
+            "path": "evidence/conformance/android-field-restore-attempt7.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/android-field-restore-attempt7.json",
+            "pointer": "/display_restore/equal",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-field-restore-attempt7.json",
+            "pointer": "/native/missing_surface_callback_checked",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-path-restore-attempt4.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/android-path-restore-attempt4.json",
+            "pointer": "/display_restore/equal",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-path-restore-attempt4.json",
+            "pointer": "/native/missing_surface_callback_checked",
+            "equals": true
           }
         ],
         "acceptance_review": {
-          "path": "evidence/reproductions/cp2-android/review.json",
-          "sha256": "53dbfafbb7c59e7bfda8575a2b1ba7b97f6c1199cec9640db15070f3f6b260f4"
+          "path": "evidence/conformance/android-snapshot-restoration-root-review.json",
+          "sha256": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8"
         },
         "runtime_profile": {
           "name": "Android API33 emulator; AndroidSurface/PGraphicsAndroid2D; shared Java core",

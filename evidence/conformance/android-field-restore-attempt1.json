@@ -1,0 +1,28 @@
+{
+  "status": "failed",
+  "accepted": false,
+  "scope": "FieldMarks Android restore follow-up attempt 1",
+  "failure": "No frame marker 4 after palette tap following actual HOME/reorder resume",
+  "observed": {
+    "completed_compositions": 3,
+    "resume_acknowledgments": 1,
+    "next_palette_tap_recorded": true,
+    "screenshot": "Root inspected black viewport after resume; cached snapshot acknowledgment does not prove displayed restoration."
+  },
+  "terminal_session": 27085,
+  "exit_code": 1,
+  "cleanup": "Runner force-stop completed without recorded error; emulator wrapper terminated and exited.",
+  "artifacts": {
+    ".work/reproductions/android-field-marks-restore1/result.json": "7a857e52607c7235be884db84b0c6004b6d41fc114d8af114860c3072da46fab",
+    ".work/android-restore-followup/field1-paused-progress.png": "d22ff070bcdcca9c5b89a9765c13b917c2d88032a671186ebfff07bf89a9aac1",
+    ".work/android-restore-followup/field1-logcat.txt": "e09925e6ad44af972877239cb7ecdc12d83d016ba1408445968f3a10a32a4f65",
+    ".work/android-restore-followup/field1-partial/resume.json": "aab186fb8b2378992b7d806e40ca01df534f6db76406fac5dacaa13bc3fbd93c",
+    ".work/android-restore-followup/field1-partial/frame-2.json": "448658a247261742eeceb4b7efe016050bce76bea32f35b6e02d82179e5f48c9",
+    ".work/android-restore-followup/field1-partial/frame-1.png": "9bae3e212ebb1708f2f160b9f9fbfe04b896b5acfebea807077c8259a9adb57a",
+    ".work/android-restore-followup/field1-partial/frame-2.png": "73c5d2e221f8d98d6b63ba6adaa38b9fb7eea82af0365181cbf9d6d9db688874",
+    ".work/android-restore-followup/field1-partial/frame-1.json": "2a3b812222620ddd6a9a1cd535fc1afcef7b5ef33e2c4854e9b405939ca48b82",
+    ".work/android-restore-followup/field1-partial/frame-3.json": "dc76b5d3046b7b2623e8a04407a7836fac40e26c918fdba2960e339e9859e619",
+    ".work/android-restore-followup/field1-partial/frame-3.png": "9bae3e212ebb1708f2f160b9f9fbfe04b896b5acfebea807077c8259a9adb57a"
+  },
+  "next": "Diagnose input acceptance and renderer state separately before changing production behavior or accepting the hook."
+}

@@ -333,7 +333,7 @@
       "native": {
         "status": "validated-scoped",
         "implementation_sha256": {
-          "packages/java-android/examples/BranchMarks/BranchMarksActivity.java": "48bea7c7deb5ac63834231e720665c42f66c1bb03858d579f6e0777c0868e950",
+          "packages/java-android/examples/BranchMarks/BranchMarksActivity.java": "dc1a7fe814bc8d3fe2ef26c22a5b844d14bdc7bb09318de6dff123079de6ad49",
           "packages/java-android/examples/BranchMarks/BranchMarksRenderer.java": "604719ba3ca4e878e242c18fee870d7198dba516120b5403a81b02c06124d13c",
           "packages/java-android/examples/BranchMarks/AndroidManifest.xml": "1a8eed9fafa67ae8c9a241b002e74f01381c9690a26783b23329c7c4ca2ca2d1",
           "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
@@ -341,12 +341,14 @@
           "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
           "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
           "tools/build_android_branch_marks.py": "c9f246e20f3caaa6d7c78836028623dc9983aecac7f82abd900a3ea74131cf85",
-          "tools/run_android_branch_marks.py": "781fc998feeb2343389db73ab7035e3f3bf6dbc5480632c86019a0798ed8bc35",
-          "tests/native/android-branch-marks/BranchMarksProbeActivity.java": "f08ebc605d41f50804c1492748cf767aff1dd2c94e18548b1bc7db3625be9fd5"
+          "tools/run_android_branch_marks.py": "1bcc679154f90f65d6fc6101e70bc3e7f2688eb01f235810850dfcd47dd1c02d",
+          "tests/native/android-branch-marks/BranchMarksProbeActivity.java": "a717ec206e05b38d25b2a40ce39c4d118391af7fdfed635a39aef6f0f477d225",
+          "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77"
         },
         "evidence_sha256": {
           "evidence/conformance/android-branch-marks.json": "bc171607b7a4a3fde89d7fa23ffe53446f6e7b6e348c617cf3310291697184ad",
-          "design/capabilities/branch-marks-android-acceptance.md": "49075ab9bd4d561a21e3e6499e7fd5e98bf08792ffe50c7c4bfae350ea290c97"
+          "design/capabilities/branch-marks-android-acceptance.md": "49075ab9bd4d561a21e3e6499e7fd5e98bf08792ffe50c7c4bfae350ea290c97",
+          "evidence/conformance/android-branch-restore-attempt5.json": "14bd2f991e7ef399c1b81e1584fc05ff2af16d0f9c8cc4f4e14db6c20e20aab6"
         },
         "evidence_predicates": [
           {
@@ -368,11 +370,26 @@
             "path": "evidence/conformance/android-branch-marks.json",
             "pointer": "/native/resume_acknowledgments",
             "equals": 1
+          },
+          {
+            "path": "evidence/conformance/android-branch-restore-attempt5.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/android-branch-restore-attempt5.json",
+            "pointer": "/display_restore/equal",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-branch-restore-attempt5.json",
+            "pointer": "/native/missing_surface_callback_checked",
+            "equals": true
           }
         ],
         "acceptance_review": {
-          "path": "evidence/conformance/branch-android-native-root-review.json",
-          "sha256": "d02c4c679af706661119b80e54a47084fb745bceee709262738279e9cfd7af1c"
+          "path": "evidence/conformance/android-snapshot-restoration-root-review.json",
+          "sha256": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8"
         },
         "runtime_profile": {
           "name": "API33 Android13 x86_64 Processing Android412 Android2D",

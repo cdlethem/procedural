@@ -1,0 +1,72 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Android adapter 0.3.0 and six restoration patch starter archives; extracted APK compilation. Native behavior is scoped to the separate API33 restoration review.",
+  "implementation_sha256": {
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "packages/java-android/distribution/templates/adapter-AndroidManifest.xml": "f4447fb4d9a6be45859b79d59482ecd09a933bc6cd294a08d5739373580794ab",
+    "packages/java-android/distribution/templates/adapter-build.gradle": "a3eabb4d2be27261559ab8f106baacf9053de96556e5435eb9e6c88f1949f65d",
+    "packages/java-android/distribution/templates/build.gradle": "3b35599bef70fadbc0f0c7d81be8de7b863661d11bfd1104a2f2d4812a64f993",
+    "packages/java-android/distribution/templates/gradle.properties": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e",
+    "packages/java-android/distribution/templates/sample-app-build.gradle": "5cec415c74374618d977cef597d8e795cc53dcce20b104d388f725c97f9137ea",
+    "packages/java-android/distribution/templates/settings.gradle": "590977829f99d67a1886967de12c43cfacbb41ca1855b4cfc2e887e6be1ee9b2",
+    "packages/java-android/examples/BranchMarks/AndroidManifest.xml": "1a8eed9fafa67ae8c9a241b002e74f01381c9690a26783b23329c7c4ca2ca2d1",
+    "packages/java-android/examples/BranchMarks/BranchMarksActivity.java": "dc1a7fe814bc8d3fe2ef26c22a5b844d14bdc7bb09318de6dff123079de6ad49",
+    "packages/java-android/examples/BranchMarks/BranchMarksRenderer.java": "604719ba3ca4e878e242c18fee870d7198dba516120b5403a81b02c06124d13c",
+    "packages/java-android/examples/BranchMarks/README.md": "8bc55fcb87644fb5c24c38f73718e2aa5511309e188b7fa6f65ccae51d132b54",
+    "packages/java-android/examples/FieldMarks/AndroidManifest.xml": "7ae57f4e3c1e8cb4089f609e16cf5e440c9f6074546dde4e722c6355c1bddfee",
+    "packages/java-android/examples/FieldMarks/FieldMarksActivity.java": "ec1968190c38cd0fce5cf084db78d5348e16d6ed2ca80c9c363486a68f70fe57",
+    "packages/java-android/examples/FieldMarks/FieldMarksRenderer.java": "416da450bc05ea1c006d6fac6ab0811997bcc230cf856207ceb3f4da44c68c93",
+    "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+    "packages/java-android/examples/FieldMarks/README.md": "f1cf61a50c72d926edae74e53abe985aff0c35a58685ced8b6fc3c083267e8ed",
+    "packages/java-android/examples/GrainMarks/AndroidManifest.xml": "60989fc959f64f589b30beff0748deb97f675e417c3d2999ba939a31c7fae478",
+    "packages/java-android/examples/GrainMarks/GrainMarksActivity.java": "53e851cb2ec144e378c2ef45706cf854362786bbd1cf710c14ddb1c73f2921c1",
+    "packages/java-android/examples/GrainMarks/GrainMarksRenderer.java": "868e6b2d488de4a862c192c3a611aa1a4122278a35068aab65f039e1bd9a30ab",
+    "packages/java-android/examples/GrainMarks/README.md": "a23e3ae6afb7dd2e502e907766ef043f1c6891abbaeaef7b049e81b6c74920a4",
+    "packages/java-android/examples/PathMarks/AndroidManifest.xml": "17609fe3c2401f9c821ad63875084fc8e33ec1cdbb8cd9350bc72c63345b7be1",
+    "packages/java-android/examples/PathMarks/PathMarksActivity.java": "e60e5c368d6a5f00214b8cfa71793c9135b23e4dfeeff2c905dc1f9cb9abd0a2",
+    "packages/java-android/examples/PathMarks/PathMarksRenderer.java": "1768092f1fe19332fdec1a4d1eda773b5a1c2453dd61df9b217ff06dc75a3d7f",
+    "packages/java-android/examples/PathMarks/README.md": "b8a04f32d9cd356301ff87a4e0c4d95254860fbe14bdb14116b99edef9f8c716",
+    "packages/java-android/examples/PlacementMarks/AndroidManifest.xml": "5b508021536f85b637fae1ee7c64788ebf009434dd735f9f49a83fa5ce655c01",
+    "packages/java-android/examples/PlacementMarks/PlacementMarksActivity.java": "da30b0f05a5a2574602f32feb14f1f3845188d72ddc94155c249d88010aa36dc",
+    "packages/java-android/examples/PlacementMarks/PlacementMarksRenderer.java": "c4b6d9780da7c7dae0a6b5d1d9e4d4a69b44d8e641d36ecc85d2914a84905f2a",
+    "packages/java-android/examples/PlacementMarks/README.md": "dbbe20e5f2a2ebd510e54df874f147f950a3de5dd8fe0267b4d4a07352f48425",
+    "packages/java-android/examples/RegionMarks/AndroidManifest.xml": "6a0ada7d0c8eaf73c9186a13a9c8e2de21be629894fc9770e90403ada9ab51bd",
+    "packages/java-android/examples/RegionMarks/README.md": "e572fd5f1394df9432c586268d6e8b308ea66636a9d143e204115eb52924c1f3",
+    "packages/java-android/examples/RegionMarks/RegionMarksActivity.java": "303b34e01eb8742cec5cc5a1c08277def0581a5d7e7a94aef11cf6c089f8d8d7",
+    "packages/java-android/examples/RegionMarks/RegionMarksRenderer.java": "dcf268dab5d097b4f53f2037ba7805239c46f24da2b86910bc2862476dff72d4",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFrame.java": "835daf36db3736adad6834209c39fe2b6530362dc0f57febc449143e6c09b570",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidFrameHost.java": "64a3ec481e69dc0bf9597ea03d4ed0864dc7002a8f05f1a0b852809503f9e2c7",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSurface.java": "bb2efe0fcce61461e847f9415b6cb7dae80a4f7ccb2e220b1e0009083c8c3604",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "packages/java/examples/FieldMarks/MarkField.java": "398dcf002dc35076f7af97e7a44f21a48a2ce6e10facf2d370dfac3b9e453ea7",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
+    "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+    "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+    "tools/build_android_artifacts.py": "cba67bf5124d49786883b21fa206285d1f43579722bbf08a38c561add0c7fe1e",
+    "tools/build_android_restoration_starters.py": "1f0198dc01606a6d444db04c16157433a49c2d6a453bc0937cfad361a7de72a0"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/android-restoration.json": "d7e1aa59de49279eb624921f09be1f386e49271f1e10ead4e2895f3db3f31280",
+    "evidence/conformance/android-snapshot-restoration-root-review.json": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8"
+  },
+  "documentation_sha256": {
+    "docs/installing-android-restoration.md": "806aeb949cb0aa3351d3d9710448fdd893d12b59f477632d3d37d8972ff26c74"
+  },
+  "root_findings": [
+    "Build completed successfully for the adapter and all six extracted starter projects. Root independently verified all current input and review bindings, artifact hashes and exact archive member manifests.",
+    "Current source bytes, notices, original application IDs, historical core JARs and the new adapter JAR are preserved in the starter archives. Field MarkField has the explicitly recorded package-prefix transformation.",
+    "Compiled APK hashes were independently matched to extracted build outputs. The adapter contains AndroidSnapshotPresentation; DrawingFrameState class bytes are identical across the six retained cores.",
+    "Native restoration acceptance remains the separate six-workflow review: packaging compilation does not extend device, renderer or reproduction coverage. Historical package records remain unchanged."
+  ],
+  "remaining": [
+    "Commit and push reviewed integration checkpoint.",
+    "Five remaining operation port batches, then remaining artist/reproduction/recipe and tooling roadmap.",
+    "No registry release claimed."
+  ]
+}

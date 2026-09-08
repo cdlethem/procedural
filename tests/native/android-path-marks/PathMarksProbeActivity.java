@@ -47,7 +47,8 @@ public final class PathMarksProbeActivity extends PathMarksActivity {
     private PathMarkComposition lastMovement, countMovement;
     private byte[] lastPng;
     private long saveQuietMillis=-1;
-    private boolean failed;
+    private boolean failed,awaitingPause,paused,resumedAfterPause,missingSurfaceCallbackChecked;
+    private int resumeAcknowledgments;
     private final JSONArray frames=new JSONArray();
     private JSONObject savedFacts;
 
@@ -58,13 +59,33 @@ public final class PathMarksProbeActivity extends PathMarksActivity {
         if(!evidenceDirectory.isDirectory()&&!evidenceDirectory.mkdirs()) fail(new IOException("cannot create probe evidence directory"));
     }
 
+    @Override protected void onPause() {
+        if(awaitingPause)paused=true;
+        super.onPause();
+        if(awaitingPause)try {
+            Object probe=reflect(this,"probe"),graphics=reflect(probe,"g");
+            java.lang.reflect.Field changed=graphics.getClass().getDeclaredField("changed");
+            changed.setAccessible(true);changed.setBoolean(graphics,false);
+            ((processing.core.PApplet)probe).resume();
+            check(changed.getBoolean(graphics),"resume hook did not invalidate restore state");
+            changed.setBoolean(graphics,false);missingSurfaceCallbackChecked=true;
+        }catch(Throwable failure){fail(failure);}
+    }
+    @Override protected void onResume(){super.onResume();if(awaitingPause&&paused)resumedAfterPause=true;}
+
     @Override protected void onFrameReady(RenderedSnapshot snapshot) {
         try {
             checkUi("onFrameReady");
             check(snapshot!=null&&snapshot.movement!=null&&snapshot.image!=null,"missing PathMarks snapshot");
             check(modeButton.isEnabled()&&lengthButton.isEnabled()&&paletteButton.isEnabled()&&countButton.isEnabled()&&distanceButton.isEnabled()&&saveButton.isEnabled(),"all six controls must be enabled at acknowledgement");
             int count=snapshot.compositionCount;
-            if(count==lastComposition) return; // Lifecycle acknowledgement may repeat an existing image.
+            if(count==lastComposition) {
+                if(awaitingPause&&resumedAfterPause) {
+                    check(snapshot==lastSnapshot&&snapshot.movement==lastMovement&&Arrays.equals(snapshot.image.pngBytes(),lastPng),"resume changed cached PathMarks composition");
+                    check(++resumeAcknowledgments==1,"duplicate cached resume acknowledgement");awaitingPause=false;writeLifecycle("resumed");
+                }
+                return;
+            }
             check(count==lastComposition+1&&count>=1&&count<=7,"unexpected composition acknowledgement "+count);
             boolean[] expected=EXPECTED[count-1];
             EditState options=snapshot.options;
@@ -89,6 +110,7 @@ public final class PathMarksProbeActivity extends PathMarksActivity {
             JSONObject observation=frameObservation(snapshot,png,count,sameMovement,samePaths);
             writeJsonAtomically(new File(evidenceDirectory,"frame-"+count+".json"),observation);
             frames.put(observation);lastComposition=count;lastReadyFrame=completedFrameCount();lastSnapshot=snapshot;lastMovement=snapshot.movement;lastPng=png.clone();
+            if(count==1){awaitingPause=true;writeLifecycle("awaiting-pause");}
         } catch(Throwable failure) { fail(failure); }
     }
 
@@ -122,6 +144,7 @@ public final class PathMarksProbeActivity extends PathMarksActivity {
             check(currentSnapshot()==expectedSnapshot&&lastSnapshot==expectedSnapshot&&expectedSnapshot.movement==expectedMovement&&lastMovement==expectedMovement,"save quiet observation changed snapshot/movement");
             check(lastPng!=null&&Arrays.equals(lastPng,expectedBytes),"save quiet observation changed cached PNG bytes");
             check(lastComposition==7&&completedFrameCount()==expectedCompleted&&expectedCompleted==8,"save quiet observation advanced composition/frame count");
+            check(paused&&resumedAfterPause&&missingSurfaceCallbackChecked&&resumeAcknowledgments==1,"pause/resume lifecycle regression incomplete");
             writeResult(true);
         } catch(Throwable failure) { fail(failure); }
     }
@@ -133,6 +156,7 @@ public final class PathMarksProbeActivity extends PathMarksActivity {
         put(value,"steps",options.steps());put(value,"distance",options.distance());put(value,"mark_length",options.markLength());
         put(value,"path_count",snapshot.movement.pathCount());put(value,"same_movement_as_previous",sameMovement);put(value,"same_path_objects_as_previous",samePaths);put(value,"count_prefix_checked",count==6);put(value,"distance_feedback_checked",count==7);
         put(value,"raw_commands",snapshot.image.rawCommands);put(value,"submitted_commands",snapshot.image.submittedCommands);put(value,"png_sha256",sha256(png));put(value,"button_center_bounds",buttonBounds());
+        try{View viewport=(View)reflect(this,"viewport");int[] location=new int[2];viewport.getLocationOnScreen(location);check(viewport.getWidth()>0&&viewport.getHeight()>0,"invalid viewport bounds");JSONArray bounds=new JSONArray();bounds.put(location[0]);bounds.put(location[1]);bounds.put(location[0]+viewport.getWidth());bounds.put(location[1]+viewport.getHeight());put(value,"viewport_bounds",bounds);}catch(ReflectiveOperationException failure){throw new IllegalStateException(failure);}
         return value;
     }
 
@@ -169,8 +193,10 @@ public final class PathMarksProbeActivity extends PathMarksActivity {
     private JSONArray buttonBounds() { JSONArray rows=new JSONArray();rows.put(buttonBounds("mode",modeButton));rows.put(buttonBounds("length",lengthButton));rows.put(buttonBounds("palette",paletteButton));rows.put(buttonBounds("count",countButton));rows.put(buttonBounds("distance",distanceButton));rows.put(buttonBounds("save",saveButton));return rows; }
     private static JSONObject buttonBounds(String id,View view) { check(view!=null,"missing "+id+" button");int[] location=new int[2];view.getLocationOnScreen(location);check(view.getWidth()>0&&view.getHeight()>0,"invalid "+id+" button bounds");JSONObject value=new JSONObject();put(value,"id",id);put(value,"left",location[0]);put(value,"top",location[1]);put(value,"width",view.getWidth());put(value,"height",view.getHeight());put(value,"center_x",location[0]+view.getWidth()/2);put(value,"center_y",location[1]+view.getHeight()/2);return value; }
     private byte[] readAll(Uri uri) throws IOException { InputStream stream=getContentResolver().openInputStream(uri);if(stream==null)throw new IOException("saved URI has no readable stream");try(InputStream input=stream;ByteArrayOutputStream output=new ByteArrayOutputStream()){byte[] buffer=new byte[8192];for(int read;(read=input.read(buffer))!=-1;)output.write(buffer,0,read);return output.toByteArray();} }
-    private void fail(Throwable failure) { if(failed)return;failed=true;try{JSONObject value=envelope("failure");put(value,"passed",false);put(value,"failure",failure.getClass().getName()+": "+failure.getMessage());StringWriter trace=new StringWriter();failure.printStackTrace(new PrintWriter(trace));put(value,"trace",trace.toString());put(value,"frames",frames);if(savedFacts!=null)put(value,"saved",savedFacts);writeJsonAtomically(new File(evidenceDirectory,"result.json"),value);}catch(Throwable ignored){ } }
-    private void writeResult(boolean passed) throws IOException { JSONObject value=envelope("result");put(value,"passed",passed&&!failed);put(value,"api",Build.VERSION.SDK_INT);put(value,"renderer",lastSnapshot==null?null:lastSnapshot.image.renderer);put(value,"frames",frames);put(value,"composition_count",lastComposition);put(value,"completed_frame_count",completedFrameCount());put(value,"save_quiet_ms",saveQuietMillis);put(value,"saved",savedFacts);writeJsonAtomically(new File(evidenceDirectory,"result.json"),value); }
+    private void fail(Throwable failure) { if(failed)return;failed=true;try{JSONObject value=envelope("failure");put(value,"passed",false);put(value,"failure",failure.getClass().getName()+": "+failure.getMessage());StringWriter trace=new StringWriter();failure.printStackTrace(new PrintWriter(trace));put(value,"trace",trace.toString());put(value,"frames",frames);put(value,"missing_surface_callback_checked",missingSurfaceCallbackChecked);if(savedFacts!=null)put(value,"saved",savedFacts);writeJsonAtomically(new File(evidenceDirectory,"result.json"),value);}catch(Throwable ignored){ } }
+    private void writeLifecycle(String status) throws IOException { JSONObject value=new JSONObject();put(value,"status",status);put(value,"passed",false);put(value,"missing_surface_callback_checked",missingSurfaceCallbackChecked);put(value,"paused",paused);put(value,"resumed",resumedAfterPause);put(value,"resume_acknowledgments",resumeAcknowledgments);put(value,"composition_count",lastComposition);writeJsonAtomically(new File(evidenceDirectory,"result.json"),value); }
+    private void writeResult(boolean passed) throws IOException { JSONObject value=envelope("result");put(value,"passed",passed&&!failed);put(value,"api",Build.VERSION.SDK_INT);put(value,"renderer",lastSnapshot==null?null:lastSnapshot.image.renderer);put(value,"frames",frames);put(value,"composition_count",lastComposition);put(value,"completed_frame_count",completedFrameCount());put(value,"save_quiet_ms",saveQuietMillis);put(value,"missing_surface_callback_checked",missingSurfaceCallbackChecked);put(value,"paused",paused);put(value,"resumed",resumedAfterPause);put(value,"resume_acknowledgments",resumeAcknowledgments);put(value,"saved",savedFacts);writeJsonAtomically(new File(evidenceDirectory,"result.json"),value); }
+    private static Object reflect(Object target,String name) throws ReflectiveOperationException { for(Class<?> type=target.getClass();type!=null;type=type.getSuperclass())try{java.lang.reflect.Field field=type.getDeclaredField(name);field.setAccessible(true);return field.get(target);}catch(NoSuchFieldException absent){}throw new NoSuchFieldException(name); }
     private JSONObject envelope(String event) { JSONObject value=new JSONObject();put(value,"event",event);put(value,"nonce",nonce);put(value,"sequence",++sequence);put(value,"thread_id",Thread.currentThread().getId());put(value,"thread_name",Thread.currentThread().getName());return value; }
     private static void checkUi(String event) { check(Looper.myLooper()==Looper.getMainLooper(),event+" did not run on UI thread"); }
     private static void check(boolean condition,String message) { if(!condition)throw new AssertionError(message); }

@@ -1,5 +1,155 @@
 # Project state
 
+## Android restoration package rebuild reviewed
+
+Session87789 completed successfully: adapter0.3.0 and all six extracted patch starter APKs
+compiled in .work/dist/android-restoration1. Root independently verified current input and
+review bindings, archive members, source bytes, retained core JARs/application IDs and APK
+hashes. Accepted local package records: evidence/distribution/android-restoration.json and
+android-restoration-review.json. Native successor and catalog integration already prepared;
+49 focused tests passed before packaging. No native/build session remains live.
+Next final diff/catalog check, safe remote integration, commit and push this checkpoint.
+Then radial-profile port. Counts remain Java15 operations/15 starters, ten complete ports.
+
+## All six Android restoration workflows validated; integration pending
+
+Placement3 session46719 terminal passed, completing Field7, Path4, Placement3, Region1,
+Grain1 and Branch5. Root viewed each actual resumed screen and checked current source
+bindings. Every runner requires exact pre/post-resume viewport RGBA before next edit,
+controlled missing-callback regression, original state/count/retention and cached saving.
+New helper AndroidSnapshotPresentation shares decode/presentation/recycle behavior.
+No native sessions live. Old acceptance/artifacts remain immutable; new attempt records
+explicitly leave package/catalog integration pending. Terra read-only inventory underway.
+Next root successor review+catalog bindings, six extracted Android package rebuilds with
+focused checks, tested integration commit and safe push main. Then radial-profile port.
+
+
+## Five Android restored-screen workflows pass; Placement running
+
+Path4 session19573 passed full host/native checks and exact restored display; root viewed
+resumed paths and verified all source hashes. Record android-path-restore-attempt4.json.
+Placement3 session46719 LIVE using .work/android-restore-followup/placement3.py; poll same
+handle. Root fixed lingering lifecycle marker handling during radial ignored-edit check,
+preserving actual terminal-record rejection and recording interim status explicitly.
+Terra branch_android_probe preparing read-only catalog/package successor inventory.
+After Placement passes, root must review output, create coherent successor acceptance,
+rebuild extracted packages, run focused catalog/checks and commit/push integration.
+
+
+## Four resumed-screen workflows pass; Path retry running
+
+Region session96147 and Grain session39913 passed exact viewport equality before nextedit
+and full original workflows/save; root viewed both restored screens and verified source
+bindings. Records android-{region,grain}-restore-attempt1.json await package integration.
+Path session52338 passed native checks/display but host rejected historical renderer-name
+expectation. Root verified current AndroidSurface subclass and old native-review binding;
+follow-up now asserts exact current name separately. Path4 session19573 LIVE via
+.work/android-restore-followup/path4.py, fresh stage/output. Preserve Path3 failed result.
+Root repaired Path/Placement while-else timeout and interim lifecycle marker handling,
+including Placement radial ignored-edit terminal check. Placement not yet launched.
+
+
+## Shared restoration helper validated in Field and Branch; four native runs remain
+
+Field7 session62185 passed helper extraction, exact resumed viewport and full8-state
+workflow. Branch5 session38582 passed exact viewport and all18 original states; root
+viewed resumed tree and verified build source hashes. New attempt records retain pending
+package/catalog integration. Branch4 failed because initial screen capture had launch
+fade; before/after settling now both1s, equality unchanged.
+Region/Grain worker code reviewed; root changed continue signal to run-as touch avoiding
+shell redirection ambiguity. Both proper probe APK/stage/source bindings verified.
+Region native session96147 is LIVE via .work/android-restore-followup/region1.py.
+Grain compiled stage .work/android-grain-marks-snapshot-presentation-probe1 not launched.
+Path/Placement source/probe/runner updates compiled, root final review/native pending.
+All six use internal AndroidSnapshotPresentation; PNG decode cleanup/resource review passed.
+Do not treat old hashes as current acceptance; package rebuild and successor records remain.
+
+
+## Field native6 passes actual restored display and complete workflow
+
+Session66932 terminal exit0. Before/after viewport RGBA equal before any edit; root viewed
+populated after-resume image and verified current input hashes. Eight compositions/nine
+completed frames, controlled missing-surface callback, sole cached acknowledgment and save
+all pass. Record android-field-restore-attempt6.json; integration/packages remain pending.
+Attempt5 session90449 failed with gray viewport: primary bitmap was cleared despite
+presentation scheduling. Attempt6 restores acknowledged PNG through temporary decoded
+bitmap/PImage on animation thread, isolates style/matrix and recyclesbitmap, no geometry
+regeneration. Final Terra resource/exception review pending. Other starters still need
+this actual-display correction and equivalent screen comparison, including assessment of
+BranchMarks (earlier tests proved saved pixels, not immediate resumed screen). No session
+live. Preserve attempt1–6 evidence; do not silently rehash old acceptance.
+
+
+## Field late-surface correction under native validation
+
+Attempt4 session23874 terminal failed actual viewport equality before any edit; root
+viewed black screen. Record android-field-restore-attempt4.json preserves exact inputs.
+Root added synchronized real surfaceChanged presentation scheduling and animation-thread
+begin/end publication for an unchanged composition; no user draw/post/count increments.
+Compile session32324 passed. Native5 session90449 now live under shared lock; poll it.
+Runner now compares before/after actual viewport RGBA before the next edit. Terra source
+challenge pending; no support acceptance or package rebuild yet.
+
+
+## Field attempt3 passed workflow; immediate restored display still needs checking
+
+Session63323 terminal exit0. One-second reordered-window settle before the single tap
+resolved delivery in this run. Eight frames, nine completed frames, hook regression,
+sole cached resume acknowledgment and MediaStore save passed. Root verified all current
+input hashes and viewed final populated saved screen. Record android-field-restore-attempt3
+keeps acceptance pending: immediate post-resume display before any edit was not captured.
+Next capture that displayed viewport, not just cached PNG identity; diagnose if black.
+No native session live. All earlier failures retained. Other four starter workflows pending.
+
+
+## Field diagnostic2 terminal; transition delivery follow-up prepared
+
+Session4842 exited1 awaiting frame4; diagnostics show no ACTION_UP, no version advance,
+renderer restored and idle. Failure manifest android-field-restore-attempt2.json binds
+artifacts; cleanup completed. Attempt3 adds only one-second window transition settling
+before the one registered tap, with original checks and diagnostic probe unchanged.
+Shared-lock session63323 now running wrapper .work/android-restore-followup/field3.py;
+poll that handle. No acceptance or production changes.
+
+
+## Field diagnostic attempt 2 running
+
+Session4842 is the live shared-lock wrapper for .work/android-restore-followup/field2.py;
+continue polling this handle. Production unchanged; test-only ACTION_UP and restore flags
+added plus failure artifact capture. Early native diagnostics show restoredSurface=true,
+restartedLoopingAfterResume=false, looping=false, redraw=false, requested_version2 at
+resume and250/1000ms. No touch-up observation yet. Do not infer renderer stall from this:
+next step is confirm input delivery versus Activity focus/transition timing.
+Root independently verified Region/Grain proper probe APK, stage and source hashes.
+
+
+## Field restore attempt 1 failed; diagnosis required
+
+Session27085 terminal exit1: timed out awaiting frame4 after palette tap. Frames1–3
+and sole cached resume acknowledgment passed; root inspected black viewport after resume.
+No acceptance: snapshot acknowledgment alone does not establish displayed restoration.
+Runner force-stopped without cleanup error; emulator wrapper terminated. Exact attempt
+artifact hashes recorded in evidence/conformance/android-field-restore-attempt1.json.
+Terra investigating source-only distinction between lost input and renderer restoration.
+Region/Grain proper probe stages now .work/android-{region,grain}-marks-resume-hook-probe1
+with build-result.json; compile and source bindings verified by worker, root native pending.
+Path/Placement runners now fresh stage/output/serial and bounded 210/240s; root review
+of final isolation changes pending. No additional native runs launched.
+
+
+## Older Android restore follow-up in progress (source changes unaccepted)
+
+Five older Probe classes lack the pinned cached-restore resume hook. Root preregistered
+focused follow-up in android-retained-restore-followup.md. Region/Grain fourfiles updated
+and compile-only stages .work/agent-region-resume-hook and .work/agent-grain-resume-hook
+passed; no native runs. Root added Field hook/control regression and HOME/nextedit
+handshake, fresh output and serial options to existing runner. Field compile completed at .work/examples/android-field-marks-restore1.
+Path/Placement worker edits and fresh probe compilation are complete; root review pending. New Activity
+source hashes intentionally await successor acceptance; old artifacts/evidence unchanged.
+Do not claim revised Android sources accepted or silently rehash historical records.
+Next review worker diffs, native-run each under shared lock, accept with exact source
+bindings, then repackage affected starters. Branch0.6 four-target batch remains complete.
+
 ## Branch distribution batch complete on all four targets
 
 Root accepted revised JavaScript check3 and Python branch2 package outputs. Verified

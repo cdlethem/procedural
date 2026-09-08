@@ -59,7 +59,8 @@ public final class PlacementMarksProbeActivity extends PlacementMarksActivity {
     private PlacementComposition baselineComposition, lastCompositionObject;
     private byte[] lastPng;
     private long saveQuietMillis=-1;
-    private boolean failed;
+    private boolean failed,awaitingPause,paused,resumedAfterPause,missingSurfaceCallbackChecked;
+    private int resumeAcknowledgments;
     private final JSONArray frames=new JSONArray();
     private JSONObject savedFacts;
 
@@ -70,6 +71,20 @@ public final class PlacementMarksProbeActivity extends PlacementMarksActivity {
         if(!evidenceDirectory.isDirectory()&&!evidenceDirectory.mkdirs()) fail(new IOException("cannot create probe evidence directory"));
     }
 
+    @Override protected void onPause() {
+        if(awaitingPause)paused=true;
+        super.onPause();
+        if(awaitingPause)try {
+            Object probe=reflect(this,"probe"),graphics=reflect(probe,"g");
+            java.lang.reflect.Field changed=graphics.getClass().getDeclaredField("changed");
+            changed.setAccessible(true);changed.setBoolean(graphics,false);
+            ((processing.core.PApplet)probe).resume();
+            check(changed.getBoolean(graphics),"resume hook did not invalidate restore state");
+            changed.setBoolean(graphics,false);missingSurfaceCallbackChecked=true;
+        }catch(Throwable failure){fail(failure);}
+    }
+    @Override protected void onResume(){super.onResume();if(awaitingPause&&paused)resumedAfterPause=true;}
+
     @Override protected void onFrameReady(RenderedSnapshot snapshot) {
         try {
             checkUi("onFrameReady");
@@ -79,7 +94,13 @@ public final class PlacementMarksProbeActivity extends PlacementMarksActivity {
                 &&motifButton.isEnabled()&&paletteButton.isEnabled()&&saveButton.isEnabled(),
                 "all nine controls must be enabled at acknowledgement");
             int count=snapshot.compositionCount;
-            if(count==lastComposition) return; // Lifecycle acknowledgement may repeat an existing image.
+            if(count==lastComposition) {
+                if(awaitingPause&&resumedAfterPause) {
+                    check(snapshot==lastSnapshot&&snapshot.composition==lastCompositionObject&&Arrays.equals(snapshot.image.pngBytes(),lastPng),"resume changed cached PlacementMarks composition");
+                    check(++resumeAcknowledgments==1,"duplicate cached resume acknowledgement");awaitingPause=false;writeLifecycle("resumed");
+                }
+                return;
+            }
             check(count==lastComposition+1&&count>=1&&count<=IDS.length,
                 "unexpected composition acknowledgement "+count);
             EditState options=snapshot.options;
@@ -112,6 +133,7 @@ public final class PlacementMarksProbeActivity extends PlacementMarksActivity {
             lastSnapshot=snapshot;lastCompositionObject=snapshot.composition;
             if(count==1)baselineComposition=snapshot.composition;
             lastPng=png.clone();
+            if(count==1){awaitingPause=true;writeLifecycle("awaiting-pause");}
         }catch(Throwable failure){fail(failure);}
     }
 
@@ -154,6 +176,7 @@ public final class PlacementMarksProbeActivity extends PlacementMarksActivity {
             check(lastPng!=null&&Arrays.equals(lastPng,expectedBytes),"save quiet observation changed cached PNG bytes");
             check(lastComposition==IDS.length&&completedFrameCount()==expectedCompleted
                 &&expectedCompleted==IDS.length+1,"save quiet observation advanced composition/frame count");
+            check(paused&&resumedAfterPause&&missingSurfaceCallbackChecked&&resumeAcknowledgments==1,"pause/resume lifecycle regression incomplete");
             writeResult(true);
         }catch(Throwable failure){fail(failure);}
     }
@@ -191,6 +214,7 @@ public final class PlacementMarksProbeActivity extends PlacementMarksActivity {
         put(value,"submitted_commands",snapshot.image.submittedCommands);
         put(value,"renderer",snapshot.image.renderer);
         put(value,"png_sha256",sha256(png));put(value,"button_center_bounds",buttonBounds());
+        try{View viewport=(View)reflect(this,"viewport");int[] location=new int[2];viewport.getLocationOnScreen(location);check(viewport.getWidth()>0&&viewport.getHeight()>0,"invalid viewport bounds");JSONArray bounds=new JSONArray();bounds.put(location[0]);bounds.put(location[1]);bounds.put(location[0]+viewport.getWidth());bounds.put(location[1]+viewport.getHeight());put(value,"viewport_bounds",bounds);}catch(ReflectiveOperationException failure){throw new IllegalStateException(failure);}
         return value;
     }
 
@@ -246,10 +270,16 @@ public final class PlacementMarksProbeActivity extends PlacementMarksActivity {
             JSONObject value=envelope("failure");put(value,"passed",false);
             put(value,"failure",failure.getClass().getName()+": "+failure.getMessage());
             StringWriter trace=new StringWriter();failure.printStackTrace(new PrintWriter(trace));
-            put(value,"trace",trace.toString());put(value,"frames",frames);
+            put(value,"trace",trace.toString());put(value,"frames",frames);put(value,"missing_surface_callback_checked",missingSurfaceCallbackChecked);
             if(savedFacts!=null)put(value,"saved",savedFacts);
             writeJsonAtomically(new File(evidenceDirectory,"result.json"),value);
         }catch(Throwable ignored){ }
+    }
+    private void writeLifecycle(String status) throws IOException {
+        JSONObject value=new JSONObject();put(value,"status",status);put(value,"passed",false);
+        put(value,"missing_surface_callback_checked",missingSurfaceCallbackChecked);put(value,"paused",paused);
+        put(value,"resumed",resumedAfterPause);put(value,"resume_acknowledgments",resumeAcknowledgments);
+        put(value,"composition_count",lastComposition);writeJsonAtomically(new File(evidenceDirectory,"result.json"),value);
     }
     private void writeResult(boolean passed) throws IOException {
         JSONObject value=envelope("result");put(value,"passed",passed&&!failed);
@@ -257,6 +287,8 @@ public final class PlacementMarksProbeActivity extends PlacementMarksActivity {
         put(value,"renderer",lastSnapshot==null?null:lastSnapshot.image.renderer);
         put(value,"frames",frames);put(value,"composition_count",lastComposition);
         put(value,"completed_frame_count",completedFrameCount());put(value,"save_quiet_ms",saveQuietMillis);
+        put(value,"missing_surface_callback_checked",missingSurfaceCallbackChecked);put(value,"paused",paused);
+        put(value,"resumed",resumedAfterPause);put(value,"resume_acknowledgments",resumeAcknowledgments);
         if(savedFacts!=null)put(value,"saved",savedFacts);
         writeJsonAtomically(new File(evidenceDirectory,"result.json"),value);
     }
@@ -265,6 +297,12 @@ public final class PlacementMarksProbeActivity extends PlacementMarksActivity {
         put(value,"sequence",++sequence);put(value,"thread_id",Thread.currentThread().getId());
         put(value,"thread_name",Thread.currentThread().getName());
         return value;
+    }
+    private static Object reflect(Object target,String name) throws ReflectiveOperationException {
+        for(Class<?> type=target.getClass();type!=null;type=type.getSuperclass())try{
+            java.lang.reflect.Field field=type.getDeclaredField(name);field.setAccessible(true);return field.get(target);
+        }catch(NoSuchFieldException absent){}
+        throw new NoSuchFieldException(name);
     }
     private static void checkUi(String event) {
         check(Looper.myLooper()==Looper.getMainLooper(),event+" did not run on UI thread");

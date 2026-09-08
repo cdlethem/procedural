@@ -1,0 +1,66 @@
+{
+  "status": "failed",
+  "accepted": false,
+  "scope": "Field restore diagnostic attempt2; production unchanged from attempt1",
+  "terminal_session": 4842,
+  "exit_code": 1,
+  "failure": "No frame marker 4",
+  "observations": {
+    "observations": [
+      {
+        "event": "resume-ack",
+        "looping": false,
+        "redraw": false,
+        "frameCount": 4,
+        "changed": true,
+        "restoredSurface": true,
+        "restartedLoopingAfterResume": false,
+        "restoreCount": 0,
+        "busy": false,
+        "resumed": true,
+        "displayValid": true,
+        "requested_version": 2,
+        "composition_count": 3
+      },
+      {
+        "event": "resume-plus-250ms",
+        "looping": false,
+        "redraw": false,
+        "frameCount": 4,
+        "changed": true,
+        "restoredSurface": true,
+        "restartedLoopingAfterResume": false,
+        "restoreCount": 0,
+        "busy": false,
+        "resumed": true,
+        "displayValid": true,
+        "requested_version": 2,
+        "composition_count": 3
+      },
+      {
+        "event": "resume-plus-1000ms",
+        "looping": false,
+        "redraw": false,
+        "frameCount": 4,
+        "changed": true,
+        "restoredSurface": true,
+        "restartedLoopingAfterResume": false,
+        "restoreCount": 0,
+        "busy": false,
+        "resumed": true,
+        "displayValid": true,
+        "requested_version": 2,
+        "composition_count": 3
+      }
+    ]
+  },
+  "interpretation": "No Activity ACTION_UP observed; requested version remained2. Renderer exited restore. Successful adb tap command alone does not prove delivered input. Display restoration remains unverified.",
+  "artifacts": {
+    ".work/reproductions/android-field-marks-restore2/result.json": "bdaf8514e798d9654896fcc08741422bdffb86bb2ebf37ca5f06d7e4b37b75be",
+    ".work/reproductions/android-field-marks-restore2/attempt.json": "e47064b54b7b09c3481003070eeb1933f796f94434cc494ef26204fa3e66c1ae",
+    ".work/reproductions/android-field-marks-restore2/frame-1.png": "9bae3e212ebb1708f2f160b9f9fbfe04b896b5acfebea807077c8259a9adb57a",
+    ".work/reproductions/android-field-marks-restore2/frame-2.png": "73c5d2e221f8d98d6b63ba6adaa38b9fb7eea82af0365181cbf9d6d9db688874",
+    ".work/reproductions/android-field-marks-restore2/failure-screen.png": "48684070da4c7fd6467db132c868ebfd5915a40e92b93640d1f5d0e4ec7ae8c4",
+    ".work/reproductions/android-field-marks-restore2/frame-3.png": "9bae3e212ebb1708f2f160b9f9fbfe04b896b5acfebea807077c8259a9adb57a"
+  }
+}

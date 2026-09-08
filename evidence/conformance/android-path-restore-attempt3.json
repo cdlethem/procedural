@@ -1,0 +1,674 @@
+{
+  "status": "failed",
+  "accepted": false,
+  "terminal_session": 52338,
+  "exit_code": 1,
+  "result": ".work/reproductions/android-path-marks-restore3/result.json",
+  "result_sha256": "acfa99e078b7c22f40a9e0078832daefeae2fdc0184f922ec9f79c8a1e935320",
+  "failure": "unexpected PathMarks Android runtime/final counts",
+  "native": {
+    "api": 33,
+    "completed_frame_count": 8,
+    "composition_count": 7,
+    "event": "result",
+    "frames": [
+      {
+        "alternate": false,
+        "button_center_bounds": [
+          {
+            "center_x": 107,
+            "center_y": 218,
+            "height": 126,
+            "id": "mode",
+            "left": 21,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 280,
+            "center_y": 218,
+            "height": 126,
+            "id": "length",
+            "left": 194,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 453,
+            "center_y": 218,
+            "height": 126,
+            "id": "palette",
+            "left": 367,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 626,
+            "center_y": 218,
+            "height": 126,
+            "id": "count",
+            "left": 540,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 799,
+            "center_y": 218,
+            "height": 126,
+            "id": "distance",
+            "left": 713,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 972,
+            "center_y": 218,
+            "height": 126,
+            "id": "save",
+            "left": 886,
+            "top": 155,
+            "width": 173
+          }
+        ],
+        "completed_frame_count": 2,
+        "composition_count": 1,
+        "count_prefix_checked": false,
+        "distance": 0.4,
+        "distance_feedback_checked": false,
+        "event": "frame-ready",
+        "farther": false,
+        "id": "marks",
+        "longer": false,
+        "mark_length": 12,
+        "more": false,
+        "nonce": "0f5b22e6-279b-462b-ab66-f7e41781fb12",
+        "path_count": 24,
+        "png_sha256": "0e86ee3dbbea8d658bd31e272f2a72b8a5ec07eedc00f05d73e659da3c170d85",
+        "raw_commands": 12000,
+        "same_movement_as_previous": false,
+        "same_path_objects_as_previous": false,
+        "sequence": 1,
+        "state_version": 0,
+        "steps": 2000,
+        "submitted_commands": 7002,
+        "thread_id": 2,
+        "thread_name": "main",
+        "trace": false,
+        "viewport_bounds": [
+          21,
+          365,
+          1059,
+          1836
+        ]
+      },
+      {
+        "alternate": false,
+        "button_center_bounds": [
+          {
+            "center_x": 107,
+            "center_y": 218,
+            "height": 126,
+            "id": "mode",
+            "left": 21,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 280,
+            "center_y": 218,
+            "height": 126,
+            "id": "length",
+            "left": 194,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 453,
+            "center_y": 218,
+            "height": 126,
+            "id": "palette",
+            "left": 367,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 626,
+            "center_y": 218,
+            "height": 126,
+            "id": "count",
+            "left": 540,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 799,
+            "center_y": 218,
+            "height": 126,
+            "id": "distance",
+            "left": 713,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 972,
+            "center_y": 218,
+            "height": 126,
+            "id": "save",
+            "left": 886,
+            "top": 155,
+            "width": 173
+          }
+        ],
+        "completed_frame_count": 3,
+        "composition_count": 2,
+        "count_prefix_checked": false,
+        "distance": 0.4,
+        "distance_feedback_checked": false,
+        "event": "frame-ready",
+        "farther": false,
+        "id": "trace",
+        "longer": false,
+        "mark_length": 12,
+        "more": false,
+        "nonce": "0f5b22e6-279b-462b-ab66-f7e41781fb12",
+        "path_count": 24,
+        "png_sha256": "6eb91dbdf1bd1553ddd5db496f0970fcb372ce2a5746a977488c5c856a93e6ab",
+        "raw_commands": 48000,
+        "same_movement_as_previous": true,
+        "same_path_objects_as_previous": true,
+        "sequence": 2,
+        "state_version": 1,
+        "steps": 2000,
+        "submitted_commands": 27784,
+        "thread_id": 2,
+        "thread_name": "main",
+        "trace": true,
+        "viewport_bounds": [
+          21,
+          365,
+          1059,
+          1836
+        ]
+      },
+      {
+        "alternate": false,
+        "button_center_bounds": [
+          {
+            "center_x": 107,
+            "center_y": 218,
+            "height": 126,
+            "id": "mode",
+            "left": 21,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 280,
+            "center_y": 218,
+            "height": 126,
+            "id": "length",
+            "left": 194,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 453,
+            "center_y": 218,
+            "height": 126,
+            "id": "palette",
+            "left": 367,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 626,
+            "center_y": 218,
+            "height": 126,
+            "id": "count",
+            "left": 540,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 799,
+            "center_y": 218,
+            "height": 126,
+            "id": "distance",
+            "left": 713,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 972,
+            "center_y": 218,
+            "height": 126,
+            "id": "save",
+            "left": 886,
+            "top": 155,
+            "width": 173
+          }
+        ],
+        "completed_frame_count": 4,
+        "composition_count": 3,
+        "count_prefix_checked": false,
+        "distance": 0.4,
+        "distance_feedback_checked": false,
+        "event": "frame-ready",
+        "farther": false,
+        "id": "marks-replay",
+        "longer": false,
+        "mark_length": 12,
+        "more": false,
+        "nonce": "0f5b22e6-279b-462b-ab66-f7e41781fb12",
+        "path_count": 24,
+        "png_sha256": "0e86ee3dbbea8d658bd31e272f2a72b8a5ec07eedc00f05d73e659da3c170d85",
+        "raw_commands": 12000,
+        "same_movement_as_previous": true,
+        "same_path_objects_as_previous": true,
+        "sequence": 3,
+        "state_version": 2,
+        "steps": 2000,
+        "submitted_commands": 7002,
+        "thread_id": 2,
+        "thread_name": "main",
+        "trace": false,
+        "viewport_bounds": [
+          21,
+          365,
+          1059,
+          1836
+        ]
+      },
+      {
+        "alternate": false,
+        "button_center_bounds": [
+          {
+            "center_x": 107,
+            "center_y": 218,
+            "height": 126,
+            "id": "mode",
+            "left": 21,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 280,
+            "center_y": 218,
+            "height": 126,
+            "id": "length",
+            "left": 194,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 453,
+            "center_y": 218,
+            "height": 126,
+            "id": "palette",
+            "left": 367,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 626,
+            "center_y": 218,
+            "height": 126,
+            "id": "count",
+            "left": 540,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 799,
+            "center_y": 218,
+            "height": 126,
+            "id": "distance",
+            "left": 713,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 972,
+            "center_y": 218,
+            "height": 126,
+            "id": "save",
+            "left": 886,
+            "top": 155,
+            "width": 173
+          }
+        ],
+        "completed_frame_count": 5,
+        "composition_count": 4,
+        "count_prefix_checked": false,
+        "distance": 0.4,
+        "distance_feedback_checked": false,
+        "event": "frame-ready",
+        "farther": false,
+        "id": "long-marks",
+        "longer": true,
+        "mark_length": 24,
+        "more": false,
+        "nonce": "0f5b22e6-279b-462b-ab66-f7e41781fb12",
+        "path_count": 24,
+        "png_sha256": "e66320c356d89c6f23289b5636bc82b037bca404d6b29e5558270b9f0cb737d5",
+        "raw_commands": 12000,
+        "same_movement_as_previous": true,
+        "same_path_objects_as_previous": true,
+        "sequence": 4,
+        "state_version": 3,
+        "steps": 2000,
+        "submitted_commands": 7057,
+        "thread_id": 2,
+        "thread_name": "main",
+        "trace": false,
+        "viewport_bounds": [
+          21,
+          365,
+          1059,
+          1836
+        ]
+      },
+      {
+        "alternate": true,
+        "button_center_bounds": [
+          {
+            "center_x": 107,
+            "center_y": 218,
+            "height": 126,
+            "id": "mode",
+            "left": 21,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 280,
+            "center_y": 218,
+            "height": 126,
+            "id": "length",
+            "left": 194,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 453,
+            "center_y": 218,
+            "height": 126,
+            "id": "palette",
+            "left": 367,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 626,
+            "center_y": 218,
+            "height": 126,
+            "id": "count",
+            "left": 540,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 799,
+            "center_y": 218,
+            "height": 126,
+            "id": "distance",
+            "left": 713,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 972,
+            "center_y": 218,
+            "height": 126,
+            "id": "save",
+            "left": 886,
+            "top": 155,
+            "width": 173
+          }
+        ],
+        "completed_frame_count": 6,
+        "composition_count": 5,
+        "count_prefix_checked": false,
+        "distance": 0.4,
+        "distance_feedback_checked": false,
+        "event": "frame-ready",
+        "farther": false,
+        "id": "palette",
+        "longer": true,
+        "mark_length": 24,
+        "more": false,
+        "nonce": "0f5b22e6-279b-462b-ab66-f7e41781fb12",
+        "path_count": 24,
+        "png_sha256": "8ba5941752c3f74fa2bc8bb667cd8e633d745ca04cde60aa0fd56f5e589e968d",
+        "raw_commands": 12000,
+        "same_movement_as_previous": true,
+        "same_path_objects_as_previous": true,
+        "sequence": 5,
+        "state_version": 4,
+        "steps": 2000,
+        "submitted_commands": 7057,
+        "thread_id": 2,
+        "thread_name": "main",
+        "trace": false,
+        "viewport_bounds": [
+          21,
+          365,
+          1059,
+          1836
+        ]
+      },
+      {
+        "alternate": true,
+        "button_center_bounds": [
+          {
+            "center_x": 107,
+            "center_y": 218,
+            "height": 126,
+            "id": "mode",
+            "left": 21,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 280,
+            "center_y": 218,
+            "height": 126,
+            "id": "length",
+            "left": 194,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 453,
+            "center_y": 218,
+            "height": 126,
+            "id": "palette",
+            "left": 367,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 626,
+            "center_y": 218,
+            "height": 126,
+            "id": "count",
+            "left": 540,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 799,
+            "center_y": 218,
+            "height": 126,
+            "id": "distance",
+            "left": 713,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 972,
+            "center_y": 218,
+            "height": 126,
+            "id": "save",
+            "left": 886,
+            "top": 155,
+            "width": 173
+          }
+        ],
+        "completed_frame_count": 7,
+        "composition_count": 6,
+        "count_prefix_checked": true,
+        "distance": 0.4,
+        "distance_feedback_checked": false,
+        "event": "frame-ready",
+        "farther": false,
+        "id": "count",
+        "longer": true,
+        "mark_length": 24,
+        "more": true,
+        "nonce": "0f5b22e6-279b-462b-ab66-f7e41781fb12",
+        "path_count": 24,
+        "png_sha256": "8e48f8df504d243afaa8032c5f909a2c1c97b2a56a8ac9b3795fa63b616a948f",
+        "raw_commands": 12024,
+        "same_movement_as_previous": false,
+        "same_path_objects_as_previous": false,
+        "sequence": 6,
+        "state_version": 5,
+        "steps": 2001,
+        "submitted_commands": 7066,
+        "thread_id": 2,
+        "thread_name": "main",
+        "trace": false,
+        "viewport_bounds": [
+          21,
+          365,
+          1059,
+          1836
+        ]
+      },
+      {
+        "alternate": true,
+        "button_center_bounds": [
+          {
+            "center_x": 107,
+            "center_y": 218,
+            "height": 126,
+            "id": "mode",
+            "left": 21,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 280,
+            "center_y": 218,
+            "height": 126,
+            "id": "length",
+            "left": 194,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 453,
+            "center_y": 218,
+            "height": 126,
+            "id": "palette",
+            "left": 367,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 626,
+            "center_y": 218,
+            "height": 126,
+            "id": "count",
+            "left": 540,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 799,
+            "center_y": 218,
+            "height": 126,
+            "id": "distance",
+            "left": 713,
+            "top": 155,
+            "width": 173
+          },
+          {
+            "center_x": 972,
+            "center_y": 218,
+            "height": 126,
+            "id": "save",
+            "left": 886,
+            "top": 155,
+            "width": 173
+          }
+        ],
+        "completed_frame_count": 8,
+        "composition_count": 7,
+        "count_prefix_checked": false,
+        "distance": 0.8,
+        "distance_feedback_checked": true,
+        "event": "frame-ready",
+        "farther": true,
+        "id": "distance",
+        "longer": true,
+        "mark_length": 24,
+        "more": true,
+        "nonce": "0f5b22e6-279b-462b-ab66-f7e41781fb12",
+        "path_count": 24,
+        "png_sha256": "00aef110168246e7a39a94455b17816d39671c23dbd0cd3473fc7eb607e13b47",
+        "raw_commands": 12024,
+        "same_movement_as_previous": false,
+        "same_path_objects_as_previous": false,
+        "sequence": 7,
+        "state_version": 6,
+        "steps": 2001,
+        "submitted_commands": 5500,
+        "thread_id": 2,
+        "thread_name": "main",
+        "trace": false,
+        "viewport_bounds": [
+          21,
+          365,
+          1059,
+          1836
+        ]
+      }
+    ],
+    "missing_surface_callback_checked": true,
+    "nonce": "0f5b22e6-279b-462b-ab66-f7e41781fb12",
+    "passed": true,
+    "paused": true,
+    "renderer": "org.procedurals.android.internal.AndroidSurface",
+    "resume_acknowledgments": 1,
+    "resumed": true,
+    "save_quiet_ms": 301,
+    "saved": {
+      "byte_sha256": "00aef110168246e7a39a94455b17816d39671c23dbd0cd3473fc7eb607e13b47",
+      "is_pending": 0,
+      "metadata_height": 640,
+      "metadata_width": 640,
+      "mime_type": "image/png",
+      "png_height": 640,
+      "png_width": 640,
+      "relative_path": "Pictures/Procedurals/",
+      "uri": "content://media/external_primary/images/media/1000000037"
+    },
+    "sequence": 8,
+    "thread_id": 2,
+    "thread_name": "main"
+  },
+  "display_restore": {
+    "after_sha256": "39ddf5d250e2248a3037172725d8f23ad4a42ec86a7e5dbbc1a5ce7a0dcd18f7",
+    "before_sha256": "0e18237aacab7783f9aef115dd72bd76bda02d98d9c83076bb2495377572819e",
+    "bounds": [
+      21,
+      365,
+      1059,
+      1836
+    ],
+    "equal": true
+  },
+  "finding": "All native counts and lifecycle checks passed; host expected historical PGraphicsAndroid2D class name instead of current AndroidSurface subclass. Full image checks were not reached."
+}

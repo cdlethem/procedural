@@ -1,0 +1,21 @@
+{
+  "status": "failed",
+  "accepted": false,
+  "terminal_session": 68283,
+  "exit_code": 1,
+  "result": ".work/reproductions/android-branch-marks-native4/result.json",
+  "result_sha256": "c30fd7a22c95f4309b05d76bc84f23cdb7d8c01ed040d784def18571900fae65",
+  "failure": "displayed viewport differs after resume before any edit",
+  "display_restore": {
+    "bounds": [
+      21,
+      617,
+      1059,
+      1836
+    ],
+    "equal": false,
+    "before_sha256": "9a6926bd3d1ee13da36076123540bf3264aeb19f477164ec390fe99bbb9ae144",
+    "after_sha256": "199a012cb6aa184e9802c596c1ec3fc4025b0146e4d3a89feddd8579bfea8cff"
+  },
+  "visual_review": "Root viewed both screens: populated tree both times. Before capture has a global lighter tint including margins and navigation bar; likely initial window fade. Exact equality remains required; next run settles before baseline capture."
+}

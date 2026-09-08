@@ -26,7 +26,7 @@ import org.json.JSONObject;
 
 /**
  * Test-only observation activity for the native editable FieldMarks example.
- * It neither invokes controls nor changes rendering, saving, MediaStore, or edit state.
+ * It observes normal controls and performs a controlled paused-renderer restore regression.
  */
 public final class FieldMarksProbeActivity extends FieldMarksActivity {
     private File evidenceDirectory;
@@ -36,7 +36,8 @@ public final class FieldMarksProbeActivity extends FieldMarksActivity {
     private int lastReadyFrame = -1;
     private RenderedSnapshot lastSnapshot;
     private byte[] lastPng;
-    private boolean failed;
+    private boolean failed, pausedForCheck, resumedAfterPause, missingSurfaceCallbackChecked;
+    private int resumeAcknowledgments;
     private final JSONArray frames = new JSONArray();
     private JSONObject savedFacts;
 
@@ -48,6 +49,57 @@ public final class FieldMarksProbeActivity extends FieldMarksActivity {
             fail(new IOException("cannot create probe evidence directory"));
     }
 
+    @Override protected void onPause() {
+        super.onPause();
+        if (lastComposition == 3) try {
+            pausedForCheck = true;
+            java.lang.reflect.Field probeField = FieldMarksActivity.class.getDeclaredField("probe");
+            probeField.setAccessible(true);
+            processing.core.PApplet applet = (processing.core.PApplet)probeField.get(this);
+            java.lang.reflect.Field changed = applet.g.getClass().getDeclaredField("changed");
+            changed.setAccessible(true); changed.setBoolean(applet.g, false);
+            applet.resume();
+            check(changed.getBoolean(applet.g), "resume hook did not invalidate restore state");
+            changed.setBoolean(applet.g, false);
+            missingSurfaceCallbackChecked = true;
+        } catch (Throwable failure) { fail(failure); }
+    }
+    @Override protected void onResume() {
+        super.onResume();
+        if (pausedForCheck) resumedAfterPause = true;
+    }
+
+    /** Read-only diagnostics distinguish input delivery from renderer scheduling. */
+    @Override public boolean dispatchTouchEvent(android.view.MotionEvent event) {
+        boolean handled = super.dispatchTouchEvent(event);
+        if (pausedForCheck && event.getActionMasked() == android.view.MotionEvent.ACTION_UP)
+            diagnostic("touch-up");
+        return handled;
+    }
+    private static Object reflect(Object target, String name) throws ReflectiveOperationException {
+        for (Class<?> type=target.getClass(); type!=null; type=type.getSuperclass()) try {
+            java.lang.reflect.Field field=type.getDeclaredField(name);
+            field.setAccessible(true); return field.get(target);
+        } catch (NoSuchFieldException absent) { }
+        throw new NoSuchFieldException(name);
+    }
+    private final JSONArray diagnostics = new JSONArray();
+    private void diagnostic(String event) {
+        try {
+            JSONObject value=new JSONObject(); put(value,"event",event);
+            Object probe=reflect(this,"probe"), graphics=reflect(probe,"g");
+            for(String name:new String[]{"looping","redraw","frameCount"}) put(value,name,reflect(probe,name));
+            for(String name:new String[]{"changed","restoredSurface","restartedLoopingAfterResume","restoreCount","restoreFilename"})
+                put(value,name,reflect(graphics,name));
+            for(String name:new String[]{"busy","resumed","displayValid"}) put(value,name,reflect(this,name));
+            Object requested=((java.util.concurrent.atomic.AtomicReference<?>)reflect(this,"requested")).get();
+            put(value,"requested_version",reflect(requested,"version"));
+            put(value,"composition_count",lastComposition);
+            diagnostics.put(value); JSONObject result=new JSONObject(); put(result,"observations",diagnostics);
+            writeJsonAtomically(new File(evidenceDirectory,"diagnostics.json"),result);
+        } catch(Throwable error) { fail(error); }
+    }
+
     @Override protected void onFrameReady(RenderedSnapshot snapshot) {
         try {
             checkUi("onFrameReady");
@@ -55,7 +107,20 @@ public final class FieldMarksProbeActivity extends FieldMarksActivity {
             check(lengthButton.isEnabled() && paletteButton.isEnabled() && marksButton.isEnabled() && saveButton.isEnabled(),
                 "all four controls must be enabled at frame acknowledgement");
             int count = snapshot.compositionCount;
-            if (count == lastComposition) return; // A lifecycle acknowledgement may repeat the same image.
+            if (count == lastComposition) {
+                if (pausedForCheck && count == 3) {
+                    check(resumedAfterPause && missingSurfaceCallbackChecked, "resume sequence missing");
+                    check(snapshot == lastSnapshot && Arrays.equals(snapshot.image.pngBytes(), lastPng), "resume changed snapshot");
+                    check(++resumeAcknowledgments == 1, "duplicate resume acknowledgment");
+                    JSONObject resume = new JSONObject(); put(resume, "passed", true);
+                    put(resume, "composition_count", count); put(resume, "resume_acknowledgments", resumeAcknowledgments);
+                    writeJsonAtomically(new File(evidenceDirectory, "resume.json"), resume);
+                    diagnostic("resume-ack");
+                    new android.os.Handler(Looper.getMainLooper()).postDelayed(() -> diagnostic("resume-plus-250ms"),250);
+                    new android.os.Handler(Looper.getMainLooper()).postDelayed(() -> diagnostic("resume-plus-1000ms"),1000);
+                }
+                return;
+            }
             check(count == lastComposition + 1 && count >= 1 && count <= 8,
                 "unexpected composition acknowledgement " + count + " after " + lastComposition);
             boolean[][] expected = {
@@ -87,6 +152,7 @@ public final class FieldMarksProbeActivity extends FieldMarksActivity {
         try {
             checkUi("onImageSaved");
             check(snapshot != null && uri != null, "save hook is missing its snapshot or URI");
+            check(pausedForCheck && resumedAfterPause && missingSurfaceCallbackChecked && resumeAcknowledgments == 1, "restore regression incomplete");
             check(snapshot.compositionCount == 8, "save must use composition eight");
             check(currentSnapshot() == snapshot && snapshot == lastSnapshot,
                 "save must use the currently acknowledged snapshot");
@@ -129,6 +195,14 @@ public final class FieldMarksProbeActivity extends FieldMarksActivity {
         put(result, "commands", snapshot.image.commands);
         put(result, "png_sha256", sha256(png));
         put(result, "button_center_bounds", buttonBounds());
+        try {
+            View viewport=(View)reflect(this,"viewport"); int[] location=new int[2];
+            viewport.getLocationOnScreen(location); JSONArray bounds=new JSONArray();
+            bounds.put(location[0]); bounds.put(location[1]);
+            bounds.put(location[0]+viewport.getWidth()); bounds.put(location[1]+viewport.getHeight());
+            put(result,"viewport_bounds",bounds);
+        } catch(ReflectiveOperationException failure) { throw new IllegalStateException(failure); }
+
         return result;
     }
 
@@ -213,6 +287,9 @@ public final class FieldMarksProbeActivity extends FieldMarksActivity {
         JSONObject result = envelope("result");
         put(result, "passed", passed && !failed);
         put(result, "frames", frames);
+        put(result, "missing_surface_callback_checked", missingSurfaceCallbackChecked);
+        put(result, "paused", pausedForCheck); put(result, "resumed", resumedAfterPause);
+        put(result, "resume_acknowledgments", resumeAcknowledgments);
         put(result, "composition_count", lastComposition);
         put(result, "completed_frame_count", completedFrameCount());
         put(result, "saved", savedFacts);

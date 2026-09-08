@@ -199,6 +199,15 @@ public class FieldMarksActivity extends FragmentActivity {
     protected final RenderedSnapshot currentSnapshot() { return rendered; }
 
     public final class Probe extends PApplet {
+        /** Re-arm pinned Android2D cached restoration even without a surface callback. */
+        @Override public void resume() { if (g != null) g.surfaceChanged(); }
+        private boolean surfacePresentationPending;
+        /** A replacement SurfaceView can arrive after cached restoration stopped looping. */
+        @Override public synchronized void surfaceChanged() {
+            super.surfaceChanged();
+            if (rendered != null) { surfacePresentationPending=true; redraw(); }
+        }
+
         private final int edge;
         private MarkField field;
         private AndroidFrameHost host;
@@ -259,7 +268,7 @@ public class FieldMarksActivity extends FragmentActivity {
             });
         }
 
-        @Override protected boolean handleSpecialDraw() {
+        @Override protected synchronized boolean handleSpecialDraw() {
             boolean handled=super.handleSpecialDraw();
             if (handled && !isLooping()) {
                 RenderedSnapshot snapshot=rendered;
@@ -269,6 +278,19 @@ public class FieldMarksActivity extends FragmentActivity {
                     EditState desired=requested.get();
                     if (desired.version != failedVersion) redraw();
                     else reportDrawFailure(desired, false, null);
+                }
+            }
+            if (!handled && surfacePresentationPending) {
+                surfacePresentationPending=false;
+                RenderedSnapshot snapshot=rendered;
+                if (displayValid && snapshot != null && requested.get().version == snapshot.options.version) {
+                    // The primary bitmap can be cleared when the SurfaceView is replaced.
+                    // Restore the acknowledged PNG, without rebuilding its composition.
+                    try {
+                        org.procedurals.android.internal.AndroidSnapshotPresentation.present(this,snapshot.image.pngBytes());
+                        redraw=false;
+                    } finally { insideDraw=false; }
+                    return true;
                 }
             }
             return handled;

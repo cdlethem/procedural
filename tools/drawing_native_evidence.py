@@ -201,6 +201,14 @@ def check_android_native(root,profile,target):
                 or target.get('implementation_status')!='native_adapter_implemented'):
             return ['native claims require a supported reviewed evidence validator']
         review=json.loads((root/target['native_review']).read_text())
+        replacements={}
+        if target['native_review']=='evidence/conformance/android-snapshot-restoration-root-review.json':
+            if __package__:
+                from .android_restoration_review import validated_legacy_context
+            else:
+                from android_restoration_review import validated_legacy_context
+            review,target,replacements=validated_legacy_context(root,profile,target)
+
         required_sources={
             'packages/java/src/main/java/org/procedurals/'+name+'.java' for name in
             ('color/CyclicPalette','fields/GradientNoise2D01','internal/DrawingFrameState',
@@ -226,7 +234,7 @@ def check_android_native(root,profile,target):
         for relative,expected in review['evidence_sha256'].items():
             if digest(root/relative)!=expected:return ['native evidence changed: '+relative]
         for relative,expected in review['implementation_sha256'].items():
-            if digest(root/relative)!=expected:return ['native implementation changed: '+relative]
+            if digest(root/relative)!=expected and replacements.get(relative)!=digest(root/relative):return ['native implementation changed: '+relative]
         paths={
             'pixels':'evidence/conformance/android-adapter-pixels.json',
             'failures':'evidence/conformance/android-adapter-failures.json',

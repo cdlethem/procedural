@@ -5,6 +5,7 @@ import json
 import subprocess
 import time
 from pathlib import Path
+from PIL import Image
 from build_android_branch_marks import ROOT, SDK, digest, staged_hashes
 
 APP = "org.procedurals.branchmarksprobe"
@@ -47,7 +48,12 @@ try:
     adb("install", "-r", str(apk))
     adb("shell", "pm", "clear", APP)
     adb("shell", "am", "start", "-W", "-n", APP + "/" + ACTIVITY)
+    def screenshot(name):
+        destination=output/name
+        destination.write_bytes(adb('exec-out','screencap','-p').stdout)
+        return destination
     resumed = False
+    display_reviewed = False
     while True:
         result = adb("exec-out", "run-as", APP, "cat", "files/branch-marks-probe/result.json", check=False)
         payload = result.stdout.strip()
@@ -59,13 +65,25 @@ try:
             state = json.loads(payload)
             if state["status"] == "failed": raise RuntimeError(state.get("failure", "native probe failed"))
             if state["status"] == "awaiting-pause" and not resumed:
+                time.sleep(1.0)
+                before=screenshot('before-resume-screen.png')
+                bounds=tuple(state['viewport_bounds'])
                 adb("shell", "input", "keyevent", "KEYCODE_HOME")
                 time.sleep(0.5)
                 adb("shell", "am", "start", "-W", "--activity-reorder-to-front", "-n", APP + "/" + ACTIVITY)
                 resumed = True
+            if state["status"] == "resumed" and not display_reviewed:
+                time.sleep(1.0)
+                after=screenshot('after-resume-screen.png')
+                with Image.open(before) as first,Image.open(after) as second:
+                    equal=first.convert('RGBA').crop(bounds).tobytes()==second.convert('RGBA').crop(bounds).tobytes()
+                report['display_restore']={'bounds':bounds,'equal':equal,'before_sha256':digest(before),'after_sha256':digest(after)}
+                if not equal:raise AssertionError('displayed viewport differs after resume before any edit')
+                adb('shell','run-as',APP,'touch','files/branch-marks-probe/display-reviewed')
+                display_reviewed=True
             if state["status"] == "passed": break
         time.sleep(0.2)
-    if not resumed or not state['paused'] or not state['resumed'] or state['composition_count'] != 18:
+    if not display_reviewed or not resumed or not state['paused'] or not state['resumed'] or state['composition_count'] != 18:
         raise RuntimeError("incomplete lifecycle/sequence")
     report['native'] = state
     report['images'] = {}

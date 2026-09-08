@@ -25,16 +25,23 @@ recreations; starter count is not original-sketch coverage.
 
 ## Start here
 
-Seven operations now have core/native records on all four targets: grid, palette, gradient
-noise, gradient paths, circle filtering, seeded circle placement and quadrant partition. Placement Android
-core evidence is API33 ART; its native Activity evidence is scoped separately. Quadrant native integration is pushed at `d2bc673a`; its Android distribution is accepted in
-`evidence/distribution/cp4-android-review.json` (see [installation](installing-region-marks-android.md));
-JavaScript distribution is accepted in `evidence/distribution/cp4-javascript-review.json`
-(see [installation](installing-region-marks-javascript.md)); Python distribution is accepted in `evidence/distribution/cp4-python-review.json`
-(see [installation](installing-region-marks-python.md)). Quadrant batch02 local delivery is complete.
-The other eight operations still require deferred target ports and workflow validation. Follow
-dependency order for the next bounded batch; see
-`design/port-batch-01.md` and the frozen contracts, including all auxiliary fixture sections.
+Ten operations now have reviewed core/native evidence and local packages on all four
+targets: grid, palette, gradient noise, gradient paths, circle filtering, seeded circle
+placement, quadrant partition, triangle coordinate mapping, seeded triangle points and
+endpoint branching. Branch distribution integration was pushed at `41ba718121ab41a33c49621c5897d91e115998b7`.
+
+The Android restoration successor covers FieldMarks, PathMarks, PlacementMarks,
+RegionMarks, GrainMarks and BranchMarks. See
+`evidence/conformance/android-snapshot-restoration-root-review.json` and
+`evidence/distribution/android-restoration-review.json`, with build instructions in
+[Android restoration patches](installing-android-restoration.md). It preserves historical
+core versions and supplies adapter0.3.0; old package records describe historical artifacts.
+Actual API33 resumed viewport equality is checked before the next edit. This does not
+extend the claim to other renderers or physical devices.
+
+Five operations remain to port: radial-profile surface, Delaunay topology, target springs,
+occupied lattice paths and mutable line-pool branching. Radial-profile surface is next;
+read its frozen contract and every auxiliary fixture section before implementation.
 
 Root integrated the reviewed p5.js/py5 circle placement cores, public exports and
 PlacementMarks workflows in `a7ea7ec5`. The exact source-bound native evidence and

@@ -126,15 +126,22 @@ public class GrainMarksActivity extends FragmentActivity {
     protected final RenderedSnapshot currentSnapshot(){return rendered;}
 
     public final class Probe extends PApplet {
+        private boolean surfacePresentationPending;
         private final int edge;private AndroidFrameHost host;private GrainComposition model;private EditState modelState;private RenderedSnapshot pending;private RuntimeException pendingFailure;private long failedVersion=-1;private int compositions;
         Probe(int edge){this.edge=edge;}
+        // The pinned Android2D cache restore needs its changed flag even when
+        // Android resumes an unchanged surface. PApplet calls this before
+        // restoreState()/resumeThread(); surfaceChanged() does not resize it.
+        @Override public void resume(){if(g!=null)g.surfaceChanged();}
+        /** A replacement SurfaceView can arrive after cached restoration stopped looping. */
+        @Override public synchronized void surfaceChanged(){super.surfaceChanged();if(rendered!=null){surfacePresentationPending=true;redraw();}}
         @Override public void settings(){size(edge,edge,JAVA2D);}
         @Override public void setup(){host=new AndroidFrameHost(this);registerMethod("post",this);noLoop();}
         private GrainComposition modelFor(EditState state){if(model==null||state.forceRebuild||!modelState.sameGeometryAs(state)){model=GrainComposition.create(state.seed,state.density,state.distribution,state.cells);modelState=state;}return model;}
         @Override public void draw(){EditState options=requested.get();RenderedSnapshot previous=rendered;if(displayValid&&previous!=null&&previous.options.version==options.version)return;try{GrainComposition retained=modelFor(options);GrainMarksRenderer.Result image=GrainMarksRenderer.render(this,host,retained,options.strokes,options.alternate?ALTERNATE:BASE);RenderedSnapshot snapshot=new RenderedSnapshot(options,retained,image,++compositions);rendered=snapshot;displayValid=true;pending=snapshot;failedVersion=-1;}catch(RuntimeException failure){displayValid=false;failedVersion=options.version;if(previous!=null)requested.compareAndSet(options,previous.options);pendingFailure=failure;}}
         public void post(){completedFrame.set(frameCount+1);RenderedSnapshot snapshot=pending;pending=null;if(snapshot!=null)runOnUiThread(()->acknowledge(snapshot,"draw-post"));RenderedSnapshot latest=rendered;EditState desired=requested.get();boolean retry=(!displayValid||latest==null||desired.version!=latest.options.version)&&desired.version!=failedVersion;if(retry)redraw();RuntimeException failure=pendingFailure;pendingFailure=null;if(failure!=null)reportDrawFailure(desired,retry,failure);}
         private void reportDrawFailure(EditState desired,boolean retry,RuntimeException failure){runOnUiThread(()->{if(isDestroyed()||requested.get().version!=desired.version)return;busy=retry;status.setText(retry?"Restoring previous image…":"Could not draw. Try another edit.");refreshControls();if(failure!=null)onExampleFailure(failure);});}
-        @Override protected boolean handleSpecialDraw(){boolean handled=super.handleSpecialDraw();if(handled&&!isLooping()){EditState desired=requested.get();RenderedSnapshot latest=rendered;boolean stale=!displayValid||latest==null||desired.version!=latest.options.version;if(stale){if(desired.version!=failedVersion)redraw();else reportDrawFailure(desired,false,null);}}return handled;}
+        @Override protected synchronized boolean handleSpecialDraw(){boolean handled=super.handleSpecialDraw();if(handled&&!isLooping()){EditState desired=requested.get();RenderedSnapshot latest=rendered;boolean stale=!displayValid||latest==null||desired.version!=latest.options.version;if(stale){if(desired.version!=failedVersion)redraw();else reportDrawFailure(desired,false,null);}}if(!handled&&surfacePresentationPending){surfacePresentationPending=false;RenderedSnapshot snapshot=rendered;if(displayValid&&snapshot!=null&&requested.get().version==snapshot.options.version){try{org.procedurals.android.internal.AndroidSnapshotPresentation.present(this,snapshot.image.pngBytes());redraw=false;}finally{insideDraw=false;}return true;}}return handled;}
         @Override public void keyPressed(){char pressed=Character.toLowerCase(this.key);if(pressed=='s'){runOnUiThread(()->saveCurrent());return;}int control=pressed=='r'?0:pressed=='n'?1:pressed=='b'?2:pressed=='x'?3:pressed=='m'?4:pressed=='c'?5:pressed=='0'?6:-1;if(control>=0){final int chosen=control;runOnUiThread(()->edit(chosen));}}
     }
 }

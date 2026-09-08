@@ -34,7 +34,7 @@ public final class RegionMarksProbeActivity extends RegionMarksActivity {
     private RenderedSnapshot previous;
     private String previousGeometry;
     private int lastCount;
-    private boolean failed,awaitingPause,paused,resumedAfterPause;
+    private boolean failed,awaitingPause,paused,resumedAfterPause,missingSurfaceCallbackChecked,resumeContinuePending;
 
     @Override public void onCreate(android.os.Bundle state) {
         super.onCreate(state);
@@ -43,6 +43,17 @@ public final class RegionMarksProbeActivity extends RegionMarksActivity {
     @Override protected void onPause() {
         if(awaitingPause)paused=true;
         super.onPause();
+        if(awaitingPause)try {
+            // Recreate an unchanged Android surface on the actual paused renderer.
+            // The user resume hook must make the pinned Android2D restore runnable;
+            // clear it again so the later real lifecycle must do the same work.
+            Object probe=reflect(this,"probe"),graphics=reflect(probe,"g");
+            java.lang.reflect.Field changed=graphics.getClass().getDeclaredField("changed");
+            changed.setAccessible(true);changed.setBoolean(graphics,false);
+            ((processing.core.PApplet)probe).resume();
+            check(changed.getBoolean(graphics),"resume hook did not invalidate restore state");
+            changed.setBoolean(graphics,false);missingSurfaceCallbackChecked=true;
+        }catch(Throwable error){fail(error);}
     }
     @Override protected void onResume() {
         super.onResume();
@@ -67,9 +78,9 @@ public final class RegionMarksProbeActivity extends RegionMarksActivity {
                 if(awaitingPause&&resumedAfterPause) {
                     check(snapshot==previous,"resume changed snapshot");
                     check(geometry(snapshot.composition).equals(previousGeometry),"resume changed geometry");
-                    awaitingPause=false;
-                    writeState("resumed",false);
-                    new Handler(Looper.getMainLooper()).post(()->separationButton.performClick());
+                    awaitingPause=false;resumeContinuePending=true;
+                    writeState("resumed-awaiting-continue",false);
+                    awaitRunnerContinue();
                 }
                 return;
             }
@@ -115,6 +126,17 @@ public final class RegionMarksProbeActivity extends RegionMarksActivity {
             new Handler(Looper.getMainLooper()).post(()->{if(lastCount==6)sourceButton.performClick();else next.performClick();});
         } catch(Throwable error){fail(error);}
     }
+    private void awaitRunnerContinue(){new Handler(Looper.getMainLooper()).postDelayed(new Runnable(){public void run(){
+        if(failed||!resumeContinuePending)return;
+        File signal=new File(evidenceDirectory,"continue");
+        if(!signal.isFile()){new Handler(Looper.getMainLooper()).postDelayed(this,50);return;}
+        try{
+            check(signal.delete(),"cannot consume runner continue signal");resumeContinuePending=false;
+            check(separationButton.isEnabled(),"resume edit control disabled");
+            check(separationButton.performClick(),"resume edit callback absent");
+            writeState("resume-edit-requested",false);
+        }catch(Throwable error){fail(error);}
+    }},50);}
     @Override protected void onImageSaved(RenderedSnapshot snapshot,Uri uri) {
         try {
             checkUi("saved");check(snapshot==previous&&currentSnapshot()==previous,"cached save snapshot");
@@ -125,6 +147,7 @@ public final class RegionMarksProbeActivity extends RegionMarksActivity {
                 try {
                     check(currentSnapshot()==snapshot&&completedFrameCount()==completed,"save redrew");
                     check(paused&&resumedAfterPause,"real pause/resume missing");
+                    check(missingSurfaceCallbackChecked,"missing surface callback regression absent");
                     writeState("passed",true);
                 } catch(Throwable error){fail(error);}
             },300);
@@ -135,6 +158,8 @@ public final class RegionMarksProbeActivity extends RegionMarksActivity {
         JSONObject value=new JSONObject();put(value,"status",status);put(value,"passed",passed);
         put(value,"frames",frames);put(value,"composition_count",lastCount);
         put(value,"paused",paused);put(value,"resumed",resumedAfterPause);
+        put(value,"missing_surface_callback_checked",missingSurfaceCallbackChecked);
+        try{put(value,"viewport_bounds",viewportBounds());}catch(ReflectiveOperationException error){throw new IOException("viewport unavailable",error);}
         writeJsonAtomically(new File(evidenceDirectory,"result.json"),value);
     }
     private void fail(Throwable error) {
@@ -186,6 +211,17 @@ public final class RegionMarksProbeActivity extends RegionMarksActivity {
             for(byte item:digest.digest(bytes))value.append(String.format("%02x",item&255));
             return value.toString();
         }catch(NoSuchAlgorithmException error){throw new IllegalStateException("SHA-256 unavailable",error);}
+    }
+    private static Object reflect(Object target,String name) throws ReflectiveOperationException {
+        for(Class<?> type=target.getClass();type!=null;type=type.getSuperclass())try {
+            java.lang.reflect.Field field=type.getDeclaredField(name);field.setAccessible(true);return field.get(target);
+        } catch(NoSuchFieldException absent) { }
+        throw new NoSuchFieldException(name);
+    }
+    private JSONArray viewportBounds() throws ReflectiveOperationException {
+        View viewport=(View)reflect(this,"viewport");int[] location=new int[2];viewport.getLocationOnScreen(location);
+        JSONArray bounds=new JSONArray();bounds.put(location[0]);bounds.put(location[1]);
+        bounds.put(location[0]+viewport.getWidth());bounds.put(location[1]+viewport.getHeight());return bounds;
     }
     private static void writeAtomically(File destination,byte[] bytes) throws IOException {
         File directory=destination.getParentFile();

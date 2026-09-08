@@ -174,7 +174,7 @@ public final class BranchMarksProbeActivity extends BranchMarksActivity {
                 if(awaitingPause&&resumedAfterPause) {
                     check(snapshot==previous&&valuesHash(snapshot.composition).equals(previousValues),"resume changed cached composition");
                     check(resumeAcknowledgments==1,"resume acknowledgment missing or duplicated");awaitingPause=false;writeState("resumed",false);
-                    new Handler(Looper.getMainLooper()).post(()->{try {
+                    awaitDisplayReview(()->{try {
                         check(narrowingButton.isEnabled(),"resume edit control disabled");resumeEditPending=true;
                         check(narrowingButton.performClick(),"resume edit callback absent");check(!resumeEditPending,"resume edit callback did not reach activity");
                         recordResumeRedrawDiagnostic("immediate");
@@ -229,11 +229,24 @@ public final class BranchMarksProbeActivity extends BranchMarksActivity {
     }
     @Override protected void onExampleFailure(Throwable error){fail(error);}
 
+    private void awaitDisplayReview(Runnable next) {
+        Handler handler=new Handler(Looper.getMainLooper());long deadline=android.os.SystemClock.uptimeMillis()+15000;
+        handler.post(new Runnable(){public void run(){
+            if(failed)return;
+            if(new File(evidenceDirectory,"display-reviewed").isFile()){next.run();return;}
+            if(android.os.SystemClock.uptimeMillis()>deadline){fail(new AssertionError("display review handshake missing"));return;}
+            handler.postDelayed(this,50);
+        }});
+    }
     private void writeState(String status,boolean passed) throws IOException { writeState(status,passed,null); }
     private void writeState(String status,boolean passed,JSONObject saved) throws IOException {
         if(failed&&passed)return;
         JSONObject value=new JSONObject();put(value,"status",status);put(value,"passed",passed);put(value,"frames",frames);put(value,"composition_count",lastCount);put(value,"missing_surface_callback_checked",missingSurfaceCallbackChecked);put(value,"paused",paused);put(value,"resumed",resumedAfterPause);put(value,"resume_acknowledgments",resumeAcknowledgments);put(value,"ordering",ordering);put(value,"completed_frames",completedFrameCount());if(saved!=null)put(value,"saved_media_store",saved);
         try {java.lang.reflect.Field field=BranchMarksActivity.class.getDeclaredField("requested");field.setAccessible(true);EditState requested=(EditState)((AtomicReference<?>)field.get(this)).get();put(value,"requested_version",requested.version);put(value,"requested_seed",requested.seed);}catch(ReflectiveOperationException error){throw new IOException("observer state unavailable",error);}
+        try {
+            android.view.View viewport=(android.view.View)reflect(this,"viewport");int[] xy=new int[2];viewport.getLocationOnScreen(xy);
+            JSONArray bounds=new JSONArray();bounds.put(xy[0]);bounds.put(xy[1]);bounds.put(xy[0]+viewport.getWidth());bounds.put(xy[1]+viewport.getHeight());put(value,"viewport_bounds",bounds);
+        }catch(ReflectiveOperationException error){throw new IOException("viewport bounds unavailable",error);}
         writeJsonAtomically(new File(evidenceDirectory,"result.json"),value);
     }
     /** Capture the pinned-runtime state around the accepted resume edit without changing it. */

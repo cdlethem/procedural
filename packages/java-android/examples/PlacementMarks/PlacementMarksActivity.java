@@ -220,6 +220,9 @@ public class PlacementMarksActivity extends FragmentActivity {
         private long failedVersion=-1;
         private int compositions;
         Probe(int edge){this.edge=edge;}
+        @Override public void resume(){if(g!=null)g.surfaceChanged();}
+        private boolean surfacePresentationPending;
+        @Override public synchronized void surfaceChanged(){super.surfaceChanged();if(rendered!=null){surfacePresentationPending=true;redraw();}}
         @Override public void settings(){size(edge,edge,JAVA2D);}
         @Override public void setup(){host=new AndroidFrameHost(this);registerMethod("post",this);noLoop();}
         /** Style-only edits keep the exact retained composition; every effective
@@ -269,7 +272,7 @@ public class PlacementMarksActivity extends FragmentActivity {
                 if(failure!=null)onExampleFailure(failure);
             });
         }
-        @Override protected boolean handleSpecialDraw(){
+        @Override protected synchronized boolean handleSpecialDraw(){
             boolean handled=super.handleSpecialDraw();
             if(handled&&!isLooping()){
                 RenderedSnapshot snapshot=rendered;
@@ -279,6 +282,15 @@ public class PlacementMarksActivity extends FragmentActivity {
                     EditState desired=requested.get();
                     if(desired.version!=failedVersion)redraw();
                     else reportDrawFailure(desired,false,null);
+                }
+            }
+            if(!handled&&surfacePresentationPending){
+                surfacePresentationPending=false;
+                RenderedSnapshot snapshot=rendered;
+                if(displayValid&&snapshot!=null&&requested.get().version==snapshot.options.version){
+                    try{org.procedurals.android.internal.AndroidSnapshotPresentation.present(this,snapshot.image.pngBytes());redraw=false;}
+                    finally{insideDraw=false;}
+                    return true;
                 }
             }
             return handled;

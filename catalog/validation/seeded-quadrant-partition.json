@@ -304,17 +304,19 @@
       "native": {
         "status": "validated-scoped",
         "implementation_sha256": {
-          "packages/java-android/examples/RegionMarks/RegionMarksActivity.java": "ab92346ffa6ee15d5b9a3b303298786cc5a7b876034c9fd2770f210a63fe220e",
+          "packages/java-android/examples/RegionMarks/RegionMarksActivity.java": "303b34e01eb8742cec5cc5a1c08277def0581a5d7e7a94aef11cf6c089f8d8d7",
           "packages/java-android/examples/RegionMarks/RegionMarksRenderer.java": "dcf268dab5d097b4f53f2037ba7805239c46f24da2b86910bc2862476dff72d4",
           "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
           "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
           "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
-          "tests/native/android-region-marks/RegionMarksProbeActivity.java": "a084800a29abc1f9ab5eb7c4f8096f2642fc0219da742d87b161272931f59b7f",
+          "tests/native/android-region-marks/RegionMarksProbeActivity.java": "fd13198b4c5b781d5cbc636d6444a781040d45adf2a5307aa5d4d02a533d4816",
           "tools/build_android_region_marks.py": "7978f61b7b54daf52216e586f1dce72ebe97cbbf7863daf6a8d4a3b64bd334b1",
-          "tools/run_android_region_marks.py": "973333bc6f15920c209a5057ba6457109a6bfd6e7e677ae39df460fd3ff7deed"
+          "tools/run_android_region_marks.py": "cafe8350b17c66d79b463e71e9a6242f2288828e80f5905bd329bc0a94bf1ad6",
+          "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77"
         },
         "evidence_sha256": {
-          "evidence/conformance/android-region-marks.json": "052c16a7cd11f4ff32abd974a47c20bab8c07b7e95de574057b9a0f293ffe0b1"
+          "evidence/conformance/android-region-marks.json": "052c16a7cd11f4ff32abd974a47c20bab8c07b7e95de574057b9a0f293ffe0b1",
+          "evidence/conformance/android-region-restore-attempt1.json": "286e1990e98deefd770097cd1d7abafb04db72873831f88a4ea368f40df8bf00"
         },
         "evidence_predicates": [
           {
@@ -336,11 +338,26 @@
             "path": "evidence/conformance/android-region-marks.json",
             "pointer": "/native/resumed",
             "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-region-restore-attempt1.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/android-region-restore-attempt1.json",
+            "pointer": "/display_restore/equal",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-region-restore-attempt1.json",
+            "pointer": "/native/missing_surface_callback_checked",
+            "equals": true
           }
         ],
         "acceptance_review": {
-          "path": "evidence/conformance/quadrant-android-native-root-review.json",
-          "sha256": "8fc63330584e4efa259653b45323985c9c2ca68271a118056702e43c8910732f"
+          "path": "evidence/conformance/android-snapshot-restoration-root-review.json",
+          "sha256": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8"
         },
         "runtime_profile": {
           "name": "Android API33 x86_64; pinned Processing Android JAVA2D",

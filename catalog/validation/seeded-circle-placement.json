@@ -377,7 +377,7 @@
           "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
           "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
           "packages/java-android/examples/PlacementMarks/AndroidManifest.xml": "5b508021536f85b637fae1ee7c64788ebf009434dd735f9f49a83fa5ce655c01",
-          "packages/java-android/examples/PlacementMarks/PlacementMarksActivity.java": "e7fee124da66464cb6240780c9f9fa73872d6f11ba653d7e5330b5342d96c050",
+          "packages/java-android/examples/PlacementMarks/PlacementMarksActivity.java": "da30b0f05a5a2574602f32feb14f1f3845188d72ddc94155c249d88010aa36dc",
           "packages/java-android/examples/PlacementMarks/PlacementMarksRenderer.java": "c4b6d9780da7c7dae0a6b5d1d9e4d4a69b44d8e641d36ecc85d2914a84905f2a",
           "packages/java-android/examples/PlacementMarks/README.md": "dbbe20e5f2a2ebd510e54df874f147f950a3de5dd8fe0267b4d4a07352f48425",
           "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
@@ -406,24 +406,57 @@
           "tests/native/android-bootstrap/build.gradle": "301b72f0f10c630de8eca0a5a8374b2fe5e0c69724ba49720793da15cf95b083",
           "tests/native/android-bootstrap/gradle.properties": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e",
           "tests/native/android-bootstrap/settings.gradle": "acaba98235948bfc23736254a68c0796d822a33f513f0c5b86cb47af43acf398",
-          "tests/native/android-placement-marks/PlacementMarksProbeActivity.java": "f24e11d9c4fcd1653c060eb31f8ccfb5fb16c8b144fee2394498ac7ce9a7a2f8",
+          "tests/native/android-placement-marks/PlacementMarksProbeActivity.java": "27dff7801728f33cbd8fc624ac42f5d1dfa8b73039d62db37a90ee1edaf9fb90",
           "tools/build_android_placement_marks.py": "c173f9eb5fc8c0e28eef75156c2808fac1c2942db25dde37dfafa13b4d829c18",
-          "tools/run_android_placement_marks.py": "15d8c2a179ce150871ad7bfdf344ccbbaa63e85e7286046b1dc4d4d1ffe9c405",
-          "tools/run_circle_placement_java.py": "5020d8720c183ed696ea8783b257ae7949b162efca5991aceec6c91882a864ee"
+          "tools/run_android_placement_marks.py": "f6b80201fb01170b9ef8d5db433a7f9a2f6878a491a1a6414bf608f72db23f21",
+          "tools/run_circle_placement_java.py": "5020d8720c183ed696ea8783b257ae7949b162efca5991aceec6c91882a864ee",
+          "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77"
         },
         "evidence_sha256": {
-          "evidence/reproductions/placement-marks-android/result.json": "b46910af5b00f170061e123e3dd476dcf67713ecd281ca23003da7c49e2b7180"
+          "evidence/reproductions/placement-marks-android/result.json": "b46910af5b00f170061e123e3dd476dcf67713ecd281ca23003da7c49e2b7180",
+          "evidence/conformance/android-field-restore-attempt7.json": "2f41d3416e4fcce982d8cbfd15317d8728f1dd4a8d908028cd4af8c237ebe22b",
+          "evidence/conformance/android-placement-restore-attempt3.json": "71ba0eddd77410ce2352e582fb786d472bc80e09bd2074361a1d2da12571d842"
         },
         "evidence_predicates": [
           {
             "path": "evidence/reproductions/placement-marks-android/result.json",
             "pointer": "/status",
             "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/android-field-restore-attempt7.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/android-field-restore-attempt7.json",
+            "pointer": "/display_restore/equal",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-field-restore-attempt7.json",
+            "pointer": "/native/missing_surface_callback_checked",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-placement-restore-attempt3.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/android-placement-restore-attempt3.json",
+            "pointer": "/display_restore/equal",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-placement-restore-attempt3.json",
+            "pointer": "/native/missing_surface_callback_checked",
+            "equals": true
           }
         ],
         "acceptance_review": {
-          "path": "evidence/reproductions/placement-marks-android/root-review.json",
-          "sha256": "1b53e713152fa1e916743bba711662fc3fff61600e470272194eb404054c1090"
+          "path": "evidence/conformance/android-snapshot-restoration-root-review.json",
+          "sha256": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8"
         },
         "runtime_profile": {
           "name": "Android API33 x86_64 emulator; ART; Processing Android2D for workflow",

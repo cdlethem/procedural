@@ -343,18 +343,20 @@
       "native": {
         "status": "validated-scoped",
         "implementation_sha256": {
-          "packages/java-android/examples/GrainMarks/GrainMarksActivity.java": "89e291f79da68cc85a2574b73df4fef967bc8ca6457f8ea95e28e7234b8f3182",
+          "packages/java-android/examples/GrainMarks/GrainMarksActivity.java": "53e851cb2ec144e378c2ef45706cf854362786bbd1cf710c14ddb1c73f2921c1",
           "packages/java-android/examples/GrainMarks/GrainMarksRenderer.java": "868e6b2d488de4a862c192c3a611aa1a4122278a35068aab65f039e1bd9a30ab",
           "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
           "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
-          "tests/native/android-grain-marks/GrainMarksProbeActivity.java": "338bdbd41a8b3ac4b639054f76959d8d3870c1ce951d472831afffd75c81acf2",
+          "tests/native/android-grain-marks/GrainMarksProbeActivity.java": "07a2fb22dc83912dc519b22544394c3abe1ca1d4de7af37bce81f2d0c89203ae",
           "tools/build_android_grain_marks.py": "d487dd438f2bbad58c9e3c8247842aff44e068e2da39a59d01950bb64f55f55a",
-          "tools/run_android_grain_marks.py": "3da8c26d9dc0d6ffd26369efc6e25cefb00d235b7c8526ffc10d90ddd4a72a05",
+          "tools/run_android_grain_marks.py": "646ed1c5f1a4f60f9a93f68f10c3683333e61815f007073c112878979a76a514",
           "design/capabilities/grain-marks-android-acceptance.md": "c5a588d5976eb6e78f4624fdf5baa26c3cd3f5e23fa5b5e19509ec59c7843f05",
-          "design/capabilities/grain-marks-android-resume-correction.md": "67a966342003e46add314f6093288f6e3cbe93ebdba8d353746673ab1a91fee9"
+          "design/capabilities/grain-marks-android-resume-correction.md": "67a966342003e46add314f6093288f6e3cbe93ebdba8d353746673ab1a91fee9",
+          "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77"
         },
         "evidence_sha256": {
-          "evidence/conformance/android-grain-marks.json": "2662fe6c4547ad9aaa74a121ef6033969555a15ee40bb07b35fac492df8a5da2"
+          "evidence/conformance/android-grain-marks.json": "2662fe6c4547ad9aaa74a121ef6033969555a15ee40bb07b35fac492df8a5da2",
+          "evidence/conformance/android-grain-restore-attempt1.json": "f89bd59c9884fd1b33c2538c43747e5927e74ebec96d89eeaacdc0e753e06231"
         },
         "evidence_predicates": [
           {
@@ -381,11 +383,26 @@
             "path": "evidence/conformance/android-grain-marks.json",
             "pointer": "/native/resumed",
             "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-grain-restore-attempt1.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/android-grain-restore-attempt1.json",
+            "pointer": "/display_restore/equal",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/android-grain-restore-attempt1.json",
+            "pointer": "/native/missing_surface_callback_checked",
+            "equals": true
           }
         ],
         "acceptance_review": {
-          "path": "evidence/conformance/triangle-android-native-root-review.json",
-          "sha256": "b2c03a3e799b295b0c9f1b48d31c3974a872047da778723c63eafc6e1fb7f8b3"
+          "path": "evidence/conformance/android-snapshot-restoration-root-review.json",
+          "sha256": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8"
         },
         "runtime_profile": {
           "name": "Android API33 Processing Android2D density1",

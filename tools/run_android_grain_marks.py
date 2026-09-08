@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Run the preregistered GrainMarks native probe on an existing API33 emulator."""
 import argparse
+import hashlib
 import json
 import subprocess
 import time
 from pathlib import Path
+from PIL import Image
 from build_android_grain_marks import ROOT, SDK, digest, staged_hashes
 
 APP = "org.procedurals.grainmarksprobe"
@@ -48,6 +50,13 @@ try:
     adb("shell", "pm", "clear", APP)
     adb("shell", "am", "start", "-W", "-n", APP + "/" + ACTIVITY)
     resumed = False
+    continued = False
+    def capture_screen(name):
+        target=output / name
+        with target.open("wb") as stream:
+            subprocess.run([str(SDK / "platform-tools/adb"), "-P", "5038", "-s", "emulator-5582", "exec-out", "screencap", "-p"],
+                           stdout=stream,stderr=subprocess.PIPE,timeout=15,check=True)
+        return target
     while True:
         result = adb("exec-out", "run-as", APP, "cat", "files/grain-marks-probe/result.json", check=False)
         payload = result.stdout.strip()
@@ -59,13 +68,29 @@ try:
             state = json.loads(payload)
             if state["status"] == "failed": raise RuntimeError(state.get("failure", "native probe failed"))
             if state["status"] == "awaiting-pause" and not resumed:
+                bounds=tuple(state.get("viewport_bounds",()))
+                if len(bounds)!=4 or not all(isinstance(value,int) for value in bounds) or bounds[2]<=bounds[0] or bounds[3]<=bounds[1]:
+                    raise RuntimeError("missing GrainMarks viewport bounds")
+                time.sleep(1.0)
+                before_resume=capture_screen("before-resume-screen.png")
                 adb("shell", "input", "keyevent", "KEYCODE_HOME")
                 time.sleep(0.5)
                 adb("shell", "am", "start", "-W", "--activity-reorder-to-front", "-n", APP + "/" + ACTIVITY)
                 resumed = True
+            if state["status"] == "resumed-awaiting-continue" and resumed and not continued:
+                time.sleep(1.0)
+                after_resume=capture_screen("after-resume-screen.png")
+                with Image.open(before_resume) as first,Image.open(after_resume) as second:
+                    before_pixels=first.convert("RGBA").crop(bounds).tobytes()
+                    after_pixels=second.convert("RGBA").crop(bounds).tobytes()
+                report["display_restore"]={"bounds":bounds,"before_sha256":digest(before_resume),"after_sha256":digest(after_resume),
+                    "before_viewport_rgba_sha256":hashlib.sha256(before_pixels).hexdigest(),"after_viewport_rgba_sha256":hashlib.sha256(after_pixels).hexdigest(),"equal":before_pixels==after_pixels}
+                if before_pixels!=after_pixels:raise AssertionError("displayed viewport differs after resume before any edit")
+                adb("shell","run-as",APP,"touch","files/grain-marks-probe/continue")
+                continued=True
             if state["status"] == "passed": break
         time.sleep(0.2)
-    if not resumed or not state['paused'] or not state['resumed'] or state['composition_count'] != 10:
+    if not resumed or not continued or not state['paused'] or not state['resumed'] or state['composition_count'] != 10:
         raise RuntimeError("incomplete lifecycle/sequence")
     report['native'] = state
     report['images'] = {}
