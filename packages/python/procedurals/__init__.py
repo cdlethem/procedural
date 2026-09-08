@@ -41,4 +41,6 @@ __all__ = [
 ]
 
 from .radial_profile import RadialProfile3D, RadialProfileError
+from .delaunay import DelaunayError, delaunay_2d
+__all__ += ["DelaunayError", "delaunay_2d"]
 __all__ += ["RadialProfile3D", "RadialProfileError"]
