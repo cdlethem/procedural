@@ -50,3 +50,5 @@ from .stop_ramp import StopRampError, stop_ramp
 __all__ += ["StopRampError", "stop_ramp"]
 from .raster_remap import RasterRemapError, bilinear_raster_remap_2d
 __all__ += ["RasterRemapError", "bilinear_raster_remap_2d"]
+from .noise_band_path import NoiseBandPathError, noise_band_path_2d
+__all__ += ["NoiseBandPathError", "noise_band_path_2d"]
