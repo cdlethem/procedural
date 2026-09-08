@@ -60,6 +60,23 @@ Wall-clock reads such as `millis()` remain dependent on execution speed. A sketc
 exits early cannot supply a later frame. The1–10000 frame limit is a work cap, not an
 artistic recommendation; even valid counts can exceed the existing render timeout.
 
+To capture several completed frames from one simulation, use `--frames` instead of
+`--frame`:
+
+```sh
+uv run python tools/render_java.py tools/templates/LoopSweep/LoopSweep.pde \
+  --library /path/to/procedurals/library/procedurals.jar --seed 42 \
+  --frames 1,3,5 --output .work/loop-sequence
+```
+
+The ordinals must be strictly increasing, unique integers from1 through10000, with at
+most64 captures. Each variant starts one fresh sketch and runs through its final requested
+draw; requested snapshots are saved as `frame-00001.png`, `frame-00003.png`, and so on.
+The report records `requested_frames` and per-variant `captures`; sequence mode does not
+create the single-image alias used by `--frame`. A sequence contact sheet includes every
+captured image. There is no GIF/video encoder or event replay, and a failed run leaves
+already captured files available for inspection while reporting failure.
+
 ## Current scope
 
 The helper captures one selected completed `draw()`, then exits. The sketch must use JAVA2D,

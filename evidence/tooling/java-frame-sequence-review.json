@@ -1,0 +1,24 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "JAVA2D bounded selected-frame sequence helper; no new operation or renderer acceptance",
+  "implementation_sha256": {
+    "tools/render_java.py": "2c0522e03870138165926dd526474a3b5ef4e6fcd9b01ef72dcf059c02aeecdb",
+    "tests/test_render_java.py": "b1d1ab5b71b375f6347581c06ac732d9b0a34faf14ed1fbe678330a828ac343c",
+    "tests/test_render_java_sequence_native.py": "f9ef440ad648613b6f0e464484756fc727f13252cfe320b85518a9b83531e705",
+    "docs/rendering-java.md": "40ec8d9d7973a574d5b0d7231ce8f102cf5cab1a661d7b0249f4d641908563a7"
+  },
+  "verified": [
+    "15 focused Python tests pass.",
+    "Native one-run frames1,3,5 match cumulative pixel oracle, report exactly3 captures and5 draws; final equals separate single-frame5.",
+    "Native early exit at draw2 leaves frame1, no frame3, reportfailed and no accepted variant.",
+    "Existing asset and single-frame accumulation native tests pass.",
+    "Root fixed contact-sheet labels to include variant and frame using descriptive local links; final sequence rerun passes."
+  ],
+  "limits": [
+    "1..64 increasing unique ordinals,1..10000, existing16-variant and runtime limits.",
+    "No wall-clock simulation, input replay, GIF/video encoding or P2D/P3D claim.",
+    "Diagnostic temporary images are not curated artist artwork."
+  ]
+}

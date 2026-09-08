@@ -161,6 +161,15 @@ class RenderJavaTests(unittest.TestCase):
             error = self._frame_cli_error(["--frame", frame])
             self.assertIn("frame", error.lower())
 
+    def test_frames_requires_bounded_strictly_increasing_ordinals(self):
+        self.assertEqual(render_java.parse_frames("1,3,5"), [1, 3, 5])
+        for text in ("", "1,", "1,3,2", "1,1", "0,2", "1,10001", "a,2",
+                     ",", ",1"):
+            with self.assertRaises(ValueError):
+                render_java.parse_frames(text)
+        with self.assertRaises(ValueError):
+            render_java.parse_frames(",".join(str(i) for i in range(1, 66)))
+
     def _frame_cli_error(self, frame_args):
         arguments = [
             str(self.base / "missing.pde"), "--library", str(self.base / "missing.jar"),

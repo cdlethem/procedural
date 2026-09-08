@@ -2153,6 +2153,50 @@
           }
         ]
       }
+    },
+    {
+      "id": "layout.retained-rectangle-cuts-2d",
+      "status": "reviewed_provisional",
+      "reason": "Root-reviewed private native local-edit and geometry-transfer evidence establishes retained supplied-cut value.",
+      "aliases": [],
+      "admission_kind": "capability_dependency",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Finite positive-extent binary64 root bounds; explicit live ID, axis and strictly interior absolute cut coordinate; explicit removal.",
+        "outputs": "Ordered immutable live leaf values with stable safe-integer IDs; detached state snapshots; child IDs on cut.",
+        "invariants": "No overlap introduced by cuts; shared exact boundaries; unrelated IDs/bounds retained; survivor order then lower/upper children; validation failures atomic; explicit removals may leave holes or empty state.",
+        "open_questions": [],
+        "review": "design/capabilities/cp21-retained-cuts-admission.md",
+        "reviewer": "root"
+      },
+      "dependency_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/cp21-retained-cuts-admission.md",
+        "rationale": "Independent retained membership and supplied binary cuts support local artist edits and both aligned/staggered subdivision, without inheriting source stochastic policies.",
+        "motivating_candidates": [
+          {
+            "candidate_id": "2019/generativos/griton#0",
+            "source_sha256": "33afce321d584c6e963aa51bd37277e2f2fe5cd07091b3ef080f65668d40e8e0",
+            "evidence_sha256": "b5937065e48e89f7adeef1a6450fb2b0b9fde162da15ebb45dc69eb25eaa4ef3",
+            "dependency": "Stable live rectangle membership, ordered replacement and explicitly supplied unequal cuts/removal.",
+            "remainder": [
+              {
+                "component": "Nested-random leaf selection, ratios and orientation-dependent omission",
+                "disposition": "recipe",
+                "reason": "Caller supplies cuts and removal; source composite remains distinct, not equivalent."
+              },
+              {
+                "component": "Streak bands, palette, alpha and renderer",
+                "disposition": "adapter",
+                "reason": "Ordinary drawing consumes live bounds; no renderer/source replay in operation."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "records": {

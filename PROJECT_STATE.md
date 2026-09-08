@@ -2,18 +2,18 @@
 
 ## Batch execution active — user-directed scheduling revision
 
-First parallel batch complete: A1 private local edit demonstrated with native images and
-callback-level checks; public production contract/admission remains next. A2 authored
-chooser/API docs reconciled. A3 asset-aware JAVA2D rendering accepted:14 focused Python
-checks and2 actual native tests (asset variants and existing frame accumulation) pass.
-Evidence: evidence/tooling/java-render-assets-review.json. Root reviewed code and tests;
-fixed test-marker antialiasing assumption, prototype reset/stroke leakage and stale doc
-scope. Gallery123 images/26 groups. No new shipped core count or distribution rebuild.
+Second batch progress: B2 frame-sequence export accepted in
+ evidence/tooling/java-frame-sequence-review.json. Actual1/3/5 accumulated captures,
+single final equivalence and early-exit partial failure pass. Existing assets/single-frame
+native checks pass;15 focused Python checks pass. Root corrected contact-sheet variant labels.
+CP21 retained rectangle dependency admission recorded and structural gate passed. Draft
+production contract: design/operations/retained-rectangle-cuts-contract.md. No new production
+code/catalog support: next freeze schema/fixtures together, then delegate implementation.
+Root must preserve griton composite remainder and never invent pliegues candidate IDs.
 
-Next advance accepted CP21 production semantics/admission in parallel with B1/B2 tooling
-briefs; tools/render_java.py must have only one implementation owner. Native shared lease
-unchanged. All workers/native sessions finished. Java0.23 remains23/23, ports/Sol paused.
-Preserve unrelated Android draft. Remaining queue: docs/java-buildout-batches.md.
+Next parallel batch: CP21 contract/schema then production, plus B1 renderer brief using
+existing DepthMarks runtime checks. All workers/native sessions finished. Java0.23 remains
+23 operations/workflows; gallery123 images/26 groups. Ports/Sol paused, Android draft retained.
 
 ## CP21 source review: editable unequal subdivision selected for investigation
 

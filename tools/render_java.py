@@ -143,7 +143,26 @@ def run(command, cwd, environment, timeout=60):
     return stdout
 
 
-def wrapper(name):
+def parse_frames(text):
+    if text is None or text == "":
+        raise ValueError("frames requires comma-separated ordinals")
+    parts = text.split(",")
+    if not 1 <= len(parts) <= 64 or any(part == "" for part in parts):
+        raise ValueError("frames requires 1 through 64 ordinals")
+    try:
+        values = [int(part) for part in parts]
+    except ValueError as error:
+        raise ValueError("frames requires integer ordinals") from error
+    if any(value < 1 or value > 10000 for value in values):
+        raise ValueError("frame ordinals must be 1 through 10000")
+    if values != sorted(set(values)):
+        raise ValueError("frame ordinals must be strictly increasing and unique")
+    return values
+
+
+def wrapper(name, sequence=False):
+    if sequence:
+        return sequence_wrapper(name)
     # Only the validated class identifier enters Java source; values travel as arguments.
     return '''import java.nio.file.*;
 import java.nio.charset.StandardCharsets;
@@ -199,12 +218,76 @@ public final class RenderSnapshot extends CLASSNAME {
 '''.replace("CLASSNAME", name)
 
 
+def sequence_wrapper(name):
+    return '''import java.nio.file.*;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
+import processing.core.PApplet;
+import processing.core.PImage;
+public final class RenderSnapshot extends CLASSNAME {
+    private final long suppliedSeed;
+    private final Map<String,Double> suppliedParameters;
+    private final Path destination;
+    private final int[] requestedFrames;
+    private int draws;
+    private int captures;
+    RenderSnapshot(long seed, Map<String,Double> parameters, Path output, int[] frames) {
+        suppliedSeed=seed; suppliedParameters=parameters; destination=output; requestedFrames=frames;
+    }
+    @Override public void settings() {
+        configureRender(suppliedSeed, Collections.unmodifiableMap(suppliedParameters));
+        super.settings();
+        if (!JAVA2D.equals(sketchRenderer()) || sketchPixelDensity()!=1)
+            throw new IllegalArgumentException("render helper requires JAVA2D density1");
+        if (sketchWidth()<1 || sketchHeight()<1 || (long)sketchWidth()*sketchHeight()>32000000L)
+            throw new IllegalArgumentException("render dimensions exceed helper limit");
+    }
+    @Override public void draw() {
+        ++draws;
+        if (draws>requestedFrames[requestedFrames.length-1])
+            throw new IllegalStateException("unexpected additional draw");
+        super.draw();
+        if (!JAVA2D.equals(sketchRenderer()) || !g.getClass().getName().equals("processing.awt.PGraphicsJava2D") || pixelDensity!=1)
+            throw new IllegalStateException("unsupported render environment");
+        if (captures<requestedFrames.length && draws==requestedFrames[captures]) {
+            PImage snapshot=get();
+            snapshot.save(destination.resolve(String.format("frame-%05d.png", draws)).toString());
+            ++captures;
+        }
+        if (draws<requestedFrames[requestedFrames.length-1]) { loop(); return; }
+        if (captures!=requestedFrames.length) throw new IllegalStateException("requested frame was not captured");
+        noLoop();
+        try {
+            StringBuilder record=new StringBuilder("{\\"hook\\":\\"configureRender-v1\\",\\"frames\\":");
+            record.append(captures).append(",\\"width\\":").append(width).append(",\\"height\\":").append(height)
+                .append(",\\"draws\\":").append(draws).append(",\\"seed\\":").append(suppliedSeed)
+                .append(",\\"requested_frames\\":[");
+            for(int i=0;i<requestedFrames.length;i++) { if(i>0) record.append(','); record.append(requestedFrames[i]); }
+            record.append("]}");
+            Files.write(destination.resolve("frame.json"), record.toString().getBytes(StandardCharsets.UTF_8));
+        } catch (Exception error) { throw new IllegalStateException(error); }
+        exit();
+    }
+    public static void main(String[] args) {
+        Thread.setDefaultUncaughtExceptionHandler((thread,error)->{error.printStackTrace();System.exit(1);});
+        long seed=Long.parseLong(args[0]);
+        Path output=Paths.get(args[1]);
+        int[] frames=Arrays.stream(args[2].split(",")).mapToInt(Integer::parseInt).toArray();
+        Map<String,Double> parameters=new LinkedHashMap<String,Double>();
+        for(int i=3;i<args.length;i++) { String[] pair=args[i].split("=",2); parameters.put(pair[0],Double.valueOf(pair[1])); }
+        PApplet.runSketch(new String[]{"--sketch-path="+output,"RenderSnapshot"}, new RenderSnapshot(seed,parameters,output,frames));
+    }
+}
+'''.replace("CLASSNAME", name)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("sketch", type=Path, help="main PDE; adjacent Java tabs are compiled")
     parser.add_argument("--library", type=Path, required=True, help="explicit procedurals.jar")
     parser.add_argument("--seed", type=int, required=True)
-    parser.add_argument("--frame", type=int, default=1, help="completed draw ordinal, 1 through 10000")
+    parser.add_argument("--frame", type=int, default=None, help="completed draw ordinal, 1 through 10000")
+    parser.add_argument("--frames", help="comma-separated completed draw ordinals, 1 through 10000")
     parser.add_argument("--param", action="append", default=[], metavar="NAME=VALUE")
     parser.add_argument("--sweep", metavar="NAME=VALUE,VALUE")
     parser.add_argument("--assets", type=Path,
@@ -216,8 +299,17 @@ def main(argv=None):
         batch = variants(args.param, args.sweep)
         if not 0 <= args.seed <= 4294967295:
             raise ValueError("seed must be an unsigned32 integer")
-        if not 1 <= args.frame <= 10000:
-            raise ValueError("frame must be 1 through 10000")
+        if args.frame is not None and args.frames is not None:
+            raise ValueError("--frame and --frames are mutually exclusive")
+        if args.frames is not None:
+            requested_frames = parse_frames(args.frames)
+            sequence_mode = True
+        else:
+            requested_frames = [1 if args.frame is None else args.frame]
+            sequence_mode = False
+            if not 1 <= requested_frames[0] <= 10000:
+                raise ValueError("frame must be 1 through 10000")
+        selected_frame = requested_frames[0] if not sequence_mode else None
         sketch, library, output, jdk = [p.resolve() for p in
                                       (args.sketch, args.library, args.output, args.java_home)]
         if not sketch.is_file() or sketch.suffix != ".pde" or not IDENTIFIER.fullmatch(sketch.stem):
@@ -256,8 +348,11 @@ def main(argv=None):
         parser.error(str(error))
     output.mkdir(parents=True)
     report = {"status": "running", "seed": args.seed, "variants": [], "inputs_before": before,
-              "selected_frame": args.frame,
+              "selected_frame": selected_frame,
               "scope": "Configured selected-frame JAVA2D render; not conformance or recreation acceptance"}
+    if sequence_mode:
+        report.pop("selected_frame")
+        report["requested_frames"] = requested_frames
     if assets is not None:
         report["assets"] = assets
     environment = os.environ.copy()
@@ -279,7 +374,7 @@ def main(argv=None):
         run([java, "-Duser.home=" + str(home), "-cp", str(classes) + os.pathsep + preclasspath,
              "PreprocessSketch", snapshot / sketch.name, generated, sketch.stem], output, environment)
         host = output / "RenderSnapshot.java"
-        host.write_text(wrapper(sketch.stem))
+        host.write_text(wrapper(sketch.stem, sequence_mode))
         run([javac, "--release", "17", "-cp", classpath, "-d", classes, generated, host,
              *[snapshot / p.name for p in tabs]], output, environment)
         compiled_before = {str(p): digest(p) for p in classes.rglob("*.class")}
@@ -290,26 +385,57 @@ def main(argv=None):
             if staged_assets is not None:
                 stage_assets(Path(assets["root"]), staged_assets, assets)
             run([sys.executable, lease, "--timeout", "30", "--", "xvfb-run", "-a", java,
-                 "-Duser.home=" + str(home), "-cp", classpath, "RenderSnapshot", args.seed, variant, args.frame,
+                 "-Duser.home=" + str(home), "-cp", classpath, "RenderSnapshot", args.seed, variant,
+                 ",".join(map(str, requested_frames)) if sequence_mode else requested_frames[0],
                  *[key + "=" + str(value) for key, value in parameters.items()]], output, environment, 90)
             native = json.loads((variant / "frame.json").read_text())
-            if native.get("hook") != "configureRender-v1" or native.get("frames") != 1 or native.get("seed") != args.seed:
+            expected_count = len(requested_frames) if sequence_mode else 1
+            if native.get("hook") != "configureRender-v1" or native.get("frames") != expected_count or native.get("seed") != args.seed:
                 raise RuntimeError("incomplete native frame record")
-            if native.get("draws") != args.frame or native.get("selected_frame") != args.frame:
+            if native.get("draws") != requested_frames[-1]:
                 raise RuntimeError("incomplete selected-frame execution")
-            image = variant / "frame.png"
-            _, width, height = source_images([image])[0]
-            if [width, height] != [native["width"], native["height"]]:
-                raise RuntimeError("native/image dimensions differ")
-            label = (args.sweep.split("=", 1)[0] + "-" + str(parameters[args.sweep.split("=", 1)[0]])) if args.sweep else "render"
-            named_image = variant / (label + ".png")
-            image.rename(named_image)
-            image = named_image
+            if not sequence_mode and native.get("selected_frame") != requested_frames[0]:
+                raise RuntimeError("incomplete selected-frame execution")
+            if sequence_mode and native.get("requested_frames") != requested_frames:
+                raise RuntimeError("incomplete requested-frame execution")
+            if sequence_mode:
+                captures = []
+                for frame in requested_frames:
+                    image = variant / ("frame-%05d.png" % frame)
+                    _, width, height = source_images([image])[0]
+                    if [width, height] != [native["width"], native["height"]]:
+                        raise RuntimeError("native/image dimensions differ")
+                    captures.append({"frame": frame, "image": str(image),
+                                     "image_sha256": digest(image)})
+                report["variants"].append({"parameters": parameters, "captures": captures,
+                                           "native": native})
+            else:
+                image = variant / "frame.png"
+                _, width, height = source_images([image])[0]
+                if [width, height] != [native["width"], native["height"]]:
+                    raise RuntimeError("native/image dimensions differ")
+                label = (args.sweep.split("=", 1)[0] + "-" + str(parameters[args.sweep.split("=", 1)[0]])) if args.sweep else "render"
+                named_image = variant / (label + ".png")
+                image.rename(named_image)
+                image = named_image
+                report["variants"].append({"parameters": parameters, "image": str(image),
+                                           "image_sha256": digest(image), "native": native})
             if staged_assets is not None:
                 verify_asset_inventory(staged_assets, assets)
-            report["variants"].append({"parameters": parameters, "image": str(image),
-                                       "image_sha256": digest(image), "native": native})
-        images = [Path(v["image"]) for v in report["variants"]]
+        images = ([Path(capture["image"]) for variant in report["variants"]
+                   for capture in variant["captures"]] if sequence_mode else
+                  [Path(v["image"]) for v in report["variants"]])
+        if sequence_mode:
+            # Descriptive links retain canonical native filenames without copying pixels.
+            labels = output / "contact-images"
+            labels.mkdir()
+            images = []
+            for index, variant_record in enumerate(report["variants"]):
+                for capture in variant_record["captures"]:
+                    original = Path(capture["image"])
+                    labelled = labels / ("variant-%02d-frame-%05d.png" % (index, capture["frame"]))
+                    labelled.symlink_to(os.path.relpath(original, labels))
+                    images.append(labelled)
         sheet = output / "contact-sheet.png"
         publish(compose(source_images(images), min(4, len(images)), 240), sheet)
         if assets is not None:
