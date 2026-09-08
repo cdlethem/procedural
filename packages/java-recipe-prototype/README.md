@@ -34,3 +34,8 @@ errors, array preallocation limits, command limits and recovery, nested map diag
 and statement/attempted-iteration budget diagnostics. Root found and corrected missing
 iteration context; nine composition comparisons remain exact. This is partial failure
 coverage, not acceptance of the complete accounting or replay contract.
+
+Result ownership now has a regression case: changing an input literal cannot change a prior
+result, nested result containers are read-only, and fresh execution sees an edited recipe.
+Emitted snapshots reserve their detached copy cost. This establishes fresh evaluation
+isolation, not persisted JSON round-trip equivalence or retained-geometry cache invalidation.

@@ -21,6 +21,7 @@ public final class RecipePrototypeFailures {
         try { RecipeEvaluator.evaluate(recipe,limits); throw new AssertionError("expected "+code); }
         catch(RecipeEvaluator.RecipeFailure error) { check(code.equals(error.code),"expected "+code+", got "+error.code); return error; }
     }
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         Object division=arithmetic("div",literal(1),literal(0));
         RecipeEvaluator.evaluate(recipe(binding(map("kind","if","condition",literal(true),"then",literal(1),"else",division)),list()),new RecipeEvaluator.Limits());
@@ -54,6 +55,21 @@ public final class RecipePrototypeFailures {
         error=failure(recipe(binding(two),list()),iterations,"LIMIT_ITERATIONS");
         check("/retain/0/value/1".equals(error.iteration),"budget failure lost attempted iteration");
         System.out.println("statement-and-budget-iteration-diagnostics passed");
+        Map<String,Object> ownedRecipe=recipe(list(),list(emit));
+        RecipeEvaluator.Result owned=RecipeEvaluator.evaluate(ownedRecipe,new RecipeEvaluator.Limits());
+        Map<?,?> oldCommand=(Map<?,?>)owned.commands.get(0);
+        command.put("rgb",0xffffff);
+        check(((Number)oldCommand.get("rgb")).intValue()==0,"input edit changed prior result");
+        try {
+            ((List<Object>)oldCommand.get("from")).set(0,99);
+            throw new AssertionError("nested result coordinates are mutable");
+        } catch(UnsupportedOperationException expected) { }
+        RecipeEvaluator.Result replay=RecipeEvaluator.evaluate(ownedRecipe,new RecipeEvaluator.Limits());
+        check(((Number)((Map<?,?>)replay.commands.get(0)).get("rgb")).intValue()==0xffffff,"fresh evaluation did not use edited input");
+        check(((Number)oldCommand.get("rgb")).intValue()==0,"replay changed prior result");
+        RecipeEvaluator.Limits snapshotBudget=new RecipeEvaluator.Limits();snapshotBudget.valueUnits=12;
+        failure(ownedRecipe,snapshotBudget,"LIMIT_VALUE_UNITS");
+        System.out.println("detached-results-and-fresh-replay passed");
         System.out.println("PROTOTYPE_FAILURE_CASES_PASSED");
     }
 }

@@ -207,7 +207,8 @@ public strictfp final class RecipeEvaluator {
                 } catch (IllegalArgumentException e) {
                     throw nativeFail("DRAWING_FAILURE", q, "drawing.fresh-raster-2d", e, s);
                 }
-                commands.add(raw);
+                s.units(q, units(raw));
+                commands.add(freezeValue(raw));
             } else if ("when".equals(k)) {
                 if (bool(expr(st.get("condition"), local, path(q, "condition"), s, declared),
                         path(q, "condition"))) {
@@ -523,6 +524,23 @@ public strictfp final class RecipeEvaluator {
         }
         fail("DECLARATION", p, "unsupported instance");
         return null;
+    }
+    // A result must not retain writable literal/parameter containers from its input recipe.
+    // The caller reserves the complete value tree before this detached copy is allocated.
+    private static Object freezeValue(Object value) {
+        if (value instanceof Map) {
+            Map<String,Object> copy = new LinkedHashMap<String,Object>();
+            for (Map.Entry<?,?> entry : ((Map<?,?>)value).entrySet()) {
+                copy.put((String)entry.getKey(), freezeValue(entry.getValue()));
+            }
+            return Collections.unmodifiableMap(copy);
+        }
+        if (value instanceof List) {
+            List<Object> copy = new ArrayList<Object>(((List<?>)value).size());
+            for (Object item : (List<?>)value) copy.add(freezeValue(item));
+            return Collections.unmodifiableList(copy);
+        }
+        return value; // Validated command scalars are immutable.
     }
     private static long units(Object o) {
         if (o instanceof Map) {

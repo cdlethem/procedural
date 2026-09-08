@@ -1,5 +1,17 @@
 # Project state
 
+## Prototype result ownership corrected
+
+Previous turn pushed diagnostic fixes 299ee78e. Root added an ownership probe and observed
+that changing a literal input command changed an already-returned result. Emission now
+reserves the full snapshot value cost and deep-copies commands into read-only containers.
+Probe verifies input/result separation, nested immutability, fresh evaluation after input
+edits and copy-budget exhaustion. Six focused groups pass; all nine command scenarios
+remain exact at .work/recipe-prototype-root5, with updated source-bound prototype evidence.
+No complete executor acceptance: full accounting/native allocation limits, typed error
+precedence, persisted round-trip, retained cache behavior and native/export remain pending.
+Unrelated JS index edit stays unstaged. Full milestone goal remains active.
+
 ## Prototype nested diagnostics fixed and failure probes added
 
 Previous turn pushed prototype 94615533. Root independently wrote
