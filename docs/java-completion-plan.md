@@ -5,6 +5,8 @@ paused per `porting-resume.md`; recipes/MCP/web remain a separate roadmap, not p
 for making the native Java library useful. This plan does not claim feature completeness
 or replace the project's mission with the current23 operations.
 
+Execution now follows [the remaining-scope map and parallel batches](java-buildout-batches.md).
+
 ## Completion requirements
 
 1. A competent Processing user can install the source-built Java library and reach a

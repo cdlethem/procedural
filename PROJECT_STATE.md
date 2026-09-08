@@ -1,5 +1,15 @@
 # Project state
 
+## Batch execution active — user-directed scheduling revision
+
+Remaining scope and dependency queue: docs/java-buildout-batches.md. AGENTS and agent
+briefs now require parallel independent lanes and batched integration, preserving root
+architecture and acceptance. A1 Terra owns private CutStudy selected-cell edit only;
+A2 Luna owns chooser/API authored-doc reconciliation only. Root owns A3 asset-render brief
+at design/capabilities/java-render-assets-brief.md and next implementation. No shared-file
+worker overlap; no new render task started. Package accepted batch, not each private edit.
+Java0.23 remains23 operations/workflows; CP21 private, ports/Sol paused.
+
 ## CP21 source review: editable unequal subdivision selected for investigation
 
 Root read griton, pliegues, peces and araniaaas source and corrected shortlist errors.

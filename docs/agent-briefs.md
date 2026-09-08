@@ -1,5 +1,15 @@
 # Agent work briefs
 
+## Batch architecture — maintainer revision, 2026-09-08
+
+Follow docs/java-buildout-batches.md for the remaining Java scope and parallel queue.
+Plan capabilities together; freeze detailed contracts for the next batch only. Advance
+independent implementation, examples and tooling concurrently, with root owning important
+semantics and final review. Package accepted batches rather than every individual feature.
+Root may implement directly when delegation/review overhead exceeds its benefit. Preserve
+focused validation and one shared native-render lease. This supersedes serial per-capability
+scheduling; it does not relax acceptance or source-provenance requirements.
+
 ## Sustainable development — maintainer revision
 
 The maintainer reports roughly60% of weekly quota consumed and requests a lower-cost
