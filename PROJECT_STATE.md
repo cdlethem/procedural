@@ -1,5 +1,15 @@
 # Project state
 
+## CP21 source review: editable unequal subdivision selected for investigation
+
+Root read griton, pliegues, peces and araniaaas source and corrected shortlist errors.
+Direction: design/capabilities/cp21-next-capability-direction.md; exact source/note bindings
+in adjacent cp21-gap-source-bindings.json. No new API admitted. Next private retained-region
+specification and editable prototype, comparing aligned unequal and staggered cuts.
+Do not invent pliegues#0 (no frontmatter candidates), a peces history buffer, or griton
+late-list bias/5-child behavior. Workers finished; native work has not started.
+Java0.23 remains23 operations/workflows. Ports/Sol paused; Android draft preserved.
+
 ## Java0.23 accepted: 23 operations and 23 packaged workflows
 
 CP20 distribution accepted in evidence/distribution/cp20-java-review.json. Archive:
