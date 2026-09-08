@@ -5,22 +5,14 @@ uses three operations: a regular grid supplies positions, a seeded field supplie
 spatial attributes, and a cyclic palette supplies colours. Drawing remains ordinary
 Processing code that you can change.
 
-For packaged libraries and standalone starters, use the [installation guide](installing.md).
-The commands below also provide a development path directly from a checkout.
+Build and install the current fifteen-starter Java package using the
+[source-bundle guide](building-java-from-source.md). It lists the required external inputs.
+Open its **FieldMarks** library example in Processing 4 and save a copy into your own
+sketch folder. Keep both installed library JARs: this example uses the desktop drawing
+adapter as well as the portable core. Press **S** to save the current image.
 
-From a checkout with `uv` and a JDK available:
-
-```sh
-uv run python tools/run_field_marks.py --prepare-only
-```
-
-The command builds the JAR and stages the two sketch tabs and `code/` dependency
-under `.work/examples/FieldMarks/`. Open the printed `FieldMarks.pde` path in
-Processing 4 and run it. If needed, pass `--java-home /path/to/jdk`. The staging
-command preserves edited sketch tabs; move an edited copy before preparing a fresh
-one. Press **S** in the sketch to save its current image. The actual PDE has passed
-official preprocessing, compilation, JAVA2D execution and a programmatic save-handler
-check; this has not yet been a human usability test.
+The packaged example has passed official preprocessing, compilation, JAVA2D execution
+and a programmatic save-handler check; this has not yet been a human usability test.
 
 In the first tab, try these edits one at a time and run again:
 
@@ -36,11 +28,11 @@ through the palette, regardless of how many entries it contains; repeated colour
 still occupy entries.
 
 Open the `MarkField.java` tab to go further. `create()` makes and retains the five
-attributes. The frequency and coordinate offsets are visible there. `paint()`
-applies the chosen palette and length. `drawMark()` is the small method to replace
-when you want a different mark; its length is the total endpoint-to-endpoint extent.
-The arrays belong to your example and can be inspected or edited. Repainting does
-not sample the field again.
+attributes; its frequency and coordinate offsets are visible there. In `MarkCommands.java`,
+`paint()` applies the chosen palette and length, while `mark()` is the small method to
+replace when you want a different mark. Length is the total endpoint-to-endpoint extent.
+The arrays belong to your example and can be inspected or edited. Repainting does not
+sample the field again. The drawing adapter is internal to this starter's matched package.
 
 The field-marks mechanism comes from
 [pelines](../survey/out/2018/Generativos/pelines/notes.md). This new piece deliberately

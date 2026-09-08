@@ -2,20 +2,21 @@
   "status": "accepted",
   "owner": "root",
   "reviewer": "root",
-  "scope": "Clean-checkout source assembly matches accepted Java0.15 executable/example-tab/font payloads; no new operation or native support",
-  "tool_sha256": "1c6642072fbb0754083e17a8dbb2cf32fbb21fcf10f6d44074f2d1daca1fa1cd",
-  "manifest_sha256": "7b0ba7364e27f6a2fc7ee1aefe4f16f10ce67a32f65f9dd7411f9ca9df1c519f",
+  "scope": "Corrected clean-checkout source assembly matches all Java0.15 library classes and example/font payloads; extracted dependent Java tabs compile; no new native support",
+  "tool_sha256": "34e3cbd00e2f67b9afaf6a80f5ec5c3fd91887d45c54152fbacccc70b9db583e",
+  "manifest_sha256": "bdb82e0c1d2f86e1d3b6b14cd4f321d7017796c7d8a687565b410912ded80cb8",
   "archive": {
-    "path": ".work/source-bundle-clean1/.work/build3/procedurals-java-source-dev.zip",
-    "sha256": "c89fa3c4d7609de91cf4df21f7c7789b578b66671bb6f1bfa3bace22d31b359d"
+    "path": ".work/source-bundle-adapter-clean/.work/build1/procedurals-java-source-dev.zip",
+    "sha256": "23d0d06cb0ac39a2b57cdcfd37b33063f9da2cc61fcdfdccb4670c4bce68c1dd"
   },
   "checks": {
     "deterministic_two_builds": true,
-    "exact_class_payloads": 77,
+    "exact_class_payloads": 78,
     "exact_example_tabs_and_assets": 35,
     "fresh_checkout_without_prior_archives": true,
-    "focused_bundle_tests": 5,
-    "attestation_regression_tests": 11
+    "focused_bundle_tests": 7,
+    "attestation_regression_tests": 11,
+    "exact_library_jar_inventory": true
   },
   "evidence_correction": "Identical spring atomicity mutation result promoted to tracked evidence; original review preserved; attestation points to portable review.",
   "package_differences": [
@@ -23,7 +24,40 @@
     "Current repository docs included; obsolete pre-acceptance PathMarks example README omitted intentionally"
   ],
   "limits": [
-    "Explicit external JDK/font/license required",
+    "Explicit external JDK, pinned Processing core JAR, font and license required; automated acquisition is not supplied",
     "Build success remains assembly evidence, not automatic acceptance of future changed payloads"
-  ]
+  ],
+  "previous_review_correction": {
+    "commit": "631f26aa8779dc81278085ff2fe41bac34db3ac6",
+    "archive": {
+      "path": ".work/source-bundle-clean1/.work/build3/procedurals-java-source-dev.zip",
+      "sha256": "c89fa3c4d7609de91cf4df21f7c7789b578b66671bb6f1bfa3bace22d31b359d"
+    },
+    "status": "withdrawn",
+    "reason": "Root onboarding audit found missing separate Processing adapter JAR. Prior class comparison covered core only; original Java0.15 distribution unaffected. Replacement requires exact library JAR inventory and adapter classes plus extracted consumer compilation."
+  },
+  "consumer_validation": {
+    "status": "passed",
+    "library_class_counts": {
+      "procedurals/library/procedurals-processing-adapter.jar": 1,
+      "procedurals/library/procedurals.jar": 77
+    },
+    "exact_example_tabs_and_assets": 35,
+    "consumers": {
+      "FieldMarks": {
+        "java_tabs": 2,
+        "compile_exit": 0,
+        "missing_adapter_compile_exit": 1,
+        "diagnostic_mentions": "Java2DFrame"
+      },
+      "PathMarks": {
+        "java_tabs": 2,
+        "compile_exit": 0,
+        "missing_adapter_compile_exit": 1,
+        "diagnostic_mentions": "Java2DFrame"
+      }
+    },
+    "archive_sha256": "23d0d06cb0ac39a2b57cdcfd37b33063f9da2cc61fcdfdccb4670c4bce68c1dd",
+    "scope": "Exact executable payload equivalence and extracted Java helper-tab compilation; no new native rendering or human usability study."
+  }
 }

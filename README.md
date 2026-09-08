@@ -43,7 +43,7 @@ Start with [a field of independent marks](docs/getting-started.md),
 [clustered 3D relief](docs/relief-marks.md), or
 [faceted cities](docs/city-marks.md), or
 [banded landscapes](docs/landscape-marks.md).
-[Install the Java 0.15.0 package](docs/installing-landscape-marks.md) for all fourteen starters.
+[Build and install Java 0.15.0](docs/building-java-from-source.md) for all fifteen starters.
 Earlier scoped artifacts retain their installation instructions:
 [FieldMarks 0.1](docs/installing.md), [PathMarks 0.2](docs/installing-path-marks.md),
 [PlacementMarks 0.3](docs/installing-placement-marks.md),

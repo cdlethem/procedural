@@ -1,5 +1,22 @@
 # Project state
 
+## Source-bundle adapter correction accepted
+
+Previous turn pushed 631f26aa, but root and Luna onboarding audit found its source builder
+omitted the separate Processing adapter required by FieldMarks and PathMarks. The earlier
+source-bundle review is explicitly withdrawn in the replacement review history; original
+Java0.15 remains accepted. Terra fixed builder/tests against root manifest and root reviewed.
+Two fresh-checkout builds match byte-for-byte; exact two-JAR inventory, all 78 class payloads
+(77 core + 1 adapter), and 33 tabs + 2 font/license assets match accepted Java0.15. Extracted
+FieldMarks and PathMarks Java tabs compile with the two packaged JARs plus explicit Processing
+core; both fail without the adapter. 7 builder + 11 attestation tests and catalog check pass.
+Corrected README/start guide selects current package and actual MarkCommands editing path.
+Documented pinned external font provenance and Processing core; acquisition automation remains
+unimplemented. Root review: evidence/distribution/java-source-bundle-review.json.
+Next push this correction, then resume bounded Java work independently of separate ports.
+No new native support claimed; shared machine render lock remains required. Full goal active.
+
+
 ## Source-only Java builder accepted for identical Java0.15 payloads
 
 Root took over stalled builder assignment and completed readable implementation plus5focused

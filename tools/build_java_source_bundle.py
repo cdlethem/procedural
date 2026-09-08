@@ -67,6 +67,12 @@ def source_inputs(root):
         raise ValueError('Java source inventory differs from accepted source release')
     for name, expected in manifest['core_sources'].items():
         require_hash(root / name, expected)
+    adapter_root = root / 'packages/java-processing/src/main/java'
+    actual_adapter = {str(p.relative_to(root)) for p in adapter_root.rglob('*.java')}
+    if actual_adapter != set(manifest['adapter_sources']):
+        raise ValueError('Processing adapter inventory differs from accepted source release')
+    for name, expected in manifest['adapter_sources'].items():
+        require_hash(root / name, expected)
     for record in manifest['examples'].values():
         require_hash(root / record['source'], record['sha256'])
     catalogs = sorted((root / 'catalog/operations').glob('*.json'))
@@ -83,16 +89,18 @@ def source_inputs(root):
     evidence = list((root / 'evidence').rglob('*.json')) + list((root / 'fixtures').rglob('*.json'))
     inputs = [manifest_path, root / review['path'], *catalogs,
               *[root / name for name in manifest['core_sources']],
+              *[root / name for name in manifest['adapter_sources']],
               *[root / v['source'] for v in manifest['examples'].values()],
               *list((root / 'catalog/validation').glob('*.json')), *evidence]
     return manifest, inputs
 
 
-def build(root, output, jdk, font, notice):
+def build(root, output, jdk, font, notice, processing_core):
     output = fresh_output(root, output)
     manifest, inputs = source_inputs(root)
     require_hash(font, manifest['font_sha256'])
     require_hash(notice, manifest['font_license_sha256'])
+    require_hash(processing_core, manifest['processing_core_sha256'])
     files = {'procedurals/' + name: root / name for name in ('LICENSE', 'THIRD_PARTY_NOTICES.md')}
     files.update({name: root / v['source'] for name, v in manifest['examples'].items()})
     for directory in ('docs', 'catalog/operations', 'catalog/validation'):
@@ -100,10 +108,12 @@ def build(root, output, jdk, font, notice):
         files.update({'procedurals/' + str(p.relative_to(root)): p for p in (root / directory).rglob(suffix)})
     files.update({'procedurals/src/' + name.removeprefix('packages/java/src/'): root / name
                   for name in manifest['core_sources']})
+    files.update({'procedurals/adapter-src/main/java/' + name.removeprefix('packages/java-processing/src/main/java/'): root / name
+                  for name in manifest['adapter_sources']})
     files['procedurals/examples/GlyphMarks/data/GlyphMarks.ttf'] = font
     files['procedurals/examples/GlyphMarks/data/FONT-LICENSE.txt'] = notice
     files['procedurals/GlyphMarks-FONT-LICENSE.txt'] = notice
-    inputs += [Path(__file__).resolve(), root / 'tools/operation_attestations.py', *files.values(),
+    inputs += [Path(__file__).resolve(), root / 'tools/operation_attestations.py', processing_core, *files.values(),
                *[jdk / n for n in ('bin/java', 'bin/javac', 'release', 'lib/modules')]]
     inputs = sorted(set(p.resolve() for p in inputs))
     label = lambda p: str(p.relative_to(root)) if p.is_relative_to(root) else str(p)
@@ -125,6 +135,26 @@ def build(root, output, jdk, font, notice):
     jar = output / 'procedurals.jar'
     write_zip(jar, class_payloads)
     payloads['procedurals/library/procedurals.jar'] = jar.read_bytes()
+    adapter_classes = output / 'adapter-classes'
+    adapter_classes.mkdir()
+    adapter_command = [str(jdk / 'bin/javac'), '--release', '8', '-encoding', 'UTF-8',
+                       '-classpath', str(classes) + os.pathsep + str(processing_core),
+                       '-d', str(adapter_classes),
+                       *[str(root / n) for n in manifest['adapter_sources']]]
+    adapter_result = subprocess.run(adapter_command, capture_output=True, text=True, timeout=120)
+    (output / 'adapter-compile.json').write_text(json.dumps({
+        'command': adapter_command, 'exit_code': adapter_result.returncode,
+        'stdout': adapter_result.stdout, 'stderr': adapter_result.stderr,
+    }, indent=2) + '\n')
+    if adapter_result.returncode:
+        raise RuntimeError('adapter javac failed; preserve adapter-compile.json')
+    adapter_payloads = {p.relative_to(adapter_classes).as_posix(): p.read_bytes()
+                        for p in adapter_classes.rglob('*.class')}
+    if not adapter_payloads:
+        raise RuntimeError('No compiled Processing adapter classes')
+    adapter_jar = output / 'procedurals-processing-adapter.jar'
+    write_zip(adapter_jar, adapter_payloads)
+    payloads['procedurals/library/procedurals-processing-adapter.jar'] = adapter_jar.read_bytes()
     payloads['procedurals/library.properties'] = (
         'name=Procedurals\ncategory=Utilities\nsentence=Composable generative-art operations.\n'
         'paragraph=Fields, paths, placement, topology and motion with editable examples.\n'
@@ -141,6 +171,7 @@ def build(root, output, jdk, font, notice):
               'input_sha256_before': before, 'input_sha256_after': after,
               'archive': {'path': str(archive.relative_to(root)), 'sha256': sha(archive), 'members': len(payloads)},
               'class_sha256': {n: hashlib.sha256(b).hexdigest() for n, b in sorted(class_payloads.items())},
+              'adapter_class_sha256': {n: hashlib.sha256(b).hexdigest() for n, b in sorted(adapter_payloads.items())},
               'example_tabs': len(manifest['examples']), 'operations': len(manifest['operation_files'])}
     (output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
     return report
@@ -151,9 +182,11 @@ def main():
     parser.add_argument('--java-home')
     parser.add_argument('--font', type=Path, required=True)
     parser.add_argument('--font-license', type=Path, required=True)
+    parser.add_argument('--processing-core', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
-    report = build(ROOT, args.output, java_home(args.java_home), args.font.resolve(), args.font_license.resolve())
+    report = build(ROOT, args.output, java_home(args.java_home), args.font.resolve(),
+                   args.font_license.resolve(), args.processing_core.resolve())
     print(json.dumps(report['archive']))
 
 

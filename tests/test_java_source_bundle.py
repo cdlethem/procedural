@@ -3,7 +3,8 @@ from pathlib import Path
 import tempfile
 import unittest
 import zipfile
-from tools.build_java_source_bundle import fresh_output, require_hash, sha, source_inputs, write_zip
+from unittest import mock
+from tools.build_java_source_bundle import build, fresh_output, require_hash, sha, source_inputs, write_zip
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -56,10 +57,52 @@ class SourceBundleTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Accepted input missing or changed'):
             source_inputs(root)
 
+    def test_stale_processing_adapter_rejected_before_compilation(self):
+        root = self.base / 'checkout'
+        core = root / 'packages/java/src/main/java/Core.java'
+        adapter = root / 'packages/java-processing/src/main/java/Adapter.java'
+        core.parent.mkdir(parents=True)
+        adapter.parent.mkdir(parents=True)
+        core.write_text('core')
+        adapter.write_text('adapter')
+        review = root / 'review.json'
+        review.write_text(json.dumps({'status': 'accepted', 'reviewer': 'root'}))
+        manifest = {
+            'accepted_distribution_review': {'path': 'review.json', 'sha256': sha(review)},
+            'core_sources': {'packages/java/src/main/java/Core.java': sha(core)},
+            'adapter_sources': {'packages/java-processing/src/main/java/Adapter.java': '0' * 64},
+        }
+        (root / 'packages/java').mkdir(parents=True, exist_ok=True)
+        (root / 'packages/java/source-bundle.json').write_text(json.dumps(manifest))
+        with self.assertRaisesRegex(ValueError, 'Accepted input missing or changed'):
+            source_inputs(root)
+
+    def test_wrong_processing_core_rejected_before_output_creation(self):
+        root = self.base / 'checkout'
+        root.mkdir()
+        font = self.base / 'font.ttf'
+        notice = self.base / 'FONT-LICENSE.txt'
+        processing_core = self.base / 'core.jar'
+        font.write_bytes(b'font')
+        notice.write_bytes(b'license')
+        processing_core.write_bytes(b'wrong core')
+        manifest = {
+            'font_sha256': sha(font),
+            'font_license_sha256': sha(notice),
+            'processing_core_sha256': '0' * 64,
+        }
+        output = root / '.work/bundle'
+        with mock.patch('tools.build_java_source_bundle.source_inputs', return_value=(manifest, [])):
+            with self.assertRaisesRegex(ValueError, 'Accepted input missing or changed'):
+                build(root, output, self.base / 'jdk', font, notice, processing_core)
+        self.assertFalse(output.exists())
+
     def test_current_release_admission_and_exact_tabs(self):
         manifest, inputs = source_inputs(ROOT)
         self.assertEqual(len(manifest['operation_files']), 15)
         self.assertEqual(len(manifest['core_sources']), 15)
+        self.assertEqual(len(manifest['adapter_sources']), 1)
+        self.assertIn('processing_core_sha256', manifest)
         self.assertEqual(len(manifest['examples']), 33)
         self.assertIn('procedurals/examples/FieldMarks/MarkCommands.java', manifest['examples'])
         self.assertIn('procedurals/examples/PathMarks/PathMarksCanvas.java', manifest['examples'])
