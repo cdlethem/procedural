@@ -7,7 +7,8 @@ operations, not an accepted executor, exporter or target support attestation.
 `RecipeEvaluator.evaluate(recipe, limits)` consumes an in-memory Map after static recipe
 validation. It uses existing operation implementations and returns a complete detached,
 read-only command list plus environment and diagnostic counters. It does not parse JSON,
-render, or cache retained geometry between evaluations.
+or render. Static evaluate performs fresh replay; an optional single-threaded Session can
+reuse one completed retain stage between edits.
 
 Constructor/query inputs are checked against immutable data generated from catalog schema
 pointers. `tools/generate_recipe_java_schemas.py --check` detects drift. The closed validator
@@ -23,7 +24,8 @@ accurate heap limit. Elapsed time is a supervised safeguard, not a deterministic
 ## Current evidence
 
 The established runner serializes and reparses both draft recipes, then compares actual
-Java output across nine FieldMarks/PathMarks baseline/edit scenarios. FieldMarks covers
+Java output across eleven FieldMarks/PathMarks baseline/edit scenarios, comparing both fresh and session
+execution. FieldMarks covers
 length, palette and segment/quad edits. PathMarks compares the existing `streamForCanvas`
 workflow with explicit recipe visibility predicates; it is not a general clipping operation.
 
@@ -41,8 +43,8 @@ in `evidence/conformance/recipe-java-prototype-commands.json`.
 
 ## Remaining acceptance work
 
-Native project export and representative render evidence, retained-geometry reuse/invalidation,
-catalog promotion and complete budget failure review remain separate gates. Later operation
+General project export support, catalog promotion and complete admission review remain
+separate gates. Later operation
 bindings, assets, animation, other target exporters and MCP/web are unfinished. Root owns
 acceptance; successful command comparison alone does not establish those capabilities.
 
@@ -57,4 +59,19 @@ claimed. Sources must match their manifest before building.
 Copied FieldMarks baseline and PathMarks baseline/trace-edit exports compiled independently
 and matched their accepted references exactly in native JAVA2D. Root inspected all three; evidence is in
 `evidence/distribution/recipe-java-export-prototype.json`. These are three native cases;
-retained reuse, catalog promotion and general support remain pending.
+catalog promotion and general support remain pending.
+
+## Retained session experiment
+
+`new RecipeEvaluator.Session().evaluate(recipe, limits)` caches a whole completed retain
+stage. Parameter dependencies come from the recipe AST; indirect parameter access falls back
+to tracking the complete parameter object. Palette/style edits reuse geometry, while relevant
+seed/count/movement edits rebuild it. Use `clear()` to discard the entry. Caches are runtime
+state and never enter exported recipe JSON.
+
+Cached data and keys are detached from callers. Each warm call checks current array limits
+and reserves cached capacity against valueUnits before frame work. Result diagnostics expose
+`retainedReused`, `retainedExecutedCalls` and `retainedReservedUnits`; calls count actual work,
+not hypothetical reconstruction. The eleven exact comparisons and focused failure groups
+cover style reuse, geometry invalidation, alias detachment, budget rejection and recovery.
+This establishes the scoped prototype behavior, not accepted general executor support.

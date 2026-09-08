@@ -156,6 +156,80 @@ public final class RecipePrototypeFailures {
         failure(operationRecipe("path.gradient-trace-2d",smallPath),rejectedWork,"LIMIT_WORK");
         RecipeEvaluator.evaluate(operationRecipe("path.gradient-trace-2d",smallPath),new RecipeEvaluator.Limits());
         System.out.println("visit-call-remainder-empty-and-operation-recovery passed");
+
+        Map<String,Object> retainedCommand=map("kind","segment2","from",list(0,0),"to",list(1,1),
+                "rgb",0,"opacity8",255,"width",1,"cap","round");
+        Object retainedEmit=map("kind","emit","value",map("kind","ref","name","value"));
+        Map<String,Object> retainedRecipe=recipe(binding(literal(retainedCommand)),list(retainedEmit));
+        RecipeEvaluator.Session session=new RecipeEvaluator.Session();
+        RecipeEvaluator.Result sessionCold=session.evaluate(retainedRecipe,new RecipeEvaluator.Limits());
+        check(!sessionCold.retainedReused && sessionCold.retainedExecutedCalls==0
+                && sessionCold.retainedReservedUnits==0,"cold retained diagnostics");
+        RecipeEvaluator.Result sessionWarm=session.evaluate(retainedRecipe,new RecipeEvaluator.Limits());
+        check(sessionWarm.retainedReused && sessionWarm.retainedExecutedCalls==0
+                && sessionWarm.retainedReservedUnits>0,"warm retained diagnostics");
+        check(sessionCold.commands.equals(sessionWarm.commands),"warm commands differ from cold");
+
+        RecipeEvaluator.Limits warmValues=new RecipeEvaluator.Limits();warmValues.valueUnits=1;
+        try {
+            session.evaluate(retainedRecipe,warmValues);
+            throw new AssertionError("warm retained value reservation did not reject");
+        } catch (RecipeEvaluator.RecipeFailure expected) {
+            check("LIMIT_VALUE_UNITS".equals(expected.code),"wrong warm value failure");
+        }
+        RecipeEvaluator.Limits warmArrays=new RecipeEvaluator.Limits();warmArrays.arrayLength=1;
+        try {
+            session.evaluate(retainedRecipe,warmArrays);
+            throw new AssertionError("warm retained array reservation did not reject");
+        } catch (RecipeEvaluator.RecipeFailure expected) {
+            check("LIMIT_ARRAY_LENGTH".equals(expected.code),"wrong warm array failure");
+        }
+
+        retainedCommand.put("rgb",0xffffff);
+        Map<String,Object> equivalentCommand=map("kind","segment2","from",list(0,0),"to",list(1,1),
+                "rgb",0,"opacity8",255,"width",1,"cap","round");
+        Map<String,Object> equivalentRecipe=recipe(binding(literal(equivalentCommand)),list(retainedEmit));
+        RecipeEvaluator.Result detachedWarm=session.evaluate(equivalentRecipe,new RecipeEvaluator.Limits());
+        check(detachedWarm.retainedReused,"equivalent detached literal should reuse cache");
+        check(((Number)((Map<?,?>)detachedWarm.commands.get(0)).get("rgb")).intValue()==0,
+                "cached retained literal changed after source mutation");
+
+        Map<String,Object> failedFrame=recipe(binding(literal(equivalentCommand)),
+                list(map("kind","emit","value",division)));
+        try {
+            session.evaluate(failedFrame,new RecipeEvaluator.Limits());
+            throw new AssertionError("expected failed warm frame");
+        } catch (RecipeEvaluator.RecipeFailure expected) {
+            check("ARITHMETIC".equals(expected.code),"wrong warm frame failure");
+        }
+        check(session.evaluate(equivalentRecipe,new RecipeEvaluator.Limits()).retainedReused,
+                "failed warm frame evicted cache");
+        session.clear();
+        check(!session.evaluate(equivalentRecipe,new RecipeEvaluator.Limits()).retainedReused,
+                "clear did not evict cache");
+        RecipeEvaluator.Session indirect=new RecipeEvaluator.Session();
+        Map<String,Object> indirectRecipe=recipe(binding(map("kind","ref","name","params")),list());
+        ((Map<String,Object>)indirectRecipe.get("parameters")).put("a",1);
+        indirect.evaluate(indirectRecipe,new RecipeEvaluator.Limits());
+        check(indirect.evaluate(indirectRecipe,new RecipeEvaluator.Limits()).retainedReused,"bare params warm miss");
+        ((Map<String,Object>)indirectRecipe.get("parameters")).put("a",2);
+        check(!indirect.evaluate(indirectRecipe,new RecipeEvaluator.Limits()).retainedReused,"bare params edit reused stale stage");
+        RecipeEvaluator.Session recovery=new RecipeEvaluator.Session();
+        Map<String,Object> pathRecipe=operationRecipe("path.gradient-trace-2d",smallPath);
+        recovery.evaluate(pathRecipe,new RecipeEvaluator.Limits());
+        RecipeEvaluator.Limits warmWork=new RecipeEvaluator.Limits();warmWork.work=1;
+        check(recovery.evaluate(pathRecipe,warmWork).retainedReused,"warm cache charged skipped path work");
+        try {
+            recovery.evaluate(operationRecipe("path.gradient-trace-2d",division),new RecipeEvaluator.Limits());
+            throw new AssertionError("failed cache miss unexpectedly succeeded");
+        } catch(RecipeEvaluator.RecipeFailure expected) { check("ARITHMETIC".equals(expected.code),"failed miss code"); }
+        check(!recovery.evaluate(pathRecipe,new RecipeEvaluator.Limits()).retainedReused,"failed miss did not evict old stage");
+        Map<String,Object> failedCold=recipe(binding(literal(9)),list(map("kind","bind","name","bad","value",division)));
+        try { recovery.evaluate(failedCold,new RecipeEvaluator.Limits()); throw new AssertionError("failed cold frame succeeded"); }
+        catch(RecipeEvaluator.RecipeFailure expected) { check("ARITHMETIC".equals(expected.code),"cold frame failure code"); }
+        failedCold.put("frame",list());
+        check(!recovery.evaluate(failedCold,new RecipeEvaluator.Limits()).retainedReused,"failed frame published new cache");
+        System.out.println("retained-session-cache-and-reservations passed");
         System.out.println("PROTOTYPE_FAILURE_CASES_PASSED");
     }
 }

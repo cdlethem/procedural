@@ -45,6 +45,15 @@ def main():
 import org.procedurals.recipe.RecipeEvaluator;
 import org.procedurals.examples.pathmarks.PathMarkComposition;
 public class RecipePrototypeComparison {
+ static final RecipeEvaluator.Session fieldSession=new RecipeEvaluator.Session();
+ static final RecipeEvaluator.Session pathSession=new RecipeEvaluator.Session();
+ static void session(RecipeEvaluator.Session session,Map<String,Object> recipe,RecipeEvaluator.Result fresh,String label,boolean reuse){
+  RecipeEvaluator.Result cached=session.evaluate(recipe,new RecipeEvaluator.Limits());
+  same(fresh.commands,cached.commands,label+"-session");same(fresh.environment,cached.environment,label+"-environment");
+  if(cached.retainedReused!=reuse)throw new AssertionError("unexpected retain reuse: "+label);
+  if(reuse && cached.retainedExecutedCalls!=0)throw new AssertionError("warm retain executed calls: "+label);
+  System.out.println("SESSION "+label+" "+cached.retainedReused+" "+cached.retainedExecutedCalls+" "+cached.retainedReservedUnits);
+ }
  static List<Object> list(Object... x){return new ArrayList<Object>(Arrays.asList(x));}
  static Map<String,Object> map(Object... x){Map<String,Object> r=new LinkedHashMap<>();for(int i=0;i<x.length;i+=2)r.put((String)x[i],x[i+1]);return r;}
  @SuppressWarnings("unchecked") static Map<String,Object> obj(Object x){return (Map<String,Object>)x;}
@@ -55,23 +64,23 @@ public class RecipePrototypeComparison {
   if(!Objects.equals(a,b))throw new AssertionError("value at "+p);
  }
  static int[] colors(Map<String,Object> params){List<?> c=(List<?>)params.get("colors");int[] r=new int[c.size()];for(int i=0;i<r.length;i++)r[i]=((Number)c.get(i)).intValue();return r;}
- static void field(Map<String,Object> recipe,String label){
+ static void field(Map<String,Object> recipe,String label,boolean reuse){
   Map<String,Object> p=obj(recipe.get("parameters")); List<Object> expected=new ArrayList<>();
   MarkField marks=MarkField.create(((Number)p.get("seed")).longValue(),((Number)p.get("columns")).intValue(),((Number)p.get("rows")).intValue(),((Number)p.get("pitch")).doubleValue());
   MarkCommands.stream(marks,((Number)p.get("maxLength")).doubleValue(),colors(p),(Boolean)p.get("bars"),batch->expected.addAll(batch));
-  RecipeEvaluator.Result result=RecipeEvaluator.evaluate(recipe,new RecipeEvaluator.Limits());same(expected,result.commands,label);System.out.println(label+" "+expected.size()+" "+result.counters);
+  RecipeEvaluator.Result result=RecipeEvaluator.evaluate(recipe,new RecipeEvaluator.Limits());same(expected,result.commands,label);session(fieldSession,recipe,result,label,reuse);System.out.println(label+" "+expected.size()+" "+result.counters);
  }
- static void path(Map<String,Object> recipe,String label){
+ static void path(Map<String,Object> recipe,String label,boolean reuse){
   Map<String,Object> p=obj(recipe.get("parameters"));List<Object> expected=new ArrayList<>();
   PathMarkComposition movement=PathMarkComposition.create(((Number)p.get("seed")).longValue(),((Number)p.get("steps")).intValue(),((Number)p.get("distance")).doubleValue());
   movement.streamForCanvas((Boolean)p.get("trace"),((Number)p.get("markLength")).doubleValue(),colors(p),batch->expected.addAll(batch));
-  RecipeEvaluator.Result result=RecipeEvaluator.evaluate(recipe,new RecipeEvaluator.Limits());same(expected,result.commands,label);System.out.println(label+" "+expected.size()+" "+result.counters);
+  RecipeEvaluator.Result result=RecipeEvaluator.evaluate(recipe,new RecipeEvaluator.Limits());same(expected,result.commands,label);session(pathSession,recipe,result,label,reuse);System.out.println(label+" "+expected.size()+" "+result.counters);
  }
  static Map<String,Object> fieldRecipe(){return __FIELD__;}
  static Map<String,Object> pathRecipe(){return __PATH__;}
  public static void main(String[] args){
-  Map<String,Object> f=fieldRecipe();field(f,"field-baseline");obj(f.get("parameters")).put("maxLength",32.0);field(f,"field-length");obj(f.get("parameters")).put("bars",true);field(f,"field-bars");obj(f.get("parameters")).put("colors",list(0x2E0551,0xFF00C7,0x01AFC2,0xFDBE03,0xF4F9FD));field(f,"field-palette");
-  Map<String,Object> p=pathRecipe();path(p,"path-baseline");obj(p.get("parameters")).put("trace",true);path(p,"path-trace");obj(p.get("parameters")).put("steps",2001.0);path(p,"path-steps");obj(p.get("parameters")).put("distance",0.8);path(p,"path-distance");obj(p.get("parameters")).put("trace",false);obj(p.get("parameters")).put("markLength",24.0);obj(p.get("parameters")).put("colors",list(0x2E0551,0xFF00C7,0x01AFC2,0xFDBE03,0xF4F9FD));path(p,"path-style");
+  Map<String,Object> f=fieldRecipe();field(f,"field-baseline",false);obj(f.get("parameters")).put("maxLength",32.0);field(f,"field-length",true);obj(f.get("parameters")).put("bars",true);field(f,"field-bars",true);obj(f.get("parameters")).put("colors",list(0x2E0551,0xFF00C7,0x01AFC2,0xFDBE03,0xF4F9FD));field(f,"field-palette",true);obj(f.get("parameters")).put("seed",43.0);field(f,"field-seed",false);obj(f.get("parameters")).put("columns",159.0);field(f,"field-count",false);
+  Map<String,Object> p=pathRecipe();path(p,"path-baseline",false);obj(p.get("parameters")).put("trace",true);path(p,"path-trace",true);obj(p.get("parameters")).put("steps",2001.0);path(p,"path-steps",false);obj(p.get("parameters")).put("distance",0.8);path(p,"path-distance",false);obj(p.get("parameters")).put("trace",false);obj(p.get("parameters")).put("markLength",24.0);obj(p.get("parameters")).put("colors",list(0x2E0551,0xFF00C7,0x01AFC2,0xFDBE03,0xF4F9FD));path(p,"path-style",true);
   System.out.println("COMMAND_COMPARISON_PASSED");
  }
 }
@@ -88,6 +97,7 @@ public class RecipePrototypeComparison {
     metadata = [ROOT / name for name in (
         'design/recipes/recipe.schema.json', 'design/recipes/execution-bindings.json',
         'design/recipes/expression-model.md', 'design/recipes/runtime-accounting.md',
+        'design/recipes/retained-session.md',
         'tools/validate_recipe_draft.py', 'tools/run_grid_conformance.py',
         'tools/generate_recipe_java_schemas.py')]
     binding_data = json.loads((ROOT / 'design/recipes/execution-bindings.json').read_text())
@@ -116,7 +126,7 @@ public class RecipePrototypeComparison {
         raise RuntimeError('focused failure probes did not finish')
     if hashes != {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in bound}:
         raise RuntimeError('comparison input changed during execution')
-    report = {'status': 'prototype-command-comparison-passed', 'scope': 'Nine command scenarios and focused failure probes; complete budget/type/replay, cache, export and native acceptance remain pending.',
+    report = {'status': 'prototype-command-comparison-passed', 'scope': 'Eleven fresh/session command scenarios and focused failure probes; complete budget/type/replay, cache, export and native acceptance remain pending.',
               'input_sha256': hashes, 'roundtripped_recipes': [p.name for p in recipe_paths], 'stdout': result.stdout, 'failure_stdout': failures.stdout}
     (output / 'result.json').write_text(json.dumps(report, indent=2) + '\n')
     print(result.stdout + failures.stdout)

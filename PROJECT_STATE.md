@@ -1,5 +1,23 @@
 # Project state
 
+## Retained-stage session prototype verified
+
+Previous10d188df pushed three native export cases. Root defined one-entry whole-retain-stage
+cache in design/recipes/retained-session.md: inferred conservative parameter dependencies,
+detached keys/data, cache admission under current limits, actual execution counters and
+explicit retained capacity reservation. Failed misses evict; failed hits preserve geometry;
+new entries publish only after successful frame. Root owns these architectural choices.
+Terra owns evaluator Session/ownership/reservations and focused probes. Luna owns only
+RecipeRetainedKey.java, with bounded AST/key traversal and no starter-specific parameter list.
+Root expanded the runner to compare fresh/session commands across eleven baseline, style
+and geometry edits. Reviewed key inference, removal of temporary key code, bounded detached
+copy accounting before frame, and warm array/value admission. Added independent bare-params,
+failed-miss/failed-frame publication and warm-work savings cases. Final .work/recipe-session-
+root2 passes eleven exact command/session scenarios and eleven failure groups, with current
+source hashes verified. Style edits execute zero retained operation calls; geometry edits
+reconstruct. Evidence refreshed as prototype-only. Next audit catalog/executor admission and
+export integration; later operations/targets/assets/animation remain open. Goal active.
+
 ## PathMarks export and trace edit verified natively
 
 Previous05cc2fe0 pushed first FieldMarks export. Root selected PathMarks baseline and trace

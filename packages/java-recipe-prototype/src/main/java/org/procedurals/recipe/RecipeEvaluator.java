@@ -26,10 +26,17 @@ public strictfp final class RecipeEvaluator {
         public final Map<String,Object> environment;
         public final List<Object> commands;
         public final Map<String,Long> counters;
-        Result(Map<String,Object> e, List<Object> c, Map<String,Long> n) {
+        public final boolean retainedReused;
+        public final long retainedExecutedCalls;
+        public final long retainedReservedUnits;
+        Result(Map<String,Object> e, List<Object> c, Map<String,Long> n,
+               boolean reused, long executedCalls, long reservedUnits) {
             environment = Collections.unmodifiableMap(new LinkedHashMap<String,Object>(e));
             commands = Collections.unmodifiableList(new ArrayList<Object>(c));
             counters = Collections.unmodifiableMap(new LinkedHashMap<String,Long>(n));
+            retainedReused = reused;
+            retainedExecutedCalls = executedCalls;
+            retainedReservedUnits = reservedUnits;
         }
     }
     public static final class RecipeFailure extends IllegalArgumentException {
@@ -59,10 +66,22 @@ public strictfp final class RecipeEvaluator {
             size = n;
         }
     }
+    private static final class RetainStage {
+        final Map<String,Object> scope;
+        final long calls, units, copyUnits, maxArray;
+        RetainStage(Map<String,Object> scope, long calls, long units, long copyUnits,
+                    long maxArray) {
+            this.scope = scope;
+            this.calls = calls;
+            this.units = units;
+            this.copyUnits = copyUnits;
+            this.maxArray = maxArray;
+        }
+    }
     private static final class State {
         final Limits l;
         final long started = System.nanoTime();
-        long visits, calls, work, iterations, units, commands;
+        long visits, calls, work, iterations, units, commands, maxArray;
         String iteration;
         State(Limits x) {
             l = x;
@@ -105,6 +124,7 @@ public strictfp final class RecipeEvaluator {
             if (n < 0 || n > Integer.MAX_VALUE || n > l.arrayLength) {
                 fail("LIMIT_ARRAY_LENGTH", p, "array length limit");
             }
+            if (n > maxArray) maxArray=n;
         }
         void units(String p, long n) {
             if (n < 0 || units > l.valueUnits - n) {
@@ -135,7 +155,13 @@ public strictfp final class RecipeEvaluator {
         Set<String> declared = declared(recipe);
         Map<String,Object> outer = new LinkedHashMap<String,Object>();
         outer.put("params", recipe.get("parameters"));
-        List<?> retain=list(recipe.get("retain"),"/retain");
+        RetainStage stage = retain(recipe, outer, s, declared);
+        return frame(recipe, outer, s, declared, false, stage.calls, 0);
+    }
+    private static RetainStage retain(Map<String,Object> recipe, Map<String,Object> outer, State s, Set<String> declared) {
+        long calls = s.calls;
+        long units = s.units;
+        List<?> retain = list(recipe.get("retain"), "/retain");
         for (int i = 0; i < retain.size(); i++) {
             Map<?,?> b = map(retain.get(i), path("/retain", i));
             String n = str(b.get("name"), path(path("/retain", i), "name"));
@@ -146,6 +172,12 @@ public strictfp final class RecipeEvaluator {
             }
             outer.put(n, v);
         }
+        Map<String,Object> retained = new LinkedHashMap<String,Object>(outer);
+        retained.remove("params");
+        return new RetainStage(retained, s.calls - calls, s.units - units, 0, s.maxArray);
+    }
+    private static Result frame(Map<String,Object> recipe, Map<String,Object> outer, State s, Set<String> declared,
+                                boolean reused, long retainedCalls, long reserved) {
         Object envValue=expr(recipe.get("environment"),outer,"/environment",s,declared);
         Map<String,Object> env;
         try {
@@ -161,7 +193,77 @@ public strictfp final class RecipeEvaluator {
         statements(list(recipe.get("frame"), "/frame"), outer, "/frame", s,
                 declared, commands, env);
         s.units("", 2);
-        return new Result(env, commands, s.counters());
+        return new Result(env, commands, s.counters(), reused, retainedCalls, reserved);
+    }
+    /** Single-threaded, one-entry coarse retain cache for the four immutable draft bindings. */
+    public static final class Session {
+        private Object key;
+        private RetainStage cached;
+
+        public void clear() {
+            key = null;
+            cached = null;
+        }
+
+        public Result evaluate(Map<String,Object> recipe, Limits limits) {
+            Limits frozen = snapshot(limits);
+            checkLimits(frozen);
+            State state = new State(frozen);
+            Set<String> declared = declared(recipe);
+            Object next = retainedKey(recipe, state);
+            Map<String,Object> outer = new LinkedHashMap<String,Object>();
+            outer.put("params", recipe.get("parameters"));
+
+            if (cached != null && next.equals(key)) {
+                if (cached.maxArray > frozen.arrayLength) {
+                    fail("LIMIT_ARRAY_LENGTH", "/retain", "cached retained array limit");
+                }
+                long reservation = addExactRetainedUnits(cached.units, cached.copyUnits);
+                state.units("/retain", reservation);
+                outer.putAll(cached.scope);
+                outer.put("params", recipe.get("parameters"));
+                return frame(recipe, outer, state, declared, true, 0, reservation);
+            }
+
+            clear();
+            RetainStage stage = retain(recipe, outer, state, declared);
+            RetainStage candidate = detachedRetainStage(stage, state);
+            Result result = frame(recipe, outer, state, declared, false, stage.calls, 0);
+            key = next;
+            cached = candidate;
+            return result;
+        }
+    }
+    private static Object retainedKey(Map<String,Object> recipe, final State state) {
+        try {
+            return RecipeRetainedKey.create(recipe, new RecipeRetainedKey.Visitor() {
+                public void visit() {
+                    state.visit("/retain");
+                }
+            });
+        } catch (RecipeFailure error) {
+            throw error;
+        } catch (RecipeRetainedKey.BoundsException error) {
+            throw new RecipeFailure("RETAIN_KEY", "/retain", error.getMessage(),
+                    state.iteration, null, null);
+        } catch (IllegalArgumentException error) {
+            throw new RecipeFailure("RETAIN_KEY", "/retain", error.getMessage(),
+                    state.iteration, null, null);
+        }
+    }
+    private static long addExactRetainedUnits(long stageUnits, long copyUnits) {
+        if (stageUnits < 0 || copyUnits < 0 || stageUnits > Long.MAX_VALUE - copyUnits) {
+            fail("LIMIT_VALUE_UNITS", "/retain", "retained value reservation");
+        }
+        return stageUnits + copyUnits;
+    }
+    private static RetainStage detachedRetainStage(RetainStage stage, State state) {
+        long copyUnits = retainedCopyUnits(stage.scope, state, 0);
+        state.units("/retain", copyUnits);
+        @SuppressWarnings("unchecked")
+        Map<String,Object> detached = (Map<String,Object>)freezeRetained(stage.scope, state, 0);
+        return new RetainStage(Collections.unmodifiableMap(detached), stage.calls, stage.units,
+                copyUnits, state.maxArray);
     }
     private static void checkLimits(Limits l) {
         if (l == null || l.visits <= 0 || l.calls <= 0 || l.work <= 0
@@ -598,6 +700,66 @@ public strictfp final class RecipeEvaluator {
             return Collections.unmodifiableList(copy);
         }
         return value; // Validated command scalars are immutable.
+    }
+    private static Object freezeRetained(Object value, State state, int depth) {
+        if (depth > 64) {
+            fail("RETAIN_COPY", "/retain", "retained value depth limit");
+        }
+        state.visit("/retain");
+        if (value instanceof Map) {
+            Map<String,Object> copy = new LinkedHashMap<String,Object>();
+            for (Map.Entry<?,?> entry : ((Map<?,?>)value).entrySet()) {
+                if (!(entry.getKey() instanceof String)) {
+                    fail("RETAIN_COPY", "/retain", "retained map key must be a string");
+                }
+                copy.put((String)entry.getKey(), freezeRetained(entry.getValue(), state, depth + 1));
+            }
+            return Collections.unmodifiableMap(copy);
+        }
+        if (value instanceof List) {
+            List<?> source = (List<?>)value;
+            state.checkArray("/retain", source.size());
+            List<Object> copy = new ArrayList<Object>(source.size());
+            for (Object item : source) {
+                copy.add(freezeRetained(item, state, depth + 1));
+            }
+            return Collections.unmodifiableList(copy);
+        }
+        return value;
+    }
+    private static long retainedCopyUnits(Object value, State state, int depth) {
+        if (depth > 64) {
+            fail("RETAIN_COPY", "/retain", "retained value depth limit");
+        }
+        state.visit("/retain");
+        if (value instanceof Map) {
+            long total = 1;
+            for (Map.Entry<?,?> entry : ((Map<?,?>)value).entrySet()) {
+                if (!(entry.getKey() instanceof String)) {
+                    fail("RETAIN_COPY", "/retain", "retained map key must be a string");
+                }
+                total = addRetainedCopyUnits(total,
+                        retainedCopyUnits(entry.getValue(), state, depth + 1));
+            }
+            return total;
+        }
+        if (value instanceof List) {
+            List<?> source = (List<?>)value;
+            state.checkArray("/retain", source.size());
+            long total = 1;
+            for (Object item : source) {
+                total = addRetainedCopyUnits(total,
+                        retainedCopyUnits(item, state, depth + 1));
+            }
+            return total;
+        }
+        return 1;
+    }
+    private static long addRetainedCopyUnits(long left, long right) {
+        if (right < 0 || left > Long.MAX_VALUE - right) {
+            fail("LIMIT_VALUE_UNITS", "/retain", "retained copy size");
+        }
+        return left + right;
     }
     private static long units(Object o) {
         if (o instanceof Map) {
