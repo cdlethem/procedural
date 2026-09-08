@@ -1,0 +1,86 @@
+{
+  "cases": [
+    {
+      "cells": false,
+      "density": 0.1,
+      "distribution": 0,
+      "seed": 42
+    },
+    {
+      "cells": false,
+      "density": 0.2,
+      "distribution": 0,
+      "seed": 43
+    },
+    {
+      "cells": false,
+      "density": 0.1,
+      "distribution": 1,
+      "seed": 42
+    },
+    {
+      "cells": false,
+      "density": 0.1,
+      "distribution": 2,
+      "seed": 42
+    },
+    {
+      "cells": true,
+      "density": 0.1,
+      "distribution": 0,
+      "seed": 42
+    },
+    {
+      "cells": true,
+      "density": 0.1,
+      "distribution": 2,
+      "seed": 43
+    }
+  ],
+  "comparison": "region/point counts and every point in raw binary64, including Java Random caller substitutions",
+  "input_sha256_after": {
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+    "packages/python/examples/grain_marks/grain_marks.py": "2563d5a79d49cc66b1d990c3cce3ecd7837d0fef28714655cf1103bea47ee59c",
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+    "tests/native/grain-marks-python.py": "b663ec00f216d8e180288b964e852144c86caad753e6e781e3743f3fdc69a8b5"
+  },
+  "input_sha256_before": {
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+    "packages/python/examples/grain_marks/grain_marks.py": "2563d5a79d49cc66b1d990c3cce3ecd7837d0fef28714655cf1103bea47ee59c",
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+    "tests/native/grain-marks-python.py": "b663ec00f216d8e180288b964e852144c86caad753e6e781e3743f3fdc69a8b5"
+  },
+  "local_behavior": [
+    "configuration validation",
+    "160000-point preflight budget",
+    "quadrant transfer"
+  ],
+  "scope": "Six actual Java/Python GrainMarks composition comparisons; no native render or acceptance claim.",
+  "status": "passed",
+  "toolchain": {
+    "java_home": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1",
+    "java_modules_sha256": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    "java_release_sha256": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    "python_executable": "/home/colin/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/bin/python3.13",
+    "python_executable_sha256": "93a93f4c8af5ae6f127fb0310f923d5fab89eb7257a0b801eec2e44b3f199840",
+    "python_version": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]"
+  },
+  "triangle_counts": [
+    1,
+    1,
+    1,
+    1,
+    26,
+    26
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Scoped GrainMarks py5 JAVA2D native callbacks and cached PNG save; no distribution, physical keyboard or source-recreation claim.",
+  "implementation_sha256": {
+    "packages/python/examples/grain_marks/grain_marks.py": "2563d5a79d49cc66b1d990c3cce3ecd7837d0fef28714655cf1103bea47ee59c",
+    "packages/python/examples/grain_marks/sketch.py": "26446157bbac2e597c8188d401720acbcb4a95075ca08e1b0688af3841dcc57d",
+    "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "tests/native/grain-marks-python.py": "b663ec00f216d8e180288b964e852144c86caad753e6e781e3743f3fdc69a8b5",
+    "tests/native/py5_grain_marks.py": "bd74a03af84c56ed209de6f0f3274e6ded9a09dbdbf0f0fb816f9ee56a22eda0",
+    "design/capabilities/grain-marks-py5-acceptance.md": "a762c72b2f6efba79f77ee7e37ebee1b83371add801494fd39ad69a0cd0781df"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/py5-grain-marks.json": "813439c018198dd63c0b95ebc19d18c8ddd75eadb76eef7a42e47d0e1357ff30",
+    "evidence/conformance/grain-marks-python-parity.json": "4e73f8ae8e6a2cd24679d3aea242f458588b81c11e5c80f4150f0199702b8016",
+    "evidence/conformance/triangle-python-core-root-review.json": "ad2579ecbf1261732169d2a936bdea138656071049a9853cff73208b7fd10888"
+  },
+  "findings": [
+    "Root reviewed Terra model and actual Java/Python comparison; six compositions match every point bit including caller Java Random substitutions and quadrant transfer. Root bounded subprocesses and clarified provenance.",
+    "Actual py5 nine-state run checks all settings, forwarded point/line counts, retained identity and geometry, dimensions, raster envelope, reset RGBA and ignored-key/cached-save equality. Source/runtime and saved-image hashes verified.",
+    "Root inspected baseline, strokes, both biased-coordinate images and cell transfer. Full triangle coverage and distinct concentration patterns are visible; native Java point needs no p5-style circle correction.",
+    "Shared240-second lease completed with sketch exit; no native session remains."
+  ],
+  "limits": [
+    "No post-exit/asynchronous quiet-period, physical keyboard or human usability claim.",
+    "Native raster is renderer-specific; geometry parity is bit-exact but Java pixel identity is not claimed.",
+    "Android GrainMarks and package/export integration remain pending."
+  ]
+}

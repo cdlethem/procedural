@@ -1,0 +1,258 @@
+{
+  "status": "passed",
+  "scope": "Actual py5 GrainMarks callbacks; no physical-keyboard, package or source-recreation acceptance",
+  "states": [
+    {
+      "id": "baseline",
+      "regions": 1,
+      "marks": 15680,
+      "revision": 1,
+      "retained": null,
+      "rgba_sha256": "8dd6814a725cf0c9c2d5a7f686096e60836d0444f9ca76552bcaaeebacee331c",
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 0,
+        "strokes": false,
+        "alternate": false,
+        "cells": false
+      },
+      "image": "baseline.png",
+      "png_sha256": "5f71a777d5ec1a52c97953fbb2e385a8e6005f6ef2aeb8623d95180de31fc804"
+    },
+    {
+      "id": "strokes",
+      "regions": 1,
+      "marks": 15680,
+      "revision": 2,
+      "retained": true,
+      "rgba_sha256": "874e1959daf31b503284c104c6ec5b6eab8446d2fd05ce841733f15dab8b1265",
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 0,
+        "strokes": true,
+        "alternate": false,
+        "cells": false
+      },
+      "image": "strokes.png",
+      "png_sha256": "e463f6dc65379508962331428076f9d87a85e8aa488842e8275e52eff7d12321"
+    },
+    {
+      "id": "colour",
+      "regions": 1,
+      "marks": 15680,
+      "revision": 3,
+      "retained": true,
+      "rgba_sha256": "ce4eae57843fb4edc59eb1b152dd3ec331360ae2d683b28878956ce6c597d2ba",
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 0,
+        "strokes": true,
+        "alternate": true,
+        "cells": false
+      },
+      "image": "colour.png",
+      "png_sha256": "170a06be7d09ce371be93f22caff42a99289b518c704a1d82206cbba982936b0"
+    },
+    {
+      "id": "bias1",
+      "regions": 1,
+      "marks": 15680,
+      "revision": 4,
+      "retained": false,
+      "rgba_sha256": "b6a90e72701d6cd8b71add6512da21e687de5b87464a3f563a2cc1a51db4b405",
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 1,
+        "strokes": true,
+        "alternate": true,
+        "cells": false
+      },
+      "image": "bias1.png",
+      "png_sha256": "9d4bbd6211d501175e11a70337597a8408fea4a45b52976ed5d20922d3f5445e"
+    },
+    {
+      "id": "bias2",
+      "regions": 1,
+      "marks": 15680,
+      "revision": 5,
+      "retained": false,
+      "rgba_sha256": "28e4bd60db3fb32707db8d7433de2ac2c947f5ca7ccdbab98433846ea0f4c76f",
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 2,
+        "strokes": true,
+        "alternate": true,
+        "cells": false
+      },
+      "image": "bias2.png",
+      "png_sha256": "33450668197b1048c4a1ef1b4fbff5c4f794ca180bc11d8e710aaa02f035f37a"
+    },
+    {
+      "id": "density",
+      "regions": 1,
+      "marks": 31360,
+      "revision": 6,
+      "retained": false,
+      "rgba_sha256": "f7dbd522755bfd7d32b1bb28fc181999481e73fba5fa010190c24a088cf6acfb",
+      "settings": {
+        "seed": 42,
+        "density": 0.2,
+        "distribution": 2,
+        "strokes": true,
+        "alternate": true,
+        "cells": false
+      }
+    },
+    {
+      "id": "seed",
+      "regions": 1,
+      "marks": 31360,
+      "revision": 7,
+      "retained": false,
+      "rgba_sha256": "8ae25ff969e2117275424f260beaf20f961b14594257cdd7ca9ebae994cd3f31",
+      "settings": {
+        "seed": 43,
+        "density": 0.2,
+        "distribution": 2,
+        "strokes": true,
+        "alternate": true,
+        "cells": false
+      }
+    },
+    {
+      "id": "cells",
+      "regions": 26,
+      "marks": 81920,
+      "revision": 8,
+      "retained": false,
+      "rgba_sha256": "23a1134384d081cfc5e4cc39f5331cde6b598bc5087b54fcd483e85b59da44ad",
+      "settings": {
+        "seed": 43,
+        "density": 0.2,
+        "distribution": 2,
+        "strokes": true,
+        "alternate": true,
+        "cells": true
+      },
+      "image": "cells.png",
+      "png_sha256": "03a2e1e723a2fdc762ceaa80182415621c00fc9ecc3911ace124b718708ac0f3"
+    },
+    {
+      "id": "reset",
+      "regions": 1,
+      "marks": 15680,
+      "revision": 9,
+      "retained": false,
+      "rgba_sha256": "8dd6814a725cf0c9c2d5a7f686096e60836d0444f9ca76552bcaaeebacee331c",
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 0,
+        "strokes": false,
+        "alternate": false,
+        "cells": false
+      },
+      "image": "reset.png",
+      "png_sha256": "5f71a777d5ec1a52c97953fbb2e385a8e6005f6ef2aeb8623d95180de31fc804"
+    },
+    {
+      "id": "ignored-q",
+      "regions": 1,
+      "marks": 15680,
+      "revision": 9,
+      "retained": true,
+      "rgba_sha256": "8dd6814a725cf0c9c2d5a7f686096e60836d0444f9ca76552bcaaeebacee331c",
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 0,
+        "strokes": false,
+        "alternate": false,
+        "cells": false
+      }
+    },
+    {
+      "id": "save",
+      "regions": 1,
+      "marks": 15680,
+      "revision": 9,
+      "retained": true,
+      "rgba_sha256": "8dd6814a725cf0c9c2d5a7f686096e60836d0444f9ca76552bcaaeebacee331c",
+      "settings": {
+        "seed": 42,
+        "density": 0.1,
+        "distribution": 0,
+        "strokes": false,
+        "alternate": false,
+        "cells": false
+      }
+    }
+  ],
+  "py5": "0.10.11a0",
+  "python": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]",
+  "java": "17.0.20.1",
+  "input_sha256_before": {
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+    "packages/python/examples/grain_marks/grain_marks.py": "2563d5a79d49cc66b1d990c3cce3ecd7837d0fef28714655cf1103bea47ee59c",
+    "packages/python/examples/grain_marks/sketch.py": "26446157bbac2e597c8188d401720acbcb4a95075ca08e1b0688af3841dcc57d",
+    "tests/native/py5_grain_marks.py": "bd74a03af84c56ed209de6f0f3274e6ded9a09dbdbf0f0fb816f9ee56a22eda0",
+    "design/capabilities/grain-marks-py5-acceptance.md": "a762c72b2f6efba79f77ee7e37ebee1b83371add801494fd39ad69a0cd0781df",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/__init__.py": "763066a534ae41d8a01605ceedcea2cd1c37139a25f4f2a9138e63b8a31410d7",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/sketch.py": "39557b47939444710c6cd2480e8dfadc03eddc28c87106c3fb262d2d087a8639",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/base.py": "018c896ebee9ab611ef7346cbeca8e354918cf5caa49a1465332a7b7cccd57da",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/core.jar": "2cd02df8ace61c45af5eddef74dc74608b87a50155e83f20c7b1e28642ddbc85",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/py5.jar": "4447b8098080f83cb4ffa5bf3b2d6c15a4a1bea3265198da75f5ac936f504903",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "baseline_envelope": {
+    "actual": [
+      42,
+      43,
+      597,
+      599
+    ],
+    "expected": [
+      42.40926799072996,
+      43.81856927190938,
+      597.7827230860719,
+      599.9845428426659
+    ],
+    "tolerance_pixels": 2
+  },
+  "paint_calls": 9,
+  "saved_png_sha256": "5f71a777d5ec1a52c97953fbb2e385a8e6005f6ef2aeb8623d95180de31fc804",
+  "input_sha256_after": {
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+    "packages/python/examples/grain_marks/grain_marks.py": "2563d5a79d49cc66b1d990c3cce3ecd7837d0fef28714655cf1103bea47ee59c",
+    "packages/python/examples/grain_marks/sketch.py": "26446157bbac2e597c8188d401720acbcb4a95075ca08e1b0688af3841dcc57d",
+    "tests/native/py5_grain_marks.py": "bd74a03af84c56ed209de6f0f3274e6ded9a09dbdbf0f0fb816f9ee56a22eda0",
+    "design/capabilities/grain-marks-py5-acceptance.md": "a762c72b2f6efba79f77ee7e37ebee1b83371add801494fd39ad69a0cd0781df",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/__init__.py": "763066a534ae41d8a01605ceedcea2cd1c37139a25f4f2a9138e63b8a31410d7",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/sketch.py": "39557b47939444710c6cd2480e8dfadc03eddc28c87106c3fb262d2d087a8639",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/base.py": "018c896ebee9ab611ef7346cbeca8e354918cf5caa49a1465332a7b7cccd57da",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/core.jar": "2cd02df8ace61c45af5eddef74dc74608b87a50155e83f20c7b1e28642ddbc85",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/py5.jar": "4447b8098080f83cb4ffa5bf3b2d6c15a4a1bea3265198da75f5ac936f504903",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  }
+}

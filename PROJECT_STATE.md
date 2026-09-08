@@ -1,5 +1,17 @@
 # Project state
 
+## GrainMarks Python model and native workflow accepted
+
+Root-reviewed Terra model matches actual Java for six complete compositions; root added
+subprocess deadlines and provenance. Native1 passes nine paints/settings/identity/mark
+counts, raster envelope, reset and cached-save RGBA equality under shared240s lease.
+Root inspected five representative images and verified all source/runtime/image hashes.
+Evidence: grain-marks-python-parity.json, py5-grain-marks.json and
+triangle-py5-native-root-review.json. Both triangle py5 native attestations added.
+Native Java/py5 point covers the full triangle; no p5 epsilon-line correction is needed.
+All runs terminal; no native process pending. Next Android GrainMarks workflow, then
+batch public-export/package integration. Java15/15, seven operations fully ported still.
+
 ## Both Python triangle cores reviewed and conformant
 
 Terra implemented triangle_points.py plus actual fixture/access runner. Root reviewed
