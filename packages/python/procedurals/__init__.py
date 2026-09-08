@@ -44,3 +44,5 @@ from .radial_profile import RadialProfile3D, RadialProfileError
 from .delaunay import DelaunayError, delaunay_2d
 __all__ += ["DelaunayError", "delaunay_2d"]
 __all__ += ["RadialProfile3D", "RadialProfileError"]
+from .closed_spline import SplineError, closed_spline_2d
+__all__ += ["SplineError", "closed_spline_2d"]

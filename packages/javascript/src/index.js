@@ -8,3 +8,4 @@ export { seededTrianglePoints2D, mapTriangleCoordinates2D, TrianglePointsError }
 export { seededEndpointBranches2D, BranchTreeError } from "./branch-tree.js";
 export { delaunay2D, DelaunayError } from "./delaunay.js";
 export { RadialProfile3D, RadialProfileError } from "./radial-profile.js";
+export { closedSpline2D, SplineError } from "./closed-spline.js";
