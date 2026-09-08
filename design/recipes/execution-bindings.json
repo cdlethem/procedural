@@ -1,0 +1,76 @@
+{
+  "status": "draft",
+  "scope": "Four immutable CP1/CP2 binding proposals; no callable executor or target support claim. Contract schema pointers remain authoritative; move reviewed infrastructure under catalog authority before consumers. Native binding strings are review notation, never reflective execution.",
+  "operations": [
+    {
+      "id": "layout.regular-grid",
+      "version": "0.1.0",
+      "contract": "catalog/operations/regular-grid.json",
+      "contract_sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
+      "construct_input": "/input_schema",
+      "values_output": "/output_schema",
+      "java_binding_proposal": {
+        "construct": "RegularGrid.create(input)",
+        "values": "instance.toMap()"
+      },
+      "ports": {
+        "point": {
+          "input_schema": "/access_schema",
+          "output_schema": "/point_schema",
+          "java_binding_proposal": "instance.pointAt(input.index)"
+        }
+      }
+    },
+    {
+      "id": "field.gradient-noise-2d-01",
+      "version": "0.1.0",
+      "contract": "catalog/operations/gradient-noise-2d-01.json",
+      "contract_sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+      "construct_input": "/input_schema",
+      "values_output": "/output_schema",
+      "java_binding_proposal": {
+        "construct": "GradientNoise2D01.create(input)",
+        "values": "instance.serialize()"
+      },
+      "ports": {
+        "sample": {
+          "input_schema": "/query_schema",
+          "output_schema": "/query_output_schema",
+          "java_binding_proposal": "instance.sample(input)"
+        }
+      }
+    },
+    {
+      "id": "color.cyclic-palette",
+      "version": "0.1.0",
+      "contract": "catalog/operations/cyclic-palette.json",
+      "contract_sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+      "construct_input": "/input_schema",
+      "values_output": "/output_schema",
+      "java_binding_proposal": {
+        "construct": "CyclicPalette.create(input)",
+        "values": "instance.serialize()"
+      },
+      "ports": {
+        "sample": {
+          "input_schema": "/query_schema",
+          "output_schema": "/query_output_schema",
+          "java_binding_proposal": "instance.sample(input)"
+        }
+      }
+    },
+    {
+      "id": "path.gradient-trace-2d",
+      "version": "0.1.0",
+      "contract": "catalog/operations/gradient-path.json",
+      "contract_sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+      "construct_input": "/input_schema",
+      "values_output": "/output_schema",
+      "java_binding_proposal": {
+        "construct": "GradientPath2D.trace(input)",
+        "values": "instance.toValues()"
+      },
+      "ports": {}
+    }
+  ]
+}

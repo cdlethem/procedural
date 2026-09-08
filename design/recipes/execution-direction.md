@@ -113,3 +113,11 @@ These walkthroughs are requirements, not executable examples or user-test eviden
 Do not implement a starter-parameter JSON wrapper and call it the completed recipe system.
 Do not expand to all fifteen operations before the two compositions validate the execution
 boundary. Later operations, animation and assets are explicit remaining X1 obligations.
+
+## Draft implementation inputs
+
+`expression-model.md` specifies the proposed evaluation model. `recipe.schema.json` is
+a strict grammar draft; `execution-bindings.json` points at the existing four contracts.
+Four grammar tests and schema-pointer checks pass. No complete recipe execution, lexical
+validation, budget enforcement or export has been accepted. Full CP1/CP2 translations are
+the next architecture check before freezing this surface.

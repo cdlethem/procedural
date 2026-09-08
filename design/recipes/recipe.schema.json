@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:procedurals:recipe:draft:0.1.0",
+  "title": "Procedurals recipe draft 0.1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "version", "status", "parameters", "operations", "drawing", "environment", "retain", "frame"],
+  "properties": {
+    "format": {"const": "procedurals.recipe"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "draft"},
+    "parameters": {"type": "object"},
+    "operations": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/declaration"}
+    },
+    "drawing": {"$ref": "#/$defs/declaration"},
+    "environment": {"$ref": "#/$defs/expression"},
+    "retain": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/binding"}
+    },
+    "frame": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/statement"}
+    }
+  },
+  "$defs": {
+    "name": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]*$"},
+    "declaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1}
+      }
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "value"],
+      "properties": {
+        "name": {"$ref": "#/$defs/name"},
+        "value": {"$ref": "#/$defs/expression"}
+      }
+    },
+    "json": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "boolean"},
+        {"type": "number"},
+        {"type": "string"},
+        {"type": "array", "items": {"$ref": "#/$defs/json"}},
+        {"type": "object", "additionalProperties": {"$ref": "#/$defs/json"}}
+      ]
+    },
+    "expression": {
+      "oneOf": [
+        {"$ref": "#/$defs/literal"},
+        {"$ref": "#/$defs/ref"},
+        {"$ref": "#/$defs/array"},
+        {"$ref": "#/$defs/record"},
+        {"$ref": "#/$defs/get"},
+        {"$ref": "#/$defs/index"},
+        {"$ref": "#/$defs/math"},
+        {"$ref": "#/$defs/if"},
+        {"$ref": "#/$defs/range"},
+        {"$ref": "#/$defs/map"},
+        {"$ref": "#/$defs/construct"},
+        {"$ref": "#/$defs/query"},
+        {"$ref": "#/$defs/values"}
+      ]
+    },
+    "literal": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "value"],
+      "properties": {"kind": {"const": "literal"}, "value": {"$ref": "#/$defs/json"}}
+    },
+    "ref": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "name"],
+      "properties": {"kind": {"const": "ref"}, "name": {"$ref": "#/$defs/name"}}
+    },
+    "array": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "items"],
+      "properties": {"kind": {"const": "array"}, "items": {"type": "array", "items": {"$ref": "#/$defs/expression"}}}
+    },
+    "recordField": {
+      "type": "object", "additionalProperties": false, "required": ["name", "value"],
+      "properties": {"name": {"type": "string"}, "value": {"$ref": "#/$defs/expression"}}
+    },
+    "record": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "fields"],
+      "properties": {"kind": {"const": "record"}, "fields": {"type": "array", "items": {"$ref": "#/$defs/recordField"}}}
+    },
+    "get": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "value", "key"],
+      "properties": {"kind": {"const": "get"}, "value": {"$ref": "#/$defs/expression"}, "key": {"type": "string"}}
+    },
+    "index": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "value", "index"],
+      "properties": {"kind": {"const": "index"}, "value": {"$ref": "#/$defs/expression"}, "index": {"$ref": "#/$defs/expression"}}
+    },
+    "math": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "op", "args"],
+      "properties": {
+        "kind": {"const": "math"},
+        "op": {"enum": ["add", "sub", "mul", "div", "rem", "lt", "le", "eq", "neg", "sin", "cos", "floor", "length"]},
+        "args": {"type": "array", "items": {"$ref": "#/$defs/expression"}}
+      },
+      "allOf": [{
+        "oneOf": [
+          {"properties": {"op": {"enum": ["add", "sub", "mul", "div", "rem", "lt", "le", "eq"]}, "args": {"minItems": 2, "maxItems": 2}}},
+          {"properties": {"op": {"enum": ["neg", "sin", "cos", "floor", "length"]}, "args": {"minItems": 1, "maxItems": 1}}}
+        ]
+      }]
+    },
+    "if": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "condition", "then", "else"],
+      "properties": {"kind": {"const": "if"}, "condition": {"$ref": "#/$defs/expression"}, "then": {"$ref": "#/$defs/expression"}, "else": {"$ref": "#/$defs/expression"}}
+    },
+    "range": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "start", "stop", "step"],
+      "properties": {"kind": {"const": "range"}, "start": {"$ref": "#/$defs/expression"}, "stop": {"$ref": "#/$defs/expression"}, "step": {"$ref": "#/$defs/expression"}}
+    },
+    "map": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "items", "as", "indexAs", "value"],
+      "properties": {"kind": {"const": "map"}, "items": {"$ref": "#/$defs/expression"}, "as": {"$ref": "#/$defs/name"}, "indexAs": {"$ref": "#/$defs/name"}, "value": {"$ref": "#/$defs/expression"}}
+    },
+    "construct": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "operation", "input"],
+      "properties": {"kind": {"const": "construct"}, "operation": {"type": "string", "minLength": 1}, "input": {"$ref": "#/$defs/expression"}}
+    },
+    "query": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "instance", "port", "input"],
+      "properties": {"kind": {"const": "query"}, "instance": {"$ref": "#/$defs/expression"}, "port": {"type": "string", "minLength": 1}, "input": {"$ref": "#/$defs/expression"}}
+    },
+    "values": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "instance"],
+      "properties": {"kind": {"const": "values"}, "instance": {"$ref": "#/$defs/expression"}}
+    },
+    "statement": {
+      "oneOf": [
+        {"$ref": "#/$defs/bindStatement"},
+        {"$ref": "#/$defs/emitStatement"},
+        {"$ref": "#/$defs/forStatement"},
+        {"$ref": "#/$defs/whenStatement"}
+      ]
+    },
+    "bindStatement": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "name", "value"],
+      "properties": {"kind": {"const": "bind"}, "name": {"$ref": "#/$defs/name"}, "value": {"$ref": "#/$defs/expression"}}
+    },
+    "emitStatement": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "value"],
+      "properties": {"kind": {"const": "emit"}, "value": {"$ref": "#/$defs/expression"}}
+    },
+    "forStatement": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "items", "as", "indexAs", "body"],
+      "properties": {"kind": {"const": "for"}, "items": {"$ref": "#/$defs/expression"}, "as": {"$ref": "#/$defs/name"}, "indexAs": {"$ref": "#/$defs/name"}, "body": {"type": "array", "items": {"$ref": "#/$defs/statement"}}}
+    },
+    "whenStatement": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "condition", "body"],
+      "properties": {"kind": {"const": "when"}, "condition": {"$ref": "#/$defs/expression"}, "body": {"type": "array", "items": {"$ref": "#/$defs/statement"}}}
+    }
+  }
+}

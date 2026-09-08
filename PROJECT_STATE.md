@@ -1,5 +1,20 @@
 # Project state
 
+## Recipe grammar and binding drafts implemented (D3)
+
+Previous turn pushed architectural direction 467eafd2. Root specified tagged expressions,
+ordered scopes/statements, lazy conditions, binary64 arithmetic and remainder, instance/data
+separation, and precise failure requirements in design/recipes/expression-model.md. Terra
+implemented strict recipe.schema.json and four grammar tests; root reviewed and corrected
+record field key constraints, schema identifier and explicit grammar-only test naming.
+Root authored execution-bindings.json after reading Java accessors; all four catalog IDs,
+versions, hashes and input/query/output schema pointers checked. Draft schema meta-validation
+and `uv run python -m unittest tests.test_recipe_draft_schema` pass. No accepted persisted
+recipe, evaluator, capability claim or catalog mutation.
+Next translate complete FieldMarks and PathMarks into this grammar, assess clarity and
+missing semantics, freeze resource/typing/binding rules, then create recipe skill at schema
+acceptance before evaluator work. Full milestone scope remains active.
+
 ## Recipe execution architecture started (D3 prerequisite to X1)
 
 Previous turn made progress: contact-sheet helper pushed as 5de3c712. Root inspected the
