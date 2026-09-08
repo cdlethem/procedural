@@ -1,5 +1,48 @@
 # Project state
 
+## JavaScript endpoint-branch core accepted
+
+Root independently reran strengthened40-case/5-stream core checks at
+.work/branch-tree-javascript/root-reviewed.json, reviewed all ten native-only requirements,
+and added actual Node/platform identity. Source/fixture/runner hashes verified unchanged.
+Core-only p5 attestation added: branch-tree-javascript.json and
+branch-tree-javascript-root-review.json. Catalog/reference and16 focused attestation tests
+pass. Terra source/runner ownership released. No branch native or package acceptance.
+
+Luna still owns actual Java/JS BranchComposition runner completion; initial shape-only
+handoff was rejected. Root binding/artist boundary document is ready. Next review eight
+full model comparisons with precomputed coordinate bounds, then implement p5 BranchMarks
+and preregister native workflow. Java15/15; nine complete four-target ports; branching adds
+only a tenth JavaScript core so far, not a tenth completed port.
+
+## Branch core fixture pass; host checks and actual Java model parity still pending
+
+Root read complete current branch-tree.js and independently ran40 shared cases plus RNG
+traces at .work/branch-tree-javascript/root-initial.json (passed). BFS, shared scale, capacity
+before angle/arithmetic, packed growable storage and attribute/access ordering align on
+source review. No support/export acceptance yet. Terra owns strengthening native-only checks:
+all scalar carriers/nonfinite positions, passive container rejection, canonical negativezero,
+all accessor bounds and complete atomic writes. Root caught invalid config reuse after
+ownership mutation, which could mask intended validation checks. Fresh valid inputs required.
+
+Luna's initial model runner omitted actual Java compilation/comparison and prefix checks;
+root rejected that handoff and requested the complete assigned eight-case comparison with
+existing coordinate_comparison helper, exact attributes/topology and source hashes. Do not
+claim model parity from shape/counts. Both workers retain their two-file ownership; root
+owns boundary/state and acceptance. No branch renders or public exports. Counts unchanged.
+
+## Branching port work started against frozen semantics
+
+Triangle closure commitd5e0f249 pushed. Terra triangle_python owns only branch-tree.js and
+its fixture/access runner; root specified seededEndpointBranches2D/BranchTreeError and
+reviewed full behavior/error order. Luna quadrant_python_package owns only BranchMarks
+model and actual Java/model comparison runner. No branch native renders or attestations.
+Root port boundary: design/capabilities/branch-marks-port-boundary.md. Preserve BFS/RNG
+order, ancestry, child counts and geometry/style separation. Model-case coordinates use
+existing coordinate_comparison outward intervals derived before JS comparison; exact
+attributes/topology and same-runtime prefix remain exact. Eight bounded model cases.
+Do not begin p5 drawing before core/model review. Java15/15 and nine completed ports remain.
+
 ## Triangle distribution batch complete on all four targets
 
 Root accepted Python CP5 wheel/starter from .work/dist/cp5/python-grain4. Verified all

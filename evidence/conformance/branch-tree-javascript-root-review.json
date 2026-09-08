@@ -1,0 +1,24 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "JavaScript endpoint branch core only; no BranchMarks model/native workflow, root export or distribution acceptance.",
+  "implementation_sha256": {
+    "packages/javascript/src/branch-tree.js": "675f30861d3fe667e249082a8cdab00581526c6e13169a94c81435ce0765e6be",
+    "tests/native/branch-tree-javascript.mjs": "ee355b81bfa5e6a35d165311c7a05410cf3c938b902edb21d9d91ae7378d0d47"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/branch-tree-javascript.json": "47965c4d0589c97cc07710d96e269109f36e46008ab5b082da13e7d6961944d9"
+  },
+  "findings": [
+    "Root read full frozen behavior and implementation: BFS traversal, per-parent scale, gate/conditional-angle draws and capacity-before-angle/child arithmetic preserved. Packed growable arrays avoid per-node objects and maximum-capacity preallocation.",
+    "Forty shared cases execute full outputs with exact topology/headings/lengths, registered per-coordinate trig bounds, error details and actual instrumented private RNG traces. Five stream vectors execute outputs and states.",
+    "Root rejected initial host-test gaps and invalid-config reuse; revised fresh-carrier cases cover all ten named native-only requirements. Root independently reran them and added runtime identity to the bound report.",
+    "Static validation precedes root arithmetic/storage/RNG; getters are rejected without evaluation. Output ownership, accessor precedence, four-slot writes, locked-output atomicity and canonical zero reviewed and exercised."
+  ],
+  "limits": [
+    "Host allocation exhaustion is not injected. Input rule copies may allocate during validation, consistent with the output-storage constraint.",
+    "Host trig accuracy is accepted only for the exercised fixture cases and their fixed bounds; no universal cross-runtime epsilon or coordinate bit identity.",
+    "BranchMarks actual Java/model comparison and all native/example/package work remain pending."
+  ]
+}
