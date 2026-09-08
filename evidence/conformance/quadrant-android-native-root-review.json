@@ -1,0 +1,31 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Android API33 RegionMarks native callback workflow and preserved nested-cell mechanism; distribution and source-sketch recreation remain pending.",
+  "implementation_sha256": {
+    "packages/java-android/examples/RegionMarks/RegionMarksActivity.java": "ab92346ffa6ee15d5b9a3b303298786cc5a7b876034c9fd2770f210a63fe220e",
+    "packages/java-android/examples/RegionMarks/RegionMarksRenderer.java": "dcf268dab5d097b4f53f2037ba7805239c46f24da2b86910bc2862476dff72d4",
+    "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "tests/native/android-region-marks/RegionMarksProbeActivity.java": "a084800a29abc1f9ab5eb7c4f8096f2642fc0219da742d87b161272931f59b7f",
+    "tools/build_android_region_marks.py": "7978f61b7b54daf52216e586f1dce72ebe97cbbf7863daf6a8d4a3b64bd334b1",
+    "tools/run_android_region_marks.py": "973333bc6f15920c209a5057ba6457109a6bfd6e7e677ae39df460fd3ff7deed"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/android-region-marks.json": "052c16a7cd11f4ff32abd974a47c20bab8c07b7e95de574057b9a0f293ffe0b1",
+    "design/capabilities/region-marks-android-boundary.md": "24a36dec493251967ee6d673a1de2f0006f3dbd2d27e30ca72a6d724756f23b1"
+  },
+  "findings": [
+    "Root reviewed native rectangles/circles inside the guarded host consumer; no change to portable drawing commands or shared core.",
+    "Seven actual Button.performClick states with exact cell/mark counts pass. Style retains geometry, layout edits replace it, authored controls are ignored, MediaStore bytes equal cached image.",
+    "Actual HOME/return preserves snapshot and restores controls after root fixed noLoop resume acknowledgment. Failed attempts retained; unchanged counts/criteria used for corrective run.",
+    "Root verified sources, staged inputs, APK and8 PNG hashes; inspected baseline/grid/layout/authored. Nested squares, repeated interior circles, full-list layout and authored rectangles are visually intact."
+  ],
+  "limits": [
+    "Button callbacks are not physical-touch usability evidence. No physical device or cross-host pixel identity claim.",
+    "Only new RegionMarks resume route fixed here; same source pattern in FieldMarks, PathMarks and PlacementMarks is a pending focused audit.",
+    "Build-stage README retains pre-acceptance draft wording; this record is authoritative for tested scope. No local-distribution acceptance yet."
+  ]
+}

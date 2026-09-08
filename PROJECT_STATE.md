@@ -1,5 +1,47 @@
 # Project state
 
+## Android RegionMarks workflow accepted; quadrant native ports complete
+
+Native3 passes the unchanged seven-state suite, real HOME/resume, ignored controls and
+cached MediaStore PNG save after the resume-acknowledgment fix. Root verified sources,
+staged build/APK and8 image hashes; inspected baseline/grid/layout/authored. All wrapper/
+emulator processes terminal. Evidence: evidence/conformance/android-region-marks.json and
+quadrant-android-native-root-review.json. Android quadrant native attestation added.
+Seven operations now have core/native evidence on all four targets; Java remains15/15.
+Next: before port packaging, audit the same onResume busy-wait pattern in FieldMarks,
+PathMarks and PlacementMarks with a bounded actual lifecycle test. RegionMarks fix does
+not retroactively establish their behavior. Then package quadrant ports; eight other
+operation ports and later recipe/artist/reproduction milestones remain open.
+
+## Android RegionMarks native lifecycle defect found and corrected (rerun pending)
+
+Full Activity/probe builds pass. Native1 failed on a runner startup race: adb exec-out
+returned a missing-file diagnostic with exit0; corrected exact pending-file handling.
+Native2 reached baseline/grid/palette, then resumed the same Activity but left every
+control disabled. Root saved resume-ui.xml and resume-activity.txt under native2 and
+verified actual RESUMED state. onResume had set busy while waiting for a noLoop callback
+that never arrived. Root now queues a version-checked acknowledgment of the valid cached
+snapshot after resume. Corrected APK compiled in .work/examples/android-region-marks-probe2.
+Plan records corrective attempts and flags inherited starter pattern for a later focused
+audit; no existing evidence is reclassified. Native2 remains live as of last verification:
+exec session90460, runnerPID2668010, wrapperPID2667652, emulator5582; it has a210-second
+execution deadline and cleanup. Poll that handle before next execution; do not overlap.
+Prepared but NOT launched: .work/android-region-marks/session3.py, using probe2/native3.
+Next run session3 under shared lock after native2 is terminal, then inspect native images.
+Uncommitted files remain drafts; no Android RegionMarks workflow acceptance yet.
+
+## Android RegionMarks Activity and renderer drafted
+
+Root implemented the native example using unchanged RegionComposition and the existing
+Activity publication/save/lifecycle pattern. Renderer obtains an empty owned Android2DFrame
+then draws native rectangles/circles inside the guarded completed-surface callback; no new
+portable commands or approximate motifs. Boundary/remaining checks:
+design/capabilities/region-marks-android-boundary.md. Renderer plus shared model compile
+against accepted core0.4/adapter0.2 and pinned Android runtime/API33. Full Activity build and
+native execution remain pending. Luna owns only new build_android_region_marks.py and
+example README, with a fresh build assignment; root owns Activity/Renderer/native decisions.
+Preserve uncommitted draft files. No native workflow/support acceptance yet.
+
 ## Android quadrant ART core accepted; native drawing remains next
 
 Root verified the preparation chain, rejected a tampered dex before device access, and ran
