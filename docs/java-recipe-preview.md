@@ -94,3 +94,33 @@ uses `clock.timeSeconds` with the example `frequencyHz` parameter. Exporting tim
 time0.5 yields marks of length4 and7 with the same positions and colors. Change the context
 in the source recipe and export again to save another snapshot. There is no automatic
 playback or inferred frame rate in this preview.
+
+To export a bounded image sequence, export the timed recipe once, then pass a context file
+to that exported project's build script:
+
+```sh
+python3 /path/to/export/build.py \
+  --java-home /path/to/jdk \
+  --processing-core /path/to/core.jar \
+  --contexts /path/to/contexts.json \
+  --output /path/to/fresh-build
+```
+
+The context file contains explicit times, for example:
+
+```json
+{"contexts":[{"index":0,"timeSeconds":0},{"index":30,"timeSeconds":0.5}]}
+```
+
+Run the printed `RecipeSequenceExport` command with a fresh output directory. On this
+machine, wrap it in `tools/with_native_render_lock.py --timeout 120 -- xvfb-run -a ...`.
+The project example `design/recipes/examples/triangle-timed.contexts.json` also demonstrates
+repeated and backward time. Build inputs are bounded to32 contexts; aggregate command/work
+limits may permit fewer frames for expensive recipes. An empty list is valid.
+
+Files are named by sequence position (`frame-000000.png`, etc.), so repeated caller indices
+remain distinct outputs. `manifest.json` records contexts, image hashes and completion.
+Use a sequence only when its status is `complete`; interruption or a save failure leaves
+an incomplete attempt. This is offline image output with explicit times, not real-time
+playback or stateful simulation. Changing context files requires a fresh build, and does
+not require re-exporting the composition.

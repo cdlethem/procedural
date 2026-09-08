@@ -9,15 +9,22 @@ public final class RecipeExportData {
     private static final int MAX_BYTES=4*1024*1024, MAX_DEPTH=64, MAX_VALUES=20000;
     private RecipeExportData() { }
     public static Map<String,Object> read(String expectedSha256) {
+        return readResource(expectedSha256,"/recipe-data.bin");
+    }
+    public static Map<String,Object> readSequence(String expectedSha256) {
+        if(expectedSha256==null)throw bad("build with --contexts before running a sequence");
+        return readResource(expectedSha256,"/sequence-data.bin");
+    }
+    private static Map<String,Object> readResource(String expectedSha256,String resource) {
         try {
-            byte[] bytes=bytes();
+            byte[] bytes=bytes(resource);
             if(!hex(MessageDigest.getInstance("SHA-256").digest(bytes)).equals(expectedSha256)) throw bad("recipe data digest differs");
             Reader r=new Reader(bytes); r.header(); Object root=r.value(0); if(!(root instanceof Map))throw bad("recipe data root must be object"); if(r.in.hasRemaining())throw bad("recipe data trailing bytes");
             @SuppressWarnings("unchecked") Map<String,Object> result=(Map<String,Object>)root; return result;
         } catch(GeneralSecurityException e) { throw bad("SHA-256 unavailable",e); }
     }
-    private static byte[] bytes() {
-        InputStream source=RecipeExportData.class.getResourceAsStream("/recipe-data.bin"); if(source==null)throw bad("recipe data resource missing");
+    private static byte[] bytes(String resource) {
+        InputStream source=RecipeExportData.class.getResourceAsStream(resource); if(source==null)throw bad("recipe data resource missing");
         try (InputStream input=source) { ByteArrayOutputStream out=new ByteArrayOutputStream(); byte[] b=new byte[8192]; int n; while((n=input.read(b))>=0){if(out.size()>MAX_BYTES-n)throw bad("recipe data exceeds 4 MiB");out.write(b,0,n);} return out.toByteArray(); }
         catch(IOException e){throw bad("recipe data read failed",e);}
     }

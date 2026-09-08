@@ -1,5 +1,26 @@
 # Project state
 
+## Standalone sequence export verified
+
+Exported build.py now accepts --contexts, hashes the explicit schedule and writes a separate
+sequence-data.bin with generated identity. Root reviewed/corrected the worker's envelope
+encoding, implemented the bounded reader path and RecipeSequenceExport, and reused the
+existing single-frame renderer/cleanup. All commands evaluate before output creation;
+ordinal PNG names preserve repeated indices and an atomic manifest stays incomplete until
+all saves/hashes succeed. Eight focused Python export tests passed.
+Native .work/recipe-seq-build2 produced four frames under the shared machine lock. Every
+PNG matches an independent time snapshot; repeated time is byte-identical. Root inspected
+three distinct frames. The stub sink publication probe proves empty completion, late-save
+failure remaining incomplete, and existing-output preservation. No-context and late-invalid
+clock invocations reject before output. Evidence: evidence/distribution/recipe-sequence-export-preview.json.
+This is bounded offline image output, not a real-time scheduler, mutable simulation or
+general executor acceptance. Next assess the accepted spring operation's state/update
+contract for a bounded simulation workflow; retain cache rules must not admit mutable state
+implicitly. Assets and deferred target executors also remain X1 requirements. Seven recipe
+bindings and15 accepted Java operations/15 starters remain unchanged. Preserve unrelated JS.
+Full roadmap goal remains active; no completion or port acceptance is claimed.
+
+
 ## Bounded sequence command evaluation verified
 
 Root implemented RecipeSequence after rejecting a delegated implementation that misplaced

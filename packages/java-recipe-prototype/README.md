@@ -135,3 +135,12 @@ An empty sequence is valid after input admission. Excess frame count fails befor
 contexts. No successful prefix is returned if a later frame fails. The API returns commands;
 it does not render, write image sequences, schedule playback or integrate simulation state.
 See `design/recipes/bounded-sequences.md` for the exact budget and failure policy.
+
+Standalone build scripts now accept `--contexts` for bounded offline image sequences.
+`RecipeSequenceExport` evaluates all frame commands before creating its output directory,
+then reuses the single-frame JAVA2D renderer with ordinal filenames and an atomic manifest.
+The manifest stays incomplete until every image is saved and hashed. The build records
+separate recipe and sequence data identities; default builds still run a single snapshot.
+Native four-frame replay and distinguishing publication checks are scoped in
+`evidence/distribution/recipe-sequence-export-preview.json`. This supersedes the earlier
+command-only sequence limitation; scheduling, mutable simulation and other targets remain open.
