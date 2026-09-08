@@ -79,3 +79,8 @@ CP17 adds BinaryCellPartition2D/PanelMarks after closed splines. Preserve exact 
 bounds, survivor-then-child ordering, failed-attempt RNG consumption, RANDOM/LONGEST axis
 semantics and all-interior cut mapping. Use the accepted Java0.20 distribution checkpoint
 at `7d5c941f`; do not port the earlier private probe or claim Processing source replay.
+
+CP18 adds GradientNoise3D01/DepthMarks after binary panels. Preserve safe-corner coordinates,
+three-stage hash, unsigned modulo12 gradients and exact x/y/z interpolation. Its z=0 slice
+is deliberately distinct from the2D field. Native mesh transfer requires target-specific
+P3D-equivalent evidence; the Java source bundle review is evidence/distribution/cp18-java-review.json.

@@ -1,0 +1,140 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "field.gradient-noise-3d-01",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/gradient-noise-3d-01.json",
+    "catalog_sha256": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/fields/GradientNoise3D01.java": "4874c28ff020ce28ab1eeeab463b140779a531627cb09a660dbb55ef5ae3ee91",
+          "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+          "packages/java-processing/examples/DepthMarks/DepthMarks.pde": "31efb1a4896b5573a5db99f733ac38cd869aec0488149b60d1b3c37c02b47f17"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/gradient-noise-3d-java.json": "44271f6b1c0336149131d7319832e131c84a27ce71877aa4746210fde0162d8e",
+          "evidence/conformance/gradient-noise-3d-java-root-review.json": "3739718531ba9de2b74e165a82c9e388776d62d067036d21d324d3844d51177f",
+          "fixtures/operations/gradient-noise-3d-01.json": "c4b8b810602aed51d712145c11f668c580a9225c82ce787e3da224bc98d1df2f",
+          "evidence/reproductions/cp18-p3d/native.json": "6074e48fd24476f005a06c6fdd6b05ba54722646ad9fda98faf2243428e00254",
+          "evidence/reproductions/cp18-p3d/root-review.json": "e59768af42b6606ed311d828f167c8ec9269474540161157515387ceb41b5e9a"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/gradient-noise-3d-java.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/gradient-noise-3d-catalog-review.json",
+          "sha256": "569a1e5a8ec2124a6b89e3bfed1f47f9e88c467c594e9c0abed1dad2bb7a6c57"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1 Java8 core; Processing4.5.6 JOGL2.6.0 software P3D density1",
+          "scope": "Exact3D scalar field and five-state DepthMarks; no source replay or non-Java support."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/fields/GradientNoise3D01.java": "4874c28ff020ce28ab1eeeab463b140779a531627cb09a660dbb55ef5ae3ee91",
+          "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+          "packages/java-processing/examples/DepthMarks/DepthMarks.pde": "31efb1a4896b5573a5db99f733ac38cd869aec0488149b60d1b3c37c02b47f17"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/gradient-noise-3d-java.json": "44271f6b1c0336149131d7319832e131c84a27ce71877aa4746210fde0162d8e",
+          "evidence/conformance/gradient-noise-3d-java-root-review.json": "3739718531ba9de2b74e165a82c9e388776d62d067036d21d324d3844d51177f",
+          "fixtures/operations/gradient-noise-3d-01.json": "c4b8b810602aed51d712145c11f668c580a9225c82ce787e3da224bc98d1df2f",
+          "evidence/reproductions/cp18-p3d/native.json": "6074e48fd24476f005a06c6fdd6b05ba54722646ad9fda98faf2243428e00254",
+          "evidence/reproductions/cp18-p3d/root-review.json": "e59768af42b6606ed311d828f167c8ec9269474540161157515387ceb41b5e9a"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp18-p3d/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/gradient-noise-3d-catalog-review.json",
+          "sha256": "569a1e5a8ec2124a6b89e3bfed1f47f9e88c467c594e9c0abed1dad2bb7a6c57"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1 Java8 core; Processing4.5.6 JOGL2.6.0 software P3D density1",
+          "scope": "Exact3D scalar field and five-state DepthMarks; no source replay or non-Java support."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/fields/GradientNoise3D01.java": "4874c28ff020ce28ab1eeeab463b140779a531627cb09a660dbb55ef5ae3ee91",
+          "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+          "packages/java-processing/examples/DepthMarks/DepthMarks.pde": "31efb1a4896b5573a5db99f733ac38cd869aec0488149b60d1b3c37c02b47f17"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/gradient-noise-3d-java.json": "44271f6b1c0336149131d7319832e131c84a27ce71877aa4746210fde0162d8e",
+          "evidence/conformance/gradient-noise-3d-java-root-review.json": "3739718531ba9de2b74e165a82c9e388776d62d067036d21d324d3844d51177f",
+          "fixtures/operations/gradient-noise-3d-01.json": "c4b8b810602aed51d712145c11f668c580a9225c82ce787e3da224bc98d1df2f",
+          "evidence/reproductions/cp18-p3d/native.json": "6074e48fd24476f005a06c6fdd6b05ba54722646ad9fda98faf2243428e00254",
+          "evidence/reproductions/cp18-p3d/root-review.json": "e59768af42b6606ed311d828f167c8ec9269474540161157515387ceb41b5e9a"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp18-p3d/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/gradient-noise-3d-catalog-review.json",
+          "sha256": "569a1e5a8ec2124a6b89e3bfed1f47f9e88c467c594e9c0abed1dad2bb7a6c57"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1 Java8 core; Processing4.5.6 JOGL2.6.0 software P3D density1",
+          "scope": "Exact3D scalar field and five-state DepthMarks; no source replay or non-Java support."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

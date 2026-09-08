@@ -3,7 +3,7 @@
 Current maintainer objective: build a feature-complete Java implementation. Ports are
 paused per `porting-resume.md`; recipes/MCP/web remain a separate roadmap, not prerequisites
 for making the native Java library useful. This plan does not claim feature completeness
-or replace the project's mission with the current20 operations.
+or replace the project's mission with the current21 operations.
 
 ## Completion requirements
 
@@ -28,7 +28,7 @@ The broader corpus benchmark remains a separate strict certification claim.
 
 ## Existing capability baseline
 
-Java0.20 assembles20 operations and20 workflows: field marks, integrated paths, constrained
+Java0.21 assembles21 operations and21 workflows: field marks, integrated paths, constrained
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
 paths, raster remapping, positioned color ramps, noise-band paths, smooth closed curves and binary panel layouts,
@@ -131,3 +131,8 @@ CP17 adds BinaryCellPartition2D and PanelMarks: irregular two-way integer-cell c
 attempted-versus-successful split accounting, and independent decoration of retained cells.
 This extends equal-quadrant layouts; it does not cover unequal four-way splitting, cell
 deletion or general polygon subdivision. No new original recreation is claimed.
+
+CP18 adds GradientNoise3D01 and DepthMarks: explicit-depth planar edits and volumetric
+face-color samples on retained radial geometry. Core, actual P3D lifecycle and extracted
+consumer checks are separate evidence. No Processing-noise replay, octave stack, generic
+animation executor or new original recreation is claimed.

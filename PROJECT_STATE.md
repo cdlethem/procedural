@@ -1,5 +1,25 @@
 # Project state
 
+## CP18 Java 0.21 accepted for publishing
+
+21 reusable operations and 21 editable workflows. GradientNoise3D01 and DepthMarks add
+explicit depth slices and volumetric mesh coloring. Core, actual P3D lifecycle and extracted
+bundle checks passed; root acceptance: evidence/distribution/cp18-java-review.json.
+All 21 extracted PDEs compile; six extracted PNGs match inspected native candidate pixels.
+All 92 prior core classes, one adapter class and 40 example/font members are preserved.
+Archive .work/dist/cp18-java-source1/procedurals-java-source-dev.zip SHA256
+89db961b8479c36a63ce0872c2f598ec213f072b4e9833091cf2d27b01bf5a14.
+
+Ports and Sol remain paused; outstanding integration and new CP18 port semantics are queued
+in docs/porting-resume.md. Unrelated Android resume draft remains unaccepted and untouched.
+No native or delegated task remains active. Three demonstrated original recreations remain;
+this workflow is not an additional original recreation or general P3D helper acceptance.
+
+Next select another bounded Java capability gap using docs/java-completion-plan.md and
+source evidence. Keep root architecture/review and bounded implementation delegation;
+major-idiom coverage and renderer/animation helper gaps remain open. Feature completeness
+is not inferred from operation count. Continue Java buildout independently of deferred ports.
+
 ## CP18 public3D field core accepted — native workflow next
 
 Root recorded reviewed capability-dependency admission, exact3D hash/gradient/interpolation

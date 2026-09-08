@@ -1,0 +1,58 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.21.0",
+  "scope": "Source-built Java bundle with 21 operations and 21 editable workflows; all extracted PDE compilation and native DepthMarks P3D. Local artifact, not registry release.",
+  "archive": {
+    "path": ".work/dist/cp18-java-source1/procedurals-java-source-dev.zip",
+    "sha256": "89db961b8479c36a63ce0872c2f598ec213f072b4e9833091cf2d27b01bf5a14",
+    "members": 204
+  },
+  "build_report": {
+    "path": "evidence/distribution/cp18-java-source.json",
+    "sha256": "28b85e62e5348fb82403b3b31b9757efe3aa0ee40d85af4721cf5e1b78e953f3"
+  },
+  "consumer_report": {
+    "path": "evidence/distribution/cp18-java-consumer.json",
+    "sha256": "fee6c8cc0966a1d134189663a7d02377f1e9f8b649147a58e2305a460f28eedf"
+  },
+  "implementation_sha256": {
+    "packages/java/source-bundle.json": "df956057e6814227c8e41d1cfe93cd20f3c4c3bb3ef30e3f0a5714196b8ca968",
+    "tools/build_java_source_bundle.py": "6780a918b138f21636c8bcad006c9d9c0ece964628f95ce34189a1acf2c3dc2e",
+    "tools/check_java_source_bundle.py": "9c37ffadfb3b909f40124fb11ee44800e280592a43c84a84f25af0bfcf7bea0a",
+    "tools/run_depth_marks_java.py": "32b4a2750cabb35b88b43455a2c0ffd4120acb190d16ce7baaaef51c24839d89",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise3D01.java": "4874c28ff020ce28ab1eeeab463b140779a531627cb09a660dbb55ef5ae3ee91",
+    "packages/java-processing/examples/DepthMarks/DepthMarks.pde": "31efb1a4896b5573a5db99f733ac38cd869aec0488149b60d1b3c37c02b47f17",
+    "tests/native/DepthMarksProbe.java": "e7173420c602ccb5ac96d95345c0171094c17fd6ddffb9b2a51c2df0b2466b58"
+  },
+  "checks": {
+    "procedurals.jar": {
+      "preserved_classes": 92,
+      "added_classes": [
+        "org/procedurals/fields/GradientNoise3D01$NoiseException.class",
+        "org/procedurals/fields/GradientNoise3D01.class"
+      ]
+    },
+    "procedurals-processing-adapter.jar": {
+      "preserved_classes": 1,
+      "added_classes": []
+    },
+    "preserved_example_members": 40,
+    "normative_document_in_archive": "procedurals/design/operations/gradient-noise-3d-contract.md",
+    "extracted_native_frames_equal_candidate": 6
+  },
+  "verified": [
+    "Root reviewed extracted P3D consumer changes and verified live build/consumer inputs.",
+    "All 21 extracted PDEs compile; actual P3D depth/color/mesh/reset/save sequence passes from extracted JAR.",
+    "Six extracted PNGs equal root-inspected candidate pixels exactly.",
+    "Prior core and adapter classes and example/font members preserved byte-for-byte; normative contract included.",
+    "Core and native workflow acceptance recorded separately; seven packaging tests and catalog validation pass."
+  ],
+  "limits": [
+    "No additional original recreation or non-Java support claim.",
+    "Pinned external toolchain and font inputs required.",
+    "Scoped P3D example validation does not establish general render-helper support.",
+    "Acceptance binds this exact archive."
+  ]
+}

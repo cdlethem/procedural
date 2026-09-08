@@ -1,6 +1,6 @@
 {
-  "version": "0.20.0",
-  "processing_version": 20,
+  "version": "0.21.0",
+  "processing_version": 21,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -25,7 +25,8 @@
     "packages/java/src/main/java/org/procedurals/color/StopRamp.java": "9230378dcd2a1e34717ad8130d66e8d93d5af944b383b353e5d1665c06d051e5",
     "packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java": "dab540f63272c963b3b00997d6924f46bae609d8f2d05e4f90e612df5f10e82b",
     "packages/java/src/main/java/org/procedurals/paths/ClosedSpline2D.java": "df436d30d51ec73b8a1265168fd8bc6cb1498dc90caec9ea024766d795682fcb",
-    "packages/java/src/main/java/org/procedurals/layout/BinaryCellPartition2D.java": "5406bf9ae61e8cc1edc028974de848ba6ac79d2efe52dc7d9c845d6333d4c389"
+    "packages/java/src/main/java/org/procedurals/layout/BinaryCellPartition2D.java": "5406bf9ae61e8cc1edc028974de848ba6ac79d2efe52dc7d9c845d6333d4c389",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise3D01.java": "4874c28ff020ce28ab1eeeab463b140779a531627cb09a660dbb55ef5ae3ee91"
   },
   "examples": {
     "procedurals/examples/BranchMarks/BranchComposition.java": {
@@ -179,6 +180,10 @@
     "procedurals/examples/PanelMarks/PanelMarks.pde": {
       "source": "packages/java-processing/examples/PanelMarks/PanelMarks.pde",
       "sha256": "9bab1be5e9d3f097b35c79fdc651dace846f137a38736850503b57d934e843eb"
+    },
+    "procedurals/examples/DepthMarks/DepthMarks.pde": {
+      "source": "packages/java-processing/examples/DepthMarks/DepthMarks.pde",
+      "sha256": "31efb1a4896b5573a5db99f733ac38cd869aec0488149b60d1b3c37c02b47f17"
     }
   },
   "operation_files": [
@@ -188,6 +193,7 @@
     "cyclic-palette.json",
     "delaunay-2d.json",
     "gradient-noise-2d-01.json",
+    "gradient-noise-3d-01.json",
     "gradient-path.json",
     "noise-band-path.json",
     "occupied-lattice-paths-2d.json",

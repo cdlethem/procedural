@@ -1,0 +1,31 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "GradientNoise3D01 and actual DepthMarks P3D workflow; distribution acceptance separate",
+  "native_evidence": "evidence/reproductions/cp18-p3d/native.json",
+  "native_sha256": "6074e48fd24476f005a06c6fdd6b05ba54722646ad9fda98faf2243428e00254",
+  "verified": [
+    "Actual P3D640x640 density1 and source-built core JAR for field/grid/mesh; pinned Processing/JOGL/native dependencies bound.",
+    "Every planar sample and mesh face-center sample checked against exact actual x/y/z inputs; spatial z changes results.",
+    "Field,grid,mesh and geometry remain stable; depth changes sample arrays, C/M retain arrays and sample values.",
+    "Five-state zcm0s sequence, exact baseline reset, displayed/framebuffer equality and saved PNG equals cached pixels after300ms no draw.",
+    "Root viewed all four distinct states. Final runner-corrected attempt pixels exactly equal inspected first attempt; live source/class/runtime/image hashes verified."
+  ],
+  "visual_observations": [
+    "Planar field has coherent teal/ochre curved stroke regions.",
+    "Depth edit changes pattern while origins remain fixed.",
+    "Recolor preserves strokes in rose/purple/orange.",
+    "Mesh transfer displays broad colored patches across a lit faceted rounded surface; no concentric-point overlap from private study."
+  ],
+  "diagnostics": {
+    "first_attempt": ".work/cp18-depth-native1/result.json",
+    "status": "preserved failed runner result; native lifecycle itself passed",
+    "reason": "X11 shutdown sequence without the two optional historical EGL/DRI3 warnings was not recognized",
+    "resolution": "Root accepted exact five-line shutdown variant, retained strict full matching, corrected runner density/renderer field validation; fresh attempt passed."
+  },
+  "limits": [
+    "No new original recreation; source noise differs from Processing.",
+    "Scoped software OpenGL native P3D workflow, not general renderer helper support or other-target acceptance."
+  ]
+}
