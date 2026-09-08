@@ -162,3 +162,20 @@ Focused admission evidence must include malformed path input with huge steps (sc
 before allocation reservation), a schema-valid path over the host work budget (limit error
 before trace), a wrong instance port, and a schema-valid native semantic failure preserving
 its original code. No runtime acceptance follows merely from generating schema data.
+
+## Target-specific export admission
+
+Java prototype exports explicitly identify `processing-java` (the Java-specific CLI default)
+and reject other requested targets with `UNSUPPORTED_TARGET` before output creation. The
+same bounded recipe object passes the existing static validator and is canonically hashed
+in export metadata. Its declared operations must pass the shared attestation checker for
+that target, including implementation hashes, evidence predicates and acceptance reviews;
+core must be conformant and native support validated-scoped. Export metadata includes only
+those checked target dimensions. The existing full-catalog checker still checks all targets.
+
+This admission verifies the dependencies used by an experimental export. It does not grant
+executor acceptance or make the direct Java Map API a structurally validating API. Editable
+parameters remain data-only and are separately checked at build/evaluation time; their build
+hashes identify the actual edit, while the validated recipe hash identifies the export input.
+The next execution-boundary work is a validated-composition interface before exposing Java
+submission to application callers. Other target executors, assets and animation remain open.

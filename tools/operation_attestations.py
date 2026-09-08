@@ -198,7 +198,9 @@ def _dimension_errors(root: Path, value: object, label: str) -> list[str]:
     return errors
 
 
-def _attestation_errors(root: Path, operation: dict[str, Any], catalog_path: Path, attestation_path: Path) -> tuple[list[str], dict[str, Any] | None]:
+def _attestation_errors(root: Path, operation: dict[str, Any], catalog_path: Path,
+                        attestation_path: Path, selected_target: str | None = None
+                        ) -> tuple[list[str], dict[str, Any] | None]:
     label = str(attestation_path.relative_to(root)).replace("\\", "/")
     try:
         value = strict_json(attestation_path)
@@ -221,8 +223,12 @@ def _attestation_errors(root: Path, operation: dict[str, Any], catalog_path: Pat
     expected_targets = set(operation.get("targets", {}))
     if not isinstance(targets, dict) or set(targets) != expected_targets:
         return [f"{label}: target set differs from contract targets"], None
+    if selected_target is not None and selected_target not in expected_targets:
+        return [f"{label}: unknown contract target {selected_target!r}"], None
     errors: list[str] = []
-    for target, dimensions in targets.items():
+    targets_to_check = (selected_target,) if selected_target is not None else tuple(targets)
+    for target in targets_to_check:
+        dimensions = targets[target]
         target_label = f"{label}/{target}"
         if not isinstance(dimensions, dict) or set(dimensions) != set(DIMENSIONS):
             errors.append(f"{target_label}: requires exactly core, native and technique blocks")
@@ -230,6 +236,51 @@ def _attestation_errors(root: Path, operation: dict[str, Any], catalog_path: Pat
         for dimension in DIMENSIONS:
             errors.extend(_dimension_errors(root, dimensions[dimension], f"{target_label}/{dimension}"))
     return errors, value
+
+
+def validate_target_attestation(root: Path, operation: dict[str, Any], target: str
+                                ) -> tuple[list[str], dict[str, Any] | None]:
+    """Validate one operation target without treating other targets as scoped-valid.
+
+    The attestation envelope and contract binding are always checked.  Only the selected
+    target's three dimensions are checked.  A successful result is deliberately a small
+    scoped record: it identifies the target, repeats the validated operation binding, and
+    contains only that target's dimensions.
+    """
+    root = root.resolve()
+    if not isinstance(target, str) or not target:
+        return ["target: requires a nonempty target name"], None
+    filename = operation.get("_file")
+    if (not isinstance(filename, str) or not filename or Path(filename).name != filename
+            or not filename.endswith(".json")):
+        return ["operation: missing catalog filename"], None
+    catalog_directory = root / "catalog/operations"
+    validation_directory = root / "catalog/validation"
+    try:
+        catalog_directory.resolve().relative_to(root.resolve())
+        validation_directory.resolve().relative_to(root.resolve())
+    except (OSError, ValueError):
+        return ["catalog: operation or validation directory resolves outside repository"], None
+    catalog_path = (catalog_directory / filename).resolve()
+    attestation_path = (validation_directory / filename).resolve()
+    try:
+        catalog_path.relative_to(catalog_directory.resolve())
+        attestation_path.relative_to(validation_directory.resolve())
+    except (OSError, ValueError):
+        return [f"catalog/validation/{filename}: path resolves outside catalog directory"], None
+    if not catalog_path.is_file():
+        return [f"catalog/operations/{filename}: missing operation contract"], None
+    if not attestation_path.is_file():
+        return [f"catalog/validation/{filename}: missing target attestation for {target}"], None
+    errors, record = _attestation_errors(root, operation, catalog_path, attestation_path, target)
+    if errors or record is None:
+        return errors, None
+    scoped = {
+        "target": target,
+        "operation": record["operation"],
+        "dimensions": record["targets"][target],
+    }
+    return [], scoped
 
 
 def load_attestations(root: Path, operations: list[dict[str, Any]]) -> tuple[list[str], dict[str, dict[str, Any]]]:

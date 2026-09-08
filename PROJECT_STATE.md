@@ -1,5 +1,19 @@
 # Project state
 
+## Explicit Java export target admission reviewed
+
+Root added target admission to the exporter using the existing static validator and a
+scoped shared attestation API implemented by Terra. Luna added focused regression tests.
+The scope checks all three selected-target dimensions while preserving full-loader checks
+for every target. Root reviewed matching file-containment guards and normalized relative roots.
+Exporter records validated recipe and validator/catalog identities, rejects unsupported
+targets, and requires conformant core plus scoped native operation evidence. Initial real
+FieldMarks export and unsupported-target check pass. All 22 focused attestation/export tests
+pass, including unchanged all-target rejection, stale selected evidence and unsupported output
+rejection. No renderer semantics changed. Direct Java validated-composition interface remains
+next, not accepted by this step.
+
+
 ## Catalog authority migration reviewed
 
 Root admission review identified two remaining boundaries: schema/bindings still live under
