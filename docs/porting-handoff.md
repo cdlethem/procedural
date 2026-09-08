@@ -37,7 +37,9 @@ PlacementMarks workflows in `a7ea7ec5`. The exact source-bound native evidence a
 root integration findings are in `design/port-batch-01-root-review.md`. Python's
 integrated core conformance report is tracked; both native workflows have reviewed
 representative images. Placement core/native target attestations are recorded for p5.js, py5 and Android API33.
-Technique/recreation support and port distribution acceptance remain pending.
+Technique/recreation claims remain separate. Local JavaScript/Python distributions are
+reviewed in `evidence/distribution/cp3-ports-review.json`; Android distribution is reviewed
+in `evidence/distribution/cp3-android-review.json`. See the PlacementMarks installation guide.
 Do not infer package release acceptance from source integration alone.
 
 The older FieldMarks/PathMarks evidence remains historical. An exact root-reviewed

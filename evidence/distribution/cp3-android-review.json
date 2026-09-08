@@ -1,0 +1,29 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Android PlacementMarks0.3 starter ZIP and extracted debug APK compile with accepted core0.3/adapter0.2 JARs. No registry publication, new native render or physical-device claim.",
+  "implementation_sha256": {
+    "tools/build_placement_marks_android.py": "7c02377e32028b7c82e89efdc85dfa93c5078a35369c00059e59ce003a7dd9a2",
+    "packages/java-android/examples/PlacementMarks/PlacementMarksActivity.java": "e7fee124da66464cb6240780c9f9fa73872d6f11ba653d7e5330b5342d96c050",
+    "packages/java-android/examples/PlacementMarks/PlacementMarksRenderer.java": "c4b6d9780da7c7dae0a6b5d1d9e4d4a69b44d8e641d36ecc85d2914a84905f2a",
+    "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+    "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp3-android.json": "4ba601a26d314e26cfcad291ad32bc34388404b978aaa98c145badf3b926beef",
+    "evidence/distribution/cp3-java.json": "6268fbcda4786b4e446644ee977076a9a952581d2f6c64dea94ee6d1375e361f",
+    "evidence/distribution/cp2-android.json": "8fe60e2a6ef2b288c153e0997ad9ce172600ed34d9141406f4d5f89070d44c38",
+    "evidence/conformance/circle-placements-android.json": "2b410e97a8688d73f81a7a8204e596a67dc26c79a92cc22ada4b73fc0a1096f7",
+    "evidence/reproductions/placement-marks-android/root-review.json": "1b53e713152fa1e916743bba711662fc3fff61600e470272194eb404054c1090"
+  },
+  "root_findings": [
+    "Every source/toolchain hash and final ZIP member verified; four example Java files and manifest are unchanged. Extracted APK compile succeeded using only packaged sources/JARs and explicit external toolchain/runtime.",
+    "All placement class bytes in the packaged core JAR are identical to the inputs dexed and executed in the accepted ART run. Existing core and adapter source bindings still match.",
+    "Archive excludes runtime, SDK, signing key, local.properties and build output. Root corrected and inspected README runtime URL/hashes, Java/SDK configuration and controls."
+  ],
+  "remaining": [
+    "Nine other operation ports",
+    "Further artist workflows/recreation coverage and recipe milestones"
+  ]
+}

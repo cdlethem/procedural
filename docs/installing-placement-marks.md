@@ -118,4 +118,38 @@ reuse placements; seed, budget and spacing changes rebuild them. The starter REA
 lists all controls. Source changes are limited to removing checkout-dependent imports;
 reviewed drawing behavior is preserved. Distribution review:
 [`cp3-ports-review.json`](../evidence/distribution/cp3-ports-review.json).
-Android's source/native support is recorded separately; its distribution is still pending.
+Android's source/native support is recorded separately from the package checks below.
+
+
+## Android local starter
+
+The Android package uses the accepted portable core0.3 JAR and unchanged Android
+adapter0.2 JAR. Their independent versions are intentional: placement adds core
+operations without changing the renderer adapter. With those accepted artifacts and
+the existing Android toolchain available:
+
+```sh
+python3 tools/build_placement_marks_android.py --output .work/dist/cp3/android
+```
+
+The builder verifies the input JARs against their distribution evidence. `--core-jar`
+and `--adapter-jar` accept alternate locations for the same bytes. The resulting
+`procedurals-placement-marks-android-0.3.0.zip` contains a standalone Gradle project,
+both Procedurals JARs, notices and four editable Java files. Its README specifies the
+external Processing Android runtime and toolchain checksums/setup. It includes no
+runtime, SDK or signing key.
+
+Extract the ZIP, enter `procedurals-placement-marks-android`, configure Java17 and
+SDK33 as instructed, and compile with the verified external runtime:
+
+```sh
+gradle -PprocessingCore=/absolute/path/processing-core.jar :app:assembleDebug
+```
+
+Use your Android development tools to install the APK. Buttons mirror the desktop
+controls; Save PNG writes the displayed cached frame to Pictures/Procedurals. The
+builder only compiles the extracted project. The existing API33 emulator workflow
+and ART core evidence establish the separately recorded native scope.
+
+The [Android distribution review](../evidence/distribution/cp3-android-review.json)
+binds the final ZIP, unchanged accepted dependencies and successful extracted APK build.

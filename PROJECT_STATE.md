@@ -1,5 +1,18 @@
 # Project state
 
+## Placement port distribution batch complete
+
+Android starter0.3 ZIP now includes accepted core0.3 and unchanged adapter0.2 JARs,
+four byte-identical editable Java files, manifest and notices. The final extracted project
+compiled using explicit external runtime/SDK. Root verified14 ZIP members, source/toolchain
+hashes and identical placement class bytes to the ART-tested inputs. Runtime, keys and build
+outputs remain outside the ZIP. Evidence: evidence/distribution/cp3-android-review.json.
+Final artifact: .work/dist/cp3/android-placement3. JavaScript/Python packages were accepted
+in283dd7ec. The two-operation placement port batch now has core/native support and local
+distributions on all targets; no new operation or original-sketch recreation is claimed.
+Next select the next bounded capability/port batch against the existing roadmap. Full goal
+remains active: nine other ports and later recipe/artist/reproduction milestones are open.
+
 ## Placement JavaScript/Python distributions reviewed
 
 Built npm tarball/browser ZIP and Python wheel/py5 ZIP at version0.3.0 with six core
