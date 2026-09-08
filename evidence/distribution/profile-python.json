@@ -1,0 +1,216 @@
+{
+  "status": "passed",
+  "scope": "CP7 Python 0.7.0 installed wheel and extracted ProfileMarks starter checks; no sketch execution, native render, publication, or support attestation.",
+  "package_version": "0.7.0",
+  "input_sha256": {
+    "packages/python/pyproject.toml": "1dc6fe17d11aac151a10c1601b6050230fe233bddfec74390c15ec3eb88a076b",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "evidence/conformance/radial-profile-python-root-review.json": "1caf2eda83c3d8dd0a0fae428b85890205751ca2054e8af4054dcc33d146ae84",
+    "evidence/conformance/profile-py5-native-root-review.json": "9a79712ced107c407577ecf438c2747e9259a23bd90ac8e478c8e4154f22e657",
+    "evidence/conformance/py5-profile-marks.json": "a67537b1577e0ddd73001ede2a679bf08d34fe330c678c5da7abe1d6399c79ce",
+    "evidence/conformance/profile-marks-python-parity.json": "494016dd1513284e6f4d03416a552390ff4e3e00f825526f7fac4d9b65f0fb43",
+    "evidence/conformance/profile-export-compatibility-review.json": "c96081a9713f83c6518c17e8d3b9c1c376706ec09fea3c34723be7de4d1f25cc",
+    "packages/python/procedurals/__init__.py": "65aca11f7fe747e7956ca90cd1811f3666f317122ca1ce93bf60d027e10ae4d0",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/branch_tree.py": "dcaa5ee3da7ab9a99d93f0cb8d370d308c719292b2a40cb27dec20a953230458",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "packages/python/procedurals/radial_profile.py": "5e808574fb55b822aea205981aaea4df53cf487723d42a05204c9c6066716735",
+    "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+    "packages/python/examples/profile_marks/profile_composition.py": "af6b19268df01f407b5229f0e7eb4ef724be2875fb4bd1bc301928ac7fc6de99",
+    "packages/python/examples/profile_marks/sketch.py": "2e483ffbb7b1f63a69d67e7d4f346c3fc15b2a4284891dae3d4e57122878ec3c",
+    "tools/build_profile_marks_python.py": "94b24b2216c36888c406b31f7c813e5cc8204f391b47e7c0af14f62f9e1874a6",
+    "tools/build_region_marks_python.py": "03ded1293808531eebb096364a614158c98078566f86be3fef28e213ea711bbf",
+    "tools/build_path_marks_python.py": "358e601bf292184f834e47889142586dd2a1f69405b76c06a282340f55015775"
+  },
+  "accepted_evidence_sha256": {
+    "evidence/conformance/radial-profile-python-root-review.json": "1caf2eda83c3d8dd0a0fae428b85890205751ca2054e8af4054dcc33d146ae84",
+    "evidence/conformance/profile-py5-native-root-review.json": "9a79712ced107c407577ecf438c2747e9259a23bd90ac8e478c8e4154f22e657",
+    "evidence/conformance/py5-profile-marks.json": "a67537b1577e0ddd73001ede2a679bf08d34fe330c678c5da7abe1d6399c79ce",
+    "evidence/conformance/profile-marks-python-parity.json": "494016dd1513284e6f4d03416a552390ff4e3e00f825526f7fac4d9b65f0fb43",
+    "evidence/conformance/profile-export-compatibility-review.json": "c96081a9713f83c6518c17e8d3b9c1c376706ec09fea3c34723be7de4d1f25cc"
+  },
+  "artifacts": {
+    "wheel": {
+      "path": ".work/dist/cp7/python-profile3/build/wheelhouse/procedurals_python-0.7.0-py3-none-any.whl",
+      "sha256": "8a7ca068152b74004bfec9aac8f1bdc32ef2a3bc8c1ae33007bcff340f22904c",
+      "entries": [
+        {
+          "path": "procedurals/__init__.py",
+          "sha256": "65aca11f7fe747e7956ca90cd1811f3666f317122ca1ce93bf60d027e10ae4d0"
+        },
+        {
+          "path": "procedurals/_drawing.py",
+          "sha256": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3"
+        },
+        {
+          "path": "procedurals/_drawing_state.py",
+          "sha256": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8"
+        },
+        {
+          "path": "procedurals/_py5_frame.py",
+          "sha256": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295"
+        },
+        {
+          "path": "procedurals/branch_tree.py",
+          "sha256": "dcaa5ee3da7ab9a99d93f0cb8d370d308c719292b2a40cb27dec20a953230458"
+        },
+        {
+          "path": "procedurals/colors.py",
+          "sha256": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6"
+        },
+        {
+          "path": "procedurals/fields.py",
+          "sha256": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae"
+        },
+        {
+          "path": "procedurals/layout.py",
+          "sha256": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3"
+        },
+        {
+          "path": "procedurals/paths.py",
+          "sha256": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+        },
+        {
+          "path": "procedurals/placements.py",
+          "sha256": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d"
+        },
+        {
+          "path": "procedurals/quadrant_partition.py",
+          "sha256": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed"
+        },
+        {
+          "path": "procedurals/radial_profile.py",
+          "sha256": "5e808574fb55b822aea205981aaea4df53cf487723d42a05204c9c6066716735"
+        },
+        {
+          "path": "procedurals/triangle_points.py",
+          "sha256": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34"
+        },
+        {
+          "path": "procedurals_python-0.7.0.dist-info/METADATA",
+          "sha256": "7cf9028cc53eb8747f385460b8723569719ee5c3cd1e6651c2dc1b64cec2207f"
+        },
+        {
+          "path": "procedurals_python-0.7.0.dist-info/RECORD",
+          "sha256": "a2436eb7d2cea23913a36ea8252c76df7e592c636ac8f74f086782d3f0f7d9fc"
+        },
+        {
+          "path": "procedurals_python-0.7.0.dist-info/WHEEL",
+          "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+        },
+        {
+          "path": "procedurals_python-0.7.0.dist-info/licenses/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "procedurals_python-0.7.0.dist-info/licenses/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "procedurals_python-0.7.0.dist-info/top_level.txt",
+          "sha256": "edcc1c114ddfc860af6c9b58052e7ad2cd35e36533efd2dafd308010ee165b72"
+        }
+      ]
+    },
+    "starter_zip": {
+      "path": ".work/dist/cp7/python-profile3/procedurals-profile-marks-python-starter-0.7.0.zip",
+      "sha256": "b3e0079bd0b7c5a6223d7b24315234b9ba1d4f1fe7d1d5f32f78b1dbc147df58",
+      "entries": [
+        {
+          "path": "procedurals_python-0.7.0-py3-none-any.whl",
+          "sha256": "8a7ca068152b74004bfec9aac8f1bdc32ef2a3bc8c1ae33007bcff340f22904c"
+        },
+        {
+          "path": "profile-marks/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "profile-marks/README.md",
+          "sha256": "6ba41476aa7a9e781df0289b180fb9ada779a38df145703efe7ac8884cf22c55"
+        },
+        {
+          "path": "profile-marks/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "profile-marks/output/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "path": "profile-marks/profile_composition.py",
+          "sha256": "af6b19268df01f407b5229f0e7eb4ef724be2875fb4bd1bc301928ac7fc6de99"
+        },
+        {
+          "path": "profile-marks/sketch.py",
+          "sha256": "f09d5a2c20c5dc3dc5cb7af0bc1a0e6225e2b2b5cab42359939e08dfc30dd027"
+        }
+      ]
+    }
+  },
+  "consumer": {
+    "status": "passed",
+    "imported_path": "/home/colin/dev/procedural/.work/dist/cp7/python-profile3/build/consumer-venv/lib/python3.13/site-packages/procedurals/radial_profile.py",
+    "site_packages": [
+      "/home/colin/dev/procedural/.work/dist/cp7/python-profile3/build/consumer-venv/lib/python3.13/site-packages"
+    ],
+    "cases": [
+      {
+        "config": [
+          32,
+          true,
+          true
+        ],
+        "meshes": 3,
+        "geometry_sha256": "1819ea262b033b596efe01ec37abba113c56ddc98f5460b507bb03ae1df3360a"
+      },
+      {
+        "config": [
+          8,
+          true,
+          true
+        ],
+        "meshes": 3,
+        "geometry_sha256": "681077424bc6192b7642cda6ab67fffceb29f97200734ddcf72b187dd4a55e28"
+      },
+      {
+        "config": [
+          8,
+          false,
+          true
+        ],
+        "meshes": 3,
+        "geometry_sha256": "5c02be32c1cbf72cc7ca31f388a973e483c708e70d66f515ac5cdfd4e876304a"
+      },
+      {
+        "config": [
+          8,
+          false,
+          false
+        ],
+        "meshes": 3,
+        "geometry_sha256": "95cd177913404351ac13bff4e6829cf02847b48d3e07ff23044a707d25055122"
+      }
+    ],
+    "operation_count": 11
+  },
+  "starter": {
+    "transform": {
+      "kind": "remove_checkout_sys_path_block",
+      "removed": "sys.path.insert(0, str(Path(__file__).resolve().parents[2]))",
+      "class_ast_unchanged": true
+    },
+    "bundled_verified": true,
+    "py5_load": {
+      "status": "skipped",
+      "reason": "py5 import requires display/native-render lock; deferred to root"
+    }
+  }
+}

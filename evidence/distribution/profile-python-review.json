@@ -1,0 +1,23 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Python0.7.0 local wheel and extracted ProfileMarks starter; installed py5 class import and prior source-bound native workflow, no new sketch render/registry release/Android attestation.",
+  "implementation_sha256": {
+    "tools/build_profile_marks_python.py": "94b24b2216c36888c406b31f7c813e5cc8204f391b47e7c0af14f62f9e1874a6",
+    "tools/check_profile_python_starter.py": "85c101bcb7f8c6aa244e8cfd3c8b2f187d6793e894ebe79b1304b288f59c47f4"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/profile-python.json": "b847873e70a0da640a692bbbc765f35cc947ee9339ef696d723fec26b6fcb547",
+    "evidence/distribution/profile-python-starter-import.json": "e3ff54b75e3840a7093f3ae86df39a2c953e62c47e2f1f274d0421bd8509365c",
+    "evidence/conformance/profile-py5-native-root-review.json": "9a79712ced107c407577ecf438c2747e9259a23bd90ac8e478c8e4154f22e657",
+    "evidence/conformance/profile-export-compatibility-review.json": "c96081a9713f83c6518c17e8d3b9c1c376706ec09fea3c34723be7de4d1f25cc"
+  },
+  "findings": [
+    "Root corrected required evidence schemas to reject omitted before/after maps and wrong statuses; rechecks all bindings after build.",
+    "Four full mesh fingerprints include all positions, normals, topology and metadata. Installed root exposes11 callable operations; radial class/error identity and site-packages origin verified.",
+    "Root independently verified wheel/starter hashes and all archive members; notices preserved, bulk assets/caches excluded.",
+    "Extracted sketch preserves class AST and successfully imports with installed pinned py5/JDK17; separate import result closes explicitly skipped builder import gate.",
+    "Earlier builds1/2 remain historical work artifacts; only build3 source bindings accepted."
+  ]
+}

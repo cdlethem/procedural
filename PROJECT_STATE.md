@@ -1,5 +1,18 @@
 # Project state
 
+## Python ProfileMarks0.7 distribution accepted
+
+Root reviewed/corrected worker packaging: required evidence schemas, native before/after
+map validation, complete normals in mesh fingerprints and correct artist controls.
+Session99784 terminal passed build3 under .work/dist/cp7/python-profile3; root verified
+every source/archive member hash. Locked extracted py5 class import passed at
+.work/validation/profile-python-import1, closing explicit skipped builder gate without
+running a sketch. Accepted profile-python distribution/import/root-review records.
+Eleven operations locally packaged on Python and JS; shared radial attestations still
+pending Android. Terra compiled Android draft at .work/android-profile-marks-compile-4,
+APK4caa866411e66257bed5f08a34a6e0a7dc40fd7fde53dfc1ec9945be8ac54088. Root Android
+source/build review and native viewport/resume probe are next; no native job live.
+
 ## JavaScript ProfileMarks0.7 distribution accepted
 
 Session37931 terminal passed .work/dist/cp7/javascript-profile1. Root independently
