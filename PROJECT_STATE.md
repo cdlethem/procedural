@@ -1,5 +1,19 @@
 # Project state
 
+## Android GrainMarks local distribution accepted
+
+Built .work/dist/cp5/android-grain1/procedurals-grain-marks-android-0.5.0.zip and compiled
+its extracted14-member starter with external pinned SDK/runtime. Root verified all inputs,
+archive entries, exact source copies and accepted core0.5/adapter0.2 JARs. All three packaged
+triangle core classes match the accepted ART class hashes. Packaging review:
+evidence/distribution/cp5-android-review.json; installation doc added. No native rerun.
+
+Luna quadrant_python_package owns JavaScript builder/doc and installed checks; Terra
+triangle_python owns Python builder/doc and installed geometry checks. Neither may change
+shared evidence/catalog/state or accept work. Root reviews their finished distributions.
+Nine operations have four-target core/native evidence; seven complete all distributions
+until pending JavaScript/Python CP5 packages are accepted. Java remains15/15.
+
 ## Triangle native integration accepted; local packages next
 
 Native4 passed all ten Android GrainMarks states with exact settings/geometry/counts,

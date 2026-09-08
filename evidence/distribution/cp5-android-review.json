@@ -1,0 +1,30 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Android GrainMarks0.5 starter ZIP and extracted APK compilation. Native workflow acceptance remains scoped to separate API33 evidence.",
+  "implementation_sha256": {
+    "tools/build_grain_marks_android.py": "04ac0bd0d8c3510ec081ce705b2582a3de5c78c145cac06e2a1dc4b37e232b52",
+    "packages/java-android/examples/GrainMarks/GrainMarksActivity.java": "89e291f79da68cc85a2574b73df4fef967bc8ca6457f8ea95e28e7234b8f3182",
+    "packages/java-android/examples/GrainMarks/GrainMarksRenderer.java": "868e6b2d488de4a862c192c3a611aa1a4122278a35068aab65f039e1bd9a30ab",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp5-android.json": "f16e976db36fb2ccdb70f3b5f4f64ee60e7583b365e7695e3e8e9af1d30154ad",
+    "evidence/distribution/cp5-java.json": "c84b17cfdf650f9052761e90c8f679ab81d187ffd3e91d07ff8dd52c5ae84ea8",
+    "evidence/distribution/cp2-android.json": "8fe60e2a6ef2b288c153e0997ad9ce172600ed34d9141406f4d5f89070d44c38",
+    "evidence/conformance/triangle-points-android.json": "18279fe5c5d59d8148c4382a47e05b8b7b9b75418dd6a4f9108333ce43746e05",
+    "evidence/conformance/triangle-android-native-root-review.json": "b2c03a3e799b295b0c9f1b48d31c3974a872047da778723c63eafc6e1fb7f8b3"
+  },
+  "root_findings": [
+    "Root reviewed adaptation of accepted RegionMarks builder, dependency pins and archive exclusions.",
+    "Every input and archive member hash verified; exact Activity, renderer, shared composition and GalleryWriter sources retained. Extracted starter compiled with external pinned Processing runtime/SDK.",
+    "All three packaged triangle core classes match accepted API33 ART class hashes. Core0.5 and adapter0.2 JARs match accepted distribution records.",
+    "Packaged README describes actual seed/density/distribution/cell/reset/style controls and save. Licenses/provenance retained; runtime, SDK, key and build outputs excluded."
+  ],
+  "remaining": [
+    "JavaScript and Python triangle local distributions",
+    "Six further operation ports and remaining project milestones"
+  ]
+}
