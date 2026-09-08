@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Warp marks — procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Warp marks</h1>
+  <p>Draw a source dot-or-stripe pattern, then remap it through a per-pixel displacement
+    field driven by either a gradient-noise angle or a pair of sine waves.</p>
+  <div id="controls" aria-label="Warp marks controls">
+    <button data-action="w"><kbd>W</kbd> displacement 0 / 32 / 64</button>
+    <button data-action="f"><kbd>F</kbd> noise / paired-sine field</button>
+    <button data-action="p"><kbd>P</kbd> dots / stripes source</button>
+    <button data-action="0"><kbd>0</kbd> reset</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated remapped raster"></div>
+  <p id="status" role="status">Preparing raster…</p>
+  <p>Edit the composition in <code>warp-marks.js</code>: <code>displacementAt()</code> is
+    the place to invent another displacement field; <code>dotColorAt()</code> and
+    <code>stripeColorAt()</code> control the source pattern drawn in
+    <code>sketch.js</code>. These values describe this piece.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>
