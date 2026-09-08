@@ -1,0 +1,571 @@
+{
+  "status": "passed",
+  "scope": "API33 BranchMarks native callbacks, pause/resume and cached MediaStore save",
+  "build": {
+    "stage": ".work/examples/android-branch-marks-probe2",
+    "application_id": "org.procedurals.branchmarksprobe",
+    "activity_class": "org.procedurals.examples.branchmarks.BranchMarksProbeActivity",
+    "source_hashes": {
+      "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+      "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+      "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+      "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+      "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+      "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+      "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+      "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+      "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+      "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+      "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+      "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+      "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+      "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+      "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+      "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
+      "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFrame.java": "835daf36db3736adad6834209c39fe2b6530362dc0f57febc449143e6c09b570",
+      "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidFrameHost.java": "64a3ec481e69dc0bf9597ea03d4ed0864dc7002a8f05f1a0b852809503f9e2c7",
+      "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSurface.java": "bb2efe0fcce61461e847f9415b6cb7dae80a4f7ccb2e220b1e0009083c8c3604",
+      "packages/java-android/examples/BranchMarks/BranchMarksActivity.java": "a28bffe70769b01bd3a98880087551ef634ad2972c8da414b46b6278c208066d",
+      "packages/java-android/examples/BranchMarks/BranchMarksRenderer.java": "604719ba3ca4e878e242c18fee870d7198dba516120b5403a81b02c06124d13c",
+      "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+      "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+      "tests/native/android-branch-marks/BranchMarksProbeActivity.java": "5218fdb2e81e7cb6cc903548d3a4715903e4d73b6ebd74adad752e797e58ae47",
+      "tests/native/android-bootstrap/app/build.gradle": "ccbeb0814b1137d7858219ea9575d6aa110b123cdcf8cd8a9af0d5f63614ee39",
+      "tests/native/android-bootstrap/app/src/main/AndroidManifest.xml": "7b68272a76ba2caeb51a270ccc0c059f2420e1f9ce03e41e4ace05a7a65e9d2c",
+      "tests/native/android-bootstrap/app/src/main/java/org/procedurals/bootstrap/MainActivity.java": "8cb812c28df7278e16ae894f3f9b4bf872f6b3464d71e807e4f694d5332b761d",
+      "tests/native/android-bootstrap/build.gradle": "301b72f0f10c630de8eca0a5a8374b2fe5e0c69724ba49720793da15cf95b083",
+      "tests/native/android-bootstrap/gradle.properties": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e",
+      "tests/native/android-bootstrap/settings.gradle": "acaba98235948bfc23736254a68c0796d822a33f513f0c5b86cb47af43acf398",
+      "packages/java-android/examples/BranchMarks/AndroidManifest.xml": "1a8eed9fafa67ae8c9a241b002e74f01381c9690a26783b23329c7c4ca2ca2d1",
+      "packages/java-android/examples/BranchMarks/README.md": "b58dd9a314aa176ddaf01ecfaa6a4c561fac644b5d28c388efa02f744ef5c860",
+      ".work/toolchains/android/mode-412/AndroidMode/processing-core.zip": "0cdd89e2511a97728092619e89148b46a52700e5957d81f234db8fd3b1652338",
+      ".work/environments/android/bootstrap/debug.keystore": "6608f86266dea2d246767b4d7d0e0688bfa2d47b73295fe5545ec3e3a72a9aea",
+      ".work/toolchains/android/sdk/platforms/android-33/android.jar": "fd628aa21321859a9035c6aae4b084b7d3fdb3f230be5cd5ec76541e32f7c963",
+      ".work/toolchains/android/gradle-7.4.2/bin/gradle": "677db28e59ce22feb54def6637181481fa3903bb28d88e7b9ff5bd13ecf36cda",
+      "tools/build_android_branch_marks.py": "c9f246e20f3caaa6d7c78836028623dc9983aecac7f82abd900a3ea74131cf85"
+    },
+    "staged_project_sha256": {
+      "app/src/main/java/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
+      "app/src/main/java/Android2DFrame.java": "835daf36db3736adad6834209c39fe2b6530362dc0f57febc449143e6c09b570",
+      "app/src/main/java/AndroidFrameHost.java": "64a3ec481e69dc0bf9597ea03d4ed0864dc7002a8f05f1a0b852809503f9e2c7",
+      "app/src/main/java/AndroidSurface.java": "bb2efe0fcce61461e847f9415b6cb7dae80a4f7ccb2e220b1e0009083c8c3604",
+      "app/src/main/java/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+      "app/src/main/java/BranchMarksActivity.java": "a28bffe70769b01bd3a98880087551ef634ad2972c8da414b46b6278c208066d",
+      "app/src/main/java/BranchMarksProbeActivity.java": "5218fdb2e81e7cb6cc903548d3a4715903e4d73b6ebd74adad752e797e58ae47",
+      "app/src/main/java/BranchMarksRenderer.java": "604719ba3ca4e878e242c18fee870d7198dba516120b5403a81b02c06124d13c",
+      "app/src/main/java/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+      "app/src/main/java/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+      "app/src/main/java/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+      "app/src/main/java/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+      "app/src/main/java/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+      "app/src/main/java/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+      "app/src/main/java/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+      "app/src/main/java/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+      "app/src/main/java/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+      "app/src/main/java/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+      "app/src/main/java/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+      "app/src/main/java/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+      "app/src/main/java/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+      "app/src/main/java/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+      "app/src/main/java/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+      "app/src/main/java/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+      "app/build.gradle": "f5e51ab3b962dc78342903e1ce3316b35151f5e1b4fb0c5baf03cc2f8605ac86",
+      "app/src/main/AndroidManifest.xml": "c1e97201967acd81585e1c010422c3635d18f210201305dbecdf93ccce16c8df",
+      "app/libs/processing-core.jar": "0cdd89e2511a97728092619e89148b46a52700e5957d81f234db8fd3b1652338",
+      "build.gradle": "301b72f0f10c630de8eca0a5a8374b2fe5e0c69724ba49720793da15cf95b083",
+      "settings.gradle": "acaba98235948bfc23736254a68c0796d822a33f513f0c5b86cb47af43acf398",
+      "gradle.properties": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e",
+      "debug.keystore": "6608f86266dea2d246767b4d7d0e0688bfa2d47b73295fe5545ec3e3a72a9aea",
+      "local.properties": "4c53d84696ad9e5fd860ea727f639ccb3378c1b77bb1eedbd9031326d47966e6"
+    },
+    "shared_composition": {
+      "path": "packages/java/examples/BranchMarks/BranchComposition.java",
+      "sha256": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+      "staging": "exact source copied without package rewriting"
+    },
+    "scope": "compile preparation only; no install, emulator launch, render, or Android support acceptance",
+    "apk": ".work/examples/android-branch-marks-probe2/app/build/outputs/apk/debug/app-debug.apk",
+    "apk_sha256": "59ac12a1023ee93a5f06e0c287521f8993b8b037b2cc9f4c4a33e31f12302bf2"
+  },
+  "runner_sha256": "781fc998feeb2343389db73ab7035e3f3bf6dbc5480632c86019a0798ed8bc35",
+  "plan_sha256": "58711fd5a60eb3a56fc650f7a1966bfef3f5d88711e0f69347769cd98ac6ebb9",
+  "api": "33",
+  "fingerprint": "google/sdk_gphone64_x86_64/emu64x:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+  "native": {
+    "status": "passed",
+    "passed": true,
+    "frames": [
+      {
+        "id": "initial",
+        "trees": 1,
+        "segments": 101,
+        "tips": 53,
+        "actual_tips": 53,
+        "retained": false,
+        "values_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "png_sha256": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+        "composition_count": 1
+      },
+      {
+        "id": "extended",
+        "trees": 1,
+        "segments": 192,
+        "tips": 99,
+        "actual_tips": 99,
+        "retained": false,
+        "values_sha256": "e5affd8040edc15b11ef6e2c2630b23b31aa0f3e812703ef1906941a7c76dd4a",
+        "png_sha256": "8d351dc49b1220e08f4748f067d66b7e3b67eb645691b25244730fa9e9236b1d",
+        "composition_count": 2
+      },
+      {
+        "id": "extended-restored",
+        "trees": 1,
+        "segments": 101,
+        "tips": 53,
+        "actual_tips": 53,
+        "retained": false,
+        "values_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "png_sha256": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+        "composition_count": 3
+      },
+      {
+        "id": "narrowing",
+        "trees": 1,
+        "segments": 101,
+        "tips": 53,
+        "actual_tips": 53,
+        "retained": false,
+        "values_sha256": "7dd990c12c503750c15ef54ad256cc0d5131307d20c36b1a4204620914d58c3d",
+        "png_sha256": "115d21a91575eb84b0a3a95cd5db4413a2dc8afae764d3c7a3f56496fd46ee12",
+        "composition_count": 4
+      },
+      {
+        "id": "reset-1",
+        "trees": 1,
+        "segments": 101,
+        "tips": 53,
+        "actual_tips": 53,
+        "retained": false,
+        "values_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "png_sha256": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+        "composition_count": 5
+      },
+      {
+        "id": "wide",
+        "trees": 1,
+        "segments": 101,
+        "tips": 53,
+        "actual_tips": 53,
+        "retained": false,
+        "values_sha256": "c42fe88b097c82840284d4bd8fb356d99278f71a408e12f23bd58cc267929e5f",
+        "png_sha256": "d8794151e9ba3472f1d32e5eb9b33208574b635df3acc4159d2e4c4353b676ef",
+        "composition_count": 6
+      },
+      {
+        "id": "reset-2",
+        "trees": 1,
+        "segments": 101,
+        "tips": 53,
+        "actual_tips": 53,
+        "retained": false,
+        "values_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "png_sha256": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+        "composition_count": 7
+      },
+      {
+        "id": "binary",
+        "trees": 1,
+        "segments": 38,
+        "tips": 16,
+        "actual_tips": 16,
+        "retained": false,
+        "values_sha256": "70890b1ee83a82d81560a31436ed45ba016f622732d65a7f5f0145a757822a82",
+        "png_sha256": "3703cd4edb491a17eaec1023e84aa4fee146b518fc5129294854fe5bf46105eb",
+        "composition_count": 8
+      },
+      {
+        "id": "reset-3",
+        "trees": 1,
+        "segments": 101,
+        "tips": 53,
+        "actual_tips": 53,
+        "retained": false,
+        "values_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "png_sha256": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+        "composition_count": 9
+      },
+      {
+        "id": "recolour",
+        "trees": 1,
+        "segments": 101,
+        "tips": 53,
+        "actual_tips": 53,
+        "retained": true,
+        "values_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "png_sha256": "f33ec046af9fc31666035aee981d40a1f909984987971873993a33e538c8daa6",
+        "composition_count": 10
+      },
+      {
+        "id": "thin",
+        "trees": 1,
+        "segments": 101,
+        "tips": 0,
+        "actual_tips": 53,
+        "retained": true,
+        "values_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "png_sha256": "001cf688e1d41f1ca1cc33a37e4a3d84c64b8fb23e6f64d6229f6caa78d44d8b",
+        "composition_count": 11
+      },
+      {
+        "id": "forest",
+        "trees": 7,
+        "segments": 288,
+        "tips": 0,
+        "actual_tips": 145,
+        "retained": false,
+        "values_sha256": "4683c43a012b97e794a137160e65934b7194b2e8707cc557ba8295ec871bb5e0",
+        "png_sha256": "09c0c892f9d70df73224fc904702bf219db751ef10bc472d03d5abe6ee88a2e9",
+        "composition_count": 12
+      },
+      {
+        "id": "forest-taper",
+        "trees": 7,
+        "segments": 288,
+        "tips": 145,
+        "actual_tips": 145,
+        "retained": true,
+        "values_sha256": "4683c43a012b97e794a137160e65934b7194b2e8707cc557ba8295ec871bb5e0",
+        "png_sha256": "bc42f8c6241a0d83425606afd3d8e988447bb916b2248718a6dc2dcf31934399",
+        "composition_count": 13
+      },
+      {
+        "id": "forest-palette",
+        "trees": 7,
+        "segments": 288,
+        "tips": 145,
+        "actual_tips": 145,
+        "retained": true,
+        "values_sha256": "4683c43a012b97e794a137160e65934b7194b2e8707cc557ba8295ec871bb5e0",
+        "png_sha256": "99d6fe1c5cbf260486482a981980db3a20557114fa532bcbc42926537552b04b",
+        "composition_count": 14
+      },
+      {
+        "id": "forest-extended",
+        "trees": 7,
+        "segments": 560,
+        "tips": 280,
+        "actual_tips": 280,
+        "retained": false,
+        "values_sha256": "97c2f8e5fca496da0b2b31fa1c86fb53767af99500f95b42f760a68909b8bc03",
+        "png_sha256": "fe23bdcfaff31705947446de4427d703ef39931250c5edc37ef94bdaa58667c4",
+        "composition_count": 15
+      },
+      {
+        "id": "forest-seed",
+        "trees": 8,
+        "segments": 634,
+        "tips": 313,
+        "actual_tips": 313,
+        "retained": false,
+        "values_sha256": "776dad459e9ac1a3e0a193784c0b17163825301fed86a81475dd56e2b210051e",
+        "png_sha256": "17f8ea6892d2f913f37d07eef1be5a7d48923ae737313d7d3e72bb1000e266b6",
+        "composition_count": 16
+      },
+      {
+        "id": "final-reset",
+        "trees": 1,
+        "segments": 101,
+        "tips": 53,
+        "actual_tips": 53,
+        "retained": false,
+        "values_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "png_sha256": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+        "composition_count": 17
+      },
+      {
+        "id": "reset-again",
+        "trees": 1,
+        "segments": 101,
+        "tips": 53,
+        "actual_tips": 53,
+        "retained": false,
+        "values_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "png_sha256": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+        "composition_count": 18
+      }
+    ],
+    "composition_count": 18,
+    "paused": true,
+    "resumed": true,
+    "resume_acknowledgments": 1,
+    "ordering": [
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 1,
+        "version": 0
+      },
+      {
+        "event": "edit-attempt",
+        "control": 1,
+        "accepted": true,
+        "before_version": 0,
+        "after_version": 1
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 2,
+        "version": 1
+      },
+      {
+        "event": "edit-attempt",
+        "control": 1,
+        "accepted": true,
+        "before_version": 1,
+        "after_version": 2
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 3,
+        "version": 2
+      },
+      {
+        "event": "acknowledged",
+        "source": "resume-cache",
+        "composition_count": 3,
+        "version": 2
+      },
+      {
+        "event": "edit-attempt",
+        "control": 2,
+        "accepted": true,
+        "before_version": 2,
+        "after_version": 3
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 4,
+        "version": 3
+      },
+      {
+        "event": "edit-attempt",
+        "control": 8,
+        "accepted": true,
+        "before_version": 3,
+        "after_version": 4
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 5,
+        "version": 4
+      },
+      {
+        "event": "edit-attempt",
+        "control": 3,
+        "accepted": true,
+        "before_version": 4,
+        "after_version": 5
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 6,
+        "version": 5
+      },
+      {
+        "event": "edit-attempt",
+        "control": 8,
+        "accepted": true,
+        "before_version": 5,
+        "after_version": 6
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 7,
+        "version": 6
+      },
+      {
+        "event": "edit-attempt",
+        "control": 4,
+        "accepted": true,
+        "before_version": 6,
+        "after_version": 7
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 8,
+        "version": 7
+      },
+      {
+        "event": "edit-attempt",
+        "control": 8,
+        "accepted": true,
+        "before_version": 7,
+        "after_version": 8
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 9,
+        "version": 8
+      },
+      {
+        "event": "edit-attempt",
+        "control": 7,
+        "accepted": true,
+        "before_version": 8,
+        "after_version": 9
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 10,
+        "version": 9
+      },
+      {
+        "event": "edit-attempt",
+        "control": 6,
+        "accepted": true,
+        "before_version": 9,
+        "after_version": 10
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 11,
+        "version": 10
+      },
+      {
+        "event": "edit-attempt",
+        "control": 5,
+        "accepted": true,
+        "before_version": 10,
+        "after_version": 11
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 12,
+        "version": 11
+      },
+      {
+        "event": "edit-attempt",
+        "control": 6,
+        "accepted": true,
+        "before_version": 11,
+        "after_version": 12
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 13,
+        "version": 12
+      },
+      {
+        "event": "edit-attempt",
+        "control": 7,
+        "accepted": true,
+        "before_version": 12,
+        "after_version": 13
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 14,
+        "version": 13
+      },
+      {
+        "event": "edit-attempt",
+        "control": 1,
+        "accepted": true,
+        "before_version": 13,
+        "after_version": 14
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 15,
+        "version": 14
+      },
+      {
+        "event": "edit-attempt",
+        "control": 0,
+        "accepted": true,
+        "before_version": 14,
+        "after_version": 15
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 16,
+        "version": 15
+      },
+      {
+        "event": "edit-attempt",
+        "control": 8,
+        "accepted": true,
+        "before_version": 15,
+        "after_version": 16
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 17,
+        "version": 16
+      },
+      {
+        "event": "edit-attempt",
+        "control": 8,
+        "accepted": true,
+        "before_version": 16,
+        "after_version": 17
+      },
+      {
+        "event": "acknowledged",
+        "source": "draw-post",
+        "composition_count": 18,
+        "version": 17
+      }
+    ],
+    "completed_frames": 19,
+    "saved_media_store": {
+      "uri": "content://media/external_primary/images/media/1000000029",
+      "is_pending": 0,
+      "mime_type": "image/png",
+      "relative_path": "Pictures/Procedurals/",
+      "metadata_width": 640,
+      "metadata_height": 640
+    },
+    "requested_version": 17,
+    "requested_seed": 42
+  },
+  "images": {
+    "initial.png": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+    "extended.png": "8d351dc49b1220e08f4748f067d66b7e3b67eb645691b25244730fa9e9236b1d",
+    "extended-restored.png": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+    "narrowing.png": "115d21a91575eb84b0a3a95cd5db4413a2dc8afae764d3c7a3f56496fd46ee12",
+    "reset-1.png": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+    "wide.png": "d8794151e9ba3472f1d32e5eb9b33208574b635df3acc4159d2e4c4353b676ef",
+    "reset-2.png": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+    "binary.png": "3703cd4edb491a17eaec1023e84aa4fee146b518fc5129294854fe5bf46105eb",
+    "reset-3.png": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+    "recolour.png": "f33ec046af9fc31666035aee981d40a1f909984987971873993a33e538c8daa6",
+    "thin.png": "001cf688e1d41f1ca1cc33a37e4a3d84c64b8fb23e6f64d6229f6caa78d44d8b",
+    "forest.png": "09c0c892f9d70df73224fc904702bf219db751ef10bc472d03d5abe6ee88a2e9",
+    "forest-taper.png": "bc42f8c6241a0d83425606afd3d8e988447bb916b2248718a6dc2dcf31934399",
+    "forest-palette.png": "99d6fe1c5cbf260486482a981980db3a20557114fa532bcbc42926537552b04b",
+    "forest-extended.png": "fe23bdcfaff31705947446de4427d703ef39931250c5edc37ef94bdaa58667c4",
+    "forest-seed.png": "17f8ea6892d2f913f37d07eef1be5a7d48923ae737313d7d3e72bb1000e266b6",
+    "final-reset.png": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+    "reset-again.png": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c",
+    "saved.png": "d40d0a126db9aed6ba4d610b0c8bb116c12115cc506c4d8af595cbf602a6811c"
+  },
+  "cleanup": "force-stopped test app; APK and MediaStore saved image retained",
+  "elapsed_seconds": 3.088872769032605
+}

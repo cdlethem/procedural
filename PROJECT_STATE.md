@@ -1,5 +1,75 @@
 # Project state
 
+## Android BranchMarks native3 accepted
+
+Root added Probe.resume g.surfaceChanged hook to arm pinned cached restoration before
+PApplet restoreState/resumeThread. Controlled paused-renderer regression clears changed,
+requires real hook sets true, then clears again before actual resume. Native3 passed18
+states, exact prefixes/style/reset, solecachedack1 and cached MediaStore save. Root viewed
+eightimages and verified source/APK/PNG hashes. Session88811 terminal exit0; cleanup done.
+Native1 failure and native2 diagnostic pass retained without acceptance as correction.
+Records android-branch-marks.json/branch-android-native-root-review.json; native attestation
+added only. Branch now ten operations with four-target core/native workflow validation,
+still nine completed distributions. Java remains15/15.
+Next branch exports/packages. Follow-up required before broad Android claims: review same
+restore hook in FieldMarks,PathMarks,PlacementMarks,RegionMarks,GrainMarks; do not silently
+rehash earlier acceptance. README still draft/package-era status; update through reviewed
+documentation-only delta when packaging, not a redundant native rerender.
+
+## Android diagnostic native2 passed; lifecycle correction under review
+
+Probe2 compiled session75178, native shared-lock session84214 terminal exit0. Output
+.work/reproductions/android-branch-marks-native2 passed18 states and solecachedack1.
+Diagnostics immediate: loopingtrue,redrawfalse,restoredfalse,changedtrue,restoreCount0;
+after250ms restoredtrue,loopingfalse,redrawtrue. This pass does NOT explain native1
+or establish a fix. Native acceptance remains pending. Both emulator sessions terminal.
+Root reviewing minimal Probe.resume override g.surfaceChanged() before existing
+PApplet.onResume restoreState/resumeThread. Pinned Android2D method merely setschangedtrue
+and enables existing restore counter path even without an Android surface-change callback.
+Terra branch_android_probe evaluating that proposal read-only; no production edit yet.
+Next decide correction plus focused regression, then native rerun and image review.
+Runner now preserves partial PNGs and separate restore diagnostics during cleanup.
+
+## Android native1 failed after resume; diagnostic investigation
+
+Session78346 terminal exit1: native1 runner deadline after three compositions. Real
+pause/resume and solecachedack passed; G/control2 published version3, completedframes4,
+no fourthcomposition. Output .work/reproductions/android-branch-marks-native1 retains
+result/native-last; .work/android-branch-marks/native1-app-logcat.txt has no app exception.
+Cleanup force-stopped probe and terminated emulator. No native acceptance; do not rerun
+unchanged merely to seek a pass. Post-shutdown PNG pull failed; empty files under
+.work/android-branch-marks/native1-partial are NOT render evidence.
+Root/Terra inspected pinned PGraphics restoreState and Android2D restoreSurface: possible
+perpetual restoringState when no surfaceChanged occurs. Terra branch_android_probe owns
+bounded immediate/250ms/2s reflection diagnostics after accepted post-resume edit, no
+production edits. Next fresh diagnostic build/run to distinguish lost redraw from perpetual
+restore before architecting a minimal lifecycle correction. Preserve native1 failure.
+
+## Android BranchMarks native1 running
+
+Root reviewed completed Terra probe and required corrected reset forceRebuild flags,
+actual-versus-drawn terminal counts, retained-value checks and failure preservation.
+Probe build session38467 passed at .work/examples/android-branch-marks-probe1.
+Native shared-lock session78346 is live: .work/android-branch-marks/session1.py, output
+.work/reproductions/android-branch-marks-native1. Poll the same handle; do not restart
+on observation timeout. No native acceptance yet. Review terminal evidence and eight
+representative images before acceptance. All core/model/example inputs frozen during run.
+
+## Android BranchMarks production APK compiled; native probe pending
+
+Root reviewed Activity edit-state conversion and retained model boundary. Renderer now
+uses branch terminology and reports actual drawn segments/tips; README corrected from
+copied GrainMarks prose. Existing cached-resume acknowledgment and stale redraw retry
+preserved. Build session86788 terminal exit0: .work/examples/android-branch-marks-build1,
+APK SHA45ab9f084758369171686272ec0824a9e436cd6c27b425236dad1bd8b5e8e16c.
+Root verified source/APK hashes; compilation is not native acceptance.
+Fresh Terra branch_android_probe owns ONLY tests/native/android-branch-marks/
+BranchMarksProbeActivity.java. Prior triangle_python incomplete probe task released.
+Root preregistered18 states incl reset-again, actual HOME/resume and cached MediaStore
+save in branch-marks-android-acceptance.md; runner adapted, not yet executed.
+Next compile/review completed probe then one shared-lock native session. Android files
+remain drafts; no support or distribution acceptance added.
+
 ## py5 BranchMarks native workflow accepted
 
 Native1 passed17 compositions at .work/reproductions/py5-branch-marks-native1. Root
