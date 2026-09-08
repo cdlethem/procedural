@@ -74,7 +74,8 @@ public class RecipePrototypeComparison {
         'packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeEvaluator.java',
         'packages/java/examples/FieldMarks/MarkField.java',
         'packages/java-processing/examples/FieldMarks/MarkCommands.java',
-        'packages/java/examples/PathMarks/PathMarkComposition.java')]
+        'packages/java/examples/PathMarks/PathMarkComposition.java',
+        'tests/native/RecipePrototypeFailures.java')]
     home = java_home(args.java_home)
     metadata = [ROOT / name for name in (
         'design/recipes/recipe.schema.json', 'design/recipes/execution-bindings.json',
@@ -98,12 +99,16 @@ public class RecipePrototypeComparison {
                   'RecipePrototypeComparison'], timeout=120)
     if 'COMMAND_COMPARISON_PASSED' not in result.stdout:
         raise RuntimeError('comparison did not finish')
+    failures = run([home / 'bin/java', '-Xmx128m', '-cp', str(classes),
+                    'RecipePrototypeFailures'], timeout=30)
+    if 'PROTOTYPE_FAILURE_CASES_PASSED' not in failures.stdout:
+        raise RuntimeError('focused failure probes did not finish')
     if hashes != {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in bound}:
         raise RuntimeError('comparison input changed during execution')
-    report = {'status': 'prototype-command-comparison-passed', 'scope': 'Nine command scenarios only; no runtime failure, cache, export or native acceptance.',
-              'input_sha256': hashes, 'stdout': result.stdout}
+    report = {'status': 'prototype-command-comparison-passed', 'scope': 'Nine command scenarios and focused failure probes; complete budget/type/replay, cache, export and native acceptance remain pending.',
+              'input_sha256': hashes, 'stdout': result.stdout, 'failure_stdout': failures.stdout}
     (output / 'result.json').write_text(json.dumps(report, indent=2) + '\n')
-    print(result.stdout)
+    print(result.stdout + failures.stdout)
 
 
 if __name__ == '__main__':

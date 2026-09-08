@@ -28,3 +28,9 @@ limit snapshots/native allocation sizes, nested iteration diagnostics, low-budge
 round-trip replay and retained-edit invalidation. Run meaningful failure cases in addition to
 command comparisons. Catalog ownership/synchronization, native exports, animation/assets and
 all later operation bindings remain incomplete. Root writes acceptance only after review.
+
+Focused failure probes now run through the same tool. They cover lazy arithmetic/type
+errors, array preallocation limits, command limits and recovery, nested map diagnostics,
+and statement/attempted-iteration budget diagnostics. Root found and corrected missing
+iteration context; nine composition comparisons remain exact. This is partial failure
+coverage, not acceptance of the complete accounting or replay contract.

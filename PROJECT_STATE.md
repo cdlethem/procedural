@@ -1,5 +1,19 @@
 # Project state
 
+## Prototype nested diagnostics fixed and failure probes added
+
+Previous turn pushed prototype 94615533. Root independently wrote
+tests/native/RecipePrototypeFailures.java and found arithmetic failures in nested maps
+lost all iteration context. Root fixed map/statement loops to accumulate context before
+iteration charging and enrich own failures while preserving existing native diagnostics.
+The probe now also checks statement-loop and failed iteration-budget locations, lazy
+branches/type errors, preallocation array limits, command limits and fresh-run recovery.
+Five failure groups pass. Integrated probe into existing runner and reran all nine exact
+composition comparisons against final sources at .work/recipe-prototype-root4; all pass.
+Updated source-bound prototype evidence, with no accepted executor/native/export claim.
+Next finish accounting/ownership/replay cases and catalog runtime admission. Unrelated JS
+index export remains unstaged. Full milestone goal active.
+
 ## Java recipe evaluator prototype underway
 
 Previous turn pushed static validation 60ed990c. Root selected command-level prototype

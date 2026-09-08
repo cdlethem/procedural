@@ -223,15 +223,17 @@ public strictfp final class RecipeEvaluator {
                     fail("SHADOWED_NAME", q, "iteration name visible");
                 }
                 for (int j = 0; j < values.size(); j++) {
-                    s.iter(q);
                     String prior = s.iteration;
-                    s.iteration = q + "/" + j;
+                    s.iteration = iterationContext(prior, q, j);
                     try {
+                        s.iter(q);
                         Map<String,Object> child = new LinkedHashMap<String,Object>(local);
                         child.put(as, values.get(j));
                         child.put(ix, Double.valueOf(j));
                         statements(list(st.get("body"), path(q, "body")), child,
                                 path(q, "body"), s, declared, commands, environment);
+                    } catch (RecipeFailure error) {
+                        throw withIteration(error, s.iteration);
                     } finally {
                         s.iteration = prior;
                     }
@@ -333,14 +335,16 @@ public strictfp final class RecipeEvaluator {
             s.array(p, a.size());
             List<Object> out = new ArrayList<Object>(a.size());
             for (int i = 0; i < a.size(); i++) {
-                s.iter(p);
                 String prior = s.iteration;
-                s.iteration = p + "/" + i;
+                s.iteration = iterationContext(prior, p, i);
                 try {
+                    s.iter(p);
                     Map<String,Object> child = new LinkedHashMap<String,Object>(scope);
                     child.put(as, a.get(i));
                     child.put(ix, Double.valueOf(i));
                     out.add(expr(n.get("value"), child, path(p, "value"), s, declared));
+                } catch (RecipeFailure error) {
+                    throw withIteration(error, s.iteration);
                 } finally {
                     s.iteration = prior;
                 }
@@ -590,6 +594,17 @@ public strictfp final class RecipeEvaluator {
     private static String path(String p, Object part) {
         String s = String.valueOf(part).replace("~", "~0").replace("/", "~1");
         return p + "/" + s;
+    }
+    private static String iterationContext(String prior, String path, int index) {
+        String current = path + "/" + index;
+        return prior == null ? current : prior + " > " + current;
+    }
+    private static RecipeFailure withIteration(RecipeFailure error, String context) {
+        if (error.iteration != null) return error;
+        RecipeFailure enriched = new RecipeFailure(error.code, error.path, error.getMessage(),
+                context, error.operation, error.original);
+        enriched.initCause(error);
+        return enriched;
     }
     private static void fail(String c, String p, String m) {
         throw new RecipeFailure(c, p, m);
