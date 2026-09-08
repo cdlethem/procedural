@@ -1,6 +1,6 @@
 {
   "status": "prototype-command-comparison-passed",
-  "scope": "Thirty-five exact fresh/session command scenarios, sixteen focused failure groups and a four-frame bounded-sequence probe. General executor/exporter acceptance remains pending.",
+  "scope": "Forty-three exact fresh/session command scenarios, sixteen focused failure groups, bounded-sequence and scan/spring probes. General executor/exporter acceptance remains pending.",
   "input_sha256": {
     "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
     "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
@@ -18,16 +18,18 @@
     "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
     "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
     "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
-    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeEvaluator.java": "b7d375bf5ad6caae8dbc592f114fa44f5b399230c131d025eabef3bba8eeaedd",
-    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeGrammar.java": "f802a7aa9c1066f13e0978c8e7c279bf1902d767fdd07f743c07cd83cbd8d9f6",
+    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeEvaluator.java": "761c4c0d3a084bcfdf4152f50030ab910f22352e04e12625ae3b764303c245be",
+    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeGrammar.java": "de48ab0a9bd9294cef5c0e47dfc669ecf80821cba51b6292f14b82c2e223a411",
     "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeInputValidation.java": "914b5569bd6b072c48d34c4418d36a79d0ef601cf75a5ee828bbf48607e63a36",
     "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeRetainedKey.java": "2847d6476ed5d2ea2bdcf40558b18ea7c3a4be46f37ac6e7a78b60c3eb756d85",
-    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeSchemas.java": "5948e6426ac59363fed66a14da498b2e8902f78efa8705601b4ed5d1318fad88",
+    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeSchemas.java": "a2503ac83c035eded1819458c4fbc8252fecb1b1b4a8dac76e0ec2b44c4da351",
     "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeSequence.java": "6a420c60de3111d8898560dab84a69791fce4b66525865123293e42d217fc8b7",
-    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeStructureValidation.java": "38dbed97bcad9e0d246d9d230405e9af29bbe052385f8597c3222f2bf68dfc9d",
+    "packages/java-recipe-prototype/src/main/java/org/procedurals/recipe/RecipeStructureValidation.java": "3af37a957fc485aff24327f2c735614dfeb519b6cf9a9d8e62e94a2e76b4660e",
     "packages/java/examples/FieldMarks/MarkField.java": "398dcf002dc35076f7af97e7a44f21a48a2ce6e10facf2d370dfac3b9e453ea7",
     "packages/java-processing/examples/FieldMarks/MarkCommands.java": "5d382de16edd6472e14659481c2c20bc1fe7118677c4c68e1d070bc3f59a66ad",
     "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
+    "tests/native/RecipeScanProbe.java": "211fbf69ddd02c9f902dcc74b5a7d67b5451c120ba977f87964a809964dcb77b",
+    "tests/native/SpringRecipeComposition.java": "9e6898c78aefe8cd4af58df865cdeff29eddf2a4771578ca06aa4c573c117828",
     "tests/native/RecipeSequenceProbe.java": "d9ab376ad8dbe886e1c24255defbf259dcf3bf9c3307bbc32cef58876d7ba9fd",
     "tests/native/RecipePrototypeFailures.java": "4fb60aff7ec8aa755ee366e2f7cea8283569bbafd976a403acb427ae6d9741fa",
     "tests/native/PlacementRecipeComposition.java": "689af85166af8af67a0c48c91cc388d2bf5e5d452eab7b0c566c63517f36efa8",
@@ -39,15 +41,17 @@
     "design/recipes/examples/region-panels.draft.json": "d6e29645f8e9ad6713b0a0fed01f77c2d87627329814366f9442b8a96373fd1f",
     "design/recipes/examples/triangle-grain.draft.json": "b256573a9fca6a1dcd98fa73174b8393ef590d62cb7623c6808f8bafb628f5b7",
     "design/recipes/examples/triangle-timed-marks.draft.json": "23af8a328adc71b7668e43f194715f4642cc93112999dbafadc82ce31a1628a0",
-    "catalog/recipes/recipe.schema.json": "1d86d53bc4df8c721c32a154c2b9d0f6ca35edeae896e2dfb380fcee09bce7d5",
-    "catalog/recipes/execution-bindings.json": "7d58cb8b075ff1bde5cc1855cf4dd750f7e99672193ed077cba9e58d9efa7e56",
+    "design/recipes/examples/spring-replay.draft.json": "925db6bc71997f86bd49bc1ceb059515e26d6ccda563ef9b9253bc7962f9a32d",
+    "catalog/recipes/recipe.schema.json": "978a08c0fd76ed49f99575e0734fdbdeb82f66d4798af56b65b476b7c8bffe65",
+    "catalog/recipes/execution-bindings.json": "3ca32b638df5a54548f71dde99f5bc07333ed9678755b553929d6760315d105d",
     "design/recipes/expression-model.md": "0e688b2554a9f6f7e208fcc54ebf433ce26244b74298402ba9415286914454a3",
     "design/recipes/runtime-accounting.md": "d40b652f1c7ba26fd9d5dc4f58a0fc27d713f506f08ed61063d97b51152e9fda",
     "design/recipes/retained-session.md": "5c55a38bc6370fd645bca29e70648db32725cff318b87d8959765eb9009052a7",
     "design/recipes/triangle-grain-binding.md": "d7be612f94bcac367c3283a13017832ff550bb53a33fffacc90ce681655c38e0",
     "design/recipes/explicit-frame-context.md": "e084c0db1eed82ad9c438e29bd5cefb6dd09321cda2ee2007da03a982b9aa5fd",
     "design/recipes/bounded-sequences.md": "27d849e4ba4e4dba2ed5b9b3a2404ace2b761915ff37004a600210dbff647aee",
-    "tools/validate_recipe_draft.py": "4872917848dae54a8a59a974e2189e9bc5d11ac3e98b1a81e3873d26909ff6dc",
+    "design/recipes/spring-simulation.md": "b0a7c1a62f1957ed08e02cb5d3b0bad1d290d7c3acd9761df815f77a912bc4f4",
+    "tools/validate_recipe_draft.py": "b4456c567236baef2ff3ec21031732445614a538f8721261a34bbe6f797b8944",
     "tools/run_grid_conformance.py": "392d23b61f713c7d204e215a9b468874f78b213741dc1e163b4b5fcb5553b180",
     "tools/generate_recipe_java_schemas.py": "66cbac6fabfaaed7a4b96fe9707ffa7617af9ce2ac7a313fd1743776537cfc47",
     "tools/generate_recipe_java_grammar.py": "c13cab3fb4b98e5a380253689ef2d3fead163390584af3a704f174213db3284f",
@@ -58,9 +62,10 @@
     "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
     "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
     "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/target-springs-2d.json": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3",
     "catalog/drawing/fresh-raster-2d.json": "8fd5d39bb1196d689aa8ca7a88e9f22bb75987c23bc8716e0fe00493b0432346",
     ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
-    "tools/run_recipe_java_prototype.py": "0086c96dbc377a6b4fbb4bdeae91301358ff863f3c4af79e563a45059400b1ce",
+    "tools/run_recipe_java_prototype.py": "b6d44b572d7cd7d13c0f6b6e4e7825129d320b1217f9798fd113f60aa9dbb17d",
     ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
     ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
     ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
@@ -72,7 +77,8 @@
     "placement-bars.draft.json",
     "region-panels.draft.json",
     "triangle-grain.draft.json",
-    "triangle-timed-marks.draft.json"
+    "triangle-timed-marks.draft.json",
+    "spring-replay.draft.json"
   ],
   "scenarios": [
     {
@@ -494,6 +500,102 @@
         "valueUnits": 141634,
         "commands": 2400
       }
+    },
+    {
+      "name": "spring-first",
+      "commands": 25,
+      "counters": {
+        "visits": 18068,
+        "calls": 74,
+        "work": 83671,
+        "iterations": 674,
+        "valueUnits": 17230,
+        "commands": 25
+      }
+    },
+    {
+      "name": "spring-displaced",
+      "commands": 25,
+      "counters": {
+        "visits": 18068,
+        "calls": 74,
+        "work": 83671,
+        "iterations": 674,
+        "valueUnits": 17230,
+        "commands": 25
+      }
+    },
+    {
+      "name": "spring-return",
+      "commands": 25,
+      "counters": {
+        "visits": 18068,
+        "calls": 74,
+        "work": 83671,
+        "iterations": 674,
+        "valueUnits": 17230,
+        "commands": 25
+      }
+    },
+    {
+      "name": "spring-late",
+      "commands": 25,
+      "counters": {
+        "visits": 18068,
+        "calls": 74,
+        "work": 83671,
+        "iterations": 674,
+        "valueUnits": 17230,
+        "commands": 25
+      }
+    },
+    {
+      "name": "spring-palette",
+      "commands": 25,
+      "counters": {
+        "visits": 18068,
+        "calls": 74,
+        "work": 83671,
+        "iterations": 674,
+        "valueUnits": 17230,
+        "commands": 25
+      }
+    },
+    {
+      "name": "spring-strength",
+      "commands": 25,
+      "counters": {
+        "visits": 18068,
+        "calls": 74,
+        "work": 83671,
+        "iterations": 674,
+        "valueUnits": 17230,
+        "commands": 25
+      }
+    },
+    {
+      "name": "spring-release",
+      "commands": 25,
+      "counters": {
+        "visits": 16468,
+        "calls": 74,
+        "work": 83671,
+        "iterations": 674,
+        "valueUnits": 16930,
+        "commands": 25
+      }
+    },
+    {
+      "name": "spring-steps",
+      "commands": 25,
+      "counters": {
+        "visits": 20980,
+        "calls": 90,
+        "work": 111551,
+        "iterations": 882,
+        "valueUnits": 22042,
+        "commands": 25
+      }
     }
   ],
   "failure_groups": [
@@ -725,6 +827,54 @@
       "retained_reused": true,
       "retained_executed_calls": 0,
       "retained_reserved_units": 19223
+    },
+    {
+      "name": "spring-first",
+      "retained_reused": false,
+      "retained_executed_calls": 48,
+      "retained_reserved_units": 0
+    },
+    {
+      "name": "spring-displaced",
+      "retained_reused": true,
+      "retained_executed_calls": 0,
+      "retained_reserved_units": 21440
+    },
+    {
+      "name": "spring-return",
+      "retained_reused": true,
+      "retained_executed_calls": 0,
+      "retained_reserved_units": 21440
+    },
+    {
+      "name": "spring-late",
+      "retained_reused": true,
+      "retained_executed_calls": 0,
+      "retained_reserved_units": 21440
+    },
+    {
+      "name": "spring-palette",
+      "retained_reused": true,
+      "retained_executed_calls": 0,
+      "retained_reserved_units": 21440
+    },
+    {
+      "name": "spring-strength",
+      "retained_reused": false,
+      "retained_executed_calls": 48,
+      "retained_reserved_units": 0
+    },
+    {
+      "name": "spring-release",
+      "retained_reused": false,
+      "retained_executed_calls": 48,
+      "retained_reserved_units": 0
+    },
+    {
+      "name": "spring-steps",
+      "retained_reused": false,
+      "retained_executed_calls": 64,
+      "retained_reserved_units": 0
     }
   ],
   "structural_admission": {
@@ -779,5 +929,12 @@
     ],
     "runner_stdout": "SEQUENCE_PROBES_PASSED four ordered snapshots, repeated/backward time, aggregate limits, empty input, ownership and failure metadata",
     "native_sequence_rendering": false
+  },
+  "scan": {
+    "status": "prototype-command-recurrence-passed",
+    "reviewer": "root",
+    "runner_stdout": "SCAN_PROBES_PASSED prefix recurrence, empty/initial order, local scope, iteration/array budgets and spring admission/arithmetic",
+    "spring_oracle": "tests/native/SpringRecipeComposition.java",
+    "scope": "Fresh per-step recipe snapshots equal a single repeatedly stepped native batch; no native spring recipe render acceptance yet."
   }
 }

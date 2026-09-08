@@ -65,6 +65,36 @@ class RecipeDraftValidationTests(unittest.TestCase):
         document["frameContext"] = {"index": 1, "timeSeconds": 2}
         document["retain"].insert(0, {"name": "clock", "value": {"kind": "literal", "value": 1}})
         self.assert_error(document, "SHADOWED_NAME")
+
+    def test_scan_scope_order_locals_and_nesting(self):
+        document = recipe("field-marks")
+        document["environment"] = {
+            "kind": "scan", "items": {"kind": "array", "items": [{"kind": "literal", "value": 1}]},
+            "initial": {"kind": "literal", "value": 0}, "as": "item", "indexAs": "ordinal",
+            "stateAs": "state", "value": {"kind": "ref", "name": "state"}}
+        self.assertEqual(validator.validate(document)["status"], "static-valid-draft")
+        nested = {"kind": "scan", "items": {"kind": "array", "items": [{"kind": "literal", "value": 1}]},
+                  "initial": {"kind": "ref", "name": "state"}, "as": "inner", "indexAs": "innerIndex",
+                  "stateAs": "innerState", "value": {"kind": "ref", "name": "innerState"}}
+        document["environment"]["value"] = nested
+        self.assertEqual(validator.validate(document)["status"], "static-valid-draft")
+
+    def test_scan_evaluates_items_and_initial_outer_and_rejects_scope_errors(self):
+        scan = {"kind": "scan", "items": {"kind": "array", "items": [{"kind": "literal", "value": 1}]},
+                "initial": {"kind": "literal", "value": 0}, "as": "item", "indexAs": "ordinal",
+                "stateAs": "state", "value": {"kind": "ref", "name": "state"}}
+        for field, value, code in (
+                ("initial", {"kind": "ref", "name": "missing"}, "UNBOUND_NAME"),
+                ("items", {"kind": "ref", "name": "item"}, "UNBOUND_NAME"),
+                ("as", "params", "SHADOWED_NAME")):
+            document = recipe("field-marks")
+            document["environment"] = dict(scan)
+            document["environment"][field] = value if field != "as" else value
+            self.assert_error(document, code)
+        document = recipe("field-marks")
+        document["environment"] = dict(scan)
+        document["environment"]["stateAs"] = "item"
+        self.assert_error(document, "DUPLICATE_LOCAL")
         document = recipe("field-marks")
         document["frameContext"] = {"index": 1, "timeSeconds": 2}
         document["frame"].insert(0, {"kind": "bind", "name": "clock", "value": {"kind": "literal", "value": 1}})

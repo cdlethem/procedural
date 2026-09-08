@@ -1,0 +1,646 @@
+{
+  "format": "procedurals.recipe",
+  "version": "0.1.0",
+  "status": "draft",
+  "parameters": {
+    "positions": [
+      [
+        128,
+        128
+      ],
+      [
+        224,
+        128
+      ],
+      [
+        320,
+        128
+      ],
+      [
+        416,
+        128
+      ],
+      [
+        512,
+        128
+      ],
+      [
+        128,
+        224
+      ],
+      [
+        224,
+        224
+      ],
+      [
+        320,
+        224
+      ],
+      [
+        416,
+        224
+      ],
+      [
+        512,
+        224
+      ],
+      [
+        128,
+        320
+      ],
+      [
+        224,
+        320
+      ],
+      [
+        320,
+        320
+      ],
+      [
+        416,
+        320
+      ],
+      [
+        512,
+        320
+      ],
+      [
+        128,
+        416
+      ],
+      [
+        224,
+        416
+      ],
+      [
+        320,
+        416
+      ],
+      [
+        416,
+        416
+      ],
+      [
+        512,
+        416
+      ],
+      [
+        128,
+        512
+      ],
+      [
+        224,
+        512
+      ],
+      [
+        320,
+        512
+      ],
+      [
+        416,
+        512
+      ],
+      [
+        512,
+        512
+      ]
+    ],
+    "strength": 0.025,
+    "retention": 0.7,
+    "displacement": [
+      64,
+      -48
+    ],
+    "releaseStep": 8,
+    "steps": 24,
+    "markLength": 6,
+    "trailScale": 2,
+    "strokeWidth": 2,
+    "colors": [
+      3252561,
+      16754462,
+      329804,
+      14566968,
+      4046263
+    ]
+  },
+  "operations": [
+    {
+      "id": "motion.target-springs-2d",
+      "version": "0.1.0"
+    },
+    {
+      "id": "color.cyclic-palette",
+      "version": "0.1.0"
+    }
+  ],
+  "drawing": {
+    "id": "drawing.fresh-raster-2d",
+    "version": "0.1.0"
+  },
+  "environment": {
+    "kind": "literal",
+    "value": {
+      "width": 640,
+      "height": 640,
+      "density": 1,
+      "background": 15591642
+    }
+  },
+  "frameContext": {
+    "index": 0,
+    "timeSeconds": 0
+  },
+  "retain": [
+    {
+      "name": "trajectory",
+      "value": {
+        "kind": "scan",
+        "items": {
+          "kind": "range",
+          "start": {
+            "kind": "literal",
+            "value": 0
+          },
+          "stop": {
+            "kind": "get",
+            "value": {
+              "kind": "ref",
+              "name": "params"
+            },
+            "key": "steps"
+          },
+          "step": {
+            "kind": "literal",
+            "value": 1
+          }
+        },
+        "initial": {
+          "kind": "record",
+          "fields": [
+            {
+              "name": "bodies",
+              "value": {
+                "kind": "map",
+                "items": {
+                  "kind": "get",
+                  "value": {
+                    "kind": "ref",
+                    "name": "params"
+                  },
+                  "key": "positions"
+                },
+                "as": "point",
+                "indexAs": "pointIndex",
+                "value": {
+                  "kind": "record",
+                  "fields": [
+                    {
+                      "name": "position",
+                      "value": {
+                        "kind": "ref",
+                        "name": "point"
+                      }
+                    },
+                    {
+                      "name": "velocity",
+                      "value": {
+                        "kind": "literal",
+                        "value": [
+                          0,
+                          0
+                        ]
+                      }
+                    },
+                    {
+                      "name": "strength",
+                      "value": {
+                        "kind": "get",
+                        "value": {
+                          "kind": "ref",
+                          "name": "params"
+                        },
+                        "key": "strength"
+                      }
+                    },
+                    {
+                      "name": "retention",
+                      "value": {
+                        "kind": "get",
+                        "value": {
+                          "kind": "ref",
+                          "name": "params"
+                        },
+                        "key": "retention"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "as": "tick",
+        "indexAs": "tickIndex",
+        "stateAs": "previous",
+        "value": {
+          "kind": "values",
+          "instance": {
+            "kind": "construct",
+            "operation": "motion.target-springs-2d",
+            "input": {
+              "kind": "record",
+              "fields": [
+                {
+                  "name": "state",
+                  "value": {
+                    "kind": "ref",
+                    "name": "previous"
+                  }
+                },
+                {
+                  "name": "targets",
+                  "value": {
+                    "kind": "map",
+                    "items": {
+                      "kind": "get",
+                      "value": {
+                        "kind": "ref",
+                        "name": "params"
+                      },
+                      "key": "positions"
+                    },
+                    "as": "home",
+                    "indexAs": "homeIndex",
+                    "value": {
+                      "kind": "if",
+                      "condition": {
+                        "kind": "math",
+                        "op": "lt",
+                        "args": [
+                          {
+                            "kind": "ref",
+                            "name": "tick"
+                          },
+                          {
+                            "kind": "get",
+                            "value": {
+                              "kind": "ref",
+                              "name": "params"
+                            },
+                            "key": "releaseStep"
+                          }
+                        ]
+                      },
+                      "then": {
+                        "kind": "array",
+                        "items": [
+                          {
+                            "kind": "math",
+                            "op": "add",
+                            "args": [
+                              {
+                                "kind": "index",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "home"
+                                },
+                                "index": {
+                                  "kind": "literal",
+                                  "value": 0
+                                }
+                              },
+                              {
+                                "kind": "index",
+                                "value": {
+                                  "kind": "get",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "params"
+                                  },
+                                  "key": "displacement"
+                                },
+                                "index": {
+                                  "kind": "literal",
+                                  "value": 0
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "math",
+                            "op": "add",
+                            "args": [
+                              {
+                                "kind": "index",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "home"
+                                },
+                                "index": {
+                                  "kind": "literal",
+                                  "value": 1
+                                }
+                              },
+                              {
+                                "kind": "index",
+                                "value": {
+                                  "kind": "get",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "params"
+                                  },
+                                  "key": "displacement"
+                                },
+                                "index": {
+                                  "kind": "literal",
+                                  "value": 1
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "else": {
+                        "kind": "ref",
+                        "name": "home"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "frame": [
+    {
+      "kind": "bind",
+      "name": "state",
+      "value": {
+        "kind": "index",
+        "value": {
+          "kind": "ref",
+          "name": "trajectory"
+        },
+        "index": {
+          "kind": "get",
+          "value": {
+            "kind": "ref",
+            "name": "clock"
+          },
+          "key": "index"
+        }
+      }
+    },
+    {
+      "kind": "bind",
+      "name": "palette",
+      "value": {
+        "kind": "construct",
+        "operation": "color.cyclic-palette",
+        "input": {
+          "kind": "record",
+          "fields": [
+            {
+              "name": "colors",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "colors"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "for",
+      "items": {
+        "kind": "get",
+        "value": {
+          "kind": "ref",
+          "name": "state"
+        },
+        "key": "bodies"
+      },
+      "as": "body",
+      "indexAs": "bodyIndex",
+      "body": [
+        {
+          "kind": "emit",
+          "value": {
+            "kind": "record",
+            "fields": [
+              {
+                "name": "kind",
+                "value": {
+                  "kind": "literal",
+                  "value": "segment2"
+                }
+              },
+              {
+                "name": "from",
+                "value": {
+                  "kind": "get",
+                  "value": {
+                    "kind": "ref",
+                    "name": "body"
+                  },
+                  "key": "position"
+                }
+              },
+              {
+                "name": "to",
+                "value": {
+                  "kind": "array",
+                  "items": [
+                    {
+                      "kind": "math",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "math",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "index",
+                              "value": {
+                                "kind": "get",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "body"
+                                },
+                                "key": "position"
+                              },
+                              "index": {
+                                "kind": "literal",
+                                "value": 0
+                              }
+                            },
+                            {
+                              "kind": "get",
+                              "value": {
+                                "kind": "ref",
+                                "name": "params"
+                              },
+                              "key": "markLength"
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "math",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "index",
+                              "value": {
+                                "kind": "get",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "body"
+                                },
+                                "key": "velocity"
+                              },
+                              "index": {
+                                "kind": "literal",
+                                "value": 0
+                              }
+                            },
+                            {
+                              "kind": "get",
+                              "value": {
+                                "kind": "ref",
+                                "name": "params"
+                              },
+                              "key": "trailScale"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "math",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "index",
+                          "value": {
+                            "kind": "get",
+                            "value": {
+                              "kind": "ref",
+                              "name": "body"
+                            },
+                            "key": "position"
+                          },
+                          "index": {
+                            "kind": "literal",
+                            "value": 1
+                          }
+                        },
+                        {
+                          "kind": "math",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "index",
+                              "value": {
+                                "kind": "get",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "body"
+                                },
+                                "key": "velocity"
+                              },
+                              "index": {
+                                "kind": "literal",
+                                "value": 1
+                              }
+                            },
+                            {
+                              "kind": "get",
+                              "value": {
+                                "kind": "ref",
+                                "name": "params"
+                              },
+                              "key": "trailScale"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "rgb",
+                "value": {
+                  "kind": "query",
+                  "instance": {
+                    "kind": "ref",
+                    "name": "palette"
+                  },
+                  "port": "sample",
+                  "input": {
+                    "kind": "math",
+                    "op": "div",
+                    "args": [
+                      {
+                        "kind": "ref",
+                        "name": "bodyIndex"
+                      },
+                      {
+                        "kind": "math",
+                        "op": "length",
+                        "args": [
+                          {
+                            "kind": "get",
+                            "value": {
+                              "kind": "ref",
+                              "name": "state"
+                            },
+                            "key": "bodies"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "name": "opacity8",
+                "value": {
+                  "kind": "literal",
+                  "value": 255
+                }
+              },
+              {
+                "name": "width",
+                "value": {
+                  "kind": "get",
+                  "value": {
+                    "kind": "ref",
+                    "name": "params"
+                  },
+                  "key": "strokeWidth"
+                }
+              },
+              {
+                "name": "cap",
+                "value": {
+                  "kind": "literal",
+                  "value": "round"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

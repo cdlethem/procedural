@@ -76,6 +76,7 @@
         {"$ref": "#/$defs/if"},
         {"$ref": "#/$defs/range"},
         {"$ref": "#/$defs/map"},
+        {"$ref": "#/$defs/scan"},
         {"$ref": "#/$defs/construct"},
         {"$ref": "#/$defs/query"},
         {"$ref": "#/$defs/values"}
@@ -134,6 +135,16 @@
     "map": {
       "type": "object", "additionalProperties": false, "required": ["kind", "items", "as", "indexAs", "value"],
       "properties": {"kind": {"const": "map"}, "items": {"$ref": "#/$defs/expression"}, "as": {"$ref": "#/$defs/name"}, "indexAs": {"$ref": "#/$defs/name"}, "value": {"$ref": "#/$defs/expression"}}
+    },
+    "scan": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "items", "initial", "as", "indexAs", "stateAs", "value"],
+      "properties": {
+        "kind": {"const": "scan"}, "items": {"$ref": "#/$defs/expression"},
+        "initial": {"$ref": "#/$defs/expression"}, "as": {"$ref": "#/$defs/name"},
+        "indexAs": {"$ref": "#/$defs/name"}, "stateAs": {"$ref": "#/$defs/name"},
+        "value": {"$ref": "#/$defs/expression"}
+      }
     },
     "construct": {
       "type": "object", "additionalProperties": false, "required": ["kind", "operation", "input"],

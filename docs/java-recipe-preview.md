@@ -124,3 +124,12 @@ Use a sequence only when its status is `complete`; interruption or a save failur
 an incomplete attempt. This is offline image output with explicit times, not real-time
 playback or stateful simulation. Changing context files requires a fresh build, and does
 not require re-exporting the composition.
+
+A simulation draft is available at `design/recipes/examples/spring-replay.draft.json`, with
+an accompanying `spring-replay.contexts.json`. It moves targets away from25 starting sites,
+then returns them; the spring operation computes position and velocity over24 explicit
+logical updates. `clock.index` selects a completed state (index0 is after the first update).
+`timeSeconds` does not change the recurrence. `strength`, `retention`, `displacement` and
+`releaseStep` control the example's response; `markLength`, `trailScale` and `colors` paint
+it independently. Coefficients0.025/0.7 are inherited example choices, not recommended ranges.
+Command and replay checks pass; native preview review is pending shared renderer access.

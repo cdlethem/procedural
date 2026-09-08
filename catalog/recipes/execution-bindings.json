@@ -1,6 +1,6 @@
 {
   "status": "draft",
-  "scope": "Seven immutable operation binding proposals including triangle compositions; no accepted executor claim. Contract schema pointers remain authoritative. Native binding strings are review notation, never reflective execution.",
+  "scope": "Eight snapshot/immutable-view operation binding proposals including triangle compositions; no accepted executor claim. Contract schema pointers remain authoritative. Native binding strings are review notation, never reflective execution.",
   "operations": [
     {
       "id": "layout.regular-grid",
@@ -107,6 +107,19 @@
       "values_output": "/output_schema",
       "java_binding_proposal": {
         "construct": "TrianglePoints2D.seeded(input)",
+        "values": "instance.toValues()"
+      },
+      "ports": {}
+    },
+    {
+      "id": "motion.target-springs-2d",
+      "version": "0.1.0",
+      "contract": "catalog/operations/target-springs-2d.json",
+      "contract_sha256": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3",
+      "construct_input": "/input_schema",
+      "values_output": "/output_schema",
+      "java_binding_proposal": {
+        "construct": "TargetSprings2D.create(input.state), then instance.step(input.targets)",
         "values": "instance.toValues()"
       },
       "ports": {}

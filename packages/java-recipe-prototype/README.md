@@ -1,8 +1,7 @@
 # Java recipe evaluator prototype
 
 This directory is outside the accepted Java library and source-bundle manifest. It is an
-implementation experiment for the draft composition model and seven reviewed immutable
-operations, not an accepted executor, exporter or target support attestation.
+implementation experiment for the draft composition model and eight operation bindings with immutable observable instances, not an accepted executor, exporter or target support attestation.
 
 `RecipeEvaluator.evaluate(recipe, limits)` consumes an in-memory Map and performs bounded structural and lexical
 validation before execution. Both fresh and session entry points detach the submitted JSON
@@ -25,8 +24,8 @@ accurate heap limit. Elapsed time is a supervised safeguard, not a deterministic
 
 ## Current evidence
 
-The established runner serializes and reparses six draft recipes, then compares actual
-Java output across thirty-five FieldMarks/PathMarks/placement-bars/region-panels/triangle-grain/timed baseline/edit scenarios, comparing both fresh and session
+The established runner serializes and reparses seven draft recipes, then compares actual
+Java output across forty-three field/path/placement/region/grain/timed/spring baseline/edit scenarios, comparing both fresh and session
 execution. FieldMarks covers
 length, palette and segment/quad edits. PathMarks compares the existing `streamForCanvas`
 workflow with explicit recipe visibility predicates; it is not a general clipping operation.
@@ -85,7 +84,7 @@ state and never enter exported recipe JSON.
 Cached data and keys are detached from callers. Each warm call checks current array limits
 and reserves cached capacity against valueUnits before frame work. Result diagnostics expose
 `retainedReused`, `retainedExecutedCalls` and `retainedReservedUnits`; calls count actual work,
-not hypothetical reconstruction. The thirty-five exact comparisons and focused failure groups
+not hypothetical reconstruction. The forty-three exact comparisons and focused failure groups
 cover style reuse, geometry invalidation, alias detachment, budget rejection and recovery.
 This establishes the scoped prototype behavior, not accepted general executor support.
 
@@ -144,3 +143,16 @@ separate recipe and sequence data identities; default builds still run a single 
 Native four-frame replay and distinguishing publication checks are scoped in
 `evidence/distribution/recipe-sequence-export-preview.json`. This supersedes the earlier
 command-only sequence limitation; scheduling, mutable simulation and other targets remain open.
+
+## Explicit simulation state
+
+The draft `scan` expression feeds each completed value into the next iteration and returns
+one value per input item. Initial state and update order are explicit; there is no hidden
+mutable accumulator or inferred time step. The spring binding constructs and steps a private
+native batch once, then exposes only its snapshot. It has no mutating query port.
+
+`design/recipes/examples/spring-replay.draft.json` retains a finite spring trace, then paints
+a selected completed step. Frame and palette edits reuse that trace; strength, target policy
+and step-count edits rebuild it. The direct native batch oracle matches every tested command.
+The built standalone four-frame preview awaits the shared render lease and visual review;
+it is not yet native-validated. See `design/recipes/spring-simulation.md` for exact semantics.

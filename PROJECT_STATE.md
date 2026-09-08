@@ -1,5 +1,28 @@
 # Project state
 
+## Spring simulation commands verified; native preview pending
+
+Root implemented an ordered scan expression and a one-step spring snapshot binding after
+reviewing the accepted mutable core. Native objects never expose a stepping port and are
+not mutated after recipe construction. Luna added catalog/schema/Python metadata; root
+reviewed scope/error parity, resource reservations and the explicit recurrence boundary.
+The source-bound .work/recipe-spring-root3 harness passes43 exact fresh/session comparisons,
+16 existing failure groups, sequence probes and new scan/spring probes.32 focused Python
+checks pass. A direct single native batch stepped repeatedly matches per-step reconstructed
+recipe snapshots; frame/palette reuse and coefficient/policy/count invalidation pass.
+Evidence: evidence/conformance/recipe-java-prototype-commands.json, scan subsection.
+
+The standalone project .work/recipe-spring-export1 is built in .work/recipe-spring-build1.
+Its four-frame native attempt did not start: the shared machine lock is held by the active
+Android port session (observed PID2440358, run-placement-android-session.sh). Revalidate the
+process before waiting; do not disturb it or run around the lock. Once available, run
+RecipeSequenceExport into fresh .work/recipe-spring-native1, inspect all four selected poses,
+and record scoped source/build/native evidence before calling this preview native-validated.
+This is a tested Java prototype checkpoint with native review explicitly outstanding.
+Eight recipe bindings; accepted Java remains15 operations/15 starters. Interactive events,
+assets and deferred executor targets remain open; the full roadmap goal remains active.
+
+
 ## Standalone sequence export verified
 
 Exported build.py now accepts --contexts, hashes the explicit schedule and writes a separate

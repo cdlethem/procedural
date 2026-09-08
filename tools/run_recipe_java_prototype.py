@@ -29,7 +29,7 @@ def main():
         parser.error('Processing core differs from reviewed dependency')
     recipes = []
     recipe_paths = []
-    for name in ('field-marks', 'path-marks', 'placement-bars', 'region-panels', 'triangle-grain', 'triangle-timed-marks'):
+    for name in ('field-marks', 'path-marks', 'placement-bars', 'region-panels', 'triangle-grain', 'triangle-timed-marks', 'spring-replay'):
         path = ROOT / 'design/recipes/examples' / (name + '.draft.json')
         recipe = load_json(path)
         validate(recipe)
@@ -49,6 +49,7 @@ public class RecipePrototypeComparison {
  static final RecipeEvaluator.Session fieldSession=new RecipeEvaluator.Session();
  static final RecipeEvaluator.Session pathSession=new RecipeEvaluator.Session();
  static final RecipeEvaluator.Session placementSession=new RecipeEvaluator.Session();
+ static final RecipeEvaluator.Session springSession=new RecipeEvaluator.Session();
  static final RecipeEvaluator.Session timedSession=new RecipeEvaluator.Session();
  static final RecipeEvaluator.Session triangleSession=new RecipeEvaluator.Session();
  static final RecipeEvaluator.Session regionSession=new RecipeEvaluator.Session();
@@ -110,6 +111,14 @@ public class RecipePrototypeComparison {
   same(expected,result.commands,label);session(timedSession,recipe,result,label,reuse);
   System.out.println(label+" "+expected.size()+" "+result.counters);
  }
+ static void spring(Map<String,Object> recipe,String label,boolean reuse){
+  int index=((Number)obj(recipe.get("frameContext")).get("index")).intValue();
+  List<Object> expected=SpringRecipeComposition.commands(obj(recipe.get("parameters")),index);
+  RecipeEvaluator.Result result=RecipeEvaluator.evaluate(recipe,new RecipeEvaluator.Limits());
+  same(expected,result.commands,label);session(springSession,recipe,result,label,reuse);
+  System.out.println(label+" "+expected.size()+" "+result.counters);
+ }
+ static Map<String,Object> springRecipe(){return __SPRING__;}
  static Map<String,Object> timedRecipe(){return __TIMED__;}
  static Map<String,Object> triangleRecipe(){return __TRIANGLE__;}
  static Map<String,Object> regionRecipe(){return __REGION__;}
@@ -143,10 +152,18 @@ public class RecipePrototypeComparison {
   timed(timed,"timed-repeat",true);
   obj(timed.get("frameContext")).put("timeSeconds",0.125);obj(timed.get("frameContext")).put("index",7.0);timed(timed,"timed-backward",true);
   obj(timed.get("frameContext")).put("timeSeconds",0.0);obj(timed.get("frameContext")).put("index",0.0);timed(timed,"timed-zero-replay",true);
+  Map<String,Object> springs=springRecipe();spring(springs,"spring-first",false);
+  obj(springs.get("frameContext")).put("index",7.0);spring(springs,"spring-displaced",true);
+  obj(springs.get("frameContext")).put("index",15.0);spring(springs,"spring-return",true);
+  obj(springs.get("frameContext")).put("index",23.0);spring(springs,"spring-late",true);
+  obj(springs.get("parameters")).put("colors",list(0x2E0551,0xFF00C7,0x01AFC2,0xFDBE03,0xF4F9FD));spring(springs,"spring-palette",true);
+  obj(springs.get("parameters")).put("strength",0.05);spring(springs,"spring-strength",false);
+  obj(springs.get("parameters")).put("releaseStep",4.0);spring(springs,"spring-release",false);
+  obj(springs.get("parameters")).put("steps",32.0);spring(springs,"spring-steps",false);
   System.out.println("COMMAND_COMPARISON_PASSED");
  }
 }
-'''.replace('__FIELD__', java_value(recipes[0])).replace('__PATH__', java_value(recipes[1])).replace('__PLACEMENT__', java_value(recipes[2])).replace('__REGION__', java_value(recipes[3])).replace('__TRIANGLE__', java_value(recipes[4])).replace('__TIMED__', java_value(recipes[5]))
+'''.replace('__FIELD__', java_value(recipes[0])).replace('__PATH__', java_value(recipes[1])).replace('__PLACEMENT__', java_value(recipes[2])).replace('__REGION__', java_value(recipes[3])).replace('__TRIANGLE__', java_value(recipes[4])).replace('__TIMED__', java_value(recipes[5])).replace('__SPRING__', java_value(recipes[6]))
     inputs = sorted((ROOT / 'packages/java/src/main/java').rglob('*.java'))
     inputs += sorted((ROOT / 'packages/java-processing/src/main/java').rglob('*.java'))
     inputs += sorted((ROOT / 'packages/java-recipe-prototype/src/main/java').rglob('*.java'))
@@ -154,12 +171,12 @@ public class RecipePrototypeComparison {
         'packages/java/examples/FieldMarks/MarkField.java',
         'packages/java-processing/examples/FieldMarks/MarkCommands.java',
         'packages/java/examples/PathMarks/PathMarkComposition.java',
-        'tests/native/RecipeSequenceProbe.java', 'tests/native/RecipePrototypeFailures.java', 'tests/native/PlacementRecipeComposition.java', 'tests/native/RegionRecipeComposition.java', 'tests/native/TriangleRecipeComposition.java')]
+        'tests/native/RecipeScanProbe.java', 'tests/native/SpringRecipeComposition.java', 'tests/native/RecipeSequenceProbe.java', 'tests/native/RecipePrototypeFailures.java', 'tests/native/PlacementRecipeComposition.java', 'tests/native/RegionRecipeComposition.java', 'tests/native/TriangleRecipeComposition.java')]
     home = java_home(args.java_home)
     metadata = [ROOT / name for name in (
         'catalog/recipes/recipe.schema.json', 'catalog/recipes/execution-bindings.json',
         'design/recipes/expression-model.md', 'design/recipes/runtime-accounting.md',
-        'design/recipes/retained-session.md', 'design/recipes/triangle-grain-binding.md', 'design/recipes/explicit-frame-context.md', 'design/recipes/bounded-sequences.md',
+        'design/recipes/retained-session.md', 'design/recipes/triangle-grain-binding.md', 'design/recipes/explicit-frame-context.md', 'design/recipes/bounded-sequences.md', 'design/recipes/spring-simulation.md',
         'tools/validate_recipe_draft.py', 'tools/run_grid_conformance.py',
         'tools/generate_recipe_java_schemas.py', 'tools/generate_recipe_java_grammar.py')]
     binding_data = json.loads((ROOT / 'catalog/recipes/execution-bindings.json').read_text())
@@ -190,12 +207,15 @@ public class RecipePrototypeComparison {
                     'RecipeSequenceProbe'], timeout=60)
     if 'SEQUENCE_PROBES_PASSED' not in sequence.stdout:
         raise RuntimeError('sequence probes did not finish')
+    scan = run([home / 'bin/java', '-Xmx128m', '-cp', str(classes), 'RecipeScanProbe'], timeout=30)
+    if 'SCAN_PROBES_PASSED' not in scan.stdout:
+        raise RuntimeError('scan probes did not finish')
     if hashes != {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in bound}:
         raise RuntimeError('comparison input changed during execution')
-    report = {'status': 'prototype-command-comparison-passed', 'scope': 'Thirty-five fresh/session command scenarios and focused failure probes; complete budget/type/replay, cache, export and native acceptance remain pending.',
-              'input_sha256': hashes, 'roundtripped_recipes': [p.name for p in recipe_paths], 'stdout': result.stdout, 'failure_stdout': failures.stdout, 'sequence_stdout': sequence.stdout}
+    report = {'status': 'prototype-command-comparison-passed', 'scope': 'Forty-three fresh/session command scenarios and focused failure probes; complete budget/type/replay, cache, export and native acceptance remain pending.',
+              'input_sha256': hashes, 'roundtripped_recipes': [p.name for p in recipe_paths], 'stdout': result.stdout, 'failure_stdout': failures.stdout, 'sequence_stdout': sequence.stdout, 'scan_stdout': scan.stdout}
     (output / 'result.json').write_text(json.dumps(report, indent=2) + '\n')
-    print(result.stdout + failures.stdout + sequence.stdout)
+    print(result.stdout + failures.stdout + sequence.stdout + scan.stdout)
 
 
 if __name__ == '__main__':

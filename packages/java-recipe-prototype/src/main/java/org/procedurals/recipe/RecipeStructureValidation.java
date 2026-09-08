@@ -181,12 +181,16 @@ final class RecipeStructureValidation {
                 for(int i=0;i<items.size();i++)expr(items.get(i),scope,p+"/"+key+"/"+i,declared);
                 return;
             }
-            case "map": {
+            case "map": case "scan": {
                 expr(node.get("items"),scope,p+"/items",declared);
+                if(kind.equals("scan"))expr(node.get("initial"),scope,p+"/initial",declared);
                 String a=(String)node.get("as"),index=(String)node.get("indexAs");
                 if(a.equals(index))fail("DUPLICATE_LOCAL",p+"/indexAs","map locals must differ");
+                String state=kind.equals("scan")?(String)node.get("stateAs"):null;
+                if(state!=null&&(state.equals(a)||state.equals(index)))fail("DUPLICATE_LOCAL",p+"/stateAs","scan locals must differ");
                 Set<String> child=new HashSet<>(scope);
                 add(a,child,p+"/as","SHADOWED_NAME");add(index,child,p+"/indexAs","SHADOWED_NAME");
+                if(state!=null)add(state,child,p+"/stateAs","SHADOWED_NAME");
                 expr(node.get("value"),child,p+"/value",declared);return;
             }
             case "construct":

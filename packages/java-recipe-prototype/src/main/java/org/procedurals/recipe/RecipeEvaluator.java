@@ -9,6 +9,7 @@ import org.procedurals.layout.QuadrantPartition2D;
 import org.procedurals.paths.GradientPath2D;
 import org.procedurals.sampling.CirclePlacements2D;
 import org.procedurals.sampling.TrianglePoints2D;
+import org.procedurals.motion.TargetSprings2D;
 
 /** Draft-only ordered evaluator for the catalog bindings in execution-bindings.json. */
 public strictfp final class RecipeEvaluator {
@@ -448,12 +449,16 @@ public strictfp final class RecipeEvaluator {
             }
             return out;
         }
-        if ("map".equals(k)) {
+        if ("map".equals(k) || "scan".equals(k)) {
             List<?> a = list(expr(n.get("items"), scope, path(p, "items"), s, declared),
                     path(p, "items"));
+            boolean scan="scan".equals(k);
+            Object accumulator=scan?expr(n.get("initial"),scope,path(p,"initial"),s,declared):null;
+            String stateAs=scan?str(n.get("stateAs"),path(p,"stateAs")):null;
             String as = str(n.get("as"), path(p, "as"));
             String ix = str(n.get("indexAs"), path(p, "indexAs"));
-            if (as.equals(ix) || scope.containsKey(as) || scope.containsKey(ix)) {
+            if (as.equals(ix) || scope.containsKey(as) || scope.containsKey(ix)
+                    || (scan && (stateAs.equals(as)||stateAs.equals(ix)||scope.containsKey(stateAs)))) {
                 fail("SHADOWED_NAME", p, "iteration name visible");
             }
             s.checkArray(p, a.size());
@@ -468,7 +473,10 @@ public strictfp final class RecipeEvaluator {
                     Map<String,Object> child = new LinkedHashMap<String,Object>(scope);
                     child.put(as, a.get(i));
                     child.put(ix, Double.valueOf(i));
-                    out.add(expr(n.get("value"), child, path(p, "value"), s, declared));
+                    if(scan)child.put(stateAs,accumulator);
+                    Object next=expr(n.get("value"),child,path(p,"value"),s,declared);
+                    out.add(next);
+                    if(scan)accumulator=next;
                 } catch (RecipeFailure error) {
                     throw withIteration(error, s.iteration);
                 } finally {
@@ -581,6 +589,17 @@ public strictfp final class RecipeEvaluator {
                 s.call(p, 1 + steps);
                 return new Instance(id, GradientPath2D.trace(input), steps);
             }
+            if ("motion.target-springs-2d".equals(id)) {
+                Map<?,?> inputRecord=map(input,p), state=map(inputRecord.get("state"),p);
+                long n=list(state.get("bodies"),p).size();
+                if(list(inputRecord.get("targets"),p).size()!=n)
+                    throw new TargetSprings2D.SpringException("INVALID_INPUT");
+                s.checkArray(p,6*n);s.units(p,14*n+8);s.call(p,32+128*n);
+                TargetSprings2D snapshot=TargetSprings2D.create(state);
+                snapshot.step(inputRecord.get("targets"));
+                // No stepping port exists: this private snapshot is never mutated again.
+                return new Instance(id,snapshot,n);
+            }
             if ("sampling.seeded-triangle-points-2d".equals(id)) {
                 long n=index(map(input,p).get("count"),p);
                 // Packed output, six-coordinate temporary and fixed stream/instance state.
@@ -613,6 +632,9 @@ public strictfp final class RecipeEvaluator {
             }
         } catch (RecipeFailure e) {
             throw e;
+        } catch (TargetSprings2D.SpringArithmeticException e) {
+            throw new RecipeFailure("OPERATION_FAILURE",p,e.getMessage(),s.iteration,
+                    id,e.code+" body="+e.bodyIndex+" axis="+e.axis+" stage="+e.stage);
         } catch (QuadrantPartition2D.PartitionArithmeticException e) {
             throw new RecipeFailure("OPERATION_FAILURE", p, e.getMessage(), s.iteration,
                     id, e.code + " replacement=" + e.replacementIndex + " stage=" + e.stage);
@@ -714,6 +736,11 @@ public strictfp final class RecipeEvaluator {
                 s.units(p, 4 * n + 6);
                 s.call(p, 4 * n + 7);
                 return path.toValues();
+            }
+            if ("motion.target-springs-2d".equals(x.id)) {
+                long n=x.size;s.checkArray(p,n);if(n>0)s.checkArray(p,2);
+                s.units(p,9*n+2);s.call(p,10*n+3);
+                return ((TargetSprings2D)x.value).toValues();
             }
             if ("sampling.seeded-triangle-points-2d".equals(x.id)) {
                 long n=x.size;
@@ -920,6 +947,8 @@ public strictfp final class RecipeEvaluator {
                 ? ((RegularGrid.GridException)e).code
                 : e instanceof GradientNoise2D01.NoiseException
                 ? ((GradientNoise2D01.NoiseException)e).code
+                : e instanceof TargetSprings2D.SpringException
+                ? ((TargetSprings2D.SpringException)e).code
                 : e instanceof TrianglePoints2D.TrianglePointsException
                 ? ((TrianglePoints2D.TrianglePointsException)e).code
                 : e instanceof CyclicPalette.PaletteException

@@ -211,6 +211,17 @@ def walk_expression(expression, scope, path, declared, ports):
         require_new(expression["indexAs"], scope, pointer(path + ("indexAs",)))
         walk_expression(expression["value"], scope | {expression["as"], expression["indexAs"]},
                         path + ("value",), declared, ports)
+    elif kind == "scan":
+        walk_expression(expression["items"], scope, path + ("items",), declared, ports)
+        walk_expression(expression["initial"], scope, path + ("initial",), declared, ports)
+        names = (expression["as"], expression["indexAs"], expression["stateAs"])
+        if names[0] == names[1]:
+            raise RecipeError("DUPLICATE_LOCAL", pointer(path + ("indexAs",)), "scan locals must differ")
+        if names[2] in names[:2]:
+            raise RecipeError("DUPLICATE_LOCAL", pointer(path + ("stateAs",)), "scan locals must differ")
+        for key, name in zip(("as", "indexAs", "stateAs"), names):
+            require_new(name, scope, pointer(path + (key,)))
+        walk_expression(expression["value"], scope | set(names), path + ("value",), declared, ports)
     elif kind == "construct":
         if expression["operation"] not in declared:
             raise RecipeError("UNDECLARED_CONSTRUCT", pointer(path + ("operation",)), "construct operation is not declared")
