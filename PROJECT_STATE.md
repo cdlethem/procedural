@@ -1,5 +1,16 @@
 # Project state
 
+## Placement core/native support recorded for p5.js and py5
+
+Root admitted circle filtering and seeded placement core conformance plus scoped
+PlacementMarks native workflows for p5.js/py5. Catalog attestations and generated reference
+now reflect reviewed support; technique/recreation, Android and distribution claims remain
+unchanged. The JS core report is tracked. Browser native evidence uses the historical
+entrypoint but imports the unchanged placement module directly; root separately verified
+all three public export identities. Exact export compatibility preserves that distinction.
+Full catalog/reference validation passes. Java remains15 operations/15 starters.
+Next review Android terminal evidence and package the accepted port capabilities.
+
 ## Reviewed export compatibility restored
 
 The full catalog check exposed stale historical CP2 entrypoint hashes after port integration.

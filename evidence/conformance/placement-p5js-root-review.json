@@ -1,0 +1,40 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Circle placement/filter core conformance and PlacementMarks native workflow on recorded runtime only. No distribution acceptance, Android support, cross-host pixel identity or original-sketch recreation claim.",
+  "implementation_sha256": {
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "tests/native/circle-placements-javascript.mjs": "814e783fa5ecdd781c5fa0ca3f8818a0b768c120c5a2e1a0f8ceb88d09f62c05",
+    "tools/run_p5_placement_marks.mjs": "15ad1597fa54e684f0c69fce54f450a47d7f6a9da06c4b16fdc7ac89a7943b41",
+    "tests/native/placement-marks-browser.mjs": "67cd730c9605198803c112755df9ea4a50fa4632b5afde20f14396262d76a5d2",
+    "packages/javascript/examples/placement-marks/index.html": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318",
+    "packages/javascript/examples/placement-marks/sketch.js": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c",
+    "packages/javascript/examples/placement-marks/placement-marks.js": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382",
+    "packages/javascript/examples/placement-marks/README.md": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1",
+    "packages/javascript/src/index.js": "60c98be5f180bf94cf8a3d41719f3642eeed54c33e7956ea28dc27aba8070e1f",
+    "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/circle-placements-javascript.json": "9f44e84d1fd1efccb410375101bffdddc9d1589ac43ddc228e389166f5493afa",
+    "evidence/conformance/p5js-placement-marks.json": "70284ed473e74409a3d115f4ffefd31ec92e0ae2af117279f2a75bb6bb8e4818",
+    "design/port-batch-01-root-review.md": "bc80b5a4c1e63c2bdd828f7e2ad1a1e10aff4b7d5c88b9b5af4e0215a1b0b6fc",
+    "evidence/conformance/placement-export-compatibility-review.json": "5b4415214d1a88d2558efefbcda38f3f7400409e61c3c11a8e0c5824c0172615"
+  },
+  "runtime": "p5 2.3.2; Chromium 153.0.8010.12",
+  "root_findings": [
+    "Shared fixture cases, RNG/mapping vectors, ordered-filter equivalence, prefix and ownership/access reviewed against frozen contracts.",
+    "Native source/image hashes verified; baseline, diamond and radial images inspected. Style retains placements, source/exclusion edits rebuild, save captures displayed canvas.",
+    "Browser native evidence predates additive package index exports; the actual starter imports the unchanged placement module directly. Root Node check confirms all three new public exports are identical to that module exports. Historical evidence is preserved through the exact compatibility review.",
+    "Python callback checks are not physical-keyboard evidence; motif counts are derived. Unsigned index storage is four bytes on tested host. Additional runtime claims require width verification."
+  ],
+  "remaining": [
+    "Android port integration",
+    "Placement distribution packaging",
+    "Original-sketch recreation beyond existing Java evidence"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Circle placement/filter core conformance and PlacementMarks native workflow on recorded runtime only. No distribution acceptance, Android support, cross-host pixel identity or original-sketch recreation claim.",
+  "implementation_sha256": {
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "tests/native/circle-placements-python.py": "9704cec7d99c16a1d36e203211b31679c7b921fad0e704c114b7810d40e39db3",
+    "packages/python/examples/placement_marks/placement_marks.py": "a50aaa217801422b90d9146ac2670e0a612d62ffc081228ad23f0f6962ea36d0",
+    "packages/python/examples/placement_marks/sketch.py": "dc51f15358a1ed3ba8342aff3ebd994d24ac3ebd6e751a43f8cb0a43bb9ace7b",
+    "packages/python/procedurals/__init__.py": "9f00137c84bdbcd62f2fdaa9c3aa37e732578eef63e04ecf7ddd5dfdad645209",
+    "tests/native/py5_placement_marks.py": "4949eb5bb71553e1cc3627578856598040749739f41d98835ca8ba4bdfc41674"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/circle-placements-python.json": "aa48f1b47f7c27e44fc0df89da6b4d029fe7e48a19dab4b2e9755528bb3a635d",
+    "evidence/conformance/py5-placement-marks.json": "c100f0aa2d4b71ac9b4ae41072238d52174b1be1b156574b31edbe0290d7b008",
+    "design/port-batch-01-root-review.md": "bc80b5a4c1e63c2bdd828f7e2ad1a1e10aff4b7d5c88b9b5af4e0215a1b0b6fc",
+    "evidence/conformance/placement-export-compatibility-review.json": "5b4415214d1a88d2558efefbcda38f3f7400409e61c3c11a8e0c5824c0172615"
+  },
+  "runtime": "CPython 3.13/3.14; py5 0.10.11a0; JDK17 JAVA2D",
+  "root_findings": [
+    "Shared fixture cases, RNG/mapping vectors, ordered-filter equivalence, prefix and ownership/access reviewed against frozen contracts.",
+    "Native source/image hashes verified; baseline, diamond and radial images inspected. Style retains placements, source/exclusion edits rebuild, save captures displayed canvas.",
+    "Browser native evidence predates additive package index exports; the actual starter imports the unchanged placement module directly. Root Node check confirms all three new public exports are identical to that module exports. Historical evidence is preserved through the exact compatibility review.",
+    "Python callback checks are not physical-keyboard evidence; motif counts are derived. Unsigned index storage is four bytes on tested host. Additional runtime claims require width verification."
+  ],
+  "remaining": [
+    "Android port integration",
+    "Placement distribution packaging",
+    "Original-sketch recreation beyond existing Java evidence"
+  ]
+}

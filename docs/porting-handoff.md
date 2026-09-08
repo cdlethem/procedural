@@ -35,7 +35,8 @@ Root integrated the reviewed p5.js/py5 circle placement cores, public exports an
 PlacementMarks workflows in `a7ea7ec5`. The exact source-bound native evidence and
 root integration findings are in `design/port-batch-01-root-review.md`. Python's
 integrated core conformance report is tracked; both native workflows have reviewed
-representative images. Shared placement target attestations and Android remain pending.
+representative images. Placement core/native target attestations are now recorded for p5.js/py5; Android,
+technique/recreation support and port distribution acceptance remain pending.
 Do not infer package release acceptance from source integration alone.
 
 The older FieldMarks/PathMarks evidence remains historical. An exact root-reviewed
