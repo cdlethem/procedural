@@ -154,5 +154,5 @@ native batch once, then exposes only its snapshot. It has no mutating query port
 `design/recipes/examples/spring-replay.draft.json` retains a finite spring trace, then paints
 a selected completed step. Frame and palette edits reuse that trace; strength, target policy
 and step-count edits rebuild it. The direct native batch oracle matches every tested command.
-The built standalone four-frame preview awaits the shared render lease and visual review;
-it is not yet native-validated. See `design/recipes/spring-simulation.md` for exact semantics.
+The standalone four-frame preview passed native rendering and root visual review; see
+`evidence/distribution/recipe-spring-preview.json` for the exact source/build evidence. See `design/recipes/spring-simulation.md` for exact semantics.

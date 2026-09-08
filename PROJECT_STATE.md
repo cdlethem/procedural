@@ -1,6 +1,6 @@
 # Project state
 
-## Spring simulation commands verified; native preview pending
+## Spring simulation commands and native preview verified
 
 Root implemented an ordered scan expression and a one-step spring snapshot binding after
 reviewing the accepted mutable core. Native objects never expose a stepping port and are
@@ -12,13 +12,13 @@ checks pass. A direct single native batch stepped repeatedly matches per-step re
 recipe snapshots; frame/palette reuse and coefficient/policy/count invalidation pass.
 Evidence: evidence/conformance/recipe-java-prototype-commands.json, scan subsection.
 
-The standalone project .work/recipe-spring-export1 is built in .work/recipe-spring-build1.
-Its four-frame native attempt did not start: the shared machine lock is held by the active
-Android port session (observed PID2440358, run-placement-android-session.sh). Revalidate the
-process before waiting; do not disturb it or run around the lock. Once available, run
-RecipeSequenceExport into fresh .work/recipe-spring-native1, inspect all four selected poses,
-and record scoped source/build/native evidence before calling this preview native-validated.
-This is a tested Java prototype checkpoint with native review explicitly outstanding.
+The standalone project .work/recipe-spring-export1 built in .work/recipe-spring-build1
+now rendered four snapshots in .work/recipe-spring-native1 through the shared machine lock.
+Root inspected steps 0,7,15,23: displaced pose, release reversal and return toward the grid
+are visible. All four contain25 commands, and the last three reuse the retained trace.
+Export/source hashes, compiled build identities, binary resources and PNG hashes verified.
+Evidence: evidence/distribution/recipe-spring-preview.json. General executor acceptance
+remains open. Next finish bounded port review and identify the next artist capability gap.
 Eight recipe bindings; accepted Java remains15 operations/15 starters. Interactive events,
 assets and deferred executor targets remain open; the full roadmap goal remains active.
 

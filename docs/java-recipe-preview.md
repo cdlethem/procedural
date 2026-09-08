@@ -132,4 +132,5 @@ logical updates. `clock.index` selects a completed state (index0 is after the fi
 `timeSeconds` does not change the recurrence. `strength`, `retention`, `displacement` and
 `releaseStep` control the example's response; `markLength`, `trailScale` and `colors` paint
 it independently. Coefficients0.025/0.7 are inherited example choices, not recommended ranges.
-Command and replay checks pass; native preview review is pending shared renderer access.
+Command and replay checks pass. Root inspected all four native JAVA2D snapshots; scoped
+evidence is in `evidence/distribution/recipe-spring-preview.json`.
