@@ -1342,9 +1342,9 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [review](../../evidence/distribution/cp5-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/conformance/triangle-p5js-native-root-review.json) | [validated-scoped](../../evidence/conformance/triangle-p5js-native-root-review.json) | unvalidated | [review](../../evidence/conformance/triangle-p5js-native-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/triangle-python-core-root-review.json) | [validated-scoped](../../evidence/conformance/triangle-py5-native-root-review.json) | unvalidated | [review](../../evidence/conformance/triangle-py5-native-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | unvalidated | unvalidated | [review](../../evidence/conformance/triangle-android-core-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | [validated-scoped](../../evidence/conformance/triangle-android-native-root-review.json) | unvalidated | [review](../../evidence/conformance/triangle-android-native-root-review.json) |
 
 Motivating evidence:
 
@@ -1572,9 +1572,9 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [review](../../evidence/distribution/cp5-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/conformance/triangle-p5js-native-root-review.json) | [validated-scoped](../../evidence/conformance/triangle-p5js-native-root-review.json) | unvalidated | [review](../../evidence/conformance/triangle-p5js-native-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/triangle-python-core-root-review.json) | [validated-scoped](../../evidence/conformance/triangle-py5-native-root-review.json) | unvalidated | [review](../../evidence/conformance/triangle-py5-native-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | unvalidated | unvalidated | [review](../../evidence/conformance/triangle-android-core-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | [validated-scoped](../../evidence/conformance/triangle-android-native-root-review.json) | unvalidated | [review](../../evidence/conformance/triangle-android-native-root-review.json) |
 
 Motivating evidence:
 

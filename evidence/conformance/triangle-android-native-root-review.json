@@ -1,0 +1,31 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Scoped API33 GrainMarks native button workflow, lifecycle and cached MediaStore save; no distribution or original-sketch recreation acceptance.",
+  "implementation_sha256": {
+    "packages/java-android/examples/GrainMarks/GrainMarksActivity.java": "89e291f79da68cc85a2574b73df4fef967bc8ca6457f8ea95e28e7234b8f3182",
+    "packages/java-android/examples/GrainMarks/GrainMarksRenderer.java": "868e6b2d488de4a862c192c3a611aa1a4122278a35068aab65f039e1bd9a30ab",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+    "tests/native/android-grain-marks/GrainMarksProbeActivity.java": "338bdbd41a8b3ac4b639054f76959d8d3870c1ce951d472831afffd75c81acf2",
+    "tools/build_android_grain_marks.py": "d487dd438f2bbad58c9e3c8247842aff44e068e2da39a59d01950bb64f55f55a",
+    "tools/run_android_grain_marks.py": "3da8c26d9dc0d6ffd26369efc6e25cefb00d235b7c8526ffc10d90ddd4a72a05",
+    "design/capabilities/grain-marks-android-acceptance.md": "c5a588d5976eb6e78f4624fdf5baa26c3cd3f5e23fa5b5e19509ec59c7843f05",
+    "design/capabilities/grain-marks-android-resume-correction.md": "67a966342003e46add314f6093288f6e3cbe93ebdba8d353746673ab1a91fee9"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/android-grain-marks.json": "2662fe6c4547ad9aaa74a121ef6033969555a15ee40bb07b35fac492df8a5da2"
+  },
+  "findings": [
+    "Root reviewed Terra Activity and observer, native renderer and retained Java model. Geometry edits rebuild, styles retain, both resets rebuild and reproduce baseline bytes.",
+    "Native4 passes ten states, exact counts/settings, baseline raster bounds, real HOME/resume and cached MediaStore PNG save. Root verified source/staged/APK/runner/plan and every PNG hash.",
+    "Root inspected baseline, strokes, both concentrations and cells from native2; every native4 PNG is byte-identical to that inspected output. Full triangle coverage, vertex/edge concentration and colored cell transfer remain intact.",
+    "Root required counting all resumed version2 acknowledgments through final save and failure-safe diagnostic hooks. Native4 records exactly one cached acknowledgment followed by accepted v2-to-v3 edit. Special restoration path now only retries stale requests."
+  ],
+  "limits": [
+    "Native1 timed out after resume; exact historical cause is not proven. Redundant cached acknowledgment was removed and the current ordering is directly observed, not a proof about every scheduling interleaving. Earlier attempts remain preserved and unaccepted.",
+    "API33 emulator and actual Button.performClick callbacks only; no physical-touch, device-wide lifecycle guarantee, Java raster identity or source recreation claim.",
+    "Local package integration remains pending."
+  ]
+}

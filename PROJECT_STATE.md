@@ -1,5 +1,80 @@
 # Project state
 
+## Triangle native integration accepted; local packages next
+
+Native4 passed all ten Android GrainMarks states with exact settings/geometry/counts,
+full baseline dot envelope, one cached resume acknowledgment through save, accepted next
+edit, repeated reset and cached MediaStore PNG. Root verified source/staged/APK/runner/
+plan/image hashes; every native4 PNG equals previously root-inspected native2 output.
+Root reviewed removal of redundant special-draw acknowledgment, preservation of stale
+request retries and observer correction. Exact cause of native1 timeout remains unproven;
+records preserve that limit and all earlier attempts without calling them accepted.
+Evidence: android-grain-marks.json and triangle-android-native-root-review.json.
+
+Root also integrated previously reviewed p5 triangle core/native evidence after checking
+all immutable bindings and actual nine-composition plus quiet/save sequence. Both triangle
+catalog validation records now have core/native support on all four targets; no technique
+or source-recreation claims added. Catalog/reference checks and18 focused attestation/
+compatibility tests pass. Native4 is terminal; no shared executor pending.
+
+Java15 operations/15 starters; nine operations now have four-target core/native evidence,
+but only seven have completed all local distributions. Next CP5 packages, not new semantics.
+Luna quadrant_python_package owns only build_grain_marks_javascript.mjs and installation
+doc, adapting CP4 infrastructure with installed consumer/source geometry checks; no renders,
+acceptance or commits. Root owns Python/Android packaging and final integration.
+
+## Triangle package entrypoints integrated and pushed
+
+Commit573391f5 adds both triangle operations to JavaScript/Python root exports and the
+previously accepted quadrant operation to Python convenience exports. Root verified direct
+module identities in actual Node/Python imports. Two compatibility tests and23 focused
+attestation/source-bundle tests pass; catalog check passes. Historical reviews/evidence
+remain immutable through two explicitly authorized export transitions; no implementation
+source overlay or native-support expansion. Remote fetched1ahead/0behind, push completed.
+
+Terra independently revised Android GrainMarks to use only the Activity resume-cache
+acknowledgment; special draw still retries stale requested versions. Native3 passed10 states
+and traced resume-cache then accepted v2-to-v3 edit. This removes redundant callback ordering
+but does not prove native1 historical cause. Root found observer duplicate count stopped at
+awaitingPause=false, so required a count across the entire resumed version2 lifetime and
+failure-safe trace hooks. Terra triangle_python owns that bounded probe4/native4 followup;
+root is not rendering. Native3 terminal; no Android acceptance yet. Exports committed;
+Android drafts and this state are still pending the next integration checkpoint.
+
+## Android GrainMarks diagnostic run passes; acceptance held for intermittent stall
+
+Native2 passes ten states, full dot envelope, retained styles, both concentration modes,
+cell transfer, repeated reset, actual HOME/resume and cached MediaStore save. Root inspected
+five images and verified source/runner/plan/image hashes. Evidence is explicitly draft:
+evidence/conformance/android-grain-marks-draft.json. No native attestations or packages.
+Only observer assertions/state recording changed between native1 failure and native2 pass;
+production code is unchanged, so this is not evidence of a fixed lifecycle issue.
+Terra independently reviewed the ordering: two cached acknowledgment sources may interact;
+no deterministic defect established. Next diagnose acknowledgment/edit gates versus native
+restoration. Pinned PGraphics.restoreState temporarily enables looping, redraw() ignores
+requests while looping, and handleSpecialDraw skips normal post. Current override retries
+pending versions at restoration completion; inspect this route before any redesign.
+Native2 session28193 terminal exit0 and emulator stopped. Both attempts preserved.
+Java remains15/15 and seven complete four-target ports; later milestones remain open.
+
+## Android GrainMarks compiled; first native workflow failed after resume
+
+Root reviewed Terra Activity/builder and supplied native renderer, ten-state observer,
+runner and preregistered plan. Corrected observer generation leftovers and checked
+JSONException handling; saved filenames now use the current seed. Actual probe APK
+compiles at .work/examples/android-grain-marks-probe1 (build-result.json binds inputs).
+Native1 under shared500-second lock passed baseline coverage, two retained style edits
+and real pause/resume snapshot identity, then stalled before the next composition.
+Runner reached its210-second execution deadline and force-stopped the app; emulator
+session48576 is terminal exit1 with shutdown complete. No acceptance or catalog changes.
+Preserve .work/reproductions/android-grain-marks-native1, including native-last.json,
+result.json, activities.txt and logcat.txt. Foreground Activity was correct; root has not
+yet established whether the pending edit was lost during lifecycle redraw or the observer
+callback timing. Diagnose before a new attempt; do not relax workflow requirements.
+New GrainMarks files remain untracked drafts, not a shipped integration checkpoint.
+Next fix the post-resume edit stall, then native image review and batch exports/packages.
+Java remains15 operations/15 starters; seven complete four-target ports.
+
 ## GrainMarks Python model and native workflow accepted
 
 Root-reviewed Terra model matches actual Java for six complete compositions; root added
