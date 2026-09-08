@@ -6,6 +6,38 @@ Processing for Android, plus the complete PlacementMarks artist workflow on all
 three targets. Java reference implementation and accepted Java evidence are
 unchanged.
 
+## Current state on main (reconciled 2026-09-08)
+
+While this batch was in flight, root reviewed the work live from this checkout
+and integrated it into main byte-identically (see
+`design/port-batch-01-root-review.md` on main):
+
+- Worker commits `99110da5`, `688670b8`, `e04c165e` and the Android slice
+  (`a8681d8a` content) are in `origin/main`; every implementation file and
+  native evidence file here matches main byte-for-byte.
+- Root created its own accepted review records
+  (`evidence/conformance/placement-{p5js,py5,android-core}-root-review.json`,
+  `evidence/distribution/cp3-android-review.json`,
+  `evidence/reproductions/placement-marks-android/root-review.json`).
+- Current accepted support (main attestations): p5js, py5 and
+  processing-android all `conformant` (core) and `validated-scoped` (native);
+  the **technique** dimension remains `unvalidated` on main, pending root's
+  visual/technique review. The pre-verified technique rows and predicates in
+  `design/ports/batch-01-attestation-proposal.md` are available input for that
+  decision; root may also re-derive them independently.
+- Root additionally shipped a standalone Android package
+  (`tools/build_placement_marks_android.py`,
+  `docs/installing-placement-marks.md`) and npm/Python consumer packaging on
+  top of the same sources.
+
+This branch is therefore a work record, not an outstanding integration: the
+only content not already on main is `design/ports/` (this checkpoint, the
+attestation proposal, this handoff) and the two conformance reports under
+their singular names (main re-records them as
+`circle-placements-{javascript,python}.json` from the same runners). Nothing
+here should be merged over main; if root wants the proposal/handoff files
+retained in the repo, they can be cherry-picked from `6661c3f5`/`4f670fd1`.
+
 ## Binding
 
 - Baseline: `467eafd2d1fc9ea4492698f5763091a775eddbb1` (origin/main tip at
