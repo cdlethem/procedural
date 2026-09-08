@@ -1,5 +1,32 @@
 # Project state
 
+## Annular private study in flight
+
+Root registered evidence/parameter-experiments/annular-mesh/experiment.json: six bounded
+P3D views for width, depth, facets, recolor and arrangement; no defaults/ranges admitted.
+Terra agent /root/annular_study owns tools/diagnostics/annular/AnnularMeshStudy.java
+and ignored scratch only; pure indexed washer and manifold/normal checks first.
+Root owns experiment, future renderer, semantic review and admission. No render started.
+
+## C3 family review finds retained annular-mesh gap
+
+Root wrote design/capabilities/java-family-boundaries-cp27.md after rereading typography,
+branching, triangle-ring and annulus notes plus exact aros mesh source. Existing profile
+mesh cannot supply annular walls/closing faces; retain this as concrete unfinished
+capability, not an exclusion to declare completion. Next private bounded annular-form
+comparison before contract admission. Broader grammar, shaping and Voronoi remain
+unassessed/unsupported, not corpus-absence claims. No new rendering or support claim.
+
+## CP27 pushed; discovery corrections underway
+
+Main and origin/main verified at f32d1aad85ef8256f7af2871529bc049e276e43c.
+Root discovery audit found README still advertised Java0.25 and build guide Java0.28.
+Updated both against CP27 manifest/review (28 operations,32 workflows), linked composition
+guide, and distinguished pinned accepted source from subsequent development builds.
+These documentation corrections are after the accepted archive; no new archive acceptance
+is implied. Next complete family dispositions and public-method documentation review.
+Android ProfileMarks draft remains untouched; ports/Sol paused.
+
 ## CP27 final archive reconciled
 
 Pre-commit hash audit caught four documentation edits after root1 packaging. Root2

@@ -1,16 +1,22 @@
 # Build the Java library from source
 
-The source-bundle builder assembles Java0.28 from checked-in sources: 26 operations and
-29 editable workflows. LayerMarks adds partition content callbacks, image snippets, soft
-cutouts and two-input crossfades; MaskMarks reuses drawn alpha masks across images and marks. PlacementImageMarks adds explicit crop, fit and alignment before mask composition. The archive also includes source-derived Java reference
-pages for core and Processing adapter classes in `reference/index.html`.
+The accepted Java 0.30 baseline contains 28 operations and 32 editable workflows.
+Pin a checkout to `f32d1aad85ef8256f7af2871529bc049e276e43c` to reproduce that
+milestone's sources; its archive identity and validation scope are recorded in the
+[CP27 distribution review](../evidence/distribution/cp27-java-review.json).
+Building a later checkout includes its current source and documentation changes; the
+result is a development build until separately reviewed.
+
+Start with [the workflow chooser](choosing-java-workflow.md), then use
+[the composition guide](composing-java-effects.md) to combine region callbacks, image
+snippets, masks, image-derived controls and filtering. The archive includes source-derived
+Java reference pages for core and Processing adapter classes in `reference/index.html`.
 Build reports record assembly; distribution acceptance requires a separate root review.
-The prior Java0.27 review remains in `evidence/distribution/cp24-java-review.json`.
 
 Supply Python 3.11 or newer, a JDK supporting `javac --release 8`, the audited
 Processing 4.5.6 `core.jar`, the accepted GlyphMarks DejaVu Sans font,
 and its complete license notice. Fonts and toolchains are external inputs, not tracked
-project assets. The font is needed to preserve the complete29-starter bundle; it is not
+project assets. The font is needed to preserve the complete starter bundle; it is not
 silently omitted or replaced by a system fallback.
 
 ```sh

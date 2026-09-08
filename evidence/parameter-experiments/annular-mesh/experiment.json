@@ -1,0 +1,73 @@
+{
+  "id": "annular-mesh",
+  "status": "planned",
+  "question": "Does a minimal retained annular mesh give independent useful width/depth/facet edits and reusable face styling without a general closed-meridian API?",
+  "decision": "Select minimal annular boundary or reopen broader profile comparison; no public admission or recommended ranges yet",
+  "hypothesis": "Inner radius controls hole/band width independently of depth; retained indexed faces and normals suffice for both a single washer and an arrangement.",
+  "source_sketches": [
+    "2017/Generativos/aros"
+  ],
+  "provenance": [
+    "design/capabilities/java-family-boundaries-cp27.md",
+    "design/capabilities/cp7-profile-neighbour-boundaries.md"
+  ],
+  "parameter": {
+    "name": "inner radius, axial extent, angular slices",
+    "default": null,
+    "unit": "caller distance and integer slice count"
+  },
+  "baseline": {
+    "renderer": "P3D",
+    "size": [
+      640,
+      640
+    ],
+    "pixel_density": 1,
+    "randomness": "none",
+    "outer_radius": 150,
+    "inner_radius": 110,
+    "bottom_z": -15,
+    "top_z": 15,
+    "slices": 48,
+    "projection": "orthographic",
+    "object_transform": "translate(320,320,0), rotateX(0.9), rotateY(0.3)",
+    "lighting": "lights() with flat per-triangle normals",
+    "output": ".work/annular-study/native"
+  },
+  "values": [
+    {
+      "id": "baseline"
+    },
+    {
+      "id": "wide",
+      "inner_radius": 60
+    },
+    {
+      "id": "deep",
+      "bottom_z": -45,
+      "top_z": 45,
+      "coupling": "one centered total-depth edit"
+    },
+    {
+      "id": "facets",
+      "slices": 12
+    },
+    {
+      "id": "recolor",
+      "change": "face-kind palette only, same retained geometry"
+    },
+    {
+      "id": "arrangement",
+      "change": "same retained baseline mesh drawn three times with explicit transforms; composition transfer, not isolated parameter experiment"
+    }
+  ],
+  "comparison": "Inspect all six saved views; compute pixel differences against baseline only for four single-control variants. Topology checks are separate from visual acceptance.",
+  "constraints": [
+    "At most six successful views and two failed attempts; preserve every attempt.",
+    "No upstream code copied or source modified.",
+    "One shared machine render lease via tools/with_native_render_lock.py.",
+    "No public operation, defaults, useful ranges, port support or reproduction claim from this study.",
+    "Root checks closed manifold edge orientation and normals before rendering; actual P3D density1 required."
+  ],
+  "results": []
+}
