@@ -1,0 +1,800 @@
+{
+  "format": "procedurals.recipe",
+  "version": "0.1.0",
+  "status": "draft",
+  "parameters": {
+    "seed": 42,
+    "steps": 2000,
+    "distance": 0.4,
+    "markLength": 12,
+    "trace": false,
+    "colors": [
+      3252561,
+      16754462,
+      329804,
+      14566968,
+      4046263
+    ]
+  },
+  "operations": [
+    {
+      "id": "layout.regular-grid",
+      "version": "0.1.0"
+    },
+    {
+      "id": "path.gradient-trace-2d",
+      "version": "0.1.0"
+    },
+    {
+      "id": "color.cyclic-palette",
+      "version": "0.1.0"
+    }
+  ],
+  "drawing": {
+    "id": "drawing.fresh-raster-2d",
+    "version": "0.1.0"
+  },
+  "environment": {
+    "kind": "record",
+    "fields": [
+      {
+        "name": "width",
+        "value": {
+          "kind": "literal",
+          "value": 640
+        }
+      },
+      {
+        "name": "height",
+        "value": {
+          "kind": "literal",
+          "value": 640
+        }
+      },
+      {
+        "name": "density",
+        "value": {
+          "kind": "literal",
+          "value": 1
+        }
+      },
+      {
+        "name": "background",
+        "value": {
+          "kind": "literal",
+          "value": 15525850
+        }
+      }
+    ]
+  },
+  "retain": [
+    {
+      "name": "starts",
+      "value": {
+        "kind": "construct",
+        "operation": "layout.regular-grid",
+        "input": {
+          "kind": "record",
+          "fields": [
+            {
+              "name": "origin",
+              "value": {
+                "kind": "array",
+                "items": [
+                  {
+                    "kind": "literal",
+                    "value": 60
+                  },
+                  {
+                    "kind": "literal",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            {
+              "name": "spacing",
+              "value": {
+                "kind": "array",
+                "items": [
+                  {
+                    "kind": "literal",
+                    "value": 104
+                  },
+                  {
+                    "kind": "literal",
+                    "value": 160
+                  }
+                ]
+              }
+            },
+            {
+              "name": "columns",
+              "value": {
+                "kind": "literal",
+                "value": 6
+              }
+            },
+            {
+              "name": "rows",
+              "value": {
+                "kind": "literal",
+                "value": 4
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "paths",
+      "value": {
+        "kind": "map",
+        "items": {
+          "kind": "range",
+          "start": {
+            "kind": "literal",
+            "value": 0
+          },
+          "stop": {
+            "kind": "literal",
+            "value": 24
+          },
+          "step": {
+            "kind": "literal",
+            "value": 1
+          }
+        },
+        "as": "startIndex",
+        "indexAs": "pathIndex",
+        "value": {
+          "kind": "construct",
+          "operation": "path.gradient-trace-2d",
+          "input": {
+            "kind": "record",
+            "fields": [
+              {
+                "name": "field",
+                "value": {
+                  "kind": "record",
+                  "fields": [
+                    {
+                      "name": "seed",
+                      "value": {
+                        "kind": "get",
+                        "value": {
+                          "kind": "ref",
+                          "name": "params"
+                        },
+                        "key": "seed"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "start",
+                "value": {
+                  "kind": "query",
+                  "instance": {
+                    "kind": "ref",
+                    "name": "starts"
+                  },
+                  "port": "point",
+                  "input": {
+                    "kind": "record",
+                    "fields": [
+                      {
+                        "name": "index",
+                        "value": {
+                          "kind": "ref",
+                          "name": "startIndex"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "name": "steps",
+                "value": {
+                  "kind": "get",
+                  "value": {
+                    "kind": "ref",
+                    "name": "params"
+                  },
+                  "key": "steps"
+                }
+              },
+              {
+                "name": "stepDistance",
+                "value": {
+                  "kind": "get",
+                  "value": {
+                    "kind": "ref",
+                    "name": "params"
+                  },
+                  "key": "distance"
+                }
+              },
+              {
+                "name": "fieldScale",
+                "value": {
+                  "kind": "literal",
+                  "value": 0.002
+                }
+              },
+              {
+                "name": "fieldOffset",
+                "value": {
+                  "kind": "array",
+                  "items": [
+                    {
+                      "kind": "literal",
+                      "value": 0
+                    },
+                    {
+                      "kind": "literal",
+                      "value": 0
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "angleBase",
+                "value": {
+                  "kind": "literal",
+                  "value": -20
+                }
+              },
+              {
+                "name": "angleScale",
+                "value": {
+                  "kind": "literal",
+                  "value": 40
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "frame": [
+    {
+      "kind": "bind",
+      "name": "palette",
+      "value": {
+        "kind": "construct",
+        "operation": "color.cyclic-palette",
+        "input": {
+          "kind": "record",
+          "fields": [
+            {
+              "name": "colors",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "colors"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "for",
+      "items": {
+        "kind": "ref",
+        "name": "paths"
+      },
+      "as": "path",
+      "indexAs": "pathIndex",
+      "body": [
+        {
+          "kind": "bind",
+          "name": "pathValues",
+          "value": {
+            "kind": "values",
+            "instance": {
+              "kind": "ref",
+              "name": "path"
+            }
+          }
+        },
+        {
+          "kind": "bind",
+          "name": "color",
+          "value": {
+            "kind": "query",
+            "instance": {
+              "kind": "ref",
+              "name": "palette"
+            },
+            "port": "sample",
+            "input": {
+              "kind": "math",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "math",
+                  "op": "rem",
+                  "args": [
+                    {
+                      "kind": "ref",
+                      "name": "pathIndex"
+                    },
+                    {
+                      "kind": "math",
+                      "op": "length",
+                      "args": [
+                        {
+                          "kind": "get",
+                          "value": {
+                            "kind": "ref",
+                            "name": "params"
+                          },
+                          "key": "colors"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "math",
+                  "op": "length",
+                  "args": [
+                    {
+                      "kind": "get",
+                      "value": {
+                        "kind": "ref",
+                        "name": "params"
+                      },
+                      "key": "colors"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "kind": "for",
+          "items": {
+            "kind": "range",
+            "start": {
+              "kind": "literal",
+              "value": 0
+            },
+            "stop": {
+              "kind": "math",
+              "op": "length",
+              "args": [
+                {
+                  "kind": "get",
+                  "value": {
+                    "kind": "ref",
+                    "name": "pathValues"
+                  },
+                  "key": "headings"
+                }
+              ]
+            },
+            "step": {
+              "kind": "if",
+              "condition": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "trace"
+              },
+              "then": {
+                "kind": "literal",
+                "value": 1
+              },
+              "else": {
+                "kind": "literal",
+                "value": 4
+              }
+            }
+          },
+          "as": "stepIndex",
+          "indexAs": "drawIndex",
+          "body": [
+            {
+              "kind": "bind",
+              "name": "endpoint",
+              "value": {
+                "kind": "index",
+                "value": {
+                  "kind": "get",
+                  "value": {
+                    "kind": "ref",
+                    "name": "pathValues"
+                  },
+                  "key": "positions"
+                },
+                "index": {
+                  "kind": "math",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "ref",
+                      "name": "stepIndex"
+                    },
+                    {
+                      "kind": "literal",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "kind": "when",
+              "condition": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "trace"
+              },
+              "body": [
+                {
+                  "kind": "emit",
+                  "value": {
+                    "kind": "record",
+                    "fields": [
+                      {
+                        "name": "kind",
+                        "value": {
+                          "kind": "literal",
+                          "value": "segment2"
+                        }
+                      },
+                      {
+                        "name": "from",
+                        "value": {
+                          "kind": "index",
+                          "value": {
+                            "kind": "get",
+                            "value": {
+                              "kind": "ref",
+                              "name": "pathValues"
+                            },
+                            "key": "positions"
+                          },
+                          "index": {
+                            "kind": "ref",
+                            "name": "stepIndex"
+                          }
+                        }
+                      },
+                      {
+                        "name": "to",
+                        "value": {
+                          "kind": "ref",
+                          "name": "endpoint"
+                        }
+                      },
+                      {
+                        "name": "rgb",
+                        "value": {
+                          "kind": "ref",
+                          "name": "color"
+                        }
+                      },
+                      {
+                        "name": "opacity8",
+                        "value": {
+                          "kind": "literal",
+                          "value": 150
+                        }
+                      },
+                      {
+                        "name": "width",
+                        "value": {
+                          "kind": "literal",
+                          "value": 1
+                        }
+                      },
+                      {
+                        "name": "cap",
+                        "value": {
+                          "kind": "literal",
+                          "value": "round"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "when",
+              "condition": {
+                "kind": "if",
+                "condition": {
+                  "kind": "get",
+                  "value": {
+                    "kind": "ref",
+                    "name": "params"
+                  },
+                  "key": "trace"
+                },
+                "then": {
+                  "kind": "literal",
+                  "value": false
+                },
+                "else": {
+                  "kind": "literal",
+                  "value": true
+                }
+              },
+              "body": [
+                {
+                  "kind": "bind",
+                  "name": "perpendicular",
+                  "value": {
+                    "kind": "math",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "index",
+                        "value": {
+                          "kind": "get",
+                          "value": {
+                            "kind": "ref",
+                            "name": "pathValues"
+                          },
+                          "key": "headings"
+                        },
+                        "index": {
+                          "kind": "ref",
+                          "name": "stepIndex"
+                        }
+                      },
+                      {
+                        "kind": "math",
+                        "op": "div",
+                        "args": [
+                          {
+                            "kind": "literal",
+                            "value": 3.141592653589793
+                          },
+                          {
+                            "kind": "literal",
+                            "value": 2
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "kind": "bind",
+                  "name": "half",
+                  "value": {
+                    "kind": "math",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "get",
+                        "value": {
+                          "kind": "ref",
+                          "name": "params"
+                        },
+                        "key": "markLength"
+                      },
+                      {
+                        "kind": "literal",
+                        "value": 0.5
+                      }
+                    ]
+                  }
+                },
+                {
+                  "kind": "bind",
+                  "name": "dx",
+                  "value": {
+                    "kind": "math",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "ref",
+                        "name": "half"
+                      },
+                      {
+                        "kind": "math",
+                        "op": "cos",
+                        "args": [
+                          {
+                            "kind": "ref",
+                            "name": "perpendicular"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "kind": "bind",
+                  "name": "dy",
+                  "value": {
+                    "kind": "math",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "ref",
+                        "name": "half"
+                      },
+                      {
+                        "kind": "math",
+                        "op": "sin",
+                        "args": [
+                          {
+                            "kind": "ref",
+                            "name": "perpendicular"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "kind": "emit",
+                  "value": {
+                    "kind": "record",
+                    "fields": [
+                      {
+                        "name": "kind",
+                        "value": {
+                          "kind": "literal",
+                          "value": "segment2"
+                        }
+                      },
+                      {
+                        "name": "from",
+                        "value": {
+                          "kind": "array",
+                          "items": [
+                            {
+                              "kind": "math",
+                              "op": "sub",
+                              "args": [
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "endpoint"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 0
+                                  }
+                                },
+                                {
+                                  "kind": "ref",
+                                  "name": "dx"
+                                }
+                              ]
+                            },
+                            {
+                              "kind": "math",
+                              "op": "sub",
+                              "args": [
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "endpoint"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 1
+                                  }
+                                },
+                                {
+                                  "kind": "ref",
+                                  "name": "dy"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "to",
+                        "value": {
+                          "kind": "array",
+                          "items": [
+                            {
+                              "kind": "math",
+                              "op": "add",
+                              "args": [
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "endpoint"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 0
+                                  }
+                                },
+                                {
+                                  "kind": "ref",
+                                  "name": "dx"
+                                }
+                              ]
+                            },
+                            {
+                              "kind": "math",
+                              "op": "add",
+                              "args": [
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "endpoint"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 1
+                                  }
+                                },
+                                {
+                                  "kind": "ref",
+                                  "name": "dy"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "rgb",
+                        "value": {
+                          "kind": "ref",
+                          "name": "color"
+                        }
+                      },
+                      {
+                        "name": "opacity8",
+                        "value": {
+                          "kind": "literal",
+                          "value": 150
+                        }
+                      },
+                      {
+                        "name": "width",
+                        "value": {
+                          "kind": "literal",
+                          "value": 1
+                        }
+                      },
+                      {
+                        "name": "cap",
+                        "value": {
+                          "kind": "literal",
+                          "value": "round"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

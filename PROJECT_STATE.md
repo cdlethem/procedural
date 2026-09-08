@@ -1,5 +1,17 @@
 # Project state
 
+## Complete FieldMarks and PathMarks recipe drafts mapped
+
+Prior interrupted work made progress: root wrote FieldMarks draft and Terra completed
+PathMarks draft. Root reviewed source composition order and exact palette remainder, then
+factored PathMarks endpoint/trig computations into branch-local bindings. Both pass schema
+and scratch lexical reference/shadow checks; five draft grammar tests now include them.
+Files design/recipes/examples/*.draft.json remain explicitly unaccepted execution drafts.
+README there records FieldMarks pure-query scheduling change, PathMarks unculled stream
+scope and JSON verbosity. No native render or operation count/support change.
+Next freeze dynamic type/error/resource rules and catalog-owned execution metadata, create
+the recipe skill, then implement evaluator and compare full commands plus edits. Goal active.
+
 ## Recipe grammar and binding drafts implemented (D3)
 
 Previous turn pushed architectural direction 467eafd2. Root specified tagged expressions,

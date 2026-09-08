@@ -1,0 +1,1211 @@
+{
+  "format": "procedurals.recipe",
+  "version": "0.1.0",
+  "status": "draft",
+  "parameters": {
+    "seed": 42,
+    "columns": 160,
+    "rows": 160,
+    "pitch": 4,
+    "maxLength": 16,
+    "bars": false,
+    "colors": [
+      3252561,
+      16754462,
+      329804,
+      14566968,
+      4046263
+    ]
+  },
+  "operations": [
+    {
+      "id": "layout.regular-grid",
+      "version": "0.1.0"
+    },
+    {
+      "id": "field.gradient-noise-2d-01",
+      "version": "0.1.0"
+    },
+    {
+      "id": "color.cyclic-palette",
+      "version": "0.1.0"
+    }
+  ],
+  "drawing": {
+    "id": "drawing.fresh-raster-2d",
+    "version": "0.1.0"
+  },
+  "environment": {
+    "kind": "literal",
+    "value": {
+      "width": 640,
+      "height": 640,
+      "density": 1,
+      "background": 15525850
+    }
+  },
+  "retain": [
+    {
+      "name": "grid",
+      "value": {
+        "kind": "construct",
+        "operation": "layout.regular-grid",
+        "input": {
+          "kind": "record",
+          "fields": [
+            {
+              "name": "origin",
+              "value": {
+                "kind": "array",
+                "items": [
+                  {
+                    "kind": "math",
+                    "op": "div",
+                    "args": [
+                      {
+                        "kind": "get",
+                        "value": {
+                          "kind": "ref",
+                          "name": "params"
+                        },
+                        "key": "pitch"
+                      },
+                      {
+                        "kind": "literal",
+                        "value": 2
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "math",
+                    "op": "div",
+                    "args": [
+                      {
+                        "kind": "get",
+                        "value": {
+                          "kind": "ref",
+                          "name": "params"
+                        },
+                        "key": "pitch"
+                      },
+                      {
+                        "kind": "literal",
+                        "value": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "spacing",
+              "value": {
+                "kind": "array",
+                "items": [
+                  {
+                    "kind": "get",
+                    "value": {
+                      "kind": "ref",
+                      "name": "params"
+                    },
+                    "key": "pitch"
+                  },
+                  {
+                    "kind": "get",
+                    "value": {
+                      "kind": "ref",
+                      "name": "params"
+                    },
+                    "key": "pitch"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "columns",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "columns"
+              }
+            },
+            {
+              "name": "rows",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "rows"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "field",
+      "value": {
+        "kind": "construct",
+        "operation": "field.gradient-noise-2d-01",
+        "input": {
+          "kind": "record",
+          "fields": [
+            {
+              "name": "seed",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "seed"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "points",
+      "value": {
+        "kind": "map",
+        "items": {
+          "kind": "range",
+          "start": {
+            "kind": "literal",
+            "value": 0
+          },
+          "stop": {
+            "kind": "math",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "columns"
+              },
+              {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "rows"
+              }
+            ]
+          },
+          "step": {
+            "kind": "literal",
+            "value": 1
+          }
+        },
+        "as": "pointIndex",
+        "indexAs": "pointOrdinal",
+        "value": {
+          "kind": "query",
+          "instance": {
+            "kind": "ref",
+            "name": "grid"
+          },
+          "port": "point",
+          "input": {
+            "kind": "record",
+            "fields": [
+              {
+                "name": "index",
+                "value": {
+                  "kind": "ref",
+                  "name": "pointIndex"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "marks",
+      "value": {
+        "kind": "map",
+        "items": {
+          "kind": "ref",
+          "name": "points"
+        },
+        "as": "point",
+        "indexAs": "markIndex",
+        "value": {
+          "kind": "record",
+          "fields": [
+            {
+              "name": "x",
+              "value": {
+                "kind": "index",
+                "value": {
+                  "kind": "ref",
+                  "name": "point"
+                },
+                "index": {
+                  "kind": "literal",
+                  "value": 0
+                }
+              }
+            },
+            {
+              "name": "y",
+              "value": {
+                "kind": "index",
+                "value": {
+                  "kind": "ref",
+                  "name": "point"
+                },
+                "index": {
+                  "kind": "literal",
+                  "value": 1
+                }
+              }
+            },
+            {
+              "name": "heading",
+              "value": {
+                "kind": "math",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "math",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "literal",
+                        "value": 4
+                      },
+                      {
+                        "kind": "literal",
+                        "value": 3.141592653589793
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "query",
+                    "instance": {
+                      "kind": "ref",
+                      "name": "field"
+                    },
+                    "port": "sample",
+                    "input": {
+                      "kind": "array",
+                      "items": [
+                        {
+                          "kind": "math",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "literal",
+                              "value": 17
+                            },
+                            {
+                              "kind": "math",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "point"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 0
+                                  }
+                                },
+                                {
+                                  "kind": "literal",
+                                  "value": 0.009
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "math",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "literal",
+                              "value": 17
+                            },
+                            {
+                              "kind": "math",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "point"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 1
+                                  }
+                                },
+                                {
+                                  "kind": "literal",
+                                  "value": 0.009
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "lengthFactor",
+              "value": {
+                "kind": "query",
+                "instance": {
+                  "kind": "ref",
+                  "name": "field"
+                },
+                "port": "sample",
+                "input": {
+                  "kind": "array",
+                  "items": [
+                    {
+                      "kind": "math",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "literal",
+                          "value": 113
+                        },
+                        {
+                          "kind": "math",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "index",
+                              "value": {
+                                "kind": "ref",
+                                "name": "point"
+                              },
+                              "index": {
+                                "kind": "literal",
+                                "value": 0
+                              }
+                            },
+                            {
+                              "kind": "literal",
+                              "value": 0.013
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "math",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "literal",
+                          "value": 113
+                        },
+                        {
+                          "kind": "math",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "index",
+                              "value": {
+                                "kind": "ref",
+                                "name": "point"
+                              },
+                              "index": {
+                                "kind": "literal",
+                                "value": 1
+                              }
+                            },
+                            {
+                              "kind": "literal",
+                              "value": 0.013
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "colourCycles",
+              "value": {
+                "kind": "math",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "literal",
+                    "value": 3
+                  },
+                  {
+                    "kind": "query",
+                    "instance": {
+                      "kind": "ref",
+                      "name": "field"
+                    },
+                    "port": "sample",
+                    "input": {
+                      "kind": "array",
+                      "items": [
+                        {
+                          "kind": "math",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "literal",
+                              "value": 271
+                            },
+                            {
+                              "kind": "math",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "point"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 0
+                                  }
+                                },
+                                {
+                                  "kind": "literal",
+                                  "value": 0.007
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "math",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "literal",
+                              "value": 271
+                            },
+                            {
+                              "kind": "math",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "index",
+                                  "value": {
+                                    "kind": "ref",
+                                    "name": "point"
+                                  },
+                                  "index": {
+                                    "kind": "literal",
+                                    "value": 1
+                                  }
+                                },
+                                {
+                                  "kind": "literal",
+                                  "value": 0.007
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "frame": [
+    {
+      "kind": "bind",
+      "name": "palette",
+      "value": {
+        "kind": "construct",
+        "operation": "color.cyclic-palette",
+        "input": {
+          "kind": "record",
+          "fields": [
+            {
+              "name": "colors",
+              "value": {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "colors"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "kind": "for",
+      "items": {
+        "kind": "ref",
+        "name": "marks"
+      },
+      "as": "mark",
+      "indexAs": "frameIndex",
+      "body": [
+        {
+          "kind": "bind",
+          "name": "length",
+          "value": {
+            "kind": "math",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "params"
+                },
+                "key": "maxLength"
+              },
+              {
+                "kind": "get",
+                "value": {
+                  "kind": "ref",
+                  "name": "mark"
+                },
+                "key": "lengthFactor"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "when",
+          "condition": {
+            "kind": "if",
+            "condition": {
+              "kind": "math",
+              "op": "eq",
+              "args": [
+                {
+                  "kind": "ref",
+                  "name": "length"
+                },
+                {
+                  "kind": "literal",
+                  "value": 0
+                }
+              ]
+            },
+            "then": {
+              "kind": "literal",
+              "value": false
+            },
+            "else": {
+              "kind": "literal",
+              "value": true
+            }
+          },
+          "body": [
+            {
+              "kind": "bind",
+              "name": "rgb",
+              "value": {
+                "kind": "query",
+                "instance": {
+                  "kind": "ref",
+                  "name": "palette"
+                },
+                "port": "sample",
+                "input": {
+                  "kind": "get",
+                  "value": {
+                    "kind": "ref",
+                    "name": "mark"
+                  },
+                  "key": "colourCycles"
+                }
+              }
+            },
+            {
+              "kind": "bind",
+              "name": "cosine",
+              "value": {
+                "kind": "math",
+                "op": "cos",
+                "args": [
+                  {
+                    "kind": "get",
+                    "value": {
+                      "kind": "ref",
+                      "name": "mark"
+                    },
+                    "key": "heading"
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "bind",
+              "name": "sine",
+              "value": {
+                "kind": "math",
+                "op": "sin",
+                "args": [
+                  {
+                    "kind": "get",
+                    "value": {
+                      "kind": "ref",
+                      "name": "mark"
+                    },
+                    "key": "heading"
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "bind",
+              "name": "dx",
+              "value": {
+                "kind": "math",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "math",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "literal",
+                        "value": 0.5
+                      },
+                      {
+                        "kind": "ref",
+                        "name": "length"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ref",
+                    "name": "cosine"
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "bind",
+              "name": "dy",
+              "value": {
+                "kind": "math",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "math",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "literal",
+                        "value": 0.5
+                      },
+                      {
+                        "kind": "ref",
+                        "name": "length"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ref",
+                    "name": "sine"
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "bind",
+              "name": "nx",
+              "value": {
+                "kind": "math",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "math",
+                    "op": "neg",
+                    "args": [
+                      {
+                        "kind": "ref",
+                        "name": "sine"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "literal",
+                    "value": 1.25
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "bind",
+              "name": "ny",
+              "value": {
+                "kind": "math",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "ref",
+                    "name": "cosine"
+                  },
+                  {
+                    "kind": "literal",
+                    "value": 1.25
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "emit",
+              "value": {
+                "kind": "if",
+                "condition": {
+                  "kind": "get",
+                  "value": {
+                    "kind": "ref",
+                    "name": "params"
+                  },
+                  "key": "bars"
+                },
+                "then": {
+                  "kind": "record",
+                  "fields": [
+                    {
+                      "name": "kind",
+                      "value": {
+                        "kind": "literal",
+                        "value": "quad2"
+                      }
+                    },
+                    {
+                      "name": "vertices",
+                      "value": {
+                        "kind": "array",
+                        "items": [
+                          {
+                            "kind": "array",
+                            "items": [
+                              {
+                                "kind": "math",
+                                "op": "sub",
+                                "args": [
+                                  {
+                                    "kind": "math",
+                                    "op": "sub",
+                                    "args": [
+                                      {
+                                        "kind": "get",
+                                        "value": {
+                                          "kind": "ref",
+                                          "name": "mark"
+                                        },
+                                        "key": "x"
+                                      },
+                                      {
+                                        "kind": "ref",
+                                        "name": "dx"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ref",
+                                    "name": "nx"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "math",
+                                "op": "sub",
+                                "args": [
+                                  {
+                                    "kind": "math",
+                                    "op": "sub",
+                                    "args": [
+                                      {
+                                        "kind": "get",
+                                        "value": {
+                                          "kind": "ref",
+                                          "name": "mark"
+                                        },
+                                        "key": "y"
+                                      },
+                                      {
+                                        "kind": "ref",
+                                        "name": "dy"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ref",
+                                    "name": "ny"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "array",
+                            "items": [
+                              {
+                                "kind": "math",
+                                "op": "sub",
+                                "args": [
+                                  {
+                                    "kind": "math",
+                                    "op": "add",
+                                    "args": [
+                                      {
+                                        "kind": "get",
+                                        "value": {
+                                          "kind": "ref",
+                                          "name": "mark"
+                                        },
+                                        "key": "x"
+                                      },
+                                      {
+                                        "kind": "ref",
+                                        "name": "dx"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ref",
+                                    "name": "nx"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "math",
+                                "op": "sub",
+                                "args": [
+                                  {
+                                    "kind": "math",
+                                    "op": "add",
+                                    "args": [
+                                      {
+                                        "kind": "get",
+                                        "value": {
+                                          "kind": "ref",
+                                          "name": "mark"
+                                        },
+                                        "key": "y"
+                                      },
+                                      {
+                                        "kind": "ref",
+                                        "name": "dy"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ref",
+                                    "name": "ny"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "array",
+                            "items": [
+                              {
+                                "kind": "math",
+                                "op": "add",
+                                "args": [
+                                  {
+                                    "kind": "math",
+                                    "op": "add",
+                                    "args": [
+                                      {
+                                        "kind": "get",
+                                        "value": {
+                                          "kind": "ref",
+                                          "name": "mark"
+                                        },
+                                        "key": "x"
+                                      },
+                                      {
+                                        "kind": "ref",
+                                        "name": "dx"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ref",
+                                    "name": "nx"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "math",
+                                "op": "add",
+                                "args": [
+                                  {
+                                    "kind": "math",
+                                    "op": "add",
+                                    "args": [
+                                      {
+                                        "kind": "get",
+                                        "value": {
+                                          "kind": "ref",
+                                          "name": "mark"
+                                        },
+                                        "key": "y"
+                                      },
+                                      {
+                                        "kind": "ref",
+                                        "name": "dy"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ref",
+                                    "name": "ny"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "array",
+                            "items": [
+                              {
+                                "kind": "math",
+                                "op": "add",
+                                "args": [
+                                  {
+                                    "kind": "math",
+                                    "op": "sub",
+                                    "args": [
+                                      {
+                                        "kind": "get",
+                                        "value": {
+                                          "kind": "ref",
+                                          "name": "mark"
+                                        },
+                                        "key": "x"
+                                      },
+                                      {
+                                        "kind": "ref",
+                                        "name": "dx"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ref",
+                                    "name": "nx"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "math",
+                                "op": "add",
+                                "args": [
+                                  {
+                                    "kind": "math",
+                                    "op": "sub",
+                                    "args": [
+                                      {
+                                        "kind": "get",
+                                        "value": {
+                                          "kind": "ref",
+                                          "name": "mark"
+                                        },
+                                        "key": "y"
+                                      },
+                                      {
+                                        "kind": "ref",
+                                        "name": "dy"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ref",
+                                    "name": "ny"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "name": "rgb",
+                      "value": {
+                        "kind": "ref",
+                        "name": "rgb"
+                      }
+                    },
+                    {
+                      "name": "opacity8",
+                      "value": {
+                        "kind": "literal",
+                        "value": 180
+                      }
+                    }
+                  ]
+                },
+                "else": {
+                  "kind": "record",
+                  "fields": [
+                    {
+                      "name": "kind",
+                      "value": {
+                        "kind": "literal",
+                        "value": "segment2"
+                      }
+                    },
+                    {
+                      "name": "from",
+                      "value": {
+                        "kind": "array",
+                        "items": [
+                          {
+                            "kind": "math",
+                            "op": "sub",
+                            "args": [
+                              {
+                                "kind": "get",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "mark"
+                                },
+                                "key": "x"
+                              },
+                              {
+                                "kind": "ref",
+                                "name": "dx"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "math",
+                            "op": "sub",
+                            "args": [
+                              {
+                                "kind": "get",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "mark"
+                                },
+                                "key": "y"
+                              },
+                              {
+                                "kind": "ref",
+                                "name": "dy"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "name": "to",
+                      "value": {
+                        "kind": "array",
+                        "items": [
+                          {
+                            "kind": "math",
+                            "op": "add",
+                            "args": [
+                              {
+                                "kind": "get",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "mark"
+                                },
+                                "key": "x"
+                              },
+                              {
+                                "kind": "ref",
+                                "name": "dx"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "math",
+                            "op": "add",
+                            "args": [
+                              {
+                                "kind": "get",
+                                "value": {
+                                  "kind": "ref",
+                                  "name": "mark"
+                                },
+                                "key": "y"
+                              },
+                              {
+                                "kind": "ref",
+                                "name": "dy"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "name": "rgb",
+                      "value": {
+                        "kind": "ref",
+                        "name": "rgb"
+                      }
+                    },
+                    {
+                      "name": "opacity8",
+                      "value": {
+                        "kind": "literal",
+                        "value": 180
+                      }
+                    },
+                    {
+                      "name": "width",
+                      "value": {
+                        "kind": "literal",
+                        "value": 1
+                      }
+                    },
+                    {
+                      "name": "cap",
+                      "value": {
+                        "kind": "literal",
+                        "value": "round"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

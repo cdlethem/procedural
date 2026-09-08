@@ -46,6 +46,12 @@ class RecipeDraftSchemaTests(unittest.TestCase):
     def test_nested_retain_construct_query_for_and_when_are_grammar_valid(self):
         self.assert_valid(grammar_example())
 
+    def test_complete_composition_drafts_remain_grammar_valid(self):
+        for name in ("field-marks", "path-marks"):
+            with self.subTest(composition=name):
+                document = json.loads((ROOT / "design/recipes/examples" / (name + ".draft.json")).read_text())
+                self.assert_valid(document)
+
     def test_math_requires_exact_documented_arities(self):
         document = grammar_example()
         document["environment"] = {"kind": "math", "op": "add", "args": [literal(1)]}
