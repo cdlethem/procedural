@@ -1,0 +1,90 @@
+{
+  "id": "cp15-band-prototype",
+  "status": "reviewed-prototype",
+  "question": "Does bounded proposal/acceptance tracing produce a useful tolerance edit with existing portable noise, and transfer to an analytic scalar field?",
+  "decision": "retain-unbounded | internalize | reject",
+  "hypothesis": "A wider permitted scalar band changes path confinement while accepted-only retention keeps storage proportional to actual movement.",
+  "source_sketches": [
+    "2018/Generativos/venas"
+  ],
+  "parameter": {
+    "name": "tolerance",
+    "default": null,
+    "unit": "scalar field value"
+  },
+  "baseline": {
+    "path": ".work/cp15-band-prototype/noise-narrow.png",
+    "deterministic": true,
+    "renderer": "Java2D BufferedImage private experiment, not Processing acceptance"
+  },
+  "values": [
+    0.002,
+    0.008
+  ],
+  "comparison": "Fixed starts, per-path proposal seeds, field and style; inspect both renders and changed pixels. Separate radial-field transfer is a design test.",
+  "constraints": [
+    "96 walkers,2048 attempts each,640x640; three images total.",
+    "Four random draws per attempt; rejection changes heading only.",
+    "No public default or encouraged continuous range inferred.",
+    "Run under shared machine lease; artifacts remain ignored."
+  ],
+  "provenance": [
+    "design/capabilities/cp12-noise-band-evidence.md",
+    "survey/out/2018/Generativos/venas/notes.md"
+  ],
+  "decision_rule": "Continue toward admission only if both noise runs yield recognizable connected band-constrained strokes, the tolerance edit is visible, and radial transfer works with the same traversal. Record runtimes/accepted counts/memory; no universal runtime threshold. If sparse or immobile, diagnose one concrete cause before proposing another bounded experiment.",
+  "implementation": "Private independently specified Java prototype by Terra; existing GradientNoise2D01 replaces host noise; explicit xorshift32 and separate style/start streams replace Processing RNG.",
+  "implementation_sha256": {
+    "evidence/parameter-experiments/cp15-band-prototype/BandPrototype.java": "718a98c634e3d9225a950b4afa7d43ec89aba5e0a03dc91201cad08ed3f175e3",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288"
+  },
+  "runtime": "OpenJDK17.0.20.1, StrictMath sin/cos/hypot; Java2D BufferedImage; not Processing acceptance",
+  "results": [
+    {
+      "state": "noise-narrow",
+      "path": ".work/cp15-band-prototype/noise-narrow.png",
+      "sha256": "55d8e997d93ba6ef4eb47feb398dcfe348acd87ac6372e2961e03cb3f0bb683d",
+      "accepted": 67549,
+      "attempts": 196608,
+      "retained_coordinate_bytes": 1080784,
+      "max_band_error_rounded": 0.001999957,
+      "generation_ms_single_observation": 28.858,
+      "changed_pixel_fraction_vs_narrow": 0.0,
+      "mean_absolute_rgb_difference_vs_narrow": 0.0,
+      "root_observation": "Long thin winding lines and nested loop-like bands, with occasional dense small scribbles."
+    },
+    {
+      "state": "noise-wide",
+      "path": ".work/cp15-band-prototype/noise-wide.png",
+      "sha256": "de64dfd85de82dca6c5ba6eec66169a0a6d2105d38bddd4395c04bb4bb0b0b1b",
+      "accepted": 96768,
+      "attempts": 196608,
+      "retained_coordinate_bytes": 1548288,
+      "max_band_error_rounded": 0.007999996,
+      "generation_ms_single_observation": 18.203,
+      "changed_pixel_fraction_vs_narrow": 0.21437744140625,
+      "mean_absolute_rgb_difference_vs_narrow": 14.257652994791664,
+      "root_observation": "Thicker tangled strokes cluster along related bands; visible extent and path trajectories change."
+    },
+    {
+      "state": "radial",
+      "path": ".work/cp15-band-prototype/radial.png",
+      "sha256": "344d3e0e35291aaf4e6de93eceef8b02d90890efe50ef319ce887d771e5fbc5d",
+      "accepted": 62701,
+      "attempts": 196608,
+      "retained_coordinate_bytes": 1003216,
+      "max_band_error_rounded": 0.001999998,
+      "generation_ms_single_observation": 37.485,
+      "changed_pixel_fraction_vs_narrow": 0.218486328125,
+      "mean_absolute_rgb_difference_vs_narrow": 14.25023681640625,
+      "root_observation": "Concentric arcs at different radii, including some loop-like paths; no closed-loop guarantee."
+    }
+  ],
+  "limits": [
+    "Reported storage counts coordinate payload only; excludes objects, starts and temporary/replay arrays.",
+    "Timings are single observations without controlled warmup or benchmark repetitions.",
+    "Prototype renderer rounds positions to integer pixels and omits the segment from each original start to first acceptance; final public path must include its start.",
+    "Private xorshift stream and field callback are not the future public RNG or API.",
+    "Radial changes field family and is only a design transfer test, not a tolerance comparison."
+  ]
+}

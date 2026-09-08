@@ -1,6 +1,24 @@
 # Project state
 
-## CP14 accepted locally: Java0.17 StopRamp and RampMarks
+## CP15 prototype reviewed; noise-band operation admitted for contract
+
+Root reviewed all three private prototype images and source. Narrow/wide tolerance gives
+visible connected-versus-tangled band structure; radial transfer forms concentric arcs.
+Results and private source are preserved in evidence/parameter-experiments/cp15-band-prototype/.
+Root admits one scoped noise-band trace, not generic contours or analytic-field callbacks.
+Architecture and explicit remainder accounting: design/capabilities/cp15-band-boundary-review.md.
+Ledger venas#0 extraction is reviewed; contract-cluster structural check must pass before
+contract. No implementation/support count increment: Java remains17 operations/17 workflows.
+
+Next root freezes language-neutral semantics and analytic fixtures: existing noise descriptor,
+xoshiro/fdlibm, fixed nested-turn policy, exact strict band rejection, accepted-only vertices
+including start, work/output bounds and atomic errors. Then Terra implements bounded Java core.
+Native BandMarks must demonstrate tolerance edits and retained-path mark transfer; full source
+attempt count needs core cost measurement. No public contract or shipped operation yet.
+The prototype's integer raster rounding, omitted first segment and xorshift stream must not
+be promoted into the implementation. Ports and Sol remain paused; no worker/render remains live.
+
+## CP14 pushed: Java0.17 StopRamp and RampMarks
 
 Root accepted core, five-state JAVA2D edit/transfer/save workflow and extracted Java0.17
 source bundle at evidence/distribution/cp14-java-review.json. All17 extracted starters
@@ -10,7 +28,7 @@ passes with all eight images equal CP13. The first attempt correctly refused a h
 shared lease; the terminal refusal was retained and rerun after the other job completed.
 36 focused tests, catalog/reference and color.stop-ramp structural gate pass.
 
-17 operations/17 workflows are accepted locally; publish this integration checkpoint next.
+17 operations/17 workflows pushed to main at346d6f53.
 No original-recreation increment (still three). Ports and Sol stay paused; remaining work
 is in docs/porting-resume.md. No live worker or native process remains.
 Next Java batch should assess CP12 constrained walking or another concrete missing

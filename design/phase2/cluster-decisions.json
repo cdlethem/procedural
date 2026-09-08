@@ -19,17 +19,17 @@
   },
   "summary": {
     "dispositions": {
-      "keep": 27,
+      "keep": 28,
       "merge": 100,
       "reject": 18,
-      "review_required": 1789
+      "review_required": 1788
     },
     "statuses": {
       "blocked_data_quality": 5,
       "reviewed_data_gap": 1,
       "reviewed_defer": 197,
-      "reviewed_provisional": 181,
-      "unreviewed": 1550
+      "reviewed_provisional": 182,
+      "unreviewed": 1549
     }
   },
   "clusters": [
@@ -1908,6 +1908,21 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "id": "path.noise-band-trace-2d",
+      "status": "reviewed_provisional",
+      "reason": "Retained proposal acceptance against starting scalar level; not unconditional noise-heading integration or complete contour extraction.",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Existing noise descriptor; start/heading, seed, attempts, step distance, field scale/offset, tolerance and vertex cap.",
+        "outputs": "Immutable starting vertex and accepted vertices; attempt, accept and reject counts.",
+        "invariants": "Strict band acceptance; rejected proposals leave position unchanged but perturb heading; explicit private seeded policy; no canvas clamp, drawing or callback.",
+        "open_questions": [],
+        "review": "design/capabilities/cp15-band-boundary-review.md",
+        "reviewer": "root"
       }
     }
   ],
@@ -36803,16 +36818,42 @@
         "section_judgement": "contains_one_off_guidance",
         "excerpt": "- Generic core: the walker loop (lines 27-46) is a self-contained \"noise iso-contour tracer\" — parameterise scale, noise offset, tolerance, walker count, max steps, step jitter, and colour/alpha policy and it is reusable. - One-off art decisions: the 5-colour palette, alpha 90, dark background, and the \"propose in a randomly rotated direction\" steering (vs a gradient-based contour follower). The unused `getColor` lerp helpers are dead code. - Clean parameter object: `{noiseScale, noiseO"
       },
-      "disposition": "review_required",
-      "status": "unreviewed",
-      "reason": "No computation-level adjudication has been recorded.",
+      "disposition": "keep",
+      "status": "reviewed_provisional",
+      "reason": "Extract band proposal/acceptance traversal after positive bounded prototype. Noise/RNG independently specified; source scene and generalized contour extraction excluded.",
       "triage": {
         "cluster_id": "review.unresolved-computation",
         "disposition": "review_required",
         "status": "needs_note_reading",
         "reason": "no reviewed computation match met both handle and signature/note evidence"
       },
-      "evidence_sha256": "f7fcca26b72ce6fbc532247d2b6e4df6c3b767743f8407d190ca251e04b0a94d"
+      "evidence_sha256": "f7fcca26b72ce6fbc532247d2b6e4df6c3b767743f8407d190ca251e04b0a94d",
+      "cluster_id": "path.noise-band-trace-2d",
+      "decision_audit": {
+        "status": "verified",
+        "scope": "component_extraction",
+        "computation": "Attempt-bounded connected path near its starting scalar value, with accepted/rejected heading transitions.",
+        "remainder": [
+          {
+            "component": "Random start placement,1000 walkers,colors,alpha,background and direct line drawing",
+            "disposition": "recipe",
+            "reason": "Caller composition over retained single paths; no scene monolith."
+          },
+          {
+            "component": "Processing global RNG/noise and source insertion into drawing lifecycle",
+            "disposition": "out_of_scope",
+            "reason": "Existing portable noise and explicit private stream replace host state; no source replay claim."
+          },
+          {
+            "component": "Alternative gradient contour following,analytic field callback,closed contours and collision avoidance",
+            "disposition": "out_of_scope",
+            "reason": "Neither the selected computation nor its scoped contract guarantees these algorithms."
+          }
+        ],
+        "reviewer": "root",
+        "review": "design/capabilities/cp15-band-boundary-review.md"
+      },
+      "review_basis": "out/2018/Generativos/venas/notes.md#modularisation-notes"
     },
     "2018/Generativos/virus#0": {
       "sketch": "2018/Generativos/virus",
