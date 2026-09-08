@@ -15,15 +15,17 @@ Those scoped records do not establish Android or completed shared radial support
 
 ## Java buildout additions to the deferred queue
 
-Latest accepted Java baseline: `4d61438862d4f93fa617f228ac44424e64db26e7`
-(Java0.18, 18 operations and 18 workflows). The earlier `88ac268d` records the scheduling-change checkpoint.
+Latest accepted Java library baseline: `5197dc6e2d4754699bbafb2cd1e5418a75ab9f08`
+(Java0.19, 19 operations and 19 workflows). Repository tooling checkpoint `1dabca75`
+adds seeded JAVA2D rendering and sweeps without changing the accepted library archive.
+The earlier `88ac268d` records the scheduling-change checkpoint.
 RasterRemap2D/WarpMarks and StopRamp/RampMarks are accepted Java additions awaiting ports.
 CP15 adds NoiseBandPath2D/BandMarks; use its explicit distribution review and a pushed
 revision containing accepted implementation, not the earlier prototype-only checkpoint.
 
 Keep deferred work in this order: finish Android ProfileMarks lifecycle validation and
 root integration; then port accepted Delaunay, target-spring, occupied-lattice, line-pool,
-raster, positioned-ramp and noise-band capabilities in bounded batches. NoiseBandPath2D,
+raster, positioned-ramp, noise-band and closed-spline capabilities in bounded batches. NoiseBandPath2D,
 like LinePool2D, requires exact elementary math for branch-sensitive decisions. Preserve
 shared fixtures and contracts; workers must not author root acceptance records. No port
 task is required to finish the current Java milestone.

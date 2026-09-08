@@ -1,5 +1,16 @@
 # Project state
 
+## Java functionality refocus — CP17 selected for investigation
+
+Maintainer reiterated new Java functionality over port integration. Deferred work and the
+correct Java0.19 baseline SHA are recorded in docs/porting-resume.md. Ports/Sol remain paused.
+Root selected irregular binary rectangle partitioning after comparing the existing equal
+quadrants with poop and barab evidence; see design/capabilities/cp17-rectangle-partition-direction.md.
+Next resolve the bounded layout contract, then implement a reusable Java operation and panel
+workflow. No contract or new functionality is accepted yet; still19 operations/19 workflows.
+The read-only family inventory is complete; technique-tag gaps do not establish missing APIs.
+No need to extend renderer tooling or reopen port integration before this Java work.
+
 ## Seeded JAVA2D render/sweep helper accepted
 
 Repository helper tools/render_java.py compiles a private sketch snapshot against an explicit
