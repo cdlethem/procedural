@@ -1,0 +1,284 @@
+{
+  "status": "accepted-investigation-with-architecture-course-correction",
+  "owner": "root",
+  "result_path": "evidence/parameter-experiments/cp6-branches/result.json",
+  "result_sha256": "f272651f0039e41de32f56398509acaa1421318bdd4babda350255cbaf31dba3",
+  "visual_review": {
+    "status": "completed",
+    "images": [
+      {
+        "path": ".work/experiments/cp6-branches/base-fixed-spread.png",
+        "sha256": "ac1c709376929828db14ad38468f2c2728294d2df6a15d04748e21c7a83a7385"
+      },
+      {
+        "path": ".work/experiments/cp6-branches/narrowing-spread.png",
+        "sha256": "0cd09f6ced037f7ab47183c2dd7a1702d997cd9d42506e57aa37b903507717c6"
+      },
+      {
+        "path": ".work/experiments/cp6-branches/depth-6.png",
+        "sha256": "4a9f51b5e5e98571c9f126939f85b7db3dec98a1b8cdbb63d0a6e776e81537ea"
+      },
+      {
+        "path": ".work/experiments/cp6-branches/wider-spread-0.9.png",
+        "sha256": "1c99b6c38a8bef532babcacbd29e11c4de6d3b694b85d3e3077664426e80c272"
+      },
+      {
+        "path": ".work/experiments/cp6-branches/recolour-base.png",
+        "sha256": "615eb301dc053efad1a1276a9a899738573bc7d448d6ebaa56c91228ee1790d4"
+      },
+      {
+        "path": ".work/experiments/cp6-branches/tapered-terminal-base.png",
+        "sha256": "de14c555e1bb9c7f3e2a1c8f7e078a16d76f0c8d50b8b93bff3e3fb0eef4450b"
+      },
+      {
+        "path": ".work/experiments/cp6-branches/binary-slots.png",
+        "sha256": "980601348b656e43c7c8b87891e7afa3706ae2d7d823a1709c886aefbed91d06"
+      },
+      {
+        "path": ".work/experiments/cp6-branches/circle-transfer.png",
+        "sha256": "0097567853e1d14011223d697ed15ad50a924e98694888e0ee7b1f8e128b8786"
+      }
+    ],
+    "observations": {
+      "base-fixed-spread": "Clear thin branching structure, two main side canopies with many small terminal forks.",
+      "narrowing-spread": "Same branching pattern but later twigs align more tightly; generation-dependent angular control is visible without changing topology.",
+      "depth-6": "Fewer total segments but later branch layout is also rearranged, including the upper silhouette. This is shared DFS random-stream drift, not a clean prune of the baseline.",
+      "wider-spread-0.9": "Much wider, more horizontal canopy; geometry remains inside the canvas in this case.",
+      "recolour-base": "Early branches remain muted while tips become coral; generation attributes make independent colour styling useful.",
+      "tapered-terminal-base": "Thicker trunk and tapering limbs read clearly; coral terminal dots include early-death tips while preserving the exact baseline geometry.",
+      "binary-slots": "Narrow upright spray; changing slot count/rule produces a substantially different idiom with the same retained expansion/drawing structure.",
+      "circle-transfer": "Seven independent structures at placement-derived roots, including one bare stem; the same branch kernel transfers successfully. Root separation does not imply separated canopies."
+    }
+  },
+  "evidence": {
+    "profiles": [
+      {
+        "id": "base-fixed-spread",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "d4696d21a4fcbb4786725220b762a8f2195d11e6fd66e8c34ff41f2f8cca49ce",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          197.61624000949033,
+          252.35338492832818,
+          490.0805493521112,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "narrowing-spread",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "16381cf5624d285b1814a3239828b29ffc2cb71c221bf7b259c5a22d04232e86",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          203.70686140499936,
+          249.8230154572211,
+          485.707057976289,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "depth-6",
+        "segment_count": 76,
+        "root_count": 1,
+        "geometry_sha256": "cdc8d115a41d06a502010331b32f659dd2e4796beb3d56adc881d5ca6d7f05b5",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          213.34561834320442,
+          245.46223859442475,
+          475.65241185744264,
+          590.0
+        ],
+        "child_count_histogram": [
+          34,
+          17,
+          17,
+          8
+        ],
+        "early_terminal_count": 2,
+        "max_generation": 5,
+        "expected_max_generation": 5,
+        "node_budget": 5000,
+        "random_draws": 283,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "wider-spread-0.9",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "197a6b28f6bef98b62a885d3189d489160c7185ea4f9398ab9a40766fb51e7cc",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          131.41546900255202,
+          267.7743315470099,
+          538.7722222454051,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "recolour-base",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "d4696d21a4fcbb4786725220b762a8f2195d11e6fd66e8c34ff41f2f8cca49ce",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          197.61624000949033,
+          252.35338492832818,
+          490.0805493521112,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "generation-colours",
+        "style_reuses_exact_base_object": true
+      },
+      {
+        "id": "tapered-terminal-base",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "d4696d21a4fcbb4786725220b762a8f2195d11e6fd66e8c34ff41f2f8cca49ce",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          197.61624000949033,
+          252.35338492832818,
+          490.0805493521112,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "tapered-lines-terminal-dots",
+        "style_reuses_exact_base_object": true
+      },
+      {
+        "id": "binary-slots",
+        "segment_count": 97,
+        "root_count": 1,
+        "geometry_sha256": "0f818cccec08d1f4de159a1ac9115c99e3fdb593775887fcdb662446090d74ad",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          293.3628066527419,
+          226.5400239416735,
+          364.1754507206701,
+          590.0
+        ],
+        "child_count_histogram": [
+          35,
+          28,
+          34,
+          0
+        ],
+        "early_terminal_count": 2,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 321,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "circle-transfer",
+        "segment_count": 160,
+        "root_count": 7,
+        "geometry_sha256": "f21ba9cbe7d5818e47dcb9a53319c7cb5c92476b737943160154e51f59a0ee27",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          164.87562304856763,
+          157.8583020055692,
+          568.2886465398875,
+          530.3319323062897
+        ],
+        "child_count_histogram": [
+          80,
+          22,
+          43,
+          15
+        ],
+        "early_terminal_count": 4,
+        "max_generation": 4,
+        "expected_max_generation": 4,
+        "node_budget": 5000,
+        "random_draws": 565,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      }
+    ],
+    "generated_segments": 723,
+    "drawn_segments": 983,
+    "attempts": 1,
+    "stderr": ""
+  },
+  "decision": "Retained endpoint branching earns a public-contract investigation; prefer breadth-first expansion to preserve existing geometry when appending generations. Prove that changed traversal with a no-render diagnostic before contract freeze.",
+  "limitations": [
+    "PrivateJavaRandom.nextFloat law and DFSordering are not public semantics.",
+    "No source-image reproduction or recommended parameter ranges.",
+    "Generation-dependent spread is visibly useful here, but does not establish a universal recommended schedule or scalar default.",
+    "Childcount/terminal status of previous leaves is expected to change when new generations are appended; geometry-prefix should not be confused with complete-output-prefix."
+  ]
+}

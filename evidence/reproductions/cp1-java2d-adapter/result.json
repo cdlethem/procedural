@@ -1,0 +1,90 @@
+{
+  "scope": "CP1 adapter edit/transfer only; native profile probes and other hosts remain separate",
+  "input_sha256": {
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "2d4d9c9e6e749359c0b9c230e68af5cb00ded0b2e4adda604e1d99a010d40bb6",
+    "packages/java/examples/FieldMarks/MarkField.java": "398dcf002dc35076f7af97e7a44f21a48a2ce6e10facf2d370dfac3b9e453ea7",
+    "tests/native/Java2DFieldMarks.java.in": "f83af4606061fc44a42d0d55cbb9a6fb01cb230196910d414c8a1ccdc51cd778",
+    "design/java2d-adapter-validation.md": "46cfff7866b124a5a0ecd674b1e557352fa4b339c93dbd17e1c996a9386deced",
+    "evidence/reproductions/cp1-java2d/plan.json": "60007bfc03dc8dc7fd11469ee93bbf0634f23dc8e90ff0749b93b134d965ed73",
+    "evidence/reproductions/cp1-java2d/result.json": "34563ada85f505692b080b0616862c1f114857bc6005068981f38cb51573d185",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "tools/run_java2d_field_marks.py": "02826bb770eef77c95a1daa67506f1b1af753084d7365d8b1e506a5dcc3768c9",
+    "catalog/drawing/fresh-raster-2d.json": "92f9d0323e78f326a874e68530727156ead3a7d5a07c5c41ec7ecc430584fff4"
+  },
+  "processing_version": "4.5.6",
+  "compiler_stderr": "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/color/CyclicPalette.java:17: warning: [strictfp] as of release 17, all floating-point expressions are evaluated strictly and 'strictfp' is not required\npublic strictfp final class CyclicPalette {\n                      ^\n/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java:15: warning: [strictfp] as of release 17, all floating-point expressions are evaluated strictly and 'strictfp' is not required\npublic strictfp final class GradientNoise2D01 {\n                      ^\n/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/internal/DrawingValues.java:11: warning: [strictfp] as of release 17, all floating-point expressions are evaluated strictly and 'strictfp' is not required\npublic strictfp final class DrawingValues {\n                      ^\n/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/layout/RegularGrid.java:17: warning: [strictfp] as of release 17, all floating-point expressions are evaluated strictly and 'strictfp' is not required\npublic strictfp final class RegularGrid {\n                      ^\n/home/colin/dev/procedural/packages/java/examples/FieldMarks/MarkField.java:16: warning: [strictfp] as of release 17, all floating-point expressions are evaluated strictly and 'strictfp' is not required\npublic strictfp final class MarkField {\n                      ^\n5 warnings\n",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "status": "passed",
+  "native": [
+    {
+      "id": "base",
+      "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+      "geometry_sha256": "fee543d59490aa710ff9e46dba97a6deeb9cac32a3e7a33a46fb6383efbc74de",
+      "color_sha256": "d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552",
+      "commands": 25600,
+      "omitted_zero_length": 0
+    },
+    {
+      "id": "length",
+      "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+      "geometry_sha256": "6a15d835e469595f53539555ad69970f6546610eaa2992fc8dc34b211b629e30",
+      "color_sha256": "d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552",
+      "commands": 25600,
+      "omitted_zero_length": 0
+    },
+    {
+      "id": "palette",
+      "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+      "geometry_sha256": "fee543d59490aa710ff9e46dba97a6deeb9cac32a3e7a33a46fb6383efbc74de",
+      "color_sha256": "48a2692180af6dc61b4af7ab69bb8348c19b8bedb1e56bce34f5d49dd3431fb0",
+      "commands": 25600,
+      "omitted_zero_length": 0
+    },
+    {
+      "id": "bar",
+      "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+      "geometry_sha256": "c4ce81a946c5c39c4ea88efb6066acb99f03db05cfbe8869d46437bd7a4fa4ec",
+      "color_sha256": "d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552",
+      "commands": 25600,
+      "omitted_zero_length": 0
+    }
+  ],
+  "renderer_stderr": "",
+  "images": {
+    "base": {
+      "path": ".work/reproductions/cp1-java2d-adapter/base.png",
+      "png_sha256": "e7d6d75e32f65a6a78efd3641c426abcc1eb2486f1f0db535e0cf88c35bfbd7f",
+      "rgba_sha256": "d534f2fd76c5efba72c3b6bb3f967f3d1589b81213b0be9d30714ebf203f7ce4",
+      "nonbackground_pixels": 313167
+    },
+    "length": {
+      "path": ".work/reproductions/cp1-java2d-adapter/length.png",
+      "png_sha256": "81fde67a455dad3d3add9af77ebb8a10485f4f63875794dbf17f4f73f3c1d0d3",
+      "rgba_sha256": "34a4d510b844d2d46d8f5fa82c4465930816fc33e66999ed71e100d0eb16b543",
+      "nonbackground_pixels": 384339
+    },
+    "palette": {
+      "path": ".work/reproductions/cp1-java2d-adapter/palette.png",
+      "png_sha256": "8450019e2fdffa42d9d80bc744fb115deda747919c2100b50e5135ace986f4c3",
+      "rgba_sha256": "9fae7d67d021a2c2de369aab99568dcf06c96b781781aa26a176029c539e47f9",
+      "nonbackground_pixels": 312474
+    },
+    "bar": {
+      "path": ".work/reproductions/cp1-java2d-adapter/bar.png",
+      "png_sha256": "c6863c43de2ae3ba47021b674324c619e86e2060fbbc4a4ae237abeac217af59",
+      "rgba_sha256": "e1a9a318bab7e3658c2c979eb8f5c2271729716d5131b30656ff9b44a4bfaafa",
+      "nonbackground_pixels": 408205
+    }
+  },
+  "edit_changed_pixels": {
+    "length": 379928,
+    "palette": 313007,
+    "bar": 408177
+  },
+  "visual_inspection": "pending"
+}

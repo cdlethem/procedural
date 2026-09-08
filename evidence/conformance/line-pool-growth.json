@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "attempts": 9000,
+  "segments": 4362,
+  "cuts": 2731,
+  "skips": 6269,
+  "comparison": "Every coordinate bit, divided flag and aggregate counter matched independent oracle",
+  "sources": {
+    "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+    "tools/diagnostics/linepool/LinePoolOracle.java": "2ee90dfc0a601cbffe7a52d9f32efe3ce334b2645182d5d58c421342e23ce804",
+    ".work/diagnostics/line-pool/root-growth1/GrowthCheck.java": "30309c7eff57354fe6d45f18379ccf3bce94886c9a3a51b3113edd0895234d40"
+  }
+}

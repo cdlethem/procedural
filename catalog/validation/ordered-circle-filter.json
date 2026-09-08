@@ -1,0 +1,159 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "sampling.ordered-circle-filter-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/ordered-circle-filter.json",
+    "catalog_sha256": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/circle-placement-java.json": "0d9c43fa6bea71335b1e9d2808b819f1e38585ab73da1ee1a315484b1eb34258",
+          "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/circle-placement-java.json",
+            "pointer": "/vectors/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/circle-placement-java.json",
+            "pointer": "/vectors/fixture_cases",
+            "equals": 68
+          },
+          {
+            "path": "evidence/conformance/circle-placement-java.json",
+            "pointer": "/native/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/circle-placement-java.json",
+            "pointer": "/contract_sha256/catalog~1operations~1ordered-circle-filter.json",
+            "equals": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/distribution/cp3-review.json",
+          "sha256": "933f851638da135124cc98ef2b18360d3325b42017ac35b22584b2bdcf02d870"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK 17.0.20.1; Java 8 strictfp bytecode",
+          "scope": "Java pure placement fixtures, ownership/access and bounded workload observations; no other target execution."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+          "packages/java-processing/examples/PlacementMarks/PlacementMarks.pde": "2138e14197eaed823affb56db5980420f72576459e68ad0fe88c68214a433fd3",
+          "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp3-java2d/pde-result.json": "774c28474e668a91345e22dd0f8f1314fdcd1785270c2d1cc30a4465f20daa4b",
+          "evidence/distribution/cp3-java.json": "6268fbcda4786b4e446644ee977076a9a952581d2f6c64dea94ee6d1375e361f"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp3-java2d/pde-result.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/reproductions/cp3-java2d/pde-result.json",
+            "pointer": "/native/compositions",
+            "equals": 14
+          },
+          {
+            "path": "evidence/distribution/cp3-java.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/distribution/cp3-review.json",
+          "sha256": "933f851638da135124cc98ef2b18360d3325b42017ac35b22584b2bdcf02d870"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK 17.0.20.1; Processing 4.5.6 JAVA2D",
+          "scope": "Installed local Java 0.3.0 PlacementMarks PDE lifecycle, retained edits and cached save at 640x640 density 1."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+          "packages/java-processing/examples/PlacementMarks/PlacementMarks.pde": "2138e14197eaed823affb56db5980420f72576459e68ad0fe88c68214a433fd3",
+          "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp3-java2d/root-review.json": "fbbc22e56ea034ba5c8eb37889c5b250b17d0295db5f324ffd7bf6c0d17c73ed",
+          "evidence/reproductions/cp3-java2d/pde-result.json": "774c28474e668a91345e22dd0f8f1314fdcd1785270c2d1cc30a4465f20daa4b"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp3-java2d/root-review.json",
+            "pointer": "/visual_review/status",
+            "equals": "accepted"
+          },
+          {
+            "path": "evidence/reproductions/cp3-java2d/pde-result.json",
+            "pointer": "/native/radial_transfer",
+            "equals": true
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/distribution/cp3-review.json",
+          "sha256": "933f851638da135124cc98ef2b18360d3325b42017ac35b22584b2bdcf02d870"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK 17.0.20.1; Processing 4.5.6 JAVA2D",
+          "scope": "Root-inspected placement, spacing/size/budget edits, motif/palette substitution and authored radial transfer; no upstream-pixel or full-corpus claim."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

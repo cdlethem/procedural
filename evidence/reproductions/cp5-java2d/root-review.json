@@ -1,0 +1,155 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "scope": "Technique-level installed Processing JAVA2D GrainMarks on CP5 public sampling, with supplied triangles and CP4 cell transfer. No original-source pixel reproduction, shader/P3D/other-target or whole-corpus claim.",
+  "result": "evidence/reproductions/cp5-java2d/pde-result.json",
+  "result_sha256": "ff6045bd0733e66b56cdbaa8a207effd147fd5e183df37c710d57221a5d2df48",
+  "visual_review": {
+    "status": "accepted",
+    "inspected_images": [
+      "base.png",
+      "palette.png",
+      "palette-strokes.png",
+      "palette-dots.png",
+      "style-reset.png",
+      "denser.png",
+      "density-reset.png",
+      "vertex.png",
+      "edge.png",
+      "distribution-reset.png",
+      "seed-43.png",
+      "all-reset.png",
+      "cells.png",
+      "cells-palette.png",
+      "cells-strokes.png"
+    ],
+    "observations": {
+      "base": "Fine blue point texture fills the supplied triangle fairly evenly; the canvas around it stays light.",
+      "palette": "Coral dots retain the same texture positions; palette-dots returns to this appearance after the stroke toggle.",
+      "palette-strokes": "Horizontal coral strokes give much stronger visible texture while retaining point centres.",
+      "denser": "The same triangle has visibly more blue grain; native checks prove the lower count is an exact prefix.",
+      "vertex": "Clear dark concentration near the first vertex at bottom-left, fading toward the opposite side.",
+      "edge": "A subtler uneven distribution across the triangle, distinct from uniform and first-vertex cases.",
+      "cells": "All triangular cell regions carry fine grain; the coloured boundaries remain delicate in dot mode.",
+      "cells-palette": "Colour changes while retaining cell point geometry; fine dots remain pale.",
+      "cells-strokes": "The horizontal coloured strokes make the entire cell/triangle structure clearly legible.",
+      "resets": "Root inspected palette-dots, style-reset, density-reset, distribution-reset and all-reset as well; baseline resets agree visually and native pixel equality passed.",
+      "seed-43": "Point arrangement changes while the supplied triangle remains the same shape."
+    }
+  },
+  "native": {
+    "status": "passed",
+    "compositions": 15,
+    "key_events": 16,
+    "retained_style_edits": true,
+    "density_prefix": true,
+    "reset_pixel_replay": true,
+    "distribution_and_seed_change_geometry": true,
+    "cell_transfer": true,
+    "unknown_key_no_redraw": true,
+    "save_quiet_ms": 300,
+    "states": [
+      {
+        "id": "base",
+        "points": 15680,
+        "regions": 1,
+        "geometry_sha256": "31b130535e3cbdb54756b738055bd162c890e4bf4896192b0377109daae6ac4e"
+      },
+      {
+        "id": "palette",
+        "points": 15680,
+        "regions": 1,
+        "geometry_sha256": "31b130535e3cbdb54756b738055bd162c890e4bf4896192b0377109daae6ac4e"
+      },
+      {
+        "id": "palette-strokes",
+        "points": 15680,
+        "regions": 1,
+        "geometry_sha256": "31b130535e3cbdb54756b738055bd162c890e4bf4896192b0377109daae6ac4e"
+      },
+      {
+        "id": "palette-dots",
+        "points": 15680,
+        "regions": 1,
+        "geometry_sha256": "31b130535e3cbdb54756b738055bd162c890e4bf4896192b0377109daae6ac4e"
+      },
+      {
+        "id": "style-reset",
+        "points": 15680,
+        "regions": 1,
+        "geometry_sha256": "31b130535e3cbdb54756b738055bd162c890e4bf4896192b0377109daae6ac4e"
+      },
+      {
+        "id": "denser",
+        "points": 31360,
+        "regions": 1,
+        "geometry_sha256": "e34cfcb093846d6ccfcac38cc32ac48c92b53fc95d15521f9be156a65aac6032"
+      },
+      {
+        "id": "density-reset",
+        "points": 15680,
+        "regions": 1,
+        "geometry_sha256": "31b130535e3cbdb54756b738055bd162c890e4bf4896192b0377109daae6ac4e"
+      },
+      {
+        "id": "vertex",
+        "points": 15680,
+        "regions": 1,
+        "geometry_sha256": "8ffe377674f71dbde2337594114bc91ccc7259621b2bea9e40a6dfecd3a757ee"
+      },
+      {
+        "id": "edge",
+        "points": 15680,
+        "regions": 1,
+        "geometry_sha256": "5f43e761efe55213ccccccbb674148372fa0db90ead7a7d571d26cfdbc92c048"
+      },
+      {
+        "id": "distribution-reset",
+        "points": 15680,
+        "regions": 1,
+        "geometry_sha256": "31b130535e3cbdb54756b738055bd162c890e4bf4896192b0377109daae6ac4e"
+      },
+      {
+        "id": "seed-43",
+        "points": 15680,
+        "regions": 1,
+        "geometry_sha256": "b7712872d89bc6f48e1eb96be44aeb27804296658d5e27a2fff964cdf4188b23"
+      },
+      {
+        "id": "all-reset",
+        "points": 15680,
+        "regions": 1,
+        "geometry_sha256": "31b130535e3cbdb54756b738055bd162c890e4bf4896192b0377109daae6ac4e"
+      },
+      {
+        "id": "cells",
+        "points": 40960,
+        "regions": 26,
+        "geometry_sha256": "a3974d062225d9a6106b3da492adf39719505fd6e71108e1ebf359bd626c83eb"
+      },
+      {
+        "id": "cells-palette",
+        "points": 40960,
+        "regions": 26,
+        "geometry_sha256": "a3974d062225d9a6106b3da492adf39719505fd6e71108e1ebf359bd626c83eb"
+      },
+      {
+        "id": "cells-strokes",
+        "points": 40960,
+        "regions": 26,
+        "geometry_sha256": "a3974d062225d9a6106b3da492adf39719505fd6e71108e1ebf359bd626c83eb"
+      }
+    ]
+  },
+  "save": {
+    "path": ".work/reproductions/cp5-java2d-pde/grain-marks-0016.png",
+    "sha256": "eb2e8a77e2a6acfa9622d101fce278c5431fa03791926dd5b03ef708a1b686d6",
+    "pixels_equal_displayed": true
+  },
+  "limitations": [
+    "Dots are intentionally delicate at this example setting; stroke substitution provides the clearest regional reading.",
+    "This is an installed JAVA2D technique demonstration with independently specified streams/arithmetic, not a source-pixel reproduction.",
+    "No original survey PNGs were inspected or diffed in this acceptance.",
+    "No human artist usability session or other-target port validation is claimed."
+  ]
+}

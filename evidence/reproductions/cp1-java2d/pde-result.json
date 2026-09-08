@@ -1,0 +1,36 @@
+{
+  "scope": "Execute the officially preprocessed FieldMarks sketch's settings/setup/draw and S-key handler in actual JAVA2D. A validation subclass invokes the save handler and exits after the first frame; no drawing logic is replaced.",
+  "plan_sha256": "cbb2e2d5d5b25a4e76af295424a799efa4b3878275b9c2468b4bd9e41fb0bb2e",
+  "build": {
+    "scope": "Official Processing 4.5.6 production PDE preprocessing and Java compilation; GUI lifecycle/rendering is separate.",
+    "archive_url": "https://github.com/processing/processing4/releases/download/processing-1434-4.5.6/processing-4.5.6-linux-x64-portable.zip",
+    "archive_sha256": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+    "result": "Official Processing preprocessor accepted FieldMarks.pde",
+    "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+    "input_sha256": {
+      "packages/java/examples/FieldMarks/FieldMarks.pde": "d8accb1bcdc7a5742a54e94a29b31fe58005a9f8b89c7294d01cc6c71b237631",
+      "packages/java/examples/FieldMarks/MarkField.java": "398dcf002dc35076f7af97e7a44f21a48a2ce6e10facf2d370dfac3b9e453ea7",
+      "tests/native/PreprocessFieldMarks.java": "5b260503ebeb523b3bc79bf458bd19d775553ce9a5a234770c1fccefcce04abf",
+      "tools/check_field_marks_pde.py": "b208128539052d59afe7285302ea6bbdad35d60d8bba1ee7c24615e506221a65",
+      "dist/procedurals-core-0.1.0.jar": "860d515bf42964fe1e5583b6cc9362e79b2a82cc9b4f5fae9a01755a23a269ff",
+      ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+      ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+      ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+      ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+      ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+      ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943"
+    },
+    "generated_java_sha256": "ce327983ec9eea16fdae67b4c74a7f30ed46f0d7cd97e53c06df73cfb46d72ec",
+    "compiled_class_sha256": "bb24cd016056769199642d3be6616d77c71c252e540f7632dd309bf722f66320"
+  },
+  "source_sha256": {
+    "tests/native/FieldMarksPdeSmoke.java": "d6aa18d6901ce8bf99babaabe1d4d547e0fd9d3e3105246c282c8c2f754d3c89",
+    "tools/run_field_marks_pde.py": "10aa66c5889a4b2938d331fa08144e692e0bec6091c6b28c1c63b78573b96bb3"
+  },
+  "image": ".work/reproductions/cp1-pde/field-marks-0001.png",
+  "image_sha256": "191dc4ffafa9abfff2cf1340b83b030fb94decdf1cf1e303f08c17778747ae45",
+  "lifecycle": "settings/setup/draw and S-key handler executed; 25600 marks",
+  "stdout": "",
+  "stderr": "",
+  "visual_inspection": "pending; record in decision.md"
+}

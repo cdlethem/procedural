@@ -1,0 +1,154 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "sampling.seeded-triangle-points-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/seeded-triangle-points.json",
+    "catalog_sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/triangle-points-java.json": "a62c4566f4c2594b38b06ae89363998e6b8ef7edc6c3d43115a3a64e3c08a494",
+          "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/triangle-points-java.json",
+            "pointer": "/vectors/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/triangle-points-java.json",
+            "pointer": "/vectors/fixture_cases",
+            "equals": 59
+          },
+          {
+            "path": "evidence/conformance/triangle-points-java.json",
+            "pointer": "/native/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/distribution/cp5-review.json",
+          "sha256": "e69694606a70473ea567dc4bc1355e3b0fd23e3349a3df06df88419b8f7bd421"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 strictfp core; Processing4.5.6 JAVA2D",
+          "scope": "Java exact fixtures, ownership/access and bounded workload observations."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+          "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+          "packages/java-processing/examples/GrainMarks/GrainMarks.pde": "ea025f34174d525976c2b4ad05b528d3c1eec8a4eb63aed5c8374b90582cecdf"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp5-java2d/pde-result.json": "ff6045bd0733e66b56cdbaa8a207effd147fd5e183df37c710d57221a5d2df48",
+          "evidence/distribution/cp5-java.json": "c84b17cfdf650f9052761e90c8f679ab81d187ffd3e91d07ff8dd52c5ae84ea8"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp5-java2d/pde-result.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/reproductions/cp5-java2d/pde-result.json",
+            "pointer": "/native/compositions",
+            "equals": 15
+          },
+          {
+            "path": "evidence/distribution/cp5-java.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/distribution/cp5-review.json",
+          "sha256": "e69694606a70473ea567dc4bc1355e3b0fd23e3349a3df06df88419b8f7bd421"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 strictfp core; Processing4.5.6 JAVA2D",
+          "scope": "Installed local0.5.0 JAVA2D GrainMarks,640x640 density1; edits and displayed save."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+          "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+          "packages/java-processing/examples/GrainMarks/GrainMarks.pde": "ea025f34174d525976c2b4ad05b528d3c1eec8a4eb63aed5c8374b90582cecdf"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp5-java2d/pde-result.json": "ff6045bd0733e66b56cdbaa8a207effd147fd5e183df37c710d57221a5d2df48",
+          "evidence/reproductions/cp5-java2d/root-review.json": "8064db7220db3204312858d4e617b6b8a4d223e09f3970a0c7061cd0cc65affe"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp5-java2d/root-review.json",
+            "pointer": "/visual_review/status",
+            "equals": "accepted"
+          },
+          {
+            "path": "evidence/reproductions/cp5-java2d/pde-result.json",
+            "pointer": "/native/cell_transfer",
+            "equals": true
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/distribution/cp5-review.json",
+          "sha256": "e69694606a70473ea567dc4bc1355e3b0fd23e3349a3df06df88419b8f7bd421"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 strictfp core; Processing4.5.6 JAVA2D",
+          "scope": "Root-inspected supplied-triangle grain and cell transfer; distribution and style substitution, no source-pixel claim."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

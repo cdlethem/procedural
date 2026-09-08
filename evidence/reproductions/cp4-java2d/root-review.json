@@ -1,0 +1,46 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Actual public RegionMarks Processing 4.5.6 JAVA2D PDE lifecycle, edit callbacks, retained partition geometry, ordinary authored-cell transfer, and cached-canvas save. This validates the editable Java example only; pure partition conformance and upstream whole-sketch reproduction remain separate.",
+  "result": {
+    "path": "evidence/reproductions/cp4-java2d/pde-result.json",
+    "sha256": "ae09f1ca5f2bc799b30ca84386513f7be4f72cae436f907a070f34c17540e4e5"
+  },
+  "source_closure": "All recorded input, image and save hashes verified unchanged.",
+  "native": {
+    "status": "passed",
+    "compositions": 11,
+    "key_events": 11,
+    "retained_style_edits": true,
+    "reset_pixel_replay": true,
+    "count_final_not_prefix": true,
+    "seed_and_fraction_change_geometry": true,
+    "authored_grid_transfer": true,
+    "save_quiet_ms": 300
+  },
+  "visual_review": {
+    "status": "accepted",
+    "images": {
+      "base.png": "d2a892436da995d129ab5c30c7251e7bbd6a474a23fcd1c78952c82a323b6dec",
+      "grid.png": "6974c961b419f3e84098a987781dd75369c7f9d33d4da3a19621cdfa92a01048",
+      "authored-grid.png": "9c53108ad0054b6acd577049aa56e844937f8cffdea65dadc2a691b9daa0a1b2"
+    },
+    "observations": [
+      "Base has large square panels in the lower half and groups of finer cells above, each carrying a central white dot.",
+      "Grid content preserves those exact panel edges while replacing each central dot with nine smaller dots. The finest grids approach pixel scale; they remain illustrative finite settings, not guaranteed legibility at arbitrary refinement.",
+      "Authored transfer has five large rectangular panels plus six smaller panels occupying the middle-left parent. Every panel carries the same normalized three-by-three content grid."
+    ]
+  },
+  "save": {
+    "path": ".work/reproductions/cp4-java2d-pde/region-marks-0012.png",
+    "sha256": "9c53108ad0054b6acd577049aa56e844937f8cffdea65dadc2a691b9daa0a1b2",
+    "pixels_equal_displayed": true
+  },
+  "limitations": [
+    "Java Processing 4.5.6 JAVA2D, 640x640 density one only.",
+    "Technique-level example acceptance; no upstream-pixel or full-corpus reproduction claim.",
+    "Count, fraction and seed edits are checked natively; their public frames were not among the three registered visual captures.",
+    "Generated execution report remains immutable with visual_review pending; this separate review records acceptance."
+  ]
+}

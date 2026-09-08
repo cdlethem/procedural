@@ -1,0 +1,1473 @@
+{
+  "profile": "drawing.fresh-raster-2d",
+  "version": "0.1.0",
+  "scope": "Exact independent normalization oracle; not production or native conformance.",
+  "input_sha256": {
+    "catalog/drawing/fresh-raster-2d.json": "8fd5d39bb1196d689aa8ca7a88e9f22bb75987c23bc8716e0fe00493b0432346",
+    "fixtures/drawing/fresh-raster-semantics.json": "f041d374229e8588e0c925f0469d37646cedac28139b62b4e08a0b6b6a056a32",
+    "tools/build_drawing_normalization_fixtures.py": "8ea1db77cd627d3bcd5c509d4088c53434e552b249cbcab1e24040082b8350c5",
+    "tools/build_drawing_geometry_fixtures.py": "1f04980c491fbb02e88f4565fa7b10d7a444cc736f266def1c1deed2be8039ab"
+  },
+  "cases": [
+    {
+      "id": "inclusive-upper-x",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1280,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1280.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "44a00000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 0,
+        "channels": [
+          0,
+          0,
+          0
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "canonical-outside-rounds-in",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1280.0000305175781,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1280.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "44a00000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 0,
+        "channels": [
+          0,
+          0,
+          0
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "one-f32-ulp-outside",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1280.0001220703125,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    },
+    {
+      "id": "inclusive-lower-x",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          -640,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -640.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "c4200000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 0,
+        "channels": [
+          0,
+          0,
+          0
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "one-f32-ulp-below-lower-x",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          -640.0000610351562,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    },
+    {
+      "id": "minimum-width",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 0.00390625,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "3f800000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 0,
+        "channels": [
+          0,
+          0,
+          0
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 0.00390625,
+        "width_bits_hex": "3b800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "one-f32-ulp-below-minimum-width",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 0.0039062497671693563,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    },
+    {
+      "id": "maximum-width",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 640,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "3f800000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 0,
+        "channels": [
+          0,
+          0,
+          0
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 640.0,
+        "width_bits_hex": "44200000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "one-f32-ulp-above-maximum-width",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 640.0000610351562,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    },
+    {
+      "id": "canonical-equal-endpoints",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          0,
+          0
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    },
+    {
+      "id": "converted-equal-endpoints",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          1,
+          1
+        ],
+        "to": [
+          1.0000000298023224,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "noop",
+        "kind": "segment2",
+        "points": [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "3f800000",
+            "3f800000"
+          ],
+          [
+            "3f800000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 0,
+        "channels": [
+          0,
+          0,
+          0
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "invalid-width-before-noop",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          1,
+          1
+        ],
+        "to": [
+          1.0000000298023224,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 0.001953125,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    },
+    {
+      "id": "transparent-invalid-width",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 0,
+        "width": 0,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    },
+    {
+      "id": "quad-distinct-converted-collinear",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "quad2",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0.9999999701976776
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "rgb": 0,
+        "opacity8": 180
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    },
+    {
+      "id": "quad-both-windings",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "quad2",
+        "vertices": [
+          [
+            0,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "rgb": 0,
+        "opacity8": 180
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "quad2",
+        "points": [
+          [
+            0.0,
+            2.0
+          ],
+          [
+            4.0,
+            2.0
+          ],
+          [
+            4.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "40000000"
+          ],
+          [
+            "40800000",
+            "40000000"
+          ],
+          [
+            "40800000",
+            "00000000"
+          ],
+          [
+            "00000000",
+            "00000000"
+          ]
+        ],
+        "rgb": 0,
+        "channels": [
+          0,
+          0,
+          0
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697"
+      }
+    },
+    {
+      "id": "alpha-0",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 0,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "3f800000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 1193046,
+        "channels": [
+          18,
+          52,
+          86
+        ],
+        "opacity8": 0,
+        "alpha64": 0.0,
+        "alpha64_bits_hex": "0000000000000000",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "alpha-1",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 1,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "3f800000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 1193046,
+        "channels": [
+          18,
+          52,
+          86
+        ],
+        "opacity8": 1,
+        "alpha64": 0.00392156862745098,
+        "alpha64_bits_hex": "3f70101010101010",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "alpha-128",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 128,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "3f800000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 1193046,
+        "channels": [
+          18,
+          52,
+          86
+        ],
+        "opacity8": 128,
+        "alpha64": 0.5019607843137255,
+        "alpha64_bits_hex": "3fe0101010101010",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "alpha-255",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 255,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "3f800000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 1193046,
+        "channels": [
+          18,
+          52,
+          86
+        ],
+        "opacity8": 255,
+        "alpha64": 1.0,
+        "alpha64_bits_hex": "3ff0000000000000",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "wide-upper-x",
+      "environment": {
+        "width": 800,
+        "height": 320,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1600,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1600.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "44c80000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 1193046,
+        "channels": [
+          18,
+          52,
+          86
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "wide-upper-y",
+      "environment": {
+        "width": 800,
+        "height": 320,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1120
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1120.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "3f800000",
+            "448c0000"
+          ]
+        ],
+        "rgb": 1193046,
+        "channels": [
+          18,
+          52,
+          86
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "wide-wrong-y-bound",
+      "environment": {
+        "width": 800,
+        "height": 320,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1200
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    },
+    {
+      "id": "wide-overscan-y",
+      "environment": {
+        "width": 800,
+        "height": 320,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          -800,
+          -800
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -800.0,
+            -800.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "c4480000",
+            "c4480000"
+          ]
+        ],
+        "rgb": 1193046,
+        "channels": [
+          18,
+          52,
+          86
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "signed-zero-normalized",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          -0.0,
+          0.0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "3f800000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 1193046,
+        "channels": [
+          18,
+          52,
+          86
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "tall-upper-y",
+      "environment": {
+        "width": 320,
+        "height": 800,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1600
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1600.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "3f800000",
+            "44c80000"
+          ]
+        ],
+        "rgb": 1193046,
+        "channels": [
+          18,
+          52,
+          86
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "tall-upper-x",
+      "environment": {
+        "width": 320,
+        "height": 800,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1120,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1120.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "448c0000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 1193046,
+        "channels": [
+          18,
+          52,
+          86
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 1.0,
+        "width_bits_hex": "3f800000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "tall-wrong-x-bound",
+      "environment": {
+        "width": 320,
+        "height": 800,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1200,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    },
+    {
+      "id": "tall-maximum-width",
+      "environment": {
+        "width": 320,
+        "height": 800,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 800,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "emit",
+        "kind": "segment2",
+        "points": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "point_bits_hex": [
+          [
+            "00000000",
+            "00000000"
+          ],
+          [
+            "3f800000",
+            "3f800000"
+          ]
+        ],
+        "rgb": 1193046,
+        "channels": [
+          18,
+          52,
+          86
+        ],
+        "opacity8": 180,
+        "alpha64": 0.7058823529411765,
+        "alpha64_bits_hex": "3fe6969696969697",
+        "width": 800.0,
+        "width_bits_hex": "44480000",
+        "cap": "round"
+      }
+    },
+    {
+      "id": "tall-width-exceeded",
+      "environment": {
+        "width": 320,
+        "height": 800,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 800.0000610351562,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    },
+    {
+      "id": "coordinate-f32-overflow",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1e+100,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    },
+    {
+      "id": "width-f32-overflow",
+      "environment": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 16777215
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1e+100,
+        "cap": "round"
+      },
+      "expected": {
+        "outcome": "INVALID_COMMAND"
+      }
+    }
+  ]
+}

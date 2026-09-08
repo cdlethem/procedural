@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "owner": "root",
+  "scope": "Processing reversed random bounds and RNG consumption only; no visual evidence",
+  "sha256": {
+    ".work/diagnostics/line-pool/RandomBounds.java": "b206856684dc745df0d1dcd87da215d4e93618a11d68c49943e5a0055e70db9b",
+    ".work/diagnostics/line-pool/random-bounds.txt": "a37c026aae4d41197e5d51384c1916ad10944d18b215d4c246b21babcac687b0",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4"
+  },
+  "samples": 100000,
+  "reversed_or_equal": 81046,
+  "source_behavior": "low>=high returns low without consuming another RNG draw"
+}

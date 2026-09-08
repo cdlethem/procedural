@@ -1,0 +1,34 @@
+{
+  "purpose": "CP2 pure numerical diagnostic only; no source reproduction, public contract, encouraged range, or rendering claim.",
+  "evaluation": {
+    "field": "field.gradient-noise-2d-01 v0.1.0",
+    "order": [
+      "sample = field.sample(x * coordinateScale, y * coordinateScale)",
+      "mapped = angleScale * sample",
+      "heading = angleBase + mapped",
+      "dx = step * cos(heading)",
+      "dy = step * sin(heading)",
+      "nextX = x + dx",
+      "nextY = y + dy"
+    ],
+    "no_fma": true,
+    "sample_before_advance": true,
+    "selected_indices": [0, 1, 2, 10, 100, 999, 1999, 3999, 7999, 15999]
+  },
+  "field_matrix": {
+    "seeds": [42],
+    "starts": [[0.125, -0.25], [100.0, 100.0]],
+    "coordinate_scales": [0.002, 0.01],
+    "angle_bases": [0.0],
+    "angle_scales": [40.0, 320.0],
+    "steps": [0.4],
+    "counts": [2000, 16000]
+  },
+  "constant_controls": {
+    "starts": [[0.125, -0.25]],
+    "headings": [0.1, 1.0],
+    "steps": [0.4],
+    "counts": [2000, 16000]
+  },
+  "android": "Not measured: this diagnostic runs Java, JavaScript, and Python only."
+}

@@ -1,0 +1,129 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "motion.target-springs-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/target-springs-2d.json",
+    "catalog_sha256": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/target-springs-java.json": "e22da03a8e8e792926ece11b06013d2edf69bf0991f37a2897672ad9666adbcf",
+          "fixtures/operations/target-springs-2d.json": "837fda9808fd95a70bcee4dbbd2accc1b0895186ee55c439b8a31c4ed495cc61"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/target-springs-java.json",
+            "pointer": "/native/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/target-springs-java-root-review.json",
+          "sha256": "3f439cee9bfc46f5e59074498f926c47c9dc54b39824c27c88f92968865ab942"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact shared recurrence, ownership, atomicity and native packed stepping."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+          "packages/java/examples/SpringMarks/SpringComposition.java": "a6f1263c08cc902070d11ce5d6de52e22cbac16f625b63f668733654748d6735",
+          "packages/java-processing/examples/SpringMarks/SpringMarks.pde": "b813a8f1dfa60fc49b366dce57813a4d91ac0022478c30927abd5a4e9256f82b"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp10-java2d/result.json": "c5ce4010221bf3f41e0f90d53029ca10488cdd82dc16112950a371936110f8eb",
+          "evidence/reproductions/cp10-java2d/root-review.json": "5be743464a2c701b2d74ba67c8a3bf8f12c84c02366b1f850b5c80ef9cb79e0a"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp10-java2d/result.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/reproductions/cp10-java2d/root-review.json",
+          "sha256": "5be743464a2c701b2d74ba67c8a3bf8f12c84c02366b1f850b5c80ef9cb79e0a"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Scoped SpringMarks Processing JAVA2D event, drawing and technique acceptance. No full source-pixel reproduction, other-platform, natural frame-rate performance or registry claim."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+          "packages/java/examples/SpringMarks/SpringComposition.java": "a6f1263c08cc902070d11ce5d6de52e22cbac16f625b63f668733654748d6735",
+          "packages/java-processing/examples/SpringMarks/SpringMarks.pde": "b813a8f1dfa60fc49b366dce57813a4d91ac0022478c30927abd5a4e9256f82b"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp10-java2d/result.json": "c5ce4010221bf3f41e0f90d53029ca10488cdd82dc16112950a371936110f8eb",
+          "evidence/reproductions/cp10-java2d/root-review.json": "5be743464a2c701b2d74ba67c8a3bf8f12c84c02366b1f850b5c80ef9cb79e0a"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp10-java2d/result.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/reproductions/cp10-java2d/root-review.json",
+          "sha256": "5be743464a2c701b2d74ba67c8a3bf8f12c84c02366b1f850b5c80ef9cb79e0a"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Scoped SpringMarks Processing JAVA2D event, drawing and technique acceptance. No full source-pixel reproduction, other-platform, natural frame-rate performance or registry claim."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

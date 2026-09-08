@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "owner": "root",
+  "scope": "Candidate oracle case review; not production conformance",
+  "checks": [
+    "First-choice0/1/2 exact word traces equal independent root vectors",
+    "Topology sizes1/3/2 and equal-threshold cutting",
+    "Revisited parent continuation divided flag",
+    "Capacity permits zero append but fails actual append",
+    "seed20 spread_negative overflow actual outcome",
+    "Candidate inputs/outputs validate draft schemas"
+  ],
+  "sha256": {
+    ".work/diagnostics/line-pool/oracle-cases-corrected.json": "caecb6e86c9418a334c10d71e5e0f9642542bbf166a9a7ed0d50b73c0befcae4",
+    "design/operations/line-pool-candidate-fixtures.json": "8fd16b106e7c65a7267b2bea99b45946ef94699c5f0ce5c52c35a04f41763b69",
+    "tools/diagnostics/linepool/LinePoolOracle.java": "2ee90dfc0a601cbffe7a52d9f32efe3ce334b2645182d5d58c421342e23ce804",
+    "design/operations/line-pool-first-choice-oracle.json": "e2ad0c303077f36e362077df12373d4902bd46f3ed90a8e04362cbe6ce643949"
+  }
+}

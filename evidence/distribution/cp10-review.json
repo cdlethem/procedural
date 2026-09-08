@@ -1,0 +1,36 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Java0.10.0 package with13operations and10editable starters. No registry publication, other-platform or full-corpus claim.",
+  "implementation_sha256": {
+    "tools/build_spring_marks_java.py": "33863db8c896420eba0e310ee8148ffc7d3d6fc5511023e9c93f4368c0b9188c",
+    "docs/spring-marks.md": "4c44537978176f4e88ab84309a3be7f01f226d36e158eda6fedeac39a44407bc",
+    "docs/installing-spring-marks.md": "aa1c3ee3fab265caeaa38e71a9c33671439c49c966d28329d085a74601f936ed"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp10-java.json": "c158e5641ab2976ec1df5f9ba113ddae5e8c6e32858b253c2a6dc4afae3f85f7",
+    "evidence/reproductions/cp10-java2d/root-review.json": "5be743464a2c701b2d74ba67c8a3bf8f12c84c02366b1f850b5c80ef9cb79e0a",
+    "evidence/distribution/cp9-review.json": "316343f5e1111d91e28b713466dfe6b31123e35b286bfe8851c34e74c3b7e0e1"
+  },
+  "final_archive": {
+    "path": ".work/dist/cp10/java/procedurals-processing-0.10.0.zip",
+    "sha256": "f045387a0bc1912795993b08ee7401023731da3bc06d2cc290ba772d9ed08dab"
+  },
+  "checks": {
+    "archive_members": 60,
+    "safe_unique_members_and_crc": "passed",
+    "prior_starters_preserved": 9,
+    "prior_core_entries_preserved": 65,
+    "new_core_entries": 3,
+    "operations": 13,
+    "starters": 10,
+    "catalog": "passed",
+    "repository_unittests": 140
+  },
+  "remaining": [
+    "Broader Java capability selection in bounded worker-led batches",
+    "Deferred p5js/py5/Android ports",
+    "Remaining roadmap milestones"
+  ]
+}

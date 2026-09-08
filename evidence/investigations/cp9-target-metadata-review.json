@@ -1,0 +1,30 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "scope": "Correct CP9 target identifier metadata before registering support; no operation behavior, public API, fixture values or version change.",
+  "mapping": {
+    "java": "processing-java",
+    "javascript": "p5js",
+    "python": "py5",
+    "android": "processing-android"
+  },
+  "prior_semantic_acceptance": {
+    "path": "evidence/investigations/cp9-contract-review.json",
+    "sha256": "c8873cac33a398e1144d7a91693ee5167754b32397b79a8060935b33a6b2e6ac"
+  },
+  "before": {
+    "catalog_sha256": "02c1eeccaafb05dbeb81144ebe0036d1bfb4ef381794ada1f8535125ac526882",
+    "fixture_sha256": "627c4ef5eb6d3d1054e5049f1f5eecb6dddffd790469a2f05e2547cc129870eb"
+  },
+  "after": {
+    "catalog_sha256": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
+    "fixture_sha256": "2f2166e90dbab6345fda3148e65aae6079fcd0de96f6a9752ade3ed80c68a4d4"
+  },
+  "checks": {
+    "only_catalog_targets_keys_changed": true,
+    "all_36_case_values_unchanged": true,
+    "all_targets_still_not_implemented_in_immutable_contract": true
+  },
+  "performance_applicability": "evidence/performance/cp9-java.json measurements remain applicable: identical implementation, probe and workload inputs. Metadata changes do not require rerunning timing samples. Native conformance will be rebound to corrected catalog and fixture hashes.",
+  "implementation_sha256": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd"
+}

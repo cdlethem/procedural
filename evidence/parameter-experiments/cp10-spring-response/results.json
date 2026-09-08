@@ -1,0 +1,694 @@
+{
+  "status": "measured",
+  "scope": "All seven registered source-motion cases; state metrics for first site, full nine-site native records retained. Pixel metrics against authored investigation baseline, not survey imagery.",
+  "batch_path": ".work/parameter-experiments/cp10-spring-response/batch.json",
+  "batch_sha256": "1565e716d1c69e5747d6d552aa13f8e8a2ddd32905a311b860ead1f18559bece",
+  "analysis_sha256": "d19bce59b0a0c027d0811a7197281abfe0bde746238f1f6302765534e42fde29",
+  "cases": [
+    {
+      "id": "baseline",
+      "spring": 0.025,
+      "velocity_retention": 0.7,
+      "max_x_displacement": 54.35552999999999,
+      "peak_tick": 18,
+      "velocity_sign_reversals": [
+        19
+      ],
+      "step_direction_reversals": [
+        19
+      ],
+      "samples": [
+        {
+          "tick": 0,
+          "x": 96.0,
+          "velocity": 0.0,
+          "target_x": 196.0
+        },
+        {
+          "tick": 1,
+          "x": 98.4,
+          "velocity": 1.6800001,
+          "target_x": 192.0
+        },
+        {
+          "tick": 10,
+          "x": 139.15015,
+          "velocity": 2.3744872,
+          "target_x": 162.48328
+        },
+        {
+          "tick": 30,
+          "x": 139.98337,
+          "velocity": -0.8869005,
+          "target_x": 125.385765
+        },
+        {
+          "tick": 60,
+          "x": 110.52014,
+          "velocity": -0.41580516,
+          "target_x": 104.63523
+        },
+        {
+          "tick": 120,
+          "x": 97.26322,
+          "velocity": -0.03684087,
+          "target_x": 96.74568
+        }
+      ],
+      "frames": [
+        {
+          "tick": 0,
+          "path": ".work/parameter-experiments/cp10-spring-response/baseline/frame_00000.png",
+          "sha256": "bfdf1b888e8ded786348a962fbd134d1decba2a32a2dd7fa92326f5c4eab6603",
+          "mae_rgb_normalized": 0.0,
+          "changed_pixel_fraction": 0.0
+        },
+        {
+          "tick": 1,
+          "path": ".work/parameter-experiments/cp10-spring-response/baseline/frame_00001.png",
+          "sha256": "6f03669b92b741710c1ad15c7a3fb1b5cbf6894289c328e702749e572325e67b",
+          "mae_rgb_normalized": 0.0,
+          "changed_pixel_fraction": 0.0
+        },
+        {
+          "tick": 10,
+          "path": ".work/parameter-experiments/cp10-spring-response/baseline/frame_00010.png",
+          "sha256": "437ba19a55039920a70bfe54b8009da1679a30fe62dc431117fa3dab7fc9ad25",
+          "mae_rgb_normalized": 0.0,
+          "changed_pixel_fraction": 0.0
+        },
+        {
+          "tick": 30,
+          "path": ".work/parameter-experiments/cp10-spring-response/baseline/frame_00030.png",
+          "sha256": "ee30a56560e124823c75db4c514cc038c849a2a0ab4f64067e36959645f70e8f",
+          "mae_rgb_normalized": 0.0,
+          "changed_pixel_fraction": 0.0
+        },
+        {
+          "tick": 60,
+          "path": ".work/parameter-experiments/cp10-spring-response/baseline/frame_00060.png",
+          "sha256": "e9bc7af31fd1190ca21a3d267758c6848d1fdbc9cb945a0ccb3d5d5cab43884d",
+          "mae_rgb_normalized": 0.0,
+          "changed_pixel_fraction": 0.0
+        },
+        {
+          "tick": 120,
+          "path": ".work/parameter-experiments/cp10-spring-response/baseline/frame_00120.png",
+          "sha256": "b1abca9bf1ac4fcf7d5a30229125dba0149baa70339583f51e85a4bd30839285",
+          "mae_rgb_normalized": 0.0,
+          "changed_pixel_fraction": 0.0
+        }
+      ],
+      "native_sha256": "53b5d4f77968f60cf60c33a6577b82a723076525b447bd0fedc244a8855bd785"
+    },
+    {
+      "id": "spring-zero",
+      "spring": 0.0,
+      "velocity_retention": 0.7,
+      "max_x_displacement": 0.0,
+      "peak_tick": 0,
+      "velocity_sign_reversals": [],
+      "step_direction_reversals": [],
+      "samples": [
+        {
+          "tick": 0,
+          "x": 96.0,
+          "velocity": 0.0,
+          "target_x": 196.0
+        },
+        {
+          "tick": 1,
+          "x": 96.0,
+          "velocity": 0.0,
+          "target_x": 192.0
+        },
+        {
+          "tick": 10,
+          "x": 96.0,
+          "velocity": 0.0,
+          "target_x": 162.48328
+        },
+        {
+          "tick": 30,
+          "x": 96.0,
+          "velocity": 0.0,
+          "target_x": 125.385765
+        },
+        {
+          "tick": 60,
+          "x": 96.0,
+          "velocity": 0.0,
+          "target_x": 104.63523
+        },
+        {
+          "tick": 120,
+          "x": 96.0,
+          "velocity": 0.0,
+          "target_x": 96.74568
+        }
+      ],
+      "frames": [
+        {
+          "tick": 0,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-zero/frame_00000.png",
+          "sha256": "bfdf1b888e8ded786348a962fbd134d1decba2a32a2dd7fa92326f5c4eab6603",
+          "mae_rgb_normalized": 0.0,
+          "changed_pixel_fraction": 0.0
+        },
+        {
+          "tick": 1,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-zero/frame_00001.png",
+          "sha256": "bfdf1b888e8ded786348a962fbd134d1decba2a32a2dd7fa92326f5c4eab6603",
+          "mae_rgb_normalized": 0.0007086109834558823,
+          "changed_pixel_fraction": 0.0018676757812500222
+        },
+        {
+          "tick": 10,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-zero/frame_00010.png",
+          "sha256": "bfdf1b888e8ded786348a962fbd134d1decba2a32a2dd7fa92326f5c4eab6603",
+          "mae_rgb_normalized": 0.0028814625459558825,
+          "changed_pixel_fraction": 0.00654785156250004
+        },
+        {
+          "tick": 30,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-zero/frame_00030.png",
+          "sha256": "bfdf1b888e8ded786348a962fbd134d1decba2a32a2dd7fa92326f5c4eab6603",
+          "mae_rgb_normalized": 0.002908978630514706,
+          "changed_pixel_fraction": 0.0065698242187499645
+        },
+        {
+          "tick": 60,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-zero/frame_00060.png",
+          "sha256": "bfdf1b888e8ded786348a962fbd134d1decba2a32a2dd7fa92326f5c4eab6603",
+          "mae_rgb_normalized": 0.0030985179227941174,
+          "changed_pixel_fraction": 0.006679687500000031
+        },
+        {
+          "tick": 120,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-zero/frame_00120.png",
+          "sha256": "bfdf1b888e8ded786348a962fbd134d1decba2a32a2dd7fa92326f5c4eab6603",
+          "mae_rgb_normalized": 0.001697323069852941,
+          "changed_pixel_fraction": 0.004504394531249956
+        }
+      ],
+      "native_sha256": "77734da8f10d8dfbabe5d05b7dda44e34d466c37e483c23fa4e1e599234cced7"
+    },
+    {
+      "id": "spring-half",
+      "spring": 0.0125,
+      "velocity_retention": 0.7,
+      "max_x_displacement": 38.610600000000005,
+      "peak_tick": 26,
+      "velocity_sign_reversals": [
+        27
+      ],
+      "step_direction_reversals": [
+        27
+      ],
+      "samples": [
+        {
+          "tick": 0,
+          "x": 96.0,
+          "velocity": 0.0,
+          "target_x": 196.0
+        },
+        {
+          "tick": 1,
+          "x": 97.2,
+          "velocity": 0.84000003,
+          "target_x": 192.0
+        },
+        {
+          "tick": 10,
+          "x": 120.00113,
+          "velocity": 1.590711,
+          "target_x": 162.48328
+        },
+        {
+          "tick": 30,
+          "x": 134.02014,
+          "velocity": -0.16657071,
+          "target_x": 125.385765
+        },
+        {
+          "tick": 60,
+          "x": 117.352196,
+          "velocity": -0.4010394,
+          "target_x": 104.63523
+        },
+        {
+          "tick": 120,
+          "x": 99.11062,
+          "velocity": -0.078459844,
+          "target_x": 96.74568
+        }
+      ],
+      "frames": [
+        {
+          "tick": 0,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-half/frame_00000.png",
+          "sha256": "bfdf1b888e8ded786348a962fbd134d1decba2a32a2dd7fa92326f5c4eab6603",
+          "mae_rgb_normalized": 0.0,
+          "changed_pixel_fraction": 0.0
+        },
+        {
+          "tick": 1,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-half/frame_00001.png",
+          "sha256": "64cea44601b6f2f0bef0984e6d06e9a81c4edb148538b83951deaf7a70533d94",
+          "mae_rgb_normalized": 0.00039292279411764705,
+          "changed_pixel_fraction": 0.0014282226562499778
+        },
+        {
+          "tick": 10,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-half/frame_00010.png",
+          "sha256": "3892a320de145acac3a7e7c0dd9f181937a68607ed37f6adff5e3636d6de3d07",
+          "mae_rgb_normalized": 0.002326947380514706,
+          "changed_pixel_fraction": 0.005581054687500031
+        },
+        {
+          "tick": 30,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-half/frame_00030.png",
+          "sha256": "8482d0f148705509cdcb35d0bafc25290ff276e99362da98b6190907ab189742",
+          "mae_rgb_normalized": 0.0016462833180147058,
+          "changed_pixel_fraction": 0.004592285156249987
+        },
+        {
+          "tick": 60,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-half/frame_00060.png",
+          "sha256": "75684181db1def3483c86f79f1484c959e8de1e6a43f8630216b88d83132def4",
+          "mae_rgb_normalized": 0.0019208122702205881,
+          "changed_pixel_fraction": 0.0054711914062499645
+        },
+        {
+          "tick": 120,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-half/frame_00120.png",
+          "sha256": "7b5e4837aa2b69a99cd345adb1dd5db8fbd519e4d0e6e627442c865bb30aa3ed",
+          "mae_rgb_normalized": 0.0008965992647058823,
+          "changed_pixel_fraction": 0.003999023437500027
+        }
+      ],
+      "native_sha256": "8697fab58f6d93fe76da1845b4b67faf346e703aed26e7740b21de56f3e15bc7"
+    },
+    {
+      "id": "spring-double",
+      "spring": 0.05,
+      "velocity_retention": 0.7,
+      "max_x_displacement": 72.16247999999999,
+      "peak_tick": 12,
+      "velocity_sign_reversals": [
+        13
+      ],
+      "step_direction_reversals": [
+        13
+      ],
+      "samples": [
+        {
+          "tick": 0,
+          "x": 96.0,
+          "velocity": 0.0,
+          "target_x": 196.0
+        },
+        {
+          "tick": 1,
+          "x": 100.8,
+          "velocity": 3.3600001,
+          "target_x": 192.0
+        },
+        {
+          "tick": 10,
+          "x": 165.43796,
+          "velocity": 2.179411,
+          "target_x": 162.48328
+        },
+        {
+          "tick": 30,
+          "x": 132.2226,
+          "velocity": -1.1704679,
+          "target_x": 125.385765
+        },
+        {
+          "tick": 60,
+          "x": 106.586105,
+          "velocity": -0.30908406,
+          "target_x": 104.63523
+        },
+        {
+          "tick": 120,
+          "x": 96.91386,
+          "velocity": -0.026654216,
+          "target_x": 96.74568
+        }
+      ],
+      "frames": [
+        {
+          "tick": 0,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-double/frame_00000.png",
+          "sha256": "bfdf1b888e8ded786348a962fbd134d1decba2a32a2dd7fa92326f5c4eab6603",
+          "mae_rgb_normalized": 0.0,
+          "changed_pixel_fraction": 0.0
+        },
+        {
+          "tick": 1,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-double/frame_00001.png",
+          "sha256": "8020bcc89acd39afbefd2d3908561ab591e37adefe4cb3e88ab17255324b7eff",
+          "mae_rgb_normalized": 0.0008302504595588235,
+          "changed_pixel_fraction": 0.002329101562499991
+        },
+        {
+          "tick": 10,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-double/frame_00010.png",
+          "sha256": "c648b713bb847b786f55157b13d61c0595e8620382755ce135e5ebcfe0a8473f",
+          "mae_rgb_normalized": 0.002453316482843137,
+          "changed_pixel_fraction": 0.006328125000000018
+        },
+        {
+          "tick": 30,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-double/frame_00030.png",
+          "sha256": "b72101cc33a388913b772739ece6f3f9ca9a47651894d044ac42c4046e4b8712",
+          "mae_rgb_normalized": 0.002116584329044118,
+          "changed_pixel_fraction": 0.005844726562500013
+        },
+        {
+          "tick": 60,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-double/frame_00060.png",
+          "sha256": "91d87c75e7a0cb051e164e973275f1bd8c4632f4f3c61eb06d1854f906b530e2",
+          "mae_rgb_normalized": 0.0013861443014705883,
+          "changed_pixel_fraction": 0.005075683593749991
+        },
+        {
+          "tick": 120,
+          "path": ".work/parameter-experiments/cp10-spring-response/spring-double/frame_00120.png",
+          "sha256": "988044c8f5fca815180cd17476061c210650bf1fbb783d1d508fdd97551aac22",
+          "mae_rgb_normalized": 0.0006069623161764706,
+          "changed_pixel_fraction": 0.004064941406250022
+        }
+      ],
+      "native_sha256": "1722909df650f81df419ecced6a01122fac5b52cc641ae16a3b1e56739c05d15"
+    },
+    {
+      "id": "retention-zero",
+      "spring": 0.025,
+      "velocity_retention": 0.0,
+      "max_x_displacement": 27.853424000000004,
+      "peak_tick": 31,
+      "velocity_sign_reversals": [],
+      "step_direction_reversals": [
+        32
+      ],
+      "samples": [
+        {
+          "tick": 0,
+          "x": 96.0,
+          "velocity": 0.0,
+          "target_x": 196.0
+        },
+        {
+          "tick": 1,
+          "x": 98.4,
+          "velocity": 0.0,
+          "target_x": 192.0
+        },
+        {
+          "tick": 10,
+          "x": 113.83953,
+          "velocity": 0.0,
+          "target_x": 162.48328
+        },
+        {
+          "tick": 30,
+          "x": 123.84428,
+          "velocity": 0.0,
+          "target_x": 125.385765
+        },
+        {
+          "tick": 60,
+          "x": 117.21016,
+          "velocity": -0.0,
+          "target_x": 104.63523
+        },
+        {
+          "tick": 120,
+          "x": 102.47479,
+          "velocity": -0.0,
+          "target_x": 96.74568
+        }
+      ],
+      "frames": [
+        {
+          "tick": 0,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-zero/frame_00000.png",
+          "sha256": "bfdf1b888e8ded786348a962fbd134d1decba2a32a2dd7fa92326f5c4eab6603",
+          "mae_rgb_normalized": 0.0,
+          "changed_pixel_fraction": 0.0
+        },
+        {
+          "tick": 1,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-zero/frame_00001.png",
+          "sha256": "6c946a417fa038b724cc74c1d471f311517d1f4cea236ea0548d51b5d7128684",
+          "mae_rgb_normalized": 9.20266544117647e-05,
+          "changed_pixel_fraction": 0.00026367187499998224
+        },
+        {
+          "tick": 10,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-zero/frame_00010.png",
+          "sha256": "b4a888f16e2852853b37854f099233deb71d43aa9b6a4c5fdba03d133060ea5b",
+          "mae_rgb_normalized": 0.002460420496323529,
+          "changed_pixel_fraction": 0.005888671874999973
+        },
+        {
+          "tick": 30,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-zero/frame_00030.png",
+          "sha256": "3833357fb36746107fd3c3703e2453803a1380f3634fd0bac8a6db32d25a2b8e",
+          "mae_rgb_normalized": 0.0023108053768382355,
+          "changed_pixel_fraction": 0.005690917968749987
+        },
+        {
+          "tick": 60,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-zero/frame_00060.png",
+          "sha256": "e9c13da81422df548a4a3473dda16cad3105af4ec839dda73a51acd34d73bd4b",
+          "mae_rgb_normalized": 0.0021626263786764708,
+          "changed_pixel_fraction": 0.00553710937499996
+        },
+        {
+          "tick": 120,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-zero/frame_00120.png",
+          "sha256": "2cf21f8d3cd61939fb2c7e77704381aaaac05df095e850104c26b1361871f124",
+          "mae_rgb_normalized": 0.0019152688419117646,
+          "changed_pixel_fraction": 0.005361328125000009
+        }
+      ],
+      "native_sha256": "b8b25981bfd2fb66282ec3b4eba139fa97691072e9b52244496db26c2cdd2435"
+    },
+    {
+      "id": "retention-high",
+      "spring": 0.025,
+      "velocity_retention": 0.9,
+      "max_x_displacement": 91.14275,
+      "peak_tick": 16,
+      "velocity_sign_reversals": [
+        17,
+        42,
+        57,
+        86,
+        95
+      ],
+      "step_direction_reversals": [
+        17,
+        42,
+        57,
+        86,
+        95
+      ],
+      "samples": [
+        {
+          "tick": 0,
+          "x": 96.0,
+          "velocity": 0.0,
+          "target_x": 196.0
+        },
+        {
+          "tick": 1,
+          "x": 98.4,
+          "velocity": 2.16,
+          "target_x": 192.0
+        },
+        {
+          "tick": 10,
+          "x": 164.78564,
+          "velocity": 6.563139,
+          "target_x": 162.48328
+        },
+        {
+          "tick": 30,
+          "x": 129.56929,
+          "velocity": -4.432096,
+          "target_x": 125.385765
+        },
+        {
+          "tick": 60,
+          "x": 109.639854,
+          "velocity": -0.37914225,
+          "target_x": 104.63523
+        },
+        {
+          "tick": 120,
+          "x": 96.6193,
+          "velocity": -0.034214355,
+          "target_x": 96.74568
+        }
+      ],
+      "frames": [
+        {
+          "tick": 0,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-high/frame_00000.png",
+          "sha256": "bfdf1b888e8ded786348a962fbd134d1decba2a32a2dd7fa92326f5c4eab6603",
+          "mae_rgb_normalized": 0.0,
+          "changed_pixel_fraction": 0.0
+        },
+        {
+          "tick": 1,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-high/frame_00001.png",
+          "sha256": "aeedcb346d3551111b0014ba3a090533d2547b7bb523fa4f0d631b814f4e6318",
+          "mae_rgb_normalized": 6.824448529411764e-05,
+          "changed_pixel_fraction": 0.0002416992187499467
+        },
+        {
+          "tick": 10,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-high/frame_00010.png",
+          "sha256": "e8100af6e273f55d77be66f3bcc30974bcaf414cbf527f88d72acb1ab0415851",
+          "mae_rgb_normalized": 0.003051011029411765,
+          "changed_pixel_fraction": 0.0076245117187500044
+        },
+        {
+          "tick": 30,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-high/frame_00030.png",
+          "sha256": "b06dc90e5d9ca2bff1fdd52987626e25d722e5a74a62172eed50fd7962b983f4",
+          "mae_rgb_normalized": 0.003000229779411765,
+          "changed_pixel_fraction": 0.007910156250000022
+        },
+        {
+          "tick": 60,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-high/frame_00060.png",
+          "sha256": "94968160f189375da0928c2e91baeda2754dc6bb9e70cb126d3d5474206f7641",
+          "mae_rgb_normalized": 0.0012384535845588235,
+          "changed_pixel_fraction": 0.005317382812500049
+        },
+        {
+          "tick": 120,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-high/frame_00120.png",
+          "sha256": "458f1852bd54813e70738c0e3a4bf018207e75f3b672d20b491c3e419da342fd",
+          "mae_rgb_normalized": 0.0011960592830882353,
+          "changed_pixel_fraction": 0.005756835937499982
+        }
+      ],
+      "native_sha256": "60d01ad1bbc2f9444da7ed341c21df05b9c2489b0a74fc78ffc444c7b5cb3eb8"
+    },
+    {
+      "id": "retention-one",
+      "spring": 0.025,
+      "velocity_retention": 1.0,
+      "max_x_displacement": 139.44652,
+      "peak_tick": 17,
+      "velocity_sign_reversals": [
+        18,
+        39,
+        58,
+        78,
+        98,
+        118
+      ],
+      "step_direction_reversals": [
+        18,
+        39,
+        58,
+        78,
+        98,
+        118
+      ],
+      "samples": [
+        {
+          "tick": 0,
+          "x": 96.0,
+          "velocity": 0.0,
+          "target_x": 196.0
+        },
+        {
+          "tick": 1,
+          "x": 98.4,
+          "velocity": 2.4,
+          "target_x": 192.0
+        },
+        {
+          "tick": 10,
+          "x": 187.84117,
+          "velocity": 12.033177,
+          "target_x": 162.48328
+        },
+        {
+          "tick": 30,
+          "x": 88.300446,
+          "velocity": -15.529958,
+          "target_x": 125.385765
+        },
+        {
+          "tick": 60,
+          "x": 191.31491,
+          "velocity": -5.1119137,
+          "target_x": 104.63523
+        },
+        {
+          "tick": 120,
+          "x": 12.037958,
+          "velocity": 5.7734327,
+          "target_x": 96.74568
+        }
+      ],
+      "frames": [
+        {
+          "tick": 0,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-one/frame_00000.png",
+          "sha256": "bfdf1b888e8ded786348a962fbd134d1decba2a32a2dd7fa92326f5c4eab6603",
+          "mae_rgb_normalized": 0.0,
+          "changed_pixel_fraction": 0.0
+        },
+        {
+          "tick": 1,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-one/frame_00001.png",
+          "sha256": "214f7d2ad8ce31b16f7f069930b0b7380712f251f02dd45c49e7db0a5f20a192",
+          "mae_rgb_normalized": 0.00010236672794117647,
+          "changed_pixel_fraction": 0.0003076171875000533
+        },
+        {
+          "tick": 10,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-one/frame_00010.png",
+          "sha256": "98dac4acc4dd29f5dc19a48e62c438735ac2af02a56d976151081ef66fa10495",
+          "mae_rgb_normalized": 0.0042334846047794115,
+          "changed_pixel_fraction": 0.010656738281250022
+        },
+        {
+          "tick": 30,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-one/frame_00030.png",
+          "sha256": "c99f98666744b47ba89bbd01781af7912ce0e74532ba791df6f2df6165191233",
+          "mae_rgb_normalized": 0.005619973575367647,
+          "changed_pixel_fraction": 0.013359374999999951
+        },
+        {
+          "tick": 60,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-one/frame_00060.png",
+          "sha256": "9bff18078012931594a5fb8a5dd77e19151d5179c6491ae08f8be5beb1aa96c7",
+          "mae_rgb_normalized": 0.0051875,
+          "changed_pixel_fraction": 0.013623046875000044
+        },
+        {
+          "tick": 120,
+          "path": ".work/parameter-experiments/cp10-spring-response/retention-one/frame_00120.png",
+          "sha256": "71c95400c53545e1ab3bcf7773e6b4d40865ae3d475731f0c82553124a7e9f61",
+          "mae_rgb_normalized": 0.005639859068627451,
+          "changed_pixel_fraction": 0.013842773437499956
+        }
+      ],
+      "native_sha256": "d9084dcb33640ecea261ce02ea9575fd13e786db90d974f51abdffe7bb3d7c4e"
+    }
+  ],
+  "visual_review": "pending"
+}

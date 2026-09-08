@@ -16,6 +16,11 @@ from typing import Any
 
 from PIL import Image, ImageChops, ImageFilter, ImageStat
 
+try:
+    from .benchmark_evidence import load_evidence, validate_manifest_evidence
+except ImportError:
+    from benchmark_evidence import load_evidence, validate_manifest_evidence
+
 METRIC_VERSION = 1
 THUMBNAIL_SIZE = (256, 256)
 
@@ -166,7 +171,16 @@ def merge_gates(profile: dict[str, Any], case: dict[str, Any]) -> dict[str, Any]
 
 
 def run_benchmark(manifest: dict[str, Any], reference_root: Path, candidate_root: Path,
-                  target: str, match: str | None = None) -> dict[str, Any]:
+                  target: str, match: str | None = None, *, mode: str = "development",
+                  evidence_root: Path | None = None) -> dict[str, Any]:
+    if mode not in {"development", "release"}:
+        raise ValueError(f"unknown benchmark mode {mode!r}")
+    if mode == "release":
+        if match is not None:
+            raise ValueError("release mode forbids --match; evaluate the complete manifest")
+        if evidence_root is None:
+            raise ValueError("release mode requires the public evidence root")
+        validate_manifest_evidence(manifest, load_evidence(evidence_root), release=True)
     if manifest.get("metric_version") != METRIC_VERSION:
         raise ValueError(
             f"unsupported metric_version {manifest.get('metric_version')!r}; runner supports {METRIC_VERSION}"
@@ -176,6 +190,9 @@ def run_benchmark(manifest: dict[str, Any], reference_root: Path, candidate_root
     targets = manifest.get("targets", {})
     if not isinstance(profiles, dict) or not isinstance(cases, list):
         raise ValueError("manifest must contain object 'profiles' and array 'cases'")
+    identifiers = [case.get("id") for case in cases]
+    if len(set(identifiers)) != len(identifiers):
+        raise ValueError("manifest contains duplicate case identities")
     if targets and target not in targets:
         raise ValueError(f"unknown target {target!r}; expected one of {', '.join(sorted(targets))}")
     pattern = re.compile(match) if match else None
@@ -223,6 +240,7 @@ def run_benchmark(manifest: dict[str, Any], reference_root: Path, candidate_root
         results.append(result)
 
     required_results = [result for result in results if result["required"]]
+    full_required_count = sum(bool(case.get("required", True)) for case in cases)
     present_results = [result for result in results if result["metrics"] is not None]
     required_present = [result for result in required_results if result["metrics"] is not None]
     required_passed = [result for result in required_results if result["status"] == "passed"]
@@ -250,14 +268,22 @@ def run_benchmark(manifest: dict[str, Any], reference_root: Path, candidate_root
         "missing_candidates": sum(result["status"] in {"missing", "informational-missing"} for result in results),
         "required_passed": len(required_passed),
         "required_failed": len(required_failed),
-        "coverage": round(len(required_present) / len(required_results), 6) if required_results else 1.0,
-        "pass_rate": round(len(required_passed) / len(required_results), 6) if required_results else 1.0,
+        "coverage": round(len(required_present) / len(required_results), 6) if required_results else 0.0,
+        "pass_rate": round(len(required_passed) / len(required_results), 6) if required_results else 0.0,
+        "full_manifest_cases": len(cases),
+        "full_manifest_required_cases": full_required_count,
+        "full_manifest_coverage": round(len(required_present) / full_required_count, 6) if full_required_count else 0.0,
+        "full_manifest_pass_rate": round(len(required_passed) / full_required_count, 6) if full_required_count else 0.0,
         "mean_score_present_required": round(sum(scores) / len(scores), 3) if scores else None,
-        "passed": not required_failed,
+        "passed": bool(required_results) and not required_failed,
+        "evaluation_failures": [] if required_results else ["no required cases selected"],
     }
+    summary["release_certified"] = mode == "release" and summary["passed"]
     return {
         "schema_version": 1,
         "metric_version": METRIC_VERSION,
+        "mode": mode,
+        "evidence": manifest.get("source", {}).get("evidence"),
         "target": target,
         "target_contract": targets.get(target),
         "manifest_summary": manifest.get("summary", {}),
@@ -293,7 +319,12 @@ def markdown_report(report: dict[str, Any]) -> str:
         "",
         f"Target: `{report['target']}`",
         "",
-        f"Overall: **{'PASS' if summary['passed'] else 'FAIL'}**",
+        f"Mode: **{report['mode']}**; selection: `{report['selection'] or 'all cases'}`",
+        "",
+        f"Selected evaluation: **{'PASS' if summary['passed'] else 'FAIL'}**; "
+        f"release certified: **{'yes' if summary['release_certified'] else 'no'}**",
+        "",
+        f"Evaluation failures: {'; '.join(summary['evaluation_failures']) or 'none'}",
         "",
         "| measure | value |",
         "|---|---:|",
@@ -303,7 +334,10 @@ def markdown_report(report: dict[str, Any]) -> str:
         f"| missing candidates | {summary['missing_candidates']} |",
         f"| required passed | {summary['required_passed']} |",
         f"| required failed | {summary['required_failed']} |",
-        f"| coverage | {summary['coverage']:.1%} |",
+        f"| selected required coverage | {summary['coverage']:.1%} |",
+        f"| full manifest required cases | {summary['full_manifest_required_cases']} |",
+        f"| evaluated coverage of full manifest | {summary['full_manifest_coverage']:.1%} |",
+        f"| evaluated pass rate of full manifest | {summary['full_manifest_pass_rate']:.1%} |",
         f"| pass rate | {summary['pass_rate']:.1%} |",
         f"| mean score, present required | {summary['mean_score_present_required'] if summary['mean_score_present_required'] is not None else '—'} |",
         "",
@@ -333,6 +367,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", type=Path, default=Path("reports/benchmark-result.json"))
     parser.add_argument("--markdown", type=Path, default=Path("reports/benchmark-result.md"))
     parser.add_argument("--match", help="run only case IDs matching this regular expression")
+    parser.add_argument("--mode", choices=("development", "release"), default="development")
+    parser.add_argument("--evidence-root", type=Path, default=Path("survey"),
+                        help="public snapshot for release identity/completeness checks")
     return parser.parse_args()
 
 
@@ -348,7 +385,11 @@ def main() -> None:
         reference_root = Path(configured)
     reference_root = reference_root.expanduser().resolve()
     candidate_root = args.candidate_root.expanduser().resolve()
-    report = run_benchmark(manifest, reference_root, candidate_root, args.target, args.match)
+    try:
+        report = run_benchmark(manifest, reference_root, candidate_root, args.target, args.match,
+                               mode=args.mode, evidence_root=args.evidence_root.expanduser().resolve())
+    except (ValueError, OSError) as error:
+        raise SystemExit(str(error)) from error
     output = args.output.expanduser().resolve()
     markdown = args.markdown.expanduser().resolve()
     atomic_json(output, report)
@@ -356,8 +397,10 @@ def main() -> None:
     markdown.write_text(markdown_report(report))
     summary = report["summary"]
     print(
-        f"{'PASS' if summary['passed'] else 'FAIL'}: {summary['required_passed']}/{summary['required_cases']} "
+        f"{args.mode}: {'PASS' if summary['passed'] else 'FAIL'}: {summary['required_passed']}/{summary['required_cases']} "
         f"required cases, coverage={summary['coverage']:.1%}, "
+        f"full-manifest coverage={summary['full_manifest_coverage']:.1%}, "
+        f"release-certified={summary['release_certified']}, "
         f"mean_score={summary['mean_score_present_required']}"
     )
     raise SystemExit(0 if summary["passed"] else 1)

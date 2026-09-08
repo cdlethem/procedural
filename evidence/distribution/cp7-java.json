@@ -1,0 +1,108 @@
+{
+  "status": "passed",
+  "scope": "Local CP7 Java starter finalization: current documentation/catalog additions only; inherited JARs, examples, properties and notices verified byte-identical by uncompressed payload. Native P3D acceptance is bound separately.",
+  "source_archive": {
+    "path": ".work/dist/cp7/java-savefix/procedurals-processing-0.7.0.zip",
+    "sha256": "43508f3ff9155c2da42599a1a50c69fba2806ce2c8cf529687da9beaac983dc9"
+  },
+  "final_archive": {
+    "path": ".work/dist/cp7/final/procedurals-processing-0.7.0.zip",
+    "sha256": "0a0c6e76f30f0ae8b9eb5b074ca26af117038230993452c9566b7bcc2b17f499"
+  },
+  "documents": {
+    "procedurals/docs/getting-started.md": {
+      "source": "docs/getting-started.md",
+      "sha256": "38cd131271f2ee66fab21487642351630f4b548b0bb30d1d2f9a6d294ec1da09"
+    },
+    "procedurals/docs/path-marks.md": {
+      "source": "docs/path-marks.md",
+      "sha256": "c8408c54429bfc5b140ae5ecd61c1ef6d290510a3900e85dce138370714555a3"
+    },
+    "procedurals/docs/placement-marks.md": {
+      "source": "docs/placement-marks.md",
+      "sha256": "7c625d7739d61d125bfb595b3cf45d1c6be960797153e2a9aff6bec57029b8c7"
+    },
+    "procedurals/docs/region-marks.md": {
+      "source": "docs/region-marks.md",
+      "sha256": "8614f996dea971a19c9a0bc2f737ec06bd1854e1f71de1940964ec3797ca86d3"
+    },
+    "procedurals/docs/grain-marks.md": {
+      "source": "docs/grain-marks.md",
+      "sha256": "49f7a45488785e1892fe7a555ce5b9285464ac924fdbd3f5ac61f1a4015aaf6b"
+    },
+    "procedurals/docs/branch-marks.md": {
+      "source": "docs/branch-marks.md",
+      "sha256": "b0f60cfb7d9e5a1c203073e73a32574c5cdfdee64a91725ea9b988b202247900"
+    },
+    "procedurals/docs/profile-marks.md": {
+      "source": "docs/profile-marks.md",
+      "sha256": "8890f1f7200e4d4563114ee2f4a26a19dde1bd9ee230a1fb6d22f111afb0c130"
+    },
+    "procedurals/docs/installing-profile-marks.md": {
+      "source": "docs/installing-profile-marks.md",
+      "sha256": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429"
+    },
+    "procedurals/docs/reference/operations.md": {
+      "source": "docs/reference/operations.md",
+      "sha256": "14806368c4c4c6de39afbc31142ace4922dc069198b63e339f97e3773c0c9e69"
+    },
+    "procedurals/catalog/operations/cyclic-palette.json": {
+      "source": "catalog/operations/cyclic-palette.json",
+      "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
+    },
+    "procedurals/catalog/operations/gradient-noise-2d-01.json": {
+      "source": "catalog/operations/gradient-noise-2d-01.json",
+      "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+    },
+    "procedurals/catalog/operations/gradient-path.json": {
+      "source": "catalog/operations/gradient-path.json",
+      "sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c"
+    },
+    "procedurals/catalog/operations/ordered-circle-filter.json": {
+      "source": "catalog/operations/ordered-circle-filter.json",
+      "sha256": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083"
+    },
+    "procedurals/catalog/operations/radial-profile-surface.json": {
+      "source": "catalog/operations/radial-profile-surface.json",
+      "sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa"
+    },
+    "procedurals/catalog/operations/regular-grid.json": {
+      "source": "catalog/operations/regular-grid.json",
+      "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+    },
+    "procedurals/catalog/operations/seeded-circle-placement.json": {
+      "source": "catalog/operations/seeded-circle-placement.json",
+      "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267"
+    },
+    "procedurals/catalog/operations/seeded-endpoint-branches.json": {
+      "source": "catalog/operations/seeded-endpoint-branches.json",
+      "sha256": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881"
+    },
+    "procedurals/catalog/operations/seeded-quadrant-partition.json": {
+      "source": "catalog/operations/seeded-quadrant-partition.json",
+      "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1"
+    },
+    "procedurals/catalog/operations/seeded-triangle-points.json": {
+      "source": "catalog/operations/seeded-triangle-points.json",
+      "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+    },
+    "procedurals/catalog/operations/triangle-coordinate-map.json": {
+      "source": "catalog/operations/triangle-coordinate-map.json",
+      "sha256": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f"
+    }
+  },
+  "preserved_non_document_members": 22,
+  "seven_starters_present": true,
+  "corrected_pde": {
+    "path": "packages/java-processing/examples/ProfileMarks/ProfileMarks.pde",
+    "sha256": "0c27374c075a0c325a1e8b2bd785df0d06fc4c91f901206ffa1c008112785bc4",
+    "archive_member": "procedurals/examples/ProfileMarks/ProfileMarks.pde",
+    "matches_current": true
+  },
+  "installed_p3d_result": {
+    "path": "evidence/reproductions/cp7-p3d-savefix/result.json",
+    "sha256": "a83dfd3c27cb153d281be37c03873646235779a296a381013b47d4b8b0a8fc6e",
+    "status": "passed",
+    "scope": "Installed ProfileMarks save-thread correction; public Processing4.5.6 software P3D edit/transfer/reset/save workflow."
+  }
+}

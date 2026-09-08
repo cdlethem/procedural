@@ -1,0 +1,20 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "result_sha256": "0eef6caacdabe1c9de19b77e35b0bcadc89f7eeab0106a48c2a0f583eed020f5",
+  "scope": "30 independent line pools,90000attempts each,1920P2D density1; scoped technique/workload acceptance",
+  "observations": [
+    "Root viewed full workload image: overlapping dense branching structures, fine coloured lines and terminal dots visible",
+    "All30 retained pools accounted for;2700000attempts,594036segments,371693cuts,2328307skips",
+    "Generation/config/checksum/accounting0.271s; render/readback/PNGsave1.072s; wholeprocess3.33s",
+    "Retained coordinate+flag payload estimate19603188bytes; observed heap afterrender191795200bytes under512MiB configured max"
+  ],
+  "limits": [
+    "Single observed desktop run, no universal latency or peakmemory claim",
+    "Independent pool heap peak sum is not simultaneous maximum",
+    "Source-like workload uses shared palette, single-colour lines and uniform tip sizes; source endpoint interpolation and per-pool style differ",
+    "No source pixels/RNG equivalence or complete brotes recreation count",
+    "Ports remain deferred"
+  ]
+}

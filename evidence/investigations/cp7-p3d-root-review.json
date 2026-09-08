@@ -1,0 +1,41 @@
+{
+  "status": "scoped-context-and-depth-evidence-with-warnings",
+  "original_attempt_status": "failed",
+  "original_failure": "P3D probe emitted unexpected stderr; the frozen no-stderr acceptance condition was not met and remains failed. No retry or overwrite authorized.",
+  "input_sha256": {
+    "evidence/investigations/cp7-p3d-plan.json": "179557ac9d54dd8ab97dc410087e428ed688ff071d98376096351c6a035993d6",
+    "evidence/investigations/cp7-p3d-result.json": "a4a98b0982f03fa5712d57ea0e5f793e105fa1d6cb3aa4ac000804859dcbce64",
+    ".work/experiments/cp7-p3d-capability/native.json": "55259f14c484c4cdcc758f23ec23bb61b979e18c4051f296b457e4b7c2c29dd7",
+    ".work/experiments/cp7-p3d-capability/p3d-depth.png": "a84cb7085fa9d17a3ac4382bd0472693d3db9d09a8ed845e2424c40aab1cd554",
+    ".work/experiments/cp7-p3d-capability/stderr.log": "6a3c13480a47f8e5b0f65668adcc9d620ce8ea185755ca25320d8355b6e84bcc",
+    "tools/diagnostics/cp7/P3DCapabilityProbe.java": "7d4d1a210503c8e54efc58850be55179c3ce28660f3a2cb0e610d1111b92083d",
+    "tools/diagnostics/cp7/check_p3d_runtime.py": "2121c49a10b299b7b8225a133d0dc040085506c5ae035fd9fd370ac002d0c68f"
+  },
+  "root_verified": [
+    "Read terminal result and complete stderr; native exit0 and inputbindings identical.",
+    "Ran the saved-image checker directly against the original PNG/native JSON;320squareopaque image, red foreground160160, blue rear100160, background2020 all match native sample values.",
+    "Viewed the PNG: centered red foreground square visibly occludes the larger blue rear square; background is distinct."
+  ],
+  "runtime": {
+    "display": ":99",
+    "java_version": "17.0.20.1",
+    "os_name": "Linux",
+    "os_arch": "amd64"
+  },
+  "gl": {
+    "vendor": "Mesa",
+    "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+    "version": "4.5 (Compatibility Profile) Mesa 26.0.8-1ubuntu0.3"
+  },
+  "warnings": [
+    "EGL could not get DRI3 device and requested an X server with DRI3 for acceleration.",
+    "JOGL shutdown reported3openX11display connections. Resource-clean shutdown is not established."
+  ],
+  "decision": "Proceed with private non-shader P3D mesh comparison preparation on this explicitly observed llvmpipe environment. The new experiment must register its warning policy before running; do not retroactively pass this frozen probe or infer hardware/GPU or general renderer support.",
+  "future_warning_policy": "For the future private comparison only, root may preregister the exact two observed libEGL warning lines and the observed X11Util shutdown summary/display-entry pattern as recorded nonfatal environment diagnostics, while requiring exit0, complete frames, stable bindings, context identity and correct geometry/pixels. Any other stderr or context/native/draw failure remains a failed attempt. This is not a production clean-lifecycle policy.",
+  "remaining": [
+    "Review private ProfileChoices Java code and inspect output.",
+    "Build/freeze one bounded private visual executor and exact warning policy; run once and inspect all7images.",
+    "Choose operation and normal/style boundary from actual visual/caller evidence before admitting CP7."
+  ]
+}

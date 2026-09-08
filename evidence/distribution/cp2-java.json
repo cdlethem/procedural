@@ -1,0 +1,211 @@
+{
+  "status": "passed",
+  "package_version": "0.2.0",
+  "scope": "Local Processing installation and extracted JAR/PathMarks consumer only; no new native rendering",
+  "input_sha256": {
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+    "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
+    "packages/java-processing/examples/PathMarks/PathMarks.pde": "d3bc9311cc0161644657e0243498dc10d98ebba2688714c679650173a9d15a15",
+    "packages/java-processing/examples/PathMarks/PathMarksCanvas.java": "4190d0f07f48b10b916e5a499ca8a8afbd9c54a35e94066d07dfe1b23f5ce62d",
+    "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "fixtures/operations/gradient-path.json": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+    "evidence/reproductions/cp2-java2d/review.json": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    "tests/native/PathMarksPdeConfiguration.java": "2d92eec0d85495620e63f2e5f11dc3961f8756f634cb7bd7b49b78eee8edbaaa",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "tools/build_path_marks_java.py": "56eed1666731e97137995b01b35301c7e8f4159d4b7fab0a0ad8364651ff4c29",
+    "tools/build_java_artifacts.py": "6776f76f5d8c6a3a842aa136643a74440c23edc60f422737888aa6a631f918f2",
+    "design/cp2-distribution-plan.md": "c05f74661db4b58c3f2f91e7c40b25b3e842db5c133d53c3564dbfb460f392f0"
+  },
+  "artifacts": {
+    "core": {
+      "path": ".work/dist/cp2/java/procedurals-core-0.2.0.jar",
+      "sha256": "cbbbfd08dbe442595f7c18022e1a03d95058fc177c3107d647d668dc22d4291c",
+      "entries": [
+        {
+          "path": "META-INF/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "META-INF/MANIFEST.MF",
+          "sha256": "0b442902586bc8c1dd23c197dee0f6e409e61d71cc6292ac755ad5203b247ad4"
+        },
+        {
+          "path": "META-INF/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "org/procedurals/color/CyclicPalette$PaletteException.class",
+          "sha256": "0b56e0735b993ee67ab28e9a9908a1d8ed578c462f670922cf1a6197ea907769"
+        },
+        {
+          "path": "org/procedurals/color/CyclicPalette.class",
+          "sha256": "a6da80d2790295c031c70fcbef23ecd7c524ca2ad5ca34597f36fa76ce6314c4"
+        },
+        {
+          "path": "org/procedurals/fields/GradientNoise2D01$NoiseException.class",
+          "sha256": "4bfde8858a309400e9afe8f23db3dd3dd11fead18a18f7defdfdb507050be23e"
+        },
+        {
+          "path": "org/procedurals/fields/GradientNoise2D01.class",
+          "sha256": "85319ef3187624f438b9d5a5e68b90d15ffe825ce93434eee120545d3d47a91a"
+        },
+        {
+          "path": "org/procedurals/internal/DrawingFrameState$1.class",
+          "sha256": "73381d5f124b069b8867d03b3e70a3dace59fc43e3083ae88a40a7c84e3c6b28"
+        },
+        {
+          "path": "org/procedurals/internal/DrawingFrameState$BatchPlan.class",
+          "sha256": "4252da9cc174cc9b211fd786389b393685f1677f866156b46322177dd785abd6"
+        },
+        {
+          "path": "org/procedurals/internal/DrawingFrameState$BeginPlan.class",
+          "sha256": "ad8bc1f134ee179df0195082054093e745637eef002f6b6cd27fd9cea3667b1e"
+        },
+        {
+          "path": "org/procedurals/internal/DrawingFrameState$EndPlan.class",
+          "sha256": "7ffc75fc17c5d96783e0aaf0d6a08212b6a33d6d8d2616b1b2a84455f33dc116"
+        },
+        {
+          "path": "org/procedurals/internal/DrawingFrameState$FrameError.class",
+          "sha256": "fce9af3bbfc76289159e21f8b874f2a6e5f959804ad983a8a9a926dc7ed61d9a"
+        },
+        {
+          "path": "org/procedurals/internal/DrawingFrameState$Kind.class",
+          "sha256": "4da5a2ecf924651878fb1e158df38334cf5224416c266fe1a1d7bec4efbfc9cf"
+        },
+        {
+          "path": "org/procedurals/internal/DrawingFrameState$Plan.class",
+          "sha256": "b50095b63add129169a0547663d670f0ced6d8418c119d5a4868fd7089543165"
+        },
+        {
+          "path": "org/procedurals/internal/DrawingFrameState$Slot.class",
+          "sha256": "3bdfd9d064adf3af2bce20680fe78ca0b0edaccf79133b6f4f0d2ece13d69725"
+        },
+        {
+          "path": "org/procedurals/internal/DrawingFrameState$State.class",
+          "sha256": "207fa3908bef60d30ab2fd6414cb5035b16e7e1cdd5bf85f7d4c996b37492e27"
+        },
+        {
+          "path": "org/procedurals/internal/DrawingFrameState.class",
+          "sha256": "d1cf643d67be78074aa392b2ddc0ef5590ea526b446cc4d850ca3d9b50eda705"
+        },
+        {
+          "path": "org/procedurals/internal/DrawingValues$DrawingError.class",
+          "sha256": "e7b4c39a3a820f225945c04447958876662279ba270479302d2574d9340a612d"
+        },
+        {
+          "path": "org/procedurals/internal/DrawingValues.class",
+          "sha256": "186ed5e2a4ce0e0e2b4380c2624f6f639f4f9d78199f56071e4e5bb59fe4aba1"
+        },
+        {
+          "path": "org/procedurals/layout/RegularGrid$GridException.class",
+          "sha256": "3f4ecc4f6a6e0aa11a7221286a7639fc4451d88d4997490a279b7b10473dc86e"
+        },
+        {
+          "path": "org/procedurals/layout/RegularGrid.class",
+          "sha256": "2505ef3a48886e638e12aec7afe0bc74566a1a015b5a5935870486ffc730e747"
+        },
+        {
+          "path": "org/procedurals/paths/GradientPath2D$PathException.class",
+          "sha256": "65ac301df7dcc9be81bc3f454ce97947140995376750adfc0f3f49ff08332a13"
+        },
+        {
+          "path": "org/procedurals/paths/GradientPath2D$TraceException.class",
+          "sha256": "9604ea0788e1cda47d311d3820211ec70831e7f36db31709b9de07259177f090"
+        },
+        {
+          "path": "org/procedurals/paths/GradientPath2D.class",
+          "sha256": "8dcb12c612adfb3853cee4e92c2a744c0e572a9fcbec37dc4348c1b2d0c05e84"
+        }
+      ]
+    },
+    "adapter": {
+      "path": ".work/dist/cp2/java/procedurals-processing-adapter-0.2.0.jar",
+      "sha256": "2530bdbf507b0d2a7494c160c5d322b515fdc121cb91710c0f810cfbf53a50a6",
+      "entries": [
+        {
+          "path": "META-INF/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "META-INF/MANIFEST.MF",
+          "sha256": "0b442902586bc8c1dd23c197dee0f6e409e61d71cc6292ac755ad5203b247ad4"
+        },
+        {
+          "path": "META-INF/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "org/procedurals/processing/internal/Java2DFrame.class",
+          "sha256": "7d96bb6bf5126a39340109f04ee6d9084271fe3245b62184abc171e8d4faf9df"
+        }
+      ]
+    },
+    "starter": {
+      "path": ".work/dist/cp2/java/procedurals-processing-0.2.0.zip",
+      "sha256": "4e3311313e28cb2c4a2d62b83daa3e1e1c7569a16f05f24c326399bc332d84ef",
+      "entries": [
+        {
+          "path": "procedurals/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "procedurals/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "procedurals/examples/PathMarks/PathMarkComposition.java",
+          "sha256": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256"
+        },
+        {
+          "path": "procedurals/examples/PathMarks/PathMarks.pde",
+          "sha256": "d3bc9311cc0161644657e0243498dc10d98ebba2688714c679650173a9d15a15"
+        },
+        {
+          "path": "procedurals/examples/PathMarks/PathMarksCanvas.java",
+          "sha256": "4190d0f07f48b10b916e5a499ca8a8afbd9c54a35e94066d07dfe1b23f5ce62d"
+        },
+        {
+          "path": "procedurals/examples/PathMarks/README.md",
+          "sha256": "1aaee6b1905222343a6894e7a8e85c7367b810b164826b1be8bdae933ab5ca1e"
+        },
+        {
+          "path": "procedurals/library.properties",
+          "sha256": "a46316cf941df206e57f93ab4e2c802e9c7e94747410fb830edaaf8923c7c808"
+        },
+        {
+          "path": "procedurals/library/procedurals-processing-adapter.jar",
+          "sha256": "2530bdbf507b0d2a7494c160c5d322b515fdc121cb91710c0f810cfbf53a50a6"
+        },
+        {
+          "path": "procedurals/library/procedurals.jar",
+          "sha256": "cbbbfd08dbe442595f7c18022e1a03d95058fc177c3107d647d668dc22d4291c"
+        }
+      ]
+    }
+  },
+  "consumer": {
+    "fixture": "evolving-field",
+    "fixture_output_passed": true,
+    "serialization_replay_passed": true,
+    "artifact_origin": "code_source=file:/home/colin/dev/procedural/.work/dist/cp2/java/consumer/procedurals/library/procedurals.jar",
+    "official_pde_compilation_passed": true,
+    "binary64_distance_edits_passed": true
+  },
+  "starter_transformations": [],
+  "metadata": "Authored package metadata 0.2.0; operation contract version remains 0.1.0",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)"
+}

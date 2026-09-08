@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "scope": "Official Processing 4.5.6 RegionMarks PDE preprocessing and core-count/configuration only; no GUI lifecycle or render was run.",
+  "input_sha256": {
+    ".work/dist/cp4/java/consumer/procedurals/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+    "tests/native/RegionMarksPdeConfiguration.java": "2108a91859a2fe99374408af333c7c8b549df6edf65749679e42ed96781a3eb4",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    ".work/dist/cp4/java/consumer/procedurals/examples/RegionMarks/RegionMarks.pde": "6d41157878f7f6ca82b6f6b663a05ea13b16214b525a8fe25047243901d552ec",
+    "packages/java-processing/examples/RegionMarks/RegionMarks.pde": "6d41157878f7f6ca82b6f6b663a05ea13b16214b525a8fe25047243901d552ec",
+    "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "tools/run_grid_conformance.py": "392d23b61f713c7d204e215a9b468874f78b213741dc1e163b4b5fcb5553b180",
+    "tools/check_region_marks_pde.py": "9da0393157df396e1e89264b2ba51e34c982e8112b0d804b092345bedd543c88",
+    ".work/dist/cp4/java/consumer/procedurals/library/procedurals.jar": "613cf476945213ea55846bb400eefa1d21a24ef52a465674c654a34157b207f7",
+    "evidence/distribution/cp4-java.json": "09902920f8ca32873f616678440d7493158a1121282f6869216e2f7be9cdb790",
+    "evidence/conformance/quadrant-partition-java.json": "2f87b8f2041b3f3203894c9a0820f3a9f9f6bb4d542b002eddf0f530e77c4395"
+  },
+  "generated_java_sha256": "e6c0a413f1e8b38675166819b60eb3f1cb84187ec470c00d461595227d6d0d34",
+  "class_sha256": "d0e845c1c8ef3f0b6cfcccc7c8fccfb7a0ba44fa58366dac542f012079c5d66d",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "build": ".work/build/region-marks-pde-installed",
+  "core_conformance": {
+    "path": "evidence/conformance/quadrant-partition-java.json",
+    "sha256": "2f87b8f2041b3f3203894c9a0820f3a9f9f6bb4d542b002eddf0f530e77c4395"
+  },
+  "installed_library": {
+    "path": ".work/dist/cp4/java/consumer/procedurals/library/procedurals.jar",
+    "sha256": "613cf476945213ea55846bb400eefa1d21a24ef52a465674c654a34157b207f7",
+    "distribution_report": "evidence/distribution/cp4-java.json",
+    "distribution_report_sha256": "09902920f8ca32873f616678440d7493158a1121282f6869216e2f7be9cdb790"
+  }
+}

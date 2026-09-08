@@ -1,0 +1,214 @@
+{
+  "profile": "drawing.fresh-raster-2d",
+  "version": "0.1.0",
+  "scope": "Schema only; no semantic/native conformance",
+  "cases": [
+    {
+      "id": "segment",
+      "surface": "command",
+      "value": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "valid": true
+    },
+    {
+      "id": "quad",
+      "surface": "command",
+      "value": {
+        "kind": "quad2",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "rgb": 16777215,
+        "opacity8": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "environment",
+      "surface": "environment",
+      "value": {
+        "width": 640,
+        "height": 640,
+        "density": 1,
+        "background": 0
+      },
+      "valid": true
+    },
+    {
+      "id": "empty-batch",
+      "surface": "batch",
+      "value": [],
+      "valid": true
+    },
+    {
+      "id": "unknown-kind",
+      "surface": "command",
+      "value": {
+        "kind": "circle",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "valid": false
+    },
+    {
+      "id": "unknown-cap",
+      "surface": "command",
+      "value": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "square"
+      },
+      "valid": false
+    },
+    {
+      "id": "bool-colour",
+      "surface": "command",
+      "value": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": true,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "valid": false
+    },
+    {
+      "id": "negative-width",
+      "surface": "command",
+      "value": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": -1,
+        "cap": "round"
+      },
+      "valid": false
+    },
+    {
+      "id": "extra-key",
+      "surface": "command",
+      "value": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round",
+        "foo": 0
+      },
+      "valid": false
+    },
+    {
+      "id": "string-coordinate",
+      "surface": "command",
+      "value": {
+        "kind": "segment2",
+        "from": [
+          "0",
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "valid": false
+    },
+    {
+      "id": "equal-endpoints-schema-only",
+      "surface": "command",
+      "value": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          0,
+          0
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "valid": true,
+      "semantic_expected": "INVALID_COMMAND"
+    }
+  ]
+}

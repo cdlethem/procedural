@@ -1,0 +1,38 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Momito structural/technique recreation using existing Java operations; P3D960 density1",
+  "original": "2019/generativos/momito",
+  "coverage_status": "demonstrated-structural",
+  "new_core_operations": 0,
+  "implementation_sha256": {
+    "packages/java/examples/ReliefMarks/ReliefComposition.java": "748ab5545966f495d7fa51b55f50fbe8822ef8415a21c8c29e406e01be712bf5",
+    "packages/java-processing/examples/ReliefMarks/ReliefMarks.pde": "a5b471e567a25bc213a7da31d39f4ebf3fabdb9baba8e26a048c98989606d4aa"
+  },
+  "evidence_sha256": {
+    "evidence/reproductions/r1-p3d/result.json": "5f00405d07d6a400d2c5b7e6c73e297c398e435cc1d73281c1af624f125ce9e7",
+    "evidence/reproductions/r1-p3d/evaluated-result.json": "239cedc8bebdcf48c1513456d77345e7d0b4a2dba669149d23f0c82b3b21c414",
+    "evidence/reproductions/r1-p3d/plan.json": "246feabbe47d4da8d124221e201d9874849603a0b330c6aea15c7b59c092ba83",
+    "design/capabilities/momito-recreation-acceptance.md": "132411985eeae920d61e13d53d5ed2acf3f689f77de282e2ec8c77a5a2c62d48"
+  },
+  "visual_review": {
+    "inspected_full_resolution": {
+      "baseline": "ffb5ef586d54bb70b28eb2bef54152e32f4d8cbcb44e3be0d64a00edbdccc201",
+      "palette": "00d74ce28ecd543b45541e55d9f47815bb2b62dfc2115a1782332001b2a270ea",
+      "tall": "51b465453c18b25012f94dd3aa9ea9474fac3bc40fbb76a8bb90626ae1697f79",
+      "new-seed": "9ca6ad0a177284771c22b5efc989ebfb12888f64be59a5dd1d00cd6b5716ca64"
+    },
+    "observations": [
+      "Clustered multiscale sloped facets and size-linked pale spikes are visible in oblique P3D.",
+      "Palette retains layout; height alters relief shading; seed changes layout and spikes.",
+      "All four distinct pixel contents inspected; reset/save pixels match although PNG encodings need not."
+    ]
+  },
+  "postprocessing_corrections": "Original failed result preserved; inherited640PNG and save glob fixed by re-evaluating captured images, no rerender.",
+  "limits": [
+    "No source-pixel, RNG-stream or canonical-face-order equivalence",
+    "Human usability untested",
+    "Packaging pending"
+  ]
+}

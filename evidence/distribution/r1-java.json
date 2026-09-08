@@ -1,0 +1,26 @@
+{
+  "status": "staged",
+  "review_status": "pending_root",
+  "input_sha256": {
+    "tools/build_relief_marks_java.py": "e54210f1cd1771c80fb653e5252565db11fefad9c993012b7e69e9c17a6f5c8e",
+    "tools/build_lattice_marks_java.py": "cf063d540ff4c722d01f5a861665f9f08486b32e46586d5478bccba39d11d91b",
+    "evidence/distribution/cp11-review.json": "37b260496c6b5087f5633301e55bcc2d9b4f29fdc3ff8841bb61a445e7b37a87",
+    "evidence/reproductions/r1-p3d/root-review.json": "f86ec03882a4efcfb7a3f4a3fd4cdaf93dfdb125736e2168ac0d9de30856c362",
+    "evidence/reproductions/r1-p3d/evaluated-result.json": "239cedc8bebdcf48c1513456d77345e7d0b4a2dba669149d23f0c82b3b21c414",
+    ".work/dist/cp11/java-final/procedurals-processing-0.11.0.zip": "595a892ebf37ca689a18db0acf7d0e113f7c94da855e4c2a462a431e98cf6495",
+    ".work/examples/r1-candidate1/result.json": "696c511e4fd1c5d497418b2bcc8a0eb6e917d14e72f9bc0b1bc8c7d032221ac3",
+    "packages/java/examples/ReliefMarks/ReliefComposition.java": "748ab5545966f495d7fa51b55f50fbe8822ef8415a21c8c29e406e01be712bf5",
+    "packages/java-processing/examples/ReliefMarks/ReliefMarks.pde": "a5b471e567a25bc213a7da31d39f4ebf3fabdb9baba8e26a048c98989606d4aa",
+    "docs/relief-marks.md": "a5e50dfeb8287693a8792d0b7129da252ba349cbff0224e004c20287af06cbe2",
+    "docs/installing-relief-marks.md": "551aa8ea942dc65accbddf90ca71bb9aa36d3b2c7a9b253ac8e1f000b8c1f79d"
+  },
+  "archive": {
+    "path": ".work/dist/r1/java/procedurals-processing-0.12.0.zip",
+    "sha256": "5b12d816be3a17beedf12c9ad091a0dc6d36bd40fe09528def6e710b118d4a2a"
+  },
+  "operations": 14,
+  "starters": 12,
+  "members": 69,
+  "unchanged_prior_members": 64,
+  "core_jar_unchanged": true
+}

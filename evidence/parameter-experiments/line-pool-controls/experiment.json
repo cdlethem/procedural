@@ -1,0 +1,134 @@
+{
+  "id": "line-pool-controls",
+  "question": "Do attempted work and first-cut angular spread provide useful independent controls for mutable stroke branching?",
+  "decision": "pending: retain without inferred range, internalize, or defer operation",
+  "hypothesis": "More attempts may saturate on short segments; angular spread may visibly change branch reach independently of drawing style.",
+  "source_sketches": [
+    "2019/generativos/brotes"
+  ],
+  "parameters": [
+    {
+      "name": "attempts",
+      "source_literal": 90000,
+      "unit": "selection attempts",
+      "values": [
+        9000,
+        180000
+      ]
+    },
+    {
+      "name": "firstCutAngleScale",
+      "source_literal": 1.4,
+      "unit": "radians multiplier",
+      "values": [
+        0.7,
+        2.1
+      ]
+    }
+  ],
+  "baseline": {
+    "kind": "private implementation experiment, not corpus baseline",
+    "seed": 42,
+    "initial_segment": [
+      480,
+      850,
+      480,
+      200
+    ],
+    "attempts": 90000,
+    "firstCutAngleScale": 1.4,
+    "renderer": "P2D",
+    "size": [
+      960,
+      960
+    ],
+    "density": 1,
+    "stroke_rgba": [
+      235,
+      235,
+      235,
+      100
+    ],
+    "stroke_weight": 1,
+    "background_rgb": [
+      10,
+      10,
+      21
+    ],
+    "blend": "NORMAL"
+  },
+  "comparison": "Static frame1; raw mean absolute RGB difference and changed-pixel fraction plus root visual inspection; fixed camera and style, no normalization of bounds.",
+  "constraints": [
+    "One changed input per case",
+    "One baseline plus four variants; failed variants count toward eight-attempt maximum",
+    "Serialize native Processing execution",
+    "Source-faithful transition/RNG semantics, fixed candidate implementation across comparisons",
+    "No public default or continuous range inferred from isolated values",
+    "No whole-brotes recreation claim from one pool"
+  ],
+  "decision_rules": {
+    "attempts": "Expose as explicit work budget regardless of artistic density interpretation; recommend no density label if extra attempts mostly skip short lines without useful visual change.",
+    "angle": "Retain artistic control only if readable branch spread changes without loss of defining cut/revisit structure; otherwise internalize and record evidence.",
+    "operation": "Advance only if retained pool supports a clear edit task without callbacks or source-specific switches."
+  },
+  "provenance": {
+    "survey/out/2019/generativos/brotes/notes.md": "9a6da7579ae5d3c9d4331181e2e71bd40ab6caa698844b7bc20028c7e8d8fd77",
+    "design/capabilities/branching-evidence-audit.md": "cf56cd313365336858c5c5b5835a808e7b2d37b8a3b32c04a6f5e2dd438de9b2",
+    "evidence/investigations/line-pool-host-semantics.json": "0b1e4adb26fbdb25d5087fce03120d144c8c674ce18cfee871c26a2d5c991630"
+  },
+  "status": "completed",
+  "results": [
+    {
+      "id": "baseline",
+      "segments": 13764,
+      "cuts": 8616,
+      "skips": 81384,
+      "build_nanos": 12420094,
+      "image_sha256": "3fa2f4754d18e30dcd32d9151e86a1e7fe20b456f95bed8303bd0d9855476642",
+      "mean_absolute_rgb_0_255": 0.0,
+      "changed_pixel_fraction": 0.0
+    },
+    {
+      "id": "attempts-9000",
+      "segments": 4578,
+      "cuts": 2843,
+      "skips": 6157,
+      "build_nanos": 629480,
+      "image_sha256": "734d0e3a9246f19b208752a01ee25e7b298a6bf3dfbbadb38d87d9e6f98c7d17",
+      "mean_absolute_rgb_0_255": 1.7164102285879632,
+      "changed_pixel_fraction": 0.017737630208333334
+    },
+    {
+      "id": "attempts-180000",
+      "segments": 15443,
+      "cuts": 9690,
+      "skips": 170310,
+      "build_nanos": 9094973,
+      "image_sha256": "fa5ea436a2841e106764f9a663b7762b97e91b1b47ddc35036f78fe0757994cf",
+      "mean_absolute_rgb_0_255": 0.24008825231481482,
+      "changed_pixel_fraction": 0.0038096788194444445
+    },
+    {
+      "id": "angle-07",
+      "segments": 13764,
+      "cuts": 8616,
+      "skips": 81384,
+      "build_nanos": 4410891,
+      "image_sha256": "1a85c0c8ebfc01fc9102c89c6dd064dd6b5c4776c071f208e7226e8363206cf1",
+      "mean_absolute_rgb_0_255": 2.4241030092592593,
+      "changed_pixel_fraction": 0.02142578125
+    },
+    {
+      "id": "angle-21",
+      "segments": 13764,
+      "cuts": 8616,
+      "skips": 81384,
+      "build_nanos": 4439311,
+      "image_sha256": "e3be9797327bb9a4f80d21e9d37dbf3c280b17106a5eae59e4babd9a49a93248",
+      "mean_absolute_rgb_0_255": 2.372484085648148,
+      "changed_pixel_fraction": 0.021476779513888888
+    }
+  ],
+  "run_result": ".work/experiments/line-pool-controls/result.json",
+  "preregistered_copy": ".work/experiments/line-pool-controls/preregistered-experiment.json"
+}

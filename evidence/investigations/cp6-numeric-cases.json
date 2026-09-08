@@ -1,0 +1,898 @@
+{
+  "arithmetic_order": [
+    "length",
+    "heading",
+    "dx",
+    "dy",
+    "end_x",
+    "end_y"
+  ],
+  "finite_trigonometry_assumption": {
+    "assumption": "For every finite heading, the host sin and cos calls return finite values in [-1,1].",
+    "dx_dy_nonfinite": "not given a synthetic error case. A target whose trig implementation violates the assumption requires separate target evidence; it is outside this finite-input arithmetic diagnostic.",
+    "dx_dy_overflow": "unreachable under this assumption after length and heading have passed: |sin(heading)*length| and |cos(heading)*length| are bounded by finite |length| <= MAX.",
+    "underflow": "reachable and accepted: the positive-minimum-subnormal parent length multiplied by scale 0.5 rounds to canonical +0 child length."
+  },
+  "limitations": [
+    "The report uses Python binary64 and its same-runtime math.sin/math.cos values; non-axis trig values are not portable exact-coordinate assertions.",
+    "The constant interval inputs simplify mapping while still exercising mandatory stream consumption. They are arithmetic witnesses, not recommended control values.",
+    "The stream is transcribed for diagnostic trace accounting and does not import a public or prototype implementation."
+  ],
+  "results": [
+    {
+      "children_appended": [],
+      "id": "child-length-overflow",
+      "input": {
+        "expected": {
+          "parentIndex": 0,
+          "slotIndex": 0,
+          "stage": "length",
+          "status": "BRANCH_ARITHMETIC_INVALID"
+        },
+        "id": "child-length-overflow",
+        "lengthScale": [
+          2.0,
+          2.0
+        ],
+        "maxSegments": 2,
+        "root": {
+          "heading": 0.0,
+          "length": 1.7976931348623157e+308,
+          "origin_x": 0.0,
+          "origin_y": 0.0
+        },
+        "seed": 42,
+        "slots": [
+          {
+            "probability": 1.0,
+            "turn": [
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      },
+      "outcome": {
+        "calculations": {
+          "length": {
+            "bits_hex": "7ff0000000000000",
+            "finite": false,
+            "value": "Infinity"
+          },
+          "parent_length": {
+            "bits_hex": "7fefffffffffffff",
+            "finite": true,
+            "value": "1.7976931348623157e+308"
+          },
+          "shared_scale": {
+            "bits_hex": "4000000000000000",
+            "finite": true,
+            "value": "2.0"
+          },
+          "turn": {
+            "bits_hex": "0000000000000000",
+            "finite": true,
+            "value": "0.0"
+          }
+        },
+        "parentIndex": 0,
+        "slotIndex": 0,
+        "stage": "length",
+        "status": "BRANCH_ARITHMETIC_INVALID"
+      },
+      "rng_trace": [
+        {
+          "label": "parent[0].scale",
+          "unit": "0.4137016632594168",
+          "word_u32": 1776835114
+        },
+        {
+          "label": "parent[0].slot[0].gate",
+          "unit": "0.9697872884571552",
+          "word_u32": 4165204688
+        },
+        {
+          "label": "parent[0].slot[0].turn",
+          "unit": "0.0039839965756982565",
+          "word_u32": 17111135
+        }
+      ],
+      "root": {
+        "heading": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "length": {
+          "bits_hex": "7fefffffffffffff",
+          "finite": true,
+          "value": "1.7976931348623157e+308"
+        },
+        "x0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "x1": {
+          "bits_hex": "7fefffffffffffff",
+          "finite": true,
+          "value": "1.7976931348623157e+308"
+        },
+        "y0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "y1": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        }
+      },
+      "scale": {
+        "bits_hex": "4000000000000000",
+        "finite": true,
+        "value": "2.0"
+      }
+    },
+    {
+      "children_appended": [],
+      "id": "child-heading-overflow",
+      "input": {
+        "expected": {
+          "parentIndex": 0,
+          "slotIndex": 0,
+          "stage": "heading",
+          "status": "BRANCH_ARITHMETIC_INVALID"
+        },
+        "id": "child-heading-overflow",
+        "lengthScale": [
+          0.0,
+          0.0
+        ],
+        "maxSegments": 2,
+        "root": {
+          "heading": 1.7976931348623157e+308,
+          "length": 0.0,
+          "origin_x": 0.0,
+          "origin_y": 0.0
+        },
+        "seed": 42,
+        "slots": [
+          {
+            "probability": 1.0,
+            "turn": [
+              1.7976931348623157e+308,
+              1.7976931348623157e+308
+            ]
+          }
+        ]
+      },
+      "outcome": {
+        "calculations": {
+          "heading": {
+            "bits_hex": "7ff0000000000000",
+            "finite": false,
+            "value": "Infinity"
+          },
+          "length": {
+            "bits_hex": "0000000000000000",
+            "finite": true,
+            "value": "0.0"
+          },
+          "parent_length": {
+            "bits_hex": "0000000000000000",
+            "finite": true,
+            "value": "0.0"
+          },
+          "shared_scale": {
+            "bits_hex": "0000000000000000",
+            "finite": true,
+            "value": "0.0"
+          },
+          "turn": {
+            "bits_hex": "7fefffffffffffff",
+            "finite": true,
+            "value": "1.7976931348623157e+308"
+          }
+        },
+        "parentIndex": 0,
+        "slotIndex": 0,
+        "stage": "heading",
+        "status": "BRANCH_ARITHMETIC_INVALID"
+      },
+      "rng_trace": [
+        {
+          "label": "parent[0].scale",
+          "unit": "0.4137016632594168",
+          "word_u32": 1776835114
+        },
+        {
+          "label": "parent[0].slot[0].gate",
+          "unit": "0.9697872884571552",
+          "word_u32": 4165204688
+        },
+        {
+          "label": "parent[0].slot[0].turn",
+          "unit": "0.0039839965756982565",
+          "word_u32": 17111135
+        }
+      ],
+      "root": {
+        "heading": {
+          "bits_hex": "7fefffffffffffff",
+          "finite": true,
+          "value": "1.7976931348623157e+308"
+        },
+        "length": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "x0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "x1": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "y0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "y1": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        }
+      },
+      "scale": {
+        "bits_hex": "0000000000000000",
+        "finite": true,
+        "value": "0.0"
+      }
+    },
+    {
+      "children_appended": [],
+      "id": "child-end-x-overflow",
+      "input": {
+        "expected": {
+          "parentIndex": 0,
+          "slotIndex": 0,
+          "stage": "end_x",
+          "status": "BRANCH_ARITHMETIC_INVALID"
+        },
+        "id": "child-end-x-overflow",
+        "lengthScale": [
+          0.5,
+          0.5
+        ],
+        "maxSegments": 2,
+        "root": {
+          "heading": 0.0,
+          "length": 1.7976931348623157e+308,
+          "origin_x": 0.0,
+          "origin_y": 0.0
+        },
+        "seed": 42,
+        "slots": [
+          {
+            "probability": 1.0,
+            "turn": [
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      },
+      "outcome": {
+        "calculations": {
+          "dx": {
+            "bits_hex": "7fdfffffffffffff",
+            "finite": true,
+            "value": "8.988465674311579e+307"
+          },
+          "dy": {
+            "bits_hex": "0000000000000000",
+            "finite": true,
+            "value": "0.0"
+          },
+          "end_x": {
+            "bits_hex": "7ff0000000000000",
+            "finite": false,
+            "value": "Infinity"
+          },
+          "heading": {
+            "bits_hex": "0000000000000000",
+            "finite": true,
+            "value": "0.0"
+          },
+          "length": {
+            "bits_hex": "7fdfffffffffffff",
+            "finite": true,
+            "value": "8.988465674311579e+307"
+          },
+          "parent_length": {
+            "bits_hex": "7fefffffffffffff",
+            "finite": true,
+            "value": "1.7976931348623157e+308"
+          },
+          "shared_scale": {
+            "bits_hex": "3fe0000000000000",
+            "finite": true,
+            "value": "0.5"
+          },
+          "turn": {
+            "bits_hex": "0000000000000000",
+            "finite": true,
+            "value": "0.0"
+          }
+        },
+        "parentIndex": 0,
+        "slotIndex": 0,
+        "stage": "end_x",
+        "status": "BRANCH_ARITHMETIC_INVALID"
+      },
+      "rng_trace": [
+        {
+          "label": "parent[0].scale",
+          "unit": "0.4137016632594168",
+          "word_u32": 1776835114
+        },
+        {
+          "label": "parent[0].slot[0].gate",
+          "unit": "0.9697872884571552",
+          "word_u32": 4165204688
+        },
+        {
+          "label": "parent[0].slot[0].turn",
+          "unit": "0.0039839965756982565",
+          "word_u32": 17111135
+        }
+      ],
+      "root": {
+        "heading": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "length": {
+          "bits_hex": "7fefffffffffffff",
+          "finite": true,
+          "value": "1.7976931348623157e+308"
+        },
+        "x0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "x1": {
+          "bits_hex": "7fefffffffffffff",
+          "finite": true,
+          "value": "1.7976931348623157e+308"
+        },
+        "y0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "y1": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        }
+      },
+      "scale": {
+        "bits_hex": "3fe0000000000000",
+        "finite": true,
+        "value": "0.5"
+      }
+    },
+    {
+      "children_appended": [],
+      "id": "child-end-y-overflow",
+      "input": {
+        "expected": {
+          "parentIndex": 0,
+          "slotIndex": 0,
+          "stage": "end_y",
+          "status": "BRANCH_ARITHMETIC_INVALID"
+        },
+        "id": "child-end-y-overflow",
+        "lengthScale": [
+          0.5,
+          0.5
+        ],
+        "maxSegments": 2,
+        "root": {
+          "heading": 1.5707963267948966,
+          "length": 1.7976931348623157e+308,
+          "origin_x": 0.0,
+          "origin_y": 0.0
+        },
+        "seed": 42,
+        "slots": [
+          {
+            "probability": 1.0,
+            "turn": [
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      },
+      "outcome": {
+        "calculations": {
+          "dx": {
+            "bits_hex": "7c81a62633145c06",
+            "finite": true,
+            "value": "5.503847858645765e+291"
+          },
+          "dy": {
+            "bits_hex": "7fdfffffffffffff",
+            "finite": true,
+            "value": "8.988465674311579e+307"
+          },
+          "end_x": {
+            "bits_hex": "7c9a79394c9e8a09",
+            "finite": true,
+            "value": "1.6511543575937294e+292"
+          },
+          "end_y": {
+            "bits_hex": "7ff0000000000000",
+            "finite": false,
+            "value": "Infinity"
+          },
+          "heading": {
+            "bits_hex": "3ff921fb54442d18",
+            "finite": true,
+            "value": "1.5707963267948966"
+          },
+          "length": {
+            "bits_hex": "7fdfffffffffffff",
+            "finite": true,
+            "value": "8.988465674311579e+307"
+          },
+          "parent_length": {
+            "bits_hex": "7fefffffffffffff",
+            "finite": true,
+            "value": "1.7976931348623157e+308"
+          },
+          "shared_scale": {
+            "bits_hex": "3fe0000000000000",
+            "finite": true,
+            "value": "0.5"
+          },
+          "turn": {
+            "bits_hex": "0000000000000000",
+            "finite": true,
+            "value": "0.0"
+          }
+        },
+        "parentIndex": 0,
+        "slotIndex": 0,
+        "stage": "end_y",
+        "status": "BRANCH_ARITHMETIC_INVALID"
+      },
+      "rng_trace": [
+        {
+          "label": "parent[0].scale",
+          "unit": "0.4137016632594168",
+          "word_u32": 1776835114
+        },
+        {
+          "label": "parent[0].slot[0].gate",
+          "unit": "0.9697872884571552",
+          "word_u32": 4165204688
+        },
+        {
+          "label": "parent[0].slot[0].turn",
+          "unit": "0.0039839965756982565",
+          "word_u32": 17111135
+        }
+      ],
+      "root": {
+        "heading": {
+          "bits_hex": "3ff921fb54442d18",
+          "finite": true,
+          "value": "1.5707963267948966"
+        },
+        "length": {
+          "bits_hex": "7fefffffffffffff",
+          "finite": true,
+          "value": "1.7976931348623157e+308"
+        },
+        "x0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "x1": {
+          "bits_hex": "7c91a62633145c06",
+          "finite": true,
+          "value": "1.100769571729153e+292"
+        },
+        "y0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "y1": {
+          "bits_hex": "7fefffffffffffff",
+          "finite": true,
+          "value": "1.7976931348623157e+308"
+        }
+      },
+      "scale": {
+        "bits_hex": "3fe0000000000000",
+        "finite": true,
+        "value": "0.5"
+      }
+    },
+    {
+      "children_appended": [
+        {
+          "heading": {
+            "bits_hex": "0000000000000000",
+            "finite": true,
+            "value": "0.0"
+          },
+          "length": {
+            "bits_hex": "0000000000000000",
+            "finite": true,
+            "value": "0.0"
+          },
+          "x0": {
+            "bits_hex": "0000000000000001",
+            "finite": true,
+            "value": "5e-324"
+          },
+          "x1": {
+            "bits_hex": "0000000000000001",
+            "finite": true,
+            "value": "5e-324"
+          },
+          "y0": {
+            "bits_hex": "0000000000000000",
+            "finite": true,
+            "value": "0.0"
+          },
+          "y1": {
+            "bits_hex": "0000000000000000",
+            "finite": true,
+            "value": "0.0"
+          }
+        }
+      ],
+      "id": "positive-underflow-collapses-child-geometry",
+      "input": {
+        "expected": {
+          "child_end_x_bits_hex": "0000000000000001",
+          "child_length_bits_hex": "0000000000000000",
+          "status": "success"
+        },
+        "id": "positive-underflow-collapses-child-geometry",
+        "lengthScale": [
+          0.5,
+          0.5
+        ],
+        "maxSegments": 2,
+        "root": {
+          "heading": 0.0,
+          "length": 5e-324,
+          "origin_x": 0.0,
+          "origin_y": 0.0
+        },
+        "seed": 42,
+        "slots": [
+          {
+            "probability": 1.0,
+            "turn": [
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      },
+      "outcome": {
+        "status": "success"
+      },
+      "rng_trace": [
+        {
+          "label": "parent[0].scale",
+          "unit": "0.4137016632594168",
+          "word_u32": 1776835114
+        },
+        {
+          "label": "parent[0].slot[0].gate",
+          "unit": "0.9697872884571552",
+          "word_u32": 4165204688
+        },
+        {
+          "label": "parent[0].slot[0].turn",
+          "unit": "0.0039839965756982565",
+          "word_u32": 17111135
+        }
+      ],
+      "root": {
+        "heading": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "length": {
+          "bits_hex": "0000000000000001",
+          "finite": true,
+          "value": "5e-324"
+        },
+        "x0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "x1": {
+          "bits_hex": "0000000000000001",
+          "finite": true,
+          "value": "5e-324"
+        },
+        "y0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "y1": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        }
+      },
+      "scale": {
+        "bits_hex": "3fe0000000000000",
+        "finite": true,
+        "value": "0.5"
+      }
+    },
+    {
+      "children_appended": [],
+      "counterfactual_not_evaluated": {
+        "hypothetical_parent_length_times_scale": {
+          "bits_hex": "7ff0000000000000",
+          "finite": false,
+          "value": "Infinity"
+        },
+        "note": "This is a diagnostic witness only. It was not evaluated by the traced operation path and must not determine the reported outcome.",
+        "reason": "Both gates failed, so no angle draw or child arithmetic occurs."
+      },
+      "id": "failed-gates-skip-hypothetical-length-overflow",
+      "input": {
+        "expected": {
+          "rng_labels": [
+            "parent[0].scale",
+            "parent[0].slot[0].gate",
+            "parent[0].slot[1].gate"
+          ],
+          "status": "success"
+        },
+        "id": "failed-gates-skip-hypothetical-length-overflow",
+        "lengthScale": [
+          2.0,
+          2.0
+        ],
+        "maxSegments": 3,
+        "root": {
+          "heading": 0.0,
+          "length": 1.7976931348623157e+308,
+          "origin_x": 0.0,
+          "origin_y": 0.0
+        },
+        "seed": 42,
+        "slots": [
+          {
+            "probability": 0.0,
+            "turn": [
+              1.7976931348623157e+308,
+              1.7976931348623157e+308
+            ]
+          },
+          {
+            "probability": 0.0,
+            "turn": [
+              1.7976931348623157e+308,
+              1.7976931348623157e+308
+            ]
+          }
+        ]
+      },
+      "outcome": {
+        "status": "success"
+      },
+      "rng_trace": [
+        {
+          "label": "parent[0].scale",
+          "unit": "0.4137016632594168",
+          "word_u32": 1776835114
+        },
+        {
+          "label": "parent[0].slot[0].gate",
+          "unit": "0.9697872884571552",
+          "word_u32": 4165204688
+        },
+        {
+          "label": "parent[0].slot[1].gate",
+          "unit": "0.0039839965756982565",
+          "word_u32": 17111135
+        }
+      ],
+      "root": {
+        "heading": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "length": {
+          "bits_hex": "7fefffffffffffff",
+          "finite": true,
+          "value": "1.7976931348623157e+308"
+        },
+        "x0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "x1": {
+          "bits_hex": "7fefffffffffffff",
+          "finite": true,
+          "value": "1.7976931348623157e+308"
+        },
+        "y0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "y1": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        }
+      },
+      "scale": {
+        "bits_hex": "4000000000000000",
+        "finite": true,
+        "value": "2.0"
+      }
+    },
+    {
+      "children_appended": [],
+      "counterfactual_not_evaluated": {
+        "hypothetical_parent_length_times_scale": {
+          "bits_hex": "7ff0000000000000",
+          "finite": false,
+          "value": "Infinity"
+        },
+        "note": "This is a diagnostic witness only. It was not evaluated by the traced operation path and must not determine the reported outcome.",
+        "reason": "The successful gate found maxSegments already full before the angle draw or child arithmetic."
+      },
+      "id": "capacity-precedes-angle-and-child-arithmetic",
+      "input": {
+        "expected": {
+          "parentIndex": 0,
+          "rng_labels": [
+            "parent[0].scale",
+            "parent[0].slot[0].gate"
+          ],
+          "slotIndex": 0,
+          "status": "SEGMENT_LIMIT_EXCEEDED"
+        },
+        "id": "capacity-precedes-angle-and-child-arithmetic",
+        "lengthScale": [
+          2.0,
+          2.0
+        ],
+        "maxSegments": 1,
+        "root": {
+          "heading": 0.0,
+          "length": 1.7976931348623157e+308,
+          "origin_x": 0.0,
+          "origin_y": 0.0
+        },
+        "seed": 42,
+        "slots": [
+          {
+            "probability": 1.0,
+            "turn": [
+              1.7976931348623157e+308,
+              1.7976931348623157e+308
+            ]
+          }
+        ]
+      },
+      "outcome": {
+        "parentIndex": 0,
+        "slotIndex": 0,
+        "status": "SEGMENT_LIMIT_EXCEEDED"
+      },
+      "rng_trace": [
+        {
+          "label": "parent[0].scale",
+          "unit": "0.4137016632594168",
+          "word_u32": 1776835114
+        },
+        {
+          "label": "parent[0].slot[0].gate",
+          "unit": "0.9697872884571552",
+          "word_u32": 4165204688
+        }
+      ],
+      "root": {
+        "heading": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "length": {
+          "bits_hex": "7fefffffffffffff",
+          "finite": true,
+          "value": "1.7976931348623157e+308"
+        },
+        "x0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "x1": {
+          "bits_hex": "7fefffffffffffff",
+          "finite": true,
+          "value": "1.7976931348623157e+308"
+        },
+        "y0": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        },
+        "y1": {
+          "bits_hex": "0000000000000000",
+          "finite": true,
+          "value": "0.0"
+        }
+      },
+      "scale": {
+        "bits_hex": "4000000000000000",
+        "finite": true,
+        "value": "2.0"
+      }
+    }
+  ],
+  "runtime": {
+    "implementation": "CPython",
+    "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.43",
+    "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]"
+  },
+  "schema": "cp6-numeric-cases/v1",
+  "scope": {
+    "excludes": [
+      "public operation implementation",
+      "catalog or fixture decision",
+      "renderer behavior",
+      "cross-runtime trigonometric conformance",
+      "a proof of all host Math.sin/Math.cos implementations"
+    ],
+    "includes": "Finite-input arithmetic precedence examples for the selected CP6 child evaluation order and an independently transcribed CP3/CP5 private stream trace."
+  },
+  "source_bindings": {
+    "design/operations/cp5-triangle-contract-decisions.md": "8e6c3692184b4c52a9f9c3296cf74409e0f0ea8b74ed7a308061691af630a6f9",
+    "design/operations/cp6-branch-contract-decisions.md": "52d9d59df6b954a43564644607f76e64d4e9f17ee0ff8a9211917181b971b005",
+    "tools/diagnostics/cp3/stream_oracle.py": "15759e935da84ee77c933df3a2dd51e2f52ef4e2b64cd036408ed78ea9d88555",
+    "tools/diagnostics/cp6/run_numeric_cases.py": "caab28d3271759a417134fce4e04555b5eff44b859b25802df083532d7497905"
+  },
+  "status": "completed-bounded-no-render-numeric-diagnostic",
+  "stream_control": {
+    "algorithm": "xoshiro128** 1.1",
+    "interval_law": "CP5 endpoint-aware clamped binary64 interpolation; each constant scale/turn interval still consumes its prescribed unit",
+    "seed_expansion": "two SplitMix64 outputs packed [low32(q0), high32(q0), low32(q1), high32(q1)]",
+    "unit_mapping": "uint32 / 2^32"
+  }
+}

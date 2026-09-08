@@ -1,0 +1,49 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Java0.11.0 delivery:14 operations,11 editable starters. No registry publication or deferred-port support claim.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+    "packages/java/examples/LatticeMarks/LatticeComposition.java": "a4044221220888e89dba9508747867f48e4cf028fb5ddd20f2f0c492567ee641",
+    "packages/java-processing/examples/LatticeMarks/LatticeMarks.pde": "3b8cb0d7a3345f931fdd8558b083f8b02ee13971a952a66546a009ed3d1dd634",
+    "tools/build_lattice_marks_java.py": "cf063d540ff4c722d01f5a861665f9f08486b32e46586d5478bccba39d11d91b"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/occupied-lattice-java-root-review.json": "15bbdb106c308a88807108fabaca5c4e05aa8dfe2a79ff1183e6c6da0ca141e9",
+    "evidence/reproductions/cp11-java2d/root-review.json": "e7d610575cb3ed46d9f6d03a6d43389c3eb21addc5176371ff9278b2e2df5708",
+    "catalog/validation/occupied-lattice-paths-2d.json": "7941eda7de597d5ee685b20ab099bf984486b7516351e80cfb85915dca038d9e"
+  },
+  "final_archive": {
+    "path": ".work/dist/cp11/java-final/procedurals-processing-0.11.0.zip",
+    "sha256": "595a892ebf37ca689a18db0acf7d0e113f7c94da855e4c2a462a431e98cf6495"
+  },
+  "checks": {
+    "members": 65,
+    "operations": 14,
+    "starters": 11,
+    "prior_starters_byte_preserved": 10,
+    "prior_jar_file_entries_byte_preserved": 68,
+    "added_core_classes": 6,
+    "changed_inherited_members": [
+      "procedurals/library/procedurals.jar",
+      "procedurals/library.properties",
+      "procedurals/docs/reference/operations.md"
+    ],
+    "catalog_check": "passed",
+    "python_tests": {
+      "passed": 142,
+      "log": ".work/cp11-integration-tests.txt"
+    },
+    "builder_report": {
+      "path": ".work/dist/cp11/java-final/result.json",
+      "sha256": "3ba75c73477429e6a8cb396bb88482c504a228c793be6328bf1efa97cadfdc55"
+    },
+    "native_visual_acceptance": "12 captures plus cached save; all seven distinct images reviewed"
+  },
+  "remaining": [
+    "Remaining Java capability batches",
+    "Deferred p5.js/py5/Android ports",
+    "Other full-roadmap milestones"
+  ]
+}

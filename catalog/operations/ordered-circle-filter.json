@@ -1,0 +1,243 @@
+{
+  "id": "sampling.ordered-circle-filter-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability": "CP3",
+  "description": "Retain supplied circles in order when their radius-dependent exclusion test permits them alongside earlier accepted circles.",
+  "decision_cluster": "sampling.ordered-circle-filter-2d",
+  "capability_decision": "design/capabilities/cp3-architecture-decision.md",
+  "design_review": "design/operations/circle-placement-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/caramelo#0",
+      "notes_path": "survey/out/2018/Generativos/caramelo/notes.md",
+      "note_sha256": "204b387d9aec0e058834a48bc56417caf9ae0c582b93937676e3a2ca17d10708",
+      "evidence_sha256": "22d8a38bdfd6aa7288bad30ab7ad34d1c955fd28a263b3cdd7496e3b28bfe550",
+      "upstream_pde_sha256": "6f8accc753db0cf0dc1e8ceee642df745f408e23f917fe7ecd0ca80c26d8bd62",
+      "relationship": "Independently specified ordered circle acceptance dependency usable with explicit supplied geometry; not a whole-computation merge."
+    },
+    {
+      "candidate_id": "2018/Generativos/candy#0",
+      "notes_path": "survey/out/2018/Generativos/candy/notes.md",
+      "note_sha256": "8d08f3cdf63fb21f8d6080310b02cbf246a4826fdbcbcc1967cf9aa7b719e86a",
+      "evidence_sha256": "27831fe7f47c5cd6b2ca04b542420cd11bbd3a432116e79cc0da0236af1e0884",
+      "upstream_pde_sha256": "e4791246c1b25bc4e3c647e0ce9e3da178de53b1e0d5a34523a0769131001883",
+      "relationship": "Independently specified ordered circle acceptance dependency usable with explicit supplied geometry; not a whole-computation merge."
+    },
+    {
+      "candidate_id": "2017/Generativos/studio#0",
+      "notes_path": "survey/out/2017/Generativos/studio/notes.md",
+      "note_sha256": "9bde5b7853dcf6b6cc0f7b9c80f24ccedf8910690f7fc17d333a7e1ece6f67d5",
+      "evidence_sha256": "405e9feb56e0d332bb6ad2af24a555846370fafa024a59a760b2b5b756b15e83",
+      "upstream_pde_sha256": "0ed93fd157ec966dabc19ce358179f9a6f9e0bb30e61f69d2d90121a290a7f0b",
+      "relationship": "Independently specified ordered circle acceptance dependency usable with explicit supplied geometry; not a whole-computation merge."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "centres": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 1073741823,
+        "description": "Ordered candidate centre pairs; length must equal radii length."
+      },
+      "radii": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "maxItems": 1073741823,
+        "description": "One positive radius per centre, in the same coordinate unit."
+      },
+      "separationScale": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "description": "Multiplier on summed radii;1 permits tangency, below1 permits overlap, above1 reserves size-relative clearance."
+      }
+    },
+    "required": [
+      "centres",
+      "radii",
+      "separationScale"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "centres": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 1073741823
+      },
+      "radii": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "maxItems": 1073741823
+      },
+      "sourceIndices": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1073741822
+        },
+        "maxItems": 1073741823
+      },
+      "attempts": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1073741823
+      }
+    },
+    "required": [
+      "centres",
+      "radii",
+      "sourceIndices",
+      "attempts"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "circle-placement-output",
+  "output_invariants": "centres, radii and sourceIndices have equal length N<=attempts; indices strictly increase within0..attempts-1; coordinates finite canonical positive-zero and radii finite positive. Attempts equals seeded input attempts or explicit input length. No redundant accepted count in toValues.",
+  "behavior": {
+    "layout": "A placement result privately retains 2*N binary64 centre coordinates, N binary64 radii and N integer original proposal indices, where N is accepted count. Apply proposal-count ceiling1073741823 statically to seeded attempts or explicit input length, so even accepting every proposal fits2*N<=2147483647. This is a shared packed-array/index representation bound, not an allocation, latency or useful artistic range guarantee. Capacity growth must be capped at this representation ceiling without integer overflow. Host allocation failure returns no result and remains a host resource exception, never INVALID_INPUT or partial successful output.",
+    "acceptance": "Visit proposals in original order i=0..attempts-1. For each, visit retained circles in their acceptance order. Compute dx=round64(x-oldX), dy=round64(y-oldY), xx=round64(dx*dx), yy=round64(dy*dy), squared=round64(xx+yy), sumR=round64(r+oldR), threshold=round64(sumR*separationScale), limitSquared=round64(threshold*threshold), in that exact order with validation immediately after each stage. Reject the proposal at the first pair where squared<limitSquared and skip its remaining pairs. Equality is accepted. If no pair rejects, append canonical centre, positive radius and original index. The first valid proposal is accepted without pair arithmetic. Seeded generation and explicit filtering feed exactly this same internal kernel; no duplicated predicate or implicit sorting.",
+    "pair_validation": "For each computed pair stage require finite binary64. Stages in order: difference_x, difference_y, square_x, square_y, distance_squared, radius_sum, threshold, threshold_squared. Also fail square_x when dx!=0 and xx==0; fail square_y when dy!=0 and yy==0; fail threshold when threshold<=0 (positive operands must not underflow to zero); fail threshold_squared when limitSquared==0. These conservative guards reject nonzero square underflow and collapsed positive exclusion, without an arbitrary coordinate envelope. Failure code PLACEMENT_ARITHMETIC_INVALID includes candidateIndex=i and stage. Discard the entire internal accepted prefix and return no result. Do not report the compared retained index. A rejected proposal does not evaluate later pair stages or remaining retained pairs.",
+    "ownership": "Result owns detached accepted arrays only. Inputs must not be mutated concurrently with either eager call; active getters/proxies/custom hooks are outside the passive interchange contract. Complete the full static validation pass before allocating result-sized retained storage or starting pair work. A full-input snapshot is not required. Do not retain caller-owned arrays or persistent rejected-proposal copies. Getter returns and toValues are detached. toValues returns exactly output_schema and explicitly authorizes additional O(N) materialization. Allocation failure in a fresh pointAt/point_at pair or toValues/to_values materialization returns no new value and leaves the original retained result usable and unchanged. The result has no serialize/toJSON/config replay API: callers retain their input configuration; accepted geometry is not a reconstruction of the rejected proposal sequence.",
+    "access": "Native size() and attempts() (JavaScript/Python properties) return accepted N and original proposal count. Rejected count is attempts-size; do not add count aliases. pointAt/point_at returns a fresh two-number centre, radiusAt/radius_at returns one radius, sourceIndexAt/source_index_at returns original proposal index. All indices require finite nonnegative safe integer<=9007199254740991, never bool; integral floating indices are accepted. INVALID_INDEX precedes INDEX_OUT_OF_RANGE (index>=N). pointInto/point_into checks index validity and bound before destination/offset. Then require writable binary64 space for exactly two slots and a finite nonnegative integral offset; otherwise INVALID_OUTPUT. Never mutate any destination slot on failure. Float32 output buffers are forbidden. Java may use typed int offset; wrong-type/unrepresentable host calls are host-call errors, not different interchange semantics. Java pointInto has a required typed int offset and returns void. JavaScript pointInto(index,out,offset=0) returns the supplied out destination. Python point_into(index,out,offset=0) returns None. These are native transport conventions; all write the same two coordinates and preserve the same failure ordering.",
+    "native_types": "Follow existing grid numeric conventions: Java Byte/Short/Integer/Long/Float/Double only; reject BigInteger/BigDecimal/custom Number before conversion. JavaScript passive object/Array input with number values; Python int/float but never bool, convert to finite binary64 after validating integer domains where applicable. Python huge integer conversion failure becomes INVALID_INPUT/INVALID_INDEX, not an uncaught conversion exception. Output pointInto accepts Java double[], JS Float64Array or writable ordinary Array, Python exact builtin list or array(d). Offset/count/index validation must precede narrowing. Active accessors/proxies and custom containers are not interchange data. Input containers: Java Map for records and exactly two-element List for pairs; arrays/PVector are not pair input carriers. Only passive container behavior belongs to interchange; active custom hooks are outside it. Python requires exact builtin dict records and exact builtin list pairs, rejecting custom Mapping/list subclasses and tuples. JS records have Object.prototype or null prototype and pairs are ordinary Array; class instances/typed-array pairs are not interchange input.",
+    "numerics": "IEEE754 binary64 round-to-nearest ties-to-even for every basic operation in the stated order. No FMA, reassociation, sqrt/hypot substitute, epsilon, binary32 conversion or host transcendental in the core. Normalize every zero input coordinate and completed zero output coordinate to positive zero. Radius and scale must be strictly positive. Compare core output coordinates/radii by exact binary64 bits and all counts/source indices/errors exactly across targets; do not tolerate topology differences. This is a checked floating predicate, not an exact real-number geometry guarantee. Supplied radial points are caller data: cross-host trigonometry used to construct them is outside this contract.",
+    "units": "Caller-defined planar centre coordinates and radii in the same length unit. A radius is half a circle diameter. No canvas, axis orientation or renderer is implicit; host drawing may use y downward. separationScale is dimensionless, multiplying summed radii:1 permits computed tangency, below1 permits geometric overlap, above1 adds size-relative clearance. It is not a fixed pixel gap. The filter has no containment domain.",
+    "complexity": "O(P*A) pair work, at worst O(P^2), for P proposals and up to A accepted circles; O(A) retained primitive storage and O(1) accessor work. Explicit filtering also statically validates all P records before pair work. Seeded generation streams candidates and retains no all-proposal array. Eager invocation authorizes finite work; no universal real-time or saturation guarantee. Any future acceleration must preserve outputs AND defined failure behavior/order, not merely typical placements.",
+    "native_errors": "Validation/access exceptions have code. PLACEMENT_ARITHMETIC_INVALID additionally exposes candidateIndex (Python candidate_index) and stage, emitted as error_detail:{candidateIndex,stage} by conformance runners. Static INVALID_INPUT and accessor errors have no dynamic detail. Java validation errors may subclass IllegalArgumentException and arithmetic errors ArithmeticException; JS Error and Python ValueError subclasses are transport. Host resource failures are not converted to validation errors or partial success.",
+    "input": "Input has exactly centres, radii, separationScale. Validate outer passive record/keys; centres Array/List length0..1073741823; radii Array/List and equal length; separationScale finite positive; then for i=0..P-1 validate centre pair and finite x/y, then positive finite radius, in that order. Booleans are never numbers. Validate EVERY explicit proposal before allocating result-sized retained storage or starting pair work, including proposals that would later be rejected. Normalize coordinate zeros; explicit input must not mutate during this synchronous eager call. Do not retain rejected input after return. Empty input still validates scale and returns empty arrays with attempts0.",
+    "native_forms": "Java org.procedurals.sampling.CirclePlacements2D.filter(Object config) returns CirclePlacements2D, with size(),attempts(),pointAt(Object or long),pointInto(index,double[],int offset),radiusAt(Object or long),sourceIndexAt(Object or long),toValues(). JavaScript orderedCircleFilter2D(config) returns result with size/attempts getters, pointAt,pointInto,radiusAt,sourceIndexAt,toValues. Python ordered_circle_filter_2d(config) returns result with size/attempts properties, point_at,point_into,radius_at,source_index_at,to_values. No result serialize/toJSON or count aliases. Both operations return the same result type/semantics.",
+    "environment": "No RNG, noise, time, renderer, asset, lifecycle or trigonometric input. Supplied circle values and order plus separationScale fully determine the result.",
+    "degenerate": "Coincident or collinear centres are valid inputs; the ordered predicate decides acceptance. Radius0/negative, negative or zero separationScale, nonfinite values and mismatched lengths are INVALID_INPUT. A tiny positive radius can be retained as the first/only circle; a later pair may fail the specified arithmetic guards. Below1 scale permits overlap. No hidden clamping, containment, deduplication, sorting or geometric tolerance."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed/nonfinite/out-of-domain static input, including wrong shape, unsupported passive carrier, bool numeric, unequal centre/radius lengths, nonpositive radius or separationScale, or proposal cardinality above the representation bound.",
+    "PLACEMENT_ARITHMETIC_INVALID": "Dynamic nonfinite pair arithmetic or specified pair underflow; candidateIndex and named pair stage, no output.",
+    "INVALID_INDEX": "Index is not a finite nonnegative safe integer.",
+    "INDEX_OUT_OF_RANGE": "Valid index is outside0..size-1.",
+    "INVALID_OUTPUT": "pointInto destination or offset lacks two writable binary64 slots."
+  },
+  "dynamic_error_stages": [
+    "difference_x",
+    "difference_y",
+    "square_x",
+    "square_y",
+    "distance_squared",
+    "radius_sum",
+    "threshold",
+    "threshold_squared"
+  ],
+  "parameters": {
+    "centres": {
+      "unit": "ordered coordinate pairs",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit circle proposals enable the inspected authored radial substitution without a public radial sampler; studio source domain and nested caramelo motivate alternate proposals. Coordinates are supplied geometry, not a visually recommended interval."
+    },
+    "radii": {
+      "unit": "positive coordinate lengths, one per centre",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source packing units audited as diameter; caller radii are independent positive circle geometry. CP3 radial8/14/20 and seeded interval edits establish motivating configurations, not a universal radius range."
+    },
+    "separationScale": {
+      "unit": "dimensionless",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Shared radius-sum exclusion control;1/1.2 inspected in CP3. Source0.96 is overlap mechanism evidence only. No default or continuous recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    }
+  },
+  "fixtures": "fixtures/operations/ordered-circle-filter.json",
+  "reproduction": {
+    "level": "technique",
+    "design_evidence": [
+      "evidence/parameter-experiments/cp3-placement/decision.md",
+      "evidence/parameter-experiments/cp3-placement-controls/decision.md"
+    ],
+    "acceptance": "Public native seeded placement, separation and both radius edits, seed replay/change, attempt-prefix extension, retained palette/motif edits, authored-proposal transfer and cached save on all four targets. Private seven-image mechanism evidence does not validate the package or reproduce original source pixels.",
+    "status": "planned"
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "Sol",
+    "status": "draft; not approved for implementation"
+  }
+}

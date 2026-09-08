@@ -1,0 +1,21 @@
+{
+  "status": "accepted_for_experiment",
+  "reviewer": "root",
+  "scope": "Private transition prototype and fixed-style parameter comparison only; no public contract or source whole-sketch reproduction approval",
+  "sha256": {
+    "tools/diagnostics/linepool/LinePoolPrototype.java": "834521ebf4e45fa11b02d5ee21e541935e39b955e505f493609b4e4cd7f7f944",
+    "tools/diagnostics/linepool/LinePoolFrames.java": "93fdd70ec5ef02a632f8fe8d63eb9bb083b5648be28b0945f088389f58a124e7",
+    "evidence/parameter-experiments/line-pool-controls/experiment.json": "5412abd8c83e38e98e8864d22221edb7d909fb46e5c75b023856ddac82151396"
+  },
+  "review": [
+    "Actual PApplet random/math preserve float host behavior and reversed-range no-draw case.",
+    "Unused range random draw retained; source reachable0/1/2 offspring and divided continuation flags preserved.",
+    "Short selections consume attempt count without further policy draws; append capacity bounded1+2*attempts.",
+    "Fixed one-pool initial stroke and fixed NORMAL style isolate requested parameters."
+  ],
+  "limitations": [
+    "No whole30-pool brotes recreation",
+    "elapsedNanos measures transition loop excluding allocation",
+    "No portable core semantics approved"
+  ]
+}

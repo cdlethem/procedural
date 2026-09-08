@@ -1,0 +1,120 @@
+{
+  "capability": "CP1 independent field-oriented marks",
+  "scope": "Actual Processing JAVA2D execution of the example-owned MarkField.java using public grid, noise and palette operations. Native example edit/transfer evidence, not upstream corpus pixel reproduction or four-target certification.",
+  "sources": [
+    "2018/Generativos/pelines#0",
+    "2018/Generativos/pelines#1",
+    "2018/Generativos/mountain4#2"
+  ],
+  "operations": {
+    "layout.regular-grid": "0.1.0",
+    "field.gradient-noise-2d-01": "0.1.0",
+    "color.cyclic-palette": "0.1.0"
+  },
+  "runtime": "Processing 4.5.6 JAVA2D, JDK17, density1, static frame1",
+  "dimensions": [
+    640,
+    640
+  ],
+  "layout": {
+    "columns": 160,
+    "rows": 160,
+    "pitch": 4,
+    "origin": [
+      2,
+      2
+    ]
+  },
+  "fields": {
+    "seed": 42,
+    "headingOffset": 17,
+    "headingFrequency": 0.009,
+    "headingSpan": "4*PI",
+    "lengthOffset": 113,
+    "lengthFrequency": 0.013,
+    "colourOffset": 271,
+    "colourFrequency": 0.007,
+    "colourCycles": 3
+  },
+  "background": "#ECE7DA",
+  "opacity": 180,
+  "cases": [
+    {
+      "id": "base",
+      "maxLength": 16,
+      "colors": [
+        "31A151",
+        "FFA71E",
+        "05084C",
+        "DE4638",
+        "3DBDB7"
+      ],
+      "mark": "line"
+    },
+    {
+      "id": "length",
+      "maxLength": 32,
+      "colors": [
+        "31A151",
+        "FFA71E",
+        "05084C",
+        "DE4638",
+        "3DBDB7"
+      ],
+      "mark": "line"
+    },
+    {
+      "id": "palette",
+      "maxLength": 16,
+      "colors": [
+        "2E0551",
+        "FF00C7",
+        "01AFC2",
+        "FDBE03",
+        "F4F9FD"
+      ],
+      "mark": "line"
+    },
+    {
+      "id": "bar",
+      "maxLength": 16,
+      "colors": [
+        "31A151",
+        "FFA71E",
+        "05084C",
+        "DE4638",
+        "3DBDB7"
+      ],
+      "mark": "bar",
+      "width": 2.5
+    }
+  ],
+  "semantic_acceptance": [
+    "One retained model, 25600 records; exact point positions x=2+4*column,y=2+4*row, x-fast order.",
+    "Hash x,y,heading,lengthFactor,colourCycles before and after every paint; all hashes identical.",
+    "Record actual line/quad calls from the same example helper while forwarding to real JAVA2D; no mirrored draw implementation.",
+    "Palette case has exactly identical float endpoint data and command count, but changed colours.",
+    "Length case preserves centre and colour; endpoint displacement doubles within 0.0002px (binary32 drawing-coordinate rounding at this canvas size).",
+    "Bar centres and long axes match retained positions and base line axes within 0.0002px; same colours, 25600 quads, no resampling.",
+    "Example paint restores caller matrix and colour/stroke style."
+  ],
+  "visual_acceptance": "Inspect all four images: related spatial regions of independent oriented marks remain legible; length changes mark extent, palette changes colour, bars change mark treatment. Record raw pixel differences, with no post-hoc pass threshold or claim that a difference alone proves usefulness.",
+  "intentional_differences": "640px canvas, single-octave portable noise, fixed seed/shared source with offsets, independent pitch/maxLength, fixed background/opacity, centre-anchored unclamped marks. Bar substitution is an architect-designed transfer test, not a surveyed reproduction.",
+  "output": ".work/reproductions/cp1-java2d",
+  "render_budget": 8,
+  "excluded_claims": [
+    "upstream baseline equality",
+    "P2D/P3D",
+    "p5.js browser",
+    "py5 host",
+    "Android",
+    "portable drawing commands",
+    "Processing IDE/PDE preprocessing until separately checked",
+    "human artist usability test"
+  ],
+  "review_recheck": {
+    "additional_renders": 4,
+    "reason": "After the first four renders Sol identified missing nonfinite rejection and incomplete style/matrix restoration coverage. Tighten validation and repeat the same four configurations; no artwork or tolerance changes.",
+    "initial_renders_completed": 4
+  }
+}

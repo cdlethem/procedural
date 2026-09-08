@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "part": "interruption",
+  "scope": "Actual py5 JAVA2D registered suite part only",
+  "input_sha256": {
+    "tests/native/py5_frame_driver.py": "63678a471d911f54d6e60447d9fd09238a8796ee3d2d216d4fdaf122c310274b",
+    "tests/native/py5_frame_interruption.py": "ca7e97ca54fd6e14f909d178ea9b18bdbe5299f00b6d4c78ad99e9212aa6fb47",
+    "tools/run_py5_adapter.py": "2605f4a1e12bb201d9b8b32167767f22641b0453939232e557ac8d9d80ab88d4",
+    "design/py5-adapter-validation.md": "248815d1aed51af30a6875c8fdbe96d2ae47927f7484e827b7071406fefea530",
+    "catalog/drawing/fresh-raster-2d.json": "c3d1cdc264aecbc680c24e9d58e5eb11eac48c63b48d30e478777b577907b593",
+    "packages/python/procedurals/__init__.py": "3d53798ebcd479266ec0d793ed0eb68d42abc0acf1f35f0b2febc7c74ec5a3f2",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/__init__.py": "763066a534ae41d8a01605ceedcea2cd1c37139a25f4f2a9138e63b8a31410d7",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/graphics.py": "2761b2987666c7d1d70088c70aca9492dd4963abf644d8fa78ee0de9dc4c30f8",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/sketch.py": "39557b47939444710c6cd2480e8dfadc03eddc28c87106c3fb262d2d087a8639",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/base.py": "018c896ebee9ab611ef7346cbeca8e354918cf5caa49a1465332a7b7cccd57da",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/mixins/pixels.py": "e6b2d4c46c5370e61fef0436b901c860929338afc20e8a9ec8f941a8fb8d07b9",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/core.jar": "2cd02df8ace61c45af5eddef74dc74608b87a50155e83f20c7b1e28642ddbc85",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/py5.jar": "4447b8098080f83cb4ffa5bf3b2d6c15a4a1bea3265198da75f5ac936f504903",
+    "tests/native/py5_frame_failures.py": "91aaaec3a469427e0255fcd75644502a27a6907c1d725329e65013af63a58c50",
+    "design/py5-interruption-validation.md": "fdf983ba7032eb05da9ab6637fb291c1955378c0c7c6ee7999084bc1a1a40fb3"
+  },
+  "platform": "linux",
+  "exit_code": 0,
+  "stdout": "PROCEDURALS_RESULT={\"passed\": true, \"part\": \"interruption\", \"py5\": \"0.10.11a0\", \"java\": \"17.0.20.1\", \"native\": {\"passed\": true, \"checks\": 1, \"scope\": \"Injected Python interruption with actual Py5Graphics cleanup\"}}\n",
+  "stderr": "Picked up JAVA_TOOL_OPTIONS: -Dsun.java2d.uiScale=2\n",
+  "native": {
+    "passed": true,
+    "part": "interruption",
+    "py5": "0.10.11a0",
+    "java": "17.0.20.1",
+    "native": {
+      "passed": true,
+      "checks": 1,
+      "scope": "Injected Python interruption with actual Py5Graphics cleanup"
+    }
+  }
+}

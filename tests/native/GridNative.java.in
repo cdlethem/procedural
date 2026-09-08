@@ -1,0 +1,90 @@
+import org.procedurals.layout.RegularGrid;
+import java.util.*;
+
+public class GridNative {
+    static List<Object> cases = new ArrayList<Object>(), access = new ArrayList<Object>();
+    static Map<String,Object> map(Object... values) {
+        Map<String,Object> m = new LinkedHashMap<String,Object>();
+        for(int i=0;i<values.length;i+=2) m.put((String)values[i],values[i+1]);
+        return m;
+    }
+    static List<Object> list(Object... values) { return new ArrayList<Object>(Arrays.asList(values)); }
+    static void caseRun(String id, Map<String,Object> params, Object[] indices) {
+        try {
+            RegularGrid g=RegularGrid.create(params);
+            List<Object> points=new ArrayList<Object>();
+            for(Object i:indices) points.add(g.pointAt(i));
+            cases.add(map("id",id,"size",g.size(),"serialized",g.toMap(),"points",points));
+        } catch(RegularGrid.GridException e) { cases.add(map("id",id,"error",e.code)); }
+    }
+    static RegularGrid small() {return RegularGrid.create(map("origin",list(0,0),"spacing",list(1,1),"columns",3,"rows",2));}
+    static void accessRun(String id,Object index) {
+        try { small().pointAt(index); access.add(map("id",id,"error","NO_ERROR")); }
+        catch(RegularGrid.GridException e) { access.add(map("id",id,"error",e.code)); }
+    }
+    interface Attempt { void run(); }
+    static void error(String code,Attempt a) {
+        try {a.run(); throw new AssertionError("Expected "+code);}
+        catch(RegularGrid.GridException e){if(!e.code.equals(code))throw new AssertionError(e.code);}
+    }
+    static void check(boolean b){if(!b)throw new AssertionError();}
+    @SuppressWarnings("unchecked")
+    static void nativeChecks() {
+        Map<String,Object> p=map("origin",list(-0.0,2),"spacing",list(2,3),"columns",3,"rows",2);
+        final RegularGrid g=RegularGrid.create(p);
+        ((List<Object>)p.get("origin")).set(0,99);
+        Map<String,Object> serialized=g.toMap();
+        ((List<Object>)serialized.get("spacing")).set(0,999);
+        check(g.pointAt(1)[0]==2);
+        check(Double.doubleToRawLongBits(g.pointAt(0)[0])==0L);
+        check(RegularGrid.create(g.toMap()).size()==g.size());
+        final double[] out={17,19,23,29};
+        g.pointInto(4,out,1); check(Arrays.equals(out,new double[]{17,2,5,29}));
+        final double[] saved=out.clone();
+        error("INVALID_INDEX",()->g.pointInto(-1,out,-1));
+        error("INDEX_OUT_OF_RANGE",()->g.pointInto(6,(double[])null,0));
+        error("INVALID_OUTPUT",()->g.pointInto(0,out,3));
+        error("INVALID_OUTPUT",()->g.pointInto(0,(double[])null,0));
+        error("INVALID_OUTPUT",()->g.pointInto(0,out,-1));
+        check(Arrays.equals(out,saved));
+        for(final double value:new double[]{Double.NaN,Double.POSITIVE_INFINITY,Double.NEGATIVE_INFINITY}){
+            error("INVALID_INDEX",()->g.pointAt(Double.valueOf(value)));
+            error("INVALID_INPUT",()->RegularGrid.create(map("origin",list(value,0),"spacing",list(1,1),"columns",1,"rows",1)));
+        }
+        error("INVALID_INPUT",()->RegularGrid.create(map("origin",list(0,0),"spacing",list(1,1),
+            "columns",new java.math.BigDecimal("1.999999999999999999999"),"rows",1)));
+        error("INVALID_INDEX",()->g.pointAt(new java.math.BigDecimal("1e-400")));
+        RegularGrid zeros=RegularGrid.create(map("origin",list(-0.0,-0.0),"spacing",list(1,1),"columns",1,"rows",1));
+        for(double n:zeros.pointAt(0)) check(Double.doubleToRawLongBits(n)==0L);
+        for(Object n:(List<?>)zeros.toMap().get("origin")) check(Double.doubleToRawLongBits(((Number)n).doubleValue())==0L);
+        final RegularGrid empty=RegularGrid.create(map("origin",list(0,0),"spacing",list(1,1),"columns",0,"rows",1));
+        error("INDEX_OUT_OF_RANGE",()->empty.pointAt(0));
+    }
+    static Map<String,Object> performance() {
+        RegularGrid g=RegularGrid.create(map("origin",list(0,0),"spacing",list(.25,.5),"columns",500,"rows",500));
+        double[] out=new double[2]; double sum=0;
+        for(int warm=0;warm<2;warm++)for(long i=0;i<g.size();i++)g.pointInto(i,out,0);
+        long start=System.nanoTime();
+        for(long i=0;i<g.size();i++){g.pointInto(i,out,0);sum+=out[0]+out[1];}
+        long elapsed=System.nanoTime()-start;
+        check(sum==46781250.0);
+        return map("points",g.size(),"warmup_traversals",2,"elapsed_ns",elapsed,"checksum",sum,
+                   "storage","one caller-owned double[2]; no full point materialization");
+    }
+    static String json(Object v) {
+        if(v==null)return "null";
+        if(v instanceof String)return "\""+((String)v).replace("\\","\\\\").replace("\"","\\\"")+"\"";
+        if(v instanceof Number || v instanceof Boolean)return v.toString();
+        if(v instanceof double[]){double[] a=(double[])v;return "["+a[0]+","+a[1]+"]";}
+        StringJoiner j=new StringJoiner(",",v instanceof Map?"{":"[",v instanceof Map?"}":"]");
+        if(v instanceof Map)for(Object e0:((Map<?,?>)v).entrySet()){
+            Map.Entry<?,?> e=(Map.Entry<?,?>)e0;j.add(json(e.getKey())+":"+json(e.getValue()));
+        } else for(Object item:(Iterable<?>)v)j.add(json(item));
+        return j.toString();
+    }
+    public static void main(String[] args) {
+        /* SHARED_FIXTURE_CALLS */
+        nativeChecks();
+        System.out.println(json(map("cases",cases,"access",access,"native_checks_passed",true,"performance",performance())));
+    }
+}

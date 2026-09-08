@@ -1,0 +1,22 @@
+{
+  "status": "accepted_for_edit_validation",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "One full-density CityMarks frame only; not whole recreation/package acceptance",
+  "evidence_sha256": {
+    "evidence/reproductions/r2-p3d/first-frame.json": "5e13035388bd9976c0ad60f6f00d4fe30994916968d28e338d1e509cf059a7a6",
+    "evidence/reproductions/r2-p3d/first-frame-plan.json": "dd5d0f257d91ab12b28a3a522347874a118062a8129849314ee5dcf4185fe558"
+  },
+  "image_sha256": "795c52a50fbb3c4335920176bfd1fe4c5f3b974c4c7ca6c30fe274a6ddf34d44",
+  "observations": [
+    "Inspected full960square: large triangular roofs and varied-height towers with dense windowed walls visible.",
+    "624033 native boxes rendered; draw1.999s, process3.832s on this runtime.",
+    "No source-density reduction needed."
+  ],
+  "remaining": [
+    "Palette/height edits retain composition",
+    "Seed change and reset pixel equality",
+    "Cached save",
+    "Final native/visual acceptance and packaging"
+  ]
+}

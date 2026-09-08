@@ -1,0 +1,376 @@
+{
+  "id": "mesh.radial-profile-surface-3d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "capability": "CP7",
+  "description": "Generate an owned indexed-triangle radial surface from a caller-supplied ordered local axial radius profile, angular subdivision, independent endpoint closures, and explicit face bound. It computes retained local geometry, topology metadata, and flat unit normals only.",
+  "decision_cluster": "mesh.radial-profile-surface-3d",
+  "capability_decision": "design/capabilities/cp7-profile-selection.md",
+  "design_review": "design/operations/cp7-profile-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2017/Generativos/cilindros#1",
+      "notes_path": "survey/out/2017/Generativos/cilindros/notes.md",
+      "note_sha256": "ebd2bd7956c44c5d2f9db05e7dd9a610526143e3035ef1e630c1970f6f6b2fb2",
+      "evidence_sha256": "d9e3979a949ad44b85eaf7c8cd64c26258e16d4affe1ed84981b2816d0f89964",
+      "upstream_pde_sha256": "801beeac6b92fefbb9e0f4e9f8cd0bf3aeb5bba72a368879063d228a967be7ba",
+      "relationship": "Capability-dependency admission for independently specified connected circular side bands and explicit endpoint closure. Source colour drift, random state, transforms, camera, P3D drawing, and its cap-winding discrepancy remain outside."
+    },
+    {
+      "candidate_id": "2017/Generativos/fieeee#1",
+      "notes_path": "survey/out/2017/Generativos/fieeee/notes.md",
+      "note_sha256": "5f193535ab67b1c5f8361845ccbde8bb444bd6e0b4043a1f923babd545d5be04",
+      "evidence_sha256": "19b3e2bb02f4ac0b7c821af0ff679040e43e1c71dcea66f999754ac4cca342f5",
+      "upstream_pde_sha256": "2a70246f66731b3776c7cff2e07e8ae1bdb41bca6bc71312332772fda3ef39bc",
+      "relationship": "Capability-dependency admission for adjacent rings with nonconstant radii. The cosine profile, source random fill stream, offscreen texture, and mirrored-plane composition remain caller/example work."
+    },
+    {
+      "candidate_id": "2017/Generativos/Circo#2",
+      "notes_path": "survey/out/2017/Generativos/Circo/notes.md",
+      "note_sha256": "a50720a3b321b8e0f204c345317b0119c8a790a62e6defc37ac252db34252716",
+      "evidence_sha256": "7a3b1cea4a47238f9a712876e41077c544d7555c1f816675a5b9b13305a3abb5",
+      "upstream_pde_sha256": "ec524e2cf489dba19af78ea5a68b6e67b57a01c80b339045fca72bc988bde092",
+      "relationship": "Capability-dependency admission for radial quads over ordered positive-height bands and retained band/cell identity. Random bisection, palette, camera, overlay, global random stream, and source base winding remain outside."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "profile": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2147483647,
+        "items": {
+          "$ref": "#/$defs/profilePoint"
+        },
+        "description": "Ordered local [z,radius] pairs. z strictly increases; endpoint radii are nonnegative and interior radii are strictly positive. Only the two-point profile whose two endpoint radii are both zero is invalid; a P>=3 profile may have poles at both endpoints."
+      },
+      "slices": {
+        "type": "integer",
+        "minimum": 3,
+        "maximum": 715827881,
+        "description": "Angular cell count. This upper value is a representational ceiling, not an encouraged resolution or allocation guarantee."
+      },
+      "capStart": {
+        "type": "boolean",
+        "description": "Request a fan cap at the first positive-radius profile ring. A zero-radius start pole already closes itself."
+      },
+      "capEnd": {
+        "type": "boolean",
+        "description": "Request a fan cap at the last positive-radius profile ring. A zero-radius end pole already closes itself."
+      },
+      "maxFaces": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 715827881,
+        "description": "Required caller face-work limit. Its maximum is a signed-int packed-representation ceiling, not a practical-work or artistic recommendation."
+      }
+    },
+    "required": [
+      "profile",
+      "slices",
+      "capStart",
+      "capEnd",
+      "maxFaces"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "profilePoint": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "triple": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 3,
+        "maxItems": 3
+      }
+    }
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "positions": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 715827882,
+        "items": {
+          "$ref": "#/$defs/triple"
+        },
+        "description": "Owned local [x,y,z] vertex positions in canonical profile-ring/pole then cap-centre order."
+      },
+      "triangles": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 715827881,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 715827881
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 715827881
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 715827881
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "normals": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 715827881,
+        "items": {
+          "$ref": "#/$defs/triple"
+        },
+        "description": "Owned local flat unit [x,y,z] normals aligned one-to-one with triangles."
+      },
+      "faceKinds": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 715827881,
+        "items": {
+          "type": "string",
+          "enum": [
+            "side",
+            "start-cap",
+            "end-cap"
+          ]
+        }
+      },
+      "bands": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 715827881,
+        "items": {
+          "type": "integer",
+          "minimum": -1,
+          "maximum": 715827880
+        }
+      },
+      "cells": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 715827881,
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 715827880
+        }
+      }
+    },
+    "required": [
+      "positions",
+      "triangles",
+      "normals",
+      "faceKinds",
+      "bands",
+      "cells"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "triple": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 3,
+        "maxItems": 3
+      }
+    }
+  },
+  "fixture_format": "radial-profile-surface-output",
+  "output_invariants": "F=triangles.length=normals.length=faceKinds.length=bands.length=cells.length, 1<=F<=maxFaces. Every position and normal component is finite binary64 with completed zero canonical +0. V=positions.length satisfies V<=F+1 under the admitted profile domain: P=2 has at most one pole, while P>=3 may have both endpoint poles. Each triangle has three distinct valid position indices. Side faces have kind side and band in0..profile.length-2; cap faces have band=-1. Every face has cell in0..slices-1. Side bands and cells are canonical ordered topology; the two ordinary triangles for a positive-to-positive cell share band/cell. Positions, triangles, normals and metadata are detached owned result data and contain no input configuration, RNG state, style, renderer, callback, preset, count alias, or serialized replay.",
+  "behavior": {
+    "input": "Input has exactly profile,slices,capStart,capEnd,maxFaces. Static validation order is outer passive record/exact keys; profile outer List and length; each profile pair in increasing list order, pair shape then z then radius, including z monotonicity and endpoint/interior radius constraints; the special two-point/both-poles rejection; slices; capStart; capEnd; maxFaces. Every accepted number is finite binary64 and never bool. Integral slices/maxFaces carriers validate their stated domains before narrowing. Normalize accepted zeros to +0. No sort, resampling, implicit profile, callback, default, or later-field short circuit. Complete static validation, including unused later profile rows, precedes count capacity, allocation and geometry.",
+    "counts_and_layout": "Let P=profile length, S=slices, K=number of positive-radius profile points, Z=number of endpoint poles, and C=number of requested caps whose endpoint ring is positive. V=K*S+Z+C. Each positive-to-positive side band emits2*S triangles; each pole-adjacent side band emitsS; each requested positive-ring cap emitsS. Compute F with exact wide integer arithmetic after static validation and before geometry allocation. FACE_LIMIT_EXCEEDED if F>maxFaces. The accepted count proof in design/operations/cp7-count-bounds.md establishes V<=F+1 for the admitted domain, including P>=3 double-pole profiles; P<=2147483647 and S,maxFaces<=715827881 keep count expressions within signed64 arithmetic and retained triples addressable by signed-int packed storage. These values do not guarantee allocation success, latency, or a useful artistic range. Host resource allocation failure returns no result and is never INVALID_INPUT or partial success. Core retained work/storage is O(P*S), indexed reads O(1), detached export O(F+V).",
+    "topology": "Local axis is Z. Angles increase from +X toward +Y. Set TAU=6.283185307179586 and evaluate theta=(TAU*cell)/slices in that order; position=(radius*cos(theta),radius*sin(theta),z) using named-target binary64 trigonometry. Positive rings append S vertices in input-profile then increasing-cell order. A zero-radius endpoint appends exactly one (0,0,z) pole; no 2pi seam vertex is evaluated or stored. Append requested cap centres after all profile positions, start before end. Visit side bands in input order then cells increasing with next=(cell+1) moduloS. Ordinary positive-ring cell appends (a,b,c),(a,c,d), where a=lower/current,b=lower/next,c=upper/next,d=upper/current. Start-pole cell appends (pole,upper/next,upper/current); end-pole cell appends (lower/current,lower/next,pole). After sides, start fans append (centre,ring/next,ring/current), then end fans (centre,ring/current,ring/next). Side winding is outward; start/end cap winding faces -Z/+Z. Face kinds use side,start-cap,end-cap; side bands identify the lower profile index and caps use band=-1.",
+    "normals": "For each ordered triangle(a,b,c) after positions/topology are generated, calculate u=b-a and v=c-a componentwise in x/y/z order. Reject a nonfinite edge component with MESH_ARITHMETIC_INVALID stage edge. Let su=max(abs(ux),abs(uy),abs(uz)) and sv likewise; reject zero su or sv at stage edge_scale. Divide every u component directly by su and every v component directly by sv. Compute qRaw=cross(uScaled,vScaled) through separate binary64 multiply/subtract operations in x/y/z order, no FMA or reassociation. Let sn=max(abs(qRaw.x),abs(qRaw.y),abs(qRaw.z)); reject zero sn at stage cross_scale. Divide qRaw directly by sn, then length=sqrt((qx*qx+qy*qy)+qz*qz); normal=q/length componentwise. Canonicalize completed zeros. No epsilon, analytic profile normal, binary32 narrowing, smooth interpolation, or silent dropped face is permitted. Dynamic failure returns no result and carries faceIndex/stage. The selected algorithm avoids demonstrated direct cross/norm overflow but does not claim all-finite robustness.",
+    "ownership": "Result stores packed owned primitive data and never retains caller record/profile containers. Inputs are passive immutable interchange during eager generation. Result is immutable. vertexAt,triangleAt,normalAt return fresh triples; faceKindAt,bandAt,cellAt and counts are direct retained reads; toValues deep-copies exactly output_schema. vertexInto,triangleInto,normalInto validate all access and destination conditions before three writes; failure leaves destination unchanged and successful writes leave slots outside the target triple unchanged. Materialization allocation failure does not corrupt retained data. No config serialization/replay, aliases, callbacks, iterator inputs, or draw side effect.",
+    "access": "vertexCount() and faceCount() return retained counts. vertexAt, triangleAt and normalAt return fresh three-element carriers; faceKindAt, bandAt and cellAt return aligned scalar data. Index must be finite safe nonnegative integer<=9007199254740991 and never bool; integral floating indices are accepted by dynamic-language targets. INVALID_INDEX precedes INDEX_OUT_OF_RANGE, which precedes INVALID_OUTPUT for vertexInto, triangleInto and normalInto. Each Into offset is finite safe nonnegative integral and the destination provides three writable slots of its required native element type: binary64 for vertex/normal, integer for triangle. Rejected reads leave every destination slot unchanged; success leaves slots outside the target triple unchanged. Java uses typed required int offsets and returns void; wrong/unrepresentable typed Java calls are host-call errors. JavaScript returns its destination and Python returns None. Deferred target bindings follow native_forms and native_types; no support is claimed before implementation and native validation.",
+    "native_forms": "Java org.procedurals.mesh.RadialProfile3D.generate(Object config) returns RadialProfile3D with vertexCount(), faceCount(), vertexAt(Object or long), triangleAt(Object or long), normalAt(Object or long), faceKindAt(Object or long), bandAt(Object or long), cellAt(Object or long), vertexInto(Object or long,double[],int), triangleInto(Object or long,int[],int), normalInto(Object or long,double[],int), and toValues(). No aliases, presets, callbacks, iterator forms or configuration serializer are proposed. Deferred JavaScript bindings use the same camelCase member names; Python uses vertex_count, face_count, vertex_at, triangle_at, normal_at, face_kind_at, band_at, cell_at, vertex_into, triangle_into, normal_into and to_values. Factory export/module locations are deferred target packaging decisions, not extra operation semantics. All targets remain unimplemented and unvalidated.",
+    "native_types": "Follow the existing retained-operation passive-carrier convention: Java accepts Map outer records and passive List profile/pair containers with the stated exact lengths; accepted Java numeric carriers are only Byte, Short, Integer, Long, Float and Double, rejecting BigInteger, BigDecimal and custom Number before conversion. Java At/Into numeric index overloads accept Object or long as listed; Java vertexInto/normalInto require double[] and triangleInto requires int[]. Deferred JavaScript accepts passive Object/null-prototype records and ordinary Arrays; Python accepts exact builtin dict/list with int/float but never bool. JavaScript vertex/normal destinations are Float64Array or writable ordinary Array; triangle destinations are Int32Array or writable ordinary Array. Python vertex/normal destinations are exact builtin list or array(d); triangle destinations are exact builtin list. Destination validation must precede writes, including writable-slot checks for ordinary JavaScript Arrays. Host geometry/renderer carriers, native typed-array input pairs, class instances, active getters/proxies and custom dynamic-language mapping/list containers are outside portable interchange. Java input List/Map implementations must be passive; no callback or concurrent mutation semantics are promised.",
+    "units": "Caller-defined local Cartesian distance units. Positions use [x,y,z] with +Z along supplied axial order and angular coordinates around Z from +X toward +Y. No canvas mapping, camera, object transform, clipping, style, palette, lighting setup, renderer, shader, texture, callback, preset, or drawing command is part of generation.",
+    "numerics": "Specified basic arithmetic is IEEE754 binary64 round-to-nearest ties-to-even with separate operation rounding. TAU is the stated binary64 literal. No FMA, reassociation, binary32 conversion, RNG, host global state, implicit epsilon, smoothing or coordinate clamp. Input and completed output zeros canonicalize to +0. Topology, counts, face metadata, indices and same-runtime binary64 output bits compare exactly. Cross-runtime fixture positions and normals compare with a separately generated nonnegative absolute allowance per component and case. Zero allowances require exact reference bits; exported zero is always positive zero. Bounds derive from reference sin/cos widened by two adjacent binary64 values each way (clipped to [-1,1], theta zero exact) and interval propagation through specified arithmetic. Inconclusive bounds block fixture acceptance; no global epsilon, relative fallback or automatic expansion. This selected-case engineering envelope is not a universal host-trigonometry guarantee. Near-collapse arbitrary inputs can differ in success/error across runtimes; registered error witnesses must match exact code, faceIndex and stage. Same-target/runtime repeated generation matches retained bits, without requiring Python reference bits for nonzero-allowance values.",
+    "environment": [
+      "IEEE754 binary64 basic arithmetic, round-to-nearest ties-to-even",
+      "Java/Android Math.sin, Math.cos and Math.sqrt; JavaScript Math.sin, Math.cos and Math.sqrt; Python math.sin, math.cos and math.sqrt. No implicit angle reduction."
+    ],
+    "complexity": "O(P*S) eager retained geometry and face-normal generation, O(1) indexed reads, and O(V+F) detached export. Avoid per-face object/vector allocation in generation or ordinary drawing loops. The representational ceiling is not a memory or throughput promise.",
+    "native_errors": "Static/access errors expose stable code. MESH_ARITHMETIC_INVALID also exposes faceIndex and stage, serialized as error_detail:{faceIndex,stage}. FACE_LIMIT_EXCEEDED has no partial result. Host allocation/resource failure remains a host resource exception and is not converted to validation error. No renderer/adapter result is produced by core generation."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed/nonfinite/out-of-domain static input, including wrong passive carrier/keys/shape, bool numeric, profile length below2, non-increasing axial coordinate, endpoint negative radius, nonpositive interior radius, the two-point profile with both endpoint radii zero, slices outside3..715827881, nonboolean cap, or maxFaces outside1..715827881.",
+    "FACE_LIMIT_EXCEEDED": "Complete static input is valid but exact preallocation face count F exceeds required maxFaces. No geometry/RNG/output allocation or partial result occurs.",
+    "MESH_ARITHMETIC_INVALID": "Generated face has nonfinite edge component, zero edge scale, or zero rounded scaled cross. error_detail has faceIndex and edge,edge_scale,or cross_scale stage; no output is returned.",
+    "INVALID_INDEX": "Index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "Representable index is outside the requested retained array range.",
+    "INVALID_OUTPUT": "An Into destination/offset does not provide three writable slots of the required native element type."
+  },
+  "error_order": [
+    "INVALID_INPUT during complete static input validation",
+    "FACE_LIMIT_EXCEEDED after static validation and exact count calculation, before geometry allocation",
+    "MESH_ARITHMETIC_INVALID during canonical face-normal traversal after topology/positions are generated",
+    "INVALID_INDEX, INDEX_OUT_OF_RANGE, INVALID_OUTPUT during retained-result access in that order"
+  ],
+  "dynamic_error_stages": [
+    "edge",
+    "edge_scale",
+    "cross_scale"
+  ],
+  "parameters": {
+    "profile": {
+      "unit": "ordered local [z,radius] pairs",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "cilindros motivates constant connected rings; fieeee motivates nonconstant caller profile; Circo motivates ordered bands. Private cylinder/waist/point profiles are configurations, not presets or a continuous range."
+    },
+    "slices": {
+      "unit": "integer angular cells",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Private comparison inspected8 and32 cells; cilindros source uses128. These observations establish meaningful discrete substitutions, not a default or recommended continuous range.715827881 is representation-only."
+    },
+    "capStart": {
+      "unit": "boolean start positive-ring fan choice",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "cilindros and the accepted private open/capped comparison motivate independent endpoint closure; pole endpoints do not receive an extra cap."
+    },
+    "capEnd": {
+      "unit": "boolean end positive-ring fan choice",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Same endpoint-closure evidence as capStart; no preferred closed/open setting is established."
+    },
+    "maxFaces": {
+      "unit": "retained triangle work limit",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit all-or-error resource boundary selected by root.715827881 is an index-representation ceiling, not an allocation guarantee or artistic range."
+    }
+  },
+  "design_divergences": [
+    "Independent supplied profile and angular surface rather than source named cylinder/tube/polar helpers, cosine profile, random bisection, or global Processing streams.",
+    "Owned indexed triangles, exact face provenance and retained local flat normals rather than source immediate P3D QUADS/patch drawing or source implicit lighting arithmetic.",
+    "Positive-ring endpoint fan policy and zero-radius pole representation rather than copying source cap/base winding differences.",
+    "Explicit maxFaces all-or-error bound and no renderer callback/style/palette/camera/transform state."
+  ],
+  "exclusions": [
+    "RNG, time, noise, source global streams and source replay",
+    "profile formulas, presets, interpolation, resampling, angle offset and callbacks",
+    "arbitrary/self-intersecting or closed-meridian profiles, annular solids and generic lathe claims",
+    "smooth normals, creases, texture coordinates, colours, palette/style, lights, camera, transforms, P3D adapter, shader, clipping and drawing",
+    "configuration serialization/replay, aliases, count aliases and mutable mesh editing"
+  ],
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "signed-int packed primitive storage"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Java-first capability draft; core generation has no renderer dependency."
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    }
+  },
+  "verification": {
+    "status": "Shared contract vectors reviewed; no target implementation or native acceptance yet.",
+    "fixture_obligations": [
+      "schema, exact carrier/order, static validation and access/ownership corruption cases",
+      "exact small side/cap/pole topologies, seam wrap, face metadata, winding mutations and cap independence",
+      "exact same-runtime positions/normal bits, retained-copy and Into atomicity cases",
+      "count inequality/face limit before allocation, tiny/demonstrated/bounded workload measurements",
+      "normal scaled-division witnesses, subnormal/direct-division cases and reachable dynamic edge/scale/cross failures only",
+      "Per-case and component trig/normal allowances from source-bound interval calculation; exact topology and positive-zero enforcement; same-runtime replay separately from cross-runtime reference comparison.",
+      "separate P3D example/adapter lifecycle and visual evidence; core fixture success does not claim renderer support"
+    ],
+    "numeric_policy": "design/operations/cp7-profile-fixture-policy.md"
+  },
+  "fixtures": "fixtures/operations/radial-profile-surface.json",
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "The accepted private seven-image comparison supports the selected workflow. Public core, installed starter and native P3D acceptance remain outstanding."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Semantics and generated shared vectors accepted for Java-first implementation. Native conformance, access/ownership, performance, installed example and visual acceptance remain required."
+  }
+}

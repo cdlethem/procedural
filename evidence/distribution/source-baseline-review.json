@@ -1,0 +1,28 @@
+{
+  "status": "reviewed-baseline",
+  "owner": "root",
+  "scope": "Source baseline including accepted Java0.15 and explicitly unaccepted port/design drafts; not project completion",
+  "files_staged_reviewed": 982,
+  "validation": {
+    "repository_unit_tests": 142,
+    "unit_test_status": "passed",
+    "java_core_sources_compiled_release8": 15,
+    "catalog": "passed",
+    "drawing_catalog": "passed",
+    "phase2_ledger_structural": "passed",
+    "draft_javascript_syntax": "passed",
+    "shared_render_lease_contention_and_exit": "passed"
+  },
+  "exclusions": [
+    ".work runtimes/environments/native images/package archives",
+    "copied fonts/assets",
+    "temporary builds/logs/python bytecode"
+  ],
+  "licensing": "Reviewed third-party notices and full MIT notices in three derived PDE examples and private line-pool prototype",
+  "known_limits": [
+    "Six existing trailing-blank-line whitespace warnings retained; source-bound evidence bytes preserved",
+    "1789 candidate records remain review_required",
+    "JavaScript placement core/example drafts lack root native/support acceptance",
+    "Historical reproducibility tools need ignored runtime/render/font resources; see porting handoff"
+  ]
+}

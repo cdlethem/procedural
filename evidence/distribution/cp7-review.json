@@ -1,0 +1,41 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Java0.7.0 delivery: seven editable starters and eleven reusable operations. Not a registry publication or full-corpus/four-target certification.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+    "packages/java/examples/ProfileMarks/ProfileComposition.java": "634fc9b390c48e96ded5fd5c6e1152724d7bbb416eb10c02708cadf546324036",
+    "packages/java-processing/examples/ProfileMarks/ProfileMarks.pde": "0c27374c075a0c325a1e8b2bd785df0d06fc4c91f901206ffa1c008112785bc4"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp7-java.json": "be7d6590cfbdcd3ac86b561541a7aabe84b8a61f0136a375413e52ecfa07a695",
+    "evidence/reproductions/cp7-p3d-savefix/result.json": "a83dfd3c27cb153d281be37c03873646235779a296a381013b47d4b8b0a8fc6e",
+    "evidence/reproductions/cp7-p3d-savefix/root-review.json": "bb23a2ad9a83f64bcba8019a373441179c7fc2eaea31aae2d30105312ea5148e",
+    "evidence/conformance/radial-profile-surface-processing-java.json": "f5844cec19768ef48834fc02a19a70dab4446df54f979a234052a13ff6859d00",
+    "tools/finalize_profile_package.py": "646f5345a1e5369fa0298bf6ed91726c00f9c6796e790486888893a3bd61d327",
+    "docs/profile-marks.md": "8890f1f7200e4d4563114ee2f4a26a19dde1bd9ee230a1fb6d22f111afb0c130",
+    "docs/installing-profile-marks.md": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429"
+  },
+  "final_archive": {
+    "path": ".work/dist/cp7/final/procedurals-processing-0.7.0.zip",
+    "sha256": "0a0c6e76f30f0ae8b9eb5b074ca26af117038230993452c9566b7bcc2b17f499"
+  },
+  "checks": {
+    "repository_unittests": 122,
+    "catalog_checker": "passed",
+    "shared_profile_cases": 43,
+    "profile_vector_assertions": 3553,
+    "profile_native_assertions": 507,
+    "installed_pde_states": 13,
+    "all_starters_compiled": 7,
+    "final_non_document_payloads": "byte-identical to installed validated savefix archive",
+    "source_archive_binding": "savefix distribution report is hash-bound by passing P3D result, and binds original archive hash"
+  },
+  "limitations": [
+    "Known scoped software EGL/X11 warnings retained; no animation-thread warning after correction.",
+    "First failed attempt preserved.",
+    "Deeper repository evidence links in bundled docs may require repository checkout.",
+    "Deferred platform ports and downstream roadmap milestones remain unfinished."
+  ]
+}

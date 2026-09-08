@@ -1,0 +1,784 @@
+{
+  "endpoint_analysis": {
+    "geometric_endpoint": "The final binary64 multiply/add that maps a unit into a geometric interval can round to its nominal upper endpoint for some narrow ranges or large origins. This oracle therefore makes no exclusive geometric-endpoint claim.",
+    "unit_interval": "Each unit is exactly k/2^32 for k in 0..2^32-1, so the unit itself excludes 1."
+  },
+  "prototype_candidates": {
+    "baseline_5000": {
+      "candidates_sha256_struct_be_f64_xyz": "c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b",
+      "centres_sha256_struct_be_f64_xy": "51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701",
+      "config": {
+        "attempts": 5000,
+        "centre_rectangle": {
+          "origin": [
+            64.0,
+            64.0
+          ],
+          "size": [
+            512.0,
+            512.0
+          ]
+        },
+        "radius_max": 64.0,
+        "radius_min": 4.0,
+        "seed": 42
+      },
+      "draw_order": [
+        "x",
+        "y",
+        "u",
+        "v"
+      ],
+      "draws_per_proposal": 4,
+      "final_state": [
+        1945923461,
+        4213687651,
+        98133763,
+        1715745460
+      ],
+      "first_proposal": [
+        275.8152515888214,
+        560.5310916900635,
+        4.128970897112439
+      ],
+      "formula": {
+        "radius": "((radiusMax - radiusMin) * u * v) + radiusMin",
+        "radius_evaluation_order": [
+          "span = radiusMax - radiusMin",
+          "scaled = span * u",
+          "tapered = scaled * v",
+          "radius = tapered + radiusMin"
+        ],
+        "x": "(width * ux) + originX",
+        "y": "(height * uy) + originY"
+      },
+      "last_proposal": [
+        306.12875974178314,
+        289.199315905571,
+        5.779592686011994
+      ]
+    },
+    "baseline_prefix_10000": {
+      "baseline_final_state": [
+        1945923461,
+        4213687651,
+        98133763,
+        1715745460
+      ],
+      "baseline_sha256_struct_be_f64_xyz": "c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b",
+      "extended_attempts": 10000,
+      "extended_centres_sha256_struct_be_f64_xy": "3bffe77541315570d9e8160f365b795f024a8cb2d5dda032bb6f292ae7fd22ca",
+      "extended_sha256_struct_be_f64_xyz": "573886ffb18b5cb3439a02c54bdf429b89e984ea1b92842d08363a73cced8988",
+      "final_state_after_extended": [
+        423499738,
+        1526627613,
+        3810593951,
+        917917029
+      ],
+      "first_prefix_matches_baseline": true,
+      "first_prefix_sha256_struct_be_f64_xyz": "c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b",
+      "prefix_attempts": 5000,
+      "state_after_prefix": [
+        1945923461,
+        4213687651,
+        98133763,
+        1715745460
+      ],
+      "state_after_prefix_matches_baseline": true
+    },
+    "rmax_32_5000": {
+      "candidates_sha256_struct_be_f64_xyz": "d8c04cb596fc82fa18ee0afff69984be92f638cfdccb9fa8ee4d0350de736045",
+      "centres_sha256_struct_be_f64_xy": "51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701",
+      "config": {
+        "attempts": 5000,
+        "centre_rectangle": {
+          "origin": [
+            64.0,
+            64.0
+          ],
+          "size": [
+            512.0,
+            512.0
+          ]
+        },
+        "radius_max": 32.0,
+        "radius_min": 4.0,
+        "seed": 42
+      },
+      "draw_order": [
+        "x",
+        "y",
+        "u",
+        "v"
+      ],
+      "draws_per_proposal": 4,
+      "final_state": [
+        1945923461,
+        4213687651,
+        98133763,
+        1715745460
+      ],
+      "first_proposal": [
+        275.8152515888214,
+        560.5310916900635,
+        4.060186418652472
+      ],
+      "formula": {
+        "radius": "((radiusMax - radiusMin) * u * v) + radiusMin",
+        "radius_evaluation_order": [
+          "span = radiusMax - radiusMin",
+          "scaled = span * u",
+          "tapered = scaled * v",
+          "radius = tapered + radiusMin"
+        ],
+        "x": "(width * ux) + originX",
+        "y": "(height * uy) + originY"
+      },
+      "last_proposal": [
+        306.12875974178314,
+        289.199315905571,
+        4.830476586805597
+      ]
+    }
+  },
+  "provenance": {
+    "notice": "The xoshiro and SplitMix sources describe their public-domain dedication; this diagnostic is an independent Python expression of their recurrence. The scalar word packing and proposal formula are project prototype choices.",
+    "splitmix64": "https://prng.di.unimi.it/splitmix64.c",
+    "xoshiro128starstar_1_1": "https://prng.di.unimi.it/xoshiro128starstar.c"
+  },
+  "runtime": {
+    "implementation": "CPython",
+    "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.43",
+    "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]"
+  },
+  "schema": "cp3-stream-oracle/v1",
+  "scope": "Independent Python reference for the selected private xoshiro128** 1.1 stream and prototype candidate mapping. It generates no accepted geometry, renderer commands, or visual evidence.",
+  "seed_vectors": [
+    {
+      "first_10": [
+        {
+          "index": 0,
+          "output_u32": 3737715805,
+          "post_state": [
+            4148558844,
+            948174946,
+            2616515163,
+            3249708130
+          ],
+          "unit": 0.8702547766733915
+        },
+        {
+          "index": 1,
+          "output_u32": 2584255861,
+          "post_state": [
+            242444284,
+            1412768197,
+            1689380263,
+            3034580937
+          ],
+          "unit": 0.601693955482915
+        },
+        {
+          "index": 2,
+          "output_u32": 2876756834,
+          "post_state": [
+            4003873264,
+            1056416670,
+            8456283,
+            2838521606
+          ],
+          "unit": 0.6697971452958882
+        },
+        {
+          "index": 3,
+          "output_u32": 3286328325,
+          "post_state": [
+            2036434280,
+            3503352373,
+            23098795,
+            1042597054
+          ],
+          "unit": 0.7651579391676933
+        },
+        {
+          "index": 4,
+          "output_u32": 1553311962,
+          "post_state": [
+            2543168483,
+            2832276214,
+            3654654659,
+            2708758391
+          ],
+          "unit": 0.3616586239077151
+        },
+        {
+          "index": 5,
+          "output_u32": 1625202774,
+          "post_state": [
+            2654006882,
+            3868273622,
+            3967147296,
+            707528781
+          ],
+          "unit": 0.3783970079384744
+        },
+        {
+          "index": 6,
+          "output_u32": 3260698944,
+          "post_state": [
+            1385025017,
+            2496927892,
+            1343397698,
+            3910983269
+          ],
+          "unit": 0.759190633893013
+        },
+        {
+          "index": 7,
+          "output_u32": 2754151956,
+          "post_state": [
+            793053960,
+            2521516591,
+            2863561403,
+            1178045422
+          ],
+          "unit": 0.641250972636044
+        },
+        {
+          "index": 8,
+          "output_u32": 2651137455,
+          "post_state": [
+            4281977545,
+            329268124,
+            327102387,
+            3859680899
+          ],
+          "unit": 0.6172660400625318
+        },
+        {
+          "index": 9,
+          "output_u32": 2503817145,
+          "post_state": [
+            177733590,
+            4293320422,
+            2888949114,
+            1906900909
+          ],
+          "unit": 0.5829653574619442
+        }
+      ],
+      "initial_state": [
+        2065550767,
+        3793791033,
+        2713282036,
+        1853398634
+      ],
+      "seed": 0
+    },
+    {
+      "first_10": [
+        {
+          "index": 0,
+          "output_u32": 1695105466,
+          "post_state": [
+            2799959180,
+            2105974090,
+            4174866598,
+            218261887
+          ],
+          "unit": 0.3946724967099726
+        },
+        {
+          "index": 1,
+          "output_u32": 1423115009,
+          "post_state": [
+            3597076665,
+            598870368,
+            1393426474,
+            664906628
+          ],
+          "unit": 0.33134478353895247
+        },
+        {
+          "index": 2,
+          "output_u32": 634581793,
+          "post_state": [
+            3530861149,
+            2799370739,
+            3782985875,
+            2635538464
+          ],
+          "unit": 0.14775008731521666
+        },
+        {
+          "index": 3,
+          "output_u32": 1068227753,
+          "post_state": [
+            3921185678,
+            2513724221,
+            2232190158,
+            1628346846
+          ],
+          "unit": 0.24871615529991686
+        },
+        {
+          "index": 4,
+          "output_u32": 716759206,
+          "post_state": [
+            492990829,
+            4183846013,
+            3295835456,
+            3621199782
+          ],
+          "unit": 0.16688350727781653
+        },
+        {
+          "index": 5,
+          "output_u32": 4186505319,
+          "post_state": [
+            869597878,
+            544237648,
+            432602669,
+            3147749749
+          ],
+          "unit": 0.9747467280831188
+        },
+        {
+          "index": 6,
+          "output_u32": 3777694425,
+          "post_state": [
+            2822484883,
+            174953675,
+            3402456219,
+            1971924191
+          ],
+          "unit": 0.8795630245003849
+        },
+        {
+          "index": 7,
+          "output_u32": 2710820970,
+          "post_state": [
+            3621718919,
+            1755020227,
+            3118430472,
+            633381887
+          ],
+          "unit": 0.6311621912755072
+        },
+        {
+          "index": 8,
+          "output_u32": 2858460077,
+          "post_state": [
+            2592396219,
+            110823756,
+            1492645007,
+            3737248362
+          ],
+          "unit": 0.6655370995867997
+        },
+        {
+          "index": 9,
+          "output_u32": 2689674896,
+          "post_state": [
+            1121859741,
+            3303550584,
+            4100046644,
+            3612948162
+          ],
+          "unit": 0.6262387372553349
+        }
+      ],
+      "initial_state": [
+        2298633409,
+        2433363436,
+        1703865447,
+        3203108257
+      ],
+      "seed": 1
+    },
+    {
+      "first_10": [
+        {
+          "index": 0,
+          "output_u32": 1776835114,
+          "post_state": [
+            3134439296,
+            542813616,
+            870962070,
+            3330845865
+          ],
+          "unit": 0.4137016632594168
+        },
+        {
+          "index": 1,
+          "output_u32": 4165204688,
+          "post_state": [
+            1543618201,
+            2841690534,
+            1012993046,
+            2416496438
+          ],
+          "unit": 0.9697872884571552
+        },
+        {
+          "index": 2,
+          "output_u32": 17111135,
+          "post_state": [
+            1701425161,
+            3372249897,
+            2716073615,
+            1081377227
+          ],
+          "unit": 0.0039839965756982565
+        },
+        {
+          "index": 3,
+          "output_u32": 2317295270,
+          "post_state": [
+            3961340651,
+            227163567,
+            3295419526,
+            2811696203
+          ],
+          "unit": 0.5395373492501676
+        },
+        {
+          "index": 4,
+          "output_u32": 2792088233,
+          "post_state": [
+            1174432527,
+            637232066,
+            1007288429,
+            3914278224
+          ],
+          "unit": 0.6500837004277855
+        },
+        {
+          "index": 5,
+          "output_u32": 2554630222,
+          "post_state": [
+            2327063965,
+            1609631904,
+            2362306402,
+            2721355365
+          ],
+          "unit": 0.5947961988858879
+        },
+        {
+          "index": 6,
+          "output_u32": 2940343271,
+          "post_state": [
+            2003940184,
+            1502136927,
+            3832054527,
+            754331630
+          ],
+          "unit": 0.6846020163502544
+        },
+        {
+          "index": 7,
+          "output_u32": 2244566231,
+          "post_state": [
+            34559721,
+            3398564856,
+            2190315431,
+            4146957227
+          ],
+          "unit": 0.5226038002874702
+        },
+        {
+          "index": 8,
+          "output_u32": 3567603786,
+          "post_state": [
+            1068705466,
+            1242768054,
+            2742364494,
+            3816987117
+          ],
+          "unit": 0.8306474857963622
+        },
+        {
+          "index": 9,
+          "output_u32": 2928476417,
+          "post_state": [
+            2518851041,
+            3604294978,
+            3129172980,
+            2379930956
+          ],
+          "unit": 0.6818390490952879
+        }
+      ],
+      "initial_state": [
+        803958421,
+        3184996902,
+        2993090819,
+        686809907
+      ],
+      "seed": 42
+    },
+    {
+      "first_10": [
+        {
+          "index": 0,
+          "output_u32": 4023872069,
+          "post_state": [
+            4024964126,
+            1061149425,
+            2282711607,
+            1799067374
+          ],
+          "unit": 0.9368807238060981
+        },
+        {
+          "index": 1,
+          "output_u32": 482226062,
+          "post_state": [
+            3152828417,
+            1490592984,
+            408067113,
+            576780960
+          ],
+          "unit": 0.11227700440213084
+        },
+        {
+          "index": 2,
+          "output_u32": 175963982,
+          "post_state": [
+            3243509369,
+            4217790704,
+            318207016,
+            3270755285
+          ],
+          "unit": 0.04096980718895793
+        },
+        {
+          "index": 3,
+          "output_u32": 2139429908,
+          "post_state": [
+            4173440348,
+            684004001,
+            526553681,
+            2904107468
+          ],
+          "unit": 0.4981248425319791
+        },
+        {
+          "index": 4,
+          "output_u32": 1378036237,
+          "post_state": [
+            2099093041,
+            3479578028,
+            1837528333,
+            3789253678
+          ],
+          "unit": 0.32084906403906643
+        },
+        {
+          "index": 5,
+          "output_u32": 2052038198,
+          "post_state": [
+            1403049907,
+            3757952656,
+            3704664892,
+            3930853749
+          ],
+          "unit": 0.47777737444266677
+        },
+        {
+          "index": 6,
+          "output_u32": 3467094439,
+          "post_state": [
+            1712392278,
+            1351461407,
+            1961706639,
+            2399087021
+          ],
+          "unit": 0.807245829841122
+        },
+        {
+          "index": 7,
+          "output_u32": 1936964625,
+          "post_state": [
+            3093531620,
+            1114760902,
+            162034393,
+            2484967155
+          ],
+          "unit": 0.4509847203735262
+        },
+        {
+          "index": 8,
+          "output_u32": 46688342,
+          "post_state": [
+            1846541265,
+            4089061371,
+            1376154941,
+            1669443251
+          ],
+          "unit": 0.010870476718991995
+        },
+        {
+          "index": 9,
+          "output_u32": 3687813865,
+          "post_state": [
+            4264839833,
+            3484651799,
+            1211529452,
+            3716826241
+          ],
+          "unit": 0.8586360758636147
+        }
+      ],
+      "initial_state": [
+        841315180,
+        625556678,
+        676566363,
+        4169423796
+      ],
+      "seed": 2147483648
+    },
+    {
+      "first_10": [
+        {
+          "index": 0,
+          "output_u32": 331202089,
+          "post_state": [
+            3177249127,
+            3472910806,
+            3737523828,
+            2344958100
+          ],
+          "unit": 0.07711399556137621
+        },
+        {
+          "index": 1,
+          "output_u32": 2303545133,
+          "post_state": [
+            4188383269,
+            2896594629,
+            1668629267,
+            713691686
+          ],
+          "unit": 0.5363358960021287
+        },
+        {
+          "index": 2,
+          "output_u32": 2732085799,
+          "post_state": [
+            2139700422,
+            913731059,
+            3621609782,
+            1688673329
+          ],
+          "unit": 0.6361132950987667
+        },
+        {
+          "index": 3,
+          "output_u32": 1755962312,
+          "post_state": [
+            760761604,
+            2653040643,
+            1150270448,
+            2341343894
+          ],
+          "unit": 0.40884183533489704
+        },
+        {
+          "index": 4,
+          "output_u32": 20464611,
+          "post_state": [
+            955543441,
+            4160079607,
+            767029492,
+            1628743853
+          ],
+          "unit": 0.004764788551256061
+        },
+        {
+          "index": 5,
+          "output_u32": 435992899,
+          "post_state": [
+            2920612299,
+            3803601298,
+            4274942309,
+            192074935
+          ],
+          "unit": 0.10151250730268657
+        },
+        {
+          "index": 6,
+          "output_u32": 115300070,
+          "post_state": [
+            1204915438,
+            2993498428,
+            1013470382,
+            610873166
+          ],
+          "unit": 0.026845389511436224
+        },
+        {
+          "index": 7,
+          "output_u32": 2552219694,
+          "post_state": [
+            3520432796,
+            3386175868,
+            2716573760,
+            540251312
+          ],
+          "unit": 0.5942349541001022
+        },
+        {
+          "index": 8,
+          "output_u32": 926509624,
+          "post_state": [
+            942862160,
+            3119176608,
+            3655127772,
+            992896847
+          ],
+          "unit": 0.21571983210742474
+        },
+        {
+          "index": 9,
+          "output_u32": 609063632,
+          "post_state": [
+            3136705471,
+            1476716076,
+            878280076,
+            635927574
+          ],
+          "unit": 0.1418086774647236
+        }
+      ],
+      "initial_state": [
+        2951840192,
+        1940994978,
+        323015604,
+        1629504261
+      ],
+      "seed": 4294967295
+    }
+  ],
+  "source_bindings": {
+    "prototype_experiment": {
+      "path": "evidence/parameter-experiments/cp3-placement/experiment.json",
+      "sha256": "5f0315e5d52a4e963833776afa34dc4334f9fae1fcf246b7640ef22ed699e6e6"
+    },
+    "rng_options": {
+      "path": "design/capabilities/cp3-rng-options.md",
+      "sha256": "eaa61a59f8acbc016c912966e0706762dda13bcac3b22da5e6e05fc7a730b7c5"
+    },
+    "script": {
+      "path": "tools/diagnostics/cp3/stream_oracle.py",
+      "sha256": "15759e935da84ee77c933df3a2dd51e2f52ef4e2b64cd036408ed78ea9d88555"
+    }
+  },
+  "status": "completed-private-numeric-oracle",
+  "stream": {
+    "algorithm": "xoshiro128** 1.1",
+    "seed": "uint32, expanded by two SplitMix64 outputs packed [low32(q0), high32(q0), low32(q1), high32(q1)]",
+    "state": "four uint32 words; all-zero state forbidden",
+    "unit": "unsigned next_u32 / 2^32, binary64, [0,1)"
+  }
+}

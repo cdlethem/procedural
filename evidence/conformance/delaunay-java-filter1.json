@@ -1,0 +1,37 @@
+{
+  "catalog_sha256": "02c1eeccaafb05dbeb81144ebe0036d1bfb4ef381794ada1f8535125ac526882",
+  "fixture_sha256": "627c4ef5eb6d3d1054e5049f1f5eecb6dddffd790469a2f05e2547cc129870eb",
+  "generated_vectors_sha256": "4cd0885d91a9ae1bba1a76cada26c097b54abf340fade0890304bf6efd8ca9c8",
+  "native": {
+    "assertions": 126,
+    "checksum": "f0c6551a2fb503d6",
+    "status": "passed"
+  },
+  "operation": "topology.delaunay-2d",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Frozen CP9 Java core fixture and native ownership/access evidence only; no renderer, package, performance-plan, or other-target claim.",
+  "source_sha256_after": {
+    "catalog/operations/delaunay-2d.json": "02c1eeccaafb05dbeb81144ebe0036d1bfb4ef381794ada1f8535125ac526882",
+    "evidence/investigations/cp9-contract-review.json": "c8873cac33a398e1144d7a91693ee5167754b32397b79a8060935b33a6b2e6ac",
+    "fixtures/operations/delaunay-2d.json": "627c4ef5eb6d3d1054e5049f1f5eecb6dddffd790469a2f05e2547cc129870eb",
+    "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+    "tests/native/Delaunay2DNative.java": "4a72a2f6869a5c0b74b5dc4200cf874098a0da6953b4b8b4524d7401e19c9fb6",
+    "tools/check_delaunay_fixtures.py": "3459c15e5e45a37e4129611194db0642bc0142a72a804a3c9b6e7513475c0e53",
+    "tools/check_delaunay_java.py": "d7a2eb4534fbc9c0c42c463a433bc9ba8c62de45f2066013f38141a6f3a05a78"
+  },
+  "source_sha256_before": {
+    "catalog/operations/delaunay-2d.json": "02c1eeccaafb05dbeb81144ebe0036d1bfb4ef381794ada1f8535125ac526882",
+    "evidence/investigations/cp9-contract-review.json": "c8873cac33a398e1144d7a91693ee5167754b32397b79a8060935b33a6b2e6ac",
+    "fixtures/operations/delaunay-2d.json": "627c4ef5eb6d3d1054e5049f1f5eecb6dddffd790469a2f05e2547cc129870eb",
+    "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+    "tests/native/Delaunay2DNative.java": "4a72a2f6869a5c0b74b5dc4200cf874098a0da6953b4b8b4524d7401e19c9fb6",
+    "tools/check_delaunay_fixtures.py": "3459c15e5e45a37e4129611194db0642bc0142a72a804a3c9b6e7513475c0e53",
+    "tools/check_delaunay_java.py": "d7a2eb4534fbc9c0c42c463a433bc9ba8c62de45f2066013f38141a6f3a05a78"
+  },
+  "status": "passed",
+  "vectors": {
+    "assertions": 2624,
+    "fixture_cases": 36,
+    "status": "passed"
+  }
+}

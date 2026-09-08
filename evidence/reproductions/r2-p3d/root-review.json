@@ -1,0 +1,39 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "ciscis002 structural recreation using existing Java operations; native P3D editing/reset/save",
+  "original": "2019/generativos/ciscis002",
+  "coverage_status": "demonstrated-structural",
+  "new_core_operations": 0,
+  "implementation_sha256": {
+    "packages/java/examples/CityMarks/CityComposition.java": "0cdc095ea49a9a39b58bc6cc8b7d6d9d7592061984fb22dc22e4f9f5836e5b70",
+    "packages/java-processing/examples/CityMarks/CityMarks.pde": "95f461ce72dba9cd23530b1e795ff29cf9a5302cebed4914c58d02e453aac225"
+  },
+  "evidence_sha256": {
+    "evidence/reproductions/r2-p3d/edits.json": "0d9b7350ae82d26a966b09e7e949bdbf2c4add90d3ebd24b82026abfb9f619f0",
+    "evidence/reproductions/r2-p3d/edits-plan.json": "f86f276b3ecdd3da71102772e302dc0e20731b578076cc47c817bb42f8f0a0d7",
+    "evidence/reproductions/r2-p3d/first-frame-review.json": "49e910666c759c9348469966d425cb7cbe88494b0119df828a3beb69d4ce84a3",
+    "design/capabilities/ciscis002-recreation-acceptance.md": "bfc1e80e01ccd9884e8e632472087966c23e61c299a72ac9148bc08e32a3e78e"
+  },
+  "visual_review": {
+    "images": {
+      "baseline": "65d04705a3fc32264ddcc6b38aea71fc205bdae2ab62c5626c730d1d5074adfa",
+      "palette": "84ce8a52ee50a5a00bb11846fccd0f76c2dc175b445e8e44905e4244dbddb78f",
+      "low": "c8b6af716f0bf44ec1677a22ff71f074ac2b21b80e1aac7156cde95736bb88b8",
+      "new-seed": "de8118642e12ae121db4904ed8d323435e14eaf78e919e92294a7891b9085934"
+    },
+    "observations": [
+      "Baseline matches previously inspected full-density frame pixels.",
+      "Palette changes building colours while retaining geometry.",
+      "Lower heights flatten the city while retaining sites and window decisions.",
+      "New seed produces a visibly different arrangement; all reset and saved pixels match baseline."
+    ]
+  },
+  "diagnostic_labels": "Preserved inherited probe field spikes counts actual window box calls; vertices=0 is unused and provides no geometry-vertex assertion. Native counts, state checks, actual source inspection and visual review support the scoped claim.",
+  "limits": [
+    "No source pixel/RNG equivalence",
+    "Human usability and deferred ports untested",
+    "Packaging pending"
+  ]
+}

@@ -1,0 +1,1241 @@
+{
+  "configuration": {
+    "diagnostic_stream": "xoshiro128**1.1 with the CP3 two-SplitMix64 expansion; private reproducibility aid only",
+    "samples_per_seed": 100000,
+    "seeds": [
+      0,
+      1,
+      42,
+      2147483648,
+      4294967295
+    ],
+    "total_samples_per_pattern": 500000,
+    "triangle_barycentric_mapping": "(1-sqrt(first), (1-second)*sqrt(first), second*sqrt(first))",
+    "unit_mapping": "uint32 / 2^32"
+  },
+  "numeric_interpretation": [
+    "The ideal uniform helper and puntis3 have similar first barycentric means, but their second moments and near-vertex/edge counts remain distinct finite-stream measurements.",
+    "The active puntis first-coordinate product produces a materially different first-vertex mean and concentration from the ideal helper.",
+    "These are numeric mapping observations, not visual evidence or a decision to preserve any source stream in a public operation."
+  ],
+  "patterns": {
+    "puntis3_source_pattern": {
+      "aggregate": {
+        "barycentric_means": [
+          0.33359109617792915,
+          0.3403342004530431,
+          0.32607470336905
+        ],
+        "barycentric_second_moments": [
+          0.16689287361836133,
+          0.1592915971225481,
+          0.14867568943960494
+        ],
+        "concentration_thresholds": {
+          "near_opposite_edge_weight_lte": 0.05,
+          "near_vertex_weight_gte": 0.9
+        },
+        "containment": {
+          "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+          "minimum_weight": 6.946397820751688e-07,
+          "violations": 0
+        },
+        "coordinate_moments": {
+          "first_radicand": {
+            "mean": 0.4997106812625155,
+            "second_moment": 0.3330777818599784
+          },
+          "second_coordinate": {
+            "mean": 0.4893305687648329,
+            "second_moment": 0.29756063206322675
+          }
+        },
+        "near_opposite_edge": {
+          "counts": [
+            48547,
+            18551,
+            39073
+          ],
+          "fractions": [
+            0.097094,
+            0.037102,
+            0.078146
+          ]
+        },
+        "near_vertex": {
+          "counts": [
+            5015,
+            3761,
+            917
+          ],
+          "fractions": [
+            0.01003,
+            0.007522,
+            0.001834
+          ]
+        },
+        "samples": 500000
+      },
+      "analytic_derivation": "The overwritten brightness draws do not enter coordinates. E[sqrt(r1)]=2/3; dd makes E[first r2 factor]=(1/2)(1/2)+(1/2)(9/10)=7/10; E[second r2 factor]=7/10; E[r2]=49/100.",
+      "analytic_expected_barycentric_means": [
+        0.3333333333333333,
+        0.34,
+        0.32666666666666666
+      ],
+      "analytic_expected_barycentric_second_moments": [
+        0.16666666666666666,
+        0.15906666666666666,
+        0.14906666666666665
+      ],
+      "analytic_expected_second_coordinate_second_moment": 0.2981333333333333,
+      "draw_order": [
+        "brightness_low_high",
+        "brightness_unit",
+        "brightness_half_one",
+        "dd",
+        "r2_lower_to_one",
+        "r2_point_four_to_one",
+        "coordinate_r1"
+      ],
+      "per_seed": [
+        {
+          "barycentric_means": [
+            0.33364722851422446,
+            0.3410050072870425,
+            0.32534776419872424
+          ],
+          "barycentric_second_moments": [
+            0.1669073363099218,
+            0.15979603014499866,
+            0.14801717120860647
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 2.2806524385101536e-06,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.4996128792814654,
+              "second_moment": 0.3328794830164966
+            },
+            "second_coordinate": {
+              "mean": 0.4885189679715783,
+              "second_moment": 0.2965907746318372
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              9720,
+              3661,
+              7815
+            ],
+            "fractions": [
+              0.0972,
+              0.03661,
+              0.07815
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              987,
+              804,
+              189
+            ],
+            "fractions": [
+              0.00987,
+              0.00804,
+              0.00189
+            ]
+          },
+          "raw_unit_draws": 700000,
+          "samples": 100000,
+          "seed": 0
+        },
+        {
+          "barycentric_means": [
+            0.3332211137712805,
+            0.3400128318963512,
+            0.32676605433237377
+          ],
+          "barycentric_second_moments": [
+            0.1665831650550556,
+            0.1590752221971877,
+            0.14900294217360596
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 5.4836423545312485e-06,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.5001409375124937,
+              "second_moment": 0.3335242113783264
+            },
+            "second_coordinate": {
+              "mean": 0.4902434818734365,
+              "second_moment": 0.29835912549649174
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              9762,
+              3749,
+              7704
+            ],
+            "fractions": [
+              0.09762,
+              0.03749,
+              0.07704
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              1014,
+              794,
+              194
+            ],
+            "fractions": [
+              0.01014,
+              0.00794,
+              0.00194
+            ]
+          },
+          "raw_unit_draws": 700000,
+          "samples": 100000,
+          "seed": 1
+        },
+        {
+          "barycentric_means": [
+            0.33311230910286055,
+            0.34075078911231804,
+            0.3261369017848269
+          ],
+          "barycentric_second_moments": [
+            0.16638964910208787,
+            0.15946438498249071,
+            0.14883314365997777
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 1.7158469004519006e-06,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.500165030896368,
+              "second_moment": 0.3333192784298172
+            },
+            "second_coordinate": {
+              "mean": 0.48875398279114046,
+              "second_moment": 0.2969471860094867
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              9704,
+              3644,
+              7807
+            ],
+            "fractions": [
+              0.09704,
+              0.03644,
+              0.07807
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              960,
+              728,
+              184
+            ],
+            "fractions": [
+              0.0096,
+              0.00728,
+              0.00184
+            ]
+          },
+          "raw_unit_draws": 700000,
+          "samples": 100000,
+          "seed": 42
+        },
+        {
+          "barycentric_means": [
+            0.33364465430516366,
+            0.3400093452387262,
+            0.3263460004561192
+          ],
+          "barycentric_second_moments": [
+            0.16695468517269466,
+            0.15904997968986756,
+            0.14893967226638183
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 4.365933345185091e-06,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.49966537656236437,
+              "second_moment": 0.3330668493123809
+            },
+            "second_coordinate": {
+              "mean": 0.4897315953015921,
+              "second_moment": 0.298135203547306
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              9630,
+              3758,
+              7866
+            ],
+            "fractions": [
+              0.0963,
+              0.03758,
+              0.07866
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              1017,
+              732,
+              182
+            ],
+            "fractions": [
+              0.01017,
+              0.00732,
+              0.00182
+            ]
+          },
+          "raw_unit_draws": 700000,
+          "samples": 100000,
+          "seed": 2147483648
+        },
+        {
+          "barycentric_means": [
+            0.3343301751960797,
+            0.33989302873074323,
+            0.32577679607317395
+          ],
+          "barycentric_second_moments": [
+            0.16762953245204507,
+            0.1590723685981876,
+            0.14858551788942329
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 6.946397820751688e-07,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.49896918205988594,
+              "second_moment": 0.3325990871629368
+            },
+            "second_coordinate": {
+              "mean": 0.4894048158864589,
+              "second_moment": 0.2977708706309987
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              9731,
+              3739,
+              7881
+            ],
+            "fractions": [
+              0.09731,
+              0.03739,
+              0.07881
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              1037,
+              703,
+              168
+            ],
+            "fractions": [
+              0.01037,
+              0.00703,
+              0.00168
+            ]
+          },
+          "raw_unit_draws": 700000,
+          "samples": 100000,
+          "seed": 4294967295
+        }
+      ],
+      "raw_unit_draws_per_sample": 7,
+      "source_relation": "The executed puntis3 grain loop, including its overwritten brightness draws."
+    },
+    "puntis_active": {
+      "aggregate": {
+        "barycentric_means": [
+          0.5552694161354472,
+          0.2225205511743229,
+          0.2222100326902313
+        ],
+        "barycentric_second_moments": [
+          0.3608918415695037,
+          0.08356862355020694,
+          0.08339135983381894
+        ],
+        "concentration_thresholds": {
+          "near_opposite_edge_weight_lte": 0.05,
+          "near_vertex_weight_gte": 0.9
+        },
+        "containment": {
+          "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+          "minimum_weight": 1.2581887725755265e-07,
+          "violations": 0
+        },
+        "coordinate_moments": {
+          "first_radicand": {
+            "mean": 0.25035300929861826,
+            "second_moment": 0.1114289327708746
+          },
+          "second_coordinate": {
+            "mean": 0.4996910544522926,
+            "second_moment": 0.3330866291967031
+          }
+        },
+        "near_opposite_edge": {
+          "counts": [
+            2417,
+            88898,
+            88820
+          ],
+          "fractions": [
+            0.004834,
+            0.177796,
+            0.17764
+          ]
+        },
+        "near_vertex": {
+          "counts": [
+            28035,
+            350,
+            344
+          ],
+          "fractions": [
+            0.05607,
+            0.0007,
+            0.000688
+          ]
+        },
+        "samples": 500000
+      },
+      "analytic_expected_barycentric_means": [
+        0.5555555555555556,
+        0.2222222222222222,
+        0.2222222222222222
+      ],
+      "analytic_expected_barycentric_second_moments": [
+        0.3611111111111111,
+        0.08333333333333333,
+        0.08333333333333333
+      ],
+      "draw_order": [
+        "r1_product_left",
+        "r1_product_right",
+        "r2"
+      ],
+      "per_seed": [
+        {
+          "barycentric_means": [
+            0.5544675964210622,
+            0.22340246448743162,
+            0.22212993909149992
+          ],
+          "barycentric_second_moments": [
+            0.36000582966236866,
+            0.08403296731925204,
+            0.08331780126028529
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 1.2581887725755265e-07,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.25107063682023584,
+              "second_moment": 0.11190303004369845
+            },
+            "second_coordinate": {
+              "mean": 0.4984280753176636,
+              "second_moment": 0.3316671692373802
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              453,
+              17630,
+              17737
+            ],
+            "fractions": [
+              0.00453,
+              0.1763,
+              0.17737
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              5567,
+              61,
+              75
+            ],
+            "fractions": [
+              0.05567,
+              0.00061,
+              0.00075
+            ]
+          },
+          "raw_unit_draws": 300000,
+          "samples": 100000,
+          "seed": 0
+        },
+        {
+          "barycentric_means": [
+            0.5546169909882287,
+            0.22245336918418193,
+            0.22292963982759098
+          ],
+          "barycentric_second_moments": [
+            0.359818915352082,
+            0.08344950765302384,
+            0.08383582763675743
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 2.546154165269018e-07,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.2505849333756345,
+              "second_moment": 0.11125667619870523
+            },
+            "second_coordinate": {
+              "mean": 0.500992813014274,
+              "second_moment": 0.3345718419280945
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              505,
+              17832,
+              17601
+            ],
+            "fractions": [
+              0.00505,
+              0.17832,
+              0.17601
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              5592,
+              76,
+              82
+            ],
+            "fractions": [
+              0.05592,
+              0.00076,
+              0.00082
+            ]
+          },
+          "raw_unit_draws": 300000,
+          "samples": 100000,
+          "seed": 1
+        },
+        {
+          "barycentric_means": [
+            0.5552807864614632,
+            0.22308667962282594,
+            0.2216325339157076
+          ],
+          "barycentric_second_moments": [
+            0.36108593454184856,
+            0.08400164544328145,
+            0.08304266336817358
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 2.453838583879388e-06,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.2505243616189227,
+              "second_moment": 0.11173665121756556
+            },
+            "second_coordinate": {
+              "mean": 0.49866725115576527,
+              "second_moment": 0.3320257742491685
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              496,
+              17661,
+              17791
+            ],
+            "fractions": [
+              0.00496,
+              0.17661,
+              0.17791
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              5526,
+              57,
+              68
+            ],
+            "fractions": [
+              0.05526,
+              0.00057,
+              0.00068
+            ]
+          },
+          "raw_unit_draws": 300000,
+          "samples": 100000,
+          "seed": 42
+        },
+        {
+          "barycentric_means": [
+            0.5559542648589937,
+            0.22190919397241568,
+            0.2221365411685835
+          ],
+          "barycentric_second_moments": [
+            0.3617218507748163,
+            0.08315034706609524,
+            0.0833350843408421
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 1.3057137151745054e-06,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.2498133210568212,
+              "second_moment": 0.11104038972528715
+            },
+            "second_coordinate": {
+              "mean": 0.49981785967477366,
+              "second_moment": 0.3329721045538194
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              474,
+              17748,
+              17875
+            ],
+            "fractions": [
+              0.00474,
+              0.17748,
+              0.17875
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              5742,
+              82,
+              56
+            ],
+            "fractions": [
+              0.05742,
+              0.00082,
+              0.00056
+            ]
+          },
+          "raw_unit_draws": 300000,
+          "samples": 100000,
+          "seed": 2147483648
+        },
+        {
+          "barycentric_means": [
+            0.556027441947471,
+            0.22175104860478304,
+            0.22222150944774782
+          ],
+          "barycentric_second_moments": [
+            0.3618266775164139,
+            0.08320865026939296,
+            0.08342542256303502
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 1.4444769000264532e-06,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.2497717936214765,
+              "second_moment": 0.1112079166691307
+            },
+            "second_coordinate": {
+              "mean": 0.5005492730989866,
+              "second_moment": 0.3341962560150932
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              489,
+              18027,
+              17816
+            ],
+            "fractions": [
+              0.00489,
+              0.18027,
+              0.17816
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              5608,
+              74,
+              63
+            ],
+            "fractions": [
+              0.05608,
+              0.00074,
+              0.00063
+            ]
+          },
+          "raw_unit_draws": 300000,
+          "samples": 100000,
+          "seed": 4294967295
+        }
+      ],
+      "raw_unit_draws_per_sample": 3,
+      "source_relation": "The executed puntis/puntis2 stipple coordinate expression."
+    },
+    "uniform_helper": {
+      "aggregate": {
+        "barycentric_means": [
+          0.33338990736116636,
+          0.3331344291553779,
+          0.33347566348346336
+        ],
+        "barycentric_second_moments": [
+          0.16677074774305173,
+          0.166562252908123,
+          0.16683256036677063
+        ],
+        "concentration_thresholds": {
+          "near_opposite_edge_weight_lte": 0.05,
+          "near_vertex_weight_gte": 0.9
+        },
+        "containment": {
+          "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+          "minimum_weight": 8.06758212457126e-08,
+          "violations": 0
+        },
+        "coordinate_moments": {
+          "first_radicand": {
+            "mean": 0.4999909330207375,
+            "second_moment": 0.3334768238351654
+          },
+          "second_coordinate": {
+            "mean": 0.5002247031147,
+            "second_moment": 0.3336465721187762
+          }
+        },
+        "near_opposite_edge": {
+          "counts": [
+            49061,
+            48855,
+            48741
+          ],
+          "fractions": [
+            0.098122,
+            0.09771,
+            0.097482
+          ]
+        },
+        "near_vertex": {
+          "counts": [
+            4975,
+            5062,
+            4934
+          ],
+          "fractions": [
+            0.00995,
+            0.010124,
+            0.009868
+          ]
+        },
+        "samples": 500000
+      },
+      "analytic_expected_barycentric_means": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "analytic_expected_barycentric_second_moments": [
+        0.16666666666666666,
+        0.16666666666666666,
+        0.16666666666666666
+      ],
+      "draw_order": [
+        "r1",
+        "r2"
+      ],
+      "per_seed": [
+        {
+          "barycentric_means": [
+            0.3318823932181145,
+            0.334339575487749,
+            0.33377803129413164
+          ],
+          "barycentric_second_moments": [
+            0.16565470838195645,
+            0.16752486061373736,
+            0.16728710833650876
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 2.429925569411417e-07,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.5018899219457247,
+              "second_moment": 0.33541741777622885
+            },
+            "second_coordinate": {
+              "mean": 0.49924828268428567,
+              "second_moment": 0.33281937137784734
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              9867,
+              9767,
+              9694
+            ],
+            "fractions": [
+              0.09867,
+              0.09767,
+              0.09694
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              963,
+              974,
+              1007
+            ],
+            "fractions": [
+              0.00963,
+              0.00974,
+              0.01007
+            ]
+          },
+          "raw_unit_draws": 200000,
+          "samples": 100000,
+          "seed": 0
+        },
+        {
+          "barycentric_means": [
+            0.33344067846667147,
+            0.33310440069094877,
+            0.3334549208423835
+          ],
+          "barycentric_second_moments": [
+            0.16667373508776254,
+            0.16652411186319474,
+            0.16639294638518026
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 8.06758212457126e-08,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.4997923781544203,
+              "second_moment": 0.3331961853878304
+            },
+            "second_coordinate": {
+              "mean": 0.5008138506284543,
+              "second_moment": 0.3341867182682338
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              9952,
+              9919,
+              9631
+            ],
+            "fractions": [
+              0.09952,
+              0.09919,
+              0.09631
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              1012,
+              1003,
+              957
+            ],
+            "fractions": [
+              0.01012,
+              0.01003,
+              0.00957
+            ]
+          },
+          "raw_unit_draws": 200000,
+          "samples": 100000,
+          "seed": 1
+        },
+        {
+          "barycentric_means": [
+            0.3342465204878482,
+            0.33229488858250655,
+            0.3334585909296397
+          ],
+          "barycentric_second_moments": [
+            0.16769256049169967,
+            0.16591517399511052,
+            0.16694141024777337
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 1.0153749524510758e-06,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.49919951951600844,
+              "second_moment": 0.33298344517813644
+            },
+            "second_coordinate": {
+              "mean": 0.5007759984540334,
+              "second_moment": 0.3342066950772391
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              9842,
+              9771,
+              9804
+            ],
+            "fractions": [
+              0.09842,
+              0.09771,
+              0.09804
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              1013,
+              1007,
+              986
+            ],
+            "fractions": [
+              0.01013,
+              0.01007,
+              0.00986
+            ]
+          },
+          "raw_unit_draws": 200000,
+          "samples": 100000,
+          "seed": 42
+        },
+        {
+          "barycentric_means": [
+            0.33296087565745924,
+            0.33373274654256196,
+            0.3333063777999807
+          ],
+          "barycentric_second_moments": [
+            0.16634124188461197,
+            0.16696629685920725,
+            0.16683098801643206
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 1.968189366688718e-06,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.5004194905696926,
+              "second_moment": 0.3336701117094996
+            },
+            "second_coordinate": {
+              "mean": 0.499321942976655,
+              "second_moment": 0.33267896933907226
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              9643,
+              9612,
+              9794
+            ],
+            "fractions": [
+              0.09643,
+              0.09612,
+              0.09794
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              975,
+              1032,
+              995
+            ],
+            "fractions": [
+              0.00975,
+              0.01032,
+              0.00995
+            ]
+          },
+          "raw_unit_draws": 200000,
+          "samples": 100000,
+          "seed": 2147483648
+        },
+        {
+          "barycentric_means": [
+            0.3344190689756952,
+            0.33220053447311626,
+            0.3333803965511806
+          ],
+          "barycentric_second_moments": [
+            0.16749149286923745,
+            0.16588082120937842,
+            0.16671034884795802
+          ],
+          "concentration_thresholds": {
+            "near_opposite_edge_weight_lte": 0.05,
+            "near_vertex_weight_gte": 0.9
+          },
+          "containment": {
+            "maximum_abs_weight_sum_error": 1.1102230246251565e-16,
+            "minimum_weight": 9.657330169015832e-07,
+            "violations": 0
+          },
+          "coordinate_moments": {
+            "first_radicand": {
+              "mean": 0.4986533549178415,
+              "second_moment": 0.33211695912416334
+            },
+            "second_coordinate": {
+              "mean": 0.5009634408300719,
+              "second_moment": 0.33434110653145654
+            }
+          },
+          "near_opposite_edge": {
+            "counts": [
+              9757,
+              9786,
+              9818
+            ],
+            "fractions": [
+              0.09757,
+              0.09786,
+              0.09818
+            ]
+          },
+          "near_vertex": {
+            "counts": [
+              1012,
+              1046,
+              989
+            ],
+            "fractions": [
+              0.01012,
+              0.01046,
+              0.00989
+            ]
+          },
+          "raw_unit_draws": 200000,
+          "samples": 100000,
+          "seed": 4294967295
+        }
+      ],
+      "raw_unit_draws_per_sample": 2,
+      "source_relation": "The unused randInTri helper in puntis/puntis2."
+    }
+  },
+  "provenance": {
+    "input_bindings_after": {
+      "design/capabilities/grain-evidence-audit.md": "5a7f58babca28374ca51b915438bd54566a39b85ef2d128bddd6a81d21c27c81",
+      "survey/out/2018/Generativos/puntis/notes.md": "98ad640b63e2ec0872af61406743bd2b5852dd7744301ec74a337ebe0d75430b",
+      "survey/out/2018/Generativos/puntis/variants/stipple_4.0/result.json": "8f7b8e4923971bfe008219d08b29075bb60162b8c0e242ad26f3f1c41070bfb1",
+      "survey/out/2018/Generativos/puntis2/notes.md": "a4b45e254cc656cb3aee8eb6bd6b7f1dfca0a23c56a182d71380ba8a73c09dfe",
+      "survey/out/2018/Generativos/puntis2/variants/density_0.4/result.json": "1872de0226356c8bed47da1a9fd2bf2481cd5f3cf0ea0ab26c1084f881b9846d",
+      "survey/out/2018/Generativos/puntis3/notes.md": "9699082e346a3e7f22798f6a932e4c42df28c9435e922365ad2c3c7de59c7e9c",
+      "survey/out/2018/Generativos/puntis3/variants/stipple_6/result.json": "1e9c68a98431715631e8d0e734f9f91404f5e12fc010c7c59d10e90d21792ba9",
+      "upstream/2018/Generativos/puntis/puntis.pde": "e58a65c8f7794bb85f4fdd3747d9a17f95711354d4314e3862bdb6f72f804335",
+      "upstream/2018/Generativos/puntis2/puntis2.pde": "e58a65c8f7794bb85f4fdd3747d9a17f95711354d4314e3862bdb6f72f804335",
+      "upstream/2018/Generativos/puntis3/puntis3.pde": "abe82f16a6b1a4f28aa442fad0340ba8c325f994127babebcdc0df6fd43868c3"
+    },
+    "input_bindings_before": {
+      "design/capabilities/grain-evidence-audit.md": "5a7f58babca28374ca51b915438bd54566a39b85ef2d128bddd6a81d21c27c81",
+      "survey/out/2018/Generativos/puntis/notes.md": "98ad640b63e2ec0872af61406743bd2b5852dd7744301ec74a337ebe0d75430b",
+      "survey/out/2018/Generativos/puntis/variants/stipple_4.0/result.json": "8f7b8e4923971bfe008219d08b29075bb60162b8c0e242ad26f3f1c41070bfb1",
+      "survey/out/2018/Generativos/puntis2/notes.md": "a4b45e254cc656cb3aee8eb6bd6b7f1dfca0a23c56a182d71380ba8a73c09dfe",
+      "survey/out/2018/Generativos/puntis2/variants/density_0.4/result.json": "1872de0226356c8bed47da1a9fd2bf2481cd5f3cf0ea0ab26c1084f881b9846d",
+      "survey/out/2018/Generativos/puntis3/notes.md": "9699082e346a3e7f22798f6a932e4c42df28c9435e922365ad2c3c7de59c7e9c",
+      "survey/out/2018/Generativos/puntis3/variants/stipple_6/result.json": "1e9c68a98431715631e8d0e734f9f91404f5e12fc010c7c59d10e90d21792ba9",
+      "upstream/2018/Generativos/puntis/puntis.pde": "e58a65c8f7794bb85f4fdd3747d9a17f95711354d4314e3862bdb6f72f804335",
+      "upstream/2018/Generativos/puntis2/puntis2.pde": "e58a65c8f7794bb85f4fdd3747d9a17f95711354d4314e3862bdb6f72f804335",
+      "upstream/2018/Generativos/puntis3/puntis3.pde": "abe82f16a6b1a4f28aa442fad0340ba8c325f994127babebcdc0df6fd43868c3"
+    },
+    "input_bindings_match": true,
+    "runtime": {
+      "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.43",
+      "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]"
+    },
+    "tool": "tools/diagnostics/cp5/run_grain_distributions.py",
+    "tool_sha256_after": "cbba1ea8ecfbbc441a25f6f0263e93737b087644a7be43c69335571ef1331ba6",
+    "tool_sha256_before": "cbba1ea8ecfbbc441a25f6f0263e93737b087644a7be43c69335571ef1331ba6",
+    "tool_sha256_match": true,
+    "upstream_license": "MIT (upstream source is provenance only)",
+    "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5"
+  },
+  "scope": {
+    "claim": "Finite-stream numeric comparison of coordinate mappings and their raw-unit consumption.",
+    "excluded": [
+      "Processing random replay",
+      "rendering or image evidence",
+      "a public operation, signature, default, range, or stochastic contract"
+    ]
+  },
+  "source_pattern_overhead": {
+    "puntis3": {
+      "brightness_draws_consumed_before_coordinates": 3,
+      "per_dot_raw_draws": 7,
+      "per_triangle_before_dots_raw_draws": 1,
+      "per_triangle_draw": "rcol() base-fill palette selection after the randomSeed(seed) reset"
+    },
+    "puntis_and_puntis2": {
+      "per_dot_raw_draws": 3,
+      "per_triangle_before_dots_raw_draws": 1,
+      "per_triangle_draw": "rcol() palette selection after the randomSeed(seed) reset"
+    }
+  },
+  "status": "completed-no-render-numeric-diagnostic",
+  "variant_measurements": {
+    "interpretation": "The audit table's changed fractions are stored renderer diff measurements in these result files, not fractions asserted by the prose notes. The notes provide qualitative descriptions and substitutions.",
+    "records": [
+      {
+        "diff_vs_baseline": {
+          "changed_fraction": 0.746,
+          "label": "large",
+          "mean": 0.2045
+        },
+        "path": "survey/out/2018/Generativos/puntis/variants/stipple_4.0/result.json",
+        "sha256": "8f7b8e4923971bfe008219d08b29075bb60162b8c0e242ad26f3f1c41070bfb1",
+        "substitution": [
+          {
+            "count": 1,
+            "new": "for (int j = 0; j < area*4.0; j++) {",
+            "old": "for (int j = 0; j < area*1.1; j++) {"
+          }
+        ]
+      },
+      {
+        "diff_vs_baseline": {
+          "changed_fraction": 0.404,
+          "label": "moderate",
+          "mean": 0.0962
+        },
+        "path": "survey/out/2018/Generativos/puntis2/variants/density_0.4/result.json",
+        "sha256": "1872de0226356c8bed47da1a9fd2bf2481cd5f3cf0ea0ab26c1084f881b9846d",
+        "substitution": [
+          {
+            "count": 1,
+            "new": "for (int j = 0; j < area*0.4; j++) {",
+            "old": "for (int j = 0; j < area*1.1; j++) {"
+          }
+        ]
+      },
+      {
+        "diff_vs_baseline": {
+          "changed_fraction": 0.765,
+          "label": "large",
+          "mean": 0.1813
+        },
+        "path": "survey/out/2018/Generativos/puntis3/variants/stipple_6/result.json",
+        "sha256": "1e9c68a98431715631e8d0e734f9f91404f5e12fc010c7c59d10e90d21792ba9",
+        "substitution": [
+          {
+            "count": 1,
+            "new": "for (int j = 0; j < area*6; j++) {",
+            "old": "for (int j = 0; j < area*2.1; j++) {"
+          }
+        ]
+      }
+    ]
+  }
+}

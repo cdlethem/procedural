@@ -1,0 +1,642 @@
+{
+  "operation": "layout.regular-grid",
+  "version": "0.1.0",
+  "comparison": {
+    "coordinates": "exact binary64; all zero coordinates/descriptors canonical +0",
+    "size_indices": "exact integer"
+  },
+  "cases": [
+    {
+      "id": "row-major-unequal-pitch",
+      "input": {
+        "origin": [
+          -2,
+          4
+        ],
+        "spacing": [
+          3,
+          0.5
+        ],
+        "columns": 3,
+        "rows": 2
+      },
+      "size": 6,
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "points": [
+        [
+          -2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          -2,
+          4.5
+        ],
+        [
+          1,
+          4.5
+        ],
+        [
+          4,
+          4.5
+        ]
+      ]
+    },
+    {
+      "id": "single-point",
+      "input": {
+        "origin": [
+          -2,
+          -4
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 1,
+        "rows": 1
+      },
+      "size": 1,
+      "indices": [
+        0
+      ],
+      "points": [
+        [
+          -2,
+          -4
+        ]
+      ]
+    },
+    {
+      "id": "single-column",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 1,
+        "rows": 3
+      },
+      "size": 3,
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "zero-columns",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 0,
+        "rows": 2
+      },
+      "size": 0,
+      "indices": [],
+      "points": []
+    },
+    {
+      "id": "zero-rows-unused-overflow",
+      "input": {
+        "origin": [
+          1e+308,
+          0
+        ],
+        "spacing": [
+          1e+308,
+          1
+        ],
+        "columns": 3,
+        "rows": 0
+      },
+      "size": 0,
+      "indices": [],
+      "points": []
+    },
+    {
+      "id": "circlesAlpha-3-cells-to-4-points",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          320,
+          320
+        ],
+        "columns": 4,
+        "rows": 4
+      },
+      "size": 16,
+      "indices": [
+        0,
+        3,
+        4,
+        15
+      ],
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          960,
+          0
+        ],
+        [
+          0,
+          320
+        ],
+        [
+          960,
+          960
+        ]
+      ]
+    },
+    {
+      "id": "paraisooscuro-60-points-per-axis",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          16,
+          16
+        ],
+        "columns": 60,
+        "rows": 60
+      },
+      "size": 3600,
+      "indices": [
+        0,
+        59,
+        60,
+        3599
+      ],
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          944,
+          0
+        ],
+        [
+          0,
+          16
+        ],
+        [
+          944,
+          944
+        ]
+      ],
+      "evidence_scope": "The note supports 60 points per axis; origin/pitch/endpoints here are an explicit fixture configuration, not source-exact reproduction."
+    },
+    {
+      "id": "indexed-not-accumulated",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          0.1,
+          1
+        ],
+        "columns": 7,
+        "rows": 1
+      },
+      "size": 7,
+      "indices": [
+        6
+      ],
+      "points": [
+        [
+          0.6000000000000001,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "separate-rounding-not-fma",
+      "input": {
+        "origin": [
+          -3.000000000000001,
+          0
+        ],
+        "spacing": [
+          1.0000000000000002,
+          1
+        ],
+        "columns": 4,
+        "rows": 1
+      },
+      "size": 4,
+      "indices": [
+        3
+      ],
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "collapsed-adjacent-is-specified",
+      "input": {
+        "origin": [
+          9007199254740992,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 3,
+        "rows": 1
+      },
+      "size": 3,
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "points": [
+        [
+          9007199254740992,
+          0
+        ],
+        [
+          9007199254740992,
+          0
+        ],
+        [
+          9007199254740994,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "safe-high-index",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 2147483647,
+        "rows": 4194304
+      },
+      "size": 9007199250546688,
+      "indices": [
+        9007199250546687,
+        9007197103063041,
+        9007197103063040
+      ],
+      "points": [
+        [
+          2147483646,
+          4194303
+        ],
+        [
+          0,
+          4194303
+        ],
+        [
+          2147483646,
+          4194302
+        ]
+      ]
+    },
+    {
+      "id": "negative-zero",
+      "input": {
+        "origin": [
+          -0.0,
+          -0.0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 1.0,
+        "rows": 1
+      },
+      "size": 1,
+      "indices": [
+        0
+      ],
+      "points": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "count-product-overflow",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 2147483647,
+        "rows": 2147483647
+      },
+      "error": "GRID_SIZE_OVERFLOW"
+    },
+    {
+      "id": "multiply-overflow",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1e+308,
+          1
+        ],
+        "columns": 3,
+        "rows": 1
+      },
+      "error": "COORDINATE_OVERFLOW"
+    },
+    {
+      "id": "add-overflow",
+      "input": {
+        "origin": [
+          1e+308,
+          0
+        ],
+        "spacing": [
+          1e+308,
+          1
+        ],
+        "columns": 2,
+        "rows": 1
+      },
+      "error": "COORDINATE_OVERFLOW"
+    },
+    {
+      "id": "zero-spacing",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          0,
+          1
+        ],
+        "columns": 3,
+        "rows": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "negative-spacing-empty",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          -1,
+          1
+        ],
+        "columns": 0,
+        "rows": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "fractional-count",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 1.5,
+        "rows": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "negative-count",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 3,
+        "rows": -1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "axis-count-overflow",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 2147483648,
+        "rows": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "boolean-count",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": true,
+        "rows": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "boolean-origin",
+      "input": {
+        "origin": [
+          true,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 3,
+        "rows": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "short-origin",
+      "input": {
+        "origin": [
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 3,
+        "rows": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "long-spacing",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1,
+          1
+        ],
+        "columns": 3,
+        "rows": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "extra-size",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 3,
+        "rows": 2,
+        "size": 6
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "missing-rows",
+      "input": {
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "columns": 3
+      },
+      "error": "INVALID_INPUT"
+    }
+  ],
+  "access_cases": [
+    {
+      "id": "negative",
+      "index": -1,
+      "error": "INVALID_INDEX"
+    },
+    {
+      "id": "fraction",
+      "index": 0.5,
+      "error": "INVALID_INDEX"
+    },
+    {
+      "id": "boolean",
+      "index": true,
+      "error": "INVALID_INDEX"
+    },
+    {
+      "id": "too-large-representation",
+      "index": 9007199254740992,
+      "error": "INVALID_INDEX"
+    },
+    {
+      "id": "at-size",
+      "index": 6,
+      "error": "INDEX_OUT_OF_RANGE"
+    }
+  ],
+  "native_cases": [
+    "reject nonfinite input/index",
+    "copy input origin/spacing",
+    "serialize detached canonical input without size and reconstruct",
+    "pointInto leaves storage unchanged on error",
+    "reject float32/nonwritable output buffers",
+    "pointInto index errors precede storage errors",
+    "huge descriptor creation and indexed access avoid materialization"
+  ]
+}

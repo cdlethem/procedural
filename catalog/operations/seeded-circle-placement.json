@@ -1,0 +1,303 @@
+{
+  "id": "sampling.seeded-circle-placement-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "capability": "CP3",
+  "description": "Place differently sized circles from an explicit seed and finite proposal budget, retaining geometry for independent drawing.",
+  "decision_cluster": "sampling.seeded-circle-placement-2d",
+  "capability_decision": "design/capabilities/cp3-architecture-decision.md",
+  "design_review": "design/operations/circle-placement-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/caramelo#0",
+      "notes_path": "survey/out/2018/Generativos/caramelo/notes.md",
+      "note_sha256": "204b387d9aec0e058834a48bc56417caf9ae0c582b93937676e3a2ca17d10708",
+      "evidence_sha256": "22d8a38bdfd6aa7288bad30ab7ad34d1c955fd28a263b3cdd7496e3b28bfe550",
+      "upstream_pde_sha256": "6f8accc753db0cf0dc1e8ceee642df745f408e23f917fe7ecd0ca80c26d8bd62",
+      "relationship": "Independently specified seeded rectangular proposal generation feeding the common ordered size-aware acceptance kernel; not a whole-computation merge."
+    },
+    {
+      "candidate_id": "2018/Generativos/candy#0",
+      "notes_path": "survey/out/2018/Generativos/candy/notes.md",
+      "note_sha256": "8d08f3cdf63fb21f8d6080310b02cbf246a4826fdbcbcc1967cf9aa7b719e86a",
+      "evidence_sha256": "27831fe7f47c5cd6b2ca04b542420cd11bbd3a432116e79cc0da0236af1e0884",
+      "upstream_pde_sha256": "e4791246c1b25bc4e3c647e0ce9e3da178de53b1e0d5a34523a0769131001883",
+      "relationship": "Independently specified seeded rectangular proposal generation feeding the common ordered size-aware acceptance kernel; not a whole-computation merge."
+    },
+    {
+      "candidate_id": "2017/Generativos/studio#0",
+      "notes_path": "survey/out/2017/Generativos/studio/notes.md",
+      "note_sha256": "9bde5b7853dcf6b6cc0f7b9c80f24ccedf8910690f7fc17d333a7e1ece6f67d5",
+      "evidence_sha256": "405e9feb56e0d332bb6ad2af24a555846370fafa024a59a760b2b5b756b15e83",
+      "upstream_pde_sha256": "0ed93fd157ec966dabc19ce358179f9a6f9e0bb30e61f69d2d90121a290a7f0b",
+      "relationship": "Bounded randomized proposals and common ordered size-aware acceptance motivate this dependency; studio uses a size-dependent radial source domain. The rectangular domain is an independent package choice informed by caramelo and candy, not studio equivalence."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "seed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "attempts": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1073741823,
+        "description": "Number of proposals to try, not a promised number of accepted circles."
+      },
+      "origin": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2,
+        "description": "Centre-domain origin [x,y], in caller coordinate units."
+      },
+      "extent": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2,
+        "description": "Positive centre-domain width and height; circle edges may extend outside this rectangle."
+      },
+      "radiusRange": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2,
+        "description": "[minimumRadius, maximumRadius], both positive with minimum<=maximum; the specified product distribution favours smaller radii."
+      },
+      "separationScale": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "description": "Multiplier on summed radii;1 permits tangency, below1 permits overlap, above1 reserves size-relative clearance."
+      }
+    },
+    "required": [
+      "seed",
+      "attempts",
+      "origin",
+      "extent",
+      "radiusRange",
+      "separationScale"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "centres": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 1073741823
+      },
+      "radii": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "maxItems": 1073741823
+      },
+      "sourceIndices": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1073741822
+        },
+        "maxItems": 1073741823
+      },
+      "attempts": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1073741823
+      }
+    },
+    "required": [
+      "centres",
+      "radii",
+      "sourceIndices",
+      "attempts"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "circle-placement-output",
+  "output_invariants": "centres, radii and sourceIndices have equal length N<=attempts; indices strictly increase within0..attempts-1; coordinates finite canonical positive-zero and radii finite positive. Attempts equals seeded input attempts or explicit input length. No redundant accepted count in toValues.",
+  "behavior": {
+    "layout": "A placement result privately retains 2*N binary64 centre coordinates, N binary64 radii and N integer original proposal indices, where N is accepted count. Apply proposal-count ceiling1073741823 statically to seeded attempts or explicit input length, so even accepting every proposal fits2*N<=2147483647. This is a shared packed-array/index representation bound, not an allocation, latency or useful artistic range guarantee. Capacity growth must be capped at this representation ceiling without integer overflow. Host allocation failure returns no result and remains a host resource exception, never INVALID_INPUT or partial successful output.",
+    "native_types": "Follow existing grid numeric conventions: Java Byte/Short/Integer/Long/Float/Double only; reject BigInteger/BigDecimal/custom Number before conversion. JavaScript passive object/Array input with number values; Python int/float but never bool, convert to finite binary64 after validating integer domains where applicable. Python huge integer conversion failure becomes INVALID_INPUT/INVALID_INDEX, not an uncaught conversion exception. Output pointInto accepts Java double[], JS Float64Array or writable ordinary Array, Python exact builtin list or array(d). Offset/count/index validation must precede narrowing. Active accessors/proxies and custom containers are not interchange data. Input containers: Java Map for records and exactly two-element List for pairs; arrays/PVector are not pair input carriers. Only passive container behavior belongs to interchange; active custom hooks are outside it. Python requires exact builtin dict records and exact builtin list pairs, rejecting custom Mapping/list subclasses and tuples. JS records have Object.prototype or null prototype and pairs are ordinary Array; class instances/typed-array pairs are not interchange input.",
+    "numerics": "IEEE754 binary64 round-to-nearest ties-to-even for every basic operation in the stated order. No FMA, reassociation, sqrt/hypot substitute, epsilon, binary32 conversion or host transcendental in the core. Normalize every zero input coordinate and completed zero output coordinate to positive zero. Radius and scale must be strictly positive. Compare core output coordinates/radii by exact binary64 bits and all counts/source indices/errors exactly across targets; do not tolerate topology differences. This is a checked floating predicate, not an exact real-number geometry guarantee. Supplied radial points are caller data: cross-host trigonometry used to construct them is outside this contract.",
+    "native_errors": "Validation/access exceptions have code. PLACEMENT_ARITHMETIC_INVALID additionally exposes candidateIndex (Python candidate_index) and stage, emitted as error_detail:{candidateIndex,stage} by conformance runners. Static INVALID_INPUT and accessor errors have no dynamic detail. Java validation errors may subclass IllegalArgumentException and arithmetic errors ArithmeticException; JS Error and Python ValueError subclasses are transport. Host resource failures are not converted to validation errors or partial success.",
+    "shared_semantics": "The acceptance, pair_validation, ownership, access, units and complexity sections of sampling.ordered-circle-filter-2d@0.1.0 are normative for this operation. Its result/accessor contract is shared unchanged. This entry adds seeded proposal generation and its own static validation; no RNG is added to the filter.",
+    "input": "Input has exactly six required keys. Validate outer passive record/keys; seed; attempts; origin pair/x/y; extent pair/width/height; radiusRange pair/min/max then min<=max; separationScale, in that order. All numbers finite and never bool. Seed and attempts are finite integral numbers within schema bounds before narrowing. Origin may be any finite coordinate; extents, radii and scale strictly positive. Normalize origin zero signs. Complete static validation before RNG initialization or output-sized storage. No defaults.",
+    "rng": "Portable xoshiro128**1.1, private to each call. Zero-extend uint32 seed to uint64 SplitMix64 state. Twice advance state by0x9e3779b97f4a7c15 modulo2^64; z=state; z=(z xor(z>>>30))*0xbf58476d1ce4e5b9 mod2^64; z=(z xor(z>>>27))*0x94d049bb133111eb mod2^64; q=z xor(z>>>31). Pack q0 and q1 as s0=low32(q0),s1=high32(q0),s2=low32(q1),s3=high32(q1). All-zero state is unreachable for this expansion, an internal invariant rather than a valid-seed input error. next output=rotl32(s1*5 mod2^32,7)*9 mod2^32. Then t=s1<<9 mod2^32; sequentially s2 xor=s0; s3 xor=s1; s1 xor=s2; s0 xor=s3; s2 xor=t; s3=rotl32(s3,11), all words uint32. Unsigned output/4294967296 is exact binary64 in[0,1). State is private, discarded on return/failure; no returned RNG or shared session.",
+    "proposal": "For i=0..attempts-1 consume exactly four units ux,uy,u,v before geometric arithmetic, unconditionally even if a proposal is later rejected or min==max. Compute px=round64(extent.x*ux), x=round64(px+origin.x), py=round64(extent.y*uy), y=round64(py+origin.y), span=round64(maxRadius-minRadius), first=round64(span*u), second=round64(first*v), r=round64(minRadius+second), in that order. Check x and y finite immediately after their additions; nonfinite results raise PLACEMENT_ARITHMETIC_INVALID with candidateIndex=i and stage proposal_x or proposal_y, respectively, and no output, including at the first proposal. The products, radius span and radius mapping are finite for valid input and the specified 32-bit unit mapping; defensive finite checks on them are internal assertions, not public error stages. Canonicalize final x/y zeros before acceptance. Finite underflow/absorption in proposal mapping is its defined rounding, unlike the checked exclusion predicate. Geometric endpoints can round to the nominal maximum; no general exclusive endpoint claim. Centres are mapped from the rectangle only: circle edges may extend outside it. No sorting, retries, host random draws, style randomness or count-dependent initialization.",
+    "zero_and_prefix": "Zero attempts validates all static input but produces empty arrays and attempts0 with no proposal arithmetic or pair comparisons. Equal radius endpoints produce that radius but still consume all four units per proposal. Extending only attempts reproduces the exact accepted prefix when both calls succeed; later placements may be absent. Increasing separation need not monotonically reduce output count for arbitrary inputs. Replaying an unchanged config deterministically reconstructs the same result. Returning a result does not retain that config.",
+    "native_forms": "Java org.procedurals.sampling.CirclePlacements2D.seeded(Object config); JavaScript seededCirclePlacement2D(config); Python seeded_circle_placement_2d(config). All return the shared immutable CirclePlacements2D result specified by ordered-circle-filter-2d. No alternate input form, seed-only defaults or public raw RNG helper."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed/nonfinite/out-of-domain static input, including wrong shape, unsupported passive carrier, bool numeric, seed/count outside their integer domains, nonpositive extent/radius/separationScale, or reversed radiusRange.",
+    "PLACEMENT_ARITHMETIC_INVALID": "Dynamic nonfinite proposal coordinate addition or pair arithmetic, or specified pair underflow; candidateIndex and named stage, no output.",
+    "INVALID_INDEX": "Index is not a finite nonnegative safe integer.",
+    "INDEX_OUT_OF_RANGE": "Valid index is outside0..size-1.",
+    "INVALID_OUTPUT": "pointInto destination or offset lacks two writable binary64 slots."
+  },
+  "dynamic_error_stages": [
+    "proposal_x",
+    "proposal_y",
+    "difference_x",
+    "difference_y",
+    "square_x",
+    "square_y",
+    "distance_squared",
+    "radius_sum",
+    "threshold",
+    "threshold_squared"
+  ],
+  "parameters": {
+    "seed": {
+      "unit": "uint32",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit private portable stream choice; independent seed0/1/42/high-bit/max vectors in CP3 investigations. Not a source randomSeed compatibility claim."
+    },
+    "attempts": {
+      "unit": "proposal count",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Caramelo outer10000/nested1000 and candy200000 motivate finite attempts. CP3 inspected5000/10000 with exact retained prefix;200000 is timing only.1073741823 is a packed index representation ceiling, not an encouraged range."
+    },
+    "origin": {
+      "unit": "coordinate pair",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Caramelo/candy canvas-wide rectangular proposals motivate a centre domain. Explicit translated origin is a package generalization; prototype64,64 is a margin construction, not a default."
+    },
+    "extent": {
+      "unit": "positive coordinate-length pair",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Rectangle centre domain with positive spans. Prototype512,512 inside640canvas is inspected; no continuous range or whole-circle containment promise."
+    },
+    "radiusRange": {
+      "unit": "positive radius endpoints [minimum,maximum]",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source stored diameters, audited before radius conversion. CP3 controlled maximum64/32 and minimum4/8 independently: see both parameter experiment decision.md files. Mapping biases toward smaller forms; no continuous recommended interval."
+    },
+    "separationScale": {
+      "unit": "dimensionless",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Audited outer caramelo/studio factor1, candy0.96 overlap, nested caramelo1.2 after diameter conversion. CP3 visually inspected1/1.2 only; below1 permits overlap, not a recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    }
+  },
+  "fixtures": "fixtures/operations/seeded-circle-placement.json",
+  "reproduction": {
+    "level": "technique",
+    "design_evidence": [
+      "evidence/parameter-experiments/cp3-placement/decision.md",
+      "evidence/parameter-experiments/cp3-placement-controls/decision.md"
+    ],
+    "acceptance": "Public native seeded placement, separation and both radius edits, seed replay/change, attempt-prefix extension, retained palette/motif edits, authored-proposal transfer and cached save on all four targets. Private seven-image mechanism evidence does not validate the package or reproduce original source pixels.",
+    "status": "planned"
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "Sol",
+    "status": "draft; not approved for implementation"
+  },
+  "shared_output_operation": "sampling.ordered-circle-filter-2d"
+}

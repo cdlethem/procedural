@@ -1,0 +1,162 @@
+{
+  "id": "cp3-placement",
+  "status": "planned",
+  "owner": "root",
+  "reviewer": "Sol",
+  "question": "Does a seeded size-aware placement entry give artists useful independent control over separation and size, while retained geometry supports motif and proposal substitutions?",
+  "decision": "Investigate exposing a required separation scale and radius interval; no default or encouraged continuous range is approved.",
+  "hypothesis": "For one fixed ordered proposal stream, a scale of 1.2 reserves visibly more space between circular motifs than 1.0; reducing the maximum radius from 64 to 32 changes the size structure; motif substitution preserves the accepted geometry.",
+  "source_sketches": [
+    "2018/Generativos/caramelo",
+    "2018/Generativos/candy",
+    "2017/Generativos/studio"
+  ],
+  "provenance": [
+    "design/capabilities/cp3-placement-walkthrough.md",
+    "design/capabilities/cp3-packing-source-audit.md",
+    "design/capabilities/cp3-neighbor-audit.md",
+    "survey/out/2018/Generativos/caramelo/variants/maxsize_0.25/result.json",
+    "survey/out/2017/Generativos/studio/variants/maxSize_120/result.json",
+    "design/capabilities/cp3-rng-options.md"
+  ],
+  "baseline": {
+    "kind": "independently specified private mechanism prototype, not an upstream baseline",
+    "output": ".work/experiments/cp3-placement/base-rings.png",
+    "renderer": "Processing 4.5.6 JAVA2D",
+    "dimensions": [
+      640,
+      640
+    ],
+    "density": 1,
+    "seed": 42,
+    "attempts": 5000,
+    "centre_rectangle": {
+      "origin": [
+        64,
+        64
+      ],
+      "size": [
+        512,
+        512
+      ]
+    },
+    "radius_interval": [
+      4,
+      64
+    ],
+    "separation_scale": 1.0,
+    "background_rgb": "ECE7DA",
+    "palette_rgb": [
+      "31A151",
+      "FFA71E",
+      "05084C",
+      "DE4638",
+      "3DBDB7"
+    ],
+    "stroke_width": 1,
+    "opacity8": 255,
+    "ring_segments": 64,
+    "colour_assignment": "original proposal index modulo fixed palette length, also for radial route; surviving proposals keep colours when acceptance changes",
+    "stroke_cap": "round",
+    "stroke_join": "round"
+  },
+  "parameter": {
+    "name": "separationScale and maximumRadius, investigated independently",
+    "default": null,
+    "unit": "dimensionless and pixels respectively"
+  },
+  "values": {
+    "separationScale": [
+      1.0,
+      1.2
+    ],
+    "maximumRadius": [
+      64,
+      32
+    ]
+  },
+  "variants": [
+    {
+      "id": "base-rings",
+      "change": "baseline configuration"
+    },
+    {
+      "id": "more-separation",
+      "change": "separation scale 1.0 to 1.2, exact same proposals"
+    },
+    {
+      "id": "smaller-forms",
+      "change": "maximum radius 64 to 32, same centre proposals and random units"
+    },
+    {
+      "id": "diamonds",
+      "change": "four-segment inscribed diamonds using exact baseline retained geometry and each original proposal-index colour"
+    },
+    {
+      "id": "authored-radial",
+      "change": "explicit deterministic radial proposals through the same filter, drawn as rings; transfer test, not an isolated parameter comparison"
+    }
+  ],
+  "comparison": "Root and Sol inspect every frame. Record normalized RGB MAE and changed-pixel fraction against base for the two parameter variants and diamond transfer, with canvas/background checks. Record exact proposal/centre/accepted geometry digests, counts, RNG draw/state accounting and unchanged retained geometry for motif edits. Do not infer monotonic accepted counts for arbitrary proposal streams.",
+  "constraints": [
+    "Private diagnostics only; no public operation implementation or catalog admission is authorized by this experiment.",
+    "Five registered images total, no automatic retries or additional comparison renders.",
+    "Serialize rendering under the repository Processing render lock; preserve each terminal attempt.",
+    "All images, temporary binaries and detailed geometry stay inside ignored .work paths.",
+    "First run pure numeric/ownership/order checks and an independent stream oracle; freeze source hashes before rendering.",
+    "Use existing pinned runtime; no changes to CP1/CP2 source, artifacts or accepted reports.",
+    "Numeric-only work may include the 200000-proposal source workload; it is not an approved maximum input bound."
+  ],
+  "retention_criteria": {
+    "separation": "Retain for contract investigation only if source-bound geometry proves the intended threshold, exact proposal reuse isolates the edit, and direct inspection finds an understandable spacing change. A pixel difference alone is insufficient.",
+    "radius": "Retain radius endpoints as explicit proposal geometry if the size edit visibly changes composition and its proposal mapping is documented. These two maximum values do not establish a continuous recommended range.",
+    "composition": "Retain the two-level design only if the same acceptance kernel serves the seeded and authored-radial routes and the same retained geometry supports both motifs without collision logic in caller drawing code.",
+    "failure": "If numerical checks, work cost or visuals fail, preserve the result and revise the boundary/configuration before any additional experiment. Do not reclassify a failed attempt or weaken its acceptance."
+  },
+  "render_budget": 5,
+  "attempt_timeout_seconds": 90,
+  "numeric_timeout_seconds": 120,
+  "output": ".work/experiments/cp3-placement",
+  "proposal_semantics": {
+    "mode": "private portable design, not Processing compatibility",
+    "generator": "xoshiro128** 1.1",
+    "seed_domain": "uint32, tested seed42; no public RNG API",
+    "initialization": "Zero-extend seed to uint64 SplitMix64 state. Take two successive outputs q0,q1; pack [low32(q0),high32(q0),low32(q1),high32(q1)]. Standard SplitMix64 constants/transition from the cited author specification. All-zero xoshiro state is unreachable and asserted as an internal invariant.",
+    "unit": "uint32 output divided by 2^32, exact binary64 [0,1)",
+    "consumption": "Four unconditional units per attempt: ux,uy,u,v; rejected proposals consume all four; no style draws share this stream.",
+    "centre_order": "px=512*ux; x=64+px; py=512*uy; y=64+py; each operation separately rounded to binary64. These fixed-profile centres lie in [64,576).",
+    "radius_order": "span=maxRadius-4; first=span*u; second=first*v; r=4+second, each separately rounded binary64. The fixed wide profile normally excludes maxRadius; a future general interval cannot promise exclusive geometric endpoints because final additions may round to them.",
+    "acceptance_order": "Visit accepted circles in proposal order. dx=x-oldX; dy=y-oldY; xx=dx*dx; yy=dy*dy; distanceSquared=xx+yy; sumR=r+oldR; threshold=sumR*separationScale; thresholdSquared=threshold*threshold. All separately rounded binary64; reject if distanceSquared<thresholdSquared, accepting equality. Reject nonfinite intermediates as a failed private experiment. This specified squared predicate is not a bit-identity claim about Processing float dist().",
+    "storage": "Append accepted centre/radius/original-index geometry only; seeded path does not retain rejected proposals. Motif variant reuses baseline retained geometry."
+  },
+  "authored_radial": {
+    "centre": [
+      320,
+      320
+    ],
+    "band_radii": [
+      48,
+      96,
+      144,
+      192,
+      240
+    ],
+    "points_per_band": 32,
+    "order": "band-major then angular index0..31",
+    "angle": "2*pi*angularIndex/32 + bandIndex*pi/32",
+    "candidate_radius_cycle": [
+      8,
+      14,
+      20
+    ],
+    "radius_index": "global proposal index modulo3",
+    "separation_scale": 1.0,
+    "motif": "64-segment ring",
+    "source_relation": "Authored transfer from a radial arrangement, not studio random proposals or source reproduction."
+  },
+  "limits": [
+    "The two separation frames investigate scale1 and1.2 only. Source0.96 overlap is not visually approved or recommended by this experiment.",
+    "The maximum-radius settings32 and64 are isolated measured prototype configurations, not a recommended continuous range.",
+    "Authored radial layout and diamonds are design transfer checks, not additional sampled corpus techniques."
+  ]
+}

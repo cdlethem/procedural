@@ -2,7 +2,7 @@
 
 The Processing 4 JAR is the reference implementation, not the specification. Observable behavior must be defined in language-neutral data and exercised by the same fixtures in Java and the three planned targets: p5.js, py5, and Processing for Android/Android Mode.
 
-This constraint applies when Phase 2 designs the API. It does not authorize choosing functions or signatures before the survey is complete.
+Phase 2 may design the API from the current snapshot. Evidence-versioned cluster decisions, a written API design, and complete operation contracts precede implementation; missing reports alone do not block it.
 
 ## Architecture constraints
 
@@ -84,7 +84,31 @@ These are initial suite gates, not claims that every future abstraction is corre
 
 A port's corpus result reports both quality and coverage. Missing required candidates fail; an average over a convenient subset cannot pass. Informational shader cases and survey stubs are listed separately, never silently omitted. Animated sketches contribute every stored baseline frame, so matching frame 1 cannot hide broken state evolution.
 
-A release candidate passes only when:
+The runner defaults to `--mode development`. `--match` is allowed for iteration; the JSON
+and Markdown report distinguish selected coverage from evaluated coverage of the full
+manifest, and always set `release_certified: false`. Empty selections and selections with
+no required cases fail. Unselected cases receive no credit even if their files exist.
+
+For release evaluation, pass `--mode release --evidence-root survey` and omit `--match`.
+The manifest must bind the current snapshot, index, note hashes, and baseline metadata;
+its exact case identities, profiles, required flags, exclusions, and denominators must
+match that public evidence. All target reports must be present for final certification;
+this full-corpus claim does not block a scoped capability delivery. A required unsupported capability
+remains a failure, not a reason to remove a case. Full-corpus certification is per target; a full four-target corpus claim requires successful
+reports for all four targets. Scoped capability releases follow the declared acceptance in
+`docs/artist-capabilities.md`; they must never be labelled full-corpus certified.
+
+`tools/build_benchmarks.py --survey-root /path/to/full-output --evidence-root survey`
+reconciles database hashes and expected public frame identities before publishing. A
+missing/corrupt frame or a stale database prevents replacement of the existing manifest.
+Frame `-1` denotes a survey self-export and is outside the `frame_NNNNN.png` contract;
+explicitly dropped duplicate frames are not recreated from the requested `snaps` list.
+
+The existing checked-in manifest predates the evidence binding. It remains usable for
+development and must be regenerated with the external images before release validation.
+Text-only validation does not claim that those images were inspected or rendered anew.
+
+A full-corpus certification candidate passes only when:
 
 - all language-neutral schemas validate;
 - all applicable pure and command-stream fixtures pass;

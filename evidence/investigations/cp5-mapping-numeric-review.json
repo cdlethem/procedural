@@ -1,0 +1,25 @@
+{
+  "status": "accepted-for-contract-design",
+  "owner": "root",
+  "reviewer": "root",
+  "evidence_sha256": {
+    "evidence/investigations/cp5-mapping-numerics.json": "e1ce123fa66e7cde5e474354b0c44c4646fd763d07a0fe74795fbb93e3af38cd",
+    "evidence/investigations/cp5-lerp-clamp-supplement.json": "f6fc6cfe4d27146c58d930738164011b7c99499f686bd762dae776a45f2c990b"
+  },
+  "tool_sha256": {
+    "tools/diagnostics/cp5/run_mapping_numerics.py": "6af46bfe00c3e48d6dee55ef48eb87e1099e1e9d2c58fa86ab65283708d023e7",
+    "tools/diagnostics/cp5/run_lerp_clamp_supplement.py": "3fccc02a8081ff38efb4656b2e77859cc5f050e618e9a65e366e4b3cf1c4ebf5"
+  },
+  "findings": [
+    "Root read both diagnostic arithmetic implementations and adversarial data-generation methods.",
+    "Direct weighted sums lose constant-coordinate identity and differ in ordinary binary64 output; nested interpolation is deliberately selected instead.",
+    "Floating determinant zero does not distinguish exact collinearity from underflow. Accept finite collapsed geometry without area classification.",
+    "Endpoint-aware nested map with final interval clamp guarantees finite component bounds by the documented branch argument.",
+    "The bounded 200000-case supplement saw no raw excursion or clamp bit difference; it does not prove the clamp redundant.",
+    "Final output bits remain to be tested through shared operation fixtures and native implementations."
+  ],
+  "limitations": [
+    "No public implementation or target conformance is claimed.",
+    "No original source pixel arithmetic or random-stream replay."
+  ]
+}

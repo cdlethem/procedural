@@ -9,11 +9,17 @@ import json
 import os
 import re
 import sqlite3
-import struct
 import tempfile
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
+
+from PIL import Image
+
+try:
+    from .benchmark_evidence import frame_ids, load_evidence, validate_manifest_evidence
+except ImportError:
+    from benchmark_evidence import frame_ids, load_evidence, validate_manifest_evidence
 
 PROFILES = {
     "exact": {
@@ -78,11 +84,18 @@ def sha256(path: Path) -> str:
 
 
 def png_size(path: Path) -> tuple[int, int]:
-    with path.open("rb") as handle:
-        header = handle.read(24)
-    if len(header) != 24 or header[:8] != b"\x89PNG\r\n\x1a\n" or header[12:16] != b"IHDR":
-        raise ValueError("not a PNG with an IHDR header")
-    return struct.unpack(">II", header[16:24])
+    # An intact header alone does not establish a usable reference image.
+    try:
+        with Image.open(path) as source:
+            if source.format != "PNG":
+                raise ValueError("not a PNG")
+            size = source.size
+            source.verify()
+        with Image.open(path) as source:
+            source.load()
+        return size
+    except (OSError, SyntaxError) as error:
+        raise ValueError(f"invalid PNG: {error}") from error
 
 
 def atomic_json(path: Path, value: Any) -> None:
@@ -99,7 +112,8 @@ def atomic_json(path: Path, value: Any) -> None:
         raise
 
 
-def build_manifest(database: Path, survey_root: Path, database_label: str | None = None) -> dict[str, Any]:
+def build_manifest(database: Path, survey_root: Path, database_label: str | None = None,
+                   *, evidence_root: Path | None = None) -> dict[str, Any]:
     connection = sqlite3.connect(f"file:{database}?mode=ro", uri=True)
     connection.row_factory = sqlite3.Row
     try:
@@ -111,13 +125,25 @@ def build_manifest(database: Path, survey_root: Path, database_label: str | None
             technique_map[sketch_id].append(technique)
         rows = list(
             connection.execute(
-                """SELECT id, sketch, notes_path, skipped, renderer, width, height, deterministic,
+                """SELECT id, sketch, notes_path, source_sha256, skipped, renderer, width, height, deterministic,
                           animated, composition, baseline_display, uses_shader, baseline_result_json
                    FROM sketches ORDER BY sketch"""
             )
         )
     finally:
         connection.close()
+
+    # Fixture/development callers may have only a local survey; release requires the binding.
+    if evidence_root is None:
+        evidence_root = Path(metadata.get("survey_root", str(survey_root)))
+    evidence = load_evidence(evidence_root) if (evidence_root / "snapshot.json").is_file() else None
+    if evidence is not None:
+        if {row["sketch"]: row["source_sha256"] for row in rows} != evidence["notes"]:
+            raise ValueError("database note identities/hashes differ from public evidence; run ingestion first")
+        for row in rows:
+            baseline = json.loads(row["baseline_result_json"]) if row["baseline_result_json"] else {}
+            if baseline != evidence["baselines"][row["sketch"]]:
+                raise ValueError(f"{row['sketch']}: database baseline metadata is stale; run ingestion first")
 
     cases: list[dict[str, Any]] = []
     excluded: list[dict[str, str]] = []
@@ -128,9 +154,24 @@ def build_manifest(database: Path, survey_root: Path, database_label: str | None
         baseline_dir = survey_root / "out" / row["sketch"] / "baseline"
         frames = sorted(baseline_dir.glob("frame_*.png")) if baseline_dir.is_dir() else []
         if not frames:
-            excluded.append({"sketch": row["sketch"], "reason": "no baseline frame"})
-            continue
+            raise ValueError(f"{row['sketch']}: missing reference frames; manifest not published")
         baseline_result = json.loads(row["baseline_result_json"]) if row["baseline_result_json"] else {}
+        expected_frames = frame_ids(baseline_result, row["sketch"])
+        if evidence is not None:
+            expected_frames |= {case["frame"] for case in evidence["expected"].values()
+                                if case["sketch"] == row["sketch"]}
+        actual_frames = set()
+        for path in frames:
+            match = re.fullmatch(r"frame_(\d{5,})\.png", path.name)
+            if match is None or int(match[1]) in actual_frames:
+                raise ValueError(f"{row['sketch']}: invalid or duplicate frame filename {path.name}")
+            actual_frames.add(int(match[1]))
+        if not expected_frames:
+            raise ValueError(f"{row['sketch']}: missing expected frame metadata; manifest not published")
+        if actual_frames != expected_frames:
+            raise ValueError(f"{row['sketch']}: reference frame identities differ from metadata "
+                             f"(missing={sorted(expected_frames - actual_frames)}, "
+                             f"extra={sorted(actual_frames - expected_frames)})")
         suspect_shader = row["uses_shader"] == 1 and row["baseline_display"] == "xvfb"
         profile = "suspect-shader" if suspect_shader else (
             "portable-nondeterministic" if row["deterministic"] == 0 else "portable-deterministic"
@@ -142,8 +183,7 @@ def build_manifest(database: Path, survey_root: Path, database_label: str | None
             try:
                 width, height = png_size(frame_path)
             except ValueError as error:
-                excluded.append({"sketch": row["sketch"], "reason": f"{frame_path.name}: {error}"})
-                continue
+                raise ValueError(f"{row['sketch']}/{frame_path.name}: {error}; manifest not published") from error
             reference = frame_path.relative_to(survey_root).as_posix()
             candidate = (Path(row["sketch"]) / frame_path.name).as_posix()
             cases.append(
@@ -174,13 +214,14 @@ def build_manifest(database: Path, survey_root: Path, database_label: str | None
             )
 
     profile_counts = Counter(case["profile"] for case in cases)
-    return {
+    manifest = {
         "schema_version": 1,
         "source": {
             "database": database_label or database.name,
             "database_schema_version": metadata.get("schema_version"),
             "database_generated_at_utc": metadata.get("generated_at_utc"),
             "survey_root_hint": None,
+            "evidence": evidence["identity"] if evidence is not None else None,
         },
         "path_contract": {
             "reference_root": "Pass --reference-root or set GENART_SURVEY_ROOT; reference paths are relative to it.",
@@ -201,12 +242,19 @@ def build_manifest(database: Path, survey_root: Path, database_label: str | None
         "cases": cases,
         "excluded": excluded,
     }
+    if not cases:
+        raise ValueError("no baseline cases; manifest not published")
+    if evidence is not None:
+        validate_manifest_evidence(manifest, evidence)
+    return manifest
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--database", type=Path, default=Path("data/corpus.sqlite"))
     parser.add_argument("--survey-root", type=Path, default=None)
+    parser.add_argument("--evidence-root", type=Path, default=Path("survey"),
+                        help="published text/JSON snapshot to bind and reconcile (default: survey)")
     parser.add_argument("--output", type=Path, default=Path("benchmarks/corpus.json"))
     return parser.parse_args()
 
@@ -227,7 +275,13 @@ def main() -> None:
             raise SystemExit("database has no survey_root metadata; pass --survey-root")
         survey_root = Path(value[0])
     survey_root = survey_root.expanduser().resolve()
-    manifest = build_manifest(database, survey_root, args.database.as_posix())
+    evidence_root = args.evidence_root.expanduser().resolve()
+    if not (evidence_root / "snapshot.json").is_file():
+        raise SystemExit("published snapshot unavailable; pass --evidence-root")
+    try:
+        manifest = build_manifest(database, survey_root, args.database.as_posix(), evidence_root=evidence_root)
+    except (ValueError, OSError) as error:
+        raise SystemExit(str(error)) from error
     output = args.output.expanduser().resolve()
     atomic_json(output, manifest)
     summary = manifest["summary"]

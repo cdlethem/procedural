@@ -1,0 +1,39 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Parapara structural/technique recreation using existing Java operations; P2D960 density1",
+  "original": "2019/generativos/parapara",
+  "coverage_status": "demonstrated-structural",
+  "new_core_operations": 0,
+  "implementation_sha256": {
+    "packages/java/examples/LandscapeMarks/LandscapeComposition.java": "265bf82c153e80eff11720616c75d376665979b8de7be644c2b8a07f99bc0da8",
+    "packages/java-processing/examples/LandscapeMarks/LandscapeMarks.pde": "c825f59674c040a1c82bc07021e47b77a06fdb5cedbde22ec0ecdd03efd6810a"
+  },
+  "evidence_sha256": {
+    "evidence/reproductions/r3-p2d/edits.json": "5fe263013c54966596e5d3252a4222ec24020248aeabfcd12cbcbcd636975103",
+    "evidence/reproductions/r3-p2d/edits-plan.json": "be5e6828397f41e978b75c91d20e01c359fc8133d7b4eccc2b540555f60f318e",
+    "design/capabilities/parapara-recreation-acceptance.md": "c2bef5168e0cbbef1920c9eb445d6f11fe88d0c371f42370e98f1ccad028988e"
+  },
+  "visual_review": {
+    "inspected_full_resolution": {
+      "baseline": "f5365d8e7f10cbe692aa33f55a94fd518b39eadfd10db5a92a21ac5e23b818ba",
+      "palette": "260e85022cd7531ae1eee43aefe46e71ceb6f54b555bafda06aa665705972532",
+      "uniform": "0375d791d436a7f6865354ef27fede026f36eba3ac596321f41f23e6bac526f0",
+      "new-seed": "e9498ae5c909cfb12f787d084fad0fce61322020b67c8ca5a80856248f2fc9d2"
+    },
+    "observations": [
+      "Thin undulating horizon visible; independent noise transfer preserves the intended layer.",
+      "Small circles near horizon and large foreground circles, soft halos and lower shadows visible.",
+      "Banded red/blue field, faint triangle edges and stretched centroid specks visible.",
+      "Palette retains scene; uniform spacing redistributes bands; seed changes placement and field.",
+      "Three reset captures and cached save match baseline decoded pixels."
+    ]
+  },
+  "diagnostic_labels": "Inherited reset-height frame ID means reset after stripe-power edit; UNIFORM is verified false. No height edit is claimed.",
+  "limits": [
+    "Structural fidelity only; no source RNG/noise basis/pixel equality",
+    "Human usability and other platform ports untested",
+    "Packaging pending"
+  ]
+}

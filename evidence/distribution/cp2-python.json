@@ -1,0 +1,388 @@
+{
+  "status": "passed",
+  "scope": "CP2 Python 0.2.0 installed-wheel and real py5 PathMarks module-load checks only; no run_sketch, native render, registry publication, or expanded runtime claim.",
+  "package_version": "0.2.0",
+  "source_metadata_transformation": {
+    "kind": "staged_package_metadata_version",
+    "path": "packages/python/pyproject.toml",
+    "from": "0.1.0",
+    "to": "0.2.0"
+  },
+  "input_sha256": {
+    "packages/python/pyproject.toml": "1dc6fe17d11aac151a10c1601b6050230fe233bddfec74390c15ec3eb88a076b",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "fixtures/operations/gradient-path.json": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+    "fixtures/operations/regular-grid.json": "2913f45daccdd9e2094ad6988547e7625e409af122807bf1a274f9484da06175",
+    "fixtures/operations/gradient-noise-2d-01.json": "33f4bda581aba490ab1885ec44bb46578c798c47ee60fe0bac3fd761fae08ed3",
+    "evidence/conformance/gradient-path.json": "cfb57280c821a72c23272e8b057bbf33ce11d3f66a1053cadef86f154433e14d",
+    "evidence/reproductions/cp2-py5/review.json": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3",
+    "evidence/reproductions/cp2-py5/result.json": "093860c920033fe0485f022ab404e8acc38bc0945f3de2e7d141fe3e14f10ef8",
+    "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab",
+    "packages/python/examples/path_marks/README.md": "fa391a6e854b878e30fcd4a263a79da64a7a2b0502031c278d33b93f3da7d88a",
+    "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+    "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+    "tools/build_path_marks_python.py": "358e601bf292184f834e47889142586dd2a1f69405b76c06a282340f55015775"
+  },
+  "artifacts": {
+    "wheel": {
+      "path": ".work/dist/cp2/python/wheelhouse/procedurals_python-0.2.0-py3-none-any.whl",
+      "sha256": "21785a7ed108b19a6f584a418e11f3dfd513b758c90b82490415a4e66b8c2ff9",
+      "entries": [
+        {
+          "path": "procedurals/__init__.py",
+          "sha256": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554"
+        },
+        {
+          "path": "procedurals/_drawing.py",
+          "sha256": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3"
+        },
+        {
+          "path": "procedurals/_drawing_state.py",
+          "sha256": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8"
+        },
+        {
+          "path": "procedurals/_py5_frame.py",
+          "sha256": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295"
+        },
+        {
+          "path": "procedurals/colors.py",
+          "sha256": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6"
+        },
+        {
+          "path": "procedurals/fields.py",
+          "sha256": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae"
+        },
+        {
+          "path": "procedurals/layout.py",
+          "sha256": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3"
+        },
+        {
+          "path": "procedurals/paths.py",
+          "sha256": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+        },
+        {
+          "path": "procedurals_python-0.2.0.dist-info/METADATA",
+          "sha256": "72491a18fbd2f3069f58b4237aae16aede707223d37de12a4ca69c1e9bb1cd89"
+        },
+        {
+          "path": "procedurals_python-0.2.0.dist-info/RECORD",
+          "sha256": "fc697592078f95c8d1fe6ae4c4147a82ad21be4fa8f561234b010b59f44da562"
+        },
+        {
+          "path": "procedurals_python-0.2.0.dist-info/WHEEL",
+          "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+        },
+        {
+          "path": "procedurals_python-0.2.0.dist-info/licenses/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "procedurals_python-0.2.0.dist-info/licenses/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "procedurals_python-0.2.0.dist-info/top_level.txt",
+          "sha256": "edcc1c114ddfc860af6c9b58052e7ad2cd35e36533efd2dafd308010ee165b72"
+        }
+      ]
+    },
+    "starter_zip": {
+      "path": ".work/dist/cp2/python/procedurals-path-marks-python-starter-0.2.0.zip",
+      "sha256": "34a44ba06c651c6f1460d34504626278b0f9247699b13287f38db6c8fbb437c8",
+      "entries": [
+        {
+          "path": "path-marks/.gitignore",
+          "sha256": "7148560741a06603eb32cc7f04397e61ee8f363bf611d430e5f103e3719bf96a"
+        },
+        {
+          "path": "path-marks/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "path-marks/README.md",
+          "sha256": "ae31728568e2c04590f9fc0e21efc303ec6182ddc8f9f725d1d5c18b9fc1e1e3"
+        },
+        {
+          "path": "path-marks/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "path-marks/output/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "path": "path-marks/path_marks.py",
+          "sha256": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842"
+        },
+        {
+          "path": "path-marks/sketch.py",
+          "sha256": "518e6920e6c4318d3e38f45dbc6a1389ea63d251964672c16df14e94358484c3"
+        },
+        {
+          "path": "procedurals_python-0.2.0-py3-none-any.whl",
+          "sha256": "21785a7ed108b19a6f584a418e11f3dfd513b758c90b82490415a4e66b8c2ff9"
+        }
+      ]
+    }
+  },
+  "installed_consumer": {
+    "python": "Python 3.13.15",
+    "existing_core_values": {
+      "grid": {
+        "fixture": "fixtures/operations/regular-grid.json",
+        "input": {
+          "origin": [
+            -2,
+            4
+          ],
+          "spacing": [
+            3,
+            0.5
+          ],
+          "columns": 3,
+          "rows": 2
+        },
+        "size": 6,
+        "index": 4,
+        "point": [
+          1,
+          4.5
+        ]
+      },
+      "noise": {
+        "fixture": "fixtures/operations/gradient-noise-2d-01.json",
+        "seed": 0,
+        "input": [
+          0.25,
+          0.75
+        ],
+        "output": 0.4459395408630371
+      },
+      "palette_rgb24": 8388736
+    },
+    "public_gradient_path_fixture": {
+      "fixture": "fixtures/operations/gradient-path.json",
+      "catalog_sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+      "id": "evolving-field",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          60.0,
+          80.0
+        ],
+        "steps": 4,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "output": {
+        "positions": [
+          [
+            60.0,
+            80.0
+          ],
+          [
+            60.13403800364536,
+            80.3768737369183
+          ],
+          [
+            60.273502465586624,
+            80.75177327526882
+          ],
+          [
+            60.41837015144596,
+            81.1246182210489
+          ],
+          [
+            60.56861511498906,
+            81.49532895859225
+          ]
+        ],
+        "headings": [
+          -5.054095047876421,
+          -5.068531219613874,
+          -5.082983027662383,
+          -5.097446460769648
+        ]
+      },
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    "smoke": {
+      "imported_path": "/home/colin/dev/procedural/.work/dist/cp2/python/build/consumer-venv/lib/python3.13/site-packages/procedurals/__init__.py",
+      "site_packages": [
+        "/home/colin/dev/procedural/.work/dist/cp2/python/build/consumer-venv/lib/python3.13/site-packages"
+      ],
+      "public": [
+        "CyclicPaletteError",
+        "GradientNoiseError",
+        "GradientPathError",
+        "GridError",
+        "cyclic_palette",
+        "gradient_noise_2d_01",
+        "gradient_path_2d",
+        "regular_grid"
+      ],
+      "gradient_path_fixture": "evolving-field",
+      "steps": 4
+    }
+  },
+  "starter": {
+    "source_sketch_sha256": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+    "staged_sketch_sha256": "518e6920e6c4318d3e38f45dbc6a1389ea63d251964672c16df14e94358484c3",
+    "path_marks_source_sha256": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+    "path_marks_staged_sha256": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+    "class_ast_unchanged": true,
+    "transformations": [
+      {
+        "kind": "remove_checkout_sys_path_block",
+        "removed": "# Run directly from this repository checkout; packaged starters may omit this path.\nsys.path.insert(0, str(Path(__file__).resolve().parents[2]))"
+      }
+    ],
+    "output_directory": "path-marks/output/ (local and ignored except placeholder .gitignore)",
+    "bundled_wheel_sha256": "21785a7ed108b19a6f584a418e11f3dfd513b758c90b82490415a4e66b8c2ff9",
+    "bundled_starter_verified": true,
+    "py5_module_load": {
+      "status": "passed",
+      "python": "/home/colin/dev/procedural/.work/dist/cp2/python/build/py5-consumer-venv/bin/python",
+      "java_home": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1",
+      "java_version": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+      "display": "Xvfb retry after direct import failure",
+      "dependencies": [
+        {
+          "name": "autopep8",
+          "version": "2.3.2"
+        },
+        {
+          "name": "certifi",
+          "version": "2026.7.22"
+        },
+        {
+          "name": "charset-normalizer",
+          "version": "3.5.1"
+        },
+        {
+          "name": "idna",
+          "version": "3.19"
+        },
+        {
+          "name": "jpype1",
+          "version": "1.7.1"
+        },
+        {
+          "name": "line_profiler",
+          "version": "5.0.2"
+        },
+        {
+          "name": "numpy",
+          "version": "2.5.3"
+        },
+        {
+          "name": "packaging",
+          "version": "26.3"
+        },
+        {
+          "name": "pillow",
+          "version": "12.3.0"
+        },
+        {
+          "name": "pip",
+          "version": "26.2.1"
+        },
+        {
+          "name": "procedurals-python",
+          "version": "0.2.0"
+        },
+        {
+          "name": "py5",
+          "version": "0.10.11a0"
+        },
+        {
+          "name": "pycodestyle",
+          "version": "2.14.0"
+        },
+        {
+          "name": "requests",
+          "version": "2.34.2"
+        },
+        {
+          "name": "stackprinter",
+          "version": "0.2.13"
+        },
+        {
+          "name": "typing_extensions",
+          "version": "4.16.0"
+        },
+        {
+          "name": "urllib3",
+          "version": "2.7.0"
+        }
+      ],
+      "module_load": {
+        "py5_version": "0.10.11a0",
+        "py5_path": "/home/colin/dev/procedural/.work/dist/cp2/python/build/py5-consumer-venv/lib/python3.13/site-packages/py5/__init__.py",
+        "procedurals_path": "/home/colin/dev/procedural/.work/dist/cp2/python/build/py5-consumer-venv/lib/python3.13/site-packages/procedurals/__init__.py",
+        "drawing_path": "/home/colin/dev/procedural/.work/dist/cp2/python/build/py5-consumer-venv/lib/python3.13/site-packages/procedurals/_py5_frame.py",
+        "starter_path": "/home/colin/dev/procedural/.work/dist/cp2/python/build/extracted/path-marks/sketch.py",
+        "output": "/home/colin/dev/procedural/.work/dist/cp2/python/build/extracted/path-marks/output"
+      }
+    }
+  },
+  "accepted_native_binding": {
+    "review": {
+      "path": "evidence/reproductions/cp2-py5/review.json",
+      "sha256": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3",
+      "status": "accepted"
+    },
+    "bound_implementation_sha256": {
+      "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+      "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+      "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+      "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+      "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+      "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+      "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+      "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+      "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+      "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+    },
+    "bound_evidence_sha256": {
+      "evidence/reproductions/cp2-py5/result.json": "093860c920033fe0485f022ab404e8acc38bc0945f3de2e7d141fe3e14f10ef8"
+    }
+  },
+  "core_conformance": {
+    "path": "evidence/conformance/gradient-path.json",
+    "sha256": "cfb57280c821a72c23272e8b057bbf33ce11d3f66a1053cadef86f154433e14d"
+  },
+  "environment": {
+    "uv": "/home/colin/.local/bin/uv",
+    "java_home": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1",
+    "home": ".work/dist/cp2/python/home",
+    "cache_roots": {
+      "UV_CACHE_DIR": ".work/dist/cp2/python/uv-cache",
+      "PIP_CACHE_DIR": ".work/dist/cp2/python/pip-cache",
+      "PYTHONPYCACHEPREFIX": ".work/dist/cp2/python/pycache",
+      "XDG_CACHE_HOME": ".work/dist/cp2/python/xdg-cache",
+      "XDG_CONFIG_HOME": ".work/dist/cp2/python/xdg-config",
+      "XDG_DATA_HOME": ".work/dist/cp2/python/xdg-data"
+    }
+  }
+}

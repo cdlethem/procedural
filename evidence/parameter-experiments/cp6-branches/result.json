@@ -1,0 +1,625 @@
+{
+  "status": "passed",
+  "scope": "Private CP6 retained endpoint branching/rule comparison; no public operation conformance or source-pixel reproduction.",
+  "input_sha256_before": {
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "design/capabilities/cp6-arbolito4-source-audit.md": "336d45061b0aac03abab11abe2b7552af23635d160e013e5e4e75ef268ed8487",
+    "design/capabilities/cp6-branching-direction.md": "29b9c283e640dd309e62e23e1ef2f4156e85b5db20e4d7e2b69cdcf31d4cac6d",
+    "design/capabilities/cp6-branching-neighbours.md": "d89d7488b3c9476632458a7524be5f733059c9b5b8ead7443ad148711d8c32dc",
+    "evidence/investigations/cp6-branch-source-review.json": "c174a79e35e481f6fe946ddd9f81c9cb7e63c896be90ebc7404e2e24675d96d8",
+    "evidence/parameter-experiments/cp6-branches/experiment.json": "0483fd59119987c53daddb551101740b468deb0d27ff91af473671bb9cbf0953",
+    "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "survey/out/2014/Generativos/Arboles/notes.md": "36b211ff2b26f54ec5fc6ddccb2eadd681f4aeead3124c50b1aa2752f88d4f69",
+    "survey/out/2018/Generativos/arbolito3/notes.md": "bc278131e84561f22c5f3eb479b9ff458df97f1a9259a1ff800f62d17d9f9958",
+    "survey/out/2018/Generativos/arbolito4/notes.md": "d9fed9e20763c254e5ae4954995ab721684fdd98222f392dbe895479d1f6c899",
+    "survey/out/2020/generative/05_08/brotes/notes.md": "e38db22cb28930889cfbe159d9724fa06d4280c1d4570606bf844138b3a2bdfb",
+    "tools/diagnostics/cp6/BranchChoices.java": "199264305e9e19fc866106a86ece003b4ea6de6a765029853baaa235fe37980c",
+    "tools/diagnostics/cp6/run_branches.py": "badaa50073cc0825a01157cb14d6722a15b6b48de1a969d9d8c013273ff420eb"
+  },
+  "class_sha256": {
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$1.class": "58c12a052e0d58736d0ca7793c64be0b27d36904b1fd00dab1e8b65e273fa23b",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$2.class": "c7265a22163b989aa2fabcdd436fee6ac6fc5fac3d21d46be3736ada7832fe38",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$3.class": "0dc28d26bf5cf91013801db685e875dca1f04a1727cb21badcdf5e6b0c87f086",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$4.class": "9ad895bb08ba9c84d44b2534fc8639ac0f4c8be4c89ed097981c373e5d65a3d7",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$5.class": "2d9a8458d181b0efc7457c088ee674c7357958ae486c105bc210ce9767e57496",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$6.class": "0235bda3aef4cc1484241e32e67b5617026ac0a3601ec6b6a09fcdeca963a721",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$7.class": "9a644b1186727a3d079736fd7f820d10461dfaa396c8d243117e64fb47534df6",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$Budget.class": "fa5d1ccb80ff59b7eb51217f087ec3cadb2d1744fbafec5e698acd9f4679ce94",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$Profile.class": "7c0d2b7c26faf2e59f459d84f85292488ced52168092b548c3a5879ffde78af4",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$Rules.class": "faa5b9872fff2ab41bb433adc25b8913a245b4298907a04a58c7ecc3110b87a1",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$Segment.class": "ed16c4ab799f3c6c8b700524ba2fd1814bb600d32ea55fb99dcede6f9eddd035",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$SpreadSchedule.class": "2c7d30da0463b749b0e7b985c6cea0012d39e53f0adb6f3dd0918398050052fa",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$Tree.class": "e4bd59155bc9376190caec0114bd160709f8559ec69afaff09cb5b827f4161f7",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices$TreeFacts.class": "52d66cec7d7d91d26fcc4ffe72f5c0190dd549e25dcd0f6b57b775af54ae53ea",
+    ".work/build/cp6-branches-executor/org/procedurals/diagnostics/cp6/BranchChoices.class": "e6df8c4ab2a08bb906966e7d8ca1e52dd15643ed441da795cf9c78714e3f0c0a",
+    ".work/build/cp6-branches-executor/org/procedurals/sampling/CirclePlacements2D$1.class": "1cbc4fa9c4226efc4bc4e13d27e9ed8d6aecdc13e045d96112a8653bee103c1b",
+    ".work/build/cp6-branches-executor/org/procedurals/sampling/CirclePlacements2D$Builder.class": "8bb02b60f02e64acd72a44a5d644dcc0ba90866a94a52805fb1eb05efd3d19e1",
+    ".work/build/cp6-branches-executor/org/procedurals/sampling/CirclePlacements2D$Candidate.class": "2913544d88dff36d4ea027c8dde7f266f9fe04d3ac0443f55344b599a58845d5",
+    ".work/build/cp6-branches-executor/org/procedurals/sampling/CirclePlacements2D$PlacementArithmeticException.class": "8aabad0173befc1d009b3cb75112f149e7b58124b1338af77e113cae31946cff",
+    ".work/build/cp6-branches-executor/org/procedurals/sampling/CirclePlacements2D$PlacementException.class": "028b106106f7061af749f2fcbd3ec5caaa286213d4a944065d510c2be94769c3",
+    ".work/build/cp6-branches-executor/org/procedurals/sampling/CirclePlacements2D$Xoshiro128StarStar11.class": "f038ecf6aa5cb92755ad3eadb24e065dfb1aabae8f84dcc13558147a32517faf",
+    ".work/build/cp6-branches-executor/org/procedurals/sampling/CirclePlacements2D.class": "ec32126026c5806f249e9e6aa70f7236eb5a09b8e00294c54ac12544eb48b6fb"
+  },
+  "numeric": {
+    "status": "passed",
+    "profiles": [
+      {
+        "id": "base-fixed-spread",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "d4696d21a4fcbb4786725220b762a8f2195d11e6fd66e8c34ff41f2f8cca49ce",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          197.61624000949033,
+          252.35338492832818,
+          490.0805493521112,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "narrowing-spread",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "16381cf5624d285b1814a3239828b29ffc2cb71c221bf7b259c5a22d04232e86",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          203.70686140499936,
+          249.8230154572211,
+          485.707057976289,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "depth-6",
+        "segment_count": 76,
+        "root_count": 1,
+        "geometry_sha256": "cdc8d115a41d06a502010331b32f659dd2e4796beb3d56adc881d5ca6d7f05b5",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          213.34561834320442,
+          245.46223859442475,
+          475.65241185744264,
+          590.0
+        ],
+        "child_count_histogram": [
+          34,
+          17,
+          17,
+          8
+        ],
+        "early_terminal_count": 2,
+        "max_generation": 5,
+        "expected_max_generation": 5,
+        "node_budget": 5000,
+        "random_draws": 283,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "wider-spread-0.9",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "197a6b28f6bef98b62a885d3189d489160c7185ea4f9398ab9a40766fb51e7cc",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          131.41546900255202,
+          267.7743315470099,
+          538.7722222454051,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "recolour-base",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "d4696d21a4fcbb4786725220b762a8f2195d11e6fd66e8c34ff41f2f8cca49ce",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          197.61624000949033,
+          252.35338492832818,
+          490.0805493521112,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "generation-colours",
+        "style_reuses_exact_base_object": true
+      },
+      {
+        "id": "tapered-terminal-base",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "d4696d21a4fcbb4786725220b762a8f2195d11e6fd66e8c34ff41f2f8cca49ce",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          197.61624000949033,
+          252.35338492832818,
+          490.0805493521112,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "tapered-lines-terminal-dots",
+        "style_reuses_exact_base_object": true
+      },
+      {
+        "id": "binary-slots",
+        "segment_count": 97,
+        "root_count": 1,
+        "geometry_sha256": "0f818cccec08d1f4de159a1ac9115c99e3fdb593775887fcdb662446090d74ad",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          293.3628066527419,
+          226.5400239416735,
+          364.1754507206701,
+          590.0
+        ],
+        "child_count_histogram": [
+          35,
+          28,
+          34,
+          0
+        ],
+        "early_terminal_count": 2,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 321,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "circle-transfer",
+        "segment_count": 160,
+        "root_count": 7,
+        "geometry_sha256": "f21ba9cbe7d5818e47dcb9a53319c7cb5c92476b737943160154e51f59a0ee27",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          164.87562304856763,
+          157.8583020055692,
+          568.2886465398875,
+          530.3319323062897
+        ],
+        "child_count_histogram": [
+          80,
+          22,
+          43,
+          15
+        ],
+        "early_terminal_count": 4,
+        "max_generation": 4,
+        "expected_max_generation": 4,
+        "node_budget": 5000,
+        "random_draws": 565,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      }
+    ],
+    "profile_count": 8,
+    "whole_generated_segments": 723,
+    "whole_segment_budget": 30000,
+    "private_rng": "java.util.Random; fresh seed42 per single-root profile and seed42+placement ordinal per transfer root; no source/portable compatibility claim",
+    "transfer_length": "placement radius multiplied by 1.0 (private comparison choice)",
+    "rendered": false
+  },
+  "compilation": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "timed_out": false
+  },
+  "cases": [
+    {
+      "id": "base-fixed-spread",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp6-branches/base-fixed-spread.png",
+        "sha256": "ac1c709376929828db14ad38468f2c2728294d2df6a15d04748e21c7a83a7385"
+      },
+      "diff_from_baseline": null
+    },
+    {
+      "id": "narrowing-spread",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp6-branches/narrowing-spread.png",
+        "sha256": "0cd09f6ced037f7ab47183c2dd7a1702d997cd9d42506e57aa37b903507717c6"
+      },
+      "diff_from_baseline": {
+        "mean_rgb_normalized": 0.004893513199550653,
+        "changed_fraction": 0.01929931640625
+      }
+    },
+    {
+      "id": "depth-6",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp6-branches/depth-6.png",
+        "sha256": "4a9f51b5e5e98571c9f126939f85b7db3dec98a1b8cdbb63d0a6e776e81537ea"
+      },
+      "diff_from_baseline": {
+        "mean_rgb_normalized": 0.005853672002655229,
+        "changed_fraction": 0.02236572265625
+      }
+    },
+    {
+      "id": "wider-spread-0.9",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp6-branches/wider-spread-0.9.png",
+        "sha256": "1c99b6c38a8bef532babcacbd29e11c4de6d3b694b85d3e3077664426e80c272"
+      },
+      "diff_from_baseline": {
+        "mean_rgb_normalized": 0.006693001940359478,
+        "changed_fraction": 0.02560791015625
+      }
+    },
+    {
+      "id": "recolour-base",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp6-branches/recolour-base.png",
+        "sha256": "615eb301dc053efad1a1276a9a899738573bc7d448d6ebaa56c91228ee1790d4"
+      },
+      "diff_from_baseline": {
+        "mean_rgb_normalized": 0.0009759178410947713,
+        "changed_fraction": 0.01361328125
+      }
+    },
+    {
+      "id": "tapered-terminal-base",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp6-branches/tapered-terminal-base.png",
+        "sha256": "de14c555e1bb9c7f3e2a1c8f7e078a16d76f0c8d50b8b93bff3e3fb0eef4450b"
+      },
+      "diff_from_baseline": {
+        "mean_rgb_normalized": 0.0020675519556781043,
+        "changed_fraction": 0.0156396484375
+      }
+    },
+    {
+      "id": "binary-slots",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp6-branches/binary-slots.png",
+        "sha256": "980601348b656e43c7c8b87891e7afa3706ae2d7d823a1709c886aefbed91d06"
+      },
+      "diff_from_baseline": {
+        "mean_rgb_normalized": 0.006086403441584968,
+        "changed_fraction": 0.021748046875
+      }
+    },
+    {
+      "id": "circle-transfer",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp6-branches/circle-transfer.png",
+        "sha256": "0097567853e1d14011223d697ed15ad50a924e98694888e0ee7b1f8e128b8786"
+      },
+      "diff_from_baseline": {
+        "mean_rgb_normalized": 0.007156463822508169,
+        "changed_fraction": 0.02748291015625
+      }
+    }
+  ],
+  "visual_review": "pending",
+  "process": {
+    "exit_code": 0,
+    "stdout": "{\"status\":\"rendered\",\"profiles\":[{\"id\":\"base-fixed-spread\",\"segment_count\":130,\"root_count\":1,\"geometry_sha256\":\"d4696d21a4fcbb4786725220b762a8f2195d11e6fd66e8c34ff41f2f8cca49ce\",\"parent_endpoint_identity\":true,\"finite_geometry\":true,\"bounds\":[197.61624000949033,252.35338492832818,490.0805493521112,590.0],\"child_count_histogram\":[59,25,34,12],\"early_terminal_count\":3,\"max_generation\":7,\"expected_max_generation\":7,\"node_budget\":5000,\"random_draws\":481,\"style\":\"thin-dark-lines\",\"style_reuses_exact_base_object\":false},{\"id\":\"narrowing-spread\",\"segment_count\":130,\"root_count\":1,\"geometry_sha256\":\"16381cf5624d285b1814a3239828b29ffc2cb71c221bf7b259c5a22d04232e86\",\"parent_endpoint_identity\":true,\"finite_geometry\":true,\"bounds\":[203.70686140499936,249.8230154572211,485.707057976289,590.0],\"child_count_histogram\":[59,25,34,12],\"early_terminal_count\":3,\"max_generation\":7,\"expected_max_generation\":7,\"node_budget\":5000,\"random_draws\":481,\"style\":\"thin-dark-lines\",\"style_reuses_exact_base_object\":false},{\"id\":\"depth-6\",\"segment_count\":76,\"root_count\":1,\"geometry_sha256\":\"cdc8d115a41d06a502010331b32f659dd2e4796beb3d56adc881d5ca6d7f05b5\",\"parent_endpoint_identity\":true,\"finite_geometry\":true,\"bounds\":[213.34561834320442,245.46223859442475,475.65241185744264,590.0],\"child_count_histogram\":[34,17,17,8],\"early_terminal_count\":2,\"max_generation\":5,\"expected_max_generation\":5,\"node_budget\":5000,\"random_draws\":283,\"style\":\"thin-dark-lines\",\"style_reuses_exact_base_object\":false},{\"id\":\"wider-spread-0.9\",\"segment_count\":130,\"root_count\":1,\"geometry_sha256\":\"197a6b28f6bef98b62a885d3189d489160c7185ea4f9398ab9a40766fb51e7cc\",\"parent_endpoint_identity\":true,\"finite_geometry\":true,\"bounds\":[131.41546900255202,267.7743315470099,538.7722222454051,590.0],\"child_count_histogram\":[59,25,34,12],\"early_terminal_count\":3,\"max_generation\":7,\"expected_max_generation\":7,\"node_budget\":5000,\"random_draws\":481,\"style\":\"thin-dark-lines\",\"style_reuses_exact_base_object\":false},{\"id\":\"recolour-base\",\"segment_count\":130,\"root_count\":1,\"geometry_sha256\":\"d4696d21a4fcbb4786725220b762a8f2195d11e6fd66e8c34ff41f2f8cca49ce\",\"parent_endpoint_identity\":true,\"finite_geometry\":true,\"bounds\":[197.61624000949033,252.35338492832818,490.0805493521112,590.0],\"child_count_histogram\":[59,25,34,12],\"early_terminal_count\":3,\"max_generation\":7,\"expected_max_generation\":7,\"node_budget\":5000,\"random_draws\":481,\"style\":\"generation-colours\",\"style_reuses_exact_base_object\":true},{\"id\":\"tapered-terminal-base\",\"segment_count\":130,\"root_count\":1,\"geometry_sha256\":\"d4696d21a4fcbb4786725220b762a8f2195d11e6fd66e8c34ff41f2f8cca49ce\",\"parent_endpoint_identity\":true,\"finite_geometry\":true,\"bounds\":[197.61624000949033,252.35338492832818,490.0805493521112,590.0],\"child_count_histogram\":[59,25,34,12],\"early_terminal_count\":3,\"max_generation\":7,\"expected_max_generation\":7,\"node_budget\":5000,\"random_draws\":481,\"style\":\"tapered-lines-terminal-dots\",\"style_reuses_exact_base_object\":true},{\"id\":\"binary-slots\",\"segment_count\":97,\"root_count\":1,\"geometry_sha256\":\"0f818cccec08d1f4de159a1ac9115c99e3fdb593775887fcdb662446090d74ad\",\"parent_endpoint_identity\":true,\"finite_geometry\":true,\"bounds\":[293.3628066527419,226.5400239416735,364.1754507206701,590.0],\"child_count_histogram\":[35,28,34,0],\"early_terminal_count\":2,\"max_generation\":7,\"expected_max_generation\":7,\"node_budget\":5000,\"random_draws\":321,\"style\":\"thin-dark-lines\",\"style_reuses_exact_base_object\":false},{\"id\":\"circle-transfer\",\"segment_count\":160,\"root_count\":7,\"geometry_sha256\":\"f21ba9cbe7d5818e47dcb9a53319c7cb5c92476b737943160154e51f59a0ee27\",\"parent_endpoint_identity\":true,\"finite_geometry\":true,\"bounds\":[164.87562304856763,157.8583020055692,568.2886465398875,530.3319323062897],\"child_count_histogram\":[80,22,43,15],\"early_terminal_count\":4,\"max_generation\":4,\"expected_max_generation\":4,\"node_budget\":5000,\"random_draws\":565,\"style\":\"thin-dark-lines\",\"style_reuses_exact_base_object\":false}],\"profile_count\":8,\"whole_generated_segments\":723,\"whole_segment_budget\":30000,\"private_rng\":\"java.util.Random; fresh seed42 per single-root profile and seed42+placement ordinal per transfer root; no source/portable compatibility claim\",\"transfer_length\":\"placement radius multiplied by 1.0 (private comparison choice)\",\"rendered\":true}\n",
+    "stderr": "",
+    "timed_out": false
+  },
+  "native": {
+    "status": "rendered",
+    "profiles": [
+      {
+        "id": "base-fixed-spread",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "d4696d21a4fcbb4786725220b762a8f2195d11e6fd66e8c34ff41f2f8cca49ce",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          197.61624000949033,
+          252.35338492832818,
+          490.0805493521112,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "narrowing-spread",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "16381cf5624d285b1814a3239828b29ffc2cb71c221bf7b259c5a22d04232e86",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          203.70686140499936,
+          249.8230154572211,
+          485.707057976289,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "depth-6",
+        "segment_count": 76,
+        "root_count": 1,
+        "geometry_sha256": "cdc8d115a41d06a502010331b32f659dd2e4796beb3d56adc881d5ca6d7f05b5",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          213.34561834320442,
+          245.46223859442475,
+          475.65241185744264,
+          590.0
+        ],
+        "child_count_histogram": [
+          34,
+          17,
+          17,
+          8
+        ],
+        "early_terminal_count": 2,
+        "max_generation": 5,
+        "expected_max_generation": 5,
+        "node_budget": 5000,
+        "random_draws": 283,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "wider-spread-0.9",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "197a6b28f6bef98b62a885d3189d489160c7185ea4f9398ab9a40766fb51e7cc",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          131.41546900255202,
+          267.7743315470099,
+          538.7722222454051,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "recolour-base",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "d4696d21a4fcbb4786725220b762a8f2195d11e6fd66e8c34ff41f2f8cca49ce",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          197.61624000949033,
+          252.35338492832818,
+          490.0805493521112,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "generation-colours",
+        "style_reuses_exact_base_object": true
+      },
+      {
+        "id": "tapered-terminal-base",
+        "segment_count": 130,
+        "root_count": 1,
+        "geometry_sha256": "d4696d21a4fcbb4786725220b762a8f2195d11e6fd66e8c34ff41f2f8cca49ce",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          197.61624000949033,
+          252.35338492832818,
+          490.0805493521112,
+          590.0
+        ],
+        "child_count_histogram": [
+          59,
+          25,
+          34,
+          12
+        ],
+        "early_terminal_count": 3,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 481,
+        "style": "tapered-lines-terminal-dots",
+        "style_reuses_exact_base_object": true
+      },
+      {
+        "id": "binary-slots",
+        "segment_count": 97,
+        "root_count": 1,
+        "geometry_sha256": "0f818cccec08d1f4de159a1ac9115c99e3fdb593775887fcdb662446090d74ad",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          293.3628066527419,
+          226.5400239416735,
+          364.1754507206701,
+          590.0
+        ],
+        "child_count_histogram": [
+          35,
+          28,
+          34,
+          0
+        ],
+        "early_terminal_count": 2,
+        "max_generation": 7,
+        "expected_max_generation": 7,
+        "node_budget": 5000,
+        "random_draws": 321,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      },
+      {
+        "id": "circle-transfer",
+        "segment_count": 160,
+        "root_count": 7,
+        "geometry_sha256": "f21ba9cbe7d5818e47dcb9a53319c7cb5c92476b737943160154e51f59a0ee27",
+        "parent_endpoint_identity": true,
+        "finite_geometry": true,
+        "bounds": [
+          164.87562304856763,
+          157.8583020055692,
+          568.2886465398875,
+          530.3319323062897
+        ],
+        "child_count_histogram": [
+          80,
+          22,
+          43,
+          15
+        ],
+        "early_terminal_count": 4,
+        "max_generation": 4,
+        "expected_max_generation": 4,
+        "node_budget": 5000,
+        "random_draws": 565,
+        "style": "thin-dark-lines",
+        "style_reuses_exact_base_object": false
+      }
+    ],
+    "profile_count": 8,
+    "whole_generated_segments": 723,
+    "whole_segment_budget": 30000,
+    "private_rng": "java.util.Random; fresh seed42 per single-root profile and seed42+placement ordinal per transfer root; no source/portable compatibility claim",
+    "transfer_length": "placement radius multiplied by 1.0 (private comparison choice)",
+    "rendered": true
+  },
+  "input_sha256_after": {
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "design/capabilities/cp6-arbolito4-source-audit.md": "336d45061b0aac03abab11abe2b7552af23635d160e013e5e4e75ef268ed8487",
+    "design/capabilities/cp6-branching-direction.md": "29b9c283e640dd309e62e23e1ef2f4156e85b5db20e4d7e2b69cdcf31d4cac6d",
+    "design/capabilities/cp6-branching-neighbours.md": "d89d7488b3c9476632458a7524be5f733059c9b5b8ead7443ad148711d8c32dc",
+    "evidence/investigations/cp6-branch-source-review.json": "c174a79e35e481f6fe946ddd9f81c9cb7e63c896be90ebc7404e2e24675d96d8",
+    "evidence/parameter-experiments/cp6-branches/experiment.json": "0483fd59119987c53daddb551101740b468deb0d27ff91af473671bb9cbf0953",
+    "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "survey/out/2014/Generativos/Arboles/notes.md": "36b211ff2b26f54ec5fc6ddccb2eadd681f4aeead3124c50b1aa2752f88d4f69",
+    "survey/out/2018/Generativos/arbolito3/notes.md": "bc278131e84561f22c5f3eb479b9ff458df97f1a9259a1ff800f62d17d9f9958",
+    "survey/out/2018/Generativos/arbolito4/notes.md": "d9fed9e20763c254e5ae4954995ab721684fdd98222f392dbe895479d1f6c899",
+    "survey/out/2020/generative/05_08/brotes/notes.md": "e38db22cb28930889cfbe159d9724fa06d4280c1d4570606bf844138b3a2bdfb",
+    "tools/diagnostics/cp6/BranchChoices.java": "199264305e9e19fc866106a86ece003b4ea6de6a765029853baaa235fe37980c",
+    "tools/diagnostics/cp6/run_branches.py": "badaa50073cc0825a01157cb14d6722a15b6b48de1a969d9d8c013273ff420eb"
+  },
+  "elapsed_seconds": 0.3681447480339557
+}

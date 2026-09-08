@@ -1,0 +1,442 @@
+{
+  "cases": [
+    {
+      "diff_from_baseline": null,
+      "id": "baseline",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/baseline.png",
+        "sha256": "95ee40b79f5a6fe344fa4b3f3d49a9eb7d3728967f2579ccaee276815f3adbed",
+        "width": 640
+      }
+    },
+    {
+      "diff_from_baseline": {
+        "changed_fraction": 0.0806298828125,
+        "mean_rgb_normalized": 0.019202039930555557
+      },
+      "id": "waist",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/waist.png",
+        "sha256": "19c9acd2199417b464ebcc734bbf74e207e130a5bf025018a0081246c9f752c0",
+        "width": 640
+      }
+    },
+    {
+      "diff_from_baseline": {
+        "changed_fraction": 0.094677734375,
+        "mean_rgb_normalized": 0.028165980519812093
+      },
+      "id": "pointed",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/pointed.png",
+        "sha256": "bdec9e5f386b5907b20e08a55375de32f250c44b8f82560df7947d8fd60221e5",
+        "width": 640
+      }
+    },
+    {
+      "diff_from_baseline": {
+        "changed_fraction": 0.08205322265625,
+        "mean_rgb_normalized": 0.004866309870302288
+      },
+      "id": "coarse",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/coarse.png",
+        "sha256": "69fffb32f8af2d5c403e28074214234f5c630b6f40b71edecfd245b83c97c796",
+        "width": 640
+      }
+    },
+    {
+      "diff_from_baseline": {
+        "changed_fraction": 0.0139111328125,
+        "mean_rgb_normalized": 0.0020451803768382353
+      },
+      "id": "open",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/open.png",
+        "sha256": "25ee27b51c7c98ebf7998293cff9c368969e8da7f43be65c7a2a784251c55c77",
+        "width": 640
+      }
+    },
+    {
+      "diff_from_baseline": {
+        "changed_fraction": 0.094677734375,
+        "mean_rgb_normalized": 0.017730002808415034
+      },
+      "id": "recolour",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/recolour.png",
+        "sha256": "c615934b5536793e527b825f29793c8b3f8f3614b39a3ec5f1d6c8a07473a4e1",
+        "width": 640
+      }
+    },
+    {
+      "diff_from_baseline": {
+        "changed_fraction": 0.12347412109375,
+        "mean_rgb_normalized": 0.04965317989174837
+      },
+      "id": "transfer",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/transfer.png",
+        "sha256": "658c28535293338af14791fe260e6e54b64ac46bb43116704a86fd170a9f8114",
+        "width": 640
+      }
+    }
+  ],
+  "command": [
+    "xvfb-run",
+    "-a",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+    "-Duser.home=/home/colin/dev/procedural/.work/build/cp7-profiles/home",
+    "-Djava.io.tmpdir=/home/colin/dev/procedural/.work/experiments/cp7-profiles/tmp",
+    "-cp",
+    "/home/colin/dev/procedural/.work/build/cp7-profiles/classes:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar",
+    "ProfileChoices",
+    "--render",
+    "/home/colin/dev/procedural/.work/experiments/cp7-profiles"
+  ],
+  "compilation": {
+    "command": [
+      "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+      "--release",
+      "8",
+      "-cp",
+      "/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar",
+      "-d",
+      "/home/colin/dev/procedural/.work/build/cp7-profiles/classes",
+      "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/color/CyclicPalette.java",
+      "/home/colin/dev/procedural/tools/diagnostics/cp7/ProfileChoices.java"
+    ],
+    "exit_code": 0,
+    "input_sha256_after": {
+      ".work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+      ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar": "d500a38dedcbd6dfa89c5ae943a22d1051b1dbf1502f8544337bbe57d118f2c5",
+      ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar": "465bbc8d410b872a76b5b901cdb9c2c07905edd5e61a7120dc6a4d007880ec2f",
+      ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar": "3d0ed2674059fc207166ce1351de8d30e0b6102af12ca8b84fbf1bc3f246038a",
+      ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar": "34c919bc6073c2d9e73cbe7558c4e9de6b5c58146f3658e2bcc5f23ec3fccc9f",
+      ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+      ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+      ".work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+      "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+      "tools/diagnostics/cp7/ProfileChoices.java": "e78a8588e24ff3bdcaab3a832f6223a11c2df2e21811aa5f178e22cf8c1ea494",
+      "tools/diagnostics/cp7/run_profiles.py": "dbbf6858057635fb497d4ffd8efe283e3a686c0f4ff6707a4fe1d81446e9d5b6"
+    },
+    "input_sha256_before": {
+      ".work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+      ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar": "d500a38dedcbd6dfa89c5ae943a22d1051b1dbf1502f8544337bbe57d118f2c5",
+      ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar": "465bbc8d410b872a76b5b901cdb9c2c07905edd5e61a7120dc6a4d007880ec2f",
+      ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar": "3d0ed2674059fc207166ce1351de8d30e0b6102af12ca8b84fbf1bc3f246038a",
+      ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar": "34c919bc6073c2d9e73cbe7558c4e9de6b5c58146f3658e2bcc5f23ec3fccc9f",
+      ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+      ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+      ".work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+      "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+      "tools/diagnostics/cp7/ProfileChoices.java": "e78a8588e24ff3bdcaab3a832f6223a11c2df2e21811aa5f178e22cf8c1ea494",
+      "tools/diagnostics/cp7/run_profiles.py": "dbbf6858057635fb497d4ffd8efe283e3a686c0f4ff6707a4fe1d81446e9d5b6"
+    },
+    "scope": "private CP7 source and CyclicPalette compilation only; no P3D renderer started",
+    "stderr": "",
+    "stdout": "",
+    "timed_out": false
+  },
+  "input_sha256_after": {
+    ".work/build/cp7-profiles/classes/ProfileChoices$Choice.class": "ca1d6316e9275d1839ba6779b7535f95e4023c697873e28a617bf162dc193058",
+    ".work/build/cp7-profiles/classes/ProfileChoices$Face.class": "39cc92fa57a4cc93cf195330cb28941827c6980d409d612b8b778947445d3e08",
+    ".work/build/cp7-profiles/classes/ProfileChoices$Mesh.class": "2e1eaeaaad3ec9b72dd6c6bfae587aea7f43d7a7872c7c2fe0a21d68c3123e2a",
+    ".work/build/cp7-profiles/classes/ProfileChoices$Point.class": "513c91774691634b97e6213046e8bbc5f9bb630dcd95f7ed9894c6d331aaba0e",
+    ".work/build/cp7-profiles/classes/ProfileChoices.class": "d50c570be37875d51ab97c9f57adb4e076807be0646948092ed56b481ff5a2db",
+    ".work/build/cp7-profiles/classes/org/procedurals/color/CyclicPalette$PaletteException.class": "0b56e0735b993ee67ab28e9a9908a1d8ed578c462f670922cf1a6197ea907769",
+    ".work/build/cp7-profiles/classes/org/procedurals/color/CyclicPalette.class": "a6da80d2790295c031c70fcbef23ecd7c524ca2ad5ca34597f36fa76ce6314c4",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar": "d500a38dedcbd6dfa89c5ae943a22d1051b1dbf1502f8544337bbe57d118f2c5",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar": "465bbc8d410b872a76b5b901cdb9c2c07905edd5e61a7120dc6a4d007880ec2f",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar": "3d0ed2674059fc207166ce1351de8d30e0b6102af12ca8b84fbf1bc3f246038a",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar": "34c919bc6073c2d9e73cbe7558c4e9de6b5c58146f3658e2bcc5f23ec3fccc9f",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+    "design/capabilities/cp7-profile-mesh-direction.md": "d38b59a281d1ebfb46493a58d30ae254c13b62bd671c2bd9abf4a7f9df263e97",
+    "design/capabilities/cp7-profile-neighbour-boundaries.md": "f6eb63ff1028adf7bacea219958218ab1d4fb9367cbba47a08ba84ca6c63f7db",
+    "evidence/investigations/cp7-java-profile-geometry.json": "1aba97dc8462154b06c497371712ef21c9b61d1cfe67e627005116fbee539da8",
+    "evidence/investigations/cp7-java-profile-review.json": "b20163fb40d10c230c0fac8d0f43abba3f9ad85f067af364314329674092edd4",
+    "evidence/investigations/cp7-p3d-root-review.json": "0216ffae971d892a82bf97130743f90c5fd04e0ec58884bcfd008ba0a641c72a",
+    "evidence/investigations/cp7-profile-mesh-geometry-review.json": "6090686e4f32f08823e96913e1773dffee6a7c22fe9e4274f843ea635b56ddb2",
+    "evidence/investigations/cp7-profile-source-review.json": "50d887144da7acdd3ab24687210a1b94065aa21748151ec1f1490385b66184ff",
+    "evidence/parameter-experiments/cp7-profiles/experiment.json": "e53db4f0d6a2f989e292787fef4dc011b574456935f549b94eb8173ee3439faf",
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "tools/diagnostics/cp7/ProfileChoices.java": "e78a8588e24ff3bdcaab3a832f6223a11c2df2e21811aa5f178e22cf8c1ea494",
+    "tools/diagnostics/cp7/run_profiles.py": "dbbf6858057635fb497d4ffd8efe283e3a686c0f4ff6707a4fe1d81446e9d5b6"
+  },
+  "input_sha256_before": {
+    ".work/build/cp7-profiles/classes/ProfileChoices$Choice.class": "ca1d6316e9275d1839ba6779b7535f95e4023c697873e28a617bf162dc193058",
+    ".work/build/cp7-profiles/classes/ProfileChoices$Face.class": "39cc92fa57a4cc93cf195330cb28941827c6980d409d612b8b778947445d3e08",
+    ".work/build/cp7-profiles/classes/ProfileChoices$Mesh.class": "2e1eaeaaad3ec9b72dd6c6bfae587aea7f43d7a7872c7c2fe0a21d68c3123e2a",
+    ".work/build/cp7-profiles/classes/ProfileChoices$Point.class": "513c91774691634b97e6213046e8bbc5f9bb630dcd95f7ed9894c6d331aaba0e",
+    ".work/build/cp7-profiles/classes/ProfileChoices.class": "d50c570be37875d51ab97c9f57adb4e076807be0646948092ed56b481ff5a2db",
+    ".work/build/cp7-profiles/classes/org/procedurals/color/CyclicPalette$PaletteException.class": "0b56e0735b993ee67ab28e9a9908a1d8ed578c462f670922cf1a6197ea907769",
+    ".work/build/cp7-profiles/classes/org/procedurals/color/CyclicPalette.class": "a6da80d2790295c031c70fcbef23ecd7c524ca2ad5ca34597f36fa76ce6314c4",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar": "d500a38dedcbd6dfa89c5ae943a22d1051b1dbf1502f8544337bbe57d118f2c5",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar": "465bbc8d410b872a76b5b901cdb9c2c07905edd5e61a7120dc6a4d007880ec2f",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar": "3d0ed2674059fc207166ce1351de8d30e0b6102af12ca8b84fbf1bc3f246038a",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar": "34c919bc6073c2d9e73cbe7558c4e9de6b5c58146f3658e2bcc5f23ec3fccc9f",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+    "design/capabilities/cp7-profile-mesh-direction.md": "d38b59a281d1ebfb46493a58d30ae254c13b62bd671c2bd9abf4a7f9df263e97",
+    "design/capabilities/cp7-profile-neighbour-boundaries.md": "f6eb63ff1028adf7bacea219958218ab1d4fb9367cbba47a08ba84ca6c63f7db",
+    "evidence/investigations/cp7-java-profile-geometry.json": "1aba97dc8462154b06c497371712ef21c9b61d1cfe67e627005116fbee539da8",
+    "evidence/investigations/cp7-java-profile-review.json": "b20163fb40d10c230c0fac8d0f43abba3f9ad85f067af364314329674092edd4",
+    "evidence/investigations/cp7-p3d-root-review.json": "0216ffae971d892a82bf97130743f90c5fd04e0ec58884bcfd008ba0a641c72a",
+    "evidence/investigations/cp7-profile-mesh-geometry-review.json": "6090686e4f32f08823e96913e1773dffee6a7c22fe9e4274f843ea635b56ddb2",
+    "evidence/investigations/cp7-profile-source-review.json": "50d887144da7acdd3ab24687210a1b94065aa21748151ec1f1490385b66184ff",
+    "evidence/parameter-experiments/cp7-profiles/experiment.json": "e53db4f0d6a2f989e292787fef4dc011b574456935f549b94eb8173ee3439faf",
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "tools/diagnostics/cp7/ProfileChoices.java": "e78a8588e24ff3bdcaab3a832f6223a11c2df2e21811aa5f178e22cf8c1ea494",
+    "tools/diagnostics/cp7/run_profiles.py": "dbbf6858057635fb497d4ffd8efe283e3a686c0f4ff6707a4fe1d81446e9d5b6"
+  },
+  "native": {
+    "cases": [
+      {
+        "drawn_faces": 1088,
+        "id": "baseline",
+        "meshes": [
+          {
+            "faces": 1088,
+            "geometry_sha256": "80bc018c88e0e2bf77c83fcfe8d0e124fadcb39a107bc1f0e91420caae7d7ed8",
+            "vertices": 546
+          }
+        ],
+        "reuses_retained_geometry": false
+      },
+      {
+        "drawn_faces": 1088,
+        "id": "waist",
+        "meshes": [
+          {
+            "faces": 1088,
+            "geometry_sha256": "790d5b2057fd23df8eb5f2d2dbf1579044efa5d3cf9918eff274ff81e3e81ea7",
+            "vertices": 546
+          }
+        ],
+        "reuses_retained_geometry": false
+      },
+      {
+        "drawn_faces": 1024,
+        "id": "pointed",
+        "meshes": [
+          {
+            "faces": 1024,
+            "geometry_sha256": "f4875014234f797cd9e493821e1bd96dc3a132d81202b724247dd5d4f9531150",
+            "vertices": 514
+          }
+        ],
+        "reuses_retained_geometry": false
+      },
+      {
+        "drawn_faces": 272,
+        "id": "coarse",
+        "meshes": [
+          {
+            "faces": 272,
+            "geometry_sha256": "ccf89f707fd3b318358dbccd20bdc85e72f7204f04f1876701c979dbaafbe6dd",
+            "vertices": 138
+          }
+        ],
+        "reuses_retained_geometry": false
+      },
+      {
+        "drawn_faces": 1024,
+        "id": "open",
+        "meshes": [
+          {
+            "faces": 1024,
+            "geometry_sha256": "15a33635faaa48fdb5d58b580fac164a1f682d7d0bdfe89cc3486bd0d1525a64",
+            "vertices": 544
+          }
+        ],
+        "reuses_retained_geometry": false
+      },
+      {
+        "drawn_faces": 1088,
+        "id": "recolour",
+        "meshes": [
+          {
+            "faces": 1088,
+            "geometry_sha256": "80bc018c88e0e2bf77c83fcfe8d0e124fadcb39a107bc1f0e91420caae7d7ed8",
+            "vertices": 546
+          }
+        ],
+        "reuses_retained_geometry": true
+      },
+      {
+        "drawn_faces": 3200,
+        "id": "transfer",
+        "meshes": [
+          {
+            "faces": 1088,
+            "geometry_sha256": "80bc018c88e0e2bf77c83fcfe8d0e124fadcb39a107bc1f0e91420caae7d7ed8",
+            "vertices": 546
+          },
+          {
+            "faces": 1088,
+            "geometry_sha256": "790d5b2057fd23df8eb5f2d2dbf1579044efa5d3cf9918eff274ff81e3e81ea7",
+            "vertices": 546
+          },
+          {
+            "faces": 1024,
+            "geometry_sha256": "f4875014234f797cd9e493821e1bd96dc3a132d81202b724247dd5d4f9531150",
+            "vertices": 514
+          }
+        ],
+        "reuses_retained_geometry": true
+      }
+    ],
+    "context": {
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "renderer_class": "processing.opengl.PGraphics3D",
+      "vendor": "Mesa",
+      "version": "4.5 (Compatibility Profile) Mesa 26.0.8-1ubuntu0.3"
+    },
+    "drawn_faces": 8784,
+    "expected_drawn_faces": 8784,
+    "frames": 7,
+    "generated_faces": 4496,
+    "height": 640,
+    "normal_evaluations": 8784,
+    "pixel_density": 1,
+    "status": "passed",
+    "width": 640
+  },
+  "process": {
+    "exit_code": 0,
+    "stderr": "libEGL warning: DRI3 error: Could not get DRI3 device\nlibEGL warning: Ensure your X server supports DRI3 to get accelerated rendering\nX11Util.Display: Shutdown (JVM shutdown: true, open (no close attempt): 3/3, reusable (open, marked uncloseable): 0, pending (open in creation order): 3)\nX11Util: Open X11 Display Connections: 3\nX11Util: Open[0]: NamedX11Display[:99, 0x76c2a06910b0, refCount 1, unCloseable false]\nX11Util: Open[1]: NamedX11Display[:99, 0x76bef8001080, refCount 1, unCloseable false]\nX11Util: Open[2]: NamedX11Display[:99, 0x76bef80120d0, refCount 1, unCloseable false]\n",
+    "stdout": ""
+  },
+  "pure_inspection": {
+    "cases": [
+      {
+        "drawn_faces": 1088,
+        "id": "baseline",
+        "meshes": [
+          {
+            "faces": 1088,
+            "geometry_sha256": "80bc018c88e0e2bf77c83fcfe8d0e124fadcb39a107bc1f0e91420caae7d7ed8",
+            "vertices": 546
+          }
+        ],
+        "reuses_retained_geometry": false
+      },
+      {
+        "drawn_faces": 1088,
+        "id": "waist",
+        "meshes": [
+          {
+            "faces": 1088,
+            "geometry_sha256": "790d5b2057fd23df8eb5f2d2dbf1579044efa5d3cf9918eff274ff81e3e81ea7",
+            "vertices": 546
+          }
+        ],
+        "reuses_retained_geometry": false
+      },
+      {
+        "drawn_faces": 1024,
+        "id": "pointed",
+        "meshes": [
+          {
+            "faces": 1024,
+            "geometry_sha256": "f4875014234f797cd9e493821e1bd96dc3a132d81202b724247dd5d4f9531150",
+            "vertices": 514
+          }
+        ],
+        "reuses_retained_geometry": false
+      },
+      {
+        "drawn_faces": 272,
+        "id": "coarse",
+        "meshes": [
+          {
+            "faces": 272,
+            "geometry_sha256": "ccf89f707fd3b318358dbccd20bdc85e72f7204f04f1876701c979dbaafbe6dd",
+            "vertices": 138
+          }
+        ],
+        "reuses_retained_geometry": false
+      },
+      {
+        "drawn_faces": 1024,
+        "id": "open",
+        "meshes": [
+          {
+            "faces": 1024,
+            "geometry_sha256": "15a33635faaa48fdb5d58b580fac164a1f682d7d0bdfe89cc3486bd0d1525a64",
+            "vertices": 544
+          }
+        ],
+        "reuses_retained_geometry": false
+      },
+      {
+        "drawn_faces": 1088,
+        "id": "recolour",
+        "meshes": [
+          {
+            "faces": 1088,
+            "geometry_sha256": "80bc018c88e0e2bf77c83fcfe8d0e124fadcb39a107bc1f0e91420caae7d7ed8",
+            "vertices": 546
+          }
+        ],
+        "reuses_retained_geometry": true
+      },
+      {
+        "drawn_faces": 3200,
+        "id": "transfer",
+        "meshes": [
+          {
+            "faces": 1088,
+            "geometry_sha256": "80bc018c88e0e2bf77c83fcfe8d0e124fadcb39a107bc1f0e91420caae7d7ed8",
+            "vertices": 546
+          },
+          {
+            "faces": 1088,
+            "geometry_sha256": "790d5b2057fd23df8eb5f2d2dbf1579044efa5d3cf9918eff274ff81e3e81ea7",
+            "vertices": 546
+          },
+          {
+            "faces": 1024,
+            "geometry_sha256": "f4875014234f797cd9e493821e1bd96dc3a132d81202b724247dd5d4f9531150",
+            "vertices": 514
+          }
+        ],
+        "reuses_retained_geometry": true
+      }
+    ],
+    "expected_drawn_faces": 8784,
+    "generated_faces": 4496,
+    "status": "passed"
+  },
+  "recognized_stderr": [
+    "libEGL warning: DRI3 error: Could not get DRI3 device",
+    "libEGL warning: Ensure your X server supports DRI3 to get accelerated rendering",
+    "X11Util.Display: Shutdown (JVM shutdown: true, open (no close attempt): 3/3, reusable (open, marked uncloseable): 0, pending (open in creation order): 3)",
+    "X11Util: Open X11 Display Connections: 3",
+    "X11Util: Open[0]: NamedX11Display[:99, 0x76c2a06910b0, refCount 1, unCloseable false]",
+    "X11Util: Open[1]: NamedX11Display[:99, 0x76bef8001080, refCount 1, unCloseable false]",
+    "X11Util: Open[2]: NamedX11Display[:99, 0x76bef80120d0, refCount 1, unCloseable false]"
+  ],
+  "scope": "private CP7 P3D retained-profile comparison; no source-pixel reproduction or public mesh support claim",
+  "status": "passed",
+  "visual_review": "pending"
+}

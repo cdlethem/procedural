@@ -1,0 +1,234 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "operation": "topology.delaunay-2d",
+  "scope": "Registered native desktop core workload observations; no renderer, per-frame regeneration or other-target performance guarantee.",
+  "source_sha256": {
+    "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+    "tools/diagnostics/cp9/DelaunayPerformance.java": "f6adc7499021279cb210f5e2c09f7220eabc4a3ce6356b4345c9793e5da7054b",
+    "tools/diagnostics/cp9/run_performance.py": "91bcfcc6048aa090719d86d3eb5af04b5ae63bf0e5f94e5a898e53ae5a39afc6",
+    "design/operations/cp9-performance-plan.md": "9c2c2fbc0d80afc017d4839fb998dc0b2ad61842c9dc9947cbd4f7d8ff7211cb",
+    "tools/diagnostics/cp9/OrientationFilterProbe.java": "41a9471d6de9c29e98673465571cb947f1a6a638b88804a46ebd73048ba6b2d2",
+    "design/operations/cp9-orientation-filter-review.md": "8137d3b31228af6098ca6fcc004f2f1014ed284fa0dc832c8254ea273e14b0f8",
+    "design/operations/cp9-orientation-filter-decision.md": "d949bb508c3d295b07adc291d151e5e6b04432c9cbc61b741ce2d1725ffd7ddf",
+    "evidence/conformance/delaunay-java-filter1.json": "07ffa3ad64f1a4655b144f487b357802f1e808a2fdc4ea4bfd9058d57e46ea53",
+    "catalog/operations/delaunay-2d.json": "02c1eeccaafb05dbeb81144ebe0036d1bfb4ef381794ada1f8535125ac526882",
+    "fixtures/operations/delaunay-2d.json": "627c4ef5eb6d3d1054e5049f1f5eecb6dddffd790469a2f05e2547cc129870eb"
+  },
+  "attempts": {
+    "before": {
+      "path": ".work/performance/cp9-first/result.json",
+      "sha256": "99c16fef246e2b23a74be5c19678474b282a246c7425b103d46e33cf851fded6"
+    },
+    "after": {
+      "path": ".work/performance/cp9-filter1/result.json",
+      "sha256": "39c5b403bd3090e8fffc1fdeeb85b24b9a6dbc6133459cf0bd7cfc2d1ecffad0"
+    }
+  },
+  "environment": {
+    "kind": "environment",
+    "java": "17.0.20.1+1",
+    "vm": "OpenJDK 64-Bit Server VM",
+    "os": "Linux",
+    "arch": "amd64",
+    "max_heap_bytes": 536870912,
+    "thread_allocation_supported": true,
+    "maxWork": 50000000
+  },
+  "workloads": [
+    {
+      "name": "lattice-9",
+      "inputCount": 9,
+      "vertexCount": 9,
+      "faceCount": 8,
+      "edgeCount": 16,
+      "workUsed": 49,
+      "checksum": "de302d301a39844e",
+      "generation_median_ms_before": 0.279369,
+      "generation_median_ms_after": 0.32461,
+      "generation_median_allocated_bytes_before": 89504,
+      "generation_median_allocated_bytes_after": 44800,
+      "traversal_allocated_bytes_after": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "primitive_payload_bytes_excluding_headers": 568,
+      "one_short_stage": "legalize"
+    },
+    {
+      "name": "scatter-128",
+      "inputCount": 128,
+      "vertexCount": 128,
+      "faceCount": 245,
+      "edgeCount": 372,
+      "workUsed": 12988,
+      "checksum": "bc3df0c6f0de2c78",
+      "generation_median_ms_before": 7.106537,
+      "generation_median_ms_after": 3.402618,
+      "generation_median_allocated_bytes_before": 39329440,
+      "generation_median_allocated_bytes_after": 4189832,
+      "traversal_allocated_bytes_after": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "primitive_payload_bytes_excluding_headers": 11964,
+      "one_short_stage": "legalize"
+    },
+    {
+      "name": "scatter-512",
+      "inputCount": 512,
+      "vertexCount": 512,
+      "faceCount": 1006,
+      "edgeCount": 1517,
+      "workUsed": 209120,
+      "checksum": "b3bd9b02e5fd914d",
+      "generation_median_ms_before": 70.842533,
+      "generation_median_ms_after": 22.285249,
+      "generation_median_allocated_bytes_before": 566136512,
+      "generation_median_allocated_bytes_after": 20871784,
+      "traversal_allocated_bytes_after": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "primitive_payload_bytes_excluding_headers": 48632,
+      "one_short_stage": "legalize"
+    },
+    {
+      "name": "lattice-400",
+      "inputCount": 400,
+      "vertexCount": 400,
+      "faceCount": 722,
+      "edgeCount": 1121,
+      "workUsed": 114636,
+      "checksum": "3cbe491c3e87606f",
+      "generation_median_ms_before": 35.405662,
+      "generation_median_ms_after": 15.475572,
+      "generation_median_allocated_bytes_before": 275043728,
+      "generation_median_allocated_bytes_after": 19362464,
+      "traversal_allocated_bytes_after": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "primitive_payload_bytes_excluding_headers": 36200,
+      "one_short_stage": "legalize"
+    },
+    {
+      "name": "duplicate-records-512",
+      "inputCount": 512,
+      "vertexCount": 16,
+      "faceCount": 22,
+      "edgeCount": 37,
+      "workUsed": 708,
+      "checksum": "aca318cc434475ba",
+      "generation_median_ms_before": 0.2695,
+      "generation_median_ms_after": 0.22009,
+      "generation_median_allocated_bytes_before": 1027856,
+      "generation_median_allocated_bytes_after": 392216,
+      "traversal_allocated_bytes_after": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "primitive_payload_bytes_excluding_headers": 3224,
+      "one_short_stage": "legalize"
+    },
+    {
+      "name": "collinear-512",
+      "inputCount": 512,
+      "vertexCount": 512,
+      "faceCount": 0,
+      "edgeCount": 0,
+      "workUsed": 1532,
+      "checksum": "30d3ae9c65d394b",
+      "generation_median_ms_before": 0.17086,
+      "generation_median_ms_after": 0.21581,
+      "generation_median_allocated_bytes_before": 626408,
+      "generation_median_allocated_bytes_after": 601928,
+      "traversal_allocated_bytes_after": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "primitive_payload_bytes_excluding_headers": 12288,
+      "one_short_stage": "hull_upper"
+    },
+    {
+      "name": "mixed-scale-32",
+      "inputCount": 32,
+      "vertexCount": 32,
+      "faceCount": 59,
+      "edgeCount": 90,
+      "workUsed": 1055,
+      "checksum": "2d1e14bfdfb61502",
+      "generation_median_ms_before": 0.980839,
+      "generation_median_ms_after": 1.19802,
+      "generation_median_allocated_bytes_before": 4555176,
+      "generation_median_allocated_bytes_after": 2159888,
+      "traversal_allocated_bytes_after": [
+        0,
+        0,
+        0
+      ],
+      "primitive_payload_bytes_excluding_headers": 2916,
+      "one_short_stage": "legalize"
+    },
+    {
+      "name": "stress-scatter-2048",
+      "inputCount": 2048,
+      "vertexCount": 2048,
+      "faceCount": 4074,
+      "edgeCount": 6121,
+      "workUsed": 3447219,
+      "checksum": "444af0701ceb53b0",
+      "generation_median_ms_before": 959.712251,
+      "generation_median_ms_after": 239.598025,
+      "generation_median_allocated_bytes_before": 8975508440,
+      "generation_median_allocated_bytes_after": 103497368,
+      "traversal_allocated_bytes_after": [
+        0,
+        0,
+        0
+      ],
+      "primitive_payload_bytes_excluding_headers": 195976,
+      "one_short_stage": "legalize"
+    }
+  ],
+  "filter_diagnostic": {
+    "path": ".work/cp9-orientation-filter/review1/result.json",
+    "sha256": "e41944d6dab1588b0970997731848e1b925c97d9e14734ac7e87f9a1eb8fa39e",
+    "result": {
+      "status": "passed",
+      "cases": 111612,
+      "certified": 60172,
+      "exact_fallback": 51440,
+      "fixture_ordered_triples": 1344,
+      "seed": 42,
+      "scope": "private filter diagnostic; proof and public integration remain separate"
+    }
+  },
+  "review": "Root read the exact-sign enclosure proof and implementation, and compared all eight pre/post outputs, counts, work, budget-failure stage and checksums. Every match is exact. The fixed workload suite passed within the registered512MiB heap and180s runtime deadline. Allocation greatly improves for ordinary and stress construction without changing retained data. Tiny lattice, collinear and mixed-scale medians regress slightly; this is reported rather than hidden. Retained traversal allocated zero bytes in measured loops.",
+  "limitations": [
+    "Times are individual desktop-JVM observations, not universal limits; warmup/repetitions/raw samples remain in the attempt reports.",
+    "Allocated bytes measure temporary allocation over a call, not peak resident memory. Primitive payload excludes array/object headers.",
+    "Two of the eight workloads use2warmups/3repetitions; others3/5. Reference construction and traversal warmup are additional untimed calls.",
+    "Private diagnostic sampled111612triples; the enclosure proof, not sampling alone, supports the general exact-sign condition.",
+    "No orientation filter is applied to incircle; it retains exact arithmetic.",
+    "No CP9 Processing workflow or package release accepted yet."
+  ]
+}

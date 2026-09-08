@@ -1,0 +1,1136 @@
+{
+  "cases": [
+    {
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "empty",
+      "input": {
+        "centres": [],
+        "radii": [],
+        "separationScale": 1.0
+      },
+      "output": {
+        "attempts": 0,
+        "centres": [],
+        "radii": [],
+        "sourceIndices": []
+      }
+    },
+    {
+      "error": "INVALID_INPUT",
+      "id": "empty-still-validates-scale",
+      "input": {
+        "centres": [],
+        "radii": [],
+        "separationScale": 0.0
+      }
+    },
+    {
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "ordinary-tangent",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      },
+      "output": {
+        "attempts": 2,
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "sourceIndices": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "ordinary-one-ulp-inside",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.9999999999999998,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      },
+      "output": {
+        "attempts": 2,
+        "centres": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0
+        ],
+        "sourceIndices": [
+          0
+        ]
+      }
+    },
+    {
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "first-tiny-positive-circle",
+      "input": {
+        "centres": [
+          [
+            -0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          5e-324
+        ],
+        "separationScale": 1.0
+      },
+      "output": {
+        "attempts": 1,
+        "centres": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          5e-324
+        ],
+        "sourceIndices": [
+          0
+        ]
+      }
+    },
+    {
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "rejected-index-and-later-accept",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            4.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      },
+      "output": {
+        "attempts": 3,
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            4.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "sourceIndices": [
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "order-big-first",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            12.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          10.0,
+          4.0
+        ],
+        "separationScale": 1.0
+      },
+      "output": {
+        "attempts": 2,
+        "centres": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          10.0
+        ],
+        "sourceIndices": [
+          0
+        ]
+      }
+    },
+    {
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "order-small-first",
+      "input": {
+        "centres": [
+          [
+            12.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          4.0,
+          10.0
+        ],
+        "separationScale": 1.0
+      },
+      "output": {
+        "attempts": 2,
+        "centres": [
+          [
+            12.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          4.0
+        ],
+        "sourceIndices": [
+          0
+        ]
+      }
+    },
+    {
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "duplicate-centres-below-one-scale-still-rejects",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 0.5
+      },
+      "output": {
+        "attempts": 2,
+        "centres": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0
+        ],
+        "sourceIndices": [
+          0
+        ]
+      }
+    },
+    {
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "below-one-scale-allows-separated-overlap",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.5,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 0.5
+      },
+      "output": {
+        "attempts": 2,
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.5,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "sourceIndices": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "mixed-signed-zero",
+      "input": {
+        "centres": [
+          [
+            -0.0,
+            0.0
+          ],
+          [
+            2.0,
+            -0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      },
+      "output": {
+        "attempts": 2,
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "sourceIndices": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "seeded-42-8-materialized-proposals",
+      "input": {
+        "centres": [
+          [
+            275.8152515888214,
+            560.5310916900635
+          ],
+          [
+            396.8428546190262,
+            368.5356538295746
+          ],
+          [
+            489.2915127277374,
+            413.1015931367874
+          ],
+          [
+            476.5719790458679,
+            334.1511529684067
+          ],
+          [
+            326.3245085477829,
+            234.9918907880783
+          ],
+          [
+            196.908012509346,
+            150.23149847984314
+          ],
+          [
+            534.0155888795853,
+            554.0021513700485
+          ],
+          [
+            376.45652055740356,
+            557.671245932579
+          ]
+        ],
+        "radii": [
+          4.128970897112439,
+          25.466536925746468,
+          15.833038839292183,
+          7.720304821686808,
+          16.90333616524959,
+          25.033972235417583,
+          22.922571878535017,
+          27.89079979097635
+        ],
+        "separationScale": 1.0
+      },
+      "output": {
+        "attempts": 8,
+        "centres": [
+          [
+            275.8152515888214,
+            560.5310916900635
+          ],
+          [
+            396.8428546190262,
+            368.5356538295746
+          ],
+          [
+            489.2915127277374,
+            413.1015931367874
+          ],
+          [
+            476.5719790458679,
+            334.1511529684067
+          ],
+          [
+            326.3245085477829,
+            234.9918907880783
+          ],
+          [
+            196.908012509346,
+            150.23149847984314
+          ],
+          [
+            534.0155888795853,
+            554.0021513700485
+          ],
+          [
+            376.45652055740356,
+            557.671245932579
+          ]
+        ],
+        "radii": [
+          4.128970897112439,
+          25.466536925746468,
+          15.833038839292183,
+          7.720304821686808,
+          16.90333616524959,
+          25.033972235417583,
+          22.922571878535017,
+          27.89079979097635
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "error": "INVALID_INPUT",
+      "id": "late-invalid-radius-all-or-error",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            4.0,
+            0.0
+          ],
+          [
+            8.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "INVALID_INPUT",
+      "id": "static-validation-beats-earlier-pair-arithmetic",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.3407807929942597e+154,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "INVALID_INPUT",
+      "id": "negative-radius",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          -1.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "INVALID_INPUT",
+      "id": "zero-separation-scale",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0
+        ],
+        "separationScale": 0.0
+      }
+    },
+    {
+      "error": "INVALID_INPUT",
+      "id": "negative-separation-scale",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0
+        ],
+        "separationScale": -1.0
+      }
+    },
+    {
+      "error": "INVALID_INPUT",
+      "id": "boolean-separation-scale",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0
+        ],
+        "separationScale": true
+      }
+    },
+    {
+      "error": "INVALID_INPUT",
+      "id": "mismatched-centres-and-radii",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          2.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "INVALID_INPUT",
+      "id": "unknown-key",
+      "input": {
+        "centres": [],
+        "extra": 1,
+        "radii": [],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "threshold"
+      },
+      "id": "threshold-product-underflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1e-200,
+          1e-200
+        ],
+        "separationScale": 1e-200
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "square_x"
+      },
+      "id": "square-x-underflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.778448436856347e-163,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "square_y"
+      },
+      "id": "square-y-underflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.778448436856347e-163
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "difference_x"
+      },
+      "id": "difference-x-overflow",
+      "input": {
+        "centres": [
+          [
+            8.98846567431158e+307,
+            0.0
+          ],
+          [
+            -8.98846567431158e+307,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "difference_y"
+      },
+      "id": "difference-y-overflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            8.98846567431158e+307
+          ],
+          [
+            0.0,
+            -8.98846567431158e+307
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "difference_x"
+      },
+      "id": "difference-x-before-difference-y-overflow",
+      "input": {
+        "centres": [
+          [
+            8.98846567431158e+307,
+            8.98846567431158e+307
+          ],
+          [
+            -8.98846567431158e+307,
+            -8.98846567431158e+307
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "difference_y"
+      },
+      "id": "difference-y-before-square-x-overflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            8.98846567431158e+307
+          ],
+          [
+            1.3407807929942597e+154,
+            -8.98846567431158e+307
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "square_x"
+      },
+      "id": "square-x-overflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.3407807929942597e+154,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "square_y"
+      },
+      "id": "square-y-overflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.3407807929942597e+154
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "square_x"
+      },
+      "id": "square-x-underflow-before-square-y-overflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.778448436856347e-163,
+            1.3407807929942597e+154
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "distance_squared"
+      },
+      "id": "distance-squared-overflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0055855947456948e+154,
+            1.0055855947456948e+154
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "distance_squared"
+      },
+      "id": "distance-squared-before-radius-sum-overflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0055855947456948e+154,
+            1.0055855947456948e+154
+          ]
+        ],
+        "radii": [
+          8.98846567431158e+307,
+          8.98846567431158e+307
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "radius_sum"
+      },
+      "id": "radius-sum-overflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          8.98846567431158e+307,
+          8.98846567431158e+307
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "threshold"
+      },
+      "id": "threshold-product-overflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "separationScale": 1e+308
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "threshold_squared"
+      },
+      "id": "threshold-squared-underflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1e-200,
+          1e-200
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "error": "PLACEMENT_ARITHMETIC_INVALID",
+      "error_detail": {
+        "candidateIndex": 1,
+        "stage": "threshold_squared"
+      },
+      "id": "threshold-squared-overflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          6.703903964971299e+153,
+          6.703903964971299e+153
+        ],
+        "separationScale": 1.0
+      }
+    },
+    {
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "rejection-skips-later-threshold-squared-underflow",
+      "input": {
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            4.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1e-200,
+          1e-200
+        ],
+        "separationScale": 1.0
+      },
+      "output": {
+        "attempts": 3,
+        "centres": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            4.0,
+            0.0
+          ]
+        ],
+        "radii": [
+          1.0,
+          1e-200
+        ],
+        "sourceIndices": [
+          0,
+          1
+        ]
+      }
+    }
+  ],
+  "catalog_sha256": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+  "fixture_format": "circle-placement-output",
+  "generator": {
+    "path": "tools/generate_circle_placement_fixtures.py",
+    "reference": "Independent Python binary64 kernel; no Java prototype/oracle import. Seeded recurrence transcribed from the shared specification with published xoshiro128**1.1/SplitMix64 provenance.",
+    "sha256": "8be93e7db3a0bfd78d041745df09890d367ef95e3caa506fb4abb50ba8fcee7e"
+  },
+  "kind": "explicit-ordered-kernel",
+  "layout_boundary": {
+    "proposal_count_max": 1073741823,
+    "reason": "Metadata only: 2*P fits signed 32-bit packed coordinate indexing. No fixture allocates this cardinality."
+  },
+  "native_only_cases": [
+    {
+      "description": "Native NaN/+Infinity explicit centre coordinate, radius, or separationScale is INVALID_INPUT. Literal NaN/Infinity is intentionally forbidden in JSON fixtures.",
+      "id": "nonfinite-explicit-coordinate-or-radius"
+    },
+    {
+      "description": "A Python arbitrary-size integer in a centre coordinate, radius or separationScale whose finite binary64 conversion fails must raise INVALID_INPUT, never leak OverflowError.",
+      "id": "huge-integer-explicit-domain"
+    },
+    {
+      "description": "Native custom numeric carrier/accessor is INVALID_INPUT; JSON fixtures cover only passive JSON values.",
+      "id": "custom-numeric-carrier"
+    }
+  ],
+  "native_ownership_access_requirements": {
+    "requirements": [
+      "Mutate every caller-owned input container after construction and every toValues materialization container; retained result geometry and indices must remain unchanged.",
+      "Exercise size, attempts, scalar coordinate/radius/source-index accessors, pointAt, pointInto and toValues with valid and invalid indices/destinations according to the operation's explicit native conventions.",
+      "For every pointInto failure class, leave the supplied destination untouched and preserve the result's usability.",
+      "Where a controlled host allocation failure is available, failed fresh pointAt-pair or toValues materialization leaves the retained result usable and unchanged."
+    ],
+    "status": "required for future native ports; not executed by these pure JSON fixtures"
+  },
+  "operation": "sampling.ordered-circle-filter-2d",
+  "status": "Generated shared-contract vectors from an independent Python binary64 reference; contract review authority is design/operations/circle-placement-contract-review.md and native implementation validation is separate.",
+  "version": "0.1.0"
+}

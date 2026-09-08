@@ -1,0 +1,95 @@
+{
+  "status": "passed",
+  "scope": "Packaged Processing starter extracted, officially preprocessed and compiled against its packaged JAR; no new native render or IDE interaction.",
+  "library_zip": "/home/colin/dev/procedural/.work/dist/java/procedurals-processing-0.1.0.zip",
+  "library_zip_sha256": "605b6c8e3e6214d23d7ef01f68e1a8cada66b07bb82f15f8b7404f79ff7aad93",
+  "packaged_jar_sha256": "39a48549b323acaf63d51a129dc2fc41b6ee79c1e806aed90e3ef0a6963131e2",
+  "library_properties": {
+    "name": "Procedurals",
+    "category": "Utilities",
+    "sentence": "Evidence-backed portable generative-art operations.",
+    "paragraph": "Regular grid, gradient noise and cyclic palette for editable Processing sketches.",
+    "url": "https://github.com/cdlethem/procedural",
+    "version": "1",
+    "prettyVersion": "0.1.0",
+    "minRevision": "0",
+    "maxRevision": "",
+    "authors": "Colin Lethem",
+    "maintainer": "Colin Lethem"
+  },
+  "packaged_adapter_sha256": "b2ab20d39a9284cd1f539125302d8177cf6d7e855c0adcc6c11ce4075d67e000",
+  "installed_command_checks": {
+    "cases": [
+      {
+        "id": "base",
+        "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+        "geometry_sha256": "fee543d59490aa710ff9e46dba97a6deeb9cac32a3e7a33a46fb6383efbc74de",
+        "color_sha256": "d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552",
+        "commands": 25600
+      },
+      {
+        "id": "length",
+        "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+        "geometry_sha256": "6a15d835e469595f53539555ad69970f6546610eaa2992fc8dc34b211b629e30",
+        "color_sha256": "d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552",
+        "commands": 25600
+      },
+      {
+        "id": "palette",
+        "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+        "geometry_sha256": "fee543d59490aa710ff9e46dba97a6deeb9cac32a3e7a33a46fb6383efbc74de",
+        "color_sha256": "48a2692180af6dc61b4af7ab69bb8348c19b8bedb1e56bce34f5d49dd3431fb0",
+        "commands": 25600
+      },
+      {
+        "id": "bar",
+        "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+        "geometry_sha256": "c4ce81a946c5c39c4ea88efb6066acb99f03db05cfbe8869d46437bd7a4fa4ec",
+        "color_sha256": "d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552",
+        "commands": 25600
+      }
+    ],
+    "loaded_from": [
+      "core=file:/home/colin/dev/procedural/.work/build/java-distribution-consumer/procedurals/library/procedurals.jar",
+      "noise=file:/home/colin/dev/procedural/.work/build/java-distribution-consumer/procedurals/library/procedurals.jar",
+      "palette=file:/home/colin/dev/procedural/.work/build/java-distribution-consumer/procedurals/library/procedurals.jar",
+      "adapter=file:/home/colin/dev/procedural/.work/build/java-distribution-consumer/procedurals/library/procedurals-processing-adapter.jar"
+    ],
+    "input_sha256": {
+      "tests/native/InstalledFieldMarksCommands.java": "7db2a1c297863bcdd1536811fb6090d9ed2302d51a4d7aca105bc08121a5d68a",
+      "evidence/reproductions/cp1-java2d/plan.json": "60007bfc03dc8dc7fd11469ee93bbf0634f23dc8e90ff0749b93b134d965ed73",
+      "evidence/reproductions/cp1-java2d-adapter/result.json": "18a3f81bd275253ff148cbfd4d0a282950016d7493de4b77d1b51c9dc2f4b5ff"
+    }
+  },
+  "starter_route": "installed-command-adapter",
+  "packaged_example_sha256": {
+    "MarkCommands.java": "5d382de16edd6472e14659481c2c20bc1fe7118677c4c68e1d070bc3f59a66ad",
+    "FieldMarks.pde": "332b225fe14cffc1ca7fd4f5c004f2986313e3e5ba7b0e08fda3ef83811d4d23",
+    "MarkField.java": "616870be81fadd2ad6efa2b4382ce70b03d07259171f1e20a39af48ef5a9246d"
+  },
+  "runtime_sha256": {
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943"
+  },
+  "verifier_sha256": {
+    "tools/check_java_distribution.py": "134350436ef564eaea4309fcaee17308541d9771ffd7280f6fe71f8804d935a2",
+    "tests/native/PreprocessFieldMarks.java": "5b260503ebeb523b3bc79bf458bd19d775553ce9a5a234770c1fccefcce04abf"
+  },
+  "preprocess_stdout": "Official Processing preprocessor accepted FieldMarks.pde\n",
+  "compile_command": [
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+    "-cp",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar:/home/colin/dev/procedural/.work/build/java-distribution-consumer/procedurals/library/procedurals-processing-adapter.jar:/home/colin/dev/procedural/.work/build/java-distribution-consumer/procedurals/library/procedurals.jar",
+    "-d",
+    "/home/colin/dev/procedural/.work/build/java-distribution-consumer/consumer",
+    "/home/colin/dev/procedural/.work/build/java-distribution-consumer/consumer/FieldMarks.java",
+    "/home/colin/dev/procedural/.work/build/java-distribution-consumer/procedurals/examples/FieldMarks/MarkCommands.java",
+    "/home/colin/dev/procedural/.work/build/java-distribution-consumer/procedurals/examples/FieldMarks/MarkField.java"
+  ],
+  "compiled_class_sha256": "4e3988ebf5065cd5070c0beb34bc8bfc6a7963925a9e4074217c4d0199a3114f",
+  "java_version": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)"
+}

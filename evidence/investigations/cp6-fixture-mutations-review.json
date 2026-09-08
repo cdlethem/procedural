@@ -1,0 +1,22 @@
+{
+  "status": "accepted-draft-fixture-investigation",
+  "reviewer": "root",
+  "evidence": {
+    "path": "evidence/investigations/cp6-fixture-mutations.json",
+    "sha256": "360fdffbd7c8d9813d1d333f429963f1738eaf7e1118f1e71509ca08c1f61aa2"
+  },
+  "verification": "Root read evaluator and control path, reran diagnostic, compared every non-runtime field, verified bound sources and checked all seven mutations distinguished; six have materialized output witnesses. Root reran the final 40-case suite after adding frame/interval/capacity cases and verified the same six public distinctions.",
+  "findings": [
+    "All 24 successful canonical cases match the unmutated evaluator raw output and full RNG trace.",
+    "Six behavioral mutations have public output witnesses, including newly added p0-before-probabilistic and constant-interval cases.",
+    "Terminal-generation unused draws change only discarded state and require source inspection, not public-output claims."
+  ],
+  "limitations": [
+    "The three canonical targeted cases now cover a p0 gate before a later probabilistic slot, a constant scale before probabilistic slots, and constant turns before later gates. They do not cover every mixed p0/p1 or mixed constant/nonconstant schedule.",
+    "The mutation set does not model every wrong schedule, such as drawing scale after an angle, capacity after an angle, or consuming terminal source-style colour draws. It only evaluates the seven named variants.",
+    "Error-only cases are intentionally excluded from output/trace mutation comparison. Static-validation order, arithmetic precedence, capacity failure, ownership, and target carrier behavior require their separate fixture and native checks.",
+    "A terminal shrink after the final generation is intrinsically unobservable in returned tree data because no later operation uses the discarded stream state. Its source-review and trace-only obligation should remain precise; public accessors cannot prove it.",
+    "The empty-slots case likewise leaves only discarded stream state, so it is trace-only and cannot by itself establish public output behavior.",
+    "Coordinate comparisons are same-Python raw-binary64 comparisons of the draft oracle output; they do not establish cross-runtime trigonometric agreement."
+  ]
+}

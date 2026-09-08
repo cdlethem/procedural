@@ -1,0 +1,770 @@
+{
+  "arithmetic_orders": {
+    "direct_weighted_sum": "sqrt_u=sqrt(u); w0=1-sqrt_u; w1=(1-v)*sqrt_u; w2=v*sqrt_u; ((w0*a)+(w1*b))+(w2*c)",
+    "fma": "No fused multiply-add is used by this tool.",
+    "naive_nested_difference_lerp": "a + sqrt(u) * ((b + v*(c-b)) - a); contrast only, without endpoint or opposite-sign safeguards.",
+    "nested_endpoint_aware_lerp": "L(a,L(b,c,v),sqrt(u)); L returns endpoint for t=0/1, uses a+(b-a)*t except strictly opposite signs use a*(1-t)+b*t, then canonicalizes zero to +0."
+  },
+  "bounded_adversarial_grid": {
+    "bitwise_divergences_between_orders": 20885,
+    "coordinate_evaluations": 172800,
+    "coordinate_values": [
+      {
+        "bits": "ffefffffffffffff",
+        "value": "-0x1.fffffffffffffp+1023"
+      },
+      {
+        "bits": "ffeffffffffffffe",
+        "value": "-0x1.ffffffffffffep+1023"
+      },
+      {
+        "bits": "bff0000000000000",
+        "value": "-0x1.0000000000000p+0"
+      },
+      {
+        "bits": "8010000000000000",
+        "value": "-0x1.0000000000000p-1022"
+      },
+      {
+        "bits": "8000000000000001",
+        "value": "-0x0.0000000000001p-1022"
+      },
+      {
+        "bits": "8000000000000000",
+        "value": "-0x0.0p+0"
+      },
+      {
+        "bits": "0000000000000000",
+        "value": "0x0.0p+0"
+      },
+      {
+        "bits": "0000000000000001",
+        "value": "0x0.0000000000001p-1022"
+      },
+      {
+        "bits": "0010000000000000",
+        "value": "0x1.0000000000000p-1022"
+      },
+      {
+        "bits": "3ff0000000000000",
+        "value": "0x1.0000000000000p+0"
+      },
+      {
+        "bits": "7feffffffffffffe",
+        "value": "0x1.ffffffffffffep+1023"
+      },
+      {
+        "bits": "7fefffffffffffff",
+        "value": "0x1.fffffffffffffp+1023"
+      }
+    ],
+    "direct_weighted_sum": {
+      "nonfinite": 0,
+      "outside_component_bounds": 160
+    },
+    "first_direct_out_of_bounds": {
+      "bounds": [
+        {
+          "bits": "ffefffffffffffff",
+          "value": "-0x1.fffffffffffffp+1023"
+        },
+        {
+          "bits": "ffefffffffffffff",
+          "value": "-0x1.fffffffffffffp+1023"
+        }
+      ],
+      "result": {
+        "bits": "ffeffffffffffffe",
+        "value": "-0x1.ffffffffffffep+1023"
+      },
+      "u": {
+        "bits": "3ca0000000000000",
+        "value": "0x1.0000000000000p-53"
+      },
+      "v": {
+        "bits": "3fd0000000000000",
+        "value": "0x1.0000000000000p-2"
+      },
+      "vertices": [
+        {
+          "bits": "ffefffffffffffff",
+          "value": "-0x1.fffffffffffffp+1023"
+        },
+        {
+          "bits": "ffefffffffffffff",
+          "value": "-0x1.fffffffffffffp+1023"
+        },
+        {
+          "bits": "ffefffffffffffff",
+          "value": "-0x1.fffffffffffffp+1023"
+        }
+      ]
+    },
+    "nested_endpoint_aware_lerp": {
+      "nonfinite": 0,
+      "outside_component_bounds": 0
+    },
+    "not_a_proof": "A bounded adversarial grid, not universal verification.",
+    "unit_values": [
+      {
+        "bits": "0000000000000000",
+        "value": "0x0.0p+0"
+      },
+      {
+        "bits": "0000000000000001",
+        "value": "0x0.0000000000001p-1022"
+      },
+      {
+        "bits": "0010000000000000",
+        "value": "0x1.0000000000000p-1022"
+      },
+      {
+        "bits": "3ca0000000000000",
+        "value": "0x1.0000000000000p-53"
+      },
+      {
+        "bits": "3fb0000000000000",
+        "value": "0x1.0000000000000p-4"
+      },
+      {
+        "bits": "3fd0000000000000",
+        "value": "0x1.0000000000000p-2"
+      },
+      {
+        "bits": "3fe0000000000000",
+        "value": "0x1.0000000000000p-1"
+      },
+      {
+        "bits": "3fe6666666666666",
+        "value": "0x1.6666666666666p-1"
+      },
+      {
+        "bits": "3fefffffffffffff",
+        "value": "0x1.fffffffffffffp-1"
+      },
+      {
+        "bits": "3ff0000000000000",
+        "value": "0x1.0000000000000p+0"
+      }
+    ]
+  },
+  "coordinate_cases": [
+    {
+      "component_bounds": [
+        {
+          "bits": "c000000000000000",
+          "value": "-0x1.0000000000000p+1"
+        },
+        {
+          "bits": "4008000000000000",
+          "value": "0x1.8000000000000p+1"
+        }
+      ],
+      "direct_weighted_sum": {
+        "bits": "3fe4000000000001",
+        "value": "0x1.4000000000001p-1"
+      },
+      "id": "ordinary-one-ulp-order-divergence",
+      "inputs": {
+        "u": {
+          "bits": "3fb0000000000000",
+          "value": "0x1.0000000000000p-4"
+        },
+        "v": {
+          "bits": "3fe6666666666666",
+          "value": "0x1.6666666666666p-1"
+        },
+        "vertices": [
+          {
+            "bits": "3ff0000000000000",
+            "value": "0x1.0000000000000p+0"
+          },
+          {
+            "bits": "4008000000000000",
+            "value": "0x1.8000000000000p+1"
+          },
+          {
+            "bits": "c000000000000000",
+            "value": "-0x1.0000000000000p+1"
+          }
+        ]
+      },
+      "naive_nested_difference_lerp": {
+        "bits": "3fe4000000000000",
+        "value": "0x1.4000000000000p-1"
+      },
+      "nested_endpoint_aware_lerp": {
+        "bits": "3fe4000000000000",
+        "value": "0x1.4000000000000p-1"
+      },
+      "separate_weights": {
+        "left_associated_sum": {
+          "bits": "3ff0000000000000",
+          "value": "0x1.0000000000000p+0"
+        },
+        "sqrt_u": {
+          "bits": "3fd0000000000000",
+          "value": "0x1.0000000000000p-2"
+        },
+        "w0": {
+          "bits": "3fe8000000000000",
+          "value": "0x1.8000000000000p-1"
+        },
+        "w1": {
+          "bits": "3fb3333333333334",
+          "value": "0x1.3333333333334p-4"
+        },
+        "w2": {
+          "bits": "3fc6666666666666",
+          "value": "0x1.6666666666666p-3"
+        }
+      }
+    },
+    {
+      "component_bounds": [
+        {
+          "bits": "3ff0000000000000",
+          "value": "0x1.0000000000000p+0"
+        },
+        {
+          "bits": "3ff0000000000000",
+          "value": "0x1.0000000000000p+0"
+        }
+      ],
+      "direct_weighted_sum": {
+        "bits": "3fefffffffffffff",
+        "value": "0x1.fffffffffffffp-1"
+      },
+      "id": "constant-coordinate-affine-rounding",
+      "inputs": {
+        "u": {
+          "bits": "3ca0000000000000",
+          "value": "0x1.0000000000000p-53"
+        },
+        "v": {
+          "bits": "3fc999999999999a",
+          "value": "0x1.999999999999ap-3"
+        },
+        "vertices": [
+          {
+            "bits": "3ff0000000000000",
+            "value": "0x1.0000000000000p+0"
+          },
+          {
+            "bits": "3ff0000000000000",
+            "value": "0x1.0000000000000p+0"
+          },
+          {
+            "bits": "3ff0000000000000",
+            "value": "0x1.0000000000000p+0"
+          }
+        ]
+      },
+      "naive_nested_difference_lerp": {
+        "bits": "3ff0000000000000",
+        "value": "0x1.0000000000000p+0"
+      },
+      "nested_endpoint_aware_lerp": {
+        "bits": "3ff0000000000000",
+        "value": "0x1.0000000000000p+0"
+      },
+      "separate_weights": {
+        "left_associated_sum": {
+          "bits": "3fefffffffffffff",
+          "value": "0x1.fffffffffffffp-1"
+        },
+        "sqrt_u": {
+          "bits": "3e46a09e667f3bcd",
+          "value": "0x1.6a09e667f3bcdp-27"
+        },
+        "w0": {
+          "bits": "3feffffffa57d866",
+          "value": "0x1.ffffffa57d866p-1"
+        },
+        "w1": {
+          "bits": "3e421a1851ff630b",
+          "value": "0x1.21a1851ff630bp-27"
+        },
+        "w2": {
+          "bits": "3e221a1851ff630b",
+          "value": "0x1.21a1851ff630bp-29"
+        }
+      }
+    },
+    {
+      "component_bounds": [
+        {
+          "bits": "ffefffffffffffff",
+          "value": "-0x1.fffffffffffffp+1023"
+        },
+        {
+          "bits": "ffefffffffffffff",
+          "value": "-0x1.fffffffffffffp+1023"
+        }
+      ],
+      "direct_weighted_sum": {
+        "bits": "ffeffffffffffffe",
+        "value": "-0x1.ffffffffffffep+1023"
+      },
+      "id": "constant-negative-max-outside-direct-bound",
+      "inputs": {
+        "u": {
+          "bits": "3ca0000000000000",
+          "value": "0x1.0000000000000p-53"
+        },
+        "v": {
+          "bits": "3fd0000000000000",
+          "value": "0x1.0000000000000p-2"
+        },
+        "vertices": [
+          {
+            "bits": "ffefffffffffffff",
+            "value": "-0x1.fffffffffffffp+1023"
+          },
+          {
+            "bits": "ffefffffffffffff",
+            "value": "-0x1.fffffffffffffp+1023"
+          },
+          {
+            "bits": "ffefffffffffffff",
+            "value": "-0x1.fffffffffffffp+1023"
+          }
+        ]
+      },
+      "naive_nested_difference_lerp": {
+        "bits": "ffefffffffffffff",
+        "value": "-0x1.fffffffffffffp+1023"
+      },
+      "nested_endpoint_aware_lerp": {
+        "bits": "ffefffffffffffff",
+        "value": "-0x1.fffffffffffffp+1023"
+      },
+      "separate_weights": {
+        "left_associated_sum": {
+          "bits": "3fefffffffffffff",
+          "value": "0x1.fffffffffffffp-1"
+        },
+        "sqrt_u": {
+          "bits": "3e46a09e667f3bcd",
+          "value": "0x1.6a09e667f3bcdp-27"
+        },
+        "w0": {
+          "bits": "3feffffffa57d866",
+          "value": "0x1.ffffffa57d866p-1"
+        },
+        "w1": {
+          "bits": "3e40f876ccdf6cda",
+          "value": "0x1.0f876ccdf6cdap-27"
+        },
+        "w2": {
+          "bits": "3e26a09e667f3bcd",
+          "value": "0x1.6a09e667f3bcdp-29"
+        }
+      }
+    },
+    {
+      "component_bounds": [
+        {
+          "bits": "ffefffffffffffff",
+          "value": "-0x1.fffffffffffffp+1023"
+        },
+        {
+          "bits": "7fefffffffffffff",
+          "value": "0x1.fffffffffffffp+1023"
+        }
+      ],
+      "direct_weighted_sum": {
+        "bits": "ffefffffffffffff",
+        "value": "-0x1.fffffffffffffp+1023"
+      },
+      "id": "u-zero-opposite-extremes",
+      "inputs": {
+        "u": {
+          "bits": "0000000000000000",
+          "value": "0x0.0p+0"
+        },
+        "v": {
+          "bits": "3fe0000000000000",
+          "value": "0x1.0000000000000p-1"
+        },
+        "vertices": [
+          {
+            "bits": "ffefffffffffffff",
+            "value": "-0x1.fffffffffffffp+1023"
+          },
+          {
+            "bits": "7fefffffffffffff",
+            "value": "0x1.fffffffffffffp+1023"
+          },
+          {
+            "bits": "7fefffffffffffff",
+            "value": "0x1.fffffffffffffp+1023"
+          }
+        ]
+      },
+      "naive_nested_difference_lerp": {
+        "bits": "fff8000000000000",
+        "value": "NaN"
+      },
+      "nested_endpoint_aware_lerp": {
+        "bits": "ffefffffffffffff",
+        "value": "-0x1.fffffffffffffp+1023"
+      },
+      "separate_weights": {
+        "left_associated_sum": {
+          "bits": "3ff0000000000000",
+          "value": "0x1.0000000000000p+0"
+        },
+        "sqrt_u": {
+          "bits": "0000000000000000",
+          "value": "0x0.0p+0"
+        },
+        "w0": {
+          "bits": "3ff0000000000000",
+          "value": "0x1.0000000000000p+0"
+        },
+        "w1": {
+          "bits": "0000000000000000",
+          "value": "0x0.0p+0"
+        },
+        "w2": {
+          "bits": "0000000000000000",
+          "value": "0x0.0p+0"
+        }
+      }
+    },
+    {
+      "component_bounds": [
+        {
+          "bits": "ffefffffffffffff",
+          "value": "-0x1.fffffffffffffp+1023"
+        },
+        {
+          "bits": "7fefffffffffffff",
+          "value": "0x1.fffffffffffffp+1023"
+        }
+      ],
+      "direct_weighted_sum": {
+        "bits": "ffefffffffffffff",
+        "value": "-0x1.fffffffffffffp+1023"
+      },
+      "id": "u-one-v-zero-opposite-extremes",
+      "inputs": {
+        "u": {
+          "bits": "3ff0000000000000",
+          "value": "0x1.0000000000000p+0"
+        },
+        "v": {
+          "bits": "0000000000000000",
+          "value": "0x0.0p+0"
+        },
+        "vertices": [
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          },
+          {
+            "bits": "ffefffffffffffff",
+            "value": "-0x1.fffffffffffffp+1023"
+          },
+          {
+            "bits": "7fefffffffffffff",
+            "value": "0x1.fffffffffffffp+1023"
+          }
+        ]
+      },
+      "naive_nested_difference_lerp": {
+        "bits": "fff8000000000000",
+        "value": "NaN"
+      },
+      "nested_endpoint_aware_lerp": {
+        "bits": "ffefffffffffffff",
+        "value": "-0x1.fffffffffffffp+1023"
+      },
+      "separate_weights": {
+        "left_associated_sum": {
+          "bits": "3ff0000000000000",
+          "value": "0x1.0000000000000p+0"
+        },
+        "sqrt_u": {
+          "bits": "3ff0000000000000",
+          "value": "0x1.0000000000000p+0"
+        },
+        "w0": {
+          "bits": "0000000000000000",
+          "value": "0x0.0p+0"
+        },
+        "w1": {
+          "bits": "3ff0000000000000",
+          "value": "0x1.0000000000000p+0"
+        },
+        "w2": {
+          "bits": "0000000000000000",
+          "value": "0x0.0p+0"
+        }
+      }
+    },
+    {
+      "component_bounds": [
+        {
+          "bits": "8000000000000000",
+          "value": "-0x0.0p+0"
+        },
+        {
+          "bits": "8000000000000000",
+          "value": "-0x0.0p+0"
+        }
+      ],
+      "direct_weighted_sum": {
+        "bits": "8000000000000000",
+        "value": "-0x0.0p+0"
+      },
+      "id": "all-negative-zero",
+      "inputs": {
+        "u": {
+          "bits": "3fd0000000000000",
+          "value": "0x1.0000000000000p-2"
+        },
+        "v": {
+          "bits": "3fe0000000000000",
+          "value": "0x1.0000000000000p-1"
+        },
+        "vertices": [
+          {
+            "bits": "8000000000000000",
+            "value": "-0x0.0p+0"
+          },
+          {
+            "bits": "8000000000000000",
+            "value": "-0x0.0p+0"
+          },
+          {
+            "bits": "8000000000000000",
+            "value": "-0x0.0p+0"
+          }
+        ]
+      },
+      "naive_nested_difference_lerp": {
+        "bits": "0000000000000000",
+        "value": "0x0.0p+0"
+      },
+      "nested_endpoint_aware_lerp": {
+        "bits": "0000000000000000",
+        "value": "0x0.0p+0"
+      },
+      "separate_weights": {
+        "left_associated_sum": {
+          "bits": "3ff0000000000000",
+          "value": "0x1.0000000000000p+0"
+        },
+        "sqrt_u": {
+          "bits": "3fe0000000000000",
+          "value": "0x1.0000000000000p-1"
+        },
+        "w0": {
+          "bits": "3fe0000000000000",
+          "value": "0x1.0000000000000p-1"
+        },
+        "w1": {
+          "bits": "3fd0000000000000",
+          "value": "0x1.0000000000000p-2"
+        },
+        "w2": {
+          "bits": "3fd0000000000000",
+          "value": "0x1.0000000000000p-2"
+        }
+      }
+    }
+  ],
+  "determinant_cases": [
+    {
+      "exact_binary64_rational_sign": "positive",
+      "exact_binary64_rational_value": "2^-1200",
+      "float_cross": {
+        "bits": "0000000000000000",
+        "value": "0x0.0p+0"
+      },
+      "id": "noncollinear-area-underflows",
+      "vertices": [
+        [
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          },
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          }
+        ],
+        [
+          {
+            "bits": "1a70000000000000",
+            "value": "0x1.0000000000000p-600"
+          },
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          }
+        ],
+        [
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          },
+          {
+            "bits": "1a70000000000000",
+            "value": "0x1.0000000000000p-600"
+          }
+        ]
+      ]
+    },
+    {
+      "exact_binary64_rational_sign": "positive",
+      "exact_binary64_rational_value": "positive exact binary64 rational",
+      "float_cross": {
+        "bits": "7ff0000000000000",
+        "value": "Infinity"
+      },
+      "id": "finite-coordinate-subtraction-overflows",
+      "vertices": [
+        [
+          {
+            "bits": "ffefffffffffffff",
+            "value": "-0x1.fffffffffffffp+1023"
+          },
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          }
+        ],
+        [
+          {
+            "bits": "7fefffffffffffff",
+            "value": "0x1.fffffffffffffp+1023"
+          },
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          }
+        ],
+        [
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          },
+          {
+            "bits": "3ff0000000000000",
+            "value": "0x1.0000000000000p+0"
+          }
+        ]
+      ]
+    },
+    {
+      "exact_binary64_rational_sign": "zero",
+      "exact_binary64_rational_value": "0",
+      "float_cross": {
+        "bits": "0000000000000000",
+        "value": "0x0.0p+0"
+      },
+      "id": "exact-collinear-tiny",
+      "vertices": [
+        [
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          },
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          }
+        ],
+        [
+          {
+            "bits": "1a70000000000000",
+            "value": "0x1.0000000000000p-600"
+          },
+          {
+            "bits": "1a70000000000000",
+            "value": "0x1.0000000000000p-600"
+          }
+        ],
+        [
+          {
+            "bits": "1a80000000000000",
+            "value": "0x1.0000000000000p-599"
+          },
+          {
+            "bits": "1a80000000000000",
+            "value": "0x1.0000000000000p-599"
+          }
+        ]
+      ]
+    },
+    {
+      "exact_binary64_rational_sign": "zero",
+      "exact_binary64_rational_value": "0",
+      "float_cross": {
+        "bits": "0000000000000000",
+        "value": "0x0.0p+0"
+      },
+      "id": "repeated-vertex",
+      "vertices": [
+        [
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          },
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          }
+        ],
+        [
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          },
+          {
+            "bits": "0000000000000000",
+            "value": "0x0.0p+0"
+          }
+        ],
+        [
+          {
+            "bits": "3ff0000000000000",
+            "value": "0x1.0000000000000p+0"
+          },
+          {
+            "bits": "3ff0000000000000",
+            "value": "0x1.0000000000000p+0"
+          }
+        ]
+      ]
+    }
+  ],
+  "provenance": {
+    "runtime": {
+      "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.43",
+      "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]"
+    },
+    "tool": "tools/diagnostics/cp5/run_mapping_numerics.py",
+    "tool_sha256_after": "6af46bfe00c3e48d6dee55ef48eb87e1099e1e9d2c58fa86ab65283708d023e7",
+    "tool_sha256_before": "6af46bfe00c3e48d6dee55ef48eb87e1099e1e9d2c58fa86ab65283708d023e7",
+    "tool_sha256_match": true
+  },
+  "rationale": [
+    "Nonnegative separately rounded weights do not make the direct arithmetic order affine-identical for every constant coordinate.",
+    "A floating cross product equal to zero can represent either exact collinearity or an underflowed nonzero binary64-rational determinant.",
+    "An exact binary64-rational orientation predicate can distinguish those two cases without an epsilon, while a later policy can still choose to accept collapsed mappings."
+  ],
+  "scope": {
+    "does_not_decide": [
+      "public mapping arithmetic",
+      "triangle validity policy",
+      "degenerate-triangle semantics",
+      "a numerical tolerance or public input bounds"
+    ],
+    "investigates": "Finite binary64 arithmetic for a possible supplied-triangle barycentric mapper."
+  },
+  "status": "completed-no-render-numeric-diagnostic"
+}

@@ -1,0 +1,226 @@
+{
+  "id": "field.gradient-noise-2d-01",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "field.gradient-noise-2d-01",
+  "description": "An immutable seeded single-octave 2D gradient field with pure binary64 samples in [0,1]. Independently specified; not Processing noise compatibility.",
+  "capability_decision": "design/capabilities/cp1-field-marks.md",
+  "design_review": "design/operations/gradient-noise-admission.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/pelines#0",
+      "notes_path": "survey/out/2018/Generativos/pelines/notes.md",
+      "note_sha256": "1b7c654a120012ef0d3e85857415371088f383837345e93b9fdfb9227a9b1c6a",
+      "evidence_sha256": "131c34759dccc224915aef17a45d766292c4461450cf8ad37a04779333d001b9",
+      "relationship": "capability_dependency; not computation equivalence"
+    }
+  ],
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "seed"
+    ],
+    "properties": {
+      "seed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "seed"
+    ],
+    "properties": {
+      "seed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      }
+    }
+  },
+  "query_schema": {
+    "type": "array",
+    "prefixItems": [
+      {
+        "type": "number",
+        "minimum": -9007199254740991,
+        "exclusiveMaximum": 9007199254740991
+      },
+      {
+        "type": "number",
+        "minimum": -9007199254740991,
+        "exclusiveMaximum": 9007199254740991
+      }
+    ],
+    "minItems": 2,
+    "maxItems": 2,
+    "items": false
+  },
+  "query_output_schema": {
+    "type": "number",
+    "minimum": 0,
+    "maximum": 1
+  },
+  "parameters": {
+    "seed": {
+      "unit": "unsigned32 field identity",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Required repeatability is a design capability; the motivating note does not establish a portable seed algorithm or preferred seed."
+    },
+    "x": {
+      "unit": "lattice coordinate",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Planar scalar sampling motivated by pelines; native scaling/offset remains caller arithmetic. No useful coordinate range established."
+    },
+    "y": {
+      "unit": "lattice coordinate",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Planar scalar sampling motivated by pelines; safe-corner hard bound is representability, not an artistic range."
+    }
+  },
+  "behavior": {
+    "construction": "Validate exactly one seed key and mathematical integral value 0..4294967295. Integral floating values allowed, booleans rejected. Detach input; store immutable seed, normalize zero to +0. Serialize only {seed}; no derived table, cache or query history.",
+    "query_validation": "Interchange query is exactly [x,y]. Validate shape then x then y. Both finite binary64 values must satisfy -9007199254740991 <= q < 9007199254740991, so floor(q) and floor(q)+1 are exact safe integers. Return no partial output on error. Native hot path sample(x,y) takes scalars and does not allocate a query tuple. The same native sample method may accept one coordinate tuple for interchange or two scalar arguments for the hot path. Invalid tuple shape is INVALID_QUERY. Unsupported native call arity is a host-language call error and is not an interchange-data result.",
+    "cells": "I=floor(x), J=floor(y), retained as exact integers for corner arithmetic. u=x-floor(x), v=y-floor(y) each separately rounded binary64 subtraction. Tiny negative inputs may produce u or v equal to 1 by rounding; do not correct/reject. For hashing only, reduce each I+di,J+dj modulo 2^32. Do not cast a binary64 floor directly to signed int32; Java may convert to long then take low32 bits.",
+    "mix32": "For unsigned32 v, in order: v=v XOR (v logical-right-shift 16); v=(v*0x7feb352d) modulo 2^32; v=v XOR (v logical-right-shift 15); v=(v*0x846ca68b) modulo 2^32; return v XOR (v logical-right-shift 16). Every integer multiply and XOR retains exactly 32 bits.",
+    "corner_hash": "For integer corner (i,j): a=mix32(seed XOR u32(i) XOR 0x9e3779b9); h=mix32(a XOR u32(j) XOR 0x85ebca6b). Gradient index=h AND 7. u32 is mathematical modulo 2^32.",
+    "gradients": [
+      [
+        1,
+        0
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        -1,
+        -1
+      ]
+    ],
+    "dot": "gx*dx rounded to px; gy*dy rounded to py; px+py rounded to result. No gradient normalization. Corner order n00,n10,n01,n11 with offsets (u,v),(u-1,v),(u,v-1),(u-1,v-1); every offset subtraction separately rounded.",
+    "fade": "F(t), consecutive binary64 steps: a=t*t; b=a*t; c=6*t; d=c-15; e=t*d; f=e+10; return b*f. No polynomial expansion, reassociation or FMA.",
+    "interpolation": "L(a,b,t), consecutive binary64 steps: d=b-a; p=t*d; return a+p. Compute fx=F(u),fy=F(v); bottom=L(n00,n10,fx); top=L(n01,n11,fx); raw=L(bottom,top,fy); scaled=0.5*raw; result=0.5+scaled. Clamp only final result to [0,1], normalize zero to +0.",
+    "numerics": "Every stated floating operation is IEEE binary64 round-to-nearest ties-to-even, separately rounded; no FMA or reassociation. Scalars compare exactly after canonical positive zero. No transcendental functions. Raw ideal bound [-1,1]; output closed interval [0,1], both endpoints possible; lattice samples exactly 0.5.",
+    "state": "Pure immutable field. No RNG stream, table shuffle, host noise, time, assets, renderer, or externally mutable state. Queries may be repeated/reordered and distinct fields interleaved without changing results. Seed changes field identity; no statistical independence or cryptographic guarantee.",
+    "periodicity": "Each lattice axis repeats at 2^32. Sample equality under a shifted coordinate requires that shift and fractional part be exactly representable and both queries in domain. Large coordinates lose subcell resolution; no epsilon correction. No configurable seamless tiling API.",
+    "cost": "O(1) storage and query work: four corner hashes, at most eight mix32 evaluations (pure common-subexpression reuse is permitted), four dot products, fixed fades/lerps. Native sample(x,y) avoids query-array allocation. No eager full-grid sampling or hidden unbounded cache.",
+    "native_representations": "Passive interchange data only, not active callbacks/accessors/proxies. Java accepts boxed Byte/Short/Integer/Long/Float/Double or native double scalars; unsupported Number subclasses are rejected before lossy coercion. Python accepts int/float but never bool; coordinates convert to binary64 before domain validation. JavaScript requires number scalars. Preserve seed integer semantics before conversion; constructor/serialization field names remain seed."
+  },
+  "errors": {
+    "INVALID_INPUT": "Wrong constructor shape, unknown/missing key, bool/nonfinite/noninteger seed, or seed outside unsigned32.",
+    "INVALID_QUERY": "Query not exactly two finite numbers, or either floor(q) or floor(q)+1 outside safe integer range."
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact-uint32-arithmetic"
+      ],
+      "implementation_status": "portable_core_implemented",
+      "native_status": "validated_cp1_java2d",
+      "reproduction_status": "cp1_example_only",
+      "native_evidence": "evidence/reproductions/cp1-java2d/pde-result.json"
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact-uint32-arithmetic"
+      ],
+      "implementation_status": "portable_core_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact-uint32-arithmetic"
+      ],
+      "implementation_status": "portable_core_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact-uint32-arithmetic"
+      ],
+      "implementation_status": "shared_java_core_available",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    }
+  },
+  "fixtures": "fixtures/operations/gradient-noise-2d-01.json",
+  "reproduction": {
+    "level": "technique",
+    "acceptance": "Independent coherent field marks and the public CP1 edit/transfer cases; no exact Processing field, random-stream or pelines-pixel identity claim. The four private JAVA2D probes justify design only. The JAVA2D CP1 example is validated separately in cp1_example; other hosts and source baseline suites remain unvalidated.",
+    "design_experiment": "evidence/parameter-experiments/cp1-noise-choice/decision.md",
+    "public_java_probe": "evidence/reproductions/gradient-noise-java2d/result.json",
+    "cp1_example": {
+      "target": "processing-java",
+      "level": "technique",
+      "decision": "evidence/reproductions/cp1-java2d/decision.md",
+      "edits": "evidence/reproductions/cp1-java2d/result.json",
+      "pde_lifecycle": "evidence/reproductions/cp1-java2d/pde-result.json",
+      "scope": "Actual JAVA2D example/edit/transfer only; motivating corpus baseline suites and other hosts are not certified."
+    }
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "Sol gpt-5.6-sol",
+    "status": "Sol approved exact semantics and independently matched all 68 scalar outputs plus mix/corner vectors; root accepted."
+  },
+  "deliberately_excluded": [
+    "host Processing compatibility",
+    "signed simplex",
+    "octave accumulation",
+    "field-to-angle mapping",
+    "frequency/offset transform constructor",
+    "integration",
+    "renderer commands",
+    "shared mutable RNG"
+  ],
+  "algorithm_sources": [
+    {
+      "url": "https://mrl.cs.nyu.edu/~perlin/noise/",
+      "relationship": "Gradient interpolation and quintic fade concept; no reference code or permutation copied."
+    },
+    {
+      "url": "https://github.com/skeeto/hash-prospector",
+      "relationship": "lowbias32 scalar mixer, Unlicense; retain attribution. Lattice combiner and gradient ordering are project choices."
+    }
+  ]
+}

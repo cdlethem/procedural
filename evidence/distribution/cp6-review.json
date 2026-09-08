@@ -1,0 +1,33 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Java0.6.0 CP6 core and installed Processing JAVA2D BranchMarks workflow.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "packages/java-processing/examples/BranchMarks/BranchMarks.pde": "a027fb071ec9be9dd29607b7ce7dccb86772e2ab1680945ddd0973df66113e2c"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/branch-tree-java.json": "e29a6404e7dbbd8814b10b658e65cb54312d11a7985135bb905e40cc66d66c66",
+    "evidence/conformance/branch-tree-java-review.json": "f22697aa22081231436d86bbde94cdc5842513de7bffad8efa5334bce873b362",
+    "evidence/distribution/cp6-java.json": "d1ff531f7aebb3a6ca573b46be3b51d463999c28aa24e96c0d39f6eb04884e70",
+    "evidence/reproductions/cp6-java2d/pde-result.json": "7d3e1bb8131b97e01bc7654f10c8507ae1f8b27bb734ce34d7bd3948a447ada7",
+    "evidence/reproductions/cp6-java2d/root-review.json": "1c191fd17c355e2e06d4a0bbdf11ccc1376e59ee124f694a256303ad9e143ff3",
+    "evidence/reproductions/cp6-java2d/pde-plan.json": "5e5c668adbc9ce0befe37cf50d94ab024a2e0dad210663d84b97fbe54e7261ed",
+    "docs/branch-marks.md": "b0f60cfb7d9e5a1c203073e73a32574c5cdfdee64a91725ea9b988b202247900",
+    "docs/installing-branch-marks.md": "e6f247ade18ddc0c6a8dff52f5ea10b9ecb2a62ae0ff2629b9946538f7c9225c"
+  },
+  "checks": {
+    "core": "40sharedcases,9482vector assertions,94native assertions; root source review and bounded1\u201320001node workloads.",
+    "distribution": "Local0.6.0 archive, installed six-node fixture consumer/JAR origin and official compilation of six extracted examples.",
+    "native": "17states/17keys, exact ancestry/prefix/replay, retained objects for style, all source bindings unchanged, displayed save and no stderr.",
+    "visual": "Root viewed12distinct images and separately verified5reset/restore images pixel-identical to initial."
+  },
+  "limitations": [
+    "Local artifact, not externally published.",
+    "Java/JAVA2D only; other CP6 targets deferred.",
+    "No source-pixel or full-corpus certification.",
+    "No forced heap exhaustion or actual peak-memory measurement; performance observations local."
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "status": "evidence_review_no_defaults_or_ranges_approved",
+  "owner": "root",
+  "source_notes": {
+    "survey/out/2018/Generativos/pelines/notes.md": "1b7c654a120012ef0d3e85857415371088f383837345e93b9fdfb9227a9b1c6a",
+    "survey/out/2019/generativos/ciserp/notes.md": "c81dd166ecef06592fcb66fcb38cc11a7518813ffbcb700009fa21c555673f34"
+  },
+  "variants": [
+    {
+      "variant": "gri_40",
+      "path": "survey/out/2018/Generativos/pelines/variants/gri_40/result.json",
+      "sha256": "17afbe4d6716172d7b776c48c7dc7a4e699e1195bd6656a4bf7ba0c2a769eacf",
+      "subs": [
+        [
+          "  float gri = 20;",
+          "  float gri = 40;"
+        ]
+      ],
+      "subs_applied": [
+        {
+          "old": "  float gri = 20;",
+          "new": "  float gri = 40;",
+          "count": 1
+        }
+      ],
+      "seed": 42,
+      "status": "ok",
+      "warnings": [],
+      "diff_vs_baseline": {
+        "mean": 0.0339,
+        "changed_fraction": 0.05,
+        "label": "subtle"
+      }
+    },
+    {
+      "variant": "dd_gri2",
+      "path": "survey/out/2018/Generativos/pelines/variants/dd_gri2/result.json",
+      "sha256": "9fac9ab50025bf5cec07b0b7febed5faa4cdc8d6e8b5aa918df30881caa14ecc",
+      "subs": [
+        [
+          "float dd = noise(des2+xx*det2, des2+yy*det2)*gri;",
+          "float dd = noise(des2+xx*det2, des2+yy*det2)*gri*2;"
+        ]
+      ],
+      "subs_applied": [
+        {
+          "old": "float dd = noise(des2+xx*det2, des2+yy*det2)*gri;",
+          "new": "float dd = noise(des2+xx*det2, des2+yy*det2)*gri*2;",
+          "count": 1
+        }
+      ],
+      "seed": 42,
+      "status": "ok",
+      "warnings": [],
+      "diff_vs_baseline": {
+        "mean": 0.0379,
+        "changed_fraction": 0.052,
+        "label": "subtle"
+      }
+    },
+    {
+      "variant": "det1_0.002",
+      "path": "survey/out/2018/Generativos/pelines/variants/det1_0.002/result.json",
+      "sha256": "555027e57bb1d7df838f6fb76a4680e478f2d208129ba148e11c48ff9c536d0b",
+      "subs": [
+        [
+          "  float det1 = random(0.01);",
+          "  float det1 = 0.002;"
+        ]
+      ],
+      "subs_applied": [
+        {
+          "old": "  float det1 = random(0.01);",
+          "new": "  float det1 = 0.002;",
+          "count": 1
+        }
+      ],
+      "seed": 42,
+      "status": "ok",
+      "warnings": [],
+      "diff_vs_baseline": {
+        "mean": 0.0923,
+        "changed_fraction": 0.447,
+        "label": "moderate"
+      }
+    },
+    {
+      "variant": "alpha_high",
+      "path": "survey/out/2018/Generativos/pelines/variants/alpha_high/result.json",
+      "sha256": "4bf68380cb3a43303fa97ae1d42f35baec37e823587617db61faef1714010aab",
+      "subs": [
+        [
+          "stroke(getColor(noise(des3+xx*det3, des3+yy*det3)*colors.length*20), random(120)*random(0.2, 1));",
+          "stroke(getColor(noise(des3+xx*det3, des3+yy*det3)*colors.length*20), random(255)*random(0.6, 1));"
+        ]
+      ],
+      "subs_applied": [
+        {
+          "old": "stroke(getColor(noise(des3+xx*det3, des3+yy*det3)*colors.length*20), random(120)*random(0.2, 1));",
+          "new": "stroke(getColor(noise(des3+xx*det3, des3+yy*det3)*colors.length*20), random(255)*random(0.6, 1));",
+          "count": 1
+        }
+      ],
+      "seed": 42,
+      "status": "ok",
+      "warnings": [],
+      "diff_vs_baseline": {
+        "mean": 0.0777,
+        "changed_fraction": 0.383,
+        "label": "moderate"
+      }
+    },
+    {
+      "variant": "palette_neon",
+      "path": "survey/out/2018/Generativos/pelines/variants/palette_neon/result.json",
+      "sha256": "c99bf1eab2c34a624c3a567e27954c91db97e404ba7ec39938e985a829639d99",
+      "subs": [
+        [
+          "int colors[] = {#31A151, #FFA71E, #05084C, #DE4638, #3DBDB7};",
+          "int colors[] = {#2E0551, #FF00C7, #01AFC2, #FDBE03, #F4F9FD};"
+        ]
+      ],
+      "subs_applied": [
+        {
+          "old": "int colors[] = {#31A151, #FFA71E, #05084C, #DE4638, #3DBDB7};",
+          "new": "int colors[] = {#2E0551, #FF00C7, #01AFC2, #FDBE03, #F4F9FD};",
+          "count": 1
+        }
+      ],
+      "seed": 42,
+      "status": "ok",
+      "warnings": [],
+      "diff_vs_baseline": {
+        "mean": 0.2691,
+        "changed_fraction": 0.958,
+        "label": "large"
+      }
+    }
+  ],
+  "findings": {
+    "spacing": "gri changes both placement pitch and length, grid count and per-mark random consumption; not an isolated spacing test.",
+    "length": "dd_gri2 changes only length multiplier, preserving random-call count and grid pitch; reported longer and more legible strokes, subtle overall diff.",
+    "heading_frequency": "det1_0.002 removes a random call; later initialization may shift, so the full-image change is confounded.",
+    "alpha": "The product expressions can approach 120 and 255 respectively, not the note bounds 24 and 153. Same number of random calls; no useful alpha interval established.",
+    "palette": "Same-length palette replacement preserves random consumption; the proposed retained-geometry colour edit is supported as a composition boundary."
+  },
+  "limits": [
+    "No new render or human usability test.",
+    "No canonical noise algorithm specified by these measurements.",
+    "No visual default or useful range approved."
+  ]
+}

@@ -1,0 +1,2056 @@
+{
+  "cases": [
+    {
+      "categories": [
+        "count-zero",
+        "ordinary"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [],
+      "generated_unit_u32": [],
+      "id": "count-zero-validates-ordinary",
+      "input": {
+        "count": 0,
+        "seed": 42,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      },
+      "output": {
+        "points": []
+      },
+      "points_bits_hex": []
+    },
+    {
+      "categories": [
+        "count-zero",
+        "repeated"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [],
+      "generated_unit_u32": [],
+      "id": "count-zero-repeated-triangle",
+      "input": {
+        "count": 0,
+        "seed": 42,
+        "triangle": [
+          [
+            3.0,
+            -2.0
+          ],
+          [
+            3.0,
+            -2.0
+          ],
+          [
+            3.0,
+            -2.0
+          ]
+        ]
+      },
+      "output": {
+        "points": []
+      },
+      "points_bits_hex": []
+    },
+    {
+      "categories": [
+        "seed",
+        "count-one"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [
+        [
+          0.8702547766733915,
+          0.601693955482915
+        ]
+      ],
+      "generated_unit_u32": [
+        [
+          3737715805,
+          2584255861
+        ]
+      ],
+      "id": "seed-zero-count-one",
+      "input": {
+        "count": 1,
+        "seed": 0,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            5.945112642470186,
+            4.490439438317304
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "4017c7cb9bc9c849",
+          "4011f635c190f739"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "seed",
+        "count-one"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [
+        [
+          0.3946724967099726,
+          0.33134478353895247
+        ]
+      ],
+      "generated_unit_u32": [
+        [
+          1695105466,
+          1423115009
+        ]
+      ],
+      "id": "seed-one-count-one",
+      "input": {
+        "count": 1,
+        "seed": 1,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            6.721104552132999,
+            1.6652849466694548
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "401ae2693b51a1c0",
+          "3ffaa501d407766d"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "seed",
+        "prefix",
+        "equivalence"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [
+        [
+          0.4137016632594168,
+          0.9697872884571552
+        ],
+        [
+          0.0039839965756982565,
+          0.5395373492501676
+        ],
+        [
+          0.6500837004277855,
+          0.5947961988858879
+        ],
+        [
+          0.6846020163502544,
+          0.5226038002874702
+        ]
+      ],
+      "generated_unit_u32": [
+        [
+          1776835114,
+          4165204688
+        ],
+        [
+          17111135,
+          2317295270
+        ],
+        [
+          2792088233,
+          2554630222
+        ],
+        [
+          2940343271,
+          2244566231
+        ]
+      ],
+      "id": "seed-42-count-4",
+      "input": {
+        "count": 4,
+        "seed": 42,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            0.3109233371774172,
+            4.990109869015513
+          ],
+          [
+            0.46502239671014073,
+            0.27244006745648147
+          ],
+          [
+            5.227308503742674,
+            3.836567203813597
+          ],
+          [
+            6.320013807893353,
+            3.4592475137665666
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "3fd3e62aff2f5f3d",
+          "4013f5df5c8b7951"
+        ],
+        [
+          "3fddc2ed4c71c413",
+          "3fd16fa876f61eab"
+        ],
+        [
+          "4014e8c38f76b5bd",
+          "400eb14a256a48d7"
+        ],
+        [
+          "401947b1b31cae78",
+          "400bac89f5e32c78"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "seed",
+        "prefix"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [
+        [
+          0.4137016632594168,
+          0.9697872884571552
+        ],
+        [
+          0.0039839965756982565,
+          0.5395373492501676
+        ],
+        [
+          0.6500837004277855,
+          0.5947961988858879
+        ],
+        [
+          0.6846020163502544,
+          0.5226038002874702
+        ],
+        [
+          0.8306474857963622,
+          0.6818390490952879
+        ],
+        [
+          0.7362412142101675,
+          0.26787051605060697
+        ],
+        [
+          0.8058046465739608,
+          0.5276389706414193
+        ],
+        [
+          0.1663810471072793,
+          0.3726691317278892
+        ]
+      ],
+      "generated_unit_u32": [
+        [
+          1776835114,
+          4165204688
+        ],
+        [
+          17111135,
+          2317295270
+        ],
+        [
+          2792088233,
+          2554630222
+        ],
+        [
+          2940343271,
+          2244566231
+        ],
+        [
+          3567603786,
+          2928476417
+        ],
+        [
+          3162131937,
+          1150495106
+        ],
+        [
+          3460904604,
+          2266192123
+        ],
+        [
+          714601156,
+          1600601733
+        ]
+      ],
+      "id": "seed-42-count-8",
+      "input": {
+        "count": 8,
+        "seed": 42,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            0.3109233371774172,
+            4.990109869015513
+          ],
+          [
+            0.46502239671014073,
+            0.27244006745648147
+          ],
+          [
+            5.227308503742674,
+            3.836567203813597
+          ],
+          [
+            6.320013807893353,
+            3.4592475137665666
+          ],
+          [
+            4.639543340702688,
+            4.971417470726205
+          ],
+          [
+            10.051200635541477,
+            1.8387596457983872
+          ],
+          [
+            6.78436065222164,
+            3.7891494519131284
+          ],
+          [
+            4.094195410141465,
+            1.2160889299328301
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "3fd3e62aff2f5f3d",
+          "4013f5df5c8b7951"
+        ],
+        [
+          "3fddc2ed4c71c413",
+          "3fd16fa876f61eab"
+        ],
+        [
+          "4014e8c38f76b5bd",
+          "400eb14a256a48d7"
+        ],
+        [
+          "401947b1b31cae78",
+          "400bac89f5e32c78"
+        ],
+        [
+          "40128ee47312c541",
+          "4013e2bb42ee20dc"
+        ],
+        [
+          "40241a36f83e5ec0",
+          "3ffd6b8f3bfe89b2"
+        ],
+        [
+          "401b232f70563ea4",
+          "400e502d967cfc56"
+        ],
+        [
+          "40106074c2f7f6ae",
+          "3ff37519aa716d1f"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "seed-high",
+        "count-one"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [
+        [
+          0.9368807238060981,
+          0.11227700440213084
+        ]
+      ],
+      "generated_unit_u32": [
+        [
+          4023872069,
+          482226062
+        ]
+      ],
+      "id": "seed-high-count-one",
+      "input": {
+        "count": 1,
+        "seed": 2147483648,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            13.748002562146914,
+            0.8694066459048367
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "402b7efa311b7d8b",
+          "3febd22de2e2c32f"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "seed-max",
+        "count-one"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [
+        [
+          0.07711399556137621,
+          0.5363358960021287
+        ]
+      ],
+      "generated_unit_u32": [
+        [
+          331202089,
+          2303545133
+        ]
+      ],
+      "id": "seed-max-count-one",
+      "input": {
+        "count": 1,
+        "seed": 4294967295,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            2.060108341719588,
+            1.1914983754303174
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "40007b1a150f3829",
+          "3ff3106099bb5d91"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "vertex-order",
+        "seed"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [
+        [
+          0.3946724967099726,
+          0.33134478353895247
+        ],
+        [
+          0.14775008731521666,
+          0.24871615529991686
+        ],
+        [
+          0.16688350727781653,
+          0.9747467280831188
+        ],
+        [
+          0.8795630245003849,
+          0.6311621912755072
+        ]
+      ],
+      "generated_unit_u32": [
+        [
+          1695105466,
+          1423115009
+        ],
+        [
+          634581793,
+          1068227753
+        ],
+        [
+          716759206,
+          4186505319
+        ],
+        [
+          3777694425,
+          2710820970
+        ]
+      ],
+      "id": "reordered-triangle-seed-one",
+      "input": {
+        "count": 4,
+        "seed": 1,
+        "triangle": [
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            5.9483255545280915,
+            3.3605522760664996
+          ],
+          [
+            9.849876232733568,
+            2.3102443146266425
+          ],
+          [
+            9.463779542952897,
+            0.08253047625524601
+          ],
+          [
+            0.9943965708773135,
+            2.767316943693173
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "4017cb15daaaa30a",
+          "400ae2693b51a1c0"
+        ],
+        [
+          "4023b322fa427a0a",
+          "40027b615f08bb1d"
+        ],
+        [
+          "4022ed74832312b3",
+          "3fb520b7a07088b8"
+        ],
+        [
+          "3fefd218c1e58600",
+          "4006237710d6a17d"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "repeated",
+        "stream-consumption"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [
+        [
+          0.4137016632594168,
+          0.9697872884571552
+        ],
+        [
+          0.0039839965756982565,
+          0.5395373492501676
+        ],
+        [
+          0.6500837004277855,
+          0.5947961988858879
+        ],
+        [
+          0.6846020163502544,
+          0.5226038002874702
+        ]
+      ],
+      "generated_unit_u32": [
+        [
+          1776835114,
+          4165204688
+        ],
+        [
+          17111135,
+          2317295270
+        ],
+        [
+          2792088233,
+          2554630222
+        ],
+        [
+          2940343271,
+          2244566231
+        ]
+      ],
+      "id": "constant-vertices-consume-two-units-per-point",
+      "input": {
+        "count": 4,
+        "seed": 42,
+        "triangle": [
+          [
+            3.0,
+            -2.0
+          ],
+          [
+            3.0,
+            -2.0
+          ],
+          [
+            3.0,
+            -2.0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            3.0,
+            -2.0
+          ],
+          [
+            3.0,
+            -2.0
+          ],
+          [
+            3.0,
+            -2.0
+          ],
+          [
+            3.0,
+            -2.0
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "4008000000000000",
+          "c000000000000000"
+        ],
+        [
+          "4008000000000000",
+          "c000000000000000"
+        ],
+        [
+          "4008000000000000",
+          "c000000000000000"
+        ],
+        [
+          "4008000000000000",
+          "c000000000000000"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "collinear",
+        "stream-consumption"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [
+        [
+          0.4137016632594168,
+          0.9697872884571552
+        ],
+        [
+          0.0039839965756982565,
+          0.5395373492501676
+        ],
+        [
+          0.6500837004277855,
+          0.5947961988858879
+        ],
+        [
+          0.6846020163502544,
+          0.5226038002874702
+        ]
+      ],
+      "generated_unit_u32": [
+        [
+          1776835114,
+          4165204688
+        ],
+        [
+          17111135,
+          2317295270
+        ],
+        [
+          2792088233,
+          2554630222
+        ],
+        [
+          2940343271,
+          2244566231
+        ]
+      ],
+      "id": "tiny-collinear-consume-two-units-per-point",
+      "input": {
+        "count": 4,
+        "seed": 42,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.409919865102884e-181,
+            2.409919865102884e-181
+          ],
+          [
+            4.819839730205768e-181,
+            4.819839730205768e-181
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            3.0532724960208554e-181,
+            3.0532724960208554e-181
+          ],
+          [
+            2.3418135212518123e-182,
+            2.3418135212518123e-182
+          ],
+          [
+            3.0987920423300725e-181,
+            3.0987920423300725e-181
+          ],
+          [
+            3.0360477518938726e-181,
+            3.0360477518938726e-181
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "1a744578088836ce",
+          "1a744578088836ce"
+        ],
+        [
+          "1a38e063ca128faf",
+          "1a38e063ca128faf"
+        ],
+        [
+          "1a7492d5f692d1db",
+          "1a7492d5f692d1db"
+        ],
+        [
+          "1a74283167b8c1da",
+          "1a74283167b8c1da"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "tiny-noncollinear",
+        "no-determinant"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [
+        [
+          0.4137016632594168,
+          0.9697872884571552
+        ],
+        [
+          0.0039839965756982565,
+          0.5395373492501676
+        ],
+        [
+          0.6500837004277855,
+          0.5947961988858879
+        ],
+        [
+          0.6846020163502544,
+          0.5226038002874702
+        ]
+      ],
+      "generated_unit_u32": [
+        [
+          1776835114,
+          4165204688
+        ],
+        [
+          17111135,
+          2317295270
+        ],
+        [
+          2792088233,
+          2554630222
+        ],
+        [
+          2940343271,
+          2244566231
+        ]
+      ],
+      "id": "tiny-noncollinear-underflowed-area",
+      "input": {
+        "count": 4,
+        "seed": 42,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.409919865102884e-181,
+            0.0
+          ],
+          [
+            0.0,
+            2.409919865102884e-181
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            4.683127042424624e-183,
+            1.5032206127983045e-181
+          ],
+          [
+            7.004166947184514e-183,
+            8.206984132666806e-183
+          ],
+          [
+            7.87337162761919e-182,
+            1.1557274397840767e-181
+          ],
+          [
+            9.519204264604197e-182,
+            1.0420636627167264e-181
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "1a13e62aff2f5f3d",
+          "1a63f5df5c8b7951"
+        ],
+        [
+          "1a1dc2ed4c71c413",
+          "1a216fa876f61eab"
+        ],
+        [
+          "1a54e8c38f76b5bd",
+          "1a5eb14a256a48d7"
+        ],
+        [
+          "1a5947b1b31cae78",
+          "1a5bac89f5e32c78"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "extrema",
+        "opposite-sign"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [
+        [
+          0.3946724967099726,
+          0.33134478353895247
+        ],
+        [
+          0.14775008731521666,
+          0.24871615529991686
+        ]
+      ],
+      "generated_unit_u32": [
+        [
+          1695105466,
+          1423115009
+        ],
+        [
+          634581793,
+          1068227753
+        ]
+      ],
+      "id": "finite-extrema-opposite-sign",
+      "input": {
+        "count": 2,
+        "seed": 1,
+        "triangle": [
+          [
+            -1.7976931348623157e+308,
+            -5e-324
+          ],
+          [
+            1.7976931348623157e+308,
+            5e-324
+          ],
+          [
+            0.0,
+            1.7976931348623157e+308
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            8.68262186725079e+306,
+            3.7420891452715455e+307
+          ],
+          [
+            -5.875521371444125e+307,
+            1.7186341165315044e+307
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "7fa8ba9b0537f5b8",
+          "7fcaa501d407766c"
+        ],
+        [
+          "ffd4eae4957c38f5",
+          "7fb87962b1c9433e"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "negative-zero",
+        "count-zero"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "generated_unit_coordinates": [],
+      "generated_unit_u32": [],
+      "id": "negative-zero-seed-count-and-vertices",
+      "input": {
+        "count": -0.0,
+        "seed": -0.0,
+        "triangle": [
+          [
+            -0.0,
+            -0.0
+          ],
+          [
+            8.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            4.0
+          ]
+        ]
+      },
+      "output": {
+        "points": []
+      },
+      "points_bits_hex": []
+    },
+    {
+      "categories": [
+        "missing-key"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "missing-count",
+      "input": {
+        "seed": 42,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "missing-key"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "missing-triangle",
+      "input": {
+        "count": 0,
+        "seed": 42
+      }
+    },
+    {
+      "categories": [
+        "extra-key"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "extra-property",
+      "input": {
+        "count": 4,
+        "extra": 1,
+        "seed": 42,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "bool-number",
+        "seed"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "boolean-seed",
+      "input": {
+        "count": 4,
+        "seed": true,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "seed-domain"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "seed-over-uint32",
+      "input": {
+        "count": 4,
+        "seed": 4294967296,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "seed-domain"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "seed-negative",
+      "input": {
+        "count": 4,
+        "seed": -1,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "bool-number",
+        "count-domain"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "count-boolean",
+      "input": {
+        "count": true,
+        "seed": 42,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "count-domain"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "count-negative",
+      "input": {
+        "count": -1,
+        "seed": 42,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "count-domain"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "count-fractional",
+      "input": {
+        "count": 1.5,
+        "seed": 42,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "count-domain"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "count-over-packed-limit",
+      "input": {
+        "count": 1073741824,
+        "seed": 42,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "triangle-shape"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "triangle-wrong-length",
+      "input": {
+        "count": 4,
+        "seed": 42,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "bool-number"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "boolean-triangle-coordinate",
+      "input": {
+        "count": 4,
+        "seed": 42,
+        "triangle": [
+          [
+            true,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "count-zero",
+        "triangle-validation",
+        "bool-number"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "count-zero-still-validates-triangle",
+      "input": {
+        "count": 0,
+        "seed": 42,
+        "triangle": [
+          [
+            true,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    }
+  ],
+  "catalog_sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+  "cross_case_checks": [
+    {
+      "extended_case": "seed-42-count-8",
+      "id": "seed-42-count-4-is-raw-prefix-of-count-8",
+      "kind": "raw-binary64-prefix",
+      "prefix_case": "seed-42-count-4"
+    },
+    {
+      "id": "seed-zero-count-one-equals-explicit-generated-units",
+      "kind": "seeded-output-equals-explicit-map",
+      "mapping_case": "units-from-seed-zero-count-one",
+      "mapping_fixture": "fixtures/operations/triangle-coordinate-map.json",
+      "seeded_case": "seed-zero-count-one"
+    },
+    {
+      "id": "seed-42-count-4-equals-explicit-generated-units",
+      "kind": "seeded-output-equals-explicit-map",
+      "mapping_case": "units-from-seed-42-count-4",
+      "mapping_fixture": "fixtures/operations/triangle-coordinate-map.json",
+      "seeded_case": "seed-42-count-4"
+    },
+    {
+      "id": "seed-max-count-one-equals-explicit-generated-units",
+      "kind": "seeded-output-equals-explicit-map",
+      "mapping_case": "units-from-seed-max-count-one",
+      "mapping_fixture": "fixtures/operations/triangle-coordinate-map.json",
+      "seeded_case": "seed-max-count-one"
+    }
+  ],
+  "fixture_format": "triangle-points-output",
+  "fixture_status": "generated shared-contract vectors; native implementation validation is separate",
+  "generator": {
+    "path": "tools/generate_triangle_points_fixtures.py",
+    "reference": "Independent Python xoshiro128**1.1 and binary64 nested endpoint-aware clamped interpolation; Python math.sqrt supplies fixture bits but is not an arbitrary-precision proof of correctly rounded sqrt; no public-core or target implementation import.",
+    "sha256": "358cafdc640770e3c27e6816e3536d1e297d4285836bcad8d009b78aef9e5d23"
+  },
+  "native_only_cases": [
+    {
+      "description": "For sampling.seeded-triangle-points-2d, NaN, +/-Infinity and numeric carriers that cannot convert to binary64 are INVALID_INPUT. Strict JSON cannot carry nonfinite literals.",
+      "id": "nonfinite-and-overflowing-numeric-carriers"
+    },
+    {
+      "description": "Recognized wrong carriers (Java arbitrary Number subclasses, JavaScript class/typed-array pairs, Python custom mapping/list containers) are INVALID_INPUT. Active getters/proxies/custom hooks are outside passive interchange and need not be read or universally detected.",
+      "id": "passive-carriers-only"
+    }
+  ],
+  "native_ownership_access_requirements": {
+    "requirements": [
+      "Mutating every caller config/triangle/pair container after success cannot alter retained points, pointAt or toValues output.",
+      "pointAt and toValues return detached values; a failed fresh materialization leaves the completed result usable.",
+      "pointInto validates index, destination, offset and both writable binary64 slots before writing; every failure preserves destination sentinels.",
+      "Access error precedence is INVALID_INDEX, INDEX_OUT_OF_RANGE, then INVALID_OUTPUT; bool and unsafe numeric indices are INVALID_INDEX.",
+      "Complete static validation precedes output-sized allocation and seeded RNG initialization. Controlled allocation failure, where executable, exposes no partial result; otherwise record source proof and explicit unexecuted status.",
+      "Seeded inner loops retain packed scalar output without per-point objects; measure work/memory at native review rather than claiming it from these fixtures."
+    ],
+    "status": "required for future native ports; not executed by these pure JSON fixtures"
+  },
+  "operation": "sampling.seeded-triangle-points-2d",
+  "rng_provenance": {
+    "draws_for_zero_replacements": 0,
+    "draws_per_requested_replacement": 2,
+    "kind": "private-xoshiro128starstar-1-1",
+    "shared_cp3_fixture": "fixtures/operations/seeded-circle-placement.json",
+    "shared_cp3_fixture_sha256": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "shared_cp3_stream_evidence": "evidence/investigations/cp3-stream-oracle.json",
+    "shared_cp3_stream_evidence_sha256": "308a92e4b5fed9994ce1fe71630541b35f8de70fbf5bb85a5ed6fbbc411d2086"
+  },
+  "seed_vectors": [
+    {
+      "first_10": [
+        {
+          "index": 0,
+          "output_u32": 3737715805,
+          "post_state": [
+            4148558844,
+            948174946,
+            2616515163,
+            3249708130
+          ],
+          "unit": 0.8702547766733915
+        },
+        {
+          "index": 1,
+          "output_u32": 2584255861,
+          "post_state": [
+            242444284,
+            1412768197,
+            1689380263,
+            3034580937
+          ],
+          "unit": 0.601693955482915
+        },
+        {
+          "index": 2,
+          "output_u32": 2876756834,
+          "post_state": [
+            4003873264,
+            1056416670,
+            8456283,
+            2838521606
+          ],
+          "unit": 0.6697971452958882
+        },
+        {
+          "index": 3,
+          "output_u32": 3286328325,
+          "post_state": [
+            2036434280,
+            3503352373,
+            23098795,
+            1042597054
+          ],
+          "unit": 0.7651579391676933
+        },
+        {
+          "index": 4,
+          "output_u32": 1553311962,
+          "post_state": [
+            2543168483,
+            2832276214,
+            3654654659,
+            2708758391
+          ],
+          "unit": 0.3616586239077151
+        },
+        {
+          "index": 5,
+          "output_u32": 1625202774,
+          "post_state": [
+            2654006882,
+            3868273622,
+            3967147296,
+            707528781
+          ],
+          "unit": 0.3783970079384744
+        },
+        {
+          "index": 6,
+          "output_u32": 3260698944,
+          "post_state": [
+            1385025017,
+            2496927892,
+            1343397698,
+            3910983269
+          ],
+          "unit": 0.759190633893013
+        },
+        {
+          "index": 7,
+          "output_u32": 2754151956,
+          "post_state": [
+            793053960,
+            2521516591,
+            2863561403,
+            1178045422
+          ],
+          "unit": 0.641250972636044
+        },
+        {
+          "index": 8,
+          "output_u32": 2651137455,
+          "post_state": [
+            4281977545,
+            329268124,
+            327102387,
+            3859680899
+          ],
+          "unit": 0.6172660400625318
+        },
+        {
+          "index": 9,
+          "output_u32": 2503817145,
+          "post_state": [
+            177733590,
+            4293320422,
+            2888949114,
+            1906900909
+          ],
+          "unit": 0.5829653574619442
+        }
+      ],
+      "initial_state": [
+        2065550767,
+        3793791033,
+        2713282036,
+        1853398634
+      ],
+      "seed": 0
+    },
+    {
+      "first_10": [
+        {
+          "index": 0,
+          "output_u32": 1695105466,
+          "post_state": [
+            2799959180,
+            2105974090,
+            4174866598,
+            218261887
+          ],
+          "unit": 0.3946724967099726
+        },
+        {
+          "index": 1,
+          "output_u32": 1423115009,
+          "post_state": [
+            3597076665,
+            598870368,
+            1393426474,
+            664906628
+          ],
+          "unit": 0.33134478353895247
+        },
+        {
+          "index": 2,
+          "output_u32": 634581793,
+          "post_state": [
+            3530861149,
+            2799370739,
+            3782985875,
+            2635538464
+          ],
+          "unit": 0.14775008731521666
+        },
+        {
+          "index": 3,
+          "output_u32": 1068227753,
+          "post_state": [
+            3921185678,
+            2513724221,
+            2232190158,
+            1628346846
+          ],
+          "unit": 0.24871615529991686
+        },
+        {
+          "index": 4,
+          "output_u32": 716759206,
+          "post_state": [
+            492990829,
+            4183846013,
+            3295835456,
+            3621199782
+          ],
+          "unit": 0.16688350727781653
+        },
+        {
+          "index": 5,
+          "output_u32": 4186505319,
+          "post_state": [
+            869597878,
+            544237648,
+            432602669,
+            3147749749
+          ],
+          "unit": 0.9747467280831188
+        },
+        {
+          "index": 6,
+          "output_u32": 3777694425,
+          "post_state": [
+            2822484883,
+            174953675,
+            3402456219,
+            1971924191
+          ],
+          "unit": 0.8795630245003849
+        },
+        {
+          "index": 7,
+          "output_u32": 2710820970,
+          "post_state": [
+            3621718919,
+            1755020227,
+            3118430472,
+            633381887
+          ],
+          "unit": 0.6311621912755072
+        },
+        {
+          "index": 8,
+          "output_u32": 2858460077,
+          "post_state": [
+            2592396219,
+            110823756,
+            1492645007,
+            3737248362
+          ],
+          "unit": 0.6655370995867997
+        },
+        {
+          "index": 9,
+          "output_u32": 2689674896,
+          "post_state": [
+            1121859741,
+            3303550584,
+            4100046644,
+            3612948162
+          ],
+          "unit": 0.6262387372553349
+        }
+      ],
+      "initial_state": [
+        2298633409,
+        2433363436,
+        1703865447,
+        3203108257
+      ],
+      "seed": 1
+    },
+    {
+      "first_10": [
+        {
+          "index": 0,
+          "output_u32": 1776835114,
+          "post_state": [
+            3134439296,
+            542813616,
+            870962070,
+            3330845865
+          ],
+          "unit": 0.4137016632594168
+        },
+        {
+          "index": 1,
+          "output_u32": 4165204688,
+          "post_state": [
+            1543618201,
+            2841690534,
+            1012993046,
+            2416496438
+          ],
+          "unit": 0.9697872884571552
+        },
+        {
+          "index": 2,
+          "output_u32": 17111135,
+          "post_state": [
+            1701425161,
+            3372249897,
+            2716073615,
+            1081377227
+          ],
+          "unit": 0.0039839965756982565
+        },
+        {
+          "index": 3,
+          "output_u32": 2317295270,
+          "post_state": [
+            3961340651,
+            227163567,
+            3295419526,
+            2811696203
+          ],
+          "unit": 0.5395373492501676
+        },
+        {
+          "index": 4,
+          "output_u32": 2792088233,
+          "post_state": [
+            1174432527,
+            637232066,
+            1007288429,
+            3914278224
+          ],
+          "unit": 0.6500837004277855
+        },
+        {
+          "index": 5,
+          "output_u32": 2554630222,
+          "post_state": [
+            2327063965,
+            1609631904,
+            2362306402,
+            2721355365
+          ],
+          "unit": 0.5947961988858879
+        },
+        {
+          "index": 6,
+          "output_u32": 2940343271,
+          "post_state": [
+            2003940184,
+            1502136927,
+            3832054527,
+            754331630
+          ],
+          "unit": 0.6846020163502544
+        },
+        {
+          "index": 7,
+          "output_u32": 2244566231,
+          "post_state": [
+            34559721,
+            3398564856,
+            2190315431,
+            4146957227
+          ],
+          "unit": 0.5226038002874702
+        },
+        {
+          "index": 8,
+          "output_u32": 3567603786,
+          "post_state": [
+            1068705466,
+            1242768054,
+            2742364494,
+            3816987117
+          ],
+          "unit": 0.8306474857963622
+        },
+        {
+          "index": 9,
+          "output_u32": 2928476417,
+          "post_state": [
+            2518851041,
+            3604294978,
+            3129172980,
+            2379930956
+          ],
+          "unit": 0.6818390490952879
+        }
+      ],
+      "initial_state": [
+        803958421,
+        3184996902,
+        2993090819,
+        686809907
+      ],
+      "seed": 42
+    },
+    {
+      "first_10": [
+        {
+          "index": 0,
+          "output_u32": 4023872069,
+          "post_state": [
+            4024964126,
+            1061149425,
+            2282711607,
+            1799067374
+          ],
+          "unit": 0.9368807238060981
+        },
+        {
+          "index": 1,
+          "output_u32": 482226062,
+          "post_state": [
+            3152828417,
+            1490592984,
+            408067113,
+            576780960
+          ],
+          "unit": 0.11227700440213084
+        },
+        {
+          "index": 2,
+          "output_u32": 175963982,
+          "post_state": [
+            3243509369,
+            4217790704,
+            318207016,
+            3270755285
+          ],
+          "unit": 0.04096980718895793
+        },
+        {
+          "index": 3,
+          "output_u32": 2139429908,
+          "post_state": [
+            4173440348,
+            684004001,
+            526553681,
+            2904107468
+          ],
+          "unit": 0.4981248425319791
+        },
+        {
+          "index": 4,
+          "output_u32": 1378036237,
+          "post_state": [
+            2099093041,
+            3479578028,
+            1837528333,
+            3789253678
+          ],
+          "unit": 0.32084906403906643
+        },
+        {
+          "index": 5,
+          "output_u32": 2052038198,
+          "post_state": [
+            1403049907,
+            3757952656,
+            3704664892,
+            3930853749
+          ],
+          "unit": 0.47777737444266677
+        },
+        {
+          "index": 6,
+          "output_u32": 3467094439,
+          "post_state": [
+            1712392278,
+            1351461407,
+            1961706639,
+            2399087021
+          ],
+          "unit": 0.807245829841122
+        },
+        {
+          "index": 7,
+          "output_u32": 1936964625,
+          "post_state": [
+            3093531620,
+            1114760902,
+            162034393,
+            2484967155
+          ],
+          "unit": 0.4509847203735262
+        },
+        {
+          "index": 8,
+          "output_u32": 46688342,
+          "post_state": [
+            1846541265,
+            4089061371,
+            1376154941,
+            1669443251
+          ],
+          "unit": 0.010870476718991995
+        },
+        {
+          "index": 9,
+          "output_u32": 3687813865,
+          "post_state": [
+            4264839833,
+            3484651799,
+            1211529452,
+            3716826241
+          ],
+          "unit": 0.8586360758636147
+        }
+      ],
+      "initial_state": [
+        841315180,
+        625556678,
+        676566363,
+        4169423796
+      ],
+      "seed": 2147483648
+    },
+    {
+      "first_10": [
+        {
+          "index": 0,
+          "output_u32": 331202089,
+          "post_state": [
+            3177249127,
+            3472910806,
+            3737523828,
+            2344958100
+          ],
+          "unit": 0.07711399556137621
+        },
+        {
+          "index": 1,
+          "output_u32": 2303545133,
+          "post_state": [
+            4188383269,
+            2896594629,
+            1668629267,
+            713691686
+          ],
+          "unit": 0.5363358960021287
+        },
+        {
+          "index": 2,
+          "output_u32": 2732085799,
+          "post_state": [
+            2139700422,
+            913731059,
+            3621609782,
+            1688673329
+          ],
+          "unit": 0.6361132950987667
+        },
+        {
+          "index": 3,
+          "output_u32": 1755962312,
+          "post_state": [
+            760761604,
+            2653040643,
+            1150270448,
+            2341343894
+          ],
+          "unit": 0.40884183533489704
+        },
+        {
+          "index": 4,
+          "output_u32": 20464611,
+          "post_state": [
+            955543441,
+            4160079607,
+            767029492,
+            1628743853
+          ],
+          "unit": 0.004764788551256061
+        },
+        {
+          "index": 5,
+          "output_u32": 435992899,
+          "post_state": [
+            2920612299,
+            3803601298,
+            4274942309,
+            192074935
+          ],
+          "unit": 0.10151250730268657
+        },
+        {
+          "index": 6,
+          "output_u32": 115300070,
+          "post_state": [
+            1204915438,
+            2993498428,
+            1013470382,
+            610873166
+          ],
+          "unit": 0.026845389511436224
+        },
+        {
+          "index": 7,
+          "output_u32": 2552219694,
+          "post_state": [
+            3520432796,
+            3386175868,
+            2716573760,
+            540251312
+          ],
+          "unit": 0.5942349541001022
+        },
+        {
+          "index": 8,
+          "output_u32": 926509624,
+          "post_state": [
+            942862160,
+            3119176608,
+            3655127772,
+            992896847
+          ],
+          "unit": 0.21571983210742474
+        },
+        {
+          "index": 9,
+          "output_u32": 609063632,
+          "post_state": [
+            3136705471,
+            1476716076,
+            878280076,
+            635927574
+          ],
+          "unit": 0.1418086774647236
+        }
+      ],
+      "initial_state": [
+        2951840192,
+        1940994978,
+        323015604,
+        1629504261
+      ],
+      "seed": 4294967295
+    }
+  ],
+  "version": "0.1.0"
+}

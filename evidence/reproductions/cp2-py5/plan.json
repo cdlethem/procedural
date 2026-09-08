@@ -1,0 +1,49 @@
+{
+  "id": "cp2-public-py5",
+  "status": "planned",
+  "scope": "Actual py5 0.10.11a0 JAVA2D execution of the editable PathMarks starter through its setup and key_pressed callbacks. Raw retained movement/commands are unchanged; the fixed-canvas starter submits only segments whose complete bbox intersects [-1,641]². This is target-specific edit, retained-movement, command, cached-save, and visual-mechanism validation; it is not upstream pixel reproduction, physical-keyboard testing, clipping, or cross-host pixel identity.",
+  "brief": "design/capabilities/cp2-public-example.md",
+  "desktop_sequence_binding": "evidence/reproductions/cp2-java2d/pde-plan.json",
+  "operation": "path.gradient-trace-2d",
+  "runtime": {
+    "py5": "0.10.11a0",
+    "java": "17.0.20.1",
+    "renderer": "JAVA2D"
+  },
+  "dimensions": [640, 640],
+  "density": 1,
+  "background_rgb": "ECE7DA",
+  "attempt_budget": 1,
+  "composition_budget": 7,
+  "timeout_seconds": 180,
+  "output": ".work/reproductions/cp2-py5",
+  "states": [
+    {"ordinal": 1, "id": "marks", "trigger": "setup", "trace": false, "length": 12, "alternate": false, "steps": 2000, "distance": 0.4, "raw_commands": 12000, "submitted_commands": 7002},
+    {"ordinal": 2, "id": "trace", "trigger": "m", "trace": true, "length": 12, "alternate": false, "steps": 2000, "distance": 0.4, "raw_commands": 48000, "submitted_commands": 27784},
+    {"ordinal": 3, "id": "marks-replay", "trigger": "m", "trace": false, "length": 12, "alternate": false, "steps": 2000, "distance": 0.4, "raw_commands": 12000, "submitted_commands": 7002},
+    {"ordinal": 4, "id": "long-marks", "trigger": "l", "trace": false, "length": 24, "alternate": false, "steps": 2000, "distance": 0.4, "raw_commands": 12000, "submitted_commands": 7057},
+    {"ordinal": 5, "id": "palette", "trigger": "c", "trace": false, "length": 24, "alternate": true, "steps": 2000, "distance": 0.4, "raw_commands": 12000, "submitted_commands": 7057},
+    {"ordinal": 6, "id": "count", "trigger": "n", "trace": false, "length": 24, "alternate": true, "steps": 2001, "distance": 0.4, "raw_commands": 12024, "submitted_commands": 7066},
+    {"ordinal": 7, "id": "distance", "trigger": "d", "trace": false, "length": 24, "alternate": true, "steps": 2001, "distance": 0.8, "raw_commands": 12024, "submitted_commands": 5500}
+  ],
+  "visual_images": ["marks.png", "trace.png", "long-marks.png"],
+  "save": {
+    "trigger": "s after ordinal 7",
+    "expected_path": "path-marks.png",
+    "checks": ["saved RGBA pixels equal the displayed ordinal-7 canvas", "no eighth composition during a 300ms quiet observation"]
+  },
+  "native_checks": [
+    "all seven state records are observed in the actual starter callbacks",
+    "each completed frame records separate raw source and submitted visible command counts",
+    "before a native attempt, pure Python validates every submitted command for all seven states through the shared drawing normalizer and proves each omitted raw command bbox misses [-1,641]² while retained command order is a raw subsequence",
+    "M, M, L, and C retain the identical PathMarks and underlying path objects",
+    "N and D replace PathMarks and all 24 underlying paths",
+    "count-2001 retains the exact 2000-step point and heading prefix",
+    "distance-0.8 preserves heading zero and changes at least one later heading",
+    "marks replay has exact displayed RGBA pixels",
+    "all three visual artifacts and the saved image are opaque, 640x640, and non-background",
+    "the S callback saves the already displayed canvas without composition"
+  ],
+  "visual_acceptance": "Root and Sol inspect marks.png, trace.png, and long-marks.png for continuous varying paths, coherent perpendicular marks, and length-driven coverage change. They compare the mechanism with the accepted private CP2 images without claiming raster identity.",
+  "failure_policy": "The executor reserves one exclusive attempt under .work/processing-render.lock before launch. Any failure, including timeout, consumes that attempt, preserves stdout/stderr/result information, terminates the process group, and permits no automatic retry."
+}

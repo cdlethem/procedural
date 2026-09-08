@@ -1,0 +1,29 @@
+{
+  "id": "cp2-path-choice",
+  "status": "planned",
+  "owner": "root",
+  "question": "Does the existing named gradient field support a useful retained wandering path that can be reused for perpendicular marks?",
+  "decision": "Accept the gradient carrier for contract work, or revisit the field choice if the intended movement and mark reuse are not visually legible.",
+  "hypothesis": "Feedback integration through the existing gradient field can produce directional, continuous movement and an independently editable perpendicular-mark treatment.",
+  "scope": "Private Java design experiment, not a public operation, source reproduction, four-target validation or a recommended parameter range.",
+  "source_sketches": ["2019/generativos/ciserp", "2018/Generativos/mantel", "2019/generativos/natalata"],
+  "provenance": ["design/capabilities/cp2-architecture-decision.md", "survey/out/2019/generativos/ciserp/notes.md", "survey/out/2018/Generativos/mantel/notes.md", "survey/out/2019/generativos/natalata/notes.md"],
+  "environment": {"field": "field.gradient-noise-2d-01", "version": "0.1.0", "seed": 42, "renderer": "Processing 4.5.6 JAVA2D", "dimensions": [640, 640], "pixel_density": 1, "background_rgb": "ECE7DA", "alpha": 150, "stroke_width": 1, "stroke_cap": "round", "palette_rgb": ["31A151", "FFA71E", "05084C", "DE4638", "3DBDB7"]},
+  "movement": {"starts": {"columns": 6, "rows": 4, "first": [60, 80], "pitch": [104, 160], "order": "row-major"}, "steps": 2000, "step_distance": 0.4, "coordinate_scale": [0.002, 0.002], "coordinate_offset": [0, 0], "angle_base": -20, "angle_scale": 40, "arithmetic": "binary64 separately rounded operations; query=current*scale+offset; heading=base+angleScale*sample; next=current+stepDistance*[Math.cos(heading),Math.sin(heading)]", "storage": "one packed N+1 position pair array and N heading array per path; all 24 modest paths retained for this reuse experiment"},
+  "mark": {"anchor": "post-advance endpoint", "every_n_steps": 4, "total_length": 12, "length_envelope": "1; no jitter", "palette_selection": "path index modulo palette length"},
+  "cases": [
+    {"id": "trace", "change": "Draw each movement as an independent segment; all steps."},
+    {"id": "marks", "change": "Use the exact same retained movement; perpendicular segments every fourth step with total length12."},
+    {"id": "long-marks", "change": "Use the exact same retained movement and mark indices, changing only total mark length12 to24."},
+    {"id": "finer-field", "change": "Recompute movement with coordinate scale[0.01,0.01]; otherwise use marks configuration."}
+  ],
+  "semantic_checks_before_render": ["Equal retained movement hashes for trace/marks/long-marks before and after drawing", "Changing only colour leaves movement and mark geometry unchanged and makes zero field queries", "At fixed start/field/step distance, a2000-step trace is the exact prefix of a2001-step trace", "Changing step distance0.4 to0.8 changes the subsequent queried positions", "angleScale0 yields constant heading and expected repeated-step positions", "All output numbers finite", "Input field configuration unchanged", "Record model/geometry/colour hashes and counts; never retain an object per drawing command"],
+  "visual_acceptance": ["Trace image shows continuous directionally varying paths, with some nonstraight movement visible", "Perpendicular marks follow coherent paths rather than unrelated scattered headings", "Longer marks visibly change coverage while the retained movement stays identical", "Finer-field case is inspected and its actual effect recorded, not assumed from its name"],
+  "failure_rule": "If base paths or mark treatment are visually illegible, preserve the failure and revise field/mapping or example density in a separately reviewed follow-up; do not relabel the output as successful or silently spend another budget.",
+  "parameter_limits": "All constants are predeclared design-test settings. No continuous useful range, public default, or source-equivalent field/step configuration follows from these cases.",
+  "render_budget": 4,
+  "attempt_timeout_seconds": 90,
+  "execution": "Root reviews compiled probe and pure checks first. A single pausable executor runs one image per attempt after confirming no competing Processing renderer. Reserve and persist each attempt before launch; failures count. No automatic retry.",
+  "output": ".work/experiments/cp2-path-choice",
+  "comparison": "Root inspects all four images; retain pairwise RGB differences and exact movement/command evidence. No upstream pixel-equivalence claim or threshold. Existing survey images are not required for this design experiment."
+}

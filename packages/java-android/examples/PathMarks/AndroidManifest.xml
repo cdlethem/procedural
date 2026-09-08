@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.procedurals.pathmarks">
+  <application android:theme="@style/Theme.AppCompat.Light.NoActionBar" android:label="Path marks">
+    <activity android:name="org.procedurals.examples.pathmarks.PathMarksActivity" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+  </application>
+</manifest>

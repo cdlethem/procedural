@@ -4,10 +4,51 @@ Procedurals is an evidence-backed generative-art toolkit in development. It is b
 from a systematic survey of 901 Processing sketches into a small, composable set of generators,
 transforms, drawing operations, templates, and tools.
 
-The project is not a drawing library yet. Its implemented foundation is the survey evidence,
-a normalized SQLite corpus, parameter-sensitivity analysis, and a cross-renderer visual
-benchmark harness. The public operation catalog and language implementations are deliberately
-waiting for the complete survey so that rare techniques are not designed out by a partial sample.
+Fifteen editable starters begin from artistic decisions: place independent marks, trace paths,
+scatter differently sized forms, divide a surface into cells, give shapes grain, grow branches,
+build a 3D form from an axial radius profile, use letters as repeated marks along paths,
+turn point arrangements into connected facets, wire and grain, or give an arrangement
+explicit target-driven spring motion, route occupied lattice paths, build clustered 3D relief, compose a faceted city, layer a banded night landscape, or grow fine branches by cutting an initial stroke.
+FieldMarks and PathMarks have scoped native validation across their declared targets.
+PlacementMarks, RegionMarks, GrainMarks and BranchMarks have accepted Processing Java/JAVA2D starter
+reviews. ProfileMarks has accepted scoped Processing P3D validation. GlyphMarks has accepted
+JAVA2D validation with its bundled DejaVu font. FacetMarks has accepted scoped JAVA2D
+validation for retained triangulation and region-centre/grain transfer. SpringMarks has
+accepted JAVA2D validation for explicit stepping, replay, retained styling and fixed-mesh
+deformation.
+LatticeMarks adds occupied orthogonal paths with independent restyling and scoped JAVA2D acceptance.
+ReliefMarks composes subdivision and triangulation into a reviewed structural recreation of `momito`.
+CityMarks adds a reviewed structural recreation of `ciscis002` using four existing operations.
+LandscapeMarks adds a reviewed structural recreation of `parapara`, also without a new core operation.
+CutBranchMarks adds mutable interior-cut branching with retained geometry and scoped P2D acceptance.
+Ports of these newer workflows to JavaScript, py5 and Android are deferred. The local Java 0.15.0 package
+contains all fifteen starters and fifteen reusable operations. It is not a published registry
+release. Portable recipes, MCP and web tools remain in the roadmap.
+
+Open [CutBranchMarks](docs/installing-cut-branch-marks.md) to grow fine branches from a stroke.
+
+Start with [a field of independent marks](docs/getting-started.md),
+[paths and their marks](docs/path-marks.md),
+[differently sized placements](docs/placement-marks.md),
+[regions and their content](docs/region-marks.md),
+[grain inside shapes](docs/grain-marks.md),
+[branches and their marks](docs/branch-marks.md),
+[forms built from profiles](docs/profile-marks.md),
+[letters along paths](docs/glyph-marks.md), or
+[facets from point arrangements](docs/facet-marks.md), or
+[responsive arrangements](docs/spring-marks.md),
+[occupied lattice paths](docs/lattice-marks.md), or
+[clustered 3D relief](docs/relief-marks.md), or
+[faceted cities](docs/city-marks.md), or
+[banded landscapes](docs/landscape-marks.md).
+[Install the Java 0.15.0 package](docs/installing-landscape-marks.md) for all fourteen starters.
+Earlier scoped artifacts retain their installation instructions:
+[FieldMarks 0.1](docs/installing.md), [PathMarks 0.2](docs/installing-path-marks.md),
+[PlacementMarks 0.3](docs/installing-placement-marks.md),
+[RegionMarks 0.4](docs/installing-region-marks.md), and [GrainMarks 0.5](docs/installing-grain-marks.md).
+The survey, parameter analysis and
+benchmark tools provide the evidence behind the library's decisions. Phase 2 remains
+active; decisions are versioned against their evidence and revisited as reports arrive.
 
 ## Current status
 
@@ -33,7 +74,7 @@ different route:
 2. describe its techniques, primitives, composition, and implementation;
 3. vary concrete parameters and measure the resulting pixel difference;
 4. preserve reusable-function proposals with provenance back to the sketch report;
-5. cluster those proposals only after the corpus is complete;
+5. cluster those proposals by computation, recording the supporting evidence revision;
 6. implement the surviving operations against a language-neutral behavioral contract.
 
 Measured sensitivity is the primary signal for API parameters. A parameter that repeatedly causes
@@ -69,13 +110,22 @@ The rationale and system boundaries are documented in
 | `benchmarks/corpus.json` | Portable visual-conformance case manifest and reference hashes |
 | `tools/benchmark.py` | Image metrics, profile gates, and coverage reporting |
 | `tools/sync_survey.py` | Maintainer tool for refreshing the checked-in survey snapshot |
+| `tools/phase2_inventory.py` | Candidate dossiers, evidence diagnostics, and snapshot reconciliation |
+| `tools/check_phase2_design.py` | Non-destructive triage refresh and authored decision validation |
+| `analysis/phase2/` | Generated evidence inventory, including missing reports and raw-record provenance |
+| `design/phase2/` | Authored provisional candidate decisions and parameter investigation questions |
+| `docs/roadmap.md` | Dependency-ordered Phase 2–4 work packets and acceptance gates |
+| `docs/agent-briefs.md` | Bounded Luna/Terra assignments and integration ownership |
 | `tests/` | Behavioral contracts for ingestion and visual benchmarking |
 | `skills/` | Gated workflows for evidence, operation design, portability, and reproduction |
 | `docs/` | Architecture, target-form decision, portability contract, and MCP/web requirements |
 
 ## Start here
 
-Prerequisites: Python 3.11 or newer and [uv](https://docs.astral.sh/uv/).
+To make artwork, use the [field-marks guide](docs/getting-started.md). It explains the
+length, palette and mark edits and points to the native examples and installable starters.
+
+For corpus analysis, install Python 3.11 or newer and [uv](https://docs.astral.sh/uv/).
 
 Rebuild the database and reports from the checked-in snapshot:
 
@@ -95,10 +145,33 @@ to an `out/.../notes.md` path under `survey/`. The full report is readable witho
 start with [`reports/corpus.md`](reports/corpus.md) and then use
 [`reports/parameter-sensitivity.csv`](reports/parameter-sensitivity.csv) for API evidence.
 
-Do **not** begin candidate clustering or freeze public signatures from this snapshot. Phase 2 starts
-only after all 901 target sketches have reports and the maintainer has published the completed
-snapshot. Until then, useful work is limited to ingestion hardening, analysis, benchmark tooling,
-and deeper evidence review.
+Phase 2 may proceed on this snapshot under the maintainer’s revised policy. Read
+[`docs/roadmap.md`](docs/roadmap.md) and [`docs/agent-briefs.md`](docs/agent-briefs.md) for
+work packets and ownership. Drawing implementation still requires the written API design,
+a reviewed keep/merge decision, and a complete portable operation contract. Evidence gaps
+block affected decisions; incoming reports trigger explicit reconciliation.
+
+Regenerate the Phase 2 evidence inventory and check the authored decisions with:
+
+```sh
+uv run python tools/phase2_inventory.py
+uv run python tools/check_phase2_design.py
+```
+
+The regular-grid, scalar gradient-noise and cyclic-palette cores now run in Java, JavaScript and Python. See the
+[core development guide](docs/core-development.md) for verified examples and the JAR build.
+Start with the [editable field-marks example](docs/getting-started.md). Its actual Java
+drawing tab and three edit tasks pass JAVA2D checks. Other hosts and portable drawing
+commands remain in development.
+
+The [artist capability direction](docs/artist-capabilities.md) explains the entry points,
+first field-of-marks milestone and capability-first review process. The [API design](docs/api-design.md) is a draft. The [evidence review](docs/phase2-evidence-review.md)
+distinguishes automated triage, assessed records, and remaining work. A normal checker pass
+means structural consistency; `--require-reviewed` additionally requires dispositions for
+every candidate and intentionally fails while review remains incomplete.
+The [decision audit](docs/audits/phase2-architecture-review.md) records corrected memberships
+and component-aware exclusions. `--contract-cluster <id>` checks one operation's recorded
+architecture and member-audit prerequisites; it does not approve its semantics or contract.
 
 ## Survey snapshot and images
 

@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.procedurals.lifecycleprobe">
+  <application android:theme="@android:style/Theme.Material.Light.NoActionBar"
+      android:label="Procedurals lifecycle probe" android:allowBackup="false">
+    <activity android:name=".MainActivity" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity android:name=".CoverActivity" android:exported="true"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar" />
+    <receiver android:name=".FinishReceiver" android:exported="true">
+      <intent-filter>
+        <action android:name="org.procedurals.lifecycleprobe.FINISH" />
+      </intent-filter>
+    </receiver>
+  </application>
+</manifest>

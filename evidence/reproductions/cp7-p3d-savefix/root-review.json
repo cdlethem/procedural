@@ -1,0 +1,37 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java core and installed public Processing4.5.6 software P3D workflow; final archive documentation packaging reviewed separately.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+    "packages/java/examples/ProfileMarks/ProfileComposition.java": "634fc9b390c48e96ded5fd5c6e1152724d7bbb416eb10c02708cadf546324036",
+    "packages/java-processing/examples/ProfileMarks/ProfileMarks.pde": "0c27374c075a0c325a1e8b2bd785df0d06fc4c91f901206ffa1c008112785bc4"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/radial-profile-surface-processing-java.json": "f5844cec19768ef48834fc02a19a70dab4446df54f979a234052a13ff6859d00",
+    "evidence/reproductions/cp7-p3d-savefix/result.json": "a83dfd3c27cb153d281be37c03873646235779a296a381013b47d4b8b0a8fc6e",
+    "evidence/reproductions/cp7-p3d-savefix/plan.json": "dddd88af1ec9935eec60aca2222320617364d8c05821498ad3a5100c3ebdec01",
+    "evidence/investigations/cp7-installed-first-visual-observations.json": "f28a07084aba483db0c57ac5c2a30b1d3f8cc074026a61355a4f843646474afe",
+    "evidence/investigations/cp7-installed-save-thread-review.json": "8eaac91c7ecbb52488c4719044eaa2c5f7153b9d7f38b05b16c0d9c6295809ef",
+    "docs/profile-marks.md": "8890f1f7200e4d4563114ee2f4a26a19dde1bd9ee230a1fb6d22f111afb0c130",
+    "docs/installing-profile-marks.md": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429"
+  },
+  "checks": {
+    "shared_cases": 43,
+    "vector_assertions": 3553,
+    "native_assertions": 507,
+    "rendered_states": 13,
+    "key_events": 13,
+    "normals": 17392,
+    "vertices": 52176,
+    "image_review": "Root viewed8distinct first-attempt images and verified each corrected-run image pixel-identical with RGB comparison; corrected run separately passed opaque-alpha/dimensions/nonblank, four exact resets, trio-selection equality and S-save equality.",
+    "save_correction": "Detached image captured inside draw removes the previously observed outside-animation-thread warning. Failed first attempt remains failed.",
+    "stderr": "Only the complete pre-registered7line Mesa/EGL/X11 diagnostic sequence remained."
+  },
+  "limitations": [
+    "Software OpenGL only; no hardware/clean-shutdown certification.",
+    "No source-pixel or full-corpus reproduction claim.",
+    "Other platform ports deferred."
+  ]
+}

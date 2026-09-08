@@ -1,0 +1,46 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": "motion.target-springs-2d",
+  "scope": "Java core conformance and native packed-step performance only. Processing workflow, rendered appearance, distribution and other platforms remain unvalidated.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+    "tests/native/TargetSpringsNative.java": "f5756e8a31e929dd77cb7d4037c95fde61c8727a2ca5d6cbbfcf81815b697bbc",
+    "tools/run_target_springs_java.py": "0858a3b864446f366cdf45c07645b7f037fb7df41a2668d9b995b58f6a56c78c",
+    "tests/native/TargetSpringsPerformance.java": "835bd87f8fcad8f60897241dc3ee454bcfe551a6e62f4d1eb93a649c948709cb",
+    "tools/run_target_springs_performance.py": "4e023d8164315654e3be150eb835cd8b5bea220b9518e5c471be8e3929ec01a0"
+  },
+  "evidence_sha256": {
+    "catalog/operations/target-springs-2d.json": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3",
+    "fixtures/operations/target-springs-2d.json": "837fda9808fd95a70bcee4dbbd2accc1b0895186ee55c439b8a31c4ed495cc61",
+    "evidence/investigations/cp10-contract-review.json": "6303c33c00f2ed530de3d2c129b0296ea3dbc1f544f28d67654f120dcb03d916",
+    "evidence/conformance/target-springs-java.json": "e22da03a8e8e792926ece11b06013d2edf69bf0991f37a2897672ad9666adbcf",
+    "evidence/performance/cp10-java.json": "506cf6996d614ee07cad51baeb20833393796cfb8437a8b314b306e75b1c97af",
+    ".work/build/cp10-atomicity-mutant-root1/result.json": "9a1cb3ade23e23f343f653d1e61dcc6e220b8b7320be89f70a340ef806f3ac14"
+  },
+  "checks": {
+    "shared_cases": 44,
+    "native_shared_cases": 42,
+    "schema_only_wrapper_cases": 2,
+    "vector_assertions": 956,
+    "native_assertions": 1599,
+    "packed_step_workloads": 6,
+    "all_warmed_packed_steps_zero_allocation": true,
+    "illegal_early_commit_mutant": "rejected"
+  },
+  "root_findings": [
+    "Reviewed staged separately rounded binary64 arithmetic and immediate finite checks, zero handling and first error details.",
+    "Reviewed complete static validation, reusable captured targets, owned current/scratch swap on total success and detached exports.",
+    "Corrected arbitrary List iteration to avoid quadratic LinkedList traversal.",
+    "Strengthened failure test so earlier body would move; independently demonstrated rejection of illegal early-body commit. Added late y failure after earlier x/body work.",
+    "Independent shared vectors preserve exact expected state and chained target sequence. Native carriers, index and Into precedence, ownership, recovery and both packed calling forms checked.",
+    "Measured setup, packed step and observation traversal on six recorded desktop workloads. All warmed packed loops allocated zero bytes. Thread allocated bytes are not retained heap; source arrays require112 bytes per body plus array/object overhead."
+  ],
+  "remaining": [
+    "Actual SpringMarks Processing event/render acceptance and direct image inspection",
+    "Java distribution preserving nine prior starters",
+    "Deferred p5js/py5/Android ports",
+    "Remaining project milestones"
+  ]
+}

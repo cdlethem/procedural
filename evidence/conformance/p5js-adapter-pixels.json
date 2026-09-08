@@ -1,0 +1,53 @@
+{
+  "part": "pixels",
+  "status": "passed",
+  "scope": "p5.js 2.3.2 Canvas2D Chromium; selected registered suite part only",
+  "input_sha256": {
+    "tests/native/p5-frame-pixels.js": "6973e83d3ecfb2f8f990276f502a8797047afcf2639baa4de21529a930df9435",
+    "tools/run_p5_adapter.mjs": "9e9756b1ec254d1076c991b09d77da18a9046d3389b4579f033e31a35f47c30e",
+    "packages/javascript/src/internal/p5-frame.js": "ba558ae305fd5caa41ce446c68e79eec67abe960c0f2431ddbbb10d08d12e6dc",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "catalog/drawing/fresh-raster-2d.json": "3dad9d7b457c1f3ceb3e60b5ae8f84b0d7c87532849ae72b2e8412e2c420959d",
+    "design/p5js-adapter-validation.md": "9399a9f89b59dad637b229df590835c6c86330ebbfaeefb7d9fc362645ce08a5",
+    ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  },
+  "node": "v22.22.1",
+  "platform": "linux",
+  "architecture": "x64",
+  "errors": [],
+  "browser": "153.0.8010.12",
+  "browser_executable_sha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e",
+  "images": {
+    ".work/reproductions/p5js-adapter/alpha-panel.png": "7843825db330771140a7ca6bfede45ffc4efba526b19b008a9996d4fdc1b4c54",
+    ".work/reproductions/p5js-adapter/style-caps.png": "c71e99b63eb81b6993d06eea654d60002c6deba0554890725a6241c198b9aeb8"
+  },
+  "native": {
+    "profile": "drawing.fresh-raster-2d",
+    "scope": "native p5 Canvas2D pixel groups only",
+    "groups": [
+      {
+        "id": "1-background-sizes",
+        "passed": true
+      },
+      {
+        "id": "2-bounds-clipping-widths",
+        "passed": true
+      },
+      {
+        "id": "3-alpha-winding-order",
+        "passed": true
+      },
+      {
+        "id": "4-style-caps-parent-isolation",
+        "passed": true
+      }
+    ],
+    "observations": {
+      "minimum_width_coverage_pixels": 0
+    },
+    "passed": true
+  }
+}

@@ -1,0 +1,58 @@
+package org.procedurals.color;
+import java.util.*;
+
+public class PaletteNative {
+    static List<Object> cases=new ArrayList<Object>(), queries=new ArrayList<Object>();
+    static Map<String,Object> map(Object... values) {
+        Map<String,Object> m=new LinkedHashMap<String,Object>();
+        for(int i=0;i<values.length;i+=2)m.put((String)values[i],values[i+1]);return m;
+    }
+    static List<Object> list(Object... values){return new ArrayList<Object>(Arrays.asList(values==null?new Object[]{null}:values));}
+    static void check(boolean b){if(!b)throw new AssertionError();}
+    static void caseRun(String id,Object input,Object[] phases){
+        try {
+            CyclicPalette f=CyclicPalette.create(input);List<Object> outputs=new ArrayList<Object>();
+            for(Object p:phases){int value=f.sample(p);check(value==f.sample(((Number)p).doubleValue()));outputs.add(value);}
+            cases.add(map("id",id,"serialized",f.serialize(),"outputs",outputs));
+        }catch(CyclicPalette.PaletteException e){cases.add(map("id",id,"error",e.code));}
+    }
+    static void queryRun(String id,Object phase){
+        try{CyclicPalette.create(map("colors",list(0,16777215))).sample(phase);queries.add(map("id",id,"error","NO_ERROR"));}
+        catch(CyclicPalette.PaletteException e){queries.add(map("id",id,"error",e.code));}
+    }
+    interface Attempt{void run();}
+    static void error(String code,Attempt a){try{a.run();throw new AssertionError(code);}catch(CyclicPalette.PaletteException e){check(e.code.equals(code));}}
+    static void nativeChecks(){
+        List<Object> colors=list(0,16777215);Map<String,Object> p=map("colors",colors);
+        final CyclicPalette f=CyclicPalette.create(p), single=CyclicPalette.create(map("colors",list(42)));
+        int before=f.sample(.25);colors.set(0,123);p.put("colors",list(255));
+        Map<String,Object> saved=f.serialize();((List<?>)saved.get("colors")).clear();check(f.sample(.25)==before);
+        f.sample(-.123);single.sample(.25);check(f.sample(.25)==before);
+        check(CyclicPalette.create(f.serialize()).sample(.25)==before);
+        for(final double v:new double[]{Double.NaN,Double.POSITIVE_INFINITY,Double.NEGATIVE_INFINITY}){
+            error("INVALID_QUERY",()->f.sample(v));error("INVALID_QUERY",()->single.sample(v));
+            error("INVALID_INPUT",()->CyclicPalette.create(map("colors",list(v))));
+        }
+        error("INVALID_QUERY",()->single.sample(true));
+        error("INVALID_INPUT",()->CyclicPalette.create(map("colors",list(new java.math.BigDecimal("1.0000000000000000001")))));
+        error("INVALID_QUERY",()->f.sample(new java.math.BigDecimal("0.25")));
+        check(f.sample(-0.)==0);
+        check(((Number)((List<?>)CyclicPalette.create(map("colors",list(-0.))).serialize().get("colors")).get(0)).intValue()==0);
+    }
+    static Map<String,Object> benchmark(){
+        CyclicPalette f=CyclicPalette.create(map("colors",list(0x31A151,0xFFA71E,0x05084C,0xDE4638,0x3DBDB7)));
+        long sum=0;for(int warm=0;warm<2;warm++)for(int i=0;i<250000;i++)sum+=f.sample(i*.001);
+        long start=System.nanoTime();sum=0;for(int i=0;i<250000;i++)sum+=f.sample(i*.001);
+        return map("queries",250000,"warmup_traversals",2,"elapsed_ns",System.nanoTime()-start,"checksum",sum);
+    }
+    static String json(Object v){
+        if(v==null)return "null";if(v instanceof String)return "\""+v.toString().replace("\\","\\\\").replace("\"","\\\"")+"\"";
+        if(v instanceof Number||v instanceof Boolean)return v.toString();StringJoiner j=new StringJoiner(",",v instanceof Map?"{":"[",v instanceof Map?"}":"]");
+        if(v instanceof Map)for(Object o:((Map<?,?>)v).entrySet()){Map.Entry<?,?> e=(Map.Entry<?,?>)o;j.add(json(e.getKey())+":"+json(e.getValue()));}
+        else for(Object item:(Iterable<?>)v)j.add(json(item));return j.toString();
+    }
+    public static void main(String[]args){
+        /* SHARED_FIXTURE_CALLS */
+        nativeChecks();System.out.println(json(map("cases",cases,"query_cases",queries,"native_checks_passed",true,"benchmark",benchmark())));
+    }
+}

@@ -1,0 +1,44 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "Sol",
+  "scope": "Only additive gradient-path exports on the two explicitly named entrypoints. Exact deletion restores historical I1 bytes; current path cores and native CP2 reports are independently accepted. All earlier runtime reports and other source checks remain exact.",
+  "evidence_sha256": {
+    "evidence/distribution/i1-review.json": "dbcea02e0cbd41965fb25054b95961cd7b8f3285526b3d74183323e8ee50a273",
+    "evidence/distribution/javascript.json": "7a7fc70ec9c54154d285295da35d44c10527b729eac9f8b3fcbd6ae77d43d411",
+    "evidence/distribution/python.json": "cc1eb416a9aa06784a743d9627b3c3240fc476181149904b272cdf9516dd1e8e",
+    "evidence/conformance/gradient-path.json": "cfb57280c821a72c23272e8b057bbf33ce11d3f66a1053cadef86f154433e14d",
+    "evidence/conformance/p5js-path-marks.json": "da0525be269d84760df63216c78b20d697988b7d588004baa327f70a9f146c5f",
+    "evidence/reproductions/cp2-p5js/review.json": "210611ccbd73b394715aaffd07d762c2d0d9e9fcfabcf9b669a6c1474d0b7147",
+    "evidence/reproductions/cp2-py5/result.json": "093860c920033fe0485f022ab404e8acc38bc0945f3de2e7d141fe3e14f10ef8",
+    "evidence/reproductions/cp2-py5/review.json": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3"
+  },
+  "extensions": {
+    "p5js": {
+      "path": "packages/javascript/src/index.js",
+      "historical_sha256": "7f368cde1aae6299dd73bee5334342b8ee6574ae2e59dc5982aca643b7f52644",
+      "current_sha256": "51efbfea8c64ba7a4faed00843fea2c7c2b6771c69dceb69849a0bcf852b3c06",
+      "deletions": [
+        "export { gradientPath2D, GradientPathError } from \"./gradient-path.js\";\n"
+      ],
+      "distribution_report": "evidence/distribution/javascript.json",
+      "pure_report": "evidence/conformance/gradient-path.json",
+      "native_report": "evidence/conformance/p5js-path-marks.json",
+      "native_review": "evidence/reproductions/cp2-p5js/review.json"
+    },
+    "py5": {
+      "path": "packages/python/procedurals/__init__.py",
+      "historical_sha256": "3d53798ebcd479266ec0d793ed0eb68d42abc0acf1f35f0b2febc7c74ec5a3f2",
+      "current_sha256": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+      "deletions": [
+        "from .paths import GradientPathError, gradient_path_2d\n",
+        "    \"GradientPathError\",\n",
+        "    \"gradient_path_2d\",\n"
+      ],
+      "distribution_report": "evidence/distribution/python.json",
+      "pure_report": "evidence/conformance/gradient-path.json",
+      "native_report": "evidence/reproductions/cp2-py5/result.json",
+      "native_review": "evidence/reproductions/cp2-py5/review.json"
+    }
+  }
+}

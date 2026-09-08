@@ -1,0 +1,338 @@
+{
+  "id": "topology.delaunay-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "capability": "CP9",
+  "description": "Produce owned exact planar Delaunay topology from an ordered finite binary64 site list and explicit deterministic work budget. It computes canonical unique vertices, input mappings, positive indexed faces, unique edges and final face incidence only; it has no random stream, renderer, palette, clipping, site sampler or draw side effect.",
+  "decision_cluster": "topology.delaunay-2d",
+  "capability_decision": "design/capabilities/cp9-facet-marks-direction.md",
+  "design_review": "design/operations/cp9-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/datata#0",
+      "notes_path": "survey/out/2018/Generativos/datata/notes.md",
+      "note_sha256": "1bdd530a6dad3d7b0c85b721bc97c036ad112585100cbede1b1095066807da13",
+      "evidence_sha256": "6955029e08ecca598b7740bfcc992dc0080dca378e4346249c5b313cc2d7d1a3",
+      "upstream_path": "2018/Generativos/datata/triangulator.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "relationship": "Supplied sites become faces used for independent fill and shading. Mutable PVector sorting/aliases, float circumcircle/EPSILON, source tie/face-order behavior, disc scatter, first-vertex filtering and style remain outside."
+    },
+    {
+      "candidate_id": "2019/generativos/lightcity#1",
+      "notes_path": "survey/out/2019/generativos/lightcity/notes.md",
+      "note_sha256": "cf46a24a25e0ac442a0f959876063bfe18e73583648491d3f3c3f9784182f92e",
+      "evidence_sha256": "bcdeffaaaf915991c69d58671684505dc1c4aa37131649bba8398e8eeb39cd57",
+      "upstream_path": "2019/generativos/lightcity/lightcity.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "relationship": "Region-centre sites demonstrate a second input source; retained face indices can feed independent downstream geometry. The unversioned imported triangulator, subdivision, height policy, windows, lights and camera remain outside."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 357913943,
+        "items": {
+          "$ref": "#/$defs/point"
+        }
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "points",
+      "maxWork"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "point": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      }
+    }
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 357913943,
+        "items": {
+          "$ref": "#/$defs/point"
+        }
+      },
+      "inputToVertex": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 357913943,
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 357913942
+        }
+      },
+      "sourceIndices": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 357913943,
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 357913942
+        }
+      },
+      "triangles": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 715827881,
+        "items": {
+          "$ref": "#/$defs/triple"
+        }
+      },
+      "edges": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 1073741823,
+        "items": {
+          "$ref": "#/$defs/pair"
+        }
+      },
+      "edgeFaces": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 1073741823,
+        "items": {
+          "$ref": "#/$defs/edgeFaces"
+        }
+      },
+      "workUsed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "points",
+      "inputToVertex",
+      "sourceIndices",
+      "triangles",
+      "edges",
+      "edgeFaces",
+      "workUsed"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "point": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "pair": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 357913942
+          },
+          {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 357913942
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "triple": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 357913942
+          },
+          {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 357913942
+          },
+          {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 357913942
+          }
+        ],
+        "items": false,
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "edgeFaces": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 715827880
+          },
+          {
+            "type": "integer",
+            "minimum": -1,
+            "maximum": 715827880
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      }
+    }
+  },
+  "fixture_format": "delaunay-output",
+  "output_invariants": "Output has exactly points, inputToVertex, sourceIndices, triangles, edges, edgeFaces and workUsed. points are canonical unique [x,y] pairs sorted by numeric X then Y, with all completed zeros canonical +0. inputToVertex has one canonical vertex index for every original input point. sourceIndices has one first original input index per canonical vertex. Triangles are positive-orientation triples, cyclically rotated so their smallest index is first, then lexicographically sorted. Edges are unique [lowerVertex,upperVertex] pairs in lexicographic order. edgeFaces is parallel to edges and contains increasing final triangle indices or [face,-1] at a boundary. For U<3 or all-collinear canonical sites, triangles, edges and edgeFaces are empty while points and mappings remain. No output retains input containers, configuration, work budget, predicate state, style, renderer, RNG, clipping data or a partial topology.",
+  "behavior": {
+    "input": "Input keys are exactly points and maxWork. points is an ordered passive list of finite binary64 [x,y] pairs of length 0..357913943. maxWork is a finite safe integer 0..9007199254740991. Booleans are not numbers. Validate all static input\u2014including every point\u2014before checking budget or copying topology. Normalize negative zero to positive zero. Any static violation raises INVALID_INPUT with no partial result. No defaults.",
+    "predicates": "Use exact dyadic signs of the represented finite binary64 coordinates. Orientation(a,b,c) is sign((bx-ax)*(cy-ay)-(by-ay)*(cx-ax)). For incircle(a,b,c,d), set ax=a.x-d.x, ay=a.y-d.y and similarly bx,by,cx,cy, all as exact dyadic values. Its determinant is (ax*ax+ay*ay)*(bx*cy-by*cx) - (bx*bx+by*by)*(ax*cy-ay*cx) + (cx*cx+cy*cy)*(ax*by-ay*bx). For positively oriented a,b,c, positive means d strictly inside, zero cocircular, negative outside. Do not use collinear a,b,c as a circle test. No rounded floating-point subtraction/product, epsilon, lossy rescaling, FMA, jitter or supertriangle affects topology. A proved exact-sign fast path may be used only with identical signs.",
+    "canonicalization_and_output": "Equal normalized coordinates collapse without tolerance. Unique points sort by numeric X then Y. For a face triple, reverse its final two vertices if orientation is negative, then cyclically rotate so its smallest index is first; zero orientation is never a face. New faces from one mutation are lexicographically sorted before appending to the active creation sequence; removal preserves the relative order of surviving faces. Final faces are lexicographically sorted. Build edges and final face incidences from that final order. Mathematical positive orientation appears clockwise on a screen with Y down. Every unique site participates for two-dimensional inputs; faces cover the convex hull without crossings, overlaps, zero-area faces or boundary clipping.",
+    "work_schedule": [
+      "workUsed starts at zero. Before a charged step with cost c, if c>maxWork-workUsed, raise WORK_LIMIT_EXCEEDED with workUsed and stage. The rejected step is not performed or charged; no partial mesh escapes. Stages are canonicalize, hull_lower, hull_upper, locate and legalize.",
+      "After complete static validation, charge N units atomically at canonicalize, before owned point/map buffers and canonical sorting. Empty input costs zero. A budget smaller than N therefore fails with workUsed=0. This accounts for input-sized preprocessing; sorting itself is not charged per comparison and must be O(N log N), not quadratic.",
+      "If U<3, finish immediately. Otherwise build lower and upper monotone hull chains, respectively visiting canonical vertex indices ascending and descending. While a chain has at least two vertices, charge one at its hull stage and test orientation(lastButOne,last,new). If sign<=0, pop last and continue; otherwise stop. Append new. Form strict CCW hull by concatenating lower without its last vertex and upper without its last vertex. Collinear sites are excluded from this corner hull, not discarded from input. If hull has fewer than three corners, finish with empty faces/edges.",
+      "Form the positive corner fan from the first hull vertex to each consecutive pair of later hull vertices. Canonicalize and sort these initial faces to form the initial active sequence. This linear construction adds no separate charge.",
+      "Visit all unique non-corner sites in canonical order. Scan active faces in creation order. For each visited face charge one at locate, then evaluate all three oriented-edge signs against the site. A containing face has all signs>=0. Stop at the first containing face; do not inspect every later face. If all signs>0, replace this face by its three site-connected faces. If one sign is zero, use the incidence map for that edge to replace its one or two faces by two or four faces respectively. Distinct sites cannot equal an existing vertex; two zero signs therefore cannot occur here. Remove old faces, canonicalize and lexsort all replacements, and append them. Incidence lookup/mutation is local; no full-face-list rebuilding after each insertion.",
+      "Only after all site insertions, initialize the legalization queue with every internal edge. The queue is a set with lexicographic minimum extraction: an endpoint pair occurs at most once while queued. Each extraction costs one at legalize before removing it. An absent or now-boundary edge still costs its extraction and does nothing. Endpoint-pair identity is geometric, so a pair removed and recreated before extraction refers to its current incidence.",
+      "For a current internal edge (u<v), let a be its opposite vertex to the left of oriented u->v and b the opposite vertex to the right. It is flippable only if u and v lie strictly on opposite sides of oriented a->b. Otherwise do nothing. Test incircle(u,v,a,b), whose first triple is positive. Flip if the sign is positive; if zero, flip only when sorted(a,b) is lexicographically smaller than (u,v). Negative does nothing. A flip replaces its two faces with the two faces around diagonal a,b, canonically appended as above. Add every edge of both new faces that is currently internal to the queue, including the new diagonal, suppressing already-queued pairs. No global re-enqueue pass.",
+      "On empty queue, finish canonical output and return workUsed. Final sorting and incidence materialization add no separate charge and must be O(U log U). A locate unit uses three orientation signs; a legalization unit uses a bounded number of orientation/incircle signs and constant local topology updates plus O(log U) queue work. Exact integer operands have finite binary64-derived bit limits. The input charge covers linear storage and O(N log N) sorting; this is a deterministic computation budget, not bytes or elapsed time. No uncharged global rescanning is permitted inside a local flip. Active face scanning is charged face by face, so long location searches cannot evade the budget."
+    ],
+    "limits": "357913943 is a conservative input representation ceiling so N distinct sites fit packed signed-int-indexed arrays: F<=2U-5 implies 3F<=2147483647 and E<=3U-6 implies 2E<=2147483647. It is not an artistic recommendation, allocation guarantee, latency guarantee, runtime guarantee or measured heap bound. maxWork is a separate caller computation budget. Allocation failure remains a host resource failure, never INVALID_INPUT or empty success.",
+    "ownership": "Successful output owns detached packed data and retains no caller record/list, predicate state, work-budget object, renderer, style, RNG state or callback. Caller mutation after return cannot change the result. All static validation completes before output-sized allocation. Getter/export allocation failure leaves an existing result usable. No serialize/toJSON/config echo or partial result exists.",
+    "access": "Counts and workUsed are retained scalar reads. pointAt/pointInto index vertices and have width 2; triangleAt/triangleInto index faces and have width 3; edgeAt/edgeInto and edgeFacesAt/edgeFacesInto index edges and have width 2. inputVertexAt indexes original inputs; sourceIndexAt indexes canonical vertices. Every index must be a finite safe nonnegative integer <=9007199254740991, never bool. INVALID_INDEX precedes INDEX_OUT_OF_RANGE, which precedes INVALID_OUTPUT for Into. Java Object and long overloads share this validation, including the safe-integer ceiling. At returns fresh detached carriers. Into validates index, destination native type, nonnegative integral offset and enough space for the complete carrier before writing; failure preserves every destination slot, success preserves slots outside the carrier. Use overflow-safe remaining-capacity checks. Java typed int offsets and wrong/unrepresentable typed calls are host-call behavior; Java Into returns void, deferred JavaScript returns destination, Python returns None.",
+    "native_forms": "Java org.procedurals.topology.Delaunay2D.triangulate(Object config) returns Delaunay2D. inputCount(), vertexCount(), faceCount(), edgeCount() return int; workUsed() returns long. pointAt(Object or long) returns double[2]; triangleAt(Object or long) returns int[3]; edgeAt(Object or long) and edgeFacesAt(Object or long) return int[2]. pointInto(Object or long,double[],int), triangleInto(Object or long,int[],int), edgeInto(Object or long,int[],int), edgeFacesInto(Object or long,int[],int) return void. inputVertexAt(Object or long) indexes original inputs and sourceIndexAt(Object or long) indexes canonical vertices; both return int. toValues() returns Map<String,Object> deeply materializing exactly output_schema. Deferred JavaScript uses the same camelCase member names; Python uses triangulate, input_count, vertex_count, face_count, edge_count, work_used, point_at, triangle_at, edge_at, edge_faces_at, point_into, triangle_into, edge_into, edge_faces_into, input_vertex_at, source_index_at and to_values. Factory export/module locations remain target packaging choices. No aliases, callbacks, iterator, configuration serializer or draw API.",
+    "native_types": "Follow existing retained-operation passive-carrier conventions: Java accepts Map outer records and passive List point/pair containers; accepted numeric carriers are Byte, Short, Integer, Long, Float and Double only. Reject BigInteger, BigDecimal and custom Number before conversion. Coordinates convert once to finite binary64; integral fields/indices must satisfy their exact stated domain before narrowing. Integral Float/Double values are accepted, never boolean. Java At/Into indices accept Object or long. Point destinations are double[]; triangle/edge/edgeFaces destinations are int[]. Typed Java int offsets and impossible typed invocations are host-call behavior. Deferred JavaScript accepts passive Object/null-prototype records and ordinary Arrays; Python accepts exact builtin dict/list with int/float but never bool. JavaScript point destinations are Float64Array or writable ordinary Array and integer destinations Int32Array or writable ordinary Array; Python point destinations exact builtin list or array(d), integer destinations exact builtin list. Validate destination slot writability before writes. No active getters/proxies, host geometry input, native typed-array input pairs, class instances or custom dynamic-language mappings/lists. Java containers must be passive and unchanged during the call.",
+    "environment": [
+      "exact finite binary64 dyadic orientation and incircle signs",
+      "IEEE754 binary64 input representation",
+      "no host RNG, noise, renderer, time, font, asset or third-party geometry dependency"
+    ],
+    "complexity": "N is original input count, U canonical unique count, F final face count, E final edge count. Static validation is O(N) before budget checking and uses no retained input-sized coordinate or map buffers. Sorting is O(N log N). The charged schedule covers N canonicalization work, hull predicate visits, face-by-face location scans and legalization queue extractions. Live topology and its queue require O(U+F+E) storage; reclaim removed faces rather than retaining an ever-growing history. Retained result and detached export are O(N+U+F+E), including inputToVertex of length N. Indexed reads are O(1). This is work accounting and asymptotic storage, not a measured performance claim.",
+    "units": "Caller-defined Cartesian distance units for [x,y]. Positive orientation follows mathematical +X/right, +Y/up convention; the same triples appear clockwise when drawn directly on a Y-down screen. No coordinate transformation, clipping, canvas size, angle parameter or renderer state is implicit.",
+    "native_errors": "Static/access exceptions expose stable code. WORK_LIMIT_EXCEEDED also exposes long workUsed and String stage, serialized as error_detail:{workUsed,stage}. No partial result. Host allocation failures stay host resource exceptions. Impossible mesh states are implementation defects, not expected contract errors or empty successes."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed/nonfinite/out-of-domain static input, wrong passive carrier/keys/shape, bool numeric, invalid point count or invalid maxWork. It has no dynamic detail.",
+    "WORK_LIMIT_EXCEEDED": "A charged canonicalize, hull_lower, hull_upper, locate or legalize step would exceed maxWork. error_detail is {workUsed,stage}; it exposes no partial topology.",
+    "INVALID_INDEX": "An indexed access index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "A representable index is outside the relevant retained input, vertex, face or edge range.",
+    "INVALID_OUTPUT": "An Into destination or offset cannot accept the complete requested carrier without mutation."
+  },
+  "error_order": [
+    "Complete static validation of points and maxWork yields INVALID_INPUT before budget checking, canonical point/map allocation, sorting, topology work or result exposure.",
+    "For each charged step, WORK_LIMIT_EXCEEDED precedes that step's predicate/topology mutation and leaves workUsed unchanged.",
+    "For every Into access, INVALID_INDEX precedes INDEX_OUT_OF_RANGE, which precedes INVALID_OUTPUT."
+  ],
+  "parameters": {
+    "points": {
+      "unit": "ordered finite binary64 Cartesian coordinate pairs",
+      "default": null,
+      "encouraged_range": null,
+      "hard_validation": "Length 0..357913943; every pair has exactly two finite binary64 coordinates; no bools; accepted signed zeros canonicalize to +0.",
+      "evidence": "Supplied point sets are the geometric input boundary selected from datata#0 and lightcity#1. The operation neither samples sites nor derives an artistic density.",
+      "outside_encouraged_range": "No encouraged range is claimed."
+    },
+    "maxWork": {
+      "unit": "charged deterministic schedule units",
+      "default": null,
+      "encouraged_range": null,
+      "hard_validation": "Finite safe integer 0..9007199254740991, never bool.",
+      "evidence": "Engineering admission for bounded deterministic topology work; it is not a source artistic parameter or timing/heap estimate.",
+      "outside_encouraged_range": "No encouraged range is claimed; insufficient budget raises WORK_LIMIT_EXCEEDED."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "status": "not_implemented"
+    },
+    "p5js": {
+      "status": "not_implemented"
+    },
+    "py5": {
+      "status": "not_implemented"
+    },
+    "processing-android": {
+      "status": "not_implemented"
+    }
+  },
+  "fixtures": "fixtures/operations/delaunay-2d.json",
+  "comparison": "All seven output fields compare exactly. points are copied represented input binary64 values with canonical +0, so coordinate bits require exact equality; no epsilon or nonzero tolerance. Integer topology, mappings, work and error details compare exactly.",
+  "dynamic_error_stages": [
+    "canonicalize",
+    "hull_lower",
+    "hull_upper",
+    "locate",
+    "legalize"
+  ],
+  "design_divergences": [
+    "Exact binary64 predicates, canonical ordering and deterministic cocircular diagonal selection replace unversioned float/EPSILON and incidental source order.",
+    "Owned sites/topology, exact duplicate collapse, original-input mapping and first-source mapping replace aliased mutable source geometry.",
+    "Unique edges and final face incidence allow drawing wire and fills independently.",
+    "Explicit maxWork bounds declared topology steps; it is an engineering control, not a measured artistic parameter."
+  ],
+  "exclusions": [
+    "Site generation, distributions, density defaults, RNG, global state and Processing noise.",
+    "Voronoi cells, constrained triangulation, holes, boundary clipping, arbitrary mesh editing and 3D tetrahedralization.",
+    "Source-compatible face ordering, source numerical failure modes, copied triangulator code and third-party runtime geometry libraries.",
+    "Style, palette, shaders, halo, extrusion, windows, lighting, camera, renderer and drawing."
+  ],
+  "verification": {
+    "status": "Shared contract vectors reviewed; no target implementation or native acceptance yet.",
+    "fixture_obligations": [
+      "Static schema/types, late invalid point before exhausted budget, integral floating maxWork and numeric boundaries.",
+      "Empty, singleton, pair, duplicate mapping and signed-zero normalization; all-collinear sets have no edges.",
+      "Positive canonical faces, exact unique edges/incidence, convex-hull coverage, all-site participation, independent empty-circle and cocircular tie checks.",
+      "Interior, boundary-edge and internal-edge insertions; strict and cocircular flips; input permutations.",
+      "Exact budget threshold and one-short failures at every reachable work stage.",
+      "Subnormal, cancellation, near-cocircular and mixed-extreme finite binary64 topology.",
+      "Native ownership, all indexed access domains, reusable-buffer atomicity and same-runtime replay.",
+      "Native tiny, hundreds-of-sites and declared stress workloads with warmup, repetitions, allocation/memory evidence and checksums.",
+      "Separately accepted runnable facet workflow with editable site source and drawing treatment."
+    ],
+    "numeric_policy": "design/operations/cp9-fixture-policy.md"
+  },
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "FacetMarks workflow design only; no public Java/native/render support yet."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root accepted semantics and 36 shared vectors for Java-first implementation. Native conformance, access/ownership, performance, installed example and visual acceptance remain required."
+  }
+}

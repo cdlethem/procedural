@@ -1,0 +1,21 @@
+{
+  "status": "accepted-java-core-and-native-conformance",
+  "reviewer": "root",
+  "evidence": {
+    "path": "evidence/conformance/branch-tree-java.json",
+    "sha256": "e29a6404e7dbbd8814b10b658e65cb54312d11a7985135bb905e40cc66d66c66"
+  },
+  "core_sha256": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+  "findings": [
+    "Root read complete core and corrected capacity growth and LinkedList traversal without changing frozen semantics.",
+    "All40 shared cases and five private RNG seed/state vectors pass in pinned Java17; 9482 vector assertions.",
+    "Native carrier, nonfinite, signed-zero, ownership, accessor and atomic-write coverage passes94 assertions. Root reviewed tests, including checksumming every retained attribute and nested output mutation.",
+    "Workloads cover1,31,101,192 and20001nodes; same-input repetitions verify complete tree checksums and node counts. Timings are observations; primitive payload excludes heap headers, input/config objects and construction/copy peaks.",
+    "Direct source inspection confirms terminal no-draw behavior, shared scale, capacity-before-angle, static validation order, no recursion/per-node allocation, no FMA and owned retained arrays."
+  ],
+  "limitations": [
+    "No renderer, installed example, distribution or deferred-target acceptance.",
+    "No controlled heap-exhaustion test or actual peak/retained heap measurement; heap maximum is a runtime limit only.",
+    "Native trace/state checks plus source review are scoped; discarded terminal draws cannot be proven by public output alone."
+  ]
+}

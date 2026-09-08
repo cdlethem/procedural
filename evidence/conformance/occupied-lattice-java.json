@@ -1,0 +1,24 @@
+{
+  "build": "/home/colin/dev/procedural/.work/build/cp11-occupied-lattice-lkvjq204",
+  "catalog_sha256": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d",
+  "fixture_cases_available": 14,
+  "fixture_cases_executed": 14,
+  "fixture_sha256": "220d57e7d42413063a777066fe6d3addff4ad9c1d987bc34ba0ac36d0ad25d98",
+  "native": {
+    "assertions": 45,
+    "status": "passed"
+  },
+  "operation": "path.occupied-lattice-paths-2d",
+  "scope": "Java core/native evidence only; no renderer, package, port or support claim.",
+  "source_sha256": {
+    "core": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+    "native": "ba6c6d31e50f041820c53928cc4cd9dd9bd3f2f42b9deaa569b1cf787367cde5",
+    "runner": "adbaa9649a948245f6c65e130c35cbbcd7ac0ba421d84787bbc71e01bed88f58"
+  },
+  "status": "passed",
+  "vectors": {
+    "assertions": 240,
+    "cases": 14,
+    "status": "passed"
+  }
+}

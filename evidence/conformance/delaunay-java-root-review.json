@@ -1,0 +1,48 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": "topology.delaunay-2d",
+  "scope": "Java retained core conformance and registered native performance only. No CP9 Processing workflow, image, package release or other platform support yet.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+    "tests/native/Delaunay2DNative.java": "4a72a2f6869a5c0b74b5dc4200cf874098a0da6953b4b8b4524d7401e19c9fb6",
+    "tools/check_delaunay_java.py": "06ba74ca03fab1558fb25e53945919fc4f1232ad8813d888b641e62f2476cd2f",
+    "tools/check_delaunay_fixtures.py": "3459c15e5e45a37e4129611194db0642bc0142a72a804a3c9b6e7513475c0e53",
+    "tools/diagnostics/cp9/OrientationFilterProbe.java": "41a9471d6de9c29e98673465571cb947f1a6a638b88804a46ebd73048ba6b2d2"
+  },
+  "evidence_sha256": {
+    "catalog/operations/delaunay-2d.json": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
+    "fixtures/operations/delaunay-2d.json": "2f2166e90dbab6345fda3148e65aae6079fcd0de96f6a9752ade3ed80c68a4d4",
+    "evidence/conformance/delaunay-java-canonical-targets.json": "f3e6b65d3ff16515bee8d38bc9d7d5c7166ba36a4e4197972beb752492258c55",
+    "evidence/performance/cp9-java.json": "914dfce52b1fb43127460f4b461ad18db69f338f2182e1310c87fb252a1aa026",
+    "evidence/investigations/cp9-target-metadata-review.json": "26baab492835a44dacd4c35a9f52f9a5c4df28f859b107f90957c88bee8848f0",
+    "design/operations/cp9-orientation-filter-decision.md": "d949bb508c3d295b07adc291d151e5e6b04432c9cbc61b741ce2d1725ffd7ddf",
+    "design/operations/cp9-orientation-filter-review.md": "8137d3b31228af6098ca6fcc004f2f1014ed284fa0dc832c8254ea273e14b0f8"
+  },
+  "checks": {
+    "shared_cases": 36,
+    "vector_assertions": 2624,
+    "native_assertions": 126,
+    "repository_unittests": 130,
+    "exact_pre_post_performance_checksums_and_work": 8,
+    "private_orientation_filter_triples": 111612,
+    "all_ordered_fixture_site_triples": 1344
+  },
+  "root_findings": [
+    "Reviewed canonical ownership, exact dyadic signs, hull/insertion/local legalization schedule, final arrays and all access methods.",
+    "Replaced potentially overflowing int cumulative node identities with long identities and linked live nodes; total creations bounded by5*N+2*maxWork, below signed64 maximum.",
+    "Replaced collision-prone coordinate HashMap with sorted adjacent deduplication and direct source-index assignments, preserving O(NlogN) preprocessing.",
+    "Removed preventable per-visited-face sign arrays.",
+    "Reviewed outward-rounded finite orientation enclosure proof and exact fallback; incircle, topology, work schedule and public API unchanged.",
+    "Native vectors compare all getters and complete deep toValues contents against unchanged shared expectations; additional tests cover deep input/export detachment, carrier validation, safe index boundaries, Object/long forms and Into atomicity/sentinels.",
+    "Reviewed eight registered performance workloads; large reduction in temporary allocation and ordinary/stress generation time, with small-case regressions explicitly recorded.",
+    "Corrected target identifier metadata to the established four-platform vocabulary and added a checker regression test. Only metadata/bindings changed; computational performance evidence remains applicable."
+  ],
+  "remaining": [
+    "FacetMarks editable composition, native Processing execution and visual/transfer acceptance",
+    "Next Java distribution including the new core and starter",
+    "Deferred p5js/py5/Android implementations",
+    "Remaining project roadmap milestones"
+  ]
+}

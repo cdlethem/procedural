@@ -1,0 +1,144 @@
+{
+  "contract_sha256": {
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1"
+  },
+  "fixture_sha256": {
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683"
+  },
+  "native": {
+    "assertions": 27,
+    "native_ownership_access": true,
+    "performance": [
+      {
+        "average_nanos": 5052,
+        "elapsed_nanos": [
+          5470,
+          4970,
+          5070,
+          4940,
+          4810
+        ],
+        "post_timing_checksum": "e519edb6ead757e1",
+        "replacements": 0,
+        "retained_leaf_count_last_rep": 1,
+        "retained_payload_scope": "four binary64 endpoint arrays and one int identity array; excludes headers/spare capacity/transient growth",
+        "retained_raw_payload_bytes_last_rep": 36,
+        "timing_reps": 5,
+        "timing_scope": "partition_kernel_only",
+        "warmup_reps": 3
+      },
+      {
+        "average_nanos": 9054,
+        "elapsed_nanos": [
+          7670,
+          8620,
+          12840,
+          7310,
+          8830
+        ],
+        "post_timing_checksum": "77d63e3537add1f3",
+        "replacements": 1,
+        "retained_leaf_count_last_rep": 4,
+        "retained_payload_scope": "four binary64 endpoint arrays and one int identity array; excludes headers/spare capacity/transient growth",
+        "retained_raw_payload_bytes_last_rep": 144,
+        "timing_reps": 5,
+        "timing_scope": "partition_kernel_only",
+        "warmup_reps": 3
+      },
+      {
+        "average_nanos": 61996,
+        "elapsed_nanos": [
+          87280,
+          83010,
+          56280,
+          45920,
+          37490
+        ],
+        "post_timing_checksum": "c6f18c4c6c35538c",
+        "replacements": 100,
+        "retained_leaf_count_last_rep": 301,
+        "retained_payload_scope": "four binary64 endpoint arrays and one int identity array; excludes headers/spare capacity/transient growth",
+        "retained_raw_payload_bytes_last_rep": 10836,
+        "timing_reps": 5,
+        "timing_scope": "partition_kernel_only",
+        "warmup_reps": 3
+      },
+      {
+        "average_nanos": 69312,
+        "elapsed_nanos": [
+          73410,
+          68660,
+          74000,
+          65780,
+          64710
+        ],
+        "post_timing_checksum": "af075e7fb41a342c",
+        "replacements": 200,
+        "retained_leaf_count_last_rep": 601,
+        "retained_payload_scope": "four binary64 endpoint arrays and one int identity array; excludes headers/spare capacity/transient growth",
+        "retained_raw_payload_bytes_last_rep": 21636,
+        "timing_reps": 5,
+        "timing_scope": "partition_kernel_only",
+        "warmup_reps": 3
+      },
+      {
+        "average_nanos": 1400544,
+        "elapsed_nanos": [
+          1395340,
+          1415070,
+          1365779,
+          1425990
+        ],
+        "post_timing_checksum": "440d13b8e7d8c361",
+        "replacements": 2000,
+        "retained_leaf_count_last_rep": 6001,
+        "retained_payload_scope": "four binary64 endpoint arrays and one int identity array; excludes headers/spare capacity/transient growth",
+        "retained_raw_payload_bytes_last_rep": 216036,
+        "timing_reps": 4,
+        "timing_scope": "partition_kernel_only",
+        "warmup_reps": 2
+      },
+      {
+        "average_nanos": 97857999,
+        "elapsed_nanos": [
+          100304519,
+          97130809,
+          96138670
+        ],
+        "post_timing_checksum": "85356d654dea8617",
+        "replacements": 20000,
+        "retained_leaf_count_last_rep": 60001,
+        "retained_payload_scope": "four binary64 endpoint arrays and one int identity array; excludes headers/spare capacity/transient growth",
+        "retained_raw_payload_bytes_last_rep": 2160036,
+        "timing_reps": 3,
+        "timing_scope": "partition_kernel_only",
+        "warmup_reps": 1
+      }
+    ],
+    "resource_failure_mechanism": "not executed; source inspection confirms host allocation failure is not converted to validation or partial success",
+    "status": "passed"
+  },
+  "operation": "layout.seeded-quadrant-partition-2d",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Java core fixture, deterministic stream, ownership/access, and bounded workload evidence only; no renderer, example, package, Android, JavaScript, or Python claim.",
+  "source_sha256_after": {
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "tests/native/QuadrantPartitionNative.java": "0169881f20520b0a9130ee94939b059839bd408482fbb52b1b2d7bbba0f0b492",
+    "tools/run_quadrant_partition_java.py": "1abf2d5149fc069d7beea86b83bdeba1f2510ec2752b6899efc2cb2155297de6"
+  },
+  "source_sha256_before": {
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "tests/native/QuadrantPartitionNative.java": "0169881f20520b0a9130ee94939b059839bd408482fbb52b1b2d7bbba0f0b492",
+    "tools/run_quadrant_partition_java.py": "1abf2d5149fc069d7beea86b83bdeba1f2510ec2752b6899efc2cb2155297de6"
+  },
+  "vectors": {
+    "assertions": 685,
+    "fixture_cases": 34,
+    "status": "passed",
+    "trace_cases": 11
+  }
+}

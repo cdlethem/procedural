@@ -1,0 +1,26 @@
+{
+  "status": "accepted-for-java-implementation",
+  "reviewer": "root",
+  "operation": "mesh.radial-profile-surface-3d",
+  "bindings": {
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "tools/build_profile_fixtures.py": "ac0d200b9e03a323ee980ef4e1d42ba1f888fe2fc3f819aeed8f5dc3a28b3dda",
+    "tools/check_profile_fixtures.py": "21170b3964b5e093b9b082042880a32e2d202c8323c27b6c1285002ab236ae38",
+    "tools/diagnostics/cp7/profile_fixture_cases.py": "7774e36355a6a18389bf9536b8d84b7629fa3335b0c965c366ac114727c9fdea",
+    "tools/diagnostics/cp7/profile_intervals.py": "2d4bb98c5bb2c52b9a45272463b8ca30062e8767e85d39f8f90dfa0f54430f6a",
+    "tests/test_profile_fixtures.py": "0ae7d7399ef3c262387d7763534bde30efd2b797a10dcf66cacdd78d23e0a7f3",
+    "design/operations/cp7-profile-fixture-policy.md": "8e7ef08de5e1abb251de884634896b9c807b954431ebe62eb5a0213e5ecbaf7d",
+    "design/operations/cp7-profile-contract-review.md": "4487da2f55bf4ae157c6678109a3ec1022b821203ee11af1f5dc9f9e7814b647"
+  },
+  "checks": {
+    "canonical_fixture_cases": 43,
+    "successful_cases": 24,
+    "expected_errors": 19,
+    "structural_corruptions_rejected": 19,
+    "catalog_tests_passed": 26,
+    "profile_test_methods_passed": 2,
+    "catalog_checker": "passed"
+  },
+  "limits": "Contract and fixture acceptance only. No Java core, installed starter, native performance, P3D reproduction or deferred port acceptance is implied."
+}

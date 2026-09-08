@@ -1,0 +1,37 @@
+{
+  "scope": "Official Processing 4.5.6 production PDE preprocessing and Java compilation; GUI lifecycle/rendering is separate.",
+  "archive_url": "https://github.com/processing/processing4/releases/download/processing-1434-4.5.6/processing-4.5.6-linux-x64-portable.zip",
+  "archive_sha256": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+  "result": "Official Processing preprocessor accepted FieldMarks.pde",
+  "core_build": {
+    "source_sha256": {
+      "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+      "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+      "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc"
+    },
+    "java_release": 8,
+    "javac_sha256": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    "jar_path": ".work/build/field-marks-pde/procedurals-core-0.1.0.jar",
+    "jar_sha256": "57753e50358a57cef00abff3056ddd979b239a8d617ca8e06a7d9cf56c6fead9",
+    "reused_dist_jar": false
+  },
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "input_sha256": {
+    "packages/java/examples/FieldMarks/FieldMarks.pde": "d8accb1bcdc7a5742a54e94a29b31fe58005a9f8b89c7294d01cc6c71b237631",
+    "packages/java/examples/FieldMarks/MarkField.java": "398dcf002dc35076f7af97e7a44f21a48a2ce6e10facf2d370dfac3b9e453ea7",
+    "tests/native/PreprocessFieldMarks.java": "5b260503ebeb523b3bc79bf458bd19d775553ce9a5a234770c1fccefcce04abf",
+    "tools/check_field_marks_pde.py": "49668c561ebb5b2c585544fe17cbd25128539c1fd01dfea1587d1f7e80c265c1",
+    ".work/build/field-marks-pde/procedurals-core-0.1.0.jar": "57753e50358a57cef00abff3056ddd979b239a8d617ca8e06a7d9cf56c6fead9",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943"
+  },
+  "generated_java_sha256": "ce327983ec9eea16fdae67b4c74a7f30ed46f0d7cd97e53c06df73cfb46d72ec",
+  "compiled_class_sha256": "bb24cd016056769199642d3be6616d77c71c252e540f7632dd309bf722f66320"
+}

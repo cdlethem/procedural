@@ -121,7 +121,8 @@ reusable_candidates: []
 ---
 """
             )
-            (baseline / "result.json").write_text(json.dumps({"status": "ok", "seed": 42, "display": ":2", "uses_shader": False}))
+            (baseline / "result.json").write_text(json.dumps({"status": "ok", "seed": 42, "display": ":2", "uses_shader": False,
+                                                               "frames": [{"frame": 1}, {"frame": 10}]}))
             Image.new("RGB", (40, 30), (0, 0, 0)).save(baseline / "frame_00001.png")
             Image.new("RGB", (40, 30), (255, 255, 255)).save(baseline / "frame_00010.png")
 
@@ -137,6 +138,10 @@ reusable_candidates: []
             self.assertEqual([1, 10], [case["frame"] for case in manifest["cases"]])
             self.assertEqual("2020/live/frame_00010.png", manifest["cases"][1]["candidate"])
             self.assertEqual([{"sketch": "2020/stub", "reason": "survey stub: blank_baseline"}], manifest["excluded"])
+            (baseline / "result.json").write_text(json.dumps({"status": "ok", "seed": 42}))
+            build_database(root, database)
+            with self.assertRaisesRegex(ValueError, "missing expected frame metadata"):
+                build_manifest(database, root, "data/corpus.sqlite")
 
 
 if __name__ == "__main__":

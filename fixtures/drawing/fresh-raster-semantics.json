@@ -1,0 +1,672 @@
+{
+  "profile": "drawing.fresh-raster-2d",
+  "version": "0.1.0",
+  "status": "proposed distinguishing cases; not executed native conformance",
+  "environment": {
+    "width": 640,
+    "height": 640,
+    "density": 1,
+    "background": 16777215
+  },
+  "cases": [
+    {
+      "id": "inclusive-upper-x",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1280,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "canonical-outside-rounds-in",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1280.0000305175781,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "one-f32-ulp-outside",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1280.0001220703125,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "INVALID_COMMAND"
+    },
+    {
+      "id": "inclusive-lower-x",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          -640,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "one-f32-ulp-below-lower-x",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          -640.0000610351562,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "INVALID_COMMAND"
+    },
+    {
+      "id": "minimum-width",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 0.00390625,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "one-f32-ulp-below-minimum-width",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 0.0039062497671693563,
+        "cap": "round"
+      },
+      "expected": "INVALID_COMMAND"
+    },
+    {
+      "id": "maximum-width",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 640,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "one-f32-ulp-above-maximum-width",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 640.0000610351562,
+        "cap": "round"
+      },
+      "expected": "INVALID_COMMAND"
+    },
+    {
+      "id": "canonical-equal-endpoints",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          0,
+          0
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "INVALID_COMMAND"
+    },
+    {
+      "id": "converted-equal-endpoints",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          1,
+          1
+        ],
+        "to": [
+          1.0000000298023224,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "noop"
+    },
+    {
+      "id": "invalid-width-before-noop",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          1,
+          1
+        ],
+        "to": [
+          1.0000000298023224,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 180,
+        "width": 0.001953125,
+        "cap": "round"
+      },
+      "expected": "INVALID_COMMAND"
+    },
+    {
+      "id": "transparent-invalid-width",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 0,
+        "opacity8": 0,
+        "width": 0,
+        "cap": "round"
+      },
+      "expected": "INVALID_COMMAND"
+    },
+    {
+      "id": "quad-distinct-converted-collinear",
+      "command": {
+        "kind": "quad2",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0.9999999701976776
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "rgb": 0,
+        "opacity8": 180
+      },
+      "expected": "INVALID_COMMAND"
+    },
+    {
+      "id": "quad-both-windings",
+      "command": {
+        "kind": "quad2",
+        "vertices": [
+          [
+            0,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "rgb": 0,
+        "opacity8": 180
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "alpha-0",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 0,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "alpha-1",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 1,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "alpha-128",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 128,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "alpha-255",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 255,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "wide-upper-x",
+      "environment": {
+        "width": 800,
+        "height": 320,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1600,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "wide-upper-y",
+      "environment": {
+        "width": 800,
+        "height": 320,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1120
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "wide-wrong-y-bound",
+      "environment": {
+        "width": 800,
+        "height": 320,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1200
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "INVALID_COMMAND"
+    },
+    {
+      "id": "wide-overscan-y",
+      "environment": {
+        "width": 800,
+        "height": 320,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          -800,
+          -800
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "signed-zero-normalized",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          -0.0,
+          0.0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "tall-upper-y",
+      "environment": {
+        "width": 320,
+        "height": 800,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1600
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "tall-upper-x",
+      "environment": {
+        "width": 320,
+        "height": 800,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1120,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "tall-wrong-x-bound",
+      "environment": {
+        "width": 320,
+        "height": 800,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1200,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "INVALID_COMMAND"
+    },
+    {
+      "id": "tall-maximum-width",
+      "environment": {
+        "width": 320,
+        "height": 800,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 800,
+        "cap": "round"
+      },
+      "expected": "emit"
+    },
+    {
+      "id": "tall-width-exceeded",
+      "environment": {
+        "width": 320,
+        "height": 800,
+        "density": 1,
+        "background": 0
+      },
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 800.0000610351562,
+        "cap": "round"
+      },
+      "expected": "INVALID_COMMAND"
+    },
+    {
+      "id": "coordinate-f32-overflow",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1e+100,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1,
+        "cap": "round"
+      },
+      "expected": "INVALID_COMMAND"
+    },
+    {
+      "id": "width-f32-overflow",
+      "command": {
+        "kind": "segment2",
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ],
+        "rgb": 1193046,
+        "opacity8": 180,
+        "width": 1e+100,
+        "cap": "round"
+      },
+      "expected": "INVALID_COMMAND"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Private no-render distribution comparison only. Not public conformance or Processing random replay.",
+  "result": {
+    "path": "evidence/investigations/cp5-grain-distributions.json",
+    "sha256": "f43e8a7623d2cb778681c4fd39a4b8274890972d7a7b2e3c23b01ed478b58509"
+  },
+  "tool_sha256": {
+    "tools/diagnostics/cp5/run_grain_distributions.py": "cbba1ea8ecfbbc441a25f6f0263e93737b087644a7be43c69335571ef1331ba6"
+  },
+  "checks": [
+    "Root read all three mapping functions, stream implementation, sampling aggregation and pre/post input binding.",
+    "Five seeds and 500000 samples per pattern have no barycentric containment violations and the specified 2/3/7 per-sample unit draw counts.",
+    "Root independently derived expected means and puntis3 second-coordinate second moment; finite-sequence observations agree at the reported precision without being an exact probabilistic proof.",
+    "Means alone miss the puntis3 distinction: root reviewed edge/vertex concentration and second moments too.",
+    "Stored variant diff fields distinguish renderer measurements from qualitative notes."
+  ],
+  "decision": "Proceed with the registered private distribution images before choosing a public batch or mapping boundary."
+}

@@ -1,0 +1,1744 @@
+{
+  "operation": "motion.target-springs-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "scope": "Shared binary64 one-step state fixtures; implementations and continuing native batch behavior require separate validation.",
+  "source_bindings": {
+    "tools/diagnostics/cp10/build_fixture_draft.py": "802e62ef65ce1e7b2bc57e97eb89d3958e2eddbfe390222ee9b8aa0ee70172dd",
+    "tools/diagnostics/cp10/numeric_policy_probe.py": "2d539fe5d38093e5993da69aa86efa02d326ec034d2d764fc4f24e380c609b37",
+    "design/operations/cp10-contract-decisions.md": "bfb3f6106fe2dbc6e90f50d7aae9e47df67cab71cb530f6f060f0750e3dbb2ef",
+    "design/operations/cp10-numeric-fixture-candidates.md": "87bca01ab871909fd9c5c6f1d02b3f9bc3ed71616112d11602da0da96be9da63"
+  },
+  "cases": [
+    {
+      "id": "empty",
+      "input": {
+        "state": {
+          "bodies": []
+        },
+        "targets": []
+      },
+      "output": {
+        "bodies": []
+      }
+    },
+    {
+      "id": "equilibrium",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 0.025,
+              "retention": 0.7
+            }
+          ]
+        },
+        "targets": [
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "strength": 0.025,
+            "retention": 0.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "source-shaped-first-step",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 0.025,
+              "retention": 0.7
+            }
+          ]
+        },
+        "targets": [
+          [
+            100.0,
+            -100.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              2.5,
+              -2.5
+            ],
+            "velocity": [
+              1.75,
+              -1.75
+            ],
+            "strength": 0.025,
+            "retention": 0.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "source-shaped-second-step",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                2.5,
+                -2.5
+              ],
+              "velocity": [
+                1.75,
+                -1.75
+              ],
+              "strength": 0.025,
+              "retention": 0.7
+            }
+          ]
+        },
+        "targets": [
+          [
+            100.0,
+            -100.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              6.6875,
+              -6.6875
+            ],
+            "velocity": [
+              2.93125,
+              -2.93125
+            ],
+            "strength": 0.025,
+            "retention": 0.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "zero-strength-carries-velocity",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                5.0,
+                -5.0
+              ],
+              "velocity": [
+                3.0,
+                -3.0
+              ],
+              "strength": 0.0,
+              "retention": 0.5
+            }
+          ]
+        },
+        "targets": [
+          [
+            -10.0,
+            10.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              8.0,
+              -8.0
+            ],
+            "velocity": [
+              1.5,
+              -1.5
+            ],
+            "strength": 0.0,
+            "retention": 0.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "zero-retention",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 1.0,
+              "retention": 0.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            1.0,
+            -1.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              1.0,
+              -1.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "strength": 1.0,
+            "retention": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "subnormal-preserved",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 1.0,
+              "retention": 1.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            5e-324,
+            -5e-324
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              5e-324,
+              -5e-324
+            ],
+            "velocity": [
+              5e-324,
+              -5e-324
+            ],
+            "strength": 1.0,
+            "retention": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "subnormal-underflow",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 0.5,
+              "retention": 1.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            5e-324,
+            -5e-324
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "strength": 0.5,
+            "retention": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "no-fma",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                -1e+16,
+                1e+16
+              ],
+              "strength": 1.0000000000000002,
+              "retention": 1.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            1e+16,
+            -1e+16
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              2.0,
+              -2.0
+            ],
+            "velocity": [
+              2.0,
+              -2.0
+            ],
+            "strength": 1.0000000000000002,
+            "retention": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "heterogeneous-independent-bodies",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                3.0,
+                -2.0
+              ],
+              "velocity": [
+                1.0,
+                -0.5
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            },
+            {
+              "position": [
+                -4.0,
+                6.0
+              ],
+              "velocity": [
+                0.0,
+                2.0
+              ],
+              "strength": 0.0,
+              "retention": 1.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            10.0,
+            -4.0
+          ],
+          [
+            5.0,
+            -7.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              4.875,
+              -2.75
+            ],
+            "velocity": [
+              1.40625,
+              -0.5625
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          },
+          {
+            "position": [
+              -4.0,
+              8.0
+            ],
+            "velocity": [
+              0.0,
+              2.0
+            ],
+            "strength": 0.0,
+            "retention": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "canonical-all-input-zeros",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                -0.0,
+                0.0
+              ],
+              "velocity": [
+                -0.0,
+                -0.0
+              ],
+              "strength": -0.0,
+              "retention": -0.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            -0.0,
+            -0.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "strength": 0.0,
+            "retention": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "canonical-negative-output-zero",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                1.0,
+                -1.0
+              ],
+              "velocity": [
+                -1.0,
+                1.0
+              ],
+              "strength": 0.0,
+              "retention": 0.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "strength": 0.0,
+            "retention": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "coincident-independent-responses",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                2.0,
+                3.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 0.125,
+              "retention": 0.5
+            },
+            {
+              "position": [
+                2.0,
+                3.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 0.5,
+              "retention": 1.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            10.0,
+            -4.0
+          ],
+          [
+            10.0,
+            -4.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              3.0,
+              2.125
+            ],
+            "velocity": [
+              0.5,
+              -0.4375
+            ],
+            "strength": 0.125,
+            "retention": 0.5
+          },
+          {
+            "position": [
+              6.0,
+              -0.5
+            ],
+            "velocity": [
+              4.0,
+              -3.5
+            ],
+            "strength": 0.5,
+            "retention": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "maximum-finite-equilibrium",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                1.7976931348623157e+308,
+                -1.7976931348623157e+308
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 1.7976931348623157e+308,
+              "retention": 1.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            1.7976931348623157e+308,
+            -1.7976931348623157e+308
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              1.7976931348623157e+308,
+              -1.7976931348623157e+308
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "strength": 1.7976931348623157e+308,
+            "retention": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "changing-target-12-00",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                3.0,
+                -2.0
+              ],
+              "velocity": [
+                1.0,
+                -0.5
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            10.0,
+            -4.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              4.875,
+              -2.75
+            ],
+            "velocity": [
+              1.40625,
+              -0.5625
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "sequence_id": "changing-target-12",
+      "sequence_index": 0
+    },
+    {
+      "id": "changing-target-12-01",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                4.875,
+                -2.75
+              ],
+              "velocity": [
+                1.40625,
+                -0.5625
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            -8.0,
+            6.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              4.671875,
+              -2.21875
+            ],
+            "velocity": [
+              -0.15234375,
+              0.3984375
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "sequence_id": "changing-target-12",
+      "sequence_index": 1
+    },
+    {
+      "id": "changing-target-12-02",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                4.671875,
+                -2.21875
+              ],
+              "velocity": [
+                -0.15234375,
+                0.3984375
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            2.0,
+            12.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              4.185546875,
+              -0.04296875
+            ],
+            "velocity": [
+              -0.36474609375,
+              1.6318359375
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "sequence_id": "changing-target-12",
+      "sequence_index": 2
+    },
+    {
+      "id": "changing-target-12-03",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                4.185546875,
+                -0.04296875
+              ],
+              "velocity": [
+                -0.36474609375,
+                1.6318359375
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            7.0,
+            -9.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              4.172607421875,
+              0.46923828125
+            ],
+            "velocity": [
+              -0.00970458984375,
+              0.3841552734375
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "sequence_id": "changing-target-12",
+      "sequence_index": 3
+    },
+    {
+      "id": "changing-target-12-04",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                4.172607421875,
+                0.46923828125
+              ],
+              "velocity": [
+                -0.00970458984375,
+                0.3841552734375
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            10.0,
+            -4.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              4.891326904296875,
+              0.29473876953125
+            ],
+            "velocity": [
+              0.5390396118164062,
+              -0.1308746337890625
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "sequence_id": "changing-target-12",
+      "sequence_index": 4
+    },
+    {
+      "id": "changing-target-12-05",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                4.891326904296875,
+                0.29473876953125
+              ],
+              "velocity": [
+                0.5390396118164062,
+                -0.1308746337890625
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            -8.0,
+            6.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              3.818950653076172,
+              0.8770217895507812
+            ],
+            "velocity": [
+              -0.8042821884155273,
+              0.43671226501464844
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "sequence_id": "changing-target-12",
+      "sequence_index": 5
+    },
+    {
+      "id": "changing-target-12-06",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                3.818950653076172,
+                0.8770217895507812
+              ],
+              "velocity": [
+                -0.8042821884155273,
+                0.43671226501464844
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            2.0,
+            12.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              2.787299633026123,
+              2.704106330871582
+            ],
+            "velocity": [
+              -0.7737382650375366,
+              1.3703134059906006
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "sequence_id": "changing-target-12",
+      "sequence_index": 6
+    },
+    {
+      "id": "changing-target-12-07",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                2.787299633026123,
+                2.704106330871582
+              ],
+              "velocity": [
+                -0.7737382650375366,
+                1.3703134059906006
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            7.0,
+            -9.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              2.540148913860321,
+              2.611406445503235
+            ],
+            "velocity": [
+              -0.1853630393743515,
+              -0.06952491402626038
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "sequence_id": "changing-target-12",
+      "sequence_index": 7
+    },
+    {
+      "id": "changing-target-12-08",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                2.540148913860321,
+                2.611406445503235
+              ],
+              "velocity": [
+                -0.1853630393743515,
+                -0.06952491402626038
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            10.0,
+            -4.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              3.2872672602534294,
+              1.7154557257890701
+            ],
+            "velocity": [
+              0.5603387597948313,
+              -0.6719630397856236
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "sequence_id": "changing-target-12",
+      "sequence_index": 8
+    },
+    {
+      "id": "changing-target-12-09",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                3.2872672602534294,
+                1.7154557257890701
+              ],
+              "velocity": [
+                0.5603387597948313,
+                -0.6719630397856236
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            -8.0,
+            6.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              2.436697612516582,
+              1.5790607202798128
+            ],
+            "velocity": [
+              -0.6379272358026356,
+              -0.10229625413194299
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "sequence_id": "changing-target-12",
+      "sequence_index": 9
+    },
+    {
+      "id": "changing-target-12-10",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                2.436697612516582,
+                1.5790607202798128
+              ],
+              "velocity": [
+                -0.6379272358026356,
+                -0.10229625413194299
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            2.0,
+            12.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              1.7441831751493737,
+              2.7793818761128932
+            ],
+            "velocity": [
+              -0.5193858280254062,
+              0.9002408668748103
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "sequence_id": "changing-target-12",
+      "sequence_index": 10
+    },
+    {
+      "id": "changing-target-12-11",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                1.7441831751493737,
+                2.7793818761128932
+              ],
+              "velocity": [
+                -0.5193858280254062,
+                0.9002408668748103
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            7.0,
+            -9.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              1.8817744502302958,
+              2.207200008473592
+            ],
+            "velocity": [
+              0.10319345631069154,
+              -0.429136400729476
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "sequence_id": "changing-target-12",
+      "sequence_index": 11
+    },
+    {
+      "id": "restore-mid-sequence",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                3.818950653076172,
+                0.8770217895507812
+              ],
+              "velocity": [
+                -0.8042821884155273,
+                0.43671226501464844
+              ],
+              "strength": 0.125,
+              "retention": 0.75
+            }
+          ]
+        },
+        "targets": [
+          [
+            2.0,
+            12.0
+          ]
+        ]
+      },
+      "output": {
+        "bodies": [
+          {
+            "position": [
+              2.787299633026123,
+              2.704106330871582
+            ],
+            "velocity": [
+              -0.7737382650375366,
+              1.3703134059906006
+            ],
+            "strength": 0.125,
+            "retention": 0.75
+          }
+        ]
+      },
+      "restores_case": "changing-target-12-06"
+    },
+    {
+      "id": "delta-overflow",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                -1.7976931348623157e+308,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 0.0,
+              "retention": 0.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            1.7976931348623157e+308,
+            0.0
+          ]
+        ]
+      },
+      "error": "SPRING_ARITHMETIC_INVALID",
+      "error_details": {
+        "bodyIndex": 0,
+        "axis": "x",
+        "stage": "delta"
+      }
+    },
+    {
+      "id": "force-overflow",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 2.0,
+              "retention": 0.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            1.7976931348623157e+308,
+            0.0
+          ]
+        ]
+      },
+      "error": "SPRING_ARITHMETIC_INVALID",
+      "error_details": {
+        "bodyIndex": 0,
+        "axis": "x",
+        "stage": "force"
+      }
+    },
+    {
+      "id": "advanced-overflow",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                1.7976931348623157e+308,
+                0.0
+              ],
+              "strength": 1.0,
+              "retention": 0.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            1.7976931348623157e+308,
+            0.0
+          ]
+        ]
+      },
+      "error": "SPRING_ARITHMETIC_INVALID",
+      "error_details": {
+        "bodyIndex": 0,
+        "axis": "x",
+        "stage": "advanced"
+      }
+    },
+    {
+      "id": "position-overflow",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                1.7976931348623157e+308,
+                0.0
+              ],
+              "velocity": [
+                1.7976931348623157e+308,
+                0.0
+              ],
+              "strength": 0.0,
+              "retention": 0.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            1.7976931348623157e+308,
+            0.0
+          ]
+        ]
+      },
+      "error": "SPRING_ARITHMETIC_INVALID",
+      "error_details": {
+        "bodyIndex": 0,
+        "axis": "x",
+        "stage": "position"
+      }
+    },
+    {
+      "id": "late-body-y-advanced-overflow",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 1.0,
+              "retention": 0.5
+            },
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                1.7976931348623157e+308
+              ],
+              "strength": 1.0,
+              "retention": 0.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.7976931348623157e+308
+          ]
+        ]
+      },
+      "error": "SPRING_ARITHMETIC_INVALID",
+      "error_details": {
+        "bodyIndex": 1,
+        "axis": "y",
+        "stage": "advanced"
+      }
+    },
+    {
+      "id": "x-position-before-y-delta",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                1.7976931348623157e+308,
+                -1.7976931348623157e+308
+              ],
+              "velocity": [
+                1.7976931348623157e+308,
+                0.0
+              ],
+              "strength": 0.0,
+              "retention": 0.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            1.7976931348623157e+308,
+            1.7976931348623157e+308
+          ]
+        ]
+      },
+      "error": "SPRING_ARITHMETIC_INVALID",
+      "error_details": {
+        "bodyIndex": 0,
+        "axis": "x",
+        "stage": "position"
+      }
+    },
+    {
+      "id": "body-zero-y-before-body-one-x",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                1.7976931348623157e+308
+              ],
+              "velocity": [
+                0.0,
+                1.7976931348623157e+308
+              ],
+              "strength": 0.0,
+              "retention": 0.0
+            },
+            {
+              "position": [
+                -1.7976931348623157e+308,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 0.0,
+              "retention": 0.0
+            }
+          ]
+        },
+        "targets": [
+          [
+            0.0,
+            1.7976931348623157e+308
+          ],
+          [
+            1.7976931348623157e+308,
+            0.0
+          ]
+        ]
+      },
+      "error": "SPRING_ARITHMETIC_INVALID",
+      "error_details": {
+        "bodyIndex": 0,
+        "axis": "y",
+        "stage": "position"
+      }
+    },
+    {
+      "id": "late-invalid-target-beats-body-zero-overflow",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                -1.7976931348623157e+308,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 0.0,
+              "retention": 0.0
+            },
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 1.0,
+              "retention": 0.5
+            }
+          ]
+        },
+        "targets": [
+          [
+            1.7976931348623157e+308,
+            0.0
+          ],
+          [
+            0.0,
+            "not-a-number"
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "missing-outer-key",
+      "input": {
+        "state": {
+          "bodies": []
+        }
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "extra-outer-key",
+      "input": {
+        "state": {
+          "bodies": []
+        },
+        "targets": [],
+        "extra": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "missing-body-key",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 0.1
+            }
+          ]
+        },
+        "targets": [
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "boolean-strength",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": true,
+              "retention": 0.5
+            }
+          ]
+        },
+        "targets": [
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "string-coordinate",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                "0",
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 0.1,
+              "retention": 0.5
+            }
+          ]
+        },
+        "targets": [
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "negative-strength",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": -0.1,
+              "retention": 0.5
+            }
+          ]
+        },
+        "targets": [
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "negative-retention",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 0.1,
+              "retention": -0.1
+            }
+          ]
+        },
+        "targets": [
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "retention-above-one",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 0.1,
+              "retention": 1.1
+            }
+          ]
+        },
+        "targets": [
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "body-target-length-mismatch",
+      "input": {
+        "state": {
+          "bodies": [
+            {
+              "position": [
+                0.0,
+                0.0
+              ],
+              "velocity": [
+                0.0,
+                0.0
+              ],
+              "strength": 1.0,
+              "retention": 0.5
+            }
+          ]
+        },
+        "targets": []
+      },
+      "error": "INVALID_INPUT"
+    }
+  ],
+  "comparison": "exact-binary64",
+  "catalog_sha256": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3"
+}

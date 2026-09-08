@@ -1,0 +1,129 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "CP8 staged Java-only raster glyph workflow: technique mechanism, actual edit/retention/save behavior, explicit font. Packaging not yet delivered; not source-pixel or full-corpus certification.",
+  "implementation_sha256": {
+    "packages/java-processing/examples/GlyphMarks/GlyphMarks.pde": "2d6792238cb5f7bfeb6023c86fa6a64f7deb96e1ccd991a5dfb939d65df2bc81",
+    "packages/java/examples/GlyphMarks/GlyphComposition.java": "fd83d036e43942434fb588dcdc7a8e9fb66e3da36627fdc48f3c6d8fed5cbc93",
+    "packages/java/examples/GlyphMarks/GlyphFont.java": "d5bb50f46e632927904b1f00c40761ea6049e0dc2eddc83d95fc64a4f2bba988",
+    "tools/diagnostics/cp8/GlyphMarksProbe.java": "b7be567df9498fcba0e80d186507476cba680b1b45486720841d554447bb67d2",
+    "tools/run_glyph_marks_pde.py": "a256ea39ae70cc2acadd4ebff9eaef2c5ca1ace70b39ea66fc43a7a3752d36b5"
+  },
+  "evidence_sha256": {
+    "evidence/reproductions/cp8-java2d/result.json": "66a604726b58b4473c2eef8a784ca788c27005797d6a2d1a6655014a9290c64f",
+    "evidence/reproductions/cp8-java2d/plan.json": "950b7ce2396a739ff8c30183fd9b4e24ec53469c6c6219a64bc9148cd7c34943"
+  },
+  "images": {
+    "baseline": {
+      "path": ".work/reproductions/cp8-java2d/baseline.png",
+      "sha256": "cd2806f514ec935aa2680f34c076349c90cc647880112ce4f96b698fa2e2810b",
+      "directly_viewed": true,
+      "observation": "Upright digits accumulate into soft gray curved ribbons. Several terminal digits remain recognizable; heavy overlap obscures many interiors. Some paths clip the left or lower canvas edge.",
+      "comparison_to_cp8_baseline": {
+        "mean_absolute_rgb_difference_01": 0.0,
+        "changed_pixel_fraction": 0.0
+      }
+    },
+    "short": {
+      "path": ".work/reproductions/cp8-java2d/short.png",
+      "sha256": "f9e0a0d2720a292191633a4a6d2706b5b3b1af7cda3d673cf7653ef8ca815a27",
+      "directly_viewed": true,
+      "observation": "Shorter curved fragments leave more open ground and show fewer long joins. The ramp is rescaled over the visible prefix, so this is not simply a raster crop of baseline.",
+      "comparison_to_cp8_baseline": {
+        "mean_absolute_rgb_difference_01": 0.05934567440257353,
+        "changed_pixel_fraction": 0.2334814453125
+      }
+    },
+    "sparse": {
+      "path": ".work/reproductions/cp8-java2d/sparse.png",
+      "sha256": "ccb96a576c30d65652cbee29ef8a40a524411228592e04b455df3b7b556711a1",
+      "directly_viewed": true,
+      "observation": "Same broad trajectories with lighter, individually discernible repeated outlines and reduced overlap. Most neighboring glyphs still overlap; this is not disjoint character layout.",
+      "comparison_to_cp8_baseline": {
+        "mean_absolute_rgb_difference_01": 0.03646975528492647,
+        "changed_pixel_fraction": 0.23300537109375
+      }
+    },
+    "letters": {
+      "path": ".work/reproductions/cp8-java2d/letters.png",
+      "sha256": "5f5b34b9b5d434048f41e5f49a5290c4049ba0be47cf3590c57ddf45e183df44",
+      "directly_viewed": true,
+      "observation": "Angular and open letter shapes change ribbon edges and terminal silhouettes while retaining the same path arrangement.",
+      "comparison_to_cp8_baseline": {
+        "mean_absolute_rgb_difference_01": 0.021023916207107845,
+        "changed_pixel_fraction": 0.2451904296875
+      }
+    },
+    "dots": {
+      "path": ".work/reproductions/cp8-java2d/dots.png",
+      "sha256": "a3ed43efc638c4b74a23dd6359c840227c758c06a8428df2a2d502c4b004a009",
+      "directly_viewed": true,
+      "observation": "Narrow smooth gray curves expose the underlying trajectories, retaining the same major bends and clusters.",
+      "comparison_to_cp8_baseline": {
+        "mean_absolute_rgb_difference_01": 0.051163191253063726,
+        "changed_pixel_fraction": 0.23395751953125
+      }
+    },
+    "colour": {
+      "path": ".work/reproductions/cp8-java2d/colour.png",
+      "sha256": "4d05c9a8bfd1598fb5811d0cb65e8d9527d26de3e498dc7c328d2fd5ad129c04",
+      "directly_viewed": true,
+      "observation": "Teal, warm red and yellow progress along the same digit trails; the geometry remains fixed while overlap changes the perceived band tones.",
+      "comparison_to_cp8_baseline": {
+        "mean_absolute_rgb_difference_01": 0.05293430542790033,
+        "changed_pixel_fraction": 0.23903076171875
+      }
+    },
+    "distance": {
+      "path": ".work/reproductions/cp8-java2d/distance.png",
+      "sha256": "092f22d0986720508f35e1d20758195598b46055ee9bedb1fcd4dfc1c4c1822c",
+      "directly_viewed": true,
+      "observation": "Longer sweeping curves extend across and outside the canvas, connecting larger areas. This is changed integration geometry, unlike sparse sampling of the original trajectory.",
+      "comparison_to_cp8_baseline": {
+        "mean_absolute_rgb_difference_01": 0.07257455384497549,
+        "changed_pixel_fraction": 0.31830322265625
+      }
+    },
+    "field-scale": {
+      "path": ".work/reproductions/cp8-java2d/field-scale.png",
+      "sha256": "62b8b2421cf520b21bcf630a81b8566992c5246b67fe93c099c62c3d1c6a852a",
+      "directly_viewed": true,
+      "observation": "More frequent short bends and waviness replace broad smooth arcs, clearly changing path shape.",
+      "comparison_to_cp8_baseline": {
+        "mean_absolute_rgb_difference_01": 0.0980241459865196,
+        "changed_pixel_fraction": 0.362314453125
+      }
+    },
+    "new-seed": {
+      "path": ".work/reproductions/cp8-java2d/new-seed.png",
+      "sha256": "05410217681048b8a2b45d40cc562925c832db9edbaac39ae703c4a2b2291037",
+      "directly_viewed": true,
+      "observation": "Different starting positions and marks produce a different arrangement of curved ribbons and clusters.",
+      "comparison_to_cp8_baseline": {
+        "mean_absolute_rgb_difference_01": 0.11756069048713236,
+        "changed_pixel_fraction": 0.40727783203125
+      }
+    }
+  },
+  "checks": {
+    "native_states": 17,
+    "native_key_events": 17,
+    "actual_text_calls": 113280,
+    "actual_ellipse_calls": 7680,
+    "actual_fill_calls": 120960,
+    "native_stderr": "empty",
+    "resets_pixel_identical": 8,
+    "saved_image_pixel_identical": true,
+    "font_hash": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+    "visual_states_directly_inspected": 9
+  },
+  "limitations": [
+    "No human artist usability session; controls exercised programmatically.",
+    "Sparse stamps still overlap; no isolated-character or legibility guarantee.",
+    "Some trails cross canvas bounds; no text-aware collision or clipping layout.",
+    "Different font, noise, RNG, canvas and renderer from motivating numbers source.",
+    "No glyph outlines, paragraph layout, kerning, shaping, other-font or other-target validation.",
+    "Image difference metrics compare CP8 edit states with CP8 baseline only; no survey-reference metric claim."
+  ]
+}

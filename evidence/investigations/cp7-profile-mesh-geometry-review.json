@@ -1,0 +1,24 @@
+{
+  "status": "accepted",
+  "scope": "Private moderate-profile topology diagnostic; authorizes private Java visual comparison preparation only",
+  "input_sha256": {
+    "evidence/investigations/cp7-profile-mesh-geometry.json": "c00aaac3a494c0667da113fbc1ae23b3ace409410a9dee08e0bf147455153836",
+    "design/capabilities/cp7-profile-mesh-direction.md": "d38b59a281d1ebfb46493a58d30ae254c13b62bd671c2bd9abf4a7f9df263e97",
+    "design/capabilities/profile-mesh-evidence-audit.md": "384d32f2262ed282939fe5a136720b034479b2e196aac25661f26ab63ee313b3",
+    "tools/diagnostics/cp7/profile_mesh_diagnostic.py": "6633e6e337ee6eaa9a90722fa1fdc12a26b578b1424a0862bc5f3b66077b242d"
+  },
+  "root_actions": [
+    "Read full initial and corrected Python implementations; rejected initial fail-open mutation controls and insufficient metadata/boundary checks.",
+    "Added duplicate-face rejection, actual in-range wrong-band control on waist fixture, and both one-cap cylinder cases.",
+    "Ran final diagnostic via uv run python:33 cases,7 rejected mutations; verified current bindings."
+  ],
+  "established": [
+    "Closed/open ring and pole topology at3,4,12angular slices has finite nonzero faces, outward winding, paired interior edges, declared boundary loops and closed genus-zero Euler characteristic.",
+    "Index connectivity shares the seam and face provenance distinguishes bands, cells and caps for these fixtures."
+  ],
+  "limits": [
+    "Face metadata reference uses the specified index layout; it is not an independent general-purpose mesh classifier. Root also reviewed generation directly and the separate edge/orientation checks.",
+    "No exhaustive finite-double, aliasing, resource, Java implementation, P3D, normal shading or visible usefulness claim.",
+    "No public contract or candidate admission is approved."
+  ]
+}

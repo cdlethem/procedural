@@ -1,0 +1,28 @@
+{
+  "status": "accepted-for-private-visual-comparison",
+  "scope": "Root private Java source/numeric review; no public implementation or artist acceptance yet",
+  "input_sha256": {
+    "tools/diagnostics/cp7/ProfileChoices.java": "e78a8588e24ff3bdcaab3a832f6223a11c2df2e21811aa5f178e22cf8c1ea494",
+    "tools/diagnostics/cp7/check_profile_choices.py": "9df73985f0eae42ca554bc3c3cfeb38201c0af6ba59c8777858c52606d97a050",
+    "evidence/investigations/cp7-java-profile-geometry.json": "1aba97dc8462154b06c497371712ef21c9b61d1cfe67e627005116fbee539da8",
+    ".work/cp7-profile-choices/inspect.json": "007568f9d0eeb888b104779aca9c5e14a50a967ea2eaf71f4546ad2ca0cdb6d6",
+    ".work/cp7-profile-choices/mesh-dump.json": "45feba9215a7766670a647f3f11c5e751a5b68da64882950581e26ae962729b8"
+  },
+  "root_actions": [
+    "Read full initial Java prototype. Corrected drawing normals to be submitted inside beginShape, batched triangles, moved each transfer translation before its object rotation, bounded total generated faces, and reported the actual3mesh transfer.",
+    "Added SHA256 retained geometry hashes, pure dump path, native actual context/frame/count report, actual face normal evaluation count and no-overwrite checks.",
+    "Compiled pinned Java17 --release8 with coherent fiveJAR P3D runtime and existing CyclicPalette. Ran inspect and dump without starting a renderer.",
+    "Read full checker and reran it: five meshes pass exact ordered topology/metadata, exact axial/center coordinates, moderate XYcomparison. Largest observed coordinate deviation0.0."
+  ],
+  "counts": {
+    "generated_faces": 4496,
+    "drawn_faces": 8784,
+    "normal_evaluations": 8784,
+    "frames": 7
+  },
+  "limitations": [
+    "Only fixed moderate example configurations and their private arithmetic are tested. No all-finite/ownership/resource/portable-target contract established.",
+    "Flat face normal crossproduct and normalization currently remain private renderer glue. Visual evidence must decide whether this is a useful public boundary.",
+    "No image or artist effect has been observed yet."
+  ]
+}

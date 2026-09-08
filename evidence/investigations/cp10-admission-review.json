@@ -1,0 +1,34 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Computation-level component extraction admitted for contract preparation; no contract or implementation approval.",
+  "cluster": "motion.target-springs-2d",
+  "changed_candidate": "2018/Generativos/araniaaas#1",
+  "input_sha256": {
+    "design/capabilities/cp10-admission-review.md": "d01e4771f360fd0ae7da42478320a84e3988815b1e58b8dd8519a1dba510370f",
+    "design/capabilities/cp10-spring-marks-direction.md": "69947dfe93c7ea475cc9ce53f0aa7ebda9e4342e5233b9d08d53dbfb4a1f4129",
+    "design/capabilities/cp10-state-boundary-decision.md": "8cfcbfbe353d6fafc035d6d7eab76e2a0322a4aa66be96c33803a7f37bb4822f",
+    "design/capabilities/physics-evidence-audit.md": "cd99b257e7f9f7d2da09a1352aa36b57605d1da72e214fd45af823aa042c879e",
+    "evidence/parameter-experiments/cp10-spring-response/root-review.json": "9eac58bbe9b8fbfa92c0080bdc4312c2a5290f94109720b13504120143632d7a",
+    "evidence/parameter-experiments/cp10-spring-response/decision.md": "2c0a24fb30a490eb948a3fe4141404df30820a8b1821d3ff227d1b2e12885205",
+    "design/phase2/cluster-decisions.json": "0047eccc335f78101ef710676a8609568bef5f54e3ef55d118c29c7d108991eb"
+  },
+  "checks": {
+    "contract_cluster_eligibility": "passed",
+    "repository_unittests": 130,
+    "only_one_candidate_record_changed": true,
+    "source_identity_fields_unchanged": true,
+    "disposition_counts_unchanged": true
+  },
+  "before_ledger": {
+    "path": ".work/investigations/cp10-admission/ledger-before.json",
+    "sha256": "217126e9989504274266dee9729db4acbe2c8278999fe49d4f19e74c38b8f0c4"
+  },
+  "remaining": [
+    "Exact coefficient carrier/ownership decision, numeric domains and one-tick contract",
+    "Shared semantic fixtures and Java implementation",
+    "Native performance and complete SpringMarks workflow",
+    "Other project milestones"
+  ]
+}

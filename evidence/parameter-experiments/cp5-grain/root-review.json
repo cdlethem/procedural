@@ -1,0 +1,39 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Private CP5 distribution/content investigation only; no public implementation acceptance.",
+  "result": {
+    "path": "evidence/parameter-experiments/cp5-grain/result.json",
+    "sha256": "4c271053fbec4de47ae3b8fa2e427c0c0a3017a7c54fa974e8b276423a5cf30a"
+  },
+  "visual_review": {
+    "status": "accepted-with-style-limitation",
+    "images": {
+      "uniform": "1e4d4c059819a870bc8ba0af5821e304792439c4cf377ed75e47fb56bc35061e",
+      "vertex-biased": "f5b22245b36fb1b0c5086fbbedfb543ade2908dd9c69e748dbc6602f80cd2cf0",
+      "edge-biased": "f608bdf395a71486d02d3c4889e9b46308d7645174ebbd77b2d740a2aa5766a2",
+      "denser": "b87311fdee5681ce04074960d0e14ae23559935d112c064c1a3cac9d6225b661",
+      "recolored": "e535183439be4061b980b391e34592d358787214fc4f8b811a1dd17661612ff3",
+      "strokes": "56972d18b0074ed988e27b9dfd10a7e1d6c4297528ab8553570694f6cac0cfd5",
+      "region-transfer": "8794b3605dfa4ca3f5ce47f72cdbda48cdbf707c8b768485b762aa612c60a6cd"
+    },
+    "observations": [
+      "Uniform is a pale, evenly stippled triangular field.",
+      "Vertex-biased concentrates dark grain at the first vertex (bottom left), tapering toward the opposite side.",
+      "The puntis3 coordinate pattern redistributes grain with a softer low-density edge region; its mean location alone understates the distribution difference.",
+      "Denser uniform has a visibly fuller triangular texture while retaining the earlier centres.",
+      "Coral recolouring changes appearance while keeping point placement; alpha also changes, so this is a combined style substitution.",
+      "Short horizontal strokes produce a much more legible textured triangular silhouette at the same centres; whole strokes may cross edges.",
+      "The CP4 transfer covers the canvas with coloured triangular grain regions, but yellow/teal regions are faint on the pale background. It proves composition transfer, not a finished recommended palette or density."
+    ]
+  },
+  "source_closure": "All source/class/input and seven image hashes unchanged at acceptance.",
+  "warnings": [],
+  "decision": "Retained triangle point batches and distribution substitution merit API design; do not equate active source grain with uniform sampling. Improve transfer styling in the eventual public example without rerendering this private attempt.",
+  "limitations": [
+    "One completed native attempt; no rerender required or authorized by this plan.",
+    "JAVA2D private streams only; no Processing source-pixel or public sampler conformance.",
+    "No public default, continuous encouraged range or bias parameter admitted."
+  ]
+}

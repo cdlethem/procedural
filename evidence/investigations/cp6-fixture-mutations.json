@@ -1,0 +1,1461 @@
+{
+  "canonical_draft_fixture": {
+    "case_count": 40,
+    "path": "fixtures/operations/seeded-endpoint-branches.json",
+    "sha256": "5368de8f8e268ac2f376a45f08d97e690a3192708b4d42a2b6d393894f88a13c",
+    "successful_cases_used": 24
+  },
+  "missing_coverage": [
+    "The three canonical targeted cases now cover a p0 gate before a later probabilistic slot, a constant scale before probabilistic slots, and constant turns before later gates. They do not cover every mixed p0/p1 or mixed constant/nonconstant schedule.",
+    "The mutation set does not model every wrong schedule, such as drawing scale after an angle, capacity after an angle, or consuming terminal source-style colour draws. It only evaluates the seven named variants.",
+    "Error-only cases are intentionally excluded from output/trace mutation comparison. Static-validation order, arithmetic precedence, capacity failure, ownership, and target carrier behavior require their separate fixture and native checks.",
+    "A terminal shrink after the final generation is intrinsically unobservable in returned tree data because no later operation uses the discarded stream state. Its source-review and trace-only obligation should remain precise; public accessors cannot prove it.",
+    "The empty-slots case likewise leaves only discarded stream state, so it is trace-only and cannot by itself establish public output behavior.",
+    "Coordinate comparisons are same-Python raw-binary64 comparisons of the draft oracle output; they do not establish cross-runtime trigonometric agreement."
+  ],
+  "mutations": [
+    {
+      "definition": "Recursively expand a successful child before visiting its next sibling, while retaining the same local slot logic.",
+      "distinguished": true,
+      "distinguished_by": [
+        {
+          "case": "branch-seed-0",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 6,
+            "expected": 11,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 17,
+            "expected": 34,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-1",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 25,
+            "expected": 15,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 68,
+            "expected": 42,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-42",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 11,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 30,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-2147483648",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 15,
+            "expected": 12,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 42,
+            "expected": 35,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-4294967295",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 10,
+            "expected": 17,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 29,
+            "expected": 56,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "prefix-rules-5",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 10,
+            "expected": 24,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 33,
+            "expected": 71,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "prefix-rules-7",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 117,
+            "expected": 101,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 400,
+            "expected": 300,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "prefix-rules-8",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 254,
+            "expected": 192,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 829,
+            "expected": 595,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "late-spread",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 254,
+            "expected": 192,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 829,
+            "expected": 595,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "all-gates-succeed",
+          "differences": [
+            "output"
+          ],
+          "first_output_difference": {
+            "actual": 0,
+            "expected": 3,
+            "path": "/output/childCounts/3"
+          }
+        },
+        {
+          "case": "collapsed-root",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 11,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 30,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-scale-before-probabilistic-slots",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 11,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 30,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-turn-before-later-gates",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 11,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 30,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "translated-rotated-root",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 11,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 30,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        }
+      ],
+      "mutation": "depth-first-traversal",
+      "successful_canonical_cases_evaluated": 24,
+      "surviving_success_cases": [
+        "root-only",
+        "root-only-at-cap",
+        "empty-slots",
+        "all-gates-fail",
+        "constant-interval-chain",
+        "zero-gate-before-probabilistic-slot",
+        "lengthening-chain-exact-capacity",
+        "failed-gates-at-capacity",
+        "positive-underflow-collapses-child-geometry",
+        "failed-gates-skip-hypothetical-length-overflow"
+      ]
+    },
+    {
+      "definition": "Skip the parent shared scale unit and draw a fresh scale after each successful gate, before that child turn.",
+      "distinguished": true,
+      "distinguished_by": [
+        {
+          "case": "branch-seed-0",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 8,
+            "expected": 11,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 29,
+            "expected": 34,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-1",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 17,
+            "expected": 15,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 56,
+            "expected": 42,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-42",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 15,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 52,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-2147483648",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 11,
+            "expected": 12,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 38,
+            "expected": 35,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-4294967295",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 19,
+            "expected": 17,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 63,
+            "expected": 56,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "prefix-rules-5",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 53,
+            "expected": 24,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 191,
+            "expected": 71,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "prefix-rules-7",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 152,
+            "expected": 101,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 569,
+            "expected": 300,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "prefix-rules-8",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 263,
+            "expected": 192,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 980,
+            "expected": 595,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "late-spread",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 263,
+            "expected": 192,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 980,
+            "expected": 595,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "empty-slots",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 0,
+            "expected": 1,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "all-gates-fail",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 3,
+            "expected": 4,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "all-gates-succeed",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": "3fd9844904e00000",
+            "expected": "3fda66be2a900000",
+            "path": "/output/headings/2"
+          },
+          "first_rng_word_difference": {
+            "actual": 117,
+            "expected": 91,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "collapsed-root",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 15,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 52,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "zero-gate-before-probabilistic-slot",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 1,
+            "expected": 3,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 2,
+            "expected": 11,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-scale-before-probabilistic-slots",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 15,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 52,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-turn-before-later-gates",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 15,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 52,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "translated-rotated-root",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 15,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 52,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "failed-gates-at-capacity",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 3,
+            "expected": 4,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "failed-gates-skip-hypothetical-length-overflow",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 2,
+            "expected": 3,
+            "path": "/rng_words/length"
+          }
+        }
+      ],
+      "mutation": "per-child-scale",
+      "successful_canonical_cases_evaluated": 24,
+      "surviving_success_cases": [
+        "root-only",
+        "root-only-at-cap",
+        "constant-interval-chain",
+        "lengthening-chain-exact-capacity",
+        "positive-underflow-collapses-child-geometry"
+      ]
+    },
+    {
+      "definition": "Treat probability 0 as a failed gate without consuming its mandatory gate unit.",
+      "distinguished": true,
+      "distinguished_by": [
+        {
+          "case": "all-gates-fail",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 1,
+            "expected": 4,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "zero-gate-before-probabilistic-slot",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 1,
+            "expected": 3,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 2,
+            "expected": 11,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "failed-gates-at-capacity",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 1,
+            "expected": 4,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "failed-gates-skip-hypothetical-length-overflow",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 1,
+            "expected": 3,
+            "path": "/rng_words/length"
+          }
+        }
+      ],
+      "mutation": "skip-probability-zero-gates",
+      "successful_canonical_cases_evaluated": 24,
+      "surviving_success_cases": [
+        "root-only",
+        "root-only-at-cap",
+        "branch-seed-0",
+        "branch-seed-1",
+        "branch-seed-42",
+        "branch-seed-2147483648",
+        "branch-seed-4294967295",
+        "prefix-rules-5",
+        "prefix-rules-7",
+        "prefix-rules-8",
+        "late-spread",
+        "empty-slots",
+        "all-gates-succeed",
+        "constant-interval-chain",
+        "collapsed-root",
+        "constant-scale-before-probabilistic-slots",
+        "constant-turn-before-later-gates",
+        "translated-rotated-root",
+        "lengthening-chain-exact-capacity",
+        "positive-underflow-collapses-child-geometry"
+      ]
+    },
+    {
+      "definition": "Treat probability 1 as a successful gate without consuming its mandatory gate unit.",
+      "distinguished": true,
+      "distinguished_by": [
+        {
+          "case": "all-gates-succeed",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": "bfd07bc053000000",
+            "expected": "bfdfefae7a100000",
+            "path": "/output/headings/1"
+          },
+          "first_rng_word_difference": {
+            "actual": 52,
+            "expected": 91,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-interval-chain",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 10,
+            "expected": 15,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "lengthening-chain-exact-capacity",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 10,
+            "expected": 15,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "positive-underflow-collapses-child-geometry",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 2,
+            "expected": 3,
+            "path": "/rng_words/length"
+          }
+        }
+      ],
+      "mutation": "skip-probability-one-gates",
+      "successful_canonical_cases_evaluated": 24,
+      "surviving_success_cases": [
+        "root-only",
+        "root-only-at-cap",
+        "branch-seed-0",
+        "branch-seed-1",
+        "branch-seed-42",
+        "branch-seed-2147483648",
+        "branch-seed-4294967295",
+        "prefix-rules-5",
+        "prefix-rules-7",
+        "prefix-rules-8",
+        "late-spread",
+        "empty-slots",
+        "all-gates-fail",
+        "collapsed-root",
+        "zero-gate-before-probabilistic-slot",
+        "constant-scale-before-probabilistic-slots",
+        "constant-turn-before-later-gates",
+        "translated-rotated-root",
+        "failed-gates-at-capacity",
+        "failed-gates-skip-hypothetical-length-overflow"
+      ]
+    },
+    {
+      "definition": "Return a constant scale or turn endpoint without consuming its mandatory interval unit.",
+      "distinguished": true,
+      "distinguished_by": [
+        {
+          "case": "empty-slots",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 0,
+            "expected": 1,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-interval-chain",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 5,
+            "expected": 15,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-scale-before-probabilistic-slots",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 10,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 27,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-turn-before-later-gates",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 9,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 16,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "lengthening-chain-exact-capacity",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 5,
+            "expected": 15,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "positive-underflow-collapses-child-geometry",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 1,
+            "expected": 3,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "failed-gates-skip-hypothetical-length-overflow",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 2,
+            "expected": 3,
+            "path": "/rng_words/length"
+          }
+        }
+      ],
+      "mutation": "skip-constant-interval-units",
+      "successful_canonical_cases_evaluated": 24,
+      "surviving_success_cases": [
+        "root-only",
+        "root-only-at-cap",
+        "branch-seed-0",
+        "branch-seed-1",
+        "branch-seed-42",
+        "branch-seed-2147483648",
+        "branch-seed-4294967295",
+        "prefix-rules-5",
+        "prefix-rules-7",
+        "prefix-rules-8",
+        "late-spread",
+        "all-gates-fail",
+        "all-gates-succeed",
+        "collapsed-root",
+        "zero-gate-before-probabilistic-slot",
+        "translated-rotated-root",
+        "failed-gates-at-capacity"
+      ]
+    },
+    {
+      "definition": "Consume a turn unit before every gate, including failed slots.",
+      "distinguished": true,
+      "distinguished_by": [
+        {
+          "case": "branch-seed-0",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 13,
+            "expected": 11,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 49,
+            "expected": 34,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-1",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 11,
+            "expected": 15,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 49,
+            "expected": 42,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-42",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 14,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 56,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-2147483648",
+          "differences": [
+            "output"
+          ],
+          "first_output_difference": {
+            "actual": 8,
+            "expected": 12,
+            "path": "/output/childCounts/length"
+          }
+        },
+        {
+          "case": "branch-seed-4294967295",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 19,
+            "expected": 17,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 70,
+            "expected": 56,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "prefix-rules-5",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 49,
+            "expected": 24,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 189,
+            "expected": 71,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "prefix-rules-7",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 163,
+            "expected": 101,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 623,
+            "expected": 300,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "prefix-rules-8",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 293,
+            "expected": 192,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 1141,
+            "expected": 595,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "late-spread",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 293,
+            "expected": 192,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 1141,
+            "expected": 595,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "all-gates-fail",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 7,
+            "expected": 4,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "all-gates-succeed",
+          "differences": [
+            "output"
+          ],
+          "first_output_difference": {
+            "actual": "bfd07bc053000000",
+            "expected": "bfdfefae7a100000",
+            "path": "/output/headings/1"
+          }
+        },
+        {
+          "case": "collapsed-root",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 14,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 56,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "zero-gate-before-probabilistic-slot",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 4,
+            "expected": 3,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 15,
+            "expected": 11,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-scale-before-probabilistic-slots",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 14,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 56,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-turn-before-later-gates",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 14,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 56,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "translated-rotated-root",
+          "differences": [
+            "output",
+            "rng_trace"
+          ],
+          "first_output_difference": {
+            "actual": 14,
+            "expected": 6,
+            "path": "/output/childCounts/length"
+          },
+          "first_rng_word_difference": {
+            "actual": 56,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "failed-gates-at-capacity",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 7,
+            "expected": 4,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "failed-gates-skip-hypothetical-length-overflow",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 5,
+            "expected": 3,
+            "path": "/rng_words/length"
+          }
+        }
+      ],
+      "mutation": "unconditional-angle-units",
+      "successful_canonical_cases_evaluated": 24,
+      "surviving_success_cases": [
+        "root-only",
+        "root-only-at-cap",
+        "empty-slots",
+        "constant-interval-chain",
+        "lengthening-chain-exact-capacity",
+        "positive-underflow-collapses-child-geometry"
+      ]
+    },
+    {
+      "definition": "Consume an unused scale-like unit for every terminal parent after its rules are exhausted.",
+      "distinguished": true,
+      "distinguished_by": [
+        {
+          "case": "root-only",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 1,
+            "expected": 0,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "root-only-at-cap",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 1,
+            "expected": 0,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-0",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 39,
+            "expected": 34,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-1",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 50,
+            "expected": 42,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-42",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 20,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-2147483648",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 41,
+            "expected": 35,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "branch-seed-4294967295",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 63,
+            "expected": 56,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "prefix-rules-5",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 83,
+            "expected": 71,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "prefix-rules-7",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 351,
+            "expected": 300,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "prefix-rules-8",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 686,
+            "expected": 595,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "late-spread",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 686,
+            "expected": 595,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "all-gates-succeed",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 118,
+            "expected": 91,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-interval-chain",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 16,
+            "expected": 15,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "collapsed-root",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 20,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-scale-before-probabilistic-slots",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 20,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "constant-turn-before-later-gates",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 20,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "translated-rotated-root",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 20,
+            "expected": 17,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "lengthening-chain-exact-capacity",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 16,
+            "expected": 15,
+            "path": "/rng_words/length"
+          }
+        },
+        {
+          "case": "positive-underflow-collapses-child-geometry",
+          "differences": [
+            "rng_trace"
+          ],
+          "first_rng_word_difference": {
+            "actual": 4,
+            "expected": 3,
+            "path": "/rng_words/length"
+          }
+        }
+      ],
+      "mutation": "terminal-shrink-unit",
+      "successful_canonical_cases_evaluated": 24,
+      "surviving_success_cases": [
+        "empty-slots",
+        "all-gates-fail",
+        "zero-gate-before-probabilistic-slot",
+        "failed-gates-at-capacity",
+        "failed-gates-skip-hypothetical-length-overflow"
+      ]
+    }
+  ],
+  "new_targeted_public_observability": {
+    "by_mutation": {
+      "depth-first-traversal": {
+        "materialized_output_difference_cases": [
+          "constant-scale-before-probabilistic-slots",
+          "constant-turn-before-later-gates"
+        ],
+        "trace_only_cases": []
+      },
+      "per-child-scale": {
+        "materialized_output_difference_cases": [
+          "zero-gate-before-probabilistic-slot",
+          "constant-scale-before-probabilistic-slots",
+          "constant-turn-before-later-gates"
+        ],
+        "trace_only_cases": []
+      },
+      "skip-constant-interval-units": {
+        "materialized_output_difference_cases": [
+          "constant-scale-before-probabilistic-slots",
+          "constant-turn-before-later-gates"
+        ],
+        "trace_only_cases": []
+      },
+      "skip-probability-one-gates": {
+        "materialized_output_difference_cases": [],
+        "trace_only_cases": []
+      },
+      "skip-probability-zero-gates": {
+        "materialized_output_difference_cases": [
+          "zero-gate-before-probabilistic-slot"
+        ],
+        "trace_only_cases": []
+      },
+      "terminal-shrink-unit": {
+        "materialized_output_difference_cases": [],
+        "trace_only_cases": [
+          "constant-scale-before-probabilistic-slots",
+          "constant-turn-before-later-gates"
+        ]
+      },
+      "unconditional-angle-units": {
+        "materialized_output_difference_cases": [
+          "zero-gate-before-probabilistic-slot",
+          "constant-scale-before-probabilistic-slots",
+          "constant-turn-before-later-gates"
+        ],
+        "trace_only_cases": []
+      }
+    },
+    "meaning": "These are differences in materialized successful output. The three new targeted cases are successful, so no error-result comparison applies to them."
+  },
+  "runtime": {
+    "implementation": "CPython",
+    "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.43",
+    "python": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]"
+  },
+  "schema": "cp6-fixture-mutations/v1",
+  "scope": {
+    "excludes": [
+      "public operation implementation",
+      "catalog or shared fixture edit",
+      "draft fixture regeneration",
+      "renderer behavior",
+      "native conformance claim"
+    ],
+    "includes": "Existing successful canonical draft-fixture cases evaluated against seven intentionally wrong traversal or stream-consumption variants."
+  },
+  "source_bindings": {
+    "design/operations/cp6-branch-contract-decisions.md": "52d9d59df6b954a43564644607f76e64d4e9f17ee0ff8a9211917181b971b005",
+    "tools/diagnostics/cp6/run_fixture_mutations.py": "92879707f49d4676d7ab24063757782a46e1cf19f8afdff3e5f3f6cb8f6fb465",
+    "tools/generate_branch_tree_fixtures.py": "10d97521fa1763ac8fce853df34c021459307619802515c64a63901d71219b92",
+    "tools/generate_triangle_points_fixtures.py": "358cafdc640770e3c27e6816e3536d1e297d4285836bcad8d009b78aef9e5d23"
+  },
+  "status": "completed-bounded-private-draft-fixture-mutation-diagnostic",
+  "unmutated_control": {
+    "mutation": "control",
+    "raw_output_and_trace_equal": true,
+    "successful_canonical_cases_evaluated": 24
+  },
+  "verified_fixture_source_bindings": {
+    "evidence/investigations/cp6-numeric-cases.json": "0417d1c304ed96c02324d0fc69c3885617da7e8d63d91b57fe445890f2c13526",
+    "tools/generate_branch_tree_fixtures.py": "10d97521fa1763ac8fce853df34c021459307619802515c64a63901d71219b92",
+    "tools/generate_triangle_points_fixtures.py": "358cafdc640770e3c27e6816e3536d1e297d4285836bcad8d009b78aef9e5d23"
+  }
+}

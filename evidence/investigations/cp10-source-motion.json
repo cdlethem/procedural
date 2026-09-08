@@ -1,0 +1,434 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Source-state evidence for CP10 investigation only; no library operation, renderer or parameter recommendation.",
+  "source_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+  "source_sha256": {
+    "2018/Generativos/araniaaas/Point.pde": "c02cc6b70f4ccd8d539f9fb1210c3dfe79108eea4f7ac537c03b5672f6e8f298",
+    "LICENSE": "98abe149fa5183cb8edbcaac0a4bc3a7d01218f63e4fee5d779c05ecbb119dc4",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "tools/diagnostics/cp10/source_motion_probe.py": "5d5704e0ce65dbab495980d5fea796513898d87a43d43f4e39d78192941c4ad6",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943"
+  },
+  "raw_report": {
+    "path": ".work/investigations/cp10-source-motion2/result.json",
+    "sha256": "0c97865e0318b36acb9eaeb1c959a36c378e0419bbf781691f97322cfef987b4"
+  },
+  "checks": {
+    "cases": 5,
+    "updates_per_case": 600,
+    "official_processing_preprocessor": true,
+    "original_point_tab_unchanged": true,
+    "upstream_mit_notice_retained": true,
+    "no_render": true
+  },
+  "observations": [
+    "Initialized equal position/target/spawn with zero velocity and remote pointer remained exactly at rest for600updates.",
+    "Target and velocity disturbances each caused motion; both returned within0.01pixel of spawn after600updates in this seeded source case.",
+    "A pointer explicitly fixed at(0,0) moved a site at(100,100) toward approximately(12.918123,12.918123) by tick600, while a site at(1000,1000) stayed still.",
+    "Historical survey frame hashes differ, but no pointer trace identifies their cause; this probe does not reconstruct that run."
+  ],
+  "records": [
+    {
+      "case": "rest-no-pointer",
+      "tick": 0,
+      "x": 200.0,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "rest-no-pointer",
+      "tick": 1,
+      "x": 200.0,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "rest-no-pointer",
+      "tick": 10,
+      "x": 200.0,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "rest-no-pointer",
+      "tick": 30,
+      "x": 200.0,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "rest-no-pointer",
+      "tick": 60,
+      "x": 200.0,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "rest-no-pointer",
+      "tick": 120,
+      "x": 200.0,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "rest-no-pointer",
+      "tick": 600,
+      "x": 200.0,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "target-impulse",
+      "tick": 0,
+      "x": 200.0,
+      "y": 200.0,
+      "target_x": 300.0,
+      "target_y": 200.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "target-impulse",
+      "tick": 1,
+      "x": 202.4,
+      "y": 200.0,
+      "target_x": 296.0,
+      "target_y": 200.0,
+      "velocity_x": 1.6756923,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "target-impulse",
+      "tick": 10,
+      "x": 242.99712,
+      "y": 200.0,
+      "target_x": 266.48322,
+      "target_y": 200.0,
+      "velocity_x": 2.3559678,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "target-impulse",
+      "tick": 30,
+      "x": 243.95782,
+      "y": 200.0,
+      "target_x": 229.38573,
+      "target_y": 200.0,
+      "velocity_x": -0.8762674,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "target-impulse",
+      "tick": 60,
+      "x": 214.58186,
+      "y": 200.0,
+      "target_x": 208.63524,
+      "target_y": 200.0,
+      "velocity_x": -0.41572246,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "target-impulse",
+      "tick": 120,
+      "x": 201.26991,
+      "y": 200.0,
+      "target_x": 200.74568,
+      "target_y": 200.0,
+      "velocity_x": -0.036940273,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "target-impulse",
+      "tick": 600,
+      "x": 200.00023,
+      "y": 200.0,
+      "target_x": 200.00018,
+      "target_y": 200.0,
+      "velocity_x": -2.647601e-06,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "velocity-impulse",
+      "tick": 0,
+      "x": 200.0,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": 10.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "velocity-impulse",
+      "tick": 1,
+      "x": 210.0,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": 6.982051,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "velocity-impulse",
+      "tick": 10,
+      "x": 220.66348,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": -0.99470687,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "velocity-impulse",
+      "tick": 30,
+      "x": 202.3062,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": -0.21371303,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "velocity-impulse",
+      "tick": 60,
+      "x": 200.04861,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": -0.004715066,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "velocity-impulse",
+      "tick": 120,
+      "x": 200.00005,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": -2.772799e-06,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "velocity-impulse",
+      "tick": 600,
+      "x": 200.00005,
+      "y": 200.0,
+      "target_x": 200.0,
+      "target_y": 200.0,
+      "velocity_x": -2.647601e-06,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-near",
+      "tick": 0,
+      "x": 100.0,
+      "y": 100.0,
+      "target_x": 100.0,
+      "target_y": 100.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-near",
+      "tick": 1,
+      "x": 99.740265,
+      "y": 99.740265,
+      "target_x": 89.61075,
+      "target_y": 89.61075,
+      "velocity_x": -0.18134572,
+      "velocity_y": -0.18134572,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-near",
+      "tick": 10,
+      "x": 79.87895,
+      "y": 79.87895,
+      "target_x": 39.482746,
+      "target_y": 39.482746,
+      "velocity_x": -2.302849,
+      "velocity_y": -2.302849,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-near",
+      "tick": 30,
+      "x": 28.105274,
+      "y": 28.105274,
+      "target_x": 15.714951,
+      "target_y": 15.714951,
+      "velocity_x": -0.9818432,
+      "velocity_y": -0.9818432,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-near",
+      "tick": 60,
+      "x": 13.790496,
+      "y": 13.790496,
+      "target_x": 13.053289,
+      "target_y": 13.053289,
+      "velocity_x": -0.06261638,
+      "velocity_y": -0.06261638,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-near",
+      "tick": 120,
+      "x": 12.920508,
+      "y": 12.920508,
+      "target_x": 12.918485,
+      "target_y": 12.918485,
+      "velocity_x": -0.00017261459,
+      "velocity_y": -0.00017261459,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-near",
+      "tick": 600,
+      "x": 12.918123,
+      "y": 12.918123,
+      "target_x": 12.91812,
+      "target_y": 12.91812,
+      "velocity_x": -1.6547506e-07,
+      "velocity_y": -1.6547506e-07,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-far",
+      "tick": 0,
+      "x": 1000.0,
+      "y": 1000.0,
+      "target_x": 1000.0,
+      "target_y": 1000.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-far",
+      "tick": 1,
+      "x": 1000.0,
+      "y": 1000.0,
+      "target_x": 1000.0,
+      "target_y": 1000.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-far",
+      "tick": 10,
+      "x": 1000.0,
+      "y": 1000.0,
+      "target_x": 1000.0,
+      "target_y": 1000.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-far",
+      "tick": 30,
+      "x": 1000.0,
+      "y": 1000.0,
+      "target_x": 1000.0,
+      "target_y": 1000.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-far",
+      "tick": 60,
+      "x": 1000.0,
+      "y": 1000.0,
+      "target_x": 1000.0,
+      "target_y": 1000.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-far",
+      "tick": 120,
+      "x": 1000.0,
+      "y": 1000.0,
+      "target_x": 1000.0,
+      "target_y": 1000.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    },
+    {
+      "case": "origin-pointer-far",
+      "tick": 600,
+      "x": 1000.0,
+      "y": 1000.0,
+      "target_x": 1000.0,
+      "target_y": 1000.0,
+      "velocity_x": 0.0,
+      "velocity_y": 0.0,
+      "decay": 0.6982051
+    }
+  ],
+  "preserved_failed_attempt": {
+    "path": ".work/investigations/cp10-source-motion1/result.json",
+    "reason": "Direct javac of raw PDE literals failed float conversion; corrected diagnostic uses official Processing preprocessing without modifying upstream Point text."
+  },
+  "limitations": [
+    "Single seed42 source decay approximately0.6982051; no coefficient sweep.",
+    "Source Processing float semantics, not a portable binary64 implementation.",
+    "No triangles or imported triangulation library executed.",
+    "No image or artistic-range conclusion."
+  ]
+}

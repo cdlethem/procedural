@@ -1,0 +1,21 @@
+plugins { id 'com.android.application' }
+android {
+    compileSdkVersion 33
+    buildToolsVersion '30.0.3'
+    defaultConfig {
+        applicationId 'org.procedurals.bootstrap'
+        minSdkVersion 23
+        targetSdkVersion 33
+        versionCode 1
+        versionName '0.1'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    signingConfigs { debug { storeFile file('../debug.keystore') } }
+}
+dependencies {
+    implementation files('libs/processing-core.jar')
+    implementation 'androidx.appcompat:appcompat:1.6.0'
+}

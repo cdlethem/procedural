@@ -1,0 +1,91 @@
+{
+  "status": "root-admitted-capability-dependency",
+  "cluster_id": "mesh.radial-profile-surface-3d",
+  "proposal_sha256": "0001acc18bbfb815370ac18bb10c1c71f44f07738da483de4d2a9a40828f0b55",
+  "ledger_sha256_before": "fe9b632fdf32a1264e45ee8453c6b6a1c24b3c8fdd1ffee60efa0676713c72ad",
+  "ledger_sha256_after": "c8913e353b58704fb3373ae2da1adc67ad758685149586a885bbeba8b7617ba3",
+  "records_changed": [
+    "2015/Generativos/FFt/prueba4#0"
+  ],
+  "record_before": {
+    "sketch": "2015/Generativos/FFt/prueba4",
+    "notes_path": "out/2015/Generativos/FFt/prueba4/notes.md",
+    "ordinal": 0,
+    "source_sha256": "96655622169acc6f62bb1bbba7a359d15fca487ec48178872f3348259d7738fb",
+    "candidate": {
+      "name": "tubeQuadMesh",
+      "signature": "tubeQuadMesh(length, aroundSegs, lenLayers, angleOffset) -> void",
+      "note": "3D tube as a QUADS grid: length along X, circular (cos/sin) cross-section in YZ"
+    },
+    "modularisation_context": {
+      "relation": "named_in_modularisation_notes",
+      "section_judgement": "contains_one_off_guidance",
+      "excerpt": "- **Generic:** `tubeQuadMesh(length, aroundSegs, lenLayers, angleOffset)` \u2014 the `beginShape(QUADS)` double loop is a reusable 3D tube/grid primitive (length, ring count, layer count, phase). The unused `poly(...)` regular-polygon helper is also reusable as-is. - **One-off art decisions:** the specific constants (`lar=100, div=10, ang=PI*1.5`), the `rotateX(PI/4)` tilt + `rotateZ(frameC"
+    },
+    "disposition": "merge",
+    "status": "reviewed_provisional",
+    "reason": "A circular YZ cross-section is sampled along X and adjacent rings are connected by quads. Merge profile-to-ring surface computation; axis orientation is a transform and audio/scene motion is outside geometry. Preserve open/capped differences for the contract.",
+    "triage": {
+      "cluster_id": "review.unresolved-computation",
+      "disposition": "review_required",
+      "status": "needs_note_reading",
+      "reason": "no reviewed computation match met both handle and signature/note evidence"
+    },
+    "evidence_sha256": "2b5d7930799e47b00c30ad318eba1d568fbfb135f624b17922da3516e69e20a5",
+    "review_basis": "out/2015/Generativos/FFt/prueba4/notes.md#modularisation-notes",
+    "cluster_id": "mesh.revolve"
+  },
+  "record_after": {
+    "sketch": "2015/Generativos/FFt/prueba4",
+    "notes_path": "out/2015/Generativos/FFt/prueba4/notes.md",
+    "ordinal": 0,
+    "source_sha256": "96655622169acc6f62bb1bbba7a359d15fca487ec48178872f3348259d7738fb",
+    "candidate": {
+      "name": "tubeQuadMesh",
+      "signature": "tubeQuadMesh(length, aroundSegs, lenLayers, angleOffset) -> void",
+      "note": "3D tube as a QUADS grid: length along X, circular (cos/sin) cross-section in YZ"
+    },
+    "modularisation_context": {
+      "relation": "named_in_modularisation_notes",
+      "section_judgement": "contains_one_off_guidance",
+      "excerpt": "- **Generic:** `tubeQuadMesh(length, aroundSegs, lenLayers, angleOffset)` \u2014 the `beginShape(QUADS)` double loop is a reusable 3D tube/grid primitive (length, ring count, layer count, phase). The unused `poly(...)` regular-polygon helper is also reusable as-is. - **One-off art decisions:** the specific constants (`lar=100, div=10, ang=PI*1.5`), the `rotateX(PI/4)` tilt + `rotateZ(frameC"
+    },
+    "disposition": "review_required",
+    "status": "reviewed_defer",
+    "reason": "Root verified the source\u2019s longitudinal QUADS strips overlap instead of forming contiguous axial rings. That topology is not equivalent to the selected ordered axial-profile surface, so retain mesh.revolve as a family investigation but defer this candidate rather than merging a whole helper.",
+    "triage": {
+      "cluster_id": "review.unresolved-computation",
+      "disposition": "review_required",
+      "status": "needs_note_reading",
+      "reason": "no reviewed computation match met both handle and signature/note evidence"
+    },
+    "evidence_sha256": "2b5d7930799e47b00c30ad318eba1d568fbfb135f624b17922da3516e69e20a5",
+    "review_basis": "out/2015/Generativos/FFt/prueba4/notes.md#modularisation-notes",
+    "cluster_id": "mesh.revolve",
+    "source_audit": "evidence/investigations/cp7-profile-source-review.json",
+    "architecture_review": "design/capabilities/cp7-profile-neighbour-boundaries.md"
+  },
+  "summary": {
+    "dispositions": {
+      "keep": 26,
+      "merge": 100,
+      "reject": 18,
+      "review_required": 1790
+    },
+    "statuses": {
+      "blocked_data_quality": 5,
+      "research_required": 2,
+      "reviewed_data_gap": 1,
+      "reviewed_defer": 198,
+      "reviewed_provisional": 178,
+      "unreviewed": 1550
+    }
+  },
+  "root_corrections": [
+    "Fixed proposal doubled survey/survey note paths and verified actual note/upstream/evidence hashes.",
+    "Retained mandatory parent-note review_basis, added separate source audit and architecture review for prueba4 correction.",
+    "Recorded reviewed computation-level admission; exact numeric/ownership/errors remain contract work, not an open architecture choice.",
+    "Added explicit preallocation face-work limit and missing cilindros source-random/wave/size remainder; corrected per-ring/band colour descriptions."
+  ],
+  "no_public_implementation_authorized": true
+}

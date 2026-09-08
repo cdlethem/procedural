@@ -1,0 +1,281 @@
+{
+  "accepted_cp10_review": {
+    "path": "evidence/distribution/cp10-review.json",
+    "sha256": "c50a9bbc94c2ec48c6a76ea5bbef1a7a13d457eba8ae349133fe110ec92aa4da",
+    "status": "accepted"
+  },
+  "accepted_cp11_core_review": {
+    "path": "evidence/conformance/occupied-lattice-java-root-review.json",
+    "sha256": "15bbdb106c308a88807108fabaca5c4e05aa8dfe2a79ff1183e6c6da0ca141e9",
+    "status": "accepted"
+  },
+  "accepted_cp11_java2d_review": {
+    "path": "evidence/reproductions/cp11-java2d/root-review.json",
+    "sha256": "e7d610575cb3ed46d9f6d03a6d43389c3eb21addc5176371ff9278b2e2df5708",
+    "status": "accepted"
+  },
+  "catalogs": {
+    "procedurals/catalog/operations/cyclic-palette.json": {
+      "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+      "source": "catalog/operations/cyclic-palette.json"
+    },
+    "procedurals/catalog/operations/delaunay-2d.json": {
+      "sha256": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
+      "source": "catalog/operations/delaunay-2d.json"
+    },
+    "procedurals/catalog/operations/gradient-noise-2d-01.json": {
+      "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+      "source": "catalog/operations/gradient-noise-2d-01.json"
+    },
+    "procedurals/catalog/operations/gradient-path.json": {
+      "sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+      "source": "catalog/operations/gradient-path.json"
+    },
+    "procedurals/catalog/operations/occupied-lattice-paths-2d.json": {
+      "sha256": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d",
+      "source": "catalog/operations/occupied-lattice-paths-2d.json"
+    },
+    "procedurals/catalog/operations/ordered-circle-filter.json": {
+      "sha256": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+      "source": "catalog/operations/ordered-circle-filter.json"
+    },
+    "procedurals/catalog/operations/radial-profile-surface.json": {
+      "sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+      "source": "catalog/operations/radial-profile-surface.json"
+    },
+    "procedurals/catalog/operations/regular-grid.json": {
+      "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
+      "source": "catalog/operations/regular-grid.json"
+    },
+    "procedurals/catalog/operations/seeded-circle-placement.json": {
+      "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+      "source": "catalog/operations/seeded-circle-placement.json"
+    },
+    "procedurals/catalog/operations/seeded-endpoint-branches.json": {
+      "sha256": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+      "source": "catalog/operations/seeded-endpoint-branches.json"
+    },
+    "procedurals/catalog/operations/seeded-quadrant-partition.json": {
+      "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+      "source": "catalog/operations/seeded-quadrant-partition.json"
+    },
+    "procedurals/catalog/operations/seeded-triangle-points.json": {
+      "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+      "source": "catalog/operations/seeded-triangle-points.json"
+    },
+    "procedurals/catalog/operations/target-springs-2d.json": {
+      "sha256": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3",
+      "source": "catalog/operations/target-springs-2d.json"
+    },
+    "procedurals/catalog/operations/triangle-coordinate-map.json": {
+      "sha256": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+      "source": "catalog/operations/triangle-coordinate-map.json"
+    }
+  },
+  "documents": {
+    "procedurals/docs/branch-marks.md": {
+      "sha256": "b0f60cfb7d9e5a1c203073e73a32574c5cdfdee64a91725ea9b988b202247900",
+      "source": "docs/branch-marks.md"
+    },
+    "procedurals/docs/facet-marks.md": {
+      "sha256": "e2dad8ed3fa74cea5e283d26b9cd4e8fa6ac88ee8c88e0e9b0dcc4f460001f10",
+      "source": "docs/facet-marks.md"
+    },
+    "procedurals/docs/getting-started.md": {
+      "sha256": "38cd131271f2ee66fab21487642351630f4b548b0bb30d1d2f9a6d294ec1da09",
+      "source": "docs/getting-started.md"
+    },
+    "procedurals/docs/glyph-marks.md": {
+      "sha256": "34bc8ab42fd0d6c8bcb4701c4770621d059925ec6f5bff2b8c6e1de14b514310",
+      "source": "docs/glyph-marks.md"
+    },
+    "procedurals/docs/grain-marks.md": {
+      "sha256": "49f7a45488785e1892fe7a555ce5b9285464ac924fdbd3f5ac61f1a4015aaf6b",
+      "source": "docs/grain-marks.md"
+    },
+    "procedurals/docs/installing-facet-marks.md": {
+      "sha256": "a5ada3a6da3d384c4ef60991fd183c29a44f52edd3a6c97bcb02019713dcbb2b",
+      "source": "docs/installing-facet-marks.md"
+    },
+    "procedurals/docs/installing-glyph-marks.md": {
+      "sha256": "bbcc3c77222f2877b944dda56e34bb12bfdf8a910a2749f2c0b7c09ba99c2278",
+      "source": "docs/installing-glyph-marks.md"
+    },
+    "procedurals/docs/installing-lattice-marks.md": {
+      "sha256": "f24cc94f8166c8a30e9749a865118639cda2869a9ce0245bbf1ca295e597501f",
+      "source": "docs/installing-lattice-marks.md"
+    },
+    "procedurals/docs/installing-profile-marks.md": {
+      "sha256": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429",
+      "source": "docs/installing-profile-marks.md"
+    },
+    "procedurals/docs/installing-spring-marks.md": {
+      "sha256": "aa1c3ee3fab265caeaa38e71a9c33671439c49c966d28329d085a74601f936ed",
+      "source": "docs/installing-spring-marks.md"
+    },
+    "procedurals/docs/lattice-marks.md": {
+      "sha256": "4eef8412032ec237a105fb75bc5a084b665f0d46e7e2245301a0497d3d911e47",
+      "source": "docs/lattice-marks.md"
+    },
+    "procedurals/docs/path-marks.md": {
+      "sha256": "c8408c54429bfc5b140ae5ecd61c1ef6d290510a3900e85dce138370714555a3",
+      "source": "docs/path-marks.md"
+    },
+    "procedurals/docs/placement-marks.md": {
+      "sha256": "7c625d7739d61d125bfb595b3cf45d1c6be960797153e2a9aff6bec57029b8c7",
+      "source": "docs/placement-marks.md"
+    },
+    "procedurals/docs/profile-marks.md": {
+      "sha256": "8890f1f7200e4d4563114ee2f4a26a19dde1bd9ee230a1fb6d22f111afb0c130",
+      "source": "docs/profile-marks.md"
+    },
+    "procedurals/docs/reference/operations.md": {
+      "sha256": "fec34703cfd878f71d38d6bdaa56cb8ea53dbb5cee8eeb8af3b82e1aa125d5ae",
+      "source": "docs/reference/operations.md"
+    },
+    "procedurals/docs/region-marks.md": {
+      "sha256": "8614f996dea971a19c9a0bc2f737ec06bd1854e1f71de1940964ec3797ca86d3",
+      "source": "docs/region-marks.md"
+    },
+    "procedurals/docs/spring-marks.md": {
+      "sha256": "4c44537978176f4e88ab84309a3be7f01f226d36e158eda6fedeac39a44407bc",
+      "source": "docs/spring-marks.md"
+    }
+  },
+  "input_sha256": {
+    ".work/dist/cp10/java/procedurals-processing-0.10.0.zip": "f045387a0bc1912795993b08ee7401023731da3bc06d2cc290ba772d9ed08dab",
+    ".work/examples/cp11-candidate2/LatticeMarks/LatticeComposition.java": "a4044221220888e89dba9508747867f48e4cf028fb5ddd20f2f0c492567ee641",
+    ".work/examples/cp11-candidate2/LatticeMarks/LatticeMarks.pde": "3b8cb0d7a3345f931fdd8558b083f8b02ee13971a952a66546a009ed3d1dd634",
+    ".work/examples/cp11-candidate2/LatticeMarks/code/procedurals.jar": "cce0c27827e8fddbeae1c94ada8efc38ebe4d53625779e4e11ad428baa43252e",
+    ".work/examples/cp11-candidate2/result.json": "8c16f681656fa201c0932fd6d85d2a79857bdf868229dde251d5a9c0d96995ec",
+    "catalog/operations/cyclic-palette.json": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+    "catalog/operations/delaunay-2d.json": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
+    "catalog/operations/gradient-noise-2d-01.json": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+    "catalog/operations/gradient-path.json": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+    "catalog/operations/occupied-lattice-paths-2d.json": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d",
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "catalog/operations/regular-grid.json": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "catalog/operations/seeded-endpoint-branches.json": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/target-springs-2d.json": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "docs/branch-marks.md": "b0f60cfb7d9e5a1c203073e73a32574c5cdfdee64a91725ea9b988b202247900",
+    "docs/facet-marks.md": "e2dad8ed3fa74cea5e283d26b9cd4e8fa6ac88ee8c88e0e9b0dcc4f460001f10",
+    "docs/getting-started.md": "38cd131271f2ee66fab21487642351630f4b548b0bb30d1d2f9a6d294ec1da09",
+    "docs/glyph-marks.md": "34bc8ab42fd0d6c8bcb4701c4770621d059925ec6f5bff2b8c6e1de14b514310",
+    "docs/grain-marks.md": "49f7a45488785e1892fe7a555ce5b9285464ac924fdbd3f5ac61f1a4015aaf6b",
+    "docs/installing-facet-marks.md": "a5ada3a6da3d384c4ef60991fd183c29a44f52edd3a6c97bcb02019713dcbb2b",
+    "docs/installing-glyph-marks.md": "bbcc3c77222f2877b944dda56e34bb12bfdf8a910a2749f2c0b7c09ba99c2278",
+    "docs/installing-lattice-marks.md": "f24cc94f8166c8a30e9749a865118639cda2869a9ce0245bbf1ca295e597501f",
+    "docs/installing-profile-marks.md": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429",
+    "docs/installing-spring-marks.md": "aa1c3ee3fab265caeaa38e71a9c33671439c49c966d28329d085a74601f936ed",
+    "docs/lattice-marks.md": "4eef8412032ec237a105fb75bc5a084b665f0d46e7e2245301a0497d3d911e47",
+    "docs/path-marks.md": "c8408c54429bfc5b140ae5ecd61c1ef6d290510a3900e85dce138370714555a3",
+    "docs/placement-marks.md": "7c625d7739d61d125bfb595b3cf45d1c6be960797153e2a9aff6bec57029b8c7",
+    "docs/profile-marks.md": "8890f1f7200e4d4563114ee2f4a26a19dde1bd9ee230a1fb6d22f111afb0c130",
+    "docs/reference/operations.md": "fec34703cfd878f71d38d6bdaa56cb8ea53dbb5cee8eeb8af3b82e1aa125d5ae",
+    "docs/region-marks.md": "8614f996dea971a19c9a0bc2f737ec06bd1854e1f71de1940964ec3797ca86d3",
+    "docs/spring-marks.md": "4c44537978176f4e88ab84309a3be7f01f226d36e158eda6fedeac39a44407bc",
+    "evidence/conformance/occupied-lattice-java-root-review.json": "15bbdb106c308a88807108fabaca5c4e05aa8dfe2a79ff1183e6c6da0ca141e9",
+    "evidence/distribution/cp10-review.json": "c50a9bbc94c2ec48c6a76ea5bbef1a7a13d457eba8ae349133fe110ec92aa4da",
+    "evidence/reproductions/cp11-java2d/result.json": "375d6e7d5e019f0c6a8d5b59075d154927ad5e581dfa803b3507aed4e65652d4",
+    "evidence/reproductions/cp11-java2d/root-review.json": "e7d610575cb3ed46d9f6d03a6d43389c3eb21addc5176371ff9278b2e2df5708",
+    "packages/java-processing/examples/LatticeMarks/LatticeMarks.pde": "3b8cb0d7a3345f931fdd8558b083f8b02ee13971a952a66546a009ed3d1dd634",
+    "packages/java/examples/LatticeMarks/LatticeComposition.java": "a4044221220888e89dba9508747867f48e4cf028fb5ddd20f2f0c492567ee641",
+    "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+    "tools/build_lattice_marks_java.py": "cf063d540ff4c722d01f5a861665f9f08486b32e46586d5478bccba39d11d91b"
+  },
+  "input_sha256_after": {
+    ".work/dist/cp10/java/procedurals-processing-0.10.0.zip": "f045387a0bc1912795993b08ee7401023731da3bc06d2cc290ba772d9ed08dab",
+    ".work/examples/cp11-candidate2/LatticeMarks/LatticeComposition.java": "a4044221220888e89dba9508747867f48e4cf028fb5ddd20f2f0c492567ee641",
+    ".work/examples/cp11-candidate2/LatticeMarks/LatticeMarks.pde": "3b8cb0d7a3345f931fdd8558b083f8b02ee13971a952a66546a009ed3d1dd634",
+    ".work/examples/cp11-candidate2/LatticeMarks/code/procedurals.jar": "cce0c27827e8fddbeae1c94ada8efc38ebe4d53625779e4e11ad428baa43252e",
+    ".work/examples/cp11-candidate2/result.json": "8c16f681656fa201c0932fd6d85d2a79857bdf868229dde251d5a9c0d96995ec",
+    "catalog/operations/cyclic-palette.json": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+    "catalog/operations/delaunay-2d.json": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
+    "catalog/operations/gradient-noise-2d-01.json": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+    "catalog/operations/gradient-path.json": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+    "catalog/operations/occupied-lattice-paths-2d.json": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d",
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "catalog/operations/regular-grid.json": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "catalog/operations/seeded-endpoint-branches.json": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/target-springs-2d.json": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "docs/branch-marks.md": "b0f60cfb7d9e5a1c203073e73a32574c5cdfdee64a91725ea9b988b202247900",
+    "docs/facet-marks.md": "e2dad8ed3fa74cea5e283d26b9cd4e8fa6ac88ee8c88e0e9b0dcc4f460001f10",
+    "docs/getting-started.md": "38cd131271f2ee66fab21487642351630f4b548b0bb30d1d2f9a6d294ec1da09",
+    "docs/glyph-marks.md": "34bc8ab42fd0d6c8bcb4701c4770621d059925ec6f5bff2b8c6e1de14b514310",
+    "docs/grain-marks.md": "49f7a45488785e1892fe7a555ce5b9285464ac924fdbd3f5ac61f1a4015aaf6b",
+    "docs/installing-facet-marks.md": "a5ada3a6da3d384c4ef60991fd183c29a44f52edd3a6c97bcb02019713dcbb2b",
+    "docs/installing-glyph-marks.md": "bbcc3c77222f2877b944dda56e34bb12bfdf8a910a2749f2c0b7c09ba99c2278",
+    "docs/installing-lattice-marks.md": "f24cc94f8166c8a30e9749a865118639cda2869a9ce0245bbf1ca295e597501f",
+    "docs/installing-profile-marks.md": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429",
+    "docs/installing-spring-marks.md": "aa1c3ee3fab265caeaa38e71a9c33671439c49c966d28329d085a74601f936ed",
+    "docs/lattice-marks.md": "4eef8412032ec237a105fb75bc5a084b665f0d46e7e2245301a0497d3d911e47",
+    "docs/path-marks.md": "c8408c54429bfc5b140ae5ecd61c1ef6d290510a3900e85dce138370714555a3",
+    "docs/placement-marks.md": "7c625d7739d61d125bfb595b3cf45d1c6be960797153e2a9aff6bec57029b8c7",
+    "docs/profile-marks.md": "8890f1f7200e4d4563114ee2f4a26a19dde1bd9ee230a1fb6d22f111afb0c130",
+    "docs/reference/operations.md": "fec34703cfd878f71d38d6bdaa56cb8ea53dbb5cee8eeb8af3b82e1aa125d5ae",
+    "docs/region-marks.md": "8614f996dea971a19c9a0bc2f737ec06bd1854e1f71de1940964ec3797ca86d3",
+    "docs/spring-marks.md": "4c44537978176f4e88ab84309a3be7f01f226d36e158eda6fedeac39a44407bc",
+    "evidence/conformance/occupied-lattice-java-root-review.json": "15bbdb106c308a88807108fabaca5c4e05aa8dfe2a79ff1183e6c6da0ca141e9",
+    "evidence/distribution/cp10-review.json": "c50a9bbc94c2ec48c6a76ea5bbef1a7a13d457eba8ae349133fe110ec92aa4da",
+    "evidence/reproductions/cp11-java2d/result.json": "375d6e7d5e019f0c6a8d5b59075d154927ad5e581dfa803b3507aed4e65652d4",
+    "evidence/reproductions/cp11-java2d/root-review.json": "e7d610575cb3ed46d9f6d03a6d43389c3eb21addc5176371ff9278b2e2df5708",
+    "packages/java-processing/examples/LatticeMarks/LatticeMarks.pde": "3b8cb0d7a3345f931fdd8558b083f8b02ee13971a952a66546a009ed3d1dd634",
+    "packages/java/examples/LatticeMarks/LatticeComposition.java": "a4044221220888e89dba9508747867f48e4cf028fb5ddd20f2f0c492567ee641",
+    "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+    "tools/build_lattice_marks_java.py": "cf063d540ff4c722d01f5a861665f9f08486b32e46586d5478bccba39d11d91b"
+  },
+  "layout": {
+    "added_members": {
+      "procedurals/catalog/operations/occupied-lattice-paths-2d.json": {
+        "sha256": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d",
+        "source": "catalog/operations/occupied-lattice-paths-2d.json"
+      },
+      "procedurals/examples/LatticeMarks/LatticeComposition.java": {
+        "sha256": "a4044221220888e89dba9508747867f48e4cf028fb5ddd20f2f0c492567ee641",
+        "source": "packages/java/examples/LatticeMarks/LatticeComposition.java"
+      },
+      "procedurals/examples/LatticeMarks/LatticeMarks.pde": {
+        "sha256": "3b8cb0d7a3345f931fdd8558b083f8b02ee13971a952a66546a009ed3d1dd634",
+        "source": "packages/java-processing/examples/LatticeMarks/LatticeMarks.pde"
+      }
+    },
+    "archive_members": 65,
+    "archive_path": ".work/dist/cp11/java-final/procedurals-processing-0.11.0.zip",
+    "archive_sha256": "595a892ebf37ca689a18db0acf7d0e113f7c94da855e4c2a462a431e98cf6495",
+    "core_jar": {
+      "added_members": {
+        "org/procedurals/paths/OccupiedLatticePaths2D$Initial.class": "a696b576e326de855a2da51277afabafd6d22b88f3c2b7dd5d5370b4eb7f415b",
+        "org/procedurals/paths/OccupiedLatticePaths2D$LatticeException.class": "2b5a0e4b3fb327085d8571ac80b5c7b98a518bf38fcac025c0059678a38d45fd",
+        "org/procedurals/paths/OccupiedLatticePaths2D$LongSet.class": "1010d782f1e4e9b9f63cb2e80ad528eabd9b6eb7ca9b70d1c4baed099ce239e2",
+        "org/procedurals/paths/OccupiedLatticePaths2D$Storage.class": "f5e3ffe2854f4cafa13d10b5eb215c7226431ace1d16a48d3d3ba6375ba5ce0b",
+        "org/procedurals/paths/OccupiedLatticePaths2D$Xoshiro128StarStar11.class": "df86045129cb8bb956bfdeeb908d539e9ea2858a2114215d8f30923b3d8179ea",
+        "org/procedurals/paths/OccupiedLatticePaths2D.class": "c8134c640940e3608b0154c79637a0b14a422c40ef1e120537479b70f548638f"
+      },
+      "candidate_sha256": "cce0c27827e8fddbeae1c94ada8efc38ebe4d53625779e4e11ad428baa43252e",
+      "preserved_prior_members": 68,
+      "prior_sha256": "f37cf955f87eaf47e7fc52cf82b6047037e1b90524905c1d2072b5317349d992"
+    },
+    "operations": 14,
+    "preserved_inherited_payloads": 30,
+    "previous_operations": 13,
+    "previous_starters": 10,
+    "starters": 11
+  },
+  "library_properties": {
+    "pretty_version": "0.11.0",
+    "version": 11
+  },
+  "review_status": "pending_root_distribution_review",
+  "scope": "Local Java 0.11.0 archive with eleven starters and fourteen operations; CP11 JAVA2D workflow evidence is bound, but registry publication and other targets are not claimed.",
+  "status": "staged"
+}

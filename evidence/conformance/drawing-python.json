@@ -1,0 +1,23 @@
+{
+  "target": "python",
+  "scope": "Pure command/environment validator only; no frame lifecycle or native backend certification.",
+  "input_sha256": {
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "tests/native/drawing-python.py": "d0eb4e198ee8eea4c27795083f0fe399122de4b4be6ef892081ecf0bd3ad449f",
+    "catalog/drawing/fresh-raster-2d.json": "8fd5d39bb1196d689aa8ca7a88e9f22bb75987c23bc8716e0fe00493b0432346",
+    "fixtures/drawing/fresh-raster-normalized.json": "0b1d8769e5e0006c54a78d45342d054367be1c36d4ae8323f8c1a90d93d705ab",
+    "fixtures/drawing/geometry-investigation.json": "419629bce6bb078d8cc83f5004e5b7d4c70749625ccfcc74e89c646c7058a803",
+    "fixtures/drawing/fresh-raster-schema.json": "e241b0a07396f92f83bf4ca4e3d6c9a84fbe9aa9cd6625a7057ab5b5de773d0e",
+    "tools/run_drawing_conformance.py": "485be288525b0edbc408973a3d461e10b066f1c11645089d31f867f919826165"
+  },
+  "runtime": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]",
+  "result": {
+    "language": "python",
+    "normalized_cases": 31,
+    "exact_topology_cases": 15,
+    "conversion_cases": 6,
+    "ownership_and_native_invalid_inputs": true,
+    "scope": "pure validator only; no lifecycle or native adapter claim"
+  },
+  "stderr": ""
+}

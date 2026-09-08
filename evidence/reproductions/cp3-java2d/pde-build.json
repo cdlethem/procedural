@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "scope": "Official Processing 4.5.6 PlacementMarks PDE preprocessing and core-count configuration only; no GUI lifecycle or render was run.",
+  "input_sha256": {
+    ".work/dist/cp3/java/consumer/procedurals/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+    "tests/native/PlacementMarksPdeConfiguration.java": "f85924c7a8fd09e7ccfb232f7235d4e3d6a56f4afdd3c1e631234ae76712f2ed",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    ".work/dist/cp3/java/consumer/procedurals/examples/PlacementMarks/PlacementMarks.pde": "2138e14197eaed823affb56db5980420f72576459e68ad0fe88c68214a433fd3",
+    "packages/java-processing/examples/PlacementMarks/PlacementMarks.pde": "2138e14197eaed823affb56db5980420f72576459e68ad0fe88c68214a433fd3",
+    "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "tools/run_grid_conformance.py": "392d23b61f713c7d204e215a9b468874f78b213741dc1e163b4b5fcb5553b180",
+    "tools/check_placement_marks_pde.py": "4ac73de87f68bf340427d45681a292b08c44da3e2a4285055fbeb1be982af949",
+    ".work/dist/cp3/java/consumer/procedurals/library/procedurals.jar": "73b5d6914c2222b3bce1100e5bee906815f38fb1d14ba9d8397db5a069c36004",
+    "evidence/distribution/cp3-java.json": "6268fbcda4786b4e446644ee977076a9a952581d2f6c64dea94ee6d1375e361f"
+  },
+  "generated_java_sha256": "099f69400a705a067dc3c2637cbda14b704414ad58227fc89b56ee3aab785f31",
+  "class_sha256": "ca5ae65a029586b9933f487e3362344b456fdc4d134a3a3607a9fe046418de00",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "build": ".work/build/placement-marks-pde-installed",
+  "installed_library": {
+    "path": ".work/dist/cp3/java/consumer/procedurals/library/procedurals.jar",
+    "sha256": "73b5d6914c2222b3bce1100e5bee906815f38fb1d14ba9d8397db5a069c36004",
+    "distribution_report": "evidence/distribution/cp3-java.json",
+    "distribution_report_sha256": "6268fbcda4786b4e446644ee977076a9a952581d2f6c64dea94ee6d1375e361f"
+  }
+}

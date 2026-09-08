@@ -1,0 +1,56 @@
+{
+  "id": "cp2-public-android",
+  "status": "planned",
+  "scope": "Actual Android API33 editable PathMarks Activity on the existing Processing Android renderer. Raw retained movement and raw command generation stay unchanged; the fixed 640px example submits only segment bboxes intersecting [-1,641]². This validates native controls, retained movement, drawing submission, cached PNG transfer, and MediaStore output. It does not claim upstream pixel reproduction, physical-device support, clipping, or human usability.",
+  "brief": "design/capabilities/cp2-public-example.md",
+  "operation": "path.gradient-trace-2d",
+  "runtime": {
+    "application_id": "org.procedurals.pathmarksprobe",
+    "activity": "org.procedurals.examples.pathmarks.PathMarksProbeActivity",
+    "adb_port": 5038,
+    "serial": "emulator-5580",
+    "api": 33,
+    "renderer": "processing.a2d.PGraphicsAndroid2D"
+  },
+  "dimensions": [640, 640],
+  "density": 1,
+  "background_rgb": "ECE7DA",
+  "attempt_budget": 1,
+  "composition_budget": 7,
+  "timeout_seconds": 1800,
+  "execution_timeout_seconds": 1770,
+  "cleanup_timeout_seconds": 30,
+  "output": ".work/reproductions/cp2-android",
+  "pure_preflight": {
+    "tool": "tools/check_path_marks_commands.py",
+    "output": ".work/reproductions/cp2-android/pure-path-marks.json",
+    "checks": ["all 24 count-prefix paths", "distance heading-zero/later-feedback", "unchanged raw movement", "all-state submitted command counts", "shared Java DrawingValues normalization and raw-order/bbox culling proof"]
+  },
+  "states": [
+    {"ordinal": 1, "id": "marks", "trigger": "initial Activity frame", "trace": false, "length": 12, "alternate": false, "steps": 2000, "distance": 0.4, "raw_commands": 12000, "submitted_commands": 7002},
+    {"ordinal": 2, "id": "trace", "trigger": "Mode tap", "trace": true, "length": 12, "alternate": false, "steps": 2000, "distance": 0.4, "raw_commands": 48000, "submitted_commands": 27784},
+    {"ordinal": 3, "id": "marks-replay", "trigger": "Mode tap", "trace": false, "length": 12, "alternate": false, "steps": 2000, "distance": 0.4, "raw_commands": 12000, "submitted_commands": 7002},
+    {"ordinal": 4, "id": "long-marks", "trigger": "Length tap", "trace": false, "length": 24, "alternate": false, "steps": 2000, "distance": 0.4, "raw_commands": 12000, "submitted_commands": 7057},
+    {"ordinal": 5, "id": "palette", "trigger": "Palette tap", "trace": false, "length": 24, "alternate": true, "steps": 2000, "distance": 0.4, "raw_commands": 12000, "submitted_commands": 7057},
+    {"ordinal": 6, "id": "count", "trigger": "Count tap", "trace": false, "length": 24, "alternate": true, "steps": 2001, "distance": 0.4, "raw_commands": 12024, "submitted_commands": 7066},
+    {"ordinal": 7, "id": "distance", "trigger": "Distance tap", "trace": false, "length": 24, "alternate": true, "steps": 2001, "distance": 0.8, "raw_commands": 12024, "submitted_commands": 5500}
+  ],
+  "visual_images": ["marks.png", "trace.png", "long-marks.png"],
+  "save": {
+    "trigger": "Save PNG tap after ordinal 7",
+    "checks": ["saved URI bytes exactly equal acknowledged cached frame-7 PNG", "decoded save is opaque 640x640", "MediaStore row is published image/png under Pictures/Procedurals", "after save, a UI-thread delayed observation measures a finite elapsed interval of at least 300ms and rechecks the same snapshot/movement/cached bytes/final counts 7 compositions and 8 completed frames before terminal result"]
+  },
+  "native_checks": [
+    "all six actual visible controls are enabled only after the acknowledged frame",
+    "all seven exact state/options/version transitions occur through observed Android button centers",
+    "all seven Activity snapshots expose raw/submitted counts matching pure Java proof",
+    "M, M, L, and C retain the exact PathMarkComposition and each of its 24 path objects",
+    "N and D replace the composition and all 24 paths",
+    "actual palette-to-count paths have exact 2000-step point/heading prefix; count-to-distance preserves heading zero and changes a later heading",
+    "marks replay cached PNG pixels equal base cached PNG pixels",
+    "three registered visual PNGs and final save are opaque nonempty 640x640",
+    "only cached acknowledged image bytes are saved; no redraw or composition happens during save"
+  ],
+  "visual_acceptance": "Root and Sol inspect marks.png, trace.png, and long-marks.png for visible continuous movement, coherent perpendicular marks, and length-dependent coverage, compared with the accepted private CP2 mechanism without claiming cross-renderer raster identity.",
+  "failure_policy": "Before a native launch, the executor rejects stale attempt/image artifacts, performs pure Java preflight, builds one isolated APK, checks source/runtime bindings, then reserves one attempt under .work/processing-render.lock. The total host budget is 1800 seconds: execution/ADB/pulls use the first 1770 seconds, leaving a separately bounded 30 seconds for force-stop cleanup before terminal evidence publication. Any install, launch, ADB, timeout, assertion, cleanup, or process failure consumes that one attempt and preserves evidence. No automatic retry, emulator restart, or second execution is available from this executor."
+}

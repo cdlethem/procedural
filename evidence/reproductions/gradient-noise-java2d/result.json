@@ -1,0 +1,19 @@
+{
+  "scope": "Public grid/noise Java operations consumed by a private Processing JAVA2D drawing probe; candidate-design agreement only, not upstream corpus reproduction or completed adapter validation.",
+  "exact_rgba_pixels": true,
+  "dimensions": [
+    640,
+    640
+  ],
+  "sha256": {
+    "evidence/reproductions/gradient-noise-java2d/plan.json": "ea2528af5ba9074a873e6bd7919eb16db1dfc140c1e0ab7ac902fa6eb4a8c82d",
+    ".work/experiments/cp1-noise-choice/single.png": "e7d6d75e32f65a6a78efd3641c426abcc1eb2486f1f0db535e0cf88c35bfbd7f",
+    ".work/reproductions/gradient-noise-java2d/single.png": "e7d6d75e32f65a6a78efd3641c426abcc1eb2486f1f0db535e0cf88c35bfbd7f",
+    "tests/native/NoisePublicRenderProbe.java": "9127608bfeee7de451fe3464c812c9195d51488a720ae862f6e16842e52378b4",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "dist/procedurals-core-0.1.0.jar": "4acc20989dfdf07e93627f075574933756b55dd4e165abc53a3f41b249e3afbc",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "tools/check_noise_render.py": "9df08f6565939e57d8ed10dc3fea1cb8c651d44782b0879b6f9b789014d6a900"
+  }
+}

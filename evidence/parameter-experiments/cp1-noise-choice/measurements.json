@@ -1,0 +1,70 @@
+{
+  "scope": "candidate-design experiment; no corpus baseline or conformance claim",
+  "configuration_sha256": "a2ff052726430aca6546b64714ba35bbf0fc0a1e64d4f536810ca2ba6f6156b1",
+  "implementation_sha256": "793f46f3fd12e57ad8e901612dc0c17846951a4f8ea4982514739f2c4c03fdd4",
+  "measurement_sha256": "676e7e6311f57ce922c76d0683cbbe85e9d70e9f873d8f5f6055b15c297daa96",
+  "images": [
+    {
+      "id": "single",
+      "path": ".work/experiments/cp1-noise-choice/single.png",
+      "sha256": "e7d6d75e32f65a6a78efd3641c426abcc1eb2486f1f0db535e0cf88c35bfbd7f",
+      "dimensions": [
+        640,
+        640
+      ]
+    },
+    {
+      "id": "four",
+      "path": ".work/experiments/cp1-noise-choice/four.png",
+      "sha256": "88ba9e72912d3f2ddc1d83ec2dbe2d7b899399d67fbd81a81bde116a54667253",
+      "dimensions": [
+        640,
+        640
+      ]
+    },
+    {
+      "id": "single-rotated",
+      "path": ".work/experiments/cp1-noise-choice/single-rotated.png",
+      "sha256": "f9bc68d5a1b2c5d5a8485c0a80d3eae617104149e91354bfb2d74410fca7bc71",
+      "dimensions": [
+        640,
+        640
+      ]
+    },
+    {
+      "id": "four-rotated",
+      "path": ".work/experiments/cp1-noise-choice/four-rotated.png",
+      "sha256": "dcf32dc165a9f305941b848ea62253cf5f7739c7c7dd0b300dbd916f18410070",
+      "dimensions": [
+        640,
+        640
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "a": "single",
+      "b": "four",
+      "rgb_mae_0_1": 0.16148226230596407,
+      "changed_pixel_fraction": 0.91503662109375
+    },
+    {
+      "a": "single-rotated",
+      "b": "four-rotated",
+      "rgb_mae_0_1": 0.1592221169066585,
+      "changed_pixel_fraction": 0.91318115234375
+    },
+    {
+      "a": "single",
+      "b": "single-rotated",
+      "rgb_mae_0_1": 0.16523875995710785,
+      "changed_pixel_fraction": 0.92068359375
+    },
+    {
+      "a": "four",
+      "b": "four-rotated",
+      "rgb_mae_0_1": 0.17451664943321077,
+      "changed_pixel_fraction": 0.92910400390625
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java core and scoped editable/workload technique acceptance only",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+    "packages/java/examples/CutBranchMarks/CutBranchComposition.java": "4ff4769b2579844684ea45b8b76854709d42f17f24bb8fe196e1c572eb21f2a2",
+    "packages/java-processing/examples/CutBranchMarks/CutBranchMarks.pde": "80055e16c4a51019a3e59aff2f0eddf1df0402ac1f4012954ea7ff00414e6145"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/line-pool-java.json": "30444ba2b3d7fc1278f8e227f33c7c8b169583c79bac7590fd4796d4109c657e",
+    "fixtures/operations/seeded-line-pool-2d.json": "545d170b1d9d814480489836e4e87e791b9287fe9131847b13c3574ead12d5f1",
+    "evidence/conformance/line-pool-java-root-review.json": "56b7e46150a283b1f1a683daee836d0308a47d15723c92331d0f0fa4882a7c7b",
+    "evidence/conformance/line-pool-growth.json": "a41746fadf06953cacb98ecd60e371405634f494bb4c02b379c901d91b127663",
+    "evidence/reproductions/line-pool-p2d/edits.json": "74ed1676c6d8827992119dda2ddf7204fc0db141b412a9f96b72692ebe5f60ef",
+    "evidence/reproductions/line-pool-p2d/edits-review.json": "e88fd93f925f0f01ecb9dfc8b4e9e1a5c9339510a86036ad37f5c7ff06b346a1",
+    "evidence/reproductions/line-pool-p2d/workload.json": "0eef6caacdabe1c9de19b77e35b0bcadc89f7eeab0106a48c2a0f583eed020f5",
+    "evidence/reproductions/line-pool-p2d/workload-review.json": "235bde2dbea5cb2c958533b571ca4c8991c7844108ee3ace93e291171eb2abc7"
+  }
+}

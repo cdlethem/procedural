@@ -1,0 +1,21 @@
+{
+  "status": "accepted",
+  "scope": "CP11 Java core only; artist reproduction and delivery pending",
+  "reviewer": "root",
+  "conformance": "evidence/conformance/occupied-lattice-java.json",
+  "performance": "evidence/performance/cp11-java.json",
+  "core_sha256": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+  "verified": [
+    "All14 shared cases executed by actual Java with exact complete outputs/errors",
+    "45 focused native assertions include input/output detachment, ordered access validation, malformed values, wide work rejection, iterator-only outer starts and17-path offsets regression",
+    "Root read algorithm, validation, retained storage and RNG implementation; corrected overflow and fixture execution gaps before acceptance",
+    "Root reviewed formatting token differences against preserved original: only two harmless braces around existing single-statement bodies remained",
+    "Correct authored and scaled configurations plus sparse maximum dimensions completed with repeat checksum assertions and generation allocation measurements"
+  ],
+  "limits": [
+    "No source-pixel equivalence",
+    "No Processing renderer acceptance yet",
+    "No package release or port support added",
+    "Small desktop benchmark is not a universal latency guarantee; generation allocates owned result and scratch storage"
+  ]
+}

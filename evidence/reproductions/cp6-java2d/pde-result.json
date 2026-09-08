@@ -1,0 +1,335 @@
+{
+  "status": "passed",
+  "scope": "Installed Java/JAVA2D BranchMarks technique-level workflow: endpoint branching, generation extension, spread/slot edits, retained styling, placed-root transfer and displayed save. No source-pixel or other-target claim.",
+  "input_sha256": {
+    ".work/dist/cp6/java/consumer/procedurals/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    ".work/dist/cp6/java/consumer/procedurals/examples/BranchMarks/BranchMarks.pde": "a027fb071ec9be9dd29607b7ce7dccb86772e2ab1680945ddd0973df66113e2c",
+    "packages/java-processing/examples/BranchMarks/BranchMarks.pde": "a027fb071ec9be9dd29607b7ce7dccb86772e2ab1680945ddd0973df66113e2c",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "tools/check_field_marks_pde.py": "49668c561ebb5b2c585544fe17cbd25128539c1fd01dfea1587d1f7e80c265c1",
+    "tools/check_processing_runtime.py": "266825d35ac2859a97b61ebe360a225c41f69aee068badcd1439becd3104c70c",
+    "tools/run_grid_conformance.py": "392d23b61f713c7d204e215a9b468874f78b213741dc1e163b4b5fcb5553b180",
+    "tools/check_branch_marks_pde.py": "cc375015a24d45c1ffe3119e17f574a0ab7644a8acffab2b0891b93e877e3efd",
+    ".work/dist/cp6/java/consumer/procedurals/library/procedurals.jar": "477543460ab56b551acb737b5e9729e6b9999450c685ad0aceefb73b9c8b57a6",
+    "evidence/distribution/cp6-java.json": "d1ff531f7aebb3a6ca573b46be3b51d463999c28aa24e96c0d39f6eb04884e70",
+    "tests/native/BranchMarksPdeProbe.java": "7ad73aea9563dbbc46866536e1e2a4ebac5eca1564b0e682d3635a36855ae085",
+    "tools/run_branch_marks_pde.py": "c4ae47ed1d8ca6bc630badfaad3d27d406b43b1ef4ed9270386b3c81943f0b9c",
+    ".work/build/branch-marks-pde-installed/report.json": "3e1f271f6e84a9af2c21aa3c06ab28ffc72c6e42206f290ff4051bfe2725cd32"
+  },
+  "visual_review": "pending",
+  "exit_code": 0,
+  "stdout": "101 segments in 1 trees\n192 segments in 1 trees\n101 segments in 1 trees\n101 segments in 1 trees\n101 segments in 1 trees\n101 segments in 1 trees\n101 segments in 1 trees\n38 segments in 1 trees\n101 segments in 1 trees\n288 segments in 7 trees\n560 segments in 7 trees\n634 segments in 8 trees\n101 segments in 1 trees\n",
+  "stderr": "",
+  "native": {
+    "status": "passed",
+    "compositions": 17,
+    "key_events": 17,
+    "style_reuses_composition": true,
+    "append_rule_prefix": true,
+    "topology_checked": true,
+    "reset_pixel_replay": true,
+    "generated_segments": 2520,
+    "drawn_lines": 3298,
+    "terminal_scan_visits": 2909,
+    "actual_terminal_dots": 1475,
+    "save_quiet_ms": 300,
+    "states": [
+      {
+        "id": "initial",
+        "trees": 1,
+        "segments": 101,
+        "generated_segments": 101,
+        "drawn_lines": 101,
+        "terminal_scan_visits": 101,
+        "terminal_dots": 53,
+        "geometry_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "extended",
+        "trees": 1,
+        "segments": 192,
+        "generated_segments": 192,
+        "drawn_lines": 192,
+        "terminal_scan_visits": 192,
+        "terminal_dots": 99,
+        "geometry_sha256": "e5affd8040edc15b11ef6e2c2630b23b31aa0f3e812703ef1906941a7c76dd4a",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "extended-restored",
+        "trees": 1,
+        "segments": 101,
+        "generated_segments": 101,
+        "drawn_lines": 101,
+        "terminal_scan_visits": 101,
+        "terminal_dots": 53,
+        "geometry_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "narrowing",
+        "trees": 1,
+        "segments": 101,
+        "generated_segments": 101,
+        "drawn_lines": 101,
+        "terminal_scan_visits": 101,
+        "terminal_dots": 53,
+        "geometry_sha256": "7dd990c12c503750c15ef54ad256cc0d5131307d20c36b1a4204620914d58c3d",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "reset-1",
+        "trees": 1,
+        "segments": 101,
+        "generated_segments": 101,
+        "drawn_lines": 101,
+        "terminal_scan_visits": 101,
+        "terminal_dots": 53,
+        "geometry_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "wide",
+        "trees": 1,
+        "segments": 101,
+        "generated_segments": 101,
+        "drawn_lines": 101,
+        "terminal_scan_visits": 101,
+        "terminal_dots": 53,
+        "geometry_sha256": "c42fe88b097c82840284d4bd8fb356d99278f71a408e12f23bd58cc267929e5f",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "reset-2",
+        "trees": 1,
+        "segments": 101,
+        "generated_segments": 101,
+        "drawn_lines": 101,
+        "terminal_scan_visits": 101,
+        "terminal_dots": 53,
+        "geometry_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "binary",
+        "trees": 1,
+        "segments": 38,
+        "generated_segments": 38,
+        "drawn_lines": 38,
+        "terminal_scan_visits": 38,
+        "terminal_dots": 16,
+        "geometry_sha256": "70890b1ee83a82d81560a31436ed45ba016f622732d65a7f5f0145a757822a82",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "reset-3",
+        "trees": 1,
+        "segments": 101,
+        "generated_segments": 101,
+        "drawn_lines": 101,
+        "terminal_scan_visits": 101,
+        "terminal_dots": 53,
+        "geometry_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "recolour",
+        "trees": 1,
+        "segments": 101,
+        "generated_segments": 0,
+        "drawn_lines": 101,
+        "terminal_scan_visits": 101,
+        "terminal_dots": 53,
+        "geometry_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "same_composition_as_previous": true
+      },
+      {
+        "id": "thin",
+        "trees": 1,
+        "segments": 101,
+        "generated_segments": 0,
+        "drawn_lines": 101,
+        "terminal_scan_visits": 0,
+        "terminal_dots": 0,
+        "geometry_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "same_composition_as_previous": true
+      },
+      {
+        "id": "forest",
+        "trees": 7,
+        "segments": 288,
+        "generated_segments": 288,
+        "drawn_lines": 288,
+        "terminal_scan_visits": 0,
+        "terminal_dots": 0,
+        "geometry_sha256": "4683c43a012b97e794a137160e65934b7194b2e8707cc557ba8295ec871bb5e0",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "forest-taper",
+        "trees": 7,
+        "segments": 288,
+        "generated_segments": 0,
+        "drawn_lines": 288,
+        "terminal_scan_visits": 288,
+        "terminal_dots": 145,
+        "geometry_sha256": "4683c43a012b97e794a137160e65934b7194b2e8707cc557ba8295ec871bb5e0",
+        "same_composition_as_previous": true
+      },
+      {
+        "id": "forest-palette",
+        "trees": 7,
+        "segments": 288,
+        "generated_segments": 0,
+        "drawn_lines": 288,
+        "terminal_scan_visits": 288,
+        "terminal_dots": 145,
+        "geometry_sha256": "4683c43a012b97e794a137160e65934b7194b2e8707cc557ba8295ec871bb5e0",
+        "same_composition_as_previous": true
+      },
+      {
+        "id": "forest-extended",
+        "trees": 7,
+        "segments": 560,
+        "generated_segments": 560,
+        "drawn_lines": 560,
+        "terminal_scan_visits": 560,
+        "terminal_dots": 280,
+        "geometry_sha256": "97c2f8e5fca496da0b2b31fa1c86fb53767af99500f95b42f760a68909b8bc03",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "forest-seed",
+        "trees": 8,
+        "segments": 634,
+        "generated_segments": 634,
+        "drawn_lines": 634,
+        "terminal_scan_visits": 634,
+        "terminal_dots": 313,
+        "geometry_sha256": "776dad459e9ac1a3e0a193784c0b17163825301fed86a81475dd56e2b210051e",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "final-reset",
+        "trees": 1,
+        "segments": 101,
+        "generated_segments": 101,
+        "drawn_lines": 101,
+        "terminal_scan_visits": 101,
+        "terminal_dots": 53,
+        "geometry_sha256": "ee9752ae32265d13d60bd67e94e3af0af4ba0dbdf61a6438f912efb91325f72f",
+        "same_composition_as_previous": false
+      }
+    ]
+  },
+  "images": {
+    "initial.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/initial.png",
+      "sha256": "b7052240812723727a48bad2886e065592c72659bd02cfde8355a35b9cf9c839"
+    },
+    "extended.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/extended.png",
+      "sha256": "f6d6faa0324eabc0357d04dbb92efda7f898016637d992b13295872d864824d4"
+    },
+    "extended-restored.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/extended-restored.png",
+      "sha256": "b7052240812723727a48bad2886e065592c72659bd02cfde8355a35b9cf9c839"
+    },
+    "narrowing.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/narrowing.png",
+      "sha256": "6a5f8ae832627db5c93c1717e3020736cf5ef4901d1397027298b22e615cd99b"
+    },
+    "reset-1.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/reset-1.png",
+      "sha256": "b7052240812723727a48bad2886e065592c72659bd02cfde8355a35b9cf9c839"
+    },
+    "wide.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/wide.png",
+      "sha256": "99fb943bba2f7241fde650f032aea66e391175c00f4e2b738d6573b89aed71f1"
+    },
+    "reset-2.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/reset-2.png",
+      "sha256": "b7052240812723727a48bad2886e065592c72659bd02cfde8355a35b9cf9c839"
+    },
+    "binary.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/binary.png",
+      "sha256": "d89d0a7f74116087da6f0f84c1a0fa152ffb8d72235304ea3afd137dec2bc937"
+    },
+    "reset-3.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/reset-3.png",
+      "sha256": "b7052240812723727a48bad2886e065592c72659bd02cfde8355a35b9cf9c839"
+    },
+    "recolour.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/recolour.png",
+      "sha256": "2666c2bbcf04b2094154eb6ab63e09bd831c6a54f22a4d4b076de3a69ad2af5f"
+    },
+    "thin.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/thin.png",
+      "sha256": "5e54d62558f640f8d2fc54bab84c4f770fa61cdb00fcc82885de6643156ea936"
+    },
+    "forest.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/forest.png",
+      "sha256": "18d99cc8a92da239ca5bb9e329f757c9cd15c4b79b22c2f2419f79438cecf000"
+    },
+    "forest-taper.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/forest-taper.png",
+      "sha256": "ec73796e894da02d3675e2130c7197e59a928e75ff11b052c85d1ed5e17c3101"
+    },
+    "forest-palette.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/forest-palette.png",
+      "sha256": "a754924b01d91d07706905b82948392dd3163098d164b75cab073a5bcc195fbc"
+    },
+    "forest-extended.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/forest-extended.png",
+      "sha256": "58167c89b9685c260fdd4f6f80f9a36defae10e52fa82df08c830d1861a29bae"
+    },
+    "forest-seed.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/forest-seed.png",
+      "sha256": "ec0f7fb9ccc609e4e36952b51f7f56d2b3688f907b439683942acd01f8cb3285"
+    },
+    "final-reset.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/final-reset.png",
+      "sha256": "b7052240812723727a48bad2886e065592c72659bd02cfde8355a35b9cf9c839"
+    },
+    "displayed-final.png": {
+      "path": ".work/reproductions/cp6-java2d-pde/displayed-final.png",
+      "sha256": "b7052240812723727a48bad2886e065592c72659bd02cfde8355a35b9cf9c839"
+    }
+  },
+  "input_sha256_after": {
+    ".work/dist/cp6/java/consumer/procedurals/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    ".work/dist/cp6/java/consumer/procedurals/examples/BranchMarks/BranchMarks.pde": "a027fb071ec9be9dd29607b7ce7dccb86772e2ab1680945ddd0973df66113e2c",
+    "packages/java-processing/examples/BranchMarks/BranchMarks.pde": "a027fb071ec9be9dd29607b7ce7dccb86772e2ab1680945ddd0973df66113e2c",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "tools/check_field_marks_pde.py": "49668c561ebb5b2c585544fe17cbd25128539c1fd01dfea1587d1f7e80c265c1",
+    "tools/check_processing_runtime.py": "266825d35ac2859a97b61ebe360a225c41f69aee068badcd1439becd3104c70c",
+    "tools/run_grid_conformance.py": "392d23b61f713c7d204e215a9b468874f78b213741dc1e163b4b5fcb5553b180",
+    "tools/check_branch_marks_pde.py": "cc375015a24d45c1ffe3119e17f574a0ab7644a8acffab2b0891b93e877e3efd",
+    ".work/dist/cp6/java/consumer/procedurals/library/procedurals.jar": "477543460ab56b551acb737b5e9729e6b9999450c685ad0aceefb73b9c8b57a6",
+    "evidence/distribution/cp6-java.json": "d1ff531f7aebb3a6ca573b46be3b51d463999c28aa24e96c0d39f6eb04884e70",
+    "tests/native/BranchMarksPdeProbe.java": "7ad73aea9563dbbc46866536e1e2a4ebac5eca1564b0e682d3635a36855ae085",
+    "tools/run_branch_marks_pde.py": "c4ae47ed1d8ca6bc630badfaad3d27d406b43b1ef4ed9270386b3c81943f0b9c",
+    ".work/build/branch-marks-pde-installed/report.json": "3e1f271f6e84a9af2c21aa3c06ab28ffc72c6e42206f290ff4051bfe2725cd32"
+  },
+  "segment_visits": 3298,
+  "save": {
+    "path": ".work/reproductions/cp6-java2d-pde/branch-marks-0018.png",
+    "sha256": "b7052240812723727a48bad2886e065592c72659bd02cfde8355a35b9cf9c839",
+    "matches_displayed_pixels": true
+  }
+}

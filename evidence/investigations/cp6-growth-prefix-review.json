@@ -1,0 +1,24 @@
+{
+  "status": "accepted-private-ordering-investigation",
+  "reviewer": "root",
+  "result": {
+    "path": "evidence/investigations/cp6-growth-prefix.json",
+    "sha256": "198bea75567551cbe8202772a72a0d833146993bff74285ec4e6ee5b78cd4d77"
+  },
+  "verification": "Root read full diagnostic source, compiled with pinned JDK17 --release 8, reran --check and compared every emitted field to the saved report.",
+  "findings": [
+    "Exact earlier geometry, heading, length, parent and generation prefixes pass for appended transition rules.",
+    "Six prior terminal nodes gain children; whole-output or terminal-status prefix equality is not claimed.",
+    "Changing the final spread leaves earlier generations unchanged and changes at least one final-generation coordinate.",
+    "Replay, finite endpoint ancestry, actual child counts, early terminals and explicit limit failure pass."
+  ],
+  "work_accounting": {
+    "successful_profile_nodes": 300,
+    "failed_budget_trial_nodes": 10000,
+    "total_nodes": 10300
+  },
+  "limitations": [
+    "Private Java Random diagnostic validates ordering choice, not the future portable RNG contract or public implementation.",
+    "No render was invoked; public fixtures, native performance and workflow reproduction remain required."
+  ]
+}

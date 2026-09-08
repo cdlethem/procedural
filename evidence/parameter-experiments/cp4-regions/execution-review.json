@@ -1,0 +1,21 @@
+{
+  "status": "approved-for-private-execution",
+  "owner": "root",
+  "reviewer": "root",
+  "input_sha256": {
+    "tools/diagnostics/cp4/RegionChoice.java": "635c70e9a8a459bee94afb5ddd163d42f2acaca595d08b2e342cc5a9c9408e86",
+    "tools/diagnostics/cp4/run_regions.py": "ec867b14719213ad17489cd7a8eded30a4cfc575ca0b5fc6a73b985b9e7a0335",
+    "evidence/parameter-experiments/cp4-regions/experiment.json": "65c57019ac74516b37cfc3227e7096e21562a3b6f74aa95fb412861cdf4688cc",
+    "evidence/investigations/cp4-selection-numeric.json": "a8752924ccc011631effeb2b34939b0fc314b7f2382d553ad9510769ba0c8029",
+    "evidence/investigations/cp4-selection-java-check.json": "e8f89bb5b68abf9613e3ee2259f261b10fd7dc63e033b5fd0a84a5355f6fafc1"
+  },
+  "review": [
+    "Root read the Java prototype and executor. Fractional half-list selection and positive tiny-cell inset corrections are incorporated.",
+    "Numeric-only preflight passed coverage, non-overlap, retained content geometry equality and deterministic list order.",
+    "Private Random stream omits source background prelude deliberately; this is not a source reproduction or a portable contract.",
+    "Actual PApplet numeric check matched1000 selections and10 depth histograms; contrary survey prose is unresolved rather than a control recommendation.",
+    "Exactly five images, one serial locked attempt, preserved failures, bounded process-group timeout, source/class hashes before and after.",
+    "No active java or Xvfb process found immediately before execution."
+  ],
+  "scope": "Private CP4 artist-capability investigation only; inspect every successful image before architecture admission."
+}

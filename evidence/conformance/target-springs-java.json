@@ -1,0 +1,67 @@
+{
+  "contract_review_bindings": {
+    "catalog/operations/target-springs-2d.json": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3",
+    "design/operations/cp10-contract-decisions.md": "bfb3f6106fe2dbc6e90f50d7aae9e47df67cab71cb530f6f060f0750e3dbb2ef",
+    "design/operations/cp10-contract-review.md": "9b12a8aa26127f736fe93ed49f291e62934071c5f9ac8ecfd91c6708b36de7e3",
+    "design/phase2/cluster-decisions.json": "0047eccc335f78101ef710676a8609568bef5f54e3ef55d118c29c7d108991eb",
+    "fixtures/operations/target-springs-2d.json": "837fda9808fd95a70bcee4dbbd2accc1b0895186ee55c439b8a31c4ed495cc61",
+    "tests/test_spring_fixtures.py": "ee12397107691a103eeee163957f96f49fa2869c0925115b66f0a7c1fb655309",
+    "tools/check_catalog.py": "c7f0dcd3d2d9b8c7b47b2fb0d6f37389e7d61b425879c47c4d5628c8ec72c04c",
+    "tools/check_spring_fixtures.py": "810c21ab6731c4060acb302cebcfb22bb7dd2a3c0679a794c4915789a8608512"
+  },
+  "contract_review_bindings_sha256": "6303c33c00f2ed530de3d2c129b0296ea3dbc1f544f28d67654f120dcb03d916",
+  "contract_sha256": {
+    "catalog/operations/target-springs-2d.json": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3"
+  },
+  "fixture_case_count": 44,
+  "fixture_sha256": {
+    "fixtures/operations/target-springs-2d.json": "837fda9808fd95a70bcee4dbbd2accc1b0895186ee55c439b8a31c4ed495cc61"
+  },
+  "native": {
+    "assertions": 1599,
+    "packed_paths": "continuing list, typed packed and Object-packed checks",
+    "status": "passed"
+  },
+  "native_case_count": 42,
+  "operation": "motion.target-springs-2d",
+  "runner_schema_only_cases": [
+    "missing-outer-key",
+    "extra-outer-key"
+  ],
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Java core fixture/native ownership evidence only; no renderer, package or other-target claim.",
+  "source_sha256_after": {
+    "catalog/operations/target-springs-2d.json": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3",
+    "design/operations/cp10-contract-decisions.md": "bfb3f6106fe2dbc6e90f50d7aae9e47df67cab71cb530f6f060f0750e3dbb2ef",
+    "design/operations/cp10-contract-review.md": "9b12a8aa26127f736fe93ed49f291e62934071c5f9ac8ecfd91c6708b36de7e3",
+    "design/phase2/cluster-decisions.json": "0047eccc335f78101ef710676a8609568bef5f54e3ef55d118c29c7d108991eb",
+    "evidence/investigations/cp10-contract-review.json": "6303c33c00f2ed530de3d2c129b0296ea3dbc1f544f28d67654f120dcb03d916",
+    "fixtures/operations/target-springs-2d.json": "837fda9808fd95a70bcee4dbbd2accc1b0895186ee55c439b8a31c4ed495cc61",
+    "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+    "tests/native/TargetSpringsNative.java": "f5756e8a31e929dd77cb7d4037c95fde61c8727a2ca5d6cbbfcf81815b697bbc",
+    "tests/test_spring_fixtures.py": "ee12397107691a103eeee163957f96f49fa2869c0925115b66f0a7c1fb655309",
+    "tools/check_catalog.py": "c7f0dcd3d2d9b8c7b47b2fb0d6f37389e7d61b425879c47c4d5628c8ec72c04c",
+    "tools/check_spring_fixtures.py": "810c21ab6731c4060acb302cebcfb22bb7dd2a3c0679a794c4915789a8608512",
+    "tools/run_target_springs_java.py": "0858a3b864446f366cdf45c07645b7f037fb7df41a2668d9b995b58f6a56c78c"
+  },
+  "source_sha256_before": {
+    "catalog/operations/target-springs-2d.json": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3",
+    "design/operations/cp10-contract-decisions.md": "bfb3f6106fe2dbc6e90f50d7aae9e47df67cab71cb530f6f060f0750e3dbb2ef",
+    "design/operations/cp10-contract-review.md": "9b12a8aa26127f736fe93ed49f291e62934071c5f9ac8ecfd91c6708b36de7e3",
+    "design/phase2/cluster-decisions.json": "0047eccc335f78101ef710676a8609568bef5f54e3ef55d118c29c7d108991eb",
+    "evidence/investigations/cp10-contract-review.json": "6303c33c00f2ed530de3d2c129b0296ea3dbc1f544f28d67654f120dcb03d916",
+    "fixtures/operations/target-springs-2d.json": "837fda9808fd95a70bcee4dbbd2accc1b0895186ee55c439b8a31c4ed495cc61",
+    "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+    "tests/native/TargetSpringsNative.java": "f5756e8a31e929dd77cb7d4037c95fde61c8727a2ca5d6cbbfcf81815b697bbc",
+    "tests/test_spring_fixtures.py": "ee12397107691a103eeee163957f96f49fa2869c0925115b66f0a7c1fb655309",
+    "tools/check_catalog.py": "c7f0dcd3d2d9b8c7b47b2fb0d6f37389e7d61b425879c47c4d5628c8ec72c04c",
+    "tools/check_spring_fixtures.py": "810c21ab6731c4060acb302cebcfb22bb7dd2a3c0679a794c4915789a8608512",
+    "tools/run_target_springs_java.py": "0858a3b864446f366cdf45c07645b7f037fb7df41a2668d9b995b58f6a56c78c"
+  },
+  "vectors": {
+    "assertions": 956,
+    "fixture_cases": 44,
+    "native_cases": 42,
+    "status": "passed"
+  }
+}

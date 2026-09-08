@@ -1,0 +1,996 @@
+{
+  "operation": "color.cyclic-palette",
+  "version": "0.1.0",
+  "oracle": "tools/build_palette_fixtures.py; independent Fraction arithmetic, no native evaluator",
+  "cases": [
+    {
+      "id": "black-white",
+      "input": {
+        "colors": [
+          0,
+          16777215
+        ]
+      },
+      "serialized": {
+        "colors": [
+          0,
+          16777215
+        ]
+      },
+      "queries": [
+        {
+          "input": 0.0,
+          "output": 0
+        },
+        {
+          "input": -0.0,
+          "output": 0
+        },
+        {
+          "input": -5e-324,
+          "output": 0
+        },
+        {
+          "input": 5e-324,
+          "output": 0
+        },
+        {
+          "input": -0.25,
+          "output": 8421504
+        },
+        {
+          "input": 0.25,
+          "output": 8421504
+        },
+        {
+          "input": 0.5,
+          "output": 16777215
+        },
+        {
+          "input": 0.75,
+          "output": 8421504
+        },
+        {
+          "input": 1.0,
+          "output": 0
+        },
+        {
+          "input": 0.9999999999999999,
+          "output": 0
+        },
+        {
+          "input": 0.24999999999999997,
+          "output": 8355711
+        },
+        {
+          "input": 0.25000000000000006,
+          "output": 8421504
+        },
+        {
+          "input": 1.25,
+          "output": 8421504
+        },
+        {
+          "input": -1.25,
+          "output": 8421504
+        },
+        {
+          "input": 4503599627370495.5,
+          "output": 16777215
+        },
+        {
+          "input": -4503599627370495.5,
+          "output": 16777215
+        },
+        {
+          "input": 1e+300,
+          "output": 0
+        },
+        {
+          "input": -1e+300,
+          "output": 0
+        },
+        {
+          "input": 1.7976931348623157e+308,
+          "output": 0
+        }
+      ]
+    },
+    {
+      "id": "red-blue",
+      "input": {
+        "colors": [
+          16711680,
+          255
+        ]
+      },
+      "serialized": {
+        "colors": [
+          16711680,
+          255
+        ]
+      },
+      "queries": [
+        {
+          "input": 0.0,
+          "output": 16711680
+        },
+        {
+          "input": -0.0,
+          "output": 16711680
+        },
+        {
+          "input": -5e-324,
+          "output": 16711680
+        },
+        {
+          "input": 5e-324,
+          "output": 16711680
+        },
+        {
+          "input": -0.25,
+          "output": 8388736
+        },
+        {
+          "input": 0.25,
+          "output": 8388736
+        },
+        {
+          "input": 0.5,
+          "output": 255
+        },
+        {
+          "input": 0.75,
+          "output": 8388736
+        },
+        {
+          "input": 1.0,
+          "output": 16711680
+        },
+        {
+          "input": 0.9999999999999999,
+          "output": 16711680
+        },
+        {
+          "input": 0.24999999999999997,
+          "output": 8388735
+        },
+        {
+          "input": 0.25000000000000006,
+          "output": 8323200
+        },
+        {
+          "input": 1.25,
+          "output": 8388736
+        },
+        {
+          "input": -1.25,
+          "output": 8388736
+        },
+        {
+          "input": 4503599627370495.5,
+          "output": 255
+        },
+        {
+          "input": -4503599627370495.5,
+          "output": 255
+        },
+        {
+          "input": 1e+300,
+          "output": 16711680
+        },
+        {
+          "input": -1e+300,
+          "output": 16711680
+        },
+        {
+          "input": 1.7976931348623157e+308,
+          "output": 16711680
+        }
+      ]
+    },
+    {
+      "id": "one-step-channels",
+      "input": {
+        "colors": [
+          0,
+          65793
+        ]
+      },
+      "serialized": {
+        "colors": [
+          0,
+          65793
+        ]
+      },
+      "queries": [
+        {
+          "input": 0.0,
+          "output": 0
+        },
+        {
+          "input": -0.0,
+          "output": 0
+        },
+        {
+          "input": -5e-324,
+          "output": 0
+        },
+        {
+          "input": 5e-324,
+          "output": 0
+        },
+        {
+          "input": -0.25,
+          "output": 65793
+        },
+        {
+          "input": 0.25,
+          "output": 65793
+        },
+        {
+          "input": 0.5,
+          "output": 65793
+        },
+        {
+          "input": 0.75,
+          "output": 65793
+        },
+        {
+          "input": 1.0,
+          "output": 0
+        },
+        {
+          "input": 0.9999999999999999,
+          "output": 0
+        },
+        {
+          "input": 0.24999999999999997,
+          "output": 65793
+        },
+        {
+          "input": 0.25000000000000006,
+          "output": 65793
+        },
+        {
+          "input": 1.25,
+          "output": 65793
+        },
+        {
+          "input": -1.25,
+          "output": 65793
+        },
+        {
+          "input": 4503599627370495.5,
+          "output": 65793
+        },
+        {
+          "input": -4503599627370495.5,
+          "output": 65793
+        },
+        {
+          "input": 1e+300,
+          "output": 0
+        },
+        {
+          "input": -1e+300,
+          "output": 0
+        },
+        {
+          "input": 1.7976931348623157e+308,
+          "output": 0
+        }
+      ]
+    },
+    {
+      "id": "duplicates",
+      "input": {
+        "colors": [
+          0,
+          0,
+          16777215,
+          16777215
+        ]
+      },
+      "serialized": {
+        "colors": [
+          0,
+          0,
+          16777215,
+          16777215
+        ]
+      },
+      "queries": [
+        {
+          "input": 0.0,
+          "output": 0
+        },
+        {
+          "input": -0.0,
+          "output": 0
+        },
+        {
+          "input": -5e-324,
+          "output": 0
+        },
+        {
+          "input": 5e-324,
+          "output": 0
+        },
+        {
+          "input": -0.25,
+          "output": 16777215
+        },
+        {
+          "input": 0.25,
+          "output": 0
+        },
+        {
+          "input": 0.5,
+          "output": 16777215
+        },
+        {
+          "input": 0.75,
+          "output": 16777215
+        },
+        {
+          "input": 1.0,
+          "output": 0
+        },
+        {
+          "input": 0.9999999999999999,
+          "output": 0
+        },
+        {
+          "input": 0.24999999999999997,
+          "output": 0
+        },
+        {
+          "input": 0.25000000000000006,
+          "output": 0
+        },
+        {
+          "input": 1.25,
+          "output": 0
+        },
+        {
+          "input": -1.25,
+          "output": 16777215
+        },
+        {
+          "input": 4503599627370495.5,
+          "output": 16777215
+        },
+        {
+          "input": -4503599627370495.5,
+          "output": 16777215
+        },
+        {
+          "input": 1e+300,
+          "output": 0
+        },
+        {
+          "input": -1e+300,
+          "output": 0
+        },
+        {
+          "input": 1.7976931348623157e+308,
+          "output": 0
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "input": {
+        "colors": [
+          1193046
+        ]
+      },
+      "serialized": {
+        "colors": [
+          1193046
+        ]
+      },
+      "queries": [
+        {
+          "input": 0.0,
+          "output": 1193046
+        },
+        {
+          "input": -0.0,
+          "output": 1193046
+        },
+        {
+          "input": -5e-324,
+          "output": 1193046
+        },
+        {
+          "input": 5e-324,
+          "output": 1193046
+        },
+        {
+          "input": -0.25,
+          "output": 1193046
+        },
+        {
+          "input": 0.25,
+          "output": 1193046
+        },
+        {
+          "input": 0.5,
+          "output": 1193046
+        },
+        {
+          "input": 0.75,
+          "output": 1193046
+        },
+        {
+          "input": 1.0,
+          "output": 1193046
+        },
+        {
+          "input": 0.9999999999999999,
+          "output": 1193046
+        },
+        {
+          "input": 0.24999999999999997,
+          "output": 1193046
+        },
+        {
+          "input": 0.25000000000000006,
+          "output": 1193046
+        },
+        {
+          "input": 1.25,
+          "output": 1193046
+        },
+        {
+          "input": -1.25,
+          "output": 1193046
+        },
+        {
+          "input": 4503599627370495.5,
+          "output": 1193046
+        },
+        {
+          "input": -4503599627370495.5,
+          "output": 1193046
+        },
+        {
+          "input": 1e+300,
+          "output": 1193046
+        },
+        {
+          "input": -1e+300,
+          "output": 1193046
+        },
+        {
+          "input": 1.7976931348623157e+308,
+          "output": 1193046
+        }
+      ]
+    },
+    {
+      "id": "source-pelines",
+      "input": {
+        "colors": [
+          3252561,
+          16754462,
+          329804,
+          14566968,
+          4046263
+        ]
+      },
+      "serialized": {
+        "colors": [
+          3252561,
+          16754462,
+          329804,
+          14566968,
+          4046263
+        ]
+      },
+      "queries": [
+        {
+          "input": 0.0,
+          "output": 3252561
+        },
+        {
+          "input": -0.0,
+          "output": 3252561
+        },
+        {
+          "input": -5e-324,
+          "output": 3252561
+        },
+        {
+          "input": 5e-324,
+          "output": 3252561
+        },
+        {
+          "input": -0.25,
+          "output": 6659991
+        },
+        {
+          "input": 0.25,
+          "output": 12681002
+        },
+        {
+          "input": 0.5,
+          "output": 7481154
+        },
+        {
+          "input": 0.75,
+          "output": 6659991
+        },
+        {
+          "input": 1.0,
+          "output": 3252561
+        },
+        {
+          "input": 0.9999999999999999,
+          "output": 3252561
+        },
+        {
+          "input": 0.24999999999999997,
+          "output": 12681001
+        },
+        {
+          "input": 0.25000000000000006,
+          "output": 12615466
+        },
+        {
+          "input": 1.25,
+          "output": 12681002
+        },
+        {
+          "input": -1.25,
+          "output": 6659991
+        },
+        {
+          "input": 4503599627370495.5,
+          "output": 7481154
+        },
+        {
+          "input": -4503599627370495.5,
+          "output": 7481154
+        },
+        {
+          "input": 1e+300,
+          "output": 3252561
+        },
+        {
+          "input": -1e+300,
+          "output": 3252561
+        },
+        {
+          "input": 1.7976931348623157e+308,
+          "output": 3252561
+        }
+      ]
+    },
+    {
+      "id": "integral-floats",
+      "input": {
+        "colors": [
+          -0.0,
+          1.0
+        ]
+      },
+      "serialized": {
+        "colors": [
+          0,
+          1
+        ]
+      },
+      "queries": [
+        {
+          "input": 0.25,
+          "output": 1
+        }
+      ]
+    },
+    {
+      "id": "invalid-constructor-0",
+      "input": null,
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid-constructor-1",
+      "input": [],
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid-constructor-2",
+      "input": {},
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid-constructor-3",
+      "input": {
+        "colors": []
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid-constructor-4",
+      "input": {
+        "colors": "red"
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid-constructor-5",
+      "input": {
+        "colors": [
+          true
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid-constructor-6",
+      "input": {
+        "colors": [
+          -1
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid-constructor-7",
+      "input": {
+        "colors": [
+          16777216
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid-constructor-8",
+      "input": {
+        "colors": [
+          1.5
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid-constructor-9",
+      "input": {
+        "colors": [
+          null
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid-constructor-10",
+      "input": {
+        "colors": [
+          0
+        ],
+        "alpha": 1
+      },
+      "error": "INVALID_INPUT"
+    }
+  ],
+  "query_cases": [
+    {
+      "id": "invalid-query-0",
+      "input": null,
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "invalid-query-1",
+      "input": true,
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "invalid-query-2",
+      "input": "0.5",
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "invalid-query-3",
+      "input": [],
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "invalid-query-4",
+      "input": {},
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "invalid-query-5",
+      "input": [
+        0.5
+      ],
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "invalid-query-6",
+      "input": 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "invalid-query-7",
+      "input": -10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+      "error": "INVALID_QUERY"
+    }
+  ],
+  "index_vectors": [
+    {
+      "phase": 0.0,
+      "length": 1,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 0
+      }
+    },
+    {
+      "phase": -0.0,
+      "length": 1,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 0
+      }
+    },
+    {
+      "phase": -5e-324,
+      "length": 1,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 0
+      }
+    },
+    {
+      "phase": -0.25,
+      "length": 1,
+      "output": {
+        "f": 0.75,
+        "x": 0.75,
+        "i": 0,
+        "t": 0.75,
+        "j": 0
+      }
+    },
+    {
+      "phase": 0.9999999999999999,
+      "length": 1,
+      "output": {
+        "f": 0.9999999999999999,
+        "x": 0.9999999999999999,
+        "i": 0,
+        "t": 0.9999999999999999,
+        "j": 0
+      }
+    },
+    {
+      "phase": 1e+300,
+      "length": 1,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 0
+      }
+    },
+    {
+      "phase": 0.0,
+      "length": 2,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 1
+      }
+    },
+    {
+      "phase": -0.0,
+      "length": 2,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 1
+      }
+    },
+    {
+      "phase": -5e-324,
+      "length": 2,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 1
+      }
+    },
+    {
+      "phase": -0.25,
+      "length": 2,
+      "output": {
+        "f": 0.75,
+        "x": 1.5,
+        "i": 1,
+        "t": 0.5,
+        "j": 0
+      }
+    },
+    {
+      "phase": 0.9999999999999999,
+      "length": 2,
+      "output": {
+        "f": 0.9999999999999999,
+        "x": 1.9999999999999998,
+        "i": 1,
+        "t": 0.9999999999999998,
+        "j": 0
+      }
+    },
+    {
+      "phase": 1e+300,
+      "length": 2,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 1
+      }
+    },
+    {
+      "phase": 0.0,
+      "length": 3,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 1
+      }
+    },
+    {
+      "phase": -0.0,
+      "length": 3,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 1
+      }
+    },
+    {
+      "phase": -5e-324,
+      "length": 3,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 1
+      }
+    },
+    {
+      "phase": -0.25,
+      "length": 3,
+      "output": {
+        "f": 0.75,
+        "x": 2.25,
+        "i": 2,
+        "t": 0.25,
+        "j": 0
+      }
+    },
+    {
+      "phase": 0.9999999999999999,
+      "length": 3,
+      "output": {
+        "f": 0.9999999999999999,
+        "x": 2.9999999999999996,
+        "i": 2,
+        "t": 0.9999999999999996,
+        "j": 0
+      }
+    },
+    {
+      "phase": 1e+300,
+      "length": 3,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 1
+      }
+    },
+    {
+      "phase": 0.0,
+      "length": 2147483647,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 1
+      }
+    },
+    {
+      "phase": -0.0,
+      "length": 2147483647,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 1
+      }
+    },
+    {
+      "phase": -5e-324,
+      "length": 2147483647,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 1
+      }
+    },
+    {
+      "phase": -0.25,
+      "length": 2147483647,
+      "output": {
+        "f": 0.75,
+        "x": 1610612735.25,
+        "i": 1610612735,
+        "t": 0.25,
+        "j": 1610612736
+      }
+    },
+    {
+      "phase": 0.9999999999999999,
+      "length": 2147483647,
+      "output": {
+        "f": 0.9999999999999999,
+        "x": 2147483646.9999998,
+        "i": 2147483646,
+        "t": 0.9999997615814209,
+        "j": 0
+      }
+    },
+    {
+      "phase": 1e+300,
+      "length": 2147483647,
+      "output": {
+        "f": 0.0,
+        "x": 0.0,
+        "i": 0,
+        "t": 0.0,
+        "j": 1
+      }
+    }
+  ],
+  "native_only": [
+    "NaN and infinities rejected for queries and entries",
+    "input mutation and serialized mutation do not affect sampling",
+    "invalid phase rejected even for single palette",
+    "unsupported native numbers rejected before lossy conversion",
+    "outputs and canonical serialized zeros are positive zero",
+    "query order and interleaving do not affect results"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Java0.13.0:14 operations and13 starters; no registry release",
+  "implementation_sha256": {
+    "tools/build_city_marks_java.py": "72aad586c588833f3a5163805027ad71d0c4909c3c80c4d0ac58fa61eff9df5c",
+    "packages/java/examples/CityMarks/CityComposition.java": "0cdc095ea49a9a39b58bc6cc8b7d6d9d7592061984fb22dc22e4f9f5836e5b70",
+    "packages/java-processing/examples/CityMarks/CityMarks.pde": "95f461ce72dba9cd23530b1e795ff29cf9a5302cebed4914c58d02e453aac225"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/r2-java.json": "0327871668e0871eca45316e87b984a2634c55b3b2571577922b899a4ff49422",
+    "evidence/reproductions/r2-p3d/root-review.json": "26d9ea66fe223aa183c3c39ab38bedaa6f7007d3c4ae195f46cf86d52bb1751a"
+  },
+  "final_archive": {
+    "path": ".work/dist/r2/java/procedurals-processing-0.13.0.zip",
+    "sha256": "cd350a7478f5c5e36ba19d4f617bf7ae7ec2eb98b9aa08a1f2966b8ada47d739"
+  },
+  "checks": {
+    "members": 73,
+    "operations": 14,
+    "starters": 13,
+    "prior_starters_byte_preserved": 12,
+    "core_jar_unchanged": true,
+    "zip_integrity": "passed",
+    "packaged_example_matches_native_stage": true
+  },
+  "limits": [
+    "Structural recreation, no source-pixel equivalence",
+    "Two demonstrated originals in selected cohort of three; no corpus-wide estimate",
+    "Deferred ports and remaining roadmap milestones unfinished"
+  ]
+}

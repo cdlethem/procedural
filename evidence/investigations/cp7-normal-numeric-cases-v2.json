@@ -1,0 +1,939 @@
+{
+  "cases": [
+    {
+      "common_edge_scale": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bff0000000000000",
+            "value": -1.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "cross_max": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "rescaled_length": {
+          "bits_hex": "3ff6a09e667f3bcd",
+          "value": 1.4142135623730951
+        },
+        "scale": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bfe6a09e667f3bcc",
+            "value": -0.7071067811865475
+          },
+          {
+            "bits_hex": "3fe6a09e667f3bcc",
+            "value": 0.7071067811865475
+          }
+        ]
+      },
+      "direct_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bff0000000000000",
+            "value": -1.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "length": {
+          "bits_hex": "3ff6a09e667f3bcd",
+          "value": 1.4142135623730951
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bfe6a09e667f3bcc",
+            "value": -0.7071067811865475
+          },
+          {
+            "bits_hex": "3fe6a09e667f3bcc",
+            "value": 0.7071067811865475
+          }
+        ]
+      },
+      "id": "ordinary",
+      "independent_edge_scale": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bff0000000000000",
+            "value": -1.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "cross_max": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "rescaled_length": {
+          "bits_hex": "3ff6a09e667f3bcd",
+          "value": 1.4142135623730951
+        },
+        "u_scale": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bfe6a09e667f3bcc",
+            "value": -0.7071067811865475
+          },
+          {
+            "bits_hex": "3fe6a09e667f3bcc",
+            "value": 0.7071067811865475
+          }
+        ],
+        "v_scale": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        }
+      },
+      "u": [
+        {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      "v": [
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "common_edge_scale": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "cross_max": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "rescaled_length": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "scale": {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ]
+      },
+      "direct_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "7ff0000000000000",
+            "nonfinite": "+Infinity"
+          }
+        ],
+        "length": {
+          "bits_hex": "7ff0000000000000",
+          "nonfinite": "+Infinity"
+        },
+        "unit": null
+      },
+      "id": "large-cross-overflow",
+      "independent_edge_scale": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "cross_max": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "rescaled_length": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "u_scale": {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "v_scale": {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        }
+      },
+      "u": [
+        {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      "v": [
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "common_edge_scale": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        "cross_max": {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        "reject": "zero-or-nonfinite-rounded-cross",
+        "scale": {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        }
+      },
+      "direct_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "length": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ]
+      },
+      "id": "high-aspect-common-scale-loses-v",
+      "independent_edge_scale": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "cross_max": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "rescaled_length": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "u_scale": {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "v_scale": {
+          "bits_hex": "16687e92154ef7ac",
+          "value": 1e-200
+        }
+      },
+      "u": [
+        {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      "v": [
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "16687e92154ef7ac",
+          "value": 1e-200
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "common_edge_scale": {
+        "reject": "nonfinite-or-zero-edge-scale",
+        "scale": {
+          "bits_hex": "7ff0000000000000",
+          "nonfinite": "+Infinity"
+        }
+      },
+      "direct_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "fff8000000000000",
+            "nonfinite": "NaN"
+          },
+          {
+            "bits_hex": "7ff0000000000000",
+            "nonfinite": "+Infinity"
+          }
+        ],
+        "length": {
+          "bits_hex": "fff8000000000000",
+          "nonfinite": "NaN"
+        },
+        "unit": null
+      },
+      "finite_triangle_inputs": [
+        [
+          {
+            "bits_hex": "ffe1ccf385ebc8a0",
+            "value": -1e+308
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "7fe1ccf385ebc8a0",
+            "value": 1e+308
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "ffe1ccf385ebc8a0",
+            "value": -1e+308
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ]
+      ],
+      "id": "finite-endpoint-subtraction-overflow",
+      "independent_edge_scale": {
+        "reject": "nonfinite-or-zero-edge",
+        "u_scale": {
+          "bits_hex": "7ff0000000000000",
+          "nonfinite": "+Infinity"
+        },
+        "v_scale": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        }
+      },
+      "u": [
+        {
+          "bits_hex": "7ff0000000000000",
+          "nonfinite": "+Infinity"
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      "v": [
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "common_edge_scale": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "80000000000007e8",
+            "value": -1e-320
+          }
+        ],
+        "cross_max": {
+          "bits_hex": "00000000000007e8",
+          "value": 1e-320
+        },
+        "rescaled_length": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "scale": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bff0000000000000",
+            "value": -1.0
+          }
+        ]
+      },
+      "direct_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "80000000000007e8",
+            "value": -1e-320
+          }
+        ],
+        "length": {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        "unit": null
+      },
+      "id": "subnormal-cross-direct-norm-underflow",
+      "independent_edge_scale": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "80000000000007e8",
+            "value": -1e-320
+          }
+        ],
+        "cross_max": {
+          "bits_hex": "00000000000007e8",
+          "value": 1e-320
+        },
+        "rescaled_length": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "u_scale": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bff0000000000000",
+            "value": -1.0
+          }
+        ],
+        "v_scale": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        }
+      },
+      "u": [
+        {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        {
+          "bits_hex": "00000000000007e8",
+          "value": 1e-320
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      "v": [
+        {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "common_edge_scale": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        "cross_max": {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        "reject": "zero-or-nonfinite-rounded-cross",
+        "scale": {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        }
+      },
+      "direct_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bff0000000000000",
+            "value": -1.0
+          }
+        ],
+        "length": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bff0000000000000",
+            "value": -1.0
+          }
+        ]
+      },
+      "id": "nearparallel-peredge-component-lost",
+      "independent_edge_scale": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        "cross_max": {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        "reject": "zero-or-nonfinite-rounded-cross",
+        "u_scale": {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        },
+        "v_scale": {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        }
+      },
+      "u": [
+        {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        },
+        {
+          "bits_hex": "16687e92154ef7ac",
+          "value": 1e-200
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      "v": [
+        {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "common_edge_scale": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        "cross_max": {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        "reject": "zero-or-nonfinite-rounded-cross",
+        "scale": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        }
+      },
+      "direct_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        "length": {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        "unit": null
+      },
+      "id": "zero-edge",
+      "independent_edge_scale": {
+        "reject": "nonfinite-or-zero-edge",
+        "u_scale": {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        "v_scale": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        }
+      },
+      "u": [
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      "v": [
+        {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ]
+    }
+  ],
+  "dumped_mesh_comparison": {
+    "maximum_unit_component_abs": 6.245004513516506e-16,
+    "meshes": [
+      {
+        "faces": 1088,
+        "id": "baseline",
+        "max_unit_component_abs": 2.220446049250313e-16,
+        "min_direct_cross_norm": 235.2411367909446
+      },
+      {
+        "faces": 1088,
+        "id": "waist",
+        "max_unit_component_abs": 2.220446049250313e-16,
+        "min_direct_cross_norm": 94.15217780856115
+      },
+      {
+        "faces": 1024,
+        "id": "pointed",
+        "max_unit_component_abs": 6.245004513516506e-16,
+        "min_direct_cross_norm": 14.956341643576822
+      },
+      {
+        "faces": 272,
+        "id": "coarse",
+        "max_unit_component_abs": 1.1102230246251565e-16,
+        "min_direct_cross_norm": 918.4402376762154
+      },
+      {
+        "faces": 1024,
+        "id": "open",
+        "max_unit_component_abs": 2.220446049250313e-16,
+        "min_direct_cross_norm": 235.2411367909446
+      }
+    ],
+    "minimum_direct_cross_norm": 14.956341643576822
+  },
+  "limitations": "Per-edge scaling preserves some high-aspect and subnormal directions but cannot repair nonfinite input edges or a zero rounded cross. It can discard a perpendicular component when its ratio to an edge maximum underflows during that edge normalization. Observations use this Python binary64 host only.",
+  "runtime": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]",
+  "scope": "Private CP7 numerical comparison only; no public contract, validation precedence, parameter bound, renderer, or cross-target claim.",
+  "source_bindings": {
+    ".work/cp7-profile-choices/mesh-dump.json": "45feba9215a7766670a647f3f11c5e751a5b68da64882950581e26ae962729b8",
+    "design/operations/cp7-mesh-numeric-cases.md": "3a232e4ae6c9d070329347196c19f8ce88692532b8541adace0d87b68e26888a",
+    "tools/diagnostics/cp7/normal_numeric_cases_v2.py": "2ee55dfbc9fd001a8151d580852e85c118e4e2b58d7c6cafd0b08f9fa822d756"
+  },
+  "status": "observational"
+}

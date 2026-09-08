@@ -1,0 +1,81 @@
+{
+  "actual_total_nodes_successful_profiles": 300,
+  "checks": {
+    "deterministic_replay": true,
+    "early_terminal_case_present": true,
+    "existing_node_childcounts_change_table5_to_table7": 6,
+    "later_level_spread_changes_at_least_one_generation8_coordinate": true,
+    "later_level_spread_keeps_geometry_through_generation7": true,
+    "node_budget_failure_without_success": true,
+    "old_terminals_expanded_table5_to_table7": 6,
+    "retained_topology_valid": true,
+    "table5_to_table7_raw_coordinate_parent_generation_prefix": true,
+    "table7_to_table8_raw_coordinate_parent_generation_prefix": true
+  },
+  "execution": {
+    "command": "BranchGrowthPrefix --check",
+    "java_release_compile": 8,
+    "rendering": "not invoked",
+    "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)"
+  },
+  "failed_budget_test_nodes_before_throw": 10000,
+  "node_budget": 10000,
+  "private_rng": "fresh java.util.Random(42) per comparison tree",
+  "profiles": [
+    {
+      "early_terminal_count": 1,
+      "emitted_generations": 6,
+      "geometry_sha256": "297dc5d6cd0ab9a4c8d5be9ffca8572edb51e4f2d211430ffed3be37f5ced64e",
+      "id": "table-5",
+      "node_count": 17,
+      "random_draws": 60,
+      "topology_sha256": "7a49cd65f3e055868b66bbea1eecc128e5c8fc070b245db0fe4b41a1af78aa6c",
+      "transition_table_length": 5
+    },
+    {
+      "early_terminal_count": 2,
+      "emitted_generations": 8,
+      "geometry_sha256": "93eee1027c6d688e4a3ef1b9cece9247804728381fa33a1607c792391416e3b3",
+      "id": "table-7",
+      "node_count": 46,
+      "random_draws": 153,
+      "topology_sha256": "d7074dcc2d23369583f078bc3457aae67fd4892b3092d0dea1265b9612b593b6",
+      "transition_table_length": 7
+    },
+    {
+      "early_terminal_count": 2,
+      "emitted_generations": 9,
+      "geometry_sha256": "24a2597854980abbcb362c0d6272e2bc0ceacfc790e8d97585a31cae04159b75",
+      "id": "table-8",
+      "node_count": 79,
+      "random_draws": 262,
+      "topology_sha256": "a00914c1aef54f087634df231451a83a84d5ab3796901cef3e43b63dd5a84016",
+      "transition_table_length": 8
+    },
+    {
+      "early_terminal_count": 2,
+      "emitted_generations": 9,
+      "geometry_sha256": "aa7aa849bd403e461b5899c14c945a3390d8c7ab8c0738806a355e38137a2f17",
+      "id": "table-8-later-spread-0.9",
+      "node_count": 79,
+      "random_draws": 262,
+      "topology_sha256": "a0415cf6ac4449c27deb9ae32befe81fa6eb04f3a20d2d76ee6efea5b51e8b47",
+      "transition_table_length": 8
+    },
+    {
+      "early_terminal_count": 2,
+      "emitted_generations": 9,
+      "geometry_sha256": "24a2597854980abbcb362c0d6272e2bc0ceacfc790e8d97585a31cae04159b75",
+      "id": "table-8-replay",
+      "node_count": 79,
+      "random_draws": 262,
+      "topology_sha256": "a00914c1aef54f087634df231451a83a84d5ab3796901cef3e43b63dd5a84016",
+      "transition_table_length": 8
+    }
+  ],
+  "scope": "private breadth-first branching-order investigation; no public operation, renderer, runtime, or source-compatibility claim",
+  "source_sha256": {
+    "tools/diagnostics/cp6/BranchGrowthPrefix.java": "4c767a532f9fa3804ccb9681559c4469aaca31c62b18b8367c058dcd1b0f972a"
+  },
+  "status": "passed"
+}

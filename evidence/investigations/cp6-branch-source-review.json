@@ -1,0 +1,51 @@
+{
+  "status": "accepted-for-capability-investigation",
+  "owner": "root",
+  "source_bindings": [
+    {
+      "sketch": "2014/Generativos/Arboles",
+      "notes_path": "survey/out/2014/Generativos/Arboles/notes.md",
+      "notes_sha256": "36b211ff2b26f54ec5fc6ddccb2eadd681f4aeead3124c50b1aa2752f88d4f69",
+      "upstream_path": "2014/Generativos/Arboles/Arboles.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "upstream_blob_sha256": "918e7de55a6df7f2dcfb25e685775fcddf0eceaf21ce899c6cf6ea89b706c1ef"
+    },
+    {
+      "sketch": "2018/Generativos/arbolito3",
+      "notes_path": "survey/out/2018/Generativos/arbolito3/notes.md",
+      "notes_sha256": "bc278131e84561f22c5f3eb479b9ff458df97f1a9259a1ff800f62d17d9f9958",
+      "upstream_path": "2018/Generativos/arbolito3/arbolito3.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "upstream_blob_sha256": "b4deb6f013af07c9b436194b040d886c9eb0d059fd45c783acb11e9e6237010f"
+    },
+    {
+      "sketch": "2018/Generativos/arbolito4",
+      "notes_path": "survey/out/2018/Generativos/arbolito4/notes.md",
+      "notes_sha256": "d9fed9e20763c254e5ae4954995ab721684fdd98222f392dbe895479d1f6c899",
+      "upstream_path": "2018/Generativos/arbolito4/arbolito4.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "upstream_blob_sha256": "cda8512f87103aaf75d4114fcfb1e33bf8e3c47fe77641df9aef77f42c492cc0"
+    },
+    {
+      "sketch": "2020/generative/05_08/brotes",
+      "notes_path": "survey/out/2020/generative/05_08/brotes/notes.md",
+      "notes_sha256": "e38db22cb28930889cfbe159d9724fa06d4280c1d4570606bf844138b3a2bdfb",
+      "upstream_path": "2020/generative/05_08/brotes/brotes.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "upstream_blob_sha256": "e94780cfb17fd5295afad7424aeaeb787b55110e294996e94d6cbe92746c390d"
+    }
+  ],
+  "findings": [
+    "Arboles length scaling is not uniformly shrinking, and its node-gate/random-count law differs from independent slots.",
+    "arbolito4 has0\u20133children and narrows angle ranges toward tips; siblings inherit the same sampled child length.",
+    "arbolito3 directly corroborates ordered left/right probabilistic endpoint recursion with constant angular spread; style/color carry and shared streams are separate from retained topology.",
+    "2020brotes has integer depth decrement, interior child attachment and a distinct nested fanout law. No fractional-depth contract is justified.",
+    "Keyword search over checked-in notes finds L-system shorthand only in arbolito4 and2019brotes, not an observed symbolic grammar interpreter. This bounded search is not a proof that the upstream901sketch corpus has no such implementation."
+  ],
+  "evidence_limits": [
+    "Root read notes and decisive source, plus exact arbolito4 depth/spread/weight variant metadata. No new render has run.",
+    "arbolito4 P2D variants carry pixelDensity unavailable stderr; measured differences are observations under that actual display, not density2proof.",
+    "Branch probability, shared length distribution and general generation schedules lack isolated visual-range evidence."
+  ],
+  "next": "Private eight-image comparison in evidence/parameter-experiments/cp6-branches/experiment.json; no public contract approved."
+}

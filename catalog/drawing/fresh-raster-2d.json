@@ -1,0 +1,522 @@
+{
+  "id": "drawing.fresh-raster-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "kind": "drawing-profile",
+  "description": "Ordered segments and single-fill convex quads on an exclusively owned fresh density-1 surface.",
+  "admission": "Shared value/adapter infrastructure for CP1, not a new generative operation or a merge of composite corpus candidates.",
+  "decisions": [
+    "design/drawing-boundary.md",
+    "design/drawing-profile-policy.md",
+    "design/drawing-numeric-investigation.md",
+    "design/drawing-contract-review.md"
+  ],
+  "provenance": [
+    {
+      "notes_path": "survey/out/2018/Generativos/pelines/notes.md",
+      "sha256": "1b7c654a120012ef0d3e85857415371088f383837345e93b9fdfb9227a9b1c6a"
+    },
+    {
+      "notes_path": "survey/out/2019/generativos/ciserp/notes.md",
+      "sha256": "c81dd166ecef06592fcb66fcb38cc11a7518813ffbcb700009fa21c555673f34"
+    }
+  ],
+  "environment_schema": {
+    "type": "object",
+    "properties": {
+      "width": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2048
+      },
+      "height": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2048
+      },
+      "density": {
+        "const": 1
+      },
+      "background": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 16777215
+      }
+    },
+    "required": [
+      "width",
+      "height",
+      "density",
+      "background"
+    ],
+    "additionalProperties": false
+  },
+  "command_schema": {
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "const": "segment2"
+          },
+          "from": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              },
+              {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "to": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              },
+              {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "rgb": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16777215
+          },
+          "opacity8": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          },
+          "width": {
+            "type": "number",
+            "minimum": -1.7976931348623157e+308,
+            "maximum": 1.7976931348623157e+308,
+            "exclusiveMinimum": 0
+          },
+          "cap": {
+            "const": "round"
+          }
+        },
+        "required": [
+          "kind",
+          "from",
+          "to",
+          "rgb",
+          "opacity8",
+          "width",
+          "cap"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "const": "quad2"
+          },
+          "vertices": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number",
+                  "minimum": -1.7976931348623157e+308,
+                  "maximum": 1.7976931348623157e+308
+                },
+                {
+                  "type": "number",
+                  "minimum": -1.7976931348623157e+308,
+                  "maximum": 1.7976931348623157e+308
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "rgb": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16777215
+          },
+          "opacity8": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          }
+        },
+        "required": [
+          "kind",
+          "vertices",
+          "rgb",
+          "opacity8"
+        ],
+        "additionalProperties": false
+      }
+    ]
+  },
+  "batch_schema": {
+    "type": "array",
+    "items": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "segment2"
+            },
+            "from": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number",
+                  "minimum": -1.7976931348623157e+308,
+                  "maximum": 1.7976931348623157e+308
+                },
+                {
+                  "type": "number",
+                  "minimum": -1.7976931348623157e+308,
+                  "maximum": 1.7976931348623157e+308
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "to": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number",
+                  "minimum": -1.7976931348623157e+308,
+                  "maximum": 1.7976931348623157e+308
+                },
+                {
+                  "type": "number",
+                  "minimum": -1.7976931348623157e+308,
+                  "maximum": 1.7976931348623157e+308
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "rgb": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 16777215
+            },
+            "opacity8": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "width": {
+              "type": "number",
+              "minimum": -1.7976931348623157e+308,
+              "maximum": 1.7976931348623157e+308,
+              "exclusiveMinimum": 0
+            },
+            "cap": {
+              "const": "round"
+            }
+          },
+          "required": [
+            "kind",
+            "from",
+            "to",
+            "rgb",
+            "opacity8",
+            "width",
+            "cap"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "quad2"
+            },
+            "vertices": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number",
+                    "minimum": -1.7976931348623157e+308,
+                    "maximum": 1.7976931348623157e+308
+                  },
+                  {
+                    "type": "number",
+                    "minimum": -1.7976931348623157e+308,
+                    "maximum": 1.7976931348623157e+308
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "rgb": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 16777215
+            },
+            "opacity8": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            }
+          },
+          "required": [
+            "kind",
+            "vertices",
+            "rgb",
+            "opacity8"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "maxItems": 4096
+  },
+  "limits": {
+    "max_batch_commands": 4096,
+    "max_frame_commands": 9007199254740991,
+    "max_surface_axis": 2048,
+    "density": 1,
+    "min_converted_width": 0.00390625,
+    "max_converted_width": {
+      "basis": "max_surface_axis",
+      "multiplier": 1
+    },
+    "converted_x": {
+      "minimum": {
+        "basis": "margin",
+        "multiplier": -1
+      },
+      "maximum": {
+        "sum": [
+          "surface_width",
+          "margin"
+        ]
+      },
+      "inclusive": true
+    },
+    "converted_y": {
+      "minimum": {
+        "basis": "margin",
+        "multiplier": -1
+      },
+      "maximum": {
+        "sum": [
+          "surface_height",
+          "margin"
+        ]
+      },
+      "inclusive": true
+    },
+    "basis": "Chosen package engineering policy, not artistic ranges or universal native safety guarantees.",
+    "coordinate_margin": {
+      "basis": "max_surface_axis",
+      "multiplier": 1
+    },
+    "rule_symbols": {
+      "surface_width": "environment.width",
+      "surface_height": "environment.height",
+      "max_surface_axis": "max(environment.width,environment.height)",
+      "margin": "coordinate_margin.basis times coordinate_margin.multiplier"
+    }
+  },
+  "numerics": {
+    "normalization": "Schema describes canonical binary64 numeric values. Native APIs reject booleans as numbers and do not coerce strings; integer carriers normalize to binary64 before validation. Nonfinite values fail. Canonicalize every signed zero to positive zero.",
+    "coordinates": "Canvas units, x right, y down, already transformed. No endpoint clamping; native surface clipping only.",
+    "canonical_segment": "Endpoints must be distinct after zero normalization. Producers omit zero-length constructions; supplied equal endpoints are INVALID_COMMAND.",
+    "canonical_quad": "Exactly four cyclic vertices. Compute the exact sign over represented binary64 values of orient(a,b,c)=(bx-ax)*(cy-ay)-(by-ay)*(cx-ax) for all four consecutive triples. All four signs must be nonzero and equal. Either winding accepted. No epsilon.",
+    "conversion": "Round coordinates and segment width to nearest binary32, ties to even, then widen exactly to binary64 and canonicalize zero. Overflow is INVALID_COMMAND. No other rounding.",
+    "profile": "After conversion check coordinate and width limits. Inclusive bounds apply to converted values, even when the canonical value lay just outside.",
+    "converted_segment": "After all domain/style checks, coincident converted endpoints yield a no-op that still consumes its encounter index.",
+    "converted_quad": "Apply the same exact orientation-sign test to converted coordinates. Failure is INVALID_COMMAND, not a no-op.",
+    "comparison": "Topology, indices, errors, RGB24, opacity8 and converted coordinate bits are exact. Raster coverage/antialiasing are native; no cross-host pixel identity.",
+    "native_carriers": {
+      "java": "Exact standard classes Byte, Short, Integer, Long, Float, Double, BigInteger; reject arbitrary Number subclasses, BigDecimal and mutable numeric wrappers before conversion.",
+      "python": "int and float, excluding bool; normalize integer carriers to binary64 before canonical validation.",
+      "javascript": "Number, excluding coercible strings, booleans and BigInt."
+    }
+  },
+  "rendering": {
+    "order": "Consume in encounter order across batches, including no-op indices. Never reorder by style or kind.",
+    "colour": "RGB24 encoded sRGB8: red=(rgb>>16)&255, green=(rgb>>8)&255, blue=rgb&255. Straight source alpha is opacity8/255, never /256. Normalized-alpha APIs receive that ratio rounded once to nearest binary64 ties-to-even. Native byte-channel APIs receive the exact bytes. No host colour mode or packed signed colour in canonical data.",
+    "compositing": "source-over on opaque RGB background; no tint, shadow, filter or dash. Opacity zero remains fully validated.",
+    "segment": "Stroke only, specified width, round caps, independent segment; no joined-polyline semantics.",
+    "quad": "One closed filled shape, no stroke. Do not alpha-composite two independent triangles. Explicitly reset stroke/fill when kinds alternate."
+  },
+  "lifecycle": {
+    "states": [
+      "new",
+      "active",
+      "completed",
+      "aborted"
+    ],
+    "begin": "Only new may begin. Check environment schema, then static complete backend/profile capability. Ask integration to acquire/allocate fresh surface, verify dimensions/density/readiness, then take exclusive ownership and initialize identity transform/full clip/state/background. Success becomes active. Any failure releases any acquired surface and becomes aborted. Static absence is UNSUPPORTED_CAPABILITY; acquisition/readiness is RESOURCE_FAILURE; native initialization/context failure is RENDER_FAILURE.",
+    "batch": "Only active accepts synchronous batches. Check container and size/count capacity first; then validate every command in encounter order before drawing any command of this batch. On success advance count by batch length, including no-ops. Empty batch valid. Invalid command aborts before this batch draws; earlier batches cannot be rolled back.",
+    "end": "Only active may end. Finalize native drawing and return completed surface to integration for display/save. Native finalization failure aborts and returns no completed surface. Empty frame is background-only.",
+    "abort": "Explicit abort is idempotent for new/active/aborted and releases transferred resources through integration. Completed surfaces are already owned by integration; abort after completion is INVALID_STATE.",
+    "ownership": "No caller drawing/state mutation while active. Producer buffers remain caller-owned but cannot mutate during synchronous consumption. Adapter retains no buffers after return. Integration releases resources after success or failure.",
+    "failure": "Any validation/capability/native failure aborts an unfinished frame. Subsequent begin/batch/end return INVALID_STATE. Validation/preflight atomicity does not promise rollback of a native failure mid-batch. No aborted output may be published as completed."
+  },
+  "validation_order": {
+    "begin": [
+      "new-state check",
+      "environment schema",
+      "static backend/profile capability preflight",
+      "integration surface acquisition",
+      "transferred surface dimensions/density/readiness",
+      "exclusive ownership and native state/background initialization"
+    ],
+    "batch": [
+      "active-state check",
+      "batch container/size/frame-count capacity",
+      "for each record in encounter order: schema, canonical topology, binary32 conversion, converted profile domain, converted topology",
+      "only after every record passes: native execution in original order"
+    ],
+    "error_precedence": "The first failing record wins across all its validation stages; do not validate schemas for all records before topology. No field-specific error precedence within the same code/index is promised."
+  },
+  "errors": {
+    "INVALID_STATE": "Method unavailable in current state; completed stays completed, otherwise aborted.",
+    "INVALID_ENVIRONMENT": "Environment schema/type/value failure at begin.",
+    "UNSUPPORTED_CAPABILITY": "Complete required backend/profile cannot be supplied; begin preflight only. Unknown command kind/cap is INVALID_COMMAND.",
+    "INVALID_BATCH": "Wrong batch container, more than 4096 records, or frame count would exceed 2^53-1; no failing command index.",
+    "INVALID_COMMAND": "First command failing schema, topology, conversion or profile limits; absolute zero-based encounter index, including preceding no-ops.",
+    "RESOURCE_FAILURE": "Surface allocation/acquisition or transferred surface dimensions/density/readiness failure before initialization; no command index.",
+    "RENDER_FAILURE": "Synchronous native drawing failure reports the absolute index of that command. Acquisition has RESOURCE_FAILURE; native background/initialization/finalization failure reports null. Asynchronous context loss reports an index only if the host identifies the in-flight command, otherwise null. Frame aborts and never returns completed output."
+  },
+  "error_result": "Record {code, commandIndex}; commandIndex null for non-command failures. Diagnostic prose is non-normative; no field-specific error subcodes are promised.",
+  "targets": {
+    "processing-java": {
+      "backend": "JAVA2D",
+      "implementation_status": "native_adapter_implemented",
+      "native_status": "validated-scoped",
+      "evidence": [
+        "evidence/conformance/java2d-adapter-pixels.json",
+        "evidence/conformance/java2d-adapter-failures.json",
+        "evidence/reproductions/cp1-java2d-adapter/result.json",
+        "evidence/reproductions/cp1-java2d-adapter/decision.md",
+        "design/java2d-adapter-native-review.md"
+      ],
+      "native_review": "evidence/conformance/java2d-native-review.json"
+    },
+    "p5js": {
+      "backend": "Canvas2D",
+      "implementation_status": "native_adapter_implemented",
+      "native_status": "validated-scoped",
+      "evidence": [
+        "evidence/conformance/p5js-adapter-pixels.json",
+        "evidence/conformance/p5js-adapter-failures.json",
+        "evidence/conformance/p5js-adapter-transfer.json",
+        "evidence/conformance/p5js-adapter-cp1.json",
+        "design/p5js-adapter-review.md",
+        "design/p5js-cp1-decision.md",
+        "design/p5js-error-phase-repair.md",
+        "design/p5js-transfer-supplement.md"
+      ],
+      "native_review": "evidence/conformance/p5js-native-review.json"
+    },
+    "py5": {
+      "backend": "JAVA2D",
+      "implementation_status": "native_adapter_implemented",
+      "native_status": "validated-scoped",
+      "evidence": [
+        "evidence/conformance/py5-adapter-pixels.json",
+        "evidence/conformance/py5-adapter-failures.json",
+        "evidence/conformance/py5-adapter-cp1.json",
+        "evidence/conformance/py5-adapter-ui.json",
+        "evidence/conformance/py5-adapter-interruption.json",
+        "design/py5-adapter-review.md",
+        "design/py5-adapter-boundary.md",
+        "design/py5-cp1-decision.md",
+        "design/py5-example-decision.md",
+        "design/py5-pixel-acquisition-repair.md",
+        "design/py5-interruption-validation.md",
+        "evidence/conformance/py5-adapter-pixels-initial.json",
+        "evidence/conformance/py5-acquisition-diagnostic.txt"
+      ],
+      "native_review": "evidence/conformance/py5-native-review.json"
+    },
+    "processing-android": {
+      "backend": "ANDROID2D",
+      "processing_renderer_token": "JAVA2D",
+      "renderer_class": "processing.a2d.PGraphicsAndroid2D",
+      "implementation_status": "native_adapter_implemented",
+      "native_status": "validated-scoped",
+      "evidence": [
+        "evidence/conformance/android-adapter-pixels.json",
+        "evidence/conformance/android-adapter-failures.json",
+        "evidence/conformance/android-adapter-lifecycle-v2.json",
+        "evidence/reproductions/cp1-android/result.json",
+        "evidence/reproductions/android-field-marks-ui/result.json",
+        "evidence/conformance/android-adapter-lifecycle-initial.json",
+        "evidence/conformance/android-adapter-lifecycle-corrective.json",
+        "design/android-native-review.md",
+        "design/android-adapter-boundary.md",
+        "design/android-adapter-integration-decision.md",
+        "design/android-pixel-decision.md",
+        "design/android-failure-decision.md",
+        "design/android-lifecycle-v2-decision.md",
+        "design/android-activity-lifecycle-v2.md",
+        "design/android-redraw-integration-finding.md",
+        "design/android-cp1-decision.md",
+        "design/android-editable-example.md",
+        "design/android-example-decision.md"
+      ],
+      "native_review": "evidence/conformance/android-native-review.json"
+    }
+  },
+  "verification": {
+    "schema_fixtures": "fixtures/drawing/fresh-raster-schema.json",
+    "numeric_investigation": "fixtures/drawing/geometry-investigation.json",
+    "native_plan": "design/drawing-profile-policy.md",
+    "scope": "Schema fixtures and investigation are not adapter/native conformance.",
+    "semantic_fixtures": "fixtures/drawing/fresh-raster-semantics.json",
+    "normalized_fixtures": "fixtures/drawing/fresh-raster-normalized.json",
+    "lifecycle_fixtures": "fixtures/drawing/fresh-raster-lifecycle.json",
+    "lifecycle_model": "tools/check_drawing_lifecycle_model.py",
+    "python_validator": "evidence/conformance/drawing-python.json",
+    "javascript_validator": "evidence/conformance/drawing-javascript.json",
+    "java_validator": "evidence/conformance/drawing-java.json",
+    "python_state": "evidence/conformance/drawing-state-python.json",
+    "javascript_state": "evidence/conformance/drawing-state-javascript.json",
+    "java_state": "evidence/conformance/drawing-state-java.json"
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "Sol",
+    "status": "accepted",
+    "resolution": "Sol approved numeric outputs and lifecycle evidence subject to active-environment retention, two state cases and fixture identity checks. Root integrated all three; 31 normalization and 21 model scenarios pass. This freezes semantics, not native support."
+  }
+}

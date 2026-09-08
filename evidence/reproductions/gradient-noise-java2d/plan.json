@@ -1,0 +1,13 @@
+{
+  "operation": "field.gradient-noise-2d-01",
+  "version": "0.1.0",
+  "scope": "Public grid/noise Java operations consumed by a private Processing JAVA2D drawing probe; candidate-design agreement only, not upstream corpus reproduction or completed adapter validation.",
+  "source_capability": "2018/Generativos/pelines",
+  "reference": ".work/experiments/cp1-noise-choice/single.png",
+  "candidate": ".work/reproductions/gradient-noise-java2d/single.png",
+  "configuration": "evidence/parameter-experiments/cp1-noise-choice/experiment.json: single, one octave, zero rotation, seed42",
+  "runtime": "Processing 4.5.6 JAVA2D; JDK17; 640x640; static frame1",
+  "acceptance": "Exact RGBA pixel equality with the already-inspected private candidate render, using the public noise and grid implementation. Do not adjust configurations after comparison.",
+  "excluded_claims": ["external corpus baseline", "p5.js browser", "py5 host", "Android", "P2D/P3D", "approved palette operation", "complete CP1 edit/transfer"],
+  "render_budget": 1
+}

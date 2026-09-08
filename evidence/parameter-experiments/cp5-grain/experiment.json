@@ -1,0 +1,117 @@
+{
+  "id": "cp5-grain",
+  "status": "planned-root-reviewed",
+  "question": "Does a useful triangle grain capability need distribution substitution alongside retained seeded points, and does it transfer to existing region geometry?",
+  "decision": "Compare distributions before choosing public sampling boundary; no public defaults or ranges authorized.",
+  "decision_rules": [
+    "If uniform and source-biased coverage visibly differ, preserve their semantic distinction; do not claim uniform sampling reproduces active source grain.",
+    "Retain a public batch proposal only if the example avoids repetitive RNG/buffering glue and permits content substitution.",
+    "Keep source-specific brightness and triangulation outside sampling unless a demonstrated transfer requires them.",
+    "Treat colour/opacity change as one styling substitution, not isolated parameter evidence."
+  ],
+  "hypothesis": "Uniform coverage, first-vertex concentration and biased second-coordinate coverage differ materially; appearance edits and rectangle transfer can consume the same point boundary.",
+  "source_sketches": [
+    "2018/Generativos/puntis",
+    "2018/Generativos/puntis2",
+    "2018/Generativos/puntis3"
+  ],
+  "baseline": {
+    "kind": "new private Java implementation experiment",
+    "id": "uniform",
+    "seed": 42,
+    "renderer": "JAVA2D",
+    "dimensions": [
+      640,
+      640
+    ],
+    "pixel_density": 1,
+    "triangle": [
+      [
+        40,
+        600
+      ],
+      [
+        320,
+        40
+      ],
+      [
+        600,
+        600
+      ]
+    ],
+    "density": 0.1,
+    "count": 15680
+  },
+  "parameter": {
+    "name": "distribution, density and independent content substitution",
+    "default": null,
+    "unit": "discrete private investigation choices"
+  },
+  "variants": [
+    {
+      "id": "uniform",
+      "change": "Uniform two-coordinate helper; retained baseline",
+      "count": 15680
+    },
+    {
+      "id": "vertex-biased",
+      "change": "Active puntis product before square root; same geometry/count/style",
+      "count": 15680
+    },
+    {
+      "id": "edge-biased",
+      "change": "Active puntis3 coordinate distribution; same geometry/count/style, brightness discarded",
+      "count": 15680
+    },
+    {
+      "id": "denser",
+      "change": "Uniform density 0.1 to 0.2; same triangle and point stream prefix",
+      "count": 31360
+    },
+    {
+      "id": "recolored",
+      "change": "Same retained uniform points; coral at alpha150 instead of teal at alpha90",
+      "count": 15680
+    },
+    {
+      "id": "strokes",
+      "change": "Same retained uniform centres; horizontal length4 strokes instead of points",
+      "count": 15680
+    },
+    {
+      "id": "region-transfer",
+      "change": "CP4 R4 cells split into 26 supplied triangles; same area-count/content mechanism",
+      "count": null
+    }
+  ],
+  "comparison": "Native numeric checks plus all seven directly inspected PNGs; normalized RGB mean absolute difference and changed pixel fraction, no post-hoc numeric visual threshold.",
+  "render_budget": 7,
+  "attempt_budget": 1,
+  "mark_budget": 160000,
+  "numeric_timeout_seconds": 30,
+  "attempt_timeout_seconds": 180,
+  "source_sha256": {
+    "design/capabilities/grain-evidence-audit.md": "5a7f58babca28374ca51b915438bd54566a39b85ef2d128bddd6a81d21c27c81",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "survey/out/2018/Generativos/puntis/notes.md": "98ad640b63e2ec0872af61406743bd2b5852dd7744301ec74a337ebe0d75430b",
+    "survey/out/2018/Generativos/puntis2/notes.md": "a4b45e254cc656cb3aee8eb6bd6b7f1dfca0a23c56a182d71380ba8a73c09dfe",
+    "survey/out/2018/Generativos/puntis3/notes.md": "9699082e346a3e7f22798f6a932e4c42df28c9435e922365ad2c3c7de59c7e9c",
+    "tools/diagnostics/cp5/GrainChoice.java": "cc8bed6c118e3e2f1f2631427a8785334cacc74d3bb977406a8f4ce04bb4eb52",
+    "tools/diagnostics/cp5/run_grain.py": "40bc3838d3cf05f5ec8936263094d7a9acad9168d4ca3d5f7d12e4bdeef79e05",
+    "evidence/investigations/cp5-grain-distributions.json": "f43e8a7623d2cb778681c4fd39a4b8274890972d7a7b2e3c23b01ed478b58509",
+    "evidence/investigations/cp5-grain-distributions-review.json": "476bb2cdf218ad8827ae9b8168967fb75a6a59a1b7a29499a193b72bb5d77245",
+    "tools/diagnostics/cp5/run_grain_distributions.py": "cbba1ea8ecfbbc441a25f6f0263e93737b087644a7be43c69335571ef1331ba6",
+    "evidence/conformance/quadrant-partition-java.json": "2f87b8f2041b3f3203894c9a0820f3a9f9f6bb4d542b002eddf0f530e77c4395"
+  },
+  "constraints": [
+    "No source image or private prior experiment rerender.",
+    "Private Java Random stream is not a public contract or source-pixel promise.",
+    "Shape/style choices are exploratory; no continuous encouraged range.",
+    "Biased modes preserve source draw order but use the same rendered ink to isolate spatial distribution.",
+    "Stroke centres are sampled inside; full strokes may cross triangle boundaries.",
+    "One serialized Processing process and one reserved attempt; preserve failures and partial output."
+  ],
+  "output": ".work/experiments/cp5-grain",
+  "runner": "tools/diagnostics/cp5/run_grain.py",
+  "prototype": "tools/diagnostics/cp5/GrainChoice.java"
+}

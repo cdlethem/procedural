@@ -1,0 +1,16 @@
+{
+  "status": "changes-required",
+  "scope": "Root review of initial CP7 private geometry diagnostic; no acceptance",
+  "input_sha256": {
+    "tools/diagnostics/cp7/profile_mesh_diagnostic.py": "6d23bfd43343286669002060c0b9dfc000ffd566abf708391645f53f18edd3db",
+    "evidence/investigations/cp7-profile-mesh-geometry.json": "5ff936bc1608d8da1c34cfe3577fe21f7a5743618ad8ab525d43687909111154"
+  },
+  "findings": [
+    "Mutation controls catch their own accepted-case AssertionError and can report rejected when the validator accepts.",
+    "Metadata validator checks ranges only, not actual face band/cell identity.",
+    "Boundary traversal overwrites repeated outgoing edges without verifying vertex degree.",
+    "Generated finite coordinates and index bounds are not explicitly checked.",
+    "The duplicate-pole control uses a repeated index rather than distinct duplicate pole vertices."
+  ],
+  "next_action": "Assigned bounded correction and rerun to implementation agent; root must inspect the replacement before accepting it."
+}

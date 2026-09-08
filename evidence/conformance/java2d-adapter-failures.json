@@ -1,0 +1,40 @@
+{
+  "scope": "Registered JAVA2D native probe suite; CP1 and other hosts are separate",
+  "processing_version": "4.5.6",
+  "input_sha256": {
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
+    "tests/native/Java2DFrameFailures.java": "073c3f3b122695efef8e8142ca4160e289679e7ba47d37f86b4b40078ec88e48",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "tools/run_java2d_adapter_probes.py": "8a04393093d96f52e4a4f8d4b4539b7cd93735a366ecebc0394ecdfca622164c",
+    "design/java2d-adapter-validation.md": "46cfff7866b124a5a0ecd674b1e557352fa4b339c93dbd17e1c996a9386deced",
+    "catalog/drawing/fresh-raster-2d.json": "92f9d0323e78f326a874e68530727156ead3a7d5a07c5c41ec7ecc430584fff4"
+  },
+  "compiler_stderr": "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/color/CyclicPalette.java:17: warning: [strictfp] as of release 17, all floating-point expressions are evaluated strictly and 'strictfp' is not required\npublic strictfp final class CyclicPalette {\n                      ^\n/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java:15: warning: [strictfp] as of release 17, all floating-point expressions are evaluated strictly and 'strictfp' is not required\npublic strictfp final class GradientNoise2D01 {\n                      ^\n/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/internal/DrawingValues.java:11: warning: [strictfp] as of release 17, all floating-point expressions are evaluated strictly and 'strictfp' is not required\npublic strictfp final class DrawingValues {\n                      ^\n/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/layout/RegularGrid.java:17: warning: [strictfp] as of release 17, all floating-point expressions are evaluated strictly and 'strictfp' is not required\npublic strictfp final class RegularGrid {\n                      ^\n4 warnings\n",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "status": "passed",
+  "runs": [
+    {
+      "harness": "org.procedurals.processing.internal.Java2DFrameFailures",
+      "exit_code": 0,
+      "stdout": "{\"profile\":\"drawing.fresh-raster-2d\",\"group\":\"5-lifecycle\",\"passed\":true,\"cases\":11,\"scope\":\"real JAVA2D resources with deterministic injected phase failures; not spontaneous device or context loss evidence\"}\n",
+      "stderr": "",
+      "native": {
+        "profile": "drawing.fresh-raster-2d",
+        "group": "5-lifecycle",
+        "passed": true,
+        "cases": 11,
+        "scope": "real JAVA2D resources with deterministic injected phase failures; not spontaneous device or context loss evidence"
+      }
+    }
+  ],
+  "part": "failures",
+  "images": {
+    ".work/reproductions/java2d-adapter-probes/java2d-group3-alpha-panel.png": "cde7e234c81991e30f2bc27e75dd285d187c2035cba032cbf9276d265c3d897b",
+    ".work/reproductions/java2d-adapter-probes/java2d-group4-style-caps.png": "2e886bf7be507cbf159d665644ffca946f6095c62623338ac23a490b2a251106"
+  }
+}

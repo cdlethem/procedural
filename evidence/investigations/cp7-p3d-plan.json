@@ -1,0 +1,41 @@
+{
+  "id": "cp7-p3d-capability",
+  "status": "ready",
+  "reviewer": "root",
+  "scope": "One local Processing4.5.6 P3D context and depth-overlap probe, no mesh/lighting/shader/hardware support certification",
+  "attempt_budget": 1,
+  "timeout_seconds": 90,
+  "output": ".work/experiments/cp7-p3d-capability",
+  "result": "evidence/investigations/cp7-p3d-result.json",
+  "source_sha256": {
+    "tools/diagnostics/cp7/P3DCapabilityProbe.java": "7d4d1a210503c8e54efc58850be55179c3ce28660f3a2cb0e610d1111b92083d",
+    "tools/diagnostics/cp7/check_p3d_runtime.py": "2121c49a10b299b7b8225a133d0dc040085506c5ae035fd9fd370ac002d0c68f",
+    "design/capabilities/cp7-p3d-runtime-readiness.md": "69fec81c4f0af9c86c88e1d8f84ab28e3d40798e0d27add6a329da70552ac515"
+  },
+  "runtime": "Pinned JDK17 and Processing desktop core/JOGL2.6/GlueGen2.6 Linux-amd64 set recorded by runner; Xvfb; repository-local user.home and temporary directory",
+  "acceptance": [
+    "Actual PGraphics3D320x320density1 and nonempty acquired PGL vendor/renderer/version.",
+    "Front red quad submitted before larger blue rear quad remains visible at160,160; blue rear visible at100,160; background17,23,31 at20,20.",
+    "Native samples match opaque savedPNG, one completed draw, no stderr or process error.",
+    "Source/JAR/class/plan hashes stable before and after; any failure preserved without retry."
+  ],
+  "root_review": [
+    "Read complete probe and runner, checked revised normal Processing ortho convention and actual compiled PGL.getString calls.",
+    "Required pre-javac bindings,30secondcompile timeout, preflight result paths, class and plan hashes under render lock, runtime identity, and timeout log preservation.",
+    "Ran default materialize/compile successfully with pinned five JARs; no current Java or Xvfb process observed before registering."
+  ],
+  "expected_samples": {
+    "front_red": [
+      160,
+      160
+    ],
+    "back_blue": [
+      100,
+      160
+    ],
+    "background": [
+      20,
+      20
+    ]
+  }
+}

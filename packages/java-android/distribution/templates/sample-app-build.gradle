@@ -1,0 +1,45 @@
+plugins { id 'com.android.application' }
+
+def suppliedProcessingCore = providers.gradleProperty('processingCore').orElse('libs/processing-core.jar').get()
+def processingCore = file(suppliedProcessingCore)
+if (!processingCore.isFile()) throw new GradleException('Supply Processing Android core with -PprocessingCore=/absolute/path/processing-core.jar, or put it at app/libs/processing-core.jar')
+if (!processingCore.name.endsWith('.jar')) throw new GradleException('Processing Android core is a Java archive: copy or rename AndroidMode/processing-core.zip to processing-core.jar before passing -PprocessingCore')
+
+android {
+    namespace 'org.procedurals.fieldmarks'
+    compileSdkVersion 33
+    buildToolsVersion '30.0.3'
+    defaultConfig {
+        applicationId 'org.procedurals.fieldmarks'
+        minSdkVersion 29
+        targetSdkVersion 33
+        versionCode 1
+        versionName '0.1.0'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        resources {
+            pickFirsts += ['META-INF/LICENSE', 'META-INF/THIRD_PARTY_NOTICES.md']
+        }
+    }
+    if (project.hasProperty('debugKeystore')) {
+        signingConfigs {
+            debug {
+                storeFile file(project.property('debugKeystore'))
+                storePassword 'procedurals-local-debug'
+                keyAlias 'procedurals-debug'
+                keyPassword 'procedurals-local-debug'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation files('libs/procedurals-core.jar')
+    implementation files('libs/procedurals-android.jar')
+    implementation files(processingCore)
+    implementation 'androidx.appcompat:appcompat:1.6.0'
+}

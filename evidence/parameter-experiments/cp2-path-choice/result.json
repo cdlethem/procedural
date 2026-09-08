@@ -1,0 +1,1195 @@
+{
+  "scope": "Private Java design experiment, not a public operation, source reproduction, four-target validation or a recommended parameter range.",
+  "status": "rendering_complete",
+  "visual_review": "pending",
+  "attempts": [
+    {
+      "case": "trace",
+      "status": "rendered",
+      "input_sha256": {
+        "evidence/parameter-experiments/cp2-path-choice/experiment.json": "aeeb9bb5c5fbf27b1edefd5bd802feca2fea9012011cc69e39675d37de925ede",
+        "tools/diagnostics/cp2/PathChoice.java": "f85f61736346f840296752727f0bf73ae0813c9dfd006483fea65e18ae3a8eac",
+        "tools/diagnostics/cp2/run-path-choice.py": "6f6672c43888ada4fa544d80e17b2d277f784fa6b275d1fd75f3af99f99333e0",
+        ".work/dist/java/procedurals-core-0.1.0.jar": "39a48549b323acaf63d51a129dc2fc41b6ee79c1e806aed90e3ef0a6963131e2",
+        ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+        "evidence/distribution/java-artifacts.json": "3284b59160cd0809c001e87ed8c732f20c5d54bc8be3e485405cd46febb8b31b",
+        "catalog/operations/gradient-noise-2d-01.json": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+        "design/capabilities/cp2-architecture-decision.md": "17f37a763aa94f932de0567e005fca7427d720628473f84d36d598529f90a328"
+      },
+      "executor_pid": 828804,
+      "process_pid": 828863,
+      "native": {
+        "status": "rendered",
+        "experiment": "cp2-path-choice",
+        "case_id": "trace",
+        "steps": 2000,
+        "path_count": 24,
+        "output_png": "/home/colin/dev/procedural/.work/experiments/cp2-path-choice/trace.png",
+        "configuration": {
+          "field": {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "seed": 42
+          },
+          "movement": {
+            "starts": {
+              "columns": 6,
+              "rows": 4,
+              "first": [
+                60,
+                80
+              ],
+              "pitch": [
+                104,
+                160
+              ],
+              "order": "row-major"
+            },
+            "steps": 2000,
+            "step_distance": 0.4,
+            "coordinate_scale": [
+              0.002,
+              0.002
+            ],
+            "coordinate_offset": [
+              0,
+              0
+            ],
+            "angle_base": -20,
+            "angle_scale": 40,
+            "storage": "packed binary64 positions N+1 and headings N"
+          },
+          "mark": {
+            "anchor": "post-advance endpoint",
+            "every_n_steps": 4,
+            "lengths": [
+              12,
+              24
+            ],
+            "envelope": "1; no jitter",
+            "palette_selection": "path index modulo 5"
+          },
+          "render": {
+            "renderer": "Processing 4.5.6 JAVA2D",
+            "dimensions": [
+              640,
+              640
+            ],
+            "pixel_density": 1,
+            "background_rgb": "ECE7DA",
+            "alpha": 150,
+            "stroke_width": 1,
+            "stroke_cap": "round",
+            "palette_rgb": [
+              "31A151",
+              "FFA71E",
+              "05084C",
+              "DE4638",
+              "3DBDB7"
+            ]
+          }
+        },
+        "actual_case": {
+          "coordinate_scale": [
+            0.002,
+            0.002
+          ],
+          "mark_length": 0.0,
+          "mark_stride": 1
+        },
+        "hashes": {
+          "model_sha256": "1a3a948da826bd016b47f615fbad6f21ac011c96f7c46a5aa72672ff22c379ee",
+          "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+          "geometry_sha256": "b999a4b03acea17b863e74717cf373a14264b2dcdf0c4e88a570a2efeb901062",
+          "colour_sha256": "b7df06b5205c4b49e2f2e04ab95e43d395f59f1a78da77b05495de5e4056f592",
+          "command_count": 48000
+        },
+        "pre_draw_hashes": {
+          "model_sha256": "1a3a948da826bd016b47f615fbad6f21ac011c96f7c46a5aa72672ff22c379ee",
+          "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+          "geometry_sha256": "b999a4b03acea17b863e74717cf373a14264b2dcdf0c4e88a570a2efeb901062",
+          "colour_sha256": "b7df06b5205c4b49e2f2e04ab95e43d395f59f1a78da77b05495de5e4056f592",
+          "command_count": 48000
+        },
+        "post_draw_hashes": {
+          "model_sha256": "1a3a948da826bd016b47f615fbad6f21ac011c96f7c46a5aa72672ff22c379ee",
+          "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+          "geometry_sha256": "b999a4b03acea17b863e74717cf373a14264b2dcdf0c4e88a570a2efeb901062",
+          "colour_sha256": "b7df06b5205c4b49e2f2e04ab95e43d395f59f1a78da77b05495de5e4056f592",
+          "command_count": 48000
+        }
+      },
+      "stderr": "",
+      "pure": {
+        "status": "passed",
+        "experiment": "cp2-path-choice",
+        "case_id": "all-pure-cases",
+        "steps": 2000,
+        "path_count": 24,
+        "configuration": {
+          "field": {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "seed": 42
+          },
+          "movement": {
+            "starts": {
+              "columns": 6,
+              "rows": 4,
+              "first": [
+                60,
+                80
+              ],
+              "pitch": [
+                104,
+                160
+              ],
+              "order": "row-major"
+            },
+            "steps": 2000,
+            "step_distance": 0.4,
+            "coordinate_scale": [
+              0.002,
+              0.002
+            ],
+            "coordinate_offset": [
+              0,
+              0
+            ],
+            "angle_base": -20,
+            "angle_scale": 40,
+            "storage": "packed binary64 positions N+1 and headings N"
+          },
+          "mark": {
+            "anchor": "post-advance endpoint",
+            "every_n_steps": 4,
+            "lengths": [
+              12,
+              24
+            ],
+            "envelope": "1; no jitter",
+            "palette_selection": "path index modulo 5"
+          },
+          "render": {
+            "renderer": "Processing 4.5.6 JAVA2D",
+            "dimensions": [
+              640,
+              640
+            ],
+            "pixel_density": 1,
+            "background_rgb": "ECE7DA",
+            "alpha": 150,
+            "stroke_width": 1,
+            "stroke_cap": "round",
+            "palette_rgb": [
+              "31A151",
+              "FFA71E",
+              "05084C",
+              "DE4638",
+              "3DBDB7"
+            ]
+          }
+        },
+        "pure_checks": {
+          "shared_retained_movement": true,
+          "recolour_zero_field_queries": true,
+          "prefix_2000_of_2001": true,
+          "step_distance_changes_query": true,
+          "angle_scale_zero_constant": true,
+          "finite": true,
+          "field_unchanged": true
+        },
+        "pure_measurements": {
+          "base_field_queries": 48000,
+          "recolour_field_queries": 0,
+          "trace_command_count": 48000,
+          "marks_command_count": 12000
+        },
+        "hashes": {
+          "trace": {
+            "model_sha256": "1a3a948da826bd016b47f615fbad6f21ac011c96f7c46a5aa72672ff22c379ee",
+            "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+            "geometry_sha256": "b999a4b03acea17b863e74717cf373a14264b2dcdf0c4e88a570a2efeb901062",
+            "colour_sha256": "b7df06b5205c4b49e2f2e04ab95e43d395f59f1a78da77b05495de5e4056f592",
+            "command_count": 48000
+          },
+          "marks": {
+            "model_sha256": "cacd43b01549839603f35c46464f1dabb8ee71668aa57ef55f065da0de152477",
+            "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+            "geometry_sha256": "090c2ffbbc29f6c479a1da272329c2724efd285a762ba45899dc9279d513d85b",
+            "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+            "command_count": 12000
+          },
+          "long_marks": {
+            "model_sha256": "f6dae5a3a2a38ba31373ac8e6cbc5406c8f059226d8eb5d13017128fa94e7e5e",
+            "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+            "geometry_sha256": "6ca5648ae3fcbe01209d2b81bcb7d3e17fd5ccf4756515eb0a4e3d0f31179bfd",
+            "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+            "command_count": 12000
+          },
+          "finer_field": {
+            "model_sha256": "29f6b095e726fe69b8276dad859e864c32dd6946ab18176b53f64dc2a37b6306",
+            "movement_sha256": "99d9da14a830f12c8c37c2e7f09dae5750a233ccd34e0ad869d132ade19928b8",
+            "geometry_sha256": "e3ae044d5c55153df780344f469703e791750b6db971bacfc320a97f870f69f9",
+            "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+            "command_count": 12000
+          }
+        },
+        "memory_calculated": {
+          "formula": "16*(steps+1)+8*steps bytes per path; raw arrays only",
+          "steps_2000_per_path": 48016,
+          "steps_16000_per_path": 384016,
+          "paths_24_steps_2000": 1152384
+        },
+        "timing_observations": [
+          {
+            "label": "tiny",
+            "workload": "one eager packed trace; field setup and checksum outside timed interval",
+            "steps": 1,
+            "paths": 1,
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "elapsed_nanos": 1020,
+            "average_nanos_per_rep": 204,
+            "raw_payload_bytes_per_path": 40,
+            "thread_allocated_bytes_total_reps": 696,
+            "thread_allocated_bytes_average_per_rep": 139
+          },
+          {
+            "label": "2000",
+            "workload": "one eager packed trace; field setup and checksum outside timed interval",
+            "steps": 2000,
+            "paths": 1,
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "elapsed_nanos": 405510,
+            "average_nanos_per_rep": 81102,
+            "raw_payload_bytes_per_path": 48016,
+            "thread_allocated_bytes_total_reps": 240360,
+            "thread_allocated_bytes_average_per_rep": 48072
+          },
+          {
+            "label": "16000",
+            "workload": "one eager packed trace; field setup and checksum outside timed interval",
+            "steps": 16000,
+            "paths": 1,
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "elapsed_nanos": 3279457,
+            "average_nanos_per_rep": 655891,
+            "raw_payload_bytes_per_path": 384016,
+            "thread_allocated_bytes_total_reps": 1920360,
+            "thread_allocated_bytes_average_per_rep": 384072
+          }
+        ]
+      },
+      "image": {
+        "path": ".work/experiments/cp2-path-choice/trace.png",
+        "sha256": "a5a9b053aa52d63b2270d386d13980ad8ddb38ef44c4eac6fb9c9f4c0279d874",
+        "rgba_sha256": "e288e5fe0fabbe0041fdbd7f789947559060f149e6c8fc32065d6a8bbf1ca279"
+      }
+    },
+    {
+      "case": "marks",
+      "status": "rendered",
+      "input_sha256": {
+        "evidence/parameter-experiments/cp2-path-choice/experiment.json": "aeeb9bb5c5fbf27b1edefd5bd802feca2fea9012011cc69e39675d37de925ede",
+        "tools/diagnostics/cp2/PathChoice.java": "f85f61736346f840296752727f0bf73ae0813c9dfd006483fea65e18ae3a8eac",
+        "tools/diagnostics/cp2/run-path-choice.py": "6f6672c43888ada4fa544d80e17b2d277f784fa6b275d1fd75f3af99f99333e0",
+        ".work/dist/java/procedurals-core-0.1.0.jar": "39a48549b323acaf63d51a129dc2fc41b6ee79c1e806aed90e3ef0a6963131e2",
+        ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+        "evidence/distribution/java-artifacts.json": "3284b59160cd0809c001e87ed8c732f20c5d54bc8be3e485405cd46febb8b31b",
+        "catalog/operations/gradient-noise-2d-01.json": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+        "design/capabilities/cp2-architecture-decision.md": "17f37a763aa94f932de0567e005fca7427d720628473f84d36d598529f90a328"
+      },
+      "executor_pid": 828977,
+      "process_pid": 828978,
+      "native": {
+        "status": "rendered",
+        "experiment": "cp2-path-choice",
+        "case_id": "marks",
+        "steps": 2000,
+        "path_count": 24,
+        "output_png": "/home/colin/dev/procedural/.work/experiments/cp2-path-choice/marks.png",
+        "configuration": {
+          "field": {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "seed": 42
+          },
+          "movement": {
+            "starts": {
+              "columns": 6,
+              "rows": 4,
+              "first": [
+                60,
+                80
+              ],
+              "pitch": [
+                104,
+                160
+              ],
+              "order": "row-major"
+            },
+            "steps": 2000,
+            "step_distance": 0.4,
+            "coordinate_scale": [
+              0.002,
+              0.002
+            ],
+            "coordinate_offset": [
+              0,
+              0
+            ],
+            "angle_base": -20,
+            "angle_scale": 40,
+            "storage": "packed binary64 positions N+1 and headings N"
+          },
+          "mark": {
+            "anchor": "post-advance endpoint",
+            "every_n_steps": 4,
+            "lengths": [
+              12,
+              24
+            ],
+            "envelope": "1; no jitter",
+            "palette_selection": "path index modulo 5"
+          },
+          "render": {
+            "renderer": "Processing 4.5.6 JAVA2D",
+            "dimensions": [
+              640,
+              640
+            ],
+            "pixel_density": 1,
+            "background_rgb": "ECE7DA",
+            "alpha": 150,
+            "stroke_width": 1,
+            "stroke_cap": "round",
+            "palette_rgb": [
+              "31A151",
+              "FFA71E",
+              "05084C",
+              "DE4638",
+              "3DBDB7"
+            ]
+          }
+        },
+        "actual_case": {
+          "coordinate_scale": [
+            0.002,
+            0.002
+          ],
+          "mark_length": 12.0,
+          "mark_stride": 4
+        },
+        "hashes": {
+          "model_sha256": "cacd43b01549839603f35c46464f1dabb8ee71668aa57ef55f065da0de152477",
+          "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+          "geometry_sha256": "090c2ffbbc29f6c479a1da272329c2724efd285a762ba45899dc9279d513d85b",
+          "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+          "command_count": 12000
+        },
+        "pre_draw_hashes": {
+          "model_sha256": "cacd43b01549839603f35c46464f1dabb8ee71668aa57ef55f065da0de152477",
+          "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+          "geometry_sha256": "090c2ffbbc29f6c479a1da272329c2724efd285a762ba45899dc9279d513d85b",
+          "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+          "command_count": 12000
+        },
+        "post_draw_hashes": {
+          "model_sha256": "cacd43b01549839603f35c46464f1dabb8ee71668aa57ef55f065da0de152477",
+          "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+          "geometry_sha256": "090c2ffbbc29f6c479a1da272329c2724efd285a762ba45899dc9279d513d85b",
+          "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+          "command_count": 12000
+        }
+      },
+      "stderr": "",
+      "pure": {
+        "status": "passed",
+        "experiment": "cp2-path-choice",
+        "case_id": "all-pure-cases",
+        "steps": 2000,
+        "path_count": 24,
+        "configuration": {
+          "field": {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "seed": 42
+          },
+          "movement": {
+            "starts": {
+              "columns": 6,
+              "rows": 4,
+              "first": [
+                60,
+                80
+              ],
+              "pitch": [
+                104,
+                160
+              ],
+              "order": "row-major"
+            },
+            "steps": 2000,
+            "step_distance": 0.4,
+            "coordinate_scale": [
+              0.002,
+              0.002
+            ],
+            "coordinate_offset": [
+              0,
+              0
+            ],
+            "angle_base": -20,
+            "angle_scale": 40,
+            "storage": "packed binary64 positions N+1 and headings N"
+          },
+          "mark": {
+            "anchor": "post-advance endpoint",
+            "every_n_steps": 4,
+            "lengths": [
+              12,
+              24
+            ],
+            "envelope": "1; no jitter",
+            "palette_selection": "path index modulo 5"
+          },
+          "render": {
+            "renderer": "Processing 4.5.6 JAVA2D",
+            "dimensions": [
+              640,
+              640
+            ],
+            "pixel_density": 1,
+            "background_rgb": "ECE7DA",
+            "alpha": 150,
+            "stroke_width": 1,
+            "stroke_cap": "round",
+            "palette_rgb": [
+              "31A151",
+              "FFA71E",
+              "05084C",
+              "DE4638",
+              "3DBDB7"
+            ]
+          }
+        },
+        "pure_checks": {
+          "shared_retained_movement": true,
+          "recolour_zero_field_queries": true,
+          "prefix_2000_of_2001": true,
+          "step_distance_changes_query": true,
+          "angle_scale_zero_constant": true,
+          "finite": true,
+          "field_unchanged": true
+        },
+        "pure_measurements": {
+          "base_field_queries": 48000,
+          "recolour_field_queries": 0,
+          "trace_command_count": 48000,
+          "marks_command_count": 12000
+        },
+        "hashes": {
+          "trace": {
+            "model_sha256": "1a3a948da826bd016b47f615fbad6f21ac011c96f7c46a5aa72672ff22c379ee",
+            "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+            "geometry_sha256": "b999a4b03acea17b863e74717cf373a14264b2dcdf0c4e88a570a2efeb901062",
+            "colour_sha256": "b7df06b5205c4b49e2f2e04ab95e43d395f59f1a78da77b05495de5e4056f592",
+            "command_count": 48000
+          },
+          "marks": {
+            "model_sha256": "cacd43b01549839603f35c46464f1dabb8ee71668aa57ef55f065da0de152477",
+            "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+            "geometry_sha256": "090c2ffbbc29f6c479a1da272329c2724efd285a762ba45899dc9279d513d85b",
+            "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+            "command_count": 12000
+          },
+          "long_marks": {
+            "model_sha256": "f6dae5a3a2a38ba31373ac8e6cbc5406c8f059226d8eb5d13017128fa94e7e5e",
+            "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+            "geometry_sha256": "6ca5648ae3fcbe01209d2b81bcb7d3e17fd5ccf4756515eb0a4e3d0f31179bfd",
+            "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+            "command_count": 12000
+          },
+          "finer_field": {
+            "model_sha256": "29f6b095e726fe69b8276dad859e864c32dd6946ab18176b53f64dc2a37b6306",
+            "movement_sha256": "99d9da14a830f12c8c37c2e7f09dae5750a233ccd34e0ad869d132ade19928b8",
+            "geometry_sha256": "e3ae044d5c55153df780344f469703e791750b6db971bacfc320a97f870f69f9",
+            "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+            "command_count": 12000
+          }
+        },
+        "memory_calculated": {
+          "formula": "16*(steps+1)+8*steps bytes per path; raw arrays only",
+          "steps_2000_per_path": 48016,
+          "steps_16000_per_path": 384016,
+          "paths_24_steps_2000": 1152384
+        },
+        "timing_observations": [
+          {
+            "label": "tiny",
+            "workload": "one eager packed trace; field setup and checksum outside timed interval",
+            "steps": 1,
+            "paths": 1,
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "elapsed_nanos": 1020,
+            "average_nanos_per_rep": 204,
+            "raw_payload_bytes_per_path": 40,
+            "thread_allocated_bytes_total_reps": 696,
+            "thread_allocated_bytes_average_per_rep": 139
+          },
+          {
+            "label": "2000",
+            "workload": "one eager packed trace; field setup and checksum outside timed interval",
+            "steps": 2000,
+            "paths": 1,
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "elapsed_nanos": 405510,
+            "average_nanos_per_rep": 81102,
+            "raw_payload_bytes_per_path": 48016,
+            "thread_allocated_bytes_total_reps": 240360,
+            "thread_allocated_bytes_average_per_rep": 48072
+          },
+          {
+            "label": "16000",
+            "workload": "one eager packed trace; field setup and checksum outside timed interval",
+            "steps": 16000,
+            "paths": 1,
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "elapsed_nanos": 3279457,
+            "average_nanos_per_rep": 655891,
+            "raw_payload_bytes_per_path": 384016,
+            "thread_allocated_bytes_total_reps": 1920360,
+            "thread_allocated_bytes_average_per_rep": 384072
+          }
+        ]
+      },
+      "image": {
+        "path": ".work/experiments/cp2-path-choice/marks.png",
+        "sha256": "be9e33c1193b7d0a9478f2c8582afb9968300166fccf8bb5e850510a0b959705",
+        "rgba_sha256": "201958d9fe12a0955eec2090d650b2b165626c0145a5bd63e515f779915c44b0"
+      }
+    },
+    {
+      "case": "long-marks",
+      "status": "rendered",
+      "input_sha256": {
+        "evidence/parameter-experiments/cp2-path-choice/experiment.json": "aeeb9bb5c5fbf27b1edefd5bd802feca2fea9012011cc69e39675d37de925ede",
+        "tools/diagnostics/cp2/PathChoice.java": "f85f61736346f840296752727f0bf73ae0813c9dfd006483fea65e18ae3a8eac",
+        "tools/diagnostics/cp2/run-path-choice.py": "6f6672c43888ada4fa544d80e17b2d277f784fa6b275d1fd75f3af99f99333e0",
+        ".work/dist/java/procedurals-core-0.1.0.jar": "39a48549b323acaf63d51a129dc2fc41b6ee79c1e806aed90e3ef0a6963131e2",
+        ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+        "evidence/distribution/java-artifacts.json": "3284b59160cd0809c001e87ed8c732f20c5d54bc8be3e485405cd46febb8b31b",
+        "catalog/operations/gradient-noise-2d-01.json": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+        "design/capabilities/cp2-architecture-decision.md": "17f37a763aa94f932de0567e005fca7427d720628473f84d36d598529f90a328"
+      },
+      "executor_pid": 829099,
+      "process_pid": 829100,
+      "native": {
+        "status": "rendered",
+        "experiment": "cp2-path-choice",
+        "case_id": "long-marks",
+        "steps": 2000,
+        "path_count": 24,
+        "output_png": "/home/colin/dev/procedural/.work/experiments/cp2-path-choice/long-marks.png",
+        "configuration": {
+          "field": {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "seed": 42
+          },
+          "movement": {
+            "starts": {
+              "columns": 6,
+              "rows": 4,
+              "first": [
+                60,
+                80
+              ],
+              "pitch": [
+                104,
+                160
+              ],
+              "order": "row-major"
+            },
+            "steps": 2000,
+            "step_distance": 0.4,
+            "coordinate_scale": [
+              0.002,
+              0.002
+            ],
+            "coordinate_offset": [
+              0,
+              0
+            ],
+            "angle_base": -20,
+            "angle_scale": 40,
+            "storage": "packed binary64 positions N+1 and headings N"
+          },
+          "mark": {
+            "anchor": "post-advance endpoint",
+            "every_n_steps": 4,
+            "lengths": [
+              12,
+              24
+            ],
+            "envelope": "1; no jitter",
+            "palette_selection": "path index modulo 5"
+          },
+          "render": {
+            "renderer": "Processing 4.5.6 JAVA2D",
+            "dimensions": [
+              640,
+              640
+            ],
+            "pixel_density": 1,
+            "background_rgb": "ECE7DA",
+            "alpha": 150,
+            "stroke_width": 1,
+            "stroke_cap": "round",
+            "palette_rgb": [
+              "31A151",
+              "FFA71E",
+              "05084C",
+              "DE4638",
+              "3DBDB7"
+            ]
+          }
+        },
+        "actual_case": {
+          "coordinate_scale": [
+            0.002,
+            0.002
+          ],
+          "mark_length": 24.0,
+          "mark_stride": 4
+        },
+        "hashes": {
+          "model_sha256": "f6dae5a3a2a38ba31373ac8e6cbc5406c8f059226d8eb5d13017128fa94e7e5e",
+          "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+          "geometry_sha256": "6ca5648ae3fcbe01209d2b81bcb7d3e17fd5ccf4756515eb0a4e3d0f31179bfd",
+          "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+          "command_count": 12000
+        },
+        "pre_draw_hashes": {
+          "model_sha256": "f6dae5a3a2a38ba31373ac8e6cbc5406c8f059226d8eb5d13017128fa94e7e5e",
+          "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+          "geometry_sha256": "6ca5648ae3fcbe01209d2b81bcb7d3e17fd5ccf4756515eb0a4e3d0f31179bfd",
+          "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+          "command_count": 12000
+        },
+        "post_draw_hashes": {
+          "model_sha256": "f6dae5a3a2a38ba31373ac8e6cbc5406c8f059226d8eb5d13017128fa94e7e5e",
+          "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+          "geometry_sha256": "6ca5648ae3fcbe01209d2b81bcb7d3e17fd5ccf4756515eb0a4e3d0f31179bfd",
+          "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+          "command_count": 12000
+        }
+      },
+      "stderr": "",
+      "pure": {
+        "status": "passed",
+        "experiment": "cp2-path-choice",
+        "case_id": "all-pure-cases",
+        "steps": 2000,
+        "path_count": 24,
+        "configuration": {
+          "field": {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "seed": 42
+          },
+          "movement": {
+            "starts": {
+              "columns": 6,
+              "rows": 4,
+              "first": [
+                60,
+                80
+              ],
+              "pitch": [
+                104,
+                160
+              ],
+              "order": "row-major"
+            },
+            "steps": 2000,
+            "step_distance": 0.4,
+            "coordinate_scale": [
+              0.002,
+              0.002
+            ],
+            "coordinate_offset": [
+              0,
+              0
+            ],
+            "angle_base": -20,
+            "angle_scale": 40,
+            "storage": "packed binary64 positions N+1 and headings N"
+          },
+          "mark": {
+            "anchor": "post-advance endpoint",
+            "every_n_steps": 4,
+            "lengths": [
+              12,
+              24
+            ],
+            "envelope": "1; no jitter",
+            "palette_selection": "path index modulo 5"
+          },
+          "render": {
+            "renderer": "Processing 4.5.6 JAVA2D",
+            "dimensions": [
+              640,
+              640
+            ],
+            "pixel_density": 1,
+            "background_rgb": "ECE7DA",
+            "alpha": 150,
+            "stroke_width": 1,
+            "stroke_cap": "round",
+            "palette_rgb": [
+              "31A151",
+              "FFA71E",
+              "05084C",
+              "DE4638",
+              "3DBDB7"
+            ]
+          }
+        },
+        "pure_checks": {
+          "shared_retained_movement": true,
+          "recolour_zero_field_queries": true,
+          "prefix_2000_of_2001": true,
+          "step_distance_changes_query": true,
+          "angle_scale_zero_constant": true,
+          "finite": true,
+          "field_unchanged": true
+        },
+        "pure_measurements": {
+          "base_field_queries": 48000,
+          "recolour_field_queries": 0,
+          "trace_command_count": 48000,
+          "marks_command_count": 12000
+        },
+        "hashes": {
+          "trace": {
+            "model_sha256": "1a3a948da826bd016b47f615fbad6f21ac011c96f7c46a5aa72672ff22c379ee",
+            "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+            "geometry_sha256": "b999a4b03acea17b863e74717cf373a14264b2dcdf0c4e88a570a2efeb901062",
+            "colour_sha256": "b7df06b5205c4b49e2f2e04ab95e43d395f59f1a78da77b05495de5e4056f592",
+            "command_count": 48000
+          },
+          "marks": {
+            "model_sha256": "cacd43b01549839603f35c46464f1dabb8ee71668aa57ef55f065da0de152477",
+            "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+            "geometry_sha256": "090c2ffbbc29f6c479a1da272329c2724efd285a762ba45899dc9279d513d85b",
+            "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+            "command_count": 12000
+          },
+          "long_marks": {
+            "model_sha256": "f6dae5a3a2a38ba31373ac8e6cbc5406c8f059226d8eb5d13017128fa94e7e5e",
+            "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+            "geometry_sha256": "6ca5648ae3fcbe01209d2b81bcb7d3e17fd5ccf4756515eb0a4e3d0f31179bfd",
+            "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+            "command_count": 12000
+          },
+          "finer_field": {
+            "model_sha256": "29f6b095e726fe69b8276dad859e864c32dd6946ab18176b53f64dc2a37b6306",
+            "movement_sha256": "99d9da14a830f12c8c37c2e7f09dae5750a233ccd34e0ad869d132ade19928b8",
+            "geometry_sha256": "e3ae044d5c55153df780344f469703e791750b6db971bacfc320a97f870f69f9",
+            "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+            "command_count": 12000
+          }
+        },
+        "memory_calculated": {
+          "formula": "16*(steps+1)+8*steps bytes per path; raw arrays only",
+          "steps_2000_per_path": 48016,
+          "steps_16000_per_path": 384016,
+          "paths_24_steps_2000": 1152384
+        },
+        "timing_observations": [
+          {
+            "label": "tiny",
+            "workload": "one eager packed trace; field setup and checksum outside timed interval",
+            "steps": 1,
+            "paths": 1,
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "elapsed_nanos": 1020,
+            "average_nanos_per_rep": 204,
+            "raw_payload_bytes_per_path": 40,
+            "thread_allocated_bytes_total_reps": 696,
+            "thread_allocated_bytes_average_per_rep": 139
+          },
+          {
+            "label": "2000",
+            "workload": "one eager packed trace; field setup and checksum outside timed interval",
+            "steps": 2000,
+            "paths": 1,
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "elapsed_nanos": 405510,
+            "average_nanos_per_rep": 81102,
+            "raw_payload_bytes_per_path": 48016,
+            "thread_allocated_bytes_total_reps": 240360,
+            "thread_allocated_bytes_average_per_rep": 48072
+          },
+          {
+            "label": "16000",
+            "workload": "one eager packed trace; field setup and checksum outside timed interval",
+            "steps": 16000,
+            "paths": 1,
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "elapsed_nanos": 3279457,
+            "average_nanos_per_rep": 655891,
+            "raw_payload_bytes_per_path": 384016,
+            "thread_allocated_bytes_total_reps": 1920360,
+            "thread_allocated_bytes_average_per_rep": 384072
+          }
+        ]
+      },
+      "image": {
+        "path": ".work/experiments/cp2-path-choice/long-marks.png",
+        "sha256": "5275e353de9a4a8b92d7bc0d21791f7cdabb7347aaaa5cf74a652e947e1882ef",
+        "rgba_sha256": "66e9c721f544422feefb3866094ed67d8999b95cbf35b6dd36a488266a3d5e85"
+      }
+    },
+    {
+      "case": "finer-field",
+      "status": "rendered",
+      "input_sha256": {
+        "evidence/parameter-experiments/cp2-path-choice/experiment.json": "aeeb9bb5c5fbf27b1edefd5bd802feca2fea9012011cc69e39675d37de925ede",
+        "tools/diagnostics/cp2/PathChoice.java": "f85f61736346f840296752727f0bf73ae0813c9dfd006483fea65e18ae3a8eac",
+        "tools/diagnostics/cp2/run-path-choice.py": "6f6672c43888ada4fa544d80e17b2d277f784fa6b275d1fd75f3af99f99333e0",
+        ".work/dist/java/procedurals-core-0.1.0.jar": "39a48549b323acaf63d51a129dc2fc41b6ee79c1e806aed90e3ef0a6963131e2",
+        ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+        "evidence/distribution/java-artifacts.json": "3284b59160cd0809c001e87ed8c732f20c5d54bc8be3e485405cd46febb8b31b",
+        "catalog/operations/gradient-noise-2d-01.json": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+        "design/capabilities/cp2-architecture-decision.md": "17f37a763aa94f932de0567e005fca7427d720628473f84d36d598529f90a328"
+      },
+      "executor_pid": 829265,
+      "process_pid": 829266,
+      "native": {
+        "status": "rendered",
+        "experiment": "cp2-path-choice",
+        "case_id": "finer-field",
+        "steps": 2000,
+        "path_count": 24,
+        "output_png": "/home/colin/dev/procedural/.work/experiments/cp2-path-choice/finer-field.png",
+        "configuration": {
+          "field": {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "seed": 42
+          },
+          "movement": {
+            "starts": {
+              "columns": 6,
+              "rows": 4,
+              "first": [
+                60,
+                80
+              ],
+              "pitch": [
+                104,
+                160
+              ],
+              "order": "row-major"
+            },
+            "steps": 2000,
+            "step_distance": 0.4,
+            "coordinate_scale": [
+              0.002,
+              0.002
+            ],
+            "coordinate_offset": [
+              0,
+              0
+            ],
+            "angle_base": -20,
+            "angle_scale": 40,
+            "storage": "packed binary64 positions N+1 and headings N"
+          },
+          "mark": {
+            "anchor": "post-advance endpoint",
+            "every_n_steps": 4,
+            "lengths": [
+              12,
+              24
+            ],
+            "envelope": "1; no jitter",
+            "palette_selection": "path index modulo 5"
+          },
+          "render": {
+            "renderer": "Processing 4.5.6 JAVA2D",
+            "dimensions": [
+              640,
+              640
+            ],
+            "pixel_density": 1,
+            "background_rgb": "ECE7DA",
+            "alpha": 150,
+            "stroke_width": 1,
+            "stroke_cap": "round",
+            "palette_rgb": [
+              "31A151",
+              "FFA71E",
+              "05084C",
+              "DE4638",
+              "3DBDB7"
+            ]
+          }
+        },
+        "actual_case": {
+          "coordinate_scale": [
+            0.01,
+            0.01
+          ],
+          "mark_length": 12.0,
+          "mark_stride": 4
+        },
+        "hashes": {
+          "model_sha256": "29f6b095e726fe69b8276dad859e864c32dd6946ab18176b53f64dc2a37b6306",
+          "movement_sha256": "99d9da14a830f12c8c37c2e7f09dae5750a233ccd34e0ad869d132ade19928b8",
+          "geometry_sha256": "e3ae044d5c55153df780344f469703e791750b6db971bacfc320a97f870f69f9",
+          "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+          "command_count": 12000
+        },
+        "pre_draw_hashes": {
+          "model_sha256": "29f6b095e726fe69b8276dad859e864c32dd6946ab18176b53f64dc2a37b6306",
+          "movement_sha256": "99d9da14a830f12c8c37c2e7f09dae5750a233ccd34e0ad869d132ade19928b8",
+          "geometry_sha256": "e3ae044d5c55153df780344f469703e791750b6db971bacfc320a97f870f69f9",
+          "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+          "command_count": 12000
+        },
+        "post_draw_hashes": {
+          "model_sha256": "29f6b095e726fe69b8276dad859e864c32dd6946ab18176b53f64dc2a37b6306",
+          "movement_sha256": "99d9da14a830f12c8c37c2e7f09dae5750a233ccd34e0ad869d132ade19928b8",
+          "geometry_sha256": "e3ae044d5c55153df780344f469703e791750b6db971bacfc320a97f870f69f9",
+          "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+          "command_count": 12000
+        }
+      },
+      "stderr": "",
+      "pure": {
+        "status": "passed",
+        "experiment": "cp2-path-choice",
+        "case_id": "all-pure-cases",
+        "steps": 2000,
+        "path_count": 24,
+        "configuration": {
+          "field": {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "seed": 42
+          },
+          "movement": {
+            "starts": {
+              "columns": 6,
+              "rows": 4,
+              "first": [
+                60,
+                80
+              ],
+              "pitch": [
+                104,
+                160
+              ],
+              "order": "row-major"
+            },
+            "steps": 2000,
+            "step_distance": 0.4,
+            "coordinate_scale": [
+              0.002,
+              0.002
+            ],
+            "coordinate_offset": [
+              0,
+              0
+            ],
+            "angle_base": -20,
+            "angle_scale": 40,
+            "storage": "packed binary64 positions N+1 and headings N"
+          },
+          "mark": {
+            "anchor": "post-advance endpoint",
+            "every_n_steps": 4,
+            "lengths": [
+              12,
+              24
+            ],
+            "envelope": "1; no jitter",
+            "palette_selection": "path index modulo 5"
+          },
+          "render": {
+            "renderer": "Processing 4.5.6 JAVA2D",
+            "dimensions": [
+              640,
+              640
+            ],
+            "pixel_density": 1,
+            "background_rgb": "ECE7DA",
+            "alpha": 150,
+            "stroke_width": 1,
+            "stroke_cap": "round",
+            "palette_rgb": [
+              "31A151",
+              "FFA71E",
+              "05084C",
+              "DE4638",
+              "3DBDB7"
+            ]
+          }
+        },
+        "pure_checks": {
+          "shared_retained_movement": true,
+          "recolour_zero_field_queries": true,
+          "prefix_2000_of_2001": true,
+          "step_distance_changes_query": true,
+          "angle_scale_zero_constant": true,
+          "finite": true,
+          "field_unchanged": true
+        },
+        "pure_measurements": {
+          "base_field_queries": 48000,
+          "recolour_field_queries": 0,
+          "trace_command_count": 48000,
+          "marks_command_count": 12000
+        },
+        "hashes": {
+          "trace": {
+            "model_sha256": "1a3a948da826bd016b47f615fbad6f21ac011c96f7c46a5aa72672ff22c379ee",
+            "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+            "geometry_sha256": "b999a4b03acea17b863e74717cf373a14264b2dcdf0c4e88a570a2efeb901062",
+            "colour_sha256": "b7df06b5205c4b49e2f2e04ab95e43d395f59f1a78da77b05495de5e4056f592",
+            "command_count": 48000
+          },
+          "marks": {
+            "model_sha256": "cacd43b01549839603f35c46464f1dabb8ee71668aa57ef55f065da0de152477",
+            "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+            "geometry_sha256": "090c2ffbbc29f6c479a1da272329c2724efd285a762ba45899dc9279d513d85b",
+            "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+            "command_count": 12000
+          },
+          "long_marks": {
+            "model_sha256": "f6dae5a3a2a38ba31373ac8e6cbc5406c8f059226d8eb5d13017128fa94e7e5e",
+            "movement_sha256": "c3d69d4370b3ab0378c64c2097a214d43ed401959095ef82dde5a50e9187671c",
+            "geometry_sha256": "6ca5648ae3fcbe01209d2b81bcb7d3e17fd5ccf4756515eb0a4e3d0f31179bfd",
+            "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+            "command_count": 12000
+          },
+          "finer_field": {
+            "model_sha256": "29f6b095e726fe69b8276dad859e864c32dd6946ab18176b53f64dc2a37b6306",
+            "movement_sha256": "99d9da14a830f12c8c37c2e7f09dae5750a233ccd34e0ad869d132ade19928b8",
+            "geometry_sha256": "e3ae044d5c55153df780344f469703e791750b6db971bacfc320a97f870f69f9",
+            "colour_sha256": "eb0ecf86b0a0eb9bcdd41cfa2288c847a1e54020a808cca49af1c6f1d65cf9ee",
+            "command_count": 12000
+          }
+        },
+        "memory_calculated": {
+          "formula": "16*(steps+1)+8*steps bytes per path; raw arrays only",
+          "steps_2000_per_path": 48016,
+          "steps_16000_per_path": 384016,
+          "paths_24_steps_2000": 1152384
+        },
+        "timing_observations": [
+          {
+            "label": "tiny",
+            "workload": "one eager packed trace; field setup and checksum outside timed interval",
+            "steps": 1,
+            "paths": 1,
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "elapsed_nanos": 1020,
+            "average_nanos_per_rep": 204,
+            "raw_payload_bytes_per_path": 40,
+            "thread_allocated_bytes_total_reps": 696,
+            "thread_allocated_bytes_average_per_rep": 139
+          },
+          {
+            "label": "2000",
+            "workload": "one eager packed trace; field setup and checksum outside timed interval",
+            "steps": 2000,
+            "paths": 1,
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "elapsed_nanos": 405510,
+            "average_nanos_per_rep": 81102,
+            "raw_payload_bytes_per_path": 48016,
+            "thread_allocated_bytes_total_reps": 240360,
+            "thread_allocated_bytes_average_per_rep": 48072
+          },
+          {
+            "label": "16000",
+            "workload": "one eager packed trace; field setup and checksum outside timed interval",
+            "steps": 16000,
+            "paths": 1,
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "elapsed_nanos": 3279457,
+            "average_nanos_per_rep": 655891,
+            "raw_payload_bytes_per_path": 384016,
+            "thread_allocated_bytes_total_reps": 1920360,
+            "thread_allocated_bytes_average_per_rep": 384072
+          }
+        ]
+      },
+      "image": {
+        "path": ".work/experiments/cp2-path-choice/finer-field.png",
+        "sha256": "e105c64c20a1863d2d7d2fa26e1ce1e5c9973e4bbebc10c3a18c5ba417ba2fee",
+        "rgba_sha256": "336d9f524d90b7809f09156deaa0271c778cfba3208a9867c671220321dd80f4"
+      }
+    }
+  ],
+  "pairwise_rgb_differences": [
+    {
+      "first": "trace",
+      "second": "marks",
+      "mean_absolute_rgb_difference_01": 0.03527340558619281,
+      "changed_pixels": 49051,
+      "changed_fraction": 0.11975341796875
+    },
+    {
+      "first": "trace",
+      "second": "long-marks",
+      "mean_absolute_rgb_difference_01": 0.06836581839767157,
+      "changed_pixels": 88966,
+      "changed_fraction": 0.2172021484375
+    },
+    {
+      "first": "trace",
+      "second": "finer-field",
+      "mean_absolute_rgb_difference_01": 0.05772130310457516,
+      "changed_pixels": 93191,
+      "changed_fraction": 0.22751708984375
+    },
+    {
+      "first": "marks",
+      "second": "long-marks",
+      "mean_absolute_rgb_difference_01": 0.040421310125612744,
+      "changed_pixels": 88062,
+      "changed_fraction": 0.2149951171875
+    },
+    {
+      "first": "marks",
+      "second": "finer-field",
+      "mean_absolute_rgb_difference_01": 0.07900439772263072,
+      "changed_pixels": 124194,
+      "changed_fraction": 0.3032080078125
+    },
+    {
+      "first": "long-marks",
+      "second": "finer-field",
+      "mean_absolute_rgb_difference_01": 0.10338517093035131,
+      "changed_pixels": 154668,
+      "changed_fraction": 0.377607421875
+    }
+  ]
+}

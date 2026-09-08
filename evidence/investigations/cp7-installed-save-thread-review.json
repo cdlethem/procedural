@@ -1,0 +1,14 @@
+{
+  "status": "failed-attempt-preserved-correction-required",
+  "attempt": "evidence/reproductions/cp7-p3d/result.json",
+  "finding": "All13states and17392normal/52176vertex submissions completed, but unexpected outside-animation-thread OpenGL warning fails the registered stderr policy.",
+  "evidence": "Pinned Processing4.5.6 PGraphicsOpenGL bytecode shows saveImpl calls loadPixels, which calls beginDraw when drawing is false. beginDraw emits exactly this warning if the current thread is not the GL thread. Save from the posted S event is the leading cause.",
+  "correction": "Capture a detached PImage inside draw and save that CPU image in the S handler. No geometry/kernel changes. A new separately registered installed build and attempt are required; old attempt remains failed.",
+  "bindings": {
+    "evidence/reproductions/cp7-p3d/plan.json": "d93b3f62c66d0016fbd5c86060c7681899ee4675a665c9c36f394fda484e79c5",
+    "evidence/reproductions/cp7-p3d/result.json": "b468206b63ddd8dabd7a39b9212d47a7fdb49291538e669837da8357049d2544",
+    ".work/reproductions/cp7-p3d-pde/native.json": "109b9063de7a9c55ac6ec357b5922191b65ac562c3e3a9e8e0428d3f38b3bc56",
+    ".work/reproductions/cp7-p3d-pde/stderr.log": "c7fd4be420cc7c05f9e18bbdb480b27d06204aa6452ba6a73e5d48ec4d349f54",
+    "packages/java-processing/examples/ProfileMarks/ProfileMarks.pde": "0c27374c075a0c325a1e8b2bd785df0d06fc4c91f901206ffa1c008112785bc4"
+  }
+}

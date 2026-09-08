@@ -1,0 +1,116 @@
+{
+  "status": "measured",
+  "scope": "Native Java performance observations only",
+  "bindings": {
+    "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+    "tests/native/TargetSpringsPerformance.java": "835bd87f8fcad8f60897241dc3ee454bcfe551a6e62f4d1eb93a649c948709cb",
+    "tools/run_target_springs_performance.py": "4e023d8164315654e3be150eb835cd8b5bea220b9518e5c471be8e3929ec01a0",
+    "catalog/operations/target-springs-2d.json": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3",
+    "fixtures/operations/target-springs-2d.json": "837fda9808fd95a70bcee4dbbd2accc1b0895186ee55c439b8a31c4ed495cc61"
+  },
+  "commands": [
+    [
+      "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+      "-version"
+    ],
+    [
+      "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+      "-d",
+      "/home/colin/dev/procedural/.work/performance/cp10-java-root1/classes",
+      "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java",
+      "/home/colin/dev/procedural/tests/native/TargetSpringsPerformance.java"
+    ],
+    [
+      "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+      "-Xms128m",
+      "-Xmx512m",
+      "-cp",
+      "/home/colin/dev/procedural/.work/performance/cp10-java-root1/classes",
+      "org.procedurals.motion.TargetSpringsPerformance"
+    ]
+  ],
+  "host": {
+    "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.43",
+    "machine": "x86_64",
+    "processor": ""
+  },
+  "limitations": [
+    "Desktop JDK only; no Android or renderer estimate",
+    "Setup excludes caller input construction",
+    "Thread allocation measures bytes allocated, not retained heap",
+    "No universal latency guarantee or artistic parameter range"
+  ],
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)\n",
+  "measurement": {
+    "status": "measured",
+    "workloads": [
+      {
+        "bodies": 0,
+        "warmup_steps": 10000,
+        "measured_steps": 10000,
+        "setup_ns": 412279,
+        "setup_allocated_bytes": 32176,
+        "step_total_ns": 180230,
+        "step_allocated_bytes": 0,
+        "observation_traversal_ns": 110,
+        "checksum_hex": "0x0.0p0"
+      },
+      {
+        "bodies": 1,
+        "warmup_steps": 10000,
+        "measured_steps": 10000,
+        "setup_ns": 37760,
+        "setup_allocated_bytes": 1568,
+        "step_total_ns": 814190,
+        "step_allocated_bytes": 0,
+        "observation_traversal_ns": 3900,
+        "checksum_hex": "0x1.74cb12e9fca96p-1"
+      },
+      {
+        "bodies": 49,
+        "warmup_steps": 10000,
+        "measured_steps": 10000,
+        "setup_ns": 209810,
+        "setup_allocated_bytes": 5632,
+        "step_total_ns": 5345006,
+        "step_allocated_bytes": 0,
+        "observation_traversal_ns": 12270,
+        "checksum_hex": "0x1.622e99625d3f9p10"
+      },
+      {
+        "bodies": 512,
+        "warmup_steps": 10000,
+        "measured_steps": 10000,
+        "setup_ns": 603729,
+        "setup_allocated_bytes": 57488,
+        "step_total_ns": 51820051,
+        "step_allocated_bytes": 0,
+        "observation_traversal_ns": 187820,
+        "checksum_hex": "0x1.09fbba658974fp16"
+      },
+      {
+        "bodies": 4096,
+        "warmup_steps": 500,
+        "measured_steps": 500,
+        "setup_ns": 1659798,
+        "setup_allocated_bytes": 458896,
+        "step_total_ns": 20196505,
+        "step_allocated_bytes": 0,
+        "observation_traversal_ns": 53270,
+        "checksum_hex": "0x1.17fdd3a0abbcp19"
+      },
+      {
+        "bodies": 65536,
+        "warmup_steps": 500,
+        "measured_steps": 500,
+        "setup_ns": 27233480,
+        "setup_allocated_bytes": 7340176,
+        "step_total_ns": 329164346,
+        "step_allocated_bytes": 0,
+        "observation_traversal_ns": 600059,
+        "checksum_hex": "0x1.03ffee9d055dep24"
+      }
+    ]
+  },
+  "packed_steps_zero_allocated_bytes": true
+}

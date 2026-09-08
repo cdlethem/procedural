@@ -1,0 +1,41 @@
+{
+  "status": "accepted_for_java_implementation",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": "topology.delaunay-2d",
+  "version": "0.1.0",
+  "scope": "Frozen language-neutral contract and shared exact vectors only; no public implementation or native/render/release support.",
+  "source_sha256": {
+    "catalog/operations/delaunay-2d.json": "02c1eeccaafb05dbeb81144ebe0036d1bfb4ef381794ada1f8535125ac526882",
+    "fixtures/operations/delaunay-2d.json": "627c4ef5eb6d3d1054e5049f1f5eecb6dddffd790469a2f05e2547cc129870eb",
+    "tools/check_delaunay_fixtures.py": "3459c15e5e45a37e4129611194db0642bc0142a72a804a3c9b6e7513475c0e53",
+    "tools/check_catalog.py": "1c538e68540bd16eabef5a1642b5f24aae686329a47939c831ae796eed252a53",
+    "tests/test_delaunay_fixtures.py": "a52683c6b78e4ce6eb43f20aa242e478d7c89d08de4231028d48244133061b31",
+    "tools/diagnostics/cp9/contract_oracle.py": "72e5f695c0c48e175e3459fae23ce82ca250fc1f5ca4d1ce8caf6952e895bab1",
+    "tools/diagnostics/cp9/generate_contract_fixture_draft.py": "302fba727a83c2ed21bfe4ee26736566f58cd5c1ab400ad2d271df3acbb6dd6e",
+    "design/operations/cp9-contract-review.md": "7cc5b66a6038f18aa3115d07eda40503103a66b2f334f4c2c1be15ec07f81e98",
+    "design/operations/cp9-fixture-policy.md": "d067cad95e68952627d1dd97abc94bc802f9fdb26e73441b0d76e64e376cffab",
+    "design/operations/cp9-java-implementation-brief.md": "a7f61e8795c3660d3e5a50266c5fa84179600e6cfe5bcafe770f5b30c5bddeda"
+  },
+  "checks": {
+    "architecture_eligibility": "passed; structural prerequisite, not semantic approval",
+    "catalog_and_generated_reference": "passed",
+    "exact_fixture_regeneration": "passed",
+    "independent_geometry_validator": "passed",
+    "shared_cases": 36,
+    "success_cases": 20,
+    "error_cases": 16,
+    "repository_unittests": 129,
+    "focused_checker_tests": 7,
+    "post_integration_reviewed_status_mutation": "focused tests and catalog checker passed"
+  },
+  "root_review": "Read full draft contract, corrected oracle, generator and independent checker. Hand-derived small work counts and lattice insertion/queue schedule; reviewed numeric witnesses and exact coordinate bits. Corrected queue charge ordering, precharge copying, dead-face retention, integral float acceptance, original-input storage accounting, independent determinant/hull verification and fresh-clone bindings. Canonical promotion preserved all 36 vector values.",
+  "remaining": [
+    "Java core implementation and native shared conformance",
+    "Native ownership/access/buffer atomicity and passive-carrier checks",
+    "Tiny, representative and stress native resource measurements",
+    "FacetMarks native workflow, visual edits and transfers",
+    "Packaging next Java release",
+    "Deferred JavaScript/Python/Android ports and broader roadmap milestones"
+  ]
+}

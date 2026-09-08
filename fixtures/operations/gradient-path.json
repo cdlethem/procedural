@@ -1,0 +1,3455 @@
+{
+  "operation": "path.gradient-trace-2d",
+  "version": "0.1.0",
+  "status": "reviewed fixtures; named-case tolerances approved by Sol",
+  "catalog_sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+  "oracle": "tools/build_gradient_path_fixtures.py using tools/build_noise_fixtures.py Fraction field oracle; host math.sin/cos; no native path evaluator imported",
+  "arithmetic": "binary64 operations separately rounded in documented order; completed heading/positions zeros canonicalized positive while raw intermediate query signed zeros are preserved; no FMA/reassociation",
+  "comparison_policy": "exact cases use 0; named non-cardinal position/heading cases use approved 1e-9 per value; no universal bound",
+  "cases": [
+    {
+      "id": "zero-count-huge-finite",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          1e+308,
+          -1e+308
+        ],
+        "steps": 0,
+        "stepDistance": 0.4,
+        "fieldScale": 1e-308,
+        "fieldOffset": [
+          1e+308,
+          -1e+308
+        ],
+        "angleBase": -0.0,
+        "angleScale": 0.0
+      },
+      "output": {
+        "positions": [
+          [
+            1e+308,
+            -1e+308
+          ]
+        ],
+        "headings": []
+      },
+      "comparison": {
+        "positions_abs": 0.0,
+        "headings_abs": 0.0,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "canonical-negative-zero",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          -0.0,
+          -0.0
+        ],
+        "steps": 0,
+        "stepDistance": 0.4,
+        "fieldScale": -0.0,
+        "fieldOffset": [
+          -0.0,
+          0.0
+        ],
+        "angleBase": -0.0,
+        "angleScale": -0.0
+      },
+      "output": {
+        "positions": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "headings": []
+      },
+      "comparison": {
+        "positions_abs": 0.0,
+        "headings_abs": 0.0,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cardinal-zero-heading",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.0,
+          0.0
+        ],
+        "steps": 1,
+        "stepDistance": 1.0,
+        "fieldScale": 1.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 0.0
+      },
+      "output": {
+        "positions": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ],
+        "headings": [
+          0.0
+        ]
+      },
+      "comparison": {
+        "positions_abs": 0.0,
+        "headings_abs": 0.0,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "integral-float-steps",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.0,
+          0.0
+        ],
+        "steps": 2.0,
+        "stepDistance": 1.0,
+        "fieldScale": 1.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 0.0
+      },
+      "output": {
+        "positions": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            2.0,
+            0.0
+          ]
+        ],
+        "headings": [
+          0.0,
+          0.0
+        ]
+      },
+      "comparison": {
+        "positions_abs": 0.0,
+        "headings_abs": 0.0,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "evolving-field",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          60.0,
+          80.0
+        ],
+        "steps": 4,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "output": {
+        "positions": [
+          [
+            60.0,
+            80.0
+          ],
+          [
+            60.13403800364536,
+            80.3768737369183
+          ],
+          [
+            60.273502465586624,
+            80.75177327526882
+          ],
+          [
+            60.41837015144596,
+            81.1246182210489
+          ],
+          [
+            60.56861511498906,
+            81.49532895859225
+          ]
+        ],
+        "headings": [
+          -5.054095047876421,
+          -5.068531219613874,
+          -5.082983027662383,
+          -5.097446460769648
+        ]
+      },
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "translated-negative-start",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          -3.5,
+          4.25
+        ],
+        "steps": 3,
+        "stepDistance": 0.75,
+        "fieldScale": 0.125,
+        "fieldOffset": [
+          7.25,
+          -5.5
+        ],
+        "angleBase": -1.0,
+        "angleScale": 3.5
+      },
+      "output": {
+        "positions": [
+          [
+            -3.5,
+            4.25
+          ],
+          [
+            -2.8629900090520333,
+            4.645876586112984
+          ],
+          [
+            -2.2941621306392856,
+            5.134686206252003
+          ],
+          [
+            -1.8247458658950726,
+            5.719620707195135
+          ]
+        ],
+        "headings": [
+          0.5560500507760944,
+          0.7098844793102401,
+          0.8945262721072997
+        ]
+      },
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "reflected-field",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          2.0,
+          -1.0
+        ],
+        "steps": 3,
+        "stepDistance": 0.5,
+        "fieldScale": -0.25,
+        "fieldOffset": [
+          0.75,
+          -0.5
+        ],
+        "angleBase": 0.3,
+        "angleScale": -2.0
+      },
+      "output": {
+        "positions": [
+          [
+            2.0,
+            -1.0
+          ],
+          [
+            2.3164124105697605,
+            -1.387147499588249
+          ],
+          [
+            2.6831523088058136,
+            -1.727003126350275
+          ],
+          [
+            3.0667511450550324,
+            -2.047708493982694
+          ]
+        ],
+        "headings": [
+          -0.8856002807617187,
+          -0.7473688962466813,
+          -0.69633567127629
+        ]
+      },
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "zero-step-distance",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.25,
+          0.75
+        ],
+        "steps": 3,
+        "stepDistance": 0.0,
+        "fieldScale": 1.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.2,
+        "angleScale": 2.0
+      },
+      "output": {
+        "positions": [
+          [
+            0.25,
+            0.75
+          ],
+          [
+            0.25,
+            0.75
+          ],
+          [
+            0.25,
+            0.75
+          ],
+          [
+            0.25,
+            0.75
+          ]
+        ],
+        "headings": [
+          1.4009210586547851,
+          1.4009210586547851,
+          1.4009210586547851
+        ]
+      },
+      "comparison": {
+        "positions_abs": 0.0,
+        "headings_abs": 0.0,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "separate-multiply-add-stationary",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          1e+16,
+          0.0
+        ],
+        "steps": 1,
+        "stepDistance": 0.0,
+        "fieldScale": 1.0000000000000002,
+        "fieldOffset": [
+          -1e+16,
+          0.375
+        ],
+        "angleBase": 0.0,
+        "angleScale": 1.0
+      },
+      "output": {
+        "positions": [
+          [
+            1e+16,
+            0.0
+          ],
+          [
+            1e+16,
+            0.0
+          ]
+        ],
+        "headings": [
+          0.450103759765625
+        ]
+      },
+      "comparison": {
+        "positions_abs": 0.0,
+        "headings_abs": 0.0,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "prefix-4",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          -0.25,
+          0.5
+        ],
+        "steps": 4,
+        "stepDistance": 0.4,
+        "fieldScale": 0.01,
+        "fieldOffset": [
+          0.125,
+          -0.25
+        ],
+        "angleBase": -0.7,
+        "angleScale": 2.5
+      },
+      "output": {
+        "positions": [
+          [
+            -0.25,
+            0.5
+          ],
+          [
+            0.02546836365351063,
+            0.7900296202563752
+          ],
+          [
+            0.3030785402873306,
+            1.0780098102509985
+          ],
+          [
+            0.5828039932143407,
+            1.363935798899773
+          ],
+          [
+            0.864617143550777,
+            1.6478043394206505
+          ]
+        ],
+        "headings": [
+          0.8111419150916528,
+          0.8037309572167464,
+          0.7963594850372628,
+          0.7890316222357847
+        ]
+      },
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "prefix-5",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          -0.25,
+          0.5
+        ],
+        "steps": 5,
+        "stepDistance": 0.4,
+        "fieldScale": 0.01,
+        "fieldOffset": [
+          0.125,
+          -0.25
+        ],
+        "angleBase": -0.7,
+        "angleScale": 2.5
+      },
+      "output": {
+        "positions": [
+          [
+            -0.25,
+            0.5
+          ],
+          [
+            0.02546836365351063,
+            0.7900296202563752
+          ],
+          [
+            0.3030785402873306,
+            1.0780098102509985
+          ],
+          [
+            0.5828039932143407,
+            1.363935798899773
+          ],
+          [
+            0.864617143550777,
+            1.6478043394206505
+          ],
+          [
+            1.1484894306285174,
+            1.9296137158247244
+          ]
+        ],
+        "headings": [
+          0.8111419150916528,
+          0.8037309572167464,
+          0.7963594850372628,
+          0.7890316222357847,
+          0.7817514099987106
+        ]
+      },
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "final-endpoint-not-sampled",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          9007199254740990.0,
+          0.0
+        ],
+        "steps": 1,
+        "stepDistance": 1.0,
+        "fieldScale": 1.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 0.0
+      },
+      "output": {
+        "positions": [
+          [
+            9007199254740990.0,
+            0.0
+          ],
+          [
+            9007199254740991.0,
+            0.0
+          ]
+        ],
+        "headings": [
+          0.0
+        ]
+      },
+      "comparison": {
+        "positions_abs": 0.0,
+        "headings_abs": 0.0,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "seed-0",
+      "input": {
+        "field": {
+          "seed": 0
+        },
+        "start": [
+          60.0,
+          80.0
+        ],
+        "steps": 4,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "output": {
+        "positions": [
+          [
+            60.0,
+            80.0
+          ],
+          [
+            59.72289883481829,
+            80.28847000581506
+          ],
+          [
+            59.443418009460565,
+            80.57463511245345
+          ],
+          [
+            59.16159947112359,
+            80.85849830388483
+          ],
+          [
+            58.877484780324046,
+            81.14006329189272
+          ]
+        ],
+        "headings": [
+          2.336095676260598,
+          2.3443779636511053,
+          2.3525800121515985,
+          2.3607017857887946
+        ]
+      },
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "seed-1",
+      "input": {
+        "field": {
+          "seed": 1
+        },
+        "start": [
+          60.0,
+          80.0
+        ],
+        "steps": 4,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "output": {
+        "positions": [
+          [
+            60.0,
+            80.0
+          ],
+          [
+            60.37205034252114,
+            79.85310363302688
+          ],
+          [
+            60.74499489280098,
+            79.70849256008788
+          ],
+          [
+            61.11883899885011,
+            79.56622315237023
+          ],
+          [
+            61.493587366613845,
+            79.42635299523006
+          ]
+        ],
+        "headings": [
+          5.907144383998698,
+          5.91327942435462,
+          5.919550696760609,
+          5.925960706068267
+        ]
+      },
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "seed-2147483648",
+      "input": {
+        "field": {
+          "seed": 2147483648
+        },
+        "start": [
+          60.0,
+          80.0
+        ],
+        "steps": 4,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "output": {
+        "positions": [
+          [
+            60.0,
+            80.0
+          ],
+          [
+            59.85244867427282,
+            80.3717910788012
+          ],
+          [
+            59.71023049292115,
+            80.74565467544177
+          ],
+          [
+            59.573313845760396,
+            81.12149218252463
+          ],
+          [
+            59.44166539293866,
+            81.49920726677418
+          ]
+        ],
+        "headings": [
+          1.948598266681838,
+          1.9342939147766174,
+          1.920151089597951,
+          1.906169030289675
+        ]
+      },
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "seed-4294967295",
+      "input": {
+        "field": {
+          "seed": 4294967295
+        },
+        "start": [
+          60.0,
+          80.0
+        ],
+        "steps": 4,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "output": {
+        "positions": [
+          [
+            60.0,
+            80.0
+          ],
+          [
+            59.60358548959741,
+            79.94656278504384
+          ],
+          [
+            59.207222673810676,
+            79.89274347381067
+          ],
+          [
+            58.81091291284599,
+            79.83853486412444
+          ],
+          [
+            58.414657602194794,
+            79.78392965575819
+          ]
+        ],
+        "headings": [
+          -3.0075990157771244,
+          -3.0066350723473825,
+          -3.005652829658093,
+          -3.004652031966799
+        ]
+      },
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "static-missing",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.25,
+          0.75
+        ],
+        "steps": 3,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "static-extra",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.25,
+          0.75
+        ],
+        "steps": 3,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0,
+        "extra": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "static-bool",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.25,
+          0.75
+        ],
+        "steps": true,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "static-negative-count",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.25,
+          0.75
+        ],
+        "steps": -1,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "static-fractional-count",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.25,
+          0.75
+        ],
+        "steps": 1.5,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "static-count-overflow",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.25,
+          0.75
+        ],
+        "steps": 1073741823,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "static-negative-distance",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.25,
+          0.75
+        ],
+        "steps": 3,
+        "stepDistance": -0.1,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "static-bad-field-seed",
+      "input": {
+        "field": {
+          "seed": -1
+        },
+        "start": [
+          0.25,
+          0.75
+        ],
+        "steps": 3,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "static-malformed-start",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.0
+        ],
+        "steps": 3,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": -20.0,
+        "angleScale": 40.0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "query-invalid-at-zero",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          9007199254740991.0,
+          0.0
+        ],
+        "steps": 1,
+        "stepDistance": 0.4,
+        "fieldScale": 1.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 0.0
+      },
+      "error": "TRACE_QUERY_INVALID",
+      "error_detail": {
+        "stepIndex": 0,
+        "stage": "query_x"
+      }
+    },
+    {
+      "id": "query-invalid-late",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          9007199254740990.0,
+          0.0
+        ],
+        "steps": 2,
+        "stepDistance": 1.0,
+        "fieldScale": 1.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 0.0
+      },
+      "error": "TRACE_QUERY_INVALID",
+      "error_detail": {
+        "stepIndex": 1,
+        "stage": "query_x"
+      }
+    },
+    {
+      "id": "query-y-invalid-angle-scale-zero",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.0,
+          9007199254740991.0
+        ],
+        "steps": 1,
+        "stepDistance": 0.4,
+        "fieldScale": 1.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 0.0
+      },
+      "error": "TRACE_QUERY_INVALID",
+      "error_detail": {
+        "stepIndex": 0,
+        "stage": "query_y"
+      }
+    },
+    {
+      "id": "query-multiply-overflow",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          1e+308,
+          0.0
+        ],
+        "steps": 1,
+        "stepDistance": 0.4,
+        "fieldScale": 1e+308,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 0.0
+      },
+      "error": "TRACE_QUERY_INVALID",
+      "error_detail": {
+        "stepIndex": 0,
+        "stage": "query_x"
+      }
+    },
+    {
+      "id": "heading-overflow",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.25,
+          0.75
+        ],
+        "steps": 1,
+        "stepDistance": 0.0,
+        "fieldScale": 1.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 1.7e+308,
+        "angleScale": 1e+308
+      },
+      "error": "TRACE_ARITHMETIC_INVALID",
+      "error_detail": {
+        "stepIndex": 0,
+        "stage": "heading"
+      }
+    },
+    {
+      "id": "endpoint-overflow",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          1e+308,
+          0.0
+        ],
+        "steps": 1,
+        "stepDistance": 1e+308,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 0.0
+      },
+      "error": "TRACE_ARITHMETIC_INVALID",
+      "error_detail": {
+        "stepIndex": 0,
+        "stage": "position_x"
+      }
+    },
+    {
+      "id": "endpoint-y-overflow",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.0,
+          1e+308
+        ],
+        "steps": 1,
+        "stepDistance": 1e+308,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 1.5707963267948966,
+        "angleScale": 0.0
+      },
+      "error": "TRACE_ARITHMETIC_INVALID",
+      "error_detail": {
+        "stepIndex": 0,
+        "stage": "position_y"
+      }
+    }
+  ],
+  "cross_case_checks": [
+    {
+      "id": "prefix-4-5-raw-binary64",
+      "kind": "raw-binary64-prefix",
+      "prefix_case": "prefix-4",
+      "extended_case": "prefix-5",
+      "positions": "prefix-4 positions equal prefix of prefix-5 positions by raw binary64 bits",
+      "headings": "prefix-4 headings equal prefix of prefix-5 headings by raw binary64 bits"
+    }
+  ],
+  "long_cases_source": {
+    "kind": "independent-private-loop-diagnostic",
+    "path": "evidence/investigations/cp2-numerics.json",
+    "sha256": "9c138cb3e58db5625da5d85ebd91a5f1d2615819fd27e63ce0ff95144d653248",
+    "authority": "Java selected_records_bits; not the Fraction short-case oracle",
+    "record_encoding": "IEEE-754 binary64 hex decoded by this builder"
+  },
+  "long_cases": [
+    {
+      "id": "cp2-field-000",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.125,
+          -0.25
+        ],
+        "steps": 2000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 40.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            0.125,
+            -0.25
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            0.2864048911441116,
+            0.11598970083153642
+          ],
+          "heading": 20.005000028092592
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            0.45549413191018184,
+            0.4784932575825757
+          ],
+          "heading": 19.983904253881168
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            0.6322526971099742,
+            0.8373196914311856
+          ],
+          "heading": 19.962640655905922
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            2.317837017896015,
+            3.552630904648911
+          ],
+          "heading": 19.78756085253396
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            35.26664332139954,
+            6.388124612117724
+          ],
+          "heading": 18.402510485208822
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            333.7885092960108,
+            95.91939535030754
+          ],
+          "heading": 19.79004156571975
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            92.15509472621984,
+            352.7382878720557
+          ],
+          "heading": 21.21096379410057
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-001",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.125,
+          -0.25
+        ],
+        "steps": 16000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 40.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            0.125,
+            -0.25
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            0.2864048911441116,
+            0.11598970083153642
+          ],
+          "heading": 20.005000028092592
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            0.45549413191018184,
+            0.4784932575825757
+          ],
+          "heading": 19.983904253881168
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            0.6322526971099742,
+            0.8373196914311856
+          ],
+          "heading": 19.962640655905922
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            2.317837017896015,
+            3.552630904648911
+          ],
+          "heading": 19.78756085253396
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            35.26664332139954,
+            6.388124612117724
+          ],
+          "heading": 18.402510485208822
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            333.7885092960108,
+            95.91939535030754
+          ],
+          "heading": 19.79004156571975
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            92.15509472621984,
+            352.7382878720557
+          ],
+          "heading": 21.21096379410057
+        },
+        {
+          "headingIndex": 3999,
+          "pointIndex": 4000,
+          "position": [
+            361.7617303925685,
+            649.0344651703207
+          ],
+          "heading": 18.27452469025219
+        },
+        {
+          "headingIndex": 7999,
+          "pointIndex": 8000,
+          "position": [
+            1173.7169422256807,
+            -107.18737729133773
+          ],
+          "heading": 18.22394093622888
+        },
+        {
+          "headingIndex": 15999,
+          "pointIndex": 16000,
+          "position": [
+            -547.8546440864168,
+            -614.984371411228
+          ],
+          "heading": 16.294187178582877
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-002",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.125,
+          -0.25
+        ],
+        "steps": 2000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 320.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            0.125,
+            -0.25
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            -0.26844944955960026,
+            -0.1779060984462098
+          ],
+          "heading": 160.04000022474074
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            -0.6672210415543876,
+            -0.14658170830142203
+          ],
+          "heading": 160.14283409425502
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            -1.0669138254957136,
+            -0.16225584193721
+          ],
+          "heading": 160.26042070222184
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            -3.224565225464797,
+            -2.184431031589244
+          ],
+          "heading": 161.57918609691586
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            21.066484651483233,
+            -28.15682223612671
+          ],
+          "heading": 162.63418622751266
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            329.2379625616605,
+            52.58314616747319
+          ],
+          "heading": 164.00074062382572
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            670.0462498630837,
+            -62.511428981536454
+          ],
+          "heading": 163.70244871847174
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-003",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.125,
+          -0.25
+        ],
+        "steps": 16000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 320.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            0.125,
+            -0.25
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            -0.26844944955960026,
+            -0.1779060984462098
+          ],
+          "heading": 160.04000022474074
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            -0.6672210415543876,
+            -0.14658170830142203
+          ],
+          "heading": 160.14283409425502
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            -1.0669138254957136,
+            -0.16225584193721
+          ],
+          "heading": 160.26042070222184
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            -3.224565225464797,
+            -2.184431031589244
+          ],
+          "heading": 161.57918609691586
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            21.066484651483233,
+            -28.15682223612671
+          ],
+          "heading": 162.63418622751266
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            329.2379625616605,
+            52.58314616747319
+          ],
+          "heading": 164.00074062382572
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            670.0462498630837,
+            -62.511428981536454
+          ],
+          "heading": 163.70244871847174
+        },
+        {
+          "headingIndex": 3999,
+          "pointIndex": 4000,
+          "position": [
+            1316.081812069039,
+            -257.41662130887704
+          ],
+          "heading": 162.68995539729252
+        },
+        {
+          "headingIndex": 7999,
+          "pointIndex": 8000,
+          "position": [
+            443.2833676405557,
+            -453.84004952128583
+          ],
+          "heading": 159.68570915265337
+        },
+        {
+          "headingIndex": 15999,
+          "pointIndex": 16000,
+          "position": [
+            32.35358242944594,
+            -19.478478118999487
+          ],
+          "heading": 156.36427111343554
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-004",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.125,
+          -0.25
+        ],
+        "steps": 2000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.01,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 40.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            0.125,
+            -0.25
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            0.27905202526283723,
+            0.11914492210027511
+          ],
+          "heading": 20.025003495402558
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            0.47081778528393414,
+            0.4701803808270697
+          ],
+          "heading": 19.920364940601402
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            0.6994828524626046,
+            0.7983758820944913
+          ],
+          "heading": 19.811821384272072
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            3.470500378494211,
+            2.200490997173329
+          ],
+          "heading": 18.959820085089085
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            36.77369967483931,
+            -6.315854878734409
+          ],
+          "heading": 19.21016202299601
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            124.32806054880044,
+            72.41801749583166
+          ],
+          "heading": 17.407787084981763
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            296.8897121011207,
+            -140.85585454862368
+          ],
+          "heading": 16.485982974089023
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-005",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.125,
+          -0.25
+        ],
+        "steps": 16000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.01,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 40.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            0.125,
+            -0.25
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            0.27905202526283723,
+            0.11914492210027511
+          ],
+          "heading": 20.025003495402558
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            0.47081778528393414,
+            0.4701803808270697
+          ],
+          "heading": 19.920364940601402
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            0.6994828524626046,
+            0.7983758820944913
+          ],
+          "heading": 19.811821384272072
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            3.470500378494211,
+            2.200490997173329
+          ],
+          "heading": 18.959820085089085
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            36.77369967483931,
+            -6.315854878734409
+          ],
+          "heading": 19.21016202299601
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            124.32806054880044,
+            72.41801749583166
+          ],
+          "heading": 17.407787084981763
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            296.8897121011207,
+            -140.85585454862368
+          ],
+          "heading": 16.485982974089023
+        },
+        {
+          "headingIndex": 3999,
+          "pointIndex": 4000,
+          "position": [
+            -64.24718928856697,
+            -206.85535594688764
+          ],
+          "heading": 19.175551765637582
+        },
+        {
+          "headingIndex": 7999,
+          "pointIndex": 8000,
+          "position": [
+            412.7777456329842,
+            -531.9756070349391
+          ],
+          "heading": 17.291195138965755
+        },
+        {
+          "headingIndex": 15999,
+          "pointIndex": 16000,
+          "position": [
+            546.7588746921984,
+            318.4354866367904
+          ],
+          "heading": 22.872526123913026
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-006",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.125,
+          -0.25
+        ],
+        "steps": 2000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.01,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 320.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            0.125,
+            -0.25
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            -0.2749101376670967,
+            -0.2415216870142826
+          ],
+          "heading": 160.20002796322046
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            -0.6038835422172197,
+            -0.4690661861758776
+          ],
+          "heading": 160.82634591122783
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            -0.6337756364004151,
+            -0.867947700795624
+          ],
+          "heading": 161.7172216925195
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            1.581958306286796,
+            -3.1690659199622173
+          ],
+          "heading": 162.58940598312842
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            34.06304169516594,
+            -12.661868954271593
+          ],
+          "heading": 163.70061166597515
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            295.9926429645305,
+            -116.78068469824115
+          ],
+          "heading": 161.356515141753
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            -47.57388645666395,
+            -66.01312553401618
+          ],
+          "heading": 159.87988670597647
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-007",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          0.125,
+          -0.25
+        ],
+        "steps": 16000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.01,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 320.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            0.125,
+            -0.25
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            -0.2749101376670967,
+            -0.2415216870142826
+          ],
+          "heading": 160.20002796322046
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            -0.6038835422172197,
+            -0.4690661861758776
+          ],
+          "heading": 160.82634591122783
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            -0.6337756364004151,
+            -0.867947700795624
+          ],
+          "heading": 161.7172216925195
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            1.581958306286796,
+            -3.1690659199622173
+          ],
+          "heading": 162.58940598312842
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            34.06304169516594,
+            -12.661868954271593
+          ],
+          "heading": 163.70061166597515
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            295.9926429645305,
+            -116.78068469824115
+          ],
+          "heading": 161.356515141753
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            -47.57388645666395,
+            -66.01312553401618
+          ],
+          "heading": 159.87988670597647
+        },
+        {
+          "headingIndex": 3999,
+          "pointIndex": 4000,
+          "position": [
+            -68.56757474892794,
+            116.84642675092947
+          ],
+          "heading": 161.17071604251808
+        },
+        {
+          "headingIndex": 7999,
+          "pointIndex": 8000,
+          "position": [
+            212.12447738465332,
+            -216.89487604989935
+          ],
+          "heading": 162.26025376545215
+        },
+        {
+          "headingIndex": 15999,
+          "pointIndex": 16000,
+          "position": [
+            425.0239052198839,
+            -787.6991760583489
+          ],
+          "heading": 163.4645200828764
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-008",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          100.0,
+          100.0
+        ],
+        "steps": 2000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 40.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            100.0,
+            100.0
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            100.10162919966253,
+            100.38687401796444
+          ],
+          "heading": 13.8802778112
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            100.20620100716219,
+            100.77296304536131
+          ],
+          "heading": 13.872664009635876
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            100.31367923853253,
+            101.15825310464328
+          ],
+          "heading": 13.865128388908616
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            101.2736706551291,
+            104.21041391824345
+          ],
+          "heading": 13.807785886670572
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            118.67734834574992,
+            135.62950667354903
+          ],
+          "heading": 13.594360205075507
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            -133.81867868200507,
+            332.75717267749724
+          ],
+          "heading": 14.905180013902939
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            -352.91762064207296,
+            457.45157018730583
+          ],
+          "heading": 16.49447813593113
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-009",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          100.0,
+          100.0
+        ],
+        "steps": 16000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 40.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            100.0,
+            100.0
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            100.10162919966253,
+            100.38687401796444
+          ],
+          "heading": 13.8802778112
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            100.20620100716219,
+            100.77296304536131
+          ],
+          "heading": 13.872664009635876
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            100.31367923853253,
+            101.15825310464328
+          ],
+          "heading": 13.865128388908616
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            101.2736706551291,
+            104.21041391824345
+          ],
+          "heading": 13.807785886670572
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            118.67734834574992,
+            135.62950667354903
+          ],
+          "heading": 13.594360205075507
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            -133.81867868200507,
+            332.75717267749724
+          ],
+          "heading": 14.905180013902939
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            -352.91762064207296,
+            457.45157018730583
+          ],
+          "heading": 16.49447813593113
+        },
+        {
+          "headingIndex": 3999,
+          "pointIndex": 4000,
+          "position": [
+            105.78800952895504,
+            -33.61361341645347
+          ],
+          "heading": 18.51683092204351
+        },
+        {
+          "headingIndex": 7999,
+          "pointIndex": 8000,
+          "position": [
+            459.4273246896175,
+            576.4050913168021
+          ],
+          "heading": 18.177752130243224
+        },
+        {
+          "headingIndex": 15999,
+          "pointIndex": 16000,
+          "position": [
+            647.1021773461321,
+            -726.5200943173618
+          ],
+          "heading": 15.7521649293182
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-010",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          100.0,
+          100.0
+        ],
+        "steps": 2000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 320.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            100.0,
+            100.0
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            99.81375849454874,
+            99.64600268129935
+          ],
+          "heading": 111.0422224896
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            99.64888965345656,
+            99.28156027811755
+          ],
+          "heading": 111.10170239365877
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            99.50653434252655,
+            98.90774887453279
+          ],
+          "heading": 111.16267479845497
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            99.26063775375029,
+            95.75171992572587
+          ],
+          "heading": 111.67256904330202
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            131.47997899151937,
+            88.37757200652428
+          ],
+          "heading": 113.37312858367262
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            18.072587873211994,
+            132.279185220373
+          ],
+          "heading": 118.40190831473258
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            82.44990491684064,
+            237.67852095544544
+          ],
+          "heading": 122.03194207462312
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-011",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          100.0,
+          100.0
+        ],
+        "steps": 16000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.002,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 320.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            100.0,
+            100.0
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            99.81375849454874,
+            99.64600268129935
+          ],
+          "heading": 111.0422224896
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            99.64888965345656,
+            99.28156027811755
+          ],
+          "heading": 111.10170239365877
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            99.50653434252655,
+            98.90774887453279
+          ],
+          "heading": 111.16267479845497
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            99.26063775375029,
+            95.75171992572587
+          ],
+          "heading": 111.67256904330202
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            131.47997899151937,
+            88.37757200652428
+          ],
+          "heading": 113.37312858367262
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            18.072587873211994,
+            132.279185220373
+          ],
+          "heading": 118.40190831473258
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            82.44990491684064,
+            237.67852095544544
+          ],
+          "heading": 122.03194207462312
+        },
+        {
+          "headingIndex": 3999,
+          "pointIndex": 4000,
+          "position": [
+            -280.1698532927272,
+            342.4136146534041
+          ],
+          "heading": 125.22530458450184
+        },
+        {
+          "headingIndex": 7999,
+          "pointIndex": 8000,
+          "position": [
+            -367.16389808458507,
+            425.60221385229477
+          ],
+          "heading": 129.8234594979269
+        },
+        {
+          "headingIndex": 15999,
+          "pointIndex": 16000,
+          "position": [
+            -7.8381900612261814,
+            352.5196301101405
+          ],
+          "heading": 140.62827164101952
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-012",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          100.0,
+          100.0
+        ],
+        "steps": 2000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.01,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 40.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            100.0,
+            100.0
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            100.16323282472536,
+            100.36517810029105
+          ],
+          "heading": 20.0
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            100.36407958174348,
+            100.71109800459737
+          ],
+          "heading": 19.894307366065377
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            100.60150092162043,
+            101.03301586270878
+          ],
+          "heading": 19.784885333385528
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            103.41207909827973,
+            102.35079050172699
+          ],
+          "heading": 18.92625563043961
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            123.97036075257077,
+            74.65568166594501
+          ],
+          "heading": 17.478487497769482
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            312.3429523779095,
+            -102.57849657330189
+          ],
+          "heading": 17.290801157417647
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            -16.508212453740235,
+            -106.77128703039561
+          ],
+          "heading": 14.854943322430396
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-013",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          100.0,
+          100.0
+        ],
+        "steps": 16000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.01,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 40.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            100.0,
+            100.0
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            100.16323282472536,
+            100.36517810029105
+          ],
+          "heading": 20.0
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            100.36407958174348,
+            100.71109800459737
+          ],
+          "heading": 19.894307366065377
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            100.60150092162043,
+            101.03301586270878
+          ],
+          "heading": 19.784885333385528
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            103.41207909827973,
+            102.35079050172699
+          ],
+          "heading": 18.92625563043961
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            123.97036075257077,
+            74.65568166594501
+          ],
+          "heading": 17.478487497769482
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            312.3429523779095,
+            -102.57849657330189
+          ],
+          "heading": 17.290801157417647
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            -16.508212453740235,
+            -106.77128703039561
+          ],
+          "heading": 14.854943322430396
+        },
+        {
+          "headingIndex": 3999,
+          "pointIndex": 4000,
+          "position": [
+            109.6451193370263,
+            -293.9348350301186
+          ],
+          "heading": 18.91554502604825
+        },
+        {
+          "headingIndex": 7999,
+          "pointIndex": 8000,
+          "position": [
+            307.317123090368,
+            -821.1836379712668
+          ],
+          "heading": 15.931192198345139
+        },
+        {
+          "headingIndex": 15999,
+          "pointIndex": 16000,
+          "position": [
+            326.71690511160557,
+            410.2009541606345
+          ],
+          "heading": 21.957676045337713
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-014",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          100.0,
+          100.0
+        ],
+        "steps": 2000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.01,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 320.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            100.0,
+            100.0
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            99.60974827488191,
+            100.0877701033516
+          ],
+          "heading": 160.0
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            99.22348568385631,
+            99.9838412297207
+          ],
+          "heading": 160.48406339148826
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            99.02368763293471,
+            99.6373145513135
+          ],
+          "heading": 161.26900576300625
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            101.11667260803785,
+            97.25807180246679
+          ],
+          "heading": 162.56921596414128
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            110.32350570576219,
+            65.06390534772119
+          ],
+          "heading": 161.3655232819466
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            -111.4130733176769,
+            100.14126296407971
+          ],
+          "heading": 160.2204543025942
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            -201.11992480780006,
+            -22.136877147528942
+          ],
+          "heading": 161.79201229863776
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-field-015",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 42
+        },
+        "start": [
+          100.0,
+          100.0
+        ],
+        "steps": 16000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.01,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.0,
+        "angleScale": 320.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            100.0,
+            100.0
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            99.60974827488191,
+            100.0877701033516
+          ],
+          "heading": 160.0
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            99.22348568385631,
+            99.9838412297207
+          ],
+          "heading": 160.48406339148826
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            99.02368763293471,
+            99.6373145513135
+          ],
+          "heading": 161.26900576300625
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            101.11667260803785,
+            97.25807180246679
+          ],
+          "heading": 162.56921596414128
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            110.32350570576219,
+            65.06390534772119
+          ],
+          "heading": 161.3655232819466
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            -111.4130733176769,
+            100.14126296407971
+          ],
+          "heading": 160.2204543025942
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            -201.11992480780006,
+            -22.136877147528942
+          ],
+          "heading": 161.79201229863776
+        },
+        {
+          "headingIndex": 3999,
+          "pointIndex": 4000,
+          "position": [
+            98.41406870427667,
+            -192.44410032873157
+          ],
+          "heading": 161.95669728213258
+        },
+        {
+          "headingIndex": 7999,
+          "pointIndex": 8000,
+          "position": [
+            185.68925109424174,
+            -802.0938962551935
+          ],
+          "heading": 163.36293776517857
+        },
+        {
+          "headingIndex": 15999,
+          "pointIndex": 16000,
+          "position": [
+            219.34786883355667,
+            -1222.6744932160163
+          ],
+          "heading": 159.3209700430512
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-constant-016",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 0
+        },
+        "start": [
+          0.125,
+          -0.25
+        ],
+        "steps": 2000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.1,
+        "angleScale": 0.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            0.125,
+            -0.25
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            0.5230016661112104,
+            -0.21006663334126874
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            0.9210033322224207,
+            -0.17013326668253748
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            1.319004998333631,
+            -0.13019990002380621
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            4.503018327223314,
+            0.18926703324604388
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            40.323168277232256,
+            3.783270032531865
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            398.12666611121284,
+            39.683366658730314
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            796.1283322224259,
+            79.61673331745992
+          ],
+          "heading": 0.1
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-constant-017",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 0
+        },
+        "start": [
+          0.125,
+          -0.25
+        ],
+        "steps": 16000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 0.1,
+        "angleScale": 0.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            0.125,
+            -0.25
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            0.5230016661112104,
+            -0.21006663334126874
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            0.9210033322224207,
+            -0.17013326668253748
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            1.319004998333631,
+            -0.13019990002380621
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            4.503018327223314,
+            0.18926703324604388
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            40.323168277232256,
+            3.783270032531865
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            398.12666611121284,
+            39.683366658730314
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            796.1283322224259,
+            79.61673331745992
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 3999,
+          "pointIndex": 4000,
+          "position": [
+            1592.131664444852,
+            159.48346663493032
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 7999,
+          "pointIndex": 8000,
+          "position": [
+            3184.1383288897046,
+            319.21693326986053
+          ],
+          "heading": 0.1
+        },
+        {
+          "headingIndex": 15999,
+          "pointIndex": 16000,
+          "position": [
+            6368.151657776813,
+            638.6838665395836
+          ],
+          "heading": 0.1
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-constant-018",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 0
+        },
+        "start": [
+          0.125,
+          -0.25
+        ],
+        "steps": 2000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 1.0,
+        "angleScale": 0.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            0.125,
+            -0.25
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            0.3411209223472559,
+            0.08658839392315865
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            0.5572418446945118,
+            0.4231767878463173
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            0.7733627670417677,
+            0.7597651817694759
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            2.5023301458198155,
+            3.4524723331547458
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            21.953213157072827,
+            33.74542778623898
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            216.245922347252,
+            336.33839392315696
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            432.3668446945192,
+            672.9267878463208
+          ],
+          "heading": 1.0
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    },
+    {
+      "id": "cp2-constant-019",
+      "source": "cp2-numerics-java-selected-records",
+      "input": {
+        "field": {
+          "seed": 0
+        },
+        "start": [
+          0.125,
+          -0.25
+        ],
+        "steps": 16000,
+        "stepDistance": 0.4,
+        "fieldScale": 0.0,
+        "fieldOffset": [
+          0.0,
+          0.0
+        ],
+        "angleBase": 1.0,
+        "angleScale": 0.0
+      },
+      "selected": [
+        {
+          "pointIndex": 0,
+          "position": [
+            0.125,
+            -0.25
+          ]
+        },
+        {
+          "headingIndex": 0,
+          "pointIndex": 1,
+          "position": [
+            0.3411209223472559,
+            0.08658839392315865
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 1,
+          "pointIndex": 2,
+          "position": [
+            0.5572418446945118,
+            0.4231767878463173
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 2,
+          "pointIndex": 3,
+          "position": [
+            0.7733627670417677,
+            0.7597651817694759
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 10,
+          "pointIndex": 11,
+          "position": [
+            2.5023301458198155,
+            3.4524723331547458
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 100,
+          "pointIndex": 101,
+          "position": [
+            21.953213157072827,
+            33.74542778623898
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 999,
+          "pointIndex": 1000,
+          "position": [
+            216.245922347252,
+            336.33839392315696
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 1999,
+          "pointIndex": 2000,
+          "position": [
+            432.3668446945192,
+            672.9267878463208
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 3999,
+          "pointIndex": 4000,
+          "position": [
+            864.608689389064,
+            1346.1035756927079
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 7999,
+          "pointIndex": 8000,
+          "position": [
+            1729.0923787781537,
+            2692.4571513854817
+          ],
+          "heading": 1.0
+        },
+        {
+          "headingIndex": 15999,
+          "pointIndex": 16000,
+          "position": [
+            3458.059757556333,
+            5385.16430277103
+          ],
+          "heading": 1.0
+        }
+      ],
+      "comparison": {
+        "positions_abs": 1e-09,
+        "headings_abs": 1e-09,
+        "status": "reviewed-named-case"
+      }
+    }
+  ],
+  "native_only_checks": [
+    "Path owns detached packed arrays/configuration; getters/export must not resample or recompute.",
+    "Dynamic failure discards partial arrays and returns no path; host allocation failure is not INVALID_INPUT or partial success.",
+    "pointAt/headingAt index validation order and pointInto writable Float64/double buffer ownership/unchanged-on-error require native tests.",
+    "Every completed zero coordinate and heading must have positive-zero raw IEEE-754 binary64 sign; comparison equality alone is insufficient.",
+    "No renderer, command-object retention, or external mutable field callback is authorized by these pure fixtures."
+  ]
+}

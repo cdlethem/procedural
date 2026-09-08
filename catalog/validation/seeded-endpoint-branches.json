@@ -1,0 +1,154 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "topology.seeded-endpoint-branches-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/seeded-endpoint-branches.json",
+    "catalog_sha256": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/branch-tree-java.json": "e29a6404e7dbbd8814b10b658e65cb54312d11a7985135bb905e40cc66d66c66",
+          "fixtures/operations/seeded-endpoint-branches.json": "5368de8f8e268ac2f376a45f08d97e690a3192708b4d42a2b6d393894f88a13c"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/branch-tree-java.json",
+            "pointer": "/vectors/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/branch-tree-java.json",
+            "pointer": "/vectors/fixture_cases",
+            "equals": 40
+          },
+          {
+            "path": "evidence/conformance/branch-tree-java.json",
+            "pointer": "/native/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/distribution/cp6-review.json",
+          "sha256": "59b15e7b530a617be4f5c154199aefa4182189898785b8306922d139c45575ec"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 strictfp core; Processing4.5.6 JAVA2D",
+          "scope": "40sharedcases,9482vector assertions,94native assertions; root source review and bounded1\u201320001node workloads."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+          "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+          "packages/java-processing/examples/BranchMarks/BranchMarks.pde": "a027fb071ec9be9dd29607b7ce7dccb86772e2ab1680945ddd0973df66113e2c"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp6-java2d/pde-result.json": "7d3e1bb8131b97e01bc7654f10c8507ae1f8b27bb734ce34d7bd3948a447ada7",
+          "evidence/distribution/cp6-java.json": "d1ff531f7aebb3a6ca573b46be3b51d463999c28aa24e96c0d39f6eb04884e70"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp6-java2d/pde-result.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/reproductions/cp6-java2d/pde-result.json",
+            "pointer": "/native/compositions",
+            "equals": 17
+          },
+          {
+            "path": "evidence/distribution/cp6-java.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/distribution/cp6-review.json",
+          "sha256": "59b15e7b530a617be4f5c154199aefa4182189898785b8306922d139c45575ec"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 strictfp core; Processing4.5.6 JAVA2D",
+          "scope": "17states/17keys, exact ancestry/prefix/replay, retained objects for style, all source bindings unchanged, displayed save and no stderr."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+          "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+          "packages/java-processing/examples/BranchMarks/BranchMarks.pde": "a027fb071ec9be9dd29607b7ce7dccb86772e2ab1680945ddd0973df66113e2c"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp6-java2d/pde-result.json": "7d3e1bb8131b97e01bc7654f10c8507ae1f8b27bb734ce34d7bd3948a447ada7",
+          "evidence/reproductions/cp6-java2d/root-review.json": "1c191fd17c355e2e06d4a0bbdf11ccc1376e59ee124f694a256303ad9e143ff3"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp6-java2d/root-review.json",
+            "pointer": "/visual_review/status",
+            "equals": "accepted"
+          },
+          {
+            "path": "evidence/reproductions/cp6-java2d/pde-result.json",
+            "pointer": "/native/append_rule_prefix",
+            "equals": true
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/distribution/cp6-review.json",
+          "sha256": "59b15e7b530a617be4f5c154199aefa4182189898785b8306922d139c45575ec"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 strictfp core; Processing4.5.6 JAVA2D",
+          "scope": "Root viewed12distinct images and separately verified5reset/restore images pixel-identical to initial."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

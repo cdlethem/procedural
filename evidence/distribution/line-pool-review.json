@@ -1,0 +1,42 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Java0.15.0:15operations,15starters; no registry publication",
+  "final_archive": {
+    "path": ".work/dist/line-pool/java/procedurals-processing-0.15.0.zip",
+    "sha256": "c975370773a8afd788fb6e63bb11f5918f21026129d9ae6eefca468fd2e1973d"
+  },
+  "implementation_sha256": {
+    "tools/build_cut_branch_marks_java.py": "e8890c213d86df9ba02d9cb17d64c9f4225a363ce83a3629a8fd9f1204126bed",
+    "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+    "packages/java/examples/CutBranchMarks/CutBranchComposition.java": "4ff4769b2579844684ea45b8b76854709d42f17f24bb8fe196e1c572eb21f2a2",
+    "packages/java-processing/examples/CutBranchMarks/CutBranchMarks.pde": "80055e16c4a51019a3e59aff2f0eddf1df0402ac1f4012954ea7ff00414e6145"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/line-pool-java.json": "58a216708b71bbb0e6650a44cf71f180eb59fb5eb7cca633df3ffb63cf48b655",
+    "evidence/conformance/line-pool-catalog-review.json": "30788175cc7e653f9dd1a9452ccf9c4c6a5bb9c99d1aeae56e3dd22c4e69f7aa",
+    "evidence/reproductions/line-pool-p2d/edits-review.json": "e88fd93f925f0f01ecb9dfc8b4e9e1a5c9339510a86036ad37f5c7ff06b346a1",
+    "evidence/reproductions/line-pool-p2d/workload-review.json": "235bde2dbea5cb2c958533b571ca4c8991c7844108ee3ace93e291171eb2abc7"
+  },
+  "checks": {
+    "members": 82,
+    "operations": 15,
+    "starters": 15,
+    "prior_starters_byte_preserved": 14,
+    "prior_core_members_byte_preserved": 74,
+    "added_core_classes": 6,
+    "changed_inherited_members": [
+      "procedurals/docs/reference/operations.md",
+      "procedurals/library.properties",
+      "procedurals/library/procedurals.jar"
+    ],
+    "packaged_example_and_jar_match_native_stage": true,
+    "zip_integrity": "passed"
+  },
+  "limits": [
+    "Source technique/workload acceptance, no whole-brotes recreation count",
+    "Other target ports deferred",
+    "Remaining roadmap milestones unfinished"
+  ]
+}

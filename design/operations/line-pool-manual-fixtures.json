@@ -1,0 +1,228 @@
+{
+  "status": "root-derived expectations; pending oracle crosscheck",
+  "cases": [
+    {
+      "id": "zero-work",
+      "input": {
+        "seed": 42,
+        "segment": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "attempts": 0,
+        "firstCutAngleScale": 1.4,
+        "minCutLength": 4,
+        "maxSegments": 1
+      },
+      "output": {
+        "segments": [
+          [
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        "divided": [
+          false
+        ],
+        "attempts": 0,
+        "successfulCuts": 0,
+        "skips": 0
+      }
+    },
+    {
+      "id": "short-root-skips",
+      "input": {
+        "seed": 42,
+        "segment": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "attempts": 3,
+        "firstCutAngleScale": 1.4,
+        "minCutLength": 4,
+        "maxSegments": 1
+      },
+      "output": {
+        "segments": [
+          [
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        "divided": [
+          false
+        ],
+        "attempts": 3,
+        "successfulCuts": 0,
+        "skips": 3
+      }
+    },
+    {
+      "id": "zero-root-skips",
+      "input": {
+        "seed": 42,
+        "segment": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "attempts": 2,
+        "firstCutAngleScale": 1.4,
+        "minCutLength": 4,
+        "maxSegments": 1
+      },
+      "output": {
+        "segments": [
+          [
+            2,
+            3,
+            2,
+            3
+          ]
+        ],
+        "divided": [
+          false
+        ],
+        "attempts": 2,
+        "successfulCuts": 0,
+        "skips": 2
+      }
+    },
+    {
+      "id": "difference-overflow",
+      "input": {
+        "seed": 42,
+        "segment": [
+          -1e+308,
+          0,
+          1e+308,
+          0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.4,
+        "minCutLength": 4,
+        "maxSegments": 1
+      },
+      "error": {
+        "code": "ARITHMETIC_OVERFLOW",
+        "attempt": 0,
+        "stage": "difference_x"
+      }
+    },
+    {
+      "id": "zero-work-extreme-coordinates",
+      "input": {
+        "seed": 42,
+        "segment": [
+          -1e+308,
+          0,
+          1e+308,
+          0
+        ],
+        "attempts": 0,
+        "firstCutAngleScale": 1.4,
+        "minCutLength": 4,
+        "maxSegments": 1
+      },
+      "output": {
+        "segments": [
+          [
+            -1e+308,
+            0,
+            1e+308,
+            0
+          ]
+        ],
+        "divided": [
+          false
+        ],
+        "attempts": 0,
+        "successfulCuts": 0,
+        "skips": 0
+      }
+    },
+    {
+      "id": "square-overflow",
+      "input": {
+        "seed": 42,
+        "segment": [
+          0,
+          0,
+          1e+200,
+          0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.4,
+        "minCutLength": 4,
+        "maxSegments": 1
+      },
+      "error": {
+        "code": "ARITHMETIC_OVERFLOW",
+        "attempt": 0,
+        "stage": "square_x"
+      }
+    },
+    {
+      "id": "squared-length-overflow",
+      "input": {
+        "seed": 42,
+        "segment": [
+          0,
+          0,
+          1e+154,
+          1e+154
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.4,
+        "minCutLength": 4,
+        "maxSegments": 1
+      },
+      "error": {
+        "code": "ARITHMETIC_OVERFLOW",
+        "attempt": 0,
+        "stage": "squared_length"
+      }
+    },
+    {
+      "id": "underflow-length-skips",
+      "input": {
+        "seed": 42,
+        "segment": [
+          0,
+          0,
+          1e-200,
+          0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.4,
+        "minCutLength": 1e-210,
+        "maxSegments": 1
+      },
+      "output": {
+        "segments": [
+          [
+            0,
+            0,
+            1e-200,
+            0
+          ]
+        ],
+        "divided": [
+          false
+        ],
+        "attempts": 1,
+        "successfulCuts": 0,
+        "skips": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "status": "accepted-private-capability-comparison",
+  "scope": "CP7 independently specified profile surface investigation on local Processing4.5.6 P3D/Mesa llvmpipe only; no shipped feature or source-pixel claim",
+  "bindings": {
+    "experiment_sha256": "e53db4f0d6a2f989e292787fef4dc011b574456935f549b94eb8173ee3439faf",
+    "result_sha256": "6619a16e182aee3106b6eec28b89d2ffc91a621064f5427dbfd4fb495c5ab187"
+  },
+  "root_visual_review": [
+    {
+      "id": "baseline",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/baseline.png",
+        "sha256": "95ee40b79f5a6fe344fa4b3f3d49a9eb7d3728967f2579ccaee276815f3adbed",
+        "width": 640
+      },
+      "diff_from_baseline": null,
+      "observation": "Clearly lit tilted cylinder with a flat red elliptical cap and ordered pastel/coral axial bands; angular facets are visible but the silhouette reads as round.",
+      "acceptable": true
+    },
+    {
+      "id": "waist",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/waist.png",
+        "sha256": "19c9acd2199417b464ebcc734bbf74e207e130a5bf025018a0081246c9f752c0",
+        "width": 640
+      },
+      "diff_from_baseline": {
+        "changed_fraction": 0.0806298828125,
+        "mean_rgb_normalized": 0.019202039930555557
+      },
+      "observation": "The middle contracts substantially while both ends stay broad. The hourglass silhouette is legible with the same cap, palette and camera.",
+      "acceptable": true
+    },
+    {
+      "id": "pointed",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/pointed.png",
+        "sha256": "bdec9e5f386b5907b20e08a55375de32f250c44b8f82560df7947d8fd60221e5",
+        "width": 640
+      },
+      "diff_from_baseline": {
+        "changed_fraction": 0.094677734375,
+        "mean_rgb_normalized": 0.028165980519812093
+      },
+      "observation": "The broad lower end narrows to one visible sharp upper tip. Bands continue along the taper without a duplicate cap at the pole.",
+      "acceptable": true
+    },
+    {
+      "id": "coarse",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/coarse.png",
+        "sha256": "69fffb32f8af2d5c403e28074214234f5c630b6f40b71edecfd245b83c97c796",
+        "width": 640
+      },
+      "diff_from_baseline": {
+        "changed_fraction": 0.08205322265625,
+        "mean_rgb_normalized": 0.004866309870302288
+      },
+      "observation": "Eight large planar side facets and an angular cap outline are visible; the structural edit is clear compared with32cells.",
+      "acceptable": true
+    },
+    {
+      "id": "open",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/open.png",
+        "sha256": "25ee27b51c7c98ebf7998293cff9c368969e8da7f43be65c7a2a784251c55c77",
+        "width": 640
+      },
+      "diff_from_baseline": {
+        "changed_fraction": 0.0139111328125,
+        "mean_rgb_normalized": 0.0020451803768382353
+      },
+      "observation": "Removing end fans reveals the upper rim and inner/back wall; the outer cylinder remains unchanged. The chosen view cannot inspect every hidden face.",
+      "acceptable": true
+    },
+    {
+      "id": "recolour",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/recolour.png",
+        "sha256": "c615934b5536793e527b825f29793c8b3f8f3614b39a3ec5f1d6c8a07473a4e1",
+        "width": 640
+      },
+      "diff_from_baseline": {
+        "changed_fraction": 0.094677734375,
+        "mean_rgb_normalized": 0.017730002808415034
+      },
+      "observation": "The cylinder keeps its silhouette and cap outline while the bands shift to teal, dark blue, ochre and rust. Exact retained geometry identity is separately established by source/native hashes.",
+      "acceptable": true
+    },
+    {
+      "id": "transfer",
+      "image": {
+        "alpha_opaque": true,
+        "height": 640,
+        "path": ".work/experiments/cp7-profiles/transfer.png",
+        "sha256": "658c28535293338af14791fe260e6e54b64ac46bb43116704a86fd170a9f8114",
+        "width": 640
+      },
+      "diff_from_baseline": {
+        "changed_fraction": 0.12347412109375,
+        "mean_rgb_normalized": 0.04965317989174837
+      },
+      "observation": "Three smaller separated objects display the cylinder, waist and pointed profiles through the same renderer and local transforms.",
+      "acceptable": true
+    }
+  ],
+  "numeric_evidence": {
+    "stable_input_bindings": true,
+    "generated_faces": 4496,
+    "drawn_faces": 8784,
+    "normal_evaluations": 8784,
+    "frames": 7,
+    "case_geometry": "Native case records exactly match preflight, including base identity under recolour and actual3mesh transfer."
+  },
+  "warnings": [
+    "libEGL warning: DRI3 error: Could not get DRI3 device",
+    "libEGL warning: Ensure your X server supports DRI3 to get accelerated rendering",
+    "X11Util.Display: Shutdown (JVM shutdown: true, open (no close attempt): 3/3, reusable (open, marked uncloseable): 0, pending (open in creation order): 3)",
+    "X11Util: Open X11 Display Connections: 3",
+    "X11Util: Open[0]: NamedX11Display[:99, 0x76c2a06910b0, refCount 1, unCloseable false]",
+    "X11Util: Open[1]: NamedX11Display[:99, 0x76bef8001080, refCount 1, unCloseable false]",
+    "X11Util: Open[2]: NamedX11Display[:99, 0x76bef80120d0, refCount 1, unCloseable false]"
+  ],
+  "warning_scope": "Only the root-preregistered exact known environment warning block appeared. Original strict P3Dprobe remains failed; no hardware or clean-lifecycle certification.",
+  "decision": "Select supplied increasing axial profile/radius mesh, with explicit endpoint closures, pole topology and retained per-face band/cell/kind. Propose local flat face normals as result attributes to remove lighting geometry arithmetic from ordinary artist drawing. Admission and full operation/numeric contract remain next.",
+  "limits": [
+    "Private example values are configurations, not library defaults or encouraged intervals.",
+    "No continuous resolution/waist range inferred from these successful individual examples.",
+    "Selected visible views plus numerical topology checks do not establish every finite input or every renderer/lighting condition.",
+    "Smooth shading, arbitrary closed meridians, annular solids and general self-intersections are not covered."
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "id": "cp4-regions",
+  "status": "planned",
+  "owner": "root",
+  "reviewer": "root",
+  "question": "Does retained equal-quadrant replacement remove enough live-leaf and random-selection wiring to make count and selection meaningful artist edits, while a content substitution preserves the exact leaf geometry?",
+  "decision": "Keep this private walkthrough unless root review finds a useful capability boundary; no public operation, default, range, or validation bound is authorized by these images.",
+  "hypothesis": "At seed42, changing 100 to 200 replacements or changing the selected live-leaf set changes the retained arrangement; replacing panels with small content grids preserves every leaf id and bound; an explicit 2x3 transfer shows whether shared replacement machinery is necessary.",
+  "source_sketches": [
+    "2018/Generativos/mosaic02",
+    "2017/Generativos/chinasseForms",
+    "2018/Generativos/NeoGeo",
+    "2018/Generativos/mosaic"
+  ],
+  "provenance": [
+    "design/capabilities/cp4-region-walkthrough.md",
+    "design/capabilities/cp4-partition-source-audit.md",
+    "survey/out/2018/Generativos/mosaic02/notes.md",
+    "survey/out/2017/Generativos/chinasseForms/notes.md"
+  ],
+  "fixed_profile": {
+    "renderer": "Processing 4.5.6 JAVA2D",
+    "canvas": [
+      640,
+      640
+    ],
+    "seed": 42,
+    "background_rgb": "F3F0E8",
+    "palette_rgb": [
+      "173F5F",
+      "20639B",
+      "3CAEA3",
+      "F6D55C",
+      "ED553B"
+    ],
+    "assets": "none",
+    "fonts": "none",
+    "content_rule": "panel with central mark, or fixed 3x3 small-mark grid inside each retained leaf",
+    "panel_inset": "min(1 px, 5% of leaf min(width,height)); applied identically to every content variant so every drawn panel has positive dimensions"
+  },
+  "chooser": {
+    "class": "java.util.Random",
+    "seed": 42,
+    "status": "private investigation compatibility stream; not an eventual portable default",
+    "selection_draw": "exactly one nextFloat per seeded replacement",
+    "first_half_selection": "nextFloat() * (liveLeafCount * 0.5f), then Java int cast",
+    "full_selection": "liveLeafCount",
+    "replacement_order": "select existing index; append TL, TR, BR, BL; remove selected parent",
+    "content_rng": "none",
+    "palette_prelude": "none; private stream divergence from source prelude"
+  },
+  "parameter": {
+    "name": "replacement count, selected live-leaf set, and content substitution",
+    "default": null,
+    "unit": "discrete walkthrough settings only"
+  },
+  "variants": [
+    {
+      "id": "100half",
+      "change": "100 equal-quadrant replacements; first-half live-list chooser; panel-mark content"
+    },
+    {
+      "id": "200half",
+      "change": "only replacement count changes from 100 to 200; first-half live-list chooser; panel-mark content"
+    },
+    {
+      "id": "100full",
+      "change": "only eligible selection set changes from first-half to full live list at 100 replacements; panel-mark content"
+    },
+    {
+      "id": "same100half-contentgrid",
+      "change": "same 100 first-half geometry and stable ids; only panel-mark content changes to a fixed 3x3 small-mark grid"
+    },
+    {
+      "id": "explicit-grid-refinement-transfer",
+      "change": "explicit stable-id plan: replace root with 2x3 grid, then replace child id3 with 2x3 grid; same content-grid drawing rule"
+    }
+  ],
+  "comparison": "Before any render, require positive finite bounds, coverage, non-overlapping interiors, deterministic leaf order, and geometry identity between 100half and same100half-contentgrid. Root inspects all five images after one registered executor attempt; compare normalized RGB MAE/changed fraction from 100half for the three seeded edits and record geometry hashes/counts. The explicit transfer is a design test, not a single-variable comparison.",
+  "constraints": [
+    "Private diagnostic only; no public operation implementation, catalog entry, candidate disposition, or ledger mutation.",
+    "Exactly five images in one registered attempt, one render per listed state, no automatic retries or sixth image.",
+    "A single root-approved executor must serialize Processing rendering; this task compiles/runs numeric preflight only and does not render.",
+    "No assets, fonts, source-corpus copy, or CP1/CP2/CP3 artifact change.",
+    "Treat java.util.Random as a private investigation stream, not a portable RNG selection or compatibility promise."
+  ],
+  "retention_criteria": {
+    "count": "Only investigate a count control if root inspection finds 100 and 200 legibly distinct without treating either as a recommended bound.",
+    "selection": "Only investigate selected-live-leaf choice if root inspection finds a meaningful geometry distinction; do not describe a direction as size bias without reconciling source evidence.",
+    "content": "Only investigate retained region output if the content-grid image has exactly the 100half geometry and changes only content.",
+    "explicit_transfer": "Keep explicit replacement private if its 2x3 transfer is ordinary example glue; consider a second route only if it avoids reimplementing identity/replacement semantics."
+  },
+  "render_budget": 5,
+  "attempt_budget": 1,
+  "attempt_timeout_seconds": 90,
+  "numeric_timeout_seconds": 30,
+  "output": ".work/experiments/cp4-regions",
+  "source_sha256": {
+    "tools/diagnostics/cp4/RegionChoice.java": "635c70e9a8a459bee94afb5ddd163d42f2acaca595d08b2e342cc5a9c9408e86",
+    "design/capabilities/cp4-region-walkthrough.md": "fc90dea1566a515e2a4b9d2e1249c2cfdf4fcc49711d1c0c7fbb2427897d208a",
+    "skills/parameter-evidence/SKILL.md": "f3bea28b63fe351f8b8814ef276c51af317d2e275355e50fa713fac0615f4090",
+    "tools/diagnostics/cp4/run_regions.py": "ec867b14719213ad17489cd7a8eded30a4cfc575ca0b5fc6a73b985b9e7a0335"
+  },
+  "rendering": "not started; root single-executor approval required"
+}

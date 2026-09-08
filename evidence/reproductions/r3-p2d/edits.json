@@ -1,0 +1,168 @@
+{
+  "owner": "root",
+  "scope": "seven native editing/reset states and cached save",
+  "timeout_seconds": 180,
+  "input_sha256": {
+    "tools/prepare_landscape_marks.py": "180cf1de0d78dcbf952d3b2bcdab01a38497cadff439887a3942ac09243c8fa9",
+    "evidence/distribution/r2-review.json": "550fa92655de8ce27fc5826327f94f8f545d48c1acfb368779b9e8b0ff03bb25",
+    ".work/dist/r2/java/procedurals-processing-0.13.0.zip": "cd350a7478f5c5e36ba19d4f617bf7ae7ec2eb98b9aa08a1f2966b8ada47d739",
+    "packages/java/examples/LandscapeMarks/LandscapeComposition.java": "265bf82c153e80eff11720616c75d376665979b8de7be644c2b8a07f99bc0da8",
+    "packages/java-processing/examples/LandscapeMarks/LandscapeMarks.pde": "c825f59674c040a1c82bc07021e47b77a06fdb5cedbde22ec0ecdd03efd6810a",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/examples/r3-candidate1/LandscapeMarks/LandscapeMarks.pde": "c825f59674c040a1c82bc07021e47b77a06fdb5cedbde22ec0ecdd03efd6810a",
+    ".work/examples/r3-candidate1/LandscapeMarks/LandscapeComposition.java": "265bf82c153e80eff11720616c75d376665979b8de7be644c2b8a07f99bc0da8",
+    ".work/examples/r3-candidate1/LandscapeMarks/code/procedurals.jar": "cce0c27827e8fddbeae1c94ada8efc38ebe4d53625779e4e11ad428baa43252e",
+    ".work/examples/r3-candidate1/build/LandscapeMarks.class": "63657dd86191ce1a99ddd99237f30d89b412d73fa8a87af4ca0a841b036d57a4",
+    ".work/examples/r3-candidate1/build/PreprocessSketch.class": "2fc98864fe0e6ffe6e00204da0071fb0897d9799e8857c9b2f38887b444fa70d",
+    ".work/examples/r3-candidate1/build/org/procedurals/examples/landscapemarks/LandscapeComposition.class": "0c4a1b8cd8a2ef335f85930177bdc1936b443c9a9570b0c6593f60dd00b76c65",
+    ".work/examples/r3-candidate1/build/LandscapeMarks.java": "7dc111902b02729cb1ada432819bb2b54a8321de43da420791b7a8ce903a078b",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar": "34c919bc6073c2d9e73cbe7558c4e9de6b5c58146f3658e2bcc5f23ec3fccc9f",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar": "465bbc8d410b872a76b5b901cdb9c2c07905edd5e61a7120dc6a4d007880ec2f",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar": "3d0ed2674059fc207166ce1351de8d30e0b6102af12ca8b84fbf1bc3f246038a",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar": "d500a38dedcbd6dfa89c5ae943a22d1051b1dbf1502f8544337bbe57d118f2c5",
+    "tools/diagnostics/r3/LandscapeMarksProbe.java": "4b222133f93fc373157338d4c76431e8954f0b9fb42d987a8de2c54ba31045a6",
+    "tools/diagnostics/r3/run_edits.py": "7834b2d7bb4a7c44e61928c9437c6db71e70ec265a6051efa5229e57736b49af",
+    ".work/examples/r3-candidate1/result.json": "00cd4474e60319703baaa90870d1c0f058cc9d5bd74cc220d3a5afacb8229bfd",
+    "design/capabilities/parapara-recreation-acceptance.md": "c2bef5168e0cbbef1920c9eb445d6f11fe88d0c371f42370e98f1ccad028988e",
+    ".work/build/r3-edits/LandscapeMarksProbe.class": "289dbc9488ea1525f4e18f100d790a7abd7d324ed7b5de7e49e87a7f606a71f2"
+  },
+  "command": [
+    "xvfb-run",
+    "-a",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+    "-Xmx512m",
+    "-Duser.home=/home/colin/dev/procedural/.work/reproductions/r3-edits/home",
+    "-Djava.io.tmpdir=/home/colin/dev/procedural/.work/reproductions/r3-edits/tmp",
+    "-cp",
+    "/home/colin/dev/procedural/.work/build/r3-edits:/home/colin/dev/procedural/.work/examples/r3-candidate1/build:/home/colin/dev/procedural/.work/examples/r3-candidate1/LandscapeMarks/code/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar",
+    "LandscapeMarksProbe",
+    "/home/colin/dev/procedural/.work/reproductions/r3-edits",
+    "/home/colin/dev/procedural/.work/examples/r3-candidate1/LandscapeMarks/code/procedurals.jar"
+  ],
+  "status": "passed",
+  "exit_code": 0,
+  "images": {
+    "baseline": {
+      "path": ".work/reproductions/r3-edits/baseline.png",
+      "sha256": "f5365d8e7f10cbe692aa33f55a94fd518b39eadfd10db5a92a21ac5e23b818ba",
+      "width": 960,
+      "height": 960,
+      "alpha_opaque": true
+    },
+    "palette": {
+      "path": ".work/reproductions/r3-edits/palette.png",
+      "sha256": "260e85022cd7531ae1eee43aefe46e71ceb6f54b555bafda06aa665705972532",
+      "width": 960,
+      "height": 960,
+      "alpha_opaque": true
+    },
+    "reset-colour": {
+      "path": ".work/reproductions/r3-edits/reset-colour.png",
+      "sha256": "f5365d8e7f10cbe692aa33f55a94fd518b39eadfd10db5a92a21ac5e23b818ba",
+      "width": 960,
+      "height": 960,
+      "alpha_opaque": true
+    },
+    "uniform": {
+      "path": ".work/reproductions/r3-edits/uniform.png",
+      "sha256": "0375d791d436a7f6865354ef27fede026f36eba3ac596321f41f23e6bac526f0",
+      "width": 960,
+      "height": 960,
+      "alpha_opaque": true
+    },
+    "reset-height": {
+      "path": ".work/reproductions/r3-edits/reset-height.png",
+      "sha256": "f5365d8e7f10cbe692aa33f55a94fd518b39eadfd10db5a92a21ac5e23b818ba",
+      "width": 960,
+      "height": 960,
+      "alpha_opaque": true
+    },
+    "new-seed": {
+      "path": ".work/reproductions/r3-edits/new-seed.png",
+      "sha256": "e9498ae5c909cfb12f787d084fad0fce61322020b67c8ca5a80856248f2fc9d2",
+      "width": 960,
+      "height": 960,
+      "alpha_opaque": true
+    },
+    "final-reset": {
+      "path": ".work/reproductions/r3-edits/final-reset.png",
+      "sha256": "f5365d8e7f10cbe692aa33f55a94fd518b39eadfd10db5a92a21ac5e23b818ba",
+      "width": 960,
+      "height": 960,
+      "alpha_opaque": true
+    }
+  },
+  "save": {
+    "path": ".work/reproductions/r3-edits/landscape-marks.png",
+    "sha256": "2e787378a4a0bfb2e19a182278c627c64384e5c5d48bc3ab8f3b5c627b860a86",
+    "width": 960,
+    "height": 960,
+    "alpha_opaque": true
+  },
+  "native": {
+    "status": "passed",
+    "frames": 7,
+    "key_events": 7,
+    "keys": "c0p0r0s",
+    "save_quiet_ms": 300,
+    "renderer_class": "processing.opengl.PGraphics2D",
+    "core_code_source": "/home/colin/dev/procedural/.work/examples/r3-candidate1/LandscapeMarks/code/procedurals.jar",
+    "composition_code_source": "/home/colin/dev/procedural/.work/examples/r3-candidate1/build",
+    "states": [
+      {
+        "id": "baseline",
+        "specks": 81,
+        "disks": 47,
+        "retained": false
+      },
+      {
+        "id": "palette",
+        "specks": 81,
+        "disks": 47,
+        "retained": true
+      },
+      {
+        "id": "reset-colour",
+        "specks": 81,
+        "disks": 47,
+        "retained": false
+      },
+      {
+        "id": "uniform",
+        "specks": 81,
+        "disks": 47,
+        "retained": true
+      },
+      {
+        "id": "reset-height",
+        "specks": 81,
+        "disks": 47,
+        "retained": false
+      },
+      {
+        "id": "new-seed",
+        "specks": 71,
+        "disks": 41,
+        "retained": false
+      },
+      {
+        "id": "final-reset",
+        "specks": 81,
+        "disks": 47,
+        "retained": false
+      }
+    ]
+  },
+  "wall_seconds": 4.843551580037456
+}

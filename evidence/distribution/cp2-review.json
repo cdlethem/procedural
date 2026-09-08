@@ -1,0 +1,33 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "Sol",
+  "package_version": "0.2.0",
+  "scope": "Local four-target PathMarks package/starter installation; four public operations retained. Native/visual behavior is separately accepted only on recorded CP2 runtimes. This completes the CP2 delivery slice within I2, not I2 or the full project.",
+  "evidence_sha256": {
+    "evidence/distribution/cp2-java.json": "48235abdfa6e2ea31fb7ac66afeb6e8ee3779731d712906bf422bf9c0ecaddca",
+    "evidence/distribution/cp2-javascript.json": "c99fe992dd51d6e85b7a7c858e20fb4756024f6980c013047a47d7cbdb4eeef0",
+    "evidence/distribution/cp2-python.json": "5aa59d450f2037d1d38d020a992ef89d586541349491b1802b23706c97664b67",
+    "evidence/distribution/cp2-android.json": "8fe60e2a6ef2b288c153e0997ad9ce172600ed34d9141406f4d5f89070d44c38",
+    "evidence/reproductions/cp2-java2d/review.json": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f",
+    "evidence/reproductions/cp2-p5js/review.json": "210611ccbd73b394715aaffd07d762c2d0d9e9fcfabcf9b669a6c1474d0b7147",
+    "evidence/reproductions/cp2-py5/review.json": "d5a213c54fe6c8763f262cb3ca385a3daeb17e8de062d4fb271aac8389f68dd3",
+    "evidence/reproductions/cp2-android/review.json": "53dbfafbb7c59e7bfda8575a2b1ba7b97f6c1199cec9640db15070f3f6b260f4",
+    "design/cp2-distribution-plan.md": "c05f74661db4b58c3f2f91e7c40b25b3e842db5c133d53c3564dbfb460f392f0",
+    "docs/path-marks.md": "c8408c54429bfc5b140ae5ecd61c1ef6d290510a3900e85dce138370714555a3",
+    "docs/installing-path-marks.md": "b296bdd587d24a8aa60d63faf6508deaf3b8cc41b45d88d76d6b47f0fff55811"
+  },
+  "decisions": [
+    "Keep operation contract versions at 0.1.0; stage package release metadata at 0.2.0.",
+    "Preserve accepted I1 0.1.0 artifacts/reports. Superseded unaccepted CP2 builds are retained with correction records.",
+    "Consumers import or compile installed artifact contents and actual extracted editable starters; no new native renders for packaging.",
+    "Java checks full point/heading serialized replay and binary64 PDE distance controls. Browser/Python check installed public fixtures/replay; Python loads real py5 without launching a sketch. Android compiles the extracted project against external runtime/SDK and checks extracted core origin.",
+    "Android README uses ordinary AGP debug signing and documents pinned runtime checksums."
+  ],
+  "limits": [
+    "Local artifacts only; no registry publication.",
+    "No human twenty-minute usability study yet.",
+    "No upstream pixel equality, full-corpus certification or expanded renderer/device support.",
+    "Packing, general RNG, cell subdivision, mesh/3D, branching and deliberate rare-family coverage remain unfinished; X1/X2/X3 are incomplete."
+  ]
+}

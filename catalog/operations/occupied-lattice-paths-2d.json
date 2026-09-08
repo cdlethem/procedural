@@ -1,0 +1,326 @@
+{
+  "id": "path.occupied-lattice-paths-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "capability": "CP11",
+  "description": "Generate ordered retained cardinal cell paths whose cells are claimed by one call-local occupancy set.",
+  "decision_cluster": "path.occupied-lattice-paths-2d",
+  "capability_decision": "design/capabilities/cp11-lattice-decision.md",
+  "design_review": "design/operations/cp11-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2019/generativos/tata#0",
+      "notes_path": "survey/out/2019/generativos/tata/notes.md",
+      "note_sha256": "66d58d804843d0aeda177cc6f32405078e4bcb7ab8f5812424f47c9dabb795a2",
+      "evidence_sha256": "45447ac269b308ceba89d8b6e21066f75169ae05c4b8311c63172300471d571b",
+      "upstream_pde_sha256": "7e7090ed7525f87e75c5d3bbba4ea77b046416ded31e24f3a653d76ead558d37",
+      "relationship": "Capability-dependency admission for independently specified shared occupied cardinal paths. Tata motivates arrangement-wide destination occupancy but is not source-equivalent: this operation reserves/emits starts, chooses among available neighbours, counts successful moves and stops when blocked. Its source random stream and rendering remain outside the operation."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "dimensions": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2,
+        "description": "[columns, rows] integer lattice dimensions; origin is north-west, x grows east and y grows south."
+      },
+      "starts": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 1073741823,
+        "description": "Ordered start-cell pairs. Duplicates are valid sequential occupancy outcomes."
+      },
+      "maxSteps": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1073741822,
+        "description": "Maximum successful cardinal moves after each available start."
+      },
+      "maxCells": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1073741823,
+        "description": "Required conservative potential-output admission ceiling."
+      },
+      "random": {
+        "type": "object",
+        "properties": {
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "state": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            ],
+            "items": false,
+            "minItems": 4,
+            "maxItems": 4
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "seed"
+            ]
+          },
+          {
+            "required": [
+              "state"
+            ]
+          }
+        ],
+        "additionalProperties": false,
+        "description": "Exactly one private-stream carrier: uint32 seed or nonzero [s0,s1,s2,s3] uint32 state."
+      }
+    },
+    "required": [
+      "dimensions",
+      "starts",
+      "maxSteps",
+      "maxCells",
+      "random"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "paths": {
+        "type": "array",
+        "maxItems": 1073741823,
+        "items": {
+          "type": "array",
+          "maxItems": 1073741823,
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      },
+      "completionReasons": {
+        "type": "array",
+        "maxItems": 1073741823,
+        "items": {
+          "type": "string",
+          "enum": [
+            "occupied-start",
+            "blocked",
+            "step-limit"
+          ]
+        }
+      },
+      "randomState": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        ],
+        "items": false,
+        "minItems": 4,
+        "maxItems": 4
+      }
+    },
+    "required": [
+      "paths",
+      "completionReasons",
+      "randomState"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "paths and completionReasons have exactly starts.length entries in start order. A path is empty exactly when its reason is occupied-start; otherwise it begins with its supplied start. Every emitted cell is unique across all paths, every consecutive pair differs by one north/east/south/west cell, and all cells are inside dimensions. A nonempty path with length maxSteps+1 has step-limit; a shorter nonempty path has blocked. randomState is the detached post-call uint32 xoshiro state.",
+  "behavior": {
+    "input": "Input has exactly dimensions, starts, maxSteps, maxCells and random. Static validation order is: outer passive record/keys; dimensions pair then columns then rows; starts outer List/length, then each pair and its x then y in increasing start index; maxSteps; maxCells; random record/keys, then its sole seed or state carrier and state words in increasing index. Every numeric carrier is finite integral in its stated domain and never bool. Each start must be within its corresponding half-open dimension. State [0,0,0,0] is INVALID_INPUT. Complete all static validation before comparing capacity, initializing the stream, claiming occupancy, allocating output-sized storage or mutating caller data. Then calculate starts.length*(maxSteps+1) with exact checked wide integer arithmetic; if it exceeds maxCells, fail WORK_LIMIT_EXCEEDED. No defaults.",
+    "generation": "Use one call-local sparse occupancy set and process starts in input order. An occupied start appends [] and occupied-start and consumes no word. Otherwise append and claim the start. If maxSteps is zero, append step-limit before enumerating neighbours. For each remaining successful move, enumerate in-bounds unoccupied candidates in north, east, south, west order. No candidates appends blocked without a word. Otherwise consume one word, select one candidate, append it and claim it. Reaching maxSteps successful moves appends step-limit. There are no retries, proposals with replacement, random starts, truncation or partial output.",
+    "rng": "Portable xoshiro128**1.1 private to each call. Zero-extend uint32 seed to uint64 SplitMix64 state. Twice advance state by0x9e3779b97f4a7c15 modulo2^64; z=state; z=(z xor(z>>>30))*0xbf58476d1ce4e5b9 mod2^64; z=(z xor(z>>>27))*0x94d049bb133111eb mod2^64; q=z xor(z>>>31). Pack q0/q1 as s0=low32(q0),s1=high32(q0),s2=low32(q1),s3=high32(q1). next output=rotl32(s1*5 mod2^32,7)*9 mod2^32; then t=s1<<9 mod2^32; sequentially s2 xor=s0; s3 xor=s1; s1 xor=s2; s0 xor=s3; s2 xor=t; s3=rotl32(s3,11), all words uint32. A supplied state bypasses seed expansion. For available count c in1..4, choose floor(unsigned_u32*c/4294967296); this consumes exactly one word, including c=1. This discrete mapping is the contract and does not assert equal mathematical probability where c does not divide2^32. Blocked and occupied-start paths consume no word.",
+    "integer_layout": "Coordinates are signed int32 values; valid dimensions ensure every emitted coordinate and cardinal neighbour calculation is representable. Retain two signed int32 coordinate scalars per emitted cell in growable owned packed storage. maxCells<=1073741823 keeps total two-coordinate scalar storage signed-int-indexable. Do not dense-allocate by dimensions, preallocate maxCells, or allocate per-cell output objects during generation. maxCells is a representation admission ceiling, not an actual output, latency, memory or artistic guarantee. Host allocation failures are host failures and never translated into operation errors.",
+    "ownership": "Inputs are never mutated or retained. Occupancy, packed output and stream state are local to one eager call. The result owns detached storage. Each materialized JSON path/cell/state carrier and each native accessor carrier is fresh; changing it cannot affect the result. Exporting/read access never advances the stream. A rejected configuration exposes no result and no partial output.",
+    "native_surface": "Java reference class is org.procedurals.paths.OccupiedLatticePaths2D with static generate(Object config). Public accessors are int pathCount(); int pathLengthAt(Object path) and pathLengthAt(long path); int[] cellAt(Object path,Object cell) and cellAt(long path,long cell); void cellInto(Object path,Object cell,int[] output,int offset) and cellInto(long path,long cell,int[] output,int offset); String completionReasonAt(Object path) and completionReasonAt(long path); long[] randomState(); and Map<String,Object> toValues(). No mixed path/cell overload exists. randomState returns a fresh long[4], each 0..4294967295; cellAt returns fresh int[2]. The only public operation exception is nested LatticeException extends IllegalArgumentException with final String code. Host resource exceptions remain host exceptions.",
+    "access": "All path/cell indices are finite safe nonnegative integers no greater than9007199254740991, with booleans excluded; integral floating carriers are accepted where a host supports them. For cellAt/cellInto, validate in this exact field order: path numeric domain, path range, cell numeric domain, cell range, then destination. An out-of-range path therefore wins over an invalid cell carrier; an invalid cell carrier wins over destination validation only after the path is in range. Thus empty occupied-start paths have no valid cell index. cellInto requires an int[] with two writable slots starting at a finite nonnegative integral offset and writes both only after every validation succeeds; any failure leaves every destination slot unchanged.",
+    "complexity": "For admitted inputs, O(starts.length + emitted cells) retained storage and O(starts.length + successfulMoves) transition work, with at most four candidate checks per successful-move iteration. Sparse occupancy is O(emitted cells). path/cell scalar reads are O(1); toValues is O(starts.length + emitted cells) detached materialization, including empty occupied-start entries.",
+    "environment": [
+      "explicit private xoshiro128**1.1 seed or state"
+    ],
+    "exclusions": "No renderer, drawing commands, grid metric, palette, style stream, session, callback, graph, maze/route guarantee, global occupancy, retained continuation object, host RNG, clock or noise is consumed. Guagua's unrestricted revisiting walk is deferred and is not this operation."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed static carrier/key/value, out-of-domain coordinate/limit, seed/state carrier or forbidden all-zero supplied state.",
+    "WORK_LIMIT_EXCEEDED": "All static fields are valid but starts.length*(maxSteps+1) exceeds maxCells.",
+    "INVALID_INDEX": "Path or cell index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "A representable path or cell index exceeds its retained range.",
+    "INVALID_OUTPUT": "cellInto destination or offset cannot hold two int values."
+  },
+  "parameters": {
+    "dimensions": {
+      "unit": "integer lattice cells [columns,rows]",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit placement boundary selected by CP11; its hard bounds preserve signed int32 cell coordinates."
+    },
+    "starts": {
+      "unit": "ordered integer cell pairs",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "CP11 deliberately replaces tata's random starts with caller composition order."
+    },
+    "maxSteps": {
+      "unit": "successful moves per available start",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Tata walk length shows a consequential composition control, but source measurements do not justify a range for this changed successful-move policy. Hard bound is packed representation only."
+    },
+    "maxCells": {
+      "unit": "potential emitted cells",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Required caller resource admission; it is not a visual control. Hard bound is two signed-int32 coordinate arrays."
+    },
+    "random": {
+      "unit": "private uint32 seed or state",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Existing project portable RNG contract; no host/source-stream compatibility is claimed."
+    }
+  },
+  "design_divergences": [
+    "Tata omits and does not reserve starts; this operation emits and reserves each available start.",
+    "Tata makes four random destination proposals with replacement per requested step; this operation enumerates presently available NESW neighbours and makes one selection.",
+    "Tata continues after a failed proposal round; this operation reports actual blockage immediately.",
+    "Tata selects starts and shares a scene stream; this operation takes ordered starts and owns an explicit private stream."
+  ],
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "signed-int packed primitive storage"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Java-first CP11 draft; no support claim."
+    },
+    "p5js": {
+      "required": false,
+      "capabilities": [
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "py5": {
+      "required": false,
+      "capabilities": [
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "capabilities": [
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/occupied-lattice-paths-2d.json",
+  "reproduction": "No source-pixel reproduction is claimed: this independently specified computation deliberately differs from tata's start, retry, stop and random-stream policies.",
+  "review": {
+    "owner": "root",
+    "reviewer": "root direct review under paused-Sol sprint",
+    "status": "Contract and shared vectors accepted for Java implementation; runtime, reproduction and delivery remain unvalidated."
+  }
+}

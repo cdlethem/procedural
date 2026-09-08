@@ -1,0 +1,33 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Java0.5.0 CP5 core and installed Processing JAVA2D GrainMarks workflow.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    "packages/java-processing/examples/GrainMarks/GrainMarks.pde": "ea025f34174d525976c2b4ad05b528d3c1eec8a4eb63aed5c8374b90582cecdf"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/triangle-points-java.json": "a62c4566f4c2594b38b06ae89363998e6b8ef7edc6c3d43115a3a64e3c08a494",
+    "evidence/conformance/triangle-points-java-review.json": "99303b5c39ce323acf394a56797d553ee06729a51b5251226936b8fa6bbe9a5b",
+    "evidence/distribution/cp5-java.json": "c84b17cfdf650f9052761e90c8f679ab81d187ffd3e91d07ff8dd52c5ae84ea8",
+    "evidence/reproductions/cp5-java2d/pde-result.json": "ff6045bd0733e66b56cdbaa8a207effd147fd5e183df37c710d57221a5d2df48",
+    "evidence/reproductions/cp5-java2d/root-review.json": "8064db7220db3204312858d4e617b6b8a4d223e09f3970a0c7061cd0cc65affe",
+    "evidence/reproductions/cp5-java2d/execution-review.json": "97817d1c1813d5e47811d677c1fc1e55fcedff0f0ca69e75bef0b1c8654c6913",
+    "docs/grain-marks.md": "49f7a45488785e1892fe7a555ce5b9285464ac924fdbd3f5ac61f1a4015aaf6b",
+    "docs/installing-grain-marks.md": "4a60b52f9e8d10340641cedac2ae241cc4ccfb54523b83b9b61db77aeb354269"
+  },
+  "checks": {
+    "core": "59 fixture cases,209 vector assertions,36 native assertions; root source review and bounded seeded/mapped workloads.",
+    "distribution": "Current recorded source/artifact hashes, installed core origin, extracted fixture consumer and official compilation of all five examples.",
+    "native": "15 states/16 keys passed without stderr using actual extracted tabs and installed JAR, including unknown key and displayed save.",
+    "visual": "Root inspected all15 captured states; distribution, retained style edits, density, resets and cell transfer accepted."
+  },
+  "limitations": [
+    "Local artifact, not externally published.",
+    "Java/JAVA2D only; other CP5 targets deferred.",
+    "No source-pixel or full-corpus certification.",
+    "No forced allocation-failure execution; performance observations local."
+  ]
+}

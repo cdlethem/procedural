@@ -1,0 +1,27 @@
+{
+  "status": "accepted-scoped-java-core",
+  "reviewer": "root",
+  "operation": "mesh.radial-profile-surface-3d",
+  "native_report": "evidence/conformance/radial-profile-surface-processing-java.json",
+  "native_report_sha256": "f5844cec19768ef48834fc02a19a70dab4446df54f979a234052a13ff6859d00",
+  "source_bindings": {
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+    "tests/native/RadialProfileNative.java": "24dcabdc942c3e02f5c319e3a3d9c30b40c15643a817633fb0b2bbe08b1a78cb",
+    "tools/check_profile_fixtures.py": "21170b3964b5e093b9b082042880a32e2d202c8323c27b6c1285002ab236ae38",
+    "tools/run_radial_profile_java.py": "772b9dcbde3f88e6ac5ff3fe8ce1cc0721a7701eb836118b4c2843d9041c47a9"
+  },
+  "checks": {
+    "fixture_cases": 43,
+    "vector_assertions": 3553,
+    "native_assertions": 507,
+    "scope": "carriers, ownership, exact replay, detached value export, access/Into atomicity and bounded generation workloads"
+  },
+  "limitations": [
+    "No installed package or Processing PDE/P3D validation yet.",
+    "Heap snapshot and calculated numeric payload are not allocation profiling or a heap guarantee.",
+    "No deferred target or arbitrary-runtime transcendental guarantee."
+  ],
+  "next": "Review/build installed Java0.7.0 package and seven examples, then register and execute a bounded P3D example validation."
+}

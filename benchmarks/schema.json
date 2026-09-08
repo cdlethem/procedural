@@ -7,7 +7,35 @@
   "properties": {
     "schema_version": {"const": 1},
     "metric_version": {"const": 1},
-    "source": {"type": "object"},
+    "source": {
+      "type": "object",
+      "properties": {
+        "evidence": {
+          "description": "Public text/JSON binding. Legacy manifests without it are development-only.",
+          "oneOf": [
+            {"type": "null"},
+            {
+              "type": "object",
+              "required": ["survey_revision", "snapshot_sha256", "index_sha256", "evidence_sha256", "target_ids_sha256", "target_count", "report_count", "missing_reports", "stub_count", "expected_cases_sha256", "expected_cases"],
+              "properties": {
+                "survey_revision": {"type": ["string", "null"]},
+                "snapshot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                "index_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                "evidence_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                "target_ids_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                "target_count": {"type": "integer", "minimum": 1},
+                "report_count": {"type": "integer", "minimum": 0},
+                "missing_reports": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+                "stub_count": {"type": "integer", "minimum": 0},
+                "expected_cases_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                "expected_cases": {"type": "integer", "minimum": 0}
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      }
+    },
     "path_contract": {"type": "object"},
     "targets": {
       "type": "object",

@@ -1,0 +1,300 @@
+{
+  "id": "layout.regular-grid",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "capability": "CP1",
+  "description": "An immutable row-major rectangular sequence of planar positions with explicit point counts and spacing.",
+  "decision_cluster": "layout.grid-points",
+  "capability_decision": "design/capabilities/cp1-field-marks.md",
+  "design_review": "design/operations/regular-grid-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2017/Generativos/circlesAlpha#0",
+      "notes_path": "survey/out/2017/Generativos/circlesAlpha/notes.md",
+      "note_sha256": "bbc82982409255910ac607ffa366006c7900e5cd7d4efb9a4640a3a154d46e57",
+      "evidence_sha256": "a959229723265c3b5afe475b1d0a46639a1df1a20a42a0c8d889548f4fce78f2"
+    },
+    {
+      "candidate_id": "2019/generativos/paraisooscuro#3",
+      "notes_path": "survey/out/2019/generativos/paraisooscuro/notes.md",
+      "note_sha256": "05b2bfaa1daa26e00c77423b3f143f9d6bdc6de027b5317e75f00cf1aeccf2d5",
+      "evidence_sha256": "74205bc520ea0ddd3f704893d2110d6057281f71ee5d04afac013d840f51653e"
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "origin": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "spacing": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "columns": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      }
+    },
+    "required": [
+      "origin",
+      "spacing",
+      "columns",
+      "rows"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "origin": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "spacing": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "columns": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      }
+    },
+    "required": [
+      "origin",
+      "spacing",
+      "columns",
+      "rows"
+    ],
+    "additionalProperties": false
+  },
+  "access_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "index": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "index"
+    ],
+    "additionalProperties": false
+  },
+  "point_schema": {
+    "type": "array",
+    "prefixItems": [
+      {
+        "type": "number"
+      },
+      {
+        "type": "number"
+      }
+    ],
+    "items": false,
+    "minItems": 2,
+    "maxItems": 2
+  },
+  "behavior": {
+    "construction": "Validate shape/type/domain in field order origin, spacing, columns, rows (vector x before y), then exact count product, then nonempty last coordinate x before y. Copy values, canonicalize all zero origins/counts to +0. Return immutable sequence; size computed, never serialized. No output-sized allocation.",
+    "sequence": "size=columns*rows. i in [0,size): column=i modulo columns; row=(i-column)/columns, exact integer arithmetic. x changes fastest.",
+    "point": "For each axis separately, product=roundBinary64(axisIndex*spacing); coordinate=roundBinary64(origin+product). No FMA or repeated addition. Normalize coordinate zero to +0.",
+    "empty": "Either count zero gives size zero and no valid index. Validate input spacing regardless. Do not evaluate endpoint arithmetic for empty results.",
+    "coordinate_validation": "For nonempty grids evaluate the last x and last y with the specified separate operations. A nonfinite product or sum rejects construction before output. Finite rounding may collapse adjacent positions at large magnitudes.",
+    "ownership": "Immutable sequence detached from input arrays. Semantic pointAt(index) returns a fresh two-number binary64 value. Optional native pointInto(index,out,offset) writes exactly two coordinates after all validation. Invalid access leaves storage unchanged. Internal fields never alias writable output storage.",
+    "native_storage": "Native-only optional optimization: pointInto accepts writable binary64-capable storage, with integral nonnegative offset and room for two values. Index type/domain then bounds then storage/offset validation. float32/PVector buffers are forbidden for this exact route. This is transport, not a second operation or serialized shape.",
+    "units": "Caller-defined planar coordinate units shared by origin/spacing/output. No canvas, axis handedness or drawing transform is implicit; increasing column increases x and increasing row increases y.",
+    "numerics": "IEEE binary64 round-to-nearest ties-to-even on basic add/multiply, separate rounding. Counts <= signed 32-bit max; size/index <= 2^53-1. Native numeric booleans are not numbers. NaN/infinity rejected.",
+    "environment": [],
+    "complexity": "Construction and indexed access O(1) work/storage; complete traversal O(size). Materialization is optional caller work with explicit resource ownership.",
+    "serialization": "Serialize only origin, spacing, columns, rows, matching input_schema; each serialization is detached. Reconstruct through the same validated constructor. Reject an extra size field rather than trust or retain redundant derived state.",
+    "source_conversion": "Example-only: source cell counts must be positive, point count=cell count+1 must fit the axis bound, spacing=binary64(span/cell count). No hidden endpoint-inclusion or span conversion policy.",
+    "numeric_validation": "For JSON-like inputs, reject unknown/missing keys and vector shapes before numeric validation. Check both origin components, both spacing components, columns, rows, in order. JSON Schema integer permits integral number values; booleans are never numeric. All components and native indices must be finite. Different failures within this phase all use INVALID_INPUT.",
+    "integer_validation": "Compute count product without overflow; accept only exact products <= 2^53-1. Use mathematical modulo and quotient for index decomposition before exact index-to-binary64 conversion. Never narrow flat indices to 32 bits.",
+    "native_representations": "Java accepts Byte/Short/Integer/Long/Float/Double numeric values; BigDecimal/BigInteger/custom Number values require explicit caller conversion and are rejected. JavaScript accepts JSON-like passive records/arrays and binary64 output arrays; output slot previous contents are irrelevant, ordinary extensible holes are accepted. Active accessors/proxies are not interchange data and their side effects are outside the contract. Python uses int/float inputs (never bool), and exact builtin list or array(d) output storage."
+  },
+  "errors": {
+    "INVALID_INPUT": "Wrong shape, unknown/missing keys, invalid numeric type/domain, nonfinite component, count outside representable domain.",
+    "GRID_SIZE_OVERFLOW": "Exact product exceeds 2^53-1.",
+    "COORDINATE_OVERFLOW": "Nonempty last-coordinate multiply or add is nonfinite.",
+    "INVALID_INDEX": "Index not a finite safe nonnegative integer (booleans excluded).",
+    "INDEX_OUT_OF_RANGE": "Valid index representation but index >= size.",
+    "INVALID_OUTPUT": "Optional native pointInto storage/offset is not writable binary64-capable space for two coordinates."
+  },
+  "error_order": [
+    "INVALID_INPUT",
+    "GRID_SIZE_OVERFLOW",
+    "COORDINATE_OVERFLOW",
+    "INVALID_INDEX",
+    "INDEX_OUT_OF_RANGE",
+    "INVALID_OUTPUT"
+  ],
+  "parameters": {
+    "origin": {
+      "unit": "coordinate",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Caller placement input; negative origins needed for overscan in pelines."
+    },
+    "spacing": {
+      "unit": "coordinate",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Positive pitch separates position placement from mark length. No common visual range from the current variants."
+    },
+    "columns": {
+      "unit": "points",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "circlesAlpha uses source cell counts requiring +1 conversion; paraisooscuro uses point counts. 32-bit domain is a representation design choice."
+    },
+    "rows": {
+      "unit": "points",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Same count convention as columns; independent axis counts."
+    }
+  },
+  "design_divergences": [
+    "Point counts instead of source-dependent cell counts.",
+    "Compact immutable descriptor instead of host PVector arrays or immediate point drawing.",
+    "Specified row-major indexed binary64 computation rather than unspecified/repeated-addition source float loops.",
+    "Invalid/empty/overflow and representation bounds are explicit library design choices, not measured artistic ranges."
+  ],
+  "exclusions": [
+    "random selection or snapping",
+    "jitter/displacement",
+    "3D lattices",
+    "grid-line/point rendering",
+    "opacity/blend/style",
+    "extent-to-count conversion"
+  ],
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact-safe-integer-index"
+      ],
+      "implementation_status": "portable_core_implemented",
+      "native_status": "validated_cp1_java2d",
+      "reproduction_status": "cp1_example_only",
+      "native_evidence": "evidence/reproductions/cp1-java2d/pde-result.json"
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact-safe-integer-index"
+      ],
+      "implementation_status": "portable_core_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact-safe-integer-index"
+      ],
+      "implementation_status": "portable_core_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact-safe-integer-index"
+      ],
+      "implementation_status": "shared_java_core_available",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    }
+  },
+  "fixtures": "fixtures/operations/regular-grid.json",
+  "reproduction": {
+    "level": "structural",
+    "cases": [
+      "circlesAlpha-3-cells-to-4-points",
+      "paraisooscuro-60-points-per-axis"
+    ],
+    "acceptance": "circlesAlpha: verify cell-to-point count and canvas-span extrema after explicit conversion. paraisooscuro: verify 60x60 count only; exact origin/pitch/endpoints are not established by its note. Row-major order is the library contract, not a source fact. No whole-sketch raster reproduction is claimed; CP1 native rendering is recorded separately in cp1_example.",
+    "cp1_example": {
+      "target": "processing-java",
+      "level": "technique",
+      "decision": "evidence/reproductions/cp1-java2d/decision.md",
+      "edits": "evidence/reproductions/cp1-java2d/result.json",
+      "pde_lifecycle": "evidence/reproductions/cp1-java2d/pde-result.json",
+      "scope": "Actual JAVA2D example/edit/transfer only; motivating corpus baseline suites and other hosts are not certified."
+    }
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "gpt-5.6-sol",
+    "result": "Accepted operation boundary; six clarifications resolved in this contract.",
+    "record": "design/operations/regular-grid-review.md"
+  }
+}

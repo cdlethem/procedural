@@ -1,0 +1,43 @@
+{
+  "status": "accepted-for-execution",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "One private CP5 seven-image JAVA2D investigation, no public implementation acceptance.",
+  "plan": {
+    "path": "evidence/parameter-experiments/cp5-grain/experiment.json",
+    "sha256": "2728c8b0973d115ee8dee2ae983565f159faa91b585a99f9cb1ed1ac5957f1c9"
+  },
+  "source_sha256": {
+    "design/capabilities/grain-evidence-audit.md": "5a7f58babca28374ca51b915438bd54566a39b85ef2d128bddd6a81d21c27c81",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "survey/out/2018/Generativos/puntis/notes.md": "98ad640b63e2ec0872af61406743bd2b5852dd7744301ec74a337ebe0d75430b",
+    "survey/out/2018/Generativos/puntis2/notes.md": "a4b45e254cc656cb3aee8eb6bd6b7f1dfca0a23c56a182d71380ba8a73c09dfe",
+    "survey/out/2018/Generativos/puntis3/notes.md": "9699082e346a3e7f22798f6a932e4c42df28c9435e922365ad2c3c7de59c7e9c",
+    "tools/diagnostics/cp5/GrainChoice.java": "cc8bed6c118e3e2f1f2631427a8785334cacc74d3bb977406a8f4ce04bb4eb52",
+    "tools/diagnostics/cp5/run_grain.py": "40bc3838d3cf05f5ec8936263094d7a9acad9168d4ca3d5f7d12e4bdeef79e05",
+    "evidence/investigations/cp5-grain-distributions.json": "f43e8a7623d2cb778681c4fd39a4b8274890972d7a7b2e3c23b01ed478b58509",
+    "evidence/investigations/cp5-grain-distributions-review.json": "476bb2cdf218ad8827ae9b8168967fb75a6a59a1b7a29499a193b72bb5d77245",
+    "tools/diagnostics/cp5/run_grain_distributions.py": "cbba1ea8ecfbbc441a25f6f0263e93737b087644a7be43c69335571ef1331ba6",
+    "evidence/conformance/quadrant-partition-java.json": "2f87b8f2041b3f3203894c9a0820f3a9f9f6bb4d542b002eddf0f530e77c4395"
+  },
+  "review": [
+    "Root inspected prototype mappings, retained buffers and style reuse, CP4 cell splitting, numeric checks and renderer loop.",
+    "Requested and reviewed triangle containment beyond AABB; cross-product tolerance is fixed-coordinate diagnostic tolerance, not public geometry semantics.",
+    "Root reviewed the executor: source/class hashes, no-overwrite attempt reservation, shared nonblocking Processing lock, 180s process-group deadline, saved progress and partial failure records.",
+    "Numeric preflight passed: 150720 total marks; counts 15680/15680/15680/31360/15680/15680/40960, last across26 triangles.",
+    "Recolor and strokes share baseline object identity and exact geometry hash; denser uniform retains prefix.",
+    "Private nextFloat samples and binary64 mapping differ from Processing float arithmetic; source brightness draws consumed but ignored in visible style to isolate distribution."
+  ],
+  "limitations": [
+    "No new public parameters, recommended ranges or operation claims.",
+    "Offscreen native JAVA2D experiment, not installed PDE lifecycle evidence.",
+    "No source pixel reproduction."
+  ],
+  "preflight_guard": {
+    "outcome": "Stopped before native attempt reservation when final worker clarification changed source hash.",
+    "previous_source_sha256": "0acf415beeb175bf33efa3dfd69e92db70a89320e38417e0928d622c529121eb",
+    "final_source_sha256": "cc8bed6c118e3e2f1f2631427a8785334cacc74d3bb977406a8f4ce04bb4eb52",
+    "review": "Root inspected final triangle-containment key and stream/tolerance clarifications; no algorithm change. No native process or attempt was started.",
+    "numeric_schema_correction": "Final worker clarification placed a descriptive string inside boolean checks. Root moved it to top-level metadata; preflight rejected before attempt reservation. Sampling/renderer unchanged."
+  }
+}

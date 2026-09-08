@@ -1,0 +1,18 @@
+plugins { id 'com.android.library' }
+
+android {
+    namespace 'org.procedurals.android.internal'
+    compileSdkVersion 33
+    buildToolsVersion '30.0.3'
+    defaultConfig { minSdkVersion 29; targetSdkVersion 33 }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    compileOnly files('libs/procedurals-core.jar')
+    compileOnly files('libs/processing-core.jar')
+    compileOnly 'androidx.appcompat:appcompat:1.6.0'
+}

@@ -1,0 +1,40 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Java0.8.0 package: eight editable starters, eleven operations. CP8 payload bytes match accepted native/visual workflow; prior seven examples and JARs preserved. Not registry publication or four-target/full-corpus certification.",
+  "implementation_sha256": {
+    "tools/build_glyph_marks_java.py": "eaa349bcfe6cdc1ede1de56098020f3ae17bc9d25d96df2e81ae8cb0bcddd69d",
+    "docs/glyph-marks.md": "34bc8ab42fd0d6c8bcb4701c4770621d059925ec6f5bff2b8c6e1de14b514310",
+    "docs/installing-glyph-marks.md": "bbcc3c77222f2877b944dda56e34bb12bfdf8a910a2749f2c0b7c09ba99c2278"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp8-java.json": "883ade2ba344027aeffbe734e160b6f1eca89a8ab376161f85e444f4ac7649c0",
+    "evidence/reproductions/cp8-java2d/result.json": "66a604726b58b4473c2eef8a784ca788c27005797d6a2d1a6655014a9290c64f",
+    "evidence/reproductions/cp8-java2d/root-review.json": "e1ab991125fc3d309c31fd19b4311ff10c519ac55a2bb5050d415c8d8c261651",
+    "evidence/distribution/cp7-review.json": "7546c8f763fbca72b58deba700b9474777978cb2149258f579758e14481ada49"
+  },
+  "final_archive": {
+    "path": ".work/dist/cp8/java/procedurals-processing-0.8.0.zip",
+    "sha256": "b5efb5ec6dd0875e19bb9513eeb018d89a001f71addaba36b7348e28c5f0841d"
+  },
+  "checks": {
+    "repository_unittests": 122,
+    "catalog_checker": "passed",
+    "zip_crc": "passed",
+    "archive_members": 50,
+    "unique_safe_members": true,
+    "all_prior_executable_payloads": "byte-identical to accepted CP7 archive",
+    "new_example_font_and_license": "byte-identical to native run-bound inputs",
+    "version_metadata": "only version=8 and prettyVersion=0.8.0 changed",
+    "new_native_states": 17,
+    "new_native_images_directly_viewed": 9
+  },
+  "limitations": [
+    "No registry publication or human usability session.",
+    "Glyph workflow JAVA2D and bundled DejaVu font only; other targets/fonts unvalidated.",
+    "Deeper bundled evidence links may require repository checkout.",
+    "No glyph-outline/text-layout core operation added."
+  ],
+  "builder_review": "Root independently bound source archive to accepted CP7 review, checked every archive member against old payloads or current document/native bindings, and verified CRC; builder staging status alone is not release acceptance."
+}

@@ -1,0 +1,22 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "scope": "Java core semantics only; native renderer/workload and distribution pending",
+  "core_sha256": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+  "conformance": "evidence/conformance/line-pool-java.json",
+  "growth": "evidence/conformance/line-pool-growth.json",
+  "verified": [
+    "Root read complete transition, validation, access, RNG and storage implementation against frozen contract",
+    "Removed per-cut temporary objects without changing exact fixture results",
+    "All14 checked-in fixtures consumed directly including full outputs and typed error details",
+    "Native ownership, atomic failed output, index precedence, prohibited carriers and signed-zero export checks pass",
+    "9000attempt independent object-list oracle comparison covers storage growth and repeated cuts",
+    "Corrected dividedAt documentation to include pre-divided continuation children"
+  ],
+  "limits": [
+    "No renderer or workload acceptance yet",
+    "No new shipped operation or starter yet",
+    "Other targets deferred; exact elementary math required",
+    "No source RNG or pixel equivalence claimed"
+  ]
+}

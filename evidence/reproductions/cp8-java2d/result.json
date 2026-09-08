@@ -1,0 +1,429 @@
+{
+  "status": "passed",
+  "scope": "Staged GlyphMarks native JAVA2D workflow: actual controls, glyph/shape anchors, explicit DejaVu font, resets and save. Technique-level visual review separate; not a delivered package or source-pixel reproduction.",
+  "input_sha256": {
+    "tools/check_glyph_marks_pde.py": "6ada286a3af25b6842cbe17be41de563c9cfb7b7ee0808f7b3ec189346c9219c",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/examples/cp8-first/GlyphMarks/code/procedurals.jar": "2cd36310135e4d74f748e33cf062666d4abb6a8d9844620f921d7c0e7936440a",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    ".work/examples/cp8-first/GlyphMarks/GlyphComposition.java": "fd83d036e43942434fb588dcdc7a8e9fb66e3da36627fdc48f3c6d8fed5cbc93",
+    ".work/examples/cp8-first/GlyphMarks/GlyphFont.java": "d5bb50f46e632927904b1f00c40761ea6049e0dc2eddc83d95fc64a4f2bba988",
+    "packages/java/examples/GlyphMarks/GlyphComposition.java": "fd83d036e43942434fb588dcdc7a8e9fb66e3da36627fdc48f3c6d8fed5cbc93",
+    "packages/java/examples/GlyphMarks/GlyphFont.java": "d5bb50f46e632927904b1f00c40761ea6049e0dc2eddc83d95fc64a4f2bba988",
+    "packages/java-processing/examples/GlyphMarks/GlyphMarks.pde": "2d6792238cb5f7bfeb6023c86fa6a64f7deb96e1ccd991a5dfb939d65df2bc81",
+    "tests/native/GlyphCompositionNative.java": "cf2c65afd4c1b7ee46dcd283d656cff8abbf442fb72e253379b8d60a376dbfc4",
+    "tests/native/GlyphFontNative.java": "e179d49e649d6b921745a5ddeb626694b8b5f3768503897fc350e6a189475224",
+    ".work/examples/cp8-first/GlyphMarks/GlyphMarks.pde": "2d6792238cb5f7bfeb6023c86fa6a64f7deb96e1ccd991a5dfb939d65df2bc81",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    ".work/examples/cp8-first/GlyphMarks/data/GlyphMarks.ttf": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+    ".work/examples/cp8-first/GlyphMarks/data/FONT-LICENSE.txt": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+    "tools/diagnostics/cp8/GlyphMarksProbe.java": "b7be567df9498fcba0e80d186507476cba680b1b45486720841d554447bb67d2",
+    "tools/run_glyph_marks_pde.py": "a256ea39ae70cc2acadd4ebff9eaef2c5ca1ace70b39ea66fc43a7a3752d36b5",
+    ".work/build/cp8-pde-staged/result.json": "ceaea3562f594fd1f26d3c4617d8a38ebaebe957f73dc6b66e473d4039b1e79c",
+    ".work/examples/cp8-first/GlyphMarks/staging.json": "fece352a07ec04938c3bd2b6baa5d16a68d9409f650f66323ac63cdfc8f16225",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/server/libjvm.so": "11e5d09f442e42bddc4619b6eed829eaf3952158a5f77c797a58d558fae21738",
+    "tools/run_profile_marks_pde.py": "037a4223211db959d4b847d7ccf77b5e8f8fb9fbd7873f786d821127abfa49c9",
+    "design/capabilities/cp8-native-acceptance.md": "83b3d0114de1168e56cf7eac03c38d5221c0e38191e98d117c316bbe156cdf39",
+    ".work/build/cp8-pde-staged/GlyphCompositionNative.class": "a5a239cecb18e23ce67b9e65a00349c2311545be0125a24bcb1897cf22288344",
+    ".work/build/cp8-pde-staged/GlyphMarks.class": "2c50b9b416a855a217de8af7a948281dfbca42bc2add2ff4b508593ff822cfa0",
+    ".work/build/cp8-pde-staged/PreprocessSketch.class": "2fc98864fe0e6ffe6e00204da0071fb0897d9799e8857c9b2f38887b444fa70d",
+    ".work/build/cp8-pde-staged/org/procedurals/examples/glyphmarks/GlyphComposition.class": "9916bb8a0fd7b6060a0e87017caf05fa689a6671354a987ce7e50c5148bcd844",
+    ".work/build/cp8-pde-staged/org/procedurals/examples/glyphmarks/GlyphFont$GlyphFontException.class": "95d47a7f201d9bd8c2761985bd42df8799d21372762014b8ee2058bd7fee1a3a",
+    ".work/build/cp8-pde-staged/org/procedurals/examples/glyphmarks/GlyphFont.class": "113f8464aee6583129b4e831ff949a24ac23b7010bccadcd516f941e79f9d9fb",
+    ".work/build/cp8-pde-staged/org/procedurals/examples/glyphmarks/GlyphFontNative$Action.class": "49a6bafdcc8b73faaec9c44def24483ae2f3cb10bdfeb0d6ef0893c5fc79c341",
+    ".work/build/cp8-pde-staged/org/procedurals/examples/glyphmarks/GlyphFontNative.class": "435ebc118950bf7c1398dab5824c010217d757a55d0f041212da41984772cb9c",
+    ".work/build/cp8-probe-reviewed/GlyphMarksProbe.class": "128809b1dee4f27d8e60d2dc98556c8582f66056e732ce23e28af39ed052d02e",
+    "evidence/reproductions/cp8-java2d/plan.json": "950b7ce2396a739ff8c30183fd9b4e24ec53469c6c6219a64bc9148cd7c34943"
+  },
+  "visual_review": "pending",
+  "command": [
+    "xvfb-run",
+    "-a",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+    "-Duser.home=/home/colin/dev/procedural/.work/reproductions/cp8-java2d/home",
+    "-Djava.io.tmpdir=/home/colin/dev/procedural/.work/reproductions/cp8-java2d/tmp",
+    "-cp",
+    "/home/colin/dev/procedural/.work/build/cp8-pde-staged:/home/colin/dev/procedural/.work/build/cp8-probe-reviewed:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar:/home/colin/dev/procedural/.work/examples/cp8-first/GlyphMarks/code/procedurals.jar",
+    "GlyphMarksProbe",
+    "/home/colin/dev/procedural/.work/reproductions/cp8-java2d",
+    "/home/colin/dev/procedural/.work/examples/cp8-first/GlyphMarks/code/procedurals.jar"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "native": {
+    "status": "passed",
+    "frames": 17,
+    "key_events": 17,
+    "keys": "n0d0g0m0c0v0f0r0s",
+    "total_text_calls": 113280,
+    "total_ellipse_calls": 7680,
+    "total_fill_calls": 120960,
+    "font": {
+      "path": "/home/colin/dev/procedural/.work/reproductions/cp8-java2d/data/GlyphMarks.ttf",
+      "sha256": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+      "pfont_name": "DejaVu Sans",
+      "postscript_name": "DejaVuSans",
+      "awt_family": "DejaVu Sans",
+      "awt_name": "DejaVu Sans",
+      "required_glyphs": "0123456789ABCDEFGHIJ"
+    },
+    "renderer_class": "processing.awt.PGraphicsJava2D",
+    "expected_core_jar": "/home/colin/dev/procedural/.work/examples/cp8-first/GlyphMarks/code/procedurals.jar",
+    "core_code_source": "/home/colin/dev/procedural/.work/examples/cp8-first/GlyphMarks/code/procedurals.jar",
+    "palette_code_source": "/home/colin/dev/procedural/.work/examples/cp8-first/GlyphMarks/code/procedurals.jar",
+    "composition_code_source": "/home/colin/dev/procedural/.work/build/cp8-pde-staged",
+    "font_loader_code_source": "/home/colin/dev/procedural/.work/build/cp8-pde-staged",
+    "save_quiet_ms": 300,
+    "states": [
+      {
+        "id": "baseline",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "83fdd132d01d341a35b6ea4b61a40d10850d24b9bb3073d5b359e37e93e25bed",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "short",
+        "stamps": 3840,
+        "text_calls": 3840,
+        "ellipse_calls": 0,
+        "fill_calls": 3840,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "a900310afdad84d77103213f2f531263df935bd1a65a32a7f12a996056dfee00",
+        "same_composition_as_previous": true
+      },
+      {
+        "id": "reset-short",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "83fdd132d01d341a35b6ea4b61a40d10850d24b9bb3073d5b359e37e93e25bed",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "sparse",
+        "stamps": 1920,
+        "text_calls": 1920,
+        "ellipse_calls": 0,
+        "fill_calls": 1920,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "1a653af418386879f0f4e3b846b8befa9c0a2346dba1bdb7aa72770d500f3e33",
+        "same_composition_as_previous": true
+      },
+      {
+        "id": "reset-sparse",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "83fdd132d01d341a35b6ea4b61a40d10850d24b9bb3073d5b359e37e93e25bed",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "letters",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "776edf7214f9053d5e171c846089d62bdb6f61afd0f39beddde24f2355a886a3",
+        "same_composition_as_previous": true
+      },
+      {
+        "id": "reset-letters",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "83fdd132d01d341a35b6ea4b61a40d10850d24b9bb3073d5b359e37e93e25bed",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "dots",
+        "stamps": 7680,
+        "text_calls": 0,
+        "ellipse_calls": 7680,
+        "fill_calls": 7680,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "572005d32ef8dd0528b65466bc724ae7a76d237cf6a3288a342a559a6c1dfd09",
+        "same_composition_as_previous": true
+      },
+      {
+        "id": "reset-dots",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "83fdd132d01d341a35b6ea4b61a40d10850d24b9bb3073d5b359e37e93e25bed",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "colour",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "570fe584cc0e999110b8ddeb6df5a6ae96da85a3bed469a4b4020e659c88d8bb",
+        "same_composition_as_previous": true
+      },
+      {
+        "id": "reset-colour",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "83fdd132d01d341a35b6ea4b61a40d10850d24b9bb3073d5b359e37e93e25bed",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "distance",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "60ac53628335abcaed7c7243fa260d53a424054d1cf4bdc56ba4c1519231916f",
+        "actual_stamp_sha256": "92a65ac47648c958a794ef92fe316cf812a564dfb23abf32508a432324b35c40",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "reset-distance",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "83fdd132d01d341a35b6ea4b61a40d10850d24b9bb3073d5b359e37e93e25bed",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "field-scale",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "27e92a950636dffc5d2123721d047e97ff02edfe6e6909a7d9ecefd35bbd986d",
+        "actual_stamp_sha256": "d714fac45e6a2f4de43b95c0577f2cd2c2256cafc6ae7e1c73ea00d50dc28da3",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "reset-field-scale",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "83fdd132d01d341a35b6ea4b61a40d10850d24b9bb3073d5b359e37e93e25bed",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "new-seed",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "47080ab93507b354e6d6e79fe3c5dc94e5f1de6ce683bb4270f00abb402a846a",
+        "actual_stamp_sha256": "d737c9141fc465cb87c6c4033949a36c1626e5f5c39c7c4c61d30e46012bd9bb",
+        "same_composition_as_previous": false
+      },
+      {
+        "id": "reset-seed",
+        "stamps": 7680,
+        "text_calls": 7680,
+        "ellipse_calls": 0,
+        "fill_calls": 7680,
+        "composition_sha256": "1eb9a8df178be4f671c62641c91dd58c2617174db47375775c56ac6d8a928048",
+        "actual_stamp_sha256": "83fdd132d01d341a35b6ea4b61a40d10850d24b9bb3073d5b359e37e93e25bed",
+        "same_composition_as_previous": false
+      }
+    ]
+  },
+  "images": {
+    "baseline": {
+      "path": ".work/reproductions/cp8-java2d/baseline.png",
+      "sha256": "cd2806f514ec935aa2680f34c076349c90cc647880112ce4f96b698fa2e2810b",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "short": {
+      "path": ".work/reproductions/cp8-java2d/short.png",
+      "sha256": "f9e0a0d2720a292191633a4a6d2706b5b3b1af7cda3d673cf7653ef8ca815a27",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "reset-short": {
+      "path": ".work/reproductions/cp8-java2d/reset-short.png",
+      "sha256": "cd2806f514ec935aa2680f34c076349c90cc647880112ce4f96b698fa2e2810b",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "sparse": {
+      "path": ".work/reproductions/cp8-java2d/sparse.png",
+      "sha256": "ccb96a576c30d65652cbee29ef8a40a524411228592e04b455df3b7b556711a1",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "reset-sparse": {
+      "path": ".work/reproductions/cp8-java2d/reset-sparse.png",
+      "sha256": "cd2806f514ec935aa2680f34c076349c90cc647880112ce4f96b698fa2e2810b",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "letters": {
+      "path": ".work/reproductions/cp8-java2d/letters.png",
+      "sha256": "5f5b34b9b5d434048f41e5f49a5290c4049ba0be47cf3590c57ddf45e183df44",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "reset-letters": {
+      "path": ".work/reproductions/cp8-java2d/reset-letters.png",
+      "sha256": "cd2806f514ec935aa2680f34c076349c90cc647880112ce4f96b698fa2e2810b",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "dots": {
+      "path": ".work/reproductions/cp8-java2d/dots.png",
+      "sha256": "a3ed43efc638c4b74a23dd6359c840227c758c06a8428df2a2d502c4b004a009",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "reset-dots": {
+      "path": ".work/reproductions/cp8-java2d/reset-dots.png",
+      "sha256": "cd2806f514ec935aa2680f34c076349c90cc647880112ce4f96b698fa2e2810b",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "colour": {
+      "path": ".work/reproductions/cp8-java2d/colour.png",
+      "sha256": "4d05c9a8bfd1598fb5811d0cb65e8d9527d26de3e498dc7c328d2fd5ad129c04",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "reset-colour": {
+      "path": ".work/reproductions/cp8-java2d/reset-colour.png",
+      "sha256": "cd2806f514ec935aa2680f34c076349c90cc647880112ce4f96b698fa2e2810b",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "distance": {
+      "path": ".work/reproductions/cp8-java2d/distance.png",
+      "sha256": "092f22d0986720508f35e1d20758195598b46055ee9bedb1fcd4dfc1c4c1822c",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "reset-distance": {
+      "path": ".work/reproductions/cp8-java2d/reset-distance.png",
+      "sha256": "cd2806f514ec935aa2680f34c076349c90cc647880112ce4f96b698fa2e2810b",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "field-scale": {
+      "path": ".work/reproductions/cp8-java2d/field-scale.png",
+      "sha256": "62b8b2421cf520b21bcf630a81b8566992c5246b67fe93c099c62c3d1c6a852a",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "reset-field-scale": {
+      "path": ".work/reproductions/cp8-java2d/reset-field-scale.png",
+      "sha256": "cd2806f514ec935aa2680f34c076349c90cc647880112ce4f96b698fa2e2810b",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "new-seed": {
+      "path": ".work/reproductions/cp8-java2d/new-seed.png",
+      "sha256": "05410217681048b8a2b45d40cc562925c832db9edbaac39ae703c4a2b2291037",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    },
+    "reset-seed": {
+      "path": ".work/reproductions/cp8-java2d/reset-seed.png",
+      "sha256": "cd2806f514ec935aa2680f34c076349c90cc647880112ce4f96b698fa2e2810b",
+      "width": 640,
+      "height": 640,
+      "alpha_opaque": true
+    }
+  },
+  "saved_image": {
+    "path": ".work/reproductions/cp8-java2d/glyph-marks-0018.png",
+    "sha256": "cd2806f514ec935aa2680f34c076349c90cc647880112ce4f96b698fa2e2810b",
+    "width": 640,
+    "height": 640,
+    "alpha_opaque": true
+  },
+  "reset_pixels_equal": true,
+  "save_pixels_equal": true,
+  "input_sha256_after": {
+    "tools/check_glyph_marks_pde.py": "6ada286a3af25b6842cbe17be41de563c9cfb7b7ee0808f7b3ec189346c9219c",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/examples/cp8-first/GlyphMarks/code/procedurals.jar": "2cd36310135e4d74f748e33cf062666d4abb6a8d9844620f921d7c0e7936440a",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    ".work/examples/cp8-first/GlyphMarks/GlyphComposition.java": "fd83d036e43942434fb588dcdc7a8e9fb66e3da36627fdc48f3c6d8fed5cbc93",
+    ".work/examples/cp8-first/GlyphMarks/GlyphFont.java": "d5bb50f46e632927904b1f00c40761ea6049e0dc2eddc83d95fc64a4f2bba988",
+    "packages/java/examples/GlyphMarks/GlyphComposition.java": "fd83d036e43942434fb588dcdc7a8e9fb66e3da36627fdc48f3c6d8fed5cbc93",
+    "packages/java/examples/GlyphMarks/GlyphFont.java": "d5bb50f46e632927904b1f00c40761ea6049e0dc2eddc83d95fc64a4f2bba988",
+    "packages/java-processing/examples/GlyphMarks/GlyphMarks.pde": "2d6792238cb5f7bfeb6023c86fa6a64f7deb96e1ccd991a5dfb939d65df2bc81",
+    "tests/native/GlyphCompositionNative.java": "cf2c65afd4c1b7ee46dcd283d656cff8abbf442fb72e253379b8d60a376dbfc4",
+    "tests/native/GlyphFontNative.java": "e179d49e649d6b921745a5ddeb626694b8b5f3768503897fc350e6a189475224",
+    ".work/examples/cp8-first/GlyphMarks/GlyphMarks.pde": "2d6792238cb5f7bfeb6023c86fa6a64f7deb96e1ccd991a5dfb939d65df2bc81",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    ".work/examples/cp8-first/GlyphMarks/data/GlyphMarks.ttf": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+    ".work/examples/cp8-first/GlyphMarks/data/FONT-LICENSE.txt": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+    "tools/diagnostics/cp8/GlyphMarksProbe.java": "b7be567df9498fcba0e80d186507476cba680b1b45486720841d554447bb67d2",
+    "tools/run_glyph_marks_pde.py": "a256ea39ae70cc2acadd4ebff9eaef2c5ca1ace70b39ea66fc43a7a3752d36b5",
+    ".work/build/cp8-pde-staged/result.json": "ceaea3562f594fd1f26d3c4617d8a38ebaebe957f73dc6b66e473d4039b1e79c",
+    ".work/examples/cp8-first/GlyphMarks/staging.json": "fece352a07ec04938c3bd2b6baa5d16a68d9409f650f66323ac63cdfc8f16225",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/server/libjvm.so": "11e5d09f442e42bddc4619b6eed829eaf3952158a5f77c797a58d558fae21738",
+    "tools/run_profile_marks_pde.py": "037a4223211db959d4b847d7ccf77b5e8f8fb9fbd7873f786d821127abfa49c9",
+    "design/capabilities/cp8-native-acceptance.md": "83b3d0114de1168e56cf7eac03c38d5221c0e38191e98d117c316bbe156cdf39",
+    ".work/build/cp8-pde-staged/GlyphCompositionNative.class": "a5a239cecb18e23ce67b9e65a00349c2311545be0125a24bcb1897cf22288344",
+    ".work/build/cp8-pde-staged/GlyphMarks.class": "2c50b9b416a855a217de8af7a948281dfbca42bc2add2ff4b508593ff822cfa0",
+    ".work/build/cp8-pde-staged/PreprocessSketch.class": "2fc98864fe0e6ffe6e00204da0071fb0897d9799e8857c9b2f38887b444fa70d",
+    ".work/build/cp8-pde-staged/org/procedurals/examples/glyphmarks/GlyphComposition.class": "9916bb8a0fd7b6060a0e87017caf05fa689a6671354a987ce7e50c5148bcd844",
+    ".work/build/cp8-pde-staged/org/procedurals/examples/glyphmarks/GlyphFont$GlyphFontException.class": "95d47a7f201d9bd8c2761985bd42df8799d21372762014b8ee2058bd7fee1a3a",
+    ".work/build/cp8-pde-staged/org/procedurals/examples/glyphmarks/GlyphFont.class": "113f8464aee6583129b4e831ff949a24ac23b7010bccadcd516f941e79f9d9fb",
+    ".work/build/cp8-pde-staged/org/procedurals/examples/glyphmarks/GlyphFontNative$Action.class": "49a6bafdcc8b73faaec9c44def24483ae2f3cb10bdfeb0d6ef0893c5fc79c341",
+    ".work/build/cp8-pde-staged/org/procedurals/examples/glyphmarks/GlyphFontNative.class": "435ebc118950bf7c1398dab5824c010217d757a55d0f041212da41984772cb9c",
+    ".work/build/cp8-probe-reviewed/GlyphMarksProbe.class": "128809b1dee4f27d8e60d2dc98556c8582f66056e732ce23e28af39ed052d02e",
+    "evidence/reproductions/cp8-java2d/plan.json": "950b7ce2396a739ff8c30183fd9b4e24ec53469c6c6219a64bc9148cd7c34943"
+  }
+}

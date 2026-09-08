@@ -1,0 +1,89 @@
+import java.util.*;
+import org.procedurals.internal.DrawingValues;
+
+public class DrawingNative {
+    static List<Object> list(Object... values) { return new ArrayList<Object>(Arrays.asList(values)); }
+    static Map<String,Object> map(Object... values) {
+        Map<String,Object> result=new LinkedHashMap<String,Object>();
+        for(int i=0;i<values.length;i+=2) result.put((String)values[i],values[i+1]);
+        return result;
+    }
+    static String bits32(Object value) { return String.format(Locale.ROOT,"%08x",Float.floatToRawIntBits(((Number)value).floatValue())); }
+    static String bits64(Object value) { return String.format(Locale.ROOT,"%016x",Double.doubleToRawLongBits(((Number)value).doubleValue())); }
+    static void equal(Object a,Object b) {
+        if(a instanceof Number && b instanceof Number) {
+            if(Double.doubleToRawLongBits(((Number)a).doubleValue())!=Double.doubleToRawLongBits(((Number)b).doubleValue())) throw new AssertionError(a+" != "+b);
+        } else if(a instanceof Map && b instanceof Map) {
+            Map<?,?> x=(Map<?,?>)a,y=(Map<?,?>)b;
+            if(!x.keySet().equals(y.keySet())) throw new AssertionError("keys: "+x.keySet()+" != "+y.keySet());
+            for(Object key:x.keySet()) equal(x.get(key),y.get(key));
+        } else if(a instanceof List && b instanceof List) {
+            List<?> x=(List<?>)a,y=(List<?>)b;
+            if(x.size()!=y.size()) throw new AssertionError("length");
+            for(int i=0;i<x.size();i++) equal(x.get(i),y.get(i));
+        } else if(!Objects.equals(a,b)) throw new AssertionError(a+" != "+b);
+    }
+    static void normalized(String id,Object env,Object command,Object expected) {
+        Map<String,Object> result;
+        try {
+            result=DrawingValues.normalizeCommand(command,DrawingValues.validateEnvironment(env));
+            List<Object> bits=new ArrayList<Object>();
+            for(Object item:(List<?>)result.get("points")) {
+                List<?> p=(List<?>)item;bits.add(list(bits32(p.get(0)),bits32(p.get(1))));
+            }
+            result.put("point_bits_hex",bits);result.put("alpha64_bits_hex",bits64(result.get("alpha64")));
+            if(result.containsKey("width")) result.put("width_bits_hex",bits32(result.get("width")));
+        } catch(DrawingValues.DrawingError error) { result=map("outcome",error.code); }
+        try { equal(result,expected); } catch(AssertionError e) { throw new AssertionError(id+": "+e); }
+    }
+    static double[][] points(Object value) {
+        List<?> source=(List<?>)value;double[][] result=new double[source.size()][2];
+        for(int i=0;i<result.length;i++) {
+            List<?> p=(List<?>)source.get(i);result[i][0]=((Number)p.get(0)).doubleValue();result[i][1]=((Number)p.get(1)).doubleValue();
+        }
+        return result;
+    }
+    static void topology(String id,Object canonical,Object converted,boolean before,boolean after) {
+        if(DrawingValues.strictlyConvex(points(canonical))!=before || DrawingValues.strictlyConvex(points(converted))!=after) throw new AssertionError(id);
+    }
+    static void conversion(String id,double input,String expected) {
+        if(!bits32(DrawingValues.binary32(input)).equals(expected)) throw new AssertionError(id);
+    }
+    static void invalid(Object value,boolean environment) {
+        try {
+            if(environment) DrawingValues.validateEnvironment(map("width",value,"height",640,"density",1,"background",0));
+            else DrawingValues.normalizeCommand(map("kind","segment2","from",list(0,0),"to",list(1,1),"rgb",0,"opacity8",128,"width",value,"cap","round"),DrawingValues.validateEnvironment(map("width",640,"height",640,"density",1,"background",0)));
+        } catch(DrawingValues.DrawingError e) {
+            equal(e.code,environment?"INVALID_ENVIRONMENT":"INVALID_COMMAND");return;
+        }
+        throw new AssertionError("accepted invalid input "+value);
+    }
+    @SuppressWarnings("unchecked")
+    public static void main(String[] args) {
+        /* SHARED_CASES */
+        for(Object invalid:new Object[]{Boolean.TRUE,"1",Double.NaN,Double.POSITIVE_INFINITY}) { invalid(invalid,true);invalid(invalid,false); }
+        invalid(0,true);invalid(2049,true);invalid(0,false);
+        invalid(java.math.BigDecimal.ONE,true);
+        invalid(new java.util.concurrent.atomic.AtomicInteger(1),true);
+        Number custom=new Number() {
+            public int intValue(){throw new AssertionError("custom conversion");}
+            public long longValue(){throw new AssertionError("custom conversion");}
+            public float floatValue(){throw new AssertionError("custom conversion");}
+            public double doubleValue(){throw new AssertionError("custom conversion");}
+        };
+        invalid(custom,true);
+        equal(DrawingValues.validateEnvironment(map("width",java.math.BigInteger.valueOf(640),"height",320,"density",1,"background",0)).get("width"),640);
+        Map<String,Object> inputEnv=map("width",640,"height",320,"density",1,"background",0);
+        Map<String,Object> env=DrawingValues.validateEnvironment(inputEnv);inputEnv.put("width",1);equal(env.get("width"),640);
+        Map<String,Object> input=map("kind","segment2","from",list(0,0),"to",list(1,2),"rgb",1193046,"opacity8",128,"width",1,"cap","round");
+        Map<String,Object> result=DrawingValues.normalizeCommand(input,env);
+        ((List<Object>)((List<?>)result.get("points")).get(0)).set(0,99);
+        ((List<Object>)result.get("channels")).set(0,99);
+        equal(input.get("from"),list(0,0));
+        Map<String,Object> repeated=DrawingValues.normalizeCommand(input,env);
+        equal(((List<?>)repeated.get("points")).get(0),list(0,0));
+        equal(repeated.get("channels"),list(18,52,86));equal(repeated.get("opacity8"),128);
+        equal(bits64(repeated.get("alpha64")),"3fe0101010101010");
+        System.out.println("{\"language\":\"java\",\"normalized_cases\":__NORMALIZED_COUNT__,\"exact_topology_cases\":__TOPOLOGY_COUNT__,\"conversion_cases\":__CONVERSION_COUNT__,\"ownership_and_invalid_inputs\":true,\"scope\":\"pure validator only; no lifecycle or adapter claim\"}");
+    }
+}

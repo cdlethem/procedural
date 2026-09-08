@@ -1,0 +1,448 @@
+{
+  "id": "topology.seeded-endpoint-branches-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "capability": "CP6",
+  "description": "Retain a bounded breadth-first endpoint branch tree from an explicit root, portable seed, and ordered generation rules. It computes segment geometry and ancestry only.",
+  "decision_cluster": "topology.seeded-endpoint-branches-2d",
+  "capability_decision": "design/capabilities/cp6-branching-selection.md",
+  "design_review": "design/operations/branch-tree-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/arbolito3#1",
+      "notes_path": "survey/out/2018/Generativos/arbolito3/notes.md",
+      "note_sha256": "bc278131e84561f22c5f3eb479b9ff458df97f1a9259a1ff800f62d17d9f9958",
+      "evidence_sha256": "ad37ff004fefcc57f5e7a7a5cd9884b16715dca1a26c72c6cfd60b0f881662d4",
+      "upstream_pde_sha256": "b4deb6f013af07c9b436194b040d886c9eb0d059fd45c783acb11e9e6237010f",
+      "relationship": "Capability-dependency admission for independently specified ordered endpoint expansion with ancestry. The source two child opportunities, terminal state and carried attributes motivate retained topology; forest placement, source global stream, colour drift, styles and tips remain outside."
+    },
+    {
+      "candidate_id": "2018/Generativos/arbolito4#0",
+      "notes_path": "survey/out/2018/Generativos/arbolito4/notes.md",
+      "note_sha256": "d9fed9e20763c254e5ae4954995ab721684fdd98222f392dbe895479d1f6c899",
+      "evidence_sha256": "228843be3bf1625bd2220c801911d0f6d974d2f1d9676e28446b5c14f219be3d",
+      "upstream_pde_sha256": "cda8512f87103aaf75d4114fcfb1e33bf8e3c47fe77641df9aef77f42c492cc0",
+      "relationship": "Capability-dependency admission for independently specified ordered independent child slots, shared per-parent child scale and endpoint attachment. The public breadth-first stream deliberately diverges from the source global Processing/DFS schedule, nested shrink law, colour draws and rendering."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "seed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "root": {
+        "$ref": "#/$defs/root"
+      },
+      "rules": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/rule"
+        }
+      },
+      "maxSegments": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 357913941,
+        "description": "Includes the root. This is a six-binary64-plus-three-int32 packed-storage representation ceiling, not a work or artistic recommendation."
+      }
+    },
+    "required": [
+      "seed",
+      "root",
+      "rules",
+      "maxSegments"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "pair": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "closedNonnegativeInterval": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "number",
+            "minimum": 0
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "closedInterval": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "root": {
+        "type": "object",
+        "properties": {
+          "origin": {
+            "$ref": "#/$defs/pair"
+          },
+          "heading": {
+            "type": "number"
+          },
+          "length": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "origin",
+          "heading",
+          "length"
+        ],
+        "additionalProperties": false
+      },
+      "slot": {
+        "type": "object",
+        "properties": {
+          "probability": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "turn": {
+            "$ref": "#/$defs/closedInterval"
+          }
+        },
+        "required": [
+          "probability",
+          "turn"
+        ],
+        "additionalProperties": false
+      },
+      "rule": {
+        "type": "object",
+        "properties": {
+          "lengthScale": {
+            "$ref": "#/$defs/closedNonnegativeInterval"
+          },
+          "slots": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/slot"
+            }
+          }
+        },
+        "required": [
+          "lengthScale",
+          "slots"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "segments": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 357913941,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "headings": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 357913941,
+        "items": {
+          "type": "number"
+        }
+      },
+      "lengths": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 357913941,
+        "items": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "parents": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 357913941,
+        "items": {
+          "type": "integer",
+          "minimum": -1,
+          "maximum": 357913940
+        }
+      },
+      "generations": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 357913941,
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 357913940
+        }
+      },
+      "childCounts": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 357913941,
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 357913940
+        }
+      }
+    },
+    "required": [
+      "segments",
+      "headings",
+      "lengths",
+      "parents",
+      "generations",
+      "childCounts"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "branch-tree-output",
+  "output_invariants": "All six arrays have N equal entries, with 1<=N<=maxSegments. Every coordinate, heading and nominal length is finite binary64 with completed zeros canonical +0; every nominal length is nonnegative. Segment i is [startX,startY,endX,endY]. Root i=0 has parent=-1 and generation=0. Each later segment has parent<i, generation=parent.generation+1, and start bits exactly equal its parent end bits. childCounts[i] equals the actual number of direct parent references to i and therefore 0<=childCounts[i]<=N-1. Order is breadth-first retained append order, not depth-first source order. Output owns no seed/config/RNG state, style, terminal mark or reconstructed tree.",
+  "behavior": {
+    "input": "Input has exactly seed,root,rules,maxSegments. Validate outer passive record/keys; seed; root record/keys; root origin pair then x/y; heading; length; rules outer List; then each rule in increasing list order: record/keys, lengthScale pair then lower/upper endpoint, slots outer List, then every slot in increasing order: record/keys, probability, turn pair then lower/upper endpoint; finally maxSegments. Every accepted number is finite binary64 and never bool. Seed/maxSegments accept integral finite carriers in their stated domains before narrowing. Scale endpoints are nonnegative and probability is closed[0,1]; origin, heading and turn endpoints may be any finite binary64; root length is nonnegative. Each lengthScale and turn interval must also satisfy its first endpoint<=its second endpoint; this cross-field requirement is INVALID_INPUT and cannot be expressed by the Draft 2020-12 pair schema alone. Normalize accepted zero signs to +0. All static data, including unused later rules, validates before root arithmetic, output-sized allocation or RNG initialization. No defaults.",
+    "construction": "After complete static validation, compute the root segment with parentIndex=-1 and generation=0. Visit parents in increasing retained index order, including children appended earlier by preceding parents. A parent whose generation is outside rules consumes no units. Otherwise consume exactly one unit for that rule shared per-parent scale, including when its slots list is empty. For each slot in declared order consume exactly one gate unit even when probability is0 or1; it succeeds iff gate<probability. A failure consumes no angle. On success, check maxSegments before another draw or child arithmetic, consume exactly one angle unit, compute/validate and append the child immediately, then increment the parent child count. Children are visited only later through the growing retained list; no recursive descent, retry, invisible/style draw or terminal shrink draw occurs.",
+    "rule_prefix": "For identical seed/root and identical existing rules, appending later rules preserves geometry, headings, nominal lengths, parent indices and generations for every previous node when both calls succeed. maxSegments need not be equal when neither call fails capacity; either successful call may reach capacity exactly. Former leaves may acquire children, so childCounts, terminal membership, full output and output-array prefix equality are not promised. Changing only a later rule preserves earlier-level geometry under the same condition. A rule expression normalized by total depth is a changed existing rule and forfeits this guarantee. Altering early slots/gates may shift subsequent stream consumption and has no broader locality promise.",
+    "intervals": "For each consumed unit t, sample scale or turn by L(a,b,t). t=0 returns canonical a and t=1 returns canonical b. Otherwise, when a and b have strictly opposite signs, raw=round64(round64(a*round64(1-t))+round64(b*t)); otherwise raw=round64(a+round64(round64(b-a)*t)). Clamp raw to the closed finite endpoint interval [min(a,b),max(a,b)], then canonicalize zero. Apply no FMA, reassociation, binary32 conversion, interval shortcut or skipped unit for constant endpoints.",
+    "segment_numerics": "For a successful child after its angle draw, compute length=round64(parent.length*scale), then heading=round64(parent.heading+turn). Its start is the exact retained parent endpoint. For root and child segments separately compute dx=round64(hostCos(heading)*length), dy=round64(hostSin(heading)*length), endX=round64(startX+dx), endY=round64(startY+dy). Check finite results in order length, heading, dx, dy, endX, endY. A root dynamic failure carries parentIndex=-1 and slotIndex=-1. A child failure carries its retained parent index and successful slot index. Do not normalize heading; coordinates use x right/y down, so positive turn is clockwise in a conventional screen drawing. Coincident endpoints and zero lengths remain valid when all stated computations are finite. Canonicalize each completed scalar zero to +0 before storing or using it as a retained attribute. For a conforming finite bounded sine/cosine, delta_x/delta_y overflow is unreachable after finite length/heading; those defensive stages need a proof of unreachability rather than fabricated finite-input witnesses.",
+    "limits": "maxSegments includes root and bounds retained nodes, not all validated input rules/slots or total slot visits. It is a representation ceiling, not an allocation, latency, runtime, or artistic guarantee. If a successful slot would append above capacity, raise SEGMENT_LIMIT_EXCEEDED with parentIndex/slotIndex before its angle draw or child arithmetic. Root-only output at capacity succeeds; failed gates at capacity do not fail. No truncation or partial result is returned. Host allocation failure remains a host resource exception.",
+    "layout": "Privately retain six binary64 scalar slots and three int32 slots per segment: start x/y, end x/y, heading, nominal length, parent index, generation and direct child count. maxSegments<=357913941 keeps each packed array signed-int-indexable. Use growable packed storage; do not preallocate maxSegments or allocate per-node objects in the expansion loop. Retained primitive payload is 60 bytes per node excluding headers, spare capacity, input and detached materialization.",
+    "ownership": "Result owns detached packed arrays only and retains no caller record/List, RNG state, renderer or style. Accepted passive inputs are not concurrently mutated during the eager call. segmentAt and toValues materialize fresh detached ordinary data; segmentInto writes four slots only after all access/output validation succeeds. Getter/export allocation failure returns no new value and leaves the result usable. There is no serialize/toJSON/config echo, ID alias, implicit terminal marker or reconstructed-tree export.",
+    "access": "size() returns retained segment count. segmentAt returns a fresh four-number [x0,y0,x1,y1] carrier. headingAt,lengthAt,parentAt,generationAt,childCountAt return aligned scalar data. Index must be finite safe nonnegative integer<=9007199254740991 and never bool; integral floating indices are accepted. INVALID_INDEX precedes INDEX_OUT_OF_RANGE, which precedes INVALID_OUTPUT for segmentInto. segmentInto requires finite nonnegative integral offset and four writable binary64 slots, rejects Float32, and preserves every destination slot on failure. Java has typed required int offset and returns void; wrong/unrepresentable Java calls are host-call errors. JavaScript returns out; Python returns None.",
+    "native_forms": "Java org.procedurals.topology.BranchTree2D.generate(Object config) returns BranchTree2D with size(), segmentAt(Object or long), segmentInto(index,double[],int), headingAt(Object or long), lengthAt(Object or long), parentAt(Object or long), generationAt(Object or long), childCountAt(Object or long), toValues(). JavaScript and Python forms are prospective only: a shared result exposes size, segmentAt/segment_at, segmentInto/segment_into, aligned scalar accessors and toValues/to_values. No aliases, callbacks, iterator, host RNG or serializer are proposed.",
+    "native_types": "Follow CP5 passive-carrier rules: Java Map records and passive List containers with the specified exact pair/interval lengths, accepting only Byte/Short/Integer/Long/Float/Double and rejecting BigInteger/BigDecimal/custom Number before conversion. JavaScript passive Object/null-prototype records and ordinary Arrays; Python exact builtin dict/list with int/float but never bool. Arrays/PVector, typed-array input pairs, class instances, active getters/proxies and custom mapping/list containers are outside interchange. Java segmentInto accepts double[]; a future JavaScript target may accept Float64Array or writable ordinary Array and Python exact builtin list or array(d).",
+    "numerics": "Basic operations use stated IEEE754 binary64 round-to-nearest ties-to-even order. Java/Android Math.sin/cos, JavaScript Math.sin/cos and Python math.sin/cos have no implicit heading reduction. Same target/runtime replay is exact. Cross-target coordinates use explicit per-case tolerances only where nontrivial host trigonometry occurs; topology, RNG words, indices, generations, child counts, headings, nominal lengths, axis/zero-trig fixtures and stated arithmetic errors remain exact. No universal cross-runtime trig tolerance or arbitrary-descriptor error bound is claimed.",
+    "rng": "Portable xoshiro128**1.1 private to each call. Zero-extend uint32 seed to uint64 SplitMix64 state. Twice advance state by0x9e3779b97f4a7c15 modulo2^64; z=state; z=(z xor(z>>>30))*0xbf58476d1ce4e5b9 mod2^64; z=(z xor(z>>>27))*0x94d049bb133111eb mod2^64; q=z xor(z>>>31). Pack q0/q1 as s0=low32(q0),s1=high32(q0),s2=low32(q1),s3=high32(q1). next output=rotl32(s1*5 mod2^32,7)*9 mod2^32; then t=s1<<9 mod2^32; sequentially s2 xor=s0; s3 xor=s1; s1 xor=s2; s0 xor=s3; s2 xor=t; s3=rotl32(s3,11), all words uint32. Map output to u=unsigned_u32/4294967296 exactly in[0,1). State is private/discarded and never shares Processing/source/background/palette state. The all-zero state is unreachable and an internal invariant.",
+    "environment": [
+      "private xoshiro128**1.1 with uint32 seed/Two-SplitMix64 expansion",
+      "IEEE754 binary64 arithmetic",
+      "named target/runtime binary64 sine/cosine"
+    ],
+    "complexity": "O(rule/slot validation + visited slots + emitted nodes) work and O(emitted nodes) retained numeric storage. maxSegments bounds retained nodes but not arbitrary supplied rule/slot validation or all failed gate visits. Indexed access is O(1); detached export is O(size). Benchmarks must cover realistic branching and a long one-slot chain without host recursion.",
+    "native_errors": "Library failures expose code. BRANCH_ARITHMETIC_INVALID and SEGMENT_LIMIT_EXCEEDED additionally expose parentIndex (Python parent_index) and slotIndex (Python slot_index), serialized in conformance as error_detail:{parentIndex,slotIndex,stage?}. Static/access errors have no dynamic detail. Java may use dedicated IllegalArgumentException/ArithmeticException subclasses; JS Error and Python ValueError subclasses carry equivalent data. Host allocation failure is never INVALID_INPUT or partial success."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed/nonfinite/out-of-domain static input, wrong passive carrier/keys/shape, bool numeric, invalid seed/maxSegments, negative root length/scale or probability outside closed[0,1].",
+    "BRANCH_ARITHMETIC_INVALID": "A root or successful child finite arithmetic check fails; error_detail has parentIndex,slotIndex and stage length|heading|delta_x|delta_y|position_x|position_y.",
+    "SEGMENT_LIMIT_EXCEEDED": "A successful slot would exceed maxSegments; error_detail has parentIndex and slotIndex, before its angle draw or child arithmetic.",
+    "INVALID_INDEX": "Index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "Representable index is outside0..size()-1.",
+    "INVALID_OUTPUT": "segmentInto destination/offset lacks four writable binary64 slots."
+  },
+  "error_order": [
+    "Static phase: INVALID_INPUT is the only operation error; it completes before root arithmetic, output-sized allocation or RNG initialization.",
+    "Root phase after static validation: root arithmetic may raise BRANCH_ARITHMETIC_INVALID with parentIndex=-1 and slotIndex=-1 before traversal begins.",
+    "Breadth-first expansion phase: an inactive parent consumes no draw; an active parent samples scale then each slot gate. A failed gate cannot raise capacity or child arithmetic. For a successful gate, SEGMENT_LIMIT_EXCEEDED is checked before angle draw and all child arithmetic; after the angle draw, child arithmetic may raise BRANCH_ARITHMETIC_INVALID.",
+    "Result access phase: INVALID_INDEX precedes INDEX_OUT_OF_RANGE, which precedes INVALID_OUTPUT for segmentInto."
+  ],
+  "dynamic_error_stages": [
+    "length",
+    "heading",
+    "delta_x",
+    "delta_y",
+    "position_x",
+    "position_y"
+  ],
+  "parameters": {
+    "seed": {
+      "unit": "uint32",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Portable xoshiro is a CP6 design decision. `survey/out/2018/Generativos/arbolito3/notes.md` and `survey/out/2018/Generativos/arbolito4/notes.md` use seeded Processing global streams; private Java Random diagnostics and Processing source streams are not public compatibility modes."
+    },
+    "origin": {
+      "unit": "planar coordinate pair [x,y]",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "`survey/out/2018/Generativos/arbolito3/notes.md` describes random forest bases; `survey/out/2018/Generativos/arbolito4/notes.md` uses random x with an index-biased y layout. Supplying one root is a CP6 separation of expansion from forest placement, with no source-derived default/range."
+    },
+    "heading": {
+      "unit": "radians, unnormalized",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Both selected notes describe upward roots (`PI*1.5` in their How-code sections). A caller-provided unnormalized heading is a CP6 geometry decision, not a source preset or recommended angle range."
+    },
+    "length": {
+      "unit": "coordinate-unit nominal root segment length",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "`survey/out/2018/Generativos/arbolito3/notes.md` derives its first branch from an index-biased 740\u2013800 source size divided by five; `survey/out/2018/Generativos/arbolito4/notes.md` derives one from a noise-modulated/scaled source size. `survey/out/2018/Generativos/arbolito4/variants/s_400/result.json` changes the whole source root-size expression (large, mean 0.3292, changed fraction 0.655), not this isolated public length. Explicit nominal length is a CP6 substitution point with no default/range."
+    },
+    "rules": {
+      "unit": "ordered generation transitions",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Selected arbolito routines recur by remaining depth with ordered endpoint children. CP6 replaces their source recursion/DFS schedule with explicit breadth-first transition data; it does not expose an arbolito mode."
+    },
+    "rules.length": {
+      "unit": "number of possible growth transitions",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "`survey/out/2018/Generativos/arbolito3/notes.md` changes active totalIte 14\u21928 in `variants/totalIte_8/result.json` (large), while `survey/out/2018/Generativos/arbolito4/notes.md` changes 8\u219212 in `variants/totalIte_12/result.json` (large, mean 0.2619, changed fraction 0.616). The latter alters a shared DFS Processing stream for later roots/siblings; neither result establishes a public depth default/range or a claim that lower depth is generally simpler. Rules length is CP6 transition data, not a redundant depth field."
+    },
+    "lengthScale": {
+      "unit": "ordered closed nonnegative multiplicative interval per parent generation",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "The selected source routines use random(random(0.6,0.8),0.95), with one resulting child length shared by siblings; see design/capabilities/cp6-arbolito4-source-audit.md and evidence/investigations/cp6-branch-source-review.json. No selected variant isolates the shrink law. Public uniform interval sampling and its one-draw schedule are design divergences; sibling sharing follows the source computation. No default or encouraged range is established."
+    },
+    "slots": {
+      "unit": "ordered child-opportunity list per generation",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "`survey/out/2018/Generativos/arbolito3/notes.md` has two ordered probabilistic child opportunities; `survey/out/2018/Generativos/arbolito4/notes.md` has left/right/middle independent slots in source order. The selected notes do not vary slot count. Ordered slot count and breadth-first consumption are CP6 computation choices, not observed defaults/ranges."
+    },
+    "probability": {
+      "unit": "closed dimensionless gate threshold",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source facts are 0.8 for each arbolito3 opportunity and 0.7/0.7/0.4 for arbolito4\u2019s left/right/middle gates (`survey/out/2018/Generativos/arbolito3/notes.md`, `survey/out/2018/Generativos/arbolito4/notes.md`). Neither selected note varies branch probability, so [0,1] is a mathematical domain, not a recommended artistic range or default."
+    },
+    "turn": {
+      "unit": "ordered closed radians interval relative to parent heading",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "arbolito3\u2019s source errAng changes 0.09\u21920.3 in `survey/out/2018/Generativos/arbolito3/variants/errAng_0.3/result.json` (moderate); arbolito4 samples ea 0.4\u20130.6 and changes it to 0.8\u20131.0 in `survey/out/2018/Generativos/arbolito4/variants/ea_0.8_1.0/result.json` (moderate, mean 0.1410, changed fraction 0.374). Source angle formulas and DFS/RNG schedules differ; ordered public intervals are a CP6 design divergence with no default/range."
+    },
+    "maxSegments": {
+      "unit": "retained segment capacity including root",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Required explicit failure boundary for exponential branching. 357913941 is a packed six-scalar representation ceiling, not measured capacity or an artistic range."
+    }
+  },
+  "design_divergences": [
+    "Portable xoshiro128**1.1 and breadth-first retained-index expansion deliberately replace source Processing global/DFS schedules.",
+    "Explicit generation rules replace named botanical presets, source nested shrink distributions and source colour draws.",
+    "Owned binary64 geometry/ancestry/nominal length replace immediate line rendering; style, tip marks and forest composition remain external.",
+    "Source endpoint attachment informs topology, while mutable/interior line pools and source-pixel reproduction remain outside."
+  ],
+  "exclusions": [
+    "forest/root placement",
+    "noise sizing/palette/colour/style/taper/terminal-mark policies",
+    "Processing/source RNG compatibility",
+    "generic callbacks/iterators or an L-system/turtle interpreter",
+    "mutable growth animation, interior cuts, graph cycles, obstacles/collision/canopy separation",
+    "clipping/canvas transforms/drawing",
+    "configuration serialization or source replay modes"
+  ],
+  "fixture_obligations": "Prospective shared fixtures must distinguish BFS from DFS, independent slot gates from whole-node gating, shared from per-child scale, conditional angle draws, constant intervals still consuming units, empty slots and terminal no-draw behavior, appended-rule/late-rule prefix rules, zero/collapsed geometry, invalid unused later rules, capacity before angle/arithmetic, every dynamically reachable arithmetic stage, stream words, detached access and atomic segmentInto writes. Fixtures may carry source/numeric proof that dx/dy overflow is unreachable for finite length and bounded host sin/cos rather than inventing an impossible error vector. Nontrivial trig coordinates require named per-case tolerances; topology/RNG/headings/lengths remain exact.",
+  "fixtures": "fixtures/operations/seeded-endpoint-branches.json",
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "host-trigonometry",
+        "signed-int packed primitive storage"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Java-first CP6 draft"
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "host-trigonometry"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "host-trigonometry"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "host-trigonometry"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim."
+    }
+  },
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "Private CP6 images and breadth-first diagnostic support the selected capability/ordering only. No operation, package, target adapter or motivating-source reproduction support is claimed."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root accepts semantics and distinguishing shared fixtures for Java-first implementation; native, performance, adapter, reproduction and distribution acceptance remain required."
+  }
+}

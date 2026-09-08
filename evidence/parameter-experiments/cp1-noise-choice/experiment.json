@@ -1,0 +1,103 @@
+{
+  "id": "cp1-noise-choice",
+  "status": "completed",
+  "question": "Does the proposed scalar gradient field support readable independent field marks, and does a single octave suffice for the first example?",
+  "decision": "Choose the example's explicit octave composition; reject or revise the proposed source if distracting lattice direction remains visible.",
+  "hypothesis": "A single octave supplies coherent mark direction; four octaves add fine variation. Rotation checks may expose distracting grid-axis bias.",
+  "source_sketches": [
+    "2018/Generativos/pelines"
+  ],
+  "implementation": "Experimental private Java evaluator, not an admitted catalog operation or claimed source reproduction.",
+  "specification": "design/operations/cp1-noise-proposal.md with Sol corrections: ordered lowbias32 lattice hash, eight gradients, quintic fade, raw-to-unit 0.5+0.5*raw.",
+  "baseline": {
+    "kind": "new candidate example",
+    "seed": 42,
+    "renderer": "Processing 4.5.6 JAVA2D",
+    "dimensions": [
+      640,
+      640
+    ],
+    "external_corpus_pixels": false
+  },
+  "values": [
+    {
+      "id": "single",
+      "octaves": 1,
+      "rotation_degrees": 0
+    },
+    {
+      "id": "four",
+      "octaves": 4,
+      "rotation_degrees": 0
+    },
+    {
+      "id": "single-rotated",
+      "octaves": 1,
+      "rotation_degrees": 45
+    },
+    {
+      "id": "four-rotated",
+      "octaves": 4,
+      "rotation_degrees": 45
+    }
+  ],
+  "configuration": {
+    "grid_pitch": 4,
+    "max_length": 16,
+    "heading_frequency": 0.009,
+    "length_frequency": 0.013,
+    "colour_frequency": 0.007,
+    "colour_cycles": 3,
+    "opacity": 180,
+    "stroke_width": 1,
+    "background": "#ECE7DA",
+    "grid_origin": [
+      2,
+      2
+    ],
+    "grid_columns": 160,
+    "grid_rows": 160,
+    "heading_offset": 17,
+    "length_offset": 113,
+    "colour_offset": 271,
+    "heading_span_radians": "4*pi",
+    "palette": [
+      "#31A151",
+      "#FFA71E",
+      "#05084C",
+      "#DE4638",
+      "#3DBDB7"
+    ],
+    "octave_weights": "1,1/2,1/4,1/8; divide raw sum by total weight before 0.5+0.5*raw mapping"
+  },
+  "comparison": "Hold positions, seed, palette and mappings fixed. Compare single vs four at each rotation; compare rotated vs unrotated at each octave count. Inspect all images and record pixel MAE/changed fraction only as descriptive metrics.",
+  "acceptance": [
+    "Curving regions of related straight-stroke headings are visible; no integration is implied.",
+    "No distracting repeated lattice-axis pattern dominates the piece.",
+    "Select the clearer initial example; preserve visible octave composition if richer variation is necessary.",
+    "This experiment establishes neither public parameter ranges nor four-target or corpus-raster conformance."
+  ],
+  "constraints": [
+    "exactly four candidate renders",
+    "one Processing executor",
+    "no survey or upstream edits",
+    "all images/builds remain under ignored .work"
+  ],
+  "provenance": [
+    "survey/out/2018/Generativos/pelines/notes.md",
+    "design/capabilities/cp1-field-marks.md",
+    "design/operations/cp1-noise-proposal.md"
+  ],
+  "execution": {
+    "attempted_renders": 4,
+    "successful_renders": 4,
+    "failed_renders": 0,
+    "command": "xvfb-run -a <jdk>/bin/java -cp .work/tmp:<processing-core>:dist/procedurals-core-0.1.0.jar NoiseChoiceProbe <octaves> <rotation> <output.png>",
+    "compiler_warning": "JDK17 strictfp is redundant; no runtime warnings observed",
+    "runtime_check": "tools/check_processing_runtime.py",
+    "input_artifacts": {
+      "dist/procedurals-core-0.1.0.jar": "f2410f037da190107c9f822b15d41ba7de3eff51f6d2621514f7b11af4a90502",
+      ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4"
+    }
+  }
+}

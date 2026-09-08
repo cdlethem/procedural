@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "boundary_loops": 0,
+      "faces": 1088,
+      "id": "baseline",
+      "largest_coordinate_abs": 0.0,
+      "vertices": 546
+    },
+    {
+      "boundary_loops": 0,
+      "faces": 1088,
+      "id": "waist",
+      "largest_coordinate_abs": 0.0,
+      "vertices": 546
+    },
+    {
+      "boundary_loops": 0,
+      "faces": 1024,
+      "id": "pointed",
+      "largest_coordinate_abs": 0.0,
+      "vertices": 514
+    },
+    {
+      "boundary_loops": 0,
+      "faces": 272,
+      "id": "coarse",
+      "largest_coordinate_abs": 0.0,
+      "vertices": 138
+    },
+    {
+      "boundary_loops": 2,
+      "faces": 1024,
+      "id": "open",
+      "largest_coordinate_abs": 0.0,
+      "vertices": 544
+    }
+  ],
+  "largest_coordinate_abs": 0.0,
+  "scope": "Private Java dump checked against the private Python CP7 topology diagnostic; no renderer or portable-target claim.",
+  "source_bindings": {
+    ".work/cp7-profile-choices/mesh-dump.json": "45feba9215a7766670a647f3f11c5e751a5b68da64882950581e26ae962729b8",
+    "tools/diagnostics/cp7/ProfileChoices.java": "e78a8588e24ff3bdcaab3a832f6223a11c2df2e21811aa5f178e22cf8c1ea494",
+    "tools/diagnostics/cp7/check_profile_choices.py": "9df73985f0eae42ca554bc3c3cfeb38201c0af6ba59c8777858c52606d97a050",
+    "tools/diagnostics/cp7/profile_mesh_diagnostic.py": "6633e6e337ee6eaa9a90722fa1fdc12a26b578b1424a0862bc5f3b66077b242d"
+  },
+  "status": "passed"
+}

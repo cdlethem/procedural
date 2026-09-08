@@ -1,0 +1,552 @@
+{
+  "operation": "path.occupied-lattice-paths-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "catalog_sha256": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d",
+  "source_bindings": {
+    "tools/diagnostics/cp11/build_lattice_fixtures.py": "dd0841f12f1f357725794cb507d171b175833318c4127d81aa1d7fb0c6420fa1",
+    "design/capabilities/cp11-lattice-decision.md": "cc977825b1033c653fad5154813dec931934a27d36dd49c4f84e62c8e1972e5c",
+    "design/capabilities/cp11-admission-review.md": "3955cdcd1038e1f656af1766fbffbbfa2881495473613136f77bb1311b41fe3b",
+    "design/operations/cp11-proposal-review.md": "6c6893fd15ab07e5480d1043fc3cbe40db27af45bed31f7ebd7f136949dcb40b"
+  },
+  "generator": {
+    "path": "tools/diagnostics/cp11/build_lattice_fixtures.py",
+    "sha256": "dd0841f12f1f357725794cb507d171b175833318c4127d81aa1d7fb0c6420fa1",
+    "reference": "Independent straightforward Python sparse-occupancy transition and xoshiro128**1.1/SplitMix64 transcription; imports no Java or other target implementation."
+  },
+  "comparison": "exact",
+  "cases": [
+    {
+      "id": "empty-zero-capacity",
+      "input": {
+        "dimensions": [
+          2,
+          2
+        ],
+        "starts": [],
+        "maxSteps": 0,
+        "maxCells": 0,
+        "random": {
+          "seed": 0
+        }
+      },
+      "output": {
+        "paths": [],
+        "completionReasons": [],
+        "randomState": [
+          2065550767,
+          3793791033,
+          2713282036,
+          1853398634
+        ]
+      }
+    },
+    {
+      "id": "zero-step-reserves-start",
+      "input": {
+        "dimensions": [
+          3,
+          3
+        ],
+        "starts": [
+          [
+            1,
+            1
+          ]
+        ],
+        "maxSteps": 0,
+        "maxCells": 1,
+        "random": {
+          "seed": 42
+        }
+      },
+      "output": {
+        "paths": [
+          [
+            [
+              1,
+              1
+            ]
+          ]
+        ],
+        "completionReasons": [
+          "step-limit"
+        ],
+        "randomState": [
+          803958421,
+          3184996902,
+          2993090819,
+          686809907
+        ]
+      }
+    },
+    {
+      "id": "boundary-blocked-no-word",
+      "input": {
+        "dimensions": [
+          1,
+          1
+        ],
+        "starts": [
+          [
+            0,
+            0
+          ]
+        ],
+        "maxSteps": 4,
+        "maxCells": 5,
+        "random": {
+          "seed": 1
+        }
+      },
+      "output": {
+        "paths": [
+          [
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "completionReasons": [
+          "blocked"
+        ],
+        "randomState": [
+          2298633409,
+          2433363436,
+          1703865447,
+          3203108257
+        ]
+      }
+    },
+    {
+      "id": "one-option-consumes-word",
+      "input": {
+        "dimensions": [
+          2,
+          1
+        ],
+        "starts": [
+          [
+            0,
+            0
+          ]
+        ],
+        "maxSteps": 1,
+        "maxCells": 2,
+        "random": {
+          "seed": 1
+        }
+      },
+      "output": {
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        ],
+        "completionReasons": [
+          "step-limit"
+        ],
+        "randomState": [
+          2799959180,
+          2105974090,
+          4174866598,
+          218261887
+        ]
+      }
+    },
+    {
+      "id": "nesw-four-option-choice",
+      "input": {
+        "dimensions": [
+          3,
+          3
+        ],
+        "starts": [
+          [
+            1,
+            1
+          ]
+        ],
+        "maxSteps": 1,
+        "maxCells": 2,
+        "random": {
+          "seed": 42
+        }
+      },
+      "output": {
+        "paths": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        ],
+        "completionReasons": [
+          "step-limit"
+        ],
+        "randomState": [
+          3134439296,
+          542813616,
+          870962070,
+          3330845865
+        ]
+      }
+    },
+    {
+      "id": "nesw-three-option-edge-choice",
+      "input": {
+        "dimensions": [
+          3,
+          2
+        ],
+        "starts": [
+          [
+            1,
+            0
+          ]
+        ],
+        "maxSteps": 1,
+        "maxCells": 2,
+        "random": {
+          "seed": 42
+        }
+      },
+      "output": {
+        "paths": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ],
+        "completionReasons": [
+          "step-limit"
+        ],
+        "randomState": [
+          3134439296,
+          542813616,
+          870962070,
+          3330845865
+        ]
+      }
+    },
+    {
+      "id": "duplicate-start-no-extra-word",
+      "input": {
+        "dimensions": [
+          2,
+          1
+        ],
+        "starts": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "maxSteps": 1,
+        "maxCells": 4,
+        "random": {
+          "seed": 1
+        }
+      },
+      "output": {
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          []
+        ],
+        "completionReasons": [
+          "step-limit",
+          "occupied-start"
+        ],
+        "randomState": [
+          2799959180,
+          2105974090,
+          4174866598,
+          218261887
+        ]
+      }
+    },
+    {
+      "id": "shared-occupancy-ordered-batch",
+      "input": {
+        "dimensions": [
+          3,
+          2
+        ],
+        "starts": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "maxSteps": 2,
+        "maxCells": 9,
+        "random": {
+          "seed": 42
+        }
+      },
+      "output": {
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              1
+            ]
+          ],
+          []
+        ],
+        "completionReasons": [
+          "step-limit",
+          "blocked",
+          "occupied-start"
+        ],
+        "randomState": [
+          1701425161,
+          3372249897,
+          2716073615,
+          1081377227
+        ]
+      }
+    },
+    {
+      "id": "returned-state-continuation",
+      "continuation_of": "shared-occupancy-ordered-batch",
+      "input": {
+        "dimensions": [
+          2,
+          2
+        ],
+        "starts": [
+          [
+            0,
+            0
+          ]
+        ],
+        "maxSteps": 2,
+        "maxCells": 3,
+        "random": {
+          "state": [
+            1701425161,
+            3372249897,
+            2716073615,
+            1081377227
+          ]
+        }
+      },
+      "output": {
+        "paths": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ],
+        "completionReasons": [
+          "step-limit"
+        ],
+        "randomState": [
+          1174432527,
+          637232066,
+          1007288429,
+          3914278224
+        ]
+      }
+    },
+    {
+      "id": "maximum-dimensions-sparse",
+      "input": {
+        "dimensions": [
+          2147483647,
+          2147483647
+        ],
+        "starts": [
+          [
+            2147483646,
+            2147483646
+          ]
+        ],
+        "maxSteps": 0,
+        "maxCells": 1,
+        "random": {
+          "seed": 2147483648
+        }
+      },
+      "output": {
+        "paths": [
+          [
+            [
+              2147483646,
+              2147483646
+            ]
+          ]
+        ],
+        "completionReasons": [
+          "step-limit"
+        ],
+        "randomState": [
+          841315180,
+          625556678,
+          676566363,
+          4169423796
+        ]
+      }
+    },
+    {
+      "id": "semantic-start-out-of-bounds",
+      "input": {
+        "dimensions": [
+          2,
+          2
+        ],
+        "starts": [
+          [
+            2,
+            0
+          ]
+        ],
+        "maxSteps": 0,
+        "maxCells": 1,
+        "random": {
+          "seed": 0
+        }
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "invalid-state-precedes-capacity",
+      "input": {
+        "dimensions": [
+          1,
+          1
+        ],
+        "starts": [
+          [
+            0,
+            0
+          ]
+        ],
+        "maxSteps": 1073741822,
+        "maxCells": 0,
+        "random": {
+          "state": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "valid-over-budget",
+      "input": {
+        "dimensions": [
+          1,
+          1
+        ],
+        "starts": [
+          [
+            0,
+            0
+          ]
+        ],
+        "maxSteps": 1,
+        "maxCells": 1,
+        "random": {
+          "seed": 0
+        }
+      },
+      "error": "WORK_LIMIT_EXCEEDED"
+    },
+    {
+      "id": "random-carriers-are-exclusive",
+      "input": {
+        "dimensions": [
+          1,
+          1
+        ],
+        "starts": [],
+        "maxSteps": 0,
+        "maxCells": 0,
+        "random": {
+          "seed": 0,
+          "state": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

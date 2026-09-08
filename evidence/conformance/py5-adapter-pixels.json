@@ -1,0 +1,112 @@
+{
+  "status": "passed",
+  "part": "pixels",
+  "scope": "Actual py5 JAVA2D registered suite part only",
+  "input_sha256": {
+    "tests/native/py5_frame_driver.py": "63678a471d911f54d6e60447d9fd09238a8796ee3d2d216d4fdaf122c310274b",
+    "tests/native/py5_frame_pixels.py": "e476ab50d3220e4cf5e9c299da4c2c7a2554b30416f39c8336ce57c42a947206",
+    "tools/run_py5_adapter.py": "bcf8c86bab3a2cedfc752b61957ba7354d92864581a66468e51065327d422bb8",
+    "design/py5-adapter-validation.md": "248815d1aed51af30a6875c8fdbe96d2ae47927f7484e827b7071406fefea530",
+    "catalog/drawing/fresh-raster-2d.json": "c3d1cdc264aecbc680c24e9d58e5eb11eac48c63b48d30e478777b577907b593",
+    "packages/python/procedurals/__init__.py": "3d53798ebcd479266ec0d793ed0eb68d42abc0acf1f35f0b2febc7c74ec5a3f2",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/__init__.py": "763066a534ae41d8a01605ceedcea2cd1c37139a25f4f2a9138e63b8a31410d7",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/graphics.py": "2761b2987666c7d1d70088c70aca9492dd4963abf644d8fa78ee0de9dc4c30f8",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/sketch.py": "39557b47939444710c6cd2480e8dfadc03eddc28c87106c3fb262d2d087a8639",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/base.py": "018c896ebee9ab611ef7346cbeca8e354918cf5caa49a1465332a7b7cccd57da",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/mixins/pixels.py": "e6b2d4c46c5370e61fef0436b901c860929338afc20e8a9ec8f941a8fb8d07b9",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/core.jar": "2cd02df8ace61c45af5eddef74dc74608b87a50155e83f20c7b1e28642ddbc85",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/py5.jar": "4447b8098080f83cb4ffa5bf3b2d6c15a4a1bea3265198da75f5ac936f504903",
+    "design/py5-pixel-acquisition-repair.md": "f0d16e92aceb24b70519479c01154c72144ea704130df6344c8c9e76e5eaf008"
+  },
+  "platform": "linux",
+  "exit_code": 0,
+  "stdout": "PROCEDURALS_RESULT={\"passed\": true, \"part\": \"pixels\", \"py5\": \"0.10.11a0\", \"java\": \"17.0.20.1\", \"native\": {\"passed\": true, \"profile\": \"drawing.fresh-raster-2d\", \"adapter\": \"Py5Frame JAVA2D\", \"scope\": \"registered native probe groups 1-4 only; no lifecycle fault injection, CP1 route, or full-profile support claim\", \"runtime_requirement\": \"py5 0.10.11a0 on Python 3.13/JDK 17 under xvfb\", \"failures\": 0, \"groups\": [{\"id\": \"1-background-sizes\", \"passed\": true}, {\"id\": \"2-bounds-clipping-widths\", \"passed\": true}, {\"id\": \"3-alpha-winding-order\", \"passed\": true}, {\"id\": \"4-style-caps-parent-isolation\", \"passed\": true}], \"observations\": {\"background_sizes\": [{\"width\": 1, \"height\": 1, \"pixels\": 1}, {\"width\": 640, \"height\": 640, \"pixels\": 409600}, {\"width\": 1920, \"height\": 1080, \"pixels\": 2073600}, {\"width\": 2048, \"height\": 1, \"pixels\": 2048}, {\"width\": 1, \"height\": 2048, \"pixels\": 2048}, {\"width\": 2048, \"height\": 2048, \"pixels\": 4194304}], \"parent_density\": 2, \"minimum_width_coverage_pixels\": 49, \"minimum_width_visible_pixel_guarantee\": \"none; recorded native observation only\", \"overlap_forward_channels_argb\": [255, 64, 0, 128], \"overlap_reverse_channels_argb\": [255, 128, 0, 64]}}}\n",
+  "stderr": "Picked up JAVA_TOOL_OPTIONS: -Dsun.java2d.uiScale=2\n",
+  "native": {
+    "passed": true,
+    "part": "pixels",
+    "py5": "0.10.11a0",
+    "java": "17.0.20.1",
+    "native": {
+      "passed": true,
+      "profile": "drawing.fresh-raster-2d",
+      "adapter": "Py5Frame JAVA2D",
+      "scope": "registered native probe groups 1-4 only; no lifecycle fault injection, CP1 route, or full-profile support claim",
+      "runtime_requirement": "py5 0.10.11a0 on Python 3.13/JDK 17 under xvfb",
+      "failures": 0,
+      "groups": [
+        {
+          "id": "1-background-sizes",
+          "passed": true
+        },
+        {
+          "id": "2-bounds-clipping-widths",
+          "passed": true
+        },
+        {
+          "id": "3-alpha-winding-order",
+          "passed": true
+        },
+        {
+          "id": "4-style-caps-parent-isolation",
+          "passed": true
+        }
+      ],
+      "observations": {
+        "background_sizes": [
+          {
+            "width": 1,
+            "height": 1,
+            "pixels": 1
+          },
+          {
+            "width": 640,
+            "height": 640,
+            "pixels": 409600
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "pixels": 2073600
+          },
+          {
+            "width": 2048,
+            "height": 1,
+            "pixels": 2048
+          },
+          {
+            "width": 1,
+            "height": 2048,
+            "pixels": 2048
+          },
+          {
+            "width": 2048,
+            "height": 2048,
+            "pixels": 4194304
+          }
+        ],
+        "parent_density": 2,
+        "minimum_width_coverage_pixels": 49,
+        "minimum_width_visible_pixel_guarantee": "none; recorded native observation only",
+        "overlap_forward_channels_argb": [
+          255,
+          64,
+          0,
+          128
+        ],
+        "overlap_reverse_channels_argb": [
+          255,
+          128,
+          0,
+          64
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "catalog_sha256": "7236eaf10bdd8cb21107096f7962e248967c9aa6813573f11784a63ba0007e4a",
+  "fixture_cases_available": 14,
+  "fixture_cases_executed": 14,
+  "fixture_sha256": "545d170b1d9d814480489836e4e87e791b9287fe9131847b13c3574ead12d5f1",
+  "generated_vectors_sha256": "17d1960780a9b1ade84d99e07343d1c67a2b0ebd8c25b94907f4a7f2adbf9e99",
+  "javac_release": "8",
+  "jdk_home": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1",
+  "native": {
+    "assertions": 26,
+    "status": "passed"
+  },
+  "operation": "topology.seeded-line-pool-2d",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Java core exact live fixture and native ownership/access evidence only; no renderer, package, ports or support claim.",
+  "source_sha256_after": {
+    "catalog/operations/seeded-line-pool-2d.json": "7236eaf10bdd8cb21107096f7962e248967c9aa6813573f11784a63ba0007e4a",
+    "fixtures/operations/seeded-line-pool-2d.json": "545d170b1d9d814480489836e4e87e791b9287fe9131847b13c3574ead12d5f1",
+    "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+    "tests/native/LinePoolNative.java": "7fbf54f184688e3036859474d30371aebba306cd51b69cd43f57bcafa6b38aa7",
+    "tools/run_line_pool_java.py": "d4e078fe9908ddf1079f790d73e4ee91415bd1011e8ee18fb96b8e3bf24a1c45"
+  },
+  "source_sha256_before": {
+    "catalog/operations/seeded-line-pool-2d.json": "7236eaf10bdd8cb21107096f7962e248967c9aa6813573f11784a63ba0007e4a",
+    "fixtures/operations/seeded-line-pool-2d.json": "545d170b1d9d814480489836e4e87e791b9287fe9131847b13c3574ead12d5f1",
+    "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+    "tests/native/LinePoolNative.java": "7fbf54f184688e3036859474d30371aebba306cd51b69cd43f57bcafa6b38aa7",
+    "tools/run_line_pool_java.py": "d4e078fe9908ddf1079f790d73e4ee91415bd1011e8ee18fb96b8e3bf24a1c45"
+  },
+  "status": "passed",
+  "vectors": {
+    "assertions": 221,
+    "cases": 14,
+    "status": "passed"
+  }
+}

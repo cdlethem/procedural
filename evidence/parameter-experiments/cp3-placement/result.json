@@ -1,0 +1,1081 @@
+{
+  "attempts": [
+    {
+      "case": "base-rings",
+      "class_sha256": {
+        "SpacingChoice$1.class": "23d0941d3cf3e5827c32e82df3012e089bb40c2645a2f88f33839ac041c414bc",
+        "SpacingChoice$Circles.class": "4d546796a6198d926ff371b60c21427f6804007c847ad14bf8a7386f1a971b2d",
+        "SpacingChoice$Digest.class": "d33d742622fa52447ca9ddcd2dafbda5e60aa3ffc22ea96e44b54e6cd46a5963",
+        "SpacingChoice$ProposalList.class": "e8e03296a3c912fd6de2286bbdabfa0fb4b77073617b16de4af546279570b5ac",
+        "SpacingChoice$Result.class": "b032c0248bc42f6c443f76f4727eaaed2f336de3bb2320006f8092bc67d0269c",
+        "SpacingChoice$Xoshiro128ss11.class": "a4104071a7f34b269f78818eec37f662ed6a843d33897ff5dab6ecca351300fc",
+        "SpacingChoice.class": "215a1db3878bfb09b9e13cb0399e076370403affe0042a92ef2bcc0c298c62f6"
+      },
+      "destination": ".work/experiments/cp3-placement/base-rings.png",
+      "executor_pid": 1018517,
+      "image": {
+        "background_rgb": "ECE7DA",
+        "dimensions": [
+          640,
+          640
+        ],
+        "non_background_pixels": 36181,
+        "opaque": true,
+        "path": ".work/experiments/cp3-placement/base-rings.png",
+        "rgba_sha256": "a6f9188c0a90c4ee0ca6bcb12abc9bd9510e0da32252ff81624af9d69e32af09",
+        "sha256": "d9b3cbaf32ba3f817582e0ded52aa3afe0a150e3147a403c542fe471d2d59485"
+      },
+      "input_sha256": {
+        ".work/diagnostics/cp3/spacing-choice-numeric.json": "5c186dedf649f1629807548ac6ec76dcb68041bbc5d61bf82addab8e395d06da",
+        ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+        "evidence/investigations/cp3-acceptance.json": "e1d7828375a6160e65cfa708ffbdaa945796fc7b2f865207bccf0ffe934508ae",
+        "evidence/investigations/cp3-stream-javascript.json": "428b027abd17bb39625b6d5e62a8a7eb6db7f3a386d7015d478fb5adc8667e7c",
+        "evidence/investigations/cp3-stream-oracle.json": "308a92e4b5fed9994ce1fe71630541b35f8de70fbf5bb85a5ed6fbbc411d2086",
+        "evidence/parameter-experiments/cp3-placement/experiment.json": "5f0315e5d52a4e963833776afa34dc4334f9fae1fcf246b7640ef22ed699e6e6",
+        "tools/diagnostics/cp3/SpacingChoice.java": "6456603fdc26daa438ad9f4a319ca02621b79d2391e7cfcf3bf8d010b16e644c",
+        "tools/diagnostics/cp3/check-acceptance.py": "d8015f3a46b1e140f11a250037f8f1dadca542ba07afb2c9340cc4a607392ad2",
+        "tools/diagnostics/cp3/run-spacing-choice.py": "5e4d42ce88106365c0d73afce27b444f615a8d49c9499593e9707ef8a15c5eb8",
+        "tools/diagnostics/cp3/stream-javascript.mjs": "8514d1cf3009240d487008961dbb20a43e5aa2b7ca6f2c72288270831ffe0226",
+        "tools/diagnostics/cp3/stream_oracle.py": "15759e935da84ee77c933df3a2dd51e2f52ef4e2b64cd036408ed78ea9d88555"
+      },
+      "native": {
+        "after_accepted_sha256": "1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf",
+        "before_accepted_sha256": "1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf",
+        "case": "base-rings",
+        "output": "/home/colin/dev/procedural/.work/experiments/cp3-placement/base-rings.png",
+        "profile": {
+          "accepted_count": 424,
+          "accepted_sha256": "1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf",
+          "attempts": 5000,
+          "candidate_sha256": "c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b",
+          "centres_sha256": "51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701",
+          "colour_sha256": "97a9866e85df40f6b378e9f05f44e624473c34c1433d7ec2d303d2f7b099e6c8",
+          "comparisons": 362139,
+          "final_rng_state": [
+            1945923461,
+            4213687651,
+            98133763,
+            1715745460
+          ],
+          "id": "base-rings",
+          "model_vertex_sha256": "0657d6b066feb65fb1729cc352d7b37c81bd19b4327022942bf2125f08999f86",
+          "motif": "ring-64",
+          "palette_assignment": "source_index_modulo_5",
+          "render_vertex_conversion": "binary64 model expressions cast to Java float at vertex submission",
+          "retained_raw_bytes": 11872,
+          "unit_draws": 20000
+        },
+        "status": "rendered"
+      },
+      "process_pid": 1018614,
+      "status": "rendered",
+      "stderr": "",
+      "stdout": "{\"status\":\"rendered\",\"case\":\"base-rings\",\"output\":\"/home/colin/dev/procedural/.work/experiments/cp3-placement/base-rings.png\",\"profile\":{\"id\":\"base-rings\",\"attempts\":5000,\"accepted_count\":424,\"comparisons\":362139,\"unit_draws\":20000,\"retained_raw_bytes\":11872,\"candidate_sha256\":\"c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b\",\"centres_sha256\":\"51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701\",\"accepted_sha256\":\"1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf\",\"colour_sha256\":\"97a9866e85df40f6b378e9f05f44e624473c34c1433d7ec2d303d2f7b099e6c8\",\"palette_assignment\":\"source_index_modulo_5\",\"render_vertex_conversion\":\"binary64 model expressions cast to Java float at vertex submission\",\"model_vertex_sha256\":\"0657d6b066feb65fb1729cc352d7b37c81bd19b4327022942bf2125f08999f86\",\"motif\":\"ring-64\",\"final_rng_state\":[1945923461,4213687651,98133763,1715745460]},\"before_accepted_sha256\":\"1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf\",\"after_accepted_sha256\":\"1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf\"}\n"
+    },
+    {
+      "case": "more-separation",
+      "class_sha256": {
+        "SpacingChoice$1.class": "23d0941d3cf3e5827c32e82df3012e089bb40c2645a2f88f33839ac041c414bc",
+        "SpacingChoice$Circles.class": "4d546796a6198d926ff371b60c21427f6804007c847ad14bf8a7386f1a971b2d",
+        "SpacingChoice$Digest.class": "d33d742622fa52447ca9ddcd2dafbda5e60aa3ffc22ea96e44b54e6cd46a5963",
+        "SpacingChoice$ProposalList.class": "e8e03296a3c912fd6de2286bbdabfa0fb4b77073617b16de4af546279570b5ac",
+        "SpacingChoice$Result.class": "b032c0248bc42f6c443f76f4727eaaed2f336de3bb2320006f8092bc67d0269c",
+        "SpacingChoice$Xoshiro128ss11.class": "a4104071a7f34b269f78818eec37f662ed6a843d33897ff5dab6ecca351300fc",
+        "SpacingChoice.class": "215a1db3878bfb09b9e13cb0399e076370403affe0042a92ef2bcc0c298c62f6"
+      },
+      "destination": ".work/experiments/cp3-placement/more-separation.png",
+      "executor_pid": 1019031,
+      "image": {
+        "background_rgb": "ECE7DA",
+        "dimensions": [
+          640,
+          640
+        ],
+        "non_background_pixels": 27263,
+        "opaque": true,
+        "path": ".work/experiments/cp3-placement/more-separation.png",
+        "rgba_sha256": "aca3450f08df7bb16d4ac6b8cc515289da8ec9f69470e11487179e794696fe4a",
+        "sha256": "7e9c3c50f411959f46929c1f8c0f41308407d9b76394af9e9d88660a62860d24"
+      },
+      "input_sha256": {
+        ".work/diagnostics/cp3/spacing-choice-numeric.json": "5c186dedf649f1629807548ac6ec76dcb68041bbc5d61bf82addab8e395d06da",
+        ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+        "evidence/investigations/cp3-acceptance.json": "e1d7828375a6160e65cfa708ffbdaa945796fc7b2f865207bccf0ffe934508ae",
+        "evidence/investigations/cp3-stream-javascript.json": "428b027abd17bb39625b6d5e62a8a7eb6db7f3a386d7015d478fb5adc8667e7c",
+        "evidence/investigations/cp3-stream-oracle.json": "308a92e4b5fed9994ce1fe71630541b35f8de70fbf5bb85a5ed6fbbc411d2086",
+        "evidence/parameter-experiments/cp3-placement/experiment.json": "5f0315e5d52a4e963833776afa34dc4334f9fae1fcf246b7640ef22ed699e6e6",
+        "tools/diagnostics/cp3/SpacingChoice.java": "6456603fdc26daa438ad9f4a319ca02621b79d2391e7cfcf3bf8d010b16e644c",
+        "tools/diagnostics/cp3/check-acceptance.py": "d8015f3a46b1e140f11a250037f8f1dadca542ba07afb2c9340cc4a607392ad2",
+        "tools/diagnostics/cp3/run-spacing-choice.py": "5e4d42ce88106365c0d73afce27b444f615a8d49c9499593e9707ef8a15c5eb8",
+        "tools/diagnostics/cp3/stream-javascript.mjs": "8514d1cf3009240d487008961dbb20a43e5aa2b7ca6f2c72288270831ffe0226",
+        "tools/diagnostics/cp3/stream_oracle.py": "15759e935da84ee77c933df3a2dd51e2f52ef4e2b64cd036408ed78ea9d88555"
+      },
+      "native": {
+        "after_accepted_sha256": "32a253e17a16ee1e82b70194ec3c46b2a97b0509b76eb66e2f198e5d354064f6",
+        "before_accepted_sha256": "32a253e17a16ee1e82b70194ec3c46b2a97b0509b76eb66e2f198e5d354064f6",
+        "case": "more-separation",
+        "output": "/home/colin/dev/procedural/.work/experiments/cp3-placement/more-separation.png",
+        "profile": {
+          "accepted_count": 353,
+          "accepted_sha256": "32a253e17a16ee1e82b70194ec3c46b2a97b0509b76eb66e2f198e5d354064f6",
+          "attempts": 5000,
+          "candidate_sha256": "c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b",
+          "centres_sha256": "51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701",
+          "colour_sha256": "a633d05b0cbf302b526e19d14e27136d8dad8b36955c09965244aad7da696f35",
+          "comparisons": 255509,
+          "final_rng_state": [
+            1945923461,
+            4213687651,
+            98133763,
+            1715745460
+          ],
+          "id": "more-separation",
+          "model_vertex_sha256": "cd06ed9ae5da1d31bf8270db64000124751f2f4c4a691148e927414ee4abd4ec",
+          "motif": "ring-64",
+          "palette_assignment": "source_index_modulo_5",
+          "render_vertex_conversion": "binary64 model expressions cast to Java float at vertex submission",
+          "retained_raw_bytes": 9884,
+          "unit_draws": 20000
+        },
+        "status": "rendered"
+      },
+      "process_pid": 1019054,
+      "status": "rendered",
+      "stderr": "",
+      "stdout": "{\"status\":\"rendered\",\"case\":\"more-separation\",\"output\":\"/home/colin/dev/procedural/.work/experiments/cp3-placement/more-separation.png\",\"profile\":{\"id\":\"more-separation\",\"attempts\":5000,\"accepted_count\":353,\"comparisons\":255509,\"unit_draws\":20000,\"retained_raw_bytes\":9884,\"candidate_sha256\":\"c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b\",\"centres_sha256\":\"51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701\",\"accepted_sha256\":\"32a253e17a16ee1e82b70194ec3c46b2a97b0509b76eb66e2f198e5d354064f6\",\"colour_sha256\":\"a633d05b0cbf302b526e19d14e27136d8dad8b36955c09965244aad7da696f35\",\"palette_assignment\":\"source_index_modulo_5\",\"render_vertex_conversion\":\"binary64 model expressions cast to Java float at vertex submission\",\"model_vertex_sha256\":\"cd06ed9ae5da1d31bf8270db64000124751f2f4c4a691148e927414ee4abd4ec\",\"motif\":\"ring-64\",\"final_rng_state\":[1945923461,4213687651,98133763,1715745460]},\"before_accepted_sha256\":\"32a253e17a16ee1e82b70194ec3c46b2a97b0509b76eb66e2f198e5d354064f6\",\"after_accepted_sha256\":\"32a253e17a16ee1e82b70194ec3c46b2a97b0509b76eb66e2f198e5d354064f6\"}\n"
+    },
+    {
+      "case": "smaller-forms",
+      "class_sha256": {
+        "SpacingChoice$1.class": "23d0941d3cf3e5827c32e82df3012e089bb40c2645a2f88f33839ac041c414bc",
+        "SpacingChoice$Circles.class": "4d546796a6198d926ff371b60c21427f6804007c847ad14bf8a7386f1a971b2d",
+        "SpacingChoice$Digest.class": "d33d742622fa52447ca9ddcd2dafbda5e60aa3ffc22ea96e44b54e6cd46a5963",
+        "SpacingChoice$ProposalList.class": "e8e03296a3c912fd6de2286bbdabfa0fb4b77073617b16de4af546279570b5ac",
+        "SpacingChoice$Result.class": "b032c0248bc42f6c443f76f4727eaaed2f336de3bb2320006f8092bc67d0269c",
+        "SpacingChoice$Xoshiro128ss11.class": "a4104071a7f34b269f78818eec37f662ed6a843d33897ff5dab6ecca351300fc",
+        "SpacingChoice.class": "215a1db3878bfb09b9e13cb0399e076370403affe0042a92ef2bcc0c298c62f6"
+      },
+      "destination": ".work/experiments/cp3-placement/smaller-forms.png",
+      "executor_pid": 1019274,
+      "image": {
+        "background_rgb": "ECE7DA",
+        "dimensions": [
+          640,
+          640
+        ],
+        "non_background_pixels": 41470,
+        "opaque": true,
+        "path": ".work/experiments/cp3-placement/smaller-forms.png",
+        "rgba_sha256": "8f46bd9d4b1535e4cbc1672fda92c29d4e9e1ad4637cc356e3ed8f9cccbfd4c9",
+        "sha256": "57f0bd6ad8a2f95a62abb1efdd5a0f9920847726c0ae593b7f0365eb38240ee4"
+      },
+      "input_sha256": {
+        ".work/diagnostics/cp3/spacing-choice-numeric.json": "5c186dedf649f1629807548ac6ec76dcb68041bbc5d61bf82addab8e395d06da",
+        ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+        "evidence/investigations/cp3-acceptance.json": "e1d7828375a6160e65cfa708ffbdaa945796fc7b2f865207bccf0ffe934508ae",
+        "evidence/investigations/cp3-stream-javascript.json": "428b027abd17bb39625b6d5e62a8a7eb6db7f3a386d7015d478fb5adc8667e7c",
+        "evidence/investigations/cp3-stream-oracle.json": "308a92e4b5fed9994ce1fe71630541b35f8de70fbf5bb85a5ed6fbbc411d2086",
+        "evidence/parameter-experiments/cp3-placement/experiment.json": "5f0315e5d52a4e963833776afa34dc4334f9fae1fcf246b7640ef22ed699e6e6",
+        "tools/diagnostics/cp3/SpacingChoice.java": "6456603fdc26daa438ad9f4a319ca02621b79d2391e7cfcf3bf8d010b16e644c",
+        "tools/diagnostics/cp3/check-acceptance.py": "d8015f3a46b1e140f11a250037f8f1dadca542ba07afb2c9340cc4a607392ad2",
+        "tools/diagnostics/cp3/run-spacing-choice.py": "5e4d42ce88106365c0d73afce27b444f615a8d49c9499593e9707ef8a15c5eb8",
+        "tools/diagnostics/cp3/stream-javascript.mjs": "8514d1cf3009240d487008961dbb20a43e5aa2b7ca6f2c72288270831ffe0226",
+        "tools/diagnostics/cp3/stream_oracle.py": "15759e935da84ee77c933df3a2dd51e2f52ef4e2b64cd036408ed78ea9d88555"
+      },
+      "native": {
+        "after_accepted_sha256": "fbb8dfbb61d26123a43a96204dc5ce781975ea74c279b4b13bb53dbed258256d",
+        "before_accepted_sha256": "fbb8dfbb61d26123a43a96204dc5ce781975ea74c279b4b13bb53dbed258256d",
+        "case": "smaller-forms",
+        "output": "/home/colin/dev/procedural/.work/experiments/cp3-placement/smaller-forms.png",
+        "profile": {
+          "accepted_count": 613,
+          "accepted_sha256": "fbb8dfbb61d26123a43a96204dc5ce781975ea74c279b4b13bb53dbed258256d",
+          "attempts": 5000,
+          "candidate_sha256": "d8c04cb596fc82fa18ee0afff69984be92f638cfdccb9fa8ee4d0350de736045",
+          "centres_sha256": "51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701",
+          "colour_sha256": "2f0e02c0e3b7839f9aabd91aa874a1332e228be1942f50c032cf415784623885",
+          "comparisons": 763026,
+          "final_rng_state": [
+            1945923461,
+            4213687651,
+            98133763,
+            1715745460
+          ],
+          "id": "smaller-forms",
+          "model_vertex_sha256": "dd51a4b3118986b1c5122b18b304dcb1346e0ae92a647b17ef033d90654326c1",
+          "motif": "ring-64",
+          "palette_assignment": "source_index_modulo_5",
+          "render_vertex_conversion": "binary64 model expressions cast to Java float at vertex submission",
+          "retained_raw_bytes": 17164,
+          "unit_draws": 20000
+        },
+        "status": "rendered"
+      },
+      "process_pid": 1019298,
+      "status": "rendered",
+      "stderr": "",
+      "stdout": "{\"status\":\"rendered\",\"case\":\"smaller-forms\",\"output\":\"/home/colin/dev/procedural/.work/experiments/cp3-placement/smaller-forms.png\",\"profile\":{\"id\":\"smaller-forms\",\"attempts\":5000,\"accepted_count\":613,\"comparisons\":763026,\"unit_draws\":20000,\"retained_raw_bytes\":17164,\"candidate_sha256\":\"d8c04cb596fc82fa18ee0afff69984be92f638cfdccb9fa8ee4d0350de736045\",\"centres_sha256\":\"51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701\",\"accepted_sha256\":\"fbb8dfbb61d26123a43a96204dc5ce781975ea74c279b4b13bb53dbed258256d\",\"colour_sha256\":\"2f0e02c0e3b7839f9aabd91aa874a1332e228be1942f50c032cf415784623885\",\"palette_assignment\":\"source_index_modulo_5\",\"render_vertex_conversion\":\"binary64 model expressions cast to Java float at vertex submission\",\"model_vertex_sha256\":\"dd51a4b3118986b1c5122b18b304dcb1346e0ae92a647b17ef033d90654326c1\",\"motif\":\"ring-64\",\"final_rng_state\":[1945923461,4213687651,98133763,1715745460]},\"before_accepted_sha256\":\"fbb8dfbb61d26123a43a96204dc5ce781975ea74c279b4b13bb53dbed258256d\",\"after_accepted_sha256\":\"fbb8dfbb61d26123a43a96204dc5ce781975ea74c279b4b13bb53dbed258256d\"}\n"
+    },
+    {
+      "case": "diamonds",
+      "class_sha256": {
+        "SpacingChoice$1.class": "23d0941d3cf3e5827c32e82df3012e089bb40c2645a2f88f33839ac041c414bc",
+        "SpacingChoice$Circles.class": "4d546796a6198d926ff371b60c21427f6804007c847ad14bf8a7386f1a971b2d",
+        "SpacingChoice$Digest.class": "d33d742622fa52447ca9ddcd2dafbda5e60aa3ffc22ea96e44b54e6cd46a5963",
+        "SpacingChoice$ProposalList.class": "e8e03296a3c912fd6de2286bbdabfa0fb4b77073617b16de4af546279570b5ac",
+        "SpacingChoice$Result.class": "b032c0248bc42f6c443f76f4727eaaed2f336de3bb2320006f8092bc67d0269c",
+        "SpacingChoice$Xoshiro128ss11.class": "a4104071a7f34b269f78818eec37f662ed6a843d33897ff5dab6ecca351300fc",
+        "SpacingChoice.class": "215a1db3878bfb09b9e13cb0399e076370403affe0042a92ef2bcc0c298c62f6"
+      },
+      "destination": ".work/experiments/cp3-placement/diamonds.png",
+      "executor_pid": 1019517,
+      "image": {
+        "background_rgb": "ECE7DA",
+        "dimensions": [
+          640,
+          640
+        ],
+        "non_background_pixels": 42465,
+        "opaque": true,
+        "path": ".work/experiments/cp3-placement/diamonds.png",
+        "rgba_sha256": "ffd3e44c34df6029ec6a3c4a657875ce22edfeaba347fb6de45c982b693eb8b2",
+        "sha256": "114a41e1f1b35130bf7e42d67a429130a932821c4d221a1bea68668c2f81f809"
+      },
+      "input_sha256": {
+        ".work/diagnostics/cp3/spacing-choice-numeric.json": "5c186dedf649f1629807548ac6ec76dcb68041bbc5d61bf82addab8e395d06da",
+        ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+        "evidence/investigations/cp3-acceptance.json": "e1d7828375a6160e65cfa708ffbdaa945796fc7b2f865207bccf0ffe934508ae",
+        "evidence/investigations/cp3-stream-javascript.json": "428b027abd17bb39625b6d5e62a8a7eb6db7f3a386d7015d478fb5adc8667e7c",
+        "evidence/investigations/cp3-stream-oracle.json": "308a92e4b5fed9994ce1fe71630541b35f8de70fbf5bb85a5ed6fbbc411d2086",
+        "evidence/parameter-experiments/cp3-placement/experiment.json": "5f0315e5d52a4e963833776afa34dc4334f9fae1fcf246b7640ef22ed699e6e6",
+        "tools/diagnostics/cp3/SpacingChoice.java": "6456603fdc26daa438ad9f4a319ca02621b79d2391e7cfcf3bf8d010b16e644c",
+        "tools/diagnostics/cp3/check-acceptance.py": "d8015f3a46b1e140f11a250037f8f1dadca542ba07afb2c9340cc4a607392ad2",
+        "tools/diagnostics/cp3/run-spacing-choice.py": "5e4d42ce88106365c0d73afce27b444f615a8d49c9499593e9707ef8a15c5eb8",
+        "tools/diagnostics/cp3/stream-javascript.mjs": "8514d1cf3009240d487008961dbb20a43e5aa2b7ca6f2c72288270831ffe0226",
+        "tools/diagnostics/cp3/stream_oracle.py": "15759e935da84ee77c933df3a2dd51e2f52ef4e2b64cd036408ed78ea9d88555"
+      },
+      "native": {
+        "after_accepted_sha256": "1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf",
+        "before_accepted_sha256": "1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf",
+        "case": "diamonds",
+        "output": "/home/colin/dev/procedural/.work/experiments/cp3-placement/diamonds.png",
+        "profile": {
+          "accepted_count": 424,
+          "accepted_sha256": "1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf",
+          "attempts": 5000,
+          "candidate_sha256": "c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b",
+          "centres_sha256": "51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701",
+          "colour_sha256": "97a9866e85df40f6b378e9f05f44e624473c34c1433d7ec2d303d2f7b099e6c8",
+          "comparisons": 362139,
+          "final_rng_state": [
+            1945923461,
+            4213687651,
+            98133763,
+            1715745460
+          ],
+          "id": "diamonds",
+          "model_vertex_sha256": "6324ff54c7f6c1fddb3c1e5a9f869e44f43621dc155ad279162479619c543144",
+          "motif": "diamond-4",
+          "palette_assignment": "source_index_modulo_5",
+          "render_vertex_conversion": "binary64 model expressions cast to Java float at vertex submission",
+          "retained_raw_bytes": 11872,
+          "unit_draws": 20000
+        },
+        "status": "rendered"
+      },
+      "process_pid": 1019564,
+      "status": "rendered",
+      "stderr": "",
+      "stdout": "{\"status\":\"rendered\",\"case\":\"diamonds\",\"output\":\"/home/colin/dev/procedural/.work/experiments/cp3-placement/diamonds.png\",\"profile\":{\"id\":\"diamonds\",\"attempts\":5000,\"accepted_count\":424,\"comparisons\":362139,\"unit_draws\":20000,\"retained_raw_bytes\":11872,\"candidate_sha256\":\"c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b\",\"centres_sha256\":\"51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701\",\"accepted_sha256\":\"1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf\",\"colour_sha256\":\"97a9866e85df40f6b378e9f05f44e624473c34c1433d7ec2d303d2f7b099e6c8\",\"palette_assignment\":\"source_index_modulo_5\",\"render_vertex_conversion\":\"binary64 model expressions cast to Java float at vertex submission\",\"model_vertex_sha256\":\"6324ff54c7f6c1fddb3c1e5a9f869e44f43621dc155ad279162479619c543144\",\"motif\":\"diamond-4\",\"final_rng_state\":[1945923461,4213687651,98133763,1715745460]},\"before_accepted_sha256\":\"1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf\",\"after_accepted_sha256\":\"1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf\"}\n"
+    },
+    {
+      "case": "authored-radial",
+      "class_sha256": {
+        "SpacingChoice$1.class": "23d0941d3cf3e5827c32e82df3012e089bb40c2645a2f88f33839ac041c414bc",
+        "SpacingChoice$Circles.class": "4d546796a6198d926ff371b60c21427f6804007c847ad14bf8a7386f1a971b2d",
+        "SpacingChoice$Digest.class": "d33d742622fa52447ca9ddcd2dafbda5e60aa3ffc22ea96e44b54e6cd46a5963",
+        "SpacingChoice$ProposalList.class": "e8e03296a3c912fd6de2286bbdabfa0fb4b77073617b16de4af546279570b5ac",
+        "SpacingChoice$Result.class": "b032c0248bc42f6c443f76f4727eaaed2f336de3bb2320006f8092bc67d0269c",
+        "SpacingChoice$Xoshiro128ss11.class": "a4104071a7f34b269f78818eec37f662ed6a843d33897ff5dab6ecca351300fc",
+        "SpacingChoice.class": "215a1db3878bfb09b9e13cb0399e076370403affe0042a92ef2bcc0c298c62f6"
+      },
+      "destination": ".work/experiments/cp3-placement/authored-radial.png",
+      "executor_pid": 1020175,
+      "image": {
+        "background_rgb": "ECE7DA",
+        "dimensions": [
+          640,
+          640
+        ],
+        "non_background_pixels": 15287,
+        "opaque": true,
+        "path": ".work/experiments/cp3-placement/authored-radial.png",
+        "rgba_sha256": "94851f118fbd64bb499c8f5f5dca1791a66587fe6139302f4888013726a33f9e",
+        "sha256": "cf4eb5a28f8ab00237bce0a8bf1881da6963575dc9d8e3f41f8e0d57a7d5b62e"
+      },
+      "input_sha256": {
+        ".work/diagnostics/cp3/spacing-choice-numeric.json": "5c186dedf649f1629807548ac6ec76dcb68041bbc5d61bf82addab8e395d06da",
+        ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+        "evidence/investigations/cp3-acceptance.json": "e1d7828375a6160e65cfa708ffbdaa945796fc7b2f865207bccf0ffe934508ae",
+        "evidence/investigations/cp3-stream-javascript.json": "428b027abd17bb39625b6d5e62a8a7eb6db7f3a386d7015d478fb5adc8667e7c",
+        "evidence/investigations/cp3-stream-oracle.json": "308a92e4b5fed9994ce1fe71630541b35f8de70fbf5bb85a5ed6fbbc411d2086",
+        "evidence/parameter-experiments/cp3-placement/experiment.json": "5f0315e5d52a4e963833776afa34dc4334f9fae1fcf246b7640ef22ed699e6e6",
+        "tools/diagnostics/cp3/SpacingChoice.java": "6456603fdc26daa438ad9f4a319ca02621b79d2391e7cfcf3bf8d010b16e644c",
+        "tools/diagnostics/cp3/check-acceptance.py": "d8015f3a46b1e140f11a250037f8f1dadca542ba07afb2c9340cc4a607392ad2",
+        "tools/diagnostics/cp3/run-spacing-choice.py": "5e4d42ce88106365c0d73afce27b444f615a8d49c9499593e9707ef8a15c5eb8",
+        "tools/diagnostics/cp3/stream-javascript.mjs": "8514d1cf3009240d487008961dbb20a43e5aa2b7ca6f2c72288270831ffe0226",
+        "tools/diagnostics/cp3/stream_oracle.py": "15759e935da84ee77c933df3a2dd51e2f52ef4e2b64cd036408ed78ea9d88555"
+      },
+      "native": {
+        "after_accepted_sha256": "f12068cbd71d87fbeb801abebc96c58f211f7b9ec9cf5a8d97352ad566f42016",
+        "before_accepted_sha256": "f12068cbd71d87fbeb801abebc96c58f211f7b9ec9cf5a8d97352ad566f42016",
+        "case": "authored-radial",
+        "output": "/home/colin/dev/procedural/.work/experiments/cp3-placement/authored-radial.png",
+        "profile": {
+          "accepted_count": 111,
+          "accepted_sha256": "f12068cbd71d87fbeb801abebc96c58f211f7b9ec9cf5a8d97352ad566f42016",
+          "attempts": 160,
+          "candidate_sha256": "6510117f7caa042d63457def9951bf3976dae0cb9fd97456de1c8f5c7cf4149b",
+          "centres_sha256": "e68945c0f3226eafdcafe3e75eec9827f0de4e73cba36a0f20655dff9ccda184",
+          "colour_sha256": "acfa1233a0d573090f183609e9f05b55d45ec96c1d86eaf89ba37d70bc58d82b",
+          "comparisons": 6903,
+          "id": "authored-radial",
+          "model_vertex_sha256": "c695f93b6c50825f675e3c631f0bc9265b46bc5146421df0e9bf0734869fd008",
+          "motif": "ring-64",
+          "palette_assignment": "source_index_modulo_5",
+          "render_vertex_conversion": "binary64 model expressions cast to Java float at vertex submission",
+          "retained_raw_bytes": 3108,
+          "unit_draws": 0
+        },
+        "status": "rendered"
+      },
+      "process_pid": 1020204,
+      "status": "rendered",
+      "stderr": "",
+      "stdout": "{\"status\":\"rendered\",\"case\":\"authored-radial\",\"output\":\"/home/colin/dev/procedural/.work/experiments/cp3-placement/authored-radial.png\",\"profile\":{\"id\":\"authored-radial\",\"attempts\":160,\"accepted_count\":111,\"comparisons\":6903,\"unit_draws\":0,\"retained_raw_bytes\":3108,\"candidate_sha256\":\"6510117f7caa042d63457def9951bf3976dae0cb9fd97456de1c8f5c7cf4149b\",\"centres_sha256\":\"e68945c0f3226eafdcafe3e75eec9827f0de4e73cba36a0f20655dff9ccda184\",\"accepted_sha256\":\"f12068cbd71d87fbeb801abebc96c58f211f7b9ec9cf5a8d97352ad566f42016\",\"colour_sha256\":\"acfa1233a0d573090f183609e9f05b55d45ec96c1d86eaf89ba37d70bc58d82b\",\"palette_assignment\":\"source_index_modulo_5\",\"render_vertex_conversion\":\"binary64 model expressions cast to Java float at vertex submission\",\"model_vertex_sha256\":\"c695f93b6c50825f675e3c631f0bc9265b46bc5146421df0e9bf0734869fd008\",\"motif\":\"ring-64\"},\"before_accepted_sha256\":\"f12068cbd71d87fbeb801abebc96c58f211f7b9ec9cf5a8d97352ad566f42016\",\"after_accepted_sha256\":\"f12068cbd71d87fbeb801abebc96c58f211f7b9ec9cf5a8d97352ad566f42016\"}\n"
+    }
+  ],
+  "independent_oracles": {
+    "acceptance_report_sha256": "e1d7828375a6160e65cfa708ffbdaa945796fc7b2f865207bccf0ffe934508ae",
+    "acceptance_status": "passed",
+    "javascript_report_sha256": "428b027abd17bb39625b6d5e62a8a7eb6db7f3a386d7015d478fb5adc8667e7c",
+    "javascript_status": "passed-private-feasibility",
+    "python_report_sha256": "308a92e4b5fed9994ce1fe71630541b35f8de70fbf5bb85a5ed6fbbc411d2086",
+    "python_status": "completed-private-numeric-oracle"
+  },
+  "input_sha256": {
+    ".work/diagnostics/cp3/spacing-choice-numeric.json": "5c186dedf649f1629807548ac6ec76dcb68041bbc5d61bf82addab8e395d06da",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "evidence/investigations/cp3-acceptance.json": "e1d7828375a6160e65cfa708ffbdaa945796fc7b2f865207bccf0ffe934508ae",
+    "evidence/investigations/cp3-stream-javascript.json": "428b027abd17bb39625b6d5e62a8a7eb6db7f3a386d7015d478fb5adc8667e7c",
+    "evidence/investigations/cp3-stream-oracle.json": "308a92e4b5fed9994ce1fe71630541b35f8de70fbf5bb85a5ed6fbbc411d2086",
+    "evidence/parameter-experiments/cp3-placement/experiment.json": "5f0315e5d52a4e963833776afa34dc4334f9fae1fcf246b7640ef22ed699e6e6",
+    "tools/diagnostics/cp3/SpacingChoice.java": "6456603fdc26daa438ad9f4a319ca02621b79d2391e7cfcf3bf8d010b16e644c",
+    "tools/diagnostics/cp3/check-acceptance.py": "d8015f3a46b1e140f11a250037f8f1dadca542ba07afb2c9340cc4a607392ad2",
+    "tools/diagnostics/cp3/run-spacing-choice.py": "5e4d42ce88106365c0d73afce27b444f615a8d49c9499593e9707ef8a15c5eb8",
+    "tools/diagnostics/cp3/stream-javascript.mjs": "8514d1cf3009240d487008961dbb20a43e5aa2b7ca6f2c72288270831ffe0226",
+    "tools/diagnostics/cp3/stream_oracle.py": "15759e935da84ee77c933df3a2dd51e2f52ef4e2b64cd036408ed78ea9d88555"
+  },
+  "numeric": {
+    "analytic": {
+      "order_changes_retained_source": true,
+      "strict_overlap_rejected": true,
+      "tangent_equality_accepted": true
+    },
+    "experiment": "cp3-placement",
+    "numeric_prefix": {
+      "accepted_10000": 517,
+      "accepted_5000": 424,
+      "prefix_5000_of_10000": true
+    },
+    "private_only": true,
+    "profiles": {
+      "authored-radial": {
+        "accepted_count": 111,
+        "accepted_sha256": "f12068cbd71d87fbeb801abebc96c58f211f7b9ec9cf5a8d97352ad566f42016",
+        "attempts": 160,
+        "candidate_sha256": "6510117f7caa042d63457def9951bf3976dae0cb9fd97456de1c8f5c7cf4149b",
+        "centres_sha256": "e68945c0f3226eafdcafe3e75eec9827f0de4e73cba36a0f20655dff9ccda184",
+        "colour_sha256": "acfa1233a0d573090f183609e9f05b55d45ec96c1d86eaf89ba37d70bc58d82b",
+        "comparisons": 6903,
+        "id": "authored-radial",
+        "model_vertex_sha256": "c695f93b6c50825f675e3c631f0bc9265b46bc5146421df0e9bf0734869fd008",
+        "motif": "ring-64",
+        "palette_assignment": "source_index_modulo_5",
+        "render_vertex_conversion": "binary64 model expressions cast to Java float at vertex submission",
+        "retained_raw_bytes": 3108,
+        "unit_draws": 0
+      },
+      "base-rings": {
+        "accepted_count": 424,
+        "accepted_sha256": "1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf",
+        "attempts": 5000,
+        "candidate_sha256": "c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b",
+        "centres_sha256": "51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701",
+        "colour_sha256": "97a9866e85df40f6b378e9f05f44e624473c34c1433d7ec2d303d2f7b099e6c8",
+        "comparisons": 362139,
+        "final_rng_state": [
+          1945923461,
+          4213687651,
+          98133763,
+          1715745460
+        ],
+        "id": "base-rings",
+        "model_vertex_sha256": "0657d6b066feb65fb1729cc352d7b37c81bd19b4327022942bf2125f08999f86",
+        "motif": "ring-64",
+        "palette_assignment": "source_index_modulo_5",
+        "render_vertex_conversion": "binary64 model expressions cast to Java float at vertex submission",
+        "retained_raw_bytes": 11872,
+        "unit_draws": 20000
+      },
+      "diamonds": {
+        "accepted_count": 424,
+        "accepted_sha256": "1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf",
+        "attempts": 5000,
+        "candidate_sha256": "c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b",
+        "centres_sha256": "51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701",
+        "colour_sha256": "97a9866e85df40f6b378e9f05f44e624473c34c1433d7ec2d303d2f7b099e6c8",
+        "comparisons": 362139,
+        "final_rng_state": [
+          1945923461,
+          4213687651,
+          98133763,
+          1715745460
+        ],
+        "id": "diamonds",
+        "model_vertex_sha256": "6324ff54c7f6c1fddb3c1e5a9f869e44f43621dc155ad279162479619c543144",
+        "motif": "diamond-4",
+        "palette_assignment": "source_index_modulo_5",
+        "render_vertex_conversion": "binary64 model expressions cast to Java float at vertex submission",
+        "retained_raw_bytes": 11872,
+        "unit_draws": 20000
+      },
+      "more-separation": {
+        "accepted_count": 353,
+        "accepted_sha256": "32a253e17a16ee1e82b70194ec3c46b2a97b0509b76eb66e2f198e5d354064f6",
+        "attempts": 5000,
+        "candidate_sha256": "c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b",
+        "centres_sha256": "51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701",
+        "colour_sha256": "a633d05b0cbf302b526e19d14e27136d8dad8b36955c09965244aad7da696f35",
+        "comparisons": 255509,
+        "final_rng_state": [
+          1945923461,
+          4213687651,
+          98133763,
+          1715745460
+        ],
+        "id": "more-separation",
+        "model_vertex_sha256": "cd06ed9ae5da1d31bf8270db64000124751f2f4c4a691148e927414ee4abd4ec",
+        "motif": "ring-64",
+        "palette_assignment": "source_index_modulo_5",
+        "render_vertex_conversion": "binary64 model expressions cast to Java float at vertex submission",
+        "retained_raw_bytes": 9884,
+        "unit_draws": 20000
+      },
+      "smaller-forms": {
+        "accepted_count": 613,
+        "accepted_sha256": "fbb8dfbb61d26123a43a96204dc5ce781975ea74c279b4b13bb53dbed258256d",
+        "attempts": 5000,
+        "candidate_sha256": "d8c04cb596fc82fa18ee0afff69984be92f638cfdccb9fa8ee4d0350de736045",
+        "centres_sha256": "51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701",
+        "colour_sha256": "2f0e02c0e3b7839f9aabd91aa874a1332e228be1942f50c032cf415784623885",
+        "comparisons": 763026,
+        "final_rng_state": [
+          1945923461,
+          4213687651,
+          98133763,
+          1715745460
+        ],
+        "id": "smaller-forms",
+        "model_vertex_sha256": "dd51a4b3118986b1c5122b18b304dcb1346e0ae92a647b17ef033d90654326c1",
+        "motif": "ring-64",
+        "palette_assignment": "source_index_modulo_5",
+        "render_vertex_conversion": "binary64 model expressions cast to Java float at vertex submission",
+        "retained_raw_bytes": 17164,
+        "unit_draws": 20000
+      }
+    },
+    "relationships": {
+      "motif_shared_object_numeric_only": true,
+      "same_candidate_hash_base_diamond": true,
+      "same_candidate_hash_base_separation": true,
+      "same_centres_base_diamond": true,
+      "same_centres_base_smaller": true,
+      "same_colours_base_diamond": true,
+      "same_geometry_base_diamond": true
+    },
+    "rendering": "dormant; root single-executor approval required",
+    "status": "passed",
+    "streams": {
+      "algorithm": "xoshiro128** 1.1",
+      "initialization": "uint32 seed; two SplitMix64 outputs low32/high32",
+      "provenance": "design/capabilities/cp3-rng-options.md; project-defined scalar initialization, not corpus/Processing compatibility",
+      "seed_vectors": [
+        {
+          "initial_state": [
+            2065550767,
+            3793791033,
+            2713282036,
+            1853398634
+          ],
+          "outputs": [
+            {
+              "state": [
+                4148558844,
+                948174946,
+                2616515163,
+                3249708130
+              ],
+              "u32": 3737715805
+            },
+            {
+              "state": [
+                242444284,
+                1412768197,
+                1689380263,
+                3034580937
+              ],
+              "u32": 2584255861
+            },
+            {
+              "state": [
+                4003873264,
+                1056416670,
+                8456283,
+                2838521606
+              ],
+              "u32": 2876756834
+            },
+            {
+              "state": [
+                2036434280,
+                3503352373,
+                23098795,
+                1042597054
+              ],
+              "u32": 3286328325
+            },
+            {
+              "state": [
+                2543168483,
+                2832276214,
+                3654654659,
+                2708758391
+              ],
+              "u32": 1553311962
+            },
+            {
+              "state": [
+                2654006882,
+                3868273622,
+                3967147296,
+                707528781
+              ],
+              "u32": 1625202774
+            },
+            {
+              "state": [
+                1385025017,
+                2496927892,
+                1343397698,
+                3910983269
+              ],
+              "u32": 3260698944
+            },
+            {
+              "state": [
+                793053960,
+                2521516591,
+                2863561403,
+                1178045422
+              ],
+              "u32": 2754151956
+            },
+            {
+              "state": [
+                4281977545,
+                329268124,
+                327102387,
+                3859680899
+              ],
+              "u32": 2651137455
+            },
+            {
+              "state": [
+                177733590,
+                4293320422,
+                2888949114,
+                1906900909
+              ],
+              "u32": 2503817145
+            }
+          ],
+          "seed": 0
+        },
+        {
+          "initial_state": [
+            2298633409,
+            2433363436,
+            1703865447,
+            3203108257
+          ],
+          "outputs": [
+            {
+              "state": [
+                2799959180,
+                2105974090,
+                4174866598,
+                218261887
+              ],
+              "u32": 1695105466
+            },
+            {
+              "state": [
+                3597076665,
+                598870368,
+                1393426474,
+                664906628
+              ],
+              "u32": 1423115009
+            },
+            {
+              "state": [
+                3530861149,
+                2799370739,
+                3782985875,
+                2635538464
+              ],
+              "u32": 634581793
+            },
+            {
+              "state": [
+                3921185678,
+                2513724221,
+                2232190158,
+                1628346846
+              ],
+              "u32": 1068227753
+            },
+            {
+              "state": [
+                492990829,
+                4183846013,
+                3295835456,
+                3621199782
+              ],
+              "u32": 716759206
+            },
+            {
+              "state": [
+                869597878,
+                544237648,
+                432602669,
+                3147749749
+              ],
+              "u32": 4186505319
+            },
+            {
+              "state": [
+                2822484883,
+                174953675,
+                3402456219,
+                1971924191
+              ],
+              "u32": 3777694425
+            },
+            {
+              "state": [
+                3621718919,
+                1755020227,
+                3118430472,
+                633381887
+              ],
+              "u32": 2710820970
+            },
+            {
+              "state": [
+                2592396219,
+                110823756,
+                1492645007,
+                3737248362
+              ],
+              "u32": 2858460077
+            },
+            {
+              "state": [
+                1121859741,
+                3303550584,
+                4100046644,
+                3612948162
+              ],
+              "u32": 2689674896
+            }
+          ],
+          "seed": 1
+        },
+        {
+          "initial_state": [
+            803958421,
+            3184996902,
+            2993090819,
+            686809907
+          ],
+          "outputs": [
+            {
+              "state": [
+                3134439296,
+                542813616,
+                870962070,
+                3330845865
+              ],
+              "u32": 1776835114
+            },
+            {
+              "state": [
+                1543618201,
+                2841690534,
+                1012993046,
+                2416496438
+              ],
+              "u32": 4165204688
+            },
+            {
+              "state": [
+                1701425161,
+                3372249897,
+                2716073615,
+                1081377227
+              ],
+              "u32": 17111135
+            },
+            {
+              "state": [
+                3961340651,
+                227163567,
+                3295419526,
+                2811696203
+              ],
+              "u32": 2317295270
+            },
+            {
+              "state": [
+                1174432527,
+                637232066,
+                1007288429,
+                3914278224
+              ],
+              "u32": 2792088233
+            },
+            {
+              "state": [
+                2327063965,
+                1609631904,
+                2362306402,
+                2721355365
+              ],
+              "u32": 2554630222
+            },
+            {
+              "state": [
+                2003940184,
+                1502136927,
+                3832054527,
+                754331630
+              ],
+              "u32": 2940343271
+            },
+            {
+              "state": [
+                34559721,
+                3398564856,
+                2190315431,
+                4146957227
+              ],
+              "u32": 2244566231
+            },
+            {
+              "state": [
+                1068705466,
+                1242768054,
+                2742364494,
+                3816987117
+              ],
+              "u32": 3567603786
+            },
+            {
+              "state": [
+                2518851041,
+                3604294978,
+                3129172980,
+                2379930956
+              ],
+              "u32": 2928476417
+            }
+          ],
+          "seed": 42
+        },
+        {
+          "initial_state": [
+            841315180,
+            625556678,
+            676566363,
+            4169423796
+          ],
+          "outputs": [
+            {
+              "state": [
+                4024964126,
+                1061149425,
+                2282711607,
+                1799067374
+              ],
+              "u32": 4023872069
+            },
+            {
+              "state": [
+                3152828417,
+                1490592984,
+                408067113,
+                576780960
+              ],
+              "u32": 482226062
+            },
+            {
+              "state": [
+                3243509369,
+                4217790704,
+                318207016,
+                3270755285
+              ],
+              "u32": 175963982
+            },
+            {
+              "state": [
+                4173440348,
+                684004001,
+                526553681,
+                2904107468
+              ],
+              "u32": 2139429908
+            },
+            {
+              "state": [
+                2099093041,
+                3479578028,
+                1837528333,
+                3789253678
+              ],
+              "u32": 1378036237
+            },
+            {
+              "state": [
+                1403049907,
+                3757952656,
+                3704664892,
+                3930853749
+              ],
+              "u32": 2052038198
+            },
+            {
+              "state": [
+                1712392278,
+                1351461407,
+                1961706639,
+                2399087021
+              ],
+              "u32": 3467094439
+            },
+            {
+              "state": [
+                3093531620,
+                1114760902,
+                162034393,
+                2484967155
+              ],
+              "u32": 1936964625
+            },
+            {
+              "state": [
+                1846541265,
+                4089061371,
+                1376154941,
+                1669443251
+              ],
+              "u32": 46688342
+            },
+            {
+              "state": [
+                4264839833,
+                3484651799,
+                1211529452,
+                3716826241
+              ],
+              "u32": 3687813865
+            }
+          ],
+          "seed": 2147483648
+        },
+        {
+          "initial_state": [
+            2951840192,
+            1940994978,
+            323015604,
+            1629504261
+          ],
+          "outputs": [
+            {
+              "state": [
+                3177249127,
+                3472910806,
+                3737523828,
+                2344958100
+              ],
+              "u32": 331202089
+            },
+            {
+              "state": [
+                4188383269,
+                2896594629,
+                1668629267,
+                713691686
+              ],
+              "u32": 2303545133
+            },
+            {
+              "state": [
+                2139700422,
+                913731059,
+                3621609782,
+                1688673329
+              ],
+              "u32": 2732085799
+            },
+            {
+              "state": [
+                760761604,
+                2653040643,
+                1150270448,
+                2341343894
+              ],
+              "u32": 1755962312
+            },
+            {
+              "state": [
+                955543441,
+                4160079607,
+                767029492,
+                1628743853
+              ],
+              "u32": 20464611
+            },
+            {
+              "state": [
+                2920612299,
+                3803601298,
+                4274942309,
+                192074935
+              ],
+              "u32": 435992899
+            },
+            {
+              "state": [
+                1204915438,
+                2993498428,
+                1013470382,
+                610873166
+              ],
+              "u32": 115300070
+            },
+            {
+              "state": [
+                3520432796,
+                3386175868,
+                2716573760,
+                540251312
+              ],
+              "u32": 2552219694
+            },
+            {
+              "state": [
+                942862160,
+                3119176608,
+                3655127772,
+                992896847
+              ],
+              "u32": 926509624
+            },
+            {
+              "state": [
+                3136705471,
+                1476716076,
+                878280076,
+                635927574
+              ],
+              "u32": 609063632
+            }
+          ],
+          "seed": 4294967295
+        }
+      ],
+      "unit": "uint32/2^32 [0,1)"
+    },
+    "timing_observations": [
+      {
+        "attempts": 5000,
+        "last_accepted_count": 424,
+        "last_comparisons": 362139,
+        "last_retained_capacity_payload_bytes": 14336,
+        "last_retained_raw_bytes": 11872,
+        "mean_nanos": 2489863,
+        "repetitions": 3,
+        "total_nanos": 7469591,
+        "warmups": 1,
+        "workload": "seeded proposal generation, ordered acceptance, and SHA-256 proposal/centre/accepted summaries"
+      },
+      {
+        "attempts": 200000,
+        "last_accepted_count": 930,
+        "last_comparisons": 16938721,
+        "last_retained_capacity_payload_bytes": 28672,
+        "last_retained_raw_bytes": 26040,
+        "mean_nanos": 68318457,
+        "repetitions": 3,
+        "total_nanos": 204955373,
+        "warmups": 1,
+        "workload": "seeded proposal generation, ordered acceptance, and SHA-256 proposal/centre/accepted summaries"
+      }
+    ]
+  },
+  "pairwise_rgb_differences": [
+    {
+      "changed_fraction": 0.0563525390625,
+      "changed_pixels": 23082,
+      "first": "base-rings",
+      "normalized_rgb_mae": 0.01845217715992647,
+      "second": "more-separation"
+    },
+    {
+      "changed_fraction": 0.1688720703125,
+      "changed_pixels": 69170,
+      "first": "base-rings",
+      "normalized_rgb_mae": 0.05472749757455066,
+      "second": "smaller-forms"
+    },
+    {
+      "changed_fraction": 0.1678369140625,
+      "changed_pixels": 68746,
+      "first": "base-rings",
+      "normalized_rgb_mae": 0.04354335809844771,
+      "second": "diamonds"
+    }
+  ],
+  "render_budget": 5,
+  "runtime": {
+    "java": "javac 17.0.20.1",
+    "processing_core_sha256": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "processing_version": "4.5.6"
+  },
+  "scope": "private CP3 placement diagnostic; no public operation or catalog admission",
+  "status": "rendering_complete",
+  "visual_review": "pending root and Sol inspection"
+}

@@ -7,9 +7,37 @@ description: Define or change one approved portable operation before implementat
 
 ## Gate
 
-Use this skill only after the completed-corpus Phase 2 process has recorded a keep or merge
-decision for the candidate cluster. This skill does not authorize clustering candidates,
-choosing the public API early, or turning one sketch's helper into an operation.
+Root must first record the artist capability decision described in
+`docs/artist-capabilities.md`: task enabled, algorithmic burden removed, alternatives,
+reusable inputs/output, meaningful edits, transfer case and evidence limits. For a shared
+or consequential boundary, obtain an independent stronger-model challenge and record root's
+resolution. A candidate's recurrence or a clean mathematical signature alone does not
+establish that it belongs in the public package. Useful compound conveniences are allowed
+when they reuse shared operations and preserve deliberate substitution points.
+
+Use this skill after Phase 2 has recorded a reviewed keep/merge decision, or an explicit
+reviewed capability-dependency admission, and the written API design exists. A dependency
+admission is for independently specified infrastructure needed by an evidenced artistic
+capability, not an equivalence claim about a surveyed composite consumer. The maintainer permits Phase 2 on
+the current partial snapshot; all 901 reports are not a prerequisite. Record the evidence
+revision and motivating note hashes. A draft grouping or unresolved evidence-dependent
+behavior is not a contract approval. This skill does not turn one sketch's aesthetic
+helper into an operation.
+
+Before preparing the contract, run
+`uv run python tools/check_phase2_design.py --contract-cluster <cluster-id>`.
+The cluster must be a reviewed operation candidate with explicit inputs, outputs and
+invariants and no open architecture questions. Ordinary clusters require audited keep/merge
+members and no unresolved assigned members. A capability-dependency admission instead
+requires reviewed rationale, evidence-bound motivating candidates, explicit remainder
+accounting, and no candidate reassigned as though it computed the new operation. Whole-computation and extracted-component decisions must be
+distinguished; an extraction accounts for its remaining components. Read related unresolved
+candidates too: moving a record outside the cluster does not establish that it has no
+contract impact. This check validates recorded prerequisites, not semantic equivalence
+or contract approval. Families and recipe candidates cannot pass as operations.
+
+When new or changed evidence affects the decision, review the contract and fixtures
+together before resuming dependent port assignments. Unaffected operations may proceed.
 
 An operation contract is the behavioral specification. Java is the reference
 implementation, not the specification. If a behavior cannot be stated in language-neutral,

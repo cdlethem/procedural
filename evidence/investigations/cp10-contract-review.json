@@ -1,0 +1,32 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "scope": "Contract and shared fixture approval for Java implementation only. All targets remain unimplemented/unvalidated.",
+  "bindings": {
+    "catalog/operations/target-springs-2d.json": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3",
+    "fixtures/operations/target-springs-2d.json": "837fda9808fd95a70bcee4dbbd2accc1b0895186ee55c439b8a31c4ed495cc61",
+    "design/operations/cp10-contract-decisions.md": "bfb3f6106fe2dbc6e90f50d7aae9e47df67cab71cb530f6f060f0750e3dbb2ef",
+    "design/operations/cp10-contract-review.md": "9b12a8aa26127f736fe93ed49f291e62934071c5f9ac8ecfd91c6708b36de7e3",
+    "tools/check_spring_fixtures.py": "810c21ab6731c4060acb302cebcfb22bb7dd2a3c0679a794c4915789a8608512",
+    "tests/test_spring_fixtures.py": "ee12397107691a103eeee163957f96f49fa2869c0925115b66f0a7c1fb655309",
+    "tools/check_catalog.py": "c7f0dcd3d2d9b8c7b47b2fb0d6f37389e7d61b425879c47c4d5628c8ec72c04c",
+    "design/phase2/cluster-decisions.json": "0047eccc335f78101ef710676a8609568bef5f54e3ef55d118c29c7d108991eb"
+  },
+  "checks": {
+    "catalog": "passed",
+    "repository_unittests": 140,
+    "shared_cases": 44,
+    "successful_cases": 27,
+    "error_cases": 17,
+    "independent_oracle": "exact rational arithmetic with separate binary64 rounding per stage",
+    "fixture_mutation_tests": 10
+  },
+  "remaining": [
+    "Java core implementation and native conformance",
+    "ownership and failure atomicity",
+    "representative performance and allocation measurements",
+    "SpringMarks native edit/replay/transfer acceptance",
+    "package integration",
+    "deferred ports"
+  ]
+}

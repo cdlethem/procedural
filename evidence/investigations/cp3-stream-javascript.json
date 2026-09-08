@@ -1,0 +1,125 @@
+{
+  "schema": "cp3-stream-javascript/v1",
+  "status": "passed-private-feasibility",
+  "scope": "Node JavaScript feasibility evidence for the private CP3 stream only. It is neither a public RNG admission nor a target-port, distribution-quality, renderer, or production-performance claim.",
+  "runtime": {
+    "node": "v22.22.1",
+    "v8": "12.4.254.21-node.35",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "implementation": {
+    "algorithm": "xoshiro128** 1.1",
+    "startup": "two SplitMix64 outputs via BigInt, packed [low32(q0), high32(q0), low32(q1), high32(q1)]",
+    "inner_loop": "uint32 operations with Math.imul and logical shifts; no BigInt in nextU32 or unit generation",
+    "unit": "nextU32 / 2^32 as binary64"
+  },
+  "source_bindings": {
+    "script": {
+      "path": "tools/diagnostics/cp3/stream-javascript.mjs",
+      "sha256": "8514d1cf3009240d487008961dbb20a43e5aa2b7ca6f2c72288270831ffe0226"
+    },
+    "oracle": {
+      "path": "evidence/investigations/cp3-stream-oracle.json",
+      "sha256": "308a92e4b5fed9994ce1fe71630541b35f8de70fbf5bb85a5ed6fbbc411d2086"
+    },
+    "oracle_inputs_verified": {
+      "script": {
+        "path": "tools/diagnostics/cp3/stream_oracle.py",
+        "sha256": "15759e935da84ee77c933df3a2dd51e2f52ef4e2b64cd036408ed78ea9d88555"
+      },
+      "rng_options": {
+        "path": "design/capabilities/cp3-rng-options.md",
+        "sha256": "eaa61a59f8acbc016c912966e0706762dda13bcac3b22da5e6e05fc7a730b7c5"
+      },
+      "prototype_experiment": {
+        "path": "evidence/parameter-experiments/cp3-placement/experiment.json",
+        "sha256": "5f0315e5d52a4e963833776afa34dc4334f9fae1fcf246b7640ef22ed699e6e6"
+      }
+    }
+  },
+  "verification": {
+    "seed_vectors": {
+      "expected_seeds": 5,
+      "samples_per_seed": 10,
+      "passed": true
+    },
+    "baseline_5000": {
+      "attempts": 5000,
+      "first_proposal": [
+        275.8152515888214,
+        560.5310916900635,
+        4.128970897112439
+      ],
+      "last_proposal": [
+        306.12875974178314,
+        289.199315905571,
+        5.779592686011994
+      ],
+      "candidates_sha256_struct_be_f64_xyz": "c92655c5ac8dd4d500dbb5477bdfb536dd541285d9ce3848fec81b6cc196b08b",
+      "centres_sha256_struct_be_f64_xy": "51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701",
+      "final_state": [
+        1945923461,
+        4213687651,
+        98133763,
+        1715745460
+      ]
+    },
+    "rmax_32_5000": {
+      "attempts": 5000,
+      "first_proposal": [
+        275.8152515888214,
+        560.5310916900635,
+        4.060186418652472
+      ],
+      "last_proposal": [
+        306.12875974178314,
+        289.199315905571,
+        4.830476586805597
+      ],
+      "candidates_sha256_struct_be_f64_xyz": "d8c04cb596fc82fa18ee0afff69984be92f638cfdccb9fa8ee4d0350de736045",
+      "centres_sha256_struct_be_f64_xy": "51d047f9f3a711d75d271b4cd5d39592d03c2cfa6ce4e4b841d21077b1d60701",
+      "final_state": [
+        1945923461,
+        4213687651,
+        98133763,
+        1715745460
+      ]
+    },
+    "baseline_10000": {
+      "attempts": 10000,
+      "first_proposal": [
+        275.8152515888214,
+        560.5310916900635,
+        4.128970897112439
+      ],
+      "last_proposal": [
+        355.05797159671783,
+        170.74472784996033,
+        6.621172094891138
+      ],
+      "candidates_sha256_struct_be_f64_xyz": "573886ffb18b5cb3439a02c54bdf429b89e984ea1b92842d08363a73cced8988",
+      "centres_sha256_struct_be_f64_xy": "3bffe77541315570d9e8160f365b795f024a8cb2d5dda032bb6f292ae7fd22ca",
+      "final_state": [
+        423499738,
+        1526627613,
+        3810593951,
+        917917029
+      ]
+    },
+    "failures": []
+  },
+  "workload_200000": {
+    "proposals": 200000,
+    "outputs": 800000,
+    "elapsed_ms": 29.015836000000007,
+    "checksum_sha256_u32_be": "12dffed06b316cc94f149bc1e5787928c73813318c983e63c1484f93a51226b9",
+    "final_state": [
+      262499916,
+      4084113341,
+      3228208535,
+      4246304876
+    ],
+    "scope": "One bounded runtime observation of stream generation plus an order-sensitive SHA-256 checksum. It is not a distribution-quality claim or production benchmark."
+  }
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Path marks — procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Path marks</h1>
+  <p>Retain movement first, then draw each advance or attach a perpendicular mark to its endpoint. Style edits reuse the same paths.</p>
+  <div id="controls" aria-label="Path marks controls">
+    <button data-action="m"><kbd>M</kbd> movement / marks</button>
+    <button data-action="l"><kbd>L</kbd> length 12 / 24</button>
+    <button data-action="c"><kbd>C</kbd> base / alternate palette</button>
+    <button data-action="n"><kbd>N</kbd> 2,000 / 2,001 steps</button>
+    <button data-action="d"><kbd>D</kbd> distance 0.4 / 0.8</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated gradient paths and marks"></div>
+  <p id="status" role="status">Preparing movement…</p>
+  <p>Edit the composition in <code>path-marks.js</code>: start grid, seed and field mapping rebuild movement; <code>pathMark()</code> is the place to invent another endpoint treatment. These values describe this piece.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "scope": "Execute the officially preprocessed FieldMarks sketch's settings/setup/draw and S-key handler in actual JAVA2D. A validation subclass invokes the save handler and exits after the first frame; no drawing logic is replaced.",
+  "configuration": "Unchanged FieldMarks.pde defaults: seed42, 640x640 JAVA2D density1, 25600 marks, maxLength16, original palette, line marks.",
+  "render_budget": 1,
+  "acceptance": "Assert native JAVA2D, dimensions/density, retained count and default settings; invoke actual S-key handler; require one readable 640x640 PNG; inspect the resulting mark field. No exact raster match threshold.",
+  "output": ".work/reproductions/cp1-pde",
+  "excluded_claims": ["human usability", "physical keyboard event delivery", "P2D/P3D", "other hosts", "upstream corpus equality"]
+}

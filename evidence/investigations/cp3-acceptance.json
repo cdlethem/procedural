@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "owner": "root",
+  "scope": "Independent Python ordered-acceptance arithmetic using separately checked Python proposal oracle. Three seeded profiles and 5000-to-10000 accepted prefix; no radial, render or public port claim.",
+  "input_sha256": {
+    "tools/diagnostics/cp3/check-acceptance.py": "d8015f3a46b1e140f11a250037f8f1dadca542ba07afb2c9340cc4a607392ad2",
+    "tools/diagnostics/cp3/stream_oracle.py": "15759e935da84ee77c933df3a2dd51e2f52ef4e2b64cd036408ed78ea9d88555",
+    ".work/diagnostics/cp3/spacing-choice-numeric.json": "5c186dedf649f1629807548ac6ec76dcb68041bbc5d61bf82addab8e395d06da",
+    "tools/diagnostics/cp3/SpacingChoice.java": "6456603fdc26daa438ad9f4a319ca02621b79d2391e7cfcf3bf8d010b16e644c",
+    "evidence/parameter-experiments/cp3-placement/experiment.json": "5f0315e5d52a4e963833776afa34dc4334f9fae1fcf246b7640ef22ed699e6e6"
+  },
+  "profiles": {
+    "base-rings": {
+      "accepted_count": 424,
+      "comparisons": 362139,
+      "accepted_sha256": "1626b8638612a429b1e7954a2320389bd99e794bd9296088004bf70fe70a5caf"
+    },
+    "more-separation": {
+      "accepted_count": 353,
+      "comparisons": 255509,
+      "accepted_sha256": "32a253e17a16ee1e82b70194ec3c46b2a97b0509b76eb66e2f198e5d354064f6"
+    },
+    "smaller-forms": {
+      "accepted_count": 613,
+      "comparisons": 763026,
+      "accepted_sha256": "fbb8dfbb61d26123a43a96204dc5ce781975ea74c279b4b13bb53dbed258256d"
+    }
+  },
+  "extended_baseline": {
+    "accepted_count": 517,
+    "comparisons": 771500,
+    "accepted_sha256": "140488196d14eea1b54244541eb9a99cc719ce3803ad52738ccfd4d704be3525"
+  },
+  "accepted_prefix_matches": true
+}

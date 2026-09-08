@@ -1,0 +1,178 @@
+package org.procedurals.android.internal;
+
+import android.graphics.Bitmap;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.procedurals.color.CyclicPalette;
+import processing.a2d.PGraphicsAndroid2D;
+import processing.core.PApplet;
+
+/**
+ * Registered Android CP1 command-route template; runner stages MarkField.java
+ * in this package and replaces only the reviewed four-case call placeholder.
+ * This does not claim cross-host pixel identity or upstream reproduction.
+ */
+public final class AndroidFieldMarks {
+    private static final MarkField MARKS = MarkField.create(42, 160, 160, 4);
+
+    private AndroidFieldMarks() { }
+
+    private static Map<String,Object> map(Object... pairs) {
+        Map<String,Object> result = new LinkedHashMap<String,Object>();
+        for (int index = 0; index < pairs.length; index += 2)
+            result.put((String) pairs[index], pairs[index + 1]);
+        return result;
+    }
+
+    private static List<Double> point(double x, double y) { return Arrays.asList(x, y); }
+
+    private static String hex(byte[] values) {
+        StringBuilder result = new StringBuilder();
+        for (byte value : values) result.append(String.format("%02x", value & 255));
+        return result.toString();
+    }
+
+    private static String modelHash(MarkField marks) throws Exception {
+        MessageDigest hash = MessageDigest.getInstance("SHA-256");
+        ByteBuffer values = ByteBuffer.allocate(40);
+        for (int index = 0; index < marks.x.length; index++) {
+            values.clear();
+            values.putDouble(marks.x[index]).putDouble(marks.y[index]).putDouble(marks.heading[index]);
+            values.putDouble(marks.lengthFactor[index]).putDouble(marks.colourCycles[index]);
+            hash.update(values.array());
+        }
+        return hex(hash.digest());
+    }
+
+    private static void put(JSONObject object, String key, Object value) {
+        try { object.put(key, value); }
+        catch (JSONException error) { throw new IllegalStateException("Cannot construct CP1 JSON", error); }
+    }
+
+    private static void check(boolean condition, String message) {
+        if (!condition) throw new AssertionError(message);
+    }
+
+    /** The retained bitmap reference is used only to prove post-callback recycle ownership. */
+    private static void checkReleased(PGraphicsAndroid2D surface, Bitmap bitmap) {
+        check(bitmap != null && bitmap.isRecycled(), "completed Android CP1 Bitmap was not recycled");
+        check(surface.canvas == null && surface.pixels == null && surface.parent == null &&
+            surface.getNative() == null, "completed Android CP1 surface retained native ownership");
+    }
+
+    private static void writePng(Bitmap bitmap, File target) {
+        try (FileOutputStream stream = new FileOutputStream(target)) {
+            if (!bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream))
+                throw new IllegalStateException("Android PNG compression failed");
+            stream.getFD().sync();
+        } catch (IOException error) {
+            throw new IllegalStateException("Cannot write Android CP1 image", error);
+        }
+    }
+
+    private static JSONObject render(final AndroidFrameHost host, File outputDirectory, final String id,
+                                     double maxLength, Integer[] colors, boolean bars) throws Exception {
+        if (!outputDirectory.isDirectory() && !outputDirectory.mkdirs())
+            throw new IOException("Cannot create Android CP1 output directory");
+        final String before = modelHash(MARKS);
+        CyclicPalette palette = CyclicPalette.create(Collections.singletonMap("colors", Arrays.asList(colors)));
+        Android2DFrame frame = new Android2DFrame(host);
+        PGraphicsAndroid2D completed = null;
+        boolean consumed = false;
+        MessageDigest geometry = MessageDigest.getInstance("SHA-256");
+        MessageDigest color = MessageDigest.getInstance("SHA-256");
+        ByteBuffer bits = ByteBuffer.allocate(4);
+        List<Object> batch = new ArrayList<Object>();
+        int omitted = 0;
+        File output = new File(outputDirectory, id + ".png");
+        final Bitmap[] callbackBitmap = new Bitmap[1];
+        try {
+            frame.begin(map("width", 640, "height", 640, "density", 1, "background", 0xece7da));
+            for (int index = 0; index < MARKS.x.length; index++) {
+                double x = MARKS.x[index], y = MARKS.y[index];
+                double cosine = Math.cos(MARKS.heading[index]), sine = Math.sin(MARKS.heading[index]);
+                double length = maxLength * MARKS.lengthFactor[index];
+                double dx = .5 * length * cosine, dy = .5 * length * sine;
+                if (length == 0) { omitted++; continue; }
+                int rgb = palette.sample(MARKS.colourCycles[index]);
+                List<List<Double>> points;
+                Map<String,Object> command;
+                if (bars) {
+                    double nx = -sine * 1.25, ny = cosine * 1.25;
+                    points = Arrays.asList(point(x - dx - nx, y - dy - ny), point(x + dx - nx, y + dy - ny),
+                        point(x + dx + nx, y + dy + ny), point(x - dx + nx, y - dy + ny));
+                    command = map("kind", "quad2", "vertices", points, "rgb", rgb, "opacity8", 180);
+                } else {
+                    points = Arrays.asList(point(x - dx, y - dy), point(x + dx, y + dy));
+                    command = map("kind", "segment2", "from", points.get(0), "to", points.get(1),
+                        "rgb", rgb, "opacity8", 180, "width", 1, "cap", "round");
+                }
+                for (List<Double> location : points) for (double value : location) {
+                    bits.clear(); bits.putFloat((float) value); geometry.update(bits.array());
+                }
+                bits.clear(); bits.putInt((180 << 24) | rgb); color.update(bits.array());
+                batch.add(command);
+                if (batch.size() == 4096) { frame.batch(batch); batch.clear(); }
+            }
+            frame.batch(batch);
+            if (frame.count() != MARKS.x.length - omitted || !before.equals(modelHash(MARKS)))
+                throw new AssertionError("command count or retained CP1 model changed");
+            completed = frame.end();
+            final PGraphicsAndroid2D outputSurface = completed;
+            host.consumeCompleted(outputSurface, new AndroidFrameHost.SurfaceConsumer() {
+                @Override public void accept(PGraphicsAndroid2D surface) {
+                    Object nativeValue = surface.getNative();
+                    if (!(nativeValue instanceof Bitmap) || ((Bitmap) nativeValue).isRecycled())
+                        throw new IllegalStateException("completed Android CP1 Bitmap is unavailable");
+                    callbackBitmap[0] = (Bitmap) nativeValue;
+                    writePng(callbackBitmap[0], output);
+                }
+            });
+            consumed = true;
+            checkReleased(outputSurface, callbackBitmap[0]);
+            host.releaseCompleted(outputSurface);
+            checkReleased(outputSurface, callbackBitmap[0]);
+        } finally {
+            // consumeCompleted owns the successful lease and releases it in finally.
+            if (completed != null && !consumed) host.releaseCompleted(completed);
+            if (completed == null && !"completed".equals(frame.state())) frame.abort();
+        }
+        JSONObject result = new JSONObject();
+        put(result, "id", id);
+        put(result, "kind", bars ? "bar" : "line");
+        put(result, "model_sha256", before);
+        put(result, "geometry_sha256", hex(geometry.digest()));
+        put(result, "color_sha256", hex(color.digest()));
+        put(result, "commands", frame.count());
+        put(result, "omitted_zero_length", omitted);
+        put(result, "image_path", output.getName());
+        return result;
+    }
+
+    /** The runner injects exactly the four reviewed plan cases at the marker below. */
+    public static JSONObject run(PApplet parent, AndroidFrameHost host, File outputDirectory) throws Exception {
+        if (parent == null || host == null || outputDirectory == null || host.parent != parent)
+            throw new IllegalArgumentException("matching parent, host, and output directory are required");
+        JSONArray cases = new JSONArray();
+        /* REGISTERED_ANDROID_CP1_CALLS */
+        JSONObject result = new JSONObject();
+        put(result, "passed", true);
+        put(result, "profile", "drawing.fresh-raster-2d");
+        put(result, "scope", "actual Android ANDROID2D CP1 command route; no cross-host pixel identity or upstream reproduction claim");
+        put(result, "model_records", MARKS.x.length);
+        put(result, "cases", cases);
+        return result;
+    }
+}

@@ -1,0 +1,499 @@
+{
+  "status": "failed",
+  "part": "lifecycle",
+  "input_sha256": {
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFrame.java": "835daf36db3736adad6834209c39fe2b6530362dc0f57febc449143e6c09b570",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidFrameHost.java": "64a3ec481e69dc0bf9597ea03d4ed0864dc7002a8f05f1a0b852809503f9e2c7",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSurface.java": "bb2efe0fcce61461e847f9415b6cb7dae80a4f7ccb2e220b1e0009083c8c3604",
+    "tests/native/AndroidActivityLifecycle.java": "e598c96ec3b9ba5c164d9d39c0d0908ed68c1141d3f4e450d6176a3a7f2cb782",
+    "tests/native/android-lifecycle/app/src/main/java/org/procedurals/lifecycleprobe/CoverActivity.java": "a798269dbf017852245730ad4f348af9eca0b4a7e40413052132cbf113b15af1",
+    "tests/native/android-lifecycle/app/src/main/java/org/procedurals/lifecycleprobe/FinishReceiver.java": "c34ceff90d8d6c8d93983da2ddfd8333aa71df9088cc2fbf0cf4e662065da0ca",
+    "tests/native/android-lifecycle/app/src/main/java/org/procedurals/lifecycleprobe/MainActivity.java": "682947bd6c3737491ba4287d4d471c73671ecb027cba90b92594f7391e3562ef",
+    "tests/native/android-bootstrap/app/build.gradle": "ccbeb0814b1137d7858219ea9575d6aa110b123cdcf8cd8a9af0d5f63614ee39",
+    "tests/native/android-bootstrap/build.gradle": "301b72f0f10c630de8eca0a5a8374b2fe5e0c69724ba49720793da15cf95b083",
+    "tests/native/android-bootstrap/gradle.properties": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e",
+    "tests/native/android-bootstrap/settings.gradle": "acaba98235948bfc23736254a68c0796d822a33f513f0c5b86cb47af43acf398",
+    "tests/native/android-lifecycle/app/src/main/AndroidManifest.xml": "37cc583451beed44e4ed4b2d2a4524f09c80ecb2ef1bbf955e089702988fd79b",
+    ".work/toolchains/android/mode-412/AndroidMode/processing-core.zip": "0cdd89e2511a97728092619e89148b46a52700e5957d81f234db8fd3b1652338",
+    "tools/run_android_lifecycle.py": "720f69ebe4ad73526170dfc7c609da49de4efe7cac5ac494e45584cca3854e4e",
+    "tools/run_android_adapter.py": "7728b0948f5fdf71817746f89f828c3e08ca7c77ba04d6c1fef2d506f7835c10",
+    "catalog/drawing/fresh-raster-2d.json": "d84a3463ee8fd27b92d0e583be8475e2b6bc2a166e3d3f66b19ac4fc3305dc92",
+    "design/android-adapter-validation.md": "a8ea7be3bda71a9ee8aab8afd14f0a780613538a445b2ef755f9e885fe10fcdd",
+    "design/android-activity-lifecycle-validation.md": "f235f6dad284ca8fbbee3ad1f0c2cf83e196f9bffab6ab66d80c98a60599f44d",
+    "design/android-lifecycle-preflight-decision.md": "379e9a0aeea4a05c4110cb596fb9b93b498ce16cac7aab0a85abeda07a46288d",
+    "evidence/conformance/android-environment.json": "9b6b2bc931829fd34da7629fa2cfdde82d02e24d24cab6bb2bfb6bbacdc00864",
+    ".work/toolchains/android/sdk/platforms/android-33/android.jar": "fd628aa21321859a9035c6aae4b084b7d3fdb3f230be5cd5ec76541e32f7c963",
+    "evidence/conformance/android-adapter-lifecycle-initial.json": "46706559b5eb82c46ec1738d093fbc36cefd1a36b3b0080b772483aa12d1e4b8",
+    "design/android-lifecycle-correction.md": "8fc1d04eb572b4ef21f27d47c8f08b397b93e195bf1d8c5dabcb87ccd34aaf3f"
+  },
+  "apk_sha256": "c97f4c35598f38ac21303751994152270efa7dc53c2ab50d784a0c6954a9d078",
+  "markers": [
+    {
+      "phase": "active-ready",
+      "value": {
+        "phase": "active-ready",
+        "nonce": "0df3aed9-4d11-4269-b803-11f17245f87a",
+        "sequence": 1,
+        "thread_id": 48,
+        "thread_name": "Animation Thread",
+        "api": 33,
+        "renderer": "processing.a2d.PGraphicsAndroid2D",
+        "frame_state": "active",
+        "host_epoch": 0,
+        "host_ready": true,
+        "counts": {
+          "pause": 0,
+          "resume": 0,
+          "pre": 0,
+          "special": 0,
+          "draw": 0,
+          "input": 0,
+          "completed_stages": 0
+        },
+        "surfaces": [
+          {
+            "label": "active-1",
+            "frame_state": "active",
+            "surface_identity": 78723498,
+            "bitmap_identity": 42174875,
+            "width": 32,
+            "height": 24,
+            "pixel_width": 32,
+            "pixel_height": 24,
+            "bitmap_recycled": false,
+            "canvas_present": true,
+            "pixels_present": false,
+            "native_present": true,
+            "parent_present": true,
+            "native_null_calls": 0,
+            "consumer_calls": 0,
+            "explicit_release_calls": 0
+          }
+        ],
+        "failures": [],
+        "input_thread_id": -1,
+        "input_thread_name": null,
+        "pre_at_resume": [
+          -1,
+          -1,
+          -1
+        ],
+        "pre_before_stage": [
+          -1,
+          -1,
+          -1
+        ],
+        "callback_journal": [],
+        "passed": true
+      }
+    },
+    {
+      "phase": "pause-1",
+      "value": {
+        "phase": "pause-1",
+        "nonce": "0df3aed9-4d11-4269-b803-11f17245f87a",
+        "sequence": 2,
+        "thread_id": 2,
+        "thread_name": "main",
+        "api": 33,
+        "renderer": "processing.a2d.PGraphicsAndroid2D",
+        "frame_state": "aborted",
+        "host_epoch": 1,
+        "host_ready": false,
+        "counts": {
+          "pause": 1,
+          "resume": 0,
+          "pre": 0,
+          "special": 0,
+          "draw": 0,
+          "input": 0,
+          "completed_stages": 0
+        },
+        "surfaces": [
+          {
+            "label": "active-1",
+            "frame_state": "aborted",
+            "surface_identity": 78723498,
+            "bitmap_identity": 42174875,
+            "width": 32,
+            "height": 24,
+            "pixel_width": 32,
+            "pixel_height": 24,
+            "bitmap_recycled": true,
+            "canvas_present": false,
+            "pixels_present": false,
+            "native_present": false,
+            "parent_present": false,
+            "native_null_calls": 1,
+            "consumer_calls": 0,
+            "explicit_release_calls": 0
+          }
+        ],
+        "failures": [],
+        "input_thread_id": -1,
+        "input_thread_name": null,
+        "pre_at_resume": [
+          -1,
+          -1,
+          -1
+        ],
+        "pre_before_stage": [
+          -1,
+          -1,
+          -1
+        ],
+        "callback_journal": [
+          {
+            "name": "pause",
+            "thread_id": 2,
+            "thread_name": "main"
+          }
+        ],
+        "passed": true
+      }
+    },
+    {
+      "phase": "resume-1",
+      "value": {
+        "phase": "resume-1",
+        "nonce": "0df3aed9-4d11-4269-b803-11f17245f87a",
+        "sequence": 3,
+        "thread_id": 2,
+        "thread_name": "main",
+        "api": 33,
+        "renderer": "processing.a2d.PGraphicsAndroid2D",
+        "frame_state": "aborted",
+        "host_epoch": 1,
+        "host_ready": false,
+        "counts": {
+          "pause": 1,
+          "resume": 1,
+          "pre": 0,
+          "special": 0,
+          "draw": 0,
+          "input": 0,
+          "completed_stages": 0
+        },
+        "surfaces": [
+          {
+            "label": "active-1",
+            "frame_state": "aborted",
+            "surface_identity": 78723498,
+            "bitmap_identity": 42174875,
+            "width": 32,
+            "height": 24,
+            "pixel_width": 32,
+            "pixel_height": 24,
+            "bitmap_recycled": true,
+            "canvas_present": false,
+            "pixels_present": false,
+            "native_present": false,
+            "parent_present": false,
+            "native_null_calls": 1,
+            "consumer_calls": 0,
+            "explicit_release_calls": 0
+          }
+        ],
+        "failures": [],
+        "input_thread_id": -1,
+        "input_thread_name": null,
+        "pre_at_resume": [
+          0,
+          -1,
+          -1
+        ],
+        "pre_before_stage": [
+          -1,
+          -1,
+          -1
+        ],
+        "callback_journal": [
+          {
+            "name": "pause",
+            "thread_id": 2,
+            "thread_name": "main"
+          },
+          {
+            "name": "resume",
+            "thread_id": 2,
+            "thread_name": "main"
+          }
+        ],
+        "passed": true
+      }
+    },
+    {
+      "phase": "restore-idle-1",
+      "value": {
+        "phase": "restore-idle-1",
+        "nonce": "0df3aed9-4d11-4269-b803-11f17245f87a",
+        "sequence": 4,
+        "thread_id": 48,
+        "thread_name": "Animation Thread",
+        "api": 33,
+        "renderer": "processing.a2d.PGraphicsAndroid2D",
+        "frame_state": "aborted",
+        "host_epoch": 1,
+        "host_ready": false,
+        "counts": {
+          "pause": 1,
+          "resume": 1,
+          "pre": 0,
+          "special": 8,
+          "draw": 0,
+          "input": 0,
+          "completed_stages": 0
+        },
+        "surfaces": [
+          {
+            "label": "active-1",
+            "frame_state": "aborted",
+            "surface_identity": 78723498,
+            "bitmap_identity": 42174875,
+            "width": 32,
+            "height": 24,
+            "pixel_width": 32,
+            "pixel_height": 24,
+            "bitmap_recycled": true,
+            "canvas_present": false,
+            "pixels_present": false,
+            "native_present": false,
+            "parent_present": false,
+            "native_null_calls": 1,
+            "consumer_calls": 0,
+            "explicit_release_calls": 0
+          }
+        ],
+        "failures": [],
+        "input_thread_id": -1,
+        "input_thread_name": null,
+        "pre_at_resume": [
+          0,
+          -1,
+          -1
+        ],
+        "pre_before_stage": [
+          -1,
+          -1,
+          -1
+        ],
+        "callback_journal": [
+          {
+            "name": "pause",
+            "thread_id": 2,
+            "thread_name": "main"
+          },
+          {
+            "name": "resume",
+            "thread_id": 2,
+            "thread_name": "main"
+          },
+          {
+            "name": "special",
+            "thread_id": 48,
+            "thread_name": "Animation Thread"
+          },
+          {
+            "name": "special",
+            "thread_id": 48,
+            "thread_name": "Animation Thread"
+          },
+          {
+            "name": "special",
+            "thread_id": 48,
+            "thread_name": "Animation Thread"
+          },
+          {
+            "name": "special",
+            "thread_id": 48,
+            "thread_name": "Animation Thread"
+          },
+          {
+            "name": "special",
+            "thread_id": 48,
+            "thread_name": "Animation Thread"
+          },
+          {
+            "name": "special",
+            "thread_id": 48,
+            "thread_name": "Animation Thread"
+          },
+          {
+            "name": "special",
+            "thread_id": 48,
+            "thread_name": "Animation Thread"
+          },
+          {
+            "name": "special",
+            "thread_id": 48,
+            "thread_name": "Animation Thread"
+          }
+        ],
+        "passed": true
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "cover": "Starting: Intent { cmp=org.procedurals.lifecycleprobe/.CoverActivity }\nStatus: ok\nLaunchState: WARM\nActivity: org.procedurals.lifecycleprobe/.CoverActivity\nTotalTime: 1998\nWaitTime: 2219\nComplete\n"
+    },
+    {
+      "verified_top": [
+        "topResumedActivity=ActivityRecord{30c5665 u0 org.procedurals.lifecycleprobe/.CoverActivity} t11}"
+      ],
+      "verified_window_focus": [
+        "mCurrentFocus=Window{10a4bb6 u0 org.procedurals.lifecycleprobe/org.procedurals.lifecycleprobe.CoverActivity}"
+      ]
+    },
+    {
+      "verified_top": [
+        "topResumedActivity=ActivityRecord{7ca0eed u0 org.procedurals.lifecycleprobe/.MainActivity} t11}"
+      ],
+      "verified_window_focus": [
+        "mCurrentFocus=Window{fb89a7d u0 org.procedurals.lifecycleprobe/org.procedurals.lifecycleprobe.MainActivity}"
+      ]
+    }
+  ],
+  "attempt": "corrective",
+  "scope": "Actual Activity lifecycle on pinned Android runtime; test-only bounded consume race",
+  "install": "Performing Streamed Install\nSuccess\n",
+  "launch": "Starting: Intent { cmp=org.procedurals.lifecycleprobe/.MainActivity }\nStatus: ok\nLaunchState: COLD\nActivity: org.procedurals.lifecycleprobe/.MainActivity\nTotalTime: 8116\nWaitTime: 8426\nComplete\n",
+  "native": {
+    "phase": "result",
+    "nonce": "0df3aed9-4d11-4269-b803-11f17245f87a",
+    "sequence": 7,
+    "thread_id": 2,
+    "thread_name": "main",
+    "api": 33,
+    "renderer": "processing.a2d.PGraphicsAndroid2D",
+    "frame_state": "aborted",
+    "host_epoch": 4,
+    "host_ready": false,
+    "counts": {
+      "pause": 2,
+      "resume": 1,
+      "pre": 0,
+      "special": 8,
+      "draw": 0,
+      "input": 1,
+      "completed_stages": 0
+    },
+    "surfaces": [
+      {
+        "label": "active-1",
+        "frame_state": "aborted",
+        "surface_identity": 78723498,
+        "bitmap_identity": 42174875,
+        "width": 32,
+        "height": 24,
+        "pixel_width": 32,
+        "pixel_height": 24,
+        "bitmap_recycled": true,
+        "canvas_present": false,
+        "pixels_present": false,
+        "native_present": false,
+        "parent_present": false,
+        "native_null_calls": 1,
+        "consumer_calls": 0,
+        "explicit_release_calls": 0
+      }
+    ],
+    "failures": [
+      "java.lang.AssertionError: pause-2 has no capture",
+      "java.lang.AssertionError: onDestroy active has no capture",
+      "java.lang.AssertionError: expected three input/draw stages"
+    ],
+    "input_thread_id": 2,
+    "input_thread_name": "main",
+    "pre_at_resume": [
+      0,
+      -1,
+      -1
+    ],
+    "pre_before_stage": [
+      -1,
+      -1,
+      -1
+    ],
+    "callback_journal": [
+      {
+        "name": "pause",
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "name": "resume",
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "name": "special",
+        "thread_id": 48,
+        "thread_name": "Animation Thread"
+      },
+      {
+        "name": "special",
+        "thread_id": 48,
+        "thread_name": "Animation Thread"
+      },
+      {
+        "name": "special",
+        "thread_id": 48,
+        "thread_name": "Animation Thread"
+      },
+      {
+        "name": "special",
+        "thread_id": 48,
+        "thread_name": "Animation Thread"
+      },
+      {
+        "name": "special",
+        "thread_id": 48,
+        "thread_name": "Animation Thread"
+      },
+      {
+        "name": "special",
+        "thread_id": 48,
+        "thread_name": "Animation Thread"
+      },
+      {
+        "name": "special",
+        "thread_id": 48,
+        "thread_name": "Animation Thread"
+      },
+      {
+        "name": "special",
+        "thread_id": 48,
+        "thread_name": "Animation Thread"
+      },
+      {
+        "name": "input",
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "name": "pause",
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "name": "onDestroy",
+        "thread_id": 2,
+        "thread_name": "main"
+      },
+      {
+        "name": "dispose",
+        "thread_id": 2,
+        "thread_name": "main"
+      }
+    ],
+    "passed": false
+  },
+  "failure": "Lifecycle assertion failed before completed-ready",
+  "runtime_errors": ""
+}

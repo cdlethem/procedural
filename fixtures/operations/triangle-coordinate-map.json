@@ -1,0 +1,1398 @@
+{
+  "cases": [
+    {
+      "categories": [
+        "empty",
+        "ordinary"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "empty-ordinary",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": []
+      },
+      "output": {
+        "points": []
+      },
+      "points_bits_hex": []
+    },
+    {
+      "categories": [
+        "empty",
+        "repeated"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "empty-repeated-triangle",
+      "input": {
+        "triangle": [
+          [
+            3.0,
+            -2.0
+          ],
+          [
+            3.0,
+            -2.0
+          ],
+          [
+            3.0,
+            -2.0
+          ]
+        ],
+        "unitCoordinates": []
+      },
+      "output": {
+        "points": []
+      },
+      "points_bits_hex": []
+    },
+    {
+      "categories": [
+        "empty",
+        "tiny-noncollinear"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "empty-tiny-noncollinear",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.409919865102884e-181,
+            0.0
+          ],
+          [
+            0.0,
+            2.409919865102884e-181
+          ]
+        ],
+        "unitCoordinates": []
+      },
+      "output": {
+        "points": []
+      },
+      "points_bits_hex": []
+    },
+    {
+      "categories": [
+        "endpoint",
+        "opposite-sign",
+        "negative-zero"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "endpoint-u-zero-extreme-and-negative-zero",
+      "input": {
+        "triangle": [
+          [
+            -1.7976931348623157e+308,
+            -0.0
+          ],
+          [
+            1.7976931348623157e+308,
+            1.0
+          ],
+          [
+            1.7976931348623157e+308,
+            -1.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.5
+          ],
+          [
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            -1.7976931348623157e+308,
+            0.0
+          ],
+          [
+            -1.7976931348623157e+308,
+            0.0
+          ],
+          [
+            -1.7976931348623157e+308,
+            0.0
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "ffefffffffffffff",
+          "0000000000000000"
+        ],
+        [
+          "ffefffffffffffff",
+          "0000000000000000"
+        ],
+        [
+          "ffefffffffffffff",
+          "0000000000000000"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "endpoint",
+        "opposite-sign",
+        "negative-zero"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "endpoint-u-one-v-zero",
+      "input": {
+        "triangle": [
+          [
+            -1.7976931348623157e+308,
+            4.0
+          ],
+          [
+            -1.7976931348623157e+308,
+            -0.0
+          ],
+          [
+            1.7976931348623157e+308,
+            9.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            1.0,
+            0.0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            -1.7976931348623157e+308,
+            0.0
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "ffefffffffffffff",
+          "0000000000000000"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "endpoint",
+        "opposite-sign"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "endpoint-u-one-v-one",
+      "input": {
+        "triangle": [
+          [
+            -1.7976931348623157e+308,
+            4.0
+          ],
+          [
+            -1.7976931348623157e+308,
+            -0.0
+          ],
+          [
+            1.7976931348623157e+308,
+            9.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            1.7976931348623157e+308,
+            9.0
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "7fefffffffffffff",
+          "4022000000000000"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "ordinary",
+        "ordered-units"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "ordinary-quarter-half",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.25,
+            0.5
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            0.5,
+            0.5
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "3fe0000000000000",
+          "3fe0000000000000"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "duplicate-pairs",
+        "order"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "duplicate-unit-pairs-retain-duplicates",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.25,
+            0.5
+          ],
+          [
+            0.25,
+            0.5
+          ],
+          [
+            0.75,
+            0.5
+          ],
+          [
+            0.25,
+            0.5
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            4.0,
+            2.0
+          ],
+          [
+            4.0,
+            2.0
+          ],
+          [
+            6.928203230275509,
+            3.4641016151377544
+          ],
+          [
+            4.0,
+            2.0
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "4010000000000000",
+          "4000000000000000"
+        ],
+        [
+          "4010000000000000",
+          "4000000000000000"
+        ],
+        [
+          "401bb67ae8584caa",
+          "400bb67ae8584caa"
+        ],
+        [
+          "4010000000000000",
+          "4000000000000000"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "vertex-order"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "reordered-vertices-change-coordinates",
+      "input": {
+        "triangle": [
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.25,
+            0.5
+          ],
+          [
+            0.75,
+            0.25
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            8.0,
+            2.0
+          ],
+          [
+            2.1435935394489825,
+            5.196152422706632
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "4020000000000000",
+          "4000000000000000"
+        ],
+        [
+          "400126145e9ecd58",
+          "4014c8dc2e423980"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "rounding-order",
+        "no-fma"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "nested-rounding-one-ulp-adversary",
+      "input": {
+        "triangle": [
+          [
+            1.0,
+            2.0
+          ],
+          [
+            3.0,
+            6.0
+          ],
+          [
+            -2.0,
+            11.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.0625,
+            0.7
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            0.625,
+            3.875
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "3fe4000000000000",
+          "400f000000000000"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "constant-coordinate",
+        "rounding"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "constant-one-affine-identity",
+      "input": {
+        "triangle": [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            3.0
+          ],
+          [
+            1.0,
+            -2.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            1.1102230246251565e-16,
+            0.2
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            1.0,
+            1.0000000105367122
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "3ff0000000000000",
+          "3ff0000002d413cd"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "constant-coordinate",
+        "endpoint-interval"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "constant-negative-max-interval",
+      "input": {
+        "triangle": [
+          [
+            -1.7976931348623157e+308,
+            -1.7976931348623157e+308
+          ],
+          [
+            -1.7976931348623157e+308,
+            -1.0
+          ],
+          [
+            -1.7976931348623157e+308,
+            1.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            1.1102230246251565e-16,
+            0.25
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            -1.7976931348623157e+308,
+            -1.7976931159205406e+308
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "ffefffffffffffff",
+          "ffeffffffa57d865"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "extrema",
+        "subnormal",
+        "near-one"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "minimum-subnormal-near-one-units",
+      "input": {
+        "triangle": [
+          [
+            -5e-324,
+            5e-324
+          ],
+          [
+            5e-324,
+            -5e-324
+          ],
+          [
+            1.7976931348623157e+308,
+            -1.7976931348623157e+308
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.9999999999999999,
+            0.9999999999999999
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            1.7976931348623153e+308,
+            -1.7976931348623153e+308
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "7feffffffffffffd",
+          "ffeffffffffffffd"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "tiny-noncollinear",
+        "no-determinant"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "tiny-noncollinear-underflowed-area",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.409919865102884e-181,
+            0.0
+          ],
+          [
+            0.0,
+            2.409919865102884e-181
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.25,
+            0.5
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            6.02479966275721e-182,
+            6.02479966275721e-182
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "1a50000000000000",
+          "1a50000000000000"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "collinear",
+        "collapsed"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "tiny-exact-collinear",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            2.409919865102884e-181,
+            2.409919865102884e-181
+          ],
+          [
+            4.819839730205768e-181,
+            4.819839730205768e-181
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.25,
+            0.5
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            1.807439898827163e-181,
+            1.807439898827163e-181
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "1a68000000000000",
+          "1a68000000000000"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "repeated",
+        "collapsed"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "fully-repeated-positive-count",
+      "input": {
+        "triangle": [
+          [
+            3.0,
+            -2.0
+          ],
+          [
+            3.0,
+            -2.0
+          ],
+          [
+            3.0,
+            -2.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            3.0,
+            -2.0
+          ],
+          [
+            3.0,
+            -2.0
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "4008000000000000",
+          "c000000000000000"
+        ],
+        [
+          "4008000000000000",
+          "c000000000000000"
+        ]
+      ]
+    },
+    {
+      "caller_pair_expression": "The first coordinate values are caller materializations such as U*V; this transform consumes them as given and has no RNG.",
+      "categories": [
+        "caller-biased-pairs",
+        "no-rng"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "source-motivated-biased-caller-pairs",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.125,
+            0.75
+          ],
+          [
+            0.5,
+            0.25
+          ],
+          [
+            0.0625,
+            0.9
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            1.4142135623730951,
+            2.121320343559643
+          ],
+          [
+            8.485281374238571,
+            1.4142135623730951
+          ],
+          [
+            0.3999999999999999,
+            1.8
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "3ff6a09e667f3bcd",
+          "4000f876ccdf6cda"
+        ],
+        [
+          "4020f876ccdf6cda",
+          "3ff6a09e667f3bcd"
+        ],
+        [
+          "3fd9999999999998",
+          "3ffccccccccccccd"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "missing-key"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "missing-unit-coordinates",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "missing-key"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "missing-triangle",
+      "input": {
+        "unitCoordinates": []
+      }
+    },
+    {
+      "categories": [
+        "extra-key"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "extra-property",
+      "input": {
+        "extra": 1,
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.25,
+            0.5
+          ],
+          [
+            0.75,
+            0.25
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "triangle-shape"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "triangle-wrong-length",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.25,
+            0.5
+          ],
+          [
+            0.75,
+            0.25
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "empty",
+        "triangle-validation",
+        "bool-number"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "empty-units-still-validates-triangle",
+      "input": {
+        "triangle": [
+          [
+            true,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ]
+        ],
+        "unitCoordinates": []
+      }
+    },
+    {
+      "categories": [
+        "bool-number"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "boolean-triangle-coordinate",
+      "input": {
+        "triangle": [
+          [
+            true,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.25,
+            0.5
+          ],
+          [
+            0.75,
+            0.25
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "bool-number",
+        "unit-domain"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "boolean-unit-coordinate",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            true,
+            0.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "units-carrier"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "unit-outer-wrong-carrier",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": {
+          "u": 0.0
+        }
+      }
+    },
+    {
+      "categories": [
+        "unit-shape"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "unit-row-wrong-shape",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.2
+          ],
+          [
+            0.3,
+            0.4
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "later-validation",
+        "unit-domain"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "later-unit-row-invalid",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.2,
+            0.3
+          ],
+          [
+            0.4,
+            1.1
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "unit-domain"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "unit-u-below-zero",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            -5e-324,
+            0.0
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "unit-domain"
+      ],
+      "error": "INVALID_INPUT",
+      "id": "unit-v-above-one",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.0,
+            1.0000000000000002
+          ]
+        ]
+      }
+    },
+    {
+      "categories": [
+        "seeded-equivalence",
+        "generated-units"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "units-from-seed-zero-count-one",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.8702547766733915,
+            0.601693955482915
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            5.945112642470186,
+            4.490439438317304
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "4017c7cb9bc9c849",
+          "4011f635c190f739"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "seeded-equivalence",
+        "generated-units"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "units-from-seed-42-count-4",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.4137016632594168,
+            0.9697872884571552
+          ],
+          [
+            0.0039839965756982565,
+            0.5395373492501676
+          ],
+          [
+            0.6500837004277855,
+            0.5947961988858879
+          ],
+          [
+            0.6846020163502544,
+            0.5226038002874702
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            0.3109233371774172,
+            4.990109869015513
+          ],
+          [
+            0.46502239671014073,
+            0.27244006745648147
+          ],
+          [
+            5.227308503742674,
+            3.836567203813597
+          ],
+          [
+            6.320013807893353,
+            3.4592475137665666
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "3fd3e62aff2f5f3d",
+          "4013f5df5c8b7951"
+        ],
+        [
+          "3fddc2ed4c71c413",
+          "3fd16fa876f61eab"
+        ],
+        [
+          "4014e8c38f76b5bd",
+          "400eb14a256a48d7"
+        ],
+        [
+          "401947b1b31cae78",
+          "400bac89f5e32c78"
+        ]
+      ]
+    },
+    {
+      "categories": [
+        "seeded-equivalence",
+        "generated-units"
+      ],
+      "comparison": {
+        "mode": "binary64-exact"
+      },
+      "id": "units-from-seed-max-count-one",
+      "input": {
+        "triangle": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            0.0,
+            8.0
+          ]
+        ],
+        "unitCoordinates": [
+          [
+            0.07711399556137621,
+            0.5363358960021287
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            2.060108341719588,
+            1.1914983754303174
+          ]
+        ]
+      },
+      "points_bits_hex": [
+        [
+          "40007b1a150f3829",
+          "3ff3106099bb5d91"
+        ]
+      ]
+    }
+  ],
+  "catalog_sha256": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+  "cross_case_checks": [],
+  "fixture_format": "triangle-points-output",
+  "fixture_status": "generated shared-contract vectors; native implementation validation is separate",
+  "generator": {
+    "path": "tools/generate_triangle_points_fixtures.py",
+    "reference": "Independent Python binary64 nested endpoint-aware clamped interpolation; no public-core or target implementation import.",
+    "sha256": "358cafdc640770e3c27e6816e3536d1e297d4285836bcad8d009b78aef9e5d23"
+  },
+  "mapping_provenance": {
+    "arithmetic": "L(A,L(B,C,v),sqrt(u)) with strict opposite signs, endpoint branches, final interval clamp and canonical +0",
+    "draws_per_pair": 0,
+    "sqrt_scope": "This independent Python fixture oracle relies on host math.sqrt for expected binary64 bits; it is not an arbitrary-precision proof of correctly rounded sqrt. Future Java/other targets must meet the catalog's correctly-rounded binary64 sqrt requirement."
+  },
+  "native_only_cases": [
+    {
+      "description": "For sampling.triangle-coordinate-map-2d, NaN, +/-Infinity and numeric carriers that cannot convert to binary64 are INVALID_INPUT. Strict JSON cannot carry nonfinite literals.",
+      "id": "nonfinite-and-overflowing-numeric-carriers"
+    },
+    {
+      "description": "Recognized wrong carriers (Java arbitrary Number subclasses, JavaScript class/typed-array pairs, Python custom mapping/list containers) are INVALID_INPUT. Active getters/proxies/custom hooks are outside passive interchange and need not be read or universally detected.",
+      "id": "passive-carriers-only"
+    }
+  ],
+  "native_ownership_access_requirements": {
+    "requirements": [
+      "Mutating every caller config/triangle/pair container after success cannot alter retained points, pointAt or toValues output.",
+      "pointAt and toValues return detached values; a failed fresh materialization leaves the completed result usable.",
+      "pointInto validates index, destination, offset and both writable binary64 slots before writing; every failure preserves destination sentinels.",
+      "Access error precedence is INVALID_INDEX, INDEX_OUT_OF_RANGE, then INVALID_OUTPUT; bool and unsafe numeric indices are INVALID_INDEX.",
+      "Complete static validation precedes output-sized allocation and seeded RNG initialization. Controlled allocation failure, where executable, exposes no partial result; otherwise record source proof and explicit unexecuted status.",
+      "Seeded inner loops retain packed scalar output without per-point objects; measure work/memory at native review rather than claiming it from these fixtures."
+    ],
+    "status": "required for future native ports; not executed by these pure JSON fixtures"
+  },
+  "operation": "sampling.triangle-coordinate-map-2d",
+  "version": "0.1.0"
+}

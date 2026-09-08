@@ -1,0 +1,137 @@
+{
+  "id": "cp3-placement-controls",
+  "status": "planned",
+  "owner": "root",
+  "reviewer": "Sol",
+  "question": "Does an explicit minimum radius give useful control over the smallest forms, and does extending a finite attempt budget visibly fill gaps while retaining the accepted prefix?",
+  "decision": "Resolve the two remaining control/edit evidence gaps before freezing the seeded placement contract; no continuous recommended ranges or defaults.",
+  "hypothesis": "Raising the radius floor from4to8 removes the finest rings; extending5000to10000 proposals adds circles in previously empty space while preserving every earlier accepted circle and source-index colour.",
+  "baseline": {
+    "kind": "preserved first CP3 private mechanism baseline, not upstream source reproduction",
+    "image": ".work/experiments/cp3-placement/base-rings.png",
+    "image_sha256": "d9b3cbaf32ba3f817582e0ded52aa3afe0a150e3147a403c542fe471d2d59485",
+    "result": "evidence/parameter-experiments/cp3-placement/result.json",
+    "result_sha256": "d5f729b829b44e62b5b104141520562c7ce442deb25a4953d991565e755b1b7e",
+    "configuration": "evidence/parameter-experiments/cp3-placement/experiment.json",
+    "configuration_sha256": "5f0315e5d52a4e963833776afa34dc4334f9fae1fcf246b7640ef22ed699e6e6",
+    "seed": 42,
+    "dimensions": [
+      640,
+      640
+    ],
+    "renderer": "Processing4.5.6 JAVA2D",
+    "frame": 1,
+    "rerender": false
+  },
+  "source_sketches": [
+    "2018/Generativos/caramelo",
+    "2018/Generativos/candy",
+    "2017/Generativos/studio"
+  ],
+  "provenance": [
+    "design/capabilities/cp3-packing-source-audit.md",
+    "design/capabilities/cp3-placement-walkthrough.md",
+    "design/capabilities/cp3-placement-visual-review.md",
+    "evidence/parameter-experiments/cp3-placement/decision.md"
+  ],
+  "parameter": {
+    "name": "minimumRadius and attempts, independently",
+    "default": null,
+    "unit": "pixels and proposal count"
+  },
+  "values": {
+    "minimumRadius": [
+      4,
+      8
+    ],
+    "attempts": [
+      5000,
+      10000
+    ]
+  },
+  "prototype": {
+    "source": "tools/diagnostics/cp3/SpacingChoice.java",
+    "source_sha256": "6456603fdc26daa438ad9f4a319ca02621b79d2391e7cfcf3bf8d010b16e644c",
+    "method": "Exact one-occurrence substitution into separate ignored temporary source/build per case. Preserve original source and all prior reports. Compile class SpacingChoice with --release8 against pinned Processing4.5.6 and JDK17. No public code.",
+    "numeric_command": "SpacingChoice --numeric",
+    "render_command": "SpacingChoice base-rings <absolute-case-png>"
+  },
+  "variants": [
+    {
+      "id": "larger-minimum",
+      "substitution": {
+        "from": "MIN_R=4.0",
+        "to": "MIN_R=8.0",
+        "occurrences": 1
+      },
+      "config": {
+        "seed": 42,
+        "attempts": 5000,
+        "centre_rectangle": {
+          "origin": [
+            64,
+            64
+          ],
+          "size": [
+            512,
+            512
+          ]
+        },
+        "radius_min": 8,
+        "radius_max": 64,
+        "separation_scale": 1
+      },
+      "isolated_change": "minimumRadius4to8; same centre proposals and random units"
+    },
+    {
+      "id": "more-attempts",
+      "substitution": {
+        "from": "ATTEMPTS=5000",
+        "to": "ATTEMPTS=10000",
+        "occurrences": 1
+      },
+      "config": {
+        "seed": 42,
+        "attempts": 10000,
+        "centre_rectangle": {
+          "origin": [
+            64,
+            64
+          ],
+          "size": [
+            512,
+            512
+          ]
+        },
+        "radius_min": 4,
+        "radius_max": 64,
+        "separation_scale": 1
+      },
+      "isolated_change": "attempts5000to10000; exact accepted baseline prefix and unchanged source-index colours"
+    }
+  ],
+  "comparison": "Root and Sol inspect both original new images against the preserved baseline. Record normalized RGB MAE and changed-pixel fraction. Independently regenerate candidate and centre digests, final RNG state and accepted topology via existing Python oracle/checker functions with each exact configuration; match native base-rings profile and before/after retained hashes. Verify 10000 accepted prefix equals original5000 and minimum edit centre digest equals original.",
+  "retention_criteria": {
+    "minimumRadius": "Retain as explicit required geometry control if removing the smallest motifs creates an understandable, useful size-floor edit with centre proposals unchanged; do not infer an encouraged continuous range. If unclear, reconsider the convenience size interface before public implementation.",
+    "attempts": "Accept continued-filling edit if additional circles visibly occupy gaps without displacing earlier placements, supported by exact accepted-prefix evidence. Retain budget/accounting semantics regardless; no promised output count or density range.",
+    "failure": "Preserve failed attempts; no retry or new image without revising and reviewing the investigation."
+  },
+  "constraints": [
+    "Two new images only, one attempt each, in listed order; original five-image experiment is complete and immutable.",
+    "No baseline rerender. No changes to original Java, executor, oracle, acceptance reports or previous images.",
+    "One pausable Processing executor under .work/processing-render.lock.",
+    "Freeze source/report/runtime and generated source/class hashes before each attempt; retain failure stdout/stderr and process outcome.",
+    "All temporary sources, binaries, logs and PNGs remain in ignored .work.",
+    "Numeric-only preflight validates independent candidate and topology references before rendering.",
+    "This is a private parameter experiment, not a public operation or target support claim."
+  ],
+  "render_budget": 2,
+  "attempt_timeout_seconds": 90,
+  "numeric_timeout_seconds": 120,
+  "output": ".work/experiments/cp3-placement-controls",
+  "limits": [
+    "Two minimum-radius values and two attempt counts establish inspected configurations only.",
+    "The original larger200000 workload remains timing evidence only.",
+    "The source sketches motivate size-aware placement; the new floor and attempt edits are independent package design experiments."
+  ]
+}

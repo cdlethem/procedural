@@ -1,0 +1,158 @@
+{
+  "status": "staged",
+  "build_status": "passed",
+  "review_status": "pending_root_acceptance",
+  "scope": "Staged local Java 0.8.0 archive assembled from the accepted CP7 final package plus accepted GlyphMarks tabs and explicit DejaVu font asset. It preserves prior executable payload bytes and does not rebuild, render, or claim a new native run or non-Java target.",
+  "source_archive": {
+    "path": ".work/dist/cp7/final/procedurals-processing-0.7.0.zip",
+    "sha256": "0a0c6e76f30f0ae8b9eb5b074ca26af117038230993452c9566b7bcc2b17f499"
+  },
+  "archive": {
+    "path": ".work/dist/cp8/java/procedurals-processing-0.8.0.zip",
+    "sha256": "b5efb5ec6dd0875e19bb9513eeb018d89a001f71addaba36b7348e28c5f0841d"
+  },
+  "cp8_native_result": {
+    "path": "evidence/reproductions/cp8-java2d/result.json",
+    "sha256": "66a604726b58b4473c2eef8a784ca788c27005797d6a2d1a6655014a9290c64f",
+    "status": "passed"
+  },
+  "cp8_root_review": {
+    "path": "evidence/reproductions/cp8-java2d/root-review.json",
+    "sha256": "e1ab991125fc3d309c31fd19b4311ff10c519ac55a2bb5050d415c8d8c261651",
+    "status": "accepted"
+  },
+  "layout": {
+    "archive_members": 50,
+    "preserved_inherited_non_document_members": 32,
+    "previous_starters": 7,
+    "starters": 8,
+    "operations": 11,
+    "added_members": {
+      "procedurals/examples/GlyphMarks/GlyphMarks.pde": {
+        "source": ".work/examples/cp8-first/GlyphMarks/GlyphMarks.pde",
+        "sha256": "2d6792238cb5f7bfeb6023c86fa6a64f7deb96e1ccd991a5dfb939d65df2bc81"
+      },
+      "procedurals/examples/GlyphMarks/GlyphComposition.java": {
+        "source": ".work/examples/cp8-first/GlyphMarks/GlyphComposition.java",
+        "sha256": "fd83d036e43942434fb588dcdc7a8e9fb66e3da36627fdc48f3c6d8fed5cbc93"
+      },
+      "procedurals/examples/GlyphMarks/GlyphFont.java": {
+        "source": ".work/examples/cp8-first/GlyphMarks/GlyphFont.java",
+        "sha256": "d5bb50f46e632927904b1f00c40761ea6049e0dc2eddc83d95fc64a4f2bba988"
+      },
+      "procedurals/examples/GlyphMarks/data/GlyphMarks.ttf": {
+        "source": ".work/examples/cp8-first/GlyphMarks/data/GlyphMarks.ttf",
+        "sha256": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c"
+      },
+      "procedurals/examples/GlyphMarks/data/FONT-LICENSE.txt": {
+        "source": ".work/examples/cp8-first/GlyphMarks/data/FONT-LICENSE.txt",
+        "sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9"
+      },
+      "procedurals/GlyphMarks-FONT-LICENSE.txt": {
+        "source": ".work/examples/cp8-first/GlyphMarks/data/FONT-LICENSE.txt",
+        "sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9"
+      }
+    },
+    "replaced_members": {
+      "procedurals/library.properties": {
+        "kind": "version_metadata",
+        "sha256": "a0c36b6263f2eed2273fede6848480f5ad8dccb08deb355bec818eb15d0f14a4"
+      },
+      "procedurals/docs/getting-started.md": {
+        "kind": "documentation",
+        "source": "docs/getting-started.md",
+        "sha256": "38cd131271f2ee66fab21487642351630f4b548b0bb30d1d2f9a6d294ec1da09"
+      },
+      "procedurals/docs/path-marks.md": {
+        "kind": "documentation",
+        "source": "docs/path-marks.md",
+        "sha256": "c8408c54429bfc5b140ae5ecd61c1ef6d290510a3900e85dce138370714555a3"
+      },
+      "procedurals/docs/placement-marks.md": {
+        "kind": "documentation",
+        "source": "docs/placement-marks.md",
+        "sha256": "7c625d7739d61d125bfb595b3cf45d1c6be960797153e2a9aff6bec57029b8c7"
+      },
+      "procedurals/docs/region-marks.md": {
+        "kind": "documentation",
+        "source": "docs/region-marks.md",
+        "sha256": "8614f996dea971a19c9a0bc2f737ec06bd1854e1f71de1940964ec3797ca86d3"
+      },
+      "procedurals/docs/grain-marks.md": {
+        "kind": "documentation",
+        "source": "docs/grain-marks.md",
+        "sha256": "49f7a45488785e1892fe7a555ce5b9285464ac924fdbd3f5ac61f1a4015aaf6b"
+      },
+      "procedurals/docs/branch-marks.md": {
+        "kind": "documentation",
+        "source": "docs/branch-marks.md",
+        "sha256": "b0f60cfb7d9e5a1c203073e73a32574c5cdfdee64a91725ea9b988b202247900"
+      },
+      "procedurals/docs/profile-marks.md": {
+        "kind": "documentation",
+        "source": "docs/profile-marks.md",
+        "sha256": "8890f1f7200e4d4563114ee2f4a26a19dde1bd9ee230a1fb6d22f111afb0c130"
+      },
+      "procedurals/docs/installing-profile-marks.md": {
+        "kind": "documentation",
+        "source": "docs/installing-profile-marks.md",
+        "sha256": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429"
+      },
+      "procedurals/docs/reference/operations.md": {
+        "kind": "documentation",
+        "source": "docs/reference/operations.md",
+        "sha256": "14806368c4c4c6de39afbc31142ace4922dc069198b63e339f97e3773c0c9e69"
+      }
+    }
+  },
+  "library_properties": {
+    "version": 8,
+    "pretty_version": "0.8.0"
+  },
+  "documents": {
+    "procedurals/docs/getting-started.md": {
+      "source": "docs/getting-started.md",
+      "sha256": "38cd131271f2ee66fab21487642351630f4b548b0bb30d1d2f9a6d294ec1da09"
+    },
+    "procedurals/docs/path-marks.md": {
+      "source": "docs/path-marks.md",
+      "sha256": "c8408c54429bfc5b140ae5ecd61c1ef6d290510a3900e85dce138370714555a3"
+    },
+    "procedurals/docs/placement-marks.md": {
+      "source": "docs/placement-marks.md",
+      "sha256": "7c625d7739d61d125bfb595b3cf45d1c6be960797153e2a9aff6bec57029b8c7"
+    },
+    "procedurals/docs/region-marks.md": {
+      "source": "docs/region-marks.md",
+      "sha256": "8614f996dea971a19c9a0bc2f737ec06bd1854e1f71de1940964ec3797ca86d3"
+    },
+    "procedurals/docs/grain-marks.md": {
+      "source": "docs/grain-marks.md",
+      "sha256": "49f7a45488785e1892fe7a555ce5b9285464ac924fdbd3f5ac61f1a4015aaf6b"
+    },
+    "procedurals/docs/branch-marks.md": {
+      "source": "docs/branch-marks.md",
+      "sha256": "b0f60cfb7d9e5a1c203073e73a32574c5cdfdee64a91725ea9b988b202247900"
+    },
+    "procedurals/docs/profile-marks.md": {
+      "source": "docs/profile-marks.md",
+      "sha256": "8890f1f7200e4d4563114ee2f4a26a19dde1bd9ee230a1fb6d22f111afb0c130"
+    },
+    "procedurals/docs/glyph-marks.md": {
+      "source": "docs/glyph-marks.md",
+      "sha256": "34bc8ab42fd0d6c8bcb4701c4770621d059925ec6f5bff2b8c6e1de14b514310"
+    },
+    "procedurals/docs/installing-profile-marks.md": {
+      "source": "docs/installing-profile-marks.md",
+      "sha256": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429"
+    },
+    "procedurals/docs/installing-glyph-marks.md": {
+      "source": "docs/installing-glyph-marks.md",
+      "sha256": "bbcc3c77222f2877b944dda56e34bb12bfdf8a910a2749f2c0b7c09ba99c2278"
+    },
+    "procedurals/docs/reference/operations.md": {
+      "source": "docs/reference/operations.md",
+      "sha256": "14806368c4c4c6de39afbc31142ace4922dc069198b63e339f97e3773c0c9e69"
+    }
+  }
+}

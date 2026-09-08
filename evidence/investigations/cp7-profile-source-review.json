@@ -1,0 +1,75 @@
+{
+  "status": "root-reviewed-investigation-direction",
+  "scope": "CP7 source/topology evidence, no public operation admission, native or visual support",
+  "sources": [
+    {
+      "sketch": "2017/Generativos/cilindros",
+      "notes_path": "survey/out/2017/Generativos/cilindros/notes.md",
+      "notes_sha256": "ebd2bd7956c44c5d2f9db05e7dd9a610526143e3035ef1e630c1970f6f6b2fb2",
+      "upstream_path": "2017/Generativos/cilindros/cilindros.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "upstream_blob_sha256": "801beeac6b92fefbb9e0f4e9f8cd0bf3aeb5bba72a368879063d228a967be7ba",
+      "root_read": "complete note and pinned PDE source"
+    },
+    {
+      "sketch": "2017/Generativos/fieeee",
+      "notes_path": "survey/out/2017/Generativos/fieeee/notes.md",
+      "notes_sha256": "5f193535ab67b1c5f8361845ccbde8bb444bd6e0b4043a1f923babd545d5be04",
+      "upstream_path": "2017/Generativos/fieeee/fieeee.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "upstream_blob_sha256": "2a70246f66731b3776c7cff2e07e8ae1bdb41bca6bc71312332772fda3ef39bc",
+      "root_read": "complete note and pinned PDE source"
+    },
+    {
+      "sketch": "2015/Generativos/FFt/prueba4",
+      "notes_path": "survey/out/2015/Generativos/FFt/prueba4/notes.md",
+      "notes_sha256": "96655622169acc6f62bb1bbba7a359d15fca487ec48178872f3348259d7738fb",
+      "upstream_path": "2015/Generativos/FFt/prueba4/prueba4.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "upstream_blob_sha256": "8f90117ae1dbd46b5e00e067b850d679e362a365691aae124bfd625d6c4a0808",
+      "root_read": "complete note and pinned PDE source"
+    },
+    {
+      "sketch": "2015/Generativos/cityPink3d",
+      "notes_path": "survey/out/2015/Generativos/cityPink3d/notes.md",
+      "notes_sha256": "9961e1604c367d4f621a74a8302fed188d23f52e79d1164f58e1dad8c54d4533",
+      "upstream_path": "2015/Generativos/cityPink3d/cityPink3d.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "upstream_blob_sha256": "69265e2cb42bb5f852a603c82d9e0ad7b8aa912d4713a778a6ac3366f2b0f636",
+      "root_read": "complete note and pinned PDE source"
+    },
+    {
+      "sketch": "2017/Generativos/aros",
+      "notes_path": "survey/out/2017/Generativos/aros/notes.md",
+      "notes_sha256": "13aedb8ce1603129b8e07c1453f58dd7abc8f67a6bbc42e523fe6c4f4eaaa891",
+      "upstream_path": "2017/Generativos/aros/aros.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "upstream_blob_sha256": "32fd8bf347ccbf8297c48a1b15717997eeff96564e610d4f79856d24e11f28ff",
+      "root_read": "complete note and pinned PDE source"
+    },
+    {
+      "sketch": "2017/Generativos/Circo",
+      "notes_path": "survey/out/2017/Generativos/Circo/notes.md",
+      "notes_sha256": "a50720a3b321b8e0f204c345317b0119c8a790a62e6defc37ac252db34252716",
+      "upstream_path": "2017/Generativos/Circo/Circo.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "upstream_blob_sha256": "ec524e2cf489dba19af78ea5a68b6e67b57a01c80b339045fca72bc988bde092",
+      "root_read": "complete note and pinned PDE source"
+    }
+  ],
+  "findings": [
+    "cilindros constant-radius connected bands and two caps; size change also changes length; source cap orientation is not outward at both ends.",
+    "fieeee connects nonconstant adjacent ring radii; global draw calls do not establish the note's offscreen-flattening claim; one random fill per band, and resolution changes both dimensions and colour draw count.",
+    "prueba4 strips overlap by construction, not contiguous axial bands.",
+    "cityPink3d adjacent vertical bands have different radii without connecting faces.",
+    "aros has inner and outer walls plus radial faces at EVERY subdivision level; after h*=0.5 its h/sub step traverses -h to zero, not -h to +h. Interior horizontal faces duplicate at adjacent levels; inner and outer walls have identical angular winding. This is not a demonstrated clean manifold annulus contract.",
+    "Circo builds a constant-radius open surface over positive cumulative band heights; its base face winding faces inward. Appearance overlay and random band construction are separate from connectivity."
+  ],
+  "direction_path": "design/capabilities/cp7-profile-mesh-direction.md",
+  "direction_sha256": "d38b59a281d1ebfb46493a58d30ae254c13b62bd671c2bd9abf4a7f9df263e97",
+  "limits": [
+    "Source reading establishes computations and discrepancies, not visible effects of new code.",
+    "Existing mesh.revolve records remain provisional/deferred; no candidate equivalence changes.",
+    "No public parameter default, encouraged range, normal policy or general arbitrary-profile claim."
+  ]
+}

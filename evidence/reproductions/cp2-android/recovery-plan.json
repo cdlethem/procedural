@@ -1,0 +1,39 @@
+{
+  "id": "cp2-android-terminal-attempt-recovery",
+  "status": "planned",
+  "purpose": "Read only the app-private evidence left by the one terminal failed CP2 Android attempt. The host runner failed only because the concrete AndroidSurface subclass string did not equal the planned PGraphicsAndroid2D base string; this recovery may collect host-side PNG evidence but cannot change the original attempt status or create Android support acceptance.",
+  "source_attempt": {
+    "report": "evidence/reproductions/cp2-android/result.json",
+    "attempt": ".work/reproductions/cp2-android/attempt.json",
+    "report_sha256": "e20cbceacee5d8555f6729ff5a54264221907a162ebb6972242e53da4c562976",
+    "attempt_sha256": "2661834eb9d908f9d6b2041f7329eb241cb92000d500aa6618dee28511009635",
+    "required_status": "failed",
+    "required_failure": "unexpected PathMarks Android runtime/final counts"
+  },
+  "runtime": {
+    "application_id": "org.procedurals.pathmarksprobe",
+    "adb_port": 5038,
+    "serial": "emulator-5580",
+    "api": 33,
+    "renderer_base": "processing.a2d.PGraphicsAndroid2D",
+    "renderer_concrete": "org.procedurals.android.internal.AndroidSurface"
+  },
+  "deadline_seconds": 120,
+  "output": ".work/reproductions/cp2-android-recovery",
+  "report": "evidence/reproductions/cp2-android/recovery-result.json",
+  "required_checks": [
+    "every original report input SHA is still current before ADB access",
+    "AndroidSurface source declares the concrete class as extending planned PGraphicsAndroid2D base",
+    "original native terminal result is passed/event result/API33/sequence8 with seven compositions, eight completed frames, finite quiet delay at least 300ms, and the original nonce",
+    "read private result before and after all pulls and require exact JSON equality with original native result",
+    "require the application process to be absent before and after recovery; a running process makes the preserved evidence ambiguous",
+    "read private frame-1 through frame-7 JSON and require exact JSON equality with original report frames; verify frame-8 absence as a confirmed missing file rather than an ADB transport error",
+    "read current emulator API/fingerprint and require equality with original report",
+    "pull raw private result/frame JSON and frame/saved PNG bytes only into new recovery output; preserve raw JSON bytes while separately checking parsed equality with the original journal, then use existing image_record and check_frames host checks",
+    "attempt an installed APK SHA through pm path/sha256sum; if available it must equal the original report's APK SHA, while unavailable access is recorded without fabrication"
+  ],
+  "forbidden_actions": [
+    "install", "uninstall", "build", "launch", "tap/input", "force-stop", "emulator restart", "render", "write under original attempt output", "modify original failed report or attempt"
+  ],
+  "failure_policy": "Any precondition, ADB, private-journal, image, fingerprint, or deadline failure writes only the separate recovery report. It leaves the original attempt terminal failed and does not authorize retry."
+}

@@ -1,0 +1,315 @@
+{
+  "id": "motion.target-springs-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability": "CP10",
+  "description": "Advance an ordered independent target-spring state by one explicit logical step: target force, position using updated velocity, then velocity retention. State carries each body's position, velocity and coefficients. Native execution owns a mutable fixed-size batch with atomic steps and detached observations; no pointer, clock, RNG, renderer, topology or convergence guarantee.",
+  "decision_cluster": "motion.target-springs-2d",
+  "capability_decision": "design/capabilities/cp10-spring-marks-direction.md",
+  "design_review": "design/operations/cp10-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/araniaaas#1",
+      "notes_path": "survey/out/2018/Generativos/araniaaas/notes.md",
+      "note_sha256": "a755a2a70f81ad86042bd7ec6eeb91ca1832e6858350bf06de1b92b1466f4b11",
+      "evidence_sha256": "db681279a128e6470641336110393c01d6f01dd1c17574df65a0eb274c635b00",
+      "upstream_path": "2018/Generativos/araniaaas/Point.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "relationship": "Extract target force/velocity/position update. Source return-to-spawn and pointer policy remain example code; Processing float/RNG/alias compatibility excluded."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "state": {
+        "type": "object",
+        "properties": {
+          "bodies": {
+            "type": "array",
+            "minItems": 0,
+            "maxItems": 357913941,
+            "items": {
+              "type": "object",
+              "properties": {
+                "position": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "velocity": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "strength": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "retention": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "position",
+                "velocity",
+                "strength",
+                "retention"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "bodies"
+        ],
+        "additionalProperties": false
+      },
+      "targets": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 357913941,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "required": [
+      "state",
+      "targets"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "bodies": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 357913941,
+        "items": {
+          "type": "object",
+          "properties": {
+            "position": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "velocity": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "strength": {
+              "type": "number",
+              "minimum": 0
+            },
+            "retention": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "position",
+            "velocity",
+            "strength",
+            "retention"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "bodies"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "target-spring-state-output",
+  "output_invariants": "N output bodies in original order, exact unchanged canonical coefficients, detached finite canonical positions/velocities, with body state suitable as the next transition input. Targets length must equal N. Every public zero is positive. No partial successful state.",
+  "behavior": {
+    "validation": "Passive JSON-compatible data only. Validate exact outer keys state/targets, then complete state, then complete targets. State is exactly bodies; bodies list length N0..357913941. Each body has exactly position,velocity,strength,retention; validate body order, position x/y,velocity x/y,strength,retention. Pairs exactly two finite binary64 numeric values; booleans/strings are not numbers. Strength finite>=0,retention finite0..1. Targets must be list lengthN of finite pairs, validated in body/x/y order. All static validation precedes recurrence and output-sized owned allocation for the portable transition. Canonicalize input zeros positive. No omitted fields/defaults.",
+    "step": "For body i=0..N-1, compute full x axis then full y axis. Each primitive rounds separately to binary64 round-to-nearest-even: delta=target-position; force=delta*strength; advanced=velocity+force; nextPosition=position+advanced; nextVelocity=advanced*retention. Check finiteness immediately after EACH primitive in this order. No FMA, reassociation, binary32 truncation or implicit dt. Preserve intermediate signed zeros and gradual underflow; canonicalize completed position/velocity zeros positive before storing/reuse.",
+    "errors": "Complete invalid static input always fails INVALID_INPUT before arithmetic, including a late invalid target preceding an earlier would-be overflow. First nonfinite intermediate fails SPRING_ARITHMETIC_INVALID with exactly bodyIndex,axis (x/y),stage (delta/force/advanced/position/velocity). No output on failure. Native current values and coefficients remain unchanged, even if earlier items computed prospective scratch values.",
+    "zero": "N0 requires an empty target list and performs no recurrence. Strength0 still computes delta and force and transports existing velocity. Retention0 still computes and stores the current position advance before discarding next velocity. Do not optimize away possible overflow for either zero coefficient. Coincident bodies are independent and keep separate indices. No epsilon, merging, clipping, bounds enforcement or sleep threshold.",
+    "ownership": "Portable transition leaves input data unchanged and returns detached state. Native factory creates owned mutable current state; step mutates only after full success. Read access never advances. No caller input array/map/list remains aliased; each export/At returns detached data. No retained initial-state copy, reset method, history, or automatic clock. A detached state export can be edited/imported as another independent batch for replay or coefficient changes. Concurrent reads/mutation of batch or mutation of input during a call are not supported.",
+    "storage": "N<=floor(2147483647/6)=357913941 keeps packed six-scalar state signed32-indexable. This representational ceiling is not an allocation guarantee or artistic range. Factory validates all static inputs before output-sized buffers. Explicit step authorizes O(N) work. Own O(N) current/scratch/captured-target storage, reusable between steps; no per-body allocation/parsing/reflection in numeric loop. Host resource exceptions remain host failures, never INVALID_INPUT or a partial result. Atomicity concerns failed calls, not concurrent publication.",
+    "java_factory": "org.procedurals.motion.TargetSprings2D.create(Object state) imports output_schema values, not the outer transition input. Accept passive Map with exact string keys and Lists; supported numeric carriers Byte,Short,Integer,Long,Float,Double, converted to finite double. Reject other Number types, arrays as canonical records, bool/string/null. Return fixed-size owned batch. Public construction does not run a tick.",
+    "java_step": "void step(Object targets) accepts canonical List of pairs OR double[] packed XY targets; void step(double[] targets) is the typed fast overload with identical packed semantics, including when array arrives through Object. Packed length exactly2N. Reject float[],other primitive arrays,wrong lengths/null/nonfinite values. Validate/capture the complete target input into owned reusable storage before recurrence, then compute next values into separate reusable scratch; commit only after full success. Targets are not retained between calls. Coefficients fixed per batch; zero allocation in a warmed successful packed-target numeric loop is a later performance obligation.",
+    "java_access": "int size(); double[] positionAt(Object index)/positionAt(long index), velocityAt(Object)/velocityAt(long); void positionInto(Object index,double[] output,int offset)/positionInto(long,double[],int), velocityInto(Object,double[],int)/velocityInto(long,double[],int); double strengthAt(Object)/strengthAt(long), retentionAt(Object)/retentionAt(long); Map<String,Object> toValues() returns full detached output_schema. Into writes exactly two slots; source body values remain owned.",
+    "indices": "Validate index before output buffer: finite numeric safe nonnegative integer0..9007199254740991; bool/string/null/unsupported Number/nonintegral/negative/outside-safe fail INVALID_INDEX, including long overload values. Then index>=size fails INDEX_OUT_OF_RANGE. Then null output,negative offset or fewer than2slots fails INVALID_OUTPUT. Into failure leaves all output slots unchanged; success changes only offset and offset+1. Numeric -0 index denotes0. No writable internal storage exposed.",
+    "environment": "No RNG/noise/time/renderer/asset/global input. Velocity units are coordinate units per logical step; step length is defined by the recurrence, not a time duration. Explicit target sequence determines motion. Pause means no call. Scalar field names and body order are stable. Later targets must reproduce separately rounded binary64 behavior exactly; this contract is not source Processing binary32 equivalence.",
+    "java_errors": "Public nested SpringException extends IllegalArgumentException with public final String code for INVALID_INPUT,INVALID_INDEX,INDEX_OUT_OF_RANGE,INVALID_OUTPUT. Public nested SpringArithmeticException extends ArithmeticException with public final String code=SPRING_ARITHMETIC_INVALID, public final int bodyIndex, public final String axis and stage. No extra error payload or partial state. Host allocation exceptions remain host exceptions."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed/nonfinite/out-of-model static state or targets; includes length mismatch.",
+    "SPRING_ARITHMETIC_INVALID": "First nonfinite step intermediate; bodyIndex,axis,stage; state unchanged.",
+    "INVALID_INDEX": "Index not representable as finite nonnegative safe integer.",
+    "INDEX_OUT_OF_RANGE": "Safe index outside retained bodies.",
+    "INVALID_OUTPUT": "Into destination cannot hold a pair at offset; atomic failure."
+  },
+  "parameters": {
+    "state.bodies": {
+      "unit": "ordered independent systems",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "araniaaas retains a collection of positions/velocities; owned fixed-size state is a design divergence. Count ceiling is packed signed32 representation only."
+    },
+    "position": {
+      "unit": "caller coordinate pair",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source pos; explicit arbitrary initial positions enable external layouts and snapshot restore. Finite binary64 model, no clipping."
+    },
+    "velocity": {
+      "unit": "coordinate displacement per logical step",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source vel; explicit nonzero state enables replay/impulses. No hidden zero default."
+    },
+    "strength": {
+      "unit": "target-displacement contribution to advanced velocity per step",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source0.025; controlled0/.0125/.025/.05 investigation shows distinct temporal response. Nonnegative finite is a restorative-force model boundary, not an encouraged range. Per-body strength is explicit independent-system generalization. evidence/parameter-experiments/cp10-spring-response/decision.md"
+    },
+    "retention": {
+      "unit": "fraction of advanced velocity retained after position update",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source per-point random(0.8,0.9)*0.8; controlled0/.7/.9/1 investigation shows different persistence/reversals. Mathematical0..1 keeps/discards velocity; no inversion/amplification model. No stability or default claim. evidence/parameter-experiments/cp10-spring-response/decision.md"
+    },
+    "targets": {
+      "unit": "one caller coordinate pair per body per step",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source target return and pointer force are separate example policies; supplied targets remove host-global input. No coefficient, seed, time or palette mutation."
+    }
+  },
+  "design_divergences": [
+    "Binary64 separate operations replace source Processing binary32.",
+    "Explicit owned batch/state and targets replace mutable PVector/global input aliasing.",
+    "Per-body strength and explicit per-body retention support independent responses; uniform examples repeat values.",
+    "No autonomous drift, implicit target return, pointer policy, random decay, convergence guarantee or continuously Delaunay topology."
+  ],
+  "exclusions": [
+    "inter-body forces",
+    "mass/rest-length springs",
+    "collision/constraints",
+    "time-in-seconds integrator",
+    "automatic rest/spawn state",
+    "random target generation",
+    "renderer/trails/topology",
+    "thread safety",
+    "persisted recipe executor"
+  ],
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "gradual-underflow",
+        "separate-rounded-arithmetic"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": false,
+      "capabilities": [
+        "binary64",
+        "gradual-underflow",
+        "separate-rounded-arithmetic"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": false,
+      "capabilities": [
+        "binary64",
+        "gradual-underflow",
+        "separate-rounded-arithmetic"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "processing-android": {
+      "required": false,
+      "capabilities": [
+        "binary64",
+        "gradual-underflow",
+        "separate-rounded-arithmetic"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    }
+  },
+  "fixtures": "fixtures/operations/target-springs-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "planned",
+    "design_evidence": "evidence/parameter-experiments/cp10-spring-response/root-review.json",
+    "acceptance": "Continuing native batch with registered target sequence; disturbance/return, coefficient state restoration, style-only changes, pause/single-step, exact reset/replay, fixed-index deformation transfer, cached save. Source-extracted parameter images do not validate this future operation."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root direct review under paused-Sol sprint",
+    "status": "Contract and shared fixture review recorded separately; implementation remains unvalidated."
+  }
+}

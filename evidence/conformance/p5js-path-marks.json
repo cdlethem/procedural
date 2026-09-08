@@ -1,0 +1,509 @@
+{
+  "status": "passed",
+  "scope": "p5 2.3.2/Chromium actual PathMarks controls, cached Save PNG, and three declared images only; no CP1 rerun or cross-host pixel identity claim.",
+  "input_sha256": {
+    "tools/run_p5_path_marks.mjs": "9f06fe109075b2eea9aa80d2fe4b10d8655c09b9523ea3b93f1cc0af3432053c",
+    "tests/native/path-marks-browser.mjs": "33407935a49943919cd0b7824e96393a3fa887f4e42eb02c201d1364a205c7ac",
+    "packages/javascript/examples/path-marks/index.html": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f",
+    "packages/javascript/examples/path-marks/sketch.js": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473",
+    "packages/javascript/examples/path-marks/path-marks.js": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743",
+    "packages/javascript/src/index.js": "51efbfea8c64ba7a4faed00843fea2c7c2b6771c69dceb69849a0bcf852b3c06",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "catalog/operations/gradient-path.json": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+    "fixtures/operations/gradient-path.json": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+    "design/capabilities/cp2-public-example.md": "dce83fd3b29b269ba49aa94ba6024f559128f4498a97e422d8a9787b7217e662",
+    ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
+    ".work/environments/p5js/node_modules/p5/package.json": "fdfa47de556b04ee9dda1fc105896becf4e02b8a5f269a0af94116a1ddf61b18",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  },
+  "render_budget": {
+    "policy": "One bounded initial browser execution. Every control callback that composes a frame is registered below; no corrective or repeat route is registered by this executor.",
+    "compositions": [
+      {
+        "ordinal": 1,
+        "state": "base-marks",
+        "trigger": "initial setup",
+        "visualArtifact": "base-marks"
+      },
+      {
+        "ordinal": 2,
+        "state": "base-trace",
+        "trigger": "M",
+        "visualArtifact": "base-trace"
+      },
+      {
+        "ordinal": 3,
+        "state": "base-marks-restored",
+        "trigger": "M"
+      },
+      {
+        "ordinal": 4,
+        "state": "long-marks",
+        "trigger": "L",
+        "visualArtifact": "long-marks"
+      },
+      {
+        "ordinal": 5,
+        "state": "recolour",
+        "trigger": "C"
+      },
+      {
+        "ordinal": 6,
+        "state": "long-marks-restored-palette",
+        "trigger": "C"
+      },
+      {
+        "ordinal": 7,
+        "state": "count-2001",
+        "trigger": "N"
+      },
+      {
+        "ordinal": 8,
+        "state": "count-2000-restored",
+        "trigger": "N"
+      },
+      {
+        "ordinal": 9,
+        "state": "distance-08",
+        "trigger": "D"
+      },
+      {
+        "ordinal": 10,
+        "state": "base-long-restored",
+        "trigger": "D"
+      }
+    ],
+    "visualArtifacts": [
+      "base-marks",
+      "base-trace",
+      "long-marks"
+    ],
+    "totalNativeCompositions": 10,
+    "cachedSaveCaptures": 1,
+    "totalHostTimeoutMs": 180000
+  },
+  "errors": [],
+  "native": {
+    "pure_drawing": {
+      "scope": "Pure example-only canvas culling and internal drawing normalization; no renderer.",
+      "states": [
+        {
+          "id": "base-marks",
+          "rawCommandCount": 12000,
+          "submittedCommandCount": 7002,
+          "omittedCommandCount": 4998,
+          "maximumBatchSize": 4096
+        },
+        {
+          "id": "base-trace",
+          "rawCommandCount": 48000,
+          "submittedCommandCount": 27784,
+          "omittedCommandCount": 20216,
+          "maximumBatchSize": 4096
+        },
+        {
+          "id": "base-marks-restored",
+          "rawCommandCount": 12000,
+          "submittedCommandCount": 7002,
+          "omittedCommandCount": 4998,
+          "maximumBatchSize": 4096
+        },
+        {
+          "id": "long-marks",
+          "rawCommandCount": 12000,
+          "submittedCommandCount": 7057,
+          "omittedCommandCount": 4943,
+          "maximumBatchSize": 4096
+        },
+        {
+          "id": "recolour",
+          "rawCommandCount": 12000,
+          "submittedCommandCount": 7057,
+          "omittedCommandCount": 4943,
+          "maximumBatchSize": 4096
+        },
+        {
+          "id": "long-marks-restored-palette",
+          "rawCommandCount": 12000,
+          "submittedCommandCount": 7057,
+          "omittedCommandCount": 4943,
+          "maximumBatchSize": 4096
+        },
+        {
+          "id": "count-2001",
+          "rawCommandCount": 12024,
+          "submittedCommandCount": 7066,
+          "omittedCommandCount": 4958,
+          "maximumBatchSize": 4096
+        },
+        {
+          "id": "count-2000-restored",
+          "rawCommandCount": 12000,
+          "submittedCommandCount": 7057,
+          "omittedCommandCount": 4943,
+          "maximumBatchSize": 4096
+        },
+        {
+          "id": "distance-08",
+          "rawCommandCount": 12000,
+          "submittedCommandCount": 5494,
+          "omittedCommandCount": 6506,
+          "maximumBatchSize": 4096
+        },
+        {
+          "id": "base-long-restored",
+          "rawCommandCount": 12000,
+          "submittedCommandCount": 7057,
+          "omittedCommandCount": 4943,
+          "maximumBatchSize": 4096
+        }
+      ]
+    },
+    "render_states": [
+      {
+        "id": "base-marks",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "d01ad6d0a5119ccdb074d3d1104928716cbacfe7b77544ff15ef282342354c6e",
+        "opaque": true,
+        "nonbackground": 53177,
+        "status": "12,000 perpendicular marks · seed 42",
+        "revision": "1",
+        "rawCommandCount": 12000,
+        "submittedCommandCount": 7002,
+        "png_sha256": "71aa96beec3c8669a92963b9090c34f04ad2afea28a8a5a462b6c4bf637c18a7"
+      },
+      {
+        "id": "base-trace",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "f83e810b8169bd7964aea5c72abc9e13c732df9a50e92485ae2737d44b35e82a",
+        "opaque": true,
+        "nonbackground": 8041,
+        "status": "48,000 movement segments · seed 42",
+        "revision": "2",
+        "rawCommandCount": 48000,
+        "submittedCommandCount": 27784,
+        "png_sha256": "f1ef72b88b26528e7383c217386477c82a6bb4de71726f3138556d066b410827"
+      },
+      {
+        "id": "base-marks-restored",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "d01ad6d0a5119ccdb074d3d1104928716cbacfe7b77544ff15ef282342354c6e",
+        "opaque": true,
+        "nonbackground": 53177,
+        "status": "12,000 perpendicular marks · seed 42",
+        "revision": "3",
+        "rawCommandCount": 12000,
+        "submittedCommandCount": 7002
+      },
+      {
+        "id": "long-marks",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "9880b999af397f0a5f7de102568d7b107773d8bda4a156f9ee7303847ffb57aa",
+        "opaque": true,
+        "nonbackground": 92375,
+        "status": "12,000 perpendicular marks · seed 42",
+        "revision": "4",
+        "rawCommandCount": 12000,
+        "submittedCommandCount": 7057,
+        "png_sha256": "45e751cb1d0bbc0d6da57f4ecce7d2eb3149576a09023ae54181887c0fa3a25c"
+      },
+      {
+        "id": "recolour",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "68efc2ef40d8f2d92286e79885f04515fa48d7724bf7c5a73ad9fe3441d7c369",
+        "opaque": true,
+        "nonbackground": 92308,
+        "status": "12,000 perpendicular marks · seed 42",
+        "revision": "5",
+        "rawCommandCount": 12000,
+        "submittedCommandCount": 7057
+      },
+      {
+        "id": "long-marks-restored-palette",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "9880b999af397f0a5f7de102568d7b107773d8bda4a156f9ee7303847ffb57aa",
+        "opaque": true,
+        "nonbackground": 92375,
+        "status": "12,000 perpendicular marks · seed 42",
+        "revision": "6",
+        "rawCommandCount": 12000,
+        "submittedCommandCount": 7057
+      },
+      {
+        "id": "count-2001",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "949b14faea3b58d861f6ae1b5c740021293524a924f317bd2fc869f65c8c3379",
+        "opaque": true,
+        "nonbackground": 92377,
+        "status": "12,024 perpendicular marks · seed 42",
+        "revision": "7",
+        "rawCommandCount": 12024,
+        "submittedCommandCount": 7066
+      },
+      {
+        "id": "count-2000-restored",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "9880b999af397f0a5f7de102568d7b107773d8bda4a156f9ee7303847ffb57aa",
+        "opaque": true,
+        "nonbackground": 92375,
+        "status": "12,000 perpendicular marks · seed 42",
+        "revision": "8",
+        "rawCommandCount": 12000,
+        "submittedCommandCount": 7057
+      },
+      {
+        "id": "distance-08",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "53d99a4903a72d87c0bd45c15ee48bbcceb031543552bf6ba6a748a3e1851569",
+        "opaque": true,
+        "nonbackground": 80528,
+        "status": "12,000 perpendicular marks · seed 42",
+        "revision": "9",
+        "rawCommandCount": 12000,
+        "submittedCommandCount": 5494
+      },
+      {
+        "id": "base-long-restored",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "9880b999af397f0a5f7de102568d7b107773d8bda4a156f9ee7303847ffb57aa",
+        "opaque": true,
+        "nonbackground": 92375,
+        "status": "12,000 perpendicular marks · seed 42",
+        "revision": "10",
+        "rawCommandCount": 12000,
+        "submittedCommandCount": 7057
+      }
+    ],
+    "model": {
+      "passed": true,
+      "scope": "Browser-loaded public PathMarks model only; no renderer or cross-host pixel identity claim.",
+      "pathCount": 24,
+      "movementHash": "885c433054d42b2f",
+      "prefix2000Of2001": true,
+      "distanceFeedback": true,
+      "retainedIdentityForStyleEdits": true,
+      "firstPathFixtureTolerance": {
+        "positions_abs": 1e-9,
+        "headings_abs": 1e-9,
+        "status": "reviewed-named-case"
+      },
+      "commands": {
+        "trace": {
+          "count": 48000,
+          "geometry": "4cc26fa596907db4",
+          "colours": "2e2e6c72c56670a5",
+          "firstMark": {
+            "kind": "segment2",
+            "from": [
+              60,
+              80
+            ],
+            "to": [
+              60.13403800364536,
+              80.3768737369183
+            ],
+            "rgb": 3252561,
+            "opacity8": 150,
+            "width": 1,
+            "cap": "round"
+          }
+        },
+        "marks": {
+          "count": 12000,
+          "geometry": "28a5fee2d9b82bce",
+          "colours": "5eed744b06048ac5"
+        },
+        "longMarks": {
+          "count": 12000,
+          "geometry": "914cdf9526cc77b8",
+          "colours": "5eed744b06048ac5"
+        },
+        "recolour": {
+          "count": 12000,
+          "geometry": "28a5fee2d9b82bce",
+          "colours": "f9c0177197145a55"
+        }
+      }
+    },
+    "live_observation": [
+      {
+        "revision": 1,
+        "settings": {
+          "seed": 42,
+          "steps": 2000,
+          "distance": 0.4,
+          "markLength": 12,
+          "trace": false,
+          "alternate": false
+        },
+        "pathCount": 24
+      },
+      {
+        "action": "m",
+        "revision": 2,
+        "settings": {
+          "seed": 42,
+          "steps": 2000,
+          "distance": 0.4,
+          "markLength": 12,
+          "trace": true,
+          "alternate": false
+        },
+        "rebuilt": false
+      },
+      {
+        "action": "m",
+        "revision": 3,
+        "settings": {
+          "seed": 42,
+          "steps": 2000,
+          "distance": 0.4,
+          "markLength": 12,
+          "trace": false,
+          "alternate": false
+        },
+        "rebuilt": false
+      },
+      {
+        "action": "l",
+        "revision": 4,
+        "settings": {
+          "seed": 42,
+          "steps": 2000,
+          "distance": 0.4,
+          "markLength": 24,
+          "trace": false,
+          "alternate": false
+        },
+        "rebuilt": false
+      },
+      {
+        "action": "c",
+        "revision": 5,
+        "settings": {
+          "seed": 42,
+          "steps": 2000,
+          "distance": 0.4,
+          "markLength": 24,
+          "trace": false,
+          "alternate": true
+        },
+        "rebuilt": false
+      },
+      {
+        "action": "c",
+        "revision": 6,
+        "settings": {
+          "seed": 42,
+          "steps": 2000,
+          "distance": 0.4,
+          "markLength": 24,
+          "trace": false,
+          "alternate": false
+        },
+        "rebuilt": false
+      },
+      {
+        "action": "n",
+        "revision": 7,
+        "settings": {
+          "seed": 42,
+          "steps": 2001,
+          "distance": 0.4,
+          "markLength": 24,
+          "trace": false,
+          "alternate": false
+        },
+        "rebuilt": true
+      },
+      {
+        "action": "n",
+        "revision": 8,
+        "settings": {
+          "seed": 42,
+          "steps": 2000,
+          "distance": 0.4,
+          "markLength": 24,
+          "trace": false,
+          "alternate": false
+        },
+        "rebuilt": true
+      },
+      {
+        "action": "d",
+        "revision": 9,
+        "settings": {
+          "seed": 42,
+          "steps": 2000,
+          "distance": 0.8,
+          "markLength": 24,
+          "trace": false,
+          "alternate": false
+        },
+        "rebuilt": true
+      },
+      {
+        "action": "d",
+        "revision": 10,
+        "settings": {
+          "seed": 42,
+          "steps": 2000,
+          "distance": 0.4,
+          "markLength": 24,
+          "trace": false,
+          "alternate": false
+        },
+        "rebuilt": true
+      },
+      {
+        "revision": 10,
+        "settings": {
+          "seed": 42,
+          "steps": 2000,
+          "distance": 0.4,
+          "markLength": 24,
+          "trace": false,
+          "alternate": false
+        },
+        "quiet": true
+      }
+    ],
+    "save_png": {
+      "path": ".work/reproductions/p5js-path-marks/path-marks-saved.png",
+      "bytes": 315245,
+      "png_sha256": "45e751cb1d0bbc0d6da57f4ecce7d2eb3149576a09023ae54181887c0fa3a25c",
+      "decoded_rgba_sha256": "9880b999af397f0a5f7de102568d7b107773d8bda4a156f9ee7303847ffb57aa",
+      "matches_current_canvas": true
+    }
+  },
+  "browser": "153.0.8010.12",
+  "browser_executable_sha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e"
+}

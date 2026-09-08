@@ -1,0 +1,93 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Scoped SpringMarks Processing JAVA2D event, drawing and technique acceptance. No full source-pixel reproduction, other-platform, natural frame-rate performance or registry claim.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
+    "packages/java/examples/SpringMarks/SpringComposition.java": "a6f1263c08cc902070d11ce5d6de52e22cbac16f625b63f668733654748d6735",
+    "packages/java-processing/examples/SpringMarks/SpringMarks.pde": "b813a8f1dfa60fc49b366dce57813a4d91ac0022478c30927abd5a4e9256f82b",
+    "tools/diagnostics/cp10/SpringMarksProbe.java": "751c80f15ea0bdfcb9546b17f401e8e1e31dfd44ceef62e70ccc1611e287b289",
+    "tools/run_spring_marks_pde.py": "8ba8c20bd48962e9dbc5a201bee214f9e45a32e458d676b0199e478e352240bc",
+    "tools/prepare_spring_marks.py": "1ba14ddb698cf8d501da7c06c1e5352d1b6d18d2eb5d6638eb5c268bb4121a3d"
+  },
+  "evidence_sha256": {
+    "evidence/reproductions/cp10-java2d/result.json": "c5ce4010221bf3f41e0f90d53029ca10488cdd82dc16112950a371936110f8eb",
+    "evidence/reproductions/cp10-java2d/plan.json": "a7d9dea65d7c17541210c9809877d1bfdbc5e9bc58ab78105be5a8b1748b4b9b",
+    "evidence/conformance/target-springs-java-root-review.json": "3f439cee9bfc46f5e59074498f926c47c9dc54b39824c27c88f92968865ab942"
+  },
+  "checks": {
+    "observed_callbacks": 1125,
+    "key_events": 57,
+    "captured_frames": 45,
+    "unique_captures": 31,
+    "unexpected_stderr": false,
+    "exact_replay": true,
+    "cached_running_save_pixels_equal": true,
+    "native_arguments_and_style": true
+  },
+  "visual_review": {
+    "method": "All31unique captures inspected in labelled320px contact sheets; wire tick30, higher retention tick10 and primary tick30 additionally inspected at full640px. Other14captures byte-identical to inspected images.",
+    "images": {
+      "baseline-000.png": "7fe5fa45595b6c8482e5509ea1f20261cd80a914c512c2134b8ddd4bd85e5fbf",
+      "disturbed-000-targets.png": "bf05c6b408e06e3b3302e93319692f858a57164741c329032948a813ab794d74",
+      "period-001.png": "4e23204d0e25bd325f8045e1166ff45da1226418e84d9d6eda3e8d2856d50492",
+      "primary-010.png": "fff252bbf7993d906b141d0bb4707bdbb21fa1c1bb82143f2352f75eab6d53d3",
+      "primary-030.png": "7dc8f7bec85577348f376c87f6f73d38130cbcbe638a7200e4c1ee34a1ac2d11",
+      "primary-060.png": "2f3d853a126a42d050fa455f3c72a235eb7a0234b90c36e3ea1ed060da7dbdd4",
+      "primary-120.png": "ba1422bfb4812882a50a0b77d69b55c0fdb84c9359852c75acc0f3ff75c302ca",
+      "replay-001.png": "4e23204d0e25bd325f8045e1166ff45da1226418e84d9d6eda3e8d2856d50492",
+      "replay-010.png": "fff252bbf7993d906b141d0bb4707bdbb21fa1c1bb82143f2352f75eab6d53d3",
+      "replay-030.png": "7dc8f7bec85577348f376c87f6f73d38130cbcbe638a7200e4c1ee34a1ac2d11",
+      "replay-060.png": "2f3d853a126a42d050fa455f3c72a235eb7a0234b90c36e3ea1ed060da7dbdd4",
+      "replay-120.png": "ba1422bfb4812882a50a0b77d69b55c0fdb84c9359852c75acc0f3ff75c302ca",
+      "styles-pre-030.png": "8e377e94b1ffa1fdac4de79feed2e4c7c228e44b66ac39a2eec1b76e1d6be692",
+      "style-velocity-030.png": "fd3e2d7791c4f9974b92f5eb11a92edba87dea281baab9fe1377d64ebfad96ae",
+      "style-wire-030.png": "264ddd8f54d749e2d10e19a3b9940dc92a2e825056084b694ca7667e3bd1bb53",
+      "style-palette-030.png": "59792f1c04ece32932a086732a2a5b9fa53082894b17f45f7894755960f3b21b",
+      "style-no-trails-030.png": "1bbc5e9c932d330ce328ee946f483e2e1a55b1285156bc1d71678044cd4cdd29",
+      "style-targets-030.png": "17fd535c719831c52202c4b3210550dea420b3545526650d687903c34c5afd18",
+      "response-k-pre-030.png": "8e377e94b1ffa1fdac4de79feed2e4c7c228e44b66ac39a2eec1b76e1d6be692",
+      "response-strength-030.png": "8e377e94b1ffa1fdac4de79feed2e4c7c228e44b66ac39a2eec1b76e1d6be692",
+      "response-strength-031.png": "540542d20d6f2bcae832ed135e22c638f2c145a499ad0a194bf2085639dbf9a1",
+      "response-v-pre-030.png": "8e377e94b1ffa1fdac4de79feed2e4c7c228e44b66ac39a2eec1b76e1d6be692",
+      "response-retention-030.png": "8e377e94b1ffa1fdac4de79feed2e4c7c228e44b66ac39a2eec1b76e1d6be692",
+      "response-retention-031.png": "6c48a866ec454f25695e19231d25d1cfe514cdeea066dcbf489341aaae7492b0",
+      "strength-005-001.png": "f3b78c8069efce12fbaf98cc89d77dcd647f100bb7aca33f247a3228701804dd",
+      "strength-005-010.png": "a24db43a8c2d20172192026622c026fbc625527f41aa0a80e5432c53ece0e650",
+      "strength-005-030.png": "5559c14b1d036b412fe14f80145ed31284e974e980e1dd07b10d6d9526ac3722",
+      "strength-005-060.png": "1f8657389bd2ba9afc5ef5728d698d2a7eb3b578e393cca58d5d1862b1872bd1",
+      "strength-005-120.png": "250be8bd02aae27cf203bdd8982e9d8a25fa28c4249f5b9f6bee5593b2296814",
+      "retention-09-001.png": "9fe97a34bf4d8fb395a20e6e0c103e70515eba3b6ad897b926f7581b9c2c639a",
+      "retention-09-010.png": "fe9344e276ced45bef36fb3af84456e2687095512386d1fac398ff0c94975ed7",
+      "retention-09-030.png": "31e907c9fd0102db1142fbde2f0874dd35b03ed4d989d5444a8b8a1444ccb1f6",
+      "retention-09-060.png": "1259469b9a7a26e97f37f61621a79555f19ea5a223f475ec80267c92854638f0",
+      "retention-09-120.png": "03f0a7dd2b99fe0bf9274bd450cc10042c32ac41ce5cba61a1a0c3b061347cef",
+      "long-primary-120.png": "6b295e6bdd379994baeaa09d1d36d3e64c3d98d2dc397cc889a3b999273b4706",
+      "long-primary-121.png": "6489d1f3f41f2adb21458084a3cc77f864511a5d638790013f2024199c8da52c",
+      "long-primary-140.png": "920f88f72bbfecacb2cb25d527a952e37741ec0327430b3c17f3272f97986a81",
+      "long-primary-141.png": "9e5a287fd5276fa8d5e6013a21d26f3851dc23a1d8b1ce529965597dcaf70957",
+      "long-primary-260.png": "d3d069ae58420c78b4fd5b3bb557738f16fd36724191bc38d3ca930443acfac0",
+      "long-primary-wire-260.png": "00c3506ec1dcef57d7f71ece7c9f401b4ceea4c5f27a5809f901317e0f8779e5",
+      "long-replay-120.png": "6b295e6bdd379994baeaa09d1d36d3e64c3d98d2dc397cc889a3b999273b4706",
+      "long-replay-121.png": "6489d1f3f41f2adb21458084a3cc77f864511a5d638790013f2024199c8da52c",
+      "long-replay-140.png": "920f88f72bbfecacb2cb25d527a952e37741ec0327430b3c17f3272f97986a81",
+      "long-replay-141.png": "9e5a287fd5276fa8d5e6013a21d26f3851dc23a1d8b1ce529965597dcaf70957",
+      "long-replay-260.png": "d3d069ae58420c78b4fd5b3bb557738f16fd36724191bc38d3ca930443acfac0"
+    },
+    "observations": [
+      "Initial regular sites stay at rest; target crosses show the local diagonal disturbance before positions move.",
+      "Central sites visibly leave their initial rings while outer sites remain still. Later frames return toward the initial arrangement while retained traces show previous motion.",
+      "Higher retention produces a larger visible excursion than the baseline at tick10 in this authored comparison. This is not a recommended range.",
+      "Wire tick30 shows coherent deformation of initial connectivity; later wire returns close to the regular mesh. Palette and target/trail layers remain distinguishable.",
+      "Velocity segments are subtle late in the response; a near-rest frame is not an indication of frozen dynamics.",
+      "After trail wrap the older excursion is discarded; the second disturbance leaves a fresh bounded trace. No unwanted wraparound closing segment is visible."
+    ]
+  },
+  "limitations": [
+    "Only registered JAVA2D640 density1 configurations validated.",
+    "Scripted callback gating validates logical ticks and events, not interactive timing or throughput.",
+    "No human usability session or independent full-source raster comparison.",
+    "New platform ports remain deferred."
+  ]
+}

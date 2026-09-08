@@ -1,0 +1,38 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Java 0.12.0: 14 operations and 12 editable starters; ReliefMarks adds one demonstrated structural recreation and no core API.",
+  "implementation_sha256": {
+    "tools/build_relief_marks_java.py": "e54210f1cd1771c80fb653e5252565db11fefad9c993012b7e69e9c17a6f5c8e",
+    "packages/java/examples/ReliefMarks/ReliefComposition.java": "748ab5545966f495d7fa51b55f50fbe8822ef8415a21c8c29e406e01be712bf5",
+    "packages/java-processing/examples/ReliefMarks/ReliefMarks.pde": "a5b471e567a25bc213a7da31d39f4ebf3fabdb9baba8e26a048c98989606d4aa"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/r1-java.json": "d13f7755e7186fdf5b2b446cb3ba91fd699d6c89052ab974aaa194c9b3529a39",
+    "evidence/reproductions/r1-p3d/root-review.json": "f86ec03882a4efcfb7a3f4a3fd4cdaf93dfdb125736e2168ac0d9de30856c362",
+    "evidence/reproductions/r1-p3d/evaluated-result.json": "239cedc8bebdcf48c1513456d77345e7d0b4a2dba669149d23f0c82b3b21c414"
+  },
+  "final_archive": {
+    "path": ".work/dist/r1/java/procedurals-processing-0.12.0.zip",
+    "sha256": "5b12d816be3a17beedf12c9ad091a0dc6d36bd40fe09528def6e710b118d4a2a"
+  },
+  "checks": {
+    "members": 69,
+    "operations": 14,
+    "starters": 12,
+    "prior_starters_byte_preserved": 11,
+    "core_jar_unchanged": true,
+    "changed_inherited_members": [
+      "procedurals/library.properties"
+    ],
+    "catalog_check": "passed",
+    "zip_integrity": "passed",
+    "packaged_example_matches_native_stage": true
+  },
+  "limits": [
+    "Structural recreation, not source-pixel equivalence",
+    "One demonstrated original in a selected three-sketch cohort; no corpus-wide estimate",
+    "Other platform ports deferred; no registry publication"
+  ]
+}

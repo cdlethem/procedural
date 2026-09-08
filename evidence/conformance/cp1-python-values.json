@@ -1,0 +1,48 @@
+{
+  "scope": "Python CP1 value and converted-command checks only; no py5 rendering",
+  "status": "passed",
+  "python": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]",
+  "input_sha256": {
+    "tools/check_python_field_marks.py": "f41aba69802e58e345f1967bcbec7c0ab0a3e0fa109681b70079d9eb6025260e",
+    "evidence/reproductions/cp1-java2d/plan.json": "60007bfc03dc8dc7fd11469ee93bbf0634f23dc8e90ff0749b93b134d965ed73",
+    "evidence/reproductions/cp1-java2d/result.json": "34563ada85f505692b080b0616862c1f114857bc6005068981f38cb51573d185",
+    "packages/python/examples/field_marks/mark_field.py": "c29e67dd89d9109fbae3c949a8b4805b2fabe9f4406a13ea91c742ed460eb006",
+    "packages/python/procedurals/__init__.py": "3d53798ebcd479266ec0d793ed0eb68d42abc0acf1f35f0b2febc7c74ec5a3f2",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3"
+  },
+  "cases": [
+    {
+      "id": "base",
+      "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+      "geometry_sha256": "fee543d59490aa710ff9e46dba97a6deeb9cac32a3e7a33a46fb6383efbc74de",
+      "color_sha256": "d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552",
+      "commands": 25600
+    },
+    {
+      "id": "length",
+      "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+      "geometry_sha256": "6a15d835e469595f53539555ad69970f6546610eaa2992fc8dc34b211b629e30",
+      "color_sha256": "d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552",
+      "commands": 25600
+    },
+    {
+      "id": "palette",
+      "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+      "geometry_sha256": "fee543d59490aa710ff9e46dba97a6deeb9cac32a3e7a33a46fb6383efbc74de",
+      "color_sha256": "48a2692180af6dc61b4af7ab69bb8348c19b8bedb1e56bce34f5d49dd3431fb0",
+      "commands": 25600
+    },
+    {
+      "id": "bar",
+      "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+      "geometry_sha256": "c4ce81a946c5c39c4ea88efb6066acb99f03db05cfbe8869d46437bd7a4fa4ec",
+      "color_sha256": "d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552",
+      "commands": 25600
+    }
+  ]
+}

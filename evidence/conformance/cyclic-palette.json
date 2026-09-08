@@ -1,0 +1,1750 @@
+{
+  "operation": "color.cyclic-palette",
+  "version": "0.1.0",
+  "scope": "portable native cores only; no Processing/p5/py5/Android host or reproduction claim",
+  "contract_sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+  "fixture_sha256": "a4cdf6349ed5e204700964e14fc738cdf25dbd58abf486a277e3c173d0410881",
+  "source_sha256": {
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/index.js": "7f368cde1aae6299dd73bee5334342b8ee6574ae2e59dc5982aca643b7f52644",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/python/procedurals/__init__.py": "3d53798ebcd479266ec0d793ed0eb68d42abc0acf1f35f0b2febc7c74ec5a3f2",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "tests/native/PaletteNative.java.in": "2587bb0976f35154a5eddcc36431fc8e9c588a5f6d51b232c9573c594933fc13",
+    "tests/native/palette-javascript.mjs": "b2eee05b219e2c5ea40f07ee0d114cf830604398be48e45c1b80b779c13ec895",
+    "tests/native/palette-python.py": "85c529fcd53a48d0bcc33d2b90ef853d4a52e010369855771d0639f6fb0cc9b6",
+    "tools/run_palette_conformance.py": "4a9e59a264ae96658875e736f5d82426017353f0fe01aef42f2616b17d6fd4e8",
+    "tools/run_grid_conformance.py": "392d23b61f713c7d204e215a9b468874f78b213741dc1e163b4b5fcb5553b180"
+  },
+  "results": {
+    "java": {
+      "cases": [
+        {
+          "id": "black-white",
+          "serialized": {
+            "colors": [
+              0,
+              16777215
+            ]
+          },
+          "outputs": [
+            0,
+            0,
+            0,
+            0,
+            8421504,
+            8421504,
+            16777215,
+            8421504,
+            0,
+            0,
+            8355711,
+            8421504,
+            8421504,
+            8421504,
+            16777215,
+            16777215,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "red-blue",
+          "serialized": {
+            "colors": [
+              16711680,
+              255
+            ]
+          },
+          "outputs": [
+            16711680,
+            16711680,
+            16711680,
+            16711680,
+            8388736,
+            8388736,
+            255,
+            8388736,
+            16711680,
+            16711680,
+            8388735,
+            8323200,
+            8388736,
+            8388736,
+            255,
+            255,
+            16711680,
+            16711680,
+            16711680
+          ]
+        },
+        {
+          "id": "one-step-channels",
+          "serialized": {
+            "colors": [
+              0,
+              65793
+            ]
+          },
+          "outputs": [
+            0,
+            0,
+            0,
+            0,
+            65793,
+            65793,
+            65793,
+            65793,
+            0,
+            0,
+            65793,
+            65793,
+            65793,
+            65793,
+            65793,
+            65793,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "duplicates",
+          "serialized": {
+            "colors": [
+              0,
+              0,
+              16777215,
+              16777215
+            ]
+          },
+          "outputs": [
+            0,
+            0,
+            0,
+            0,
+            16777215,
+            0,
+            16777215,
+            16777215,
+            0,
+            0,
+            0,
+            0,
+            0,
+            16777215,
+            16777215,
+            16777215,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "single",
+          "serialized": {
+            "colors": [
+              1193046
+            ]
+          },
+          "outputs": [
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046,
+            1193046
+          ]
+        },
+        {
+          "id": "source-pelines",
+          "serialized": {
+            "colors": [
+              3252561,
+              16754462,
+              329804,
+              14566968,
+              4046263
+            ]
+          },
+          "outputs": [
+            3252561,
+            3252561,
+            3252561,
+            3252561,
+            6659991,
+            12681002,
+            7481154,
+            6659991,
+            3252561,
+            3252561,
+            12681001,
+            12615466,
+            12681002,
+            6659991,
+            7481154,
+            7481154,
+            3252561,
+            3252561,
+            3252561
+          ]
+        },
+        {
+          "id": "integral-floats",
+          "serialized": {
+            "colors": [
+              0,
+              1
+            ]
+          },
+          "outputs": [
+            1
+          ]
+        },
+        {
+          "id": "invalid-constructor-0",
+          "error": "INVALID_INPUT"
+        },
+        {
+          "id": "invalid-constructor-1",
+          "error": "INVALID_INPUT"
+        },
+        {
+          "id": "invalid-constructor-2",
+          "error": "INVALID_INPUT"
+        },
+        {
+          "id": "invalid-constructor-3",
+          "error": "INVALID_INPUT"
+        },
+        {
+          "id": "invalid-constructor-4",
+          "error": "INVALID_INPUT"
+        },
+        {
+          "id": "invalid-constructor-5",
+          "error": "INVALID_INPUT"
+        },
+        {
+          "id": "invalid-constructor-6",
+          "error": "INVALID_INPUT"
+        },
+        {
+          "id": "invalid-constructor-7",
+          "error": "INVALID_INPUT"
+        },
+        {
+          "id": "invalid-constructor-8",
+          "error": "INVALID_INPUT"
+        },
+        {
+          "id": "invalid-constructor-9",
+          "error": "INVALID_INPUT"
+        },
+        {
+          "id": "invalid-constructor-10",
+          "error": "INVALID_INPUT"
+        }
+      ],
+      "query_cases": [
+        {
+          "id": "invalid-query-0",
+          "error": "INVALID_QUERY"
+        },
+        {
+          "id": "invalid-query-1",
+          "error": "INVALID_QUERY"
+        },
+        {
+          "id": "invalid-query-2",
+          "error": "INVALID_QUERY"
+        },
+        {
+          "id": "invalid-query-3",
+          "error": "INVALID_QUERY"
+        },
+        {
+          "id": "invalid-query-4",
+          "error": "INVALID_QUERY"
+        },
+        {
+          "id": "invalid-query-5",
+          "error": "INVALID_QUERY"
+        },
+        {
+          "id": "invalid-query-6",
+          "error": "INVALID_QUERY"
+        },
+        {
+          "id": "invalid-query-7",
+          "error": "INVALID_QUERY"
+        }
+      ],
+      "native_checks_passed": true,
+      "benchmark": {
+        "queries": 250000,
+        "warmup_traversals": 2,
+        "elapsed_ns": 2610808,
+        "checksum": 1947414708739
+      },
+      "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+      "artifact": "dist/procedurals-core-0.1.0.jar",
+      "artifact_sha256": "57d05141182601c7b24962e5c2fb782021d8d97abaa45ff329a7800aa545fdda"
+    },
+    "javascript": {
+      "operation": "color.cyclic-palette",
+      "version": "0.1.0",
+      "runtime": {
+        "node": "v22.22.1"
+      },
+      "failures": 0,
+      "counts": {
+        "fixtureCases": 18,
+        "fixtureSamples": 115,
+        "constructorErrorCases": 11,
+        "queryErrorCases": 8,
+        "oracleIndexVectorsNotNativeTested": 24,
+        "nativeChecks": 6,
+        "resultChecks": 27
+      },
+      "results": [
+        {
+          "id": "black-white",
+          "actual": {
+            "outputs": [
+              {
+                "input": 0,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 0,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": -5e-324,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 5e-324,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": -0.25,
+                "actual": 8421504,
+                "expected": 8421504
+              },
+              {
+                "input": 0.25,
+                "actual": 8421504,
+                "expected": 8421504
+              },
+              {
+                "input": 0.5,
+                "actual": 16777215,
+                "expected": 16777215
+              },
+              {
+                "input": 0.75,
+                "actual": 8421504,
+                "expected": 8421504
+              },
+              {
+                "input": 1,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 0.9999999999999999,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 0.24999999999999997,
+                "actual": 8355711,
+                "expected": 8355711
+              },
+              {
+                "input": 0.25000000000000006,
+                "actual": 8421504,
+                "expected": 8421504
+              },
+              {
+                "input": 1.25,
+                "actual": 8421504,
+                "expected": 8421504
+              },
+              {
+                "input": -1.25,
+                "actual": 8421504,
+                "expected": 8421504
+              },
+              {
+                "input": 4503599627370495.5,
+                "actual": 16777215,
+                "expected": 16777215
+              },
+              {
+                "input": -4503599627370495.5,
+                "actual": 16777215,
+                "expected": 16777215
+              },
+              {
+                "input": 1e+300,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": -1e+300,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 1.7976931348623157e+308,
+                "actual": 0,
+                "expected": 0
+              }
+            ],
+            "serialized": {
+              "colors": [
+                0,
+                16777215
+              ]
+            }
+          },
+          "expected": {
+            "queries": [
+              {
+                "input": 0,
+                "output": 0
+              },
+              {
+                "input": 0,
+                "output": 0
+              },
+              {
+                "input": -5e-324,
+                "output": 0
+              },
+              {
+                "input": 5e-324,
+                "output": 0
+              },
+              {
+                "input": -0.25,
+                "output": 8421504
+              },
+              {
+                "input": 0.25,
+                "output": 8421504
+              },
+              {
+                "input": 0.5,
+                "output": 16777215
+              },
+              {
+                "input": 0.75,
+                "output": 8421504
+              },
+              {
+                "input": 1,
+                "output": 0
+              },
+              {
+                "input": 0.9999999999999999,
+                "output": 0
+              },
+              {
+                "input": 0.24999999999999997,
+                "output": 8355711
+              },
+              {
+                "input": 0.25000000000000006,
+                "output": 8421504
+              },
+              {
+                "input": 1.25,
+                "output": 8421504
+              },
+              {
+                "input": -1.25,
+                "output": 8421504
+              },
+              {
+                "input": 4503599627370495.5,
+                "output": 16777215
+              },
+              {
+                "input": -4503599627370495.5,
+                "output": 16777215
+              },
+              {
+                "input": 1e+300,
+                "output": 0
+              },
+              {
+                "input": -1e+300,
+                "output": 0
+              },
+              {
+                "input": 1.7976931348623157e+308,
+                "output": 0
+              }
+            ],
+            "serialized": {
+              "colors": [
+                0,
+                16777215
+              ]
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "red-blue",
+          "actual": {
+            "outputs": [
+              {
+                "input": 0,
+                "actual": 16711680,
+                "expected": 16711680
+              },
+              {
+                "input": 0,
+                "actual": 16711680,
+                "expected": 16711680
+              },
+              {
+                "input": -5e-324,
+                "actual": 16711680,
+                "expected": 16711680
+              },
+              {
+                "input": 5e-324,
+                "actual": 16711680,
+                "expected": 16711680
+              },
+              {
+                "input": -0.25,
+                "actual": 8388736,
+                "expected": 8388736
+              },
+              {
+                "input": 0.25,
+                "actual": 8388736,
+                "expected": 8388736
+              },
+              {
+                "input": 0.5,
+                "actual": 255,
+                "expected": 255
+              },
+              {
+                "input": 0.75,
+                "actual": 8388736,
+                "expected": 8388736
+              },
+              {
+                "input": 1,
+                "actual": 16711680,
+                "expected": 16711680
+              },
+              {
+                "input": 0.9999999999999999,
+                "actual": 16711680,
+                "expected": 16711680
+              },
+              {
+                "input": 0.24999999999999997,
+                "actual": 8388735,
+                "expected": 8388735
+              },
+              {
+                "input": 0.25000000000000006,
+                "actual": 8323200,
+                "expected": 8323200
+              },
+              {
+                "input": 1.25,
+                "actual": 8388736,
+                "expected": 8388736
+              },
+              {
+                "input": -1.25,
+                "actual": 8388736,
+                "expected": 8388736
+              },
+              {
+                "input": 4503599627370495.5,
+                "actual": 255,
+                "expected": 255
+              },
+              {
+                "input": -4503599627370495.5,
+                "actual": 255,
+                "expected": 255
+              },
+              {
+                "input": 1e+300,
+                "actual": 16711680,
+                "expected": 16711680
+              },
+              {
+                "input": -1e+300,
+                "actual": 16711680,
+                "expected": 16711680
+              },
+              {
+                "input": 1.7976931348623157e+308,
+                "actual": 16711680,
+                "expected": 16711680
+              }
+            ],
+            "serialized": {
+              "colors": [
+                16711680,
+                255
+              ]
+            }
+          },
+          "expected": {
+            "queries": [
+              {
+                "input": 0,
+                "output": 16711680
+              },
+              {
+                "input": 0,
+                "output": 16711680
+              },
+              {
+                "input": -5e-324,
+                "output": 16711680
+              },
+              {
+                "input": 5e-324,
+                "output": 16711680
+              },
+              {
+                "input": -0.25,
+                "output": 8388736
+              },
+              {
+                "input": 0.25,
+                "output": 8388736
+              },
+              {
+                "input": 0.5,
+                "output": 255
+              },
+              {
+                "input": 0.75,
+                "output": 8388736
+              },
+              {
+                "input": 1,
+                "output": 16711680
+              },
+              {
+                "input": 0.9999999999999999,
+                "output": 16711680
+              },
+              {
+                "input": 0.24999999999999997,
+                "output": 8388735
+              },
+              {
+                "input": 0.25000000000000006,
+                "output": 8323200
+              },
+              {
+                "input": 1.25,
+                "output": 8388736
+              },
+              {
+                "input": -1.25,
+                "output": 8388736
+              },
+              {
+                "input": 4503599627370495.5,
+                "output": 255
+              },
+              {
+                "input": -4503599627370495.5,
+                "output": 255
+              },
+              {
+                "input": 1e+300,
+                "output": 16711680
+              },
+              {
+                "input": -1e+300,
+                "output": 16711680
+              },
+              {
+                "input": 1.7976931348623157e+308,
+                "output": 16711680
+              }
+            ],
+            "serialized": {
+              "colors": [
+                16711680,
+                255
+              ]
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "one-step-channels",
+          "actual": {
+            "outputs": [
+              {
+                "input": 0,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 0,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": -5e-324,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 5e-324,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": -0.25,
+                "actual": 65793,
+                "expected": 65793
+              },
+              {
+                "input": 0.25,
+                "actual": 65793,
+                "expected": 65793
+              },
+              {
+                "input": 0.5,
+                "actual": 65793,
+                "expected": 65793
+              },
+              {
+                "input": 0.75,
+                "actual": 65793,
+                "expected": 65793
+              },
+              {
+                "input": 1,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 0.9999999999999999,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 0.24999999999999997,
+                "actual": 65793,
+                "expected": 65793
+              },
+              {
+                "input": 0.25000000000000006,
+                "actual": 65793,
+                "expected": 65793
+              },
+              {
+                "input": 1.25,
+                "actual": 65793,
+                "expected": 65793
+              },
+              {
+                "input": -1.25,
+                "actual": 65793,
+                "expected": 65793
+              },
+              {
+                "input": 4503599627370495.5,
+                "actual": 65793,
+                "expected": 65793
+              },
+              {
+                "input": -4503599627370495.5,
+                "actual": 65793,
+                "expected": 65793
+              },
+              {
+                "input": 1e+300,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": -1e+300,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 1.7976931348623157e+308,
+                "actual": 0,
+                "expected": 0
+              }
+            ],
+            "serialized": {
+              "colors": [
+                0,
+                65793
+              ]
+            }
+          },
+          "expected": {
+            "queries": [
+              {
+                "input": 0,
+                "output": 0
+              },
+              {
+                "input": 0,
+                "output": 0
+              },
+              {
+                "input": -5e-324,
+                "output": 0
+              },
+              {
+                "input": 5e-324,
+                "output": 0
+              },
+              {
+                "input": -0.25,
+                "output": 65793
+              },
+              {
+                "input": 0.25,
+                "output": 65793
+              },
+              {
+                "input": 0.5,
+                "output": 65793
+              },
+              {
+                "input": 0.75,
+                "output": 65793
+              },
+              {
+                "input": 1,
+                "output": 0
+              },
+              {
+                "input": 0.9999999999999999,
+                "output": 0
+              },
+              {
+                "input": 0.24999999999999997,
+                "output": 65793
+              },
+              {
+                "input": 0.25000000000000006,
+                "output": 65793
+              },
+              {
+                "input": 1.25,
+                "output": 65793
+              },
+              {
+                "input": -1.25,
+                "output": 65793
+              },
+              {
+                "input": 4503599627370495.5,
+                "output": 65793
+              },
+              {
+                "input": -4503599627370495.5,
+                "output": 65793
+              },
+              {
+                "input": 1e+300,
+                "output": 0
+              },
+              {
+                "input": -1e+300,
+                "output": 0
+              },
+              {
+                "input": 1.7976931348623157e+308,
+                "output": 0
+              }
+            ],
+            "serialized": {
+              "colors": [
+                0,
+                65793
+              ]
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "duplicates",
+          "actual": {
+            "outputs": [
+              {
+                "input": 0,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 0,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": -5e-324,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 5e-324,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": -0.25,
+                "actual": 16777215,
+                "expected": 16777215
+              },
+              {
+                "input": 0.25,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 0.5,
+                "actual": 16777215,
+                "expected": 16777215
+              },
+              {
+                "input": 0.75,
+                "actual": 16777215,
+                "expected": 16777215
+              },
+              {
+                "input": 1,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 0.9999999999999999,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 0.24999999999999997,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 0.25000000000000006,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 1.25,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": -1.25,
+                "actual": 16777215,
+                "expected": 16777215
+              },
+              {
+                "input": 4503599627370495.5,
+                "actual": 16777215,
+                "expected": 16777215
+              },
+              {
+                "input": -4503599627370495.5,
+                "actual": 16777215,
+                "expected": 16777215
+              },
+              {
+                "input": 1e+300,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": -1e+300,
+                "actual": 0,
+                "expected": 0
+              },
+              {
+                "input": 1.7976931348623157e+308,
+                "actual": 0,
+                "expected": 0
+              }
+            ],
+            "serialized": {
+              "colors": [
+                0,
+                0,
+                16777215,
+                16777215
+              ]
+            }
+          },
+          "expected": {
+            "queries": [
+              {
+                "input": 0,
+                "output": 0
+              },
+              {
+                "input": 0,
+                "output": 0
+              },
+              {
+                "input": -5e-324,
+                "output": 0
+              },
+              {
+                "input": 5e-324,
+                "output": 0
+              },
+              {
+                "input": -0.25,
+                "output": 16777215
+              },
+              {
+                "input": 0.25,
+                "output": 0
+              },
+              {
+                "input": 0.5,
+                "output": 16777215
+              },
+              {
+                "input": 0.75,
+                "output": 16777215
+              },
+              {
+                "input": 1,
+                "output": 0
+              },
+              {
+                "input": 0.9999999999999999,
+                "output": 0
+              },
+              {
+                "input": 0.24999999999999997,
+                "output": 0
+              },
+              {
+                "input": 0.25000000000000006,
+                "output": 0
+              },
+              {
+                "input": 1.25,
+                "output": 0
+              },
+              {
+                "input": -1.25,
+                "output": 16777215
+              },
+              {
+                "input": 4503599627370495.5,
+                "output": 16777215
+              },
+              {
+                "input": -4503599627370495.5,
+                "output": 16777215
+              },
+              {
+                "input": 1e+300,
+                "output": 0
+              },
+              {
+                "input": -1e+300,
+                "output": 0
+              },
+              {
+                "input": 1.7976931348623157e+308,
+                "output": 0
+              }
+            ],
+            "serialized": {
+              "colors": [
+                0,
+                0,
+                16777215,
+                16777215
+              ]
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "single",
+          "actual": {
+            "outputs": [
+              {
+                "input": 0,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 0,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": -5e-324,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 5e-324,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": -0.25,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 0.25,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 0.5,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 0.75,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 1,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 0.9999999999999999,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 0.24999999999999997,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 0.25000000000000006,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 1.25,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": -1.25,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 4503599627370495.5,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": -4503599627370495.5,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 1e+300,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": -1e+300,
+                "actual": 1193046,
+                "expected": 1193046
+              },
+              {
+                "input": 1.7976931348623157e+308,
+                "actual": 1193046,
+                "expected": 1193046
+              }
+            ],
+            "serialized": {
+              "colors": [
+                1193046
+              ]
+            }
+          },
+          "expected": {
+            "queries": [
+              {
+                "input": 0,
+                "output": 1193046
+              },
+              {
+                "input": 0,
+                "output": 1193046
+              },
+              {
+                "input": -5e-324,
+                "output": 1193046
+              },
+              {
+                "input": 5e-324,
+                "output": 1193046
+              },
+              {
+                "input": -0.25,
+                "output": 1193046
+              },
+              {
+                "input": 0.25,
+                "output": 1193046
+              },
+              {
+                "input": 0.5,
+                "output": 1193046
+              },
+              {
+                "input": 0.75,
+                "output": 1193046
+              },
+              {
+                "input": 1,
+                "output": 1193046
+              },
+              {
+                "input": 0.9999999999999999,
+                "output": 1193046
+              },
+              {
+                "input": 0.24999999999999997,
+                "output": 1193046
+              },
+              {
+                "input": 0.25000000000000006,
+                "output": 1193046
+              },
+              {
+                "input": 1.25,
+                "output": 1193046
+              },
+              {
+                "input": -1.25,
+                "output": 1193046
+              },
+              {
+                "input": 4503599627370495.5,
+                "output": 1193046
+              },
+              {
+                "input": -4503599627370495.5,
+                "output": 1193046
+              },
+              {
+                "input": 1e+300,
+                "output": 1193046
+              },
+              {
+                "input": -1e+300,
+                "output": 1193046
+              },
+              {
+                "input": 1.7976931348623157e+308,
+                "output": 1193046
+              }
+            ],
+            "serialized": {
+              "colors": [
+                1193046
+              ]
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "source-pelines",
+          "actual": {
+            "outputs": [
+              {
+                "input": 0,
+                "actual": 3252561,
+                "expected": 3252561
+              },
+              {
+                "input": 0,
+                "actual": 3252561,
+                "expected": 3252561
+              },
+              {
+                "input": -5e-324,
+                "actual": 3252561,
+                "expected": 3252561
+              },
+              {
+                "input": 5e-324,
+                "actual": 3252561,
+                "expected": 3252561
+              },
+              {
+                "input": -0.25,
+                "actual": 6659991,
+                "expected": 6659991
+              },
+              {
+                "input": 0.25,
+                "actual": 12681002,
+                "expected": 12681002
+              },
+              {
+                "input": 0.5,
+                "actual": 7481154,
+                "expected": 7481154
+              },
+              {
+                "input": 0.75,
+                "actual": 6659991,
+                "expected": 6659991
+              },
+              {
+                "input": 1,
+                "actual": 3252561,
+                "expected": 3252561
+              },
+              {
+                "input": 0.9999999999999999,
+                "actual": 3252561,
+                "expected": 3252561
+              },
+              {
+                "input": 0.24999999999999997,
+                "actual": 12681001,
+                "expected": 12681001
+              },
+              {
+                "input": 0.25000000000000006,
+                "actual": 12615466,
+                "expected": 12615466
+              },
+              {
+                "input": 1.25,
+                "actual": 12681002,
+                "expected": 12681002
+              },
+              {
+                "input": -1.25,
+                "actual": 6659991,
+                "expected": 6659991
+              },
+              {
+                "input": 4503599627370495.5,
+                "actual": 7481154,
+                "expected": 7481154
+              },
+              {
+                "input": -4503599627370495.5,
+                "actual": 7481154,
+                "expected": 7481154
+              },
+              {
+                "input": 1e+300,
+                "actual": 3252561,
+                "expected": 3252561
+              },
+              {
+                "input": -1e+300,
+                "actual": 3252561,
+                "expected": 3252561
+              },
+              {
+                "input": 1.7976931348623157e+308,
+                "actual": 3252561,
+                "expected": 3252561
+              }
+            ],
+            "serialized": {
+              "colors": [
+                3252561,
+                16754462,
+                329804,
+                14566968,
+                4046263
+              ]
+            }
+          },
+          "expected": {
+            "queries": [
+              {
+                "input": 0,
+                "output": 3252561
+              },
+              {
+                "input": 0,
+                "output": 3252561
+              },
+              {
+                "input": -5e-324,
+                "output": 3252561
+              },
+              {
+                "input": 5e-324,
+                "output": 3252561
+              },
+              {
+                "input": -0.25,
+                "output": 6659991
+              },
+              {
+                "input": 0.25,
+                "output": 12681002
+              },
+              {
+                "input": 0.5,
+                "output": 7481154
+              },
+              {
+                "input": 0.75,
+                "output": 6659991
+              },
+              {
+                "input": 1,
+                "output": 3252561
+              },
+              {
+                "input": 0.9999999999999999,
+                "output": 3252561
+              },
+              {
+                "input": 0.24999999999999997,
+                "output": 12681001
+              },
+              {
+                "input": 0.25000000000000006,
+                "output": 12615466
+              },
+              {
+                "input": 1.25,
+                "output": 12681002
+              },
+              {
+                "input": -1.25,
+                "output": 6659991
+              },
+              {
+                "input": 4503599627370495.5,
+                "output": 7481154
+              },
+              {
+                "input": -4503599627370495.5,
+                "output": 7481154
+              },
+              {
+                "input": 1e+300,
+                "output": 3252561
+              },
+              {
+                "input": -1e+300,
+                "output": 3252561
+              },
+              {
+                "input": 1.7976931348623157e+308,
+                "output": 3252561
+              }
+            ],
+            "serialized": {
+              "colors": [
+                3252561,
+                16754462,
+                329804,
+                14566968,
+                4046263
+              ]
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "integral-floats",
+          "actual": {
+            "outputs": [
+              {
+                "input": 0.25,
+                "actual": 1,
+                "expected": 1
+              }
+            ],
+            "serialized": {
+              "colors": [
+                0,
+                1
+              ]
+            }
+          },
+          "expected": {
+            "queries": [
+              {
+                "input": 0.25,
+                "output": 1
+              }
+            ],
+            "serialized": {
+              "colors": [
+                0,
+                1
+              ]
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "constructor-invalid-constructor-0",
+          "actual": "INVALID_INPUT",
+          "expected": "INVALID_INPUT",
+          "passed": true
+        },
+        {
+          "id": "constructor-invalid-constructor-1",
+          "actual": "INVALID_INPUT",
+          "expected": "INVALID_INPUT",
+          "passed": true
+        },
+        {
+          "id": "constructor-invalid-constructor-2",
+          "actual": "INVALID_INPUT",
+          "expected": "INVALID_INPUT",
+          "passed": true
+        },
+        {
+          "id": "constructor-invalid-constructor-3",
+          "actual": "INVALID_INPUT",
+          "expected": "INVALID_INPUT",
+          "passed": true
+        },
+        {
+          "id": "constructor-invalid-constructor-4",
+          "actual": "INVALID_INPUT",
+          "expected": "INVALID_INPUT",
+          "passed": true
+        },
+        {
+          "id": "constructor-invalid-constructor-5",
+          "actual": "INVALID_INPUT",
+          "expected": "INVALID_INPUT",
+          "passed": true
+        },
+        {
+          "id": "constructor-invalid-constructor-6",
+          "actual": "INVALID_INPUT",
+          "expected": "INVALID_INPUT",
+          "passed": true
+        },
+        {
+          "id": "constructor-invalid-constructor-7",
+          "actual": "INVALID_INPUT",
+          "expected": "INVALID_INPUT",
+          "passed": true
+        },
+        {
+          "id": "constructor-invalid-constructor-8",
+          "actual": "INVALID_INPUT",
+          "expected": "INVALID_INPUT",
+          "passed": true
+        },
+        {
+          "id": "constructor-invalid-constructor-9",
+          "actual": "INVALID_INPUT",
+          "expected": "INVALID_INPUT",
+          "passed": true
+        },
+        {
+          "id": "constructor-invalid-constructor-10",
+          "actual": "INVALID_INPUT",
+          "expected": "INVALID_INPUT",
+          "passed": true
+        },
+        {
+          "id": "query-invalid-query-0",
+          "actual": "INVALID_QUERY",
+          "expected": "INVALID_QUERY",
+          "passed": true
+        },
+        {
+          "id": "query-invalid-query-1",
+          "actual": "INVALID_QUERY",
+          "expected": "INVALID_QUERY",
+          "passed": true
+        },
+        {
+          "id": "query-invalid-query-2",
+          "actual": "INVALID_QUERY",
+          "expected": "INVALID_QUERY",
+          "passed": true
+        },
+        {
+          "id": "query-invalid-query-3",
+          "actual": "INVALID_QUERY",
+          "expected": "INVALID_QUERY",
+          "passed": true
+        },
+        {
+          "id": "query-invalid-query-4",
+          "actual": "INVALID_QUERY",
+          "expected": "INVALID_QUERY",
+          "passed": true
+        },
+        {
+          "id": "query-invalid-query-5",
+          "actual": "INVALID_QUERY",
+          "expected": "INVALID_QUERY",
+          "passed": true
+        },
+        {
+          "id": "query-invalid-query-6",
+          "actual": "INVALID_QUERY",
+          "expected": "INVALID_QUERY",
+          "passed": true
+        },
+        {
+          "id": "query-invalid-query-7",
+          "actual": "INVALID_QUERY",
+          "expected": "INVALID_QUERY",
+          "passed": true
+        },
+        {
+          "id": "performance-250000-scalar-queries",
+          "actual": {
+            "scalarQueries": 250000,
+            "palette": [
+              3252561,
+              16754462,
+              329804,
+              14566968,
+              4046263
+            ],
+            "phase": "i * 0.001",
+            "warmupTraversals": 2,
+            "timedTraversals": 1,
+            "checksum": 1947414708739,
+            "elapsedMs": 2.268907999999996
+          },
+          "expected": {
+            "scalarQueries": 250000,
+            "checksum": "reported for cross-target comparison"
+          },
+          "passed": true
+        }
+      ],
+      "nativeChecks": [
+        {
+          "id": "passive-own-data-only",
+          "actual": true,
+          "passed": true
+        },
+        {
+          "id": "nonfinite-entries-and-queries",
+          "actual": true,
+          "passed": true
+        },
+        {
+          "id": "input-and-serialization-ownership",
+          "actual": true,
+          "passed": true
+        },
+        {
+          "id": "single-palette-validates-every-query",
+          "actual": true,
+          "passed": true
+        },
+        {
+          "id": "positive-zero-output-and-native-arity",
+          "actual": true,
+          "passed": true
+        },
+        {
+          "id": "repeated-and-interleaved-samples",
+          "actual": true,
+          "passed": true
+        }
+      ],
+      "benchmark": {
+        "scalarQueries": 250000,
+        "palette": [
+          3252561,
+          16754462,
+          329804,
+          14566968,
+          4046263
+        ],
+        "phase": "i * 0.001",
+        "warmupTraversals": 2,
+        "timedTraversals": 1,
+        "checksum": 1947414708739,
+        "elapsedMs": 2.268907999999996
+      }
+    },
+    "python": {
+      "benchmark": {
+        "checksum": 1947414708739,
+        "queries": 250000,
+        "seconds": 0.1178427169797942,
+        "warmups": 2
+      },
+      "counts": {
+        "constructor_cases": 18,
+        "fixture_samples": 115,
+        "native_checks": 5,
+        "native_query_calls": 115,
+        "oracle_index_vectors_not_native_tested": 24,
+        "query_errors": 8
+      },
+      "failures": [],
+      "implementation": "python",
+      "operation": "color.cyclic-palette",
+      "runtime": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]"
+    }
+  }
+}

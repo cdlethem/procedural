@@ -1,0 +1,26 @@
+{
+  "status": "staged",
+  "review_status": "pending_root",
+  "input_sha256": {
+    "tools/build_landscape_marks_java.py": "93627121644590d8c82700e0d281a5bdb7116b3dc8f7f1a712e838c1f6011823",
+    "tools/build_lattice_marks_java.py": "cf063d540ff4c722d01f5a861665f9f08486b32e46586d5478bccba39d11d91b",
+    "evidence/distribution/r2-review.json": "550fa92655de8ce27fc5826327f94f8f545d48c1acfb368779b9e8b0ff03bb25",
+    "evidence/reproductions/r3-p2d/root-review.json": "03f8df993f4fd3f1c1317dcaf69008d3b389dc194e12282873577d1a64a84dfe",
+    "evidence/reproductions/r3-p2d/edits.json": "5fe263013c54966596e5d3252a4222ec24020248aeabfcd12cbcbcd636975103",
+    ".work/dist/r2/java/procedurals-processing-0.13.0.zip": "cd350a7478f5c5e36ba19d4f617bf7ae7ec2eb98b9aa08a1f2966b8ada47d739",
+    ".work/examples/r3-candidate1/result.json": "00cd4474e60319703baaa90870d1c0f058cc9d5bd74cc220d3a5afacb8229bfd",
+    "packages/java/examples/LandscapeMarks/LandscapeComposition.java": "265bf82c153e80eff11720616c75d376665979b8de7be644c2b8a07f99bc0da8",
+    "packages/java-processing/examples/LandscapeMarks/LandscapeMarks.pde": "c825f59674c040a1c82bc07021e47b77a06fdb5cedbde22ec0ecdd03efd6810a",
+    "docs/landscape-marks.md": "d4c8e7c888f7f86038b938e001af8a437bdd74123f9be39f0d734a2dcd81271b",
+    "docs/installing-landscape-marks.md": "366b685535997bc698319180fd88fa19ece8af4d30bd95b2612af7163ff323ea"
+  },
+  "archive": {
+    "path": ".work/dist/r3/java/procedurals-processing-0.14.0.zip",
+    "sha256": "ac77ad08fb87561bd379c610c0ef8035031fb5452771d875ab4f9425b0680d88"
+  },
+  "operations": 14,
+  "starters": 14,
+  "members": 77,
+  "unchanged_prior_members": 72,
+  "core_jar_unchanged": true
+}

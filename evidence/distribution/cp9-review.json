@@ -1,0 +1,45 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Java0.9.0 package: nine editable starters and twelve operations. Prior8example payloads and adapter JAR preserved; new core matches accepted FacetMarks native JAR. No registry publication or additional platform claim.",
+  "implementation_sha256": {
+    "tools/build_facet_marks_java.py": "ed7e78db3f513306fd64d209e068d2b9ef29226e2c780b386d437ca3132c7942",
+    "docs/facet-marks.md": "e2dad8ed3fa74cea5e283d26b9cd4e8fa6ac88ee8c88e0e9b0dcc4f460001f10",
+    "docs/installing-facet-marks.md": "a5ada3a6da3d384c4ef60991fd183c29a44f52edd3a6c97bcb02019713dcbb2b"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp9-java.json": "1aa2381bcded6d9920ed5c58b3feb7d7dc1ee3f5fa164d67da4b3bf149318486",
+    "evidence/distribution/cp8-review.json": "96c71e128f13f4be3f2a48a10241e9a334299867b550159c6747e6968c4a1401",
+    "evidence/reproductions/cp9-java2d/result.json": "8cef1ccdc993328909f9ff0a2564765bd04d72f8c197de32250336b72af3041e",
+    "evidence/reproductions/cp9-java2d/root-review.json": "1a097815ae2803f77b36b812fe19149c639e5ef18b28bc4a481b00f6b8431320"
+  },
+  "final_archive": {
+    "path": ".work/dist/cp9/java/procedurals-processing-0.9.0.zip",
+    "sha256": "cf12903f83ce7bccedc8e23a0f8e7d930ff0eccd54242d2268d2aa23c5c28f08"
+  },
+  "checks": {
+    "repository_unittests": 130,
+    "catalog_checker": "passed",
+    "zip_crc": "passed",
+    "unique_safe_members": true,
+    "archive_members": 55,
+    "previous_starters_preserved": 8,
+    "starters": 9,
+    "operations": 12,
+    "prior_core_entries_preserved": 65,
+    "new_core_classes_match_accepted_native_conformance": 11,
+    "actual_rendered_states": 18,
+    "distinct_images_directly_viewed": 12,
+    "changed_inherited_members": [
+      "procedurals/library/procedurals.jar",
+      "procedurals/library.properties",
+      "procedurals/docs/reference/operations.md"
+    ]
+  },
+  "limitations": [
+    "Local archive only; no registry publication or human usability session.",
+    "FacetMarks JAVA2D density1 and registered configurations only; newer ports deferred.",
+    "Deeper bundled evidence/source links may require repository checkout."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "scope": "Actual Android Processing setup only; no adapter support claim",
+  "apk_sha256": "edde99402c67762ca5eb3fef5037670567b88e8967d75e06e3b2ed65c8563aa3",
+  "build_report_sha256": "1086fe56261ea7454a0c27366b2553742b31f5bc190be58b801a527fb423756b",
+  "environment_report_sha256": "9b6b2bc931829fd34da7629fa2cfdde82d02e24d24cab6bb2bfb6bbacdc00864",
+  "install": "Performing Streamed Install\nSuccess",
+  "launch": "Starting: Intent { cmp=org.procedurals.bootstrap/.MainActivity }\nStatus: ok\nLaunchState: COLD\nActivity: org.procedurals.bootstrap/.MainActivity\nTotalTime: 12217\nWaitTime: 13376\nComplete",
+  "native": {
+    "renderer": "processing.a2d.PGraphicsAndroid2D",
+    "api": 33,
+    "width": 32,
+    "height": 24,
+    "passed": true
+  },
+  "fingerprint": "google/sdk_gphone64_x86_64/emu64x:13/TE1A.240213.009/12342917:userdebug/dev-keys"
+}

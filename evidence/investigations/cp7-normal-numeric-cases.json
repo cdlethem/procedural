@@ -1,0 +1,1349 @@
+{
+  "cases": [
+    {
+      "id": "ordinary",
+      "ordinary_edge_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bff0000000000000",
+            "value": -1.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "edges": [
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "length": {
+          "bits_hex": "3ff6a09e667f3bcd",
+          "value": 1.4142135623730951
+        },
+        "norm_square": {
+          "bits_hex": "4000000000000000",
+          "value": 2.0
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bfe6a09e667f3bcc",
+            "value": -0.7071067811865475
+          },
+          {
+            "bits_hex": "3fe6a09e667f3bcc",
+            "value": 0.7071067811865475
+          }
+        ]
+      },
+      "scaled_edges_hypot_normalization": {
+        "scale": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "scaled_cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bff0000000000000",
+            "value": -1.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "scaled_length": {
+          "bits_hex": "3ff6a09e667f3bcd",
+          "value": 1.4142135623730951
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "bfe6a09e667f3bcc",
+            "value": -0.7071067811865475
+          },
+          {
+            "bits_hex": "3fe6a09e667f3bcc",
+            "value": 0.7071067811865475
+          }
+        ]
+      },
+      "triangle": [
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "large-cross-overflow",
+      "ordinary_edge_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "7ff0000000000000",
+            "nonfinite": "+Infinity"
+          }
+        ],
+        "edges": [
+          {
+            "bits_hex": "6974e718d7d7625a",
+            "value": 1e+200
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "6974e718d7d7625a",
+            "value": 1e+200
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        "length": {
+          "bits_hex": "7ff0000000000000",
+          "nonfinite": "+Infinity"
+        },
+        "norm_square": {
+          "bits_hex": "7ff0000000000000",
+          "nonfinite": "+Infinity"
+        },
+        "unit": null
+      },
+      "scaled_edges_hypot_normalization": {
+        "scale": {
+          "bits_hex": "6974e718d7d7625a",
+          "value": 1e+200
+        },
+        "scaled_cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "scaled_length": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ]
+      },
+      "triangle": [
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "6974e718d7d7625a",
+            "value": 1e+200
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "6974e718d7d7625a",
+            "value": 1e+200
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "edge-subtraction-overflow",
+      "ordinary_edge_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "fff8000000000000",
+            "nonfinite": "NaN"
+          },
+          {
+            "bits_hex": "7ff0000000000000",
+            "nonfinite": "+Infinity"
+          }
+        ],
+        "edges": [
+          {
+            "bits_hex": "7ff0000000000000",
+            "nonfinite": "+Infinity"
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "7fe1ccf385ebc8a0",
+            "value": 1e+308
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        "length": {
+          "bits_hex": "fff8000000000000",
+          "nonfinite": "NaN"
+        },
+        "norm_square": {
+          "bits_hex": "fff8000000000000",
+          "nonfinite": "NaN"
+        },
+        "unit": null
+      },
+      "scaled_edges_hypot_normalization": {
+        "failure": "edge subtraction nonfinite or collapsed",
+        "scale": {
+          "bits_hex": "7ff0000000000000",
+          "nonfinite": "+Infinity"
+        },
+        "unit": null
+      },
+      "triangle": [
+        [
+          {
+            "bits_hex": "ffe1ccf385ebc8a0",
+            "value": -1e+308
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "7fe1ccf385ebc8a0",
+            "value": 1e+308
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "cross-underflow",
+      "ordinary_edge_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        "edges": [
+          {
+            "bits_hex": "16687e92154ef7ac",
+            "value": 1e-200
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "16687e92154ef7ac",
+            "value": 1e-200
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        "length": {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        "norm_square": {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        "unit": null
+      },
+      "scaled_edges_hypot_normalization": {
+        "scale": {
+          "bits_hex": "16687e92154ef7ac",
+          "value": 1e-200
+        },
+        "scaled_cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "scaled_length": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ]
+      },
+      "triangle": [
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "16687e92154ef7ac",
+            "value": 1e-200
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "16687e92154ef7ac",
+            "value": 1e-200
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "norm-square-overflow",
+      "ordinary_edge_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "7fe1ccf385ebc8a0",
+            "value": 1e+308
+          }
+        ],
+        "edges": [
+          {
+            "bits_hex": "5fe7dddf6b095ff1",
+            "value": 1e+154
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "5fe7dddf6b095ff1",
+            "value": 1e+154
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        "length": {
+          "bits_hex": "7ff0000000000000",
+          "nonfinite": "+Infinity"
+        },
+        "norm_square": {
+          "bits_hex": "7ff0000000000000",
+          "nonfinite": "+Infinity"
+        },
+        "unit": null
+      },
+      "scaled_edges_hypot_normalization": {
+        "scale": {
+          "bits_hex": "5fe7dddf6b095ff1",
+          "value": 1e+154
+        },
+        "scaled_cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "scaled_length": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ]
+      },
+      "triangle": [
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "5fe7dddf6b095ff1",
+            "value": 1e+154
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "5fe7dddf6b095ff1",
+            "value": 1e+154
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "subnormal-profile-triangle",
+      "ordinary_edge_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        "edges": [
+          {
+            "bits_hex": "8000000000000001",
+            "value": -5e-324
+          },
+          {
+            "bits_hex": "0000000000000001",
+            "value": 5e-324
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "8000000000000001",
+            "value": -5e-324
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000001",
+            "value": 5e-324
+          }
+        ],
+        "length": {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        "norm_square": {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        "unit": null
+      },
+      "scaled_edges_hypot_normalization": {
+        "scale": {
+          "bits_hex": "0000000000000001",
+          "value": 5e-324
+        },
+        "scaled_cross": [
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "scaled_length": {
+          "bits_hex": "3ffbb67ae8584caa",
+          "value": 1.7320508075688772
+        },
+        "unit": [
+          {
+            "bits_hex": "3fe279a74590331d",
+            "value": 0.5773502691896258
+          },
+          {
+            "bits_hex": "3fe279a74590331d",
+            "value": 0.5773502691896258
+          },
+          {
+            "bits_hex": "3fe279a74590331d",
+            "value": 0.5773502691896258
+          }
+        ]
+      },
+      "triangle": [
+        [
+          {
+            "bits_hex": "0000000000000001",
+            "value": 5e-324
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000001",
+            "value": 5e-324
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000001",
+            "value": 5e-324
+          }
+        ]
+      ]
+    },
+    {
+      "id": "thin-finite-height",
+      "ordinary_edge_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "8000000000000001",
+            "value": -5e-324
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "edges": [
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "0000000000000001",
+            "value": 5e-324
+          }
+        ],
+        "length": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "norm_square": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "8000000000000001",
+            "value": -5e-324
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ]
+      },
+      "scaled_edges_hypot_normalization": {
+        "scale": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "scaled_cross": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "8000000000000001",
+            "value": -5e-324
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ],
+        "scaled_length": {
+          "bits_hex": "3ff0000000000000",
+          "value": 1.0
+        },
+        "unit": [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "8000000000000001",
+            "value": -5e-324
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          }
+        ]
+      },
+      "triangle": [
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ],
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "0000000000000001",
+            "value": 5e-324
+          }
+        ]
+      ]
+    },
+    {
+      "id": "opposite-axial-extremes",
+      "ordinary_edge_cross_sqrt": {
+        "cross": [
+          {
+            "bits_hex": "fff8000000000000",
+            "nonfinite": "NaN"
+          },
+          {
+            "bits_hex": "fff0000000000000",
+            "nonfinite": "-Infinity"
+          },
+          {
+            "bits_hex": "4000000000000000",
+            "value": 2.0
+          }
+        ],
+        "edges": [
+          {
+            "bits_hex": "bff0000000000000",
+            "value": -1.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "7ff0000000000000",
+            "nonfinite": "+Infinity"
+          },
+          {
+            "bits_hex": "c000000000000000",
+            "value": -2.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "7fe1ccf385ebc8a0",
+            "value": 1e+308
+          }
+        ],
+        "length": {
+          "bits_hex": "fff8000000000000",
+          "nonfinite": "NaN"
+        },
+        "norm_square": {
+          "bits_hex": "fff8000000000000",
+          "nonfinite": "NaN"
+        },
+        "unit": null
+      },
+      "scaled_edges_hypot_normalization": {
+        "failure": "edge subtraction nonfinite or collapsed",
+        "scale": {
+          "bits_hex": "7ff0000000000000",
+          "nonfinite": "+Infinity"
+        },
+        "unit": null
+      },
+      "triangle": [
+        [
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "ffe1ccf385ebc8a0",
+            "value": -1e+308
+          }
+        ],
+        [
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "3ff0000000000000",
+            "value": 1.0
+          },
+          {
+            "bits_hex": "7fe1ccf385ebc8a0",
+            "value": 1e+308
+          }
+        ],
+        [
+          {
+            "bits_hex": "bff0000000000000",
+            "value": -1.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          },
+          {
+            "bits_hex": "0000000000000000",
+            "value": 0.0
+          }
+        ]
+      ]
+    }
+  ],
+  "limitations": "Python float/math.hypot observations on this host. They expose concrete finite-intermediate failures and do not prove a complete all-finite normal algorithm or cross-target equivalence.",
+  "point_generation_collapse": {
+    "duplicate_index_pairs": [
+      [
+        0,
+        1
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        11,
+        13
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        0,
+        15
+      ],
+      [
+        1,
+        15
+      ]
+    ],
+    "positions": [
+      [
+        {
+          "bits_hex": "0000000000000001",
+          "value": 5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "0000000000000001",
+          "value": 5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "0000000000000001",
+          "value": 5e-324
+        },
+        {
+          "bits_hex": "0000000000000001",
+          "value": 5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000001",
+          "value": 5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000001",
+          "value": 5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "8000000000000000",
+          "value": -0.0
+        },
+        {
+          "bits_hex": "0000000000000001",
+          "value": 5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "8000000000000001",
+          "value": -5e-324
+        },
+        {
+          "bits_hex": "0000000000000001",
+          "value": 5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "8000000000000001",
+          "value": -5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "8000000000000001",
+          "value": -5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "8000000000000001",
+          "value": -5e-324
+        },
+        {
+          "bits_hex": "8000000000000000",
+          "value": -0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "8000000000000001",
+          "value": -5e-324
+        },
+        {
+          "bits_hex": "8000000000000001",
+          "value": -5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "8000000000000000",
+          "value": -0.0
+        },
+        {
+          "bits_hex": "8000000000000001",
+          "value": -5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "8000000000000000",
+          "value": -0.0
+        },
+        {
+          "bits_hex": "8000000000000001",
+          "value": -5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        },
+        {
+          "bits_hex": "8000000000000001",
+          "value": -5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "0000000000000001",
+          "value": 5e-324
+        },
+        {
+          "bits_hex": "8000000000000001",
+          "value": -5e-324
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ],
+      [
+        {
+          "bits_hex": "0000000000000001",
+          "value": 5e-324
+        },
+        {
+          "bits_hex": "8000000000000000",
+          "value": -0.0
+        },
+        {
+          "bits_hex": "0000000000000000",
+          "value": 0.0
+        }
+      ]
+    ],
+    "radius": {
+      "bits_hex": "0000000000000001",
+      "value": 5e-324
+    },
+    "slices": 16
+  },
+  "runtime": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]",
+  "scope": "Private Python binary64 arithmetic witnesses only; no proposed public validation policy, bounds, signature, target-port, or renderer claim.",
+  "source_bindings": {
+    "design/capabilities/cp7-profile-selection.md": "df1a724ab91ec3fd70bdd1a2455867c974611f96c0cba7f5fe2cd973f0f63154",
+    "tools/diagnostics/cp7/normal_numeric_cases.py": "db2122c417aa6bb798ec758c43315df1c420eec7725d301325c0d686b9c4f6f0"
+  },
+  "status": "observational"
+}

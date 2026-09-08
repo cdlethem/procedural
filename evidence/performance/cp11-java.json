@@ -1,0 +1,72 @@
+{
+  "status": "passed",
+  "scope": "desktop Java8-compatible core; generation allocation includes owned output and scratch; not renderer or universal latency validation",
+  "source_sha256": {
+    "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+    "tools/diagnostics/cp11/OccupiedLatticePathsPerformance.java": "d02d274c76302323e226033355603e81285e478c3fb8f3bf99f59b42b492c41f"
+  },
+  "results": [
+    {
+      "kind": "workload",
+      "name": "authored-24x24",
+      "generation_nanos": [
+        103820,
+        101050,
+        94840,
+        97650,
+        79870
+      ],
+      "generation_allocated_bytes": [
+        9728,
+        9728,
+        9728,
+        9728,
+        9728
+      ],
+      "checksum": "62671a4292fc8eba"
+    },
+    {
+      "kind": "workload",
+      "name": "scaled-48x48",
+      "generation_nanos": [
+        103380,
+        102150,
+        105020,
+        99480,
+        100510
+      ],
+      "generation_allocated_bytes": [
+        18496,
+        18496,
+        18496,
+        18496,
+        18496
+      ],
+      "checksum": "b2966e6e34e2a42"
+    },
+    {
+      "kind": "workload",
+      "name": "maximum-dimensions-sparse",
+      "generation_nanos": [
+        4020,
+        3830,
+        3960,
+        3580,
+        4600
+      ],
+      "generation_allocated_bytes": [
+        688,
+        688,
+        688,
+        688,
+        688
+      ],
+      "checksum": "14edf93f35b016c2"
+    },
+    {
+      "kind": "complete",
+      "allocation_supported": true,
+      "status": "passed"
+    }
+  ]
+}

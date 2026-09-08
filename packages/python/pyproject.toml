@@ -1,0 +1,21 @@
+[build-system]
+# SPDX project.license and project.license-files need setuptools 77.0.3+;
+# https://setuptools.pypa.io/en/stable/userguide/license_migration.html
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "procedurals-python"
+version = "0.1.0"
+description = "Portable Python operations for the procedurals toolkit"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+
+[project.optional-dependencies]
+py5 = ["py5==0.10.11a0"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["procedurals*"]
+exclude = ["examples*", "tests*"]

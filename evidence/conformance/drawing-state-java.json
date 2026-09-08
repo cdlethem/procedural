@@ -1,0 +1,23 @@
+{
+  "target": "java",
+  "scope": "Production pure frame state with simulated adapter events; no native surface, cleanup or renderer certification.",
+  "input_sha256": {
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "tests/native/DrawingStateNative.java.in": "1a321a8076ab7a99b1420491fbe9467aa661496e7be1d5dd384ba746c85faf12",
+    "catalog/drawing/fresh-raster-2d.json": "8fd5d39bb1196d689aa8ca7a88e9f22bb75987c23bc8716e0fe00493b0432346",
+    "fixtures/drawing/fresh-raster-lifecycle.json": "be634ea3b970177a7a6dedad667a0cd78280041c2bd92807136db48ca8b3ee8b",
+    "tools/run_drawing_state_conformance.py": "ed72362534ee041246f190c93bf8d087796a0d259c8cc9fee5c4def5bea5a46c"
+  },
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "result": {
+    "language": "java",
+    "lifecycle_cases": 21,
+    "token_immutability_and_deferred_commit": true,
+    "scope": "production state with simulated adapter events; no native renderer claim"
+  },
+  "stderr": ""
+}

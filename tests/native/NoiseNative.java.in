@@ -1,0 +1,56 @@
+package org.procedurals.fields;
+import java.util.*;
+
+public class NoiseNative {
+    static List<Object> cases=new ArrayList<Object>(), queries=new ArrayList<Object>();
+    static Map<String,Object> map(Object... values) {
+        Map<String,Object> m=new LinkedHashMap<String,Object>();for(int i=0;i<values.length;i+=2)m.put((String)values[i],values[i+1]);return m;
+    }
+    static List<Object> list(Object... values){return new ArrayList<Object>(Arrays.asList(values));}
+    static void check(boolean b){if(!b)throw new AssertionError();}
+    static void same(double a,double b){check(Double.doubleToRawLongBits(a)==Double.doubleToRawLongBits(b));}
+    static void caseRun(String id,Object input,Object[] points){
+        try {
+            GradientNoise2D01 f=GradientNoise2D01.create(input);List<Object> outputs=new ArrayList<Object>();
+            for(Object p:points){double value=f.sample(p);List<?> xy=(List<?>)p;same(value,f.sample(((Number)xy.get(0)).doubleValue(),((Number)xy.get(1)).doubleValue()));outputs.add(value);}
+            cases.add(map("id",id,"serialized",f.serialize(),"outputs",outputs));
+        }catch(GradientNoise2D01.NoiseException e){cases.add(map("id",id,"error",e.code));}
+    }
+    static void queryRun(String id,Object point){
+        try{GradientNoise2D01.create(map("seed",42)).sample(point);queries.add(map("id",id,"error","NO_ERROR"));}
+        catch(GradientNoise2D01.NoiseException e){queries.add(map("id",id,"error",e.code));}
+    }
+    interface Attempt{void run();}
+    static void error(String code,Attempt a){try{a.run();throw new AssertionError(code);}catch(GradientNoise2D01.NoiseException e){check(e.code.equals(code));}}
+    static void nativeChecks(){
+        Map<String,Object> p=map("seed",42);final GradientNoise2D01 f=GradientNoise2D01.create(p);
+        double before=f.sample(.1,.2);p.put("seed",99);Map<String,Object> saved=f.serialize();saved.put("seed",88);same(f.sample(.1,.2),before);
+        f.sample(17.2,-8.7);GradientNoise2D01.create(map("seed",99)).sample(.1,.2);same(f.sample(.1,.2),before);
+        same(GradientNoise2D01.create(f.serialize()).sample(.1,.2),before);
+        check(((Number)GradientNoise2D01.create(map("seed",-0.0)).serialize().get("seed")).longValue()==0);
+        for(final double v:new double[]{Double.NaN,Double.POSITIVE_INFINITY,Double.NEGATIVE_INFINITY}){
+            error("INVALID_QUERY",()->f.sample(v,0));error("INVALID_QUERY",()->f.sample(0,v));
+            error("INVALID_INPUT",()->GradientNoise2D01.create(map("seed",v)));
+        }
+        error("INVALID_QUERY",()->f.sample(true,0));
+        error("INVALID_INPUT",()->GradientNoise2D01.create(map("seed",new java.math.BigDecimal("1.999999999999999999"))));
+        error("INVALID_QUERY",()->f.sample(new java.math.BigDecimal("0.25"),0));
+    }
+    static Map<String,Object> benchmark(){
+        GradientNoise2D01 f=GradientNoise2D01.create(map("seed",42));double sum=0;
+        for(int warm=0;warm<2;warm++)for(int i=0;i<250000;i++)sum+=f.sample(i*.001,i*.002);
+        long start=System.nanoTime();sum=0;for(int i=0;i<250000;i++)sum+=f.sample(i*.001,i*.002);
+        same(sum,123399.9596239042);
+        return map("points",250000,"warmup_traversals",2,"elapsed_ns",System.nanoTime()-start,"checksum",sum);
+    }
+    static String json(Object v){
+        if(v==null)return "null";if(v instanceof String)return "\""+v.toString().replace("\\","\\\\").replace("\"","\\\"")+"\"";
+        if(v instanceof Number||v instanceof Boolean)return v.toString();StringJoiner j=new StringJoiner(",",v instanceof Map?"{":"[",v instanceof Map?"}":"]");
+        if(v instanceof Map)for(Object o:((Map<?,?>)v).entrySet()){Map.Entry<?,?> e=(Map.Entry<?,?>)o;j.add(json(e.getKey())+":"+json(e.getValue()));}
+        else for(Object item:(Iterable<?>)v)j.add(json(item));return j.toString();
+    }
+    public static void main(String[]args){
+        /* SHARED_FIXTURE_CALLS */
+        nativeChecks();System.out.println(json(map("cases",cases,"query_cases",queries,"native_checks_passed",true,"benchmark",benchmark())));
+    }
+}

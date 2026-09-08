@@ -1,0 +1,55 @@
+{
+  "status": "accepted-installed-java2d-workflow",
+  "owner": "root",
+  "reviewer": "root",
+  "result": {
+    "path": "evidence/reproductions/cp6-java2d/pde-result.json",
+    "sha256": "7d3e1bb8131b97e01bc7654f10c8507ae1f8b27bb734ce34d7bd3948a447ada7"
+  },
+  "visual_review": {
+    "status": "accepted",
+    "viewed_states": [
+      "initial",
+      "extended",
+      "narrowing",
+      "wide",
+      "binary",
+      "recolour",
+      "thin",
+      "forest",
+      "forest-taper",
+      "forest-palette",
+      "forest-extended",
+      "forest-seed"
+    ],
+    "pixel_identical_replay_states_verified": [
+      "extended-restored",
+      "reset-1",
+      "reset-2",
+      "reset-3",
+      "final-reset"
+    ],
+    "findings": [
+      "Initial image has a legible tapered trunk, endpoint forks, generation colour and visible coral terminal dots.",
+      "Appending a generation adds finer terminal twigs while native checks preserve earlier geometry/attributes/ancestry.",
+      "Narrowing aligns upper twigs; wider turns visibly open the side branches; binary slots produce a narrow stalk-like spray.",
+      "Alternate palette changes dark/green/coral to purple/orange; thin mode removes taper/tip dots while retaining geometry.",
+      "Seven placed roots produce distinct small branching forms, with meaningful taper/palette/generation edits; changed seed changes the forest and may produce early-terminated stems."
+    ],
+    "scope": "Technique-level endpoint branching and retained style/placement composition, not source-pixel reproduction."
+  },
+  "native_checks": {
+    "states": 17,
+    "keys": 17,
+    "generated_segments": 2520,
+    "drawn_lines": 3298,
+    "terminal_scan_visits": 2909,
+    "terminal_dots": 1475,
+    "save_matches_displayed_pixels": true
+  },
+  "limitations": [
+    "Java/JAVA2D640x640 density1 installed0.6.0 only.",
+    "Core/adapter assertions and images do not establish other targets or full corpus certification.",
+    "Root exclusion does not prevent canopy overlap; thin marks and early terminal branches are intentional explicit policies."
+  ]
+}

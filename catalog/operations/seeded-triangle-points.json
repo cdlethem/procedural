@@ -1,0 +1,242 @@
+{
+  "id": "sampling.seeded-triangle-points-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "capability": "CP5",
+  "description": "retained batch of seeded uniform planar points in one explicitly supplied triangle. It computes point geometry only.",
+  "decision_cluster": "sampling.seeded-triangle-points-2d",
+  "capability_decision": "design/capabilities/cp5-sampling-boundary.md",
+  "design_review": "design/operations/triangle-points-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/puntis2#1",
+      "notes_path": "survey/out/2018/Generativos/puntis2/notes.md",
+      "note_sha256": "a4b45e254cc656cb3aee8eb6bd6b7f1dfca0a23c56a182d71380ba8a73c09dfe",
+      "evidence_sha256": "61df2a3b1d8c3ee3f3abc0ffaa2cceaf273b5cb7227786434ab92cdd9acd21a1",
+      "upstream_pde_sha256": "e58a65c8f7794bb85f4fdd3747d9a17f95711354d4314e3862bdb6f72f804335",
+      "relationship": "Capability-dependency admission for an independently specified retained uniform batch. randInTri is an unused one-point helper in the active puntis/puntis2 grain pass; this record neither claims that active source distribution nor aliases that helper. Delaunay, area allocation and point rendering remain outside."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "seed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295,
+        "description": "Explicit uint32 seed for the specified private portable stream."
+      },
+      "count": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1073741823,
+        "description": "Requested points. The maximum only ensures two signed-int-indexed scalar slots per point; it is not a practical workload or artistic range."
+      },
+      "triangle": {
+        "$ref": "#/$defs/triangle",
+        "description": "Three ordered [x,y] planar vertices. Vertex order is preserved; no winding normalization."
+      }
+    },
+    "required": [
+      "seed",
+      "count",
+      "triangle"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "pair": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "triangle": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "$ref": "#/$defs/pair"
+          },
+          {
+            "$ref": "#/$defs/pair"
+          },
+          {
+            "$ref": "#/$defs/pair"
+          }
+        ],
+        "items": false,
+        "minItems": 3,
+        "maxItems": 3
+      }
+    }
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 1073741823,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Retained planar [x,y] positions in generation order."
+        }
+      }
+    },
+    "required": [
+      "points"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "triangle-points-output",
+  "output_invariants": "Output contains exactly points and no other fields. Each point is a two-component finite binary64 pair with every zero canonical +0. Length equals count (seeded) or unitCoordinates length (mapping). Order is input/generation order. Every output coordinate is within the closed component interval of its three supplied vertex coordinates. This is the specified rounded mapping, not a promise of exact real-arithmetic triangle membership at every boundary. Results are immutable, detached and contain no configuration, count/ID alias or stream state.",
+  "behavior": {
+    "input": "Static validation order: outer passive record and exact keys; seed; count; triangle container; vertex0 x/y; vertex1 x/y; vertex2 x/y. All accepted numbers must be finite binary64 values and never bool. Seed/count must be integral in their stated domains before narrowing. Normalize accepted zero signs to +0. Every static field, including triangle, validates for count0. Perform all static validation before stream initialization or output-sized allocation. No defaults.",
+    "generation": "After full static validation, count=0 returns empty points and initializes/consumes no RNG. Otherwise initialize the specified private stream. For each index i ascending from0 to count-1, consume u then v, map through the shared specified triangle map and store point i. Exactly two units per point, including collapsed triangles; no retries, omitted invisible samples or style draws. An identical input replay is exact; increasing count preserves the shorter point prefix. Mapping the same ordered unit pairs through triangle-coordinate-map produces exactly the same point bits.",
+    "mapping": "for each [u,v], calculate s=correctlyRoundedBinary64Sqrt(u), then independently for x and y calculate L(A,L(B,C,v),s). For L(a,b,t), t=0 returns canonical +0-normalized a and t=1 returns canonical +0-normalized b. Otherwise, when a and b have strictly opposite signs (one <0 and one >0), evaluate raw=round64(round64(a*round64(1-t))+round64(b*t)); otherwise evaluate raw=round64(a+round64(round64(b-a)*t)). Clamp raw to the closed finite [min(a,b),max(a,b)] endpoint interval and canonicalize zero to +0. No FMA, reassociation, binary32 conversion or implicit clamp omission.",
+    "degeneracy": "Accept every finite ordered vertex triple, including repeated or collinear triples, as the same collapsed mapping. Compute no area/determinant and use no epsilon or minimum-size gate. Ideal uniform-area interpretation applies only to nondegenerate geometry; a collapsed segment is not promised uniform arclength density. A positive seeded count consumes exactly two units per point even for repeated vertices. Empty outputs still validate every required field.",
+    "layout": "N=count. The result privately retains exactly 2*N binary64 scalar slots. N<=1073741823 is a signed-int packed-storage representation ceiling only, not an allocation, latency or useful range guarantee. Host resource exhaustion is not INVALID_INPUT and never produces partial successful output.",
+    "ownership": "Follow CP4 passive-carrier convention: synchronous callers do not concurrently mutate accepted containers; active getters/proxies/custom hooks are outside passive interchange. Complete static validation before output-sized allocation. A successful result owns detached packed points only; it retains no input container, coordinate list or stream state. pointAt and toValues materialize fresh detached data; allocation failure leaves an existing result unchanged. No serialize/toJSON/config replay or ID/count aliases.",
+    "access": "size() in Java and size property/getter in JavaScript/Python returns retained point count. pointAt/point_at returns a fresh two-component binary64 point: Java double[], JavaScript ordinary Array, Python exact builtin list. Index must be finite nonnegative safe integer<=9007199254740991, never bool; integral floating indices accepted. INVALID_INDEX precedes INDEX_OUT_OF_RANGE (index>=size), then INVALID_OUTPUT for pointInto/point_into. Require a finite nonnegative integral offset and two writable binary64 slots; reject Float32 buffers and leave all destination slots unchanged on failure. Java pointInto has required typed int offset and returns void; wrong-type/unrepresentable typed host calls are host-call errors. JavaScript pointInto(index,out,offset=0) returns out; Python point_into(index,out,offset=0) returns None. Validate offset/index before narrowing.",
+    "native_forms": "Java org.procedurals.sampling.TrianglePoints2D.seeded(Object config) returns TrianglePoints2D with size(), pointAt(Object or long), pointInto(index,double[],int), toValues(). JavaScript seededTrianglePoints2D(config) returns a result with size property, pointAt, pointInto(offset default0), toValues. Python seeded_triangle_points_2d(config) returns a result with size property, point_at, point_into(offset default0), to_values. No additional overloads or aliases.",
+    "native_types": "Follow established portable carrier rules: Java accepts Map records and List vertex/pair containers of the specified lengths; only Byte/Short/Integer/Long/Float/Double numeric values are accepted, rejecting BigInteger/BigDecimal/custom Number before conversion. JavaScript accepts passive Object/null-prototype records and ordinary Array pairs; Python accepts exact builtin dict records and exact builtin list pairs with int/float but never bool. PVector, typed-array pair input, class instances, active accessors/proxies and custom mapping/list containers are not interchange inputs. Java pointInto uses double[]; future JavaScript accepts Float64Array or writable ordinary Array and Python exact builtin list or array(d). Python huge-integer conversion failure becomes INVALID_INPUT or INVALID_INDEX, not an uncaught conversion exception; validate integral domains before conversion where applicable.",
+    "units": "Caller-defined planar [x,y] coordinates in an unchanged coordinate system; dimensionless unit coordinates. No axis flip, winding normalization, canvas conversion, topology, area/count allocation, palette/style, clipping or drawing.",
+    "numerics": "Every stated primitive uses IEEE754 binary64 round-to-nearest ties-to-even. sqrt(u) is the correctly rounded binary64 square root; a target whose host sqrt cannot meet this must implement the required result. Normalize accepted input zeros and completed coordinate zeros to +0. Preserve nested interpolation, exact endpoint branches, strictly opposite-sign selection and final endpoint-interval clamp. No FMA, reassociation or binary32 narrowing. Compare all output coordinates, counts and seeded vector state by exact binary64 bits; no output tolerance. Output quantization and finite PRNG units are not an exact continuous probability law. Private/source Java Random and direct-weighted-sum images are not bit-reproduction targets.",
+    "environment": [
+      "IEEE754 binary64 arithmetic and correctly rounded sqrt",
+      "Private xoshiro128**1.1 with specified uint32-seed/Two-SplitMix64 expansion"
+    ],
+    "complexity": "O(N) eager work and 2*N retained binary64 slots; O(1) indexed access and O(N) detached toValues materialization. Avoid per-point object allocation in generation. The representation ceiling does not promise allocation success or latency.",
+    "native_errors": "Validation and access failures expose code with no dynamic detail. Java exceptions may subclass IllegalArgumentException, JavaScript Error, Python ValueError, with equivalent code fields. There is no dynamic triangle arithmetic error: validated finite input uses the endpoint-aware clamped map. Host allocation failure remains a host resource exception; it is never converted into INVALID_INPUT or partial success. Wrong-type/unrepresentable Java typed host calls are host-call errors.",
+    "rng": "Portable xoshiro128**1.1 private to each positive-count call. Zero-extend uint32 seed to uint64 SplitMix64 state. Twice advance state by0x9e3779b97f4a7c15 modulo2^64; z=state; z=(z xor(z>>>30))*0xbf58476d1ce4e5b9 mod2^64; z=(z xor(z>>>27))*0x94d049bb133111eb mod2^64; q=z xor(z>>>31). Pack q0 and q1 as s0=low32(q0),s1=high32(q0),s2=low32(q1),s3=high32(q1). next output=rotl32(s1*5 mod2^32,7)*9 mod2^32. Then t=s1<<9 mod2^32; sequentially s2 xor=s0; s3 xor=s1; s1 xor=s2; s0 xor=s3; s2 xor=t; s3=rotl32(s3,11), all words uint32. Map an unsigned output to unit u=output/4294967296 exactly in[0,1). The all-zero state is unreachable under this expansion and is an internal invariant. State is private, discarded on return/failure and never shared with content/style work. There is no Processing or source palette/background prelude."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed/nonfinite/out-of-domain static input, wrong passive carrier/keys/shape, bool numeric, invalid seed/count, or invalid unit-independent triangle coordinate.",
+    "INVALID_INDEX": "Index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "Representable index is outside 0..size()-1.",
+    "INVALID_OUTPUT": "pointInto destination/offset lacks two writable binary64 slots."
+  },
+  "error_order": [
+    "INVALID_INPUT",
+    "INVALID_INDEX",
+    "INDEX_OUT_OF_RANGE",
+    "INVALID_OUTPUT"
+  ],
+  "parameters": {
+    "seed": {
+      "unit": "uint32",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Required portable stream input; the private Java Random walkthrough is not a public stream."
+    },
+    "count": {
+      "unit": "points",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "CP5 investigated discrete 15680, 31360 and transfer totals; those are example workloads, not a public range.1073741823 is representational only."
+    },
+    "triangle": {
+      "unit": "three ordered planar [x,y] vertices",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Supplied triangle is the CP5 substitution boundary. No canvas-derived triangle/default or orientation normalization is evidenced."
+    }
+  },
+  "design_divergences": [
+    "Portable stream/result are independent of Processing randomSeed and source colour/brightness preludes.",
+    "Retained batch replaces a one-point unused helper without claiming active puntis source distribution.",
+    "No source density/area/palette/alpha/mark sink or Delaunay topology is included.",
+    "Accept all finite ordered triples as a collapsed mapping without area-based rejection; uniform-area interpretation is restricted to nondegenerate triangles.",
+    "Nested endpoint-aware clamped interpolation deliberately differs in binary64 bits from source/private direct-weighted-sum arithmetic."
+  ],
+  "exclusions": [
+    "triangle construction and area-to-count allocation",
+    "Delaunay/site generation/topology",
+    "coordinate-pair callback or iterator APIs",
+    "bias presets or source replay modes",
+    "palette, alpha, style RNG, point/stroke rendering and clipping",
+    "configuration serialization, IDs and count aliases"
+  ],
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "signed-int packed primitive storage"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Java-first sprint"
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Port deferred until Java capability breadth sprint completes; no support claim."
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Port deferred until Java capability breadth sprint completes; no support claim."
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Port deferred until Java capability breadth sprint completes; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/seeded-triangle-points.json",
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "No native operation or target support is claimed. CP5 private JAVA2D evidence supports capability admission only."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root accepted semantics and distinguishing shared fixture design; see design/operations/triangle-points-contract-review.md for final hash freeze and verification. Runtime support remains unvalidated."
+  }
+}

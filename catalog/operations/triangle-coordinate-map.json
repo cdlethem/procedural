@@ -1,0 +1,245 @@
+{
+  "id": "sampling.triangle-coordinate-map-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability": "CP5",
+  "description": "retained planar mapping of caller-provided unit-coordinate pairs through one explicitly supplied ordered triangle. It owns no random stream or distribution claim.",
+  "decision_cluster": "sampling.triangle-coordinate-map-2d",
+  "capability_decision": "design/capabilities/cp5-sampling-boundary.md",
+  "design_review": "design/operations/triangle-points-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/puntis#0",
+      "notes_path": "survey/out/2018/Generativos/puntis/notes.md",
+      "note_sha256": "98ad640b63e2ec0872af61406743bd2b5852dd7744301ec74a337ebe0d75430b",
+      "evidence_sha256": "d06ada2d7b1ba40958706d8aa596a00afe61242c8d36af7f1f52dd785b9014f9",
+      "upstream_pde_sha256": "e58a65c8f7794bb85f4fdd3747d9a17f95711354d4314e3862bdb6f72f804335",
+      "relationship": "Capability-dependency admission for explicit coordinate substitution. The active loop maps (U\u00d7V,W), not uniform source sampling; this transform maps caller values without preserving a puntis preset or stream."
+    },
+    {
+      "candidate_id": "2018/Generativos/puntis3#1",
+      "notes_path": "survey/out/2018/Generativos/puntis3/notes.md",
+      "note_sha256": "9699082e346a3e7f22798f6a932e4c42df28c9435e922365ad2c3c7de59c7e9c",
+      "evidence_sha256": "ae90e11c37f949b9d5ff1f820c14fbd2a9d0650227a0b2c5bc43433c8cd06931",
+      "upstream_pde_sha256": "abe82f16a6b1a4f28aa442fad0340ba8c325f994127babebcdc0df6fd43868c3",
+      "relationship": "Capability-dependency admission for explicit coordinate substitution. The active loop consumes brightness/dd draws then combines a biased second coordinate with a fresh first coordinate; those source draws and styling remain outside this transform."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "triangle": {
+        "$ref": "#/$defs/triangle"
+      },
+      "unitCoordinates": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 1073741823,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Ordered closed-unit [u,v] pairs; the operation does not assert their distribution."
+        }
+      }
+    },
+    "required": [
+      "triangle",
+      "unitCoordinates"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "pair": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "triangle": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "$ref": "#/$defs/pair"
+          },
+          {
+            "$ref": "#/$defs/pair"
+          },
+          {
+            "$ref": "#/$defs/pair"
+          }
+        ],
+        "items": false,
+        "minItems": 3,
+        "maxItems": 3
+      }
+    }
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 1073741823,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Retained planar [x,y] positions in generation order."
+        }
+      }
+    },
+    "required": [
+      "points"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "triangle-points-output",
+  "shared_output_operation": "sampling.seeded-triangle-points-2d",
+  "output_invariants": "Output contains exactly points and no other fields. Each point is a two-component finite binary64 pair with every zero canonical +0. Length equals count (seeded) or unitCoordinates length (mapping). Order is input/generation order. Every output coordinate is within the closed component interval of its three supplied vertex coordinates. This is the specified rounded mapping, not a promise of exact real-arithmetic triangle membership at every boundary. Results are immutable, detached and contain no configuration, count/ID alias or stream state.",
+  "behavior": {
+    "input": "Static validation order: outer passive record and exact keys; triangle container; vertex0 x/y; vertex1 x/y; vertex2 x/y; unitCoordinates container/length; then each row i in ascending order with pair shape, u then v. All numbers are finite binary64 and never bool; u/v are closed [0,1]. Normalize accepted zeros to +0. Validate every later pair before output-sized allocation. No defaults and no RNG initialization.",
+    "mapping": "for each [u,v], calculate s=correctlyRoundedBinary64Sqrt(u), then independently for x and y calculate L(A,L(B,C,v),s). For L(a,b,t), t=0 returns canonical +0-normalized a and t=1 returns canonical +0-normalized b. Otherwise, when a and b have strictly opposite signs (one <0 and one >0), evaluate raw=round64(round64(a*round64(1-t))+round64(b*t)); otherwise evaluate raw=round64(a+round64(round64(b-a)*t)). Clamp raw to the closed finite [min(a,b),max(a,b)] endpoint interval and canonicalize zero to +0. No FMA, reassociation, binary32 conversion or implicit clamp omission.",
+    "distribution": "No RNG is read, consumed or returned. No uniformity claim is implicit: independent uniform unit pairs are a caller-side condition for uniform area sampling; biased expressions are caller composition, not source-named public modes.",
+    "degeneracy": "Accept every finite ordered vertex triple, including repeated or collinear triples, as the same collapsed mapping. Compute no area/determinant and use no epsilon or minimum-size gate. Ideal uniform-area interpretation applies only to nondegenerate geometry; a collapsed segment is not promised uniform arclength density. A positive seeded count consumes exactly two units per point even for repeated vertices. Empty outputs still validate every required field.",
+    "layout": "N=unitCoordinates length. The result retains 2*N binary64 slots; N<=1073741823 is representational only. Host allocation failure returns no result, is not INVALID_INPUT and never supplies partial output.",
+    "ownership": "Match CP4 passive-carrier rules. Do not retain caller triangle/pair lists; successful output owns detached packed points. Complete static validation before output-sized allocation. Only bounded-size triangle metadata may be copied earlier. pointAt and toValues return detached materializations; failure of a fresh materialization leaves the existing result unchanged. No serialize/toJSON/config replay, callback/iterator input, IDs or count aliases.",
+    "access": "size() in Java and size property/getter in JavaScript/Python returns retained point count. pointAt/point_at returns a fresh two-component binary64 point: Java double[], JavaScript ordinary Array, Python exact builtin list. Index must be finite nonnegative safe integer<=9007199254740991, never bool; integral floating indices accepted. INVALID_INDEX precedes INDEX_OUT_OF_RANGE (index>=size), then INVALID_OUTPUT for pointInto/point_into. Require a finite nonnegative integral offset and two writable binary64 slots; reject Float32 buffers and leave all destination slots unchanged on failure. Java pointInto has required typed int offset and returns void; wrong-type/unrepresentable typed host calls are host-call errors. JavaScript pointInto(index,out,offset=0) returns out; Python point_into(index,out,offset=0) returns None. Validate offset/index before narrowing.",
+    "native_forms": "Java org.procedurals.sampling.TrianglePoints2D.map(Object config), shared result size(), pointAt(Object or long), pointInto(index,double[],int), toValues(). JavaScript mapTriangleCoordinates2D(config), shared result size property, pointAt, pointInto(offset default0), toValues. Python map_triangle_coordinates_2d(config), shared result size property, point_at, point_into(offset default0), to_values.",
+    "native_types": "Follow established portable carrier rules: Java accepts Map records and List vertex/pair containers of the specified lengths; only Byte/Short/Integer/Long/Float/Double numeric values are accepted, rejecting BigInteger/BigDecimal/custom Number before conversion. JavaScript accepts passive Object/null-prototype records and ordinary Array pairs; Python accepts exact builtin dict records and exact builtin list pairs with int/float but never bool. PVector, typed-array pair input, class instances, active accessors/proxies and custom mapping/list containers are not interchange inputs. Java pointInto uses double[]; future JavaScript accepts Float64Array or writable ordinary Array and Python exact builtin list or array(d). Python huge-integer conversion failure becomes INVALID_INPUT or INVALID_INDEX, not an uncaught conversion exception; validate integral domains before conversion where applicable.",
+    "units": "Caller-defined planar [x,y] coordinates in an unchanged coordinate system; dimensionless unit coordinates. No axis flip, winding normalization, canvas conversion, topology, area/count allocation, palette/style, clipping or drawing.",
+    "numerics": "Every stated primitive uses IEEE754 binary64 round-to-nearest ties-to-even. sqrt(u) is the correctly rounded binary64 square root; a target whose host sqrt cannot meet this must implement the required result. Normalize accepted input zeros and completed coordinate zeros to +0. Preserve nested interpolation, exact endpoint branches, strictly opposite-sign selection and final endpoint-interval clamp. No FMA, reassociation or binary32 narrowing. Compare all output coordinates, counts and seeded vector state by exact binary64 bits; no output tolerance. Output quantization and finite PRNG units are not an exact continuous probability law. Private/source Java Random and direct-weighted-sum images are not bit-reproduction targets.",
+    "environment": [
+      "IEEE754 binary64 arithmetic and correctly rounded sqrt"
+    ],
+    "complexity": "O(N) eager mapping and 2*N retained binary64 slots; O(1) indexed access and O(N) detached export. Avoid per-point objects. The ceiling is not a performance guarantee.",
+    "native_errors": "Validation and access failures expose code with no dynamic detail. Java exceptions may subclass IllegalArgumentException, JavaScript Error, Python ValueError, with equivalent code fields. There is no dynamic triangle arithmetic error: validated finite input uses the endpoint-aware clamped map. Host allocation failure remains a host resource exception; it is never converted into INVALID_INPUT or partial success. Wrong-type/unrepresentable Java typed host calls are host-call errors."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed/nonfinite/out-of-domain static input, wrong passive carrier/keys/shape, bool numeric, invalid triangle coordinate or u/v outside closed unit interval.",
+    "INVALID_INDEX": "Index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "Representable index is outside 0..size()-1.",
+    "INVALID_OUTPUT": "pointInto destination/offset lacks two writable binary64 slots."
+  },
+  "error_order": [
+    "INVALID_INPUT",
+    "INVALID_INDEX",
+    "INDEX_OUT_OF_RANGE",
+    "INVALID_OUTPUT"
+  ],
+  "parameters": {
+    "triangle": {
+      "unit": "three ordered planar [x,y] vertices",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "CP5 supplied-region boundary; no default or orientation range."
+    },
+    "unitCoordinates": {
+      "unit": "ordered closed-unit [u,v] pairs",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit pair route preserves demonstrated distribution substitution without authorizing source-named modes or a recommended pair distribution."
+    }
+  },
+  "design_divergences": [
+    "Public transform receives explicit pairs instead of source shared random streams, discarded brightness draws and palette work.",
+    "No callback/iterator or preset bias strategy is admitted.",
+    "Retained binary64 geometry is independent from source point/stroke sinks.",
+    "Accept all finite ordered triples as a collapsed mapping without area-based rejection; uniform-area interpretation is restricted to nondegenerate triangles.",
+    "Nested endpoint-aware clamped interpolation deliberately differs in binary64 bits from source/private direct-weighted-sum arithmetic."
+  ],
+  "exclusions": [
+    "all RNG/state and source replay",
+    "uniformity/bias preset claims",
+    "triangle construction and area-to-count allocation",
+    "Delaunay/site generation/topology",
+    "palette/alpha/style/mark rendering/clipping",
+    "configuration serialization, IDs and count aliases"
+  ],
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "signed-int packed primitive storage"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Java-first sprint"
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Port deferred until Java capability breadth sprint completes; no support claim."
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Port deferred until Java capability breadth sprint completes; no support claim."
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Port deferred until Java capability breadth sprint completes; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/triangle-coordinate-map.json",
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "No native operation or target support is claimed. CP5 private evidence supports boundary selection only."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root accepted semantics and distinguishing shared fixture design; see design/operations/triangle-points-contract-review.md for final hash freeze and verification. Runtime support remains unvalidated."
+  }
+}

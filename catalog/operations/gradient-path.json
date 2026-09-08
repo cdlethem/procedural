@@ -1,0 +1,308 @@
+{
+  "id": "path.gradient-trace-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "capability": "CP2",
+  "description": "Retain a finite two-dimensional trajectory by sampling an explicit gradient field at each evolving position and advancing a fixed distance. Reuse its positions and headings for different marks.",
+  "decision_cluster": "path.gradient-trace-2d",
+  "capability_decision": "design/capabilities/cp2-architecture-decision.md",
+  "design_review": "design/operations/gradient-path-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2019/generativos/ciserp#0",
+      "notes_path": "survey/out/2019/generativos/ciserp/notes.md",
+      "note_sha256": "c81dd166ecef06592fcb66fcb38cc11a7518813ffbcb700009fa21c555673f34",
+      "evidence_sha256": "4f6b13ed6c379da31b106601496f675cdf7ed2bdaee6ca90762ad24924ba1f09",
+      "relationship": "Motivating composite/counterexample for independent capability dependency; not a whole-computation merge. See ledger dependency_admission remainder accounting."
+    },
+    {
+      "candidate_id": "2018/Generativos/mantel#0",
+      "notes_path": "survey/out/2018/Generativos/mantel/notes.md",
+      "note_sha256": "5afd67f36e8e33a250e0f0cc03a963fb35e9915029e4ecb888f938a16059c485",
+      "evidence_sha256": "9ca90b011b3cb8a1abdbde40c0f06263e396817baa69bafc8348bee3dae80d66",
+      "relationship": "Motivating composite/counterexample for independent capability dependency; not a whole-computation merge. See ledger dependency_admission remainder accounting."
+    },
+    {
+      "candidate_id": "2019/generativos/natalata#0",
+      "notes_path": "survey/out/2019/generativos/natalata/notes.md",
+      "note_sha256": "ff33812f03c7f0d3df4d7bf42769292632338d85aa10672ab13045854938a545",
+      "evidence_sha256": "93ce1efea7d0d521aa597e107c41e32d87ba2b70bd22c57dc5abdb03baf89fa2",
+      "relationship": "Motivating composite/counterexample for independent capability dependency; not a whole-computation merge. See ledger dependency_admission remainder accounting."
+    },
+    {
+      "candidate_id": "2019/generativos/limo002#1",
+      "notes_path": "survey/out/2019/generativos/limo002/notes.md",
+      "note_sha256": "7ad145412345a914877e984f6fdf54cb73b0083d2a3eba5db3cb01924881f294",
+      "evidence_sha256": "59f0e55b86516811cf814222a9e402c83219dd2699fa5ed0b8d8d7a65ad55c3b",
+      "relationship": "Motivating composite/counterexample for independent capability dependency; not a whole-computation merge. See ledger dependency_admission remainder accounting."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "field": {
+        "type": "object",
+        "properties": {
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        },
+        "required": [
+          "seed"
+        ],
+        "additionalProperties": false
+      },
+      "start": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "steps": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1073741822
+      },
+      "stepDistance": {
+        "type": "number",
+        "minimum": 0
+      },
+      "fieldScale": {
+        "type": "number"
+      },
+      "fieldOffset": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "angleBase": {
+        "type": "number"
+      },
+      "angleScale": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "field",
+      "start",
+      "steps",
+      "stepDistance",
+      "fieldScale",
+      "fieldOffset",
+      "angleBase",
+      "angleScale"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "positions": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "minItems": 1,
+        "maxItems": 1073741823
+      },
+      "headings": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 1073741822
+      }
+    },
+    "required": [
+      "positions",
+      "headings"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "materialized-output",
+  "output_invariants": "positions length equals input steps+1, headings length equals input steps. Neither steps nor configuration is redundantly serialized in toValues output.",
+  "behavior": {
+    "input": "Interchange input is exactly the eight required keys. Passive JSON-compatible records only. Validate outer shape/keys, field shape/seed, start shape and x/y values, steps, stepDistance, fieldScale, fieldOffset shape and x/y values, angleBase, angleScale in that order. Every numeric value must be finite; booleans are never numbers. Integral floating counts/seeds are allowed. Steps must be0..1073741822 inclusive and stepDistance>=0. Copy configuration, canonicalizing every zero to positive zero.",
+    "construction": "An explicit eager trace call authorizes O(steps) work and retained allocation. Configuration validation never samples or allocates output-sized storage. Complete all static validation before array allocation or field sampling. Reconstruct the existing GradientNoise2D01 from detached seed configuration. The first public form takes the complete interchange configuration; no arbitrary field callback or second field carrier is accepted.",
+    "layout": "N=steps. Privately retain2*(N+1) binary64 position coordinates and N binary64 headings. Positions[0] is start; heading[i] drives the movement positions[i]\u2192positions[i+1]. Count bound N<=1073741822 ensures2*(N+1)<=2147483647. This is a shared index representation bound, not a promise that maximal allocation succeeds. No extra maxSteps/maxBytes input. Incidental host allocation failure returns no result and remains a host resource exception, never INVALID_INPUT or partial successful output.",
+    "advance": "For i=0..N-1: qx=round64(x*fieldScale), then qx=round64(qx+fieldOffset.x); validate qx in the field query domain before computing qy the same way. Sample field(qx,qy). mapped=round64(angleScale*sample); heading=round64(angleBase+mapped), then canonicalize a zero heading to positive zero. dx=round64(stepDistance*hostCos(heading)); dy=round64(stepDistance*hostSin(heading)). nextX=round64(x+dx); nextY=round64(y+dy). Canonicalize completed zero coordinates to positive zero, store point[i+1] and heading[i], and feed those stored coordinates into the next iteration. No FMA, reassociation, angle reduction, clamping, closure or binary32 conversion.",
+    "dynamic_validation": "Per step, validate finite multiply and sum for query_x and its existing noise domain -9007199254740991<=qx<9007199254740991, then query_y similarly. Query failures use TRACE_QUERY_INVALID with zero-based stepIndex and stage query_x/query_y. After sampling check mapped and heading finite (stage heading), then cosine and dx finite (delta_x), sine and dy finite (delta_y), then nextX finite (position_x), nextY finite (position_y). These use TRACE_ARITHMETIC_INVALID with stepIndex/stage. Discard internal partial arrays and return no path. Final endpoint is not sampled to validate a hypothetical next step.",
+    "zero": "N=0 validates every static input but performs no field query, arithmetic advance or trigonometry; result contains the canonical start and no heading. stepDistance=0 still performs every requested field query and heading calculation and retains repeated positions. angleScale=0 does not skip field validation or sampling. Prefix identity is conditional on both calls succeeding in the same target/runtime.",
+    "ownership": "Path owns detached arrays and configuration. No writable field, renderer or external state is retained. pointAt returns a fresh pair; pointInto writes exactly two slots after all validation, never exposing internal arrays. headingAt returns a scalar. serialize returns detached canonical input for recomputation; toValues returns detached complete output_schema values and explicitly authorizes that extra materialization. Replay/getters/export do not sample the field or recompute movement. If serialize/toValues allocation fails, no new value is returned and the original path remains usable and unchanged. Failure does not invalidate or partially mutate the retained path.",
+    "access": "Native steps() (Python steps property) is N. pointAt index domain0..N; headingAt0..N-1. Validate index as finite safe nonnegative integer <=9007199254740991 (booleans excluded), then access-specific bound. INVALID_INDEX precedes INDEX_OUT_OF_RANGE. Optional pointInto checks index/domain then bounds then output and offset; offset must be finite nonnegative integral, with two writable binary64 slots. Invalid access leaves output unchanged. Float32 buffers are forbidden. In Java, the transport may use a typed int offset (unrepresentable/wrong-type calls are host call errors); dynamic-language offsets retain the stated runtime validation. This does not change valid pointInto behavior or index/bounds-before-storage error order.",
+    "native_forms": "Java GradientPath2D.trace(Object config), pointAt(Object or long), headingAt(Object or long), pointInto(index,double[],offset), steps(), serialize(), toValues(). JavaScript gradientPath2D(config), pointAt, headingAt, pointInto, steps getter, serialize, toValues. Python gradient_path_2d(config), point_at, heading_at, point_into, steps property, serialize, to_values. No overload accepting arbitrary callbacks or host field objects in v0.1.0. Supplying an existing field serialize() value reuses its declared configuration.",
+    "native_types": "Follow existing grid numeric conventions: Java Byte/Short/Integer/Long/Float/Double only; reject BigInteger/BigDecimal/custom Number before conversion. JavaScript passive object/Array input with number values; Python int/float but never bool, convert to finite binary64 after validating integer domains where applicable. Python huge integer conversion failure becomes INVALID_INPUT/INVALID_INDEX, not an uncaught conversion exception. Output pointInto accepts Java double[], JS Float64Array or writable ordinary Array, Python exact builtin list or array(d). Offset/count/index validation must precede narrowing. Active accessors/proxies and custom containers are not interchange data. Input containers: Java Map for records and exactly two-element List for pairs; arrays/PVector are not pair input carriers. Only passive container behavior belongs to interchange; active custom hooks are outside it. Python requires exact builtin dict records and exact builtin list pairs, rejecting custom Mapping/list subclasses and tuples. JS records have Object.prototype or null prototype and pairs are ordinary Array; class instances/typed-array pairs are not interchange input.",
+    "units": "Planar caller-defined x/y coordinates, with heading0 advancing positive x and heading pi/2 positive y. Angles radians; host rendering decides whether positive y points down. FieldScale applies uniformly to both coordinate axes; offsets are lattice units. Step distance is coordinate units. Progress, envelope, perpendicular orientation and before/after anchor are caller choices.",
+    "numerics": "Basic arithmetic IEEE binary64 round-to-nearest ties-to-even in stated order. Java/Android Math.sin/cos, JavaScript Math.sin/cos, Python math.sin/cos with no implicit angle normalization. Same-target identical inputs/runtime give exact replay and prefix. Cross-target coordinates/headings are checked under explicit per-case fixture tolerances, never a universal bit-identity or arbitrary-descriptor error-bound promise. Existing field algorithm remains exact for identical queries. Every completed zero output is canonical positive zero.",
+    "environment": [
+      "field.gradient-noise-2d-01@0.1.0 explicit seed",
+      "named target/runtime binary64 sine/cosine"
+    ],
+    "complexity": "O(N) eager work and O(N) retained numeric storage; O(1) point/heading access and O(N) explicit detached value export. No per-step point object or command list. Source-range2000/16000 path measurements and declared example workloads required separately for each claimed runtime.",
+    "native_errors": "Every library exception has code. Dynamic trace exceptions additionally expose stepIndex (Python step_index) and stage; these become error_detail:{stepIndex,stage} in interchange conformance reports. Static/access errors have no dynamic detail. Java may use a dedicated IllegalArgumentException subclass for validation and a dedicated ArithmeticException subclass for dynamic failures; JS Error subclasses and Python ValueError subclasses are native transport, not different semantic codes. Host allocation failure is not wrapped as a success or validation error."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed/nonfinite/out-of-domain static input, including layout-unsafe steps.",
+    "TRACE_QUERY_INVALID": "Dynamic field coordinate invalid; stepIndex and query_x/query_y stage.",
+    "TRACE_ARITHMETIC_INVALID": "Dynamic nonfinite heading/displacement/endpoint; stepIndex and stated stage.",
+    "INVALID_INDEX": "Index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "Representable index exceeds point or heading range.",
+    "INVALID_OUTPUT": "pointInto storage/offset is not writable binary64 space for two values."
+  },
+  "parameters": {
+    "field": {
+      "unit": "seed-only gradient configuration",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Existing named field; technique substitution for source simplex/Processing noise. No RNG draws or host noise."
+    },
+    "start": {
+      "unit": "coordinate pair",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit seed location; ciserp grid starts and natalata overscan motivate separating start placement from motion."
+    },
+    "steps": {
+      "unit": "advances",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Ciserp reports2000\u201316000 steps; natalata2000\u20132800; mantel~338. No common encouraged interval. Representational ceiling derives from packed signed32-indexable position storage, not visual data."
+    },
+    "stepDistance": {
+      "unit": "coordinate distance per advance",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Mantel describes1px advances and natalata0.4*scale. CP2 prototype uses0.4. Nonnegative forward displacement with zero stationary is a design convention; no recommended interval."
+    },
+    "fieldScale": {
+      "unit": "field lattice units per coordinate unit",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Ciserp det substitutions change the source scene; private gradient experiment compared0.002 and0.01, with horizontal locking at finer scale. No common range or isotropy claim."
+    },
+    "fieldOffset": {
+      "unit": "field lattice coordinate pair",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit sampling translation as in ciserp des. Independent x/y offsets are a design generalization, not a measured range."
+    },
+    "angleBase": {
+      "unit": "radians",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Ciserp heading includes ang; explicit affine offset. Prototype -20 is example configuration only."
+    },
+    "angleScale": {
+      "unit": "radians per field scalar unit",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Ciserp amp changes a randomized distribution; it is not a scalar range. Prototype40 with gradient[0,1] is a technique-level choice, not signed simplex equivalence."
+    }
+  },
+  "design_divergences": [
+    "Named gradient carrier, not simplex or Processing compatibility.",
+    "Retained binary64 values instead of immediate drawing/source float loops.",
+    "Open fixed-step forward trajectory; mark anchors, closure, branch topology and envelope remain external.",
+    "Explicit mathematical validity and allocation representation limits are not artistic recommendations."
+  ],
+  "exclusions": [
+    "arbitrary scalar/vector callbacks",
+    "signed simplex carrier",
+    "adaptive or force integration",
+    "collision, clipping, wrapping and bounds stopping",
+    "automatic joined strokes",
+    "branching and animated lifecycle",
+    "style RNG/envelopes/marks"
+  ],
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "host-trigonometry",
+        "gradient-noise-2d-01"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "host-trigonometry",
+        "gradient-noise-2d-01"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "host-trigonometry",
+        "gradient-noise-2d-01"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "host-trigonometry",
+        "gradient-noise-2d-01"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    }
+  },
+  "fixtures": "fixtures/operations/gradient-path.json",
+  "reproduction": {
+    "level": "technique",
+    "design_evidence": "evidence/parameter-experiments/cp2-path-choice/review.json",
+    "acceptance": "Public native trace/mark reuse, palette-only edit with zero resampling, count-prefix, step-distance edit, independent mark extent, four claimed targets. Private design images do not establish public implementation. Preserve field horizontal-locking limitation; no exact ciserp pixels or simplex equivalence.",
+    "status": "planned"
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "Sol",
+    "status": "approved for implementation; root accepted Sol contract and fixture review"
+  }
+}

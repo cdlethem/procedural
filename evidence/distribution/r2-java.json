@@ -1,0 +1,26 @@
+{
+  "status": "staged",
+  "review_status": "pending_root",
+  "input_sha256": {
+    "tools/build_city_marks_java.py": "72aad586c588833f3a5163805027ad71d0c4909c3c80c4d0ac58fa61eff9df5c",
+    "tools/build_lattice_marks_java.py": "cf063d540ff4c722d01f5a861665f9f08486b32e46586d5478bccba39d11d91b",
+    "evidence/distribution/r1-review.json": "30bbceb14ed56d4c89700335707b24bfce80393353bfde1ecf17ccb9f7f67850",
+    "evidence/reproductions/r2-p3d/root-review.json": "26d9ea66fe223aa183c3c39ab38bedaa6f7007d3c4ae195f46cf86d52bb1751a",
+    "evidence/reproductions/r2-p3d/edits.json": "0d9b7350ae82d26a966b09e7e949bdbf2c4add90d3ebd24b82026abfb9f619f0",
+    ".work/dist/r1/java/procedurals-processing-0.12.0.zip": "5b12d816be3a17beedf12c9ad091a0dc6d36bd40fe09528def6e710b118d4a2a",
+    ".work/examples/r2-candidate1/result.json": "90c0f2981b4b82558debf05e54efbc744820136193526439b70bb55e8e80801b",
+    "packages/java/examples/CityMarks/CityComposition.java": "0cdc095ea49a9a39b58bc6cc8b7d6d9d7592061984fb22dc22e4f9f5836e5b70",
+    "packages/java-processing/examples/CityMarks/CityMarks.pde": "95f461ce72dba9cd23530b1e795ff29cf9a5302cebed4914c58d02e453aac225",
+    "docs/city-marks.md": "a3408a6d172f4d3301c5fec773d4c73c26ac326e529f103cbc52201f08673c71",
+    "docs/installing-city-marks.md": "6b147989b193e980d60241ff1585aeaca548e066b0f7b3f9b5e041829ba5061f"
+  },
+  "archive": {
+    "path": ".work/dist/r2/java/procedurals-processing-0.13.0.zip",
+    "sha256": "cd350a7478f5c5e36ba19d4f617bf7ae7ec2eb98b9aa08a1f2966b8ada47d739"
+  },
+  "operations": 14,
+  "starters": 13,
+  "members": 73,
+  "unchanged_prior_members": 68,
+  "core_jar_unchanged": true
+}

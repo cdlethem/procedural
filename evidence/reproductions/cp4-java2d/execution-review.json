@@ -1,0 +1,35 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "scope": "CP4 Java core implementation, conformance evidence, local artifact build, and registered installed native execution preflight. No native or visual acceptance yet.",
+  "input_sha256": {
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "tests/native/QuadrantPartitionNative.java": "0169881f20520b0a9130ee94939b059839bd408482fbb52b1b2d7bbba0f0b492",
+    "tools/run_quadrant_partition_java.py": "1abf2d5149fc069d7beea86b83bdeba1f2510ec2752b6899efc2cb2155297de6",
+    "evidence/conformance/quadrant-partition-java.json": "2f87b8f2041b3f3203894c9a0820f3a9f9f6bb4d542b002eddf0f530e77c4395",
+    "tools/build_region_marks_java.py": "022c7cac4ed586f3c0550e8fcee86c721abe11a5233adfda8611c957c86d2560",
+    "evidence/distribution/cp4-java.json": "09902920f8ca32873f616678440d7493158a1121282f6869216e2f7be9cdb790",
+    "tools/check_region_marks_pde.py": "9da0393157df396e1e89264b2ba51e34c982e8112b0d804b092345bedd543c88",
+    "tools/run_region_marks_pde.py": "170eec062f6bc73b69ba3f8a7c065745c9cbee015dd49cf23e0b1a78f42fdd6c",
+    "tests/native/RegionMarksPdeProbe.java": "f7e2071cd36dcfc3c57b5adc3b4de04e3701b398dca52d9283132c8b964016b5",
+    "tests/native/RegionMarksPdeConfiguration.java": "2108a91859a2fe99374408af333c7c8b549df6edf65749679e42ed96781a3eb4",
+    "evidence/reproductions/cp4-java2d/pde-plan.json": "453cfb15d828c253cb7bd1ecfa3012bc7c37e94469015037e209c6375a101ad4",
+    "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+    "packages/java-processing/examples/RegionMarks/RegionMarks.pde": "6d41157878f7f6ca82b6f6b663a05ea13b16214b525a8fe25047243901d552ec"
+  },
+  "findings": [
+    "Reviewed required input and error ordering, separate binary64 midpoint stages, canonical zeros, append/remove child order, private deterministic stream and detached primitive storage against frozen contract.",
+    "34 fixture cases, 685 assertions, five stream vectors, eleven successful selection traces and 27 ownership/access assertions passed with unchanged source bindings.",
+    "Inspected release-8 javap output: nested Builder arithmetic methods retain strictfp. No FMA or reassociation is used.",
+    "Reviewed six kernel-only workload measurements through 20000 replacements; quadratic moves and linear retained storage are accurately scoped. Host allocation failure is source-inspected, not forcibly executed.",
+    "0.4.0 extracted installed-JAR consumer checks exact fixture bounds and IDs, origin, destination sentinels and official PDE compilation. Four example folders are packaged; example tabs remain outside core.",
+    "Reviewed native probe, configuration guard and executor: eleven draw states, eleven keys, retained style identity, reset pixels, changed generation, authored transfer and cached save. Three public-output images are registered for direct visual inspection.",
+    "No Java or Xvfb process was live at preflight. Existing private five-image investigation is preserved; only the separate registered installed PDE attempt may run."
+  ],
+  "limitations": [
+    "No other-platform CP4 support claim.",
+    "No upstream pixel reproduction or continuous parameter recommendation."
+  ]
+}

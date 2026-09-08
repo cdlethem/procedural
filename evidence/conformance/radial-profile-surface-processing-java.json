@@ -1,0 +1,77 @@
+{
+  "generated_vectors_sha256": "9968d62ad85768085c2712c2230c145df5255b030ec8020f014e42c28d36121d",
+  "operation": "mesh.radial-profile-surface-3d",
+  "results": {
+    "RadialProfileNative": {
+      "assertions": 507,
+      "heap_observation": {
+        "free_bytes": 966414496,
+        "max_bytes": 15896412160,
+        "note": "snapshot only; not an allocation measurement",
+        "total_bytes": 1015021568
+      },
+      "resource_failure": "not executed; controlled allocation failure is not claimed",
+      "same_runtime_checksum": "80deae4a921edbdb",
+      "status": "passed",
+      "workloads": [
+        {
+          "aggregate_checksum": "4f0c3c6a8d4838e8",
+          "checksum": "b6d3fa1a65682648",
+          "elapsed_nanos": 27690,
+          "faces": 6,
+          "id": "tiny-2x3",
+          "numeric_primitive_payload_bytes": 408,
+          "repetitions": 3,
+          "vertices": 6,
+          "warmups": 2
+        },
+        {
+          "aggregate_checksum": "c9c5e72c86cea0e",
+          "checksum": "1bceb9c52481c5f5",
+          "elapsed_nanos": 270960,
+          "faces": 1024,
+          "id": "demonstrated-17x32",
+          "numeric_primitive_payload_bytes": 58112,
+          "repetitions": 2,
+          "vertices": 544,
+          "warmups": 1
+        },
+        {
+          "aggregate_checksum": "d4812621ae2d00e",
+          "checksum": "a91eb9e93c372375",
+          "elapsed_nanos": 6649748,
+          "faces": 96000,
+          "id": "bounded-17x3000",
+          "numeric_primitive_payload_bytes": 5448000,
+          "repetitions": 2,
+          "vertices": 51000,
+          "warmups": 1
+        }
+      ]
+    },
+    "RadialProfileVectors": {
+      "assertions": 3553,
+      "fixture_cases": 43,
+      "status": "passed"
+    }
+  },
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Java core vectors and native access/workloads only; no installed package, P3D or other-target claim.",
+  "source_sha256_after": {
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+    "tests/native/RadialProfileNative.java": "24dcabdc942c3e02f5c319e3a3d9c30b40c15643a817633fb0b2bbe08b1a78cb",
+    "tools/check_profile_fixtures.py": "21170b3964b5e093b9b082042880a32e2d202c8323c27b6c1285002ab236ae38",
+    "tools/run_radial_profile_java.py": "772b9dcbde3f88e6ac5ff3fe8ce1cc0721a7701eb836118b4c2843d9041c47a9"
+  },
+  "source_sha256_before": {
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+    "tests/native/RadialProfileNative.java": "24dcabdc942c3e02f5c319e3a3d9c30b40c15643a817633fb0b2bbe08b1a78cb",
+    "tools/check_profile_fixtures.py": "21170b3964b5e093b9b082042880a32e2d202c8323c27b6c1285002ab236ae38",
+    "tools/run_radial_profile_java.py": "772b9dcbde3f88e6ac5ff3fe8ce1cc0721a7701eb836118b4c2843d9041c47a9"
+  },
+  "status": "passed"
+}

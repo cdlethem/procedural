@@ -1,0 +1,966 @@
+{
+  "status": "investigation; not approved contract or native conformance",
+  "generator": "tools/build_drawing_geometry_fixtures.py",
+  "generator_sha256": "1f04980c491fbb02e88f4565fa7b10d7a444cc736f266def1c1deed2be8039ab",
+  "scope": "Exact topology and binary32 conversion only; no renderer-safe domain asserted.",
+  "exhaustive_grid_crosscheck_count": 3024,
+  "quads": [
+    {
+      "id": "rectangle",
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "8",
+          "denominator": "1"
+        },
+        {
+          "numerator": "8",
+          "denominator": "1"
+        },
+        {
+          "numerator": "8",
+          "denominator": "1"
+        },
+        {
+          "numerator": "8",
+          "denominator": "1"
+        }
+      ],
+      "canonical_strictly_convex": true,
+      "binary32_vertices": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          4.0,
+          0.0
+        ],
+        [
+          4.0,
+          2.0
+        ],
+        [
+          0.0,
+          2.0
+        ]
+      ],
+      "binary32_strictly_convex": true,
+      "geometry_outcome": "valid"
+    },
+    {
+      "id": "reverse_winding",
+      "vertices": [
+        [
+          0,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "-8",
+          "denominator": "1"
+        },
+        {
+          "numerator": "-8",
+          "denominator": "1"
+        },
+        {
+          "numerator": "-8",
+          "denominator": "1"
+        },
+        {
+          "numerator": "-8",
+          "denominator": "1"
+        }
+      ],
+      "canonical_strictly_convex": true,
+      "binary32_vertices": [
+        [
+          0.0,
+          2.0
+        ],
+        [
+          4.0,
+          2.0
+        ],
+        [
+          4.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "binary32_strictly_convex": true,
+      "geometry_outcome": "valid"
+    },
+    {
+      "id": "negative_off_canvas",
+      "vertices": [
+        [
+          -20,
+          -8
+        ],
+        [
+          -4,
+          -7
+        ],
+        [
+          -3,
+          6
+        ],
+        [
+          -21,
+          4
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "207",
+          "denominator": "1"
+        },
+        {
+          "numerator": "232",
+          "denominator": "1"
+        },
+        {
+          "numerator": "218",
+          "denominator": "1"
+        },
+        {
+          "numerator": "193",
+          "denominator": "1"
+        }
+      ],
+      "canonical_strictly_convex": true,
+      "binary32_vertices": [
+        [
+          -20.0,
+          -8.0
+        ],
+        [
+          -4.0,
+          -7.0
+        ],
+        [
+          -3.0,
+          6.0
+        ],
+        [
+          -21.0,
+          4.0
+        ]
+      ],
+      "binary32_strictly_convex": true,
+      "geometry_outcome": "valid"
+    },
+    {
+      "id": "bow_tie",
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "8",
+          "denominator": "1"
+        },
+        {
+          "numerator": "8",
+          "denominator": "1"
+        },
+        {
+          "numerator": "-8",
+          "denominator": "1"
+        },
+        {
+          "numerator": "-8",
+          "denominator": "1"
+        }
+      ],
+      "canonical_strictly_convex": false,
+      "binary32_vertices": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          4.0,
+          2.0
+        ],
+        [
+          0.0,
+          2.0
+        ],
+        [
+          4.0,
+          0.0
+        ]
+      ],
+      "binary32_strictly_convex": false,
+      "geometry_outcome": "INVALID_COMMAND"
+    },
+    {
+      "id": "concave",
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "4",
+          "denominator": "1"
+        },
+        {
+          "numerator": "-8",
+          "denominator": "1"
+        },
+        {
+          "numerator": "4",
+          "denominator": "1"
+        },
+        {
+          "numerator": "16",
+          "denominator": "1"
+        }
+      ],
+      "canonical_strictly_convex": false,
+      "binary32_vertices": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          4.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ],
+        [
+          0.0,
+          4.0
+        ]
+      ],
+      "binary32_strictly_convex": false,
+      "geometry_outcome": "INVALID_COMMAND"
+    },
+    {
+      "id": "collinear_triple",
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        {
+          "numerator": "8",
+          "denominator": "1"
+        },
+        {
+          "numerator": "16",
+          "denominator": "1"
+        },
+        {
+          "numerator": "8",
+          "denominator": "1"
+        }
+      ],
+      "canonical_strictly_convex": false,
+      "binary32_vertices": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          2.0,
+          0.0
+        ],
+        [
+          4.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.0
+        ]
+      ],
+      "binary32_strictly_convex": false,
+      "geometry_outcome": "INVALID_COMMAND"
+    },
+    {
+      "id": "duplicate_vertex",
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        {
+          "numerator": "8",
+          "denominator": "1"
+        },
+        {
+          "numerator": "8",
+          "denominator": "1"
+        }
+      ],
+      "canonical_strictly_convex": false,
+      "binary32_vertices": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          4.0,
+          0.0
+        ],
+        [
+          4.0,
+          0.0
+        ],
+        [
+          0.0,
+          2.0
+        ]
+      ],
+      "binary32_strictly_convex": false,
+      "geometry_outcome": "INVALID_COMMAND"
+    },
+    {
+      "id": "signed_zero_duplicate",
+      "vertices": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -0.0,
+          0.0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        {
+          "numerator": "4",
+          "denominator": "1"
+        },
+        {
+          "numerator": "4",
+          "denominator": "1"
+        },
+        {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      ],
+      "canonical_strictly_convex": false,
+      "binary32_vertices": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          2.0,
+          2.0
+        ],
+        [
+          0.0,
+          2.0
+        ]
+      ],
+      "binary32_strictly_convex": false,
+      "geometry_outcome": "INVALID_COMMAND"
+    },
+    {
+      "id": "float32_collapsed_edge",
+      "vertices": [
+        [
+          1,
+          0
+        ],
+        [
+          1.0000000298023224,
+          0
+        ],
+        [
+          1.0000000298023224,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "1",
+          "denominator": "33554432"
+        },
+        {
+          "numerator": "1",
+          "denominator": "33554432"
+        },
+        {
+          "numerator": "1",
+          "denominator": "33554432"
+        },
+        {
+          "numerator": "1",
+          "denominator": "33554432"
+        }
+      ],
+      "canonical_strictly_convex": true,
+      "binary32_vertices": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "binary32_strictly_convex": false,
+      "geometry_outcome": "INVALID_COMMAND"
+    },
+    {
+      "id": "float32_thin_survives",
+      "vertices": [
+        [
+          1,
+          0
+        ],
+        [
+          1.0000001192092896,
+          0
+        ],
+        [
+          1.0000001192092896,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "1",
+          "denominator": "8388608"
+        },
+        {
+          "numerator": "1",
+          "denominator": "8388608"
+        },
+        {
+          "numerator": "1",
+          "denominator": "8388608"
+        },
+        {
+          "numerator": "1",
+          "denominator": "8388608"
+        }
+      ],
+      "canonical_strictly_convex": true,
+      "binary32_vertices": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0000001192092896,
+          0.0
+        ],
+        [
+          1.0000001192092896,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "binary32_strictly_convex": true,
+      "geometry_outcome": "valid"
+    },
+    {
+      "id": "float32_collinear_distinct",
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0.9999999701976776
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "1",
+          "denominator": "16777216"
+        },
+        {
+          "numerator": "50331649",
+          "denominator": "16777216"
+        },
+        {
+          "numerator": "6",
+          "denominator": "1"
+        },
+        {
+          "numerator": "3",
+          "denominator": "1"
+        }
+      ],
+      "canonical_strictly_convex": true,
+      "binary32_vertices": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0
+        ],
+        [
+          0.0,
+          3.0
+        ]
+      ],
+      "binary32_strictly_convex": false,
+      "geometry_outcome": "INVALID_COMMAND"
+    },
+    {
+      "id": "binary64_cancellation",
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          134217729,
+          134217728
+        ],
+        [
+          268435457,
+          268435455
+        ],
+        [
+          134217728,
+          134217727
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "-1",
+          "denominator": "1"
+        },
+        {
+          "numerator": "-1",
+          "denominator": "1"
+        },
+        {
+          "numerator": "-1",
+          "denominator": "1"
+        },
+        {
+          "numerator": "-1",
+          "denominator": "1"
+        }
+      ],
+      "canonical_strictly_convex": true,
+      "binary32_vertices": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          134217728.0,
+          134217728.0
+        ],
+        [
+          268435456.0,
+          268435456.0
+        ],
+        [
+          134217728.0,
+          134217728.0
+        ]
+      ],
+      "binary32_strictly_convex": false,
+      "geometry_outcome": "INVALID_COMMAND"
+    },
+    {
+      "id": "subnormal_rectangle",
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          1.401298464324817e-45,
+          0
+        ],
+        [
+          1.401298464324817e-45,
+          1.401298464324817e-45
+        ],
+        [
+          0,
+          1.401298464324817e-45
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "1",
+          "denominator": "509258994083621521567111422102344540262867098416484062659035112338595324940834176545849344"
+        },
+        {
+          "numerator": "1",
+          "denominator": "509258994083621521567111422102344540262867098416484062659035112338595324940834176545849344"
+        },
+        {
+          "numerator": "1",
+          "denominator": "509258994083621521567111422102344540262867098416484062659035112338595324940834176545849344"
+        },
+        {
+          "numerator": "1",
+          "denominator": "509258994083621521567111422102344540262867098416484062659035112338595324940834176545849344"
+        }
+      ],
+      "canonical_strictly_convex": true,
+      "binary32_vertices": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.401298464324817e-45,
+          0.0
+        ],
+        [
+          1.401298464324817e-45,
+          1.401298464324817e-45
+        ],
+        [
+          0.0,
+          1.401298464324817e-45
+        ]
+      ],
+      "binary32_strictly_convex": true,
+      "geometry_outcome": "valid"
+    },
+    {
+      "id": "float32_underflow_quad",
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          3.503246160812043e-46,
+          0
+        ],
+        [
+          3.503246160812043e-46,
+          3.503246160812043e-46
+        ],
+        [
+          0,
+          3.503246160812043e-46
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "1",
+          "denominator": "8148143905337944345073782753637512644205873574663745002544561797417525199053346824733589504"
+        },
+        {
+          "numerator": "1",
+          "denominator": "8148143905337944345073782753637512644205873574663745002544561797417525199053346824733589504"
+        },
+        {
+          "numerator": "1",
+          "denominator": "8148143905337944345073782753637512644205873574663745002544561797417525199053346824733589504"
+        },
+        {
+          "numerator": "1",
+          "denominator": "8148143905337944345073782753637512644205873574663745002544561797417525199053346824733589504"
+        }
+      ],
+      "canonical_strictly_convex": true,
+      "binary32_vertices": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "binary32_strictly_convex": false,
+      "geometry_outcome": "INVALID_COMMAND"
+    },
+    {
+      "id": "binary64_subnormal_rectangle",
+      "vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          5e-324,
+          0
+        ],
+        [
+          5e-324,
+          5e-324
+        ],
+        [
+          0,
+          5e-324
+        ]
+      ],
+      "exact_turns": [
+        {
+          "numerator": "1",
+          "denominator": "40966672143876732145176228848043091143928566425868314369800638377010779053124493714260960149070292229477000187962034707314131344279013990700557084216067703100110397626915930050017669416781158249744236172365003101763600273594402063864722325201532144604115521818460662623935143647469165084514879475815880467163982182410113805509643338164835839186040845030529294117697218294439255325218264815180040054295920900280527835303063728875285777248462704511695944824230554347848626506942611938335291999257755662113691788246053880398723321865319809478918081631431889557552749507834196358292243660837246218506196446294893757162080795972525602568587162635206656"
+        },
+        {
+          "numerator": "1",
+          "denominator": "40966672143876732145176228848043091143928566425868314369800638377010779053124493714260960149070292229477000187962034707314131344279013990700557084216067703100110397626915930050017669416781158249744236172365003101763600273594402063864722325201532144604115521818460662623935143647469165084514879475815880467163982182410113805509643338164835839186040845030529294117697218294439255325218264815180040054295920900280527835303063728875285777248462704511695944824230554347848626506942611938335291999257755662113691788246053880398723321865319809478918081631431889557552749507834196358292243660837246218506196446294893757162080795972525602568587162635206656"
+        },
+        {
+          "numerator": "1",
+          "denominator": "40966672143876732145176228848043091143928566425868314369800638377010779053124493714260960149070292229477000187962034707314131344279013990700557084216067703100110397626915930050017669416781158249744236172365003101763600273594402063864722325201532144604115521818460662623935143647469165084514879475815880467163982182410113805509643338164835839186040845030529294117697218294439255325218264815180040054295920900280527835303063728875285777248462704511695944824230554347848626506942611938335291999257755662113691788246053880398723321865319809478918081631431889557552749507834196358292243660837246218506196446294893757162080795972525602568587162635206656"
+        },
+        {
+          "numerator": "1",
+          "denominator": "40966672143876732145176228848043091143928566425868314369800638377010779053124493714260960149070292229477000187962034707314131344279013990700557084216067703100110397626915930050017669416781158249744236172365003101763600273594402063864722325201532144604115521818460662623935143647469165084514879475815880467163982182410113805509643338164835839186040845030529294117697218294439255325218264815180040054295920900280527835303063728875285777248462704511695944824230554347848626506942611938335291999257755662113691788246053880398723321865319809478918081631431889557552749507834196358292243660837246218506196446294893757162080795972525602568587162635206656"
+        }
+      ],
+      "canonical_strictly_convex": true,
+      "binary32_vertices": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "binary32_strictly_convex": false,
+      "geometry_outcome": "INVALID_COMMAND"
+    }
+  ],
+  "conversion": [
+    {
+      "id": "tie_even_down",
+      "input": 1.0000000596046448,
+      "output": 1.0,
+      "output_bits_hex": "3f800000"
+    },
+    {
+      "id": "tie_even_up",
+      "input": 1.0000001788139343,
+      "output": 1.000000238418579,
+      "output_bits_hex": "3f800002"
+    },
+    {
+      "id": "negative_tie",
+      "input": -1.0000000596046448,
+      "output": -1.0,
+      "output_bits_hex": "bf800000"
+    },
+    {
+      "id": "zero",
+      "input": -0.0,
+      "output": 0.0,
+      "output_bits_hex": "00000000"
+    },
+    {
+      "id": "smallest_subnormal",
+      "input": 1.401298464324817e-45,
+      "output": 1.401298464324817e-45,
+      "output_bits_hex": "00000001"
+    },
+    {
+      "id": "underflow_tie",
+      "input": 7.006492321624085e-46,
+      "output": 0.0,
+      "output_bits_hex": "00000000"
+    }
+  ],
+  "cancellation_counterexample": {
+    "a": [
+      0.0,
+      0.0
+    ],
+    "b": [
+      134217729.0,
+      134217728.0
+    ],
+    "c": [
+      134217728.0,
+      134217727.0
+    ],
+    "naive_binary64": 0.0,
+    "exact": {
+      "numerator": "-1",
+      "denominator": "1"
+    }
+  }
+}

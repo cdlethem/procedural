@@ -1,0 +1,54 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "review_policy": "Maintainer paused Sol review during the Java-first buildout sprint; root reviewed directly.",
+  "scope": "Actual public PlacementMarks Processing 4.5.6 JAVA2D PDE lifecycle, edit callbacks, retained placements, radial transfer, and cached-canvas save. It validates this editable starter only; pure placement conformance and corpus reproduction remain separate.",
+  "result": {
+    "path": "evidence/reproductions/cp3-java2d/pde-result.json",
+    "sha256": "774c28474e668a91345e22dd0f8f1314fdcd1785270c2d1cc30a4465f20daa4b"
+  },
+  "source_closure": "All recorded input and image hashes verified unchanged at acceptance.",
+  "native": {
+    "status": "passed",
+    "compositions": 14,
+    "key_events": 14,
+    "retained_style_edits": true,
+    "baseline_replay_pixels": true,
+    "palette_reuses_geometry": true,
+    "budget_prefix": true,
+    "radial_transfer": true,
+    "save_quiet_ms": 300
+  },
+  "visual_review": {
+    "status": "accepted",
+    "images": {
+      "base.png": "b903277be31d07906220c09b129aaf8d5e73a3dc7303994d557ec310231ea487",
+      "motif.png": "8f0b342730335b204062bed1939c81af52d853c2970fb5d13b3c562c55261a06",
+      "palette.png": "6355159797a591294d057ef5b0fd0e7344d13747352c64de16b73fbb82b86404",
+      "separation.png": "5c67c92c661110ed15820d028ef98b135a25a261e2ce787dd322714054130474",
+      "minimum.png": "f24ab1d2569880eced0b957a805b3c3bf60240ed7ea33d038b23acc5c81fbc61",
+      "maximum.png": "5593b87fa773418924f31ff1d1144e0c71a139501a604ac3216e64776df9a023",
+      "budget.png": "2beffff8e6febe6e02d731feda85e1f98db4ff9eb33279422b4482e4909f93f7",
+      "seed.png": "4a7820605e42a854b7f4830b2f1545af69e8ea9572c803baabc14ecfdd48dc39",
+      "radial.png": "8c8e4f0875c7fd10723200149e8c2c45b3b6c27184973f27db3c1acdac631e5f"
+    },
+    "observations": [
+      "Baseline combines large ring anchors with small gap fillers; diamond substitution preserves their locations and changes the mark silhouette.",
+      "Palette substitution preserves geometry; its white strokes have low contrast against the pale background, so this alternate palette is illustrative rather than a recommended default.",
+      "Higher separation opens gaps; raising the minimum removes the finest fillers; reducing the maximum removes large anchors.",
+      "Increasing the attempt budget adds small fillers while preserving the baseline geometry prefix, also verified by the native probe.",
+      "Changing seed changes the arrangement; explicit radial proposals produce a visibly concentric composition through the same retained-circle boundary."
+    ]
+  },
+  "save": {
+    "path": ".work/reproductions/cp3-java2d-pde/placement-marks-0015.png",
+    "sha256": "8c8e4f0875c7fd10723200149e8c2c45b3b6c27184973f27db3c1acdac631e5f",
+    "pixels_equal_displayed": true
+  },
+  "limitations": [
+    "Technique-level editable-starter acceptance, not source-pixel corpus reproduction.",
+    "Processing Java JAVA2D only; other target ports remain deferred.",
+    "The generated result retains visual_review=pending as the immutable execution record; this separate review supplies acceptance."
+  ]
+}

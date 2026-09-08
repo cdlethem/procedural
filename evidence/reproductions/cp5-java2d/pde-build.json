@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "scope": "Official Processing 4.5.6 GrainMarks PDE preprocessing and Java compilation only; no GUI lifecycle, renderer, image, or native support evidence was run.",
+  "input_sha256_before": {
+    ".work/dist/cp5/java/consumer/procedurals/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    ".work/dist/cp5/java/consumer/procedurals/examples/GrainMarks/GrainMarks.pde": "ea025f34174d525976c2b4ad05b528d3c1eec8a4eb63aed5c8374b90582cecdf",
+    "packages/java-processing/examples/GrainMarks/GrainMarks.pde": "ea025f34174d525976c2b4ad05b528d3c1eec8a4eb63aed5c8374b90582cecdf",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "tools/check_field_marks_pde.py": "49668c561ebb5b2c585544fe17cbd25128539c1fd01dfea1587d1f7e80c265c1",
+    "tools/check_processing_runtime.py": "266825d35ac2859a97b61ebe360a225c41f69aee068badcd1439becd3104c70c",
+    "tools/run_grid_conformance.py": "392d23b61f713c7d204e215a9b468874f78b213741dc1e163b4b5fcb5553b180",
+    "tools/check_grain_marks_pde.py": "dbd564c9760f24f213a95b85dc8d6197b0a9957cc54dde79b3e00bb1b66cfe2b",
+    ".work/dist/cp5/java/consumer/procedurals/library/procedurals.jar": "99b1815d10be2708f6e752e7662f90f915026ccd1a1c0f917eec52a8d5bbad9d",
+    "evidence/distribution/cp5-java.json": "c84b17cfdf650f9052761e90c8f679ab81d187ffd3e91d07ff8dd52c5ae84ea8"
+  },
+  "input_sha256_after": {
+    ".work/dist/cp5/java/consumer/procedurals/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    ".work/dist/cp5/java/consumer/procedurals/examples/GrainMarks/GrainMarks.pde": "ea025f34174d525976c2b4ad05b528d3c1eec8a4eb63aed5c8374b90582cecdf",
+    "packages/java-processing/examples/GrainMarks/GrainMarks.pde": "ea025f34174d525976c2b4ad05b528d3c1eec8a4eb63aed5c8374b90582cecdf",
+    "packages/java/examples/GrainMarks/GrainComposition.java": "58c423f9424d49215ecfa25bfa624ead02389e3735a445e2ca7e28bc2067a496",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "tools/check_field_marks_pde.py": "49668c561ebb5b2c585544fe17cbd25128539c1fd01dfea1587d1f7e80c265c1",
+    "tools/check_processing_runtime.py": "266825d35ac2859a97b61ebe360a225c41f69aee068badcd1439becd3104c70c",
+    "tools/run_grid_conformance.py": "392d23b61f713c7d204e215a9b468874f78b213741dc1e163b4b5fcb5553b180",
+    "tools/check_grain_marks_pde.py": "dbd564c9760f24f213a95b85dc8d6197b0a9957cc54dde79b3e00bb1b66cfe2b",
+    ".work/dist/cp5/java/consumer/procedurals/library/procedurals.jar": "99b1815d10be2708f6e752e7662f90f915026ccd1a1c0f917eec52a8d5bbad9d",
+    "evidence/distribution/cp5-java.json": "c84b17cfdf650f9052761e90c8f679ab81d187ffd3e91d07ff8dd52c5ae84ea8"
+  },
+  "generated_java_sha256": "aab74f22d2d91992aac79d430cc5e92e55d63fc03bda95010d6ae3fe481565e4",
+  "class_sha256": "655043fdcead5bc7d07677fb65c3d42a8c7a200f6a2c606fa91f3fdf3b7bc1d9",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "build": ".work/build/grain-marks-pde-installed",
+  "installed_library": {
+    "path": ".work/dist/cp5/java/consumer/procedurals/library/procedurals.jar",
+    "sha256": "99b1815d10be2708f6e752e7662f90f915026ccd1a1c0f917eec52a8d5bbad9d",
+    "distribution_report": "evidence/distribution/cp5-java.json",
+    "distribution_report_sha256": "c84b17cfdf650f9052761e90c8f679ab81d187ffd3e91d07ff8dd52c5ae84ea8"
+  }
+}

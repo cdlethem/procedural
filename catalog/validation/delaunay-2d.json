@@ -1,0 +1,165 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "topology.delaunay-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/delaunay-2d.json",
+    "catalog_sha256": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/delaunay-java-canonical-targets.json": "f3e6b65d3ff16515bee8d38bc9d7d5c7166ba36a4e4197972beb752492258c55",
+          "evidence/performance/cp9-java.json": "914dfce52b1fb43127460f4b461ad18db69f338f2182e1310c87fb252a1aa026",
+          "fixtures/operations/delaunay-2d.json": "2f2166e90dbab6345fda3148e65aae6079fcd0de96f6a9752ade3ed80c68a4d4"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/delaunay-java-canonical-targets.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/delaunay-java-canonical-targets.json",
+            "pointer": "/vectors/fixture_cases",
+            "equals": 36
+          },
+          {
+            "path": "evidence/conformance/delaunay-java-canonical-targets.json",
+            "pointer": "/native/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/performance/cp9-java.json",
+            "pointer": "/status",
+            "equals": "accepted"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/delaunay-java-root-review.json",
+          "sha256": "e305803b4b7c31ea98ab7c3f27f1f34ef2662e2ca8eee8460eefcb27e21c8b9d"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; strictfp Java8-target core",
+          "scope": "36sharedcases,2624vector assertions,126native assertions; exact exports, ownership/access, and eight registered desktop core workloads. Processing drawing unvalidated."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+          "packages/java/examples/FacetMarks/FacetComposition.java": "e3db603debd40fa5fe1910b334a5ac54a453e72e3bd9b9daa9c548616b49e2bb",
+          "packages/java-processing/examples/FacetMarks/FacetMarks.pde": "c620098fb4ae981ee0ad2325d394a2bc7708c471296ef49bf18e800336b2271a"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp9-java2d/result.json": "8cef1ccdc993328909f9ff0a2564765bd04d72f8c197de32250336b72af3041e",
+          "evidence/reproductions/cp9-java2d/root-review.json": "1a097815ae2803f77b36b812fe19149c639e5ef18b28bc4a481b00f6b8431320"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp9-java2d/result.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/reproductions/cp9-java2d/result.json",
+            "pointer": "/native/frames",
+            "equals": 18
+          },
+          {
+            "path": "evidence/reproductions/cp9-java2d/root-review.json",
+            "pointer": "/status",
+            "equals": "accepted"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/reproductions/cp9-java2d/root-review.json",
+          "sha256": "1a097815ae2803f77b36b812fe19149c639e5ef18b28bc4a481b00f6b8431320"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Processing4.5.6 JAVA2D density1",
+          "scope": "Actual staged PDE,18edit/reset states,exact drawing arguments/styles,retained topology/grain,save identity;12distinct images directly viewed. Technique-level site-to-facet and region/grain transfer only."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+          "packages/java/examples/FacetMarks/FacetComposition.java": "e3db603debd40fa5fe1910b334a5ac54a453e72e3bd9b9daa9c548616b49e2bb",
+          "packages/java-processing/examples/FacetMarks/FacetMarks.pde": "c620098fb4ae981ee0ad2325d394a2bc7708c471296ef49bf18e800336b2271a"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp9-java2d/result.json": "8cef1ccdc993328909f9ff0a2564765bd04d72f8c197de32250336b72af3041e",
+          "evidence/reproductions/cp9-java2d/root-review.json": "1a097815ae2803f77b36b812fe19149c639e5ef18b28bc4a481b00f6b8431320"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp9-java2d/result.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/reproductions/cp9-java2d/result.json",
+            "pointer": "/native/frames",
+            "equals": 18
+          },
+          {
+            "path": "evidence/reproductions/cp9-java2d/root-review.json",
+            "pointer": "/status",
+            "equals": "accepted"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/reproductions/cp9-java2d/root-review.json",
+          "sha256": "1a097815ae2803f77b36b812fe19149c639e5ef18b28bc4a481b00f6b8431320"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Processing4.5.6 JAVA2D density1",
+          "scope": "Actual staged PDE,18edit/reset states,exact drawing arguments/styles,retained topology/grain,save identity;12distinct images directly viewed. Technique-level site-to-facet and region/grain transfer only."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

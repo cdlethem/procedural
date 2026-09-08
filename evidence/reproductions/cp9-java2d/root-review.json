@@ -1,0 +1,104 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Scoped JAVA2D FacetMarks workflow and technique transfer; no source-pixel reproduction, external survey-image comparison, other-renderer/target or release claim.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+    "packages/java/examples/FacetMarks/FacetComposition.java": "e3db603debd40fa5fe1910b334a5ac54a453e72e3bd9b9daa9c548616b49e2bb",
+    "packages/java-processing/examples/FacetMarks/FacetMarks.pde": "c620098fb4ae981ee0ad2325d394a2bc7708c471296ef49bf18e800336b2271a",
+    "tools/diagnostics/cp9/FacetMarksProbe.java": "9d8cfe1b5c6c4d6c1538e541a888d4dd06d0371c60f78ab401786d6888e9efd6",
+    "tools/run_facet_marks_pde.py": "f113bd3ea22caa3cca6de08ca86f65c5f3daefef484de98474c11f9c9c35064d",
+    "tools/prepare_facet_marks.py": "d630f635f31d0f8a7d2b836e97d6a8b8a11402b31a71032bfb9946a7dcfa4581"
+  },
+  "evidence_sha256": {
+    "evidence/reproductions/cp9-java2d/result.json": "8cef1ccdc993328909f9ff0a2564765bd04d72f8c197de32250336b72af3041e",
+    "evidence/reproductions/cp9-java2d/plan.json": "e029c5e8762805712fd3953d4027fa82fe932c6c624569e52568bc73ef908ec7",
+    "evidence/conformance/delaunay-java-root-review.json": "e305803b4b7c31ea98ab7c3f27f1f34ef2662e2ca8eee8460eefcb27e21c8b9d"
+  },
+  "checks": {
+    "actual_rendered_states": 18,
+    "actual_key_events": 18,
+    "distinct_images_directly_viewed": 12,
+    "exact_resets": 6,
+    "exact_draw_arguments_and_style": true,
+    "retained_mesh_and_grain_on_style_edits": true,
+    "complete_reset_geometry_and_grain": true,
+    "saved_pixels_match_completed_canvas": true,
+    "unexpected_stderr": false
+  },
+  "visual_review": {
+    "baseline": {
+      "observation": "Connected coloured triangular faces with a polygonal disc-derived hull; varying face sizes and thin raster seams are visible.",
+      "path": ".work/reproductions/cp9-java2d/baseline.png",
+      "sha256": "240f4b547914edb78e91cb2187de032d3cc1815c44cceda209ab36c4035dc94f"
+    },
+    "wire": {
+      "observation": "Same outer shape and internal connectivity drawn as fine unique coloured edges.",
+      "path": ".work/reproductions/cp9-java2d/wire.png",
+      "sha256": "3efb8fc202722a07620f50a8d842dd183f9e63067e08032ff26834c92f237c3d"
+    },
+    "grain": {
+      "observation": "Light sparse coloured points occupy the same hull; face regions are subtle, with no fill/wire overlay.",
+      "path": ".work/reproductions/cp9-java2d/grain.png",
+      "sha256": "806f2ccdcd97ebf40960cc460cc14fbc5049e7279f4101c35d6fdeffb5e41096"
+    },
+    "colour": {
+      "observation": "Changed face colours with unchanged boundaries.",
+      "path": ".work/reproductions/cp9-java2d/colour.png",
+      "sha256": "7f9d0377a66c567f5e1f2021afa75fcb839613631cdb5df94b2604e8085a06f5"
+    },
+    "sites": {
+      "observation": "Dark markers coincide with face vertices, including hull vertices.",
+      "path": ".work/reproductions/cp9-java2d/sites.png",
+      "sha256": "26d2126bed2a78afaaac3d5ddbd89309124b0bbf0f3f6451a5e7844a3ed662f9"
+    },
+    "fine": {
+      "observation": "Many smaller facets; denser site set expands the sampled hull toward the circle.",
+      "path": ".work/reproductions/cp9-java2d/fine.png",
+      "sha256": "f437189d5fa7ea15cf2aed85c87392555eae17f1a05e557cad14c43e36b7dfb7"
+    },
+    "new-seed": {
+      "observation": "Different site arrangement, facets and polygonal outline.",
+      "path": ".work/reproductions/cp9-java2d/new-seed.png",
+      "sha256": "78b6932322ce6ca607dfe4c31a1d5ba514753af2ce17442d8b89f53c0a62233f"
+    },
+    "cells": {
+      "observation": "Cell-centre source produces rectilinear alignment, clustered small faces and broad triangular regions.",
+      "path": ".work/reproductions/cp9-java2d/cells.png",
+      "sha256": "226fb55c1b375bea2ee16de8598c8dce81125e689a1ff8559f8fc96813c1017b"
+    },
+    "cells-wire": {
+      "observation": "Unique edges reveal the aligned cell-centre structure and broad connecting triangles.",
+      "path": ".work/reproductions/cp9-java2d/cells-wire.png",
+      "sha256": "fb09b15b8c3eee610fafa8214ae5de5a387c3bb098c24639bdb9cf51f14683e5"
+    },
+    "cells-grain": {
+      "observation": "Light point texture occupies the cell-centre hull, with broad colour regions.",
+      "path": ".work/reproductions/cp9-java2d/cells-grain.png",
+      "sha256": "04c63d12f7270074143d2d9be5c02d6a3f4cfefe7ac5af1995daf79646eb1ff6"
+    },
+    "cells-fine": {
+      "observation": "Grain covers a fuller near-rectangular hull after additional cell subdivisions; texture remains light.",
+      "path": ".work/reproductions/cp9-java2d/cells-fine.png",
+      "sha256": "72c4d06ccb3b5c5310d7268b4137b75b14e828eb8aac3750bd0b883717dea060"
+    },
+    "cells-colour": {
+      "observation": "Alternate muted colours in the same fine cell-centre grain geometry; change is subtle at this point size.",
+      "path": ".work/reproductions/cp9-java2d/cells-colour.png",
+      "sha256": "09700098b04d4b37a2d591efb25dbccf9085f5489e0ea581e70a9c207cd2236f"
+    }
+  },
+  "root_corrections": [
+    "Replaced finite-only draft probe with exact returned-coordinate and native style verification.",
+    "Corrected expected control persistence: fine and grain remain active during later cell edits.",
+    "Verified complete mesh exports and grain batches on reset rather than hashing only vertices.",
+    "Preserved all inherited core JAR entries while adding Java8 Delaunay classes."
+  ],
+  "limitations": [
+    "Grain is intentionally pale; fine-cell palette changes are subtle. No dense-shading claim.",
+    "Only authored 640x640 density1 configurations and this Processing/JDK runtime were rendered.",
+    "No city/prism/window, halo, circle clipping or constrained triangulation claim.",
+    "No human usability session; ports and other milestones remain."
+  ]
+}

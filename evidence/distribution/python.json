@@ -1,0 +1,297 @@
+{
+  "status": "passed",
+  "scope": "installed-wheel smoke and real py5 staged-starter module load; no sketch run, native render, or registry publication",
+  "commands": {
+    "build": [
+      "/home/colin/.local/bin/uv",
+      "build",
+      "--wheel",
+      "--clear",
+      "--out-dir",
+      "/home/colin/dev/procedural/.work/dist/python/wheelhouse",
+      "/home/colin/dev/procedural/.work/dist/python/build/source"
+    ],
+    "consumer_install": [
+      "/home/colin/dev/procedural/.work/dist/python/build/consumer-venv/bin/python",
+      "-m",
+      "pip",
+      "install",
+      "--no-deps",
+      "/home/colin/dev/procedural/.work/dist/python/wheelhouse/procedurals_python-0.1.0-py3-none-any.whl"
+    ],
+    "py5_consumer_install": [
+      "<isolated py5 venv>",
+      "-m",
+      "pip",
+      "install",
+      "/home/colin/dev/procedural/.work/dist/python/wheelhouse/procedurals_python-0.1.0-py3-none-any.whl[py5]"
+    ]
+  },
+  "input_sha256": {
+    "packages/python/pyproject.toml": "1dc6fe17d11aac151a10c1601b6050230fe233bddfec74390c15ec3eb88a076b",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "fixtures/operations/gradient-noise-2d-01.json": "33f4bda581aba490ab1885ec44bb46578c798c47ee60fe0bac3fd761fae08ed3",
+    "fixtures/operations/regular-grid.json": "2913f45daccdd9e2094ad6988547e7625e409af122807bf1a274f9484da06175",
+    "packages/python/procedurals/__init__.py": "3d53798ebcd479266ec0d793ed0eb68d42abc0acf1f35f0b2febc7c74ec5a3f2",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/examples/field_marks/README.md": "75ac96012eaa6dcff2026eb46b55dea5099f2ce65c313de26561486e266649bb",
+    "packages/python/examples/field_marks/mark_field.py": "c29e67dd89d9109fbae3c949a8b4805b2fabe9f4406a13ea91c742ed460eb006",
+    "packages/python/examples/field_marks/sketch.py": "06ed997e03a14be6cb2dc106c770157f3437d28404a029b8fe2858a4970e5aed",
+    "tools/build_python_artifacts.py": "59f118cf4b8a01df5ffe21463fd293d789200cb3267e605218e4ad0ed41f6026"
+  },
+  "artifacts": {
+    "wheel": {
+      "path": ".work/dist/python/wheelhouse/procedurals_python-0.1.0-py3-none-any.whl",
+      "sha256": "67f8155453fe0316c580b49bd84845a419b9f747257c6a69f271c3ad14037cdd",
+      "entries": [
+        {
+          "path": "procedurals/__init__.py",
+          "sha256": "3d53798ebcd479266ec0d793ed0eb68d42abc0acf1f35f0b2febc7c74ec5a3f2"
+        },
+        {
+          "path": "procedurals/_drawing.py",
+          "sha256": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3"
+        },
+        {
+          "path": "procedurals/_drawing_state.py",
+          "sha256": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8"
+        },
+        {
+          "path": "procedurals/_py5_frame.py",
+          "sha256": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295"
+        },
+        {
+          "path": "procedurals/colors.py",
+          "sha256": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6"
+        },
+        {
+          "path": "procedurals/fields.py",
+          "sha256": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae"
+        },
+        {
+          "path": "procedurals/layout.py",
+          "sha256": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3"
+        },
+        {
+          "path": "procedurals_python-0.1.0.dist-info/METADATA",
+          "sha256": "4af40247e43ab13181d00ae4f5d7e92e1d4cc498839b30c9c9a7e3337521809e"
+        },
+        {
+          "path": "procedurals_python-0.1.0.dist-info/RECORD",
+          "sha256": "7697137b929b5c3c215f2889279aa37ecb4d999ee787187f79a0fffea97130fc"
+        },
+        {
+          "path": "procedurals_python-0.1.0.dist-info/WHEEL",
+          "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+        },
+        {
+          "path": "procedurals_python-0.1.0.dist-info/licenses/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "procedurals_python-0.1.0.dist-info/licenses/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "procedurals_python-0.1.0.dist-info/top_level.txt",
+          "sha256": "edcc1c114ddfc860af6c9b58052e7ad2cd35e36533efd2dafd308010ee165b72"
+        }
+      ]
+    },
+    "starter_zip": {
+      "path": ".work/dist/python/procedurals-field-marks-starter-0.1.0.zip",
+      "sha256": "41673651a5c646580b0c75736b6da84012eb9ad11588aa7e52229eef24ad051c",
+      "entries": [
+        {
+          "path": "field-marks/.gitignore",
+          "sha256": "7148560741a06603eb32cc7f04397e61ee8f363bf611d430e5f103e3719bf96a"
+        },
+        {
+          "path": "field-marks/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "field-marks/README.md",
+          "sha256": "dca6b5e18e34f3e86374f0a7e98059b5e1c15241af4d78ab0d4c3c094f68f1f4"
+        },
+        {
+          "path": "field-marks/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "field-marks/mark_field.py",
+          "sha256": "c29e67dd89d9109fbae3c949a8b4805b2fabe9f4406a13ea91c742ed460eb006"
+        },
+        {
+          "path": "field-marks/output/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "path": "field-marks/sketch.py",
+          "sha256": "526b56d76a85746e48203dbe0c5adb66237e97d86f2cd6a13effb6b07dd32f1d"
+        },
+        {
+          "path": "procedurals_python-0.1.0-py3-none-any.whl",
+          "sha256": "67f8155453fe0316c580b49bd84845a419b9f747257c6a69f271c3ad14037cdd"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "name": "procedurals-python",
+    "version": "0.1.0",
+    "optional_dependencies": {
+      "py5": [
+        "py5==0.10.11a0"
+      ]
+    }
+  },
+  "consumer_smoke": {
+    "python": "Python 3.13.15",
+    "known_values": {
+      "grid": {
+        "input": {
+          "origin": [
+            -2,
+            4
+          ],
+          "spacing": [
+            3,
+            0.5
+          ],
+          "columns": 3,
+          "rows": 2
+        },
+        "expected_size": 6,
+        "index": 4,
+        "expected_point": [
+          1,
+          4.5
+        ]
+      },
+      "noise": {
+        "seed": 0,
+        "query": [
+          0.25,
+          0.75
+        ],
+        "expected": 0.4459395408630371
+      },
+      "palette_rgb24": 8388736
+    },
+    "imported_path": "/home/colin/dev/procedural/.work/dist/python/build/consumer-venv/lib/python3.13/site-packages/procedurals/__init__.py",
+    "runtime_stdout": "{\"imported_path\": \"/home/colin/dev/procedural/.work/dist/python/build/consumer-venv/lib/python3.13/site-packages/procedurals/__init__.py\", \"site_packages\": [\"/home/colin/dev/procedural/.work/dist/python/build/consumer-venv/lib/python3.13/site-packages\"], \"public\": [\"CyclicPaletteError\", \"GradientNoiseError\", \"GridError\", \"cyclic_palette\", \"gradient_noise_2d_01\", \"regular_grid\"], \"noise\": 0.4459395408630371}\n"
+  },
+  "starter": {
+    "source_sketch_sha256": "06ed997e03a14be6cb2dc106c770157f3437d28404a029b8fe2858a4970e5aed",
+    "staged_sketch_sha256": "526b56d76a85746e48203dbe0c5adb66237e97d86f2cd6a13effb6b07dd32f1d",
+    "field_marks_ast_unchanged": true,
+    "mark_field_source_sha256": "c29e67dd89d9109fbae3c949a8b4805b2fabe9f4406a13ea91c742ed460eb006",
+    "mark_field_staged_sha256": "c29e67dd89d9109fbae3c949a8b4805b2fabe9f4406a13ea91c742ed460eb006",
+    "transformations": [
+      {
+        "kind": "remove_checkout_sys_path_block",
+        "removed": "# Run this development example directly from a repository checkout.\nsys.path.insert(0,str(Path(__file__).resolve().parents[2]))"
+      },
+      {
+        "kind": "replace_output_assignment",
+        "from": "OUTPUT=Path(__file__).resolve().parents[4]/'.work/examples/py5-field-marks'",
+        "to": "OUTPUT=Path(__file__).resolve().parent/'output'"
+      }
+    ],
+    "output_directory": "field-marks/output/ (local and ignored except its placeholder .gitignore)",
+    "bundled_wheel_sha256": "67f8155453fe0316c580b49bd84845a419b9f747257c6a69f271c3ad14037cdd",
+    "bundled_starter_verified": true,
+    "py5_module_load": {
+      "status": "passed",
+      "python": "/home/colin/dev/procedural/.work/dist/python/build/py5-consumer-venv/bin/python",
+      "display": "Xvfb retry after direct import failure",
+      "java_home": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1",
+      "java_version": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+      "dependencies": [
+        {
+          "name": "autopep8",
+          "version": "2.3.2"
+        },
+        {
+          "name": "certifi",
+          "version": "2026.7.22"
+        },
+        {
+          "name": "charset-normalizer",
+          "version": "3.5.1"
+        },
+        {
+          "name": "idna",
+          "version": "3.19"
+        },
+        {
+          "name": "jpype1",
+          "version": "1.7.1"
+        },
+        {
+          "name": "line_profiler",
+          "version": "5.0.2"
+        },
+        {
+          "name": "numpy",
+          "version": "2.5.3"
+        },
+        {
+          "name": "packaging",
+          "version": "26.3"
+        },
+        {
+          "name": "pillow",
+          "version": "12.3.0"
+        },
+        {
+          "name": "pip",
+          "version": "26.2.1"
+        },
+        {
+          "name": "procedurals-python",
+          "version": "0.1.0"
+        },
+        {
+          "name": "py5",
+          "version": "0.10.11a0"
+        },
+        {
+          "name": "pycodestyle",
+          "version": "2.14.0"
+        },
+        {
+          "name": "requests",
+          "version": "2.34.2"
+        },
+        {
+          "name": "stackprinter",
+          "version": "0.2.13"
+        },
+        {
+          "name": "typing_extensions",
+          "version": "4.16.0"
+        },
+        {
+          "name": "urllib3",
+          "version": "2.7.0"
+        }
+      ],
+      "module_load": {
+        "py5_version": "0.10.11a0",
+        "py5_path": "/home/colin/dev/procedural/.work/dist/python/build/py5-consumer-venv/lib/python3.13/site-packages/py5/__init__.py",
+        "procedurals_path": "/home/colin/dev/procedural/.work/dist/python/build/py5-consumer-venv/lib/python3.13/site-packages/procedurals/__init__.py",
+        "drawing_path": "/home/colin/dev/procedural/.work/dist/python/build/py5-consumer-venv/lib/python3.13/site-packages/procedurals/_py5_frame.py",
+        "starter_path": "/home/colin/dev/procedural/.work/dist/python/build/installed-starter/field-marks/sketch.py",
+        "output": "/home/colin/dev/procedural/.work/dist/python/build/installed-starter/field-marks/output"
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "status": "accepted-private-investigation",
+  "owner": "root",
+  "reviewer": "root",
+  "result_sha256": "0defdedde35ddc7d283d8314b7a3cca682b7c1dfd7caee001529726aea1fabe9",
+  "decision": "evidence/parameter-experiments/cp4-regions/decision.md",
+  "decision_sha256": "8e4982d06e116bef8ed849eafa901dd69d2b68037d923424bca1513545712290",
+  "images_inspected": {
+    "100half": {
+      "path": ".work/experiments/cp4-regions/100half.png",
+      "sha256": "a06c26ec97419e88b76d593af0640aa1d87ba18bca26c90cac67269dffbf7a3d"
+    },
+    "200half": {
+      "path": ".work/experiments/cp4-regions/200half.png",
+      "sha256": "46aa26f6e66e176f995dee35d1166b0a0b447962716237a07c3240720c542bb8"
+    },
+    "100full": {
+      "path": ".work/experiments/cp4-regions/100full.png",
+      "sha256": "41b630fe7365eb83f387ca9c8961696963b60a63533b3b56e320c356f24305e3"
+    },
+    "same100half-contentgrid": {
+      "path": ".work/experiments/cp4-regions/same100half-contentgrid.png",
+      "sha256": "d7ab9bcf6520eb5fab68cca4650e6d2e7ad6b9dd28edfc1f965874f84bc1698f"
+    },
+    "explicit-grid-refinement-transfer": {
+      "path": ".work/experiments/cp4-regions/explicit-grid-refinement-transfer.png",
+      "sha256": "c0d363cbc4fa0de9ec5217a1461ee4e9eca7297a71477281c3b2bf14e39ab80c"
+    }
+  },
+  "source_closure": "All execution input and image hashes verified unchanged after root inspection.",
+  "outcome": "One seeded equal-quadrant generator admitted for contract preparation; explicit grid refinement stays private.",
+  "limitations": "Private stream and technique-only example, no public implementation or full-corpus reproduction claim."
+}

@@ -1,0 +1,129 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "path.occupied-lattice-paths-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/occupied-lattice-paths-2d.json",
+    "catalog_sha256": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/occupied-lattice-java.json": "be01cb95f406286f2d2341d2d311170e707612ad0592405bd1cb76cf8bbab316",
+          "fixtures/operations/occupied-lattice-paths-2d.json": "220d57e7d42413063a777066fe6d3addff4ad9c1d987bc34ba0ac36d0ad25d98"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/occupied-lattice-java.json",
+            "pointer": "/native/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/occupied-lattice-catalog-review.json",
+          "sha256": "98f7542d52dbcea101fb9c674159557da5a4877a53a08ff328cc47d3975271b2"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact shared lattice paths, RNG state, ownership and retained access."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+          "packages/java/examples/LatticeMarks/LatticeComposition.java": "a4044221220888e89dba9508747867f48e4cf028fb5ddd20f2f0c492567ee641",
+          "packages/java-processing/examples/LatticeMarks/LatticeMarks.pde": "3b8cb0d7a3345f931fdd8558b083f8b02ee13971a952a66546a009ed3d1dd634"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp11-java2d/result.json": "375d6e7d5e019f0c6a8d5b59075d154927ad5e581dfa803b3507aed4e65652d4",
+          "evidence/reproductions/cp11-java2d/root-review.json": "e7d610575cb3ed46d9f6d03a6d43389c3eb21addc5176371ff9278b2e2df5708"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp11-java2d/result.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/occupied-lattice-catalog-review.json",
+          "sha256": "98f7542d52dbcea101fb9c674159557da5a4877a53a08ff328cc47d3975271b2"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Scoped LatticeMarks Processing JAVA2D event, drawing and technique acceptance. No full source-pixel reproduction, other-platform, natural frame-rate performance or registry claim."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
+          "packages/java/examples/LatticeMarks/LatticeComposition.java": "a4044221220888e89dba9508747867f48e4cf028fb5ddd20f2f0c492567ee641",
+          "packages/java-processing/examples/LatticeMarks/LatticeMarks.pde": "3b8cb0d7a3345f931fdd8558b083f8b02ee13971a952a66546a009ed3d1dd634"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp11-java2d/result.json": "375d6e7d5e019f0c6a8d5b59075d154927ad5e581dfa803b3507aed4e65652d4",
+          "evidence/reproductions/cp11-java2d/root-review.json": "e7d610575cb3ed46d9f6d03a6d43389c3eb21addc5176371ff9278b2e2df5708"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp11-java2d/result.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/occupied-lattice-catalog-review.json",
+          "sha256": "98f7542d52dbcea101fb9c674159557da5a4877a53a08ff328cc47d3975271b2"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Scoped LatticeMarks Processing JAVA2D event, drawing and technique acceptance. No full source-pixel reproduction, other-platform, natural frame-rate performance or registry claim."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

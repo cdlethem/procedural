@@ -1,0 +1,1797 @@
+{
+  "target": "javascript",
+  "scope": "Pure command/environment validator only; no frame lifecycle or native backend certification.",
+  "input_sha256": {
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "tests/native/drawing-javascript.mjs": "daf9ef6523be9b4ebf544b7e457fab819e6cf707a8ee2e976c2c43cc42903cdd",
+    "catalog/drawing/fresh-raster-2d.json": "8fd5d39bb1196d689aa8ca7a88e9f22bb75987c23bc8716e0fe00493b0432346",
+    "fixtures/drawing/fresh-raster-normalized.json": "0b1d8769e5e0006c54a78d45342d054367be1c36d4ae8323f8c1a90d93d705ab",
+    "fixtures/drawing/geometry-investigation.json": "419629bce6bb078d8cc83f5004e5b7d4c70749625ccfcc74e89c646c7058a803",
+    "fixtures/drawing/fresh-raster-schema.json": "e241b0a07396f92f83bf4ca4e3d6c9a84fbe9aa9cd6625a7057ab5b5de773d0e",
+    "tools/run_drawing_conformance.py": "485be288525b0edbc408973a3d461e10b066f1c11645089d31f867f919826165"
+  },
+  "runtime": "v22.22.1",
+  "result": {
+    "profile": "drawing.fresh-raster-2d",
+    "version": "0.1.0",
+    "failures": 0,
+    "counts": {
+      "normalizedCases": 31,
+      "geometryCases": 15,
+      "conversionCases": 6,
+      "schemaCases": 11,
+      "nativeChecks": 5,
+      "resultChecks": 52
+    },
+    "results": [
+      {
+        "id": "inclusive-upper-x",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1280,
+              1
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "44a00000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1280,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "44a00000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "canonical-outside-rounds-in",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1280,
+              1
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "44a00000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1280,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "44a00000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "one-f32-ulp-outside",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "inclusive-lower-x",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              -640,
+              1
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "c4200000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              -640,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "c4200000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "one-f32-ulp-below-lower-x",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "minimum-width",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 0.00390625,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "3b800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 0.00390625,
+          "width_bits_hex": "3b800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "one-f32-ulp-below-minimum-width",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "maximum-width",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 640,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "44200000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 640,
+          "width_bits_hex": "44200000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "one-f32-ulp-above-maximum-width",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "canonical-equal-endpoints",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "converted-equal-endpoints",
+        "actual": {
+          "outcome": "noop",
+          "kind": "segment2",
+          "points": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "3f800000",
+              "3f800000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "noop",
+          "kind": "segment2",
+          "points": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "3f800000",
+              "3f800000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "invalid-width-before-noop",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "transparent-invalid-width",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "quad-distinct-converted-collinear",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "quad-both-windings",
+        "actual": {
+          "outcome": "emit",
+          "kind": "quad2",
+          "points": [
+            [
+              0,
+              2
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "point_bits_hex": [
+            [
+              "00000000",
+              "40000000"
+            ],
+            [
+              "40800000",
+              "40000000"
+            ],
+            [
+              "40800000",
+              "00000000"
+            ],
+            [
+              "00000000",
+              "00000000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "quad2",
+          "points": [
+            [
+              0,
+              2
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "40000000"
+            ],
+            [
+              "40800000",
+              "40000000"
+            ],
+            [
+              "40800000",
+              "00000000"
+            ],
+            [
+              "00000000",
+              "00000000"
+            ]
+          ],
+          "rgb": 0,
+          "channels": [
+            0,
+            0,
+            0
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697"
+        },
+        "passed": true
+      },
+      {
+        "id": "alpha-0",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 0,
+          "alpha64": 0,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "0000000000000000",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 0,
+          "alpha64": 0,
+          "alpha64_bits_hex": "0000000000000000",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "alpha-1",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 1,
+          "alpha64": 0.00392156862745098,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3f70101010101010",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 1,
+          "alpha64": 0.00392156862745098,
+          "alpha64_bits_hex": "3f70101010101010",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "alpha-128",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 128,
+          "alpha64": 0.5019607843137255,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe0101010101010",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 128,
+          "alpha64": 0.5019607843137255,
+          "alpha64_bits_hex": "3fe0101010101010",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "alpha-255",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 255,
+          "alpha64": 1,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3ff0000000000000",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 255,
+          "alpha64": 1,
+          "alpha64_bits_hex": "3ff0000000000000",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "wide-upper-x",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1600,
+              1
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "44c80000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1600,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "44c80000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "wide-upper-y",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1120
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "448c0000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1120
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "448c0000"
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "wide-wrong-y-bound",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "wide-overscan-y",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              -800,
+              -800
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "c4480000",
+              "c4480000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              -800,
+              -800
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "c4480000",
+              "c4480000"
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "signed-zero-normalized",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "tall-upper-y",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1600
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "44c80000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1600
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "44c80000"
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "tall-upper-x",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1120,
+              1
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 1,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "448c0000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "3f800000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1120,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "448c0000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 1,
+          "width_bits_hex": "3f800000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "tall-wrong-x-bound",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "tall-maximum-width",
+        "actual": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "width": 800,
+          "cap": "round",
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width_bits_hex": "44480000"
+        },
+        "expected": {
+          "outcome": "emit",
+          "kind": "segment2",
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "point_bits_hex": [
+            [
+              "00000000",
+              "00000000"
+            ],
+            [
+              "3f800000",
+              "3f800000"
+            ]
+          ],
+          "rgb": 1193046,
+          "channels": [
+            18,
+            52,
+            86
+          ],
+          "opacity8": 180,
+          "alpha64": 0.7058823529411765,
+          "alpha64_bits_hex": "3fe6969696969697",
+          "width": 800,
+          "width_bits_hex": "44480000",
+          "cap": "round"
+        },
+        "passed": true
+      },
+      {
+        "id": "tall-width-exceeded",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "coordinate-f32-overflow",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "width-f32-overflow",
+        "actual": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "expected": {
+          "outcome": "INVALID_COMMAND"
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-rectangle",
+        "actual": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": true
+        },
+        "expected": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": true
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-reverse_winding",
+        "actual": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": true
+        },
+        "expected": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": true
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-negative_off_canvas",
+        "actual": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": true
+        },
+        "expected": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": true
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-bow_tie",
+        "actual": {
+          "canonical_strictly_convex": false,
+          "binary32_strictly_convex": false
+        },
+        "expected": {
+          "canonical_strictly_convex": false,
+          "binary32_strictly_convex": false
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-concave",
+        "actual": {
+          "canonical_strictly_convex": false,
+          "binary32_strictly_convex": false
+        },
+        "expected": {
+          "canonical_strictly_convex": false,
+          "binary32_strictly_convex": false
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-collinear_triple",
+        "actual": {
+          "canonical_strictly_convex": false,
+          "binary32_strictly_convex": false
+        },
+        "expected": {
+          "canonical_strictly_convex": false,
+          "binary32_strictly_convex": false
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-duplicate_vertex",
+        "actual": {
+          "canonical_strictly_convex": false,
+          "binary32_strictly_convex": false
+        },
+        "expected": {
+          "canonical_strictly_convex": false,
+          "binary32_strictly_convex": false
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-signed_zero_duplicate",
+        "actual": {
+          "canonical_strictly_convex": false,
+          "binary32_strictly_convex": false
+        },
+        "expected": {
+          "canonical_strictly_convex": false,
+          "binary32_strictly_convex": false
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-float32_collapsed_edge",
+        "actual": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": false
+        },
+        "expected": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": false
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-float32_thin_survives",
+        "actual": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": true
+        },
+        "expected": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": true
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-float32_collinear_distinct",
+        "actual": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": false
+        },
+        "expected": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": false
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-binary64_cancellation",
+        "actual": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": false
+        },
+        "expected": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": false
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-subnormal_rectangle",
+        "actual": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": true
+        },
+        "expected": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": true
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-float32_underflow_quad",
+        "actual": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": false
+        },
+        "expected": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": false
+        },
+        "passed": true
+      },
+      {
+        "id": "geometry-binary64_subnormal_rectangle",
+        "actual": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": false
+        },
+        "expected": {
+          "canonical_strictly_convex": true,
+          "binary32_strictly_convex": false
+        },
+        "passed": true
+      },
+      {
+        "id": "conversion-tie_even_down",
+        "actual": "3f800000",
+        "expected": "3f800000",
+        "passed": true
+      },
+      {
+        "id": "conversion-tie_even_up",
+        "actual": "3f800002",
+        "expected": "3f800002",
+        "passed": true
+      },
+      {
+        "id": "conversion-negative_tie",
+        "actual": "bf800000",
+        "expected": "bf800000",
+        "passed": true
+      },
+      {
+        "id": "conversion-zero",
+        "actual": "00000000",
+        "expected": "00000000",
+        "passed": true
+      },
+      {
+        "id": "conversion-smallest_subnormal",
+        "actual": "00000001",
+        "expected": "00000001",
+        "passed": true
+      },
+      {
+        "id": "conversion-underflow_tie",
+        "actual": "00000000",
+        "expected": "00000000",
+        "passed": true
+      }
+    ],
+    "nativeChecks": [
+      {
+        "id": "environment-detached-and-positive-zero",
+        "actual": true,
+        "passed": true
+      },
+      {
+        "id": "environment-schema-errors",
+        "actual": true,
+        "passed": true
+      },
+      {
+        "id": "command-own-data-and-errors",
+        "actual": true,
+        "passed": true
+      },
+      {
+        "id": "command-result-is-detached",
+        "actual": true,
+        "passed": true
+      },
+      {
+        "id": "schema-invalid-native-inputs",
+        "actual": true,
+        "passed": true
+      }
+    ]
+  },
+  "stderr": ""
+}

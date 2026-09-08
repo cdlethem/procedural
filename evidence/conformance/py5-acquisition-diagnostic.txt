@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/home/colin/dev/procedural/packages/python/procedurals/_py5_frame.py", line 100, in begin
+    raw.image.getWidth(None)!=env['width'] or raw.image.getHeight(None)!=env['height']):
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: '_jpype._JMethod' object has no attribute 'getWidth'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/colin/dev/procedural/.work/diagnostics/py5_acquisition.py", line 11, in setup
+    f.begin({'width':1,'height':1,'density':1,'background':0})
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/colin/dev/procedural/packages/python/procedurals/_py5_frame.py", line 102, in begin
+    except Exception as error:self._fail_begin(plan,'RESOURCE_FAILURE',error)
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/colin/dev/procedural/packages/python/procedurals/_py5_frame.py", line 65, in _fail_begin
+    except FrameError as error:raise error from cause
+                               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/colin/dev/procedural/packages/python/procedurals/_py5_frame.py", line 64, in _fail_begin
+    try:self._state.fail_begin(plan,code)
+        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/colin/dev/procedural/packages/python/procedurals/_drawing_state.py", line 84, in fail_begin
+    self._error(code)
+    ~~~~~~~~~~~^^^^^^
+  File "/home/colin/dev/procedural/packages/python/procedurals/_drawing_state.py", line 51, in _error
+    raise FrameError(code,index)
+procedurals._drawing_state.FrameError: RESOURCE_FAILURE
+py5 cleanup failures: AttributeError, AttributeError

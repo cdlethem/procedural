@@ -1,0 +1,152 @@
+{
+  "exit_code": 0,
+  "input_sha256": {
+    ".work/environments/py5/lib/python3.13/site-packages/py5/__init__.py": "763066a534ae41d8a01605ceedcea2cd1c37139a25f4f2a9138e63b8a31410d7",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/base.py": "018c896ebee9ab611ef7346cbeca8e354918cf5caa49a1465332a7b7cccd57da",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/graphics.py": "2761b2987666c7d1d70088c70aca9492dd4963abf644d8fa78ee0de9dc4c30f8",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/core.jar": "2cd02df8ace61c45af5eddef74dc74608b87a50155e83f20c7b1e28642ddbc85",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/py5.jar": "4447b8098080f83cb4ffa5bf3b2d6c15a4a1bea3265198da75f5ac936f504903",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/mixins/pixels.py": "e6b2d4c46c5370e61fef0436b901c860929338afc20e8a9ec8f941a8fb8d07b9",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/sketch.py": "39557b47939444710c6cd2480e8dfadc03eddc28c87106c3fb262d2d087a8639",
+    ".work/environments/py5/pyvenv.cfg": "0d82e4a60a8e28291ca02c9de875011bed0b0f84b1f868dd6c20679fd9a9c27e",
+    "catalog/operations/gradient-path.json": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+    "design/capabilities/cp2-public-example.md": "dce83fd3b29b269ba49aa94ba6024f559128f4498a97e422d8a9787b7217e662",
+    "evidence/reproductions/cp2-java2d/pde-plan.json": "41c2262d628183d441c0ae3e3fdc5ab2d657b0ad6fb88ac5257f174c5bc24458",
+    "evidence/reproductions/cp2-py5/plan.json": "904419b2f91e51796db8b35a9b27e5c69570023d9f59171029d9236b9f7d3070",
+    "fixtures/operations/gradient-path.json": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+    "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+    "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+    "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab",
+    "tests/native/py5_path_marks.py": "2f51864a717bc8d571c8b7b39ef858b0eb28c42dc7d0d9fc492ddc9db3d12fc8",
+    "tools/run_py5_path_marks.py": "f651858fd1a3885859bc38d251cc98eb381bec142dede34169e426dd9acf13c4"
+  },
+  "native": {
+    "java": "17.0.20.1",
+    "native": {
+      "compositions": 7,
+      "count_prefix": true,
+      "distance_feedback": true,
+      "images": {
+        "long-marks.png": {
+          "nonbackground_pixels": 88960,
+          "png_sha256": "da5d7329a3e2d5039267700c5af4ed11bd17de20f2709c9fd2663a0c94af5f05",
+          "rgba_sha256": "66e9c721f544422feefb3866094ed67d8999b95cbf35b6dd36a488266a3d5e85"
+        },
+        "marks.png": {
+          "nonbackground_pixels": 49032,
+          "png_sha256": "19385384ba0af0c198b3a7dbe052aec99b9ccabb395249c4809ce04af7b77112",
+          "rgba_sha256": "201958d9fe12a0955eec2090d650b2b165626c0145a5bd63e515f779915c44b0"
+        },
+        "trace.png": {
+          "nonbackground_pixels": 6792,
+          "png_sha256": "dd4db4f271ea0b3520644878640d8e0bbef6079fbf52fb212b2a9467cadaf658",
+          "rgba_sha256": "e288e5fe0fabbe0041fdbd7f789947559060f149e6c8fc32065d6a8bbf1ca279"
+        }
+      },
+      "marks_replay_pixels": true,
+      "movement_rebuilt": true,
+      "passed": true,
+      "retained_style_edits": true,
+      "save": {
+        "path": "path-marks.png",
+        "pixels_equal_displayed": true,
+        "png_sha256": "502038f7ec27510daad30576a599e87af32207828eeab87a5921058525435a41",
+        "quiet_ms": 300.9225869900547,
+        "rgba_sha256": "5dfc1ea6d4fac3ac0df8f7d9777e38938cdd0f63dd1bb3f842bef69293be3fd7"
+      },
+      "scope": "Actual py5 PathMarks starter setup/key_pressed callback route; not physical keyboard or cross-host raster identity",
+      "states": [
+        {
+          "id": "marks",
+          "nonbackground_pixels": 49032,
+          "omitted_commands": 4998,
+          "ordinal": 1,
+          "raw_commands": 12000,
+          "rgba_sha256": "201958d9fe12a0955eec2090d650b2b165626c0145a5bd63e515f779915c44b0",
+          "submitted_commands": 7002
+        },
+        {
+          "id": "trace",
+          "nonbackground_pixels": 6792,
+          "omitted_commands": 20216,
+          "ordinal": 2,
+          "raw_commands": 48000,
+          "rgba_sha256": "e288e5fe0fabbe0041fdbd7f789947559060f149e6c8fc32065d6a8bbf1ca279",
+          "same_model_as_previous": true,
+          "same_paths_as_previous": true,
+          "submitted_commands": 27784
+        },
+        {
+          "id": "marks-replay",
+          "nonbackground_pixels": 49032,
+          "omitted_commands": 4998,
+          "ordinal": 3,
+          "raw_commands": 12000,
+          "rgba_sha256": "201958d9fe12a0955eec2090d650b2b165626c0145a5bd63e515f779915c44b0",
+          "same_model_as_previous": true,
+          "same_paths_as_previous": true,
+          "submitted_commands": 7002
+        },
+        {
+          "id": "long-marks",
+          "nonbackground_pixels": 88960,
+          "omitted_commands": 4943,
+          "ordinal": 4,
+          "raw_commands": 12000,
+          "rgba_sha256": "66e9c721f544422feefb3866094ed67d8999b95cbf35b6dd36a488266a3d5e85",
+          "same_model_as_previous": true,
+          "same_paths_as_previous": true,
+          "submitted_commands": 7057
+        },
+        {
+          "id": "palette",
+          "nonbackground_pixels": 88951,
+          "omitted_commands": 4943,
+          "ordinal": 5,
+          "raw_commands": 12000,
+          "rgba_sha256": "0f82ce2188895cc7c5c3fdb296f67882e44f169fde0dd4447e432a77491883d6",
+          "same_model_as_previous": true,
+          "same_paths_as_previous": true,
+          "submitted_commands": 7057
+        },
+        {
+          "id": "count",
+          "nonbackground_pixels": 88951,
+          "omitted_commands": 4958,
+          "ordinal": 6,
+          "raw_commands": 12024,
+          "rgba_sha256": "2e21790cc08cceeabf8a6f3e412fd29954ddcbaff27048dc7cd5142a0f9b96a5",
+          "same_model_as_previous": false,
+          "same_paths_as_previous": false,
+          "submitted_commands": 7066
+        },
+        {
+          "id": "distance",
+          "nonbackground_pixels": 80208,
+          "omitted_commands": 6524,
+          "ordinal": 7,
+          "raw_commands": 12024,
+          "rgba_sha256": "5dfc1ea6d4fac3ac0df8f7d9777e38938cdd0f63dd1bb3f842bef69293be3fd7",
+          "same_model_as_previous": false,
+          "same_paths_as_previous": false,
+          "submitted_commands": 5500
+        }
+      ]
+    },
+    "part": "cp2-path-marks",
+    "passed": true,
+    "py5": "0.10.11a0"
+  },
+  "scope": "Actual py5 0.10.11a0 JAVA2D execution of the editable PathMarks starter through its setup and key_pressed callbacks. Raw retained movement/commands are unchanged; the fixed-canvas starter submits only segments whose complete bbox intersects [-1,641]\u00b2. This is target-specific edit, retained-movement, command, cached-save, and visual-mechanism validation; it is not upstream pixel reproduction, physical-keyboard testing, clipping, or cross-host pixel identity.",
+  "status": "passed",
+  "stderr": "Picked up JAVA_TOOL_OPTIONS: -Dsun.java2d.uiScale=2 -Duser.home=/home/colin/dev/procedural/.work/reproductions/cp2-py5/jvm-home\n",
+  "stdout": "/home/colin/dev/procedural/.work/reproductions/cp2-py5/path-marks.png\nPROCEDURALS_RESULT={\"java\": \"17.0.20.1\", \"native\": {\"compositions\": 7, \"count_prefix\": true, \"distance_feedback\": true, \"images\": {\"long-marks.png\": {\"nonbackground_pixels\": 88960, \"png_sha256\": \"da5d7329a3e2d5039267700c5af4ed11bd17de20f2709c9fd2663a0c94af5f05\", \"rgba_sha256\": \"66e9c721f544422feefb3866094ed67d8999b95cbf35b6dd36a488266a3d5e85\"}, \"marks.png\": {\"nonbackground_pixels\": 49032, \"png_sha256\": \"19385384ba0af0c198b3a7dbe052aec99b9ccabb395249c4809ce04af7b77112\", \"rgba_sha256\": \"201958d9fe12a0955eec2090d650b2b165626c0145a5bd63e515f779915c44b0\"}, \"trace.png\": {\"nonbackground_pixels\": 6792, \"png_sha256\": \"dd4db4f271ea0b3520644878640d8e0bbef6079fbf52fb212b2a9467cadaf658\", \"rgba_sha256\": \"e288e5fe0fabbe0041fdbd7f789947559060f149e6c8fc32065d6a8bbf1ca279\"}}, \"marks_replay_pixels\": true, \"movement_rebuilt\": true, \"passed\": true, \"retained_style_edits\": true, \"save\": {\"path\": \"path-marks.png\", \"pixels_equal_displayed\": true, \"png_sha256\": \"502038f7ec27510daad30576a599e87af32207828eeab87a5921058525435a41\", \"quiet_ms\": 300.9225869900547, \"rgba_sha256\": \"5dfc1ea6d4fac3ac0df8f7d9777e38938cdd0f63dd1bb3f842bef69293be3fd7\"}, \"scope\": \"Actual py5 PathMarks starter setup/key_pressed callback route; not physical keyboard or cross-host raster identity\", \"states\": [{\"id\": \"marks\", \"nonbackground_pixels\": 49032, \"omitted_commands\": 4998, \"ordinal\": 1, \"raw_commands\": 12000, \"rgba_sha256\": \"201958d9fe12a0955eec2090d650b2b165626c0145a5bd63e515f779915c44b0\", \"submitted_commands\": 7002}, {\"id\": \"trace\", \"nonbackground_pixels\": 6792, \"omitted_commands\": 20216, \"ordinal\": 2, \"raw_commands\": 48000, \"rgba_sha256\": \"e288e5fe0fabbe0041fdbd7f789947559060f149e6c8fc32065d6a8bbf1ca279\", \"same_model_as_previous\": true, \"same_paths_as_previous\": true, \"submitted_commands\": 27784}, {\"id\": \"marks-replay\", \"nonbackground_pixels\": 49032, \"omitted_commands\": 4998, \"ordinal\": 3, \"raw_commands\": 12000, \"rgba_sha256\": \"201958d9fe12a0955eec2090d650b2b165626c0145a5bd63e515f779915c44b0\", \"same_model_as_previous\": true, \"same_paths_as_previous\": true, \"submitted_commands\": 7002}, {\"id\": \"long-marks\", \"nonbackground_pixels\": 88960, \"omitted_commands\": 4943, \"ordinal\": 4, \"raw_commands\": 12000, \"rgba_sha256\": \"66e9c721f544422feefb3866094ed67d8999b95cbf35b6dd36a488266a3d5e85\", \"same_model_as_previous\": true, \"same_paths_as_previous\": true, \"submitted_commands\": 7057}, {\"id\": \"palette\", \"nonbackground_pixels\": 88951, \"omitted_commands\": 4943, \"ordinal\": 5, \"raw_commands\": 12000, \"rgba_sha256\": \"0f82ce2188895cc7c5c3fdb296f67882e44f169fde0dd4447e432a77491883d6\", \"same_model_as_previous\": true, \"same_paths_as_previous\": true, \"submitted_commands\": 7057}, {\"id\": \"count\", \"nonbackground_pixels\": 88951, \"omitted_commands\": 4958, \"ordinal\": 6, \"raw_commands\": 12024, \"rgba_sha256\": \"2e21790cc08cceeabf8a6f3e412fd29954ddcbaff27048dc7cd5142a0f9b96a5\", \"same_model_as_previous\": false, \"same_paths_as_previous\": false, \"submitted_commands\": 7066}, {\"id\": \"distance\", \"nonbackground_pixels\": 80208, \"omitted_commands\": 6524, \"ordinal\": 7, \"raw_commands\": 12024, \"rgba_sha256\": \"5dfc1ea6d4fac3ac0df8f7d9777e38938cdd0f63dd1bb3f842bef69293be3fd7\", \"same_model_as_previous\": false, \"same_paths_as_previous\": false, \"submitted_commands\": 5500}]}, \"part\": \"cp2-path-marks\", \"passed\": true, \"py5\": \"0.10.11a0\"}\n",
+  "visual_review": "pending"
+}

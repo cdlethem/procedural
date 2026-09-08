@@ -1,0 +1,231 @@
+{
+  "status": "passed",
+  "scope": "Private CP4 technique/edit investigation; no operation conformance or source-pixel reproduction.",
+  "input_sha256_before": {
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "design/capabilities/cp4-region-walkthrough.md": "fc90dea1566a515e2a4b9d2e1249c2cfdf4fcc49711d1c0c7fbb2427897d208a",
+    "evidence/parameter-experiments/cp4-regions/experiment.json": "65c57019ac74516b37cfc3227e7096e21562a3b6f74aa95fb412861cdf4688cc",
+    "skills/parameter-evidence/SKILL.md": "f3bea28b63fe351f8b8814ef276c51af317d2e275355e50fa713fac0615f4090",
+    "tools/diagnostics/cp4/RegionChoice.java": "635c70e9a8a459bee94afb5ddd163d42f2acaca595d08b2e342cc5a9c9408e86",
+    "tools/diagnostics/cp4/run_regions.py": "ec867b14719213ad17489cd7a8eded30a4cfc575ca0b5fc6a73b985b9e7a0335"
+  },
+  "class_sha256": {
+    ".work/build/cp4-regions-executor/RegionChoice$Digest.class": "d3911f90fc4424914e09b4ff7ba9242b72857bb0c87b2306bed667b673c70099",
+    ".work/build/cp4-regions-executor/RegionChoice$Leaf.class": "1209f35b1c468c62bb9ee0e950813d4c229f258b2fdc209f1b90ab97e8d8d917",
+    ".work/build/cp4-regions-executor/RegionChoice$Leaves.class": "111d4610641b4b0bd85c5e9aeb92cf0d8172591525241b4569087c83bde50ae3",
+    ".work/build/cp4-regions-executor/RegionChoice$Profile.class": "9ad1b203be37843c4b9a32ee6aa671eca6f9a76326bd59695bb62619b44cf412",
+    ".work/build/cp4-regions-executor/RegionChoice.class": "5a865fe74902c3f65f4dc797b5f91cf33e006debb156e759a4d85d2e2ad0292f"
+  },
+  "numeric": {
+    "status": "passed",
+    "experiment": "cp4-regions",
+    "private_only": true,
+    "chooser": {
+      "class": "java.util.Random",
+      "seed": 42,
+      "stream_status": "investigation compatibility stream; not an eventual portable default",
+      "draws_per_replacement": 1,
+      "selection_draw": "nextFloat",
+      "half_selection": "nextFloat() * (liveLeafCount * 0.5f), then Java int cast",
+      "palette_prelude": "none; private stream divergence from source prelude",
+      "replacement_order": "append TL,TR,BR,BL then remove parent"
+    },
+    "checks": {
+      "positive_finite_bounds": true,
+      "area_conservation": true,
+      "non_overlapping_interiors": true,
+      "deterministic_leaf_order": true,
+      "content_variant_geometry_identity": true,
+      "explicit_grid_transfer": true
+    },
+    "profiles": {
+      "100half": {
+        "selection": "first-half-live-list",
+        "content": "panel-mark",
+        "replacements": 100,
+        "leaf_count": 301,
+        "geometry_sha256": "9b8cf398b6b13f5a079fb1fbb39d791ab31c1bc55d1e51ec451b8f6856de6885"
+      },
+      "200half": {
+        "selection": "first-half-live-list",
+        "content": "panel-mark",
+        "replacements": 200,
+        "leaf_count": 601,
+        "geometry_sha256": "f37b99ff3fdf9368d58e753ba132eb88df9d7d764cebeab67d9ae93b3a659d09"
+      },
+      "100full": {
+        "selection": "full-live-list",
+        "content": "panel-mark",
+        "replacements": 100,
+        "leaf_count": 301,
+        "geometry_sha256": "5c85a81e92ce2a9ccf266aab57c24b70aaefdb4be002cc7a18f347e48ba48a12"
+      },
+      "same100half-contentgrid": {
+        "selection": "first-half-live-list",
+        "content": "content-grid",
+        "replacements": 100,
+        "leaf_count": 301,
+        "geometry_sha256": "9b8cf398b6b13f5a079fb1fbb39d791ab31c1bc55d1e51ec451b8f6856de6885"
+      },
+      "explicit-grid-refinement-transfer": {
+        "selection": "explicit-stable-id-plan",
+        "content": "content-grid",
+        "replacements": 2,
+        "leaf_count": 11,
+        "geometry_sha256": "18c95c0034f66dcdb90007fb8a74adeb5920dc026e014fea076a7194060f3cef"
+      }
+    },
+    "rendering": "dormant; root single-executor approval required"
+  },
+  "compilation": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "timed_out": false
+  },
+  "cases": [
+    {
+      "id": "100half",
+      "exit_code": 0,
+      "stdout": "{\"status\":\"rendered\",\"case\":\"100half\",\"output\":\"/home/colin/dev/procedural/.work/experiments/cp4-regions/100half.png\",\"geometry_sha256\":\"9b8cf398b6b13f5a079fb1fbb39d791ab31c1bc55d1e51ec451b8f6856de6885\",\"canvas\":[640,640],\"renderer\":\"JAVA2D\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "status": "passed",
+      "native": {
+        "status": "rendered",
+        "case": "100half",
+        "output": "/home/colin/dev/procedural/.work/experiments/cp4-regions/100half.png",
+        "geometry_sha256": "9b8cf398b6b13f5a079fb1fbb39d791ab31c1bc55d1e51ec451b8f6856de6885",
+        "canvas": [
+          640,
+          640
+        ],
+        "renderer": "JAVA2D"
+      },
+      "image": {
+        "path": ".work/experiments/cp4-regions/100half.png",
+        "sha256": "a06c26ec97419e88b76d593af0640aa1d87ba18bca26c90cac67269dffbf7a3d"
+      },
+      "diff_from_baseline": null
+    },
+    {
+      "id": "200half",
+      "exit_code": 0,
+      "stdout": "{\"status\":\"rendered\",\"case\":\"200half\",\"output\":\"/home/colin/dev/procedural/.work/experiments/cp4-regions/200half.png\",\"geometry_sha256\":\"f37b99ff3fdf9368d58e753ba132eb88df9d7d764cebeab67d9ae93b3a659d09\",\"canvas\":[640,640],\"renderer\":\"JAVA2D\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "status": "passed",
+      "native": {
+        "status": "rendered",
+        "case": "200half",
+        "output": "/home/colin/dev/procedural/.work/experiments/cp4-regions/200half.png",
+        "geometry_sha256": "f37b99ff3fdf9368d58e753ba132eb88df9d7d764cebeab67d9ae93b3a659d09",
+        "canvas": [
+          640,
+          640
+        ],
+        "renderer": "JAVA2D"
+      },
+      "image": {
+        "path": ".work/experiments/cp4-regions/200half.png",
+        "sha256": "46aa26f6e66e176f995dee35d1166b0a0b447962716237a07c3240720c542bb8"
+      },
+      "diff_from_baseline": {
+        "mean_rgb_normalized": 0.08778020641850491,
+        "changed_fraction": 0.3350048828125
+      }
+    },
+    {
+      "id": "100full",
+      "exit_code": 0,
+      "stdout": "{\"status\":\"rendered\",\"case\":\"100full\",\"output\":\"/home/colin/dev/procedural/.work/experiments/cp4-regions/100full.png\",\"geometry_sha256\":\"5c85a81e92ce2a9ccf266aab57c24b70aaefdb4be002cc7a18f347e48ba48a12\",\"canvas\":[640,640],\"renderer\":\"JAVA2D\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "status": "passed",
+      "native": {
+        "status": "rendered",
+        "case": "100full",
+        "output": "/home/colin/dev/procedural/.work/experiments/cp4-regions/100full.png",
+        "geometry_sha256": "5c85a81e92ce2a9ccf266aab57c24b70aaefdb4be002cc7a18f347e48ba48a12",
+        "canvas": [
+          640,
+          640
+        ],
+        "renderer": "JAVA2D"
+      },
+      "image": {
+        "path": ".work/experiments/cp4-regions/100full.png",
+        "sha256": "41b630fe7365eb83f387ca9c8961696963b60a63533b3b56e320c356f24305e3"
+      },
+      "diff_from_baseline": {
+        "mean_rgb_normalized": 0.23392817797691992,
+        "changed_fraction": 0.83528076171875
+      }
+    },
+    {
+      "id": "same100half-contentgrid",
+      "exit_code": 0,
+      "stdout": "{\"status\":\"rendered\",\"case\":\"same100half-contentgrid\",\"output\":\"/home/colin/dev/procedural/.work/experiments/cp4-regions/same100half-contentgrid.png\",\"geometry_sha256\":\"9b8cf398b6b13f5a079fb1fbb39d791ab31c1bc55d1e51ec451b8f6856de6885\",\"canvas\":[640,640],\"renderer\":\"JAVA2D\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "status": "passed",
+      "native": {
+        "status": "rendered",
+        "case": "same100half-contentgrid",
+        "output": "/home/colin/dev/procedural/.work/experiments/cp4-regions/same100half-contentgrid.png",
+        "geometry_sha256": "9b8cf398b6b13f5a079fb1fbb39d791ab31c1bc55d1e51ec451b8f6856de6885",
+        "canvas": [
+          640,
+          640
+        ],
+        "renderer": "JAVA2D"
+      },
+      "image": {
+        "path": ".work/experiments/cp4-regions/same100half-contentgrid.png",
+        "sha256": "d7ab9bcf6520eb5fab68cca4650e6d2e7ad6b9dd28edfc1f965874f84bc1698f"
+      },
+      "diff_from_baseline": {
+        "mean_rgb_normalized": 0.03863481349571078,
+        "changed_fraction": 0.139375
+      }
+    },
+    {
+      "id": "explicit-grid-refinement-transfer",
+      "exit_code": 0,
+      "stdout": "{\"status\":\"rendered\",\"case\":\"explicit-grid-refinement-transfer\",\"output\":\"/home/colin/dev/procedural/.work/experiments/cp4-regions/explicit-grid-refinement-transfer.png\",\"geometry_sha256\":\"18c95c0034f66dcdb90007fb8a74adeb5920dc026e014fea076a7194060f3cef\",\"canvas\":[640,640],\"renderer\":\"JAVA2D\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "status": "passed",
+      "native": {
+        "status": "rendered",
+        "case": "explicit-grid-refinement-transfer",
+        "output": "/home/colin/dev/procedural/.work/experiments/cp4-regions/explicit-grid-refinement-transfer.png",
+        "geometry_sha256": "18c95c0034f66dcdb90007fb8a74adeb5920dc026e014fea076a7194060f3cef",
+        "canvas": [
+          640,
+          640
+        ],
+        "renderer": "JAVA2D"
+      },
+      "image": {
+        "path": ".work/experiments/cp4-regions/explicit-grid-refinement-transfer.png",
+        "sha256": "c0d363cbc4fa0de9ec5217a1461ee4e9eca7297a71477281c3b2bf14e39ab80c"
+      },
+      "diff_from_baseline": null
+    }
+  ],
+  "visual_review": "pending",
+  "input_sha256_after": {
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "design/capabilities/cp4-region-walkthrough.md": "fc90dea1566a515e2a4b9d2e1249c2cfdf4fcc49711d1c0c7fbb2427897d208a",
+    "evidence/parameter-experiments/cp4-regions/experiment.json": "65c57019ac74516b37cfc3227e7096e21562a3b6f74aa95fb412861cdf4688cc",
+    "skills/parameter-evidence/SKILL.md": "f3bea28b63fe351f8b8814ef276c51af317d2e275355e50fa713fac0615f4090",
+    "tools/diagnostics/cp4/RegionChoice.java": "635c70e9a8a459bee94afb5ddd163d42f2acaca595d08b2e342cc5a9c9408e86",
+    "tools/diagnostics/cp4/run_regions.py": "ec867b14719213ad17489cd7a8eded30a4cfc575ca0b5fc6a73b985b9e7a0335"
+  },
+  "elapsed_seconds": 0.8241495119873434
+}

@@ -1,0 +1,342 @@
+{
+  "status": "passed",
+  "scope": "Private CP5 distribution and retained-content investigation; no public operation conformance or source-pixel reproduction.",
+  "input_sha256_before": {
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "design/capabilities/grain-evidence-audit.md": "5a7f58babca28374ca51b915438bd54566a39b85ef2d128bddd6a81d21c27c81",
+    "evidence/conformance/quadrant-partition-java.json": "2f87b8f2041b3f3203894c9a0820f3a9f9f6bb4d542b002eddf0f530e77c4395",
+    "evidence/investigations/cp5-grain-distributions-review.json": "476bb2cdf218ad8827ae9b8168967fb75a6a59a1b7a29499a193b72bb5d77245",
+    "evidence/investigations/cp5-grain-distributions.json": "f43e8a7623d2cb778681c4fd39a4b8274890972d7a7b2e3c23b01ed478b58509",
+    "evidence/parameter-experiments/cp5-grain/experiment.json": "2728c8b0973d115ee8dee2ae983565f159faa91b585a99f9cb1ed1ac5957f1c9",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "survey/out/2018/Generativos/puntis/notes.md": "98ad640b63e2ec0872af61406743bd2b5852dd7744301ec74a337ebe0d75430b",
+    "survey/out/2018/Generativos/puntis2/notes.md": "a4b45e254cc656cb3aee8eb6bd6b7f1dfca0a23c56a182d71380ba8a73c09dfe",
+    "survey/out/2018/Generativos/puntis3/notes.md": "9699082e346a3e7f22798f6a932e4c42df28c9435e922365ad2c3c7de59c7e9c",
+    "tools/diagnostics/cp5/GrainChoice.java": "cc8bed6c118e3e2f1f2631427a8785334cacc74d3bb977406a8f4ce04bb4eb52",
+    "tools/diagnostics/cp5/run_grain.py": "40bc3838d3cf05f5ec8936263094d7a9acad9168d4ca3d5f7d12e4bdeef79e05",
+    "tools/diagnostics/cp5/run_grain_distributions.py": "cbba1ea8ecfbbc441a25f6f0263e93737b087644a7be43c69335571ef1331ba6"
+  },
+  "class_sha256": {
+    ".work/build/cp5-grain-executor/GrainChoice$1.class": "d9154eaf3f5ba7b8c00e56d6684e25bf0bf647b114526f57826ac08c5acdc586",
+    ".work/build/cp5-grain-executor/GrainChoice$2.class": "85056a967c0f089da04b7b311e19b03c613dd8773915c451e855c277f2ea244a",
+    ".work/build/cp5-grain-executor/GrainChoice$3.class": "95a71dd70d93a513ce40cc200df14a5af7172d4f9124b9b1c48119154aaae79f",
+    ".work/build/cp5-grain-executor/GrainChoice$Digest.class": "debf29ccdd73c86fcd121f4fb96d4a8fc46040bbadf4a730b4d7314afaa441a9",
+    ".work/build/cp5-grain-executor/GrainChoice$Points.class": "f36452baeb33877668602600b7d29755f4c4a5c86ea3ccca774f01674c5bcb2c",
+    ".work/build/cp5-grain-executor/GrainChoice$Profile.class": "83f7f16b2a05954d4625961cbe96b3851dcddff8584a2df3ac449cc10bb35fe5",
+    ".work/build/cp5-grain-executor/GrainChoice$Sampler.class": "d94ba0c5cf018008e0c2732a327c781425129207821a094d5195af1d95629dab",
+    ".work/build/cp5-grain-executor/GrainChoice$Suite.class": "8bc44ec2b43bcfac240d484cfd4e86ee109b06a4854a8b43e7f3646197abd826",
+    ".work/build/cp5-grain-executor/GrainChoice$Triangle.class": "cdab19efb8e4095530de8275c8924bdcdef724f6cdffce2dd9b7f81a686ff2a2",
+    ".work/build/cp5-grain-executor/GrainChoice.class": "549edc209e7cef5b75b6475ca06954e8583320f1a471aa8c17b35a9ea9eda6df",
+    ".work/build/cp5-grain-executor/org/procedurals/layout/QuadrantPartition2D$1.class": "7cb8c49f38b51b69462ab7bda4452a55080fdfaa24c5d74777c9c8b6bf964c31",
+    ".work/build/cp5-grain-executor/org/procedurals/layout/QuadrantPartition2D$Builder.class": "b33053b4a119d7ca0dcd932dcff1ad2149f15463edf44d46758a42cc7f57a513",
+    ".work/build/cp5-grain-executor/org/procedurals/layout/QuadrantPartition2D$PartitionArithmeticException.class": "387ef0a49db60ed076df2503982b788b2357f5c7c0c9c9cc2c2398a28d7507c1",
+    ".work/build/cp5-grain-executor/org/procedurals/layout/QuadrantPartition2D$PartitionException.class": "0de68f5efdcea1959843cfb25bcb9dd8af868e5a86dda2e968a6f68af60f8071",
+    ".work/build/cp5-grain-executor/org/procedurals/layout/QuadrantPartition2D$Xoshiro128StarStar11.class": "96d3df428ea1c878c46518db56f2b338a975b76fb54ed363176080be6e13ec63",
+    ".work/build/cp5-grain-executor/org/procedurals/layout/QuadrantPartition2D.class": "8dfa8edbf3d13c2b5c112509abe93201173812cd459395ae832ecafb3a18bd2d"
+  },
+  "numeric": {
+    "status": "passed",
+    "experiment": "cp5-grain",
+    "private_only": true,
+    "canvas": [
+      640,
+      640
+    ],
+    "renderer": "JAVA2D",
+    "density": 1,
+    "streams": {
+      "class": "java.util.Random",
+      "seed": 42,
+      "status": "private investigation compatibility stream; not public or Processing reproduction",
+      "mapping_arithmetic": "java.util.Random nextFloat inputs followed by binary64 mapping; not Processing binary32 or pixel identity"
+    },
+    "checks": {
+      "same_distribution_count": true,
+      "documented_draw_consumption": true,
+      "retained_style_identity": true,
+      "denser_uniform_prefix": true,
+      "centre_triangle_containment": true,
+      "region_transfer_two_triangles_per_cell": true,
+      "strokes_centres_only": true,
+      "mark_budget_at_most_160000": true
+    },
+    "containment_tolerance": "orientation-aware 32 ulps of fixed <=640-coordinate squared magnitude",
+    "total_marks": 150720,
+    "profiles": {
+      "uniform": {
+        "count": 15680,
+        "geometry_sha256": "9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5",
+        "raw_points_sha256": "9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5",
+        "centres_inside_input_triangles": true,
+        "random_draws": 31360,
+        "triangle_count": 1,
+        "sampling": "uniform two-unit square-root barycentric map"
+      },
+      "vertex-biased": {
+        "count": 15680,
+        "geometry_sha256": "4dab07b270560aa55ae52d67fe9aad0502b39edd24f592b0d18946548e130589",
+        "raw_points_sha256": "4dab07b270560aa55ae52d67fe9aad0502b39edd24f592b0d18946548e130589",
+        "centres_inside_input_triangles": true,
+        "random_draws": 47040,
+        "triangle_count": 1,
+        "sampling": "active puntis first-coordinate product before square root"
+      },
+      "edge-biased": {
+        "count": 15680,
+        "geometry_sha256": "2192768dce4202c29bda599d585d7e6ba9c5d4bea4e18d97552f3696f0484326",
+        "raw_points_sha256": "2192768dce4202c29bda599d585d7e6ba9c5d4bea4e18d97552f3696f0484326",
+        "centres_inside_input_triangles": true,
+        "random_draws": 109760,
+        "triangle_count": 1,
+        "sampling": "active puntis3 r2 product and consumed/overwritten brightness draws"
+      },
+      "denser": {
+        "count": 31360,
+        "geometry_sha256": "6dabf998f222428b41b7e1748417b55094ce508ba53c17a5e1af5d05ddad4e7d",
+        "raw_points_sha256": "6dabf998f222428b41b7e1748417b55094ce508ba53c17a5e1af5d05ddad4e7d",
+        "centres_inside_input_triangles": true,
+        "random_draws": 62720,
+        "triangle_count": 1,
+        "sampling": "uniform two-unit square-root barycentric map"
+      },
+      "recolored": {
+        "count": 15680,
+        "geometry_sha256": "9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5",
+        "raw_points_sha256": "9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5",
+        "centres_inside_input_triangles": true,
+        "random_draws": 0,
+        "triangle_count": 1,
+        "sampling": "same retained uniform points; style only"
+      },
+      "strokes": {
+        "count": 15680,
+        "geometry_sha256": "9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5",
+        "raw_points_sha256": "9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5",
+        "centres_inside_input_triangles": true,
+        "random_draws": 0,
+        "triangle_count": 1,
+        "sampling": "same retained uniform centres; horizontal length-4 strokes may cross triangle edges"
+      },
+      "region-transfer": {
+        "count": 40960,
+        "geometry_sha256": "0a3987c4bb3aed17b82758929b78b108a8b63b92448495fe9eed4b8e94abcc13",
+        "raw_points_sha256": "0a3987c4bb3aed17b82758929b78b108a8b63b92448495fe9eed4b8e94abcc13",
+        "centres_inside_input_triangles": true,
+        "random_draws": 81920,
+        "triangle_count": 26,
+        "sampling": "uniform private map; separate java.util.Random(42 + triangleOrdinal)"
+      }
+    }
+  },
+  "compilation": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "timed_out": false
+  },
+  "cases": [
+    {
+      "id": "uniform",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp5-grain/uniform.png",
+        "sha256": "1e4d4c059819a870bc8ba0af5821e304792439c4cf377ed75e47fb56bc35061e"
+      },
+      "diff_from_uniform": null
+    },
+    {
+      "id": "vertex-biased",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp5-grain/vertex-biased.png",
+        "sha256": "f5b22245b36fb1b0c5086fbbedfb543ade2908dd9c69e748dbc6602f80cd2cf0"
+      },
+      "diff_from_uniform": {
+        "mean_rgb_normalized": 0.01191876340379902,
+        "changed_fraction": 0.06509765625
+      }
+    },
+    {
+      "id": "edge-biased",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp5-grain/edge-biased.png",
+        "sha256": "f608bdf395a71486d02d3c4889e9b46308d7645174ebbd77b2d740a2aa5766a2"
+      },
+      "diff_from_uniform": {
+        "mean_rgb_normalized": 0.011917416641135622,
+        "changed_fraction": 0.06598876953125
+      }
+    },
+    {
+      "id": "denser",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp5-grain/denser.png",
+        "sha256": "b87311fdee5681ce04074960d0e14ae23559935d112c064c1a3cac9d6225b661"
+      },
+      "diff_from_uniform": {
+        "mean_rgb_normalized": 0.006423789828431373,
+        "changed_fraction": 0.036474609375
+      }
+    },
+    {
+      "id": "recolored",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp5-grain/recolored.png",
+        "sha256": "e535183439be4061b980b391e34592d358787214fc4f8b811a1dd17661612ff3"
+      },
+      "diff_from_uniform": {
+        "mean_rgb_normalized": 0.005387092141544118,
+        "changed_fraction": 0.03647216796875
+      }
+    },
+    {
+      "id": "strokes",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp5-grain/strokes.png",
+        "sha256": "56972d18b0074ed988e27b9dfd10a7e1d6c4297528ab8553570694f6cac0cfd5"
+      },
+      "diff_from_uniform": {
+        "mean_rgb_normalized": 0.0344968852124183,
+        "changed_fraction": 0.150595703125
+      }
+    },
+    {
+      "id": "region-transfer",
+      "status": "passed",
+      "image": {
+        "path": ".work/experiments/cp5-grain/region-transfer.png",
+        "sha256": "8794b3605dfa4ca3f5ce47f72cdbda48cdbf707c8b768485b762aa612c60a6cd"
+      },
+      "diff_from_uniform": {
+        "mean_rgb_normalized": 0.017544076159109478,
+        "changed_fraction": 0.12756591796875
+      }
+    }
+  ],
+  "visual_review": "pending",
+  "process": {
+    "exit_code": 0,
+    "stdout": "{\"status\":\"rendered\",\"experiment\":\"cp5-grain\",\"private_only\":true,\"canvas\":[640,640],\"renderer\":\"JAVA2D\",\"density\":1,\"streams\":{\"class\":\"java.util.Random\",\"seed\":42,\"status\":\"private investigation compatibility stream; not public or Processing reproduction\",\"mapping_arithmetic\":\"java.util.Random nextFloat inputs followed by binary64 mapping; not Processing binary32 or pixel identity\"},\"checks\":{\"same_distribution_count\":true,\"documented_draw_consumption\":true,\"retained_style_identity\":true,\"denser_uniform_prefix\":true,\"centre_triangle_containment\":true,\"region_transfer_two_triangles_per_cell\":true,\"strokes_centres_only\":true,\"mark_budget_at_most_160000\":true},\"containment_tolerance\":\"orientation-aware 32 ulps of fixed <=640-coordinate squared magnitude\",\"total_marks\":150720,\"profiles\":{\"uniform\":{\"count\":15680,\"geometry_sha256\":\"9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5\",\"raw_points_sha256\":\"9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5\",\"centres_inside_input_triangles\":true,\"random_draws\":31360,\"triangle_count\":1,\"sampling\":\"uniform two-unit square-root barycentric map\"},\"vertex-biased\":{\"count\":15680,\"geometry_sha256\":\"4dab07b270560aa55ae52d67fe9aad0502b39edd24f592b0d18946548e130589\",\"raw_points_sha256\":\"4dab07b270560aa55ae52d67fe9aad0502b39edd24f592b0d18946548e130589\",\"centres_inside_input_triangles\":true,\"random_draws\":47040,\"triangle_count\":1,\"sampling\":\"active puntis first-coordinate product before square root\"},\"edge-biased\":{\"count\":15680,\"geometry_sha256\":\"2192768dce4202c29bda599d585d7e6ba9c5d4bea4e18d97552f3696f0484326\",\"raw_points_sha256\":\"2192768dce4202c29bda599d585d7e6ba9c5d4bea4e18d97552f3696f0484326\",\"centres_inside_input_triangles\":true,\"random_draws\":109760,\"triangle_count\":1,\"sampling\":\"active puntis3 r2 product and consumed/overwritten brightness draws\"},\"denser\":{\"count\":31360,\"geometry_sha256\":\"6dabf998f222428b41b7e1748417b55094ce508ba53c17a5e1af5d05ddad4e7d\",\"raw_points_sha256\":\"6dabf998f222428b41b7e1748417b55094ce508ba53c17a5e1af5d05ddad4e7d\",\"centres_inside_input_triangles\":true,\"random_draws\":62720,\"triangle_count\":1,\"sampling\":\"uniform two-unit square-root barycentric map\"},\"recolored\":{\"count\":15680,\"geometry_sha256\":\"9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5\",\"raw_points_sha256\":\"9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5\",\"centres_inside_input_triangles\":true,\"random_draws\":0,\"triangle_count\":1,\"sampling\":\"same retained uniform points; style only\"},\"strokes\":{\"count\":15680,\"geometry_sha256\":\"9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5\",\"raw_points_sha256\":\"9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5\",\"centres_inside_input_triangles\":true,\"random_draws\":0,\"triangle_count\":1,\"sampling\":\"same retained uniform centres; horizontal length-4 strokes may cross triangle edges\"},\"region-transfer\":{\"count\":40960,\"geometry_sha256\":\"0a3987c4bb3aed17b82758929b78b108a8b63b92448495fe9eed4b8e94abcc13\",\"raw_points_sha256\":\"0a3987c4bb3aed17b82758929b78b108a8b63b92448495fe9eed4b8e94abcc13\",\"centres_inside_input_triangles\":true,\"random_draws\":81920,\"triangle_count\":26,\"sampling\":\"uniform private map; separate java.util.Random(42 + triangleOrdinal)\"}},\"output_directory\":\"/home/colin/dev/procedural/.work/experiments/cp5-grain\"}\n",
+    "stderr": "",
+    "timed_out": false
+  },
+  "native": {
+    "status": "rendered",
+    "experiment": "cp5-grain",
+    "private_only": true,
+    "canvas": [
+      640,
+      640
+    ],
+    "renderer": "JAVA2D",
+    "density": 1,
+    "streams": {
+      "class": "java.util.Random",
+      "seed": 42,
+      "status": "private investigation compatibility stream; not public or Processing reproduction",
+      "mapping_arithmetic": "java.util.Random nextFloat inputs followed by binary64 mapping; not Processing binary32 or pixel identity"
+    },
+    "checks": {
+      "same_distribution_count": true,
+      "documented_draw_consumption": true,
+      "retained_style_identity": true,
+      "denser_uniform_prefix": true,
+      "centre_triangle_containment": true,
+      "region_transfer_two_triangles_per_cell": true,
+      "strokes_centres_only": true,
+      "mark_budget_at_most_160000": true
+    },
+    "containment_tolerance": "orientation-aware 32 ulps of fixed <=640-coordinate squared magnitude",
+    "total_marks": 150720,
+    "profiles": {
+      "uniform": {
+        "count": 15680,
+        "geometry_sha256": "9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5",
+        "raw_points_sha256": "9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5",
+        "centres_inside_input_triangles": true,
+        "random_draws": 31360,
+        "triangle_count": 1,
+        "sampling": "uniform two-unit square-root barycentric map"
+      },
+      "vertex-biased": {
+        "count": 15680,
+        "geometry_sha256": "4dab07b270560aa55ae52d67fe9aad0502b39edd24f592b0d18946548e130589",
+        "raw_points_sha256": "4dab07b270560aa55ae52d67fe9aad0502b39edd24f592b0d18946548e130589",
+        "centres_inside_input_triangles": true,
+        "random_draws": 47040,
+        "triangle_count": 1,
+        "sampling": "active puntis first-coordinate product before square root"
+      },
+      "edge-biased": {
+        "count": 15680,
+        "geometry_sha256": "2192768dce4202c29bda599d585d7e6ba9c5d4bea4e18d97552f3696f0484326",
+        "raw_points_sha256": "2192768dce4202c29bda599d585d7e6ba9c5d4bea4e18d97552f3696f0484326",
+        "centres_inside_input_triangles": true,
+        "random_draws": 109760,
+        "triangle_count": 1,
+        "sampling": "active puntis3 r2 product and consumed/overwritten brightness draws"
+      },
+      "denser": {
+        "count": 31360,
+        "geometry_sha256": "6dabf998f222428b41b7e1748417b55094ce508ba53c17a5e1af5d05ddad4e7d",
+        "raw_points_sha256": "6dabf998f222428b41b7e1748417b55094ce508ba53c17a5e1af5d05ddad4e7d",
+        "centres_inside_input_triangles": true,
+        "random_draws": 62720,
+        "triangle_count": 1,
+        "sampling": "uniform two-unit square-root barycentric map"
+      },
+      "recolored": {
+        "count": 15680,
+        "geometry_sha256": "9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5",
+        "raw_points_sha256": "9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5",
+        "centres_inside_input_triangles": true,
+        "random_draws": 0,
+        "triangle_count": 1,
+        "sampling": "same retained uniform points; style only"
+      },
+      "strokes": {
+        "count": 15680,
+        "geometry_sha256": "9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5",
+        "raw_points_sha256": "9877f82204d852fe9afc8930e19dff296e1925d3560e72ef76f49c1ecd4a4ab5",
+        "centres_inside_input_triangles": true,
+        "random_draws": 0,
+        "triangle_count": 1,
+        "sampling": "same retained uniform centres; horizontal length-4 strokes may cross triangle edges"
+      },
+      "region-transfer": {
+        "count": 40960,
+        "geometry_sha256": "0a3987c4bb3aed17b82758929b78b108a8b63b92448495fe9eed4b8e94abcc13",
+        "raw_points_sha256": "0a3987c4bb3aed17b82758929b78b108a8b63b92448495fe9eed4b8e94abcc13",
+        "centres_inside_input_triangles": true,
+        "random_draws": 81920,
+        "triangle_count": 26,
+        "sampling": "uniform private map; separate java.util.Random(42 + triangleOrdinal)"
+      }
+    },
+    "output_directory": "/home/colin/dev/procedural/.work/experiments/cp5-grain"
+  },
+  "input_sha256_after": {
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "design/capabilities/grain-evidence-audit.md": "5a7f58babca28374ca51b915438bd54566a39b85ef2d128bddd6a81d21c27c81",
+    "evidence/conformance/quadrant-partition-java.json": "2f87b8f2041b3f3203894c9a0820f3a9f9f6bb4d542b002eddf0f530e77c4395",
+    "evidence/investigations/cp5-grain-distributions-review.json": "476bb2cdf218ad8827ae9b8168967fb75a6a59a1b7a29499a193b72bb5d77245",
+    "evidence/investigations/cp5-grain-distributions.json": "f43e8a7623d2cb778681c4fd39a4b8274890972d7a7b2e3c23b01ed478b58509",
+    "evidence/parameter-experiments/cp5-grain/experiment.json": "2728c8b0973d115ee8dee2ae983565f159faa91b585a99f9cb1ed1ac5957f1c9",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "survey/out/2018/Generativos/puntis/notes.md": "98ad640b63e2ec0872af61406743bd2b5852dd7744301ec74a337ebe0d75430b",
+    "survey/out/2018/Generativos/puntis2/notes.md": "a4b45e254cc656cb3aee8eb6bd6b7f1dfca0a23c56a182d71380ba8a73c09dfe",
+    "survey/out/2018/Generativos/puntis3/notes.md": "9699082e346a3e7f22798f6a932e4c42df28c9435e922365ad2c3c7de59c7e9c",
+    "tools/diagnostics/cp5/GrainChoice.java": "cc8bed6c118e3e2f1f2631427a8785334cacc74d3bb977406a8f4ce04bb4eb52",
+    "tools/diagnostics/cp5/run_grain.py": "40bc3838d3cf05f5ec8936263094d7a9acad9168d4ca3d5f7d12e4bdeef79e05",
+    "tools/diagnostics/cp5/run_grain_distributions.py": "cbba1ea8ecfbbc441a25f6f0263e93737b087644a7be43c69335571ef1331ba6"
+  },
+  "elapsed_seconds": 0.3988108750199899
+}

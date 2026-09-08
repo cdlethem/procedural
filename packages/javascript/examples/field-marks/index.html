@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Field marks — procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:65ch}
+    form{display:flex;gap:18px;flex-wrap:wrap;align-items:end;margin:24px 0}label{display:grid;gap:6px}
+    select,button{font:inherit;padding:8px;background:white;color:inherit;border:1px solid #777;border-radius:4px}
+    button{cursor:pointer}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Field marks</h1>
+  <p>A field sets the direction of each mark. Change its length, colour or shape while keeping the same arrangement.</p>
+  <form id="controls">
+    <label>Maximum length<select id="length"><option value="16">16 — short</option><option value="32">32 — long</option></select></label>
+    <label>Palette<select id="palette"><option value="original">Original</option><option value="neon">Neon</option></select></label>
+    <label>Mark<select id="mark"><option value="line">Line</option><option value="bar">Bar</option></select></label>
+    <button id="save" type="button">Save PNG</button>
+  </form>
+  <div id="art" aria-label="Generated field of marks"></div>
+  <p id="status" role="status">Drawing…</p>
+  <p>To make a new piece, edit the seed, grid spacing and field sampling in <code>mark-field.js</code>.
+    Edit <code>markCommands()</code> to invent another mark. These values are choices for this example.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>

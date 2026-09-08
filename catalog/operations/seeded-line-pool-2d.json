@@ -1,0 +1,299 @@
+{
+  "id": "topology.seeded-line-pool-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "description": "Generate a retained ordered pool of branching segments by repeatedly cutting selected existing segments.",
+  "decision_cluster": "topology.branch-subdivide",
+  "capability_decision": "design/capabilities/line-pool-admission.md",
+  "provenance": [
+    {
+      "candidate_id": "2019/generativos/brotes#0",
+      "notes_path": "survey/out/2019/generativos/brotes/notes.md",
+      "note_sha256": "9a6da7579ae5d3c9d4331181e2e71bd40ab6caa698844b7bc20028c7e8d8fd77",
+      "upstream_pde_sha256": "ac419e8a874e8df82cc1a4d7c1d49d9351ac79e15e1218d1046f6b13ba873549",
+      "relationship": "Active mutable line-pool component; independent seed placement, colours and tips remain example composition.",
+      "evidence_sha256": "58cba930e9a9df1b212bb9fa3d9308fff93f07418969d96dafd92b38167805aa"
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "seed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "segment": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 4,
+        "maxItems": 4
+      },
+      "attempts": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      },
+      "firstCutAngleScale": {
+        "type": "number",
+        "minimum": 0
+      },
+      "minCutLength": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "maxSegments": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 536870911
+      }
+    },
+    "required": [
+      "seed",
+      "segment",
+      "attempts",
+      "firstCutAngleScale",
+      "minCutLength",
+      "maxSegments"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "segments": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 536870911,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "divided": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "boolean"
+        }
+      },
+      "attempts": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      },
+      "successfulCuts": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      },
+      "skips": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      }
+    },
+    "required": [
+      "segments",
+      "divided",
+      "attempts",
+      "successfulCuts",
+      "skips"
+    ],
+    "additionalProperties": false
+  },
+  "output_invariants": "segments and divided lengths equal size;1<=size<=maxSegments; finite coordinates; export zeros as +0; attempts=successfulCuts+skips; size<=1+2*successfulCuts; append indices stable within result; final endpoints mutable during construction only; no ancestry/connectivity claim.",
+  "behavior": {
+    "rng": "Portable xoshiro128**1.1 private to each call. Zero-extend uint32 seed to uint64 SplitMix64 state. Twice advance state by0x9e3779b97f4a7c15 modulo2^64; z=state; z=(z xor(z>>>30))*0xbf58476d1ce4e5b9 mod2^64; z=(z xor(z>>>27))*0x94d049bb133111eb mod2^64; q=z xor(z>>>31). Pack q0/q1 as s0=low32(q0),s1=high32(q0),s2=low32(q1),s3=high32(q1). next output=rotl32(s1*5 mod2^32,7)*9 mod2^32; then t=s1<<9 mod2^32; sequentially s2 xor=s0; s3 xor=s1; s1 xor=s2; s0 xor=s3; s2 xor=t; s3=rotl32(s3,11), all words uint32. Map output to u=unsigned_u32/4294967296 exactly in[0,1). State is private/discarded and never shares Processing/source/background/palette state. The all-zero state is unreachable and an internal invariant.",
+    "numeric_profile": "fdlibm5.3 sin/cos/atan2 under Java binary64 rules; correctly rounded sqrt; all basic arithmetic separately rounded binary64, no FMA/reassociation. Exact outputs, no topology/coordinate tolerance. Java StrictMath supplies the elementary profile; other target implementations deferred.",
+    "transition_specification": "Normative transition0.1.0, root reviewed.\nEach arithmetic operator below rounds separately to binary64. C(value,stage) fails\nARITHMETIC_OVERFLOW {attempt,stage} on nonfinite, otherwise returns value. Function\narguments evaluate left-to-right. Constants are nearest binary64 decimal values.\nU() is one unsigned xoshiro output divided by4294967296. PI=0x1.921fb54442d18p1.\nR(lo,hi) returns lo without U when lo>=hi; otherwise lo+((hi-lo)*U()). All R bounds\nbelow are finite in[0,3] or[-.1,.1], so their arithmetic cannot overflow. Upper-bound\nrounding is accepted, not retried. First-cut selection is min(2,floor(3*U())).\n\nValidate passive input shape/keys; then fields seed,segment coordinates x0/y0/x1/y1,\nattempts,firstCutAngleScale,minCutLength,maxSegments. All finite; boolean not numeric.\nStore initial segment and divided=false. Zero attempts exports immediately. Export\ncanonicalizes signed coordinate zeros to+0 without changing internal arithmetic.\n\nFor attempt=0..attempts-1:\n index=min(size-1,floor((U()*size)*R(.8,1)))\n sx,sy,ex,ey = selected current endpoints\n dx=C(ex-sx,\"difference_x\"); dy=C(ey-sy,\"difference_y\")\n xx=C(dx*dx,\"square_x\"); yy=C(dy*dy,\"square_y\")\n squared=C(xx+yy,\"squared_length\"); length=correctlyRoundedSqrt(squared)\n heading=fdlibmAtan2(dy,dx)\n if length<minCutLength: skips++; continue\n fraction=R(R(.6,.7),R(0,.8))\n if divided[index]: fraction=fraction*.4\n remainder=length*(1-fraction)  # finite: fraction in[0,.8],length finite\n if not divided[index]:\n   a=R(0,1.2)*R(.2,1); a=C(a*firstCutAngleScale,\"spread_positive\")\n   b=R(0,1.2)*R(.2,1); b=C(b*firstCutAngleScale,\"spread_negative\")\n   unused=U() # source range interpolation result unused; no arithmetic needed\n   l0=C(remainder*R(.9,1.2),\"length_positive\")\n   l1=C(remainder*R(.9,1.2),\"length_negative\")\n   l2=C(remainder*R(.9,1.2),\"length_straight\")\n   h0=C(heading+a,\"heading_positive\")\n   h1=C(heading-b,\"heading_negative\")\n   h2=C(heading+R(-.1,.1),\"heading_straight\")\n   choice=min(2,floor(3*U()))\n   children = [] if choice==0 else [(h0,l0,false),(h1,l1,false)] if choice==1\n              else [(h2,l2,false)]\n else:\n   deviation=R(.1,.4); sign=-1 if U()<.5 else+1; deviation=(deviation*sign)*2\n   distance=C(remainder*R(.9,1.1),\"length_repeat\")\n   turn=C(heading+deviation,\"heading_repeat\")\n   children = [continuation(ex,ey,true),(turn,distance,false)]\n if size+len(children)>maxSegments:\n   fail SEGMENT_LIMIT_EXCEEDED {attempt,selectedIndex:index}\n nx=C(sx+C(dx*fraction,\"cut_delta_x\"),\"cut_x\")\n ny=C(sy+C(dy*fraction,\"cut_delta_y\"),\"cut_y\")\n For each child in append order, ordinal=0,1:\n   continuation keeps old(ex,ey) exactly, no trig\n   ordinary endpoint:\n     cx=C(nx+C(fdlibmCos(turn)*distance,\"child_delta_x\"),\"child_x\")\n     cy=C(ny+C(fdlibmSin(turn)*distance,\"child_delta_y\"),\"child_y\")\n   child stage errors also include childOrdinal; other stages do not.\n Only after all appended endpoints validated: selected end=(nx,ny),divided=true;\n append children starting(nx,ny) with their specified flags; successfulCuts++.\n\nNo partial output on any failure. Child coordinates are prepared before any mutation.\nNo arithmetic or trig for unselected child endpoints. Source policy scalar computations\nand draws DO occur for unselected first-cut children, preserving specified errors/order.\nNo caller callbacks, shared RNG state, rendering or ancestry. Exact output comparisons.\n",
+    "ownership": "Copy passive input; retain packed coordinates/flags; never expose mutable arrays. No partial result on failure. Host allocation errors remain host errors.",
+    "storage": "Grow four binary64 slots and one divided flag per segment; do not preallocate maxSegments. Primitive payload33bytes/segment excluding array headers/spare capacity.",
+    "access": "Index finite safe nonnegative integer<=9007199254740991, boolean rejected. INVALID_INDEX then INDEX_OUT_OF_RANGE then INVALID_OUTPUT. segmentInto requires nonnull double[] and int offset>=0 with four slots; validate all before writing; failed write preserves array. segmentAt/toValues detached; getter allocation failure leaves result usable. No config serialization.",
+    "zero_work": "Return copied root with divided=false and all counters0; do not calculate length/trig or consume RNG.",
+    "extreme_coordinates": "Zero attempts does not evaluate distance, so any finite endpoint tuple is returned. For attempted work the explicitly squared length may overflow at square_x/square_y/squared_length or underflow to zero; underflow is not an error and then minCutLength>0 causes a skip. No robust hypot substitution or coordinate normalization is permitted in this version. This follows the declared arithmetic, not a measured artistic range.",
+    "native_forms": "Java org.procedurals.topology.LinePool2D.generate(Object config) returns LinePool2D. size(), attempts(), successfulCuts(), skips() return int. segmentAt(Object or long index) returns fresh double[4]; segmentInto(Object or long index,double[] out,int offset) returns void; dividedAt(Object or long index) returns boolean; toValues() returns detached Map with exact output-schema fields. No mutable buffers exposed.",
+    "native_types": "Follow CP5 passive-carrier rules: Java Map records and passive List containers with the specified exact pair/interval lengths, accepting only Byte/Short/Integer/Long/Float/Double and rejecting BigInteger/BigDecimal/custom Number before conversion. JavaScript passive Object/null-prototype records and ordinary Arrays; Python exact builtin dict/list with int/float but never bool. Arrays/PVector, typed-array input pairs, class instances, active getters/proxies and custom mapping/list containers are outside interchange. Java segmentInto accepts double[]; a future JavaScript target may accept Float64Array or writable ordinary Array and Python exact builtin list or array(d)."
+  },
+  "errors": {
+    "INVALID_INPUT": "Static carrier/key/domain validation before generation.",
+    "ARITHMETIC_OVERFLOW": "Nonfinite checked intermediate, details attempt and stage; child coordinate stages additionally childOrdinal. First failure in transition order wins.",
+    "SEGMENT_LIMIT_EXCEEDED": "Actual append count would exceed maxSegments, after selection/policy draws and before parent/child endpoint arithmetic; details attempt and selectedIndex.",
+    "INVALID_INDEX": "Not a finite safe nonnegative integer; booleans rejected.",
+    "INDEX_OUT_OF_RANGE": "Index>=size.",
+    "INVALID_OUTPUT": "segmentInto lacks four writable binary64 slots or valid offset."
+  },
+  "parameters": {
+    "seed": {
+      "unit": "uint32",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Private portable stream is design divergence."
+    },
+    "segment": {
+      "unit": "four coordinates",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "One source three() seed stroke; caller placement independent."
+    },
+    "attempts": {
+      "unit": "selection attempts",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source90000; experiment9000/90000/180000 shows diminishing returns. Work budget, not linear density."
+    },
+    "firstCutAngleScale": {
+      "unit": "radian multiplier",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source1.4; experiment.7/1.4/2.1 visible spread. No continuous range."
+    },
+    "minCutLength": {
+      "unit": "coordinate units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source4-unit skip; explicit unit-dependent termination is design choice, not measured artistic range."
+    },
+    "maxSegments": {
+      "unit": "retained segments",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Caller resource cap;536870911 is four-slot array representation ceiling, not feasible-allocation promise."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "delivery_scope": "Java first; exact numeric profile required.",
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "fdlibm5.3-trigonometry"
+      ],
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim.",
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "fdlibm5.3-trigonometry"
+      ],
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim.",
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "fdlibm5.3-trigonometry"
+      ],
+      "reproduction_status": "unvalidated"
+    },
+    "processing-android": {
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "delivery_scope": "Deferred; no support claim.",
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "fdlibm5.3-trigonometry"
+      ],
+      "reproduction_status": "unvalidated"
+    }
+  },
+  "design_divergences": [
+    "Binary64/xoshiro instead of source Processing float/global Random.",
+    "Explicit caller minimum length and output cap.",
+    "One pool per invocation, detached final geometry.",
+    "No unused candidate endpoint computations, but unused active RNG draws retained."
+  ],
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Accepted for Java-first implementation; native and distribution approval pending."
+  },
+  "dynamic_error_stages": [
+    "difference_x",
+    "difference_y",
+    "square_x",
+    "square_y",
+    "squared_length",
+    "spread_positive",
+    "spread_negative",
+    "length_positive",
+    "length_negative",
+    "length_straight",
+    "heading_positive",
+    "heading_negative",
+    "heading_straight",
+    "length_repeat",
+    "heading_repeat",
+    "cut_delta_x",
+    "cut_x",
+    "cut_delta_y",
+    "cut_y",
+    "child_delta_x",
+    "child_x",
+    "child_delta_y",
+    "child_y"
+  ],
+  "design_review": "design/operations/line-pool-contract-review.md",
+  "fixture_format": "exact-json-output",
+  "fixtures": "fixtures/operations/seeded-line-pool-2d.json",
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "Private Processing prototype only; production xoshiro/binary64, transfer and30-pool acceptance pending."
+  },
+  "error_order": [
+    "Static INVALID_INPUT before generation including zero work.",
+    "Per-attempt length arithmetic precedes skip; policy arithmetic precedes actual append cap; cap precedes cut/child arithmetic.",
+    "Access INVALID_INDEX then INDEX_OUT_OF_RANGE then INVALID_OUTPUT."
+  ]
+}

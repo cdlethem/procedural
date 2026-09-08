@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement marks — procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Placement marks</h1>
+  <p>Keep an arrangement of differently sized places, then redraw it as rings or diamonds. Colour and motif edits reuse the retained centres, radii and proposal indices.</p>
+  <div id="controls" aria-label="Placement marks controls">
+    <button data-action="r"><kbd>R</kbd> next seed</button>
+    <button data-action="n"><kbd>N</kbd> 5,000 / 10,000 proposals</button>
+    <button data-action="g"><kbd>G</kbd> separation 1 / 1.2</button>
+    <button data-action="i"><kbd>I</kbd> radius minimum 4 / 8</button>
+    <button data-action="o"><kbd>O</kbd> radius maximum 64 / 32</button>
+    <button data-action="x"><kbd>X</kbd> seeded / authored radial</button>
+    <button data-action="m"><kbd>M</kbd> rings / diamonds</button>
+    <button data-action="c"><kbd>C</kbd> base / alternate palette</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated arrangement of rings or diamonds"></div>
+  <p id="status" role="status">Preparing placement…</p>
+  <p>Edit <code>placement-marks.js</code> to change the proposal source or draw another form from the retained positions. Seed, count and radius controls apply only to seeded proposals; the authored radial bands have their own geometry and sizes.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>

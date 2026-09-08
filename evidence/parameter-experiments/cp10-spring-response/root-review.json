@@ -1,0 +1,37 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Completed registered source-extracted parameter investigation; no public operation/native package support claim.",
+  "evidence_sha256": {
+    "evidence/parameter-experiments/cp10-spring-response/registered-experiment.json": "7511f5e733aec0fdca10fdb0c76ab4b63b29b7a6cf92a5678eda16a738745e42",
+    "evidence/parameter-experiments/cp10-spring-response/experiment.json": "c05744ec4f30e90d21a4612e1639636339a1e31437fd07af60529f5d6121b638",
+    "evidence/parameter-experiments/cp10-spring-response/results.json": "2cd608f0b33fa0abc33b4470704d934a62aa228761287650196cc200c7b39171",
+    "evidence/parameter-experiments/cp10-spring-response/decision.md": "2c0a24fb30a490eb948a3fe4141404df30820a8b1821d3ff227d1b2e12885205",
+    ".work/parameter-experiments/cp10-spring-response-build/plan.json": "229c298d458abffa23bc955fa1d10b1f9da4c74bfa81b30b4110b4d8f5664410",
+    ".work/parameter-experiments/cp10-spring-response/batch.json": "1565e716d1c69e5747d6d552aa13f8e8a2ddd32905a311b860ead1f18559bece"
+  },
+  "implementation_sha256": {
+    "tools/diagnostics/cp10/SpringResponseProbe.java": "d00f769e7e36066daec8176fed7c0bb991c008d8a0caf9f2180f90beae3afe3d",
+    "tools/diagnostics/cp10/spring_response.py": "2c40c4bffcd65df89daadcf19870d2512e431383a70fa412b8cd660960d4105b",
+    "tools/diagnostics/cp10/analyze_response.py": "d19bce59b0a0c027d0811a7197281abfe0bde746238f1f6302765534e42fde29"
+  },
+  "checks": {
+    "attempts": 7,
+    "passed": 7,
+    "frames": 42,
+    "distinct_images_directly_viewed": 31,
+    "all_other_frames_byte_identical_to_viewed_initial": true,
+    "complete_states_per_case": 121,
+    "sites_per_state": 9,
+    "source_order_checks": "bitwise at every step",
+    "stderr_empty": true
+  },
+  "binding_note": "The registered experiment snapshot preserves the exact original BRIEF hash bound by compilation/rendering. Only after all source bindings were rechecked, experiment.json was advanced from planned to completed with attempts/outcome. No computational input changed during the renders.",
+  "remaining": [
+    "Formal operation admission and portable state/step contract",
+    "Numerical domains/error semantics and shared fixtures",
+    "Java implementation, performance and complete SpringMarks workflow",
+    "Other roadmap milestones"
+  ]
+}

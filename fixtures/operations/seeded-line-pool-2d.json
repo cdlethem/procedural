@@ -1,0 +1,732 @@
+{
+  "operation": "topology.seeded-line-pool-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "catalog_sha256": "7236eaf10bdd8cb21107096f7962e248967c9aa6813573f11784a63ba0007e4a",
+  "cases": [
+    {
+      "id": "zero_work",
+      "input": {
+        "seed": 0,
+        "segment": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "attempts": 0,
+        "firstCutAngleScale": 1.0,
+        "minCutLength": 1.0,
+        "maxSegments": 4
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "divided": [
+          false
+        ],
+        "attempts": 0,
+        "successfulCuts": 0,
+        "skips": 0
+      },
+      "coordinate_bits": [
+        [
+          "0x0000000000000000",
+          "0x0000000000000000",
+          "0x3ff0000000000000",
+          "0x0000000000000000"
+        ]
+      ],
+      "rng_words": []
+    },
+    {
+      "id": "short_root",
+      "input": {
+        "seed": 0,
+        "segment": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.0,
+        "minCutLength": 2.0,
+        "maxSegments": 4
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "divided": [
+          false
+        ],
+        "attempts": 1,
+        "successfulCuts": 0,
+        "skips": 1
+      },
+      "coordinate_bits": [
+        [
+          "0x0000000000000000",
+          "0x0000000000000000",
+          "0x3ff0000000000000",
+          "0x0000000000000000"
+        ]
+      ],
+      "rng_words": [
+        "0xdec9045d",
+        "0x9a089d75"
+      ]
+    },
+    {
+      "id": "equal_threshold_root",
+      "input": {
+        "seed": 12,
+        "segment": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.0,
+        "minCutLength": 1.0,
+        "maxSegments": 1
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            0.0,
+            0.6390353085638392,
+            0.0
+          ]
+        ],
+        "divided": [
+          true
+        ],
+        "attempts": 1,
+        "successfulCuts": 1,
+        "skips": 0
+      },
+      "coordinate_bits": [
+        [
+          "0x0000000000000000",
+          "0x0000000000000000",
+          "0x3fe472fa2ce8abb0",
+          "0x0000000000000000"
+        ]
+      ],
+      "rng_words": [
+        "0x9f78aa02",
+        "0x7d03c7a8",
+        "0x47efc278",
+        "0xf16faa02",
+        "0x16262e32",
+        "0x60c23740",
+        "0x28cf097d",
+        "0x6ab1bc4f",
+        "0x99c68573",
+        "0x904c6879",
+        "0x47412bdf",
+        "0x4ff9ef39",
+        "0x21fbfe2a",
+        "0x6b4b235b",
+        "0x31d22fd8"
+      ]
+    },
+    {
+      "id": "first_selection_0",
+      "input": {
+        "seed": 12,
+        "segment": [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.0,
+        "minCutLength": 0.01,
+        "maxSegments": 3
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            0.0,
+            6.390353085638392,
+            0.0
+          ]
+        ],
+        "divided": [
+          true
+        ],
+        "attempts": 1,
+        "successfulCuts": 1,
+        "skips": 0
+      },
+      "coordinate_bits": [
+        [
+          "0x0000000000000000",
+          "0x0000000000000000",
+          "0x40198fb8b822d69c",
+          "0x0000000000000000"
+        ]
+      ],
+      "rng_words": [
+        "0x9f78aa02",
+        "0x7d03c7a8",
+        "0x47efc278",
+        "0xf16faa02",
+        "0x16262e32",
+        "0x60c23740",
+        "0x28cf097d",
+        "0x6ab1bc4f",
+        "0x99c68573",
+        "0x904c6879",
+        "0x47412bdf",
+        "0x4ff9ef39",
+        "0x21fbfe2a",
+        "0x6b4b235b",
+        "0x31d22fd8"
+      ]
+    },
+    {
+      "id": "first_selection_1",
+      "input": {
+        "seed": 3,
+        "segment": [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.0,
+        "minCutLength": 0.01,
+        "maxSegments": 3
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            0.0,
+            6.6818399196490645,
+            0.0
+          ],
+          [
+            6.6818399196490645,
+            0.0,
+            9.128347305507743,
+            1.7606004696991846
+          ],
+          [
+            6.6818399196490645,
+            0.0,
+            8.787161356574902,
+            -3.0838126461910624
+          ]
+        ],
+        "divided": [
+          true,
+          false,
+          false
+        ],
+        "attempts": 1,
+        "successfulCuts": 1,
+        "skips": 0
+      },
+      "coordinate_bits": [
+        [
+          "0x0000000000000000",
+          "0x0000000000000000",
+          "0x401aba343e700000",
+          "0x0000000000000000"
+        ],
+        [
+          "0x401aba343e700000",
+          "0x0000000000000000",
+          "0x402241b6bcef5ef7",
+          "0x3ffc2b6b65eae240"
+        ],
+        [
+          "0x401aba343e700000",
+          "0x0000000000000000",
+          "0x40219306d0365412",
+          "0xc008aba5f6f30dfe"
+        ]
+      ],
+      "rng_words": [
+        "0x79560c88",
+        "0xbbf04321",
+        "0xae8d0f9c",
+        "0x506baf46",
+        "0xb038a7c1",
+        "0xb1a62763",
+        "0xf0107c08",
+        "0xd4578699",
+        "0xdd9e0924",
+        "0x0726c158",
+        "0xc0423b33",
+        "0xa8ca67af",
+        "0x4ce8f88c",
+        "0x5a69195f"
+      ]
+    },
+    {
+      "id": "first_selection_2",
+      "input": {
+        "seed": 0,
+        "segment": [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.0,
+        "minCutLength": 0.01,
+        "maxSegments": 3
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            0.0,
+            6.669797145295888,
+            0.0
+          ],
+          [
+            6.669797145295888,
+            0.0,
+            9.878396715900138,
+            -0.0025770203314282067
+          ]
+        ],
+        "divided": [
+          true,
+          false
+        ],
+        "attempts": 1,
+        "successfulCuts": 1,
+        "skips": 0
+      },
+      "coordinate_bits": [
+        [
+          "0x0000000000000000",
+          "0x0000000000000000",
+          "0x401aaddf4d880000",
+          "0x0000000000000000"
+        ],
+        [
+          "0x401aaddf4d880000",
+          "0x0000000000000000",
+          "0x4023c1bd36df68e8",
+          "0xbf651c67416d7487"
+        ]
+      ],
+      "rng_words": [
+        "0xdec9045d",
+        "0x9a089d75",
+        "0xab77d362",
+        "0xc3e16405",
+        "0x5c95a8da",
+        "0x60dea056",
+        "0xc25a5140",
+        "0xa4290614",
+        "0x9e0525af",
+        "0x953d37b9",
+        "0xca973b77",
+        "0x362c8457",
+        "0x7ef8d208",
+        "0xc98402b2"
+      ]
+    },
+    {
+      "id": "revisit",
+      "input": {
+        "seed": 1,
+        "segment": [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ],
+        "attempts": 3,
+        "firstCutAngleScale": 1.0,
+        "minCutLength": 0.01,
+        "maxSegments": 20
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            0.0,
+            1.5370789685649466,
+            0.0
+          ],
+          [
+            6.147750087315217,
+            0.0,
+            10.419650865001017,
+            0.286971115896396
+          ],
+          [
+            1.5370789685649466,
+            0.0,
+            6.147750087315217,
+            0.0
+          ],
+          [
+            1.5370789685649466,
+            0.0,
+            4.0211706200783635,
+            -0.8687548926703442
+          ],
+          [
+            4.0211706200783635,
+            -0.8687548926703442,
+            5.840282825149209,
+            -1.6848474144400563
+          ]
+        ],
+        "divided": [
+          true,
+          false,
+          true,
+          true,
+          false
+        ],
+        "attempts": 3,
+        "successfulCuts": 3,
+        "skips": 0
+      },
+      "coordinate_bits": [
+        [
+          "0x0000000000000000",
+          "0x0000000000000000",
+          "0x3ff897e01dd5b198",
+          "0x0000000000000000"
+        ],
+        [
+          "0x4018974bcc840000",
+          "0x0000000000000000",
+          "0x4024d6dc7a69d5c0",
+          "0x3fd25dbc196afc42"
+        ],
+        [
+          "0x3ff897e01dd5b198",
+          "0x0000000000000000",
+          "0x4018974bcc840000",
+          "0x0000000000000000"
+        ],
+        [
+          "0x3ff897e01dd5b198",
+          "0x0000000000000000",
+          "0x401015adc0437d8e",
+          "0xbfebccd70f884ab3"
+        ],
+        [
+          "0x401015adc0437d8e",
+          "0xbfebccd70f884ab3",
+          "0x40175c7319d5a017",
+          "0xbffaf5228ffc52bd"
+        ]
+      ],
+      "rng_words": [
+        "0x650941ba",
+        "0x54d30301",
+        "0x25d2f321",
+        "0x3fabdca9",
+        "0x2ab8e0a6",
+        "0xf9890067",
+        "0xe12b0ad9",
+        "0xa193d86a",
+        "0xaa60a3ad",
+        "0xa0512e90",
+        "0x68158fcc",
+        "0xb46cdf85",
+        "0xd5db5b1e",
+        "0xe9c55a71",
+        "0x62d0cd1f",
+        "0x45180848",
+        "0x4025b235",
+        "0x1e514604",
+        "0x3a36018c",
+        "0x4f094038",
+        "0x304ef4f0",
+        "0xe146333f",
+        "0x9eee6f49",
+        "0x162d5772",
+        "0x3efe9a90",
+        "0x872c0b18",
+        "0x76b267d2",
+        "0x768a5b28",
+        "0xab12d8c0",
+        "0xf10f71f4",
+        "0x2169c422",
+        "0xe85b0d06",
+        "0xed89f799",
+        "0x12d92033",
+        "0xd63a9144"
+      ]
+    },
+    {
+      "id": "capacity_one_zero_child",
+      "input": {
+        "seed": 12,
+        "segment": [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.0,
+        "minCutLength": 0.01,
+        "maxSegments": 1
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            0.0,
+            6.390353085638392,
+            0.0
+          ]
+        ],
+        "divided": [
+          true
+        ],
+        "attempts": 1,
+        "successfulCuts": 1,
+        "skips": 0
+      },
+      "coordinate_bits": [
+        [
+          "0x0000000000000000",
+          "0x0000000000000000",
+          "0x40198fb8b822d69c",
+          "0x0000000000000000"
+        ]
+      ],
+      "rng_words": [
+        "0x9f78aa02",
+        "0x7d03c7a8",
+        "0x47efc278",
+        "0xf16faa02",
+        "0x16262e32",
+        "0x60c23740",
+        "0x28cf097d",
+        "0x6ab1bc4f",
+        "0x99c68573",
+        "0x904c6879",
+        "0x47412bdf",
+        "0x4ff9ef39",
+        "0x21fbfe2a",
+        "0x6b4b235b",
+        "0x31d22fd8"
+      ]
+    },
+    {
+      "id": "capacity_one_append_failure",
+      "input": {
+        "seed": 3,
+        "segment": [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.0,
+        "minCutLength": 0.01,
+        "maxSegments": 1
+      },
+      "rng_words": [
+        "0x79560c88",
+        "0xbbf04321",
+        "0xae8d0f9c",
+        "0x506baf46",
+        "0xb038a7c1",
+        "0xb1a62763",
+        "0xf0107c08",
+        "0xd4578699",
+        "0xdd9e0924",
+        "0x0726c158",
+        "0xc0423b33",
+        "0xa8ca67af",
+        "0x4ce8f88c",
+        "0x5a69195f"
+      ],
+      "error": "SEGMENT_LIMIT_EXCEEDED",
+      "error_detail": {
+        "attempt": 0,
+        "selectedIndex": 0
+      }
+    },
+    {
+      "id": "difference_overflow",
+      "input": {
+        "seed": 0,
+        "segment": [
+          -1.7976931348623157e+308,
+          0.0,
+          1.7976931348623157e+308,
+          0.0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.0,
+        "minCutLength": 0.01,
+        "maxSegments": 4
+      },
+      "rng_words": [
+        "0xdec9045d",
+        "0x9a089d75"
+      ],
+      "error": "ARITHMETIC_OVERFLOW",
+      "error_detail": {
+        "attempt": 0,
+        "stage": "difference_x"
+      }
+    },
+    {
+      "id": "spread_overflow",
+      "input": {
+        "seed": 20,
+        "segment": [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.7976931348623157e+308,
+        "minCutLength": 0.01,
+        "maxSegments": 4
+      },
+      "rng_words": [
+        "0x04df283f",
+        "0x3b1373a0",
+        "0x422d3eb4",
+        "0xc0ee125f",
+        "0xa119373f",
+        "0xae8e7fae",
+        "0xfc5dc156",
+        "0xd7155aa8"
+      ],
+      "error": "ARITHMETIC_OVERFLOW",
+      "error_detail": {
+        "attempt": 0,
+        "stage": "spread_negative"
+      }
+    },
+    {
+      "id": "spread_before_capacity",
+      "input": {
+        "seed": 20,
+        "segment": [
+          0.0,
+          0.0,
+          10.0,
+          0.0
+        ],
+        "attempts": 1,
+        "firstCutAngleScale": 1.7976931348623157e+308,
+        "minCutLength": 0.01,
+        "maxSegments": 1
+      },
+      "rng_words": [
+        "0x04df283f",
+        "0x3b1373a0",
+        "0x422d3eb4",
+        "0xc0ee125f",
+        "0xa119373f",
+        "0xae8e7fae",
+        "0xfc5dc156",
+        "0xd7155aa8"
+      ],
+      "error": "ARITHMETIC_OVERFLOW",
+      "error_detail": {
+        "attempt": 0,
+        "stage": "spread_negative"
+      }
+    },
+    {
+      "id": "invalid_cap_before_zero_work",
+      "input": {
+        "seed": 42,
+        "segment": [
+          -1e+308,
+          0.0,
+          1e+308,
+          0.0
+        ],
+        "attempts": 0,
+        "firstCutAngleScale": 1.0,
+        "minCutLength": 4.0,
+        "maxSegments": 536870912
+      },
+      "rng_words": [],
+      "error": "INVALID_INPUT",
+      "error_detail": {}
+    },
+    {
+      "id": "short_skip_at_capacity",
+      "input": {
+        "seed": 42,
+        "segment": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "attempts": 2,
+        "firstCutAngleScale": 1.7976931348623157e+308,
+        "minCutLength": 4.0,
+        "maxSegments": 1
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "divided": [
+          false
+        ],
+        "attempts": 2,
+        "successfulCuts": 0,
+        "skips": 2
+      },
+      "rng_words": [
+        "0x69e85a2a",
+        "0xf843fad0",
+        "0x0105185f",
+        "0x8a1f1ea6"
+      ]
+    }
+  ],
+  "source_bindings": {
+    "tools/diagnostics/linepool/LinePoolOracle.java": "2ee90dfc0a601cbffe7a52d9f32efe3ce334b2645182d5d58c421342e23ce804",
+    "design/operations/line-pool-candidate-fixtures.json": "7a1fe7016694983f2e0dd818f184a5a8b2920fee37b1cb87200ee53550ae39da",
+    "design/operations/line-pool-contract-review.md": "a11731efecdbbc6dbaebfe52aaeba36ce377c66a4f81ec46b2332958da702c02"
+  }
+}

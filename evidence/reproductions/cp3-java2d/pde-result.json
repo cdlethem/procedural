@@ -1,0 +1,110 @@
+{
+  "status": "passed",
+  "scope": "Actual public PlacementMarks Processing 4.5.6 JAVA2D PDE lifecycle, edit callbacks, retained placements, radial transfer, and cached-canvas save. It validates this editable starter only; pure placement conformance and corpus reproduction remain separate.",
+  "input_sha256": {
+    ".work/dist/cp3/java/consumer/procedurals/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+    "tests/native/PlacementMarksPdeConfiguration.java": "f85924c7a8fd09e7ccfb232f7235d4e3d6a56f4afdd3c1e631234ae76712f2ed",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    ".work/dist/cp3/java/consumer/procedurals/examples/PlacementMarks/PlacementMarks.pde": "2138e14197eaed823affb56db5980420f72576459e68ad0fe88c68214a433fd3",
+    "packages/java-processing/examples/PlacementMarks/PlacementMarks.pde": "2138e14197eaed823affb56db5980420f72576459e68ad0fe88c68214a433fd3",
+    "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "tools/run_grid_conformance.py": "392d23b61f713c7d204e215a9b468874f78b213741dc1e163b4b5fcb5553b180",
+    "tools/check_placement_marks_pde.py": "4ac73de87f68bf340427d45681a292b08c44da3e2a4285055fbeb1be982af949",
+    ".work/dist/cp3/java/consumer/procedurals/library/procedurals.jar": "73b5d6914c2222b3bce1100e5bee906815f38fb1d14ba9d8397db5a069c36004",
+    "evidence/distribution/cp3-java.json": "6268fbcda4786b4e446644ee977076a9a952581d2f6c64dea94ee6d1375e361f",
+    "evidence/reproductions/cp3-java2d/pde-plan.json": "34e038e1530b8a54a6210708a105d22e3724621f18f2b683ea73604b720bf561",
+    "tests/native/PlacementMarksPdeProbe.java": "82a6d8ffba9d785b9bb2047b43be3a45334ee7713da193e292cebfe4475b56a2",
+    "tools/run_placement_marks_pde.py": "9925d2c672cb777a64d7cd22166ce993b50735068f9b9a46b8a40a3d3d66f1a9",
+    "evidence/reproductions/cp3-java2d/pde-build.json": "61256bf4a6c3e499b3faa39daa62e9d88383bd4a8c5d0df05b421b074b62d9de",
+    "evidence/conformance/circle-placement-java.json": "0d9c43fa6bea71335b1e9d2808b819f1e38585ab73da1ee1a315484b1eb34258",
+    "docs/placement-marks.md": "8254d12e9c95895f8466fc4b61bac289f0be86508e43381c5006b9629f5d23db"
+  },
+  "visual_review": "pending",
+  "exit_code": 0,
+  "stdout": "424 accepted of 5000 proposals\n353 accepted of 5000 proposals\n424 accepted of 5000 proposals\n239 accepted of 5000 proposals\n424 accepted of 5000 proposals\n613 accepted of 5000 proposals\n424 accepted of 5000 proposals\n517 accepted of 10000 proposals\n424 accepted of 5000 proposals\n432 accepted of 5000 proposals\n111 accepted of 160 proposals\n",
+  "stderr": "",
+  "native": {
+    "status": "passed",
+    "compositions": 14,
+    "key_events": 14,
+    "retained_style_edits": true,
+    "baseline_replay_pixels": true,
+    "palette_reuses_geometry": true,
+    "budget_prefix": true,
+    "radial_transfer": true,
+    "save_quiet_ms": 300
+  },
+  "images": {
+    "base.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/base.png",
+      "sha256": "b903277be31d07906220c09b129aaf8d5e73a3dc7303994d557ec310231ea487"
+    },
+    "motif.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/motif.png",
+      "sha256": "8f0b342730335b204062bed1939c81af52d853c2970fb5d13b3c562c55261a06"
+    },
+    "motif-replay.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/motif-replay.png",
+      "sha256": "b903277be31d07906220c09b129aaf8d5e73a3dc7303994d557ec310231ea487"
+    },
+    "palette.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/palette.png",
+      "sha256": "6355159797a591294d057ef5b0fd0e7344d13747352c64de16b73fbb82b86404"
+    },
+    "separation.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/separation.png",
+      "sha256": "5c67c92c661110ed15820d028ef98b135a25a261e2ce787dd322714054130474"
+    },
+    "separation-reset.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/separation-reset.png",
+      "sha256": "6355159797a591294d057ef5b0fd0e7344d13747352c64de16b73fbb82b86404"
+    },
+    "minimum.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/minimum.png",
+      "sha256": "f24ab1d2569880eced0b957a805b3c3bf60240ed7ea33d038b23acc5c81fbc61"
+    },
+    "minimum-reset.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/minimum-reset.png",
+      "sha256": "6355159797a591294d057ef5b0fd0e7344d13747352c64de16b73fbb82b86404"
+    },
+    "maximum.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/maximum.png",
+      "sha256": "5593b87fa773418924f31ff1d1144e0c71a139501a604ac3216e64776df9a023"
+    },
+    "maximum-reset.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/maximum-reset.png",
+      "sha256": "6355159797a591294d057ef5b0fd0e7344d13747352c64de16b73fbb82b86404"
+    },
+    "budget.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/budget.png",
+      "sha256": "2beffff8e6febe6e02d731feda85e1f98db4ff9eb33279422b4482e4909f93f7"
+    },
+    "budget-reset.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/budget-reset.png",
+      "sha256": "6355159797a591294d057ef5b0fd0e7344d13747352c64de16b73fbb82b86404"
+    },
+    "seed.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/seed.png",
+      "sha256": "4a7820605e42a854b7f4830b2f1545af69e8ea9572c803baabc14ecfdd48dc39"
+    },
+    "radial.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/radial.png",
+      "sha256": "8c8e4f0875c7fd10723200149e8c2c45b3b6c27184973f27db3c1acdac631e5f"
+    },
+    "displayed-final.png": {
+      "path": ".work/reproductions/cp3-java2d-pde/displayed-final.png",
+      "sha256": "8c8e4f0875c7fd10723200149e8c2c45b3b6c27184973f27db3c1acdac631e5f"
+    }
+  },
+  "save": {
+    "path": ".work/reproductions/cp3-java2d-pde/placement-marks-0015.png",
+    "sha256": "8c8e4f0875c7fd10723200149e8c2c45b3b6c27184973f27db3c1acdac631e5f",
+    "pixels_equal_displayed": true
+  }
+}

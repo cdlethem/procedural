@@ -6,7 +6,7 @@ Procedurals is an evidence-backed generative-art toolkit being distilled from a 
 
 Processing 4 is the reference implementation. The behavioral contract is language-neutral so the same operations and recipes can be implemented in p5.js, py5, and Processing for Android. A future MCP server and companion web application will turn natural-language prompts into validated portable recipes, preview them with p5.js, and export projects for every supported target.
 
-> **Current status:** corpus ingestion, analysis, visual benchmarking, and reference-form validation are implemented. The operation catalog, public drawing library, recipes, target adapters, MCP server, and web application are planned. They remain gated until the full survey is complete. Read `PROJECT_STATE.md` before contributing.
+> **Current status:** Java0.15 has15 accepted operations and15 workflows, with scoped target evidence in `catalog/validation/`. Phase2 remains incremental; recipes, MCP and web remain planned. Read `PROJECT_STATE.md` and `docs/porting-handoff.md` before contributing.
 
 ---
 
@@ -185,7 +185,7 @@ flowchart LR
     class A adapter;
 ```
 
-These are architectural roles, not finalized class names or signatures. Phase 2 owns those decisions after the complete corpus is available.
+These are architectural roles, not finalized class names or signatures. Phase 2 owns those decisions against a recorded evidence revision and reviews them as the corpus grows.
 
 ### 3. Reference implementation and target adapters
 
@@ -297,7 +297,7 @@ survey/                          Reports, result metadata, methodology, provenan
 tests/                            Ingestion and benchmark contracts
 ```
 
-### Planned after the Phase 2 gate
+### Planned after the Phase 2 design and contracts
 
 - Operation catalog and its schemas.
 - Portable core algorithms and canonical command representation.
@@ -325,7 +325,7 @@ No planned path or class name is authoritative until Phase 2 records the API des
 
 ### Adding a new function or operation
 
-Do not add public drawing operations before Phase 2 opens. Once it does, use this lifecycle:
+Phase 2 is open on the current snapshot. Before implementing public drawing operations, complete the written design and follow this lifecycle:
 
 ```mermaid
 flowchart TD
@@ -360,7 +360,7 @@ Detailed checklist:
 2. **Cluster by computation, not name.** Compare what candidates calculate and emit. Similar names may differ; different names may be identical.
 3. **Make the explicit decision.** Record keep, merge, or reject. A one-off aesthetic choice is not a library function.
 4. **Define the portable contract.** Assign its role; specify JSON-compatible inputs/outputs, ordering, mutation, numeric rules, degenerate cases, errors, capability requirements, and deterministic behavior.
-5. **Select parameters from evidence.** Prefer parameters repeatedly producing moderate or large change. Explain any deliberate divergence from corpus evidence.
+5. **Select parameters from evidence.** Verify the control's semantics and its causal link to measured variants. A moderate or large change establishes impact, not a useful default or range; document visual recommendations only when the observations support them. Explain deliberate design divergences and random-stream confounds.
 6. **Add pure fixtures first.** Include normal values, measured boundaries, fixed seeds, consecutive RNG states, empty/degenerate inputs, and invalid inputs. Use per-field tolerances.
 7. **Implement without host leakage.** The core must not import Processing, p5, py5, AWT/Swing, Android UI, or browser types.
 8. **Add command fixtures.** Assert command order, topology, counts, transforms, colours, and style state before rasterization.

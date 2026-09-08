@@ -1,0 +1,368 @@
+{
+  "accepted_cp8_review": {
+    "path": "evidence/distribution/cp8-review.json",
+    "sha256": "96c71e128f13f4be3f2a48a10241e9a334299867b550159c6747e6968c4a1401",
+    "status": "accepted"
+  },
+  "archive": {
+    "path": ".work/dist/cp9/java/procedurals-processing-0.9.0.zip",
+    "sha256": "cf12903f83ce7bccedc8e23a0f8e7d930ff0eccd54242d2268d2aa23c5c28f08"
+  },
+  "build_status": "passed",
+  "catalogs": {
+    "procedurals/catalog/operations/cyclic-palette.json": {
+      "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+      "source": "catalog/operations/cyclic-palette.json"
+    },
+    "procedurals/catalog/operations/delaunay-2d.json": {
+      "sha256": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
+      "source": "catalog/operations/delaunay-2d.json"
+    },
+    "procedurals/catalog/operations/gradient-noise-2d-01.json": {
+      "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+      "source": "catalog/operations/gradient-noise-2d-01.json"
+    },
+    "procedurals/catalog/operations/gradient-path.json": {
+      "sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+      "source": "catalog/operations/gradient-path.json"
+    },
+    "procedurals/catalog/operations/ordered-circle-filter.json": {
+      "sha256": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+      "source": "catalog/operations/ordered-circle-filter.json"
+    },
+    "procedurals/catalog/operations/radial-profile-surface.json": {
+      "sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+      "source": "catalog/operations/radial-profile-surface.json"
+    },
+    "procedurals/catalog/operations/regular-grid.json": {
+      "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
+      "source": "catalog/operations/regular-grid.json"
+    },
+    "procedurals/catalog/operations/seeded-circle-placement.json": {
+      "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+      "source": "catalog/operations/seeded-circle-placement.json"
+    },
+    "procedurals/catalog/operations/seeded-endpoint-branches.json": {
+      "sha256": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+      "source": "catalog/operations/seeded-endpoint-branches.json"
+    },
+    "procedurals/catalog/operations/seeded-quadrant-partition.json": {
+      "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+      "source": "catalog/operations/seeded-quadrant-partition.json"
+    },
+    "procedurals/catalog/operations/seeded-triangle-points.json": {
+      "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+      "source": "catalog/operations/seeded-triangle-points.json"
+    },
+    "procedurals/catalog/operations/triangle-coordinate-map.json": {
+      "sha256": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+      "source": "catalog/operations/triangle-coordinate-map.json"
+    }
+  },
+  "cp9_native_result": {
+    "path": "evidence/reproductions/cp9-java2d/result.json",
+    "sha256": "8cef1ccdc993328909f9ff0a2564765bd04d72f8c197de32250336b72af3041e",
+    "status": "passed"
+  },
+  "cp9_root_review": {
+    "path": "evidence/reproductions/cp9-java2d/root-review.json",
+    "sha256": "1a097815ae2803f77b36b812fe19149c639e5ef18b28bc4a481b00f6b8431320",
+    "status": "accepted"
+  },
+  "documents": {
+    "procedurals/docs/branch-marks.md": {
+      "sha256": "b0f60cfb7d9e5a1c203073e73a32574c5cdfdee64a91725ea9b988b202247900",
+      "source": "docs/branch-marks.md"
+    },
+    "procedurals/docs/facet-marks.md": {
+      "sha256": "e2dad8ed3fa74cea5e283d26b9cd4e8fa6ac88ee8c88e0e9b0dcc4f460001f10",
+      "source": "docs/facet-marks.md"
+    },
+    "procedurals/docs/getting-started.md": {
+      "sha256": "38cd131271f2ee66fab21487642351630f4b548b0bb30d1d2f9a6d294ec1da09",
+      "source": "docs/getting-started.md"
+    },
+    "procedurals/docs/glyph-marks.md": {
+      "sha256": "34bc8ab42fd0d6c8bcb4701c4770621d059925ec6f5bff2b8c6e1de14b514310",
+      "source": "docs/glyph-marks.md"
+    },
+    "procedurals/docs/grain-marks.md": {
+      "sha256": "49f7a45488785e1892fe7a555ce5b9285464ac924fdbd3f5ac61f1a4015aaf6b",
+      "source": "docs/grain-marks.md"
+    },
+    "procedurals/docs/installing-facet-marks.md": {
+      "sha256": "a5ada3a6da3d384c4ef60991fd183c29a44f52edd3a6c97bcb02019713dcbb2b",
+      "source": "docs/installing-facet-marks.md"
+    },
+    "procedurals/docs/installing-glyph-marks.md": {
+      "sha256": "bbcc3c77222f2877b944dda56e34bb12bfdf8a910a2749f2c0b7c09ba99c2278",
+      "source": "docs/installing-glyph-marks.md"
+    },
+    "procedurals/docs/installing-profile-marks.md": {
+      "sha256": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429",
+      "source": "docs/installing-profile-marks.md"
+    },
+    "procedurals/docs/path-marks.md": {
+      "sha256": "c8408c54429bfc5b140ae5ecd61c1ef6d290510a3900e85dce138370714555a3",
+      "source": "docs/path-marks.md"
+    },
+    "procedurals/docs/placement-marks.md": {
+      "sha256": "7c625d7739d61d125bfb595b3cf45d1c6be960797153e2a9aff6bec57029b8c7",
+      "source": "docs/placement-marks.md"
+    },
+    "procedurals/docs/profile-marks.md": {
+      "sha256": "8890f1f7200e4d4563114ee2f4a26a19dde1bd9ee230a1fb6d22f111afb0c130",
+      "source": "docs/profile-marks.md"
+    },
+    "procedurals/docs/reference/operations.md": {
+      "sha256": "5eecbea3340edb03f7ad5c5f191b449d4e31e7d0f1aab5940d5953e816320a42",
+      "source": "docs/reference/operations.md"
+    },
+    "procedurals/docs/region-marks.md": {
+      "sha256": "8614f996dea971a19c9a0bc2f737ec06bd1854e1f71de1940964ec3797ca86d3",
+      "source": "docs/region-marks.md"
+    }
+  },
+  "input_sha256": {
+    ".work/dist/cp8/java/procedurals-processing-0.8.0.zip": "b5efb5ec6dd0875e19bb9513eeb018d89a001f71addaba36b7348e28c5f0841d",
+    ".work/examples/cp9-candidate1/FacetMarks/FacetComposition.java": "e3db603debd40fa5fe1910b334a5ac54a453e72e3bd9b9daa9c548616b49e2bb",
+    ".work/examples/cp9-candidate1/FacetMarks/FacetMarks.pde": "c620098fb4ae981ee0ad2325d394a2bc7708c471296ef49bf18e800336b2271a",
+    ".work/examples/cp9-candidate1/FacetMarks/code/procedurals.jar": "676e395cad14a51305ee2969c2a02d3bb81e42f9cc434e7e804b14f4858b7a03",
+    "catalog/operations/cyclic-palette.json": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+    "catalog/operations/delaunay-2d.json": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
+    "catalog/operations/gradient-noise-2d-01.json": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+    "catalog/operations/gradient-path.json": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "catalog/operations/regular-grid.json": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "catalog/operations/seeded-endpoint-branches.json": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "docs/branch-marks.md": "b0f60cfb7d9e5a1c203073e73a32574c5cdfdee64a91725ea9b988b202247900",
+    "docs/facet-marks.md": "e2dad8ed3fa74cea5e283d26b9cd4e8fa6ac88ee8c88e0e9b0dcc4f460001f10",
+    "docs/getting-started.md": "38cd131271f2ee66fab21487642351630f4b548b0bb30d1d2f9a6d294ec1da09",
+    "docs/glyph-marks.md": "34bc8ab42fd0d6c8bcb4701c4770621d059925ec6f5bff2b8c6e1de14b514310",
+    "docs/grain-marks.md": "49f7a45488785e1892fe7a555ce5b9285464ac924fdbd3f5ac61f1a4015aaf6b",
+    "docs/installing-facet-marks.md": "a5ada3a6da3d384c4ef60991fd183c29a44f52edd3a6c97bcb02019713dcbb2b",
+    "docs/installing-glyph-marks.md": "bbcc3c77222f2877b944dda56e34bb12bfdf8a910a2749f2c0b7c09ba99c2278",
+    "docs/installing-profile-marks.md": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429",
+    "docs/path-marks.md": "c8408c54429bfc5b140ae5ecd61c1ef6d290510a3900e85dce138370714555a3",
+    "docs/placement-marks.md": "7c625d7739d61d125bfb595b3cf45d1c6be960797153e2a9aff6bec57029b8c7",
+    "docs/profile-marks.md": "8890f1f7200e4d4563114ee2f4a26a19dde1bd9ee230a1fb6d22f111afb0c130",
+    "docs/reference/operations.md": "5eecbea3340edb03f7ad5c5f191b449d4e31e7d0f1aab5940d5953e816320a42",
+    "docs/region-marks.md": "8614f996dea971a19c9a0bc2f737ec06bd1854e1f71de1940964ec3797ca86d3",
+    "evidence/distribution/cp8-review.json": "96c71e128f13f4be3f2a48a10241e9a334299867b550159c6747e6968c4a1401",
+    "evidence/reproductions/cp9-java2d/result.json": "8cef1ccdc993328909f9ff0a2564765bd04d72f8c197de32250336b72af3041e",
+    "evidence/reproductions/cp9-java2d/root-review.json": "1a097815ae2803f77b36b812fe19149c639e5ef18b28bc4a481b00f6b8431320",
+    "packages/java-processing/examples/FacetMarks/FacetMarks.pde": "c620098fb4ae981ee0ad2325d394a2bc7708c471296ef49bf18e800336b2271a",
+    "packages/java/examples/FacetMarks/FacetComposition.java": "e3db603debd40fa5fe1910b334a5ac54a453e72e3bd9b9daa9c548616b49e2bb",
+    "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+    "tools/build_facet_marks_java.py": "ed7e78db3f513306fd64d209e068d2b9ef29226e2c780b386d437ca3132c7942"
+  },
+  "input_sha256_after": {
+    ".work/dist/cp8/java/procedurals-processing-0.8.0.zip": "b5efb5ec6dd0875e19bb9513eeb018d89a001f71addaba36b7348e28c5f0841d",
+    ".work/examples/cp9-candidate1/FacetMarks/FacetComposition.java": "e3db603debd40fa5fe1910b334a5ac54a453e72e3bd9b9daa9c548616b49e2bb",
+    ".work/examples/cp9-candidate1/FacetMarks/FacetMarks.pde": "c620098fb4ae981ee0ad2325d394a2bc7708c471296ef49bf18e800336b2271a",
+    ".work/examples/cp9-candidate1/FacetMarks/code/procedurals.jar": "676e395cad14a51305ee2969c2a02d3bb81e42f9cc434e7e804b14f4858b7a03",
+    "catalog/operations/cyclic-palette.json": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+    "catalog/operations/delaunay-2d.json": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
+    "catalog/operations/gradient-noise-2d-01.json": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+    "catalog/operations/gradient-path.json": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "catalog/operations/regular-grid.json": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "catalog/operations/seeded-endpoint-branches.json": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "docs/branch-marks.md": "b0f60cfb7d9e5a1c203073e73a32574c5cdfdee64a91725ea9b988b202247900",
+    "docs/facet-marks.md": "e2dad8ed3fa74cea5e283d26b9cd4e8fa6ac88ee8c88e0e9b0dcc4f460001f10",
+    "docs/getting-started.md": "38cd131271f2ee66fab21487642351630f4b548b0bb30d1d2f9a6d294ec1da09",
+    "docs/glyph-marks.md": "34bc8ab42fd0d6c8bcb4701c4770621d059925ec6f5bff2b8c6e1de14b514310",
+    "docs/grain-marks.md": "49f7a45488785e1892fe7a555ce5b9285464ac924fdbd3f5ac61f1a4015aaf6b",
+    "docs/installing-facet-marks.md": "a5ada3a6da3d384c4ef60991fd183c29a44f52edd3a6c97bcb02019713dcbb2b",
+    "docs/installing-glyph-marks.md": "bbcc3c77222f2877b944dda56e34bb12bfdf8a910a2749f2c0b7c09ba99c2278",
+    "docs/installing-profile-marks.md": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429",
+    "docs/path-marks.md": "c8408c54429bfc5b140ae5ecd61c1ef6d290510a3900e85dce138370714555a3",
+    "docs/placement-marks.md": "7c625d7739d61d125bfb595b3cf45d1c6be960797153e2a9aff6bec57029b8c7",
+    "docs/profile-marks.md": "8890f1f7200e4d4563114ee2f4a26a19dde1bd9ee230a1fb6d22f111afb0c130",
+    "docs/reference/operations.md": "5eecbea3340edb03f7ad5c5f191b449d4e31e7d0f1aab5940d5953e816320a42",
+    "docs/region-marks.md": "8614f996dea971a19c9a0bc2f737ec06bd1854e1f71de1940964ec3797ca86d3",
+    "evidence/distribution/cp8-review.json": "96c71e128f13f4be3f2a48a10241e9a334299867b550159c6747e6968c4a1401",
+    "evidence/reproductions/cp9-java2d/result.json": "8cef1ccdc993328909f9ff0a2564765bd04d72f8c197de32250336b72af3041e",
+    "evidence/reproductions/cp9-java2d/root-review.json": "1a097815ae2803f77b36b812fe19149c639e5ef18b28bc4a481b00f6b8431320",
+    "packages/java-processing/examples/FacetMarks/FacetMarks.pde": "c620098fb4ae981ee0ad2325d394a2bc7708c471296ef49bf18e800336b2271a",
+    "packages/java/examples/FacetMarks/FacetComposition.java": "e3db603debd40fa5fe1910b334a5ac54a453e72e3bd9b9daa9c548616b49e2bb",
+    "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
+    "tools/build_facet_marks_java.py": "ed7e78db3f513306fd64d209e068d2b9ef29226e2c780b386d437ca3132c7942"
+  },
+  "layout": {
+    "added_members": {
+      "procedurals/catalog/operations/delaunay-2d.json": {
+        "sha256": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
+        "source": "catalog/operations/delaunay-2d.json"
+      },
+      "procedurals/examples/FacetMarks/FacetComposition.java": {
+        "sha256": "e3db603debd40fa5fe1910b334a5ac54a453e72e3bd9b9daa9c548616b49e2bb",
+        "source": ".work/examples/cp9-candidate1/FacetMarks/FacetComposition.java"
+      },
+      "procedurals/examples/FacetMarks/FacetMarks.pde": {
+        "sha256": "c620098fb4ae981ee0ad2325d394a2bc7708c471296ef49bf18e800336b2271a",
+        "source": ".work/examples/cp9-candidate1/FacetMarks/FacetMarks.pde"
+      }
+    },
+    "archive_members": 55,
+    "core_jar": {
+      "added_members": {
+        "org/procedurals/topology/Delaunay2D$1.class": "36e2f99f15e703875a7e430bf9f5d1306e8115450f04a18cf89ddd03ff367ca6",
+        "org/procedurals/topology/Delaunay2D$ActiveFaces.class": "e6d969610c76b5187deb6e5af44b8d6ba6299ac34bdd410f8dc3bac8c53af873",
+        "org/procedurals/topology/Delaunay2D$Budget.class": "94c7a1e105c1677d9951a6c04cc292d127379ab4a1f824eb1be89486d7d8c14e",
+        "org/procedurals/topology/Delaunay2D$Canonical.class": "f5d852a0bbeb6584a104905c9736c4f398f3158a494746c70d0bd4c9e410c1bf",
+        "org/procedurals/topology/Delaunay2D$D.class": "939bdba1125f7d96ad60022f872cbf2ece1891b3eb3e3d19394dd9d797bb4fb5",
+        "org/procedurals/topology/Delaunay2D$DelaunayException.class": "51e05d4f9a2146619e1e0c4ed2dce0f59fb7c21608952c74e2f49ebb426a8caa",
+        "org/procedurals/topology/Delaunay2D$Face.class": "c03755fbe567f55fe095e8bc6d932cb7c5703baa97dcc2dca050efe3c48503ba",
+        "org/procedurals/topology/Delaunay2D$Node.class": "ee4127c55283766e0ee0c87567bfab12103a1980c162f617aa2368241717df65",
+        "org/procedurals/topology/Delaunay2D$Point.class": "7bbc715570626879b61d4ab0ddca915128ae5520ca4bc86951100963a20b2f9b",
+        "org/procedurals/topology/Delaunay2D$WorkLimitException.class": "81e12ef1ca8edef05bb9f92cca162c770e44699747fae5337c542377229cb30a",
+        "org/procedurals/topology/Delaunay2D.class": "3ba678570604d87874efbe90d35202abbab434b72df03330e3fa58e7a566debd"
+      },
+      "candidate_sha256": "676e395cad14a51305ee2969c2a02d3bb81e42f9cc434e7e804b14f4858b7a03",
+      "preserved_prior_members": 54,
+      "prior_sha256": "2cd36310135e4d74f748e33cf062666d4abb6a8d9844620f921d7c0e7936440a"
+    },
+    "operations": 12,
+    "preserved_inherited_payloads": 26,
+    "previous_starters": 8,
+    "replaced_members": {
+      "procedurals/catalog/operations/cyclic-palette.json": {
+        "kind": "catalog",
+        "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
+        "source": "catalog/operations/cyclic-palette.json"
+      },
+      "procedurals/catalog/operations/gradient-noise-2d-01.json": {
+        "kind": "catalog",
+        "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+        "source": "catalog/operations/gradient-noise-2d-01.json"
+      },
+      "procedurals/catalog/operations/gradient-path.json": {
+        "kind": "catalog",
+        "sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+        "source": "catalog/operations/gradient-path.json"
+      },
+      "procedurals/catalog/operations/ordered-circle-filter.json": {
+        "kind": "catalog",
+        "sha256": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+        "source": "catalog/operations/ordered-circle-filter.json"
+      },
+      "procedurals/catalog/operations/radial-profile-surface.json": {
+        "kind": "catalog",
+        "sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+        "source": "catalog/operations/radial-profile-surface.json"
+      },
+      "procedurals/catalog/operations/regular-grid.json": {
+        "kind": "catalog",
+        "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
+        "source": "catalog/operations/regular-grid.json"
+      },
+      "procedurals/catalog/operations/seeded-circle-placement.json": {
+        "kind": "catalog",
+        "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+        "source": "catalog/operations/seeded-circle-placement.json"
+      },
+      "procedurals/catalog/operations/seeded-endpoint-branches.json": {
+        "kind": "catalog",
+        "sha256": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+        "source": "catalog/operations/seeded-endpoint-branches.json"
+      },
+      "procedurals/catalog/operations/seeded-quadrant-partition.json": {
+        "kind": "catalog",
+        "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+        "source": "catalog/operations/seeded-quadrant-partition.json"
+      },
+      "procedurals/catalog/operations/seeded-triangle-points.json": {
+        "kind": "catalog",
+        "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+        "source": "catalog/operations/seeded-triangle-points.json"
+      },
+      "procedurals/catalog/operations/triangle-coordinate-map.json": {
+        "kind": "catalog",
+        "sha256": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+        "source": "catalog/operations/triangle-coordinate-map.json"
+      },
+      "procedurals/docs/branch-marks.md": {
+        "kind": "documentation",
+        "sha256": "b0f60cfb7d9e5a1c203073e73a32574c5cdfdee64a91725ea9b988b202247900",
+        "source": "docs/branch-marks.md"
+      },
+      "procedurals/docs/getting-started.md": {
+        "kind": "documentation",
+        "sha256": "38cd131271f2ee66fab21487642351630f4b548b0bb30d1d2f9a6d294ec1da09",
+        "source": "docs/getting-started.md"
+      },
+      "procedurals/docs/glyph-marks.md": {
+        "kind": "documentation",
+        "sha256": "34bc8ab42fd0d6c8bcb4701c4770621d059925ec6f5bff2b8c6e1de14b514310",
+        "source": "docs/glyph-marks.md"
+      },
+      "procedurals/docs/grain-marks.md": {
+        "kind": "documentation",
+        "sha256": "49f7a45488785e1892fe7a555ce5b9285464ac924fdbd3f5ac61f1a4015aaf6b",
+        "source": "docs/grain-marks.md"
+      },
+      "procedurals/docs/installing-glyph-marks.md": {
+        "kind": "documentation",
+        "sha256": "bbcc3c77222f2877b944dda56e34bb12bfdf8a910a2749f2c0b7c09ba99c2278",
+        "source": "docs/installing-glyph-marks.md"
+      },
+      "procedurals/docs/installing-profile-marks.md": {
+        "kind": "documentation",
+        "sha256": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429",
+        "source": "docs/installing-profile-marks.md"
+      },
+      "procedurals/docs/path-marks.md": {
+        "kind": "documentation",
+        "sha256": "c8408c54429bfc5b140ae5ecd61c1ef6d290510a3900e85dce138370714555a3",
+        "source": "docs/path-marks.md"
+      },
+      "procedurals/docs/placement-marks.md": {
+        "kind": "documentation",
+        "sha256": "7c625d7739d61d125bfb595b3cf45d1c6be960797153e2a9aff6bec57029b8c7",
+        "source": "docs/placement-marks.md"
+      },
+      "procedurals/docs/profile-marks.md": {
+        "kind": "documentation",
+        "sha256": "8890f1f7200e4d4563114ee2f4a26a19dde1bd9ee230a1fb6d22f111afb0c130",
+        "source": "docs/profile-marks.md"
+      },
+      "procedurals/docs/reference/operations.md": {
+        "kind": "documentation",
+        "sha256": "5eecbea3340edb03f7ad5c5f191b449d4e31e7d0f1aab5940d5953e816320a42",
+        "source": "docs/reference/operations.md"
+      },
+      "procedurals/docs/region-marks.md": {
+        "kind": "documentation",
+        "sha256": "8614f996dea971a19c9a0bc2f737ec06bd1854e1f71de1940964ec3797ca86d3",
+        "source": "docs/region-marks.md"
+      },
+      "procedurals/library.properties": {
+        "kind": "version_metadata",
+        "sha256": "a1f4cee2bc37656119450a9934f767250ea9ceb884750a669c147821fdd6088f"
+      }
+    },
+    "starters": 9
+  },
+  "library_properties": {
+    "pretty_version": "0.9.0",
+    "version": 9
+  },
+  "review_status": "pending_root_acceptance",
+  "scope": "Staged local Java 0.9.0 archive from accepted CP8 package plus accepted FacetMarks native inputs. It preserves inherited example payloads and adapter JAR bytes; no new renderer, target-port, registry, or full-corpus claim.",
+  "source_archive": {
+    "path": ".work/dist/cp8/java/procedurals-processing-0.8.0.zip",
+    "sha256": "b5efb5ec6dd0875e19bb9513eeb018d89a001f71addaba36b7348e28c5f0841d"
+  },
+  "status": "staged"
+}

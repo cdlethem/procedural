@@ -1,0 +1,381 @@
+{
+  "status": "completed_diagnostic",
+  "scope": "Post-render Python mechanism inspection of the predeclared finer-field case; no new render, portable tolerance or artistic parameter recommendation.",
+  "criterion": "abs(per-step dy)<1e-10; descriptive classification only",
+  "input_sha256": {
+    "tools/diagnostics/cp2/inspect-alignment.py": "31fcd7bcf31d15150496f5624d8f6a710ffaeb2df72e81076b0ad95cc45741cd",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "evidence/parameter-experiments/cp2-path-choice/experiment.json": "aeeb9bb5c5fbf27b1edefd5bd802feca2fea9012011cc69e39675d37de925ede",
+    "evidence/parameter-experiments/cp2-path-choice/result.json": "07e14555d7d3c7f86bf3ab14e68f3cd35183f63664d03253acb0ee8de1fdfe5a"
+  },
+  "paths": [
+    {
+      "path": 0,
+      "start": [
+        60.0,
+        80.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        307.3338713295838,
+        -101.38711049745024
+      ]
+    },
+    {
+      "path": 1,
+      "start": [
+        164.0,
+        80.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        105.34669612860908,
+        -1.3152428572519714
+      ]
+    },
+    {
+      "path": 2,
+      "start": [
+        268.0,
+        80.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        235.21782482061386,
+        -26.279213606293713
+      ]
+    },
+    {
+      "path": 3,
+      "start": [
+        372.0,
+        80.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        306.06193031411846,
+        -117.09267103113415
+      ]
+    },
+    {
+      "path": 4,
+      "start": [
+        476.0,
+        80.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        239.8101168049311,
+        -29.596165432713118
+      ]
+    },
+    {
+      "path": 5,
+      "start": [
+        580.0,
+        80.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        616.6735542354223,
+        531.7710955729344
+      ]
+    },
+    {
+      "path": 6,
+      "start": [
+        60.0,
+        240.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        294.9799335117736,
+        -73.8817305163428
+      ]
+    },
+    {
+      "path": 7,
+      "start": [
+        164.0,
+        240.0
+      ],
+      "longest_near_horizontal_run_steps": 711,
+      "end_of_longest_run": {
+        "index": 1999,
+        "position": [
+          383.40974215740255,
+          399.9999999999998
+        ],
+        "heading": -1.4210854715202004e-14
+      },
+      "endpoint": [
+        383.8097421574025,
+        399.9999999999998
+      ]
+    },
+    {
+      "path": 8,
+      "start": [
+        268.0,
+        240.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        445.3708546335671,
+        -23.20385409852247
+      ]
+    },
+    {
+      "path": 9,
+      "start": [
+        372.0,
+        240.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        353.28476087064587,
+        103.54114087555857
+      ]
+    },
+    {
+      "path": 10,
+      "start": [
+        476.0,
+        240.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        408.75765442287127,
+        297.91976720549883
+      ]
+    },
+    {
+      "path": 11,
+      "start": [
+        580.0,
+        240.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        617.8484826929306,
+        533.7132929220237
+      ]
+    },
+    {
+      "path": 12,
+      "start": [
+        60.0,
+        400.0
+      ],
+      "longest_near_horizontal_run_steps": 851,
+      "end_of_longest_run": {
+        "index": 850,
+        "position": [
+          399.9999999999945,
+          400.0
+        ],
+        "heading": 0.0
+      },
+      "endpoint": [
+        251.6772735035396,
+        172.09079197565708
+      ]
+    },
+    {
+      "path": 13,
+      "start": [
+        164.0,
+        400.0
+      ],
+      "longest_near_horizontal_run_steps": 591,
+      "end_of_longest_run": {
+        "index": 590,
+        "position": [
+          399.9999999999931,
+          400.0
+        ],
+        "heading": 0.0
+      },
+      "endpoint": [
+        269.7538926116291,
+        88.96388275742784
+      ]
+    },
+    {
+      "path": 14,
+      "start": [
+        268.0,
+        400.0
+      ],
+      "longest_near_horizontal_run_steps": 331,
+      "end_of_longest_run": {
+        "index": 330,
+        "position": [
+          399.9999999999925,
+          400.0
+        ],
+        "heading": 0.0
+      },
+      "endpoint": [
+        357.98568583231344,
+        96.32714763428883
+      ]
+    },
+    {
+      "path": 15,
+      "start": [
+        372.0,
+        400.0
+      ],
+      "longest_near_horizontal_run_steps": 71,
+      "end_of_longest_run": {
+        "index": 70,
+        "position": [
+          399.9999999999984,
+          400.0
+        ],
+        "heading": 0.0
+      },
+      "endpoint": [
+        377.5984479690149,
+        1.2555475904972673
+      ]
+    },
+    {
+      "path": 16,
+      "start": [
+        476.0,
+        400.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        363.1594481410113,
+        13.556867620151602
+      ]
+    },
+    {
+      "path": 17,
+      "start": [
+        580.0,
+        400.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        401.38660024145577,
+        502.5747096935537
+      ]
+    },
+    {
+      "path": 18,
+      "start": [
+        60.0,
+        560.0
+      ],
+      "longest_near_horizontal_run_steps": 265,
+      "end_of_longest_run": {
+        "index": 1000,
+        "position": [
+          199.82553423938808,
+          599.9999999999171
+        ],
+        "heading": -1.6573409311604337e-11
+      },
+      "endpoint": [
+        282.2879213316008,
+        669.9632570875062
+      ]
+    },
+    {
+      "path": 19,
+      "start": [
+        164.0,
+        560.0
+      ],
+      "longest_near_horizontal_run_steps": 272,
+      "end_of_longest_run": {
+        "index": 1067,
+        "position": [
+          306.23881477875676,
+          400.0000000012175
+        ],
+        "heading": 2.4350299554498633e-10
+      },
+      "endpoint": [
+        410.52163504087434,
+        200.24645503195268
+      ]
+    },
+    {
+      "path": 20,
+      "start": [
+        268.0,
+        560.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        698.7676140397315,
+        444.2402294030273
+      ]
+    },
+    {
+      "path": 21,
+      "start": [
+        372.0,
+        560.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        756.465490538512,
+        300.3890203067995
+      ]
+    },
+    {
+      "path": 22,
+      "start": [
+        476.0,
+        560.0
+      ],
+      "longest_near_horizontal_run_steps": 14,
+      "end_of_longest_run": {
+        "index": 1628,
+        "position": [
+          199.89898733471526,
+          699.9999999996073
+        ],
+        "heading": 7.851497230149107e-11
+      },
+      "endpoint": [
+        306.8911047028729,
+        715.615822400834
+      ]
+    },
+    {
+      "path": 23,
+      "start": [
+        580.0,
+        560.0
+      ],
+      "longest_near_horizontal_run_steps": 0,
+      "end_of_longest_run": null,
+      "endpoint": [
+        624.7988577358599,
+        373.3666566175706
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+Normative candidate transition v0.1, root; pending fixture review.
+Each arithmetic operator below rounds separately to binary64. C(value,stage) fails
+ARITHMETIC_OVERFLOW {attempt,stage} on nonfinite, otherwise returns value. Function
+arguments evaluate left-to-right. Constants are nearest binary64 decimal values.
+U() is one unsigned xoshiro output divided by4294967296. PI=0x1.921fb54442d18p1.
+R(lo,hi) returns lo without U when lo>=hi; otherwise lo+((hi-lo)*U()). All R bounds
+below are finite in[0,3] or[-.1,.1], so their arithmetic cannot overflow. Upper-bound
+rounding is accepted, not retried. First-cut selection is min(2,floor(3*U())).
+
+Validate passive input shape/keys; then fields seed,segment coordinates x0/y0/x1/y1,
+attempts,firstCutAngleScale,minCutLength,maxSegments. All finite; boolean not numeric.
+Store initial segment and divided=false. Zero attempts exports immediately. Export
+canonicalizes signed coordinate zeros to+0 without changing internal arithmetic.
+
+For attempt=0..attempts-1:
+ index=min(size-1,floor((U()*size)*R(.8,1)))
+ sx,sy,ex,ey = selected current endpoints
+ dx=C(ex-sx,"difference_x"); dy=C(ey-sy,"difference_y")
+ xx=C(dx*dx,"square_x"); yy=C(dy*dy,"square_y")
+ squared=C(xx+yy,"squared_length"); length=correctlyRoundedSqrt(squared)
+ heading=fdlibmAtan2(dy,dx)
+ if length<minCutLength: skips++; continue
+ fraction=R(R(.6,.7),R(0,.8))
+ if divided[index]: fraction=fraction*.4
+ remainder=length*(1-fraction)  # finite: fraction in[0,.8],length finite
+ if not divided[index]:
+   a=R(0,1.2)*R(.2,1); a=C(a*firstCutAngleScale,"spread_positive")
+   b=R(0,1.2)*R(.2,1); b=C(b*firstCutAngleScale,"spread_negative")
+   unused=U() # source range interpolation result unused; no arithmetic needed
+   l0=C(remainder*R(.9,1.2),"length_positive")
+   l1=C(remainder*R(.9,1.2),"length_negative")
+   l2=C(remainder*R(.9,1.2),"length_straight")
+   h0=C(heading+a,"heading_positive")
+   h1=C(heading-b,"heading_negative")
+   h2=C(heading+R(-.1,.1),"heading_straight")
+   choice=min(2,floor(3*U()))
+   children = [] if choice==0 else [(h0,l0,false),(h1,l1,false)] if choice==1
+              else [(h2,l2,false)]
+ else:
+   deviation=R(.1,.4); sign=-1 if U()<.5 else+1; deviation=(deviation*sign)*2
+   distance=C(remainder*R(.9,1.1),"length_repeat")
+   turn=C(heading+deviation,"heading_repeat")
+   children = [continuation(ex,ey,true),(turn,distance,false)]
+ if size+len(children)>maxSegments:
+   fail SEGMENT_LIMIT_EXCEEDED {attempt,selectedIndex:index}
+ nx=C(sx+C(dx*fraction,"cut_delta_x"),"cut_x")
+ ny=C(sy+C(dy*fraction,"cut_delta_y"),"cut_y")
+ For each child in append order, ordinal=0,1:
+   continuation keeps old(ex,ey) exactly, no trig
+   ordinary endpoint:
+     cx=C(nx+C(fdlibmCos(turn)*distance,"child_delta_x"),"child_x")
+     cy=C(ny+C(fdlibmSin(turn)*distance,"child_delta_y"),"child_y")
+   child stage errors also include childOrdinal; other stages do not.
+ Only after all appended endpoints validated: selected end=(nx,ny),divided=true;
+ append children starting(nx,ny) with their specified flags; successfulCuts++.
+
+No partial output on any failure. Child coordinates are prepared before any mutation.
+No arithmetic or trig for unselected child endpoints. Source policy scalar computations
+and draws DO occur for unselected first-cut children, preserving specified errors/order.
+No caller callbacks, shared RNG state, rendering or ancestry. Exact output comparisons.

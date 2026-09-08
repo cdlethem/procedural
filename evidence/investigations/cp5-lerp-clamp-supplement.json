@@ -1,0 +1,150 @@
+{
+  "candidate_lerp": {
+    "clamp": "after raw result, clamp to [min(a,b), max(a,b)] then canonicalize exact zero",
+    "endpoint_order": "if t==0 return canonical(a); if t==1 return canonical(b)",
+    "fma": "not used",
+    "opposite_sign_branch": "a*(1-t) + b*t",
+    "same_sign_or_zero_branch": "a + (b-a)*t",
+    "strict_opposite_sign": "a < 0 < b or b < 0 < a"
+  },
+  "provenance": {
+    "runtime": {
+      "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.43",
+      "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]"
+    },
+    "tool": "tools/diagnostics/cp5/run_lerp_clamp_supplement.py",
+    "tool_sha256_after": "3fccc02a8081ff38efb4656b2e77859cc5f050e618e9a65e366e4b3cf1c4ebf5",
+    "tool_sha256_before": "3fccc02a8081ff38efb4656b2e77859cc5f050e618e9a65e366e4b3cf1c4ebf5",
+    "tool_sha256_match": true
+  },
+  "results": {
+    "bitwise_differences": 0,
+    "clamped": {
+      "nonfinite": 0,
+      "outside_closed_endpoint_interval": 0
+    },
+    "first_clamp_difference": null,
+    "first_raw_excursion": null,
+    "interpretation": "No clamp difference was observed only if the two null fields remain null; this finite search cannot establish absence of a rare raw excursion.",
+    "unclamped": {
+      "nonfinite": 0,
+      "outside_closed_endpoint_interval": 0
+    }
+  },
+  "scope": {
+    "compares": "The strict-opposite-sign endpoint-aware candidate L against the same L followed by interval clamp.",
+    "excluded": [
+      "public contract choice",
+      "renderer behavior",
+      "a proof over all binary64 inputs"
+    ]
+  },
+  "search": {
+    "bit_pattern_stream": {
+      "generator": "private SplitMix64",
+      "input_word_sha256": "c2d80e624911ec876b6c4b0e636add2f1fdfdf82ac6973f5c7229ee4bc94da40",
+      "seed_hex": "d9b4bef9a47c1d53"
+    },
+    "deterministic_extreme_grid_cases": 1584,
+    "deterministic_finite_bit_pattern_cases": 198416,
+    "extreme_endpoint_values": [
+      {
+        "bits": "ffefffffffffffff",
+        "value": "-0x1.fffffffffffffp+1023"
+      },
+      {
+        "bits": "ffeffffffffffffe",
+        "value": "-0x1.ffffffffffffep+1023"
+      },
+      {
+        "bits": "bff0000000000000",
+        "value": "-0x1.0000000000000p+0"
+      },
+      {
+        "bits": "8010000000000000",
+        "value": "-0x1.0000000000000p-1022"
+      },
+      {
+        "bits": "8000000000000001",
+        "value": "-0x0.0000000000001p-1022"
+      },
+      {
+        "bits": "8000000000000000",
+        "value": "-0x0.0p+0"
+      },
+      {
+        "bits": "0000000000000000",
+        "value": "0x0.0p+0"
+      },
+      {
+        "bits": "0000000000000001",
+        "value": "0x0.0000000000001p-1022"
+      },
+      {
+        "bits": "0010000000000000",
+        "value": "0x1.0000000000000p-1022"
+      },
+      {
+        "bits": "3ff0000000000000",
+        "value": "0x1.0000000000000p+0"
+      },
+      {
+        "bits": "7feffffffffffffe",
+        "value": "0x1.ffffffffffffep+1023"
+      },
+      {
+        "bits": "7fefffffffffffff",
+        "value": "0x1.fffffffffffffp+1023"
+      }
+    ],
+    "extreme_unit_values": [
+      {
+        "bits": "0000000000000000",
+        "value": "0x0.0p+0"
+      },
+      {
+        "bits": "0000000000000001",
+        "value": "0x0.0000000000001p-1022"
+      },
+      {
+        "bits": "0010000000000000",
+        "value": "0x1.0000000000000p-1022"
+      },
+      {
+        "bits": "3ca0000000000000",
+        "value": "0x1.0000000000000p-53"
+      },
+      {
+        "bits": "3cb0000000000000",
+        "value": "0x1.0000000000000p-52"
+      },
+      {
+        "bits": "3fb0000000000000",
+        "value": "0x1.0000000000000p-4"
+      },
+      {
+        "bits": "3fd0000000000000",
+        "value": "0x1.0000000000000p-2"
+      },
+      {
+        "bits": "3fe0000000000000",
+        "value": "0x1.0000000000000p-1"
+      },
+      {
+        "bits": "3fe6666666666666",
+        "value": "0x1.6666666666666p-1"
+      },
+      {
+        "bits": "3fefffffffffffff",
+        "value": "0x1.fffffffffffffp-1"
+      },
+      {
+        "bits": "3ff0000000000000",
+        "value": "0x1.0000000000000p+0"
+      }
+    ],
+    "maximum_scalar_lerps": 200000,
+    "scalar_lerps_executed": 200000
+  },
+  "status": "completed-no-render-bounded-numeric-supplement"
+}

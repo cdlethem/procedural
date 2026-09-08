@@ -1,0 +1,154 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "layout.seeded-quadrant-partition-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/seeded-quadrant-partition.json",
+    "catalog_sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/quadrant-partition-java.json": "2f87b8f2041b3f3203894c9a0820f3a9f9f6bb4d542b002eddf0f530e77c4395",
+          "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/quadrant-partition-java.json",
+            "pointer": "/vectors/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/quadrant-partition-java.json",
+            "pointer": "/vectors/fixture_cases",
+            "equals": 34
+          },
+          {
+            "path": "evidence/conformance/quadrant-partition-java.json",
+            "pointer": "/native/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/distribution/cp4-review.json",
+          "sha256": "c4d527e68eb7417ffaf28d5dd60a7e77ebb1e9b38b9f018e68e470ff683587f1"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK 17.0.20.1; Java 8 strictfp core; Processing 4.5.6 JAVA2D",
+          "scope": "Java pure fixtures, stream, ownership/access and bounded workloads."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+          "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+          "packages/java-processing/examples/RegionMarks/RegionMarks.pde": "6d41157878f7f6ca82b6f6b663a05ea13b16214b525a8fe25047243901d552ec"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp4-java2d/pde-result.json": "ae09f1ca5f2bc799b30ca84386513f7be4f72cae436f907a070f34c17540e4e5",
+          "evidence/distribution/cp4-java.json": "09902920f8ca32873f616678440d7493158a1121282f6869216e2f7be9cdb790"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp4-java2d/pde-result.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/reproductions/cp4-java2d/pde-result.json",
+            "pointer": "/native/compositions",
+            "equals": 11
+          },
+          {
+            "path": "evidence/distribution/cp4-java.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/distribution/cp4-review.json",
+          "sha256": "c4d527e68eb7417ffaf28d5dd60a7e77ebb1e9b38b9f018e68e470ff683587f1"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK 17.0.20.1; Java 8 strictfp core; Processing 4.5.6 JAVA2D",
+          "scope": "Installed local Java 0.4.0 RegionMarks, 640x640 density one; retained edits and cached save."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+          "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+          "packages/java-processing/examples/RegionMarks/RegionMarks.pde": "6d41157878f7f6ca82b6f6b663a05ea13b16214b525a8fe25047243901d552ec"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp4-java2d/pde-result.json": "ae09f1ca5f2bc799b30ca84386513f7be4f72cae436f907a070f34c17540e4e5",
+          "evidence/reproductions/cp4-java2d/root-review.json": "7565d705a6990b60e19ba620a01504eb52c9d01e00017772508ef50f4aa76d6b"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp4-java2d/root-review.json",
+            "pointer": "/visual_review/status",
+            "equals": "accepted"
+          },
+          {
+            "path": "evidence/reproductions/cp4-java2d/pde-result.json",
+            "pointer": "/native/authored_grid_transfer",
+            "equals": true
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/distribution/cp4-review.json",
+          "sha256": "c4d527e68eb7417ffaf28d5dd60a7e77ebb1e9b38b9f018e68e470ff683587f1"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK 17.0.20.1; Java 8 strictfp core; Processing 4.5.6 JAVA2D",
+          "scope": "Root-inspected cell subdivision, retained content substitution and authored rectangular transfer; no source-pixel claim."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

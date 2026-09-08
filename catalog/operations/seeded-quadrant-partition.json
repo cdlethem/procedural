@@ -1,0 +1,299 @@
+{
+  "id": "layout.seeded-quadrant-partition-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "capability": "CP4",
+  "description": "Generate an immutable, mutation-ordered sequence of equal-quadrant rectangular leaves from explicit seed, rectangle, replacement count and eligible-list fraction.",
+  "decision_cluster": "layout.seeded-quadrant-partition-2d",
+  "capability_decision": "design/capabilities/cp4-architecture-decision.md",
+  "design_review": "design/capabilities/cp4-architecture-decision.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/mosaic02#0",
+      "notes_path": "survey/out/2018/Generativos/mosaic02/notes.md",
+      "note_sha256": "94598aad3ded856d78414ab21fd454aba3802612bb2a1abe0fa0f466ac0165c5",
+      "evidence_sha256": "14515bdec05768990eec9887f19fbea4c982d6c92b3c9118cac63b79f7217174",
+      "upstream_pde_sha256": "d02a09f0179627ae7f358d26db41a5321555b11025959763da19162a40b7a2ff",
+      "relationship": "Capability-dependency admission for independently specified retained equal-quadrant generation and ordered fractional selection; not a whole-computation merge. Processing stream/prelude, float arithmetic, cell painting and later Delaunay composition remain outside this operation."
+    },
+    {
+      "candidate_id": "2018/Generativos/mosaic#0",
+      "notes_path": "survey/out/2018/Generativos/mosaic/notes.md",
+      "note_sha256": "6dc21353fdd4f167a91effe614ecdefdd57876778a1f59668734b25233067621",
+      "evidence_sha256": "f3a5cdf7bf74d4e0a9885991bf17b5244280d80e0426691e38e332921cd4c942",
+      "relationship": "Supporting capability-dependency admission for independently specified retained equal-quadrant generation and ordered fractional selection; not a whole-computation merge."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "seed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295,
+        "description": "Explicit uint32 seed for the private portable stream."
+      },
+      "replacements": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 178956970,
+        "description": "Number of requested live-leaf replacements. The maximum is a signed-int packed-coordinate representation ceiling, not a practical-work or artistic recommendation."
+      },
+      "origin": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2,
+        "description": "Root rectangle left/top [x,y] in caller coordinate units."
+      },
+      "extent": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2,
+        "description": "Root rectangle positive [width,height] in caller coordinate units."
+      },
+      "selectionFraction": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "maximum": 1,
+        "description": "Fractional eligible prefix of the current ordered live list; the last eligible index has fractional weight when live-count*fraction is not integral."
+      }
+    },
+    "required": [
+      "seed",
+      "replacements",
+      "origin",
+      "extent",
+      "selectionFraction"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "bounds": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4,
+          "description": "[left,top,right,bottom] axis-aligned leaf bounds in live-list order."
+        },
+        "maxItems": 536870911,
+        "minItems": 1
+      },
+      "ids": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 715827880
+        },
+        "maxItems": 536870911,
+        "description": "Within-run creation identities aligned with bounds.",
+        "minItems": 1
+      },
+      "replacements": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 178956970
+      }
+    },
+    "required": [
+      "bounds",
+      "ids",
+      "replacements"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "partition-output",
+  "output_invariants": "bounds and ids have equal length 1+3*replacements. Bounds are finite canonical-positive-zero [left,top,right,bottom] tuples with left<right and top<bottom. Every returned id is distinct and ids are strictly increasing in live-list order: appending consecutive creation ids and removing a parent preserves this invariant. Root is id0; successful replacement i creates ids4*i+1 through4*i+4. toValues contains no redundant retained count.",
+  "behavior": {
+    "input": "Input has exactly five required keys. Validate outer passive record/keys; seed; replacements; origin pair/x/y; extent pair/width/height; selectionFraction, in that order. Every numeric value is finite and never bool. Seed and replacements accept finite integral values in their stated bounds before narrowing. Origin can be any finite coordinate; extent components and selectionFraction must be strictly positive, and selectionFraction must not exceed1. Normalize accepted input zero signs to positive zero. No defaults.",
+    "root_rectangle": "After static input validation and before RNG initialization or output-sized allocation, calculate right=round64(left+width), then bottom=round64(top+height). Each endpoint must be finite and strictly greater than its origin coordinate. Calculate representedWidth=round64(right-left), then representedHeight=round64(bottom-top); each must be finite and strictly positive. A failure in any of these checks is INVALID_RECTANGLE. A representable positive root is valid when replacements=0 even if a subsequent half split would not be representable. Leaves cover this represented endpoint rectangle; no real-number exact-extent guarantee is implied by rounded origin+extent. Do not calculate or require finite area: finite spans can have an overflowing area product without invalidating the partition.",
+    "layout": "N=replacements. Privately retain four binary64 endpoints and one integer creation id for each of 1+3*N live leaves. N<=178956970 ensures 4*(1+3*N)<=2147483647, allowing signed-int-indexed packed endpoint storage; this is a representation ceiling, not an allocation, latency or useful artistic-range promise. Host allocation failure returns no result and remains a host resource exception, never a validation error or partial successful output. Internal leaves retain shared endpoints left/top/right/bottom, never independently recomputed child border coordinates.",
+    "selection": "For replacement index i=0..N-1, let L be the current ordered live-leaf count. Consume exactly one private portable unit u in [0,1). Compute limit=round64(L*selectionFraction); compute product=round64(u*limit); selected=floor(product). The arithmetic is separate binary64 operations: no FMA, reassociation, pre-rounded eligible count, clamping, retry or extra draw. Under the validated domains and unit mapping selected is a current index in0..L-1. SelectionFraction=1 exposes the whole list; a fractional L*selectionFraction gives the last eligible index its fractional sampling interval rather than truncating that index away.",
+    "replacement": "Read the selected parent bounds [left,top,right,bottom]. Compute spanX=round64(right-left), halfX=round64(spanX*0.5), midpointX=round64(left+halfX) and require left<midpointX<right. Then compute spanY=round64(bottom-top), halfY=round64(spanY*0.5), midpointY=round64(top+halfY) and require top<midpointY<bottom. Test x before y. If either midpoint cannot be represented strictly inside its selected parent, discard all internal work and raise PARTITION_ARITHMETIC_INVALID with error_detail:{replacementIndex:i,stage:midpoint_x|midpoint_y}; never silently skip, clamp, partially return or consume a substitute draw. On success append four children using the parent's stored endpoints in exactly TL=[left,top,midpointX,midpointY], TR=[midpointX,top,right,midpointY], BR=[midpointX,midpointY,right,bottom], BL=[left,midpointY,midpointX,bottom] order, assigning the next four consecutive creation ids, then remove the parent at selected. The children are nested inside an already validated parent; finite positive child spans follow as an invariant rather than separate dynamic stages.",
+    "zero_and_replay": "N=0 validates every static input and the representable root rectangle, returns exactly root bounds and id0, and initializes or consumes no RNG state. Every requested replacement consumes one unit before its midpoint check. Replaying unchanged valid input reconstructs exactly the same topology, ids and binary64 bounds. Returning a result retains neither input carrier nor stream state. A successful longer run follows the same first N replacement steps as the shorter run, then replaces additional leaves: its final leaf array is generally not a prefix or a superset of the shorter final leaf array. A later dynamic failure returns no result.",
+    "ownership": "Result owns detached arrays only. Caller input containers must not be mutated concurrently with the eager call; active getters/proxies/custom hooks are outside passive interchange. Complete static validation before output-sized allocation or RNG initialization. Result is immutable. boundsAt returns a fresh four-number binary64 array; toValues returns deep-copied bounds/ids/replacements exactly matching output_schema. boundsInto validates before writing four slots. No caller input or RNG state is retained. No serialize/toJSON/config replay API or count aliases: callers retain their original configuration. Getter/export allocation failure returns no new value and leaves the retained result usable. Invalid access changes no destination slots.",
+    "access": "Java size() and replacements() (JavaScript/Python getters/properties) return retained leaf count and requested replacement count. boundsAt/bounds_at returns a fresh four-number bounds array, idAt/id_at the within-run creation identity. Index must be finite nonnegative safe integer<=9007199254740991, never bool; integral floating indices accepted. INVALID_INDEX precedes INDEX_OUT_OF_RANGE (index>=size), then INVALID_OUTPUT for boundsInto/bounds_into. Require a finite nonnegative integral offset and four writable binary64 slots; reject Float32 buffers and leave all destination slots unchanged on failure. Java boundsInto has required typed int offset and returns void; wrong-type/unrepresentable typed host calls are host-call errors. JavaScript boundsInto(index,out,offset=0) returns out; Python bounds_into(index,out,offset=0) returns None. Validate offset/index before narrowing.",
+    "native_forms": "Java org.procedurals.layout.QuadrantPartition2D.generate(Object config) returns QuadrantPartition2D with size(), replacements(), boundsAt(Object or long), boundsInto(index,double[],int offset), idAt(Object or long), toValues(). JavaScript seededQuadrantPartition2D(config) returns result with size/replacements getters, boundsAt,boundsInto,idAt,toValues. Python seeded_quadrant_partition_2d(config) returns result with size/replacements properties, bounds_at,bounds_into,id_at,to_values. No alternate carrier, defaults, serialize/toJSON or count aliases.",
+    "native_types": "Follow established portable carrier rules: Java accepts Map records and exactly two-element List pairs; only Byte/Short/Integer/Long/Float/Double numeric values are accepted, rejecting BigInteger/BigDecimal/custom Number before conversion. JavaScript accepts passive Object/null-prototype records and ordinary Array pairs; Python accepts exact builtin dict records and exact builtin list pairs with int/float but never bool. PVector, typed-array pair input, class instances, active accessors/proxies and custom mapping/list containers are not interchange inputs. Java boundsInto uses double[]; future JavaScript accepts Float64Array or writable ordinary Array and Python exact builtin list or array(d). Python huge-integer conversion failure becomes INVALID_INPUT or INVALID_INDEX, not an uncaught conversion exception; validate integral domains before conversion where applicable.",
+    "units": "Caller-defined planar coordinate units. Bounds use [left,top,right,bottom]; positive x goes from left to right and positive y from top to bottom. The operation performs no canvas mapping, axis flip, clipping, drawing, content placement or style selection.",
+    "numerics": "Every stated add, subtract and multiply is IEEE754 binary64 round-to-nearest, ties-to-even, with separate operation rounding. No FMA, reassociation, binary32 conversion, host random API, clamp or epsilon. Normalize accepted zero input coordinates and every completed zero bound to positive zero. Compare topology, output length, ids, replacements, RNG state/vector bits and bounds by exact binary64 bits. The representability checks are a finite binary64 predicate, not a real-number geometric guarantee.",
+    "rng": "Portable xoshiro128**1.1 private to each nonzero-replacement call. Zero-extend uint32 seed to uint64 SplitMix64 state. Twice advance state by0x9e3779b97f4a7c15 modulo2^64; z=state; z=(z xor(z>>>30))*0xbf58476d1ce4e5b9 mod2^64; z=(z xor(z>>>27))*0x94d049bb133111eb mod2^64; q=z xor(z>>>31). Pack q0 and q1 as s0=low32(q0),s1=high32(q0),s2=low32(q1),s3=high32(q1). next output=rotl32(s1*5 mod2^32,7)*9 mod2^32. Then t=s1<<9 mod2^32; sequentially s2 xor=s0; s3 xor=s1; s1 xor=s2; s0 xor=s3; s2 xor=t; s3=rotl32(s3,11), all words uint32. Map an unsigned output to unit u=output/4294967296 exactly in[0,1). The all-zero state is unreachable under this expansion and is an internal invariant. State is private, discarded on return/failure and never shared with content/style work. There is no Processing or source palette/background prelude.",
+    "environment": [
+      "private xoshiro128**1.1 with specified uint32-seed/Two-SplitMix64 expansion",
+      "IEEE754 binary64 basic arithmetic"
+    ],
+    "complexity": "Flat ordered packed storage permits O(replacements^2) worst-case element moves and O(1+3*replacements) retained primitive storage; selection/split arithmetic itself is O(replacements). Rank-indexed implementations may improve the bound only while preserving every ordered result and error. Indexed retained access is O(1); detached export is O(size). Avoid per-leaf object allocation in the replacement loop. Benchmark practical ranges and distinguish retained payload from transient growth; the representation limit promises neither allocation success nor latency.",
+    "native_errors": "Validation/access exceptions expose code. PARTITION_ARITHMETIC_INVALID additionally exposes replacementIndex (Python replacement_index) and stage, serialized by runners as error_detail:{replacementIndex,stage}. INVALID_INPUT, INVALID_RECTANGLE and accessor errors have no dynamic detail. Java validation errors may subclass IllegalArgumentException and dynamic errors ArithmeticException; JavaScript Error and Python ValueError subclasses carry equivalent data. Host resource failure is not converted to validation or partial success."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed/nonfinite/out-of-domain static input, including wrong carrier/shape/keys, bool numeric, invalid uint32 seed, replacement count outside its representation domain, nonpositive extent, or selectionFraction outside(0,1].",
+    "INVALID_RECTANGLE": "After valid static input, root endpoint add/subtract cannot produce finite strictly increasing and positive represented horizontal and vertical bounds. This error has no dynamic detail.",
+    "PARTITION_ARITHMETIC_INVALID": "A requested selected-parent midpoint is not strictly inside its parent after specified binary64 calculation. error_detail has replacementIndex and midpoint_x or midpoint_y stage; no output is returned.",
+    "INVALID_INDEX": "Index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "Representable index is outside0..size()-1.",
+    "INVALID_OUTPUT": "boundsInto destination/offset lacks four writable binary64 slots."
+  },
+  "error_order": [
+    "INVALID_INPUT",
+    "INVALID_RECTANGLE",
+    "PARTITION_ARITHMETIC_INVALID",
+    "INVALID_INDEX",
+    "INDEX_OUT_OF_RANGE",
+    "INVALID_OUTPUT"
+  ],
+  "dynamic_error_stages": [
+    "midpoint_x",
+    "midpoint_y"
+  ],
+  "parameters": {
+    "seed": {
+      "unit": "uint32",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Portable stream is an explicit CP4 design divergence with planned vectors, not Processing randomSeed compatibility. Private five-image investigation used Java Random only and is not this public stream."
+    },
+    "replacements": {
+      "unit": "successful requested replacements",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "mosaic02 source uses100; its 100-to-200 substitution was visually large. The private five-image decision inspected100 and200. Those discrete settings establish a useful editing control, not a recommended interval.178956970 is a packed-coordinate representation ceiling."
+    },
+    "origin": {
+      "unit": "coordinate pair [left,top]",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit root placement makes retained regions available for independent caller content; no canvas-derived default or continuous range is established."
+    },
+    "extent": {
+      "unit": "positive coordinate pair [width,height]",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Equal quadrant source geometry and the private 640-square walkthrough motivate an explicit rectangle, not a default extent or common useful range."
+    },
+    "selectionFraction": {
+      "unit": "dimensionless eligible ordered-list fraction",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "mosaic02 and mosaic source scheduling motivate first-half ordered-list selection. Fractions in(0,1] are a portable policy domain; no tested continuous artistic range or default is authorized. Root inspected the private0.5 versus1 comparison: full-list selection leaves larger anchors and tighter small-cell clusters in that piece. The native source-schedule diagnostic corroborates greater depth disparity; contrary source-note prose is unresolved, and original source images were not inspected here."
+    }
+  },
+  "design_divergences": [
+    "Private portable xoshiro128**1.1 stream with no source/Processing background or palette prelude, instead of source Processing random scheduling and the private Java Random walkthrough.",
+    "Immutable owned binary64 bounds and stable creation ids rather than mutable source Rect/list state.",
+    "Explicit representability failures and all-or-error eager construction rather than source float behavior, skipped leaves or implicit host failures.",
+    "Public generator returns only leaf geometry and identities; panel shading, motifs, mesh construction, content callbacks and explicit variable-grid refinement remain caller/example concerns."
+  ],
+  "exclusions": [
+    "unequal or random-ratio splits",
+    "variable rectangular-grid refinement",
+    "binary/guillotine, warped quadrilateral or 3D partitioning",
+    "minimum-size skip policy",
+    "adjacency, parent tree, split history or mutable live session",
+    "cell drawing, palette/style/content RNG, callbacks, clipping and meshes",
+    "Processing RNG compatibility or host-global randomness"
+  ],
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion",
+        "signed-int packed primitive storage"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "uint32-wrap",
+        "uint64-seed-expansion"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    }
+  },
+  "fixtures": "fixtures/operations/seeded-quadrant-partition.json",
+  "reproduction": {
+    "level": "technique",
+    "design_evidence": [
+      "design/capabilities/cp4-partition-source-audit.md",
+      "evidence/investigations/cp4-selection-java-check.json",
+      "evidence/parameter-experiments/cp4-regions/decision.md"
+    ],
+    "acceptance": "Draft plan: distinguishing pure vectors for seed expansion, one-unit consumption, odd-list fractional selection, child append/remove order, stable ids, zero replacements, root-rectangle failure and dynamic midpoint failure; Java native RegionMarks must verify retained geometry across palette/motif edits, regeneration for seed/replacement/fraction edits, ordinary-cell content substitution and displayed-canvas save. Private five-image JavaRandom evidence is not public-stream or package validation.",
+    "status": "planned"
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root accepted semantics and independent fixture evidence; see design/operations/quadrant-partition-contract-review.md. Java implementation and native validation remain unclaimed."
+  }
+}

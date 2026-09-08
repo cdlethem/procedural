@@ -1,0 +1,45 @@
+{
+  "status": "accepted-java-core-only",
+  "owner": "root",
+  "report": "evidence/conformance/triangle-points-java.json",
+  "report_sha256": "a62c4566f4c2594b38b06ae89363998e6b8ef7edc6c3d43115a3a64e3c08a494",
+  "source_sha256": {
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+    "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+    "tests/native/TrianglePointsNative.java": "e7ccdb158dea31c7173096344e4a7bbc3ab32055e81de0da30d62cde9f481949",
+    "tools/run_triangle_points_java.py": "43a20656f854c95c468ddabf744b1175f38d1f080cde78a0164c24cc35b56792"
+  },
+  "scope": "Both Java CP5 operations, exact frozen fixtures and native access/ownership checks; installed delivery and renderer acceptance remain pending.",
+  "direct_source_review": [
+    "Root read complete TrianglePoints2D, fixture runner and native checks. No Processing/renderer/global random dependencies.",
+    "Complete seeded static validation precedes output allocation and private RNG. Zero-count returns before RNG. Mapping validates every pair before output allocation, retains no caller list, and allocates no per-point object during numeric output construction.",
+    "One correctly rounded Math.sqrt per point, strictfp binary64 separated operations, endpoint branches, strict opposite signs, final clamp and positive zero match contract. No determinant rejection or FMA.",
+    "Whitelisted numeric carriers, safe-index validation before narrowing, and offset > destination.length-2 avoid overflow/partial writes.",
+    "Root corrected factory-specific provenance and reused sqrt; these exact final bytes are bound by native report."
+  ],
+  "runtime_evidence": {
+    "fixture_cases": 59,
+    "vector_assertions": 209,
+    "native_assertions": 36,
+    "seeded_workloads": [
+      0,
+      1,
+      15680,
+      40960,
+      100000
+    ],
+    "explicit_map_workloads": [
+      15680,
+      40960
+    ]
+  },
+  "limitations": [
+    "No allocation-failure injection performed. Ordering and absence of partial returned state are source-inspected, not a simulated resource-failure result.",
+    "Raw retained payload 16*N excludes headers and JVM heap; mapped carrier object counts are not measured heap bytes.",
+    "Few warmups and local timing observations do not establish steady-state guarantees, mobile limits or recommended counts.",
+    "No original corpus PNGs were diffed; installed technique-level render remains pending."
+  ]
+}

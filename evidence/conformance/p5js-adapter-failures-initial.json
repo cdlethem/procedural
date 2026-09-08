@@ -1,0 +1,217 @@
+{
+  "part": "failures",
+  "status": "passed",
+  "scope": "p5.js 2.3.2 Canvas2D Chromium; selected registered suite part only",
+  "input_sha256": {
+    "tests/native/p5-frame-failures.js": "0ca04faea5092ae92cbf820023fb4aa8841cc5a0e9da5c80e5f05e5ca4e9b598",
+    "tools/run_p5_adapter.mjs": "9e9756b1ec254d1076c991b09d77da18a9046d3389b4579f033e31a35f47c30e",
+    "packages/javascript/src/internal/p5-frame.js": "ba558ae305fd5caa41ce446c68e79eec67abe960c0f2431ddbbb10d08d12e6dc",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "catalog/drawing/fresh-raster-2d.json": "3dad9d7b457c1f3ceb3e60b5ae8f84b0d7c87532849ae72b2e8412e2c420959d",
+    "design/p5js-adapter-validation.md": "9399a9f89b59dad637b229df590835c6c86330ebbfaeefb7d9fc362645ce08a5",
+    ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  },
+  "node": "v22.22.1",
+  "platform": "linux",
+  "architecture": "x64",
+  "errors": [],
+  "browser": "153.0.8010.12",
+  "browser_executable_sha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e",
+  "images": {},
+  "native": {
+    "scope": "real p5.Graphics/Canvas2D lifecycle with deterministic injected adapter faults; spontaneous browser context loss is not claimed",
+    "profile": "drawing.fresh-raster-2d",
+    "version": "0.1.0",
+    "failures": 0,
+    "passed": true,
+    "counts": {
+      "checks": 12
+    },
+    "checks": [
+      {
+        "id": "invalid-environment-precedes-static-capability",
+        "injected": false,
+        "invalid": {
+          "code": "INVALID_ENVIRONMENT",
+          "commandIndex": null
+        },
+        "staticAbsent": {
+          "code": "UNSUPPORTED_CAPABILITY",
+          "commandIndex": null
+        },
+        "passed": true
+      },
+      {
+        "id": "allocation-failure-is-resource-failure",
+        "injected": true,
+        "error": {
+          "code": "RESOURCE_FAILURE",
+          "commandIndex": null
+        },
+        "state": "aborted",
+        "passed": true
+      },
+      {
+        "id": "readiness-failure-releases-real-graphics",
+        "injected": true,
+        "error": {
+          "code": "RESOURCE_FAILURE",
+          "commandIndex": null
+        },
+        "state": "aborted",
+        "removeCalls": 1,
+        "backing": [
+          0,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "id": "initialization-failure-releases-real-graphics",
+        "injected": true,
+        "error": {
+          "code": "RENDER_FAILURE",
+          "commandIndex": null
+        },
+        "state": "aborted",
+        "removeCalls": 1,
+        "backing": [
+          0,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "id": "draw-failure-preserves-prior-count-and-noop-index",
+        "injected": true,
+        "first": null,
+        "error": {
+          "code": "RENDER_FAILURE",
+          "commandIndex": 2
+        },
+        "laterEnd": {
+          "code": "INVALID_STATE",
+          "commandIndex": null
+        },
+        "output": null,
+        "state": "aborted",
+        "count": 1,
+        "removeCalls": 1,
+        "passed": true
+      },
+      {
+        "id": "silent-loss-after-stroke-preserves-prior-count-and-noop-index",
+        "injected": true,
+        "first": null,
+        "error": {
+          "code": "RENDER_FAILURE",
+          "commandIndex": 2
+        },
+        "state": "aborted",
+        "count": 1,
+        "removeCalls": 1,
+        "contextLoss": "injected silently after native stroke; not spontaneous browser loss",
+        "passed": true
+      },
+      {
+        "id": "end-failure-is-render-failure",
+        "injected": true,
+        "error": {
+          "code": "RENDER_FAILURE",
+          "commandIndex": null
+        },
+        "state": "aborted",
+        "removeCalls": 1,
+        "backing": [
+          0,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "id": "empty-and-noop-only-injected-loss-do-not-commit",
+        "injected": true,
+        "attempts": [
+          {
+            "inputCount": 0,
+            "error": {
+              "code": "RENDER_FAILURE",
+              "commandIndex": null
+            },
+            "state": "aborted",
+            "count": 0,
+            "removeCalls": 1
+          },
+          {
+            "inputCount": 1,
+            "error": {
+              "code": "RENDER_FAILURE",
+              "commandIndex": null
+            },
+            "state": "aborted",
+            "count": 0,
+            "removeCalls": 1
+          }
+        ],
+        "spontaneousContextLoss": "not simulated; both failures are injected isContextLost probes",
+        "passed": true
+      },
+      {
+        "id": "reentrant-host-frame-error-aborts-and-releases",
+        "injected": true,
+        "error": {
+          "code": "INVALID_STATE",
+          "commandIndex": null
+        },
+        "state": "aborted",
+        "removeCalls": 1,
+        "passed": true
+      },
+      {
+        "id": "cleanup-accessor-preserves-primary-frame-error",
+        "injected": true,
+        "error": {
+          "code": "RENDER_FAILURE",
+          "commandIndex": 0
+        },
+        "state": "aborted",
+        "removeCalls": 1,
+        "passed": true
+      },
+      {
+        "id": "completed-transfer-repeated-release-zeros-backing-once",
+        "injected": false,
+        "misuse": {
+          "code": "INVALID_STATE",
+          "commandIndex": null
+        },
+        "state": "completed",
+        "removeCalls": 1,
+        "backing": [
+          0,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "id": "explicit-abort-publishes-no-output",
+        "injected": false,
+        "laterEnd": {
+          "code": "INVALID_STATE",
+          "commandIndex": null
+        },
+        "output": null,
+        "state": "aborted",
+        "removeCalls": 1,
+        "backing": [
+          0,
+          0
+        ],
+        "passed": true
+      }
+    ]
+  }
+}

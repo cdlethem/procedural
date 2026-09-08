@@ -1,0 +1,49 @@
+{
+  "command": [
+    "xvfb-run",
+    "-a",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+    "-Duser.home=/home/colin/dev/procedural/.work/build/cp7-p3d-capability/home",
+    "-Djava.io.tmpdir=/home/colin/dev/procedural/.work/experiments/cp7-p3d-capability/tmp",
+    "-cp",
+    "/home/colin/dev/procedural/.work/build/cp7-p3d-capability/classes:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar:/home/colin/dev/procedural/.work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar",
+    "P3DCapabilityProbe",
+    "/home/colin/dev/procedural/.work/experiments/cp7-p3d-capability"
+  ],
+  "error": "P3D probe emitted unexpected stderr",
+  "exit_code": 0,
+  "input_sha256": {
+    ".work/build/cp7-p3d-capability/classes/P3DCapabilityProbe.class": "457f2a22e2bf0b7f612105081c2ce2c63068f0becfb0ee131f3544bffa851c63",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar": "d500a38dedcbd6dfa89c5ae943a22d1051b1dbf1502f8544337bbe57d118f2c5",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar": "465bbc8d410b872a76b5b901cdb9c2c07905edd5e61a7120dc6a4d007880ec2f",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar": "3d0ed2674059fc207166ce1351de8d30e0b6102af12ca8b84fbf1bc3f246038a",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar": "34c919bc6073c2d9e73cbe7558c4e9de6b5c58146f3658e2bcc5f23ec3fccc9f",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+    "evidence/investigations/cp7-p3d-plan.json": "179557ac9d54dd8ab97dc410087e428ed688ff071d98376096351c6a035993d6",
+    "tools/diagnostics/cp7/P3DCapabilityProbe.java": "7d4d1a210503c8e54efc58850be55179c3ce28660f3a2cb0e610d1111b92083d",
+    "tools/diagnostics/cp7/check_p3d_runtime.py": "2121c49a10b299b7b8225a133d0dc040085506c5ae035fd9fd370ac002d0c68f"
+  },
+  "input_sha256_after": {
+    ".work/build/cp7-p3d-capability/classes/P3DCapabilityProbe.class": "457f2a22e2bf0b7f612105081c2ce2c63068f0becfb0ee131f3544bffa851c63",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0-natives-linux-amd64.jar": "d500a38dedcbd6dfa89c5ae943a22d1051b1dbf1502f8544337bbe57d118f2c5",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/gluegen-rt-2.6.0.jar": "465bbc8d410b872a76b5b901cdb9c2c07905edd5e61a7120dc6a4d007880ec2f",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0-natives-linux-amd64.jar": "3d0ed2674059fc207166ce1351de8d30e0b6102af12ca8b84fbf1bc3f246038a",
+    ".work/toolchains/cp7-processing-4.5.6/resources/core/library/jogl-all-2.6.0.jar": "34c919bc6073c2d9e73cbe7558c4e9de6b5c58146f3658e2bcc5f23ec3fccc9f",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+    "evidence/investigations/cp7-p3d-plan.json": "179557ac9d54dd8ab97dc410087e428ed688ff071d98376096351c6a035993d6",
+    "tools/diagnostics/cp7/P3DCapabilityProbe.java": "7d4d1a210503c8e54efc58850be55179c3ce28660f3a2cb0e610d1111b92083d",
+    "tools/diagnostics/cp7/check_p3d_runtime.py": "2121c49a10b299b7b8225a133d0dc040085506c5ae035fd9fd370ac002d0c68f"
+  },
+  "plan": "evidence/investigations/cp7-p3d-plan.json",
+  "plan_sha256": "179557ac9d54dd8ab97dc410087e428ed688ff071d98376096351c6a035993d6",
+  "scope": "one private P3D runtime capability probe only; no mesh, shader, or broader renderer support claim",
+  "status": "failed",
+  "stderr": "libEGL warning: DRI3 error: Could not get DRI3 device\nlibEGL warning: Ensure your X server supports DRI3 to get accelerated rendering\nX11Util.Display: Shutdown (JVM shutdown: true, open (no close attempt): 3/3, reusable (open, marked uncloseable): 0, pending (open in creation order): 3)\nX11Util: Open X11 Display Connections: 3\nX11Util: Open[0]: NamedX11Display[:99, 0x7c73146bf970, refCount 1, unCloseable false]\nX11Util: Open[1]: NamedX11Display[:99, 0x7c6f60001080, refCount 1, unCloseable false]\nX11Util: Open[2]: NamedX11Display[:99, 0x7c6f600123c0, refCount 1, unCloseable false]\n",
+  "stdout": ""
+}

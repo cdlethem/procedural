@@ -1,0 +1,56 @@
+{
+  "status": "root-reviewed-numeric-direction",
+  "input_sha256": {
+    "evidence/investigations/cp7-normal-numeric-cases-v2.json": "e278e89cb5d041a8f49179c734057f702b344bb47d4b802ff139a78228e8513c",
+    ".work/cp7-profile-choices/mesh-dump.json": "45feba9215a7766670a647f3f11c5e751a5b68da64882950581e26ae962729b8",
+    "design/operations/cp7-mesh-numeric-cases.md": "3a232e4ae6c9d070329347196c19f8ce88692532b8541adace0d87b68e26888a",
+    "tools/diagnostics/cp7/normal_numeric_cases_v2.py": "2ee55dfbc9fd001a8151d580852e85c118e4e2b58d7c6cafd0b08f9fa822d756"
+  },
+  "root_actions": [
+    "Read full v1 and v2 arithmetic diagnostics.",
+    "Reran v2 and verified its current source/memo/dump bindings.",
+    "Inspected high-aspect, finite-endpoint subtraction and nearparallel rounded-cross witnesses; compared all4496moderate private mesh face normals."
+  ],
+  "selection": "Use separately max-component-scaled edges; cross them in ordered binary64 operations; rescale the cross by its own max component before ordered sum-of-squares/sqrt normalization. Direct nonfinite edge subtraction, zero edge or zero rounded cross must report explicit geometry failure, with no dropped faces. This is a draft contract choice, not all-finite robustness.",
+  "comparison": {
+    "maximum_unit_component_abs": 6.245004513516506e-16,
+    "meshes": [
+      {
+        "faces": 1088,
+        "id": "baseline",
+        "max_unit_component_abs": 2.220446049250313e-16,
+        "min_direct_cross_norm": 235.2411367909446
+      },
+      {
+        "faces": 1088,
+        "id": "waist",
+        "max_unit_component_abs": 2.220446049250313e-16,
+        "min_direct_cross_norm": 94.15217780856115
+      },
+      {
+        "faces": 1024,
+        "id": "pointed",
+        "max_unit_component_abs": 6.245004513516506e-16,
+        "min_direct_cross_norm": 14.956341643576822
+      },
+      {
+        "faces": 272,
+        "id": "coarse",
+        "max_unit_component_abs": 1.1102230246251565e-16,
+        "min_direct_cross_norm": 918.4402376762154
+      },
+      {
+        "faces": 1024,
+        "id": "open",
+        "max_unit_component_abs": 2.220446049250313e-16,
+        "min_direct_cross_norm": 235.2411367909446
+      }
+    ],
+    "minimum_direct_cross_norm": 14.956341643576822
+  },
+  "limits": [
+    "Cross-target tolerances and fixture witnesses remain contract work.",
+    "A triangle can have mathematical area while its selected rounded normal computation collapses.",
+    "No new render; the accepted private renderer used direct normals. The compared component differences are numerical evidence only, not a pixel-equivalence claim."
+  ]
+}

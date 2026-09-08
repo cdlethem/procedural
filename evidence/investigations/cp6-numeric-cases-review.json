@@ -1,0 +1,32 @@
+{
+  "status": "accepted-numeric-investigation",
+  "reviewer": "root",
+  "evidence": {
+    "path": "evidence/investigations/cp6-numeric-cases.json",
+    "sha256": "0417d1c304ed96c02324d0fc69c3885617da7e8d63d91b57fe445890f2c13526"
+  },
+  "verification": "Root read full diagnostic source, reran with uv Python and compared every non-runtime field; also translated all seven inputs to the independent full BFS fixture oracle and checked outcomes, successful child bits and RNG word sequences.",
+  "runtimes": [
+    {
+      "implementation": "CPython",
+      "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.43",
+      "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]"
+    },
+    {
+      "implementation": "CPython",
+      "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.43",
+      "python": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]"
+    }
+  ],
+  "findings": [
+    "Finite inputs witness child length, heading, x-endpoint and y-endpoint overflow.",
+    "Positive subnormal length can round to zero without losing retained ancestry.",
+    "Failed gates skip hypothetical length overflow; capacity failure precedes angle draws and child arithmetic.",
+    "For finite length and finite sine/cosine bounded in [-1,1], delta multiplication overflow is unreachable. Do not fabricate input fixtures for those defensive stages."
+  ],
+  "limitations": [
+    "Python numeric investigation is not Java native conformance or a py5 support claim.",
+    "Private diagnostic stage names dx/dy/end_x/end_y map to catalog delta_x/delta_y/position_x/position_y.",
+    "Host trig implementation correctness and nontrivial cross-target coordinate tolerance remain separately scoped."
+  ]
+}

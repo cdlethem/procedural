@@ -1,0 +1,56 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "Sol",
+  "scope": "p5.js 2.3.2 Canvas2D, Chromium153.0.8010.12, Linux, deviceScaleFactor2; registered profile and CP1; injected not spontaneous loss",
+  "profile_semantics_sha256": "70e327219205c58ad2c045a7a2e033d567e5554a40c942bc0d5f071564bbdaca",
+  "tested_profile_sha256": "3dad9d7b457c1f3ceb3e60b5ae8f84b0d7c87532849ae72b2e8412e2c420959d",
+  "implementation_sha256": {
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/examples/field-marks/mark-field.js": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf",
+    "packages/javascript/src/index.js": "7f368cde1aae6299dd73bee5334342b8ee6574ae2e59dc5982aca643b7f52644",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b"
+  },
+  "report_implementation_sha256": {
+    "pixels": {
+      "packages/javascript/src/internal/p5-frame.js": "ba558ae305fd5caa41ce446c68e79eec67abe960c0f2431ddbbb10d08d12e6dc",
+      "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+      "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+    },
+    "failures": {
+      "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+      "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+      "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+    },
+    "transfer": {
+      "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+      "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+      "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+    },
+    "cp1": {
+      "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+      "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+      "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+      "packages/javascript/examples/field-marks/mark-field.js": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf",
+      "packages/javascript/src/index.js": "7f368cde1aae6299dd73bee5334342b8ee6574ae2e59dc5982aca643b7f52644",
+      "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+      "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+      "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b"
+    }
+  },
+  "evidence_sha256": {
+    "evidence/conformance/p5js-adapter-pixels.json": "37922617766f70060ea046f4cb87230a8f2d8e416ad2efcb11ebefb4d47ea8e6",
+    "evidence/conformance/p5js-adapter-failures.json": "d3b225f5286e0e7e6b4d2ff89b084eaddf55df4f8cda7c26aa999ba79efb966b",
+    "evidence/conformance/p5js-adapter-transfer.json": "da45252b99e6d39d51ce9c2b2c21903a8187ed4e0b1dc48a47cbda0a8d9bc5ba",
+    "evidence/conformance/p5js-adapter-cp1.json": "f967635db9d8b7532ec5440aa97f1d9713d8fe697b1d2731958e6b056193bd29",
+    "design/p5js-adapter-review.md": "f6326b984d3c85255ec62d358f0d7c09d922663434df6e0f1559a60a12dd4544",
+    "design/p5js-cp1-decision.md": "896cea518f2d3fb4548457037b4ec83a671d649aed041c69b387f23e33a099fb",
+    "design/p5js-error-phase-repair.md": "4c383a982128b56c41763dfb7763bc90a1ed8ceda970d14f15819a98b29f80f5",
+    "design/p5js-transfer-supplement.md": "556f3856bae8481e1f9ebdbf49d12c8671a09eb73f347a895fb36423c254729c"
+  },
+  "historical_pixel_delta": "Pixel source predates only phase-exception routing repair; current-source lifecycle18, transfer supplement and CP1 establish final implementation. Independent Sol review accepted this delta."
+}

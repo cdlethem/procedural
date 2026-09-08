@@ -1,0 +1,451 @@
+{
+  "fixtures": [
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 18,
+        "euler": 2,
+        "faces": 12,
+        "vertices": 8
+      },
+      "id": "cylinder-closed",
+      "slices": 3,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 24,
+        "euler": 2,
+        "faces": 16,
+        "vertices": 10
+      },
+      "id": "cylinder-closed",
+      "slices": 4,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 72,
+        "euler": 2,
+        "faces": 48,
+        "vertices": 26
+      },
+      "id": "cylinder-closed",
+      "slices": 12,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 2,
+        "edges": 12,
+        "euler": 0,
+        "faces": 6,
+        "vertices": 6
+      },
+      "id": "cylinder-open",
+      "slices": 3,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 2,
+        "edges": 16,
+        "euler": 0,
+        "faces": 8,
+        "vertices": 8
+      },
+      "id": "cylinder-open",
+      "slices": 4,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 2,
+        "edges": 48,
+        "euler": 0,
+        "faces": 24,
+        "vertices": 24
+      },
+      "id": "cylinder-open",
+      "slices": 12,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 1,
+        "edges": 15,
+        "euler": 1,
+        "faces": 9,
+        "vertices": 7
+      },
+      "id": "cylinder-bottom-cap",
+      "slices": 3,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 1,
+        "edges": 20,
+        "euler": 1,
+        "faces": 12,
+        "vertices": 9
+      },
+      "id": "cylinder-bottom-cap",
+      "slices": 4,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 1,
+        "edges": 60,
+        "euler": 1,
+        "faces": 36,
+        "vertices": 25
+      },
+      "id": "cylinder-bottom-cap",
+      "slices": 12,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 1,
+        "edges": 15,
+        "euler": 1,
+        "faces": 9,
+        "vertices": 7
+      },
+      "id": "cylinder-top-cap",
+      "slices": 3,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 1,
+        "edges": 20,
+        "euler": 1,
+        "faces": 12,
+        "vertices": 9
+      },
+      "id": "cylinder-top-cap",
+      "slices": 4,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 1,
+        "edges": 60,
+        "euler": 1,
+        "faces": 36,
+        "vertices": 25
+      },
+      "id": "cylinder-top-cap",
+      "slices": 12,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 27,
+        "euler": 2,
+        "faces": 18,
+        "vertices": 11
+      },
+      "id": "waist-closed",
+      "slices": 3,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 36,
+        "euler": 2,
+        "faces": 24,
+        "vertices": 14
+      },
+      "id": "waist-closed",
+      "slices": 4,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 108,
+        "euler": 2,
+        "faces": 72,
+        "vertices": 38
+      },
+      "id": "waist-closed",
+      "slices": 12,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 18,
+        "euler": 2,
+        "faces": 12,
+        "vertices": 8
+      },
+      "id": "frustum-closed",
+      "slices": 3,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 24,
+        "euler": 2,
+        "faces": 16,
+        "vertices": 10
+      },
+      "id": "frustum-closed",
+      "slices": 4,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 72,
+        "euler": 2,
+        "faces": 48,
+        "vertices": 26
+      },
+      "id": "frustum-closed",
+      "slices": 12,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 9,
+        "euler": 2,
+        "faces": 6,
+        "vertices": 5
+      },
+      "id": "bottom-pole-top-cap",
+      "slices": 3,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 12,
+        "euler": 2,
+        "faces": 8,
+        "vertices": 6
+      },
+      "id": "bottom-pole-top-cap",
+      "slices": 4,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 36,
+        "euler": 2,
+        "faces": 24,
+        "vertices": 14
+      },
+      "id": "bottom-pole-top-cap",
+      "slices": 12,
+      "top_cap_requested": true
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 1,
+        "edges": 6,
+        "euler": 1,
+        "faces": 3,
+        "vertices": 4
+      },
+      "id": "bottom-pole-top-open",
+      "slices": 3,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 1,
+        "edges": 8,
+        "euler": 1,
+        "faces": 4,
+        "vertices": 5
+      },
+      "id": "bottom-pole-top-open",
+      "slices": 4,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 1,
+        "edges": 24,
+        "euler": 1,
+        "faces": 12,
+        "vertices": 13
+      },
+      "id": "bottom-pole-top-open",
+      "slices": 12,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 9,
+        "euler": 2,
+        "faces": 6,
+        "vertices": 5
+      },
+      "id": "top-pole-bottom-cap",
+      "slices": 3,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 12,
+        "euler": 2,
+        "faces": 8,
+        "vertices": 6
+      },
+      "id": "top-pole-bottom-cap",
+      "slices": 4,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": true,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 36,
+        "euler": 2,
+        "faces": 24,
+        "vertices": 14
+      },
+      "id": "top-pole-bottom-cap",
+      "slices": 12,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 1,
+        "edges": 6,
+        "euler": 1,
+        "faces": 3,
+        "vertices": 4
+      },
+      "id": "top-pole-bottom-open",
+      "slices": 3,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 1,
+        "edges": 8,
+        "euler": 1,
+        "faces": 4,
+        "vertices": 5
+      },
+      "id": "top-pole-bottom-open",
+      "slices": 4,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 1,
+        "edges": 24,
+        "euler": 1,
+        "faces": 12,
+        "vertices": 13
+      },
+      "id": "top-pole-bottom-open",
+      "slices": 12,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 9,
+        "euler": 2,
+        "faces": 6,
+        "vertices": 5
+      },
+      "id": "two-pole",
+      "slices": 3,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 12,
+        "euler": 2,
+        "faces": 8,
+        "vertices": 6
+      },
+      "id": "two-pole",
+      "slices": 4,
+      "top_cap_requested": false
+    },
+    {
+      "bottom_cap_requested": false,
+      "counts": {
+        "boundary_loops": 0,
+        "edges": 36,
+        "euler": 2,
+        "faces": 24,
+        "vertices": 14
+      },
+      "id": "two-pole",
+      "slices": 12,
+      "top_cap_requested": false
+    }
+  ],
+  "limitations": "Moderate finite profiles only. This checks specified winding, shared seam, poles, caps and topology; it does not establish extreme arithmetic, allocation limits, ownership, target trig equivalence, or rendered appearance.",
+  "mutation_controls": {
+    "duplicated-pole-ring": "nonfinite or zero triangle area",
+    "omitted-seam-cell": "boundary loop count",
+    "reversed-cap": "bottom cap winding",
+    "seam-cloned-coordinate": "boundary loop count",
+    "wrong-cap-kind": "bottom cap winding",
+    "wrong-in-range-band-metadata": "face provenance",
+    "wrong-in-range-cell-metadata": "face provenance"
+  },
+  "runtime": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]",
+  "scope": "Private Python double geometry/topology diagnostic only; no portable numeric, Java, renderer, or public API claim.",
+  "source_bindings": {
+    "design/capabilities/cp7-profile-mesh-direction.md": "d38b59a281d1ebfb46493a58d30ae254c13b62bd671c2bd9abf4a7f9df263e97",
+    "design/capabilities/profile-mesh-evidence-audit.md": "384d32f2262ed282939fe5a136720b034479b2e196aac25661f26ab63ee313b3",
+    "tools/diagnostics/cp7/profile_mesh_diagnostic.py": "6633e6e337ee6eaa9a90722fa1fdc12a26b578b1424a0862bc5f3b66077b242d"
+  },
+  "status": "passed"
+}

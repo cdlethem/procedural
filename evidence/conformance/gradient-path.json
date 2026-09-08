@@ -1,0 +1,6586 @@
+{
+  "operation": "path.gradient-trace-2d",
+  "scope": "Java/JavaScript/Python portable core conformance and scoped workload observations; no native renderer or Android claim",
+  "contract_sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+  "fixture_sha256": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+  "results": {
+    "java": {
+      "passed": true,
+      "cases": 52,
+      "native": {
+        "status": "passed",
+        "mode": "normal",
+        "assertions": 106,
+        "groups": {
+          "ownership_access": true,
+          "zero_canonical": true,
+          "invalid_inputs": true,
+          "dynamic_errors": true,
+          "performance_observed": true
+        },
+        "benchmarks": [
+          {
+            "steps": 1,
+            "input": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                0.125,
+                -0.25
+              ],
+              "steps": 1,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0.0,
+                0.0
+              ],
+              "angleBase": 0.0,
+              "angleScale": 40.0
+            },
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "timing_scope": "trace_plus_endpoint_pointAt",
+            "elapsed_nanos": [
+              14730,
+              8060,
+              7880,
+              6720,
+              7720
+            ],
+            "elapsed_nanos_total": 45110,
+            "average_nanos_per_rep": 9022,
+            "raw_payload_bytes_per_path": 40,
+            "thread_allocated_bytes_total_reps": 1400,
+            "thread_allocated_bytes_average_per_rep": 280,
+            "allocation_scope": "trace_plus_endpoint_pointAt",
+            "full_output_checksum": "7faa16cf3a0b2d0"
+          },
+          {
+            "steps": 2000,
+            "input": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                0.125,
+                -0.25
+              ],
+              "steps": 2000,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0.0,
+                0.0
+              ],
+              "angleBase": 0.0,
+              "angleScale": 40.0
+            },
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "timing_scope": "trace_plus_endpoint_pointAt",
+            "elapsed_nanos": [
+              493229,
+              480220,
+              486710,
+              477809,
+              466710
+            ],
+            "elapsed_nanos_total": 2404678,
+            "average_nanos_per_rep": 480935,
+            "raw_payload_bytes_per_path": 48016,
+            "thread_allocated_bytes_total_reps": 241224,
+            "thread_allocated_bytes_average_per_rep": 48244,
+            "allocation_scope": "trace_plus_endpoint_pointAt",
+            "full_output_checksum": "55d5f6594b9857cf"
+          },
+          {
+            "steps": 16000,
+            "input": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                0.125,
+                -0.25
+              ],
+              "steps": 16000,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0.0,
+                0.0
+              ],
+              "angleBase": 0.0,
+              "angleScale": 40.0
+            },
+            "warmup_reps": 3,
+            "timing_reps": 5,
+            "timing_scope": "trace_plus_endpoint_pointAt",
+            "elapsed_nanos": [
+              826489,
+              731150,
+              734950,
+              723199,
+              718810
+            ],
+            "elapsed_nanos_total": 3734598,
+            "average_nanos_per_rep": 746919,
+            "raw_payload_bytes_per_path": 384016,
+            "thread_allocated_bytes_total_reps": 1921224,
+            "thread_allocated_bytes_average_per_rep": 384244,
+            "allocation_scope": "trace_plus_endpoint_pointAt",
+            "full_output_checksum": "5c5bc880e334b97f"
+          }
+        ],
+        "benchmark_sink": "e749fb55b0c5c60"
+      },
+      "resource": {
+        "status": "passed",
+        "mode": "resource",
+        "assertions": 9,
+        "heap_max_bytes": 33554432,
+        "valid_maximum_resource_failure": true,
+        "to_values_resource_failure": true,
+        "retained_path_usable_after_export_failure": true
+      },
+      "scope": "shared vectors, exact replay/prefix, positive zero, native ownership/access/resource and scoped performance; no renderer or Android claim",
+      "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)"
+    },
+    "javascript": {
+      "operation": "path.gradient-trace-2d",
+      "version": "0.1.0",
+      "scope": "JavaScript portable core only; no renderer, browser/p5, Processing, py5, Android, or reproduction claim.",
+      "runtime": {
+        "node": "v22.22.1"
+      },
+      "fixtureBindings": {
+        "catalog": {
+          "path": "catalog/operations/gradient-path.json",
+          "expected": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+          "actual": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+          "passed": true
+        },
+        "longCasesSource": {
+          "path": "evidence/investigations/cp2-numerics.json",
+          "expected": "9c138cb3e58db5625da5d85ebd91a5f1d2615819fd27e63ce0ff95144d653248",
+          "actual": "9c138cb3e58db5625da5d85ebd91a5f1d2615819fd27e63ce0ff95144d653248",
+          "passed": true
+        }
+      },
+      "catalogSha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+      "fixtureSha256": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+      "sourceSha256": {
+        "fixtures/operations/gradient-path.json": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+        "catalog/operations/gradient-path.json": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+        "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+        "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+        "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+        "packages/javascript/src/index.js": "51efbfea8c64ba7a4faed00843fea2c7c2b6771c69dceb69849a0bcf852b3c06",
+        "tests/native/gradient-path-javascript.mjs": "8c47736d464de243bb448722ac4d2c9ab330f689b77175fdb7ad279ec599727b",
+        "evidence/investigations/cp2-numerics.json": "9c138cb3e58db5625da5d85ebd91a5f1d2615819fd27e63ce0ff95144d653248"
+      },
+      "failures": 0,
+      "counts": {
+        "shortCases": 32,
+        "longCases": 20,
+        "successfulShortCases": 16,
+        "errorShortCases": 16,
+        "crossCaseChecks": 1,
+        "nativeChecks": 5,
+        "resultChecks": 53
+      },
+      "results": [
+        {
+          "id": "zero-count-huge-finite",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  1e+308,
+                  -1e+308
+                ]
+              ],
+              "headings": []
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                1e+308,
+                -1e+308
+              ],
+              "steps": 0,
+              "stepDistance": 0.4,
+              "fieldScale": 1e-308,
+              "fieldOffset": [
+                1e+308,
+                -1e+308
+              ],
+              "angleBase": 0,
+              "angleScale": 0
+            },
+            "steps": 0
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  1e+308,
+                  -1e+308
+                ]
+              ],
+              "headings": []
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                1e+308,
+                -1e+308
+              ],
+              "steps": 0,
+              "stepDistance": 0.4,
+              "fieldScale": 1e-308,
+              "fieldOffset": [
+                1e+308,
+                -1e+308
+              ],
+              "angleBase": 0,
+              "angleScale": 0
+            },
+            "steps": 0
+          },
+          "passed": true
+        },
+        {
+          "id": "canonical-negative-zero",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  0,
+                  0
+                ]
+              ],
+              "headings": []
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                0,
+                0
+              ],
+              "steps": 0,
+              "stepDistance": 0.4,
+              "fieldScale": 0,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": 0,
+              "angleScale": 0
+            },
+            "steps": 0
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  0,
+                  0
+                ]
+              ],
+              "headings": []
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                0,
+                0
+              ],
+              "steps": 0,
+              "stepDistance": 0.4,
+              "fieldScale": 0,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": 0,
+              "angleScale": 0
+            },
+            "steps": 0
+          },
+          "passed": true
+        },
+        {
+          "id": "cardinal-zero-heading",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ]
+              ],
+              "headings": [
+                0
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                0,
+                0
+              ],
+              "steps": 1,
+              "stepDistance": 1,
+              "fieldScale": 1,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": 0,
+              "angleScale": 0
+            },
+            "steps": 1
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ]
+              ],
+              "headings": [
+                0
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                0,
+                0
+              ],
+              "steps": 1,
+              "stepDistance": 1,
+              "fieldScale": 1,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": 0,
+              "angleScale": 0
+            },
+            "steps": 1
+          },
+          "passed": true
+        },
+        {
+          "id": "integral-float-steps",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ],
+              "headings": [
+                0,
+                0
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                0,
+                0
+              ],
+              "steps": 2,
+              "stepDistance": 1,
+              "fieldScale": 1,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": 0,
+              "angleScale": 0
+            },
+            "steps": 2
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ],
+              "headings": [
+                0,
+                0
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                0,
+                0
+              ],
+              "steps": 2,
+              "stepDistance": 1,
+              "fieldScale": 1,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": 0,
+              "angleScale": 0
+            },
+            "steps": 2
+          },
+          "passed": true
+        },
+        {
+          "id": "evolving-field",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  60,
+                  80
+                ],
+                [
+                  60.13403800364536,
+                  80.3768737369183
+                ],
+                [
+                  60.273502465586624,
+                  80.75177327526882
+                ],
+                [
+                  60.41837015144596,
+                  81.1246182210489
+                ],
+                [
+                  60.56861511498906,
+                  81.49532895859225
+                ]
+              ],
+              "headings": [
+                -5.054095047876421,
+                -5.068531219613874,
+                -5.082983027662383,
+                -5.097446460769648
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                60,
+                80
+              ],
+              "steps": 4,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": -20,
+              "angleScale": 40
+            },
+            "steps": 4
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  60,
+                  80
+                ],
+                [
+                  60.13403800364536,
+                  80.3768737369183
+                ],
+                [
+                  60.273502465586624,
+                  80.75177327526882
+                ],
+                [
+                  60.41837015144596,
+                  81.1246182210489
+                ],
+                [
+                  60.56861511498906,
+                  81.49532895859225
+                ]
+              ],
+              "headings": [
+                -5.054095047876421,
+                -5.068531219613874,
+                -5.082983027662383,
+                -5.097446460769648
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                60,
+                80
+              ],
+              "steps": 4,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": -20,
+              "angleScale": 40
+            },
+            "steps": 4
+          },
+          "passed": true
+        },
+        {
+          "id": "translated-negative-start",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  -3.5,
+                  4.25
+                ],
+                [
+                  -2.8629900090520333,
+                  4.645876586112984
+                ],
+                [
+                  -2.2941621306392856,
+                  5.134686206252003
+                ],
+                [
+                  -1.8247458658950726,
+                  5.719620707195135
+                ]
+              ],
+              "headings": [
+                0.5560500507760944,
+                0.7098844793102401,
+                0.8945262721072997
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                -3.5,
+                4.25
+              ],
+              "steps": 3,
+              "stepDistance": 0.75,
+              "fieldScale": 0.125,
+              "fieldOffset": [
+                7.25,
+                -5.5
+              ],
+              "angleBase": -1,
+              "angleScale": 3.5
+            },
+            "steps": 3
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  -3.5,
+                  4.25
+                ],
+                [
+                  -2.8629900090520333,
+                  4.645876586112984
+                ],
+                [
+                  -2.2941621306392856,
+                  5.134686206252003
+                ],
+                [
+                  -1.8247458658950726,
+                  5.719620707195135
+                ]
+              ],
+              "headings": [
+                0.5560500507760944,
+                0.7098844793102401,
+                0.8945262721072997
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                -3.5,
+                4.25
+              ],
+              "steps": 3,
+              "stepDistance": 0.75,
+              "fieldScale": 0.125,
+              "fieldOffset": [
+                7.25,
+                -5.5
+              ],
+              "angleBase": -1,
+              "angleScale": 3.5
+            },
+            "steps": 3
+          },
+          "passed": true
+        },
+        {
+          "id": "reflected-field",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  2,
+                  -1
+                ],
+                [
+                  2.316412410569761,
+                  -1.387147499588249
+                ],
+                [
+                  2.6831523088058136,
+                  -1.727003126350275
+                ],
+                [
+                  3.0667511450550324,
+                  -2.047708493982694
+                ]
+              ],
+              "headings": [
+                -0.8856002807617187,
+                -0.7473688962466816,
+                -0.69633567127629
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                2,
+                -1
+              ],
+              "steps": 3,
+              "stepDistance": 0.5,
+              "fieldScale": -0.25,
+              "fieldOffset": [
+                0.75,
+                -0.5
+              ],
+              "angleBase": 0.3,
+              "angleScale": -2
+            },
+            "steps": 3
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  2,
+                  -1
+                ],
+                [
+                  2.3164124105697605,
+                  -1.387147499588249
+                ],
+                [
+                  2.6831523088058136,
+                  -1.727003126350275
+                ],
+                [
+                  3.0667511450550324,
+                  -2.047708493982694
+                ]
+              ],
+              "headings": [
+                -0.8856002807617187,
+                -0.7473688962466813,
+                -0.69633567127629
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                2,
+                -1
+              ],
+              "steps": 3,
+              "stepDistance": 0.5,
+              "fieldScale": -0.25,
+              "fieldOffset": [
+                0.75,
+                -0.5
+              ],
+              "angleBase": 0.3,
+              "angleScale": -2
+            },
+            "steps": 3
+          },
+          "passed": true
+        },
+        {
+          "id": "zero-step-distance",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  0.25,
+                  0.75
+                ],
+                [
+                  0.25,
+                  0.75
+                ],
+                [
+                  0.25,
+                  0.75
+                ],
+                [
+                  0.25,
+                  0.75
+                ]
+              ],
+              "headings": [
+                1.4009210586547851,
+                1.4009210586547851,
+                1.4009210586547851
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                0.25,
+                0.75
+              ],
+              "steps": 3,
+              "stepDistance": 0,
+              "fieldScale": 1,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": 0.2,
+              "angleScale": 2
+            },
+            "steps": 3
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  0.25,
+                  0.75
+                ],
+                [
+                  0.25,
+                  0.75
+                ],
+                [
+                  0.25,
+                  0.75
+                ],
+                [
+                  0.25,
+                  0.75
+                ]
+              ],
+              "headings": [
+                1.4009210586547851,
+                1.4009210586547851,
+                1.4009210586547851
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                0.25,
+                0.75
+              ],
+              "steps": 3,
+              "stepDistance": 0,
+              "fieldScale": 1,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": 0.2,
+              "angleScale": 2
+            },
+            "steps": 3
+          },
+          "passed": true
+        },
+        {
+          "id": "separate-multiply-add-stationary",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  10000000000000000,
+                  0
+                ],
+                [
+                  10000000000000000,
+                  0
+                ]
+              ],
+              "headings": [
+                0.450103759765625
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                10000000000000000,
+                0
+              ],
+              "steps": 1,
+              "stepDistance": 0,
+              "fieldScale": 1.0000000000000002,
+              "fieldOffset": [
+                -10000000000000000,
+                0.375
+              ],
+              "angleBase": 0,
+              "angleScale": 1
+            },
+            "steps": 1
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  10000000000000000,
+                  0
+                ],
+                [
+                  10000000000000000,
+                  0
+                ]
+              ],
+              "headings": [
+                0.450103759765625
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                10000000000000000,
+                0
+              ],
+              "steps": 1,
+              "stepDistance": 0,
+              "fieldScale": 1.0000000000000002,
+              "fieldOffset": [
+                -10000000000000000,
+                0.375
+              ],
+              "angleBase": 0,
+              "angleScale": 1
+            },
+            "steps": 1
+          },
+          "passed": true
+        },
+        {
+          "id": "prefix-4",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  -0.25,
+                  0.5
+                ],
+                [
+                  0.02546836365351063,
+                  0.7900296202563752
+                ],
+                [
+                  0.3030785402873306,
+                  1.0780098102509985
+                ],
+                [
+                  0.5828039932143407,
+                  1.363935798899773
+                ],
+                [
+                  0.864617143550777,
+                  1.6478043394206505
+                ]
+              ],
+              "headings": [
+                0.8111419150916528,
+                0.8037309572167464,
+                0.7963594850372628,
+                0.7890316222357847
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                -0.25,
+                0.5
+              ],
+              "steps": 4,
+              "stepDistance": 0.4,
+              "fieldScale": 0.01,
+              "fieldOffset": [
+                0.125,
+                -0.25
+              ],
+              "angleBase": -0.7,
+              "angleScale": 2.5
+            },
+            "steps": 4
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  -0.25,
+                  0.5
+                ],
+                [
+                  0.02546836365351063,
+                  0.7900296202563752
+                ],
+                [
+                  0.3030785402873306,
+                  1.0780098102509985
+                ],
+                [
+                  0.5828039932143407,
+                  1.363935798899773
+                ],
+                [
+                  0.864617143550777,
+                  1.6478043394206505
+                ]
+              ],
+              "headings": [
+                0.8111419150916528,
+                0.8037309572167464,
+                0.7963594850372628,
+                0.7890316222357847
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                -0.25,
+                0.5
+              ],
+              "steps": 4,
+              "stepDistance": 0.4,
+              "fieldScale": 0.01,
+              "fieldOffset": [
+                0.125,
+                -0.25
+              ],
+              "angleBase": -0.7,
+              "angleScale": 2.5
+            },
+            "steps": 4
+          },
+          "passed": true
+        },
+        {
+          "id": "prefix-5",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  -0.25,
+                  0.5
+                ],
+                [
+                  0.02546836365351063,
+                  0.7900296202563752
+                ],
+                [
+                  0.3030785402873306,
+                  1.0780098102509985
+                ],
+                [
+                  0.5828039932143407,
+                  1.363935798899773
+                ],
+                [
+                  0.864617143550777,
+                  1.6478043394206505
+                ],
+                [
+                  1.1484894306285174,
+                  1.9296137158247244
+                ]
+              ],
+              "headings": [
+                0.8111419150916528,
+                0.8037309572167464,
+                0.7963594850372628,
+                0.7890316222357847,
+                0.7817514099987106
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                -0.25,
+                0.5
+              ],
+              "steps": 5,
+              "stepDistance": 0.4,
+              "fieldScale": 0.01,
+              "fieldOffset": [
+                0.125,
+                -0.25
+              ],
+              "angleBase": -0.7,
+              "angleScale": 2.5
+            },
+            "steps": 5
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  -0.25,
+                  0.5
+                ],
+                [
+                  0.02546836365351063,
+                  0.7900296202563752
+                ],
+                [
+                  0.3030785402873306,
+                  1.0780098102509985
+                ],
+                [
+                  0.5828039932143407,
+                  1.363935798899773
+                ],
+                [
+                  0.864617143550777,
+                  1.6478043394206505
+                ],
+                [
+                  1.1484894306285174,
+                  1.9296137158247244
+                ]
+              ],
+              "headings": [
+                0.8111419150916528,
+                0.8037309572167464,
+                0.7963594850372628,
+                0.7890316222357847,
+                0.7817514099987106
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                -0.25,
+                0.5
+              ],
+              "steps": 5,
+              "stepDistance": 0.4,
+              "fieldScale": 0.01,
+              "fieldOffset": [
+                0.125,
+                -0.25
+              ],
+              "angleBase": -0.7,
+              "angleScale": 2.5
+            },
+            "steps": 5
+          },
+          "passed": true
+        },
+        {
+          "id": "final-endpoint-not-sampled",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  9007199254740990,
+                  0
+                ],
+                [
+                  9007199254740991,
+                  0
+                ]
+              ],
+              "headings": [
+                0
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                9007199254740990,
+                0
+              ],
+              "steps": 1,
+              "stepDistance": 1,
+              "fieldScale": 1,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": 0,
+              "angleScale": 0
+            },
+            "steps": 1
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  9007199254740990,
+                  0
+                ],
+                [
+                  9007199254740991,
+                  0
+                ]
+              ],
+              "headings": [
+                0
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 42
+              },
+              "start": [
+                9007199254740990,
+                0
+              ],
+              "steps": 1,
+              "stepDistance": 1,
+              "fieldScale": 1,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": 0,
+              "angleScale": 0
+            },
+            "steps": 1
+          },
+          "passed": true
+        },
+        {
+          "id": "seed-0",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  60,
+                  80
+                ],
+                [
+                  59.72289883481829,
+                  80.28847000581506
+                ],
+                [
+                  59.443418009460565,
+                  80.57463511245345
+                ],
+                [
+                  59.16159947112359,
+                  80.85849830388483
+                ],
+                [
+                  58.877484780324046,
+                  81.14006329189272
+                ]
+              ],
+              "headings": [
+                2.336095676260598,
+                2.3443779636511053,
+                2.3525800121515985,
+                2.3607017857887946
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 0
+              },
+              "start": [
+                60,
+                80
+              ],
+              "steps": 4,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": -20,
+              "angleScale": 40
+            },
+            "steps": 4
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  60,
+                  80
+                ],
+                [
+                  59.72289883481829,
+                  80.28847000581506
+                ],
+                [
+                  59.443418009460565,
+                  80.57463511245345
+                ],
+                [
+                  59.16159947112359,
+                  80.85849830388483
+                ],
+                [
+                  58.877484780324046,
+                  81.14006329189272
+                ]
+              ],
+              "headings": [
+                2.336095676260598,
+                2.3443779636511053,
+                2.3525800121515985,
+                2.3607017857887946
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 0
+              },
+              "start": [
+                60,
+                80
+              ],
+              "steps": 4,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": -20,
+              "angleScale": 40
+            },
+            "steps": 4
+          },
+          "passed": true
+        },
+        {
+          "id": "seed-1",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  60,
+                  80
+                ],
+                [
+                  60.37205034252114,
+                  79.85310363302688
+                ],
+                [
+                  60.74499489280098,
+                  79.70849256008788
+                ],
+                [
+                  61.11883899885011,
+                  79.56622315237023
+                ],
+                [
+                  61.493587366613845,
+                  79.42635299523006
+                ]
+              ],
+              "headings": [
+                5.907144383998698,
+                5.91327942435462,
+                5.919550696760609,
+                5.925960706068267
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 1
+              },
+              "start": [
+                60,
+                80
+              ],
+              "steps": 4,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": -20,
+              "angleScale": 40
+            },
+            "steps": 4
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  60,
+                  80
+                ],
+                [
+                  60.37205034252114,
+                  79.85310363302688
+                ],
+                [
+                  60.74499489280098,
+                  79.70849256008788
+                ],
+                [
+                  61.11883899885011,
+                  79.56622315237023
+                ],
+                [
+                  61.493587366613845,
+                  79.42635299523006
+                ]
+              ],
+              "headings": [
+                5.907144383998698,
+                5.91327942435462,
+                5.919550696760609,
+                5.925960706068267
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 1
+              },
+              "start": [
+                60,
+                80
+              ],
+              "steps": 4,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": -20,
+              "angleScale": 40
+            },
+            "steps": 4
+          },
+          "passed": true
+        },
+        {
+          "id": "seed-2147483648",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  60,
+                  80
+                ],
+                [
+                  59.85244867427282,
+                  80.3717910788012
+                ],
+                [
+                  59.71023049292115,
+                  80.74565467544177
+                ],
+                [
+                  59.573313845760396,
+                  81.12149218252463
+                ],
+                [
+                  59.44166539293866,
+                  81.49920726677418
+                ]
+              ],
+              "headings": [
+                1.948598266681838,
+                1.9342939147766174,
+                1.920151089597951,
+                1.906169030289675
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 2147483648
+              },
+              "start": [
+                60,
+                80
+              ],
+              "steps": 4,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": -20,
+              "angleScale": 40
+            },
+            "steps": 4
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  60,
+                  80
+                ],
+                [
+                  59.85244867427282,
+                  80.3717910788012
+                ],
+                [
+                  59.71023049292115,
+                  80.74565467544177
+                ],
+                [
+                  59.573313845760396,
+                  81.12149218252463
+                ],
+                [
+                  59.44166539293866,
+                  81.49920726677418
+                ]
+              ],
+              "headings": [
+                1.948598266681838,
+                1.9342939147766174,
+                1.920151089597951,
+                1.906169030289675
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 2147483648
+              },
+              "start": [
+                60,
+                80
+              ],
+              "steps": 4,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": -20,
+              "angleScale": 40
+            },
+            "steps": 4
+          },
+          "passed": true
+        },
+        {
+          "id": "seed-4294967295",
+          "actual": {
+            "output": {
+              "positions": [
+                [
+                  60,
+                  80
+                ],
+                [
+                  59.60358548959741,
+                  79.94656278504384
+                ],
+                [
+                  59.207222673810676,
+                  79.89274347381067
+                ],
+                [
+                  58.81091291284599,
+                  79.83853486412444
+                ],
+                [
+                  58.414657602194794,
+                  79.78392965575819
+                ]
+              ],
+              "headings": [
+                -3.0075990157771244,
+                -3.0066350723473825,
+                -3.005652829658093,
+                -3.004652031966799
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 4294967295
+              },
+              "start": [
+                60,
+                80
+              ],
+              "steps": 4,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": -20,
+              "angleScale": 40
+            },
+            "steps": 4
+          },
+          "expected": {
+            "output": {
+              "positions": [
+                [
+                  60,
+                  80
+                ],
+                [
+                  59.60358548959741,
+                  79.94656278504384
+                ],
+                [
+                  59.207222673810676,
+                  79.89274347381067
+                ],
+                [
+                  58.81091291284599,
+                  79.83853486412444
+                ],
+                [
+                  58.414657602194794,
+                  79.78392965575819
+                ]
+              ],
+              "headings": [
+                -3.0075990157771244,
+                -3.0066350723473825,
+                -3.005652829658093,
+                -3.004652031966799
+              ]
+            },
+            "serialized": {
+              "field": {
+                "seed": 4294967295
+              },
+              "start": [
+                60,
+                80
+              ],
+              "steps": 4,
+              "stepDistance": 0.4,
+              "fieldScale": 0.002,
+              "fieldOffset": [
+                0,
+                0
+              ],
+              "angleBase": -20,
+              "angleScale": 40
+            },
+            "steps": 4
+          },
+          "passed": true
+        },
+        {
+          "id": "static-missing",
+          "actual": {
+            "code": "INVALID_INPUT"
+          },
+          "expected": {
+            "code": "INVALID_INPUT"
+          },
+          "passed": true
+        },
+        {
+          "id": "static-extra",
+          "actual": {
+            "code": "INVALID_INPUT"
+          },
+          "expected": {
+            "code": "INVALID_INPUT"
+          },
+          "passed": true
+        },
+        {
+          "id": "static-bool",
+          "actual": {
+            "code": "INVALID_INPUT"
+          },
+          "expected": {
+            "code": "INVALID_INPUT"
+          },
+          "passed": true
+        },
+        {
+          "id": "static-negative-count",
+          "actual": {
+            "code": "INVALID_INPUT"
+          },
+          "expected": {
+            "code": "INVALID_INPUT"
+          },
+          "passed": true
+        },
+        {
+          "id": "static-fractional-count",
+          "actual": {
+            "code": "INVALID_INPUT"
+          },
+          "expected": {
+            "code": "INVALID_INPUT"
+          },
+          "passed": true
+        },
+        {
+          "id": "static-count-overflow",
+          "actual": {
+            "code": "INVALID_INPUT"
+          },
+          "expected": {
+            "code": "INVALID_INPUT"
+          },
+          "passed": true
+        },
+        {
+          "id": "static-negative-distance",
+          "actual": {
+            "code": "INVALID_INPUT"
+          },
+          "expected": {
+            "code": "INVALID_INPUT"
+          },
+          "passed": true
+        },
+        {
+          "id": "static-bad-field-seed",
+          "actual": {
+            "code": "INVALID_INPUT"
+          },
+          "expected": {
+            "code": "INVALID_INPUT"
+          },
+          "passed": true
+        },
+        {
+          "id": "static-malformed-start",
+          "actual": {
+            "code": "INVALID_INPUT"
+          },
+          "expected": {
+            "code": "INVALID_INPUT"
+          },
+          "passed": true
+        },
+        {
+          "id": "query-invalid-at-zero",
+          "actual": {
+            "code": "TRACE_QUERY_INVALID",
+            "stepIndex": 0,
+            "stage": "query_x"
+          },
+          "expected": {
+            "code": "TRACE_QUERY_INVALID",
+            "stepIndex": 0,
+            "stage": "query_x"
+          },
+          "passed": true
+        },
+        {
+          "id": "query-invalid-late",
+          "actual": {
+            "code": "TRACE_QUERY_INVALID",
+            "stepIndex": 1,
+            "stage": "query_x"
+          },
+          "expected": {
+            "code": "TRACE_QUERY_INVALID",
+            "stepIndex": 1,
+            "stage": "query_x"
+          },
+          "passed": true
+        },
+        {
+          "id": "query-y-invalid-angle-scale-zero",
+          "actual": {
+            "code": "TRACE_QUERY_INVALID",
+            "stepIndex": 0,
+            "stage": "query_y"
+          },
+          "expected": {
+            "code": "TRACE_QUERY_INVALID",
+            "stepIndex": 0,
+            "stage": "query_y"
+          },
+          "passed": true
+        },
+        {
+          "id": "query-multiply-overflow",
+          "actual": {
+            "code": "TRACE_QUERY_INVALID",
+            "stepIndex": 0,
+            "stage": "query_x"
+          },
+          "expected": {
+            "code": "TRACE_QUERY_INVALID",
+            "stepIndex": 0,
+            "stage": "query_x"
+          },
+          "passed": true
+        },
+        {
+          "id": "heading-overflow",
+          "actual": {
+            "code": "TRACE_ARITHMETIC_INVALID",
+            "stepIndex": 0,
+            "stage": "heading"
+          },
+          "expected": {
+            "code": "TRACE_ARITHMETIC_INVALID",
+            "stepIndex": 0,
+            "stage": "heading"
+          },
+          "passed": true
+        },
+        {
+          "id": "endpoint-overflow",
+          "actual": {
+            "code": "TRACE_ARITHMETIC_INVALID",
+            "stepIndex": 0,
+            "stage": "position_x"
+          },
+          "expected": {
+            "code": "TRACE_ARITHMETIC_INVALID",
+            "stepIndex": 0,
+            "stage": "position_x"
+          },
+          "passed": true
+        },
+        {
+          "id": "endpoint-y-overflow",
+          "actual": {
+            "code": "TRACE_ARITHMETIC_INVALID",
+            "stepIndex": 0,
+            "stage": "position_y"
+          },
+          "expected": {
+            "code": "TRACE_ARITHMETIC_INVALID",
+            "stepIndex": 0,
+            "stage": "position_y"
+          },
+          "passed": true
+        },
+        {
+          "id": "cp2-field-000",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                0.2864048911441116,
+                0.11598970083153642
+              ],
+              "headingIndex": 0,
+              "heading": 20.005000028092592
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                0.45549413191018184,
+                0.4784932575825757
+              ],
+              "headingIndex": 1,
+              "heading": 19.983904253881168
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                0.6322526971099742,
+                0.8373196914311856
+              ],
+              "headingIndex": 2,
+              "heading": 19.962640655905922
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                2.317837017896015,
+                3.5526309046489115
+              ],
+              "headingIndex": 10,
+              "heading": 19.78756085253396
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                35.26664332139954,
+                6.388124612117724
+              ],
+              "headingIndex": 100,
+              "heading": 18.402510485208822
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                333.7885092960108,
+                95.91939535030754
+              ],
+              "headingIndex": 999,
+              "heading": 19.79004156571975
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                92.15509472621984,
+                352.7382878720557
+              ],
+              "headingIndex": 1999,
+              "heading": 21.21096379410057
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                0.2864048911441116,
+                0.11598970083153642
+              ],
+              "heading": 20.005000028092592
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                0.45549413191018184,
+                0.4784932575825757
+              ],
+              "heading": 19.983904253881168
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                0.6322526971099742,
+                0.8373196914311856
+              ],
+              "heading": 19.962640655905922
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                2.317837017896015,
+                3.552630904648911
+              ],
+              "heading": 19.78756085253396
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                35.26664332139954,
+                6.388124612117724
+              ],
+              "heading": 18.402510485208822
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                333.7885092960108,
+                95.91939535030754
+              ],
+              "heading": 19.79004156571975
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                92.15509472621984,
+                352.7382878720557
+              ],
+              "heading": 21.21096379410057
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-001",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                0.2864048911441116,
+                0.11598970083153642
+              ],
+              "headingIndex": 0,
+              "heading": 20.005000028092592
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                0.45549413191018184,
+                0.4784932575825757
+              ],
+              "headingIndex": 1,
+              "heading": 19.983904253881168
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                0.6322526971099742,
+                0.8373196914311856
+              ],
+              "headingIndex": 2,
+              "heading": 19.962640655905922
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                2.317837017896015,
+                3.5526309046489115
+              ],
+              "headingIndex": 10,
+              "heading": 19.78756085253396
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                35.26664332139954,
+                6.388124612117724
+              ],
+              "headingIndex": 100,
+              "heading": 18.402510485208822
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                333.7885092960108,
+                95.91939535030754
+              ],
+              "headingIndex": 999,
+              "heading": 19.79004156571975
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                92.15509472621984,
+                352.7382878720557
+              ],
+              "headingIndex": 1999,
+              "heading": 21.21096379410057
+            },
+            {
+              "pointIndex": 4000,
+              "position": [
+                361.7617303925685,
+                649.0344651703207
+              ],
+              "headingIndex": 3999,
+              "heading": 18.27452469025219
+            },
+            {
+              "pointIndex": 8000,
+              "position": [
+                1173.7169422256807,
+                -107.18737729133773
+              ],
+              "headingIndex": 7999,
+              "heading": 18.22394093622888
+            },
+            {
+              "pointIndex": 16000,
+              "position": [
+                -547.8546440864168,
+                -614.984371411228
+              ],
+              "headingIndex": 15999,
+              "heading": 16.294187178582877
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                0.2864048911441116,
+                0.11598970083153642
+              ],
+              "heading": 20.005000028092592
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                0.45549413191018184,
+                0.4784932575825757
+              ],
+              "heading": 19.983904253881168
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                0.6322526971099742,
+                0.8373196914311856
+              ],
+              "heading": 19.962640655905922
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                2.317837017896015,
+                3.552630904648911
+              ],
+              "heading": 19.78756085253396
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                35.26664332139954,
+                6.388124612117724
+              ],
+              "heading": 18.402510485208822
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                333.7885092960108,
+                95.91939535030754
+              ],
+              "heading": 19.79004156571975
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                92.15509472621984,
+                352.7382878720557
+              ],
+              "heading": 21.21096379410057
+            },
+            {
+              "headingIndex": 3999,
+              "pointIndex": 4000,
+              "position": [
+                361.7617303925685,
+                649.0344651703207
+              ],
+              "heading": 18.27452469025219
+            },
+            {
+              "headingIndex": 7999,
+              "pointIndex": 8000,
+              "position": [
+                1173.7169422256807,
+                -107.18737729133773
+              ],
+              "heading": 18.22394093622888
+            },
+            {
+              "headingIndex": 15999,
+              "pointIndex": 16000,
+              "position": [
+                -547.8546440864168,
+                -614.984371411228
+              ],
+              "heading": 16.294187178582877
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-002",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                -0.26844944955960026,
+                -0.1779060984462098
+              ],
+              "headingIndex": 0,
+              "heading": 160.04000022474074
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                -0.6672210415543876,
+                -0.14658170830142203
+              ],
+              "headingIndex": 1,
+              "heading": 160.14283409425502
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                -1.0669138254957136,
+                -0.16225584193721
+              ],
+              "headingIndex": 2,
+              "heading": 160.26042070222184
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                -3.224565225464797,
+                -2.184431031589244
+              ],
+              "headingIndex": 10,
+              "heading": 161.57918609691586
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                21.066484651483194,
+                -28.156822236126768
+              ],
+              "headingIndex": 100,
+              "heading": 162.63418622751283
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                329.2379625616605,
+                52.58314616747319
+              ],
+              "headingIndex": 999,
+              "heading": 164.00074062382572
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                670.0462498630837,
+                -62.511428981536454
+              ],
+              "headingIndex": 1999,
+              "heading": 163.70244871847174
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                -0.26844944955960026,
+                -0.1779060984462098
+              ],
+              "heading": 160.04000022474074
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                -0.6672210415543876,
+                -0.14658170830142203
+              ],
+              "heading": 160.14283409425502
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                -1.0669138254957136,
+                -0.16225584193721
+              ],
+              "heading": 160.26042070222184
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                -3.224565225464797,
+                -2.184431031589244
+              ],
+              "heading": 161.57918609691586
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                21.066484651483233,
+                -28.15682223612671
+              ],
+              "heading": 162.63418622751266
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                329.2379625616605,
+                52.58314616747319
+              ],
+              "heading": 164.00074062382572
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                670.0462498630837,
+                -62.511428981536454
+              ],
+              "heading": 163.70244871847174
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-003",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                -0.26844944955960026,
+                -0.1779060984462098
+              ],
+              "headingIndex": 0,
+              "heading": 160.04000022474074
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                -0.6672210415543876,
+                -0.14658170830142203
+              ],
+              "headingIndex": 1,
+              "heading": 160.14283409425502
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                -1.0669138254957136,
+                -0.16225584193721
+              ],
+              "headingIndex": 2,
+              "heading": 160.26042070222184
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                -3.224565225464797,
+                -2.184431031589244
+              ],
+              "headingIndex": 10,
+              "heading": 161.57918609691586
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                21.066484651483194,
+                -28.156822236126768
+              ],
+              "headingIndex": 100,
+              "heading": 162.63418622751283
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                329.2379625616605,
+                52.58314616747319
+              ],
+              "headingIndex": 999,
+              "heading": 164.00074062382572
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                670.0462498630837,
+                -62.511428981536454
+              ],
+              "headingIndex": 1999,
+              "heading": 163.70244871847174
+            },
+            {
+              "pointIndex": 4000,
+              "position": [
+                1316.081812069039,
+                -257.41662130887704
+              ],
+              "headingIndex": 3999,
+              "heading": 162.68995539729252
+            },
+            {
+              "pointIndex": 8000,
+              "position": [
+                443.2833676405557,
+                -453.84004952128583
+              ],
+              "headingIndex": 7999,
+              "heading": 159.68570915265337
+            },
+            {
+              "pointIndex": 16000,
+              "position": [
+                32.35358242944594,
+                -19.478478118999487
+              ],
+              "headingIndex": 15999,
+              "heading": 156.36427111343554
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                -0.26844944955960026,
+                -0.1779060984462098
+              ],
+              "heading": 160.04000022474074
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                -0.6672210415543876,
+                -0.14658170830142203
+              ],
+              "heading": 160.14283409425502
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                -1.0669138254957136,
+                -0.16225584193721
+              ],
+              "heading": 160.26042070222184
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                -3.224565225464797,
+                -2.184431031589244
+              ],
+              "heading": 161.57918609691586
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                21.066484651483233,
+                -28.15682223612671
+              ],
+              "heading": 162.63418622751266
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                329.2379625616605,
+                52.58314616747319
+              ],
+              "heading": 164.00074062382572
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                670.0462498630837,
+                -62.511428981536454
+              ],
+              "heading": 163.70244871847174
+            },
+            {
+              "headingIndex": 3999,
+              "pointIndex": 4000,
+              "position": [
+                1316.081812069039,
+                -257.41662130887704
+              ],
+              "heading": 162.68995539729252
+            },
+            {
+              "headingIndex": 7999,
+              "pointIndex": 8000,
+              "position": [
+                443.2833676405557,
+                -453.84004952128583
+              ],
+              "heading": 159.68570915265337
+            },
+            {
+              "headingIndex": 15999,
+              "pointIndex": 16000,
+              "position": [
+                32.35358242944594,
+                -19.478478118999487
+              ],
+              "heading": 156.36427111343554
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-004",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                0.27905202526283723,
+                0.11914492210027511
+              ],
+              "headingIndex": 0,
+              "heading": 20.025003495402558
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                0.47081778528393414,
+                0.4701803808270697
+              ],
+              "headingIndex": 1,
+              "heading": 19.920364940601402
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                0.6994828524626046,
+                0.7983758820944913
+              ],
+              "headingIndex": 2,
+              "heading": 19.811821384272072
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                3.470500378494211,
+                2.200490997173329
+              ],
+              "headingIndex": 10,
+              "heading": 18.959820085089085
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                36.77369967483931,
+                -6.315854878734409
+              ],
+              "headingIndex": 100,
+              "heading": 19.21016202299601
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                124.32806054880044,
+                72.41801749583166
+              ],
+              "headingIndex": 999,
+              "heading": 17.407787084981763
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                296.8897121011207,
+                -140.85585454862368
+              ],
+              "headingIndex": 1999,
+              "heading": 16.485982974089023
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                0.27905202526283723,
+                0.11914492210027511
+              ],
+              "heading": 20.025003495402558
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                0.47081778528393414,
+                0.4701803808270697
+              ],
+              "heading": 19.920364940601402
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                0.6994828524626046,
+                0.7983758820944913
+              ],
+              "heading": 19.811821384272072
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                3.470500378494211,
+                2.200490997173329
+              ],
+              "heading": 18.959820085089085
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                36.77369967483931,
+                -6.315854878734409
+              ],
+              "heading": 19.21016202299601
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                124.32806054880044,
+                72.41801749583166
+              ],
+              "heading": 17.407787084981763
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                296.8897121011207,
+                -140.85585454862368
+              ],
+              "heading": 16.485982974089023
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-005",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                0.27905202526283723,
+                0.11914492210027511
+              ],
+              "headingIndex": 0,
+              "heading": 20.025003495402558
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                0.47081778528393414,
+                0.4701803808270697
+              ],
+              "headingIndex": 1,
+              "heading": 19.920364940601402
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                0.6994828524626046,
+                0.7983758820944913
+              ],
+              "headingIndex": 2,
+              "heading": 19.811821384272072
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                3.470500378494211,
+                2.200490997173329
+              ],
+              "headingIndex": 10,
+              "heading": 18.959820085089085
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                36.77369967483931,
+                -6.315854878734409
+              ],
+              "headingIndex": 100,
+              "heading": 19.21016202299601
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                124.32806054880044,
+                72.41801749583166
+              ],
+              "headingIndex": 999,
+              "heading": 17.407787084981763
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                296.8897121011207,
+                -140.85585454862368
+              ],
+              "headingIndex": 1999,
+              "heading": 16.485982974089023
+            },
+            {
+              "pointIndex": 4000,
+              "position": [
+                -64.24718928856697,
+                -206.85535594688764
+              ],
+              "headingIndex": 3999,
+              "heading": 19.175551765637582
+            },
+            {
+              "pointIndex": 8000,
+              "position": [
+                412.7777456329842,
+                -531.9756070349391
+              ],
+              "headingIndex": 7999,
+              "heading": 17.291195138965755
+            },
+            {
+              "pointIndex": 16000,
+              "position": [
+                546.7588746921984,
+                318.4354866367904
+              ],
+              "headingIndex": 15999,
+              "heading": 22.872526123913026
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                0.27905202526283723,
+                0.11914492210027511
+              ],
+              "heading": 20.025003495402558
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                0.47081778528393414,
+                0.4701803808270697
+              ],
+              "heading": 19.920364940601402
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                0.6994828524626046,
+                0.7983758820944913
+              ],
+              "heading": 19.811821384272072
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                3.470500378494211,
+                2.200490997173329
+              ],
+              "heading": 18.959820085089085
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                36.77369967483931,
+                -6.315854878734409
+              ],
+              "heading": 19.21016202299601
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                124.32806054880044,
+                72.41801749583166
+              ],
+              "heading": 17.407787084981763
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                296.8897121011207,
+                -140.85585454862368
+              ],
+              "heading": 16.485982974089023
+            },
+            {
+              "headingIndex": 3999,
+              "pointIndex": 4000,
+              "position": [
+                -64.24718928856697,
+                -206.85535594688764
+              ],
+              "heading": 19.175551765637582
+            },
+            {
+              "headingIndex": 7999,
+              "pointIndex": 8000,
+              "position": [
+                412.7777456329842,
+                -531.9756070349391
+              ],
+              "heading": 17.291195138965755
+            },
+            {
+              "headingIndex": 15999,
+              "pointIndex": 16000,
+              "position": [
+                546.7588746921984,
+                318.4354866367904
+              ],
+              "heading": 22.872526123913026
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-006",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                -0.2749101376670967,
+                -0.2415216870142826
+              ],
+              "headingIndex": 0,
+              "heading": 160.20002796322046
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                -0.6038835422172197,
+                -0.4690661861758776
+              ],
+              "headingIndex": 1,
+              "heading": 160.82634591122783
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                -0.6337756364004151,
+                -0.867947700795624
+              ],
+              "headingIndex": 2,
+              "heading": 161.7172216925195
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                1.581958306286796,
+                -3.1690659199622173
+              ],
+              "headingIndex": 10,
+              "heading": 162.58940598312842
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                34.06304169516594,
+                -12.661868954271593
+              ],
+              "headingIndex": 100,
+              "heading": 163.70061166597515
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                295.9926429645305,
+                -116.78068469824136
+              ],
+              "headingIndex": 999,
+              "heading": 161.35651514175322
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                -47.57388645666424,
+                -66.01312553401607
+              ],
+              "headingIndex": 1999,
+              "heading": 159.87988670597647
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                -0.2749101376670967,
+                -0.2415216870142826
+              ],
+              "heading": 160.20002796322046
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                -0.6038835422172197,
+                -0.4690661861758776
+              ],
+              "heading": 160.82634591122783
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                -0.6337756364004151,
+                -0.867947700795624
+              ],
+              "heading": 161.7172216925195
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                1.581958306286796,
+                -3.1690659199622173
+              ],
+              "heading": 162.58940598312842
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                34.06304169516594,
+                -12.661868954271593
+              ],
+              "heading": 163.70061166597515
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                295.9926429645305,
+                -116.78068469824115
+              ],
+              "heading": 161.356515141753
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                -47.57388645666395,
+                -66.01312553401618
+              ],
+              "heading": 159.87988670597647
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-007",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                -0.2749101376670967,
+                -0.2415216870142826
+              ],
+              "headingIndex": 0,
+              "heading": 160.20002796322046
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                -0.6038835422172197,
+                -0.4690661861758776
+              ],
+              "headingIndex": 1,
+              "heading": 160.82634591122783
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                -0.6337756364004151,
+                -0.867947700795624
+              ],
+              "headingIndex": 2,
+              "heading": 161.7172216925195
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                1.581958306286796,
+                -3.1690659199622173
+              ],
+              "headingIndex": 10,
+              "heading": 162.58940598312842
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                34.06304169516594,
+                -12.661868954271593
+              ],
+              "headingIndex": 100,
+              "heading": 163.70061166597515
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                295.9926429645305,
+                -116.78068469824136
+              ],
+              "headingIndex": 999,
+              "heading": 161.35651514175322
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                -47.57388645666424,
+                -66.01312553401607
+              ],
+              "headingIndex": 1999,
+              "heading": 159.87988670597647
+            },
+            {
+              "pointIndex": 4000,
+              "position": [
+                -68.56757474892808,
+                116.84642675092927
+              ],
+              "headingIndex": 3999,
+              "heading": 161.17071604251808
+            },
+            {
+              "pointIndex": 8000,
+              "position": [
+                212.1244773846543,
+                -216.89487604990146
+              ],
+              "headingIndex": 7999,
+              "heading": 162.26025376545195
+            },
+            {
+              "pointIndex": 16000,
+              "position": [
+                425.0239052198839,
+                -787.6991760583489
+              ],
+              "headingIndex": 15999,
+              "heading": 163.4645200828764
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                -0.2749101376670967,
+                -0.2415216870142826
+              ],
+              "heading": 160.20002796322046
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                -0.6038835422172197,
+                -0.4690661861758776
+              ],
+              "heading": 160.82634591122783
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                -0.6337756364004151,
+                -0.867947700795624
+              ],
+              "heading": 161.7172216925195
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                1.581958306286796,
+                -3.1690659199622173
+              ],
+              "heading": 162.58940598312842
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                34.06304169516594,
+                -12.661868954271593
+              ],
+              "heading": 163.70061166597515
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                295.9926429645305,
+                -116.78068469824115
+              ],
+              "heading": 161.356515141753
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                -47.57388645666395,
+                -66.01312553401618
+              ],
+              "heading": 159.87988670597647
+            },
+            {
+              "headingIndex": 3999,
+              "pointIndex": 4000,
+              "position": [
+                -68.56757474892794,
+                116.84642675092947
+              ],
+              "heading": 161.17071604251808
+            },
+            {
+              "headingIndex": 7999,
+              "pointIndex": 8000,
+              "position": [
+                212.12447738465332,
+                -216.89487604989935
+              ],
+              "heading": 162.26025376545215
+            },
+            {
+              "headingIndex": 15999,
+              "pointIndex": 16000,
+              "position": [
+                425.0239052198839,
+                -787.6991760583489
+              ],
+              "heading": 163.4645200828764
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-008",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                100.10162919966253,
+                100.38687401796444
+              ],
+              "headingIndex": 0,
+              "heading": 13.8802778112
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                100.20620100716219,
+                100.77296304536131
+              ],
+              "headingIndex": 1,
+              "heading": 13.872664009635876
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                100.31367923853253,
+                101.15825310464328
+              ],
+              "headingIndex": 2,
+              "heading": 13.865128388908616
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                101.2736706551291,
+                104.21041391824345
+              ],
+              "headingIndex": 10,
+              "heading": 13.807785886670572
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                118.67734834574992,
+                135.62950667354903
+              ],
+              "headingIndex": 100,
+              "heading": 13.594360205075507
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                -133.81867868200507,
+                332.75717267749724
+              ],
+              "headingIndex": 999,
+              "heading": 14.905180013902939
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                -352.91762064207296,
+                457.45157018730583
+              ],
+              "headingIndex": 1999,
+              "heading": 16.49447813593113
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                100.10162919966253,
+                100.38687401796444
+              ],
+              "heading": 13.8802778112
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                100.20620100716219,
+                100.77296304536131
+              ],
+              "heading": 13.872664009635876
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                100.31367923853253,
+                101.15825310464328
+              ],
+              "heading": 13.865128388908616
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                101.2736706551291,
+                104.21041391824345
+              ],
+              "heading": 13.807785886670572
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                118.67734834574992,
+                135.62950667354903
+              ],
+              "heading": 13.594360205075507
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                -133.81867868200507,
+                332.75717267749724
+              ],
+              "heading": 14.905180013902939
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                -352.91762064207296,
+                457.45157018730583
+              ],
+              "heading": 16.49447813593113
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-009",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                100.10162919966253,
+                100.38687401796444
+              ],
+              "headingIndex": 0,
+              "heading": 13.8802778112
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                100.20620100716219,
+                100.77296304536131
+              ],
+              "headingIndex": 1,
+              "heading": 13.872664009635876
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                100.31367923853253,
+                101.15825310464328
+              ],
+              "headingIndex": 2,
+              "heading": 13.865128388908616
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                101.2736706551291,
+                104.21041391824345
+              ],
+              "headingIndex": 10,
+              "heading": 13.807785886670572
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                118.67734834574992,
+                135.62950667354903
+              ],
+              "headingIndex": 100,
+              "heading": 13.594360205075507
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                -133.81867868200507,
+                332.75717267749724
+              ],
+              "headingIndex": 999,
+              "heading": 14.905180013902939
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                -352.91762064207296,
+                457.45157018730583
+              ],
+              "headingIndex": 1999,
+              "heading": 16.49447813593113
+            },
+            {
+              "pointIndex": 4000,
+              "position": [
+                105.78800952895504,
+                -33.61361341645347
+              ],
+              "headingIndex": 3999,
+              "heading": 18.51683092204351
+            },
+            {
+              "pointIndex": 8000,
+              "position": [
+                459.4273246896175,
+                576.4050913168021
+              ],
+              "headingIndex": 7999,
+              "heading": 18.177752130243224
+            },
+            {
+              "pointIndex": 16000,
+              "position": [
+                647.1021773461321,
+                -726.5200943173618
+              ],
+              "headingIndex": 15999,
+              "heading": 15.7521649293182
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                100.10162919966253,
+                100.38687401796444
+              ],
+              "heading": 13.8802778112
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                100.20620100716219,
+                100.77296304536131
+              ],
+              "heading": 13.872664009635876
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                100.31367923853253,
+                101.15825310464328
+              ],
+              "heading": 13.865128388908616
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                101.2736706551291,
+                104.21041391824345
+              ],
+              "heading": 13.807785886670572
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                118.67734834574992,
+                135.62950667354903
+              ],
+              "heading": 13.594360205075507
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                -133.81867868200507,
+                332.75717267749724
+              ],
+              "heading": 14.905180013902939
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                -352.91762064207296,
+                457.45157018730583
+              ],
+              "heading": 16.49447813593113
+            },
+            {
+              "headingIndex": 3999,
+              "pointIndex": 4000,
+              "position": [
+                105.78800952895504,
+                -33.61361341645347
+              ],
+              "heading": 18.51683092204351
+            },
+            {
+              "headingIndex": 7999,
+              "pointIndex": 8000,
+              "position": [
+                459.4273246896175,
+                576.4050913168021
+              ],
+              "heading": 18.177752130243224
+            },
+            {
+              "headingIndex": 15999,
+              "pointIndex": 16000,
+              "position": [
+                647.1021773461321,
+                -726.5200943173618
+              ],
+              "heading": 15.7521649293182
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-010",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                99.81375849454874,
+                99.64600268129935
+              ],
+              "headingIndex": 0,
+              "heading": 111.0422224896
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                99.64888965345656,
+                99.28156027811755
+              ],
+              "headingIndex": 1,
+              "heading": 111.10170239365877
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                99.50653434252655,
+                98.90774887453279
+              ],
+              "headingIndex": 2,
+              "heading": 111.16267479845497
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                99.26063775375029,
+                95.75171992572587
+              ],
+              "headingIndex": 10,
+              "heading": 111.67256904330202
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                131.47997899151937,
+                88.37757200652428
+              ],
+              "headingIndex": 100,
+              "heading": 113.37312858367262
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                18.072587873211994,
+                132.279185220373
+              ],
+              "headingIndex": 999,
+              "heading": 118.40190831473258
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                82.44990491684064,
+                237.67852095544544
+              ],
+              "headingIndex": 1999,
+              "heading": 122.03194207462312
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                99.81375849454874,
+                99.64600268129935
+              ],
+              "heading": 111.0422224896
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                99.64888965345656,
+                99.28156027811755
+              ],
+              "heading": 111.10170239365877
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                99.50653434252655,
+                98.90774887453279
+              ],
+              "heading": 111.16267479845497
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                99.26063775375029,
+                95.75171992572587
+              ],
+              "heading": 111.67256904330202
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                131.47997899151937,
+                88.37757200652428
+              ],
+              "heading": 113.37312858367262
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                18.072587873211994,
+                132.279185220373
+              ],
+              "heading": 118.40190831473258
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                82.44990491684064,
+                237.67852095544544
+              ],
+              "heading": 122.03194207462312
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-011",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                99.81375849454874,
+                99.64600268129935
+              ],
+              "headingIndex": 0,
+              "heading": 111.0422224896
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                99.64888965345656,
+                99.28156027811755
+              ],
+              "headingIndex": 1,
+              "heading": 111.10170239365877
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                99.50653434252655,
+                98.90774887453279
+              ],
+              "headingIndex": 2,
+              "heading": 111.16267479845497
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                99.26063775375029,
+                95.75171992572587
+              ],
+              "headingIndex": 10,
+              "heading": 111.67256904330202
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                131.47997899151937,
+                88.37757200652428
+              ],
+              "headingIndex": 100,
+              "heading": 113.37312858367262
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                18.072587873211994,
+                132.279185220373
+              ],
+              "headingIndex": 999,
+              "heading": 118.40190831473258
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                82.44990491684064,
+                237.67852095544544
+              ],
+              "headingIndex": 1999,
+              "heading": 122.03194207462312
+            },
+            {
+              "pointIndex": 4000,
+              "position": [
+                -280.1698532927272,
+                342.4136146534041
+              ],
+              "headingIndex": 3999,
+              "heading": 125.22530458450184
+            },
+            {
+              "pointIndex": 8000,
+              "position": [
+                -367.16389808458507,
+                425.60221385229477
+              ],
+              "headingIndex": 7999,
+              "heading": 129.8234594979269
+            },
+            {
+              "pointIndex": 16000,
+              "position": [
+                -7.8381900612261814,
+                352.5196301101405
+              ],
+              "headingIndex": 15999,
+              "heading": 140.62827164101952
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                99.81375849454874,
+                99.64600268129935
+              ],
+              "heading": 111.0422224896
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                99.64888965345656,
+                99.28156027811755
+              ],
+              "heading": 111.10170239365877
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                99.50653434252655,
+                98.90774887453279
+              ],
+              "heading": 111.16267479845497
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                99.26063775375029,
+                95.75171992572587
+              ],
+              "heading": 111.67256904330202
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                131.47997899151937,
+                88.37757200652428
+              ],
+              "heading": 113.37312858367262
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                18.072587873211994,
+                132.279185220373
+              ],
+              "heading": 118.40190831473258
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                82.44990491684064,
+                237.67852095544544
+              ],
+              "heading": 122.03194207462312
+            },
+            {
+              "headingIndex": 3999,
+              "pointIndex": 4000,
+              "position": [
+                -280.1698532927272,
+                342.4136146534041
+              ],
+              "heading": 125.22530458450184
+            },
+            {
+              "headingIndex": 7999,
+              "pointIndex": 8000,
+              "position": [
+                -367.16389808458507,
+                425.60221385229477
+              ],
+              "heading": 129.8234594979269
+            },
+            {
+              "headingIndex": 15999,
+              "pointIndex": 16000,
+              "position": [
+                -7.8381900612261814,
+                352.5196301101405
+              ],
+              "heading": 140.62827164101952
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-012",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                100.16323282472536,
+                100.36517810029105
+              ],
+              "headingIndex": 0,
+              "heading": 20
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                100.36407958174348,
+                100.71109800459737
+              ],
+              "headingIndex": 1,
+              "heading": 19.894307366065377
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                100.60150092162043,
+                101.03301586270878
+              ],
+              "headingIndex": 2,
+              "heading": 19.784885333385528
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                103.41207909827973,
+                102.35079050172699
+              ],
+              "headingIndex": 10,
+              "heading": 18.92625563043961
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                123.97036075257077,
+                74.65568166594501
+              ],
+              "headingIndex": 100,
+              "heading": 17.478487497769482
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                312.3429523779095,
+                -102.57849657330188
+              ],
+              "headingIndex": 999,
+              "heading": 17.290801157417647
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                -16.508212453740143,
+                -106.77128703039573
+              ],
+              "headingIndex": 1999,
+              "heading": 14.854943322430394
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                100.16323282472536,
+                100.36517810029105
+              ],
+              "heading": 20
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                100.36407958174348,
+                100.71109800459737
+              ],
+              "heading": 19.894307366065377
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                100.60150092162043,
+                101.03301586270878
+              ],
+              "heading": 19.784885333385528
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                103.41207909827973,
+                102.35079050172699
+              ],
+              "heading": 18.92625563043961
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                123.97036075257077,
+                74.65568166594501
+              ],
+              "heading": 17.478487497769482
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                312.3429523779095,
+                -102.57849657330189
+              ],
+              "heading": 17.290801157417647
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                -16.508212453740235,
+                -106.77128703039561
+              ],
+              "heading": 14.854943322430396
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-013",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                100.16323282472536,
+                100.36517810029105
+              ],
+              "headingIndex": 0,
+              "heading": 20
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                100.36407958174348,
+                100.71109800459737
+              ],
+              "headingIndex": 1,
+              "heading": 19.894307366065377
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                100.60150092162043,
+                101.03301586270878
+              ],
+              "headingIndex": 2,
+              "heading": 19.784885333385528
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                103.41207909827973,
+                102.35079050172699
+              ],
+              "headingIndex": 10,
+              "heading": 18.92625563043961
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                123.97036075257077,
+                74.65568166594501
+              ],
+              "headingIndex": 100,
+              "heading": 17.478487497769482
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                312.3429523779095,
+                -102.57849657330188
+              ],
+              "headingIndex": 999,
+              "heading": 17.290801157417647
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                -16.508212453740143,
+                -106.77128703039573
+              ],
+              "headingIndex": 1999,
+              "heading": 14.854943322430394
+            },
+            {
+              "pointIndex": 4000,
+              "position": [
+                109.6451193370263,
+                -293.9348350301186
+              ],
+              "headingIndex": 3999,
+              "heading": 18.91554502604825
+            },
+            {
+              "pointIndex": 8000,
+              "position": [
+                307.317123090368,
+                -821.1836379712668
+              ],
+              "headingIndex": 7999,
+              "heading": 15.931192198345139
+            },
+            {
+              "pointIndex": 16000,
+              "position": [
+                326.71690511160557,
+                410.2009541606345
+              ],
+              "headingIndex": 15999,
+              "heading": 21.957676045337713
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                100.16323282472536,
+                100.36517810029105
+              ],
+              "heading": 20
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                100.36407958174348,
+                100.71109800459737
+              ],
+              "heading": 19.894307366065377
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                100.60150092162043,
+                101.03301586270878
+              ],
+              "heading": 19.784885333385528
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                103.41207909827973,
+                102.35079050172699
+              ],
+              "heading": 18.92625563043961
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                123.97036075257077,
+                74.65568166594501
+              ],
+              "heading": 17.478487497769482
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                312.3429523779095,
+                -102.57849657330189
+              ],
+              "heading": 17.290801157417647
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                -16.508212453740235,
+                -106.77128703039561
+              ],
+              "heading": 14.854943322430396
+            },
+            {
+              "headingIndex": 3999,
+              "pointIndex": 4000,
+              "position": [
+                109.6451193370263,
+                -293.9348350301186
+              ],
+              "heading": 18.91554502604825
+            },
+            {
+              "headingIndex": 7999,
+              "pointIndex": 8000,
+              "position": [
+                307.317123090368,
+                -821.1836379712668
+              ],
+              "heading": 15.931192198345139
+            },
+            {
+              "headingIndex": 15999,
+              "pointIndex": 16000,
+              "position": [
+                326.71690511160557,
+                410.2009541606345
+              ],
+              "heading": 21.957676045337713
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-014",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                99.60974827488191,
+                100.0877701033516
+              ],
+              "headingIndex": 0,
+              "heading": 160
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                99.22348568385631,
+                99.9838412297207
+              ],
+              "headingIndex": 1,
+              "heading": 160.48406339148826
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                99.02368763293471,
+                99.6373145513135
+              ],
+              "headingIndex": 2,
+              "heading": 161.26900576300625
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                101.11667260803785,
+                97.25807180246679
+              ],
+              "headingIndex": 10,
+              "heading": 162.56921596414128
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                110.32350570576219,
+                65.06390534772119
+              ],
+              "headingIndex": 100,
+              "heading": 161.3655232819466
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                -111.4130733176769,
+                100.14126296407971
+              ],
+              "headingIndex": 999,
+              "heading": 160.2204543025942
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                -201.11992480780006,
+                -22.136877147528942
+              ],
+              "headingIndex": 1999,
+              "heading": 161.79201229863776
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                99.60974827488191,
+                100.0877701033516
+              ],
+              "heading": 160
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                99.22348568385631,
+                99.9838412297207
+              ],
+              "heading": 160.48406339148826
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                99.02368763293471,
+                99.6373145513135
+              ],
+              "heading": 161.26900576300625
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                101.11667260803785,
+                97.25807180246679
+              ],
+              "heading": 162.56921596414128
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                110.32350570576219,
+                65.06390534772119
+              ],
+              "heading": 161.3655232819466
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                -111.4130733176769,
+                100.14126296407971
+              ],
+              "heading": 160.2204543025942
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                -201.11992480780006,
+                -22.136877147528942
+              ],
+              "heading": 161.79201229863776
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-field-015",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                99.60974827488191,
+                100.0877701033516
+              ],
+              "headingIndex": 0,
+              "heading": 160
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                99.22348568385631,
+                99.9838412297207
+              ],
+              "headingIndex": 1,
+              "heading": 160.48406339148826
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                99.02368763293471,
+                99.6373145513135
+              ],
+              "headingIndex": 2,
+              "heading": 161.26900576300625
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                101.11667260803785,
+                97.25807180246679
+              ],
+              "headingIndex": 10,
+              "heading": 162.56921596414128
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                110.32350570576219,
+                65.06390534772119
+              ],
+              "headingIndex": 100,
+              "heading": 161.3655232819466
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                -111.4130733176769,
+                100.14126296407971
+              ],
+              "headingIndex": 999,
+              "heading": 160.2204543025942
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                -201.11992480780006,
+                -22.136877147528942
+              ],
+              "headingIndex": 1999,
+              "heading": 161.79201229863776
+            },
+            {
+              "pointIndex": 4000,
+              "position": [
+                98.41406870427667,
+                -192.44410032873157
+              ],
+              "headingIndex": 3999,
+              "heading": 161.95669728213258
+            },
+            {
+              "pointIndex": 8000,
+              "position": [
+                185.68925109424174,
+                -802.0938962551935
+              ],
+              "headingIndex": 7999,
+              "heading": 163.36293776517857
+            },
+            {
+              "pointIndex": 16000,
+              "position": [
+                219.34786883355667,
+                -1222.6744932160163
+              ],
+              "headingIndex": 15999,
+              "heading": 159.3209700430512
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                100,
+                100
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                99.60974827488191,
+                100.0877701033516
+              ],
+              "heading": 160
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                99.22348568385631,
+                99.9838412297207
+              ],
+              "heading": 160.48406339148826
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                99.02368763293471,
+                99.6373145513135
+              ],
+              "heading": 161.26900576300625
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                101.11667260803785,
+                97.25807180246679
+              ],
+              "heading": 162.56921596414128
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                110.32350570576219,
+                65.06390534772119
+              ],
+              "heading": 161.3655232819466
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                -111.4130733176769,
+                100.14126296407971
+              ],
+              "heading": 160.2204543025942
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                -201.11992480780006,
+                -22.136877147528942
+              ],
+              "heading": 161.79201229863776
+            },
+            {
+              "headingIndex": 3999,
+              "pointIndex": 4000,
+              "position": [
+                98.41406870427667,
+                -192.44410032873157
+              ],
+              "heading": 161.95669728213258
+            },
+            {
+              "headingIndex": 7999,
+              "pointIndex": 8000,
+              "position": [
+                185.68925109424174,
+                -802.0938962551935
+              ],
+              "heading": 163.36293776517857
+            },
+            {
+              "headingIndex": 15999,
+              "pointIndex": 16000,
+              "position": [
+                219.34786883355667,
+                -1222.6744932160163
+              ],
+              "heading": 159.3209700430512
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-constant-016",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                0.5230016661112102,
+                -0.21006663334126874
+              ],
+              "headingIndex": 0,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                0.9210033322224205,
+                -0.17013326668253748
+              ],
+              "headingIndex": 1,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                1.3190049983336307,
+                -0.13019990002380621
+              ],
+              "headingIndex": 2,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                4.503018327223314,
+                0.18926703324604388
+              ],
+              "headingIndex": 10,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                40.323168277232256,
+                3.783270032531865
+              ],
+              "headingIndex": 100,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                398.12666611121284,
+                39.683366658730314
+              ],
+              "headingIndex": 999,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                796.1283322224259,
+                79.61673331745992
+              ],
+              "headingIndex": 1999,
+              "heading": 0.1
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                0.5230016661112104,
+                -0.21006663334126874
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                0.9210033322224207,
+                -0.17013326668253748
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                1.319004998333631,
+                -0.13019990002380621
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                4.503018327223314,
+                0.18926703324604388
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                40.323168277232256,
+                3.783270032531865
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                398.12666611121284,
+                39.683366658730314
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                796.1283322224259,
+                79.61673331745992
+              ],
+              "heading": 0.1
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-constant-017",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                0.5230016661112102,
+                -0.21006663334126874
+              ],
+              "headingIndex": 0,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                0.9210033322224205,
+                -0.17013326668253748
+              ],
+              "headingIndex": 1,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                1.3190049983336307,
+                -0.13019990002380621
+              ],
+              "headingIndex": 2,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                4.503018327223314,
+                0.18926703324604388
+              ],
+              "headingIndex": 10,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                40.323168277232256,
+                3.783270032531865
+              ],
+              "headingIndex": 100,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                398.12666611121284,
+                39.683366658730314
+              ],
+              "headingIndex": 999,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                796.1283322224259,
+                79.61673331745992
+              ],
+              "headingIndex": 1999,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 4000,
+              "position": [
+                1592.131664444852,
+                159.48346663493032
+              ],
+              "headingIndex": 3999,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 8000,
+              "position": [
+                3184.1383288897046,
+                319.21693326986053
+              ],
+              "headingIndex": 7999,
+              "heading": 0.1
+            },
+            {
+              "pointIndex": 16000,
+              "position": [
+                6368.151657776813,
+                638.6838665395836
+              ],
+              "headingIndex": 15999,
+              "heading": 0.1
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                0.5230016661112104,
+                -0.21006663334126874
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                0.9210033322224207,
+                -0.17013326668253748
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                1.319004998333631,
+                -0.13019990002380621
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                4.503018327223314,
+                0.18926703324604388
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                40.323168277232256,
+                3.783270032531865
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                398.12666611121284,
+                39.683366658730314
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                796.1283322224259,
+                79.61673331745992
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 3999,
+              "pointIndex": 4000,
+              "position": [
+                1592.131664444852,
+                159.48346663493032
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 7999,
+              "pointIndex": 8000,
+              "position": [
+                3184.1383288897046,
+                319.21693326986053
+              ],
+              "heading": 0.1
+            },
+            {
+              "headingIndex": 15999,
+              "pointIndex": 16000,
+              "position": [
+                6368.151657776813,
+                638.6838665395836
+              ],
+              "heading": 0.1
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-constant-018",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                0.3411209223472559,
+                0.08658839392315865
+              ],
+              "headingIndex": 0,
+              "heading": 1
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                0.5572418446945118,
+                0.4231767878463173
+              ],
+              "headingIndex": 1,
+              "heading": 1
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                0.7733627670417677,
+                0.7597651817694759
+              ],
+              "headingIndex": 2,
+              "heading": 1
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                2.5023301458198155,
+                3.4524723331547458
+              ],
+              "headingIndex": 10,
+              "heading": 1
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                21.953213157072827,
+                33.74542778623898
+              ],
+              "headingIndex": 100,
+              "heading": 1
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                216.245922347252,
+                336.33839392315696
+              ],
+              "headingIndex": 999,
+              "heading": 1
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                432.3668446945192,
+                672.9267878463208
+              ],
+              "headingIndex": 1999,
+              "heading": 1
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                0.3411209223472559,
+                0.08658839392315865
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                0.5572418446945118,
+                0.4231767878463173
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                0.7733627670417677,
+                0.7597651817694759
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                2.5023301458198155,
+                3.4524723331547458
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                21.953213157072827,
+                33.74542778623898
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                216.245922347252,
+                336.33839392315696
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                432.3668446945192,
+                672.9267878463208
+              ],
+              "heading": 1
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cp2-constant-019",
+          "actual": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "pointIndex": 1,
+              "position": [
+                0.3411209223472559,
+                0.08658839392315865
+              ],
+              "headingIndex": 0,
+              "heading": 1
+            },
+            {
+              "pointIndex": 2,
+              "position": [
+                0.5572418446945118,
+                0.4231767878463173
+              ],
+              "headingIndex": 1,
+              "heading": 1
+            },
+            {
+              "pointIndex": 3,
+              "position": [
+                0.7733627670417677,
+                0.7597651817694759
+              ],
+              "headingIndex": 2,
+              "heading": 1
+            },
+            {
+              "pointIndex": 11,
+              "position": [
+                2.5023301458198155,
+                3.4524723331547458
+              ],
+              "headingIndex": 10,
+              "heading": 1
+            },
+            {
+              "pointIndex": 101,
+              "position": [
+                21.953213157072827,
+                33.74542778623898
+              ],
+              "headingIndex": 100,
+              "heading": 1
+            },
+            {
+              "pointIndex": 1000,
+              "position": [
+                216.245922347252,
+                336.33839392315696
+              ],
+              "headingIndex": 999,
+              "heading": 1
+            },
+            {
+              "pointIndex": 2000,
+              "position": [
+                432.3668446945192,
+                672.9267878463208
+              ],
+              "headingIndex": 1999,
+              "heading": 1
+            },
+            {
+              "pointIndex": 4000,
+              "position": [
+                864.608689389064,
+                1346.1035756927079
+              ],
+              "headingIndex": 3999,
+              "heading": 1
+            },
+            {
+              "pointIndex": 8000,
+              "position": [
+                1729.0923787781537,
+                2692.4571513854817
+              ],
+              "headingIndex": 7999,
+              "heading": 1
+            },
+            {
+              "pointIndex": 16000,
+              "position": [
+                3458.059757556333,
+                5385.16430277103
+              ],
+              "headingIndex": 15999,
+              "heading": 1
+            }
+          ],
+          "expected": [
+            {
+              "pointIndex": 0,
+              "position": [
+                0.125,
+                -0.25
+              ]
+            },
+            {
+              "headingIndex": 0,
+              "pointIndex": 1,
+              "position": [
+                0.3411209223472559,
+                0.08658839392315865
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 1,
+              "pointIndex": 2,
+              "position": [
+                0.5572418446945118,
+                0.4231767878463173
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 2,
+              "pointIndex": 3,
+              "position": [
+                0.7733627670417677,
+                0.7597651817694759
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 10,
+              "pointIndex": 11,
+              "position": [
+                2.5023301458198155,
+                3.4524723331547458
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 100,
+              "pointIndex": 101,
+              "position": [
+                21.953213157072827,
+                33.74542778623898
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 999,
+              "pointIndex": 1000,
+              "position": [
+                216.245922347252,
+                336.33839392315696
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 1999,
+              "pointIndex": 2000,
+              "position": [
+                432.3668446945192,
+                672.9267878463208
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 3999,
+              "pointIndex": 4000,
+              "position": [
+                864.608689389064,
+                1346.1035756927079
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 7999,
+              "pointIndex": 8000,
+              "position": [
+                1729.0923787781537,
+                2692.4571513854817
+              ],
+              "heading": 1
+            },
+            {
+              "headingIndex": 15999,
+              "pointIndex": 16000,
+              "position": [
+                3458.059757556333,
+                5385.16430277103
+              ],
+              "heading": 1
+            }
+          ],
+          "passed": true
+        },
+        {
+          "id": "cross-prefix-4-5-raw-binary64",
+          "actual": {
+            "kind": "raw-binary64-prefix",
+            "positions": true,
+            "headings": true
+          },
+          "expected": {
+            "id": "prefix-4-5-raw-binary64",
+            "kind": "raw-binary64-prefix",
+            "prefix_case": "prefix-4",
+            "extended_case": "prefix-5",
+            "positions": "prefix-4 positions equal prefix of prefix-5 positions by raw binary64 bits",
+            "headings": "prefix-4 headings equal prefix of prefix-5 headings by raw binary64 bits"
+          },
+          "passed": true
+        }
+      ],
+      "nativeChecks": [
+        {
+          "id": "positive-zero",
+          "actual": true,
+          "passed": true
+        },
+        {
+          "id": "detached-input-output-and-replay",
+          "actual": true,
+          "passed": true
+        },
+        {
+          "id": "passive-own-data-and-static-access-order",
+          "actual": true,
+          "passed": true
+        },
+        {
+          "id": "access-order-and-binary64-output-buffers",
+          "actual": true,
+          "passed": true
+        },
+        {
+          "id": "dynamic-failure-and-host-resource-classification",
+          "actual": true,
+          "passed": true
+        }
+      ],
+      "benchmark": {
+        "workloads": 20,
+        "steps": [
+          2000,
+          16000
+        ],
+        "warmupTraversalsPerWorkload": 3,
+        "timedTraversalsPerWorkload": 5,
+        "checksumAlgorithm": "FNV-1a-64 over big-endian binary64 positions then headings, traversed through pointInto/headingAt",
+        "cases": [
+          {
+            "id": "cp2-field-000",
+            "steps": 2000,
+            "checksum": "395b55620918a3ae",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 2.7428390000000036,
+                "checksum": "395b55620918a3ae"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 2.363449000000003,
+                "checksum": "395b55620918a3ae"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 1.2460889999999978,
+                "checksum": "395b55620918a3ae"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 1.1467600000000004,
+                "checksum": "395b55620918a3ae"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 1.1176490000000001,
+                "checksum": "395b55620918a3ae"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 1.0535990000000055,
+                "checksum": "395b55620918a3ae"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 1.008349999999993,
+                "checksum": "395b55620918a3ae"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 1.242789000000002,
+                "checksum": "395b55620918a3ae"
+              }
+            ],
+            "retainedBinary64Bytes": 48016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-001",
+            "steps": 16000,
+            "checksum": "10cfa85dd94577ac",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.885385999999997,
+                "checksum": "10cfa85dd94577ac"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.950496000000001,
+                "checksum": "10cfa85dd94577ac"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 8.05486599999999,
+                "checksum": "10cfa85dd94577ac"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 8.029285000000002,
+                "checksum": "10cfa85dd94577ac"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.995705999999998,
+                "checksum": "10cfa85dd94577ac"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 8.007726000000005,
+                "checksum": "10cfa85dd94577ac"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 8.190864999999988,
+                "checksum": "10cfa85dd94577ac"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 7.991686000000016,
+                "checksum": "10cfa85dd94577ac"
+              }
+            ],
+            "retainedBinary64Bytes": 384016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-002",
+            "steps": 2000,
+            "checksum": "7f19a70a12899ae4",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.9596899999999948,
+                "checksum": "7f19a70a12899ae4"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.8176389999999856,
+                "checksum": "7f19a70a12899ae4"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.9544500000000085,
+                "checksum": "7f19a70a12899ae4"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.8619889999999941,
+                "checksum": "7f19a70a12899ae4"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.9632100000000037,
+                "checksum": "7f19a70a12899ae4"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.9137990000000116,
+                "checksum": "7f19a70a12899ae4"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 0.975670000000008,
+                "checksum": "7f19a70a12899ae4"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 0.9400990000000036,
+                "checksum": "7f19a70a12899ae4"
+              }
+            ],
+            "retainedBinary64Bytes": 48016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-003",
+            "steps": 16000,
+            "checksum": "45975d2ce307f07c",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.950556000000006,
+                "checksum": "45975d2ce307f07c"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.973865999999987,
+                "checksum": "45975d2ce307f07c"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 8.012145000000004,
+                "checksum": "45975d2ce307f07c"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.993736000000013,
+                "checksum": "45975d2ce307f07c"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.980636000000004,
+                "checksum": "45975d2ce307f07c"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 8.069446,
+                "checksum": "45975d2ce307f07c"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 7.964246000000003,
+                "checksum": "45975d2ce307f07c"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 7.982094999999987,
+                "checksum": "45975d2ce307f07c"
+              }
+            ],
+            "retainedBinary64Bytes": 384016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-004",
+            "steps": 2000,
+            "checksum": "281417ba74af8f6c",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.9850900000000138,
+                "checksum": "281417ba74af8f6c"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.8778590000000008,
+                "checksum": "281417ba74af8f6c"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.9720800000000054,
+                "checksum": "281417ba74af8f6c"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.9364590000000135,
+                "checksum": "281417ba74af8f6c"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.9824700000000064,
+                "checksum": "281417ba74af8f6c"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.9530589999999961,
+                "checksum": "281417ba74af8f6c"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 0.8409599999999955,
+                "checksum": "281417ba74af8f6c"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 0.9701590000000238,
+                "checksum": "281417ba74af8f6c"
+              }
+            ],
+            "retainedBinary64Bytes": 48016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-005",
+            "steps": 16000,
+            "checksum": "51c6006f84b37070",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 8.000836000000021,
+                "checksum": "51c6006f84b37070"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 8.008425999999986,
+                "checksum": "51c6006f84b37070"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.978135000000009,
+                "checksum": "51c6006f84b37070"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 8.004356000000001,
+                "checksum": "51c6006f84b37070"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.994926000000021,
+                "checksum": "51c6006f84b37070"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.98799600000001,
+                "checksum": "51c6006f84b37070"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 8.009884999999997,
+                "checksum": "51c6006f84b37070"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 7.989026000000024,
+                "checksum": "51c6006f84b37070"
+              }
+            ],
+            "retainedBinary64Bytes": 384016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-006",
+            "steps": 2000,
+            "checksum": "87b85b1f412ae5fa",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.9905200000000036,
+                "checksum": "87b85b1f412ae5fa"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.9458589999999845,
+                "checksum": "87b85b1f412ae5fa"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.9753999999999792,
+                "checksum": "87b85b1f412ae5fa"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.9565090000000396,
+                "checksum": "87b85b1f412ae5fa"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.8458400000000097,
+                "checksum": "87b85b1f412ae5fa"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.9639190000000326,
+                "checksum": "87b85b1f412ae5fa"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 0.8818400000000111,
+                "checksum": "87b85b1f412ae5fa"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 0.9627889999999866,
+                "checksum": "87b85b1f412ae5fa"
+              }
+            ],
+            "retainedBinary64Bytes": 48016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-007",
+            "steps": 16000,
+            "checksum": "0e2044af4a25005a",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.981865999999968,
+                "checksum": "0e2044af4a25005a"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 8.031046000000003,
+                "checksum": "0e2044af4a25005a"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 8.04251499999998,
+                "checksum": "0e2044af4a25005a"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.97083600000002,
+                "checksum": "0e2044af4a25005a"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 8.032165999999961,
+                "checksum": "0e2044af4a25005a"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.983615999999984,
+                "checksum": "0e2044af4a25005a"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 7.993465000000015,
+                "checksum": "0e2044af4a25005a"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 7.9912160000000085,
+                "checksum": "0e2044af4a25005a"
+              }
+            ],
+            "retainedBinary64Bytes": 384016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-008",
+            "steps": 2000,
+            "checksum": "77e5bb0d4f57fa05",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.9727800000000002,
+                "checksum": "77e5bb0d4f57fa05"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.9464790000000107,
+                "checksum": "77e5bb0d4f57fa05"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 1.0131700000000023,
+                "checksum": "77e5bb0d4f57fa05"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.965169000000003,
+                "checksum": "77e5bb0d4f57fa05"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.8541500000000042,
+                "checksum": "77e5bb0d4f57fa05"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.9682889999999702,
+                "checksum": "77e5bb0d4f57fa05"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 0.9036699999999769,
+                "checksum": "77e5bb0d4f57fa05"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 0.9700290000000109,
+                "checksum": "77e5bb0d4f57fa05"
+              }
+            ],
+            "retainedBinary64Bytes": 48016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-009",
+            "steps": 16000,
+            "checksum": "a27852ad45de9ea6",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 8.007925999999998,
+                "checksum": "a27852ad45de9ea6"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.973915999999974,
+                "checksum": "a27852ad45de9ea6"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 8.247115000000008,
+                "checksum": "a27852ad45de9ea6"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 8.564375999999982,
+                "checksum": "a27852ad45de9ea6"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.931956000000014,
+                "checksum": "a27852ad45de9ea6"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.876235000000008,
+                "checksum": "a27852ad45de9ea6"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 7.885565999999983,
+                "checksum": "a27852ad45de9ea6"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 7.888065999999981,
+                "checksum": "a27852ad45de9ea6"
+              }
+            ],
+            "retainedBinary64Bytes": 384016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-010",
+            "steps": 2000,
+            "checksum": "a09046caf9345c09",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.6383500000000026,
+                "checksum": "a09046caf9345c09"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.6488390000000095,
+                "checksum": "a09046caf9345c09"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.7999999999999545,
+                "checksum": "a09046caf9345c09"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.6331900000000132,
+                "checksum": "a09046caf9345c09"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.6411490000000413,
+                "checksum": "a09046caf9345c09"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.697589999999991,
+                "checksum": "a09046caf9345c09"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 0.6396299999999542,
+                "checksum": "a09046caf9345c09"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 0.6445889999999963,
+                "checksum": "a09046caf9345c09"
+              }
+            ],
+            "retainedBinary64Bytes": 48016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-011",
+            "steps": 16000,
+            "checksum": "0043b69ddac2f4b9",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.890796000000023,
+                "checksum": "0043b69ddac2f4b9"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.934825999999987,
+                "checksum": "0043b69ddac2f4b9"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.923846000000026,
+                "checksum": "0043b69ddac2f4b9"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.875935000000027,
+                "checksum": "0043b69ddac2f4b9"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.8968360000000075,
+                "checksum": "0043b69ddac2f4b9"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.925365999999997,
+                "checksum": "0043b69ddac2f4b9"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 7.929555999999991,
+                "checksum": "0043b69ddac2f4b9"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 7.981155999999999,
+                "checksum": "0043b69ddac2f4b9"
+              }
+            ],
+            "retainedBinary64Bytes": 384016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-012",
+            "steps": 2000,
+            "checksum": "3c84a33339703a79",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.6545790000000125,
+                "checksum": "3c84a33339703a79"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.6374000000000137,
+                "checksum": "3c84a33339703a79"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.6331199999999626,
+                "checksum": "3c84a33339703a79"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.7130389999999807,
+                "checksum": "3c84a33339703a79"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.6313799999999787,
+                "checksum": "3c84a33339703a79"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.6396290000000135,
+                "checksum": "3c84a33339703a79"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 0.6352699999999913,
+                "checksum": "3c84a33339703a79"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 0.6535000000000082,
+                "checksum": "3c84a33339703a79"
+              }
+            ],
+            "retainedBinary64Bytes": 48016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-013",
+            "steps": 16000,
+            "checksum": "27eac23f8e0717f2",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.968555999999978,
+                "checksum": "27eac23f8e0717f2"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.905244999999979,
+                "checksum": "27eac23f8e0717f2"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.9908060000000205,
+                "checksum": "27eac23f8e0717f2"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.942545999999993,
+                "checksum": "27eac23f8e0717f2"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.979276000000027,
+                "checksum": "27eac23f8e0717f2"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.9240049999999655,
+                "checksum": "27eac23f8e0717f2"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 7.957976000000031,
+                "checksum": "27eac23f8e0717f2"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 8.031425999999897,
+                "checksum": "27eac23f8e0717f2"
+              }
+            ],
+            "retainedBinary64Bytes": 384016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-014",
+            "steps": 2000,
+            "checksum": "98dd0228c249a141",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.6427199999999402,
+                "checksum": "98dd0228c249a141"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.7398289999999861,
+                "checksum": "98dd0228c249a141"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.6335200000000896,
+                "checksum": "98dd0228c249a141"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.6401800000001003,
+                "checksum": "98dd0228c249a141"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.6447290000000976,
+                "checksum": "98dd0228c249a141"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.6454199999999446,
+                "checksum": "98dd0228c249a141"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 0.6341999999999643,
+                "checksum": "98dd0228c249a141"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 0.6444389999999203,
+                "checksum": "98dd0228c249a141"
+              }
+            ],
+            "retainedBinary64Bytes": 48016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-field-015",
+            "steps": 16000,
+            "checksum": "814fcb25fa63f8b1",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.961966000000075,
+                "checksum": "814fcb25fa63f8b1"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.943105999999943,
+                "checksum": "814fcb25fa63f8b1"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.958715999999981,
+                "checksum": "814fcb25fa63f8b1"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.895575000000008,
+                "checksum": "814fcb25fa63f8b1"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.973275999999942,
+                "checksum": "814fcb25fa63f8b1"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.967625999999996,
+                "checksum": "814fcb25fa63f8b1"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 7.9043759999999565,
+                "checksum": "814fcb25fa63f8b1"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 7.929485,
+                "checksum": "814fcb25fa63f8b1"
+              }
+            ],
+            "retainedBinary64Bytes": 384016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-constant-016",
+            "steps": 2000,
+            "checksum": "b83ee3fd61130ed2",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.6178100000000768,
+                "checksum": "b83ee3fd61130ed2"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.6255200000000514,
+                "checksum": "b83ee3fd61130ed2"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.6144299999999703,
+                "checksum": "b83ee3fd61130ed2"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.6154290000000628,
+                "checksum": "b83ee3fd61130ed2"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.736629999999991,
+                "checksum": "b83ee3fd61130ed2"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.6147090000000617,
+                "checksum": "b83ee3fd61130ed2"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 0.6236199999999599,
+                "checksum": "b83ee3fd61130ed2"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 0.6175900000000638,
+                "checksum": "b83ee3fd61130ed2"
+              }
+            ],
+            "retainedBinary64Bytes": 48016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-constant-017",
+            "steps": 16000,
+            "checksum": "8eebea019225db60",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.859046000000035,
+                "checksum": "8eebea019225db60"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.951025000000072,
+                "checksum": "8eebea019225db60"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.778025999999954,
+                "checksum": "8eebea019225db60"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.734285999999997,
+                "checksum": "8eebea019225db60"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.786826000000019,
+                "checksum": "8eebea019225db60"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.786585999999943,
+                "checksum": "8eebea019225db60"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 7.774405999999999,
+                "checksum": "8eebea019225db60"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 7.730446000000029,
+                "checksum": "8eebea019225db60"
+              }
+            ],
+            "retainedBinary64Bytes": 384016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-constant-018",
+            "steps": 2000,
+            "checksum": "a0b7364ae66874b6",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.5400090000000546,
+                "checksum": "a0b7364ae66874b6"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.5476099999999633,
+                "checksum": "a0b7364ae66874b6"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.5321199999999635,
+                "checksum": "a0b7364ae66874b6"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 0.5529500000000098,
+                "checksum": "a0b7364ae66874b6"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 0.5316389999999274,
+                "checksum": "a0b7364ae66874b6"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 0.5579299999999421,
+                "checksum": "a0b7364ae66874b6"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 0.5330400000000282,
+                "checksum": "a0b7364ae66874b6"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 0.5350889999999708,
+                "checksum": "a0b7364ae66874b6"
+              }
+            ],
+            "retainedBinary64Bytes": 48016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          },
+          {
+            "id": "cp2-constant-019",
+            "steps": 16000,
+            "checksum": "386ce8476222665a",
+            "warmups": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.19374700000003,
+                "checksum": "386ce8476222665a"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.175016000000028,
+                "checksum": "386ce8476222665a"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.193495999999982,
+                "checksum": "386ce8476222665a"
+              }
+            ],
+            "repetitions": [
+              {
+                "iteration": 1,
+                "elapsedMs": 7.140136000000098,
+                "checksum": "386ce8476222665a"
+              },
+              {
+                "iteration": 2,
+                "elapsedMs": 7.210316000000034,
+                "checksum": "386ce8476222665a"
+              },
+              {
+                "iteration": 3,
+                "elapsedMs": 7.160877000000028,
+                "checksum": "386ce8476222665a"
+              },
+              {
+                "iteration": 4,
+                "elapsedMs": 7.196036000000049,
+                "checksum": "386ce8476222665a"
+              },
+              {
+                "iteration": 5,
+                "elapsedMs": 7.199345999999991,
+                "checksum": "386ce8476222665a"
+              }
+            ],
+            "retainedBinary64Bytes": 384016,
+            "retainedBinary64BytesMeaning": "final packed positions/headings only; peak process memory is not measured",
+            "stable": true
+          }
+        ]
+      }
+    },
+    "python": {
+      "counts": {
+        "cross_case_checks": 1,
+        "long_cases": 20,
+        "long_selected_records": 190,
+        "native_invariants": 8,
+        "short_error_cases": 16,
+        "short_success_cases": 16
+      },
+      "failures": [],
+      "fixture": "/home/colin/dev/procedural/fixtures/operations/gradient-path.json",
+      "implementation": "python",
+      "operation": "path.gradient-trace-2d",
+      "runtime": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]",
+      "workloads": [
+        {
+          "checksum_sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          "construction_storage": "temporary array('d') positions/headings copied once into immutable bytes; raw final payload excludes temporary arrays and allocator/object overhead",
+          "id": "canonical-negative-zero",
+          "measurement_scope": "construction peak measured separately from timed construction repetitions",
+          "raw_final_payload_binary64_bytes": 16,
+          "repetitions": 5,
+          "seconds": [
+            2.620043233036995e-06,
+            2.9400107450783253e-06,
+            2.509972546249628e-06,
+            2.3400061763823032e-06,
+            2.300017513334751e-06
+          ],
+          "steps": 0,
+          "tracemalloc_peak_bytes_single_construction": 728,
+          "warmups": 3
+        },
+        {
+          "checksum_sha256": "8eef72c230c6221effe68a707e404817ea2a52e39c17a748ac86b136dbf4e184",
+          "construction_storage": "temporary array('d') positions/headings copied once into immutable bytes; raw final payload excludes temporary arrays and allocator/object overhead",
+          "id": "cardinal-zero-heading",
+          "measurement_scope": "construction peak measured separately from timed construction repetitions",
+          "raw_final_payload_binary64_bytes": 40,
+          "repetitions": 5,
+          "seconds": [
+            6.10999995842576e-06,
+            6.190035492181778e-06,
+            5.7400320656597614e-06,
+            5.600042641162872e-06,
+            5.570007488131523e-06
+          ],
+          "steps": 1,
+          "tracemalloc_peak_bytes_single_construction": 728,
+          "warmups": 3
+        },
+        {
+          "checksum_sha256": "f956d17fc425e6c826357432da116630d75160f93a1b273a58cc748f05463c00",
+          "construction_storage": "temporary array('d') positions/headings copied once into immutable bytes; raw final payload excludes temporary arrays and allocator/object overhead",
+          "id": "cp2-field-000",
+          "measurement_scope": "construction peak measured separately from timed construction repetitions",
+          "raw_final_payload_binary64_bytes": 48016,
+          "repetitions": 5,
+          "seconds": [
+            0.00613114598672837,
+            0.006133367016445845,
+            0.0061599460314027965,
+            0.0061345770373009145,
+            0.006110866961535066
+          ],
+          "steps": 2000,
+          "tracemalloc_peak_bytes_single_construction": 97730,
+          "warmups": 3
+        },
+        {
+          "checksum_sha256": "b7d9e1a5638faf1986dc06a9520cb7a5e465a968c4e74682e21160ff8ce6ae1c",
+          "construction_storage": "temporary array('d') positions/headings copied once into immutable bytes; raw final payload excludes temporary arrays and allocator/object overhead",
+          "id": "cp2-field-001",
+          "measurement_scope": "construction peak measured separately from timed construction repetitions",
+          "raw_final_payload_binary64_bytes": 384016,
+          "repetitions": 5,
+          "seconds": [
+            0.04921096400357783,
+            0.04988371400395408,
+            0.049906052998267114,
+            0.04989955294877291,
+            0.049769653007388115
+          ],
+          "steps": 16000,
+          "tracemalloc_peak_bytes_single_construction": 776322,
+          "warmups": 3
+        }
+      ]
+    }
+  },
+  "source_sha256": {
+    "tools/run_gradient_path_conformance.py": "c91f917dc7c4a839e3bf9aa9744c1fc47591e8b89d65ae7c5c7b62a96b81216a",
+    "tools/run_grid_conformance.py": "392d23b61f713c7d204e215a9b468874f78b213741dc1e163b4b5fcb5553b180",
+    "catalog/operations/gradient-path.json": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
+    "fixtures/operations/gradient-path.json": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+    "evidence/investigations/cp2-numerics.json": "9c138cb3e58db5625da5d85ebd91a5f1d2615819fd27e63ce0ff95144d653248",
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/index.js": "51efbfea8c64ba7a4faed00843fea2c7c2b6771c69dceb69849a0bcf852b3c06",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab",
+    "tests/native/gradient-path-javascript.mjs": "8c47736d464de243bb448722ac4d2c9ab330f689b77175fdb7ad279ec599727b",
+    "tests/native/gradient-path-python.py": "28f8ff979b845a05c0dbf47eb1048b836a80934587c67bb812b587e5480575ae",
+    "tests/native/GradientPathNative.java": "f1669ebd60e12c95ab000262ee5497114d4c59aae6a42e1923ef5527a98d370a"
+  }
+}

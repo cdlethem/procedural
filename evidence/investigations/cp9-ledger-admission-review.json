@@ -1,0 +1,67 @@
+{
+  "status": "reviewed",
+  "owner": "root",
+  "scope": "CP9 architecture dependency admission only; every1934candidate record unchanged.",
+  "ledger_sha256_before": "c8913e353b58704fb3373ae2da1adc67ad758685149586a885bbeba8b7617ba3",
+  "ledger_sha256_after": "217126e9989504274266dee9729db4acbe2c8278999fe49d4f19e74c38b8f0c4",
+  "added_cluster": "topology.delaunay-2d",
+  "candidate_records_unchanged": true,
+  "source_records": [
+    {
+      "candidate_id": "2018/Generativos/datata#0",
+      "notes_path": "survey/out/2018/Generativos/datata/notes.md",
+      "source_sha256": "1bdd530a6dad3d7b0c85b721bc97c036ad112585100cbede1b1095066807da13",
+      "evidence_sha256": "6955029e08ecca598b7740bfcc992dc0080dca378e4346249c5b313cc2d7d1a3",
+      "upstream_path": "2018/Generativos/datata/triangulator.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "dependency": "Supplied sites become faces used for independent fill and shading; retained connectivity removes triangulation mechanics.",
+      "remainder": [
+        {
+          "component": "Mutable PVector sorting/aliases, float circumcircle/EPSILON and source tie/face-order behavior",
+          "disposition": "deferred",
+          "reason": "Independently specified exact canonical geometry does not promise the local port behavior."
+        },
+        {
+          "component": "Disc scatter, sampled size/radius/count, palette selection, halo, first-vertex filter and corner shading",
+          "disposition": "recipe",
+          "reason": "Caller composition supplies sites and renders retained faces; no disc clipping or style in the operation."
+        }
+      ]
+    },
+    {
+      "candidate_id": "2019/generativos/lightcity#1",
+      "notes_path": "survey/out/2019/generativos/lightcity/notes.md",
+      "source_sha256": "cf46a24a25e0ac442a0f959876063bfe18e73583648491d3f3c3f9784182f92e",
+      "evidence_sha256": "bcdeffaaaf915991c69d58671684505dc1c4aa37131649bba8398e8eeb39cd57",
+      "upstream_path": "2019/generativos/lightcity/lightcity.pde",
+      "upstream_revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+      "dependency": "Region-centre sites demonstrate a second input source; face indices can feed independent downstream geometry.",
+      "remainder": [
+        {
+          "component": "Unversioned triangulate dependency implementation and its numerical/order behavior",
+          "disposition": "deferred",
+          "reason": "No third-party compatibility or copied implementation is admitted."
+        },
+        {
+          "component": "Quad subdivision/centre extraction, prism height policy, windows, lights and camera",
+          "disposition": "recipe",
+          "reason": "Existing subdivision can supply centres; 3D construction and renderer remain separate artistic consumers."
+        }
+      ]
+    }
+  ],
+  "reviewed_evidence_sha256": {
+    "design/capabilities/cp9-admission-review.md": "0600d7a13d6892fa42b9b9c4d17ef56143d17bef139053195831032bba224fce",
+    "design/capabilities/cp9-boundary-decisions.md": "0ad30f115f325afbaed6dfc29ad9ce2cdc1abede55ec15ce7850595227564652",
+    "design/capabilities/cp9-topology-prototype.md": "bb2fd225aa01f4509bca16900b92e349290818abf0ec712b6138da952efbd531",
+    "tools/diagnostics/cp9/topology_prototype.py": "7e10182d23e5434a9af9b5dcd069de29b55bc224c48bb9d8caf18af96ad935ed",
+    ".work/cp9-topology/result.json": "f087f25c5b30046be8ed445776c18474501a63244fefe3bd42af792bc46ebdb9",
+    "tools/diagnostics/cp9/check_cocircular_ties.py": "d06557368c83a2827a62e4e977a9b3a9ac9a82bb5a83c16a0b4578c941cdafab",
+    ".work/cp9-ties/result.json": "a434144e1a51a85af68880b53ff6b339ea8383ee394a12d53fd87f1f19939518"
+  },
+  "architecture_check": {
+    "command": "uv run python tools/check_phase2_design.py --contract-cluster topology.delaunay-2d",
+    "status": "passed",
+    "scope": "structural eligibility, not semantic contract approval"
+  }
+}

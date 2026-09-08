@@ -1,0 +1,345 @@
+{
+  "status": "root-reviewed-ready",
+  "attempt_budget": 1,
+  "composition_budget": 17,
+  "key_event_budget": 17,
+  "timeout_seconds": 180,
+  "key_sequence": [
+    "n",
+    "n",
+    "g",
+    "0",
+    "w",
+    "0",
+    "b",
+    "0",
+    "c",
+    "m",
+    "x",
+    "m",
+    "c",
+    "n",
+    "r",
+    "0",
+    "s"
+  ],
+  "states": [
+    {
+      "segments": 101,
+      "trees": 1,
+      "generated_segments": 101,
+      "drawn_lines": 101,
+      "terminal_scan_visits": 101,
+      "terminal_dots": 53,
+      "bounds": [
+        268.33085670688416,
+        214.37053430282987,
+        447.5396464776501,
+        590.0
+      ],
+      "id": "initial"
+    },
+    {
+      "segments": 192,
+      "trees": 1,
+      "generated_segments": 192,
+      "drawn_lines": 192,
+      "terminal_scan_visits": 192,
+      "terminal_dots": 99,
+      "bounds": [
+        259.00905451122424,
+        200.5965375757249,
+        460.11442279676635,
+        590.0
+      ],
+      "id": "extended"
+    },
+    {
+      "segments": 101,
+      "trees": 1,
+      "generated_segments": 101,
+      "drawn_lines": 101,
+      "terminal_scan_visits": 101,
+      "terminal_dots": 53,
+      "bounds": [
+        268.33085670688416,
+        214.37053430282987,
+        447.5396464776501,
+        590.0
+      ],
+      "id": "extended-restored"
+    },
+    {
+      "segments": 101,
+      "trees": 1,
+      "generated_segments": 101,
+      "drawn_lines": 101,
+      "terminal_scan_visits": 101,
+      "terminal_dots": 53,
+      "bounds": [
+        286.2891828540812,
+        212.61784817650897,
+        436.77370075366264,
+        590.0
+      ],
+      "id": "narrowing"
+    },
+    {
+      "segments": 101,
+      "trees": 1,
+      "generated_segments": 101,
+      "drawn_lines": 101,
+      "terminal_scan_visits": 101,
+      "terminal_dots": 53,
+      "bounds": [
+        268.33085670688416,
+        214.37053430282987,
+        447.5396464776501,
+        590.0
+      ],
+      "id": "reset-1"
+    },
+    {
+      "segments": 101,
+      "trees": 1,
+      "generated_segments": 101,
+      "drawn_lines": 101,
+      "terminal_scan_visits": 101,
+      "terminal_dots": 53,
+      "bounds": [
+        265.72572829044645,
+        229.13658786959445,
+        493.1040167250126,
+        590.0
+      ],
+      "id": "wide"
+    },
+    {
+      "segments": 101,
+      "trees": 1,
+      "generated_segments": 101,
+      "drawn_lines": 101,
+      "terminal_scan_visits": 101,
+      "terminal_dots": 53,
+      "bounds": [
+        268.33085670688416,
+        214.37053430282987,
+        447.5396464776501,
+        590.0
+      ],
+      "id": "reset-2"
+    },
+    {
+      "segments": 38,
+      "trees": 1,
+      "generated_segments": 38,
+      "drawn_lines": 38,
+      "terminal_scan_visits": 38,
+      "terminal_dots": 16,
+      "bounds": [
+        299.3810818676557,
+        211.30970477596927,
+        349.78533845202105,
+        590.0
+      ],
+      "id": "binary"
+    },
+    {
+      "segments": 101,
+      "trees": 1,
+      "generated_segments": 101,
+      "drawn_lines": 101,
+      "terminal_scan_visits": 101,
+      "terminal_dots": 53,
+      "bounds": [
+        268.33085670688416,
+        214.37053430282987,
+        447.5396464776501,
+        590.0
+      ],
+      "id": "reset-3"
+    },
+    {
+      "segments": 101,
+      "trees": 1,
+      "generated_segments": 0,
+      "drawn_lines": 101,
+      "terminal_scan_visits": 101,
+      "terminal_dots": 53,
+      "bounds": [
+        268.33085670688416,
+        214.37053430282987,
+        447.5396464776501,
+        590.0
+      ],
+      "id": "recolour"
+    },
+    {
+      "segments": 101,
+      "trees": 1,
+      "generated_segments": 0,
+      "drawn_lines": 101,
+      "terminal_scan_visits": 0,
+      "terminal_dots": 0,
+      "bounds": [
+        268.33085670688416,
+        214.37053430282987,
+        447.5396464776501,
+        590.0
+      ],
+      "id": "thin"
+    },
+    {
+      "segments": 288,
+      "trees": 7,
+      "generated_segments": 288,
+      "drawn_lines": 288,
+      "terminal_scan_visits": 0,
+      "terminal_dots": 0,
+      "bounds": [
+        178.18074008144094,
+        147.48920741880858,
+        532.3622685086041,
+        530.3319323062897
+      ],
+      "id": "forest"
+    },
+    {
+      "segments": 288,
+      "trees": 7,
+      "generated_segments": 0,
+      "drawn_lines": 288,
+      "terminal_scan_visits": 288,
+      "terminal_dots": 145,
+      "bounds": [
+        178.18074008144094,
+        147.48920741880858,
+        532.3622685086041,
+        530.3319323062897
+      ],
+      "id": "forest-taper"
+    },
+    {
+      "segments": 288,
+      "trees": 7,
+      "generated_segments": 0,
+      "drawn_lines": 288,
+      "terminal_scan_visits": 288,
+      "terminal_dots": 145,
+      "bounds": [
+        178.18074008144094,
+        147.48920741880858,
+        532.3622685086041,
+        530.3319323062897
+      ],
+      "id": "forest-palette"
+    },
+    {
+      "segments": 560,
+      "trees": 7,
+      "generated_segments": 560,
+      "drawn_lines": 560,
+      "terminal_scan_visits": 560,
+      "terminal_dots": 280,
+      "bounds": [
+        172.8057584801968,
+        141.8115148587544,
+        536.6259903223714,
+        530.3319323062897
+      ],
+      "id": "forest-extended"
+    },
+    {
+      "segments": 634,
+      "trees": 8,
+      "generated_segments": 634,
+      "drawn_lines": 634,
+      "terminal_scan_visits": 634,
+      "terminal_dots": 313,
+      "bounds": [
+        45.05189984726243,
+        228.4204573618005,
+        576.8924143293722,
+        508.1435891240835
+      ],
+      "id": "forest-seed"
+    },
+    {
+      "segments": 101,
+      "trees": 1,
+      "generated_segments": 101,
+      "drawn_lines": 101,
+      "terminal_scan_visits": 101,
+      "terminal_dots": 53,
+      "bounds": [
+        268.33085670688416,
+        214.37053430282987,
+        447.5396464776501,
+        590.0
+      ],
+      "id": "final-reset"
+    }
+  ],
+  "captured_images": [
+    "initial.png",
+    "extended.png",
+    "extended-restored.png",
+    "narrowing.png",
+    "reset-1.png",
+    "wide.png",
+    "reset-2.png",
+    "binary.png",
+    "reset-3.png",
+    "recolour.png",
+    "thin.png",
+    "forest.png",
+    "forest-taper.png",
+    "forest-palette.png",
+    "forest-extended.png",
+    "forest-seed.png",
+    "final-reset.png"
+  ],
+  "per_state_segment_limit": 20000,
+  "segment_visit_budget": 350000,
+  "expected_counts": {
+    "generated_segments": 2520,
+    "drawn_lines": 3298,
+    "terminal_scan_visits": 2909,
+    "actual_terminal_dots": 1475
+  },
+  "reviewed_input_sha256": {
+    ".work/dist/cp6/java/consumer/procedurals/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    ".work/dist/cp6/java/consumer/procedurals/examples/BranchMarks/BranchMarks.pde": "a027fb071ec9be9dd29607b7ce7dccb86772e2ab1680945ddd0973df66113e2c",
+    "packages/java-processing/examples/BranchMarks/BranchMarks.pde": "a027fb071ec9be9dd29607b7ce7dccb86772e2ab1680945ddd0973df66113e2c",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    ".work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    ".work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    ".work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "tools/check_field_marks_pde.py": "49668c561ebb5b2c585544fe17cbd25128539c1fd01dfea1587d1f7e80c265c1",
+    "tools/check_processing_runtime.py": "266825d35ac2859a97b61ebe360a225c41f69aee068badcd1439becd3104c70c",
+    "tools/run_grid_conformance.py": "392d23b61f713c7d204e215a9b468874f78b213741dc1e163b4b5fcb5553b180",
+    "tools/check_branch_marks_pde.py": "cc375015a24d45c1ffe3119e17f574a0ab7644a8acffab2b0891b93e877e3efd",
+    ".work/dist/cp6/java/consumer/procedurals/library/procedurals.jar": "477543460ab56b551acb737b5e9729e6b9999450c685ad0aceefb73b9c8b57a6",
+    "evidence/distribution/cp6-java.json": "d1ff531f7aebb3a6ca573b46be3b51d463999c28aa24e96c0d39f6eb04884e70",
+    "tests/native/BranchMarksPdeProbe.java": "7ad73aea9563dbbc46866536e1e2a4ebac5eca1564b0e682d3635a36855ae085",
+    "tools/run_branch_marks_pde.py": "c4ae47ed1d8ca6bc630badfaad3d27d406b43b1ef4ed9270386b3c81943f0b9c",
+    ".work/build/branch-marks-pde-installed/report.json": "3e1f271f6e84a9af2c21aa3c06ab28ffc72c6e42206f290ff4051bfe2725cd32"
+  },
+  "output": ".work/reproductions/cp6-java2d-pde",
+  "result": "evidence/reproductions/cp6-java2d/pde-result.json",
+  "scope": "Installed Java/JAVA2D BranchMarks technique-level workflow: endpoint branching, generation extension, spread/slot edits, retained styling, placed-root transfer and displayed save. No source-pixel or other-target claim.",
+  "visual_acceptance": [
+    "Readable forked endpoint structure and actual terminal marks.",
+    "Extended single/forest generations add twigs while earlier geometry remains exact.",
+    "Narrowing/wider and binary rules support distinct direction edits.",
+    "Palette/thin/taper changes reuse geometry and visibly change marks.",
+    "Placed roots support multiple independently seeded trees; spacing is not canopy exclusion."
+  ],
+  "numeric_policy": "Same installed Java runtime. Exact native geometry ancestry/prefix and reset pixel replay; no cross-source pixel target.",
+  "reviewer": "root",
+  "preflight": "Pinned source and installed PDE compilation passed; bounded installed-core composition inspection supplies expected per-state counts and finite bounds without rendering."
+}

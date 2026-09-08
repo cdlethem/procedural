@@ -1,0 +1,25 @@
+{
+  "scope": "Installed prerequisites only; no Android drawing support claim",
+  "source_revision": "363521a3d83982f540aeade89f3e5777de4226a5",
+  "sha256": {
+    ".work/toolchains/android/sdk/build-tools/30.0.3/source.properties": "615acc6b54a12b078860cd6c0f3d40da05c05b93824ee6ea808c7f5ec2638b52",
+    ".work/toolchains/android/sdk/cmdline-tools/19.0/source.properties": "bedcca88b02addf6585f79cee090c0c977682545a893438e13b3fed515dc8fcd",
+    ".work/toolchains/android/sdk/emulator/source.properties": "ee589ca350515c29dc3bad30dd5ebe8efb11d1a50c17c8815125d3c4bd12a3a8",
+    ".work/toolchains/android/sdk/platform-tools/source.properties": "2dccd788c0234d8cf7f7457377e57f57527a86a629c6ed54feb8af0f549dac38",
+    ".work/toolchains/android/sdk/platforms/android-33/source.properties": "3a6ba9d7b7f761fa0ddb74336391260fb0d6b3293c11002cba04c4872696c1a0",
+    ".work/toolchains/android/sdk/system-images/android-33/google_apis/x86_64/source.properties": "16d2e39825ace00614bb916285539e187aa031e879f5ebe6e8f1900b7f45c9cc",
+    ".work/downloads/android/AndroidMode-412.zip": "b15418b1c8a7b20e21b407cba804f2777e2f5ddc9a28b1a5bfc3b9cba2ca992d",
+    ".work/downloads/android/commandline-tools-19.zip": "7ec965280a073311c339e571cd5de778b9975026cfcbe79f2b1cdcb1e15317ee",
+    ".work/downloads/android/gradle-7.4.2-bin.zip": "29e49b10984e585d8118b7d0bc452f944e386458df27371b49b4ac1dec4b7fda",
+    ".work/toolchains/android/mode-412/AndroidMode/processing-core.zip": "0cdd89e2511a97728092619e89148b46a52700e5957d81f234db8fd3b1652338",
+    ".work/toolchains/android/mode-412/AndroidMode/version.properties": "34b38d87140c0dc2f33810ee187591af89ceafc1b743463a160594b911c6fec3"
+  },
+  "packages": {
+    "build-tools/30.0.3": "Pkg.UserSrc=false\nPkg.Revision=30.0.3\n#Pkg.Revision=30.0.0 rc4\n",
+    "cmdline-tools/19.0": "Pkg.Revision=19.0\nPkg.Path=cmdline-tools;19.0\nPkg.Desc=Android SDK Command-line Tools\n",
+    "emulator": "Pkg.UserSrc=false\nPkg.Revision=37.1.11\nPkg.Path=emulator\nPkg.Desc=Android Emulator\nPkg.BuildId=15917651",
+    "platform-tools": "Pkg.UserSrc=false\nPkg.Revision=37.0.1\n",
+    "platforms/android-33": "Pkg.Desc=Android SDK Platform 13\nPkg.UserSrc=false\nPlatform.Version=13\nPlatform.CodeName=\nPkg.Revision=3\nAndroidVersion.ApiLevel=33\nAndroidVersion.ExtensionLevel=3\nAndroidVersion.IsBaseSdk=true\nLayoutlib.Api=15\nLayoutlib.Revision=1\nPlatform.MinToolsRev=22\n",
+    "system-images/android-33/google_apis/x86_64": "Pkg.Desc=System Image x86_64 with Google APIs.\nPkg.Revision=17\nPkg.Dependencies=emulator#30.7.3\nAndroidVersion.ApiLevel=33\nSystemImage.Abi=x86_64\nSystemImage.TagId=google_apis\nSystemImage.TagDisplay=Google APIs\nSystemImage.GpuSupport=true\nAddon.VendorId=google\nAddon.VendorDisplay=Google Inc.\n\n"
+  }
+}

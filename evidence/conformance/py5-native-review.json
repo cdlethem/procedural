@@ -1,0 +1,43 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "Sol",
+  "scope": "py5 0.10.11a0 JAVA2D, Python 3.13.15/JDK17.0.20.1 Linux, forced AWT/Xvfb density2; registered pixels/lifecycle/interruption/CP1/example; injected failures only",
+  "profile_semantics_sha256": "70e327219205c58ad2c045a7a2e033d567e5554a40c942bc0d5f071564bbdaca",
+  "tested_profile_sha256": "c3d1cdc264aecbc680c24e9d58e5eb11eac48c63b48d30e478777b577907b593",
+  "implementation_sha256": {
+    "packages/python/procedurals/__init__.py": "3d53798ebcd479266ec0d793ed0eb68d42abc0acf1f35f0b2febc7c74ec5a3f2",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/examples/field_marks/mark_field.py": "c29e67dd89d9109fbae3c949a8b4805b2fabe9f4406a13ea91c742ed460eb006",
+    "packages/python/examples/field_marks/sketch.py": "06ed997e03a14be6cb2dc106c770157f3437d28404a029b8fe2858a4970e5aed"
+  },
+  "runtime_sha256": {
+    ".work/environments/py5/lib/python3.13/site-packages/py5/__init__.py": "763066a534ae41d8a01605ceedcea2cd1c37139a25f4f2a9138e63b8a31410d7",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/graphics.py": "2761b2987666c7d1d70088c70aca9492dd4963abf644d8fa78ee0de9dc4c30f8",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/sketch.py": "39557b47939444710c6cd2480e8dfadc03eddc28c87106c3fb262d2d087a8639",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/base.py": "018c896ebee9ab611ef7346cbeca8e354918cf5caa49a1465332a7b7cccd57da",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/mixins/pixels.py": "e6b2d4c46c5370e61fef0436b901c860929338afc20e8a9ec8f941a8fb8d07b9",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/core.jar": "2cd02df8ace61c45af5eddef74dc74608b87a50155e83f20c7b1e28642ddbc85",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/py5.jar": "4447b8098080f83cb4ffa5bf3b2d6c15a4a1bea3265198da75f5ac936f504903"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/py5-adapter-pixels.json": "bc1e8ca00b6801f646e3c4c5cb336b4602beaa313d68e5dfc33e8d478badf2e8",
+    "evidence/conformance/py5-adapter-failures.json": "b1294cec3eb53490ad9543f5e1288140eff647e8ddea922ef9b3a6aa38121d23",
+    "evidence/conformance/py5-adapter-cp1.json": "637cd0c2201197191fec1192f12c8a5640436bc1227a83a515957540e36ba3b3",
+    "evidence/conformance/py5-adapter-ui.json": "efec44fc92a137b516d81b54b8a5a5e1122543073a7217476ad538631079d489",
+    "evidence/conformance/py5-adapter-interruption.json": "13e4aa35bf6c76d75e792fa02bc32fef0ffbc8d53e9141e27ef6cd0f4d1b97c2",
+    "design/py5-adapter-review.md": "a9dae5bf15a318d2bb0d8d1f519fa31405350ba973ce8a90df17a68dc56ca1d7",
+    "design/py5-adapter-boundary.md": "53a976f96b04976d083e49e9f2d32a19006f70b57e68e62389eabccbb2a0ff93",
+    "design/py5-cp1-decision.md": "d0789bf6f6c6a0615ea3a7d4b355adb384ba9ef995432b71e174badb8d9d7024",
+    "design/py5-example-decision.md": "9f699a9542a2856b7ae8d1f8ffd43401aaff4db05528546cabbf6a6748104dda",
+    "design/py5-pixel-acquisition-repair.md": "f0d16e92aceb24b70519479c01154c72144ea704130df6344c8c9e76e5eaf008",
+    "design/py5-interruption-validation.md": "fdf983ba7032eb05da9ab6637fb291c1955378c0c7c6ee7999084bc1a1a40fb3",
+    "evidence/conformance/py5-adapter-pixels-initial.json": "b1810787833110bd303ec839b5025a2be9436c7b81a2c728f066f114204c7d9f",
+    "evidence/conformance/py5-acquisition-diagnostic.txt": "c8f86eadf0b1c3c22aadcce011c5097068cd67c8d2d9affcb34024b6db4634b5"
+  }
+}

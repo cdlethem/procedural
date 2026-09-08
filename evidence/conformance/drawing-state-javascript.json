@@ -1,0 +1,1376 @@
+{
+  "target": "javascript",
+  "scope": "Production pure frame state with simulated adapter events; no native surface, cleanup or renderer certification.",
+  "input_sha256": {
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "tests/native/drawing-state-javascript.mjs": "fa4c686c1877d79cedd69527c13689cfacf1e4d086690062ca71517cfb10d770",
+    "catalog/drawing/fresh-raster-2d.json": "8fd5d39bb1196d689aa8ca7a88e9f22bb75987c23bc8716e0fe00493b0432346",
+    "fixtures/drawing/fresh-raster-lifecycle.json": "be634ea3b970177a7a6dedad667a0cd78280041c2bd92807136db48ca8b3ee8b",
+    "tools/run_drawing_state_conformance.py": "ed72362534ee041246f190c93bf8d087796a0d259c8cc9fee5c4def5bea5a46c"
+  },
+  "runtime": "v22.22.1",
+  "result": {
+    "profile": "drawing.fresh-raster-2d",
+    "version": "0.1.0",
+    "scope": "pure FrameState and simulated adapter events; not native drawing evidence",
+    "failures": 0,
+    "counts": {
+      "lifecycleCases": 21,
+      "lifecycleSteps": 55,
+      "nativeChecks": 7,
+      "resultChecks": 21
+    },
+    "results": [
+      {
+        "id": "empty-frame-terminal",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "end",
+              "actual": {
+                "state": "completed",
+                "error": null
+              },
+              "expected": {
+                "state": "completed",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "end",
+              "actual": {
+                "state": "completed",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "completed",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "completed",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "completed",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            },
+            {
+              "action": "begin",
+              "actual": {
+                "state": "completed",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "completed",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            },
+            {
+              "action": "abort",
+              "actual": {
+                "state": "completed",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "completed",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 0,
+            "transferred": 1,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 0,
+            "transferred": 1,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "per-record-precedence",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_COMMAND",
+                  "commandIndex": 0
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_COMMAND",
+                  "commandIndex": 0
+                }
+              },
+              "passed": true
+            },
+            {
+              "action": "end",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "absolute-index-through-empty-noop",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_COMMAND",
+                  "commandIndex": 2
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_COMMAND",
+                  "commandIndex": 2
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 1
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 1
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "batch-limit-inclusive",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "end",
+              "actual": {
+                "state": "completed",
+                "error": null
+              },
+              "expected": {
+                "state": "completed",
+                "error": null
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 0,
+            "transferred": 1,
+            "native_command_attempts": 4096
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 0,
+            "transferred": 1,
+            "native_command_attempts": 4096
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "batch-limit-exceeded",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_BATCH",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_BATCH",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            },
+            {
+              "action": "begin",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            },
+            {
+              "action": "abort",
+              "actual": {
+                "state": "aborted",
+                "error": null
+              },
+              "expected": {
+                "state": "aborted",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "abort",
+              "actual": {
+                "state": "aborted",
+                "error": null
+              },
+              "expected": {
+                "state": "aborted",
+                "error": null
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "invalid-batch-container",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_BATCH",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_BATCH",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "new-state-misuse",
+        "actual": {
+          "steps": [
+            {
+              "action": "end",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            },
+            {
+              "action": "begin",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 0,
+            "released": 0,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 0,
+            "released": 0,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "explicit-abort-new",
+        "actual": {
+          "steps": [
+            {
+              "action": "abort",
+              "actual": {
+                "state": "aborted",
+                "error": null
+              },
+              "expected": {
+                "state": "aborted",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "abort",
+              "actual": {
+                "state": "aborted",
+                "error": null
+              },
+              "expected": {
+                "state": "aborted",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "begin",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 0,
+            "released": 0,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 0,
+            "released": 0,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "explicit-abort-active",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "abort",
+              "actual": {
+                "state": "aborted",
+                "error": null
+              },
+              "expected": {
+                "state": "aborted",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "end",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "static-capability-failure",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "UNSUPPORTED_CAPABILITY",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "UNSUPPORTED_CAPABILITY",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 0,
+            "released": 0,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 0,
+            "released": 0,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "acquisition-failure",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "RESOURCE_FAILURE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "RESOURCE_FAILURE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 0,
+            "released": 0,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 0,
+            "released": 0,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "transferred-surface-not-ready",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "RESOURCE_FAILURE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "RESOURCE_FAILURE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "background-native-failure",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "RENDER_FAILURE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "RENDER_FAILURE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "command-native-failure-index",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "RENDER_FAILURE",
+                  "commandIndex": 2
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "RENDER_FAILURE",
+                  "commandIndex": 2
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 2
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 2
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "end-native-failure",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "end",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "RENDER_FAILURE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "RENDER_FAILURE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            },
+            {
+              "action": "end",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "frame-count-boundary",
+        "actual": {
+          "steps": [
+            {
+              "action": "batch",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_BATCH",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_BATCH",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "invalid-batch-does-not-partially-draw",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_COMMAND",
+                  "commandIndex": 2
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_COMMAND",
+                  "commandIndex": 2
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 1
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 1
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "invalid-environment-before-capability",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_ENVIRONMENT",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_ENVIRONMENT",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 0,
+            "released": 0,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 0,
+            "released": 0,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "begin-while-active",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "begin",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "batch-before-begin",
+        "actual": {
+          "steps": [
+            {
+              "action": "batch",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_STATE",
+                  "commandIndex": null
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 0,
+            "released": 0,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 0,
+            "released": 0,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      },
+      {
+        "id": "active-environment-bounds",
+        "actual": {
+          "steps": [
+            {
+              "action": "begin",
+              "actual": {
+                "state": "active",
+                "error": null
+              },
+              "expected": {
+                "state": "active",
+                "error": null
+              },
+              "passed": true
+            },
+            {
+              "action": "batch",
+              "actual": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_COMMAND",
+                  "commandIndex": 0
+                }
+              },
+              "expected": {
+                "state": "aborted",
+                "error": {
+                  "code": "INVALID_COMMAND",
+                  "commandIndex": 0
+                }
+              },
+              "passed": true
+            }
+          ],
+          "events": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          },
+          "passed": true
+        },
+        "expected": {
+          "finalEvents": {
+            "acquired": 1,
+            "released": 1,
+            "transferred": 0,
+            "native_command_attempts": 0
+          }
+        },
+        "passed": true
+      }
+    ],
+    "nativeChecks": [
+      {
+        "id": "foreign-stale-double-and-reentrant-tokens",
+        "actual": true,
+        "passed": true
+      },
+      {
+        "id": "prepared-batch-slots-are-detached-and-immutable",
+        "actual": true,
+        "passed": true
+      },
+      {
+        "id": "counts-commit-only-after-success",
+        "actual": true,
+        "passed": true
+      },
+      {
+        "id": "batch-failure-null-index-does-not-commit",
+        "actual": true,
+        "passed": true
+      },
+      {
+        "id": "indexed-batch-failure-rejects-noop-slot",
+        "actual": true,
+        "passed": true
+      },
+      {
+        "id": "reentrant-normalization-preserves-state-error",
+        "actual": true,
+        "passed": true
+      },
+      {
+        "id": "snapshot-bounds-callback-mutation-and-unexpected-failure",
+        "actual": true,
+        "passed": true
+      }
+    ]
+  },
+  "stderr": ""
+}

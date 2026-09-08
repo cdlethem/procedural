@@ -1,0 +1,158 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "mesh.radial-profile-surface-3d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/radial-profile-surface.json",
+    "catalog_sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/radial-profile-surface-processing-java.json": "f5844cec19768ef48834fc02a19a70dab4446df54f979a234052a13ff6859d00",
+          "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/radial-profile-surface-processing-java.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/radial-profile-surface-processing-java.json",
+            "pointer": "/results/RadialProfileVectors/fixture_cases",
+            "equals": 43
+          },
+          {
+            "path": "evidence/conformance/radial-profile-surface-processing-java.json",
+            "pointer": "/results/RadialProfileNative/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/reproductions/cp7-p3d-savefix/root-review.json",
+          "sha256": "bb23a2ad9a83f64bcba8019a373441179c7fc2eaea31aae2d30105312ea5148e"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; strictfp Java8 core; Processing4.5.6 software P3D",
+          "scope": "43sharedcases,3553vector and507native assertions; exact replay/export, carrier and atomic buffer checks; bounded96000face workload."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+          "packages/java/examples/ProfileMarks/ProfileComposition.java": "634fc9b390c48e96ded5fd5c6e1152724d7bbb416eb10c02708cadf546324036",
+          "packages/java-processing/examples/ProfileMarks/ProfileMarks.pde": "0c27374c075a0c325a1e8b2bd785df0d06fc4c91f901206ffa1c008112785bc4"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp7-p3d-savefix/result.json": "a83dfd3c27cb153d281be37c03873646235779a296a381013b47d4b8b0a8fc6e"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp7-p3d-savefix/result.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/reproductions/cp7-p3d-savefix/result.json",
+            "pointer": "/native/frames",
+            "equals": 13
+          },
+          {
+            "path": "evidence/reproductions/cp7-p3d-savefix/result.json",
+            "pointer": "/native/normal_calls",
+            "equals": 17392
+          },
+          {
+            "path": "evidence/reproductions/cp7-p3d-savefix/result.json",
+            "pointer": "/save/pixels_equal_final_reset",
+            "equals": true
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/reproductions/cp7-p3d-savefix/root-review.json",
+          "sha256": "bb23a2ad9a83f64bcba8019a373441179c7fc2eaea31aae2d30105312ea5148e"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; strictfp Java8 core; Processing4.5.6 software P3D",
+          "scope": "Installed JAR, official PDE,13actual edit/reset states, save quiet interval and exact registered software-context diagnostics."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+          "packages/java/examples/ProfileMarks/ProfileComposition.java": "634fc9b390c48e96ded5fd5c6e1152724d7bbb416eb10c02708cadf546324036",
+          "packages/java-processing/examples/ProfileMarks/ProfileMarks.pde": "0c27374c075a0c325a1e8b2bd785df0d06fc4c91f901206ffa1c008112785bc4"
+        },
+        "evidence_sha256": {
+          "evidence/reproductions/cp7-p3d-savefix/root-review.json": "bb23a2ad9a83f64bcba8019a373441179c7fc2eaea31aae2d30105312ea5148e",
+          "evidence/reproductions/cp7-p3d-savefix/result.json": "a83dfd3c27cb153d281be37c03873646235779a296a381013b47d4b8b0a8fc6e"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp7-p3d-savefix/root-review.json",
+            "pointer": "/status",
+            "equals": "accepted"
+          },
+          {
+            "path": "evidence/reproductions/cp7-p3d-savefix/result.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/reproductions/cp7-p3d-savefix/root-review.json",
+          "sha256": "bb23a2ad9a83f64bcba8019a373441179c7fc2eaea31aae2d30105312ea5148e"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; strictfp Java8 core; Processing4.5.6 software P3D",
+          "scope": "Connected radial bands, caller silhouettes, facets, independent endpoint closure, retained recolour and three-object transfer; eight reviewed distinct images."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+import java.util.*;
+import java.nio.ByteBuffer;
+import java.security.MessageDigest;
+import processing.core.*;
+import processing.awt.PGraphicsJava2D;
+
+/** Records calls while the real JAVA2D renderer executes the example's paint method. */
+public class FieldMarksNative {
+    static final class Capture extends PGraphicsJava2D {
+        final List<float[]> geometry=new ArrayList<float[]>();
+        final List<Integer> colors=new ArrayList<Integer>();
+        String kind;
+        public void line(float a,float b,float c,float d) {
+            check(kind==null||kind.equals("line"));kind="line";
+            geometry.add(new float[]{a,b,c,d});colors.add(strokeColor);super.line(a,b,c,d);
+        }
+        public void quad(float a,float b,float c,float d,float e,float f,float g,float h) {
+            check(kind==null||kind.equals("bar"));kind="bar";
+            geometry.add(new float[]{a,b,c,d,e,f,g,h});colors.add(fillColor);super.quad(a,b,c,d,e,f,g,h);
+        }
+    }
+    static void check(boolean condition){if(!condition)throw new AssertionError();}
+    static void near(double a,double b){if(!Double.isFinite(a)||!Double.isFinite(b)||Math.abs(a-b)>0.0002)throw new AssertionError(a+" != "+b);}
+    static String hex(byte[] bytes){StringBuilder s=new StringBuilder();for(byte b:bytes)s.append(String.format("%02x",b&255));return s.toString();}
+    static String modelHash(MarkField m)throws Exception{
+        MessageDigest hash=MessageDigest.getInstance("SHA-256");ByteBuffer b=ByteBuffer.allocate(40);
+        for(int i=0;i<m.x.length;i++){
+            b.clear();b.putDouble(m.x[i]).putDouble(m.y[i]).putDouble(m.heading[i]).putDouble(m.lengthFactor[i]).putDouble(m.colourCycles[i]);hash.update(b.array());
+        }
+        return hex(hash.digest());
+    }
+    static String geometryHash(Capture g)throws Exception{
+        MessageDigest hash=MessageDigest.getInstance("SHA-256");ByteBuffer b=ByteBuffer.allocate(4);
+        for(float[] row:g.geometry)for(float value:row){b.clear();b.putFloat(value);hash.update(b.array());}
+        return hex(hash.digest());
+    }
+    static String colorHash(Capture g)throws Exception{
+        MessageDigest hash=MessageDigest.getInstance("SHA-256");ByteBuffer b=ByteBuffer.allocate(4);
+        for(int color:g.colors){b.clear();b.putInt(color);hash.update(b.array());}return hex(hash.digest());
+    }
+    static Map<String,Object> map(Object... values){Map<String,Object> m=new LinkedHashMap<String,Object>();for(int i=0;i<values.length;i+=2)m.put((String)values[i],values[i+1]);return m;}
+    static String json(Object v){
+        if(v==null)return "null";if(v instanceof String)return "\""+v.toString().replace("\\","\\\\").replace("\"","\\\"")+"\"";
+        if(v instanceof Number||v instanceof Boolean)return v.toString();StringJoiner j=new StringJoiner(",",v instanceof Map?"{":"[",v instanceof Map?"}":"]");
+        if(v instanceof Map)for(Object o:((Map<?,?>)v).entrySet()){Map.Entry<?,?> e=(Map.Entry<?,?>)o;j.add(json(e.getKey())+":"+json(e.getValue()));}
+        else for(Object item:(Iterable<?>)v)j.add(json(item));return j.toString();
+    }
+    static MarkField marks;
+    static String snapshot;
+    static Capture base;
+    static List<Object> results=new ArrayList<Object>();
+    static void render(String id,double maxLength,int[] palette,boolean bars,String output)throws Exception{
+        check(modelHash(marks).equals(snapshot));
+        Capture g=new Capture();g.setParent(new PApplet());g.setSize(640,640);g.beginDraw();
+        g.colorMode(PConstants.HSB,255,100,100,200);g.strokeWeight(7);
+        g.stroke(0xff123456,91);g.fill(0xffabcdef,73);g.strokeCap(PConstants.SQUARE);
+        g.translate(7,11);g.rotate(.2f);g.scale(2,3);
+        PStyle before=g.getStyle();PMatrix2D prior=(PMatrix2D)g.getMatrix();
+        MarkField.paint(g,marks,maxLength,palette,bars);
+        PStyle after=g.getStyle();
+        check(before.colorMode==after.colorMode && before.colorModeX==after.colorModeX
+            && before.colorModeY==after.colorModeY && before.colorModeZ==after.colorModeZ
+            && before.colorModeA==after.colorModeA && before.strokeWeight==after.strokeWeight
+            && before.strokeCap==after.strokeCap && before.stroke==after.stroke
+            && before.fill==after.fill && before.strokeColor==after.strokeColor && before.fillColor==after.fillColor);
+        PMatrix2D matrix=(PMatrix2D)g.getMatrix();check(Arrays.equals(matrix.get(new float[6]),prior.get(new float[6])));
+        for(float[] command:g.geometry)for(float value:command)check(Float.isFinite(value));
+        check(modelHash(marks).equals(snapshot));check(g.geometry.size()==marks.x.length);
+        if(id.equals("base"))base=g;
+        else if(id.equals("palette")){
+            check(geometryHash(g).equals(geometryHash(base)));check(!colorHash(g).equals(colorHash(base)));
+        } else if(id.equals("length")){
+            check(colorHash(g).equals(colorHash(base)));
+            for(int i=0;i<marks.x.length;i++){
+                float[] a=base.geometry.get(i),b=g.geometry.get(i);
+                near((b[0]+(double)b[2])/2,marks.x[i]);near((b[1]+(double)b[3])/2,marks.y[i]);
+                near(b[2]-(double)b[0],2*(a[2]-(double)a[0]));near(b[3]-(double)b[1],2*(a[3]-(double)a[1]));
+            }
+        } else if(id.equals("bar")){
+            check(colorHash(g).equals(colorHash(base)));check(g.kind.equals("bar"));
+            for(int i=0;i<marks.x.length;i++){
+                float[] a=base.geometry.get(i),b=g.geometry.get(i);
+                near((b[0]+(double)b[6])/2,a[0]);near((b[1]+(double)b[7])/2,a[1]);
+                near((b[2]+(double)b[4])/2,a[2]);near((b[3]+(double)b[5])/2,a[3]);
+            }
+        } else throw new AssertionError("unknown case");
+        g.endDraw();check(g.save(output));
+        results.add(map("id",id,"commands",g.geometry.size(),"kind",g.kind,"geometry_sha256",geometryHash(g),"color_sha256",colorHash(g),"model_sha256",snapshot,"state_restored",true));
+        g.dispose();
+    }
+    public static void main(String[] args)throws Exception{
+        boolean rejected=false;try{near(Double.NaN,0);}catch(AssertionError expected){rejected=true;}check(rejected);
+        marks=MarkField.create(42,160,160,4);
+        check(marks.x.length==25600);
+        for(int i=0;i<marks.x.length;i++){
+            check(marks.x[i]==2+4*(i%160));check(marks.y[i]==2+4*(i/160));
+            check(marks.lengthFactor[i]>=0&&marks.lengthFactor[i]<=1);
+            check(marks.colourCycles[i]>=0&&marks.colourCycles[i]<=3);
+        }
+        snapshot=modelHash(marks);
+        /* REGISTERED_RENDER_CALLS */
+        System.out.println(json(map("cases",results,"model_records",marks.x.length,"retained_numeric_bytes",marks.x.length*5*8,"semantic_checks_passed",true)));
+    }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "cp10-spring-response",
+  "status": "planned",
+  "owner": "root",
+  "question": "Do spring strength and retained velocity each provide a distinct useful control over a reproducible target-driven motion?",
+  "decision": "retain-and-bound | retain-unbounded | internalize | reject",
+  "hypothesis": "With identical target disturbance, changing spring strength changes response timing and changing retained velocity changes persistence/overshoot; both must be demonstrated rather than labelled organic drift.",
+  "source_sketches": [
+    "2018/Generativos/araniaaas"
+  ],
+  "parameter": {
+    "name": "spring strength and velocity retention investigated separately",
+    "default": null,
+    "unit": "per explicit logical update; no seconds conversion"
+  },
+  "baseline": {
+    "path": ".work/parameter-experiments/cp10-spring-response/baseline",
+    "kind": "planned source-extracted investigation harness, not historical survey baseline",
+    "deterministic": true,
+    "renderer": "JAVA2D",
+    "canvas": [
+      640,
+      640
+    ],
+    "pixel_density": 1,
+    "spring": 0.025,
+    "velocity_retention": 0.7,
+    "return_lerp": 0.04,
+    "policy": "Explicit authored values; no public default or recommended range claim."
+  },
+  "values": [
+    {
+      "id": "spring-zero",
+      "spring": 0,
+      "velocity_retention": 0.7
+    },
+    {
+      "id": "spring-half",
+      "spring": 0.0125,
+      "velocity_retention": 0.7
+    },
+    {
+      "id": "spring-double",
+      "spring": 0.05,
+      "velocity_retention": 0.7
+    },
+    {
+      "id": "retention-zero",
+      "spring": 0.025,
+      "velocity_retention": 0
+    },
+    {
+      "id": "retention-high",
+      "spring": 0.025,
+      "velocity_retention": 0.9
+    },
+    {
+      "id": "retention-one",
+      "spring": 0.025,
+      "velocity_retention": 1
+    }
+  ],
+  "comparison": {
+    "ticks": [
+      0,
+      1,
+      10,
+      30,
+      60,
+      120
+    ],
+    "input": "Nine fixed sites: x=[96,256,416], y=[128,320,512], row-major. Each target receives(+100,0) at tick0; initial velocity zero; source return-to-spawn0.04 applies before every spring update; mouse=(10000,10000). Every candidate uses the same complete sequence.",
+    "drawing": "Ordinary marks at current positions and recorded trajectories; fixed colours/styles across all variants, no font/assets/shader.",
+    "metrics": [
+      "exact state/step ordering",
+      "displacement and velocity at every required tick",
+      "maximum displacement and any sign reversal of velocity",
+      "per-frame changed-pixel fraction and MAE against the authored baseline",
+      "direct inspection of every distinct required frame"
+    ],
+    "claim": "Diagnostic motion response only; no full source web or historical pixel comparison."
+  },
+  "constraints": [
+    "At most7attempted render processes total: one baseline and six variants; failures consume the budget.",
+    "One coefficient changes per variant; all initial state, target inputs, return policy and styles identical.",
+    "Register source/harness hashes and exact outputs before first render.",
+    "Use original MIT-noticed Point body in a temporary-copy investigation or an independently specified equivalent diagnostic; name any substitution explicitly.",
+    "Do not modify survey or upstream source.",
+    "Root serializes renders and preserves all attempts under .work.",
+    "No automatic continuous range inference; zero and retention1 are diagnostic boundary cases, not promised useful settings."
+  ],
+  "decision_rules": [
+    "Retain each coefficient only if its controlled change yields a distinct explainable temporal effect in both recorded state and inspected frames.",
+    "If a control is masked or its effect requires changing the other coefficient, reconsider exposure or define an explicitly coupled model rather than inventing an independent range.",
+    "Do not label an undamped/nonsettling response invalid solely because it does not return within the observation window; distinguish intentional oscillation from arithmetic failure.",
+    "Reject autonomous drift as the described capability; equilibrium must remain still.",
+    "Leave recommended defaults and continuous encouraged ranges absent unless this investigation provides sufficient evidence."
+  ],
+  "provenance": [
+    "survey/out/2018/Generativos/araniaaas/notes.md",
+    "survey/out/2018/Generativos/araniaaas/baseline/result.json",
+    "design/capabilities/physics-evidence-audit.md",
+    "design/capabilities/cp10-spring-marks-direction.md",
+    "evidence/investigations/cp10-source-motion.json"
+  ],
+  "prerequisites": [
+    "Root review of diagnostic implementation and the exact target/event sequence before rendering.",
+    "Separate retained-state/step contract investigation; no public operation implementation authorized by this experiment alone."
+  ],
+  "attempts": []
+}

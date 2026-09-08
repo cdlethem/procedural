@@ -1,0 +1,32 @@
+{
+  "status": "accepted-for-one-private-attempt",
+  "owner": "root",
+  "plan": "evidence/parameter-experiments/cp6-branches/experiment.json",
+  "plan_sha256": "0483fd59119987c53daddb551101740b468deb0d27ff91af473671bb9cbf0953",
+  "source_sha256": {
+    "tools/diagnostics/cp6/BranchChoices.java": "199264305e9e19fc866106a86ece003b4ea6de6a765029853baaa235fe37980c",
+    "tools/diagnostics/cp6/run_branches.py": "badaa50073cc0825a01157cb14d6722a15b6b48de1a969d9d8c013273ff420eb",
+    "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "design/capabilities/cp6-branching-direction.md": "29b9c283e640dd309e62e23e1ef2f4156e85b5db20e4d7e2b69cdcf31d4cac6d",
+    "design/capabilities/cp6-arbolito4-source-audit.md": "336d45061b0aac03abab11abe2b7552af23635d160e013e5e4e75ef268ed8487",
+    "design/capabilities/cp6-branching-neighbours.md": "d89d7488b3c9476632458a7524be5f733059c9b5b8ead7443ad148711d8c32dc",
+    "evidence/investigations/cp6-branch-source-review.json": "c174a79e35e481f6fe946ddd9f81c9cb7e63c896be90ebc7404e2e24675d96d8",
+    "survey/out/2014/Generativos/Arboles/notes.md": "36b211ff2b26f54ec5fc6ddccb2eadd681f4aeead3124c50b1aa2752f88d4f69",
+    "survey/out/2018/Generativos/arbolito3/notes.md": "bc278131e84561f22c5f3eb479b9ff458df97f1a9259a1ff800f62d17d9f9958",
+    "survey/out/2018/Generativos/arbolito4/notes.md": "d9fed9e20763c254e5ae4954995ab721684fdd98222f392dbe895479d1f6c899",
+    "survey/out/2020/generative/05_08/brotes/notes.md": "e38db22cb28930889cfbe159d9724fa06d4280c1d4570606bf844138b3a2bdfb"
+  },
+  "checks": [
+    "Root read full retained generator and strengthened topology validation; parent-before-child, generation increment, child-reference counts, finite geometry and root counts verified.",
+    "Preflight passed all8profiles,723unique generatedsegments,983drawnsegments, all centres/endpoints within640square in these configurations; no clipping-based comparison confound found.",
+    "Three early terminal segments in baseline ensure tip styling exercises more than last-generation leaves.",
+    "Style variants use exactbaseline object/hash; narrowing and width-angle edits retain topology/counts, while depthchanges may alter downstream RNG.",
+    "Per-tree5000 and total30000 guards bound this private run; no public resource ranges inferred.",
+    "No live Java/Xvfb process found immediately before freeze; one exclusive render lock and180second timeout. No prior CP6attempt exists."
+  ],
+  "limitations": [
+    "Private JavaRandom.nextFloat and illustrativeuniformscale law are independentlyspecified, not source/publicstream compatibility.",
+    "Eight comparisons include isolated geometry changes and separatelylabelled combined style/rule/placement demonstrations.",
+    "Public operation and parameter ranges remain unapproved pending visual decision."
+  ]
+}

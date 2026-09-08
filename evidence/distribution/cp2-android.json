@@ -1,0 +1,220 @@
+{
+  "artifacts": {
+    "adapter": {
+      "entries": [
+        {
+          "path": "META-INF/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "META-INF/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "org/procedurals/android/internal/Android2DFragment.class",
+          "sha256": "2692a7212781cb8ab91242e587cd668c63335fb411cdad3cb51332407ecfae56"
+        },
+        {
+          "path": "org/procedurals/android/internal/Android2DFrame$Factory.class",
+          "sha256": "4ccf2d168da2e795c0c42bd0fb82ab7c19d825e02f377b9740acee1805ede0df"
+        },
+        {
+          "path": "org/procedurals/android/internal/Android2DFrame$LifecycleChanged.class",
+          "sha256": "69e22e3d2f69fd1fa84c24a722140f4b452869dc401f4f547bb5dd313cb87ef7"
+        },
+        {
+          "path": "org/procedurals/android/internal/Android2DFrame.class",
+          "sha256": "30a8728e7bc144c68bd7f983d9cad0c2e6c5eeac377ce8eebdb7adf58c580ca5"
+        },
+        {
+          "path": "org/procedurals/android/internal/AndroidFrameHost$Lease.class",
+          "sha256": "f22363cb44326c944a18970910becafa3c772fe47a6f6fed2a0abbdb51092acd"
+        },
+        {
+          "path": "org/procedurals/android/internal/AndroidFrameHost$SurfaceConsumer.class",
+          "sha256": "0b24c418886fcaaad7eff9e0b8c06868e2deffdec035141cd971642e4c2d9cf3"
+        },
+        {
+          "path": "org/procedurals/android/internal/AndroidFrameHost.class",
+          "sha256": "ea37cb9067abaf641c473a726db3de4df3d54a0e0c8df8a6b00e5b82c3a1d74c"
+        },
+        {
+          "path": "org/procedurals/android/internal/AndroidSurface.class",
+          "sha256": "6027424746e196e7d6f7049143aec714144bcc107f4fa9528a109e5678457d41"
+        },
+        {
+          "path": "org/procedurals/android/internal/BuildConfig.class",
+          "sha256": "bf5c34049e2c1d3593ab8f3f99ea44bf5473f64adb8ac755aea60b22de63e09a"
+        }
+      ],
+      "path": ".work/dist/cp2/android/procedurals-android-0.2.0.jar",
+      "sha256": "c30fe7b6e8b51b7a2b0198dc2ac7430896c0918e129442cbac821f68236c1dde"
+    },
+    "core": {
+      "path": ".work/dist/cp2/java/procedurals-core-0.2.0.jar",
+      "sha256": "cbbbfd08dbe442595f7c18022e1a03d95058fc177c3107d647d668dc22d4291c"
+    },
+    "starter": {
+      "entries": [
+        {
+          "path": "procedurals-path-marks-android/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "procedurals-path-marks-android/README.md",
+          "sha256": "4226e0411b2cb3a49d637b4ae0bce60860c63bb4b5202a7def8b86855b976d93"
+        },
+        {
+          "path": "procedurals-path-marks-android/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "procedurals-path-marks-android/app/build.gradle",
+          "sha256": "1f490230a20eb4a29d5e3bbd1572af0c255abe80c17e6116f43801cdf6bb6d84"
+        },
+        {
+          "path": "procedurals-path-marks-android/app/libs/procedurals-android.jar",
+          "sha256": "c30fe7b6e8b51b7a2b0198dc2ac7430896c0918e129442cbac821f68236c1dde"
+        },
+        {
+          "path": "procedurals-path-marks-android/app/libs/procedurals-core.jar",
+          "sha256": "cbbbfd08dbe442595f7c18022e1a03d95058fc177c3107d647d668dc22d4291c"
+        },
+        {
+          "path": "procedurals-path-marks-android/app/src/main/AndroidManifest.xml",
+          "sha256": "17609fe3c2401f9c821ad63875084fc8e33ec1cdbb8cd9350bc72c63345b7be1"
+        },
+        {
+          "path": "procedurals-path-marks-android/app/src/main/java/org/procedurals/examples/fieldmarks/GalleryWriter.java",
+          "sha256": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63"
+        },
+        {
+          "path": "procedurals-path-marks-android/app/src/main/java/org/procedurals/examples/pathmarks/PathMarkComposition.java",
+          "sha256": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256"
+        },
+        {
+          "path": "procedurals-path-marks-android/app/src/main/java/org/procedurals/examples/pathmarks/PathMarksActivity.java",
+          "sha256": "2e4af58d7cd70b2949748f1c078d44808788e540bc4eed7edd7146c2ed34c1d9"
+        },
+        {
+          "path": "procedurals-path-marks-android/app/src/main/java/org/procedurals/examples/pathmarks/PathMarksRenderer.java",
+          "sha256": "1768092f1fe19332fdec1a4d1eda773b5a1c2453dd61df9b217ff06dc75a3d7f"
+        },
+        {
+          "path": "procedurals-path-marks-android/build.gradle",
+          "sha256": "3b35599bef70fadbc0f0c7d81be8de7b863661d11bfd1104a2f2d4812a64f993"
+        },
+        {
+          "path": "procedurals-path-marks-android/gradle.properties",
+          "sha256": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e"
+        },
+        {
+          "path": "procedurals-path-marks-android/settings.gradle",
+          "sha256": "2e3abcf11e46832bc6bf03a2ac062c6f4d6f74ffe740b1ca6b3ab8edbcef8278"
+        }
+      ],
+      "path": ".work/dist/cp2/android/procedurals-path-marks-android-0.2.0.zip",
+      "sha256": "16f4bbbad659cf8916d6408fab0de4f41cf8b1539f2665bc36be5662ce1c00f6"
+    }
+  },
+  "consumer": {
+    "all_four_sources_byte_exact": true,
+    "compiled_apk_sha256": "d182ce2cebe9c91c3134d44cb3e6a72e9142f4acb56aa35340bcb326caf0e0fd",
+    "debug_keystore_provenance": "task-local generated external key",
+    "external_debug_keystore": "/home/colin/dev/procedural/.work/dist/cp2/android/build/external/procedurals-local-debug.keystore",
+    "external_processing_core": {
+      "path": ".work/dist/cp2/android/build/external/processing-core.jar",
+      "sha256": "0cdd89e2511a97728092619e89148b46a52700e5957d81f234db8fd3b1652338"
+    },
+    "external_sdk": "/home/colin/dev/procedural/.work/toolchains/android/sdk",
+    "extracted_adapter_byte_exact": true,
+    "extracted_core_byte_exact": true,
+    "extracted_core_origin_passed": true,
+    "fixture": "evolving-field",
+    "fixture_output_passed": true
+  },
+  "environment": {
+    "android_user_home": "/home/colin/dev/procedural/.work/dist/cp2/android/android-user-home",
+    "build_tools": "30.0.3",
+    "gradle": "/home/colin/dev/procedural/.work/toolchains/android/gradle-7.4.2/bin/gradle",
+    "gradle_cache": "/home/colin/dev/procedural/.work/dist/cp2/android/gradle-cache",
+    "gradle_sha256": "677db28e59ce22feb54def6637181481fa3903bb28d88e7b9ff5bd13ecf36cda",
+    "java_home": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1",
+    "sdk_platform": 33
+  },
+  "input_sha256": {
+    ".work/dist/cp2/java/procedurals-core-0.2.0.jar": "cbbbfd08dbe442595f7c18022e1a03d95058fc177c3107d647d668dc22d4291c",
+    ".work/toolchains/android/gradle-7.4.2/bin/gradle": "677db28e59ce22feb54def6637181481fa3903bb28d88e7b9ff5bd13ecf36cda",
+    ".work/toolchains/android/mode-412/AndroidMode/processing-core.zip": "0cdd89e2511a97728092619e89148b46a52700e5957d81f234db8fd3b1652338",
+    ".work/toolchains/android/sdk/build-tools/30.0.3/source.properties": "615acc6b54a12b078860cd6c0f3d40da05c05b93824ee6ea808c7f5ec2638b52",
+    ".work/toolchains/android/sdk/platforms/android-33/android.jar": "fd628aa21321859a9035c6aae4b084b7d3fdb3f230be5cd5ec76541e32f7c963",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "design/cp2-distribution-plan.md": "c05f74661db4b58c3f2f91e7c40b25b3e842db5c133d53c3564dbfb460f392f0",
+    "evidence/distribution/cp2-java.json": "48235abdfa6e2ea31fb7ac66afeb6e8ee3779731d712906bf422bf9c0ecaddca",
+    "evidence/reproductions/cp2-android/review.json": "53dbfafbb7c59e7bfda8575a2b1ba7b97f6c1199cec9640db15070f3f6b260f4",
+    "fixtures/operations/gradient-path.json": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+    "packages/java-android/distribution/templates/adapter-AndroidManifest.xml": "f4447fb4d9a6be45859b79d59482ecd09a933bc6cd294a08d5739373580794ab",
+    "packages/java-android/distribution/templates/adapter-build.gradle": "a3eabb4d2be27261559ab8f106baacf9053de96556e5435eb9e6c88f1949f65d",
+    "packages/java-android/distribution/templates/build.gradle": "3b35599bef70fadbc0f0c7d81be8de7b863661d11bfd1104a2f2d4812a64f993",
+    "packages/java-android/distribution/templates/gradle.properties": "3ad9310b9f6cf96906b0c4dc6dd4c3586010148441fcc46196cfac7fa1b9a59e",
+    "packages/java-android/distribution/templates/sample-app-build.gradle": "5cec415c74374618d977cef597d8e795cc53dcce20b104d388f725c97f9137ea",
+    "packages/java-android/distribution/templates/settings.gradle": "590977829f99d67a1886967de12c43cfacbb41ca1855b4cfc2e887e6be1ee9b2",
+    "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+    "packages/java-android/examples/PathMarks/AndroidManifest.xml": "17609fe3c2401f9c821ad63875084fc8e33ec1cdbb8cd9350bc72c63345b7be1",
+    "packages/java-android/examples/PathMarks/PathMarksActivity.java": "2e4af58d7cd70b2949748f1c078d44808788e540bc4eed7edd7146c2ed34c1d9",
+    "packages/java-android/examples/PathMarks/PathMarksRenderer.java": "1768092f1fe19332fdec1a4d1eda773b5a1c2453dd61df9b217ff06dc75a3d7f",
+    "packages/java-android/examples/PathMarks/README.md": "b8a04f32d9cd356301ff87a4e0c4d95254860fbe14bdb14116b99edef9f8c716",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFragment.java": "88d90e05f8af8c5075103cf4179010f54df54f68cd154fdf4256973b0640d9e8",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/Android2DFrame.java": "835daf36db3736adad6834209c39fe2b6530362dc0f57febc449143e6c09b570",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidFrameHost.java": "64a3ec481e69dc0bf9597ea03d4ed0864dc7002a8f05f1a0b852809503f9e2c7",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSurface.java": "bb2efe0fcce61461e847f9415b6cb7dae80a4f7ccb2e220b1e0009083c8c3604",
+    "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
+    "tools/build_android_artifacts.py": "cba67bf5124d49786883b21fa206285d1f43579722bbf08a38c561add0c7fe1e",
+    "tools/build_path_marks_android.py": "b9508dc7c60cd9f2d9b49065920a71aeb813cd96d26b68464a5de506ef75818c",
+    "tools/build_path_marks_java.py": "56eed1666731e97137995b01b35301c7e8f4159d4b7fab0a0ad8364651ff4c29"
+  },
+  "native_review": {
+    "path": "evidence/reproductions/cp2-android/review.json",
+    "scope": "bound supplemental native/recovery review; this package build does not add runtime evidence",
+    "sha256": "53dbfafbb7c59e7bfda8575a2b1ba7b97f6c1199cec9640db15070f3f6b260f4",
+    "status": "accepted"
+  },
+  "package_version": "0.2.0",
+  "scope": "Android adapter JAR and extracted PathMarks starter compile only; no install, launch, native render, or Android capability acceptance",
+  "starter_sources_byte_exact": {
+    "packages/java-android/examples/FieldMarks/GalleryWriter.java": "70cea517cbb40f1338b7ba97684c0112a77d91705b9794aa0784d5e8c10a7e63",
+    "packages/java-android/examples/PathMarks/PathMarksActivity.java": "2e4af58d7cd70b2949748f1c078d44808788e540bc4eed7edd7146c2ed34c1d9",
+    "packages/java-android/examples/PathMarks/PathMarksRenderer.java": "1768092f1fe19332fdec1a4d1eda773b5a1c2453dd61df9b217ff06dc75a3d7f",
+    "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256"
+  },
+  "starter_transformations": [
+    {
+      "field": "namespace",
+      "from": "namespace 'org.procedurals.fieldmarks'",
+      "to": "namespace 'org.procedurals.pathmarks'"
+    },
+    {
+      "field": "applicationId",
+      "from": "applicationId 'org.procedurals.fieldmarks'",
+      "to": "applicationId 'org.procedurals.pathmarks'"
+    },
+    {
+      "field": "versionCode",
+      "from": "versionCode 1",
+      "to": "versionCode 2"
+    },
+    {
+      "field": "versionName",
+      "from": "versionName '0.1.0'",
+      "to": "versionName '0.2.0'"
+    }
+  ],
+  "status": "passed",
+  "zip_exclusions": {
+    "build_output": true,
+    "debug_key": true,
+    "processing_runtime": true,
+    "sdk": true
+  }
+}

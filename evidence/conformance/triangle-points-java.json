@@ -1,0 +1,186 @@
+{
+  "contract_sha256": {
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f"
+  },
+  "fixture_sha256": {
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607"
+  },
+  "native": {
+    "assertions": 36,
+    "native_ownership_access": true,
+    "performance": [
+      {
+        "average_nanos": 5316,
+        "count": 0,
+        "elapsed_nanos": [
+          5410,
+          5430,
+          5110
+        ],
+        "kind": "seeded",
+        "post_timing_checksum": "4c61c65a5368bbf4",
+        "retained_count_last_rep": 0,
+        "retained_payload_scope": "final packed 2*N binary64 scalar slots; excludes array header and temporary work",
+        "retained_raw_payload_bytes_last_rep": 0,
+        "timing_reps": 3,
+        "timing_scope": "seeded_retained_kernel_only",
+        "warmup_reps": 2
+      },
+      {
+        "average_nanos": 9996,
+        "count": 1,
+        "elapsed_nanos": [
+          14840,
+          8260,
+          6890
+        ],
+        "kind": "seeded",
+        "post_timing_checksum": "e82010a288b540c1",
+        "retained_count_last_rep": 1,
+        "retained_payload_scope": "final packed 2*N binary64 scalar slots; excludes array header and temporary work",
+        "retained_raw_payload_bytes_last_rep": 16,
+        "timing_reps": 3,
+        "timing_scope": "seeded_retained_kernel_only",
+        "warmup_reps": 2
+      },
+      {
+        "average_nanos": 898619,
+        "count": 15680,
+        "elapsed_nanos": [
+          1198290,
+          1197049,
+          300520
+        ],
+        "kind": "seeded",
+        "post_timing_checksum": "456d3f4df248a1bc",
+        "retained_count_last_rep": 15680,
+        "retained_payload_scope": "final packed 2*N binary64 scalar slots; excludes array header and temporary work",
+        "retained_raw_payload_bytes_last_rep": 250880,
+        "timing_reps": 3,
+        "timing_scope": "seeded_retained_kernel_only",
+        "warmup_reps": 2
+      },
+      {
+        "average_nanos": 590449,
+        "count": 40960,
+        "elapsed_nanos": [
+          594520,
+          603890,
+          572939
+        ],
+        "kind": "seeded",
+        "post_timing_checksum": "f792426c94db665f",
+        "retained_count_last_rep": 40960,
+        "retained_payload_scope": "final packed 2*N binary64 scalar slots; excludes array header and temporary work",
+        "retained_raw_payload_bytes_last_rep": 655360,
+        "timing_reps": 3,
+        "timing_scope": "seeded_retained_kernel_only",
+        "warmup_reps": 2
+      },
+      {
+        "average_nanos": 1403199,
+        "count": 100000,
+        "elapsed_nanos": [
+          1410099,
+          1396299
+        ],
+        "kind": "seeded",
+        "post_timing_checksum": "4552d2d1f2b850a5",
+        "retained_count_last_rep": 100000,
+        "retained_payload_scope": "final packed 2*N binary64 scalar slots; excludes array header and temporary work",
+        "retained_raw_payload_bytes_last_rep": 1600000,
+        "timing_reps": 2,
+        "timing_scope": "seeded_retained_kernel_only",
+        "warmup_reps": 1
+      },
+      {
+        "count": 15680,
+        "input_construction_average_nanos": 1051739,
+        "input_construction_elapsed_nanos": [
+          1299519,
+          1272739,
+          582960
+        ],
+        "input_construction_scope": "caller builds one map, triangle lists, one unit-coordinate list, and N unit pair lists before map timing",
+        "input_object_count_note": "carrier counts only, not a heap-byte measurement; triangle/map carrier objects and their six vertex coordinates are additional fixed input objects",
+        "kind": "explicit-map",
+        "map_average_nanos": 689412,
+        "map_elapsed_nanos": [
+          994939,
+          564590,
+          508709
+        ],
+        "map_timing_scope": "TrianglePoints2D.map validation plus retained-output construction; excludes caller passive input construction",
+        "post_timing_checksum": "f5efbf969fbe9547",
+        "retained_count_last_rep": 15680,
+        "retained_payload_scope": "final packed 2*N binary64 scalar slots; excludes array header and temporary work",
+        "retained_raw_payload_bytes_last_rep": 250880,
+        "timing_reps": 3,
+        "unit_coordinate_boxed_binary64_coordinates": 31360,
+        "unit_coordinate_pair_lists": 15680,
+        "warmup_reps": 2
+      },
+      {
+        "count": 40960,
+        "input_construction_average_nanos": 1804305,
+        "input_construction_elapsed_nanos": [
+          827400,
+          4383797,
+          201720
+        ],
+        "input_construction_scope": "caller builds one map, triangle lists, one unit-coordinate list, and N unit pair lists before map timing",
+        "input_object_count_note": "carrier counts only, not a heap-byte measurement; triangle/map carrier objects and their six vertex coordinates are additional fixed input objects",
+        "kind": "explicit-map",
+        "map_average_nanos": 906339,
+        "map_elapsed_nanos": [
+          1296709,
+          742280,
+          680029
+        ],
+        "map_timing_scope": "TrianglePoints2D.map validation plus retained-output construction; excludes caller passive input construction",
+        "post_timing_checksum": "c624ad8319b74cf",
+        "retained_count_last_rep": 40960,
+        "retained_payload_scope": "final packed 2*N binary64 scalar slots; excludes array header and temporary work",
+        "retained_raw_payload_bytes_last_rep": 655360,
+        "timing_reps": 3,
+        "unit_coordinate_boxed_binary64_coordinates": 81920,
+        "unit_coordinate_pair_lists": 40960,
+        "warmup_reps": 2
+      }
+    ],
+    "resource_failure_mechanism": "not executed; no allocation-failure claim is made",
+    "status": "passed"
+  },
+  "operations": [
+    "sampling.seeded-triangle-points-2d",
+    "sampling.triangle-coordinate-map-2d"
+  ],
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Java core exact fixture, black-box seeded-prefix/equivalence, ownership/access, and bounded workload observations only; no renderer, package, Android, JavaScript, or Python claim.",
+  "source_sha256_after": {
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+    "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+    "tests/native/TrianglePointsNative.java": "e7ccdb158dea31c7173096344e4a7bbc3ab32055e81de0da30d62cde9f481949",
+    "tools/run_triangle_points_java.py": "43a20656f854c95c468ddabf744b1175f38d1f080cde78a0164c24cc35b56792"
+  },
+  "source_sha256_before": {
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+    "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
+    "tests/native/TrianglePointsNative.java": "e7ccdb158dea31c7173096344e4a7bbc3ab32055e81de0da30d62cde9f481949",
+    "tools/run_triangle_points_java.py": "43a20656f854c95c468ddabf744b1175f38d1f080cde78a0164c24cc35b56792"
+  },
+  "stream_diagnostics": "No private-stream reflection was used. Exact seeded outputs across every frozen seeded case plus raw-prefix and seeded-to-explicit-map checks exercise the private stream through the public factories.",
+  "vectors": {
+    "assertions": 209,
+    "fixture_cases": 59,
+    "status": "passed"
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "id": "color.cyclic-palette",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "decision_cluster": "color.cyclic-palette",
+  "description": "Immutable ordered opaque sRGB8 palette sampled by a phase in cycles, with linear encoded-channel interpolation and fixed RGB24 quantization.",
+  "capability_decision": "design/capabilities/cp1-field-marks.md",
+  "design_review": "design/operations/cp1-palette-proposal.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/mountain4#2",
+      "notes_path": "survey/out/2018/Generativos/mountain4/notes.md",
+      "note_sha256": "0cc7829dd696870adfb06e859743ff3d6e9697ffe6cd826cb608337c6c97c47f",
+      "evidence_sha256": "6df1616e0439f2e3bd588657f8ca021f3dfe402ed60b80882c7c6f443407270e"
+    },
+    {
+      "candidate_id": "2018/Generativos/pelines#1",
+      "notes_path": "survey/out/2018/Generativos/pelines/notes.md",
+      "note_sha256": "1b7c654a120012ef0d3e85857415371088f383837345e93b9fdfb9227a9b1c6a",
+      "evidence_sha256": "131c34759dccc224915aef17a45d766292c4461450cf8ad37a04779333d001b9"
+    },
+    {
+      "candidate_id": "2017/Generativos/Cuadricula#1",
+      "notes_path": "survey/out/2017/Generativos/Cuadricula/notes.md",
+      "note_sha256": "ee163f2988fe75e4dbc2ea638e5149b4909d3ba8acc179c38d0c6e6e8da8312c",
+      "evidence_sha256": "2b62f46e9e91ff913012d65e20f3365459c732e633cc7cd680deb07721ca972b"
+    }
+  ],
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "colors"
+    ],
+    "properties": {
+      "colors": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 2147483647,
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 16777215
+        }
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "colors"
+    ],
+    "properties": {
+      "colors": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 2147483647,
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 16777215
+        }
+      }
+    }
+  },
+  "query_schema": {
+    "type": "number",
+    "minimum": -1.7976931348623157e+308,
+    "maximum": 1.7976931348623157e+308
+  },
+  "query_output_schema": {
+    "type": "integer",
+    "minimum": 0,
+    "maximum": 16777215
+  },
+  "parameters": {
+    "colors": {
+      "unit": "ordered RGB24 values (0xRRGGBB encoded sRGB8)",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "mountain4#2, pelines#1 and Cuadricula#1 use ordered colour lists. Preserve caller artwork and duplicate entries. RGB24 and opaque-only scope are portable design choices, not a claim about every host colour type. Nonempty length <=2^31-1 is a cross-target index representability bound, not an artistic range or allocation guarantee."
+    },
+    "phase": {
+      "unit": "cycles through the whole palette",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source helpers use entry coordinates; public cycles remove palette-length coupling. mountain4 dc random(0.099,0.1) -> random(0.3,0.4) reports moderate colour change with fixed geometry, but does not establish a recommended phase/rate range. pelines palette replacement changes background too; Cuadricula experiments are unscored."
+    }
+  },
+  "behavior": {
+    "construction": "Validate passive object with exactly colors; colors must be an array of 1..2147483647 mathematical integral values in 0..16777215. Integral floating values accepted; booleans rejected. Validate keys, array shape/length, then entries in order. Snapshot and retain supplied order including duplicates. Normalize zero to +0. No default palette. Serialize only {colors:[...]}, returning detached data each time.",
+    "query_validation": "Query is one finite binary64 phase scalar. Reject bool, null, string, array, object and nonfinite values with INVALID_QUERY. Convert permitted native number to binary64 before validation; an overflowing Python integer is INVALID_QUERY. Validate even for a single-entry palette. Unsupported native call arity is a host-language call error, not an interchange-data result.",
+    "wrapping": "Let n be palette length. Compute f=phase-floor(phase) as one separately rounded binary64 subtraction. Normalize f==0 to +0. If f==1 from rounding a tiny negative phase, set f=0. Compute x=f*n as one separately rounded binary64 multiplication; if x==n set x=0. Let i=floor(x), t=x-i (separately rounded), j=0 if i+1==n else i+1. Never cast the unwrapped phase to an integer index. All finite phases are valid; large phases may lose all fractional precision and sample the first entry. No epsilon or reflection/absolute value. Integer-shift periodicity is guaranteed only when the shifted binary64 phase preserves the fractional part.",
+    "color": "Entries and result are unsigned RGB24 integers 0xRRGGBB, with each encoded sRGB8 channel in 0..255. Interpolate encoded channels directly; no gamma decode, HSB conversion, alpha, premultiplication or host colorMode. For each R,G,B channel a,b: d=b-a; p=t*d; v=a+p; q=floor(v+0.5), every arithmetic step separately rounded binary64. Pack qR*65536+qG*256+qB as an exact integer. No FMA/reassociation; IEEE round-to-nearest ties-to-even for primitive operations, explicit final half-up channel quantization. Result integer compares exactly, including canonical positive zero. With one entry return its value after validating the phase.",
+    "ownership": "No mutable input/output alias or externally observable cache. Reordered/repeated queries and interleaved palettes produce the same values. Native scalar query returns a colour value and requires no query-container allocation. Caller mutation of serialized colors does not affect the palette.",
+    "environment": "No RNG, noise, time, rendering, assets, global colour state or implicit seed. Opacity is caller mark style. Renderer adapters must explicitly convert RGB24 to their native colour representation; this contract does not validate any adapter.",
+    "cost": "O(n) validation and snapshot storage at construction and serialization; O(1) bounded work per query. No eager sampled ramp. Length representability does not promise an allocation succeeds on a particular machine; ordinary resource exhaustion is not an INVALID_INPUT semantic error.",
+    "native_representations": "Passive interchange data only, not callbacks/accessors/proxies. Java accepts boxed Byte/Short/Integer/Long/Float/Double and native double query; unsupported Number subclasses rejected before lossy coercion. Python accepts int/float but not bool; entries validated as mathematical integers before narrowing. JavaScript requires number. Native palette containers are Java List, JavaScript Array, and Python list/tuple; serialization is object/map with a newly owned list/array. No packed signed ARGB input or string hex parsing. Query schemas describe canonical binary64 interchange values after permitted native numeric normalization; raw JSON token parsing is outside this operation. A Python integer just above maximum binary64 may round to that finite maximum and is accepted, while an integer that overflows conversion is INVALID_QUERY. The schema is not a raw arbitrary-precision-token parser.",
+    "compatibility": "Cycles, negative wrap and quantization are deliberate portable semantics. Source v/n conversion can alter floating arithmetic; no Processing lerpColor or source-pixel identity claim. Selected membership establishes the computation, not those exact native numerics.",
+    "native_api": "Java org.procedurals.color.CyclicPalette.create(params), JavaScript cyclicPalette(params), Python cyclic_palette(params), each returning immutable sampler with sample(phase) and serialize(). Java may overload sample(Object) and sample(double) for dynamic validation and scalar hot path. Native error classes expose code; no alternate coordinate mode or alias factory."
+  },
+  "errors": {
+    "INVALID_INPUT": "Invalid object keys, colors container/length, or any nonintegral, boolean, nonfinite or out-of-range RGB24 entry. No partial palette returned.",
+    "INVALID_QUERY": "Phase is not a permitted finite binary64 scalar. No partial output."
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact-RGB24-integers"
+      ],
+      "implementation_status": "portable_core_implemented",
+      "native_status": "validated_cp1_java2d",
+      "reproduction_status": "cp1_example_only",
+      "native_evidence": "evidence/reproductions/cp1-java2d/pde-result.json"
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact-RGB24-integers"
+      ],
+      "implementation_status": "portable_core_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact-RGB24-integers"
+      ],
+      "implementation_status": "portable_core_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact-RGB24-integers"
+      ],
+      "implementation_status": "shared_java_core_available",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    }
+  },
+  "fixtures": "fixtures/operations/cyclic-palette.json",
+  "reproduction": {
+    "level": "technique",
+    "acceptance": "CP1 recolouring of retained geometry and alternate-mark transfer; source mountain4/pelines/Cuadricula motivate technique only. The JAVA2D CP1 example is validated separately in cp1_example; other hosts and source baseline suites remain unvalidated.",
+    "cp1_example": {
+      "target": "processing-java",
+      "level": "technique",
+      "decision": "evidence/reproductions/cp1-java2d/decision.md",
+      "edits": "evidence/reproductions/cp1-java2d/result.json",
+      "pde_lifecycle": "evidence/reproductions/cp1-java2d/pde-result.json",
+      "scope": "Actual JAVA2D example/edit/transfer only; motivating corpus baseline suites and other hosts are not certified."
+    }
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "Sol gpt-5.6-sol",
+    "status": "Sol approved actual contract and independently matched all 115 scalar outputs and 24 index vectors in JavaScript; Fraction fixture regeneration byte-stable. Root accepted."
+  },
+  "deliberately_excluded": [
+    "easing",
+    "alpha interpolation",
+    "alternate colour spaces",
+    "explicit nonuniform stops",
+    "random selection",
+    "palette generation or shuffle",
+    "host lerpColor compatibility",
+    "renderer conversion",
+    "entry-coordinate public mode"
+  ]
+}

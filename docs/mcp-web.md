@@ -4,7 +4,7 @@
 
 A user can describe a piece in natural language, receive a valid sketch assembled from this package's evidence-backed operations, preview and tune it in a browser, and export it for Processing Java, p5.js, py5, or Processing for Android.
 
-This is a required delivery target. Concrete MCP tool names, operation schemas, and recipe nodes remain gated on the complete-corpus Phase 2 API design; implementing them now would freeze the API from partial evidence.
+This is a required delivery target. Concrete MCP tool names, operation schemas, and recipe nodes depend on the Phase 2 API design and reviewed contracts. Phase 2 may proceed on the current snapshot, with explicit reconciliation when evidence changes.
 
 ## Architectural constraint
 
@@ -91,4 +91,4 @@ Evaluation layers:
 
 Deterministic protocol and recipe tests use recorded planner outputs or a fixed local model configuration. Live-model runs are scored distributions and never replace deterministic server tests. Prompt success is based on structural predicates plus execution and visual evidence—not brittle source-text matching.
 
-The final prompt suite must cover dominant clusters and every retained rare family such as flow fields, Voronoi/Delaunay, physics, L-systems, and typography. Coverage is defined only after the full survey; until then, build the harness but do not freeze the prompt inventory.
+The final prompt suite must cover dominant clusters and every retained rare family such as flow fields, Voronoi/Delaunay, physics, L-systems, and typography. Coverage follows the retained-family inventory for the declared evidence revision. Reconcile prompt cases when later reports change that inventory; report missing evidence separately.

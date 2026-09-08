@@ -1,0 +1,113 @@
+{
+  "id": "cp2-public-pde-visible-stream",
+  "status": "planned",
+  "scope": "Actual public PathMarks Processing 4.5.6 JAVA2D lifecycle, edit callbacks, retained movement and cached-canvas save. Technique-level public capability validation; not upstream pixel reproduction.",
+  "brief": "design/capabilities/cp2-public-example.md",
+  "operation": "path.gradient-trace-2d",
+  "renderer": "JAVA2D",
+  "dimensions": [
+    640,
+    640
+  ],
+  "density": 1,
+  "attempt_budget": 1,
+  "composition_budget": 7,
+  "timeout_seconds": 90,
+  "output": ".work/reproductions/cp2-public-pde-visible-stream",
+  "states": [
+    {
+      "id": "marks",
+      "trigger": "setup",
+      "trace": false,
+      "length": 12,
+      "alternate": false,
+      "steps": 2000,
+      "distance": 0.4
+    },
+    {
+      "id": "trace",
+      "trigger": "m",
+      "trace": true,
+      "length": 12,
+      "alternate": false,
+      "steps": 2000,
+      "distance": 0.4
+    },
+    {
+      "id": "marks-replay",
+      "trigger": "m",
+      "trace": false,
+      "length": 12,
+      "alternate": false,
+      "steps": 2000,
+      "distance": 0.4
+    },
+    {
+      "id": "long-marks",
+      "trigger": "l",
+      "trace": false,
+      "length": 24,
+      "alternate": false,
+      "steps": 2000,
+      "distance": 0.4
+    },
+    {
+      "id": "palette",
+      "trigger": "c",
+      "trace": false,
+      "length": 24,
+      "alternate": true,
+      "steps": 2000,
+      "distance": 0.4
+    },
+    {
+      "id": "count",
+      "trigger": "n",
+      "trace": false,
+      "length": 24,
+      "alternate": true,
+      "steps": 2001,
+      "distance": 0.4
+    },
+    {
+      "id": "distance",
+      "trigger": "d",
+      "trace": false,
+      "length": 24,
+      "alternate": true,
+      "steps": 2001,
+      "distance": 0.8
+    }
+  ],
+  "save": "Post actual s key after state7, verify one exported PNG equals displayed state7 pixels and no additional composition occurs during a 300ms quiet observation.",
+  "checks": [
+    "real official-preprocessed PDE settings/setup/draw/keyPressed",
+    "all seven exact option states",
+    "style edits reuse identical retained paths",
+    "count/distance edits replace retained movement",
+    "exact count prefix",
+    "unchanged first heading but changed later headings for distance edit",
+    "seven completed frames only",
+    "opaque640x640 outputs",
+    "base marks replay exact pixels",
+    "cached save matches current canvas"
+  ],
+  "visual_images": [
+    "marks.png",
+    "trace.png",
+    "long-marks.png"
+  ],
+  "visual_acceptance": "Root and Sol inspect the three registered images for continuous varying movement, coherent perpendicular marks, and length-driven coverage change, preserving convergence/canvas exits/field artifacts. Compare with accepted private CP2 images without claiming universal pixel identity.",
+  "failure_policy": "Reserve one execution before launch under the shared Processing render lock; any failure consumes this attempt. Preserve failed results. No automatic retry or second execution without a separately recorded corrective plan. No existing I1/native suites rerun.",
+  "build_report": "evidence/reproductions/cp2-java2d/pde-visible-build.json",
+  "result": "evidence/reproductions/cp2-java2d/pde-visible-result.json",
+  "correction": {
+    "prior_results": [
+      "evidence/reproductions/cp2-java2d/pde-result.json",
+      "evidence/reproductions/cp2-java2d/pde-corrective-result.json"
+    ],
+    "failure": "Valid far-offcanvas marks during later distance edit exceed the bounded drawing-profile coordinate domain. Earlier3images exist; neither failed run establishes finalstate/save.",
+    "change": "Example-only visible stream conservatively omits entirely offcanvas segments; unchanged raw movement/commands, explicit double literals retained. Pure all7states verifies subsequence/order/omittedbounds/counts and normalizes every submitted command before native execution.",
+    "proof": "evidence/conformance/path-marks-commands-java.json"
+  }
+}

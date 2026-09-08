@@ -1,0 +1,101 @@
+import java.util.*;
+import org.procedurals.internal.DrawingFrameState;
+
+/** Production state under simulated adapter events; never a native renderer test. */
+public class DrawingStateNative {
+    static List<Object> list(Object... values){return new ArrayList<Object>(Arrays.asList(values));}
+    static Map<String,Object> map(Object... values){Map<String,Object> m=new LinkedHashMap<String,Object>();for(int i=0;i<values.length;i+=2)m.put((String)values[i],values[i+1]);return m;}
+    static void equal(Object a,Object b){
+        if(a instanceof Number && b instanceof Number){if(((Number)a).doubleValue()!=((Number)b).doubleValue())throw new AssertionError(a+" != "+b);}
+        else if(a instanceof Map && b instanceof Map){Map<?,?>x=(Map<?,?>)a,y=(Map<?,?>)b;if(!x.keySet().equals(y.keySet()))throw new AssertionError("keys");for(Object k:x.keySet())equal(x.get(k),y.get(k));}
+        else if(!Objects.equals(a,b))throw new AssertionError(a+" != "+b);
+    }
+    static Map<String,Object> environment;
+    @SuppressWarnings("unchecked")
+    static void scenario(Object input)throws Exception {
+        Map<String,Object> c=(Map<String,Object>)input;
+        DrawingFrameState f=new DrawingFrameState();int acquired=0,released=0,transferred=0,attempts=0;boolean owns=false;
+        if(c.containsKey("test_hook_initial_active_count")){
+            f.activate(f.prepareBegin(environment));
+            // Harness-only injection. There is no production count setter/factory.
+            java.lang.reflect.Field count=DrawingFrameState.class.getDeclaredField("count");count.setAccessible(true);count.setLong(f,((Number)c.get("test_hook_initial_active_count")).longValue());
+            acquired=1;owns=true;
+        }
+        for(Object raw:(List<?>)c.get("steps")){
+            Map<String,Object> step=(Map<String,Object>)raw;Object fault=step.get("fault"),error=null;
+            try {
+                String action=(String)step.get("action");
+                if(action.equals("begin")){
+                    DrawingFrameState.BeginPlan plan=f.prepareBegin(step.containsKey("environment")?step.get("environment"):environment);
+                    if("capability".equals(fault))f.failBegin(plan,"UNSUPPORTED_CAPABILITY");
+                    if("acquisition".equals(fault))f.failBegin(plan,"RESOURCE_FAILURE");
+                    acquired++;owns=true;
+                    if("readiness".equals(fault))f.failBegin(plan,"RESOURCE_FAILURE");
+                    if("initialization".equals(fault))f.failBegin(plan,"RENDER_FAILURE");
+                    f.activate(plan);
+                } else if(action.equals("batch")){
+                    Object commands=step.get("commands");
+                    if(step.containsKey("repeat")){
+                        Map<?,?> repeat=(Map<?,?>)step.get("repeat");List<Object> expanded=new ArrayList<Object>();
+                        for(int i=0;i<((Number)repeat.get("count")).intValue();i++)expanded.add(repeat.get("command"));commands=expanded;
+                    }
+                    DrawingFrameState.BatchPlan plan=f.prepareBatch(commands);
+                    for(DrawingFrameState.Slot slot:plan.slots){
+                        if("noop".equals(slot.command.get("outcome")))continue;
+                        attempts++;
+                        if(fault instanceof Map && ((Number)((Map<?,?>)fault).get("native_command_offset")).intValue()==slot.sourceOffset) f.failBatch(plan,Long.valueOf(slot.sourceOffset));
+                    }
+                    f.commitBatch(plan);
+                } else if(action.equals("end")){
+                    DrawingFrameState.EndPlan plan=f.prepareEnd();
+                    if("finalization".equals(fault))f.failEnd(plan);
+                    f.completeEnd(plan);owns=false;transferred++;
+                } else if(action.equals("abort"))f.abort();else throw new AssertionError(action);
+            } catch(DrawingFrameState.FrameError e){error=map("code",e.code,"commandIndex",e.commandIndex);}
+            finally {if(f.state().equals("aborted") && owns){released++;owns=false;}}
+            try {equal(map("state",f.state(),"error",error),step.get("expected"));}
+            catch(AssertionError e){throw new AssertionError(c.get("id")+": "+e);}
+            if(acquired!=released+transferred+(owns?1:0))throw new AssertionError("ownership");
+        }
+        if(owns)throw new AssertionError("leaked simulated lease");
+        equal(map("acquired",acquired,"released",released,"transferred",transferred,"native_command_attempts",attempts),c.get("expected_final_events"));
+    }
+    interface Action {void run();}
+    static void invalid(Action action){try{action.run();}catch(DrawingFrameState.FrameError e){equal(e.code,"INVALID_STATE");equal(e.commandIndex,null);return;}throw new AssertionError("accepted stale/foreign token");}
+    static DrawingFrameState active(){DrawingFrameState f=new DrawingFrameState();f.activate(f.prepareBegin(environment));return f;}
+    @SuppressWarnings("unchecked")
+    public static void main(String[] args)throws Exception {
+        /* SHARED_LIFECYCLE_CASES */
+        final DrawingFrameState f=active();
+        Map<String,Object> command=map("kind","segment2","from",list(0,0),"to",list(1,1),"rgb",0,"opacity8",128,"width",1,"cap","round");
+        final DrawingFrameState.BatchPlan batch=f.prepareBatch(list(command));
+        ((List<Object>)command.get("from")).set(0,99);
+        equal(((List<?>)((List<?>)batch.slots.get(0).command.get("points")).get(0)).get(0),0);
+        try{((List<Object>)((List<?>)batch.slots.get(0).command.get("points")).get(0)).set(0,99);throw new AssertionError("mutable nested points");}catch(UnsupportedOperationException expected){}
+        if(f.count()!=0)throw new AssertionError("premature count commit");f.commitBatch(batch);if(f.count()!=1)throw new AssertionError("count");
+        invalid(new Action(){public void run(){f.commitBatch(batch);}});
+        final DrawingFrameState g=active(),other=active();final DrawingFrameState.BatchPlan foreign=other.prepareBatch(list());
+        invalid(new Action(){public void run(){g.commitBatch(foreign);}});other.abort();
+        final DrawingFrameState h=new DrawingFrameState();final DrawingFrameState.BeginPlan begin=h.prepareBegin(environment);h.abort();
+        invalid(new Action(){public void run(){h.activate(begin);}});equal(h.state(),"aborted");
+        final DrawingFrameState pending=active();pending.prepareBatch(list());invalid(new Action(){public void run(){pending.prepareEnd();}});
+        final DrawingFrameState completed=active();final DrawingFrameState.EndPlan end=completed.prepareEnd();completed.completeEnd(end);
+        invalid(new Action(){public void run(){completed.completeEnd(end);}});equal(completed.state(),"completed");
+        Map<String,Object> sourceEnv=new LinkedHashMap<String,Object>(environment);DrawingFrameState owner=new DrawingFrameState();DrawingFrameState.BeginPlan plan=owner.prepareBegin(sourceEnv);sourceEnv.put("width",1);equal(plan.environment.get("width"),environment.get("width"));
+        try{plan.environment.put("width",1);throw new AssertionError("mutable environment");}catch(UnsupportedOperationException expected){}owner.abort();
+        DrawingFrameState failed=active();DrawingFrameState.BatchPlan fp=failed.prepareBatch(list(command));
+        try{failed.failBatch(fp,null);throw new AssertionError("missing render failure");}catch(DrawingFrameState.FrameError e){equal(e.code,"RENDER_FAILURE");equal(e.commandIndex,null);if(failed.count()!=0)throw new AssertionError("failed batch committed");}
+        final DrawingFrameState noops=active();Map<String,Object> noop=new LinkedHashMap<String,Object>(command);noop.put("from",list(1,1));noop.put("to",list(1+Math.pow(2,-25),1));final DrawingFrameState.BatchPlan np=noops.prepareBatch(list(noop));
+        invalid(new Action(){public void run(){noops.failBatch(np,0L);}});
+        DrawingFrameState exceptional=active();
+        List<Object> badList=new AbstractList<Object>(){public int size(){throw new IllegalArgumentException("test length");}public Object get(int i){return null;}};
+        try{exceptional.prepareBatch(badList);throw new AssertionError("missing exception");}catch(IllegalArgumentException expected){}equal(exceptional.state(),"aborted");
+        final DrawingFrameState reentrant=active();
+        final Map<String,Object> callback=new LinkedHashMap<String,Object>(command){public Object get(Object key){reentrant.prepareEnd();return super.get(key);}};
+        invalid(new Action(){public void run(){reentrant.prepareBatch(list(callback));}});equal(reentrant.state(),"aborted");
+        final List<Object> changed=new ArrayList<Object>();
+        Map<String,Object> mutating=new LinkedHashMap<String,Object>(command){public Object get(Object key){changed.clear();return super.get(key);}};changed.add(mutating);
+        DrawingFrameState snapshotted=active();DrawingFrameState.BatchPlan sp=snapshotted.prepareBatch(changed);equal(sp.inputCount,1);equal(sp.slots.size(),1);snapshotted.commitBatch(sp);equal(snapshotted.count(),1);snapshotted.abort();
+        System.out.println("{\"language\":\"java\",\"lifecycle_cases\":__LIFECYCLE_COUNT__,\"token_immutability_and_deferred_commit\":true,\"scope\":\"production state with simulated adapter events; no native renderer claim\"}");
+    }
+}

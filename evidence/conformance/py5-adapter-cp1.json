@@ -1,0 +1,94 @@
+{
+  "status": "passed",
+  "part": "cp1",
+  "scope": "Actual py5 JAVA2D registered suite part only",
+  "input_sha256": {
+    "tests/native/py5_frame_driver.py": "63678a471d911f54d6e60447d9fd09238a8796ee3d2d216d4fdaf122c310274b",
+    "tests/native/py5_frame_cp1.py": "cbbee53ee384eca269f68d6737e6f8ef8f6d4075d8cf1058443ba213bf72d384",
+    "tools/run_py5_adapter.py": "bcf8c86bab3a2cedfc752b61957ba7354d92864581a66468e51065327d422bb8",
+    "design/py5-adapter-validation.md": "248815d1aed51af30a6875c8fdbe96d2ae47927f7484e827b7071406fefea530",
+    "catalog/drawing/fresh-raster-2d.json": "c3d1cdc264aecbc680c24e9d58e5eb11eac48c63b48d30e478777b577907b593",
+    "packages/python/procedurals/__init__.py": "3d53798ebcd479266ec0d793ed0eb68d42abc0acf1f35f0b2febc7c74ec5a3f2",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/__init__.py": "763066a534ae41d8a01605ceedcea2cd1c37139a25f4f2a9138e63b8a31410d7",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/graphics.py": "2761b2987666c7d1d70088c70aca9492dd4963abf644d8fa78ee0de9dc4c30f8",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/sketch.py": "39557b47939444710c6cd2480e8dfadc03eddc28c87106c3fb262d2d087a8639",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/base.py": "018c896ebee9ab611ef7346cbeca8e354918cf5caa49a1465332a7b7cccd57da",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/mixins/pixels.py": "e6b2d4c46c5370e61fef0436b901c860929338afc20e8a9ec8f941a8fb8d07b9",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/core.jar": "2cd02df8ace61c45af5eddef74dc74608b87a50155e83f20c7b1e28642ddbc85",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/py5.jar": "4447b8098080f83cb4ffa5bf3b2d6c15a4a1bea3265198da75f5ac936f504903",
+    "packages/python/examples/field_marks/mark_field.py": "c29e67dd89d9109fbae3c949a8b4805b2fabe9f4406a13ea91c742ed460eb006",
+    "evidence/reproductions/cp1-java2d/plan.json": "60007bfc03dc8dc7fd11469ee93bbf0634f23dc8e90ff0749b93b134d965ed73",
+    "evidence/reproductions/cp1-java2d/result.json": "34563ada85f505692b080b0616862c1f114857bc6005068981f38cb51573d185"
+  },
+  "platform": "linux",
+  "exit_code": 0,
+  "stdout": "PROCEDURALS_RESULT={\"passed\": true, \"part\": \"cp1\", \"py5\": \"0.10.11a0\", \"java\": \"17.0.20.1\", \"native\": {\"passed\": true, \"scope\": \"Actual py5 JAVA2D CP1 four-edit command route; not upstream or cross-host pixel identity\", \"cases\": [{\"id\": \"base\", \"model_sha256\": \"99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57\", \"geometry_sha256\": \"fee543d59490aa710ff9e46dba97a6deeb9cac32a3e7a33a46fb6383efbc74de\", \"color_sha256\": \"d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552\", \"commands\": 25600, \"nonbackground_pixels\": 313167, \"rgba_sha256\": \"d534f2fd76c5efba72c3b6bb3f967f3d1589b81213b0be9d30714ebf203f7ce4\", \"image_path\": \".work/reproductions/py5-adapter/cp1-base.png\", \"png_sha256\": \"c843d605c8628c2307e6c1d7ee55ed25e97b393cf8641757a93e069fcc01a240\"}, {\"id\": \"length\", \"model_sha256\": \"99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57\", \"geometry_sha256\": \"6a15d835e469595f53539555ad69970f6546610eaa2992fc8dc34b211b629e30\", \"color_sha256\": \"d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552\", \"commands\": 25600, \"nonbackground_pixels\": 384339, \"rgba_sha256\": \"34a4d510b844d2d46d8f5fa82c4465930816fc33e66999ed71e100d0eb16b543\", \"image_path\": \".work/reproductions/py5-adapter/cp1-length.png\", \"png_sha256\": \"b6e69365ae57d1987e343cc8dad1f26cc9fec6fd52fcd7abbe1bf4648af57e6d\"}, {\"id\": \"palette\", \"model_sha256\": \"99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57\", \"geometry_sha256\": \"fee543d59490aa710ff9e46dba97a6deeb9cac32a3e7a33a46fb6383efbc74de\", \"color_sha256\": \"48a2692180af6dc61b4af7ab69bb8348c19b8bedb1e56bce34f5d49dd3431fb0\", \"commands\": 25600, \"nonbackground_pixels\": 312474, \"rgba_sha256\": \"9fae7d67d021a2c2de369aab99568dcf06c96b781781aa26a176029c539e47f9\", \"image_path\": \".work/reproductions/py5-adapter/cp1-palette.png\", \"png_sha256\": \"daa11c482371c4d74dea4d04f229d4115bfda3aafcd49a4cadaceab594cd0f1e\"}, {\"id\": \"bar\", \"model_sha256\": \"99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57\", \"geometry_sha256\": \"c4ce81a946c5c39c4ea88efb6066acb99f03db05cfbe8869d46437bd7a4fa4ec\", \"color_sha256\": \"d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552\", \"commands\": 25600, \"nonbackground_pixels\": 408205, \"rgba_sha256\": \"e1a9a318bab7e3658c2c979eb8f5c2271729716d5131b30656ff9b44a4bfaafa\", \"image_path\": \".work/reproductions/py5-adapter/cp1-bar.png\", \"png_sha256\": \"19abfc0fe50e13074603fcd5a2d42dd95966f43d813dbb9a40745448adc78fa6\"}], \"edit_changed_pixels\": {\"length\": 379928, \"palette\": 313007, \"bar\": 408177}}}\n",
+  "stderr": "Picked up JAVA_TOOL_OPTIONS: -Dsun.java2d.uiScale=2\n",
+  "native": {
+    "passed": true,
+    "part": "cp1",
+    "py5": "0.10.11a0",
+    "java": "17.0.20.1",
+    "native": {
+      "passed": true,
+      "scope": "Actual py5 JAVA2D CP1 four-edit command route; not upstream or cross-host pixel identity",
+      "cases": [
+        {
+          "id": "base",
+          "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+          "geometry_sha256": "fee543d59490aa710ff9e46dba97a6deeb9cac32a3e7a33a46fb6383efbc74de",
+          "color_sha256": "d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552",
+          "commands": 25600,
+          "nonbackground_pixels": 313167,
+          "rgba_sha256": "d534f2fd76c5efba72c3b6bb3f967f3d1589b81213b0be9d30714ebf203f7ce4",
+          "image_path": ".work/reproductions/py5-adapter/cp1-base.png",
+          "png_sha256": "c843d605c8628c2307e6c1d7ee55ed25e97b393cf8641757a93e069fcc01a240"
+        },
+        {
+          "id": "length",
+          "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+          "geometry_sha256": "6a15d835e469595f53539555ad69970f6546610eaa2992fc8dc34b211b629e30",
+          "color_sha256": "d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552",
+          "commands": 25600,
+          "nonbackground_pixels": 384339,
+          "rgba_sha256": "34a4d510b844d2d46d8f5fa82c4465930816fc33e66999ed71e100d0eb16b543",
+          "image_path": ".work/reproductions/py5-adapter/cp1-length.png",
+          "png_sha256": "b6e69365ae57d1987e343cc8dad1f26cc9fec6fd52fcd7abbe1bf4648af57e6d"
+        },
+        {
+          "id": "palette",
+          "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+          "geometry_sha256": "fee543d59490aa710ff9e46dba97a6deeb9cac32a3e7a33a46fb6383efbc74de",
+          "color_sha256": "48a2692180af6dc61b4af7ab69bb8348c19b8bedb1e56bce34f5d49dd3431fb0",
+          "commands": 25600,
+          "nonbackground_pixels": 312474,
+          "rgba_sha256": "9fae7d67d021a2c2de369aab99568dcf06c96b781781aa26a176029c539e47f9",
+          "image_path": ".work/reproductions/py5-adapter/cp1-palette.png",
+          "png_sha256": "daa11c482371c4d74dea4d04f229d4115bfda3aafcd49a4cadaceab594cd0f1e"
+        },
+        {
+          "id": "bar",
+          "model_sha256": "99cef5c8049ca051b4499736032bc1334a670abb37a5d4e110f66855a922cc57",
+          "geometry_sha256": "c4ce81a946c5c39c4ea88efb6066acb99f03db05cfbe8869d46437bd7a4fa4ec",
+          "color_sha256": "d865ca58e97c298a0ebef990e48c6e7b30632d032291fd86723c8a332ece6552",
+          "commands": 25600,
+          "nonbackground_pixels": 408205,
+          "rgba_sha256": "e1a9a318bab7e3658c2c979eb8f5c2271729716d5131b30656ff9b44a4bfaafa",
+          "image_path": ".work/reproductions/py5-adapter/cp1-bar.png",
+          "png_sha256": "19abfc0fe50e13074603fcd5a2d42dd95966f43d813dbb9a40745448adc78fa6"
+        }
+      ],
+      "edit_changed_pixels": {
+        "length": 379928,
+        "palette": 313007,
+        "bar": 408177
+      }
+    }
+  }
+}

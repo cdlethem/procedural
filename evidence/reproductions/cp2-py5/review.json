@@ -1,0 +1,36 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "Sol",
+  "scope": "CP2 public PathMarks on py5 0.10.11a0 JAVA2D only: actual starter callbacks, retained movement, visible command stream, cached save and inspected visual mechanism; Android and full I2 remain incomplete",
+  "evidence_sha256": {
+    "evidence/reproductions/cp2-py5/result.json": "093860c920033fe0485f022ab404e8acc38bc0945f3de2e7d141fe3e14f10ef8"
+  },
+  "implementation_sha256": {
+    "packages/python/examples/path_marks/path_marks.py": "b72ae4ed91dbcef67f46089920ec2ff12a174f349eee61fd5880d157d92d4842",
+    "packages/python/examples/path_marks/sketch.py": "0c129226a7106bf2e66866f612f4cb7bccb6ff64def83491b658eebc6757a15f",
+    "packages/python/procedurals/__init__.py": "5d2230253d67e698fbdd77d521efb148a9b2a0f0c92a6839fdd7ecb8abada554",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+  },
+  "visual_observations": [
+    "Continuous varying curves with convergence and canvas exits.",
+    "Perpendicular endpoint marks form coherent bands on the same movement.",
+    "Length24 increases coverage while preserving centerlines and colour assignment."
+  ],
+  "image_sha256": {
+    ".work/reproductions/cp2-py5/path-marks.png": "502038f7ec27510daad30576a599e87af32207828eeab87a5921058525435a41",
+    ".work/reproductions/cp2-py5/trace.png": "dd4db4f271ea0b3520644878640d8e0bbef6079fbf52fb212b2a9467cadaf658",
+    ".work/reproductions/cp2-py5/marks.png": "19385384ba0af0c198b3a7dbe052aec99b9ccabb395249c4809ce04af7b77112",
+    ".work/reproductions/cp2-py5/long-marks.png": "da5d7329a3e2d5039267700c5af4ed11bd17de20f2709c9fd2663a0c94af5f05"
+  },
+  "limits": [
+    "No physical keyboard test, cross-host pixel identity, or upstream source-pixel reproduction.",
+    "No isotropy or continuous useful parameter-range claim."
+  ]
+}

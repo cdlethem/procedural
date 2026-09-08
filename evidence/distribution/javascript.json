@@ -1,0 +1,506 @@
+{
+  "status": "passed",
+  "scope": "Local JavaScript tarball and browser starter ZIP; no browser render, registry publication, or public adapter export claim",
+  "input_sha256": {
+    "packages/javascript/package.json": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/index.js": "7f368cde1aae6299dd73bee5334342b8ee6574ae2e59dc5982aca643b7f52644",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/examples/field-marks/README.md": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27",
+    "packages/javascript/examples/field-marks/index.html": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d",
+    "packages/javascript/examples/field-marks/mark-field.js": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf",
+    "packages/javascript/examples/field-marks/sketch.js": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "fixtures/operations/regular-grid.json": "2913f45daccdd9e2094ad6988547e7625e409af122807bf1a274f9484da06175",
+    "fixtures/operations/gradient-noise-2d-01.json": "33f4bda581aba490ab1885ec44bb46578c798c47ee60fe0bac3fd761fae08ed3",
+    "fixtures/operations/cyclic-palette.json": "a4cdf6349ed5e204700964e14fc738cdf25dbd58abf486a277e3c173d0410881",
+    "tools/build_javascript_artifacts.mjs": "c749ac6bf4c8e996acefe704093685e31f1f3f227832ee13de7b92d3622dbbab"
+  },
+  "artifacts": {
+    "npm_tarball": {
+      "path": ".work/dist/javascript/procedurals-javascript-0.1.0.tgz",
+      "sha256": "b4c5bac15cfe3ebefcb4201ae8d9aaa3b90f75d6919abae9e616b280cef62c77",
+      "entries": [
+        {
+          "path": "package/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "package/README.md",
+          "sha256": "ffd6eeacade5b4e0f2bd1f253f811be4a519ce999b7204cd64f6b06c46171532"
+        },
+        {
+          "path": "package/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "package/examples/field-marks/README.md",
+          "sha256": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27"
+        },
+        {
+          "path": "package/examples/field-marks/index.html",
+          "sha256": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d"
+        },
+        {
+          "path": "package/examples/field-marks/mark-field.js",
+          "sha256": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf"
+        },
+        {
+          "path": "package/examples/field-marks/sketch.js",
+          "sha256": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b"
+        },
+        {
+          "path": "package/package.json",
+          "sha256": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8"
+        },
+        {
+          "path": "package/src/cyclic-palette.js",
+          "sha256": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b"
+        },
+        {
+          "path": "package/src/gradient-noise-2d-01.js",
+          "sha256": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e"
+        },
+        {
+          "path": "package/src/index.js",
+          "sha256": "7f368cde1aae6299dd73bee5334342b8ee6574ae2e59dc5982aca643b7f52644"
+        },
+        {
+          "path": "package/src/internal/drawing-state.js",
+          "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+        },
+        {
+          "path": "package/src/internal/drawing.js",
+          "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+        },
+        {
+          "path": "package/src/internal/noise-hash.js",
+          "sha256": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6"
+        },
+        {
+          "path": "package/src/internal/p5-frame.js",
+          "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+        },
+        {
+          "path": "package/src/regular-grid.js",
+          "sha256": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278"
+        }
+      ]
+    },
+    "browser_starter_zip": {
+      "path": ".work/dist/javascript/procedurals-field-marks-browser-0.1.0.zip",
+      "sha256": "31eb5c75deb46f5cc2d02051734885f42f36f939fbbb5d1342b496947564bfae",
+      "entries": [
+        {
+          "path": "procedurals-field-marks-browser/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "procedurals-field-marks-browser/README.md",
+          "sha256": "a71079d4c2c08a82957695ba1cabd83c97b5c902ef4ae85de53afc4c99dffed8"
+        },
+        {
+          "path": "procedurals-field-marks-browser/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "procedurals-field-marks-browser/index.html",
+          "sha256": "7d50b85b17cf1a4ab23f9eab5c5c0839c51d4aba6498993ec0ff24de20c2a4ad"
+        },
+        {
+          "path": "procedurals-field-marks-browser/mark-field.js",
+          "sha256": "08917d3e0f27c126e068bfea158bbc593edadd5be861c2277789d22d566f066f"
+        },
+        {
+          "path": "procedurals-field-marks-browser/package-lock.json",
+          "sha256": "0aea824c9068100a230e0cd9198c432ac5f9d28165153cc799a9d072d28e1442"
+        },
+        {
+          "path": "procedurals-field-marks-browser/package.json",
+          "sha256": "124cf44711614572f0c5cf2c0d8d5cc22c54dbcf9dbed21d169a7de99180c932"
+        },
+        {
+          "path": "procedurals-field-marks-browser/server.mjs",
+          "sha256": "13da82be21ddc94e2ee9279adfceee70184e90927375bc18f46f2c66739d4da0"
+        },
+        {
+          "path": "procedurals-field-marks-browser/sketch.js",
+          "sha256": "858894d306701a36a27bcfe045c34c570bd501b2645d8b7983e866401c536f1f"
+        },
+        {
+          "path": "procedurals-field-marks-browser/vendor/drawing/drawing-state.js",
+          "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+        },
+        {
+          "path": "procedurals-field-marks-browser/vendor/drawing/drawing.js",
+          "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+        },
+        {
+          "path": "procedurals-field-marks-browser/vendor/drawing/p5-frame.js",
+          "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+        },
+        {
+          "path": "procedurals-field-marks-browser/vendor/procedurals-javascript-0.1.0.tgz",
+          "sha256": "b4c5bac15cfe3ebefcb4201ae8d9aaa3b90f75d6919abae9e616b280cef62c77"
+        }
+      ]
+    }
+  },
+  "included_file_manifest": {
+    "package_stage": [
+      {
+        "path": "LICENSE",
+        "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+      },
+      {
+        "path": "README.md",
+        "sha256": "ffd6eeacade5b4e0f2bd1f253f811be4a519ce999b7204cd64f6b06c46171532"
+      },
+      {
+        "path": "THIRD_PARTY_NOTICES.md",
+        "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+      },
+      {
+        "path": "examples/field-marks/README.md",
+        "sha256": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27"
+      },
+      {
+        "path": "examples/field-marks/index.html",
+        "sha256": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d"
+      },
+      {
+        "path": "examples/field-marks/mark-field.js",
+        "sha256": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf"
+      },
+      {
+        "path": "examples/field-marks/sketch.js",
+        "sha256": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b"
+      },
+      {
+        "path": "package.json",
+        "sha256": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8"
+      },
+      {
+        "path": "procedurals-javascript-0.1.0.tgz",
+        "sha256": "b4c5bac15cfe3ebefcb4201ae8d9aaa3b90f75d6919abae9e616b280cef62c77"
+      },
+      {
+        "path": "src/cyclic-palette.js",
+        "sha256": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b"
+      },
+      {
+        "path": "src/gradient-noise-2d-01.js",
+        "sha256": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e"
+      },
+      {
+        "path": "src/index.js",
+        "sha256": "7f368cde1aae6299dd73bee5334342b8ee6574ae2e59dc5982aca643b7f52644"
+      },
+      {
+        "path": "src/internal/drawing-state.js",
+        "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+      },
+      {
+        "path": "src/internal/drawing.js",
+        "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+      },
+      {
+        "path": "src/internal/noise-hash.js",
+        "sha256": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6"
+      },
+      {
+        "path": "src/internal/p5-frame.js",
+        "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+      },
+      {
+        "path": "src/regular-grid.js",
+        "sha256": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278"
+      }
+    ],
+    "starter": [
+      {
+        "path": "procedurals-field-marks-browser/LICENSE",
+        "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+      },
+      {
+        "path": "procedurals-field-marks-browser/README.md",
+        "sha256": "a71079d4c2c08a82957695ba1cabd83c97b5c902ef4ae85de53afc4c99dffed8"
+      },
+      {
+        "path": "procedurals-field-marks-browser/THIRD_PARTY_NOTICES.md",
+        "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+      },
+      {
+        "path": "procedurals-field-marks-browser/index.html",
+        "sha256": "7d50b85b17cf1a4ab23f9eab5c5c0839c51d4aba6498993ec0ff24de20c2a4ad"
+      },
+      {
+        "path": "procedurals-field-marks-browser/mark-field.js",
+        "sha256": "08917d3e0f27c126e068bfea158bbc593edadd5be861c2277789d22d566f066f"
+      },
+      {
+        "path": "procedurals-field-marks-browser/package-lock.json",
+        "sha256": "0aea824c9068100a230e0cd9198c432ac5f9d28165153cc799a9d072d28e1442"
+      },
+      {
+        "path": "procedurals-field-marks-browser/package.json",
+        "sha256": "124cf44711614572f0c5cf2c0d8d5cc22c54dbcf9dbed21d169a7de99180c932"
+      },
+      {
+        "path": "procedurals-field-marks-browser/server.mjs",
+        "sha256": "13da82be21ddc94e2ee9279adfceee70184e90927375bc18f46f2c66739d4da0"
+      },
+      {
+        "path": "procedurals-field-marks-browser/sketch.js",
+        "sha256": "858894d306701a36a27bcfe045c34c570bd501b2645d8b7983e866401c536f1f"
+      },
+      {
+        "path": "procedurals-field-marks-browser/vendor/drawing/drawing-state.js",
+        "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+      },
+      {
+        "path": "procedurals-field-marks-browser/vendor/drawing/drawing.js",
+        "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+      },
+      {
+        "path": "procedurals-field-marks-browser/vendor/drawing/p5-frame.js",
+        "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+      },
+      {
+        "path": "procedurals-field-marks-browser/vendor/procedurals-javascript-0.1.0.tgz",
+        "sha256": "b4c5bac15cfe3ebefcb4201ae8d9aaa3b90f75d6919abae9e616b280cef62c77"
+      }
+    ]
+  },
+  "installed_starter_smoke": {
+    "known_vectors": {
+      "grid": {
+        "fixture": "fixtures/operations/regular-grid.json",
+        "id": "row-major-unequal-pitch",
+        "input": {
+          "origin": [
+            -2,
+            4
+          ],
+          "spacing": [
+            3,
+            0.5
+          ],
+          "columns": 3,
+          "rows": 2
+        },
+        "size": 6,
+        "index": 4,
+        "output": [
+          1,
+          4.5
+        ]
+      },
+      "noise": {
+        "fixture": "fixtures/operations/gradient-noise-2d-01.json",
+        "case": "seed-0",
+        "input": [
+          0.25,
+          0.75
+        ],
+        "output": 0.4459395408630371
+      },
+      "palette": {
+        "fixture": "fixtures/operations/cyclic-palette.json",
+        "case": "red-blue",
+        "input": 0.25,
+        "output": 8388736
+      }
+    },
+    "resolved_module": "file:///home/colin/dev/procedural/.work/dist/javascript/build/procedurals-field-marks-browser/node_modules/@procedurals/javascript/src/index.js",
+    "expected_module": "file:///home/colin/dev/procedural/.work/dist/javascript/build/procedurals-field-marks-browser/node_modules/@procedurals/javascript/src/index.js",
+    "stdout": "{\"resolved\":\"file:///home/colin/dev/procedural/.work/dist/javascript/build/procedurals-field-marks-browser/node_modules/@procedurals/javascript/src/index.js\"}\n"
+  },
+  "environment": {
+    "node": "v22.22.1",
+    "npm": "9.2.0",
+    "npm_cache": ".work/dist/javascript/.npm-cache",
+    "install_mode": "default-network-enabled"
+  },
+  "starter_resolution": {
+    "local_dependency": "file:vendor/procedurals-javascript-0.1.0.tgz",
+    "p5": "2.3.2",
+    "import_map": "@procedurals/javascript -> /node_modules/@procedurals/javascript/src/index.js",
+    "internal_adapter": "./vendor/drawing/p5-frame.js",
+    "installed_targets": [
+      ".work/dist/javascript/build/procedurals-field-marks-browser/node_modules/p5/lib/p5.min.js",
+      ".work/dist/javascript/build/procedurals-field-marks-browser/node_modules/@procedurals/javascript/src/index.js",
+      ".work/dist/javascript/build/procedurals-field-marks-browser/node_modules/@procedurals/javascript/src/internal/p5-frame.js",
+      ".work/dist/javascript/build/procedurals-field-marks-browser/node_modules/@procedurals/javascript/src/internal/drawing-state.js",
+      ".work/dist/javascript/build/procedurals-field-marks-browser/node_modules/@procedurals/javascript/src/internal/drawing.js"
+    ],
+    "package_lock": {
+      "path": "procedurals-field-marks-browser/package-lock.json",
+      "sha256": "0aea824c9068100a230e0cd9198c432ac5f9d28165153cc799a9d072d28e1442",
+      "p5_integrity": "sha512-DlX4rVQb9R2Z16XtTTNN/1zf7FZWy55ApA6ZS0GNJBDraymJcd9kbxmpIDKYnVxiXrchgb2YckWsmm+TSEJVPg==",
+      "local_resolved": "file:vendor/procedurals-javascript-0.1.0.tgz"
+    },
+    "static_import_graph": {
+      "roots": [
+        "sketch.js",
+        "mark-field.js",
+        "vendor/drawing/p5-frame.js",
+        "vendor/drawing/drawing-state.js",
+        "vendor/drawing/drawing.js"
+      ],
+      "edges": [
+        {
+          "from": "sketch.js",
+          "specifier": "./vendor/drawing/p5-frame.js",
+          "to": "vendor/drawing/p5-frame.js"
+        },
+        {
+          "from": "vendor/drawing/p5-frame.js",
+          "specifier": "./drawing-state.js",
+          "to": "vendor/drawing/drawing-state.js"
+        },
+        {
+          "from": "vendor/drawing/drawing-state.js",
+          "specifier": "./drawing.js",
+          "to": "vendor/drawing/drawing.js"
+        },
+        {
+          "from": "sketch.js",
+          "specifier": "./mark-field.js",
+          "to": "mark-field.js"
+        },
+        {
+          "from": "mark-field.js",
+          "specifier": "@procedurals/javascript",
+          "to": "node_modules/@procedurals/javascript/src/index.js"
+        },
+        {
+          "from": "node_modules/@procedurals/javascript/src/index.js",
+          "specifier": "./regular-grid.js",
+          "to": "node_modules/@procedurals/javascript/src/regular-grid.js"
+        },
+        {
+          "from": "node_modules/@procedurals/javascript/src/index.js",
+          "specifier": "./gradient-noise-2d-01.js",
+          "to": "node_modules/@procedurals/javascript/src/gradient-noise-2d-01.js"
+        },
+        {
+          "from": "node_modules/@procedurals/javascript/src/gradient-noise-2d-01.js",
+          "specifier": "./internal/noise-hash.js",
+          "to": "node_modules/@procedurals/javascript/src/internal/noise-hash.js"
+        },
+        {
+          "from": "node_modules/@procedurals/javascript/src/index.js",
+          "specifier": "./cyclic-palette.js",
+          "to": "node_modules/@procedurals/javascript/src/cyclic-palette.js"
+        }
+      ]
+    },
+    "static_server": {
+      "command": "PORT=0 npm start",
+      "url": "http://127.0.0.1:46643",
+      "served": [
+        {
+          "path": "/",
+          "status": 200,
+          "bytes": 2063,
+          "sha256": "7d50b85b17cf1a4ab23f9eab5c5c0839c51d4aba6498993ec0ff24de20c2a4ad",
+          "expected_sha256": "7d50b85b17cf1a4ab23f9eab5c5c0839c51d4aba6498993ec0ff24de20c2a4ad",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "path": "/p5.js",
+          "status": 200,
+          "bytes": 990372,
+          "sha256": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+          "expected_sha256": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+          "content_type": "text/javascript; charset=utf-8"
+        },
+        {
+          "path": "/mark-field.js",
+          "status": 200,
+          "bytes": 1831,
+          "sha256": "08917d3e0f27c126e068bfea158bbc593edadd5be861c2277789d22d566f066f",
+          "expected_sha256": "08917d3e0f27c126e068bfea158bbc593edadd5be861c2277789d22d566f066f",
+          "content_type": "text/javascript; charset=utf-8"
+        },
+        {
+          "path": "/sketch.js",
+          "status": 200,
+          "bytes": 1755,
+          "sha256": "858894d306701a36a27bcfe045c34c570bd501b2645d8b7983e866401c536f1f",
+          "expected_sha256": "858894d306701a36a27bcfe045c34c570bd501b2645d8b7983e866401c536f1f",
+          "content_type": "text/javascript; charset=utf-8"
+        },
+        {
+          "path": "/vendor/drawing/p5-frame.js",
+          "status": 200,
+          "bytes": 11043,
+          "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+          "expected_sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+          "content_type": "text/javascript; charset=utf-8"
+        },
+        {
+          "path": "/vendor/drawing/drawing-state.js",
+          "status": 200,
+          "bytes": 7702,
+          "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+          "expected_sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+          "content_type": "text/javascript; charset=utf-8"
+        },
+        {
+          "path": "/vendor/drawing/drawing.js",
+          "status": 200,
+          "bytes": 8925,
+          "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+          "expected_sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+          "content_type": "text/javascript; charset=utf-8"
+        },
+        {
+          "path": "/node_modules/@procedurals/javascript/src/index.js",
+          "status": 200,
+          "bytes": 227,
+          "sha256": "7f368cde1aae6299dd73bee5334342b8ee6574ae2e59dc5982aca643b7f52644",
+          "expected_sha256": "7f368cde1aae6299dd73bee5334342b8ee6574ae2e59dc5982aca643b7f52644",
+          "content_type": "text/javascript; charset=utf-8"
+        }
+      ]
+    },
+    "copied_internal_sha256": {
+      "p5-frame.js": {
+        "source": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+        "installed_tarball": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+        "vendor": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+      },
+      "drawing-state.js": {
+        "source": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+        "installed_tarball": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+        "vendor": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+      },
+      "drawing.js": {
+        "source": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+        "installed_tarball": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+        "vendor": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+      }
+    },
+    "rewrites": {
+      "mark-field.js": {
+        "from": "../../src/index.js",
+        "to": "@procedurals/javascript"
+      },
+      "sketch.js": {
+        "from": "../../src/internal/p5-frame.js",
+        "to": "./vendor/drawing/p5-frame.js"
+      },
+      "index.html": {
+        "inserted": "<script type=\"importmap\">{\"imports\":{\"@procedurals/javascript\":\"/node_modules/@procedurals/javascript/src/index.js\",\"@procedurals/javascript/\":\"/node_modules/@procedurals/javascript/\"}}</script>"
+      }
+    }
+  }
+}
