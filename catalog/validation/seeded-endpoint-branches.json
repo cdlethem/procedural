@@ -154,7 +154,47 @@
         }
       },
       "native": {
-        "status": "unvalidated"
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/javascript/examples/branch-marks/sketch.js": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1",
+          "packages/javascript/examples/branch-marks/index.html": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70",
+          "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+          "packages/javascript/src/branch-tree.js": "675f30861d3fe667e249082a8cdab00581526c6e13169a94c81435ce0765e6be",
+          "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+          "tools/run_p5_branch_marks.mjs": "eb496324495b607f78767b053d2e57eea949652429c6d4662010d352cfb9a379",
+          "tests/native/branch-marks-browser.mjs": "8988ada4f7245861f66456f59bd9023ed3f6ccb275796a1def1ca9b650a4ecb4",
+          "design/capabilities/branch-marks-p5-acceptance.md": "4367888a0cf86b9cfb8f122dba4e095023b2e1932bbdad8eb4e81f7790f81c25"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/p5js-branch-marks.json": "3c2cfc59697216bfb884ac70b760cb4fe0101edc8073b97bd77b5280b78d95c9",
+          "evidence/conformance/branch-marks-javascript-root-review.json": "47c810f06c05ee78a5cdddafe232b719ba570f82136693c464b8458c1d043fd1",
+          "evidence/conformance/branch-tree-javascript-root-review.json": "e18e96d5fffd422f5a1efb8085cd6b5913fd14803a2aaf57aea89ba29efbf729"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/p5js-branch-marks.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/p5js-branch-marks.json",
+            "pointer": "/states/16/revision",
+            "equals": 17
+          },
+          {
+            "path": "evidence/conformance/p5js-branch-marks.json",
+            "pointer": "/states/18/revision",
+            "equals": 17
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/branch-p5js-native-root-review.json",
+          "sha256": "117587e8b77c72a4ea11b402f174b49c3aa3ad3f15b2cf4de5707e01c37c0529"
+        },
+        "runtime_profile": {
+          "name": "p5.js2.3.2 Chromium153 canvas2D density1",
+          "scope": "BranchMarks17 native compositions, retained style edits, growth/forest prefixes, reset and cached save."
+        }
       },
       "technique": {
         "status": "unvalidated"

@@ -1,0 +1,32 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Scoped p5.js BranchMarks native editing, retained ancestry/growth and cached PNG saving; no package or source-recreation acceptance.",
+  "implementation_sha256": {
+    "packages/javascript/examples/branch-marks/sketch.js": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1",
+    "packages/javascript/examples/branch-marks/index.html": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70",
+    "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+    "packages/javascript/src/branch-tree.js": "675f30861d3fe667e249082a8cdab00581526c6e13169a94c81435ce0765e6be",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "tools/run_p5_branch_marks.mjs": "eb496324495b607f78767b053d2e57eea949652429c6d4662010d352cfb9a379",
+    "tests/native/branch-marks-browser.mjs": "8988ada4f7245861f66456f59bd9023ed3f6ccb275796a1def1ca9b650a4ecb4",
+    "design/capabilities/branch-marks-p5-acceptance.md": "4367888a0cf86b9cfb8f122dba4e095023b2e1932bbdad8eb4e81f7790f81c25"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/p5js-branch-marks.json": "3c2cfc59697216bfb884ac70b760cb4fe0101edc8073b97bd77b5280b78d95c9",
+    "evidence/conformance/branch-marks-javascript-root-review.json": "47c810f06c05ee78a5cdddafe232b719ba570f82136693c464b8458c1d043fd1",
+    "evidence/conformance/branch-tree-javascript-root-review.json": "e18e96d5fffd422f5a1efb8085cd6b5913fd14803a2aaf57aea89ba29efbf729"
+  },
+  "findings": [
+    "Root reviewed native lines, generation colors, nominal-length taper and actual childCount-zero dots against accepted Java PDE. No core numeric narrowing or new shared draw command.",
+    "Seventeen compositions and quiet/save checks pass: every state setting/count, style identity, all-tree generation prefixes, reset PNG equality, actual download bytes and unchanged post-save canvas.",
+    "Root inspected initial, extended, narrowing, binary, thin, forest, forest-taper and forest-extended PNGs. Earlier branch structure persists during growth; tips move to new leaves; forest root placement and independent styling remain visible.",
+    "Root verified source/runtime and captured PNG hashes. Shared240-second lease completed with browser/server cleanup; no native session pending."
+  ],
+  "limits": [
+    "Automated browser inputs, not human usability or physical keyboard evidence.",
+    "Cross-platform geometry follows scoped model tolerances; no Java pixel identity or original-sketch recreation claim.",
+    "Python/Android branch ports and local distributions remain pending."
+  ]
+}

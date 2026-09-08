@@ -1,5 +1,15 @@
 # Project state
 
+## BranchMarks p5 native workflow accepted
+
+Native1 passed17 compositions plus quiet/save at .work/reproductions/p5js-branch-marks-native1.
+Root reviewed actual draw treatment and eight rendered states; verified all inputs/runtime/
+PNG hashes. All-tree prefixes, retained styles, actual tips/counts, reset and cached download
+pass. Evidence: p5js-branch-marks.json and branch-p5js-native-root-review.json; native-only p5
+attestation added. Shared240-second run session95314 terminal exit0; browser/server closed.
+No public export/package/source-recreation claim added. Next Python branch core/workflow,
+then Android core/workflow and batch packages. Java15/15, nine complete ports unchanged.
+
 ## BranchMarks JavaScript model parity accepted
 
 Root corrected the worker runner: all-tree counts and prefixes instead of first-tree/min
