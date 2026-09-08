@@ -54,3 +54,5 @@ from .noise_band_path import NoiseBandPathError, noise_band_path_2d
 __all__ += ["NoiseBandPathError", "noise_band_path_2d"]
 from .target_springs import SpringError, target_springs_2d
 __all__ += ["SpringError", "target_springs_2d"]
+from .occupied_lattice_paths import LatticeError, occupied_lattice_paths_2d
+__all__ += ["LatticeError", "occupied_lattice_paths_2d"]
