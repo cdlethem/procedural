@@ -1,0 +1,120 @@
+{
+  "allocation_failure": {
+    "executed": false,
+    "source_review": "All static validation precedes packed array allocation and stream construction; generation appends primitive binary64 scalars without per-point lists. Host allocation failure is not injected."
+  },
+  "auxiliary": {
+    "mapping_native_only_cases": [
+      {
+        "description": "For sampling.triangle-coordinate-map-2d, NaN, +/-Infinity and numeric carriers that cannot convert to binary64 are INVALID_INPUT. Strict JSON cannot carry nonfinite literals.",
+        "id": "nonfinite-and-overflowing-numeric-carriers"
+      },
+      {
+        "description": "Recognized wrong carriers (Java arbitrary Number subclasses, JavaScript class/typed-array pairs, Python custom mapping/list containers) are INVALID_INPUT. Active getters/proxies/custom hooks are outside passive interchange and need not be read or universally detected.",
+        "id": "passive-carriers-only"
+      }
+    ],
+    "mapping_requirements": {
+      "requirements": [
+        "Mutating every caller config/triangle/pair container after success cannot alter retained points, pointAt or toValues output.",
+        "pointAt and toValues return detached values; a failed fresh materialization leaves the completed result usable.",
+        "pointInto validates index, destination, offset and both writable binary64 slots before writing; every failure preserves destination sentinels.",
+        "Access error precedence is INVALID_INDEX, INDEX_OUT_OF_RANGE, then INVALID_OUTPUT; bool and unsafe numeric indices are INVALID_INDEX.",
+        "Complete static validation precedes output-sized allocation and seeded RNG initialization. Controlled allocation failure, where executable, exposes no partial result; otherwise record source proof and explicit unexecuted status.",
+        "Seeded inner loops retain packed scalar output without per-point objects; measure work/memory at native review rather than claiming it from these fixtures."
+      ],
+      "status": "required for future native ports; not executed by these pure JSON fixtures"
+    },
+    "seeded_native_only_cases": [
+      {
+        "description": "For sampling.seeded-triangle-points-2d, NaN, +/-Infinity and numeric carriers that cannot convert to binary64 are INVALID_INPUT. Strict JSON cannot carry nonfinite literals.",
+        "id": "nonfinite-and-overflowing-numeric-carriers"
+      },
+      {
+        "description": "Recognized wrong carriers (Java arbitrary Number subclasses, JavaScript class/typed-array pairs, Python custom mapping/list containers) are INVALID_INPUT. Active getters/proxies/custom hooks are outside passive interchange and need not be read or universally detected.",
+        "id": "passive-carriers-only"
+      }
+    ],
+    "seeded_requirements": {
+      "requirements": [
+        "Mutating every caller config/triangle/pair container after success cannot alter retained points, pointAt or toValues output.",
+        "pointAt and toValues return detached values; a failed fresh materialization leaves the completed result usable.",
+        "pointInto validates index, destination, offset and both writable binary64 slots before writing; every failure preserves destination sentinels.",
+        "Access error precedence is INVALID_INDEX, INDEX_OUT_OF_RANGE, then INVALID_OUTPUT; bool and unsafe numeric indices are INVALID_INDEX.",
+        "Complete static validation precedes output-sized allocation and seeded RNG initialization. Controlled allocation failure, where executable, exposes no partial result; otherwise record source proof and explicit unexecuted status.",
+        "Seeded inner loops retain packed scalar output without per-point objects; measure work/memory at native review rather than claiming it from these fixtures."
+      ],
+      "status": "required for future native ports; not executed by these pure JSON fixtures"
+    }
+  },
+  "contract_sha256": {
+    "mapping": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "seeded": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+  },
+  "cross_case_checks": 4,
+  "executable": "/home/colin/dev/procedural/.work/environments/py5/bin/python",
+  "fixture_cases": {
+    "mapping": 32,
+    "seeded": 27
+  },
+  "generated_draw_counts": {
+    "boolean-seed": 0,
+    "boolean-triangle-coordinate": 0,
+    "constant-vertices-consume-two-units-per-point": 8,
+    "count-boolean": 0,
+    "count-fractional": 0,
+    "count-negative": 0,
+    "count-over-packed-limit": 0,
+    "count-zero-repeated-triangle": 0,
+    "count-zero-still-validates-triangle": 0,
+    "count-zero-validates-ordinary": 0,
+    "extra-property": 0,
+    "finite-extrema-opposite-sign": 4,
+    "missing-count": 0,
+    "missing-triangle": 0,
+    "negative-zero-seed-count-and-vertices": 0,
+    "reordered-triangle-seed-one": 8,
+    "seed-42-count-4": 8,
+    "seed-42-count-8": 16,
+    "seed-high-count-one": 2,
+    "seed-max-count-one": 2,
+    "seed-negative": 0,
+    "seed-one-count-one": 2,
+    "seed-over-uint32": 0,
+    "seed-zero-count-one": 2,
+    "tiny-collinear-consume-two-units-per-point": 8,
+    "tiny-noncollinear-underflowed-area": 8,
+    "triangle-wrong-length": 0
+  },
+  "input_sha256_after": {
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+    "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+    "tests/native/triangle-points-python.py": "10a11d4f507c2505eb6fa7add45a96ba667503ee4b787483e85393518026aa36"
+  },
+  "input_sha256_before": {
+    "catalog/operations/seeded-triangle-points.json": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+    "catalog/operations/triangle-coordinate-map.json": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f",
+    "fixtures/operations/seeded-triangle-points.json": "719a6d292dbf6a81683f7635dc49100a28fc3452c128b5ce8fdf6c473c5af35e",
+    "fixtures/operations/triangle-coordinate-map.json": "b6f303d718093c6f587f793ed40e19346d8844dbeffeb4c15e86f9d343644607",
+    "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+    "tests/native/triangle-points-python.py": "10a11d4f507c2505eb6fa7add45a96ba667503ee4b787483e85393518026aa36"
+  },
+  "operations": [
+    "sampling.seeded-triangle-points-2d",
+    "sampling.triangle-coordinate-map-2d"
+  ],
+  "ownership_access": [
+    "all caller containers detached",
+    "point_at/to_values exact builtin detached lists",
+    "point_into array(d)/list and atomic failures",
+    "index/range/output precedence",
+    "bool, huge integer, and custom carrier rejection"
+  ],
+  "python": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]",
+  "scope": "Actual Python CP5 pure fixtures, RNG, equivalence, ownership and access checks; no rendering or support claim.",
+  "seed_vectors": 5,
+  "status": "passed"
+}

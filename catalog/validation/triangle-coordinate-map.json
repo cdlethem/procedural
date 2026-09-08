@@ -130,7 +130,49 @@
     },
     "py5": {
       "core": {
-        "status": "unvalidated"
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+          "tests/native/triangle-points-python.py": "10a11d4f507c2505eb6fa7add45a96ba667503ee4b787483e85393518026aa36"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/triangle-points-python.json": "65c34907dd01fbf311165e84870807ded392d36d47858fa63736d6969da7bd3d"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/triangle-points-python.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/triangle-points-python.json",
+            "pointer": "/fixture_cases/seeded",
+            "equals": 27
+          },
+          {
+            "path": "evidence/conformance/triangle-points-python.json",
+            "pointer": "/fixture_cases/mapping",
+            "equals": 32
+          },
+          {
+            "path": "evidence/conformance/triangle-points-python.json",
+            "pointer": "/seed_vectors",
+            "equals": 5
+          },
+          {
+            "path": "evidence/conformance/triangle-points-python.json",
+            "pointer": "/cross_case_checks",
+            "equals": 4
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/triangle-python-core-root-review.json",
+          "sha256": "ad2579ecbf1261732169d2a936bdea138656071049a9853cff73208b7fd10888"
+        },
+        "runtime_profile": {
+          "name": "Pinned py5 environment CPython 3.13.15",
+          "scope": "Pure core exact fixtures, RNG and ownership/access; no sketch execution."
+        }
       },
       "native": {
         "status": "unvalidated"

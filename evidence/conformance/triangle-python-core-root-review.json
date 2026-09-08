@@ -1,0 +1,22 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Both Python triangle cores executed with pinned py5 environment interpreter; no py5 drawing or distribution acceptance.",
+  "implementation_sha256": {
+    "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+    "tests/native/triangle-points-python.py": "10a11d4f507c2505eb6fa7add45a96ba667503ee4b787483e85393518026aa36"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/triangle-points-python.json": "65c34907dd01fbf311165e84870807ded392d36d47858fa63736d6969da7bd3d"
+  },
+  "findings": [
+    "Root reviewed Terra implementation against frozen input/ordering/mapping/result contracts. Full validation precedes output-sized allocation; private stream and primitive packed output only; no caller containers retained.",
+    "Root added explicit nonfinite/bool/huge numeric rejection coverage in scalar fields, vertices and both unit coordinates, including zero/empty calls; clarified provenance/domain versus measured-range docstrings.",
+    "Pinned py5 interpreter passes27 seeded/32 mapping cases with raw bits,5 stream vectors, generated uint32/unit draws including zero/collapsed,4 prefix/equivalence checks and actual ownership/access checks. All source/fixture/runner hashes verified unchanged."
+  ],
+  "limits": [
+    "Host allocation fault injection not executed; absence of zero-count stream construction source-reviewed, draw absence executed.",
+    "No drawing, workload benchmark, Python root convenience exports or wheel acceptance in this core checkpoint. Direct procedurals.triangle_points imports are available."
+  ]
+}

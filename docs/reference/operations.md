@@ -1343,7 +1343,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [review](../../evidence/distribution/cp5-review.json) |
 | p5js | unvalidated | unvalidated | unvalidated | not attested |
-| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | [conformant](../../evidence/conformance/triangle-python-core-root-review.json) | unvalidated | unvalidated | [review](../../evidence/conformance/triangle-python-core-root-review.json) |
 | processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | unvalidated | unvalidated | [review](../../evidence/conformance/triangle-android-core-root-review.json) |
 
 Motivating evidence:
@@ -1573,7 +1573,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [review](../../evidence/distribution/cp5-review.json) |
 | p5js | unvalidated | unvalidated | unvalidated | not attested |
-| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | [conformant](../../evidence/conformance/triangle-python-core-root-review.json) | unvalidated | unvalidated | [review](../../evidence/conformance/triangle-python-core-root-review.json) |
 | processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | unvalidated | unvalidated | [review](../../evidence/conformance/triangle-android-core-root-review.json) |
 
 Motivating evidence:

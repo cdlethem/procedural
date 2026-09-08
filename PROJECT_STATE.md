@@ -1,5 +1,16 @@
 # Project state
 
+## Both Python triangle cores reviewed and conformant
+
+Terra implemented triangle_points.py plus actual fixture/access runner. Root reviewed
+semantics/storage, added omitted numeric-carrier rejection coverage and provenance/range
+docstrings. Pinned py5 interpreter passes59 cases,5 streams,4 crosschecks, generated
+draws and ownership/access; source/runner/fixture hashes stable. Core-only py5 attestations
+added; native GrainMarks and packages remain pending. Evidence: triangle-points-python.json
+and triangle-python-core-root-review.json. Direct submodule import; root exports unchanged.
+Android core checkpoint78c833fa pushed. Next Python GrainMarks model/sketch and bounded
+native check, followed by Android workflow and public-export/package integration.
+
 ## Both triangle cores pass actual Android ART execution
 
 Prepared unchanged Java core plus59 existing vectors, extracted ownership/access and5
