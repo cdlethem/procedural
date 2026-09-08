@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Band marks — procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Band marks</h1>
+  <p>Retain 64 attempt-bounded noise-band paths in an 8x8 grid, then draw either their
+    connected movement or a perpendicular tick every 8th vertex. Style edits reuse the
+    same paths.</p>
+  <div id="controls" aria-label="Band marks controls">
+    <button data-action="t"><kbd>T</kbd> narrow / wide tolerance (rebuilds)</button>
+    <button data-action="c"><kbd>C</kbd> base / alternate palette</button>
+    <button data-action="m"><kbd>M</kbd> path / marks</button>
+    <button data-action="0"><kbd>0</kbd> reset</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated noise-band paths"></div>
+  <p id="status" role="status">Preparing paths…</p>
+  <p>Edit the composition in <code>band-marks.js</code>: the start grid, seeds, field
+    scale/offset and tolerance rebuild the retained paths; <code>bandPathCommands()</code>
+    is the place to invent another treatment of the same paths. These values describe
+    this piece.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>
