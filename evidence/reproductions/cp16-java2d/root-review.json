@@ -1,0 +1,27 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "LoopMarks JAVA2D technique/edit/transfer/save; distribution pending",
+  "native": "evidence/reproductions/cp16-java2d/native.json",
+  "native_sha256": "017e88a96dadf46df3acc8d2cf883eccaa4d4f43767bbaaad3429bb4a58b8d2f",
+  "plan": "design/capabilities/loop-marks-native-plan.md",
+  "plan_sha256": "99f500e267b0b44810761fff92861758095c39d01327df2cba9d8e0fb5877bf2",
+  "verified": [
+    "Five actual draw states and tcm0s event sequence; correct public JAR,640x640 JAVA2D,density1.",
+    "Control edit rebuilds curves; palette/fan changes preserve array and cloned object identities plus exact descriptor/length/sample hashes.",
+    "Reset restores geometry/pixels; cache equals framebuffer and saved PNG equals final display after300ms quiet.",
+    "Root inspected baseline,moved,recolored,fans. All bound inputs/runtime/classes verified live."
+  ],
+  "visual_observations": {
+    "baseline": "Four organic closed loops of separated tangent-aligned hollow tiles in coral,teal,ochre,purple.",
+    "moved": "Moving one control makes the lower-right flank of each loop more angular and changes its outline and tile placements.",
+    "recolored": "Same moved shapes in blue,rose,green,orange.",
+    "fans": "Four filled rounded forms with repeated translucent radial wedges; a distinct fill use of retained curves."
+  },
+  "limits": [
+    "Technique demonstration, not blobs/databol original recreation or generic polygon fill.",
+    "Injected native events, not physical keyboard automation.",
+    "First attempt acquired the shared lease twice and stopped before rendering; successful second attempt used the runner-owned shared lease."
+  ]
+}

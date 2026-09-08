@@ -1,0 +1,1153 @@
+{
+  "operation": "geometry.closed-spline-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "oracle": "Root analytical dyadic uniform cubic calculations and straight-axis chord lengths; no implementation evaluator used. Curved square R2 has eight chords sqrt(17)/4; length is their ordered binary64 sum and half-first-chord query maps to t=1/4.",
+  "cases": [
+    {
+      "id": "square_direct_and_coarse_distance",
+      "input": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "output": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "serialized": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "metadata": {
+        "length": 8,
+        "controlCount": 4,
+        "subdivisions": 1
+      },
+      "queries": [
+        {
+          "input": {
+            "mode": "parameter",
+            "value": 0
+          },
+          "output": {
+            "point": [
+              0,
+              0
+            ],
+            "tangent": [
+              1,
+              -1
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "parameter",
+            "value": 0.5
+          },
+          "output": {
+            "point": [
+              1,
+              -0.25
+            ],
+            "tangent": [
+              2.5,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "parameter",
+            "value": 1
+          },
+          "output": {
+            "point": [
+              2,
+              0
+            ],
+            "tangent": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "parameter",
+            "value": 4
+          },
+          "output": {
+            "point": [
+              0,
+              0
+            ],
+            "tangent": [
+              1,
+              -1
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "parameter",
+            "value": -0.5
+          },
+          "output": {
+            "point": [
+              -0.25,
+              1
+            ],
+            "tangent": [
+              0,
+              -2.5
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 1
+          },
+          "output": {
+            "point": [
+              1,
+              -0.25
+            ],
+            "tangent": [
+              2.5,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 8
+          },
+          "output": {
+            "point": [
+              0,
+              0
+            ],
+            "tangent": [
+              1,
+              -1
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": -1
+          },
+          "output": {
+            "point": [
+              -0.25,
+              1
+            ],
+            "tangent": [
+              0,
+              -2.5
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "curved_chord_length",
+      "input": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "subdivisions": 2
+      },
+      "output": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "subdivisions": 2
+      },
+      "serialized": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "subdivisions": 2
+      },
+      "metadata": {
+        "length": 8.246211251235321,
+        "controlCount": 4,
+        "subdivisions": 2
+      },
+      "queries": [
+        {
+          "input": {
+            "mode": "distance",
+            "value": 0.5153882032022076
+          },
+          "output": {
+            "point": [
+              0.40625,
+              -0.1875
+            ],
+            "tangent": [
+              2.125,
+              -0.5
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "unequal_spans",
+      "input": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "output": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "serialized": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "metadata": {
+        "length": 20,
+        "controlCount": 4,
+        "subdivisions": 1
+      },
+      "queries": [
+        {
+          "input": {
+            "mode": "parameter",
+            "value": 0.5
+          },
+          "output": {
+            "point": [
+              4,
+              -0.25
+            ],
+            "tangent": [
+              10,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 4
+          },
+          "output": {
+            "point": [
+              4,
+              -0.25
+            ],
+            "tangent": [
+              10,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 8
+          },
+          "output": {
+            "point": [
+              8,
+              0
+            ],
+            "tangent": [
+              4,
+              1
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 9
+          },
+          "output": {
+            "point": [
+              9,
+              1
+            ],
+            "tangent": [
+              0,
+              2.5
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 10
+          },
+          "output": {
+            "point": [
+              8,
+              2
+            ],
+            "tangent": [
+              -4,
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "interior_chord_lookup",
+      "input": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "subdivisions": 2
+      },
+      "output": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "subdivisions": 2
+      },
+      "serialized": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "subdivisions": 2
+      },
+      "metadata": {
+        "length": 16,
+        "controlCount": 4,
+        "subdivisions": 2
+      },
+      "queries": [
+        {
+          "input": {
+            "mode": "parameter",
+            "value": 0.25
+          },
+          "output": {
+            "point": [
+              0.4375,
+              0
+            ],
+            "tangent": [
+              3.25,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "parameter",
+            "value": 0.5
+          },
+          "output": {
+            "point": [
+              1.5,
+              0
+            ],
+            "tangent": [
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 0.75
+          },
+          "output": {
+            "point": [
+              0.4375,
+              0
+            ],
+            "tangent": [
+              3.25,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 1.5
+          },
+          "output": {
+            "point": [
+              1.5,
+              0
+            ],
+            "tangent": [
+              5,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 2.75
+          },
+          "output": {
+            "point": [
+              2.8125,
+              0
+            ],
+            "tangent": [
+              5.25,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 4
+          },
+          "output": {
+            "point": [
+              4,
+              0
+            ],
+            "tangent": [
+              4,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 8
+          },
+          "output": {
+            "point": [
+              8,
+              0
+            ],
+            "tangent": [
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "coincident_curve",
+      "input": {
+        "controls": [
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "subdivisions": 4
+      },
+      "output": {
+        "controls": [
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "subdivisions": 4
+      },
+      "serialized": {
+        "controls": [
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "subdivisions": 4
+      },
+      "metadata": {
+        "length": 0,
+        "controlCount": 3,
+        "subdivisions": 4
+      },
+      "queries": [
+        {
+          "input": {
+            "mode": "parameter",
+            "value": 0.5
+          },
+          "output": {
+            "point": [
+              2,
+              3
+            ],
+            "tangent": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "parameter",
+            "value": -1
+          },
+          "output": {
+            "point": [
+              2,
+              3
+            ],
+            "tangent": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 1e+308
+          },
+          "output": {
+            "point": [
+              2,
+              3
+            ],
+            "tangent": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": -1e+308
+          },
+          "output": {
+            "point": [
+              2,
+              3
+            ],
+            "tangent": [
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "plateau_and_seam_policy",
+      "input": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "output": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "serialized": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "metadata": {
+        "length": 8,
+        "controlCount": 4,
+        "subdivisions": 1
+      },
+      "queries": [
+        {
+          "input": {
+            "mode": "distance",
+            "value": 0
+          },
+          "output": {
+            "point": [
+              0,
+              0
+            ],
+            "tangent": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 4
+          },
+          "output": {
+            "point": [
+              4,
+              0
+            ],
+            "tangent": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": -4
+          },
+          "output": {
+            "point": [
+              4,
+              0
+            ],
+            "tangent": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "input": {
+            "mode": "distance",
+            "value": 8
+          },
+          "output": {
+            "point": [
+              0,
+              0
+            ],
+            "tangent": [
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "canonical_zero",
+      "input": {
+        "controls": [
+          [
+            0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "output": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "serialized": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "metadata": {
+        "length": 0,
+        "controlCount": 3,
+        "subdivisions": 1
+      },
+      "queries": [
+        {
+          "input": {
+            "mode": "parameter",
+            "value": -0.0
+          },
+          "output": {
+            "point": [
+              0,
+              0
+            ],
+            "tangent": [
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty_controls",
+      "input": {
+        "controls": [],
+        "subdivisions": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "two_controls",
+      "input": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero_subdivisions",
+      "input": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "subdivisions": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "fractional_subdivisions",
+      "input": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "subdivisions": 1.5
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "product_bound",
+      "input": {
+        "controls": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "subdivisions": 2147483647
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "extra_coordinate",
+      "input": {
+        "controls": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "coefficient_overflow",
+      "input": {
+        "controls": [
+          [
+            1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "subdivisions": 1
+      },
+      "error": "NUMERIC_OVERFLOW"
+    }
+  ],
+  "query_cases": [
+    {
+      "id": "bad_mode",
+      "input": {
+        "mode": "open",
+        "value": 0
+      },
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "missing_value",
+      "input": {
+        "mode": "distance"
+      },
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "null_value",
+      "input": {
+        "mode": "parameter",
+        "value": null
+      },
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "boolean_value",
+      "input": {
+        "mode": "distance",
+        "value": true
+      },
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "extra_key",
+      "input": {
+        "mode": "distance",
+        "value": 0,
+        "other": 1
+      },
+      "error": "INVALID_QUERY"
+    }
+  ],
+  "catalog_sha256": "59a28d5feee19597ebfd97eb9ca5a1ecc77c5f06d4cc57dc2b39a70998a10b3b"
+}

@@ -106,6 +106,15 @@ def build(root, output, jdk, font, notice, processing_core):
     for directory in ('docs', 'catalog/operations', 'catalog/validation'):
         suffix = '*.md' if directory == 'docs' else '*.json'
         files.update({'procedurals/' + str(p.relative_to(root)): p for p in (root / directory).rglob(suffix)})
+    # Ship the reviewed semantic documents named by the catalog, including normative math.
+    for operation_file in manifest['operation_files']:
+        operation = json.loads((root / 'catalog/operations' / operation_file).read_text())
+        review_path = operation.get('design_review')
+        if review_path:
+            document = (root / review_path).resolve()
+            if not document.is_relative_to(root.resolve()) or not document.is_file():
+                raise ValueError('Missing or external operation design document: ' + str(review_path))
+            files['procedurals/' + str(document.relative_to(root.resolve()))] = document
     files.update({'procedurals/src/' + name.removeprefix('packages/java/src/'): root / name
                   for name in manifest['core_sources']})
     files.update({'procedurals/adapter-src/main/java/' + name.removeprefix('packages/java-processing/src/main/java/'): root / name

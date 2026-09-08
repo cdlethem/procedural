@@ -1,5 +1,40 @@
 # Project state
 
+## CP16 Java0.19 accepted for publishing
+
+ClosedSpline2D and LoopMarks accepted through exact core and native edit/transfer evidence
+and extracted source bundle review: evidence/distribution/cp16-java-review.json.
+19 operations/19 workflows; all19 extracted starters compile; six LoopMarks PNGs equal
+reviewed candidate. All87 prior core/adapter classes and38 example/font members preserved.
+Archive .work/dist/cp16-java-source2/procedurals-java-source-dev.zip SHA256
+0c49ce6adfddebe894e0ef33aeb920e3d9f59ec2d539a344e174de76b593b581.
+
+Root corrected worker implementation/runner/probe gaps before acceptance, including missing
+successful interchange queries and incorrectly transient moved-state expectations. Exact
+14 shared cases +5query errors,43 focused checks and actual bounded workloads pass.
+No new original recreation; still three demonstrated. No worker/native process remains live.
+Ports and Sol stay paused; deferred closed-spline requirements are in docs/porting-resume.md.
+
+Next address the outstanding seeded-render/parameter-sweep artist workflow from the Java
+completion plan using existing infrastructure and explicit inputs, then assess remaining
+major-idiom gaps. Do not infer full Java completion from19 operations or repeat the complete
+corpus audit/native matrix. Keep meaningful bounded delegation and direct root review.
+
+## CP16 Java core and native LoopMarks accepted; distribution validation in flight
+
+Root froze the reviewed spline extraction/contract and14 analytic fixtures, then directly
+rewrote the Java core to fix worker arithmetic, overflow, ownership and allocation issues.
+All shared cases plus5query errors and43 focused checks pass; actual source-like/stress
+workloads are recorded in evidence/conformance/closed-spline-java.json. Root reviewed code
+and bindings. Scoped native LoopMarks five-state edit/transfer/reset/save passes and root
+inspected all distinct states; evidence/reproductions/cp16-java2d records acceptance.
+
+Candidate Java0.19 source bundle is .work/dist/cp16-java-source2; extracted consumer check
+.work/cp16-consumer-root2 is running. Manifest, docs, catalog attestations and19-operation
+inventory are staged; do not call19 shipped until extracted validation and root review.
+Source bundle now includes catalog-referenced design documents so normative math travels
+with the package. All7 packaging tests pass. Ports/Sol remain paused.
+
 ## CP16 closed-spline investigation completed; contract next
 
 Root read blobs/databol notes and pinned sources and selected retained smooth closed paths

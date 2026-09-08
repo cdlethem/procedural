@@ -1,0 +1,60 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.19.0",
+  "scope": "Source-built Java bundle with19 operations and19 editable starters; extracted compilation/native LoopMarks. Local artifact, not registry release.",
+  "archive": {
+    "path": ".work/dist/cp16-java-source2/procedurals-java-source-dev.zip",
+    "sha256": "0c49ce6adfddebe894e0ef33aeb920e3d9f59ec2d539a344e174de76b593b581",
+    "members": 191
+  },
+  "build_report": {
+    "path": "evidence/distribution/cp16-java-source.json",
+    "sha256": "2de6ae2a96000df3a2c4e21ece67b39c50c3238fd8a1ff52b8d5975dd95c5451"
+  },
+  "consumer_report": {
+    "path": "evidence/distribution/cp16-java-consumer.json",
+    "sha256": "4d24d26ad8ee133c1ce378f9e4883556cbe4a7dff7ad721f89590dffd7fab1da"
+  },
+  "implementation_sha256": {
+    "packages/java/source-bundle.json": "6d9d5c0216200d066a3e8ea9f56049231c1ea36c25320ad86397006bbcf880b7",
+    "tools/build_java_source_bundle.py": "6780a918b138f21636c8bcad006c9d9c0ece964628f95ce34189a1acf2c3dc2e",
+    "tools/check_java_source_bundle.py": "33f3bce46b88d1fb67f61a4a7aeab4e7a05abc9bcaf91d27f4f4b2cfce665d5e",
+    "tools/run_warp_marks_java.py": "6631f9c1ecd32fbae7ed8fa86b0a4cc37eace4a6eca15c3c375b3899c534ff93",
+    "packages/java/src/main/java/org/procedurals/paths/ClosedSpline2D.java": "df436d30d51ec73b8a1265168fd8bc6cb1498dc90caec9ea024766d795682fcb",
+    "packages/java-processing/examples/LoopMarks/LoopMarks.pde": "7ed14e99c4c7fec42b8e84960656e7b7f27e2cef0b991482ace32c29a7e3f555",
+    "tests/native/LoopMarksProbe.java": "1fbfbde61bedf95885850a30da15b560768b38b1b09e6c089d3f1a2efde5053f"
+  },
+  "checks": {
+    "procedurals.jar": {
+      "preserved_classes": 86,
+      "added_classes": [
+        "org/procedurals/paths/ClosedSpline2D$1.class",
+        "org/procedurals/paths/ClosedSpline2D$Sample.class",
+        "org/procedurals/paths/ClosedSpline2D$SplineException.class",
+        "org/procedurals/paths/ClosedSpline2D.class"
+      ]
+    },
+    "procedurals-processing-adapter.jar": {
+      "preserved_classes": 1,
+      "added_classes": []
+    },
+    "preserved_example_members": 38,
+    "normative_document_in_archive": "design/operations/closed-spline-contract.md",
+    "extracted_native_frames_equal_candidate": 6
+  },
+  "verified": [
+    "Root verified live build and extracted consumer inputs; all19 actual extracted PDE starters compiled.",
+    "Extracted LoopMarks native five-state edit/transfer/reset/save passed; all six PNGs equal root-inspected candidate.",
+    "Prior core/adapter classes and example/font members preserved byte-for-byte.",
+    "Catalog-referenced design documents, including normative spline arithmetic, now travel with the distribution.",
+    "14 shared analytical cases,5query errors,43 focused checks and actual bounded setup/traversal workloads accepted separately.",
+    "Seven source-bundle tests and full catalog/reference validation pass."
+  ],
+  "limits": [
+    "No additional original recreation, generic polygon-fill, exact arc length or non-Java support claim.",
+    "Source builder requires externally supplied pinned JDK,Processing and font inputs.",
+    "Acceptance identifies this archive; future input changes require appropriate review."
+  ]
+}

@@ -20,6 +20,7 @@ RUNTIME = ROOT / '.work/toolchains/processing-4.5.6'
 PROFILES = {
     'WarpMarks': ('warp-marks', ['baseline', 'strength64', 'zero', 'restored', 'sinusoidal', 'stripes', 'reset'], 'wwwfp0s'),
     'RampMarks': ('ramp-marks', ['baseline', 'shifted', 'recolored', 'radial', 'reset'], 'tcf0s'),
+    'LoopMarks': ('loop-marks', ['baseline', 'moved', 'recolored', 'fans', 'reset'], 'tcm0s'),
     'BandMarks': ('band-marks', ['baseline', 'wider', 'recolored', 'marks', 'reset'], 'tcm0s'),
 }
 

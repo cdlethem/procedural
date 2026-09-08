@@ -1,0 +1,25 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "ClosedSpline2D Java core only; distribution separately gated",
+  "raw_evidence": "evidence/conformance/closed-spline-java.json",
+  "raw_evidence_sha256": "5c77ca1038ed13ba5ad00550f7606b9bb2e8b4c0e6c48e714e0b2b82c8a7b3ae",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/paths/ClosedSpline2D.java": "df436d30d51ec73b8a1265168fd8bc6cb1498dc90caec9ea024766d795682fcb",
+    "tests/native/ClosedSplineNative.java": "d3c1006ffb7c699d59e98b38d4e4f2129e14071ff26105ab9324377e0c0be14d",
+    "tools/run_closed_spline_java.py": "fdf7c381e056a8a6f3e5fb34e413e3eac26c4f63e51e6323d26f748f7b1b59db"
+  },
+  "verified": [
+    "Root rewrote and reviewed primitive finite arithmetic, per-chord binary search, explicit local-parameter rounding, exact seam/plateau policy and allocation-free atomic target writes.",
+    "14 analytical shared cases plus5query errors; all successful queries exercised through interchange, immutable Sample and reusable array forms for typed/object creation.",
+    "43 focused checks cover carriers, representation bounds, ownership, outputzero and queryoverflow atomicity.",
+    "Actual1/400/1000curve workloads executed with32/256/256queries each; reported numeric payload excludes headers and transient objects.",
+    "Runtime/source/generated-class hashes verified unchanged and live."
+  ],
+  "limits": [
+    "No exact source RNG/float replay or exact arc-length claim.",
+    "Full-table resolution bounds describe indexing, not an allocation guarantee.",
+    "Earlier worker compilation and incomplete five-check report were not accepted."
+  ]
+}

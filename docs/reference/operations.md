@@ -107,6 +107,144 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/bilinear-raster-remap.json).
 
+## geometry.closed-spline-2d (0.1.0)
+
+Retain a closed uniform Catmull-Rom spline from explicit planar controls with direct parameter and approximate distance queries.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "controls": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 268435455,
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "subdivisions": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2147483646
+    }
+  },
+  "required": [
+    "controls",
+    "subdivisions"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| controls | ordered finite planar control-coordinate pairs | null | null | blobs#0 and databol#0 report large changes from control-count edits; no public control-count recommendation. |
+| subdivisions | equal-parameter chords per control span | null | null | CP16 probe compares 10,32,128,1024 chords; resolution is a numerical accuracy/work choice, not a justified default or range. |
+| query | parameter: control-span units with period N; distance: drawing units with period approximate length; returned tangent: drawing units per local span parameter | null | null | The two source Spline implementations expose parameter/distance lookup; periodic wrapping and per-chord inversion are explicit portable design. |
+
+Query input (native call forms are specified in the contract):
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": [
+        "parameter",
+        "distance"
+      ]
+    },
+    "value": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "mode",
+    "value"
+  ],
+  "additionalProperties": false
+}
+```
+
+Query result:
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "point": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "tangent": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    }
+  },
+  "required": [
+    "point",
+    "tangent"
+  ],
+  "additionalProperties": false
+}
+```
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/closed-spline-catalog-review.json) | [validated-scoped](../../evidence/conformance/closed-spline-catalog-review.json) | [validated-scoped](../../evidence/conformance/closed-spline-catalog-review.json) | [review](../../evidence/conformance/closed-spline-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2018/Generativos/blobs#0`](../../survey/out/2018/Generativos/blobs/notes.md)
+- [`2018/Generativos/databol#0`](../../survey/out/2018/Generativos/databol/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/closed-spline-2d.json).
+
 ## color.cyclic-palette (0.1.0)
 
 Immutable ordered opaque sRGB8 palette sampled by a phase in cycles, with linear encoded-channel interpolation and fixed RGB24 quantization.

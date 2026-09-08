@@ -65,3 +65,8 @@ lease via `tools/with_native_render_lock.py`; never use a checkout-local replace
 
 Recipes, exporters, MCP/web, further guides/helpers and recreation coverage remain in the
 full roadmap. This scheduling change neither cancels them nor marks them complete.
+
+CP16 adds ClosedSpline2D/LoopMarks to the Java queue after noise-band paths. Its per-chord
+lookup, periodic seam/plateau choices, raw tangents and exact fdlibm hypot behavior must be
+ported from the frozen contract and fixtures, not inferred from the source Spline helper.
+Use a pushed revision with accepted Java0.19 distribution evidence when this batch resumes.

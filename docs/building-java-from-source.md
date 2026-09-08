@@ -1,7 +1,7 @@
 # Build the Java library from source
 
-The source-bundle builder assembles Java0.18 directly from the checked-in sources, including
-18 operations and 18 editable starters. BandMarks adds retained noise-band paths to the
+The source-bundle builder assembles Java0.19 directly from the checked-in sources, including
+19 operations and 19 editable starters. LoopMarks adds retained closed splines and distance-based mark placement. BandMarks supplies noise-band paths to the
 Java0.17 color-ramp surface. The prior clean-checkout packaging proof is recorded in
 `evidence/distribution/java-source-bundle-review.json`; CP15 native scope is recorded in
 `evidence/reproductions/cp15-java2d/root-review.json`. Each generated report records assembly

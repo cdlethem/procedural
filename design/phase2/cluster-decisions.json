@@ -19,17 +19,17 @@
   },
   "summary": {
     "dispositions": {
-      "keep": 28,
-      "merge": 100,
+      "keep": 29,
+      "merge": 101,
       "reject": 18,
-      "review_required": 1788
+      "review_required": 1786
     },
     "statuses": {
       "blocked_data_quality": 5,
       "reviewed_data_gap": 1,
       "reviewed_defer": 197,
-      "reviewed_provisional": 182,
-      "unreviewed": 1549
+      "reviewed_provisional": 184,
+      "unreviewed": 1547
     }
   },
   "clusters": [
@@ -404,8 +404,8 @@
     {
       "id": "geometry.closed-spline",
       "triage_suggestion": "keep",
-      "status": "proposed",
-      "reason": "closed Catmull-Rom-like curve evaluated from control points",
+      "status": "reviewed_provisional",
+      "reason": "Extract closed uniform spline evaluation and retained approximate distance lookup; no curve drawing or random control generation.",
       "aliases": [
         "Spline",
         "closedSpline"
@@ -413,7 +413,17 @@
       "required_evidence_any": [
         "spline",
         "point"
-      ]
+      ],
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Explicit ordered 2D controls and chords per span; direct parameter or distance queries.",
+        "outputs": "Immutable retained curve, approximate length, positions and raw parameter tangents.",
+        "invariants": "Cyclic uniform Catmull-Rom; per-chord distance table; explicit periodic queries; no RNG, drawing or polygon validity promise.",
+        "open_questions": [],
+        "review": "design/capabilities/cp16-closed-spline-direction.md",
+        "reviewer": "root"
+      }
     },
     {
       "id": "geometry.circle-intersection",
@@ -16220,16 +16230,42 @@
         "section_judgement": "contains_one_off_guidance",
         "excerpt": "The `Spline` class (74-168) is fully generic: a closed Catmull-Rom spline with arclength sampling, a center, and a total length — a direct library candidate (`Spline(points)` exposing `getPointLin`, `getPoint`, `getCenter`, `length`). `makeBlob` (the per-iteration block 27-71) is the art-specific core and also factorises cleanly as `makeBlob(size, controlCount, baseCo"
       },
-      "disposition": "review_required",
-      "status": "unreviewed",
-      "reason": "No computation-level adjudication has been recorded.",
+      "disposition": "keep",
+      "status": "reviewed_provisional",
+      "reason": "Extract the shared uniform closed spline; deliberately replace per-span distance mapping with per-chord inversion. No whole-helper equivalence.",
       "triage": {
         "cluster_id": "geometry.closed-spline",
         "disposition": "keep",
         "status": "proposed",
         "reason": "closed Catmull-Rom-like curve evaluated from control points"
       },
-      "evidence_sha256": "951da6b87ec6745cee0e92c031812fb3d7f8701d802ec3a8709cf68d18eccb40"
+      "evidence_sha256": "951da6b87ec6745cee0e92c031812fb3d7f8701d802ec3a8709cf68d18eccb40",
+      "cluster_id": "geometry.closed-spline",
+      "review_basis": "out/2018/Generativos/blobs/notes.md#modularisation-notes",
+      "decision_audit": {
+        "status": "verified",
+        "scope": "component_extraction",
+        "computation": "Closed uniform Catmull-Rom from supplied planar controls with explicit approximate distance evaluation.",
+        "remainder": [
+          {
+            "component": "Random control placement, center averaging, palette, fans and mark scheduling",
+            "disposition": "recipe",
+            "reason": "Editable caller composition, not retained curve evaluation."
+          },
+          {
+            "component": "Host curve drawing and PVector representation",
+            "disposition": "adapter",
+            "reason": "Portable values replace host objects; drawing stays in native examples."
+          },
+          {
+            "component": "Source per-span distance approximation, finite-difference direction and Processing float/global state replay",
+            "disposition": "out_of_scope",
+            "reason": "Per-chord lookup and analytic derivatives are deliberate portable design; no exact source replay."
+          }
+        ],
+        "reviewer": "root",
+        "review": "design/capabilities/cp16-closed-spline-direction.md"
+      }
     },
     "2018/Generativos/blobs#1": {
       "sketch": "2018/Generativos/blobs",
@@ -19962,16 +19998,42 @@
         "section_judgement": "contains_generic_guidance",
         "excerpt": "- Generic: the `Spline` class (179-249) is a self-contained closed Catmull-Rom spline with arc-length parameterization (`getPoint`, `getDir`) — a clean library candidate. `noiseDotGrid` (25-50) is a standard noise-gated grid. The stamp-along-spline loop (105-145) is generic once the spline exists. - Art decisions: the fixed 8-color palette (256), the double loop draw (dark + colored), the `atan` radius bias (81), the 45° ghost rects (160-176), and the \"data\" square-barcode rows (147-157). - Par"
       },
-      "disposition": "review_required",
-      "status": "unreviewed",
-      "reason": "No computation-level adjudication has been recorded.",
+      "disposition": "merge",
+      "status": "reviewed_provisional",
+      "reason": "Extract the shared uniform closed spline; deliberately replace per-span distance mapping with per-chord inversion. No whole-helper equivalence.",
       "triage": {
         "cluster_id": "review.unresolved-computation",
         "disposition": "review_required",
         "status": "needs_note_reading",
         "reason": "no reviewed computation match met both handle and signature/note evidence"
       },
-      "evidence_sha256": "b9b8facb37b6e051e95dd24442efcccddec7791759adb058b8a7fef1d15a8d81"
+      "evidence_sha256": "b9b8facb37b6e051e95dd24442efcccddec7791759adb058b8a7fef1d15a8d81",
+      "cluster_id": "geometry.closed-spline",
+      "review_basis": "out/2018/Generativos/databol/notes.md#modularisation-notes",
+      "decision_audit": {
+        "status": "verified",
+        "scope": "component_extraction",
+        "computation": "Closed uniform Catmull-Rom from supplied planar controls with explicit approximate distance evaluation.",
+        "remainder": [
+          {
+            "component": "Random control placement, center averaging, palette, fans and mark scheduling",
+            "disposition": "recipe",
+            "reason": "Editable caller composition, not retained curve evaluation."
+          },
+          {
+            "component": "Host curve drawing and PVector representation",
+            "disposition": "adapter",
+            "reason": "Portable values replace host objects; drawing stays in native examples."
+          },
+          {
+            "component": "Source per-span distance approximation, finite-difference direction and Processing float/global state replay",
+            "disposition": "out_of_scope",
+            "reason": "Per-chord lookup and analytic derivatives are deliberate portable design; no exact source replay."
+          }
+        ],
+        "reviewer": "root",
+        "review": "design/capabilities/cp16-closed-spline-direction.md"
+      }
     },
     "2018/Generativos/databol#1": {
       "sketch": "2018/Generativos/databol",

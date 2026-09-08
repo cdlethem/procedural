@@ -3,7 +3,7 @@
 Current maintainer objective: build a feature-complete Java implementation. Ports are
 paused per `porting-resume.md`; recipes/MCP/web remain a separate roadmap, not prerequisites
 for making the native Java library useful. This plan does not claim feature completeness
-or replace the project's mission with the current18 operations.
+or replace the project's mission with the current19 operations.
 
 ## Completion requirements
 
@@ -28,7 +28,7 @@ The broader corpus benchmark remains a separate strict certification claim.
 
 ## Existing capability baseline
 
-Java0.18 assembles18 operations and18 workflows: field marks, integrated paths, constrained
+Java0.19 assembles19 operations and19 workflows: field marks, integrated paths, constrained
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
 paths, raster remapping, positioned color ramps and noise-band paths, plus relief/city/landscape compositions. Only three selected original structural
@@ -110,3 +110,11 @@ bundle acceptance. The private prototype and failed worker checks are not shippe
 After CP15 integration, audit the Java completion requirements above against current
 capabilities and artist tooling before selecting another operation. Unknown family coverage
 and missing helper workflows must not silently count as complete.
+
+## CP16: smooth closed curves
+
+ClosedSpline2D and LoopMarks supply retained uniform curves, approximate per-chord distance
+lookup and analytic raw tangents. Control edits and tile-to-fan transfer preserve the
+computation/drawing boundary. Core and native review precede separate extracted Java0.19
+distribution acceptance. No additional original recreation is claimed. General seeded-render
+and parameter-sweep tooling and broader evidence-based idiom coverage remain incomplete.

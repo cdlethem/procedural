@@ -1,0 +1,120 @@
+{
+  "status": "passed",
+  "operation": "geometry.closed-spline-2d",
+  "fixture_cases_executed": 14,
+  "vectors": {
+    "status": "passed",
+    "cases": 14,
+    "assertions": 2410
+  },
+  "native": {
+    "status": "passed",
+    "assertions": 43,
+    "warmup": "4 batches of32 curves,6 controls,32 chords/span,256queries",
+    "memory_scope": "numeric retained payload per curve; excludes array/object headers and temporary input/sample objects; curves constructed and traversed sequentially",
+    "benchmarks": [
+      {
+        "curves": 1,
+        "controls_per_curve": 3,
+        "subdivisions": 10,
+        "distance_queries_per_curve": 32,
+        "elapsed_ns_setup_queries_checksum": 4340,
+        "checksum_unsigned64": "17477707317918345642",
+        "numeric_payload_bytes_per_curve": 488
+      },
+      {
+        "curves": 400,
+        "controls_per_curve": 3,
+        "subdivisions": 32,
+        "distance_queries_per_curve": 256,
+        "elapsed_ns_setup_queries_checksum": 4114138,
+        "checksum_unsigned64": "8848187009578563801",
+        "numeric_payload_bytes_per_curve": 1016
+      },
+      {
+        "curves": 1000,
+        "controls_per_curve": 20,
+        "subdivisions": 128,
+        "distance_queries_per_curve": 256,
+        "elapsed_ns_setup_queries_checksum": 52872563,
+        "checksum_unsigned64": "11862908341111044108",
+        "numeric_payload_bytes_per_curve": 22088
+      }
+    ]
+  },
+  "source_sha256_before": {
+    "catalog/operations/closed-spline-2d.json": "59a28d5feee19597ebfd97eb9ca5a1ecc77c5f06d4cc57dc2b39a70998a10b3b",
+    "fixtures/operations/closed-spline-2d.json": "c7232c17d650b8b90ca9606e75abcbfc9c8d938ca6af088fb4f354d103056fc6",
+    "packages/java/src/main/java/org/procedurals/paths/ClosedSpline2D.java": "df436d30d51ec73b8a1265168fd8bc6cb1498dc90caec9ea024766d795682fcb",
+    "tests/native/ClosedSplineNative.java": "d3c1006ffb7c699d59e98b38d4e4f2129e14071ff26105ab9324377e0c0be14d",
+    "design/operations/closed-spline-contract.md": "b244f319030912c01b3204d7522621200ad0e315e653ed0c7a6999350cecae11",
+    "tools/run_closed_spline_java.py": "fdf7c381e056a8a6f3e5fb34e413e3eac26c4f63e51e6323d26f748f7b1b59db",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "source_sha256_after": {
+    "catalog/operations/closed-spline-2d.json": "59a28d5feee19597ebfd97eb9ca5a1ecc77c5f06d4cc57dc2b39a70998a10b3b",
+    "fixtures/operations/closed-spline-2d.json": "c7232c17d650b8b90ca9606e75abcbfc9c8d938ca6af088fb4f354d103056fc6",
+    "packages/java/src/main/java/org/procedurals/paths/ClosedSpline2D.java": "df436d30d51ec73b8a1265168fd8bc6cb1498dc90caec9ea024766d795682fcb",
+    "tests/native/ClosedSplineNative.java": "d3c1006ffb7c699d59e98b38d4e4f2129e14071ff26105ab9324377e0c0be14d",
+    "design/operations/closed-spline-contract.md": "b244f319030912c01b3204d7522621200ad0e315e653ed0c7a6999350cecae11",
+    "tools/run_closed_spline_java.py": "fdf7c381e056a8a6f3e5fb34e413e3eac26c4f63e51e6323d26f748f7b1b59db",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "artifact_sha256_before": {
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSpline2D$1.class": "c808f91f5bb532c2ecbe993c7f960e809abbfd3cea298f1ed865a45932342277",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSpline2D$Sample.class": "85b6be4607407425cc44245e5966e0cefb719aeb4689f36337b5a257300e0650",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSpline2D$SplineException.class": "eca594e6a816eb8cabc6998091ffa83c5c388e6f3a64b9336bfd635d5967fbde",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSpline2D.class": "8f56c864d2b7d1edc0937ea5bcef3dfa42a4ae986c91ec90e8411f06f1ed8de3",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineNative$1.class": "3889c174685f848d31e8f3a37daafce233a16afb71942e9bb287d580c924e091",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineNative$2.class": "5b0da8fb20ead61c9341eadebc16ce4bf41e56266dc19e91a70abc634fa24304",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineNative$Action.class": "9ad8033824cdeac006bcda34d8574a48df580b2f20acc601981f3ac4dab7d33b",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineNative.class": "5b74249a65c4a2973d455bdedbc6c900df7d2c5e82d9c783da62b56a9c0ffa89",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$1.class": "80414c8406014ad697802e26176e2d665a8fd1c47df191a64d620cdbe169cd00",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$10.class": "ee01bb32dd694b6d1054c1d7eabe4983ef308f7d32fd151fd79f07ae535240e5",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$11.class": "b658bb47411c4eb4237b323566c2d2afcf434d0d985bda0d789ddd753b8ef318",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$12.class": "71e766690530aa6ec5f2dfa2eea8f945d627b2f929c6afa998fab6c766370fbb",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$2.class": "37ac5b48c8c45651b39eeaff1d13a2dea8516e16539e7232b35708c0ec32d359",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$3.class": "77dd5e6567af81224b4ced8d82222f96d0960b176da16fe79cf3eadff9ef6ee7",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$4.class": "0616e8c29cd270e2dbb2d8918dbca6570b54dcc86657c3e54f00ec61a6a2d81b",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$5.class": "16c6813e6447695028dbe486cfdaab172653f1c17947f956f8e939fa66c0d9bb",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$6.class": "ef879a7315a89028f75cc6c91c99a5fd8fba4605c12f5fc67eacac6136fe55ee",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$7.class": "5119e7a483c369d37715af12272a71259ddf230b4616038bb5cbb44dfff7d2a0",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$8.class": "bfdd99934f0f229f23295ff52cb39a2a8a2f77d7e18788ac7c37edef0ca94f9a",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$9.class": "fc7b3b9f34e69e45da87e1bb3aae73f7cd1711b8ddb2c5745517536d07ae48ea",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$Action.class": "f7d7aa112679e45120dc2591141f33c81e9e434fcfc26b8538afbfb00c19e825",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors.class": "746285c34fbced8111eb41f838117e496fe6492509d4acd266e0e873a84ed8f8"
+  },
+  "artifact_sha256_after": {
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSpline2D$1.class": "c808f91f5bb532c2ecbe993c7f960e809abbfd3cea298f1ed865a45932342277",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSpline2D$Sample.class": "85b6be4607407425cc44245e5966e0cefb719aeb4689f36337b5a257300e0650",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSpline2D$SplineException.class": "eca594e6a816eb8cabc6998091ffa83c5c388e6f3a64b9336bfd635d5967fbde",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSpline2D.class": "8f56c864d2b7d1edc0937ea5bcef3dfa42a4ae986c91ec90e8411f06f1ed8de3",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineNative$1.class": "3889c174685f848d31e8f3a37daafce233a16afb71942e9bb287d580c924e091",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineNative$2.class": "5b0da8fb20ead61c9341eadebc16ce4bf41e56266dc19e91a70abc634fa24304",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineNative$Action.class": "9ad8033824cdeac006bcda34d8574a48df580b2f20acc601981f3ac4dab7d33b",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineNative.class": "5b74249a65c4a2973d455bdedbc6c900df7d2c5e82d9c783da62b56a9c0ffa89",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$1.class": "80414c8406014ad697802e26176e2d665a8fd1c47df191a64d620cdbe169cd00",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$10.class": "ee01bb32dd694b6d1054c1d7eabe4983ef308f7d32fd151fd79f07ae535240e5",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$11.class": "b658bb47411c4eb4237b323566c2d2afcf434d0d985bda0d789ddd753b8ef318",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$12.class": "71e766690530aa6ec5f2dfa2eea8f945d627b2f929c6afa998fab6c766370fbb",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$2.class": "37ac5b48c8c45651b39eeaff1d13a2dea8516e16539e7232b35708c0ec32d359",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$3.class": "77dd5e6567af81224b4ced8d82222f96d0960b176da16fe79cf3eadff9ef6ee7",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$4.class": "0616e8c29cd270e2dbb2d8918dbca6570b54dcc86657c3e54f00ec61a6a2d81b",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$5.class": "16c6813e6447695028dbe486cfdaab172653f1c17947f956f8e939fa66c0d9bb",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$6.class": "ef879a7315a89028f75cc6c91c99a5fd8fba4605c12f5fc67eacac6136fe55ee",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$7.class": "5119e7a483c369d37715af12272a71259ddf230b4616038bb5cbb44dfff7d2a0",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$8.class": "bfdd99934f0f229f23295ff52cb39a2a8a2f77d7e18788ac7c37edef0ca94f9a",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$9.class": "fc7b3b9f34e69e45da87e1bb3aae73f7cd1711b8ddb2c5745517536d07ae48ea",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors$Action.class": "f7d7aa112679e45120dc2591141f33c81e9e434fcfc26b8538afbfb00c19e825",
+    ".work/build/closed-spline-dm8m1maf/org/procedurals/paths/ClosedSplineVectors.class": "746285c34fbced8111eb41f838117e496fe6492509d4acd266e0e873a84ed8f8"
+  },
+  "javac_release": "8",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Java core exact vectors and focused native ownership check; no renderer, distribution or port acceptance."
+}

@@ -1,0 +1,236 @@
+{
+  "id": "geometry.closed-spline-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "geometry.closed-spline",
+  "description": "Retain a closed uniform Catmull-Rom spline from explicit planar controls with direct parameter and approximate distance queries.",
+  "capability_decision": "design/capabilities/cp16-closed-spline-direction.md",
+  "design_review": "design/operations/closed-spline-contract.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/blobs#0",
+      "notes_path": "survey/out/2018/Generativos/blobs/notes.md",
+      "note_sha256": "da8a424b12faee472927627a3770aa5234093656951289a7925da435224910a4",
+      "upstream_pde_sha256": "22387099e124b0e76c936a739ef0d661588833a5f772e7ced058931dbe6bcc23",
+      "evidence_sha256": "951da6b87ec6745cee0e92c031812fb3d7f8701d802ec3a8709cf68d18eccb40",
+      "relationship": "Motivating retained closed spline; control generation, center, fan drawing and marks remain composition."
+    },
+    {
+      "candidate_id": "2018/Generativos/databol#0",
+      "notes_path": "survey/out/2018/Generativos/databol/notes.md",
+      "note_sha256": "4f178f5ddda1c4740f47380174f24afe50b5e803088678b173bd15a5985aaed7",
+      "upstream_pde_sha256": "770888556a8548881cb1980975858b81e481d868dff4cf3128d70e41822fa4ce",
+      "evidence_sha256": "b9b8facb37b6e051e95dd24442efcccddec7791759adb058b8a7fef1d15a8d81",
+      "relationship": "Independent motivating closed spline and distance lookup; randomized controls and spline tile drawing remain composition."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "controls": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 268435455,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "subdivisions": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483646
+      }
+    },
+    "required": [
+      "controls",
+      "subdivisions"
+    ],
+    "additionalProperties": false
+  },
+  "query_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "mode": {
+        "type": "string",
+        "enum": [
+          "parameter",
+          "distance"
+        ]
+      },
+      "value": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "mode",
+      "value"
+    ],
+    "additionalProperties": false
+  },
+  "query_output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "point": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "tangent": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "required": [
+      "point",
+      "tangent"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "controls": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 268435455,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "subdivisions": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483646
+      }
+    },
+    "required": [
+      "controls",
+      "subdivisions"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Controls remain in supplied order and are detached; the curve is cyclic uniform Catmull-Rom. length is the final retained cumulative chord total; zero chords and rounded plateaus remain represented. Queries are periodic; tangent is the raw analytic derivative with respect to local uniform span parameter, not a unit or distance derivative. No simple-polygon, convexity, equidistant-spacing or closure drawing guarantee.",
+  "behavior": {
+    "creation": "Create from exactly {controls,subdivisions}. Controls is an ordered list of N exact [x,y] pairs, N>=3, finite binary64 coordinates in caller drawing units. R is an integer>=1, the number of equal-parameter chords in each control-to-control span. Both are required; no defaults or encouraged artistic ranges. Validate top-level keys, control count, R and product bounds before coordinates in row order, x then y. N<=268435455 permits packed8N coefficient storage; N*R<=2147483646 permits a signed32 indexed cumulative table of N*R+1 entries. These are representation bounds, not allocation promises. A nonfinite computed intermediate raises NUMERIC_OVERFLOW without exposing a curve. Duplicate and all-coincident controls are allowed; no sorting, removal or zero-chord pruning.",
+    "arithmetic": "All primitives separately round IEEE754 binary64 nearest ties-to-even; no FMA, reassociation or extended intermediates. For span i, p0=control[(i-1+N)%N], p1=control[i], p2=control[(i+1)%N], p3=control[(i+2)%N], independently for x and y: a=0.5*(((-p0+3*p1)-3*p2)+p3); b=0.5*(((2*p0-5*p1)+4*p2)-p3); c=0.5*(-p0+p2); d=p1; position(t)=((a*t+b)*t+c)*t+d; tangent(t)=(3*a*t+2*b)*t+c. Check every primitive result for finiteness. At t=0 return p1 exactly and tangent c; at t=1 advance to the next span and use its t=0 rule. Canonicalize exposed zeros to +0.",
+    "table": "Use fdlibm5.3 StrictMath.hypot. Build cumulative[0]=0; for each span i, start at control[i], evaluate j=1..R at binary64 j/R (j=R uses the exact endpoint rule), measure each chord from the preceding sample, and add its length to the running total. Retain every running total in span/subdivision order, including zero chords and rounded plateaus. Final total is approximate arc length, not analytically integrated perimeter.",
+    "queries": "Validate query shape, mode, value and target before constant-curve shortcuts. Query mode is parameter or distance. Wrap finite v to period P using binary64 remainder truncated toward zero; if w<0 add P; if w==P or w==0 canonicalize +0. Parameter uses P=N, i=floor(w), t=w-i. Distance with length0 returns control0 and span0 tangent after validation. Otherwise wrap by P=length; w==0 uses span0,t=0 before any search. For w>0 use upper-bound search for largest cumulative[k]<=w, skipping equal plateaus; u=(w-cumulative[k])/(cumulative[k+1]-cumulative[k]); span=floor(k/R), local=(k%R+u)/R, then evaluate the cubic, using the endpoint rule when local==1. Nonfinite query intermediates raise NUMERIC_OVERFLOW; no partial output.",
+    "native_surface": "Java org.procedurals.paths.ClosedSpline2D.create(Object) and create(double[][] controls,int subdivisions) share validation and one kernel. serialize() returns detached {controls,subdivisions}. sampleParameter(double) and sampleDistance(double) return immutable Sample with x(),y(),tangentX(),tangentY(); target-array overloads write exactly four entries [x,y,tangentX,tangentY] without allocation. sample(Object) accepts exactly {mode,value} and returns {point:[x,y],tangent:[dx,dy]}. length(), controlCount() and subdivisions() expose metadata. No generic callbacks or mutable buffers.",
+    "ownership": "Copy all inputs; no aliases are retained. Exports and Sample results are detached. Failed creation or query exposes no partial result. Work is O(N*R), retained storage O(N*R+N), parameter query O(1), distance query O(log(N*R)). No renderer, RNG, time or assets.",
+    "carriers": "Object records use exact passive Map/List containers. Java numeric carriers are Byte, Short, Integer, Long, Float and Double; reject null, boolean, strings, arrays in object route, arbitrary Number subclasses, BigInteger and BigDecimal. Typed arrays are copied. Validate target-array scalar then target and calculate into locals; errors never partially modify target.",
+    "normative_contract": "design/operations/closed-spline-contract.md is normative for precise validation order, arithmetic, endpoint/plateau decisions and atomic target writes."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed static carrier/key/value, fewer than three controls, invalid subdivision or representation bound.",
+    "INVALID_QUERY": "Malformed query, mode/value, nonfinite scalar or invalid target.",
+    "NUMERIC_OVERFLOW": "Nonfinite computed creation or query intermediate; no partial result."
+  },
+  "parameters": {
+    "controls": {
+      "unit": "ordered finite planar control-coordinate pairs",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "blobs#0 and databol#0 report large changes from control-count edits; no public control-count recommendation."
+    },
+    "subdivisions": {
+      "unit": "equal-parameter chords per control span",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "CP16 probe compares 10,32,128,1024 chords; resolution is a numerical accuracy/work choice, not a justified default or range."
+    },
+    "query": {
+      "unit": "parameter: control-span units with period N; distance: drawing units with period approximate length; returned tangent: drawing units per local span parameter",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "The two source Spline implementations expose parameter/distance lookup; periodic wrapping and per-chord inversion are explicit portable design."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Java first; implementation and native review pending."
+    },
+    "p5js": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/closed-spline-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "LoopMarks must show a control edit, independent recoloring and a changed mark using retained curves; no source recreation credit or native support follows from this catalog entry."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root approved for Java implementation against normative semantics and analytical fixtures; no implementation, native or distribution acceptance."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java core and scoped JAVA2D LoopMarks; no distribution or other target acceptance",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/paths/ClosedSpline2D.java": "df436d30d51ec73b8a1265168fd8bc6cb1498dc90caec9ea024766d795682fcb",
+    "packages/java-processing/examples/LoopMarks/LoopMarks.pde": "7ed14e99c4c7fec42b8e84960656e7b7f27e2cef0b991482ace32c29a7e3f555"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/closed-spline-java.json": "5c77ca1038ed13ba5ad00550f7606b9bb2e8b4c0e6c48e714e0b2b82c8a7b3ae",
+    "evidence/conformance/closed-spline-java-root-review.json": "5b41e4c78638108495f580db1109bc35b1d6bed1235150450ab227a43bfabbfb",
+    "fixtures/operations/closed-spline-2d.json": "c7232c17d650b8b90ca9606e75abcbfc9c8d938ca6af088fb4f354d103056fc6",
+    "evidence/reproductions/cp16-java2d/native.json": "017e88a96dadf46df3acc8d2cf883eccaa4d4f43767bbaaad3429bb4a58b8d2f",
+    "evidence/reproductions/cp16-java2d/root-review.json": "86fc1db2fcb4f4243ee91ffdee0ade2621013f838d94dbf1753bed010f684316"
+  }
+}
