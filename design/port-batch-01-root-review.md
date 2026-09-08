@@ -1,7 +1,7 @@
 # Placement ports: root review in progress
 
 Scope: worker commits 99110da5,688670b8,e04c165e, reviewed from the separate
-`.work/porting/checkout`. This is a partial review, not merge approval or a shared
+`.work/porting/checkout`. Root approves the p5.js/py5 source integration described below. This is not a shared
 support attestation. Android work is still uncommitted in that checkout.
 
 ## Evidence and native results
@@ -34,9 +34,7 @@ must remain tied to the core conformance report, not inferred from rendered imag
 
 ## Remaining integration work
 
-- Finish root review of the example/harness behavior and core conformance source hashes.
 - Review Android's completed patch and representative native results when available.
-- Integrate reviewed port commits while preserving the existing root JavaScript export edit.
 - Refresh only support records whose complete prerequisites have been reviewed; workers
   must not write root acceptance records. Keep the Java recipe prototype status separate.
 
@@ -44,3 +42,19 @@ must remain tied to the core conformance report, not inferred from rendered imag
 
 - `evidence/conformance/p5js-placement-marks.json`: `70284ed473e74409a3d115f4ffefd31ec92e0ae2af117279f2a75bb6bb8e4818`
 - `evidence/conformance/py5-placement-marks.json`: `c100f0aa2d4b71ac9b4ae41072238d52174b1be1b156574b31edbe0290d7b008`
+
+## Source integration checkpoint
+
+Root completed the example/control-path review and verified both pure-core reports'
+complete before/after source hashes. The reviewed semantics preserve proposal order,
+four RNG draws per seeded attempt, detached results and accessor error ordering.
+The py5 harness invokes the actual key callback; it does not prove physical keyboard
+input. Its drawn vertex counters are derived from placements and motif settings,
+not renderer instrumentation. Visual inspection corroborates the delivered motifs.
+
+Integrated worker commits 688670b8 and e04c165e plus the existing JavaScript export
+edit, byte-identical to 99110da5. Root ran the existing Python fixture/access runner
+successfully in the integrated checkout and the p5 preparation/composition checks
+without rendering. Existing native images remain bound to unchanged port sources.
+No redundant native run was needed. Android and catalog/shared support integration
+remain separate outstanding work; no package version or Java operation count changes.

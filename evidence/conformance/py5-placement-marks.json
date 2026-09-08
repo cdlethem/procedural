@@ -1,0 +1,314 @@
+{
+  "environment": "/home/colin/dev/procedural/.work/environments/py5",
+  "input_sha256": {
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "env:py5/__init__.py": "763066a534ae41d8a01605ceedcea2cd1c37139a25f4f2a9138e63b8a31410d7",
+    "env:py5/base.py": "018c896ebee9ab611ef7346cbeca8e354918cf5caa49a1465332a7b7cccd57da",
+    "env:py5/graphics.py": "2761b2987666c7d1d70088c70aca9492dd4963abf644d8fa78ee0de9dc4c30f8",
+    "env:py5/jars/core.jar": "2cd02df8ace61c45af5eddef74dc74608b87a50155e83f20c7b1e28642ddbc85",
+    "env:py5/jars/py5.jar": "4447b8098080f83cb4ffa5bf3b2d6c15a4a1bea3265198da75f5ac936f504903",
+    "env:py5/mixins/pixels.py": "e6b2d4c46c5370e61fef0436b901c860929338afc20e8a9ec8f941a8fb8d07b9",
+    "env:py5/sketch.py": "39557b47939444710c6cd2480e8dfadc03eddc28c87106c3fb262d2d087a8639",
+    "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "packages/python/examples/placement_marks/placement_marks.py": "a50aaa217801422b90d9146ac2670e0a612d62ffc081228ad23f0f6962ea36d0",
+    "packages/python/examples/placement_marks/sketch.py": "dc51f15358a1ed3ba8342aff3ebd994d24ac3ebd6e751a43f8cb0a43bb9ace7b",
+    "packages/python/procedurals/__init__.py": "9f00137c84bdbcd62f2fdaa9c3aa37e732578eef63e04ecf7ddd5dfdad645209",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "tests/native/py5_placement_marks.py": "4949eb5bb71553e1cc3627578856598040749739f41d98835ca8ba4bdfc41674"
+  },
+  "java": "17.0.20.1",
+  "native": {
+    "compositions": 17,
+    "extended_accepted_prefix": true,
+    "ignored_while_radial": true,
+    "images": {
+      "baseline.png": {
+        "nonbackground_pixels": 36181,
+        "png_sha256": "f9892005e3d7e09dc089392734157271903c391b4f4971599a002cc8e0d08fe2",
+        "rgba_sha256": "a6f9188c0a90c4ee0ca6bcb12abc9bd9510e0da32252ff81624af9d69e32af09"
+      },
+      "count-extended.png": {
+        "nonbackground_pixels": 40777,
+        "png_sha256": "8efe2ef936ec3611d0e1248ce264339445797ef4d1fe53fea6aac224c18b39fe",
+        "rgba_sha256": "c0071fffeef3163f3ec2fcd9f6a6034d5c939a9d53204f5ae26d296240bcf586"
+      },
+      "diamond.png": {
+        "nonbackground_pixels": 42465,
+        "png_sha256": "434ae067a6076e40a053cf7caf1ab117533751965bc55f3d2b0f4d8443927833",
+        "rgba_sha256": "ffd3e44c34df6029ec6a3c4a657875ce22edfeaba347fb6de45c982b693eb8b2"
+      },
+      "palette.png": {
+        "nonbackground_pixels": 36112,
+        "png_sha256": "486754beea4feaf0965a46b5757cdc44111484a3b582d8562944d8b007407d97",
+        "rgba_sha256": "7976750b6d99632934386b4f845e68f46c2f4538c89f1883efef45ebe8df9c61"
+      },
+      "radial-spacing.png": {
+        "nonbackground_pixels": 12903,
+        "png_sha256": "2e1ac10690a86e039eca3fafde09c2630b21b4b475b10b0c9f2c7cfa534ce361",
+        "rgba_sha256": "9e461eb42ed1fe831cb553629f0e04d5eb8241da1fbe2ad975e4d80f1ad21dca"
+      },
+      "radial.png": {
+        "nonbackground_pixels": 15287,
+        "png_sha256": "8a74adfd3efc25f0b7f0a3caf570f9cbc3b2ec8b76267650174ef47dd54856f9",
+        "rgba_sha256": "94851f118fbd64bb499c8f5f5dca1791a66587fe6139302f4888013726a33f9e"
+      },
+      "seed.png": {
+        "nonbackground_pixels": 35418,
+        "png_sha256": "848a351c784137ee0b976f09bffe328502f568b52cf3c9d58f51772129f37b1d",
+        "rgba_sha256": "9127bbd934244b27f677b52e2e85ac421a477443e1da1812f6b8912a5c10fefa"
+      },
+      "size-max.png": {
+        "nonbackground_pixels": 41470,
+        "png_sha256": "7dc0f7dfade0d44f408b572ee01f2af8657e451aa32f67312a661a1cb6dc4fdd",
+        "rgba_sha256": "8f46bd9d4b1535e4cbc1672fda92c29d4e9e1ad4637cc356e3ed8f9cccbfd4c9"
+      },
+      "size-min.png": {
+        "nonbackground_pixels": 31606,
+        "png_sha256": "23059853f4342805b672882e2e04a1f129e4ada80e16e0a24b63ea7ac526a306",
+        "rgba_sha256": "230e84494428c96fd77f60669478ef80c25224bd1fa4fe6fa1b8b8b44e5ed001"
+      },
+      "spacing.png": {
+        "nonbackground_pixels": 27263,
+        "png_sha256": "f3f9682c90235496ab730e1373c70cc110c06ac8df0f97f45d2ca9880c277505",
+        "rgba_sha256": "aca3450f08df7bb16d4ac6b8cc515289da8ec9f69470e11487179e794696fe4a"
+      }
+    },
+    "keyboard_edit": {
+      "composition": "palette",
+      "key": "c",
+      "note": "Palette edit triggered through the key_pressed callback route.",
+      "revision": 4
+    },
+    "passed": true,
+    "radial_transfer": {
+      "accepted": 111,
+      "attempts": 160,
+      "java_accepted": 111,
+      "matches_java_count": true,
+      "note": "Radial proposal trigonometry is host composition, outside exact core semantics; the count is recorded, not asserted."
+    },
+    "rebuild_replaced": true,
+    "render_states": [
+      {
+        "accepted": 424,
+        "attempts": 5000,
+        "drawn_circles": 424,
+        "drawn_vertices": 27136,
+        "id": "baseline",
+        "nonbackground_pixels": 36181,
+        "retained_identity": null,
+        "revision": 1,
+        "rgba_sha256": "a6f9188c0a90c4ee0ca6bcb12abc9bd9510e0da32252ff81624af9d69e32af09",
+        "source": "seeded"
+      },
+      {
+        "accepted": 424,
+        "attempts": 5000,
+        "drawn_circles": 424,
+        "drawn_vertices": 1696,
+        "id": "diamond",
+        "nonbackground_pixels": 42465,
+        "retained_identity": true,
+        "revision": 2,
+        "rgba_sha256": "ffd3e44c34df6029ec6a3c4a657875ce22edfeaba347fb6de45c982b693eb8b2",
+        "source": "seeded"
+      },
+      {
+        "accepted": 424,
+        "attempts": 5000,
+        "drawn_circles": 424,
+        "drawn_vertices": 27136,
+        "id": "rings-restored",
+        "nonbackground_pixels": 36181,
+        "retained_identity": true,
+        "revision": 3,
+        "rgba_sha256": "a6f9188c0a90c4ee0ca6bcb12abc9bd9510e0da32252ff81624af9d69e32af09",
+        "source": "seeded"
+      },
+      {
+        "accepted": 424,
+        "attempts": 5000,
+        "drawn_circles": 424,
+        "drawn_vertices": 27136,
+        "id": "palette",
+        "nonbackground_pixels": 36112,
+        "retained_identity": true,
+        "revision": 4,
+        "rgba_sha256": "7976750b6d99632934386b4f845e68f46c2f4538c89f1883efef45ebe8df9c61",
+        "source": "seeded"
+      },
+      {
+        "accepted": 424,
+        "attempts": 5000,
+        "drawn_circles": 424,
+        "drawn_vertices": 27136,
+        "id": "palette-restored",
+        "nonbackground_pixels": 36181,
+        "retained_identity": true,
+        "revision": 5,
+        "rgba_sha256": "a6f9188c0a90c4ee0ca6bcb12abc9bd9510e0da32252ff81624af9d69e32af09",
+        "source": "seeded"
+      },
+      {
+        "accepted": 353,
+        "attempts": 5000,
+        "drawn_circles": 353,
+        "drawn_vertices": 22592,
+        "id": "spacing",
+        "nonbackground_pixels": 27263,
+        "retained_identity": false,
+        "revision": 6,
+        "rgba_sha256": "aca3450f08df7bb16d4ac6b8cc515289da8ec9f69470e11487179e794696fe4a",
+        "source": "seeded"
+      },
+      {
+        "accepted": 424,
+        "attempts": 5000,
+        "drawn_circles": 424,
+        "drawn_vertices": 27136,
+        "id": "spacing-restored",
+        "nonbackground_pixels": 36181,
+        "retained_identity": false,
+        "revision": 7,
+        "rgba_sha256": "a6f9188c0a90c4ee0ca6bcb12abc9bd9510e0da32252ff81624af9d69e32af09",
+        "source": "seeded"
+      },
+      {
+        "accepted": 239,
+        "attempts": 5000,
+        "drawn_circles": 239,
+        "drawn_vertices": 15296,
+        "id": "size-min",
+        "nonbackground_pixels": 31606,
+        "retained_identity": false,
+        "revision": 8,
+        "rgba_sha256": "230e84494428c96fd77f60669478ef80c25224bd1fa4fe6fa1b8b8b44e5ed001",
+        "source": "seeded"
+      },
+      {
+        "accepted": 424,
+        "attempts": 5000,
+        "drawn_circles": 424,
+        "drawn_vertices": 27136,
+        "id": "size-min-restored",
+        "nonbackground_pixels": 36181,
+        "retained_identity": false,
+        "revision": 9,
+        "rgba_sha256": "a6f9188c0a90c4ee0ca6bcb12abc9bd9510e0da32252ff81624af9d69e32af09",
+        "source": "seeded"
+      },
+      {
+        "accepted": 613,
+        "attempts": 5000,
+        "drawn_circles": 613,
+        "drawn_vertices": 39232,
+        "id": "size-max",
+        "nonbackground_pixels": 41470,
+        "retained_identity": false,
+        "revision": 10,
+        "rgba_sha256": "8f46bd9d4b1535e4cbc1672fda92c29d4e9e1ad4637cc356e3ed8f9cccbfd4c9",
+        "source": "seeded"
+      },
+      {
+        "accepted": 424,
+        "attempts": 5000,
+        "drawn_circles": 424,
+        "drawn_vertices": 27136,
+        "id": "size-max-restored",
+        "nonbackground_pixels": 36181,
+        "retained_identity": false,
+        "revision": 11,
+        "rgba_sha256": "a6f9188c0a90c4ee0ca6bcb12abc9bd9510e0da32252ff81624af9d69e32af09",
+        "source": "seeded"
+      },
+      {
+        "accepted": 517,
+        "attempts": 10000,
+        "drawn_circles": 517,
+        "drawn_vertices": 33088,
+        "id": "count-extended",
+        "nonbackground_pixels": 40777,
+        "retained_identity": false,
+        "revision": 12,
+        "rgba_sha256": "c0071fffeef3163f3ec2fcd9f6a6034d5c939a9d53204f5ae26d296240bcf586",
+        "source": "seeded"
+      },
+      {
+        "accepted": 424,
+        "attempts": 5000,
+        "drawn_circles": 424,
+        "drawn_vertices": 27136,
+        "id": "count-restored",
+        "nonbackground_pixels": 36181,
+        "retained_identity": false,
+        "revision": 13,
+        "rgba_sha256": "a6f9188c0a90c4ee0ca6bcb12abc9bd9510e0da32252ff81624af9d69e32af09",
+        "source": "seeded"
+      },
+      {
+        "accepted": 432,
+        "attempts": 5000,
+        "drawn_circles": 432,
+        "drawn_vertices": 27648,
+        "id": "seed",
+        "nonbackground_pixels": 35418,
+        "retained_identity": false,
+        "revision": 14,
+        "rgba_sha256": "9127bbd934244b27f677b52e2e85ac421a477443e1da1812f6b8912a5c10fefa",
+        "source": "seeded"
+      },
+      {
+        "accepted": 111,
+        "attempts": 160,
+        "drawn_circles": 111,
+        "drawn_vertices": 7104,
+        "id": "radial",
+        "nonbackground_pixels": 15287,
+        "retained_identity": false,
+        "revision": 15,
+        "rgba_sha256": "94851f118fbd64bb499c8f5f5dca1791a66587fe6139302f4888013726a33f9e",
+        "source": "radial"
+      },
+      {
+        "accepted": 95,
+        "attempts": 160,
+        "drawn_circles": 95,
+        "drawn_vertices": 6080,
+        "id": "radial-spacing",
+        "nonbackground_pixels": 12903,
+        "retained_identity": false,
+        "revision": 16,
+        "rgba_sha256": "9e461eb42ed1fe831cb553629f0e04d5eb8241da1fbe2ad975e4d80f1ad21dca",
+        "source": "radial"
+      },
+      {
+        "accepted": 111,
+        "attempts": 160,
+        "drawn_circles": 111,
+        "drawn_vertices": 7104,
+        "id": "radial-spacing-restored",
+        "nonbackground_pixels": 15287,
+        "retained_identity": false,
+        "revision": 17,
+        "rgba_sha256": "94851f118fbd64bb499c8f5f5dca1791a66587fe6139302f4888013726a33f9e",
+        "source": "radial"
+      }
+    ],
+    "retained_style_edits": true,
+    "save_png": {
+      "bytes": 45289,
+      "decoded_rgba_sha256": "94851f118fbd64bb499c8f5f5dca1791a66587fe6139302f4888013726a33f9e",
+      "matches_current_canvas": true,
+      "path": "placement-marks.png",
+      "png_sha256": "8a74adfd3efc25f0b7f0a3caf570f9cbc3b2ec8b76267650174ef47dd54856f9",
+      "quiet_ms": 300.8731289883144
+    },
+    "scope": "Actual py5 PlacementMarks starter setup/key_pressed callback route; not physical keyboard or cross-host raster identity."
+  },
+  "part": "cp3-placement-marks",
+  "passed": true,
+  "py5": "0.10.11a0",
+  "status": "passed"
+}

@@ -1,11 +1,13 @@
 # Project state
 
-## Placement port review in progress
+## Placement p5.js/py5 source integration reviewed
 
 Root verified p5.js/py5 source and environment hashes,20 PNG identities and inspected
 three representative images per target. Recorded bounded findings and remaining integration
-steps in design/port-batch-01-root-review.md. No port merge or shared support promotion yet.
-The separate checkout has live uncommitted Android work; preserve it and the root JS export edit.
+steps in design/port-batch-01-root-review.md. Integrated the reviewed p5.js/py5 patches and
+matching root JS export edit; root Python core fixtures/access and p5 preparation checks pass.
+Core evidence: evidence/conformance/circle-placements-python.json. Shared support records and
+Android remain pending. Preserve the separate checkout's uncommitted Android work.
 
 ## Spring simulation commands and native preview verified
 
