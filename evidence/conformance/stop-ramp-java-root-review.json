@@ -1,0 +1,21 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "CP14 Java core semantics only; native RampMarks and distribution pending",
+  "core_sha256": "9230378dcd2a1e34717ad8130d66e8d93d5af944b383b353e5d1665c06d051e5",
+  "conformance": "evidence/conformance/stop-ramp-java.json",
+  "conformance_sha256": "c45c89a91a74d347452095233270716dcebbb8672e6615322ed607c03d480011",
+  "verified": [
+    "Root reviewed complete constructor validation order, snapshot ownership, binary search and separately rounded channel interpolation.",
+    "Six analytic valid ramps execute via both constructors; six invalid configurations and five invalid queries pass.",
+    "Native checks cover typed/object ownership and exports, signed zero, nonfinite input/query, unsupported Number carriers before coercion, typed duplicate/descending stops.",
+    "Root required linear List iteration and exact per-stop validation order; added constant-ramp invalid-query and unequal-buffer regression checks.",
+    "Bounded sampling timings at4 and1024stops record checksums and exact JDK/source bindings."
+  ],
+  "limits": [
+    "No renderer, native example, distribution or port support claim.",
+    "RGB24 color and endpoint policies are independent portable design; no original sketch or host lerpColor pixel equivalence.",
+    "Benchmark reports retained primitive-buffer estimates, not measured VM allocation or universal latency."
+  ]
+}

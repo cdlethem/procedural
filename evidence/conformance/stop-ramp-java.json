@@ -1,0 +1,70 @@
+{
+  "operation": "color.stop-ramp",
+  "fixture_cases": 12,
+  "valid_cases_both_entrypoints": 6,
+  "static_invalid_cases": 6,
+  "query_error_cases": 5,
+  "source_sha256_before": {
+    "catalog/operations/stop-ramp.json": "7a2d7c1e2e1df26e07a4b88012f8164bef611b76eb8920f22ce0bc1167b95fc6",
+    "fixtures/operations/stop-ramp.json": "bb3be6de37b46f5fe2c5907e16277f97c8526587cf2a0f2049860338da7095cd",
+    "packages/java/src/main/java/org/procedurals/color/StopRamp.java": "9230378dcd2a1e34717ad8130d66e8d93d5af944b383b353e5d1665c06d051e5",
+    "tests/native/StopRampNative.java": "e3d3653f85c19c6f688e68782b51d3f5288bd9d6ad6d8ac328d3f0feba7e68da",
+    "tools/run_stop_ramp_java.py": "26a7c489fcab7a82741dd71c4d94cd97cc196658ba9f869e257d3fa6a16df10e",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711"
+  },
+  "javac_release": "8",
+  "subprocess_timeout_seconds": 180,
+  "status": "passed",
+  "vectors": {
+    "status": "passed",
+    "fixture_cases": 12,
+    "assertions": 237
+  },
+  "native": {
+    "status": "passed",
+    "assertions": 28
+  },
+  "source_sha256_after": {
+    "catalog/operations/stop-ramp.json": "7a2d7c1e2e1df26e07a4b88012f8164bef611b76eb8920f22ce0bc1167b95fc6",
+    "fixtures/operations/stop-ramp.json": "bb3be6de37b46f5fe2c5907e16277f97c8526587cf2a0f2049860338da7095cd",
+    "packages/java/src/main/java/org/procedurals/color/StopRamp.java": "9230378dcd2a1e34717ad8130d66e8d93d5af944b383b353e5d1665c06d051e5",
+    "tests/native/StopRampNative.java": "e3d3653f85c19c6f688e68782b51d3f5288bd9d6ad6d8ac328d3f0feba7e68da",
+    "tools/run_stop_ramp_java.py": "26a7c489fcab7a82741dd71c4d94cd97cc196658ba9f869e257d3fa6a16df10e",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711"
+  },
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "benchmark_timing_scope": "typed scalar sample plus checksum; retained bytes are estimates, not allocation measurement",
+  "benchmarks": [
+    {
+      "stops": 4,
+      "repetitions": 8,
+      "warmups": 2,
+      "queries_per_repetition": 4096,
+      "elapsed_ns_sampling_plus_checksum": 950530,
+      "checksum_unsigned64": "9317284936074965280",
+      "retained_core_bytes_estimate": {
+        "positions": 32,
+        "colors": 16
+      }
+    },
+    {
+      "stops": 1024,
+      "repetitions": 8,
+      "warmups": 2,
+      "queries_per_repetition": 4096,
+      "elapsed_ns_sampling_plus_checksum": 1034931,
+      "checksum_unsigned64": "4341082496296604456",
+      "retained_core_bytes_estimate": {
+        "positions": 8192,
+        "colors": 4096
+      }
+    }
+  ],
+  "scope": "Java core exact vectors/native evidence only; no renderer or support claim."
+}

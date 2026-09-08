@@ -1,5 +1,60 @@
 # Project state
 
+## CP14 accepted locally: Java0.17 StopRamp and RampMarks
+
+Root accepted core, five-state JAVA2D edit/transfer/save workflow and extracted Java0.17
+source bundle at evidence/distribution/cp14-java-review.json. All17 extracted starters
+compile; six RampMarks PNGs equal the root-inspected candidate; all80 prior core/adapter
+classes and36 prior example/font members preserved. Default WarpMarks runner regression
+passes with all eight images equal CP13. The first attempt correctly refused a held
+shared lease; the terminal refusal was retained and rerun after the other job completed.
+36 focused tests, catalog/reference and color.stop-ramp structural gate pass.
+
+17 operations/17 workflows are accepted locally; publish this integration checkpoint next.
+No original-recreation increment (still three). Ports and Sol stay paused; remaining work
+is in docs/porting-resume.md. No live worker or native process remains.
+Next Java batch should assess CP12 constrained walking or another concrete missing
+algorithm against docs/java-completion-plan.md, freeze a bounded deliverable before
+delegation, and reuse existing validation infrastructure. Full Java completeness remains open.
+
+## Java priority reaffirmed; CP14 candidate renders inspected
+
+Maintainer requests new Java functionality and defers port integration. Remaining ports
+and the latest accepted Java baseline are recorded in docs/porting-resume.md.
+Root inspected CP14 candidate baseline, shifted, recolored and radial PNGs from
+.work/cp14-ramp-native1/native on resume. Baseline shows a horizontal blue/teal-to-warm
+transition across a regular dot grid; shifted extends the cooler region; recolored changes
+the palette; radial organizes that recolored transition around the center. These are
+technique-level observations, not original-sketch recreation or package acceptance.
+Candidate runner reports passed. Next review its complete bindings/probe and validate
+an extracted source bundle before updating support attestations or counting CP14 shipped.
+No port integration or Sol review is scheduled.
+
+## CP14 Java core reviewed; native RampMarks next
+
+Root reviewed four candidate reports/source mechanisms, approved noncyclic normalized RGB24
+stops and explicit edge policies, and recorded extraction remainders in color.stop-ramp.
+Contract-cluster gate and full catalog/reference check pass. Shared fixtures have six valid
+ramps (unequal intervals, sparse holds, constant, rounding boundary, narrow/subnormal gaps),
+six invalid constructions and five query errors. No default/recommended artwork values.
+Fresh /root/stop_ramp_java (Terra) completed StopRamp.java, StopRampNative.java and focused runner.
+Root accepted scoped core in evidence/conformance/stop-ramp-java-root-review.json after
+source review and .work/conformance/stop-ramp-java-root1.json focused rerun.
+Root owns contracts/fixtures/acceptance. /root/stop_ramp_evidence (Luna) audit completed.
+
+Root also drafted RampMarks.pde and guide; native/package acceptance pending.
+Pre-render criteria are in design/capabilities/ramp-marks-native-plan.md (five states+save,
+observed geometry stream invariant, retained-ramp radial transfer).
+
+Next compile and inspect native RampMarks edit/transfer, then validate extracted bundle.
+Current CP14 work remains local until a useful integration checkpoint; accepted/pushed
+Java baseline remains19365d83. No live native process or outstanding worker task.
+Use fresh short-context agent assignments and existing source-bundle infrastructure to keep
+cost bounded. Do not resume ports or duplicate historical packaging chains. Java0.16 baseline
+19365d83 remains16 accepted operations/16 starters; CP14 is not shipped. Current source-bundle
+manifest intentionally remains at accepted16 until new implementation/support is accepted.
+
+
 ## CP13 delivered: Java0.16 raster remapping and WarpMarks
 
 Root accepted RasterRemap2D core, 13 analytic cases (seven valid cases through both APIs),
@@ -8,7 +63,7 @@ safe-index validation, preserved typed ownership coverage and removed generic Li
 traversal. Native WarpMarks passed seven edit states plus save/quiet and source-reuse checks;
 root viewed baseline/zero/sinusoidal/stripe renders. Technique-level only, no recreation credit.
 Source-built .work/dist/cp13-java-source1/procedurals-java-source-dev.zip is accepted by
- evidence/distribution/cp13-java-review.json: 16 operations/16 starters, all extracted PDEs
+evidence/distribution/cp13-java-review.json: 16 operations/16 starters, all extracted PDEs
 compile, extracted JAR consumer and native WarpMarks pass, all eight images equal candidate.
 Preserved78 prior classes and35 example/font assets against accepted0.15 source bundle.
 Port integration stays paused; raster now joins deferred ports. No native process live.

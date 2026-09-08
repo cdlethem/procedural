@@ -1,0 +1,189 @@
+{
+  "id": "color.stop-ramp",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "decision_cluster": "color.stop-ramp",
+  "description": "Immutable noncyclic positioned RGB24 color stops with piecewise linear sampling and endpoint holds.",
+  "capability_decision": "design/capabilities/cp14-stop-ramp-admission.md",
+  "design_review": "design/capabilities/cp14-stop-ramp-admission.md",
+  "provenance": [
+    {
+      "candidate_id": "2016/Generativos/boxDepth#0",
+      "notes_path": "survey/out/2016/Generativos/boxDepth/notes.md",
+      "note_sha256": "6637e26d5b985cd4e1d3d18f1b277bc58d692916370ccd7608f26242e116df71",
+      "evidence_sha256": "b4baa594d2b7b699d209d4a98a2858d1de85c3921d3267c91949a62920703a45"
+    },
+    {
+      "candidate_id": "2016/Generativos/celular#0",
+      "notes_path": "survey/out/2016/Generativos/celular/notes.md",
+      "note_sha256": "8036949e222716583ad757c439f927a9608d837f28e29eb50e2fc84dd165e8c9",
+      "evidence_sha256": "4b8615aa81079742566b411a07a026482f17e673f82ec91d12dd2039ef6d1e8c"
+    },
+    {
+      "candidate_id": "2016/Generativos/colorRamp#0",
+      "notes_path": "survey/out/2016/Generativos/colorRamp/notes.md",
+      "note_sha256": "d51a83b7acc0e479910dc629e3dce0a1563dec1b684060f100ddc067396375b2",
+      "evidence_sha256": "1511c15794abb392b51105c8e0d044129f9129aff484c1ad88ee2238d7653e72"
+    },
+    {
+      "candidate_id": "2016/Generativos/triangleRamp#0",
+      "notes_path": "survey/out/2016/Generativos/triangleRamp/notes.md",
+      "note_sha256": "c9d9a4bd83a32ea6b6662dd23e7f961a41f44235ccba58a46acc177aef18f24c",
+      "evidence_sha256": "9bbe8b4dd6bd9d3d91a28a67d786f7688b508cf7f5e587bd8a278d2aa294775f"
+    }
+  ],
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "stops"
+    ],
+    "properties": {
+      "stops": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 2147483647,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "color"
+          ],
+          "properties": {
+            "position": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "color": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 16777215
+            }
+          }
+        }
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "stops"
+    ],
+    "properties": {
+      "stops": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 2147483647,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "color"
+          ],
+          "properties": {
+            "position": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "color": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 16777215
+            }
+          }
+        }
+      }
+    }
+  },
+  "query_schema": {
+    "type": "number",
+    "minimum": -1.7976931348623157e+308,
+    "maximum": 1.7976931348623157e+308
+  },
+  "query_output_schema": {
+    "type": "integer",
+    "minimum": 0,
+    "maximum": 16777215
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "serialize() returns exactly stops with detached ordered position/color records. Positions strictly increase; negative zero is canonical positive zero. sample returns one RGB24 integer.",
+  "parameters": {
+    "stops": {
+      "unit": "normalized scalar positions with opaque encoded RGB24 colors",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "boxDepth/colorRamp/triangleRamp supply positioned colors; celular has unequal fixed intervals. Supplied artwork/data, not measured recommended stop positions or palette size."
+    },
+    "query": {
+      "unit": "scalar in the normalized position coordinate system",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Source uses noise, random values and radial distance. End holds are portable design; no recommended scalar distribution."
+    }
+  },
+  "behavior": {
+    "creation": "Validate exact object with stops only, then stops List length in[1,2147483647]. In input order validate each exact {position,color} record; position is finite binary64 in[0,1], strictly greater than previous position after conversion; color is finite integral RGB24. Reject duplicates/unsorted positions; do not sort. Canonicalize position zero to +0. Typed create(double[] positions,int[] colors) checks nonnull, positive equal lengths then position/color in the same order. int colors must be nonnegative RGB24, not signed ARGB. All validation precedes exposing a result. No defaults.",
+    "carriers": "Java Map records, List containers, and only Byte/Short/Integer/Long/Float/Double numeric carriers. Reject boolean, null, string, arrays in object route, BigInteger/BigDecimal and arbitrary Number subclasses before coercion. Convert allowed coordinates/query to binary64; validate RGB24 integers before narrowing. Passive stable inputs assumed; concurrent caller mutation during call is outside contract.",
+    "query_validation": "sample(Object) accepts the same six numeric carriers and sample(double) accepts a finite binary64 value. Reject invalid query with INVALID_QUERY even for one stop. All finite queries including extreme values are valid.",
+    "sampling": "If query<=first position return first color; if query>=last position return last color. Otherwise locate neighboring positions L<=query<R by ordered binary search. If query==L return its color. Compute numerator=query-L, denominator=R-L, t=numerator/denominator, each operation separately rounded binary64. For each encoded channel a,b: d=b-a; p=d*t; value=a+p; rounded=floor(value+0.5), every primitive separately rounded binary64. Pack R*65536+G*256+B exactly. No FMA/reassociation, gamma conversion, alpha, easing or cyclic wrapping. Primitive arithmetic uses IEEE round-to-nearest ties-to-even.",
+    "ownership": "Immutable owned snapshot; retain no caller arrays, Maps or Lists. serialize returns newly owned object/list/stop records. Later caller mutation of input or exports cannot change sampling or serialization. No mutable insertion operation.",
+    "native_forms": "org.procedurals.color.StopRamp.create(Object), create(double[] positions,int[] colors), sample(double), sample(Object), serialize(). One operation and query kernel. Native unsupported call arity is a host-language error, not an interchange result.",
+    "cost": "O(n) creation/snapshot/export; O(log n) lookup with no per-query allocation in double overload. Representation count limit is not a feasible-allocation promise; resource exhaustion is not INVALID_INPUT.",
+    "compatibility": "Normalized strictly ordered input, one-stop constants, sparse endpoint holds, duplicate rejection and RGB24 are explicit portable design. Source construction uses descending mutable lists or fixed three intervals. No Processing lerpColor/source-pixel identity claim."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed static keys/carriers/count, nonfinite/out-of-range position, duplicate/descending position or nonintegral/out-of-range RGB24 color; no partial ramp.",
+    "INVALID_QUERY": "Not a permitted finite binary64 scalar; checked before endpoint/constant shortcuts."
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    }
+  },
+  "fixtures": "fixtures/operations/stop-ramp.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "RampMarks fixed mark grid with movable interior stop, independent recoloring, radial-progress transfer, reset and saved-display check in JAVA2D; extracted source-bundle validation. No original recreation."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Approved for Java implementation against analytic fixtures; no native or distribution acceptance."
+  },
+  "deliberately_excluded": [
+    "mutable insertion or automatic sorting",
+    "duplicate-position discontinuities",
+    "palette generation or random consumption",
+    "opacity and alternate color spaces",
+    "drawing and scalar-field generation",
+    "non-Java implementation"
+  ]
+}

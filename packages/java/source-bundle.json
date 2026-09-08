@@ -1,6 +1,6 @@
 {
-  "version": "0.16.0",
-  "processing_version": 16,
+  "version": "0.17.0",
+  "processing_version": 17,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -21,7 +21,8 @@
     "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
     "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
     "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
-    "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1"
+    "packages/java/src/main/java/org/procedurals/topology/LinePool2D.java": "c3b94db4f15ffaf6b565620eefc63d33a0515ea4939162d85339da7d20aaf9a1",
+    "packages/java/src/main/java/org/procedurals/color/StopRamp.java": "9230378dcd2a1e34717ad8130d66e8d93d5af944b383b353e5d1665c06d051e5"
   },
   "examples": {
     "procedurals/examples/BranchMarks/BranchComposition.java": {
@@ -159,6 +160,10 @@
     "procedurals/examples/WarpMarks/WarpMarks.pde": {
       "source": "packages/java-processing/examples/WarpMarks/WarpMarks.pde",
       "sha256": "94eab7ad636addf0deaed8ec79abc844fd413c3e005eadb05abc4d2455b06161"
+    },
+    "procedurals/examples/RampMarks/RampMarks.pde": {
+      "source": "packages/java-processing/examples/RampMarks/RampMarks.pde",
+      "sha256": "930f148a45c7cea6da35608ef29dd6d45b59685cc14614beb6eb5b9259bcfc96"
     }
   },
   "operation_files": [
@@ -176,6 +181,7 @@
     "seeded-line-pool-2d.json",
     "seeded-quadrant-partition.json",
     "seeded-triangle-points.json",
+    "stop-ramp.json",
     "target-springs-2d.json",
     "triangle-coordinate-map.json"
   ],

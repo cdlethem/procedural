@@ -904,14 +904,14 @@
       "status": "reviewed_provisional",
       "reason": "Scalar lookup between explicitly positioned colour stops; separate from unit-spaced cyclic list indexing and two-endpoint grayscale fade. Stop validation and boundary/colour semantics remain contract work.",
       "architecture": {
-        "level": "family",
-        "status": "pending",
-        "inputs": "Not yet reconciled across all retained members.",
-        "outputs": "Not yet reconciled across all retained members.",
-        "invariants": "Candidate membership alone is not an operation contract.",
-        "open_questions": [
-          "Audit member equivalence and separately account for extracted components before contract preparation."
-        ]
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Strictly increasing normalized positions with opaque RGB24 colors; finite scalar query.",
+        "outputs": "Immutable retained stop ramp; RGB24 sampled color and detached stop serialization.",
+        "invariants": "Piecewise linear encoded RGB8 interpolation, noncyclic endpoint holds, explicit duplicate rejection; no RNG, host color mode or mutable insertion.",
+        "open_questions": [],
+        "review": "design/capabilities/cp14-stop-ramp-admission.md",
+        "reviewer": "root source/note review with bounded source audit"
       }
     },
     {
@@ -7281,7 +7281,26 @@
       },
       "evidence_sha256": "b4baa594d2b7b699d209d4a98a2858d1de85c3921d3267c91949a62920703a45",
       "cluster_id": "color.stop-ramp",
-      "review_basis": "out/2016/Generativos/boxDepth/notes.md#modularisation-notes"
+      "review_basis": "out/2016/Generativos/boxDepth/notes.md#modularisation-notes",
+      "decision_audit": {
+        "status": "verified",
+        "scope": "component_extraction",
+        "computation": "Noncyclic scalar lookup between explicitly positioned RGB colors; portable ordering/boundaries/rounding independently specified.",
+        "remainder": [
+          {
+            "component": "Fixed or random colors/positions and scalar query generation",
+            "disposition": "recipe",
+            "reason": "Caller artwork and field/radial input; not sampler state."
+          },
+          {
+            "component": "Mutable insertion and Processing lerpColor/show or fill opacity",
+            "disposition": "out_of_scope",
+            "reason": "Static immutable input replaces insertion; native color/drawing/opacity are separate from RGB24 sampling."
+          }
+        ],
+        "reviewer": "root",
+        "review": "design/capabilities/cp14-stop-ramp-admission.md"
+      }
     },
     "2016/Generativos/boxDepth#1": {
       "sketch": "2016/Generativos/boxDepth",
@@ -7365,7 +7384,26 @@
       },
       "evidence_sha256": "4b8615aa81079742566b411a07a026482f17e673f82ec91d12dd2039ef6d1e8c",
       "cluster_id": "color.stop-ramp",
-      "review_basis": "out/2016/Generativos/celular/notes.md#modularisation-notes"
+      "review_basis": "out/2016/Generativos/celular/notes.md#modularisation-notes",
+      "decision_audit": {
+        "status": "verified",
+        "scope": "component_extraction",
+        "computation": "Noncyclic scalar lookup between explicitly positioned RGB colors; portable ordering/boundaries/rounding independently specified.",
+        "remainder": [
+          {
+            "component": "Fixed or random colors/positions and scalar query generation",
+            "disposition": "recipe",
+            "reason": "Caller artwork and field/radial input; not sampler state."
+          },
+          {
+            "component": "Mutable insertion and Processing lerpColor/show or fill opacity",
+            "disposition": "adapter",
+            "reason": "Static immutable input replaces insertion; native color/drawing/opacity are separate from RGB24 sampling."
+          }
+        ],
+        "reviewer": "root",
+        "review": "design/capabilities/cp14-stop-ramp-admission.md"
+      }
     },
     "2016/Generativos/celular#1": {
       "sketch": "2016/Generativos/celular",
@@ -7601,7 +7639,26 @@
       },
       "evidence_sha256": "1511c15794abb392b51105c8e0d044129f9129aff484c1ad88ee2238d7653e72",
       "cluster_id": "color.stop-ramp",
-      "review_basis": "out/2016/Generativos/colorRamp/notes.md#modularisation-notes"
+      "review_basis": "out/2016/Generativos/colorRamp/notes.md#modularisation-notes",
+      "decision_audit": {
+        "status": "verified",
+        "scope": "component_extraction",
+        "computation": "Noncyclic scalar lookup between explicitly positioned RGB colors; portable ordering/boundaries/rounding independently specified.",
+        "remainder": [
+          {
+            "component": "Fixed or random colors/positions and scalar query generation",
+            "disposition": "recipe",
+            "reason": "Caller artwork and field/radial input; not sampler state."
+          },
+          {
+            "component": "Mutable insertion and Processing lerpColor/show or fill opacity",
+            "disposition": "out_of_scope",
+            "reason": "Static immutable input replaces insertion; native color/drawing/opacity are separate from RGB24 sampling."
+          }
+        ],
+        "reviewer": "root",
+        "review": "design/capabilities/cp14-stop-ramp-admission.md"
+      }
     },
     "2016/Generativos/colorRamp#1": {
       "sketch": "2016/Generativos/colorRamp",
@@ -8362,7 +8419,26 @@
       },
       "evidence_sha256": "9bbe8b4dd6bd9d3d91a28a67d786f7688b508cf7f5e587bd8a278d2aa294775f",
       "cluster_id": "color.stop-ramp",
-      "review_basis": "out/2016/Generativos/triangleRamp/notes.md#modularisation-notes"
+      "review_basis": "out/2016/Generativos/triangleRamp/notes.md#modularisation-notes",
+      "decision_audit": {
+        "status": "verified",
+        "scope": "component_extraction",
+        "computation": "Noncyclic scalar lookup between explicitly positioned RGB colors; portable ordering/boundaries/rounding independently specified.",
+        "remainder": [
+          {
+            "component": "Fixed or random colors/positions and scalar query generation",
+            "disposition": "recipe",
+            "reason": "Caller artwork and field/radial input; not sampler state."
+          },
+          {
+            "component": "Mutable insertion and Processing lerpColor/show or fill opacity",
+            "disposition": "out_of_scope",
+            "reason": "Static immutable input replaces insertion; native color/drawing/opacity are separate from RGB24 sampling."
+          }
+        ],
+        "reviewer": "root",
+        "review": "design/capabilities/cp14-stop-ramp-admission.md"
+      }
     },
     "2016/Generativos/triangleRamp#1": {
       "sketch": "2016/Generativos/triangleRamp",

@@ -1455,6 +1455,94 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/seeded-triangle-points.json).
 
+## color.stop-ramp (0.1.0)
+
+Immutable noncyclic positioned RGB24 color stops with piecewise linear sampling and endpoint holds.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "stops"
+  ],
+  "properties": {
+    "stops": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2147483647,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "position",
+          "color"
+        ],
+        "properties": {
+          "position": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "color": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16777215
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| stops | normalized scalar positions with opaque encoded RGB24 colors | null | null | boxDepth/colorRamp/triangleRamp supply positioned colors; celular has unequal fixed intervals. Supplied artwork/data, not measured recommended stop positions or palette size. |
+| query | scalar in the normalized position coordinate system | null | null | Source uses noise, random values and radial distance. End holds are portable design; no recommended scalar distribution. |
+
+Query input (native call forms are specified in the contract):
+
+```json
+{
+  "type": "number",
+  "minimum": -1.7976931348623157e+308,
+  "maximum": 1.7976931348623157e+308
+}
+```
+
+Query result:
+
+```json
+{
+  "type": "integer",
+  "minimum": 0,
+  "maximum": 16777215
+}
+```
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/stop-ramp-catalog-review.json) | [validated-scoped](../../evidence/conformance/stop-ramp-catalog-review.json) | [validated-scoped](../../evidence/conformance/stop-ramp-catalog-review.json) | [review](../../evidence/conformance/stop-ramp-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2016/Generativos/boxDepth#0`](../../survey/out/2016/Generativos/boxDepth/notes.md)
+- [`2016/Generativos/celular#0`](../../survey/out/2016/Generativos/celular/notes.md)
+- [`2016/Generativos/colorRamp#0`](../../survey/out/2016/Generativos/colorRamp/notes.md)
+- [`2016/Generativos/triangleRamp#0`](../../survey/out/2016/Generativos/triangleRamp/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/stop-ramp.json).
+
 ## motion.target-springs-2d (0.1.0)
 
 Advance an ordered independent target-spring state by one explicit logical step: target force, position using updated velocity, then velocity retention. State carries each body's position, velocity and coefficients. Native execution owns a mutable fixed-size batch with atomic steps and detached observations; no pointer, clock, RNG, renderer, topology or convergence guarantee.

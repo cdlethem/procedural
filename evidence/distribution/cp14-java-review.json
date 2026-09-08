@@ -1,0 +1,66 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.17.0",
+  "scope": "Source-built Java bundle: 17 operations and17 starters, extracted compilation and native RampMarks. Local artifact, not registry release.",
+  "archive": {
+    "path": ".work/dist/cp14-java-source2/procedurals-java-source-dev.zip",
+    "sha256": "2549ab4a7640414d86680d6968223051823543bff01561a26d37580a13d5b538",
+    "members": 162
+  },
+  "build_report": {
+    "path": "evidence/distribution/cp14-java-source.json",
+    "sha256": "457da6b2ddb479fae5034b6be48c821bd6902d86b6b58cec3e7fc932bc50e015"
+  },
+  "consumer_report": {
+    "path": "evidence/distribution/cp14-java-consumer.json",
+    "sha256": "4a207892c8c130fc46872ccef379821c061def1e94315e1b1b1df378b8c760ed"
+  },
+  "implementation_sha256": {
+    "packages/java/source-bundle.json": "7e7506ccf7ff46308da5d3770253dcd3c7e276e92893adf27878637148309841",
+    "tools/build_java_source_bundle.py": "05ca6c7087b2473e606202ffe598e4cfc2fad4634f506bfc4b0253b6fb617cc5",
+    "tools/check_java_source_bundle.py": "33f3bce46b88d1fb67f61a4a7aeab4e7a05abc9bcaf91d27f4f4b2cfce665d5e",
+    "tools/run_warp_marks_java.py": "d0d9f162d86b103c776c29e4aa87a22a8142d37cfa5a5d5f7cddf4d3131870d3",
+    "packages/java/src/main/java/org/procedurals/color/StopRamp.java": "9230378dcd2a1e34717ad8130d66e8d93d5af944b383b353e5d1665c06d051e5",
+    "packages/java-processing/examples/RampMarks/RampMarks.pde": "930f148a45c7cea6da35608ef29dd6d45b59685cc14614beb6eb5b9259bcfc96"
+  },
+  "checks": {
+    "baseline_archive": {
+      "path": ".work/dist/cp13-java-source1/procedurals-java-source-dev.zip",
+      "sha256": "aa8cc7c0d3b1ee6c5123d9efadcb3ac138572f6ad4ec80005a0414018fe474e9",
+      "members": 157
+    },
+    "procedurals.jar": {
+      "preserved_classes": 79,
+      "added_classes": [
+        "org/procedurals/color/StopRamp$StopRampException.class",
+        "org/procedurals/color/StopRamp.class"
+      ]
+    },
+    "procedurals-processing-adapter.jar": {
+      "preserved_classes": 1,
+      "added_classes": []
+    },
+    "preserved_prior_example_members": 36,
+    "extracted_native_frames_equal_candidate": 6
+  },
+  "regression": {
+    "path": "evidence/reproductions/cp14-java2d/warp-regression.json",
+    "sha256": "43193d5b5fc6aa705cc965e0232068096ab73553ab9893cbf986050e2bef0908",
+    "frames_equal_cp13": 8
+  },
+  "verified": [
+    "Root verified live input/artifact bindings, inspected implementation and native probe, and reviewed the delegated consumer-checker changes.",
+    "All17 extracted PDE starters compile using official Processing preprocessor. Extracted JAR raster consumer verifies interpolation, ownership and code source.",
+    "Extracted RampMarks executes five native edit/reset states plus actual save; all six PNGs pixel-equal root-inspected candidate output.",
+    "All80 prior core/adapter classes and36 prior example/font members preserved byte-for-byte; only two StopRamp classes added. MIT and font/third-party notices preserved.",
+    "Default WarpMarks candidate runner passes unchanged seven-state lifecycle; all eight outputs equal CP13 accepted candidate. First regression attempt was refused by the shared lease while extracted validation ran; terminal attempt retained, rerun after release passed.",
+    "36 focused catalog/source-bundle tests and contract-cluster structural gate pass. Full catalog/reference validation passes."
+  ],
+  "limits": [
+    "No new original-sketch recreation credit or non-Java target support.",
+    "Externally supplied pinned JDK, Processing and font/notice inputs remain required.",
+    "Acceptance identifies this archive; changed future builds require review."
+  ]
+}

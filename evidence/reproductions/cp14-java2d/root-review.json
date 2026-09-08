@@ -1,0 +1,28 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java JAVA2D RampMarks technique-level workflow; distribution pending",
+  "native": "evidence/reproductions/cp14-java2d/native.json",
+  "native_sha256": "674eda5fdb236ec9291c5660e34451a2ab407c52ff0daa0f9042771ed2f4d5fc",
+  "plan": "design/capabilities/ramp-marks-native-plan.md",
+  "plan_sha256": "8dca8afd99cb154b62fadcc0140205b21784566af24b87435c3030bbd538d75a",
+  "verified": [
+    "Five actual draw states and ordered injected tcf0s events; 729 identical ordered circle geometries in each state.",
+    "Stop and palette edits rebuild ramp; radial edit retains it. All edits change pixels; reset exactly restores baseline.",
+    "Actual saved PNG equals final framebuffer and retained image; 300ms quiet with no extra draw.",
+    "Root reviewed probe and verified all source/runtime/artifact hashes unchanged against live files."
+  ],
+  "visual_observations": {
+    "baseline": "Horizontal blue/teal-to-warm transition on a regular dot grid.",
+    "shifted": "Cooler colors occupy more of the unchanged grid.",
+    "recolored": "Purple and red transition through cream to blue on unchanged geometry.",
+    "radial": "The recolored progression radiates from the center across the same circle grid."
+  },
+  "limits": [
+    "No original-sketch recreation credit.",
+    "Only JAVA2D density1 workflow validated; no other renderer or target claim.",
+    "Injected events, not physical keyboard automation.",
+    "Extracted distribution validation remains pending."
+  ]
+}

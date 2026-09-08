@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Verify a Java source bundle as a freshly extracted consumer; optional native WarpMarks probe."""
+"""Verify a Java source bundle as a freshly extracted consumer; optional native starter probe."""
 from __future__ import annotations
 import argparse, hashlib, json, os, subprocess, zipfile, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 ROOT=Path(__file__).resolve().parents[1]
 from tools.check_field_marks_pde import NAMES
+from tools.run_warp_marks_java import PROFILES
 
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def run(cmd,cwd,timeout=120): return subprocess.run(cmd,cwd=cwd,env={k:v for k,v in os.environ.items() if k not in ('XDG_CONFIG_HOME','SNAP_USER_COMMON','APPDATA')},text=True,capture_output=True,check=True,timeout=timeout)
@@ -23,8 +24,8 @@ def safe_extract(archive,out):
   z.extractall(out)
  return names
 def main():
- ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--archive',type=Path,required=True);ap.add_argument('--build-report',type=Path,required=True);ap.add_argument('--java-home',type=Path,required=True);ap.add_argument('--processing-core',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--native',action='store_true');a=ap.parse_args()
- out=fresh(a.output);archive=a.archive.resolve();report_path=a.build_report.resolve();jdk=a.java_home.resolve();core=a.processing_core.resolve();tool=Path(__file__).resolve();pre=ROOT/'.work/toolchains/processing-4.5.6/preprocessor';inputs=[archive,report_path,tool,ROOT/'packages/java/source-bundle.json',ROOT/'tools/check_field_marks_pde.py',ROOT/'tools/with_native_render_lock.py',core,jdk/'bin/java',jdk/'bin/javac',jdk/'release',jdk/'lib/modules',ROOT/'tests/native/PreprocessSketch.java',ROOT/'tests/native/WarpMarksProbe.java',*[pre/n for n in NAMES]]
+ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--archive',type=Path,required=True);ap.add_argument('--build-report',type=Path,required=True);ap.add_argument('--java-home',type=Path,required=True);ap.add_argument('--processing-core',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--native',action='store_true');ap.add_argument('--native-sketch',choices=sorted(PROFILES),default='WarpMarks');a=ap.parse_args()
+ out=fresh(a.output);archive=a.archive.resolve();report_path=a.build_report.resolve();jdk=a.java_home.resolve();core=a.processing_core.resolve();tool=Path(__file__).resolve();pre=ROOT/'.work/toolchains/processing-4.5.6/preprocessor';stem,frame_ids,keys=PROFILES[a.native_sketch];probe=ROOT/'tests/native'/(a.native_sketch+'Probe.java');inputs=[archive,report_path,tool,ROOT/'packages/java/source-bundle.json',ROOT/'tools/check_field_marks_pde.py',ROOT/'tools/run_warp_marks_java.py',ROOT/'tools/with_native_render_lock.py',core,jdk/'bin/java',jdk/'bin/javac',jdk/'release',jdk/'lib/modules',ROOT/'tests/native/PreprocessSketch.java',probe,*[pre/n for n in NAMES]]
  for p in inputs:
   if not p.is_file():raise RuntimeError('missing input '+str(p))
  before={str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p):sha(p) for p in inputs};members=safe_extract(archive,out/'extract');base=out/'extract/procedurals';manifest=json.loads((ROOT/'packages/java/source-bundle.json').read_text());build=json.loads(report_path.read_text());jar=base/'library/procedurals.jar';adapter=base/'library/procedurals-processing-adapter.jar'
@@ -65,10 +66,11 @@ def main():
  native_result=None
  if a.native:
   (out/'native').mkdir()
-  run([str(jdk/'bin/javac'),'--release','17','-cp',str(classes)+os.pathsep+cp,'-d',str(classes),str(ROOT/'tests/native/WarpMarksProbe.java')],out);native_result=run(['python3',str(ROOT/'tools/with_native_render_lock.py'),'--timeout','120','--','xvfb-run','-a',str(jdk/'bin/java'),'-Duser.home='+str(out/'home'),'-cp',str(classes)+os.pathsep+cp,'WarpMarksProbe',str(out/'native'),str(jar)],out,150).stdout.strip()
+  run([str(jdk/'bin/javac'),'--release','17','-cp',str(classes)+os.pathsep+cp,'-d',str(classes),str(probe)],out);native_result=run(['python3',str(ROOT/'tools/with_native_render_lock.py'),'--timeout','120','--','xvfb-run','-a',str(jdk/'bin/java'),'-Duser.home='+str(out/'home'),'-cp',str(classes)+os.pathsep+cp,a.native_sketch+'Probe',str(out/'native'),str(jar)],out,150).stdout.strip()
  if a.native:
   native_result=json.loads((out/'native/native.json').read_text())
-  if native_result.get('status')!='passed' or native_result.get('frames')!=7 or native_result.get('keys')!='wwwfp0s' or native_result.get('core_code_source')!=str(jar):raise RuntimeError('incomplete extracted native proof')
+  if native_result.get('status')!='passed' or native_result.get('frames')!=len(frame_ids) or native_result.get('keys')!=keys or native_result.get('core_code_source')!=str(jar):raise RuntimeError('incomplete extracted native proof')
+  if [frame['id'] for frame in native_result.get('frame_records',[])]!=frame_ids:raise RuntimeError('unexpected extracted native frame records')
  extracted_after={str(p.relative_to(out)):sha(p) for p in (out/'extract').rglob('*') if p.is_file()}
  if extracted_before!=extracted_after:raise RuntimeError('extracted files changed during consumer validation')
  after={str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p):sha(p) for p in inputs}

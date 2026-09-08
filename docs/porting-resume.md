@@ -13,6 +13,21 @@ local packages on all four targets. Radial-profile surfaces additionally have ac
 JavaScript/Python cores, root exports, ProfileMarks native workflows and local0.7 packages.
 Those scoped records do not establish Android or completed shared radial support.
 
+## Java buildout additions to the deferred queue
+
+Current accepted Java baseline: `19365d83` (Java0.16, 16 operations and16 workflows).
+The earlier `88ac268d` above records the scheduling-change checkpoint, not the latest
+Java baseline. RasterRemap2D and WarpMarks are accepted Java additions awaiting ports.
+StopRamp and RampMarks are in local Java development; their core review and candidate
+native results do not yet establish a packaged baseline. Port only an explicitly accepted,
+pushed revision after integration resumes.
+
+Keep deferred work in this order: finish Android ProfileMarks lifecycle validation and
+root integration; then port the accepted Delaunay, target-spring, occupied-lattice,
+line-pool and raster capabilities in bounded batches. Add StopRamp only after Java
+package acceptance. Preserve shared fixtures and contracts; workers must not author root
+acceptance records. No port task is required to finish the current Java milestone.
+
 ## Android ProfileMarks draft
 
 Unfinished implementation, manifest, README, builder, native probe and runner are retained

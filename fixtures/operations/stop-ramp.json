@@ -1,0 +1,428 @@
+{
+  "operation": "color.stop-ramp",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "catalog_sha256": "7a2d7c1e2e1df26e07a4b88012f8164bef611b76eb8920f22ce0bc1167b95fc6",
+  "oracle": "Root hand-derived RGB channel and interval arithmetic; no native evaluator used for expected values.",
+  "cases": [
+    {
+      "id": "unequal_intervals",
+      "input": {
+        "stops": [
+          {
+            "position": 0,
+            "color": 0
+          },
+          {
+            "position": 0.25,
+            "color": 16711680
+          },
+          {
+            "position": 1,
+            "color": 16777215
+          }
+        ]
+      },
+      "output": {
+        "stops": [
+          {
+            "position": 0,
+            "color": 0
+          },
+          {
+            "position": 0.25,
+            "color": 16711680
+          },
+          {
+            "position": 1,
+            "color": 16777215
+          }
+        ]
+      },
+      "serialized": {
+        "stops": [
+          {
+            "position": 0,
+            "color": 0
+          },
+          {
+            "position": 0.25,
+            "color": 16711680
+          },
+          {
+            "position": 1,
+            "color": 16777215
+          }
+        ]
+      },
+      "queries": [
+        {
+          "input": -1e+308,
+          "output": 0
+        },
+        {
+          "input": 0,
+          "output": 0
+        },
+        {
+          "input": 0.125,
+          "output": 8388608
+        },
+        {
+          "input": 0.25,
+          "output": 16711680
+        },
+        {
+          "input": 0.625,
+          "output": 16744576
+        },
+        {
+          "input": 1,
+          "output": 16777215
+        },
+        {
+          "input": 1e+308,
+          "output": 16777215
+        }
+      ]
+    },
+    {
+      "id": "sparse_end_holds",
+      "input": {
+        "stops": [
+          {
+            "position": 0.25,
+            "color": 16711680
+          },
+          {
+            "position": 0.75,
+            "color": 255
+          }
+        ]
+      },
+      "output": {
+        "stops": [
+          {
+            "position": 0.25,
+            "color": 16711680
+          },
+          {
+            "position": 0.75,
+            "color": 255
+          }
+        ]
+      },
+      "serialized": {
+        "stops": [
+          {
+            "position": 0.25,
+            "color": 16711680
+          },
+          {
+            "position": 0.75,
+            "color": 255
+          }
+        ]
+      },
+      "queries": [
+        {
+          "input": 0,
+          "output": 16711680
+        },
+        {
+          "input": 0.5,
+          "output": 8388736
+        },
+        {
+          "input": 1,
+          "output": 255
+        }
+      ]
+    },
+    {
+      "id": "one_stop",
+      "input": {
+        "stops": [
+          {
+            "position": 0.5,
+            "color": 1193046
+          }
+        ]
+      },
+      "output": {
+        "stops": [
+          {
+            "position": 0.5,
+            "color": 1193046
+          }
+        ]
+      },
+      "serialized": {
+        "stops": [
+          {
+            "position": 0.5,
+            "color": 1193046
+          }
+        ]
+      },
+      "queries": [
+        {
+          "input": -1e+308,
+          "output": 1193046
+        },
+        {
+          "input": 0.5,
+          "output": 1193046
+        },
+        {
+          "input": 1e+308,
+          "output": 1193046
+        }
+      ]
+    },
+    {
+      "id": "half_up_and_neighbor",
+      "input": {
+        "stops": [
+          {
+            "position": 0,
+            "color": 0
+          },
+          {
+            "position": 1,
+            "color": 16777215
+          }
+        ]
+      },
+      "output": {
+        "stops": [
+          {
+            "position": 0,
+            "color": 0
+          },
+          {
+            "position": 1,
+            "color": 16777215
+          }
+        ]
+      },
+      "serialized": {
+        "stops": [
+          {
+            "position": 0,
+            "color": 0
+          },
+          {
+            "position": 1,
+            "color": 16777215
+          }
+        ]
+      },
+      "queries": [
+        {
+          "input": 0.49999999999999994,
+          "output": 8355711
+        },
+        {
+          "input": 0.5,
+          "output": 8421504
+        }
+      ]
+    },
+    {
+      "id": "narrow_interval",
+      "input": {
+        "stops": [
+          {
+            "position": 0.5,
+            "color": 0
+          },
+          {
+            "position": 0.5000000000000002,
+            "color": 16777215
+          }
+        ]
+      },
+      "output": {
+        "stops": [
+          {
+            "position": 0.5,
+            "color": 0
+          },
+          {
+            "position": 0.5000000000000002,
+            "color": 16777215
+          }
+        ]
+      },
+      "serialized": {
+        "stops": [
+          {
+            "position": 0.5,
+            "color": 0
+          },
+          {
+            "position": 0.5000000000000002,
+            "color": 16777215
+          }
+        ]
+      },
+      "queries": [
+        {
+          "input": 0.5000000000000001,
+          "output": 8421504
+        }
+      ]
+    },
+    {
+      "id": "subnormal_interval",
+      "input": {
+        "stops": [
+          {
+            "position": 0,
+            "color": 0
+          },
+          {
+            "position": 1e-323,
+            "color": 16777215
+          }
+        ]
+      },
+      "output": {
+        "stops": [
+          {
+            "position": 0,
+            "color": 0
+          },
+          {
+            "position": 1e-323,
+            "color": 16777215
+          }
+        ]
+      },
+      "serialized": {
+        "stops": [
+          {
+            "position": 0,
+            "color": 0
+          },
+          {
+            "position": 1e-323,
+            "color": 16777215
+          }
+        ]
+      },
+      "queries": [
+        {
+          "input": 5e-324,
+          "output": 8421504
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "input": {
+        "stops": []
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "duplicate",
+      "input": {
+        "stops": [
+          {
+            "position": 0,
+            "color": 0
+          },
+          {
+            "position": 0,
+            "color": 1
+          }
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "descending",
+      "input": {
+        "stops": [
+          {
+            "position": 1,
+            "color": 0
+          },
+          {
+            "position": 0,
+            "color": 1
+          }
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "out_of_domain",
+      "input": {
+        "stops": [
+          {
+            "position": 1.1,
+            "color": 0
+          }
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "argb_not_rgb",
+      "input": {
+        "stops": [
+          {
+            "position": 0,
+            "color": 4294901760
+          }
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "extra_key",
+      "input": {
+        "stops": [
+          {
+            "position": 0,
+            "color": 0,
+            "opacity": 1
+          }
+        ]
+      },
+      "error": "INVALID_INPUT"
+    }
+  ],
+  "query_cases": [
+    {
+      "id": "invalid_query_0",
+      "input": null,
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "invalid_query_1",
+      "input": true,
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "invalid_query_2",
+      "input": "0.5",
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "invalid_query_3",
+      "input": [],
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "invalid_query_4",
+      "input": {},
+      "error": "INVALID_QUERY"
+    }
+  ]
+}

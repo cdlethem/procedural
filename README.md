@@ -4,11 +4,11 @@ Procedurals is an evidence-backed generative-art toolkit in development. It is b
 from a systematic survey of 901 Processing sketches into a small, composable set of generators,
 transforms, drawing operations, templates, and tools.
 
-Sixteen editable starters begin from artistic decisions: place independent marks, trace paths,
+Seventeen editable starters begin from artistic decisions: place independent marks, trace paths,
 scatter differently sized forms, divide a surface into cells, give shapes grain, grow branches,
 build a 3D form from an axial radius profile, use letters as repeated marks along paths,
 turn point arrangements into connected facets, wire and grain, or give an arrangement
-explicit target-driven spring motion, route occupied lattice paths, build clustered 3D relief, compose a faceted city, layer a banded night landscape, grow fine branches by cutting an initial stroke, or warp a captured pattern through a field.
+explicit target-driven spring motion, route occupied lattice paths, build clustered 3D relief, compose a faceted city, layer a banded night landscape, grow fine branches by cutting an initial stroke, warp a captured pattern through a field, or position color transitions independently of geometry.
 FieldMarks and PathMarks have scoped native validation across their declared targets.
 PlacementMarks, RegionMarks, GrainMarks and BranchMarks have accepted Processing Java/JAVA2D starter
 reviews. ProfileMarks has accepted scoped Processing P3D validation. GlyphMarks has accepted
@@ -22,16 +22,18 @@ CityMarks adds a reviewed structural recreation of `ciscis002` using four existi
 LandscapeMarks adds a reviewed structural recreation of `parapara`, also without a new core operation.
 CutBranchMarks adds mutable interior-cut branching with retained geometry and scoped P2D acceptance.
 WarpMarks adds reusable raster remapping with retained sources and scoped JAVA2D edit/save validation.
-Ports of these newer workflows to JavaScript, py5 and Android are deferred. The local Java 0.16.0 source bundle
-contains all sixteen starters and sixteen reusable operations. It is not a published registry
+RampMarks adds unequal noncyclic color stops with geometry-preserving edits and radial transfer.
+Ports of these newer workflows to JavaScript, py5 and Android are deferred. The local Java 0.17.0 source bundle
+contains all seventeen starters and seventeen reusable operations. It is not a published registry
 release. An experimental [Java recipe preview](docs/java-recipe-preview.md) exports FieldMarks,
 PathMarks, placement-bars and region-panels as editable standalone projects. General portable recipes, MCP and web tools
 remain in the roadmap.
 
 Build from a fresh checkout with [the Java source-bundle instructions](docs/building-java-from-source.md).
 
+Open [RampMarks](docs/ramp-marks.md) to control where colors transition.
 Open [WarpMarks](docs/warp-marks.md) to bend a captured pattern through noise or an analytic field.
-The accepted local archive is identified in [the Java0.16 review](evidence/distribution/cp13-java-review.json).
+The accepted local archive is identified in [the Java0.17 review](evidence/distribution/cp14-java-review.json).
 
 Start with [a field of independent marks](docs/getting-started.md),
 [paths and their marks](docs/path-marks.md),
@@ -47,7 +49,7 @@ Start with [a field of independent marks](docs/getting-started.md),
 [clustered 3D relief](docs/relief-marks.md), or
 [faceted cities](docs/city-marks.md), or
 [banded landscapes](docs/landscape-marks.md).
-[Build and install Java 0.16.0](docs/building-java-from-source.md) for all sixteen starters.
+[Build and install Java 0.17.0](docs/building-java-from-source.md) for all seventeen starters.
 [Build the Android restoration patches](docs/installing-android-restoration.md) for the six
 ported starters, preserving their existing core versions.
 

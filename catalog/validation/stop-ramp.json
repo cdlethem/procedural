@@ -1,0 +1,136 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "color.stop-ramp",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/stop-ramp.json",
+    "catalog_sha256": "7a2d7c1e2e1df26e07a4b88012f8164bef611b76eb8920f22ce0bc1167b95fc6"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/color/StopRamp.java": "9230378dcd2a1e34717ad8130d66e8d93d5af944b383b353e5d1665c06d051e5"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/stop-ramp-java.json": "c45c89a91a74d347452095233270716dcebbb8672e6615322ed607c03d480011",
+          "evidence/conformance/stop-ramp-java-root-review.json": "bda2b90801d6bf8cbd4124acdeceb0d30e6069442fdbacb839b4c7805a660e68",
+          "fixtures/operations/stop-ramp.json": "bb3be6de37b46f5fe2c5907e16277f97c8526587cf2a0f2049860338da7095cd",
+          "evidence/reproductions/cp14-java2d/native.json": "674eda5fdb236ec9291c5660e34451a2ab407c52ff0daa0f9042771ed2f4d5fc",
+          "evidence/reproductions/cp14-java2d/root-review.json": "0407edf74e520c32dd92d13d7df7f88e31fd18cae3abc4df6542f8e523f0b46e"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/stop-ramp-java.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/stop-ramp-catalog-review.json",
+          "sha256": "51f01c0935a4aec26e383d895ab7c5d4114e6a518ee3176466221a6199a0d61b"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "RGB24 positioned stop sampling and five-state RampMarks edit/transfer/save workflow. No original recreation or other target claim."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/color/StopRamp.java": "9230378dcd2a1e34717ad8130d66e8d93d5af944b383b353e5d1665c06d051e5",
+          "packages/java-processing/examples/RampMarks/RampMarks.pde": "930f148a45c7cea6da35608ef29dd6d45b59685cc14614beb6eb5b9259bcfc96"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/stop-ramp-java.json": "c45c89a91a74d347452095233270716dcebbb8672e6615322ed607c03d480011",
+          "evidence/conformance/stop-ramp-java-root-review.json": "bda2b90801d6bf8cbd4124acdeceb0d30e6069442fdbacb839b4c7805a660e68",
+          "fixtures/operations/stop-ramp.json": "bb3be6de37b46f5fe2c5907e16277f97c8526587cf2a0f2049860338da7095cd",
+          "evidence/reproductions/cp14-java2d/native.json": "674eda5fdb236ec9291c5660e34451a2ab407c52ff0daa0f9042771ed2f4d5fc",
+          "evidence/reproductions/cp14-java2d/root-review.json": "0407edf74e520c32dd92d13d7df7f88e31fd18cae3abc4df6542f8e523f0b46e"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp14-java2d/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/stop-ramp-catalog-review.json",
+          "sha256": "51f01c0935a4aec26e383d895ab7c5d4114e6a518ee3176466221a6199a0d61b"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "RGB24 positioned stop sampling and five-state RampMarks edit/transfer/save workflow. No original recreation or other target claim."
+        }
+      },
+      "technique": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/color/StopRamp.java": "9230378dcd2a1e34717ad8130d66e8d93d5af944b383b353e5d1665c06d051e5",
+          "packages/java-processing/examples/RampMarks/RampMarks.pde": "930f148a45c7cea6da35608ef29dd6d45b59685cc14614beb6eb5b9259bcfc96"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/stop-ramp-java.json": "c45c89a91a74d347452095233270716dcebbb8672e6615322ed607c03d480011",
+          "evidence/conformance/stop-ramp-java-root-review.json": "bda2b90801d6bf8cbd4124acdeceb0d30e6069442fdbacb839b4c7805a660e68",
+          "fixtures/operations/stop-ramp.json": "bb3be6de37b46f5fe2c5907e16277f97c8526587cf2a0f2049860338da7095cd",
+          "evidence/reproductions/cp14-java2d/native.json": "674eda5fdb236ec9291c5660e34451a2ab407c52ff0daa0f9042771ed2f4d5fc",
+          "evidence/reproductions/cp14-java2d/root-review.json": "0407edf74e520c32dd92d13d7df7f88e31fd18cae3abc4df6542f8e523f0b46e"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/reproductions/cp14-java2d/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/stop-ramp-catalog-review.json",
+          "sha256": "51f01c0935a4aec26e383d895ab7c5d4114e6a518ee3176466221a6199a0d61b"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "RGB24 positioned stop sampling and five-state RampMarks edit/transfer/save workflow. No original recreation or other target claim."
+        }
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

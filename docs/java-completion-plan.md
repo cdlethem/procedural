@@ -3,7 +3,7 @@
 Current maintainer objective: build a feature-complete Java implementation. Ports are
 paused per `porting-resume.md`; recipes/MCP/web remain a separate roadmap, not prerequisites
 for making the native Java library useful. This plan does not claim feature completeness
-or replace the project's mission with the current15 operations.
+or replace the project's mission with the current17 operations.
 
 ## Completion requirements
 
@@ -28,18 +28,22 @@ The broader corpus benchmark remains a separate strict certification claim.
 
 ## Existing capability baseline
 
-Java0.15 delivers15 operations and15 workflows: field marks, integrated paths, constrained
+Java0.17 assembles17 operations and17 workflows: field marks, integrated paths, constrained
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
-paths, plus relief/city/landscape compositions. Only three selected original structural
+paths, raster remapping and positioned color ramps, plus relief/city/landscape compositions. Only three selected original structural
 recreations are demonstrated. Consult current operation attestations rather than historical
 status paragraphs in the provisional API design.
 
-## Bounded next batch: raster warping
+## Completed batch: raster warping (CP13)
 
 Artist task: render a pattern once, bend its pixels with a spatial displacement field, then
-change the field strength or pattern without reimplementing image sampling. This adds a
-raster transform capability currently absent from the package.
+change the field strength or pattern without reimplementing image sampling. This added a
+raster transform capability previously absent from the package.
+
+Delivered at `19365d83`, with core/native/extracted-package acceptance in
+`evidence/distribution/cp13-java-review.json`. The following records the preimplementation
+plan; all four delivery steps below are complete.
 
 Decisive initial evidence: `survey/out/2016/Generativos/colorRamp/notes.md` describes copying
 an image and bilinearly sampling displaced coordinates, with noise supplying displacement
@@ -83,3 +87,19 @@ are not inferred from mislabeled line-pool/Delaunay examples.
 Root owns admission and final acceptance. Luna/Terra perform bounded evidence and frozen
 implementation work. Sol remains paused. Reuse existing infrastructure and run focused
 checks once per meaningful change; repair failures without widening acceptance criteria.
+
+## Current bounded batch: positioned color stops (CP14)
+
+Root admitted color.stop-ramp after reviewing colorRamp, boxDepth, celular and triangleRamp.
+The contract and analytic fixtures are frozen; Java core review passes, and native
+workflow review passes. Extracted distribution acceptance is recorded separately. See
+`design/capabilities/cp14-stop-ramp-admission.md`. Artist task: move a color transition or
+change its width independently of geometry, using unequal noncyclic stops. CyclicPalette
+remains the equally spaced repeating alternative.
+
+Fresh Terra assignment owns only StopRamp Java core, focused native core tests and its
+runner. Root owns contract/fixtures, native RampMarks edit/transfer review, shared support
+and integration. Preserve the existing source-bundle builder and consumer infrastructure;
+do not add another historical chain of archive packagers. Next stop is a reviewed core,
+then one bounded native example and extracted Java distribution. Stop-position and palette
+values remain caller artwork; no unsupported recommended ranges are introduced.
