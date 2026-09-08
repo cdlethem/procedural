@@ -50,6 +50,7 @@ def admit_target(recipe, target, root=ROOT):
                 separators=(",", ":"), ensure_ascii=False, allow_nan=False).encode("utf-8")),
             "validation_inputs": {name: sha(root / name) for name in (
                 "tools/validate_recipe_draft.py", "tools/operation_attestations.py",
+                "tools/reviewed_export_extension.py",
                 "catalog/recipes/recipe.schema.json", "catalog/recipes/execution-bindings.json")}}
 
 def export_java(recipe):

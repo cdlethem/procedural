@@ -113,7 +113,7 @@ def build(root, output, jdk, font, notice, processing_core):
     files['procedurals/examples/GlyphMarks/data/GlyphMarks.ttf'] = font
     files['procedurals/examples/GlyphMarks/data/FONT-LICENSE.txt'] = notice
     files['procedurals/GlyphMarks-FONT-LICENSE.txt'] = notice
-    inputs += [Path(__file__).resolve(), root / 'tools/operation_attestations.py', processing_core, *files.values(),
+    inputs += [Path(__file__).resolve(), root / 'tools/operation_attestations.py', root / 'tools/reviewed_export_extension.py', processing_core, *files.values(),
                *[jdk / n for n in ('bin/java', 'bin/javac', 'release', 'lib/modules')]]
     inputs = sorted(set(p.resolve() for p in inputs))
     label = lambda p: str(p.relative_to(root)) if p.is_relative_to(root) else str(p)

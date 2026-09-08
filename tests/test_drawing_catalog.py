@@ -51,6 +51,10 @@ class DrawingCatalogTests(unittest.TestCase):
             destination=self.root/relative
             destination.parent.mkdir(parents=True,exist_ok=True)
             shutil.copyfile(ROOT/relative,destination)
+        # These mutation fixtures exercise the historical CP2 extension in isolation.
+        placement_review=json.loads((ROOT/'evidence/conformance/placement-export-compatibility-review.json').read_text())
+        for relative,entry in placement_review['extensions'].items():
+            (self.root/relative).write_text(entry['before'])
         self.write_extension_review()
 
     def write(self):
@@ -93,6 +97,9 @@ class DrawingCatalogTests(unittest.TestCase):
         destination=self.root/self.extension_review
         destination.parent.mkdir(parents=True,exist_ok=True)
         destination.write_text(json.dumps(value))
+
+    def test_current_repository_profile(self):
+        self.assertEqual(check(ROOT),[])
 
     def test_current_profile(self):
         self.assertEqual(check(self.root),[])

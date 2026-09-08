@@ -1,6 +1,10 @@
 """Validate source-bound, independently reviewed scoped native drawing claims."""
 import hashlib
 import json
+if __package__:
+    from .reviewed_export_extension import historical_export_bytes
+else:
+    from reviewed_export_extension import historical_export_bytes
 
 ADDITIVE_EXPORT_REVIEW='evidence/reproductions/cp2-export-extension-review.json'
 I1_REVIEW='evidence/distribution/i1-review.json'
@@ -48,7 +52,8 @@ def semantics(profile):
 def _source_map_matches(root, source_map, required):
     if not isinstance(source_map,dict): return False
     for relative in required:
-        if source_map.get(relative)!=digest(root/relative): return False
+        if (source_map.get(relative)!=digest(root/relative)
+                and historical_export_bytes(root,relative,source_map.get(relative)) is None): return False
     return True
 
 def _accepted_review(value):
@@ -94,10 +99,16 @@ def additive_path_export_extension(root,target_name,native_review,relative,expec
                 or entry['native_review']!=extension['native_review']
                 or entry['deletions']!=extension['deletions']):
             return ['additive path export supplemental extension binding differs']
+        current_bytes=(root/relative).read_bytes()
         current=digest(root/relative)
         if entry['current_sha256']!=current:
+            prior=historical_export_bytes(root,relative,entry['current_sha256'])
+            if prior is not None:
+                current_bytes=prior
+                current=hashlib.sha256(prior).hexdigest()
+        if entry['current_sha256']!=current:
             return ['additive path export current hash differs: '+relative]
-        historical=_remove_exact_lines((root/relative).read_text(),extension['deletions'])
+        historical=_remove_exact_lines(current_bytes.decode('utf-8'),extension['deletions'])
         if historical is None or hashlib.sha256(historical.encode()).hexdigest()!=expected_historical:
             return ['additive path export deletion reconstruction differs: '+relative]
 

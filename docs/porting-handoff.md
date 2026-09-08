@@ -31,18 +31,17 @@ noise and gradient paths. FieldMarks/PathMarks have scoped native target evidenc
 shared circle placement/filter result, then follow dependency order; see
 `design/port-batch-01.md` and the frozen contracts, including all auxiliary fixture sections.
 
-An unfinished JS placement core/runner and four browser example files are included as
-**drafts**, without index exports, browser acceptance, target attestations or package release:
+Root integrated the reviewed p5.js/py5 circle placement cores, public exports and
+PlacementMarks workflows in `a7ea7ec5`. The exact source-bound native evidence and
+root integration findings are in `design/port-batch-01-root-review.md`. Python's
+integrated core conformance report is tracked; both native workflows have reviewed
+representative images. Shared placement target attestations and Android remain pending.
+Do not infer package release acceptance from source integration alone.
 
-- `packages/javascript/src/circle-placements.js`
-- `tests/native/circle-placements-javascript.mjs`
-- `packages/javascript/examples/placement-marks/`
-
-Root checked their syntax only for this baseline. Worker reports of fixture/helper passes
-are not root acceptance; the earlier local fixture report predates final runner changes.
-Run the final fixture runner in the fresh checkout, review semantics/ownership and then run
-native acceptance from `design/capabilities/placement-marks-p5-acceptance.md`.
-Do not infer support from these files' presence. No p5 PlacementMarks native runner exists yet.
+The older FieldMarks/PathMarks evidence remains historical. An exact root-reviewed
+entrypoint compatibility record accounts for the added exports without changing old
+render hashes: `evidence/conformance/placement-export-compatibility-review.json`.
+Unrelated edits still invalidate the source checks.
 
 Use `packages/python/` and `packages/java-android/` for the remaining targets. LinePool2D
 requires reproducible fdlibm-style elementary math, not merely similar host sin/cos/atan2.

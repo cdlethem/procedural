@@ -1,5 +1,15 @@
 # Project state
 
+## Reviewed export compatibility restored
+
+The full catalog check exposed stale historical CP2 entrypoint hashes after port integration.
+Root preserved all old evidence and added an exact two-entrypoint compatibility review,
+bound to current source/evidence hashes and prior bytes. Only those reviewed changes can
+use historical support; unrelated edits, changed dependencies and draft reviews reject.
+39 focused attestation/drawing/compatibility tests and9 export/source-bundle tests pass;
+full catalog check passes. Export/build provenance now includes the new validation helper.
+Placement-specific target attestations and Android review remain next; no operation count change.
+
 ## Placement p5.js/py5 source integration reviewed
 
 Root verified p5.js/py5 source and environment hashes,20 PNG identities and inspected

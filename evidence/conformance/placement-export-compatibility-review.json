@@ -1,0 +1,33 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Only the exact placement export additions and Python __all__ reorder. Historical CP2 source bytes remain historical; unchanged earlier operations retain their existing evidence. No new target or renderer claim is granted by this compatibility record.",
+  "implementation_sha256": {
+    "packages/javascript/src/index.js": "60c98be5f180bf94cf8a3d41719f3642eeed54c33e7956ea28dc27aba8070e1f",
+    "packages/python/procedurals/__init__.py": "9f00137c84bdbcd62f2fdaa9c3aa37e732578eef63e04ecf7ddd5dfdad645209",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "tools/reviewed_export_extension.py": "efa2d0f00676c5b305c52712213d0a3b267bc8f7b46d05843efd8539cf2c0a1d"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/circle-placements-python.json": "aa48f1b47f7c27e44fc0df89da6b4d029fe7e48a19dab4b2e9755528bb3a635d",
+    "evidence/conformance/p5js-placement-marks.json": "70284ed473e74409a3d115f4ffefd31ec92e0ae2af117279f2a75bb6bb8e4818",
+    "evidence/conformance/py5-placement-marks.json": "c100f0aa2d4b71ac9b4ae41072238d52174b1be1b156574b31edbe0290d7b008"
+  },
+  "extensions": {
+    "packages/javascript/src/index.js": {
+      "before": "export { regularGrid, RegularGridError } from \"./regular-grid.js\";\nexport { gradientNoise2D01, GradientNoise2D01Error } from \"./gradient-noise-2d-01.js\";\nexport { cyclicPalette, CyclicPaletteError } from \"./cyclic-palette.js\";\nexport { gradientPath2D, GradientPathError } from \"./gradient-path.js\";\n",
+      "after": "export { regularGrid, RegularGridError } from \"./regular-grid.js\";\nexport { gradientNoise2D01, GradientNoise2D01Error } from \"./gradient-noise-2d-01.js\";\nexport { cyclicPalette, CyclicPaletteError } from \"./cyclic-palette.js\";\nexport { gradientPath2D, GradientPathError } from \"./gradient-path.js\";\nexport { orderedCircleFilter2D, seededCirclePlacement2D, CirclePlacementError } from \"./circle-placements.js\";\n"
+    },
+    "packages/python/procedurals/__init__.py": {
+      "before": "\"\"\"Portable procedural operations for Python.\"\"\"\n\nfrom .layout import GridError, regular_grid\nfrom .fields import GradientNoiseError, gradient_noise_2d_01\nfrom .colors import CyclicPaletteError, cyclic_palette\nfrom .paths import GradientPathError, gradient_path_2d\n\n__all__ = [\n    \"GradientNoiseError\",\n    \"GradientPathError\",\n    \"GridError\",\n    \"gradient_noise_2d_01\",\n    \"gradient_path_2d\",\n    \"regular_grid\",\n    \"CyclicPaletteError\",\n    \"cyclic_palette\",\n]\n",
+      "after": "\"\"\"Portable procedural operations for Python.\"\"\"\n\nfrom .layout import GridError, regular_grid\nfrom .fields import GradientNoiseError, gradient_noise_2d_01\nfrom .colors import CyclicPaletteError, cyclic_palette\nfrom .paths import GradientPathError, gradient_path_2d\nfrom .placements import (\n    CirclePlacementError,\n    ordered_circle_filter_2d,\n    seeded_circle_placement_2d,\n)\n\n__all__ = [\n \"CirclePlacementError\",\n \"CyclicPaletteError\",\n \"GradientNoiseError\",\n \"GradientPathError\",\n \"GridError\",\n \"cyclic_palette\",\n \"gradient_noise_2d_01\",\n \"gradient_path_2d\",\n \"ordered_circle_filter_2d\",\n \"regular_grid\",\n \"seeded_circle_placement_2d\",\n]\n"
+    }
+  },
+  "review": [
+    "Root inspected both entrypoint deltas: existing imports and exported names are preserved; only placement names are added.",
+    "Placement modules perform definitions/imports only; no rendering or operation invocation occurs at import.",
+    "Integrated Python fixture/access suite and p5 preparation check pass; native port source hashes and representative images reviewed."
+  ]
+}

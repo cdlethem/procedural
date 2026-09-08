@@ -6,6 +6,10 @@ import json
 import math
 from pathlib import Path
 from typing import Any
+if __package__:
+    from .reviewed_export_extension import historical_export_bytes
+else:
+    from reviewed_export_extension import historical_export_bytes
 
 KIND = "operation-implementation-attestation"
 SCHEMA_VERSION = 1
@@ -114,7 +118,8 @@ def _map_errors(root: Path, value: object, label: str) -> list[str]:
         path = safe_file(root, relative)
         if path is None:
             errors.append(f"{label}: unsafe or missing path {relative!r}")
-        elif not isinstance(expected, str) or digest(path) != expected:
+        elif not isinstance(expected, str) or (digest(path) != expected
+                and historical_export_bytes(root, relative, expected) is None):
             errors.append(f"{label}: stale hash for {relative}")
     return errors
 
