@@ -1,0 +1,110 @@
+{
+  "auxiliary": {
+    "cross_case_checks": [
+      {
+        "case": "zero-replacements-root",
+        "id": "zero-replacements-no-rng-draw",
+        "kind": "empty-selection-trace"
+      },
+      {
+        "cases": [
+          "selected-middle-parent-live-list-order",
+          "midpoint-x-collapse-index-one"
+        ],
+        "id": "one-unit-before-each-requested-split",
+        "kind": "selection-trace-count-equals-attempted-replacements-including-failing-draw"
+      },
+      {
+        "case": "selected-middle-parent-live-list-order",
+        "id": "child-ids-are-birth-identities-not-live-indices",
+        "kind": "stable-ids-in-mutation-ordered-result"
+      },
+      {
+        "id": "longer-history-is-not-final-output-prefix",
+        "kind": "explicit-non-prefix",
+        "long_case": "longer-replacement-history-not-final-prefix",
+        "short_case": "selected-middle-parent-live-list-order"
+      }
+    ],
+    "native_only_cases": [
+      {
+        "description": "NaN, +/-Infinity and arbitrary-size Python integer values whose binary64 conversion fails are INVALID_INPUT. Literal nonfinite JSON is intentionally absent.",
+        "id": "nonfinite-and-overflowing-numeric-carriers"
+      },
+      {
+        "description": "Recognized wrong carriers (Java BigInteger/BigDecimal/custom Number, JavaScript class instances or typed-array pairs, and Python custom mapping/list containers) are INVALID_INPUT. JavaScript active getters/proxies and analogous custom hooks are outside passive interchange and need not be universally detected or read.",
+        "id": "passive-input-carriers-only"
+      }
+    ],
+    "native_ownership_access_requirements": {
+      "requirements": [
+        "Mutating every caller input pair/config container after generation cannot alter retained bounds, ids or toValues output.",
+        "boundsAt returns a fresh detached four-double carrier; toValues is detached and a failed export leaves the retained result usable.",
+        "boundsInto validates index, bound, offset and all four writable binary64 slots before writing; every failure leaves destination slots untouched.",
+        "idAt, boundsAt and boundsInto enforce INVALID_INDEX before INDEX_OUT_OF_RANGE before INVALID_OUTPUT, with bool and unsafe numeric indices rejected.",
+        "Where a controlled fresh export/allocation failure can be exercised, it leaves a completed result unchanged and usable; otherwise record source proof and an explicit unexecuted marker. No partial result is exposed after generation failure."
+      ],
+      "status": "required for future native ports; not executed by these pure JSON fixtures"
+    },
+    "rng_provenance": {
+      "draws_for_zero_replacements": 0,
+      "draws_per_requested_replacement": 1,
+      "kind": "private-xoshiro128starstar-1-1",
+      "shared_cp3_fixture": "fixtures/operations/seeded-circle-placement.json",
+      "shared_cp3_fixture_sha256": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+      "shared_cp3_stream_evidence": "evidence/investigations/cp3-stream-oracle.json",
+      "shared_cp3_stream_evidence_sha256": "308a92e4b5fed9994ce1fe71630541b35f8de70fbf5bb85a5ed6fbbc411d2086"
+    }
+  },
+  "catalog_sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+  "fixture_status": "generated shared-contract vectors; native implementation validation is separate",
+  "input_sha256_after": {
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "tests/native/quadrant-partition-python.py": "5883674e3eba35f2df97301ca3aeea2f52804aaf41bf3a306f2ec370d70f3232"
+  },
+  "input_sha256_before": {
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "tests/native/quadrant-partition-python.py": "5883674e3eba35f2df97301ca3aeea2f52804aaf41bf3a306f2ec370d70f3232"
+  },
+  "operation": "layout.seeded-quadrant-partition-2d",
+  "scenarios": {
+    "allocation_failure": {
+      "executed": 0,
+      "reason": "host allocation failure is not safely injectable; native contract requires source proof or explicit unexecuted marker"
+    },
+    "cross_case_checks": {
+      "executed": 4,
+      "total": 4
+    },
+    "fixture_cases": {
+      "executed": 34,
+      "total": 34
+    },
+    "ownership_access": {
+      "checks": [
+        "input containers detached",
+        "bounds/to_values detached",
+        "bounds_into atomic",
+        "output carriers rejected",
+        "custom carriers rejected",
+        "huge integers rejected",
+        "nonfinite/huge-integer/bool input domains",
+        "custom mappings/pairs rejected",
+        "all accessor index/range precedence",
+        "invalid offsets unchanged",
+        "array(d) valid output"
+      ],
+      "executed": 11
+    },
+    "seed_vectors": {
+      "executed": 5,
+      "total": 5
+    }
+  },
+  "scope": "Python pure fixture and ownership/access conformance only; no renderer or target acceptance claim",
+  "status": "passed"
+}

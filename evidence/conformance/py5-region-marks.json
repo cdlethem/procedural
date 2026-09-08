@@ -1,0 +1,231 @@
+{
+  "status": "passed",
+  "scope": "Actual py5 RegionMarks callbacks; no physical-keyboard, package or source-recreation acceptance",
+  "states": [
+    {
+      "id": "baseline",
+      "cells": 301,
+      "marks": 301,
+      "revision": 1,
+      "retained": null,
+      "rgba_sha256": "b7a34d7460ea733fea4d435537c6ae74d620d9547ce2ead302d5e60d90e5ded0",
+      "settings": {
+        "seed": 42,
+        "replacements": 100,
+        "fraction": 0.5,
+        "grid_marks": false,
+        "alternate": false,
+        "authored": false
+      },
+      "image": "baseline.png",
+      "png_sha256": "a474e73d42f86945ca9c209a571ebd76e95bc236566d9b687a3a16e167462295"
+    },
+    {
+      "id": "grid",
+      "cells": 301,
+      "marks": 2709,
+      "revision": 2,
+      "retained": true,
+      "rgba_sha256": "0bdb8409e6e1d0e8ba4f28ccbe5133af3c2b97d4d3c79fd4225c2ddfe2a62b9d",
+      "settings": {
+        "seed": 42,
+        "replacements": 100,
+        "fraction": 0.5,
+        "grid_marks": true,
+        "alternate": false,
+        "authored": false
+      },
+      "image": "grid.png",
+      "png_sha256": "232ca3924a5b867602d62e9a7a1ce8f82e1821eaf88ab11067fd0c4776e9f3fe"
+    },
+    {
+      "id": "colour",
+      "cells": 301,
+      "marks": 2709,
+      "revision": 3,
+      "retained": true,
+      "rgba_sha256": "4eedccf05eb94390767133cf2a83bcbca8a138dd9e2b3d0165ec962fb9f46ba8",
+      "settings": {
+        "seed": 42,
+        "replacements": 100,
+        "fraction": 0.5,
+        "grid_marks": true,
+        "alternate": true,
+        "authored": false
+      },
+      "image": "colour.png",
+      "png_sha256": "6687decbc458ac6da5f5362fecaac7021b461eff7ff1036c88e061f468fc502c"
+    },
+    {
+      "id": "layout",
+      "cells": 301,
+      "marks": 2709,
+      "revision": 4,
+      "retained": false,
+      "rgba_sha256": "42e32a58520786c17c8875a202e536b5d147038ba30e06f0707314e1c34eea50",
+      "settings": {
+        "seed": 42,
+        "replacements": 100,
+        "fraction": 1.0,
+        "grid_marks": true,
+        "alternate": true,
+        "authored": false
+      },
+      "image": "layout.png",
+      "png_sha256": "f15240b71561e408833d68176e5fa1105631e6d1f33ed10c0b9bf6b89d66a380"
+    },
+    {
+      "id": "count",
+      "cells": 601,
+      "marks": 5409,
+      "revision": 5,
+      "retained": false,
+      "rgba_sha256": "9b706bb20942d53d0c62d35f7be0dc7e3b42656f4726a0ee918f974a529fe670",
+      "settings": {
+        "seed": 42,
+        "replacements": 200,
+        "fraction": 1.0,
+        "grid_marks": true,
+        "alternate": true,
+        "authored": false
+      }
+    },
+    {
+      "id": "seed",
+      "cells": 601,
+      "marks": 5409,
+      "revision": 6,
+      "retained": false,
+      "rgba_sha256": "a706b25528242859c633021ef42142543572843212c3b46fc675a8864e21da58",
+      "settings": {
+        "seed": 43,
+        "replacements": 200,
+        "fraction": 1.0,
+        "grid_marks": true,
+        "alternate": true,
+        "authored": false
+      }
+    },
+    {
+      "id": "authored",
+      "cells": 11,
+      "marks": 99,
+      "revision": 7,
+      "retained": false,
+      "rgba_sha256": "1c634ed0d92729b64d4d9307e0ef1baecd048d67ae24d515b9051dfc19b82f7b",
+      "settings": {
+        "seed": 43,
+        "replacements": 200,
+        "fraction": 1.0,
+        "grid_marks": true,
+        "alternate": true,
+        "authored": true
+      },
+      "image": "authored.png",
+      "png_sha256": "f012085c0bb09c519cb67acb0de8c887f6068cc20809fa70eda2110c1d05e758"
+    },
+    {
+      "id": "ignored-r",
+      "cells": 11,
+      "marks": 99,
+      "revision": 7,
+      "retained": true,
+      "rgba_sha256": "1c634ed0d92729b64d4d9307e0ef1baecd048d67ae24d515b9051dfc19b82f7b",
+      "settings": {
+        "seed": 43,
+        "replacements": 200,
+        "fraction": 1.0,
+        "grid_marks": true,
+        "alternate": true,
+        "authored": true
+      }
+    },
+    {
+      "id": "ignored-n",
+      "cells": 11,
+      "marks": 99,
+      "revision": 7,
+      "retained": true,
+      "rgba_sha256": "1c634ed0d92729b64d4d9307e0ef1baecd048d67ae24d515b9051dfc19b82f7b",
+      "settings": {
+        "seed": 43,
+        "replacements": 200,
+        "fraction": 1.0,
+        "grid_marks": true,
+        "alternate": true,
+        "authored": true
+      }
+    },
+    {
+      "id": "ignored-g",
+      "cells": 11,
+      "marks": 99,
+      "revision": 7,
+      "retained": true,
+      "rgba_sha256": "1c634ed0d92729b64d4d9307e0ef1baecd048d67ae24d515b9051dfc19b82f7b",
+      "settings": {
+        "seed": 43,
+        "replacements": 200,
+        "fraction": 1.0,
+        "grid_marks": true,
+        "alternate": true,
+        "authored": true
+      }
+    },
+    {
+      "id": "save",
+      "cells": 11,
+      "marks": 99,
+      "revision": 7,
+      "retained": true,
+      "rgba_sha256": "1c634ed0d92729b64d4d9307e0ef1baecd048d67ae24d515b9051dfc19b82f7b",
+      "settings": {
+        "seed": 43,
+        "replacements": 200,
+        "fraction": 1.0,
+        "grid_marks": true,
+        "alternate": true,
+        "authored": true
+      }
+    }
+  ],
+  "py5": "0.10.11a0",
+  "python": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]",
+  "java": "17.0.20.1",
+  "input_sha256_before": {
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/examples/region_marks/region_marks.py": "8b262cd56e4809caf5826a1880f887d092ee151a17f5d67adc58ca65352f5837",
+    "packages/python/examples/region_marks/sketch.py": "3c77776d352d8624576cd0bf10edefa1b5710eaaaaf8a8204e730208d66a7ebf",
+    "tests/native/py5_region_marks.py": "99d44f52a8c4233d4ce26377e4f847b07798242f84046d278cf436c970281e21",
+    "design/capabilities/region-marks-py5-acceptance.md": "8aed2ba07f3c5d40b0500aeff24d2c2acde583f129fcddc67e077896243758b0",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/__init__.py": "763066a534ae41d8a01605ceedcea2cd1c37139a25f4f2a9138e63b8a31410d7",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/sketch.py": "39557b47939444710c6cd2480e8dfadc03eddc28c87106c3fb262d2d087a8639",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/base.py": "018c896ebee9ab611ef7346cbeca8e354918cf5caa49a1465332a7b7cccd57da",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/core.jar": "2cd02df8ace61c45af5eddef74dc74608b87a50155e83f20c7b1e28642ddbc85",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/py5.jar": "4447b8098080f83cb4ffa5bf3b2d6c15a4a1bea3265198da75f5ac936f504903",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "paint_calls": 7,
+  "saved_png_sha256": "f012085c0bb09c519cb67acb0de8c887f6068cc20809fa70eda2110c1d05e758",
+  "input_sha256_after": {
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/examples/region_marks/region_marks.py": "8b262cd56e4809caf5826a1880f887d092ee151a17f5d67adc58ca65352f5837",
+    "packages/python/examples/region_marks/sketch.py": "3c77776d352d8624576cd0bf10edefa1b5710eaaaaf8a8204e730208d66a7ebf",
+    "tests/native/py5_region_marks.py": "99d44f52a8c4233d4ce26377e4f847b07798242f84046d278cf436c970281e21",
+    "design/capabilities/region-marks-py5-acceptance.md": "8aed2ba07f3c5d40b0500aeff24d2c2acde583f129fcddc67e077896243758b0",
+    "catalog/operations/seeded-quadrant-partition.json": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
+    "fixtures/operations/seeded-quadrant-partition.json": "bb1b6a2cadc0f276cd227706da9c27459f00d1811cbc0ee18faea37941744683",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/__init__.py": "763066a534ae41d8a01605ceedcea2cd1c37139a25f4f2a9138e63b8a31410d7",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/sketch.py": "39557b47939444710c6cd2480e8dfadc03eddc28c87106c3fb262d2d087a8639",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/base.py": "018c896ebee9ab611ef7346cbeca8e354918cf5caa49a1465332a7b7cccd57da",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/core.jar": "2cd02df8ace61c45af5eddef74dc74608b87a50155e83f20c7b1e28642ddbc85",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/py5.jar": "4447b8098080f83cb4ffa5bf3b2d6c15a4a1bea3265198da75f5ac936f504903",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  }
+}

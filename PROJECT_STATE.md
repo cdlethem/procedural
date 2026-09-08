@@ -1,5 +1,29 @@
 # Project state
 
+## Python quadrant and py5 RegionMarks native checkpoint reviewed
+
+Root implemented the editable starter and a preregistered native callback probe using
+existing py5 infrastructure. Shared-lock180-second execution exited0: seven paints,
+actual ellipse counts,3 ignored controls and cached save all pass. Source/runtime and
+six PNG hashes verified; root inspected baseline/grid/layout/authored. Evidence:
+evidence/conformance/quadrant-py5-implementation-review.json. README now describes the
+native-tested direct-module workflow. Convenience exports, shared support and packaging
+remain pending; Android quadrant is next after that integration. No new Java operation.
+
+## Quadrant Python core and RegionMarks composition implemented
+
+Root implemented the Python module against the frozen contract, with packed binary64
+bounds, private deterministic stream and validation before mutation. Luna supplied the
+fixture runner; root added omitted native nonfinite/bool/huge-int cases, all accessor
+precedence, offset atomicity and array(d) success checks.34 cases,5 stream vectors,
+4 crosschecks and11 ownership/native groups pass; source-bound report:
+evidence/conformance/quadrant-partition-python.json. No allocation-failure injection.
+Root's Python RegionMarks model matches the reviewed JS model exactly for five scenarios
+(301/301/601/601/11 cells), all raw binary64 bounds/marks and ordered IDs; this was a focused
+cross-runtime shell check, not a tracked native rendering claim. Draft README is explicit.
+Next implement the editable py5 sketch and preregister its bounded native callback suite.
+Public Python exports/support remain unchanged. Preserve these uncommitted project files.
+
 ## Quadrant p5.js public integration accepted
 
 Added the exact quadrant re-export and root-reviewed successor compatibility record,
