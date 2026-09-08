@@ -22,5 +22,5 @@ geometry. These are example controls, not library parameter defaults.
 
 The [package review](../evidence/distribution/cp5-javascript-review.json) covers installed
 consumers and archive source identity. The [native review](../evidence/conformance/triangle-p5js-native-root-review.json)
-covers the browser workflow and explicit dot motif. Python package integration remains
-pending; no registry publication is claimed.
+covers the browser workflow and explicit dot motif. All four local triangle distributions
+are accepted; no registry publication is claimed.

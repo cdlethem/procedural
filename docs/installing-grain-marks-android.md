@@ -21,4 +21,4 @@ contents, source identity and extracted APK compilation. The separate
 [native review](../evidence/conformance/triangle-android-native-root-review.json) covers
 ten API33 workflow states, HOME/resume and cached save, with the earlier failed attempt
 and its diagnostic limits preserved. No physical-device coverage or registry release is
-claimed. JavaScript and Python triangle distribution integration remains pending.
+claimed. The triangle distribution batch is complete on all four targets.

@@ -1,0 +1,226 @@
+{
+  "status": "passed",
+  "scope": "CP5 Python 0.5.0 installed wheel and extracted GrainMarks starter checks; no sketch execution, native render, publication, or support attestation.",
+  "package_version": "0.5.0",
+  "input_sha256": {
+    "packages/python/pyproject.toml": "1dc6fe17d11aac151a10c1601b6050230fe233bddfec74390c15ec3eb88a076b",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "packages/python/procedurals/__init__.py": "86af7585da79675a49931d7d614779e5825373677b5ebf54ad99bbb1aa1147b7",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+    "packages/python/examples/grain_marks/README.md": "cc322245c961b57f579576a9bed5a65c73988bb9c41fbd4807b06f606d375e36",
+    "packages/python/examples/grain_marks/grain_marks.py": "2563d5a79d49cc66b1d990c3cce3ecd7837d0fef28714655cf1103bea47ee59c",
+    "packages/python/examples/grain_marks/sketch.py": "26446157bbac2e597c8188d401720acbcb4a95075ca08e1b0688af3841dcc57d",
+    "tools/build_grain_marks_python.py": "a284bc4950c8d3986d745359bfa489642eb34ed83d90365edde57822b8a744e0",
+    "tools/build_region_marks_python.py": "03ded1293808531eebb096364a614158c98078566f86be3fef28e213ea711bbf",
+    "tools/build_path_marks_python.py": "358e601bf292184f834e47889142586dd2a1f69405b76c06a282340f55015775"
+  },
+  "artifacts": {
+    "wheel": {
+      "path": ".work/dist/cp5/python-grain4/build/wheelhouse/procedurals_python-0.5.0-py3-none-any.whl",
+      "sha256": "2a3ba2a51c46b389ada8f138a1925d1c20bc596b61e3cc73ffaa6dcc40c06bea",
+      "entries": [
+        {
+          "path": "procedurals/__init__.py",
+          "sha256": "86af7585da79675a49931d7d614779e5825373677b5ebf54ad99bbb1aa1147b7"
+        },
+        {
+          "path": "procedurals/_drawing.py",
+          "sha256": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3"
+        },
+        {
+          "path": "procedurals/_drawing_state.py",
+          "sha256": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8"
+        },
+        {
+          "path": "procedurals/_py5_frame.py",
+          "sha256": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295"
+        },
+        {
+          "path": "procedurals/colors.py",
+          "sha256": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6"
+        },
+        {
+          "path": "procedurals/fields.py",
+          "sha256": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae"
+        },
+        {
+          "path": "procedurals/layout.py",
+          "sha256": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3"
+        },
+        {
+          "path": "procedurals/paths.py",
+          "sha256": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+        },
+        {
+          "path": "procedurals/placements.py",
+          "sha256": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d"
+        },
+        {
+          "path": "procedurals/quadrant_partition.py",
+          "sha256": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed"
+        },
+        {
+          "path": "procedurals/triangle_points.py",
+          "sha256": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34"
+        },
+        {
+          "path": "procedurals_python-0.5.0.dist-info/METADATA",
+          "sha256": "5a43c2ff7dd11d6ae03d5d93bb30723aec281871979367279dc4ba410a7917f9"
+        },
+        {
+          "path": "procedurals_python-0.5.0.dist-info/RECORD",
+          "sha256": "d023560f915b7d94ca03c90cf3dd8abb8d13d6c8f06acf40be2f80bc359cf608"
+        },
+        {
+          "path": "procedurals_python-0.5.0.dist-info/WHEEL",
+          "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+        },
+        {
+          "path": "procedurals_python-0.5.0.dist-info/licenses/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "procedurals_python-0.5.0.dist-info/licenses/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "procedurals_python-0.5.0.dist-info/top_level.txt",
+          "sha256": "edcc1c114ddfc860af6c9b58052e7ad2cd35e36533efd2dafd308010ee165b72"
+        }
+      ]
+    },
+    "starter_zip": {
+      "path": ".work/dist/cp5/python-grain4/procedurals-grain-marks-python-starter-0.5.0.zip",
+      "sha256": "0b113f83b1a84b86ac43f0b26bed38896e01a75533f6573bfe7c87c2cc645010",
+      "entries": [
+        {
+          "path": "grain-marks/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "grain-marks/README.md",
+          "sha256": "ff19422229f773b30464240106dbd93abd1463a813a7770d0c3a43fab95b8907"
+        },
+        {
+          "path": "grain-marks/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "grain-marks/grain_marks.py",
+          "sha256": "2563d5a79d49cc66b1d990c3cce3ecd7837d0fef28714655cf1103bea47ee59c"
+        },
+        {
+          "path": "grain-marks/output/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "path": "grain-marks/sketch.py",
+          "sha256": "40eedd249ad9cc11ef87a5405aa0ed3dc14455cfaa4b2abdb2db049cc59e48ff"
+        },
+        {
+          "path": "procedurals_python-0.5.0-py3-none-any.whl",
+          "sha256": "2a3ba2a51c46b389ada8f138a1925d1c20bc596b61e3cc73ffaa6dcc40c06bea"
+        }
+      ]
+    }
+  },
+  "consumer": {
+    "status": "passed",
+    "imported_path": "/home/colin/dev/procedural/.work/dist/cp5/python-grain4/build/consumer-venv/lib/python3.13/site-packages/procedurals/triangle_points.py",
+    "site_packages": [
+      "/home/colin/dev/procedural/.work/dist/cp5/python-grain4/build/consumer-venv/lib/python3.13/site-packages"
+    ],
+    "cases": [
+      {
+        "config": [
+          42,
+          0.1,
+          0,
+          false
+        ],
+        "regions": 1,
+        "total_points": 15680,
+        "geometry_sha256": "95f438ae759a4e8c10b3557f90e7099d3e7433cada65d936aa33d7e58f370bc0"
+      },
+      {
+        "config": [
+          43,
+          0.2,
+          0,
+          false
+        ],
+        "regions": 1,
+        "total_points": 31360,
+        "geometry_sha256": "0e384f3574bc2d0f21480d562acdb99f4882ab41653a0e638d3a0692227d4659"
+      },
+      {
+        "config": [
+          42,
+          0.1,
+          1,
+          false
+        ],
+        "regions": 1,
+        "total_points": 15680,
+        "geometry_sha256": "301255465c7bcf5f901df00c37842afe0b91c8560f0d4329867468bd5444c662"
+      },
+      {
+        "config": [
+          42,
+          0.1,
+          2,
+          false
+        ],
+        "regions": 1,
+        "total_points": 15680,
+        "geometry_sha256": "810fdf054ff0649a8ed8d68af5601600aeb0a9d64f3f85971151b7620474618a"
+      },
+      {
+        "config": [
+          42,
+          0.1,
+          0,
+          true
+        ],
+        "regions": 26,
+        "total_points": 40960,
+        "geometry_sha256": "977776d880265accdcbd5fecb1722332d0ab22081a9a12688512d1c8ef9202f2"
+      },
+      {
+        "config": [
+          43,
+          0.1,
+          2,
+          true
+        ],
+        "regions": 26,
+        "total_points": 40960,
+        "geometry_sha256": "10873b28d7078b2d5692d8a3e845152c097978ab0fa37080bca8526c197840fa"
+      }
+    ],
+    "operation_count": 9
+  },
+  "starter": {
+    "transform": {
+      "kind": "remove_checkout_sys_path_block",
+      "removed": "sys.path.insert(0, str(Path(__file__).resolve().parents[2]))",
+      "class_ast_unchanged": true
+    },
+    "bundled_verified": true,
+    "py5_load": {
+      "status": "passed",
+      "py5": "0.10.11a0",
+      "triangle": "/home/colin/dev/procedural/.work/dist/cp5/python-grain4/build/consumer-venv/lib/python3.13/site-packages/procedurals/triangle_points.py"
+    }
+  }
+}

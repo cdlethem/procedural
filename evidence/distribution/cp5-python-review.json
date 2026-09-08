@@ -1,0 +1,28 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Python0.5 wheel and extracted GrainMarks starter; installed consumer and py5 import only. Native workflow acceptance remains in separate evidence.",
+  "implementation_sha256": {
+    "tools/build_grain_marks_python.py": "a284bc4950c8d3986d745359bfa489642eb34ed83d90365edde57822b8a744e0",
+    "packages/python/procedurals/__init__.py": "86af7585da79675a49931d7d614779e5825373677b5ebf54ad99bbb1aa1147b7",
+    "packages/python/procedurals/triangle_points.py": "8916015004829434f7122756a39c2a93358af2c24f377ebefe4f240ff01fac34",
+    "packages/python/examples/grain_marks/grain_marks.py": "2563d5a79d49cc66b1d990c3cce3ecd7837d0fef28714655cf1103bea47ee59c",
+    "packages/python/examples/grain_marks/sketch.py": "26446157bbac2e597c8188d401720acbcb4a95075ca08e1b0688af3841dcc57d"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp5-python.json": "b156bd39952c4f8d60485e53aa02e12fd2d0ca62f1a8926a504766c34de1806c",
+    "evidence/conformance/triangle-py5-native-root-review.json": "d2d869668c917545ecc759d5c13b9bd796b2732b314496ac14f847981b41dff5",
+    "evidence/conformance/triangle-export-compatibility-review.json": "d4079ee17ac9a4bdd5f1232600de6c29a5f51f4b156bf6338c64cc148e2a840b"
+  },
+  "root_findings": [
+    "Root reviewed isolated installed-wheel origin and all nine exported operations. Six complete point-buffer binary64 digests match source, including both concentration modes and both cell-transfer configurations.",
+    "Every input and archive-member hash verified. All Python core modules and GrainComposition source remain byte-exact; starter sketch only removes checkout sys.path insertion. Notices preserved.",
+    "Extracted starter loaded with installed wheel and pinned py5 through import-only Xvfb; no sketch launch or new raster evidence claimed.",
+    "Prior core/native/export acceptance bindings verified unchanged. Early mechanical build attempts retained under ignored work directories."
+  ],
+  "remaining": [
+    "Six operation port batches",
+    "Remaining artist, recipe, recreation and downstream roadmap milestones"
+  ]
+}

@@ -1,5 +1,22 @@
 # Project state
 
+## Triangle distribution batch complete on all four targets
+
+Root accepted Python CP5 wheel/starter from .work/dist/cp5/python-grain4. Verified all
+source/archive hashes, byte-exact core/model, sketch-only sys.path removal, installed
+site-packages origin, nine callable operations and six full binary64 geometry digests.
+Extracted py5 import passes; no native rerender. Evidence: cp5-python.json and
+cp5-python-review.json. Earlier grain1/2/3 build attempts retained; all processes terminal.
+JavaScript checkpoint97d7f636 and Android9898b9d8 already pushed. Installation docs updated.
+
+Java remains15 operations/15 starters. Nine operations now have four-target core/native
+validation AND accepted local distributions. Six operations remain to port. No registry
+release or new original-sketch recreation count is implied. Next implement bounded
+endpoint-branching batch04 per design/port-batch-04.md: JavaScript core first, root contract/
+implementation review, then BranchMarks native workflow and remaining targets/packages.
+Root retains acceptance ownership; use Luna/Terra for frozen implementation and focused
+checks, shared machine lock for native runs, no Sol review during this sprint.
+
 ## JavaScript GrainMarks distribution reviewed; Python consumer build in progress
 
 Root accepted revised javascript-grain2 npm/browser archives after verifying all input/
