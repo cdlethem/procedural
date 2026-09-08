@@ -54,7 +54,7 @@ and a standalone build script. Supply an explicit JDK and Processing core to tha
 Edit the source recipe and re-export to change this snapshot; no runtime JSON parser is
 claimed. Sources must match their manifest before building.
 
-The first copied FieldMarks export compiled independently and matched the accepted baseline
-exactly in native JAVA2D. Root inspected it; evidence is in
-`evidence/distribution/recipe-java-export-prototype.json`. This is one native case, with
-PathMarks export, retained reuse, catalog promotion and general support still pending.
+Copied FieldMarks baseline and PathMarks baseline/trace-edit exports compiled independently
+and matched their accepted references exactly in native JAVA2D. Root inspected all three; evidence is in
+`evidence/distribution/recipe-java-export-prototype.json`. These are three native cases;
+retained reuse, catalog promotion and general support remain pending.

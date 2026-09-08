@@ -1,5 +1,18 @@
 # Project state
 
+## PathMarks export and trace edit verified natively
+
+Previous05cc2fe0 pushed first FieldMarks export. Root selected PathMarks baseline and trace
+edit references before rendering, verified their accepted PNG hashes, then exported both
+recipes, copied projects and compiled with their standalone build scripts. Both native runs
+used the shared lease. Exact RGBA matches the existing accepted marks/trace images; root
+inspected both. Existing exporter/evaluator sources unchanged, so no repeated command suite
+needed. Evidence/distribution/recipe-java-export-prototype.json now records three copied
+native cases across two compositions. Next define retained-stage cache ownership/invalidation
+and budget semantics before implementation, then catalog promotion and general export
+admission. No general exporter acceptance or operation count change. Full goal active;
+unrelated JS export remains unstaged.
+
 ## First Java recipe snapshot native case passed
 
 Previous b9324df3 pushed catalog-driven input admission. Terra corrected command-container

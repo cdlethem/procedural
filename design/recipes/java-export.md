@@ -34,3 +34,11 @@ and explicit recipe parameters. Baseline evidence:
 Verify the baseline image against that hash before comparing; missing/mismatched baseline
 is an evidence gap, not permission to silently replace it. Root inspects the candidate.
 This proves one native export case, not every recipe or original-sketch recreation.
+
+## PathMarks extension selected before rendering
+
+Compare baseline marks and the trace=true edit with the corresponding accepted images
+from `evidence/reproductions/cp2-java2d/review.json`: `marks.png` and `trace.png` under
+`.work/reproductions/cp2-public-pde-visible-stream/`. Verify both recorded PNG hashes first.
+Both exported projects must compile from copies and match reference RGBA exactly. This
+checks the second composition and an actual recipe-data edit, not retained geometry reuse.
