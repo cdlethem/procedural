@@ -1,5 +1,25 @@
 # Project state
 
+## CP20 convex-outline placement private study reviewed
+
+Root selected ordered supplied convex-polygon filtering as the next Java capability after
+source review of celular/celular2. Executed upstream containment helper proves asymmetric
+nesting bug; new strict disjoint behavior intentionally differs. Three actual JAVA2D studies
+(broad rounded outlines, thin dashes, diamond transfer) passed and root inspected all images.
+Evidence: evidence/parameter-experiments/cp20-convex-placement/review.json. Prototype checks
+include symmetric containment, crossing edges, contact, strict convexity/star rejection and
+root-added subnormal/MAX_VALUE/nonfinite cases. Root corrected silent invalid-input skipping
+and missing claimed worker checks; final worker file ownership returned to root.
+
+Next freeze operation contract/catalog/fixtures and production numerical/work/ownership
+boundaries per design/capabilities/cp20-convex-placement-direction.md. Private BigDecimal
+prototype is not an accepted implementation. Consider existing Delaunay exact-predicate
+mechanism without destabilizing accepted code. No23rd operation or new recreation shipped;
+Java0.22 remains22/22. Previous helper milestone is pushed17250bd3.
+
+No native/worker task remains active. Ports/Sol paused; unrelated Android/JS/Python port edits preserved.
+Keep bounded Terra implementation against frozen contracts and root architectural review.
+
 ## Selected Java animation frame helper accepted
 
 Existing tools/render_java.py now accepts --frame1..10000, default1. Every preceding native
