@@ -18,7 +18,7 @@ from tools.generate_recipe_java_schemas import load as load_binding_contracts
 ALLOWED = {"$schema", "$id", "title", "$defs", "$ref", "type",
            "additionalProperties", "required", "properties", "items",
            "oneOf", "allOf", "const", "enum", "pattern", "minLength",
-           "minItems", "maxItems"}
+           "minItems", "maxItems", "minimum", "maximum"}
 
 
 def digest(path: Path) -> str:

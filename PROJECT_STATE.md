@@ -1,5 +1,24 @@
 # Project state
 
+## Explicit frame context verified
+
+Added optional catalog-owned frameContext {index,timeSeconds}; clock is exposed only after
+retain and cannot overwrite a retained binding. Root reviewed schema/lexical changes and
+implemented Java numeric bounds, frame input injection, direct timed command oracle and
+cache recovery probes. Luna implemented schema/Python/generation; focused Python schema/
+validation/grammar checks passed. The existing harness .work/recipe-time-root1 passes35
+exact fresh/session scenarios and16 failure groups. Time advances, repeats and reverses
+without resampling; invalid context preserves the previous valid Session cache.
+Root inspected two independent exported JAVA2D snapshots under the shared machine lock:
+time0 and0.5 preserve2400 mark positions/colors and change lengths4 to7. Evidence:
+evidence/distribution/recipe-explicit-time-preview.json. Seven bindings remain unchanged;
+five static compositions plus one timed variant are prototypes, not accepted new starters.
+Next X1 slice should provide bounded explicit sequence execution with per-frame replay
+identity, reusing the renderer/exporter infrastructure. Snapshot support alone is not a
+scheduler, stateful simulation, asset support or four-target executor acceptance. These
+remain required future work. Preserve unrelated JavaScript work; full goal remains active.
+
+
 ## Seventh recipe binding: triangle grain verified
 
 Luna added the seeded-triangle binding and local-definition resolution in generated operation

@@ -20,12 +20,21 @@
       "type": "array",
       "items": {"$ref": "#/$defs/binding"}
     },
+    "frameContext": {"$ref": "#/$defs/frameContext"},
     "frame": {
       "type": "array",
       "items": {"$ref": "#/$defs/statement"}
     }
   },
   "$defs": {
+    "frameContext": {
+      "type": "object", "additionalProperties": false,
+      "required": ["index", "timeSeconds"],
+      "properties": {
+        "index": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+        "timeSeconds": {"type": "number", "minimum": 0}
+      }
+    },
     "name": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]*$"},
     "declaration": {
       "type": "object",

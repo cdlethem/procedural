@@ -65,6 +65,40 @@ public final class RecipePrototypeFailures {
         System.out.println("placement-budgets-and-native-errors passed");
     }
     @SuppressWarnings("unchecked") static Map<String,Object> obj(Object value) { return (Map<String,Object>)value; }
+    static void frameContextAdmission() {
+        Map<String,Object> r=gridValuesRecipe();
+        r.put("frameContext",map("index",23,"timeSeconds",0.5));
+        r.put("environment",map("kind","record","fields",list(
+                map("name","width","value",literal(64)),map("name","height","value",literal(64)),
+                map("name","density","value",literal(1)),map("name","background","value",
+                map("kind","get","value",map("kind","ref","name","clock"),"key","index")))));
+        RecipeEvaluator.Session session=new RecipeEvaluator.Session();
+        RecipeEvaluator.Result first=session.evaluate(r,new RecipeEvaluator.Limits());
+        check(((Number)first.environment.get("background")).intValue()==23,"explicit clock index unavailable");
+        for(Object bad:list(map("index",0),map("index",-1,"timeSeconds",0),
+                map("index",0.5,"timeSeconds",0),map("index",9007199254740992.0,"timeSeconds",0),
+                map("index",0,"timeSeconds",-0.1),map("index",0,"timeSeconds",0,"extra",0))) {
+            r.put("frameContext",bad);
+            failure(r,new RecipeEvaluator.Limits(),"SCHEMA_INVALID");
+            try { session.evaluate(r,new RecipeEvaluator.Limits());throw new AssertionError("invalid clock admitted"); }
+            catch(RecipeEvaluator.RecipeFailure expected){check(expected.code.equals("SCHEMA_INVALID"),"clock schema failure");}
+        }
+        r.put("frameContext",map("index",0,"timeSeconds",Double.POSITIVE_INFINITY));
+        failure(r,new RecipeEvaluator.Limits(),"NONFINITE_NUMBER");
+        r.put("frameContext",map("index",0,"timeSeconds",0));
+        check(session.evaluate(r,new RecipeEvaluator.Limits()).retainedReused,"invalid clock destroyed retained cache");
+        check(((Number)first.environment.get("background")).intValue()==23,"clock input aliased prior result");
+        Map<String,Object> retainClock=recipe(binding(map("kind","ref","name","clock")),list());
+        retainClock.put("frameContext",map("index",0,"timeSeconds",0));
+        failure(retainClock,new RecipeEvaluator.Limits(),"UNBOUND_NAME");
+        Map<String,Object> collision=recipe(list(map("name","clock","value",literal(1))),list());
+        RecipeEvaluator.evaluate(collision,new RecipeEvaluator.Limits()); // Previous documents remain valid.
+        collision.put("frameContext",map("index",0,"timeSeconds",0));
+        RecipeEvaluator.RecipeFailure error=failure(collision,new RecipeEvaluator.Limits(),"SHADOWED_NAME");
+        check(error.path.equals("/frameContext"),"clock collision pointer");
+        r.remove("frameContext");failure(r,new RecipeEvaluator.Limits(),"UNBOUND_NAME");
+        System.out.println("explicit-frame-context-and-cache-recovery passed");
+    }
     static Map<String,Object> triangleRecipe(int count) {
         return operationRecipe("sampling.seeded-triangle-points-2d",map("kind","construct",
                 "operation","sampling.seeded-triangle-points-2d","input",literal(map(
@@ -343,6 +377,7 @@ public final class RecipePrototypeFailures {
         placementAdmission();
         partitionAdmission();
         triangleAdmission();
+        frameContextAdmission();
         System.out.println("PROTOTYPE_FAILURE_CASES_PASSED");
     }
 }

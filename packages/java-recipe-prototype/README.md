@@ -25,8 +25,8 @@ accurate heap limit. Elapsed time is a supervised safeguard, not a deterministic
 
 ## Current evidence
 
-The established runner serializes and reparses five draft recipes, then compares actual
-Java output across thirty FieldMarks/PathMarks/placement-bars/region-panels/triangle-grain baseline/edit scenarios, comparing both fresh and session
+The established runner serializes and reparses six draft recipes, then compares actual
+Java output across thirty-five FieldMarks/PathMarks/placement-bars/region-panels/triangle-grain/timed baseline/edit scenarios, comparing both fresh and session
 execution. FieldMarks covers
 length, palette and segment/quad edits. PathMarks compares the existing `streamForCanvas`
 workflow with explicit recipe visibility predicates; it is not a general clipping operation.
@@ -85,7 +85,7 @@ state and never enter exported recipe JSON.
 Cached data and keys are detached from callers. Each warm call checks current array limits
 and reserves cached capacity against valueUnits before frame work. Result diagnostics expose
 `retainedReused`, `retainedExecutedCalls` and `retainedReservedUnits`; calls count actual work,
-not hypothetical reconstruction. The twenty-three exact comparisons and focused failure groups
+not hypothetical reconstruction. The thirty-five exact comparisons and focused failure groups
 cover style reuse, geometry invalidation, alias detachment, budget rejection and recovery.
 This establishes the scoped prototype behavior, not accepted general executor support.
 
@@ -109,3 +109,14 @@ native execution. This adds a recipe binding, not a sixteenth package operation.
 The region-panels draft adds retained quadrant subdivision with independently editable insets
 and palette. Its resource policy and native preview criteria are in
 `design/recipes/region-panels-binding.md`. This is an existing-operation recipe binding.
+
+## Explicit time snapshots
+
+Optional `frameContext: {index, timeSeconds}` exposes `clock` only to environment/frame
+expressions after retain. Both values are supplied data; there is no clock or frame-rate
+inference. Repeated and backward-time snapshots are valid and reuse retained geometry.
+The concrete amendment to the initial static expression model is
+`design/recipes/explicit-frame-context.md`. The timed triangle example has exact-command
+and two standalone native snapshot checks in `evidence/distribution/recipe-explicit-time-preview.json`.
+This is single-frame evaluation, not a playback scheduler or stateful simulation. Context
+is sealed with composition during export; changing it currently requires a fresh export.

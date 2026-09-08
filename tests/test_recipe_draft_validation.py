@@ -32,6 +32,44 @@ class RecipeDraftValidationTests(unittest.TestCase):
             with self.subTest(recipe=name):
                 self.assertEqual(validator.validate(recipe(name))["status"], "static-valid-draft")
 
+    def test_explicit_frame_context_is_optional_and_exposes_clock(self):
+        document = recipe("field-marks")
+        self.assertEqual(validator.validate(document)["status"], "static-valid-draft")
+        document["frameContext"] = {"index": 0, "timeSeconds": 0}
+        document["environment"] = {"kind": "ref", "name": "clock"}
+        self.assertEqual(validator.validate(document)["status"], "static-valid-draft")
+
+    def test_frame_context_shape_and_domains_fail(self):
+        cases = [
+            ({"index": 0}, "SCHEMA_INVALID"),
+            ({"timeSeconds": 0}, "SCHEMA_INVALID"),
+            ({"index": 1.5, "timeSeconds": 0}, "SCHEMA_INVALID"),
+            ({"index": -1, "timeSeconds": 0}, "SCHEMA_INVALID"),
+            ({"index": 9007199254740992, "timeSeconds": 0}, "SCHEMA_INVALID"),
+            ({"index": 0, "timeSeconds": -1}, "SCHEMA_INVALID"),
+            ({"index": 0, "timeSeconds": float("nan")}, "NONFINITE_NUMBER"),
+            ({"index": 0, "timeSeconds": 0, "extra": 1}, "SCHEMA_INVALID"),
+        ]
+        for context, code in cases:
+            with self.subTest(context=context):
+                document = recipe("field-marks")
+                document["frameContext"] = context
+                self.assert_error(document, code)
+
+    def test_clock_scope_is_restricted_to_environment_and_frame(self):
+        document = recipe("field-marks")
+        document["frameContext"] = {"index": 1, "timeSeconds": 2}
+        document["retain"][0]["value"] = {"kind": "ref", "name": "clock"}
+        self.assert_error(document, "UNBOUND_NAME")
+        document = recipe("field-marks")
+        document["frameContext"] = {"index": 1, "timeSeconds": 2}
+        document["retain"].insert(0, {"name": "clock", "value": {"kind": "literal", "value": 1}})
+        self.assert_error(document, "SHADOWED_NAME")
+        document = recipe("field-marks")
+        document["frameContext"] = {"index": 1, "timeSeconds": 2}
+        document["frame"].insert(0, {"kind": "bind", "name": "clock", "value": {"kind": "literal", "value": 1}})
+        self.assert_error(document, "SHADOWED_NAME")
+
     def test_unknown_duplicate_and_wrong_version_operations_fail(self):
         document = recipe("field-marks")
         document["operations"].append(copy.deepcopy(document["operations"][0]))

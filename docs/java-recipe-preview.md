@@ -87,3 +87,10 @@ control the marks independently of sampling. There is no automatic area-to-count
 these settings are example choices. The direct Session can retain points during style
 edits; standalone exports still rebuild. The default and longer-mark/alternate-palette exports have scoped native preview evidence
 in `evidence/distribution/recipe-triangle-preview.json`.
+
+The timed variant `design/recipes/examples/triangle-timed-marks.draft.json` changes mark
+length with explicit time. Its `frameContext` contains `index` and `timeSeconds`; the recipe
+uses `clock.timeSeconds` with the example `frequencyHz` parameter. Exporting time0 and
+time0.5 yields marks of length4 and7 with the same positions and colors. Change the context
+in the source recipe and export again to save another snapshot. There is no automatic
+playback or inferred frame rate in this preview.

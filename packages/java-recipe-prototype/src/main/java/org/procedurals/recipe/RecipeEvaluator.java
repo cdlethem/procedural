@@ -182,6 +182,8 @@ public strictfp final class RecipeEvaluator {
     }
     private static Result frame(Map<String,Object> recipe, Map<String,Object> outer, State s, Set<String> declared,
                                 boolean reused, long retainedCalls, long reserved) {
+        // Frame-only explicit input; retain construction and its cache key cannot consume it.
+        if(recipe.containsKey("frameContext"))outer.put("clock",recipe.get("frameContext"));
         Object envValue=expr(recipe.get("environment"),outer,"/environment",s,declared);
         Map<String,Object> env;
         try {

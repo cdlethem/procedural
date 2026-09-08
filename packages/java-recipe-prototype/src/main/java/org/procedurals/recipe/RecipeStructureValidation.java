@@ -47,6 +47,13 @@ final class RecipeStructureValidation {
                 if(!found) fail("SCHEMA_INVALID",p,"enum differs");
             }
             if(s.containsKey("type")&&!type(value,(String)s.get("type"))) fail("SCHEMA_INVALID",p,"type differs");
+            if(value instanceof Number) {
+                double number=((Number)value).doubleValue();
+                if(s.containsKey("minimum")&&number<((Number)s.get("minimum")).doubleValue())
+                    fail("SCHEMA_INVALID",p,"number below minimum");
+                if(s.containsKey("maximum")&&number>((Number)s.get("maximum")).doubleValue())
+                    fail("SCHEMA_INVALID",p,"number above maximum");
+            }
             if(value instanceof String) {
                 String text=(String)value;
                 if(s.containsKey("minLength")&&text.codePointCount(0,text.length())<((Number)s.get("minLength")).intValue())
@@ -137,6 +144,7 @@ final class RecipeStructureValidation {
     private static void lexical(Map<String,Object> r) {
         Set<String> scope=new HashSet<String>(); scope.add("params"); Set<String> declared=new HashSet<String>(); for(Object x:(List<?>)r.get("operations"))declared.add((String)((Map<?,?>)x).get("id"));
         List<?> retain=(List<?>)r.get("retain"); for(int i=0;i<retain.size();i++){Map<?,?> b=(Map<?,?>)retain.get(i);String q="/retain/"+i; expr(b.get("value"),scope,q+"/value",declared); add((String)b.get("name"),scope,q+"/name","SHADOWED_NAME");}
+        if(r.containsKey("frameContext"))add("clock",scope,"/frameContext","SHADOWED_NAME");
         expr(r.get("environment"),scope,"/environment",declared); statements((List<?>)r.get("frame"),scope,"/frame",declared);
     }
     private static void add(String n,Set<String>s,String p,String code){if(!s.add(n))fail(code,p,"binding name is already visible: "+n);}

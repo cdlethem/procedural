@@ -253,8 +253,13 @@ def lexical_validate(document, declared, bindings):
         walk_expression(binding["value"], scope, ("retain", index, "value"), declared, ports)
         require_new(binding["name"], scope, pointer(("retain", index, "name")))
         scope.add(binding["name"])
-    walk_expression(document["environment"], scope, ("environment",), declared, ports)
-    walk_statements(document["frame"], scope, ("frame",), declared, ports)
+    frame_scope = scope
+    if "frameContext" in document:
+        if "clock" in scope:
+            raise RecipeError("SHADOWED_NAME", "/frameContext", "frameContext clock is shadowed by a retain binding")
+        frame_scope = scope | {"clock"}
+    walk_expression(document["environment"], frame_scope, ("environment",), declared, ports)
+    walk_statements(document["frame"], frame_scope, ("frame",), declared, ports)
 
 
 def validate(document, root=ROOT):
