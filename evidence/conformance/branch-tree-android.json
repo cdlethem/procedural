@@ -1,0 +1,91 @@
+{
+  "status": "passed",
+  "scope": "API33 ART pure branch vectors and ownership/access only; no renderer or performance claim.",
+  "dex_sha256": "7eb2aee4dfb980b591b9bb8116fdfa4f0336df9c069ce466803a959fd89f268a",
+  "runner_sha256": "02a9383f173ced7a7b9095bba7d7eb1398ae923e28bdbd2a3ccea0ce6d5e9387",
+  "adb_sha256": "a902be8f45c6c62e76c9efaf6947a0fa747c9cabd89a2ac8e0d16ecb30b3ed01",
+  "serial": "emulator-5582",
+  "preparation": {
+    "status": "passed",
+    "scope": "Desktop branch fixtures/access and API33 dex preparation only; no ART/native support claim",
+    "inputs_sha256": {
+      "catalog/operations/seeded-endpoint-branches.json": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881",
+      "fixtures/operations/seeded-endpoint-branches.json": "5368de8f8e268ac2f376a45f08d97e690a3192708b4d42a2b6d393894f88a13c",
+      "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+      "tests/native/BranchTreeNative.java": "8a789e0d0d1408cedddf08bdb0b50ae917fe01cd7413e9c0e41ec11818e6bffa",
+      "tools/prepare_branch_tree_android_core.py": "a0521403d6d9fdc7fc3194bbf2e8695cf896bd466ad0ae9c144acb148dab65f0",
+      "tools/run_branch_tree_java.py": "442af28b0a0d0ac50f73a6015630edc218c2ff2c74a53a6e81b3679e21c12b4d",
+      "tools/prepare_circle_placement_android_core.py": "6769d7ca164b5c070296aea8c33afb2c1a0ae374442862d63cb49b07a97a681f"
+    },
+    "toolchain_sha256": {
+      "java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+      "javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+      "java.release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+      "java.modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+      "android.jar": "fd628aa21321859a9035c6aae4b084b7d3fdb3f230be5cd5ec76541e32f7c963",
+      "d8": "d30e6d3332cc3f85ca03e6031d55da21e7716cb508114e8a1f275351521948a9",
+      "d8.jar": "3958eda74eb298337361e974c9b733856eae08795516bf78a0dd16df620e83bc"
+    },
+    "toolchain_paths": {
+      "java": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+      "javac": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+      "java.release": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/release",
+      "java.modules": "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/lib/modules",
+      "android.jar": "/home/colin/dev/procedural/.work/toolchains/android/sdk/platforms/android-33/android.jar",
+      "d8": "/home/colin/dev/procedural/.work/toolchains/android/sdk/build-tools/30.0.3/d8",
+      "d8.jar": "/home/colin/dev/procedural/.work/toolchains/android/sdk/build-tools/30.0.3/lib/d8.jar"
+    },
+    "generated_sources_sha256": {
+      "BranchTreeVectors.java": "e4c051633c6ade66225a7547e76a5961e3ec2ca6644f9cf0e46d9e2624858b59",
+      "BranchTreeAndroidAccess.java": "6ebb238205ee9d025fc4bb8fb6faf538ba54c24b5cc6bc2f642452cc434fcdad"
+    },
+    "generated_classes_sha256": {
+      "org/procedurals/topology/BranchTree2D$BranchArithmeticException.class": "2335034657343efa7e422713f7e70011414e719c76ab86d303dcdfc7341e3831",
+      "org/procedurals/topology/BranchTree2D$BranchException.class": "76cfd40495ee8fcfdfddbbac739839f5909a872e87547fab04aa023b6a99b896",
+      "org/procedurals/topology/BranchTree2D$Root.class": "111639eaa253f6decce08b4476e26f913f70a8acefbf266e7cd231520154a402",
+      "org/procedurals/topology/BranchTree2D$Rule.class": "aa73d5406c70fa799851ff5421565ba7a93338e642cbba05a365890525da3913",
+      "org/procedurals/topology/BranchTree2D$SegmentLimitException.class": "bd8aac0695a605c3f3c6b090bba8137a9dc17ea2a71303df0b9849273044c686",
+      "org/procedurals/topology/BranchTree2D$Slot.class": "b8f8533b4a5646f7d2a51b3e895b0163f415a18042d3160ae9279045c2936ad6",
+      "org/procedurals/topology/BranchTree2D$Storage.class": "b616002d45d2013354acb731ee44e826b8dba6186398d52035f6ceede2eeb766",
+      "org/procedurals/topology/BranchTree2D$Xoshiro128StarStar11.class": "c6b9d2518e943b73c5bae2b58e5133fad1380e6502bf64cb93ab106a758cfcab",
+      "org/procedurals/topology/BranchTree2D.class": "f1de4c8d25148fb80478ae342d05af3f7b484f6bc2871f60be4db6834d28e536",
+      "org/procedurals/topology/BranchTreeAndroidAccess$1.class": "25a1000252594b1671ece854f0c9419f5c13b5a619d3f26141ce86b69512ad63",
+      "org/procedurals/topology/BranchTreeAndroidAccess$Action.class": "7655035b89c7e2da2d0c35ef24d6f63fe81d7434510688b52fcbd0ae3e1e721c",
+      "org/procedurals/topology/BranchTreeAndroidAccess$UnsupportedNumber.class": "a6a7e55a658c7b982fdf2cc7128e942ba0d0202533b21285e58ec1abd9babe31",
+      "org/procedurals/topology/BranchTreeAndroidAccess.class": "17ebbe0600f65c5c4d80f18d8967d1146f6273b4044e9c957a26795fa5859179",
+      "org/procedurals/topology/BranchTreeVectors.class": "9d320287110cff8e9a3fa4c9a28a28816c4ea31a229d88bb87740a811ef44173"
+    },
+    "dex_sha256": "7eb2aee4dfb980b591b9bb8116fdfa4f0336df9c069ce466803a959fd89f268a",
+    "desktop_preflight": {
+      "BranchTreeVectors": {
+        "status": "passed",
+        "fixture_cases": 40,
+        "assertions": 9482
+      },
+      "BranchTreeAndroidAccess": {
+        "status": "passed",
+        "assertions": 81,
+        "native_ownership_access": true,
+        "chain_nodes": 513
+      }
+    }
+  },
+  "api": "33",
+  "fingerprint": "google/sdk_gphone64_x86_64/emu64x:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+  "vm": "libart.so",
+  "results": {
+    "BranchTreeVectors": {
+      "status": "passed",
+      "fixture_cases": 40,
+      "assertions": 9482
+    },
+    "BranchTreeAndroidAccess": {
+      "status": "passed",
+      "assertions": 81,
+      "native_ownership_access": true,
+      "chain_nodes": 513
+    }
+  },
+  "cleanup": "removed exact temporary dex",
+  "elapsed_seconds": 2.143829974986147
+}

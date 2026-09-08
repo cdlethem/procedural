@@ -1,0 +1,26 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "android endpoint-branch core only; native drawing/workflow, public export and distribution remain pending.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+    "tests/native/BranchTreeNative.java": "8a789e0d0d1408cedddf08bdb0b50ae917fe01cd7413e9c0e41ec11818e6bffa",
+    "tools/run_branch_tree_java.py": "442af28b0a0d0ac50f73a6015630edc218c2ff2c74a53a6e81b3679e21c12b4d",
+    "tools/prepare_branch_tree_android_core.py": "a0521403d6d9fdc7fc3194bbf2e8695cf896bd466ad0ae9c144acb148dab65f0",
+    "tools/run_branch_tree_android_core.py": "02a9383f173ced7a7b9095bba7d7eb1398ae923e28bdbd2a3ccea0ce6d5e9387"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/branch-tree-android.json": "190378fa50124af68dbdeed1f1e56a972f17988eb1b734b00cd75b834c1b8a96",
+    "design/capabilities/branch-android-core-acceptance.md": "2b5374f35230f89f96137c0d84f086dddd4fb5addb89008c96db33ee691774f0"
+  },
+  "findings": [
+    "Unchanged Java core executed 40 shared cases and private RNG vectors on API33 ART. Existing ownership/access checks and 513-node iterative chain passed.",
+    "Root reviewed preparation and device runner, verified current source/toolchain/generated classes/dex hashes, and checked terminal result with exact remote dex cleanup. Session-owned emulator is stopped.",
+    "Tampered prepared dex was rejected before device access."
+  ],
+  "limits": [
+    "Allocation exhaustion is not injected.",
+    "Trigonometric coordinate acceptance uses frozen fixture-specific bounds; no universal bit-identity claim."
+  ]
+}

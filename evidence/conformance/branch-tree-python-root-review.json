@@ -1,0 +1,22 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "python endpoint-branch core only; native drawing/workflow, public export and distribution remain pending.",
+  "implementation_sha256": {
+    "packages/python/procedurals/branch_tree.py": "dcaa5ee3da7ab9a99d93f0cb8d370d308c719292b2a40cb27dec20a953230458",
+    "tests/native/branch-tree-python.py": "eb766214586fa5a17692d0cc3d4803c92b73f9adfa37058808cb845121505b51"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/branch-tree-python.json": "cf834f3dabbabb195e7ac10fa91dc1ac41670da2ee919e0f8dea3854ef735df4"
+  },
+  "findings": [
+    "Root reviewed BFS traversal, shared scale and ordered gate/angle draws, capacity before child arithmetic, static validation and packed retained storage.",
+    "Root aligned probability validation order with the frozen contract, added complete motivating paths, and strengthened coordinate checks to reject nonfinite or malformed output.",
+    "Independent pinned Python run passed 40 shared cases, five stream vectors, actual RNG traces, error details, prefixes, output ownership/access and a 513-node iterative chain."
+  ],
+  "limits": [
+    "Allocation exhaustion is not injected.",
+    "Trigonometric coordinate acceptance uses frozen fixture-specific bounds; no universal bit-identity claim."
+  ]
+}

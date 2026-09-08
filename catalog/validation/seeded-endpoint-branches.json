@@ -202,7 +202,39 @@
     },
     "py5": {
       "core": {
-        "status": "unvalidated"
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/python/procedurals/branch_tree.py": "dcaa5ee3da7ab9a99d93f0cb8d370d308c719292b2a40cb27dec20a953230458",
+          "tests/native/branch-tree-python.py": "eb766214586fa5a17692d0cc3d4803c92b73f9adfa37058808cb845121505b51"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/branch-tree-python.json": "cf834f3dabbabb195e7ac10fa91dc1ac41670da2ee919e0f8dea3854ef735df4"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/branch-tree-python.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/branch-tree-python.json",
+            "pointer": "/fixture_cases",
+            "equals": 40
+          },
+          {
+            "path": "evidence/conformance/branch-tree-python.json",
+            "pointer": "/seed_vectors",
+            "equals": 5
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/branch-tree-python-root-review.json",
+          "sha256": "1d72c43e01fc9ea0554992450ca26842e25797246b911ab1fbdc3661135693ef"
+        },
+        "runtime_profile": {
+          "name": "CPython3.13.15 pure core",
+          "scope": "Shared branch geometry/RNG and retained ownership/access; drawing and packages pending."
+        }
       },
       "native": {
         "status": "unvalidated"
@@ -213,7 +245,48 @@
     },
     "processing-android": {
       "core": {
-        "status": "unvalidated"
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+          "tests/native/BranchTreeNative.java": "8a789e0d0d1408cedddf08bdb0b50ae917fe01cd7413e9c0e41ec11818e6bffa",
+          "tools/run_branch_tree_java.py": "442af28b0a0d0ac50f73a6015630edc218c2ff2c74a53a6e81b3679e21c12b4d",
+          "tools/prepare_branch_tree_android_core.py": "a0521403d6d9fdc7fc3194bbf2e8695cf896bd466ad0ae9c144acb148dab65f0",
+          "tools/run_branch_tree_android_core.py": "02a9383f173ced7a7b9095bba7d7eb1398ae923e28bdbd2a3ccea0ce6d5e9387"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/branch-tree-android.json": "190378fa50124af68dbdeed1f1e56a972f17988eb1b734b00cd75b834c1b8a96",
+          "design/capabilities/branch-android-core-acceptance.md": "2b5374f35230f89f96137c0d84f086dddd4fb5addb89008c96db33ee691774f0"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/branch-tree-android.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/branch-tree-android.json",
+            "pointer": "/results/BranchTreeVectors/fixture_cases",
+            "equals": 40
+          },
+          {
+            "path": "evidence/conformance/branch-tree-android.json",
+            "pointer": "/results/BranchTreeAndroidAccess/native_ownership_access",
+            "equals": true
+          },
+          {
+            "path": "evidence/conformance/branch-tree-android.json",
+            "pointer": "/results/BranchTreeAndroidAccess/chain_nodes",
+            "equals": 513
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/branch-tree-android-root-review.json",
+          "sha256": "344c06afcb14496b9d797c55be484d877b4938e23cbc8da0dc0a984704c57e18"
+        },
+        "runtime_profile": {
+          "name": "API33 ART x86_64 Android13",
+          "scope": "Shared branch geometry/RNG and retained ownership/access; drawing and packages pending."
+        }
       },
       "native": {
         "status": "unvalidated"

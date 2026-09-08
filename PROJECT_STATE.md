@@ -1,5 +1,17 @@
 # Project state
 
+## Branch Python and Android core accepted
+
+Root reviewed Python implementation and independently passed40 shared cases/five streams
+at .work/branch-tree-python/root-reviewed.json. Coordinate checks now reject nonfinite or
+malformed output; static probability validation order and provenance documentation corrected.
+Android session1 completed successfully on API33 ART; prepared source/class/dex/toolchain
+hashes verified, exact remote dex cleaned and owned emulator stopped. Core-only records
+branch-tree-python/android and root reviews added; drawing/package acceptance remains pending.
+Terra triangle_python owns Python BranchMarks model and actual Java parity runner only.
+Next review that model, then py5 and Android native workflows and bounded batch packaging.
+Counts unchanged: Java15 operations/15 starters; nine complete four-target distributions.
+
 ## BranchMarks p5 native workflow accepted
 
 Native1 passed17 compositions plus quiet/save at .work/reproductions/p5js-branch-marks-native1.
