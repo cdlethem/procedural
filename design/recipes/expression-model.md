@@ -125,3 +125,6 @@ No acceptance label or target support change is authorized by this proposal.
 
 Concrete first-operation schema pointers and inspected Java access forms are recorded in
 `execution-bindings.json`. They are draft execution metadata, not a parallel operation catalog.
+
+See `runtime-accounting.md` for the static input limits and proposed runtime reservations.
+The static validator does not implement those runtime reservations.

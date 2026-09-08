@@ -1,5 +1,21 @@
 # Project state
 
+## Bounded static recipe validator implemented
+
+Previous turn made progress by pushing 55c7a971. Added the required
+skills/recipe-execution-and-validation/SKILL.md now that schema/composition inputs exist;
+validated with skill-creator quick_validate. This does not approve the draft schema.
+Terra implemented tools/validate_recipe_draft.py and focused tests. Root reviewed bounded
+reads, declared-port scope, direct-call limits, and replaced a mocked stale-check test with
+an actual copied-contract hash mutation. 8 static-validator + 5 grammar tests pass; both
+complete recipes return static-valid-draft with dynamic/target/runtime/native checks pending.
+Root runtime-accounting.md defines per-call reservations for hidden core work and copied
+values, including path steps, plus provisional host budgets. These runtime limits are not
+yet implemented or benchmarked. Draft metadata stays outside the accepted catalog.
+Next complete runtime binding/type/error/budget fixtures and catalog synchronization for
+evaluator admission, then Java command comparison of both compositions and native export.
+No operation/support count changed; full milestone goal remains active.
+
 ## Complete FieldMarks and PathMarks recipe drafts mapped
 
 Prior interrupted work made progress: root wrote FieldMarks draft and Terra completed

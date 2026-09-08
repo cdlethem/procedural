@@ -30,3 +30,15 @@ Next: freeze type/error/resource accounting and catalog-owned execution bindings
 the required recipe execution skill before accepting persisted recipes; implement one
 validator/evaluator and compare both complete command streams and meaningful edits.
 All later operations, assets, animation, four-target exports and MCP/web remain unfinished.
+
+Static preflight from the repository root:
+
+```sh
+uv run python tools/validate_recipe_draft.py design/recipes/examples/field-marks.draft.json
+uv run python tools/validate_recipe_draft.py design/recipes/examples/path-marks.draft.json
+```
+
+A `static-valid-draft` result checks bounded input, grammar, current catalog identities and
+lexical names. Its `pending_checks` explicitly excludes operation input types, instance-port
+matching, target capabilities, runtime budgets and command/native output. Use this to catch
+structural mistakes while designing; it is not permission to execute or export a recipe.
