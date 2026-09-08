@@ -1,5 +1,26 @@
 # Project state
 
+## CP19 radial pull core accepted — public workflow next
+
+Root admitted curvespace#0 as geometry.radial-pull-2d, froze the exact ordered-sum contract
+and independently derived20 point expectations. Both constructors and all three query
+forms pass, with22 constructor cases and6 query-error cases. Focused native ownership,
+carriers, atomic accumulated/final-y overflow and active workloads pass. Root reviewed live
+source/runtime/class bindings and recorded evidence/conformance/radial-pull-java-root-review.json.
+250k queries measured18.32ms with8 influences and142.63ms with64 after3x20k warmup; no guarantee.
+
+Root corrected worker target atomicity, serialized row carriers and zero normalization;
+a runner ownership overlap was resolved before accepted checks. Passed report is
+.work/conformance/radial-pull-java.json, copied into evidence/conformance/radial-pull-java.json.
+Earlier worker3 report is stale and not accepted. No worker/native process remains active.
+
+Next implement PullMarks per design/capabilities/pull-marks-native-plan.md using this core,
+then native edits/recolor/contour transfer/reset/save, scoped catalog attestations and fresh
+Java0.22 extracted bundle review. Do not reuse private deformation code. Java0.21 remains
+21 shipped operations/workflows at758dede6; public radial-pull workflow is not yet packaged.
+Ports/Sol remain paused and unrelated Android resume draft untouched. Overall Java
+completeness, broader idiom coverage and original recreation coverage remain open.
+
 ## CP19 localized radial pull investigated — contract next
 
 Root read curvespace, curves_str and culin notes and pinned source. These differ in summed,

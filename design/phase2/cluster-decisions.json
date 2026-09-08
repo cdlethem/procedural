@@ -19,17 +19,17 @@
   },
   "summary": {
     "dispositions": {
-      "keep": 30,
+      "keep": 31,
       "merge": 102,
       "reject": 18,
-      "review_required": 1784
+      "review_required": 1783
     },
     "statuses": {
       "blocked_data_quality": 5,
       "reviewed_data_gap": 1,
       "reviewed_defer": 197,
-      "reviewed_provisional": 186,
-      "unreviewed": 1545
+      "reviewed_provisional": 187,
+      "unreviewed": 1544
     }
   },
   "clusters": [
@@ -2039,6 +2039,24 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "id": "geometry.radial-pull-2d",
+      "status": "reviewed_provisional",
+      "reason": "Reusable localized folding and pinching of explicit geometry; root-reviewed source and native private study.",
+      "aliases": [
+        "attractorWarp"
+      ],
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Ordered explicit [centerX,centerY,radius,power] influences; finite point queries, radius and power strictly positive.",
+        "outputs": "Immutable influence descriptor; transformed point, no renderer or RNG.",
+        "invariants": "Original-query evaluation and ordered sum; exact-center zero contribution; no smoothness/invertibility promise; caller controls sampling and drawing.",
+        "open_questions": [],
+        "review": "design/capabilities/cp19-radial-warp-direction.md",
+        "reviewer": "root"
       }
     }
   ],
@@ -19649,16 +19667,24 @@
         "section_judgement": "contains_one_off_guidance",
         "excerpt": "- `def()` is the generic core: a sum of radial \"attractor\" displacement fields with a tunable power profile `v = (1 - t^p)·r`. Clean as a library function `attractorWarp(x, y, attractors)` where each attractor is `{x, y, radius, power}`. - `warpGrid(count, resolution, warpFn)` is the second generic block: it just resamples an axis-aligned grid of lines through an arbitrary warp function, so it works with any displacement field (attractors, noise, flow). - One-off art decisions: the 4-colour neon palette with random per-line"
       },
-      "disposition": "review_required",
-      "status": "unreviewed",
-      "reason": "No computation-level adjudication has been recorded.",
+      "disposition": "keep",
+      "status": "reviewed_provisional",
+      "reason": "Keep independently specified summed radial pull after four-frame CP19 edit/transfer study; explicit zero center and binary64 divergence, no source replay.",
       "triage": {
         "cluster_id": "field.displace",
         "disposition": "keep",
         "status": "proposed",
         "reason": "point or image coordinates displaced by a sampled field"
       },
-      "evidence_sha256": "1be8f728c80a61ed1af69b1a7a5e17f9970e221286e29e74a42fbe3962f7cb21"
+      "evidence_sha256": "1be8f728c80a61ed1af69b1a7a5e17f9970e221286e29e74a42fbe3962f7cb21",
+      "cluster_id": "geometry.radial-pull-2d",
+      "review_basis": "survey/out/2018/Generativos/curvespace/notes.md#modularisation-notes",
+      "decision_audit": {
+        "status": "verified",
+        "scope": "whole_computation",
+        "computation": "Sum inward finite-radius power-profile displacements evaluated at original query, separate from input generation and drawing; center policy deliberately differs from source.",
+        "remainder": []
+      }
     },
     "2018/Generativos/curvespace#1": {
       "sketch": "2018/Generativos/curvespace",

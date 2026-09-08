@@ -1217,6 +1217,115 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/radial-profile-surface.json).
 
+## geometry.radial-pull-2d (0.1.0)
+
+Immutable ordered radial influences that sum inward power-profile displacements at the original point; may fold and self-intersect geometry.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "influences"
+  ],
+  "properties": {
+    "influences": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "items": false,
+        "minItems": 4,
+        "maxItems": 4
+      },
+      "maxItems": 536870911
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| influences | ordered caller geometry | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+| centerX | drawing coordinate | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+| centerY | drawing coordinate | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+| radius | drawing distance | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+| power | dimensionless | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+| x | drawing coordinate | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+| y | drawing coordinate | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+
+Query input (native call forms are specified in the contract):
+
+```json
+{
+  "type": "array",
+  "prefixItems": [
+    {
+      "type": "number"
+    },
+    {
+      "type": "number"
+    }
+  ],
+  "items": false,
+  "minItems": 2,
+  "maxItems": 2
+}
+```
+
+Query result:
+
+```json
+{
+  "type": "array",
+  "prefixItems": [
+    {
+      "type": "number"
+    },
+    {
+      "type": "number"
+    }
+  ],
+  "items": false,
+  "minItems": 2,
+  "maxItems": 2
+}
+```
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | not attested | not attested | not attested | not attested |
+| p5js | not attested | not attested | not attested | not attested |
+| py5 | not attested | not attested | not attested | not attested |
+| processing-android | not attested | not attested | not attested | not attested |
+
+Motivating evidence:
+
+- [`2018/Generativos/curvespace#0`](../../survey/out/2018/Generativos/curvespace/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/radial-pull-2d.json).
+
 ## layout.regular-grid (0.1.0)
 
 An immutable row-major rectangular sequence of planar positions with explicit point counts and spacing.

@@ -1,6 +1,7 @@
 # CP19 investigation: localized geometry warps
 
-Status: private investigation, not operation admission. Java 0.21 remains the accepted
+Status: root admits summed radial pull for contract/implementation after the private study.
+Java 0.21 remains the accepted
 21-operation baseline. Root owns boundary and acceptance; ports and Sol remain paused.
 
 ## Artist task
@@ -61,3 +62,20 @@ Projected recreation benefit: curvespace's defining radial field would become av
 its grid sampling and additive drawing can be ordinary host composition. A full source
 walkthrough and native structural recreation would still be required to count it. No gain
 is claimed for curves_str, culin or nabta from this proposed operation.
+
+## Admission after the four reviewed renders
+
+Root keeps curvespace#0 as geometry.radial-pull-2d, with explicit binary64, ordered-sum and
+zero-center semantics. This is the candidate's radial computation, not its random center
+construction, grid/drawing consumer or source RNG replay. Curvespace#1 remains an unresolved
+consumer decision; it is not silently merged into the operation. Neighboring sequential
+push and stochastic movement remain separate. See the CP19 experiment decision and
+ design/operations/radial-pull-contract.md. No public implementation acceptance follows.
+
+Artist inputs are explicit centers, radii and powers. They can be authored, edited or
+seed-generated outside the transform. Each query returns a reusable point. The field is
+immutable; radius/power edits create a new descriptor while drawing can reuse transformed
+geometry. One concept of ordered influence summation replaces the defining algorithm;
+ordinary polyline sampling and host drawing stay visible. No callback or renderer state
+must be reconstructed to use it. Setup/storage and each query scale linearly with center
+count, motivating a caller-reused output array and finite explicit workloads.
