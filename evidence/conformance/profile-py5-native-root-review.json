@@ -1,0 +1,25 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "scope": "Python ProfileMarks model and actual py5 P3D workflow only; no distribution, root export, Android or shared support attestation.",
+  "evidence_sha256": {
+    "evidence/conformance/py5-profile-marks.json": "a67537b1577e0ddd73001ede2a679bf08d34fe330c678c5da7abe1d6399c79ce",
+    "evidence/conformance/profile-marks-python-parity.json": "494016dd1513284e6f4d03416a552390ff4e3e00f825526f7fac4d9b65f0fb43"
+  },
+  "validation": "12 complete meshes against CP7 interval/topology reference; ten native states with actual normal/vertex submission counts, retained identity, rebuilds, ignored pointed cap and exact decoded cached saves at trio/reset without extra draw.",
+  "visual_review": {
+    "baseline": "Closed shaded cylinder with colored axial bands.",
+    "both-open": "Faceted cylinder with visible open front rim and interior.",
+    "trio": "Separated cylinder, narrowed waist and pointed form with alternate band palette."
+  },
+  "limitations": [
+    "Injected callbacks serialized with drawing; no physical keyboard delivery claim.",
+    "Rear cap removal is occluded at fixed camera: geometry/counts change while pixels remain equal.",
+    "Native runtime emitted EGL DRI3 acceleration warnings and X11 shutdown connection diagnostics; successful attempt had no drawing exception.",
+    "No cross-renderer pixel identity or original sketch recreation claim."
+  ],
+  "failed_attempts": [
+    ".work/native/profile-marks-py5-1: corrected unsupported get() to get_pixels().",
+    ".work/native/profile-marks-py5-2: corrected all-edits-visible assumption for occluded rear cap."
+  ]
+}

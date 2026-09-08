@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "scope": "Four Python ProfileMarks settings, all three full meshes against existing CP7 interval/topology reference;16-slice editability and ignored pole cap. No py5 execution.",
+  "settings": [
+    [
+      32,
+      true,
+      true
+    ],
+    [
+      8,
+      true,
+      true
+    ],
+    [
+      8,
+      false,
+      true
+    ],
+    [
+      8,
+      false,
+      false
+    ]
+  ],
+  "meshes": 12,
+  "source_sha256_before": {
+    "tests/native/profile-marks-python.py": "19b1130a0c7f00c3a469f32328fac9bdd3ab045b5e7aa5387dd0191ddf5a58ba",
+    "packages/python/examples/profile_marks/profile_composition.py": "af6b19268df01f407b5229f0e7eb4ef724be2875fb4bd1bc301928ac7fc6de99",
+    "packages/python/procedurals/radial_profile.py": "5e808574fb55b822aea205981aaea4df53cf487723d42a05204c9c6066716735",
+    "tools/diagnostics/cp7/profile_intervals.py": "2d4bb98c5bb2c52b9a45272463b8ca30062e8767e85d39f8f90dfa0f54430f6a",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "design/operations/cp7-profile-fixture-policy.md": "8e7ef08de5e1abb251de884634896b9c807b954431ebe62eb5a0213e5ecbaf7d",
+    "packages/java/examples/ProfileMarks/ProfileComposition.java": "634fc9b390c48e96ded5fd5c6e1152724d7bbb416eb10c02708cadf546324036"
+  },
+  "source_sha256_after": {
+    "tests/native/profile-marks-python.py": "19b1130a0c7f00c3a469f32328fac9bdd3ab045b5e7aa5387dd0191ddf5a58ba",
+    "packages/python/examples/profile_marks/profile_composition.py": "af6b19268df01f407b5229f0e7eb4ef724be2875fb4bd1bc301928ac7fc6de99",
+    "packages/python/procedurals/radial_profile.py": "5e808574fb55b822aea205981aaea4df53cf487723d42a05204c9c6066716735",
+    "tools/diagnostics/cp7/profile_intervals.py": "2d4bb98c5bb2c52b9a45272463b8ca30062e8767e85d39f8f90dfa0f54430f6a",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "design/operations/cp7-profile-fixture-policy.md": "8e7ef08de5e1abb251de884634896b9c807b954431ebe62eb5a0213e5ecbaf7d",
+    "packages/java/examples/ProfileMarks/ProfileComposition.java": "634fc9b390c48e96ded5fd5c6e1152724d7bbb416eb10c02708cadf546324036"
+  }
+}

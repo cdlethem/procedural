@@ -1,5 +1,32 @@
 # Project state
 
+## Python ProfileMarks native workflow accepted
+
+Root replaced invalid setup-loop probe directly after worker could not complete the handoff.
+Injected callbacks are serialized against animation-thread draws; no physical-key claim.
+Session22573 terminal passed ten states in .work/native/profile-marks-py5-3. Root verified
+all current source/runtime and PNG hashes and inspected baseline, open faceted cylinder
+and trio. Accepted py5-profile-marks and profile-py5-native-root-review records.
+Attempt1 caught get()/get_pixels() API mismatch; attempt2 caught an invalid expectation
+that removing an occluded rear cap changes pixels. Both failures preserved, corrected
+preregistration explicit; topology and submitted face checks remain exact.
+Python model/native accepted only. Radial exports/packages, Android P3D workflow and
+shared target support remain pending. No native process live. Next integrate this reviewed
+checkpoint, then continue radial distribution/Android work under frozen contract.
+
+## Baseline pushed; Python ProfileMarks model reviewed, native probe correction underway
+
+Remote main confirmed at7b1ea6a17ab251867eb018be74057a29075dcef0. That checkpoint
+contains reviewed JS output corrections/packages and scoped radial port foundations.
+Root reviewed the Python example formulas against actual Java ProfileComposition and
+verified every current binding in model1:12 full meshes pass existing CP7 topology/numeric
+interval checks,16-slice editability and ignored pointed cap. Report retained as
+evidence/conformance/profile-marks-python-parity.json; no native acceptance implied.
+The worker native probe incorrectly sequenced redraw-dependent edits inside setup. Terra
+is replacing it with animation-thread event/draw acknowledgment and bounded waits.
+Do not launch the old setup-loop probe. Python sketch already uses draw/redraw lifecycle.
+No native process launched in this checkpoint; pending workflow files remain drafts.
+
 ## Corrected JavaScript packages accepted; integration commit next
 
 Session95438 terminal passed both package/starter builds in .work/dist/retained-output2.

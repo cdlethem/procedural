@@ -1,0 +1,240 @@
+{
+  "status": "passed",
+  "scope": "Actual py5 P3D draw and injected key callbacks; no physical input, package or support acceptance",
+  "states": [
+    {
+      "id": "baseline",
+      "settings": {
+        "profile": 0,
+        "slices": 32,
+        "cap_start": true,
+        "cap_end": true,
+        "alternate": false,
+        "trio": false
+      },
+      "faces": 1088,
+      "normal_calls": 1088,
+      "vertex_calls": 3264,
+      "revision": 1,
+      "retained": null,
+      "geometry_sha256": "01048b20bd2b262000d15488007ae0e6f65dccbaf9746cf2381d169a66e55a71",
+      "rgba_sha256": "f49adf388d47ee580b9183c0c102dbbb69eacf1fe6d63cf7b5effd1c5e2dd60e",
+      "png_sha256": "bc3d3c3a4f1e7d7bfffe3522e7632b4baa0a46398f21673b117ee3bf3b5ccdbf"
+    },
+    {
+      "id": "waist",
+      "settings": {
+        "profile": 1,
+        "slices": 32,
+        "cap_start": true,
+        "cap_end": true,
+        "alternate": false,
+        "trio": false
+      },
+      "faces": 1088,
+      "normal_calls": 1088,
+      "vertex_calls": 3264,
+      "revision": 2,
+      "retained": true,
+      "geometry_sha256": "01048b20bd2b262000d15488007ae0e6f65dccbaf9746cf2381d169a66e55a71",
+      "rgba_sha256": "f123b09e1de852cecaf94f42ada69fbd8e910c9a1daacab963ab72b33975d3ed",
+      "png_sha256": "63c162fecfa612cb63c84aa8698fa17a6d0133113526faf5e5e10f3387f47120"
+    },
+    {
+      "id": "pointed",
+      "settings": {
+        "profile": 2,
+        "slices": 32,
+        "cap_start": true,
+        "cap_end": true,
+        "alternate": false,
+        "trio": false
+      },
+      "faces": 1024,
+      "normal_calls": 1024,
+      "vertex_calls": 3072,
+      "revision": 3,
+      "retained": true,
+      "geometry_sha256": "01048b20bd2b262000d15488007ae0e6f65dccbaf9746cf2381d169a66e55a71",
+      "rgba_sha256": "a5b9afa29cebd0b57e69b4eea4289f86d5cf3c562839f6cc6547f5e48d114f8f",
+      "png_sha256": "fab431fc762a1e96ac61bf8f5836447985cd612954d9390fdf7d151ea012b2a4"
+    },
+    {
+      "id": "coarse",
+      "settings": {
+        "profile": 2,
+        "slices": 8,
+        "cap_start": true,
+        "cap_end": true,
+        "alternate": false,
+        "trio": false
+      },
+      "faces": 256,
+      "normal_calls": 256,
+      "vertex_calls": 768,
+      "revision": 4,
+      "retained": false,
+      "geometry_sha256": "31f62705fd8d80f6e3f8b5e220b389836410868505ce0219d2bed7454d674145",
+      "rgba_sha256": "23938b31b3a1c5514e95af3fc2dddbed16362abe9ad9a1f1028afff7c63bdc4b",
+      "png_sha256": "161b6d9d9a02673ac011e049caf9ea61be10fb1d9bb2b02ce6beef3a7b576c2e"
+    },
+    {
+      "id": "cylinder",
+      "settings": {
+        "profile": 0,
+        "slices": 8,
+        "cap_start": true,
+        "cap_end": true,
+        "alternate": false,
+        "trio": false
+      },
+      "faces": 272,
+      "normal_calls": 272,
+      "vertex_calls": 816,
+      "revision": 5,
+      "retained": true,
+      "geometry_sha256": "31f62705fd8d80f6e3f8b5e220b389836410868505ce0219d2bed7454d674145",
+      "rgba_sha256": "0efc245bcf9d8cb992a85e933d861714bad541e4ea0237d9d13be5a43448206b",
+      "png_sha256": "c353fee158e940580d4a31be19f3fb8e92246153d0d958d6074b97b8891960f9"
+    },
+    {
+      "id": "start-open",
+      "settings": {
+        "profile": 0,
+        "slices": 8,
+        "cap_start": false,
+        "cap_end": true,
+        "alternate": false,
+        "trio": false
+      },
+      "faces": 264,
+      "normal_calls": 264,
+      "vertex_calls": 792,
+      "revision": 6,
+      "retained": false,
+      "geometry_sha256": "f2e1bf4520e1d38d435ea9d97358e61cd2f8e9248d5f9ff53f652d4fa1ed4ea5",
+      "rgba_sha256": "0efc245bcf9d8cb992a85e933d861714bad541e4ea0237d9d13be5a43448206b",
+      "png_sha256": "c353fee158e940580d4a31be19f3fb8e92246153d0d958d6074b97b8891960f9"
+    },
+    {
+      "id": "both-open",
+      "settings": {
+        "profile": 0,
+        "slices": 8,
+        "cap_start": false,
+        "cap_end": false,
+        "alternate": false,
+        "trio": false
+      },
+      "faces": 256,
+      "normal_calls": 256,
+      "vertex_calls": 768,
+      "revision": 7,
+      "retained": false,
+      "geometry_sha256": "fd06267204c1eac50ea2397b336bbb2de57c441f1f6edb18d9c38771684014e9",
+      "rgba_sha256": "9e81977f0677967134238b97ca368758bb83bc92483907953539214e69c63e4a",
+      "png_sha256": "33dcc82c8e258e749c5e997f57165b7e540c2d0d965eaf6490e4d74c8d25e113"
+    },
+    {
+      "id": "palette",
+      "settings": {
+        "profile": 0,
+        "slices": 8,
+        "cap_start": false,
+        "cap_end": false,
+        "alternate": true,
+        "trio": false
+      },
+      "faces": 256,
+      "normal_calls": 256,
+      "vertex_calls": 768,
+      "revision": 8,
+      "retained": true,
+      "geometry_sha256": "fd06267204c1eac50ea2397b336bbb2de57c441f1f6edb18d9c38771684014e9",
+      "rgba_sha256": "ac9c5854a2b3954166256c8fd84bcef5c8a430e58cfafda53de8a5f49339583d",
+      "png_sha256": "be08859557dc2074d544360e1405390687d45dbc68b4a22c027908c4ad7ae71d"
+    },
+    {
+      "id": "trio",
+      "settings": {
+        "profile": 0,
+        "slices": 8,
+        "cap_start": false,
+        "cap_end": false,
+        "alternate": true,
+        "trio": true
+      },
+      "faces": 760,
+      "normal_calls": 760,
+      "vertex_calls": 2280,
+      "revision": 9,
+      "retained": true,
+      "geometry_sha256": "fd06267204c1eac50ea2397b336bbb2de57c441f1f6edb18d9c38771684014e9",
+      "rgba_sha256": "080e7976e8bf4dd47cfb91c400cb7515da3377ca34f3191d8fffae2bf50d8808",
+      "png_sha256": "9f9f326312233f47ada3767523f2aad4310411327910bd84c72d43378186d1b4",
+      "saved_png_sha256": "199b471a755d1bf9af72b3ae57cbd7861071b348c0c96a67761a116a29e31d81"
+    },
+    {
+      "id": "reset",
+      "settings": {
+        "profile": 0,
+        "slices": 32,
+        "cap_start": true,
+        "cap_end": true,
+        "alternate": false,
+        "trio": false
+      },
+      "faces": 1088,
+      "normal_calls": 1088,
+      "vertex_calls": 3264,
+      "revision": 10,
+      "retained": false,
+      "geometry_sha256": "01048b20bd2b262000d15488007ae0e6f65dccbaf9746cf2381d169a66e55a71",
+      "rgba_sha256": "f49adf388d47ee580b9183c0c102dbbb69eacf1fe6d63cf7b5effd1c5e2dd60e",
+      "png_sha256": "bc3d3c3a4f1e7d7bfffe3522e7632b4baa0a46398f21673b117ee3bf3b5ccdbf",
+      "saved_png_sha256": "dc5ecebbda52017b65d1f7bac5d9b4940f9e38cd3e9dbaede192c1b9e50096fb"
+    }
+  ],
+  "py5": "0.10.11a0",
+  "python": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]",
+  "java": "17.0.20.1",
+  "input_sha256_before": {
+    "packages/python/procedurals/radial_profile.py": "5e808574fb55b822aea205981aaea4df53cf487723d42a05204c9c6066716735",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/examples/profile_marks/profile_composition.py": "af6b19268df01f407b5229f0e7eb4ef724be2875fb4bd1bc301928ac7fc6de99",
+    "packages/python/examples/profile_marks/sketch.py": "2e483ffbb7b1f63a69d67e7d4f346c3fc15b2a4284891dae3d4e57122878ec3c",
+    "tests/native/py5_profile_marks.py": "7e245925356c4b7d0be1226343b5d6923aa16adb23503011464150db9aeb3d7d",
+    "design/capabilities/profile-marks-py5-acceptance.md": "fef381f5d073e8f8514bb5de08a7db3b2cad3478bbbc241efa909d0dac3cb9ce",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "design/capabilities/profile-marks-port-boundary.md": "e1f1f12cb9a643606eedbb1c90088107ab1a421259b92b611333ecdd579292e7",
+    "evidence/conformance/profile-marks-python-parity.json": "494016dd1513284e6f4d03416a552390ff4e3e00f825526f7fac4d9b65f0fb43",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/__init__.py": "763066a534ae41d8a01605ceedcea2cd1c37139a25f4f2a9138e63b8a31410d7",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/sketch.py": "39557b47939444710c6cd2480e8dfadc03eddc28c87106c3fb262d2d087a8639",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/base.py": "018c896ebee9ab611ef7346cbeca8e354918cf5caa49a1465332a7b7cccd57da",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/core.jar": "2cd02df8ace61c45af5eddef74dc74608b87a50155e83f20c7b1e28642ddbc85",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/py5.jar": "4447b8098080f83cb4ffa5bf3b2d6c15a4a1bea3265198da75f5ac936f504903",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "paint_calls": 10,
+  "input_sha256_after": {
+    "packages/python/procedurals/radial_profile.py": "5e808574fb55b822aea205981aaea4df53cf487723d42a05204c9c6066716735",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/examples/profile_marks/profile_composition.py": "af6b19268df01f407b5229f0e7eb4ef724be2875fb4bd1bc301928ac7fc6de99",
+    "packages/python/examples/profile_marks/sketch.py": "2e483ffbb7b1f63a69d67e7d4f346c3fc15b2a4284891dae3d4e57122878ec3c",
+    "tests/native/py5_profile_marks.py": "7e245925356c4b7d0be1226343b5d6923aa16adb23503011464150db9aeb3d7d",
+    "design/capabilities/profile-marks-py5-acceptance.md": "fef381f5d073e8f8514bb5de08a7db3b2cad3478bbbc241efa909d0dac3cb9ce",
+    "catalog/operations/radial-profile-surface.json": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa",
+    "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88",
+    "design/capabilities/profile-marks-port-boundary.md": "e1f1f12cb9a643606eedbb1c90088107ab1a421259b92b611333ecdd579292e7",
+    "evidence/conformance/profile-marks-python-parity.json": "494016dd1513284e6f4d03416a552390ff4e3e00f825526f7fac4d9b65f0fb43",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/__init__.py": "763066a534ae41d8a01605ceedcea2cd1c37139a25f4f2a9138e63b8a31410d7",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/sketch.py": "39557b47939444710c6cd2480e8dfadc03eddc28c87106c3fb262d2d087a8639",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/base.py": "018c896ebee9ab611ef7346cbeca8e354918cf5caa49a1465332a7b7cccd57da",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/core.jar": "2cd02df8ace61c45af5eddef74dc74608b87a50155e83f20c7b1e28642ddbc85",
+    ".work/environments/py5/lib/python3.13/site-packages/py5/jars/py5.jar": "4447b8098080f83cb4ffa5bf3b2d6c15a4a1bea3265198da75f5ac936f504903",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  }
+}
