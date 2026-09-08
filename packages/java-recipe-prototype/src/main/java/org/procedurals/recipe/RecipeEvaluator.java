@@ -98,7 +98,7 @@ public strictfp final class RecipeEvaluator {
             }
         }
         void array(String p, long n) {
-            if (n < 0 || n > l.arrayLength) {
+            if (n < 0 || n > Integer.MAX_VALUE || n > l.arrayLength) {
                 fail("LIMIT_ARRAY_LENGTH", p, "array length limit");
             }
             units(p, n + 1);

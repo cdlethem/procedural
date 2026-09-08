@@ -38,4 +38,10 @@ coverage, not acceptance of the complete accounting or replay contract.
 Result ownership now has a regression case: changing an input literal cannot change a prior
 result, nested result containers are read-only, and fresh execution sees an edited recipe.
 Emitted snapshots reserve their detached copy cost. This establishes fresh evaluation
-isolation, not persisted JSON round-trip equivalence or retained-geometry cache invalidation.
+isolation; retained-geometry cache invalidation remains unverified.
+
+The runner now serializes both draft recipes with reordered object keys, deserializes and
+revalidates them, then executes those round-tripped values in all nine command comparisons.
+It preserves expression/statement array order. Allocation probes also reject a count above
+Java's signed-int collection limit even when host budgets are widened. Broader accounting
+and retained-edit caching remain unaccepted.

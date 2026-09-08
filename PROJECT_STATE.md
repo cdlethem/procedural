@@ -1,5 +1,18 @@
 # Project state
 
+## Native allocation ceiling and JSON round-trip checks
+
+Previous turn pushed ownership fix 836f1e7d. Root demonstrated widened host budgets let
+a2^31 range count narrow into a negative ArrayList capacity. State.array now enforces the
+Java signed-int ceiling before casts/allocation, producing LIMIT_ARRAY_LENGTH. Added probe.
+Runner now serializes, deserializes and revalidates both recipes, then executes those values
+for all nine exact composition comparisons. Root run .work/recipe-prototype-root6 passes
+nine command cases and seven focused failure/ownership groups; evidence updated.
+This covers the two current JSON round trips, not retained-cache invalidation, all dynamic
+schema/error precedence, complete allocation accounting or native/export support.
+Next address remaining accounting/type admission before accepted evaluator/export work.
+Unrelated JS export edit preserved unstaged. Full milestone goal active.
+
 ## Prototype result ownership corrected
 
 Previous turn pushed diagnostic fixes 299ee78e. Root added an ownership probe and observed

@@ -31,7 +31,14 @@ def main():
         path = ROOT / 'design/recipes/examples' / (name + '.draft.json')
         recipe = load_json(path)
         validate(recipe)
-        recipes.append(recipe)
+        # Reorder JSON object keys while retaining expression/statement arrays and numbers.
+        # Execute the deserialized form, not merely a structural comparison of serialization.
+        roundtrip = json.loads(json.dumps(recipe, sort_keys=True, allow_nan=False),
+                               parse_int=float, parse_float=float)
+        if roundtrip != recipe:
+            raise RuntimeError('recipe changed during JSON round trip')
+        validate(roundtrip)
+        recipes.append(roundtrip)
         recipe_paths.append(path)
     source = '''import java.util.*;
 import org.procedurals.recipe.RecipeEvaluator;
@@ -88,6 +95,8 @@ public class RecipePrototypeComparison {
         *[home / name for name in ('bin/java', 'bin/javac', 'release', 'lib/modules')]]
     hashes = {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in bound}
     output.mkdir(parents=True)
+    for original, recipe in zip(recipe_paths, recipes):
+        (output / original.name).write_text(json.dumps(recipe, sort_keys=True, allow_nan=False) + '\n')
     driver = output / 'RecipePrototypeComparison.java'
     driver.write_text(source)
     classes = output / 'classes'
@@ -106,7 +115,7 @@ public class RecipePrototypeComparison {
     if hashes != {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in bound}:
         raise RuntimeError('comparison input changed during execution')
     report = {'status': 'prototype-command-comparison-passed', 'scope': 'Nine command scenarios and focused failure probes; complete budget/type/replay, cache, export and native acceptance remain pending.',
-              'input_sha256': hashes, 'stdout': result.stdout, 'failure_stdout': failures.stdout}
+              'input_sha256': hashes, 'roundtripped_recipes': [p.name for p in recipe_paths], 'stdout': result.stdout, 'failure_stdout': failures.stdout}
     (output / 'result.json').write_text(json.dumps(report, indent=2) + '\n')
     print(result.stdout + failures.stdout)
 

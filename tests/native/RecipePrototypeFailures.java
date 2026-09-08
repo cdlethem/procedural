@@ -70,6 +70,11 @@ public final class RecipePrototypeFailures {
         RecipeEvaluator.Limits snapshotBudget=new RecipeEvaluator.Limits();snapshotBudget.valueUnits=12;
         failure(ownedRecipe,snapshotBudget,"LIMIT_VALUE_UNITS");
         System.out.println("detached-results-and-fresh-replay passed");
+        RecipeEvaluator.Limits widened=new RecipeEvaluator.Limits();
+        widened.arrayLength=Long.MAX_VALUE;widened.valueUnits=Long.MAX_VALUE;
+        Object huge=map("kind","range","start",literal(0),"stop",literal(2147483648.0),"step",literal(1));
+        failure(recipe(binding(huge),list()),widened,"LIMIT_ARRAY_LENGTH");
+        System.out.println("native-array-index-ceiling passed");
         System.out.println("PROTOTYPE_FAILURE_CASES_PASSED");
     }
 }
