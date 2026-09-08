@@ -1,0 +1,931 @@
+{
+  "status": "passed",
+  "scope": "p5 2.3.2/Chromium actual PlacementMarks controls, retained-result identity, extended accepted prefix, radial transfer, cached Save PNG, and ten declared images; no cross-host pixel identity claim.",
+  "input_sha256": {
+    "tools/run_p5_placement_marks.mjs": "15ad1597fa54e684f0c69fce54f450a47d7f6a9da06c4b16fdc7ac89a7943b41",
+    "tests/native/placement-marks-browser.mjs": "67cd730c9605198803c112755df9ea4a50fa4632b5afde20f14396262d76a5d2",
+    "packages/javascript/examples/placement-marks/index.html": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318",
+    "packages/javascript/examples/placement-marks/sketch.js": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c",
+    "packages/javascript/examples/placement-marks/placement-marks.js": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382",
+    "packages/javascript/examples/placement-marks/README.md": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1",
+    "packages/javascript/src/index.js": "51efbfea8c64ba7a4faed00843fea2c7c2b6771c69dceb69849a0bcf852b3c06",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/java/examples/PlacementMarks/PlacementComposition.java": "f3bb348fd945eaaee368ac987b974a5647bd1d69e6a72e5562319d52d3de7615",
+    "catalog/operations/ordered-circle-filter.json": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083",
+    "catalog/operations/seeded-circle-placement.json": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267",
+    "fixtures/operations/ordered-circle-filter.json": "b5fb3743676b6a268b3cfa8467e727a2e713482feff2fa44ac08c71d976f103b",
+    "fixtures/operations/seeded-circle-placement.json": "c625d372435be9ae25e721407458ba4c189cfae48c09e4cd530ebfa6e8240699",
+    "design/capabilities/placement-marks-p5-acceptance.md": "5cebfa956b5b6a8932eae12d1cbd9ae6589b7d088b8577ab3acef234287256c0",
+    "evidence/reproductions/cp3-java2d/pde-result.json": "774c28474e668a91345e22dd0f8f1314fdcd1785270c2d1cc30a4465f20daa4b",
+    "/home/colin/dev/procedural/.work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
+    "/home/colin/dev/procedural/.work/environments/p5js/node_modules/p5/package.json": "fdfa47de556b04ee9dda1fc105896becf4e02b8a5f269a0af94116a1ddf61b18",
+    "/home/colin/dev/procedural/.work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    "/home/colin/dev/procedural/.work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  },
+  "render_budget": {
+    "policy": "One bounded initial browser execution. Every control callback that composes a frame is registered below; no corrective or repeat route is registered by this executor.",
+    "compositions": [
+      {
+        "ordinal": 1,
+        "state": "baseline",
+        "trigger": "initial setup",
+        "visualArtifact": "baseline"
+      },
+      {
+        "ordinal": 2,
+        "state": "diamond",
+        "trigger": "M click",
+        "visualArtifact": "diamond"
+      },
+      {
+        "ordinal": 3,
+        "state": "rings-restored",
+        "trigger": "M click"
+      },
+      {
+        "ordinal": 4,
+        "state": "palette",
+        "trigger": "keyboard c",
+        "visualArtifact": "palette"
+      },
+      {
+        "ordinal": 5,
+        "state": "palette-restored",
+        "trigger": "C click"
+      },
+      {
+        "ordinal": 6,
+        "state": "spacing",
+        "trigger": "G click",
+        "visualArtifact": "spacing"
+      },
+      {
+        "ordinal": 7,
+        "state": "spacing-restored",
+        "trigger": "G click"
+      },
+      {
+        "ordinal": 8,
+        "state": "size-min",
+        "trigger": "I click",
+        "visualArtifact": "size-min"
+      },
+      {
+        "ordinal": 9,
+        "state": "size-min-restored",
+        "trigger": "I click"
+      },
+      {
+        "ordinal": 10,
+        "state": "size-max",
+        "trigger": "O click",
+        "visualArtifact": "size-max"
+      },
+      {
+        "ordinal": 11,
+        "state": "size-max-restored",
+        "trigger": "O click"
+      },
+      {
+        "ordinal": 12,
+        "state": "count-extended",
+        "trigger": "N click",
+        "visualArtifact": "count"
+      },
+      {
+        "ordinal": 13,
+        "state": "count-restored",
+        "trigger": "N click"
+      },
+      {
+        "ordinal": 14,
+        "state": "seed-43",
+        "trigger": "R click",
+        "visualArtifact": "seed"
+      },
+      {
+        "ordinal": 15,
+        "state": "radial",
+        "trigger": "X click",
+        "visualArtifact": "radial"
+      },
+      {
+        "ordinal": 16,
+        "state": "radial-ignored-r",
+        "trigger": "R click"
+      },
+      {
+        "ordinal": 17,
+        "state": "radial-ignored-n",
+        "trigger": "N click"
+      },
+      {
+        "ordinal": 18,
+        "state": "radial-ignored-i",
+        "trigger": "I click"
+      },
+      {
+        "ordinal": 19,
+        "state": "radial-ignored-o",
+        "trigger": "O click"
+      },
+      {
+        "ordinal": 20,
+        "state": "radial-spacing",
+        "trigger": "G click",
+        "visualArtifact": "radial-spacing"
+      },
+      {
+        "ordinal": 21,
+        "state": "radial-spacing-restored",
+        "trigger": "G click"
+      },
+      {
+        "ordinal": 22,
+        "state": "save-quiet",
+        "trigger": "S click"
+      }
+    ],
+    "frameComposing": 17,
+    "ignoredObservations": 4,
+    "cachedSaveCaptures": 1,
+    "totalHostTimeoutMs": 900000
+  },
+  "errors": [],
+  "native": {
+    "pure_composition": {
+      "scope": "Node-side pure composition checks for the delivered example module; no renderer.",
+      "counts": {
+        "baseline": 424,
+        "extended": 517,
+        "seed43": 432,
+        "spacing": 353,
+        "sizeMin": 239,
+        "sizeMax": 613
+      }
+    },
+    "render_states": [
+      {
+        "id": "baseline",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "222f9a0728907696e50c4ca8544ff185314393b8e16aebf94f362c9576789e03",
+        "opaque": true,
+        "nonbackground": 39785,
+        "status": "424 accepted of 5,000 proposals · seeded",
+        "revision": "1",
+        "accepted": 424,
+        "attempts": 5000,
+        "png_sha256": "748df315b5ad969da3e7dee0042c97938badc019a10a1d9d5baf17fda5bd5aea"
+      },
+      {
+        "id": "diamond",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "1c2b96b96eb8810f0c91a7568f366b07342b6ae40c5967b092692c257b72b51e",
+        "opaque": true,
+        "nonbackground": 29039,
+        "status": "424 accepted of 5,000 proposals · seeded",
+        "revision": "2",
+        "accepted": 424,
+        "attempts": 5000,
+        "png_sha256": "f1cdc98bf9d43ded1b2f3eb9b503fb969600c227b32fd6f2b74944c2dacce825"
+      },
+      {
+        "id": "rings-restored",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "222f9a0728907696e50c4ca8544ff185314393b8e16aebf94f362c9576789e03",
+        "opaque": true,
+        "nonbackground": 39785,
+        "status": "424 accepted of 5,000 proposals · seeded",
+        "revision": "3",
+        "accepted": 424,
+        "attempts": 5000
+      },
+      {
+        "id": "palette",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "9e201ffbd23c82f5526a41df5b7d9fe611ddd523df9617dbc446fdc9ef95fc98",
+        "opaque": true,
+        "nonbackground": 39407,
+        "status": "424 accepted of 5,000 proposals · seeded",
+        "revision": "4",
+        "accepted": 424,
+        "attempts": 5000,
+        "png_sha256": "0747c1acf9f6fea41a21a2aeabac10b4cf7e911bbf5476c5e446bb13cadd7c0c"
+      },
+      {
+        "id": "palette-restored",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "222f9a0728907696e50c4ca8544ff185314393b8e16aebf94f362c9576789e03",
+        "opaque": true,
+        "nonbackground": 39785,
+        "status": "424 accepted of 5,000 proposals · seeded",
+        "revision": "5",
+        "accepted": 424,
+        "attempts": 5000
+      },
+      {
+        "id": "spacing",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "6922e1bcabebb76cbdc9be09b5f0b125242dfc9ad9d08efc3f6828a0bd8d9a76",
+        "opaque": true,
+        "nonbackground": 30622,
+        "status": "353 accepted of 5,000 proposals · seeded",
+        "revision": "6",
+        "accepted": 353,
+        "attempts": 5000,
+        "png_sha256": "b72775449119d4e6c2ed29be6039e91bc4b5c8fd9e2301bf4ee9fa05b9d83ea1"
+      },
+      {
+        "id": "spacing-restored",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "222f9a0728907696e50c4ca8544ff185314393b8e16aebf94f362c9576789e03",
+        "opaque": true,
+        "nonbackground": 39785,
+        "status": "424 accepted of 5,000 proposals · seeded",
+        "revision": "7",
+        "accepted": 424,
+        "attempts": 5000
+      },
+      {
+        "id": "size-min",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "3eaff0a40cbd10d2052f602397dfc4ce6ef8627172af712f8cb37157c0b50a78",
+        "opaque": true,
+        "nonbackground": 33272,
+        "status": "239 accepted of 5,000 proposals · seeded",
+        "revision": "8",
+        "accepted": 239,
+        "attempts": 5000,
+        "png_sha256": "00ce20e436adee7f7031e2e152ee87b040f9a1b49718ebfe552b9de008f1c674"
+      },
+      {
+        "id": "size-min-restored",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "222f9a0728907696e50c4ca8544ff185314393b8e16aebf94f362c9576789e03",
+        "opaque": true,
+        "nonbackground": 39785,
+        "status": "424 accepted of 5,000 proposals · seeded",
+        "revision": "9",
+        "accepted": 424,
+        "attempts": 5000
+      },
+      {
+        "id": "size-max",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "2734d3640d967fc93d983c1168cdf5048bd237fa25896243705c30e7c92d8891",
+        "opaque": true,
+        "nonbackground": 48082,
+        "status": "613 accepted of 5,000 proposals · seeded",
+        "revision": "10",
+        "accepted": 613,
+        "attempts": 5000,
+        "png_sha256": "0e320e7cc7236dbbfeaf155e2cbeac9886fa97b544e1d8e8a2dff2a8139b409f"
+      },
+      {
+        "id": "size-max-restored",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "222f9a0728907696e50c4ca8544ff185314393b8e16aebf94f362c9576789e03",
+        "opaque": true,
+        "nonbackground": 39785,
+        "status": "424 accepted of 5,000 proposals · seeded",
+        "revision": "11",
+        "accepted": 424,
+        "attempts": 5000
+      },
+      {
+        "id": "count-extended",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "0a57ee5acabaa7e0b42b55ded263e85cc783529edda5a97f849de2e5d34f3500",
+        "opaque": true,
+        "nonbackground": 45389,
+        "status": "517 accepted of 10,000 proposals · seeded",
+        "revision": "12",
+        "accepted": 517,
+        "attempts": 10000,
+        "png_sha256": "7bc21e809f8a70171c13ad7e286e69a1909278c674ac05df81a1709428473bc6"
+      },
+      {
+        "id": "count-restored",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "222f9a0728907696e50c4ca8544ff185314393b8e16aebf94f362c9576789e03",
+        "opaque": true,
+        "nonbackground": 39785,
+        "status": "424 accepted of 5,000 proposals · seeded",
+        "revision": "13",
+        "accepted": 424,
+        "attempts": 5000
+      },
+      {
+        "id": "seed",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "6e54987c84b6aa0c558932fd96146f9a7631a647c7bb5d448128b1fcb237cc60",
+        "opaque": true,
+        "nonbackground": 39467,
+        "status": "432 accepted of 5,000 proposals · seeded",
+        "revision": "14",
+        "accepted": 432,
+        "attempts": 5000,
+        "png_sha256": "d95e4540f299ba8e4e9a4b7d58c520991da66d214659e6c01efa90303c52ac52"
+      },
+      {
+        "id": "radial",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "eae7fc4ac32478630eb7e2ca4694d968b0834751b798af0c48fbbfa38915526a",
+        "opaque": true,
+        "nonbackground": 16056,
+        "status": "111 accepted of 160 proposals · radial",
+        "revision": "15",
+        "accepted": 111,
+        "attempts": 160,
+        "png_sha256": "807738805aefbea6370bd5779c1cc37c51e76bc4de0d76ed15068f52d0ed333c"
+      },
+      {
+        "id": "radial-ignored-r",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "eae7fc4ac32478630eb7e2ca4694d968b0834751b798af0c48fbbfa38915526a",
+        "opaque": true,
+        "nonbackground": 16056,
+        "status": "111 accepted of 160 proposals · radial",
+        "revision": "15",
+        "accepted": 111,
+        "attempts": 160
+      },
+      {
+        "id": "radial-ignored-n",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "eae7fc4ac32478630eb7e2ca4694d968b0834751b798af0c48fbbfa38915526a",
+        "opaque": true,
+        "nonbackground": 16056,
+        "status": "111 accepted of 160 proposals · radial",
+        "revision": "15",
+        "accepted": 111,
+        "attempts": 160
+      },
+      {
+        "id": "radial-ignored-i",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "eae7fc4ac32478630eb7e2ca4694d968b0834751b798af0c48fbbfa38915526a",
+        "opaque": true,
+        "nonbackground": 16056,
+        "status": "111 accepted of 160 proposals · radial",
+        "revision": "15",
+        "accepted": 111,
+        "attempts": 160
+      },
+      {
+        "id": "radial-ignored-o",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "eae7fc4ac32478630eb7e2ca4694d968b0834751b798af0c48fbbfa38915526a",
+        "opaque": true,
+        "nonbackground": 16056,
+        "status": "111 accepted of 160 proposals · radial",
+        "revision": "15",
+        "accepted": 111,
+        "attempts": 160
+      },
+      {
+        "id": "radial-spacing",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "5bc04c9565ecd4d1cd0b038cadbbb8633622016dfa8fdadcd74753bd8c655149",
+        "opaque": true,
+        "nonbackground": 13598,
+        "status": "95 accepted of 160 proposals · radial",
+        "revision": "16",
+        "accepted": 95,
+        "attempts": 160,
+        "png_sha256": "aca3c4d3140ba74c34152c96e7aa75a44a83b0181be82502e36ef013dc451051"
+      },
+      {
+        "id": "radial-spacing-restored",
+        "canvasCount": 1,
+        "width": 640,
+        "height": 640,
+        "rgba_sha256": "eae7fc4ac32478630eb7e2ca4694d968b0834751b798af0c48fbbfa38915526a",
+        "opaque": true,
+        "nonbackground": 16056,
+        "status": "111 accepted of 160 proposals · radial",
+        "revision": "17",
+        "accepted": 111,
+        "attempts": 160
+      }
+    ],
+    "model": {
+      "passed": true,
+      "scope": "Browser-loaded public PlacementMarks model only; no renderer or cross-host pixel identity claim.",
+      "counts": {
+        "baseline": 424,
+        "extended": 517,
+        "seed43": 432,
+        "spacing": 353,
+        "sizeMin": 239,
+        "sizeMax": 613,
+        "radial": 111,
+        "radialAttempts": 160
+      },
+      "prefix5000Of10000": true,
+      "radialHostTrigonometry": "recorded, not asserted (outside exact core semantics)"
+    },
+    "live_observation": [
+      {
+        "revision": 1,
+        "settings": {
+          "seed": 42,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": false,
+          "diamonds": false,
+          "alternate": false
+        },
+        "accepted": 424,
+        "attempts": 5000,
+        "source": "seeded"
+      },
+      {
+        "action": "m",
+        "revision": 2,
+        "settings": {
+          "seed": 42,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": false,
+          "diamonds": true,
+          "alternate": false
+        },
+        "source": "seeded",
+        "accepted": 424,
+        "attempts": 5000,
+        "drawnCircles": 424,
+        "drawnVertices": 1696,
+        "retainedIdentity": true
+      },
+      {
+        "action": "m",
+        "revision": 3,
+        "settings": {
+          "seed": 42,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": false,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "seeded",
+        "accepted": 424,
+        "attempts": 5000,
+        "drawnCircles": 424,
+        "drawnVertices": 27136,
+        "retainedIdentity": true
+      },
+      {
+        "action": "c",
+        "revision": 4,
+        "settings": {
+          "seed": 42,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": false,
+          "diamonds": false,
+          "alternate": true
+        },
+        "source": "seeded",
+        "accepted": 424,
+        "attempts": 5000,
+        "drawnCircles": 424,
+        "drawnVertices": 27136,
+        "retainedIdentity": true
+      },
+      {
+        "action": "c",
+        "revision": 5,
+        "settings": {
+          "seed": 42,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": false,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "seeded",
+        "accepted": 424,
+        "attempts": 5000,
+        "drawnCircles": 424,
+        "drawnVertices": 27136,
+        "retainedIdentity": true
+      },
+      {
+        "action": "g",
+        "revision": 6,
+        "settings": {
+          "seed": 42,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1.2,
+          "radial": false,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "seeded",
+        "accepted": 353,
+        "attempts": 5000,
+        "drawnCircles": 353,
+        "drawnVertices": 22592,
+        "retainedIdentity": false
+      },
+      {
+        "action": "g",
+        "revision": 7,
+        "settings": {
+          "seed": 42,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": false,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "seeded",
+        "accepted": 424,
+        "attempts": 5000,
+        "drawnCircles": 424,
+        "drawnVertices": 27136,
+        "retainedIdentity": false
+      },
+      {
+        "action": "i",
+        "revision": 8,
+        "settings": {
+          "seed": 42,
+          "attempts": 5000,
+          "minimum": 8,
+          "maximum": 64,
+          "separation": 1,
+          "radial": false,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "seeded",
+        "accepted": 239,
+        "attempts": 5000,
+        "drawnCircles": 239,
+        "drawnVertices": 15296,
+        "retainedIdentity": false
+      },
+      {
+        "action": "i",
+        "revision": 9,
+        "settings": {
+          "seed": 42,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": false,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "seeded",
+        "accepted": 424,
+        "attempts": 5000,
+        "drawnCircles": 424,
+        "drawnVertices": 27136,
+        "retainedIdentity": false
+      },
+      {
+        "action": "o",
+        "revision": 10,
+        "settings": {
+          "seed": 42,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 32,
+          "separation": 1,
+          "radial": false,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "seeded",
+        "accepted": 613,
+        "attempts": 5000,
+        "drawnCircles": 613,
+        "drawnVertices": 39232,
+        "retainedIdentity": false
+      },
+      {
+        "action": "o",
+        "revision": 11,
+        "settings": {
+          "seed": 42,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": false,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "seeded",
+        "accepted": 424,
+        "attempts": 5000,
+        "drawnCircles": 424,
+        "drawnVertices": 27136,
+        "retainedIdentity": false
+      },
+      {
+        "action": "n",
+        "revision": 12,
+        "settings": {
+          "seed": 42,
+          "attempts": 10000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": false,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "seeded",
+        "accepted": 517,
+        "attempts": 10000,
+        "drawnCircles": 517,
+        "drawnVertices": 33088,
+        "retainedIdentity": false
+      },
+      {
+        "action": "n",
+        "revision": 13,
+        "settings": {
+          "seed": 42,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": false,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "seeded",
+        "accepted": 424,
+        "attempts": 5000,
+        "drawnCircles": 424,
+        "drawnVertices": 27136,
+        "retainedIdentity": false
+      },
+      {
+        "action": "r",
+        "revision": 14,
+        "settings": {
+          "seed": 43,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": false,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "seeded",
+        "accepted": 432,
+        "attempts": 5000,
+        "drawnCircles": 432,
+        "drawnVertices": 27648,
+        "retainedIdentity": false
+      },
+      {
+        "action": "x",
+        "revision": 15,
+        "settings": {
+          "seed": 43,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": true,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "radial",
+        "accepted": 111,
+        "attempts": 160,
+        "drawnCircles": 111,
+        "drawnVertices": 7104,
+        "retainedIdentity": false
+      },
+      {
+        "action": "r",
+        "revision": 15,
+        "settings": {
+          "seed": 43,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": true,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "radial",
+        "accepted": 111,
+        "attempts": 160,
+        "drawnCircles": 111,
+        "drawnVertices": 7104,
+        "retainedIdentity": true
+      },
+      {
+        "action": "n",
+        "revision": 15,
+        "settings": {
+          "seed": 43,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": true,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "radial",
+        "accepted": 111,
+        "attempts": 160,
+        "drawnCircles": 111,
+        "drawnVertices": 7104,
+        "retainedIdentity": true
+      },
+      {
+        "action": "i",
+        "revision": 15,
+        "settings": {
+          "seed": 43,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": true,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "radial",
+        "accepted": 111,
+        "attempts": 160,
+        "drawnCircles": 111,
+        "drawnVertices": 7104,
+        "retainedIdentity": true
+      },
+      {
+        "action": "o",
+        "revision": 15,
+        "settings": {
+          "seed": 43,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": true,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "radial",
+        "accepted": 111,
+        "attempts": 160,
+        "drawnCircles": 111,
+        "drawnVertices": 7104,
+        "retainedIdentity": true
+      },
+      {
+        "action": "g",
+        "revision": 16,
+        "settings": {
+          "seed": 43,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1.2,
+          "radial": true,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "radial",
+        "accepted": 95,
+        "attempts": 160,
+        "drawnCircles": 95,
+        "drawnVertices": 6080,
+        "retainedIdentity": false
+      },
+      {
+        "action": "g",
+        "revision": 17,
+        "settings": {
+          "seed": 43,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": true,
+          "diamonds": false,
+          "alternate": false
+        },
+        "source": "radial",
+        "accepted": 111,
+        "attempts": 160,
+        "drawnCircles": 111,
+        "drawnVertices": 7104,
+        "retainedIdentity": false
+      },
+      {
+        "revision": 17,
+        "settings": {
+          "seed": 43,
+          "attempts": 5000,
+          "minimum": 4,
+          "maximum": 64,
+          "separation": 1,
+          "radial": true,
+          "diamonds": false,
+          "alternate": false
+        },
+        "quiet": true
+      }
+    ],
+    "radial_transfer": {
+      "attempts": 160,
+      "accepted": 111,
+      "java_accepted": 111,
+      "matches_java_count": true,
+      "note": "Radial proposal trigonometry is host composition, outside exact core semantics; the count is recorded, not asserted."
+    },
+    "delivered_modules": [
+      "/p5.js",
+      "/packages/javascript/examples/placement-marks/index.html",
+      "/packages/javascript/examples/placement-marks/placement-marks.js",
+      "/packages/javascript/examples/placement-marks/sketch.js",
+      "/packages/javascript/src/circle-placements.js",
+      "/tests/native/placement-marks-browser.mjs"
+    ],
+    "keyboard_edit": {
+      "key": "c",
+      "composition": "palette",
+      "revision": 4,
+      "note": "Keyboard-triggered palette edit; all other edits used actual button clicks."
+    },
+    "save_png": {
+      "path": ".work/reproductions/p5js-placement-marks/placement-marks-saved.png",
+      "bytes": 103545,
+      "png_sha256": "807738805aefbea6370bd5779c1cc37c51e76bc4de0d76ed15068f52d0ed333c",
+      "decoded_rgba_sha256": "eae7fc4ac32478630eb7e2ca4694d968b0834751b798af0c48fbbfa38915526a",
+      "matches_current_canvas": true
+    }
+  },
+  "browser": "153.0.8010.12",
+  "browser_executable_sha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e"
+}
