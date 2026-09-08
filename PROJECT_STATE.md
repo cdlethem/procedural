@@ -1,5 +1,16 @@
 # Project state
 
+## CP16 closed-spline investigation completed; contract next
+
+Root read blobs/databol notes and pinned sources and selected retained smooth closed paths
+for shape filling and distance-based marks. Their source distance lookup is only per-span;
+a reviewed private Java probe demonstrates substantially more even spacing when retaining
+interior chord distances. Design, source hashes, commands, limits and results are in
+design/capabilities/cp16-closed-spline-direction.md. No public API or acceptance yet.
+Next root reviews ledger extraction/remainders and freezes the contract, then delegates
+Java core and LoopMarks against it. Java remains18 accepted operations/18 workflows.
+Ports/Sol paused; no worker or native process remains active.
+
 ## Java artist tooling checkpoint
 
 Root reviewed the bounded Pillow palette extractor and its eight focused tests; direct CLI,
