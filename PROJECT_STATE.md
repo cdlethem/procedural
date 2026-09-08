@@ -1,5 +1,17 @@
 # Project state
 
+## Quadrant port batch complete through local distributions
+
+Python RegionMarks0.4 wheel/starter passes installed-submodule and extracted py5 import
+checks at .work/dist/cp4/python-region1. Root verified all inputs/archive members, exact
+core/model bytes, sketch-only sys.path removal and prior native-review bindings. Root
+independently compared five full compositions (IDs, bounds, nine marks) with source.
+Review: evidence/distribution/cp4-python-review.json. No root export change or native rerun.
+Batch02 now has core/native evidence and local packages on all four targets. Java remains
+15 operations/15 starters; seven operations are ported and eight remain. Next bounded
+batch is the two triangle operations and GrainMarks, following frozen CP5 contracts.
+Recipe and later artist/reproduction/exporter/MCP/web milestones remain unfinished.
+
 ## JavaScript RegionMarks local distribution accepted; Python build in flight
 
 Root built npm tarball and browser starter at .work/dist/cp4/javascript-region1.

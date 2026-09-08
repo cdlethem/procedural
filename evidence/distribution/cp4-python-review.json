@@ -1,0 +1,54 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Local Python0.4 wheel, installed core consumer and extracted RegionMarks py5 starter import. No new native rendering or registry publication.",
+  "implementation_sha256": {
+    "tools/build_region_marks_python.py": "03ded1293808531eebb096364a614158c98078566f86be3fef28e213ea711bbf",
+    "tools/build_path_marks_python.py": "358e601bf292184f834e47889142586dd2a1f69405b76c06a282340f55015775",
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "packages/python/examples/region_marks/region_marks.py": "8b262cd56e4809caf5826a1880f887d092ee151a17f5d67adc58ca65352f5837",
+    "packages/python/examples/region_marks/sketch.py": "3c77776d352d8624576cd0bf10edefa1b5710eaaaaf8a8204e730208d66a7ebf"
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp4-python.json": "102b574e1d16dcf1d68abe44a9df05bdaadb5f5d6b2c8519e1e50d197515b70e",
+    "evidence/conformance/quadrant-py5-root-review.json": "0fbdeebc92cded8f926e5692b377056b8875393d4041529cc93a035c6b9b757f"
+  },
+  "findings": [
+    "Root corrected draft consumer import/origin assumptions through review; final builder uses installed procedurals.quadrant_partition submodule without modifying root exports.",
+    "Verified every input and archive member hash. All packaged core Python sources and installed quadrant module are byte-identical to current reviewed source.",
+    "Starter model is byte-identical; sketch changes only by removal of checkout sys.path insertion. Extracted starter imports with py5 0.10.11a0 and JDK17 without launching a sketch.",
+    "Builder checks301/601/11 compositions, every cell and all nine marks plus actual partition index error. Root independently checked five compositions against source, bit-exact bounds/marks and unique IDs.",
+    "Notices retained; no toolchain, environment or rendered output in archives. Prior native acceptance bindings still match."
+  ],
+  "root_geometry_comparison": {
+    "status": "passed",
+    "scope": "Root source/installed exact binary64 geometry comparison for five compositions; IDs unique.",
+    "cases": [
+      {
+        "size": 301,
+        "geometry_sha256": "bfaec7685f89d2ba4f8de5c94c1219b5df1c14b0fb26350616da9a36d9d4287d"
+      },
+      {
+        "size": 301,
+        "geometry_sha256": "152136f044036268ba6bb2dd334a9cdef2f1a93ad4d8304dcb0c7331aa5f8b9a"
+      },
+      {
+        "size": 601,
+        "geometry_sha256": "03778bab999dfa785e51249a8d00f77c4b407069ddd5c777009e25b9d36042c8"
+      },
+      {
+        "size": 601,
+        "geometry_sha256": "4bd8b29560d0a8f54f6952ece2b5036b28bfba14ff590b8226139ba2e87c49b8"
+      },
+      {
+        "size": 11,
+        "geometry_sha256": "2667990983855b74c91c8a139f7994294866920aa13e77ca345581ac4c160443"
+      }
+    ]
+  },
+  "remaining": [
+    "Eight other operation ports",
+    "Further artist/reproduction and recipe/exporter/MCP/web milestones"
+  ]
+}

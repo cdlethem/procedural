@@ -1,0 +1,156 @@
+{
+  "status": "passed",
+  "scope": "CP4 Python 0.4.0 installed wheel and extracted RegionMarks starter checks; no sketch execution, native render, publication, or support attestation.",
+  "package_version": "0.4.0",
+  "input_sha256": {
+    "packages/python/pyproject.toml": "1dc6fe17d11aac151a10c1601b6050230fe233bddfec74390c15ec3eb88a076b",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b",
+    "packages/python/procedurals/__init__.py": "9f00137c84bdbcd62f2fdaa9c3aa37e732578eef63e04ecf7ddd5dfdad645209",
+    "packages/python/procedurals/_drawing.py": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3",
+    "packages/python/procedurals/_drawing_state.py": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8",
+    "packages/python/procedurals/_py5_frame.py": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295",
+    "packages/python/procedurals/colors.py": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6",
+    "packages/python/procedurals/fields.py": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae",
+    "packages/python/procedurals/layout.py": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3",
+    "packages/python/procedurals/paths.py": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab",
+    "packages/python/procedurals/placements.py": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d",
+    "packages/python/procedurals/quadrant_partition.py": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed",
+    "packages/python/examples/region_marks/README.md": "0bff69b3627933346135143e687571c42dbcca0b08d4a9de5a26c5f1480ba3fb",
+    "packages/python/examples/region_marks/region_marks.py": "8b262cd56e4809caf5826a1880f887d092ee151a17f5d67adc58ca65352f5837",
+    "packages/python/examples/region_marks/sketch.py": "3c77776d352d8624576cd0bf10edefa1b5710eaaaaf8a8204e730208d66a7ebf",
+    "tools/build_region_marks_python.py": "03ded1293808531eebb096364a614158c98078566f86be3fef28e213ea711bbf",
+    "tools/build_path_marks_python.py": "358e601bf292184f834e47889142586dd2a1f69405b76c06a282340f55015775"
+  },
+  "artifacts": {
+    "wheel": {
+      "path": ".work/dist/cp4/python-region1/build/wheelhouse/procedurals_python-0.4.0-py3-none-any.whl",
+      "sha256": "e55f4b88e5c40c7ff7deee59b2f0ab715083c3135898b8f0ff5095b65f98eb44",
+      "entries": [
+        {
+          "path": "procedurals/__init__.py",
+          "sha256": "9f00137c84bdbcd62f2fdaa9c3aa37e732578eef63e04ecf7ddd5dfdad645209"
+        },
+        {
+          "path": "procedurals/_drawing.py",
+          "sha256": "a6bf49dd0cc30e789809113494a64b97264ded7d4c1fbcd5c4e420b9da6842d3"
+        },
+        {
+          "path": "procedurals/_drawing_state.py",
+          "sha256": "0c802502cbdb98010af5b00bc7c5a56026e49e1bcdbcc6bddbd4136d2e8b52d8"
+        },
+        {
+          "path": "procedurals/_py5_frame.py",
+          "sha256": "a889782c5556d7669dba9fe19131226f8a368cc42bbd9224005fc87a37a13295"
+        },
+        {
+          "path": "procedurals/colors.py",
+          "sha256": "0947e8b46ed1fbc61101dc4a5d3854cab4c42b9ff1126886b12e08b1807b4ce6"
+        },
+        {
+          "path": "procedurals/fields.py",
+          "sha256": "198e62586bc3f9e551cee89ddf119f4a079033ee992b956db95f0f6cc293b7ae"
+        },
+        {
+          "path": "procedurals/layout.py",
+          "sha256": "c2743bc4183f52e673f1a3c9eea9c8e6400cbcd403a2eefb874bbb18f64fd5a3"
+        },
+        {
+          "path": "procedurals/paths.py",
+          "sha256": "bcaeb26ba42db4b0756e3c8749e68e5c3f32e0d2c4f5b3b37c6d8a1b240149ab"
+        },
+        {
+          "path": "procedurals/placements.py",
+          "sha256": "d5cad0c7174eb2927f1e49f9f8228b529bf3737ef86a93252f3c55286af7244d"
+        },
+        {
+          "path": "procedurals/quadrant_partition.py",
+          "sha256": "7e266046b0a5c9660df42d6a81c12d061a75a6699c2b57f0503b39e107d134ed"
+        },
+        {
+          "path": "procedurals_python-0.4.0.dist-info/METADATA",
+          "sha256": "8e180cbd93ec4c5e5a8a99da4f08030f82f1e809e284e3850ef9f32722c06dbd"
+        },
+        {
+          "path": "procedurals_python-0.4.0.dist-info/RECORD",
+          "sha256": "17c99c68ca183f2e21cdb4ac39d6d07a51f109e317c6244bd1c26b83d6b5f27e"
+        },
+        {
+          "path": "procedurals_python-0.4.0.dist-info/WHEEL",
+          "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+        },
+        {
+          "path": "procedurals_python-0.4.0.dist-info/licenses/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "procedurals_python-0.4.0.dist-info/licenses/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "procedurals_python-0.4.0.dist-info/top_level.txt",
+          "sha256": "edcc1c114ddfc860af6c9b58052e7ad2cd35e36533efd2dafd308010ee165b72"
+        }
+      ]
+    },
+    "starter_zip": {
+      "path": ".work/dist/cp4/python-region1/procedurals-region-marks-python-starter-0.4.0.zip",
+      "sha256": "0c22df6deb2065f9f5e10356cd03cbe5e7895b0bb842de14255116ff899cc0a5",
+      "entries": [
+        {
+          "path": "procedurals_python-0.4.0-py3-none-any.whl",
+          "sha256": "e55f4b88e5c40c7ff7deee59b2f0ab715083c3135898b8f0ff5095b65f98eb44"
+        },
+        {
+          "path": "region-marks/LICENSE",
+          "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+        },
+        {
+          "path": "region-marks/README.md",
+          "sha256": "bb20a8d8deb24170457ac32dae2a7c87b4343bfc88238c70438154900988b929"
+        },
+        {
+          "path": "region-marks/THIRD_PARTY_NOTICES.md",
+          "sha256": "5e01ad67495b1546f3c22ffc9bc3664e577f38f1a9f7a5ad70a15b330a2c5f6b"
+        },
+        {
+          "path": "region-marks/output/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "path": "region-marks/region_marks.py",
+          "sha256": "8b262cd56e4809caf5826a1880f887d092ee151a17f5d67adc58ca65352f5837"
+        },
+        {
+          "path": "region-marks/sketch.py",
+          "sha256": "acbd5742f142dcfe73c703b3e6584333f35b53fdbd2067c7c42f84ac7b314a47"
+        }
+      ]
+    }
+  },
+  "consumer": {
+    "status": "passed",
+    "imported_path": "/home/colin/dev/procedural/.work/dist/cp4/python-region1/build/consumer-venv/lib/python3.13/site-packages/procedurals/quadrant_partition.py",
+    "site_packages": [
+      "/home/colin/dev/procedural/.work/dist/cp4/python-region1/build/consumer-venv/lib/python3.13/site-packages"
+    ],
+    "sizes": {
+      "seeded301": 301,
+      "seeded601": 601,
+      "authored11": 11
+    }
+  },
+  "starter": {
+    "transform": {
+      "kind": "remove_checkout_sys_path_block",
+      "removed": "sys.path.insert(0, str(Path(__file__).resolve().parents[2]))",
+      "class_ast_unchanged": true
+    },
+    "bundled_verified": true,
+    "py5_load": {
+      "status": "passed",
+      "py5": "0.10.11a0",
+      "quadrant": "/home/colin/dev/procedural/.work/dist/cp4/python-region1/build/consumer-venv/lib/python3.13/site-packages/procedurals/quadrant_partition.py"
+    }
+  }
+}
