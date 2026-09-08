@@ -39,6 +39,11 @@ Snapshot region order. Off-canvas regions are allowed and still invoke once; emp
 returns a detached destination image. `loadPixels` synchronizes the destination's read
 buffer; its pixel values are never changed. Concurrent mutation is outside the contract.
 
+RGB transport correction after CP23: accept RGB/ARGB destination formats; RGB means opaque
+even if stored high bytes are zero. Force alpha255 in the detached destination buffer only.
+ARGB retains stored bits. Reject ALPHA-only/unknown formats before callbacks. An empty-region
+result preserves native appearance; its canonical ARGB bytes may differ from raw RGB input.
+
 Create an owned transparent PGraphicsJava2D scratch surface for each region, with destination
 dimensions, density1, RGB255, default source-over, no tint, identity matrix/full clip.
 In LOCAL space translate to the region origin, then invoke Content exactly once. Do not

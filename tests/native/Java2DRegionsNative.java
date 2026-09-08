@@ -48,6 +48,13 @@ public final class Java2DRegionsNative extends PApplet {
         PImage recovery = Java2DRegions.render(this, destination, one, Java2DRegions.Space.LOCAL, 0, (target, value) -> { target.noStroke(); target.fill(255, 0, 0); target.rect(0, 0, 16, 16); });
         recovery.loadPixels(); require(Arrays.equals(local.pixels, recovery.pixels), "recovery equality");
         measure();
+        PImage rgb = createImage(1, 1, RGB);
+        rgb.loadPixels(); rgb.pixels[0] = 0x00ff0000; rgb.updatePixels();
+        PImage normalized = Java2DRegions.render(this, rgb, new ArrayList<Java2DRegions.Region>(),
+                Java2DRegions.Space.CANVAS, 0, (target, value) -> { });
+        normalized.loadPixels();
+        require(normalized.pixels[0] == 0xffff0000 && rgb.pixels[0] == 0x00ff0000,
+                "RGB destination opaque without input mutation");
     }
     private void measure() {
         PImage large = createImage(720, 480, ARGB); large.loadPixels(); Arrays.fill(large.pixels, 0xff102030); large.updatePixels();

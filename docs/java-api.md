@@ -71,6 +71,13 @@ PointerMarks supplies target coordinates to `TargetSprings2D`; its drawing mode 
 advance the simulation. BodyMarks retains `GradientPath2D` values while changing taper or
 centerline drawing. These are composition examples, not additional core operations.
 
+For spatial composition, `Java2DRegions` supplies rectangular content callbacks in local or
+canvas coordinates. `Java2DLayers` retains callback drawings as images and transports image
+alpha into reusable mask values. Feed the same mask to source-over compositing or two-input
+crossfading. See [LayerMarks](layer-marks.md) and [MaskMarks](mask-marks.md); callbacks draw
+with their supplied target, and completed images can be reused without rerunning generators.
+These adapters require JAVA2D at density1; crop/fit selection remains explicit.
+
 Javadoc is generated from the accepted source inventory. Some older members still lack
 individual comments or parameter/return tags; the build records those warnings and does not
 present them as a clean documentation audit. Class-level evidence and linked contracts

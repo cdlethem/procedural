@@ -88,11 +88,11 @@ def main():
    native_result['process']={'stdout':native_process.stdout,'stderr':native_process.stderr,'exit_code':native_process.returncode}
    native_result['images']=DEPTH.validate_native(native_result,out/'native',jar)
   else:
-   run([str(jdk/'bin/javac'),'--release','17','-cp',str(classes)+os.pathsep+cp,'-d',str(classes),str(probe)],out);native_args=[str(out/'native'),str(jar)];native_args += [str(adapter)] if a.native_sketch=='LayerMarks' else [];run(['python3',str(ROOT/'tools/with_native_render_lock.py'),'--timeout','120','--','xvfb-run','-a',str(jdk/'bin/java'),'-Duser.home='+str(out/'home'),'-cp',str(classes)+os.pathsep+cp,a.native_sketch+'Probe',*native_args],out,150)
+   run([str(jdk/'bin/javac'),'--release','17','-cp',str(classes)+os.pathsep+cp,'-d',str(classes),str(probe)],out);native_args=[str(out/'native'),str(jar)];native_args += [str(adapter)] if a.native_sketch in ('LayerMarks','MaskMarks') else [];run(['python3',str(ROOT/'tools/with_native_render_lock.py'),'--timeout','120','--','xvfb-run','-a',str(jdk/'bin/java'),'-Duser.home='+str(out/'home'),'-cp',str(classes)+os.pathsep+cp,a.native_sketch+'Probe',*native_args],out,150)
    native_result=json.loads((out/'native/native.json').read_text())
   if native_result.get('status')!='passed' or native_result.get('frames')!=len(frame_ids) or native_result.get('keys')!=keys or native_result.get('core_code_source')!=str(jar):raise RuntimeError('incomplete extracted native proof')
   if [frame['id'] for frame in native_result.get('frame_records',[])]!=frame_ids:raise RuntimeError('unexpected extracted native frame records')
-  if a.native_sketch=='LayerMarks' and native_result.get('code_sources')!={'compositor':str(jar),'crossfade':str(jar),'adapter':str(adapter)}:raise RuntimeError('wrong extracted LayerMarks class code sources')
+  if a.native_sketch in ('LayerMarks','MaskMarks') and native_result.get('code_sources')!={'compositor':str(jar),'crossfade':str(jar),'adapter':str(adapter)}:raise RuntimeError('wrong extracted composition workflow class code sources')
  extracted_after={str(p.relative_to(out)):sha(p) for p in (out/'extract').rglob('*') if p.is_file()}
  if extracted_before!=extracted_after:raise RuntimeError('extracted files changed during consumer validation')
  after={str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p):sha(p) for p in inputs}

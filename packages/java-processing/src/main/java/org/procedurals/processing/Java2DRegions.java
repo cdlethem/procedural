@@ -44,11 +44,16 @@ public final class Java2DRegions {
      */
     public static PImage render(PApplet parent, PImage destination, List<Region> regions, Space space, double feather, Content content) {
         if (parent==null || destination==null || regions==null || space==null || content==null || !finite(feather) || feather<0
+                || (destination.format!=PApplet.RGB && destination.format!=PApplet.ARGB)
                 || destination.width<1 || destination.height<1 || destination.pixelDensity!=1 || destination.pixelWidth!=destination.width || destination.pixelHeight!=destination.height || (long)destination.width*destination.height>Integer.MAX_VALUE) throw new IllegalArgumentException("Invalid region render input");
         Region[] order=regions.toArray(new Region[regions.size()]); Set<Long> ids=new HashSet<Long>();
         for (Region r:order) { if(r==null || !ids.add(Long.valueOf(r.id)) || (space==Space.LOCAL && (!finiteFloat(r.left)||!finiteFloat(r.top)))) throw new IllegalArgumentException("Invalid region"); }
         destination.loadPixels(); int count=destination.width*destination.height; if(destination.pixels==null || destination.pixels.length!=count) throw new IllegalArgumentException("Invalid destination pixels");
-        int[] result=destination.pixels.clone(); double[] coverage=new double[count];
+        int[] result=destination.pixels.clone();
+        if (destination.format==PApplet.RGB) {
+            for (int i=0;i<count;i++) result[i] |= 0xff000000;
+        }
+        double[] coverage=new double[count];
         for(Region region:order) result=one(parent,destination.width,destination.height,result,coverage,region,space,feather,content);
         PImage image=parent.createImage(destination.width,destination.height,PApplet.ARGB); image.loadPixels(); System.arraycopy(result,0,image.pixels,0,count); image.updatePixels(); return image;
     }

@@ -47,5 +47,10 @@
       "stdout": "{\"measurement\":{\"regions\":4,\"width\":720,\"height\":480,\"warmups\":2,\"repetitions\":1,\"elapsed_ns\":6128545,\"checksum\":\"17284405515086430208\"}}\n{\"status\":\"passed\"}\n",
       "stderr": ""
     }
-  ]
+  ],
+  "rgb_regression": {
+    "path": "evidence/conformance/java2d-layers-native.json",
+    "sha256": "63986f91e1f8abf91750df1764d97ad0281adaf2a053e349a502f087c13118ca",
+    "scope": "Current region adapter compiled in source-bound candidate JAR; exact empty-region RGB normalization and all existing region cases passed."
+  }
 }

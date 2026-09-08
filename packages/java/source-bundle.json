@@ -1,6 +1,6 @@
 {
-  "version": "0.26.0",
-  "processing_version": 26,
+  "version": "0.27.0",
+  "processing_version": 27,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -213,6 +213,10 @@
     "procedurals/examples/LayerMarks/LayerMarks.pde": {
       "source": "packages/java-processing/examples/LayerMarks/LayerMarks.pde",
       "sha256": "41f5b8dc14ac0810f84cb2affd8b8735536bd7c21755a97792132266c8dcdfa8"
+    },
+    "procedurals/examples/MaskMarks/MaskMarks.pde": {
+      "source": "packages/java-processing/examples/MaskMarks/MaskMarks.pde",
+      "sha256": "0e49009be857eea1681c0112588f3d3e98a060888684aabde1bb8f1d4a69df71"
     }
   },
   "operation_files": [
@@ -247,7 +251,8 @@
   "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
   "adapter_sources": {
     "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
-    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "c64580c062108838f51bc53de6a1c964ffa09fd96c49a03f28f8cbb2eca724b5"
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "780ade5bff5b57773dcb7982eeca46e9f8627664c897261f16ff78d1d38682e6",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DLayers.java": "23e363a4d5e52ce1ad944f5915ddfee850e3d1e16edb6d9b3c1a19ace53b2f98"
   },
   "processing_core_sha256": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4"
 }

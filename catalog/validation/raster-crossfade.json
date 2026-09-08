@@ -22,8 +22,8 @@
           "evidence/conformance/raster-crossfade-java-root-review.json": "6e38c9266dd37f14ce9809bd6fa6087452b0d1cb23c2e3d43ef8c8a7aadeeb97",
           "fixtures/operations/raster-crossfade.json": "a5adc26d08f2b43609442dcdaaaf49aa1955aa3b388563bf829aa73797701722",
           "evidence/workflows/layer-marks/native.json": "478942e17ada33534114ca7a1e804220c6f238ee66fbeee26cae796a73bfaf94",
-          "evidence/workflows/layer-marks/root-review.json": "05297ff1b638405b3d84c4c55d9da2c2ca2ed39787eb2102995351fa79597a22",
-          "evidence/conformance/java2d-regions-native.json": "cc7c52392946c6650cf7d47a8f24b847b67b4358e94994cc639f995813fb8e62"
+          "evidence/workflows/layer-marks/root-review.json": "f11cc13fc770816edfd61c83fcc98b5c7fc7e9223fe81a7e089587c43907a354",
+          "evidence/conformance/java2d-regions-native.json": "0508a34c210a23a4f7e78004ad186e4ea3a047cc9c254228f8d71991c7b6c3f9"
         },
         "evidence_predicates": [
           {
@@ -34,7 +34,7 @@
         ],
         "acceptance_review": {
           "path": "evidence/conformance/raster-crossfade-catalog-review.json",
-          "sha256": "2b2cc49371408dc17ac51c5a305359b68f12d5fe8ccd95ec1a74ae934fe8a4ec"
+          "sha256": "df0a15350b97f869cf79551eea5d6e57a214dc50db7be3f9930b33e1cd3c71b7"
         },
         "runtime_profile": {
           "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
@@ -45,7 +45,7 @@
         "status": "validated-scoped",
         "implementation_sha256": {
           "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
-          "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "c64580c062108838f51bc53de6a1c964ffa09fd96c49a03f28f8cbb2eca724b5",
+          "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "780ade5bff5b57773dcb7982eeca46e9f8627664c897261f16ff78d1d38682e6",
           "packages/java-processing/examples/LayerMarks/LayerMarks.pde": "41f5b8dc14ac0810f84cb2affd8b8735536bd7c21755a97792132266c8dcdfa8",
           "packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java": "24a1800f9a410763f82672bbb8cbbce9e9598298d2ca0651f3527085b4280cf3",
           "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4"
@@ -55,8 +55,8 @@
           "evidence/conformance/raster-crossfade-java-root-review.json": "6e38c9266dd37f14ce9809bd6fa6087452b0d1cb23c2e3d43ef8c8a7aadeeb97",
           "fixtures/operations/raster-crossfade.json": "a5adc26d08f2b43609442dcdaaaf49aa1955aa3b388563bf829aa73797701722",
           "evidence/workflows/layer-marks/native.json": "478942e17ada33534114ca7a1e804220c6f238ee66fbeee26cae796a73bfaf94",
-          "evidence/workflows/layer-marks/root-review.json": "05297ff1b638405b3d84c4c55d9da2c2ca2ed39787eb2102995351fa79597a22",
-          "evidence/conformance/java2d-regions-native.json": "cc7c52392946c6650cf7d47a8f24b847b67b4358e94994cc639f995813fb8e62"
+          "evidence/workflows/layer-marks/root-review.json": "f11cc13fc770816edfd61c83fcc98b5c7fc7e9223fe81a7e089587c43907a354",
+          "evidence/conformance/java2d-regions-native.json": "0508a34c210a23a4f7e78004ad186e4ea3a047cc9c254228f8d71991c7b6c3f9"
         },
         "evidence_predicates": [
           {
@@ -67,7 +67,7 @@
         ],
         "acceptance_review": {
           "path": "evidence/conformance/raster-crossfade-catalog-review.json",
-          "sha256": "2b2cc49371408dc17ac51c5a305359b68f12d5fe8ccd95ec1a74ae934fe8a4ec"
+          "sha256": "df0a15350b97f869cf79551eea5d6e57a214dc50db7be3f9930b33e1cd3c71b7"
         },
         "runtime_profile": {
           "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
@@ -78,7 +78,7 @@
         "status": "validated-scoped",
         "implementation_sha256": {
           "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
-          "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "c64580c062108838f51bc53de6a1c964ffa09fd96c49a03f28f8cbb2eca724b5",
+          "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "780ade5bff5b57773dcb7982eeca46e9f8627664c897261f16ff78d1d38682e6",
           "packages/java-processing/examples/LayerMarks/LayerMarks.pde": "41f5b8dc14ac0810f84cb2affd8b8735536bd7c21755a97792132266c8dcdfa8",
           "packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java": "24a1800f9a410763f82672bbb8cbbce9e9598298d2ca0651f3527085b4280cf3",
           "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4"
@@ -88,8 +88,8 @@
           "evidence/conformance/raster-crossfade-java-root-review.json": "6e38c9266dd37f14ce9809bd6fa6087452b0d1cb23c2e3d43ef8c8a7aadeeb97",
           "fixtures/operations/raster-crossfade.json": "a5adc26d08f2b43609442dcdaaaf49aa1955aa3b388563bf829aa73797701722",
           "evidence/workflows/layer-marks/native.json": "478942e17ada33534114ca7a1e804220c6f238ee66fbeee26cae796a73bfaf94",
-          "evidence/workflows/layer-marks/root-review.json": "05297ff1b638405b3d84c4c55d9da2c2ca2ed39787eb2102995351fa79597a22",
-          "evidence/conformance/java2d-regions-native.json": "cc7c52392946c6650cf7d47a8f24b847b67b4358e94994cc639f995813fb8e62"
+          "evidence/workflows/layer-marks/root-review.json": "f11cc13fc770816edfd61c83fcc98b5c7fc7e9223fe81a7e089587c43907a354",
+          "evidence/conformance/java2d-regions-native.json": "0508a34c210a23a4f7e78004ad186e4ea3a047cc9c254228f8d71991c7b6c3f9"
         },
         "evidence_predicates": [
           {
@@ -100,7 +100,7 @@
         ],
         "acceptance_review": {
           "path": "evidence/conformance/raster-crossfade-catalog-review.json",
-          "sha256": "2b2cc49371408dc17ac51c5a305359b68f12d5fe8ccd95ec1a74ae934fe8a4ec"
+          "sha256": "df0a15350b97f869cf79551eea5d6e57a214dc50db7be3f9930b33e1cd3c71b7"
         },
         "runtime_profile": {
           "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",

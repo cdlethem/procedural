@@ -1,5 +1,44 @@
 # Project state
 
+## Java0.27 accepted — CP24
+
+Root distribution review: evidence/distribution/cp24-java-review.json. Archive
+.work/dist/cp24-java-source-root1/procedurals-java-source-dev.zip SHA256
+84b7f2e85d324eed2e20735dcca2105dfb784a60948c9cb1c2ce0a8f360cd33d,380members.
+26 operations,28 packaged workflows,29 source-derived core/adapter reference pages.
+All28 extracted PDEs compile; native MaskMarks passes with separate core/adapter JARs
+and all PNGs identical to root-reviewed candidate. All113 prior core classes unchanged;
+only Java2DRegions prior adapter class changed for tested RGB opacity normalization.
+Javadoc664warnings, no errors; no documentation-completeness claim.
+
+Next: commit/push reviewed CP24 checkpoint after final remote check. Then explicit image
+crop/fit and transparency-safe placement is next composition gap; specification needed
+before implementation. Ports/Sol paused; preserve unrelated Android ProfileMarks edit.
+Previous goal turn was progress: native acceptance and candidate integration. Current turn
+completed archive/extracted-consumer evidence and distribution acceptance.
+
+## CP24 native accepted; Java0.27 source-bundle candidate
+
+Root accepted Java2DLayers/MaskMarks native scope in evidence/workflows/mask-marks/root-review.json.
+Four actual views inspected; six-state mmvvms workflow retains inputs, restores frames and
+saves cached output after300ms quiet. Source/artifact/image bindings all verified. Gallery
+now153images/34groups, with MaskMarks explicitly packaging pending.
+
+Root reviewed RGB normalization fix in Java2DRegions. Current source-bound adapter probes
+passed under shared lease (.work/java2d-adapters-root2/report.json); initial missing-display
+invocation failed before callback and corrected Xvfb invocation passed. LayerMarks root5
+PNGs all byte-identical to CP23. Root refreshed region regression evidence, both raster
+attestations and their catalog reviews; catalog/reference validation passed.
+
+Candidate source manifest0.27:26 operations,28 workflows,3 adapter sources,46 example tabs.
+All9 focused source-bundle tests pass. Next: update artist/build docs for candidate, build CP24 archive,
+extracted MaskMarks native consumer and all-PDE compile, root distribution review, fetch/
+integrate safely then commit/push. No CP24 distribution acceptance or push yet. Preserve
+unrelated Android ProfileMarks edit. Port integration/Sol remain paused.
+
+Prior turn classified progress: composition architecture recorded. This turn completed
+native acceptance and RGB regression review, gallery integration, and candidate manifest.
+
 ## Java0.26 accepted — composition milestone CP23
 
 Distribution review: evidence/distribution/cp23-java-review.json. Final archive
@@ -11,12 +50,44 @@ workflow. Source-derived reference includes28 core/adapter class pages (646 warn
 All27 extracted PDEs compile. Native extracted LayerMarks passed; final documentation rebuild
 preserves49 library/example members. Prior107 core classes and1 adapter class unchanged.
 
-Next: publish this reviewed checkpoint; continue Java composition capability gaps (nonrectangular
+Published to main at a9aed4b98784326fe5cf1911b50b15a4828037e9. Next: continue Java composition capability gaps (nonrectangular
 regions, explicit image-fit/transparent resampling, reusable image-derived fields/marks), chosen
 by artist capability rather than counts. Ports/Sol review remain paused; ports may pin this
 checkpoint and port the two new pure raster contracts independently. Java2DRegions is explicitly
 host-specific: do not claim portable callbacks or root support attestations for other targets.
 Below is historical integration work, superseded by this accepted checkpoint where applicable.
+
+Root next-batch priority is recorded in design/capabilities/composition-next-batch.md:
+nonrectangular scalar visibility and explicit image placement precede speculative image-derived
+mark mappings. Bounded note reading did not establish those mappings' useful defaults; no
+full-corpus absence claim. Port handoff for the two accepted pure raster operations is included.
+
+Root private MaskContentStudy native run passed at .work/mask-content-study1 against extracted
+Java0.26: callback-drawn ellipse/triangle alpha -> scalar values -> MaskedComposite2D.
+Ellipse has56 fractional native coverage pixels. Explicit alpha masks ignore RGB (black
+is not "hidden" unless alpha is zero); luminance masks require a separate interpretation.
+This validates a producer/consumer boundary, not a public mask API or mathematical clipping.
+
+Root froze design/capabilities/java2d-layers-adapter.md: retained transparent callback render,
+explicit alphaMask transport and PImage wrappers over accepted compositing/crossfade. Terra
+retained_rect_core owns adapter + focused native tests; no new portable operation count.
+Root authored candidate MaskMarks.pde using same retained shape mask across stripe content,
+generated-image content and crossfade, with mask view/cache save. Compilation/render/acceptance
+pending adapter completion. Existing Java0.26 sources/support remain unchanged.
+
+Root authored mask-marks-native-plan.md/docs/mask-marks.md; Terra layer_marks_probe owns
+native workflow/consumer integration. Root found RGB PImage format normalization gap before
+acceptance: RGB high byte is not native opacity, so transport must force255 without mutating
+inputs; ARGB preserves alpha; ALPHA-only/unknown rejected. Spec amended; retained_rect_core
+implements normalization and completes missing standalone cases. Workflow final render held
+until resulting source hash freezes. No public acceptance yet for Java2DLayers/MaskMarks.
+
+RGB amendment now implemented in Java2DLayers, root verified hash23e363a4d5e52ce1ad944f5915ddfee850e3d1e16edb6d9b3c1a19ace53b2f98;
+worker expanded native probe passes. Root applied same normalization fix to Java2DRegions
+destination and added distinguishing empty-region RGB test. This changes an accepted adapter
+source: old support/manifests must be refreshed only after native regression acceptance.
+Terra layer_marks_probe authorized sequential MaskMarks then LayerMarks native runs against
+frozen current sources. Root owns evidence/attestation refresh and final review.
 
 ## Active: spatial composability request and Java API discovery
 

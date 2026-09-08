@@ -2,6 +2,35 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "mask-marks",
+      "title": "MaskMarks: shared shape masks for images and marks",
+      "category": "Accepted Java workflow \u2014 packaging pending",
+      "description": "One alpha mask reveals stripes or a generated picture, or blends the two. Opaque ellipse and half-alpha triangle; raw mask shown over gray.",
+      "evidence": "evidence/workflows/mask-marks/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/mask-marks-native-root2/native/baseline.png",
+          "sha256": "f0d1b5ab28f69ac75f6a466d3952ce3137392d1d7340fa4b4815b626a616ddd9"
+        },
+        {
+          "label": "image",
+          "path": ".work/mask-marks-native-root2/native/image.png",
+          "sha256": "198fdf77c5b28bcead3abc2238520bf77eb78f3e55cdde2be34724e7fccce514"
+        },
+        {
+          "label": "crossfade",
+          "path": ".work/mask-marks-native-root2/native/crossfade.png",
+          "sha256": "28f72e46872afbe55b5535121258bf60d1818ec0279f4b99ce39334c29e32e10"
+        },
+        {
+          "label": "mask-view",
+          "path": ".work/mask-marks-native-root2/native/mask-view.png",
+          "sha256": "70b233dd7a3afcd98bf93f92859500c2daceceb20f5aeb0d825b05143c2ae2f6"
+        }
+      ]
+    },
+    {
       "id": "layer-marks",
       "title": "LayerMarks: regional content and crossfade",
       "category": "Accepted Java workflow \u2014 packaging pending",

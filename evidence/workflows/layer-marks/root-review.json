@@ -5,7 +5,7 @@
   "native": "evidence/workflows/layer-marks/native.json",
   "native_sha256": "478942e17ada33534114ca7a1e804220c6f238ee66fbeee26cae796a73bfaf94",
   "adapter_probe": "evidence/conformance/java2d-regions-native.json",
-  "adapter_probe_sha256": "cc7c52392946c6650cf7d47a8f24b847b67b4358e94994cc639f995813fb8e62",
+  "adapter_probe_sha256": "0508a34c210a23a4f7e78004ad186e4ea3a047cc9c254228f8d71991c7b6c3f9",
   "verified": [
     "Root inspected all four compositions; crossfade transitions rings into local fans without feather gutters. Final root3 images equal inspected native1 images byte-for-byte.",
     "Root removed probe noLoop/redraw overrides; actual example continuous dirty-frame loop passes queued mmmms, baseline restoration and cached save.",
@@ -16,5 +16,12 @@
     "Rectangular density-one JAVA2D only; no image-fit or polygon-mask claim.",
     "Example image generated locally; no semantic crop extraction or photographic asset distribution claimed.",
     "Public source bundle integration and extracted-consumer validation pending."
-  ]
+  ],
+  "rgb_regression": {
+    "native": "evidence/workflows/layer-marks/rgb-regression-native.json",
+    "sha256": "6348d07cfaeaa33e65f4a359040e6699dec67ad0a210fc51105103e55061dbee",
+    "implementation_sha256": "780ade5bff5b57773dcb7982eeca46e9f8627664c897261f16ff78d1d38682e6",
+    "reviewer": "root",
+    "decision": "accepted: RGB destination high byte normalized in detached buffer; native empty-region RGB case passes; all LayerMarks PNGs remain byte-identical to CP23."
+  }
 }
