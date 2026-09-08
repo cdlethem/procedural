@@ -1,0 +1,89 @@
+{
+  "status": "passed",
+  "operation": "field.gradient-noise-3d-01",
+  "constructor_cases_executed": 14,
+  "query_error_cases_executed": 12,
+  "scalar_queries_executed": 56,
+  "vectors": {
+    "status": "passed",
+    "constructor_cases": 14,
+    "query_cases": 12,
+    "queries": 56,
+    "assertions": 800
+  },
+  "native": {
+    "status": "passed",
+    "warmup_runs": 5,
+    "warmup_queries": 20000,
+    "workloads": [
+      {
+        "queries": 1,
+        "elapsed_ns": 210,
+        "checksum": "15979824039204075487"
+      },
+      {
+        "queries": 250000,
+        "elapsed_ns": 7533648,
+        "checksum": "5127366291489925091"
+      },
+      {
+        "queries": 1000000,
+        "elapsed_ns": 29914870,
+        "checksum": "15944482873078046574"
+      }
+    ]
+  },
+  "source_sha256_before": {
+    "catalog/operations/gradient-noise-3d-01.json": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82",
+    "fixtures/operations/gradient-noise-3d-01.json": "c4b8b810602aed51d712145c11f668c580a9225c82ce787e3da224bc98d1df2f",
+    "design/operations/gradient-noise-3d-contract.md": "9982a330023b8aeead696fddca905baf3e029c591786ae7f72b8e79ff58f8656",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise3D01.java": "4874c28ff020ce28ab1eeeab463b140779a531627cb09a660dbb55ef5ae3ee91",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "tests/native/Noise3DNative.java": "44dbc4baa235c9b68b847e8274b6c263a30f433bb9cf50d0b57b6cae05aaea7f",
+    "tools/build_noise3d_fixtures.py": "7110d2e3bf726d9c7dbfabb87778b9da6c0581da2d8184bee9b546bedd732631",
+    "tools/build_noise_fixtures.py": "0acddac7ef113dac2fe4d4c8a88e3625f7e803bac14fc95228a7e148750d25d8",
+    "tools/run_noise3d_java.py": "4b9ae3f269f239f74f585d7805e839e956db620b9324ee688023d181eae58256",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "source_sha256_after": {
+    "catalog/operations/gradient-noise-3d-01.json": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82",
+    "fixtures/operations/gradient-noise-3d-01.json": "c4b8b810602aed51d712145c11f668c580a9225c82ce787e3da224bc98d1df2f",
+    "design/operations/gradient-noise-3d-contract.md": "9982a330023b8aeead696fddca905baf3e029c591786ae7f72b8e79ff58f8656",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise3D01.java": "4874c28ff020ce28ab1eeeab463b140779a531627cb09a660dbb55ef5ae3ee91",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "tests/native/Noise3DNative.java": "44dbc4baa235c9b68b847e8274b6c263a30f433bb9cf50d0b57b6cae05aaea7f",
+    "tools/build_noise3d_fixtures.py": "7110d2e3bf726d9c7dbfabb87778b9da6c0581da2d8184bee9b546bedd732631",
+    "tools/build_noise_fixtures.py": "0acddac7ef113dac2fe4d4c8a88e3625f7e803bac14fc95228a7e148750d25d8",
+    "tools/run_noise3d_java.py": "4b9ae3f269f239f74f585d7805e839e956db620b9324ee688023d181eae58256",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "artifact_sha256_before": {
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/GradientNoise2D01$NoiseException.class": "4bfde8858a309400e9afe8f23db3dd3dd11fead18a18f7defdfdb507050be23e",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/GradientNoise2D01.class": "85319ef3187624f438b9d5a5e68b90d15ffe825ce93434eee120545d3d47a91a",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/GradientNoise3D01$NoiseException.class": "c53922f823e98ad1105e250d0a40ca6273239ec7e1e93a9dc5496a9998da66c6",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/GradientNoise3D01.class": "e628558e97c53ff4805b858363fdf8e5e94bfef5dae7d19e33d24ee2a2d92959",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/GradientNoise3DVectors$Action.class": "cf7d98d1254c3f66beb1ab92372fa38d8274ef8b6317e1f9b96847c1a3625088",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/GradientNoise3DVectors.class": "5e55e1906ec2a81292652cb7a70f7c327ba90f486c68561fdab5ad5f780474a9",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/Noise3DNative$1.class": "ce27c8e7ebbb42aa24a4a5b7e7bc8556629ed17fb13b1890985006cee88fd673",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/Noise3DNative.class": "6e462e1cd37b580498f16887e058d53a9e3f187a672c66c4c472c745585d836c"
+  },
+  "artifact_sha256_after": {
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/GradientNoise2D01$NoiseException.class": "4bfde8858a309400e9afe8f23db3dd3dd11fead18a18f7defdfdb507050be23e",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/GradientNoise2D01.class": "85319ef3187624f438b9d5a5e68b90d15ffe825ce93434eee120545d3d47a91a",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/GradientNoise3D01$NoiseException.class": "c53922f823e98ad1105e250d0a40ca6273239ec7e1e93a9dc5496a9998da66c6",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/GradientNoise3D01.class": "e628558e97c53ff4805b858363fdf8e5e94bfef5dae7d19e33d24ee2a2d92959",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/GradientNoise3DVectors$Action.class": "cf7d98d1254c3f66beb1ab92372fa38d8274ef8b6317e1f9b96847c1a3625088",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/GradientNoise3DVectors.class": "5e55e1906ec2a81292652cb7a70f7c327ba90f486c68561fdab5ad5f780474a9",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/Noise3DNative$1.class": "ce27c8e7ebbb42aa24a4a5b7e7bc8556629ed17fb13b1890985006cee88fd673",
+    ".work/build/gradient-noise-3d-lueoqwv2/org/procedurals/fields/Noise3DNative.class": "6e462e1cd37b580498f16887e058d53a9e3f187a672c66c4c472c745585d836c"
+  },
+  "javac_release": "8",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Java core exact vectors and focused native ownership/performance check; no renderer, distribution or port acceptance."
+}

@@ -544,6 +544,92 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/gradient-noise-2d-01.json).
 
+## field.gradient-noise-3d-01 (0.1.0)
+
+Immutable seeded single-octave three-coordinate gradient field with pure binary64 samples in[0,1]; independent of Processing noise.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "seed"
+  ],
+  "properties": {
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| seed | unsigned32 field identity | null | null | Required repeatability is a design capability; the motivating note does not establish a portable seed algorithm or preferred seed. |
+| x | lattice coordinate | null | null | pelosNoise2 depth slice and conitos volume lookup; explicit caller coordinates; safe-corner bounds are representability, not recommended ranges. |
+| y | lattice coordinate | null | null | pelosNoise2 depth slice and conitos volume lookup; explicit caller coordinates; safe-corner bounds are representability, not recommended ranges. |
+| z | lattice coordinate | null | null | pelosNoise2 depth slice and conitos volume lookup; explicit caller coordinates; safe-corner bounds are representability, not recommended ranges. |
+
+Query input (native call forms are specified in the contract):
+
+```json
+{
+  "type": "array",
+  "prefixItems": [
+    {
+      "type": "number",
+      "minimum": -9007199254740991,
+      "exclusiveMaximum": 9007199254740991
+    },
+    {
+      "type": "number",
+      "minimum": -9007199254740991,
+      "exclusiveMaximum": 9007199254740991
+    },
+    {
+      "type": "number",
+      "minimum": -9007199254740991,
+      "exclusiveMaximum": 9007199254740991
+    }
+  ],
+  "minItems": 3,
+  "maxItems": 3,
+  "items": false
+}
+```
+
+Query result:
+
+```json
+{
+  "type": "number",
+  "minimum": 0,
+  "maximum": 1
+}
+```
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | not attested | not attested | not attested | not attested |
+| p5js | not attested | not attested | not attested | not attested |
+| py5 | not attested | not attested | not attested | not attested |
+| processing-android | not attested | not attested | not attested | not attested |
+
+Motivating evidence:
+
+- [`2016/Generativos/pelosNoise2#0`](../../survey/out/2016/Generativos/pelosNoise2/notes.md)
+- [`2018/Generativos/conitos#0`](../../survey/out/2018/Generativos/conitos/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/gradient-noise-3d-01.json).
+
 ## path.gradient-trace-2d (0.1.0)
 
 Retain a finite two-dimensional trajectory by sampling an explicit gradient field at each evolving position and advancing a fixed distance. Reuse its positions and headings for different marks.

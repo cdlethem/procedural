@@ -1958,6 +1958,88 @@
         "review": "design/capabilities/cp17-rectangle-partition-direction.md",
         "reviewer": "root"
       }
+    },
+    {
+      "id": "field.gradient-noise-3d-01",
+      "status": "reviewed_provisional",
+      "reason": "Independent three-coordinate scalar field dependency for explicit depth slices and volumetric reuse; no source-noise equivalence.",
+      "aliases": [],
+      "admission_kind": "capability_dependency",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required uint32 seed; finite binary64 x/y/z queries with safe lower and upper lattice corners.",
+        "outputs": "Immutable seed-only scalar field; pure sample returns a binary64 value in [0,1].",
+        "invariants": "Named single-octave algorithm; explicit hash/gradients/numeric order and periodicity; no host noise, RNG consumption, mapping, integration or renderer.",
+        "open_questions": [],
+        "review": "design/operations/gradient-noise-3d-contract.md",
+        "reviewer": "root"
+      },
+      "dependency_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/cp18-noise3d-direction.md",
+        "rationale": "Private four-frame depth/surface study establishes reusable three-coordinate scalar values; query depth changes patterns without reseeding or moving sample origins. Existing2D field cannot express independent spatial depth. No Processing replay or source consumer equivalence.",
+        "motivating_candidates": [
+          {
+            "candidate_id": "2016/Generativos/pelosNoise2#0",
+            "source_sha256": "e32fae01f91fb680b5b32b035ea15dba95e1d1c1dca2efaabbeee9dad134c4d6",
+            "evidence_sha256": "7e8377899b91d30aec6c93b14c4e08ac149c08434945e3d131c591917b4d08b9",
+            "dependency": "Pure3D scalar source sampled at explicit caller-transformed coordinates; independently specified portable field.",
+            "remainder": [
+              {
+                "component": "Grid/candidate placement, jitter, coordinate scaling and offset",
+                "disposition": "recipe",
+                "reason": "Source consumer composition, not scalar field identity."
+              },
+              {
+                "component": "Angle/length, threshold/power and orientation mappings",
+                "disposition": "recipe",
+                "reason": "Explicit scalar-to-attribute arithmetic remains caller composition."
+              },
+              {
+                "component": "Strokes, cone geometry, camera, materials and time/export scaffolding",
+                "disposition": "adapter",
+                "reason": "Separate geometry/drawing/lifecycle capabilities; no whole consumer admission."
+              },
+              {
+                "component": "Processing host noise and random replay",
+                "disposition": "out_of_scope",
+                "reason": "Independent hash/gradient algorithm with explicit seed; no compatibility promise."
+              }
+            ]
+          },
+          {
+            "candidate_id": "2018/Generativos/conitos#0",
+            "source_sha256": "48ac1a0429eb8ffc7d8b2843f7b00f87e278f646052a06d7b476f3e8a5b4f963",
+            "evidence_sha256": "9128366c30a3861dbcafadfd19d627ac0e0083db1e14511451d2f64865c7c106",
+            "dependency": "Pure3D scalar source sampled at explicit caller-transformed coordinates; independently specified portable field.",
+            "remainder": [
+              {
+                "component": "Grid/candidate placement, jitter, coordinate scaling and offset",
+                "disposition": "recipe",
+                "reason": "Source consumer composition, not scalar field identity."
+              },
+              {
+                "component": "Angle/length, threshold/power and orientation mappings",
+                "disposition": "recipe",
+                "reason": "Explicit scalar-to-attribute arithmetic remains caller composition."
+              },
+              {
+                "component": "Strokes, cone geometry, camera, materials and time/export scaffolding",
+                "disposition": "adapter",
+                "reason": "Separate geometry/drawing/lifecycle capabilities; no whole consumer admission."
+              },
+              {
+                "component": "Processing host noise and random replay",
+                "disposition": "out_of_scope",
+                "reason": "Independent hash/gradient algorithm with explicit seed; no compatibility promise."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "records": {

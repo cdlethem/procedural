@@ -1,6 +1,9 @@
 # CP18 direction: a field with depth
 
-Status: root-selected private investigation, not public API or implementation acceptance.
+Status: root-reviewed capability-dependency admission after the private investigation.
+Exact semantics are frozen in design/operations/gradient-noise-3d-contract.md and the
+catalog. Java core acceptance is separate in evidence/conformance; native workflow and
+distribution remain pending. Composite candidate dispositions are unchanged.
 
 Artist entry: keep a pattern's positions and seed, but move through a smooth field in
 its third coordinate. Reuse that field on a three-dimensional form, where z denotes

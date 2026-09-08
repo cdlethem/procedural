@@ -1,5 +1,21 @@
 # Project state
 
+## CP18 public3D field core accepted — native workflow next
+
+Root recorded reviewed capability-dependency admission, exact3D hash/gradient/interpolation
+contract and rational-rounding fixtures. GradientNoise3D01 passes56 scalar expectations
+through three query forms and both constructors,14 constructor cases,12 query errors,
+focused ownership/carrier/purity/period checks and actual1/250k/1m-query workloads.
+The1m case measured29.91ms after5x20k warmup, including checksum/range checks; no guarantee.
+See evidence/conformance/gradient-noise-3d-java-root-review.json. Existing2D source unchanged.
+
+Next implement DepthMarks from design/capabilities/depth-marks-native-plan.md: explicit-depth
+planar strokes and actual3D face-center sampling on a retained RadialProfile3D surface.
+Reuse existing P3D/JOGL setup and shared machine lease; do not substitute an old installed
+JAR or imply general render-helper support. Native edits/transfer/reset/save, scoped
+attestations and Java0.21 extracted packaging remain. Still20 shipped operations/workflows.
+No worker/native task remains active; ports/Sol paused, Android resume draft untouched.
+
 ## CP18 private3D field investigated — dependency contract next
 
 Root selected a three-coordinate scalar field after reading pelosNoise2 and conitos notes

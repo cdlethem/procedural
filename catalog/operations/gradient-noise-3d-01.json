@@ -1,0 +1,181 @@
+{
+  "id": "field.gradient-noise-3d-01",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "field.gradient-noise-3d-01",
+  "description": "Immutable seeded single-octave three-coordinate gradient field with pure binary64 samples in[0,1]; independent of Processing noise.",
+  "capability_decision": "design/capabilities/cp18-noise3d-direction.md",
+  "design_review": "design/operations/gradient-noise-3d-contract.md",
+  "provenance": [
+    {
+      "candidate_id": "2016/Generativos/pelosNoise2#0",
+      "notes_path": "survey/out/2016/Generativos/pelosNoise2/notes.md",
+      "note_sha256": "e32fae01f91fb680b5b32b035ea15dba95e1d1c1dca2efaabbeee9dad134c4d6",
+      "evidence_sha256": "7e8377899b91d30aec6c93b14c4e08ac149c08434945e3d131c591917b4d08b9",
+      "upstream_pde_sha256": "a712734657620f483ba0c14697a95a19e34c488a3a7dda98b8333acb2bfdc599",
+      "relationship": "capability_dependency; no whole-computation equivalence"
+    },
+    {
+      "candidate_id": "2018/Generativos/conitos#0",
+      "notes_path": "survey/out/2018/Generativos/conitos/notes.md",
+      "note_sha256": "48ac1a0429eb8ffc7d8b2843f7b00f87e278f646052a06d7b476f3e8a5b4f963",
+      "evidence_sha256": "9128366c30a3861dbcafadfd19d627ac0e0083db1e14511451d2f64865c7c106",
+      "upstream_pde_sha256": "e540422b682ca82fb4a4f70cd0bca23ecf96550f0e82670905a1554c564f1de0",
+      "relationship": "capability_dependency; no whole-computation equivalence"
+    }
+  ],
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "seed"
+    ],
+    "properties": {
+      "seed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "seed"
+    ],
+    "properties": {
+      "seed": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      }
+    }
+  },
+  "query_schema": {
+    "type": "array",
+    "prefixItems": [
+      {
+        "type": "number",
+        "minimum": -9007199254740991,
+        "exclusiveMaximum": 9007199254740991
+      },
+      {
+        "type": "number",
+        "minimum": -9007199254740991,
+        "exclusiveMaximum": 9007199254740991
+      },
+      {
+        "type": "number",
+        "minimum": -9007199254740991,
+        "exclusiveMaximum": 9007199254740991
+      }
+    ],
+    "minItems": 3,
+    "maxItems": 3,
+    "items": false
+  },
+  "query_output_schema": {
+    "type": "number",
+    "minimum": 0,
+    "maximum": 1
+  },
+  "parameters": {
+    "seed": {
+      "unit": "unsigned32 field identity",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Required repeatability is a design capability; the motivating note does not establish a portable seed algorithm or preferred seed."
+    },
+    "x": {
+      "unit": "lattice coordinate",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "pelosNoise2 depth slice and conitos volume lookup; explicit caller coordinates; safe-corner bounds are representability, not recommended ranges."
+    },
+    "y": {
+      "unit": "lattice coordinate",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "pelosNoise2 depth slice and conitos volume lookup; explicit caller coordinates; safe-corner bounds are representability, not recommended ranges."
+    },
+    "z": {
+      "unit": "lattice coordinate",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "pelosNoise2 depth slice and conitos volume lookup; explicit caller coordinates; safe-corner bounds are representability, not recommended ranges."
+    }
+  },
+  "behavior": {
+    "normative": "design/operations/gradient-noise-3d-contract.md",
+    "identity": "Required uint32 seed, immutable detached serialization; pure x/y/z queries with no global state or sample consumption.",
+    "numerics": "Exact binary64 safe-corner subtraction, three-stage lowbias32 corner hash, twelve integer gradients, quintic fades and x-then-y-then-z interpolation; clamp output0..1. See normative document for exact order.",
+    "native": "GradientNoise3D01.create(Object) or create(long); serialize; sample(Object tuple), sample(Object,Object,Object), sample(double,double,double); only six standard boxed numeric carriers.",
+    "complexity": "O(1) storage and eight-corner work per sample; scalar hot path allocation-free."
+  },
+  "errors": {
+    "INVALID_INPUT": "Wrong constructor shape, unknown/missing key, bool/nonfinite/noninteger seed, or seed outside unsigned32.",
+    "INVALID_QUERY": "Query not exactly three finite supported numbers, or a coordinate outside the safe-corner domain."
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Java first; implementation and native review pending."
+    },
+    "p5js": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/gradient-noise-3d-01.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "design_experiment": "evidence/parameter-experiments/cp18-noise3d/decision.md",
+    "acceptance": "Explicit-depth planar edits and native3D mesh transfer; private study is design evidence only. No source replay or other target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Approved exact semantics for implementation; core/native/distribution acceptance pending."
+  },
+  "deliberately_excluded": [
+    "Processing compatibility",
+    "Equality to2D field at z=0",
+    "octave stacks",
+    "derivatives/curl",
+    "implicit time",
+    "renderer and shape construction"
+  ],
+  "algorithm_sources": [
+    {
+      "url": "https://mrl.cs.nyu.edu/~perlin/noise/",
+      "relationship": "Gradient interpolation and quintic fade concept; no reference code or permutation copied."
+    },
+    {
+      "url": "https://github.com/skeeto/hash-prospector",
+      "relationship": "lowbias32 scalar mixer, Unlicense; retain attribution. Lattice combiner and gradient ordering are project choices."
+    }
+  ]
+}
