@@ -1,0 +1,27 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Direct-module JavaScript target-spring core only. Browser fixture execution does not establish SpringMarks animation/native-workflow acceptance.",
+  "origin_commit": "87378857",
+  "implementation_sha256": {
+    "packages/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    "tests/native/target-springs-javascript.mjs": "0a69b8994af3382fb9ed07713a8fa8edbe04f85d26602265690b892cd6b932b4",
+    "tools/run_springs_browser_core.mjs": "6f4920b802b286656ea4e7fc18e778d0f0edc7b1e7fbb113518ddc5ad02189da",
+    "tools/serve_warp_marks.mjs": "38824b3768dada162997255e739832d2b29942537bd677fe30ee8299868883e6"
+  },
+  "evidence_sha256": {
+    "evidence/ports/target-springs-p5/core.json": "a5b86c6da88f8935f205f34f4cdf0fe4891f4bd7370b538a1e89c694b9768c53",
+    "evidence/ports/target-springs-p5/browser-core.json": "1ae083fc5ba14229232b545121b07b93d1db79632e6e805d01155e254546259f",
+    "fixtures/operations/target-springs-2d.json": "837fda9808fd95a70bcee4dbbd2accc1b0895186ee55c439b8a31c4ed495cc61"
+  },
+  "verified": [
+    "Root read state/target validation, force-position-retention arithmetic, failure payloads, detached exports and atomic Into preflight. Terra independent source review passed.",
+    "44shared fixtures pass in Node and Chromium153; Node ownership/access checks include feeding output state into next transition.",
+    "Pure transition agrees with catalog interchange; Java mutable factory API is a distinct host form. No hidden timestep or implicit target update introduced."
+  ],
+  "limits": [
+    "Native and technique dimensions remain unvalidated. No animated browser workflow, performance/frame-rate or package export acceptance.",
+    "Shared root-barrel exports remain pending batch compatibility review."
+  ]
+}

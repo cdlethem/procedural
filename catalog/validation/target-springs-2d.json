@@ -94,7 +94,38 @@
     },
     "p5js": {
       "core": {
-        "status": "unvalidated"
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+          "tests/native/target-springs-javascript.mjs": "0a69b8994af3382fb9ed07713a8fa8edbe04f85d26602265690b892cd6b932b4",
+          "tools/run_springs_browser_core.mjs": "6f4920b802b286656ea4e7fc18e778d0f0edc7b1e7fbb113518ddc5ad02189da",
+          "tools/serve_warp_marks.mjs": "38824b3768dada162997255e739832d2b29942537bd677fe30ee8299868883e6"
+        },
+        "evidence_sha256": {
+          "evidence/ports/target-springs-p5/core.json": "a5b86c6da88f8935f205f34f4cdf0fe4891f4bd7370b538a1e89c694b9768c53",
+          "evidence/ports/target-springs-p5/browser-core.json": "1ae083fc5ba14229232b545121b07b93d1db79632e6e805d01155e254546259f",
+          "fixtures/operations/target-springs-2d.json": "837fda9808fd95a70bcee4dbbd2accc1b0895186ee55c439b8a31c4ed495cc61"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/ports/target-springs-p5/core.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/ports/target-springs-p5/browser-core.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/ports/target-springs-p5/root-review.json",
+          "sha256": "abea8373578f72a0d06267c6394762b82a53bbb8018984f6ed2fef69a7cc38e4"
+        },
+        "runtime_profile": {
+          "name": "Node22; Chromium153",
+          "scope": "Direct-module JavaScript target-spring core only. Browser fixture execution does not establish SpringMarks animation/native-workflow acceptance."
+        }
       },
       "native": {
         "status": "unvalidated"

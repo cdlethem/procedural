@@ -13,10 +13,13 @@ These have root-reviewed core fixtures and actual browser edits/reset/save. They
 direct module imports. Common root-barrel exports and package-distribution validation
 remain pending; py5/Android claims are not imported with these files.
 
-Remaining original JavaScript branch work: Delaunay, closed spline, noise-band paths,
-target springs, occupied-lattice paths and line pools; LoopMarks, BandMarks and
-CutBranchMarks workflows. Springs passed an independent source/fixture review, but
-root integration/native scope still needs acceptance. Existing operation contracts and
+Target springs core is also accepted through direct-module import after 44 shared cases
+passed in Node and Chromium; native-workflow/technique support remain unvalidated.
+See `evidence/ports/target-springs-p5/root-review.json`.
+
+Remaining original JavaScript core work: Delaunay, closed spline, noise-band paths,
+occupied-lattice paths and line pools; LoopMarks, BandMarks and
+CutBranchMarks workflows. SpringMarks animation still needs separate native acceptance. Existing operation contracts and
 shared fixtures stay authoritative, including any intentional host API differences.
 
 ## Spline provenance issue

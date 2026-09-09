@@ -1,5 +1,15 @@
 # Project state
 
+## Target-spring JavaScript core accepted; workflow remains unvalidated
+
+Root read full JS spring source against pure-transition contract, following Terra review.
+Imported87378857JS core/runner;44fixtures pass Node and Chromium under shared lease.
+Accepted evidence/ports/target-springs-p5/root-review.json is core-only, p5 native/technique
+unvalidated; no SpringMarks animation claim. Root exports/package review still pending.
+Original branch remainder:5cores/3workflows. Current pure transition API is valid, not a
+Java-mutable-factory mismatch bug. Hypot provenance agent is investigating original netlib
+source. Main Android draft preserved.
+
 ## Raster-remap p5 slice reviewed
 
 Root imported JS remap/WarpMarks from828cdb85/fdb5f4f5; read core and pixel conversions.
