@@ -29,3 +29,12 @@ survey/out/**/*.png
 survey/out/**/*.pdf
 survey/out/**/omp.log
 survey/out/**/omp.err
+
+# Web application dependencies and reproducible runtime assets.
+apps/web/node_modules/
+apps/web/.next/
+apps/web/tsconfig.tsbuildinfo
+apps/web/public/native/
+apps/web/public/source/
+apps/web/public/p5.js
+apps/web/public/previews/

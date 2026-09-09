@@ -1,0 +1,36 @@
+{
+  "name": "@procedurals/web",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "generate": "node scripts/generate-gallery.mjs && node scripts/generate-api.mjs",
+    "check:generated": "node scripts/generate-gallery.mjs --check && node scripts/generate-api.mjs --check",
+    "capture:previews": "python3 ../../tools/with_native_render_lock.py -- node scripts/capture-previews.mjs",
+    "dev": "npm run generate && next dev",
+    "build": "npm run generate && next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "test:browser": "python3 ../../tools/with_native_render_lock.py -- node scripts/test-browser.mjs"
+  },
+  "dependencies": {
+    "next": "16.3.4",
+    "p5": "2.3.2",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/parser": "^8.0.4",
+    "@types/node": "^26.5.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "playwright": "^1.63.0",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}

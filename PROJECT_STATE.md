@@ -17,8 +17,19 @@ linked evidence. Do not treat old pending statements as new assignments.
   numerical-helper provenance, public exports and a SpringMarks focused-button shortcut
   bug. Core fixtures, native controls/reset/save, representative images and installed
   package exports are reviewed. See [port integration](docs/port-integration-status.md).
+- The [web app](apps/README.md) provides 24 techniques in both its gallery and layered
+  studio, plus formatted API pages for all 31 operations. Shared numeric controls,
+  custom per-layer palettes, inline highlighted source, undo/redo, local recovery,
+  JSON/PNG export and Go storage are implemented. Studio v3 adds per-layer movement,
+  scale and rotation, a thumbnail picker, a compact tabbed inspector, focused reseed/cut
+  actions and human-readable constructor/output guides. Sketch source opens by default.
+  [Version 3 root review](evidence/web/app-v3-review.json) records production browser
+  checks and visual inspection; earlier web reviews remain historical.
+  Tailnet deployment: https://eunoia.tailf03dad.ts.net:8443/ (Next 3002, Go 8088),
+  served from the reviewed `.work/web-ui-release` checkout to isolate concurrent work.
+  This remains an app-specific compositor, separate from portable recipes and MCP.
 - Packages are local reviewed artifacts, not registry publications. Java completion
-  does not imply equivalent ports, a general recipe executor, web/MCP or full-corpus coverage.
+  does not imply equivalent ports, a general recipe executor or full-corpus coverage.
 
 ## Target support
 
@@ -41,9 +52,8 @@ full corpus is accepted. See [recreation coverage](docs/recreation-coverage.md).
 
 ## Current work and remaining decisions
 
-The Java buildout and requested p5 batch integration are complete within their recorded
-scope. Follow the
-next user assignment; the [roadmap](docs/roadmap.md) lists downstream work and dependencies.
+The Java buildout, requested p5 batch integration and initial web gallery/studio are complete
+within their recorded scope. Follow the next user assignment; the [roadmap](docs/roadmap.md) lists downstream work and dependencies.
 
 - Other target ports remain separate work, including Python changes on the port branch,
   Android ProfileMarks lifecycle validation and remaining Java capabilities/adapters.
@@ -57,8 +67,13 @@ next user assignment; the [roadmap](docs/roadmap.md) lists downstream work and d
 - General Voronoi cells, grammar rewriting, text shaping and arbitrary solid modeling are
   explicit extensions outside the accepted Java surface, not missing promised implementations.
 - A Java recipe prototype exists, documented in [recipe preview](docs/java-recipe-preview.md).
-  It is not a general portable executor. Web/MCP remain downstream design work.
-  Browser composition is the desired direction; its implementation scope is not yet frozen.
+  It is not a general portable executor. The [web architecture](docs/web-app-architecture.md)
+  freezes the separate app boundary: all 24 browser techniques, at most eight layers,
+  transparent Canvas2D/WebGL composition, per-layer affine placement, versioned JSON
+  with exact v1/v2 migration,
+  and a trusted local Go store. Arbitrary operation graphs, portable target export,
+  multi-user hosting remain future work. Concurrent additive prompt/MCP harness work is
+  separate and excluded from the reviewed app release.
 
 ## Evidence and navigation
 

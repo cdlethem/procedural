@@ -12,6 +12,9 @@ artist workflows are implemented. The scoped Java implementation objective is
 branch is [integrated](port-integration-status.md). Target support remains operation-specific.
 Native workflows, seeded rendering, sweeps, gallery tooling and composition guides already
 exist; do not recreate their infrastructure as a prerequisite for downstream work.
+The [web gallery/studio](../apps/README.md) adds 24 interactive studies and four layerable
+techniques with Go project storage; its [architecture](web-app-architecture.md) keeps
+app documents separate from the portable recipe grammar.
 
 ## Remaining work and dependencies
 
@@ -19,13 +22,13 @@ exist; do not recreate their infrastructure as a prerequisite for downstream wor
 |---|---|---|
 | Target parity | Review/port accepted capabilities using the [port handoff](porting-resume.md) | Frozen semantics/fixtures, actual target-native evidence and root integration; no inherited support claims |
 | Recipe execution/export | Reconcile the [Java prototype](java-recipe-preview.md) and [execution direction](../design/recipes/execution-direction.md), then freeze a bounded catalog-backed composition slice | Explicit seed/canvas/time/assets/capabilities, type validation, round-trip serialization and installed exported replay for claimed targets |
-| Browser composition | Define a first editable composition over supported p5 operations and the recipe/execution boundary | Real browser preview, useful structural/style edits, honest unsupported capabilities and reproducible export |
+| Browser composition | Extend the four-technique studio with further supported bindings or explicit typed composition ports | Preserve working edits, catalog identities, keyboard controls, bounded rendering and honest export scope |
 | MCP and prompt planning | Implement discovery and validated composition tools over that same catalog/executor | No duplicate operation schema; protocol errors, cancellation/progress and bounded execution verified |
 | Evidence and recreation coverage | Reconcile new snapshot records and investigate concrete missing artist capabilities | Root-reviewed evidence changes; demonstrated recreation kept separate from projected coverage |
 
 Browser work need not wait for every p5 port: choose a dependency-complete supported slice.
-This is sequencing guidance, not acceptance of a web schema or backend design. The desired
-product supports browser composition, with target-specific export claims earned separately.
+The initial web app and Go backend have their own scoped review. Target-specific portable
+exports and general operation graphs still require separate execution contracts and evidence.
 The [MCP/web requirements](mcp-web.md) remain the broader target; the prototype does not
 satisfy the general portable recipe or four-target export objective.
 

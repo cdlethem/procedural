@@ -1,0 +1,480 @@
+{
+  "kind": "root-web-app-review",
+  "date": "2026-09-09",
+  "owner": "root",
+  "status": "accepted-scoped",
+  "supersedes": "evidence/web/app-review.json",
+  "baseline_commit": "510da796",
+  "scope": "Version 2 web gallery/studio and formatted API navigation. App integration only; no public operation contracts or shared target support changes.",
+  "capabilities": {
+    "gallery_and_studio_techniques": 24,
+    "api_operation_pages": 31,
+    "operations_used_by_app_compositions": 28,
+    "maximum_layers": 8,
+    "canvas": [
+      640,
+      640
+    ],
+    "palette": "Per-layer ordered 2\u201312 RGB24 colors, picker and hex editing, persisted in v2 JSON.",
+    "controls": "Shared sliders and exact numeric inputs, boolean/select modes; no app keyboard shortcuts.",
+    "source": "Per-technique actual TypeScript drawing function and local dependencies extracted with Babel syntax trees; highlighted expandable panel and exact clipboard copy.",
+    "navigation": "Operation cards and guide links resolve to formatted API pages; original-guide/raw-file links and raw documentation copies retired."
+  },
+  "document_binding": {
+    "version": "studio-v2",
+    "catalogSha256": "42ce74a16d7e40d346306aa6e4843ae20de3fd77e0d6711d6fd53a118a08a15a",
+    "techniques": [
+      {
+        "technique": "field-marks",
+        "operations": [
+          {
+            "id": "layout.regular-grid",
+            "version": "0.1.0",
+            "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+          },
+          {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+          },
+          {
+            "id": "color.cyclic-palette",
+            "version": "0.1.0",
+            "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
+          }
+        ]
+      },
+      {
+        "technique": "path-marks",
+        "operations": [
+          {
+            "id": "layout.regular-grid",
+            "version": "0.1.0",
+            "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+          },
+          {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+          },
+          {
+            "id": "path.gradient-trace-2d",
+            "version": "0.1.0",
+            "sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c"
+          }
+        ]
+      },
+      {
+        "technique": "placement-marks",
+        "operations": [
+          {
+            "id": "sampling.seeded-circle-placement-2d",
+            "version": "0.1.0",
+            "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267"
+          },
+          {
+            "id": "sampling.ordered-circle-filter-2d",
+            "version": "0.1.0",
+            "sha256": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083"
+          }
+        ]
+      },
+      {
+        "technique": "lattice-marks",
+        "operations": [
+          {
+            "id": "path.occupied-lattice-paths-2d",
+            "version": "0.1.0",
+            "sha256": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d"
+          },
+          {
+            "id": "color.cyclic-palette",
+            "version": "0.1.0",
+            "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
+          }
+        ]
+      },
+      {
+        "technique": "band-marks",
+        "operations": [
+          {
+            "id": "path.noise-band-trace-2d",
+            "version": "0.1.0",
+            "sha256": "245c3350d3cc139d9f208fa768f14e5439bd434c58afaf2e4f63d6f66763588f"
+          }
+        ]
+      },
+      {
+        "technique": "branch-marks",
+        "operations": [
+          {
+            "id": "topology.seeded-endpoint-branches-2d",
+            "version": "0.1.0",
+            "sha256": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881"
+          },
+          {
+            "id": "sampling.seeded-circle-placement-2d",
+            "version": "0.1.0",
+            "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267"
+          }
+        ]
+      },
+      {
+        "technique": "cut-branch-marks",
+        "operations": [
+          {
+            "id": "topology.seeded-line-pool-2d",
+            "version": "0.1.0",
+            "sha256": "7236eaf10bdd8cb21107096f7962e248967c9aa6813573f11784a63ba0007e4a"
+          }
+        ]
+      },
+      {
+        "technique": "loop-marks",
+        "operations": [
+          {
+            "id": "geometry.closed-spline-2d",
+            "version": "0.1.0",
+            "sha256": "59a28d5feee19597ebfd97eb9ca5a1ecc77c5f06d4cc57dc2b39a70998a10b3b"
+          }
+        ]
+      },
+      {
+        "technique": "region-marks",
+        "operations": [
+          {
+            "id": "layout.seeded-quadrant-partition-2d",
+            "version": "0.1.0",
+            "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1"
+          }
+        ]
+      },
+      {
+        "technique": "panel-marks",
+        "operations": [
+          {
+            "id": "layout.binary-cell-partition-2d",
+            "version": "0.1.0",
+            "sha256": "62f7b5c8c0dc020a639d821c9e2114e1792cb3da29623035491255294c89e345"
+          }
+        ]
+      },
+      {
+        "technique": "cut-marks",
+        "operations": [
+          {
+            "id": "layout.retained-rectangle-cuts-2d",
+            "version": "0.1.0",
+            "sha256": "e8797eb0b44201752042091b568090d1355a9f2338ae27164b1671a505829e4c"
+          },
+          {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+          }
+        ]
+      },
+      {
+        "technique": "polygon-marks",
+        "operations": [
+          {
+            "id": "sampling.ordered-convex-polygon-filter-2d",
+            "version": "0.1.0",
+            "sha256": "64ec6cbf60c04c612cbf2f8ad0c427853b48c3c7585ebf2cdd0938151604599e"
+          },
+          {
+            "id": "sampling.seeded-triangle-points-2d",
+            "version": "0.1.0",
+            "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+          }
+        ]
+      },
+      {
+        "technique": "facet-marks",
+        "operations": [
+          {
+            "id": "topology.delaunay-2d",
+            "version": "0.1.0",
+            "sha256": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf"
+          },
+          {
+            "id": "sampling.seeded-triangle-points-2d",
+            "version": "0.1.0",
+            "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+          }
+        ]
+      },
+      {
+        "technique": "grain-marks",
+        "operations": [
+          {
+            "id": "sampling.seeded-triangle-points-2d",
+            "version": "0.1.0",
+            "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+          },
+          {
+            "id": "sampling.triangle-coordinate-map-2d",
+            "version": "0.1.0",
+            "sha256": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f"
+          },
+          {
+            "id": "layout.seeded-quadrant-partition-2d",
+            "version": "0.1.0",
+            "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1"
+          }
+        ]
+      },
+      {
+        "technique": "pull-marks",
+        "operations": [
+          {
+            "id": "geometry.radial-pull-2d",
+            "version": "0.1.0",
+            "sha256": "63e089d2ab61b4a4e8cb1f48684cb69e7268574ebebd15d34e405b9595366788"
+          }
+        ]
+      },
+      {
+        "technique": "projection-marks",
+        "operations": [
+          {
+            "id": "geometry.sequential-disc-projection-2d",
+            "version": "0.1.0",
+            "sha256": "f7e90d17f37d87fe1ae63975ed5fcae3e79e3d1d59d0eb7b78da6114078dd206"
+          }
+        ]
+      },
+      {
+        "technique": "path-clip-marks",
+        "operations": [
+          {
+            "id": "geometry.clip-segments-simple-polygon-2d",
+            "version": "0.1.0",
+            "sha256": "c10f0619f16d5aca4bce2f7ab6a02f2693f7d59e2177b39521410959b27a4292"
+          }
+        ]
+      },
+      {
+        "technique": "ramp-marks",
+        "operations": [
+          {
+            "id": "color.stop-ramp",
+            "version": "0.1.0",
+            "sha256": "7a2d7c1e2e1df26e07a4b88012f8164bef611b76eb8920f22ce0bc1167b95fc6"
+          }
+        ]
+      },
+      {
+        "technique": "warp-marks",
+        "operations": [
+          {
+            "id": "raster.bilinear-remap-2d",
+            "version": "0.1.0",
+            "sha256": "b8fe845f220644ee7c3bf24e7df9c3aecf5195edcce7b69f51fe530f176ee176"
+          },
+          {
+            "id": "field.gradient-noise-3d-01",
+            "version": "0.1.0",
+            "sha256": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82"
+          }
+        ]
+      },
+      {
+        "technique": "blur-marks",
+        "operations": [
+          {
+            "id": "raster.separable-blur-2d",
+            "version": "0.1.0",
+            "sha256": "f17c33f68218f36bdbecf131377bc868d409b0c1db9844cad39e6f6f1c59743f"
+          }
+        ]
+      },
+      {
+        "technique": "profile-marks",
+        "operations": [
+          {
+            "id": "mesh.radial-profile-surface-3d",
+            "version": "0.1.0",
+            "sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa"
+          }
+        ]
+      },
+      {
+        "technique": "annular-marks",
+        "operations": [
+          {
+            "id": "mesh.annular-solid-3d",
+            "version": "0.1.0",
+            "sha256": "856da2ea0449233334c5e152f9eae1c589a9b2b6656ced8af93e73daac39ee6a"
+          }
+        ]
+      },
+      {
+        "technique": "depth-marks",
+        "operations": [
+          {
+            "id": "field.gradient-noise-3d-01",
+            "version": "0.1.0",
+            "sha256": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82"
+          },
+          {
+            "id": "mesh.radial-profile-surface-3d",
+            "version": "0.1.0",
+            "sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa"
+          }
+        ]
+      },
+      {
+        "technique": "spring-marks",
+        "operations": [
+          {
+            "id": "motion.target-springs-2d",
+            "version": "0.1.0",
+            "sha256": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3"
+          }
+        ]
+      }
+    ]
+  },
+  "migration": "Only the exact frozen studio-v1 catalog digest and original parameter schema are admitted; palettes are materialized and lattice booleans mapped to numeric choices. Other stale or invalid imports fail before replacement.",
+  "rendering": "Real package cores and composition helpers draw transparent layers. WebGL meshes are rasterized before ordered source-over composition, 8-bit group opacity. Required p5 drawing constants are explicitly forwarded to Graphics; temporary WebGL contexts are released after composition. Spring uses explicit ticks. Raster layers generate their own sources.",
+  "checks": [
+    {
+      "command": "python3 tools/check_catalog.py",
+      "result": "passed; schemas, source bindings, fixtures and generated reference"
+    },
+    {
+      "command": "npm --prefix apps/web run check:generated",
+      "result": "passed; 24 gallery entries and 31 API entries"
+    },
+    {
+      "command": "npm --prefix apps/web test",
+      "result": "passed; six tests covering all defaults, core effect construction, strict documents/palettes, IDs and exact legacy migration"
+    },
+    {
+      "command": "PROCEDURALS_API_URL=http://127.0.0.1:8088 npm --prefix apps/web run build",
+      "result": "passed including TypeScript"
+    },
+    {
+      "command": "WEB_BASE_URL=http://127.0.0.1:3002 python3 tools/with_native_render_lock.py -- node apps/web/scripts/test-browser.mjs",
+      "result": "passed",
+      "scenarios": [
+        "gallery search and 24 study navigation",
+        "24 shared detail renderers, inline source, numeric and palette pixel changes",
+        "24 studio technique renderers mount without browser errors",
+        "group opacity applies to completed layer, with exact undo pixels",
+        "no global shortcuts, custom palette, targeted visibility, duplicate, undo/redo and delete",
+        "JSON roundtrip, rejected import preserves state, PNG export",
+        "Go save/load through Next proxy and local browser recovery",
+        "local rendering and editing remain available when Go service is offline",
+        "31 API index entries and rendered operation details without raw repository links",
+        "responsive gallery, embedded example, and studio at 390px width"
+      ],
+      "browser": "153.0.8010.12",
+      "errors": []
+    },
+    {
+      "command": "Leased supplementary browser capture against production 3000",
+      "result": "passed; source clipboard exactness, rendered API schema/query/errors and readable contained mobile tables",
+      "report": ".work/web-app-review/studio-v2-production-2026-09-09/supplementary-report.json"
+    },
+    {
+      "command": "python3 tools/run_web_app.py --production --skip-previews --api-port 8088",
+      "result": "Go rebuild and production launch passed; HTTP/HTTPS tailnet health, gallery, technique, API page and preview all 200"
+    },
+    {
+      "command": "Launcher cache inspection and Python syntax",
+      "result": "passed; current public preview manifest recognized. Standalone app preview capture passed all 24. First-run production restart-after-capture path source-reviewed, not separately exercised."
+    }
+  ],
+  "review_sequence": "Full production browser suite preceded final API-only presence-label/table CSS refinements. The supplementary browser run and final production build validate those refinements; renderer and studio logic did not change afterwards.",
+  "root_visual_review": {
+    "reviewed": [
+      "All 24 production default canvases via contact sheet",
+      "Individual profile, annular and depth mesh images after fixing Graphics constants; depth tilted to show volume",
+      "Desktop layered field/path composition and custom palette inspector",
+      "Mobile studio and gallery",
+      "Expanded source panel and formatted cyclic-palette API desktop/mobile"
+    ],
+    "finding": "All inspected canvases show actual geometry/raster output; indexed meshes form coherent surfaces. Source remains on the page, copy matches its text, and API tables scroll within their section on phones."
+  },
+  "corrected_during_review": [
+    "Missing p5.Graphics shape constants caused malformed meshes and unclosed outlines",
+    "Default bounds and guessed package-access fields in new adapters",
+    "Documentation references to controls absent from the actual browser adapters",
+    "Incomplete API error tables, nested scalar-array fields and JavaScript module mappings",
+    "Mobile navigation overflow and API table overflow/squashing"
+  ],
+  "limitations": [
+    "24 named compositions expose 28 operations; the API reference documents all 31. This is not an arbitrary low-level operation graph.",
+    "640px canvas, at most eight layers, full recomputation. No retained geometry performance guarantee.",
+    "Browser validation uses Chromium with SwiftShader; no Safari/Firefox acceptance or native corpus reproduction claim.",
+    "Raster techniques generate their own source rather than processing lower layers; spring is an explicit tick snapshot.",
+    "Trusted local single-process Go project storage has no accounts or per-user ownership.",
+    "Prompt/MCP and portable target export remain unimplemented."
+  ],
+  "artifacts": {
+    ".work/web-app-review/studio-v2-production-2026-09-09/report.json": "55b4b5fe554dccb38710e460d0c7c504d94ac0bfc03fdaf421b63d3a78faf460",
+    ".work/web-app-review/studio-v2-production-2026-09-09/supplementary-report.json": "8c24f36603a040f78229483c4b31b255d6f197adbb13aaa2f00cac19b53e5961",
+    ".work/web-app-review/studio-v2-production-2026-09-09/studio-contact.png": "d7ded0e81f04a5ef68637268bf446373fe1e8500f1ff5a078166827e8de06af8",
+    ".work/web-app-review/studio-v2-production-2026-09-09/source-panel.png": "0156709711f22a454a295ad1ff784c55e4d5af04f90882d80bfa9a123f8baf68",
+    ".work/web-app-review/studio-v2-production-2026-09-09/api-reference.png": "b5cbd9841313333c3f874fb24259b618d5823098d12e27f0cf471132133e119a",
+    ".work/web-app-review/studio-v2-production-2026-09-09/api-mobile.png": "90d133955ddc1593774bd8e0e59f268a106dea455d33b8adec3d152d40aa35ae",
+    ".work/web-app-review/studio-v2-production-2026-09-09/studio-composition.png": "cbe205e083979f7e770c00c18d2d373c8f269e9536bc30c1a378aa7408368e15",
+    ".work/web-app-review/studio-v2-production-2026-09-09/studio-mobile.png": "1cf47978511b264154c59d6c9685c67bb60d240f76844171f7e2a73ae7dd0127"
+  },
+  "input_sha256": {
+    "apps/README.md": "36eb09b4952625492e59a3c16f550aab4785811b8a8fd7a66a81ee4443510b49",
+    "apps/server/README.md": "20bc4ac49333078dc106ca1027fbc5a5e60e0e371fbcb09487d012d0c1d73783",
+    "apps/server/go.mod": "d6dfaa414a71ff8b65b975e89adff18ae2f0066b01e81083c676e53e4b639ef3",
+    "apps/server/main.go": "1887ecbfd7aa0dac2a8824c14d7032b129af2e691f0697d7041fb6b3fe00f732",
+    "apps/server/server.go": "87990ca7cd5b40b184217bfe5e551ec23e934aca8affec63a6c47eacf8dd4db9",
+    "apps/server/server_test.go": "6852c0de90342e06afe238d1b422c45ee556ceeeb51413415ad3ea6867c81a79",
+    "apps/web/app/api-reference/[id]/page.tsx": "2d65a90bb12c10375b0967b335eab0d797faca896574bb2abacb7669a5094a94",
+    "apps/web/app/api-reference/page.tsx": "ce70682029fcc07cc07687f318ae15759414fb621e020885ec859757e34f97a0",
+    "apps/web/app/globals.css": "0a97d0ff01cb0fa9c809758fd6564ea1eca8495be0aa608801c226555c3a170c",
+    "apps/web/app/layout.tsx": "95396f339de38ce53844eef1fa2de83ec890d0bc4a62c00d0901f38f0e87cc5e",
+    "apps/web/app/not-found.tsx": "924e1abd70dacbbb09f3f3a3bbb79244476db2ef0e2bb0790b5b59d5545450be",
+    "apps/web/app/page.tsx": "7e3be26cc1047703cfdad6c32506cef1b1418f868e2cd21d61d58bb38c190285",
+    "apps/web/app/studio/page.tsx": "af7bb4b37f043f896095fbc15c2a3b53125752293c71730598429a8fc1101782",
+    "apps/web/app/techniques/[slug]/page.tsx": "7ab0252b068050e9a99eeea03e3cd191143f038bee36723e103397cb2f7151eb",
+    "apps/web/components/Gallery.tsx": "816d43fa81883d9b440e84c0dad2ff4378ee2bfe13de90793eb30a847403af76",
+    "apps/web/components/LayerControls.tsx": "3379bf36afa652404477127ae84fb05bf73e017cf2ee1db651eed7539132d7f9",
+    "apps/web/components/SiteNav.tsx": "ee0a1d8ebfdfeb45622d2944385f30b28496cdd5c7b6b6857550379ce171ba85",
+    "apps/web/components/SketchCanvas.tsx": "8121e15a564a11ac00c2226accfaa362c79ecb5c668145a1111059c0a7f7f6f6",
+    "apps/web/components/SourcePanel.tsx": "aab1cbc99cd237bf167c9d187b21d1053fc77d045e61f4a3a131a0f0a739b24e",
+    "apps/web/components/Studio.tsx": "788ee580a36cf57da6c464b9ea02cd19639387d2e0274fe3e4d02cbf77f05b81",
+    "apps/web/components/TechniquePlayground.tsx": "87ecc5cd56b52845bba0928c0079c33a6e4d3af528e9835017f4707768f12411",
+    "apps/web/content/browser-guides.json": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
+    "apps/web/content/field-marks.md": "e82e8317d7337fcd7f706b7ede2afdd62a70a7984f0e6f2556c9a6e4c35f4173",
+    "apps/web/content/panel-marks.md": "ad287b2881bb13e98a8bdf592eb7616e065e395bba3ef9210afb29b92732dc43",
+    "apps/web/lib/adapters/basic.ts": "5c76b57ea73585663874025bda94557fe524fcb0efab1f0137fb9e5c8b000564",
+    "apps/web/lib/adapters/effects.ts": "ce4b2d8f2f2cef5758b2d2b47a056e144d733b74220321e2b3a70eae0fbf3b3b",
+    "apps/web/lib/adapters/geometry.ts": "efe2d0256b2307acb127705ebab8e63f1a658294535199a4ff3700c6554a8a3f",
+    "apps/web/lib/adapters/types.ts": "183f7ab9a0510271c0413f29dc47318596fbcfbb13952cf1404a38d5fbe7370e",
+    "apps/web/lib/generated-api.json": "b7ca614bf900d0cc8ae51a144f75be812a697e6cdeb7318607b5f4e0addd877e",
+    "apps/web/lib/generated-gallery.json": "1c497af49a47d7744cc99e2b11e0be5216458ab44bc5bf4357624aa9f8de70db",
+    "apps/web/lib/legacy-v1.json": "88b86735fa52a95c8963f56fc346f111a4430f11835037296bf7d4a3f95714bf",
+    "apps/web/lib/render-studio.ts": "786680b5b396bc79790bf851dd0f1cb3db322173858e17ace949d62bf3ba3615",
+    "apps/web/lib/studio-types.ts": "e659bcd214daf5128d9bad7a7b0e71f31024f113e759018e30ec0048fad8e72b",
+    "apps/web/lib/studio.ts": "fb65d1b86d00aeead2d022f595fddbd088431356a1bfebfd39e988c563bdb253",
+    "apps/web/next-env.d.ts": "1862ac4bbbc5192d4bf562161df66ea547ed3e67173100656ab606ae9797db2b",
+    "apps/web/next.config.ts": "81db87ef202fb62a4b344c0c304968c78d3c7d811fec9ef6f89196763347a1d8",
+    "apps/web/package-lock.json": "b98b7de936c6affdfe6fcf88b988bffab2da37ed91ffad16ed101bf857fe3217",
+    "apps/web/package.json": "40e86722b12c4a8b81cd099fba054aef39d80deba059f60ba2a6df499da1bde3",
+    "apps/web/scripts/capture-previews.mjs": "3fbedf4a990975ad517bb2e39e9a11d57a3b1603af1579d6ed7eaa2ea8afa6ab",
+    "apps/web/scripts/generate-api.mjs": "0ceadbde21f594e9b144818d4130c61e472ec5d23a4cc3356b9dd9d0d1c95017",
+    "apps/web/scripts/generate-gallery.mjs": "185f2fbd9cc8cfca21c9d2d66694b8c7d869a6e1dd8f78c470e87bafaaebfd52",
+    "apps/web/scripts/sketch-source.mjs": "bb779866b036a15c7685e67cca83cca96e0921612cd525b88861762f46250101",
+    "apps/web/scripts/test-browser.mjs": "6c97449fd60595246bed49bd7d6f2dde3aef28af9f905af3ac06bd3eece43e62",
+    "apps/web/tests/effects-adapters.test.ts": "4c2a2e285f17e10b6d77bec73a42b45bc6a469536c048078755675c717dd49e8",
+    "apps/web/tests/studio.test.ts": "8b9d0f80fa336131bfcaad824189eb429c45646854784940256fbd7a201141ac",
+    "apps/web/tsconfig.json": "eb7934a2526ac0b6e00aa7134154b389c5d37c0fd4ecdc0cb5beae1cc2b4063d",
+    "docs/web-app-architecture.md": "64957d6d067757e14a1edde02369dd28e62ed86c00faf86710d1a55e47ac41db",
+    "tools/run_web_app.py": "3cfe0ab8e0f6e29b21d21215c1ec40f5fdd65e1f1d238280c46bee77f9aa2593"
+  },
+  "artifact_relocations": {
+    ".work/web-app-review/integration/": ".work/web-app-review/studio-v2-production-2026-09-09/"
+  },
+  "deployment": "https://eunoia.tailf03dad.ts.net:8443/"
+}
