@@ -4,12 +4,27 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 /**
-   *  Owned indexed closed annular mesh for {@code mesh.annular-solid-3d} 0.1.0.
-* Local units are caller-defined; the axis is +Z and angular cells run +X toward +Y.
-* It is motivated by {@code survey/out/2017/Generativos/aros/notes.md} and the private
-* annular study. It has no renderer, style, random state, defaults, or recommended range.
-* Results own packed primitive storage; all exported triples and values are detached.
-   */
+ * Owned indexed closed annular mesh for {@code mesh.annular-solid-3d} 0.1.0.
+ *
+ * <p>Local units are caller-defined. The axis is {@code +Z}, and angular cells increase
+ * from {@code +X} toward {@code +Y}. The result contains four welded rings in
+ * outer-bottom, outer-top, inner-bottom, inner-top order, and four face kinds per cell:
+ * outer wall, inner wall, top annulus, and bottom annulus. There is no seam vertex at
+ * {@code 2π} and no interior radial face.</p>
+ *
+ * <p>The operation is motivated by {@code survey/out/2017/Generativos/aros/notes.md}
+ * (the {@code annulusMesh} candidate and its modularisation decision) and the associated
+ * private study decision in {@code evidence/parameter-experiments/annular-mesh/decision.md}.
+ * That evidence establishes the annular boundary geometry; its
+ * colors, animation, renderer, duplicated internal faces, and winding/axial discrepancies
+ * are outside this operation. The operation has no renderer, style, random state, defaults,
+ * or recommended parameter range. Results own packed primitive storage; exported triples
+ * and maps are detached copies.</p>
+ *
+ * <p>The {@code Into} methods validate the index before the destination and leave the
+ * destination unchanged on validation failure. Their three array writes are not a
+ * synchronization mechanism; callers must coordinate shared destination access.</p>
+ */
 public final strictfp class AnnularMesh3D  {
   private static final int MAX_SLICES = 89478485;
   private static final int MAX_FACES = 715827881;
@@ -23,9 +38,19 @@ public final strictfp class AnnularMesh3D  {
     "outer-wall","inner-wall","top-annulus","bottom-annulus"
   }
   ;
-  /** Static input or retained-access error. */
+  /**
+   * Static input or retained-result access failed.
+   *
+   * <p>{@link #code} identifies {@code INVALID_INPUT}, {@code INVALID_INDEX},
+   * {@code INDEX_OUT_OF_RANGE}, or {@code INVALID_OUTPUT}.</p>
+   */
   public static final class MeshException extends IllegalArgumentException  {
+    /** Stable contract error code. */
     public final String code;
+    /**
+     * Creates an exception for a contract error.
+     * @param code stable error code to expose
+     */
     public MeshException(String code)  {
       super(code);
       this.code=code;
@@ -33,16 +58,29 @@ public final strictfp class AnnularMesh3D  {
   }
   /** Valid input exceeded its required face budget before geometry allocation. */
   public static final class FaceLimitException extends IllegalArgumentException  {
+    /** Stable value {@code FACE_LIMIT_EXCEEDED}. */
     public final String code="FACE_LIMIT_EXCEEDED";
+    /** Creates a face-budget exception with the stable contract message. */
     public FaceLimitException() {
       super("FACE_LIMIT_EXCEEDED");
     }
   }
-  /** A face cannot produce the specified scaled flat normal. */
+  /** A generated face cannot produce the specified scaled flat normal. */
   public static final class MeshArithmeticException extends ArithmeticException  {
+    /** Stable value {@code MESH_ARITHMETIC_INVALID}. */
     public final String code="MESH_ARITHMETIC_INVALID";
+    /** Zero-based face index whose normal calculation failed. */
     public final int faceIndex;
+    /** Arithmetic stage: {@code edge}, {@code edge_scale}, or {@code cross_scale}. */
     public final String stage;
+    /**
+     * Records the failed face and normal-arithmetic stage.
+     *
+     * <p>This constructor is package-private because callers receive this exception only
+     * from eager generation.</p>
+     * @param faceIndex zero-based triangle face whose normal failed
+     * @param stage failed normal stage: {@code edge}, {@code edge_scale}, or {@code cross_scale}
+     */
     MeshArithmeticException(int faceIndex,String stage) {
       super("MESH_ARITHMETIC_INVALID");
       this.faceIndex=faceIndex;
@@ -58,7 +96,32 @@ public final strictfp class AnnularMesh3D  {
     this.triangles=triangles;
     this.slices=slices;
   }
-  /** Generates the four-ring, welded-seam annular solid from an exact passive Map record. */
+  /**
+   * Generates the four-ring, welded-seam annular solid from an exact passive map record.
+   *
+   * <p>The record must contain exactly {@code outerRadius}, {@code innerRadius},
+   * {@code bottomZ}, {@code topZ}, {@code slices}, and {@code maxFaces}. Static validation
+   * completes before count checks, allocation, topology, or normal arithmetic. A valid
+   * input produces {@code V = 4 * slices} shared vertices and {@code F = 8 * slices}
+   * triangles. {@link FaceLimitException} is raised before geometry allocation when
+   * {@code F > maxFaces}; arithmetic failure raises {@link MeshArithmeticException} and
+   * returns no partial result. There are no defaults, renderer effects, or retained input
+   * references.</p>
+   *
+   * <p>Radii and axial coordinates are finite local distance values, with
+   * {@code outerRadius > innerRadius > 0} and {@code bottomZ < topZ}.
+   * {@code slices} is an integer in [3,89478485]; {@code maxFaces} is an integer in
+   * [1,715827881]. These ceilings address packed storage and do not guarantee that
+   * such allocations are practical. Numeric carriers are Byte, Short, Integer, Long,
+   * Float and Double; other Number subclasses and booleans are rejected.</p>
+   *
+   * @param input passive map record with the six exact contract keys
+   * @return a new immutable mesh owning its generated positions, normals, and triangle indices
+   * @throws MeshException if the record, numeric carriers, domains, or exact keys are invalid
+   * @throws FaceLimitException if the exact triangle count exceeds {@code maxFaces}
+   * @throws MeshArithmeticException if a generated face normal fails at a specified stage
+   * @throws OutOfMemoryError if host allocation cannot provide the result; no partial result is returned
+   */
   public static AnnularMesh3D generate(Object input)  {
     Map<?,?> map=record(input);
     double outer=number(map.get("outerRadius"));
@@ -133,31 +196,62 @@ public final strictfp class AnnularMesh3D  {
     out[i+1]=zero(qy/length);
     out[i+2]=zero(qz/length);
   }
-  /** Returns retained vertex count V=4*slices. */
+  /**
+   * Returns the retained vertex count, {@code V = 4 * slices}.
+   * @return number of position triples; vertices are indexed from zero
+   */
   public int vertexCount() {
     return positions.length/3;
   }
-  /** Returns retained face count F=8*slices. */
+  /**
+   * Returns the retained triangle face count, {@code F = 8 * slices}.
+   * @return number of triangle and aligned normal, kind, and cell records
+   */
   public int faceCount() {
     return triangles.length/3;
   }
-  /** Returns a fresh detached local position triple. */
+  /**
+   * Returns a fresh detached local {@code [x,y,z]} position triple for a vertex.
+   * @param index zero-based vertex index
+   * @return new three-element array containing the vertex position
+   * @throws MeshException if the index is invalid or outside the vertex range
+   */
   public double[] vertexAt(long index) {
     return triple(positions,index(index,vertexCount()));
   }
-  /** Numeric-carrier overload for {@link #vertexAt(long)}. */
+  /**
+   * Returns a vertex position using an accepted numeric index carrier.
+   * @param index finite nonnegative safe integral numeric carrier
+   * @return fresh detached local {@code [x,y,z]} vertex position
+   * @throws MeshException if the carrier is invalid or outside the vertex range
+   */
   public double[] vertexAt(Object index) {
     return vertexAt(access(index));
   }
-  /** Returns a fresh detached flat unit normal triple. */
+  /**
+   * Returns a fresh detached flat unit normal triple aligned with a triangle face.
+   * @param index zero-based triangle face index
+   * @return new three-element array containing the face normal
+   * @throws MeshException if the index is invalid or outside the face range
+   */
   public double[] normalAt(long index) {
     return triple(normals,index(index,faceCount()));
   }
-  /** Numeric-carrier overload for {@link #normalAt(long)}. */
+  /**
+   * Returns a face normal using an accepted numeric index carrier.
+   * @param index finite nonnegative safe integral numeric carrier
+   * @return fresh detached flat unit normal triple
+   * @throws MeshException if the carrier is invalid or outside the face range
+   */
   public double[] normalAt(Object index) {
     return normalAt(access(index));
   }
-  /** Returns a fresh detached triangle-index triple. */
+  /**
+   * Returns a fresh detached {@code [a,b,c]} position-vertex index triple for a face.
+   * @param index zero-based triangle face index
+   * @return new three-element array of vertex indices
+   * @throws MeshException if the index is invalid or outside the face range
+   */
   public int[] triangleAt(long index) {
     int i=index(index,faceCount())*3;
     return new int[] {
@@ -165,43 +259,98 @@ public final strictfp class AnnularMesh3D  {
     }
     ;
   }
-  /** Numeric-carrier overload for {@link #triangleAt(long)}. */
+  /**
+   * Returns triangle vertex indices using an accepted numeric index carrier.
+   * @param index finite nonnegative safe integral numeric carrier
+   * @return fresh detached {@code [a,b,c]} vertex-index triple
+   * @throws MeshException if the carrier is invalid or outside the face range
+   */
   public int[] triangleAt(Object index) {
     return triangleAt(access(index));
   }
-  /** Returns the aligned outer-wall, inner-wall, top-annulus, or bottom-annulus kind. */
+  /**
+   * Returns the face kind aligned with a triangle face.
+   * @param index zero-based triangle face index
+   * @return {@code outer-wall}, {@code inner-wall}, {@code top-annulus}, or {@code bottom-annulus}
+   * @throws MeshException if the index is invalid or outside the face range
+   */
   public String faceKindAt(long index) {
     return KINDS[(index(index,faceCount())%8)/2];
   }
-  /** Numeric-carrier overload for {@link #faceKindAt(long)}. */
+  /**
+   * Returns a face kind using an accepted numeric index carrier.
+   * @param index finite nonnegative safe integral numeric carrier
+   * @return aligned face-kind string
+   * @throws MeshException if the carrier is invalid or outside the face range
+   */
   public String faceKindAt(Object index) {
     return faceKindAt(access(index));
   }
-  /** Returns the aligned angular cell. */
+  /**
+   * Returns the angular cell aligned with a triangle face.
+   * @param index zero-based triangle face index
+   * @return zero-based cell in increasing angular traversal order
+   * @throws MeshException if the index is invalid or outside the face range
+   */
   public int cellAt(long index) {
     return index(index,faceCount())/8;
   }
-  /** Numeric-carrier overload for {@link #cellAt(long)}. */
+  /**
+   * Returns an aligned angular cell using an accepted numeric index carrier.
+   * @param index finite nonnegative safe integral numeric carrier
+   * @return zero-based angular cell
+   * @throws MeshException if the carrier is invalid or outside the face range
+   */
   public int cellAt(Object index) {
     return cellAt(access(index));
   }
-  /** Validates then writes a position triple, preserving slots outside the triple. */
+  /**
+   * Validates access and destination, then writes one vertex position triple atomically.
+   * @param index zero-based vertex index
+   * @param output writable destination array of at least three slots from {@code offset}
+   * @param offset destination slot receiving the vertex's {@code x} component
+   * @throws MeshException if index or destination validation fails; no destination slot is changed
+   */
   public void vertexInto(long index,double[] output,int offset) {
     into(positions,index(index,vertexCount()),output,offset);
   }
-  /** Numeric-carrier overload for {@link #vertexInto(long,double[],int)}. */
+  /**
+   * Writes a vertex position using an accepted numeric index carrier.
+   * @param index finite nonnegative safe integral numeric carrier
+   * @param output writable destination double array
+   * @param offset destination slot receiving {@code x}; three contiguous slots are required
+   * @throws MeshException if index or destination validation fails; writes are atomic
+   */
   public void vertexInto(Object index,double[] output,int offset) {
     vertexInto(access(index),output,offset);
   }
-  /** Validates then writes a normal triple, preserving slots outside the triple. */
+  /**
+   * Validates access and destination, then writes one face normal triple atomically.
+   * @param index zero-based triangle face index
+   * @param output writable destination array of at least three slots from {@code offset}
+   * @param offset destination slot receiving the normal's {@code x} component
+   * @throws MeshException if index or destination validation fails; no destination slot is changed
+   */
   public void normalInto(long index,double[] output,int offset) {
     into(normals,index(index,faceCount()),output,offset);
   }
-  /** Numeric-carrier overload for {@link #normalInto(long,double[],int)}. */
+  /**
+   * Writes a face normal using an accepted numeric index carrier.
+   * @param index finite nonnegative safe integral numeric carrier
+   * @param output writable destination double array
+   * @param offset destination slot receiving {@code x}; three contiguous slots are required
+   * @throws MeshException if index or destination validation fails; writes are atomic
+   */
   public void normalInto(Object index,double[] output,int offset) {
     normalInto(access(index),output,offset);
   }
-  /** Validates then writes a triangle triple, preserving slots outside the triple. */
+  /**
+   * Validates access and destination, then writes one triangle's three vertex indices atomically.
+   * @param index zero-based triangle face index
+   * @param output writable destination integer array of at least three slots from {@code offset}
+   * @param offset destination slot receiving the first vertex index
+   * @throws MeshException if index or destination validation fails; no destination slot is changed
+   */
   public void triangleInto(long index,int[] output,int offset) {
     int f=index(index,faceCount());
     if(output==null||offset<0||offset>output.length-3)throw new MeshException("INVALID_OUTPUT");
@@ -210,11 +359,23 @@ public final strictfp class AnnularMesh3D  {
     output[offset+1]=triangles[i+1];
     output[offset+2]=triangles[i+2];
   }
-  /** Numeric-carrier overload for {@link #triangleInto(long,int[],int)}. */
+  /**
+   * Writes triangle vertex indices using an accepted numeric index carrier.
+   * @param index finite nonnegative safe integral numeric carrier
+   * @param output writable destination integer array
+   * @param offset destination slot receiving the first vertex index; three contiguous slots are required
+   * @throws MeshException if index or destination validation fails; writes are atomic
+   */
   public void triangleInto(Object index,int[] output,int offset) {
     triangleInto(access(index),output,offset);
   }
-  /** Returns a deep detached ordinary-value representation in output-schema key order. */
+  /**
+   * Returns a deep detached ordinary-value representation in output-schema key order.
+   * The keys are {@code positions}, {@code triangles}, {@code normals}, {@code faceKinds},
+   * and {@code cells}; each position, triangle, and normal is a separate three-element list.
+   * @return newly allocated map and nested lists containing all retained output values
+   * @throws OutOfMemoryError if materialization allocation fails; retained mesh data remains intact
+   */
   public Map<String,Object> toValues() {
     List<Object> ps=new ArrayList<Object>(vertexCount()),ts=new ArrayList<Object>(faceCount()),ns=new ArrayList<Object>(faceCount()),ks=new ArrayList<Object>(faceCount()),cs=new ArrayList<Object>(faceCount());
     for (int i=0; i<vertexCount(); i++) {

@@ -35,7 +35,7 @@ The broader corpus benchmark remains a separate strict certification claim.
 
 ## Existing capability baseline
 
-Java0.30 source milestone assembles28 operations and32 workflows: field marks, integrated paths, constrained
+Java0.31 source milestone assembles29 operations and33 workflows: field marks, integrated paths, constrained
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
 paths, raster remapping, positioned color ramps, noise-band paths, smooth closed curves and binary panel layouts,
@@ -185,3 +185,17 @@ recreation remain outside the claim. It is not Voronoi or guaranteed collision a
 See `evidence/distribution/cp27-java-review.json`. The composition guide now explains
 partition callbacks, image content, masks and effect ordering. Remaining family
 dispositions, reference completeness and the final user journey still need reconciliation.
+
+## CP28: annular forms
+
+AnnularMesh3D and AnnularMarks close the explicit washer-topology gap: inner/outer walls,
+annular end faces, retained flat normals and angular identity. Width, depth and facets
+are independent of color and arrangement. All33 extracted examples compile; the11-state
+native workflow and exact restored/save outputs passed root review. See
+`evidence/distribution/cp28-java-review.json`, pushed at
+`f43629a931980f8572577380f1a8069f50f9ec56`.
+
+This is a scoped capability addition, not full aros recreation or general solid modeling.
+The package still records775 Javadoc warnings; public-method discovery and final
+requirement-by-requirement completion review remain open. Unsupported general Voronoi,
+text shaping and grammar rewriting must not silently count as supported.

@@ -1,0 +1,100 @@
+{
+  "status": "reviewed-documentation-only",
+  "baseline_commit": "f43629a931980f8572577380f1a8069f50f9ec56",
+  "reviewer": "root",
+  "scope": "Public documentation and validation-failure atomicity clarification; executable tokens and all nondebug class bytes unchanged. Historical native evidence is preserved. Distribution manifest and support integration remain pending; this record does not accept a new release.",
+  "files": [
+    {
+      "source": "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java",
+      "old_sha256": "784ba20b7b83e6ce7f7240b045eb8f2611395493e7aea273b003c58de3b8b5aa",
+      "new_sha256": "fbf61b8ba36945133926bbd23290d2467a03ac8ce50912dd0d7b2decc8a7d602",
+      "tokens_identical": true,
+      "nondebug_class_sha256": {
+        "org/procedurals/mesh/AnnularMesh3D$FaceLimitException.class": "d36ebff3062570fd6223de6a336e9608e3446333c8be3921a21cdffc593bc8b5",
+        "org/procedurals/mesh/AnnularMesh3D$MeshArithmeticException.class": "d4f00bdbc6c0f7dd45048e03cafc9d0a05096683aa78ec823bdea36a1942455c",
+        "org/procedurals/mesh/AnnularMesh3D$MeshException.class": "6f594a96c0e44e267455e12ed65689ad8e8306c9625e6402690d11d1e4174159",
+        "org/procedurals/mesh/AnnularMesh3D.class": "02a0d840a4ff5cab49756614d4c0b3e0a0074398bc7d8ed80cd71f0853beca38"
+      },
+      "compile_commands": [
+        [
+          "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+          "--release",
+          "8",
+          "-g:none",
+          "-cp",
+          "/home/colin/dev/procedural/.work/cp28-annular-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+          "-d",
+          ".work/java-documentation-review-root1/AnnularMesh3D/before-classes",
+          ".work/java-documentation-review-root1/AnnularMesh3D/before/AnnularMesh3D.java"
+        ],
+        [
+          "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+          "--release",
+          "8",
+          "-g:none",
+          "-cp",
+          "/home/colin/dev/procedural/.work/cp28-annular-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+          "-d",
+          ".work/java-documentation-review-root1/AnnularMesh3D/after-classes",
+          ".work/java-documentation-review-root1/AnnularMesh3D/after/AnnularMesh3D.java"
+        ]
+      ],
+      "javadoc_command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javadoc",
+        "-quiet",
+        "-Xdoclint:all",
+        "-classpath",
+        "/home/colin/dev/procedural/.work/cp28-annular-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+        "-d",
+        ".work/java-documentation-review-root1/AnnularMesh3D/reference",
+        "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java"
+      ],
+      "javadoc_stderr": ""
+    },
+    {
+      "source": "packages/java-processing/src/main/java/org/procedurals/processing/Java2DLayers.java",
+      "old_sha256": "23e363a4d5e52ce1ad944f5915ddfee850e3d1e16edb6d9b3c1a19ace53b2f98",
+      "new_sha256": "e22e3d747d1e568adee5d4c1de94973858922ced811220d7e68b38304bd09a55",
+      "tokens_identical": true,
+      "nondebug_class_sha256": {
+        "org/procedurals/processing/Java2DLayers$Content.class": "36a9f3b12fcf513472b496678c84b50db493c153a2a5e06a3fc4d79a066051a5",
+        "org/procedurals/processing/Java2DLayers.class": "81bdcc7319e7603df06de5df6cd1c7e598c0065d53d403ac22a377e05fa1ba43"
+      },
+      "compile_commands": [
+        [
+          "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+          "--release",
+          "8",
+          "-g:none",
+          "-cp",
+          "/home/colin/dev/procedural/.work/cp28-annular-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+          "-d",
+          ".work/java-documentation-review-root1/Java2DLayers/before-classes",
+          ".work/java-documentation-review-root1/Java2DLayers/before/Java2DLayers.java"
+        ],
+        [
+          "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+          "--release",
+          "8",
+          "-g:none",
+          "-cp",
+          "/home/colin/dev/procedural/.work/cp28-annular-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+          "-d",
+          ".work/java-documentation-review-root1/Java2DLayers/after-classes",
+          ".work/java-documentation-review-root1/Java2DLayers/after/Java2DLayers.java"
+        ]
+      ],
+      "javadoc_command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javadoc",
+        "-quiet",
+        "-Xdoclint:all",
+        "-classpath",
+        "/home/colin/dev/procedural/.work/cp28-annular-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+        "-d",
+        ".work/java-documentation-review-root1/Java2DLayers/reference",
+        "packages/java-processing/src/main/java/org/procedurals/processing/Java2DLayers.java"
+      ],
+      "javadoc_stderr": ""
+    }
+  ]
+}

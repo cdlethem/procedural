@@ -11,13 +11,29 @@ import processing.core.PImage;
  * JAVA2D layer and alpha-mask transport. Provenance is eyes002 image/draw callbacks and
  * circuloss native mask construction; alpha interpretation is project design. No opacity,
  * feather, or shape-count range is recommended.
+ * Motivating notes: {@code survey/out/2017/Generativos/Eyes/eyes002/notes.md}
+ * and {@code survey/out/2015/Generativos/circuloss/notes.md}.
  */
 public final class Java2DLayers {
     private Java2DLayers() { }
     /** Draws once into a borrowed active density-one JAVA2D target. */
-    public interface Content { void draw(PGraphics target); }
+    public interface Content { /**
+     * Draws using the supplied active target. Do not call beginDraw/endDraw, retain
+     * the target, or dispose it; the adapter owns its lifecycle.
+     * @param target transparent density-one JAVA2D canvas with an identity transform
+     */ void draw(PGraphics target); }
 
-    /** Renders content once to an independently owned transparent ARGB image. */
+    /**
+     * Renders content once to an independently owned transparent ARGB image.
+     * The callback may draw beyond the canvas; normal raster clipping applies.
+     * The returned image can be retained for placement, masking or filtering.
+     * @param parent active Processing sketch used to create the target and result
+     * @param width positive canvas width in logical pixels
+     * @param height positive canvas height; width times height must fit a signed int
+     * @param content drawing callback, invoked once on a borrowed active target
+     * @return detached density-one ARGB image containing the completed drawing
+     * @throws IllegalArgumentException if the parent/callback is null or dimensions are invalid
+     */
     public static PImage render(PApplet parent, int width, int height, Content content) {
         if (parent == null || content == null || width < 1 || height < 1 || (long) width * height > Integer.MAX_VALUE) throw new IllegalArgumentException("Invalid layer render input");
         PGraphicsJava2D target = new PGraphicsJava2D(); Throwable primary = null;
@@ -30,18 +46,45 @@ public final class Java2DLayers {
         finally { release(target, primary); }
     }
 
-    /** Returns detached alpha/255 values; opaque black and white both yield one. */
+    /**
+     * Returns detached alpha/255 coverage values in row-major pixel order.
+     * Opaque black and opaque white both yield one; RGB images are fully opaque.
+     * This reads transparency, not brightness or luminance.
+     * @param image completed nonempty density-one RGB or ARGB image
+     * @return independently owned coverage array, with one value in [0,1] per pixel
+     * @throws IllegalArgumentException if the image format, dimensions or pixel storage is invalid
+     */
     public static double[] alphaMask(PImage image) {
         int[] pixels = pixels(image); double[] result = new double[pixels.length]; for (int i = 0; i < pixels.length; i++) result[i] = (pixels[i] >>> 24) / 255.0; return result;
     }
 
-    /** Applies accepted MaskedComposite2D arithmetic to completed density-one images. */
+    /**
+     * Composites source over destination using explicit coverage and source alpha.
+     * Transparent source pixels reveal the destination. Inputs are not overwritten.
+     * @param parent sketch used to allocate the result
+     * @param source completed density-one RGB or ARGB source image
+     * @param destination completed image with the same dimensions as source
+     * @param mask row-major finite coverage values in [0,1], one per pixel
+     * @return detached ARGB image using {@link MaskedComposite2D} arithmetic
+     * @throws IllegalArgumentException if parent, images or coverage are invalid
+     */
     public static PImage composite(PApplet parent, PImage source, PImage destination, double[] mask) {
         if (parent == null) throw new IllegalArgumentException("Null parent"); int count = matching(source, destination); int[] sourcePixels = pixels(source), destinationPixels = pixels(destination);
         return image(parent, source.width, source.height, MaskedComposite2D.compose(source.width, source.height, sourcePixels, destinationPixels, mask).pixels(), count);
     }
 
-    /** Applies accepted RasterCrossfade2D arithmetic to completed density-one images. */
+    /**
+     * Mixes two completed images using premultiplied encoded-color arithmetic.
+     * Weight zero selects first; weight one selects second. Intermediate weights
+     * interpolate both colors and alpha; this is distinct from source-over layering.
+     * Inputs are not overwritten.
+     * @param parent sketch used to allocate the result
+     * @param first completed density-one RGB or ARGB image
+     * @param second completed image with the same dimensions as first
+     * @param weights row-major finite blend weights in [0,1], one per pixel
+     * @return detached ARGB image using {@link RasterCrossfade2D} arithmetic
+     * @throws IllegalArgumentException if parent, images or weights are invalid
+     */
     public static PImage crossfade(PApplet parent, PImage first, PImage second, double[] weights) {
         if (parent == null) throw new IllegalArgumentException("Null parent"); int count = matching(first, second); int[] firstPixels = pixels(first), secondPixels = pixels(second);
         return image(parent, first.width, first.height, RasterCrossfade2D.mix(first.width, first.height, firstPixels, secondPixels, weights).pixels(), count);

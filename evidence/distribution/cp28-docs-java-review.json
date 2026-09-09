@@ -1,0 +1,41 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.31.1",
+  "scope": "Documentation-only source distribution. All 33 extracted PDEs compile. Runtime behavior is carried forward from CP28 through executable-token and nondebug class identity for all three edited Java sources; unchanged class hashes verified for every other core/adapter class. No native rerender or additional support claimed.",
+  "archive": {
+    "path": ".work/dist/cp28-docs-java-source-root1/procedurals-java-source-dev.zip",
+    "sha256": "8dd3c13bd2f314c919b43bc80b71975495d17e4eb6571b052e7536a158f901fd",
+    "members": 424
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp28-docs-java-source.json": "6bfa3e0134e66249b4c671812c3bf8f7970f1a405ee381d6ffbef61f5b531451",
+    "evidence/distribution/cp28-docs-java-consumer.json": "c23f1d857eee7c66d1cc1b43d723e08322dc17bed0c27b01263e43edbfffff9a",
+    "evidence/distribution/cp28-java-review.json": "3be642520cbad249b6dcb6427fafd8cc9c8adb16d845c6077c815e6cd29cd29d",
+    "evidence/documentation/java-cp28-comments-review.json": "9ebd8aff3a29078c8ed64952e1082f407d90830a9c5403e5abd60496d78743fd",
+    "evidence/documentation/java-regions-comments-review.json": "dbc2660991e8d64c0de2a7445a2f92d497e161a772a9971e7ca1ac07bb494f11"
+  },
+  "changed_debug_classes": {
+    "class_sha256": [
+      "org/procedurals/mesh/AnnularMesh3D$FaceLimitException.class",
+      "org/procedurals/mesh/AnnularMesh3D$MeshArithmeticException.class",
+      "org/procedurals/mesh/AnnularMesh3D$MeshException.class",
+      "org/procedurals/mesh/AnnularMesh3D.class"
+    ],
+    "adapter_class_sha256": [
+      "org/procedurals/processing/Java2DLayers.class",
+      "org/procedurals/processing/Java2DRegions$Region.class",
+      "org/procedurals/processing/Java2DRegions$Space.class",
+      "org/procedurals/processing/Java2DRegions.class"
+    ]
+  },
+  "debug_difference_reason": "Source line tables changed with Javadoc; separately compiled -g:none classes are byte-identical.",
+  "javadoc_warnings_before": 775,
+  "javadoc_warnings_after": 689,
+  "limitations": [
+    "689 Javadoc warnings remain.",
+    "Full Java completion audit remains open.",
+    "Ports remain paused."
+  ]
+}

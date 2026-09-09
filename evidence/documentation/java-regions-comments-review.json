@@ -1,0 +1,51 @@
+{
+  "status": "reviewed-documentation-only",
+  "baseline_commit": "f43629a931980f8572577380f1a8069f50f9ec56",
+  "reviewer": "root",
+  "source": "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java",
+  "old_sha256": "780ade5bff5b57773dcb7982eeca46e9f8627664c897261f16ff78d1d38682e6",
+  "new_sha256": "b35483dab0de46bb17ef76ed10ac3da91c783a4beba82bcb7ae1f4ccfa4c9714",
+  "tokens_identical": true,
+  "nondebug_class_sha256": {
+    "org/procedurals/processing/Java2DRegions$Content.class": "737f4f43956fa42bab3d64649fb67bc0465ad5711546ebde28b0bf678d3097a8",
+    "org/procedurals/processing/Java2DRegions$Region.class": "96674e89bc96ad2fbb08a249259185fb462795edbeced02537404dad282b4a1c",
+    "org/procedurals/processing/Java2DRegions$Space.class": "7add54c2970dc6bc0caedca761992e5c73c1b8e329e438e11b148a61ed9126b5",
+    "org/procedurals/processing/Java2DRegions.class": "affb969fe908bc2d708b4bfabef87bc7ef6447d3a70cfdaf4f60d378bd5927dc"
+  },
+  "compile_commands": [
+    [
+      "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+      "--release",
+      "8",
+      "-g:none",
+      "-cp",
+      "/home/colin/dev/procedural/.work/cp28-annular-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+      "-d",
+      ".work/java-documentation-review-root1/Java2DRegions/before-classes",
+      ".work/java-documentation-review-root1/Java2DRegions/before/Java2DRegions.java"
+    ],
+    [
+      "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+      "--release",
+      "8",
+      "-g:none",
+      "-cp",
+      "/home/colin/dev/procedural/.work/cp28-annular-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+      "-d",
+      ".work/java-documentation-review-root1/Java2DRegions/after-classes",
+      ".work/java-documentation-review-root1/Java2DRegions/after/Java2DRegions.java"
+    ]
+  ],
+  "javadoc_command": [
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javadoc",
+    "-quiet",
+    "-Xdoclint:all",
+    "-classpath",
+    "/home/colin/dev/procedural/.work/cp28-annular-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+    "-d",
+    ".work/java-documentation-review-root1/Java2DRegions/reference",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java"
+  ],
+  "javadoc_stderr": "",
+  "scope": "Documentation only; root checked implementation semantics. No support expansion or new native run."
+}

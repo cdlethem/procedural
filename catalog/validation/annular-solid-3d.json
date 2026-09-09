@@ -14,7 +14,7 @@
     "processing-java": {
       "core": {
         "implementation_sha256": {
-          "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java": "784ba20b7b83e6ce7f7240b045eb8f2611395493e7aea273b003c58de3b8b5aa",
+          "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java": "fbf61b8ba36945133926bbd23290d2467a03ac8ce50912dd0d7b2decc8a7d602",
           "packages/java-processing/examples/AnnularMarks/AnnularMarks.pde": "1de55e61678895841783111a66027985e0fad78e9945fe01ba23e989da6fc183"
         },
         "evidence_sha256": {
@@ -22,11 +22,13 @@
           "evidence/conformance/annular-mesh-performance.json": "69babc187a18d27a7652b207da6d206fd50a4c0f1830e83d1ac11c02506925a4",
           "fixtures/operations/annular-solid-3d.json": "15871df03df6886c2a26706cc4d99ca6310254065ba0bde24359b6c7eb573b08",
           "evidence/workflows/annular-marks/native.json": "6051acaf736c3355b3e7f06a9290a9f74f916d4a5f7deff1e135efce7c632eab",
-          "evidence/workflows/annular-marks/root-review.json": "201df10bc9ac0b2dd8079f1e31cc6d37c8a7da164193a0769afdc3a4546acfbd"
+          "evidence/workflows/annular-marks/root-review.json": "201df10bc9ac0b2dd8079f1e31cc6d37c8a7da164193a0769afdc3a4546acfbd",
+          "evidence/conformance/annular-mesh-catalog-review.json": "cfb48b4dcdb717ad466bca0370b5a2a17a6c9a9acd057f2730481584b0459ce3",
+          "evidence/documentation/java-cp28-comments-review.json": "9ebd8aff3a29078c8ed64952e1082f407d90830a9c5403e5abd60496d78743fd"
         },
         "acceptance_review": {
-          "path": "evidence/conformance/annular-mesh-catalog-review.json",
-          "sha256": "cfb48b4dcdb717ad466bca0370b5a2a17a6c9a9acd057f2730481584b0459ce3"
+          "path": "evidence/documentation/annular-support-carry-forward.json",
+          "sha256": "19d0fc888b1fd164abbb2e2f7b21c92276d99c7d8c0f4922246f770894429cde"
         },
         "runtime_profile": {
           "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 P3D density1",
@@ -43,7 +45,7 @@
       },
       "native": {
         "implementation_sha256": {
-          "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java": "784ba20b7b83e6ce7f7240b045eb8f2611395493e7aea273b003c58de3b8b5aa",
+          "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java": "fbf61b8ba36945133926bbd23290d2467a03ac8ce50912dd0d7b2decc8a7d602",
           "packages/java-processing/examples/AnnularMarks/AnnularMarks.pde": "1de55e61678895841783111a66027985e0fad78e9945fe01ba23e989da6fc183"
         },
         "evidence_sha256": {
@@ -51,11 +53,13 @@
           "evidence/conformance/annular-mesh-performance.json": "69babc187a18d27a7652b207da6d206fd50a4c0f1830e83d1ac11c02506925a4",
           "fixtures/operations/annular-solid-3d.json": "15871df03df6886c2a26706cc4d99ca6310254065ba0bde24359b6c7eb573b08",
           "evidence/workflows/annular-marks/native.json": "6051acaf736c3355b3e7f06a9290a9f74f916d4a5f7deff1e135efce7c632eab",
-          "evidence/workflows/annular-marks/root-review.json": "201df10bc9ac0b2dd8079f1e31cc6d37c8a7da164193a0769afdc3a4546acfbd"
+          "evidence/workflows/annular-marks/root-review.json": "201df10bc9ac0b2dd8079f1e31cc6d37c8a7da164193a0769afdc3a4546acfbd",
+          "evidence/conformance/annular-mesh-catalog-review.json": "cfb48b4dcdb717ad466bca0370b5a2a17a6c9a9acd057f2730481584b0459ce3",
+          "evidence/documentation/java-cp28-comments-review.json": "9ebd8aff3a29078c8ed64952e1082f407d90830a9c5403e5abd60496d78743fd"
         },
         "acceptance_review": {
-          "path": "evidence/conformance/annular-mesh-catalog-review.json",
-          "sha256": "cfb48b4dcdb717ad466bca0370b5a2a17a6c9a9acd057f2730481584b0459ce3"
+          "path": "evidence/documentation/annular-support-carry-forward.json",
+          "sha256": "19d0fc888b1fd164abbb2e2f7b21c92276d99c7d8c0f4922246f770894429cde"
         },
         "runtime_profile": {
           "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 P3D density1",

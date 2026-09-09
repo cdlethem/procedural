@@ -139,7 +139,7 @@ class SourceBundleTests(unittest.TestCase):
 
     def test_current_release_admission_and_exact_tabs(self):
         manifest, inputs = source_inputs(ROOT)
-        self.assertEqual(manifest['version'], '0.31.0')
+        self.assertEqual(manifest['version'], '0.31.1')
         self.assertEqual(manifest['processing_version'], 31)
         self.assertEqual(len(manifest['operation_files']), 29)
         self.assertEqual(len(manifest['core_sources']), 29)

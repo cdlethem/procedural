@@ -1,5 +1,56 @@
 # Project state
 
+## Java0.31.1 documentation checkpoint accepted locally
+
+Root reviewed annular/layer/region public docs; three-class executable-token and
+nondebug-byte identity verified against pushed CP28. Explicit successor support reviews
+preserve historical evidence. Catalog and9package tests pass; all33 extracted PDEs
+compile, unchanged core/adapter classes retain their hashes. Archive
+8dd3c13bd2f314c919b43bc80b71975495d17e4eb6571b052e7536a158f901fd;
+evidence/distribution/cp28-docs-java-review.json accepts documentation-only distribution.
+Javadoc warnings775→689; no native rerender warranted. Next commit/push reviewed files,
+then continue remaining reference/family-disposition/user-journey requirements. No new
+operations or support targets; Android draft remains untouched.
+
+## Annular and layer documentation reviewed against shipped behavior
+
+Root finished member-level annular review and clarified that Into validation-failure
+atomicity does not imply synchronized array writes. Fresh old/new compilations for
+AnnularMesh3D and Java2DLayers match all nondebug class bytes; executable tokens match
+CP28 and both standalone Javadocs have zero diagnostics. Source-bound root review:
+evidence/documentation/java-cp28-comments-review.json. Historical native records remain
+intact; manifest/support carry-forward and next archive acceptance are still pending.
+Luna /root/region_javadoc now owns comments only in Java2DRegions.java to finish the
+composition callback documentation slice. Android draft remains untouched.
+
+## Layer adapter documentation verified without behavior change
+
+Root expanded Java2DLayers public docs: borrowed callback lifecycle, image ownership,
+alpha versus brightness, source-over versus crossfade and exact argument units/domains.
+Comment-stripped token identity and all -g:none compiled classes equal shipped source;
+standalone Javadoc has no diagnostics. Evidence .work/layers-javadoc-review/result.json.
+Source hashes in manifests/attestations intentionally not refreshed yet; complete batch
+review/carry-forward required before publishing. Luna annular comments still pending
+at last inspection. No render justified for these verified comment-only edits.
+
+## Documentation batch underway
+
+Root classified actual CP28 Javadoc warnings; most are missing member comments and
+parameter/return tags. design/operations/java-documentation-batch.md records bounded
+comment-only workflow and explicit source-equivalence review requirements. Luna agent
+/root/annular_javadoc owns comments only in AnnularMesh3D.java (50warnings); no executable
+changes/hashes/attestations allowed. Root next verifies comment-stripped token identity,
+nondebug class equivalence and class Javadoc before refreshing any acceptance bindings.
+
+## CP28 pushed; completion map and port handoff reconciled
+
+Main baseline f43629a931980f8572577380f1a8069f50f9ec56 is pushed. Root updated
+completion/batch docs to29operations/33workflows and recorded annular gap closure;
+cp28-porting-handoff.md pins accepted sources and preserves root integration authority.
+These doc follow-ups are after the accepted archive, for next integration checkpoint.
+Next prioritize public-method documentation;775warnings remain and full completion
+requirements are not yet proven. Android draft remains untouched; ports paused.
+
 ## Java0.31 distribution accepted locally — CP28
 
 Root accepted cp28-java-review.json:29operations,33workflows,35source pages;423members.

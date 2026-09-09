@@ -1,8 +1,8 @@
 # Remaining Java buildout: architecture and execution
 
 Root integration owner. This plan replaces serial CP-by-CP scheduling, not the completion
-requirements in java-completion-plan.md. Source milestone: Java0.30, 28 accepted operations and
-32 workflows (distribution review separate); four demonstrated original structural recreations. Inventory is
+requirements in java-completion-plan.md. Source milestone: Java0.31, 29 accepted operations and
+33 workflows (distribution review separate); four demonstrated original structural recreations. Inventory is
 not a completeness claim. Port integration and Sol review remain paused.
 
 ## Capability map
@@ -16,7 +16,7 @@ not a completeness claim. Port integration and Sol review remain paused.
 | Triangulate and add grain | FacetMarks, GrainMarks | Delaunay and triangle sampling supported. Actual Voronoi-cell need remains an evidence decision; tags alone are insufficient. |
 | Grow branching structures | BranchMarks, CutBranchMarks | Endpoint and interior-cut branching supported. General grammar rewriting not established by brotes; no L-system engine inferred. |
 | Animate responsive arrangements | SpringMarks | PointerMarks demonstrates supplied targets, replay and fixed connectivity with existing springs. |
-| Build three-dimensional forms | ProfileMarks, DepthMarks, ReliefMarks, CityMarks | Existing mesh/field compositions; explicit P2D/P3D render tooling is accepted. Arbitrary extrusion/solid modeling not claimed. |
+| Build three-dimensional forms | ProfileMarks, AnnularMarks, DepthMarks, ReliefMarks, CityMarks | Radial profiles and closed annular meshes, plus existing mesh/field compositions; explicit P2D/P3D render tooling is accepted. Arbitrary extrusion/solid modeling not claimed. |
 | Work with typography | GlyphMarks | Font-backed placement supported; outline extraction and shaping remain explicit unassessed capability questions. |
 | Control color and captured pixels | RampMarks, WarpMarks, CyclicPalette | Existing extraction helper hardened and actual FieldMarks palette application validated. |
 | Render, compare and export work | render_java, contact-sheet builder, visual gallery | Explicit assets, P2D/P3D and bounded frame sequences are accepted; installation guidance stays tied to extracted distribution review. |
@@ -32,6 +32,10 @@ Completed latest batch: D1 image attributes and D2 normalized separable filterin
 in CP26. Next bounded lane is C3: root audits discovery and family dispositions after CP27 delivered the independently specified sequential point projection from colidion.
 The full source composition and general Voronoi cells remain distinct; next close remaining
 family dispositions and install-to-edit/reference consistency before declaring completion.
+CP28 closes the concrete annular-topology gap identified in C3 with AnnularMarks.
+The family boundary review is in design/capabilities/java-family-boundaries-cp27.md;
+its annular implementation follow-up is now accepted, while broader unknowns remain.
+Public-method documentation and final user-journey consistency are still unfinished.
 Earlier rows below retain their historical decisions.
 
 ## Execution queue

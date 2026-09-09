@@ -1,0 +1,24 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Carry forward previously accepted Java support across root-reviewed Java2DRegions comments only. Executable tokens and nondebug class bytes match CP28. Existing runtime evidence retained; no new native run or support expansion.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "b35483dab0de46bb17ef76ed10ac3da91c783a4beba82bcb7ae1f4ccfa4c9714",
+    "packages/java-processing/examples/LayerMarks/LayerMarks.pde": "41f5b8dc14ac0810f84cb2affd8b8735536bd7c21755a97792132266c8dcdfa8",
+    "packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java": "24a1800f9a410763f82672bbb8cbbce9e9598298d2ca0651f3527085b4280cf3",
+    "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/masked-source-over-java.json": "1ad4fd1c5bb13469df844ad4aae7305c74a1f8c10339b18999d3d54c45c604d4",
+    "evidence/conformance/masked-source-over-java-root-review.json": "68e6615c922e75761e5d39a918a8ba5cea69926ad0c6a1d8a97ad359b4c19d04",
+    "fixtures/operations/masked-source-over.json": "5d51fb824d7c5a6097884b3545b19f747f5011ba2eaf3b045f3d9203647f2e2c",
+    "evidence/workflows/layer-marks/native.json": "478942e17ada33534114ca7a1e804220c6f238ee66fbeee26cae796a73bfaf94",
+    "evidence/workflows/layer-marks/root-review.json": "f11cc13fc770816edfd61c83fcc98b5c7fc7e9223fe81a7e089587c43907a354",
+    "evidence/conformance/java2d-regions-native.json": "0508a34c210a23a4f7e78004ad186e4ea3a047cc9c254228f8d71991c7b6c3f9",
+    "evidence/conformance/masked-source-over-catalog-review.json": "06ab3ea874b23998e1c29b4f9b922c32144b8adbd31e831f56a5f95bc20b4b92",
+    "evidence/documentation/java-regions-comments-review.json": "dbc2660991e8d64c0de2a7445a2f92d497e161a772a9971e7ca1ac07bb494f11"
+  },
+  "rgb_amendment": "Root reviewed current region adapter RGB/ARGB preflight and detached RGB alpha normalization; source-bound native RGB case and byte-identical LayerMarks regression accepted. Portable core unchanged."
+}
