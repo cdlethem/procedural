@@ -44,6 +44,12 @@ and which change its appearance.
 Read [Composing drawings, partitions and image effects](docs/composing-java-effects.md)
 for ways to combine these tools in your own sketches.
 
+## Try it in your browser
+
+The [web gallery and studio](apps/README.md) includes 24 interactive p5.js studies and a
+no-code canvas for layering fields, flow paths, circle placements and lattice routes.
+Explore the guides, tweak a study, or save a composition as editable JSON or a PNG.
+
 ## Get started
 
 Use **Processing 4 in Java mode** for the full library and all 37 editable examples.

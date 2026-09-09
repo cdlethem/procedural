@@ -17,8 +17,13 @@ linked evidence. Do not treat old pending statements as new assignments.
   numerical-helper provenance, public exports and a SpringMarks focused-button shortcut
   bug. Core fixtures, native controls/reset/save, representative images and installed
   package exports are reviewed. See [port integration](docs/port-integration-status.md).
+- The [web app](apps/README.md) now provides 24 interactive p5 gallery studies and a
+  four-technique layered studio with keyboard controls, undo/redo, local recovery,
+  JSON/PNG export and Go project storage. [Root app review](evidence/web/app-review.json)
+  records real browser checks and visual inspection. This is an app-specific document
+  compositor, not the general portable recipe executor or MCP implementation.
 - Packages are local reviewed artifacts, not registry publications. Java completion
-  does not imply equivalent ports, a general recipe executor, web/MCP or full-corpus coverage.
+  does not imply equivalent ports, a general recipe executor or full-corpus coverage.
 
 ## Target support
 
@@ -41,9 +46,8 @@ full corpus is accepted. See [recreation coverage](docs/recreation-coverage.md).
 
 ## Current work and remaining decisions
 
-The Java buildout and requested p5 batch integration are complete within their recorded
-scope. Follow the
-next user assignment; the [roadmap](docs/roadmap.md) lists downstream work and dependencies.
+The Java buildout, requested p5 batch integration and initial web gallery/studio are complete
+within their recorded scope. Follow the next user assignment; the [roadmap](docs/roadmap.md) lists downstream work and dependencies.
 
 - Other target ports remain separate work, including Python changes on the port branch,
   Android ProfileMarks lifecycle validation and remaining Java capabilities/adapters.
@@ -57,8 +61,10 @@ next user assignment; the [roadmap](docs/roadmap.md) lists downstream work and d
 - General Voronoi cells, grammar rewriting, text shaping and arbitrary solid modeling are
   explicit extensions outside the accepted Java surface, not missing promised implementations.
 - A Java recipe prototype exists, documented in [recipe preview](docs/java-recipe-preview.md).
-  It is not a general portable executor. Web/MCP remain downstream design work.
-  Browser composition is the desired direction; its implementation scope is not yet frozen.
+  It is not a general portable executor. The [web architecture](docs/web-app-architecture.md)
+  freezes the separate app boundary: four studio techniques, at most eight layers, static
+  Canvas2D composition, catalog-bound JSON and a trusted local Go store. More studio
+  bindings, portable target export, multi-user hosting and prompt/MCP remain future work.
 
 ## Evidence and navigation
 

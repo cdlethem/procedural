@@ -1,0 +1,218 @@
+{
+  "kind": "root-web-app-review",
+  "date": "2026-09-09",
+  "owner": "root",
+  "status": "accepted-scoped",
+  "scope": "Next.js gallery and app-specific p5 Canvas2D layer compositor with trusted local Go project storage. No shared target support or general portable recipe admission.",
+  "gallery": {
+    "workflows": 24,
+    "initial_native_renders": "all passed",
+    "operations_referenced": 30,
+    "copy": "Generated from existing Markdown with installation paragraphs omitted and web links adapted; two authored app guides fill missing technique guides."
+  },
+  "studio": {
+    "techniques": [
+      "field-marks",
+      "path-marks",
+      "placement-marks",
+      "lattice-marks"
+    ],
+    "maximum_layers": 8,
+    "canvas": [
+      640,
+      640
+    ],
+    "density": 1,
+    "compositing": "Ordered source-over of completed transparent layers, group opacity rounded to 8-bit alpha",
+    "document_identity": {
+      "version": "studio-v1",
+      "catalogSha256": "e8cd4304cc38df0c088ae3e30bc8b4f212dd50f9f39dc262aa1995dfa6c36944",
+      "techniques": [
+        {
+          "technique": "field-marks",
+          "operations": [
+            {
+              "id": "layout.regular-grid",
+              "version": "0.1.0",
+              "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+            },
+            {
+              "id": "field.gradient-noise-2d-01",
+              "version": "0.1.0",
+              "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+            },
+            {
+              "id": "color.cyclic-palette",
+              "version": "0.1.0",
+              "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
+            }
+          ]
+        },
+        {
+          "technique": "path-marks",
+          "operations": [
+            {
+              "id": "layout.regular-grid",
+              "version": "0.1.0",
+              "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+            },
+            {
+              "id": "field.gradient-noise-2d-01",
+              "version": "0.1.0",
+              "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+            },
+            {
+              "id": "path.gradient-trace-2d",
+              "version": "0.1.0",
+              "sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c"
+            },
+            {
+              "id": "color.cyclic-palette",
+              "version": "0.1.0",
+              "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
+            }
+          ]
+        },
+        {
+          "technique": "placement-marks",
+          "operations": [
+            {
+              "id": "sampling.seeded-circle-placement-2d",
+              "version": "0.1.0",
+              "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267"
+            },
+            {
+              "id": "sampling.ordered-circle-filter-2d",
+              "version": "0.1.0",
+              "sha256": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083"
+            }
+          ]
+        },
+        {
+          "technique": "lattice-marks",
+          "operations": [
+            {
+              "id": "path.occupied-lattice-paths-2d",
+              "version": "0.1.0",
+              "sha256": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d"
+            },
+            {
+              "id": "color.cyclic-palette",
+              "version": "0.1.0",
+              "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "checks": [
+    {
+      "command": "python3 tools/check_catalog.py",
+      "result": "passed; catalog schemas, source bindings, fixtures and generated reference"
+    },
+    {
+      "command": "npm --prefix apps/web run check:generated",
+      "result": "passed"
+    },
+    {
+      "command": "npm --prefix apps/web run typecheck",
+      "result": "passed"
+    },
+    {
+      "command": "npm --prefix apps/web test",
+      "result": "passed; five document admission, identity and real composition-helper tests"
+    },
+    {
+      "command": "Go 1.22 in Docker: go test ./... (apps/server)",
+      "result": "passed; Terra implementation handoff, root source/test review"
+    },
+    {
+      "command": "python3 tools/run_web_app.py --production --skip-previews --api-port 8088",
+      "result": "production build, Go rebuild and launch passed"
+    },
+    {
+      "command": "python3 tools/with_native_render_lock.py -- node apps/web/scripts/test-browser.mjs",
+      "result": "passed against production Next.js + Go",
+      "scenarios": [
+        "gallery search and 24 study navigation",
+        "embedded p5 detail controls change real pixels",
+        "four studio technique renderers mount without browser errors",
+        "group opacity applies to completed layer, with exact undo pixels",
+        "keyboard tweaking/focus isolation, targeted visibility, duplicate, undo/redo and delete",
+        "JSON roundtrip, rejected import preserves state, PNG export",
+        "Go save/load through Next proxy and local browser recovery",
+        "local rendering and editing remain available when Go service is offline",
+        "responsive gallery, embedded example, and studio at 390px width"
+      ],
+      "browser": "153.0.8010.12"
+    }
+  ],
+  "root_visual_review": {
+    "reviewed": [
+      "all 24 original preview canvases via contact sheet",
+      "desktop gallery and interactive FieldMarks page",
+      "studio FieldMarks and layered field/path composition",
+      "mobile gallery, technique page and studio"
+    ],
+    "finding": "Actual package-generated artwork is visible; controls and readable guides fit the inspected desktop/mobile layouts. Layered composition preserves the field beneath paths with group opacity."
+  },
+  "corrected_during_review": [
+    "Turbopack repository source boundary",
+    "clicked versus selected layer visibility",
+    "React history update purity and local recovery ordering",
+    "group opacity versus primitive opacity",
+    "persistent p5 lifecycle and last successful frame",
+    "imported numeric layer ID collisions",
+    "mobile inline canvas sizing",
+    "keyboard Shift-Z casing and contextual controls"
+  ],
+  "limitations": [
+    "Four studio technique bindings; other gallery techniques are independent examples.",
+    "Static studio rendering at fixed 640 square; no arbitrary operation graph, assets or portable target project exporter.",
+    "Full recomputation on document edits; no retained-geometry performance claim.",
+    "Trusted local single-process project store, without accounts or ownership.",
+    "Prompt/MCP execution remains unimplemented and requires the documented evaluation gate.",
+    "Browser verification uses Chromium; no Safari/Firefox certification or source-reproduction expansion."
+  ],
+  "artifacts": {
+    ".work/web-app-review/production-2026-09-09/report.json": "4b9f236d46b5a0c9a845b37a42a15cf4eca04996cbfd4f741111b61e02bc4e46",
+    ".work/web-app-review/previews-2026-09-09/report.json": "3fc4a6d438f1a8b9fd5aebb4c3985700348d5aa64c2c574b84abb69847d7dc33"
+  },
+  "input_sha256": {
+    "apps/server/README.md": "20bc4ac49333078dc106ca1027fbc5a5e60e0e371fbcb09487d012d0c1d73783",
+    "apps/server/go.mod": "d6dfaa414a71ff8b65b975e89adff18ae2f0066b01e81083c676e53e4b639ef3",
+    "apps/server/main.go": "1887ecbfd7aa0dac2a8824c14d7032b129af2e691f0697d7041fb6b3fe00f732",
+    "apps/server/server.go": "87990ca7cd5b40b184217bfe5e551ec23e934aca8affec63a6c47eacf8dd4db9",
+    "apps/server/server_test.go": "6852c0de90342e06afe238d1b422c45ee556ceeeb51413415ad3ea6867c81a79",
+    "apps/web/app/globals.css": "dcfbf83098147885b665e92e21f1b96241820de090a22da68fdf088c7fa5ce4b",
+    "apps/web/app/layout.tsx": "95396f339de38ce53844eef1fa2de83ec890d0bc4a62c00d0901f38f0e87cc5e",
+    "apps/web/app/not-found.tsx": "924e1abd70dacbbb09f3f3a3bbb79244476db2ef0e2bb0790b5b59d5545450be",
+    "apps/web/app/page.tsx": "7e3be26cc1047703cfdad6c32506cef1b1418f868e2cd21d61d58bb38c190285",
+    "apps/web/app/studio/page.tsx": "af7bb4b37f043f896095fbc15c2a3b53125752293c71730598429a8fc1101782",
+    "apps/web/app/techniques/[slug]/page.tsx": "4660415cfeb13581007b43c1bb411db99136f55a2dc1a9298f1f4bb9683d95ac",
+    "apps/web/components/Gallery.tsx": "816d43fa81883d9b440e84c0dad2ff4378ee2bfe13de90793eb30a847403af76",
+    "apps/web/components/InteractiveExample.tsx": "ecfbbf5356a2a9799de89f04dccf1a674ae8d326735863ba1d2020f722144018",
+    "apps/web/components/SiteNav.tsx": "6ac06756dec41339e9491f613716e5a4f985e6dbca65ed180520d8b881fb27aa",
+    "apps/web/components/SketchCanvas.tsx": "8121e15a564a11ac00c2226accfaa362c79ecb5c668145a1111059c0a7f7f6f6",
+    "apps/web/components/Studio.tsx": "80038af50a7861330f09c61b4a53c44764cbe7a39196ed8a65ee4555acaad0e0",
+    "apps/web/lib/generated-gallery.json": "0f469f4d97de1e9cec31255f0f550e730a284f328afcd2a597c9aa2333cb30c7",
+    "apps/web/lib/render-studio.ts": "fb7c4a1c5702fd2b0d412c03f3794f4b989b5aa2d3b128857722dcee5181c5ed",
+    "apps/web/lib/studio-types.ts": "da0d444e836acf21e1738e2ed20a61119e958a14467e6ee56d1840ddedd95b43",
+    "apps/web/lib/studio.ts": "86a3c68abb8a161db8d021631256e7423202e7cd2e734b165c3125d4fa3575bd",
+    "apps/web/scripts/capture-previews.mjs": "055837e7d8125b29790c1426bf0f52ba1d8cd5efa7ddcb737934ae123815faa7",
+    "apps/web/scripts/generate-gallery.mjs": "a9e16d5e5b7fffd3e0eabb0ffb14cc0c59b2068163dbc4c39ad21a2d8e463e37",
+    "apps/web/scripts/test-browser.mjs": "d374ffb1c2c7659cb1c97e524336a43ebbc0fe71c4634c52578a6ea3797315cb",
+    "apps/web/tests/studio.test.ts": "4711c121598676b03908de423cd8ad61678579fbfd10c9b1be4a0119f0332961",
+    "apps/web/package.json": "e097420ffeb54e7f8dfb859c212ac7f1f729b25fd08c14522ef6313f9b8714ba",
+    "apps/web/package-lock.json": "a6417bcf68ad6ef4ea7957ae8cf985864c14cda2fbafbc499cd1848251f0c75b",
+    "apps/web/next.config.ts": "81db87ef202fb62a4b344c0c304968c78d3c7d811fec9ef6f89196763347a1d8",
+    "apps/web/tsconfig.json": "eb7934a2526ac0b6e00aa7134154b389c5d37c0fd4ecdc0cb5beae1cc2b4063d",
+    "tools/run_web_app.py": "d2e4057d58d20cdeb2e33bdfb0f6df710c0e6e8a4edad450de8c2f35d8f25c07",
+    "docs/web-app-architecture.md": "65257263fb65c691637d9e7e8a1b099e044bdefecee0fd4dd47fbcf6e95e2a37"
+  },
+  "artifact_relocations": {
+    ".work/web-app-review/previews/": ".work/web-app-review/previews-2026-09-09/",
+    ".work/web-app-review/integration/": ".work/web-app-review/production-2026-09-09/"
+  }
+}
