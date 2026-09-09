@@ -86,15 +86,27 @@ The complete nested fields, constraints, recorded defaults, queries, semantics, 
 target support and provenance remain available in a collapsed detailed contract. Displayed implementation availability
 and catalog target acceptance are distinct; app rendering does not promote target support.
 
-## Prompt direction
+## Prompt studio integration
 
-The studio composes named workflows. It is not the portable recipe executor in
-`design/recipes/` or an arbitrary graph of low-level operations. Such graphs require typed
-ports and explicit construction/query/error/budget rules. A future prompt interface should
-propose a validated editable document or visible changes to it, preserving manual controls,
-undo history, seed and renderer. MCP would transport those edits rather than execute
-arbitrary generated code. Before implementing prompt planning, create the required
-prompt-to-recipe-evaluation skill and evaluate semantic and visual outcomes.
+`/studio` is the unified canvas: editable named workflows and generated p5.js source layers
+share one ordered, eight-layer `harness-v1` document and one undo history. A service-side,
+OpenAI-compatible model uses typed catalog/context/candidate/render tools. Generated source
+runs in a disposable browser on an isolated origin; Studio composites only its
+content-addressed preview raster. Candidate application and declared-control edits are
+atomic document revisions. The selected source layer exposes its source in a collapsed
+inspector disclosure.
+
+`/explorations` is a separate one-shot prompt sketch surface. It shows an image with the
+exact p5.js source that produced it and owns independent state. It does not alter Studio
+unless an explicit add-to-Studio action creates a source layer.
+
+The Go project store structurally validates `harness-v1` documents on save and never
+executes source while saving or loading. It retains older exact `studio-v1`, `studio-v2`,
+and `studio-v3` workflow documents. Artifact hashes are service-local references: document
+JSON does not contain source or preview bytes. The integration does not admit recipe
+execution, expand shared target support, or make generated source part of a portable
+operation contract. Processing Java, blind recreation evaluation, and wider transport work
+remain separate.
 
 ## Verification
 

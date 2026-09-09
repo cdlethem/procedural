@@ -1,5 +1,12 @@
 # MCP server and companion web application
 
+The [prompt-to-studio harness proposal](prompt-studio-harness.md) develops this direction
+against the current app and catalog. It adds isolated p5.js and Processing Java source
+artifacts alongside data-only recipes, with a concrete tool boundary and blind visual-text
+benchmark. Its source-artifact route supersedes this document's catalog-only planner-output
+restriction; it does not allow executable snippets inside portable recipes. Implementation
+and target acceptance remain separate from the proposal.
+
 ## Goal
 
 A user can describe a piece in natural language, receive a valid sketch assembled from this package's evidence-backed operations, preview and tune it in a browser, and export it for Processing Java, p5.js, py5, or Processing for Android.

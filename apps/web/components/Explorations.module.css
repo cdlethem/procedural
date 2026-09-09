@@ -1,0 +1,22 @@
+.explorations { padding: clamp(2rem, 5vw, 4.5rem); max-width: 1380px; }
+.lead { max-width: 680px; color: var(--muted); font-size: 1.08rem; }
+.layout { display: grid; grid-template-columns: minmax(270px, .8fr) minmax(0, 1.2fr); gap: 1.5rem; align-items: start; margin-top: 2rem; }
+.panel { min-width: 0; border: 1px solid var(--line); background: var(--panel); padding: 1.25rem; }
+.panel h2, .panel h3 { margin-top: 0; font-weight: normal; }
+.panel textarea { width: 100%; min-height: 11rem; resize: vertical; font: inherit; padding: .75rem; border: 1px solid var(--line); background: var(--paper); color: var(--ink); }
+.actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .8rem; }
+.actions button, .source article button { border: 1px solid var(--ink); background: var(--ink); color: var(--paper); cursor: pointer; padding: .55rem .8rem; font: 600 .75rem Arial, sans-serif; letter-spacing: .05em; text-transform: uppercase; }
+.actions button:disabled { cursor: default; opacity: .55; }
+.actions .secondary, .source article button { background: transparent; color: var(--ink); }
+.status, .error { margin: 1rem 0 0; overflow-wrap: anywhere; }
+.error { color: #9e2f20; }
+.preview { min-width: 0; }
+.canvas { width: min(640px, 100%); aspect-ratio: 1; background: #e8e4dc; }
+.canvas canvas { display: block; width: 100% !important; height: auto !important; }
+.source { margin-top: 1.5rem; }
+.source > p { color: var(--muted); font-size: .9rem; }
+.source article { border-top: 1px solid var(--line); padding-top: 1rem; margin-top: 1rem; }
+.source article > div { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.source article h3 { margin: 0 auto 0 0; font: 600 .9rem Arial, sans-serif; }
+.source pre { max-height: 28rem; overflow: auto; background: #172522; color: #eef4ef; padding: 1rem; font: .78rem/1.45 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre; }
+@media (max-width: 850px) { .layout { grid-template-columns: 1fr; } }

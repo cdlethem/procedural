@@ -118,6 +118,13 @@ const definitions = [
   ],
 ];
 const slugs = new Set(definitions.map((d) => d[0]));
+// Reviewed p5 completion includes editable native examples without studio adapters.
+// Keep their membership explicit so an unreviewed addition still fails generation.
+const nativeOnlySlugs = new Set([
+  "body-marks", "city-marks", "clip-marks", "contact-marks", "glyph-marks",
+  "image-field-marks", "landscape-marks", "layer-marks", "mask-marks",
+  "masked-partition-marks", "placement-image-marks", "pointer-marks", "relief-marks",
+]);
 const sources = sketchSources(root);
 const browserGuidePath = "apps/web/content/browser-guides.json";
 const browserGuides = existsSync(join(root, browserGuidePath))
@@ -143,7 +150,11 @@ const dirs = readdirSync(join(root, "packages/javascript/examples"), {
 })
   .filter((d) => d.isDirectory())
   .map((d) => d.name);
-if (dirs.length !== slugs.size || dirs.some((d) => !slugs.has(d)))
+if (
+  dirs.length !== slugs.size + nativeOnlySlugs.size ||
+  dirs.some((d) => !slugs.has(d) && !nativeOnlySlugs.has(d)) ||
+  [...slugs, ...nativeOnlySlugs].some((slug) => !dirs.includes(slug))
+)
   throw Error(
     "Workflow membership drift: review new/missing example before regenerating",
   );

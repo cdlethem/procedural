@@ -378,6 +378,14 @@ main {
   align-items: start;
   justify-content: center;
 }
+.prompt-studio .prompt-panel {
+  grid-column: 1 / -1;
+}
+.prompt-panel textarea {
+  box-sizing: border-box;
+  resize: vertical;
+  width: 100%;
+}
 .studio-panel {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -613,10 +621,15 @@ main {
 }
 @media (max-width: 600px) {
   .site-nav {
-    height: 60px;
-    padding-inline: 1rem;
+    height: auto;
+    min-height: 82px;
+    padding: 0.65rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
   }
-  .site-nav nav { gap: 0.65rem; }
+  .site-nav nav { gap: 0.65rem; flex-wrap: wrap; }
+  .site-nav nav a { white-space: nowrap; }
   .site-nav nav a { font-size: 0.67rem; letter-spacing: 0.065em; }
   .gallery-grid {
     grid-template-columns: 1fr;

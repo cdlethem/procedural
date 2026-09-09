@@ -23,7 +23,7 @@ app documents separate from the portable recipe grammar.
 | Target parity | Review/port accepted capabilities using the [port handoff](porting-resume.md) | Frozen semantics/fixtures, actual target-native evidence and root integration; no inherited support claims |
 | Recipe execution/export | Reconcile the [Java prototype](java-recipe-preview.md) and [execution direction](../design/recipes/execution-direction.md), then freeze a bounded catalog-backed composition slice | Explicit seed/canvas/time/assets/capabilities, type validation, round-trip serialization and installed exported replay for claimed targets |
 | Browser composition | Extend the four-technique studio with further supported bindings or explicit typed composition ports | Preserve working edits, catalog identities, keyboard controls, bounded rendering and honest export scope |
-| MCP and prompt planning | Implement discovery and validated composition tools over that same catalog/executor | No duplicate operation schema; protocol errors, cancellation/progress and bounded execution verified |
+| MCP and prompt planning | Follow the [harness proposal](prompt-studio-harness.md): workflow candidates, isolated p5 source, Processing Java profile and blind pilot | Shared catalog, bounded execution, editable layers, isolated benchmark and per-target evidence; MCP wraps the same handlers |
 | Evidence and recreation coverage | Reconcile new snapshot records and investigate concrete missing artist capabilities | Root-reviewed evidence changes; demonstrated recreation kept separate from projected coverage |
 
 Browser work need not wait for every p5 port: choose a dependency-complete supported slice.
@@ -39,8 +39,9 @@ satisfy the general portable recipe or four-target export objective.
 - Freeze the affected portable contract and fixtures before independent target work.
   New snapshots require hash-based reconciliation of affected decisions, not a blanket reset.
 - Use existing recipe-execution and catalog-synchronization skills before accepting persisted
-  recipes, executors, exporters or generated product surfaces. Create the prompt-evaluation
-  skill before natural-language planning or its first benchmark, as specified in AGENTS.
+  recipes, executors, exporters or generated product surfaces. Use the now-created
+  [prompt-evaluation skill](../skills/prompt-to-recipe-evaluation/SKILL.md) before
+  natural-language planning or its first benchmark.
 - Prompt evaluation must accept semantically equivalent recipes and separately score intent,
   provenance, execution, cross-target behavior, visual results and coverage. Recorded planner
   outputs test protocol behavior; live-model quality is a separate observation.

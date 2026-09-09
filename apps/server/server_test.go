@@ -128,6 +128,38 @@ func TestInvalidBodiesAndIDs(t *testing.T) {
 	}
 }
 
+func harnessDocument() string {
+	return `{"schemaVersion":2,"bindingVersion":"harness-v1","catalogSha256":"0000000000000000000000000000000000000000000000000000000000000000","width":640,"height":640,"background":"#ece7da","layers":[{"id":"source-layer","kind":"source","visible":true,"opacity":1,"content":{"language":"p5js","sourceArtifactHash":"1111111111111111111111111111111111111111111111111111111111111111","previewArtifactHash":null,"runnerProfile":"p5-static-640-v1","entrypoint":"sketch.js","background":"transparent","randomSeed":1,"noiseSeed":2,"tick":1,"controls":{"density":12}}}]}`
+}
+
+func harnessMixedDocument() string {
+	return `{"schemaVersion":2,"bindingVersion":"harness-v1","catalogSha256":"0000000000000000000000000000000000000000000000000000000000000000","width":640,"height":640,"background":"#ece7da","layers":[{"id":"source-layer","kind":"source","visible":true,"opacity":1,"content":{"language":"p5js","sourceArtifactHash":"1111111111111111111111111111111111111111111111111111111111111111","previewArtifactHash":null,"runnerProfile":"p5-static-640-v1","entrypoint":"sketch.js","background":"transparent","randomSeed":1,"noiseSeed":2,"tick":1,"controls":{"density":12}}},{"id":"workflow-layer","kind":"workflow","visible":true,"opacity":0.5,"content":{"technique":"field-marks","seed":3,"palette":[0,16777215],"cutEdits":[],"transform":{"x":320,"y":320,"scale":1,"rotation":0},"params":{"custom name":"any value","over-24-parameters-are-not-generic-controls":true}}}]}`
+}
+
+func TestHarnessV1StrictPersistence(t *testing.T) {
+	handler := testServer(t)
+	created := request(t, handler, http.MethodPost, "/api/projects", `{"title":"Prompt layer","document":`+harnessMixedDocument()+`}`)
+	if created.Code != http.StatusCreated {
+		t.Fatalf("create = %d: %s", created.Code, created.Body.String())
+	}
+	project := decodeProject(t, created)
+	loaded := request(t, handler, http.MethodGet, "/api/projects/"+project.ID, "")
+	if loaded.Code != http.StatusOK || string(decodeProject(t, loaded).Document) != harnessMixedDocument() {
+		t.Fatalf("load = %d: %s", loaded.Code, loaded.Body.String())
+	}
+	for _, document := range []string{
+		strings.Replace(harnessDocument(), `"entrypoint":"sketch.js"`, `"entrypoint":"../sketch.js"`, 1),
+		strings.Replace(harnessDocument(), `"tick":1`, `"tick":601`, 1),
+		strings.Replace(harnessDocument(), `"layers":[`, `"extra":true,"layers":[`, 1),
+		strings.Replace(harnessDocument(), `"controls":{"density":12}`, `"controls":{"Bad-key":12}`, 1),
+	} {
+		response := request(t, handler, http.MethodPost, "/api/projects", `{"title":"invalid","document":`+document+`}`)
+		if response.Code != http.StatusBadRequest {
+			t.Fatalf("invalid harness document = %d: %s", response.Code, response.Body.String())
+		}
+	}
+}
+
 func TestLimitsAndRoutes(t *testing.T) {
 	handler := testServer(t)
 	tooLarge := `{"title":"x","document":{"schemaVersion":1,"data":"` + strings.Repeat("x", maxRequestBytes) + `"}}`

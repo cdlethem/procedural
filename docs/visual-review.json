@@ -2,6 +2,30 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "prompt-web-integration",
+      "title": "Prompt layers and independent explorations",
+      "category": "Root reviewed web integration",
+      "description": "Production UI using actual generated p5 artifacts; completed model-run transport replay is disclosed in evidence.",
+      "evidence": "evidence/web/prompt-web-integration-review.json",
+      "images": [
+        {
+          "label": "Studio with generated layer; source collapsed",
+          "path": ".work/prompt-integration/studio.png",
+          "sha256": "374914f2403415dd778d141a3ca023c82eac10bd1ec8311ad9c2dad785e228ce"
+        },
+        {
+          "label": "Independent Explorations image and exact source",
+          "path": ".work/prompt-integration/explorations.png",
+          "sha256": "6633787c6670b21a697b0d1b820438774acdc9de3ce0bdbcf5321da7cbe36621"
+        },
+        {
+          "label": "Mobile Explorations retains result after failed next request",
+          "path": ".work/prompt-integration/explorations-mobile.png",
+          "sha256": "edce7610c1a0e0cce07b71ad5028857d701f2fe0ab12f9c9a33358273640d1e9"
+        }
+      ]
+    },
+    {
       "id": "p5-workflow-completion-integration",
       "title": "p5 workflow completion",
       "category": "Root reviewed scoped native integration",
@@ -27,6 +51,20 @@
           "label": "Contact baseline",
           "path": ".work/porting/checkout/.work/final-p5-workflows-5/contact/baseline.png",
           "sha256": "76c4e98959f29a6227008f5b7b673dabb436b5010cdb755a9eeef90b9c76c7e7"
+        }
+      ]
+    },
+    {
+      "id": "prompt-studio-p5",
+      "title": "Prompt-generated p5.js source layer",
+      "category": "Root reviewed app integration",
+      "description": "Scoped p5.js prompt run, isolated source raster composition and rerendered controls. No Processing Java, recipe or shared target acceptance claim.",
+      "evidence": "evidence/web/prompt-studio-p5-review.json",
+      "images": [
+        {
+          "label": "p5 prompt composition and source controls",
+          "path": ".work/harness-review/p5-prompt-studio.png",
+          "sha256": "99f1ba67932c63179985ce4b63ee7509dbc5ad3cc334d3f29c67feca1bacdf79"
         }
       ]
     },

@@ -14,7 +14,9 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
-    "test:browser": "python3 ../../tools/with_native_render_lock.py -- node scripts/test-browser.mjs"
+    "test:browser": "python3 ../../tools/with_native_render_lock.py -- node scripts/test-browser.mjs",
+    "mcp": "tsx scripts/mcp-server.ts",
+    "test:mcp": "tsx --test tests/mcp.test.ts"
   },
   "dependencies": {
     "next": "16.3.4",

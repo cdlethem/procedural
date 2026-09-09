@@ -1,0 +1,43 @@
+{
+  "kind": "root-prompt-studio-review",
+  "date": "2026-09-09",
+  "owner": "root",
+  "status": "accepted-scoped",
+  "scope": "Working p5.js prompt-to-studio path only; no Processing Java, blind benchmark, portable recipe, or shared target acceptance claim.",
+  "capabilities": {
+    "prompt": "A local OpenAI-compatible model uses the server-side typed tool boundary and returns an editable candidate.",
+    "source": "Generated p5.js runs through p5-static-640-v1 in a disposable browser on an isolated origin.",
+    "composition": "The studio composites the content-addressed straight-alpha preview over existing workflow layers.",
+    "controls": "Declared source controls create an edit candidate, rerender from fixed seeds, and apply as one undoable revision."
+  },
+  "validation": {
+    "typecheck": "npm --prefix apps/web run typecheck passed.",
+    "tests": "npm --prefix apps/web test passed 36 tests.",
+    "build": "npm --prefix apps/web run build compiled /harness and all harness routes.",
+    "runner": "python3 tools/harness/check_p5_layer_runner.py passed transparent/opaque alpha, pinned package import, runtime failure, timeout cleanup, network denial, and deterministic replay scenarios.",
+    "browser": [
+      "Generated a transparent navy-circle grid source layer from a natural-language add-layer request using the local Qwen model.",
+      "The run completed after 8 tool calls and 1 charged render; candidate cand-0024b2ff-9b26-4a21-87af-24de995e463a applied as layer-2.",
+      "The composed canvas showed the navy source raster above the original FieldMarks workflow without a browser error.",
+      "Changing density from 0.5 to 0.15 disabled controls while rendering, published a new preview, changed visible circle density, and retained radius 6.",
+      "Undo restored density 0.5 and the prior published revision."
+    ]
+  },
+  "runner_artifacts": {
+    "transparent_sha256": "d2c082b63a4a37f1900ca91d65861aad76888c148c0fbc9e4e6c305be0b16da3",
+    "opaque_sha256": "df6df6032c78baf3c782d2ac3dabc52de7ef710dc47ee3aa8827fe2c4fc15737",
+    "network_denied_sha256": "db64d84a7163ff15537b8714a42fb51e0bd1059855b966ca73b215fb1aa9184d",
+    "replay_sha256": "371946b5e5698b2b8b7473813642e683b84cdbe218af41e9f9a8a808f9e4f6b4"
+  },
+  "artifacts": [
+    {
+      "path": ".work/harness-review/p5-prompt-studio.png",
+      "sha256": "99f1ba67932c63179985ce4b63ee7509dbc5ad3cc334d3f29c67feca1bacdf79"
+    }
+  ],
+  "limits": [
+    "The reviewed web experience exposes p5.js only.",
+    "Model quality and latency depend on the configured local OpenAI-compatible endpoint.",
+    "Generated source remains an app artifact; it does not change catalog operation or target acceptance."
+  ]
+}

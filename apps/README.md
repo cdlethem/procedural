@@ -64,6 +64,33 @@ recommended artistic ranges. Studio documents use the `studio-v3` app binding, s
 from the portable recipe grammar. Imports from the exact `studio-v1` and `studio-v2` releases migrate
 their palettes and controls with empty manual-cut histories; other stale or invalid bindings are rejected.
 
+## Prompt studio and explorations
+
+**Studio** combines named workflows and generated p5.js layers in one undoable document
+history. A labelled candidate can temporarily replace the canvas for review while the
+committed document remains unchanged until it is applied. Generated-layer controls remain
+visible in the inspector; the collapsed **Generated source** disclosure is a read-only exact
+source viewer with copy and download actions. **Explorations** is a separate one-off prompt
+sketch playground: each prompt starts a fresh sketch, the last successful image/source stays
+visible while a request is pending or fails, and leaving the page discards its state. It does
+not change Studio state. Read the in-app guide at `/docs/prompt-studio`.
+
+The prompt service uses an OpenAI-compatible endpoint at `http://127.0.0.1:8080/v1` by
+default. Set `PROCEDURALS_MODEL_URL`, `PROCEDURALS_MODEL_NAME`, and
+`PROCEDURALS_MODEL_KEY` before starting Next. When the model occupies port 8080, start the
+app with `python3 tools/run_web_app.py --api-port 8088` so the Go project store uses a
+different port.
+
+Generated p5.js runs in the isolated 640px runner; the page composites only its
+content-addressed preview PNG. Applying a candidate or changing a declared control creates
+one undoable revision. Document JSON contains local artifact hashes, not generated source
+or preview PNG bytes; use a supported per-layer or studio-bundle export when available. A
+mixed composition has no supported single portable sketch export, and a preview PNG is not
+editable source. Save/load validation never executes generated source.
+
+This scoped surface does not claim Processing Java, portable recipe execution,
+blind-recreation acceptance or additional shared target support.
+
 ## Development and verification
 
 ```sh
@@ -96,5 +123,5 @@ then `npm --prefix apps/web run dev`. `PROCEDURALS_API_URL` is the API origin (d
 `http://127.0.0.1:8080`); Next proxies `/api/*`. Set it before either development startup
 or production build. The production server uses the build's rewrite configuration.
 
-See [architecture](../docs/web-app-architecture.md) for boundaries and the future prompt
-integration direction. Prompts/MCP and arbitrary operation graphs are not implemented.
+See [architecture](../docs/web-app-architecture.md) for app boundaries and
+[prompt harness design](../docs/prompt-studio-harness.md) for the wider staged direction.

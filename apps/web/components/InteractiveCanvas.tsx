@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import SketchCanvas from "./SketchCanvas";
 import { canReseed } from "./LayerControls";
 import { cutRegions, MAX_CUT_EDITS } from "@/lib/cut-model";
@@ -18,6 +18,7 @@ export function InteractiveCanvas({
   onError,
   showHistory = true,
   transformsEnabled = false,
+  renderOverride,
 }: {
   document: StudioDocument;
   layer?: Layer;
@@ -29,6 +30,12 @@ export function InteractiveCanvas({
   onError?: (message: string | null) => void;
   showHistory?: boolean;
   transformsEnabled?: boolean;
+  /**
+   * A host-specific canvas for documents that include non-workflow layers. The
+   * interaction model still receives the workflow projection above, while the
+   * override draws the complete document in its owning adapter.
+   */
+  renderOverride?: (document: StudioDocument) => ReactNode;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const drag = useRef<{
@@ -67,9 +74,7 @@ export function InteractiveCanvas({
   );
   const cancelDrag = () => {
     const activeDrag = drag.current;
-    if (
-      activeDrag?.target.hasPointerCapture(activeDrag.pointerId)
-    ) {
+    if (activeDrag?.target.hasPointerCapture(activeDrag.pointerId)) {
       activeDrag.target.releasePointerCapture(activeDrag.pointerId);
     }
     drag.current = null;
@@ -132,7 +137,11 @@ export function InteractiveCanvas({
     <div
       ref={host}
       className="interactive-canvas"
-      data-move-enabled={transformsEnabled && Boolean(layer?.visible && layer.opacity > 0) && mode === "move"}
+      data-move-enabled={
+        transformsEnabled &&
+        Boolean(layer?.visible && layer.opacity > 0) &&
+        mode === "move"
+      }
       data-dragging={Boolean(previewTransform)}
       tabIndex={0}
       aria-label="Interactive canvas"
@@ -259,7 +268,9 @@ export function InteractiveCanvas({
         }
       }}
     >
-      <SketchCanvas document={renderedDocument} onError={onError} />
+      {renderOverride?.(renderedDocument) ?? (
+        <SketchCanvas document={renderedDocument} onError={onError} />
+      )}
       {cutActive && (
         <svg
           className="cut-region-overlay"
@@ -297,9 +308,15 @@ export function InteractiveCanvas({
         </svg>
       )}
       <div className="canvas-actions">
-        {transformsEnabled && layer?.visible && layer.opacity > 0 && mode === "move" && (
-          <small>Drag the canvas to move the selected layer. Use Placement to resize or rotate it.</small>
-        )}
+        {transformsEnabled &&
+          layer?.visible &&
+          layer.opacity > 0 &&
+          mode === "move" && (
+            <small>
+              Drag the canvas to move the selected layer. Use Placement to
+              resize or rotate it.
+            </small>
+          )}
         {layer && canReseed(layer) && (
           <button className="action secondary" type="button" onClick={reseed}>
             New seed

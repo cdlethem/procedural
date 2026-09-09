@@ -2386,7 +2386,7 @@
         {
           "target": "p5js",
           "core": "conformant",
-          "native": "unvalidated",
+          "native": "validated-scoped",
           "technique": "unvalidated"
         },
         {
@@ -3640,8 +3640,8 @@
         },
         {
           "target": "p5js",
-          "core": "unvalidated",
-          "native": "unvalidated",
+          "core": "conformant",
+          "native": "validated-scoped",
           "technique": "unvalidated"
         },
         {

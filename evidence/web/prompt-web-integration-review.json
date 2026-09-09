@@ -1,0 +1,103 @@
+{
+  "kind": "root-web-prompt-integration-review",
+  "date": "2026-09-09",
+  "owner": "root",
+  "status": "accepted-scoped",
+  "scope": "Unified p5.js prompt layers in Studio, independent one-shot Explorations page, documentation and mixed-document project persistence.",
+  "supersedes_scope": "evidence/web/prompt-studio-p5-review.json remains the historical isolated harness delivery; this record accepts its web integration successor.",
+  "architecture": "docs/prompt-web-integration-plan.md",
+  "validation": {
+    "web_tests": "38/38 passed",
+    "typecheck": "passed",
+    "go": "Docker golang:1.22 go test -buildvcs=false ./... passed; mixed workflow/source roundtrip and malformed inputs",
+    "build": "Production build passed in .work/web-prompt-release; /harness suspense boundary corrected. Existing jobs.ts dynamic filesystem tracing warning remains.",
+    "existing_browser": [
+      "--interactions-only passed under shared lease",
+      "--transforms-only passed under shared lease"
+    ],
+    "prompt_browser": {
+      "environment": "Both development and final production 127.0.0.1:3002, Chromium under shared machine lease",
+      "scenarios": [
+        "Unapplied transparent source preview changes pixels without changing saved document",
+        "Explicit application preserves original workflow and creates one history edit",
+        "Collapsed source disclosure reveals exact generating file",
+        "Undo restores original image; redo restores mixed document",
+        "Local recovery and named Go project reload preserve mixed document",
+        "Manual background edit during generation creates stale candidate; rebase/apply preserves new background; undo restores it",
+        "Explorations displays exact source bytes and real rendered image",
+        "A subsequent failed request preserves prior image/source pair and leaves Studio storage unchanged",
+        "Mobile page fits 390px viewport; guide loads"
+      ],
+      "evidence_limit": "The two real local-model runs and renderer jobs were exercised separately from browser UI. Browser tests replayed only completed run transport responses to avoid holding the machine render lease while server jobs need it; context/candidate validation/apply, artifact loading, Go persistence and browser drawing were live. This is not an uninterrupted browser-to-model end-to-end claim."
+    },
+    "source_control": "Real source density change 0.5 to 0.15 rerendered and applied through the production release service; root inspected denser and sparser rasters. No new control-UI end-to-end claim."
+  },
+  "model_runs": [
+    {
+      "scenario": "studio",
+      "run_id": "run-b4075120-f563-4236-b1fe-175ea7f01201",
+      "candidate_id": "cand-55e881fe-5965-422d-8304-109eef9c7e5f",
+      "model": "/home/colin/models/Qwen3.8-27B-Q8_0.gguf",
+      "tool_calls": 7,
+      "renders": 1,
+      "prompt": "Add one transparent p5.js source layer of a regular grid of small navy circles. Expose a numeric density control from 0.1 to 1, default 0.5, and a radius control default 6. Preserve every existing layer and the canvas background. Use simple p5 drawing."
+    },
+    {
+      "scenario": "explorations",
+      "run_id": "run-529256b1-946e-4db3-95d4-35c9c941dbf4",
+      "candidate_id": "cand-50498e27-998a-4710-a874-d2676a891de2",
+      "model": "/home/colin/models/Qwen3.8-27B-Q8_0.gguf",
+      "tool_calls": 6,
+      "renders": 1,
+      "prompt": "Create a single p5.js source sketch: a large coral disk centered on a warm cream canvas, with twelve thin navy concentric circles centered on it. Use simple p5 drawing and expose diskRadius default 150. Return a generated source artifact so I can see the exact code."
+    }
+  ],
+  "deployment": {
+    "url": "https://eunoia.tailf03dad.ts.net:8443/",
+    "checkout": ".work/web-prompt-release",
+    "frontend": "procedurals-web.service on 127.0.0.1:3002",
+    "api": "procedurals-api.service on 127.0.0.1:8088",
+    "projects": ".work/web-projects",
+    "artifacts": ".work/web-prompt-release/.work/harness",
+    "artifact_preservation": "Copied original harness store into release-owned real directory; symlink rejected by runner confinement, corrected before switch. Original store preserved.",
+    "http_checks": [
+      "/studio",
+      "/explorations",
+      "/docs/prompt-studio",
+      "/harness",
+      "/api/projects"
+    ],
+    "previous_release": ".work/web-ui-release preserved"
+  },
+  "images": [
+    {
+      "label": "Studio with generated layer; source collapsed",
+      "path": ".work/prompt-integration/studio.png",
+      "sha256": "374914f2403415dd778d141a3ca023c82eac10bd1ec8311ad9c2dad785e228ce"
+    },
+    {
+      "label": "Independent Explorations image and exact source",
+      "path": ".work/prompt-integration/explorations.png",
+      "sha256": "6633787c6670b21a697b0d1b820438774acdc9de3ce0bdbcf5321da7cbe36621"
+    },
+    {
+      "label": "Mobile Explorations retains result after failed next request",
+      "path": ".work/prompt-integration/explorations-mobile.png",
+      "sha256": "edce7610c1a0e0cce07b71ad5028857d701f2fe0ab12f9c9a33358273640d1e9"
+    }
+  ],
+  "implementation_sha256": {
+    "apps/web/components/Studio.tsx": "5c19b5c8071b060a26ef9d88e60cbcae95e1487847a1d741fcde5bdb14722a09",
+    "apps/web/components/Explorations.tsx": "0bc6f59425d255b5e9787fc83623272972edd75d86b4374c3da828113293b4d8",
+    "apps/web/components/HarnessCanvas.tsx": "d4d9b49af7762cfc821b6d6252e6ba06b7010728fab7e6d7ece0a1fb701fae3a",
+    "apps/web/components/SourceArtifactPanel.tsx": "44a5f87e2802a09c63ffb61a61aac9c85249a9214be623f82ba0d74299d33fcb",
+    "apps/server/server.go": "553bb3ddd69f7a3f247218659299c1ae4de5fdfe85a1b47ad19220927b52b97d"
+  },
+  "limits": [
+    "p5.js static 640px sketches only; no new target or portable recipe support",
+    "Source viewer supports copy/download, not direct code editing",
+    "Explorations does not transfer results into Studio and is not persisted across page exits",
+    "JSON contains service-local artifact references; it does not bundle source files or preview images",
+    "Generated source placement remains its declared canvas; workflow affine controls are preserved"
+  ]
+}

@@ -22,8 +22,12 @@ go -C apps/server build -o ../../.work/procedural-studio-api .
 The API is intended to sit behind the same-origin web-app proxy. It deliberately sends no
 permissive CORS headers.
 
-`document` is opaque JSON studio data, but must be a JSON object with `"schemaVersion": 1`.
-Request bodies are limited to 1 MB and the store holds up to 200 projects.
+`document` is opaque JSON studio data. Existing `studio-v1`, `studio-v2`, and `studio-v3`
+documents retain their schemaVersion 1 compatibility path. The current `harness-v1`
+envelope uses schemaVersion 2 and receives strict structural validation (including layer,
+artifact-hash, seed, control, cut, and placement shape) before it is saved. The service does
+not resolve artifact hashes or execute source while saving or loading. Request bodies are
+limited to 1 MB and the store holds up to 200 projects.
 
 ```sh
 cd apps/server && go test ./...

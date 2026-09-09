@@ -115,6 +115,13 @@ const doc = () =>
     if (!key) throw new Error("studio local document is missing");
     return JSON.parse(localStorage.getItem(key));
   });
+/** Keeps export comparisons on the raw persisted envelope while making workflow assertions
+ * work for both legacy layers and harness-v1 `{ kind, content }` workflow layers. */
+const workflow = (document, index = 0) => {
+  const layer = document.layers[index];
+  if (layer?.kind === "workflow") return { ...layer, ...layer.content };
+  return layer;
+};
 async function focusedCanvas() {
   const target = page.locator(".interactive-canvas").first();
   await target.focus();
@@ -225,8 +232,8 @@ async function interactionChecks() {
   await edit(() => focusedCanvas().then(() => page.keyboard.press("r")));
   const reseeded = await doc();
   assert.notEqual(
-    reseeded.layers[0].seed,
-    JSON.parse(initialDocument).layers[0].seed,
+    workflow(reseeded).seed,
+    workflow(JSON.parse(initialDocument)).seed,
     "focused R reseeds a seeded selected layer",
   );
   assert.notEqual(
@@ -270,7 +277,7 @@ async function interactionChecks() {
   const baseline = await pixels();
   await edit(() => focusedCanvas().then(() => page.keyboard.press("x")));
   assert.ok(
-    (await doc()).layers[0].cutEdits?.length > 0,
+    workflow(await doc()).cutEdits?.length > 0,
     "Cut X persists a selected-region edit",
   );
   assert.notEqual(await pixels(), baseline, "Cut X changes geometry pixels");
@@ -278,7 +285,7 @@ async function interactionChecks() {
   await edit(() => focusedCanvas().then(() => page.keyboard.press("y")));
   const cutPixels = await pixels();
   assert.ok(
-    (await doc()).layers[0].cutEdits?.length > 1,
+    workflow(await doc()).cutEdits?.length > 1,
     "Cut Y persists a second edit",
   );
   await selectLiveCutRegion();
@@ -311,7 +318,7 @@ async function interactionChecks() {
   await edit(() =>
     page.getByRole("button", { name: "Redo", exact: true }).click(),
   );
-  const beforePalette = JSON.stringify((await doc()).layers[0].cutEdits);
+  const beforePalette = JSON.stringify(workflow(await doc()).cutEdits);
   await selectInspectorTab("Style");
   await edit(() =>
     setReactInput(
@@ -320,14 +327,14 @@ async function interactionChecks() {
     ),
   );
   assert.equal(
-    JSON.stringify((await doc()).layers[0].cutEdits),
+    JSON.stringify(workflow(await doc()).cutEdits),
     beforePalette,
     "palette edits preserve cut history",
   );
   const editsPixels = await pixels();
   await edit(() => focusedCanvas().then(() => page.keyboard.press("r")));
   assert.deepEqual(
-    (await doc()).layers[0].cutEdits,
+    workflow(await doc()).cutEdits,
     [],
     "R clears selected CutMarks edits",
   );
@@ -339,13 +346,13 @@ async function interactionChecks() {
     editsPixels,
     "undo restores reseed-cleared edits exactly",
   );
-  const editsBeforeNumericSeed = JSON.stringify((await doc()).layers[0].cutEdits);
+  const editsBeforeNumericSeed = JSON.stringify(workflow(await doc()).cutEdits);
   await selectInspectorTab("Technique");
   await edit(() =>
     setReactInput(page.getByLabel("Seed", { exact: true }), "17"),
   );
   assert.deepEqual(
-    (await doc()).layers[0].cutEdits,
+    workflow(await doc()).cutEdits,
     [],
     "numeric seed change clears CutMarks edits",
   );
@@ -353,7 +360,7 @@ async function interactionChecks() {
     focusedCanvas().then(() => page.keyboard.press("Control+z")),
   );
   assert.equal(
-    JSON.stringify((await doc()).layers[0].cutEdits),
+    JSON.stringify(workflow(await doc()).cutEdits),
     editsBeforeNumericSeed,
     "Ctrl Z restores numeric-seed-cleared edits",
   );
@@ -411,7 +418,7 @@ async function interactionChecks() {
   );
   assert.deepEqual(await doc(), recoveredDocument, "empty-canvas Ctrl Z restores removed layer");
   assert.equal(await pixels(), recoveredPixels, "empty-canvas Ctrl Z restores exact pixels");
-  assert.ok(removedDocument.layers[0].cutEdits?.length > 0);
+  assert.ok(workflow(removedDocument).cutEdits?.length > 0);
   scenarios.push(
     "focused reseed boundaries and CutMarks edit/undo/export/storage interactions",
   );
@@ -441,7 +448,7 @@ async function transformChecks() {
     const before = await pixels();
     await setTransform(label, value);
     assert.equal(
-      (await doc()).layers[0].transform[key],
+      workflow(await doc()).transform[key],
       value,
       `${label} is stored exactly`,
     );
@@ -452,7 +459,7 @@ async function transformChecks() {
   await edit(() =>
     page.getByRole("button", { name: "Reset placement", exact: true }).click(),
   );
-  assert.deepEqual((await doc()).layers[0].transform, {
+  assert.deepEqual(workflow(await doc()).transform, {
     x: 320,
     y: 320,
     scale: 1,
@@ -483,14 +490,14 @@ async function transformChecks() {
     { timeout: 30000 },
   );
   assert.notDeepEqual(
-    (await doc()).layers[0].transform,
-    beforeDrag.layers[0].transform,
+    workflow(await doc()).transform,
+    workflow(beforeDrag).transform,
     "one drag commits one changed center",
   );
   await edit(() => page.getByRole("button", { name: "Undo", exact: true }).click());
   assert.deepEqual(
-    (await doc()).layers[0].transform,
-    beforeDrag.layers[0].transform,
+    workflow(await doc()).transform,
+    workflow(beforeDrag).transform,
     "one undo restores the drag center",
   );
   assert.equal(await pixels(), beforeDragPixels, "one undo restores drag pixels");
@@ -523,7 +530,7 @@ async function transformChecks() {
   await selectLiveCutRegion();
   const cutBaseline = await pixels();
   await edit(() => focusedCanvas().then(() => page.keyboard.press("x")));
-  assert.equal((await doc()).layers[0].cutEdits.length, 1, "transformed region accepts X cut");
+  assert.equal(workflow(await doc()).cutEdits.length, 1, "transformed region accepts X cut");
   assert.notEqual(await pixels(), cutBaseline, "transformed X cut changes pixels");
   const cutDocument = await doc();
   const cutPixels = await pixels();
@@ -544,7 +551,7 @@ async function transformChecks() {
     await setTransform("Position X", 430);
     assert.notEqual(await pixels(), before, `${id} transform changes compositor pixels`);
   }
-  assert.notDeepEqual(transformed.layers[0].transform, beforeDrag.layers[0].transform);
+  assert.notDeepEqual(workflow(transformed).transform, workflow(beforeDrag).transform);
   scenarios.push(
     "layer transform controls, live drag/undo, transformed CutMarks, persistence, WebGL and raster compositing",
   );
@@ -717,7 +724,7 @@ try {
           el.dispatchEvent(new Event("change", { bubbles: true }));
         }),
       );
-      assert.equal((await doc()).layers[0].opacity, 0.5);
+      assert.equal(workflow(await doc()).opacity, 0.5);
       const background = (await doc()).background;
       const alphaError = await page
         .locator(".canvas-wrap canvas")
@@ -802,8 +809,8 @@ try {
           .getByRole("button", { name: "Hide field-marks", exact: true })
           .click(),
       );
-      assert.equal((await doc()).layers[0].visible, false);
-      assert.equal((await doc()).layers[1].visible, true);
+      assert.equal(workflow(await doc()).visible, false);
+      assert.equal(workflow(await doc(), 1).visible, true);
       await edit(() =>
         page.getByRole("button", { name: "Duplicate", exact: true }).click(),
       );
