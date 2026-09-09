@@ -1,8 +1,8 @@
 {
   "status": "passed",
-  "scope": "p5.js 2.3.2 Chromium check of the thirteen post-backlog editable workflows; no Java pixel-parity or corpus-technique claim.",
+  "scope": "p5.js 2.3.2 Chromium check of thirteen post-backlog workflows plus current PathMarks and PlacementMarks source bindings; no Java pixel-parity or corpus-technique claim.",
   "input_sha256_before": {
-    "tools/run_p5_workflow_completion.mjs": "3baf006998157118baaec231be695bb63b09600512822775990d42e8f0a90814",
+    "tools/run_p5_workflow_completion.mjs": "e9c8ab73c2ca5bcd9fa3e81c23e1a79aa8ad16f17637a7eeb52e29465f4ce491",
     ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
     ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
     "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
@@ -43,6 +43,14 @@
     "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
     "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
     "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/examples/path-marks/README.md": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291",
+    "packages/javascript/examples/path-marks/index.html": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f",
+    "packages/javascript/examples/path-marks/path-marks.js": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743",
+    "packages/javascript/examples/path-marks/sketch.js": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473",
+    "packages/javascript/examples/placement-marks/README.md": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1",
+    "packages/javascript/examples/placement-marks/index.html": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318",
+    "packages/javascript/examples/placement-marks/placement-marks.js": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382",
+    "packages/javascript/examples/placement-marks/sketch.js": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c",
     "packages/javascript/examples/body-marks/README.md": "6f59c2334469cb0494fe7c5c2a0e1632403938a506aaea460f86d38e7ae46599",
     "packages/javascript/examples/body-marks/body-marks.js": "4f2befcd17695d72d33440f4f2c3b1bdcb0a40d2361b21a254de4bb5e7c79315",
     "packages/javascript/examples/body-marks/index.html": "f3d0b605955ad4d8a136a84322274bd9aab538e4072434b283cdd6890d0e1e8f",
@@ -112,6 +120,100 @@
     "tools/serve_relief_marks.mjs": "4789debe3a476919bd2eba3a18b4480eb145a552f3e6c00e729e03b72f469114"
   },
   "workflows": [
+    {
+      "name": "path",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "c361d46a1fb3c365ba76f54d55a292c8c38aa921f1e5ded9cceeafd6579d0cd5"
+        },
+        {
+          "label": "edit-0-m",
+          "sha256": "c6790383cef31b92a829c70ccd649a39ad4e23d79ff557e29b4acc90b69c9380"
+        },
+        {
+          "label": "edit-1-l",
+          "sha256": "c6790383cef31b92a829c70ccd649a39ad4e23d79ff557e29b4acc90b69c9380"
+        },
+        {
+          "label": "edit-2-c",
+          "sha256": "75f874bb52e78af07fac1834ce178fcac65e05974e4eabe1e222b885207ab20c"
+        },
+        {
+          "label": "edit-3-n",
+          "sha256": "4545a0d91e898172ec6e3f77b385d77cdf745edd4d20e8d22375ed94e2ae93dc"
+        },
+        {
+          "label": "edit-4-d",
+          "sha256": "56f0027b8728f0c016b2452692480365cb82a9964733ca7207888692e9ecd98f"
+        },
+        {
+          "label": "reload",
+          "sha256": "c361d46a1fb3c365ba76f54d55a292c8c38aa921f1e5ded9cceeafd6579d0cd5"
+        },
+        {
+          "label": "button",
+          "sha256": "c6790383cef31b92a829c70ccd649a39ad4e23d79ff557e29b4acc90b69c9380"
+        }
+      ],
+      "reset": "fresh-load exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "placement",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "6978a23f8620f7148d5d1b7936916e99be3e1e1a3980d79eeb68333312ce984a"
+        },
+        {
+          "label": "edit-0-r",
+          "sha256": "9ad97d664511a38bf724d4abcd3c4c9756266ffe9279c26e13f8514d1762084f"
+        },
+        {
+          "label": "edit-1-n",
+          "sha256": "15637ac21edad8893a609252afe04a005386cbe02a0af2db693218c48c836961"
+        },
+        {
+          "label": "edit-2-g",
+          "sha256": "add86c6cbb2e632e66b51bc48160e0e69da16b01a3ecae7d046c1498b574a311"
+        },
+        {
+          "label": "edit-3-i",
+          "sha256": "b2654a48fae3ce0257276129ecccd73961b2ee2cc9a6cfd97f17146407578947"
+        },
+        {
+          "label": "edit-4-o",
+          "sha256": "0598fe91bb80f7f07c932d96925c31543afca53300d8dd15ff9e1cdc4e85b787"
+        },
+        {
+          "label": "edit-5-x",
+          "sha256": "a8b6b287f9f785de077a5fffd9aa28616ef57403a82b80a42ce4d04f30e8b6ef"
+        },
+        {
+          "label": "edit-6-m",
+          "sha256": "964c919e2791997616eb3a0b66bec220b4b2d4536c630524405ed5732d8851f4"
+        },
+        {
+          "label": "edit-7-c",
+          "sha256": "450e6b4c2360f8ac8ce2175372e37b5648783352d9f81e25b95547fa00256ee3"
+        },
+        {
+          "label": "reload",
+          "sha256": "6978a23f8620f7148d5d1b7936916e99be3e1e1a3980d79eeb68333312ce984a"
+        },
+        {
+          "label": "button",
+          "sha256": "9ad97d664511a38bf724d4abcd3c4c9756266ffe9279c26e13f8514d1762084f"
+        }
+      ],
+      "reset": "fresh-load exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
     {
       "name": "body",
       "status": "passed",
@@ -560,7 +662,7 @@
   ],
   "browser": "153.0.8010.12",
   "input_sha256_after": {
-    "tools/run_p5_workflow_completion.mjs": "3baf006998157118baaec231be695bb63b09600512822775990d42e8f0a90814",
+    "tools/run_p5_workflow_completion.mjs": "e9c8ab73c2ca5bcd9fa3e81c23e1a79aa8ad16f17637a7eeb52e29465f4ce491",
     ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
     ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
     "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
@@ -601,6 +703,14 @@
     "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
     "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
     "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/examples/path-marks/README.md": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291",
+    "packages/javascript/examples/path-marks/index.html": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f",
+    "packages/javascript/examples/path-marks/path-marks.js": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743",
+    "packages/javascript/examples/path-marks/sketch.js": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473",
+    "packages/javascript/examples/placement-marks/README.md": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1",
+    "packages/javascript/examples/placement-marks/index.html": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318",
+    "packages/javascript/examples/placement-marks/placement-marks.js": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382",
+    "packages/javascript/examples/placement-marks/sketch.js": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c",
     "packages/javascript/examples/body-marks/README.md": "6f59c2334469cb0494fe7c5c2a0e1632403938a506aaea460f86d38e7ae46599",
     "packages/javascript/examples/body-marks/body-marks.js": "4f2befcd17695d72d33440f4f2c3b1bdcb0a40d2361b21a254de4bb5e7c79315",
     "packages/javascript/examples/body-marks/index.html": "f3d0b605955ad4d8a136a84322274bd9aab538e4072434b283cdd6890d0e1e8f",

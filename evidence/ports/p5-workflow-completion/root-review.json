@@ -2,9 +2,9 @@
   "status": "accepted",
   "owner": "root",
   "reviewer": "root",
-  "scope": "p5.js completion review for thirteen post-backlog editable workflows and reconciliation of the existing radial-profile target evidence. This accepts scoped core/native support only; it does not claim Java pixel identity, corpus recreation beyond separately accepted work, or other-target support.",
+  "scope": "p5.js completion review for thirteen post-backlog editable workflows, refreshed PathMarks and PlacementMarks browser bindings, and reconciliation of the existing radial-profile target evidence. This accepts scoped core/native support only; it does not claim Java pixel identity, corpus recreation beyond separately accepted work, or other-target support.",
   "implementation_sha256": {
-    "tools/run_p5_workflow_completion.mjs": "3baf006998157118baaec231be695bb63b09600512822775990d42e8f0a90814",
+    "tools/run_p5_workflow_completion.mjs": "e9c8ab73c2ca5bcd9fa3e81c23e1a79aa8ad16f17637a7eeb52e29465f4ce491",
     "packages/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
     "packages/javascript/examples/contact-marks/contact-marks.js": "e91cbc60c23eca6e22182b63a69cc347c99ae5efd4277cfc55c1fc44aba96763",
     "packages/javascript/examples/contact-marks/sketch.js": "1b5ed883e5ae839d551332973dccb804976f74c595db44d78aa35ac800943777",
@@ -13,7 +13,7 @@
     "packages/javascript/examples/profile-marks/sketch.js": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c"
   },
   "evidence_sha256": {
-    "evidence/ports/p5-workflow-completion/native.json": "b7de00b0f5aef2497c8efaa86fe5f97f78ae6e771ae2d5c2b0a6afa600fc9fcd",
+    "evidence/ports/p5-workflow-completion/native.json": "8359488fc84e3b3edada767438db5e6075b00bd0e8a19c278d77a273e56c9a89",
     "evidence/conformance/radial-profile-javascript.json": "ec55cc08e1cadc7a414e55e705ea008fc81a56380e25970f767667bbb0ac09e5",
     "evidence/conformance/radial-profile-javascript-root-review.json": "4fc7de8cf59c9fc434b052babf8a2af159a49eda179a554623026284fda944c1",
     "evidence/conformance/p5js-profile-marks.json": "ca430bbed379ae08748d978e35bdf35316f80a6a6b391ed13c9cc44185dfd12b",
@@ -22,7 +22,7 @@
   },
   "root_findings": [
     "The Java Processing example inventory and p5 entry-point inventory are exactly 37 each. Every mapped p5 workflow has index.html, sketch.js, one composition module, a README, and either a dedicated server or its established legacy p5 runner; every sketch parses under Node.",
-    "The new Chromium runner passed all thirteen workflows: Body, City, Clip, Contact, Glyph, ImageField, Landscape, Layer, Mask, MaskedPartition, PlacementImage, Pointer and Relief. It waits for each canvas revision, exercises declared keyboard paths and a button path, checks exact reset or fresh-load identity, downloads the save, confirms that saving neither redraws nor changes canvas pixels, records no page errors, and binds every input hash before and after execution.",
+    "The Chromium runner passed fifteen current workflows: Path, Placement, Body, City, Clip, Contact, Glyph, ImageField, Landscape, Layer, Mask, MaskedPartition, PlacementImage, Pointer and Relief. It waits for each canvas revision, exercises declared keyboard paths and a button path, checks exact reset or fresh-load identity, downloads the save, confirms that saving neither redraws nor changes canvas pixels, records no page errors, and binds every input hash before and after execution.",
     "Direct visual review covered City, Contact, Glyph and Relief output. The city contains the intended faceted building composition; contact shows obstacle contacts and radiating segments; glyph uses its verified explicit font; relief has visible planar facets and spikes rather than a uniform WEBGL plane.",
     "RadialProfile3D and ProfileMarks already have accepted JavaScript core, native WEBGL and package reviews. Fresh current-source core and ten-state native runs passed again, including retained geometry, alternate form/cap settings, save identity and reset identity. Their source and evidence hashes remain exactly bound.",
     "All 31 public JavaScript operation exports are present, all 39 current core runners pass (the protected circle result remains bound to unchanged inputs), all 30 workflow-model runners pass, and a fresh installed local package consumer imports the public index."

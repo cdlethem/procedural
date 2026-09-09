@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 /**
- * Bounded native check for the thirteen Java workflows added after the reviewed p5 backlog.
- * Run only through tools/with_native_render_lock.py with a fresh directory under .work.
+ * Bounded native check for thirteen post-backlog workflows plus refreshed PathMarks and
+ * PlacementMarks source bindings. Run only through tools/with_native_render_lock.py with
+ * a fresh directory under .work.
  */
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import fs from "node:fs/promises";
+import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -19,6 +21,8 @@ await fs.mkdir(output);
 
 const runtime = path.join(root, ".work/environments/p5js");
 const workflows = [
+  ["path", ["m", "l", "c", "n", "d"], true],
+  ["placement", ["r", "n", "g", "i", "o", "x", "m", "c"], true],
   ["body", [".", "m", "w"]],
   ["city", ["c", "h", "r"]],
   ["clip", ["h", "n", "t", "c", "m", "o"]],
@@ -38,6 +42,38 @@ async function directFiles(directory) {
   return (await fs.readdir(directory, { withFileTypes: true })).flatMap(entry => entry.isFile() ? [path.join(directory, entry.name)] : []);
 }
 
+async function startLegacyServer(name) {
+  const allowed = new RegExp(`^/packages/javascript/(src/(?:internal/)?[a-z0-9-]+\\.js|examples/${name}-marks/(?:index\\.html|sketch\\.js|${name}-marks\\.js))$`);
+  const server = http.createServer(async (request, response) => {
+    try {
+      const pathname = new URL(request.url, "http://localhost").pathname;
+      if (pathname === "/") {
+        response.writeHead(302, { Location: `/packages/javascript/examples/${name}-marks/index.html` });
+        response.end();
+        return;
+      }
+      const relative = pathname === "/p5.js"
+        ? ".work/environments/p5js/node_modules/p5/lib/p5.min.js"
+        : allowed.test(pathname) ? pathname.slice(1) : null;
+      if (!relative) {
+        response.writeHead(404);
+        response.end();
+        return;
+      }
+      response.setHeader("Content-Type", relative.endsWith(".html") ? "text/html; charset=utf-8" : "text/javascript; charset=utf-8");
+      response.end(await fs.readFile(path.join(root, relative)));
+    } catch {
+      response.writeHead(500);
+      response.end("Example file unavailable");
+    }
+  });
+  await new Promise((resolve, reject) => {
+    server.once("error", reject);
+    server.listen(0, "127.0.0.1", resolve);
+  });
+  return server;
+}
+
 const inputs = [
   fileURLToPath(import.meta.url),
   path.join(runtime, "package-lock.json"),
@@ -45,11 +81,9 @@ const inputs = [
   ...await directFiles(path.join(root, "packages/javascript/src")),
   ...await directFiles(path.join(root, "packages/javascript/src/internal")),
 ];
-for (const [name] of workflows) {
-  inputs.push(
-    ...await directFiles(path.join(root, `packages/javascript/examples/${name}-marks`)),
-    path.join(root, `tools/serve_${name.replaceAll("-", "_")}_marks.mjs`),
-  );
+for (const [name, , legacy] of workflows) {
+  inputs.push(...await directFiles(path.join(root, `packages/javascript/examples/${name}-marks`)));
+  if (!legacy) inputs.push(path.join(root, `tools/serve_${name.replaceAll("-", "_")}_marks.mjs`));
   const assets = path.join(root, `packages/javascript/examples/${name}-marks/assets`);
   try { inputs.push(...await directFiles(assets)); } catch (error) { if (error.code !== "ENOENT") throw error; }
 }
@@ -57,7 +91,7 @@ const digest = bytes => createHash("sha256").update(bytes).digest("hex");
 const hashes = async () => Object.fromEntries(await Promise.all(inputs.map(async file => [path.relative(root, file), digest(await fs.readFile(file))])));
 const report = {
   status: "failed",
-  scope: "p5.js 2.3.2 Chromium check of the thirteen post-backlog editable workflows; no Java pixel-parity or corpus-technique claim.",
+  scope: "p5.js 2.3.2 Chromium check of thirteen post-backlog workflows plus current PathMarks and PlacementMarks source bindings; no Java pixel-parity or corpus-technique claim.",
   input_sha256_before: await hashes(),
   workflows: [],
 };
@@ -69,9 +103,10 @@ let browser;
 try {
   browser = await chromium.launch({ headless: true, args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--disable-accelerated-2d-canvas"] });
   report.browser = browser.version();
-  for (const [name, keys] of workflows) {
-    const serverModule = await import(`./serve_${name.replaceAll("-", "_")}_marks.mjs`);
-    const server = await Object.values(serverModule)[0](0);
+  for (const [name, keys, legacy] of workflows) {
+    const server = legacy
+      ? await startLegacyServer(name)
+      : await Object.values(await import(`./serve_${name.replaceAll("-", "_")}_marks.mjs`))[0](0);
     const page = await browser.newPage({ acceptDownloads: true, viewport: { width: 900, height: 1000 } });
     const errors = [];
     page.on("pageerror", error => errors.push(String(error)));
