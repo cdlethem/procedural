@@ -7,3 +7,11 @@ export { seededQuadrantPartition2D, PartitionError } from "./quadrant-partition.
 export { seededTrianglePoints2D, mapTriangleCoordinates2D, TrianglePointsError } from "./triangle-points.js";
 export { seededEndpointBranches2D, BranchTreeError } from "./branch-tree.js";
 export { RadialProfile3D, RadialProfileError } from "./radial-profile.js";
+export { stopRamp, StopRampError } from "./stop-ramp.js";
+export { bilinearRasterRemap2D, RasterRemapError } from "./raster-remap.js";
+export { targetSprings2D, SpringError } from "./target-springs.js";
+export { occupiedLatticePaths2D, LatticeError } from "./occupied-lattice-paths.js";
+export { delaunay2D, DelaunayError } from "./delaunay.js";
+export { closedSpline2D, SplineError } from "./closed-spline.js";
+export { noiseBandPath2D, NoiseBandPathError } from "./noise-band-path.js";
+export { seededLinePool2D, LinePoolError } from "./line-pool.js";

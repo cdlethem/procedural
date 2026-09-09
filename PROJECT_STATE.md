@@ -1,5 +1,15 @@
 # Project state
 
+## p5 feature-branch integration complete
+
+All eight JavaScript cores and five workflows from47ec5b2b are reviewed and integrated.
+Root exports added through exact additive successor, preserving historical attestations.
+Offline local npm tarball installation matches source inventory; installed exports pass
+eight representative shared fixtures and identity checks. Package acceptance is in
+evidence/ports/javascript-package/root-review.json. Catalog and export-chain checks pass.
+No Python/Android or new technique/animation claims; Android draft preserved.
+
+
 ## Final two JavaScript cores and browser workflows reviewed
 
 Root accepts noise-band paths/BandMarks and line pools/CutBranchMarks after shared

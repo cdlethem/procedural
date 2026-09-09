@@ -138,6 +138,43 @@ def _validate_retained_output_correction(root, snapshots):
     return True
 
 
+JS_PORTS = 'evidence/conformance/javascript-core-export-compatibility-review.json'
+JS_INDEX = 'packages/javascript/src/index.js'
+JS_PORT_ADDITIONS = 'export { stopRamp, StopRampError } from "./stop-ramp.js";\nexport { bilinearRasterRemap2D, RasterRemapError } from "./raster-remap.js";\nexport { targetSprings2D, SpringError } from "./target-springs.js";\nexport { occupiedLatticePaths2D, LatticeError } from "./occupied-lattice-paths.js";\nexport { delaunay2D, DelaunayError } from "./delaunay.js";\nexport { closedSpline2D, SplineError } from "./closed-spline.js";\nexport { noiseBandPath2D, NoiseBandPathError } from "./noise-band-path.js";\nexport { seededLinePool2D, LinePoolError } from "./line-pool.js";\n'
+JS_PORT_MODULES = ('packages/javascript/src/stop-ramp.js', 'packages/javascript/src/raster-remap.js', 'packages/javascript/src/target-springs.js', 'packages/javascript/src/occupied-lattice-paths.js', 'packages/javascript/src/delaunay.js', 'packages/javascript/src/closed-spline.js', 'packages/javascript/src/noise-band-path.js', 'packages/javascript/src/line-pool.js')
+JS_PORT_REVIEWS = ('evidence/ports/stop-ramp-p5/root-review.json', 'evidence/ports/raster-remap-p5/root-review.json', 'evidence/ports/target-springs-p5/root-review.json', 'evidence/ports/occupied-lattice-p5/root-review.json', 'evidence/ports/delaunay-p5/root-review.json', 'evidence/ports/closed-spline-p5/root-review.json', 'evidence/ports/noise-band-path-p5/root-review.json', 'evidence/ports/line-pool-p5/root-review.json')
+
+
+def _validate_js_ports(root, snapshots):
+    review = json.loads(_read(root, JS_PORTS))
+    required = {HELPER, JS_INDEX, *JS_PORT_MODULES}
+    evidence = {PROFILE, *JS_PORT_REVIEWS}
+    if (not _accepted(review) or not _bindings(root, review, {})
+            or not required.issubset(review['implementation_sha256'])
+            or not evidence.issubset(review['evidence_sha256'])
+            or review['previous_review_sha256'] != _digest(_read(root, PROFILE))):
+        return False
+    prior = review['previous_bytes']
+    if set(prior) != {HELPER, JS_INDEX} or set(review['extensions']) != {JS_INDEX}:
+        return False
+    if _digest(prior[HELPER].encode()) != '846b93477950f373062f0116b6e25939161225b821277c79df70492bafcbf179':
+        return False
+    profile = json.loads(_read(root, PROFILE))
+    if prior[JS_INDEX] != profile['extensions'][JS_INDEX]['after']:
+        return False
+    entry = review['extensions'][JS_INDEX]
+    if (set(entry) != {'before', 'after'} or entry['before'] != prior[JS_INDEX]
+            or entry['after'] != prior[JS_INDEX] + JS_PORT_ADDITIONS
+            or entry['after'].encode() != _read(root, JS_INDEX)):
+        return False
+    for name in JS_PORT_REVIEWS:
+        accepted = json.loads(_read(root, name))
+        if not _accepted(accepted) or not _bindings(root, accepted, {}):
+            return False
+    snapshots.update({name: value.encode() for name, value in prior.items()})
+    return True
+
+
 def historical_export_bytes(root, relative, expected):
     """Return only exact reviewed historical entrypoint bytes.
 
@@ -151,6 +188,11 @@ def historical_export_bytes(root, relative, expected):
     try:
         snapshots = {}
         successor_match = None
+        if (root / JS_PORTS).exists():
+            if not _validate_js_ports(root, snapshots):
+                return None
+            if relative == JS_INDEX and _digest(snapshots[JS_INDEX]) == expected:
+                successor_match = snapshots[JS_INDEX]
         if (root / PROFILE).exists():
             profile = json.loads(_read(root, PROFILE))
             required = {HELPER, *PATHS, 'packages/javascript/src/radial-profile.js',
@@ -159,7 +201,7 @@ def historical_export_bytes(root, relative, expected):
                         'evidence/conformance/radial-profile-python-root-review.json',
                         'evidence/conformance/profile-p5js-native-root-review.json',
                         'evidence/conformance/profile-py5-native-root-review.json'}
-            if (not _accepted(profile) or not _bindings(root, profile, {})
+            if (not _accepted(profile) or not _bindings(root, profile, snapshots)
                     or not required.issubset(profile['implementation_sha256'])
                     or not evidence.issubset(profile['evidence_sha256'])
                     or profile['previous_review_sha256'] != _digest(_read(root, CORRECTION))):
@@ -177,7 +219,7 @@ def historical_export_bytes(root, relative, expected):
                 entry = profile['extensions'][name]
                 if (set(entry) != {'before', 'after'} or entry['before'] != prior[name]
                         or entry['after'] != entry['before'] + additions[name]
-                        or entry['after'].encode() != _read(root, name)):
+                        or entry['after'].encode() != snapshots.get(name, _read(root, name))):
                     return None
                 if name == relative and _digest(entry['before'].encode()) == expected:
                     successor_match = entry['before'].encode()

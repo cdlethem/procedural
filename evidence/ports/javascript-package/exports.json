@@ -1,0 +1,136 @@
+{
+  "status": "passed",
+  "scope": "Installed JavaScript package root-export identity plus one successful shared fixture per newly exported core operation; no native render, package publication, or acceptance claim.",
+  "installed_index": "/home/colin/dev/procedural/.work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/index.js",
+  "runtime": {
+    "node": "v22.22.1"
+  },
+  "input_sha256_before": {
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/index.js": "bd39906628c7420c400422756926cf785737ac5050a44ef5572a6ccfc1b5fd43",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "fixtures/operations/stop-ramp.json": "bb3be6de37b46f5fe2c5907e16277f97c8526587cf2a0f2049860338da7095cd",
+    "fixtures/operations/bilinear-raster-remap.json": "2b9a1912e315977b219b1b5dace6cafdffd649346f3b43d0ec13f2a59cf7ff0f",
+    "fixtures/operations/target-springs-2d.json": "837fda9808fd95a70bcee4dbbd2accc1b0895186ee55c439b8a31c4ed495cc61",
+    "fixtures/operations/occupied-lattice-paths-2d.json": "220d57e7d42413063a777066fe6d3addff4ad9c1d987bc34ba0ac36d0ad25d98",
+    "fixtures/operations/delaunay-2d.json": "2f2166e90dbab6345fda3148e65aae6079fcd0de96f6a9752ade3ed80c68a4d4",
+    "fixtures/operations/closed-spline-2d.json": "c7232c17d650b8b90ca9606e75abcbfc9c8d938ca6af088fb4f354d103056fc6",
+    "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8",
+    "fixtures/operations/seeded-line-pool-2d.json": "545d170b1d9d814480489836e4e87e791b9287fe9131847b13c3574ead12d5f1",
+    "tests/native/ported-package-exports.mjs": "db1e9510e5698e4f0d88546f0cc17adbb3528acb0f6421f3030d39f913ed2f25"
+  },
+  "input_sha256_after": {
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/index.js": "bd39906628c7420c400422756926cf785737ac5050a44ef5572a6ccfc1b5fd43",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    ".work/dist/ported-js-review2/consumer/node_modules/@procedurals/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "fixtures/operations/stop-ramp.json": "bb3be6de37b46f5fe2c5907e16277f97c8526587cf2a0f2049860338da7095cd",
+    "fixtures/operations/bilinear-raster-remap.json": "2b9a1912e315977b219b1b5dace6cafdffd649346f3b43d0ec13f2a59cf7ff0f",
+    "fixtures/operations/target-springs-2d.json": "837fda9808fd95a70bcee4dbbd2accc1b0895186ee55c439b8a31c4ed495cc61",
+    "fixtures/operations/occupied-lattice-paths-2d.json": "220d57e7d42413063a777066fe6d3addff4ad9c1d987bc34ba0ac36d0ad25d98",
+    "fixtures/operations/delaunay-2d.json": "2f2166e90dbab6345fda3148e65aae6079fcd0de96f6a9752ade3ed80c68a4d4",
+    "fixtures/operations/closed-spline-2d.json": "c7232c17d650b8b90ca9606e75abcbfc9c8d938ca6af088fb4f354d103056fc6",
+    "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8",
+    "fixtures/operations/seeded-line-pool-2d.json": "545d170b1d9d814480489836e4e87e791b9287fe9131847b13c3574ead12d5f1",
+    "tests/native/ported-package-exports.mjs": "db1e9510e5698e4f0d88546f0cc17adbb3528acb0f6421f3030d39f913ed2f25"
+  },
+  "scenarios": [
+    {
+      "operation": "stopRamp",
+      "error": "StopRampError",
+      "module": "stop-ramp.js",
+      "fixture": "stop-ramp.json",
+      "case": "unequal_intervals"
+    },
+    {
+      "operation": "bilinearRasterRemap2D",
+      "error": "RasterRemapError",
+      "module": "raster-remap.js",
+      "fixture": "bilinear-raster-remap.json",
+      "case": "identity_hidden_rgb"
+    },
+    {
+      "operation": "targetSprings2D",
+      "error": "SpringError",
+      "module": "target-springs.js",
+      "fixture": "target-springs-2d.json",
+      "case": "empty"
+    },
+    {
+      "operation": "occupiedLatticePaths2D",
+      "error": "LatticeError",
+      "module": "occupied-lattice-paths.js",
+      "fixture": "occupied-lattice-paths-2d.json",
+      "case": "empty-zero-capacity"
+    },
+    {
+      "operation": "delaunay2D",
+      "error": "DelaunayError",
+      "module": "delaunay.js",
+      "fixture": "delaunay-2d.json",
+      "case": "empty"
+    },
+    {
+      "operation": "closedSpline2D",
+      "error": "SplineError",
+      "module": "closed-spline.js",
+      "fixture": "closed-spline-2d.json",
+      "case": "square_direct_and_coarse_distance"
+    },
+    {
+      "operation": "noiseBandPath2D",
+      "error": "NoiseBandPathError",
+      "module": "noise-band-path.js",
+      "fixture": "noise-band-path.json",
+      "case": "constant"
+    },
+    {
+      "operation": "seededLinePool2D",
+      "error": "LinePoolError",
+      "module": "line-pool.js",
+      "fixture": "seeded-line-pool-2d.json",
+      "case": "zero_work"
+    }
+  ]
+}

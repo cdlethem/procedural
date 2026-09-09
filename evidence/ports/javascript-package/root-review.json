@@ -1,0 +1,40 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Integration of all eight JavaScript cores and five browser workflows from origin/porting/backlog 47ec5b2b73d7ac4466e7192e0695c64ee5664158. Root exports and local tarball installation accepted; no registry publication or new other-target/technique claims.",
+  "implementation_sha256": {
+    "packages/javascript/src/index.js": "bd39906628c7420c400422756926cf785737ac5050a44ef5572a6ccfc1b5fd43",
+    "packages/javascript/package.json": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8",
+    "tools/build_ported_javascript_package.mjs": "2219e6dac23cc36ea759967d6fd6647a6b446cadc909ceb2233a5aac722f7d10",
+    "tests/native/ported-package-exports.mjs": "db1e9510e5698e4f0d88546f0cc17adbb3528acb0f6421f3030d39f913ed2f25",
+    "tools/reviewed_export_extension.py": "ba6f0089cbe43fe12cfec1567238ba7c99926a5dc0e27684ddc7e56abcd10500",
+    "tests/test_reviewed_export_extension.py": "1ad32f924de9beddebfbe5ac24a445b5d9da6013545d0840ec74abc52ba4f6bc"
+  },
+  "evidence_sha256": {
+    "evidence/ports/javascript-package/distribution.json": "7c8b235e025ad0ac57e233d8bcee7f063bc9659e757993db338dd17cedaf3348",
+    "evidence/ports/javascript-package/exports.json": "d7170e6a0b04c9d556b0d962700f47bbd3e5ee8e282099ee19f42706b18d9f3d",
+    "evidence/conformance/javascript-core-export-compatibility-review.json": "4fd0f0f13a151ba36a2153952f96afecde14d53facca3b367d7d26b5bc091bf1",
+    "evidence/conformance/profile-export-compatibility-review.json": "c96081a9713f83c6518c17e8d3b9c1c376706ec09fea3c34723be7de4d1f25cc",
+    "evidence/ports/stop-ramp-p5/root-review.json": "3a1c4f6438fa1cbbe6274800beac08a5826a3631e797f6fe210a6c14815e5e18",
+    "evidence/ports/raster-remap-p5/root-review.json": "ef3a79d64605cbd5a5f0fc8962ef6d182da7a0607c43648e5fee8589e1842344",
+    "evidence/ports/target-springs-p5/root-review.json": "abea8373578f72a0d06267c6394762b82a53bbb8018984f6ed2fef69a7cc38e4",
+    "evidence/ports/occupied-lattice-p5/root-review.json": "a1e8af1a14f60cd29a33e2ef9dbca9bd603267668d7140b3e745f90bcf65c4e3",
+    "evidence/ports/delaunay-p5/root-review.json": "3ed9cfa4931679ba0f2a838f08e08a49ca74026fec2087bb10070e3bc66c07ee",
+    "evidence/ports/closed-spline-p5/root-review.json": "774b687ed7d9bd3b660ed3b7e94c7bfdcf5a568937c3ca2f989f15b8ba737cc9",
+    "evidence/ports/noise-band-path-p5/root-review.json": "39a2b936baffdfc9c7038591d3ead1c0036742c8d0b5f48842ac7b63084624e1",
+    "evidence/ports/line-pool-p5/root-review.json": "15f0139b3b514fbc4031c9f0b277ce1b7171c563facfe897d6580ab3de0af8aa"
+  },
+  "verified": [
+    "Current remote branch remains pinned revision after fetch. All JS examples and modules accounted for; differences are reviewed spline arithmetic replacement, Delaunay hull append, full trig notice, passive line-pool input fix and additive export ordering.",
+    "All eight root operation/error exports are identical to installed module exports; representative shared fixtures pass from offline npm-installed local tarball.",
+    "Installed file inventory matches staged sources byte-for-byte, including upstream math notices, project license and source examples.",
+    "Historical export chain and fail-closed mutations pass; no prior acceptance record rewritten.",
+    "Eight core and five workflow acceptance records retain their narrower runtime claims; previously reviewed native visuals remain linked in central gallery."
+  ],
+  "pending_outside_scope": [
+    "Python/py5 and Android branch changes were not imported or accepted.",
+    "SpringMarks animation and technique-level source reproductions remain unvalidated.",
+    "The registry is not published; browser workflow validation is source-checkout based."
+  ]
+}

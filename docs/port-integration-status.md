@@ -10,8 +10,9 @@ Accepted JavaScript source-checkout slices:
   `evidence/ports/raster-remap-p5/root-review.json`.
 
 These have root-reviewed core fixtures and actual browser edits/reset/save. They use
-direct module imports. Common root-barrel exports and package-distribution validation
-remain pending; py5/Android claims are not imported with these files.
+direct module imports and the reviewed root package entry point. Local tarball installation
+and export checks are accepted in `evidence/ports/javascript-package/root-review.json`;
+py5/Android claims are not imported with these files.
 
 Target springs core is also accepted through direct-module import after 44 shared cases
 passed in Node and Chromium; native-workflow/technique support remain unvalidated.
@@ -35,8 +36,12 @@ preserves the complete netlib notice and passes 4,312 fresh exact Java compariso
 Line-pool indexed accessors are rejected without invoking them.
 
 All eight JavaScript cores and five workflows from the pinned branch are integrated.
-Common barrel exports and package distribution validation remain pending. SpringMarks
+Common barrel exports and local package distribution are now validated. SpringMarks
 animation needs separate native acceptance. Other target ports remain unreviewed.
+
+Build a local tarball with `node tools/build_ported_javascript_package.mjs .work/dist/FRESH`.
+The package remains private and unpublished. Native workflow acceptance covers the reviewed
+source-checkout examples; the tarball check covers installed code and root import behavior.
 
 ## Spline provenance issue
 

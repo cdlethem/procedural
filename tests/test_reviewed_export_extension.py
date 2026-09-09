@@ -117,7 +117,7 @@ class ReviewedExportTests(unittest.TestCase):
             self.assertIsNone(historical_export_bytes(root, relative, digest('before')))
 
     def test_successor_preserves_both_historical_exports_and_rejects_mutation(self):
-        from tools.reviewed_export_extension import SUCCESSOR, HELPER, TRIANGLE, BRANCH, PROFILE
+        from tools.reviewed_export_extension import SUCCESSOR, HELPER, TRIANGLE, BRANCH, PROFILE, JS_PORTS
         import shutil
         repository = Path(__file__).resolve().parents[1]
         previous = json.loads((repository / REVIEW).read_text())
@@ -127,13 +127,19 @@ class ReviewedExportTests(unittest.TestCase):
         correction = json.loads((repository / CORRECTION).read_text())
         root_correction = json.loads((repository / ROOT_CORRECTION).read_text())
         profile = json.loads((repository / PROFILE).read_text())
-        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, CORRECTION, ROOT_CORRECTION, SOURCE_COMPARISON, PROFILE, *PATHS}
-        for record in (correction, root_correction, profile):
+        ports = json.loads((repository / JS_PORTS).read_text())
+        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, CORRECTION, ROOT_CORRECTION, SOURCE_COMPARISON, PROFILE, JS_PORTS, *PATHS}
+        for record in (correction, root_correction, profile, ports):
             files.update(record['implementation_sha256'])
             files.update(record['evidence_sha256'])
         for review in (previous, successor, triangle, branch):
             files.update(review['implementation_sha256'])
             files.update(review['evidence_sha256'])
+        for name in ports['evidence_sha256']:
+            if name.startswith('evidence/ports/') and name.endswith('/root-review.json'):
+                accepted = json.loads((repository / name).read_text())
+                files.update(accepted['implementation_sha256'])
+                files.update(accepted['evidence_sha256'])
         with tempfile.TemporaryDirectory(dir=repository / '.work') as temporary:
             root = Path(temporary)
             for name in files:
@@ -141,6 +147,33 @@ class ReviewedExportTests(unittest.TestCase):
                 shutil.copyfile(repository / name, root / name)
             relative = 'packages/javascript/src/index.js'
             digest = lambda value: hashlib.sha256(value.encode()).hexdigest()
+            retained = ports['extensions'][relative]['before']
+            self.assertEqual(historical_export_bytes(root, relative, digest(retained)), retained.encode())
+            for mutate in (
+                lambda r: r.update(status='draft'),
+                lambda r: r.update(owner='worker'),
+                lambda r: r.update(previous_review_sha256='0' * 64),
+                lambda r: r['implementation_sha256'].pop(HELPER),
+                lambda r: r['evidence_sha256'].pop(PROFILE),
+                lambda r: r['previous_bytes'].update({HELPER: 'forged'}),
+                lambda r: r['previous_bytes'].update({'unexpected': 'forged'}),
+                lambda r: r['extensions'][relative].update(before='forged'),
+                lambda r: r['extensions'][relative].update(after='forged'),
+            ):
+                record = json.loads(json.dumps(ports)); mutate(record)
+                (root / JS_PORTS).write_text(json.dumps(record))
+                self.assertIsNone(historical_export_bytes(root, relative, digest(retained)))
+            (root / JS_PORTS).write_bytes((repository / JS_PORTS).read_bytes())
+            # Rehashing an unrelated export cannot turn it into an approved addition.
+            changed = ports['extensions'][relative]['after'] + 'export const unrelated = 1;\n'
+            record = json.loads(json.dumps(ports))
+            record['extensions'][relative]['after'] = changed
+            record['implementation_sha256'][relative] = digest(changed)
+            (root / relative).write_text(changed)
+            (root / JS_PORTS).write_text(json.dumps(record))
+            self.assertIsNone(historical_export_bytes(root, relative, digest(retained)))
+            (root / relative).write_bytes((repository / relative).read_bytes())
+            (root / JS_PORTS).write_bytes((repository / JS_PORTS).read_bytes())
             old = previous['extensions'][relative]['before']
             middle = successor['extensions'][relative]['before']
             self.assertEqual(historical_export_bytes(root, relative, digest(old)), old.encode())
