@@ -1,0 +1,672 @@
+{
+  "status": "passed",
+  "scope": "p5.js 2.3.2 Chromium check of the thirteen post-backlog editable workflows; no Java pixel-parity or corpus-technique claim.",
+  "input_sha256_before": {
+    "tools/run_p5_workflow_completion.mjs": "3baf006998157118baaec231be695bb63b09600512822775990d42e8f0a90814",
+    ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    "packages/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    "packages/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    "packages/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/index.js": "6a42d4db8eb2cbf9bbe62710b262209bf8e316e9e3a39829d7c49d76c2da7607",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    "packages/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    "packages/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    "packages/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    "packages/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "packages/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/examples/body-marks/README.md": "6f59c2334469cb0494fe7c5c2a0e1632403938a506aaea460f86d38e7ae46599",
+    "packages/javascript/examples/body-marks/body-marks.js": "4f2befcd17695d72d33440f4f2c3b1bdcb0a40d2361b21a254de4bb5e7c79315",
+    "packages/javascript/examples/body-marks/index.html": "f3d0b605955ad4d8a136a84322274bd9aab538e4072434b283cdd6890d0e1e8f",
+    "packages/javascript/examples/body-marks/sketch.js": "0419bde4ad0254d60de435d8cea9f1b73bfe3d75219d4b89ec5895a897281128",
+    "tools/serve_body_marks.mjs": "946628720bde005e7ef946420bcfe6090042b7213deb10b04c960c015de96bdb",
+    "packages/javascript/examples/city-marks/README.md": "35e33b36e3a71bf827685788d48e6f68393eb7f541c59732ce42a4029631bf1e",
+    "packages/javascript/examples/city-marks/city-marks.js": "9f3b9aa2eef1d5387e8d088e5e2de4c400960fa4997bd85dba26dd7cd2364250",
+    "packages/javascript/examples/city-marks/index.html": "ea1a2f69bdb07c019217f3510dcf033dbddb089f89516eaa1daf6df6504fcee4",
+    "packages/javascript/examples/city-marks/sketch.js": "b6ef9a40b308563d6225048d5d27dfe5b6122af5c711d89e92d5750008e21ab2",
+    "tools/serve_city_marks.mjs": "253516e6e633f65ecbfdbad0bf6829b399fe4235b63cc4d2de6b7d6580eb3579",
+    "packages/javascript/examples/clip-marks/README.md": "cd4d7f1b4518d29251ef6691b2718a0f87713e745892fec5d0aa1c59783c35ac",
+    "packages/javascript/examples/clip-marks/clip-marks.js": "44dd9e5facf233655d8ed378e96f5098bdd8e65e02e6b1c221698fcc4da24874",
+    "packages/javascript/examples/clip-marks/index.html": "2b987a88eb4e7203eeabaeacefac2cb765bf1eafa1c4321009770ba8dbcc9a47",
+    "packages/javascript/examples/clip-marks/sketch.js": "19ea5fbd1c8e2c324b0489f5c86ad011cf97768078f80d32ab68d6cbcea61618",
+    "tools/serve_clip_marks.mjs": "2d5ae0376b6928f488fa39282423f2e976c7e80eb5021549adc51208b5743cc7",
+    "packages/javascript/examples/contact-marks/README.md": "b0caaab7d805606ee57669f0ebd8c15571f1b7900eeedff327195cfb98aadbc4",
+    "packages/javascript/examples/contact-marks/contact-marks.js": "e91cbc60c23eca6e22182b63a69cc347c99ae5efd4277cfc55c1fc44aba96763",
+    "packages/javascript/examples/contact-marks/index.html": "bf45d6ba8562f3341c309f05628d6e78cbd476a86566bded7738530410484f56",
+    "packages/javascript/examples/contact-marks/sketch.js": "1b5ed883e5ae839d551332973dccb804976f74c595db44d78aa35ac800943777",
+    "tools/serve_contact_marks.mjs": "f03feaddbeb739fe569910b9548aca0287bb6bd8bfef5cc6a5079a6162237d11",
+    "packages/javascript/examples/glyph-marks/README.md": "5acbe2148b1180e42095cff4b211c3e9fed4f8a6f98ab28396db11ba73858d51",
+    "packages/javascript/examples/glyph-marks/glyph-marks.js": "34f9ec004e4d84c64475b32c11151f9f9c160725d1870b8a15695e21fde293bf",
+    "packages/javascript/examples/glyph-marks/index.html": "cc61930d03b49b047bb6375f068f399596e96bfae4ce82cf5b3cea9beacd33a3",
+    "packages/javascript/examples/glyph-marks/sketch.js": "9787c41ea258cb0e8faffe2f4c55ad7f0f9c5404678ef33ba1677edb9374226a",
+    "tools/serve_glyph_marks.mjs": "6ecb8e1cb8613223bacc35d3c77e63afdf28a7cd70a9ced0da24a0a0e5b4fb76",
+    "packages/javascript/examples/glyph-marks/assets/FONT-LICENSE.txt": "63544717f051095f67c6da4f36776aafd81e561320baf36ae65925f3336ebb8a",
+    "packages/javascript/examples/glyph-marks/assets/GlyphMarks.ttf": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+    "packages/javascript/examples/image-field-marks/README.md": "db216b9e0f7f1b906090e5a965723d689cc950f0769eefcb3cc00101efaeab15",
+    "packages/javascript/examples/image-field-marks/image-field-marks.js": "b713f2beb7cc5e203719118bccb848d3d4088954696b036c6e987069d519a8cd",
+    "packages/javascript/examples/image-field-marks/index.html": "60726429a18c74c83c05ffac2caf1fcb34a1473337156feb108438c741342a33",
+    "packages/javascript/examples/image-field-marks/sketch.js": "639613acbae365cb91546f704ba35d87cdb6ee53700dbee411c6b9a7a49bc9a3",
+    "tools/serve_image_field_marks.mjs": "8028aa0e3025cb04aa457c659890cf568aebd8c320722b7c541271714ae53094",
+    "packages/javascript/examples/landscape-marks/README.md": "e6b90a0af707ab9236868285f32fbe9e4e1508c30f2409e38ed888f479d335ad",
+    "packages/javascript/examples/landscape-marks/index.html": "cf49d436e701b53e8e3adb4446805c59249b2f55175439466c12e0e5db6c1fe1",
+    "packages/javascript/examples/landscape-marks/landscape-marks.js": "c8aa3ee62ddce70dfd51dd4e8c6fa95a351744dfe6bd529b60d213118ad29560",
+    "packages/javascript/examples/landscape-marks/sketch.js": "ee17f04de10c8d93a70f59521cf47011bee9c5a0c532c8a17fc56d498019b9d2",
+    "tools/serve_landscape_marks.mjs": "ca7d124b00f383a06132b90cc78ca15b91c2f2e80a44c2d4152b283470b25ff3",
+    "packages/javascript/examples/layer-marks/README.md": "1acbfbc48bd73f79507048b18d64afb7848fb20a9eef77dcaeef428eb89fcaf8",
+    "packages/javascript/examples/layer-marks/index.html": "761801276641b9634c456d7d48743ac5f044387d60743b813278160129a46367",
+    "packages/javascript/examples/layer-marks/layer-marks.js": "0311fd8444d2a8f7ce87b6133a71920e51bc7d2dfd019507f095b6cefcabb7c3",
+    "packages/javascript/examples/layer-marks/sketch.js": "2eec327cd0b03297cbd72cdaf0fb733820b06834720a1af83bfa080dc8e7bd28",
+    "tools/serve_layer_marks.mjs": "445e8acfd8931878a0e518900b70f9055fbd5af6bce9cdb7f67a0afb6529b3e1",
+    "packages/javascript/examples/mask-marks/README.md": "fcd2fde347322654162018213936a92b42882b8c505a7b07a6f7e49567101c2d",
+    "packages/javascript/examples/mask-marks/index.html": "444ccb42c2d7dcc2070e17befe65f7be5fe876c6abdc9c20afba05242b8b1740",
+    "packages/javascript/examples/mask-marks/mask-marks.js": "a8a522d90f2aa96e2ea5587b859d1126798536aaf722d4c29af37c45344104a5",
+    "packages/javascript/examples/mask-marks/sketch.js": "5c4230d87a4be32348847f5fd74d60b6a5fbbcfb9d7c2c98ee042f74b39b2f5e",
+    "tools/serve_mask_marks.mjs": "1b82488dd0ede3506d18cb54e4e8657ebe013a41ecd215ebc125d1622f638b15",
+    "packages/javascript/examples/masked-partition-marks/README.md": "7a353a66e63a280cd29ecf3402a7cf11271f83ffbc115e30ae1e530109dc3851",
+    "packages/javascript/examples/masked-partition-marks/index.html": "ddd3cfa75d1c9c58d5ae4e64132e244f7bf4d8076591dbc76cffe770373d8be2",
+    "packages/javascript/examples/masked-partition-marks/masked-partition-marks.js": "94222e0e260852f3b060f96457025b02b0eecafee316f654e517e32a3b48c5b5",
+    "packages/javascript/examples/masked-partition-marks/sketch.js": "b59896671ca026866c6cbfca9dab006d118cde17dfa2067e6ef938288ee247f6",
+    "tools/serve_masked_partition_marks.mjs": "0a3a5c5659cdddd4aa9cb82eff39c8fa988219ed675a5e8f7c092177e61b2956",
+    "packages/javascript/examples/placement-image-marks/README.md": "417ae8f228b4e536a524ff92d549a070c51491fabf49e764dc09aaa75a61cbe8",
+    "packages/javascript/examples/placement-image-marks/index.html": "286d0b425845223982b28ae81a1c0e7883730fdb16632eef61a29ee5e3d2df1a",
+    "packages/javascript/examples/placement-image-marks/placement-image-marks.js": "797b15b0015412790c1dd4acb0e25a8597eb71785682701e9936ccf8a7a7bf2d",
+    "packages/javascript/examples/placement-image-marks/sketch.js": "65c2a0cb1c2139629f49255c371268684bbc8307d5dd202cd27e8383049321ad",
+    "tools/serve_placement_image_marks.mjs": "528f2bbf603bc4ae682f4a8a926ba61669d6f40957b5b4b6dba445fb7dde1a1e",
+    "packages/javascript/examples/pointer-marks/README.md": "aac53dd84fa19e0045f81689d9f1266fbb5a734b4d9991f951168a664d1556f8",
+    "packages/javascript/examples/pointer-marks/index.html": "aa0c6c58647679564436cd349af60b69843593a233bdaa8687972614b2650dfc",
+    "packages/javascript/examples/pointer-marks/pointer-marks.js": "9eee3ad0c62d59f7b788bb110b18c249f7e05bb9b3e726d2562c6807bbc88445",
+    "packages/javascript/examples/pointer-marks/sketch.js": "ef1d722880c7929af84ec565bf7f1a7fab656ba8e6545d5ccb8ca59dbca19e23",
+    "tools/serve_pointer_marks.mjs": "4d54227ef2cd9e3492ea971a4d48e4c72569a4cee5b332330192f30412bd1f6e",
+    "packages/javascript/examples/relief-marks/README.md": "7121543eceae1946acbe7d161939288af0b5ef723d836cf0f96edb342634da38",
+    "packages/javascript/examples/relief-marks/index.html": "9517989ebe64632e08c64d1fa3bd0123b3fdc9d4b5fde8f6ce150890d9290ef6",
+    "packages/javascript/examples/relief-marks/relief-marks.js": "c98891a3cbb50a0112dce6645f5563195b62da2986b9578f10c0393b7ae690bb",
+    "packages/javascript/examples/relief-marks/sketch.js": "49d3471a4c15d9fb8e277141724d913aabfba0f4d135c7b623de62c22e7cfe19",
+    "tools/serve_relief_marks.mjs": "4789debe3a476919bd2eba3a18b4480eb145a552f3e6c00e729e03b72f469114"
+  },
+  "workflows": [
+    {
+      "name": "body",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "360e3e1c28c7ea15ac4393a5f7a73fb93e9a04f0d5987f0f1e56345373ea4477"
+        },
+        {
+          "label": "edit-0-.",
+          "sha256": "1f784df5c614a46facda21d6543b22d5654c16daeed5258648dc35833df72744"
+        },
+        {
+          "label": "edit-1-m",
+          "sha256": "1a4d4dcc5b786732c1ef262ce2571b82230bd38a02948982bfeca70f3e437b0e"
+        },
+        {
+          "label": "edit-2-w",
+          "sha256": "1a4d4dcc5b786732c1ef262ce2571b82230bd38a02948982bfeca70f3e437b0e"
+        },
+        {
+          "label": "reset",
+          "sha256": "360e3e1c28c7ea15ac4393a5f7a73fb93e9a04f0d5987f0f1e56345373ea4477"
+        },
+        {
+          "label": "button",
+          "sha256": "1f784df5c614a46facda21d6543b22d5654c16daeed5258648dc35833df72744"
+        }
+      ],
+      "reset": "exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "city",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "0ad64068c400d9aaddd7c32332ca4407058a44f65a2ea57db38cea8640d2070e"
+        },
+        {
+          "label": "edit-0-c",
+          "sha256": "20845e74510f4ce1809e9c99ebdc0fb17ddf4d28e77e9c460c17316808730382"
+        },
+        {
+          "label": "edit-1-h",
+          "sha256": "19a35c6704f3ae22b740451b0833dc65c1b8700638d96b66c7a39916b6439ab0"
+        },
+        {
+          "label": "edit-2-r",
+          "sha256": "d5568b6537893eaa3fd9f17292bda204999fd17c6b89f9213f1a5172aaff4046"
+        },
+        {
+          "label": "reset",
+          "sha256": "0ad64068c400d9aaddd7c32332ca4407058a44f65a2ea57db38cea8640d2070e"
+        },
+        {
+          "label": "button",
+          "sha256": "20845e74510f4ce1809e9c99ebdc0fb17ddf4d28e77e9c460c17316808730382"
+        }
+      ],
+      "reset": "exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "clip",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "3a29ce926431ecd5532fc404681c283d4fe9a758e553b538166fb40d67562011"
+        },
+        {
+          "label": "edit-0-h",
+          "sha256": "cef7959d36676d0073d512d471bd585aabcc57fa65ddca0010770d8feac1cbaa"
+        },
+        {
+          "label": "edit-1-n",
+          "sha256": "80d985edd2a9f50e1d31ce41ee18dd2142aa292f6c0daf0764b0a7ba6209785f"
+        },
+        {
+          "label": "edit-2-t",
+          "sha256": "7cd2842b6bc61fb27ae6e51935ea371602763dc86d6c9d915709992b85b4171d"
+        },
+        {
+          "label": "edit-3-c",
+          "sha256": "ea1db1481d45323eb6afce0990810a0029585b702b50f62fe11730fabe9bb8a4"
+        },
+        {
+          "label": "edit-4-m",
+          "sha256": "608652f1454806f81e90dd0147b164addeca41e2ce72f57de00d93cbe72005c7"
+        },
+        {
+          "label": "edit-5-o",
+          "sha256": "c50436df994ccf6c52879c1b545c643febf0c5eb618366c5c15cabda5125327d"
+        },
+        {
+          "label": "reset",
+          "sha256": "3a29ce926431ecd5532fc404681c283d4fe9a758e553b538166fb40d67562011"
+        },
+        {
+          "label": "button",
+          "sha256": "cef7959d36676d0073d512d471bd585aabcc57fa65ddca0010770d8feac1cbaa"
+        }
+      ],
+      "reset": "exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "contact",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "0963bf1032ce6672da5158084ad56dc664656741d242ea38666986954cb8083d"
+        },
+        {
+          "label": "edit-0-n",
+          "sha256": "6ee0c951ed80f8c5cec3bdd3979833ddc1df471d564abb9b009046d0a97f112a"
+        },
+        {
+          "label": "edit-1-c",
+          "sha256": "f0ccf6ce620189d916a4e17fd10fb2ff26a798f4f03cd424c6b153602d683568"
+        },
+        {
+          "label": "reset",
+          "sha256": "0963bf1032ce6672da5158084ad56dc664656741d242ea38666986954cb8083d"
+        },
+        {
+          "label": "button",
+          "sha256": "6ee0c951ed80f8c5cec3bdd3979833ddc1df471d564abb9b009046d0a97f112a"
+        }
+      ],
+      "reset": "exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "glyph",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "ef662554ae35453220a1449bcfdb81e779e5fb18d5f1f1ed3f7cca0f8f1c8012"
+        },
+        {
+          "label": "edit-0-n",
+          "sha256": "0a74bd424d713749153224d598098df2b5ad0e0ed46f12079463d5017bcaba81"
+        },
+        {
+          "label": "edit-1-d",
+          "sha256": "2e5f0e85673ee6e5390a071267d2022e2dc0f4ada9de586c8b18a458dc50f0e8"
+        },
+        {
+          "label": "edit-2-g",
+          "sha256": "7627dd7691b94d6e59f10ec4ff3932cb0feb6f00c1191b66774333792efcadb2"
+        },
+        {
+          "label": "edit-3-m",
+          "sha256": "d7570d88135c38ccbc9cc66a6e3590a39d89683dc8d6bb26adcaee61d38f88a5"
+        },
+        {
+          "label": "edit-4-c",
+          "sha256": "b52d0e4c346393d96a22d44d2618de7cb78b27ca3008be765aba917528087537"
+        },
+        {
+          "label": "edit-5-v",
+          "sha256": "904e7483e72935c5bb51e5ae2045b0938a878be7c8f934484f2d4f88d4f097cb"
+        },
+        {
+          "label": "edit-6-f",
+          "sha256": "b1ad43de9cd1b35c801020aeb3e01e8bc0628dffc2064f0c6fab1efc233673c7"
+        },
+        {
+          "label": "edit-7-r",
+          "sha256": "2e1a5dd138a7702bcc990ba715612195ad0e3dda07d649b7074de17b23d765f0"
+        },
+        {
+          "label": "reset",
+          "sha256": "ef662554ae35453220a1449bcfdb81e779e5fb18d5f1f1ed3f7cca0f8f1c8012"
+        },
+        {
+          "label": "button",
+          "sha256": "0a74bd424d713749153224d598098df2b5ad0e0ed46f12079463d5017bcaba81"
+        }
+      ],
+      "reset": "exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "image-field",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "4dbd1bc89a2294b41c279055cd4bb05ce99b57f47d2b1fe0b7fedc2644660c1a"
+        },
+        {
+          "label": "edit-0-m",
+          "sha256": "f4b08ba88c175d8a6f093e0bc88cb8423cbf28ad3379040064743cc2a299bfdc"
+        },
+        {
+          "label": "edit-1-i",
+          "sha256": "5cb263093c452c8ed43d066d09f5640ea5a09b3bd95d9c554b113a5f7bfd5a2a"
+        },
+        {
+          "label": "edit-2-c",
+          "sha256": "448216cc6a30b93d946f239ed64185a2a252b3279ad04da1e205b9cdb1fe8609"
+        },
+        {
+          "label": "reload",
+          "sha256": "4dbd1bc89a2294b41c279055cd4bb05ce99b57f47d2b1fe0b7fedc2644660c1a"
+        },
+        {
+          "label": "button",
+          "sha256": "f4b08ba88c175d8a6f093e0bc88cb8423cbf28ad3379040064743cc2a299bfdc"
+        }
+      ],
+      "reset": "fresh-load exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "landscape",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "5501310b33694701a399c00c10fc93db94c900c9b771fc5a46b07e831662c56e"
+        },
+        {
+          "label": "edit-0-c",
+          "sha256": "5577e6f91f1eeee8fcc3f350d2fc641b57f485ea9fac7ccc7ff311d8d3f5958a"
+        },
+        {
+          "label": "edit-1-p",
+          "sha256": "421fb350cec611c580942167132f958cedd75ee83b805d80d4f0751dbe0ca3bc"
+        },
+        {
+          "label": "edit-2-r",
+          "sha256": "44f502c364bd48339599c29caee8b7e1ab84e29f25ee3f627bcccdf2dec951ab"
+        },
+        {
+          "label": "reset",
+          "sha256": "5501310b33694701a399c00c10fc93db94c900c9b771fc5a46b07e831662c56e"
+        },
+        {
+          "label": "button",
+          "sha256": "5577e6f91f1eeee8fcc3f350d2fc641b57f485ea9fac7ccc7ff311d8d3f5958a"
+        }
+      ],
+      "reset": "exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "layer",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "e20217001403bf642f6e4a039aa55ef5ebfe5b63f697b38bb32bb532d1acb1ae"
+        },
+        {
+          "label": "edit-0-m",
+          "sha256": "ac4070ec7c7c389329c6e4aa5bd94a57e0b195be4d2c167a5d36d00dd762c9b2"
+        },
+        {
+          "label": "reload",
+          "sha256": "e20217001403bf642f6e4a039aa55ef5ebfe5b63f697b38bb32bb532d1acb1ae"
+        },
+        {
+          "label": "button",
+          "sha256": "ac4070ec7c7c389329c6e4aa5bd94a57e0b195be4d2c167a5d36d00dd762c9b2"
+        }
+      ],
+      "reset": "fresh-load exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "mask",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "c2b0443d0be5419a61440b011fec74a2892c84cafe1faf764ff351662a467cfb"
+        },
+        {
+          "label": "edit-0-m",
+          "sha256": "6ea1c6d5a997be5c973b2ad5160d1556e09b3c7833b511bbc53532f5798791e4"
+        },
+        {
+          "label": "edit-1-v",
+          "sha256": "0daaaaf0d7ea170d97ef0ffafea290bf7e6306c3c8fe966b4bb91e05223af922"
+        },
+        {
+          "label": "reload",
+          "sha256": "c2b0443d0be5419a61440b011fec74a2892c84cafe1faf764ff351662a467cfb"
+        },
+        {
+          "label": "button",
+          "sha256": "6ea1c6d5a997be5c973b2ad5160d1556e09b3c7833b511bbc53532f5798791e4"
+        }
+      ],
+      "reset": "fresh-load exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "masked-partition",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "de9798c1e532cd6a77d06c1ca2caf54d564856e859fe42d3d855ff5b4fc34e57"
+        },
+        {
+          "label": "edit-0-m",
+          "sha256": "7b0b77d4dde0f1dc0d548654ce02e4ee8506b93bda6b83b5503fd5798a479158"
+        },
+        {
+          "label": "edit-1-n",
+          "sha256": "bee868ad2d7058ea9fca8cc412c98ecaf92aa062cdad46eeeb61747038634e50"
+        },
+        {
+          "label": "reset",
+          "sha256": "de9798c1e532cd6a77d06c1ca2caf54d564856e859fe42d3d855ff5b4fc34e57"
+        },
+        {
+          "label": "button",
+          "sha256": "7b0b77d4dde0f1dc0d548654ce02e4ee8506b93bda6b83b5503fd5798a479158"
+        }
+      ],
+      "reset": "exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "placement-image",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "04416c3110bd4cba2794dd5556fe91e20e3559dda68141a2635be39e3b411339"
+        },
+        {
+          "label": "edit-0-f",
+          "sha256": "a9c8e34f890d983f67a3cb2bfbcb71c96140c4e6254e45da2899996806050f7c"
+        },
+        {
+          "label": "edit-1-c",
+          "sha256": "f8525c8931cc509b84a1fefc6a4ad7bd5e3743781cf4e69358bf9ca5e35bcdc5"
+        },
+        {
+          "label": "edit-2-a",
+          "sha256": "92591c0dad491c8d3d5f0571cb7eb1d2cee9dc6e853abf54b9ef700d2b243126"
+        },
+        {
+          "label": "edit-3-m",
+          "sha256": "469ab036842da0ac2b76097c9cbf523fcfafb7f366047545c872d0e983eb0a0b"
+        },
+        {
+          "label": "reload",
+          "sha256": "04416c3110bd4cba2794dd5556fe91e20e3559dda68141a2635be39e3b411339"
+        },
+        {
+          "label": "button",
+          "sha256": "a9c8e34f890d983f67a3cb2bfbcb71c96140c4e6254e45da2899996806050f7c"
+        }
+      ],
+      "reset": "fresh-load exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "pointer",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "2e6266a46a012a669617f70d57b6e33b19dd73af0f111677b6f3610327750073"
+        },
+        {
+          "label": "edit-0-.",
+          "sha256": "2e6266a46a012a669617f70d57b6e33b19dd73af0f111677b6f3610327750073"
+        },
+        {
+          "label": "edit-1-m",
+          "sha256": "4354a6c677a026c1875e633bf3c0c66bb21f7e5f838672846aa457624fe32380"
+        },
+        {
+          "label": "edit-2-t",
+          "sha256": "5a00edfb55bd9fd19778b8a4db4e25649644d75cad8de45f0b32ed71c65858b6"
+        },
+        {
+          "label": "reset",
+          "sha256": "2e6266a46a012a669617f70d57b6e33b19dd73af0f111677b6f3610327750073"
+        },
+        {
+          "label": "button",
+          "sha256": "2e6266a46a012a669617f70d57b6e33b19dd73af0f111677b6f3610327750073"
+        }
+      ],
+      "reset": "exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    },
+    {
+      "name": "relief",
+      "status": "passed",
+      "frames": [
+        {
+          "label": "baseline",
+          "sha256": "c1f72299c829e81a201e77a89e8ee742179fc8065df3e38f867aee655d6e63e7"
+        },
+        {
+          "label": "edit-0-c",
+          "sha256": "30864eeb7b0aed6e7b8d19af27f2289e0e25a37720835f5754f13e76b17a0104"
+        },
+        {
+          "label": "edit-1-h",
+          "sha256": "26832358c10f80fe6e45d711dd47a4fb280be3cf818794b06e71271c31130a62"
+        },
+        {
+          "label": "edit-2-r",
+          "sha256": "e14add403ff0cc0f0d7997d5c2e2d992e9dc847ce170c94f2f18c5f1db67c53d"
+        },
+        {
+          "label": "reset",
+          "sha256": "c1f72299c829e81a201e77a89e8ee742179fc8065df3e38f867aee655d6e63e7"
+        },
+        {
+          "label": "button",
+          "sha256": "30864eeb7b0aed6e7b8d19af27f2289e0e25a37720835f5754f13e76b17a0104"
+        }
+      ],
+      "reset": "exact",
+      "save": "downloaded without redraw",
+      "errors": []
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "input_sha256_after": {
+    "tools/run_p5_workflow_completion.mjs": "3baf006998157118baaec231be695bb63b09600512822775990d42e8f0a90814",
+    ".work/environments/p5js/package-lock.json": "28efb78c70d8ba6630872a7f91d79a20a20a6a3f8bf63db04127096c0e9fe2c0",
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    "packages/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    "packages/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    "packages/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/index.js": "6a42d4db8eb2cbf9bbe62710b262209bf8e316e9e3a39829d7c49d76c2da7607",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    "packages/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    "packages/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    "packages/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    "packages/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "packages/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/examples/body-marks/README.md": "6f59c2334469cb0494fe7c5c2a0e1632403938a506aaea460f86d38e7ae46599",
+    "packages/javascript/examples/body-marks/body-marks.js": "4f2befcd17695d72d33440f4f2c3b1bdcb0a40d2361b21a254de4bb5e7c79315",
+    "packages/javascript/examples/body-marks/index.html": "f3d0b605955ad4d8a136a84322274bd9aab538e4072434b283cdd6890d0e1e8f",
+    "packages/javascript/examples/body-marks/sketch.js": "0419bde4ad0254d60de435d8cea9f1b73bfe3d75219d4b89ec5895a897281128",
+    "tools/serve_body_marks.mjs": "946628720bde005e7ef946420bcfe6090042b7213deb10b04c960c015de96bdb",
+    "packages/javascript/examples/city-marks/README.md": "35e33b36e3a71bf827685788d48e6f68393eb7f541c59732ce42a4029631bf1e",
+    "packages/javascript/examples/city-marks/city-marks.js": "9f3b9aa2eef1d5387e8d088e5e2de4c400960fa4997bd85dba26dd7cd2364250",
+    "packages/javascript/examples/city-marks/index.html": "ea1a2f69bdb07c019217f3510dcf033dbddb089f89516eaa1daf6df6504fcee4",
+    "packages/javascript/examples/city-marks/sketch.js": "b6ef9a40b308563d6225048d5d27dfe5b6122af5c711d89e92d5750008e21ab2",
+    "tools/serve_city_marks.mjs": "253516e6e633f65ecbfdbad0bf6829b399fe4235b63cc4d2de6b7d6580eb3579",
+    "packages/javascript/examples/clip-marks/README.md": "cd4d7f1b4518d29251ef6691b2718a0f87713e745892fec5d0aa1c59783c35ac",
+    "packages/javascript/examples/clip-marks/clip-marks.js": "44dd9e5facf233655d8ed378e96f5098bdd8e65e02e6b1c221698fcc4da24874",
+    "packages/javascript/examples/clip-marks/index.html": "2b987a88eb4e7203eeabaeacefac2cb765bf1eafa1c4321009770ba8dbcc9a47",
+    "packages/javascript/examples/clip-marks/sketch.js": "19ea5fbd1c8e2c324b0489f5c86ad011cf97768078f80d32ab68d6cbcea61618",
+    "tools/serve_clip_marks.mjs": "2d5ae0376b6928f488fa39282423f2e976c7e80eb5021549adc51208b5743cc7",
+    "packages/javascript/examples/contact-marks/README.md": "b0caaab7d805606ee57669f0ebd8c15571f1b7900eeedff327195cfb98aadbc4",
+    "packages/javascript/examples/contact-marks/contact-marks.js": "e91cbc60c23eca6e22182b63a69cc347c99ae5efd4277cfc55c1fc44aba96763",
+    "packages/javascript/examples/contact-marks/index.html": "bf45d6ba8562f3341c309f05628d6e78cbd476a86566bded7738530410484f56",
+    "packages/javascript/examples/contact-marks/sketch.js": "1b5ed883e5ae839d551332973dccb804976f74c595db44d78aa35ac800943777",
+    "tools/serve_contact_marks.mjs": "f03feaddbeb739fe569910b9548aca0287bb6bd8bfef5cc6a5079a6162237d11",
+    "packages/javascript/examples/glyph-marks/README.md": "5acbe2148b1180e42095cff4b211c3e9fed4f8a6f98ab28396db11ba73858d51",
+    "packages/javascript/examples/glyph-marks/glyph-marks.js": "34f9ec004e4d84c64475b32c11151f9f9c160725d1870b8a15695e21fde293bf",
+    "packages/javascript/examples/glyph-marks/index.html": "cc61930d03b49b047bb6375f068f399596e96bfae4ce82cf5b3cea9beacd33a3",
+    "packages/javascript/examples/glyph-marks/sketch.js": "9787c41ea258cb0e8faffe2f4c55ad7f0f9c5404678ef33ba1677edb9374226a",
+    "tools/serve_glyph_marks.mjs": "6ecb8e1cb8613223bacc35d3c77e63afdf28a7cd70a9ced0da24a0a0e5b4fb76",
+    "packages/javascript/examples/glyph-marks/assets/FONT-LICENSE.txt": "63544717f051095f67c6da4f36776aafd81e561320baf36ae65925f3336ebb8a",
+    "packages/javascript/examples/glyph-marks/assets/GlyphMarks.ttf": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+    "packages/javascript/examples/image-field-marks/README.md": "db216b9e0f7f1b906090e5a965723d689cc950f0769eefcb3cc00101efaeab15",
+    "packages/javascript/examples/image-field-marks/image-field-marks.js": "b713f2beb7cc5e203719118bccb848d3d4088954696b036c6e987069d519a8cd",
+    "packages/javascript/examples/image-field-marks/index.html": "60726429a18c74c83c05ffac2caf1fcb34a1473337156feb108438c741342a33",
+    "packages/javascript/examples/image-field-marks/sketch.js": "639613acbae365cb91546f704ba35d87cdb6ee53700dbee411c6b9a7a49bc9a3",
+    "tools/serve_image_field_marks.mjs": "8028aa0e3025cb04aa457c659890cf568aebd8c320722b7c541271714ae53094",
+    "packages/javascript/examples/landscape-marks/README.md": "e6b90a0af707ab9236868285f32fbe9e4e1508c30f2409e38ed888f479d335ad",
+    "packages/javascript/examples/landscape-marks/index.html": "cf49d436e701b53e8e3adb4446805c59249b2f55175439466c12e0e5db6c1fe1",
+    "packages/javascript/examples/landscape-marks/landscape-marks.js": "c8aa3ee62ddce70dfd51dd4e8c6fa95a351744dfe6bd529b60d213118ad29560",
+    "packages/javascript/examples/landscape-marks/sketch.js": "ee17f04de10c8d93a70f59521cf47011bee9c5a0c532c8a17fc56d498019b9d2",
+    "tools/serve_landscape_marks.mjs": "ca7d124b00f383a06132b90cc78ca15b91c2f2e80a44c2d4152b283470b25ff3",
+    "packages/javascript/examples/layer-marks/README.md": "1acbfbc48bd73f79507048b18d64afb7848fb20a9eef77dcaeef428eb89fcaf8",
+    "packages/javascript/examples/layer-marks/index.html": "761801276641b9634c456d7d48743ac5f044387d60743b813278160129a46367",
+    "packages/javascript/examples/layer-marks/layer-marks.js": "0311fd8444d2a8f7ce87b6133a71920e51bc7d2dfd019507f095b6cefcabb7c3",
+    "packages/javascript/examples/layer-marks/sketch.js": "2eec327cd0b03297cbd72cdaf0fb733820b06834720a1af83bfa080dc8e7bd28",
+    "tools/serve_layer_marks.mjs": "445e8acfd8931878a0e518900b70f9055fbd5af6bce9cdb7f67a0afb6529b3e1",
+    "packages/javascript/examples/mask-marks/README.md": "fcd2fde347322654162018213936a92b42882b8c505a7b07a6f7e49567101c2d",
+    "packages/javascript/examples/mask-marks/index.html": "444ccb42c2d7dcc2070e17befe65f7be5fe876c6abdc9c20afba05242b8b1740",
+    "packages/javascript/examples/mask-marks/mask-marks.js": "a8a522d90f2aa96e2ea5587b859d1126798536aaf722d4c29af37c45344104a5",
+    "packages/javascript/examples/mask-marks/sketch.js": "5c4230d87a4be32348847f5fd74d60b6a5fbbcfb9d7c2c98ee042f74b39b2f5e",
+    "tools/serve_mask_marks.mjs": "1b82488dd0ede3506d18cb54e4e8657ebe013a41ecd215ebc125d1622f638b15",
+    "packages/javascript/examples/masked-partition-marks/README.md": "7a353a66e63a280cd29ecf3402a7cf11271f83ffbc115e30ae1e530109dc3851",
+    "packages/javascript/examples/masked-partition-marks/index.html": "ddd3cfa75d1c9c58d5ae4e64132e244f7bf4d8076591dbc76cffe770373d8be2",
+    "packages/javascript/examples/masked-partition-marks/masked-partition-marks.js": "94222e0e260852f3b060f96457025b02b0eecafee316f654e517e32a3b48c5b5",
+    "packages/javascript/examples/masked-partition-marks/sketch.js": "b59896671ca026866c6cbfca9dab006d118cde17dfa2067e6ef938288ee247f6",
+    "tools/serve_masked_partition_marks.mjs": "0a3a5c5659cdddd4aa9cb82eff39c8fa988219ed675a5e8f7c092177e61b2956",
+    "packages/javascript/examples/placement-image-marks/README.md": "417ae8f228b4e536a524ff92d549a070c51491fabf49e764dc09aaa75a61cbe8",
+    "packages/javascript/examples/placement-image-marks/index.html": "286d0b425845223982b28ae81a1c0e7883730fdb16632eef61a29ee5e3d2df1a",
+    "packages/javascript/examples/placement-image-marks/placement-image-marks.js": "797b15b0015412790c1dd4acb0e25a8597eb71785682701e9936ccf8a7a7bf2d",
+    "packages/javascript/examples/placement-image-marks/sketch.js": "65c2a0cb1c2139629f49255c371268684bbc8307d5dd202cd27e8383049321ad",
+    "tools/serve_placement_image_marks.mjs": "528f2bbf603bc4ae682f4a8a926ba61669d6f40957b5b4b6dba445fb7dde1a1e",
+    "packages/javascript/examples/pointer-marks/README.md": "aac53dd84fa19e0045f81689d9f1266fbb5a734b4d9991f951168a664d1556f8",
+    "packages/javascript/examples/pointer-marks/index.html": "aa0c6c58647679564436cd349af60b69843593a233bdaa8687972614b2650dfc",
+    "packages/javascript/examples/pointer-marks/pointer-marks.js": "9eee3ad0c62d59f7b788bb110b18c249f7e05bb9b3e726d2562c6807bbc88445",
+    "packages/javascript/examples/pointer-marks/sketch.js": "ef1d722880c7929af84ec565bf7f1a7fab656ba8e6545d5ccb8ca59dbca19e23",
+    "tools/serve_pointer_marks.mjs": "4d54227ef2cd9e3492ea971a4d48e4c72569a4cee5b332330192f30412bd1f6e",
+    "packages/javascript/examples/relief-marks/README.md": "7121543eceae1946acbe7d161939288af0b5ef723d836cf0f96edb342634da38",
+    "packages/javascript/examples/relief-marks/index.html": "9517989ebe64632e08c64d1fa3bd0123b3fdc9d4b5fde8f6ce150890d9290ef6",
+    "packages/javascript/examples/relief-marks/relief-marks.js": "c98891a3cbb50a0112dce6645f5563195b62da2986b9578f10c0393b7ae690bb",
+    "packages/javascript/examples/relief-marks/sketch.js": "49d3471a4c15d9fb8e277141724d913aabfba0f4d135c7b623de62c22e7cfe19",
+    "tools/serve_relief_marks.mjs": "4789debe3a476919bd2eba3a18b4480eb145a552f3e6c00e729e03b72f469114"
+  }
+}

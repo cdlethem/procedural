@@ -19,18 +19,17 @@ attestations. Use the machine-wide render lease and publishing rules in [AGENTS]
 
 ## Remaining target work
 
-- **p5.js:** the twelve-core/twelve-workflow batch at `2f9418e3` is integrated on top of
-  main `aed135cc`, including exports, package installation and native review. There are
-  30 accepted cores and 29 scoped-native operation attestations. Remaining same-name Java
-  workflow ports are BodyMarks, CityMarks, ClipMarks, ContactMarks, GlyphMarks,
+- **p5.js:** JavaScript now has all **31 conformant cores**, **31 scoped-native
+  operation attestations**, and a one-to-one set of **37 editable workflows** for the
+  Java Processing example inventory. The post-backlog workflow evidence and review are
+  [`evidence/ports/p5-workflow-completion/`](../evidence/ports/p5-workflow-completion/);
+  it exercises BodyMarks, CityMarks, ClipMarks, ContactMarks, GlyphMarks,
   ImageFieldMarks, LandscapeMarks, LayerMarks, MaskMarks, MaskedPartitionMarks,
-  PlacementImageMarks, PointerMarks and ReliefMarks. Check adapter needs before batching.
-  Java “candidate” comments are historical; current catalog reviews accept LayerMarks,
-  MaskMarks, ClipMarks and ContactMarks. Their missing standalone p5 examples are pending,
-  not rejected capabilities.
-- **Radial profile:** JavaScript/Python core and ProfileMarks native reviews already exist;
-  shared target attestations remain unvalidated. Reconcile existing evidence and package
-  successors rather than redoing accepted cores. Android P3D remains a separate obligation.
+  PlacementImageMarks, PointerMarks and ReliefMarks. Java “candidate” comments on
+  LayerMarks, MaskMarks, ClipMarks and ContactMarks are historical, not exclusions.
+  RadialProfile3D and ProfileMarks reconcile their existing core, native and package
+  reviews into the shared p5 target attestation. Technique validation remains a separate
+  dimension: this work does not increase the four existing scoped technique attestations.
 - **py5/Python:** the three new binary-partition, rectangle-cut and crossfade cores/tests
   are present but unaccepted and not exposed by the package root. Older branch Python/py5
   files were excluded from the p5 merge and remain at `2f9418e3`; explicitly transplant

@@ -1082,7 +1082,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/nearest-contact-root-review.json) | [validated-scoped](../../evidence/conformance/nearest-contact-root-review.json) | unvalidated | [review](../../evidence/conformance/nearest-contact-root-review.json) |
-| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | unvalidated | unvalidated | [review](../../evidence/ports/p5-backlog/core-root-review.json) |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | [validated-scoped](../../evidence/ports/p5-workflow-completion/root-review.json) | unvalidated | [review](../../evidence/ports/p5-workflow-completion/root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -1614,7 +1614,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/documentation/unified-install-artist-copy-profile-marks-review.json) | [validated-scoped](../../evidence/documentation/unified-install-artist-copy-profile-marks-review.json) | [validated-scoped](../../evidence/documentation/unified-install-artist-copy-profile-marks-review.json) | [review](../../evidence/documentation/unified-install-artist-copy-profile-marks-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/conformance/radial-profile-javascript-root-review.json) | [validated-scoped](../../evidence/ports/p5-workflow-completion/root-review.json) | unvalidated | [review](../../evidence/ports/p5-workflow-completion/root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 

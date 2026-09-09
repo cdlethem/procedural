@@ -123,10 +123,84 @@
     },
     "p5js": {
       "core": {
-        "status": "unvalidated"
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+          "tests/native/radial-profile-javascript.mjs": "cf65e9d538b28f88350eef156c10486b4c41d1d41d59f1dff89f2345aef8dc58",
+          "packages/javascript/src/index.js": "6a42d4db8eb2cbf9bbe62710b262209bf8e316e9e3a39829d7c49d76c2da7607"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/radial-profile-javascript.json": "ec55cc08e1cadc7a414e55e705ea008fc81a56380e25970f767667bbb0ac09e5",
+          "evidence/conformance/radial-profile-javascript-root-review.json": "4fc7de8cf59c9fc434b052babf8a2af159a49eda179a554623026284fda944c1",
+          "evidence/distribution/profile-javascript-review.json": "39d2e8f8de09aabf11d3036e5414a9082fe30f1a64176a29a91d9c5948247e56",
+          "fixtures/operations/radial-profile-surface.json": "7585f91de4033692ea77d5480be3e89ac33e8d936dc85c155d3413f50051bc88"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/radial-profile-javascript.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/radial-profile-javascript-root-review.json",
+            "pointer": "/status",
+            "equals": "accepted"
+          },
+          {
+            "path": "evidence/distribution/profile-javascript-review.json",
+            "pointer": "/status",
+            "equals": "accepted"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/conformance/radial-profile-javascript-root-review.json",
+          "sha256": "4fc7de8cf59c9fc434b052babf8a2af159a49eda179a554623026284fda944c1"
+        },
+        "runtime_profile": {
+          "name": "Node 22.22.1",
+          "scope": "43 shared fixture cases, retained-access/ownership checks and public-package export. No native drawing claim from this dimension."
+        }
       },
       "native": {
-        "status": "unvalidated"
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+          "packages/javascript/examples/profile-marks/index.html": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867",
+          "packages/javascript/examples/profile-marks/sketch.js": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c",
+          "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+          "tests/native/profile-marks-browser.mjs": "400c4764faf80eb4d9b7161fed3c0655ead46a2fbc27b9d1163cab284b99693d",
+          "tools/run_p5_profile_marks.mjs": "d6c671e11f42bead9068548e68690caad79c8167d6d9817ad12e55e7b9a293a4"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/p5js-profile-marks.json": "ca430bbed379ae08748d978e35bdf35316f80a6a6b391ed13c9cc44185dfd12b",
+          "evidence/conformance/profile-p5js-native-root-review.json": "a6202225f6c6c93a0fd6c58593a9c5b81a38681e62bc2c606bd4267c016fd651",
+          "evidence/ports/p5-workflow-completion/root-review.json": "ed9bf9e28134045ab9d9433fb8364bf9456da944fa6dfdb3f363b5eeb429c889"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/p5js-profile-marks.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/conformance/profile-p5js-native-root-review.json",
+            "pointer": "/status",
+            "equals": "accepted"
+          },
+          {
+            "path": "evidence/ports/p5-workflow-completion/root-review.json",
+            "pointer": "/status",
+            "equals": "accepted"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/ports/p5-workflow-completion/root-review.json",
+          "sha256": "ed9bf9e28134045ab9d9433fb8364bf9456da944fa6dfdb3f363b5eeb429c889"
+        },
+        "runtime_profile": {
+          "name": "Node 22.22.1; p5.js 2.3.2; Chromium 153.0.8010.12; SwiftShader WEBGL",
+          "scope": "Profile/cap/subdivision/palette/trio settings, retained geometry, reset identity and save identity across ten actual browser states. No Processing/p5 pixel-parity claim."
+        }
       },
       "technique": {
         "status": "unvalidated"
