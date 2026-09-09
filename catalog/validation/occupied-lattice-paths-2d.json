@@ -94,7 +94,38 @@
     },
     "p5js": {
       "core": {
-        "status": "unvalidated"
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+          "tests/native/occupied-lattice-paths-javascript.mjs": "a7f66bc6c5c73eeb491536aa19f603ec53b5694a24caaedc7649f68a6a33d2f2",
+          "tools/run_lattice_browser_core.mjs": "5b19fc4dcdc35c72381ce32722a163c46185a00d50d67e52649a000f18350f84",
+          "tools/serve_warp_marks.mjs": "38824b3768dada162997255e739832d2b29942537bd677fe30ee8299868883e6"
+        },
+        "evidence_sha256": {
+          "evidence/ports/occupied-lattice-p5/core.json": "b54af91d4df9d3a29bd307469ecf3f99391ed09d91b4f78b34abea2f2ab079cf",
+          "evidence/ports/occupied-lattice-p5/browser-core.json": "8897273ebd9773b3d559fe1ac41d3e849f62400b91c2132984076ee0edddd085",
+          "fixtures/operations/occupied-lattice-paths-2d.json": "220d57e7d42413063a777066fe6d3addff4ad9c1d987bc34ba0ac36d0ad25d98"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/ports/occupied-lattice-p5/core.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/ports/occupied-lattice-p5/browser-core.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/ports/occupied-lattice-p5/root-review.json",
+          "sha256": "a1e8af1a14f60cd29a33e2ef9dbca9bd603267668d7140b3e745f90bcf65c4e3"
+        },
+        "runtime_profile": {
+          "name": "Node22; Chromium153",
+          "scope": "Direct-module JavaScript occupied-lattice core only; browser fixtures do not accept a LatticeMarks workflow."
+        }
       },
       "native": {
         "status": "unvalidated"

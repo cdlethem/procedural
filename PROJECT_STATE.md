@@ -1,5 +1,16 @@
 # Project state
 
+## Occupied-lattice JS core reviewed; netlib hypot candidate in flight
+
+Root read lattice core and14shared fixtures pass Node/Chromium under shared lease.
+evidence/ports/occupied-lattice-p5/root-review.json accepts core only; native-workflow and
+technique remain unvalidated. Original branch remainder4cores/3workflows plus common exports.
+Root fetched/read netlib e_hypot.c; complete Sun notice permits redistribution with notice.
+Assigned port_core_review candidate internal/fdlibm-hypot.js and focused runner: directly
+translate C words, explicitly refresh ha/hb after subnormal2^1022 scaling, exact Javaoracle
+comparison. Do not import OpenJDK hypot or change spline/acceptance until root review.
+Android draft preserved.
+
 ## Target-spring JavaScript core accepted; workflow remains unvalidated
 
 Root read full JS spring source against pure-transition contract, following Terra review.

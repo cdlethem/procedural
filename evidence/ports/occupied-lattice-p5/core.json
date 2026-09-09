@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "operation": "path.occupied-lattice-paths-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module golden, carrier and access checks against the frozen occupied-lattice-paths-2d fixtures. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/occupied-lattice-paths-2d.json": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d",
+    "fixtures/operations/occupied-lattice-paths-2d.json": "220d57e7d42413063a777066fe6d3addff4ad9c1d987bc34ba0ac36d0ad25d98",
+    "packages/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    "tests/native/occupied-lattice-paths-javascript.mjs": "a7f66bc6c5c73eeb491536aa19f603ec53b5694a24caaedc7649f68a6a33d2f2"
+  },
+  "input_sha256_after": {
+    "catalog/operations/occupied-lattice-paths-2d.json": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d",
+    "fixtures/operations/occupied-lattice-paths-2d.json": "220d57e7d42413063a777066fe6d3addff4ad9c1d987bc34ba0ac36d0ad25d98",
+    "packages/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    "tests/native/occupied-lattice-paths-javascript.mjs": "a7f66bc6c5c73eeb491536aa19f603ec53b5694a24caaedc7649f68a6a33d2f2"
+  },
+  "scenarios": {
+    "fixture_cases": 14,
+    "ownership_access": [
+      "input containers detached",
+      "toValues/randomState export detached",
+      "at/into accessors",
+      "invalid outputs rejected",
+      "index/range precedence",
+      "random.state continuation"
+    ],
+    "native_only": [
+      "nonfinite/wrong-shape carriers",
+      "passive-input-carriers-only"
+    ]
+  },
+  "allocation_failure": {
+    "executed": false,
+    "source_review": "Output exports allocate detached arrays and do not mutate retained private arrays; a rejected configuration exposes no result. No controlled host allocation failure injected."
+  }
+}

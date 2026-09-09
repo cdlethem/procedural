@@ -17,8 +17,12 @@ Target springs core is also accepted through direct-module import after 44 share
 passed in Node and Chromium; native-workflow/technique support remain unvalidated.
 See `evidence/ports/target-springs-p5/root-review.json`.
 
-Remaining original JavaScript core work: Delaunay, closed spline, noise-band paths,
-occupied-lattice paths and line pools; LoopMarks, BandMarks and
+Occupied-lattice core is accepted separately in
+`evidence/ports/occupied-lattice-p5/root-review.json`; 14 shared cases pass in Node and
+Chromium. Native-workflow/technique acceptance remains unvalidated.
+
+Remaining original JavaScript core work: Delaunay, closed spline, noise-band paths
+and line pools; LoopMarks, BandMarks and
 CutBranchMarks workflows. SpringMarks animation still needs separate native acceptance. Existing operation contracts and
 shared fixtures stay authoritative, including any intentional host API differences.
 
