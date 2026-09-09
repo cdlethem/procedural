@@ -44,8 +44,8 @@
           }
         ],
         "acceptance_review": {
-          "path": "evidence/distribution/cp3-review.json",
-          "sha256": "933f851638da135124cc98ef2b18360d3325b42017ac35b22584b2bdcf02d870"
+          "path": "evidence/documentation/seeded-circle-placement-processing-java-core-indirect-grid-path-carry-forward.json",
+          "sha256": "ac600b0f5a427dede80c6e63fbef27fce3628f62f69c9fdedf3701130c43f149"
         },
         "runtime_profile": {
           "name": "OpenJDK 17.0.20.1; Java 8 strictfp bytecode",
@@ -81,8 +81,8 @@
           }
         ],
         "acceptance_review": {
-          "path": "evidence/distribution/cp3-review.json",
-          "sha256": "933f851638da135124cc98ef2b18360d3325b42017ac35b22584b2bdcf02d870"
+          "path": "evidence/documentation/seeded-circle-placement-processing-java-native-indirect-grid-path-carry-forward.json",
+          "sha256": "ac600b0f5a427dede80c6e63fbef27fce3628f62f69c9fdedf3701130c43f149"
         },
         "runtime_profile": {
           "name": "OpenJDK 17.0.20.1; Processing 4.5.6 JAVA2D",
@@ -113,8 +113,8 @@
           }
         ],
         "acceptance_review": {
-          "path": "evidence/distribution/cp3-review.json",
-          "sha256": "933f851638da135124cc98ef2b18360d3325b42017ac35b22584b2bdcf02d870"
+          "path": "evidence/documentation/seeded-circle-placement-processing-java-technique-indirect-grid-path-carry-forward.json",
+          "sha256": "ac600b0f5a427dede80c6e63fbef27fce3628f62f69c9fdedf3701130c43f149"
         },
         "runtime_profile": {
           "name": "OpenJDK 17.0.20.1; Processing 4.5.6 JAVA2D",
@@ -390,10 +390,10 @@
           "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
           "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
           "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
-          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "304047650f4112e6b66bf8a5f503511b7dc1087648ff98f5f524d89730adabd7",
           "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
           "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
-          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "7129f1c512bfbe5a77e04ec1ad3eb6fcc88209e636175cd54ae9c9edf181b4d2",
           "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
           "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
           "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
@@ -415,7 +415,9 @@
         "evidence_sha256": {
           "evidence/reproductions/placement-marks-android/result.json": "b46910af5b00f170061e123e3dd476dcf67713ecd281ca23003da7c49e2b7180",
           "evidence/conformance/android-field-restore-attempt7.json": "2f41d3416e4fcce982d8cbfd15317d8728f1dd4a8d908028cd4af8c237ebe22b",
-          "evidence/conformance/android-placement-restore-attempt3.json": "71ba0eddd77410ce2352e582fb786d472bc80e09bd2074361a1d2da12571d842"
+          "evidence/conformance/android-placement-restore-attempt3.json": "71ba0eddd77410ce2352e582fb786d472bc80e09bd2074361a1d2da12571d842",
+          "evidence/conformance/android-snapshot-restoration-root-review.json": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8",
+          "evidence/documentation/java-grid-path-comments-review.json": "1d8d3cca627516646be3aff61c6b6964776135b55bd8b4f31b70909d57f429c2"
         },
         "evidence_predicates": [
           {
@@ -455,8 +457,8 @@
           }
         ],
         "acceptance_review": {
-          "path": "evidence/conformance/android-snapshot-restoration-root-review.json",
-          "sha256": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8"
+          "path": "evidence/documentation/seeded-circle-placement-processing-android-native-grid-path-carry-forward.json",
+          "sha256": "fdf9431def691852233b1d54281ec5b7d09f4dcba6db6ca9aab9f1ae9534c59d"
         },
         "runtime_profile": {
           "name": "Android API33 x86_64 emulator; ART; Processing Android2D for workflow",

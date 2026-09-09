@@ -44,7 +44,9 @@ class AndroidRestorationReviewTests(unittest.TestCase):
     def _copy_successor_snapshot(self):
         review = json.loads((ROOT / REVIEW).read_text())
         base = json.loads((ROOT / BASE).read_text())
-        paths = {REVIEW, BASE, FIELD_RESULT}
+        paths = {REVIEW, BASE, FIELD_RESULT,
+                 'evidence/documentation/java-grid-path-comments-review.json',
+                 'evidence/documentation/java-grid-path-comment-snapshots.json'}
         paths.update(review['implementation_sha256'])
         paths.update(review['evidence_sha256'])
         paths.update(base['implementation_sha256'])

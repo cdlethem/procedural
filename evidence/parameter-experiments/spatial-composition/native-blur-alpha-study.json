@@ -1,0 +1,50 @@
+{
+  "scope": "Private CPU PImage blur observation; no renderer/public acceptance",
+  "inputs_before": {
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "tools/diagnostics/spatial-composition/NativeBlurAlphaStudy.java": "872ec04c286cfa3511748a4c871815f850b8d68ce2ba2c33fc6d8ab0fb421e7a",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d"
+  },
+  "commands": [
+    {
+      "argv": [
+        ".work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "8",
+        "-cp",
+        ".work/toolchains/processing-4.5.6/core-4.5.6.jar",
+        "-d",
+        ".work/native-blur-alpha-study3",
+        "tools/diagnostics/spatial-composition/NativeBlurAlphaStudy.java"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        ".work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        ".work/native-blur-alpha-study3:.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+        "NativeBlurAlphaStudy"
+      ],
+      "exit_code": 0,
+      "stdout": "visibleDifferences=165\n[255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 218956017, 892666057, 2021130374, 892666057, 218956017, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255]\n{\"hiddenRgbInvariant\":false,\"blue\":\"78780086\",\"green\":\"78788600\",\"black\":\"78780000\"}\n",
+      "stderr": ""
+    }
+  ],
+  "inputs_after": {
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "tools/diagnostics/spatial-composition/NativeBlurAlphaStudy.java": "872ec04c286cfa3511748a4c871815f850b8d68ce2ba2c33fc6d8ab0fb421e7a",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d"
+  },
+  "root_review": {
+    "status": "informational",
+    "finding": "33x33 source with opaque red vertical stripe on alpha0 blue versus alpha0 green gives165 visibly different pixels. Center output ARGB78780086 versus78788600; black-hidden source78780000. Native blur mixes hidden RGB and darkens straight-color red instead of retaining red RGB with reduced alpha.",
+    "earlier_attempts": "9x3 source at same parameter showed no visible blur; this degenerate small-height study was inconclusive, preserved under native-blur-alpha-study1/2.",
+    "decision": "Do not expose a thin native BLUR wrapper as transparency-safe filtering. Specify premultiplied working colors, normalization and boundaries before implementation.",
+    "scope": "Pinned CPU PImage implementation only; no claim about other renderer filters."
+  }
+}

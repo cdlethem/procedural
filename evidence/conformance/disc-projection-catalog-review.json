@@ -1,0 +1,17 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java projection core and scoped JAVA2D contour/line workflow; other targets and distribution pending.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c",
+    "packages/java-processing/examples/ProjectionMarks/ProjectionMarks.pde": "1ee3d6daaf6a57e50af86fcc2846ded9b6a40cff79160ed0178dad2d3ba92d56"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/disc-projection-java.json": "6162d4a69ad414522555ca5bd2f703380e79d84b63269a3126b02fdac81ff590",
+    "evidence/conformance/disc-projection-performance.json": "574efc2da5e4d0b1dbeea7ea8d50da5f115cf7c0a50605833916b117dfdb08e0",
+    "fixtures/operations/sequential-disc-projection-2d.json": "3a73f3e787469e835dc86e7ad81bea2589faf0984aa970d39cf3325b6234deef",
+    "evidence/workflows/projection-marks/native.json": "8cf50a99909e25fbba2fb839da16352866014227c694078bb9d817f38e302f3c",
+    "evidence/workflows/projection-marks/root-review.json": "c7fd45d657620932ada0505910d69da9b42093c4c89dfa16fd2bfea6283f3552"
+  }
+}

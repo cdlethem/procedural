@@ -13,3 +13,8 @@ that reference implementation or its permutation table and does not claim its ou
 Processing runtime dependencies retain their upstream LGPL licensing. Downloaded JARs
 remain in ignored development directories; this file does not relicense those dependencies.
 Survey sketch provenance and upstream MIT notices remain under `survey/`.
+
+Generated Java API documentation includes the standard JDK Javadoc support files. Their
+original notices, including the Javadoc licensing terms and bundled jQuery/jQuery UI notices,
+are preserved under `reference/legal/` in source-built distributions. These generated assets
+remain outside Git and retain their own licenses; the project license does not replace them.

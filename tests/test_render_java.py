@@ -1,5 +1,10 @@
 import tempfile
 import unittest
+import hashlib
+import os
+from unittest import mock
+from contextlib import redirect_stderr
+from io import StringIO
 from pathlib import Path
 
 from tools import render_java
@@ -46,6 +51,77 @@ class RenderJavaTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 render_java.parameter(text)
 
+    def test_asset_inventory_is_sorted_and_allows_empty_root(self):
+        assets = self.base / "assets"
+        (assets / "z").mkdir(parents=True)
+        (assets / "a").mkdir()
+        (assets / "z" / "last.bin").write_bytes(b"last")
+        (assets / "a" / "first.bin").write_bytes(b"first")
+        (assets / "a.txt").write_bytes(b"flat")
+        inventory = render_java.asset_inventory(assets)
+        self.assertEqual([item["path"] for item in inventory["files"]],
+                         ["a.txt", "a/first.bin", "z/last.bin"])
+        self.assertEqual(inventory["bytes"], 13)
+        self.assertEqual(inventory["files"][0]["sha256"],
+                         hashlib.sha256(b"flat").hexdigest())
+        (self.base / "empty").mkdir()
+        self.assertEqual(render_java.asset_inventory(self.base / "empty")["files"], [])
+
+    def test_asset_root_and_entries_reject_symlinks_and_non_directories(self):
+        with self.assertRaisesRegex(ValueError, "directory"):
+            render_java.asset_inventory(self.base / "missing")
+        regular = self.base / "regular"
+        regular.write_bytes(b"x")
+        with self.assertRaisesRegex(ValueError, "directory"):
+            render_java.asset_inventory(regular)
+        target = self.base / "target"
+        target.write_bytes(b"x")
+        link = self.base / "link"
+        os.symlink(target, link)
+        with self.assertRaisesRegex(ValueError, "symlink"):
+            render_java.asset_inventory(link)
+        assets = self.base / "nested"
+        assets.mkdir()
+        os.symlink(target, assets / "asset")
+        with self.assertRaisesRegex(ValueError, "symlink"):
+            render_java.asset_inventory(assets)
+
+    def test_asset_budgets_are_checked_during_preflight(self):
+        assets = self.base / "assets"
+        assets.mkdir()
+        (assets / "one").write_bytes(b"1")
+        (assets / "two").write_bytes(b"2")
+        with mock.patch.object(render_java, "ASSET_MAX_FILES", 1):
+            with self.assertRaisesRegex(ValueError, "file budget"):
+                render_java.asset_inventory(assets)
+        with mock.patch.object(render_java, "ASSET_MAX_BYTES", 1):
+            with self.assertRaisesRegex(ValueError, "byte budget"):
+                render_java.asset_inventory(assets)
+
+    def test_staged_assets_detect_source_and_staged_mutation(self):
+        assets = self.base / "assets"
+        (assets / "nested").mkdir(parents=True)
+        (assets / "nested" / "marker.txt").write_text("original")
+        inventory = render_java.asset_inventory(assets)
+        staged = self.base / "variant" / "data"
+        render_java.stage_assets(assets, staged, inventory)
+        self.assertEqual((staged / "nested" / "marker.txt").read_text(), "original")
+        (staged / "nested" / "marker.txt").write_text("changed")
+        with self.assertRaisesRegex(RuntimeError, "changed"):
+            render_java.verify_asset_inventory(staged, inventory)
+        (staged / "nested" / "marker.txt").write_text("original")
+        (assets / "nested" / "marker.txt").write_text("source changed")
+        with self.assertRaisesRegex(RuntimeError, "changed"):
+            render_java.verify_asset_inventory(assets, inventory)
+        (assets / "nested" / "marker.txt").write_text("original")
+        (assets / "added.txt").write_text("new")
+        with self.assertRaisesRegex(RuntimeError, "changed"):
+            render_java.verify_asset_inventory(assets, inventory)
+        (assets / "added.txt").unlink()
+        (assets / "nested" / "marker.txt").unlink()
+        with self.assertRaisesRegex(RuntimeError, "changed"):
+            render_java.verify_asset_inventory(assets, inventory)
+
     def test_existing_output_is_preserved_before_runtime_work(self):
         sketch_dir = self.base / "Sketch"
         sketch_dir.mkdir()
@@ -70,6 +146,47 @@ class RenderJavaTests(unittest.TestCase):
                 str(self.base / "missing.pde"), "--library", str(self.base / "missing.jar"),
                 "--seed", "4294967296", "--output", str(ROOT / ".work" / "tmp" / "seed-invalid"),
             ])
+
+    def test_frame_defaults_to_first_draw(self):
+        error = self._frame_cli_error([])
+        self.assertNotIn("frame", error.lower())
+
+    def test_frame_accepts_one_through_ten_thousand(self):
+        for frame in ("1", "10000"):
+            error = self._frame_cli_error(["--frame", frame])
+            self.assertNotIn("frame", error.lower())
+
+    def test_frame_rejects_out_of_range_and_noninteger_before_runtime(self):
+        for frame in ("0", "-1", "10001", "not-an-integer"):
+            error = self._frame_cli_error(["--frame", frame])
+            self.assertIn("frame", error.lower())
+
+    def test_frames_requires_bounded_strictly_increasing_ordinals(self):
+        self.assertEqual(render_java.parse_frames("1,3,5"), [1, 3, 5])
+        for text in ("", "1,", "1,3,2", "1,1", "0,2", "1,10001", "a,2",
+                     ",", ",1"):
+            with self.assertRaises(ValueError):
+                render_java.parse_frames(text)
+        with self.assertRaises(ValueError):
+            render_java.parse_frames(",".join(str(i) for i in range(1, 66)))
+
+    def test_renderer_profiles_are_explicit_and_check_actual_graphics_class(self):
+        self.assertIn("processing.awt.PGraphicsJava2D", render_java.renderer_checks("JAVA2D"))
+        self.assertIn("processing.opengl.PGraphics2D", render_java.renderer_checks("P2D"))
+        self.assertIn("processing.opengl.PGraphics3D", render_java.renderer_checks("P3D"))
+        self.assertIn('P3D.equals(sketchRenderer())', render_java.wrapper("Sketch", renderer="P3D"))
+        self.assertNotIn("PGraphicsJava2D", render_java.wrapper("Sketch", renderer="P3D"))
+
+    def _frame_cli_error(self, frame_args):
+        arguments = [
+            str(self.base / "missing.pde"), "--library", str(self.base / "missing.jar"),
+            "--seed", "42", "--output", str(self.base / "frame-output"),
+            *frame_args,
+        ]
+        stderr = StringIO()
+        with redirect_stderr(stderr), self.assertRaises(SystemExit):
+            render_java.main(arguments)
+        return stderr.getvalue().splitlines()[-1]
 
 
 if __name__ == "__main__":

@@ -6,14 +6,17 @@ from io import BytesIO
 import json
 import os
 import tempfile
+import warnings
 from pathlib import Path
 
 from PIL import Image, __version__ as PILLOW_VERSION
 
 try:
-    from tools.contact_sheet import MAX_INPUT_BYTES, WORK, source_images
+    from tools.contact_sheet import (MAX_INPUT_BYTES, MAX_SOURCE_PIXELS,
+                                     SUPPORTED_FORMATS, WORK, source_images)
 except ModuleNotFoundError:  # direct execution from the repository's tools directory
-    from contact_sheet import MAX_INPUT_BYTES, WORK, source_images
+    from contact_sheet import (MAX_INPUT_BYTES, MAX_SOURCE_PIXELS,
+                               SUPPORTED_FORMATS, WORK, source_images)
 
 
 def output_path(value):
@@ -36,9 +39,25 @@ def extract(source, requested, matte):
         source_before = handle.read(MAX_INPUT_BYTES + 1)
     if len(source_before) > MAX_INPUT_BYTES:
         raise ValueError("input exceeds byte limit: " + str(source_path))
-    with Image.open(BytesIO(source_before)) as opened:
-        opened.seek(0)
-        frame = opened.convert("RGBA")
+    # Validate the exact byte snapshot before decoding pixels. The initial
+    # source_images check can race with a replacement of the source file.
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter("error", Image.DecompressionBombWarning)
+            with Image.open(BytesIO(source_before)) as opened:
+                if opened.format not in SUPPORTED_FORMATS:
+                    raise ValueError("input must be PNG or JPEG: " + str(source_path))
+                opened.seek(0)
+                snapshot_width, snapshot_height = opened.size
+                if (snapshot_width < 1 or snapshot_height < 1
+                        or snapshot_width * snapshot_height > MAX_SOURCE_PIXELS):
+                    raise ValueError("input dimensions exceed limit: " + str(source_path))
+                opened.verify()
+            with Image.open(BytesIO(source_before)) as opened:
+                opened.seek(0)
+                frame = opened.convert("RGBA")
+    except (Image.DecompressionBombWarning, Image.DecompressionBombError) as error:
+        raise ValueError("cannot read image: " + str(source_path)) from error
     if frame.getchannel("A").getextrema() != (255, 255):
         if matte is None:
             raise ValueError("input contains transparency; supply --matte RRGGBB")

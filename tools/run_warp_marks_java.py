@@ -18,8 +18,19 @@ from tools.check_processing_runtime import CORE_SHA256
 
 RUNTIME = ROOT / '.work/toolchains/processing-4.5.6'
 PROFILES = {
+    'BodyMarks': ('body-marks', ['baseline', 'tapered', 'centerlines', 'body-restored', 'advanced', 'reset'], 'wmm.0s'),
+    'PointerMarks': ('pointer-marks', ['baseline', 'held-dots', 'held-wire', 'released-dots', 'reset', 'replay-held-dots', 'replay-released-dots', 'lifecycle-paused'], 'mm0SPACESPACEs'),
+    'PolygonMarks': ('polygon-marks', ['baseline', 'thin', 'recolored', 'diamonds', 'regenerated', 'reset'], 'acmr0s'),
+    'CutMarks': ('cut-marks', ['baseline', 'selected-x', 'decorated', 'deleted', 'reset'], 'xdDELETE0s'),
+    'PullMarks': ('pull-marks', ['baseline', 'wider', 'falloff', 'recolored', 'contours', 'reset'], 'rpcm0s'),
     'PanelMarks': ('panel-marks', ['baseline', 'denser', 'random_axis', 'recolored', 'panels', 'reset'], 'apcm0s'),
     'WarpMarks': ('warp-marks', ['baseline', 'strength64', 'zero', 'restored', 'sinusoidal', 'stripes', 'reset'], 'wwwfp0s'),
+    'LayerMarks': ('layer-marks', ['baseline', 'local', 'feather', 'crossfade', 'restored'], 'mmmms'),
+    'MaskMarks': ('mask-marks', ['baseline', 'image', 'crossfade', 'mask-view', 'crossfade-restored', 'baseline-restored'], 'mmvvms'),
+    'PlacementImageMarks': ('placement-image-marks', ['baseline', 'cover', 'stretch', 'contain-restored', 'cropped', 'aligned-end', 'masked', 'unmasked-restored'], 'fffcamms'),
+    'ImageFieldMarks': ('image-field-marks', ['baseline', 'visibility', 'size-restored', 'alternate-image', 'sampled-colors', 'colors-restored', 'baseline-restored'], 'mmiccis'),
+    'ProjectionMarks': ('projection-marks', ['baseline', 'full', 'zero', 'strength-restored', 'reversed', 'recolored', 'colors-restored', 'order-restored'], 'mmmoccos'),
+    'BlurMarks': ('blur-marks', ['sharp', 'soft', 'horizontal', 'vertical', 'blended', 'vertical-restored', 'sharp-restored'], 'mmmbbms'),
     'RampMarks': ('ramp-marks', ['baseline', 'shifted', 'recolored', 'radial', 'reset'], 'tcf0s'),
     'LoopMarks': ('loop-marks', ['baseline', 'moved', 'recolored', 'fans', 'reset'], 'tcm0s'),
     'BandMarks': ('band-marks', ['baseline', 'wider', 'recolored', 'marks', 'reset'], 'tcm0s'),
@@ -61,9 +72,12 @@ def main():
     bridge = ROOT / 'tests/native/PreprocessSketch.java'
     lease = ROOT / 'tools/with_native_render_lock.py'
     sources = sorted((ROOT / 'packages/java/src/main/java').rglob('*.java'))
+    adapter_sources = (sorted((ROOT / 'packages/java-processing/src/main/java').rglob('*.java'))
+                       if sketch in ('LayerMarks', 'MaskMarks', 'PlacementImageMarks', 'ImageFieldMarks', 'BlurMarks', 'ProjectionMarks') else [])
     inputs = [pde, probe, plan, bridge, lease, Path(__file__), core, archive,
               ROOT / 'tools/check_field_marks_pde.py', ROOT / 'tools/check_processing_runtime.py',
-              *sources, *pre, *[jdk / name for name in ('bin/java', 'bin/javac', 'bin/jar', 'release', 'lib/modules')]]
+              *sources, *adapter_sources, *pre,
+              *[jdk / name for name in ('bin/java', 'bin/javac', 'bin/jar', 'release', 'lib/modules')]]
     before = {label(path): sha(path) for path in inputs}
     output.mkdir(parents=True)
     core_classes, classes, prep, home = [output / name for name in ('core-classes', 'classes', 'pre-classes', 'home')]
@@ -89,6 +103,10 @@ def main():
     try:
         jar, generated = output / 'procedurals-core-candidate.jar', output / (sketch + '.java')
         run([jdk / 'bin/javac', '--release', '8', '-d', core_classes, *sources])
+        if adapter_sources:
+            run([jdk / 'bin/javac', '--release', '8',
+                 '-cp', os.pathsep.join(map(str, [core, core_classes])),
+                 '-d', core_classes, *adapter_sources])
         run([jdk / 'bin/jar', 'cf', jar, '-C', core_classes, 'org'])
         prepath = os.pathsep.join(map(str, [core, *pre]))
         run([jdk / 'bin/javac', '-cp', prepath, '-d', prep, bridge])
@@ -114,6 +132,26 @@ def main():
                 raise ValueError('Unexpected frame records')
             if native['core_code_source'] != str(jar) or native['expected_jar'] != str(jar):
                 raise ValueError('Wrong native core code source')
+            if sketch in ('LayerMarks', 'MaskMarks'):
+                expected_sources = {
+                    'compositor': str(jar), 'crossfade': str(jar), 'adapter': str(jar)}
+                if native.get('code_sources') != expected_sources:
+                    raise ValueError('Wrong composition workflow class code sources')
+            if sketch == 'PlacementImageMarks':
+                expected_sources = {'placement': str(jar), 'layers': str(jar), 'compositor': str(jar)}
+                if native.get('code_sources') != expected_sources:
+                    raise ValueError('Wrong placement image workflow class code sources')
+            if sketch == 'ImageFieldMarks':
+                expected_sources = {'grid': str(jar), 'remap': str(jar), 'field': str(jar), 'layers': str(jar)}
+                if native.get('code_sources') != expected_sources:
+                    raise ValueError('Wrong image field workflow class code sources')
+            if sketch == 'BlurMarks':
+                expected_sources = {'filter': str(jar), 'compositor': str(jar), 'crossfade': str(jar),
+                                    'filters': str(jar), 'layers': str(jar)}
+                if native.get('code_sources') != expected_sources:
+                    raise ValueError('Wrong blur workflow class code sources')
+            if sketch == 'ProjectionMarks' and native.get('code_sources') != {'projection': str(jar), 'layers': str(jar)}:
+                raise ValueError('Wrong projection workflow class code sources')
             report['native'] = native
             report['images'] = {name: {'path': label(native_out / (name + '.png')),
                                       'sha256': sha(native_out / (name + '.png'))}

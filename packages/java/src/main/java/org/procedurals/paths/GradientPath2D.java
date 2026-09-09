@@ -17,14 +17,32 @@ import org.procedurals.fields.GradientNoise2D01;
  * Output uses O(steps) binary64 storage; traversal with pointInto allocates nothing.
  */
 public strictfp final class GradientPath2D {
+    /** Static configuration or indexed-access failure with a stable catalog error code. */
     public static final class PathException extends IllegalArgumentException {
+        /** Stable code: {@code INVALID_INPUT}, {@code INVALID_INDEX}, {@code INDEX_OUT_OF_RANGE}, or {@code INVALID_OUTPUT}. */
         public final String code;
+        /**
+         * Creates a stable path failure.
+         *
+         * @param code catalog error code
+         */
         public PathException(String code) { super(code); this.code=code; }
     }
+    /** Dynamic trace arithmetic or field-query failure with the originating step and stage. */
     public static final class TraceException extends ArithmeticException {
+        /** Stable dynamic code: {@code TRACE_QUERY_INVALID} or {@code TRACE_ARITHMETIC_INVALID}. */
         public final String code;
+        /** Zero-based advance whose calculation failed. */
         public final int stepIndex;
+        /** Calculation stage such as {@code query_x}, {@code heading}, or {@code position_y}. */
         public final String stage;
+        /**
+         * Creates a dynamic trace failure.
+         *
+         * @param code stable dynamic catalog error code
+         * @param stepIndex zero-based failing advance
+         * @param stage named failing calculation stage
+         */
         public TraceException(String code,int stepIndex,String stage) {
             super(code+" at step "+stepIndex+" ("+stage+")");
             this.code=code; this.stepIndex=stepIndex; this.stage=stage;
@@ -54,7 +72,23 @@ public strictfp final class GradientPath2D {
             positions[2*(i+1)]=x; positions[2*(i+1)+1]=y; headings[i]=h;
         }
     }
-    /** Validate configuration before allocating or querying; no partial path escapes. */
+    /**
+     * Eagerly traces a retained path from the complete passive interchange configuration.
+     * {@code steps} counts advances, so the result has {@code steps + 1} positions and exactly
+     * {@code steps} headings; heading {@code i} moves position {@code i} to {@code i + 1}.
+     * Start and stepDistance use caller coordinate units; fieldScale is field lattice units per
+     * caller coordinate unit (an inverse-length scale), and fieldOffset is a field lattice
+     * coordinate pair. AngleBase and angleScale use radians. All configuration is copied, arrays
+     * are owned by the path, and no public artistic defaults or recommended ranges exist.
+     * Provenance and complete semantics are in {@code catalog/operations/gradient-path.json}.
+     *
+     * @param config exactly field, start, steps, stepDistance, fieldScale, fieldOffset,
+     *        angleBase, and angleScale
+     * @return retained immutable trace after all requested advances complete
+     * @throws PathException for static input failure before output allocation or field sampling
+     * @throws TraceException for a failing dynamic query or arithmetic stage; no partial path returns
+     * @throws OutOfMemoryError when the host cannot allocate the requested retained trace
+     */
     public static GradientPath2D trace(Object config) {
         if(!(config instanceof Map)) throw new PathException("INVALID_INPUT");
         Map<?,?> p=(Map<?,?>)config;
@@ -77,20 +111,81 @@ public strictfp final class GradientPath2D {
         double angleScale=number(p.get("angleScale"),"INVALID_INPUT");
         return new GradientPath2D(field,(int)n,x,y,distance,scale,ox,oy,base,angleScale);
     }
+    /**
+     * Returns the number of advances and headings. It is one less than the retained position count.
+     *
+     * @return configured advance count
+     */
     public int steps() { return count; }
+    /**
+     * Java-interchange overload for {@link #pointAt(long)}.
+     *
+     * @param index Byte, Short, Integer, Long, Float, or Double finite nonnegative safe-integer
+     *        position index in {@code [0, steps]}
+     * @return detached binary64 {@code [x,y]} pair in caller coordinate units
+     * @throws PathException {@code INVALID_INDEX} before {@code INDEX_OUT_OF_RANGE}
+     */
     public double[] pointAt(Object index) { return pointAt(index(index)); }
+    /**
+     * Returns a detached binary64 position pair. The endpoint at {@code steps()} is valid.
+     *
+     * @param index finite nonnegative safe-integer position index in {@code [0, steps]}
+     * @return detached binary64 {@code [x,y]} pair in caller coordinate units
+     * @throws PathException {@code INVALID_INDEX} before {@code INDEX_OUT_OF_RANGE}
+     */
     public double[] pointAt(long index) {
         int i=checked(index,false); return new double[]{positions[2*i],positions[2*i+1]};
     }
+    /**
+     * Java-interchange overload for {@link #headingAt(long)}.
+     *
+     * @param index Byte, Short, Integer, Long, Float, or Double finite nonnegative safe-integer
+     *        heading index in {@code [0, steps)}
+     * @return heading in radians that drove the corresponding advance
+     * @throws PathException {@code INVALID_INDEX} before {@code INDEX_OUT_OF_RANGE}
+     */
     public double headingAt(Object index) { return headingAt(index(index)); }
+    /**
+     * Returns the retained heading in radians for one advance. Unlike position access, the final
+     * endpoint has no heading and {@code index == steps()} is out of range.
+     *
+     * @param index finite nonnegative safe-integer heading index in {@code [0, steps)}
+     * @return heading in radians that moved this position to the next
+     * @throws PathException {@code INVALID_INDEX} before {@code INDEX_OUT_OF_RANGE}
+     */
     public double headingAt(long index) { return headings[checked(index,true)]; }
+    /**
+     * Java-interchange overload for {@link #pointInto(long, double[], int)}.
+     *
+     * @param index Byte, Short, Integer, Long, Float, or Double finite nonnegative safe-integer
+     *        position index in {@code [0, steps]}
+     * @param output writable binary64 destination requiring two slots from {@code offset}
+     * @param offset nonnegative first destination slot
+     * @throws PathException indexed and destination failures in the long-overload order
+     */
     public void pointInto(Object index,double[] output,int offset) { pointInto(index(index),output,offset); }
+    /**
+     * Writes one retained position after index, range, destination, and offset validation. It
+     * never exposes internal storage and leaves the destination unchanged on any failure.
+     *
+     * @param index finite nonnegative safe-integer position index in {@code [0, steps]}
+     * @param output writable binary64 destination requiring two slots from {@code offset}
+     * @param offset nonnegative first destination slot
+     * @throws PathException {@code INVALID_INDEX}, then {@code INDEX_OUT_OF_RANGE}, then
+     *         {@code INVALID_OUTPUT}
+     */
     public void pointInto(long index,double[] output,int offset) {
         int i=checked(index,false);
         if(output==null || offset<0 || offset>output.length-2) throw new PathException("INVALID_OUTPUT");
         output[offset]=positions[2*i]; output[offset+1]=positions[2*i+1];
     }
-    /** Detached configuration for explicit recomputation; never exposes internal storage. */
+    /**
+     * Returns detached canonical input configuration for explicit recomputation. It neither
+     * resamples the field nor exposes retained positions/headings.
+     *
+     * @return detached complete input-schema map
+     * @throws OutOfMemoryError when the host cannot allocate the detached map
+     */
     public Map<String,Object> serialize() {
         Map<String,Object> result=new LinkedHashMap<String,Object>();
         result.put("field",field.serialize()); result.put("start",Arrays.asList(startX,startY));
@@ -98,7 +193,14 @@ public strictfp final class GradientPath2D {
         result.put("fieldOffset",Arrays.asList(offsetX,offsetY)); result.put("angleBase",base);
         result.put("angleScale",angleScale); return result;
     }
-    /** Explicit O(steps) materialization; failure leaves the retained path usable. */
+    /**
+     * Materializes detached output-schema values: {@code steps()+1} position pairs and
+     * {@code steps()} headings. This is explicit O(steps) allocation; failure leaves the
+     * retained path unchanged and usable.
+     *
+     * @return detached map containing {@code positions} and {@code headings}
+     * @throws OutOfMemoryError when the host cannot materialize detached output
+     */
     public Map<String,Object> toValues() {
         List<Object> points=new ArrayList<Object>(count+1);
         List<Double> angles=new ArrayList<Double>(count);

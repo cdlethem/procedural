@@ -1,0 +1,33 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.30.0",
+  "scope": "Java sequential disc projection and ProjectionMarks; no other target or full-package completion claim.",
+  "archive": {
+    "path": ".work/dist/cp27-java-source-root2/procedurals-java-source-dev.zip",
+    "sha256": "17ac050e30c2dcd02e1a5bf32e16e0ec071f2a5fdfebdaa10af650f7f3185b7c",
+    "members": 413
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp27-java-source.json": "4118174eb40aedab1828d5ba4baadd99201b3cf582a64855f25a76a6f9bfe01c",
+    "evidence/distribution/cp27-java-projection-consumer.json": "5bf78d508ec379e16d1f47a74be9d996eca1817fb021f017ef5e0df459c897ae"
+  },
+  "counts": {
+    "operations": 28,
+    "workflows": 32,
+    "source_class_pages": 34
+  },
+  "verified": [
+    "Catalog/support check and9 package tests pass.",
+    "All32 extracted PDEs compile. ProjectionMarks8-state native sequence passes with separate core and adapter JAR origins.",
+    "Root verified all build/consumer source and extracted member hashes; all native PNGs exactly match reviewed candidate.",
+    "All116 previous core classes and15 previous adapter classes unchanged.",
+    "Final documentation reconciliation rebuilt as root2: only four documentation members changed and CP27 handoff added; every other archive member is byte-identical to root1. All32 examples and the eight-state extracted consumer pass again with identical pixels."
+  ],
+  "limits": [
+    "725 Javadoc warnings remain; documentation-completeness not claimed.",
+    "No complete colidion recreation, collision avoidance or polygon containment guarantee.",
+    "Ports remain deferred."
+  ]
+}

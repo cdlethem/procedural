@@ -1,0 +1,115 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "raster.separable-blur-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/separable-blur-2d.json",
+    "catalog_sha256": "f17c33f68218f36bdbecf131377bc868d409b0c1db9844cad39e6f6f1c59743f"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e2254766043ed5f5d7da2f13d92090b1c457deb098774267dcfb219982661d88",
+          "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageFilters.java": "f1f077deb7944cc4a5a57c5e39bafb7b7d984a28b197a40595eebdc634d101e2",
+          "packages/java-processing/examples/BlurMarks/BlurMarks.pde": "82fc5d56ddba9e36081805d370f24433c805a23c05b10ce5c7c589b8c4e894d8"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/separable-blur-java.json": "a1a61138972be31f18a01d45c1e143a5bc3028bc71729b802c65d59196089f11",
+          "fixtures/operations/separable-blur-2d.json": "5cb3a31df923cf32af558baa92f9e0486124e4929579bfc4732c7338b9323532",
+          "evidence/conformance/processing-image-filters-native.json": "16844172dca89fef34eba4be2a06d725f8dae5de0015bb0b5336e3b82aff0639",
+          "evidence/conformance/separable-blur-performance.json": "ce55d6a745bd34b7e13b63e4684fcf99219b11296213c46f9d1bce8270e07acd",
+          "evidence/workflows/blur-marks/native.json": "00d517826e0db1b7714e2a8a12a8b328befcaa79d234ff85a5c953c1000fe8c0",
+          "evidence/workflows/blur-marks/root-review.json": "95c75cc3fc501451b42289249273239b6c314c1b19a7f783881feb280b698949"
+        },
+        "acceptance_review": {
+          "path": "evidence/conformance/separable-blur-catalog-review.json",
+          "sha256": "9ba46c53ed627e1e6aa9ec491652fa8601cd5fbadfd4f165f5ad9025c589cd0c"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact ARGB8 filtering and BlurMarks retained layer/mask interaction; other targets deferred."
+        },
+        "status": "conformant",
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/separable-blur-java.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ]
+      },
+      "native": {
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e2254766043ed5f5d7da2f13d92090b1c457deb098774267dcfb219982661d88",
+          "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageFilters.java": "f1f077deb7944cc4a5a57c5e39bafb7b7d984a28b197a40595eebdc634d101e2",
+          "packages/java-processing/examples/BlurMarks/BlurMarks.pde": "82fc5d56ddba9e36081805d370f24433c805a23c05b10ce5c7c589b8c4e894d8"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/separable-blur-java.json": "a1a61138972be31f18a01d45c1e143a5bc3028bc71729b802c65d59196089f11",
+          "fixtures/operations/separable-blur-2d.json": "5cb3a31df923cf32af558baa92f9e0486124e4929579bfc4732c7338b9323532",
+          "evidence/conformance/processing-image-filters-native.json": "16844172dca89fef34eba4be2a06d725f8dae5de0015bb0b5336e3b82aff0639",
+          "evidence/conformance/separable-blur-performance.json": "ce55d6a745bd34b7e13b63e4684fcf99219b11296213c46f9d1bce8270e07acd",
+          "evidence/workflows/blur-marks/native.json": "00d517826e0db1b7714e2a8a12a8b328befcaa79d234ff85a5c953c1000fe8c0",
+          "evidence/workflows/blur-marks/root-review.json": "95c75cc3fc501451b42289249273239b6c314c1b19a7f783881feb280b698949"
+        },
+        "acceptance_review": {
+          "path": "evidence/conformance/separable-blur-catalog-review.json",
+          "sha256": "9ba46c53ed627e1e6aa9ec491652fa8601cd5fbadfd4f165f5ad9025c589cd0c"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Exact ARGB8 filtering and BlurMarks retained layer/mask interaction; other targets deferred."
+        },
+        "status": "validated-scoped",
+        "evidence_predicates": [
+          {
+            "path": "evidence/workflows/blur-marks/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ]
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

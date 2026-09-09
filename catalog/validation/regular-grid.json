@@ -19,8 +19,8 @@
           "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
           "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
           "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
-          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
-          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "304047650f4112e6b66bf8a5f503511b7dc1087648ff98f5f524d89730adabd7",
+          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "7129f1c512bfbe5a77e04ec1ad3eb6fcc88209e636175cd54ae9c9edf181b4d2",
           "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
           "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
           "packages/java-processing/examples/PathMarks/PathMarksCanvas.java": "4190d0f07f48b10b916e5a499ca8a8afbd9c54a35e94066d07dfe1b23f5ce62d",
@@ -28,7 +28,9 @@
         },
         "evidence_sha256": {
           "evidence/conformance/regular-grid.json": "83a631ca0da2e6b8da72eaca659072e648d814eaf7876cad7b3fcf021ec1e5e8",
-          "fixtures/operations/regular-grid.json": "2913f45daccdd9e2094ad6988547e7625e409af122807bf1a274f9484da06175"
+          "fixtures/operations/regular-grid.json": "2913f45daccdd9e2094ad6988547e7625e409af122807bf1a274f9484da06175",
+          "evidence/reproductions/cp2-java2d/review.json": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f",
+          "evidence/documentation/java-grid-path-comments-review.json": "1d8d3cca627516646be3aff61c6b6964776135b55bd8b4f31b70909d57f429c2"
         },
         "evidence_predicates": [
           {
@@ -53,8 +55,8 @@
           }
         ],
         "acceptance_review": {
-          "path": "evidence/reproductions/cp2-java2d/review.json",
-          "sha256": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f"
+          "path": "evidence/documentation/regular-grid-processing-java-core-grid-path-carry-forward.json",
+          "sha256": "1334ea6ce87cda207da9b842051280f5714c1d1edc812c39aca6e8039a9d89bd"
         },
         "runtime_profile": {
           "name": "Host OpenJDK 17.0.20.1+1",
@@ -68,8 +70,8 @@
           "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
           "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
           "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
-          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
-          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "304047650f4112e6b66bf8a5f503511b7dc1087648ff98f5f524d89730adabd7",
+          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "7129f1c512bfbe5a77e04ec1ad3eb6fcc88209e636175cd54ae9c9edf181b4d2",
           "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
           "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
           "packages/java-processing/examples/PathMarks/PathMarksCanvas.java": "4190d0f07f48b10b916e5a499ca8a8afbd9c54a35e94066d07dfe1b23f5ce62d",
@@ -77,7 +79,8 @@
         },
         "evidence_sha256": {
           "evidence/reproductions/cp2-java2d/pde-visible-result.json": "c7ba13095426622e8dfe81d4f472d57f08fd5a6ddcae2bf201cbadfc13df3e92",
-          "evidence/reproductions/cp2-java2d/review.json": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f"
+          "evidence/reproductions/cp2-java2d/review.json": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f",
+          "evidence/documentation/java-grid-path-comments-review.json": "1d8d3cca627516646be3aff61c6b6964776135b55bd8b4f31b70909d57f429c2"
         },
         "evidence_predicates": [
           {
@@ -87,8 +90,8 @@
           }
         ],
         "acceptance_review": {
-          "path": "evidence/reproductions/cp2-java2d/review.json",
-          "sha256": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f"
+          "path": "evidence/documentation/regular-grid-processing-java-native-grid-path-carry-forward.json",
+          "sha256": "52d64362bed8ee3843aa533a64b915ce58ecf9a12cf833149a0207cb19658088"
         },
         "runtime_profile": {
           "name": "Processing 4.5.6 JAVA2D; JDK17 core",
@@ -102,15 +105,16 @@
           "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
           "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
           "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
-          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
-          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "304047650f4112e6b66bf8a5f503511b7dc1087648ff98f5f524d89730adabd7",
+          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "7129f1c512bfbe5a77e04ec1ad3eb6fcc88209e636175cd54ae9c9edf181b4d2",
           "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
           "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
           "packages/java-processing/examples/PathMarks/PathMarksCanvas.java": "4190d0f07f48b10b916e5a499ca8a8afbd9c54a35e94066d07dfe1b23f5ce62d",
           "packages/java-processing/examples/PathMarks/PathMarks.pde": "d3bc9311cc0161644657e0243498dc10d98ebba2688714c679650173a9d15a15"
         },
         "evidence_sha256": {
-          "evidence/reproductions/cp2-java2d/review.json": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f"
+          "evidence/reproductions/cp2-java2d/review.json": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f",
+          "evidence/documentation/java-grid-path-comments-review.json": "1d8d3cca627516646be3aff61c6b6964776135b55bd8b4f31b70909d57f429c2"
         },
         "evidence_predicates": [
           {
@@ -120,8 +124,8 @@
           }
         ],
         "acceptance_review": {
-          "path": "evidence/reproductions/cp2-java2d/review.json",
-          "sha256": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f"
+          "path": "evidence/documentation/regular-grid-processing-java-technique-grid-path-carry-forward.json",
+          "sha256": "111097f93d867fed498358447ecd929a92253302adaef01f8874239094a6158c"
         },
         "runtime_profile": {
           "name": "Processing 4.5.6 JAVA2D; JDK17 core",
@@ -401,15 +405,17 @@
           "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
           "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
           "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
-          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
-          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "304047650f4112e6b66bf8a5f503511b7dc1087648ff98f5f524d89730adabd7",
+          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "7129f1c512bfbe5a77e04ec1ad3eb6fcc88209e636175cd54ae9c9edf181b4d2",
           "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77"
         },
         "evidence_sha256": {
           "evidence/conformance/regular-grid.json": "83a631ca0da2e6b8da72eaca659072e648d814eaf7876cad7b3fcf021ec1e5e8",
           "fixtures/operations/regular-grid.json": "2913f45daccdd9e2094ad6988547e7625e409af122807bf1a274f9484da06175",
           "evidence/conformance/android-field-restore-attempt7.json": "2f41d3416e4fcce982d8cbfd15317d8728f1dd4a8d908028cd4af8c237ebe22b",
-          "evidence/conformance/android-path-restore-attempt4.json": "04567893c99dec61e1864f5c48369376b9b6f02c39c738a9f35e81ad4376dad2"
+          "evidence/conformance/android-path-restore-attempt4.json": "04567893c99dec61e1864f5c48369376b9b6f02c39c738a9f35e81ad4376dad2",
+          "evidence/conformance/android-snapshot-restoration-root-review.json": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8",
+          "evidence/documentation/java-grid-path-comments-review.json": "1d8d3cca627516646be3aff61c6b6964776135b55bd8b4f31b70909d57f429c2"
         },
         "evidence_predicates": [
           {
@@ -464,8 +470,8 @@
           }
         ],
         "acceptance_review": {
-          "path": "evidence/conformance/android-snapshot-restoration-root-review.json",
-          "sha256": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8"
+          "path": "evidence/documentation/regular-grid-processing-android-core-grid-path-carry-forward.json",
+          "sha256": "633309787c67b52e10dc533720db9ad92cab12ec33ea6555a4db057f858ca73d"
         },
         "runtime_profile": {
           "name": "Host OpenJDK 17.0.20.1+1, shared Java implementation",
@@ -489,8 +495,8 @@
           "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
           "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
           "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
-          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
-          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "304047650f4112e6b66bf8a5f503511b7dc1087648ff98f5f524d89730adabd7",
+          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "7129f1c512bfbe5a77e04ec1ad3eb6fcc88209e636175cd54ae9c9edf181b4d2",
           "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77"
         },
         "evidence_sha256": {
@@ -498,7 +504,9 @@
           "evidence/reproductions/cp2-android/review.json": "53dbfafbb7c59e7bfda8575a2b1ba7b97f6c1199cec9640db15070f3f6b260f4",
           "evidence/reproductions/cp2-android/result.json": "e20cbceacee5d8555f6729ff5a54264221907a162ebb6972242e53da4c562976",
           "evidence/conformance/android-field-restore-attempt7.json": "2f41d3416e4fcce982d8cbfd15317d8728f1dd4a8d908028cd4af8c237ebe22b",
-          "evidence/conformance/android-path-restore-attempt4.json": "04567893c99dec61e1864f5c48369376b9b6f02c39c738a9f35e81ad4376dad2"
+          "evidence/conformance/android-path-restore-attempt4.json": "04567893c99dec61e1864f5c48369376b9b6f02c39c738a9f35e81ad4376dad2",
+          "evidence/conformance/android-snapshot-restoration-root-review.json": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8",
+          "evidence/documentation/java-grid-path-comments-review.json": "1d8d3cca627516646be3aff61c6b6964776135b55bd8b4f31b70909d57f429c2"
         },
         "evidence_predicates": [
           {
@@ -553,8 +561,8 @@
           }
         ],
         "acceptance_review": {
-          "path": "evidence/conformance/android-snapshot-restoration-root-review.json",
-          "sha256": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8"
+          "path": "evidence/documentation/regular-grid-processing-android-native-grid-path-carry-forward.json",
+          "sha256": "91fd55a2672b6f666d5aca89e071a4e3a27588f74e698139311e910bf625f75a"
         },
         "runtime_profile": {
           "name": "Android API33 emulator; AndroidSurface/PGraphicsAndroid2D; shared Java core",
@@ -578,14 +586,16 @@
           "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
           "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
           "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
-          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
-          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+          "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "304047650f4112e6b66bf8a5f503511b7dc1087648ff98f5f524d89730adabd7",
+          "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "7129f1c512bfbe5a77e04ec1ad3eb6fcc88209e636175cd54ae9c9edf181b4d2",
           "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77"
         },
         "evidence_sha256": {
           "evidence/reproductions/cp2-android/review.json": "53dbfafbb7c59e7bfda8575a2b1ba7b97f6c1199cec9640db15070f3f6b260f4",
           "evidence/conformance/android-field-restore-attempt7.json": "2f41d3416e4fcce982d8cbfd15317d8728f1dd4a8d908028cd4af8c237ebe22b",
-          "evidence/conformance/android-path-restore-attempt4.json": "04567893c99dec61e1864f5c48369376b9b6f02c39c738a9f35e81ad4376dad2"
+          "evidence/conformance/android-path-restore-attempt4.json": "04567893c99dec61e1864f5c48369376b9b6f02c39c738a9f35e81ad4376dad2",
+          "evidence/conformance/android-snapshot-restoration-root-review.json": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8",
+          "evidence/documentation/java-grid-path-comments-review.json": "1d8d3cca627516646be3aff61c6b6964776135b55bd8b4f31b70909d57f429c2"
         },
         "evidence_predicates": [
           {
@@ -625,8 +635,8 @@
           }
         ],
         "acceptance_review": {
-          "path": "evidence/conformance/android-snapshot-restoration-root-review.json",
-          "sha256": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8"
+          "path": "evidence/documentation/regular-grid-processing-android-technique-grid-path-carry-forward.json",
+          "sha256": "613085d6074a59241992ff2cfbfad3cf38cd8a68b8a1e655b75aba0abfa8d190"
         },
         "runtime_profile": {
           "name": "Android API33 emulator; AndroidSurface/PGraphicsAndroid2D; shared Java core",

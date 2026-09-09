@@ -1,0 +1,38 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.32.1",
+  "scope": "Documentation-only Java source distribution. All34 extracted PDE examples compile; runtime scope carried forward through identical noncomment source tokens/nondebug class bytes for RegularGrid and GradientPath2D. No new native run or target support claimed.",
+  "archive": {
+    "path": ".work/dist/cp29-docs-java-source-root1/procedurals-java-source-dev.zip",
+    "sha256": "062b3379c83cfa6f18bcf2ca43621324f0c8a55ac1a3b3539ef2ca46e614b088",
+    "members": 433
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp29-docs-java-source.json": "d85757d5c43ee63a53e321b0da22348811f8b19d51092788e973a8ffdead0224",
+    "evidence/distribution/cp29-docs-java-consumer.json": "2805d672659ef56964029802b35a5557fe47722934ccbfc9d103282e0ab3ca2e",
+    "evidence/distribution/cp29-java-review.json": "00b9271de629ab9edf4ba788354c49a9ab81ecca7ed64bafade0abb9b65b96f7",
+    "evidence/documentation/java-grid-path-comments-review.json": "1d8d3cca627516646be3aff61c6b6964776135b55bd8b4f31b70909d57f429c2",
+    "evidence/documentation/java-comment-validator-integration-review.json": "ed34362754ae98dbb649dc2426eb7fc793112c4db2e1d5dc1d6abd2cc1500d9d"
+  },
+  "changed_debug_classes": [
+    "org/procedurals/layout/RegularGrid$GridException.class",
+    "org/procedurals/layout/RegularGrid.class",
+    "org/procedurals/paths/GradientPath2D$PathException.class",
+    "org/procedurals/paths/GradientPath2D$TraceException.class",
+    "org/procedurals/paths/GradientPath2D.class"
+  ],
+  "verified": [
+    "Every other core and adapter class is byte-identical to CP29.",
+    "Complete extracted source/example/reference/license inventories pass.",
+    "36 focused historical-source/drawing/restoration integration tests pass."
+  ],
+  "javadoc_warnings_before": 689,
+  "javadoc_warnings_after": 655,
+  "limitations": [
+    "Full Java completion audit remains open.",
+    "Remaining Javadoc diagnostics require prioritization by missing semantics; warning count is not a completion target.",
+    "Ports remain deferred."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "scope": "Candidate masked adapter native checks and unchanged rectangular regression; not workflow or release acceptance",
+  "inputs_before": {
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "5572ec2e8b3a7fee1709d9b36beab15fcaf980763117a8c4dc5a25b9d585017b",
+    "tests/native/Java2DRegionsNative.java": "075bfb1678347fc6ea977adba30ce5ee37d44d7cb03203ff3324a8f527fa0c20",
+    "tests/native/Java2DMaskedRegionsNative.java": "e30da7f63f13a0cbf0d48daeb1944d20e03e0a6c3e4f72a981c4dfe06e17085d",
+    ".work/path-clip-consumer-root1/extract/procedurals/library/procedurals.jar": "d5412c21a5a3508251debbe005d086234009c5ecbbb1b85b24073a3a8fc4518d",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "commands": [
+    {
+      "command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "8",
+        "-cp",
+        "/home/colin/dev/procedural/.work/path-clip-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+        "-d",
+        "/home/colin/dev/procedural/.work/masked-regions-native-root1/classes",
+        "/home/colin/dev/procedural/packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java",
+        "/home/colin/dev/procedural/tests/native/Java2DRegionsNative.java",
+        "/home/colin/dev/procedural/tests/native/Java2DMaskedRegionsNative.java"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "tools/with_native_render_lock.py",
+        "--timeout",
+        "60",
+        "--",
+        "xvfb-run",
+        "-a",
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-Duser.home=/home/colin/dev/procedural/.work/masked-regions-native-root1/home",
+        "-cp",
+        "/home/colin/dev/procedural/.work/masked-regions-native-root1/classes:/home/colin/dev/procedural/.work/path-clip-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+        "Java2DRegionsNative"
+      ],
+      "returncode": 0,
+      "stdout": "{\"measurement\":{\"regions\":4,\"width\":720,\"height\":480,\"warmups\":2,\"repetitions\":1,\"elapsed_ns\":6076755,\"checksum\":\"17284405515086430208\"}}\n{\"status\":\"passed\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "tools/with_native_render_lock.py",
+        "--timeout",
+        "60",
+        "--",
+        "xvfb-run",
+        "-a",
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-Duser.home=/home/colin/dev/procedural/.work/masked-regions-native-root1/home",
+        "-cp",
+        "/home/colin/dev/procedural/.work/masked-regions-native-root1/classes:/home/colin/dev/procedural/.work/path-clip-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+        "Java2DMaskedRegionsNative"
+      ],
+      "returncode": 0,
+      "stdout": "{\"measurement\":{\"width\":8,\"height\":8,\"regions\":1,\"warmups\":2,\"repetitions\":3,\"total_ns\":222470,\"retained_mask_payload_bytes\":512,\"checksum\":\"16211455117963710464\"}}\n{\"measurement\":{\"width\":720,\"height\":480,\"regions\":4,\"warmups\":2,\"repetitions\":3,\"total_ns\":44380208,\"retained_mask_payload_bytes\":11059200,\"checksum\":\"17284405515086430208\"}}\n{\"measurement\":{\"width\":720,\"height\":480,\"regions\":12,\"warmups\":2,\"repetitions\":3,\"total_ns\":134752750,\"retained_mask_payload_bytes\":33177600,\"checksum\":\"17284405515086430208\"}}\n{\"status\":\"passed\"}\n",
+      "stderr": ""
+    }
+  ],
+  "inputs_after": {
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "5572ec2e8b3a7fee1709d9b36beab15fcaf980763117a8c4dc5a25b9d585017b",
+    "tests/native/Java2DRegionsNative.java": "075bfb1678347fc6ea977adba30ce5ee37d44d7cb03203ff3324a8f527fa0c20",
+    "tests/native/Java2DMaskedRegionsNative.java": "e30da7f63f13a0cbf0d48daeb1944d20e03e0a6c3e4f72a981c4dfe06e17085d",
+    ".work/path-clip-consumer-root1/extract/procedurals/library/procedurals.jar": "d5412c21a5a3508251debbe005d086234009c5ecbbb1b85b24073a3a8fc4518d",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  }
+}

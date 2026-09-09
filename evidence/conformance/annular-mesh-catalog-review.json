@@ -1,0 +1,17 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java annular core and scoped P3D workflow; distribution and other targets pending.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java": "784ba20b7b83e6ce7f7240b045eb8f2611395493e7aea273b003c58de3b8b5aa",
+    "packages/java-processing/examples/AnnularMarks/AnnularMarks.pde": "1de55e61678895841783111a66027985e0fad78e9945fe01ba23e989da6fc183"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/annular-mesh-java.json": "db50bf45c871adea3120229f1f895ba082e39d349217eaa35ffadf5e11da7c04",
+    "evidence/conformance/annular-mesh-performance.json": "69babc187a18d27a7652b207da6d206fd50a4c0f1830e83d1ac11c02506925a4",
+    "fixtures/operations/annular-solid-3d.json": "15871df03df6886c2a26706cc4d99ca6310254065ba0bde24359b6c7eb573b08",
+    "evidence/workflows/annular-marks/native.json": "6051acaf736c3355b3e7f06a9290a9f74f916d4a5f7deff1e135efce7c632eab",
+    "evidence/workflows/annular-marks/root-review.json": "201df10bc9ac0b2dd8079f1e31cc6d37c8a7da164193a0769afdc3a4546acfbd"
+  }
+}

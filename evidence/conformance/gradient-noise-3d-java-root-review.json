@@ -1,0 +1,28 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "GradientNoise3D01 Java core only; native P3D workflow and distribution pending",
+  "raw_evidence": "evidence/conformance/gradient-noise-3d-java.json",
+  "raw_evidence_sha256": "44271f6b1c0336149131d7319832e131c84a27ce71877aa4746210fde0162d8e",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise3D01.java": "4874c28ff020ce28ab1eeeab463b140779a531627cb09a660dbb55ef5ae3ee91",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "tests/native/Noise3DNative.java": "44dbc4baa235c9b68b847e8274b6c263a30f433bb9cf50d0b57b6cae05aaea7f",
+    "tools/run_noise3d_java.py": "4b9ae3f269f239f74f585d7805e839e956db620b9324ee688023d181eae58256",
+    "tools/build_noise3d_fixtures.py": "7110d2e3bf726d9c7dbfabb87778b9da6c0581da2d8184bee9b546bedd732631",
+    "tools/build_noise_fixtures.py": "0acddac7ef113dac2fe4d4c8a88e3625f7e803bac14fc95228a7e148750d25d8"
+  },
+  "verified": [
+    "Root specified and implemented exact safe-corner conversion, negative/subnormal local fractions, unsigned three-stage hash and twelve-gradient indexing.",
+    "56 independent rational-rounding scalar expectations through tuple,Object scalars,double scalars on both constructor forms;14 constructor cases and12 query-error cases.",
+    "Focused supported/rejected carriers, immutable seed/serialization, repeated/reordered queries and represented lattice-period checks pass.",
+    "Actual workloads1/250000/1000000 queries with5x20000-query warmup;1m observed29.91ms including checksum/range checks. Scalar method has no allocations by code inspection.",
+    "All source/runtime/class hashes verified live; existing2D implementation hash exactly matches accepted Java0.20 manifest."
+  ],
+  "limits": [
+    "No Processing noise compatibility, matching z=0 slice, octave support or isotropy guarantee.",
+    "Safe-corner bound is representation policy, not artistic range; no defaults or recommended coordinate interval.",
+    "No native P3D, distribution or non-Java support attestation yet."
+  ]
+}

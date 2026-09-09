@@ -4,6 +4,86 @@
 
 Contracts describe intended behavior. Implementation and native/reproduction evidence are separate.
 
+## mesh.annular-solid-3d (0.1.0)
+
+Generate an owned indexed-triangle closed annular solid from explicit inner and outer radii, two axial planes, angular subdivision, and a required face budget. It retains local positions, flat unit normals, face kinds, and angular-cell identity; it does not draw.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "outerRadius": {
+      "type": "number",
+      "description": "Finite caller local outer radius, strictly greater than innerRadius.",
+      "exclusiveMinimum": 0
+    },
+    "innerRadius": {
+      "type": "number",
+      "description": "Finite caller local hole radius, strictly positive and less than outerRadius.",
+      "exclusiveMinimum": 0
+    },
+    "bottomZ": {
+      "type": "number",
+      "description": "Finite caller local lower axial coordinate, strictly less than topZ."
+    },
+    "topZ": {
+      "type": "number",
+      "description": "Finite caller local upper axial coordinate, strictly greater than bottomZ."
+    },
+    "slices": {
+      "type": "integer",
+      "minimum": 3,
+      "maximum": 89478485,
+      "description": "Angular cell count. This floor(INT_MAX/24) ceiling is representational only, not a useful-resolution or allocation promise."
+    },
+    "maxFaces": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 715827881,
+      "description": "Required caller face-work limit. Its signed-int packed-representation ceiling is not a practical-work or artistic recommendation."
+    }
+  },
+  "required": [
+    "outerRadius",
+    "innerRadius",
+    "bottomZ",
+    "topZ",
+    "slices",
+    "maxFaces"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| outerRadius | caller local distance | null | null | aros motivates an outer annular boundary; the private study uses150 only as a discrete setting, not a default or range. |
+| innerRadius | caller local hole radius | null | null | aros motivates a visible inner boundary; private110 and60 settings demonstrate a width edit, not a range. |
+| bottomZ | caller local axial distance | null | null | The private study changes the paired axial endpoints from±15 to±45 for depth; no independent default or range is established. |
+| topZ | caller local axial distance | null | null | The private study changes the paired axial endpoints from±15 to±45 for depth; no independent default or range is established. |
+| slices | integer angular cells | null | null | Private48 and12 settings demonstrate a facet edit.89478485 is representation-only. |
+| maxFaces | retained triangle work limit | null | null | Explicit all-or-error resource boundary.715827881 is an index-representation ceiling, not an allocation guarantee or artistic range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/documentation/annular-support-carry-forward.json) | [validated-scoped](../../evidence/documentation/annular-support-carry-forward.json) | unvalidated | [review](../../evidence/documentation/annular-support-carry-forward.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2017/Generativos/aros#0`](../../survey/out/2017/Generativos/aros/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/annular-solid-3d.json).
+
 ## raster.bilinear-remap-2d (0.1.0)
 
 Remap an owned packed ARGB8 raster through explicit source coordinates using edge-clamped bilinear interpolation.
@@ -182,6 +262,88 @@ Motivating evidence:
 - [`2018/Generativos/barab#0`](../../survey/out/2018/Generativos/barab/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/binary-cell-partition-2d.json).
+
+## geometry.clip-segments-simple-polygon-2d (0.1.0)
+
+Clip supplied segments to a simple concave polygon, retaining source identity and every positive-length interior or boundary interval.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "polygon": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "minItems": 3,
+      "maxItems": 1073741823
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 4,
+        "maxItems": 4
+      },
+      "maxItems": 536870911
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "maxOutputSegments": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 536870911
+    }
+  },
+  "required": [
+    "polygon",
+    "segments",
+    "maxWork",
+    "maxOutputSegments"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| polygon | caller coordinate pairs | null | null | forms1 clipping boundary; simple-polygon domain is explicit design. |
+| segments | caller coordinate quadruples | null | null | Supplied strokes separate generation from clipping; private hatch/stroke transfer. |
+| maxWork | abstract geometry work allowance | null | null | Engineering preflight; no artistic range. |
+| maxOutputSegments | retained interval count | null | null | Engineering memory/output allowance; no artistic range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/segment-clip-root-review.json) | [validated-scoped](../../evidence/conformance/segment-clip-root-review.json) | unvalidated | [review](../../evidence/conformance/segment-clip-root-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2014/Generativos/Forms/forms1#0`](../../survey/out/2014/Generativos/Forms/forms1/notes.md)
+- [`2014/Generativos/Forms/forms1#1`](../../survey/out/2014/Generativos/Forms/forms1/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/clip-segments-simple-polygon-2d.json).
 
 ## geometry.closed-spline-2d (0.1.0)
 
@@ -380,10 +542,10 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [review](../../evidence/reproductions/cp2-java2d/review.json) |
+| processing-java | [conformant](../../evidence/documentation/cyclic-palette-processing-java-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/cyclic-palette-processing-java-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/cyclic-palette-processing-java-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/cyclic-palette-processing-java-native-grid-path-carry-forward.json) |
 | p5js | [conformant](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [review](../../evidence/reproductions/cp2-p5js/review.json) |
 | py5 | [conformant](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [review](../../evidence/reproductions/cp2-py5/review.json) |
-| processing-android | [conformant](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/documentation/cyclic-palette-processing-android-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/cyclic-palette-processing-android-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/cyclic-palette-processing-android-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/cyclic-palette-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -533,16 +695,102 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [review](../../evidence/reproductions/cp2-java2d/review.json) |
+| processing-java | [conformant](../../evidence/documentation/gradient-noise-2d-01-processing-java-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-noise-2d-01-processing-java-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-noise-2d-01-processing-java-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/gradient-noise-2d-01-processing-java-native-grid-path-carry-forward.json) |
 | p5js | [conformant](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [review](../../evidence/reproductions/cp2-p5js/review.json) |
 | py5 | [conformant](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [review](../../evidence/reproductions/cp2-py5/review.json) |
-| processing-android | [conformant](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/documentation/gradient-noise-2d-01-processing-android-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-noise-2d-01-processing-android-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-noise-2d-01-processing-android-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/gradient-noise-2d-01-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
 - [`2018/Generativos/pelines#0`](../../survey/out/2018/Generativos/pelines/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/gradient-noise-2d-01.json).
+
+## field.gradient-noise-3d-01 (0.1.0)
+
+Immutable seeded single-octave three-coordinate gradient field with pure binary64 samples in[0,1]; independent of Processing noise.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "seed"
+  ],
+  "properties": {
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| seed | unsigned32 field identity | null | null | Required repeatability is a design capability; the motivating note does not establish a portable seed algorithm or preferred seed. |
+| x | lattice coordinate | null | null | pelosNoise2 depth slice and conitos volume lookup; explicit caller coordinates; safe-corner bounds are representability, not recommended ranges. |
+| y | lattice coordinate | null | null | pelosNoise2 depth slice and conitos volume lookup; explicit caller coordinates; safe-corner bounds are representability, not recommended ranges. |
+| z | lattice coordinate | null | null | pelosNoise2 depth slice and conitos volume lookup; explicit caller coordinates; safe-corner bounds are representability, not recommended ranges. |
+
+Query input (native call forms are specified in the contract):
+
+```json
+{
+  "type": "array",
+  "prefixItems": [
+    {
+      "type": "number",
+      "minimum": -9007199254740991,
+      "exclusiveMaximum": 9007199254740991
+    },
+    {
+      "type": "number",
+      "minimum": -9007199254740991,
+      "exclusiveMaximum": 9007199254740991
+    },
+    {
+      "type": "number",
+      "minimum": -9007199254740991,
+      "exclusiveMaximum": 9007199254740991
+    }
+  ],
+  "minItems": 3,
+  "maxItems": 3,
+  "items": false
+}
+```
+
+Query result:
+
+```json
+{
+  "type": "number",
+  "minimum": 0,
+  "maximum": 1
+}
+```
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/gradient-noise-3d-catalog-review.json) | [validated-scoped](../../evidence/conformance/gradient-noise-3d-catalog-review.json) | [validated-scoped](../../evidence/conformance/gradient-noise-3d-catalog-review.json) | [review](../../evidence/conformance/gradient-noise-3d-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2016/Generativos/pelosNoise2#0`](../../survey/out/2016/Generativos/pelosNoise2/notes.md)
+- [`2018/Generativos/conitos#0`](../../survey/out/2018/Generativos/conitos/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/gradient-noise-3d-01.json).
 
 ## path.gradient-trace-2d (0.1.0)
 
@@ -647,10 +895,10 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [review](../../evidence/reproductions/cp2-java2d/review.json) |
+| processing-java | [conformant](../../evidence/documentation/gradient-path-processing-java-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-path-processing-java-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-path-processing-java-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/gradient-path-processing-java-native-grid-path-carry-forward.json) |
 | p5js | [conformant](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [review](../../evidence/reproductions/cp2-p5js/review.json) |
 | py5 | [conformant](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [review](../../evidence/reproductions/cp2-py5/review.json) |
-| processing-android | [conformant](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/documentation/gradient-path-processing-android-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-path-processing-android-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-path-processing-android-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/gradient-path-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -660,6 +908,116 @@ Motivating evidence:
 - [`2019/generativos/limo002#1`](../../survey/out/2019/generativos/limo002/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/gradient-path.json).
+
+## raster.masked-source-over-2d (0.1.0)
+
+Composite same-sized straight ARGB8 rasters using an explicit scalar visibility mask.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source",
+    "destination",
+    "mask"
+  ],
+  "properties": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "pixels"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        }
+      }
+    },
+    "destination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "pixels"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        }
+      }
+    },
+    "mask": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| source | straight packed ARGB8 raster | null | null | eyes002 imageTrail alpha-controlled image stamps; content is caller data. |
+| destination | straight packed ARGB8 raster | null | null | Existing composition receiving image stamps; dimensions are caller data. |
+| mask | unitless visibility per pixel in [0,1] | null | null | Maintainer-requested spatial visibility dependency. Mathematical bounds, no recommended artistic opacity or feather range; source alpha experiment subtle. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/masked-source-over-masked-regions-review.json) | [validated-scoped](../../evidence/conformance/masked-source-over-masked-regions-review.json) | [validated-scoped](../../evidence/conformance/masked-source-over-masked-regions-review.json) | [review](../../evidence/conformance/masked-source-over-masked-regions-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2017/Generativos/Eyes/eyes002#1`](../../survey/out/2017/Generativos/Eyes/eyes002/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/masked-source-over.json).
 
 ## path.noise-band-trace-2d (0.1.0)
 
@@ -1006,10 +1364,10 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/distribution/cp3-review.json) | [validated-scoped](../../evidence/distribution/cp3-review.json) | [validated-scoped](../../evidence/distribution/cp3-review.json) | [review](../../evidence/distribution/cp3-review.json) |
+| processing-java | [conformant](../../evidence/documentation/ordered-circle-filter-processing-java-core-indirect-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/ordered-circle-filter-processing-java-native-indirect-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/ordered-circle-filter-processing-java-technique-indirect-grid-path-carry-forward.json) | [review](../../evidence/documentation/ordered-circle-filter-processing-java-native-indirect-grid-path-carry-forward.json) |
 | p5js | [conformant](../../evidence/conformance/placement-p5js-root-review.json) | [validated-scoped](../../evidence/conformance/placement-p5js-root-review.json) | unvalidated | [review](../../evidence/conformance/placement-p5js-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/placement-py5-root-review.json) | [validated-scoped](../../evidence/conformance/placement-py5-root-review.json) | unvalidated | [review](../../evidence/conformance/placement-py5-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/placement-android-core-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | unvalidated | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/placement-android-core-root-review.json) | [validated-scoped](../../evidence/documentation/ordered-circle-filter-processing-android-native-grid-path-carry-forward.json) | unvalidated | [review](../../evidence/documentation/ordered-circle-filter-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -1018,6 +1376,70 @@ Motivating evidence:
 - [`2017/Generativos/studio#0`](../../survey/out/2017/Generativos/studio/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/ordered-circle-filter.json).
+
+## sampling.ordered-convex-polygon-filter-2d (0.1.0)
+
+Ordered greedy filtering of supplied strictly convex polygon outlines using exact inclusive intersection; retained geometry and original proposal indices.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "polygons"
+  ],
+  "properties": {
+    "polygons": {
+      "type": "array",
+      "maxItems": 357913941,
+      "items": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 1073741823,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| polygons | ordered caller-coordinate polygon cycles | null | null | celular/celular2 source outlines and CP20 reviewed private shape/aspect transfer. Strict convexity is validity, packed-coordinate limits are representational; no measured artistic range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/convex-polygon-catalog-review.json) | [validated-scoped](../../evidence/conformance/convex-polygon-catalog-review.json) | [validated-scoped](../../evidence/conformance/convex-polygon-catalog-review.json) | [review](../../evidence/conformance/convex-polygon-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2017/Generativos/celular#0`](../../survey/out/2017/Generativos/celular/notes.md)
+- [`2017/Generativos/celular2#0`](../../survey/out/2017/Generativos/celular2/notes.md)
+- [`2017/Generativos/celular2#1`](../../survey/out/2017/Generativos/celular2/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/ordered-convex-polygon-filter-2d.json).
 
 ## mesh.radial-profile-surface-3d (0.1.0)
 
@@ -1131,6 +1553,225 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/radial-profile-surface.json).
 
+## geometry.radial-pull-2d (0.1.0)
+
+Immutable ordered radial influences that sum inward power-profile displacements at the original point; may fold and self-intersect geometry.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "influences"
+  ],
+  "properties": {
+    "influences": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "items": false,
+        "minItems": 4,
+        "maxItems": 4
+      },
+      "maxItems": 536870911
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| influences | ordered caller geometry | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+| centerX | drawing coordinate | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+| centerY | drawing coordinate | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+| radius | drawing distance | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+| power | dimensionless | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+| x | drawing coordinate | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+| y | drawing coordinate | null | null | curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry. |
+
+Query input (native call forms are specified in the contract):
+
+```json
+{
+  "type": "array",
+  "prefixItems": [
+    {
+      "type": "number"
+    },
+    {
+      "type": "number"
+    }
+  ],
+  "items": false,
+  "minItems": 2,
+  "maxItems": 2
+}
+```
+
+Query result:
+
+```json
+{
+  "type": "array",
+  "prefixItems": [
+    {
+      "type": "number"
+    },
+    {
+      "type": "number"
+    }
+  ],
+  "items": false,
+  "minItems": 2,
+  "maxItems": 2
+}
+```
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/radial-pull-catalog-review.json) | [validated-scoped](../../evidence/conformance/radial-pull-catalog-review.json) | [validated-scoped](../../evidence/conformance/radial-pull-catalog-review.json) | [review](../../evidence/conformance/radial-pull-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2018/Generativos/curvespace#0`](../../survey/out/2018/Generativos/curvespace/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/radial-pull-2d.json).
+
+## raster.crossfade-2d (0.1.0)
+
+Crossfade two same-sized straight ARGB8 rasters using explicit per-pixel weights and premultiplied working channels.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "first",
+    "second",
+    "weights"
+  ],
+  "properties": {
+    "first": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "pixels"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        }
+      }
+    },
+    "second": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "pixels"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        }
+      }
+    },
+    "weights": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| first | straight packed ARGB8 raster | null | null | Caller-supplied layer; image/draw-callback content motivated by eyes002 imageTrail. |
+| second | straight packed ARGB8 raster | null | null | Second independent layer; project dependency for requested effect transitions. |
+| weights | unitless second-input contribution per pixel | null | null | Explicit project design; mathematical [0,1] bounds. No useful opacity/feather recommendation established. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/raster-crossfade-masked-regions-review.json) | [validated-scoped](../../evidence/conformance/raster-crossfade-masked-regions-review.json) | [validated-scoped](../../evidence/conformance/raster-crossfade-masked-regions-review.json) | [review](../../evidence/conformance/raster-crossfade-masked-regions-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2017/Generativos/Eyes/eyes002#1`](../../survey/out/2017/Generativos/Eyes/eyes002/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/raster-crossfade.json).
+
 ## layout.regular-grid (0.1.0)
 
 An immutable row-major rectangular sequence of planar positions with explicit point counts and spacing.
@@ -1206,10 +1847,10 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [review](../../evidence/reproductions/cp2-java2d/review.json) |
+| processing-java | [conformant](../../evidence/documentation/regular-grid-processing-java-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/regular-grid-processing-java-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/regular-grid-processing-java-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/regular-grid-processing-java-native-grid-path-carry-forward.json) |
 | p5js | [conformant](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [review](../../evidence/reproductions/cp2-p5js/review.json) |
 | py5 | [conformant](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [review](../../evidence/reproductions/cp2-py5/review.json) |
-| processing-android | [conformant](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/documentation/regular-grid-processing-android-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/regular-grid-processing-android-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/regular-grid-processing-android-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/regular-grid-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -1217,6 +1858,67 @@ Motivating evidence:
 - [`2019/generativos/paraisooscuro#3`](../../survey/out/2019/generativos/paraisooscuro/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/regular-grid.json).
+
+## layout.retained-rectangle-cuts-2d (0.1.0)
+
+Retain caller-directed unequal rectangle regions with stable identities and atomic single cuts/removals.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "bounds": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4,
+      "description": "[left,top,right,bottom] finite binary64 bounds with positive width and height."
+    }
+  },
+  "required": [
+    "bounds"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| bounds | caller-coordinate rectangle [left,top,right,bottom] | null | null | CP21 retained supplied-region boundary; finite positive extents and identity limits are representational, not artistic ranges. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/retained-rectangles-catalog-review.json) | [validated-scoped](../../evidence/conformance/retained-rectangles-catalog-review.json) | [validated-scoped](../../evidence/conformance/retained-rectangles-catalog-review.json) | [review](../../evidence/conformance/retained-rectangles-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2019/generativos/griton#0`](../../survey/out/2019/generativos/griton/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/retained-rectangle-cuts-2d.json).
 
 ## sampling.seeded-circle-placement-2d (0.1.0)
 
@@ -1322,10 +2024,10 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/distribution/cp3-review.json) | [validated-scoped](../../evidence/distribution/cp3-review.json) | [validated-scoped](../../evidence/distribution/cp3-review.json) | [review](../../evidence/distribution/cp3-review.json) |
+| processing-java | [conformant](../../evidence/documentation/seeded-circle-placement-processing-java-core-indirect-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/seeded-circle-placement-processing-java-native-indirect-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/seeded-circle-placement-processing-java-technique-indirect-grid-path-carry-forward.json) | [review](../../evidence/documentation/seeded-circle-placement-processing-java-native-indirect-grid-path-carry-forward.json) |
 | p5js | [conformant](../../evidence/conformance/placement-p5js-root-review.json) | [validated-scoped](../../evidence/conformance/placement-p5js-root-review.json) | unvalidated | [review](../../evidence/conformance/placement-p5js-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/placement-py5-root-review.json) | [validated-scoped](../../evidence/conformance/placement-py5-root-review.json) | unvalidated | [review](../../evidence/conformance/placement-py5-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/placement-android-core-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | unvalidated | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/placement-android-core-root-review.json) | [validated-scoped](../../evidence/documentation/seeded-circle-placement-processing-android-native-grid-path-carry-forward.json) | unvalidated | [review](../../evidence/documentation/seeded-circle-placement-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -1504,7 +2206,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | processing-java | [conformant](../../evidence/distribution/cp6-docs-port-update-review.json) | [validated-scoped](../../evidence/distribution/cp6-docs-port-update-review.json) | [validated-scoped](../../evidence/distribution/cp6-docs-port-update-review.json) | [review](../../evidence/distribution/cp6-docs-port-update-review.json) |
 | p5js | [conformant](../../evidence/conformance/javascript-retained-output-root-review.json) | [validated-scoped](../../evidence/conformance/javascript-retained-output-root-review.json) | unvalidated | [review](../../evidence/conformance/javascript-retained-output-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/branch-tree-python-root-review.json) | [validated-scoped](../../evidence/conformance/branch-py5-native-root-review.json) | unvalidated | [review](../../evidence/conformance/branch-py5-native-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/branch-tree-android-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | unvalidated | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/branch-tree-android-root-review.json) | [validated-scoped](../../evidence/documentation/seeded-endpoint-branches-processing-android-native-validator-carry-forward.json) | unvalidated | [review](../../evidence/documentation/seeded-endpoint-branches-processing-android-native-validator-carry-forward.json) |
 
 Motivating evidence:
 
@@ -1696,7 +2398,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | processing-java | [conformant](../../evidence/distribution/cp4-review.json) | [validated-scoped](../../evidence/distribution/cp4-review.json) | [validated-scoped](../../evidence/distribution/cp4-review.json) | [review](../../evidence/distribution/cp4-review.json) |
 | p5js | [conformant](../../evidence/conformance/quadrant-p5js-root-review.json) | [validated-scoped](../../evidence/conformance/quadrant-p5js-root-review.json) | unvalidated | [review](../../evidence/conformance/quadrant-p5js-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/quadrant-py5-root-review.json) | [validated-scoped](../../evidence/conformance/quadrant-py5-root-review.json) | unvalidated | [review](../../evidence/conformance/quadrant-py5-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/quadrant-android-core-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | unvalidated | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/quadrant-android-core-root-review.json) | [validated-scoped](../../evidence/documentation/seeded-quadrant-partition-processing-android-native-grid-path-carry-forward.json) | unvalidated | [review](../../evidence/documentation/seeded-quadrant-partition-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -1790,13 +2492,207 @@ Current implementation status comes from a separately reviewed attestation, not 
 | processing-java | [conformant](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [review](../../evidence/distribution/cp5-review.json) |
 | p5js | [conformant](../../evidence/conformance/javascript-retained-output-root-review.json) | [validated-scoped](../../evidence/conformance/javascript-retained-output-root-review.json) | unvalidated | [review](../../evidence/conformance/javascript-retained-output-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/triangle-python-core-root-review.json) | [validated-scoped](../../evidence/conformance/triangle-py5-native-root-review.json) | unvalidated | [review](../../evidence/conformance/triangle-py5-native-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | unvalidated | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | [validated-scoped](../../evidence/documentation/seeded-triangle-points-processing-android-native-validator-carry-forward.json) | unvalidated | [review](../../evidence/documentation/seeded-triangle-points-processing-android-native-validator-carry-forward.json) |
 
 Motivating evidence:
 
 - [`2018/Generativos/puntis2#1`](../../survey/out/2018/Generativos/puntis2/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/seeded-triangle-points.json).
+
+## raster.separable-blur-2d (0.1.0)
+
+Normalize two caller-supplied one-dimensional kernels and filter a straight ARGB8 raster horizontally then vertically in premultiplied encoded RGB.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source",
+    "kernelX",
+    "kernelY",
+    "maxSamples"
+  ],
+  "properties": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "pixels"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        }
+      }
+    },
+    "kernelX": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxItems": 2147483647
+    },
+    "kernelY": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxItems": 2147483647
+    },
+    "maxSamples": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| source | straight packed ARGB8 raster | null | null | Caller retained drawing or image content. |
+| kernelX | nonnegative odd horizontal weights | null | null | Caller data; no measured artistic kernel range. |
+| kernelY | nonnegative odd vertical weights | null | null | Caller data; no measured artistic kernel range. |
+| maxSamples | declared tap work budget | null | null | Explicit resource bound; all supplied taps count. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/separable-blur-catalog-review.json) | [validated-scoped](../../evidence/conformance/separable-blur-catalog-review.json) | unvalidated | [review](../../evidence/conformance/separable-blur-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2015/Generativos/cityPink3d#2`](../../survey/out/2015/Generativos/cityPink3d/notes.md)
+- [`2020/generative/01_04/rgblur#0`](../../survey/out/2020/generative/01_04/rgblur/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/separable-blur-2d.json).
+
+## geometry.sequential-disc-projection-2d (0.1.0)
+
+Sequentially move supplied points outward toward the boundaries of ordered supplied discs.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "points",
+    "discs",
+    "strength",
+    "maxTests"
+  ],
+  "properties": {
+    "points": {
+      "type": "array",
+      "maxItems": 1073741823,
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false
+      }
+    },
+    "discs": {
+      "type": "array",
+      "maxItems": 715827882,
+      "items": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "items": false
+      }
+    },
+    "strength": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "maxTests": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  }
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | caller coordinate pairs | null | null | Explicit caller geometry or resource budget; independently specified reusable dependency. No artistic default or encouraged range. |
+| discs | ordered [centerX,centerY,radius] caller geometry | null | null | Explicit caller geometry or resource budget; independently specified reusable dependency. No artistic default or encouraged range. |
+| strength | fraction of remaining radial gap | null | null | Private 0/0.45/1 study distinguishes identity, fractional and full behaviour; no recommended range. |
+| maxTests | disc tests | null | null | Explicit caller geometry or resource budget; independently specified reusable dependency. No artistic default or encouraged range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/disc-projection-catalog-review.json) | [validated-scoped](../../evidence/conformance/disc-projection-catalog-review.json) | unvalidated | [review](../../evidence/conformance/disc-projection-catalog-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2019/generativos/colidion#1`](../../survey/out/2019/generativos/colidion/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/sequential-disc-projection-2d.json).
 
 ## color.stop-ramp (0.1.0)
 
@@ -2108,7 +3004,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | processing-java | [conformant](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [review](../../evidence/distribution/cp5-review.json) |
 | p5js | [conformant](../../evidence/conformance/javascript-retained-output-root-review.json) | [validated-scoped](../../evidence/conformance/javascript-retained-output-root-review.json) | unvalidated | [review](../../evidence/conformance/javascript-retained-output-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/triangle-python-core-root-review.json) | [validated-scoped](../../evidence/conformance/triangle-py5-native-root-review.json) | unvalidated | [review](../../evidence/conformance/triangle-py5-native-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | unvalidated | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | [validated-scoped](../../evidence/documentation/triangle-coordinate-map-processing-android-native-validator-carry-forward.json) | unvalidated | [review](../../evidence/documentation/triangle-coordinate-map-processing-android-native-validator-carry-forward.json) |
 
 Motivating evidence:
 

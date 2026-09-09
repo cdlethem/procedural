@@ -1,0 +1,18 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java3D scalar core and scoped P3D DepthMarks; no distribution or other-target acceptance",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise3D01.java": "4874c28ff020ce28ab1eeeab463b140779a531627cb09a660dbb55ef5ae3ee91",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java-processing/examples/DepthMarks/DepthMarks.pde": "31efb1a4896b5573a5db99f733ac38cd869aec0488149b60d1b3c37c02b47f17"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/gradient-noise-3d-java.json": "44271f6b1c0336149131d7319832e131c84a27ce71877aa4746210fde0162d8e",
+    "evidence/conformance/gradient-noise-3d-java-root-review.json": "3739718531ba9de2b74e165a82c9e388776d62d067036d21d324d3844d51177f",
+    "fixtures/operations/gradient-noise-3d-01.json": "c4b8b810602aed51d712145c11f668c580a9225c82ce787e3da224bc98d1df2f",
+    "evidence/reproductions/cp18-p3d/native.json": "6074e48fd24476f005a06c6fdd6b05ba54722646ad9fda98faf2243428e00254",
+    "evidence/reproductions/cp18-p3d/root-review.json": "e59768af42b6606ed311d828f167c8ec9269474540161157515387ceb41b5e9a"
+  }
+}

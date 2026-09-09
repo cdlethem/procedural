@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 from PIL import Image
@@ -93,6 +94,21 @@ class ExtractPaletteTests(unittest.TestCase):
             extract_palette.main([str(gif), "--colors", "2", "--output", str(self.base / "gif.json")])
         with self.assertRaises(SystemExit):
             extract_palette.main([str(self.image("outside.png", (2, 2), "red")), "--colors", "2", "--output", str(ROOT / "palette.json")])
+
+    def test_replaced_source_is_revalidated_before_decode_or_publish(self):
+        source = self.image("race.png", (2, 2), (10, 20, 30))
+        replacement = self.base / "replacement.gif"
+        Image.new("RGB", (2, 2), (1, 2, 3)).save(replacement, "GIF")
+        output = self.base / "race.json"
+
+        def check_then_replace(paths):
+            source.write_bytes(replacement.read_bytes())
+            return [(source, 2, 2)]
+
+        with mock.patch.object(extract_palette, "source_images", check_then_replace):
+            with self.assertRaises(SystemExit):
+                extract_palette.main([str(source), "--colors", "2", "--output", str(output)])
+        self.assertFalse(output.exists())
 
     def test_direct_cli_smoke(self):
         source = self.image("cli.png", (2, 2), (10, 20, 30))

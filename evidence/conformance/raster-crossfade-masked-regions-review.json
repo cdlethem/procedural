@@ -1,0 +1,33 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Root-reviewed Java2DRegions extension: preserve existing rectangular source-over/crossfade workflow scope using unchanged core arithmetic and current-source rectangular native regression. New masked callback native workflow separately reviewed. No new target or original reproduction claim.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "5572ec2e8b3a7fee1709d9b36beab15fcaf980763117a8c4dc5a25b9d585017b",
+    "packages/java-processing/examples/LayerMarks/LayerMarks.pde": "41f5b8dc14ac0810f84cb2affd8b8735536bd7c21755a97792132266c8dcdfa8",
+    "packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java": "24a1800f9a410763f82672bbb8cbbce9e9598298d2ca0651f3527085b4280cf3",
+    "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/raster-crossfade-java.json": "b8506ca23fcc1594378b83c911bf424f8a0edea49fa07db6e2af05d912cdd770",
+    "evidence/conformance/raster-crossfade-java-root-review.json": "6e38c9266dd37f14ce9809bd6fa6087452b0d1cb23c2e3d43ef8c8a7aadeeb97",
+    "fixtures/operations/raster-crossfade.json": "a5adc26d08f2b43609442dcdaaaf49aa1955aa3b388563bf829aa73797701722",
+    "evidence/workflows/layer-marks/native.json": "478942e17ada33534114ca7a1e804220c6f238ee66fbeee26cae796a73bfaf94",
+    "evidence/workflows/layer-marks/root-review.json": "f11cc13fc770816edfd61c83fcc98b5c7fc7e9223fe81a7e089587c43907a354",
+    "evidence/conformance/java2d-regions-native.json": "0508a34c210a23a4f7e78004ad186e4ea3a047cc9c254228f8d71991c7b6c3f9",
+    "evidence/conformance/raster-crossfade-catalog-review.json": "df0a15350b97f869cf79551eea5d6e57a214dc50db7be3f9930b33e1cd3c71b7",
+    "evidence/documentation/java-regions-comments-review.json": "dbc2660991e8d64c0de2a7445a2f92d497e161a772a9971e7ca1ac07bb494f11",
+    "evidence/conformance/java2d-masked-regions-native-candidate.json": "1ea5f5a647af4f48b7e1cb009efdeaadf030d15a089b840fecd58021d4e402f4",
+    "evidence/workflows/masked-partition-marks/native.json": "fc4e7b8f9be8c71cad3c418fcd7bab7b1ffd0b9d9fb4e7efcd365893d461ee17",
+    "evidence/workflows/masked-partition-marks/root-review.json": "579daf2521351067a2744cb7d74ca231dc11c44a73907107b9ef7e434411cdea",
+    "evidence/documentation/raster-crossfade-support-carry-forward.json": "d5cdf383dd8d7b94ffed9e8574ea92d19d43a92d3d3c2f0e1a721f4cf13856e6"
+  },
+  "rgb_amendment": "Root reviewed current region adapter RGB/ARGB preflight and detached RGB alpha normalization; source-bound native RGB case and byte-identical LayerMarks regression accepted. Portable core unchanged.",
+  "reviewed_changes": [
+    "Existing rectangle preflight, pixel-center coverage and composite arithmetic preserved; coverage computation moved before borrowed draw with immutable bounds.",
+    "Shared draw/composite helper preserves target initialization and cleanup. Existing rectangle native scenarios passed against current adapter.",
+    "MaskedRegion privately captures coverage once; renderMasked preflights all descriptors and preserves supplied callback order. Focused new native probe and visual workflow passed."
+  ]
+}

@@ -21,19 +21,18 @@ The historical [drawing-boundary proposal](../design/drawing-boundary.md) led to
 reviewed [fresh-raster drawing contract](../catalog/drawing/fresh-raster-2d.json) used by
 the native examples. CP3 size-aware placement, CP4 quadrant partition, CP5 retained
 triangle grain and CP6 endpoint branching are locally delivered on Java, with scoped native and visual validation.
-The local0.6.0 archive includes six workflows and ten operations; target support is
-recorded in the checked operation reference. Other ports remain deferred during the Java
-breadth sprint. The [CP6 selection](../design/capabilities/cp6-branching-selection.md)
+The current Java source bundle records 23 operations and 23 editable workflows;
+its scoped target support and acceptance are recorded in the checked operation reference
+and `evidence/distribution/cp20-java-review.json`. Other ports remain deferred during
+the Java breadth sprint. The [CP6 selection](../design/capabilities/cp6-branching-selection.md)
 records the breadth-first ordering choice; the frozen catalog controls exact behavior.
 
-CP7 now has a reviewed capability-dependency admission for a retained radial-profile
-surface, following a seven-image private P3D comparison. Its proposed result includes
-indexed triangles, local flat normals and face band/cell/kind, allowing profile edits and
-retained styling without caller topology or normal reconstruction. See the
-[CP7 selection](../design/capabilities/cp7-profile-selection.md) and
-[admission review](../design/capabilities/cp7-ledger-admission-review.md). Contract and
-implementation work remain; this is not an eleventh shipped operation. The source audit
-also reopened prueba4's provisional merge because its longitudinal strips overlap.
+CP7 has a reviewed retained radial-profile surface and an accepted Java P3D workflow;
+CP18 extends that workflow with explicit depth sampling and retained face attributes.
+The current operation reference and distribution records carry the support and native
+scope. These workflows do not claim universal solid extrusion or arbitrary mesh
+processing. The source audit also reopened prueba4's provisional merge because its
+longitudinal strips overlap.
 
 
 ## Public surface and composition
@@ -116,14 +115,16 @@ capabilities deliberately. Before claiming coverage of any of the following comp
 trace it through concrete operation contracts. The following
 are proposed acceptance cases, not completed reproductions or promises of exact pixels.
 
-| case and motivation | values and composition to demonstrate | currently missing |
+| historical case and motivation | current values and composition | remaining gap or status |
 |---|---|---|
-| Grid/noise strokes — [pelines](../survey/out/2018/Generativos/pelines/notes.md) | Grid positions → sampled angle/length/colour → clamped segments → marks | Grid, field and clipping boundaries; avoid unnecessary path integration |
-| Flow and marks — [ciserp](../survey/out/2019/generativos/ciserp/notes.md) | Ordered integrated positions → perpendicular strokes/end marks, with explicit progress attributes | Integration versus envelope/style extraction; state and order contracts |
-| Scattered triangulated forms — [puntis](../survey/out/2018/Generativos/puntis/notes.md) | Sites → triangulation → per-triangle colour/count → point samples → marks | Site generation and topology beyond the micro-slice; density and RNG order |
-| Branching — [Arboles](../survey/out/2014/Generativos/Arboles/notes.md), [arbolito4](../survey/out/2018/Generativos/arbolito4/notes.md) | Parent segments → ordered child geometry → taper/marks | Recursion, termination and resource semantics; distinguish shared-pool line cutting |
-| 3D — [cilindros](../survey/out/2017/Generativos/cilindros/notes.md) | Supplied radial profile → rings/topology → vertex attributes → mesh commands | Caps, seams, winding, coordinates and four-target rendering |
-| Typography — [textureGridText](../survey/out/2016/Generativos/textureGridText/notes.md) | Cells/placement records + supplied glyph/font data → text commands | Portable layout decision independently of font capability |
+| Grid/noise strokes — [pelines](../survey/out/2018/Generativos/pelines/notes.md) | FieldMarks supplies the accepted field-oriented mark workflow. | Source-specific clipping, coupled source RNG and exact source replay remain outside the accepted boundary. |
+| Flow and marks — [ciserp](../survey/out/2019/generativos/ciserp/notes.md) | PathMarks supplies retained integrated positions/headings and mark transfer. | Source-specific envelopes, jitter and exact stream replay remain composition choices. |
+| Scattered triangulated forms — [puntis](../survey/out/2018/Generativos/puntis/notes.md) | Delaunay/facet and triangle-grain workflows cover supplied sites and triangle sampling. | Source-specific site generation, density allocation and shared RNG order remain open. |
+| Branching — [Arboles](../survey/out/2014/Generativos/Arboles/notes.md), [arbolito4](../survey/out/2018/Generativos/arbolito4/notes.md) | BranchMarks and CutBranchMarks cover endpoint growth and shared line-pool cutting. | A general grammar/turtle engine is not established by the surveyed brotes algorithm. |
+| 3D — [cilindros](../survey/out/2017/Generativos/cilindros/notes.md) | ProfileMarks and DepthMarks cover the accepted radial-profile/depth workflows. | Universal solid extrusion, arbitrary mesh processing and broad renderer claims remain excluded. |
+| Typography — [textureGridText](../survey/out/2016/Generativos/textureGridText/notes.md) | GlyphMarks covers path-based placement with an explicit native font. | Font-outline extraction and arbitrary shaping remain unsupported and need explicit scope review. |
+
+Current additions: PolygonMarks is accepted in the Java0.23/CP20 source bundle; see [the operation reference](reference/operations.md) and [CP20 distribution review](../evidence/distribution/cp20-java-review.json). The Curvespace recreation is separately accepted as a repository example using existing operations; it is documented in [the recreation guide](curvespace-recreation.md) and [its review](../evidence/reproductions/curvespace/root-review.json), and is not packaged as a CP20 operation or starter.
 
 For each case, record which concrete operation consumes each value, ownership, units,
 state order, commands, capabilities and success criterion. A missing join, arbitrary

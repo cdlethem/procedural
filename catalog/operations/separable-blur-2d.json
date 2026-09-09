@@ -1,0 +1,231 @@
+{
+  "id": "raster.separable-blur-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability": "Postprocessing",
+  "description": "Normalize two caller-supplied one-dimensional kernels and filter a straight ARGB8 raster horizontally then vertically in premultiplied encoded RGB.",
+  "decision_cluster": "raster.separable-blur-2d",
+  "capability_decision": "design/capabilities/separable-blur-admission.md",
+  "design_review": "design/capabilities/separable-blur-admission.md",
+  "provenance": [
+    {
+      "candidate_id": "2015/Generativos/cityPink3d#2",
+      "notes_path": "survey/out/2015/Generativos/cityPink3d/notes.md",
+      "note_sha256": "9961e1604c367d4f621a74a8302fed188d23f52e79d1164f58e1dad8c54d4533",
+      "evidence_sha256": "73d87a9d5a42aea23b25d56b647f3079c923a42ab162c929a361449defe6b691",
+      "relationship": "Weighted horizontal and vertical source filtering motivates the reusable neighborhood operation; its gain, opaque output, scanlines and vignette are deferred."
+    },
+    {
+      "candidate_id": "2020/generative/01_04/rgblur#0",
+      "notes_path": "survey/out/2020/generative/01_04/rgblur/notes.md",
+      "note_sha256": "f28e3eba6bce0695066ca569ecc51f6d248c24f23b8b030185269dc36b89d7a2",
+      "evidence_sha256": "95fad559c074f041eee3362d75ec3bbde3b9ca3fc5a29880f866848d1254b3d6",
+      "relationship": "Successive anisotropic source shader passes motivate independently controllable axes; fractional texture samples and RGB-mask modulation are deferred."
+    }
+  ],
+  "source_artifacts": [
+    {
+      "path": "evidence/parameter-experiments/spatial-composition/filter-source-review.json",
+      "source_path": "2015/Generativos/cityPink3d/frag.glsl",
+      "sha256": "b212668511b5cf44a27920030be6cc3e23441731be9924f3b3bb9d3174c3a267"
+    },
+    {
+      "path": "evidence/parameter-experiments/spatial-composition/filter-source-review.json",
+      "source_path": "2020/generative/01_04/rgblur/data/blur.glsl",
+      "sha256": "e5e0039ccbf4d144caa171be468073cb6fc339575838d483d6a4ea5f520f1d1b"
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "source",
+      "kernelX",
+      "kernelY",
+      "maxSamples"
+    ],
+    "properties": {
+      "source": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "width",
+          "height",
+          "pixels"
+        ],
+        "properties": {
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "pixels": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            }
+          }
+        }
+      },
+      "kernelX": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "number",
+          "minimum": 0
+        },
+        "maxItems": 2147483647
+      },
+      "kernelY": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "number",
+          "minimum": 0
+        },
+        "maxItems": 2147483647
+      },
+      "maxSamples": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9007199254740991
+      }
+    }
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "width",
+      "height",
+      "pixels"
+    ],
+    "properties": {
+      "width": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "height": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2147483647
+      },
+      "pixels": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        }
+      }
+    }
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Owned straight ARGB8 raster with source dimensions and exactly width*height row-major unsigned32 pixels.",
+  "behavior": {
+    "input": "Exactly source,kernelX,kernelY,maxSamples. Source dimensions are positive signed32 and their product is at most 2147483647; pixels is exactly that many unsigned32 values. Each kernel is odd, nonempty, length at most 2147483647, finite binary64 nonnegative weights with a positive maximum. maxSamples is a required safe integer [1,9007199254740991]. No defaults.",
+    "preflight": "Object form first validates exact top-level and source keys. Typed form first validates dimensions/product and non-null exact pixel count. Validate source dimensions/product/count/values, then kernelX length/values, kernelY length/values, then maxSamples representation. Compute P*(lenX+lenY) with wide integer arithmetic; if it exceeds maxSamples, fail WORK_LIMIT before allocating normalized kernels, output, or intermediates. Zero taps and length-one axes count. All invalid input precedes WORK_LIMIT.",
+    "normalization": "For each axis independently, m=max(weights); in index order q[i]=weights[i]/m; S begins positive zero and adds q[i] in index order; normalized[i]=q[i]/S. Binary64 underflow follows the host format. No epsilon, compensation, fast math, or sum-before-scale normalization.",
+    "filtering": "If both axes have length one, return detached original packed bits exactly after validation and preflight. Otherwise horizontally visit row-major outputs and X taps in array order at x+i-floor(lenX/2), clamped to source bounds. Start A,R,G,B at zero; a=alpha/255.0; A+=a*w; for each encoded RGB byte c, premult=c*a then component+=premult*w as separate operations. Store four P-length binary64 arrays. Vertically visit row-major outputs and Y taps in order at y+i-floor(lenY/2), clamped; accumulate stored A,R,G,B times normalized Y. No intermediate byte quantization or clamp. Calculate coordinate-plus-offset using wide integer arithmetic before clamping, never overflowing signed32.",
+    "quantization": "Q(v)=floor(min(255,max(0,v))+0.5). If final A==0 output packed zero. Else alpha=Q(A*255); if alpha==0 output zero; channels are Q(component/A), packed ARGB. Arithmetic uses ordered IEEE binary64, separately rounded ties-to-even; no FMA, reassociation, or gamma conversion. Nonidentity filtering ignores hidden transparent RGB and canonicalizes final alpha-zero output.",
+    "ownership": "Result is immutable, owns detached packed pixels, retains neither source nor kernels, and pixels()/toValues() return detached values. Failed calls expose no partial result. Inputs must remain stable for the call.",
+    "access": "width() and height() expose dimensions. pixelAt(Object/long) first requires a finite safe nonnegative integer, then requires index < width*height. Negative zero is zero. Java pixelAt returns an int ARGB bit pattern; portable toValues pixels are unsigned32.",
+    "native_forms": "Java contract form: org.procedurals.raster.SeparableBlur2D.blur(Object) and blur(int width,int height,int[] pixels,double[] kernelX,double[] kernelY,long maxSamples). Result: width(), height(), pixelAt(Object or long), pixels(), toValues(). Implementation and native acceptance remain pending.",
+    "carriers": "Object records are exact-key Map and arrays List. Numeric input and Object indices accept only Byte, Short, Integer, Long, Float, Double. Reject Boolean, String, BigInteger, BigDecimal, custom Number, null typed buffers, and non-finite/out-of-range forms. Typed kernel values are doubles and typed pixels are int bit patterns.",
+    "limits": "Declared work is O(P*(lenX+lenY)); live storage is four P-length double horizontal arrays plus owned P-length output and kernels, O(P+lenX+lenY). No per-pixel objects or full 2D kernel. Allocation failures are host resource failures, never INVALID_INPUT or partial output.",
+    "environment": "No RNG, time, noise, renderer, host image, callback, or mutable global state."
+  },
+  "errors": {
+    "INVALID_INPUT": "Wrong keys, shapes, carriers, dimensions/product, count/value/kernel/maxSamples representation; all configuration validation failures.",
+    "WORK_LIMIT": "Validated declared work P*(kernelX.length+kernelY.length) exceeds maxSamples.",
+    "INVALID_INDEX": "pixelAt index is not a finite safe nonnegative integer.",
+    "INDEX_OUT_OF_RANGE": "A representable pixelAt index is outside the retained output raster."
+  },
+  "error_order": [
+    "Validate source then kernelX then kernelY then maxSamples; INVALID_INPUT precedes WORK_LIMIT.",
+    "pixelAt INVALID_INDEX precedes INDEX_OUT_OF_RANGE."
+  ],
+  "parameters": {
+    "source": {
+      "unit": "straight packed ARGB8 raster",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Caller retained drawing or image content."
+    },
+    "kernelX": {
+      "unit": "nonnegative odd horizontal weights",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Caller data; no measured artistic kernel range."
+    },
+    "kernelY": {
+      "unit": "nonnegative odd vertical weights",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Caller data; no measured artistic kernel range."
+    },
+    "maxSamples": {
+      "unit": "declared tap work budget",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit resource bound; all supplied taps count."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred"
+    }
+  },
+  "fixtures": "fixtures/operations/separable-blur-2d.json",
+  "comparison": "Exact output dimensions, packed pixels and error codes. Independent scalar vectors plus native carrier, ownership, index and typed/object parity checks.",
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "approved"
+  },
+  "exclusions": [
+    "Source shader gain, scanlines and vignette",
+    "Fractional texture taps and per-channel spatial kernel modulation",
+    "Kernel synthesis or artistic defaults",
+    "Image decoding and assets",
+    "Linear-light filtering",
+    "Non-Java support"
+  ],
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "BlurMarks retained image/filter/mask workflow pending; no complete original recreation claimed.",
+    "plan": "design/capabilities/blur-marks-native-plan.md"
+  }
+}

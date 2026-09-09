@@ -1,0 +1,23 @@
+{
+  "status": "source-reviewed",
+  "reviewer": "root",
+  "scope": "D2 filter investigation; no implementation/admission or visual acceptance",
+  "upstream": "https://github.com/manoloide/AllSketchs",
+  "sources": {
+    "2015/Generativos/cityPink3d/frag.glsl": "b212668511b5cf44a27920030be6cc3e23441731be9924f3b3bb9d3174c3a267",
+    "2015/Generativos/cityPink3d/cityPink3d.pde": "69265e2cb42bb5f852a603c82d9e0ad7b8aa912d4713a778a6ac3366f2b0f636",
+    "2020/generative/01_04/rgblur/data/blur.glsl": "e5e0039ccbf4d144caa171be468073cb6fc339575838d483d6a4ea5f520f1d1b",
+    "2020/generative/01_04/rgblur/rgblur.pde": "557eec6adb0fada94a909e2c36aed27d55ba95a84a00b46389079583209dfa22"
+  },
+  "findings": {
+    "cityPink3d": "Active 3x3 weights sum16 but divide15; combine0.8 original+0.8 blurred; scanlines and two radial color mixes; final alpha1. A normalized alpha-preserving blur would be explicit project design, not shader equivalence.",
+    "rgblur": "Active per-channel direction scales from RGB mask; seven texture taps (three symmetric pairs+center); time/noise code inactive. Output alpha1. Plain unmasked directional blur is a component extraction, not the full active filter.",
+    "crb": "Root source read: sampled brightness controls candidate size; endpoint trials shrink while brightness difference>30. Do not describe as walking until an edge or admit edge detector from report prose."
+  },
+  "next": "Specify reusable normalized image filtering independently of fixed vignette colors, gain and opaque-only shader output; demonstrate image/mask composability. Choose contract before production code.",
+  "limits": [
+    "No useful parameter ranges isolated in these reports.",
+    "No shader render or visual recreation conducted in this source investigation.",
+    "Source files read only; no upstream shader implementation copied."
+  ]
+}

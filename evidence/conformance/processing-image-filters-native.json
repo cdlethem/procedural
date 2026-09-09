@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "scope": "actual PImage transport only; no artist render acceptance",
+  "source_sha256": {
+    "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e8cfa31467ad3d5fc8b06fe83a6710dd711874ee1aa12e2ed563f7809b849685",
+    "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageFilters.java": "f1f077deb7944cc4a5a57c5e39bafb7b7d984a28b197a40595eebdc634d101e2",
+    "tests/native/ProcessingImageFiltersNative.java": "43022308fec4fe1627e23e3ddbe872a3f9bc4567b389f8279ac4b5d8289312c3"
+  },
+  "compile_command": [
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac",
+    "--release",
+    "8",
+    "-cp",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar",
+    "-d",
+    ".work/image-filters-native1",
+    "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java",
+    "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageFilters.java",
+    "tests/native/ProcessingImageFiltersNative.java"
+  ],
+  "run_command": [
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java",
+    "-cp",
+    ".work/image-filters-native1:.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+    "ProcessingImageFiltersNative"
+  ],
+  "output": "ProcessingImageFilters native transport passed: parity, ownership, RGB/ARGB, rejection and budget\n"
+}

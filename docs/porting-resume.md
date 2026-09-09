@@ -1,5 +1,25 @@
 # Deferred port integration — Java buildout resumes
 
+## Current Java handoff: CP29 / Java0.32.0
+
+Use the pushed CP29 integration commit containing
+`evidence/distribution/cp29-java-review.json` as the new baseline; older hashes below
+are historical checkpoints. This milestone contains30 accepted Java operations and34
+workflows. The exact accepted operation/target inventory is in `catalog/validation/`.
+The source archive SHA is
+`11f4b85131fbad3be5fb8677c55cc9cd8cb66ef90a2664fbf745051f9f6f84d5`.
+
+New in this checkpoint: `geometry.clip-segments-simple-polygon-2d`, implemented by
+`SegmentClip2D`, and the ClipMarks workflow. Its34 shared fixtures specify exact topology,
+binary64 rounding, ordered failures and source identities. Java native edit/transfer and
+extracted-package results are accepted; other targets remain unvalidated. Reuse the
+independent exact oracle when porting, and preserve representation-collapse failures.
+
+Pending: prior deferred ports and Android ProfileMarks integration, clipping ports,
+and representative native review on each claimed platform. Port work remains paused
+during this Java sprint. Root alone accepts shared support records. Use a separate
+checkout/branch pinned to the integration SHA and the machine-wide native render lock.
+
 Maintainer direction: pause port integration and develop new Java functionality. This
 supersedes the current ports-first sequence. Preserve frozen contracts and accepted target
 work; new Java capability admission still requires root architecture review and focused
@@ -79,3 +99,14 @@ CP17 adds BinaryCellPartition2D/PanelMarks after closed splines. Preserve exact 
 bounds, survivor-then-child ordering, failed-attempt RNG consumption, RANDOM/LONGEST axis
 semantics and all-interior cut mapping. Use the accepted Java0.20 distribution checkpoint
 at `7d5c941f`; do not port the earlier private probe or claim Processing source replay.
+
+CP18 adds GradientNoise3D01/DepthMarks after binary panels. Preserve safe-corner coordinates,
+three-stage hash, unsigned modulo12 gradients and exact x/y/z interpolation. Its z=0 slice
+is deliberately distinct from the2D field. Native mesh transfer requires target-specific
+P3D-equivalent evidence; the Java source bundle review is evidence/distribution/cp18-java-review.json.
+
+CP19 adds RadialPull2D/PullMarks after3D noise. Preserve fdlibm hypot/pow, original-query
+ordered displacement summation, adding the query once, exact-center zero and atomic target
+writes on overflow. Fold/self-intersection behavior is intentional. Use the Java0.22
+distribution checkpoint identified by evidence/distribution/cp19-java-review.json; core-only
+9e702ab1 is not the packaged baseline. Root retains port acceptance ownership.

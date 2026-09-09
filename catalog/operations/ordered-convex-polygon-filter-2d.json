@@ -1,0 +1,185 @@
+{
+  "id": "sampling.ordered-convex-polygon-filter-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "decision_cluster": "sampling.ordered-convex-polygon-filter-2d",
+  "description": "Ordered greedy filtering of supplied strictly convex polygon outlines using exact inclusive intersection; retained geometry and original proposal indices.",
+  "capability_decision": "design/capabilities/cp20-convex-placement-direction.md",
+  "design_review": "design/operations/convex-polygon-placement-contract.md",
+  "provenance": [
+    {
+      "candidate_id": "2017/Generativos/celular#0",
+      "notes_path": "survey/out/2017/Generativos/celular/notes.md",
+      "note_sha256": "ffede68b2e6fa93117688882d8fd640ba524a333904f03e07fa4994722cb71e4",
+      "evidence_sha256": "fe337bd56a6f24a414f0ce682f5ef12d1847a124ee222fae864be9bd7f9ddc6a",
+      "relationship": "independently specified capability dependency; source candidates not merged"
+    },
+    {
+      "candidate_id": "2017/Generativos/celular2#0",
+      "notes_path": "survey/out/2017/Generativos/celular2/notes.md",
+      "note_sha256": "de80ab80dc19fc473be70e7e1786e11fe2e64661caf10894afb8afc30d48e6d2",
+      "evidence_sha256": "2a7513ed73445cf6958e7fa97de11db270051564abade25afb3c4ab805e9380f",
+      "relationship": "independently specified capability dependency; source candidates not merged"
+    },
+    {
+      "candidate_id": "2017/Generativos/celular2#1",
+      "notes_path": "survey/out/2017/Generativos/celular2/notes.md",
+      "note_sha256": "de80ab80dc19fc473be70e7e1786e11fe2e64661caf10894afb8afc30d48e6d2",
+      "evidence_sha256": "2a7513ed73445cf6958e7fa97de11db270051564abade25afb3c4ab805e9380f",
+      "relationship": "independently specified capability dependency; source candidates not merged"
+    }
+  ],
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "polygons"
+    ],
+    "properties": {
+      "polygons": {
+        "type": "array",
+        "maxItems": 357913941,
+        "items": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 1073741823,
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "attempts",
+      "polygons",
+      "sourceIndices"
+    ],
+    "properties": {
+      "attempts": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 357913941
+      },
+      "polygons": {
+        "type": "array",
+        "maxItems": 357913941,
+        "items": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 1073741823,
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      },
+      "sourceIndices": {
+        "type": "array",
+        "maxItems": 357913941,
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 357913940
+        }
+      }
+    }
+  },
+  "parameters": {
+    "polygons": {
+      "unit": "ordered caller-coordinate polygon cycles",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "celular/celular2 source outlines and CP20 reviewed private shape/aspect transfer. Strict convexity is validity, packed-coordinate limits are representational; no measured artistic range."
+    }
+  },
+  "behavior": {
+    "normative": "design/operations/convex-polygon-placement-contract.md",
+    "ordering": "All proposals validated in order before greedy filtering; retained order and vertex cycle preserved.",
+    "numerics": "Finite normalized binary64 coordinates as exact dyadic reals for geometric signs. Inclusive symmetric contact/containment; no epsilon.",
+    "ownership": "Detached immutable retained geometry/source indices; fresh toValues.",
+    "complexity": "O(V+N) storage; O(sum m_i\u00b2) validation and worst-case O(sum compared m_i*m_j) pair work; cached broad phase and certified exact fallback."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed config/container/carrier/nonfinite coordinate or representational count overflow.",
+    "INVALID_POLYGON": "Finite structurally valid polygon is not a strict convex cycle.",
+    "INDEX_OUT_OF_RANGE": "Invalid result polygon or vertex index."
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Java first; implementation and native review pending."
+    },
+    "p5js": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/ordered-convex-polygon-filter-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "design_experiment": "evidence/parameter-experiments/cp20-convex-placement/review.json",
+    "acceptance": "Actual public-core aspect edit, diamond transfer, retained recolor/reset/cached save before distribution."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Contract frozen for implementation; public native/distribution acceptance pending."
+  },
+  "deliberately_excluded": [
+    "concave polygons",
+    "holes",
+    "nesting mode",
+    "seeded shape generation",
+    "renderer",
+    "optimal packing",
+    "source collision bug replay"
+  ],
+  "fixture_format": "exact-json-output"
+}

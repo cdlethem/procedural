@@ -4,7 +4,7 @@ Procedurals is an evidence-backed generative-art toolkit in development. It is b
 from a systematic survey of 901 Processing sketches into a small, composable set of generators,
 transforms, drawing operations, templates, and tools.
 
-Nineteen editable starters begin from artistic decisions: place independent marks, trace paths,
+The editable starters begin from artistic decisions: place independent marks, trace paths,
 scatter differently sized forms, divide a surface into cells, give shapes grain, grow branches,
 build a 3D form from an axial radius profile, use letters as repeated marks along paths,
 turn point arrangements into connected facets, wire and grain, or give an arrangement
@@ -24,25 +24,50 @@ CutBranchMarks adds mutable interior-cut branching with retained geometry and sc
 WarpMarks adds reusable raster remapping with retained sources and scoped JAVA2D edit/save validation.
 RampMarks adds unequal noncyclic color stops with geometry-preserving edits and radial transfer.
 BandMarks adds retained noise-band paths with tolerance edits and independent perpendicular marks.
+PointerMarks adds interactive supplied targets with deterministic replay and fixed-wire transfer.
+BodyMarks adds tapered bodies and centerlines from retained backward field traces.
+CutMarks adds selected-region subdivision and deletion with retained decoration.
+PolygonMarks adds noncircular outline placement with thickness and shape edits.
+PullMarks adds localized radial folds with retained grid and contour drawing.
+DepthMarks adds explicit field-depth edits and volumetric coloring on retained meshes.
 PanelMarks adds irregular integer-cell panels with reusable decoration.
 LoopMarks adds smooth closed curves with distance-based tiles and retained fan drawing.
-Ports of these newer workflows to JavaScript, py5 and Android are deferred. The local Java 0.20.0 source bundle
-contains all twenty starters and twenty reusable operations. It is not a published registry
+LayerMarks and MaskMarks combine region callbacks, retained drawings and reusable masks.
+PlacementImageMarks crops and fits image content; ImageFieldMarks uses images to control marks.
+BlurMarks mixes filtered and sharp drawings, and ProjectionMarks deforms contours and lines
+through ordered circular influences.
+Ports of these newer workflows to JavaScript, py5 and Android are deferred. The accepted Java 0.34.0 source bundle
+contains 36 editable workflows and 30 reusable operations. It is not a published registry
 release. An experimental [Java recipe preview](docs/java-recipe-preview.md) exports FieldMarks,
 PathMarks, placement-bars and region-panels as editable standalone projects. General portable recipes, MCP and web tools
 remain in the roadmap.
 
-[Render a seeded sketch or parameter sweep](docs/rendering-java.md) with the opt-in JAVA2D helper.
+[Browse the local visual-review gallery](docs/visual-review.md) for actual workflow images,
+structural edits and private studies collected in one place.
+
+[Render a seeded sketch or parameter sweep](docs/rendering-java.md) with explicit JAVA2D, P2D or P3D rendering, assets and selected frame sequences.
+
+The separate [Curvespace recreation](docs/curvespace-recreation.md) demonstrates a complete
+additive P2D grid composition using existing operations. Four original structural recreations
+are now demonstrated; Curvespace remains a separate repository example, outside the accepted source bundle.
 
 Choose an example by what you want to make in [the Java starting-point guide](docs/choosing-java-workflow.md).
 Build from a fresh checkout with [the Java source-bundle instructions](docs/building-java-from-source.md).
+Then [compose drawings, partitions and image effects](docs/composing-java-effects.md):
+choose a layout, supply its content, and control placement or blending independently.
 
+Open [PointerMarks](docs/pointer-marks.md) to pull an arrangement with pointer-supplied targets.
+Open [BodyMarks](docs/body-marks.md) to shape tapered bodies along a field.
+Open [CutMarks](docs/cut-marks.md) to select, subdivide and remove regions.
+Open [PolygonMarks](docs/polygon-marks.md) to pack supplied convex outlines.
+Open [PullMarks](docs/pull-marks.md) to bend grids and closed contours.
+Open [DepthMarks](docs/depth-marks.md) to change a field slice or color a 3D form.
 Open [PanelMarks](docs/techniques/panel-marks.md) to divide a surface into unequal panels.
 Open [LoopMarks](docs/loop-marks.md) to shape smooth loops and place marks along them.
 Open [BandMarks](docs/band-marks.md) to keep winding lines near a noise level.
 Open [RampMarks](docs/ramp-marks.md) to control where colors transition.
 Open [WarpMarks](docs/warp-marks.md) to bend a captured pattern through noise or an analytic field.
-The accepted local archive is identified in [the Java0.20 review](evidence/distribution/cp17-java-review.json).
+The accepted local archive is identified in [the Java 0.33 review](evidence/distribution/path-clip-java-review.json).
 
 Start with [a field of independent marks](docs/getting-started.md),
 [paths and their marks](docs/path-marks.md),
@@ -58,7 +83,7 @@ Start with [a field of independent marks](docs/getting-started.md),
 [clustered 3D relief](docs/relief-marks.md), or
 [faceted cities](docs/city-marks.md), or
 [banded landscapes](docs/landscape-marks.md).
-[Build and install Java 0.20.0](docs/building-java-from-source.md) for all twenty starters.
+[Build and install the Java library](docs/building-java-from-source.md) for all 36 workflows.
 [Build the Android restoration patches](docs/installing-android-restoration.md) for the six
 ported starters, preserving their existing core versions.
 

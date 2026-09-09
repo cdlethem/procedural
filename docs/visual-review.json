@@ -1,0 +1,1453 @@
+{
+  "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
+  "groups": [
+    {
+      "id": "masked-partition-marks",
+      "title": "Masked partitions \u2014 replaceable content",
+      "category": "Native workflow; packaging pending",
+      "description": "Same irregular windows reveal global paths, local marks or explicit raster crops. Layout edits retain source content.",
+      "evidence": "evidence/workflows/masked-partition-marks/root-review.json",
+      "images": [
+        {
+          "label": "Global paths",
+          "path": ".work/masked-partition-marks-native-root2/native/baseline.png",
+          "sha256": "46bd25d9db447e4d7fb4a28b8f6436505aca9ba6fc75ecf03454a322474281af"
+        },
+        {
+          "label": "Shifted partition",
+          "path": ".work/masked-partition-marks-native-root2/native/shifted.png",
+          "sha256": "31704e2bfbd8662956dc5013dce2f0242fb4590d1e84dce2c032ca45b80b4a16"
+        },
+        {
+          "label": "Local marks",
+          "path": ".work/masked-partition-marks-native-root2/native/local.png",
+          "sha256": "99b85303ad762fc32452c732f377e20be5febf4ba6ec6d6e5d1ff615aefce673"
+        },
+        {
+          "label": "Image crops",
+          "path": ".work/masked-partition-marks-native-root2/native/crop.png",
+          "sha256": "1dcb58180d174b0673d2eb84fc7adc165112a4c40bc0890ef3cfb530d503cc89"
+        }
+      ]
+    },
+    {
+      "id": "path-clip-marks",
+      "title": "PathClipMarks \u2014 retained paths and clipping",
+      "category": "Native workflow",
+      "description": "Change the notch without regenerating paths; color by original path or reveal unclipped movement. Native and extracted-package reviewed in Java0.33.0.",
+      "evidence": "evidence/workflows/path-clip-marks/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/path-clip-marks-native-root2/native/baseline.png",
+          "sha256": "b0541ad8024639816df5cc7ffe3d30aa3dbc6dcaad7ccd111351efe33f048a01"
+        },
+        {
+          "label": "Shallow notch",
+          "path": ".work/path-clip-marks-native-root2/native/shallow-notch.png",
+          "sha256": "379e3a9609c1380d6e5456cc14863894a58407023a3b4174a9ad246bcdfdf85e"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/path-clip-marks-native-root2/native/recolored.png",
+          "sha256": "f630501475dc1eae92b6888f4545d7b8612ad29aab92dbbb73310c7254e7bc16"
+        },
+        {
+          "label": "Overlay",
+          "path": ".work/path-clip-marks-native-root2/native/overlay.png",
+          "sha256": "554186d41bf88e3e531f0d479fdfe1b9914a863e85eb6b42a41c8ccbd1d9318a"
+        }
+      ]
+    },
+    {
+      "id": "clip-marks-candidate",
+      "title": "ClipMarks \u2014 production candidate",
+      "category": "Candidate workflow",
+      "description": "Actual Java core: clip supplied strokes to a concave polygon, edit spacing and boundary, then transfer to zigzag strokes. Native visuals reviewed; release acceptance pending.",
+      "evidence": "evidence/workflows/clip-marks/visual-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/clip-marks-native-root1/native/baseline.png",
+          "sha256": "593c78b3abfef0085dc62d786ca782badee171f357df0e235fe73f1845139046"
+        },
+        {
+          "label": "Sparse",
+          "path": ".work/clip-marks-native-root1/native/sparse.png",
+          "sha256": "8a84ab7c3eedd8540d5a6c744f2432bafb5d3c5b2d226093a6f5821328a7baec"
+        },
+        {
+          "label": "Shallow notch",
+          "path": ".work/clip-marks-native-root1/native/shallow-notch.png",
+          "sha256": "b4ce2e09213b22a798049c22a5152780d3759bf1671a81d88346dbd1b7c44e15"
+        },
+        {
+          "label": "Supplied strokes",
+          "path": ".work/clip-marks-native-root1/native/supplied-strokes.png",
+          "sha256": "2b53d954d358309c2a1c7aa6c39ad2764888e661f170d56a969a632e3903bc6b"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/clip-marks-native-root1/native/recolored.png",
+          "sha256": "13386ed31250f8de6d2f419a597954e2920932e96ae8550214fb918a541b617b"
+        },
+        {
+          "label": "Endpoints hidden",
+          "path": ".work/clip-marks-native-root1/native/endpoints-hidden.png",
+          "sha256": "57ab421ae37ec5e67208afec09ab8301bfc4ce44ecb938b933ad322dab60397f"
+        },
+        {
+          "label": "Overlay",
+          "path": ".work/clip-marks-native-root1/native/overlay.png",
+          "sha256": "4c30c2b29e865176b5231f551334268d0419c48b5de97535b45f014ac8549bac"
+        }
+      ]
+    },
+    {
+      "id": "vector-clipping-study",
+      "title": "Vector clipping \u2014 private study",
+      "category": "Private study",
+      "description": "Hatch spacing, shallower notch and supplied stroke transfer; not accepted public functionality. Gray lines show original unclipped input.",
+      "evidence": "design/capabilities/vector-clipping-native-study.json",
+      "images": [
+        {
+          "label": "hatch",
+          "path": ".work/vector-clipping-study/native/hatch.png",
+          "sha256": "e5aac3a13e258e4529ed9c865f5bb49eaebafb5a26ac18499bd2a05e4977bad5"
+        },
+        {
+          "label": "sparse",
+          "path": ".work/vector-clipping-study/native/sparse.png",
+          "sha256": "16429cd551f0f047d9a260ece193d4a4ff9b8ff0f13927118093a0da9234a03e"
+        },
+        {
+          "label": "shallower notch",
+          "path": ".work/vector-clipping-study/native/deep-notch.png",
+          "sha256": "5d63aeb533f4885798486002ab694c50e5fccb4773541c9f43e22b433cbc0570"
+        },
+        {
+          "label": "supplied-strokes",
+          "path": ".work/vector-clipping-study/native/supplied-strokes.png",
+          "sha256": "cc783227aa442c839cae8b1730e114dbdc72ab9687497e8bd0a092a61f8dd947"
+        }
+      ]
+    },
+    {
+      "id": "annular-marks",
+      "title": "AnnularMarks \u2014 public-core native candidate",
+      "category": "Native workflow accepted",
+      "description": "Width,depth,facets,color and retained arrangement; extracted package pending.",
+      "evidence": "evidence/workflows/annular-marks/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/annular-marks-native-root1/native/baseline.png",
+          "sha256": "964ea8e70bbc9259131d63a227ea4988126f4c90035136ae86ab1cb42c998362"
+        },
+        {
+          "label": "wide",
+          "path": ".work/annular-marks-native-root1/native/wide.png",
+          "sha256": "b2e762ba805eb3dbc5be82f9fc758c225cc46c9f26bd33ba66065b5cd2ee97e7"
+        },
+        {
+          "label": "deep",
+          "path": ".work/annular-marks-native-root1/native/deep.png",
+          "sha256": "23fe635458877b61003bced80b12b533a0eeab2b6e6a0df44f35915fbda46cad"
+        },
+        {
+          "label": "facets",
+          "path": ".work/annular-marks-native-root1/native/facets.png",
+          "sha256": "9ebe0c27e724dda383c20853aa397fc13fd44dc7aa1d1d9b950c8e9f78bb6131"
+        },
+        {
+          "label": "recolored",
+          "path": ".work/annular-marks-native-root1/native/recolored.png",
+          "sha256": "e0085b8f2b6f20518f5f44b601ec1ff8f3a5a1cf1290b22f5cf3be6619dc0996"
+        },
+        {
+          "label": "arrangement",
+          "path": ".work/annular-marks-native-root1/native/arrangement.png",
+          "sha256": "908ebd9c4d01525ba149a8ab65d9c9dbf22650befed62aec25b3915ec42f1780"
+        }
+      ]
+    },
+    {
+      "id": "annular-mesh-study",
+      "title": "Annular forms \u2014 private study",
+      "category": "Private study",
+      "description": "Root-reviewed P3D width, depth, facet, color and arrangement comparison; not shipped API.",
+      "evidence": "evidence/parameter-experiments/annular-mesh/decision.md",
+      "images": [
+        {
+          "label": "arrangement",
+          "path": ".work/annular-study/native-attempt1/arrangement.png",
+          "sha256": "60e190fd41ed1307c5d8974c6e66cc44cbdfb501b8aa37914454eaa546bc3f41"
+        },
+        {
+          "label": "wide",
+          "path": ".work/annular-study/native-attempt1/wide.png",
+          "sha256": "7ed0eee39561c3060a97d5689d65869c17ee494b816cff1686b7f04a337be7c3"
+        },
+        {
+          "label": "facets",
+          "path": ".work/annular-study/native-attempt1/facets.png",
+          "sha256": "4eec4712ffd433bbfecb1cc92d892f9983937af6500c269a2cdf32cf9921eb1f"
+        },
+        {
+          "label": "deep",
+          "path": ".work/annular-study/native-attempt1/deep.png",
+          "sha256": "1e4d77d81ca557e7d95d98fc6028f9d0052df3bdcd18410ac2f1a4124f24e52c"
+        },
+        {
+          "label": "recolor",
+          "path": ".work/annular-study/native-attempt1/recolor.png",
+          "sha256": "d5977c601f8e51642645fa20e1f0adb180ea86e8297bb503c27761db3af22f47"
+        },
+        {
+          "label": "baseline",
+          "path": ".work/annular-study/native-attempt1/baseline.png",
+          "sha256": "df2264ab82e03d343d896831ba27a821c0b6ae9491b9f5f659c327d821fadaac"
+        }
+      ]
+    },
+    {
+      "id": "projection-marks",
+      "title": "Sequential deformation \u2014 ProjectionMarks",
+      "category": "Accepted native workflow",
+      "description": "Contour and line transfer with explicit strength/order; packaging pending.",
+      "evidence": "evidence/workflows/projection-marks/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/projection-marks-native-root2/native/baseline.png",
+          "sha256": "43f2110769ec6120533e61f627c8cc3d7c54080e155bf9676b8977097404e105"
+        },
+        {
+          "label": "full",
+          "path": ".work/projection-marks-native-root2/native/full.png",
+          "sha256": "5f284fdc5b83ba5bfe4e23631bca4f7ba92b173acfaf4e4bc00a1000706da1e7"
+        },
+        {
+          "label": "zero",
+          "path": ".work/projection-marks-native-root2/native/zero.png",
+          "sha256": "cd00cf14527f7868d0666ba26eb4c209792818800fcf8dfd930b161c6a359b06"
+        },
+        {
+          "label": "reversed",
+          "path": ".work/projection-marks-native-root2/native/reversed.png",
+          "sha256": "cb8e5a467474a4d641ab68b0ae0a8dfa770ff6e933b4fbc1fdde7cfb83653757"
+        },
+        {
+          "label": "recolored",
+          "path": ".work/projection-marks-native-root2/native/recolored.png",
+          "sha256": "1d03d33de749e31637c09ab9535ecfd307b16f770ae08c6403d4bc6e3e55328e"
+        }
+      ]
+    },
+    {
+      "id": "disc-projection-study",
+      "title": "Sequential disc projection \u2014 private admission study",
+      "category": "Private study",
+      "description": "Root inspected contour/line transfer and reversed order. Retained for contract design; no shipped operation.",
+      "evidence": "evidence/parameter-experiments/disc-projection/root-review.json",
+      "images": [
+        {
+          "label": "strength-0",
+          "path": ".work/disc-projection-study/attempt2-corrected/strength-0.png",
+          "sha256": "bec83283f667b7e7c1ae1335da53a657618114766043ab225b711d133103ca8b"
+        },
+        {
+          "label": "strength-045",
+          "path": ".work/disc-projection-study/attempt2-corrected/strength-045.png",
+          "sha256": "87c0a223a84193e630c8ca5c5abf94f76167183e5233156c994a66413dda3dbd"
+        },
+        {
+          "label": "strength-1",
+          "path": ".work/disc-projection-study/attempt2-corrected/strength-1.png",
+          "sha256": "256583761e37030cfd5de697db9c0c73812192746f728e1040fa191c4a7ef8a7"
+        },
+        {
+          "label": "order-reversed",
+          "path": ".work/disc-projection-study/attempt2-corrected/order-reversed.png",
+          "sha256": "34e182bcde50622437365f800e639763dc12e6043816b0442d5b5e5039afbb19"
+        }
+      ]
+    },
+    {
+      "id": "blur-marks",
+      "title": "Retained image filtering \u2014 BlurMarks",
+      "category": "Accepted native workflow",
+      "description": "Root-reviewed directional blur and masked transition. Corrected retention probe passed; packaging pending.",
+      "evidence": "evidence/workflows/blur-marks/root-review.json",
+      "images": [
+        {
+          "label": "Sharp",
+          "path": ".work/blur-marks-native-agent2/native/sharp.png",
+          "sha256": "8c9ad5d79f44260756bd9be1e89fe0a178e07c4988a3a8dc7056c04fb46b19bb"
+        },
+        {
+          "label": "Soft",
+          "path": ".work/blur-marks-native-agent2/native/soft.png",
+          "sha256": "7083e2f46a55aed7bbfeb3ae513474ce0247cb1e10e30e0d5ca2ec143982cc59"
+        },
+        {
+          "label": "Horizontal",
+          "path": ".work/blur-marks-native-agent2/native/horizontal.png",
+          "sha256": "2874eff02f59183595b66417da1eaf9e7c74ae7aec8e312fa4a07e698d5186b6"
+        },
+        {
+          "label": "Vertical",
+          "path": ".work/blur-marks-native-agent2/native/vertical.png",
+          "sha256": "e78ad653b88d6c9d4c91ef5dbd0e8480bfba30b6b33472a6966317252f2b9398"
+        },
+        {
+          "label": "Blended",
+          "path": ".work/blur-marks-native-agent2/native/blended.png",
+          "sha256": "c45f67a2fec8575e86907ce1cbf59524652af436e6354aa0f8db956e0b1a168d"
+        }
+      ]
+    },
+    {
+      "id": "image-field-marks",
+      "title": "Image attributes: sizes, visibility and color",
+      "category": "Accepted native Java workflow \u2014 packaging pending",
+      "description": "One retained grid samples two images. Reuse attributes for size, threshold visibility and mark color.",
+      "evidence": "evidence/workflows/image-field-marks/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/image-field-marks-native2/native/baseline.png",
+          "sha256": "fc324ebb97f902f7eefba42001052111e037a692c76110c141b962b2ed1145c5"
+        },
+        {
+          "label": "visibility",
+          "path": ".work/image-field-marks-native2/native/visibility.png",
+          "sha256": "3e99f703cbf5233299c2497c51ab79ea03bd280ae36d2a11055321e4b582de9b"
+        },
+        {
+          "label": "alternate-image",
+          "path": ".work/image-field-marks-native2/native/alternate-image.png",
+          "sha256": "a189ea2dc9be6be5d7f891cd71ac3d71c7fd71af0d9cd3f172ff1f28e1158ab1"
+        },
+        {
+          "label": "sampled-colors",
+          "path": ".work/image-field-marks-native2/native/sampled-colors.png",
+          "sha256": "b5fbdd5109df939143fca1c3a157443bf6f1b26e9c94feddd72b6325bf4c0513"
+        }
+      ]
+    },
+    {
+      "id": "placement-image-marks",
+      "title": "Image placement: crop, fit, align and mask",
+      "category": "Accepted native Java workflow \u2014 packaging pending",
+      "description": "Same source and frame: contain, cover, stretch, central crop, end alignment and shared ellipse mask.",
+      "evidence": "evidence/workflows/placement-image-marks/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/placement-image-marks-native-root2/native/baseline.png",
+          "sha256": "11a0fcc2fd63ecaf01eac6a019bbfea6af1ea0ce128d3c6857fd1585e2780683"
+        },
+        {
+          "label": "cover",
+          "path": ".work/placement-image-marks-native-root2/native/cover.png",
+          "sha256": "69f85c42ff7c760c3785152c49ef07c00b28f570050269b315d2688ce13ca966"
+        },
+        {
+          "label": "stretch",
+          "path": ".work/placement-image-marks-native-root2/native/stretch.png",
+          "sha256": "4fd4fba8068a0c44aec76b10f187672d9236e19e746fb4fd76fdff16954bff3c"
+        },
+        {
+          "label": "cropped",
+          "path": ".work/placement-image-marks-native-root2/native/cropped.png",
+          "sha256": "9909b9492ad8420556bb53678cae7962e255050404c6a91d62f8ea5556fe6f48"
+        },
+        {
+          "label": "aligned-end",
+          "path": ".work/placement-image-marks-native-root2/native/aligned-end.png",
+          "sha256": "eccf19443a6273c9ec2400a7f85f3a21febc1a1b6df9c6ed69beaaedfe022da7"
+        },
+        {
+          "label": "masked",
+          "path": ".work/placement-image-marks-native-root2/native/masked.png",
+          "sha256": "e419cfa85dedd841dd63552508867a29d570d0efe7cd97c71d855dd2faa15b89"
+        }
+      ]
+    },
+    {
+      "id": "mask-marks",
+      "title": "MaskMarks: shared shape masks for images and marks",
+      "category": "Accepted Java workflow \u2014 packaging pending",
+      "description": "One alpha mask reveals stripes or a generated picture, or blends the two. Opaque ellipse and half-alpha triangle; raw mask shown over gray.",
+      "evidence": "evidence/workflows/mask-marks/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/mask-marks-native-root2/native/baseline.png",
+          "sha256": "f0d1b5ab28f69ac75f6a466d3952ce3137392d1d7340fa4b4815b626a616ddd9"
+        },
+        {
+          "label": "image",
+          "path": ".work/mask-marks-native-root2/native/image.png",
+          "sha256": "198fdf77c5b28bcead3abc2238520bf77eb78f3e55cdde2be34724e7fccce514"
+        },
+        {
+          "label": "crossfade",
+          "path": ".work/mask-marks-native-root2/native/crossfade.png",
+          "sha256": "28f72e46872afbe55b5535121258bf60d1818ec0279f4b99ce39334c29e32e10"
+        },
+        {
+          "label": "mask-view",
+          "path": ".work/mask-marks-native-root2/native/mask-view.png",
+          "sha256": "70b233dd7a3afcd98bf93f92859500c2daceceb20f5aeb0d825b05143c2ae2f6"
+        }
+      ]
+    },
+    {
+      "id": "layer-marks",
+      "title": "LayerMarks: regional content and crossfade",
+      "category": "Accepted Java workflow \u2014 packaging pending",
+      "description": "Global rings, local image snippets and fans, feathered cutouts, and true crossfade.",
+      "evidence": "evidence/workflows/layer-marks/root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/layer-marks-native-root3/native/baseline.png",
+          "sha256": "572f5de62e2463febae09d926ab4fd6faf33c1363a331faced6e0fd434868e4b"
+        },
+        {
+          "label": "local",
+          "path": ".work/layer-marks-native-root3/native/local.png",
+          "sha256": "613f3b177878cf17af8944878d6ac8ed967c33e9300dff87e9a00b05d10ba133"
+        },
+        {
+          "label": "feather",
+          "path": ".work/layer-marks-native-root3/native/feather.png",
+          "sha256": "77febfe5c7c0f349fee9ac453474ee5e2402b44242897e2c97f537ed51b5c85d"
+        },
+        {
+          "label": "crossfade",
+          "path": ".work/layer-marks-native-root3/native/crossfade.png",
+          "sha256": "855cd3c6ac7fb700145a2b9d5171eee454361db8bd1357a2b8802089e48a3151"
+        }
+      ]
+    },
+    {
+      "id": "partition-content-private",
+      "title": "Partition content: images, marks and soft cutouts",
+      "category": "Private native study \u2014 public adapter pending",
+      "description": "Generated image source, global windows, local crops plus marks, and feathering to background; not crossfade.",
+      "evidence": "evidence/parameter-experiments/spatial-composition/partition-visual-review.json",
+      "images": [
+        {
+          "label": "source-generated",
+          "path": ".work/partition-content-visual1/source-generated.png",
+          "sha256": "b5b1dd2d565772e7cfb8b4ff78fc8ed8ed550d30d9c27fcb97922d08922b1aed"
+        },
+        {
+          "label": "global-panels",
+          "path": ".work/partition-content-visual1/global-panels.png",
+          "sha256": "054e0b3955d59c1567d9ce031c871837f83342dcc4063fb3ba976258688c2f42"
+        },
+        {
+          "label": "local-panels",
+          "path": ".work/partition-content-visual1/local-panels.png",
+          "sha256": "e5310178594cbf937b4bbeab02099d125ca6d060e516d1fefc7738c3199dbd2b"
+        },
+        {
+          "label": "feathered-panels",
+          "path": ".work/partition-content-visual1/feathered-panels.png",
+          "sha256": "642f7e0c55d912e8d84eaa3ef2f6e327a2bf9ce8cbd07af4eddefb740ea3a6e0"
+        }
+      ]
+    },
+    {
+      "id": "spatial-composition-private",
+      "title": "Spatial composition: private clipping study",
+      "category": "Private study \u2014 boundary semantics open",
+      "description": "Global windows, local placement and circle transfer; strict ellipse-edge pixel criterion remains unresolved.",
+      "evidence": "evidence/parameter-experiments/spatial-composition/root-review.json",
+      "images": [
+        {
+          "label": "Global drawing through windows",
+          "path": ".work/spatial-composition-root1/variant-00/mode-0.0.png",
+          "sha256": "b4f02dcba6d37c0f34c807b16e396d9f5a40099b66ea50ad598516326b63e44d"
+        },
+        {
+          "label": "Independent local placement",
+          "path": ".work/spatial-composition-root1/variant-01/mode-1.0.png",
+          "sha256": "9b65c713f993be6608f9de55ffeb21a2c2fdeed2530e07164de88bf1f4e453a1"
+        },
+        {
+          "label": "Same paths as circle marks",
+          "path": ".work/spatial-composition-root1/variant-02/mode-2.0.png",
+          "sha256": "b25546cd213ed8e080e5005feb6acfb7a53ce068b1ec54fb4d242854ffaf2fb1"
+        },
+        {
+          "label": "Parent-only control",
+          "path": ".work/spatial-composition-root1/variant-03/mode-3.0.png",
+          "sha256": "3548df7c4c02aefa32f9ad6fa9e76aaafb55c50429db3d8220d62d67b9abc7a8"
+        }
+      ]
+    },
+    {
+      "id": "palette-application",
+      "title": "Palette extraction applied to FieldMarks",
+      "category": "Accepted tooling",
+      "description": "Same seed and layout, original colors versus colors extracted from the CutMarks baseline.",
+      "evidence": "evidence/tooling/palette-application-review.json",
+      "images": [
+        {
+          "label": "Original palette",
+          "path": ".work/palette-application-root3/render/variant-00/extracted0-0.0.png",
+          "sha256": "191dc4ffafa9abfff2cf1340b83b030fb94decdf1cf1e303f08c17778747ae45"
+        },
+        {
+          "label": "Extracted palette",
+          "path": ".work/palette-application-root3/render/variant-01/extracted0-1.0.png",
+          "sha256": "93ebe4448b0c11cd81e37f4ac510531b5eb598f8c26ce12c5ad05647dc266484"
+        }
+      ]
+    },
+    {
+      "id": "body-marks",
+      "title": "BodyMarks \u2014 retained backward spines",
+      "category": "Accepted workflow",
+      "description": "Tapered bodies, profile edits, centerline transfer and explicit head motion; native accepted, packaging separate.",
+      "evidence": "evidence/workflows/body-marks/root-review.json",
+      "images": [
+        {
+          "label": "Broad body profile",
+          "path": ".work/body-marks-native-root1/native/baseline.png",
+          "sha256": "16b2a00663b418a5493e081ea650f6d9e1e85565de2253a247a5e9005153597c"
+        },
+        {
+          "label": "Sharper taper",
+          "path": ".work/body-marks-native-root1/native/tapered.png",
+          "sha256": "797cb2b9a9e76e19bbf21a4bb9c7d446c8d7658e3d31cfa0ff3147c8da8128f0"
+        },
+        {
+          "label": "Same retained centerlines",
+          "path": ".work/body-marks-native-root1/native/centerlines.png",
+          "sha256": "3e0a028dabb0f9fb06567b1595f2346700bdbc830e1e6873327aeaf079e1b136"
+        },
+        {
+          "label": "One head-motion tick",
+          "path": ".work/body-marks-native-root1/native/advanced.png",
+          "sha256": "bbe421a057b91e3cfd6e3967f789e0f4fffebf743d3130a47e64937b2a63ab38"
+        }
+      ]
+    },
+    {
+      "id": "pointer-marks",
+      "title": "PointerMarks \u2014 supplied targets and retained wire",
+      "category": "Accepted workflow",
+      "description": "Native Java held-pointer pull, fixed connectivity transfer and release. Replay and actual run/pause validated; distribution pending.",
+      "evidence": "evidence/workflows/pointer-marks/root-review.json",
+      "images": [
+        {
+          "label": "Initial arrangement",
+          "path": ".work/pointer-marks-native-root2/native/baseline.png",
+          "sha256": "014c437fa9ab138ec7d3d2c335df7818b5dd2af53e8dc417679e4a170a755c2e"
+        },
+        {
+          "label": "Pointer pull",
+          "path": ".work/pointer-marks-native-root2/native/held-dots.png",
+          "sha256": "151dd30d479345ab64b2181f8995504e11c99d1924d042797faad56cddb82b78"
+        },
+        {
+          "label": "Same positions, fixed wire",
+          "path": ".work/pointer-marks-native-root2/native/held-wire.png",
+          "sha256": "455c3165fd24e9a771a217fe6d8010a6e02f635d1d2558d9c8b53b6bcbb1a75b"
+        },
+        {
+          "label": "Released targets",
+          "path": ".work/pointer-marks-native-root2/native/released-dots.png",
+          "sha256": "337f943f577541cbf39cc0bccc7dc8ea86ab86d46f80f2ac801f807df733bd06"
+        }
+      ]
+    },
+    {
+      "id": "cut-marks",
+      "title": "CutMarks \u2014 edit retained regions",
+      "category": "Accepted workflow",
+      "description": "Native Java selected cut, retained decoration and explicit deletion; exact reset and cached save verified.",
+      "evidence": "evidence/workflows/cut-marks/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/cp21-cut-native2/native/baseline.png",
+          "sha256": "b8aa917c34e09dd63b4f5a65e010c522dd3927d4892016926cf3ad83188148de"
+        },
+        {
+          "label": "Selected local cut",
+          "path": ".work/cp21-cut-native2/native/selected-x.png",
+          "sha256": "90b3c1b00d2f5c71135c45f4eb0349ff56b7109fd6ded82ef7c3390ce87e4684"
+        },
+        {
+          "label": "Same regions, line decoration",
+          "path": ".work/cp21-cut-native2/native/decorated.png",
+          "sha256": "dcb1fff9ec51ed4d9ccdb2f0ae23eab796f6303cbed445c85b88899b635abae7"
+        },
+        {
+          "label": "Selected child removed",
+          "path": ".work/cp21-cut-native2/native/deleted.png",
+          "sha256": "c8f0da53648ea048aa7c203ad2e6e92ac0e30e0023c1458c5a1e7a578e023010"
+        }
+      ]
+    },
+    {
+      "id": "cp21-private",
+      "title": "Retained rectangle cuts \u2014 private study",
+      "category": "Private study",
+      "description": "Private retained rectangles: aligned/staggered cuts, decoration, holes and a selected-cell split. Historical study preceding the accepted public core.",
+      "evidence": "evidence/parameter-experiments/cp21-retained-cuts/decision.md",
+      "images": [
+        {
+          "label": "Aligned cuts",
+          "path": ".work/cp21-study-aligned1/variant-00/render.png",
+          "sha256": "b8aa917c34e09dd63b4f5a65e010c522dd3927d4892016926cf3ad83188148de"
+        },
+        {
+          "label": "Staggered cuts",
+          "path": ".work/cp21-study-staggered1/variant-00/render.png",
+          "sha256": "86244f87e3496d9d9e390b15c025d5844b643ab83d6326e0411fc6c90894509b"
+        },
+        {
+          "label": "Outline decoration",
+          "path": ".work/cp21-study-decoration1/variant-00/render.png",
+          "sha256": "1fca402275134a6322c3bba15d5d3f1993df60be586d912cb2b7900a964741d0"
+        },
+        {
+          "label": "Explicit holes",
+          "path": ".work/cp21-study-holes1/variant-00/render.png",
+          "sha256": "bb1e8a2e8d5c5523dd18b720602689ba5b6f54b006c526b9af6e78bcfb352c67"
+        },
+        {
+          "label": "Selected-cell cut",
+          "path": ".work/cp21-selected-root1/variant-01/edit-1.0.png",
+          "sha256": "db3cca9db873ef6ba4a2511cf963911aa64e5c1915c1d208c2400e174c139e42"
+        }
+      ]
+    },
+    {
+      "id": "polygon-marks",
+      "title": "PolygonMarks \u2014 noncircular placement",
+      "category": "Accepted workflow",
+      "description": "Reviewed native Java workflow: thickness, recolor, diamond transfer and regeneration. Source-bundle packaging pending.",
+      "evidence": "evidence/workflows/polygon-marks/root-review.json",
+      "images": [
+        {
+          "label": "Broad outlines",
+          "path": ".work/cp20-polygon-native2/native/baseline.png",
+          "sha256": "ffdb5fab45634b7c64a7ec37d17cde86bb005add81c198d70876ba41bac6a136"
+        },
+        {
+          "label": "Thin outlines",
+          "path": ".work/cp20-polygon-native2/native/thin.png",
+          "sha256": "498039904f31c04e8fd714f57609b30b138ff6f063b6d3e92097f806f1532b66"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/cp20-polygon-native2/native/recolored.png",
+          "sha256": "09d2c1357d7e2d8a413842ace697685acd8b7f3e1281d5a121f2691b861c22c3"
+        },
+        {
+          "label": "Diamonds",
+          "path": ".work/cp20-polygon-native2/native/diamonds.png",
+          "sha256": "cd203f69de747e104d0619e56c55345e29202b18971e955edc22f7e0cc8097ec"
+        },
+        {
+          "label": "Regenerated",
+          "path": ".work/cp20-polygon-native2/native/regenerated.png",
+          "sha256": "09a61946a7aa4d88e1751a0d3b7350bb029bd2500bd3ae656c0117248c9aaab2"
+        }
+      ]
+    },
+    {
+      "id": "cp20",
+      "title": "Outline packing \u2014 private study",
+      "category": "Private study",
+      "description": "Private design study of broad rounded outlines, thin dashes and angular tiles. The public PolygonMarks workflow is shown separately.",
+      "evidence": "evidence/parameter-experiments/cp20-convex-placement/review.json",
+      "images": [
+        {
+          "label": "Broad outlines",
+          "path": ".work/cp20-study-baseline1/variant-00/render.png",
+          "sha256": "ffdb5fab45634b7c64a7ec37d17cde86bb005add81c198d70876ba41bac6a136"
+        },
+        {
+          "label": "Thin outlines",
+          "path": ".work/cp20-study-thin1/variant-00/render.png",
+          "sha256": "498039904f31c04e8fd714f57609b30b138ff6f063b6d3e92097f806f1532b66"
+        },
+        {
+          "label": "Angular tile transfer",
+          "path": ".work/cp20-study-diamond1/variant-00/render.png",
+          "sha256": "1bb3f73afab5cc33c1460e0280ffdebe9c81669b3cadf22e122fbbdb2238f5d8"
+        }
+      ]
+    },
+    {
+      "id": "curvespace",
+      "title": "Curvespace \u2014 folded luminous lines",
+      "category": "Accepted recreation",
+      "description": "Complete structural recreation with additive P2D drawing. Compare recoloring and regeneration.",
+      "evidence": "evidence/reproductions/curvespace/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/curvespace-native2/native/baseline.png",
+          "sha256": "af5b3a2737554ecbb38df7a63418f0352f340a1dde5b8f4587bcc128b9dd99fd"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/curvespace-native2/native/recolored.png",
+          "sha256": "4926364e4f909e73f298f9120c87fb7b8286b0e55be8c5c64f696ba171e789a1"
+        },
+        {
+          "label": "Regenerated",
+          "path": ".work/curvespace-native2/native/regenerated.png",
+          "sha256": "0f0ebe95da2a63c27ab1a661254fdece113478fd47be008c54f19e86eba76573"
+        }
+      ]
+    },
+    {
+      "id": "cp19",
+      "title": "Radial folding \u2014 PullMarks",
+      "category": "Accepted workflow",
+      "description": "Bend retained grids and contours with localized influences; edit reach, falloff and color.",
+      "evidence": "evidence/reproductions/cp19-pull/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/cp19-pull-native1/native/baseline.png",
+          "sha256": "cedd6da0bd0c08f508508e6ac75915ca123952cc826b9cb1ec2039e85451a72b"
+        },
+        {
+          "label": "Wider",
+          "path": ".work/cp19-pull-native1/native/wider.png",
+          "sha256": "5abcb3f3a2f86959b9c5c01df04467c7fd891e2d9ce6e33ff5c8c42b1b8189b7"
+        },
+        {
+          "label": "Falloff",
+          "path": ".work/cp19-pull-native1/native/falloff.png",
+          "sha256": "d50d0fa0bbe0894eab6178f02a6e9fcc6ebcc3a6962ee74df403dea72bafc0f7"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/cp19-pull-native1/native/recolored.png",
+          "sha256": "64e714950b7516e684a4b8165a3a280f0ee04a1f880712de0fc033877a0ae7ec"
+        },
+        {
+          "label": "Contours",
+          "path": ".work/cp19-pull-native1/native/contours.png",
+          "sha256": "591dbdee4451893f920e32386790e74e1f05411433d737e47fef2fa2c7e02119"
+        }
+      ]
+    },
+    {
+      "id": "cp18",
+      "title": "Depth fields \u2014 DepthMarks",
+      "category": "Accepted workflow",
+      "description": "Sample a 3D field on a plane or across a mesh; edit depth independently of color.",
+      "evidence": "evidence/reproductions/cp18-p3d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/cp18-depth-native2/native/baseline.png",
+          "sha256": "81b15d268a2f1618e2dd8b4bc4321b8590e98b4e5546967db9a02eabed35fdf9"
+        },
+        {
+          "label": "Depth changed",
+          "path": ".work/cp18-depth-native2/native/depth_changed.png",
+          "sha256": "b8f5c46e5cb3502606b022230e43510823396bfd551ee5db6925de2774fbf34d"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/cp18-depth-native2/native/recolored.png",
+          "sha256": "dbe1d0b68c596f5b51358c7589bd2962bbf81e5e6b8792c11e43741bf2158342"
+        },
+        {
+          "label": "Mesh",
+          "path": ".work/cp18-depth-native2/native/mesh.png",
+          "sha256": "f0fe291e6edbc39dc4da915496477fe730edc61511a0f5417affe5d568d4a0b6"
+        }
+      ],
+      "cover": "Mesh"
+    },
+    {
+      "id": "cp17",
+      "title": "Irregular panels \u2014 PanelMarks",
+      "category": "Accepted workflow",
+      "description": "Unequal rectangular subdivision with density, axis policy and decoration edits.",
+      "evidence": "evidence/reproductions/cp17-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/cp17-panel-native-final/native/baseline.png",
+          "sha256": "d65014a716b74d929d9d0fbdd6ef5c111cf783caed59ad0a614c5b047c51a003"
+        },
+        {
+          "label": "Denser",
+          "path": ".work/cp17-panel-native-final/native/denser.png",
+          "sha256": "150a7799dca902a86b29fc00208561b4e1e9a71ff136f70c66b263b0251fcb00"
+        },
+        {
+          "label": "Random axis",
+          "path": ".work/cp17-panel-native-final/native/random_axis.png",
+          "sha256": "9026ce62ed64c0605a7ba3f441aba0d05f7ab1ca3ecaa704f890ce46c2dc9580"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/cp17-panel-native-final/native/recolored.png",
+          "sha256": "4891fe4143b5954a593656915abb60ba5c755caffc7dec030689a0573469b9a7"
+        },
+        {
+          "label": "Panels",
+          "path": ".work/cp17-panel-native-final/native/panels.png",
+          "sha256": "84c97295ac5e4d81c9fe77a5214d1fd19378ec80a09178523c039d5e6aac8974"
+        }
+      ]
+    },
+    {
+      "id": "cp16",
+      "title": "Smooth loops \u2014 LoopMarks",
+      "category": "Accepted workflow",
+      "description": "Move curve controls, recolor retained geometry and transfer tiles into fans.",
+      "evidence": "evidence/reproductions/cp16-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/cp16-loop-native2/native/baseline.png",
+          "sha256": "78b3e9af0d667aea470b7eae828bc9e5b9a438bdea08a0fe4dcb168a6ce9a88e"
+        },
+        {
+          "label": "Moved",
+          "path": ".work/cp16-loop-native2/native/moved.png",
+          "sha256": "e8b14d4ab5aed2e0f07a7cb7a66ed92a69abe28cd4fe413eb9eccf25e3179cc7"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/cp16-loop-native2/native/recolored.png",
+          "sha256": "f0236cec3743199812b9fc4aac2ececcb97ba41488618abca5b850555db8d7f2"
+        },
+        {
+          "label": "Fans",
+          "path": ".work/cp16-loop-native2/native/fans.png",
+          "sha256": "c340b0318cfa9cd86db1ccc7e432a5e0a00802159013f0570d26e5a44831a3ec"
+        }
+      ]
+    },
+    {
+      "id": "cp15",
+      "title": "Noise bands \u2014 BandMarks",
+      "category": "Accepted workflow",
+      "description": "Constrain wandering paths to noise bands, widen them and change the marks along each path.",
+      "evidence": "evidence/reproductions/cp15-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/cp15-band-native2/native/baseline.png",
+          "sha256": "e49a88d2cecd2a57b3f2453e0d0457d34daa8d3d5fc039c9b27e744e73bbdaed"
+        },
+        {
+          "label": "Wider",
+          "path": ".work/cp15-band-native2/native/wider.png",
+          "sha256": "55188d8445e0a0472978f36d20ab4fb037db4f93b61e3889495d2ecb44602a4d"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/cp15-band-native2/native/recolored.png",
+          "sha256": "b78685bb108514c4a40ed7a1ebf1fe1b1da931002b5f1be7de3978fd25355dd9"
+        },
+        {
+          "label": "Marks",
+          "path": ".work/cp15-band-native2/native/marks.png",
+          "sha256": "159d6bbafea3c93c8683c01e8f84a8b8846d178ab0260e1284660936fdc26ab2"
+        }
+      ]
+    },
+    {
+      "id": "cp14",
+      "title": "Positioned color \u2014 RampMarks",
+      "category": "Accepted workflow",
+      "description": "Shift color transitions and reuse the ramp in a radial composition.",
+      "evidence": "evidence/reproductions/cp14-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/cp14-ramp-native1/native/baseline.png",
+          "sha256": "e087468ed1643ccb2252612c395efa0913695a4b9e7cfff64ce727c13e5a72d2"
+        },
+        {
+          "label": "Shifted",
+          "path": ".work/cp14-ramp-native1/native/shifted.png",
+          "sha256": "1237ac141cc082d9d1d9e11f548ed282bab5c9a2ff43ee454b29d10ba0ed79c6"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/cp14-ramp-native1/native/recolored.png",
+          "sha256": "92ce8563d2ab403f1f3de145b79c3efa14d7e7f5b049527b02e6e9e733dda5ea"
+        },
+        {
+          "label": "Radial",
+          "path": ".work/cp14-ramp-native1/native/radial.png",
+          "sha256": "9bf870a64eceb9b6b1e58a8d8683d91d14591c38152b1c836e847ab5d65f4a8d"
+        }
+      ]
+    },
+    {
+      "id": "cp13",
+      "title": "Raster warping \u2014 WarpMarks",
+      "category": "Accepted workflow",
+      "description": "Compare an unwarped image, stronger displacement, a sinusoidal field and stripes.",
+      "evidence": "evidence/reproductions/cp13-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/cp13-warp-native-root1/native/baseline.png",
+          "sha256": "263c0823b68220a6040baa07d7fef881acbe357df0615516c488864ceae183a9"
+        },
+        {
+          "label": "Strength64",
+          "path": ".work/cp13-warp-native-root1/native/strength64.png",
+          "sha256": "404e9c33776303fda6c5d1dd5e0a4a61e6176c021ecc16f8c23d2876356a0315"
+        },
+        {
+          "label": "Zero",
+          "path": ".work/cp13-warp-native-root1/native/zero.png",
+          "sha256": "ff773fd098dc52e76d60d6809752dc44e2e86e2b11ee4a7140601f8035e40940"
+        },
+        {
+          "label": "Sinusoidal",
+          "path": ".work/cp13-warp-native-root1/native/sinusoidal.png",
+          "sha256": "a3f80ed2b188ae45321fdbc19efb739a87313183b889ff31543b08b15984f70e"
+        },
+        {
+          "label": "Stripes",
+          "path": ".work/cp13-warp-native-root1/native/stripes.png",
+          "sha256": "0a194257b390900f9c4081978894584f1aee144aa4ca673aab88834068b191f7"
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "title": "Parapara \u2014 landscape",
+      "category": "Accepted recreation",
+      "description": "Structural recreation: mountain and landscape layers, color and regeneration.",
+      "evidence": "evidence/reproductions/r3-p2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/r3-edits/baseline.png",
+          "sha256": "f5365d8e7f10cbe692aa33f55a94fd518b39eadfd10db5a92a21ac5e23b818ba"
+        },
+        {
+          "label": "Uniform stripe spacing",
+          "path": ".work/reproductions/r3-edits/uniform.png",
+          "sha256": "0375d791d436a7f6865354ef27fede026f36eba3ac596321f41f23e6bac526f0"
+        },
+        {
+          "label": "Alternate palette",
+          "path": ".work/reproductions/r3-edits/palette.png",
+          "sha256": "260e85022cd7531ae1eee43aefe46e71ceb6f54b555bafda06aa665705972532"
+        },
+        {
+          "label": "New seed",
+          "path": ".work/reproductions/r3-edits/new-seed.png",
+          "sha256": "e9498ae5c909cfb12f787d084fad0fce61322020b67c8ca5a80856248f2fc9d2"
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "title": "ciscis002 \u2014 city",
+      "category": "Accepted recreation",
+      "description": "Structural recreation: clustered city geometry, height and palette edits.",
+      "evidence": "evidence/reproductions/r2-p3d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/r2-edits/baseline.png",
+          "sha256": "65d04705a3fc32264ddcc6b38aea71fc205bdae2ab62c5626c730d1d5074adfa"
+        },
+        {
+          "label": "Lower buildings",
+          "path": ".work/reproductions/r2-edits/low.png",
+          "sha256": "c8b6af716f0bf44ec1677a22ff71f074ac2b21b80e1aac7156cde95736bb88b8"
+        },
+        {
+          "label": "Alternate palette",
+          "path": ".work/reproductions/r2-edits/palette.png",
+          "sha256": "84ce8a52ee50a5a00bb11846fccd0f76c2dc175b445e8e44905e4244dbddb78f"
+        },
+        {
+          "label": "New seed",
+          "path": ".work/reproductions/r2-edits/new-seed.png",
+          "sha256": "de8118642e12ae121db4904ed8d323435e14eaf78e919e92294a7891b9085934"
+        }
+      ]
+    },
+    {
+      "id": "r1",
+      "title": "Momito \u2014 relief",
+      "category": "Accepted recreation",
+      "description": "Structural recreation: colored raised forms with height and seed edits.",
+      "evidence": "evidence/reproductions/r1-p3d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/r1-relief-marks-root1/baseline.png",
+          "sha256": "ffb5ef586d54bb70b28eb2bef54152e32f4d8cbcb44e3be0d64a00edbdccc201"
+        },
+        {
+          "label": "Taller forms",
+          "path": ".work/reproductions/r1-relief-marks-root1/tall.png",
+          "sha256": "51b465453c18b25012f94dd3aa9ea9474fac3bc40fbb76a8bb90626ae1697f79"
+        },
+        {
+          "label": "Alternate palette",
+          "path": ".work/reproductions/r1-relief-marks-root1/palette.png",
+          "sha256": "00d74ce28ecd543b45541e55d9f47815bb2b62dfc2115a1782332001b2a270ea"
+        },
+        {
+          "label": "New seed",
+          "path": ".work/reproductions/r1-relief-marks-root1/new-seed.png",
+          "sha256": "9ca6ad0a177284771c22b5efc989ebfb12888f64be59a5dd1d00cd6b5716ca64"
+        }
+      ]
+    },
+    {
+      "id": "line-pool",
+      "title": "Cut branches \u2014 CutBranchMarks",
+      "category": "Accepted workflow",
+      "description": "Grow branches by cutting into a retained line pool; compare density, angle and drawing style.",
+      "evidence": "evidence/reproductions/line-pool-p2d/edits-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/line-pool-edits/baseline.png",
+          "sha256": "be238cce2febe06e4deb8ef0bddfd01ca0feb22b04be3466fae54be1098225c8"
+        },
+        {
+          "label": "Fewer attempts",
+          "path": ".work/reproductions/line-pool-edits/sparse.png",
+          "sha256": "0099bbddbe758039f649aa16b874c058c085b109c50325e4b82cbbad6b74308e"
+        },
+        {
+          "label": "Narrower branches",
+          "path": ".work/reproductions/line-pool-edits/narrow.png",
+          "sha256": "7ee7f514c7fb9e0bac4110e13acdcf1ff7917b11594851a750af16c48e759326"
+        },
+        {
+          "label": "Alternate drawing",
+          "path": ".work/reproductions/line-pool-edits/alternate.png",
+          "sha256": "fb909a49b8c22cbd67f44e20f95cb1630c8ba16f97158e37c690371eaee6bc33"
+        },
+        {
+          "label": "Alternate palette",
+          "path": ".work/reproductions/line-pool-edits/palette.png",
+          "sha256": "9b8c7c786bb5728dfcfb10cafbd95cb3ab96a9e206fc9a53db8813fcc955c23b"
+        }
+      ]
+    },
+    {
+      "id": "cp11",
+      "title": "Occupied paths \u2014 LatticeMarks",
+      "category": "Accepted workflow",
+      "description": "Walk an occupied orthogonal lattice; change path length, width and mark style.",
+      "evidence": "evidence/reproductions/cp11-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/cp11-lattice-marks-root1/baseline.png",
+          "sha256": "110e364a5dca23c1d11d969ef0d8b9ce0fabaf233da110f1b66e37464b4d97ce"
+        },
+        {
+          "label": "Longer paths",
+          "path": ".work/reproductions/cp11-lattice-marks-root1/longer.png",
+          "sha256": "2c2e390efb51fa2b480248f524fa2e00c0cc7dbf6066a526cccc1ab4965f12ec"
+        },
+        {
+          "label": "Wider strokes",
+          "path": ".work/reproductions/cp11-lattice-marks-root1/wide.png",
+          "sha256": "62783b12d0f97bf961b3b46720c6bbbc3130e42949c4eb7399e64f645db79cf6"
+        },
+        {
+          "label": "Dot transfer",
+          "path": ".work/reproductions/cp11-lattice-marks-root1/dots.png",
+          "sha256": "dd72360c2484ca1a0fac09617d99e1c5c36d9724188c0c51768ab231dd00c616"
+        },
+        {
+          "label": "More starts",
+          "path": ".work/reproductions/cp11-lattice-marks-root1/more-starts.png",
+          "sha256": "b0a3a96e58645fa3b0e05592bab20cfcfb7a1ad3db9905474d833e92e5b941b4"
+        },
+        {
+          "label": "Alternate palette",
+          "path": ".work/reproductions/cp11-lattice-marks-root1/palette.png",
+          "sha256": "5141ca323f7ab8eea85e9f5d2c08148eb88a041d283d65363f7fddfe85b6ef49"
+        }
+      ]
+    },
+    {
+      "id": "cp10",
+      "title": "Spring motion \u2014 SpringMarks",
+      "category": "Accepted workflow",
+      "description": "Selected animation ticks and controls for target-driven spring motion.",
+      "evidence": "evidence/reproductions/cp10-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Initial state",
+          "path": ".work/reproductions/cp10-spring-marks-root1/baseline-000.png",
+          "sha256": "7fe5fa45595b6c8482e5509ea1f20261cd80a914c512c2134b8ddd4bd85e5fbf"
+        },
+        {
+          "label": "Tick 30",
+          "path": ".work/reproductions/cp10-spring-marks-root1/primary-030.png",
+          "sha256": "7dc8f7bec85577348f376c87f6f73d38130cbcbe638a7200e4c1ee34a1ac2d11"
+        },
+        {
+          "label": "Tick 120",
+          "path": ".work/reproductions/cp10-spring-marks-root1/primary-120.png",
+          "sha256": "ba1422bfb4812882a50a0b77d69b55c0fdb84c9359852c75acc0f3ff75c302ca"
+        },
+        {
+          "label": "Higher retention at tick 10",
+          "path": ".work/reproductions/cp10-spring-marks-root1/retention-09-010.png",
+          "sha256": "fe9344e276ced45bef36fb3af84456e2687095512386d1fac398ff0c94975ed7"
+        },
+        {
+          "label": "Wire drawing at tick 30",
+          "path": ".work/reproductions/cp10-spring-marks-root1/style-wire-030.png",
+          "sha256": "264ddd8f54d749e2d10e19a3b9940dc92a2e825056084b694ca7667e3bd1bb53"
+        },
+        {
+          "label": "Palette at tick 30",
+          "path": ".work/reproductions/cp10-spring-marks-root1/style-palette-030.png",
+          "sha256": "59792f1c04ece32932a086732a2a5b9fa53082894b17f45f7894755960f3b21b"
+        }
+      ],
+      "cover": "Wire drawing at tick 30"
+    },
+    {
+      "id": "cp9",
+      "title": "Facets \u2014 FacetMarks",
+      "category": "Accepted workflow",
+      "description": "Triangulate supplied sites; compare wire, grain and cell-derived layouts.",
+      "evidence": "evidence/reproductions/cp9-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/cp9-java2d/baseline.png",
+          "sha256": "240f4b547914edb78e91cb2187de032d3cc1815c44cceda209ab36c4035dc94f"
+        },
+        {
+          "label": "Wire drawing",
+          "path": ".work/reproductions/cp9-java2d/wire.png",
+          "sha256": "3efb8fc202722a07620f50a8d842dd183f9e63067e08032ff26834c92f237c3d"
+        },
+        {
+          "label": "Grain drawing",
+          "path": ".work/reproductions/cp9-java2d/grain.png",
+          "sha256": "806f2ccdcd97ebf40960cc460cc14fbc5049e7279f4101c35d6fdeffb5e41096"
+        },
+        {
+          "label": "Cell-derived sites",
+          "path": ".work/reproductions/cp9-java2d/cells.png",
+          "sha256": "226fb55c1b375bea2ee16de8598c8dce81125e689a1ff8559f8fc96813c1017b"
+        },
+        {
+          "label": "Finer cell grain",
+          "path": ".work/reproductions/cp9-java2d/cells-fine.png",
+          "sha256": "72c4d06ccb3b5c5310d7268b4137b75b14e828eb8aac3750bd0b883717dea060"
+        },
+        {
+          "label": "Alternate palette",
+          "path": ".work/reproductions/cp9-java2d/colour.png",
+          "sha256": "7f9d0377a66c567f5e1f2021afa75fcb839613631cdb5df94b2604e8085a06f5"
+        }
+      ]
+    },
+    {
+      "id": "cp8",
+      "title": "Glyph placement \u2014 GlyphMarks",
+      "category": "Accepted workflow",
+      "description": "Reuse placements with letters and dots; adjust spacing and field scale.",
+      "evidence": "evidence/reproductions/cp8-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/cp8-java2d/baseline.png",
+          "sha256": "cd2806f514ec935aa2680f34c076349c90cc647880112ce4f96b698fa2e2810b"
+        },
+        {
+          "label": "Letters",
+          "path": ".work/reproductions/cp8-java2d/letters.png",
+          "sha256": "5f5b34b9b5d434048f41e5f49a5290c4049ba0be47cf3590c57ddf45e183df44"
+        },
+        {
+          "label": "Dot transfer",
+          "path": ".work/reproductions/cp8-java2d/dots.png",
+          "sha256": "a3ed43efc638c4b74a23dd6359c840227c758c06a8428df2a2d502c4b004a009"
+        },
+        {
+          "label": "Changed distance",
+          "path": ".work/reproductions/cp8-java2d/distance.png",
+          "sha256": "092f22d0986720508f35e1d20758195598b46055ee9bedb1fcd4dfc1c4c1822c"
+        },
+        {
+          "label": "Changed field scale",
+          "path": ".work/reproductions/cp8-java2d/field-scale.png",
+          "sha256": "62b8b2421cf520b21bcf630a81b8566992c5246b67fe93c099c62c3d1c6a852a"
+        },
+        {
+          "label": "Alternate palette",
+          "path": ".work/reproductions/cp8-java2d/colour.png",
+          "sha256": "4d05c9a8bfd1598fb5811d0cb65e8d9527d26de3e498dc7c328d2fd5ad129c04"
+        }
+      ]
+    },
+    {
+      "id": "cp7",
+      "title": "Radial profiles \u2014 ProfileMarks",
+      "category": "Accepted workflow",
+      "description": "P3D forms from supplied profiles, including open ends and multiple forms.",
+      "evidence": "evidence/reproductions/cp7-p3d-savefix/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/cp7-p3d-savefix/baseline.png",
+          "sha256": "e1eaa933cefbe27866c27873b5d153014aff434bb1f22d9e48d8fb8e0fd2d02f"
+        },
+        {
+          "label": "Waist profile",
+          "path": ".work/reproductions/cp7-p3d-savefix/waist.png",
+          "sha256": "e7f4a7826e95e7fcb764a78ab7877737e8716a49238b84b28d9670a01d3d1e70"
+        },
+        {
+          "label": "Pointed profile",
+          "path": ".work/reproductions/cp7-p3d-savefix/pointed.png",
+          "sha256": "8b85b948edfdf85875e067c7572884eda08363b9c5c1ef9c73897e6b831ad258"
+        },
+        {
+          "label": "Both ends open",
+          "path": ".work/reproductions/cp7-p3d-savefix/both-open.png",
+          "sha256": "7c4359d60e6e5ad5f664df3ae41f4eaaf4f2a70b1711d531272f261a9608474c"
+        },
+        {
+          "label": "Three forms",
+          "path": ".work/reproductions/cp7-p3d-savefix/trio.png",
+          "sha256": "de1465b4ad939e8df06c80d7129dd3ea2339b4cd5af4773b8b6bd8e6099ed363"
+        },
+        {
+          "label": "Alternate palette",
+          "path": ".work/reproductions/cp7-p3d-savefix/recolour.png",
+          "sha256": "a8dad5c8fcc65fad08e3c722cf019a0232200eedc57a4d0f3d077e4ccf575f38"
+        }
+      ],
+      "cover": "Three forms"
+    },
+    {
+      "id": "cp6",
+      "title": "Endpoint branches \u2014 BranchMarks",
+      "category": "Accepted workflow",
+      "description": "Recursive endpoint trees, branching edits and a forest composition.",
+      "evidence": "evidence/reproductions/cp6-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/cp6-java2d-pde/initial.png",
+          "sha256": "b7052240812723727a48bad2886e065592c72659bd02cfde8355a35b9cf9c839"
+        },
+        {
+          "label": "Wider branching",
+          "path": ".work/reproductions/cp6-java2d-pde/wide.png",
+          "sha256": "99fb943bba2f7241fde650f032aea66e391175c00f4e2b738d6573b89aed71f1"
+        },
+        {
+          "label": "Thin branches",
+          "path": ".work/reproductions/cp6-java2d-pde/thin.png",
+          "sha256": "5e54d62558f640f8d2fc54bab84c4f770fa61cdb00fcc82885de6643156ea936"
+        },
+        {
+          "label": "Binary branching",
+          "path": ".work/reproductions/cp6-java2d-pde/binary.png",
+          "sha256": "d89d0a7f74116087da6f0f84c1a0fa152ffb8d72235304ea3afd137dec2bc937"
+        },
+        {
+          "label": "Forest transfer",
+          "path": ".work/reproductions/cp6-java2d-pde/forest.png",
+          "sha256": "18d99cc8a92da239ca5bb9e329f757c9cd15c4b79b22c2f2419f79438cecf000"
+        },
+        {
+          "label": "Alternate palette",
+          "path": ".work/reproductions/cp6-java2d-pde/recolour.png",
+          "sha256": "2666c2bbcf04b2094154eb6ab63e09bd831c6a54f22a4d4b076de3a69ad2af5f"
+        }
+      ]
+    },
+    {
+      "id": "cp5",
+      "title": "Triangle grain \u2014 GrainMarks",
+      "category": "Accepted workflow",
+      "description": "Place grain within triangles; compare sampling, density and stroke transfer.",
+      "evidence": "evidence/reproductions/cp5-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/cp5-java2d-pde/base.png",
+          "sha256": "7e51cc6d24e5e27b1babe0f3d30dd002acb23851e284f7ea04c69731786e2cfd"
+        },
+        {
+          "label": "Denser grain",
+          "path": ".work/reproductions/cp5-java2d-pde/denser.png",
+          "sha256": "cded609b98af61f81ce2876c5ce1bceec4309ce6abe58b45bfc24d9b5af9cf24"
+        },
+        {
+          "label": "Edge distribution",
+          "path": ".work/reproductions/cp5-java2d-pde/edge.png",
+          "sha256": "d826ffc5fb5ea0f85cc7cfb7f4a59696cb1685859ed26c2ba14b38f7cc95c47c"
+        },
+        {
+          "label": "Vertex distribution",
+          "path": ".work/reproductions/cp5-java2d-pde/vertex.png",
+          "sha256": "799e9e9ef328834d4e7c191cb4d075cea3205b8ac7a2baa908b8ff339bd50c06"
+        },
+        {
+          "label": "Cell transfer",
+          "path": ".work/reproductions/cp5-java2d-pde/cells.png",
+          "sha256": "7d6c5bf42084684327e306dd836a10f0560f0af86bf2078de9652cd0ec971733"
+        },
+        {
+          "label": "Cell strokes",
+          "path": ".work/reproductions/cp5-java2d-pde/cells-strokes.png",
+          "sha256": "eb2e8a77e2a6acfa9622d101fce278c5431fa03791926dd5b03ef708a1b686d6"
+        }
+      ]
+    },
+    {
+      "id": "cp4",
+      "title": "Quadrant regions \u2014 RegionMarks",
+      "category": "Accepted workflow",
+      "description": "Recursive equal-quadrant layouts with retained cells and grid transfer.",
+      "evidence": "evidence/reproductions/cp4-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/cp4-java2d-pde/base.png",
+          "sha256": "d2a892436da995d129ab5c30c7251e7bbd6a474a23fcd1c78952c82a323b6dec"
+        },
+        {
+          "label": "Grid transfer",
+          "path": ".work/reproductions/cp4-java2d-pde/grid.png",
+          "sha256": "6974c961b419f3e84098a987781dd75369c7f9d33d4da3a19621cdfa92a01048"
+        },
+        {
+          "label": "Authored grid",
+          "path": ".work/reproductions/cp4-java2d-pde/authored-grid.png",
+          "sha256": "9c53108ad0054b6acd577049aa56e844937f8cffdea65dadc2a691b9daa0a1b2"
+        }
+      ]
+    },
+    {
+      "id": "cp3",
+      "title": "Circle spacing \u2014 PlacementMarks",
+      "category": "Accepted workflow",
+      "description": "Keep room between variable-size circular proposals and reuse accepted placements.",
+      "evidence": "evidence/reproductions/cp3-java2d/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/cp3-java2d-pde/base.png",
+          "sha256": "b903277be31d07906220c09b129aaf8d5e73a3dc7303994d557ec310231ea487"
+        },
+        {
+          "label": "More separation",
+          "path": ".work/reproductions/cp3-java2d-pde/separation.png",
+          "sha256": "5c67c92c661110ed15820d028ef98b135a25a261e2ce787dd322714054130474"
+        },
+        {
+          "label": "More attempts",
+          "path": ".work/reproductions/cp3-java2d-pde/budget.png",
+          "sha256": "2beffff8e6febe6e02d731feda85e1f98db4ff9eb33279422b4482e4909f93f7"
+        },
+        {
+          "label": "Changed maximum size",
+          "path": ".work/reproductions/cp3-java2d-pde/maximum.png",
+          "sha256": "5593b87fa773418924f31ff1d1144e0c71a139501a604ac3216e64776df9a023"
+        },
+        {
+          "label": "Motif transfer",
+          "path": ".work/reproductions/cp3-java2d-pde/motif.png",
+          "sha256": "8f0b342730335b204062bed1939c81af52d853c2970fb5d13b3c562c55261a06"
+        },
+        {
+          "label": "Radial proposals",
+          "path": ".work/reproductions/cp3-java2d-pde/radial.png",
+          "sha256": "8c8e4f0875c7fd10723200149e8c2c45b3b6c27184973f27db3c1acdac631e5f"
+        },
+        {
+          "label": "Alternate palette",
+          "path": ".work/reproductions/cp3-java2d-pde/palette.png",
+          "sha256": "6355159797a591294d057ef5b0fd0e7344d13747352c64de16b73fbb82b86404"
+        }
+      ]
+    },
+    {
+      "id": "cp2",
+      "title": "Integrated paths \u2014 PathMarks",
+      "category": "Accepted workflow",
+      "description": "Retained field-driven movement, path drawing and perpendicular marks.",
+      "evidence": "evidence/reproductions/cp2-java2d/review.json",
+      "images": [
+        {
+          "label": "Trace",
+          "path": ".work/reproductions/cp2-public-pde-visible-stream/trace.png",
+          "sha256": "367ff2283a62a430e2c05b95324516c9b2b34977679df8e958fda4890cca38a3"
+        },
+        {
+          "label": "Marks",
+          "path": ".work/reproductions/cp2-public-pde-visible-stream/marks.png",
+          "sha256": "320f2108ff170bb857d72883ebf34ed05e4cc41bf015a732ee860f39594145d4"
+        },
+        {
+          "label": "Longer marks",
+          "path": ".work/reproductions/cp2-public-pde-visible-stream/long-marks.png",
+          "sha256": "8aa6ad347d636cac5eb981495f95849e0ead53253c3eff9454f4fd421788703b"
+        }
+      ]
+    },
+    {
+      "id": "cp1",
+      "title": "Field-oriented marks \u2014 early study",
+      "category": "Early study",
+      "description": "Early JAVA2D design outputs showing mark length, palette and bar substitution.",
+      "evidence": "evidence/reproductions/cp1-java2d-adapter/decision.md",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/reproductions/cp1-java2d-adapter/base.png",
+          "sha256": "e7d6d75e32f65a6a78efd3641c426abcc1eb2486f1f0db535e0cf88c35bfbd7f"
+        },
+        {
+          "label": "Changed length",
+          "path": ".work/reproductions/cp1-java2d-adapter/length.png",
+          "sha256": "81fde67a455dad3d3add9af77ebb8a10485f4f63875794dbf17f4f73f3c1d0d3"
+        },
+        {
+          "label": "Alternate palette",
+          "path": ".work/reproductions/cp1-java2d-adapter/palette.png",
+          "sha256": "8450019e2fdffa42d9d80bc744fb115deda747919c2100b50e5135ace986f4c3"
+        },
+        {
+          "label": "Bar transfer",
+          "path": ".work/reproductions/cp1-java2d-adapter/bar.png",
+          "sha256": "c6863c43de2ae3ba47021b674324c619e86e2060fbbc4a4ae237abeac217af59"
+        }
+      ]
+    }
+  ]
+}

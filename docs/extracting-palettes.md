@@ -28,3 +28,8 @@ The record includes source path and SHA256, Pillow version, settings, colors and
 Keep the source and Pillow version when repeatability matters. Use a fresh `.json` path
 beneath this checkout's ignored `.work/`; existing outputs are preserved. Source images
 and generated records are not added to Git.
+
+The [native application review](../evidence/tooling/palette-application-review.json)
+demonstrates this handoff using colors extracted from the CutMarks image and the accepted
+FieldMarks example. Both outputs keep seed42 and the same layout/drawing settings; review
+them in the local visual gallery's palette-application group.

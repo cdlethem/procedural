@@ -1,0 +1,23 @@
+{
+  "status": "accepted-study",
+  "reviewer": "root",
+  "decision": "retain explicit strength for contract design; no default or encouraged range",
+  "scope": "Private geometric admission study only; no operation or implementation acceptance.",
+  "native_sha256": "ba33aac159e0056c1a345c265c57c06ce962692a7370e83b26fb59700701bc43",
+  "preserved_source": "tools/diagnostics/spatial-composition/DiscProjectionStudy.java",
+  "source_sha256": "f1ff18de909f2731745b8abb972dd43e71c0be04d4676072c038b2d5c686efcb",
+  "observations": [
+    "Root inspected all4 corrected images. At strength0.45 contour bulges locally and open lines bend; strength1 visibly concentrates points along disc boundaries. Both consumers reuse identical projection math.",
+    "Reversed order uses identical local points with post-projection display translation; inspected corrected source. Overlap comparison visibly changes the central shape.",
+    "Source-specific owner-ray blending, radius envelope and styling are unnecessary for these consumers."
+  ],
+  "limits": [
+    "No recommended continuous strength range established by three views; use explicit caller data with mathematical interpolation bounds defined by future contract.",
+    "One-pass projection can reenter prior discs; no collision avoidance, containment or Voronoi guarantee.",
+    "Exact-center positiveX remains a design convention requiring contract fixtures."
+  ],
+  "corrections": [
+    "Initial run stalled after one frame; incomplete attempt preserved.",
+    "Initial source order-panel translation confound corrected before the accepted four-view run."
+  ]
+}

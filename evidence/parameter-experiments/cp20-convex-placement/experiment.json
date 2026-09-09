@@ -1,0 +1,49 @@
+{
+  "id": "cp20-convex-placement",
+  "status": "completed-private-study",
+  "question": "Does supplied-convex-outline filtering enable clear aspect-ratio edits and non-capsule transfer without extra packing policy?",
+  "decision": "retain-unbounded",
+  "hypothesis": "Filtering the actual retained drawing polygon gives useful disjoint elongated layouts, and reuses unchanged semantics for diamond marks.",
+  "source_sketches": [
+    "2017/Generativos/celular",
+    "2017/Generativos/celular2"
+  ],
+  "parameter": {
+    "name": "supplied polygon geometry",
+    "default": null,
+    "unit": "caller coordinates"
+  },
+  "baseline": {
+    "path": ".work/cp20-study-baseline1",
+    "deterministic": true,
+    "renderer": "JAVA2D"
+  },
+  "values": [
+    {
+      "shape": 0,
+      "ratio": 0.8
+    },
+    {
+      "shape": 0,
+      "ratio": 0.2
+    },
+    {
+      "shape": 1,
+      "ratio": 0.8
+    }
+  ],
+  "comparison": "Fixed seed42 and proposal count; baseline rounded polygons, thinner rounded polygons, and diamond transfer. Root inspects retained actual outlines and separately verifies disjoint selection.",
+  "constraints": [
+    "at most four attempted native renders",
+    "existing render_java.py and shared machine lease",
+    "private prototype only",
+    "no recommended range from source literals",
+    "correct containment intentionally diverges from original source"
+  ],
+  "provenance": [
+    "design/capabilities/cp20-convex-placement-direction.md",
+    "survey/out/2017/Generativos/celular/notes.md",
+    "survey/out/2017/Generativos/celular2/notes.md"
+  ],
+  "decision_note": "Retain supplied polygon geometry concept for contract design, with strict geometric validity and work bounds to be specified; no artistic recommended range."
+}

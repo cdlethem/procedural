@@ -1,0 +1,16 @@
+{
+  "id": "disc-projection-admission",
+  "status": "planned",
+  "question": "Does sequential outward projection supply a clear reusable contour/line deformation capability, and is fractional strength visibly useful independent of source styling?",
+  "decision": "retain-unbounded | reject",
+  "evidence": ["survey/out/2019/generativos/colidion/notes.md", "design/capabilities/disc-projection-investigation.md"],
+  "source_limitation": "Survey flatten_0.8 changes x interpolation only; its subtle result cannot establish a symmetric strength range.",
+  "study": "Independently authored JAVA2D study; fixed points and ordered discs, same geometry at strength0,0.45,1. Show a sampled closed contour and an open parallel-line family using identical projection arithmetic. A separate overlapping-disc case reverses influence order.",
+  "private_semantics": "For each point, visit supplied discs in order. If distance d<radius, move toward the radial boundary by strength*(radius-d) along the normalized point-minus-center direction. Exact center uses positiveX. Zero strength and points outside/on boundary remain unchanged. This is a one-pass deformation, not collision resolution; later discs may undo earlier exclusion.",
+  "retain_if": "Both consumers visibly exhibit understandable local deformation; fractional strength is distinguishable from identity and full projection without needing owner-disc-specific recovery or appearance constants.",
+  "reject_or_revise_if": "Useful output requires the complete source-specific owner ray/envelope machinery, or the controls cannot be explained without promising nonoverlap or polygon containment.",
+  "bounds": "Private finite canvas-scale inputs only; 720x480, at most four discs and4000 supplied points; three strength views plus one order comparison. No public numeric bounds/defaults frozen.",
+  "acceptance": "Root reads prototype and inspects actual images. No production code, shared contract, operation count or original recreation acceptance follows from a private study.",
+  "output": ".work/disc-projection-study/",
+  "render_lock": "tools/with_native_render_lock.py"
+}

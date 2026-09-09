@@ -1,0 +1,47 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.27.0",
+  "scope": "26 Java operations,28 packaged workflows; retained JAVA2D layers, alpha-mask transport and RGB destination correction. No new portable operation or port support.",
+  "archive": {
+    "path": ".work/dist/cp24-java-source-root1/procedurals-java-source-dev.zip",
+    "sha256": "84b7f2e85d324eed2e20735dcca2105dfb784a60948c9cb1c2ce0a8f360cd33d",
+    "members": 380
+  },
+  "reports": {
+    "source": {
+      "path": "evidence/distribution/cp24-java-source.json",
+      "sha256": "632afec131d6a76f032710f28324790b24456fef9f6d83e114be792f7d27acf2"
+    },
+    "mask-consumer": {
+      "path": "evidence/distribution/cp24-java-mask-consumer.json",
+      "sha256": "55cd03c98700eb63ee46b9a5407ecde4712c5ebf48a16e124d843107ff69aee2"
+    },
+    "native-review": {
+      "path": "evidence/workflows/mask-marks/root-review.json",
+      "sha256": "1bb337a81d8a100fe5fb4987b9d0b345e1b855cec152fc1952faf773f9dc010c"
+    }
+  },
+  "verified": [
+    "Fresh extracted archive compiles all28 PDE examples and verifies29-class core/adapter Javadoc inventory and hashes.",
+    "Extracted MaskMarks native six-state sequence and cached save pass with distinct core and adapter JAR origins. Every captured PNG is byte-identical to root-reviewed candidate output.",
+    "Build/consumer inputs and extracted members remain unchanged and match current files.",
+    "All113 prior core classes unchanged; Java2DRegions is the sole changed prior adapter class. Its RGB normalization passes focused native regression and all prior LayerMarks images remain byte-identical."
+  ],
+  "checks": {
+    "unchanged_prior_core_classes": 113,
+    "changed_prior_adapter_classes": [
+      "org/procedurals/processing/Java2DRegions.class"
+    ],
+    "reference_declared_class_pages": 29,
+    "javadoc_warnings": 664
+  },
+  "limits": [
+    "JAVA2D density1 RGB/ARGB images; no image-fit convenience, luminance-mask inference, analytic polygon clipping or automatic feature extraction.",
+    "Native shape coverage and callbacks are adapter behavior, not portable core.",
+    "Javadoc has missing-documentation warnings; no documentation-completeness claim.",
+    "Historical candidate/pending labels describe lifecycle stages; this record accepts the exact archive above.",
+    "Port integration remains paused."
+  ]
+}

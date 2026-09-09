@@ -1,0 +1,24 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Carry forward existing processing-java core support across reviewed grid/path Javadocs only. No new runtime execution, target, renderer or reproduction claimed.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/color/CyclicPalette.java": "3ad1619de5a9b494fb77158e13ded36f74ca4b17f0812e7e603e8a04a6681b0f",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise2D01.java": "b6e2f5d3a458de476c20287eeb35135a654e2f8280e83a27fbeadc321e34e288",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
+    "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "304047650f4112e6b66bf8a5f503511b7dc1087648ff98f5f524d89730adabd7",
+    "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "7129f1c512bfbe5a77e04ec1ad3eb6fcc88209e636175cd54ae9c9edf181b4d2",
+    "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
+    "packages/java/examples/PathMarks/PathMarkComposition.java": "90d338b6859203d5b1dde9a4e4c848ba8451fa51f4b6fb0ac29c899c488e6256",
+    "packages/java-processing/examples/PathMarks/PathMarksCanvas.java": "4190d0f07f48b10b916e5a499ca8a8afbd9c54a35e94066d07dfe1b23f5ce62d",
+    "packages/java-processing/examples/PathMarks/PathMarks.pde": "d3bc9311cc0161644657e0243498dc10d98ebba2688714c679650173a9d15a15"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/gradient-path.json": "cfb57280c821a72c23272e8b057bbf33ce11d3f66a1053cadef86f154433e14d",
+    "fixtures/operations/gradient-path.json": "baf880f34f2b0e4b1a9e0d60130cb2643b1c1db70bc8cf5bf1d2296ce1ed600b",
+    "evidence/reproductions/cp2-java2d/review.json": "3b2356f75a0ef97daf60c8db52cd8ae920c65e9bc29ebdf832b5712ee005254f",
+    "evidence/documentation/java-grid-path-comments-review.json": "1d8d3cca627516646be3aff61c6b6964776135b55bd8b4f31b70909d57f429c2"
+  }
+}

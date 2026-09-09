@@ -15,7 +15,9 @@ class DrawingCatalogTests(unittest.TestCase):
         self.root=Path(self.temporary.name)
         self.relative='catalog/drawing/fresh-raster-2d.json'
         self.profile=json.loads((ROOT/self.relative).read_text())
-        paths=[self.relative,*self.profile['decisions']]
+        paths=[self.relative,*self.profile['decisions'],
+               'evidence/documentation/java-grid-path-comments-review.json',
+               'evidence/documentation/java-grid-path-comment-snapshots.json']
         paths += [v['notes_path'] for v in self.profile['provenance']]
         paths += [v for k,v in self.profile['verification'].items() if k!='scope']
         normalized=json.loads((ROOT/self.profile['verification']['normalized_fixtures']).read_text())

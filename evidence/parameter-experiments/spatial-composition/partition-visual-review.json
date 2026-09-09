@@ -1,0 +1,17 @@
+{
+  "status": "reviewed-private-visual-study",
+  "reviewer": "root",
+  "manifest": ".work/partition-content-visual1/manifest.json",
+  "manifest_sha256": "f702746e65f9e94609ed0826771fbc03ac65304b9e1aedea6b43340d225329dd",
+  "observations": [
+    "Global rings and source picture remain continuous across partition boundaries.",
+    "Local marks restart in each panel; PImage crops preserve the selected parts of the source picture.",
+    "Feathered edges expose the background grid and create visible gutters. This is appropriate for soft cutouts, not seamless inter-effect crossfade."
+  ],
+  "decision": "Retain callback/coordinate/mask separation. Add explicit two-input crossfade before claiming soft transitions between arbitrary translucent layers. Public adapter and distribution remain pending.",
+  "limits": [
+    "Original input is generated, not a decoded external photograph; asset loading/license handling not proved.",
+    "Private helper uses full-canvas scratch per region and extra output copies; no large partition-count performance acceptance.",
+    "No automatic crop selection or semantic feature extraction."
+  ]
+}

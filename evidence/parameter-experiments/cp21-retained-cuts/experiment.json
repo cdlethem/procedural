@@ -1,0 +1,99 @@
+{
+  "id": "cp21-retained-cuts",
+  "status": "private renders reviewed; public admission pending",
+  "owner": "root",
+  "question": "Does a retained binary-cut model express useful aligned and staggered unequal layouts, with explicit omission and independent decoration?",
+  "decision": "admit only if same binary-cut representation expresses both compositions and stable IDs permit independent edits; otherwise revise boundary",
+  "hypothesis": "Three supplied binary cuts replace source-specific four-child geometry and keep region identity separate from drawing.",
+  "source_sketches": [
+    "2018/Generativos/pliegues",
+    "2019/generativos/griton"
+  ],
+  "parameter": {
+    "name": "staggered",
+    "default": null,
+    "unit": "authored example switch; not a public operation option"
+  },
+  "baseline": {
+    "path": ".work/cp21-study-aligned1",
+    "deterministic": true,
+    "renderer": "JAVA2D"
+  },
+  "values": [
+    0,
+    1
+  ],
+  "comparison": "Fixed seed42, frame1; inspect aligned/staggered views and independent decoration/omission cases. Check core bounds and identities separately.",
+  "constraints": [
+    "At most four successful native views; count failed attempts toward eight total.",
+    "No recommended ratio/count range inferred.",
+    "No upstream source pixel-recreation claim.",
+    "Native rendering through existing helper and shared machine lease."
+  ],
+  "provenance": [
+    "design/capabilities/cp21-gap-source-bindings.json",
+    "design/capabilities/cp21-private-prototype-spec.md"
+  ],
+  "results": [
+    {
+      "case": "aligned",
+      "status": "ok",
+      "parameters": {
+        "staggered": 0.0,
+        "decoration": 0.0,
+        "holes": 0.0
+      },
+      "render_path": ".work/cp21-study-aligned1/variant-00/render.png",
+      "frame": 1,
+      "observation": "Aligned unequal panels share horizontal cuts; large blocks and small fragments coexist.",
+      "mean_absolute_rgb_difference_from_aligned": 0.0,
+      "warnings": [],
+      "acceptable": true
+    },
+    {
+      "case": "staggered",
+      "status": "ok",
+      "parameters": {
+        "staggered": 1.0,
+        "decoration": 0.0,
+        "holes": 0.0
+      },
+      "render_path": ".work/cp21-study-staggered1/variant-00/render.png",
+      "frame": 1,
+      "observation": "Independent secondary cuts stagger horizontal seams.",
+      "mean_absolute_rgb_difference_from_aligned": 0.01625797545987796,
+      "warnings": [],
+      "acceptable": true
+    },
+    {
+      "case": "decoration",
+      "status": "ok",
+      "parameters": {
+        "staggered": 1.0,
+        "decoration": 1.0,
+        "holes": 0.0
+      },
+      "render_path": ".work/cp21-study-decoration1/variant-00/render.png",
+      "frame": 1,
+      "observation": "Outline and center-line decoration reveals the same staggered rectangles.",
+      "mean_absolute_rgb_difference_from_aligned": 0.30205085106145324,
+      "warnings": [],
+      "acceptable": true
+    },
+    {
+      "case": "holes",
+      "status": "ok",
+      "parameters": {
+        "staggered": 1.0,
+        "decoration": 0.0,
+        "holes": 1.0
+      },
+      "render_path": ".work/cp21-study-holes1/variant-00/render.png",
+      "frame": 1,
+      "observation": "Removed leaves expose background gaps while retained regions keep their bounds.",
+      "mean_absolute_rgb_difference_from_aligned": 0.030058502995110804,
+      "warnings": [],
+      "acceptable": true
+    }
+  ]
+}

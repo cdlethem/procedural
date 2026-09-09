@@ -1,0 +1,111 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "geometry.sequential-disc-projection-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/sequential-disc-projection-2d.json",
+    "catalog_sha256": "f7e90d17f37d87fe1ae63975ed5fcae3e79e3d1d59d0eb7b78da6114078dd206"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c",
+          "packages/java-processing/examples/ProjectionMarks/ProjectionMarks.pde": "1ee3d6daaf6a57e50af86fcc2846ded9b6a40cff79160ed0178dad2d3ba92d56"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/disc-projection-java.json": "6162d4a69ad414522555ca5bd2f703380e79d84b63269a3126b02fdac81ff590",
+          "evidence/conformance/disc-projection-performance.json": "574efc2da5e4d0b1dbeea7ea8d50da5f115cf7c0a50605833916b117dfdb08e0",
+          "fixtures/operations/sequential-disc-projection-2d.json": "3a73f3e787469e835dc86e7ad81bea2589faf0984aa970d39cf3325b6234deef",
+          "evidence/workflows/projection-marks/native.json": "8cf50a99909e25fbba2fb839da16352866014227c694078bb9d817f38e302f3c",
+          "evidence/workflows/projection-marks/root-review.json": "c7fd45d657620932ada0505910d69da9b42093c4c89dfa16fd2bfea6283f3552"
+        },
+        "acceptance_review": {
+          "path": "evidence/conformance/disc-projection-catalog-review.json",
+          "sha256": "695ef348fa60b67119de629463d57bc9093c84b97234264a92290985958e3cef"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Ordered point deformation, ProjectionMarks contour/line transfer and cached edits; no exclusion or original-recreation guarantee."
+        },
+        "status": "conformant",
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/disc-projection-java.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ]
+      },
+      "native": {
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c",
+          "packages/java-processing/examples/ProjectionMarks/ProjectionMarks.pde": "1ee3d6daaf6a57e50af86fcc2846ded9b6a40cff79160ed0178dad2d3ba92d56"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/disc-projection-java.json": "6162d4a69ad414522555ca5bd2f703380e79d84b63269a3126b02fdac81ff590",
+          "evidence/conformance/disc-projection-performance.json": "574efc2da5e4d0b1dbeea7ea8d50da5f115cf7c0a50605833916b117dfdb08e0",
+          "fixtures/operations/sequential-disc-projection-2d.json": "3a73f3e787469e835dc86e7ad81bea2589faf0984aa970d39cf3325b6234deef",
+          "evidence/workflows/projection-marks/native.json": "8cf50a99909e25fbba2fb839da16352866014227c694078bb9d817f38e302f3c",
+          "evidence/workflows/projection-marks/root-review.json": "c7fd45d657620932ada0505910d69da9b42093c4c89dfa16fd2bfea6283f3552"
+        },
+        "acceptance_review": {
+          "path": "evidence/conformance/disc-projection-catalog-review.json",
+          "sha256": "695ef348fa60b67119de629463d57bc9093c84b97234264a92290985958e3cef"
+        },
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Ordered point deformation, ProjectionMarks contour/line transfer and cached edits; no exclusion or original-recreation guarantee."
+        },
+        "status": "validated-scoped",
+        "evidence_predicates": [
+          {
+            "path": "evidence/workflows/projection-marks/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ]
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

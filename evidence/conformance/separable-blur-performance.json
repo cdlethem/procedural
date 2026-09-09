@@ -1,0 +1,122 @@
+{
+  "status": "passed",
+  "scope": "Desktop typed core only; excludes image transport, drawing and checksum traversal from timed/allocation region. No latency guarantee.",
+  "warmup": "One checksum reference call followed by two warmup calls per workload; three measured calls.",
+  "source_sha256": {
+    "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e8cfa31467ad3d5fc8b06fe83a6710dd711874ee1aa12e2ed563f7809b849685",
+    "tools/diagnostics/spatial-composition/SeparableBlurPerformance.java": "011590ff2022268b9aac8ffb17e831f428a85d52739cc3212d480c5af87e0c6c",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "compile_command": [
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac",
+    "-cp",
+    ".work/separable-blur-performance1",
+    "-d",
+    ".work/separable-blur-performance1",
+    "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java",
+    "tools/diagnostics/spatial-composition/SeparableBlurPerformance.java"
+  ],
+  "run_command": [
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java",
+    "-Xms64m",
+    "-Xmx512m",
+    "-cp",
+    ".work/separable-blur-performance1",
+    "SeparableBlurPerformance"
+  ],
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)\n",
+  "measurements": [
+    {
+      "width": 16,
+      "height": 16,
+      "radius": 1,
+      "declared_samples": 1536,
+      "iteration": 0,
+      "elapsed_ns": 108250,
+      "thread_allocated_bytes": 10024,
+      "checksum_hex": "c46cffd9a4b550d8"
+    },
+    {
+      "width": 16,
+      "height": 16,
+      "radius": 1,
+      "declared_samples": 1536,
+      "iteration": 1,
+      "elapsed_ns": 99900,
+      "thread_allocated_bytes": 9400,
+      "checksum_hex": "c46cffd9a4b550d8"
+    },
+    {
+      "width": 16,
+      "height": 16,
+      "radius": 1,
+      "declared_samples": 1536,
+      "iteration": 2,
+      "elapsed_ns": 97380,
+      "thread_allocated_bytes": 9400,
+      "checksum_hex": "c46cffd9a4b550d8"
+    },
+    {
+      "width": 720,
+      "height": 480,
+      "radius": 12,
+      "declared_samples": 17280000,
+      "iteration": 0,
+      "elapsed_ns": 35684476,
+      "thread_allocated_bytes": 12442136,
+      "checksum_hex": "c60e974ef4a705cf"
+    },
+    {
+      "width": 720,
+      "height": 480,
+      "radius": 12,
+      "declared_samples": 17280000,
+      "iteration": 1,
+      "elapsed_ns": 35304986,
+      "thread_allocated_bytes": 12442136,
+      "checksum_hex": "c60e974ef4a705cf"
+    },
+    {
+      "width": 720,
+      "height": 480,
+      "radius": 12,
+      "declared_samples": 17280000,
+      "iteration": 2,
+      "elapsed_ns": 35228786,
+      "thread_allocated_bytes": 12442136,
+      "checksum_hex": "c60e974ef4a705cf"
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "radius": 24,
+      "declared_samples": 135475200,
+      "iteration": 0,
+      "elapsed_ns": 164106782,
+      "thread_allocated_bytes": 49767320,
+      "checksum_hex": "c1a2e691c8ff9f65"
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "radius": 24,
+      "declared_samples": 135475200,
+      "iteration": 1,
+      "elapsed_ns": 160951695,
+      "thread_allocated_bytes": 49767320,
+      "checksum_hex": "c1a2e691c8ff9f65"
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "radius": 24,
+      "declared_samples": 135475200,
+      "iteration": 2,
+      "elapsed_ns": 161919284,
+      "thread_allocated_bytes": 49767320,
+      "checksum_hex": "c1a2e691c8ff9f65"
+    }
+  ],
+  "memory": "ThreadMXBean allocation bytes for blur call; source preallocated. Four double intermediates plus int output and normalized kernels, about36 bytes/pixel; result retains4 bytes/pixel. Does not measure process RSS."
+}

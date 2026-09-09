@@ -36,3 +36,16 @@ The core receives packed ARGB8 pixels and explicit coordinates, never a Processi
 `PImage`, callback, renderer, noise object, or mutable source. Exact integer coordinates
 preserve all four channels, including hidden RGB in transparent pixels. Finite source
 coordinates are clamped to the source's center bounds before four-tap interpolation.
+
+## Supply coordinates for your own image mapping
+
+For the typed `RasterRemap2D.remap` overload, `packedXY` has two values for every output
+pixel in row-major order. For output `(x,y)`, the pair beginning at
+`2 * (y * outputWidth + x)` is `[sourceX, sourceY]`. Coordinates use source pixel centers:
+`(0,0)` addresses the first pixel and `(sourceWidth-1,sourceHeight-1)` the last. This is a
+pull map: specify where each output pixel reads from, rather than where a source pixel moves.
+
+Sampling clamps to the source edges. Bilinear interpolation treats straight ARGB channels
+independently; it is neither premultiplied-alpha nor linear-light filtering. This differs
+from the premultiplied blending used by the composition operations. Keep that distinction
+when remapping partly transparent images.

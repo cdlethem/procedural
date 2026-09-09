@@ -1,0 +1,29 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "scope": "PointerMarks native repository composition using existing Java operations; not yet packaged",
+  "native_evidence": {
+    "path": "evidence/workflows/pointer-marks/native.json",
+    "sha256": "45e20f7b5537812c340b7db4b8164376ee361d2c075cf24b204058f4d6fe0a15"
+  },
+  "verified": [
+    "Actual JAVA2D640 density1; grid, springs and Delaunay loaded from supplied candidate JAR.",
+    "Direct pointer callback captures input;24 held and24 released explicit ticks replay identical state and pixels after reset.",
+    "Posted M/M events switch dots to fixed wire and back; motion, targets, tick and mesh identity retained.",
+    "Posted Space events start actual simulation draws then pause; each running draw steps once and paused dirty draw does not step.",
+    "Clean paused callbacks return before rendering; cached save matches completed image with no extra meaningful rendering.",
+    "Root inspected baseline, held-dots, held-wire and released-dots."
+  ],
+  "running_draws_observed": 14,
+  "visual_observations": [
+    "The held pointer gathers nearby dots toward the right-center while distant grid sites remain still.",
+    "Fixed initial connectivity deforms with those moved sites; this is not a new triangulation.",
+    "After release, affected dots move back toward their initial sites."
+  ],
+  "resolved_failure": "First native attempt completed deterministic frames but stalled on pause redraw. Pinned PApplet.handleDraw bytecode dispatches queued events then clears redraw. Adopted existing SpringMarks continuous display-loop/dirty-frame pattern; second native attempt passes.",
+  "limits": [
+    "No source-sketch recreation, new core API, current Delaunay invariant or non-Java support.",
+    "Pointer mouse callbacks and replay are supplied directly; keyboard events are posted.",
+    "Wall-clock viewing is not a deterministic input replay or a natural-frame-rate performance guarantee."
+  ]
+}

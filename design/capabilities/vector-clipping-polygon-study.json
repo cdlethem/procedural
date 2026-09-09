@@ -1,0 +1,289 @@
+{
+  "owner": "root",
+  "source": "tools/diagnostics/clipping/polygon_validation_study.py",
+  "source_sha256": "773d9b0f93163eb50fcf0114dc20514e7ee6c0b144ec10146c234bf41c2c3a57",
+  "result": {
+    "status": "passed-private-validation-study",
+    "cases": [
+      {
+        "id": "square",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "valid": true,
+        "reversed_winding": true
+      },
+      {
+        "id": "concave",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "valid": true,
+        "reversed_winding": true
+      },
+      {
+        "id": "straight_vertex",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "valid": true,
+        "reversed_winding": true
+      },
+      {
+        "id": "repeated_closure",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "valid": false,
+        "reversed_winding": true
+      },
+      {
+        "id": "duplicate_vertex",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "valid": false,
+        "reversed_winding": true
+      },
+      {
+        "id": "bow_tie",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "valid": false,
+        "reversed_winding": true
+      },
+      {
+        "id": "nonzero_area_crossing",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "valid": false,
+        "reversed_winding": true
+      },
+      {
+        "id": "edge_touch",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "valid": false,
+        "reversed_winding": true
+      },
+      {
+        "id": "backtrack",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "valid": false,
+        "reversed_winding": true
+      },
+      {
+        "id": "collinear",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "valid": false,
+        "reversed_winding": true
+      },
+      {
+        "id": "too_short",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "valid": false,
+        "reversed_winding": true
+      }
+    ],
+    "scope": "Exact rational topology for supplied finite points; carrier validation and public contract pending."
+  },
+  "limits": "Private exact topology study only, not Java implementation acceptance."
+}

@@ -1,10 +1,12 @@
 import json
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 import zipfile
 from unittest import mock
-from tools.build_java_source_bundle import build, fresh_output, require_hash, sha, source_inputs, write_zip
+from tools.build_java_source_bundle import (build, fresh_output, generate_javadoc,
+                                             require_hash, sha, source_inputs, write_zip)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -97,17 +99,76 @@ class SourceBundleTests(unittest.TestCase):
                 build(root, output, self.base / 'jdk', font, notice, processing_core)
         self.assertFalse(output.exists())
 
+    def test_javadoc_generation_records_command_coverage_and_warnings(self):
+        source_a = self.base / 'A.java'
+        source_b = self.base / 'B.java'
+        source_a.write_text('class A {}')
+        source_b.write_text('class B {}')
+        output = self.base / 'javadoc'
+        output.mkdir()
+        (output / 'index.html').write_text('index')
+        (output / 'A.html').write_text('A')
+        (output / 'B.html').write_text('B')
+        completed = subprocess.CompletedProcess(['javadoc'], 0, '', 'warning: incomplete docs')
+        with mock.patch('tools.build_java_source_bundle.subprocess.run', return_value=completed) as invoke:
+            report = generate_javadoc(self.base / 'javadoc-bin', [source_a, source_b], output)
+        command = invoke.call_args.args[0]
+        self.assertIn('--release', command)
+        self.assertIn('-Xdoclint:all', command)
+        self.assertIn('-notimestamp', command)
+        self.assertEqual(report['declared_class_pages'], 2)
+        self.assertEqual(report['warning_count'], 1)
+        self.assertNotIn('LICENSE', report['files'])
+        self.assertTrue((output.parent / 'javadoc.json').is_file())
+
+    def test_javadoc_generation_rejects_failure_and_missing_declared_page(self):
+        source = self.base / 'A.java'
+        source.write_text('class A {}')
+        failed = self.base / 'failed'
+        with mock.patch('tools.build_java_source_bundle.subprocess.run', return_value=subprocess.CompletedProcess([], 1, '', 'bad')):
+            with self.assertRaisesRegex(RuntimeError, 'javadoc failed'):
+                generate_javadoc(self.base / 'javadoc-bin', [source], failed)
+        source.write_text('package org.example;\npublic class A {}')
+        incomplete = self.base / 'incomplete'
+        incomplete.mkdir()
+        (incomplete / 'index.html').write_text('index')
+        (incomplete / 'A.html').write_text('wrong package page must not pass')
+        with mock.patch('tools.build_java_source_bundle.subprocess.run', return_value=subprocess.CompletedProcess([], 0, '', '')):
+            with self.assertRaisesRegex(RuntimeError, 'incomplete'):
+                generate_javadoc(self.base / 'javadoc-bin', [source], incomplete)
+
     def test_current_release_admission_and_exact_tabs(self):
         manifest, inputs = source_inputs(ROOT)
-        self.assertEqual(len(manifest['operation_files']), 20)
-        self.assertEqual(len(manifest['core_sources']), 20)
-        self.assertEqual(len(manifest['adapter_sources']), 1)
+        self.assertEqual(manifest['version'], '0.31.1')
+        self.assertEqual(manifest['processing_version'], 31)
+        self.assertEqual(len(manifest['operation_files']), 29)
+        self.assertEqual(len(manifest['core_sources']), 29)
+        self.assertEqual(len(manifest['adapter_sources']), 6)
+        self.assertEqual(len(manifest['core_sources']) + len(manifest['adapter_sources']), 35)
         self.assertIn('processing_core_sha256', manifest)
-        self.assertEqual(len(manifest['examples']), 38)
+        self.assertEqual(len(manifest['examples']), 51)
+        self.assertEqual(sum(name.endswith('.pde') for name in manifest['examples']), 33)
         self.assertIn('procedurals/examples/FieldMarks/MarkCommands.java', manifest['examples'])
         self.assertIn('procedurals/examples/PathMarks/PathMarksCanvas.java', manifest['examples'])
         self.assertIn('procedurals/examples/WarpMarks/WarpMarks.pde', manifest['examples'])
         self.assertIn('procedurals/examples/LoopMarks/LoopMarks.pde', manifest['examples'])
         self.assertIn('procedurals/examples/PanelMarks/PanelMarks.pde', manifest['examples'])
+        self.assertIn('procedurals/examples/DepthMarks/DepthMarks.pde', manifest['examples'])
+        self.assertIn('procedurals/examples/AnnularMarks/AnnularMarks.pde', manifest['examples'])
+        self.assertIn('procedurals/examples/PullMarks/PullMarks.pde', manifest['examples'])
+        self.assertIn('procedurals/examples/PolygonMarks/PolygonMarks.pde', manifest['examples'])
+        self.assertIn('packages/java/src/main/java/org/procedurals/sampling/ConvexPolygonPlacements2D.java', manifest['core_sources'])
+        self.assertIn('packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java', manifest['core_sources'])
+        self.assertIn('procedurals/examples/CutMarks/CutMarks.pde', manifest['examples'])
+        self.assertIn('procedurals/examples/PointerMarks/PointerMarks.pde', manifest['examples'])
+        self.assertIn('procedurals/examples/BodyMarks/BodyMarks.pde', manifest['examples'])
+        self.assertIn('retained-rectangle-cuts-2d.json', manifest['operation_files'])
         self.assertIn('closed-spline-2d.json', manifest['operation_files'])
+        self.assertIn('ordered-convex-polygon-filter-2d.json', manifest['operation_files'])
+        polygon_contract = json.loads((ROOT / 'catalog/operations/ordered-convex-polygon-filter-2d.json').read_text())['design_review']
+        self.assertEqual(polygon_contract, 'design/operations/convex-polygon-placement-contract.md')
+        self.assertTrue((ROOT / polygon_contract).is_file())
+        retained_contract = json.loads((ROOT / 'catalog/operations/retained-rectangle-cuts-2d.json').read_text())['design_review']
+        self.assertEqual(retained_contract, 'design/operations/retained-rectangle-cuts-contract.md')
+        self.assertTrue((ROOT / retained_contract).is_file())
         self.assertTrue(inputs)

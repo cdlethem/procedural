@@ -60,6 +60,16 @@ native validation still apply. This supersedes earlier mandatory independent-rev
 scheduling for the sprint. Resume reviewer assignments only when the maintainer requests
 it or the sprint is explicitly closed.
 
+## Batch architecture — maintainer revision, 2026-09-08
+
+Follow docs/java-buildout-batches.md for the remaining Java scope and parallel queue.
+Plan capabilities together; freeze detailed contracts for the next batch only. Advance
+independent implementation, examples and tooling concurrently, with root owning important
+semantics and final review. Package accepted batches rather than every individual feature.
+Root may implement directly when delegation/review overhead exceeds its benefit. Preserve
+focused validation and one shared native-render lease. This supersedes serial per-capability
+scheduling; it does not relax acceptance or source-provenance requirements.
+
 ## Sustainable development — maintainer revision
 
 The maintainer reports roughly60% of weekly quota consumed and requests a lower-cost
@@ -90,6 +100,15 @@ ambiguity, conflicting evidence or persistent substantive failures; workers reso
 implementation bugs without root reviewing every iteration. Before the next buildout batch,
 record a prioritized bounded deliverable list, model ownership and stopping conditions.
 Do not invent quota balances, prices or a reliable finish-date estimate.
+
+## Visual review — maintainer request
+
+Keep a centralized local gallery at `.work/visual-review/index.html`. Register new artist
+renders and meaningful variants in `docs/visual-review.json`, with precise review-stage
+labels and links to existing evidence, then run `python3 tools/build_visual_review.py` at
+visual checkpoints. Include private studies without implying shipped acceptance. Preserve
+original files; use links instead of copied render assets. The gallery and contact sheet
+stay ignored. Gallery inclusion is navigation, never a replacement for acceptance review.
 
 ## Current scheduling — maintainer revision: return to Java
 

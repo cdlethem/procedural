@@ -1,0 +1,225 @@
+{
+  "id": "geometry.radial-pull-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "decision_cluster": "geometry.radial-pull-2d",
+  "description": "Immutable ordered radial influences that sum inward power-profile displacements at the original point; may fold and self-intersect geometry.",
+  "capability_decision": "design/capabilities/cp19-radial-warp-direction.md",
+  "design_review": "design/operations/radial-pull-contract.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/curvespace#0",
+      "notes_path": "survey/out/2018/Generativos/curvespace/notes.md",
+      "note_sha256": "6bad58b922c2ebb38ffd2aecec420f7aca50b053224eac9cad007fc06661286a",
+      "evidence_sha256": "1be8f728c80a61ed1af69b1a7a5e17f9970e221286e29e74a42fbe3962f7cb21",
+      "upstream_pde_sha256": "b379b238cc23184c9836d3eb008253ce6bbfd8b75642c531d09130f697df7e91",
+      "relationship": "whole computation; independently specified binary64 and exact-center divergence"
+    }
+  ],
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "influences"
+    ],
+    "properties": {
+      "influences": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "maxItems": 536870911
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "influences"
+    ],
+    "properties": {
+      "influences": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "maxItems": 536870911
+      }
+    }
+  },
+  "query_schema": {
+    "type": "array",
+    "prefixItems": [
+      {
+        "type": "number"
+      },
+      {
+        "type": "number"
+      }
+    ],
+    "items": false,
+    "minItems": 2,
+    "maxItems": 2
+  },
+  "query_output_schema": {
+    "type": "array",
+    "prefixItems": [
+      {
+        "type": "number"
+      },
+      {
+        "type": "number"
+      }
+    ],
+    "items": false,
+    "minItems": 2,
+    "maxItems": 2
+  },
+  "parameters": {
+    "influences": {
+      "unit": "ordered caller geometry",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry."
+    },
+    "centerX": {
+      "unit": "drawing coordinate",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry."
+    },
+    "centerY": {
+      "unit": "drawing coordinate",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry."
+    },
+    "radius": {
+      "unit": "drawing distance",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry."
+    },
+    "power": {
+      "unit": "dimensionless",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry."
+    },
+    "x": {
+      "unit": "drawing coordinate",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry."
+    },
+    "y": {
+      "unit": "drawing coordinate",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "curvespace source; CP19 private radius120/180 and power2/0.5 renders show edits, no continuous useful range. Strict positive radius/power define nondegenerate influence; coordinates are supplied geometry."
+    }
+  },
+  "behavior": {
+    "normative": "design/operations/radial-pull-contract.md",
+    "identity": "Immutable detached ordered influence descriptor; empty identity, exact-center zero, duplicate contributions retained.",
+    "numerics": "Separately rounded binary64; named fdlibm5.3 hypot/pow; original-query contributions summed in order then added once. Infinite separation is outside finite radius; nonfinite sum/output fails atomically.",
+    "native": "RadialPull2D.create(Object/double[][]), serialize, influenceCount, transform(Object), transform(double,double), transform(double,double,double[]); see normative contract.",
+    "complexity": "O(N) setup/storage and query work; reusable target hot path allocation-free."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed constructor, unsupported carrier/nonfinite value or nonpositive radius/power.",
+    "INVALID_QUERY": "Malformed/nonfinite query or wrong target array.",
+    "NUMERIC_OVERFLOW": "Nonfinite contribution, accumulated displacement or final point; no partial target writes."
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "Java first; implementation and native review pending."
+    },
+    "p5js": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/radial-pull-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "design_experiment": "evidence/parameter-experiments/cp19-radial-warp/decision.md",
+    "acceptance": "Public core radius/power edits, retained contour transfer/recolor/reset/save; private study is design evidence only."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Approved exact semantics for implementation; core/native/distribution acceptance pending."
+  },
+  "deliberately_excluded": [
+    "sequential push",
+    "stochastic attraction",
+    "smooth or invertible deformation guarantee",
+    "source RNG/render replay",
+    "implicit grid sampling",
+    "renderer",
+    "clipping"
+  ]
+}

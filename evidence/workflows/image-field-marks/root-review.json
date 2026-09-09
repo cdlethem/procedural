@@ -1,0 +1,26 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "scope": "Processing image-field snapshot/sampling adapter and ImageFieldMarks native workflow; packaging pending. No new portable operation.",
+  "native": "evidence/workflows/image-field-marks/native.json",
+  "native_sha256": "70389eb9b11284bc5528e359c786a3a3a607bcafce93029a5c0baaf32db41ad4",
+  "adapter_probe": "evidence/conformance/processing-image-field-native.json",
+  "adapter_probe_sha256": "03825aa743635e2cb5e59979f764827046913a8ae97b54329d30dcfe757f58af",
+  "implementation_sha256": {
+    "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageField.java": "86173f6c8de2ba0f008615034ea73b5a201ae5f2be0ac14713b6fec7333e2ad6",
+    "packages/java-processing/examples/ImageFieldMarks/ImageFieldMarks.pde": "4cb2c225a2e1c783096aaf2099f872d4402281ae9c04ffd22d901fe8fedda130",
+    "tests/native/ProcessingImageFieldNative.java": "ccd4f79a91144ce1254c0ec9f81c03bcf5f4e1de9c9798ee58a2df429dab497d",
+    "tests/native/ImageFieldMarksProbe.java": "3d5a2b0bfd260501a71f0d0385c3f2efe23a7d167bcafb37e2a318c76f83b6f5"
+  },
+  "verified": [
+    "Root implemented/reviewed owned image snapshot and batch delegation to accepted RasterRemap2D; no second sampling kernel.",
+    "Focused actual PImage checks distinguish clamped coordinates, fractional remapper parity, quantized maxRGB, alpha independence, RGB opacity, ownership, invalid inputs and grid consumers.",
+    "Root inspected four distinct native images: shape-dependent dot size, threshold visibility, alternate source bands/central disc and sampled color transfer.1350 retained grid positions remain fixed.",
+    "Seven real queued states, value preservation, named restores and cached save after300ms quiet pass. Actual source/artifact/image hashes match current files."
+  ],
+  "limits": [
+    "Maximum RGB is not luminance and ignores alpha; straight-channel sampling preserves hidden RGB influence.",
+    "No photograph/portrait recreation, new radius-mapping operation or encouraged threshold/range claim.",
+    "Packaging and extracted consumer remain pending; combine with D2 filter milestone."
+  ]
+}

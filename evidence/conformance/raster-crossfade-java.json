@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "operation": "raster.crossfade-2d",
+  "fixture_cases": 11,
+  "vectors": {
+    "status": "passed",
+    "cases": 11,
+    "assertions": 115
+  },
+  "native": {
+    "status": "passed",
+    "assertions": 36,
+    "measurements": [
+      {
+        "width": 8,
+        "height": 8,
+        "warmup": 3,
+        "repetitions": 3,
+        "elapsed_ns": 95650,
+        "checksum": 823023132672,
+        "input_output_export_buffer_bytes": 1536
+      },
+      {
+        "width": 720,
+        "height": 480,
+        "warmup": 3,
+        "repetitions": 3,
+        "elapsed_ns": 12645768,
+        "checksum": 4444324916428800,
+        "input_output_export_buffer_bytes": 8294400
+      },
+      {
+        "width": 1024,
+        "height": 1024,
+        "warmup": 3,
+        "repetitions": 3,
+        "elapsed_ns": 31774921,
+        "checksum": 13484411005698048,
+        "input_output_export_buffer_bytes": 25165824
+      }
+    ]
+  },
+  "source_sha256_before": {
+    "catalog/operations/raster-crossfade.json": "bdf78f9411fe1f6c2d9b9ec998b5f952e8b7c951fa6e347682bd86f3c025aac0",
+    "fixtures/operations/raster-crossfade.json": "a5adc26d08f2b43609442dcdaaaf49aa1955aa3b388563bf829aa73797701722",
+    "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
+    "tests/native/RasterCrossfadeNative.java": "35ade278f02548a13c1617f633e553bda09ad8c56b2f32769395acea635b4079",
+    "tools/run_raster_crossfade_java.py": "cae8341ed48f1c0f19ced41a280b26f64e818daaaee30c65fdd78fe3bf06baa9",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "source_sha256_after": {
+    "catalog/operations/raster-crossfade.json": "bdf78f9411fe1f6c2d9b9ec998b5f952e8b7c951fa6e347682bd86f3c025aac0",
+    "fixtures/operations/raster-crossfade.json": "a5adc26d08f2b43609442dcdaaaf49aa1955aa3b388563bf829aa73797701722",
+    "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
+    "tests/native/RasterCrossfadeNative.java": "35ade278f02548a13c1617f633e553bda09ad8c56b2f32769395acea635b4079",
+    "tools/run_raster_crossfade_java.py": "cae8341ed48f1c0f19ced41a280b26f64e818daaaee30c65fdd78fe3bf06baa9",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "javac_release": "8",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Java core exact vectors and focused ownership/carrier checks; no native renderer or support claim."
+}

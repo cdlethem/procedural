@@ -1,0 +1,43 @@
+{
+  "status": "reviewed-private-visual-study",
+  "owner": "root",
+  "renderer": "Processing4.5.6 JAVA2D density1",
+  "scope": "Root inspected all four images. Clipped strokes leave the concave notch empty; supplied five strokes yield eight retained pieces. Gray full-source lines are intentionally drawn for comparison. File deep-notch actually shows a shallower notch (floor moves down); filename is historical, not a semantic control.",
+  "sources_sha256": {
+    "tools/diagnostics/clipping/SegmentClipStudy.java": "916ea180f1ef84d03d1565df8b035d13fd683e7cd34e0522539a31723d2e6e4a",
+    "tools/diagnostics/clipping/SegmentClipView.java": "816d992b5d26fb2164a4cfce87fe8bceb2c7fe778bd2e0d8a0f46641a6101bff",
+    "tools/diagnostics/clipping/compare_java_study.py": "19f4a7a0350e77b81d6bd08ebb8350b96735238b889edb8e6188b799f4d3ec3a"
+  },
+  "comparison": {
+    "status": "passed-private-comparison",
+    "cases": 30,
+    "java_sha256": "916ea180f1ef84d03d1565df8b035d13fd683e7cd34e0522539a31723d2e6e4a",
+    "probe_sha256": "996b0d998f058dd384ee7ee21ecf3f062fb5c0ec24f93da82a4b2f1c4c06c0db",
+    "oracle_result_sha256": "502ad1aa81f39ed16af62c2649be6d19b5580751040ab8987f93c142d47ec5b3",
+    "compile_command": [
+      "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+      "--release",
+      "8",
+      "-d",
+      "/home/colin/dev/procedural/.work/vector-clipping-study/comparison-classes",
+      "/home/colin/dev/procedural/tools/diagnostics/clipping/SegmentClipStudy.java",
+      "/home/colin/dev/procedural/.work/vector-clipping-study/CompareClipStudy.java"
+    ],
+    "limitations": [
+      "Moderate hand-known cases only.",
+      "Four-ULP diagnostic comparison is not a public numeric contract.",
+      "Polygon validity and near-degenerate robustness remain unproven."
+    ]
+  },
+  "image_sha256": {
+    ".work/vector-clipping-study/native/hatch.png": "e5aac3a13e258e4529ed9c865f5bb49eaebafb5a26ac18499bd2a05e4977bad5",
+    ".work/vector-clipping-study/native/sparse.png": "16429cd551f0f047d9a260ece193d4a4ff9b8ff0f13927118093a0da9234a03e",
+    ".work/vector-clipping-study/native/deep-notch.png": "5d63aeb533f4885798486002ab694c50e5fccb4773541c9f43e22b433cbc0570",
+    ".work/vector-clipping-study/native/supplied-strokes.png": "cc783227aa442c839cae8b1730e114dbdc72ab9687497e8bd0a092a61f8dd947"
+  },
+  "limits": [
+    "No public admission or source recreation.",
+    "Polygon validation and robust arithmetic unresolved.",
+    "No performance acceptance."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "scope": "Java separable blur core, Processing image transport and BlurMarks native workflow. Distribution/extracted consumer pending; no other target or complete original recreation accepted.",
+  "native": "evidence/workflows/blur-marks/native.json",
+  "native_sha256": "00d517826e0db1b7714e2a8a12a8b328befcaa79d234ff85a5c953c1000fe8c0",
+  "supporting_evidence_sha256": {
+    "evidence/conformance/separable-blur-java.json": "a1a61138972be31f18a01d45c1e143a5bc3028bc71729b802c65d59196089f11",
+    "evidence/conformance/processing-image-filters-native.json": "16844172dca89fef34eba4be2a06d725f8dae5de0015bb0b5336e3b82aff0639",
+    "evidence/conformance/separable-blur-performance.json": "ce55d6a745bd34b7e13b63e4684fcf99219b11296213c46f9d1bce8270e07acd"
+  },
+  "implementation_sha256": {
+    "packages/java-processing/examples/BlurMarks/BlurMarks.pde": "82fc5d56ddba9e36081805d370f24433c805a23c05b10ce5c7c589b8c4e894d8",
+    "tests/native/BlurMarksProbe.java": "ae5695f5458ef9ba75ad298d65dad1e4f438f8c182c333b495edeb04d6b28841",
+    "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e2254766043ed5f5d7da2f13d92090b1c457deb098774267dcfb219982661d88",
+    "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageFilters.java": "f1f077deb7944cc4a5a57c5e39bafb7b7d984a28b197a40595eebdc634d101e2"
+  },
+  "verified": [
+    "Root reviewed ordered normalization/premultiplied passes/final-only quantization, wide work/coordinate arithmetic and immutable result implementation.",
+    "20 shared object scenarios;13 successes additionally checked through typed entrypoint, plus native carrier/ownership/index/error checks. Actual PImage transport parity, RGB opacity and validation pass.",
+    "Root inspected five distinct initial-run PNGs. Every corrected-run PNG is byte-identical to the corresponding initial-run PNG. Sharp, soft, axis-specific blur and gradual blend are visible; background remains crisp.",
+    "Corrected probe separately snapshots all layer object identities and tests each on every dirty frame, alongside array/ground/kernel/mask identities and values. Filter count remains3. Seven queued frames, named restores and cached save after300ms quiet pass.",
+    "Root verified current native input/artifact hashes, PNG hashes and supporting core/adapter conformance source hashes. Current evidence binds e8cfa314 core; an earlier worker-summary hash is not authoritative.",
+    "Bounded desktop tiny/example/stress measurements have stable output checksums and primitive-array allocation consistent with stated scaling.",
+    "Final source e2254766 changes Object List traversal to sequential iteration and expands provenance documentation; root reviewed loops and LinkedList parity. Final-source native run passes and every PNG equals the previously visually reviewed image. Typed filter arithmetic is unchanged, so prior typed adapter/performance measurements remain scoped evidence of that path."
+  ],
+  "limits": [
+    "Normalized encoded-color separable blur is independently specified; complete source shaders, spatially variable kernels and linear-light behavior are excluded.",
+    "Performance measurements exclude renderer and image transport; no latency guarantee.",
+    "No p5.js, py5 or Android support claim.",
+    "Extracted distribution acceptance remains pending."
+  ],
+  "review_correction": "Initial probe checked array identity but omitted per-element image identity. Root rejected that claim, requested correction and reviewed the corrected probe and rerun."
+}

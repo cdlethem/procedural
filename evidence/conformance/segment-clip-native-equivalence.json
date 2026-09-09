@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "scope": "All SegmentClip2D method signatures and bytecode disassembly equal between visually reviewed native run and final measured source; debug information excluded.",
+  "native_source_sha256": "ddcc544e5ac72697b3ad1b7defa20a61a0055470499cdf89468649df3e76bf7d",
+  "final_source_sha256": "3e6ecec2edae7fb53bacc67271c120c13fa0cae4d9b1f9325a0bf94e41336878",
+  "javap_sha256": "f90ade56cebc2168984c1b0011b5325326953c05b4315074a2a434e4ba12add9",
+  "classes": {
+    "org/procedurals/geometry/SegmentClip2D$1.class": {
+      "native_class_sha256": "c003d170cc5519c00f7d334335f8025791ae1e70d2db9b45fcf0c2a8fcb9e49c",
+      "final_class_sha256": "c003d170cc5519c00f7d334335f8025791ae1e70d2db9b45fcf0c2a8fcb9e49c",
+      "disassembly_sha256": "16a93c57d5812efd4eddb2267fb293db6b0ea0466cbda2d51f894dc9af5367d8"
+    },
+    "org/procedurals/geometry/SegmentClip2D$Interval.class": {
+      "native_class_sha256": "41caaee0db4b378dff905bb494e3f644bfee59ac967f0db0eb390e47a3dd98a7",
+      "final_class_sha256": "abba5a47d874206e34a28fbc641041f1af97d0e470da0b309f410948a093aff0",
+      "disassembly_sha256": "5494376eec2ca87dd3222252681a5a3ffa8916ebfc911c72c87aa3cdcb31a299"
+    },
+    "org/procedurals/geometry/SegmentClip2D$Packed.class": {
+      "native_class_sha256": "aa7b4f6162aaebdbdda9f69805d2474cf4a1c4ddb571adfd89ce523b180d80b3",
+      "final_class_sha256": "754876cff764180e5e2bf473c4f9a3273bdd70e245a5a36fc15a5411d1a844bd",
+      "disassembly_sha256": "8debb79cc74c18149340d70a84de80afc7269a97e069f1bc7976f3cb42c751c0"
+    },
+    "org/procedurals/geometry/SegmentClip2D$Point.class": {
+      "native_class_sha256": "99589acb5dd0cadaea882eeb633d0d9516a084e9b3cbf29b85d85dc663a0cc6c",
+      "final_class_sha256": "3d76ac5377bc380d85de573563cfb2a04610a78500589d7cf4a29497dda7aeaf",
+      "disassembly_sha256": "35526bbe9644629bf6222037437e8c121253343713827de941432d2ff6de8884"
+    },
+    "org/procedurals/geometry/SegmentClip2D$Rational.class": {
+      "native_class_sha256": "dc27792b5d4d2f5b588c503d26e3dc419dc8592a63c05cd9280cd05f1c764683",
+      "final_class_sha256": "63402a6897e0affc7922565565eb6798c54e9e428a617a902ae0b35677cdbc46",
+      "disassembly_sha256": "9b3cb7a9b3191b11e422a032f5a36f9acb885e64f6533af1bb8d1fc27f312240"
+    },
+    "org/procedurals/geometry/SegmentClip2D$SegmentClipException.class": {
+      "native_class_sha256": "50ff222e04f058c364c019c162ef4aed8abbb0d0eb3643a38181685f5a490cfa",
+      "final_class_sha256": "50ff222e04f058c364c019c162ef4aed8abbb0d0eb3643a38181685f5a490cfa",
+      "disassembly_sha256": "f225714da2d510a8318c2345e908e9b15cf1b7e702e8dff30ca888ef30118aaf"
+    },
+    "org/procedurals/geometry/SegmentClip2D.class": {
+      "native_class_sha256": "cb87f51900b882dafd55a4544b87e941590768d96d5b27c46435dce325f282f7",
+      "final_class_sha256": "4a42bce3a2cfef1b9b751ee9c47c84fc263ad0cb27534680e6015c0acf889196",
+      "disassembly_sha256": "97ceb3b33958930256dd1935af8bd34436f18d6f6b250447abed5dd473cb468f"
+    }
+  }
+}

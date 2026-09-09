@@ -1,0 +1,30 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.31.0",
+  "scope": "Java annular core and AnnularMarks source distribution; not full Java completeness or other-target support.",
+  "archive": {
+    "path": ".work/dist/cp28-java-source-root1/procedurals-java-source-dev.zip",
+    "sha256": "ade77c4fe5ef05a1653a90cffd0e15b9d5fd39d43643c29f08d9cde3e537a075",
+    "members": 423
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp28-java-source.json": "8a60f1c5d7f09517a6c5e32c9b234e529275a75fc83056f202203d9b832486f3",
+    "evidence/distribution/cp28-java-annular-consumer.json": "5d230b894963daf7c409e28e45990bfbb375389ef4bc76217b818f621bb37b80"
+  },
+  "counts": {
+    "operations": 29,
+    "workflows": 33,
+    "source_class_pages": 35
+  },
+  "verified": [
+    "All33 extracted PDEs compile; actual11-state AnnularMarks passes with extracted core JAR origin.",
+    "Every native PNG matches root-reviewed candidate bytes; source/extracted hashes verified.",
+    "All118 prior core classes and15 adapter classes unchanged. Catalog and9 package tests pass."
+  ],
+  "limits": [
+    "775 Javadoc warnings remain; documentation completeness not claimed.",
+    "No full-aros recreation or non-Java support; root integration checkpoint not yet pushed."
+  ]
+}

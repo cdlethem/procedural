@@ -1,0 +1,75 @@
+{
+  "status": "reviewed-documentation-only",
+  "owner": "root",
+  "reviewer": "root",
+  "baseline_commit": "40fb809aea694eda3cab31bf9fd1b829eeb6a27f",
+  "scope": "Grid/path public reference only; noncomment tokens and all nondebug class bytes identical.",
+  "files": [
+    {
+      "source": "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java",
+      "old_sha256": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+      "new_sha256": "304047650f4112e6b66bf8a5f503511b7dc1087648ff98f5f524d89730adabd7",
+      "noncomment_tokens_identical": true
+    },
+    {
+      "source": "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java",
+      "old_sha256": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+      "new_sha256": "7129f1c512bfbe5a77e04ec1ad3eb6fcc88209e636175cd54ae9c9edf181b4d2",
+      "noncomment_tokens_identical": true
+    }
+  ],
+  "class_sha256": {
+    "org/procedurals/paths/GradientPath2D$PathException.class": "bb982cf474d9624655c8fb81e4a391ae2dc0dedc5f2ccfd3f7f9a5c6930f6a95",
+    "org/procedurals/paths/GradientPath2D$TraceException.class": "6dad7c211ff681bc584d228922036b089e3046eb4cd0088b2a7a4906aaf34a65",
+    "org/procedurals/paths/GradientPath2D.class": "5159c18c24767748e469f6de4ecd7d3b803c3f7f88c4c7592767869426d0ed2c",
+    "org/procedurals/layout/RegularGrid$GridException.class": "fb670c23a5facf850dc3a6665bae786391a45fb8fa4f8378fd95fe02024a1c65",
+    "org/procedurals/layout/RegularGrid.class": "74c8352d2de90c6b8323b85e8a9df15a1623a22659b841ec10b90f78eedebc74"
+  },
+  "compile_commands": [
+    [
+      "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+      "--release",
+      "8",
+      "-g:none",
+      "-cp",
+      "/home/colin/dev/procedural/.work/cp29-consumer-root1/extract/procedurals/library/procedurals.jar",
+      "-d",
+      "/home/colin/dev/procedural/.work/java-grid-path-docs-root2/before-classes",
+      "/home/colin/dev/procedural/.work/java-grid-path-docs-root2/before/RegularGrid.java",
+      "/home/colin/dev/procedural/.work/java-grid-path-docs-root2/before/GradientPath2D.java"
+    ],
+    [
+      "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+      "--release",
+      "8",
+      "-g:none",
+      "-cp",
+      "/home/colin/dev/procedural/.work/cp29-consumer-root1/extract/procedurals/library/procedurals.jar",
+      "-d",
+      "/home/colin/dev/procedural/.work/java-grid-path-docs-root2/after-classes",
+      "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/layout/RegularGrid.java",
+      "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java"
+    ]
+  ],
+  "javadoc_command": [
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javadoc",
+    "--release",
+    "8",
+    "-quiet",
+    "-Xdoclint:all",
+    "-cp",
+    "/home/colin/dev/procedural/.work/cp29-consumer-root1/extract/procedurals/library/procedurals.jar",
+    "-d",
+    "/home/colin/dev/procedural/.work/java-grid-path-docs-root2/reference",
+    "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/layout/RegularGrid.java",
+    "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java"
+  ],
+  "javadoc_stderr": "",
+  "warnings": 0,
+  "runtime_sha256": {
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javadoc": "dd3da9adf301f294fc5deb8ae2752d508c30a3744e81029da617fd406b44a414",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    ".work/cp29-consumer-root1/extract/procedurals/library/procedurals.jar": "d35a8c6964d4969f8617f15d92909c0532e937606b6879e442a887e449b443ca"
+  }
+}

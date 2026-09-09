@@ -1,6 +1,6 @@
 {
-  "version": "0.20.0",
-  "processing_version": 20,
+  "version": "0.34.0",
+  "processing_version": 34,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -11,13 +11,14 @@
     "packages/java/src/main/java/org/procedurals/internal/DrawingFrameState.java": "b79c7a02bc63879c78d865a81db20c97607c7bf2c459094a208b89f689dadb41",
     "packages/java/src/main/java/org/procedurals/internal/DrawingValues.java": "e0b6dcd70401346486c94e618d240b33e2ac80c149131999e0eb4b9b7311088e",
     "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
-    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "f20ad66f44b3371e5ffe511826519d39ec0525f190aa52a5066f20dcf34360bc",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "304047650f4112e6b66bf8a5f503511b7dc1087648ff98f5f524d89730adabd7",
     "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
     "packages/java/src/main/java/org/procedurals/motion/TargetSprings2D.java": "286518372c5859bced9e862b08bf4b542761bd6bfc03001c1967f10b9515957d",
-    "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "f055400d196efb0c62768534047c4b7df4b073a3dbc0ee1e79b7485d971cbd52",
+    "packages/java/src/main/java/org/procedurals/paths/GradientPath2D.java": "7129f1c512bfbe5a77e04ec1ad3eb6fcc88209e636175cd54ae9c9edf181b4d2",
     "packages/java/src/main/java/org/procedurals/paths/OccupiedLatticePaths2D.java": "8ac0078b1a543b860da47494824fc928d5ea6fd7a217613326b5accbdb957fe4",
     "packages/java/src/main/java/org/procedurals/raster/RasterRemap2D.java": "433615a7fba0b09773fbfc88caa9a5b939e73213b182024feb6c3a04e46e90d4",
     "packages/java/src/main/java/org/procedurals/sampling/CirclePlacements2D.java": "2df9fcf8cd89d8a82b4c9b25628e841a478e8e4e01b0e1e904538c7a2408baac",
+    "packages/java/src/main/java/org/procedurals/sampling/ConvexPolygonPlacements2D.java": "b0c6e8359636668e5540d33aaaad927b0953635905d43853ce3ebc6821b9a209",
     "packages/java/src/main/java/org/procedurals/sampling/TrianglePoints2D.java": "c6eaa42bf18d937f1bb6dc832cb56fe89a60264664f72ad42acd507ea806f7c7",
     "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
     "packages/java/src/main/java/org/procedurals/topology/Delaunay2D.java": "a10123eda26fa6784f20231878847c7cb7d54dcf029bbbcc1c1d6c14de8fbadd",
@@ -25,7 +26,16 @@
     "packages/java/src/main/java/org/procedurals/color/StopRamp.java": "9230378dcd2a1e34717ad8130d66e8d93d5af944b383b353e5d1665c06d051e5",
     "packages/java/src/main/java/org/procedurals/paths/NoiseBandPath2D.java": "dab540f63272c963b3b00997d6924f46bae609d8f2d05e4f90e612df5f10e82b",
     "packages/java/src/main/java/org/procedurals/paths/ClosedSpline2D.java": "df436d30d51ec73b8a1265168fd8bc6cb1498dc90caec9ea024766d795682fcb",
-    "packages/java/src/main/java/org/procedurals/layout/BinaryCellPartition2D.java": "5406bf9ae61e8cc1edc028974de848ba6ac79d2efe52dc7d9c845d6333d4c389"
+    "packages/java/src/main/java/org/procedurals/layout/BinaryCellPartition2D.java": "5406bf9ae61e8cc1edc028974de848ba6ac79d2efe52dc7d9c845d6333d4c389",
+    "packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java": "24a1800f9a410763f82672bbb8cbbce9e9598298d2ca0651f3527085b4280cf3",
+    "packages/java/src/main/java/org/procedurals/fields/GradientNoise3D01.java": "4874c28ff020ce28ab1eeeab463b140779a531627cb09a660dbb55ef5ae3ee91",
+    "packages/java/src/main/java/org/procedurals/geometry/RadialPull2D.java": "1ddc552adbca746442c993d5340b924a139c4de48bb37c64fbe4a5591da79d85",
+    "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4",
+    "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
+    "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e2254766043ed5f5d7da2f13d92090b1c457deb098774267dcfb219982661d88",
+    "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c",
+    "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java": "fbf61b8ba36945133926bbd23290d2467a03ac8ce50912dd0d7b2decc8a7d602",
+    "packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java": "3e6ecec2edae7fb53bacc67271c120c13fa0cae4d9b1f9325a0bf94e41336878"
   },
   "examples": {
     "procedurals/examples/BranchMarks/BranchComposition.java": {
@@ -179,26 +189,100 @@
     "procedurals/examples/PanelMarks/PanelMarks.pde": {
       "source": "packages/java-processing/examples/PanelMarks/PanelMarks.pde",
       "sha256": "9bab1be5e9d3f097b35c79fdc651dace846f137a38736850503b57d934e843eb"
+    },
+    "procedurals/examples/DepthMarks/DepthMarks.pde": {
+      "source": "packages/java-processing/examples/DepthMarks/DepthMarks.pde",
+      "sha256": "31efb1a4896b5573a5db99f733ac38cd869aec0488149b60d1b3c37c02b47f17"
+    },
+    "procedurals/examples/PullMarks/PullMarks.pde": {
+      "source": "packages/java-processing/examples/PullMarks/PullMarks.pde",
+      "sha256": "a2f1a5cfb382b4579a09488d22149f1cd40f3da3dcf7ff3415051f1994c59c38"
+    },
+    "procedurals/examples/PolygonMarks/PolygonMarks.pde": {
+      "source": "packages/java-processing/examples/PolygonMarks/PolygonMarks.pde",
+      "sha256": "2e28997234c40e57b910219d0a6868627f9332c5176719a6bbab293daad2f9ad"
+    },
+    "procedurals/examples/CutMarks/CutMarks.pde": {
+      "source": "packages/java-processing/examples/CutMarks/CutMarks.pde",
+      "sha256": "1a51b11b1c1e7c4dccd5cb96d109cbaceff7873e65cfded28f29ec4db18586e9"
+    },
+    "procedurals/examples/PointerMarks/PointerMarks.pde": {
+      "source": "packages/java-processing/examples/PointerMarks/PointerMarks.pde",
+      "sha256": "c6a9531722ce4d1dc2398eb52ba0847b34b48adb0c1a0d1c8827bf3445565b8e"
+    },
+    "procedurals/examples/BodyMarks/BodyMarks.pde": {
+      "source": "packages/java-processing/examples/BodyMarks/BodyMarks.pde",
+      "sha256": "aa35fe48066afdf0f35199b893d1ae4cdd13dd90f361af4eb5298db80a54d505"
+    },
+    "procedurals/examples/LayerMarks/LayerMarks.pde": {
+      "source": "packages/java-processing/examples/LayerMarks/LayerMarks.pde",
+      "sha256": "41f5b8dc14ac0810f84cb2affd8b8735536bd7c21755a97792132266c8dcdfa8"
+    },
+    "procedurals/examples/MaskMarks/MaskMarks.pde": {
+      "source": "packages/java-processing/examples/MaskMarks/MaskMarks.pde",
+      "sha256": "0e49009be857eea1681c0112588f3d3e98a060888684aabde1bb8f1d4a69df71"
+    },
+    "procedurals/examples/PlacementImageMarks/PlacementImageMarks.pde": {
+      "source": "packages/java-processing/examples/PlacementImageMarks/PlacementImageMarks.pde",
+      "sha256": "b576d02e96c61520a8354712b8af5cabe7a7e47365f905b25b29cc07cdd2842a"
+    },
+    "procedurals/examples/ImageFieldMarks/ImageFieldMarks.pde": {
+      "source": "packages/java-processing/examples/ImageFieldMarks/ImageFieldMarks.pde",
+      "sha256": "4cb2c225a2e1c783096aaf2099f872d4402281ae9c04ffd22d901fe8fedda130"
+    },
+    "procedurals/examples/BlurMarks/BlurMarks.pde": {
+      "source": "packages/java-processing/examples/BlurMarks/BlurMarks.pde",
+      "sha256": "82fc5d56ddba9e36081805d370f24433c805a23c05b10ce5c7c589b8c4e894d8"
+    },
+    "procedurals/examples/ProjectionMarks/ProjectionMarks.pde": {
+      "source": "packages/java-processing/examples/ProjectionMarks/ProjectionMarks.pde",
+      "sha256": "1ee3d6daaf6a57e50af86fcc2846ded9b6a40cff79160ed0178dad2d3ba92d56"
+    },
+    "procedurals/examples/AnnularMarks/AnnularMarks.pde": {
+      "source": "packages/java-processing/examples/AnnularMarks/AnnularMarks.pde",
+      "sha256": "1de55e61678895841783111a66027985e0fad78e9945fe01ba23e989da6fc183"
+    },
+    "procedurals/examples/ClipMarks/ClipMarks.pde": {
+      "source": "packages/java-processing/examples/ClipMarks/ClipMarks.pde",
+      "sha256": "c0c9f1007e7742f6c6a2dc306ff6a6fbd57380030bc9c9c5b99ce682de0d6744"
+    },
+    "procedurals/examples/PathClipMarks/PathClipMarks.pde": {
+      "source": "packages/java-processing/examples/PathClipMarks/PathClipMarks.pde",
+      "sha256": "c27a16477f55e95e377d7bad12934785b2205cef098c8367f703bb94e150fa1b"
+    },
+    "procedurals/examples/MaskedPartitionMarks/MaskedPartitionMarks.pde": {
+      "source": "packages/java-processing/examples/MaskedPartitionMarks/MaskedPartitionMarks.pde",
+      "sha256": "0875072e6bd441d57f08c70b164162d109caa5369c936098f368a4cbfee9ec40"
     }
   },
   "operation_files": [
+    "annular-solid-3d.json",
     "bilinear-raster-remap.json",
     "binary-cell-partition-2d.json",
+    "clip-segments-simple-polygon-2d.json",
     "closed-spline-2d.json",
     "cyclic-palette.json",
     "delaunay-2d.json",
     "gradient-noise-2d-01.json",
+    "gradient-noise-3d-01.json",
     "gradient-path.json",
+    "masked-source-over.json",
     "noise-band-path.json",
     "occupied-lattice-paths-2d.json",
     "ordered-circle-filter.json",
+    "ordered-convex-polygon-filter-2d.json",
     "radial-profile-surface.json",
+    "radial-pull-2d.json",
+    "raster-crossfade.json",
     "regular-grid.json",
+    "retained-rectangle-cuts-2d.json",
     "seeded-circle-placement.json",
     "seeded-endpoint-branches.json",
     "seeded-line-pool-2d.json",
     "seeded-quadrant-partition.json",
     "seeded-triangle-points.json",
+    "separable-blur-2d.json",
+    "sequential-disc-projection-2d.json",
     "stop-ramp.json",
     "target-springs-2d.json",
     "triangle-coordinate-map.json"
@@ -206,7 +290,12 @@
   "font_sha256": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
   "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
   "adapter_sources": {
-    "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24"
+    "packages/java-processing/src/main/java/org/procedurals/processing/internal/Java2DFrame.java": "9a7b472bfc97431aa25cf123e7f2f20f05e64d38c3e7b887092900e738968f24",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "5572ec2e8b3a7fee1709d9b36beab15fcaf980763117a8c4dc5a25b9d585017b",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DLayers.java": "e22e3d747d1e568adee5d4c1de94973858922ced811220d7e68b38304bd09a55",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DImagePlacement.java": "f858ecac45bce24fb17472ef1083326febaec018b2f52b44000e747235153123",
+    "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageField.java": "86173f6c8de2ba0f008615034ea73b5a201ae5f2be0ac14713b6fec7333e2ad6",
+    "packages/java-processing/src/main/java/org/procedurals/processing/ProcessingImageFilters.java": "f1f077deb7944cc4a5a57c5e39bafb7b7d984a28b197a40595eebdc634d101e2"
   },
   "processing_core_sha256": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4"
 }

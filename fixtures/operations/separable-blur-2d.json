@@ -1,0 +1,581 @@
+{
+  "operation": "raster.separable-blur-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "fixture_status": "reviewed",
+  "comparison": "exact",
+  "catalog_sha256": "f17c33f68218f36bdbecf131377bc868d409b0c1db9844cad39e6f6f1c59743f",
+  "oracle": "Independent Python scalar evaluation and root analytic review; expectations were not generated from Java. Native carrier and ownership cases are specified in the admission document.",
+  "cases": [
+    {
+      "id": "identity_preserves_hidden_rgb",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            1193046
+          ]
+        },
+        "kernelX": [
+          1
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 2
+      },
+      "asserts": "Both identity axes preserve all packed bits, including transparent hidden RGB, while returning an owned result.",
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          1193046
+        ]
+      }
+    },
+    {
+      "id": "budget_precedes_identity_return",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            1193046
+          ]
+        },
+        "kernelX": [
+          1
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 1
+      },
+      "asserts": "Declared identity work is 2 and its budget failure occurs before identity copying.",
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "normalized_constant_opaque",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            4279383126,
+            4279383126,
+            4279383126,
+            4279383126
+          ]
+        },
+        "kernelX": [
+          1,
+          2,
+          1
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 16
+      },
+      "asserts": "Independent normalization and edge clamp preserve a constant opaque encoded color.",
+      "output": {
+        "width": 2,
+        "height": 2,
+        "pixels": [
+          4279383126,
+          4279383126,
+          4279383126,
+          4279383126
+        ]
+      }
+    },
+    {
+      "id": "normalized_constant_partial_alpha",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            2148606515,
+            2148606515,
+            2148606515,
+            2148606515
+          ]
+        },
+        "kernelX": [
+          1,
+          2,
+          1
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 16
+      },
+      "asserts": "Constant visible partial-alpha fields retain their packed visible color.",
+      "output": {
+        "width": 2,
+        "height": 2,
+        "pixels": [
+          2148606515,
+          2148606515,
+          2148606515,
+          2148606515
+        ]
+      }
+    },
+    {
+      "id": "horizontal_red_impulse",
+      "input": {
+        "source": {
+          "width": 3,
+          "height": 1,
+          "pixels": [
+            0,
+            4294901760,
+            0
+          ]
+        },
+        "kernelX": [
+          1,
+          2,
+          1
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 12
+      },
+      "asserts": "A 3x1 red impulse has alpha 64,128,64 and red 255 after X blur.",
+      "output": {
+        "width": 3,
+        "height": 1,
+        "pixels": [
+          1090453504,
+          2164195328,
+          1090453504
+        ]
+      }
+    },
+    {
+      "id": "edge_clamp_impulse",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 1,
+          "pixels": [
+            4294901760,
+            0
+          ]
+        },
+        "kernelX": [
+          1,
+          2,
+          1
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 8
+      },
+      "asserts": "Out-of-bounds X taps repeat the nearest edge pixel.",
+      "output": {
+        "width": 2,
+        "height": 1,
+        "pixels": [
+          3221159936,
+          1090453504
+        ]
+      }
+    },
+    {
+      "id": "vertical_transpose_impulse",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 3,
+          "pixels": [
+            0,
+            4294901760,
+            0
+          ]
+        },
+        "kernelX": [
+          1
+        ],
+        "kernelY": [
+          1,
+          2,
+          1
+        ],
+        "maxSamples": 12
+      },
+      "asserts": "Y filtering is the transpose of the horizontal impulse footprint.",
+      "output": {
+        "width": 1,
+        "height": 3,
+        "pixels": [
+          1090453504,
+          2164195328,
+          1090453504
+        ]
+      }
+    },
+    {
+      "id": "asymmetric_x_tap_orientation",
+      "input": {
+        "source": {
+          "width": 3,
+          "height": 1,
+          "pixels": [
+            0,
+            4294901760,
+            0
+          ]
+        },
+        "kernelX": [
+          1,
+          3,
+          2
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 12
+      },
+      "asserts": "Array-order X offsets yield alpha 85,128,43 from left to right under ordered binary64 rounding, proving no kernel reflection.",
+      "output": {
+        "width": 3,
+        "height": 1,
+        "pixels": [
+          1442775040,
+          2164195328,
+          738131968
+        ]
+      }
+    },
+    {
+      "id": "transparent_hidden_color_invariance_a",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 1,
+          "pixels": [
+            16711680,
+            4278190335
+          ]
+        },
+        "kernelX": [
+          1,
+          1,
+          1
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 8
+      },
+      "asserts": "Nonidentity filtering ignores hidden red under alpha zero.",
+      "output": {
+        "width": 2,
+        "height": 1,
+        "pixels": [
+          1426063615,
+          2852126975
+        ]
+      }
+    },
+    {
+      "id": "transparent_hidden_color_invariance_b",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 1,
+          "pixels": [
+            65280,
+            4278190335
+          ]
+        },
+        "kernelX": [
+          1,
+          1,
+          1
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 8
+      },
+      "asserts": "Changing only a transparent input's hidden RGB cannot change the filtered result.",
+      "output": {
+        "width": 2,
+        "height": 1,
+        "pixels": [
+          1426063615,
+          2852126975
+        ]
+      }
+    },
+    {
+      "id": "fractional_alpha_2d_no_intermediate_quantization",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 2,
+          "pixels": [
+            50266112,
+            0,
+            0,
+            0
+          ]
+        },
+        "kernelX": [
+          1,
+          2,
+          1
+        ],
+        "kernelY": [
+          1,
+          2,
+          1
+        ],
+        "maxSamples": 24
+      },
+      "asserts": "At (0,0), alpha is 2*(3/4)*(3/4)=1.125 then Q=1. Quantizing the horizontal pass would instead preserve alpha 2, so this proves binary64 intermediate storage.",
+      "output": {
+        "width": 2,
+        "height": 2,
+        "pixels": [
+          33488896,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "large_weights_normalize_before_sum",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294901760
+          ]
+        },
+        "kernelX": [
+          1e+308,
+          1e+308,
+          1e+308
+        ],
+        "kernelY": [
+          1e+308
+        ],
+        "maxSamples": 4
+      },
+      "asserts": "Scaling by axis maximum prevents overflow that a direct weight sum would cause.",
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          4294901760
+        ]
+      }
+    },
+    {
+      "id": "work_short_by_one",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294901760
+          ]
+        },
+        "kernelX": [
+          1,
+          1,
+          1
+        ],
+        "kernelY": [
+          1,
+          1,
+          1
+        ],
+        "maxSamples": 5
+      },
+      "asserts": "One pixel requires 3+3=6 declared taps.",
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "work_sufficient",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            4294901760
+          ]
+        },
+        "kernelX": [
+          1,
+          1,
+          1
+        ],
+        "kernelY": [
+          1,
+          1,
+          1
+        ],
+        "maxSamples": 6
+      },
+      "asserts": "The same declared work succeeds exactly at its bound.",
+      "output": {
+        "width": 1,
+        "height": 1,
+        "pixels": [
+          4294901760
+        ]
+      }
+    },
+    {
+      "id": "reject_even_kernel",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            0
+          ]
+        },
+        "kernelX": [
+          1,
+          1
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 3
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "reject_zero_kernel",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            0
+          ]
+        },
+        "kernelX": [
+          0
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "reject_pixel_count",
+      "input": {
+        "source": {
+          "width": 2,
+          "height": 1,
+          "pixels": [
+            0
+          ]
+        },
+        "kernelX": [
+          1
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 4
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "asymmetric_y_tap_orientation",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 3,
+          "pixels": [
+            0,
+            4294901760,
+            0
+          ]
+        },
+        "kernelX": [
+          1
+        ],
+        "kernelY": [
+          1,
+          3,
+          2
+        ],
+        "maxSamples": 12
+      },
+      "asserts": "Asymmetric vertical offsets preserve tap orientation, alpha 85,128,43 top to bottom.",
+      "output": {
+        "width": 1,
+        "height": 3,
+        "pixels": [
+          1442775040,
+          2164195328,
+          738131968
+        ]
+      }
+    },
+    {
+      "id": "zero_taps_count",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            0
+          ]
+        },
+        "kernelX": [
+          0,
+          1,
+          0
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 3
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "invalid_before_work_limit",
+      "input": {
+        "source": {
+          "width": 1,
+          "height": 1,
+          "pixels": [
+            0
+          ]
+        },
+        "kernelX": [
+          -1,
+          1,
+          1
+        ],
+        "kernelY": [
+          1
+        ],
+        "maxSamples": 1
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

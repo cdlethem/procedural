@@ -1,0 +1,16 @@
+{
+  "status": "passed-private-exact-comparison",
+  "cases": 35,
+  "polygon_reversal_checks": 22,
+  "collapse_checks": 1,
+  "source_sha256": {
+    "tools/diagnostics/clipping/RationalStudy.java": "4f28bc40d3688c506bcc5c70db7f8262337bbc26150166d29404d2f9cfd2b24a",
+    "tools/diagnostics/clipping/ExactSegmentClipStudy.java": "f327cd1a3f192eed3a6049e8ba80b437b53328d944f4d034a1e1b9eaa27f4548"
+  },
+  "scope": "Exact binary64 interval and endpoint bits against Fraction oracle, including scaled horizontal/vertical cases. Includes 22 polygon validity/reversal checks and a subnormal parameter-collapse witness. Does not prove the full input domain.",
+  "owner": "root",
+  "review": "Root read full kernel: simple-polygon validation, exact cuts/midpoints, rounded endpoints, collapse checks. Corrected signed-zero endpoint preservation during review.",
+  "benchmark_stdout": "CHECK\texact-clipping-and-validation\tPASS\nBENCH\t8-vertex-100-segment-hatch\twarmups=2\tmeasurements=3\tchecksum=6116320404406313169\tnanos=10592713,10163074,10225614\n",
+  "benchmark_scope": "100 segments,8vertices. Two explicit warmups plus one untimed checksum reference call; three timed calls include clipping and checksum. No allocation measurement or stress acceptance.",
+  "checker_sha256": "bbe7bff256e040f9153a59222a0dd9b12529292d47d2ba880de353f8ecef5230"
+}

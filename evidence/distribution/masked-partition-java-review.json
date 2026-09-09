@@ -1,0 +1,32 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.34.0",
+  "scope": "30 Java operations and36 editable workflows; reusable masked-region callbacks added to JAVA2D adapter. No portable core changes, new target or original recreation claim.",
+  "archive": {
+    "path": ".work/dist/masked-partition-java-source-root2/procedurals-java-source-dev.zip",
+    "sha256": "effc9c0a4bbd15c96f19c631db2d85710f3a2c6fabf888892bb3390d2cee7dc6",
+    "members": 438
+  },
+  "evidence_sha256": {
+    "evidence/distribution/masked-partition-java-source.json": "7af6a10fef7396cf3fffe65d6af481612bdc5bcc8527475bc8f61f04e4dac988",
+    "evidence/distribution/masked-partition-java-consumer.json": "6acd1d598f536ba35c44018a58d3ee5e05df03ed8f31a4573846d4d1a31a79a9",
+    "evidence/workflows/masked-partition-marks/root-review.json": "579daf2521351067a2744cb7d74ca231dc11c44a73907107b9ef7e434411cdea",
+    "evidence/conformance/masked-source-over-masked-regions-review.json": "23d0da95437e2c18671917abf65621696707330ffa3e81579b0101bbcbab5280",
+    "evidence/conformance/raster-crossfade-masked-regions-review.json": "5df5ffdd6971eb47f67e3019486674730450e7092bcb096d5f81f262ecda305a"
+  },
+  "verified": [
+    "All36 extracted PDE examples compile. Portable core classes exactly equal Java0.33.",
+    "Only Java2DRegions and its new MaskedRegion descriptor change adapter classes; root reviewed semantics and unchanged rectangle native regression.",
+    "Actual extracted six-state masked workflow and cached save pass; all7 PNGs equal reviewed source-run images.",
+    "Compiled consumer classes do not overlap installed core/adapter class names; example helper classes remain separate. Source/example/reference/license/font inventories pass.",
+    "Final archive includes reconciled Java0.34 inventory guides. Catalog support review successors preserve historical evidence."
+  ],
+  "limits": [
+    "JAVA2D density1 only; ports deferred.",
+    "Masks retain8bytes per canvas pixel each; no animation throughput claim.",
+    "Native ellipse edges and ordered source-over; no automatic semantic cropping or boundary steering.",
+    "Broader Java completion requirements remain open."
+  ]
+}

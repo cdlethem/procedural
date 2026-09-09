@@ -1,8 +1,12 @@
 """Validate the scoped Android snapshot successor without rewriting legacy attestations."""
 import hashlib
 import json
+if __package__:
+    from .reviewed_java_comments import matches_reviewed_java_comments
+else:
+    from reviewed_java_comments import matches_reviewed_java_comments
 
-REVIEW='evidence/conformance/android-snapshot-restoration-root-review.json'
+REVIEW='evidence/documentation/android-grid-path-restoration-successor.json'
 BASE='evidence/conformance/android-native-review.json'
 FIELD='packages/java-android/examples/FieldMarks/FieldMarksActivity.java'
 HELPER='packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java'
@@ -27,7 +31,8 @@ def validated_legacy_context(root,profile,target):
         raise ValueError('native evidence list differs from snapshot root review')
     for group in ('implementation_sha256','evidence_sha256'):
         for name,expected in review[group].items():
-            if digest(root/name)!=expected:
+            if digest(root/name)!=expected and not (group=='implementation_sha256'
+                    and matches_reviewed_java_comments(root,name,expected)):
                 label='native implementation changed: ' if group=='implementation_sha256' else 'native evidence changed: '
                 raise ValueError(label+name)
     semantic={k:v for k,v in profile.items() if k not in ('targets','verification','review')}

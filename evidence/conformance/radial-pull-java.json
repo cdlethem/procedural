@@ -1,0 +1,113 @@
+{
+  "status": "passed",
+  "operation": "geometry.radial-pull-2d",
+  "constructor_cases_executed": 22,
+  "query_error_cases_executed": 6,
+  "queries_executed": 20,
+  "vectors": {
+    "status": "passed",
+    "constructor_cases": 22,
+    "query_cases": 6,
+    "queries": 20,
+    "assertions": 1672
+  },
+  "native": {
+    "status": "passed",
+    "assertions": 64,
+    "workloads": [
+      {
+        "influences": 1,
+        "queries": 1,
+        "elapsed_ns": 1310,
+        "checksum_unsigned64": "0"
+      },
+      {
+        "influences": 8,
+        "queries": 250000,
+        "elapsed_ns": 18320942,
+        "checksum_unsigned64": "1801269633447638439"
+      },
+      {
+        "influences": 64,
+        "queries": 250000,
+        "elapsed_ns": 142629834,
+        "checksum_unsigned64": "5124211797731899658"
+      }
+    ]
+  },
+  "source_sha256_before": {
+    "catalog/operations/radial-pull-2d.json": "63e089d2ab61b4a4e8cb1f48684cb69e7268574ebebd15d34e405b9595366788",
+    "fixtures/operations/radial-pull-2d.json": "370d82a3b5fae503a3058edb24f7405799377d5b4863a52888771e2c2582ae0f",
+    "design/operations/radial-pull-contract.md": "f2023bebebc49949d91115a1cabfa05cc0e3f85c5662bbb24e730aaf05445ddf",
+    "packages/java/src/main/java/org/procedurals/geometry/RadialPull2D.java": "1ddc552adbca746442c993d5340b924a139c4de48bb37c64fbe4a5591da79d85",
+    "tests/native/RadialPullNative.java": "cbd9b8b1d1c3e047cdc5a8a02da303e554696fb27ebf0967b13cbcf92b6dfbfc",
+    "tools/build_radial_pull_fixtures.py": "1f63feca8c7f57c65c300d06e80499228583262df9b46d9d042e81a39d174dac",
+    "tools/run_noise3d_java.py": "4b9ae3f269f239f74f585d7805e839e956db620b9324ee688023d181eae58256",
+    "tools/run_radial_pull_java.py": "6033e98e81fba862ded0b5fcf27f85a9ecd9124df5504d270f5c252c8feb5e0c",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "source_sha256_after": {
+    "catalog/operations/radial-pull-2d.json": "63e089d2ab61b4a4e8cb1f48684cb69e7268574ebebd15d34e405b9595366788",
+    "fixtures/operations/radial-pull-2d.json": "370d82a3b5fae503a3058edb24f7405799377d5b4863a52888771e2c2582ae0f",
+    "design/operations/radial-pull-contract.md": "f2023bebebc49949d91115a1cabfa05cc0e3f85c5662bbb24e730aaf05445ddf",
+    "packages/java/src/main/java/org/procedurals/geometry/RadialPull2D.java": "1ddc552adbca746442c993d5340b924a139c4de48bb37c64fbe4a5591da79d85",
+    "tests/native/RadialPullNative.java": "cbd9b8b1d1c3e047cdc5a8a02da303e554696fb27ebf0967b13cbcf92b6dfbfc",
+    "tools/build_radial_pull_fixtures.py": "1f63feca8c7f57c65c300d06e80499228583262df9b46d9d042e81a39d174dac",
+    "tools/run_noise3d_java.py": "4b9ae3f269f239f74f585d7805e839e956db620b9324ee688023d181eae58256",
+    "tools/run_radial_pull_java.py": "6033e98e81fba862ded0b5fcf27f85a9ecd9124df5504d270f5c252c8feb5e0c",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "artifact_sha256_before": {
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPull2D$1.class": "f960be88a5bbb5ff13d593754a2d94416250189ee45826fce24c1a04f07997aa",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPull2D$Point.class": "83336189d18459761fdccfbc47a36578c56aad24438f396410997332ba6a52f2",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPull2D$PullException.class": "7911c6d5cf5ac886ae139fbe25d760f5df16cccc9a28c9e43acea1c4b923024e",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPull2D.class": "ee37d966fe0e07f449afef83d5420a0a60f938387bfcc2a7c44741f7183ffc31",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$1.class": "bba3351661dc952d4b52029a975cb2073f7366a8c24e8726bdc5a537331a67b0",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$10.class": "23b6f013b83456a01ed11f644510d633a10f4abbc9ea5445226ae910a88dc7fa",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$11.class": "d633374ad44e86f91617b580c4ee6a4cc5e8b0b30421c2f720dc693d983f674b",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$12.class": "9ac709ad5a374fac153cdc1b1280f8643c6b82ef29fe033ecc5882740bb2a466",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$2.class": "6ebb9a3b73272a6c832ebd8ee6693614fda268cf33f7f4862ad00ea39bc17c61",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$3.class": "f385444ce9a230ef0f4de5a49049c790835d7796cba6ac4c08fc744e0b55479f",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$4.class": "16889e283d3e912fdda7c34709dd7d56727fdf88d2e94b55c1ac8fdc331a02ec",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$5.class": "676e99a68e12e4ace56f894503fe647dd82d586547a7bc0f0800cc0cce190ecc",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$6.class": "319a6522aad1f0a7036112b241f19d92aab305c2baa462b94ea61efd13f93096",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$7.class": "835b612d65d80da9ec7f0e9160ea0375c16e5a7482ff2d4b127f534e11a15aee",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$8.class": "d7adc5b88783feb34b6591b1ca0bdd13c2c0a71bdf8d621b82ea372f4fb5479d",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$9.class": "0c052aa03c40bd28e7c3e6ba07fac33f2cefc58d99c329a81423a17648d72da2",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$Action.class": "e3cc1ba8e64383905cb1e50298c44c09afadf5588ba7f358bfe22611a4fa61c3",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative.class": "81e369c784eaed74676b08ffef5453a90c339aa5d1907dbd15b382afd39e2aa4",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullVectors$Action.class": "4388e7ecf18c0eb2be942e0b9008fd9c6ebd34d8e3b1b2070b686d4916e29bcc",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullVectors.class": "690a9a85c2ace51e7b5f848928981da085d682d09c284ce891b04df3307ece04"
+  },
+  "artifact_sha256_after": {
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPull2D$1.class": "f960be88a5bbb5ff13d593754a2d94416250189ee45826fce24c1a04f07997aa",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPull2D$Point.class": "83336189d18459761fdccfbc47a36578c56aad24438f396410997332ba6a52f2",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPull2D$PullException.class": "7911c6d5cf5ac886ae139fbe25d760f5df16cccc9a28c9e43acea1c4b923024e",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPull2D.class": "ee37d966fe0e07f449afef83d5420a0a60f938387bfcc2a7c44741f7183ffc31",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$1.class": "bba3351661dc952d4b52029a975cb2073f7366a8c24e8726bdc5a537331a67b0",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$10.class": "23b6f013b83456a01ed11f644510d633a10f4abbc9ea5445226ae910a88dc7fa",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$11.class": "d633374ad44e86f91617b580c4ee6a4cc5e8b0b30421c2f720dc693d983f674b",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$12.class": "9ac709ad5a374fac153cdc1b1280f8643c6b82ef29fe033ecc5882740bb2a466",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$2.class": "6ebb9a3b73272a6c832ebd8ee6693614fda268cf33f7f4862ad00ea39bc17c61",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$3.class": "f385444ce9a230ef0f4de5a49049c790835d7796cba6ac4c08fc744e0b55479f",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$4.class": "16889e283d3e912fdda7c34709dd7d56727fdf88d2e94b55c1ac8fdc331a02ec",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$5.class": "676e99a68e12e4ace56f894503fe647dd82d586547a7bc0f0800cc0cce190ecc",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$6.class": "319a6522aad1f0a7036112b241f19d92aab305c2baa462b94ea61efd13f93096",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$7.class": "835b612d65d80da9ec7f0e9160ea0375c16e5a7482ff2d4b127f534e11a15aee",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$8.class": "d7adc5b88783feb34b6591b1ca0bdd13c2c0a71bdf8d621b82ea372f4fb5479d",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$9.class": "0c052aa03c40bd28e7c3e6ba07fac33f2cefc58d99c329a81423a17648d72da2",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative$Action.class": "e3cc1ba8e64383905cb1e50298c44c09afadf5588ba7f358bfe22611a4fa61c3",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullNative.class": "81e369c784eaed74676b08ffef5453a90c339aa5d1907dbd15b382afd39e2aa4",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullVectors$Action.class": "4388e7ecf18c0eb2be942e0b9008fd9c6ebd34d8e3b1b2070b686d4916e29bcc",
+    ".work/build/radial-pull-me8vftk5/org/procedurals/geometry/RadialPullVectors.class": "690a9a85c2ace51e7b5f848928981da085d682d09c284ce891b04df3307ece04"
+  },
+  "javac_release": "8",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Java core exact vectors and focused native ownership/workload check; no renderer, distribution or port acceptance."
+}

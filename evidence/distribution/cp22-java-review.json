@@ -1,0 +1,52 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.25.0",
+  "scope": "24 accepted Java operations and26 packaged editable workflows; two new compositions, no core changes or registry publication",
+  "archive": {
+    "path": ".work/dist/cp22-java-source-root1/procedurals-java-source-dev.zip",
+    "sha256": "595f0c7af64b42344ebf177bc3304d32940cc981b7c549fda2f279178d854ada",
+    "members": 229
+  },
+  "build_report": {
+    "path": "evidence/distribution/cp22-java-source.json",
+    "sha256": "f837cbea3fc68794558f0cf6afa73ed051fe1677054602e7d6a83baab7e2c2ed"
+  },
+  "consumer_reports": {
+    "body": {
+      "path": "evidence/distribution/cp22-java-body-consumer.json",
+      "sha256": "14022c25feeca4d9b8c21eb8a69be32cc1b91499359c3df5e1b0b2ba813f02d9"
+    },
+    "pointer": {
+      "path": "evidence/distribution/cp22-java-pointer-consumer.json",
+      "sha256": "49d982e1e56e73ffc7122c01ed4f92696617e2dbfb133069a4e588c77e65daf4"
+    }
+  },
+  "checks": {
+    "procedurals.jar": {
+      "unchanged_classes": 107
+    },
+    "procedurals-processing-adapter.jar": {
+      "unchanged_classes": 1
+    },
+    "preserved_example_members": 44,
+    "deterministic_native_png_matches": {
+      "BodyMarks": 7,
+      "PointerMarks": 7
+    }
+  },
+  "verified": [
+    "Root reviewed unchanged bound build inputs; all26 extracted PDE examples compile.",
+    "Native extracted BodyMarks passes retained taper/centerline transfer, actual single tick, reset, cached save and24-tick geometry replay.",
+    "Native extracted PointerMarks passes24-held/24-released input replay, fixed-wire transfer, actual animation/pause and cached save.",
+    "Seven deterministic PNGs for each workflow match root-inspected candidate captures exactly.",
+    "All prior core/adapter classes and example/font members preserved byte-for-byte; license and font notices remain verified.",
+    "Seven focused packaging tests passed for updated manifest inventory; existing24-operation catalog semantics unchanged."
+  ],
+  "limits": [
+    "PointerMarks final lifecycle pause capture is not compared to a fixed candidate tick because posted pause may observe a different running draw count. Each run independently verifies one step per running draw, no paused step and cached-save identity.",
+    "No new source-sketch recreation or other-target acceptance.",
+    "Future source builds require their own acceptance; this review binds this archive."
+  ]
+}

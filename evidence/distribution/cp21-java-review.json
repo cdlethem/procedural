@@ -1,0 +1,50 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.24.0",
+  "scope": "Source-built Java bundle with24 operations and24 editable workflows; all extracted PDE compilation and native CutMarks. Local artifact, not registry release.",
+  "archive": {
+    "path": ".work/dist/cp21-java-source-root1/procedurals-java-source-dev.zip",
+    "sha256": "8b40464c4581545b31d4dd38c8226e120fce13f0df624303a2edaba8374cf3db",
+    "members": 226
+  },
+  "build_report": {
+    "path": "evidence/distribution/cp21-java-source.json",
+    "sha256": "1986dbb573ea961a18416de9cdf8ea94327b5cf961bef3515921233710c644b7"
+  },
+  "consumer_report": {
+    "path": "evidence/distribution/cp21-java-consumer.json",
+    "sha256": "681ec44589796ef12eaf28aebd8403dad77ceb3b3a9b9da4ca8f62d587d53374"
+  },
+  "checks": {
+    "procedurals.jar": {
+      "preserved_classes": 103,
+      "added_classes": [
+        "org/procedurals/layout/RetainedRectangles2D$1.class",
+        "org/procedurals/layout/RetainedRectangles2D$EditException.class",
+        "org/procedurals/layout/RetainedRectangles2D$Leaf.class",
+        "org/procedurals/layout/RetainedRectangles2D.class"
+      ]
+    },
+    "procedurals-processing-adapter.jar": {
+      "preserved_classes": 1,
+      "added_classes": []
+    },
+    "preserved_example_members": 43,
+    "extracted_native_frames_equal_candidate": 6
+  },
+  "verified": [
+    "All777 bound build inputs checked unchanged before distribution acceptance; all24 extracted PDE examples compile.",
+    "Five native states and cached save pass; six PNGs equal root-inspected candidate exactly.",
+    "Prior103 core classes, desktop adapter and43 example/font members preserved byte-for-byte.",
+    "Retained-rectangle contract, artist guide, source licensing and complete font notice included.",
+    "Seven focused packaging tests and catalog/reference check passed."
+  ],
+  "limits": [
+    "No additional original recreation or non-Java support claim.",
+    "PointerMarks is an explicitly unaccepted repository draft, not a packaged25th workflow.",
+    "Pinned external toolchain/font inputs required; acceptance binds this archive, not future builds."
+  ],
+  "attempts": "Candidate first attempt and consumer first attempt encountered occupied shared render access. Retried after specific live Android session ended; no lock bypass or interrupted port work."
+}

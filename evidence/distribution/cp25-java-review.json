@@ -1,0 +1,46 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.28.0",
+  "scope": "26 Java operations,29 packaged workflows; explicit image crop, contain/cover/stretch fitting and alignment through JAVA2D adapter. No new portable operation or target support.",
+  "archive": {
+    "path": ".work/dist/cp25-java-source-root1/procedurals-java-source-dev.zip",
+    "sha256": "2e44847da80a46969b62da4b157be1a56ebbea5dbc4b5eeb7ab23eae2c918ed8",
+    "members": 387
+  },
+  "reports": {
+    "source": {
+      "path": "evidence/distribution/cp25-java-source.json",
+      "sha256": "bd105929d20da8056fcacfc9b68052f9f714dd2fb084699791ecd4e85cc6a84b"
+    },
+    "placement-consumer": {
+      "path": "evidence/distribution/cp25-java-placement-consumer.json",
+      "sha256": "5b5fabc9ae9e2da9a914c6e6909c31cdc07984c4b6579b53896827b644788a6a"
+    },
+    "native-review": {
+      "path": "evidence/workflows/placement-image-marks/root-review.json",
+      "sha256": "c58caf2c38af3fb693287419e511ced721ad08f24fa2ce23d99f2bab79870176"
+    }
+  },
+  "verified": [
+    "All29 extracted PDE examples compile and all30 source-derived core/adapter class reference pages are present and bound.",
+    "Extracted native PlacementImageMarks completes8-state fffcamms sequence and cached save with separate placement/layers adapter and compositor core JAR origins.",
+    "Every extracted native PNG matches root-reviewed candidate byte-for-byte.",
+    "Build inputs, consumer inputs and all extracted files remain unchanged and match current sources.",
+    "All prior core and adapter compiled classes are byte-identical."
+  ],
+  "checks": {
+    "unchanged_prior_core_classes": 113,
+    "unchanged_prior_adapter_classes": 7,
+    "reference_declared_class_pages": 30,
+    "javadoc_warnings": 680
+  },
+  "limits": [
+    "JAVA2D density1 RGB/ARGB; explicit integer source crop and destination frame.",
+    "Native rasterization, not portable sampling or source-sketch recreation. No automatic feature extraction, rotation convenience or area-downsampling quality claim.",
+    "Javadoc missing-documentation warnings remain; no completeness claim.",
+    "Historical pending/candidate labels do not supersede this exact-archive distribution review.",
+    "Ports/Sol remain paused."
+  ]
+}

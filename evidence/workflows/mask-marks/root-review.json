@@ -1,0 +1,27 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "scope": "Java JAVA2D retained layer and alpha-mask adapter, MaskMarks workflow; distribution pending. No new portable operation.",
+  "native": "evidence/workflows/mask-marks/native.json",
+  "native_sha256": "1d2da986d1f5a6c340a99bfc9453802ed47da2b0bd7688f3b85abcf441d1a734",
+  "adapter_probe": "evidence/conformance/java2d-layers-native.json",
+  "adapter_probe_sha256": "63986f91e1f8abf91750df1764d97ad0281adaf2a053e349a502f087c13118ca",
+  "implementation_sha256": {
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DLayers.java": "23e363a4d5e52ce1ad944f5915ddfee850e3d1e16edb6d9b3c1a19ace53b2f98",
+    "packages/java-processing/examples/MaskMarks/MaskMarks.pde": "0e49009be857eea1681c0112588f3d3e98a060888684aabde1bb8f1d4a69df71",
+    "tests/native/MaskMarksProbe.java": "7cdc0faaa76c05bb9e84a4d8826803a2fa5a27f1a3c6401a1eb0771f6b7879c0",
+    "tests/native/Java2DLayersNative.java": "103a55a6f0fb28bffe7e95935451831ad4cb394369a4afaa0c1e0c706910496d"
+  },
+  "verified": [
+    "Root reviewed adapter, actual PDE and native probe; no duplicated compositing arithmetic and no replacement of the real dirty-frame loop.",
+    "Root inspected baseline, image, crossfade and mask-view PNGs. Same ellipse/triangle boundaries select stripes or generated picture; half-alpha triangle blends with the background or alternate content.",
+    "All native input/artifact/image hashes match current files. Six queued states, retained input identity/pixels, endpoint samples, restored frames and 300ms cached-save quiet check passed.",
+    "Actual native adapter probes pass alpha transport, antialiased shape coverage, RGB opacity normalization, detached ownership, exception identity, invalid-input cases and bounded 720x480 transport."
+  ],
+  "limits": [
+    "JAVA2D density1, completed matching RGB/ARGB images; alpha mask is not luminance.",
+    "Native coverage is not analytic polygon clipping or boundary-aware generation.",
+    "Generated example image; no semantic extraction, automatic crop/fit or source-sketch recreation claim.",
+    "Source-bundle and extracted-consumer acceptance pending."
+  ]
+}

@@ -1,15 +1,20 @@
 # Build the Java library from source
 
-The source-bundle builder assembles Java0.20 directly from the checked-in sources, including
-20 operations and 20 editable starters. PanelMarks adds irregular retained panels to the
-closed-curve, noise-band, field, path, mesh and other workflows. The Java0.20 artifact
-review is recorded in `evidence/distribution/cp17-java-review.json`. Each generated report records assembly
-rather than automatically approving future changed inputs.
+The accepted Java0.34.0 source bundle contains30 operations and36 editable workflows.
+Its archive identity and extracted-consumer validation are recorded in the
+[MaskedPartitionMarks distribution review](../evidence/distribution/masked-partition-java-review.json).
+Building a changed checkout produces a development build until separately reviewed.
+
+Start with [the workflow chooser](choosing-java-workflow.md), then use
+[the composition guide](composing-java-effects.md) to combine region callbacks, image
+snippets, masks, image-derived controls and filtering. The archive includes source-derived
+Java reference pages for core and Processing adapter classes in `reference/index.html`.
+Build reports record assembly; distribution acceptance requires a separate root review.
 
 Supply Python 3.11 or newer, a JDK supporting `javac --release 8`, the audited
 Processing 4.5.6 `core.jar`, the accepted GlyphMarks DejaVu Sans font,
 and its complete license notice. Fonts and toolchains are external inputs, not tracked
-project assets. The font is needed to preserve the complete20-starter bundle; it is not
+project assets. The font is needed to preserve the complete starter bundle; it is not
 silently omitted or replaced by a system fallback.
 
 ```sh
@@ -24,9 +29,19 @@ python3 tools/build_java_source_bundle.py \
 Use a fresh output directory each time. The source build requires no prior local
 release archive, staged Processing sketch or running native renderer. Processing core is
 a compile-time input for the separate desktop adapter; it is not bundled into the library. Read the generated report for
-input hashes, archive identity and acceptance scope. To install a reviewed bundle, extract
-its `procedurals` directory into your Processing sketchbook's `libraries` directory and
-restart Processing. Open File → Examples → Contributed Libraries → Procedurals →
+input hashes, archive identity and acceptance scope. The command above creates
+`.work/dist/my-java-source-build/procedurals-java-source-dev.zip`. You can install this
+development bundle for editing; building changed sources does not grant them new reviewed
+support claims. Use the sketchbook location shown in Processing Preferences:
+
+```sh
+mkdir -p /path/to/your/sketchbook/libraries
+unzip .work/dist/my-java-source-build/procedurals-java-source-dev.zip \
+  -d /path/to/your/sketchbook/libraries
+```
+
+If a `procedurals` library is already installed, move that directory aside first so old
+files do not mix with the new bundle. Restart Processing. Open File → Examples → Contributed Libraries → Procedurals →
 FieldMarks, then save a copy into your own sketch folder before editing. The archive
 contains both `library/procedurals.jar` and `library/procedurals-processing-adapter.jar`;
 keep both. Continue with [the field-marks edits](getting-started.md).

@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "operation": "raster.masked-source-over-2d",
+  "fixture_cases": 11,
+  "vectors": {
+    "status": "passed",
+    "cases": 11,
+    "assertions": 115
+  },
+  "native": {
+    "status": "passed",
+    "assertions": 36,
+    "measurements": [
+      {
+        "width": 8,
+        "height": 8,
+        "warmup": 3,
+        "repetitions": 3,
+        "elapsed_ns": 97430,
+        "checksum": 823023132672,
+        "input_output_export_buffer_bytes": 1536
+      },
+      {
+        "width": 720,
+        "height": 480,
+        "warmup": 3,
+        "repetitions": 3,
+        "elapsed_ns": 12854473,
+        "checksum": 4444324916428800,
+        "input_output_export_buffer_bytes": 8294400
+      },
+      {
+        "width": 1024,
+        "height": 1024,
+        "warmup": 3,
+        "repetitions": 3,
+        "elapsed_ns": 31072513,
+        "checksum": 13484411005698048,
+        "input_output_export_buffer_bytes": 25165824
+      }
+    ]
+  },
+  "source_sha256_before": {
+    "catalog/operations/masked-source-over.json": "c8e2077cd3a238ec5c7a1242892d0d3215e103761fbb0d5031daef08c42d16c2",
+    "fixtures/operations/masked-source-over.json": "5d51fb824d7c5a6097884b3545b19f747f5011ba2eaf3b045f3d9203647f2e2c",
+    "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4",
+    "tests/native/MaskedCompositeNative.java": "af326735c63d952fe7f2efbf1fe1dc41ba480a50fcace7ae710139dec4e1f68f",
+    "tools/run_masked_source_over_java.py": "203ae5c10cef42e9a21c395073a31ad7d6568a0381616c20b3b48a2bed954968",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "source_sha256_after": {
+    "catalog/operations/masked-source-over.json": "c8e2077cd3a238ec5c7a1242892d0d3215e103761fbb0d5031daef08c42d16c2",
+    "fixtures/operations/masked-source-over.json": "5d51fb824d7c5a6097884b3545b19f747f5011ba2eaf3b045f3d9203647f2e2c",
+    "packages/java/src/main/java/org/procedurals/raster/MaskedComposite2D.java": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4",
+    "tests/native/MaskedCompositeNative.java": "af326735c63d952fe7f2efbf1fe1dc41ba480a50fcace7ae710139dec4e1f68f",
+    "tools/run_masked_source_over_java.py": "203ae5c10cef42e9a21c395073a31ad7d6568a0381616c20b3b48a2bed954968",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "javac_release": "8",
+  "runtime": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)",
+  "scope": "Java core exact vectors and focused ownership/carrier checks; no native renderer or support claim."
+}

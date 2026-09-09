@@ -1,0 +1,66 @@
+{
+  "status": "informational",
+  "reviewer": "root",
+  "scope": "Private native image scaling observation used to choose host-adapter implementation; not public placement acceptance.",
+  "source": {
+    "path": "tools/diagnostics/spatial-composition/ImagePlacementNativeStudy.java",
+    "sha256": "1d6a2fb52b84abc90a5998317676c833db6a8c598a889fe66ba72814f728dbaa"
+  },
+  "samples": {
+    "renderer": "processing.awt.PGraphicsJava2D",
+    "samples": {
+      "blue": [
+        -1644232704,
+        -1979777024,
+        1996423168,
+        1660878848
+      ],
+      "green": [
+        -1644232704,
+        -1979777024,
+        1996423168,
+        1660878848
+      ],
+      "black": [
+        -1644232704,
+        -1979777024,
+        1996423168,
+        1660878848
+      ],
+      "crop": [
+        -65536,
+        -65536,
+        -65536,
+        -65536
+      ]
+    }
+  },
+  "commands": "Compile argv:\n/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac --release 8 -cp /home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar:/home/colin/dev/procedural/.work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals-processing-adapter.jar -d /home/colin/dev/procedural/.work/image-placement-native-study1/classes /home/colin/dev/procedural/tools/diagnostics/spatial-composition/ImagePlacementNativeStudy.java\nRun argv:\npython3 /home/colin/dev/procedural/tools/with_native_render_lock.py --timeout 120 -- xvfb-run -a /home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java -Duser.home=/home/colin/dev/procedural/.work/image-placement-native-study1/home -cp /home/colin/dev/procedural/.work/image-placement-native-study1/classes:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar:/home/colin/dev/procedural/.work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals.jar:/home/colin/dev/procedural/.work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals-processing-adapter.jar ImagePlacementNativeStudy /home/colin/dev/procedural/.work/image-placement-native-study1\n",
+  "input_hashes_record": "1d6a2fb52b84abc90a5998317676c833db6a8c598a889fe66ba72814f728dbaa  tools/diagnostics/spatial-composition/ImagePlacementNativeStudy.java\nc1474f3d0dacf609711472d08feed1ad0aa7ecc51268867303200d43368c6544  .work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals.jar\n1a6b2b67f13d1f45bb3833b805e31a690fecbaa0a6bcfe50827d86df8fea2d19  .work/cp24-mask-consumer-root1/extract/procedurals/library/procedurals-processing-adapter.jar\n88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4  .work/toolchains/processing-4.5.6/core-4.5.6.jar\n",
+  "images": {
+    "hidden-blue.png": {
+      "path": ".work/image-placement-native-study1/hidden-blue.png",
+      "sha256": "801ae08b63ba210e0d720c15b98246397e7a51315bca4f665abb8ae9d185a7c4"
+    },
+    "hidden-green.png": {
+      "path": ".work/image-placement-native-study1/hidden-green.png",
+      "sha256": "801ae08b63ba210e0d720c15b98246397e7a51315bca4f665abb8ae9d185a7c4"
+    },
+    "hidden-black.png": {
+      "path": ".work/image-placement-native-study1/hidden-black.png",
+      "sha256": "801ae08b63ba210e0d720c15b98246397e7a51315bca4f665abb8ae9d185a7c4"
+    },
+    "crop-red.png": {
+      "path": ".work/image-placement-native-study1/crop-red.png",
+      "sha256": "a35227b14b9c6a49071ee02e42fe8d67662a59eb627978ef53496bdf15e79094"
+    }
+  },
+  "root_verification": [
+    "Compared all512 RGBA pixels in each saved hidden-color variant: identical.",
+    "All nonzero-alpha output pixels have red RGB; all512 isolated-crop pixels opaque red."
+  ],
+  "limits": [
+    "Enlargement of tiny native ARGB sources only; no minification or portable-resampling claim.",
+    "Private diagnostic asserts renderer but records samples without asserting expected colors; root image comparison supplies the stated observation."
+  ]
+}

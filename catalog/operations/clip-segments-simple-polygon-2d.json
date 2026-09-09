@@ -1,0 +1,226 @@
+{
+  "id": "geometry.clip-segments-simple-polygon-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability": "retained-vector-clipping",
+  "description": "Clip supplied segments to a simple concave polygon, retaining source identity and every positive-length interior or boundary interval.",
+  "decision_cluster": "geometry.clip-segments-simple-polygon-2d",
+  "capability_decision": "design/capabilities/segment-clipping-admission.md",
+  "design_review": "design/operations/segment-clipping-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2014/Generativos/Forms/forms1#0",
+      "notes_path": "survey/out/2014/Generativos/Forms/forms1/notes.md",
+      "note_sha256": "fb9190dea785b772793257d1358e443160441af5f1f28f118c17d83f16a55bb5",
+      "evidence_sha256": "64d69d30862403271c5144d928f35fa7f23f6070b3d57e28daec437981cbf8d1",
+      "relationship": "Independent clipping dependency; hatch construction/decorations remain consumers, source incomplete intersection checks and exactly-two-hit behavior deliberately corrected."
+    },
+    {
+      "candidate_id": "2014/Generativos/Forms/forms1#1",
+      "notes_path": "survey/out/2014/Generativos/Forms/forms1/notes.md",
+      "note_sha256": "fb9190dea785b772793257d1358e443160441af5f1f28f118c17d83f16a55bb5",
+      "evidence_sha256": "64d69d30862403271c5144d928f35fa7f23f6070b3d57e28daec437981cbf8d1",
+      "relationship": "Independent clipping dependency; hatch construction/decorations remain consumers, source incomplete intersection checks and exactly-two-hit behavior deliberately corrected."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "polygon": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "minItems": 3,
+        "maxItems": 1073741823
+      },
+      "segments": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "maxItems": 536870911
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "maxOutputSegments": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 536870911
+      }
+    },
+    "required": [
+      "polygon",
+      "segments",
+      "maxWork",
+      "maxOutputSegments"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "segments": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "sourceIndices": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 536870910
+        }
+      },
+      "intervals": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "required": [
+      "segments",
+      "sourceIndices",
+      "intervals"
+    ],
+    "additionalProperties": false
+  },
+  "behavior": {
+    "input": "Exactly polygon,segments,maxWork,maxOutputSegments in a passive record. Validate record/keys, polygon list and each finite pair in order, segments list and every finite quadruple in order, maxWork, maxOutputSegments. All numeric carriers are finite binary64 and never bool; integer limits require exact integral values in schema domain. Java accepts Byte,Short,Integer,Long,Float,Double only. Normalize signed zero. Complete all static validation before work/topology. No implicit defaults or closed-vertex duplicate removal.",
+    "work": "V=polygon.length,S=segments.length. Compute W=V*V+S*(8*V*V+16*V+8) in exact integers. WORK_LIMIT_EXCEEDED iff W>maxWork, before topology testing or generated output allocation. W is a conservative abstract geometry allowance, not milliseconds, bytes or literal bigint operation count. Empty sources still pay V\u00b2. Big-integer costs and host allocation are not covered by a timing guarantee.",
+    "polygon": "At least3 distinct vertices, implicit last-to-first closure, exact nonzero signed area. Reject repeated vertices including a closing duplicate, adjacent collinear backtracking/overlap, or any nonadjacent edge contact/crossing. Straight collinear continuation is accepted. Either winding and concavity accepted. Exact dyadic arithmetic over input binary64 values; no epsilon. INVALID_POLYGON after work preflight.",
+    "clipping": "Visit sources in input order. Zero-length source contributes nothing. For nonzero segment A+t(B-A), collect exact t=0,1 and each segment-edge intersection whose exact t,u are closed[0,1]. For collinear edges include edge endpoint t values within[0,1]. Parallel noncollinear edges add none. Sort/deduplicate exact rationals. Classify each open interval by its exact rational midpoint: retain iff inside or on boundary using exact even-odd containment. Merge neighboring retained intervals sharing an exact parameter. Never bridge a positive exterior interval. Point-only contacts are omitted.",
+    "rounding": "Traverse merged intervals in increasing t. Before conversion check retained count against maxOutputSegments, otherwise OUTPUT_LIMIT_EXCEEDED with sourceIndex and intervalIndex. Convert each t and exact A+t(B-A) coordinate once to binary64 nearest-even, canonical +0. t=0/1 keeps the corresponding input endpoint except zero normalization. No intermediate binary64 interpolation. REPRESENTATION_COLLAPSE stages in order: parameter if rounded t0>=t1; endpoints if rounded coordinate pairs coincide; gap if previous returned interval of this source has rounded end>=current rounded start despite positive exact gap. Error detail sourceIndex,intervalIndex,stage. No returned partial result. Rounded endpoints may lie slightly off the exact boundary; centerline clipping does not constrain rendered stroke width. sourceIndex and intervalIndex are zero-based; intervalIndex counts merged retained intervals within that source before output conversion.",
+    "ownership": "Retain owned packed coordinates, source indices and rounded parameter pairs only; do not retain inputs, exact rational temporaries or a renderer. Into reads allocate no result storage; At/export return detached data. No mutation or retained region session. Host allocation failure remains host failure.",
+    "access": "size() counts retained segments. segmentAt(index) and segmentInto(index,output,offset) use4 doubles; intervalAt and intervalInto use2 doubles; sourceIndexAt returns integer. toValues returns output-schema keys in segments,sourceIndices,intervals order and detached nested lists. Index finite nonnegative safe integer<=9007199254740991; INVALID_INDEX before INDEX_OUT_OF_RANGE before INVALID_OUTPUT. Java Object and long indices accepted; offsets required int. All destination slots remain unchanged on validation failure.",
+    "complexity": "Correctness baseline O(V\u00b2+S*V\u00b2) geometric work plus sorting and exact arithmetic costs; O(V+S+K) retained input/output scale with per-source O(V) cut storage, K retained intervals. Packed segment quadruples bound maxOutputSegments by floor(INT_MAX/4); count ceilings are representational, not recommended use."
+  },
+  "output_invariants": "All three arrays have equal length<=maxOutputSegments. Ordered by source index then increasing source t; each t0<t1, with strict t gaps between distinct intervals of a source. Each segment has distinct finite endpoint pairs and canonical zero.",
+  "errors": {
+    "INVALID_INPUT": "Static shape/carrier/domain failure.",
+    "WORK_LIMIT_EXCEEDED": "Exact preflight W exceeds maxWork.",
+    "INVALID_POLYGON": "Polygon topology is invalid.",
+    "OUTPUT_LIMIT_EXCEEDED": "Next retained interval exceeds output allowance.",
+    "REPRESENTATION_COLLAPSE": "Positive exact interval or exterior gap cannot be represented distinctly; sourceIndex,intervalIndex,stage.",
+    "INVALID_INDEX": "Invalid numeric index.",
+    "INDEX_OUT_OF_RANGE": "Valid index outside result.",
+    "INVALID_OUTPUT": "Insufficient/wrong destination or offset."
+  },
+  "parameters": {
+    "polygon": {
+      "unit": "caller coordinate pairs",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "forms1 clipping boundary; simple-polygon domain is explicit design."
+    },
+    "segments": {
+      "unit": "caller coordinate quadruples",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Supplied strokes separate generation from clipping; private hatch/stroke transfer."
+    },
+    "maxWork": {
+      "unit": "abstract geometry work allowance",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Engineering preflight; no artistic range."
+    },
+    "maxOutputSegments": {
+      "unit": "retained interval count",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Engineering memory/output allowance; no artistic range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact rational topology"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact rational topology"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact rational topology"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact rational topology"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    }
+  },
+  "fixtures": "fixtures/operations/clip-segments-simple-polygon-2d.json",
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "Private study only; no full forms1 recreation."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Accepted semantics and34 shared fixtures for Java implementation; no implementation or native support accepted."
+  },
+  "exclusions": [
+    "holes and multiple rings",
+    "self-intersecting fill rules",
+    "nearest-hit ray networks",
+    "hatch generation, style and drawing",
+    "curved geometry clipping or polygon boolean operations"
+  ],
+  "fixture_format": "segment-clipping-output"
+}

@@ -1,0 +1,44 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "fidelity": "structural/technique recreation of complete active curvespace composition",
+  "source": "2018/Generativos/curvespace",
+  "plan": "design/capabilities/curvespace-recreation-walkthrough.md",
+  "native_evidence": {
+    "path": "evidence/reproductions/curvespace/native.json",
+    "sha256": "50bc107e52e2c8da04b881ebd5aa40ecc7aafe7c8cbe8bdf1f09d95d1379abe2"
+  },
+  "implementation_sha256": {
+    "examples/recreations/Curvespace/Curvespace.pde": "c76ae8b97e3101685e9fba71fa236f21b56dc8e470dc3a8a0ec27f105179048e",
+    "examples/recreations/Curvespace/CurvespaceComposition.java": "61c56751f6720c0623df604b01748878a1868c2aeb9b619119b0b0075a35bd98",
+    "tests/native/CurvespaceProbe.java": "184d0ca77691aa92b58df585f27373eb177ebeaa732934359b12c51b7cf33d07",
+    "tools/run_curvespace_java.py": "e1ad93aa1f2dcb83cef7f6185e9a50f598782af43d66b29721495160f15ccd51"
+  },
+  "verified": [
+    "Actual P2D960x960 density1 using accepted Java0.22 JAR; RadialPull2D and RegularGrid class origins checked.",
+    "Four-frame cr0s lifecycle; recolor retains geometry, regenerated seed changes geometry, reset matches baseline pixels and geometry.",
+    "ADD mode checked on actual renderer; cached save equals framebuffer after300ms quiet.",
+    "Previous full composition check verifies3600 unwarped dot positions and339840 deformed line samples for seed42 with7 influences.",
+    "Root read source, reviewed complete drawing and inspected every distinct native view.",
+    "Live source/runtime/class/image hashes verified against passed report.",
+    "Final PDE adds explicit library-discovery import and replaces stale draft comment; fresh native2 passes and all5 PNGs equal inspected native1 pixels."
+  ],
+  "visual_observations": [
+    "Baseline retains an orderly colored grid at the periphery with bright overlapping knots and looping strands in the affected center.",
+    "Faint unwarped dots and influence outlines remain present beneath the line drawing.",
+    "Palette edit preserves structure; regenerated seed produces a coarser grid with separated radial tangles."
+  ],
+  "differences": [
+    "Explicit JavaRandom seed, not source Processing random replay.",
+    "Binary64 unit-vector field and exact-center zero differ from source float trigonometric direction.",
+    "Density1 and runtime smoothing differ from source density2/smooth8.",
+    "No source-baseline pixel comparison or full-corpus benchmark certification."
+  ],
+  "delivery": "Repository recreation example; not an extra operation or extra starter inside the accepted22-workflow Java0.22 archive.",
+  "accepted_library": {
+    "sha256": "3bd25b8af7c1e6473c25e0e4f3f7b6f8688c192735b23ee005dbbf403429f5bc",
+    "distribution_review": "evidence/distribution/cp19-java-review.json",
+    "baseline_commit": "838eb1da"
+  }
+}

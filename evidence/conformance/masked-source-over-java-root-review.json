@@ -1,0 +1,21 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "operation": "raster.masked-source-over-2d",
+  "scope": "Java core arithmetic, validation, ownership and bounded typed-buffer performance only. Public adapter, workflow and distribution pending.",
+  "core_sha256": "aa3d66690f9341a2b64d0760a6c478470b9e48be3f5ca8350a88b42c42203de4",
+  "conformance": "evidence/conformance/masked-source-over-java.json",
+  "conformance_sha256": "1ad4fd1c5bb13469df844ad4aae7305c74a1f8c10339b18999d3d54c45c604d4",
+  "verified": [
+    "Root reviewed kernel against explicit binary64 steps, identity branches, alpha underflow and final quantization.",
+    "Eleven shared fixture cases pass; successful cases exercise object and typed forms. Invalid fixture cases exercise object form, with typed validation separately covered by focused probe.",
+    "Focused tests cover ownership, detached exports, carriers, index bounds, dimensions, nonfinite masks and typed/object parity.",
+    "Root replaced indexed generic List traversal with sequential iteration; packed kernel allocates no per-pixel objects.",
+    "Three warmups and three measured compose/export/checksum repetitions each at 8x8,720x480,1024x1024; analytic half-red-over-blue checksum matches."
+  ],
+  "limits": [
+    "Measurements include output export copy and checksum; reported primitive-buffer bytes exclude VM overhead and garbage collection and are not measured peak heap.",
+    "No runtime guarantee, native workflow acceptance, asset license or non-Java target support inferred.",
+    "Private callback/masking probe is exploratory; larger visual study and public adapter remain pending."
+  ]
+}

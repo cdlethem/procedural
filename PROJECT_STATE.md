@@ -1,5 +1,1726 @@
 # Project state
 
+## Java0.34 distribution accepted for integration
+
+Final archive .work/dist/masked-partition-java-source-root2/procedurals-java-source-dev.zip
+SHAeffc9c0a4bbd15c96f19c631db2d85710f3a2c6fabf888892bb3390d2cee7dc6,438members.
+Extracted consumer .work/masked-partition-consumer-root2 passes36PDEs and masked workflow
+6states/7images equal reviewed native output. Portable core classes identical0.33; only
+regions adapter/main plus new immutable mask class differ. Source/catalog review successors
+preserve historical evidence. Final docs inventory reconciled. Root distribution review
+evidence/distribution/masked-partition-java-review.json accepted. Next commit/push after
+fresh remote check;30ops36workflows, no new core or recreation. Broader completion remains
+open. Preserve unrelated Android edit.
+
+## MaskedPartitionMarks native workflow reviewed; gallery updated
+
+Root authored native plan/probe/runner using established PathClip harness. First run passed
+but global artwork was too sparse; root revised24trace starts across canvas plus dark layer.
+Final .work/masked-partition-marks-native-root2 passes6actual event states and cached save,
+source identity/content hashes, mask retain/rebuild checks and conservative outside pixels.
+Root viewed revised baseline/shift and first local/crop (byte-identical to final). Scoped
+evidence/workflows/masked-partition-marks/root-review.json accepted native workflow only.
+Gallery now45groups208images, no problems; docs/masked-partition-marks.md explicitly pending
+distribution. Next integrate changed Java2DRegions current-source support records without
+overwriting historical evidence, add workflow manifest/extracted-consumer route, build and
+review Java distribution before commit/push. Accepted archive remains0.33,30ops35workflows.
+Uncommitted candidate includes adapter, native probes/runner, design/docs/evidence and gallery.
+Preserve unrelated Android edit. Terra task complete.
+
+## Masked region candidate implemented; focused native checks pass
+
+Root froze design/capabilities/masked-partition-content-contract.md after Terra audit.
+Terra implemented immutable MaskedRegion and renderMasked in existing Java2DRegions; root
+reviewed full diff and removed a redundant helper/clarified kernel cost. Source SHA
+5572ec2e8b3a7fee1709d9b36beab15fcaf980763117a8c4dc5a25b9d585017b. Root-authored
+Java2DMaskedRegionsNative and unchanged Java2DRegionsNative pass actual JAVA2D under shared
+machine lease against extracted0.33 portable core. Evidence/conformance/
+java2d-masked-regions-native-candidate.json binds commands/source/runtime and results.
+Four720x480 masks:11,059,200 payload bytes,44,380,208ns total for3renders;12masks:
+33,177,600bytes,134,752,750ns total. Measurements are observations, not animation guarantees.
+Terra now owns ONLY candidate MaskedPartitionMarks.pde: ellipse windows over retained global
+paths, local marks and explicit image crops with separate layout/content edits. Next root
+authors workflow native probe, views results, updates current-source adapter support evidence
+without rewriting historical reviews, then distribution integration. Candidate source changes
+are not yet an accepted milestone;30operations35workflows remains accepted. Preserve Android.
+
+## Direct-use guides pushed; irregular partition convenience under investigation
+
+Reviewed documentation checkpoint27fae895 pushed to main after remote reconciliation.
+Recorded source hashes and both official preprocessing/compilation commands passed again.
+Java0.33 remains the accepted distribution,30operations35workflows. Root read current
+regions/layers implementations and motivating eyes002/circuloss notes; new draft
+design/capabilities/masked-partition-content-brief.md records the remaining convenience
+boundary, ownership/memory decisions and native acceptance tasks. Terra segment_clip_core
+is assigned read-only reuse/hazard audit. No new API, runtime acceptance or port claim.
+Next root reviews that audit and freezes a bounded contract if the convenience earns its
+maintenance cost. Preserve unrelated Android example edit.
+
+## Direct-use guide batch reviewed for repository integration
+
+Root verified the current direct-API code block byte-for-byte against its compiled PDE;
+updated uncommitted compile record to bind current prose and code-block hash. All edited
+guide links resolve and whitespace check passes. Added explanations are grounded in actual
+noise bounds/carriers, raster row-major pull map, spring state/target capture, canonical
+Delaunay metadata mappings and absolute rectangle cuts. This is repository documentation
+integration, not a new archive/version or runtime claim. Next commit/push guides, then
+review remaining public documentation obligations as one bounded batch rather than
+repeated per-class releases. Java0.33 remains the accepted archive.
+
+## Five concrete direct-use documentation gaps closed in authored guides
+
+Terra audit returned noise carrier/query bounds, raster pull-map ordering/units, spring
+state/target order, Delaunay provenance maps and rectangle absolute-cut conventions. Root
+read implementations and added explanations to java-api, warp-marks, spring-marks,
+facet-marks and cut-marks guides. CyclicPalette already adequately explained in direct guide.
+No core changes or support hash migration needed. Direct Java guide's existing code block
+is unchanged; earlier compile record refers to pre-addition prose hash and should be carried
+forward explicitly or refreshed before accepting current docs. Next check linked contracts/
+guide consistency and integrate a bounded documentation checkpoint with other pending links.
+
+## Java0.33 pushed; empty-sketch discovery improved
+
+Accepted checkpoint d5b59b7732a260e0a66f9664174567337dad69b0 pushed, origin matched.
+Root found existing docs/java-api.md not linked from main first-session guides; exact code
+block now compiled against extracted0.33 JAR using official preprocessor (evidence/
+documentation/direct-java-guide-compile.json). Added links from getting-started and workflow
+chooser; current batch inventory reconciled30ops35workflows. Terra is doing read-only audit
+of six public core references for at most5 missing artist-critical semantics; no code edits
+or new algorithms assigned. Next root reviews findings and prioritizes concrete completion
+gaps, preserving unchanged five requirements and sustainable bounded work.
+
+## Java0.33.0 PathClipMarks distribution accepted
+
+Extracted native consumer passed35PDEcompilations; all core/adapter classes identical to
+Java0.32.1. Seven installed-JAR PNGs equal root-reviewed source-run images. Distribution
+review evidence/distribution/path-clip-java-review.json accepted, archive
+SHAb77d44a206239cc4eb4563e7a832b90050aa1189e0de517d2dd11455b0ef8dec,435members.
+Workflow chooser/composition/install/README updated; gallery44groups204images error-free.
+30operations/35workflows, no new core or original recreation. Next commit/push accepted
+checkpoint; broader five-requirement completion audit stays open. Preserve Android edit.
+
+## PathClipMarks native accepted; extracted package running
+
+Root reviewed revised200-floor baseline,430-floor edit, palette and overlay; substantial
+path gap now visible. Native6states/960source identities/exact oracle/reset/save pass.
+Source/artifact hashes verified; accepted scoped review evidence/workflows/path-clip-marks/
+root-review.json. Gallery44groups/204images, no problems. Added PathClipMarks extracted
+consumer route and manifest candidateJava0.33.0 (30ops/35workflows if accepted).
+Source bundle built .work/dist/path-clip-java-source-root1/procedurals-java-source-dev.zip,
+SHAb77d44a206239cc4eb4563e7a832b90050aa1189e0de517d2dd11455b0ef8dec,435members.
+Extracted native consumer started output.work/path-clip-consumer-root1; poll latest exec
+session/result before rerun. Next inspect installed native equivalence and35PDEcompilation,
+record distribution review, reconcile guide/counts, and commit/push. No core changes.
+
+## PathClipMarks first native passes; artwork adjusted for visible boundary edit
+
+Root authored PathClipMarksProbe and runner using established native harness. Actual first
+native run .work/path-clip-marks-native-root1 passed6states,960source-to-path checks,
+independent exact clipping and retained/reset/save checks. Root inspected4distinct views:
+paths mostly graze270notch, so N is visually weak despite valid geometry. Root changed only
+authored baseline notch floor270→200 (alternate430 unchanged), recorded rationale in plan.
+Second native run active exec session from latest tool, output.work/path-clip-marks-native-root2;
+poll result/process before restarting. Candidate docs/path-clip-marks.md authored. No accepted
+workflow or package change yet; source/core contracts unchanged.
+
+## Documentation checkpoint pushed; path-to-clipping transfer example underway
+
+Java0.32.1 pushed e7fe1b9ec5b62cdc822a188ea59b4e7f09aa1565; remote matched afterward.
+Root selected a concrete composition transfer: retained GradientPath2D movement → supplied
+segments → SegmentClip2D with source-to-path metadata → cached Java2DLayers drawing.
+Terra owns only candidate PathClipMarks.pde. Root authored pre-render native plan in
+design/capabilities/path-clip-marks-native-plan.md; no new core operation or acceptance.
+Next inspect actual example, compile, probe source identity/geometry/real edits and native
+visuals with one shared lease. Existing accepted ClipMarks remains unchanged.
+
+## Java0.32.1 documentation distribution accepted
+
+Extracted consumer passed34PDE compilations and full inventory checks. Five expected debug
+classes differ; root verified every other core/adapter class unchanged and retained the
+nondebug equivalence proof. Javadoc warnings689→655. Review
+evidence/distribution/cp29-docs-java-review.json accepts documentation-only archive
+SHA062b3379c83cfa6f18bcf2ca43621324f0c8a55ac1a3b3539ef2ca46e614b088,433members.
+README/install, composition/performance and three shipped-workflow guides reconciled.
+No new runtime support, operation or recreation added. Next commit/push this reviewed
+documentation checkpoint, then prioritize remaining artist-critical reference gaps and
+the five completion requirements. Unrelated Android ProfileMarks edit remains untouched.
+
+## Documentation successor checks pass; extracted consumer running
+
+Root created explicit android-grid-path-restoration-successor.json, preserved historical
+restoration review, updated drawing dispatch and regenerated normalized fixtures (case
+contents unchanged, only input binding).36 focused helper/drawing/restoration tests pass.
+Root validator-integration review accepted;3 indirect tool-source acceptance successors
+added. Full catalog passes. Java0.32.1 source bundle builds at
+.work/dist/cp29-docs-java-source-root1/procedurals-java-source-dev.zip,
+SHA062b3379c83cfa6f18bcf2ca43621324f0c8a55ac1a3b3539ef2ca46e614b088,433members.
+Extracted consumer currently running exec session10375, output.work/cp29-docs-consumer-root1.
+Poll that handle/report before restarting. No native rerender requested: exact code identity
+proven; next verify consumer, unchanged remaining class bytes and warning reduction, record
+distribution acceptance and commit/push documentation checkpoint. Android unrelated edit stays.
+
+## Verifier stable; Android restoration validator needs explicit successor
+
+Terra helper/snapshot/tests complete; root saw maximal-munch operators and Unicode escape
+rejection, exact byte hashes. Focused helper3tests pass. Combined36tests now4fail/1error:
+Android restoration review binds tools/android_restoration_review.py itself (and drawing
+validator), so direct source-check integration correctly invalidates that historical record.
+Next preserve original restoration review, create root-reviewed documentation successor
+with changed tool hashes and new proof evidence, point drawing target to it, and adapt
+validator dispatch to that explicit successor. Keep source behavior/legacy result checks.
+Then rerun36tests and update3 indirect operation review tool bindings with integration
+evidence before catalog/build. Do not add broad hash bypass or edit historic render records.
+
+## Comment verifier review caught token-boundary flaw
+
+Root reviewed initial helper and found punctuation lexing conflated '+ +' with '++';
+requested maximal-munch operators, distinguishing tests and rejection of prelexical Unicode
+escapes. Worker still owns final helper/snapshot/tests. Root updated drawing/restoration
+test snapshots to include the two new proof records. Early33-test attempt failed only
+because worker snapshot JSON was not yet present; rerun after stable completion.
+Catalog additionally identifies3 indirect reviews (triangle, endpoint-branch, triangle-map
+Android native) binding modified validator tool hashes. Root must record validated helper
+integration evidence and update these successor reviews after tests; do not alter history.
+
+## Indirect operation reviews reconciled; drawing comment verifier in progress
+
+Root added9 indirect acceptance successors preserving historical reviews. Remaining drawing
+validators need explicit reconstructible comment-only matching for RegularGrid/GradientPath2D.
+Terra owns tools/reviewed_java_comments.py, exact historical source snapshots and focused
+mutation tests. Root wired its planned matches_reviewed_java_comments entry point into
+desktop drawing source checks, Android legacy source checks and restoration review source
+checks only; unchanged evidence/render/profile checks remain intact. Helper may not exist
+yet, so tools are temporarily awaiting that integration. Next inspect helper/tests, run
+focused drawing/restoration and catalog checks, then rebuild documentation source bundle.
+
+## Grid/path Javadocs verified; indirect support bindings need integration
+
+Root independently compiled HEAD/current two-class sources:5 nondebug classes identical,
+noncomment tokens equal and focused Javadoc zero diagnostics. Proof is
+evidence/documentation/java-grid-path-comments-review.json. Updated27 direct target/layer
+attestations through new carry-forward reviews, manifest candidate0.32.1. Catalog check
+then correctly exposed indirect acceptance-review dependencies (circle placement and several
+Android reviews) plus fresh-raster-2d native evidence. Source build stopped before assembly.
+Next carry forward those indirect reviews and drawing-adapter evidence using the same
+equivalence proof; preserve historical records, do not weaken hash checks. No new archive
+or distribution acceptance yet. Attempt .work/dist/cp29-docs-java-source-root1 did not build.
+
+## Root reference review corrections and shipped-guide reconciliation
+
+Root reviewed worker grid/path Javadoc diffs and requested precise corrections: MAX_SIZE
+is a point-count ceiling, fieldScale has lattice-units-per-coordinate-unit dimensions,
+and Object index overloads must name accepted numeric carriers. Worker is applying these
+before final equivalence/doclint results. Seven attestations reference the changed classes;
+root will own carry-forward integration. Corrected stale packaging-pending statements in
+LayerMarks/MaskMarks/PlacementImageMarks guides after checking CP24/25/29 reviews and current
+manifest membership. Local guide links and diff whitespace checks pass.
+
+## CP29 completion evidence reconciled; grid/path reference batch active
+
+Root validated current attestation bindings:30 conformant Java cores/30 scoped native,
+26 scoped technique and4 unvalidated technique records. Wrote java-completion-cp29-review.md
+against unchanged five requirements; no completion claim. README/archive extraction fixes
+from Terra audit are authored; edited local links resolve. Terra now owns Javadoc-only
+RegularGrid/GradientPath2D edits with requested bytecode equivalence and focused doclint.
+No algorithm or rendering changes authorized in that batch. Next root reviews semantics,
+records support carry-forward and packages the useful documentation checkpoint.
+
+## CP29 pushed; completion usability review underway
+
+Accepted Java0.32 checkpoint40fb809aea694eda3cab31bf9fd1b829eeb6a27f is pushed to main;
+remote and local matched after push. Only unrelated Android edit remained at that point.
+Root added docs/java-performance.md to connect retained composition stages, allocation-free
+accessors, resource allowances and scoped measurements; updated completion inventory30/34.
+Terra segment_clip_core is performing a bounded read-only install-to-edit documentation
+audit. Next review its exact findings, fix current user instructions, and reconcile the
+five completion requirements without treating the operation count as completion.
+
+## Java0.32.0 extracted distribution accepted; checkpoint pending
+
+CP29 adds SegmentClip2D and ClipMarks:30 operations/34 workflows. Catalog support and
+manifest integrated; catalog check passes. Source archive .work/dist/cp29-java-source-root1/
+procedurals-java-source-dev.zip SHA11f4b85131fbad3be5fb8677c55cc9cd8cb66ef90a2664fbf745051f9f6f84d5,
+432members. All34 extracted examples compile; actual ClipMarks installed-JAR native run
+passes and all11 PNG hashes equal root-reviewed originals. Previous core/adapter classes
+unchanged. Distribution review evidence/distribution/cp29-java-review.json accepted.
+Warnings remain689. Updated build/chooser/composition/ClipMarks guides. Git fetch succeeded,
+HEAD/origin-main0/0 at review; no commit/push yet. Next carefully review/stage project-owned
+new files and tracked changes, preserve unrelated Android ProfileMarks, run final focused
+checks, commit and push useful integration checkpoint. Native example's candidate comment
+is historical text in the accepted archive; release status is authoritative in review.
+
+## SegmentClip2D core and ClipMarks native scope accepted
+
+Root completed implementation review, verified all7 class disassemblies against the
+visually reviewed native artifacts, checked final fixture source bindings, and ran the
+new performance runner successfully. Evidence/conformance/segment-clip-root-review.json
+accepts Java core and native scope only. Final source34fixtures/65Java checks pass;
+allocation4.83MB/100 and80.83MB/1000 strokes with unchanged checksums. Cached/edit-driven
+use accepted; no per-frame allocation promise. Final source SHA3e6ecec2edae7fb53bacc67271c120c13fa0cae4d9b1f9325a0bf94e41336878.
+Next add the support attestation, regenerate catalog reference, integrate source manifest
+as Java0.32 with ClipMarks, run extracted consumer, review distribution, then update docs
+and commit/push the useful checkpoint. No distribution acceptance or shipped count change yet.
+
+## Extracted ClipMarks consumer route prepared
+
+Root extended tools/check_java_source_bundle.py with ClipMarks selection, its existing
+exact-reference native validator, explicit validator dependency hashes, and strict native
+stderr handling. CLI/import checks pass; existing real native output passes the reused
+validator and wrong renderer/JAR/density/geometry are rejected. Full extracted run is still
+pending core acceptance and manifest integration. Added a reusable source/runtime-bound
+performance measurement runner at tools/diagnostics/clipping/measure_java_performance.py;
+it has only passed its CLI check and must be executed on stable worker source next.
+
+## ClipMarks native visuals reviewed and centralized
+
+Root inspected seven distinct production frames (baseline, sparse, shallow notch,
+supplied strokes, recolor, hidden endpoints, overlay), verified native artifact and PNG
+hashes, and recorded evidence/workflows/clip-marks/{native.json,visual-review.json}.
+This is scoped candidate evidence, not release acceptance. Central gallery now43groups/
+200images with no problems. Terra owns a final readability-only core cleanup plus
+missing clip Javadoc tags, with requested -g:none class equivalence and focused fixtures.
+Next root reviews that result/performance, extends extracted bundle consumer for ClipMarks
+(tools/check_java_source_bundle.py currently supports only established profiles), and
+integrates manifest/catalog support only after remaining acceptance checks. Unrelated
+Android ProfileMarks change remains untouched.
+
+## Partition/content composition boundary clarified
+
+User emphasized partitions accepting independently chosen content, including snips of
+larger drawings. Root checked Java2DRegions and LayerMarks: the rectangle callback route
+already exists. docs/composing-java-effects.md now makes layout → content → boundary
+treatment explicit, shows the actual callback API, and distinguishes adapter extension
+from algorithms whose movement depends on boundaries. This is design guidance, not a
+new operation or support claim. The first production ClipMarks native run at
+.work/clip-marks-native-root1/result.json passed; final visual/core/distribution review
+remains pending. Terra's exact Rational optimization passed all34 shared fixtures;
+root has not yet accepted its performance or release evidence.
+
+## Clipping allocation baseline exposes optimization need
+
+Root authored SegmentClipPerformance.java: zero-source validation,100 and1000strokes
+against8vertex notch, input/checksum excluded from measured allocations. Stable source
+baseline .work/segment-clip-performance-baseline-root1/result.json shows29.2MB/100 and
+297.5MB/1000 allocations (~8ms/~40ms). No performance acceptance. Root assigned bounded
+exact Rational identity/equal-denominator simplification plus full Rational readability
+to segment_clip_core; no approximate predicates or rounding change permitted. Worker
+has baseline and may edit core. Next compare full fixtures and source-bound allocation
+after optimization, then finish core review/native workflow.
+
+## Production clipping core passes all34 exact fixture vectors
+
+Root authored tools/run_segment_clip_java.py to generate passive input vectors and
+assert every coordinate/interval bit, source index, error code and detail. Current
+production core and worker tests pass .work/segment-clip-core-root1. Runner dependency
+bindings subsequently expanded for imported error/topology evaluators; rerun stable
+worker source with final runner before acceptance. Root requested additional intervalInto
+atomicity/offset checks, nested interval/source-index export detachment and negative
+offset/precedence cases. Worker readability/Javadocs still in progress. No native or
+public support acceptance yet.
+
+## Actual ClipMarks/core/probe compilation passes
+
+Root authored tools/run_clip_marks_java.py using established preprocessing/JAR/probe
+route, JAVA2D-only dependencies and strict empty native stderr. Compile-only attempt
+.work/clip-marks-compile-root1 passes against actual SegmentClip2D. No native render yet.
+Initial core review found compressed private code and incomplete public Javadoc; root
+requested worker cleanup and allocation explanation. Worker scenario tests do not assert
+every shared output bit; root will generate full fixture vectors independently before
+core acceptance. Source is still worker-owned/running; do not bind acceptance hashes yet.
+
+## ClipMarks native probe authored using established event harness
+
+Root adapted tests/native/ClipMarksProbe.java from accepted annular probe: actual queued
+keys,10states/7clip calls, renderer/core-origin checks, retained geometry and source-list
+identity, restored pixels, per-key visible change and cached-save quiet period. Hashes
+cover segments/intervals/source indices. Production core absent at latest read, so probe
+is authored but not compiled or executed. Next root prepares JAVA2D runner and compiles
+actual PDE once worker core arrives; no fake/private-core validation.
+
+## ClipMarks artist workflow authored against frozen contract
+
+Root added candidate PDE and docs/clip-marks.md: retained hatch/zigzag sources, notch
+and spacing edits, source-index colors, endpoint/overlay toggles, reset and cached save.
+Appearance reuses clipping; polygon edits reuse source data. Native plan specifies actual
+HHNNTCMO0S event sequence, ten frames/seven clip calls, geometry identity and exact reset/
+save checks. Core worker file not present at latest inspection; no compile/native claim.
+Next production-core review/fixture execution and native probe via established JAVA2D
+runner. Candidate excluded from accepted source bundle until reviewed.
+
+## Clipping contract and34fixtures frozen; catalog integration passes
+
+Root reviewed full fixture validator, tightened strict segment crossing, connected
+independent error-order evaluator and verified3corruption probes. Moved sole draft to
+catalog/operations/clip-segments-simple-polygon-2d.json as reviewed; regenerated fixtures
+and operation reference. Full catalog checker passes with explicit new-format dispatch.
+segment-clipping-contract-review.md accepts implementation only; support remains absent.
+Next delegate production core per reviewed brief while root authors native workflow.
+Source bundle intentionally remains previous29operation milestone until integration.
+
+## Independent clipping error evaluation passes all draft cases
+
+Root added check_error_draft.py combining schema validation, exact polygon validation,
+work preflight, rational clipping, output capacity and all representation stages in
+contract order. All34 fixture expectations agree, including budgets before topology/
+rounding and late invalid input before work. Source-bound review is vector-clipping-
+error-review.json. Worker fixture validator remains live; root located standard catalog
+format-dispatch integration points. Next review worker, mutation checks, freeze/integrate
+contract without weakening checker. No production acceptance.
+
+## Clipping fixture gaps closed; implementation brief prepared
+
+Draft generator now34 cases, including subnormal endpoint-pair collapse independently
+verified as exact[0,1/2] with both output points rounding to zero; public error precedence
+fixtures added. Root Java comparison confirms all3collapse stages plus35outputs and
+22polygon cases; vector-clipping-collapse-review.json binds successor evidence. Draft
+catalog now specifies zero-based interval ordinals. Prepared segment-clipping-java-brief.md
+for post-freeze implementation, explicitly gated on root fixture/contract review. Terra
+clip_fixture_checker still owns validator; no production code started.
+
+## Thirty clipping fixtures drafted from independent exact oracle
+
+Root authored build_fixture_draft.py and generated30 draft fixtures including concave
+splits, skipped/split source identity, reversed geometry, extreme scale, work/output
+limits, invalid topology with empty sources, late invalid input and interval/gap collapse.
+Success coordinates/parameters carry exact binary64 bits from Fraction computation.
+Schemas and output allowances pass. Terra /root/clip_fixture_checker owns focused draft
+validator only; root retains catalog/generator review. Endpoint-collapse witness, complete
+public access tests and final contract review remain before implementation acceptance.
+
+## Sole clipping catalog draft authored
+
+Root authored catalog/drafts/clip-segments-simple-polygon-2d.json with input/output
+schemas, exact topology/rounding, work formula, validation order, owned access semantics
+and explicit unimplemented targets. JSON Schemas validate. It is outside active
+catalog/operations because checker accepts reviewed contracts only; no checks weakened.
+segment-clipping-contract-review.md is explicitly pending. Next distinguishing shared
+fixtures and review, then move same entry into active catalog and implement Java.
+No new shipped operation or support attestation.
+
+## Clipping gap guard verified; work/precedence decisions written
+
+Root independent checker now verifies interval collapse and exterior-gap collapse, plus
+35exact outputs/22polygon cases against updated exact kernel. Successor evidence in
+vector-clipping-gap-review.json preserves earlier records. Root contract preparation
+defines conservative exact work charge V²+S*(8V²+16V+8), required work/output budgets,
+complete static validation before work/topology and per-interval capacity-before-rounding
+failures. design/operations/segment-clipping-contract-preparation.md lists distinguishing
+fixture obligations. Next author sole catalog schema and fixtures; no frozen contract or
+production support yet.
+
+## Segment clipping admitted for contract preparation
+
+Root authored segment-clipping-admission.md and added capability dependency cluster
+geometry.clip-segments-simple-polygon-2d with forms1#0/#1 bindings and explicit remainder
+accounting. Contract-cluster Phase2 gate passes; candidate dispositions unchanged.
+Admission includes exact topology, boundary-inclusive concave intervals, caller budgets
+and representation failures, including collapsed exterior gaps between output intervals.
+Terra exact_clip_kernel is adding that missing gap witness/check to the PRIVATE kernel.
+Next root freezes catalog cost formula, schemas, errors and fixtures; architectural
+admission is not contract, implementation or release acceptance.
+
+## Exact clipping kernel reviewed against independent oracle
+
+Root reviewed Terra ExactSegmentClipStudy.java and corrected signed-zero endpoint
+preservation. Independent checker passes35 bit-exact interval/endpoint cases,22polygon
+validity/reversal checks and subnormal parameter-collapse rejection. Scaled cases at
+2^-1000 and2^900 work. Root native main benchmark about10ms/100strokes/8vertices in
+initial run; actual subsequent timings bound in vector-clipping-exact-study.json.
+Includes checksum work and3untimed calls (2warmups+reference), no allocation/stress
+acceptance. Next root admission/contract work budgets and numeric representation
+semantics, then production implementation/native workflow. Private study only so far.
+
+## Exact Java rational conversion study passes
+
+Root implemented private RationalStudy.java with normalized BigInteger fractions, exact
+binary64 decoding and nearest-even rational conversion. Independent Python Fraction
+comparison passes71 cases: subnormal/normal transition, largest finite values, thirds,
+adjacent-float midpoint ties and signs; zero canonicalized. Check is reproducible via
+check_rational_study.py; vector-clipping-rounding-study.json binds source and checker.
+Terra /root/exact_clip_kernel owns private ExactSegmentClipStudy.java using this numeric
+class plus simple-polygon validation; pending root review, exact-oracle comparison and
+moderate hatch timings. No public contract or full-domain/performance acceptance yet.
+
+## Clipping topology direction and validity witnesses recorded
+
+Root chose boundary-inclusive simple concave polygons, implicit closure, no repeated
+vertices or self-touching edges; straight continuation vertices allowed. Private exact
+validator passes11cases and winding reversals, including nonzero-area self-crossing.
+vector-clipping-numeric-direction.md records exact rational parameter ordering/midpoint
+classification and one final coordinate rounding as preferred direction. Existing exact
+orientation alone is insufficient; representation collapse and rational rounding remain
+to resolve before contract. Corrected complexity accounting to O(S V²) for diagnostic
+midpoint classification. Next exact Java arithmetic study and representative measurement.
+
+## Clipping Java comparison and native private study reviewed
+
+Root compiled Terra study with pinned JDK17 --release8;30 exact-reference comparisons
+pass. tools/diagnostics/clipping/compare_java_study.py records reproducible check;
+SegmentClipView generated four JAVA2D density1 views under machine render lease. Root
+inspected hatch/sparse/notch/stroke transfer: concave gaps preserved and five supplied
+strokes produce eight pieces. Native study record is design/capabilities/vector-clipping-
+native-study.json; images added to central gallery. Historical deep-notch filename
+actually means shallower notch, explicitly labeled. Next resolve robust arithmetic and
+simple polygon validation before admission; study allocation/performance not accepted.
+
+## Exact clipping study executable; Java prototype delegated
+
+Root implemented tools/diagnostics/clipping/exact_clip_study.py independently using
+rational arithmetic. Ten hand-known cases plus reversed winding/direction invariants
+pass, including two intervals across a concave notch, boundary inclusion, tangencies
+and zero-length omission. design/capabilities/vector-clipping-study-checks.json binds
+source/results and limits. Terra /root/clip_java_study owns private Java prototype only,
+with bounded moderate inputs and no robustness/public-support claim. Next review worker
+code against exact intervals, then render hatch/path transfer through established lease.
+No core/catalog admission or new shipped feature.
+
+## Vector clipping source reviewed; study boundary recorded
+
+Root fetched pinned forms1/plasma007 sources into ignored .work/vector-clipping-source.
+Source/note hashes and analytic defect witnesses are recorded in
+design/capabilities/vector-clipping-source-review.json. forms1 misses y extent checks;
+plasma007 rejects axis-aligned crossings and only compares later list entries. Proposed
+private-study boundary is supplied segment sets clipped to a simple concave polygon,
+retaining source identity and multiple intervals. design/capabilities/vector-clipping-
+investigation.md records unresolved topology/numerics/budgets and edit/transfer plan.
+No contract/API admission yet; next inspect existing exact predicates and build bounded
+private study. Current accepted Java baseline unchanged.
+
+## Geometry review identifies vector clipping lead
+
+Luna nearest-site screen completed. Root read plasma007 and fields reports directly:
+ray nearest-intersection trimming and displaced quad grids do not establish Voronoi
+cells. Rare-family review records explicit current exclusions and a concrete next
+investigation: supplied segment intersection/clipping, potentially useful for ray webs
+and polygon hatching. No operation admitted; exact source arithmetic, second report,
+semantics and artist example required. Existing masks clip visibility only. Completion
+requirements remain unchanged.
+
+## Rare-family review underway after pushed Java0.31.1
+
+Checkpoint2b3f3fa304328c434028a90913212feacad0ff5b is pushed; main/origin matched.
+Root read arbolito4/brotes and typography walkthroughs and recorded explicit algorithm
+versus tag distinctions in design/capabilities/java-rare-family-review.md. Existing
+endpoint growth/line-pool mutation and glyph placement stay supported; symbolic grammar
+rewriting and font-outline/shaping engines are explicit exclusions, not corpus-absence
+claims. Luna /root/voronoi_evidence is performing bounded read-only nearest-site evidence
+retrieval. Root must inspect decisive reports before closing that disposition. No new
+API or completion acceptance. Android draft remains untouched.
+
+## Java0.31.1 documentation checkpoint accepted locally
+
+Root reviewed annular/layer/region public docs; three-class executable-token and
+nondebug-byte identity verified against pushed CP28. Explicit successor support reviews
+preserve historical evidence. Catalog and9package tests pass; all33 extracted PDEs
+compile, unchanged core/adapter classes retain their hashes. Archive
+8dd3c13bd2f314c919b43bc80b71975495d17e4eb6571b052e7536a158f901fd;
+evidence/distribution/cp28-docs-java-review.json accepts documentation-only distribution.
+Javadoc warnings775→689; no native rerender warranted. Next commit/push reviewed files,
+then continue remaining reference/family-disposition/user-journey requirements. No new
+operations or support targets; Android draft remains untouched.
+
+## Annular and layer documentation reviewed against shipped behavior
+
+Root finished member-level annular review and clarified that Into validation-failure
+atomicity does not imply synchronized array writes. Fresh old/new compilations for
+AnnularMesh3D and Java2DLayers match all nondebug class bytes; executable tokens match
+CP28 and both standalone Javadocs have zero diagnostics. Source-bound root review:
+evidence/documentation/java-cp28-comments-review.json. Historical native records remain
+intact; manifest/support carry-forward and next archive acceptance are still pending.
+Luna /root/region_javadoc now owns comments only in Java2DRegions.java to finish the
+composition callback documentation slice. Android draft remains untouched.
+
+## Layer adapter documentation verified without behavior change
+
+Root expanded Java2DLayers public docs: borrowed callback lifecycle, image ownership,
+alpha versus brightness, source-over versus crossfade and exact argument units/domains.
+Comment-stripped token identity and all -g:none compiled classes equal shipped source;
+standalone Javadoc has no diagnostics. Evidence .work/layers-javadoc-review/result.json.
+Source hashes in manifests/attestations intentionally not refreshed yet; complete batch
+review/carry-forward required before publishing. Luna annular comments still pending
+at last inspection. No render justified for these verified comment-only edits.
+
+## Documentation batch underway
+
+Root classified actual CP28 Javadoc warnings; most are missing member comments and
+parameter/return tags. design/operations/java-documentation-batch.md records bounded
+comment-only workflow and explicit source-equivalence review requirements. Luna agent
+/root/annular_javadoc owns comments only in AnnularMesh3D.java (50warnings); no executable
+changes/hashes/attestations allowed. Root next verifies comment-stripped token identity,
+nondebug class equivalence and class Javadoc before refreshing any acceptance bindings.
+
+## CP28 pushed; completion map and port handoff reconciled
+
+Main baseline f43629a931980f8572577380f1a8069f50f9ec56 is pushed. Root updated
+completion/batch docs to29operations/33workflows and recorded annular gap closure;
+cp28-porting-handoff.md pins accepted sources and preserves root integration authority.
+These doc follow-ups are after the accepted archive, for next integration checkpoint.
+Next prioritize public-method documentation;775warnings remain and full completion
+requirements are not yet proven. Android draft remains untouched; ports paused.
+
+## Java0.31 distribution accepted locally — CP28
+
+Root accepted cp28-java-review.json:29operations,33workflows,35source pages;423members.
+Archive SHA256 ade77c4fe5ef05a1653a90cffd0e15b9d5fd39d43643c29f08d9cde3e537a075.
+All33 extracted PDEs compile;11-state AnnularMarks passes with correct core origin and
+all PNGs byte-identical to reviewed native candidate. Source/extracted hashes verified;
+118 prior core and15adapter classes unchanged. Catalog/9package tests pass.775Javadoc
+warnings remain. Next review/stage coherent milestone, fetch and push to main, preserve
+Android draft. Further documentation completion remains; full Java goal stays active.
+
+## Annular native workflow accepted; distribution remains
+
+Root reviewed stable core topology/numerics/access and actual11-state P3D output at
+.work/annular-marks-native-root1. Verified source/artifact/image hashes and inspected
+six distinct views. evidence/workflows/annular-marks/root-review.json accepts native
+workflow only. Performance3/48/10000 slices measured: example~0.04–0.06ms,stress~2.5–2.6ms
+and3840080bytes; stable checksums. No new render needed before packaging changes.
+Next finalize core conformance review and support attestation, integrate source manifest
+and extracted AnnularMarks consumer, docs and reviewed checkpoint. Shipped count28.
+
+## Root finds remaining annular access-test gaps
+
+During Terra cleanup, root read actual tests and requested normalInto success/failure
+atomicity, valid-index negative offset, unsafe Object index, nested numeric export
+mutation and detached normal/triangle At checks. Worker faceKinds-only export check
+was insufficient for the promised ownership scope. Workload XOR is not repeated-run
+stability evidence; root dedicated performance diagnostic handles explicit equality.
+Await final three-file worker result before native run; no acceptance weakened.
+
+## Annular performance diagnostic prepared
+
+Root added AnnularMeshPerformance.java using existing ThreadMXBean measurement pattern:
+slices3/48/10000, two warmups, three measurements, retained geometry/normal/topology
+checksums. Input construction and checksum allocation excluded from generation measurement.
+Await final core cleanup before executing/binding measurements; no results claimed yet.
+
+## Annular native probe compiles; core review cleanup delegated
+
+Root authored tests/native/AnnularMarksProbe.java and reused DepthMarks runner route as
+tools/run_annular_marks_java.py. Actual PDE/preprocessor/core/probe compile passes in
+.work/annular-marks-compile-root1, no rendering yet. Probe enforces11states,7builds,
+geometry identity/hash reuse, exact restored pixels and cached save/core origin.
+Terra returned26 pure cases passing but compressed core/tests/runner omitted required
+readability and complete runtime bindings. Root sent three-file cleanup followup; inspect
+agent before reviewing final source. Public native rendering awaits reviewed stable core.
+
+## Annular artist example authored against frozen API
+
+Root added candidate AnnularMarks.pde, docs/annular-marks.md and native acceptance plan.
+Width/depth/facet keys rebuild; color and arrangement reuse mesh; cached S save; reset
+rebuilds only when geometry inputs differ. Native sequence wwddffccm0s expects11 frames
+and7 builds, plus exact cached save. Not yet compiled or rendered against public core.
+Terra still owns core/native pure tests/runner; next inspect its actual completion and
+prepare native probe via established P3D harness. No public support/packaging updates.
+
+## Annular contract frozen; Java implementation delegated
+
+Root accepted design/operations/annular-contract-review.md, froze reviewed catalog and
+26 shared fixtures, and regenerated reference. Full catalog checker passes. Annular
+validator rejects reversed triangle, negative allowance and stale hash; root caught
+and Terra fixed inherited profile fallback path. Terra /root/annular_study now owns
+AnnularMesh3D.java, tests/native/AnnularMeshNative.java, tools/run_annular_mesh_java.py
+per annular-implementation-brief.md. No native rendering or acceptance delegated.
+Next root native workflow/performance and review complete worker code/output; public
+core remains unimplemented/unvalidated in support records. Shipped count remains28.
+
+## Annular shared draft fixtures integrated; checker work running
+
+Root fixed draft contract null review path and noncandidate provenance entry; positive
+radius schema bounds explicit. design/operations/annular-contract-review.md is pending.
+Generated fixtures/operations/annular-solid-3d.json (26cases,review_pending), bound to
+current catalog and numeric source files. Both JSON schemas and six decoded success
+outputs validate. Terra /root/annular_study owns tools/check_annular_fixtures.py plus
+annular dispatch in tools/check_catalog.py; inspect agent and files before continuing.
+Catalog remains draft, so aggregate acceptance is intentionally not green yet. Next
+checker mutation review, final bindings and explicit root contract acceptance; no Java
+production started. Do not overwrite worker checker edits.
+
+## Annular draft expanded to26 cases
+
+Root added18 static/budget cases and2 exact first-face arithmetic witnesses to the six
+success cases; private generator passes. Uses existing scaled-normal oracle and interval
+functions with source hashes. design/operations/annular-fixture-plan.md records remaining
+Java ownership/index/atomic-write checks and no-skipped-dispatch requirement.
+Terra catalog draft received; root aligned face-kind enum with fixtures (outer-wall,
+inner-wall, top-annulus, bottom-annulus). Full root schema/semantic review remains next. No shared fixture acceptance or production implementation yet.
+
+## Annular contract draft and numeric fixtures in progress
+
+Terra /root/annular_study assigned only catalog/operations/annular-solid-3d.json draft,
+using frozen root field/topology brief; no production or acceptance authority. Root
+authored tools/diagnostics/annular/build_fixture_draft.py, reusing existing CP7 interval
+arithmetic. Six success cases generated in .work/annular-study/fixture-draft.json,
+including minimum3/four slices and four study geometries; edge orientation and Euler
+checks pass. These are private drafts, not catalog fixtures accepted for implementation.
+Next inspect worker contract, add invalid/numeric-error and indexed-access obligations,
+then validate catalog/fixtures and root review. Contract slice ceiling89478485 ensures
+24*S packed face components fit signed-int storage; face count8*S, vertices4*S.
+
+## Annular architecture admitted; prerequisite check passes
+
+Root wrote design/capabilities/annular-mesh-admission.md and added capability-dependency
+cluster mesh.annular-solid-3d without changing candidate ownership. Source remainder
+accounts for composition and intentionally excluded internal faces/winding artifacts.
+check_phase2_design.py --contract-cluster mesh.annular-solid-3d passes. An initial
+invalid remainder label was corrected to the established out_of_scope vocabulary.
+This passes architecture prerequisites only; catalog contract/fixtures still pending.
+Next reuse radial-profile normal arithmetic and indexed-access terminology while freezing
+annular counts, ordering, ownership, validation and numeric failure rules. No production
+code authorized yet; shipped Java remains28 operations/32 workflows.
+
+## Annular study reviewed; contract preparation next
+
+Terra pure washer corrected and checked; root authored AnnularMeshView and inspected
+all six P3D views from .work/annular-study/native-attempt1. Root selected minimal annular
+mesh for contract preparation; decision/evidence in evidence/parameter-experiments/annular-mesh/.
+No public admission or new shipped count. Next contract/ledger prerequisites and numeric
+semantics, then bounded implementation. Native warnings preserved; no repeat render needed.
+Discovery/family checkpoint pushed as9a60a122; Android draft untouched.
+
+## Annular private study in flight
+
+Root registered evidence/parameter-experiments/annular-mesh/experiment.json: six bounded
+P3D views for width, depth, facets, recolor and arrangement; no defaults/ranges admitted.
+Terra agent /root/annular_study owns tools/diagnostics/annular/AnnularMeshStudy.java
+and ignored scratch only; pure indexed washer and manifold/normal checks first.
+Root owns experiment, future renderer, semantic review and admission. No render started.
+
+## C3 family review finds retained annular-mesh gap
+
+Root wrote design/capabilities/java-family-boundaries-cp27.md after rereading typography,
+branching, triangle-ring and annulus notes plus exact aros mesh source. Existing profile
+mesh cannot supply annular walls/closing faces; retain this as concrete unfinished
+capability, not an exclusion to declare completion. Next private bounded annular-form
+comparison before contract admission. Broader grammar, shaping and Voronoi remain
+unassessed/unsupported, not corpus-absence claims. No new rendering or support claim.
+
+## CP27 pushed; discovery corrections underway
+
+Main and origin/main verified at f32d1aad85ef8256f7af2871529bc049e276e43c.
+Root discovery audit found README still advertised Java0.25 and build guide Java0.28.
+Updated both against CP27 manifest/review (28 operations,32 workflows), linked composition
+guide, and distinguished pinned accepted source from subsequent development builds.
+These documentation corrections are after the accepted archive; no new archive acceptance
+is implied. Next complete family dispositions and public-method documentation review.
+Android ProfileMarks draft remains untouched; ports/Sol paused.
+
+## CP27 final archive reconciled
+
+Pre-commit hash audit caught four documentation edits after root1 packaging. Root2
+rebuild includes those edits and CP27 handoff (413 members); every other archive
+member is byte-identical. Archive SHA256 17ac050e30c2dcd02e1a5bf32e16e0ec071f2a5fdfebdaa10af650f7f3185b7c.
+Catalog and nine package tests pass; all32 extracted examples compile and eight-state
+ProjectionMarks passes with identical pixels. Evidence/review now bind root2.
+Ready to commit/push; Android draft remains excluded. Remaining C3 discovery/family
+review and composition extension decisions keep the full Java goal active.
+
+## CP27 integration ready for main
+
+Root reconciled Java0.30 workflow chooser/completion/batch docs and wrote CP27 porting
+handoff. Composition guide and reviewed projection source/contracts/fixtures/evidence
+are included in this milestone; private study is explicitly diagnostic, not shipped API.
+Remote fetched; porting/backlog advanced independently, port integration still paused.
+Next commit/push accepted CP27; Android draft excluded. Previous turn completed
+extracted acceptance; this turn integrates coherent documentation and reviewed files.
+
+
+## Java0.30 distribution accepted locally — CP27
+
+Root accepted evidence/distribution/cp27-java-review.json. Archive
+.work/dist/cp27-java-source-root1/procedurals-java-source-dev.zip SHA256
+fef61d219826c00101497f1a982dd6ac6a196d7052bb67d22578610fb1cf11bd,412members.
+28 operations,32 workflows,34 source class pages. Catalog/support and9 package tests pass.
+All32 extracted PDEs compile; actual8-state ProjectionMarks passes separate core/adapter
+origins and every PNG equals reviewed native candidate. Root verified source/extracted
+hashes;116 old core and15 adapter classes unchanged.725Javadocwarnings recorded.
+Next reconcile user docs/latest handoff, review/stage project text and commit/push CP27
+after remote check; preserve Android draft. Main remainsJava0.29 8b51a3b3 until push.
+Previous turn accepted core/native; this turn completes extracted package acceptance.
+
+
+## Projection core/native accepted; packaging next
+
+Root accepted evidence/workflows/projection-marks/root-review.json after inspecting all5
+revised views and verifying final native source/artifact/PNG hashes.8states pass;
+6 retained results and color/order/strength restores/cache save verified.
+Conformance runner now binds pinned JDK executables/modules and uses timeouts;15 shared
+object cases plus successful typed vectors and expanded focused tests pass. Evidence
+copied to conformance. Performance tiny/example/stress stable:1693points*4discs about1ms,
+100000*64 about18ms, primitive output allocation. Not renderer/latency guarantees.
+Gallery native group added. Next root support attestation and next source bundle,
+extracted ProjectionMarks native validation and reviewed checkpoint. Prior turn rewrote
+core/strengthened visual example; this turn completes native/performance acceptance.
+Shipped baseline remainsJava0.29,27 operations/31 workflows until packaging.
+
+
+## Root projection core rewrite passes; visual order edit being strengthened
+
+Root rewrote core into readable validated conversion/arithmetic/access methods and added
+focused forbidden-carrier, typed malformed/nonfinite, exported/input ownership, safe index
+precedence and atomic target checks. Shared fixture runner passes; actual8-state
+ProjectionMarks .work/projection-marks-native-root1 passes. Root inspected all5 views.
+Strength and color edits clear, but reversed order is too visually subtle because line
+influences barely overlap. Root changed second line disc to585,270,r72 for a stronger
+order demonstration; rerender required before acceptance. Core/semantics unchanged.
+No acceptance evidence published yet; performance and final conformance runtime bindings
+still need review. Previous turn prepared harness; this turn closes code/test gaps and
+uses actual visual review to improve artist clarity.
+
+
+## Root takes over projection core completion; workflow probe ready
+
+Root authored ProjectionMarksProbe and registered candidate/extracted runner profiles.
+Probe snapshots each input/disc/result/coordinate identity and values,6 setup calls,
+8states/restores/cache-save, core/adapter origins. Runner Python compilation passes;
+actual sketch/probe compile/native run still pending stable core.
+Terra repeatedly returned incomplete formatting/focused tests; root explicitly stopped
+its edits and takes ownership. Current core186d3d3 has15 shared fixture successes but
+only10 focused assertions. Root read native probe: missing several promised ownership,
+carrier and index-precedence cases; do not accept worker wording as coverage.
+Next root rewrite readable core methods without changing math, complete meaningful
+focused checks, rerun shared vectors and actual native workflow. Previous turn authored
+example/reviewed prototype; this turn adds native harness and resolves ownership of
+remaining implementation quality work.
+
+
+## ProjectionMarks candidate authored; core implementation completion requested
+
+Root authored ProjectionMarks PDE/docs using frozen DiscProjection2D and Java2DLayers.
+1693 supplied points,4 discs,6 retained strength/order outputs;8-state mmmoccos controls
+as preregistered. No private deformation algorithm copied into workflow. Compile/native
+validation awaits stable core. Root read preliminary core: ordered math present, but
+compressed one-line implementation and missing public docs require completion. Requested
+readable named arithmetic/loops, explicit imports/docs and typed validation order.
+Terra initial runner omitted15 shared fixtures; worker accurately flagged preliminary
+status. Root followup requires completing both entrypoint fixture execution and focused
+carrier/ownership/access cases before final report. No core acceptance recorded.
+Previous turn froze contract; this turn adds artist workflow and reviews preliminary code.
+
+
+## Disc projection contract frozen with15 shared scenarios
+
+Root integrated catalog/operations/sequential-disc-projection-2d.json and shared fixtures,
+independently evaluated successful vectors, separated native-only checks, added norm
+overflow and explicit strength-zero shortcut. Catalog/generated reference check passes.
+Draft claimed N*M could overflow signed64; root resolved by exact count multiplication
+under packed-array bounds (well below signed64 maximum). No invented new error.
+Next bounded Java core/test implementation against frozen contract, then root review
+and ProjectionMarks native plan. Prior turn preregistered acceptance; this turn closes
+portable contract/fixture gate. No increase from27 shipped operations yet.
+
+
+## Projection native acceptance plan preregistered while contract drafts
+
+Root added design/capabilities/projection-marks-native-plan.md: contour/open-line consumers,
+retained6 strength/order outputs,8 actual display states with color transfer and cache save.
+Root recorded exact3-4-5, displacement/distance overflow-as-outside and output-overflow
+counterexamples; subnormal rounding and segment-exclusion limits explicit.
+Draft files not yet present at inspection; Terra assignment remains pending. No production
+implementation authorized before root catalog/fixture freeze. Previous turn admitted
+boundary; this turn prepares distinguishing native and numerical acceptance cases.
+
+
+## Disc projection dependency admitted; contract draft assigned
+
+Root wrote design/capabilities/disc-projection-admission.md with selected batch API,
+ordered finite arithmetic, overflow-as-outside distance handling versus failed output
+overflow, positiveX center convention, strength domain, work preflight and atomic output.
+Recorded capability-dependency cluster geometry.sequential-disc-projection-2d; focused
+phase2 prerequisite check passes. Whole flattenCircle remains distinct, remainder tracked.
+Terra layer_marks_probe drafting catalog/fixtures privately in .work/disc-projection-contract-draft;
+no production code until root freeze. Review needs all independent golden values and
+any numeric ambiguity. Existing27 shipped operations unchanged. Previous turn reviewed
+visual study; this turn advances formal admission and portable numeric specification.
+
+
+## Disc projection private study reviewed: retain for contract design
+
+Root inspected all4 corrected study images and source; verified source/runtime/output
+hashes, preserved independent diagnostic Java under tools/diagnostics/spatial-composition.
+Study review in evidence/parameter-experiments/disc-projection/root-review.json. Both
+contour and line consumers show meaningful strength changes; reversed order shows a
+distinct overlap shape. Retain small sequential point projection, not whole flattenCircle.
+No default/encouraged range, collision solver, polygon containment or Voronoi claim.
+Next root formal admission/ledger and portable numerical/error/ownership/work contract,
+then distinguishing fixtures before production code. Existing27 operations unchanged.
+Gallery study group added. Previous turn found experimental confound; this turn closes
+corrected empirical admission evidence and enables contract work.
+
+
+## Projection study lifecycle repair; analytic counterexamples recorded
+
+Terra confirmed first private noLoop/redraw run stalled after one frame and terminated
+its concrete wrapper/lock/Java processes. Lone image and interruption preserved in
+.work/disc-projection-study/attempt1-incomplete. Corrected local-coordinate/y230 order
+comparison now uses a simple four-frame loop; agent preparing distinct attempt2.
+Root recorded exact order and reentry counterexamples in the investigation: half-strength
+A/B yields2 versus-1.25; full-strength A/B can reenter A. These preclude collision-solver
+or all-discs-exclusion claims and will distinguish future semantics if admitted.
+Previous turn identified an experimental confound; this turn resolves lifecycle status
+and adds mathematical evidence for the boundary. Await actual study before admission.
+
+
+## Private projection study source reviewed; order comparison corrected before acceptance
+
+Root inspected .work/disc-projection-study/DiscProjectionStudy.java and runner while
+Terra remains active. Found right-hand order panel shifted input points by360 but left
+discs unshifted; it would compare different geometry rather than only reversed order.
+Sent correction: project identical local points, apply display translation afterward;
+use a slightly off-center common line to make deflection visible. No result accepted.
+Normal contour/open-line study is otherwise consistent with private math. Next verify
+corrected source and actual source-bound renders; no additional public API decisions yet.
+Previous turn added composition guide; this turn found a concrete experimental confound
+that would invalidate admission evidence.
+
+
+## Composition guide added while private geometry study runs
+
+Root authored docs/composing-java-effects.md and linked the workflow chooser. Explains
+CANVAS windows versus LOCAL origins, source-over versus crossfade, arbitrary raster masks,
+image attributes, and ordering of crop/filter/mask/deformation. It explicitly distinguishes
+visibility clipping from boundary-aware geometry and local origin from target resize.
+Guide uses existing accepted APIs; no new operation/workflow count or render required.
+Terra layer_marks_probe was confirmed running on the registered disc projection private
+study; no result available at inspection. Next root reads prototype/results and inspects
+images before admission. Prior turn registered the study; this turn closes a concrete
+artist-facing composition documentation gap during independent investigation.
+
+
+## Sequential disc projection: private admission study registered
+
+Root read decisive colidion loop and parameter note, reviewed Terra evidence draft.
+Distinct gap: sequential outward boundary movement versus existing original-point inward
+radial sum. Root rejected treating source distance-by-original-angle envelope as polygon
+containment; displaced vertices need not retain their angle. Survey flatten variant edits
+x only and cannot support a recommended symmetric-strength range.
+Root recorded design/capabilities/disc-projection-investigation.md and parameter experiment
+brief. Terra assigned private native contour/open-line consumers at0/.45/1 and reversed
+influence order under shared lock, output .work/disc-projection-study only. No production
+API/operation admitted. Root must inspect actual results then keep/revise/reject; do not
+proceed directly from worker summary. Prior turn progressed discovery/source reading;
+this turn resolves boundary/evidence errors and registers a distinguishing admission study.
+
+
+## CP26 pushed; discovery and remaining geometry review active
+
+Java0.29 pushed main at8b51a3b382be235d8bc1a7ada171bc877e6d6bf0 (remote0/0),
+27 operations/31 workflows. Android draft remains the only unrelated change.
+Root updated completion/batch baseline and added ImageFieldMarks/BlurMarks to the artist
+workflow chooser. C3 remains required: explicit family dispositions and discovery review.
+Terra layer_marks_probe assigned bounded colidion source/note plus at most one neighbor
+review to .work/colidion-review/findings.md; no public signatures/code admission yet.
+Root independently read source: contour samples are sequentially pushed toward neighboring
+disc boundaries when inside, unlike existing inward radial pull. Need center-degeneracy,
+order/strength and compositional value decisions before admitting any reusable operation.
+Previous goal turn shipped CP26; this turn progresses documentation consistency and
+source-based next capability investigation. No new rendering or port work scheduled.
+
+
+## CP26 integration checkpoint ready for main
+
+Accepted Java0.29 archive and extracted workflow evidence recorded; docs updated to
+accepted package status, handoff in docs/cp26-porting-handoff.md. Root fetched origin:
+main0/0 versus HEAD; remote porting/backlog advanced but port integration remains paused.
+Commit includes project-owned source, contracts, fixtures, docs and evidence only.
+Unrelated Android ProfileMarks draft remains excluded. Previous goal turn completed
+package acceptance; this turn integrates the reviewed milestone for commit/push.
+
+
+## Java0.29 distribution accepted locally — CP26 commit/push next
+
+Root accepted evidence/distribution/cp26-java-review.json. Archive
+.work/dist/cp26-java-source-root1/procedurals-java-source-dev.zip SHA256
+8a4175e2ffc36dc99467e42e7a843b4daa35cc0f4f93384ba927a9e58851fec9,402members.
+27 operations,31 workflows,33 source class pages. Catalog support attestation added for
+Java blur core/native only; technique remains unvalidated. Catalog and9 package tests pass.
+All31 extracted PDEs compile. Both new workflows pass7-state actual native checks in
+separate-core/adapter extracted bundles, every PNG equals reviewed candidate. Root
+verified input/extracted hashes and preserved113 old core+11 old adapter class bytes.
+Javadoc711warnings recorded, no documentation completeness claim. Initial root audit
+script corrected expected build status and consumer-relative hash paths; all actual
+assertions now pass, no checks weakened. Next review/stage all project-owned work,
+preserve Android draft, fetch remote and commit/push accepted CP26 checkpoint.
+Main stillJava0.28 eb9278b3 until that push. Prior turn progressed manifest/final native;
+this turn completed support integration and extracted distribution acceptance.
+
+
+## Java0.29 packaging inventory prepared, not accepted
+
+Candidate source manifest now includes27 operations/27 core source files,6 adapter
+source files and49 example tabs/31 PDEs (D1 ImageFieldMarks and D2 BlurMarks added).
+Updated exact inventory test expectations; tests/build intentionally await the required
+new blur attestation and final core hashes. No checker relaxed; no archive/release claim.
+Root found objectRaster/objectKernel indexed generic List reads in blur core could be
+quadratic for LinkedList. Terra layer_marks_probe assigned sequential traversal plus
+LinkedList parity and precise provenance Javadocs; no further native run assigned.
+Root reviewed final sequential loops and LinkedList parity;20 fixtures pass on final
+e2254766 core with provenance docs. Manifest/conformance refreshed. Native final-source
+run .work/blur-marks-native-root-final completed passed; root verified all bindings
+and PNG identity to reviewed candidate, refreshed native/root review evidence. Next add
+evidence, root support attestation, generated reference and extracted package acceptance.
+Prior goal turn progressed native acceptance; this turn progresses integration inventory
+and catches an object-input complexity gap. Main remainsJava0.28 eb9278b3.
+
+
+## D2 native accepted; combined D1+D2 packaging next
+
+Root accepted evidence/workflows/blur-marks/root-review.json after reading corrected
+per-element image identity probe and verifying all53 inputs/136 artifacts and PNG hashes.
+Corrected agent2 outputs are byte-identical to the five previously inspected distinct views
+and restores/save.7-state dirty-loop sequence mmmbbms passes; filterCalls stays3.
+Supporting core/adapter/performance records all bind current e8cfa314 source. Earlier
+worker-summary3f4158 is unsupported by current files; do not infer an unproven source edit.
+Gallery now labels BlurMarks native accepted, packaging pending. No distribution release
+or portable-target acceptance follows. Next source Javadoc provenance cleanup with bound
+checks, attest Java core/native scope, update source manifest and package D1+D2 together,
+compile all extracted examples and run representative extracted native workflow.
+Previous turn advanced performance/visual review; this turn closes corrected native acceptance.
+Latest shipped baseline remainsJava0.28 eb9278b3,26 operations/29 workflows.
+
+
+## D2 artist visuals inspected; retention probe correction pending
+
+Root inspected five native BlurMarks images from .work/blur-marks-native-agent1: sharp,
+soft, horizontal, vertical and blended. Directional spread and gradual sharp/filter mix
+are visible, background remains crisp. Added candidate group to centralized gallery.
+Root caught missing per-element layer identity snapshots in probe (array identity alone
+is insufficient); Terra layer_marks_probe correcting and rerunning. Do not accept first
+probe summary as proving individual identities. Native source/core hashes match root
+adapter/performance evidence at e8cfa314; earlier worker summary3f4158 needs explanation.
+Desktop performance .work/separable-blur-performance1/result.json copied to conformance:
+16x16,720x480/radius12 and1440x960/radius24,3 measurements each after warmup; stable
+checksums. Typical example core ~35ms and12.44MB allocated; stress ~161ms/49.77MB.
+These exclude adapter/render/checksum costs and are observations, not latency guarantees.
+Next corrected probe review, source-doc provenance cleanup with evidence binding, native
+acceptance and combined D1+D2 package. Previous turn progressed code/adapter tests; this
+turn progressed performance and visual review and caught a validation gap.
+
+
+## D2 implemented candidate; native artist workflow next
+
+Root reviewed complete SeparableBlur2D core: normalization, ordered premultiplied passes,
+long coordinate/work arithmetic, final quantization, errors and detached outputs align.
+Reviewed fixture runner/native probe and verified bound hashes.20 object fixtures pass;
+13 successful fixtures also run through typed form; extra native checks cover carriers,
+ownership and index/order. Error fixtures are not all duplicated through typed form.
+Root authored ProcessingImageFiltersNative, compiled Java8 and passed actual PImage
+transport parity, RGB opacity, ARGB identity/ownership, format/density/count rejection
+and delegated work errors. Bound reports copied into evidence/conformance; no support
+attestation or distribution acceptance yet. Root authored BlurMarks PDE and docs.
+Terra layer_marks_probe now owns actual7-state workflow probe/runner registration/native
+run. retained_rect_core returned terminal unable to complete that assignment; no wait
+on it remains. Root must inspect native images and probe, add exact provenance paths
+to core docs, and close meaningful performance evidence before combined D1+D2 packaging.
+Previous goal turn progressed contract/fixtures; this turn progressed implementation review,
+real adapter validation and artist example. Latest shippedJava0.28 remains unchanged.
+
+
+## D2 contract frozen; core implementation delegated
+
+Root integrated catalog/operations/separable-blur-2d.json and20 shared fixture scenarios
+(13 independently checked successful vectors). Source-note hashes verified; phase2 gate
+and catalog/schema/reference check pass. Numeric review fixed asymmetric-alpha prose,
+added asymmetricY/zero-tap-budget/invalid-before-work cases. Native carrier/ownership/index
+checks remain required. Generated catalog reference refreshed through its tool.
+Terra layer_marks_probe is assigned core implementation plus focused existing-harness tests;
+no acceptance or packaging authority delegated. Root froze ProcessingImageFilters transport
+boundary in design/capabilities/processing-image-filters-adapter.md and authored the
+ProcessingImageFilters.java candidate (not yet compiled/native validated). Next review
+core/tests, validate transport and BlurMarks actual native workflow, then combine D1+D2 packaging.
+Latest shipped baseline remainsJava0.28 eb9278b3,26 accepted operations/29 workflows.
+The new27th contract is not yet a shipped operation. Ports/Sol paused; Android draft preserved.
+Previous goal turn clarified composition but changed no authoritative state (no progress);
+this turn advanced reviewed contract/fixtures and initiated bounded implementation.
+
+
+## D2 separable blur dependency admitted; catalog draft next
+
+Root recorded separable-blur-admission.md and capability-dependency cluster
+raster.separable-blur-2d. Phase2 contract-cluster checker passes after correcting remainder
+vocabulary to deferred. Sources are motivating composites, not reassigned as equivalents.
+Numeric drafting brief specifies normalized odd kernels, maxSamples preflight, horizontal
+then vertical premultiplied binary64 with final-only quantization and exact identity branch.
+Root preregistered BlurMarks native plan: retained sharp/soft/horizontal/vertical layers,
+mask-controlled crossfade, real display edits and cache save; no per-edit refiltering.
+Next: translate brief to authoritative catalog and independent fixtures, root freeze review,
+then Java implementation/native workflow. No filter code or accepted support yet.
+D1 image field native accepted remains queued for combined D1+D2 packaging. Ports/Sol
+paused; latest mainJava0.28 eb9278b3; Android draft untouched.
+
+## D1 image field native accepted; D2 alpha-safe filter next
+
+Root review evidence/workflows/image-field-marks/root-review.json. Four native views
+inspected,7-state actual workflow passed with1350 retained positions and sampled attributes,
+all source/artifact/image bindings verified. Standalone actual PImage scalar/ownership/
+remapper-parity probe reviewed. Gallery163images/36groups. D1 packaging remains pending
+planned D2 filter slice; latest pushed baselineJava0.28 eb9278b3.
+
+D2 private33x33 native BLUR study proves hiddenRGB contaminates visible edges; reject thin
+PImage.filter wrapper for alpha-safe blur. Next freeze independently specified normalized
+premultiplied image filtering contract, implement and native-review a retained-source/mask
+workflow, then integrate D1+D2 together. No new filter implementation admitted yet.
+Prior goal turn progressed D1 implementation/source review; this turn completed D1 native
+workflow/adapter acceptance and meaningful D2 defect evidence. Ports/Sol paused.
+
+## D1 image field implemented candidate; D2 source reviewed
+
+Root froze processing-image-field-adapter.md and directly implemented ProcessingImageField:
+owned snapshot, batch RasterRemap2D sampling, explicit ARGB/alpha/maxRGB attributes.
+Focused actual-PImage probe .work/image-field-native1 passed; root reviewed distinguishing
+scalar/parity/ownership/error/grid cases and verified source hashes; evidence/conformance/
+processing-image-field-native.json. Root authored ImageFieldMarks + native plan/docs;
+layer_marks_probe now owns actual7-state workflow/runner/consumer validation. No native
+artist workflow/acceptance yet. Current accepted source bundle remainsJava0.28.
+Root read crb source, correcting note interpretation: endpoint trials shrink until color
+difference<=30, not generic edge following. D2 cityPink3d/rgblur source review recorded in
+evidence/parameter-experiments/spatial-composition/filter-source-review.json; normalization
+and alpha policy must be designed explicitly rather than copied opaque/gain behavior.
+D2 native BLUR experiment found165 visible hidden-RGB differences on33x33 alpha image;
+root rejected thin native wrapper as transparency-safe. Evidence in native-blur-alpha-study.json.
+Next: review ImageFieldMarks workflow; freeze normalized premultiplied filter before code.
+Batch packaging after both slices accepted. Ports/Sol paused, Android draft untouched.
+
+## CP25 remaining-scope review completed
+
+Root recorded design/capabilities/java-completion-cp25-review.md against all5 completion
+requirements. Actual crb note establishes brightness-driven size/stroke gates; active
+cityPink3d/rgblur filters establish postprocessing gap. Next D1 image attributes and D2
+postprocessing source/contract decisions before implementation. No guessed parameter defaults.
+Bounded typography/Voronoi review does not establish outlines/nearest-site cells; colidion
+disc deformation remains a separate assessed gap, not silently covered by Delaunay.
+Full Java completion remains unproven. Prior turn shipped CP25; this turn changed the
+authoritative remaining-work plan using direct evidence. Ports/Sol paused.
+
+## Java0.28 accepted — CP25
+
+Root distribution review evidence/distribution/cp25-java-review.json. Archive
+.work/dist/cp25-java-source-root1/procedurals-java-source-dev.zip SHA256
+2e44847da80a46969b62da4b157be1a56ebbea5dbc4b5eeb7ab23eae2c918ed8,387members.26 operations/29 workflows/30 class reference pages.
+All29 extracted PDEs compile;8-state native PlacementImageMarks passes, every PNG equals
+root-reviewed candidate. All prior core/adapter class bytes unchanged. Javadoc warnings
+remain explicitly recorded. Published main at eb9278b3deeb6272e5147a252e39ee18d7cd2371
+after remote0/0 check; only unrelated Android draft remained modified after push.
+
+Next bounded root architecture work: reconcile remaining Java completion requirements
+against current capabilities; select evidenced image-derived controls or postprocessing
+gaps, and close rare-family dispositions with honest in/out/unknown reasons. Do not infer
+feature-completeness from29 workflows. Ports/Sol paused; Android draft untouched.
+Previous turn progressed native acceptance; this turn completed distribution acceptance.
+
+## Image placement native accepted; packaging next
+
+Root review: evidence/workflows/placement-image-marks/root-review.json. Current adapter
+Java2DImagePlacement native accepted with explicit crop/contain/cover/stretch/alignment;
+PlacementImageMarks8-state workflow passed .work/placement-image-marks-native-root2.
+Root inspected6 actual views and verified every source/artifact/image hash. Root rewrote
+the insufficient worker standalone probe; root-review2 passed both axes/clip/alpha/errors.
+Preserved failed attempts and reasons in review. Gallery159images/35groups.
+Next: integrate Java0.28 source manifest/example/docs and extracted native distribution,
+then reviewed commit/push. Latest pushed baseline remains2885324e (Java0.27).
+No new portable operation:26 operations remain. Ports/Sol paused; Android draft untouched.
+
+## Java0.27 accepted — CP24
+
+Root distribution review: evidence/distribution/cp24-java-review.json. Archive
+.work/dist/cp24-java-source-root1/procedurals-java-source-dev.zip SHA256
+84b7f2e85d324eed2e20735dcca2105dfb784a60948c9cb1c2ce0a8f360cd33d,380members.
+26 operations,28 packaged workflows,29 source-derived core/adapter reference pages.
+All28 extracted PDEs compile; native MaskMarks passes with separate core/adapter JARs
+and all PNGs identical to root-reviewed candidate. All113 prior core classes unchanged;
+only Java2DRegions prior adapter class changed for tested RGB opacity normalization.
+Javadoc664warnings, no errors; no documentation-completeness claim.
+
+Published CP24 on main at2885324e8af65b124be64293085139cb990d12f6 after remote0/0 check.
+Root image-placement-brief.md now records explicit crop/fit/alignment and alpha-edge requirements.
+Native study complete: all512 pixels of hidden blue/green/black variants equal; visible
+RGB stays red and isolated crop stays red. Root chose native adapter and froze
+design/capabilities/java2d-image-placement-adapter.md. Terra retained_rect_core implements
+new adapter/probe only. Root authored candidate PlacementImageMarks PDE with fit/crop/
+alignment/mask edits and cached save; compilation/native workflow proof pending.
+Root reviewed first implementation/probe: fixed provenance year; first green probe missed
+required align/cover/alpha/offcanvas/error scenarios and is explicitly insufficient.
+Root found the second worker probe still omitted required cases and took over. Rewritten
+Java2DImagePlacementNative.java now covers both axes/cover versus stretch/alpha/full outside
+buffers/errors. Root native .work/image-placement-root-review2/result.json passes. Prior
+root1 failed because an intended exact cover sample lay in a native interpolated boundary;
+root2 uses interior samples, preserving the failure. Adapter hash f858ecac45bce24fb17472ef1083326febaec018b2f52b44000e747235153123 frozen.
+layer_marks_probe prepared workflow tooling and first native root1 failed on its wrong
+fit-state expectation after fff (sketch correctly stays CONTAIN). Root identified this and
+a vacuous null-hash edit comparison; worker authorized probe-only fixes and fresh run.
+Root preregistered placement-image-marks-native-plan.md and authored user guide. Private
+scaling study observation is recorded in evidence/parameter-experiments/spatial-composition/
+image-placement-study.json. No public image-placement acceptance yet. Ports/Sol paused; preserve unrelated Android ProfileMarks edit.
+Previous goal turn was progress: native acceptance and candidate integration. Current turn
+completed archive/extracted-consumer evidence and distribution acceptance.
+
+## CP24 native accepted; Java0.27 source-bundle candidate
+
+Root accepted Java2DLayers/MaskMarks native scope in evidence/workflows/mask-marks/root-review.json.
+Four actual views inspected; six-state mmvvms workflow retains inputs, restores frames and
+saves cached output after300ms quiet. Source/artifact/image bindings all verified. Gallery
+now153images/34groups, with MaskMarks explicitly packaging pending.
+
+Root reviewed RGB normalization fix in Java2DRegions. Current source-bound adapter probes
+passed under shared lease (.work/java2d-adapters-root2/report.json); initial missing-display
+invocation failed before callback and corrected Xvfb invocation passed. LayerMarks root5
+PNGs all byte-identical to CP23. Root refreshed region regression evidence, both raster
+attestations and their catalog reviews; catalog/reference validation passed.
+
+Candidate source manifest0.27:26 operations,28 workflows,3 adapter sources,46 example tabs.
+All9 focused source-bundle tests pass. Next: update artist/build docs for candidate, build CP24 archive,
+extracted MaskMarks native consumer and all-PDE compile, root distribution review, fetch/
+integrate safely then commit/push. No CP24 distribution acceptance or push yet. Preserve
+unrelated Android ProfileMarks edit. Port integration/Sol remain paused.
+
+Prior turn classified progress: composition architecture recorded. This turn completed
+native acceptance and RGB regression review, gallery integration, and candidate manifest.
+
+## Java0.26 accepted — composition milestone CP23
+
+Distribution review: evidence/distribution/cp23-java-review.json. Final archive
+.work/dist/cp23-java-source-root2/procedurals-java-source-dev.zip, SHA256
+1ae2aef610ed8be6507f552c023367449844441a164e46e093c38ed4f6a6ff12,375members.
+26 operations/27 packaged workflows. New: MaskedComposite2D source-over, RasterCrossfade2D,
+Java2DRegions rectangular content callbacks and LayerMarks global/local/image/feather/crossfade
+workflow. Source-derived reference includes28 core/adapter class pages (646 warnings, no errors).
+All27 extracted PDEs compile. Native extracted LayerMarks passed; final documentation rebuild
+preserves49 library/example members. Prior107 core classes and1 adapter class unchanged.
+
+Published to main at a9aed4b98784326fe5cf1911b50b15a4828037e9. Next: continue Java composition capability gaps (nonrectangular
+regions, explicit image-fit/transparent resampling, reusable image-derived fields/marks), chosen
+by artist capability rather than counts. Ports/Sol review remain paused; ports may pin this
+checkpoint and port the two new pure raster contracts independently. Java2DRegions is explicitly
+host-specific: do not claim portable callbacks or root support attestations for other targets.
+Below is historical integration work, superseded by this accepted checkpoint where applicable.
+
+Root next-batch priority is recorded in design/capabilities/composition-next-batch.md:
+nonrectangular scalar visibility and explicit image placement precede speculative image-derived
+mark mappings. Bounded note reading did not establish those mappings' useful defaults; no
+full-corpus absence claim. Port handoff for the two accepted pure raster operations is included.
+
+Root private MaskContentStudy native run passed at .work/mask-content-study1 against extracted
+Java0.26: callback-drawn ellipse/triangle alpha -> scalar values -> MaskedComposite2D.
+Ellipse has56 fractional native coverage pixels. Explicit alpha masks ignore RGB (black
+is not "hidden" unless alpha is zero); luminance masks require a separate interpretation.
+This validates a producer/consumer boundary, not a public mask API or mathematical clipping.
+
+Root froze design/capabilities/java2d-layers-adapter.md: retained transparent callback render,
+explicit alphaMask transport and PImage wrappers over accepted compositing/crossfade. Terra
+retained_rect_core owns adapter + focused native tests; no new portable operation count.
+Root authored candidate MaskMarks.pde using same retained shape mask across stripe content,
+generated-image content and crossfade, with mask view/cache save. Compilation/render/acceptance
+pending adapter completion. Existing Java0.26 sources/support remain unchanged.
+
+Root authored mask-marks-native-plan.md/docs/mask-marks.md; Terra layer_marks_probe owns
+native workflow/consumer integration. Root found RGB PImage format normalization gap before
+acceptance: RGB high byte is not native opacity, so transport must force255 without mutating
+inputs; ARGB preserves alpha; ALPHA-only/unknown rejected. Spec amended; retained_rect_core
+implements normalization and completes missing standalone cases. Workflow final render held
+until resulting source hash freezes. No public acceptance yet for Java2DLayers/MaskMarks.
+
+RGB amendment now implemented in Java2DLayers, root verified hash23e363a4d5e52ce1ad944f5915ddfee850e3d1e16edb6d9b3c1a19ace53b2f98;
+worker expanded native probe passes. Root applied same normalization fix to Java2DRegions
+destination and added distinguishing empty-region RGB test. This changes an accepted adapter
+source: old support/manifests must be refreshed only after native regression acceptance.
+Terra layer_marks_probe authorized sequential MaskMarks then LayerMarks native runs against
+frozen current sources. Root owns evidence/attestation refresh and final review.
+
+## Active: spatial composability request and Java API discovery
+
+CP23 archive root1 built and fresh extracted consumer passed all27 PDE compiles plus native
+LayerMarks with separate adapter/core JAR origins. Root corrected stale build-guide counts
+and built final-doc archive .work/dist/cp23-java-source-root2 (SHA256
+1ae2aef610ed8be6507f552c023367449844441a164e46e093c38ed4f6a6ff12,375members).
+Fresh root2 extracted compile/reference verification is live tool session92795; no native
+rerun required if root verifies all JAR/example bytes equal root1. Final distribution review,
+commit/push pending. git fetch succeeded and HEAD...origin/main is0/0 at this checkpoint.
+
+Root created accepted scoped Java support attestations for masked-source-over and crossfade;
+catalog validator and regenerated reference pass. Candidate source manifest0.26 now includes
+26 operations,26 core source classes,2 adapter sources,27 PDE workflows/45 example tabs.
+Nine source-bundle tests pass. This is not distributed0.26 acceptance yet. LayerMarks probe
+worker is adding explicit separate adapter-JAR origin for extracted consumer, preserving
+combined candidate-JAR path, then rerunning source candidate; root build/consumer next.
+
+Root accepted LayerMarks native workflow and Java2DRegions scoped adapter in
+evidence/workflows/layer-marks/root-review.json. Root3 run preserves actual PDE dirty loop
+(removed probe noLoop/redraw overrides), passes mmmms/cached save/source/outside checks;
+all final images byte-identical to root-inspected earlier images. Root independently ran
+expanded adapter probe with exact four-region solid-color coverage; bound record at
+evidence/conformance/java2d-regions-native.json. Gallery149 images/33groups. Next integration:
+shared support attestations, source-bundle26 operations/27 workflows + adapter/reference,
+extracted consumer, reviewed commit and safe main push. Current shipped baseline still0.25.
+
+Root caught authoritative adapter mismatch: worker acknowledged failed earlier patch. Actual
+corrected source hash c64580c062108838f51bc53de6a1c964ffa09fd96c49a03f28f8cbb2eca724b5 now
+contains explicit state initialization and docs, verified by root; native worker rerun passed.
+LayerMarks worker authorized fresh final native run against that source. Root extended Javadoc
+builder/consumer to cover adapter sources as well as core, with Processing classpath. Focused
+Javadoc tests pass; actual all-source generation at .work/java-reference-all-candidate1 passes.
+No source-release acceptance was inferred from worker claims or documentation generation.
+
+Java2DRegions worker completed expanded native cases and clean process exit; source frozen.
+Four-region720x480 single measurement after2 warmups was~6.34ms (worker report; root final
+source/probe review pending). Root wrote layer-marks-native-plan.md and candidate user guide
+docs/layer-marks.md. Terra layer_marks_probe owns established runner registration plus queued
+M/S native lifecycle/retention/outside-pixel checks, authorized to render now against frozen
+adapter/example. Root owns final visual/evidence/distribution acceptance.
+
+Root identified "busy" lease as own stalled Java2DRegionsNative process (wrapper4027501,
+Java4027575), jstack showed AWT shutdown wait, then TERM'd wrapper for scoped cleanup.
+Terra now fixes probe termination, completes missing required scenarios, formats adapter and
+adds explicit drawing-state initialization/Javadocs. No external renderer was interrupted.
+LayerMarks official PDE preprocessing and Java8-target compilation pass at
+.work/layer-marks-compile2/commands.json against candidate adapter classes; initial compile1
+failed from accidentally including preprocessor sources JAR, corrected classpath excludes it.
+Native LayerMarks render still pending final adapter candidate.
+
+Root accepted crossfade Java core in evidence/conformance/raster-crossfade-java-root-review.json
+after full source/runner/fixture review and current hash verification. Native workflow and
+distribution still pending. Root authored candidate LayerMarks.pde with four composition modes
+(global, local image snippets/marks, feather, true two-input crossfade), cached draw/save and
+M switch. It uses frozen Java2DRegions API, whose worker implementation remains in flight;
+candidate example has not compiled/rendered yet and is not added to package manifest.
+
+Root froze Processing adapter contract design/capabilities/java2d-regions-adapter.md and
+delegated Java2DRegions implementation/native tests to Terra retained_rect_core. Independent
+rectangle Region values + retained-leaf conversion, PImage inputs/output, explicit CANVAS/
+LOCAL callback space, inward feather, all-input preflight and whole-result failure isolation.
+Public adapter acceptance remains pending. Crossfade core candidate returned passing11
+fixtures/focused checks and three sizes at .work/conformance/raster-crossfade-java-candidate.json;
+root complete review remains next. No package/support count change.
+
+Root admitted raster.crossfade-2d, passed contract prerequisite, froze catalog and11 analytic
+fixtures, and regenerated/validated reference. Terra retained_rect_core implements bounded
+RasterCrossfade2D core/tests next. This is separate from source-over: half-weight two half-alpha
+layers retains half alpha, instead of accumulating source-over coverage. Endpoint hidden RGB,
+transparent input color, underflow and quantized zero are explicit. No runtime/support claim.
+
+Root reviewed and hash-verified four artist-scale partition images; gallery now145 images/
+32groups. Review: evidence/parameter-experiments/spatial-composition/partition-visual-review.json.
+Global continuity, local marks and image crops work visually. Feathering produces background
+gutters, not inter-effect blending; explicit two-input crossfade remains required. Adopt
+owned-output whole-call failure for public callback adapter (input unchanged, no partial
+returned result), matching private helper; update supersedes incremental painting proposal.
+
+Masked compositor Java core accepted in evidence/conformance/masked-source-over-java-root-review.json,
+with bound conformance report and tiny/720x480/1024-square checks. Public adapter/native workflow
+and distribution remain pending, so shipped count is unchanged. Root hardened private callback
+cleanup to attempt all releases and preserve primary artist exceptions; native probe passes.
+
+Root reviewed compositor kernel/carriers/ownership and fixed indexed generic List traversal
+to linear iteration for linked lists. Fresh core runner passes at
+.work/conformance/masked-source-over-java-root1.json (11 shared cases plus focused checks).
+Private native PartitionContentProbe now also passes actual PImage snippet transfer and exact
+quarter-alpha feather-edge output. Terra is producing artist-scale global/local/image/feather
+visuals with the private adapter; root visual review and public adapter acceptance remain.
+
+Root implemented private PartitionContentStudy.java and PartitionContentProbe.java under
+tools/diagnostics/spatial-composition/. Native JAVA2D probe passed through shared lease:
+existing retained partitions, exact hard rectangle mask pixels, local callback placement,
+once-per-region invocation, unchanged background and callback-error recovery. Compiled with
+Java8 release target into .work/partition-content-compile1 using candidate compositor source
+and accepted CP22 JAR. This is private, allocation-heavy exploration, not packaged adapter
+acceptance. Feather implementation still needs numeric/native checks; image-content transfer
+and artist-scale visual review remain. No release/support count change.
+
+Root closed compositor underflow behavior: after identity branches, v==0 returns transparent
+black without division. Shared fixtures now11, including subnormal mask, quantized zero alpha
+and invalid masks; catalog checker passes and Terra notified. Direct Javadoc helper check
+against hash-verified accepted24 sources passes (586 warnings), output
+.work/java-reference-helper-check1/result.json. Bundle attempt correctly rejected pending
+operation inventory at .work/dist/java-reference-candidate1; packaging waits for accepted
+composition integration, with no weakened inventory check or new release claim.
+
+Masked source-over catalog contract and six analytic pixel fixtures are frozen:
+catalog/operations/masked-source-over.json, fixtures/operations/masked-source-over.json.
+Catalog schema/source/fixture checker and regenerated reference pass; no runtime support
+claimed. Zero mask or transparent source preserves destination bits, including hidden RGB;
+other output whose quantized alpha is zero becomes transparent black. Arithmetic and
+validation/ownership are explicit. Terra retained_rect_core now owns bounded Java core and
+focused tests only; root owns shared metadata and final acceptance. Java API guide compiled
+unchanged with official Processing preprocessing against accepted CP22 JAR (exit 0).
+
+Root admitted raster.masked-source-over-2d as a capability dependency in the authored ledger;
+tools/check_phase2_design.py --contract-cluster raster.masked-source-over-2d passes.
+Admission: design/capabilities/masked-composite-admission.md. Root read eyes002 notes and
+pinned native imageTrail source: photographic PNG stamps with changing alpha, not extraction.
+Motivating candidate is zero-based #1 (imageTrail); #2 is imageRosette. Original candidate
+status remains untouched. Next: freeze catalog arithmetic/validation and fixtures, then Java
+implementation; the structural gate is not contract approval. Java reference focused tests
+passed (9); Terra is compiling the direct-core guide using the official preprocessor.
+
+Root implementation brief: design/capabilities/composition-batch.md now fixes the next
+deliverable and distinguishes masked source-over from premultiplied two-input crossfade.
+Existing straight-channel RasterRemap2D must not silently become transparency-safe filtering.
+Callback direction uses isolated scratch targets and explicit region order/local-vs-global
+frames; no hidden simulation/RNG advance. Catalog admissions/contracts remain next, before
+public code. Bounded Luna image evidence retrieval is in flight (image_composition_evidence).
+
+Root reviewed the four private spatial-study renders and registered them in the centralized
+gallery (141 images/31 groups). Geometry hashes match before/after and across all modes.
+Strict analytic pixel-center clipping comparison found one ellipse-edge pixel outside in
+each of modes 1 and 2; acceptance remains open, recorded in spatial-composition/root-review.json.
+Latest partition/content callback request is now in the design direction: portable region
+values plus a Processing callback convenience, with explicit global-window/local placement,
+invocation/state/seed semantics and retained raster reuse. Public contract remains to freeze.
+
+Latest maintainer steering broadens spatial composition to image inputs/crops, image-derived
+marks and soft transitions between effects. Root expanded
+design/capabilities/spatial-composition-direction.md with a shared raster/mask/placement
+direction and bounded next batch. Flow paths are only one demonstration. Explicit crop/mask
+selection is distinct from automatic eye detection; the latter is not admitted or implemented.
+No new public operation or support claim has been accepted from this design update.
+
+Maintainer asks how to apply generated work only within selected canvas regions and compose
+operations spatially. Root direction: design/capabilities/spatial-composition-direction.md.
+Separate placement of values, visibility clipping/masking, and boundary-dependent generation.
+Prioritize a private regional-composition demonstration; no frozen signatures or accepted
+new APIs yet. Preserve this requirement in the feature-complete Java objective.
+
+API discovery work remains in progress: docs/java-api.md is a new authored direct-core guide.
+Terra added strict source-derived Javadoc generation to tools/build_java_source_bundle.py and
+focused tests (9 passed), with generated reference assets/legal notices outsideGit. Actual
+24-class generation passes with586 missing-documentation warnings, no errors. Root has not
+yet reviewed that implementation, extended extracted consumer verification, compiled/rendered
+the guide, built a new bundle or accepted reference support. Current accepted release remains
+Java0.25. Do not mistake these local builder changes for an accepted documentation release.
+
+C3 evidence reading found affirmative reusable postprocessing in cityPink3d#2 (9-tap blur,
+scanlines and vignette), while terrain controls are occluded none/subtle. Therefore shader/
+postprocessing remains a real open capability review, not a justified rejection merely from
+missing implementation. Scope and useful parameter evidence still need root judgment.
+
+## Java0.25 accepted — two reusable compositions and palette application
+
+24 operations and26 packaged workflows; no core API additions in this batch.
+PointerMarks demonstrates explicit pointer targets, fixed initial wire connectivity,
+24-held/24-released replay, actual animation/pause and cached save. Root fixed a native
+pause-redraw failure with the existing SpringMarks active-display-loop/dirty-frame pattern.
+BodyMarks demonstrates12 backward field spines, taper/centerline transfer, one explicit tick,
+reset and cached save. Its24-tick geometry replay passes; observed recomputation of300 path
+steps per tick took about2.56ms total for24 ticks on pinned runtime (not FPS/allocation claim).
+
+Distribution acceptance: evidence/distribution/cp22-java-review.json. Archive
+.work/dist/cp22-java-source-root1/procedurals-java-source-dev.zip,229members. All26 extracted
+PDE examples compile; both changed native consumers pass. Seven deterministic PNGs each
+match candidates; PointerMarks asynchronous lifecycle final frame is checked within its own
+run, not against a wall-clock-dependent candidate tick. Core107 classes, adapter1 class and
+all44 prior example/font members preserved. Gallery137 images/30groups.
+
+C2 palette extraction/application accepted in evidence/tooling/palette-application-review.json:
+actual CutMarks image to five extracted colors to existing FieldMarks, same42 seed/layout.
+Root inspected original/recolored images. Source/extracted adapter files remain untouched;
+no new helper algorithm, core API or automatic runtime palette JSON schema.
+
+Next C3 root capability-boundary and usability review:
+- Bounded rare-family screen still supports Delaunay and native glyph placement rather than
+  nearest-site Voronoi cells or font-outline extraction. Root query found61 notes mentioning
+  Voronoi, almost entirely technique tags; non-tag mentions are colidion deformation,
+  dadatata visual analogy, kidmi non-Voronoi disclaimer and plasma007 line trimming. No
+  glyph/font outline, geomerative, getGlyphOutline or RFont matches in current notes.
+  These are search/evidence limits, not proof of corpus-wide absence. Final explicit in/out
+  scope decisions and source rationale remain to record; do not claim unknown support.
+- Review mesh/grammar/shader boundaries alongside existing capability map.
+- Actual Java API discovery remains weak: generated operation reference leads with JSON
+  schemas. Assess standard source-derived Javadoc and a concise Java entry path, preserving
+  catalog authority rather than duplicating metadata manually.
+- Complete install-to-edit walkthrough/coverage audit against docs/java-completion-plan.md.
+Do not mark full goal complete from counts or this packaged batch alone.
+
+Workers/native jobs finished. Ports integration and Sol review remain paused; unrelated
+Android ProfileMarks edit preserved. Root remains final architecture/integration owner.
+
+## Java0.24 accepted — parallel batch checkpoint
+
+24 operations and24 packaged workflows. New RetainedRectangles2D core and CutMarks selected
+cut/retained decoration/deletion/reset/save workflow accepted. Distribution review:
+evidence/distribution/cp21-java-review.json. Archive .work/dist/cp21-java-source-root1/
+procedurals-java-source-dev.zip (226members); extracted consumer .work/cp21-source-consumer-root2.
+All24 PDE examples compile; six native PNGs equal root-inspected candidate. Prior103 core
+classes, adapter class and43 example/font members preserved byte-for-byte. Seven focused
+packaging tests and catalog/reference check pass. Gallery127 images/27groups.
+
+Shared native access caused two safe rejected attempts while separate porting Android
+sessions held the machine lease. Both were preserved; root waited for live processes to end,
+then validated under the same lease. No root native process remains live at this checkpoint.
+
+Root reviewed and accepted existing palette helper hardening (9 focused tests): captured
+image bytes revalidated against shared format/size limits before decoding; source-hash and
+nonoverwrite publication preserved. Existing docs already explain extraction/application;
+C2 native application demonstration still pending. evidence/tooling/palette-extraction-review.json.
+
+Next bounded batch (docs/java-buildout-batches.md):
+- B3 PointerMarks draft PDE/guide compiled; root fixed lifecycle via Terra. New probe and
+  plan prepared; root found async redraw/first-M transition/core-origin report issues and
+  assigned fixes; final corrected probe compiles and root checked the affected transitions.
+  Add existing runner profile, then native/replay
+  review. No operation/catalog/distribution acceptance; existing SpringMarks unchanged.
+- C1 root reread peces and GradientPath2D: backward positions/headings already support a
+  tapered-body composition. design/capabilities/tapered-field-body-direction.md records
+  exact reuse and terminal-heading boundary. Demonstrate body/centerline transfer and
+  explicit head ticks; no history-buffer or arbitrary-field API admitted.
+- C2 actual palette application; C3 remaining family dispositions/install-to-edit review.
+
+Root owns final architecture/integration; Terra handles frozen implementation/probe slices.
+Ports integration and Sol review remain paused. Preserve unrelated Android ProfileMarks
+working edit. New native runs always use the common machine lease, never a checkout-local
+replacement. Current24-count is accepted scope, not feature-completeness or corpus coverage.
+
+## CP21 source review: editable unequal subdivision selected for investigation
+
+Root read griton, pliegues, peces and araniaaas source and corrected shortlist errors.
+Direction: design/capabilities/cp21-next-capability-direction.md; exact source/note bindings
+in adjacent cp21-gap-source-bindings.json. No new API admitted. Root wrote cp21-private-prototype-spec.md and pre-registered
+evidence/parameter-experiments/cp21-retained-cuts/experiment.json. Terra completed private RetainedRects/CutStudy. Root fixed finite-extent checks and added
+actual signed-zero/unrelated-ID/remove-last assertions. Four native studies passed and
+root inspected all images; evidence/parameter-experiments/cp21-retained-cuts/decision.md.
+Next direct selected-leaf editing demonstration before public admission/contract.
+Single supplied binary cut, stable live IDs, explicit removal; compare aligned/staggered cuts.
+Do not invent pliegues#0 (no frontmatter candidates), a peces history buffer, or griton
+late-list bias/5-child behavior. Workers/native finished. Gallery122 images/26 groups.
+Java0.23 remains23 operations/workflows. Ports/Sol paused; Android draft preserved.
+
+## Java0.23 accepted: 23 operations and 23 packaged workflows
+
+CP20 distribution accepted in evidence/distribution/cp20-java-review.json. Archive:
+.work/dist/cp20-java-source-root1/procedurals-java-source-dev.zip, 218 members.
+All 23 extracted PDE examples compile; PolygonMarks native six-state sequence and cached
+save pass. Seven PNGs match root-inspected candidate. Prior98 core classes, adapter class
+and42 example/font members preserved byte-for-byte. Focused7 packaging tests and catalog
+check pass. Root added Java support attestation and generated reference; ports deferred.
+
+Next bounded architectural selection: Luna identified candidate unequal four-way subdivision
+(griton#0), persistent field-advection/trails (peces#0/#1), and mouse-conditioned target
+updates (araniaaas#1). These are evidence leads, NOT admitted APIs: root must distinguish
+reusable algorithm from ordinary composition glue before selecting. Broader completion
+requirements remain in docs/java-completion-plan.md. Ports/Sol paused, Android draft
+preserved. No worker or native process remains live. Gallery118 images/25 groups.
+
+
+## Central visual-review gallery delivered
+
+User requested one place to inspect actual artwork. Local gallery:
+.work/visual-review/index.html; contact sheet overview.png;113 distinct images across24
+groups. Includes Java workflows, four original recreations, CP20 private study and early
+CP1 study with distinct labels. Original files unchanged; descriptive symlinks provide
+central access without copying assets. All registered images available with matching hashes.
+Builder tools/build_visual_review.py and curation docs/visual-review.json are tracked;
+AGENTS now requires refreshing at visual checkpoints. Guide docs/visual-review.md.
+
+CP20 core accepted/pushed28532369; next public native polygon workflow and distribution
+remain. Existing Java0.22 still22 packaged operations/workflows. No core/render worker
+is active. Port drafts (Android/JS/Python) remain preserved and excluded.
+
+
+## CP20 convex polygon Java core accepted; public workflow next
+
+Root reviewed ConvexPolygonPlacements2D against frozen contract and36 exact fixtures (30 also
+through typed input). Native ownership/carrier/index/count and four workload checks pass.
+Root replaced the worker unproved tolerance heuristic with the established certified interval
+and exact dyadic predicate mechanism, made all output lists mutable/detached and repaired
+weak native ownership/carrier tests. Final source/runtime/generated-source/classes bound in
+ evidence/conformance/convex-polygon-java.json; root acceptance in adjacent root-review.json.
+5000 variable elliptical outlines measured roughly40ms on pinned JDK (see exact report),
+not a guarantee. Accepted Delaunay stays unchanged; no new whole recreation is claimed.
+
+Next deliver an editable public native workflow using actual core (aspect/shape edits,
+retained recolor, reset, cached save), then extracted distribution acceptance. Java0.22 still
+ships22 operations/22 workflows; new core is not yet a shipped23rd workflow. No worker/native
+process is running for core. Ports/Sol paused; Android/JS/Python drafts remain excluded.
+
+Central visual review is delivered above. Luna completed the read-only earlier-render
+inventory; root assembled and checked the gallery. No port work resumed.
+
+## CP20 convex-outline placement private study reviewed
+
+Root selected ordered supplied convex-polygon filtering as the next Java capability after
+source review of celular/celular2. Executed upstream containment helper proves asymmetric
+nesting bug; new strict disjoint behavior intentionally differs. Three actual JAVA2D studies
+(broad rounded outlines, thin dashes, diamond transfer) passed and root inspected all images.
+Evidence: evidence/parameter-experiments/cp20-convex-placement/review.json. Prototype checks
+include symmetric containment, crossing edges, contact, strict convexity/star rejection and
+root-added subnormal/MAX_VALUE/nonfinite cases. Root corrected silent invalid-input skipping
+and missing claimed worker checks; final worker file ownership returned to root.
+
+Next freeze operation contract/catalog/fixtures and production numerical/work/ownership
+boundaries per design/capabilities/cp20-convex-placement-direction.md. Private BigDecimal
+prototype is not an accepted implementation. Consider existing Delaunay exact-predicate
+mechanism without destabilizing accepted code. No23rd operation or new recreation shipped;
+Java0.22 remains22/22. Previous helper milestone is pushed17250bd3.
+
+No native/worker task remains active. Ports/Sol paused; unrelated Android/JS/Python port edits preserved.
+Keep bounded Terra implementation against frozen contracts and root architectural review.
+
+## Selected Java animation frame helper accepted
+
+Existing tools/render_java.py now accepts --frame1..10000, default1. Every preceding native
+ draw executes; one selected image is captured per fresh variant. Root reviewed lifecycle,
+count metadata, unchanged process budgets and shared lease. Luna supplied bounded CLI tests;
+root added actual Processing accumulation/noLoop/default/repeat checks. All11 focused tests
+pass. Evidence: evidence/tooling/java-frame-selection-review.json. No clocks are simulated;
+P2D/P3D, assets, multi-frame export and interaction replay remain open. Java0.22 still has
+22 accepted operations/22 starters; no new operation or recreation is counted here.
+
+Ports/Sol remain paused, pending integration retained in docs/porting-resume.md. Unrelated
+Android resume/JavaScript export edits preserved and excluded. No worker/native task active.
+Next select an evidence-backed Java capability gap or another bounded helper improvement;
+whole-goal completion remains unproven. Keep sustainable batches and root architectural review.
+
+## Curvespace structural recreation accepted
+
+Root reviewed actual P2D960x960 density1 additive drawing of the complete composition.
+Baseline/recolor/regenerate/reset/cached-save pass using the exact accepted Java0.22 JAR.
+All visible components remain: unwarped dots, faint influence circles, two dense sampled
+line families and luminous folded/tangled strands. Recolor retains geometry; seed change
+regenerates; reset and cached save match exactly. Four original structural recreations are
+now demonstrated; the accepted source-bundle remains22 operations/22 starters.
+
+Evidence: evidence/reproductions/curvespace/root-review.json and native.json. Final run
+.work/curvespace-native2/result.json binds current source/runtime/classes/images; all5 PNGs
+equal inspected native1 after the explicit library-discovery import/stale-comment update.
+Root verified library bytes against accepted cp19 extracted-consumer evidence. Runner reuses
+pinned runtime checks and shared machine lease. No P2D fallback, source-pixel benchmark or
+other-target acceptance is claimed. Guide: docs/curvespace-recreation.md. This repository
+example is separate from the Java0.22 archive; do not silently count it as a packaged starter.
+
+No native process or worker remains active. Ports/Sol remain paused in this task; unrelated
+Android resume and JavaScript Delaunay-export edits preserved and excluded. Next address
+remaining Java completeness gaps in docs/java-completion-plan.md with a bounded capability
+or reusable rendering/animation helper milestone. Keep root source/contract/native review,
+strict worker file ownership and focused established checks. Whole-goal completion remains
+unproven; four selected recreations do not establish full-corpus or major-idiom coverage.
+
+## Curvespace full-composition draft compiled — native P2D next
+
+Previous turn shipped Java0.22 at838eb1da. Root now maps the complete curvespace source
+through RegularGrid, RadialPull2D and ordinary scalar/drawing glue. See
+ design/capabilities/curvespace-recreation-walkthrough.md. Source seed is never applied to
+Processing RNG; explicit JavaRandom42 recreation promises structural fidelity only.
+
+Draft examples/recreations/Curvespace contains retained composition and actual P2D PDE.
+Root corrected worker deformation/enlargement of the original dot grid: dots remain
+unwarped point marks. Corrected opaque dark background, explicit stroke/noFill state and
+retained field access. Seed42 composition check passes:60x60 dots,7 influences and339840
+line samples across both families; all outputs match accepted package field queries.
+Reset generation repeats descriptors; changed seed changes them. Corrected PDE compiles
+against the accepted Java0.22 JAR. Evidence: evidence/reproductions/curvespace/composition-check.json.
+This is compilation/pure-composition evidence, NOT native P2D or recreation acceptance.
+
+Next implement bounded native P2D C/R/0/S probe and runner using the existing pinned JOGL
+runtime/check_runtime from tools/run_depth_marks_java.py, preprocessing/tab compilation and
+retained-state probes. Always tools/with_native_render_lock.py shared machine lease;
+legacy processing-render.lock recommendations are not sufficient. Bind the accepted JAR,
+composition/PDE/probe/runtime/classes and strict native diagnostics. Inspect additive strands,
+unwarped dots and influence outlines before counting the whole recreation. No JAVA2D fallback.
+No native process or worker remains active.22 operations/workflows and three demonstrated
+originals remain shipped; this tracked draft is excluded from source-bundle acceptance.
+Ports/Sol paused in this task; unrelated Android draft and concurrently appearing JavaScript
+Delaunay export edit are untouched and excluded. Java feature completeness remains open.
+
+## CP19 Java0.22 accepted for publishing
+
+22 operations and22 editable workflows. RadialPull2D/PullMarks provide localized radial
+folding, radius/power edits and retained contour drawing. Exact core, actual native
+JAVA2D edits/recolor/transfer/reset/cached-save and extracted distribution review pass.
+See evidence/distribution/cp19-java-review.json. All22 extracted PDEs compile;7 PNGs equal
+root-inspected candidate pixels. All94 prior core classes, one adapter class and41 prior
+example/font members preserved byte-for-byte. Four generated RadialPull2D class files added.
+Archive .work/dist/cp19-java-source1/procedurals-java-source-dev.zip SHA256
+93feeb8c05987891ba281916be4abd3006df5a8294e1f15a5652301ff10f93c2.
+
+Root reviewed actual sample retention, field-output correspondence, draw/reset/save and
+all distinct views. Corrected draft grid allocation (62 lines, not64 with nulls), explicit
+noFill and misleading unused seed before native rendering. Guide separates immutable field
+from sketch-owned output arrays and states discontinuity/folding honestly. No extra original
+recreation is counted; still three demonstrated. Ports/Sol remain paused, queue updated in
+docs/porting-resume.md. Unrelated Android resume draft remains untouched and unaccepted.
+No worker/native task remains active.
+
+Next address another concrete Java completeness gap from docs/java-completion-plan.md,
+or execute a curvespace structural recreation to test the newly closed algorithmic gap.
+Prefer a bounded useful capability/coverage milestone; do not infer completeness from22
+operations or reopen whole-corpus triage. General render/animation helper and broader idiom
+coverage remain open. Root retains architecture and final acceptance, with strict disjoint
+worker ownership and focused established validation.
+
+## CP19 radial pull core accepted — public workflow next
+
+Root admitted curvespace#0 as geometry.radial-pull-2d, froze the exact ordered-sum contract
+and independently derived20 point expectations. Both constructors and all three query
+forms pass, with22 constructor cases and6 query-error cases. Focused native ownership,
+carriers, atomic accumulated/final-y overflow and active workloads pass. Root reviewed live
+source/runtime/class bindings and recorded evidence/conformance/radial-pull-java-root-review.json.
+250k queries measured18.32ms with8 influences and142.63ms with64 after3x20k warmup; no guarantee.
+
+Root corrected worker target atomicity, serialized row carriers and zero normalization;
+a runner ownership overlap was resolved before accepted checks. Passed report is
+.work/conformance/radial-pull-java.json, copied into evidence/conformance/radial-pull-java.json.
+Earlier worker3 report is stale and not accepted. No worker/native process remains active.
+
+Next implement PullMarks per design/capabilities/pull-marks-native-plan.md using this core,
+then native edits/recolor/contour transfer/reset/save, scoped catalog attestations and fresh
+Java0.22 extracted bundle review. Do not reuse private deformation code. Java0.21 remains
+21 shipped operations/workflows at758dede6; public radial-pull workflow is not yet packaged.
+Ports/Sol remain paused and unrelated Android resume draft untouched. Overall Java
+completeness, broader idiom coverage and original recreation coverage remain open.
+
+## CP19 localized radial pull investigated — contract next
+
+Root read curvespace, curves_str and culin notes and pinned source. These differ in summed,
+sequential and stochastic behavior; no generic attractor merge is approved. Four bounded
+private JAVA2D configurations passed and were visually inspected: baseline grid, radius edit,
+power edit and retained-spline transfer. Live inputs/classes/images verified. Root retained
+summed radial pull for contract work, with explicit center discontinuity and possible folds;
+no smoothness, invertibility, recommended range or original recreation claim.
+
+See design/capabilities/cp19-radial-warp-direction.md and
+ evidence/parameter-experiments/cp19-radial-warp/decision.md. Private study is under
+ tools/diagnostics/cp19-radial-warp/RadialWarpStudy. Worker draft arithmetic and fixture errors
+were corrected before rendering. All four attempts passed; no worker or native task remains.
+
+Next record evidence-versioned admission for curvespace#0 and freeze center/rim behavior,
+ordered accumulation, finite-value validation/overflow, ownership, work bounds and portable
+math policy before Java implementation. Keep source sampling/drawing separate. Java0.21 at
+758dede6 remains21 shipped operations/workflows. Ports/Sol paused; Android draft untouched.
+
+## CP18 Java 0.21 accepted for publishing
+
+21 reusable operations and 21 editable workflows. GradientNoise3D01 and DepthMarks add
+explicit depth slices and volumetric mesh coloring. Core, actual P3D lifecycle and extracted
+bundle checks passed; root acceptance: evidence/distribution/cp18-java-review.json.
+All 21 extracted PDEs compile; six extracted PNGs match inspected native candidate pixels.
+All 92 prior core classes, one adapter class and 40 example/font members are preserved.
+Archive .work/dist/cp18-java-source1/procedurals-java-source-dev.zip SHA256
+89db961b8479c36a63ce0872c2f598ec213f072b4e9833091cf2d27b01bf5a14.
+
+Ports and Sol remain paused; outstanding integration and new CP18 port semantics are queued
+in docs/porting-resume.md. Unrelated Android resume draft remains unaccepted and untouched.
+No native or delegated task remains active. Three demonstrated original recreations remain;
+this workflow is not an additional original recreation or general P3D helper acceptance.
+
+Next select another bounded Java capability gap using docs/java-completion-plan.md and
+source evidence. Keep root architecture/review and bounded implementation delegation;
+major-idiom coverage and renderer/animation helper gaps remain open. Feature completeness
+is not inferred from operation count. Continue Java buildout independently of deferred ports.
+
+## CP18 public3D field core accepted — native workflow next
+
+Root recorded reviewed capability-dependency admission, exact3D hash/gradient/interpolation
+contract and rational-rounding fixtures. GradientNoise3D01 passes56 scalar expectations
+through three query forms and both constructors,14 constructor cases,12 query errors,
+focused ownership/carrier/purity/period checks and actual1/250k/1m-query workloads.
+The1m case measured29.91ms after5x20k warmup, including checksum/range checks; no guarantee.
+See evidence/conformance/gradient-noise-3d-java-root-review.json. Existing2D source unchanged.
+
+Next implement DepthMarks from design/capabilities/depth-marks-native-plan.md: explicit-depth
+planar strokes and actual3D face-center sampling on a retained RadialProfile3D surface.
+Reuse existing P3D/JOGL setup and shared machine lease; do not substitute an old installed
+JAR or imply general render-helper support. Native edits/transfer/reset/save, scoped
+attestations and Java0.21 extracted packaging remain. Still20 shipped operations/workflows.
+No worker/native task remains active; ports/Sol paused, Android resume draft untouched.
+
 ## CP18 private3D field investigated — dependency contract next
 
 Root selected a three-coordinate scalar field after reading pelosNoise2 and conitos notes

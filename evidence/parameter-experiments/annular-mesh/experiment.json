@@ -1,0 +1,142 @@
+{
+  "id": "annular-mesh",
+  "status": "study-reviewed",
+  "question": "Does a minimal retained annular mesh give independent useful width/depth/facet edits and reusable face styling without a general closed-meridian API?",
+  "decision": "Select minimal annular boundary or reopen broader profile comparison; no public admission or recommended ranges yet",
+  "hypothesis": "Inner radius controls hole/band width independently of depth; retained indexed faces and normals suffice for both a single washer and an arrangement.",
+  "source_sketches": [
+    "2017/Generativos/aros"
+  ],
+  "provenance": [
+    "design/capabilities/java-family-boundaries-cp27.md",
+    "design/capabilities/cp7-profile-neighbour-boundaries.md"
+  ],
+  "parameter": {
+    "name": "inner radius, axial extent, angular slices",
+    "default": null,
+    "unit": "caller distance and integer slice count"
+  },
+  "baseline": {
+    "renderer": "P3D",
+    "size": [
+      640,
+      640
+    ],
+    "pixel_density": 1,
+    "randomness": "none",
+    "outer_radius": 150,
+    "inner_radius": 110,
+    "bottom_z": -15,
+    "top_z": 15,
+    "slices": 48,
+    "projection": "orthographic",
+    "object_transform": "translate(320,320,0), rotateX(0.9), rotateY(0.3)",
+    "lighting": "lights() with flat per-triangle normals",
+    "output": ".work/annular-study/native-attempt1"
+  },
+  "values": [
+    {
+      "id": "baseline"
+    },
+    {
+      "id": "wide",
+      "inner_radius": 60
+    },
+    {
+      "id": "deep",
+      "bottom_z": -45,
+      "top_z": 45,
+      "coupling": "one centered total-depth edit"
+    },
+    {
+      "id": "facets",
+      "slices": 12
+    },
+    {
+      "id": "recolor",
+      "change": "face-kind palette only, same retained geometry"
+    },
+    {
+      "id": "arrangement",
+      "change": "same retained baseline mesh drawn three times with explicit transforms; composition transfer, not isolated parameter experiment"
+    }
+  ],
+  "comparison": "Inspect all six saved views; compute pixel differences against baseline only for four single-control variants. Topology checks are separate from visual acceptance.",
+  "constraints": [
+    "At most six successful views and two failed attempts; preserve every attempt.",
+    "No upstream code copied or source modified.",
+    "One shared machine render lease via tools/with_native_render_lock.py.",
+    "No public operation, defaults, useful ranges, port support or reproduction claim from this study.",
+    "Root checks closed manifold edge orientation and normals before rendering; actual P3D density1 required."
+  ],
+  "results": [
+    {
+      "id": "arrangement",
+      "status": "ok",
+      "render_path": ".work/annular-study/native-attempt1/arrangement.png",
+      "sha256": "60e190fd41ed1307c5d8974c6e66cc44cbdfb501b8aa37914454eaa546bc3f41",
+      "observation": "Three differently transformed copies of the same mesh, with alternate color on the center copy.",
+      "acceptable": true
+    },
+    {
+      "id": "wide",
+      "status": "ok",
+      "render_path": ".work/annular-study/native-attempt1/wide.png",
+      "sha256": "7ed0eee39561c3060a97d5689d65869c17ee494b816cff1686b7f04a337be7c3",
+      "observation": "Smaller hole and wider upper band at unchanged outer extent.",
+      "acceptable": true,
+      "diff": {
+        "mean_rgb01": 0.0175031658496732,
+        "changed_pixel_fraction": 0.04554443359375
+      }
+    },
+    {
+      "id": "facets",
+      "status": "ok",
+      "render_path": ".work/annular-study/native-attempt1/facets.png",
+      "sha256": "4eec4712ffd433bbfecb1cc92d892f9983937af6500c269a2cdf32cf9921eb1f",
+      "observation": "Twelve-sided rim and visibly coarser wall facets.",
+      "acceptable": true,
+      "diff": {
+        "mean_rgb01": 0.003798138786764706,
+        "changed_pixel_fraction": 0.0343212890625
+      }
+    },
+    {
+      "id": "deep",
+      "status": "ok",
+      "render_path": ".work/annular-study/native-attempt1/deep.png",
+      "sha256": "1e4d77d81ca557e7d95d98fc6028f9d0052df3bdcd18410ac2f1a4124f24e52c",
+      "observation": "Substantially taller inner and outer walls, with the opening still visible.",
+      "acceptable": true,
+      "diff": {
+        "mean_rgb01": 0.030866584329044117,
+        "changed_pixel_fraction": 0.08998291015625
+      }
+    },
+    {
+      "id": "recolor",
+      "status": "ok",
+      "render_path": ".work/annular-study/native-attempt1/recolor.png",
+      "sha256": "d5977c601f8e51642645fa20e1f0adb180ea86e8297bb503c27761db3af22f47",
+      "observation": "Same silhouette, with green upper band and pink outer wall.",
+      "acceptable": true,
+      "diff": {
+        "mean_rgb01": 0.00896438738255719,
+        "changed_pixel_fraction": 0.07779296875
+      }
+    },
+    {
+      "id": "baseline",
+      "status": "ok",
+      "render_path": ".work/annular-study/native-attempt1/baseline.png",
+      "sha256": "df2264ab82e03d343d896831ba27a821c0b6ae9491b9f5f659c327d821fadaac",
+      "observation": "Visible open hole, thin blue outer wall, rust inner wall and tan upper annulus.",
+      "acceptable": true
+    }
+  ],
+  "implementation_sha256": {
+    "tools/diagnostics/annular/AnnularMeshView.java": "a0fbf1d9b928b7ff8e3869fee67d9bc238aed1f91c0b1018bd071b6dad2bc3ee",
+    "tools/diagnostics/annular/AnnularMeshStudy.java": "93458180524c3266242cf6e196f1af2286e9d1d64b43b4a030f51d2730c7b3b1"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "scope": "Java PolygonMarks native repository workflow; source-bundle acceptance pending",
+  "native_evidence": {
+    "path": "evidence/workflows/polygon-marks/native.json",
+    "sha256": "134cc7c46b75e6855d3b6f15b189305b147d86f8cee17c91f9e7a03a10a38c99"
+  },
+  "verified": [
+    "Actual Processing JAVA2D 512x512 density1 with candidate core JAR class origin checked.",
+    "Six frames and acmr0s key sequence; 600 proposals and exact retained source-index coordinate correspondence.",
+    "Thickness and shape edits retain poses and replace placement geometry; recolor retains objects and geometry.",
+    "Regeneration changes poses; reset matches baseline geometry and pixels; cached saved PNG matches completed frame.",
+    "Root inspected baseline, thin, recolored, diamonds and regenerated images."
+  ],
+  "visual_observations": [
+    "Broad rounded polygon marks become finer and more numerous after thickness reduction.",
+    "Recolor preserves the thin-mark composition.",
+    "Diamond transfer produces angular tapered marks; regeneration changes their layout."
+  ],
+  "limitations": [
+    "No source-sketch recreation or pixel-baseline equivalence claimed.",
+    "Java0.22 distribution still contains 22 operations and 22 workflows; this workflow awaits packaging.",
+    "Other-target ports deferred."
+  ],
+  "resolved_failure": "First native attempt exposed Processing float-literal rewriting; explicit double suffixes fixed settings. Probe now exits on draw assertion failures."
+}

@@ -1,0 +1,92 @@
+{
+  "status": "private-feasibility-reviewed",
+  "decision": "proceed to operation-contract design; not implementation acceptance",
+  "reviewer": "root",
+  "prototype_sha256": {
+    "tools/diagnostics/cp20/ConvexStudy.java": "71b1c0b60a6901f9d99ac15e6ad5f2f6ad87d0f431bd100b0bed8fafbd258763",
+    "tools/diagnostics/cp20/PolygonStudy.pde": "097a9e946e6704a38b4c050eb249de59b1d84548485d38b18bcfa4d2855a6289",
+    "design/capabilities/cp20-convex-placement-direction.md": "1e76e890963c4f44dd978cd7ec163325c000d6827b1b14571d84a231a3d66ff6"
+  },
+  "source_containment_audit": {
+    "source_sha256": {
+      "2017/Generativos/celular/celular.pde": "6a79249ba59afb345b6deb51cfefa61074d07340abcc8017bdd569221f9789f4",
+      "2017/Generativos/celular/poly.pde": "5f134e4c696d7bb5e35cf020a863938486ea117990a4a5c46910b4e2dcc34655",
+      "2017/Generativos/celular2/celular2.pde": "8ac55a6b8eaf1da1264ed888bdfb82da4ec56457da125ad6f3516e7acdf525e2",
+      "2017/Generativos/celular2/poly.pde": "5f134e4c696d7bb5e35cf020a863938486ea117990a4a5c46910b4e2dcc34655"
+    },
+    "stdout": "small-proposal-in-kept-big=false\nbig-proposal-containing-kept-small=true\n"
+  },
+  "root_native_semantics": {
+    "status": "passed",
+    "workloads": [
+      {
+        "proposals": 500,
+        "vertices": 4,
+        "overlap": false,
+        "survivors": 500,
+        "elapsed_ns": 15532796
+      },
+      {
+        "proposals": 500,
+        "vertices": 12,
+        "overlap": false,
+        "survivors": 500,
+        "elapsed_ns": 97360718
+      },
+      {
+        "proposals": 500,
+        "vertices": 12,
+        "overlap": true,
+        "survivors": 1,
+        "elapsed_ns": 84766405
+      }
+    ]
+  },
+  "renders": {
+    "baseline": {
+      "parameters": {
+        "ratio": 0.8,
+        "shape": 0.0
+      },
+      "image_sha256": "ffdb5fab45634b7c64a7ec37d17cde86bb005add81c198d70876ba41bac6a136",
+      "report": ".work/cp20-study-baseline1/report.json",
+      "report_sha256": "871607d9c1714c2efad4eac6cfb0ed80f10db491425108202addb797e4427284"
+    },
+    "thin": {
+      "parameters": {
+        "ratio": 0.2,
+        "shape": 0.0
+      },
+      "image_sha256": "498039904f31c04e8fd714f57609b30b138ff6f063b6d3e92097f806f1532b66",
+      "report": ".work/cp20-study-thin1/report.json",
+      "report_sha256": "8661addf91167e5118860fcbea3fb5f252361ca724641f1ed13bfb1f924c8cd3"
+    },
+    "diamond": {
+      "parameters": {
+        "ratio": 0.8,
+        "shape": 1.0
+      },
+      "image_sha256": "1bb3f73afab5cc33c1460e0280ffdebe9c81669b3cadf22e122fbbdb2238f5d8",
+      "report": ".work/cp20-study-diamond1/report.json",
+      "report_sha256": "b10f87bcb98aa85490f6ba584d699c56abb325f5ff81a637e0162237f47f135d"
+    }
+  },
+  "visual_findings": [
+    "Broad rounded polygon marks occupy directional space with visible background gaps.",
+    "Ratio0.2 creates thin dash-like marks and accommodates more marks visually; not a claimed recommended range.",
+    "Diamond outlines reuse the same filter without collision-policy changes."
+  ],
+  "review_corrections": [
+    "Malformed polygons now fail explicitly with index instead of silently disappearing.",
+    "Added actual consistent-turn pentagram test.",
+    "Root added missing subnormal/MAX_VALUE/nonfinite checks and workload survivor assertions after worker summary overstated coverage.",
+    "Added overlapping-proposal workload; initial timings exercised only disjoint AABBs."
+  ],
+  "limits": [
+    "No public operation, frozen contract, shared fixtures, distribution or original-recreation acceptance.",
+    "Baseline render precedes test-only prototype additions; geometry/filter code unchanged.",
+    "BigDecimal arithmetic is private reference implementation, not approved production performance strategy.",
+    "Prototype returns indices only; final owned geometry/output/error/work bounds remain contract work.",
+    "Correct containment intentionally differs from original nesting behavior."
+  ]
+}

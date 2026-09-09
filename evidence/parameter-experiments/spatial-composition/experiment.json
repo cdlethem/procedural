@@ -1,0 +1,55 @@
+{
+  "id": "spatial-composition-private",
+  "status": "planned",
+  "owner": "root",
+  "question": "Can retained package-native paths be placed and visually clipped into regions while preserving surrounding artwork and drawing state?",
+  "decision": "Evaluate a small placement/visibility adapter before freezing a public API; boundary-dependent integration remains separate.",
+  "motivation": "Maintainer explicit composition request,2026-09-08",
+  "source_sketches": [
+    "2019/generativos/ciserp",
+    "2018/Generativos/mantel"
+  ],
+  "source_scope": "Existing GradientPath2D motivation; requested spatial composition is a new project design need, not an inferred measured range.",
+  "profile": {
+    "renderer": "JAVA2D",
+    "width": 720,
+    "height": 480,
+    "density": 1,
+    "seed": 42
+  },
+  "cases": [
+    {
+      "mode": 0,
+      "meaning": "same retained world paths seen through rectangle and ellipse windows"
+    },
+    {
+      "mode": 1,
+      "meaning": "same retained local paths placed separately in both regions"
+    },
+    {
+      "mode": 2,
+      "meaning": "same placed local paths transferred to repeated circle marks"
+    },
+    {
+      "mode": 3,
+      "meaning": "parent artwork only; no regional drawings"
+    }
+  ],
+  "acceptance": [
+    "All outside-region pixels equal control3; existing canvas preserved.",
+    "All retained geometry hashes equal across modes and unchanged by draw.",
+    "Parent native clip and transform unchanged by child region rendering.",
+    "Global versus local compositions visibly differ, and line-to-circle transfer remains visibly restricted by masks.",
+    "Native renderer, dimensions, seed, source/JAR and image hashes bound by existing render helper."
+  ],
+  "limits": [
+    "Private native hard clipping, not antialiased feathering/portable geometric clipping.",
+    "No stop/bounce/wrap behavior, arbitrary operation wrapper, public transform signature or target attestation.",
+    "Uniform scale/object-space widths only; mask regions are supplied canvas-space rectangle/ellipse."
+  ],
+  "render_budget": {
+    "native_variant_runs": 4,
+    "repeat_only_for": "specific failure or changed implementation"
+  },
+  "output": ".work/spatial-composition-root1"
+}

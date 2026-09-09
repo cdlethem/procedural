@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "fixture_cases": 15,
+  "scope": "Java8 core compiled and run on pinned JDK; all shared object fixtures and successful typed vectors plus focused native checks. No renderer acceptance.",
+  "vectors": {
+    "status": "passed",
+    "cases": 15,
+    "assertions": 83
+  },
+  "native": {
+    "status": "passed",
+    "assertions": 36
+  },
+  "source_sha256_before": {
+    "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c",
+    "tests/native/DiscProjectionNative.java": "d75395aa67662d870f0fb8e1dac4047ddd55590d1c7b90bf62eb343fabb4c673",
+    "fixtures/operations/sequential-disc-projection-2d.json": "3a73f3e787469e835dc86e7ad81bea2589faf0984aa970d39cf3325b6234deef",
+    "catalog/operations/sequential-disc-projection-2d.json": "f7e90d17f37d87fe1ae63975ed5fcae3e79e3d1d59d0eb7b78da6114078dd206",
+    "tools/run_disc_projection_java.py": "0665f6f0d60f51855e48a08a080034c110729686a60251dd845d69d54d3d4388",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "source_sha256_after": {
+    "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c",
+    "tests/native/DiscProjectionNative.java": "d75395aa67662d870f0fb8e1dac4047ddd55590d1c7b90bf62eb343fabb4c673",
+    "fixtures/operations/sequential-disc-projection-2d.json": "3a73f3e787469e835dc86e7ad81bea2589faf0984aa970d39cf3325b6234deef",
+    "catalog/operations/sequential-disc-projection-2d.json": "f7e90d17f37d87fe1ae63975ed5fcae3e79e3d1d59d0eb7b78da6114078dd206",
+    "tools/run_disc_projection_java.py": "0665f6f0d60f51855e48a08a080034c110729686a60251dd845d69d54d3d4388",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  }
+}

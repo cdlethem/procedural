@@ -7,6 +7,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 ROOT=Path(__file__).resolve().parents[1]
 from tools.check_field_marks_pde import NAMES
 from tools.run_warp_marks_java import PROFILES
+from tools import run_depth_marks_java as DEPTH
+from tools import run_annular_marks_java as ANNULAR
+from tools import run_clip_marks_java as CLIP
+from tools import run_path_clip_marks_java as PATHCLIP
+from tools import run_masked_partition_marks_java as MASKED
 
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def run(cmd,cwd,timeout=120): return subprocess.run(cmd,cwd=cwd,env={k:v for k,v in os.environ.items() if k not in ('XDG_CONFIG_HOME','SNAP_USER_COMMON','APPDATA')},text=True,capture_output=True,check=True,timeout=timeout)
@@ -24,8 +29,16 @@ def safe_extract(archive,out):
   z.extractall(out)
  return names
 def main():
- ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--archive',type=Path,required=True);ap.add_argument('--build-report',type=Path,required=True);ap.add_argument('--java-home',type=Path,required=True);ap.add_argument('--processing-core',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--native',action='store_true');ap.add_argument('--native-sketch',choices=sorted(PROFILES),default='WarpMarks');a=ap.parse_args()
- out=fresh(a.output);archive=a.archive.resolve();report_path=a.build_report.resolve();jdk=a.java_home.resolve();core=a.processing_core.resolve();tool=Path(__file__).resolve();pre=ROOT/'.work/toolchains/processing-4.5.6/preprocessor';stem,frame_ids,keys=PROFILES[a.native_sketch];probe=ROOT/'tests/native'/(a.native_sketch+'Probe.java');inputs=[archive,report_path,tool,ROOT/'packages/java/source-bundle.json',ROOT/'tools/check_field_marks_pde.py',ROOT/'tools/run_warp_marks_java.py',ROOT/'tools/with_native_render_lock.py',core,jdk/'bin/java',jdk/'bin/javac',jdk/'release',jdk/'lib/modules',ROOT/'tests/native/PreprocessSketch.java',probe,*[pre/n for n in NAMES]]
+ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--archive',type=Path,required=True);ap.add_argument('--build-report',type=Path,required=True);ap.add_argument('--java-home',type=Path,required=True);ap.add_argument('--processing-core',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--native',action='store_true');ap.add_argument('--native-sketch',choices=sorted([*PROFILES,'DepthMarks','AnnularMarks','ClipMarks','PathClipMarks','MaskedPartitionMarks']),default='WarpMarks');a=ap.parse_args()
+ out=fresh(a.output);archive=a.archive.resolve();report_path=a.build_report.resolve();jdk=a.java_home.resolve();core=a.processing_core.resolve();tool=Path(__file__).resolve();pre=ROOT/'.work/toolchains/processing-4.5.6/preprocessor';p3d_runner=DEPTH if a.native_sketch=='DepthMarks' else ANNULAR if a.native_sketch=='AnnularMarks' else None;stem,frame_ids,keys=(DEPTH.IDS[0].replace('baseline','depth-marks'),DEPTH.IDS,DEPTH.KEYS) if a.native_sketch=='DepthMarks' else ('annular-marks',ANNULAR.IDS,ANNULAR.KEYS) if a.native_sketch=='AnnularMarks' else ('clip-marks',CLIP.IDS,CLIP.KEYS) if a.native_sketch=='ClipMarks' else ('path-clip-marks',PATHCLIP.IDS,PATHCLIP.KEYS) if a.native_sketch=='PathClipMarks' else ('masked-partition-marks',MASKED.IDS,MASKED.KEYS) if a.native_sketch=='MaskedPartitionMarks' else PROFILES[a.native_sketch];probe=ROOT/'tests/native'/(a.native_sketch+'Probe.java');inputs=[archive,report_path,tool,ROOT/'packages/java/source-bundle.json',ROOT/'tools/check_field_marks_pde.py',ROOT/'tools/run_warp_marks_java.py',ROOT/'tools/with_native_render_lock.py',core,jdk/'bin/java',jdk/'bin/javac',jdk/'release',jdk/'lib/modules',ROOT/'tests/native/PreprocessSketch.java',probe,*[pre/n for n in NAMES]]
+ if p3d_runner:
+  inputs += [ROOT/('tools/run_depth_marks_java.py' if a.native_sketch=='DepthMarks' else 'tools/run_annular_marks_java.py'),ROOT/('design/capabilities/depth-marks-native-plan.md' if a.native_sketch=='DepthMarks' else 'design/capabilities/annular-marks-native-plan.md'),ROOT/'packages/java-processing/examples'/a.native_sketch/(a.native_sketch+'.pde'),*p3d_runner.check_runtime()]
+ if a.native_sketch=='MaskedPartitionMarks':
+  inputs += [ROOT/'tools/run_masked_partition_marks_java.py',ROOT/'design/capabilities/masked-partition-marks-native-plan.md']
+ if a.native_sketch=='PathClipMarks':
+  inputs += [ROOT/'tools/run_path_clip_marks_java.py',ROOT/'tools/diagnostics/clipping/exact_clip_study.py',ROOT/'design/capabilities/path-clip-marks-native-plan.md']
+ if a.native_sketch=='ClipMarks':
+  inputs += [ROOT/'tools/run_clip_marks_java.py',ROOT/'tools/diagnostics/clipping/exact_clip_study.py',ROOT/'design/capabilities/clip-marks-native-plan.md']
  for p in inputs:
   if not p.is_file():raise RuntimeError('missing input '+str(p))
  before={str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p):sha(p) for p in inputs};members=safe_extract(archive,out/'extract');base=out/'extract/procedurals';manifest=json.loads((ROOT/'packages/java/source-bundle.json').read_text());build=json.loads(report_path.read_text());jar=base/'library/procedurals.jar';adapter=base/'library/procedurals-processing-adapter.jar'
@@ -41,6 +54,13 @@ def main():
   if set(z.namelist())!=set(build['adapter_class_sha256']):raise RuntimeError('adapter JAR member set mismatch')
   for name,expected in build['adapter_class_sha256'].items():
    if hashlib.sha256(z.read(name)).hexdigest()!=expected:raise RuntimeError('adapter class mismatch '+name)
+ reference=build.get('reference',{})
+ reference_root=base/'reference'
+ actual_reference={p.relative_to(reference_root).as_posix():sha(p) for p in reference_root.rglob('*') if p.is_file()}
+ expected_pages=sorted(name.split('/src/main/java/',1)[1].removesuffix('.java')+'.html' for name in [*manifest['core_sources'],*manifest['adapter_sources']])
+ if not reference or actual_reference!=reference.get('sha256'):raise RuntimeError('Java reference inventory/hash mismatch')
+ if reference.get('class_pages')!=expected_pages or reference.get('declared_class_pages')!=len(expected_pages):raise RuntimeError('Java reference class coverage mismatch')
+ if not {'index.html',*expected_pages}.issubset(actual_reference):raise RuntimeError('Java reference pages missing')
  for name,expected in manifest['core_sources'].items():
   installed=base/'src'/name.removeprefix('packages/java/src/')
   if not installed.is_file() or sha(installed)!=expected:raise RuntimeError('installed source mismatch '+name)
@@ -66,11 +86,31 @@ def main():
  native_result=None
  if a.native:
   (out/'native').mkdir()
-  run([str(jdk/'bin/javac'),'--release','17','-cp',str(classes)+os.pathsep+cp,'-d',str(classes),str(probe)],out);native_result=run(['python3',str(ROOT/'tools/with_native_render_lock.py'),'--timeout','120','--','xvfb-run','-a',str(jdk/'bin/java'),'-Duser.home='+str(out/'home'),'-cp',str(classes)+os.pathsep+cp,a.native_sketch+'Probe',str(out/'native'),str(jar)],out,150).stdout.strip()
- if a.native:
-  native_result=json.loads((out/'native/native.json').read_text())
+  if p3d_runner:
+   depth_environment=os.environ.copy();depth_environment['LIBGL_ALWAYS_SOFTWARE']='1'
+   for name in ('XDG_CONFIG_HOME','SNAP_USER_COMMON','APPDATA'):depth_environment.pop(name,None)
+   p3d=[p3d_runner.P3D_RUNTIME/name for name in p3d_runner.JARS]
+   extracted_cp=os.pathsep.join(map(str,[classes,adapter,jar,*p3d]))
+   run([str(jdk/'bin/javac'),'--release','17','-cp',extracted_cp,'-d',str(classes),str(probe)],out)
+   native_process=subprocess.run(['python3',str(ROOT/'tools/with_native_render_lock.py'),'--timeout','120','--','xvfb-run','-a',str(jdk/'bin/java'),'-Duser.home='+str(out/'home'),'-cp',extracted_cp,a.native_sketch+'Probe',str(out/'native'),str(jar)],cwd=out,env=depth_environment,text=True,capture_output=True,check=True,timeout=150)
+   if native_process.stderr and not (p3d_runner.KNOWN_STDERR.fullmatch(native_process.stderr) or p3d_runner.SHUTDOWN_STDERR.fullmatch(native_process.stderr)):raise RuntimeError('unexpected extracted native diagnostics')
+   native_result=json.loads((out/'native/native.json').read_text())
+   native_result['process']={'stdout':native_process.stdout,'stderr':native_process.stderr,'exit_code':native_process.returncode}
+   native_result['images']=p3d_runner.validate_native(native_result,out/'native',jar)
+  else:
+   run([str(jdk/'bin/javac'),'--release','17','-cp',str(classes)+os.pathsep+cp,'-d',str(classes),str(probe)],out);native_args=[str(out/'native'),str(jar)];native_args += [str(adapter)] if a.native_sketch in ('LayerMarks','MaskMarks','PlacementImageMarks','ImageFieldMarks','BlurMarks','ProjectionMarks') else [];native_process=run(['python3',str(ROOT/'tools/with_native_render_lock.py'),'--timeout','120','--','xvfb-run','-a',str(jdk/'bin/java'),'-Duser.home='+str(out/'home'),'-cp',str(classes)+os.pathsep+cp,a.native_sketch+'Probe',*native_args],out,150)
+   native_result=json.loads((out/'native/native.json').read_text())
+   if a.native_sketch in ('ClipMarks','PathClipMarks','MaskedPartitionMarks'):
+    if native_process.stderr:raise RuntimeError('unexpected extracted ClipMarks diagnostics')
+    native_result['process']={'stdout':native_process.stdout,'stderr':native_process.stderr,'exit_code':native_process.returncode}
+    native_result['images']=(CLIP if a.native_sketch=='ClipMarks' else MASKED if a.native_sketch=='MaskedPartitionMarks' else PATHCLIP).validate_native(native_result,out/'native',jar)
   if native_result.get('status')!='passed' or native_result.get('frames')!=len(frame_ids) or native_result.get('keys')!=keys or native_result.get('core_code_source')!=str(jar):raise RuntimeError('incomplete extracted native proof')
   if [frame['id'] for frame in native_result.get('frame_records',[])]!=frame_ids:raise RuntimeError('unexpected extracted native frame records')
+  if a.native_sketch in ('LayerMarks','MaskMarks') and native_result.get('code_sources')!={'compositor':str(jar),'crossfade':str(jar),'adapter':str(adapter)}:raise RuntimeError('wrong extracted composition workflow class code sources')
+  if a.native_sketch=='PlacementImageMarks' and native_result.get('code_sources')!={'placement':str(adapter),'layers':str(adapter),'compositor':str(jar)}:raise RuntimeError('wrong extracted placement image workflow class code sources')
+  if a.native_sketch=='ImageFieldMarks' and native_result.get('code_sources')!={'grid':str(jar),'remap':str(jar),'field':str(adapter),'layers':str(adapter)}:raise RuntimeError('wrong extracted image field workflow class code sources')
+  if a.native_sketch=='BlurMarks' and native_result.get('code_sources')!={'filter':str(jar),'compositor':str(jar),'crossfade':str(jar),'filters':str(adapter),'layers':str(adapter)}:raise RuntimeError('wrong extracted blur workflow class code sources')
+  if a.native_sketch=='ProjectionMarks' and native_result.get('code_sources')!={'projection':str(jar),'layers':str(adapter)}:raise RuntimeError('wrong extracted projection workflow class code sources')
  extracted_after={str(p.relative_to(out)):sha(p) for p in (out/'extract').rglob('*') if p.is_file()}
  if extracted_before!=extracted_after:raise RuntimeError('extracted files changed during consumer validation')
  after={str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p):sha(p) for p in inputs}

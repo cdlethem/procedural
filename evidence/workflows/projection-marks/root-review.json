@@ -1,0 +1,28 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "scope": "Java projection core and ProjectionMarks native contour/line workflow; distribution and other targets pending.",
+  "native": "evidence/workflows/projection-marks/native.json",
+  "native_sha256": "8cf50a99909e25fbba2fb839da16352866014227c694078bb9d817f38e302f3c",
+  "supporting_evidence_sha256": {
+    "evidence/conformance/disc-projection-java.json": "6162d4a69ad414522555ca5bd2f703380e79d84b63269a3126b02fdac81ff590",
+    "evidence/conformance/disc-projection-performance.json": "574efc2da5e4d0b1dbeea7ea8d50da5f115cf7c0a50605833916b117dfdb08e0"
+  },
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c",
+    "packages/java-processing/examples/ProjectionMarks/ProjectionMarks.pde": "1ee3d6daaf6a57e50af86fcc2846ded9b6a40cff79160ed0178dad2d3ba92d56",
+    "tests/native/ProjectionMarksProbe.java": "08908f912165ed979d34afb1b0bf3a1a29c2c6392e3044f58857d5959bd21d0d"
+  },
+  "verified": [
+    "Root rewrote/read core; ordered scaled norm, overflow distinctions, validation before work, linear List conversion and atomic pointInto reviewed.",
+    "15 shared object fixtures and successful typed vectors pass; expanded native ownership/carrier/LinkedList/access tests pass on bound JDK.",
+    "Root inspected5 revised views: fractional/full/zero, reversed order and recolor. Stronger disc overlap makes order effect visible.",
+    "Eight actual queued states,6 retained computations, each result/input identity and value, named restores and cache save pass. Source/artifact/PNG hashes verified.",
+    "Tiny/example/stress desktop performance measured with fixed checksums; typed loop allocation matches output storage."
+  ],
+  "limits": [
+    "No guaranteed nonoverlap, segment clipping, polygon containment, Voronoi or complete colidion recreation.",
+    "Performance excludes rendering; no latency guarantee.",
+    "Packaging/extracted consumer and non-Java ports remain pending."
+  ]
+}

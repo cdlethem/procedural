@@ -1,0 +1,86 @@
+{
+  "status": "passed",
+  "seed": 42,
+  "variants": [
+    {
+      "parameters": {
+        "staggered": 0.0,
+        "decoration": 0.0,
+        "holes": 0.0
+      },
+      "image": "/home/colin/dev/procedural/.work/cp21-study-aligned1/variant-00/render.png",
+      "image_sha256": "b8aa917c34e09dd63b4f5a65e010c522dd3927d4892016926cf3ad83188148de",
+      "native": {
+        "hook": "configureRender-v1",
+        "frames": 1,
+        "width": 512,
+        "draws": 1,
+        "selected_frame": 1,
+        "height": 512,
+        "seed": 42
+      }
+    }
+  ],
+  "inputs_before": {
+    "/home/colin/dev/procedural/tools/diagnostics/cp21/CutStudy/CutStudy.pde": "5673fda01a989e13b1d243de8f0089286bcb5193e7718058b8fd28565995b724",
+    "/home/colin/dev/procedural/tools/diagnostics/cp21/CutStudy/RetainedRects.java": "ae2332881b88bed9d2a4e2ae1a55af64b6c70587f6e9e658ab6dc7cfb9313965",
+    "/home/colin/dev/procedural/.work/cp20-source-consumer-root2/extract/procedurals/library/procedurals.jar": "8fecefea0a923d8294fab0f2a57782bbc5adf5f0ada3dd86435eeff2a6ff565d",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "/home/colin/dev/procedural/tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    "/home/colin/dev/procedural/tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d",
+    "/home/colin/dev/procedural/tools/render_java.py": "3b89d7d3572aa75d8206b6587cb6758444f5ef40aa0f2b239a3af77f12473f46",
+    "/home/colin/dev/procedural/tools/contact_sheet.py": "33e2d6492491ef415cacb121c274f863aac40e92f00d92498ab5acb09fac1e42",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "selected_frame": 1,
+  "scope": "Configured selected-frame JAVA2D render; not conformance or recreation acceptance",
+  "inputs_after": {
+    "/home/colin/dev/procedural/tools/diagnostics/cp21/CutStudy/CutStudy.pde": "5673fda01a989e13b1d243de8f0089286bcb5193e7718058b8fd28565995b724",
+    "/home/colin/dev/procedural/tools/diagnostics/cp21/CutStudy/RetainedRects.java": "ae2332881b88bed9d2a4e2ae1a55af64b6c70587f6e9e658ab6dc7cfb9313965",
+    "/home/colin/dev/procedural/.work/cp20-source-consumer-root2/extract/procedurals/library/procedurals.jar": "8fecefea0a923d8294fab0f2a57782bbc5adf5f0ada3dd86435eeff2a6ff565d",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/processing-4.5.6-linux-x64-portable.zip": "ddb816ca2c02e862a5dcf22b96bb4f81f412c4878673752b36837a7770970a6c",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar": "3ee7775eebb637bdf42383d7cf117a6879f61d853f18c4501bc2ce814ec61634",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar": "0ee0090f30baf0582d13bec4315d1deabc7ed6842ea9472d1535eb6af5599269",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar": "dd3e8a13a2d669bf84fb8d834de35ce4875f27157698d206241ec8488aadcaf7",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar": "e6f0b10d2ad206f338afe16867fc47148b6729d6e3a260ea28379b91f03a3657",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar": "7c71886a76964a825eb734d22dedbd3a1efa2c19bec3af26d07b7bbe8167d943",
+    "/home/colin/dev/procedural/tests/native/PreprocessSketch.java": "127189b98848b8d2c669c0017056e9b19be5e45b5f3d66d3b9e48c503c95a06a",
+    "/home/colin/dev/procedural/tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d",
+    "/home/colin/dev/procedural/tools/render_java.py": "3b89d7d3572aa75d8206b6587cb6758444f5ef40aa0f2b239a3af77f12473f46",
+    "/home/colin/dev/procedural/tools/contact_sheet.py": "33e2d6492491ef415cacb121c274f863aac40e92f00d92498ab5acb09fac1e42",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "contact_sheet": "/home/colin/dev/procedural/.work/cp21-study-aligned1/contact-sheet.png",
+  "contact_sheet_sha256": "cbd331eaed1990837c975a04d4bb46c84ded6f31656ce420efcd659b139bd956",
+  "generated_sha256": {
+    "/home/colin/dev/procedural/.work/cp21-study-aligned1/CutStudy.java": "5a32724344ee0426f18f68a2b7f4bdf268de69819120c286e4c4ec25403f4974",
+    "/home/colin/dev/procedural/.work/cp21-study-aligned1/RenderSnapshot.java": "4c8452a191a201b639d8392b7420f90708f073bbfb2906102fcfc8d7934c8dc8"
+  },
+  "class_sha256_before": {
+    "/home/colin/dev/procedural/.work/cp21-study-aligned1/classes/RenderSnapshot.class": "c3f634b4c7b8ca928d75d1ac0bdb4f30b76cfd7fed6351244a9512ea466f1e5b",
+    "/home/colin/dev/procedural/.work/cp21-study-aligned1/classes/RetainedRects$Leaf.class": "13dd629fab280c65368b4ac19902fa7db1512fead22567b73f06410f3ae36ead",
+    "/home/colin/dev/procedural/.work/cp21-study-aligned1/classes/RetainedRects.class": "ceb73e95fb9407c36a70f9487c691e39073c559a61e194f3ed0c0d28071221ca",
+    "/home/colin/dev/procedural/.work/cp21-study-aligned1/classes/CutStudy.class": "a4f64bee4ce36b0d9114a1bffdb5dc3fb86d27f4d6234e9f3fe30bac02ee3ff0",
+    "/home/colin/dev/procedural/.work/cp21-study-aligned1/classes/PreprocessSketch.class": "2fc98864fe0e6ffe6e00204da0071fb0897d9799e8857c9b2f38887b444fa70d"
+  },
+  "class_sha256_after": {
+    "/home/colin/dev/procedural/.work/cp21-study-aligned1/classes/RenderSnapshot.class": "c3f634b4c7b8ca928d75d1ac0bdb4f30b76cfd7fed6351244a9512ea466f1e5b",
+    "/home/colin/dev/procedural/.work/cp21-study-aligned1/classes/RetainedRects$Leaf.class": "13dd629fab280c65368b4ac19902fa7db1512fead22567b73f06410f3ae36ead",
+    "/home/colin/dev/procedural/.work/cp21-study-aligned1/classes/RetainedRects.class": "ceb73e95fb9407c36a70f9487c691e39073c559a61e194f3ed0c0d28071221ca",
+    "/home/colin/dev/procedural/.work/cp21-study-aligned1/classes/CutStudy.class": "a4f64bee4ce36b0d9114a1bffdb5dc3fb86d27f4d6234e9f3fe30bac02ee3ff0",
+    "/home/colin/dev/procedural/.work/cp21-study-aligned1/classes/PreprocessSketch.class": "2fc98864fe0e6ffe6e00204da0071fb0897d9799e8857c9b2f38887b444fa70d"
+  }
+}

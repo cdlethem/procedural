@@ -1,0 +1,428 @@
+{
+  "status": "private-oracle-passed",
+  "owner": "root",
+  "oracle": "tools/diagnostics/clipping/exact_clip_study.py",
+  "oracle_sha256": "c0188dbae5f2677d28cbbc7d7b8d0b6bb97b9fe781fcef2ae4a8521a84ea761d",
+  "result_sha256": "502ad1aa81f39ed16af62c2649be6d19b5580751040ab8987f93c142d47ec5b3",
+  "checks": {
+    "status": "passed-private-study",
+    "cases": [
+      {
+        "id": "horizontal",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segment": [
+          [
+            -1,
+            2
+          ],
+          [
+            5,
+            2
+          ]
+        ],
+        "intervals": [
+          [
+            "1/6",
+            "5/6"
+          ]
+        ],
+        "reversed_winding": true,
+        "reversed_segment": true
+      },
+      {
+        "id": "vertical",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segment": [
+          [
+            2,
+            -1
+          ],
+          [
+            2,
+            5
+          ]
+        ],
+        "intervals": [
+          [
+            "1/6",
+            "5/6"
+          ]
+        ],
+        "reversed_winding": true,
+        "reversed_segment": true
+      },
+      {
+        "id": "inside",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segment": [
+          [
+            1,
+            1
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "intervals": [
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "reversed_winding": true,
+        "reversed_segment": true
+      },
+      {
+        "id": "outside",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segment": [
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "intervals": [],
+        "reversed_winding": true,
+        "reversed_segment": true
+      },
+      {
+        "id": "boundary",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segment": [
+          [
+            -1,
+            0
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "intervals": [
+          [
+            "1/6",
+            "5/6"
+          ]
+        ],
+        "reversed_winding": true,
+        "reversed_segment": true
+      },
+      {
+        "id": "vertex_tangent",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segment": [
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ]
+        ],
+        "intervals": [],
+        "reversed_winding": true,
+        "reversed_segment": true
+      },
+      {
+        "id": "diagonal_vertices",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segment": [
+          [
+            -1,
+            -1
+          ],
+          [
+            5,
+            5
+          ]
+        ],
+        "intervals": [
+          [
+            "1/6",
+            "5/6"
+          ]
+        ],
+        "reversed_winding": true,
+        "reversed_segment": true
+      },
+      {
+        "id": "zero_length_inside",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segment": [
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "intervals": [],
+        "reversed_winding": true,
+        "reversed_segment": true
+      },
+      {
+        "id": "concave_notch",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "segment": [
+          [
+            -1,
+            4
+          ],
+          [
+            7,
+            4
+          ]
+        ],
+        "intervals": [
+          [
+            "1/8",
+            "3/8"
+          ],
+          [
+            "5/8",
+            "7/8"
+          ]
+        ],
+        "reversed_winding": true,
+        "reversed_segment": true
+      },
+      {
+        "id": "notch_floor",
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "segment": [
+          [
+            -1,
+            2
+          ],
+          [
+            7,
+            2
+          ]
+        ],
+        "intervals": [
+          [
+            "1/8",
+            "7/8"
+          ]
+        ],
+        "reversed_winding": true,
+        "reversed_segment": true
+      }
+    ],
+    "limitations": [
+      "Assumes simple polygons; no topology validation.",
+      "Exact rational oracle is not a performance implementation."
+    ]
+  },
+  "scope": "Exact hand-known intervals and reversal invariants only. Java comparison, simple-polygon validation, full-domain arithmetic, performance and native composition remain pending."
+}

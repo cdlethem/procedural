@@ -1,0 +1,17 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Java retained rectangle creation/edit semantics and scoped native CutMarks; no distribution, source recreation or port acceptance",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/layout/RetainedRectangles2D.java": "24a1800f9a410763f82672bbb8cbbce9e9598298d2ca0651f3527085b4280cf3",
+    "packages/java-processing/examples/CutMarks/CutMarks.pde": "1a51b11b1c1e7c4dccd5cb96d109cbaceff7873e65cfded28f29ec4db18586e9"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/retained-rectangles-java.json": "34116db3ff592843b1d3beaf319b25ca1d7b07529017b746655d31cf4bfc73c7",
+    "evidence/conformance/retained-rectangles-java-root-review.json": "7c857ad976b4456cc1dd2d206ded950a0db80e6502c5c19cbf77d8bb91835037",
+    "fixtures/operations/retained-rectangle-cuts-2d.json": "94a83902ba3294115a70690de97e4d4c65515c672379cddfef58ee762bf4b1ba",
+    "evidence/workflows/cut-marks/native.json": "9223d15df3c0fe66325a4c42dd556000472c0e3273b7d113aab154aed919ee04",
+    "evidence/workflows/cut-marks/root-review.json": "008f55b5ddfd81a7712b537cd62f12aa9466ec1fba0bd9ee7aa23d4158fa9084"
+  }
+}

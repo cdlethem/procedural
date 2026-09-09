@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "candidate_jar": "/home/colin/dev/procedural/.work/mask-marks-native-root2/procedurals-core-candidate.jar",
+  "candidate_jar_sha256": "7970064847adff56b0410545cab727972892bcdce4e6aaa64566ac5882113a58",
+  "source_hashes_before": {
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "780ade5bff5b57773dcb7982eeca46e9f8627664c897261f16ff78d1d38682e6",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DLayers.java": "23e363a4d5e52ce1ad944f5915ddfee850e3d1e16edb6d9b3c1a19ace53b2f98",
+    "tests/native/Java2DRegionsNative.java": "075bfb1678347fc6ea977adba30ce5ee37d44d7cb03203ff3324a8f527fa0c20",
+    "tests/native/Java2DLayersNative.java": "103a55a6f0fb28bffe7e95935451831ad4cb394369a4afaa0c1e0c706910496d",
+    ".work/mask-marks-native-root2/procedurals-core-candidate.jar": "7970064847adff56b0410545cab727972892bcdce4e6aaa64566ac5882113a58"
+  },
+  "source_hashes_after": {
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DRegions.java": "780ade5bff5b57773dcb7982eeca46e9f8627664c897261f16ff78d1d38682e6",
+    "packages/java-processing/src/main/java/org/procedurals/processing/Java2DLayers.java": "23e363a4d5e52ce1ad944f5915ddfee850e3d1e16edb6d9b3c1a19ace53b2f98",
+    "tests/native/Java2DRegionsNative.java": "075bfb1678347fc6ea977adba30ce5ee37d44d7cb03203ff3324a8f527fa0c20",
+    "tests/native/Java2DLayersNative.java": "103a55a6f0fb28bffe7e95935451831ad4cb394369a4afaa0c1e0c706910496d",
+    ".work/mask-marks-native-root2/procedurals-core-candidate.jar": "7970064847adff56b0410545cab727972892bcdce4e6aaa64566ac5882113a58"
+  },
+  "binding_verified": true,
+  "output": "{\"measurement\":{\"regions\":4,\"width\":720,\"height\":480,\"warmups\":2,\"repetitions\":1,\"elapsed_ns\":6377994,\"checksum\":\"17284405515086430208\"}}\n{\"status\":\"passed\"}\n{\"measurement\":{\"width\":720,\"height\":480,\"warmups\":2,\"repetitions\":2,\"elapsed_ns\":9856250,\"checksum\":\"4586084440202018816\"}}\n{\"status\":\"passed\"}\n",
+  "scope": "candidate-JAR native adapter probes only; no acceptance record",
+  "candidate_source_report": {
+    "path": "/home/colin/dev/procedural/.work/mask-marks-native-root2/result.json",
+    "sha256": "1d2da986d1f5a6c340a99bfc9453802ed47da2b0bd7688f3b85abcf441d1a734"
+  },
+  "runtime_inputs": {
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    "/home/colin/dev/procedural/.work/mask-marks-native-root2/procedurals-core-candidate.jar": "7970064847adff56b0410545cab727972892bcdce4e6aaa64566ac5882113a58"
+  },
+  "commands": [
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "8",
+        "-cp",
+        "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar:/home/colin/dev/procedural/.work/mask-marks-native-root2/procedurals-core-candidate.jar",
+        "-d",
+        "/home/colin/dev/procedural/.work/java2d-adapters-root2/classes",
+        "/home/colin/dev/procedural/tests/native/Java2DRegionsNative.java",
+        "/home/colin/dev/procedural/tests/native/Java2DLayersNative.java"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/colin/dev/procedural/tools/with_native_render_lock.py",
+        "--timeout",
+        "120",
+        "--",
+        "bash",
+        "-lc",
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java -Duser.home=/home/colin/dev/procedural/.work/java2d-adapters-root2/home -cp /home/colin/dev/procedural/.work/java2d-adapters-root2/classes:/home/colin/dev/procedural/.work/mask-marks-native-root2/procedurals-core-candidate.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar Java2DRegionsNative && /home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java -Duser.home=/home/colin/dev/procedural/.work/java2d-adapters-root2/home -cp /home/colin/dev/procedural/.work/java2d-adapters-root2/classes:/home/colin/dev/procedural/.work/mask-marks-native-root2/procedurals-core-candidate.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar Java2DLayersNative"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Cannot run sketch without a display. This initial invocation omitted xvfb-run; no sketch callback executed."
+    },
+    {
+      "argv": [
+        "python3",
+        "/home/colin/dev/procedural/tools/with_native_render_lock.py",
+        "--timeout",
+        "120",
+        "--",
+        "xvfb-run",
+        "-a",
+        "bash",
+        "-lc",
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java -Duser.home=/home/colin/dev/procedural/.work/java2d-adapters-root2/home -cp /home/colin/dev/procedural/.work/java2d-adapters-root2/classes:/home/colin/dev/procedural/.work/mask-marks-native-root2/procedurals-core-candidate.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar Java2DRegionsNative && /home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java -Duser.home=/home/colin/dev/procedural/.work/java2d-adapters-root2/home -cp /home/colin/dev/procedural/.work/java2d-adapters-root2/classes:/home/colin/dev/procedural/.work/mask-marks-native-root2/procedurals-core-candidate.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar Java2DLayersNative"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"measurement\":{\"regions\":4,\"width\":720,\"height\":480,\"warmups\":2,\"repetitions\":1,\"elapsed_ns\":6377994,\"checksum\":\"17284405515086430208\"}}\n{\"status\":\"passed\"}\n{\"measurement\":{\"width\":720,\"height\":480,\"warmups\":2,\"repetitions\":2,\"elapsed_ns\":9856250,\"checksum\":\"4586084440202018816\"}}\n{\"status\":\"passed\"}\n",
+      "stderr": ""
+    }
+  ]
+}

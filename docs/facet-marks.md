@@ -86,3 +86,15 @@ mark weight in your own piece when you want stronger coverage.
 For the exact topology, mapping, work-budget, and ownership rules, see the
 [Delaunay operation contract](../catalog/operations/delaunay-2d.json). FacetMarks
 adds no new operation or rendering API.
+
+## Keep your site metadata through triangulation
+
+`Delaunay2D.triangulate` accepts ordered `[x,y]` point pairs and an explicit `maxWork`.
+Duplicate positions collapse to a canonical vertex. Do not assume a returned vertex's
+index is the original input index: use `inputVertexAt(inputOrdinal)` to map any input,
+including a duplicate, to its canonical vertex. `sourceIndexAt(vertexOrdinal)` maps back
+to the first supplied ordinal represented by that vertex.
+
+Use these mappings when colors, sizes or other attributes belong to your supplied sites.
+If duplicate sites have different attributes, choosing the first or combining them is an
+explicit artistic policy; triangulation does not merge your metadata for you.

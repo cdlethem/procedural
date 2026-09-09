@@ -1,0 +1,58 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "RadialPull2D pure Java core only; public workflow, distribution and ports pending",
+  "evidence": {
+    "path": "evidence/conformance/radial-pull-java.json",
+    "sha256": "41be7dbe415ae94e110792c9d94a0a52764903cc0a9281703def5178aefd96b7"
+  },
+  "contract": {
+    "path": "design/operations/radial-pull-contract.md",
+    "sha256": "f2023bebebc49949d91115a1cabfa05cc0e3f85c5662bbb24e730aaf05445ddf"
+  },
+  "verified": [
+    "Root checked current implementation and runner against contract, not worker status summaries.",
+    "22 constructor cases,20 exact point expectations through both constructors and all three query forms;6 malformed query cases.",
+    "Analytic cardinal/3-4-5, fractional/general power, ordered cancellation and add-query-once fixtures independently derived; oracle regenerates byte-for-byte.",
+    "Root verified immutable descriptors, permitted carriers, positive exposed zero and allocation-free target loop.",
+    "Native ownership/carrier tests and distinct accumulated/final-y overflow cases pass with unchanged output targets.",
+    "Live bound source/runtime/generated-class hashes match passed run.",
+    "Source-bound catalog and ledger contract gates pass; renderer and artist workflow acceptance separate."
+  ],
+  "corrections": [
+    "Fixed final-y overflow partial target write; checked both final coordinates before commit.",
+    "Fixed serialized row boxed-number mutation failure; preserved ownership test.",
+    "Root corrected exposed-input versus intermediate-zero normalization.",
+    "Repaired runner after overlapping worker edit; exact overload and binding coverage checked in actual file."
+  ],
+  "performance": {
+    "warmup": "3 runs of8 influences/20000 queries",
+    "workloads": [
+      {
+        "influences": 1,
+        "queries": 1,
+        "elapsed_ns": 1310,
+        "checksum_unsigned64": "0"
+      },
+      {
+        "influences": 8,
+        "queries": 250000,
+        "elapsed_ns": 18320942,
+        "checksum_unsigned64": "1801269633447638439"
+      },
+      {
+        "influences": 64,
+        "queries": 250000,
+        "elapsed_ns": 142629834,
+        "checksum_unsigned64": "5124211797731899658"
+      }
+    ],
+    "interpretation": "Observed pinned OpenJDK17 measurements; active-center queries, no time guarantee. O(N) query;32N-byte packed influence payload plus object overhead; target overload allocates no success-path objects."
+  },
+  "limits": [
+    "No new original recreation.",
+    "Private CP19 visual results are design evidence; public PullMarks has not run.",
+    "Java0.21 remains21 shipped operations/workflows until new bundle accepted."
+  ]
+}

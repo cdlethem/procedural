@@ -1,0 +1,734 @@
+{
+  "operation": "geometry.radial-pull-2d",
+  "version": "0.1.0",
+  "catalog_sha256": "63e089d2ab61b4a4e8cb1f48684cb69e7268574ebebd15d34e405b9595366788",
+  "oracle": "tools/build_radial_pull_fixtures.py; analytic cardinal/3-4-5 distances, Fraction-rounded primitives and independently rounded Decimal sqrt and checked general pow primitive. No native evaluator imported.",
+  "cases": [
+    {
+      "id": "empty",
+      "input": {
+        "influences": []
+      },
+      "serialized": {
+        "influences": []
+      },
+      "queries": [
+        {
+          "input": [
+            0,
+            0
+          ],
+          "output": [
+            0,
+            0
+          ]
+        },
+        {
+          "input": [
+            -3,
+            4
+          ],
+          "output": [
+            -3,
+            4
+          ]
+        },
+        {
+          "input": [
+            -0.0,
+            -0.0
+          ],
+          "output": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative-zero-descriptor",
+      "input": {
+        "influences": [
+          [
+            -0.0,
+            -0.0,
+            1,
+            1
+          ]
+        ]
+      },
+      "serialized": {
+        "influences": [
+          [
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      },
+      "queries": [
+        {
+          "input": [
+            -0.0,
+            -0.0
+          ],
+          "output": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cardinal-center-rim",
+      "input": {
+        "influences": [
+          [
+            200,
+            240,
+            120,
+            2
+          ]
+        ]
+      },
+      "serialized": {
+        "influences": [
+          [
+            200,
+            240,
+            120,
+            2
+          ]
+        ]
+      },
+      "queries": [
+        {
+          "input": [
+            200,
+            240
+          ],
+          "output": [
+            200,
+            240
+          ]
+        },
+        {
+          "input": [
+            320,
+            240
+          ],
+          "output": [
+            320,
+            240
+          ]
+        },
+        {
+          "input": [
+            321,
+            240
+          ],
+          "output": [
+            321,
+            240
+          ]
+        },
+        {
+          "input": [
+            260,
+            240
+          ],
+          "output": [
+            170,
+            240
+          ]
+        },
+        {
+          "input": [
+            200,
+            180
+          ],
+          "output": [
+            200,
+            270
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative-off-axis",
+      "input": {
+        "influences": [
+          [
+            0,
+            0,
+            10,
+            2
+          ]
+        ]
+      },
+      "serialized": {
+        "influences": [
+          [
+            0,
+            0,
+            10,
+            2
+          ]
+        ]
+      },
+      "queries": [
+        {
+          "input": [
+            -3,
+            -4
+          ],
+          "output": [
+            1.5,
+            2.0
+          ]
+        },
+        {
+          "input": [
+            3,
+            4
+          ],
+          "output": [
+            -1.5,
+            -2.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fractional-power",
+      "input": {
+        "influences": [
+          [
+            0,
+            0,
+            10,
+            0.5
+          ]
+        ]
+      },
+      "serialized": {
+        "influences": [
+          [
+            0,
+            0,
+            10,
+            0.5
+          ]
+        ]
+      },
+      "queries": [
+        {
+          "input": [
+            5,
+            0
+          ],
+          "output": [
+            2.0710678118654755,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "general-power",
+      "input": {
+        "influences": [
+          [
+            0,
+            0,
+            10,
+            1.3
+          ]
+        ]
+      },
+      "serialized": {
+        "influences": [
+          [
+            0,
+            0,
+            10,
+            1.3
+          ]
+        ]
+      },
+      "queries": [
+        {
+          "input": [
+            5,
+            0
+          ],
+          "output": [
+            -0.9387380182188227,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "summed-overlap",
+      "input": {
+        "influences": [
+          [
+            0,
+            0,
+            10,
+            2
+          ],
+          [
+            10,
+            0,
+            10,
+            2
+          ]
+        ]
+      },
+      "serialized": {
+        "influences": [
+          [
+            0,
+            0,
+            10,
+            2
+          ],
+          [
+            10,
+            0,
+            10,
+            2
+          ]
+        ]
+      },
+      "queries": [
+        {
+          "input": [
+            5,
+            0
+          ],
+          "output": [
+            5,
+            0
+          ]
+        },
+        {
+          "input": [
+            0,
+            0
+          ],
+          "output": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "duplicates",
+      "input": {
+        "influences": [
+          [
+            0,
+            0,
+            10,
+            2
+          ],
+          [
+            0,
+            0,
+            10,
+            2
+          ]
+        ]
+      },
+      "serialized": {
+        "influences": [
+          [
+            0,
+            0,
+            10,
+            2
+          ],
+          [
+            0,
+            0,
+            10,
+            2
+          ]
+        ]
+      },
+      "queries": [
+        {
+          "input": [
+            5,
+            0
+          ],
+          "output": [
+            -10,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ordered-cancellation",
+      "input": {
+        "influences": [
+          [
+            1,
+            0,
+            1e+16,
+            1
+          ],
+          [
+            -1,
+            0,
+            1e+16,
+            1
+          ],
+          [
+            1,
+            0,
+            2,
+            1
+          ]
+        ]
+      },
+      "serialized": {
+        "influences": [
+          [
+            1,
+            0,
+            1e+16,
+            1
+          ],
+          [
+            -1,
+            0,
+            1e+16,
+            1
+          ],
+          [
+            1,
+            0,
+            2,
+            1
+          ]
+        ]
+      },
+      "queries": [
+        {
+          "input": [
+            0,
+            0
+          ],
+          "output": [
+            1.0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ordered-cancellation-reversed",
+      "input": {
+        "influences": [
+          [
+            1,
+            0,
+            1e+16,
+            1
+          ],
+          [
+            1,
+            0,
+            2,
+            1
+          ],
+          [
+            -1,
+            0,
+            1e+16,
+            1
+          ]
+        ]
+      },
+      "serialized": {
+        "influences": [
+          [
+            1,
+            0,
+            1e+16,
+            1
+          ],
+          [
+            1,
+            0,
+            2,
+            1
+          ],
+          [
+            -1,
+            0,
+            1e+16,
+            1
+          ]
+        ]
+      },
+      "queries": [
+        {
+          "input": [
+            0,
+            0
+          ],
+          "output": [
+            2.0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "add-query-once",
+      "input": {
+        "influences": [
+          [
+            10000000000000002,
+            0,
+            3,
+            1
+          ],
+          [
+            10000000000000002,
+            0,
+            3,
+            1
+          ]
+        ]
+      },
+      "serialized": {
+        "influences": [
+          [
+            10000000000000002,
+            0,
+            3,
+            1
+          ],
+          [
+            10000000000000002,
+            0,
+            3,
+            1
+          ]
+        ]
+      },
+      "queries": [
+        {
+          "input": [
+            10000000000000000,
+            0
+          ],
+          "output": [
+            1.0000000000000002e+16,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "infinite-separation-outside",
+      "input": {
+        "influences": [
+          [
+            1.7976931348623157e+308,
+            0,
+            1,
+            2
+          ]
+        ]
+      },
+      "serialized": {
+        "influences": [
+          [
+            1.7976931348623157e+308,
+            0,
+            1,
+            2
+          ]
+        ]
+      },
+      "queries": [
+        {
+          "input": [
+            -1.7976931348623157e+308,
+            0
+          ],
+          "output": [
+            -1.7976931348623157e+308,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "missing",
+      "input": {},
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "extra",
+      "input": {
+        "influences": [],
+        "seed": 42
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "shape",
+      "input": [],
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "null-list",
+      "input": {
+        "influences": null
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "short-row",
+      "input": {
+        "influences": [
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "long-row",
+      "input": {
+        "influences": [
+          [
+            0,
+            0,
+            1,
+            2,
+            3
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero-radius",
+      "input": {
+        "influences": [
+          [
+            0,
+            0,
+            0,
+            2
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "negative-power",
+      "input": {
+        "influences": [
+          [
+            0,
+            0,
+            1,
+            -1
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero-power",
+      "input": {
+        "influences": [
+          [
+            0,
+            0,
+            1,
+            0
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "bool",
+      "input": {
+        "influences": [
+          [
+            false,
+            0,
+            1,
+            2
+          ]
+        ]
+      },
+      "error": "INVALID_INPUT"
+    }
+  ],
+  "query_cases": [
+    {
+      "id": "short",
+      "input": [
+        0
+      ],
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "long",
+      "input": [
+        0,
+        0,
+        0
+      ],
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "bool",
+      "input": [
+        true,
+        0
+      ],
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "null",
+      "input": [
+        0,
+        null
+      ],
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "shape",
+      "input": {},
+      "error": "INVALID_QUERY"
+    },
+    {
+      "id": "string",
+      "input": [
+        "0",
+        0
+      ],
+      "error": "INVALID_QUERY"
+    }
+  ]
+}

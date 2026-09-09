@@ -3,7 +3,14 @@
 Current maintainer objective: build a feature-complete Java implementation. Ports are
 paused per `porting-resume.md`; recipes/MCP/web remain a separate roadmap, not prerequisites
 for making the native Java library useful. This plan does not claim feature completeness
-or replace the project's mission with the current20 operations.
+or replace the project's mission with the current operation count.
+
+Execution now follows [the remaining-scope map and parallel batches](java-buildout-batches.md).
+
+Current remaining-work review: [CP29 reconciliation](../design/capabilities/java-completion-cp29-review.md).
+CP26 delivered image-driven controls and normalized separable postprocessing. Spatial masks
+and explicit image placement are delivered. Remaining family dispositions and discovery
+consistency still require review; source-specific shader behaviors are not implied.
 
 ## Completion requirements
 
@@ -28,12 +35,16 @@ The broader corpus benchmark remains a separate strict certification claim.
 
 ## Existing capability baseline
 
-Java0.20 assembles20 operations and20 workflows: field marks, integrated paths, constrained
+Java0.34 source milestone assembles30 operations and36 workflows: field marks, integrated paths, constrained
 circle placement, quadrant regions, triangle grain, endpoint and interior-cut branching,
 radial-profile meshes, glyph placement, Delaunay facets, target springs and occupied lattice
 paths, raster remapping, positioned color ramps, noise-band paths, smooth closed curves and binary panel layouts,
-plus relief/city/landscape compositions. Only three selected original structural
-recreations are demonstrated. Consult current operation attestations rather than historical
+plus retained caller-selected rectangle cuts, pointer-target and tapered-body workflows,
+and relief/city/landscape compositions. LayerMarks adds image/callback region content, masked
+source-over and two-input crossfade. ClipMarks adds retained simple-polygon segment clipping.
+Four selected original structural
+recreations are demonstrated; Curvespace is a separate repository example, outside the
+accepted Java0.25 archive. Consult current operation attestations rather than historical
 status paragraphs in the provisional API design.
 
 ## Completed batch: raster warping (CP13)
@@ -122,12 +133,70 @@ and parameter-sweep tooling and broader evidence-based idiom coverage remain inc
 
 ## Artist render tooling after CP16
 
-The opt-in JAVA2D first-frame helper tools/render_java.py supplies explicit seed/numeric
+The opt-in JAVA2D selected-frame helper tools/render_java.py supplies explicit seed/numeric
 parameters, one-axis sweeps and contact sheets; docs/rendering-java.md describes the hook.
 This closes a concrete static comparison workflow, not all renderer/animation tooling.
-P2D/P3D, assets and animation batching remain open, alongside broader major-idiom coverage.
+Frame selection now executes every preceding draw, including accumulating/noLoop sketches.
+P2D/P3D, assets and multi-frame animation export remain open, alongside broader major-idiom coverage.
 
 CP17 adds BinaryCellPartition2D and PanelMarks: irregular two-way integer-cell cuts,
 attempted-versus-successful split accounting, and independent decoration of retained cells.
 This extends equal-quadrant layouts; it does not cover unequal four-way splitting, cell
 deletion or general polygon subdivision. No new original recreation is claimed.
+
+CP18 adds GradientNoise3D01 and DepthMarks: explicit-depth planar edits and volumetric
+face-color samples on retained radial geometry. Core, actual P3D lifecycle and extracted
+consumer checks are separate evidence. No Processing-noise replay, octave stack, generic
+animation executor or new original recreation is claimed.
+
+CP19 adds RadialPull2D/PullMarks: ordered localized radial folding, radius/power edits and
+retained contour transfer. Center discontinuities and self-intersections are explicit;
+sequential pushes and stochastic attraction are distinct remaining computations. No new
+original recreation is claimed.
+
+Curvespace now demonstrates a fourth complete structural recreation using RegularGrid and
+RadialPull2D, with actual P2D additive drawing and reviewed edits/reset/cached save. See
+[curvespace-recreation.md](curvespace-recreation.md). This adds composition evidence rather
+than another operation; general render/animation helper scope remains incomplete.
+
+## CP20: noncircular placement
+
+ConvexPolygonPlacements2D and PolygonMarks now provide greedy rejection of overlapping
+supplied strict convex polygons. Thickness/shape edits reuse proposal poses; recolor retains
+placements, and diamond transfer uses the same filter. Exact symmetric containment/contact
+intentionally corrects the celular helpers rather than replaying their nesting bug.
+Core, native workflow and Java0.23 source-bundle acceptance are recorded separately in
+`evidence/distribution/cp20-java-review.json`.
+No additional original recreation or non-Java target is claimed.
+
+## CP26: image controls and composable filtering
+
+ProcessingImageField samples retained image attributes for independent mark decisions.
+SeparableBlur2D and ProcessingImageFilters soften retained content, with BlurMarks showing
+axis edits and a masked sharp/filter transition. ImageFieldMarks demonstrates size, visibility
+and color consumers with fixed positions. Both extracted workflows pass; see
+`evidence/distribution/cp26-java-review.json`. No additional original recreation is claimed.
+
+## CP27: sequential outward deformation
+
+DiscProjection2D and ProjectionMarks add outward point movement through supplied ordered
+discs, with contour/line transfer and explicit strength/order edits. This addresses the
+projection component of colidion; owner-ray recovery, its fill heuristic and full original
+recreation remain outside the claim. It is not Voronoi or guaranteed collision avoidance.
+See `evidence/distribution/cp27-java-review.json`. The composition guide now explains
+partition callbacks, image content, masks and effect ordering. Remaining family
+dispositions, reference completeness and the final user journey still need reconciliation.
+
+## CP28: annular forms
+
+AnnularMesh3D and AnnularMarks close the explicit washer-topology gap: inner/outer walls,
+annular end faces, retained flat normals and angular identity. Width, depth and facets
+are independent of color and arrangement. All33 extracted examples compile; the11-state
+native workflow and exact restored/save outputs passed root review. See
+`evidence/distribution/cp28-java-review.json`, pushed at
+`f43629a931980f8572577380f1a8069f50f9ec56`.
+
+This is a scoped capability addition, not full aros recreation or general solid modeling.
+The package still records775 Javadoc warnings; public-method discovery and final
+requirement-by-requirement completion review remain open. Unsupported general Voronoi,
+text shaping and grammar rewriting must not silently count as supported.
