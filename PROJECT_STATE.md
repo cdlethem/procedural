@@ -1,5 +1,28 @@
 # Project state
 
+## Java completion accepted by root; integration pending
+
+Root inspected the five unchanged requirements against current31operation bindings,
+37example extracted distribution, current renderer/palette tooling reviews, composition
+and rare-family boundaries, and four scoped recreation records.34focused tests and catalog
+check pass. Acceptance: evidence/distribution/java-completion-review.json, with bound
+records and explicit unsupported scope. Java0.35 remains the accepted runtime baseline;
+installed start page changes no classes. Next commit/push this completion checkpoint and
+mark active Java goal complete. Recipes/web/MCP and port integration remain separate;
+Android ProfileMarks draft untouched.
+
+## Concrete Java backlog reconciled; final root acceptance audit next
+
+Root reloaded31operation attestations with no errors and checked installed-start review,
+current composition guide and explicit rare-family dispositions. Terra bounded read-only
+challenge found no concrete unmet requirement in the five-item Java completion plan.
+Recorded reasoning in design/capabilities/java-completion-035-review.md: zero admitted
+unimplemented operations/workflows; five technique attestations are scope limits, not
+missing native workflow acceptance. Historical review prose does not create a new feature
+queue. Next root must inspect per-requirement acceptance records and their current bindings
+before any completion claim; worker conclusion alone is insufficient. Recipe/web/MCP remain
+separate downstream acceptance. Preserve Android draft.
+
 ## Installed bundle start page checked; documentation binding repaired
 
 Added packages/java/BUNDLE-README.md to source builder as installed README.md. Fresh

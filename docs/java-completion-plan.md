@@ -1,16 +1,15 @@
 # Feature-complete Java buildout
 
-Current maintainer objective: build a feature-complete Java implementation. Ports are
-paused per `porting-resume.md`; recipes/MCP/web remain a separate roadmap, not prerequisites
-for making the native Java library useful. This plan does not claim feature completeness
-or replace the project's mission with the current operation count.
+The Java implementation objective is accepted against the five requirements below in
+[root's completion review](../evidence/distribution/java-completion-review.json).
+Java0.35 supplies 31 operations and 37 editable workflows. The installed-start-page
+checkpoint adds direct navigation without changing runtime classes.
 
-Execution now follows [the remaining-scope map and parallel batches](java-buildout-batches.md).
-
-Current remaining-work review: [Java0.35 reconciliation](../design/capabilities/java-completion-035-review.md).
-CP26 delivered image-driven controls and normalized separable postprocessing. Spatial masks
-and explicit image placement are delivered. Remaining family dispositions and discovery
-consistency still require review; source-specific shader behaviors are not implied.
+This accepts the documented Java capability surface and its explicit family boundaries.
+It does not certify all 901 originals, equivalent ports, a general recipe executor, web or
+MCP. Those remain separate roadmap work. The historical batch notes below preserve their
+original scopes; pending statements there are superseded by the linked completion review
+only where that review supplies the later evidence.
 
 ## Completion requirements
 

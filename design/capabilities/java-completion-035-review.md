@@ -49,3 +49,37 @@ Java and PlacementMarks guides. No Java source changed; source Javadoc omissions
 explicit, rather than claiming a clean reference build. No runtime revalidation is needed
 for this prose-only batch. Port handoff now pins the pushed Java0.35 commit and distinguishes
 new contact semantics, shared arithmetic, masked adapters and workflows from prior cores.
+
+## Release gate reconciliation after installed start-page review
+
+Root reloaded current operation attestations after restoring the accepted PlacementMarks
+bytes: all 31 operation bindings validate without errors. The installed start-page review
+in evidence/documentation/java-bundle-start-review.json records 37 extracted example
+compilations, identical core/adapter class bytes, and 17 resolving README links. The direct
+value guide closes the identified reader-facing palette/placement explanations; source
+Javadoc omissions remain disclosed and are not a warning-count acceptance target.
+
+Terra performed a bounded read-only challenge against the five unchanged completion
+requirements and found no concrete unmet requirement in that scope. Root independently
+confirmed the explicit family dispositions: grammar rewriting, font outlines/shaping,
+nearest-site polygons and arbitrary solids are unsupported extensions, not admitted
+implementations waiting in a queue. Annular topology, polygon clipping and first-contact
+queries close the concrete geometry leads raised by those earlier reviews.
+
+Five unvalidated technique attestations remain honest scope limits. They must not be
+promoted, but the completion plan requires representative native workflows, not a separate
+whole-technique attestation for every operation. Likewise, the completed Java ray-web
+transfer is evidenced in evidence/workflows/contact-marks/root-review.json; earlier native
+planning prose is not evidence that the transfer is still missing. Full plasma007 recreation
+remains unclaimed.
+
+There are zero currently admitted but unimplemented core operations or starter workflows.
+This is a queue statement, not a new completeness definition. The next action is root's
+final requirement-by-requirement acceptance audit using the current native, reproduction,
+performance, tooling and distribution records. The worker's conclusion and this reconciliation
+do not themselves grant completion. Do not invent another algorithm or repeat a documentation
+cleanup solely because a historical paragraph says that review remains open.
+
+The recipe schema/executor remains a separately labeled draft. Web/MCP architecture can
+use the established Java surface, but recipe execution, browser preview and four-target
+export need their own acceptance; they are not retroactive Java release requirements.
