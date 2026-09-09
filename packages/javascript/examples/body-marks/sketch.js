@@ -100,5 +100,10 @@ new window.p5((p) => {
     const button = event.target.closest("button[data-action]");
     if (button) action(button.dataset.action);
   });
-  p.keyPressed = () => action(p.key === " " ? " " : String(p.key).toLowerCase());
+  p.keyPressed = () => {
+    action(p.key === " " ? " " : String(p.key).toLowerCase());
+    // Space is our run/pause shortcut. Prevent a focused button from also receiving
+    // the browser's synthetic click, which would toggle the simulation a second time.
+    if (p.key === " ") return false;
+  };
 }, art);
