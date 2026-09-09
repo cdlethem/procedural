@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Body marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Body marks</h1>
+  <p>Twelve retained heads step forward one tick per frame through a seeded field
+    while each body's spine retraces backward from the new head, drawn as a
+    tapered body outline or a bare centerline.</p>
+  <div id="controls" aria-label="Body marks controls">
+    <button data-action=" "><kbd>Space</kbd> run / pause</button>
+    <button data-action="."><kbd>.</kbd> one paused tick</button>
+    <button data-action="m"><kbd>M</kbd> body / centerline</button>
+    <button data-action="w"><kbd>W</kbd> taper 0.7 / 2.0</button>
+    <button data-action="0"><kbd>0</kbd> reset</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated tapered bodies"></div>
+  <p id="status" role="status">Preparing bodies&hellip;</p>
+  <p>Edit the composition in <code>body-marks.js</code>: the head layout, field
+    scale, step distance, and spine length rebuild the traced geometry each tick;
+    the sketch's body/centerline draw modes are the place to invent another
+    treatment of the same spines. These values describe this piece.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>
