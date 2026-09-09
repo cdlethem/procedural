@@ -1,0 +1,514 @@
+{
+  "status": "reviewed-private-study",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Exact closed-contact semantics investigation and native rendering of precomputed data; no Java core, public API, parameter-range or recreation acceptance.",
+  "source_sha256": {
+    "tools/diagnostics/clipping/nearest_hit_study.py": "e3fb962bc73c4f544eba97a81becd5208ad1015c7acc3bd047303199058695ea",
+    "tools/diagnostics/clipping/closed_contact_study.py": "acbf55dd35614e1cec4ff29f9df6a3e7950a736ee88d55005578073f69b3da6a",
+    "tools/diagnostics/clipping/NearestHitView.java": "b4c8ef2792314614bd8635a00c30cf621d19148c39f4973caf0fc0937fe75d4f"
+  },
+  "numeric": {
+    "status": "passed-private-exact-study",
+    "witnesses": 13,
+    "views": {
+      "baseline": {
+        "rows": 102,
+        "hits": [
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 18,
+            "contact_end": "59/80"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 18,
+            "contact_end": "0"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 18,
+            "contact_end": "21/80"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 18,
+            "contact_end": "0"
+          },
+          {
+            "panel": 0,
+            "t": "17/160",
+            "obstacle": 11,
+            "contact_end": "17/160"
+          },
+          {
+            "panel": 0,
+            "t": "17/80",
+            "obstacle": 14,
+            "contact_end": "17/80"
+          },
+          {
+            "panel": 0,
+            "t": "7/40",
+            "obstacle": 3,
+            "contact_end": "7/40"
+          },
+          {
+            "panel": 0,
+            "t": "9/80",
+            "obstacle": 6,
+            "contact_end": "9/80"
+          },
+          {
+            "panel": 0,
+            "t": "1/80",
+            "obstacle": 15,
+            "contact_end": "1/80"
+          },
+          {
+            "panel": 0,
+            "t": "9/80",
+            "obstacle": 4,
+            "contact_end": "9/80"
+          },
+          {
+            "panel": 0,
+            "t": "5/32",
+            "obstacle": 11,
+            "contact_end": "5/32"
+          },
+          {
+            "panel": 0,
+            "t": "5/32",
+            "obstacle": 9,
+            "contact_end": "5/32"
+          },
+          {
+            "panel": 0,
+            "t": "17/160",
+            "obstacle": 5,
+            "contact_end": "17/160"
+          },
+          {
+            "panel": 0,
+            "t": "39/160",
+            "obstacle": 0,
+            "contact_end": "39/160"
+          },
+          {
+            "panel": 0,
+            "t": "23/80",
+            "obstacle": 19,
+            "contact_end": "23/80"
+          },
+          {
+            "panel": 0,
+            "t": "1/80",
+            "obstacle": 0,
+            "contact_end": "1/80"
+          },
+          {
+            "panel": 0,
+            "t": "1/80",
+            "obstacle": 9,
+            "contact_end": "1/80"
+          },
+          {
+            "panel": 0,
+            "t": "17/80",
+            "obstacle": 4,
+            "contact_end": "17/80"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 0,
+            "contact_end": "21/80"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 0,
+            "contact_end": "0"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 0,
+            "contact_end": "59/80"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 0,
+            "contact_end": "0"
+          },
+          {
+            "panel": 1,
+            "t": "319/510",
+            "obstacle": 3,
+            "contact_end": "319/510"
+          },
+          {
+            "panel": 1,
+            "t": "119/310",
+            "obstacle": 3,
+            "contact_end": "119/310"
+          },
+          {
+            "panel": 1,
+            "t": "179/364",
+            "obstacle": 0,
+            "contact_end": "179/364"
+          },
+          {
+            "panel": 1,
+            "t": "201/386",
+            "obstacle": 0,
+            "contact_end": "201/386"
+          },
+          {
+            "panel": 1,
+            "t": "438/811",
+            "obstacle": 1,
+            "contact_end": "438/811"
+          },
+          {
+            "panel": 1,
+            "t": "481/854",
+            "obstacle": 1,
+            "contact_end": "481/854"
+          },
+          {
+            "panel": 1,
+            "t": "41/84",
+            "obstacle": 2,
+            "contact_end": "41/84"
+          },
+          {
+            "panel": 1,
+            "t": "49/92",
+            "obstacle": 2,
+            "contact_end": "49/92"
+          },
+          {
+            "panel": 1,
+            "t": "220/411",
+            "obstacle": 3,
+            "contact_end": "220/411"
+          },
+          {
+            "panel": 1,
+            "t": "285/476",
+            "obstacle": 3,
+            "contact_end": "285/476"
+          }
+        ]
+      },
+      "shifted": {
+        "rows": 102,
+        "hits": [
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 18,
+            "contact_end": "59/80"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 18,
+            "contact_end": "0"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 18,
+            "contact_end": "21/80"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 18,
+            "contact_end": "0"
+          },
+          {
+            "panel": 0,
+            "t": "1/16",
+            "obstacle": 11,
+            "contact_end": "1/16"
+          },
+          {
+            "panel": 0,
+            "t": "41/160",
+            "obstacle": 14,
+            "contact_end": "41/160"
+          },
+          {
+            "panel": 0,
+            "t": "7/32",
+            "obstacle": 3,
+            "contact_end": "7/32"
+          },
+          {
+            "panel": 0,
+            "t": "11/160",
+            "obstacle": 6,
+            "contact_end": "11/160"
+          },
+          {
+            "panel": 0,
+            "t": "1/80",
+            "obstacle": 15,
+            "contact_end": "1/80"
+          },
+          {
+            "panel": 0,
+            "t": "11/160",
+            "obstacle": 4,
+            "contact_end": "11/160"
+          },
+          {
+            "panel": 0,
+            "t": "5/32",
+            "obstacle": 11,
+            "contact_end": "5/32"
+          },
+          {
+            "panel": 0,
+            "t": "5/32",
+            "obstacle": 9,
+            "contact_end": "5/32"
+          },
+          {
+            "panel": 0,
+            "t": "1/16",
+            "obstacle": 5,
+            "contact_end": "1/16"
+          },
+          {
+            "panel": 0,
+            "t": "39/160",
+            "obstacle": 0,
+            "contact_end": "39/160"
+          },
+          {
+            "panel": 0,
+            "t": "23/80",
+            "obstacle": 19,
+            "contact_end": "23/80"
+          },
+          {
+            "panel": 0,
+            "t": "1/80",
+            "obstacle": 0,
+            "contact_end": "1/80"
+          },
+          {
+            "panel": 0,
+            "t": "1/80",
+            "obstacle": 9,
+            "contact_end": "1/80"
+          },
+          {
+            "panel": 0,
+            "t": "41/160",
+            "obstacle": 4,
+            "contact_end": "41/160"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 0,
+            "contact_end": "21/80"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 0,
+            "contact_end": "0"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 0,
+            "contact_end": "59/80"
+          },
+          {
+            "panel": 0,
+            "t": "0",
+            "obstacle": 0,
+            "contact_end": "0"
+          },
+          {
+            "panel": 1,
+            "t": "410/573",
+            "obstacle": 3,
+            "contact_end": "410/573"
+          },
+          {
+            "panel": 1,
+            "t": "217/380",
+            "obstacle": 3,
+            "contact_end": "217/380"
+          },
+          {
+            "panel": 1,
+            "t": "89/196",
+            "obstacle": 0,
+            "contact_end": "89/196"
+          },
+          {
+            "panel": 1,
+            "t": "113/220",
+            "obstacle": 0,
+            "contact_end": "113/220"
+          },
+          {
+            "panel": 1,
+            "t": "438/811",
+            "obstacle": 1,
+            "contact_end": "438/811"
+          },
+          {
+            "panel": 1,
+            "t": "481/854",
+            "obstacle": 1,
+            "contact_end": "481/854"
+          },
+          {
+            "panel": 1,
+            "t": "41/84",
+            "obstacle": 2,
+            "contact_end": "41/84"
+          },
+          {
+            "panel": 1,
+            "t": "49/92",
+            "obstacle": 2,
+            "contact_end": "49/92"
+          },
+          {
+            "panel": 1,
+            "t": "227/390",
+            "obstacle": 3,
+            "contact_end": "227/390"
+          },
+          {
+            "panel": 1,
+            "t": "675/1001",
+            "obstacle": 3,
+            "contact_end": "675/1001"
+          }
+        ]
+      }
+    }
+  },
+  "native": {
+    "status": "passed-private-native-view",
+    "inputs_before": {
+      "tools/diagnostics/clipping/NearestHitView.java": "b4c8ef2792314614bd8635a00c30cf621d19148c39f4973caf0fc0937fe75d4f",
+      "tools/diagnostics/clipping/closed_contact_study.py": "acbf55dd35614e1cec4ff29f9df6a3e7950a736ee88d55005578073f69b3da6a",
+      "tools/diagnostics/clipping/nearest_hit_study.py": "e3fb962bc73c4f544eba97a81becd5208ad1015c7acc3bd047303199058695ea",
+      ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+      ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+      ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+      ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+      ".work/closed-contact-study-root1/baseline.tsv": "1bfc30a3470b0e06d101f0674368527ca591bbd46d6697192d47f10b1f4e8776",
+      ".work/closed-contact-study-root1/shifted.tsv": "209600e9c541080c9981a14c82b6b5a22d256cf468ceaff14b57e19719113357"
+    },
+    "commands": [
+      {
+        "command": [
+          "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+          "--release",
+          "8",
+          "-cp",
+          "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+          "-d",
+          "/home/colin/dev/procedural/.work/closed-contact-study-root1/classes",
+          "/home/colin/dev/procedural/tools/diagnostics/clipping/NearestHitView.java"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "python3",
+          "tools/with_native_render_lock.py",
+          "--timeout",
+          "60",
+          "--",
+          "xvfb-run",
+          "-a",
+          "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+          "-cp",
+          "/home/colin/dev/procedural/.work/closed-contact-study-root1/classes:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+          "NearestHitView",
+          "/home/colin/dev/procedural/.work/closed-contact-study-root1/baseline.tsv",
+          "/home/colin/dev/procedural/.work/closed-contact-study-root1/baseline.png"
+        ],
+        "returncode": 0,
+        "stdout": "{\"status\":\"passed\",\"renderer\":\"processing.awt.PGraphicsJava2D\",\"width\":1000,\"height\":500,\"density\":1,\"counts\":{\"obstacle\":4,\"original\":34,\"trimmed\":32,\"hit\":32}}\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "python3",
+          "tools/with_native_render_lock.py",
+          "--timeout",
+          "60",
+          "--",
+          "xvfb-run",
+          "-a",
+          "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+          "-cp",
+          "/home/colin/dev/procedural/.work/closed-contact-study-root1/classes:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+          "NearestHitView",
+          "/home/colin/dev/procedural/.work/closed-contact-study-root1/shifted.tsv",
+          "/home/colin/dev/procedural/.work/closed-contact-study-root1/shifted.png"
+        ],
+        "returncode": 0,
+        "stdout": "{\"status\":\"passed\",\"renderer\":\"processing.awt.PGraphicsJava2D\",\"width\":1000,\"height\":500,\"density\":1,\"counts\":{\"obstacle\":4,\"original\":34,\"trimmed\":32,\"hit\":32}}\n",
+        "stderr": ""
+      }
+    ],
+    "inputs_after": {
+      "tools/diagnostics/clipping/NearestHitView.java": "b4c8ef2792314614bd8635a00c30cf621d19148c39f4973caf0fc0937fe75d4f",
+      "tools/diagnostics/clipping/closed_contact_study.py": "acbf55dd35614e1cec4ff29f9df6a3e7950a736ee88d55005578073f69b3da6a",
+      "tools/diagnostics/clipping/nearest_hit_study.py": "e3fb962bc73c4f544eba97a81becd5208ad1015c7acc3bd047303199058695ea",
+      ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+      ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+      ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+      ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+      ".work/closed-contact-study-root1/baseline.tsv": "1bfc30a3470b0e06d101f0674368527ca591bbd46d6697192d47f10b1f4e8776",
+      ".work/closed-contact-study-root1/shifted.tsv": "209600e9c541080c9981a14c82b6b5a22d256cf468ceaff14b57e19719113357"
+    }
+  },
+  "images": {
+    "baseline": {
+      "path": ".work/closed-contact-study-root1/baseline.png",
+      "sha256": "26fbbcbf4d40695b00f2f17d939a1cc7f0e0d1052ef70c6a31f33bb0bb7bfad4"
+    },
+    "shifted": {
+      "path": ".work/closed-contact-study-root1/shifted.png",
+      "sha256": "0ada51a85cfcacb20d4d1a928b24611a90642e162b56de06e739fe3b962bd7bf"
+    }
+  },
+  "root_observations": [
+    "Root viewed both1000x500JAVA2D images. Left shows shortened ray segments and contact markers; right shows directed connectors ending on supplied quadrilateral edges.",
+    "Moving one ray origin and one obstacle corner produces visible contact changes in both panels.",
+    "13 exact-rational witnesses cover point/overlap/endpoint/degenerate cases and stable equal-hit selection. The view does not compute intersections in Java."
+  ],
+  "decision": "Proceed to an independently specified closed first-contact query. Include origin contact and overlap onset; callers explicitly exclude self/same-origin obstacles. Do not add epsilon or silently discard overlaps.",
+  "remaining": [
+    "Freeze language-neutral output/miss/provenance, work limits and representation-collapse semantics before Java implementation.",
+    "Review shared rational arithmetic extraction versus narrow reuse; no production refactor authorized yet.",
+    "Full Java performance/native workflow/extracted distribution proofs remain required."
+  ]
+}

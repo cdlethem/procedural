@@ -14,8 +14,9 @@
     "processing-java": {
       "core": {
         "implementation_sha256": {
-          "packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java": "3e6ecec2edae7fb53bacc67271c120c13fa0cae4d9b1f9325a0bf94e41336878",
-          "packages/java-processing/examples/ClipMarks/ClipMarks.pde": "c0c9f1007e7742f6c6a2dc306ff6a6fbd57380030bc9c9c5b99ce682de0d6744"
+          "packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java": "ba6d6e730936418c07a54c806cda5310c9bb137a2544011749b3e224cb016881",
+          "packages/java-processing/examples/ClipMarks/ClipMarks.pde": "c0c9f1007e7742f6c6a2dc306ff6a6fbd57380030bc9c9c5b99ce682de0d6744",
+          "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad"
         },
         "evidence_sha256": {
           "evidence/conformance/segment-clip-java.json": "9318b0993cca07fedae988f29cb7cc0a97fda22f57a3bed2c71f2bb831b8bcd6",
@@ -24,11 +25,13 @@
           "evidence/workflows/clip-marks/native.json": "ec2925d6a3be54290fcab5999d76c9dec4cf7cc8c1bcf28704d78a8ecc88f181",
           "evidence/workflows/clip-marks/visual-review.json": "31ace857a57e1c4b4d7cfac52e09339b0de42e9f750280380264354fb4a69bf4",
           "fixtures/operations/clip-segments-simple-polygon-2d.json": "66374afecbef9a8c7f228bcd45f8d58c45c26660378d6e61fb8ca49b8de8500c",
-          "design/operations/segment-clipping-contract-review.md": "353dc1f7df296670798f072ee8bea41aef6ad8dd76ea26e7d9393274728d014e"
+          "design/operations/segment-clipping-contract-review.md": "353dc1f7df296670798f072ee8bea41aef6ad8dd76ea26e7d9393274728d014e",
+          "evidence/conformance/nearest-contact-rational-extraction.json": "ce9ad2489f056973d9d1a5a6a53425365e91c0e5c0fb06eee04efbca891cb7a7",
+          "evidence/conformance/segment-clip-after-rational-extraction.json": "a73421e165bfaec08adedbeb1a38e88e07a92d6f84f72955a2ef3ad92cec41d7"
         },
         "acceptance_review": {
-          "path": "evidence/conformance/segment-clip-root-review.json",
-          "sha256": "efa2d1df5dd26dbdcaedef1482986ccc0d9ff5499c73b9f44e678fdd4ba5d995"
+          "path": "evidence/conformance/segment-clip-rational-successor-review.json",
+          "sha256": "10172958a7031b05380c268070dd69f63bd559ae176e478f640c114d8a814c90"
         },
         "runtime_profile": {
           "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
@@ -45,8 +48,9 @@
       },
       "native": {
         "implementation_sha256": {
-          "packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java": "3e6ecec2edae7fb53bacc67271c120c13fa0cae4d9b1f9325a0bf94e41336878",
-          "packages/java-processing/examples/ClipMarks/ClipMarks.pde": "c0c9f1007e7742f6c6a2dc306ff6a6fbd57380030bc9c9c5b99ce682de0d6744"
+          "packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java": "ba6d6e730936418c07a54c806cda5310c9bb137a2544011749b3e224cb016881",
+          "packages/java-processing/examples/ClipMarks/ClipMarks.pde": "c0c9f1007e7742f6c6a2dc306ff6a6fbd57380030bc9c9c5b99ce682de0d6744",
+          "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad"
         },
         "evidence_sha256": {
           "evidence/conformance/segment-clip-java.json": "9318b0993cca07fedae988f29cb7cc0a97fda22f57a3bed2c71f2bb831b8bcd6",
@@ -55,11 +59,13 @@
           "evidence/workflows/clip-marks/native.json": "ec2925d6a3be54290fcab5999d76c9dec4cf7cc8c1bcf28704d78a8ecc88f181",
           "evidence/workflows/clip-marks/visual-review.json": "31ace857a57e1c4b4d7cfac52e09339b0de42e9f750280380264354fb4a69bf4",
           "fixtures/operations/clip-segments-simple-polygon-2d.json": "66374afecbef9a8c7f228bcd45f8d58c45c26660378d6e61fb8ca49b8de8500c",
-          "design/operations/segment-clipping-contract-review.md": "353dc1f7df296670798f072ee8bea41aef6ad8dd76ea26e7d9393274728d014e"
+          "design/operations/segment-clipping-contract-review.md": "353dc1f7df296670798f072ee8bea41aef6ad8dd76ea26e7d9393274728d014e",
+          "evidence/conformance/nearest-contact-rational-extraction.json": "ce9ad2489f056973d9d1a5a6a53425365e91c0e5c0fb06eee04efbca891cb7a7",
+          "evidence/conformance/segment-clip-after-rational-extraction.json": "a73421e165bfaec08adedbeb1a38e88e07a92d6f84f72955a2ef3ad92cec41d7"
         },
         "acceptance_review": {
-          "path": "evidence/conformance/segment-clip-root-review.json",
-          "sha256": "efa2d1df5dd26dbdcaedef1482986ccc0d9ff5499c73b9f44e678fdd4ba5d995"
+          "path": "evidence/conformance/segment-clip-rational-successor-review.json",
+          "sha256": "10172958a7031b05380c268070dd69f63bd559ae176e478f640c114d8a814c90"
         },
         "runtime_profile": {
           "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",

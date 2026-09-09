@@ -1,0 +1,32 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.35.0",
+  "scope": "31Java operations and37editable workflows. New first-contact geometry plus ContactMarks; no original recreation or other-target support claim.",
+  "archive": {
+    "path": ".work/dist/contact-java-source-root1/procedurals-java-source-dev.zip",
+    "sha256": "7dcc30541cd6deaee2b27056555b3039d4ae58c88d495df0ca3d8d61472c3724",
+    "members": 452
+  },
+  "evidence_sha256": {
+    "evidence/distribution/contact-java-source.json": "0c8435617d473b78ae2ee5b99906c53dfa0ff8a9dec6878fe5e2ca8cb47e4b6a",
+    "evidence/distribution/contact-java-consumer.json": "cf76c2da0d952e6d7bcbe26d49eca6e2a0522e4f6253842370337e0fdf852af4",
+    "evidence/conformance/nearest-contact-root-review.json": "e12df5ea4d2093559c0e9e2bd18216bad7bc0d54ba3b9a1ca1e9f6035e9eaa5f",
+    "evidence/conformance/segment-clip-rational-successor-review.json": "10172958a7031b05380c268070dd69f63bd559ae176e478f640c114d8a814c90",
+    "evidence/workflows/contact-marks/root-review.json": "b488e1565bb64480dfc1e5245867266e6ad6d6c048fff9b02cb446c0e09f4eda"
+  },
+  "verified": [
+    "All37extracted PDEexamples compile; actual ContactMarks5state/native save sequence passes using installed core JAR.",
+    "All6extracted PNGs equal root-reviewed source-run images; exact oracle checks all10queries in every frame.",
+    "Only new contact classes/shared rational helper and corresponding clipper references change core bytecode. All adapter classes equal0.34.",
+    "No installed core/adapter classes shadowed by consumer classes. Source/license/font/reference inventories pass.",
+    "Root reviewed26nearest fixtures/57Java checks,34clipper fixtures and exact extraction proof, performance and actual ray-web transfer."
+  ],
+  "limits": [
+    "Closed finite segment contacts; no infinite rays, automatic self-exclusion or source-specific two-pass web generation.",
+    "Exact arithmetic remains allocation intensive; bounded performance observations are not renderer throughput guarantees.",
+    "Javadoc includes package-private internal classes to preserve source coverage;707warnings remain, not a clean documentation audit.",
+    "Broader Java completion requirements remain open."
+  ]
+}

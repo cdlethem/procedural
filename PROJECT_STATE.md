@@ -1,5 +1,117 @@
 # Project state
 
+## Java0.35 distribution accepted for integration
+
+Archive.work/dist/contact-java-source-root1/procedurals-java-source-dev.zip
+SHA7dcc30541cd6deaee2b27056555b3039d4ae58c88d495df0ca3d8d61472c3724,452members.
+Extracted .work/contact-consumer-root1 passes37PDEs,5native states,6PNGs identical to root
+reviewed source run and exactoracle contact data.31operations37workflows. Core changes
+limited to nearestcontact/sharedrational/clipperrefactor, alladapterclasses unchanged.
+Root acceptance evidence/distribution/contact-java-review.json. Javadoc now documents
+package-private classes as internal,707warnings remaining; no clean-docs claim. Next fresh
+remotecheck/commit/push useful integration checkpoint. Preserve unrelated Android edit.
+Broader completion reconciliation and public documentation remain open; no goal completion.
+
+## ContactMarks and Java ray-web transfer pass root native review
+
+Root reviewed agentprobe/runner and tightened rawbits check to reject negativezero.
+.work/contact-marks-native-root1 passes5actualstates/10queries exactoracle and6PNGs; root
+viewed baseline/shift/color. Root authored tools/diagnostics/clipping/run_contact_transfer.py;
+production Java solves34queries/view,32hits, exact selected identity/point bits checked, then
+JAVA2D private view renders results. Root viewed both images at .work/contact-transfer-java-root1.
+Scoped native acceptance evidence/workflows/contact-marks/root-review.json; no distribution
+or source recreation claim. Gallery adds3connectorviews+Javawebtransfer. Next current core
+attestation, clipping successor review for shared arithmetic, catalog/manifest updates and
+extracted Java distribution; accepted pushed0.34still30operations36workflows.
+
+## Optimized nearest core and exact extraction reviewed; ContactMarks probe in flight
+
+Root inspected obstacle hoist, measured .work/nearest-contact-performance-root2 against
+pre-hoist checksums:256x256allocation161,829,152bytes vs368,149,728;16–21ms vs36–37ms
+for these bounded samples only.26fixtures+57Java checks pass with current bound runner.
+Root token-compared extracted arithmetic and remaining clipper against53b34ebc:mechanical
+move/rename only. Root reran34clipfixtures at .work/segment-clip-after-extract-root1, passed.
+Candidate conformance/performance/extraction records now under evidence/conformance; none
+assert native/workflow/distribution support. Terra owns ONLY ContactMarksProbe.java and
+run_contact_marks_java.py following root nativeplan and root-authored PDE. Next root reviews
+probe/runner, runs actual connector workflow with exact oracle, views renders; production
+Java ray-web transfer still required. Support/manifest hashes remain pending integration.
+
+## Nearest Java core passes initial conformance; allocation optimization in flight
+
+Terra implemented nearest core and shared ExactRational extraction; existing34clipfixtures
+pass at .work/segment-clip-after-extract-01. Root read full nearest source, fixed runner
+list(null) Java varargs ambiguity, and ran .work/nearest-contact-core-root1:26fixtures plus
+Java ownership/carrier/index/late-collapse/recovery checks pass. Root authored candidate
+ContactMarks.pde and nativeplan (not compiled/rendered yet), and bounded performance probe.
+Baseline .work/nearest-contact-performance-root1:64x64 ~23MB allocation,256x256368MB and
+36–37ms for final3repetitions. Root assigned Terra nearest-file-only precomputed obstacle
+exact points/directions to avoid repeat conversion; unchanged arithmetic/selection required.
+Next rerun conformance/performance after optimization, root verify mechanical rational
+extraction, then actual ContactMarks and ray-web transfer native proof. No acceptance or
+release update yet; source/catalog bindings for old clipper need successor review later.
+
+## Nearest-contact contract and26fixtures frozen; Java implementation in flight
+
+Root reviewed generator/oracle, added4coverage cases, exact-comparison metadata and indirect
+source binding. Generated26reviewed fixtures; catalog/reference checks pass. Root review
+design/operations/nearest-contact-contract-review.md binds catalog/fixture/generator hashes.
+Terra segment_clip_core owns NearestSegmentContact2D.java, mechanical ExactRational extraction
+and SegmentClip2D rewiring, plus necessary existing clip-runner dependency list only. No
+catalog/support/manifest acceptance delegated. Root authored tools/run_nearest_contact_java.py
+to compare all26shared cases, output numeric bits, immutable hit fields and error details;
+syntax check passes, execution awaits candidate Java. Next review source and run new runner
+plus existing34clipfixtures/focused probe, then add ownership/carrier/index tests and native
+workflow/performance evidence. Shipped0.34unchanged. Preserve unrelated Android edit.
+
+## Nearest-contact catalog candidate authored; shared fixture generator in flight
+
+Root authored catalog/operations/nearest-segment-contact-2d.json as the single semantics
+source plus pending review design/operations/nearest-contact-contract-review.md. No
+implementation support or contract acceptance yet; catalog-wide validation awaits fixtures.
+Terra segment_clip_core owns only tools/diagnostics/clipping/build_nearest_contact_fixtures.py,
+using independent exact study oracle for about20meaningful cases. Root verified adversary:
+query[0,0,1,0], obstacles[[0,-1,1,1-2^-53],[0,-1,1,1]] both roundt0.5but exactnearest
+must be obstacle1. Root supplied parameter/point-collapse cases too. Next review generator,
+produce fixtures, run catalog checks and freeze before delegating Java+arithmetic extraction.
+Accepted Java0.34 remains30ops36workflows; unpublished draft work retained, Android untouched.
+
+## Nearest-contact dependency admitted; Phase2 contract gate passes
+
+Root authored design/capabilities/nearest-contact-admission.md with frozen closed-contact
+selection, nullable per-query output, exact tie order, work preflight and parameter/point
+representation-collapse rules. Added dependency cluster geometry.nearest-segment-contact-2d
+to Phase2 ledger without reassigning plasma007#2 or implying its composite is implemented.
+uv run python tools/check_phase2_design.py --contract-cluster geometry.nearest-segment-contact-2d
+passes. Next create single catalog contract/shared fixtures and review before Java code.
+Terra read-only arithmetic audit recommends mechanically extracting only private Rational
+from SegmentClip2D into package-private geometry.ExactRational, leaving polygon/input/error
+logic intact; existing34clipfixtures/raw-bit error stream must remain identical. No extraction
+performed or production implementation assigned yet. Prior study evidence remains private.
+
+## Closed nearest-contact semantics tested and private views reviewed
+
+Root authored tools/diagnostics/clipping/closed_contact_study.py;13exact witnesses pass.
+Terra authored NearestHitView.java; root reviewed and ran two JAVA2D views under shared lease.
+Root viewed ray-web and boundary-connector baseline/shifted images; contact edits visible.
+Evidence/parameter-experiments/nearest-contact/root-review.json explicitly private, no Java
+core implementation or API acceptance. Decision: inclusive closed first contact, origin
+and overlap onset included, stable obstacle ordinal ties; caller excludes self/origin groups.
+Next freeze output/provenance/misses/work/rounding and rational reuse before production Java.
+Gallery adds2private views; accepted0.34 remains30ops36workflows. Preserve Android edit.
+
+## Java0.34 pushed; nearest-hit boundary investigation underway
+
+Pushed53b34ebcc37d358c1957fad246a96ad0ad573e1d; only unrelated Android edit was left.
+Root and Terra read pinned plasma007 source. Root authored exact-rational private witness
+study tools/diagnostics/clipping/nearest_hit_study.py; passed result retained under
+.work/nearest-hit-study-root1/result.json. All-other and suffix-only queries differ even
+for diagonal crossings; origin-overlapping segments have no first strictly positive contact.
+Root direction design/capabilities/nearest-hit-direction.md separates nearest-hit queries
+from source-specific two-pass generation/drop/extension. Next resolve origin/overlap choice,
+then private connector/web demonstration before any public admission. No operation count
+change. Broader public documentation/five-requirement reconciliation remains open.
+
 ## Java0.34 distribution accepted for integration
 
 Final archive .work/dist/masked-partition-java-source-root2/procedurals-java-source-dev.zip

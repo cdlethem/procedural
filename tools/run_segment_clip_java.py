@@ -62,8 +62,9 @@ def main():
     op=json.loads(catalog.read_text());data=json.loads(fixture.read_text());errors=validate(ROOT,'clipping',op,data)
     if errors:raise ValueError(errors)
     core=ROOT/'packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java'
+    exact=ROOT/'packages/java/src/main/java/org/procedurals/geometry/ExactRational.java'
     test=ROOT/'tests/native/SegmentClipNative.java'
-    dependencies=[catalog,fixture,core,test,Path(__file__).resolve(),ROOT/'tools/check_segment_clipping_fixtures.py']
+    dependencies=[catalog,fixture,core,exact,test,Path(__file__).resolve(),ROOT/'tools/check_segment_clipping_fixtures.py']
     dependencies += [ROOT/p for p in data['source_bindings']]
     dependencies += [ROOT/'tools/diagnostics/clipping'/p for p in ('check_error_draft.py','polygon_validation_study.py')]
     dependencies += [jdk/p for p in ('bin/java','bin/javac','release','lib/modules')]
@@ -71,7 +72,7 @@ def main():
     out.mkdir(parents=True);src=out/'SegmentClipFixtureVectors.java';src.write_text(generate(data));classes=out/'classes';classes.mkdir()
     report=dict(status='failed',input_sha256_before=before,commands=[])
     try:
-        commands=[[jdk/'bin/javac','--release','8','-d',classes,core,test,src],
+        commands=[[jdk/'bin/javac','--release','8','-d',classes,exact,core,test,src],
                   [jdk/'bin/java','-cp',classes,'SegmentClipFixtureVectors'],
                   [jdk/'bin/java','-cp',classes,'org.procedurals.geometry.SegmentClipNative']]
         for cmd in commands:

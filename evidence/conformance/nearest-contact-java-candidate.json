@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "input_sha256_before": {
+    "tests/native/NearestContactNative.java": "a4359368912649ba299cca4b46ce1ee5b01ea968ad3a12b5770bab0ae6f71385",
+    "packages/java/src/main/java/org/procedurals/geometry/NearestSegmentContact2D.java": "f3924c53b5a40c8f3e49e75b4f4cc91c9f51b281647e70959cba8c8dd70ec72e",
+    "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad",
+    "fixtures/operations/nearest-segment-contact-2d.json": "f0f572015e30260bdcc4fa122f302bb3e8a6c857eaf71dc11915dbe206458f46",
+    "catalog/operations/nearest-segment-contact-2d.json": "3c5d06d3042d992205f0719cac2061a25653bf26edf5c3d70b0ec56f65489e54",
+    "tools/run_nearest_contact_java.py": "70622bf8a8047156a3a0bbbf4f980a80e416cfd460ca1cbcf0b7f2d5f5dd4f82",
+    "tools/run_segment_clip_java.py": "21acc93ec57271d7304f79f5614545a9b978072642e038a3182839885f5d3909",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "commands": [
+    {
+      "command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "8",
+        "-d",
+        "/home/colin/dev/procedural/.work/nearest-contact-obstacle-precompute-01/classes",
+        "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/geometry/NearestSegmentContact2D.java",
+        "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/geometry/ExactRational.java",
+        "/home/colin/dev/procedural/.work/nearest-contact-obstacle-precompute-01/NearestContactFixtures.java",
+        "/home/colin/dev/procedural/tests/native/NearestContactNative.java"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/nearest-contact-obstacle-precompute-01/classes",
+        "NearestContactFixtures"
+      ],
+      "returncode": 0,
+      "stdout": "passed 26 shared contact fixtures\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/nearest-contact-obstacle-precompute-01/classes",
+        "NearestContactNative"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\":\"passed\",\"checks\":57}\n",
+      "stderr": ""
+    }
+  ],
+  "input_sha256_after": {
+    "tests/native/NearestContactNative.java": "a4359368912649ba299cca4b46ce1ee5b01ea968ad3a12b5770bab0ae6f71385",
+    "packages/java/src/main/java/org/procedurals/geometry/NearestSegmentContact2D.java": "f3924c53b5a40c8f3e49e75b4f4cc91c9f51b281647e70959cba8c8dd70ec72e",
+    "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad",
+    "fixtures/operations/nearest-segment-contact-2d.json": "f0f572015e30260bdcc4fa122f302bb3e8a6c857eaf71dc11915dbe206458f46",
+    "catalog/operations/nearest-segment-contact-2d.json": "3c5d06d3042d992205f0719cac2061a25653bf26edf5c3d70b0ec56f65489e54",
+    "tools/run_nearest_contact_java.py": "70622bf8a8047156a3a0bbbf4f980a80e416cfd460ca1cbcf0b7f2d5f5dd4f82",
+    "tools/run_segment_clip_java.py": "21acc93ec57271d7304f79f5614545a9b978072642e038a3182839885f5d3909",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "fixture_count": 26,
+  "artifact_sha256": {
+    ".work/nearest-contact-obstacle-precompute-01/NearestContactFixtures.java": "e1a04a8bf483c13acea3e5139d7cba95f78bc4a0de8f7d0e38ba93a0d8f105e8",
+    ".work/nearest-contact-obstacle-precompute-01/classes/NearestContactNative.class": "699b29694b4b4edfe17a698bcea493cef8accea57f1b7fd18ed5fb985522b2ba",
+    ".work/nearest-contact-obstacle-precompute-01/classes/NearestContactFixtures.class": "365042a355998ff87297392e78101bb24aa0b7a49cefd3f1cfb12835d367fb6b",
+    ".work/nearest-contact-obstacle-precompute-01/classes/org/procedurals/geometry/NearestSegmentContact2D$Contact.class": "9def9e6e816841b686845a83e7d4d23b12539bda218077d4b86ee15cb745a055",
+    ".work/nearest-contact-obstacle-precompute-01/classes/org/procedurals/geometry/NearestSegmentContact2D$Point.class": "9b4ce5a183ac7a8c6832e91b4acf4a527fc13a7189b2a5aeece2c05017e37946",
+    ".work/nearest-contact-obstacle-precompute-01/classes/org/procedurals/geometry/NearestSegmentContact2D$ContactException.class": "52030ac84f7eedfa9eaca43f5a1e9409015a34b01b46c83831c50c86574cc49c",
+    ".work/nearest-contact-obstacle-precompute-01/classes/org/procedurals/geometry/ExactRational.class": "6663df6a1b7b239f1066595555991c281c5e827efbab0d1732a4c692d56a6c51",
+    ".work/nearest-contact-obstacle-precompute-01/classes/org/procedurals/geometry/NearestSegmentContact2D.class": "86483e21841cd2b3bb39c967817c48ca6591ed0615d9761125d200af39ff82fa",
+    ".work/nearest-contact-obstacle-precompute-01/classes/org/procedurals/geometry/NearestSegmentContact2D$Obstacle.class": "edad8438b95d71eb939b0eb0d6c6fab3553b5762188eaa48b3f91b055c36c7b4",
+    ".work/nearest-contact-obstacle-precompute-01/classes/org/procedurals/geometry/NearestSegmentContact2D$1.class": "b72d7ca1e28e96965ea2b01cbfeb09d88a283d82535125838ea08aa0f3255354"
+  }
+}

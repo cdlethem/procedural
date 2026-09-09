@@ -1,0 +1,91 @@
+{
+  "status": "passed",
+  "input_sha256_before": {
+    "catalog/operations/clip-segments-simple-polygon-2d.json": "c10f0619f16d5aca4bce2f7ab6a02f2693f7d59e2177b39521410959b27a4292",
+    "fixtures/operations/clip-segments-simple-polygon-2d.json": "66374afecbef9a8c7f228bcd45f8d58c45c26660378d6e61fb8ca49b8de8500c",
+    "packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java": "ba6d6e730936418c07a54c806cda5310c9bb137a2544011749b3e224cb016881",
+    "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad",
+    "tests/native/SegmentClipNative.java": "009dd00db16c96585619cad1c985a52fcb0ce3f1e71209d072224fb0a2468fd3",
+    "tools/run_segment_clip_java.py": "21acc93ec57271d7304f79f5614545a9b978072642e038a3182839885f5d3909",
+    "tools/check_segment_clipping_fixtures.py": "49b058c7fb3f528b6820a55f9dc25befc8f38442bb2f74416ed54a08bc77370f",
+    "tools/diagnostics/clipping/build_fixture_draft.py": "af6f820bf68fcdde8f9318a81b146931d4426e6790e83a341d32f4f4e7a734ca",
+    "tools/diagnostics/clipping/exact_clip_study.py": "c0188dbae5f2677d28cbbc7d7b8d0b6bb97b9fe781fcef2ae4a8521a84ea761d",
+    "tools/diagnostics/clipping/check_error_draft.py": "de1c7cfbd33c456ea306d7ce69b3b8b5d1685714e9402e3f78acd9da3bd51056",
+    "tools/diagnostics/clipping/polygon_validation_study.py": "f8f5b475db5945a7e2e569e5e5ca8d3429f0de703d8d7e9de1d53c89ec76ae68",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "commands": [
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "8",
+        "-d",
+        "/home/colin/dev/procedural/.work/segment-clip-after-extract-root1/classes",
+        "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/geometry/ExactRational.java",
+        "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java",
+        "/home/colin/dev/procedural/tests/native/SegmentClipNative.java",
+        "/home/colin/dev/procedural/.work/segment-clip-after-extract-root1/SegmentClipFixtureVectors.java"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Note: /home/colin/dev/procedural/tests/native/SegmentClipNative.java uses unchecked or unsafe operations.\nNote: Recompile with -Xlint:unchecked for details.\n"
+    },
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/segment-clip-after-extract-root1/classes",
+        "SegmentClipFixtureVectors"
+      ],
+      "exit_code": 0,
+      "stdout": "All 34 shared fixtures passed with exact bits and error details\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/segment-clip-after-extract-root1/classes",
+        "org.procedurals.geometry.SegmentClipNative"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\":\"passed\",\"checks\":65}\n",
+      "stderr": ""
+    }
+  ],
+  "fixtures": 34,
+  "input_sha256_after": {
+    "catalog/operations/clip-segments-simple-polygon-2d.json": "c10f0619f16d5aca4bce2f7ab6a02f2693f7d59e2177b39521410959b27a4292",
+    "fixtures/operations/clip-segments-simple-polygon-2d.json": "66374afecbef9a8c7f228bcd45f8d58c45c26660378d6e61fb8ca49b8de8500c",
+    "packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java": "ba6d6e730936418c07a54c806cda5310c9bb137a2544011749b3e224cb016881",
+    "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad",
+    "tests/native/SegmentClipNative.java": "009dd00db16c96585619cad1c985a52fcb0ce3f1e71209d072224fb0a2468fd3",
+    "tools/run_segment_clip_java.py": "21acc93ec57271d7304f79f5614545a9b978072642e038a3182839885f5d3909",
+    "tools/check_segment_clipping_fixtures.py": "49b058c7fb3f528b6820a55f9dc25befc8f38442bb2f74416ed54a08bc77370f",
+    "tools/diagnostics/clipping/build_fixture_draft.py": "af6f820bf68fcdde8f9318a81b146931d4426e6790e83a341d32f4f4e7a734ca",
+    "tools/diagnostics/clipping/exact_clip_study.py": "c0188dbae5f2677d28cbbc7d7b8d0b6bb97b9fe781fcef2ae4a8521a84ea761d",
+    "tools/diagnostics/clipping/check_error_draft.py": "de1c7cfbd33c456ea306d7ce69b3b8b5d1685714e9402e3f78acd9da3bd51056",
+    "tools/diagnostics/clipping/polygon_validation_study.py": "f8f5b475db5945a7e2e569e5e5ca8d3429f0de703d8d7e9de1d53c89ec76ae68",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/release": "973f28729da43962dfba2e39b2a27ab736122f3a1bf829e06abfbde2a731c711",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "generated_sha256": "62b9c6999770758bf16433d7f5c47a8dd87035f101eb33692304aeab4ce6a8ab",
+  "class_sha256": {
+    "classes/SegmentClipFixtureVectors.class": "528ed41a38476d865ec9d1460a6426ffcf628618cd47163af09bd4c6a3838626",
+    "classes/org/procedurals/geometry/ExactRational.class": "6663df6a1b7b239f1066595555991c281c5e827efbab0d1732a4c692d56a6c51",
+    "classes/org/procedurals/geometry/SegmentClip2D.class": "e9fb1de23ec92484b9a62429842b52089da3e3ce1e798b06d11ab65cf3ca7b50",
+    "classes/org/procedurals/geometry/SegmentClip2D$1.class": "c003d170cc5519c00f7d334335f8025791ae1e70d2db9b45fcf0c2a8fcb9e49c",
+    "classes/org/procedurals/geometry/SegmentClip2D$SegmentClipException.class": "50ff222e04f058c364c019c162ef4aed8abbb0d0eb3643a38181685f5a490cfa",
+    "classes/org/procedurals/geometry/SegmentClip2D$Point.class": "a80de1c9d2e5843d68a46314e1365ef2e01c2cdb82eecff2cb7f64ba7d8389e6",
+    "classes/org/procedurals/geometry/SegmentClip2D$Packed.class": "754876cff764180e5e2bf473c4f9a3273bdd70e245a5a36fc15a5411d1a844bd",
+    "classes/org/procedurals/geometry/SegmentClip2D$Interval.class": "b20ed27633e45957d00ed64220ab5fd3ec0824f8f3b0e9cef2dc16ff2d052fcf",
+    "classes/org/procedurals/geometry/SegmentClipNative$Action.class": "75da5d5d8ba8b9ed14d8108ec1baaab228e2b5411044aa5e7821cba65538af14",
+    "classes/org/procedurals/geometry/SegmentClipNative.class": "c350cc9fec215e91371da699125d5e5f9fba80e8992ce71bf13863754fd1b326"
+  }
+}

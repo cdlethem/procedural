@@ -1,0 +1,117 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "geometry.nearest-segment-contact-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/nearest-segment-contact-2d.json",
+    "catalog_sha256": "3c5d06d3042d992205f0719cac2061a25653bf26edf5c3d70b0ec56f65489e54"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/geometry/NearestSegmentContact2D.java": "f3924c53b5a40c8f3e49e75b4f4cc91c9f51b281647e70959cba8c8dd70ec72e",
+          "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad",
+          "packages/java-processing/examples/ContactMarks/ContactMarks.pde": "2bd22409ef6bb69421e2306c0c614b84c3e6a726e5f4baaec21d6a26cf2b61c5"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/nearest-contact-java-candidate.json": "36d782be1e31266a71397bbcd580f899896f0a4fc793bd47efbda358848d7ddb",
+          "evidence/conformance/nearest-contact-performance-candidate.json": "7327d8f21ce283903b82c3d8864151e719024c9c3e4bd1da84180821bac9563f",
+          "evidence/workflows/contact-marks/native.json": "dc9d9e128c969bca6d741c3ef8d1c7feaeb28f1e1e3a7fdbfe7cd7862f110ea9",
+          "evidence/workflows/contact-marks/java-transfer.json": "3b5dd4902a79a3faedac3dac7d736b26919632f2b3e63bfcad165190096d4644",
+          "evidence/workflows/contact-marks/root-review.json": "b488e1565bb64480dfc1e5245867266e6ad6d6c048fff9b02cb446c0e09f4eda",
+          "fixtures/operations/nearest-segment-contact-2d.json": "f0f572015e30260bdcc4fa122f302bb3e8a6c857eaf71dc11915dbe206458f46",
+          "design/operations/nearest-contact-contract-review.md": "3d0d44c416a2e9cca32b0ff714b595f24bf35a3ce0c54341ff2301baf1b553c5"
+        },
+        "acceptance_review": {
+          "path": "evidence/conformance/nearest-contact-root-review.json",
+          "sha256": "e12df5ea4d2093559c0e9e2bd18216bad7bc0d54ba3b9a1ca1e9f6035e9eaa5f"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/nearest-contact-java-candidate.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Supplied closed segment contacts with exact selection and once-rounded output; connector edits and ray-web transfer, no source recreation."
+        }
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/java/src/main/java/org/procedurals/geometry/NearestSegmentContact2D.java": "f3924c53b5a40c8f3e49e75b4f4cc91c9f51b281647e70959cba8c8dd70ec72e",
+          "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad",
+          "packages/java-processing/examples/ContactMarks/ContactMarks.pde": "2bd22409ef6bb69421e2306c0c614b84c3e6a726e5f4baaec21d6a26cf2b61c5"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/nearest-contact-java-candidate.json": "36d782be1e31266a71397bbcd580f899896f0a4fc793bd47efbda358848d7ddb",
+          "evidence/conformance/nearest-contact-performance-candidate.json": "7327d8f21ce283903b82c3d8864151e719024c9c3e4bd1da84180821bac9563f",
+          "evidence/workflows/contact-marks/native.json": "dc9d9e128c969bca6d741c3ef8d1c7feaeb28f1e1e3a7fdbfe7cd7862f110ea9",
+          "evidence/workflows/contact-marks/java-transfer.json": "3b5dd4902a79a3faedac3dac7d736b26919632f2b3e63bfcad165190096d4644",
+          "evidence/workflows/contact-marks/root-review.json": "b488e1565bb64480dfc1e5245867266e6ad6d6c048fff9b02cb446c0e09f4eda",
+          "fixtures/operations/nearest-segment-contact-2d.json": "f0f572015e30260bdcc4fa122f302bb3e8a6c857eaf71dc11915dbe206458f46",
+          "design/operations/nearest-contact-contract-review.md": "3d0d44c416a2e9cca32b0ff714b595f24bf35a3ce0c54341ff2301baf1b553c5"
+        },
+        "acceptance_review": {
+          "path": "evidence/conformance/nearest-contact-root-review.json",
+          "sha256": "e12df5ea4d2093559c0e9e2bd18216bad7bc0d54ba3b9a1ca1e9f6035e9eaa5f"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/workflows/contact-marks/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "runtime_profile": {
+          "name": "OpenJDK17.0.20.1; Java8 core; Processing4.5.6 JAVA2D density1",
+          "scope": "Supplied closed segment contacts with exact selection and once-rounded output; connector edits and ray-web transfer, no source recreation."
+        }
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

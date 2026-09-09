@@ -1,0 +1,143 @@
+{
+  "status": "passed-java-transfer-study",
+  "scope": "Production Java contact query transfer rendered by private native view, not packaged workflow or source reproduction",
+  "inputs_before": {
+    "packages/java/src/main/java/org/procedurals/geometry/NearestSegmentContact2D.java": "f3924c53b5a40c8f3e49e75b4f4cc91c9f51b281647e70959cba8c8dd70ec72e",
+    "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad",
+    "tools/diagnostics/clipping/NearestHitView.java": "b4c8ef2792314614bd8635a00c30cf621d19148c39f4973caf0fc0937fe75d4f",
+    "tools/diagnostics/clipping/run_contact_transfer.py": "b128fa9265cf3af923d19bc63085d0f09f376418fcbecf916bd5b67f08c3cb5b",
+    "tools/run_segment_clip_java.py": "21acc93ec57271d7304f79f5614545a9b978072642e038a3182839885f5d3909",
+    "tools/diagnostics/clipping/closed_contact_study.py": "acbf55dd35614e1cec4ff29f9df6a3e7950a736ee88d55005578073f69b3da6a",
+    "tools/diagnostics/clipping/nearest_hit_study.py": "e3fb962bc73c4f544eba97a81becd5208ad1015c7acc3bd047303199058695ea",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    "tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d"
+  },
+  "commands": [
+    {
+      "command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+        "--release",
+        "8",
+        "-cp",
+        "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+        "-d",
+        "/home/colin/dev/procedural/.work/contact-transfer-java-root1/classes",
+        "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/geometry/NearestSegmentContact2D.java",
+        "/home/colin/dev/procedural/packages/java/src/main/java/org/procedurals/geometry/ExactRational.java",
+        "/home/colin/dev/procedural/tools/diagnostics/clipping/NearestHitView.java",
+        "/home/colin/dev/procedural/.work/contact-transfer-java-root1/ContactTransfer.java"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/contact-transfer-java-root1/classes",
+        "ContactTransfer",
+        "baseline"
+      ],
+      "returncode": 0,
+      "stdout": "1\tobstacle\t190.0\t110.0\t360.0\t170.0\n1\tobstacle\t360.0\t170.0\t320.0\t365.0\n1\tobstacle\t320.0\t365.0\t140.0\t320.0\n1\tobstacle\t140.0\t320.0\t190.0\t110.0\n0\toriginal\t85.0\t90.0\t485.0\t490.0\n0\ttrimmed\t85.0\t90.0\t85.0\t90.0\n0\thit\t85.0\t90.0\t85.0\t90.0\n0\toriginal\t85.0\t90.0\t-315.0\t490.0\n0\ttrimmed\t85.0\t90.0\t85.0\t90.0\n0\thit\t85.0\t90.0\t85.0\t90.0\n0\toriginal\t85.0\t90.0\t-315.0\t-310.0\n0\ttrimmed\t85.0\t90.0\t85.0\t90.0\n0\thit\t85.0\t90.0\t85.0\t90.0\n0\toriginal\t85.0\t90.0\t485.0\t-310.0\n0\ttrimmed\t85.0\t90.0\t85.0\t90.0\n0\thit\t85.0\t90.0\t85.0\t90.0\n0\toriginal\t245.0\t70.0\t645.0\t470.0\n0\ttrimmed\t245.0\t70.0\t287.5\t112.5\n0\thit\t287.5\t112.5\t287.5\t112.5\n0\toriginal\t245.0\t70.0\t-155.0\t470.0\n0\ttrimmed\t245.0\t70.0\t160.0\t155.0\n0\thit\t160.0\t155.0\t160.0\t155.0\n0\toriginal\t245.0\t70.0\t-155.0\t-330.0\n0\ttrimmed\t245.0\t70.0\t175.0\t0.0\n0\thit\t175.0\t0.0\t175.0\t0.0\n0\toriginal\t245.0\t70.0\t645.0\t-330.0\n0\ttrimmed\t245.0\t70.0\t290.0\t25.0\n0\thit\t290.0\t25.0\t290.0\t25.0\n0\toriginal\t395.0\t130.0\t795.0\t530.0\n0\ttrimmed\t395.0\t130.0\t400.0\t135.0\n0\thit\t400.0\t135.0\t400.0\t135.0\n0\toriginal\t395.0\t130.0\t-5.0\t530.0\n0\ttrimmed\t395.0\t130.0\t350.0\t175.0\n0\thit\t350.0\t175.0\t350.0\t175.0\n0\toriginal\t395.0\t130.0\t-5.0\t-270.0\n0\ttrimmed\t395.0\t130.0\t332.5\t67.5\n0\thit\t332.5\t67.5\t332.5\t67.5\n0\toriginal\t395.0\t130.0\t795.0\t-270.0\n0\toriginal\t100.0\t300.0\t500.0\t700.0\n0\ttrimmed\t100.0\t300.0\t162.5\t362.5\n0\thit\t162.5\t362.5\t162.5\t362.5\n0\toriginal\t100.0\t300.0\t-300.0\t700.0\n0\toriginal\t100.0\t300.0\t-300.0\t-100.0\n0\ttrimmed\t100.0\t300.0\t57.5\t257.5\n0\thit\t57.5\t257.5\t57.5\t257.5\n0\toriginal\t100.0\t300.0\t500.0\t-100.0\n0\ttrimmed\t100.0\t300.0\t197.5\t202.5\n0\thit\t197.5\t202.5\t197.5\t202.5\n0\toriginal\t270.0\t265.0\t670.0\t665.0\n0\ttrimmed\t270.0\t265.0\t385.0\t380.0\n0\thit\t385.0\t380.0\t385.0\t380.0\n0\toriginal\t270.0\t265.0\t-130.0\t665.0\n0\ttrimmed\t270.0\t265.0\t265.0\t270.0\n0\thit\t265.0\t270.0\t265.0\t270.0\n0\toriginal\t270.0\t265.0\t-130.0\t-135.0\n0\ttrimmed\t270.0\t265.0\t265.0\t260.0\n0\thit\t265.0\t260.0\t265.0\t260.0\n0\toriginal\t270.0\t265.0\t670.0\t-135.0\n0\ttrimmed\t270.0\t265.0\t355.0\t180.0\n0\thit\t355.0\t180.0\t355.0\t180.0\n0\toriginal\t380.0\t385.0\t780.0\t785.0\n0\ttrimmed\t380.0\t385.0\t380.0\t385.0\n0\thit\t380.0\t385.0\t380.0\t385.0\n0\toriginal\t380.0\t385.0\t-20.0\t785.0\n0\ttrimmed\t380.0\t385.0\t380.0\t385.0\n0\thit\t380.0\t385.0\t380.0\t385.0\n0\toriginal\t380.0\t385.0\t-20.0\t-15.0\n0\ttrimmed\t380.0\t385.0\t380.0\t385.0\n0\thit\t380.0\t385.0\t380.0\t385.0\n0\toriginal\t380.0\t385.0\t780.0\t-15.0\n0\ttrimmed\t380.0\t385.0\t380.0\t385.0\n0\thit\t380.0\t385.0\t380.0\t385.0\n1\toriginal\t50.0\t60.0\t250.0\t240.0\n1\ttrimmed\t50.0\t60.0\t175.09803921568627\t172.58823529411765\n1\thit\t175.09803921568627\t172.58823529411765\t175.09803921568627\t172.58823529411765\n1\toriginal\t150.0\t40.0\t250.0\t240.0\n1\ttrimmed\t150.0\t40.0\t188.38709677419354\t116.7741935483871\n1\thit\t188.38709677419354\t116.7741935483871\t188.38709677419354\t116.7741935483871\n1\toriginal\t290.0\t40.0\t250.0\t240.0\n1\ttrimmed\t290.0\t40.0\t270.3296703296703\t138.35164835164835\n1\thit\t270.3296703296703\t138.35164835164835\t270.3296703296703\t138.35164835164835\n1\toriginal\t440.0\t80.0\t250.0\t240.0\n1\ttrimmed\t440.0\t80.0\t341.0621761658031\t163.31606217616581\n1\thit\t341.0621761658031\t163.31606217616581\t341.0621761658031\t163.31606217616581\n1\toriginal\t460.0\t230.0\t250.0\t240.0\n1\ttrimmed\t460.0\t230.0\t346.5844636251541\t235.4007398273736\n1\thit\t346.5844636251541\t235.4007398273736\t346.5844636251541\t235.4007398273736\n1\toriginal\t430.0\t430.0\t250.0\t240.0\n1\ttrimmed\t430.0\t430.0\t328.6182669789227\t322.9859484777518\n1\thit\t328.6182669789227\t322.9859484777518\t328.6182669789227\t322.9859484777518\n1\toriginal\t290.0\t460.0\t250.0\t240.0\n1\ttrimmed\t290.0\t460.0\t270.4761904761905\t352.6190476190476\n1\thit\t270.4761904761905\t352.6190476190476\t270.4761904761905\t352.6190476190476\n1\toriginal\t130.0\t440.0\t250.0\t240.0\n1\ttrimmed\t130.0\t440.0\t193.91304347826087\t333.4782608695652\n1\thit\t193.91304347826087\t333.4782608695652\t193.91304347826087\t333.4782608695652\n1\toriginal\t40.0\t300.0\t250.0\t240.0\n1\ttrimmed\t40.0\t300.0\t152.4087591240876\t267.88321167883214\n1\thit\t152.4087591240876\t267.88321167883214\t152.4087591240876\t267.88321167883214\n1\toriginal\t40.0\t170.0\t250.0\t240.0\n1\ttrimmed\t40.0\t170.0\t165.73529411764707\t211.91176470588235\n1\thit\t165.73529411764707\t211.91176470588235\t165.73529411764707\t211.91176470588235\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "/home/colin/dev/procedural/tools/with_native_render_lock.py",
+        "--timeout",
+        "60",
+        "--",
+        "xvfb-run",
+        "-a",
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/contact-transfer-java-root1/classes:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+        "NearestHitView",
+        "/home/colin/dev/procedural/.work/contact-transfer-java-root1/baseline.tsv",
+        "/home/colin/dev/procedural/.work/contact-transfer-java-root1/baseline.png"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\":\"passed\",\"renderer\":\"processing.awt.PGraphicsJava2D\",\"width\":1000,\"height\":500,\"density\":1,\"counts\":{\"obstacle\":4,\"original\":34,\"trimmed\":32,\"hit\":32}}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/contact-transfer-java-root1/classes",
+        "ContactTransfer",
+        "shifted"
+      ],
+      "returncode": 0,
+      "stdout": "1\tobstacle\t225.0\t110.0\t360.0\t170.0\n1\tobstacle\t360.0\t170.0\t320.0\t365.0\n1\tobstacle\t320.0\t365.0\t140.0\t320.0\n1\tobstacle\t140.0\t320.0\t225.0\t110.0\n0\toriginal\t85.0\t90.0\t485.0\t490.0\n0\ttrimmed\t85.0\t90.0\t85.0\t90.0\n0\thit\t85.0\t90.0\t85.0\t90.0\n0\toriginal\t85.0\t90.0\t-315.0\t490.0\n0\ttrimmed\t85.0\t90.0\t85.0\t90.0\n0\thit\t85.0\t90.0\t85.0\t90.0\n0\toriginal\t85.0\t90.0\t-315.0\t-310.0\n0\ttrimmed\t85.0\t90.0\t85.0\t90.0\n0\thit\t85.0\t90.0\t85.0\t90.0\n0\toriginal\t85.0\t90.0\t485.0\t-310.0\n0\ttrimmed\t85.0\t90.0\t85.0\t90.0\n0\thit\t85.0\t90.0\t85.0\t90.0\n0\toriginal\t280.0\t70.0\t680.0\t470.0\n0\ttrimmed\t280.0\t70.0\t305.0\t95.0\n0\thit\t305.0\t95.0\t305.0\t95.0\n0\toriginal\t280.0\t70.0\t-120.0\t470.0\n0\ttrimmed\t280.0\t70.0\t177.5\t172.5\n0\thit\t177.5\t172.5\t177.5\t172.5\n0\toriginal\t280.0\t70.0\t-120.0\t-330.0\n0\ttrimmed\t280.0\t70.0\t192.5\t-17.5\n0\thit\t192.5\t-17.5\t192.5\t-17.5\n0\toriginal\t280.0\t70.0\t680.0\t-330.0\n0\ttrimmed\t280.0\t70.0\t307.5\t42.5\n0\thit\t307.5\t42.5\t307.5\t42.5\n0\toriginal\t395.0\t130.0\t795.0\t530.0\n0\ttrimmed\t395.0\t130.0\t400.0\t135.0\n0\thit\t400.0\t135.0\t400.0\t135.0\n0\toriginal\t395.0\t130.0\t-5.0\t530.0\n0\ttrimmed\t395.0\t130.0\t367.5\t157.5\n0\thit\t367.5\t157.5\t367.5\t157.5\n0\toriginal\t395.0\t130.0\t-5.0\t-270.0\n0\ttrimmed\t395.0\t130.0\t332.5\t67.5\n0\thit\t332.5\t67.5\t332.5\t67.5\n0\toriginal\t395.0\t130.0\t795.0\t-270.0\n0\toriginal\t100.0\t300.0\t500.0\t700.0\n0\ttrimmed\t100.0\t300.0\t162.5\t362.5\n0\thit\t162.5\t362.5\t162.5\t362.5\n0\toriginal\t100.0\t300.0\t-300.0\t700.0\n0\toriginal\t100.0\t300.0\t-300.0\t-100.0\n0\ttrimmed\t100.0\t300.0\t75.0\t275.0\n0\thit\t75.0\t275.0\t75.0\t275.0\n0\toriginal\t100.0\t300.0\t500.0\t-100.0\n0\ttrimmed\t100.0\t300.0\t197.5\t202.5\n0\thit\t197.5\t202.5\t197.5\t202.5\n0\toriginal\t270.0\t265.0\t670.0\t665.0\n0\ttrimmed\t270.0\t265.0\t385.0\t380.0\n0\thit\t385.0\t380.0\t385.0\t380.0\n0\toriginal\t270.0\t265.0\t-130.0\t665.0\n0\ttrimmed\t270.0\t265.0\t265.0\t270.0\n0\thit\t265.0\t270.0\t265.0\t270.0\n0\toriginal\t270.0\t265.0\t-130.0\t-135.0\n0\ttrimmed\t270.0\t265.0\t265.0\t260.0\n0\thit\t265.0\t260.0\t265.0\t260.0\n0\toriginal\t270.0\t265.0\t670.0\t-135.0\n0\ttrimmed\t270.0\t265.0\t372.5\t162.5\n0\thit\t372.5\t162.5\t372.5\t162.5\n0\toriginal\t380.0\t385.0\t780.0\t785.0\n0\ttrimmed\t380.0\t385.0\t380.0\t385.0\n0\thit\t380.0\t385.0\t380.0\t385.0\n0\toriginal\t380.0\t385.0\t-20.0\t785.0\n0\ttrimmed\t380.0\t385.0\t380.0\t385.0\n0\thit\t380.0\t385.0\t380.0\t385.0\n0\toriginal\t380.0\t385.0\t-20.0\t-15.0\n0\ttrimmed\t380.0\t385.0\t380.0\t385.0\n0\thit\t380.0\t385.0\t380.0\t385.0\n0\toriginal\t380.0\t385.0\t780.0\t-15.0\n0\ttrimmed\t380.0\t385.0\t380.0\t385.0\n0\thit\t380.0\t385.0\t380.0\t385.0\n1\toriginal\t50.0\t60.0\t250.0\t240.0\n1\ttrimmed\t50.0\t60.0\t193.1064572425829\t188.7958115183246\n1\thit\t193.1064572425829\t188.7958115183246\t193.1064572425829\t188.7958115183246\n1\toriginal\t150.0\t40.0\t250.0\t240.0\n1\ttrimmed\t150.0\t40.0\t207.10526315789474\t154.21052631578948\n1\thit\t207.10526315789474\t154.21052631578948\t207.10526315789474\t154.21052631578948\n1\toriginal\t290.0\t40.0\t250.0\t240.0\n1\ttrimmed\t290.0\t40.0\t271.83673469387753\t130.81632653061226\n1\thit\t271.83673469387753\t130.81632653061226\t271.83673469387753\t130.81632653061226\n1\toriginal\t440.0\t80.0\t250.0\t240.0\n1\ttrimmed\t440.0\t80.0\t342.40909090909093\t162.1818181818182\n1\thit\t342.40909090909093\t162.1818181818182\t342.40909090909093\t162.1818181818182\n1\toriginal\t460.0\t230.0\t250.0\t240.0\n1\ttrimmed\t460.0\t230.0\t346.5844636251541\t235.4007398273736\n1\thit\t346.5844636251541\t235.4007398273736\t346.5844636251541\t235.4007398273736\n1\toriginal\t430.0\t430.0\t250.0\t240.0\n1\ttrimmed\t430.0\t430.0\t328.6182669789227\t322.9859484777518\n1\thit\t328.6182669789227\t322.9859484777518\t328.6182669789227\t322.9859484777518\n1\toriginal\t290.0\t460.0\t250.0\t240.0\n1\ttrimmed\t290.0\t460.0\t270.4761904761905\t352.6190476190476\n1\thit\t270.4761904761905\t352.6190476190476\t270.4761904761905\t352.6190476190476\n1\toriginal\t130.0\t440.0\t250.0\t240.0\n1\ttrimmed\t130.0\t440.0\t193.91304347826087\t333.4782608695652\n1\thit\t193.91304347826087\t333.4782608695652\t193.91304347826087\t333.4782608695652\n1\toriginal\t40.0\t300.0\t250.0\t240.0\n1\ttrimmed\t40.0\t300.0\t162.23076923076923\t265.0769230769231\n1\thit\t162.23076923076923\t265.0769230769231\t162.23076923076923\t265.0769230769231\n1\toriginal\t40.0\t170.0\t250.0\t240.0\n1\ttrimmed\t40.0\t170.0\t181.6083916083916\t217.2027972027972\n1\thit\t181.6083916083916\t217.2027972027972\t181.6083916083916\t217.2027972027972\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "/home/colin/dev/procedural/tools/with_native_render_lock.py",
+        "--timeout",
+        "60",
+        "--",
+        "xvfb-run",
+        "-a",
+        "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+        "-cp",
+        "/home/colin/dev/procedural/.work/contact-transfer-java-root1/classes:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar",
+        "NearestHitView",
+        "/home/colin/dev/procedural/.work/contact-transfer-java-root1/shifted.tsv",
+        "/home/colin/dev/procedural/.work/contact-transfer-java-root1/shifted.png"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\":\"passed\",\"renderer\":\"processing.awt.PGraphicsJava2D\",\"width\":1000,\"height\":500,\"density\":1,\"counts\":{\"obstacle\":4,\"original\":34,\"trimmed\":32,\"hit\":32}}\n",
+      "stderr": ""
+    }
+  ],
+  "inputs_after": {
+    "packages/java/src/main/java/org/procedurals/geometry/NearestSegmentContact2D.java": "f3924c53b5a40c8f3e49e75b4f4cc91c9f51b281647e70959cba8c8dd70ec72e",
+    "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad",
+    "tools/diagnostics/clipping/NearestHitView.java": "b4c8ef2792314614bd8635a00c30cf621d19148c39f4973caf0fc0937fe75d4f",
+    "tools/diagnostics/clipping/run_contact_transfer.py": "b128fa9265cf3af923d19bc63085d0f09f376418fcbecf916bd5b67f08c3cb5b",
+    "tools/run_segment_clip_java.py": "21acc93ec57271d7304f79f5614545a9b978072642e038a3182839885f5d3909",
+    "tools/diagnostics/clipping/closed_contact_study.py": "acbf55dd35614e1cec4ff29f9df6a3e7950a736ee88d55005578073f69b3da6a",
+    "tools/diagnostics/clipping/nearest_hit_study.py": "e3fb962bc73c4f544eba97a81becd5208ad1015c7acc3bd047303199058695ea",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241",
+    "tools/with_native_render_lock.py": "05fd8acb363717a9a1b059d94071b00ec79bac138489fa796e1b88cb7bcc987d"
+  },
+  "counts": {
+    "baseline": {
+      "queries": 34,
+      "hits": 32
+    },
+    "shifted": {
+      "queries": 34,
+      "hits": 32
+    }
+  },
+  "artifacts": {
+    ".work/contact-transfer-java-root1/ContactTransfer.java": "cfce9695b26397c25cd9b9e016d1488b52bc8e1634f341285b0c81c1b5f38b5e",
+    ".work/contact-transfer-java-root1/classes/NearestHitView.class": "4eb492ab9bd814f075b6fb5e461fbf65ba2b6e4efad799751f2dca197e843b92",
+    ".work/contact-transfer-java-root1/classes/ContactTransfer.class": "deb47129878848a8f5e46678272b48ac39ad296dc4a1ae2be89b0515ce9fb1d0",
+    ".work/contact-transfer-java-root1/classes/NearestHitView$Row.class": "72cd2aef9618a65fecccc4e9f13f4325005ee8166bf2d27946354e7c5fc6d146",
+    ".work/contact-transfer-java-root1/classes/org/procedurals/geometry/NearestSegmentContact2D$Contact.class": "9def9e6e816841b686845a83e7d4d23b12539bda218077d4b86ee15cb745a055",
+    ".work/contact-transfer-java-root1/classes/org/procedurals/geometry/NearestSegmentContact2D$Point.class": "9b4ce5a183ac7a8c6832e91b4acf4a527fc13a7189b2a5aeece2c05017e37946",
+    ".work/contact-transfer-java-root1/classes/org/procedurals/geometry/NearestSegmentContact2D$ContactException.class": "52030ac84f7eedfa9eaca43f5a1e9409015a34b01b46c83831c50c86574cc49c",
+    ".work/contact-transfer-java-root1/classes/org/procedurals/geometry/ExactRational.class": "6663df6a1b7b239f1066595555991c281c5e827efbab0d1732a4c692d56a6c51",
+    ".work/contact-transfer-java-root1/classes/org/procedurals/geometry/NearestSegmentContact2D.class": "86483e21841cd2b3bb39c967817c48ca6591ed0615d9761125d200af39ff82fa",
+    ".work/contact-transfer-java-root1/classes/org/procedurals/geometry/NearestSegmentContact2D$Obstacle.class": "edad8438b95d71eb939b0eb0d6c6fab3553b5762188eaa48b3f91b055c36c7b4",
+    ".work/contact-transfer-java-root1/classes/org/procedurals/geometry/NearestSegmentContact2D$1.class": "b72d7ca1e28e96965ea2b01cbfeb09d88a283d82535125838ea08aa0f3255354",
+    ".work/contact-transfer-java-root1/shifted.png": "0ada51a85cfcacb20d4d1a928b24611a90642e162b56de06e739fe3b962bd7bf",
+    ".work/contact-transfer-java-root1/baseline.png": "26fbbcbf4d40695b00f2f17d939a1cc7f0e0d1052ef70c6a31f33bb0bb7bfad4",
+    ".work/contact-transfer-java-root1/shifted.tsv": "b7aadde7d890f9029385458ac468a6b89c8cf1580804ab71a9a1c2bbdcf44c52",
+    ".work/contact-transfer-java-root1/baseline.tsv": "63e63732b32a47ae3091777d42ecef8630944afeb8afc6049bf5e8b6c0a1b4ed"
+  }
+}

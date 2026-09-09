@@ -36,8 +36,8 @@ LayerMarks and MaskMarks combine region callbacks, retained drawings and reusabl
 PlacementImageMarks crops and fits image content; ImageFieldMarks uses images to control marks.
 BlurMarks mixes filtered and sharp drawings, and ProjectionMarks deforms contours and lines
 through ordered circular influences.
-Ports of these newer workflows to JavaScript, py5 and Android are deferred. The accepted Java 0.34.0 source bundle
-contains 36 editable workflows and 30 reusable operations. It is not a published registry
+Ports of these newer workflows to JavaScript, py5 and Android are deferred. The accepted Java 0.35.0 source bundle
+contains 37 editable workflows and 31 reusable operations. It is not a published registry
 release. An experimental [Java recipe preview](docs/java-recipe-preview.md) exports FieldMarks,
 PathMarks, placement-bars and region-panels as editable standalone projects. General portable recipes, MCP and web tools
 remain in the roadmap.
@@ -83,7 +83,7 @@ Start with [a field of independent marks](docs/getting-started.md),
 [clustered 3D relief](docs/relief-marks.md), or
 [faceted cities](docs/city-marks.md), or
 [banded landscapes](docs/landscape-marks.md).
-[Build and install the Java library](docs/building-java-from-source.md) for all 36 workflows.
+[Build and install the Java library](docs/building-java-from-source.md) for all 37 workflows.
 [Build the Android restoration patches](docs/installing-android-restoration.md) for the six
 ported starters, preserving their existing core versions.
 

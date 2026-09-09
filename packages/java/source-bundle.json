@@ -1,6 +1,6 @@
 {
-  "version": "0.34.0",
-  "processing_version": 34,
+  "version": "0.35.0",
+  "processing_version": 35,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -35,7 +35,9 @@
     "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e2254766043ed5f5d7da2f13d92090b1c457deb098774267dcfb219982661d88",
     "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c",
     "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java": "fbf61b8ba36945133926bbd23290d2467a03ac8ce50912dd0d7b2decc8a7d602",
-    "packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java": "3e6ecec2edae7fb53bacc67271c120c13fa0cae4d9b1f9325a0bf94e41336878"
+    "packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java": "ba6d6e730936418c07a54c806cda5310c9bb137a2544011749b3e224cb016881",
+    "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad",
+    "packages/java/src/main/java/org/procedurals/geometry/NearestSegmentContact2D.java": "f3924c53b5a40c8f3e49e75b4f4cc91c9f51b281647e70959cba8c8dd70ec72e"
   },
   "examples": {
     "procedurals/examples/BranchMarks/BranchComposition.java": {
@@ -253,6 +255,10 @@
     "procedurals/examples/MaskedPartitionMarks/MaskedPartitionMarks.pde": {
       "source": "packages/java-processing/examples/MaskedPartitionMarks/MaskedPartitionMarks.pde",
       "sha256": "0875072e6bd441d57f08c70b164162d109caa5369c936098f368a4cbfee9ec40"
+    },
+    "procedurals/examples/ContactMarks/ContactMarks.pde": {
+      "source": "packages/java-processing/examples/ContactMarks/ContactMarks.pde",
+      "sha256": "2bd22409ef6bb69421e2306c0c614b84c3e6a726e5f4baaec21d6a26cf2b61c5"
     }
   },
   "operation_files": [
@@ -267,6 +273,7 @@
     "gradient-noise-3d-01.json",
     "gradient-path.json",
     "masked-source-over.json",
+    "nearest-segment-contact-2d.json",
     "noise-band-path.json",
     "occupied-lattice-paths-2d.json",
     "ordered-circle-filter.json",

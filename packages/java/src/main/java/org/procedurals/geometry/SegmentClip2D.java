@@ -206,19 +206,19 @@ public final strictfp class SegmentClip2D {
             Point b = point(raw[base + 2], raw[base + 3]);
             Point direction = subtract(b, a);
             if (same(a,b)) continue;
-            ArrayList<Rational> cuts = new ArrayList<Rational>(region.length + 2);
-            cuts.add(Rational.ZERO);
-            cuts.add(Rational.ONE);
+            ArrayList<ExactRational> cuts = new ArrayList<ExactRational>(region.length + 2);
+            cuts.add(ExactRational.ZERO);
+            cuts.add(ExactRational.ONE);
             for (int edge = 0; edge < region.length; edge++)
                 addCuts(cuts, a, direction, region[edge], region[(edge + 1) % region.length]);
             Collections.sort(cuts);
-            ArrayList<Rational> unique = unique(cuts);
+            ArrayList<ExactRational> unique = unique(cuts);
             ArrayList<Interval> retained = new ArrayList<Interval>();
             for (int i = 0; i + 1 < unique.size(); i++) {
-                Rational lo = unique.get(i);
-                Rational hi = unique.get(i + 1);
+                ExactRational lo = unique.get(i);
+                ExactRational hi = unique.get(i + 1);
                 if (lo.equals(hi)) continue;
-                Point midpoint = at(a, direction, lo.add(hi).divide(Rational.TWO));
+                Point midpoint = at(a, direction, lo.add(hi).divide(ExactRational.TWO));
                 if (contains(region, midpoint)) {
                     if (!retained.isEmpty() && retained.get(retained.size() - 1).t1.equals(lo))
                         retained.get(retained.size() - 1).t1 = hi;
@@ -236,10 +236,10 @@ public final strictfp class SegmentClip2D {
                 if (t0 >= t1) throw dynamic("REPRESENTATION_COLLAPSE", source, i, "parameter");
                 Point exactA = at(a, direction, interval.t0);
                 Point exactB = at(a, direction, interval.t1);
-                double ax = zero(interval.t0.equals(Rational.ZERO) ? raw[base] : exactA.x.value());
-                double ay = zero(interval.t0.equals(Rational.ZERO) ? raw[base + 1] : exactA.y.value());
-                double bx = zero(interval.t1.equals(Rational.ONE) ? raw[base + 2] : exactB.x.value());
-                double by = zero(interval.t1.equals(Rational.ONE) ? raw[base + 3] : exactB.y.value());
+                double ax = zero(interval.t0.equals(ExactRational.ZERO) ? raw[base] : exactA.x.value());
+                double ay = zero(interval.t0.equals(ExactRational.ZERO) ? raw[base + 1] : exactA.y.value());
+                double bx = zero(interval.t1.equals(ExactRational.ONE) ? raw[base + 2] : exactB.x.value());
+                double by = zero(interval.t1.equals(ExactRational.ONE) ? raw[base + 3] : exactB.y.value());
                 if (ax == bx && ay == by) throw dynamic("REPRESENTATION_COLLAPSE", source, i, "endpoints");
                 if (hasPrevious && previousEnd >= t0) throw dynamic("REPRESENTATION_COLLAPSE", source, i, "gap");
                 output.add(ax, ay, bx, by, t0, t1, source);
@@ -296,7 +296,7 @@ public final strictfp class SegmentClip2D {
         return points;
     }
     private static void validatePolygon(Point[] p) {
-        Rational area = Rational.ZERO;
+        ExactRational area = ExactRational.ZERO;
         for (int i = 0; i < p.length; i++) {
             for (int j = i + 1; j < p.length; j++)
                 if (same(p[i], p[j])) throw error("INVALID_POLYGON");
@@ -314,29 +314,29 @@ public final strictfp class SegmentClip2D {
                     throw error("INVALID_POLYGON");
     }
 
-    private static void addCuts(List<Rational> cuts, Point source, Point direction,
+    private static void addCuts(List<ExactRational> cuts, Point source, Point direction,
             Point edgeStart, Point edgeEnd) {
         Point edge = subtract(edgeEnd, edgeStart);
         Point offset = subtract(edgeStart, source);
-        Rational denominator = cross(direction, edge);
+        ExactRational denominator = cross(direction, edge);
         if (denominator.signum() != 0) {
-            Rational t = cross(offset, edge).divide(denominator);
-            Rational u = cross(offset, direction).divide(denominator);
+            ExactRational t = cross(offset, edge).divide(denominator);
+            ExactRational u = cross(offset, direction).divide(denominator);
             if (unit(t) && unit(u)) cuts.add(t);
         } else if (cross(offset, direction).signum() == 0) {
             boolean xAxis = direction.x.signum() != 0;
-            Rational first = coordinate(edgeStart, xAxis).subtract(coordinate(source, xAxis))
+            ExactRational first = coordinate(edgeStart, xAxis).subtract(coordinate(source, xAxis))
                     .divide(coordinate(direction, xAxis));
-            Rational second = coordinate(edgeEnd, xAxis).subtract(coordinate(source, xAxis))
+            ExactRational second = coordinate(edgeEnd, xAxis).subtract(coordinate(source, xAxis))
                     .divide(coordinate(direction, xAxis));
             if (unit(first)) cuts.add(first);
             if (unit(second)) cuts.add(second);
         }
     }
 
-    private static ArrayList<Rational> unique(List<Rational> cuts) {
-        ArrayList<Rational> result = new ArrayList<Rational>();
-        for (Rational cut : cuts)
+    private static ArrayList<ExactRational> unique(List<ExactRational> cuts) {
+        ArrayList<ExactRational> result = new ArrayList<ExactRational>();
+        for (ExactRational cut : cuts)
             if (result.isEmpty() || !result.get(result.size() - 1).equals(cut)) result.add(cut);
         return result;
     }
@@ -348,7 +348,7 @@ public final strictfp class SegmentClip2D {
             Point second = polygon[(i + 1) % polygon.length];
             if (on(first, second, point)) return true;
             if ((first.y.compareTo(point.y) > 0) != (second.y.compareTo(point.y) > 0)) {
-                Rational crossingX = first.x.add(point.y.subtract(first.y)
+                ExactRational crossingX = first.x.add(point.y.subtract(first.y)
                         .multiply(second.x.subtract(first.x)).divide(second.y.subtract(first.y)));
                 if (point.x.compareTo(crossingX) < 0) inside = !inside;
             }
@@ -369,37 +369,37 @@ public final strictfp class SegmentClip2D {
                 && between(point.x, start.x, end.x) && between(point.y, start.y, end.y);
     }
 
-    private static boolean between(Rational value, Rational a, Rational b) {
+    private static boolean between(ExactRational value, ExactRational a, ExactRational b) {
         return value.compareTo(a.compareTo(b) <= 0 ? a : b) >= 0
                 && value.compareTo(a.compareTo(b) <= 0 ? b : a) <= 0;
     }
 
     private static Point point(double x, double y) {
-        return new Point(Rational.of(x), Rational.of(y));
+        return new Point(ExactRational.of(x), ExactRational.of(y));
     }
 
     private static Point subtract(Point a, Point b) {
         return new Point(a.x.subtract(b.x), a.y.subtract(b.y));
     }
 
-    private static Point at(Point a, Point d, Rational t) {
+    private static Point at(Point a, Point d, ExactRational t) {
         return new Point(a.x.add(d.x.multiply(t)), a.y.add(d.y.multiply(t)));
     }
 
-    private static Rational cross(Point a, Point b) {
+    private static ExactRational cross(Point a, Point b) {
         return a.x.multiply(b.y).subtract(a.y.multiply(b.x));
     }
 
-    private static Rational dot(Point a, Point b) {
+    private static ExactRational dot(Point a, Point b) {
         return a.x.multiply(b.x).add(a.y.multiply(b.y));
     }
 
-    private static Rational coordinate(Point p, boolean x) {
+    private static ExactRational coordinate(Point p, boolean x) {
         return x ? p.x : p.y;
     }
 
-    private static boolean unit(Rational r) {
-        return r.compareTo(Rational.ZERO) >= 0 && r.compareTo(Rational.ONE) <= 0;
+    private static boolean unit(ExactRational r) {
+        return r.compareTo(ExactRational.ZERO) >= 0 && r.compareTo(ExactRational.ONE) <= 0;
     }
 
     private static boolean same(Point a, Point b) {
@@ -446,20 +446,20 @@ public final strictfp class SegmentClip2D {
     }
 
     private static final class Point {
-        final Rational x;
-        final Rational y;
+        final ExactRational x;
+        final ExactRational y;
 
-        Point(Rational x, Rational y) {
+        Point(ExactRational x, ExactRational y) {
             this.x = x;
             this.y = y;
         }
     }
 
     private static final class Interval {
-        final Rational t0;
-        Rational t1;
+        final ExactRational t0;
+        ExactRational t1;
 
-        Interval(Rational t0, Rational t1) {
+        Interval(ExactRational t0, ExactRational t1) {
             this.t0 = t0;
             this.t1 = t1;
         }
@@ -508,127 +508,5 @@ public final strictfp class SegmentClip2D {
             return result;
         }
     }
-    /** Private normalized exact dyadic/rational arithmetic; no public numeric surface is exposed. */
-    private static final class Rational implements Comparable<Rational> {
-        static final Rational ZERO = new Rational(BigInteger.ZERO, BigInteger.ONE);
-        static final Rational ONE = new Rational(BigInteger.ONE, BigInteger.ONE);
-        static final Rational TWO = new Rational(BigInteger.valueOf(2), BigInteger.ONE);
-        final BigInteger n;
-        final BigInteger d;
 
-        Rational(BigInteger numerator, BigInteger denominator) {
-            if (denominator.signum() == 0) throw new ArithmeticException();
-            if (numerator.signum() == 0) {
-                n = BigInteger.ZERO;
-                d = BigInteger.ONE;
-                return;
-            }
-            if (denominator.signum() < 0) {
-                numerator = numerator.negate();
-                denominator = denominator.negate();
-            }
-            if (denominator.equals(BigInteger.ONE)) {
-                n = numerator;
-                d = denominator;
-                return;
-            }
-            BigInteger gcd = numerator.gcd(denominator);
-            if (gcd.equals(BigInteger.ONE)) {
-                n = numerator;
-                d = denominator;
-            } else {
-                n = numerator.divide(gcd);
-                d = denominator.divide(gcd);
-            }
-        }
-
-        static Rational of(double value) {
-            long bits = Double.doubleToRawLongBits(value);
-            int exponent = (int) ((bits >>> 52) & 2047);
-            long fraction = bits & 0xfffffffffffffL;
-            if (exponent == 0 && fraction == 0) return ZERO;
-            long significand = exponent == 0 ? fraction : fraction | (1L << 52);
-            int power = exponent == 0 ? -1074 : exponent - 1075;
-            BigInteger numerator = BigInteger.valueOf(significand);
-            if (bits < 0) numerator = numerator.negate();
-            return power >= 0 ? new Rational(numerator.shiftLeft(power), BigInteger.ONE)
-                    : new Rational(numerator, BigInteger.ONE.shiftLeft(-power));
-        }
-
-        Rational add(Rational other) {
-            if (other.n.signum() == 0) return this;
-            if (n.signum() == 0) return other;
-            if (d.equals(other.d)) return new Rational(n.add(other.n), d);
-            return new Rational(n.multiply(other.d).add(other.n.multiply(d)), d.multiply(other.d));
-        }
-
-        Rational subtract(Rational other) {
-            if (other.n.signum() == 0) return this;
-            if (n.signum() == 0) return new Rational(other.n.negate(), other.d);
-            if (d.equals(other.d)) return new Rational(n.subtract(other.n), d);
-            return new Rational(n.multiply(other.d).subtract(other.n.multiply(d)), d.multiply(other.d));
-        }
-
-        Rational multiply(Rational other) {
-            if (n.signum() == 0 || other.n.signum() == 0) return ZERO;
-            if (this == ONE) return other;
-            if (other == ONE) return this;
-            return new Rational(n.multiply(other.n), d.multiply(other.d));
-        }
-
-        Rational divide(Rational other) {
-            if (other.n.signum() == 0) throw new ArithmeticException();
-            if (n.signum() == 0) return ZERO;
-            if (other == ONE) return this;
-            return new Rational(n.multiply(other.d), d.multiply(other.n));
-        }
-
-        int signum() { return n.signum(); }
-
-        @Override public int compareTo(Rational other) {
-            if (this == other || n.equals(other.n) && d.equals(other.d)) return 0;
-            int ownSign = n.signum();
-            int otherSign = other.n.signum();
-            if (ownSign != otherSign) return ownSign < otherSign ? -1 : 1;
-            if (d.equals(other.d)) return n.compareTo(other.n);
-            return n.multiply(other.d).compareTo(other.n.multiply(d));
-        }
-
-        @Override public boolean equals(Object value) {
-            if (!(value instanceof Rational)) return false;
-            Rational other = (Rational) value;
-            return n.equals(other.n) && d.equals(other.d);
-        }
-
-        @Override public int hashCode() { return 31 * n.hashCode() + d.hashCode(); }
-
-        double value() {
-            if (signum() == 0) return 0.0;
-            BigInteger absolute = n.abs();
-            int exponent = absolute.bitLength() - d.bitLength();
-            int comparison = exponent >= 0 ? absolute.compareTo(d.shiftLeft(exponent))
-                    : absolute.shiftLeft(-exponent).compareTo(d);
-            if (comparison < 0) exponent--;
-            int scale = exponent < -1022 ? 1074 : 52 - exponent;
-            BigInteger scaledNumerator = scale >= 0 ? absolute.shiftLeft(scale) : absolute;
-            BigInteger scaledDenominator = scale >= 0 ? d : d.shiftLeft(-scale);
-            BigInteger[] quotientAndRemainder = scaledNumerator.divideAndRemainder(scaledDenominator);
-            BigInteger quotient = quotientAndRemainder[0];
-            int half = quotientAndRemainder[1].shiftLeft(1).compareTo(scaledDenominator);
-            if (half > 0 || half == 0 && quotient.testBit(0)) quotient = quotient.add(BigInteger.ONE);
-            long magnitude;
-            if (exponent < -1022) {
-                magnitude = quotient.longValueExact();
-            } else {
-                if (quotient.bitLength() > 53) {
-                    quotient = quotient.shiftRight(1);
-                    exponent++;
-                }
-                magnitude = exponent > 1023 ? 0x7ff0000000000000L
-                        : ((long) (exponent + 1023) << 52) | (quotient.longValueExact() & 0xfffffffffffffL);
-            }
-            if (magnitude == 0) return 0.0;
-            return Double.longBitsToDouble(magnitude | (signum() < 0 ? Long.MIN_VALUE : 0));
-        }
-    }
 }
