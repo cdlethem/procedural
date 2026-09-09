@@ -2,6 +2,35 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "p5-workflow-completion-integration",
+      "title": "p5 workflow completion",
+      "category": "Root reviewed scoped native integration",
+      "description": "Representative retained completion images; no Java pixel-parity or additional technique claim.",
+      "evidence": "evidence/ports/p5-workflow-completion/integration-review.json",
+      "images": [
+        {
+          "label": "City baseline",
+          "path": ".work/porting/checkout/.work/final-p5-workflows-5/city/baseline.png",
+          "sha256": "79bfea44578031d4a4f2109e43abcfa9c1f7c44d8fac00d9fce246d972dc0626"
+        },
+        {
+          "label": "Glyph baseline",
+          "path": ".work/porting/checkout/.work/final-p5-workflows-5/glyph/baseline.png",
+          "sha256": "b8fffc93b0004f68369c5a27ca63ab940f54e1dfb68a5463be2aa81d3f26f519"
+        },
+        {
+          "label": "Relief baseline",
+          "path": ".work/porting/checkout/.work/final-p5-workflows-5/relief/baseline.png",
+          "sha256": "8ad3fb5fa7598f34b676bd4c7b3a388f400256e5de0c4dbc143ee810a099ad42"
+        },
+        {
+          "label": "Contact baseline",
+          "path": ".work/porting/checkout/.work/final-p5-workflows-5/contact/baseline.png",
+          "sha256": "76c4e98959f29a6227008f5b7b673dabb436b5010cdb755a9eeef90b9c76c7e7"
+        }
+      ]
+    },
+    {
       "id": "web-app-v3-production",
       "title": "Layer placement, visual picker and human API guides",
       "category": "Root reviewed app integration",

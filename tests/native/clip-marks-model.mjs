@@ -11,7 +11,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createClipMarks } from "../../packages/javascript/examples/clip-marks/clip-marks.js";
 
-const referencePath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../.work/clip-reference.txt");
+const referencePath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../fixtures/workflows/clip-marks-java.txt");
 
 function parseReference(text) {
   const states = {};

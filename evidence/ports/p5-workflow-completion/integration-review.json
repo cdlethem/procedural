@@ -1,0 +1,35 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "reviewed_commit": "cb9843879695e717bdac0ef550191d9544987209",
+  "scope": "Independent integration review of the already-published p5 completion; preserves existing scoped acceptance boundaries.",
+  "checks": [
+    "Catalog schemas, bindings and generated reference passed.",
+    "All non-runtime inputs of completion native report match current source; before/after hashes agree.",
+    "All 30 workflow model runners passed after repairing the missing ClipMarks fixture dependency.",
+    "All 37 p5 adapters parse under Node.",
+    "Radial-profile JavaScript runner passed 43 shared fixture cases.",
+    "Fresh package build and installed consumer import passed.",
+    "Catalog recomputation: 31 conformant cores, 31 scoped native, 4 scoped technique."
+  ],
+  "correction": {
+    "problem": "ClipMarks model test depended on ignored .work/clip-reference.txt and failed in a fresh checkout.",
+    "solution": "Retain the Java oracle under tests/native/ClipVerify.java and its numeric output under fixtures/workflows/clip-marks-java.txt; load that tracked fixture.",
+    "validation": "Compiled oracle against current Java source using JDK 17.0.20.1; regenerated output is byte-identical. All 30 model runners then passed."
+  },
+  "visual_review": {
+    "source_directory": ".work/porting/checkout/.work/final-p5-workflows-5",
+    "observations": {
+      "city": "Faceted building composition with window grids.",
+      "glyph": "Repeated glyph trails follow curved paths.",
+      "relief": "Triangular facets and sparse vertical spikes remain visible.",
+      "contact": "Query lines terminate at marked obstacle contacts."
+    }
+  },
+  "limitations": [
+    "Existing source-bound Chromium evidence reviewed; no new native render was needed.",
+    "All-core runner sweep was not repeated; current catalog bindings and focused radial fixtures were checked.",
+    "No expanded technique, Java/p5 pixel identity, full-corpus, other-target or registry claim."
+  ]
+}

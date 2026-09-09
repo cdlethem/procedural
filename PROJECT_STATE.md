@@ -6,17 +6,16 @@ linked evidence. Do not treat old pending statements as new assignments.
 
 ## Accepted baseline
 
-- Latest integration: p5 backlog `2f9418e3`, reconciled with main `aed135cc`;
-  [root review](evidence/ports/p5-backlog/integration-root-review.json).
+- Latest port integration: p5 completion `cb984387`, independently reviewed with a
+  [fresh-checkout integration review](evidence/ports/p5-workflow-completion/integration-review.json).
 - Java implementation objective is accepted: **31 operations, 37 editable workflows**.
   Java 0.35 runtime baseline: `d7f95a06f55fd0937ebb2c12bb2192c7644922c4`.
   [Completion review](evidence/distribution/java-completion-review.json) evaluates the
   [five requirements](docs/java-completion-plan.md); the installed start-page successor
   changes documentation/navigation without changing runtime classes.
-- The p5 batch adds **12 JavaScript cores and 12 browser workflows**. Root corrected
-  numerical-helper provenance, public exports and a SpringMarks focused-button shortcut
-  bug. Core fixtures, native controls/reset/save, representative images and installed
-  package exports are reviewed. See [port integration](docs/port-integration-status.md).
+- The p5 surface now has **31 conformant cores, 31 scoped native operations and 37 editable
+  workflows**. Completion evidence includes controls, reset/reload and save behavior;
+  technique support remains four scoped attestations. See [port integration](docs/port-integration-status.md).
 - The [web app](apps/README.md) provides 24 techniques in both its gallery and layered
   studio, plus formatted API pages for all 31 operations. Shared numeric controls,
   custom per-layer palettes, inline highlighted source, undo/redo, local recovery,
@@ -40,12 +39,12 @@ support dimensions, not sums or counts of all example workflows. Recompute from
 | Target | Conformant core | Scoped native | Scoped technique |
 |---|---:|---:|---:|
 | Processing Java | 31 | 31 | 26 |
-| p5.js | 30 | 29 | 4 |
+| p5.js | 31 | 31 | 4 |
 | py5 | 10 | 10 | 4 |
 | Processing Android | 10 | 10 | 4 |
 
-Separate radial-profile JavaScript/Python reviews exist, but their shared catalog target
-attestations remain unvalidated. Do not discard that accepted work or silently promote it.
+Radial-profile JavaScript core/native evidence is now bound in the shared catalog.
+The separate Python review still requires shared-attestation reconciliation.
 The [port handoff](docs/porting-resume.md) distinguishes these integration obligations.
 Four selected original structural recreations are demonstrated; no extrapolation to the
 full corpus is accepted. See [recreation coverage](docs/recreation-coverage.md).

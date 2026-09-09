@@ -17,3 +17,8 @@ This starter is not a browser-native conformance or reproduction claim; it
 is a scoped port of the ClipMarks composition's mechanism to p5.js. The
 Java source is marked a candidate workflow; segment-clip-2d is the
 accepted operation it demonstrates.
+
+Run `node tests/native/clip-marks-model.mjs` from the repository root. Its tracked
+numeric reference is `fixtures/workflows/clip-marks-java.txt`, produced by
+`tests/native/ClipVerify.java` against the Java core (JDK 17). The reference covers
+all six geometry states and is independent of browser rasterization.
