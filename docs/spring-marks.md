@@ -94,3 +94,16 @@ replay, cached-save and 260-tick trail-wrap sequence. It inspected the distinct 
 and verified exact replay and drawing arguments on the recorded Processing/JDK runtime.
 This scoped result does not claim source-pixel reproduction, human usability testing,
 natural frame-rate performance, or support for other targets.
+
+## Construct and update the retained state directly
+
+`TargetSprings2D.create` accepts exactly a `bodies` list. Each body is a map containing
+`position: [x,y]`, `velocity: [x,y]`, `strength`, and `retention`; creation imports that
+state without advancing it. Position and velocity components use the composition's
+coordinate units and per-step convention, not an implicit elapsed-time clock.
+
+`step` takes one target pair per body in the same ordinal order, or a packed `double[]`
+of exactly `2 * size()` values in x/y order. It captures targets before advancing. Malformed
+targets or arithmetic failure leave the public batch state unchanged. The caller's arrays
+and lists are not retained, and `toValues()` returns detached state. Reading or drawing
+positions does not advance the simulation; make each step explicit.

@@ -83,3 +83,17 @@ individual comments or parameter/return tags; the build records those warnings a
 present them as a clean documentation audit. Class-level evidence and linked contracts
 remain necessary for semantics and provenance. Generated documentation does not certify a
 new target or change any operation's accepted behavior.
+
+## Query the scalar field directly
+
+`GradientNoise2D01.create` takes a map with exactly one key, `seed`, containing an unsigned
+integer from0 through4294967295. Use a Java `long` for seeds above2147483647. Its numeric
+interchange methods accept Byte, Short, Integer, Long, Float or Double; they do not coerce
+strings or booleans. `sample(x, y)` uses field lattice coordinates, while `sample(point)`
+requires a `List` of exactly two values. Each coordinate must be at least-9007199254740991
+and strictly below9007199254740991 so both lattice corners remain representable. These are
+engineering limits, not useful artistic ranges.
+
+The sample is a pure value in `[0,1]`: querying it does not advance random state. Convert
+canvas positions into field coordinates explicitly, for example `x * frequency + offsetX`.
+The field is independently specified and does not reproduce Processing's `noise()` values.

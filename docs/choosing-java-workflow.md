@@ -1,5 +1,8 @@
 # Choose a starting point for your sketch
 
+To start from an empty sketch, use the [direct Java API guide](java-api.md), which
+includes a complete grid-and-palette example without starter-specific tabs.
+
 Start with the decision you want to make. Each link opens an editable Processing example
 and explains its controls. [Build and install the Java library](building-java-from-source.md),
 open the named example from Processing's contributed-library examples, and save your own copy.

@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "scope": "Current direct Java guide code block is byte-identical to the officially preprocessed and compiled snippet against extracted Java0.33. Later edits add prose only; no native visual claim.",
+  "source_sha256": {
+    "docs/java-api.md": "a66aa38cab738ca98ff9668e744dfcd7aeb7768a2acffe2a021c45e73f35898f",
+    ".work/path-clip-consumer-root1/extract/procedurals/library/procedurals.jar": "d5412c21a5a3508251debbe005d086234009c5ecbbb1b85b24073a3a8fc4518d",
+    ".work/toolchains/processing-4.5.6/core-4.5.6.jar": "88b18be731790abbb539a6b0b7d77a1d69472628cef957ade26735d1d780acb4",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/java": "f5aed21d3a0b0f4b05d3a3f9fe71263916d5bc0d47b53aa52a3340b90f0b4805",
+    ".work/toolchains/jdk-17.0.20.1+1/bin/javac": "50d09f424b513525af1f0b05cd948ed7890a8d60fef7f7797e20892705b0067d",
+    ".work/toolchains/jdk-17.0.20.1+1/lib/modules": "6a1b657bd845397ab30fe2d4d78d80c4fdc05107182843669fc928655c227241"
+  },
+  "commands": [
+    [
+      "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/java",
+      "-Duser.home=/home/colin/dev/procedural/.work/direct-java-guide-root1/home",
+      "-cp",
+      "/home/colin/dev/procedural/.work/path-clip-consumer-root1/classes:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/preprocessor-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/utils-4.5.6.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-runtime-4.13.2.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/antlr4-4.13.2.jar:/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/preprocessor/org.eclipse.jdt.core-3.16.0.jar",
+      "PreprocessSketch",
+      "/home/colin/dev/procedural/.work/direct-java-guide-root1/DirectApiGuide.pde",
+      "/home/colin/dev/procedural/.work/direct-java-guide-root1/DirectApiGuide.java",
+      "DirectApiGuide"
+    ],
+    [
+      "/home/colin/dev/procedural/.work/toolchains/jdk-17.0.20.1+1/bin/javac",
+      "--release",
+      "8",
+      "-cp",
+      "/home/colin/dev/procedural/.work/toolchains/processing-4.5.6/core-4.5.6.jar:/home/colin/dev/procedural/.work/path-clip-consumer-root1/extract/procedurals/library/procedurals.jar",
+      "-d",
+      "/home/colin/dev/procedural/.work/direct-java-guide-root1",
+      "/home/colin/dev/procedural/.work/direct-java-guide-root1/DirectApiGuide.java"
+    ]
+  ],
+  "generated_sha256": "2634128864023587b0ca297e79425a50b39f7f8342f2adb2f8200f2c50f5af65",
+  "code_block_sha256": "3d659930622b9957ce6cc853636dd9598281e8c10d2c449816861cb01e02e2c1"
+}

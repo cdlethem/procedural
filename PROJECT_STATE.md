@@ -1,5 +1,38 @@
 # Project state
 
+## Direct-use guide batch reviewed for repository integration
+
+Root verified the current direct-API code block byte-for-byte against its compiled PDE;
+updated uncommitted compile record to bind current prose and code-block hash. All edited
+guide links resolve and whitespace check passes. Added explanations are grounded in actual
+noise bounds/carriers, raster row-major pull map, spring state/target capture, canonical
+Delaunay metadata mappings and absolute rectangle cuts. This is repository documentation
+integration, not a new archive/version or runtime claim. Next commit/push guides, then
+review remaining public documentation obligations as one bounded batch rather than
+repeated per-class releases. Java0.33 remains the accepted archive.
+
+## Five concrete direct-use documentation gaps closed in authored guides
+
+Terra audit returned noise carrier/query bounds, raster pull-map ordering/units, spring
+state/target order, Delaunay provenance maps and rectangle absolute-cut conventions. Root
+read implementations and added explanations to java-api, warp-marks, spring-marks,
+facet-marks and cut-marks guides. CyclicPalette already adequately explained in direct guide.
+No core changes or support hash migration needed. Direct Java guide's existing code block
+is unchanged; earlier compile record refers to pre-addition prose hash and should be carried
+forward explicitly or refreshed before accepting current docs. Next check linked contracts/
+guide consistency and integrate a bounded documentation checkpoint with other pending links.
+
+## Java0.33 pushed; empty-sketch discovery improved
+
+Accepted checkpoint d5b59b7732a260e0a66f9664174567337dad69b0 pushed, origin matched.
+Root found existing docs/java-api.md not linked from main first-session guides; exact code
+block now compiled against extracted0.33 JAR using official preprocessor (evidence/
+documentation/direct-java-guide-compile.json). Added links from getting-started and workflow
+chooser; current batch inventory reconciled30ops35workflows. Terra is doing read-only audit
+of six public core references for at most5 missing artist-critical semantics; no code edits
+or new algorithms assigned. Next root reviews findings and prioritizes concrete completion
+gaps, preserving unchanged five requirements and sustainable bounded work.
+
 ## Java0.33.0 PathClipMarks distribution accepted
 
 Extracted native consumer passed35PDEcompilations; all core/adapter classes identical to

@@ -1,8 +1,8 @@
 # Remaining Java buildout: architecture and execution
 
 Root integration owner. This plan replaces serial CP-by-CP scheduling, not the completion
-requirements in java-completion-plan.md. Source milestone: Java0.31, 29 accepted operations and
-33 workflows (distribution review separate); four demonstrated original structural recreations. Inventory is
+requirements in java-completion-plan.md. Source milestone: Java0.33, 30 accepted operations and
+35 workflows (distribution reviewed); four demonstrated original structural recreations. Inventory is
 not a completeness claim. Port integration and Sol review remain paused.
 
 ## Capability map
@@ -33,6 +33,9 @@ in CP26. Next bounded lane is C3: root audits discovery and family dispositions 
 The full source composition and general Voronoi cells remain distinct; next close remaining
 family dispositions and install-to-edit/reference consistency before declaring completion.
 CP28 closes the concrete annular-topology gap identified in C3 with AnnularMarks.
+CP29 adds simple-polygon segment clipping; Java0.33 demonstrates retained field paths
+composed with that clipper in PathClipMarks. Java0.32.1 improves grid/path reference and
+installation/performance guidance.
 The family boundary review is in design/capabilities/java-family-boundaries-cp27.md;
 its annular implementation follow-up is now accepted, while broader unknowns remain.
 Public-method documentation and final user-journey consistency are still unfinished.

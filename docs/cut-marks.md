@@ -32,3 +32,16 @@ X cut, retained decoration, deletion, reset and cached save. The mouse selection
 through the actual callback and keyboard events are posted to Processing. Distribution
 acceptance is recorded separately; other-target support and upstream-sketch reproduction
 are not claimed.
+
+## Make a supplied cut directly
+
+`RetainedRectangles2D.cut(id, axis, coordinate)` accepts exactly `"X"` or `"Y"`. The
+coordinate is absolute in the root rectangle's caller coordinate system, not a fraction
+or an offset from the selected leaf. It must lie strictly between that live leaf's
+corresponding bounds. An X cut produces left/right children; a Y cut produces
+low-y/high-y children. The returned IDs have that low-coordinate/high-coordinate order.
+
+The parent ID stops being live. Keep the returned child IDs for later edits; unrelated
+leaf IDs remain valid. Invalid IDs, axes or cut coordinates leave the live set and next
+ID unchanged. As with other retained operations, representational limits are not a
+promise that the host can allocate arbitrarily large state.

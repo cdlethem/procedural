@@ -1,5 +1,8 @@
 # Make a field of marks
 
+To start from an empty sketch, use the [direct Java API guide](java-api.md), which
+includes a complete grid-and-palette example without starter-specific tabs.
+
 For another kind of piece, [choose a Java starting point](choosing-java-workflow.md).
 
 Start with a working piece, then change its length, palette or mark. The example
