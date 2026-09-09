@@ -10,6 +10,7 @@ For combining them, see [composing drawings, partitions and image effects](compo
 
 | Your idea | Start here | What the library supplies |
 | --- | --- | --- |
+| Fill irregular windows with replaceable drawings or image crops | [MaskedPartitionMarks](masked-partition-marks.md) | Retained masks, local/canvas callbacks and independent layout/content edits. |
 | Reveal field-generated paths inside an editable outline | [PathClipMarks](path-clip-marks.md) | Retained path-to-segment conversion, polygon clipping and original-path identity for styling. |
 | Trim an existing line drawing to a concave outline | [ClipMarks](clip-marks.md) | Retained clipped segments, source identities and parameter intervals; reuse geometry for styling. |
 | Cover a surface with related strokes or bars | [FieldMarks](getting-started.md) | Grid positions and repeatable spatial attributes; replace the drawn mark. |

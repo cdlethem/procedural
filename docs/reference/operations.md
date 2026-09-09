@@ -1008,7 +1008,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/documentation/masked-source-over-support-carry-forward.json) | [validated-scoped](../../evidence/documentation/masked-source-over-support-carry-forward.json) | [validated-scoped](../../evidence/documentation/masked-source-over-support-carry-forward.json) | [review](../../evidence/documentation/masked-source-over-support-carry-forward.json) |
+| processing-java | [conformant](../../evidence/conformance/masked-source-over-masked-regions-review.json) | [validated-scoped](../../evidence/conformance/masked-source-over-masked-regions-review.json) | [validated-scoped](../../evidence/conformance/masked-source-over-masked-regions-review.json) | [review](../../evidence/conformance/masked-source-over-masked-regions-review.json) |
 | p5js | unvalidated | unvalidated | unvalidated | not attested |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
@@ -1761,7 +1761,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/documentation/raster-crossfade-support-carry-forward.json) | [validated-scoped](../../evidence/documentation/raster-crossfade-support-carry-forward.json) | [validated-scoped](../../evidence/documentation/raster-crossfade-support-carry-forward.json) | [review](../../evidence/documentation/raster-crossfade-support-carry-forward.json) |
+| processing-java | [conformant](../../evidence/conformance/raster-crossfade-masked-regions-review.json) | [validated-scoped](../../evidence/conformance/raster-crossfade-masked-regions-review.json) | [validated-scoped](../../evidence/conformance/raster-crossfade-masked-regions-review.json) | [review](../../evidence/conformance/raster-crossfade-masked-regions-review.json) |
 | p5js | unvalidated | unvalidated | unvalidated | not attested |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |

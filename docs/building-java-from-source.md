@@ -1,8 +1,8 @@
 # Build the Java library from source
 
-The accepted Java0.33.0 source bundle contains30 operations and35 editable workflows.
+The accepted Java0.34.0 source bundle contains30 operations and36 editable workflows.
 Its archive identity and extracted-consumer validation are recorded in the
-[PathClipMarks distribution review](../evidence/distribution/path-clip-java-review.json).
+[MaskedPartitionMarks distribution review](../evidence/distribution/masked-partition-java-review.json).
 Building a changed checkout produces a development build until separately reviewed.
 
 Start with [the workflow chooser](choosing-java-workflow.md), then use

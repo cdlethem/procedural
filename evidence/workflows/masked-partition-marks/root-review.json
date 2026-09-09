@@ -1,0 +1,22 @@
+{
+  "status": "accepted-native-workflow",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Scoped JAVA2D masked-partition candidate workflow and adapter review; distribution integration pending, no new portable operation or original recreation.",
+  "evidence_sha256": {
+    "evidence/workflows/masked-partition-marks/native.json": "fc4e7b8f9be8c71cad3c418fcd7bab7b1ffd0b9d9fb4e7efcd365893d461ee17",
+    "evidence/conformance/java2d-masked-regions-native-candidate.json": "1ea5f5a647af4f48b7e1cb009efdeaadf030d15a089b840fecd58021d4e402f4"
+  },
+  "verified": [
+    "Root read candidate adapter, PDE, probe and runner. Immutable mask capture, coordinate-frame-only bounds and shared cleanup match frozen contract.",
+    "Focused masked native cases and unchanged rectangle regression pass. Six actual workflow key states preserve source objects and trace/image hashes; layout edits alone replace masks, content edits retain masks.",
+    "Root viewed revised baseline and shifted windows; path content is legible across all four windows and the partition shift is clear. Local fans/rings and image crops viewed in first attempt are byte-identical in final attempt.",
+    "Reset/restored pixels, conservative untouched-outside mask bounds and cached save with 300ms quiet interval pass. Source and executable hashes stable."
+  ],
+  "limits": [
+    "First sparse global artwork rejected visually despite passing numerical checks; retained in .work/masked-partition-marks-native-root1.",
+    "Ellipse alpha edges use native JAVA2D rasterization. Outside assertion is conservative enclosing bounds, not exact analytic ellipse coverage.",
+    "No full partition tiling guarantee, normalized overlap blend, geometric containment or boundary steering.",
+    "Current-source support records, packaging and extracted consumer remain to integrate."
+  ]
+}

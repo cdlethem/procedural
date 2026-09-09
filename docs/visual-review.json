@@ -2,6 +2,35 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "masked-partition-marks",
+      "title": "Masked partitions \u2014 replaceable content",
+      "category": "Native workflow; packaging pending",
+      "description": "Same irregular windows reveal global paths, local marks or explicit raster crops. Layout edits retain source content.",
+      "evidence": "evidence/workflows/masked-partition-marks/root-review.json",
+      "images": [
+        {
+          "label": "Global paths",
+          "path": ".work/masked-partition-marks-native-root2/native/baseline.png",
+          "sha256": "46bd25d9db447e4d7fb4a28b8f6436505aca9ba6fc75ecf03454a322474281af"
+        },
+        {
+          "label": "Shifted partition",
+          "path": ".work/masked-partition-marks-native-root2/native/shifted.png",
+          "sha256": "31704e2bfbd8662956dc5013dce2f0242fb4590d1e84dce2c032ca45b80b4a16"
+        },
+        {
+          "label": "Local marks",
+          "path": ".work/masked-partition-marks-native-root2/native/local.png",
+          "sha256": "99b85303ad762fc32452c732f377e20be5febf4ba6ec6d6e5d1ff615aefce673"
+        },
+        {
+          "label": "Image crops",
+          "path": ".work/masked-partition-marks-native-root2/native/crop.png",
+          "sha256": "1dcb58180d174b0673d2eb84fc7adc165112a4c40bc0890ef3cfb530d503cc89"
+        }
+      ]
+    },
+    {
       "id": "path-clip-marks",
       "title": "PathClipMarks \u2014 retained paths and clipping",
       "category": "Native workflow",

@@ -50,7 +50,11 @@ explicit crop, frame, contain/cover/stretch and alignment. A generated drawing i
 `PImage`, so the same placement call works for both. This is a reusable content layer;
 partition generation need not know whether it contains a photograph or generated marks.
 
-The region callback adapter currently supports rectangles in JAVA2D. For a curved or
+Java0.34 adds [MaskedPartitionMarks](masked-partition-marks.md): the same content callback
+can receive immutable raster-mask descriptors through `Java2DRegions.renderMasked`. Its
+frame supplies identity and a local origin; mask coverage alone determines visibility.
+
+The original region callback route supports rectangles in JAVA2D. For a curved or
 irregular visible region, draw that shape into a transparent layer and extract its alpha
 with `Java2DLayers.alphaMask`, as in [MaskMarks](mask-marks.md). This masks image content;
 it does not produce clipped vector paths or make geometry follow the boundary.

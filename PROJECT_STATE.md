@@ -1,5 +1,61 @@
 # Project state
 
+## Java0.34 distribution accepted for integration
+
+Final archive .work/dist/masked-partition-java-source-root2/procedurals-java-source-dev.zip
+SHAeffc9c0a4bbd15c96f19c631db2d85710f3a2c6fabf888892bb3390d2cee7dc6,438members.
+Extracted consumer .work/masked-partition-consumer-root2 passes36PDEs and masked workflow
+6states/7images equal reviewed native output. Portable core classes identical0.33; only
+regions adapter/main plus new immutable mask class differ. Source/catalog review successors
+preserve historical evidence. Final docs inventory reconciled. Root distribution review
+evidence/distribution/masked-partition-java-review.json accepted. Next commit/push after
+fresh remote check;30ops36workflows, no new core or recreation. Broader completion remains
+open. Preserve unrelated Android edit.
+
+## MaskedPartitionMarks native workflow reviewed; gallery updated
+
+Root authored native plan/probe/runner using established PathClip harness. First run passed
+but global artwork was too sparse; root revised24trace starts across canvas plus dark layer.
+Final .work/masked-partition-marks-native-root2 passes6actual event states and cached save,
+source identity/content hashes, mask retain/rebuild checks and conservative outside pixels.
+Root viewed revised baseline/shift and first local/crop (byte-identical to final). Scoped
+evidence/workflows/masked-partition-marks/root-review.json accepted native workflow only.
+Gallery now45groups208images, no problems; docs/masked-partition-marks.md explicitly pending
+distribution. Next integrate changed Java2DRegions current-source support records without
+overwriting historical evidence, add workflow manifest/extracted-consumer route, build and
+review Java distribution before commit/push. Accepted archive remains0.33,30ops35workflows.
+Uncommitted candidate includes adapter, native probes/runner, design/docs/evidence and gallery.
+Preserve unrelated Android edit. Terra task complete.
+
+## Masked region candidate implemented; focused native checks pass
+
+Root froze design/capabilities/masked-partition-content-contract.md after Terra audit.
+Terra implemented immutable MaskedRegion and renderMasked in existing Java2DRegions; root
+reviewed full diff and removed a redundant helper/clarified kernel cost. Source SHA
+5572ec2e8b3a7fee1709d9b36beab15fcaf980763117a8c4dc5a25b9d585017b. Root-authored
+Java2DMaskedRegionsNative and unchanged Java2DRegionsNative pass actual JAVA2D under shared
+machine lease against extracted0.33 portable core. Evidence/conformance/
+java2d-masked-regions-native-candidate.json binds commands/source/runtime and results.
+Four720x480 masks:11,059,200 payload bytes,44,380,208ns total for3renders;12masks:
+33,177,600bytes,134,752,750ns total. Measurements are observations, not animation guarantees.
+Terra now owns ONLY candidate MaskedPartitionMarks.pde: ellipse windows over retained global
+paths, local marks and explicit image crops with separate layout/content edits. Next root
+authors workflow native probe, views results, updates current-source adapter support evidence
+without rewriting historical reviews, then distribution integration. Candidate source changes
+are not yet an accepted milestone;30operations35workflows remains accepted. Preserve Android.
+
+## Direct-use guides pushed; irregular partition convenience under investigation
+
+Reviewed documentation checkpoint27fae895 pushed to main after remote reconciliation.
+Recorded source hashes and both official preprocessing/compilation commands passed again.
+Java0.33 remains the accepted distribution,30operations35workflows. Root read current
+regions/layers implementations and motivating eyes002/circuloss notes; new draft
+design/capabilities/masked-partition-content-brief.md records the remaining convenience
+boundary, ownership/memory decisions and native acceptance tasks. Terra segment_clip_core
+is assigned read-only reuse/hazard audit. No new API, runtime acceptance or port claim.
+Next root reviews that audit and freezes a bounded contract if the convenience earns its
+maintenance cost. Preserve unrelated Android example edit.
+
 ## Direct-use guide batch reviewed for repository integration
 
 Root verified the current direct-API code block byte-for-byte against its compiled PDE;
