@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clip marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Clip marks</h1>
+  <p>A notched octagon clips one of three authored source sets - a dense
+    diagonal hatch, a sparse hatch, or five long supplied strokes - into the
+    segments that remain inside the polygon, using exact rational clipping.</p>
+  <div id="controls" aria-label="Clip marks controls">
+    <button data-action="h"><kbd>H</kbd> hatch density</button>
+    <button data-action="n"><kbd>N</kbd> notch floor</button>
+    <button data-action="t"><kbd>T</kbd> source</button>
+    <button data-action="c"><kbd>C</kbd> color</button>
+    <button data-action="m"><kbd>M</kbd> endpoints</button>
+    <button data-action="o"><kbd>O</kbd> input overlay</button>
+    <button data-action="0"><kbd>0</kbd> reset</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated clip study"></div>
+  <p id="status" role="status">Preparing clip&hellip;</p>
+  <p>Each visible segment is the part of a source stroke inside the polygon;
+    split pieces keep their source identity, which the alternate colors make
+    visible. The faint overlay draws the unclipped input. Edit
+    <code>clip-marks.js</code>: the hatch spacing, supplied points, polygon,
+    and floor height are authored piece settings.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>
