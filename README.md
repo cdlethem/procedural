@@ -1,78 +1,73 @@
 # Procedurals
 
-An evidence-backed generative-art toolkit distilled from a survey of 901 Processing
-sketches. Reusable operations compute geometry, fields, color, state and raster transforms;
-editable workflows show how to compose them into artwork.
+Procedurals makes it easier to create procedural art with Processing. It adds a higher-level
+API for turning simple drawing primitives, randomness and carefully chosen parameters into
+rich visual compositions.
 
-## Make something
+Processing gives you the tools to draw. Procedurals supplies reusable ways to arrange,
+connect, grow, distort and combine what you draw: paths that follow a field, shapes packed
+with space between them, branching structures, subdivided surfaces, and images used as
+material for new compositions.
 
-- [Build and install Java](docs/building-java-from-source.md), then
-  [choose a workflow by artistic intent](docs/choosing-java-workflow.md).
-- [Compose drawings, partitions, image snippets and effects](docs/composing-java-effects.md).
-- [Render seeded sketches, sweeps and frame sequences](docs/rendering-java.md).
-- [Review actual generated images](docs/visual-review.md) in the local gallery.
-- For JavaScript, see the [reviewed p5 integration and local package build](docs/port-integration-status.md).
+You still choose the palette, the marks and the composition. The library handles the
+underlying algorithms, leaving more room to experiment with the decisions that make a
+piece your own.
 
-Java is the reference implementation. Support for p5.js, py5 and Android is validated
-independently. Packages are local reviewed artifacts, not registry publications. The
-[operation reference](docs/reference/operations.md) gives current catalog support;
-[PROJECT_STATE](PROJECT_STATE.md) records the accepted baseline and inventory.
+## What can you make?
 
-The Java implementation objective is [accepted within its documented scope](evidence/distribution/java-completion-review.json).
-This does not certify every original sketch or all targets. A
-[Java recipe preview](docs/java-recipe-preview.md) is experimental. General portable recipes,
-a browser composition application and MCP tools remain [roadmap work](docs/roadmap.md).
+- **Fields of marks and flowing lines.** Arrange strokes across a surface, trace wandering
+  paths, or place your own shapes along a curve.
+- **Patterns, panels and packed forms.** Scatter shapes without overlap, divide a canvas
+  into regions, or turn a collection of points into a network of triangles.
+- **Branches and responsive structures.** Grow fine branching drawings or use springs to
+  move an arrangement toward changing targets.
+- **Three-dimensional forms.** Build meshes from profiles, create annular forms, and use
+  spatial fields to vary their appearance.
+- **Layered image compositions.** Crop and fit images into regions, use image values to
+  control marks, warp a drawing, or blend sharp and filtered layers through masks.
 
-## Contribute
+The [example guide](docs/choosing-java-workflow.md) helps you find a starting point based
+on the kind of piece you want to make.
 
-Agents read [AGENTS.md](AGENTS.md) and [PROJECT_STATE.md](PROJECT_STATE.md), then only the
-contracts and task documents they need. [Architecture](docs/architecture.md) explains the
-system; [artist capabilities](docs/artist-capabilities.md) explains admission decisions;
-[agent briefs](docs/agent-briefs.md) defines bounded delegation.
+## Build a composition, then explore it
 
-| Path | Authority |
-|---|---|
-| `survey/snapshot.json`, `survey/out/` | Published evidence revision, notes and render measurements |
-| `data/corpus.sqlite`, `reports/` | Generated corpus queries, sensitivity and diagnostics |
-| `design/phase2/`, `design/capabilities/` | Reviewed decisions and explicit design drafts |
-| `catalog/operations/`, `fixtures/operations/` | Language-neutral semantics and expected results |
-| `catalog/validation/`, `evidence/` | Scoped implementation, native and reproduction acceptance |
-| `packages/` | Reference implementation, ports, adapters and editable examples |
-| `tools/`, `tests/`, `skills/` | Existing build/validation infrastructure and lifecycle guidance |
+The operations work together. Generate a set of paths, clip them to an outline, and draw
+short strokes along the visible sections. Divide a canvas into panels, then fill each
+panel with a different drawing or crop from a larger image. Reuse the same geometry while
+trying another palette or mark treatment.
 
-## Evidence workflow
+Seeds make random variations repeatable. Parameters let you change structure deliberately:
+the spacing between forms, the shape of a curve, the strength of a distortion, or where a
+color transition happens. The editable examples show which controls affect the arrangement
+and which change its appearance.
 
-The publishable snapshot is incomplete; the maintainer authorized incremental design and
-implementation from it. Evidence gaps block the affected decision. Snapshot counts do not
-establish live survey progress. Read [survey metadata](survey/snapshot.json) and
-[corpus diagnostics](reports/corpus.md) for exact counts and limitations.
+Read [Composing drawings, partitions and image effects](docs/composing-java-effects.md)
+for ways to combine these tools in your own sketches.
 
-With Python 3.11+ and uv, rebuild the normalized analyses from checked-in data:
+## Get started
 
-```sh
-uv run python tools/ingest.py
-uv run python tools/report.py
-```
+The most complete version is for **Processing 4 in Java mode**. Installation currently
+requires building the library from source.
 
-Use focused existing tests for the changed subsystem. `uv run python tools/check_catalog.py`
-checks catalog/schema/source/reference consistency; it is not native or visual conformance.
-Measured change is evidence for a control's effect, not automatically a useful default/range.
-[Parameter sensitivity](reports/parameter-sensitivity.csv) preserves measured values and
-warnings. Malformed frontmatter, normalization, nondeterminism and suspect shader renders
-remain visible in the evidence.
+1. [Build and install the library](docs/building-java-from-source.md).
+2. Open **File → Examples → Contributed Libraries → Procedurals** in Processing.
+3. Save a copy of an example and start changing its parameters, colors and drawing code.
 
-Rendered survey images, copied assets, builds, logs and toolchains are excluded from Git.
-Corpus queries work from a normal clone; visual conformance also needs external reference
-images. See [survey maintenance](survey/README.md) for snapshot refresh and provenance, and
-[recreation coverage](docs/recreation-coverage.md) for scoped versus full-corpus claims.
+[FieldMarks](docs/getting-started.md) is a simple first sketch: change the lengths and colors
+of marks across a field, then replace the marks themselves. If you prefer an empty canvas,
+the [Java API guide](docs/java-api.md) shows how to use the library directly.
 
-## Source and licensing
+When you want to compare variations, the [rendering tools](docs/rendering-java.md) can
+produce seeded renders, parameter sweeps and frame sequences.
 
-The evidence comes from [Manolo Gamboa Naon's AllSketchs](https://github.com/manoloide/AllSketchs).
-Source sketches remain the author's work. Original notices and README are preserved under
-[survey provenance](survey/provenance/); the survey methodology is retained under
-[survey/methodology/](survey/methodology/).
+Ports for **p5.js, py5 and Processing for Android** are also underway, with a smaller set
+of available features. For a browser example, try [BandMarks](packages/javascript/examples/band-marks/README.md).
+A visual browser-based composition editor is planned.
 
-Project code uses the [MIT License](LICENSE). Reused upstream material retains its own
-copyright and notices, including those in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)
-and the numerical helper source files. Do not remove those notices when redistributing.
+## Credits and license
+
+Inspired by the generative work of [Manolo Gamboa Naon](https://github.com/manoloide/AllSketchs).
+
+Project code is available under the [MIT License](LICENSE). Reused material retains its
+original attribution and license notices; see [third-party notices](THIRD_PARTY_NOTICES.md)
+and the notices included with the source.
