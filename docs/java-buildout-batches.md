@@ -39,6 +39,8 @@ installation/performance guidance. Java0.34 adds immutable masked-region callbac
 MaskedPartitionMarks for independent irregular layout/content edits.
 The family boundary review is in design/capabilities/java-family-boundaries-cp27.md;
 its annular implementation follow-up is now accepted, while broader unknowns remain.
+Java0.35 adds exact first-contact queries and ContactMarks. Current remaining-work review:
+[java-completion-035-review.md](../design/capabilities/java-completion-035-review.md).
 Public-method documentation and final user-journey consistency are still unfinished.
 Earlier rows below retain their historical decisions.
 

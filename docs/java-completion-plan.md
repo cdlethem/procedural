@@ -7,7 +7,7 @@ or replace the project's mission with the current operation count.
 
 Execution now follows [the remaining-scope map and parallel batches](java-buildout-batches.md).
 
-Current remaining-work review: [CP29 reconciliation](../design/capabilities/java-completion-cp29-review.md).
+Current remaining-work review: [Java0.35 reconciliation](../design/capabilities/java-completion-035-review.md).
 CP26 delivered image-driven controls and normalized separable postprocessing. Spatial masks
 and explicit image placement are delivered. Remaining family dispositions and discovery
 consistency still require review; source-specific shader behaviors are not implied.
@@ -41,7 +41,9 @@ radial-profile meshes, glyph placement, Delaunay facets, target springs and occu
 paths, raster remapping, positioned color ramps, noise-band paths, smooth closed curves and binary panel layouts,
 plus retained caller-selected rectangle cuts, pointer-target and tapered-body workflows,
 and relief/city/landscape compositions. LayerMarks adds image/callback region content, masked
-source-over and two-input crossfade. ClipMarks adds retained simple-polygon segment clipping.
+source-over and two-input crossfade. MaskedPartitionMarks adds interchangeable content within
+irregular masks. ClipMarks adds retained simple-polygon segment clipping; ContactMarks adds
+first obstacle contacts with retained hit identity.
 Four selected original structural
 recreations are demonstrated; Curvespace is a separate repository example, outside the
 accepted Java0.25 archive. Consult current operation attestations rather than historical

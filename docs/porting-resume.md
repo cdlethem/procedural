@@ -1,24 +1,32 @@
 # Deferred port integration — Java buildout resumes
 
-## Current Java handoff: CP29 / Java0.32.0
+## Current Java handoff: Java0.35.0
 
-Use the pushed CP29 integration commit containing
-`evidence/distribution/cp29-java-review.json` as the new baseline; older hashes below
-are historical checkpoints. This milestone contains30 accepted Java operations and34
-workflows. The exact accepted operation/target inventory is in `catalog/validation/`.
+Pin a separate checkout and branch to pushed commit
+`d7f95a06f55fd0937ebb2c12bb2192c7644922c4`.
+This baseline contains 31 accepted Java operations and 37 workflows, reviewed in
+`evidence/distribution/contact-java-review.json`. The exact operation/target inventory
+is in `catalog/validation/`; Java acceptance never implies port acceptance.
 The source archive SHA is
-`11f4b85131fbad3be5fb8677c55cc9cd8cb66ef90a2664fbf745051f9f6f84d5`.
+`7dcc30541cd6deaee2b27056555b3039d4ae58c88d495df0ca3d8d61472c3724`.
 
-New in this checkpoint: `geometry.clip-segments-simple-polygon-2d`, implemented by
-`SegmentClip2D`, and the ClipMarks workflow. Its34 shared fixtures specify exact topology,
-binary64 rounding, ordered failures and source identities. Java native edit/transfer and
-extracted-package results are accepted; other targets remain unvalidated. Reuse the
-independent exact oracle when porting, and preserve representation-collapse failures.
+Since the previous CP29 handoff:
 
-Pending: prior deferred ports and Android ProfileMarks integration, clipping ports,
-and representative native review on each claimed platform. Port work remains paused
-during this Java sprint. Root alone accepts shared support records. Use a separate
-checkout/branch pinned to the integration SHA and the machine-wide native render lock.
+- PathClipMarks composes retained field paths with the existing polygon segment clipper.
+- MaskedPartitionMarks uses immutable region masks with replaceable local, canvas-space
+  and image content. This is adapter/workflow expansion, not another core operation.
+- `geometry.nearest-segment-contact-2d` adds exact first-contact selection and retained
+  obstacle identity; ContactMarks demonstrates editable obstacle geometry. Its 26 shared
+  fixtures cover closed contacts, overlap, exact ordering and representation collapse.
+- `SegmentClip2D` now shares a package-private exact arithmetic helper with the contact
+  operation. Preserve the reviewed arithmetic semantics; the helper is not a public API.
+
+Pending: prior deferred ports, Android ProfileMarks integration, polygon clipping and
+nearest-contact ports, and the masked-region adapter/workflows. Review representative
+native results on each claimed platform. Port work remains paused during this Java
+sprint; this handoff does not schedule a restart. Root alone accepts shared support
+records. Coordinate all native renders with the machine-wide shared lock through
+`tools/with_native_render_lock.py`, including renders from separate checkouts.
 
 Maintainer direction: pause port integration and develop new Java functionality. This
 supersedes the current ports-first sequence. Preserve frozen contracts and accepted target
@@ -35,7 +43,7 @@ Those scoped records do not establish Android or completed shared radial support
 
 ## Java buildout additions to the deferred queue
 
-Latest accepted Java library baseline: `7d5c941f`
+Historical Java library baseline: `7d5c941f`
 (Java0.20, 20 operations and 20 workflows), reviewed in
 `evidence/distribution/cp17-java-review.json`. Earlier Java0.19 baseline:
 `5197dc6e2d4754699bbafb2cd1e5418a75ab9f08`. Repository tooling checkpoint `1dabca75`

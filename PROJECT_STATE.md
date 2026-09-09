@@ -1,5 +1,25 @@
 # Project state
 
+## Java value guide and current port handoff reconciled
+
+Root reviewed Terra's two bounded API findings against CyclicPalette and CirclePlacements2D.
+Added docs/java-result-values.md with exact carrier/schema, copying, proposal identity and
+index/output failure semantics; linked direct-use and placement guides. Java sources are
+unchanged; source Javadoc omissions remain open. Port resume now pins d7f95a06 and records
+contact/clipping/masked workflow backlog without restarting ports. Completion reconciliation
+remains explicit about scoped evidence and unfinished final discovery review. Preserve Android.
+
+## Java0.35 pushed; current completion reconciliation authored
+
+Pushed d7f95a06f55fd0937ebb2c12bb2192c7644922c4; root confirmed current attestation loader:
+31conformant cores,31scopednative,26scopedtechnique/5unvalidatedtechnique, no binding errors.
+Current design/capabilities/java-completion-035-review.md preserves all five requirements,
+records current proof and limits, and chooses public documentation/capability-map work next.
+Completion plan links this review; no full-completion or new reproduction claim. Terra
+segment_clip_core assigned read-only current Javadoc/public-method audit at most5essential
+gaps, excluding alreadyclosed direct-guide topics. Next root reviews findings and implements
+one bounded docs batch using equivalence checks when core comments change. Preserve Android.
+
 ## Java0.35 distribution accepted for integration
 
 Archive.work/dist/contact-java-source-root1/procedurals-java-source-dev.zip

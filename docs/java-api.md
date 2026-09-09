@@ -84,6 +84,9 @@ present them as a clean documentation audit. Class-level evidence and linked con
 remain necessary for semantics and provenance. Generated documentation does not certify a
 new target or change any operation's accepted behavior.
 
+For factory validation, result ownership and indexed access errors, see
+[Read and reuse Java values](java-result-values.md).
+
 ## Query the scalar field directly
 
 `GradientNoise2D01.create` takes a map with exactly one key, `seed`, containing an unsigned
