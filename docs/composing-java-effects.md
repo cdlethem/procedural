@@ -59,6 +59,8 @@ For retained line geometry, [ClipMarks](clip-marks.md) uses `SegmentClip2D` to t
 supplied segments to one simple polygon, including a concave outline. It returns each
 interior piece with its original source index. This trims centerlines; use an image mask
 when the complete painted stroke footprint must stay inside.
+[PathClipMarks](path-clip-marks.md) demonstrates this connection with actual field-generated
+paths: reclip the same movement after a boundary edit, then color pieces by original path.
 
 Extend this pattern through region adapters when a new shape family needs it. A callback
 belongs on the drawing adapter, while the underlying partition result remains available

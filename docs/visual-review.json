@@ -2,6 +2,35 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "path-clip-marks",
+      "title": "PathClipMarks \u2014 retained paths and clipping",
+      "category": "Native workflow",
+      "description": "Change the notch without regenerating paths; color by original path or reveal unclipped movement. Native and extracted-package reviewed in Java0.33.0.",
+      "evidence": "evidence/workflows/path-clip-marks/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/path-clip-marks-native-root2/native/baseline.png",
+          "sha256": "b0541ad8024639816df5cc7ffe3d30aa3dbc6dcaad7ccd111351efe33f048a01"
+        },
+        {
+          "label": "Shallow notch",
+          "path": ".work/path-clip-marks-native-root2/native/shallow-notch.png",
+          "sha256": "379e3a9609c1380d6e5456cc14863894a58407023a3b4174a9ad246bcdfdf85e"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/path-clip-marks-native-root2/native/recolored.png",
+          "sha256": "f630501475dc1eae92b6888f4545d7b8612ad29aab92dbbb73310c7254e7bc16"
+        },
+        {
+          "label": "Overlay",
+          "path": ".work/path-clip-marks-native-root2/native/overlay.png",
+          "sha256": "554186d41bf88e3e531f0d479fdfe1b9914a863e85eb6b42a41c8ccbd1d9318a"
+        }
+      ]
+    },
+    {
       "id": "clip-marks-candidate",
       "title": "ClipMarks \u2014 production candidate",
       "category": "Candidate workflow",

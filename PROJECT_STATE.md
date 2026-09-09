@@ -1,5 +1,49 @@
 # Project state
 
+## Java0.33.0 PathClipMarks distribution accepted
+
+Extracted native consumer passed35PDEcompilations; all core/adapter classes identical to
+Java0.32.1. Seven installed-JAR PNGs equal root-reviewed source-run images. Distribution
+review evidence/distribution/path-clip-java-review.json accepted, archive
+SHAb77d44a206239cc4eb4563e7a832b90050aa1189e0de517d2dd11455b0ef8dec,435members.
+Workflow chooser/composition/install/README updated; gallery44groups204images error-free.
+30operations/35workflows, no new core or original recreation. Next commit/push accepted
+checkpoint; broader five-requirement completion audit stays open. Preserve Android edit.
+
+## PathClipMarks native accepted; extracted package running
+
+Root reviewed revised200-floor baseline,430-floor edit, palette and overlay; substantial
+path gap now visible. Native6states/960source identities/exact oracle/reset/save pass.
+Source/artifact hashes verified; accepted scoped review evidence/workflows/path-clip-marks/
+root-review.json. Gallery44groups/204images, no problems. Added PathClipMarks extracted
+consumer route and manifest candidateJava0.33.0 (30ops/35workflows if accepted).
+Source bundle built .work/dist/path-clip-java-source-root1/procedurals-java-source-dev.zip,
+SHAb77d44a206239cc4eb4563e7a832b90050aa1189e0de517d2dd11455b0ef8dec,435members.
+Extracted native consumer started output.work/path-clip-consumer-root1; poll latest exec
+session/result before rerun. Next inspect installed native equivalence and35PDEcompilation,
+record distribution review, reconcile guide/counts, and commit/push. No core changes.
+
+## PathClipMarks first native passes; artwork adjusted for visible boundary edit
+
+Root authored PathClipMarksProbe and runner using established native harness. Actual first
+native run .work/path-clip-marks-native-root1 passed6states,960source-to-path checks,
+independent exact clipping and retained/reset/save checks. Root inspected4distinct views:
+paths mostly graze270notch, so N is visually weak despite valid geometry. Root changed only
+authored baseline notch floor270→200 (alternate430 unchanged), recorded rationale in plan.
+Second native run active exec session from latest tool, output.work/path-clip-marks-native-root2;
+poll result/process before restarting. Candidate docs/path-clip-marks.md authored. No accepted
+workflow or package change yet; source/core contracts unchanged.
+
+## Documentation checkpoint pushed; path-to-clipping transfer example underway
+
+Java0.32.1 pushed e7fe1b9ec5b62cdc822a188ea59b4e7f09aa1565; remote matched afterward.
+Root selected a concrete composition transfer: retained GradientPath2D movement → supplied
+segments → SegmentClip2D with source-to-path metadata → cached Java2DLayers drawing.
+Terra owns only candidate PathClipMarks.pde. Root authored pre-render native plan in
+design/capabilities/path-clip-marks-native-plan.md; no new core operation or acceptance.
+Next inspect actual example, compile, probe source identity/geometry/real edits and native
+visuals with one shared lease. Existing accepted ClipMarks remains unchanged.
+
 ## Java0.32.1 documentation distribution accepted
 
 Extracted consumer passed34PDE compilations and full inventory checks. Five expected debug

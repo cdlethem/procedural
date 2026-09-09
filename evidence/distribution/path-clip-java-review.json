@@ -1,0 +1,30 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.33.0",
+  "scope": "30 accepted Java operations and35 editable workflows; PathClipMarks composes existing retained path/clipping/layer operations. No new core or original recreation claim.",
+  "archive": {
+    "path": ".work/dist/path-clip-java-source-root1/procedurals-java-source-dev.zip",
+    "sha256": "b77d44a206239cc4eb4563e7a832b90050aa1189e0de517d2dd11455b0ef8dec",
+    "members": 435
+  },
+  "evidence_sha256": {
+    "evidence/distribution/path-clip-java-source.json": "fde332a9a6d53b7a308ccc6b81724c49070fbc7f818798863dad0331802b78ec",
+    "evidence/distribution/path-clip-java-consumer.json": "cf5dbe4cdd6d4b97c639f57e1fab9dfc6162b31e706cbc010f46bb0859b3802a",
+    "evidence/workflows/path-clip-marks/root-review.json": "0fae1d00e8589f73b5814ef2a350152e5a536ec8c6b4b1b0ec29073ed134b828",
+    "evidence/distribution/cp29-docs-java-review.json": "7e1b01d2318b71f06e59ba2de6b4e9c4c6d3ccb0a49a7111aa928b0764525d4d"
+  },
+  "verified": [
+    "All35 extracted PDE examples compile; all prior core/adapter classes remain byte-identical.",
+    "Actual extracted PathClipMarks native sequence passes using installed core JAR.",
+    "All seven extracted PNGs equal reviewed source-run images; exact geometry oracle and retained path/source identity checks pass.",
+    "Extracted source, adapter, reference, example, license and font inventories pass."
+  ],
+  "javadoc_warnings": 655,
+  "limitations": [
+    "Complete Java acceptance audit remains open.",
+    "No path steering or painted-footprint clipping.",
+    "Ports remain deferred."
+  ]
+}

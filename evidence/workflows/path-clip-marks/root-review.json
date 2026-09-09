@@ -1,0 +1,21 @@
+{
+  "status": "accepted-native-workflow",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "PathClipMarks JAVA2D composition of accepted path, clipping and layer operations; no new core, original recreation or distribution acceptance.",
+  "evidence_sha256": {
+    "evidence/workflows/path-clip-marks/native.json": "359bc7aa3c4fa5fb677acf4c0d43fb4ea60091b47cefc80294a71a94f2b66868"
+  },
+  "verified": [
+    "Root read the complete PDE and probe;960 flattened source segments match retained path positions and path/step metadata.",
+    "Six actual native states agree with independent exact clipping; notch edits preserve input objects and appearance preserves clipped objects.",
+    "Reset/restored pixels and cached save pass; source/runtime/artifact/image hashes verified.",
+    "Root inspected baseline, shallow notch, recolor and overlay. The200-floor notch visibly removes a substantial middle portion of the path bundle;430-floor reveals it. Overlay exposes original movement through the exclusion."
+  ],
+  "limits": [
+    "Painted stroke width is not geometrically clipped; no boundary steering.",
+    "Converging paths overlap, so not every path color is separately visible throughout.",
+    "Original270-floor study passed but made the boundary edit too subtle; final artwork uses200.",
+    "Extracted package validation pending."
+  ]
+}

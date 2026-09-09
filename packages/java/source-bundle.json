@@ -1,6 +1,6 @@
 {
-  "version": "0.32.1",
-  "processing_version": 32,
+  "version": "0.33.0",
+  "processing_version": 33,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -245,6 +245,10 @@
     "procedurals/examples/ClipMarks/ClipMarks.pde": {
       "source": "packages/java-processing/examples/ClipMarks/ClipMarks.pde",
       "sha256": "c0c9f1007e7742f6c6a2dc306ff6a6fbd57380030bc9c9c5b99ce682de0d6744"
+    },
+    "procedurals/examples/PathClipMarks/PathClipMarks.pde": {
+      "source": "packages/java-processing/examples/PathClipMarks/PathClipMarks.pde",
+      "sha256": "c27a16477f55e95e377d7bad12934785b2205cef098c8367f703bb94e150fa1b"
     }
   },
   "operation_files": [
