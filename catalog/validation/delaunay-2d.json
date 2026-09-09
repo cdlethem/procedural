@@ -130,7 +130,45 @@
     },
     "p5js": {
       "core": {
-        "status": "unvalidated"
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+          "tests/native/delaunay-javascript.mjs": "d2a868b321bd4b49472de5aa65552823cba31ec5a6b2f12245912bf394a9b20e",
+          "tests/native/delaunay-hull-boundary.mjs": "d7dd88ac11e72f7dc819bb416470127e07b1ceaf55a2c35289b1f7a65fa0f4d5",
+          "tools/run_delaunay_browser_core.mjs": "2291996f57f70c14b41cc759e1e49af433bc12fb96e7ea329331b5b26fce4a6e",
+          "tools/serve_warp_marks.mjs": "38824b3768dada162997255e739832d2b29942537bd677fe30ee8299868883e6"
+        },
+        "evidence_sha256": {
+          "evidence/ports/delaunay-p5/core.json": "82b41ca881a8814f45e1a6da1a1b059a5d47a48c39c7c1c7c8e3c0d1e096aa03",
+          "evidence/ports/delaunay-p5/browser-core.json": "87ee2af5bc6434ba6be5fa66896e52c75394e3d36c38dafbe46093c12107fd4c",
+          "evidence/ports/delaunay-p5/hull-boundary.json": "41dace93c66af9b48969403a626372e36a236eb518168e98a7677126ead23eb2",
+          "fixtures/operations/delaunay-2d.json": "2f2166e90dbab6345fda3148e65aae6079fcd0de96f6a9752ade3ed80c68a4d4"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/ports/delaunay-p5/core.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/ports/delaunay-p5/browser-core.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/ports/delaunay-p5/hull-boundary.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/ports/delaunay-p5/root-review.json",
+          "sha256": "3ed9cfa4931679ba0f2a838f08e08a49ca74026fec2087bb10070e3bc66c07ee"
+        },
+        "runtime_profile": {
+          "name": "Node22; Chromium153",
+          "scope": "Direct-module JS Delaunay core only; browser fixtures do not accept FacetMarks rendering."
+        }
       },
       "native": {
         "status": "unvalidated"

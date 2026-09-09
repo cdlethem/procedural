@@ -1,5 +1,16 @@
 # Project state
 
+## Delaunay JS core reviewed with large-hull correction
+
+Root read full triangulation port; fixed lower.push(...upper) argument-limit bug reproduced
+on140000convex sites. Loop append completes139998faces/279997edges within559993work units.
+36shared cases pass Node/Chromium with existing Node raw-bit/topology/access cases.
+evidence/ports/delaunay-p5/root-review.json accepts core only. Original branch remainder
+3cores/3workflows and exports/package integration. Netlib hypot agent added isolated
+candidate internal/fdlibm-hypot.js and runner;819oldoracle+9boundary cases pass but root
+review/freshJavaoracle and notices integration remain before spline use. Candidate files
+must remain unaccepted/unstaged until reviewed; Android draft preserved.
+
 ## Occupied-lattice JS core reviewed; netlib hypot candidate in flight
 
 Root read lattice core and14shared fixtures pass Node/Chromium under shared lease.

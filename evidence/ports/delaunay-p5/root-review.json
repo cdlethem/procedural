@@ -1,0 +1,30 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Direct-module JS Delaunay core only; browser fixtures do not accept FacetMarks rendering.",
+  "origin_commit": "4b3f6921",
+  "implementation_sha256": {
+    "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    "tests/native/delaunay-javascript.mjs": "d2a868b321bd4b49472de5aa65552823cba31ec5a6b2f12245912bf394a9b20e",
+    "tests/native/delaunay-hull-boundary.mjs": "d7dd88ac11e72f7dc819bb416470127e07b1ceaf55a2c35289b1f7a65fa0f4d5",
+    "tools/run_delaunay_browser_core.mjs": "2291996f57f70c14b41cc759e1e49af433bc12fb96e7ea329331b5b26fce4a6e",
+    "tools/serve_warp_marks.mjs": "38824b3768dada162997255e739832d2b29942537bd677fe30ee8299868883e6"
+  },
+  "evidence_sha256": {
+    "evidence/ports/delaunay-p5/core.json": "82b41ca881a8814f45e1a6da1a1b059a5d47a48c39c7c1c7c8e3c0d1e096aa03",
+    "evidence/ports/delaunay-p5/browser-core.json": "87ee2af5bc6434ba6be5fa66896e52c75394e3d36c38dafbe46093c12107fd4c",
+    "evidence/ports/delaunay-p5/hull-boundary.json": "41dace93c66af9b48969403a626372e36a236eb518168e98a7677126ead23eb2",
+    "fixtures/operations/delaunay-2d.json": "2f2166e90dbab6345fda3148e65aae6079fcd0de96f6a9752ade3ed80c68a4d4"
+  },
+  "verified": [
+    "Root read exact dyadic predicates and interval-filter fallback, stable duplicate mapping, active face/edge ordering, cocircular tie choice, work charges and retained accessors.",
+    "36shared cases pass Node/Chromium, plus Node cross-case topology, raw binary64 coordinates, ownership, Into failure atomicity and exact budget-boundary checks.",
+    "Root reproduced unmodified branch RangeError on140000point strict convex upper hull. Replaced lower.push(...upper) with iteration; same input now completes139998faces/279997edges in559993work units under560000allowance."
+  ],
+  "limits": [
+    "No FacetMarks native-workflow/technique acceptance, frame-rate guarantee or source recreation claim.",
+    "Root-barrel exports and package integration remain pending.",
+    "Browser fixture comparison covers values and error details; Node runner separately checks explicit raw-bit coordinate fixtures."
+  ]
+}

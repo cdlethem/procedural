@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "operation": "topology.delaunay-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module golden, carrier, access and cross-case checks against the frozen delaunay-2d fixtures. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/delaunay-2d.json": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
+    "fixtures/operations/delaunay-2d.json": "2f2166e90dbab6345fda3148e65aae6079fcd0de96f6a9752ade3ed80c68a4d4",
+    "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    "tests/native/delaunay-javascript.mjs": "d2a868b321bd4b49472de5aa65552823cba31ec5a6b2f12245912bf394a9b20e"
+  },
+  "input_sha256_after": {
+    "catalog/operations/delaunay-2d.json": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
+    "fixtures/operations/delaunay-2d.json": "2f2166e90dbab6345fda3148e65aae6079fcd0de96f6a9752ade3ed80c68a4d4",
+    "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    "tests/native/delaunay-javascript.mjs": "d2a868b321bd4b49472de5aa65552823cba31ec5a6b2f12245912bf394a9b20e"
+  },
+  "scenarios": {
+    "fixture_cases": 36,
+    "cross_case_checks": [
+      "duplicate-permutations-have-identical-coordinate-topology",
+      "negative-zero-canonicalizes-in-output",
+      "boundary-and-internal-insertion-work-threshold",
+      "all-draft-schedule-stages-have-one-short-witnesses"
+    ],
+    "ownership_access": [
+      "input containers detached",
+      "At carriers and export detached",
+      "ordinary/sparse/typed Into outputs",
+      "mixed/frozen/short/wrong outputs atomic",
+      "all accessor index/range precedence",
+      "invalid offsets atomic"
+    ],
+    "native_only": [
+      "nonfinite-and-overflowing-numeric-carriers (JavaScript applicable carriers)",
+      "passive-input-carriers-only"
+    ]
+  },
+  "allocation_failure": {
+    "executed": false,
+    "source_review": "Output exports allocate detached arrays and do not mutate retained private arrays; a failed generation exposes no result. No controlled host allocation failure injected."
+  }
+}

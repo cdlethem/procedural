@@ -21,7 +21,11 @@ Occupied-lattice core is accepted separately in
 `evidence/ports/occupied-lattice-p5/root-review.json`; 14 shared cases pass in Node and
 Chromium. Native-workflow/technique acceptance remains unvalidated.
 
-Remaining original JavaScript core work: Delaunay, closed spline, noise-band paths
+Delaunay core is accepted in `evidence/ports/delaunay-p5/root-review.json`, including
+a root fix for function-argument overflow when joining a large hull. Rendering remains
+unvalidated.
+
+Remaining original JavaScript core work: closed spline, noise-band paths
 and line pools; LoopMarks, BandMarks and
 CutBranchMarks workflows. SpringMarks animation still needs separate native acceptance. Existing operation contracts and
 shared fixtures stay authoritative, including any intentional host API differences.
