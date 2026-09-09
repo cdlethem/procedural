@@ -1,69 +1,43 @@
-# Port integration status
+# JavaScript branch integration
 
-Root review is pinned to `origin/porting/backlog` commit `47ec5b2b` in the isolated
-`.work/port-review` checkout. The port author's checkout and branch are unchanged.
+The JavaScript portion of `origin/porting/backlog` at
+`47ec5b2b73d7ac4466e7192e0695c64ee5664158` was reviewed and integrated into main through
+`3f56c0c3f88de0700a7b7e6682a34b9b48e356e0`. The author's branch/checkout was preserved.
+The batch adds eight cores and five workflows; it is not the total JavaScript inventory.
 
-Accepted JavaScript source-checkout slices:
+| Accepted core | Browser workflow in this batch | Root review |
+|---|---|---|
+| Stop ramp | RampMarks | [Review](../evidence/ports/stop-ramp-p5/root-review.json) |
+| Bilinear raster remap | WarpMarks | [Review](../evidence/ports/raster-remap-p5/root-review.json) |
+| Target springs | Core only | [Review](../evidence/ports/target-springs-p5/root-review.json) |
+| Occupied lattice paths | Core only | [Review](../evidence/ports/occupied-lattice-p5/root-review.json) |
+| Delaunay triangulation | Core only | [Review](../evidence/ports/delaunay-p5/root-review.json) |
+| Closed spline | LoopMarks | [Review](../evidence/ports/closed-spline-p5/root-review.json) |
+| Noise-band paths | BandMarks | [Review](../evidence/ports/noise-band-path-p5/root-review.json) |
+| Seeded line pool | CutBranchMarks | [Review](../evidence/ports/line-pool-p5/root-review.json) |
 
-- StopRamp and RampMarks: `evidence/ports/stop-ramp-p5/root-review.json`.
-- Bilinear raster remapping and WarpMarks:
-  `evidence/ports/raster-remap-p5/root-review.json`.
+The reviewed browser workflows cover actual edits, reset and save. Core-only rows do not
+claim native animation or rendering. No new technique-level source recreation is implied.
 
-These have root-reviewed core fixtures and actual browser edits/reset/save. They use
-direct module imports and the reviewed root package entry point. Local tarball installation
-and export checks are accepted in `evidence/ports/javascript-package/root-review.json`;
-py5/Android claims are not imported with these files.
+## Integration corrections
 
-Target springs core is also accepted through direct-module import after 44 shared cases
-passed in Node and Chromium; native-workflow/technique support remain unvalidated.
-See `evidence/ports/target-springs-p5/root-review.json`.
+Root corrected large-hull argument overflow in Delaunay and indexed getter validation in
+line-pool. The OpenJDK-derived spline hypot block was replaced by a notice-preserved netlib
+translation, checked against a fresh Java runtime oracle. The shared trigonometric helper
+also preserves its full netlib notice and has fresh exact-runtime comparisons. Details and
+hashes remain in the operation reviews; Python's branch translation was not accepted.
 
-Occupied-lattice core is accepted separately in
-`evidence/ports/occupied-lattice-p5/root-review.json`; 14 shared cases pass in Node and
-Chromium. Native-workflow/technique acceptance remains unvalidated.
+## Package use
 
-Delaunay core is accepted in `evidence/ports/delaunay-p5/root-review.json`, including
-a root fix for function-argument overflow when joining a large hull. Rendering remains
-unvalidated.
+All eight operations and their error classes are exported from `@procedurals/javascript`.
+The [package review](../evidence/ports/javascript-package/root-review.json) verifies offline
+local tarball installation, installed source inventory, export identities and representative
+fixtures. The additive export successor preserves historical acceptance records.
 
-Closed spline and LoopMarks are accepted in
-`evidence/ports/closed-spline-p5/root-review.json`, following the arithmetic replacement
-and fresh 1,033-pair Java runtime oracle.
+```sh
+node tools/build_ported_javascript_package.mjs .work/dist/<fresh-directory>
+```
 
-Noise-band paths/BandMarks and line pools/CutBranchMarks are accepted in their
-`evidence/ports/{noise-band-path,line-pool}-p5/root-review.json` records. The trig helper
-preserves the complete netlib notice and passes 4,312 fresh exact Java comparisons.
-Line-pool indexed accessors are rejected without invoking them.
-
-All eight JavaScript cores and five workflows from the pinned branch are integrated.
-Common barrel exports and local package distribution are now validated. SpringMarks
-animation needs separate native acceptance. Other target ports remain unreviewed.
-
-Build a local tarball with `node tools/build_ported_javascript_package.mjs .work/dist/FRESH`.
-The package remains private and unpublished. Native workflow acceptance covers the reviewed
-source-checkout examples; the tarball check covers installed code and root import behavior.
-
-## Spline provenance issue
-
-The branch's `closed-spline.js` says its hypot code was ported from OpenJDK17
-`java.lang.FdLibm.Hypot`. Root's worker verified the structural match against the local
-Temurin17.0.20.1+1 `src.zip`: FdLibm.java SHA256
-`24b6dc21d26d6f4f578ea35126a32b55311164e583d0b25e03b72b40f3f41887`.
-That source includes an Oracle copyright and GPLv2/ClassPath Exception header, while
-the JS/Python translations omit upstream notices and the project notices have no entry.
-Do not merge those translations under an implicit project MIT claim.
-
-Investigate the original netlib fdlibm hypot implementation with preserved source notices
-and verify exact arithmetic behavior before choosing a replacement. A provenance label
-alone does not make a copied implementation independent. Trigonometric fdlibm translations
-also require their own complete source/notice review. No tolerance relaxation is authorized.
-
-All native browser/Processing runs use the shared machine lock at
-`tools/with_native_render_lock.py`. Gallery images remain ignored. Root alone writes shared
-acceptance records; the Android ProfileMarks draft in main remains untouched.
-
-The spline issue above is resolved for the integrated JavaScript slice: the OpenJDK-derived
-block was removed. `src/internal/fdlibm-hypot.js` directly translates the named netlib source
-and preserves its complete notice; an explicit scaled-high-word correction is documented.
-Fresh Java runtime comparisons test the replacement without copying the JDK implementation.
-The Python branch remains unchanged and is not accepted by this JavaScript review.
+The package remains private and unpublished. Native acceptance covers source-checkout
+examples; the tarball check covers installed code and import behavior. Remaining target
+work and separate radial-profile acceptance obligations are in [the port handoff](porting-resume.md).

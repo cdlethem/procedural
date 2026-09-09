@@ -1,17 +1,9 @@
 # Architecture from an artist's idea
 
-Current buildout sprint: expand reusable operations and complete workflows on Processing
-Java first, then batch the other ports. CP1/CP2 already proved the four-target route.
-Sol reviews are paused at the maintainer's request; root owns direct design, code and
-artist-example review. Earlier independent-review and per-capability port scheduling
-below describes the prior workflow and does not gate this sprint.
-
-
-Status: architect's direction, 2026-09-07. This supersedes candidate-count-driven scheduling
-and the triangle sampler as the first artist milestone. It does not freeze public signatures,
-parameter recommendations or renderer support. Source membership remains in the
-[ledger](../design/phase2/cluster-decisions.json); implementation architecture remains in
-[api-design.md](api-design.md). Root owns the choices below and the eventual public surface.
+This is durable capability-admission guidance, not a milestone queue. Current implementation
+and target support are in [PROJECT_STATE](../PROJECT_STATE.md). The
+[ledger](../design/phase2/cluster-decisions.json) records evidence dispositions;
+[api-design.md](api-design.md) explains composition boundaries. Root owns public decisions.
 
 ## Start with the decision the artist is making
 
@@ -94,76 +86,29 @@ numeric function quota is a success criterion. Retain provenance for the whole c
 review only the neighbours and evidence needed to make the selected capability sound before
 expanding. Unknown records remain unknown; they are not rejected or silently declared covered.
 
-## First architect-owned capability: independent field-oriented marks
+## Established boundary example: fields and paths
 
-The concrete [CP1 design and usage walkthrough](../design/capabilities/cp1-field-marks.md)
-records root’s public/private boundary decisions and Sol review.
+[FieldMarks](getting-started.md) and [PathMarks](path-marks.md) demonstrate different
+computations: independent field samples at supplied positions versus integration in which
+positions feed back into subsequent steps. Similar appearance does not justify merging them.
+The original [CP1 decision](../design/capabilities/cp1-field-marks.md) preserves the detailed
+walkthrough; it is historical design rationale, not pending work.
 
-**Decision CP1:** Make a complete grid/noise mark sketch the first artist-facing milestone.
-The triangle sampler remains an optional engineering experiment, not the critical path to
-proving artistic usefulness. This selects a capability; it does not approve the previously
-reopened `pelines#0` merge or a new function signature.
+The [pelines report](../survey/out/2018/Generativos/pelines/notes.md) couples placement pitch
+and maximum mark length. Separating them is a package design choice, not evidence of isolated
+measured effects. The [ciserp report](../survey/out/2019/generativos/ciserp/notes.md) motivates
+integrated paths with independent mark treatment. Its whole-image differences do not by
+themselves establish useful ranges for either integration or perpendicular strokes.
 
-The [pelines report](../survey/out/2018/Generativos/pelines/notes.md) describes a fixed grid
-whose short segments independently sample direction, length and colour. Its `gri` literal
-couples placement pitch and maximum length. The useful package should let an artist reason
-about spacing and length separately. That separation is a design choice informed by the
-coupling, not a claim of isolated measured effects: the `gri` experiment changes both.
-The reported alpha arithmetic is also inconsistent with the quoted expression's possible
-range; use exact substitution metadata and follow-up verification before publishing bounds.
-
-**Proposed responsibility split:** positions from a layout; scalar/heading samples at those
-positions; segment geometry from position/heading/length; explicit colour and alpha; ordered
-rendering. Canvas endpoint clamping is an example choice, not a universal clipping default.
-Do not expose every multiplication as a public function. The exact reusable grouping of
-field sampling and attribute mapping is the next root decision, made with a complete sketch
-in view. Do not launch a generic graph executor to demonstrate this composition.
-
-**Artist checks before calling CP1 useful:**
-
-- From the entry page, reach a seeded runnable piece without reading the module reference.
-- Change stroke length without also changing the placement pitch. Distinguish the two
-  controls in the example and verify the claimed independence with recorded values.
-- Change palette while stating and checking its effect on geometry under the chosen seed model.
-- Reuse the same positions/headings with a different mark using retained values, without
-  rewriting noise sampling or reaching into internal renderer state. This is a proposed
-  transfer test, not a claim that the corpus already performed that edit.
-- Explain field scale through cited observed changes; do not relabel an unverified knob as
-  “organicness” or imply a universally useful interval.
-
-CP1 is incomplete until its contracts, example and edits actually run. Native Processing
-execution can establish an early usability prototype; it cannot establish the still-required
-p5.js, py5 and Android support. Record target validation separately.
-
-## Concurrent architecture counterexample: paths and their marks
-
-**Decision CP2:** Review [ciserp](../survey/out/2019/generativos/ciserp/notes.md) alongside
-CP1 before freezing their shared field/value boundaries. Its positions feed back into a
-noise-driven integration loop. Perpendicular strokes, endpoint dots and a faint path trail
-are emitted along it. A function that only assigns angles to fixed grid cells cannot replace
-this computation, even though both sketches look field-driven.
-
-A useful path result should support drawing the trace itself and attaching different marks
-using the needed position/heading/progress information. Exact data shape, update order and
-stored-versus-streamed representation remain contract decisions; very long paths make work
-and memory part of the design. Sine envelopes, random jitter and palette mixing can remain
-editable recipe choices unless repeated use warrants a helper. Do not hard-code a tuft
-appearance into a universal flow operation or force the artist to reconstruct integration.
-
-The report's longer perpendicular strokes and altered noise-scale experiments motivate
-separate questions about mark extent and path behavior. Their whole-image differences do
-not prove isolated causes or a recommended range. Preserve that limitation when teaching.
-
-CP2 is a boundary check now, not permission to implement all flow variants before CP1.
-Next select between spacing/packing and cell subdivision according to which opens a useful
-new composition with the retained values. Typography is an early substitution/capability
-probe; 3D and branching remain deliberate expansion investigations, not forgotten rejections.
+Apply this distinction to new capabilities: retain useful values, expose meaningful edits,
+and demonstrate replacing their drawing treatment without rebuilding the hidden algorithm.
+Do not reopen completed CP1/CP2 work or infer new family support from those examples.
 
 ## Delivery and ownership
 
 Root reads the decisive evidence, chooses the public boundary and alternatives, writes the
-capability decision, and reviews its first complete example. A stronger-model subagent
-challenges those choices independently; it does not replace the architect. Luna/Terra
+capability decision, and reviews its first complete example. An independently scheduled review may
+challenge those choices; it does not replace the architect. Luna/Terra
 handle exact retrieval, checks and frozen-contract implementation under bounded ownership.
 See [agent briefs](agent-briefs.md).
 

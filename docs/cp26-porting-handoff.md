@@ -1,8 +1,9 @@
-# CP26 Java0.29 handoff
+# CP26 Java0.29 handoff (historical milestone)
 
-Pin a separate branch/checkout to the CP26 milestone commit on main. Root remains final
-integration owner; port workers must not write root acceptance records. Port integration
-remains paused while Java buildout continues; see porting-resume.md for earlier backlog.
+For a new assignment, use [the current port handoff](porting-resume.md). Counts and
+artifact identifiers below describe this historical milestone, not current main.
+
+Root remains final integration owner; port workers must not write root acceptance records.
 
 This checkpoint adds raster.separable-blur-2d (normalized independent kernels, premultiplied
 encoded color, final-only byte rounding, explicit work budget). The authoritative contract
@@ -17,5 +18,4 @@ Remaining: port these semantics/adapters/workflows after existing backlog as dir
 validate representative native output and shared vectors before requesting root integration.
 Use the machine-wide tools/with_native_render_lock.py lease for native renders across
 checkouts. Preserve original provenance and keep all images/builds/assets outside Git.
-Java completion still requires the open requirements in java-completion-plan.md; this
-checkpoint does not claim the entire package feature complete.
+Later Java completion is recorded in [the completion review](../evidence/distribution/java-completion-review.json).
