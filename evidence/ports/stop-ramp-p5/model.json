@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "node_version": "v22.22.1",
+  "scope": "Pure RampMarks model/grid checks; no renderer or pixel claim (see real-browser verification separately recorded).",
+  "input_sha256_before": {
+    "packages/javascript/examples/ramp-marks/ramp-marks.js": "4528fcdea69f41ee6f82a72b4e52ce6b8426b1f096c54434e6aec8e325ae6ac2",
+    "tests/native/ramp-marks-model.mjs": "1631aa8c717dd638923cf1fec635882825f458fd4c7c7bd5f437d22c71e2a86b"
+  },
+  "input_sha256_after": {
+    "packages/javascript/examples/ramp-marks/ramp-marks.js": "4528fcdea69f41ee6f82a72b4e52ce6b8426b1f096c54434e6aec8e325ae6ac2",
+    "tests/native/ramp-marks-model.mjs": "1631aa8c717dd638923cf1fec635882825f458fd4c7c7bd5f437d22c71e2a86b"
+  },
+  "scenarios": {
+    "dotCount": 729,
+    "stopCount": 4
+  }
+}

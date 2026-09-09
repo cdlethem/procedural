@@ -1,0 +1,58 @@
+{
+  "input_sha256_before": {
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "packages/javascript/examples/ramp-marks/sketch.js": "cd3e1db4deb2989fc70a8bce0433d9f80dcf47175f98dc77b7224e855de90cec",
+    "packages/javascript/examples/ramp-marks/ramp-marks.js": "4528fcdea69f41ee6f82a72b4e52ce6b8426b1f096c54434e6aec8e325ae6ac2",
+    "packages/javascript/examples/ramp-marks/index.html": "4a1f569d65dab5f50f16e49dc57a48342436b7c15f6b66e3babc6442916a3ab4",
+    "tools/serve_ramp_marks.mjs": "41ba21d5ab28b09e8fb310539a8c95e69930ad07d0c449adad64f323a7360522",
+    "tools/run_p5_ramp_marks.mjs": "3bd6d23866b4eed6cefae73424bddfb7731316717987c96c5edb86939756689f"
+  },
+  "input_sha256_after": {
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "packages/javascript/examples/ramp-marks/sketch.js": "cd3e1db4deb2989fc70a8bce0433d9f80dcf47175f98dc77b7224e855de90cec",
+    "packages/javascript/examples/ramp-marks/ramp-marks.js": "4528fcdea69f41ee6f82a72b4e52ce6b8426b1f096c54434e6aec8e325ae6ac2",
+    "packages/javascript/examples/ramp-marks/index.html": "4a1f569d65dab5f50f16e49dc57a48342436b7c15f6b66e3babc6442916a3ab4",
+    "tools/serve_ramp_marks.mjs": "41ba21d5ab28b09e8fb310539a8c95e69930ad07d0c449adad64f323a7360522",
+    "tools/run_p5_ramp_marks.mjs": "3bd6d23866b4eed6cefae73424bddfb7731316717987c96c5edb86939756689f"
+  },
+  "status": "passed",
+  "browser": "153.0.8010.12",
+  "frames": [
+    {
+      "name": "baseline",
+      "hash": "3a2181d4174535a7fca0542f18d061242ef77d56dc38cd2d0f02c189d5d6f56e"
+    },
+    {
+      "name": "t",
+      "hash": "747dca10be0d4cc6fd7e33d2e9f0ccc12d4db7a5c1205cca3896cf35363e6b3e"
+    },
+    {
+      "name": "c",
+      "hash": "7a67c95fd09546ac252c0774a130724f1e4710ee7e55a3d372087d7c89f858b2"
+    },
+    {
+      "name": "f",
+      "hash": "e96eb1667da25dd1a3cf1d5107a16e6d292590666d2a017d872eb4c08302fefa"
+    },
+    {
+      "name": "reset",
+      "hash": "3a2181d4174535a7fca0542f18d061242ef77d56dc38cd2d0f02c189d5d6f56e"
+    }
+  ],
+  "errors": [],
+  "scope": "Actual p5 edits, reset identity, download and cached revision. No Java pixel parity claim.",
+  "artifacts_sha256": {
+    ".work/port-ramp-native-main1/c.png": "f727a67450471d0e9e0db9d6666e64cb01069e0eb2dde79f8147bedad0a2248d",
+    ".work/port-ramp-native-main1/saved.png": "e73db941185f74bc39c2bff76367dda534b4a2d77b8c3ad61b1bd9c973b52602",
+    ".work/port-ramp-native-main1/reset.png": "0ca4157e7134a7c4832cc24b6bc420eeb9b37c0a5909b0ef8543d19ae5df81a5",
+    ".work/port-ramp-native-main1/t.png": "d6f47669174f23d1d4585dbdb54d7eff2cf81792be54b2d504b1c3c991895cd9",
+    ".work/port-ramp-native-main1/baseline.png": "0ca4157e7134a7c4832cc24b6bc420eeb9b37c0a5909b0ef8543d19ae5df81a5",
+    ".work/port-ramp-native-main1/f.png": "dd6c429551dda4968d2f889922382a97ea81f69ded2f86023fcaf894fb43d43a"
+  },
+  "saved_pixels_equal_reset": true,
+  "independent_checkout_pixels_equal": true,
+  "runtime_sha256": {
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  }
+}

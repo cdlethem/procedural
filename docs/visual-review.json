@@ -2,6 +2,30 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "port-ramp-p5",
+      "title": "RampMarks \u2014 reviewed p5 port",
+      "category": "Root reviewed browser workflow",
+      "description": "Positioned-stop edits and radial coordinate transfer; Java pixel parity unclaimed.",
+      "evidence": "evidence/ports/stop-ramp-p5/root-review.json",
+      "images": [
+        {
+          "label": "Linear",
+          "path": ".work/port-ramp-native-main1/baseline.png",
+          "sha256": "0ca4157e7134a7c4832cc24b6bc420eeb9b37c0a5909b0ef8543d19ae5df81a5"
+        },
+        {
+          "label": "Shifted stop",
+          "path": ".work/port-ramp-native-main1/t.png",
+          "sha256": "d6f47669174f23d1d4585dbdb54d7eff2cf81792be54b2d504b1c3c991895cd9"
+        },
+        {
+          "label": "Radial palette transfer",
+          "path": ".work/port-ramp-native-main1/f.png",
+          "sha256": "dd6c429551dda4968d2f889922382a97ea81f69ded2f86023fcaf894fb43d43a"
+        }
+      ]
+    },
+    {
       "id": "contact-marks",
       "title": "First contact \u2014 connectors and ray web",
       "category": "Native workflow; packaging pending",

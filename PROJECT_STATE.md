@@ -1,5 +1,20 @@
 # Project state
 
+## Port integration resumed; first p5 slice reviewed
+
+User explicitly requested port branch review/integration. Pinned origin/porting/backlog
+47ec5b2b in .work/port-review on integration/port-review; remote agent checkout untouched.
+Root reviewed/imported StopRamp JS and RampMarks files from b31ff324/b8edac46.12fixtures,
+5query errors,729dot model and actual Chromium5views/save pass; mainrerun pixels match
+independent checkout, saved pixels match reset. evidence/ports/stop-ramp-p5/root-review.json
+accepts direct-module core and source-checkout workflow; root-barrel/package exports pending
+compatibility batch. Catalog p5 core/native updated, technique stays unvalidated.
+Remaining7core/4workflow JS slices plus Python/Android stay on feature branch. Terra
+read-only target-springs/raster-remap review and pure fixtures pass; native/integration pending.
+ClosedSpline names OpenJDK-translated hypot without upstream notice: provenance must be
+resolved before importing. Trig includes Sun notice but full provenance still to review.
+Preserve unrelated Android ProfileMarks edit. Java goal completed at bf94adee.
+
 ## Java completion accepted by root; integration pending
 
 Root inspected the five unchanged requirements against current31operation bindings,

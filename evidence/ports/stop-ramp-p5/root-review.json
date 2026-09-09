@@ -1,0 +1,39 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "JavaScript direct-module StopRamp core and source-checkout p5 RampMarks workflow only; no npm release, root-barrel export, py5/Android or whole-source recreation claim.",
+  "origin": {
+    "branch": "porting/backlog",
+    "pinned_commit": "47ec5b2b",
+    "core_commit": "b31ff324",
+    "workflow_commit": "b8edac46"
+  },
+  "implementation_sha256": {
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "packages/javascript/examples/ramp-marks/ramp-marks.js": "4528fcdea69f41ee6f82a72b4e52ce6b8426b1f096c54434e6aec8e325ae6ac2",
+    "packages/javascript/examples/ramp-marks/sketch.js": "cd3e1db4deb2989fc70a8bce0433d9f80dcf47175f98dc77b7224e855de90cec",
+    "packages/javascript/examples/ramp-marks/index.html": "4a1f569d65dab5f50f16e49dc57a48342436b7c15f6b66e3babc6442916a3ab4",
+    "tools/serve_ramp_marks.mjs": "41ba21d5ab28b09e8fb310539a8c95e69930ad07d0c449adad64f323a7360522",
+    "tools/run_p5_ramp_marks.mjs": "3bd6d23866b4eed6cefae73424bddfb7731316717987c96c5edb86939756689f",
+    "tests/native/stop-ramp-javascript.mjs": "9003d435c57f0d1f8ad61dd7659091098b69fda963a665f4a6bad3b8c8de5bff",
+    "tests/native/ramp-marks-model.mjs": "1631aa8c717dd638923cf1fec635882825f458fd4c7c7bd5f437d22c71e2a86b"
+  },
+  "evidence_sha256": {
+    "evidence/ports/stop-ramp-p5/core.json": "e21dc4fb68e2a547b89917ed818a0baed6561a5d4dd270b865d69c6e300490a6",
+    "evidence/ports/stop-ramp-p5/model.json": "1130853d4c60e3f9b067df7ce2b4c4c5ad9605c093ccea691ca79e6d575fc0d8",
+    "evidence/ports/stop-ramp-p5/native.json": "b3cf9f4204ae258a531343095b13651bafb94ea9592504b23da7724840a590a2",
+    "fixtures/operations/stop-ramp.json": "bb3be6de37b46f5fe2c5907e16277f97c8526587cf2a0f2049860338da7095cd"
+  },
+  "verified": [
+    "Root read StopRamp core and compared validation, binary search, endpoint holds and channel operation order with frozen contract. Input and serialization detach internal arrays.",
+    "12shared fixtures,5query errors and native ownership/carrier checks pass;729dot model validates base/shift/palette/radial sampling.",
+    "Actual Chromium key edits t,c,f,0,s pass under machine-wide native lock. Reset pixels exact; cached save pixels exact; no browser exceptions.",
+    "Root viewed linear baseline and radial palette transfer. Main-checkout rerun matches all five independently checked-out canvas images."
+  ],
+  "limits": [
+    "Source-checkout import from stop-ramp.js only. Root exports/local package distribution await a broader export-compatibility review.",
+    "Browser native scope is640x640 density1 p5 circles; no shared drawing adapter support expansion.",
+    "No Java/browser pixel identity or source recreation claim."
+  ]
+}

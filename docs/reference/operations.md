@@ -2842,7 +2842,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/stop-ramp-catalog-review.json) | [validated-scoped](../../evidence/conformance/stop-ramp-catalog-review.json) | [validated-scoped](../../evidence/conformance/stop-ramp-catalog-review.json) | [review](../../evidence/conformance/stop-ramp-catalog-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/stop-ramp-p5/root-review.json) | [validated-scoped](../../evidence/ports/stop-ramp-p5/root-review.json) | unvalidated | [review](../../evidence/ports/stop-ramp-p5/root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 

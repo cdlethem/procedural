@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "operation": "color.stop-ramp",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module golden, query, carrier and access checks against the frozen stop-ramp fixtures. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/stop-ramp.json": "7a2d7c1e2e1df26e07a4b88012f8164bef611b76eb8920f22ce0bc1167b95fc6",
+    "fixtures/operations/stop-ramp.json": "bb3be6de37b46f5fe2c5907e16277f97c8526587cf2a0f2049860338da7095cd",
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "tests/native/stop-ramp-javascript.mjs": "9003d435c57f0d1f8ad61dd7659091098b69fda963a665f4a6bad3b8c8de5bff"
+  },
+  "input_sha256_after": {
+    "catalog/operations/stop-ramp.json": "7a2d7c1e2e1df26e07a4b88012f8164bef611b76eb8920f22ce0bc1167b95fc6",
+    "fixtures/operations/stop-ramp.json": "bb3be6de37b46f5fe2c5907e16277f97c8526587cf2a0f2049860338da7095cd",
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "tests/native/stop-ramp-javascript.mjs": "9003d435c57f0d1f8ad61dd7659091098b69fda963a665f4a6bad3b8c8de5bff"
+  },
+  "scenarios": {
+    "fixture_cases": 12,
+    "query_cases": 5,
+    "ownership_access": [
+      "input containers detached",
+      "serialize export detached"
+    ],
+    "native_only": [
+      "nonfinite-and-overflowing-numeric-carriers (JavaScript applicable carriers)",
+      "passive-input-carriers-only"
+    ]
+  },
+  "allocation_failure": {
+    "executed": false,
+    "source_review": "Output exports allocate detached arrays and do not mutate retained private arrays; a failed generation exposes no result. No controlled host allocation failure injected."
+  }
+}
