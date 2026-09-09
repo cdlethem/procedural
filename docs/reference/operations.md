@@ -74,7 +74,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/documentation/annular-support-carry-forward.json) | [validated-scoped](../../evidence/documentation/annular-support-carry-forward.json) | unvalidated | [review](../../evidence/documentation/annular-support-carry-forward.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -252,7 +252,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/binary-cell-partition-catalog-review.json) | [validated-scoped](../../evidence/conformance/binary-cell-partition-catalog-review.json) | [validated-scoped](../../evidence/conformance/binary-cell-partition-catalog-review.json) | [review](../../evidence/conformance/binary-cell-partition-catalog-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -334,7 +334,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/segment-clip-rational-successor-review.json) | [validated-scoped](../../evidence/conformance/segment-clip-rational-successor-review.json) | unvalidated | [review](../../evidence/conformance/segment-clip-rational-successor-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -616,7 +616,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/delaunay-java-root-review.json) | [validated-scoped](../../evidence/reproductions/cp9-java2d/root-review.json) | [validated-scoped](../../evidence/reproductions/cp9-java2d/root-review.json) | [review](../../evidence/reproductions/cp9-java2d/root-review.json) |
-| p5js | [conformant](../../evidence/ports/delaunay-p5/root-review.json) | unvalidated | unvalidated | [review](../../evidence/ports/delaunay-p5/root-review.json) |
+| p5js | [conformant](../../evidence/ports/delaunay-p5/root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -781,7 +781,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/gradient-noise-3d-catalog-review.json) | [validated-scoped](../../evidence/conformance/gradient-noise-3d-catalog-review.json) | [validated-scoped](../../evidence/conformance/gradient-noise-3d-catalog-review.json) | [review](../../evidence/conformance/gradient-noise-3d-catalog-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -1009,7 +1009,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/masked-source-over-masked-regions-review.json) | [validated-scoped](../../evidence/conformance/masked-source-over-masked-regions-review.json) | [validated-scoped](../../evidence/conformance/masked-source-over-masked-regions-review.json) | [review](../../evidence/conformance/masked-source-over-masked-regions-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -1082,7 +1082,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/nearest-contact-root-review.json) | [validated-scoped](../../evidence/conformance/nearest-contact-root-review.json) | unvalidated | [review](../../evidence/conformance/nearest-contact-root-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | unvalidated | unvalidated | [review](../../evidence/ports/p5-backlog/core-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -1361,7 +1361,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/occupied-lattice-catalog-review.json) | [validated-scoped](../../evidence/conformance/occupied-lattice-catalog-review.json) | [validated-scoped](../../evidence/conformance/occupied-lattice-catalog-review.json) | [review](../../evidence/conformance/occupied-lattice-catalog-review.json) |
-| p5js | [conformant](../../evidence/ports/occupied-lattice-p5/root-review.json) | unvalidated | unvalidated | [review](../../evidence/ports/occupied-lattice-p5/root-review.json) |
+| p5js | [conformant](../../evidence/ports/occupied-lattice-p5/root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -1502,7 +1502,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/convex-polygon-catalog-review.json) | [validated-scoped](../../evidence/conformance/convex-polygon-catalog-review.json) | [validated-scoped](../../evidence/conformance/convex-polygon-catalog-review.json) | [review](../../evidence/conformance/convex-polygon-catalog-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -1725,7 +1725,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/radial-pull-catalog-review.json) | [validated-scoped](../../evidence/conformance/radial-pull-catalog-review.json) | [validated-scoped](../../evidence/conformance/radial-pull-catalog-review.json) | [review](../../evidence/conformance/radial-pull-catalog-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -1835,7 +1835,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/raster-crossfade-masked-regions-review.json) | [validated-scoped](../../evidence/conformance/raster-crossfade-masked-regions-review.json) | [validated-scoped](../../evidence/conformance/raster-crossfade-masked-regions-review.json) | [review](../../evidence/conformance/raster-crossfade-masked-regions-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -1983,7 +1983,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/retained-rectangles-catalog-review.json) | [validated-scoped](../../evidence/conformance/retained-rectangles-catalog-review.json) | [validated-scoped](../../evidence/conformance/retained-rectangles-catalog-review.json) | [review](../../evidence/conformance/retained-rectangles-catalog-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -2661,7 +2661,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/separable-blur-catalog-review.json) | [validated-scoped](../../evidence/conformance/separable-blur-catalog-review.json) | unvalidated | [review](../../evidence/conformance/separable-blur-catalog-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -2757,7 +2757,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/disc-projection-catalog-review.json) | [validated-scoped](../../evidence/conformance/disc-projection-catalog-review.json) | unvalidated | [review](../../evidence/conformance/disc-projection-catalog-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/p5-backlog/core-root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -2973,7 +2973,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/target-springs-java-portable-review.json) | [validated-scoped](../../evidence/reproductions/cp10-java2d/root-review.json) | [validated-scoped](../../evidence/reproductions/cp10-java2d/root-review.json) | [review](../../evidence/reproductions/cp10-java2d/root-review.json) |
-| p5js | [conformant](../../evidence/ports/target-springs-p5/root-review.json) | unvalidated | unvalidated | [review](../../evidence/ports/target-springs-p5/root-review.json) |
+| p5js | [conformant](../../evidence/ports/target-springs-p5/root-review.json) | [validated-scoped](../../evidence/ports/p5-backlog/native-root-review.json) | unvalidated | [review](../../evidence/ports/p5-backlog/native-root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 

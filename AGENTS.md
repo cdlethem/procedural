@@ -61,7 +61,8 @@ Do not invent ranges or visual behavior. Distinguish corpus observations from de
 
 `catalog/operations/` specifies behavior; shared fixtures specify expected results.
 `catalog/validation/` and its bound root reviews determine current target acceptance.
-Historical status prose inside frozen contracts or old plans is not current support authority.
+Historical status prose in example headers, frozen contracts or old plans is not current
+support authority.
 Keep RNG, noise, time, ordering, numeric behavior, ownership and failure semantics explicit.
 Resolve contract ambiguity once with root, not separately in each target.
 

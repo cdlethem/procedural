@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "operation": "sampling.ordered-convex-polygon-filter-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module fixture/carrier/ownership checks. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/ordered-convex-polygon-filter-2d.json": "64ec6cbf60c04c612cbf2f8ad0c427853b48c3c7585ebf2cdd0938151604599e",
+    "fixtures/operations/ordered-convex-polygon-filter-2d.json": "86c4eda2f617e4dbd1f4f1f766b9982ab07f887e20f248d71b9aca3e4c6edf7b",
+    "packages/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    "tests/native/convex-polygon-placements-javascript.mjs": "fb7aa9b88ee8ac0b27b83be86b0a8d424b6d1a8be054d22f259f8472ea081e2e"
+  },
+  "input_sha256_after": {
+    "catalog/operations/ordered-convex-polygon-filter-2d.json": "64ec6cbf60c04c612cbf2f8ad0c427853b48c3c7585ebf2cdd0938151604599e",
+    "fixtures/operations/ordered-convex-polygon-filter-2d.json": "86c4eda2f617e4dbd1f4f1f766b9982ab07f887e20f248d71b9aca3e4c6edf7b",
+    "packages/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    "tests/native/convex-polygon-placements-javascript.mjs": "fb7aa9b88ee8ac0b27b83be86b0a8d424b6d1a8be054d22f259f8472ea081e2e"
+  },
+  "scenarios": {
+    "fixture_cases": 36,
+    "ownership_access": [
+      "input containers detached",
+      "export detached",
+      "accessors return baseline values",
+      "all index domains rejected with INDEX_OUT_OF_RANGE"
+    ],
+    "native_only": [
+      "non-record/extra-key/non-array/too-few-vertices/bigint-coordinate carriers",
+      "concave polygon rejected"
+    ]
+  }
+}

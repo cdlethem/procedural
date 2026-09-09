@@ -1,0 +1,912 @@
+{
+  "status": "passed",
+  "scope": "Locally packed and offline-installed package; byte-for-byte installed inventory, no browser or registry claim.",
+  "input_sha256_before": {
+    "packages/javascript/examples/annular-marks/README.md": "c4304096deb52a20dde87ee5360756290520d3052280aa9b004a2394cf1e251b",
+    "packages/javascript/examples/annular-marks/annular-marks.js": "5b65dbbf336901ef27c7ac5c74b7109544c0e23d8faa6d85941caa86031f4cee",
+    "packages/javascript/examples/annular-marks/index.html": "0a30cc81397d67cc59ed2aee1d558a69b7bb168384864aad24e601eaabd24909",
+    "packages/javascript/examples/annular-marks/sketch.js": "877fd9f3552a9f8068ef4ccf3272fe71a2b47ded6685b1730c7735c94c29d38b",
+    "packages/javascript/examples/band-marks/README.md": "87a79dd4c8b7a59c824db510efa63dae4378f43d7172989a849571bc93cd907f",
+    "packages/javascript/examples/band-marks/band-marks.js": "4ad6cd9c8117d28821984c2f0e129032f1a81fdfd8d320bdc002e5a4f85ebe55",
+    "packages/javascript/examples/band-marks/index.html": "ed869e5218432472ffd3fb753e7bf4478eb1ebfba15187a3d548540331eac528",
+    "packages/javascript/examples/band-marks/sketch.js": "9d444db4696833274a034d98549c29e407a56fb97f877735a4ffe82222ffdaae",
+    "packages/javascript/examples/blur-marks/README.md": "341fe272a0bfb43b9b4375882718b20f600bd8b63ae519d408ceac357638b36a",
+    "packages/javascript/examples/blur-marks/blur-marks.js": "0b0eccd4a9658d0dbbdcda2cbe02e0f68ccf25fe0b45c8184e9c1232ec6db9c0",
+    "packages/javascript/examples/blur-marks/index.html": "a36e5388ebcba2988f18ba574cbeb6ec12de72fd8e6fc84d99c869ba9cc269f1",
+    "packages/javascript/examples/blur-marks/sketch.js": "4148546b764f1fe042e8f6db2ce8af644b3786aec5be42ec8e696fcf1530d0ec",
+    "packages/javascript/examples/branch-marks/README.md": "befac22e2fc186dc3358d83645a35b33be5e638060ce33ac4e2c8f7a18960cc6",
+    "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+    "packages/javascript/examples/branch-marks/index.html": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70",
+    "packages/javascript/examples/branch-marks/sketch.js": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1",
+    "packages/javascript/examples/cut-branch-marks/README.md": "25321f9fc141bf3871350babc32ac2e3a88596306a2b2b25cc70c32aa93996cf",
+    "packages/javascript/examples/cut-branch-marks/cut-branch-marks.js": "97a4e8fceb259c593b7b26a2a6a4f3255082a70921d54e2b17426dbfb2cf7d28",
+    "packages/javascript/examples/cut-branch-marks/index.html": "b966ff7d8cf2ca4f6189e18b1f415fb20a6dda67407657e56c12ba22265b1f28",
+    "packages/javascript/examples/cut-branch-marks/sketch.js": "6d94d11aa0b978bbb897e8ea8515b19eeb864ea14f7582efbf3454f78f4e88df",
+    "packages/javascript/examples/cut-marks/README.md": "68a4b594682495dafa9b8c038c8b396c2824daeecc66348a3c4f9ad73423f12f",
+    "packages/javascript/examples/cut-marks/cut-marks.js": "36f7a5b02ddbdf2bac84ce063de742782d88de62733c007723488777c05f7977",
+    "packages/javascript/examples/cut-marks/index.html": "ce1ff31024b6a8676b49ad3e1d5b41910ddb00befe63d35174b5e3456c0f91fb",
+    "packages/javascript/examples/cut-marks/sketch.js": "9c730b1b30dbaaea5dd47c480f1b7f88aa6bda7f5a086dbedcf241c3696e8d72",
+    "packages/javascript/examples/depth-marks/README.md": "9825a2b30fbcf85030225fba3a3b2e8aba3ac909bf403ede2cd1f04610f0b363",
+    "packages/javascript/examples/depth-marks/depth-marks.js": "a21cfa074ae3458ef8da0f806b79a2cd334c7da88d1a4dd7ca63bc54ebf11807",
+    "packages/javascript/examples/depth-marks/index.html": "b5bde353517261a064a814be3488916136b8d49af2ced4528f19aed9f8446478",
+    "packages/javascript/examples/depth-marks/sketch.js": "fae998ab613afb589004f467ae55651093590311eee82d0ec29fc77cfe0771f5",
+    "packages/javascript/examples/facet-marks/README.md": "69bcfa68c313a820ade628191b844b363f8eb502c51dffe856beec328ed0cd2f",
+    "packages/javascript/examples/facet-marks/facet-marks.js": "4b4d56a0d4654dc0717a2551e3f572253baf17745867acd1b30ffc88148b0380",
+    "packages/javascript/examples/facet-marks/index.html": "cbac841c922b8c7699ff6c07a4789a18ef16f43ea28801b1b887e2b013aa8f47",
+    "packages/javascript/examples/facet-marks/sketch.js": "a6d1e9dcf39856b06b600c763a3534f7b6cc1c55ba87ae002e05424fe7e1c83a",
+    "packages/javascript/examples/field-marks/README.md": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27",
+    "packages/javascript/examples/field-marks/index.html": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d",
+    "packages/javascript/examples/field-marks/mark-field.js": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf",
+    "packages/javascript/examples/field-marks/sketch.js": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b",
+    "packages/javascript/examples/grain-marks/README.md": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "packages/javascript/examples/grain-marks/index.html": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8",
+    "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17",
+    "packages/javascript/examples/lattice-marks/README.md": "d53386a2691062b2a698889bed49ae1aa782eded2661808870d3b1e45f8d5d36",
+    "packages/javascript/examples/lattice-marks/index.html": "63bdf4ee52021e0ab12be6d22b02b686d6d6d242397e9ade62c231c7935352e7",
+    "packages/javascript/examples/lattice-marks/lattice-marks.js": "62e8025efd2af2d2cb53e66e266894400f2a7deabe1ff664f560927d18f80882",
+    "packages/javascript/examples/lattice-marks/sketch.js": "a64e2542b2bbdcd790d952fb48cd9b9f0b0c8c22f6d8f9c38014711d0e2be51a",
+    "packages/javascript/examples/loop-marks/README.md": "92088b3d6dcedfdf349f9a7afd582d426d29e970bf5d18d0004dfda4baf173f2",
+    "packages/javascript/examples/loop-marks/index.html": "dd3af9cbef4df9c859e64e5aefad3fb2ad4f25591f303aa04f0c75e7b4419a61",
+    "packages/javascript/examples/loop-marks/loop-marks.js": "8f610c69d2d708bcd8a3e23c3d135e3d124ef2e058993ea47efbb16d69fdce91",
+    "packages/javascript/examples/loop-marks/sketch.js": "8d0ad68788503f0cffb576c9834472f3ae5f182362d9ed59cd8fe23f9f4e1d69",
+    "packages/javascript/examples/panel-marks/README.md": "03731fed37a7042e453c1b69ed4ccc6bc1116457f46b5f2e9dfddace0b9ab573",
+    "packages/javascript/examples/panel-marks/index.html": "5f2592744b5a346fa02feea51ff9f4f666b225cf841a698e332b8a83aeb00240",
+    "packages/javascript/examples/panel-marks/panel-marks.js": "d192527d6307abd753f1e57570a7b4ea6c4950fe1cb428040e0b5d88d3feda58",
+    "packages/javascript/examples/panel-marks/sketch.js": "e7522301477eaba78644c514146df770d5eaca3b67c3db28fc0e33635dccbc2a",
+    "packages/javascript/examples/path-clip-marks/README.md": "3f060f7191ac4c44146c380d6b18fb7f72c3f21c2609a225e2d6560322e660ce",
+    "packages/javascript/examples/path-clip-marks/index.html": "6509db8d1619dc9e7fd5cce5422f288d741b2df27028bc891a42f36973e63d76",
+    "packages/javascript/examples/path-clip-marks/path-clip-marks.js": "5ba2a22939f499973aa5b020df2e560ce872bdc81ac618b046553e60104937e8",
+    "packages/javascript/examples/path-clip-marks/sketch.js": "f7c3cf4243a6fb6ca8f0af29e8a68ef96f3bf1aa75ae6fe04c3fc25e374e3006",
+    "packages/javascript/examples/path-marks/README.md": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291",
+    "packages/javascript/examples/path-marks/index.html": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f",
+    "packages/javascript/examples/path-marks/path-marks.js": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743",
+    "packages/javascript/examples/path-marks/sketch.js": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473",
+    "packages/javascript/examples/placement-marks/README.md": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1",
+    "packages/javascript/examples/placement-marks/index.html": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318",
+    "packages/javascript/examples/placement-marks/placement-marks.js": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382",
+    "packages/javascript/examples/placement-marks/sketch.js": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c",
+    "packages/javascript/examples/polygon-marks/README.md": "6b6d0190feaa7358a1563d1147cc8e93b835747bee3ae1ad88003ce0817bd2dc",
+    "packages/javascript/examples/polygon-marks/index.html": "eb8c06bc3a65b6626ab24af74899fffdf5852287a699a31835f4282110284262",
+    "packages/javascript/examples/polygon-marks/polygon-marks.js": "4a850118868c7956bc4d7919ca4f4fd2a6c19aef706e2e14021382291fecf369",
+    "packages/javascript/examples/polygon-marks/sketch.js": "3f1b35dc25908b9d609cd80dfb462d5b0950d97900dc0f1e62a30b730a573bab",
+    "packages/javascript/examples/profile-marks/README.md": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6",
+    "packages/javascript/examples/profile-marks/index.html": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867",
+    "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+    "packages/javascript/examples/profile-marks/sketch.js": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c",
+    "packages/javascript/examples/projection-marks/README.md": "ed1dd6fcaf5e302a6afec3cf8dc5c64a060cf8bfb8192d217200fa789c28bb42",
+    "packages/javascript/examples/projection-marks/index.html": "488d8920ad2d56260a209741b6d800703609d3c28d5c4907ba6a77ce7d69abca",
+    "packages/javascript/examples/projection-marks/projection-marks.js": "9441c1fe98ba35ff5824a28fa57a7d30764d80f538561963318bf7623f99c54f",
+    "packages/javascript/examples/projection-marks/sketch.js": "5569b3da81606dd2e9a83191b4035424ee8f90d55135ee70c241ed3f9373ee5c",
+    "packages/javascript/examples/pull-marks/README.md": "bbeaa1df18af8fbf335fda6de8e9f162cb0b66c2a5a2f253b947055d860a2a3b",
+    "packages/javascript/examples/pull-marks/index.html": "c1d3fb3b79683ce842957a7b493176fc8d41d905f8e17c89b4a1f14d61e812c1",
+    "packages/javascript/examples/pull-marks/pull-marks.js": "af49f8461e8d12099d6bed13e85ec6165305b890fa6c9a29fa8144d3e9aee830",
+    "packages/javascript/examples/pull-marks/sketch.js": "83bc47bd0dbdedb4e1beebb9a2418c99cc625267cb02d33746d70e8ffbb86e2b",
+    "packages/javascript/examples/ramp-marks/README.md": "ad5589e4f562f214b78788baa432c16a67837707bfb45c83ca67826a6efefd3b",
+    "packages/javascript/examples/ramp-marks/index.html": "4a1f569d65dab5f50f16e49dc57a48342436b7c15f6b66e3babc6442916a3ab4",
+    "packages/javascript/examples/ramp-marks/ramp-marks.js": "4528fcdea69f41ee6f82a72b4e52ce6b8426b1f096c54434e6aec8e325ae6ac2",
+    "packages/javascript/examples/ramp-marks/sketch.js": "cd3e1db4deb2989fc70a8bce0433d9f80dcf47175f98dc77b7224e855de90cec",
+    "packages/javascript/examples/region-marks/README.md": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010",
+    "packages/javascript/examples/region-marks/index.html": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d",
+    "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+    "packages/javascript/examples/region-marks/sketch.js": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a",
+    "packages/javascript/examples/spring-marks/README.md": "fa0499f1a199b66abc028442162a9cbeb03fc0af902f34fa9cff56af3fd049ab",
+    "packages/javascript/examples/spring-marks/index.html": "c0acfe5d21f1fd50fea84bd85f006b31771a8203378fd3062eb8edb1607f0b91",
+    "packages/javascript/examples/spring-marks/sketch.js": "e56b7d7a00cfe4f7e60ab7f6660940f9aa4911fb2eb3771f6d12bca6d612ad70",
+    "packages/javascript/examples/spring-marks/spring-marks.js": "a47eaba5f5b3d2bb90286017d1f4c742dc0960a25e64891123a763813301fca9",
+    "packages/javascript/examples/warp-marks/README.md": "ae5578442c7b7a1b9bc103f5f2089e94d42aad1b7fd26eaa32fe54ceab8eb096",
+    "packages/javascript/examples/warp-marks/index.html": "460af05d02054bd1584b33eb680262a204adbc9ca015e509b231e9389f4c2927",
+    "packages/javascript/examples/warp-marks/sketch.js": "e4122d81f4854bbbdb56a71438cb8cb470314eed4564c27910c56213aeaa05b9",
+    "packages/javascript/examples/warp-marks/warp-marks.js": "7ce10a730dce26f9183b4f5c494af7a85093aa648769550fce7419144484711a",
+    "packages/javascript/package.json": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8",
+    "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    "packages/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    "packages/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    "packages/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/index.js": "6a42d4db8eb2cbf9bbe62710b262209bf8e316e9e3a39829d7c49d76c2da7607",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    "packages/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    "packages/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    "packages/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    "packages/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "packages/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "113e37c45dda83ac837ac5f9128c70a9fcd3986ab93895411172fd0f5918c0d9",
+    "tools/build_ported_javascript_package.mjs": "f6b19a0a2c73759c1b392fbc14a7153c58728a13c4478bf5db22bb77e47fdfe3"
+  },
+  "input_sha256_after": {
+    "packages/javascript/examples/annular-marks/README.md": "c4304096deb52a20dde87ee5360756290520d3052280aa9b004a2394cf1e251b",
+    "packages/javascript/examples/annular-marks/annular-marks.js": "5b65dbbf336901ef27c7ac5c74b7109544c0e23d8faa6d85941caa86031f4cee",
+    "packages/javascript/examples/annular-marks/index.html": "0a30cc81397d67cc59ed2aee1d558a69b7bb168384864aad24e601eaabd24909",
+    "packages/javascript/examples/annular-marks/sketch.js": "877fd9f3552a9f8068ef4ccf3272fe71a2b47ded6685b1730c7735c94c29d38b",
+    "packages/javascript/examples/band-marks/README.md": "87a79dd4c8b7a59c824db510efa63dae4378f43d7172989a849571bc93cd907f",
+    "packages/javascript/examples/band-marks/band-marks.js": "4ad6cd9c8117d28821984c2f0e129032f1a81fdfd8d320bdc002e5a4f85ebe55",
+    "packages/javascript/examples/band-marks/index.html": "ed869e5218432472ffd3fb753e7bf4478eb1ebfba15187a3d548540331eac528",
+    "packages/javascript/examples/band-marks/sketch.js": "9d444db4696833274a034d98549c29e407a56fb97f877735a4ffe82222ffdaae",
+    "packages/javascript/examples/blur-marks/README.md": "341fe272a0bfb43b9b4375882718b20f600bd8b63ae519d408ceac357638b36a",
+    "packages/javascript/examples/blur-marks/blur-marks.js": "0b0eccd4a9658d0dbbdcda2cbe02e0f68ccf25fe0b45c8184e9c1232ec6db9c0",
+    "packages/javascript/examples/blur-marks/index.html": "a36e5388ebcba2988f18ba574cbeb6ec12de72fd8e6fc84d99c869ba9cc269f1",
+    "packages/javascript/examples/blur-marks/sketch.js": "4148546b764f1fe042e8f6db2ce8af644b3786aec5be42ec8e696fcf1530d0ec",
+    "packages/javascript/examples/branch-marks/README.md": "befac22e2fc186dc3358d83645a35b33be5e638060ce33ac4e2c8f7a18960cc6",
+    "packages/javascript/examples/branch-marks/branch-marks.js": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780",
+    "packages/javascript/examples/branch-marks/index.html": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70",
+    "packages/javascript/examples/branch-marks/sketch.js": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1",
+    "packages/javascript/examples/cut-branch-marks/README.md": "25321f9fc141bf3871350babc32ac2e3a88596306a2b2b25cc70c32aa93996cf",
+    "packages/javascript/examples/cut-branch-marks/cut-branch-marks.js": "97a4e8fceb259c593b7b26a2a6a4f3255082a70921d54e2b17426dbfb2cf7d28",
+    "packages/javascript/examples/cut-branch-marks/index.html": "b966ff7d8cf2ca4f6189e18b1f415fb20a6dda67407657e56c12ba22265b1f28",
+    "packages/javascript/examples/cut-branch-marks/sketch.js": "6d94d11aa0b978bbb897e8ea8515b19eeb864ea14f7582efbf3454f78f4e88df",
+    "packages/javascript/examples/cut-marks/README.md": "68a4b594682495dafa9b8c038c8b396c2824daeecc66348a3c4f9ad73423f12f",
+    "packages/javascript/examples/cut-marks/cut-marks.js": "36f7a5b02ddbdf2bac84ce063de742782d88de62733c007723488777c05f7977",
+    "packages/javascript/examples/cut-marks/index.html": "ce1ff31024b6a8676b49ad3e1d5b41910ddb00befe63d35174b5e3456c0f91fb",
+    "packages/javascript/examples/cut-marks/sketch.js": "9c730b1b30dbaaea5dd47c480f1b7f88aa6bda7f5a086dbedcf241c3696e8d72",
+    "packages/javascript/examples/depth-marks/README.md": "9825a2b30fbcf85030225fba3a3b2e8aba3ac909bf403ede2cd1f04610f0b363",
+    "packages/javascript/examples/depth-marks/depth-marks.js": "a21cfa074ae3458ef8da0f806b79a2cd334c7da88d1a4dd7ca63bc54ebf11807",
+    "packages/javascript/examples/depth-marks/index.html": "b5bde353517261a064a814be3488916136b8d49af2ced4528f19aed9f8446478",
+    "packages/javascript/examples/depth-marks/sketch.js": "fae998ab613afb589004f467ae55651093590311eee82d0ec29fc77cfe0771f5",
+    "packages/javascript/examples/facet-marks/README.md": "69bcfa68c313a820ade628191b844b363f8eb502c51dffe856beec328ed0cd2f",
+    "packages/javascript/examples/facet-marks/facet-marks.js": "4b4d56a0d4654dc0717a2551e3f572253baf17745867acd1b30ffc88148b0380",
+    "packages/javascript/examples/facet-marks/index.html": "cbac841c922b8c7699ff6c07a4789a18ef16f43ea28801b1b887e2b013aa8f47",
+    "packages/javascript/examples/facet-marks/sketch.js": "a6d1e9dcf39856b06b600c763a3534f7b6cc1c55ba87ae002e05424fe7e1c83a",
+    "packages/javascript/examples/field-marks/README.md": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27",
+    "packages/javascript/examples/field-marks/index.html": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d",
+    "packages/javascript/examples/field-marks/mark-field.js": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf",
+    "packages/javascript/examples/field-marks/sketch.js": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b",
+    "packages/javascript/examples/grain-marks/README.md": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381",
+    "packages/javascript/examples/grain-marks/grain-marks.js": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce",
+    "packages/javascript/examples/grain-marks/index.html": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8",
+    "packages/javascript/examples/grain-marks/sketch.js": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17",
+    "packages/javascript/examples/lattice-marks/README.md": "d53386a2691062b2a698889bed49ae1aa782eded2661808870d3b1e45f8d5d36",
+    "packages/javascript/examples/lattice-marks/index.html": "63bdf4ee52021e0ab12be6d22b02b686d6d6d242397e9ade62c231c7935352e7",
+    "packages/javascript/examples/lattice-marks/lattice-marks.js": "62e8025efd2af2d2cb53e66e266894400f2a7deabe1ff664f560927d18f80882",
+    "packages/javascript/examples/lattice-marks/sketch.js": "a64e2542b2bbdcd790d952fb48cd9b9f0b0c8c22f6d8f9c38014711d0e2be51a",
+    "packages/javascript/examples/loop-marks/README.md": "92088b3d6dcedfdf349f9a7afd582d426d29e970bf5d18d0004dfda4baf173f2",
+    "packages/javascript/examples/loop-marks/index.html": "dd3af9cbef4df9c859e64e5aefad3fb2ad4f25591f303aa04f0c75e7b4419a61",
+    "packages/javascript/examples/loop-marks/loop-marks.js": "8f610c69d2d708bcd8a3e23c3d135e3d124ef2e058993ea47efbb16d69fdce91",
+    "packages/javascript/examples/loop-marks/sketch.js": "8d0ad68788503f0cffb576c9834472f3ae5f182362d9ed59cd8fe23f9f4e1d69",
+    "packages/javascript/examples/panel-marks/README.md": "03731fed37a7042e453c1b69ed4ccc6bc1116457f46b5f2e9dfddace0b9ab573",
+    "packages/javascript/examples/panel-marks/index.html": "5f2592744b5a346fa02feea51ff9f4f666b225cf841a698e332b8a83aeb00240",
+    "packages/javascript/examples/panel-marks/panel-marks.js": "d192527d6307abd753f1e57570a7b4ea6c4950fe1cb428040e0b5d88d3feda58",
+    "packages/javascript/examples/panel-marks/sketch.js": "e7522301477eaba78644c514146df770d5eaca3b67c3db28fc0e33635dccbc2a",
+    "packages/javascript/examples/path-clip-marks/README.md": "3f060f7191ac4c44146c380d6b18fb7f72c3f21c2609a225e2d6560322e660ce",
+    "packages/javascript/examples/path-clip-marks/index.html": "6509db8d1619dc9e7fd5cce5422f288d741b2df27028bc891a42f36973e63d76",
+    "packages/javascript/examples/path-clip-marks/path-clip-marks.js": "5ba2a22939f499973aa5b020df2e560ce872bdc81ac618b046553e60104937e8",
+    "packages/javascript/examples/path-clip-marks/sketch.js": "f7c3cf4243a6fb6ca8f0af29e8a68ef96f3bf1aa75ae6fe04c3fc25e374e3006",
+    "packages/javascript/examples/path-marks/README.md": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291",
+    "packages/javascript/examples/path-marks/index.html": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f",
+    "packages/javascript/examples/path-marks/path-marks.js": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743",
+    "packages/javascript/examples/path-marks/sketch.js": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473",
+    "packages/javascript/examples/placement-marks/README.md": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1",
+    "packages/javascript/examples/placement-marks/index.html": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318",
+    "packages/javascript/examples/placement-marks/placement-marks.js": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382",
+    "packages/javascript/examples/placement-marks/sketch.js": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c",
+    "packages/javascript/examples/polygon-marks/README.md": "6b6d0190feaa7358a1563d1147cc8e93b835747bee3ae1ad88003ce0817bd2dc",
+    "packages/javascript/examples/polygon-marks/index.html": "eb8c06bc3a65b6626ab24af74899fffdf5852287a699a31835f4282110284262",
+    "packages/javascript/examples/polygon-marks/polygon-marks.js": "4a850118868c7956bc4d7919ca4f4fd2a6c19aef706e2e14021382291fecf369",
+    "packages/javascript/examples/polygon-marks/sketch.js": "3f1b35dc25908b9d609cd80dfb462d5b0950d97900dc0f1e62a30b730a573bab",
+    "packages/javascript/examples/profile-marks/README.md": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6",
+    "packages/javascript/examples/profile-marks/index.html": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867",
+    "packages/javascript/examples/profile-marks/profile-marks.js": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c",
+    "packages/javascript/examples/profile-marks/sketch.js": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c",
+    "packages/javascript/examples/projection-marks/README.md": "ed1dd6fcaf5e302a6afec3cf8dc5c64a060cf8bfb8192d217200fa789c28bb42",
+    "packages/javascript/examples/projection-marks/index.html": "488d8920ad2d56260a209741b6d800703609d3c28d5c4907ba6a77ce7d69abca",
+    "packages/javascript/examples/projection-marks/projection-marks.js": "9441c1fe98ba35ff5824a28fa57a7d30764d80f538561963318bf7623f99c54f",
+    "packages/javascript/examples/projection-marks/sketch.js": "5569b3da81606dd2e9a83191b4035424ee8f90d55135ee70c241ed3f9373ee5c",
+    "packages/javascript/examples/pull-marks/README.md": "bbeaa1df18af8fbf335fda6de8e9f162cb0b66c2a5a2f253b947055d860a2a3b",
+    "packages/javascript/examples/pull-marks/index.html": "c1d3fb3b79683ce842957a7b493176fc8d41d905f8e17c89b4a1f14d61e812c1",
+    "packages/javascript/examples/pull-marks/pull-marks.js": "af49f8461e8d12099d6bed13e85ec6165305b890fa6c9a29fa8144d3e9aee830",
+    "packages/javascript/examples/pull-marks/sketch.js": "83bc47bd0dbdedb4e1beebb9a2418c99cc625267cb02d33746d70e8ffbb86e2b",
+    "packages/javascript/examples/ramp-marks/README.md": "ad5589e4f562f214b78788baa432c16a67837707bfb45c83ca67826a6efefd3b",
+    "packages/javascript/examples/ramp-marks/index.html": "4a1f569d65dab5f50f16e49dc57a48342436b7c15f6b66e3babc6442916a3ab4",
+    "packages/javascript/examples/ramp-marks/ramp-marks.js": "4528fcdea69f41ee6f82a72b4e52ce6b8426b1f096c54434e6aec8e325ae6ac2",
+    "packages/javascript/examples/ramp-marks/sketch.js": "cd3e1db4deb2989fc70a8bce0433d9f80dcf47175f98dc77b7224e855de90cec",
+    "packages/javascript/examples/region-marks/README.md": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010",
+    "packages/javascript/examples/region-marks/index.html": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d",
+    "packages/javascript/examples/region-marks/region-marks.js": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8",
+    "packages/javascript/examples/region-marks/sketch.js": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a",
+    "packages/javascript/examples/spring-marks/README.md": "fa0499f1a199b66abc028442162a9cbeb03fc0af902f34fa9cff56af3fd049ab",
+    "packages/javascript/examples/spring-marks/index.html": "c0acfe5d21f1fd50fea84bd85f006b31771a8203378fd3062eb8edb1607f0b91",
+    "packages/javascript/examples/spring-marks/sketch.js": "e56b7d7a00cfe4f7e60ab7f6660940f9aa4911fb2eb3771f6d12bca6d612ad70",
+    "packages/javascript/examples/spring-marks/spring-marks.js": "a47eaba5f5b3d2bb90286017d1f4c742dc0960a25e64891123a763813301fca9",
+    "packages/javascript/examples/warp-marks/README.md": "ae5578442c7b7a1b9bc103f5f2089e94d42aad1b7fd26eaa32fe54ceab8eb096",
+    "packages/javascript/examples/warp-marks/index.html": "460af05d02054bd1584b33eb680262a204adbc9ca015e509b231e9389f4c2927",
+    "packages/javascript/examples/warp-marks/sketch.js": "e4122d81f4854bbbdb56a71438cb8cb470314eed4564c27910c56213aeaa05b9",
+    "packages/javascript/examples/warp-marks/warp-marks.js": "7ce10a730dce26f9183b4f5c494af7a85093aa648769550fce7419144484711a",
+    "packages/javascript/package.json": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8",
+    "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    "packages/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    "packages/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    "packages/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/index.js": "6a42d4db8eb2cbf9bbe62710b262209bf8e316e9e3a39829d7c49d76c2da7607",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    "packages/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    "packages/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    "packages/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    "packages/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "packages/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "LICENSE": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df",
+    "THIRD_PARTY_NOTICES.md": "113e37c45dda83ac837ac5f9128c70a9fcd3986ab93895411172fd0f5918c0d9",
+    "tools/build_ported_javascript_package.mjs": "f6b19a0a2c73759c1b392fbc14a7153c58728a13c4478bf5db22bb77e47fdfe3"
+  },
+  "node": "v22.22.1",
+  "resolution": {
+    "resolved": "file:///home/colin/dev/procedural/.work/p5-batch-review/.work/p5-batch-package/consumer/node_modules/@procedurals/javascript/src/index.js",
+    "exports": [
+      "AnnularFaceLimitError",
+      "AnnularMeshArithmeticError",
+      "AnnularMeshError",
+      "BinaryPartitionError",
+      "BranchTreeError",
+      "CirclePlacementError",
+      "ContactError",
+      "ConvexPlacementError",
+      "CyclicPaletteError",
+      "DelaunayError",
+      "DiscProjectionError",
+      "GradientNoise2D01Error",
+      "GradientNoise3D01Error",
+      "GradientPathError",
+      "LatticeError",
+      "LinePoolError",
+      "MaskedCompositeError",
+      "NoiseBandPathError",
+      "PartitionError",
+      "PullError",
+      "RadialProfile3D",
+      "RadialProfileError",
+      "RasterCrossfadeError",
+      "RasterRemapError",
+      "RectangleCutError",
+      "RegularGridError",
+      "RetainedRectangleCuts2D",
+      "SegmentClipError",
+      "SeparableBlurError",
+      "SplineError",
+      "SpringError",
+      "StopRampError",
+      "TrianglePointsError",
+      "annularSolid3D",
+      "bilinearRasterRemap2D",
+      "binaryCellPartition2D",
+      "clipSegmentsSimplePolygon2D",
+      "closedSpline2D",
+      "cyclicPalette",
+      "delaunay2D",
+      "gradientNoise2D01",
+      "gradientNoise3D01",
+      "gradientPath2D",
+      "mapTriangleCoordinates2D",
+      "maskedSourceOver2D",
+      "nearestSegmentContact2D",
+      "noiseBandPath2D",
+      "occupiedLatticePaths2D",
+      "orderedCircleFilter2D",
+      "orderedConvexPolygonFilter2D",
+      "radialPull2D",
+      "rasterCrossfade2D",
+      "regularGrid",
+      "retainedRectangleCuts2D",
+      "seededCirclePlacement2D",
+      "seededEndpointBranches2D",
+      "seededLinePool2D",
+      "seededQuadrantPartition2D",
+      "seededTrianglePoints2D",
+      "separableBlur2D",
+      "sequentialDiscProjection2D",
+      "stopRamp",
+      "targetSprings2D"
+    ]
+  },
+  "tarball": {
+    "path": ".work/p5-batch-package/procedurals-javascript-0.1.0.tgz",
+    "sha256": "68a7d8bc38e89e27c221d471b8eb00d4a98dd6f22ee39764d68d0b514cd076d8"
+  },
+  "installed_index": ".work/p5-batch-package/consumer/node_modules/@procedurals/javascript/src/index.js",
+  "entries": [
+    {
+      "path": "LICENSE",
+      "sha256": "85d7933662708f320ec800c93c01a73eeb7954e11d4a569c603781c5ac1280df"
+    },
+    {
+      "path": "README.md",
+      "sha256": "842539fc87de7f0cdcbe6cd2cccf0f5613ca3b188d8d21d9a299b8966023a4b3"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "113e37c45dda83ac837ac5f9128c70a9fcd3986ab93895411172fd0f5918c0d9"
+    },
+    {
+      "path": "examples/annular-marks/README.md",
+      "sha256": "c4304096deb52a20dde87ee5360756290520d3052280aa9b004a2394cf1e251b"
+    },
+    {
+      "path": "examples/annular-marks/annular-marks.js",
+      "sha256": "5b65dbbf336901ef27c7ac5c74b7109544c0e23d8faa6d85941caa86031f4cee"
+    },
+    {
+      "path": "examples/annular-marks/index.html",
+      "sha256": "0a30cc81397d67cc59ed2aee1d558a69b7bb168384864aad24e601eaabd24909"
+    },
+    {
+      "path": "examples/annular-marks/sketch.js",
+      "sha256": "877fd9f3552a9f8068ef4ccf3272fe71a2b47ded6685b1730c7735c94c29d38b"
+    },
+    {
+      "path": "examples/band-marks/README.md",
+      "sha256": "87a79dd4c8b7a59c824db510efa63dae4378f43d7172989a849571bc93cd907f"
+    },
+    {
+      "path": "examples/band-marks/band-marks.js",
+      "sha256": "4ad6cd9c8117d28821984c2f0e129032f1a81fdfd8d320bdc002e5a4f85ebe55"
+    },
+    {
+      "path": "examples/band-marks/index.html",
+      "sha256": "ed869e5218432472ffd3fb753e7bf4478eb1ebfba15187a3d548540331eac528"
+    },
+    {
+      "path": "examples/band-marks/sketch.js",
+      "sha256": "9d444db4696833274a034d98549c29e407a56fb97f877735a4ffe82222ffdaae"
+    },
+    {
+      "path": "examples/blur-marks/README.md",
+      "sha256": "341fe272a0bfb43b9b4375882718b20f600bd8b63ae519d408ceac357638b36a"
+    },
+    {
+      "path": "examples/blur-marks/blur-marks.js",
+      "sha256": "0b0eccd4a9658d0dbbdcda2cbe02e0f68ccf25fe0b45c8184e9c1232ec6db9c0"
+    },
+    {
+      "path": "examples/blur-marks/index.html",
+      "sha256": "a36e5388ebcba2988f18ba574cbeb6ec12de72fd8e6fc84d99c869ba9cc269f1"
+    },
+    {
+      "path": "examples/blur-marks/sketch.js",
+      "sha256": "4148546b764f1fe042e8f6db2ce8af644b3786aec5be42ec8e696fcf1530d0ec"
+    },
+    {
+      "path": "examples/branch-marks/README.md",
+      "sha256": "befac22e2fc186dc3358d83645a35b33be5e638060ce33ac4e2c8f7a18960cc6"
+    },
+    {
+      "path": "examples/branch-marks/branch-marks.js",
+      "sha256": "3f23618c9843fb00dbda10ef210089d975f61cc133a30b6b112d027f9355d780"
+    },
+    {
+      "path": "examples/branch-marks/index.html",
+      "sha256": "b6a20123a7570ecf886f0914c461e9eefd8ec6927300942c8dd3baa5b512fd70"
+    },
+    {
+      "path": "examples/branch-marks/sketch.js",
+      "sha256": "99e1531a38ce5c0ee5776bf095fb5e1b5ce898b506b033bb8aa7b91bd77de2b1"
+    },
+    {
+      "path": "examples/cut-branch-marks/README.md",
+      "sha256": "25321f9fc141bf3871350babc32ac2e3a88596306a2b2b25cc70c32aa93996cf"
+    },
+    {
+      "path": "examples/cut-branch-marks/cut-branch-marks.js",
+      "sha256": "97a4e8fceb259c593b7b26a2a6a4f3255082a70921d54e2b17426dbfb2cf7d28"
+    },
+    {
+      "path": "examples/cut-branch-marks/index.html",
+      "sha256": "b966ff7d8cf2ca4f6189e18b1f415fb20a6dda67407657e56c12ba22265b1f28"
+    },
+    {
+      "path": "examples/cut-branch-marks/sketch.js",
+      "sha256": "6d94d11aa0b978bbb897e8ea8515b19eeb864ea14f7582efbf3454f78f4e88df"
+    },
+    {
+      "path": "examples/cut-marks/README.md",
+      "sha256": "68a4b594682495dafa9b8c038c8b396c2824daeecc66348a3c4f9ad73423f12f"
+    },
+    {
+      "path": "examples/cut-marks/cut-marks.js",
+      "sha256": "36f7a5b02ddbdf2bac84ce063de742782d88de62733c007723488777c05f7977"
+    },
+    {
+      "path": "examples/cut-marks/index.html",
+      "sha256": "ce1ff31024b6a8676b49ad3e1d5b41910ddb00befe63d35174b5e3456c0f91fb"
+    },
+    {
+      "path": "examples/cut-marks/sketch.js",
+      "sha256": "9c730b1b30dbaaea5dd47c480f1b7f88aa6bda7f5a086dbedcf241c3696e8d72"
+    },
+    {
+      "path": "examples/depth-marks/README.md",
+      "sha256": "9825a2b30fbcf85030225fba3a3b2e8aba3ac909bf403ede2cd1f04610f0b363"
+    },
+    {
+      "path": "examples/depth-marks/depth-marks.js",
+      "sha256": "a21cfa074ae3458ef8da0f806b79a2cd334c7da88d1a4dd7ca63bc54ebf11807"
+    },
+    {
+      "path": "examples/depth-marks/index.html",
+      "sha256": "b5bde353517261a064a814be3488916136b8d49af2ced4528f19aed9f8446478"
+    },
+    {
+      "path": "examples/depth-marks/sketch.js",
+      "sha256": "fae998ab613afb589004f467ae55651093590311eee82d0ec29fc77cfe0771f5"
+    },
+    {
+      "path": "examples/facet-marks/README.md",
+      "sha256": "69bcfa68c313a820ade628191b844b363f8eb502c51dffe856beec328ed0cd2f"
+    },
+    {
+      "path": "examples/facet-marks/facet-marks.js",
+      "sha256": "4b4d56a0d4654dc0717a2551e3f572253baf17745867acd1b30ffc88148b0380"
+    },
+    {
+      "path": "examples/facet-marks/index.html",
+      "sha256": "cbac841c922b8c7699ff6c07a4789a18ef16f43ea28801b1b887e2b013aa8f47"
+    },
+    {
+      "path": "examples/facet-marks/sketch.js",
+      "sha256": "a6d1e9dcf39856b06b600c763a3534f7b6cc1c55ba87ae002e05424fe7e1c83a"
+    },
+    {
+      "path": "examples/field-marks/README.md",
+      "sha256": "425bea8fef138c76d0c269839fd9bacc99f71b102bccb531131450300b82dd27"
+    },
+    {
+      "path": "examples/field-marks/index.html",
+      "sha256": "a7339180e5054ad778a7308ecf7a73bf2cf0eab601ffc1e34a69c1db9ee9cb6d"
+    },
+    {
+      "path": "examples/field-marks/mark-field.js",
+      "sha256": "7898ab6f159d9c22c321999007f3f578228a637804aff980a67d5f37f6911dbf"
+    },
+    {
+      "path": "examples/field-marks/sketch.js",
+      "sha256": "7c6e3ce7c33cc11092a6adb1d4318db1bac94fa8f2df5264c918e53266071c3b"
+    },
+    {
+      "path": "examples/grain-marks/README.md",
+      "sha256": "a8f823c43737434a40869ef73523e0f0ea5ab77f3167716ef4ed6a21b91df381"
+    },
+    {
+      "path": "examples/grain-marks/grain-marks.js",
+      "sha256": "2c45de43645f047581360950d26e36c2b72c48eec410354b1f93f94206d34fce"
+    },
+    {
+      "path": "examples/grain-marks/index.html",
+      "sha256": "f1016e39b15595baf7322a46dfd32015d24eb7e3009dad9a486aac73c87586c8"
+    },
+    {
+      "path": "examples/grain-marks/sketch.js",
+      "sha256": "b34316cb80bf5a899268662fd12ab2132360f496ff6ba486ff4377abaad9bf17"
+    },
+    {
+      "path": "examples/lattice-marks/README.md",
+      "sha256": "d53386a2691062b2a698889bed49ae1aa782eded2661808870d3b1e45f8d5d36"
+    },
+    {
+      "path": "examples/lattice-marks/index.html",
+      "sha256": "63bdf4ee52021e0ab12be6d22b02b686d6d6d242397e9ade62c231c7935352e7"
+    },
+    {
+      "path": "examples/lattice-marks/lattice-marks.js",
+      "sha256": "62e8025efd2af2d2cb53e66e266894400f2a7deabe1ff664f560927d18f80882"
+    },
+    {
+      "path": "examples/lattice-marks/sketch.js",
+      "sha256": "a64e2542b2bbdcd790d952fb48cd9b9f0b0c8c22f6d8f9c38014711d0e2be51a"
+    },
+    {
+      "path": "examples/loop-marks/README.md",
+      "sha256": "92088b3d6dcedfdf349f9a7afd582d426d29e970bf5d18d0004dfda4baf173f2"
+    },
+    {
+      "path": "examples/loop-marks/index.html",
+      "sha256": "dd3af9cbef4df9c859e64e5aefad3fb2ad4f25591f303aa04f0c75e7b4419a61"
+    },
+    {
+      "path": "examples/loop-marks/loop-marks.js",
+      "sha256": "8f610c69d2d708bcd8a3e23c3d135e3d124ef2e058993ea47efbb16d69fdce91"
+    },
+    {
+      "path": "examples/loop-marks/sketch.js",
+      "sha256": "8d0ad68788503f0cffb576c9834472f3ae5f182362d9ed59cd8fe23f9f4e1d69"
+    },
+    {
+      "path": "examples/panel-marks/README.md",
+      "sha256": "03731fed37a7042e453c1b69ed4ccc6bc1116457f46b5f2e9dfddace0b9ab573"
+    },
+    {
+      "path": "examples/panel-marks/index.html",
+      "sha256": "5f2592744b5a346fa02feea51ff9f4f666b225cf841a698e332b8a83aeb00240"
+    },
+    {
+      "path": "examples/panel-marks/panel-marks.js",
+      "sha256": "d192527d6307abd753f1e57570a7b4ea6c4950fe1cb428040e0b5d88d3feda58"
+    },
+    {
+      "path": "examples/panel-marks/sketch.js",
+      "sha256": "e7522301477eaba78644c514146df770d5eaca3b67c3db28fc0e33635dccbc2a"
+    },
+    {
+      "path": "examples/path-clip-marks/README.md",
+      "sha256": "3f060f7191ac4c44146c380d6b18fb7f72c3f21c2609a225e2d6560322e660ce"
+    },
+    {
+      "path": "examples/path-clip-marks/index.html",
+      "sha256": "6509db8d1619dc9e7fd5cce5422f288d741b2df27028bc891a42f36973e63d76"
+    },
+    {
+      "path": "examples/path-clip-marks/path-clip-marks.js",
+      "sha256": "5ba2a22939f499973aa5b020df2e560ce872bdc81ac618b046553e60104937e8"
+    },
+    {
+      "path": "examples/path-clip-marks/sketch.js",
+      "sha256": "f7c3cf4243a6fb6ca8f0af29e8a68ef96f3bf1aa75ae6fe04c3fc25e374e3006"
+    },
+    {
+      "path": "examples/path-marks/README.md",
+      "sha256": "2071db5d48f35606dba23646b1b8f8fff49b0fb9fda3bcbfdcf62551bbd68291"
+    },
+    {
+      "path": "examples/path-marks/index.html",
+      "sha256": "b65e736c1e5ddaa18de487deaf707705d1a8dba06291bc595b9516283b40e98f"
+    },
+    {
+      "path": "examples/path-marks/path-marks.js",
+      "sha256": "4d18c8696b4a3f15cec7c1fed9da4d53cf88f93b25d09170a10a3c25d4173743"
+    },
+    {
+      "path": "examples/path-marks/sketch.js",
+      "sha256": "4aecfb82ad6e90a14886d0c4b2892821d431c1815136e150cd4158eed7378473"
+    },
+    {
+      "path": "examples/placement-marks/README.md",
+      "sha256": "2308b7daad9221fa16a1745f922f101603258ab185c5640cf52d0decb764ecf1"
+    },
+    {
+      "path": "examples/placement-marks/index.html",
+      "sha256": "c86ceefc040d7cc80f6009bc517e1194e145d24ae677c499bcde6ed400a18318"
+    },
+    {
+      "path": "examples/placement-marks/placement-marks.js",
+      "sha256": "17e7081a5c3e6a3353082e5b537ba71fd82b17d875c977744b2ad7bc7a063382"
+    },
+    {
+      "path": "examples/placement-marks/sketch.js",
+      "sha256": "96a2c8e20c552dcdeac1e26a07150d9b116e01cdb568ade419028001b462375c"
+    },
+    {
+      "path": "examples/polygon-marks/README.md",
+      "sha256": "6b6d0190feaa7358a1563d1147cc8e93b835747bee3ae1ad88003ce0817bd2dc"
+    },
+    {
+      "path": "examples/polygon-marks/index.html",
+      "sha256": "eb8c06bc3a65b6626ab24af74899fffdf5852287a699a31835f4282110284262"
+    },
+    {
+      "path": "examples/polygon-marks/polygon-marks.js",
+      "sha256": "4a850118868c7956bc4d7919ca4f4fd2a6c19aef706e2e14021382291fecf369"
+    },
+    {
+      "path": "examples/polygon-marks/sketch.js",
+      "sha256": "3f1b35dc25908b9d609cd80dfb462d5b0950d97900dc0f1e62a30b730a573bab"
+    },
+    {
+      "path": "examples/profile-marks/README.md",
+      "sha256": "3447363b647ac65fc2813d8d30b6427531539affe0629c99e43dfb662f4abff6"
+    },
+    {
+      "path": "examples/profile-marks/index.html",
+      "sha256": "8bc9362711df3341aba030fcb3a01a2ab3b37d1198b50056c96049a40e380867"
+    },
+    {
+      "path": "examples/profile-marks/profile-marks.js",
+      "sha256": "4bd3e146d52eba929dc34a6d2a32f22b9bfca111a8bee03eafc26be120461b3c"
+    },
+    {
+      "path": "examples/profile-marks/sketch.js",
+      "sha256": "f2a6ff00745ec64636d521835a41d8320a16a35a7b290776c016bbf224409a4c"
+    },
+    {
+      "path": "examples/projection-marks/README.md",
+      "sha256": "ed1dd6fcaf5e302a6afec3cf8dc5c64a060cf8bfb8192d217200fa789c28bb42"
+    },
+    {
+      "path": "examples/projection-marks/index.html",
+      "sha256": "488d8920ad2d56260a209741b6d800703609d3c28d5c4907ba6a77ce7d69abca"
+    },
+    {
+      "path": "examples/projection-marks/projection-marks.js",
+      "sha256": "9441c1fe98ba35ff5824a28fa57a7d30764d80f538561963318bf7623f99c54f"
+    },
+    {
+      "path": "examples/projection-marks/sketch.js",
+      "sha256": "5569b3da81606dd2e9a83191b4035424ee8f90d55135ee70c241ed3f9373ee5c"
+    },
+    {
+      "path": "examples/pull-marks/README.md",
+      "sha256": "bbeaa1df18af8fbf335fda6de8e9f162cb0b66c2a5a2f253b947055d860a2a3b"
+    },
+    {
+      "path": "examples/pull-marks/index.html",
+      "sha256": "c1d3fb3b79683ce842957a7b493176fc8d41d905f8e17c89b4a1f14d61e812c1"
+    },
+    {
+      "path": "examples/pull-marks/pull-marks.js",
+      "sha256": "af49f8461e8d12099d6bed13e85ec6165305b890fa6c9a29fa8144d3e9aee830"
+    },
+    {
+      "path": "examples/pull-marks/sketch.js",
+      "sha256": "83bc47bd0dbdedb4e1beebb9a2418c99cc625267cb02d33746d70e8ffbb86e2b"
+    },
+    {
+      "path": "examples/ramp-marks/README.md",
+      "sha256": "ad5589e4f562f214b78788baa432c16a67837707bfb45c83ca67826a6efefd3b"
+    },
+    {
+      "path": "examples/ramp-marks/index.html",
+      "sha256": "4a1f569d65dab5f50f16e49dc57a48342436b7c15f6b66e3babc6442916a3ab4"
+    },
+    {
+      "path": "examples/ramp-marks/ramp-marks.js",
+      "sha256": "4528fcdea69f41ee6f82a72b4e52ce6b8426b1f096c54434e6aec8e325ae6ac2"
+    },
+    {
+      "path": "examples/ramp-marks/sketch.js",
+      "sha256": "cd3e1db4deb2989fc70a8bce0433d9f80dcf47175f98dc77b7224e855de90cec"
+    },
+    {
+      "path": "examples/region-marks/README.md",
+      "sha256": "dc53aaf39cc426bc5f286640b25719a9431ffb5cf56b01a3db6bc3a1cdd38010"
+    },
+    {
+      "path": "examples/region-marks/index.html",
+      "sha256": "bb58856301172a6571219bf874a1d87775cf158129d3d0406cf7694b57c0d57d"
+    },
+    {
+      "path": "examples/region-marks/region-marks.js",
+      "sha256": "60da983043870708319d0f6f731f573b3a8a3913e148f557af4f56dfb34efeb8"
+    },
+    {
+      "path": "examples/region-marks/sketch.js",
+      "sha256": "e80989b586014c1ce02804bc3db749183d6825832c68ea9518ba27f0b4341c0a"
+    },
+    {
+      "path": "examples/spring-marks/README.md",
+      "sha256": "fa0499f1a199b66abc028442162a9cbeb03fc0af902f34fa9cff56af3fd049ab"
+    },
+    {
+      "path": "examples/spring-marks/index.html",
+      "sha256": "c0acfe5d21f1fd50fea84bd85f006b31771a8203378fd3062eb8edb1607f0b91"
+    },
+    {
+      "path": "examples/spring-marks/sketch.js",
+      "sha256": "e56b7d7a00cfe4f7e60ab7f6660940f9aa4911fb2eb3771f6d12bca6d612ad70"
+    },
+    {
+      "path": "examples/spring-marks/spring-marks.js",
+      "sha256": "a47eaba5f5b3d2bb90286017d1f4c742dc0960a25e64891123a763813301fca9"
+    },
+    {
+      "path": "examples/warp-marks/README.md",
+      "sha256": "ae5578442c7b7a1b9bc103f5f2089e94d42aad1b7fd26eaa32fe54ceab8eb096"
+    },
+    {
+      "path": "examples/warp-marks/index.html",
+      "sha256": "460af05d02054bd1584b33eb680262a204adbc9ca015e509b231e9389f4c2927"
+    },
+    {
+      "path": "examples/warp-marks/sketch.js",
+      "sha256": "e4122d81f4854bbbdb56a71438cb8cb470314eed4564c27910c56213aeaa05b9"
+    },
+    {
+      "path": "examples/warp-marks/warp-marks.js",
+      "sha256": "7ce10a730dce26f9183b4f5c494af7a85093aa648769550fce7419144484711a"
+    },
+    {
+      "path": "package.json",
+      "sha256": "a2e8d61d3fcf0365b6ed0033cab2873aacb38eea46872bcb4a7b75da5e4531b8"
+    },
+    {
+      "path": "src/annular-mesh.js",
+      "sha256": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761"
+    },
+    {
+      "path": "src/binary-cell-partition.js",
+      "sha256": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00"
+    },
+    {
+      "path": "src/branch-tree.js",
+      "sha256": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6"
+    },
+    {
+      "path": "src/circle-placements.js",
+      "sha256": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567"
+    },
+    {
+      "path": "src/closed-spline.js",
+      "sha256": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea"
+    },
+    {
+      "path": "src/convex-polygon-placements.js",
+      "sha256": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52"
+    },
+    {
+      "path": "src/cyclic-palette.js",
+      "sha256": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b"
+    },
+    {
+      "path": "src/delaunay.js",
+      "sha256": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47"
+    },
+    {
+      "path": "src/disc-projection.js",
+      "sha256": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1"
+    },
+    {
+      "path": "src/fdlibm-trig.js",
+      "sha256": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f"
+    },
+    {
+      "path": "src/gradient-noise-2d-01.js",
+      "sha256": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e"
+    },
+    {
+      "path": "src/gradient-noise-3d-01.js",
+      "sha256": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c"
+    },
+    {
+      "path": "src/gradient-path.js",
+      "sha256": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a"
+    },
+    {
+      "path": "src/index.js",
+      "sha256": "6a42d4db8eb2cbf9bbe62710b262209bf8e316e9e3a39829d7c49d76c2da7607"
+    },
+    {
+      "path": "src/internal/drawing-state.js",
+      "sha256": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c"
+    },
+    {
+      "path": "src/internal/drawing.js",
+      "sha256": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac"
+    },
+    {
+      "path": "src/internal/exact-rational.js",
+      "sha256": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6"
+    },
+    {
+      "path": "src/internal/fdlibm-hypot.js",
+      "sha256": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf"
+    },
+    {
+      "path": "src/internal/fdlibm-pow.js",
+      "sha256": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472"
+    },
+    {
+      "path": "src/internal/noise-hash.js",
+      "sha256": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6"
+    },
+    {
+      "path": "src/internal/p5-frame.js",
+      "sha256": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7"
+    },
+    {
+      "path": "src/line-pool.js",
+      "sha256": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae"
+    },
+    {
+      "path": "src/masked-source-over.js",
+      "sha256": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d"
+    },
+    {
+      "path": "src/nearest-segment-contact.js",
+      "sha256": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d"
+    },
+    {
+      "path": "src/noise-band-path.js",
+      "sha256": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f"
+    },
+    {
+      "path": "src/occupied-lattice-paths.js",
+      "sha256": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82"
+    },
+    {
+      "path": "src/quadrant-partition.js",
+      "sha256": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f"
+    },
+    {
+      "path": "src/radial-profile.js",
+      "sha256": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d"
+    },
+    {
+      "path": "src/radial-pull.js",
+      "sha256": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c"
+    },
+    {
+      "path": "src/raster-crossfade.js",
+      "sha256": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19"
+    },
+    {
+      "path": "src/raster-remap.js",
+      "sha256": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c"
+    },
+    {
+      "path": "src/regular-grid.js",
+      "sha256": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278"
+    },
+    {
+      "path": "src/retained-rectangle-cuts.js",
+      "sha256": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866"
+    },
+    {
+      "path": "src/segment-clip.js",
+      "sha256": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4"
+    },
+    {
+      "path": "src/separable-blur.js",
+      "sha256": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632"
+    },
+    {
+      "path": "src/stop-ramp.js",
+      "sha256": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50"
+    },
+    {
+      "path": "src/target-springs.js",
+      "sha256": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7"
+    },
+    {
+      "path": "src/triangle-points.js",
+      "sha256": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290"
+    }
+  ]
+}

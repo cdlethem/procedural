@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "operation": "raster.crossfade-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module fixture/carrier/ownership checks. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/raster-crossfade.json": "bdf78f9411fe1f6c2d9b9ec998b5f952e8b7c951fa6e347682bd86f3c025aac0",
+    "fixtures/operations/raster-crossfade.json": "a5adc26d08f2b43609442dcdaaaf49aa1955aa3b388563bf829aa73797701722",
+    "packages/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    "tests/native/raster-crossfade-javascript.mjs": "4d302b8f768e38198c211a1a0110f06536e7603e528fbffab32a498a650f84be"
+  },
+  "input_sha256_after": {
+    "catalog/operations/raster-crossfade.json": "bdf78f9411fe1f6c2d9b9ec998b5f952e8b7c951fa6e347682bd86f3c025aac0",
+    "fixtures/operations/raster-crossfade.json": "a5adc26d08f2b43609442dcdaaaf49aa1955aa3b388563bf829aa73797701722",
+    "packages/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    "tests/native/raster-crossfade-javascript.mjs": "4d302b8f768e38198c211a1a0110f06536e7603e528fbffab32a498a650f84be"
+  },
+  "scenarios": {
+    "fixture_cases": 11,
+    "ownership_access": [
+      "input containers detached",
+      "pixels()/toValues() detached",
+      "index precedence: INVALID_INDEX before INDEX_OUT_OF_RANGE"
+    ],
+    "native_only": [
+      "non-record/extra-key/mismatched-dims/wrong-weight-count/out-of-range-weight/oversized-pixel/degenerate-dims",
+      "negative-zero weight equals zero"
+    ]
+  }
+}

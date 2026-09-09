@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Path clip marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Path clip marks</h1>
+  <p>Trace six seeded gradient-field paths into 960 short segments, then clip them
+    against a notched polygon. Reclipping against a shallower notch is independent
+    from redrawing with different colors or the unclipped source overlay.</p>
+  <div id="controls" aria-label="Path clip marks controls">
+    <button data-action="n"><kbd>N</kbd> deep / shallow notch (reclips)</button>
+    <button data-action="c"><kbd>C</kbd> single color / per-path colors</button>
+    <button data-action="o"><kbd>O</kbd> show unclipped source</button>
+    <button data-action="0"><kbd>0</kbd> reset</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated clipped path segments"></div>
+  <p id="status" role="status">Preparing traces&hellip;</p>
+  <p>Edit the composition in <code>path-clip-marks.js</code>: the notch depth
+    rebuilds the retained clip; the sketch's per-path palette and unclipped-source
+    overlay are redraw-only treatments of the same clipped segments, matching the
+    Java example's own reclip/redraw separation. These values describe this piece.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>

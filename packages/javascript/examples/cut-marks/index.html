@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cut marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(512px,100%);height:auto;cursor:pointer}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Cut marks</h1>
+  <p>Click a region to select it, then cut it at its midpoint on either axis or
+    remove it outright. Retained regions keep stable identities across every edit.</p>
+  <div id="controls" aria-label="Cut marks controls">
+    <button data-action="x"><kbd>X</kbd> cut selected on X</button>
+    <button data-action="y"><kbd>Y</kbd> cut selected on Y</button>
+    <button data-action="delete"><kbd>Delete</kbd> remove selected</button>
+    <button data-action="a"><kbd>A</kbd> aligned / staggered setup (rebuilds)</button>
+    <button data-action="d"><kbd>D</kbd> fill / outline decoration</button>
+    <button data-action="h"><kbd>H</kbd> holes (rebuilds)</button>
+    <button data-action="0"><kbd>0</kbd> reset</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated retained regions; click a region to select it"></div>
+  <p id="status" role="status">Preparing regions&hellip;</p>
+  <p>Edit the composition in <code>cut-marks.js</code>: the initial 12-cut seeded
+    setup, the staggered-axis ratio policy, and the hole-removal rule rebuild the
+    retained region set; click-select plus X/Y/Delete are the artist-facing edit
+    surface the operation was built for. These values describe this piece.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blur marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(720px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Blur marks</h1>
+  <p>Filter one semi-transparent artwork layer three ways (isotropic soft, horizontal
+    streak, vertical streak) with a normalized separable convolution, optionally
+    crossfade left-to-right back toward the sharp original, then composite the
+    result over a striped ground.</p>
+  <div id="controls" aria-label="Blur marks controls">
+    <button data-action="m"><kbd>M</kbd> sharp / soft / horizontal / vertical</button>
+    <button data-action="b"><kbd>B</kbd> blend with sharp (left-to-right)</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated blur/blend/composite result"></div>
+  <p id="status" role="status">Preparing layers&hellip;</p>
+  <p>Edit the composition in <code>blur-marks.js</code>: the two triangular kernel
+    radii (soft vs. directional) are fixed at construction and produce three
+    retained blurred layers up front; the sketch's mode/blend controls only select
+    and recompute the crossfade/composite from those retained layers. The ground
+    and artwork rasters are drawn once in <code>sketch.js</code> and handed to the
+    composition as plain pixel buffers, keeping the blend/composite logic testable
+    without a canvas. These values describe this piece.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>

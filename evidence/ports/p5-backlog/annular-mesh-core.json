@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "operation": "mesh.annular-solid-3d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module fixture (per-element positions_abs/normals_abs tolerance, exact topology/kinds/cells) plus ownership/carrier checks. Trig uses JS-native Math.sin/cos/sqrt per the contract's per-target numerics policy; no cross-language bit-exactness claim. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/annular-solid-3d.json": "856da2ea0449233334c5e152f9eae1c589a9b2b6656ced8af93e73daac39ee6a",
+    "fixtures/operations/annular-solid-3d.json": "15871df03df6886c2a26706cc4d99ca6310254065ba0bde24359b6c7eb573b08",
+    "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    "tests/native/annular-mesh-javascript.mjs": "5888588beb7bc1da09260b5be1b2bd656299e645ee14a1e4c2c69fddd79f64d0"
+  },
+  "input_sha256_after": {
+    "catalog/operations/annular-solid-3d.json": "856da2ea0449233334c5e152f9eae1c589a9b2b6656ced8af93e73daac39ee6a",
+    "fixtures/operations/annular-solid-3d.json": "15871df03df6886c2a26706cc4d99ca6310254065ba0bde24359b6c7eb573b08",
+    "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    "tests/native/annular-mesh-javascript.mjs": "5888588beb7bc1da09260b5be1b2bd656299e645ee14a1e4c2c69fddd79f64d0"
+  },
+  "scenarios": {
+    "fixture_cases": 26,
+    "ownership_access": [
+      "accessors match toValues() baseline",
+      "ordinary/Float64Array Into outputs",
+      "frozen/short/wrong outputs rejected",
+      "index precedence: INVALID_INDEX before INDEX_OUT_OF_RANGE"
+    ],
+    "native_only": [
+      "non-record/extra-key carriers",
+      "FaceLimitError/MeshArithmeticError instance types"
+    ]
+  }
+}

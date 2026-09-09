@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "operation": "geometry.sequential-disc-projection-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module fixture/carrier/ownership checks. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/sequential-disc-projection-2d.json": "f7e90d17f37d87fe1ae63975ed5fcae3e79e3d1d59d0eb7b78da6114078dd206",
+    "fixtures/operations/sequential-disc-projection-2d.json": "3a73f3e787469e835dc86e7ad81bea2589faf0984aa970d39cf3325b6234deef",
+    "packages/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    "tests/native/disc-projection-javascript.mjs": "da67d7468ebb521b660f782569a6d3edae516767d7638fca2ffa3ac9b59e0e05"
+  },
+  "input_sha256_after": {
+    "catalog/operations/sequential-disc-projection-2d.json": "f7e90d17f37d87fe1ae63975ed5fcae3e79e3d1d59d0eb7b78da6114078dd206",
+    "fixtures/operations/sequential-disc-projection-2d.json": "3a73f3e787469e835dc86e7ad81bea2589faf0984aa970d39cf3325b6234deef",
+    "packages/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    "tests/native/disc-projection-javascript.mjs": "da67d7468ebb521b660f782569a6d3edae516767d7638fca2ffa3ac9b59e0e05"
+  },
+  "scenarios": {
+    "fixture_cases": 15,
+    "ownership_access": [
+      "input containers detached",
+      "export/points() detached",
+      "ordinary/Float64Array Into outputs",
+      "frozen/short/wrong outputs rejected",
+      "index precedence: INVALID_INDEX before INDEX_OUT_OF_RANGE"
+    ],
+    "native_only": [
+      "non-record/extra-key/nonpositive-radius/out-of-range-strength/negative-budget/bigint carriers"
+    ]
+  }
+}

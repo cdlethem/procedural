@@ -1,5 +1,20 @@
 # Third-party algorithm provenance
 
+## fdlibm 5.3
+
+`packages/javascript/src/internal/fdlibm-pow.js` is a direct JavaScript
+translation of netlib fdlibm 5.3 [`e_pow.c`](https://www.netlib.org/fdlibm/e_pow.c),
+revision 1.5 (2004-04-22), SHA-256
+`763b86baa63eb3518b43f7f3e44e5ed10992b62650f4a45c3a2ea6015e6d5122`.
+It retains that file's Sun permission notice in the source header.
+
+The existing JavaScript trigonometric helper (`src/fdlibm-trig.js`) and hypot helper
+(`src/internal/fdlibm-hypot.js`) under `packages/javascript/` retain their full netlib
+Sun notices. The power helper also translates the scaling routine from
+[`s_scalbn.c`](https://www.netlib.org/fdlibm/s_scalbn.c), whose 1993 Sun notice is
+preserved beside that routine. These sources remain under their original permissive
+terms; the project MIT license does not replace their notices.
+
 The `lowbias32` integer mixer used by the gradient-noise design and private experiment
 comes from [Hash Function Prospector](https://github.com/skeeto/hash-prospector), published
 under the [Unlicense](https://github.com/skeeto/hash-prospector/blob/master/UNLICENSE).

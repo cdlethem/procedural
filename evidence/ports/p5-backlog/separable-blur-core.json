@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "operation": "raster.separable-blur-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module fixture/carrier/ownership checks. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/separable-blur-2d.json": "f17c33f68218f36bdbecf131377bc868d409b0c1db9844cad39e6f6f1c59743f",
+    "fixtures/operations/separable-blur-2d.json": "5cb3a31df923cf32af558baa92f9e0486124e4929579bfc4732c7338b9323532",
+    "packages/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    "tests/native/separable-blur-javascript.mjs": "bf3eead1ed4ee3d9d5cb74887ef7552411dac35f34eaff16926fb58f14a36722"
+  },
+  "input_sha256_after": {
+    "catalog/operations/separable-blur-2d.json": "f17c33f68218f36bdbecf131377bc868d409b0c1db9844cad39e6f6f1c59743f",
+    "fixtures/operations/separable-blur-2d.json": "5cb3a31df923cf32af558baa92f9e0486124e4929579bfc4732c7338b9323532",
+    "packages/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    "tests/native/separable-blur-javascript.mjs": "bf3eead1ed4ee3d9d5cb74887ef7552411dac35f34eaff16926fb58f14a36722"
+  },
+  "scenarios": {
+    "fixture_cases": 20,
+    "ownership_access": [
+      "input containers detached",
+      "pixels()/toValues() detached",
+      "index precedence: INVALID_INDEX before INDEX_OUT_OF_RANGE"
+    ],
+    "native_only": [
+      "non-record/extra-key/even-kernel/all-zero-kernel/negative-weight/oversized-pixel carriers"
+    ]
+  }
+}

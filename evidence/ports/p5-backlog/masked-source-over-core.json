@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "operation": "raster.masked-source-over-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module fixture/carrier/ownership checks. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/masked-source-over.json": "c8e2077cd3a238ec5c7a1242892d0d3215e103761fbb0d5031daef08c42d16c2",
+    "fixtures/operations/masked-source-over.json": "5d51fb824d7c5a6097884b3545b19f747f5011ba2eaf3b045f3d9203647f2e2c",
+    "packages/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    "tests/native/masked-source-over-javascript.mjs": "66ba0cd8325d3e3c8f9d2ebd2b651bf751d930d5c4db2c7727e595e003fa1e93"
+  },
+  "input_sha256_after": {
+    "catalog/operations/masked-source-over.json": "c8e2077cd3a238ec5c7a1242892d0d3215e103761fbb0d5031daef08c42d16c2",
+    "fixtures/operations/masked-source-over.json": "5d51fb824d7c5a6097884b3545b19f747f5011ba2eaf3b045f3d9203647f2e2c",
+    "packages/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    "tests/native/masked-source-over-javascript.mjs": "66ba0cd8325d3e3c8f9d2ebd2b651bf751d930d5c4db2c7727e595e003fa1e93"
+  },
+  "scenarios": {
+    "fixture_cases": 11,
+    "ownership_access": [
+      "input containers detached",
+      "pixels()/toValues() detached",
+      "index precedence: INVALID_INDEX before INDEX_OUT_OF_RANGE"
+    ],
+    "native_only": [
+      "non-record/extra-key/mismatched-dims/wrong-mask-count/out-of-range-mask/oversized-pixel/degenerate-dims",
+      "zero-mask and transparent-source identity branches preserve destination",
+      "negative-zero mask equals zero"
+    ]
+  }
+}

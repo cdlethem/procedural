@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "operation": "layout.binary-cell-partition-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module fixture/carrier/ownership checks. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/binary-cell-partition-2d.json": "62f7b5c8c0dc020a639d821c9e2114e1792cb3da29623035491255294c89e345",
+    "fixtures/operations/binary-cell-partition-2d.json": "32f304c82ad12264191eec5574c03e3e761749e729ea0f2534bdcef3f9b49340",
+    "packages/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    "tests/native/binary-cell-partition-javascript.mjs": "977d444709030c948193410eb1ce0c99abda35ed4cc26275aa32c6a42a21f294"
+  },
+  "input_sha256_after": {
+    "catalog/operations/binary-cell-partition-2d.json": "62f7b5c8c0dc020a639d821c9e2114e1792cb3da29623035491255294c89e345",
+    "fixtures/operations/binary-cell-partition-2d.json": "32f304c82ad12264191eec5574c03e3e761749e729ea0f2534bdcef3f9b49340",
+    "packages/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    "tests/native/binary-cell-partition-javascript.mjs": "977d444709030c948193410eb1ce0c99abda35ed4cc26275aa32c6a42a21f294"
+  },
+  "scenarios": {
+    "fixture_cases": 21,
+    "ownership_access": [
+      "input record detached after construction",
+      "boundsAt/export detached",
+      "ordinary/Int32Array outputs",
+      "frozen/short/wrong-typed outputs rejected",
+      "index precedence: INVALID_INDEX before INDEX_OUT_OF_RANGE"
+    ],
+    "native_only": [
+      "nonfinite/fractional/boolean/bigint carriers",
+      "unknown axisPolicy",
+      "extra/missing keys",
+      "non-record input"
+    ]
+  }
+}

@@ -29,6 +29,96 @@ const OPERATIONS = [
   { module: "line-pool.js", operation: "seededLinePool2D", error: "LinePoolError", fixture: "seeded-line-pool-2d.json", check(result, value) { assert.deepEqual(result.toValues(), value.output, value.id); } },
 ];
 
+const ADDITIONAL_EXPORTS = [
+  [
+    "binary-cell-partition",
+    {
+      "binaryCellPartition2D": "binaryCellPartition2D",
+      "BinaryPartitionError": "PartitionError"
+    }
+  ],
+  [
+    "retained-rectangle-cuts",
+    {
+      "retainedRectangleCuts2D": "retainedRectangleCuts2D",
+      "RectangleCutError": "RectangleCutError",
+      "RetainedRectangleCuts2D": "RetainedRectangleCuts2D"
+    }
+  ],
+  [
+    "raster-crossfade",
+    {
+      "rasterCrossfade2D": "rasterCrossfade2D",
+      "RasterCrossfadeError": "RasterCrossfadeError"
+    }
+  ],
+  [
+    "masked-source-over",
+    {
+      "maskedSourceOver2D": "maskedSourceOver2D",
+      "MaskedCompositeError": "MaskedCompositeError"
+    }
+  ],
+  [
+    "gradient-noise-3d-01",
+    {
+      "gradientNoise3D01": "gradientNoise3D01",
+      "GradientNoise3D01Error": "GradientNoise3D01Error"
+    }
+  ],
+  [
+    "convex-polygon-placements",
+    {
+      "orderedConvexPolygonFilter2D": "orderedConvexPolygonFilter2D",
+      "ConvexPlacementError": "PlacementError"
+    }
+  ],
+  [
+    "segment-clip",
+    {
+      "clipSegmentsSimplePolygon2D": "clipSegmentsSimplePolygon2D",
+      "SegmentClipError": "SegmentClipError"
+    }
+  ],
+  [
+    "radial-pull",
+    {
+      "radialPull2D": "radialPull2D",
+      "PullError": "PullError"
+    }
+  ],
+  [
+    "disc-projection",
+    {
+      "sequentialDiscProjection2D": "sequentialDiscProjection2D",
+      "DiscProjectionError": "DiscProjectionError"
+    }
+  ],
+  [
+    "annular-mesh",
+    {
+      "annularSolid3D": "annularSolid3D",
+      "AnnularMeshError": "MeshError",
+      "AnnularFaceLimitError": "FaceLimitError",
+      "AnnularMeshArithmeticError": "MeshArithmeticError"
+    }
+  ],
+  [
+    "separable-blur",
+    {
+      "separableBlur2D": "separableBlur2D",
+      "SeparableBlurError": "SeparableBlurError"
+    }
+  ],
+  [
+    "nearest-segment-contact",
+    {
+      "nearestSegmentContact2D": "nearestSegmentContact2D",
+      "ContactError": "ContactError"
+    }
+  ]
+];
+
 function files(root) {
   return readdirSync(root, { withFileTypes: true }).flatMap((entry) => {
     const path = join(root, entry.name);
@@ -71,6 +161,14 @@ async function main() {
 
   const api = await import(pathToFileURL(index).href);
   const scenarios = [];
+  for (const [module, exports] of ADDITIONAL_EXPORTS) {
+    const direct = await import(pathToFileURL(join(installedSrc, module + '.js')).href);
+    for (const [publicName, moduleName] of Object.entries(exports)) {
+      assert.equal(typeof api[publicName], 'function', publicName + ' public export');
+      assert.equal(api[publicName], direct[moduleName], publicName + ' installed identity');
+    }
+    scenarios.push({module: module + '.js', exports: Object.keys(exports)});
+  }
   for (const entry of OPERATIONS) {
     const direct = await import(pathToFileURL(join(installedSrc, entry.module)).href);
     assert.equal(api[entry.operation], direct[entry.operation], entry.operation + " identity");

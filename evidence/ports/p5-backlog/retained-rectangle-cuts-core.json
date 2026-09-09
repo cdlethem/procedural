@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "operation": "layout.retained-rectangle-cuts-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module creation/command/carrier/ownership checks. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/retained-rectangle-cuts-2d.json": "e8797eb0b44201752042091b568090d1355a9f2338ae27164b1671a505829e4c",
+    "fixtures/operations/retained-rectangle-cuts-2d.json": "94a83902ba3294115a70690de97e4d4c65515c672379cddfef58ee762bf4b1ba",
+    "packages/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    "tests/native/retained-rectangle-cuts-javascript.mjs": "c7f2f8bb4ac26f040ff1eb03fb92c8fa0a117133b860ddf9b6499f5c9c12cf37"
+  },
+  "input_sha256_after": {
+    "catalog/operations/retained-rectangle-cuts-2d.json": "e8797eb0b44201752042091b568090d1355a9f2338ae27164b1671a505829e4c",
+    "fixtures/operations/retained-rectangle-cuts-2d.json": "94a83902ba3294115a70690de97e4d4c65515c672379cddfef58ee762bf4b1ba",
+    "packages/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    "tests/native/retained-rectangle-cuts-javascript.mjs": "c7f2f8bb4ac26f040ff1eb03fb92c8fa0a117133b860ddf9b6499f5c9c12cf37"
+  },
+  "scenarios": {
+    "creation_cases": 5,
+    "command_cases": 9,
+    "ownership_access": [
+      "input record detached after construction",
+      "leaf values immutable",
+      "leaves()/toValues() detached",
+      "stale id precedence: UNKNOWN_ID after removal",
+      "id domain: INVALID_ID before UNKNOWN_ID"
+    ],
+    "native_only": [
+      "non-record/wrong-length/bigint/nonfinite/degenerate creation inputs",
+      "unknown axis/nonfinite/boundary cut coordinate"
+    ]
+  }
+}

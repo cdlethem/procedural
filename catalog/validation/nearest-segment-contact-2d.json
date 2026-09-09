@@ -82,7 +82,57 @@
     },
     "p5js": {
       "core": {
-        "status": "unvalidated"
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+          "tests/native/binary-cell-partition-javascript.mjs": "977d444709030c948193410eb1ce0c99abda35ed4cc26275aa32c6a42a21f294",
+          "packages/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+          "tests/native/retained-rectangle-cuts-javascript.mjs": "c7f2f8bb4ac26f040ff1eb03fb92c8fa0a117133b860ddf9b6499f5c9c12cf37",
+          "packages/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+          "tests/native/raster-crossfade-javascript.mjs": "4d302b8f768e38198c211a1a0110f06536e7603e528fbffab32a498a650f84be",
+          "packages/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+          "tests/native/masked-source-over-javascript.mjs": "66ba0cd8325d3e3c8f9d2ebd2b651bf751d930d5c4db2c7727e595e003fa1e93",
+          "packages/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+          "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+          "tests/native/gradient-noise-3d-01-javascript.mjs": "d2333aaa3402e34ae6a70d55979a6d2ea4a5383b45e041ff1942c26f5433b723",
+          "packages/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+          "tests/native/convex-polygon-placements-javascript.mjs": "fb7aa9b88ee8ac0b27b83be86b0a8d424b6d1a8be054d22f259f8472ea081e2e",
+          "packages/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+          "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+          "tests/native/segment-clip-javascript.mjs": "cbc070389d9398b61a50752f924dc135581d67dfbc7efbfe4bb9437e586bbe37",
+          "packages/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+          "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+          "tests/native/radial-pull-javascript.mjs": "d8f254c06c3245202d76dad27d0faddee18f6d4f33aa060ecb32c4431f49d066",
+          "packages/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+          "tests/native/disc-projection-javascript.mjs": "da67d7468ebb521b660f782569a6d3edae516767d7638fca2ffa3ac9b59e0e05",
+          "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+          "tests/native/annular-mesh-javascript.mjs": "5888588beb7bc1da09260b5be1b2bd656299e645ee14a1e4c2c69fddd79f64d0",
+          "packages/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+          "tests/native/separable-blur-javascript.mjs": "bf3eead1ed4ee3d9d5cb74887ef7552411dac35f34eaff16926fb58f14a36722",
+          "packages/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
+          "tests/native/nearest-segment-contact-javascript.mjs": "0d16e62a4e8d9c2317902ce9def4c552ec2589dff862fe36f5bf7b25c57ceef0",
+          "tests/native/fdlibm-pow-javascript.mjs": "f83a064a8c3c476f4f5afd86ccb121154871a345d94576fcc39b9877c9ea2583",
+          "tests/native/FdlibmPowOracle.java": "e74cefab356fa2e34ab16f2b8275f49841f3e9931f49e89685306c84c86a8207",
+          "THIRD_PARTY_NOTICES.md": "113e37c45dda83ac837ac5f9128c70a9fcd3986ab93895411172fd0f5918c0d9"
+        },
+        "evidence_sha256": {
+          "evidence/ports/p5-backlog/nearest-segment-contact-core.json": "3a68055fb70f4bfa891e3ac4fd4c28da0cb03394ca9c8d38030b9bac6053cdab"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/ports/p5-backlog/nearest-segment-contact-core.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/ports/p5-backlog/core-root-review.json",
+          "sha256": "4e049692e137096cca22bd67cc8e216d941871eb3b2e6bb67677dac3cf01814c"
+        },
+        "runtime_profile": {
+          "name": "Node 22.22.1",
+          "scope": "Shared operation fixtures and ownership/error semantics; no native or technique claim from this dimension."
+        }
       },
       "native": {
         "status": "unvalidated"

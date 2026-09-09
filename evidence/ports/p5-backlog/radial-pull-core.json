@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "operation": "geometry.radial-pull-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module fixture/carrier/ownership checks against a bit-exact fdlibm pow/hypot port. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/radial-pull-2d.json": "63e089d2ab61b4a4e8cb1f48684cb69e7268574ebebd15d34e405b9595366788",
+    "fixtures/operations/radial-pull-2d.json": "370d82a3b5fae503a3058edb24f7405799377d5b4863a52888771e2c2582ae0f",
+    "packages/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    "tests/native/radial-pull-javascript.mjs": "d8f254c06c3245202d76dad27d0faddee18f6d4f33aa060ecb32c4431f49d066"
+  },
+  "input_sha256_after": {
+    "catalog/operations/radial-pull-2d.json": "63e089d2ab61b4a4e8cb1f48684cb69e7268574ebebd15d34e405b9595366788",
+    "fixtures/operations/radial-pull-2d.json": "370d82a3b5fae503a3058edb24f7405799377d5b4863a52888771e2c2582ae0f",
+    "packages/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    "tests/native/radial-pull-javascript.mjs": "d8f254c06c3245202d76dad27d0faddee18f6d4f33aa060ecb32c4431f49d066"
+  },
+  "scenarios": {
+    "creation_cases": 22,
+    "query_cases": 6,
+    "ownership_access": [
+      "input containers detached after construction",
+      "query array not retained",
+      "transformInto matches transform"
+    ],
+    "native_only": [
+      "non-record/bigint-coordinate carriers",
+      "wrong-shape query tuples"
+    ]
+  }
+}

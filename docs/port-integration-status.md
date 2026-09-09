@@ -1,43 +1,71 @@
-# JavaScript branch integration
+# JavaScript port integration
 
-The JavaScript portion of `origin/porting/backlog` at
-`47ec5b2b73d7ac4466e7192e0695c64ee5664158` was reviewed and integrated into main through
-`3f56c0c3f88de0700a7b7e6682a34b9b48e356e0`. The author's branch/checkout was preserved.
-The batch adds eight cores and five workflows; it is not the total JavaScript inventory.
+The p5.js batch from `origin/porting/backlog` at `2f9418e3` is reviewed against main
+`aed135cc`. It adds **12 cores and 12 editable browser workflows**. Current shared support
+is **30 conformant JavaScript cores, 29 operations with scoped native coverage, and four
+with technique coverage**. These dimensions are separate, not additive.
 
-| Accepted core | Browser workflow in this batch | Root review |
-|---|---|---|
-| Stop ramp | RampMarks | [Review](../evidence/ports/stop-ramp-p5/root-review.json) |
-| Bilinear raster remap | WarpMarks | [Review](../evidence/ports/raster-remap-p5/root-review.json) |
-| Target springs | Core only | [Review](../evidence/ports/target-springs-p5/root-review.json) |
-| Occupied lattice paths | Core only | [Review](../evidence/ports/occupied-lattice-p5/root-review.json) |
-| Delaunay triangulation | Core only | [Review](../evidence/ports/delaunay-p5/root-review.json) |
-| Closed spline | LoopMarks | [Review](../evidence/ports/closed-spline-p5/root-review.json) |
-| Noise-band paths | BandMarks | [Review](../evidence/ports/noise-band-path-p5/root-review.json) |
-| Seeded line pool | CutBranchMarks | [Review](../evidence/ports/line-pool-p5/root-review.json) |
+| Added core | Browser use reviewed here |
+| --- | --- |
+| Binary cell partition | PanelMarks |
+| Retained rectangle cuts | CutMarks, including selection, cuts and removal |
+| Raster crossfade | BlurMarks blend between sharp and filtered images |
+| Masked source-over | BlurMarks places filtered artwork over a background |
+| 3D gradient noise | DepthMarks field and colored mesh |
+| Convex polygon placement | PolygonMarks |
+| Polygon segment clipping | PathClipMarks |
+| Radial pull | PullMarks |
+| Sequential disc projection | ProjectionMarks |
+| Annular solid | AnnularMarks, including three-instance arrangement |
+| Separable blur | BlurMarks |
+| Nearest segment contact | Core only; ContactMarks browser workflow remains pending |
 
-The reviewed browser workflows cover actual edits, reset and save. Core-only rows do not
-claim native animation or rendering. No new technique-level source recreation is implied.
+LatticeMarks, FacetMarks and animated SpringMarks add native workflow coverage to cores
+reviewed in the previous batch. The earlier eight-core/five-workflow integration remains
+accepted; its records are linked from [the previous package review](../evidence/ports/javascript-package/root-review.json).
 
-## Integration corrections
+## Review and corrections
 
-Root corrected large-hull argument overflow in Delaunay and indexed getter validation in
-line-pool. The OpenJDK-derived spline hypot block was replaced by a notice-preserved netlib
-translation, checked against a fresh Java runtime oracle. The shared trigonometric helper
-also preserves its full netlib notice and has fresh exact-runtime comparisons. Details and
-hashes remain in the operation reviews; Python's branch translation was not accepted.
+- Preserved main’s previous spline, Delaunay, input-validation and numerical-notice fixes
+  when resolving the older branch versions.
+- Replaced the power helper’s OpenJDK-derived control flow with a direct netlib C
+  translation and preserved the complete applicable notices. A reproducible Java17 oracle
+  covers 741 boundary, moderate and seeded cases.
+- Fixed SpringMarks’ Space shortcut so a focused button cannot also generate a second toggle.
+- Checked all twelve workflows in real Chromium under the shared render lease: edits,
+  button interaction, reset or reload identity, and saving without redraw. Canvas2D uses
+  a fixed CPU raster backend; WebGL uses SwiftShader. Root inspected native images.
+- Added the twelve operations to the public package exports and verified an offline-installed
+  local tarball. Error names that would collide are exported as `BinaryPartitionError`,
+  `ConvexPlacementError`, `AnnularMeshError`, `AnnularFaceLimitError` and
+  `AnnularMeshArithmeticError`.
 
-## Package use
+See the [core review](../evidence/ports/p5-backlog/core-root-review.json),
+[native review](../evidence/ports/p5-backlog/native-root-review.json) and
+[integration review](../evidence/ports/p5-backlog/integration-root-review.json).
+These are scoped runtime checks, not Java pixel identity or new source-sketch reproductions.
 
-All eight operations and their error classes are exported from `@procedurals/javascript`.
-The [package review](../evidence/ports/javascript-package/root-review.json) verifies offline
-local tarball installation, installed source inventory, export identities and representative
-fixtures. The additive export successor preserves historical acceptance records.
+## Install or run
+
+Build a local package with:
 
 ```sh
-node tools/build_ported_javascript_package.mjs .work/dist/<fresh-directory>
+node tools/build_ported_javascript_package.mjs .work/dist/my-p5-package
 ```
 
-The package remains private and unpublished. Native acceptance covers source-checkout
-examples; the tarball check covers installed code and import behavior. Remaining target
-work and separate radial-profile acceptance obligations are in [the port handoff](porting-resume.md).
+Use a fresh output directory. The package is private and has not been published to npm.
+For an editable browser example, run `node tools/serve_annular_marks.mjs` (or the matching
+`serve_*_marks.mjs` script) and open the printed local URL. These servers install pinned
+p5.js automatically if needed.
+
+## Work retained for later
+
+The three Python core modules added in this batch are present as pending source and tests;
+they are not newly exported or accepted for py5. Older Python/py5 and Android backlog
+files remain at `2f9418e3` on the port branch and were deliberately excluded from this
+p5 integration. The merge ancestry does not mean those files were accepted: bring their
+patches forward explicitly for later review.
+
+The Java candidate comments in LayerMarks, MaskMarks, ClipMarks and ContactMarks are stale.
+Their current Java acceptance is recorded in `catalog/validation/`; these standalone p5
+workflows remain legitimate porting tasks. See [the handoff](porting-resume.md).

@@ -2,6 +2,234 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "p5-backlog-annular",
+      "title": "annular \u2014 reviewed p5 workflow",
+      "category": "Root reviewed browser workflow",
+      "description": "Scoped p5 edits, reset/reload and save review; no cross-renderer pixel identity claim.",
+      "evidence": "evidence/ports/p5-backlog/native-root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/annular/baseline.png",
+          "sha256": "4cc07ae5241c1bcde56642a715f7067e78a5e6c431431cd17cce9f9be9768def"
+        },
+        {
+          "label": "edit-4-m",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/annular/edit-4-m.png",
+          "sha256": "7e0b416c48c932b6ba4fb641e48408bc65d4bdca1c9cbb6e78a9a85a94408756"
+        }
+      ]
+    },
+    {
+      "id": "p5-backlog-blur",
+      "title": "blur \u2014 reviewed p5 workflow",
+      "category": "Root reviewed browser workflow",
+      "description": "Scoped p5 edits, reset/reload and save review; no cross-renderer pixel identity claim.",
+      "evidence": "evidence/ports/p5-backlog/native-root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/blur/baseline.png",
+          "sha256": "652897be73fc622ec9bc0f029723f9fd9dfd6b73ca200befa1b6e7df09b82c74"
+        },
+        {
+          "label": "edit-3-b",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/blur/edit-3-b.png",
+          "sha256": "cd83175c0e3469c8250f36a29c78e7c1d1b14488f68acafe5f00b9ba2334f39d"
+        }
+      ]
+    },
+    {
+      "id": "p5-backlog-cut",
+      "title": "cut \u2014 reviewed p5 workflow",
+      "category": "Root reviewed browser workflow",
+      "description": "Scoped p5 edits, reset/reload and save review; no cross-renderer pixel identity claim.",
+      "evidence": "evidence/ports/p5-backlog/native-root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/cut/baseline.png",
+          "sha256": "78f136f05a079ca2d9dca963c7c7c05a16f9ded9ec58e77ffe6480ec8ac36f88"
+        },
+        {
+          "label": "edit-5-h",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/cut/edit-5-h.png",
+          "sha256": "76eea5a33f234b7e09f8d930f6e83b0f7f22bb53b9ccdce88981e76dbf5edcaa"
+        }
+      ]
+    },
+    {
+      "id": "p5-backlog-depth",
+      "title": "depth \u2014 reviewed p5 workflow",
+      "category": "Root reviewed browser workflow",
+      "description": "Scoped p5 edits, reset/reload and save review; no cross-renderer pixel identity claim.",
+      "evidence": "evidence/ports/p5-backlog/native-root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/depth/baseline.png",
+          "sha256": "ddf9b0785c0bab89645803d20a55ac9ef6c5bd5ef53744a04cebcc0c47f3ed66"
+        },
+        {
+          "label": "edit-2-m",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/depth/edit-2-m.png",
+          "sha256": "b0440cd72f5d68654f33e4f3dbc11b40be3c323d890c10e41e228e5f76a933d9"
+        }
+      ]
+    },
+    {
+      "id": "p5-backlog-facet",
+      "title": "facet \u2014 reviewed p5 workflow",
+      "category": "Root reviewed browser workflow",
+      "description": "Scoped p5 edits, reset/reload and save review; no cross-renderer pixel identity claim.",
+      "evidence": "evidence/ports/p5-backlog/native-root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/facet/baseline.png",
+          "sha256": "ee821f49081dae582678ce4f328056f1be2e3e2db34c10c2059cc4042c97174c"
+        },
+        {
+          "label": "edit-6-r",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/facet/edit-6-r.png",
+          "sha256": "1fd25f4ee3923620d8fbee08fb02f1bfb34126fff8f820228210e08521a2d7fa"
+        }
+      ]
+    },
+    {
+      "id": "p5-backlog-lattice",
+      "title": "lattice \u2014 reviewed p5 workflow",
+      "category": "Root reviewed browser workflow",
+      "description": "Scoped p5 edits, reset/reload and save review; no cross-renderer pixel identity claim.",
+      "evidence": "evidence/ports/p5-backlog/native-root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/lattice/baseline.png",
+          "sha256": "2b74a824f02ce4d361b89a904887cc88608d09324cdf604082b61c82a28cfaf0"
+        },
+        {
+          "label": "edit-5-r",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/lattice/edit-5-r.png",
+          "sha256": "a8f32dfd88cece93ecf24e47026fa3ca68399da891280f592fe231d3e0ab4277"
+        }
+      ]
+    },
+    {
+      "id": "p5-backlog-panel",
+      "title": "panel \u2014 reviewed p5 workflow",
+      "category": "Root reviewed browser workflow",
+      "description": "Scoped p5 edits, reset/reload and save review; no cross-renderer pixel identity claim.",
+      "evidence": "evidence/ports/p5-backlog/native-root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/panel/baseline.png",
+          "sha256": "2d8bf894226b46df83d3b0ac4aeae677d11caeaad5c94fec03c432061d222faf"
+        },
+        {
+          "label": "edit-4-m",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/panel/edit-4-m.png",
+          "sha256": "b98cf0efff37d91adea44e44081a379c1aec6da990566edc7b1c55b5d37561d1"
+        }
+      ]
+    },
+    {
+      "id": "p5-backlog-path-clip",
+      "title": "path-clip \u2014 reviewed p5 workflow",
+      "category": "Root reviewed browser workflow",
+      "description": "Scoped p5 edits, reset/reload and save review; no cross-renderer pixel identity claim.",
+      "evidence": "evidence/ports/p5-backlog/native-root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/path-clip/baseline.png",
+          "sha256": "31bb7211cfe3ea6bcbf761f80a4b6c0a4361fd23b843319076c99ad61e5acc5d"
+        },
+        {
+          "label": "edit-2-o",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/path-clip/edit-2-o.png",
+          "sha256": "424295b5745ec00a73770e0eb17318452d5c6b3b38583aaab3a59ee8ad915101"
+        }
+      ]
+    },
+    {
+      "id": "p5-backlog-polygon",
+      "title": "polygon \u2014 reviewed p5 workflow",
+      "category": "Root reviewed browser workflow",
+      "description": "Scoped p5 edits, reset/reload and save review; no cross-renderer pixel identity claim.",
+      "evidence": "evidence/ports/p5-backlog/native-root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/polygon/baseline.png",
+          "sha256": "fbe200f217cccf44fa44e3f7ac960332b03f20cbe451e1571f658fb80baa0084"
+        },
+        {
+          "label": "edit-3-r",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/polygon/edit-3-r.png",
+          "sha256": "04215d9b8b4c21da8ce834bed1e1239fe1e2165dd395f6706863f0067ed426ac"
+        }
+      ]
+    },
+    {
+      "id": "p5-backlog-projection",
+      "title": "projection \u2014 reviewed p5 workflow",
+      "category": "Root reviewed browser workflow",
+      "description": "Scoped p5 edits, reset/reload and save review; no cross-renderer pixel identity claim.",
+      "evidence": "evidence/ports/p5-backlog/native-root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/projection/baseline.png",
+          "sha256": "12a5f3eab1d58b11b518a051033e8beaa21d26cc1ccfe39c62de15e40e84b960"
+        },
+        {
+          "label": "edit-2-c",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/projection/edit-2-c.png",
+          "sha256": "473c40ab1d530a011156b4c8eb8f4c357c59025d9c78bc4a3f4a42c7e01574bd"
+        }
+      ]
+    },
+    {
+      "id": "p5-backlog-pull",
+      "title": "pull \u2014 reviewed p5 workflow",
+      "category": "Root reviewed browser workflow",
+      "description": "Scoped p5 edits, reset/reload and save review; no cross-renderer pixel identity claim.",
+      "evidence": "evidence/ports/p5-backlog/native-root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/pull/baseline.png",
+          "sha256": "4050e2d1c02d9bbf1bef0ec4317d0231d01bf4b9899bef5c55e08a906990cc7c"
+        },
+        {
+          "label": "edit-3-m",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/pull/edit-3-m.png",
+          "sha256": "7e8c5fbaf27b4a724a4502c876ccc457091325076a61ced175f14fae80f9911c"
+        }
+      ]
+    },
+    {
+      "id": "p5-backlog-spring",
+      "title": "spring \u2014 reviewed p5 workflow",
+      "category": "Root reviewed browser workflow",
+      "description": "Scoped p5 edits, reset/reload and save review; no cross-renderer pixel identity claim.",
+      "evidence": "evidence/ports/p5-backlog/native-root-review.json",
+      "images": [
+        {
+          "label": "baseline",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/spring/baseline.png",
+          "sha256": "772eeadd60a30ef749b71b8e1a2f544d5d6f08ff7fe5e996ef2cfac1180cfdbd"
+        },
+        {
+          "label": "edit-8-c",
+          "path": ".work/p5-batch-review/.work/p5-batch-native-final/spring/edit-8-c.png",
+          "sha256": "c24ec22787f0ed2367c7aa6d1b072662e654d55eff6efba225f48fedd62054e2"
+        }
+      ]
+    },
+    {
       "id": "port-cut-branch-p5",
       "title": "cut-branch-marks \u2014 reviewed p5 port",
       "category": "Root reviewed browser workflow",

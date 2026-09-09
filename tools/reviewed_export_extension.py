@@ -145,11 +145,44 @@ JS_PORT_MODULES = ('packages/javascript/src/stop-ramp.js', 'packages/javascript/
 JS_PORT_REVIEWS = ('evidence/ports/stop-ramp-p5/root-review.json', 'evidence/ports/raster-remap-p5/root-review.json', 'evidence/ports/target-springs-p5/root-review.json', 'evidence/ports/occupied-lattice-p5/root-review.json', 'evidence/ports/delaunay-p5/root-review.json', 'evidence/ports/closed-spline-p5/root-review.json', 'evidence/ports/noise-band-path-p5/root-review.json', 'evidence/ports/line-pool-p5/root-review.json')
 
 
+
+P5_BATCH = 'evidence/conformance/p5-batch-export-compatibility-review.json'
+P5_BATCH_ADDITIONS = 'export { binaryCellPartition2D, PartitionError as BinaryPartitionError } from "./binary-cell-partition.js";\nexport { retainedRectangleCuts2D, RectangleCutError, RetainedRectangleCuts2D } from "./retained-rectangle-cuts.js";\nexport { rasterCrossfade2D, RasterCrossfadeError } from "./raster-crossfade.js";\nexport { maskedSourceOver2D, MaskedCompositeError } from "./masked-source-over.js";\nexport { gradientNoise3D01, GradientNoise3D01Error } from "./gradient-noise-3d-01.js";\nexport { orderedConvexPolygonFilter2D, PlacementError as ConvexPlacementError } from "./convex-polygon-placements.js";\nexport { clipSegmentsSimplePolygon2D, SegmentClipError } from "./segment-clip.js";\nexport { radialPull2D, PullError } from "./radial-pull.js";\nexport { sequentialDiscProjection2D, DiscProjectionError } from "./disc-projection.js";\nexport { annularSolid3D, MeshError as AnnularMeshError, FaceLimitError as AnnularFaceLimitError, MeshArithmeticError as AnnularMeshArithmeticError } from "./annular-mesh.js";\nexport { separableBlur2D, SeparableBlurError } from "./separable-blur.js";\nexport { nearestSegmentContact2D, ContactError } from "./nearest-segment-contact.js";\n'
+P5_BATCH_MODULES = ('packages/javascript/src/binary-cell-partition.js', 'packages/javascript/src/retained-rectangle-cuts.js', 'packages/javascript/src/raster-crossfade.js', 'packages/javascript/src/masked-source-over.js', 'packages/javascript/src/gradient-noise-3d-01.js', 'packages/javascript/src/convex-polygon-placements.js', 'packages/javascript/src/segment-clip.js', 'packages/javascript/src/radial-pull.js', 'packages/javascript/src/disc-projection.js', 'packages/javascript/src/annular-mesh.js', 'packages/javascript/src/separable-blur.js', 'packages/javascript/src/nearest-segment-contact.js')
+
+
+def _validate_p5_batch(root, snapshots):
+    review = json.loads(_read(root, P5_BATCH))
+    test = 'tests/test_reviewed_export_extension.py'
+    required = {HELPER, JS_INDEX, test, *P5_BATCH_MODULES}
+    if (not _accepted(review) or not _bindings(root, review, {})
+            or not required.issubset(review['implementation_sha256'])
+            or JS_PORTS not in review['evidence_sha256']
+            or review['previous_review_sha256'] != _digest(_read(root, JS_PORTS))):
+        return False
+    prior = review['previous_bytes']
+    if set(prior) != {HELPER, JS_INDEX, test} or set(review['extensions']) != {JS_INDEX}:
+        return False
+    if _digest(prior[HELPER].encode()) != 'ba6f0089cbe43fe12cfec1567238ba7c99926a5dc0e27684ddc7e56abcd10500':
+        return False
+    older = json.loads(_read(root, JS_PORTS))
+    if _digest(prior[test].encode()) != older['implementation_sha256'][test]:
+        return False
+    entry = review['extensions'][JS_INDEX]
+    if (set(entry) != {'before', 'after'} or entry['before'] != prior[JS_INDEX]
+            or prior[JS_INDEX] != older['extensions'][JS_INDEX]['after']
+            or entry['after'] != prior[JS_INDEX] + P5_BATCH_ADDITIONS
+            or entry['after'].encode() != _read(root, JS_INDEX)):
+        return False
+    snapshots.update({name: value.encode() for name, value in prior.items()})
+    return True
+
+
 def _validate_js_ports(root, snapshots):
     review = json.loads(_read(root, JS_PORTS))
     required = {HELPER, JS_INDEX, *JS_PORT_MODULES}
     evidence = {PROFILE, *JS_PORT_REVIEWS}
-    if (not _accepted(review) or not _bindings(root, review, {})
+    if (not _accepted(review) or not _bindings(root, review, snapshots)
             or not required.issubset(review['implementation_sha256'])
             or not evidence.issubset(review['evidence_sha256'])
             or review['previous_review_sha256'] != _digest(_read(root, PROFILE))):
@@ -165,7 +198,7 @@ def _validate_js_ports(root, snapshots):
     entry = review['extensions'][JS_INDEX]
     if (set(entry) != {'before', 'after'} or entry['before'] != prior[JS_INDEX]
             or entry['after'] != prior[JS_INDEX] + JS_PORT_ADDITIONS
-            or entry['after'].encode() != _read(root, JS_INDEX)):
+            or entry['after'].encode() != snapshots.get(JS_INDEX, _read(root, JS_INDEX))):
         return False
     for name in JS_PORT_REVIEWS:
         accepted = json.loads(_read(root, name))
@@ -188,6 +221,11 @@ def historical_export_bytes(root, relative, expected):
     try:
         snapshots = {}
         successor_match = None
+        if (root / P5_BATCH).exists():
+            if not _validate_p5_batch(root, snapshots):
+                return None
+            if relative == JS_INDEX and _digest(snapshots[JS_INDEX]) == expected:
+                successor_match = snapshots[JS_INDEX]
         if (root / JS_PORTS).exists():
             if not _validate_js_ports(root, snapshots):
                 return None

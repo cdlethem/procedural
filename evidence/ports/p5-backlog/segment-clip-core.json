@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "operation": "geometry.clip-segments-simple-polygon-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module fixture/carrier/ownership checks. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/clip-segments-simple-polygon-2d.json": "c10f0619f16d5aca4bce2f7ab6a02f2693f7d59e2177b39521410959b27a4292",
+    "fixtures/operations/clip-segments-simple-polygon-2d.json": "66374afecbef9a8c7f228bcd45f8d58c45c26660378d6e61fb8ca49b8de8500c",
+    "packages/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "tests/native/segment-clip-javascript.mjs": "cbc070389d9398b61a50752f924dc135581d67dfbc7efbfe4bb9437e586bbe37"
+  },
+  "input_sha256_after": {
+    "catalog/operations/clip-segments-simple-polygon-2d.json": "c10f0619f16d5aca4bce2f7ab6a02f2693f7d59e2177b39521410959b27a4292",
+    "fixtures/operations/clip-segments-simple-polygon-2d.json": "66374afecbef9a8c7f228bcd45f8d58c45c26660378d6e61fb8ca49b8de8500c",
+    "packages/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "tests/native/segment-clip-javascript.mjs": "cbc070389d9398b61a50752f924dc135581d67dfbc7efbfe4bb9437e586bbe37"
+  },
+  "scenarios": {
+    "fixture_cases": 34,
+    "ownership_access": [
+      "input containers detached",
+      "export detached",
+      "ordinary/Float64Array Into outputs",
+      "frozen/short/wrong outputs rejected",
+      "index precedence: INVALID_INDEX before INDEX_OUT_OF_RANGE"
+    ],
+    "native_only": [
+      "non-record/extra-key/too-few-vertices/boolean-coordinate carriers"
+    ]
+  }
+}

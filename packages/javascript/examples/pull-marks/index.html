@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pull marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(512px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Pull marks</h1>
+  <p>Deform a straight scanline grid or three retained closed-spline contours through
+    two radial pull influences, sharing one transform across both draw modes.</p>
+  <div id="controls" aria-label="Pull marks controls">
+    <button data-action="r"><kbd>R</kbd> radius 120 / 180 (rebuilds)</button>
+    <button data-action="p"><kbd>P</kbd> power 2.0 / 0.5 (rebuilds)</button>
+    <button data-action="c"><kbd>C</kbd> base / alternate palette</button>
+    <button data-action="m"><kbd>M</kbd> grid / contours transfer</button>
+    <button data-action="0"><kbd>0</kbd> reset</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated radial pull deformation"></div>
+  <p id="status" role="status">Preparing field&hellip;</p>
+  <p>Edit the composition in <code>pull-marks.js</code>: the influence positions,
+    radius, and power rebuild both the grid and contour outputs from the same field;
+    the sketch's grid/contour draw modes are the place to invent another treatment
+    of the same transform. These values describe this piece. Center discontinuities
+    can fold or self-intersect sampled lines; there is no smooth/inverse guarantee.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>
