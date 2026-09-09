@@ -1,5 +1,16 @@
 # Project state
 
+## Installed bundle start page checked; documentation binding repaired
+
+Added packages/java/BUNDLE-README.md to source builder as installed README.md. Fresh
+.work/dist/java-start-here-root1 contains17 resolving start-page links; all core/adapter
+class bytes match accepted0.35. Extracted consumer compiles37examples,9source-bundle
+unit tests and catalog validation pass. Updated stale0.31 inventory expectations to0.35.
+Restored docs/placement-marks.md accepted bytes after the prior added link broke its
+acceptance binding; value guide stays linked from direct API and bundle start page.
+Root scoped review evidence/documentation/java-bundle-start-review.json; no new library
+release/native attestation. Next final capability/discovery review; preserve Android draft.
+
 ## Java value guide and current port handoff reconciled
 
 Root reviewed Terra's two bounded API findings against CyclicPalette and CirclePlacements2D.

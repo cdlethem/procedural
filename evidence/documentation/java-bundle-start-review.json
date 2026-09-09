@@ -1,0 +1,30 @@
+{
+  "status": "accepted",
+  "reviewer": "root",
+  "scope": "Bundle start-page integration and restoration of accepted PlacementMarks documentation bytes. No new library version, runtime semantics or native support attestation. Accepted library baseline remains d7f95a06 / Java0.35.0.",
+  "archive": {
+    "path": ".work/dist/java-start-here-root1/procedurals-java-source-dev.zip",
+    "sha256": "a750fbffe7b71551f6c962108cb6e78912dbea83fd6170f2dc08be98e6293d52",
+    "members": 454
+  },
+  "checks": {
+    "readme_local_links_resolved": 17,
+    "core_and_adapter_classes_identical_to": "evidence/distribution/contact-java-source.json",
+    "source_bundle_unit_tests": 9,
+    "extracted_examples_compiled": 37,
+    "catalog": "passed"
+  },
+  "input_sha256": {
+    "packages/java/BUNDLE-README.md": "b0253094d3efd7b4c5cd824edf27eee60b92f66f3d86b8dfb12fecd17e10422e",
+    "tools/build_java_source_bundle.py": "05ee4743b499c35bb92afba64c2fb8d454061d0b7585c420e127e54459f42601",
+    "tests/test_java_source_bundle.py": "871f4e254ef41b62ee862500153b4b4dfa5ffa9f7df96001dbe858590a429fd1",
+    "docs/placement-marks.md": "7c625d7739d61d125bfb595b3cf45d1c6be960797153e2a9aff6bec57029b8c7",
+    ".work/dist/java-start-here-root1/report.json": "49fb2316aaebf428fa67ebcb3280145fa01aa3765d925ca5149add1723609257",
+    ".work/java-start-here-consumer-root1/report.json": "9d2bc10234db049924bd76613a15ebd1186e603ee1fed62a1a08e5cfbbe10aab"
+  },
+  "limitations": [
+    "No new native render was needed: all core and adapter class bytes match the previously accepted distribution.",
+    "Linked repository-oriented guides can reference evidence and tools outside the installed bundle.",
+    "Source Javadoc omissions and overall completion review remain open."
+  ]
+}

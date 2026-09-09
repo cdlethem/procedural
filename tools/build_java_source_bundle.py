@@ -135,6 +135,7 @@ def build(root, output, jdk, font, notice, processing_core):
     require_hash(notice, manifest['font_license_sha256'])
     require_hash(processing_core, manifest['processing_core_sha256'])
     files = {'procedurals/' + name: root / name for name in ('LICENSE', 'THIRD_PARTY_NOTICES.md')}
+    files['procedurals/README.md'] = root / 'packages/java/BUNDLE-README.md'
     files.update({name: root / v['source'] for name, v in manifest['examples'].items()})
     for directory in ('docs', 'catalog/operations', 'catalog/validation'):
         suffix = '*.md' if directory == 'docs' else '*.json'

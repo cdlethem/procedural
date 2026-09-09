@@ -65,9 +65,6 @@ The algorithm uses a finite proposal budget and checks each candidate against pr
 accepted circles. It makes no promise of maximal packing, a requested accepted count or
 uniform running time. Adjust the budget deliberately and reuse the result for style edits.
 
-For factory validation, result ownership and indexed access errors, see
-[Read and reuse Java values](java-result-values.md).
-
 ## Evidence and scope
 
 The ordered exclusion mechanism is motivated by
