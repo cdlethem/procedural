@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement image marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(720px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Placement image marks</h1>
+  <p>One authored source panel, optionally cropped, is scaled into a fixed
+    frame under CONTAIN, COVER, or STRETCH fit, aligned within the frame,
+    and composited over a grid ground - either everywhere or through an
+    elliptical alpha mask.</p>
+  <div id="controls" aria-label="Placement image marks controls">
+    <button data-action="f"><kbd>F</kbd> fit</button>
+    <button data-action="c"><kbd>C</kbd> crop</button>
+    <button data-action="a"><kbd>A</kbd> align</button>
+    <button data-action="m"><kbd>M</kbd> mask</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated placement study"></div>
+  <p id="status" role="status">Preparing placement&hellip;</p>
+  <p>F cycles CONTAIN/COVER/STRETCH; C toggles between the full source panel
+    and a narrower crop; A cycles left/center/right (and top/middle/bottom)
+    alignment within the frame; M composites through an elliptical mask
+    instead of everywhere; S saves without redraw. Edit <code>sketch.js</code>:
+    <code>drawSource</code> is authored piece content (swap it for a loaded
+    image), and the frame/crop rectangles are set in
+    <code>placement-image-marks.js</code>.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>
