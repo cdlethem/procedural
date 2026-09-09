@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masked partition marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(720px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Masked partition marks</h1>
+  <p>Twenty-four gradient-field paths and an independent decorative image are
+    revealed through per-region elliptical alpha masks over a retained
+    four-quadrant partition, either as one region-independent global pass or
+    two per-region local passes (converging rings, or a cropped source
+    snippet).</p>
+  <div id="controls" aria-label="Masked partition marks controls">
+    <button data-action="m"><kbd>M</kbd> mode</button>
+    <button data-action="n"><kbd>N</kbd> alternate layout</button>
+    <button data-action="0"><kbd>0</kbd> reset</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated masked-partition study"></div>
+  <p id="status" role="status">Preparing partition&hellip;</p>
+  <p>M cycles the three modes; N swaps between an even four-quadrant split and
+    an uneven one (rebuilding the elliptical masks); 0 resets, rebuilding the
+    layout only when it actually changed; S saves the displayed raster
+    without redraw. Edit <code>sketch.js</code>: <code>drawSource</code> and
+    the path-tracing settings in <code>masked-partition-marks.js</code> are
+    authored piece content.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>
