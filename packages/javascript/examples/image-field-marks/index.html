@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image field marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(720px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Image field marks</h1>
+  <p>A fixed 45x30 regular grid samples one of two retained source images;
+    each grid point draws a dot whose size (or, in visibility mode, whether
+    it appears at all) is driven by the sampled brightness.</p>
+  <div id="controls" aria-label="Image field marks controls">
+    <button data-action="m"><kbd>M</kbd> visibility mode</button>
+    <button data-action="i"><kbd>I</kbd> source image</button>
+    <button data-action="c"><kbd>C</kbd> source colors</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated image-field study"></div>
+  <p id="status" role="status">Preparing field&hellip;</p>
+  <p>M switches between size-coded dots and a visibility mode where bright
+    points (0.65 or above) disappear entirely; I swaps the retained source
+    image; C colors each dot with its sampled color instead of a fixed dark
+    tone; S saves without redraw. Edit <code>sketch.js</code>:
+    <code>drawSourceA</code>/<code>drawSourceB</code> are authored piece
+    content (swap either for a loaded image), and the grid layout is set in
+    <code>image-field-marks.js</code>.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>
