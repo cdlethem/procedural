@@ -1,8 +1,8 @@
 # Build the Java library from source
 
-The accepted Java0.32.0 source bundle contains30 operations and34 editable workflows.
+The accepted Java0.32.1 source bundle contains30 operations and34 editable workflows.
 Its archive identity and extracted-consumer validation are recorded in the
-[CP29 distribution review](../evidence/distribution/cp29-java-review.json).
+[CP29 documentation distribution review](../evidence/distribution/cp29-docs-java-review.json).
 Building a changed checkout produces a development build until separately reviewed.
 
 Start with [the workflow chooser](choosing-java-workflow.md), then use
@@ -29,9 +29,19 @@ python3 tools/build_java_source_bundle.py \
 Use a fresh output directory each time. The source build requires no prior local
 release archive, staged Processing sketch or running native renderer. Processing core is
 a compile-time input for the separate desktop adapter; it is not bundled into the library. Read the generated report for
-input hashes, archive identity and acceptance scope. To install a reviewed bundle, extract
-its `procedurals` directory into your Processing sketchbook's `libraries` directory and
-restart Processing. Open File → Examples → Contributed Libraries → Procedurals →
+input hashes, archive identity and acceptance scope. The command above creates
+`.work/dist/my-java-source-build/procedurals-java-source-dev.zip`. You can install this
+development bundle for editing; building changed sources does not grant them new reviewed
+support claims. Use the sketchbook location shown in Processing Preferences:
+
+```sh
+mkdir -p /path/to/your/sketchbook/libraries
+unzip .work/dist/my-java-source-build/procedurals-java-source-dev.zip \
+  -d /path/to/your/sketchbook/libraries
+```
+
+If a `procedurals` library is already installed, move that directory aside first so old
+files do not mix with the new bundle. Restart Processing. Open File → Examples → Contributed Libraries → Procedurals →
 FieldMarks, then save a copy into your own sketch folder before editing. The archive
 contains both `library/procedurals.jar` and `library/procedurals-processing-adapter.jar`;
 keep both. Continue with [the field-marks edits](getting-started.md).

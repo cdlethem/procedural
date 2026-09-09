@@ -113,3 +113,6 @@ interpretation while preserving the samples. Maximum RGB ignores alpha and is no
 This gives two distinct uses for images: visible content you place/mask/filter, and data
 that guides another drawing. They can share the same source. Start with the
 [workflow chooser](choosing-java-workflow.md), then substitute one retained result at a time.
+
+For cache boundaries, reusable access buffers and work allowances, see
+[keeping Java compositions responsive](java-performance.md).

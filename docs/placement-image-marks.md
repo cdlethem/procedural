@@ -1,6 +1,6 @@
 # Place an image inside a composition
 
-Java native workflow and adapter review accepted; source-bundle packaging is pending.
+Included in the accepted Java0.32 bundle; see the [CP29 distribution review](../evidence/distribution/cp29-java-review.json).
 
 PlacementImageMarks separates selecting content from fitting it into a frame. The source
 is a generated two-color picture, but a completed density-one RGB/ARGB PImage can replace

@@ -1,6 +1,6 @@
 # Reuse a mask across different drawings
 
-Java workflow and native adapter review accepted; source-bundle packaging is pending.
+Included in the accepted Java0.32 bundle; see the [CP29 distribution review](../evidence/distribution/cp29-java-review.json).
 
 MaskMarks creates its content images and mask once. Press M to switch between stripes
 revealed by the mask, a picture revealed by the same mask, and a crossfade between the two.

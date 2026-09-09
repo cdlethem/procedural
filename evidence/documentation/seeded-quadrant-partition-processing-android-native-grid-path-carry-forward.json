@@ -1,0 +1,23 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Carry forward existing processing-android native support across reviewed grid/path Javadocs only. No new runtime execution, target, renderer or reproduction claimed.",
+  "implementation_sha256": {
+    "packages/java-android/examples/RegionMarks/RegionMarksActivity.java": "303b34e01eb8742cec5cc5a1c08277def0581a5d7e7a94aef11cf6c089f8d8d7",
+    "packages/java-android/examples/RegionMarks/RegionMarksRenderer.java": "dcf268dab5d097b4f53f2037ba7805239c46f24da2b86910bc2862476dff72d4",
+    "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "packages/java/src/main/java/org/procedurals/layout/RegularGrid.java": "304047650f4112e6b66bf8a5f503511b7dc1087648ff98f5f524d89730adabd7",
+    "tests/native/android-region-marks/RegionMarksProbeActivity.java": "fd13198b4c5b781d5cbc636d6444a781040d45adf2a5307aa5d4d02a533d4816",
+    "tools/build_android_region_marks.py": "7978f61b7b54daf52216e586f1dce72ebe97cbbf7863daf6a8d4a3b64bd334b1",
+    "tools/run_android_region_marks.py": "cafe8350b17c66d79b463e71e9a6242f2288828e80f5905bd329bc0a94bf1ad6",
+    "packages/java-android/src/main/java/org/procedurals/android/internal/AndroidSnapshotPresentation.java": "8310bb443aa7aba46c39d4bd553bd712c293b92134e0097cb4d0f4511e551f77"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/android-region-marks.json": "052c16a7cd11f4ff32abd974a47c20bab8c07b7e95de574057b9a0f293ffe0b1",
+    "evidence/conformance/android-region-restore-attempt1.json": "286e1990e98deefd770097cd1d7abafb04db72873831f88a4ea368f40df8bf00",
+    "evidence/conformance/android-snapshot-restoration-root-review.json": "a591fe51ed804a5a1b7d2cd3a8810bce1e38f7f61a5f99366a60a994ed3717c8",
+    "evidence/documentation/java-grid-path-comments-review.json": "1d8d3cca627516646be3aff61c6b6964776135b55bd8b4f31b70909d57f429c2"
+  }
+}

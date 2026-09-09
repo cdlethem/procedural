@@ -3,8 +3,10 @@ import hashlib
 import json
 if __package__:
     from .reviewed_export_extension import historical_export_bytes
+    from .reviewed_java_comments import matches_reviewed_java_comments
 else:
     from reviewed_export_extension import historical_export_bytes
+    from reviewed_java_comments import matches_reviewed_java_comments
 
 ADDITIVE_EXPORT_REVIEW='evidence/reproductions/cp2-export-extension-review.json'
 I1_REVIEW='evidence/distribution/i1-review.json'
@@ -165,7 +167,7 @@ def check_native(root,profile,name,target):
         for path,expected in review['evidence_sha256'].items():
             if digest(root/path)!=expected: return ['native evidence changed: '+path]
         for path,expected in review['implementation_sha256'].items():
-            if digest(root/path)!=expected: return ['native implementation changed: '+path]
+            if digest(root/path)!=expected and not matches_reviewed_java_comments(root,path,expected): return ['native implementation changed: '+path]
         for part in ('pixels','failures'):
             report=json.loads((root/f'evidence/conformance/java2d-adapter-{part}.json').read_text())
             if report['status']!='passed' or report['part']!=part or len(report['runs'])!=1:
@@ -202,7 +204,7 @@ def check_android_native(root,profile,target):
             return ['native claims require a supported reviewed evidence validator']
         review=json.loads((root/target['native_review']).read_text())
         replacements={}
-        if target['native_review']=='evidence/conformance/android-snapshot-restoration-root-review.json':
+        if target['native_review']=='evidence/documentation/android-grid-path-restoration-successor.json':
             if __package__:
                 from .android_restoration_review import validated_legacy_context
             else:
@@ -234,7 +236,8 @@ def check_android_native(root,profile,target):
         for relative,expected in review['evidence_sha256'].items():
             if digest(root/relative)!=expected:return ['native evidence changed: '+relative]
         for relative,expected in review['implementation_sha256'].items():
-            if digest(root/relative)!=expected and replacements.get(relative)!=digest(root/relative):return ['native implementation changed: '+relative]
+            if (digest(root/relative)!=expected and replacements.get(relative)!=digest(root/relative)
+                    and not matches_reviewed_java_comments(root,relative,expected)):return ['native implementation changed: '+relative]
         paths={
             'pixels':'evidence/conformance/android-adapter-pixels.json',
             'failures':'evidence/conformance/android-adapter-failures.json',

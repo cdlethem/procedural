@@ -15,10 +15,18 @@ import java.util.Map;
  * Behavior: catalog/operations/regular-grid.json, layout.regular-grid 0.1.0.
  */
 public strictfp final class RegularGrid {
+    /** Largest supported point count; this is a representation ceiling, not an artistic range. */
     public static final long MAX_SIZE = 9007199254740991L;
 
+    /** Validation or indexed-access failure with a stable catalog error code. */
     public static final class GridException extends IllegalArgumentException {
+        /** Stable code: {@code INVALID_INPUT}, {@code GRID_SIZE_OVERFLOW}, {@code COORDINATE_OVERFLOW}, {@code INVALID_INDEX}, {@code INDEX_OUT_OF_RANGE}, or {@code INVALID_OUTPUT}. */
         public final String code;
+        /**
+         * Creates a stable grid failure.
+         *
+         * @param code catalog error code
+         */
         public GridException(String code) { super(code); this.code = code; }
     }
 
@@ -31,6 +39,19 @@ public strictfp final class RegularGrid {
         this.columns = columns; this.rows = rows; this.size = size;
     }
 
+    /**
+     * Creates an immutable row-major point sequence from explicit caller-coordinate units.
+     * {@code origin} and {@code spacing} are two-number {@code [x,y]} lists; spacing must be
+     * positive. {@code columns} and {@code rows} count points, rather than cells, and may be
+     * zero. Input values are copied and zero is canonicalized; no artistic default or
+     * recommended range is supplied. Motivated by {@code circlesAlpha} and {@code paraisooscuro}
+     * as recorded in {@code catalog/operations/regular-grid.json}.
+     *
+     * @param input exactly {@code origin}, {@code spacing}, {@code columns}, and {@code rows}
+     * @return immutable detached grid descriptor without output-sized position storage
+     * @throws GridException {@code INVALID_INPUT}, {@code GRID_SIZE_OVERFLOW}, or
+     *         {@code COORDINATE_OVERFLOW} when validation fails in contract order
+     */
     public static RegularGrid create(Map<String, ?> input) {
         if (input == null || input.size() != 4 || !input.keySet().containsAll(
                 Arrays.asList("origin", "spacing", "columns", "rows"))) fail("INVALID_INPUT");
@@ -49,9 +70,19 @@ public strictfp final class RegularGrid {
         return new RegularGrid(ox, oy, dx, dy, columns, rows, size);
     }
 
+    /**
+     * Returns the number of points, equal to {@code columns * rows}; it is not a cell count.
+     *
+     * @return row-major point count
+     */
     public long size() { return size; }
 
-    /** Detached canonical parameters; reconstruct by passing this map to create(). */
+    /**
+     * Returns detached canonical construction values in catalog-key order. Mutating this map or
+     * either nested list cannot change the grid; pass it to {@link #create(Map)} to reconstruct.
+     *
+     * @return detached {@code origin}, {@code spacing}, {@code columns}, and {@code rows} map
+     */
     public Map<String, Object> toMap() {
         Map<String, Object> result = new LinkedHashMap<String, Object>();
         result.put("origin", new ArrayList<Double>(Arrays.asList(ox, oy)));
@@ -60,7 +91,14 @@ public strictfp final class RegularGrid {
         return result;
     }
 
-    /** A fresh binary64 coordinate pair. Use pointInto for allocation-free traversal. */
+    /**
+     * Returns a fresh binary64 {@code [x,y]} point at a row-major index. X changes fastest;
+     * coordinates use caller units and separately rounded multiply then add operations.
+     *
+     * @param index finite nonnegative safe-integer point index
+     * @return detached two-coordinate point
+     * @throws GridException {@code INVALID_INDEX} before {@code INDEX_OUT_OF_RANGE}
+     */
     public double[] pointAt(long index) {
         validateIndex(index);
         double[] point = new double[2];
@@ -68,16 +106,40 @@ public strictfp final class RegularGrid {
         return point;
     }
 
-    /** Dynamic interchange convenience; native long overload avoids boxing in loops. */
+    /**
+     * Java-interchange overload for {@link #pointAt(long)} accepting supported numeric carriers.
+     *
+     * @param index Byte, Short, Integer, Long, Float, or Double safe-integer point index
+     * @return detached two-coordinate point
+     * @throws GridException {@code INVALID_INDEX} before {@code INDEX_OUT_OF_RANGE}
+     */
     public double[] pointAt(Object index) { return pointAt(indexValue(index)); }
 
-    /** Writes two values only after index and output validation; inputs are never aliased. */
+    /**
+     * Writes exactly two binary64 coordinates after index, range, destination, and offset
+     * validation. It retains no destination storage and leaves all destination slots unchanged
+     * on failure.
+     *
+     * @param index finite nonnegative safe-integer point index
+     * @param out writable destination requiring two slots from {@code offset}
+     * @param offset nonnegative first destination slot
+     * @throws GridException {@code INVALID_INDEX}, then {@code INDEX_OUT_OF_RANGE}, then
+     *         {@code INVALID_OUTPUT}
+     */
     public void pointInto(long index, double[] out, int offset) {
         validateIndex(index);
         if (out == null || offset < 0 || offset > out.length - 2) fail("INVALID_OUTPUT");
         write(index, out, offset);
     }
 
+    /**
+     * Java-interchange overload for {@link #pointInto(long, double[], int)}.
+     *
+     * @param index Byte, Short, Integer, Long, Float, or Double safe-integer point index
+     * @param out writable destination requiring two slots from {@code offset}
+     * @param offset nonnegative first destination slot
+     * @throws GridException indexed and destination failures in the long-overload order
+     */
     public void pointInto(Object index, double[] out, int offset) {
         pointInto(indexValue(index), out, offset);
     }

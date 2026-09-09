@@ -1,0 +1,31 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Narrow historical Java-comment equivalence and explicit Android restoration review successor; no new native execution or runtime support.",
+  "implementation_sha256": {
+    "tools/reviewed_java_comments.py": "0d298af70d7b4b32802e3eeec5530c15c939e0131f2dc7e98606714569d436a1",
+    "tools/drawing_native_evidence.py": "83dce66cb34ba9833dcb38e242994882aa3330ab3d1a4d6b0193004d25955527",
+    "tools/android_restoration_review.py": "f00af87c86a53532a512472b2eeedc78495f5f6410ed500576c8e3b28f43a3cd",
+    "tests/test_reviewed_java_comments.py": "4d17b3eaedd9cc56dcf7bfd3fa1429fe3bb3689b9109c3c5755975df79c72607",
+    "tests/test_android_restoration_review.py": "ded553565ce5bc451801cfbebb8c17a2a622497b3bf4695eea30882abd638d68",
+    "tests/test_drawing_catalog.py": "492fe8028938fd74f8acf60d6a18cb83e10528fb41efba263d9f55735cd2e5a9"
+  },
+  "evidence_sha256": {
+    "evidence/documentation/java-grid-path-comments-review.json": "1d8d3cca627516646be3aff61c6b6964776135b55bd8b4f31b70909d57f429c2",
+    "evidence/documentation/java-grid-path-comment-snapshots.json": "6e7301bc49790e8dab42ee0282f46357fde0cee2bdffe4c1825ca983357cc854",
+    "evidence/documentation/android-grid-path-restoration-successor.json": "73da47fbaae71249884bf790f631e8e8a88583746676f0b239f3de1989fbb85d"
+  },
+  "validation": {
+    "command": "uv run python -m unittest tests.test_reviewed_java_comments tests.test_android_restoration_review tests.test_drawing_catalog",
+    "tests": 36,
+    "status": "passed",
+    "normalized_cases": 31
+  },
+  "review": [
+    "Exactly two Java paths are eligible; historical/current bytes, snapshot and root documentation review are bound.",
+    "Compound operators retain token boundaries; Unicode escapes and malformed literal/comment inputs fail closed.",
+    "Unchanged render/report/profile/legacy activity checks remain enforced. Only reviewed historical source matching changes.",
+    "Original Android restoration review preserved; successor binds current validator source and proof."
+  ]
+}

@@ -1,5 +1,107 @@
 # Project state
 
+## Java0.32.1 documentation distribution accepted
+
+Extracted consumer passed34PDE compilations and full inventory checks. Five expected debug
+classes differ; root verified every other core/adapter class unchanged and retained the
+nondebug equivalence proof. Javadoc warnings689→655. Review
+evidence/distribution/cp29-docs-java-review.json accepts documentation-only archive
+SHA062b3379c83cfa6f18bcf2ca43621324f0c8a55ac1a3b3539ef2ca46e614b088,433members.
+README/install, composition/performance and three shipped-workflow guides reconciled.
+No new runtime support, operation or recreation added. Next commit/push this reviewed
+documentation checkpoint, then prioritize remaining artist-critical reference gaps and
+the five completion requirements. Unrelated Android ProfileMarks edit remains untouched.
+
+## Documentation successor checks pass; extracted consumer running
+
+Root created explicit android-grid-path-restoration-successor.json, preserved historical
+restoration review, updated drawing dispatch and regenerated normalized fixtures (case
+contents unchanged, only input binding).36 focused helper/drawing/restoration tests pass.
+Root validator-integration review accepted;3 indirect tool-source acceptance successors
+added. Full catalog passes. Java0.32.1 source bundle builds at
+.work/dist/cp29-docs-java-source-root1/procedurals-java-source-dev.zip,
+SHA062b3379c83cfa6f18bcf2ca43621324f0c8a55ac1a3b3539ef2ca46e614b088,433members.
+Extracted consumer currently running exec session10375, output.work/cp29-docs-consumer-root1.
+Poll that handle/report before restarting. No native rerender requested: exact code identity
+proven; next verify consumer, unchanged remaining class bytes and warning reduction, record
+distribution acceptance and commit/push documentation checkpoint. Android unrelated edit stays.
+
+## Verifier stable; Android restoration validator needs explicit successor
+
+Terra helper/snapshot/tests complete; root saw maximal-munch operators and Unicode escape
+rejection, exact byte hashes. Focused helper3tests pass. Combined36tests now4fail/1error:
+Android restoration review binds tools/android_restoration_review.py itself (and drawing
+validator), so direct source-check integration correctly invalidates that historical record.
+Next preserve original restoration review, create root-reviewed documentation successor
+with changed tool hashes and new proof evidence, point drawing target to it, and adapt
+validator dispatch to that explicit successor. Keep source behavior/legacy result checks.
+Then rerun36tests and update3 indirect operation review tool bindings with integration
+evidence before catalog/build. Do not add broad hash bypass or edit historic render records.
+
+## Comment verifier review caught token-boundary flaw
+
+Root reviewed initial helper and found punctuation lexing conflated '+ +' with '++';
+requested maximal-munch operators, distinguishing tests and rejection of prelexical Unicode
+escapes. Worker still owns final helper/snapshot/tests. Root updated drawing/restoration
+test snapshots to include the two new proof records. Early33-test attempt failed only
+because worker snapshot JSON was not yet present; rerun after stable completion.
+Catalog additionally identifies3 indirect reviews (triangle, endpoint-branch, triangle-map
+Android native) binding modified validator tool hashes. Root must record validated helper
+integration evidence and update these successor reviews after tests; do not alter history.
+
+## Indirect operation reviews reconciled; drawing comment verifier in progress
+
+Root added9 indirect acceptance successors preserving historical reviews. Remaining drawing
+validators need explicit reconstructible comment-only matching for RegularGrid/GradientPath2D.
+Terra owns tools/reviewed_java_comments.py, exact historical source snapshots and focused
+mutation tests. Root wired its planned matches_reviewed_java_comments entry point into
+desktop drawing source checks, Android legacy source checks and restoration review source
+checks only; unchanged evidence/render/profile checks remain intact. Helper may not exist
+yet, so tools are temporarily awaiting that integration. Next inspect helper/tests, run
+focused drawing/restoration and catalog checks, then rebuild documentation source bundle.
+
+## Grid/path Javadocs verified; indirect support bindings need integration
+
+Root independently compiled HEAD/current two-class sources:5 nondebug classes identical,
+noncomment tokens equal and focused Javadoc zero diagnostics. Proof is
+evidence/documentation/java-grid-path-comments-review.json. Updated27 direct target/layer
+attestations through new carry-forward reviews, manifest candidate0.32.1. Catalog check
+then correctly exposed indirect acceptance-review dependencies (circle placement and several
+Android reviews) plus fresh-raster-2d native evidence. Source build stopped before assembly.
+Next carry forward those indirect reviews and drawing-adapter evidence using the same
+equivalence proof; preserve historical records, do not weaken hash checks. No new archive
+or distribution acceptance yet. Attempt .work/dist/cp29-docs-java-source-root1 did not build.
+
+## Root reference review corrections and shipped-guide reconciliation
+
+Root reviewed worker grid/path Javadoc diffs and requested precise corrections: MAX_SIZE
+is a point-count ceiling, fieldScale has lattice-units-per-coordinate-unit dimensions,
+and Object index overloads must name accepted numeric carriers. Worker is applying these
+before final equivalence/doclint results. Seven attestations reference the changed classes;
+root will own carry-forward integration. Corrected stale packaging-pending statements in
+LayerMarks/MaskMarks/PlacementImageMarks guides after checking CP24/25/29 reviews and current
+manifest membership. Local guide links and diff whitespace checks pass.
+
+## CP29 completion evidence reconciled; grid/path reference batch active
+
+Root validated current attestation bindings:30 conformant Java cores/30 scoped native,
+26 scoped technique and4 unvalidated technique records. Wrote java-completion-cp29-review.md
+against unchanged five requirements; no completion claim. README/archive extraction fixes
+from Terra audit are authored; edited local links resolve. Terra now owns Javadoc-only
+RegularGrid/GradientPath2D edits with requested bytecode equivalence and focused doclint.
+No algorithm or rendering changes authorized in that batch. Next root reviews semantics,
+records support carry-forward and packages the useful documentation checkpoint.
+
+## CP29 pushed; completion usability review underway
+
+Accepted Java0.32 checkpoint40fb809aea694eda3cab31bf9fd1b829eeb6a27f is pushed to main;
+remote and local matched after push. Only unrelated Android edit remained at that point.
+Root added docs/java-performance.md to connect retained composition stages, allocation-free
+accessors, resource allowances and scoped measurements; updated completion inventory30/34.
+Terra segment_clip_core is performing a bounded read-only install-to-edit documentation
+audit. Next review its exact findings, fix current user instructions, and reconcile the
+five completion requirements without treating the operation count as completion.
+
 ## Java0.32.0 extracted distribution accepted; checkpoint pending
 
 CP29 adds SegmentClip2D and ClipMarks:30 operations/34 workflows. Catalog support and

@@ -1,6 +1,6 @@
 # Composing content inside regions
 
-Java workflow and native review accepted; source-bundle packaging is pending.
+Included in the accepted Java0.32 bundle; see the [CP29 distribution review](../evidence/distribution/cp29-java-review.json).
 
 LayerMarks separates the partition layout from what is drawn inside it. Change the cuts to
 change the layout; replace a content callback to change the drawing. The adapter provides

@@ -36,8 +36,8 @@ LayerMarks and MaskMarks combine region callbacks, retained drawings and reusabl
 PlacementImageMarks crops and fits image content; ImageFieldMarks uses images to control marks.
 BlurMarks mixes filtered and sharp drawings, and ProjectionMarks deforms contours and lines
 through ordered circular influences.
-Ports of these newer workflows to JavaScript, py5 and Android are deferred. The accepted Java 0.30.0 source bundle
-contains 32 starters and 28 reusable operations. It is not a published registry
+Ports of these newer workflows to JavaScript, py5 and Android are deferred. The accepted Java 0.32.1 source bundle
+contains 34 editable workflows and 30 reusable operations. It is not a published registry
 release. An experimental [Java recipe preview](docs/java-recipe-preview.md) exports FieldMarks,
 PathMarks, placement-bars and region-panels as editable standalone projects. General portable recipes, MCP and web tools
 remain in the roadmap.
@@ -67,7 +67,7 @@ Open [LoopMarks](docs/loop-marks.md) to shape smooth loops and place marks along
 Open [BandMarks](docs/band-marks.md) to keep winding lines near a noise level.
 Open [RampMarks](docs/ramp-marks.md) to control where colors transition.
 Open [WarpMarks](docs/warp-marks.md) to bend a captured pattern through noise or an analytic field.
-The accepted local archive is identified in [the Java 0.30 review](evidence/distribution/cp27-java-review.json).
+The accepted local archive is identified in [the Java 0.32.1 review](evidence/distribution/cp29-docs-java-review.json).
 
 Start with [a field of independent marks](docs/getting-started.md),
 [paths and their marks](docs/path-marks.md),
@@ -83,7 +83,7 @@ Start with [a field of independent marks](docs/getting-started.md),
 [clustered 3D relief](docs/relief-marks.md), or
 [faceted cities](docs/city-marks.md), or
 [banded landscapes](docs/landscape-marks.md).
-[Build and install the Java library](docs/building-java-from-source.md) for all 32 starters.
+[Build and install the Java library](docs/building-java-from-source.md) for all 34 workflows.
 [Build the Android restoration patches](docs/installing-android-restoration.md) for the six
 ported starters, preserving their existing core versions.
 

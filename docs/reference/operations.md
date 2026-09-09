@@ -542,10 +542,10 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [review](../../evidence/reproductions/cp2-java2d/review.json) |
+| processing-java | [conformant](../../evidence/documentation/cyclic-palette-processing-java-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/cyclic-palette-processing-java-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/cyclic-palette-processing-java-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/cyclic-palette-processing-java-native-grid-path-carry-forward.json) |
 | p5js | [conformant](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [review](../../evidence/reproductions/cp2-p5js/review.json) |
 | py5 | [conformant](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [review](../../evidence/reproductions/cp2-py5/review.json) |
-| processing-android | [conformant](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/documentation/cyclic-palette-processing-android-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/cyclic-palette-processing-android-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/cyclic-palette-processing-android-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/cyclic-palette-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -695,10 +695,10 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [review](../../evidence/reproductions/cp2-java2d/review.json) |
+| processing-java | [conformant](../../evidence/documentation/gradient-noise-2d-01-processing-java-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-noise-2d-01-processing-java-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-noise-2d-01-processing-java-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/gradient-noise-2d-01-processing-java-native-grid-path-carry-forward.json) |
 | p5js | [conformant](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [review](../../evidence/reproductions/cp2-p5js/review.json) |
 | py5 | [conformant](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [review](../../evidence/reproductions/cp2-py5/review.json) |
-| processing-android | [conformant](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/documentation/gradient-noise-2d-01-processing-android-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-noise-2d-01-processing-android-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-noise-2d-01-processing-android-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/gradient-noise-2d-01-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -895,10 +895,10 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [review](../../evidence/reproductions/cp2-java2d/review.json) |
+| processing-java | [conformant](../../evidence/documentation/gradient-path-processing-java-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-path-processing-java-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-path-processing-java-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/gradient-path-processing-java-native-grid-path-carry-forward.json) |
 | p5js | [conformant](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [review](../../evidence/reproductions/cp2-p5js/review.json) |
 | py5 | [conformant](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [review](../../evidence/reproductions/cp2-py5/review.json) |
-| processing-android | [conformant](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/documentation/gradient-path-processing-android-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-path-processing-android-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/gradient-path-processing-android-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/gradient-path-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -1364,10 +1364,10 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/distribution/cp3-review.json) | [validated-scoped](../../evidence/distribution/cp3-review.json) | [validated-scoped](../../evidence/distribution/cp3-review.json) | [review](../../evidence/distribution/cp3-review.json) |
+| processing-java | [conformant](../../evidence/documentation/ordered-circle-filter-processing-java-core-indirect-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/ordered-circle-filter-processing-java-native-indirect-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/ordered-circle-filter-processing-java-technique-indirect-grid-path-carry-forward.json) | [review](../../evidence/documentation/ordered-circle-filter-processing-java-native-indirect-grid-path-carry-forward.json) |
 | p5js | [conformant](../../evidence/conformance/placement-p5js-root-review.json) | [validated-scoped](../../evidence/conformance/placement-p5js-root-review.json) | unvalidated | [review](../../evidence/conformance/placement-p5js-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/placement-py5-root-review.json) | [validated-scoped](../../evidence/conformance/placement-py5-root-review.json) | unvalidated | [review](../../evidence/conformance/placement-py5-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/placement-android-core-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | unvalidated | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/placement-android-core-root-review.json) | [validated-scoped](../../evidence/documentation/ordered-circle-filter-processing-android-native-grid-path-carry-forward.json) | unvalidated | [review](../../evidence/documentation/ordered-circle-filter-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -1847,10 +1847,10 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [validated-scoped](../../evidence/reproductions/cp2-java2d/review.json) | [review](../../evidence/reproductions/cp2-java2d/review.json) |
+| processing-java | [conformant](../../evidence/documentation/regular-grid-processing-java-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/regular-grid-processing-java-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/regular-grid-processing-java-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/regular-grid-processing-java-native-grid-path-carry-forward.json) |
 | p5js | [conformant](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [validated-scoped](../../evidence/reproductions/cp2-p5js/review.json) | [review](../../evidence/reproductions/cp2-p5js/review.json) |
 | py5 | [conformant](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [validated-scoped](../../evidence/reproductions/cp2-py5/review.json) | [review](../../evidence/reproductions/cp2-py5/review.json) |
-| processing-android | [conformant](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/documentation/regular-grid-processing-android-core-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/regular-grid-processing-android-native-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/regular-grid-processing-android-technique-grid-path-carry-forward.json) | [review](../../evidence/documentation/regular-grid-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -2024,10 +2024,10 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/distribution/cp3-review.json) | [validated-scoped](../../evidence/distribution/cp3-review.json) | [validated-scoped](../../evidence/distribution/cp3-review.json) | [review](../../evidence/distribution/cp3-review.json) |
+| processing-java | [conformant](../../evidence/documentation/seeded-circle-placement-processing-java-core-indirect-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/seeded-circle-placement-processing-java-native-indirect-grid-path-carry-forward.json) | [validated-scoped](../../evidence/documentation/seeded-circle-placement-processing-java-technique-indirect-grid-path-carry-forward.json) | [review](../../evidence/documentation/seeded-circle-placement-processing-java-native-indirect-grid-path-carry-forward.json) |
 | p5js | [conformant](../../evidence/conformance/placement-p5js-root-review.json) | [validated-scoped](../../evidence/conformance/placement-p5js-root-review.json) | unvalidated | [review](../../evidence/conformance/placement-p5js-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/placement-py5-root-review.json) | [validated-scoped](../../evidence/conformance/placement-py5-root-review.json) | unvalidated | [review](../../evidence/conformance/placement-py5-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/placement-android-core-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | unvalidated | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/placement-android-core-root-review.json) | [validated-scoped](../../evidence/documentation/seeded-circle-placement-processing-android-native-grid-path-carry-forward.json) | unvalidated | [review](../../evidence/documentation/seeded-circle-placement-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -2206,7 +2206,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | processing-java | [conformant](../../evidence/distribution/cp6-docs-port-update-review.json) | [validated-scoped](../../evidence/distribution/cp6-docs-port-update-review.json) | [validated-scoped](../../evidence/distribution/cp6-docs-port-update-review.json) | [review](../../evidence/distribution/cp6-docs-port-update-review.json) |
 | p5js | [conformant](../../evidence/conformance/javascript-retained-output-root-review.json) | [validated-scoped](../../evidence/conformance/javascript-retained-output-root-review.json) | unvalidated | [review](../../evidence/conformance/javascript-retained-output-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/branch-tree-python-root-review.json) | [validated-scoped](../../evidence/conformance/branch-py5-native-root-review.json) | unvalidated | [review](../../evidence/conformance/branch-py5-native-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/branch-tree-android-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | unvalidated | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/branch-tree-android-root-review.json) | [validated-scoped](../../evidence/documentation/seeded-endpoint-branches-processing-android-native-validator-carry-forward.json) | unvalidated | [review](../../evidence/documentation/seeded-endpoint-branches-processing-android-native-validator-carry-forward.json) |
 
 Motivating evidence:
 
@@ -2398,7 +2398,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | processing-java | [conformant](../../evidence/distribution/cp4-review.json) | [validated-scoped](../../evidence/distribution/cp4-review.json) | [validated-scoped](../../evidence/distribution/cp4-review.json) | [review](../../evidence/distribution/cp4-review.json) |
 | p5js | [conformant](../../evidence/conformance/quadrant-p5js-root-review.json) | [validated-scoped](../../evidence/conformance/quadrant-p5js-root-review.json) | unvalidated | [review](../../evidence/conformance/quadrant-p5js-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/quadrant-py5-root-review.json) | [validated-scoped](../../evidence/conformance/quadrant-py5-root-review.json) | unvalidated | [review](../../evidence/conformance/quadrant-py5-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/quadrant-android-core-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | unvalidated | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/quadrant-android-core-root-review.json) | [validated-scoped](../../evidence/documentation/seeded-quadrant-partition-processing-android-native-grid-path-carry-forward.json) | unvalidated | [review](../../evidence/documentation/seeded-quadrant-partition-processing-android-native-grid-path-carry-forward.json) |
 
 Motivating evidence:
 
@@ -2492,7 +2492,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | processing-java | [conformant](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [review](../../evidence/distribution/cp5-review.json) |
 | p5js | [conformant](../../evidence/conformance/javascript-retained-output-root-review.json) | [validated-scoped](../../evidence/conformance/javascript-retained-output-root-review.json) | unvalidated | [review](../../evidence/conformance/javascript-retained-output-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/triangle-python-core-root-review.json) | [validated-scoped](../../evidence/conformance/triangle-py5-native-root-review.json) | unvalidated | [review](../../evidence/conformance/triangle-py5-native-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | unvalidated | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | [validated-scoped](../../evidence/documentation/seeded-triangle-points-processing-android-native-validator-carry-forward.json) | unvalidated | [review](../../evidence/documentation/seeded-triangle-points-processing-android-native-validator-carry-forward.json) |
 
 Motivating evidence:
 
@@ -3004,7 +3004,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | processing-java | [conformant](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [validated-scoped](../../evidence/distribution/cp5-review.json) | [review](../../evidence/distribution/cp5-review.json) |
 | p5js | [conformant](../../evidence/conformance/javascript-retained-output-root-review.json) | [validated-scoped](../../evidence/conformance/javascript-retained-output-root-review.json) | unvalidated | [review](../../evidence/conformance/javascript-retained-output-root-review.json) |
 | py5 | [conformant](../../evidence/conformance/triangle-python-core-root-review.json) | [validated-scoped](../../evidence/conformance/triangle-py5-native-root-review.json) | unvalidated | [review](../../evidence/conformance/triangle-py5-native-root-review.json) |
-| processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | [validated-scoped](../../evidence/conformance/android-snapshot-restoration-root-review.json) | unvalidated | [review](../../evidence/conformance/android-snapshot-restoration-root-review.json) |
+| processing-android | [conformant](../../evidence/conformance/triangle-android-core-root-review.json) | [validated-scoped](../../evidence/documentation/triangle-coordinate-map-processing-android-native-validator-carry-forward.json) | unvalidated | [review](../../evidence/documentation/triangle-coordinate-map-processing-android-native-validator-carry-forward.json) |
 
 Motivating evidence:
 
