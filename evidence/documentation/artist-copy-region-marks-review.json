@@ -1,0 +1,34 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Artist-guide copy successor only. Existing executable sources, fixtures, runtime profiles and support dimensions are unchanged; no new native or technique claim.",
+  "documentation": {
+    "path": "docs/region-marks.md",
+    "before_sha256": "8614f996dea971a19c9a0bc2f737ec06bd1854e1f71de1940964ec3797ca86d3",
+    "after_sha256": "f77fccea99c4de57ecc9217dd1b0d9f47d0287b27b7c0f0ae8ad4dee4e878fa4"
+  },
+  "previous_reviews": {
+    "evidence/distribution/cp4-review.json": "c4d527e68eb7417ffaf28d5dd60a7e77ebb1e9b38b9f018e68e470ff683587f1"
+  },
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/layout/QuadrantPartition2D.java": "4b84b939c8223bd3b627072be584f54f482f14c6befacd8269007ded3d9e331b",
+    "packages/java/examples/RegionMarks/RegionComposition.java": "2ea1eebf4b74e3131f4eb2969286b78886dfd96cd7d6057b6a15fddf15a743bc",
+    "packages/java-processing/examples/RegionMarks/RegionMarks.pde": "6d41157878f7f6ca82b6f6b663a05ea13b16214b525a8fe25047243901d552ec"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/quadrant-partition-java.json": "2f87b8f2041b3f3203894c9a0820f3a9f9f6bb4d542b002eddf0f530e77c4395",
+    "evidence/distribution/cp4-java.json": "09902920f8ca32873f616678440d7493158a1121282f6869216e2f7be9cdb790",
+    "evidence/reproductions/cp4-java2d/pde-result.json": "ae09f1ca5f2bc799b30ca84386513f7be4f72cae436f907a070f34c17540e4e5",
+    "evidence/reproductions/cp4-java2d/root-review.json": "7565d705a6990b60e19ba620a01504eb52c9d01e00017772508ef50f4aa76d6b",
+    "evidence/reproductions/cp4-java2d/execution-review.json": "3f11e88072d76b051b90e6f35c88c24727eb5f24375ef105022bcd54d7a18ebb",
+    "docs/region-marks.md": "f77fccea99c4de57ecc9217dd1b0d9f47d0287b27b7c0f0ae8ad4dee4e878fa4",
+    "docs/installing-region-marks.md": "4fb8dad138d4735987e838b3fdd93c0a544ff5c6ebee258cb7b6375f860eaf15",
+    "evidence/distribution/cp4-review.json": "c4d527e68eb7417ffaf28d5dd60a7e77ebb1e9b38b9f018e68e470ff683587f1"
+  },
+  "verified": [
+    "Root checked guide control descriptions against the Processing example and composition source.",
+    "Only the guide text changes within the previous review bindings. Old reviews remain unchanged and bound by hash.",
+    "Visual limitations and practical usage remain; provenance and numerical details stay in contracts and existing evidence."
+  ]
+}

@@ -1,51 +1,34 @@
-# WarpMarks: bend a captured pattern
+# Bend a finished drawing
 
-Build the Java0.16 source bundle using [the installation guide](building-java-from-source.md).
-The JAVA2D workflow has scoped native acceptance; each distribution build requires its own
-extracted-consumer validation. Earlier Java0.15 bundles do not contain this example.
+WarpMarks bends a dot or stripe pattern into flowing shapes. It works on the finished
+image, so the marks, their colors and their widths distort together.
 
-`WarpMarks` draws a small pattern once, then remaps its pixels through an explicit
-source-coordinate field. The source pixel buffer is copied before remapping. Changing
-the field or displacement strength reuses that unchanged buffer; changing the pattern
-recaptures it. `RasterRemap2D` owns the detached result and performs straight-channel
-ARGB8 bilinear sampling with whole-coordinate edge clamping. Straight-channel filtering
-can expose hidden RGB from transparent source pixels at translucent edges; this is
-deliberate contract behavior, not premultiplied compositing.
+[Install the Java library](building-java-from-source.md), then open **WarpMarks** from
+Processing’s contributed-library examples. Save a copy before editing.
 
-Open the `WarpMarks` example in Processing 4. It uses a 640×640 JAVA2D surface at
-`pixelDensity(1)`. The default is the 24-pixel colored-dot pattern with a seeded gradient
-noise angle field and displacement strength 32. The source pattern, field expressions,
-and strengths are authored example choices, not library defaults or recommended ranges.
+## Controls
 
-| Key | Edit |
+| Key | What changes on the canvas |
 | --- | --- |
-| `W` | Cycle displacement strength 0, 32, 64. |
-| `F` | Switch between the seeded gradient-noise field and an analytic sinusoidal field. |
-| `P` | Replace the dots with colored horizontal stripes; the next field edit reuses them. |
-| `0` | Restore the default dot pattern, noise field, and strength 32. |
-| `S` | Save the retained displayed image as `warp-marks.png` without redrawing. |
+| **W** | Cycle distortion strength through 32, 64 and 0; zero shows the original pattern. |
+| **F** | Switch between a noise-driven warp and a repeating wave-based warp. |
+| **P** | Switch the original drawing between dots and stripes. |
+| **0** | Return to the starting picture and settings. |
+| **S** | Save the displayed picture as a PNG. |
 
-The gradient field uses seed 42 and samples the existing `GradientNoise2D01` operation;
-the second field uses independent sine waves with period 160 pixels. Both are example
-coordinate generators. The colorRamp survey supplies technique-level evidence for
-pull-sampling and bilinear reconstruction (see
-`survey/out/2016/Generativos/colorRamp/notes.md`); this starter does not claim to recreate that
-whole sketch or its palette, grain, shadows, or Processing image behavior.
+## Make it your own
 
-The core receives packed ARGB8 pixels and explicit coordinates, never a Processing
-`PImage`, callback, renderer, noise object, or mutable source. Exact integer coordinates
-preserve all four channels, including hidden RGB in transparent pixels. Finite source
-coordinates are clamped to the source's center bounds before four-tap interpolation.
+Replace the source-pattern drawing with your own image, then change the displacement
+field to decide where pixels are sampled from. `RasterRemap2D` builds the resulting image.
+A displacement asks where to read the original image for each output pixel; it does not
+move the original path geometry.
 
-## Supply coordinates for your own image mapping
+| Choice | Visible effect |
+| --- | --- |
+| Source image | The material being bent: dots, stripes, a photograph or another drawing. |
+| Displacement strength | How far sampling moves from each pixel’s original position. |
+| Field pattern | Where the image stretches, compresses and turns. |
 
-For the typed `RasterRemap2D.remap` overload, `packedXY` has two values for every output
-pixel in row-major order. For output `(x,y)`, the pair beginning at
-`2 * (y * outputWidth + x)` is `[sourceX, sourceY]`. Coordinates use source pixel centers:
-`(0,0)` addresses the first pixel and `(sourceWidth-1,sourceHeight-1)` the last. This is a
-pull map: specify where each output pixel reads from, rather than where a source pixel moves.
-
-Sampling clamps to the source edges. Bilinear interpolation treats straight ARGB channels
-independently; it is neither premultiplied-alpha nor linear-light filtering. This differs
-from the premultiplied blending used by the composition operations. Keep that distinction
-when remapping partly transparent images.
+Keep the source image while comparing warps. At the image edges, sampling repeats edge
+colors rather than creating new content. Use a mask afterward if only part of the canvas
+should show the effect.

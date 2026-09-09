@@ -1,35 +1,41 @@
 # Stop strokes at their first obstacle
 
-ContactMarks uses NearestSegmentContact2D to connect supplied positions to the first edge
-of a supplied boundary. N moves one obstacle corner while retaining the source strokes;
-C changes colors while retaining contacts; 0 resets; S saves the cached image. The example
-is part of the Java0.35 development source bundle.
+The sketch draws colored strokes toward a four-sided outline. Each stroke stops at the first
+edge it reaches, with a dot marking the meeting point. Faint lines show where the strokes would
+continue without the obstacle.
 
-Supply `queries` and `obstacles` as lists of `[x0,y0,x1,y1]` in the same coordinate system,
-and an explicit `maxWork`. Each query is directed from its first endpoint to its second.
-The operation returns one contact or null per query. A contact exposes `obstacleIndex`,
-`t`, `x` and `y`; use the index to retain your obstacle's color or other metadata.
-`find(config).hitAt(i)` gives the contact for query i, and `toValues()` exports detached data.
+[Install the Java library](building-java-from-source.md), then open **ContactMarks** in
+Processing’s contributed-library examples and save a copy.
 
-Contact includes endpoints, origin touches and the onset of collinear overlap. If a stroke
-already touches an obstacle, t is zero. For a ray web, explicitly leave rays from the same
-emitting point out of that group's obstacles when they should not stop one another.
-No hidden epsilon or self-exclusion changes the geometry. Misses are retained as null;
-keeping, dropping or extending them is your composition's choice.
+| Key | Visible change |
+| --- | --- |
+| N | Moves one outline corner, changing where the strokes stop. |
+| C | Changes the stroke and endpoint-dot colors without moving them. |
+| 0 | Restores the starting composition. |
+| S | Saves the displayed image. |
 
-The query uses finite segments, so a miss may mean the stroke does not reach the obstacle.
-This is distinct from clipping a stroke into every interior interval of a polygon; use
-[ClipMarks](clip-marks.md) for that. Contact does not constrain the full painted stroke width.
+## Use it in your own drawing
 
-Selection uses exact rational geometry before once-rounded binary64 output. An interior
-contact that rounds onto a query endpoint throws `REPRESENTATION_COLLAPSE`, with queryIndex
-and stage; no partial batch is returned. Exact endpoint contacts are valid. Returned points
-may be slightly off an exact obstacle after rounding. The kernel shares package-private
-ExactRational arithmetic with the clipper; that helper is not public API.
+Supply the strokes you want to draw and the lines that should stop them. Call
+`NearestSegmentContact2D.find(config)`, then use `hitAt(i)` to find where stroke `i` first
+meets an obstacle. Draw from that stroke’s start to the returned `x, y` position.
 
-`maxWork` bounds queryCount × obstacleCount pair tests, not milliseconds or memory. The
-implementation is suited to retained geometry and explicit edits. A measured256×256case
-allocated about162MB despite only65536pair tests; exact arithmetic is not allocation-free.
-Use bounded batches and retain results for style edits. No artistic count range, frame-rate
-promise or full plasma007 recreation is claimed. See the
-[scoped native review](../evidence/workflows/contact-marks/root-review.json).
+| Input | What it means for your picture |
+| --- | --- |
+| `queries` | Your proposed strokes, each `[startX, startY, endX, endY]`. The order of the two endpoints sets the drawing direction. |
+| `obstacles` | The lines that stop strokes, in the same coordinate system. A polygon can be supplied as its individual edges. |
+| `maxWork` | The allowed number of stroke–obstacle comparisons. Allow at least the number of strokes multiplied by the number of obstacles. This controls work, not appearance. |
+
+A result gives the meeting point and `obstacleIndex`, which identifies the edge that was hit.
+Use that index to color strokes by the edge they reach. If there is no contact, `hitAt(i)`
+returns `null`; choose whether to omit that stroke or draw its full length.
+
+A stroke that already touches an obstacle stops immediately at its starting point. Its far
+endpoint also limits its reach: this does not extend short strokes into infinite rays. Leave
+lines sharing a starting point out of one another’s obstacle lists if you do not want them to
+stop each other there.
+
+The endpoint limits the line’s center, not its painted width: thick strokes and endpoint dots
+can cross the edge. For a drawing visible only inside a polygon, use [ClipMarks](clip-marks.md)
+or a [mask](mask-marks.md). Calculate intersections when geometry changes and reuse them for
+color edits; see [performance guidance](java-performance.md) for larger drawings.

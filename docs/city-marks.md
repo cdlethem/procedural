@@ -1,38 +1,36 @@
 # Build a faceted city
 
-CityMarks turns subdivision cells into triangular buildings with windowed walls. It composes
-four existing operations: QuadrantPartition2D, Delaunay2D, RegularGrid and CyclicPalette.
-Open the example and edit the composition directly; no facade framework or new core API
-is required. Desktop Processing 4 with P3D/OpenGL is required.
+CityMarks draws a dense cluster of triangular buildings with rows of small windows.
+Colored walls and lit windows give the city depth. The example uses Processing’s P3D
+renderer and can take a moment to draw its many windows.
 
-C shifts building colours, H switches the height ceiling between200 and80, R changes the
-seed,0 restores the initial scene, and S saves `city-marks.png`. Colour and height retain
-the same sites, topology and window decisions. The sketch draws on demand; saving uses
-the completed canvas. These are source-inspired example presets, not library-wide ranges.
+[Install the Java library](building-java-from-source.md), then open **CityMarks** from
+Processing’s contributed-library examples. Save a copy before editing.
 
-CityComposition creates301 cells using100 replacements, triangulates their centres and
-retains per-face heights, colours and per-wall window choices. CityMarks draws one roof
-and three walls per triangle. Each wall maps normalized RegularGrid cell centres along
-its edge and down from its roof, then draws shallow rotated boxes. The source's independent
-random choices remain independent example policies; partitioning uses its own library stream.
+## Controls
 
-To change the piece, begin with the sites and heights, then edit the palette and facade
-spacing. Each face uses16–22 rows and columns. Width/height fractions leave gaps between
-windows; warm lit boxes contrast with black unlit boxes. Native lighting shades the coloured
-building faces. Keep geometry generation in the helper and drawing decisions in the PDE.
+| Key | What changes on the canvas |
+| --- | --- |
+| **C** | Shift building colors while keeping the city layout. |
+| **H** | Lower the height ceiling from 200 to 80, or restore the taller skyline. |
+| **R** | Generate a different city layout and window pattern. |
+| **0** | Return to the starting picture and settings. |
+| **S** | Save the displayed picture as a PNG. |
 
-This is a structural recreation of `2019/generativos/ciscis002`, not a pixel-identical copy.
-Library RNG, triangulation ordering, numeric precision and colour quantization differ from
-the source. The camera uses fixed quarter-turn angles and density1; the source jitters the
-camera and requests density2. The PDE corrects an unmatched source beginShape call with
-explicit balanced roof/wall drawing. Unused noise and commented shader code are excluded.
-The translated drawing pattern carries the upstream MIT notice in the PDE.
+## Make it your own
 
-Evidence: `survey/out/2019/generativos/ciscis002/notes.md` describes strong changes for
-height200→80, splits100→30, zoom2.1→1.2 and a vertical-window-count change. These observations
-justify edit choices but not a continuous recommended parameter range. The complete mapping
-is in `design/capabilities/ciscis002-recreation-walkthrough.md`.
+`CityComposition.java` chooses the building sites, heights and window patterns.
+`CityMarks.pde` draws a roof and three walls for each triangular building, then places
+windows along the walls.
 
-The measured seed42 example has580 buildings and624,033 window boxes. Its first full-density
-frame took about2 seconds to draw on the recorded desktop runtime; this is an observation,
-not a performance guarantee. Other platform ports and human usability testing remain pending.
+| Setting to edit | What changes |
+| --- | --- |
+| Site arrangement | The footprint and mix of building shapes. |
+| Building heights | The skyline and how much of each wall is visible. |
+| Window rows and columns | The scale and density of the facade pattern. |
+| Window width and height | The gaps between windows. |
+| Palette and lighting | The colors of walls and their shading. |
+
+Color and height controls keep the underlying layout and window choices. Reduce window
+rows and columns while experimenting if drawing feels slow, then increase detail for
+your final image.

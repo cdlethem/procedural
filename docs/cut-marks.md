@@ -1,47 +1,37 @@
-# Edit retained rectangle regions
+# Split and remove regions by hand
 
-`CutMarks.pde` is an editable Processing Java workflow for working directly with retained
-rectangle regions. It uses `RetainedRectangles2D` from the Java library: the sketch owns
-its palette, initial cut sequence, holes, and marks, while the library owns current live
-regions and their stable IDs.
+CutMarks starts with a divided rectangle. Click a region to select it, cut it into two,
+or remove it to leave an opening. Other regions stay where they are, letting you develop
+a layout one edit at a time.
 
-Click a visible region to select it. **X** or **Y** cuts the selected region at its midpoint
-and keeps the low-coordinate child selected. **Delete** or **Backspace** removes it. **A**
-rebuilds the authored setup with aligned or staggered second cuts. **D** changes only the
-decoration, so the current edits and IDs remain. **H** rebuilds with or without its authored
-every-seventh-ID holes. **0** restores the initial authored state. **S** writes the cached
-displayed frame as `cut-marks.png`.
+[Install the Java library](building-java-from-source.md), then open **CutMarks** from
+Processing’s contributed-library examples. Save a copy before editing.
 
-The midpoint command deliberately becomes a no-op if binary64 rounding places it on a leaf
-edge. That is an editor convenience; the core operation continues to reject an edge cut as
-`INVALID_CUT`.
+## Controls
 
-The seed `42`, twelve setup iterations, 25–75% initial ratios, palette, edge decoration,
-and every-seventh-ID holes are piece settings. They are not defaults or recommended ranges
-for `layout.retained-rectangle-cuts-2d`. The optional `configureRender` hook accepts only
-the authored `staggered`, `decoration`, `holes`, and optional `edit` flags for local renderer
-tools; artists can ignore it when working in Processing.
+| Key | What changes on the canvas |
+| --- | --- |
+| **Mouse click** | Select a rectangle; a darker outline marks the selection. |
+| **X** | Split the selected rectangle into left and right halves. |
+| **Y** | Split it into top and bottom halves. |
+| **Delete / Backspace** | Remove the selected rectangle, leaving a hole. |
+| **A** | Switch the starting cut arrangement; this rebuilds the layout and replaces manual edits. |
+| **D** | Switch solid fills to outlined regions with cross marks. |
+| **H** | Switch the preset holes on or off; this also rebuilds the layout. |
+| **0** | Return to the starting picture and settings. |
+| **S** | Save the displayed picture as a PNG. |
 
-The retained-region capability was admitted from the supplied-region editing need recorded
-for [`2019/generativos/griton`](../survey/out/2019/generativos/griton/notes.md). This PDE is
-an independent composition: it does not recreate griton’s source selection, ratios,
-omission behavior, or drawing code.
+## Make it your own
 
-The [native workflow review](../evidence/workflows/cut-marks/root-review.json) validates selected
-X cut, retained decoration, deletion, reset and cached save. The mouse selection is simulated
-through the actual callback and keyboard events are posted to Processing. Distribution
-acceptance is recorded separately; other-target support and upstream-sketch reproduction
-are not claimed.
+Use `RetainedRectangles2D` to start with a rectangle and cut a chosen live region at
+a supplied coordinate. The example’s keyboard controls cut at the midpoint, but your
+code can choose another interior position. A split replaces its rectangle with two
+children; after splitting, the example selects the first child.
 
-## Make a supplied cut directly
+Replace the decoration loop to draw different content in each region. Region IDs let
+you keep colors or other choices attached to regions that have not changed. If no region
+is selected, split and remove controls do nothing. Extremely small regions may no longer
+have room for a midpoint cut.
 
-`RetainedRectangles2D.cut(id, axis, coordinate)` accepts exactly `"X"` or `"Y"`. The
-coordinate is absolute in the root rectangle's caller coordinate system, not a fraction
-or an offset from the selected leaf. It must lie strictly between that live leaf's
-corresponding bounds. An X cut produces left/right children; a Y cut produces
-low-y/high-y children. The returned IDs have that low-coordinate/high-coordinate order.
-
-The parent ID stops being live. Keep the returned child IDs for later edits; unrelated
-leaf IDs remain valid. Invalid IDs, axes or cut coordinates leave the live set and next
-ID unchanged. As with other retained operations, representational limits are not a
-promise that the host can allocate arbitrarily large state.
+For automatic unequal panels, try [PanelMarks](techniques/panel-marks.md). For pictures
+inside your regions, continue with [LayerMarks](layer-marks.md).

@@ -49,7 +49,10 @@ from composite helpers and preserve unresolved ingredients. A written API design
 operation contract precede implementation. `tools/check_phase2_design.py --contract-cluster
 <id>` checks recorded prerequisites; it does not approve semantics.
 
-Public documentation cites motivating sketch paths. Exposure, defaults, hard bounds and
+Keep motivating sketch citations in API references, contracts and evidence. Artist guides
+lead with the visible result, explain how to use it, and put controls and editable parameters
+in tables describing their canvas effects. Keep provenance and acceptance bookkeeping out
+of teaching copy. Exposure, defaults, hard bounds and
 recommended ranges are separate decisions. Measured change does not alone establish useful
 ranges; none/subtle results, nondeterminism and suspect headless shader runs weaken evidence.
 Do not invent ranges or visual behavior. Distinguish corpus observations from design choices.

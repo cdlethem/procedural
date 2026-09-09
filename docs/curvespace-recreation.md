@@ -1,34 +1,34 @@
-# Recreate a luminous, folded grid
+# Draw a luminous, folded grid
 
-The repository's [Curvespace example](../examples/recreations/Curvespace/Curvespace.pde)
-recreates the structure of `2018/Generativos/curvespace` using two existing operations:
-RegularGrid places the faint dots; RadialPull2D deforms densely sampled horizontal and
-vertical lines. Influence circles, palette choices and additive drawing remain ordinary
-Processing code. There is no sketch-specific deformation algorithm in the example.
+Curvespace bends horizontal and vertical lines around circular areas of influence. The
+lines glow where they overlap, while a faint grid of dots stays straight behind them.
+This example uses Processing’s P2D renderer and additive blending.
 
-Use the [Java0.22 library](building-java-from-source.md) and open the Curvespace PDE with
-its adjacent CurvespaceComposition.java tab. This repository example is separate from the
-22 starters in the accepted source-bundle archive. Its native validation can be repeated
-from this checkout with the pinned toolchain and an extracted accepted library:
+[Install the Java library](building-java-from-source.md), then open the repository’s
+[Curvespace sketch](../examples/recreations/Curvespace/Curvespace.pde) with its adjacent
+`CurvespaceComposition.java` tab. This example is separate from the library example menu.
 
-```sh
-python3 tools/run_curvespace_java.py \
-  --library /path/to/procedurals/library/procedurals.jar \
-  --output-dir .work/my-curvespace-check --native
-```
+## Controls
 
-C shifts the palette while keeping geometry. R advances the explicit seed and rebuilds
-the grid and influences. 0 restores seed42 and the original palette. S saves the displayed
-frame as curvespace.png. The example uses P2D, a960-square canvas, density1 and ADD blending;
-it requires the Processing OpenGL runtime. Generated PNGs and toolchains stay outside Git.
+| Key | What changes on the canvas |
+| --- | --- |
+| **C** | Shift the palette without changing the folds. |
+| **R** | Choose a new arrangement of influences and rebuild the drawing. |
+| **0** | Return to the starting arrangement and palette. |
+| **S** | Save the displayed picture as `curvespace.png`. |
 
-In the composition tab, edit the influence descriptors or their scalar generation to
-change where the grid folds. Radius controls reach; power changes the pull profile. Keep
-the line sampling separate from the field: coarse samples can bridge a center discontinuity
-and change the visible crossings. The dot grid deliberately remains undeformed.
+## Make it your own
 
-Root reviewed the complete native composition and its edit/reset/save sequence in
-[the recreation review](../evidence/reproductions/curvespace/root-review.json). This is a
-structural recreation, not source-seed or pixel replay. Explicit Java randomness, the
-package's binary64 field semantics, exact-center policy and density differ from the source.
-See the [source walkthrough](../design/capabilities/curvespace-recreation-walkthrough.md).
+Edit the influence settings in `CurvespaceComposition.java` to place the folds.
+
+| Setting | Visible effect |
+| --- | --- |
+| Influence centers | Where the grid is pulled. |
+| Radius | How far each influence reaches. |
+| Power | How the strength of the pull changes across that area. |
+| Line sampling | How closely the drawn lines follow the deformation between points. |
+| Palette and opacity | The colors and brightness that build up at overlaps. |
+
+Sparse line samples can jump across a sharp fold. Use enough samples for the shape you
+want, and remember that crossing lines are part of this effect. The background dots remain
+undeformed so you can compare the folds with the original grid.

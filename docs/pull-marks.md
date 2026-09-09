@@ -1,48 +1,32 @@
-# PullMarks: bend grids and contours with radial influences
+# Fold grids and contours around chosen centers
 
-PullMarks is the Java 0.22 workflow for localized radial folds, built on `RadialPull2D`. It starts with a retained grid of sample points and three
-sampled closed contours. Two radial influences transform those samples, and the sketch
-then draws the resulting polylines. The field stores only influence data. The sketch retains transformed values so drawing
-choices can be changed without rebuilding the deformation.
+PullMarks deforms a grid around circular areas of influence. Switch to closed contours
+to see the same deformation applied to another kind of drawing. Lines may fold and cross
+as they are pulled.
 
-| Key | Edit |
+[Install the Java library](building-java-from-source.md), then open **PullMarks** from
+Processing’s contributed-library examples. Save a copy before editing.
+
+## Controls
+
+| Key | What changes on the canvas |
 | --- | --- |
-| R | Change the influence radius from the authored 120 to 180 and rebuild outputs. |
-| P | Change power from the authored 2 to 0.5 and rebuild outputs. |
-| C | Change the palette while retaining the field and transformed values. |
-| M | Draw the retained transformed closed contours instead of the grid. |
-| 0 | Restore radius 120, power 2, the first palette, and grid mode. |
-| S | Save the cached displayed frame to `pull-marks.png`. |
+| **R** | Increase the influence radius from 120 to 180, affecting a larger area. |
+| **P** | Switch power from 2 to 0.5, changing how the pull is distributed across each circle. |
+| **C** | Change colors without changing the deformation. |
+| **M** | Switch between the grid and closed contours. |
+| **0** | Return to the starting picture and settings. |
+| **S** | Save the displayed picture as a PNG. |
 
-Change the centers by editing the influence descriptor in `rebuildFieldAndOutputs()`:
+## Make it your own
 
-```java
-double[][] influences = {
-    {200.0, 240.0, 120.0, 2.0},
-    {350.0, 320.0, 120.0, 2.0}
-};
-RadialPull2D field = RadialPull2D.create(influences);
-double[] target = new double[2];
-field.transform(260.0, 240.0, target);
-// target contains the transformed x and y coordinates.
-```
+Edit the influence centers in `rebuildFieldAndOutputs()`. Each influence has a radius
+and power; `RadialPull2D` maps your supplied points to new positions. Draw those positions
+as lines or attach your own marks to them.
 
-The typed field accepts explicit `[centerX, centerY, radius, power]` rows. The field is
-immutable and detached from constructor inputs; `transform(x, y, target)` reuses a caller buffer and commits both
-coordinates only after validation and arithmetic succeed. The object does not generate
-centers, sample a grid, draw, or retain query history. Sampling the grid and the
-`ClosedSpline2D` contours is ordinary sketch work. PullMarks transfers the same sampled
-contour values into a later closed-contour drawing mode; it does not add polygon filling,
-topology construction, inverse deformation, or smoothness guarantees.
+Move the centers to relocate the folds. Change the radius to widen their reach, then
+compare power settings on the same input drawing. More closely sampled lines follow
+sharp changes more faithfully; a long segment can jump across a fold.
 
-At an exact influence center that influence contributes zero. The nearby field is
-still discontinuous under this rule, so sampled lines can fold and self-intersect. Coarse
-sampling can hide or exaggerate those changes. Radius endpoints contribute zero. Multiple
-influences are applied to the original query and their displacement contributions are
-summed in supplied order; they are not sequential point updates.
-
-The radius, power, two centers, 512-pixel canvas, contour count, and sampling densities are
-authored example settings, not recommended ranges. The [RadialPull2D contract](../design/operations/radial-pull-contract.md)
-defines the exact arithmetic and validation. The independently composed workflow is
-motivated by the radial pulls in [`curvespace`](../survey/out/2018/Generativos/curvespace/notes.md);
-it does not replay that source or claim pixel reproduction.
+This effect does not keep shapes apart or guarantee a smooth, reversible deformation.
+For a full luminous grid composition, see [Curvespace](curvespace-recreation.md).

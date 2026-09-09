@@ -1,34 +1,31 @@
-# Build and arrange annular forms
+# Build solid rings with open centers
 
-AnnularMarks has passed root-reviewed public-core P3D validation, including11 interaction
-states, retained appearance edits and cached save. It is included in the Java0.31 source
-manifest; consult the distribution review for extracted-package acceptance. The earlier
-accepted Java0.30 bundle does not contain this example.
+AnnularMarks draws a lit, washer-like solid with a hole through its center. Make the
+ring broader, make it deeper, or reduce the number of sides for a more angular form.
+The example uses Processing’s P3D renderer.
 
-The mesh supplies a ring with a hole, its inner and outer walls, and top and bottom faces.
-You supply dimensions and angular subdivisions, then use the retained triangles and flat
-normals in ordinary Processing P3D drawing. The example shows one ring or three transformed
-copies without rebuilding the geometry for each copy.
+[Install the Java library](building-java-from-source.md), then open **AnnularMarks** from
+Processing’s contributed-library examples. Save a copy before editing.
 
-| Key | Edit | What stays fixed |
-| --- | --- | --- |
-| W | Change the inner radius and band width | Outer radius, depth, slices and styling |
-| D | Change axial depth | Both radii, slices and styling |
-| F | Change angular subdivisions | Radii, depth and styling |
-| C | Switch the face palette | The retained mesh |
-| M | Switch between one ring and an arrangement | The retained mesh |
-| 0 | Reset controls | Geometry is rebuilt only if its inputs changed |
-| S | Save the displayed frame | Geometry and drawing are not rerun |
+## Controls
 
-Start in `rebuildMesh()` to change the geometry. `maxFaces` is an explicit work limit;
-the example allows384 triangles for its48 angular cells. It is not a resolution setting.
-Use `paintMesh()` to change drawing: `faceKindAt` distinguishes the walls from the two
-annular surfaces, while `cellAt` can identify angular sectors for another color treatment.
-The reusable scratch arrays avoid allocating a new point or normal for every drawn face.
+| Key | What changes on the canvas |
+| --- | --- |
+| **W** | Shrink the hole radius from 110 to 60 while keeping the outer radius at 150, making the ring broader. |
+| **D** | Increase depth from 30 to 90. |
+| **F** | Switch from 48 sides to 12, making the rim more visibly faceted. |
+| **C** | Change face colors without changing the shape. |
+| **M** | Show one ring or a group of three. |
+| **0** | Return to the starting picture and settings. |
+| **S** | Save the displayed picture as a PNG. |
 
-These dimensions are authored example choices, not recommended ranges. The motivating
-[aros report](../survey/out/2017/Generativos/aros/notes.md) has no measured variants.
-The independently specified mesh corrects the source's winding and duplicate interior
-faces; it does not reproduce the source animation, colors or global noise stream.
-See the [private study decision](../evidence/parameter-experiments/annular-mesh/decision.md)
-for the visual evidence supporting this boundary.
+## Make it your own
+
+Edit `rebuildMesh()` to supply outer radius, inner radius, bottom and top heights,
+and the number of sides to `AnnularMesh3D`. The result includes the inner wall, outer
+wall and the two flat ring-shaped ends.
+
+The inner radius must be smaller than the outer radius and greater than zero. Change
+colors by face type to make the inner wall or end faces stand out. Use Processing transforms
+to position several copies of the same mesh. More sides make a smoother-looking rim at
+the cost of more triangles to draw.

@@ -1,29 +1,25 @@
-# ProjectionMarks — sequential deformation
+# Bend lines around circular influences
 
-Make a contour or line family yield to local circular influences. Supply existing points,
-ordered discs and an explicit strength to DiscProjection2D. Inside each disc, the operation
-moves a point toward that disc's radial boundary before testing the next disc.
+A contour and a family of straight lines bend toward the boundaries of several circles. The
+original lines remain faintly visible, making the deformation easy to compare.
 
-The example is `packages/java-processing/examples/ProjectionMarks/ProjectionMarks.pde`.
-It is included in the accepted Java0.30 distribution, with native and extracted-package validation.
+[Install the Java library](building-java-from-source.md), then open **ProjectionMarks** in
+Processing’s contributed-library examples and save a copy.
 
-- **M** cycles fractional, full and zero-strength deformation.
-- **O** reverses influence order while preserving the points and discs.
-- **C** recolors the retained result.
-- **S** saves the display cache.
+| Key | Visible change |
+| --- | --- |
+| M | Cycle between partial movement, full movement toward circle edges, and the original drawing. |
+| O | Apply the circles in the opposite order, changing how overlapping influences bend the drawing. |
+| C | Switches the projected-line color. |
+| S | Saves the displayed image. |
 
-The example computes six strength/order results once, then switches among them. Both a
-closed sampled contour and open parallel lines use the same operation. Point generation,
-line grouping and drawing remain independent; replace the supplied points with positions
-from another package operation without replacing the deformation arithmetic.
+Supply your own points and ordered circles, then draw the returned points as contours, lines,
+or marks. Keep point grouping and drawing outside the projection so the same deformation can
+serve several visual treatments. The example precomputes the strength and order combinations,
+then switches among them.
 
-The thin reference lines show the input geometry and circles show supplied influences.
-Full strength can concentrate samples onto a boundary. A later influence can push a point
-back inside an earlier disc, and straight segments between projected samples can cross a
-disc. This is not clipping or guaranteed collision avoidance. An exact-center point uses
-positiveX as an explicit direction convention. No recommended strength range is claimed.
-
-Motivation: [colidion](../survey/out/2019/generativos/colidion/notes.md), with an independently
-specified portable transform. Its owner-ray recovery, radial stipple envelope and full
-composition are not reproduced. See the [contract](../catalog/operations/sequential-disc-projection-2d.json)
-and [native acceptance plan](../design/capabilities/projection-marks-native-plan.md).
+Circle order matters. A later circle can move a point back inside an earlier one, and straight
+segments between projected samples can cross a circle. This is a deformation tool, not clipping
+or collision avoidance. A point exactly at a circle center uses the positive-x direction. See
+the [projection API](../catalog/operations/sequential-disc-projection-2d.json) and [Java
+performance guidance](java-performance.md) for advanced detail.

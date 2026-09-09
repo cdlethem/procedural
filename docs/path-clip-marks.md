@@ -1,29 +1,25 @@
 # Clip field-generated paths to a region
 
-PathClipMarks is included in Java0.33.0. It connects existing path generation, segment
-clipping and layer rendering; see the [distribution review](../evidence/distribution/path-clip-java-review.json).
+It turns several precomputed paths into line segments, clips them to a notched region, and
+draws only the parts inside. The outside movement remains available as a faint overlay.
 
-Generate your movement first. The example retains six `GradientPath2D` results, converts
-each consecutive pair of positions into a supplied segment, then calls `SegmentClip2D`.
-Changing the notch clips those same segments again. It does not restart the field or
-change where the paths travel outside the visible region.
+[Install the Java library](building-java-from-source.md), then open **PathClipMarks** in
+Processing’s contributed-library examples and save a copy.
 
-Press N to change the notch, C to color by original path, O to reveal the unclipped
-movement faintly, 0 to reset the view, and S to save the cached result. Color and overlay
-changes reuse the clipped geometry.
+| Key | Visible change |
+| --- | --- |
+| N | Switches the notch shape and reclips the same paths. |
+| C | Switches path colors. |
+| O | Shows or hides the unclipped paths. |
+| 0 | Restores the starting view. |
+| S | Saves the displayed image. |
 
-The connection between these operations is explicit data. `sourceToPath` and `sourceToStep`
-map each supplied segment back to its generating path. Each clipped piece's
-`sourceIndexAt` recovers that identity, even when one supplied segment yields multiple
-pieces. Use it to attach your own path colors or step-dependent marks. Draw each returned
-piece separately: joining successive output pieces can draw across excluded gaps.
+Generate positions with any path source, connect consecutive positions into segments, then clip
+those segments. `sourceToPath` and `sourceToStep` identify each input segment; `sourceIndexAt`
+identifies each returned piece. Use those values for path color, step marks, or other styling.
+Draw returned pieces separately so excluded gaps stay open.
 
-Replace the path generator with another source of positions while keeping the same
-conversion and clipping stages. Or keep the full paths and reveal their rendered image
-through a mask when you only need visibility, rather than reusable clipped geometry.
-Clipping trims mathematical centerlines; painted stroke width can extend past the edge.
-The boundary does not steer movement or make paths avoid obstacles.
-
-The seed, six starts,160 steps per path and all other settings describe this example.
-They are not library defaults or recommended ranges. Clipping is computed on structural
-edits and cached for drawing; see [performance guidance](java-performance.md).
+Changing the boundary clips the same movement again; it does not steer or regenerate a path.
+Clipping trims mathematical centerlines, so a thick painted stroke can pass the edge. Use a
+mask when you only need visibility, and retain clipped geometry until the source or boundary
+changes. Advanced details are in [Java performance guidance](java-performance.md).

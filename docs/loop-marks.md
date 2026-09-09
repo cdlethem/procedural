@@ -1,45 +1,37 @@
-# Smooth loops and marks
+# Shape closed loops and decorate their edges
 
-Build the [Java source bundle](building-java-from-source.md), open **LoopMarks** from the
-library examples, and save your own copy. Four closed outlines carry small oriented tiles.
+LoopMarks draws four smooth closed outlines with small tiles following their edges.
+Change a control point to stretch each outline, or switch to fans of triangles that fill
+the same shapes from their centers.
 
-- **T** moves one control point on each loop, rebuilding its curve.
-- **C** changes colors while retaining exactly the same curves.
-- **M** replaces tiles with radial fans using those retained curves.
-- **0** restores the initial composition; **S** saves `loop-marks.png` from the displayed image.
+[Install the Java library](building-java-from-source.md), then open **LoopMarks** from
+Processing’s contributed-library examples. Save a copy before editing.
 
-The defining operation is `ClosedSpline2D`: supply an ordered array of planar controls and
-an explicit number of lookup chords per span. The curve passes through the controls and
-wraps smoothly around the last-to-first connection. Edit `controls` in `rebuildCurves()`
-to reshape the artwork; keep the interpolation and distance lookup inside the library.
+## Controls
 
-```java
-ClosedSpline2D curve = ClosedSpline2D.create(
-    new double[][] {{40,40}, {220,50}, {190,210}, {60,180}}, 32);
-double[] mark = new double[4];
-curve.sampleDistance(30, mark); // x, y, raw tangent x, raw tangent y
-```
+| Key | What changes on the canvas |
+| --- | --- |
+| **T** | Move one control point on each loop, stretching that part of its outline. |
+| **C** | Change the palette while keeping the shapes. |
+| **M** | Switch edge-following tiles to triangle fans. |
+| **0** | Return to the starting picture and settings. |
+| **S** | Save the displayed picture as a PNG. |
 
-`sampleParameter` uses one unit per control span; `sampleDistance` uses drawing units along
-an approximate length table. Both wrap periodically, including negative inputs. A larger
-`subdivisions` value spends more setup work and memory on that table.32 is this example's
-choice, not a recommended range or an error guarantee. Even perfect equal arc lengths do
-not imply equal straight-line distances across tight bends.
+## Make it your own
 
-The raw tangent can be zero. LoopMarks skips an oriented tile in that case; choose your
-own stationary-mark policy. Reuse the four-value buffer in loops to avoid per-query
-allocation. `serialize()` returns a detached creation descriptor; changing it cannot change
-the retained curve.
+Edit the control-point coordinates in `rebuildCurves()` to shape each loop.
+`ClosedSpline2D` turns those points into a smooth closed curve and lets you ask for positions
+and directions along it. The curve passes through your control points and bends smoothly
+between them.
 
-[databol](../survey/out/2018/Generativos/databol/notes.md) motivates placing rotated marks
-along closed splines; [blobs](../survey/out/2018/Generativos/blobs/notes.md) motivates filling
-sampled outlines. Their source lookup uses approximate lengths only between whole control
-spans. This operation retains interior chord distances and returns analytic derivatives,
-so it intentionally differs from that source behavior. It does not reproduce either full
-original. Observed control-count substitutions changed those compositions substantially,
-but changed random consumption too; they do not establish a portable recommended count.
+| Setting to edit | Visible effect |
+| --- | --- |
+| Control points | Where the outline bulges, narrows or stretches. |
+| Distance between tiles | How closely marks gather along the edge. |
+| Tile size | How much of the outline the marks cover. |
+| Fan colors and opacity | The bands of color inside the filled version. |
 
-Uniform splines may overshoot or self-intersect. The fan view is ordinary drawing for these
-chosen shapes, not a general polygon triangulator. The operation supplies no drawing,
-font, RNG, open-curve mode or exact arc-length guarantee. Current native validation covers
-Processing Java/JAVA2D only; other ports remain deferred.
+The tile loop in `draw()` places a mark every 18 units of approximate curve length.
+Replace its rectangle with another mark and use the sampled direction to rotate it.
+Loops can cross themselves. Triangle fans are a drawing treatment for these examples,
+not a general way to fill every possible concave outline.

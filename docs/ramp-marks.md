@@ -1,36 +1,35 @@
-# RampMarks: place the color transitions
+# Choose where colors change
 
-The Java core and native JAVA2D workflow have passed root review. RampMarks is included
-in the Java0.17 source bundle. Distribution review records identify accepted archive bytes.
-Open examples/RampMarks/RampMarks.pde after installing that bundle. Java0.16 lacks this operation.
+RampMarks colors a fixed grid of circles with a gradient. Move the color stops to
+control where transitions happen, then switch from a left-to-right gradient to color
+radiating from the center. The circles never move during these edits.
 
-RampMarks keeps every circle in place while changing where colors transition. A StopRamp
-pairs each supplied RGB color with a normalized scalar position. Move a stop to lengthen
-one transition and shorten its neighbor. Unlike CyclicPalette, the ramp neither spaces
-all colors evenly nor wraps the last color back to the first.
+[Install the Java library](building-java-from-source.md), then open **RampMarks** from
+Processing’s contributed-library examples. Save a copy before editing.
 
-| Key | Edit |
+## Controls
+
+| Key | What changes on the canvas |
 | --- | --- |
-| T | Move the first interior stop between .25 and .6. |
-| C | Replace the colors without changing stop positions or circles. |
-| F | Use distance from the center instead of horizontal progress; reuse the same ramp. |
-| 0 | Restore the initial colors, stops and horizontal progress. |
-| S | Save the retained display to ramp-marks.png without redrawing. |
+| **T** | Move the second color stop from 0.25 to 0.6, stretching one transition and shortening the next. |
+| **C** | Choose another set of colors. |
+| **F** | Switch a left-to-right gradient to a center-outward gradient. |
+| **0** | Return to the starting picture and settings. |
+| **S** | Save the displayed picture as a PNG. |
 
-The example starts with stops at 0, .25, .8 and 1. These are authored settings, not measured
-recommended ranges. Replace the arrays in rebuildRamp() to make your own progression.
-Positions must increase strictly within [0,1]; duplicate positions are rejected. Queries
-outside the first/last positions hold those endpoint colors. A single stop is constant.
+## Make it your own
 
-Colors are opaque RGB24 integers such as 0x173F5F. To supply a Processing color() value,
-mask it with `& 0xFFFFFF`; choose opacity separately in drawing. Interpolation operates
-on encoded RGB8 channels, with no perceptual-space or gamma conversion. The sampler
-returns colors and does not draw, generate a field, or own a random stream.
+In `rebuildRamp()`, give `StopRamp.create` matching arrays of positions and colors.
+A stop says which color belongs at a particular value; colors between stops are blended.
+Ask `ramp.sample(value)` for a color and use it in your own `fill()` or `stroke()` call.
 
-The [colorRamp report](../survey/out/2016/Generativos/colorRamp/notes.md) describes
-positioned color sampling independently of its warp. [boxDepth](../survey/out/2016/Generativos/boxDepth/notes.md)
-supplies unequal stops for noise-colored boxes; [celular](../survey/out/2016/Generativos/celular/notes.md)
-uses fixed unequal intervals for radial colors. The palette edit in
-[triangleRamp](../survey/out/2016/Generativos/triangleRamp/notes.md) also changes random-stream
-consumption and geometry, so it does not establish a recommended stop-spacing range.
-This example demonstrates the sampling mechanism, not a recreation of those whole sketches.
+| Choice | What you see |
+| --- | --- |
+| Stops close together | A color transition happens over a shorter distance. |
+| Stops farther apart | A longer, more gradual transition. |
+| Value from horizontal position | Colors change across the width of the canvas. |
+| Value from distance to a center | Colors spread outward around that center. |
+
+Positions must increase. Values before the first stop use its color, and values after
+the last use the last color. You can also color by path progress, height or an image value;
+the ramp does not decide where your marks go.

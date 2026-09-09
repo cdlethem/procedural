@@ -1,86 +1,40 @@
-# BranchMarks
+# Grow trees and branching sprays
 
-Start here when your idea needs a trunk that produces endpoint branches, a narrow spray,
-or a group of trees whose marks you can change after growing them. `BranchTree2D` handles
-the expansion, random decisions, stopping and ancestry. You supply a root and rules for
-successive generations; ordinary Processing code draws the returned segments.
+BranchMarks starts with a trunk and grows smaller branches from its endpoints. Change
+the branching angles and depth to make a broader tree, a narrow spray or a group of trees.
+Colors and line treatment can change without regrowing the branches.
 
-The editable files are
-[BranchMarks.pde](../packages/java-processing/examples/BranchMarks/BranchMarks.pde) and
-[BranchComposition.java](../packages/java/examples/BranchMarks/BranchComposition.java).
-The composition builds geometry; the PDE chooses colour, line weight and tip marks.
+[Install the Java library](building-java-from-source.md), then open **BranchMarks** from
+Processing’s contributed-library examples. Save a copy before editing.
 
-## Shape the growth
+## Controls
 
-Begin with the root's position, heading and length. Heading is in radians; negative
-`PI/2` points up on a conventional screen. Each generation rule has a `lengthScale`
-interval and ordered child `slots`. A slot gives a probability and a relative `turn`
-interval. The two side slots can both succeed, both fail, or produce one child. The
-third slot is another independent opportunity, not a guaranteed central trunk.
-
-A parent's children share one sampled length scale. Each successful slot samples its
-own turn. Removing the third slot produces a different branching policy; narrowing
-the turns produces a different direction pattern. Neither edit requires rewriting the
-tree-building algorithm.
-
-| Key | Edit |
+| Key | What changes on the canvas |
 | --- | --- |
-| N | Append/remove one generation rule |
-| G | Fixed spread / spread that narrows with generation |
-| W | Ordinary / wider turn intervals |
-| B | Three child opportunities / two narrow side opportunities |
-| R | Advance the explicit seed |
-| X | Single root / roots supplied by circle placement |
-| C | Change the generation palette without rebuilding geometry |
-| M | Thin lines / length-based taper with actual terminal dots |
-| 0 | Reset the example |
-| S | Save the displayed canvas |
+| **N** | Add or remove a generation of branches. |
+| **G** | Make the spread narrow in later generations, or keep it constant. |
+| **W** | Use wider branching angles. |
+| **B** | Switch between three possible children and two narrow side branches. |
+| **R** | Grow a different random tree. |
+| **X** | Switch from one tree to a group of trees. |
+| **C** | Change colors along the generations. |
+| **M** | Switch thin lines to tapered widths with dots at branch tips. |
+| **0** | Return to the starting picture and settings. |
+| **S** | Save the displayed picture as a PNG. |
 
-These controls use authored example settings. They are not API defaults or measured
-recommended ranges. The full rule data is in `BranchComposition.rules`; edit it directly
-to give different generations different turns or probabilities.
+## Make it your own
 
-`N` leaves existing rule values unchanged. The operation visits parents breadth first,
-so appending a rule preserves earlier segment coordinates and ancestry. Former tips may
-grow children, and their terminal dots can disappear. If your own rule expression divides
-by the total generation count, changing that count also changes earlier rules and loses
-this preservation. Earlier gate/slot edits may also shift subsequent random choices.
+Edit `BranchComposition.rules` to shape the growth. A starting branch has a position,
+direction and length. Each generation describes how short its children become and where
+they may turn. An upward direction in Processing is `-PI/2`.
 
-## Draw your own marks
+| Rule | Visible effect |
+| --- | --- |
+| Child length scale | How quickly branches become shorter. |
+| Turn interval | How far children spread from their parent’s direction. |
+| Child probability | How often a possible branch actually appears. |
+| Number of generations | How many levels of smaller branches can develop. |
 
-Traverse `tree.size()` and copy each segment into a reusable four-number buffer with
-`segmentInto`. The coordinates are start x/y then end x/y. `lengthAt` supplies the nominal
-length for taper; `generationAt` supplies an absolute level for colour or mark selection.
-`parentAt` gives ancestry without comparing floating coordinates. A segment is an actual
-terminal when `childCountAt(i) == 0`, including branches that stopped early.
-
-The result retains geometry independently of rendering. Change the PDE's `draw()` loop
-to use your own marks, or draw the same tree in several layers. Palette and mark controls
-in this starter retain the exact same tree objects. Root placement, clipping, canopy
-spacing and drawing are explicit composition decisions. Circle exclusion in the forest
-mode reserves space around roots; it does not prevent branches from overlapping.
-
-The single-tree example uses seven transitions, or eight with `N`. The smaller forest
-trees use five, or six. Both schedules stay below an example-wide worst-case budget of
-20,000 segments. The public operation requires `maxSegments` and fails explicitly if a
-successful child would exceed it; it never returns a silently truncated tree. This cap
-bounds retained nodes, not all input validation or failed slot visits.
-
-## Evidence and limits
-
-[arbolito3](../survey/out/2018/Generativos/arbolito3/notes.md) and
-[arbolito4](../survey/out/2018/Generativos/arbolito4/notes.md) motivate endpoint branching,
-shared child length and generation/terminal styling. Their measured depth and spread
-edits show impact, but do not establish portable recommended ranges. The source audit
-corrects arbolito4's note: its three gates allow zero through three children, and the
-source's spread is wider near the root, not near the tips.
-
-This operation deliberately uses a private portable RNG and breadth-first expansion;
-it does not replay the sketches' global Processing random stream or depth-first order.
-It does not implement interior attachments, cuts into a mutable line pool, or a symbolic
-L-system. Those are separate computations, not hidden modes of this generator.
-
-See the [contract](../catalog/operations/seeded-endpoint-branches.json) for exact data,
-error and numerical rules, and [review](../design/operations/branch-tree-contract-review.md)
-for the accepted semantics and remaining delivery obligations. Reviewed local ports are available for [p5.js](installing-branch-marks-javascript.md),
-[py5](installing-branch-marks-python.md) and [Android](installing-branch-marks-android.md).
+`BranchMarks.pde` draws the resulting segments. Change its stroke widths, colors and tip
+marks for a different treatment. Adding generations can increase the amount of geometry
+quickly. For branches made by cutting into existing strokes, try [CutBranchMarks](cut-branch-marks.md).
