@@ -1,0 +1,45 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Unified Processing Java setup on Linux. Installer acquires verified build inputs, builds the existing accepted Java surface and installs the complete library with backup and rollback. No operation, renderer or port support changes.",
+  "checks": {
+    "focused_unit_tests": 15,
+    "automatic_linux_install": "passed with downloaded core, font/license and Temurin JDK",
+    "repeat_install": "passed; previous complete library moved outside the active libraries folder",
+    "stdlib_only_install": "passed with Python -S and an explicit JDK, including a sketchbook path containing spaces",
+    "extracted_examples_compiled": 37,
+    "installed_jar_consumer": "ok",
+    "core_and_adapter_classes": "byte-identical to evidence/distribution/contact-java-source.json",
+    "catalog": "passed",
+    "changed_document_links": "resolved"
+  },
+  "archive": {
+    "path": ".work/installer/build-3a9097c06f0b/procedurals-java-source-dev.zip",
+    "sha256": "d50d7e2e5b498a9fb478c37441dd64712273c2ec37b660acc1eb0e3f762ff33a",
+    "members": 455
+  },
+  "local_consumer_report": {
+    "path": ".work/installer-consumer-check/report.json",
+    "sha256": "f0a47f88190f2fcb91568ed8a933fcd8d687bd63917ab2c0bfec1410757c2d21"
+  },
+  "local_build_report": {
+    "path": ".work/installer/build-3a9097c06f0b/report.json",
+    "sha256": "7a596d975dd0a18ef470ea4aa1e638b803fc2beff26b7b62d209b0841205c7e9"
+  },
+  "input_sha256": {
+    "tools/install.py": "e710906a3c35df5f9ab6835603e7aeb01abf07d82b03410e0f3f0cc5befb2d19",
+    "tools/build_java_source_bundle.py": "70445c39022543be4082dcbc62a4617d0722bea4a14b90225bc3badd992b181e",
+    "tests/test_installer.py": "83c2e7096b637374be7c1d46a5c6e872b9dfa054044cebadaea1e806525df5e3",
+    "tests/test_java_source_bundle.py": "871f4e254ef41b62ee862500153b4b4dfa5ffa9f7df96001dbe858590a429fd1",
+    "README.md": "432a0d5a5e020f3fa25acfa675f42fe096ef125c736435892fb41143b26c4bc4",
+    "docs/building-java-from-source.md": "ef413651b951113cbe2033d731df7066d7eebfca2884393fc4770d87c56e5208",
+    "packages/java/BUNDLE-README.md": "8dcb50211273c1d2754af11a53477c9306ea952fc6b7bbfb032453a9a3da9c29"
+  },
+  "limitations": [
+    "macOS and Windows acquisition/path support is implemented but not tested on those operating systems.",
+    "Processing and Python remain explicit prerequisites; the installer does not install or launch the Processing application.",
+    "No new native render was required; packaged runtime classes are unchanged.",
+    "Language ports retain separate setup paths."
+  ]
+}

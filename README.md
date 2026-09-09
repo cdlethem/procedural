@@ -46,12 +46,46 @@ for ways to combine these tools in your own sketches.
 
 ## Get started
 
-The most complete version is for **Processing 4 in Java mode**. Installation currently
-requires building the library from source.
+Use **Processing 4 in Java mode** for the full library and all 37 editable examples.
+Install it once; you do not need a separate package for each example.
 
-1. [Build and install the library](docs/building-java-from-source.md).
-2. Open **File → Examples → Contributed Libraries → Procedurals** in Processing.
-3. Save a copy of an example and start changing its parameters, colors and drawing code.
+1. **Install [Processing 4.5.6](https://github.com/processing/processing4/releases/tag/processing-1434-4.5.6).**
+   Open it, select **Java** mode, and open **Preferences**. Copy the **Sketchbook location**
+   shown there—you will use it in step 4. Close Processing before installing the library.
+2. **Install [Python 3.12 or newer](https://www.python.org/downloads/)** if you do not
+   already have it. Python runs the installer; your artwork will use Processing and Java.
+3. **[Download Procedurals](https://github.com/cdlethem/procedural/archive/refs/heads/main.zip)**
+   and extract the ZIP. Open a terminal in the extracted `procedural-main` folder.
+   If you already cloned this repository, use that folder instead.
+4. **Run the installer**, replacing the quoted path with your sketchbook location:
+
+   macOS / Linux:
+
+   ```sh
+   python3 tools/install.py --sketchbook "/your/Processing/sketchbook"
+   ```
+
+   Windows (PowerShell):
+
+   ```powershell
+   py -3 -X utf8 tools/install.py --sketchbook "C:\your\Processing\sketchbook"
+   ```
+
+   The installer downloads Java and the required build inputs, checks their checksums,
+   builds the library, and installs both JARs, all examples, the reference and the font
+   used by GlyphMarks. Allow a few minutes and internet access for the first run.
+   It needs no administrator privileges. An existing library is saved in
+   `procedurals-backups` inside your sketchbook before replacement.
+5. **Restart Processing.** Open **File → Examples → Contributed Libraries → Procedurals →
+   FieldMarks**, then click **Run**. Use **Save As** to make your own copy before editing.
+
+Run the same installer command to update after downloading a newer checkout. Downloaded
+build inputs are cached inside the checkout’s `.work/installer` folder. The installed
+library keeps working if you delete the source checkout later.
+
+The installer has been tested end to end on Linux. macOS and Windows download and path
+handling are included, but have not yet been tested on those operating systems.
+For custom build inputs or troubleshooting, see [installation help](docs/building-java-from-source.md).
 
 [FieldMarks](docs/getting-started.md) is a simple first sketch: change the lengths and colors
 of marks across a field, then replace the marks themselves. If you prefer an empty canvas,

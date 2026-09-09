@@ -5,7 +5,9 @@ adapter JAR, editable examples, Java source and generated reference. Keep both J
 `library/`. Processing itself is an external requirement; use Processing 4.5.6 for the
 recorded validation environment.
 
-## Install and make your first edit
+## Get started
+
+If you used the setup command, installation is already complete: start at step 2.
 
 1. Move this entire `procedurals` folder into your Processing sketchbook's `libraries`
    directory. Find the sketchbook location in Processing Preferences. If an older copy

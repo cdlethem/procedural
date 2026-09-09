@@ -68,7 +68,7 @@ survey progress from these checked-in counts.
 
 | Need | Read |
 |---|---|
-| Install and edit Java artwork | [Source build](docs/building-java-from-source.md), [workflow chooser](docs/choosing-java-workflow.md) |
+| Install and edit Java artwork | [Getting started](README.md#get-started), `tools/install.py`, [workflow chooser](docs/choosing-java-workflow.md) |
 | Compose regions, images and effects | [Composition guide](docs/composing-java-effects.md) |
 | Current operation semantics/support | [Generated reference](docs/reference/operations.md), relevant catalog entry and attestation |
 | Capability admission | [Artist architecture](docs/artist-capabilities.md) |

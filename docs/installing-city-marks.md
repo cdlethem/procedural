@@ -1,16 +1,8 @@
-# Install CityMarks on Processing Java
+# Install Procedurals
 
-Extract `.work/dist/r2/java/procedurals-processing-0.13.0.zip` into the libraries folder
-of your Processing sketchbook and restart Processing. Open CityMarks from the library
-examples. Desktop Processing4 and P3D/OpenGL are required. This local archive includes
-14 operations and13 starters; it is not a registry publication.
+Follow the [README getting-started steps](../README.md#get-started). The single installer
+includes all 37 Java examples. You do not need this example’s older, separate package.
 
-From this checkout, stage and compile into a fresh directory:
+Continue with the [city marks guide](city-marks.md) to try the controls and change the drawing.
 
-```sh
-python3 tools/prepare_city_marks.py --output .work/examples/my-city-build
-```
-
-Open CityMarks/CityMarks.pde there. C changes colour, H changes height, R changes seed,
-0 resets and S saves the completed canvas. See [the guide](city-marks.md) for composition
-and fidelity details. The core JAR is unchanged from Java0.12.
+For custom paths or build inputs, see [installation help](building-java-from-source.md).

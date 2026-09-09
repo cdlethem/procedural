@@ -1,0 +1,32 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Installation documentation redirects to one full-library setup path. Carries forward existing runtime support only; no implementation or target claim changes.",
+  "previous_review": {
+    "path": "evidence/documentation/artist-copy-profile-marks-review.json",
+    "sha256": "a1fe7d1b657588f75dbe9edf3b6d0de22296a1eb9da86a3cce9987b0f7c67309"
+  },
+  "documentation_changes": {
+    "docs/installing-profile-marks.md": {
+      "before_sha256": "637e6de863c351c9a9caaa7d1500db7d961693b451e3c6fb4863bfe2d96ab429",
+      "after_sha256": "3bb38c48cf621e13d558faf7a19da96eb0f7f138ddf536a336a4eeaa1646ade3"
+    }
+  },
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/mesh/RadialProfile3D.java": "922d0bfffd53809ab77500892953a0f6008bae0e2f331517a4492837c069167b",
+    "packages/java/examples/ProfileMarks/ProfileComposition.java": "634fc9b390c48e96ded5fd5c6e1152724d7bbb416eb10c02708cadf546324036",
+    "packages/java-processing/examples/ProfileMarks/ProfileMarks.pde": "0c27374c075a0c325a1e8b2bd785df0d06fc4c91f901206ffa1c008112785bc4"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/radial-profile-surface-processing-java.json": "f5844cec19768ef48834fc02a19a70dab4446df54f979a234052a13ff6859d00",
+    "evidence/reproductions/cp7-p3d-savefix/result.json": "a83dfd3c27cb153d281be37c03873646235779a296a381013b47d4b8b0a8fc6e",
+    "evidence/reproductions/cp7-p3d-savefix/plan.json": "dddd88af1ec9935eec60aca2222320617364d8c05821498ad3a5100c3ebdec01",
+    "evidence/investigations/cp7-installed-first-visual-observations.json": "f28a07084aba483db0c57ac5c2a30b1d3f8cc074026a61355a4f843646474afe",
+    "evidence/investigations/cp7-installed-save-thread-review.json": "8eaac91c7ecbb52488c4719044eaa2c5f7153b9d7f38b05b16c0d9c6295809ef",
+    "docs/profile-marks.md": "2bac846026f6543e463661a4ac726fce086abee8736755da7242843aa2cc7d3c",
+    "docs/installing-profile-marks.md": "3bb38c48cf621e13d558faf7a19da96eb0f7f138ddf536a336a4eeaa1646ade3",
+    "evidence/reproductions/cp7-p3d-savefix/root-review.json": "bb23a2ad9a83f64bcba8019a373441179c7fc2eaea31aae2d30105312ea5148e",
+    "evidence/documentation/artist-copy-profile-marks-review.json": "a1fe7d1b657588f75dbe9edf3b6d0de22296a1eb9da86a3cce9987b0f7c67309"
+  }
+}

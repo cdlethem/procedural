@@ -1,0 +1,37 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Installation documentation redirects to one full-library setup path. Carries forward existing runtime support only; no implementation or target claim changes.",
+  "previous_review": {
+    "path": "evidence/documentation/artist-copy-branch-marks-review.json",
+    "sha256": "9d8a5402b7be14e1f7c8059485e3e556a5f3503c51eff0fc28f3aa557ff28f64"
+  },
+  "documentation_changes": {
+    "docs/installing-branch-marks.md": {
+      "before_sha256": "c14a07208ed0dd47c8659672f3c7598488a99f58ce3e62eda84cd7c0457cac8d",
+      "after_sha256": "ea93c2ddb6ab923799afc1e4407932c3904de383bfa2d3cda8dcf07dfbd19ebd"
+    }
+  },
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/topology/BranchTree2D.java": "25e11100c47d5bc1a25eae76d63ef91a0cdf90207971048005cc077141e57ed9",
+    "packages/java/examples/BranchMarks/BranchComposition.java": "a1b26b073c1dfe12e97950dfb9874ff964bb01fef2e1ea3ff95169100f4ce795",
+    "packages/java-processing/examples/BranchMarks/BranchMarks.pde": "a027fb071ec9be9dd29607b7ce7dccb86772e2ab1680945ddd0973df66113e2c"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/branch-tree-java.json": "e29a6404e7dbbd8814b10b658e65cb54312d11a7985135bb905e40cc66d66c66",
+    "evidence/conformance/branch-tree-java-review.json": "f22697aa22081231436d86bbde94cdc5842513de7bffad8efa5334bce873b362",
+    "evidence/distribution/cp6-java.json": "d1ff531f7aebb3a6ca573b46be3b51d463999c28aa24e96c0d39f6eb04884e70",
+    "evidence/reproductions/cp6-java2d/pde-result.json": "7d3e1bb8131b97e01bc7654f10c8507ae1f8b27bb734ce34d7bd3948a447ada7",
+    "evidence/reproductions/cp6-java2d/root-review.json": "1c191fd17c355e2e06d4a0bbdf11ccc1376e59ee124f694a256303ad9e143ff3",
+    "evidence/reproductions/cp6-java2d/pde-plan.json": "5e5c668adbc9ce0befe37cf50d94ab024a2e0dad210663d84b97fbe54e7261ed",
+    "docs/branch-marks.md": "e102fbee42114c3a7614908f22fceed632e1789410f6dc85e7e2db23660fea8c",
+    "docs/installing-branch-marks.md": "ea93c2ddb6ab923799afc1e4407932c3904de383bfa2d3cda8dcf07dfbd19ebd",
+    "evidence/distribution/cp6-review.json": "59b15e7b530a617be4f5c154199aefa4182189898785b8306922d139c45575ec",
+    "evidence/distribution/cp6-javascript-review.json": "3fb15c9c9e73313df7e243b0352310313be2b87fe2332a09ba1828e490099633",
+    "evidence/distribution/cp6-python-review.json": "a3fbc8b1f567f85d714ba778c71d7923c733d098056c9fab9a4cdc7637b70d41",
+    "evidence/distribution/cp6-android-review.json": "5d8d3b18e5fc8edf5c9a37087b952d0af56ba62a1100bd800e5092e9e2dadae8",
+    "evidence/distribution/cp6-docs-port-update-review.json": "0a4938b106f21b8c55cb86557fe7bd5482e63c82a0e631eb4ca0d86660494621",
+    "evidence/documentation/artist-copy-branch-marks-review.json": "9d8a5402b7be14e1f7c8059485e3e556a5f3503c51eff0fc28f3aa557ff28f64"
+  }
+}

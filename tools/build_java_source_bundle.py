@@ -43,13 +43,17 @@ def fresh_output(root, output):
     return output
 
 
+def java_tool(home, name):
+    return home / 'bin' / (name + ('.exe' if os.name == 'nt' else ''))
+
+
 def java_home(value):
     supplied = value or os.environ.get('JAVA_HOME')
     found = shutil.which('javac') if not supplied else None
     if not supplied and not found:
         raise ValueError('Supply --java-home, JAVA_HOME or javac on PATH')
     home = Path(supplied).expanduser().resolve() if supplied else Path(found).resolve().parents[1]
-    for name in ('bin/javac', 'bin/java', 'bin/javadoc', 'release', 'lib/modules'):
+    for name in (*[str(java_tool(Path(), n)) for n in ('javac', 'java', 'javadoc')], 'release', 'lib/modules'):
         if not (home / name).is_file():
             raise ValueError('Missing JDK input: ' + str(home / name))
     return home
@@ -63,13 +67,13 @@ def source_inputs(root):
     approval = json.loads((root / review['path']).read_text())
     if approval.get('status') != 'accepted' or approval.get('reviewer') != 'root':
         raise ValueError('Root distribution acceptance required')
-    actual = {str(p.relative_to(root)) for p in (root / 'packages/java/src/main/java').rglob('*.java')}
+    actual = {p.relative_to(root).as_posix() for p in (root / 'packages/java/src/main/java').rglob('*.java')}
     if actual != set(manifest['core_sources']):
         raise ValueError('Java source inventory differs from accepted source release')
     for name, expected in manifest['core_sources'].items():
         require_hash(root / name, expected)
     adapter_root = root / 'packages/java-processing/src/main/java'
-    actual_adapter = {str(p.relative_to(root)) for p in adapter_root.rglob('*.java')}
+    actual_adapter = {p.relative_to(root).as_posix() for p in adapter_root.rglob('*.java')}
     if actual_adapter != set(manifest['adapter_sources']):
         raise ValueError('Processing adapter inventory differs from accepted source release')
     for name, expected in manifest['adapter_sources'].items():
@@ -139,7 +143,7 @@ def build(root, output, jdk, font, notice, processing_core):
     files.update({name: root / v['source'] for name, v in manifest['examples'].items()})
     for directory in ('docs', 'catalog/operations', 'catalog/validation'):
         suffix = '*.md' if directory == 'docs' else '*.json'
-        files.update({'procedurals/' + str(p.relative_to(root)): p for p in (root / directory).rglob(suffix)})
+        files.update({'procedurals/' + p.relative_to(root).as_posix(): p for p in (root / directory).rglob(suffix)})
     # Ship the reviewed semantic documents named by the catalog, including normative math.
     for operation_file in manifest['operation_files']:
         operation = json.loads((root / 'catalog/operations' / operation_file).read_text())
@@ -148,7 +152,7 @@ def build(root, output, jdk, font, notice, processing_core):
             document = (root / review_path).resolve()
             if not document.is_relative_to(root.resolve()) or not document.is_file():
                 raise ValueError('Missing or external operation design document: ' + str(review_path))
-            files['procedurals/' + str(document.relative_to(root.resolve()))] = document
+            files['procedurals/' + document.relative_to(root.resolve()).as_posix()] = document
     files.update({'procedurals/src/' + name.removeprefix('packages/java/src/'): root / name
                   for name in manifest['core_sources']})
     files.update({'procedurals/adapter-src/main/java/' + name.removeprefix('packages/java-processing/src/main/java/'): root / name
@@ -157,15 +161,15 @@ def build(root, output, jdk, font, notice, processing_core):
     files['procedurals/examples/GlyphMarks/data/FONT-LICENSE.txt'] = notice
     files['procedurals/GlyphMarks-FONT-LICENSE.txt'] = notice
     inputs += [Path(__file__).resolve(), root / 'tools/operation_attestations.py', root / 'tools/reviewed_export_extension.py', processing_core, *files.values(),
-               *[jdk / n for n in ('bin/java', 'bin/javac', 'bin/javadoc', 'release', 'lib/modules')]]
+               *[java_tool(jdk, n) for n in ('java', 'javac', 'javadoc')], jdk / 'release', jdk / 'lib/modules']
     inputs = sorted(set(p.resolve() for p in inputs))
-    label = lambda p: str(p.relative_to(root)) if p.is_relative_to(root) else str(p)
+    label = lambda p: p.relative_to(root).as_posix() if p.is_relative_to(root) else str(p)
     before = {label(p): sha(p) for p in inputs}
     payloads = {name: p.read_bytes() for name, p in files.items()}
     output.mkdir(parents=True)
     classes = output / 'classes'
     classes.mkdir()
-    command = [str(jdk / 'bin/javac'), '--release', '8', '-encoding', 'UTF-8', '-d', str(classes),
+    command = [str(java_tool(jdk, 'javac')), '--release', '8', '-encoding', 'UTF-8', '-d', str(classes),
                *[str(root / n) for n in manifest['core_sources']]]
     result = subprocess.run(command, capture_output=True, text=True, timeout=120)
     (output / 'compile.json').write_text(json.dumps({'command': command, 'exit_code': result.returncode,
@@ -176,7 +180,7 @@ def build(root, output, jdk, font, notice, processing_core):
     if not class_payloads:
         raise RuntimeError('No compiled Java classes')
     reference = output / 'javadoc'
-    reference_report = generate_javadoc(jdk / 'bin/javadoc',
+    reference_report = generate_javadoc(java_tool(jdk, 'javadoc'),
                                         [root / name for name in [*manifest['core_sources'],
                                                                   *manifest['adapter_sources']]],
                                         reference, [processing_core])
@@ -194,7 +198,7 @@ def build(root, output, jdk, font, notice, processing_core):
     payloads['procedurals/library/procedurals.jar'] = jar.read_bytes()
     adapter_classes = output / 'adapter-classes'
     adapter_classes.mkdir()
-    adapter_command = [str(jdk / 'bin/javac'), '--release', '8', '-encoding', 'UTF-8',
+    adapter_command = [str(java_tool(jdk, 'javac')), '--release', '8', '-encoding', 'UTF-8',
                        '-classpath', str(classes) + os.pathsep + str(processing_core),
                        '-d', str(adapter_classes),
                        *[str(root / n) for n in manifest['adapter_sources']]]
