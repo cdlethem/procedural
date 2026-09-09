@@ -2,6 +2,30 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "port-loop-p5",
+      "title": "LoopMarks \u2014 reviewed p5 port",
+      "category": "Root reviewed browser workflow",
+      "description": "Retained spline outlines with tile decoration and fan transfer.",
+      "evidence": "evidence/ports/closed-spline-p5/root-review.json",
+      "images": [
+        {
+          "label": "Outline and tiles",
+          "path": ".work/port-loop-native-main1/baseline.png",
+          "sha256": "8e749b77e06f3c72302615811e2c225726812cb327d4a02e3c6913615e2d2af9"
+        },
+        {
+          "label": "Moved controls",
+          "path": ".work/port-loop-native-main1/t.png",
+          "sha256": "2d2b367cad72ef6c994ce51e512066595ff3547e1d84a5da3a8312d45800f199"
+        },
+        {
+          "label": "Fan transfer",
+          "path": ".work/port-loop-native-main1/m.png",
+          "sha256": "a7823e5b248a9fa8ad6deca5e96a8bf10a9d1b5c8bcaacf5e081eb44acd3203e"
+        }
+      ]
+    },
+    {
       "id": "port-warp-p5",
       "title": "WarpMarks \u2014 reviewed p5 port",
       "category": "Root reviewed browser workflow",

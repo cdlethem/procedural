@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "node_version": "v22.22.1",
+  "scope": "Pure LoopMarks model/command-generator checks against the shared drawing.fresh-raster-2d contract; no renderer or pixel claim (see real-browser verification separately recorded).",
+  "input_sha256_before": {
+    "packages/javascript/examples/loop-marks/loop-marks.js": "8f610c69d2d708bcd8a3e23c3d135e3d124ef2e058993ea47efbb16d69fdce91",
+    "tests/native/loop-marks-model.mjs": "aa0898e262acd58a7ed9f8e98a084a66b2b4c32dcf341c8f1cf2bfb0e217a8a4"
+  },
+  "input_sha256_after": {
+    "packages/javascript/examples/loop-marks/loop-marks.js": "8f610c69d2d708bcd8a3e23c3d135e3d124ef2e058993ea47efbb16d69fdce91",
+    "tests/native/loop-marks-model.mjs": "aa0898e262acd58a7ed9f8e98a084a66b2b4c32dcf341c8f1cf2bfb0e217a8a4"
+  },
+  "scenarios": {
+    "tileCount": 1048,
+    "quadCount": 280,
+    "segmentCount": 768,
+    "fanCount": 768
+  }
+}

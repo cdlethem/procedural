@@ -25,8 +25,12 @@ Delaunay core is accepted in `evidence/ports/delaunay-p5/root-review.json`, incl
 a root fix for function-argument overflow when joining a large hull. Rendering remains
 unvalidated.
 
-Remaining original JavaScript core work: closed spline, noise-band paths
-and line pools; LoopMarks, BandMarks and
+Closed spline and LoopMarks are accepted in
+`evidence/ports/closed-spline-p5/root-review.json`, following the arithmetic replacement
+and fresh 1,033-pair Java runtime oracle.
+
+Remaining original JavaScript core work: noise-band paths
+and line pools; BandMarks and
 CutBranchMarks workflows. SpringMarks animation still needs separate native acceptance. Existing operation contracts and
 shared fixtures stay authoritative, including any intentional host API differences.
 
@@ -48,3 +52,9 @@ also require their own complete source/notice review. No tolerance relaxation is
 All native browser/Processing runs use the shared machine lock at
 `tools/with_native_render_lock.py`. Gallery images remain ignored. Root alone writes shared
 acceptance records; the Android ProfileMarks draft in main remains untouched.
+
+The spline issue above is resolved for the integrated JavaScript slice: the OpenJDK-derived
+block was removed. `src/internal/fdlibm-hypot.js` directly translates the named netlib source
+and preserves its complete notice; an explicit scaled-high-word correction is documented.
+Fresh Java runtime comparisons test the replacement without copying the JDK implementation.
+The Python branch remains unchanged and is not accepted by this JavaScript review.

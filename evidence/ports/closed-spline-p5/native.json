@@ -1,0 +1,65 @@
+{
+  "input_sha256_before": {
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    "packages/javascript/examples/loop-marks/sketch.js": "8d0ad68788503f0cffb576c9834472f3ae5f182362d9ed59cd8fe23f9f4e1d69",
+    "packages/javascript/examples/loop-marks/loop-marks.js": "8f610c69d2d708bcd8a3e23c3d135e3d124ef2e058993ea47efbb16d69fdce91",
+    "packages/javascript/examples/loop-marks/index.html": "dd3af9cbef4df9c859e64e5aefad3fb2ad4f25591f303aa04f0c75e7b4419a61",
+    "tools/serve_loop_marks.mjs": "babefada026990b76660a90236bda53f6e3488d0b0da1adb6dac287cc0279335",
+    "tools/run_p5_loop_marks.mjs": "9a04701e9212f227aa2a2b65a7c01ca3f820c508b934f13bc827170c5ef75f3c"
+  },
+  "input_sha256_after": {
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    "packages/javascript/examples/loop-marks/sketch.js": "8d0ad68788503f0cffb576c9834472f3ae5f182362d9ed59cd8fe23f9f4e1d69",
+    "packages/javascript/examples/loop-marks/loop-marks.js": "8f610c69d2d708bcd8a3e23c3d135e3d124ef2e058993ea47efbb16d69fdce91",
+    "packages/javascript/examples/loop-marks/index.html": "dd3af9cbef4df9c859e64e5aefad3fb2ad4f25591f303aa04f0c75e7b4419a61",
+    "tools/serve_loop_marks.mjs": "babefada026990b76660a90236bda53f6e3488d0b0da1adb6dac287cc0279335",
+    "tools/run_p5_loop_marks.mjs": "9a04701e9212f227aa2a2b65a7c01ca3f820c508b934f13bc827170c5ef75f3c"
+  },
+  "status": "passed",
+  "browser": "153.0.8010.12",
+  "frames": [
+    {
+      "name": "baseline",
+      "hash": "19adad2af1d761fc8725b3c042410de24fffbace03f60acab937d8cf1711595f"
+    },
+    {
+      "name": "t",
+      "hash": "b9837903a7981968bf8dbcd52fefe8a66474f8ce6db26d8018a9c2e59da166dc"
+    },
+    {
+      "name": "c",
+      "hash": "028928aa5a37f5b28bb9c746aedecccd060e56a271f800a5148adbae5cd41fa9"
+    },
+    {
+      "name": "m",
+      "hash": "143d2bc448f5969b303a6e374b6fee2cdc4147923a2020edc78d49a65275754b"
+    },
+    {
+      "name": "reset",
+      "hash": "19adad2af1d761fc8725b3c042410de24fffbace03f60acab937d8cf1711595f"
+    }
+  ],
+  "errors": [],
+  "scope": "Actual p5 edits, reset identity, download and cached revision. No Java pixel parity claim.",
+  "artifacts_sha256": {
+    ".work/port-loop-native-main1/c.png": "f6f4195b214782ae4a28544bd2ba35238c678e9318923c0e401b4ae676ce11e3",
+    ".work/port-loop-native-main1/saved.png": "2fcfe0f54c3ac3de32cf11a8b209a933c5514bef59f0cd4f6fc50d512162e049",
+    ".work/port-loop-native-main1/reset.png": "8e749b77e06f3c72302615811e2c225726812cb327d4a02e3c6913615e2d2af9",
+    ".work/port-loop-native-main1/t.png": "2d2b367cad72ef6c994ce51e512066595ff3547e1d84a5da3a8312d45800f199",
+    ".work/port-loop-native-main1/baseline.png": "8e749b77e06f3c72302615811e2c225726812cb327d4a02e3c6913615e2d2af9",
+    ".work/port-loop-native-main1/m.png": "a7823e5b248a9fa8ad6deca5e96a8bf10a9d1b5c8bcaacf5e081eb44acd3203e"
+  },
+  "saved_pixels_equal_reset": true,
+  "runtime_sha256": {
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  }
+}

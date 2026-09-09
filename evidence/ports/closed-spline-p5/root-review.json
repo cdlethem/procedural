@@ -1,0 +1,47 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Direct-module JavaScript closed spline and source-checkout p5 LoopMarks workflow, using notice-preserved netlib hypot translation. No package/root-barrel/other-target or source recreation claim.",
+  "origin": {
+    "core_commit": "1af69adc",
+    "workflow_commit": "a2fae309",
+    "arithmetic_replacement": "Root replaced entire OpenJDK-derived hypot block with directly translated netlib e_hypot.c helper; Sun1993notice/URL/hash preserved in helper. Subnormal high-word refresh correction is explicit."
+  },
+  "implementation_sha256": {
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    "packages/javascript/examples/loop-marks/sketch.js": "8d0ad68788503f0cffb576c9834472f3ae5f182362d9ed59cd8fe23f9f4e1d69",
+    "packages/javascript/examples/loop-marks/loop-marks.js": "8f610c69d2d708bcd8a3e23c3d135e3d124ef2e058993ea47efbb16d69fdce91",
+    "packages/javascript/examples/loop-marks/index.html": "dd3af9cbef4df9c859e64e5aefad3fb2ad4f25591f303aa04f0c75e7b4419a61",
+    "tools/serve_loop_marks.mjs": "babefada026990b76660a90236bda53f6e3488d0b0da1adb6dac287cc0279335",
+    "tools/run_p5_loop_marks.mjs": "9a04701e9212f227aa2a2b65a7c01ca3f820c508b934f13bc827170c5ef75f3c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "tests/native/closed-spline-javascript.mjs": "e774f15c3138c6179a205a81cf71ddac12505190f5f1f071cf1ea8e1898f2a31",
+    "tests/native/loop-marks-model.mjs": "aa0898e262acd58a7ed9f8e98a084a66b2b4c32dcf341c8f1cf2bfb0e217a8a4",
+    "tests/native/fdlibm-hypot-javascript.mjs": "021ffeb882d246f5a10782e07abdbdbdb5a7a589e327924e91906cee67fdd421",
+    "tests/native/HypotOracle.java": "0e9d6f6f19694ad40c9fb24f534c10d78e26ff5726a94806423c99799a4405c0"
+  },
+  "evidence_sha256": {
+    "evidence/ports/closed-spline-p5/core.json": "e9df2977ad1a73dd9c3c4da6e84a197ce5186400d35c091c8b8ee7890e69d465",
+    "evidence/ports/closed-spline-p5/model.json": "0f57bc0005618c8e94ce2e04fa67a86fcb465ba22b13a7760bf6a86fca777eda",
+    "evidence/ports/closed-spline-p5/native.json": "1d831ecdf790abf50b31bdb75f68819c0a09e2bad02cf72457e187ee5bef9fc8",
+    "evidence/ports/closed-spline-p5/hypot-oracle.json": "ba29ce3035345456fba05067a2675f0938c84a6c379fc47d31391e8fb7817407",
+    "fixtures/operations/closed-spline-2d.json": "c7232c17d650b8b90ca9606e75abcbfc9c8d938ca6af088fb4f354d103056fc6"
+  },
+  "verified": [
+    "Root read replacement helper against netlib source and spline polynomial, cumulative chord table, wrap/query and detached/atomic output implementation.",
+    "Fresh runtime-only Java StrictMath oracle matches1033finite pairs by exact output bits:9scaling/subnormal boundaries,512full-range and512same-exponent pairs. No private-oracle dependency.",
+    "14shared spline fixtures and5query cases pass, plus Node ownership/carrier/Into checks. Loop model exercises1048tile commands and768fan triangles.",
+    "Actual Chromium5views edit/reset/save under shared native lock; reset and saved PNG equal baseline pixels. Root viewed outline/tile and moved/recolored fan transfer."
+  ],
+  "limits": [
+    "Internal helper preserves source notice and has no root export. No OpenJDK algorithm text imported.",
+    "Native fan drawing uses p5 triangles outside shared segment/quad command vocabulary; no shared adapter capability expansion.",
+    "No Java/browser pixel equality or source-original recreation claim.",
+    "Package/root-barrel exports remain pending common integration."
+  ]
+}

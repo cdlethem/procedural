@@ -1,5 +1,28 @@
 # Project state
 
+## Closed spline and LoopMarks accepted; fresh oracle passes
+
+Root took over oracle runner after worker patch delay; new HypotOracle.java reads raw-bit
+pairs and invokes actual StrictMath.hypot. Reproducible runner generates1033finite cases
+without private data; exact bits allmatch. Root accepts notice-preserved netlib replacement,
+14spline fixtures/5queries and actualLoopMarks5views/reset/save. Acceptance and boundproof
+in evidence/ports/closed-spline-p5/root-review.json; catalog p5core/native updated, technique
+unvalidated. Gallery includes tiles/moved/fan views. Remaining original JS branch2cores/
+2workflows plus exports/package integration. Python/Android untouched; mainAndroid draft
+preserved. No public helper export or OpenJDK algorithm import.
+
+## Closed-spline/LoopMarks candidate passes core and browser; fresh oracle pending
+
+Root read netlib-derived helper and replaced entire OpenJDK hypot block in imported JS
+spline with internal/fdlibm-hypot.js import.14fixtures/5query cases and LoopMarks model
+pass. Actual Chromium5views/reset/save pass under shared lease; root viewed outline/tile
+and fan transfer, saved pixels equal reset. Candidate evidence at
+evidence/ports/closed-spline-p5/{core,model,native}.json; no root review/attestation yet.
+port_core_review owns upgrading fdlibm-hypot-javascript.mjs plus new HypotOracle.java to
+fresh pinned-Java raw-bit comparison without private .work oracle. Await/review that proof
+before accepting spline/native slice. New spline/helper/example/runner files remain
+untracked candidates, do not discard. Android draft preserved.
+
 ## Delaunay JS core reviewed with large-hull correction
 
 Root read full triangulation port; fixed lower.push(...upper) argument-limit bug reproduced
