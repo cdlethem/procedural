@@ -333,7 +333,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
-| processing-java | [conformant](../../evidence/conformance/segment-clip-root-review.json) | [validated-scoped](../../evidence/conformance/segment-clip-root-review.json) | unvalidated | [review](../../evidence/conformance/segment-clip-root-review.json) |
+| processing-java | [conformant](../../evidence/conformance/segment-clip-rational-successor-review.json) | [validated-scoped](../../evidence/conformance/segment-clip-rational-successor-review.json) | unvalidated | [review](../../evidence/conformance/segment-clip-rational-successor-review.json) |
 | p5js | unvalidated | unvalidated | unvalidated | not attested |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
@@ -1018,6 +1018,79 @@ Motivating evidence:
 - [`2017/Generativos/Eyes/eyes002#1`](../../survey/out/2017/Generativos/Eyes/eyes002/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/masked-source-over.json).
+
+## geometry.nearest-segment-contact-2d (0.1.0)
+
+Find the first closed-segment contact for each supplied directed query against supplied obstacles, retaining obstacle identity and explicit misses.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "queries": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 4,
+        "maxItems": 4
+      },
+      "maxItems": 536870911
+    },
+    "obstacles": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 4,
+        "maxItems": 4
+      },
+      "maxItems": 536870911
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "queries",
+    "obstacles",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| queries | caller coordinate quadruples | null | null | Supplied directed strokes; plasma007 nearest-hit extraction and private web/connector study. |
+| obstacles | caller coordinate quadruples | null | null | Explicit obstacle substitution is project design; no source-specific ordering hidden. |
+| maxWork | pair-test allowance | null | null | Engineering preflight, not an artistic recommendation. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/nearest-contact-root-review.json) | [validated-scoped](../../evidence/conformance/nearest-contact-root-review.json) | unvalidated | [review](../../evidence/conformance/nearest-contact-root-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2018/Generativos/plasma007#2`](../../survey/out/2018/Generativos/plasma007/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/nearest-segment-contact-2d.json).
 
 ## path.noise-band-trace-2d (0.1.0)
 

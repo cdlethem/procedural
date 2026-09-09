@@ -101,7 +101,7 @@ def generate_javadoc(javadoc, sources, output, classpath=None):
     output.mkdir(parents=True, exist_ok=True)
     command = [str(javadoc), '--release', '8', '-encoding', 'UTF-8',
                '-docencoding', 'UTF-8', '-charset', 'UTF-8', '-locale', 'en',
-               '-notimestamp', '-Xdoclint:all', '-Xmaxwarns', '10000',
+               '-notimestamp', '-package', '-Xdoclint:all', '-Xmaxwarns', '10000',
                '-d', str(output)]
     if classpath:
         command += ['-classpath', os.pathsep.join(map(str, classpath))]

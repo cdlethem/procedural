@@ -1,0 +1,31 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Closed first-contact Java core and scoped ContactMarks native workflow plus actual Java ray-web transfer; no full-source recreation or other-target support.",
+  "implementation_sha256": {
+    "packages/java/src/main/java/org/procedurals/geometry/NearestSegmentContact2D.java": "f3924c53b5a40c8f3e49e75b4f4cc91c9f51b281647e70959cba8c8dd70ec72e",
+    "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad",
+    "packages/java-processing/examples/ContactMarks/ContactMarks.pde": "2bd22409ef6bb69421e2306c0c614b84c3e6a726e5f4baaec21d6a26cf2b61c5"
+  },
+  "evidence_sha256": {
+    "evidence/conformance/nearest-contact-java-candidate.json": "36d782be1e31266a71397bbcd580f899896f0a4fc793bd47efbda358848d7ddb",
+    "evidence/conformance/nearest-contact-performance-candidate.json": "7327d8f21ce283903b82c3d8864151e719024c9c3e4bd1da84180821bac9563f",
+    "evidence/workflows/contact-marks/native.json": "dc9d9e128c969bca6d741c3ef8d1c7feaeb28f1e1e3a7fdbfe7cd7862f110ea9",
+    "evidence/workflows/contact-marks/java-transfer.json": "3b5dd4902a79a3faedac3dac7d736b26919632f2b3e63bfcad165190096d4644",
+    "evidence/workflows/contact-marks/root-review.json": "b488e1565bb64480dfc1e5245867266e6ad6d6c048fff9b02cb446c0e09f4eda",
+    "fixtures/operations/nearest-segment-contact-2d.json": "f0f572015e30260bdcc4fa122f302bb3e8a6c857eaf71dc11915dbe206458f46",
+    "design/operations/nearest-contact-contract-review.md": "3d0d44c416a2e9cca32b0ff714b595f24bf35a3ce0c54341ff2301baf1b553c5"
+  },
+  "verified": [
+    "Root reviewed complete nearest core and independent rational fixture oracle;26shared exact cases and57Java ownership/carrier/index/error checks pass.",
+    "Root reviewed and verified shared arithmetic extraction and obstacle-precompute optimization; outputs unchanged, measured allocation reduced.",
+    "ContactMarks actual5state editing/reset/save matches exact oracle; root viewed obstacle and color changes.",
+    "Java ray-web transfer actual outputs and obstacle identities agree with exact oracle; root viewed baseline/shifted native panels."
+  ],
+  "limits": [
+    "Pair-count budget is not a runtime guarantee; exact arithmetic remains allocation intensive.",
+    "Origin and collinear-onset contact are included, caller exclusions explicit.",
+    "No source-specific two-pass plasma007 reproduction or distribution acceptance."
+  ]
+}

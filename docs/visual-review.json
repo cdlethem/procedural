@@ -2,6 +2,54 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "contact-marks",
+      "title": "First contact \u2014 connectors and ray web",
+      "category": "Native workflow; packaging pending",
+      "description": "Production Java contact queries, obstacle edits, styling by hit identity and ray-web transfer.",
+      "evidence": "evidence/workflows/contact-marks/root-review.json",
+      "images": [
+        {
+          "label": "Connectors",
+          "path": ".work/contact-marks-native-root1/native/baseline.png",
+          "sha256": "72a0fce3ad5ee8819dc54b971eb19becc909f6d8a0740bb0e082e20fa252aecb"
+        },
+        {
+          "label": "Moved boundary",
+          "path": ".work/contact-marks-native-root1/native/shifted.png",
+          "sha256": "2810e8232a42045977526cc1295ac07c78b6c9d8dfd7029ea32cb26b56c6701e"
+        },
+        {
+          "label": "Colors by obstacle",
+          "path": ".work/contact-marks-native-root1/native/recolored.png",
+          "sha256": "0a8aae663c569d0847038cc62d00ece9d8f7b3f8954024f1a0921576305c8236"
+        },
+        {
+          "label": "Java ray-web transfer",
+          "path": ".work/contact-transfer-java-root1/baseline.png",
+          "sha256": "26fbbcbf4d40695b00f2f17d939a1cc7f0e0d1052ef70c6a31f33bb0bb7bfad4"
+        }
+      ]
+    },
+    {
+      "id": "nearest-contact-study",
+      "title": "Nearest contact \u2014 private geometry study",
+      "category": "Private study",
+      "description": "Precomputed exact contacts rendered in JAVA2D: ray web and connectors to a supplied boundary. Not package functionality.",
+      "evidence": "evidence/parameter-experiments/nearest-contact/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/closed-contact-study-root1/baseline.png",
+          "sha256": "26fbbcbf4d40695b00f2f17d939a1cc7f0e0d1052ef70c6a31f33bb0bb7bfad4"
+        },
+        {
+          "label": "Shifted",
+          "path": ".work/closed-contact-study-root1/shifted.png",
+          "sha256": "0ada51a85cfcacb20d4d1a928b24611a90642e162b56de06e739fe3b962bd7bf"
+        }
+      ]
+    },
+    {
       "id": "masked-partition-marks",
       "title": "Masked partitions \u2014 replaceable content",
       "category": "Native workflow; packaging pending",

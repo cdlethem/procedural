@@ -1,0 +1,211 @@
+{
+  "status": "measured-candidate",
+  "scope": "Root before/after obstacle conversion hoist, pure Java core only; no renderer or portable timing guarantee",
+  "source_sha256": {
+    "tools/diagnostics/clipping/NearestContactPerformance.java": "7384c2bff54821ba9c562fedab612068769525cf64c265161574583c9920f8d4",
+    ".work/nearest-contact-obstacle-precompute-01/result.json": "36d782be1e31266a71397bbcd580f899896f0a4fc793bd47efbda358848d7ddb",
+    ".work/nearest-contact-performance-root2/NearestContactPerformance.class": "58d66638d4f481a87ad2bb654ec6ddc4c1a8daadd28c8491282eef54bdab9dd0",
+    ".work/nearest-contact-performance-root2/results.jsonl": "93a667fb3ead2cd0d43bacd08623b56a563b71262f28f647a7c801e71731848b"
+  },
+  "baseline": {
+    "status": "measured-candidate-baseline",
+    "scope": "Before obstacle-conversion hoisting; pure Java core, not renderer performance.",
+    "bound_files": {
+      "tools/diagnostics/clipping/NearestContactPerformance.java": "7384c2bff54821ba9c562fedab612068769525cf64c265161574583c9920f8d4",
+      ".work/nearest-contact-core-root1/result.json": "a979825c1ead278fc9dd8ba8867ad8a26d299a731b3bea8a38150b935f23ac92",
+      ".work/nearest-contact-performance-root1/NearestContactPerformance.class": "58d66638d4f481a87ad2bb654ec6ddc4c1a8daadd28c8491282eef54bdab9dd0",
+      ".work/nearest-contact-performance-root1/results.jsonl": "e1a36d5e28f431f6210dff7ab9c16c5c5cc0c8ad9a926a37768fec9afdd6c5a4"
+    },
+    "runtime": "Pinned17.0.20.1+1, -Xmx512m",
+    "commands": [
+      "javac --release 8 -cp .work/nearest-contact-core-root1/classes -d .work/nearest-contact-performance-root1 tools/diagnostics/clipping/NearestContactPerformance.java",
+      "java -Xmx512m -cp .work/nearest-contact-performance-root1:.work/nearest-contact-core-root1/classes NearestContactPerformance"
+    ],
+    "observations": [
+      {
+        "queries": 4,
+        "obstacles": 4,
+        "pair_tests": 16,
+        "warmups": 2,
+        "repetition": 0,
+        "elapsed_ns": 707519,
+        "allocated_bytes": 109272,
+        "checksum": "17075397987175235584"
+      },
+      {
+        "queries": 4,
+        "obstacles": 4,
+        "pair_tests": 16,
+        "warmups": 2,
+        "repetition": 1,
+        "elapsed_ns": 493769,
+        "allocated_bytes": 109056,
+        "checksum": "17075397987175235584"
+      },
+      {
+        "queries": 4,
+        "obstacles": 4,
+        "pair_tests": 16,
+        "warmups": 2,
+        "repetition": 2,
+        "elapsed_ns": 349970,
+        "allocated_bytes": 109056,
+        "checksum": "17075397987175235584"
+      },
+      {
+        "queries": 64,
+        "obstacles": 64,
+        "pair_tests": 4096,
+        "warmups": 2,
+        "repetition": 0,
+        "elapsed_ns": 7668439,
+        "allocated_bytes": 23718800,
+        "checksum": "7788975555537272832"
+      },
+      {
+        "queries": 64,
+        "obstacles": 64,
+        "pair_tests": 4096,
+        "warmups": 2,
+        "repetition": 1,
+        "elapsed_ns": 6075251,
+        "allocated_bytes": 22850576,
+        "checksum": "7788975555537272832"
+      },
+      {
+        "queries": 64,
+        "obstacles": 64,
+        "pair_tests": 4096,
+        "warmups": 2,
+        "repetition": 2,
+        "elapsed_ns": 3210305,
+        "allocated_bytes": 22812176,
+        "checksum": "7788975555537272832"
+      },
+      {
+        "queries": 256,
+        "obstacles": 256,
+        "pair_tests": 65536,
+        "warmups": 2,
+        "repetition": 0,
+        "elapsed_ns": 37032186,
+        "allocated_bytes": 368149728,
+        "checksum": "8946400659771490304"
+      },
+      {
+        "queries": 256,
+        "obstacles": 256,
+        "pair_tests": 65536,
+        "warmups": 2,
+        "repetition": 1,
+        "elapsed_ns": 36604868,
+        "allocated_bytes": 368149728,
+        "checksum": "8946400659771490304"
+      },
+      {
+        "queries": 256,
+        "obstacles": 256,
+        "pair_tests": 65536,
+        "warmups": 2,
+        "repetition": 2,
+        "elapsed_ns": 36059328,
+        "allocated_bytes": 368149728,
+        "checksum": "8946400659771490304"
+      }
+    ]
+  },
+  "observations": [
+    {
+      "queries": 4,
+      "obstacles": 4,
+      "pair_tests": 16,
+      "warmups": 2,
+      "repetition": 0,
+      "elapsed_ns": 678039,
+      "allocated_bytes": 69464,
+      "checksum": "17075397987175235584"
+    },
+    {
+      "queries": 4,
+      "obstacles": 4,
+      "pair_tests": 16,
+      "warmups": 2,
+      "repetition": 1,
+      "elapsed_ns": 408380,
+      "allocated_bytes": 69248,
+      "checksum": "17075397987175235584"
+    },
+    {
+      "queries": 4,
+      "obstacles": 4,
+      "pair_tests": 16,
+      "warmups": 2,
+      "repetition": 2,
+      "elapsed_ns": 330349,
+      "allocated_bytes": 69248,
+      "checksum": "17075397987175235584"
+    },
+    {
+      "queries": 64,
+      "obstacles": 64,
+      "pair_tests": 4096,
+      "warmups": 2,
+      "repetition": 0,
+      "elapsed_ns": 3569775,
+      "allocated_bytes": 10886752,
+      "checksum": "7788975555537272832"
+    },
+    {
+      "queries": 64,
+      "obstacles": 64,
+      "pair_tests": 4096,
+      "warmups": 2,
+      "repetition": 1,
+      "elapsed_ns": 1979108,
+      "allocated_bytes": 10886752,
+      "checksum": "7788975555537272832"
+    },
+    {
+      "queries": 64,
+      "obstacles": 64,
+      "pair_tests": 4096,
+      "warmups": 2,
+      "repetition": 2,
+      "elapsed_ns": 2616907,
+      "allocated_bytes": 10886752,
+      "checksum": "7788975555537272832"
+    },
+    {
+      "queries": 256,
+      "obstacles": 256,
+      "pair_tests": 65536,
+      "warmups": 2,
+      "repetition": 0,
+      "elapsed_ns": 21425950,
+      "allocated_bytes": 161829152,
+      "checksum": "8946400659771490304"
+    },
+    {
+      "queries": 256,
+      "obstacles": 256,
+      "pair_tests": 65536,
+      "warmups": 2,
+      "repetition": 1,
+      "elapsed_ns": 16202966,
+      "allocated_bytes": 161829152,
+      "checksum": "8946400659771490304"
+    },
+    {
+      "queries": 256,
+      "obstacles": 256,
+      "pair_tests": 65536,
+      "warmups": 2,
+      "repetition": 2,
+      "elapsed_ns": 16061167,
+      "allocated_bytes": 161829152,
+      "checksum": "8946400659771490304"
+    }
+  ],
+  "runtime": "Pinned JDK17.0.20.1+1,-Xmx512m",
+  "verified": "All output checksums and exact expected contacts unchanged. Input obstacle conversion moved outside query-pair loop; pair traversal/selection unchanged."
+}

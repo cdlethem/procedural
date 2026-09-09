@@ -59,6 +59,9 @@ irregular visible region, draw that shape into a transparent layer and extract i
 with `Java2DLayers.alphaMask`, as in [MaskMarks](mask-marks.md). This masks image content;
 it does not produce clipped vector paths or make geometry follow the boundary.
 
+[ContactMarks](contact-marks.md) instead stops each directed stroke at its first supplied
+obstacle, preserving hit identity. Origin touches count; choose the obstacle list explicitly.
+
 For retained line geometry, [ClipMarks](clip-marks.md) uses `SegmentClip2D` to trim
 supplied segments to one simple polygon, including a concave outline. It returns each
 interior piece with its original source index. This trims centerlines; use an image mask

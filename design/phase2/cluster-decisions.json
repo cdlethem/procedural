@@ -2501,6 +2501,49 @@
           }
         ]
       }
+    },
+    {
+      "id": "geometry.nearest-segment-contact-2d",
+      "status": "reviewed_provisional",
+      "reason": "First-contact query removes exact segment intersection, collinear onset and nearest ordering from supplied stroke/obstacle compositions.",
+      "admission_kind": "capability_dependency",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Finite directed query segments, supplied obstacle segments, explicit maxWork.",
+        "outputs": "Ordered nullable first-contact records with obstacle ordinal, parameter and point.",
+        "invariants": "Closed contact including origin/overlap onset, exact nearest ordering, stable ordinal ties, nearest-even export with interior-collapse failure, no partial result.",
+        "open_questions": [],
+        "review": "design/capabilities/nearest-contact-admission.md",
+        "reviewer": "root"
+      },
+      "dependency_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root",
+        "decision": "design/capabilities/nearest-contact-admission.md",
+        "rationale": "Independently specify contact infrastructure; preserve distinction from source-specific suffix-only two-pass web construction.",
+        "motivating_candidates": [
+          {
+            "candidate_id": "2018/Generativos/plasma007#2",
+            "source_sha256": "f922a247f89105968ba753a5e60aa4d3c23d709e483dc7d131ccc82ba3461818",
+            "evidence_sha256": "c4b07c1ca16159425420a45ac87062a5381ca644a0a967c128cdeadfdf15e1e1",
+            "dependency": "Closed first contact against separately supplied obstacle segments.",
+            "remainder": [
+              {
+                "component": "Ray construction, same-origin filtering, suffix-only pass order, miss dropping, extension and repeated passes",
+                "disposition": "recipe",
+                "reason": "Explicit source composition; not hidden contact-query behavior."
+              },
+              {
+                "component": "Strict coordinate-box tests rejecting axis-aligned crossings and ignoring overlap",
+                "disposition": "out_of_scope",
+                "reason": "Deliberately correct source defects; no whole-computation equivalence claim."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "records": {

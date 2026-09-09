@@ -1,0 +1,11 @@
+{
+  "status": "passed-mechanical-extraction-review",
+  "scope": "Root compared extracted arithmetic body and remaining clipper tokens after class rename; native conformance is separate",
+  "source_sha256": {
+    "packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java": "ba6d6e730936418c07a54c806cda5310c9bb137a2544011749b3e224cb016881",
+    "packages/java/src/main/java/org/procedurals/geometry/ExactRational.java": "1f56f431715a02728586214f21dd2eed9b5031bcd1de5201be641ce5c52ce1ad"
+  },
+  "baseline_commit": "53b34ebcc37d358c1957fad246a96ad0ad573e1d",
+  "arithmetic_tokens_equal": true,
+  "clipper_tokens_equal_after_helper_extraction": true
+}

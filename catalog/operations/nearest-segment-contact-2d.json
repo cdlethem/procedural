@@ -1,0 +1,211 @@
+{
+  "id": "geometry.nearest-segment-contact-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "capability": "nearest-obstacle-contact",
+  "description": "Find the first closed-segment contact for each supplied directed query against supplied obstacles, retaining obstacle identity and explicit misses.",
+  "decision_cluster": "geometry.nearest-segment-contact-2d",
+  "capability_decision": "design/capabilities/nearest-contact-admission.md",
+  "design_review": "design/operations/nearest-contact-contract-review.md",
+  "provenance": [
+    {
+      "candidate_id": "2018/Generativos/plasma007#2",
+      "notes_path": "survey/out/2018/Generativos/plasma007/notes.md",
+      "note_sha256": "f922a247f89105968ba753a5e60aa4d3c23d709e483dc7d131ccc82ba3461818",
+      "evidence_sha256": "c4b07c1ca16159425420a45ac87062a5381ca644a0a967c128cdeadfdf15e1e1",
+      "relationship": "Independent contact dependency; source suffix-only two-pass web orchestration and incorrect extent checks are not inherited."
+    }
+  ],
+  "input_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "queries": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "maxItems": 536870911
+      },
+      "obstacles": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "maxItems": 536870911
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "queries",
+      "obstacles",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "hits": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "obstacleIndex": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 536870910
+                },
+                "t": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "point": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              },
+              "required": [
+                "obstacleIndex",
+                "t",
+                "point"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "maxItems": 536870911
+      }
+    },
+    "required": [
+      "hits"
+    ],
+    "additionalProperties": false
+  },
+  "behavior": {
+    "input": "Exactly queries,obstacles,maxWork in a passive record. Validate keys; queries list and finite quadruples in order; obstacles list and finite quadruples in order; maxWork. Binary64 carriers only, no bool/string conversion. Java Byte,Short,Integer,Long,Float,Double only. Canonicalize signed zero. Validate all static input even when queries or obstacles empty. No defaults. Coordinates share caller units/origin/axes.",
+    "work": "Let Q=queries.length,O=obstacles.length. Exact integer W=Q*O. WORK_LIMIT_EXCEEDED when W>maxWork after all static validation and before contact computation/output generation. W counts abstract pair tests, not arithmetic instructions, time or allocation. Counts are representational ceilings, not artistic ranges.",
+    "contact": "Each query A+t(B-A) and obstacle C+u(D-C) is closed. Nonparallel intersection qualifies iff exact t,u in[0,1]. Parallel noncollinear pairs miss. Collinear pairs intersect in a closed query-parameter interval: choose its least t. A zero-length query has t=0 iff its point belongs to the obstacle; a point obstacle may be contacted. Empty intersection misses. No automatic self/same-origin filtering. All predicates and ordering use exact rational values of supplied binary64 inputs.",
+    "selection": "Select smallest exact t per query, ties by smallest supplied obstacle ordinal. Obstacle orientation does not affect contact location. Query orientation does. Return one entry per query in original order: null for miss or record obstacleIndex,t,point. No mutation or feedback between queries; later obstacles are not shortened by earlier queries. Overlap extent is not returned.",
+    "rounding": "After selecting contact round exact t and each exact A+t(B-A) coordinate once to binary64 nearest-even; normalize zero. Exact t=0/1 preserves corresponding normalized input endpoint. For exact0<t<1 throw REPRESENTATION_COLLAPSE stage parameter if rounded t is0or1; otherwise stage point if rounded point equals either query endpoint. Include queryIndex and stage. Check queries in input order; parameter before point. No partial output. Exact endpoint contacts including point queries are valid. Rounded point may lie slightly off exact obstacle; no painted-footprint guarantee.",
+    "ownership": "Inputs not retained or mutated. Result owns contacts; exports detached data. No RNG,time,renderer or host objects. Native allocation failure remains host failure.",
+    "complexity": "O(Q*O) exact geometric pair tests plus exact arithmetic bit costs; O(Q+O) captured input and O(Q) result storage; no per-pair retained result.",
+    "access": "Java reference exposes static find(Object configuration), size(), hitAt(long index) and toValues(). hitAt returns null for miss or immutable Contact with obstacleIndex,t,x,y primitive fields. Negative indices produce INVALID_INDEX; index>=size produces INDEX_OUT_OF_RANGE. toValues returns independently owned output-schema records/lists. No mutable array accessor is necessary for a single contact. Java ContactException extends IllegalArgumentException with public final code, queryIndex and stage; queryIndex=-1 and stage=null except representation collapse. Contact fields are immutable primitive values; constructors are private."
+  },
+  "output_invariants": "hits length equals query count. Each nonnull obstacleIndex is in supplied obstacle range; finite t in[0,1], finite point and canonical positive zero. Selection precedes rounding; no miss removal.",
+  "errors": {
+    "INVALID_INPUT": "Static shape/carrier/domain failure.",
+    "WORK_LIMIT_EXCEEDED": "Exact Q*O exceeds supplied maxWork.",
+    "REPRESENTATION_COLLAPSE": "Interior selected contact cannot retain its distinction from a query endpoint; queryIndex and stage parameter or point.",
+    "INVALID_INDEX": "Negative Java result index.",
+    "INDEX_OUT_OF_RANGE": "Nonnegative Java result index at or above size."
+  },
+  "parameters": {
+    "queries": {
+      "unit": "caller coordinate quadruples",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Supplied directed strokes; plasma007 nearest-hit extraction and private web/connector study."
+    },
+    "obstacles": {
+      "unit": "caller coordinate quadruples",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Explicit obstacle substitution is project design; no source-specific ordering hidden."
+    },
+    "maxWork": {
+      "unit": "pair-test allowance",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Engineering preflight, not an artistic recommendation."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact rational topology"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "p5js": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact rational topology"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "py5": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact rational topology"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    },
+    "processing-android": {
+      "required": true,
+      "capabilities": [
+        "binary64",
+        "exact rational topology"
+      ],
+      "implementation_status": "not_implemented",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated"
+    }
+  },
+  "fixtures": "fixtures/operations/nearest-segment-contact-2d.json",
+  "reproduction": {
+    "status": "unvalidated",
+    "scope": "Private precomputed exact-data views only; no Java implementation or full plasma007 reproduction."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root",
+    "status": "Root reviewed closed-contact semantics and26 shared fixtures for Java implementation; no core/native support accepted."
+  },
+  "exclusions": [
+    "ray generation or extension",
+    "source-specific ordered two-pass orchestration",
+    "automatic self/group exclusion",
+    "infinite rays",
+    "all intersection classification or overlap extent",
+    "spatial index",
+    "drawing and stroke width clipping"
+  ],
+  "fixture_format": "exact-json-output"
+}
