@@ -1,0 +1,68 @@
+{
+  "status": "source-investigation-only",
+  "owner": "root",
+  "revision": "69bdd8513e4482a5e6018e36887d4bc208660eb5",
+  "sources": [
+    {
+      "source": "2014/Generativos/Forms/forms1/forms1.pde",
+      "url": "https://raw.githubusercontent.com/manoloide/AllSketchs/69bdd8513e4482a5e6018e36887d4bc208660eb5/2014/Generativos/Forms/forms1/forms1.pde",
+      "sha256": "df850e1ea86f7229067839e5e96b0aca0dd2953af89194e89a7acc88a001f688",
+      "note": "survey/out/2014/Generativos/Forms/forms1/notes.md",
+      "note_sha256": "fb9190dea785b772793257d1358e443160441af5f1f28f118c17d83f16a55bb5"
+    },
+    {
+      "source": "2018/Generativos/plasma007/plasma007.pde",
+      "url": "https://raw.githubusercontent.com/manoloide/AllSketchs/69bdd8513e4482a5e6018e36887d4bc208660eb5/2018/Generativos/plasma007/plasma007.pde",
+      "sha256": "2e7288d79ae1c0eecbc8129717953b1b49d30e7b4e229cd42b9fd2a257e1bf1f",
+      "note": "survey/out/2018/Generativos/plasma007/notes.md",
+      "note_sha256": "f922a247f89105968ba753a5e60aa4d3c23d709e483dc7d131ccc82ba3461818"
+    }
+  ],
+  "counterexamples": [
+    {
+      "case": "forms1 missing y bounds",
+      "segments": [
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          -1,
+          2,
+          1,
+          2
+        ]
+      ],
+      "supporting_lines_intersection": [
+        0,
+        2
+      ],
+      "actual_segment_intersection": null,
+      "reason": "Source accepts x=0 in both x extents but fails to reject y=2 outside first segment. Analytic witness; source function not executed."
+    },
+    {
+      "case": "plasma007 axis-aligned crossing",
+      "segments": [
+        [
+          -1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          -1,
+          0,
+          1
+        ]
+      ],
+      "actual_segment_intersection": [
+        0,
+        0
+      ],
+      "reason": "Source strict y interval on horizontal segment and strict x interval on vertical segment are empty. Analytic witness; source function not executed."
+    }
+  ]
+}

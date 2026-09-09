@@ -263,6 +263,88 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/binary-cell-partition-2d.json).
 
+## geometry.clip-segments-simple-polygon-2d (0.1.0)
+
+Clip supplied segments to a simple concave polygon, retaining source identity and every positive-length interior or boundary interval.
+
+Contract status: reviewed.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "polygon": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "minItems": 3,
+      "maxItems": 1073741823
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 4,
+        "maxItems": 4
+      },
+      "maxItems": 536870911
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "maxOutputSegments": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 536870911
+    }
+  },
+  "required": [
+    "polygon",
+    "segments",
+    "maxWork",
+    "maxOutputSegments"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| polygon | caller coordinate pairs | null | null | forms1 clipping boundary; simple-polygon domain is explicit design. |
+| segments | caller coordinate quadruples | null | null | Supplied strokes separate generation from clipping; private hatch/stroke transfer. |
+| maxWork | abstract geometry work allowance | null | null | Engineering preflight; no artistic range. |
+| maxOutputSegments | retained interval count | null | null | Engineering memory/output allowance; no artistic range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | [conformant](../../evidence/conformance/segment-clip-root-review.json) | [validated-scoped](../../evidence/conformance/segment-clip-root-review.json) | unvalidated | [review](../../evidence/conformance/segment-clip-root-review.json) |
+| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+- [`2014/Generativos/Forms/forms1#0`](../../survey/out/2014/Generativos/Forms/forms1/notes.md)
+- [`2014/Generativos/Forms/forms1#1`](../../survey/out/2014/Generativos/Forms/forms1/notes.md)
+
+Full behavioral contract: [catalog](../../catalog/operations/clip-segments-simple-polygon-2d.json).
+
 ## geometry.closed-spline-2d (0.1.0)
 
 Retain a closed uniform Catmull-Rom spline from explicit planar controls with direct parameter and approximate distance queries.

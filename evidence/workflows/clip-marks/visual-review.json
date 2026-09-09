@@ -1,0 +1,27 @@
+{
+  "status": "reviewed-candidate-native-results",
+  "owner": "root",
+  "scope": "Actual ClipMarks desktop JAVA2D workflow at recorded source hashes; core and distribution acceptance remain pending.",
+  "evidence_sha256": {
+    "evidence/workflows/clip-marks/native.json": "ec2925d6a3be54290fcab5999d76c9dec4cf7cc8c1bcf28704d78a8ecc88f181"
+  },
+  "observations": {
+    "baseline": "Dense diagonal segments stop at the outer rectangle and concave notch; no segment bridges the excluded notch.",
+    "sparse": "Wider spacing preserves the same clipping boundary.",
+    "shallow-notch": "Moving the notch floor reveals additional retained hatching above the smaller exclusion.",
+    "supplied-strokes": "The independent zigzag source is split at the notch while preserving separated interior pieces.",
+    "recolored": "Source-based alternating colors identify both pieces of a split source consistently.",
+    "endpoints-hidden": "Endpoint markers disappear while clipped strokes remain.",
+    "overlay": "Faint original strokes expose the removed outside portions; colored output still respects the region."
+  },
+  "verified": [
+    "Source hashes were stable across the native run; current compiled artifacts and all PNG hashes match the recorded evidence.",
+    "Ten native states and actual key events passed; each state geometry was compared with the independent exact reference using actual input data.",
+    "Restored spacing, restored notch and reset match baseline pixels; cached save and appearance-only geometry reuse passed."
+  ],
+  "limits": [
+    "Mathematical centerline clipping; stroke widths and endpoint markers can extend past boundaries.",
+    "No whole-source reproduction, ports, arbitrary polygon callback adapter or distribution acceptance claimed.",
+    "Subsequent source readability edits require reviewed equivalence or new native evidence before acceptance."
+  ]
+}

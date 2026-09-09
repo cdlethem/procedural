@@ -1,11 +1,9 @@
 # Build the Java library from source
 
-The accepted Java 0.30 baseline contains 28 operations and 32 editable workflows.
-Pin a checkout to `f32d1aad85ef8256f7af2871529bc049e276e43c` to reproduce that
-milestone's sources; its archive identity and validation scope are recorded in the
-[CP27 distribution review](../evidence/distribution/cp27-java-review.json).
-Building a later checkout includes its current source and documentation changes; the
-result is a development build until separately reviewed.
+The accepted Java0.32.0 source bundle contains30 operations and34 editable workflows.
+Its archive identity and extracted-consumer validation are recorded in the
+[CP29 distribution review](../evidence/distribution/cp29-java-review.json).
+Building a changed checkout produces a development build until separately reviewed.
 
 Start with [the workflow chooser](choosing-java-workflow.md), then use
 [the composition guide](composing-java-effects.md) to combine region callbacks, image

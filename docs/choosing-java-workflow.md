@@ -7,6 +7,7 @@ For combining them, see [composing drawings, partitions and image effects](compo
 
 | Your idea | Start here | What the library supplies |
 | --- | --- | --- |
+| Trim an existing line drawing to a concave outline | [ClipMarks](clip-marks.md) | Retained clipped segments, source identities and parameter intervals; reuse geometry for styling. |
 | Cover a surface with related strokes or bars | [FieldMarks](getting-started.md) | Grid positions and repeatable spatial attributes; replace the drawn mark. |
 | Push a contour or line family around local circular influences | [ProjectionMarks](projection-marks.md) | Sequential outward deformation with explicit strength and influence order; retained points for alternate drawing. |
 | Bend a grid or closed contour around chosen centers | [PullMarks](pull-marks.md) | Local radius/power edits; retain the computed lines for recoloring or contour drawing. |

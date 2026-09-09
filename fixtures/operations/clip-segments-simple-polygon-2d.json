@@ -1,0 +1,1862 @@
+{
+  "operation": "geometry.clip-segments-simple-polygon-2d",
+  "version": "0.1.0",
+  "fixture_status": "reviewed",
+  "fixture_format": "segment-clipping-output",
+  "catalog_sha256": "c10f0619f16d5aca4bce2f7ab6a02f2693f7d59e2177b39521410959b27a4292",
+  "source_bindings": {
+    "tools/diagnostics/clipping/build_fixture_draft.py": "af6f820bf68fcdde8f9318a81b146931d4426e6790e83a341d32f4f4e7a734ca",
+    "tools/diagnostics/clipping/exact_clip_study.py": "c0188dbae5f2677d28cbbc7d7b8d0b6bb97b9fe781fcef2ae4a8521a84ea761d"
+  },
+  "cases": [
+    {
+      "id": "horizontal",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            2,
+            5,
+            2
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": 16
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            2.0,
+            4.0,
+            2.0
+          ]
+        ],
+        "sourceIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0.16666666666666666,
+            0.8333333333333334
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "0000000000000000",
+            "4000000000000000",
+            "4010000000000000",
+            "4000000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "3fc5555555555555",
+            "3feaaaaaaaaaaaab"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "vertical",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            2,
+            -1,
+            2,
+            5
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": 16
+      },
+      "output": {
+        "segments": [
+          [
+            2.0,
+            0.0,
+            2.0,
+            4.0
+          ]
+        ],
+        "sourceIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0.16666666666666666,
+            0.8333333333333334
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "4000000000000000",
+            "0000000000000000",
+            "4000000000000000",
+            "4010000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "3fc5555555555555",
+            "3feaaaaaaaaaaaab"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "boundary",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            0,
+            5,
+            0
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": 16
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            0.0,
+            4.0,
+            0.0
+          ]
+        ],
+        "sourceIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0.16666666666666666,
+            0.8333333333333334
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "0000000000000000",
+            "0000000000000000",
+            "4010000000000000",
+            "0000000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "3fc5555555555555",
+            "3feaaaaaaaaaaaab"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "vertex-diagonal",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            -1,
+            5,
+            5
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": 16
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            0.0,
+            4.0,
+            4.0
+          ]
+        ],
+        "sourceIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0.16666666666666666,
+            0.8333333333333334
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "0000000000000000",
+            "0000000000000000",
+            "4010000000000000",
+            "4010000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "3fc5555555555555",
+            "3feaaaaaaaaaaaab"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "point-tangent",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            1,
+            1,
+            -1
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": 0
+      },
+      "output": {
+        "segments": [],
+        "sourceIndices": [],
+        "intervals": []
+      },
+      "output_bits": {
+        "segments": [],
+        "intervals": []
+      }
+    },
+    {
+      "id": "zero-length",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            2,
+            2,
+            2,
+            2
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": 0
+      },
+      "output": {
+        "segments": [],
+        "sourceIndices": [],
+        "intervals": []
+      },
+      "output_bits": {
+        "segments": [],
+        "intervals": []
+      }
+    },
+    {
+      "id": "empty-sources",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [],
+        "maxWork": 16,
+        "maxOutputSegments": 0
+      },
+      "output": {
+        "segments": [],
+        "sourceIndices": [],
+        "intervals": []
+      },
+      "output_bits": {
+        "segments": [],
+        "intervals": []
+      }
+    },
+    {
+      "id": "inside",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            1,
+            1,
+            3,
+            3
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": 1
+      },
+      "output": {
+        "segments": [
+          [
+            1.0,
+            1.0,
+            3.0,
+            3.0
+          ]
+        ],
+        "sourceIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "3ff0000000000000",
+            "3ff0000000000000",
+            "4008000000000000",
+            "4008000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "0000000000000000",
+            "3ff0000000000000"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "concave-split",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            4,
+            7,
+            4
+          ]
+        ],
+        "maxWork": 712,
+        "maxOutputSegments": 2
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            4.0,
+            2.0,
+            4.0
+          ],
+          [
+            4.0,
+            4.0,
+            6.0,
+            4.0
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          0
+        ],
+        "intervals": [
+          [
+            0.125,
+            0.375
+          ],
+          [
+            0.625,
+            0.875
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "0000000000000000",
+            "4010000000000000",
+            "4000000000000000",
+            "4010000000000000"
+          ],
+          [
+            "4010000000000000",
+            "4010000000000000",
+            "4018000000000000",
+            "4010000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "3fc0000000000000",
+            "3fd8000000000000"
+          ],
+          [
+            "3fe4000000000000",
+            "3fec000000000000"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reversed-winding",
+      "input": {
+        "polygon": [
+          [
+            0,
+            6
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            4,
+            7,
+            4
+          ]
+        ],
+        "maxWork": 712,
+        "maxOutputSegments": 2
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            4.0,
+            2.0,
+            4.0
+          ],
+          [
+            4.0,
+            4.0,
+            6.0,
+            4.0
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          0
+        ],
+        "intervals": [
+          [
+            0.125,
+            0.375
+          ],
+          [
+            0.625,
+            0.875
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "0000000000000000",
+            "4010000000000000",
+            "4000000000000000",
+            "4010000000000000"
+          ],
+          [
+            "4010000000000000",
+            "4010000000000000",
+            "4018000000000000",
+            "4010000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "3fc0000000000000",
+            "3fd8000000000000"
+          ],
+          [
+            "3fe4000000000000",
+            "3fec000000000000"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reversed-source",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "segments": [
+          [
+            7,
+            4,
+            -1,
+            4
+          ]
+        ],
+        "maxWork": 712,
+        "maxOutputSegments": 2
+      },
+      "output": {
+        "segments": [
+          [
+            6.0,
+            4.0,
+            4.0,
+            4.0
+          ],
+          [
+            2.0,
+            4.0,
+            0.0,
+            4.0
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          0
+        ],
+        "intervals": [
+          [
+            0.125,
+            0.375
+          ],
+          [
+            0.625,
+            0.875
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "4018000000000000",
+            "4010000000000000",
+            "4010000000000000",
+            "4010000000000000"
+          ],
+          [
+            "4000000000000000",
+            "4010000000000000",
+            "0000000000000000",
+            "4010000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "3fc0000000000000",
+            "3fd8000000000000"
+          ],
+          [
+            "3fe4000000000000",
+            "3fec000000000000"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "collinear-floor",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            2,
+            7,
+            2
+          ]
+        ],
+        "maxWork": 712,
+        "maxOutputSegments": 1
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            2.0,
+            6.0,
+            2.0
+          ]
+        ],
+        "sourceIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0.125,
+            0.875
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "0000000000000000",
+            "4000000000000000",
+            "4018000000000000",
+            "4000000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "3fc0000000000000",
+            "3fec000000000000"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "source-identity",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "segments": [
+          [
+            8,
+            8,
+            9,
+            9
+          ],
+          [
+            -1,
+            4,
+            7,
+            4
+          ],
+          [
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            5,
+            1
+          ]
+        ],
+        "maxWork": 2656,
+        "maxOutputSegments": 3
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            4.0,
+            2.0,
+            4.0
+          ],
+          [
+            4.0,
+            4.0,
+            6.0,
+            4.0
+          ],
+          [
+            1.0,
+            1.0,
+            5.0,
+            1.0
+          ]
+        ],
+        "sourceIndices": [
+          1,
+          1,
+          3
+        ],
+        "intervals": [
+          [
+            0.125,
+            0.375
+          ],
+          [
+            0.625,
+            0.875
+          ],
+          [
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "0000000000000000",
+            "4010000000000000",
+            "4000000000000000",
+            "4010000000000000"
+          ],
+          [
+            "4010000000000000",
+            "4010000000000000",
+            "4018000000000000",
+            "4010000000000000"
+          ],
+          [
+            "3ff0000000000000",
+            "3ff0000000000000",
+            "4014000000000000",
+            "3ff0000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "3fc0000000000000",
+            "3fd8000000000000"
+          ],
+          [
+            "3fe4000000000000",
+            "3fec000000000000"
+          ],
+          [
+            "0000000000000000",
+            "3ff0000000000000"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "straight-vertex",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            2,
+            5,
+            2
+          ]
+        ],
+        "maxWork": 313,
+        "maxOutputSegments": 16
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            2.0,
+            4.0,
+            2.0
+          ]
+        ],
+        "sourceIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0.16666666666666666,
+            0.8333333333333334
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "0000000000000000",
+            "4000000000000000",
+            "4010000000000000",
+            "4000000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "3fc5555555555555",
+            "3feaaaaaaaaaaaab"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "scale--1000",
+      "input": {
+        "polygon": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            3.7330544740128755e-301,
+            0.0
+          ],
+          [
+            3.7330544740128755e-301,
+            3.7330544740128755e-301
+          ],
+          [
+            0.0,
+            3.7330544740128755e-301
+          ]
+        ],
+        "segments": [
+          [
+            -9.332636185032189e-302,
+            1.8665272370064378e-301,
+            4.666318092516094e-301,
+            1.8665272370064378e-301
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": 16
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            1.8665272370064378e-301,
+            3.7330544740128755e-301,
+            1.8665272370064378e-301
+          ]
+        ],
+        "sourceIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0.16666666666666666,
+            0.8333333333333334
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "0000000000000000",
+            "0180000000000000",
+            "0190000000000000",
+            "0180000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "3fc5555555555555",
+            "3feaaaaaaaaaaaab"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "scale-900",
+      "input": {
+        "polygon": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            3.3810849992682576e+271,
+            0.0
+          ],
+          [
+            3.3810849992682576e+271,
+            3.3810849992682576e+271
+          ],
+          [
+            0.0,
+            3.3810849992682576e+271
+          ]
+        ],
+        "segments": [
+          [
+            -8.452712498170644e+270,
+            1.6905424996341288e+271,
+            4.226356249085322e+271,
+            1.6905424996341288e+271
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": 16
+      },
+      "output": {
+        "segments": [
+          [
+            0.0,
+            1.6905424996341288e+271,
+            3.3810849992682576e+271,
+            1.6905424996341288e+271
+          ]
+        ],
+        "sourceIndices": [
+          0
+        ],
+        "intervals": [
+          [
+            0.16666666666666666,
+            0.8333333333333334
+          ]
+        ]
+      },
+      "output_bits": {
+        "segments": [
+          [
+            "0000000000000000",
+            "7840000000000000",
+            "7850000000000000",
+            "7840000000000000"
+          ]
+        ],
+        "intervals": [
+          [
+            "3fc5555555555555",
+            "3feaaaaaaaaaaaab"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "work-minus-one",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            2,
+            5,
+            2
+          ]
+        ],
+        "maxWork": 215,
+        "maxOutputSegments": 16
+      },
+      "error": "WORK_LIMIT_EXCEEDED"
+    },
+    {
+      "id": "output-zero",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            2,
+            5,
+            2
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": 0
+      },
+      "error": "OUTPUT_LIMIT_EXCEEDED",
+      "error_detail": {
+        "sourceIndex": 0,
+        "intervalIndex": 0
+      }
+    },
+    {
+      "id": "split-output-one",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            4,
+            7,
+            4
+          ]
+        ],
+        "maxWork": 712,
+        "maxOutputSegments": 1
+      },
+      "error": "OUTPUT_LIMIT_EXCEEDED",
+      "error_detail": {
+        "sourceIndex": 0,
+        "intervalIndex": 1
+      }
+    },
+    {
+      "id": "bow-tie",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "segments": [],
+        "maxWork": 16,
+        "maxOutputSegments": 0
+      },
+      "error": "INVALID_POLYGON"
+    },
+    {
+      "id": "nonzero-crossing",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "segments": [],
+        "maxWork": 16,
+        "maxOutputSegments": 0
+      },
+      "error": "INVALID_POLYGON"
+    },
+    {
+      "id": "edge-touch",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [],
+        "maxWork": 25,
+        "maxOutputSegments": 0
+      },
+      "error": "INVALID_POLYGON"
+    },
+    {
+      "id": "backtrack",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [],
+        "maxWork": 25,
+        "maxOutputSegments": 0
+      },
+      "error": "INVALID_POLYGON"
+    },
+    {
+      "id": "repeated-closure",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "segments": [],
+        "maxWork": 25,
+        "maxOutputSegments": 0
+      },
+      "error": "INVALID_POLYGON"
+    },
+    {
+      "id": "late-invalid-before-work",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            2,
+            5,
+            2
+          ],
+          [
+            0,
+            0,
+            true,
+            1
+          ]
+        ],
+        "maxWork": 0,
+        "maxOutputSegments": 16
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "extra-key",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            2,
+            5,
+            2
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": 16,
+        "extra": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "missing-work",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            2,
+            5,
+            2
+          ]
+        ],
+        "maxOutputSegments": 16
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "boolean-limit",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            2,
+            5,
+            2
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": false
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "interval-collapse",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            5e-324,
+            0
+          ],
+          [
+            5e-324,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            0.5,
+            1,
+            0.5
+          ]
+        ],
+        "maxWork": 216,
+        "maxOutputSegments": 2
+      },
+      "error": "REPRESENTATION_COLLAPSE",
+      "error_detail": {
+        "sourceIndex": 0,
+        "intervalIndex": 0,
+        "stage": "parameter"
+      }
+    },
+    {
+      "id": "gap-collapse",
+      "input": {
+        "polygon": [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            5e-324,
+            1
+          ],
+          [
+            5e-324,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            0.5,
+            1,
+            0.5
+          ]
+        ],
+        "maxWork": 712,
+        "maxOutputSegments": 2
+      },
+      "error": "REPRESENTATION_COLLAPSE",
+      "error_detail": {
+        "sourceIndex": 0,
+        "intervalIndex": 1,
+        "stage": "gap"
+      }
+    },
+    {
+      "id": "endpoint-collapse",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            5e-324,
+            0
+          ],
+          [
+            0,
+            5e-324
+          ]
+        ],
+        "segments": [
+          [
+            0,
+            0,
+            5e-324,
+            5e-324
+          ]
+        ],
+        "maxWork": 137,
+        "maxOutputSegments": 1
+      },
+      "error": "REPRESENTATION_COLLAPSE",
+      "error_detail": {
+        "sourceIndex": 0,
+        "intervalIndex": 0,
+        "stage": "endpoints"
+      }
+    },
+    {
+      "id": "output-before-endpoint-collapse",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            5e-324,
+            0
+          ],
+          [
+            0,
+            5e-324
+          ]
+        ],
+        "segments": [
+          [
+            0,
+            0,
+            5e-324,
+            5e-324
+          ]
+        ],
+        "maxWork": 137,
+        "maxOutputSegments": 0
+      },
+      "error": "OUTPUT_LIMIT_EXCEEDED",
+      "error_detail": {
+        "sourceIndex": 0,
+        "intervalIndex": 0
+      }
+    },
+    {
+      "id": "work-before-invalid-polygon",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "segments": [],
+        "maxWork": 0,
+        "maxOutputSegments": 0
+      },
+      "error": "WORK_LIMIT_EXCEEDED"
+    },
+    {
+      "id": "invalid-limit-before-work",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "segments": [
+          [
+            -1,
+            2,
+            5,
+            2
+          ]
+        ],
+        "maxWork": 0,
+        "maxOutputSegments": -1
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

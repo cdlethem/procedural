@@ -2,6 +2,79 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "clip-marks-candidate",
+      "title": "ClipMarks \u2014 production candidate",
+      "category": "Candidate workflow",
+      "description": "Actual Java core: clip supplied strokes to a concave polygon, edit spacing and boundary, then transfer to zigzag strokes. Native visuals reviewed; release acceptance pending.",
+      "evidence": "evidence/workflows/clip-marks/visual-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/clip-marks-native-root1/native/baseline.png",
+          "sha256": "593c78b3abfef0085dc62d786ca782badee171f357df0e235fe73f1845139046"
+        },
+        {
+          "label": "Sparse",
+          "path": ".work/clip-marks-native-root1/native/sparse.png",
+          "sha256": "8a84ab7c3eedd8540d5a6c744f2432bafb5d3c5b2d226093a6f5821328a7baec"
+        },
+        {
+          "label": "Shallow notch",
+          "path": ".work/clip-marks-native-root1/native/shallow-notch.png",
+          "sha256": "b4ce2e09213b22a798049c22a5152780d3759bf1671a81d88346dbd1b7c44e15"
+        },
+        {
+          "label": "Supplied strokes",
+          "path": ".work/clip-marks-native-root1/native/supplied-strokes.png",
+          "sha256": "2b53d954d358309c2a1c7aa6c39ad2764888e661f170d56a969a632e3903bc6b"
+        },
+        {
+          "label": "Recolored",
+          "path": ".work/clip-marks-native-root1/native/recolored.png",
+          "sha256": "13386ed31250f8de6d2f419a597954e2920932e96ae8550214fb918a541b617b"
+        },
+        {
+          "label": "Endpoints hidden",
+          "path": ".work/clip-marks-native-root1/native/endpoints-hidden.png",
+          "sha256": "57ab421ae37ec5e67208afec09ab8301bfc4ce44ecb938b933ad322dab60397f"
+        },
+        {
+          "label": "Overlay",
+          "path": ".work/clip-marks-native-root1/native/overlay.png",
+          "sha256": "4c30c2b29e865176b5231f551334268d0419c48b5de97535b45f014ac8549bac"
+        }
+      ]
+    },
+    {
+      "id": "vector-clipping-study",
+      "title": "Vector clipping \u2014 private study",
+      "category": "Private study",
+      "description": "Hatch spacing, shallower notch and supplied stroke transfer; not accepted public functionality. Gray lines show original unclipped input.",
+      "evidence": "design/capabilities/vector-clipping-native-study.json",
+      "images": [
+        {
+          "label": "hatch",
+          "path": ".work/vector-clipping-study/native/hatch.png",
+          "sha256": "e5aac3a13e258e4529ed9c865f5bb49eaebafb5a26ac18499bd2a05e4977bad5"
+        },
+        {
+          "label": "sparse",
+          "path": ".work/vector-clipping-study/native/sparse.png",
+          "sha256": "16429cd551f0f047d9a260ece193d4a4ff9b8ff0f13927118093a0da9234a03e"
+        },
+        {
+          "label": "shallower notch",
+          "path": ".work/vector-clipping-study/native/deep-notch.png",
+          "sha256": "5d63aeb533f4885798486002ab694c50e5fccb4773541c9f43e22b433cbc0570"
+        },
+        {
+          "label": "supplied-strokes",
+          "path": ".work/vector-clipping-study/native/supplied-strokes.png",
+          "sha256": "cc783227aa442c839cae8b1730e114dbdc72ab9687497e8bd0a092a61f8dd947"
+        }
+      ]
+    },
+    {
       "id": "annular-marks",
       "title": "AnnularMarks \u2014 public-core native candidate",
       "category": "Native workflow accepted",

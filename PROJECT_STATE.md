@@ -1,5 +1,277 @@
 # Project state
 
+## Java0.32.0 extracted distribution accepted; checkpoint pending
+
+CP29 adds SegmentClip2D and ClipMarks:30 operations/34 workflows. Catalog support and
+manifest integrated; catalog check passes. Source archive .work/dist/cp29-java-source-root1/
+procedurals-java-source-dev.zip SHA11f4b85131fbad3be5fb8677c55cc9cd8cb66ef90a2664fbf745051f9f6f84d5,
+432members. All34 extracted examples compile; actual ClipMarks installed-JAR native run
+passes and all11 PNG hashes equal root-reviewed originals. Previous core/adapter classes
+unchanged. Distribution review evidence/distribution/cp29-java-review.json accepted.
+Warnings remain689. Updated build/chooser/composition/ClipMarks guides. Git fetch succeeded,
+HEAD/origin-main0/0 at review; no commit/push yet. Next carefully review/stage project-owned
+new files and tracked changes, preserve unrelated Android ProfileMarks, run final focused
+checks, commit and push useful integration checkpoint. Native example's candidate comment
+is historical text in the accepted archive; release status is authoritative in review.
+
+## SegmentClip2D core and ClipMarks native scope accepted
+
+Root completed implementation review, verified all7 class disassemblies against the
+visually reviewed native artifacts, checked final fixture source bindings, and ran the
+new performance runner successfully. Evidence/conformance/segment-clip-root-review.json
+accepts Java core and native scope only. Final source34fixtures/65Java checks pass;
+allocation4.83MB/100 and80.83MB/1000 strokes with unchanged checksums. Cached/edit-driven
+use accepted; no per-frame allocation promise. Final source SHA3e6ecec2edae7fb53bacc67271c120c13fa0cae4d9b1f9325a0bf94e41336878.
+Next add the support attestation, regenerate catalog reference, integrate source manifest
+as Java0.32 with ClipMarks, run extracted consumer, review distribution, then update docs
+and commit/push the useful checkpoint. No distribution acceptance or shipped count change yet.
+
+## Extracted ClipMarks consumer route prepared
+
+Root extended tools/check_java_source_bundle.py with ClipMarks selection, its existing
+exact-reference native validator, explicit validator dependency hashes, and strict native
+stderr handling. CLI/import checks pass; existing real native output passes the reused
+validator and wrong renderer/JAR/density/geometry are rejected. Full extracted run is still
+pending core acceptance and manifest integration. Added a reusable source/runtime-bound
+performance measurement runner at tools/diagnostics/clipping/measure_java_performance.py;
+it has only passed its CLI check and must be executed on stable worker source next.
+
+## ClipMarks native visuals reviewed and centralized
+
+Root inspected seven distinct production frames (baseline, sparse, shallow notch,
+supplied strokes, recolor, hidden endpoints, overlay), verified native artifact and PNG
+hashes, and recorded evidence/workflows/clip-marks/{native.json,visual-review.json}.
+This is scoped candidate evidence, not release acceptance. Central gallery now43groups/
+200images with no problems. Terra owns a final readability-only core cleanup plus
+missing clip Javadoc tags, with requested -g:none class equivalence and focused fixtures.
+Next root reviews that result/performance, extends extracted bundle consumer for ClipMarks
+(tools/check_java_source_bundle.py currently supports only established profiles), and
+integrates manifest/catalog support only after remaining acceptance checks. Unrelated
+Android ProfileMarks change remains untouched.
+
+## Partition/content composition boundary clarified
+
+User emphasized partitions accepting independently chosen content, including snips of
+larger drawings. Root checked Java2DRegions and LayerMarks: the rectangle callback route
+already exists. docs/composing-java-effects.md now makes layout → content → boundary
+treatment explicit, shows the actual callback API, and distinguishes adapter extension
+from algorithms whose movement depends on boundaries. This is design guidance, not a
+new operation or support claim. The first production ClipMarks native run at
+.work/clip-marks-native-root1/result.json passed; final visual/core/distribution review
+remains pending. Terra's exact Rational optimization passed all34 shared fixtures;
+root has not yet accepted its performance or release evidence.
+
+## Clipping allocation baseline exposes optimization need
+
+Root authored SegmentClipPerformance.java: zero-source validation,100 and1000strokes
+against8vertex notch, input/checksum excluded from measured allocations. Stable source
+baseline .work/segment-clip-performance-baseline-root1/result.json shows29.2MB/100 and
+297.5MB/1000 allocations (~8ms/~40ms). No performance acceptance. Root assigned bounded
+exact Rational identity/equal-denominator simplification plus full Rational readability
+to segment_clip_core; no approximate predicates or rounding change permitted. Worker
+has baseline and may edit core. Next compare full fixtures and source-bound allocation
+after optimization, then finish core review/native workflow.
+
+## Production clipping core passes all34 exact fixture vectors
+
+Root authored tools/run_segment_clip_java.py to generate passive input vectors and
+assert every coordinate/interval bit, source index, error code and detail. Current
+production core and worker tests pass .work/segment-clip-core-root1. Runner dependency
+bindings subsequently expanded for imported error/topology evaluators; rerun stable
+worker source with final runner before acceptance. Root requested additional intervalInto
+atomicity/offset checks, nested interval/source-index export detachment and negative
+offset/precedence cases. Worker readability/Javadocs still in progress. No native or
+public support acceptance yet.
+
+## Actual ClipMarks/core/probe compilation passes
+
+Root authored tools/run_clip_marks_java.py using established preprocessing/JAR/probe
+route, JAVA2D-only dependencies and strict empty native stderr. Compile-only attempt
+.work/clip-marks-compile-root1 passes against actual SegmentClip2D. No native render yet.
+Initial core review found compressed private code and incomplete public Javadoc; root
+requested worker cleanup and allocation explanation. Worker scenario tests do not assert
+every shared output bit; root will generate full fixture vectors independently before
+core acceptance. Source is still worker-owned/running; do not bind acceptance hashes yet.
+
+## ClipMarks native probe authored using established event harness
+
+Root adapted tests/native/ClipMarksProbe.java from accepted annular probe: actual queued
+keys,10states/7clip calls, renderer/core-origin checks, retained geometry and source-list
+identity, restored pixels, per-key visible change and cached-save quiet period. Hashes
+cover segments/intervals/source indices. Production core absent at latest read, so probe
+is authored but not compiled or executed. Next root prepares JAVA2D runner and compiles
+actual PDE once worker core arrives; no fake/private-core validation.
+
+## ClipMarks artist workflow authored against frozen contract
+
+Root added candidate PDE and docs/clip-marks.md: retained hatch/zigzag sources, notch
+and spacing edits, source-index colors, endpoint/overlay toggles, reset and cached save.
+Appearance reuses clipping; polygon edits reuse source data. Native plan specifies actual
+HHNNTCMO0S event sequence, ten frames/seven clip calls, geometry identity and exact reset/
+save checks. Core worker file not present at latest inspection; no compile/native claim.
+Next production-core review/fixture execution and native probe via established JAVA2D
+runner. Candidate excluded from accepted source bundle until reviewed.
+
+## Clipping contract and34fixtures frozen; catalog integration passes
+
+Root reviewed full fixture validator, tightened strict segment crossing, connected
+independent error-order evaluator and verified3corruption probes. Moved sole draft to
+catalog/operations/clip-segments-simple-polygon-2d.json as reviewed; regenerated fixtures
+and operation reference. Full catalog checker passes with explicit new-format dispatch.
+segment-clipping-contract-review.md accepts implementation only; support remains absent.
+Next delegate production core per reviewed brief while root authors native workflow.
+Source bundle intentionally remains previous29operation milestone until integration.
+
+## Independent clipping error evaluation passes all draft cases
+
+Root added check_error_draft.py combining schema validation, exact polygon validation,
+work preflight, rational clipping, output capacity and all representation stages in
+contract order. All34 fixture expectations agree, including budgets before topology/
+rounding and late invalid input before work. Source-bound review is vector-clipping-
+error-review.json. Worker fixture validator remains live; root located standard catalog
+format-dispatch integration points. Next review worker, mutation checks, freeze/integrate
+contract without weakening checker. No production acceptance.
+
+## Clipping fixture gaps closed; implementation brief prepared
+
+Draft generator now34 cases, including subnormal endpoint-pair collapse independently
+verified as exact[0,1/2] with both output points rounding to zero; public error precedence
+fixtures added. Root Java comparison confirms all3collapse stages plus35outputs and
+22polygon cases; vector-clipping-collapse-review.json binds successor evidence. Draft
+catalog now specifies zero-based interval ordinals. Prepared segment-clipping-java-brief.md
+for post-freeze implementation, explicitly gated on root fixture/contract review. Terra
+clip_fixture_checker still owns validator; no production code started.
+
+## Thirty clipping fixtures drafted from independent exact oracle
+
+Root authored build_fixture_draft.py and generated30 draft fixtures including concave
+splits, skipped/split source identity, reversed geometry, extreme scale, work/output
+limits, invalid topology with empty sources, late invalid input and interval/gap collapse.
+Success coordinates/parameters carry exact binary64 bits from Fraction computation.
+Schemas and output allowances pass. Terra /root/clip_fixture_checker owns focused draft
+validator only; root retains catalog/generator review. Endpoint-collapse witness, complete
+public access tests and final contract review remain before implementation acceptance.
+
+## Sole clipping catalog draft authored
+
+Root authored catalog/drafts/clip-segments-simple-polygon-2d.json with input/output
+schemas, exact topology/rounding, work formula, validation order, owned access semantics
+and explicit unimplemented targets. JSON Schemas validate. It is outside active
+catalog/operations because checker accepts reviewed contracts only; no checks weakened.
+segment-clipping-contract-review.md is explicitly pending. Next distinguishing shared
+fixtures and review, then move same entry into active catalog and implement Java.
+No new shipped operation or support attestation.
+
+## Clipping gap guard verified; work/precedence decisions written
+
+Root independent checker now verifies interval collapse and exterior-gap collapse, plus
+35exact outputs/22polygon cases against updated exact kernel. Successor evidence in
+vector-clipping-gap-review.json preserves earlier records. Root contract preparation
+defines conservative exact work charge V²+S*(8V²+16V+8), required work/output budgets,
+complete static validation before work/topology and per-interval capacity-before-rounding
+failures. design/operations/segment-clipping-contract-preparation.md lists distinguishing
+fixture obligations. Next author sole catalog schema and fixtures; no frozen contract or
+production support yet.
+
+## Segment clipping admitted for contract preparation
+
+Root authored segment-clipping-admission.md and added capability dependency cluster
+geometry.clip-segments-simple-polygon-2d with forms1#0/#1 bindings and explicit remainder
+accounting. Contract-cluster Phase2 gate passes; candidate dispositions unchanged.
+Admission includes exact topology, boundary-inclusive concave intervals, caller budgets
+and representation failures, including collapsed exterior gaps between output intervals.
+Terra exact_clip_kernel is adding that missing gap witness/check to the PRIVATE kernel.
+Next root freezes catalog cost formula, schemas, errors and fixtures; architectural
+admission is not contract, implementation or release acceptance.
+
+## Exact clipping kernel reviewed against independent oracle
+
+Root reviewed Terra ExactSegmentClipStudy.java and corrected signed-zero endpoint
+preservation. Independent checker passes35 bit-exact interval/endpoint cases,22polygon
+validity/reversal checks and subnormal parameter-collapse rejection. Scaled cases at
+2^-1000 and2^900 work. Root native main benchmark about10ms/100strokes/8vertices in
+initial run; actual subsequent timings bound in vector-clipping-exact-study.json.
+Includes checksum work and3untimed calls (2warmups+reference), no allocation/stress
+acceptance. Next root admission/contract work budgets and numeric representation
+semantics, then production implementation/native workflow. Private study only so far.
+
+## Exact Java rational conversion study passes
+
+Root implemented private RationalStudy.java with normalized BigInteger fractions, exact
+binary64 decoding and nearest-even rational conversion. Independent Python Fraction
+comparison passes71 cases: subnormal/normal transition, largest finite values, thirds,
+adjacent-float midpoint ties and signs; zero canonicalized. Check is reproducible via
+check_rational_study.py; vector-clipping-rounding-study.json binds source and checker.
+Terra /root/exact_clip_kernel owns private ExactSegmentClipStudy.java using this numeric
+class plus simple-polygon validation; pending root review, exact-oracle comparison and
+moderate hatch timings. No public contract or full-domain/performance acceptance yet.
+
+## Clipping topology direction and validity witnesses recorded
+
+Root chose boundary-inclusive simple concave polygons, implicit closure, no repeated
+vertices or self-touching edges; straight continuation vertices allowed. Private exact
+validator passes11cases and winding reversals, including nonzero-area self-crossing.
+vector-clipping-numeric-direction.md records exact rational parameter ordering/midpoint
+classification and one final coordinate rounding as preferred direction. Existing exact
+orientation alone is insufficient; representation collapse and rational rounding remain
+to resolve before contract. Corrected complexity accounting to O(S V²) for diagnostic
+midpoint classification. Next exact Java arithmetic study and representative measurement.
+
+## Clipping Java comparison and native private study reviewed
+
+Root compiled Terra study with pinned JDK17 --release8;30 exact-reference comparisons
+pass. tools/diagnostics/clipping/compare_java_study.py records reproducible check;
+SegmentClipView generated four JAVA2D density1 views under machine render lease. Root
+inspected hatch/sparse/notch/stroke transfer: concave gaps preserved and five supplied
+strokes produce eight pieces. Native study record is design/capabilities/vector-clipping-
+native-study.json; images added to central gallery. Historical deep-notch filename
+actually means shallower notch, explicitly labeled. Next resolve robust arithmetic and
+simple polygon validation before admission; study allocation/performance not accepted.
+
+## Exact clipping study executable; Java prototype delegated
+
+Root implemented tools/diagnostics/clipping/exact_clip_study.py independently using
+rational arithmetic. Ten hand-known cases plus reversed winding/direction invariants
+pass, including two intervals across a concave notch, boundary inclusion, tangencies
+and zero-length omission. design/capabilities/vector-clipping-study-checks.json binds
+source/results and limits. Terra /root/clip_java_study owns private Java prototype only,
+with bounded moderate inputs and no robustness/public-support claim. Next review worker
+code against exact intervals, then render hatch/path transfer through established lease.
+No core/catalog admission or new shipped feature.
+
+## Vector clipping source reviewed; study boundary recorded
+
+Root fetched pinned forms1/plasma007 sources into ignored .work/vector-clipping-source.
+Source/note hashes and analytic defect witnesses are recorded in
+design/capabilities/vector-clipping-source-review.json. forms1 misses y extent checks;
+plasma007 rejects axis-aligned crossings and only compares later list entries. Proposed
+private-study boundary is supplied segment sets clipped to a simple concave polygon,
+retaining source identity and multiple intervals. design/capabilities/vector-clipping-
+investigation.md records unresolved topology/numerics/budgets and edit/transfer plan.
+No contract/API admission yet; next inspect existing exact predicates and build bounded
+private study. Current accepted Java baseline unchanged.
+
+## Geometry review identifies vector clipping lead
+
+Luna nearest-site screen completed. Root read plasma007 and fields reports directly:
+ray nearest-intersection trimming and displaced quad grids do not establish Voronoi
+cells. Rare-family review records explicit current exclusions and a concrete next
+investigation: supplied segment intersection/clipping, potentially useful for ray webs
+and polygon hatching. No operation admitted; exact source arithmetic, second report,
+semantics and artist example required. Existing masks clip visibility only. Completion
+requirements remain unchanged.
+
+## Rare-family review underway after pushed Java0.31.1
+
+Checkpoint2b3f3fa304328c434028a90913212feacad0ff5b is pushed; main/origin matched.
+Root read arbolito4/brotes and typography walkthroughs and recorded explicit algorithm
+versus tag distinctions in design/capabilities/java-rare-family-review.md. Existing
+endpoint growth/line-pool mutation and glyph placement stay supported; symbolic grammar
+rewriting and font-outline/shaping engines are explicit exclusions, not corpus-absence
+claims. Luna /root/voronoi_evidence is performing bounded read-only nearest-site evidence
+retrieval. Root must inspect decisive reports before closing that disposition. No new
+API or completion acceptance. Android draft remains untouched.
+
 ## Java0.31.1 documentation checkpoint accepted locally
 
 Root reviewed annular/layer/region public docs; three-class executable-token and

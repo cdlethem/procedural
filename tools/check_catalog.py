@@ -1579,7 +1579,7 @@ def check(root: Path = ROOT, *, write_reference: bool = False) -> list[str]:
         input_validator = Draft202012Validator(op['input_schema'])
         output_validator = Draft202012Validator(op['output_schema'])
         fixture_format = op.get('fixture_format')
-        if fixture_format is not None and fixture_format not in {EXACT_JSON_OUTPUT, MATERIALIZED_OUTPUT, CIRCLE_PLACEMENT_OUTPUT, PARTITION_OUTPUT, TRIANGLE_POINTS_OUTPUT, BRANCH_TREE_OUTPUT, RADIAL_PROFILE_OUTPUT, ANNULAR_SOLID_OUTPUT, DELAUNAY_OUTPUT, SPRING_OUTPUT}:
+        if fixture_format is not None and fixture_format not in {EXACT_JSON_OUTPUT, MATERIALIZED_OUTPUT, CIRCLE_PLACEMENT_OUTPUT, PARTITION_OUTPUT, TRIANGLE_POINTS_OUTPUT, BRANCH_TREE_OUTPUT, RADIAL_PROFILE_OUTPUT, ANNULAR_SOLID_OUTPUT, "segment-clipping-output", DELAUNAY_OUTPUT, SPRING_OUTPUT}:
             errors.append(f'{prefix}: unknown fixture_format {fixture_format!r}')
         if fixture_format == BRANCH_TREE_OUTPUT:
             from tools.check_branch_fixtures import validate as validate_branch_fixtures
@@ -1589,6 +1589,9 @@ def check(root: Path = ROOT, *, write_reference: bool = False) -> list[str]:
         if fixture_format == RADIAL_PROFILE_OUTPUT:
             from tools.check_profile_fixtures import validate as validate_profile_fixtures
             errors.extend(validate_profile_fixtures(root, prefix, op, fixture))
+        if fixture_format == "segment-clipping-output":
+            from tools.check_segment_clipping_fixtures import validate as validate_segment_clipping
+            errors.extend(validate_segment_clipping(root, prefix, op, fixture))
         if fixture_format == ANNULAR_SOLID_OUTPUT:
             from tools.check_annular_fixtures import validate as validate_annular_fixtures
             errors.extend(validate_annular_fixtures(root, prefix, op, fixture))
@@ -1654,7 +1657,7 @@ def check(root: Path = ROOT, *, write_reference: bool = False) -> list[str]:
         if triangle_points_output:
             errors.extend(validate_triangle_cross_checks(root, prefix, op, fixture))
         for case in cases:
-            if fixture_format in {BRANCH_TREE_OUTPUT, RADIAL_PROFILE_OUTPUT, ANNULAR_SOLID_OUTPUT, DELAUNAY_OUTPUT, SPRING_OUTPUT}:
+            if fixture_format in {BRANCH_TREE_OUTPUT, RADIAL_PROFILE_OUTPUT, ANNULAR_SOLID_OUTPUT, "segment-clipping-output", DELAUNAY_OUTPUT, SPRING_OUTPUT}:
                 # The dedicated validator handles complete cases and retained topology.
                 continue
             if not isinstance(case, dict):

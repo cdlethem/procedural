@@ -1,0 +1,14 @@
+{
+  "status": "passed-private-exact-comparison",
+  "cases": 35,
+  "polygon_reversal_checks": 22,
+  "collapse_checks": 2,
+  "source_sha256": {
+    "tools/diagnostics/clipping/RationalStudy.java": "4f28bc40d3688c506bcc5c70db7f8262337bbc26150166d29404d2f9cfd2b24a",
+    "tools/diagnostics/clipping/ExactSegmentClipStudy.java": "11c5b038f8e628fa4120c381acde29d12d3835169e19823bcc7588cd3f595693"
+  },
+  "scope": "Exact binary64 interval and endpoint bits against Fraction oracle, including scaled horizontal/vertical cases. Includes 22 polygon validity/reversal checks and subnormal interval- and exterior-gap-collapse witnesses. Does not prove the full input domain.",
+  "owner": "root",
+  "checker_sha256": "1f012a5254c8e25b97d8de64cf2823f36766a09778d1be1a91371e37fd0e0a43",
+  "scope_note": "Successor comparison after exterior-gap guard; earlier study evidence preserved."
+}

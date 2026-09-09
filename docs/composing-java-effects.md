@@ -6,6 +6,28 @@ combine it. The Java0.29 examples demonstrate these choices without a recipe exe
 
 ## Put content inside partitions
 
+The composition boundary is **layout → content → boundary treatment**. A partition
+operation produces regions; a content callback chooses what to draw for each region;
+the rendering adapter places and masks that drawing. This is an architectural design
+choice: it lets a layout work with photographs, typography, paths or generated textures
+without adding a specialized version of every partition operation.
+
+For example, the existing Java callback can switch between two retained drawings by ID:
+
+```java
+Java2DRegions.Content content = (target, region) -> {
+    target.image(region.id % 2 == 0 ? firstDrawing : secondDrawing, 0, 0);
+};
+PImage composed = Java2DRegions.render(this, backgroundImage, regions,
+    Java2DRegions.Space.CANVAS, 0, content);
+```
+
+Here `regions` is a supplied rectangle list, and the three images are already prepared
+at the destination size. Each rectangle reveals a snip of its selected larger drawing.
+Replace only the callback to generate a different composition inside each rectangle.
+Retain expensive geometry and images outside the callback so layout or style edits do
+not accidentally rerun simulation or change random choices.
+
 [LayerMarks](layer-marks.md) separates region layout from a drawing callback. The layout
 supplies rectangular regions; `Java2DRegions.render` invokes your callback for each region
 and constrains its visible output afterward. A mark or path can extend beyond the region
@@ -32,6 +54,19 @@ The region callback adapter currently supports rectangles in JAVA2D. For a curve
 irregular visible region, draw that shape into a transparent layer and extract its alpha
 with `Java2DLayers.alphaMask`, as in [MaskMarks](mask-marks.md). This masks image content;
 it does not produce clipped vector paths or make geometry follow the boundary.
+
+For retained line geometry, [ClipMarks](clip-marks.md) uses `SegmentClip2D` to trim
+supplied segments to one simple polygon, including a concave outline. It returns each
+interior piece with its original source index. This trims centerlines; use an image mask
+when the complete painted stroke footprint must stay inside.
+
+Extend this pattern through region adapters when a new shape family needs it. A callback
+belongs on the drawing adapter, while the underlying partition result remains available
+as data for sampling, geometry and later edits. Introduce a specialized effect only when
+the region changes its algorithm—for example, steering paths around a boundary rather
+than hiding their exterior portions. Arbitrary effects cannot all be interchanged:
+geometry consumers need geometry, image filters need pixels, and drawing callbacks need
+an active rendering target. These explicit connections keep composition understandable.
 
 ## Blend two effects across a boundary
 

@@ -1,0 +1,13 @@
+{
+  "status": "passed-draft-error-review",
+  "owner": "root",
+  "cases": 34,
+  "scope": "Independent rational evaluator agrees with all draft success/error expectations, including ordered budgets and all representation stages. Not Java production validation.",
+  "sha256": {
+    "tools/diagnostics/clipping/check_error_draft.py": "f01f897e6f913df97a93d4ffd331344bff042240614187109a51ab4ff48ffa0c",
+    "tools/diagnostics/clipping/exact_clip_study.py": "c0188dbae5f2677d28cbbc7d7b8d0b6bb97b9fe781fcef2ae4a8521a84ea761d",
+    "tools/diagnostics/clipping/polygon_validation_study.py": "773d9b0f93163eb50fcf0114dc20514e7ee6c0b144ec10146c234bf41c2c3a57",
+    "catalog/drafts/clip-segments-simple-polygon-2d.json": "2cb622e6c5aa5d97bcdf21511892185c40ca05244c3f2c24eab492aa24c8b05e",
+    "fixtures/operations/clip-segments-simple-polygon-2d.json": "cd3b95946c528ec863606ff754cc9a1dec4711c5f21b782a6cf66af233709407"
+  }
+}

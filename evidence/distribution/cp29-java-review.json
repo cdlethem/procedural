@@ -1,0 +1,30 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "version": "0.32.0",
+  "scope": "Java source distribution with30 accepted operations and34 compiled example workflows. Extracted ClipMarks native edit/transfer/reset/save passes; no whole-source recreation or ports claimed.",
+  "archive": {
+    "path": ".work/dist/cp29-java-source-root1/procedurals-java-source-dev.zip",
+    "sha256": "11f4b85131fbad3be5fb8677c55cc9cd8cb66ef90a2664fbf745051f9f6f84d5",
+    "members": 432
+  },
+  "evidence_sha256": {
+    "evidence/distribution/cp29-java-source.json": "db8f49ecf4251ee67bd298087d550b3faf7dd07debfcd0bcf4bd778960c98e86",
+    "evidence/distribution/cp29-java-consumer.json": "d38ec9a8f69b0639de00d8cf1e93efea1586afb73f39919b58d32d688c910c1a",
+    "evidence/conformance/segment-clip-root-review.json": "efa2d1df5dd26dbdcaedef1482986ccc0d9ff5499c73b9f44e678fdd4ba5d995"
+  },
+  "verified": [
+    "All previous core/adapter class hashes are unchanged; new clipping classes are additive.",
+    "All34 extracted PDE examples compile. Extracted native ClipMarks uses the installed core JAR and independently validated exact geometry.",
+    "All11 extracted native PNG hashes equal the previously root-inspected workflow results.",
+    "Source, adapter, example, license, font provenance and generated reference inventories pass the consumer verifier."
+  ],
+  "javadoc_warnings": 689,
+  "limitations": [
+    "Full Java completion audit remains open.",
+    "689 existing Javadoc warnings remain.",
+    "Exact clipping is intended for bounded retained geometry; significant temporary allocation remains.",
+    "Ports are deferred."
+  ]
+}

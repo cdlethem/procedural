@@ -1,6 +1,6 @@
 {
-  "version": "0.31.1",
-  "processing_version": 31,
+  "version": "0.32.0",
+  "processing_version": 32,
   "accepted_distribution_review": {
     "path": "evidence/distribution/line-pool-review.json",
     "sha256": "881fe9c1a98f8a2d6c55cbbf61370044b2fb99907dd7148792b97096de9ed2ee"
@@ -34,7 +34,8 @@
     "packages/java/src/main/java/org/procedurals/raster/RasterCrossfade2D.java": "240f7309067e47a059a4bc43d7f4808dff67222211482f690832ed862dd92b1c",
     "packages/java/src/main/java/org/procedurals/raster/SeparableBlur2D.java": "e2254766043ed5f5d7da2f13d92090b1c457deb098774267dcfb219982661d88",
     "packages/java/src/main/java/org/procedurals/geometry/DiscProjection2D.java": "be86826fa83538d1b36c6890d8ecaa5169de9ff6eea4781fa7a215445f5cf52c",
-    "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java": "fbf61b8ba36945133926bbd23290d2467a03ac8ce50912dd0d7b2decc8a7d602"
+    "packages/java/src/main/java/org/procedurals/mesh/AnnularMesh3D.java": "fbf61b8ba36945133926bbd23290d2467a03ac8ce50912dd0d7b2decc8a7d602",
+    "packages/java/src/main/java/org/procedurals/geometry/SegmentClip2D.java": "3e6ecec2edae7fb53bacc67271c120c13fa0cae4d9b1f9325a0bf94e41336878"
   },
   "examples": {
     "procedurals/examples/BranchMarks/BranchComposition.java": {
@@ -240,12 +241,17 @@
     "procedurals/examples/AnnularMarks/AnnularMarks.pde": {
       "source": "packages/java-processing/examples/AnnularMarks/AnnularMarks.pde",
       "sha256": "1de55e61678895841783111a66027985e0fad78e9945fe01ba23e989da6fc183"
+    },
+    "procedurals/examples/ClipMarks/ClipMarks.pde": {
+      "source": "packages/java-processing/examples/ClipMarks/ClipMarks.pde",
+      "sha256": "c0c9f1007e7742f6c6a2dc306ff6a6fbd57380030bc9c9c5b99ce682de0d6744"
     }
   },
   "operation_files": [
     "annular-solid-3d.json",
     "bilinear-raster-remap.json",
     "binary-cell-partition-2d.json",
+    "clip-segments-simple-polygon-2d.json",
     "closed-spline-2d.json",
     "cyclic-palette.json",
     "delaunay-2d.json",

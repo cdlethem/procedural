@@ -1,0 +1,13 @@
+{
+  "status": "passed-private-exact-comparison",
+  "cases": 35,
+  "polygon_reversal_checks": 22,
+  "collapse_checks": 3,
+  "source_sha256": {
+    "tools/diagnostics/clipping/RationalStudy.java": "4f28bc40d3688c506bcc5c70db7f8262337bbc26150166d29404d2f9cfd2b24a",
+    "tools/diagnostics/clipping/ExactSegmentClipStudy.java": "11c5b038f8e628fa4120c381acde29d12d3835169e19823bcc7588cd3f595693"
+  },
+  "scope": "Successor independent comparison includes all three dynamic collapse stages; budgets remain shared-fixture expectations, not implemented in private Java kernel.",
+  "owner": "root",
+  "checker_sha256": "b8c3cdd2962eab918eca70a69641db3ec764563ac97a25add30360c93f1ce8af"
+}

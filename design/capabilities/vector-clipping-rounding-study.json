@@ -1,0 +1,9 @@
+{
+  "status": "passed-private-rounding-check",
+  "cases": 71,
+  "source_sha256": "4f28bc40d3688c506bcc5c70db7f8262337bbc26150166d29404d2f9cfd2b24a",
+  "scope": "Exact source values, subnormal/normal boundary, maximum finite, thirds and adjacent-float ties; canonical positive zero. Not all rationals or performance acceptance.",
+  "owner": "root",
+  "checker": "tools/diagnostics/clipping/check_rational_study.py",
+  "checker_sha256": "e00e82baa510eac645e04a32a2631583a44c5a34452bb35272fde62829a62f88"
+}
