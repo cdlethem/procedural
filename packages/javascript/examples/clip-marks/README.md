@@ -14,4 +14,6 @@ set, C/M/O are display-only toggles, 0 resets (rebuilding only when a
 geometry flag was set), and S saves the cached frame without redraw.
 
 This starter is not a browser-native conformance or reproduction claim; it
-is a scoped port of the accepted ClipMarks composition's mechanism to p5.js.
+is a scoped port of the ClipMarks composition's mechanism to p5.js. The
+Java source is marked a candidate workflow; segment-clip-2d is the
+accepted operation it demonstrates.

@@ -13,5 +13,6 @@ display palette without touching the query; 0 resets (rebuilding only when
 the geometry actually changes), matching the Java sketch.
 
 This starter is not a browser-native conformance or reproduction claim; it
-is a scoped port of the accepted ContactMarks composition's mechanism to
-p5.js.
+is a scoped port of the ContactMarks composition's mechanism to p5.js. The
+Java source is marked a candidate workflow; nearest-segment-contact-2d is
+the accepted operation it demonstrates.
