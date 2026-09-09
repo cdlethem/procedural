@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mask marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(720px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Mask marks</h1>
+  <p>Two authored layers - diagonal line marks and a concentric source -
+    are revealed through an alpha mask over a plain ground, or crossfaded
+    against each other with the same mask as the blend weight. The mask
+    reads transparency, not brightness: the opaque white ellipse and the
+    half-alpha triangle are the only things that matter in it.</p>
+  <div id="controls" aria-label="Mask marks controls">
+    <button data-action="m"><kbd>M</kbd> content</button>
+    <button data-action="v"><kbd>V</kbd> retained mask</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated mask study"></div>
+  <p id="status" role="status">Preparing layers&hellip;</p>
+  <p>M cycles marks-over-ground, source-over-ground, and the crossfade;
+    V shows the retained mask itself (transparent regions show the gray
+    ground); S saves the displayed raster including its alpha. Edit
+    <code>sketch.js</code>: the four layer drawings (ground, source, marks,
+    mask) are authored piece content - swap <code>drawSource</code> for a
+    loaded image to use your own content.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>
