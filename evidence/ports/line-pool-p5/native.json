@@ -1,0 +1,81 @@
+{
+  "input_sha256_before": {
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/examples/cut-branch-marks/sketch.js": "6d94d11aa0b978bbb897e8ea8515b19eeb864ea14f7582efbf3454f78f4e88df",
+    "packages/javascript/examples/cut-branch-marks/cut-branch-marks.js": "97a4e8fceb259c593b7b26a2a6a4f3255082a70921d54e2b17426dbfb2cf7d28",
+    "packages/javascript/examples/cut-branch-marks/index.html": "b966ff7d8cf2ca4f6189e18b1f415fb20a6dda67407657e56c12ba22265b1f28",
+    "tools/serve_cut_branch_marks.mjs": "b79f06fee15106b03363ce60ec6abd553972ed33b89f582cfae881bbef0a6aac",
+    "tools/run_p5_cut_branch_marks.mjs": "3385913c6be15d0e2901b37d11e11b37d3c4f1cc63de0e5bdcc9e69e1625ef2e"
+  },
+  "input_sha256_after": {
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/examples/cut-branch-marks/sketch.js": "6d94d11aa0b978bbb897e8ea8515b19eeb864ea14f7582efbf3454f78f4e88df",
+    "packages/javascript/examples/cut-branch-marks/cut-branch-marks.js": "97a4e8fceb259c593b7b26a2a6a4f3255082a70921d54e2b17426dbfb2cf7d28",
+    "packages/javascript/examples/cut-branch-marks/index.html": "b966ff7d8cf2ca4f6189e18b1f415fb20a6dda67407657e56c12ba22265b1f28",
+    "tools/serve_cut_branch_marks.mjs": "b79f06fee15106b03363ce60ec6abd553972ed33b89f582cfae881bbef0a6aac",
+    "tools/run_p5_cut_branch_marks.mjs": "3385913c6be15d0e2901b37d11e11b37d3c4f1cc63de0e5bdcc9e69e1625ef2e"
+  },
+  "status": "passed",
+  "browser": "153.0.8010.12",
+  "frames": [
+    {
+      "name": "baseline",
+      "hash": "9c203969147f1b37ba66edb138e8242e3c70b1fd87dc7ec6505d4351416eab0d"
+    },
+    {
+      "name": "c",
+      "hash": "02abd51e93bf3e855fd487c3521dc50ebc450126067e42c0eb46ab6c45a8b5fd"
+    },
+    {
+      "name": "a",
+      "hash": "de6f81de5396231f58a5f93df0af6275ce01bd981bb37175555028ab2ba09487"
+    },
+    {
+      "name": "w",
+      "hash": "adbce6af083e203d8b40fab133e6f771259e4ea3bb01216971d292e63eb0b40d"
+    },
+    {
+      "name": "t",
+      "hash": "9a466040bafcca31a4b295545c5f9df1a9c0be6fc3494d1905c2e3c5ff99d09a"
+    },
+    {
+      "name": "r",
+      "hash": "1998b4d6a6a5747f4b658bf6a7d84676b0d0dc78c84d52e16f197d609fb57036"
+    },
+    {
+      "name": "reset",
+      "hash": "9c203969147f1b37ba66edb138e8242e3c70b1fd87dc7ec6505d4351416eab0d"
+    }
+  ],
+  "errors": [],
+  "scope": "Actual p5 edits, reset identity, download and cached revision. No Java pixel parity claim.",
+  "saved_pixels_equal_reset": true,
+  "artifacts_sha256": {
+    ".work/port-cut-branch-native-main1/a.png": "7dd4d6782615ae27123cdd7c3c8ecee8f2f0c1ca01af071d24a9964adac9d21b",
+    ".work/port-cut-branch-native-main1/baseline.png": "44058396ed14cb348efc3f6910c14403284df127c73ed1f5ea4c9c1ef9e18429",
+    ".work/port-cut-branch-native-main1/c.png": "3e213d16f04d9866d68719cd52f60bb5cfc39d83a9b7670e876cbd9fde52ec83",
+    ".work/port-cut-branch-native-main1/r.png": "5babc22872fe6108e621fea9d54a17748f4fd559d229386ae79fc7c8508a3471",
+    ".work/port-cut-branch-native-main1/reset.png": "44058396ed14cb348efc3f6910c14403284df127c73ed1f5ea4c9c1ef9e18429",
+    ".work/port-cut-branch-native-main1/saved.png": "636674a77ace9526c8a5084535e56f63591c0d26a50cc21b1f41a90f43f49eff",
+    ".work/port-cut-branch-native-main1/t.png": "06423dea66b866ec3aa4ea6ffd0312ef8e459ce0685e7770fb133e744d5045c0",
+    ".work/port-cut-branch-native-main1/w.png": "db7239e9317d22301573bbf099e0d0b1060e4ae6db720a0f84903e2487b93d15"
+  },
+  "runtime_sha256": {
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  }
+}

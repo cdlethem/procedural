@@ -2,6 +2,44 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "port-cut-branch-p5",
+      "title": "cut-branch-marks \u2014 reviewed p5 port",
+      "category": "Root reviewed browser workflow",
+      "description": "Retained geometry with interactive style and generation edits.",
+      "evidence": "evidence/ports/line-pool-p5/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/port-cut-branch-native-main1/baseline.png",
+          "sha256": "44058396ed14cb348efc3f6910c14403284df127c73ed1f5ea4c9c1ef9e18429"
+        },
+        {
+          "label": "Transfer",
+          "path": ".work/port-cut-branch-native-main1/t.png",
+          "sha256": "06423dea66b866ec3aa4ea6ffd0312ef8e459ce0685e7770fb133e744d5045c0"
+        }
+      ]
+    },
+    {
+      "id": "port-band-p5",
+      "title": "band-marks \u2014 reviewed p5 port",
+      "category": "Root reviewed browser workflow",
+      "description": "Retained geometry with interactive style and generation edits.",
+      "evidence": "evidence/ports/noise-band-path-p5/root-review.json",
+      "images": [
+        {
+          "label": "Baseline",
+          "path": ".work/port-band-native-main1/baseline.png",
+          "sha256": "4415d09543c47128495ded73a9fb7d0971400e2a34ab958ffc95f9eafac5b5d8"
+        },
+        {
+          "label": "Transfer",
+          "path": ".work/port-band-native-main1/m.png",
+          "sha256": "51ea9fe62f6678896b97af1b121c5228e4d1ee2b6c9e3d7d76a6efe5fe4d1f2a"
+        }
+      ]
+    },
+    {
       "id": "port-loop-p5",
       "title": "LoopMarks \u2014 reviewed p5 port",
       "category": "Root reviewed browser workflow",

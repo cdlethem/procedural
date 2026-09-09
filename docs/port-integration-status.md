@@ -29,10 +29,14 @@ Closed spline and LoopMarks are accepted in
 `evidence/ports/closed-spline-p5/root-review.json`, following the arithmetic replacement
 and fresh 1,033-pair Java runtime oracle.
 
-Remaining original JavaScript core work: noise-band paths
-and line pools; BandMarks and
-CutBranchMarks workflows. SpringMarks animation still needs separate native acceptance. Existing operation contracts and
-shared fixtures stay authoritative, including any intentional host API differences.
+Noise-band paths/BandMarks and line pools/CutBranchMarks are accepted in their
+`evidence/ports/{noise-band-path,line-pool}-p5/root-review.json` records. The trig helper
+preserves the complete netlib notice and passes 4,312 fresh exact Java comparisons.
+Line-pool indexed accessors are rejected without invoking them.
+
+All eight JavaScript cores and five workflows from the pinned branch are integrated.
+Common barrel exports and package distribution validation remain pending. SpringMarks
+animation needs separate native acceptance. Other target ports remain unreviewed.
 
 ## Spline provenance issue
 

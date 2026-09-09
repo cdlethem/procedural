@@ -1,0 +1,15 @@
+{
+  "source": "https://www.netlib.org/fdlibm/",
+  "source_sha256": {
+    "s_sin.c": "4d5edb75368e4f8e0ac18682d3ae4b6944ba06801637cf0df6f378d6211f4c81",
+    "s_cos.c": "bdcbea3c83b2d4aa521b9a5341f3e58b8cb9c8d326fcc4abb715f3704cf17799",
+    "k_sin.c": "75d391f3c124806ce14893cd038ae5dd10663e40430ffa174d5fddcb33012167",
+    "k_cos.c": "841086c75288f3f9fef03bae2a9dc24e99c3cdb2035e170c69452013a7b5befc",
+    "e_rem_pio2.c": "3a08dd4a38f9f9fc9478a33ca05cb81a6566f1010ab14412e97cae091bede16b",
+    "k_rem_pio2.c": "5796209ea3fe1af88e22badeaed0f6a6aa923914e097e227c410527cb5815740",
+    "s_scalbn.c": "9ad1bb374fc2951ec086474c82373b45bccfdecd34d631974dccf8633f40d99e",
+    "s_atan.c": "8583c253aed6318dee2a48135e3f3b1328d838a390372a69414ac41eb5ce5ce1",
+    "e_atan2.c": "61dbf9edc927468280ccde872ecfb7cb1ea7cbaf6e1b28e7021c968abe5f7c6e"
+  },
+  "notice": "Complete Sun Microsystems 1993 copyright and permission notice preserved in packages/javascript/src/fdlibm-trig.js. Root reviewed C range-reduction translation and numerical kernels."
+}

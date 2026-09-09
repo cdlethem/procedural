@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "operation": "path.noise-band-trace-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module golden, carrier and access checks against the frozen noise-band-path fixtures, using a bit-exact ported fdlibm5.3 sin/cos verified against java.lang.StrictMath.sin/cos and the existing gradient-noise-2d-01 field. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/noise-band-path.json": "245c3350d3cc139d9f208fa768f14e5439bd434c58afaf2e4f63d6f66763588f",
+    "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "tests/native/noise-band-path-javascript.mjs": "488a03ca8f6a635c2697411059a04dbe19a5f31a4ee09175ce6f6e64ee5d371e"
+  },
+  "input_sha256_after": {
+    "catalog/operations/noise-band-path.json": "245c3350d3cc139d9f208fa768f14e5439bd434c58afaf2e4f63d6f66763588f",
+    "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "tests/native/noise-band-path-javascript.mjs": "488a03ca8f6a635c2697411059a04dbe19a5f31a4ee09175ce6f6e64ee5d371e"
+  },
+  "scenarios": {
+    "fixture_cases": 18,
+    "ownership_access": [
+      "input containers detached",
+      "toValues/serialize export detached",
+      "pointInto atomic/typed outputs",
+      "index/range precedence"
+    ],
+    "native_only": [
+      "nonfinite-carriers (JavaScript applicable carriers)",
+      "passive-input-carriers-only"
+    ]
+  },
+  "allocation_failure": {
+    "executed": false,
+    "source_review": "Output exports allocate detached arrays and do not mutate retained private arrays; a failed generation exposes no result. No controlled host allocation failure injected."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "Direct-module JavaScript line-pool and source-checkout p5 cut-branch-marks. No root-barrel, distribution, other-target or source recreation claim.",
+  "origin": {
+    "core_commit": "01043520",
+    "workflow_commit": "fddb4e8b"
+  },
+  "implementation_sha256": {
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/examples/cut-branch-marks/sketch.js": "6d94d11aa0b978bbb897e8ea8515b19eeb864ea14f7582efbf3454f78f4e88df",
+    "packages/javascript/examples/cut-branch-marks/cut-branch-marks.js": "97a4e8fceb259c593b7b26a2a6a4f3255082a70921d54e2b17426dbfb2cf7d28",
+    "packages/javascript/examples/cut-branch-marks/index.html": "b966ff7d8cf2ca4f6189e18b1f415fb20a6dda67407657e56c12ba22265b1f28",
+    "tools/serve_cut_branch_marks.mjs": "b79f06fee15106b03363ce60ec6abd553972ed33b89f582cfae881bbef0a6aac",
+    "tools/run_p5_cut_branch_marks.mjs": "3385913c6be15d0e2901b37d11e11b37d3c4f1cc63de0e5bdcc9e69e1625ef2e",
+    "tests/native/line-pool-javascript.mjs": "a58aa062b0603ae68ba175acc0d19c729383a2844cb176d29392c40b2b9e63e3",
+    "tests/native/cut-branch-marks-model.mjs": "6e60b1de2684d4a095c81202170f41168ef6607ca2f2d15295736b3f44b7dc6d",
+    "tests/native/fdlibm-trig-javascript.mjs": "6ad3ab886e7f59bd1063a5cb50d21d50123addd4901a646dba2b725f81aa4135",
+    "tests/native/TrigOracle.java": "615ca96c3d3653eebffd13eeb795dc38e4cca2d2e4cf98e5866a05198e7dd57e",
+    "packages/javascript/examples/cut-branch-marks/README.md": "25321f9fc141bf3871350babc32ac2e3a88596306a2b2b25cc70c32aa93996cf",
+    "tests/native/line-pool-passive-input.mjs": "e021745ccb34e55c552d8eeb9de12d86ec7633ea3f1de2da97e4bf38ec4b1500"
+  },
+  "evidence_sha256": {
+    "evidence/ports/line-pool-p5/trig-oracle.json": "3461e3ee87802f16ec1fd06e6f105c4ef887309d7e585196c26ea83dc90abc43",
+    "evidence/ports/line-pool-p5/trig-provenance.json": "e25345566f5a032368fd693a0488cbba110f1d7183025c0ded7029f9b3139687",
+    "evidence/ports/line-pool-p5/core.json": "83f495c83f092675b1ce9a4c0aa609252184a67a847040bd787096cdbfe51717",
+    "evidence/ports/line-pool-p5/native.json": "59f1ccaebe61108ffa3457120b868d9e1dffd698f1cd39675248a71202ce07c5",
+    "evidence/ports/line-pool-p5/passive-input.json": "585c58703ad67ca36a2d9f11218c69876964ca491d01fd3b386bc8b8060ebb9b",
+    "evidence/ports/line-pool-p5/model.json": "0bf681c792da994f0169f9255ee9fbe6de4339a050d132d63509bdc78e7b5a51",
+    "fixtures/operations/seeded-line-pool-2d.json": "545d170b1d9d814480489836e4e87e791b9287fe9131847b13c3574ead12d5f1"
+  },
+  "verified": [
+    "Root source review plus delegated core review; frozen contracts and RNG/error ordering retained.",
+    "Fresh Java runtime oracle: 1078 finite input pairs, 4312 exact sin/cos/atan/atan2 bit comparisons.",
+    "Shared core fixtures and retained-command model checks pass.",
+    "Actual Chromium edits/reset/save pass under machine-wide render lock; root viewed baseline and transfer PNGs; saved pixels equal reset.",
+    "Root reviewed indexed data-descriptor fix and regression: getter never executes; holes rejected."
+  ],
+  "limits": [
+    "Technique-level source recreation and Python/Android remain unvalidated.",
+    "Browser raster identity with Java is not asserted. Band mark decoration uses host Math trigonometry.",
+    "Proxies are outside passive interchange; no proxy detection guarantee."
+  ]
+}

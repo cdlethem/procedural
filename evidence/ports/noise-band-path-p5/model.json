@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "node_version": "v22.22.1",
+  "scope": "Pure BandMarks model/command-generator checks against the shared drawing.fresh-raster-2d contract; no renderer or pixel claim (see real-browser verification separately recorded).",
+  "input_sha256_before": {
+    "packages/javascript/examples/band-marks/band-marks.js": "4ad6cd9c8117d28821984c2f0e129032f1a81fdfd8d320bdc002e5a4f85ebe55",
+    "tests/native/band-marks-model.mjs": "29ffa97f0382194668735823ccb4c45adf18d21ea3d51d86e4cbf085af6778f9"
+  },
+  "input_sha256_after": {
+    "packages/javascript/examples/band-marks/band-marks.js": "4ad6cd9c8117d28821984c2f0e129032f1a81fdfd8d320bdc002e5a4f85ebe55",
+    "tests/native/band-marks-model.mjs": "29ffa97f0382194668735823ccb4c45adf18d21ea3d51d86e4cbf085af6778f9"
+  },
+  "scenarios": {
+    "pathCommandCount": 43581,
+    "markCommandCount": 5475,
+    "pathCount": 64
+  }
+}

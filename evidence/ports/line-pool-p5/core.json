@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "operation": "topology.seeded-line-pool-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module golden, carrier and access checks against the frozen seeded-line-pool-2d fixtures, including the shared fdlibm5.3 sin/cos/atan2 numeric dependency. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/seeded-line-pool-2d.json": "7236eaf10bdd8cb21107096f7962e248967c9aa6813573f11784a63ba0007e4a",
+    "fixtures/operations/seeded-line-pool-2d.json": "545d170b1d9d814480489836e4e87e791b9287fe9131847b13c3574ead12d5f1",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "tests/native/line-pool-javascript.mjs": "a58aa062b0603ae68ba175acc0d19c729383a2844cb176d29392c40b2b9e63e3"
+  },
+  "input_sha256_after": {
+    "catalog/operations/seeded-line-pool-2d.json": "7236eaf10bdd8cb21107096f7962e248967c9aa6813573f11784a63ba0007e4a",
+    "fixtures/operations/seeded-line-pool-2d.json": "545d170b1d9d814480489836e4e87e791b9287fe9131847b13c3574ead12d5f1",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "tests/native/line-pool-javascript.mjs": "a58aa062b0603ae68ba175acc0d19c729383a2844cb176d29392c40b2b9e63e3"
+  },
+  "scenarios": {
+    "fixture_cases": 14,
+    "ownership_access": [
+      "input containers detached",
+      "toValues export detached",
+      "at/into accessors",
+      "offset precedence",
+      "invalid outputs atomic",
+      "index/range precedence"
+    ],
+    "native_only": [
+      "nonfinite-carriers (JavaScript applicable carriers)",
+      "passive-input-carriers-only"
+    ]
+  },
+  "allocation_failure": {
+    "executed": false,
+    "source_review": "Output exports allocate detached arrays and do not mutate retained private storage; a failed call exposes no result. No controlled host allocation failure injected."
+  }
+}

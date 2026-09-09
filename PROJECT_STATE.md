@@ -1,5 +1,16 @@
 # Project state
 
+## Final two JavaScript cores and browser workflows reviewed
+
+Root accepts noise-band paths/BandMarks and line pools/CutBranchMarks after shared
+fixtures, command models and actual Chromium edits/reset/save. Fresh Java oracle matches
+4312 trig outputs exactly; complete netlib Sun notice restored. Line-pool indexed getter
+validation fixed and regression reviewed. Eight branch cores/five workflows now accepted
+as direct-module/source-checkout slices. Root barrel exports and package validation are
+next; other targets and SpringMarks animation remain unvalidated. Gallery includes both.
+Android draft remains untouched.
+
+
 ## Closed spline and LoopMarks accepted; fresh oracle passes
 
 Root took over oracle runner after worker patch delay; new HypotOracle.java reads raw-bit

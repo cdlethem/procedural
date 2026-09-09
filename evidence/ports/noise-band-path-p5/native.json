@@ -1,0 +1,71 @@
+{
+  "input_sha256_before": {
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/examples/band-marks/sketch.js": "9d444db4696833274a034d98549c29e407a56fb97f877735a4ffe82222ffdaae",
+    "packages/javascript/examples/band-marks/band-marks.js": "4ad6cd9c8117d28821984c2f0e129032f1a81fdfd8d320bdc002e5a4f85ebe55",
+    "packages/javascript/examples/band-marks/index.html": "ed869e5218432472ffd3fb753e7bf4478eb1ebfba15187a3d548540331eac528",
+    "tools/serve_band_marks.mjs": "68889f9023d4be4acca021b1f6fa89e83ae7fa480e107149c72fba024ea4db7d",
+    "tools/run_p5_band_marks.mjs": "758c701d95688c26c837216fce22908c352bd1b2f18328c35cb0a6c10106821d"
+  },
+  "input_sha256_after": {
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/examples/band-marks/sketch.js": "9d444db4696833274a034d98549c29e407a56fb97f877735a4ffe82222ffdaae",
+    "packages/javascript/examples/band-marks/band-marks.js": "4ad6cd9c8117d28821984c2f0e129032f1a81fdfd8d320bdc002e5a4f85ebe55",
+    "packages/javascript/examples/band-marks/index.html": "ed869e5218432472ffd3fb753e7bf4478eb1ebfba15187a3d548540331eac528",
+    "tools/serve_band_marks.mjs": "68889f9023d4be4acca021b1f6fa89e83ae7fa480e107149c72fba024ea4db7d",
+    "tools/run_p5_band_marks.mjs": "758c701d95688c26c837216fce22908c352bd1b2f18328c35cb0a6c10106821d"
+  },
+  "status": "passed",
+  "browser": "153.0.8010.12",
+  "frames": [
+    {
+      "name": "baseline",
+      "hash": "dc4a7d2d8095fcb3564640a914330785b1ce5499995e5751a8ad2174dac43c25"
+    },
+    {
+      "name": "t",
+      "hash": "5d8c059d1b2244ef363ca8e0337ca64ca3a83d2cdaaafc8d859086ca44d3b466"
+    },
+    {
+      "name": "c",
+      "hash": "e308daf154cd782c698e8a41e686ef30efd5fa9fb756a306e602adc2250b98d5"
+    },
+    {
+      "name": "m",
+      "hash": "0cef657c5bfa7e1bb3d59c60d3c1ad52c38a1bb641abbbbd893b58d138c1517a"
+    },
+    {
+      "name": "reset",
+      "hash": "dc4a7d2d8095fcb3564640a914330785b1ce5499995e5751a8ad2174dac43c25"
+    }
+  ],
+  "errors": [],
+  "scope": "Actual p5 edits, reset identity, download and cached revision. No Java pixel parity claim.",
+  "saved_pixels_equal_reset": true,
+  "artifacts_sha256": {
+    ".work/port-band-native-main1/baseline.png": "4415d09543c47128495ded73a9fb7d0971400e2a34ab958ffc95f9eafac5b5d8",
+    ".work/port-band-native-main1/c.png": "a58211ad789767be159008eaa3c54042f3e1f5b78440b59f1dd51fc217f6ea47",
+    ".work/port-band-native-main1/m.png": "51ea9fe62f6678896b97af1b121c5228e4d1ee2b6c9e3d7d76a6efe5fe4d1f2a",
+    ".work/port-band-native-main1/reset.png": "4415d09543c47128495ded73a9fb7d0971400e2a34ab958ffc95f9eafac5b5d8",
+    ".work/port-band-native-main1/saved.png": "ef0ef94914b15ffd6ec1ae816c6cd2b375d62825b677f3fb9b5d4aafba5d4ba4",
+    ".work/port-band-native-main1/t.png": "a7b18ced358e7decd9fb53c541f48c8f47316468dc53dccbd9935764a1a27366"
+  },
+  "runtime_sha256": {
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  }
+}

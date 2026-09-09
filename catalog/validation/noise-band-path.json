@@ -104,10 +104,116 @@
     },
     "p5js": {
       "core": {
-        "status": "unvalidated"
+        "status": "conformant",
+        "implementation_sha256": {
+          "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+          "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+          "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+          "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+          "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+          "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+          "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+          "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+          "packages/javascript/examples/band-marks/sketch.js": "9d444db4696833274a034d98549c29e407a56fb97f877735a4ffe82222ffdaae",
+          "packages/javascript/examples/band-marks/band-marks.js": "4ad6cd9c8117d28821984c2f0e129032f1a81fdfd8d320bdc002e5a4f85ebe55",
+          "packages/javascript/examples/band-marks/index.html": "ed869e5218432472ffd3fb753e7bf4478eb1ebfba15187a3d548540331eac528",
+          "tools/serve_band_marks.mjs": "68889f9023d4be4acca021b1f6fa89e83ae7fa480e107149c72fba024ea4db7d",
+          "tools/run_p5_band_marks.mjs": "758c701d95688c26c837216fce22908c352bd1b2f18328c35cb0a6c10106821d",
+          "tests/native/noise-band-path-javascript.mjs": "488a03ca8f6a635c2697411059a04dbe19a5f31a4ee09175ce6f6e64ee5d371e",
+          "tests/native/band-marks-model.mjs": "29ffa97f0382194668735823ccb4c45adf18d21ea3d51d86e4cbf085af6778f9",
+          "tests/native/fdlibm-trig-javascript.mjs": "6ad3ab886e7f59bd1063a5cb50d21d50123addd4901a646dba2b725f81aa4135",
+          "tests/native/TrigOracle.java": "615ca96c3d3653eebffd13eeb795dc38e4cca2d2e4cf98e5866a05198e7dd57e",
+          "packages/javascript/examples/band-marks/README.md": "87a79dd4c8b7a59c824db510efa63dae4378f43d7172989a849571bc93cd907f"
+        },
+        "evidence_sha256": {
+          "evidence/ports/noise-band-path-p5/trig-oracle.json": "3461e3ee87802f16ec1fd06e6f105c4ef887309d7e585196c26ea83dc90abc43",
+          "evidence/ports/noise-band-path-p5/trig-provenance.json": "e25345566f5a032368fd693a0488cbba110f1d7183025c0ded7029f9b3139687",
+          "evidence/ports/noise-band-path-p5/core.json": "c91f4c4c8ae9714e517af7130fa3f19e10b593ee4aea8bfb1aef2d9d602bbd21",
+          "evidence/ports/noise-band-path-p5/native.json": "92bd49b0366bff3e41d1b62124cd419f1cf1b271b7b22f6568c0b9a731aae63b",
+          "evidence/ports/noise-band-path-p5/model.json": "3142fc78d35275db3081f212ebd1024bd75b8eb82c9e29a23dab9150e7c72afd",
+          "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/ports/noise-band-path-p5/core.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/ports/noise-band-path-p5/trig-oracle.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/ports/noise-band-path-p5/model.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/ports/noise-band-path-p5/root-review.json",
+          "sha256": "39a2b936baffdfc9c7038591d3ead1c0036742c8d0b5f48842ac7b63084624e1"
+        },
+        "runtime_profile": {
+          "name": "Node22; Chromium153; p5 2.3.2; fresh Temurin17 oracle",
+          "scope": "Direct-module JavaScript noise-band-path and source-checkout p5 band-marks. No root-barrel, distribution, other-target or source recreation claim."
+        }
       },
       "native": {
-        "status": "unvalidated"
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+          "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+          "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+          "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+          "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+          "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+          "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+          "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+          "packages/javascript/examples/band-marks/sketch.js": "9d444db4696833274a034d98549c29e407a56fb97f877735a4ffe82222ffdaae",
+          "packages/javascript/examples/band-marks/band-marks.js": "4ad6cd9c8117d28821984c2f0e129032f1a81fdfd8d320bdc002e5a4f85ebe55",
+          "packages/javascript/examples/band-marks/index.html": "ed869e5218432472ffd3fb753e7bf4478eb1ebfba15187a3d548540331eac528",
+          "tools/serve_band_marks.mjs": "68889f9023d4be4acca021b1f6fa89e83ae7fa480e107149c72fba024ea4db7d",
+          "tools/run_p5_band_marks.mjs": "758c701d95688c26c837216fce22908c352bd1b2f18328c35cb0a6c10106821d",
+          "tests/native/noise-band-path-javascript.mjs": "488a03ca8f6a635c2697411059a04dbe19a5f31a4ee09175ce6f6e64ee5d371e",
+          "tests/native/band-marks-model.mjs": "29ffa97f0382194668735823ccb4c45adf18d21ea3d51d86e4cbf085af6778f9",
+          "tests/native/fdlibm-trig-javascript.mjs": "6ad3ab886e7f59bd1063a5cb50d21d50123addd4901a646dba2b725f81aa4135",
+          "tests/native/TrigOracle.java": "615ca96c3d3653eebffd13eeb795dc38e4cca2d2e4cf98e5866a05198e7dd57e",
+          "packages/javascript/examples/band-marks/README.md": "87a79dd4c8b7a59c824db510efa63dae4378f43d7172989a849571bc93cd907f"
+        },
+        "evidence_sha256": {
+          "evidence/ports/noise-band-path-p5/trig-oracle.json": "3461e3ee87802f16ec1fd06e6f105c4ef887309d7e585196c26ea83dc90abc43",
+          "evidence/ports/noise-band-path-p5/trig-provenance.json": "e25345566f5a032368fd693a0488cbba110f1d7183025c0ded7029f9b3139687",
+          "evidence/ports/noise-band-path-p5/core.json": "c91f4c4c8ae9714e517af7130fa3f19e10b593ee4aea8bfb1aef2d9d602bbd21",
+          "evidence/ports/noise-band-path-p5/native.json": "92bd49b0366bff3e41d1b62124cd419f1cf1b271b7b22f6568c0b9a731aae63b",
+          "evidence/ports/noise-band-path-p5/model.json": "3142fc78d35275db3081f212ebd1024bd75b8eb82c9e29a23dab9150e7c72afd",
+          "fixtures/operations/noise-band-path.json": "639840817083f8e764257ed14d44394a03de77dc99f947c59b98a6c291d96fd8"
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/ports/noise-band-path-p5/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/ports/noise-band-path-p5/trig-oracle.json",
+            "pointer": "/status",
+            "equals": "passed"
+          },
+          {
+            "path": "evidence/ports/noise-band-path-p5/model.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ],
+        "acceptance_review": {
+          "path": "evidence/ports/noise-band-path-p5/root-review.json",
+          "sha256": "39a2b936baffdfc9c7038591d3ead1c0036742c8d0b5f48842ac7b63084624e1"
+        },
+        "runtime_profile": {
+          "name": "Node22; Chromium153; p5 2.3.2; fresh Temurin17 oracle",
+          "scope": "Direct-module JavaScript noise-band-path and source-checkout p5 band-marks. No root-barrel, distribution, other-target or source recreation claim."
+        }
       },
       "technique": {
         "status": "unvalidated"

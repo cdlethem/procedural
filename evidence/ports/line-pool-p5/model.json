@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "node_version": "v22.22.1",
+  "scope": "Pure CutBranchMarks model/command-generator checks against the shared drawing.fresh-raster-2d contract; no renderer or pixel claim (see real-browser verification separately recorded).",
+  "input_sha256_before": {
+    "packages/javascript/examples/cut-branch-marks/cut-branch-marks.js": "97a4e8fceb259c593b7b26a2a6a4f3255082a70921d54e2b17426dbfb2cf7d28",
+    "tests/native/cut-branch-marks-model.mjs": "6e60b1de2684d4a095c81202170f41168ef6607ca2f2d15295736b3f44b7dc6d"
+  },
+  "input_sha256_after": {
+    "packages/javascript/examples/cut-branch-marks/cut-branch-marks.js": "97a4e8fceb259c593b7b26a2a6a4f3255082a70921d54e2b17426dbfb2cf7d28",
+    "tests/native/cut-branch-marks-model.mjs": "6e60b1de2684d4a095c81202170f41168ef6607ca2f2d15295736b3f44b7dc6d"
+  },
+  "scenarios": {
+    "poolSize": 12616,
+    "commandCount": 12616,
+    "narrowPoolSize": 12616,
+    "sparsePoolSize": 4362
+  }
+}

@@ -1211,7 +1211,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/noise-band-path-catalog-review.json) | [validated-scoped](../../evidence/conformance/noise-band-path-catalog-review.json) | [validated-scoped](../../evidence/conformance/noise-band-path-catalog-review.json) | [review](../../evidence/conformance/noise-band-path-catalog-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/noise-band-path-p5/root-review.json) | [validated-scoped](../../evidence/ports/noise-band-path-p5/root-review.json) | unvalidated | [review](../../evidence/ports/noise-band-path-p5/root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -2371,7 +2371,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | [conformant](../../evidence/conformance/line-pool-catalog-review.json) | [validated-scoped](../../evidence/conformance/line-pool-catalog-review.json) | [validated-scoped](../../evidence/conformance/line-pool-catalog-review.json) | [review](../../evidence/conformance/line-pool-catalog-review.json) |
-| p5js | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/ports/line-pool-p5/root-review.json) | [validated-scoped](../../evidence/ports/line-pool-p5/root-review.json) | unvalidated | [review](../../evidence/ports/line-pool-p5/root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
