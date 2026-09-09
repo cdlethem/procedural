@@ -1,6 +1,6 @@
 /** App-specific, data-only composition document. Not the portable recipe grammar. */
-export type TechniqueId =
-  "field-marks" | "path-marks" | "placement-marks" | "lattice-marks";
+/** Known technique IDs are admitted by the app registry at runtime. */
+export type TechniqueId = string;
 export type Parameter = {
   key: string;
   label: string;
@@ -17,11 +17,12 @@ export type Layer = {
   visible: boolean;
   opacity: number;
   seed: number;
+  palette: number[];
   params: Record<string, number | string | boolean>;
 };
 export type StudioDocument = {
   schemaVersion: 1;
-  bindingVersion: "studio-v1";
+  bindingVersion: "studio-v2";
   catalogSha256: string;
   width: 640;
   height: 640;

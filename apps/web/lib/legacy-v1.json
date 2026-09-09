@@ -1,0 +1,277 @@
+{
+  "note": "Frozen migration metadata from app release 510da796. Do not refresh from current bindings.",
+  "bindingVersion": "studio-v1",
+  "catalogSha256": "e8cd4304cc38df0c088ae3e30bc8b4f212dd50f9f39dc262aa1995dfa6c36944",
+  "techniques": [
+    {
+      "id": "field-marks",
+      "title": "Field marks",
+      "description": "A sampled noise field drawn as short lines or bars.",
+      "parameters": [
+        {
+          "key": "columns",
+          "label": "Columns",
+          "description": "Number of field columns.",
+          "type": "number",
+          "min": 16,
+          "max": 160,
+          "step": 1
+        },
+        {
+          "key": "rows",
+          "label": "Rows",
+          "description": "Number of field rows.",
+          "type": "number",
+          "min": 16,
+          "max": 160,
+          "step": 1
+        },
+        {
+          "key": "pitch",
+          "label": "Pitch",
+          "description": "Distance between field samples.",
+          "type": "number",
+          "min": 4,
+          "max": 16,
+          "step": 1
+        },
+        {
+          "key": "maxLength",
+          "label": "Maximum length",
+          "description": "Longest mark in pixels.",
+          "type": "number",
+          "min": 1,
+          "max": 32,
+          "step": 1
+        },
+        {
+          "key": "palette",
+          "label": "Palette",
+          "description": "Colour sequence for marks.",
+          "type": "select",
+          "options": [
+            {
+              "value": "original",
+              "label": "Original"
+            },
+            {
+              "value": "neon",
+              "label": "Neon"
+            }
+          ]
+        },
+        {
+          "key": "bars",
+          "label": "Bars",
+          "description": "Draw filled bars instead of line marks.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "columns": 80,
+        "rows": 80,
+        "pitch": 8,
+        "maxLength": 14,
+        "palette": "original",
+        "bars": false
+      }
+    },
+    {
+      "id": "path-marks",
+      "title": "Path marks",
+      "description": "Marks or traces sampled along seeded gradient paths.",
+      "parameters": [
+        {
+          "key": "steps",
+          "label": "Steps",
+          "description": "Steps per retained path.",
+          "type": "number",
+          "min": 50,
+          "max": 2000,
+          "step": 1
+        },
+        {
+          "key": "distance",
+          "label": "Step distance",
+          "description": "Distance travelled at each path step.",
+          "type": "number",
+          "min": 0.1,
+          "max": 1,
+          "step": 0.1
+        },
+        {
+          "key": "markLength",
+          "label": "Mark length",
+          "description": "Length of each perpendicular mark.",
+          "type": "number",
+          "min": 1,
+          "max": 32,
+          "step": 1
+        },
+        {
+          "key": "trace",
+          "label": "Trace",
+          "description": "Draw movement segments instead of endpoint marks.",
+          "type": "boolean"
+        },
+        {
+          "key": "palette",
+          "label": "Palette",
+          "description": "Colour sequence for paths.",
+          "type": "select",
+          "options": [
+            {
+              "value": "original",
+              "label": "Original"
+            },
+            {
+              "value": "neon",
+              "label": "Neon"
+            }
+          ]
+        }
+      ],
+      "defaults": {
+        "steps": 600,
+        "distance": 0.4,
+        "markLength": 12,
+        "trace": false,
+        "palette": "original"
+      }
+    },
+    {
+      "id": "placement-marks",
+      "title": "Placement marks",
+      "description": "Separated circles drawn as rings or diamonds.",
+      "parameters": [
+        {
+          "key": "attempts",
+          "label": "Proposals",
+          "description": "Seeded circle proposals to consider.",
+          "type": "number",
+          "min": 100,
+          "max": 5000,
+          "step": 1
+        },
+        {
+          "key": "minimum",
+          "label": "Minimum radius",
+          "description": "Smallest seeded circle radius.",
+          "type": "number",
+          "min": 2,
+          "max": 32,
+          "step": 1
+        },
+        {
+          "key": "maximum",
+          "label": "Maximum radius",
+          "description": "Largest seeded circle radius.",
+          "type": "number",
+          "min": 4,
+          "max": 64,
+          "step": 1
+        },
+        {
+          "key": "separation",
+          "label": "Separation",
+          "description": "Extra space between accepted circles.",
+          "type": "number",
+          "min": 0.5,
+          "max": 2,
+          "step": 0.1
+        },
+        {
+          "key": "radial",
+          "label": "Radial source",
+          "description": "Use the authored radial proposal source.",
+          "type": "boolean"
+        },
+        {
+          "key": "diamonds",
+          "label": "Diamonds",
+          "description": "Draw four-cornered forms.",
+          "type": "boolean"
+        },
+        {
+          "key": "palette",
+          "label": "Palette",
+          "description": "Colour sequence for forms.",
+          "type": "select",
+          "options": [
+            {
+              "value": "original",
+              "label": "Original"
+            },
+            {
+              "value": "neon",
+              "label": "Neon"
+            }
+          ]
+        }
+      ],
+      "defaults": {
+        "attempts": 3000,
+        "minimum": 4,
+        "maximum": 48,
+        "separation": 1,
+        "radial": false,
+        "diamonds": false,
+        "palette": "original"
+      }
+    },
+    {
+      "id": "lattice-marks",
+      "title": "Lattice marks",
+      "description": "Ordered occupied paths across a square lattice.",
+      "parameters": [
+        {
+          "key": "many",
+          "label": "Many paths",
+          "description": "Grow 36 paths instead of 12.",
+          "type": "boolean"
+        },
+        {
+          "key": "longPaths",
+          "label": "Long paths",
+          "description": "Allow 36 cells per path instead of 12.",
+          "type": "boolean"
+        },
+        {
+          "key": "dots",
+          "label": "Dots",
+          "description": "Draw cells as dots instead of connected paths.",
+          "type": "boolean"
+        },
+        {
+          "key": "wide",
+          "label": "Wide strokes",
+          "description": "Use a wider path stroke.",
+          "type": "boolean"
+        },
+        {
+          "key": "palette",
+          "label": "Palette",
+          "description": "Colour sequence for paths.",
+          "type": "select",
+          "options": [
+            {
+              "value": "original",
+              "label": "Original"
+            },
+            {
+              "value": "neon",
+              "label": "Neon"
+            }
+          ]
+        }
+      ],
+      "defaults": {
+        "many": false,
+        "longPaths": false,
+        "dots": false,
+        "wide": false,
+        "palette": "original"
+      }
+    }
+  ]
+}

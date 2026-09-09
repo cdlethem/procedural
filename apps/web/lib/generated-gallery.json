@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "studioBinding": {
-    "version": "studio-v1",
-    "catalogSha256": "e8cd4304cc38df0c088ae3e30bc8b4f212dd50f9f39dc262aa1995dfa6c36944",
+    "version": "studio-v2",
+    "catalogSha256": "42ce74a16d7e40d346306aa6e4843ae20de3fd77e0d6711d6fd53a118a08a15a",
     "techniques": [
       {
         "technique": "field-marks",
@@ -41,11 +41,6 @@
             "id": "path.gradient-trace-2d",
             "version": "0.1.0",
             "sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c"
-          },
-          {
-            "id": "color.cyclic-palette",
-            "version": "0.1.0",
-            "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
           }
         ]
       },
@@ -78,6 +73,246 @@
             "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
           }
         ]
+      },
+      {
+        "technique": "band-marks",
+        "operations": [
+          {
+            "id": "path.noise-band-trace-2d",
+            "version": "0.1.0",
+            "sha256": "245c3350d3cc139d9f208fa768f14e5439bd434c58afaf2e4f63d6f66763588f"
+          }
+        ]
+      },
+      {
+        "technique": "branch-marks",
+        "operations": [
+          {
+            "id": "topology.seeded-endpoint-branches-2d",
+            "version": "0.1.0",
+            "sha256": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881"
+          },
+          {
+            "id": "sampling.seeded-circle-placement-2d",
+            "version": "0.1.0",
+            "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267"
+          }
+        ]
+      },
+      {
+        "technique": "cut-branch-marks",
+        "operations": [
+          {
+            "id": "topology.seeded-line-pool-2d",
+            "version": "0.1.0",
+            "sha256": "7236eaf10bdd8cb21107096f7962e248967c9aa6813573f11784a63ba0007e4a"
+          }
+        ]
+      },
+      {
+        "technique": "loop-marks",
+        "operations": [
+          {
+            "id": "geometry.closed-spline-2d",
+            "version": "0.1.0",
+            "sha256": "59a28d5feee19597ebfd97eb9ca5a1ecc77c5f06d4cc57dc2b39a70998a10b3b"
+          }
+        ]
+      },
+      {
+        "technique": "region-marks",
+        "operations": [
+          {
+            "id": "layout.seeded-quadrant-partition-2d",
+            "version": "0.1.0",
+            "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1"
+          }
+        ]
+      },
+      {
+        "technique": "panel-marks",
+        "operations": [
+          {
+            "id": "layout.binary-cell-partition-2d",
+            "version": "0.1.0",
+            "sha256": "62f7b5c8c0dc020a639d821c9e2114e1792cb3da29623035491255294c89e345"
+          }
+        ]
+      },
+      {
+        "technique": "cut-marks",
+        "operations": [
+          {
+            "id": "layout.retained-rectangle-cuts-2d",
+            "version": "0.1.0",
+            "sha256": "e8797eb0b44201752042091b568090d1355a9f2338ae27164b1671a505829e4c"
+          },
+          {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+          }
+        ]
+      },
+      {
+        "technique": "polygon-marks",
+        "operations": [
+          {
+            "id": "sampling.ordered-convex-polygon-filter-2d",
+            "version": "0.1.0",
+            "sha256": "64ec6cbf60c04c612cbf2f8ad0c427853b48c3c7585ebf2cdd0938151604599e"
+          },
+          {
+            "id": "sampling.seeded-triangle-points-2d",
+            "version": "0.1.0",
+            "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+          }
+        ]
+      },
+      {
+        "technique": "facet-marks",
+        "operations": [
+          {
+            "id": "topology.delaunay-2d",
+            "version": "0.1.0",
+            "sha256": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf"
+          },
+          {
+            "id": "sampling.seeded-triangle-points-2d",
+            "version": "0.1.0",
+            "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+          }
+        ]
+      },
+      {
+        "technique": "grain-marks",
+        "operations": [
+          {
+            "id": "sampling.seeded-triangle-points-2d",
+            "version": "0.1.0",
+            "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+          },
+          {
+            "id": "sampling.triangle-coordinate-map-2d",
+            "version": "0.1.0",
+            "sha256": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f"
+          },
+          {
+            "id": "layout.seeded-quadrant-partition-2d",
+            "version": "0.1.0",
+            "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1"
+          }
+        ]
+      },
+      {
+        "technique": "pull-marks",
+        "operations": [
+          {
+            "id": "geometry.radial-pull-2d",
+            "version": "0.1.0",
+            "sha256": "63e089d2ab61b4a4e8cb1f48684cb69e7268574ebebd15d34e405b9595366788"
+          }
+        ]
+      },
+      {
+        "technique": "projection-marks",
+        "operations": [
+          {
+            "id": "geometry.sequential-disc-projection-2d",
+            "version": "0.1.0",
+            "sha256": "f7e90d17f37d87fe1ae63975ed5fcae3e79e3d1d59d0eb7b78da6114078dd206"
+          }
+        ]
+      },
+      {
+        "technique": "path-clip-marks",
+        "operations": [
+          {
+            "id": "geometry.clip-segments-simple-polygon-2d",
+            "version": "0.1.0",
+            "sha256": "c10f0619f16d5aca4bce2f7ab6a02f2693f7d59e2177b39521410959b27a4292"
+          }
+        ]
+      },
+      {
+        "technique": "ramp-marks",
+        "operations": [
+          {
+            "id": "color.stop-ramp",
+            "version": "0.1.0",
+            "sha256": "7a2d7c1e2e1df26e07a4b88012f8164bef611b76eb8920f22ce0bc1167b95fc6"
+          }
+        ]
+      },
+      {
+        "technique": "warp-marks",
+        "operations": [
+          {
+            "id": "raster.bilinear-remap-2d",
+            "version": "0.1.0",
+            "sha256": "b8fe845f220644ee7c3bf24e7df9c3aecf5195edcce7b69f51fe530f176ee176"
+          },
+          {
+            "id": "field.gradient-noise-3d-01",
+            "version": "0.1.0",
+            "sha256": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82"
+          }
+        ]
+      },
+      {
+        "technique": "blur-marks",
+        "operations": [
+          {
+            "id": "raster.separable-blur-2d",
+            "version": "0.1.0",
+            "sha256": "f17c33f68218f36bdbecf131377bc868d409b0c1db9844cad39e6f6f1c59743f"
+          }
+        ]
+      },
+      {
+        "technique": "profile-marks",
+        "operations": [
+          {
+            "id": "mesh.radial-profile-surface-3d",
+            "version": "0.1.0",
+            "sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa"
+          }
+        ]
+      },
+      {
+        "technique": "annular-marks",
+        "operations": [
+          {
+            "id": "mesh.annular-solid-3d",
+            "version": "0.1.0",
+            "sha256": "856da2ea0449233334c5e152f9eae1c589a9b2b6656ced8af93e73daac39ee6a"
+          }
+        ]
+      },
+      {
+        "technique": "depth-marks",
+        "operations": [
+          {
+            "id": "field.gradient-noise-3d-01",
+            "version": "0.1.0",
+            "sha256": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82"
+          },
+          {
+            "id": "mesh.radial-profile-surface-3d",
+            "version": "0.1.0",
+            "sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa"
+          }
+        ]
+      },
+      {
+        "technique": "spring-marks",
+        "operations": [
+          {
+            "id": "motion.target-springs-2d",
+            "version": "0.1.0",
+            "sha256": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3"
+          }
+        ]
       }
     ]
   },
@@ -85,13 +320,17 @@
     {
       "slug": "field-marks",
       "title": "Field Marks",
-      "description": "Thousands of short strokes turn together across a surface. A seeded noise field chooses their direction, length and color; a regular grid supplies their positions. Change the palette, stroke length or mark shape while keeping the underlying arrangement.",
+      "description": "This study samples a seeded noise field on a grid and turns each sample into a short line or bar. Columns, rows, pitch, and maximum length change the density and scale; Bars changes the mark shape. A new seed changes the field while the palette recolors the same kind of composition.",
       "category": "Fields & paths",
-      "markdown": "# Make a field of flowing marks\n\nThousands of short strokes turn together across a surface. A seeded noise field chooses\ntheir direction, length and color; a regular grid supplies their positions. Change the\npalette, stroke length or mark shape while keeping the underlying arrangement.\n\n## Controls\n\n| Control | What changes on the canvas |\n| --- | --- |\n| Maximum length | Switch between short and long strokes. |\n| Palette | Recolor the same marks. |\n| Mark | Switch fine lines to broader bars. |\n| Save PNG | Download the displayed artwork. |\n\n## Make it your own\n\nThe studio adds editable seed, grid density and stroke length controls. Layer several\nfields, or combine one with paths or separated shapes. A new seed changes the arrangement;\nchanging colors gives the same field another appearance.\n\nThe existing `createMarkField()` example composes a regular grid with three separate noise\nsamples for direction, length and color. `markCommands()` converts those attributes into\nsegments or quadrilaterals. These are example settings, not recommended operation ranges.\nThe composition is motivated by `2018/Generativos/pelines`.\n",
+      "markdown": "# Make a field of marks\n\nThis study samples a seeded noise field on a grid and turns each sample into a short line or bar. Columns, rows, pitch, and maximum length change the density and scale; Bars changes the mark shape. A new seed changes the field while the palette recolors the same kind of composition.",
       "sourcePath": "packages/javascript/examples/field-marks/README.md",
       "guidePath": "apps/web/content/field-marks.md",
       "guideSha256": "e82e8317d7337fcd7f706b7ede2afdd62a70a7984f0e6f2556c9a6e4c35f4173",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/field-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/basic.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/basic.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { createMarkField, markCommands } from \"../../../../packages/javascript/examples/field-marks/mark-field.js\";\n\nfunction field(p: any, l: Layer) {\n  const q = l.params;\n  const model = createMarkField(\n    l.seed,\n    Number(q.columns),\n    Number(q.rows),\n    Number(q.pitch),\n  );\n  p.noFill();\n  p.strokeWeight(1);\n  p.strokeCap(p.ROUND);\n  for (const c of markCommands(\n    model,\n    Number(q.maxLength),\n    l.palette,\n    Boolean(q.bars),\n  )) {\n    const color = channels(c.rgb);\n    if (c.kind === \"segment2\" && c.from && c.to) {\n      p.stroke(...color, c.opacity8);\n      p.line(...c.from, ...c.to);\n    } else if (c.vertices) {\n      p.noStroke();\n      p.fill(...color, c.opacity8);\n      p.quad(...c.vertices.flat());\n    }\n  }\n}\n",
       "operations": [
         {
           "id": "layout.regular-grid",
@@ -141,13 +380,17 @@
     {
       "slug": "path-marks",
       "title": "Path Marks",
-      "description": "PathMarks draws short strokes along wandering curves. Show the curves themselves, or use them as a guide for arranging your own marks. Changing the stroke length or palette keeps the curves in place.",
+      "description": "Seeded paths follow a sampled direction field. Steps controls their length and Step distance controls how far each move travels. Trace draws the paths themselves; switch it off to place perpendicular strokes along them and adjust Mark length. Recoloring leaves their geometry unchanged.",
       "category": "Fields & paths",
-      "markdown": "# Draw flowing paths and marks\n\nPathMarks draws short strokes along wandering curves. Show the curves themselves, or use\nthem as a guide for arranging your own marks. Changing the stroke length or palette keeps\nthe curves in place.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **M** | Switch between the path lines and strokes placed across them. |\n| **L** | Switch stroke length between 12 and 24 pixels; the paths stay put. |\n| **C** | Switch palettes without changing the paths. |\n| **N** | Add or remove one step at the end of each path (2,000 or 2,001 steps); the difference may be hard to see. |\n| **D** | Switch the distance traveled per step from 0.4 to 0.8; paths reach different places and can turn differently. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nEdit the starts, step count and step distance in the sketch to change where paths begin\nand how far they travel. Each new position follows the direction of a field sampled at the\nprevious position, so changing the movement can change the rest of the curve.\n\n`PathMarkComposition.java` creates the paths. `PathMarksCanvas.java` draws them. Replace\nthe mark-drawing code to put dots, bars or other shapes along the same movement. Save the\ncomputed paths and reuse them when changing colors or marks.\n\nRestart the sketch to restore its original settings. To show these paths only inside an\noutline, use [PathClipMarks](/techniques/path-clip-marks); the outline crops the drawing rather than\nsteering its movement.\n",
+      "markdown": "# Draw field-guided paths\n\nSeeded paths follow a sampled direction field. Steps controls their length and Step distance controls how far each move travels. Trace draws the paths themselves; switch it off to place perpendicular strokes along them and adjust Mark length. Recoloring leaves their geometry unchanged.",
       "sourcePath": "packages/javascript/examples/path-marks/README.md",
       "guidePath": "docs/path-marks.md",
       "guideSha256": "4869946cabfc5714a2546a9bedc22cf6dad40752e82f1c5b9bd72689e2e43859",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/path-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/basic.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/basic.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { createPathMarks } from \"../../../../packages/javascript/examples/path-marks/path-marks.js\";\n\nfunction paths(p: any, l: Layer) {\n  const q = l.params,\n    model = createPathMarks(l.seed, Number(q.steps), Number(q.distance));\n  p.noFill();\n  p.strokeWeight(1);\n  p.strokeCap(p.ROUND);\n  const from = [0, 0],\n    to = [0, 0];\n  for (let i = 0; i < model.paths.length; i++) {\n    const path = model.paths[i];\n    p.stroke(...channels(l.palette[i % l.palette.length]), 150);\n    for (let step = 0; step < path.steps; step += q.trace ? 1 : 4) {\n      path.pointInto(step + 1, to);\n      if (q.trace) {\n        path.pointInto(step, from);\n      } else {\n        const a = path.headingAt(step) + Math.PI / 2,\n          dx = Math.cos(a) * Number(q.markLength) * 0.5,\n          dy = Math.sin(a) * Number(q.markLength) * 0.5;\n        from[0] = to[0] - dx;\n        from[1] = to[1] - dy;\n        to[0] += dx;\n        to[1] += dy;\n      }\n      if (\n        Math.max(from[0], to[0]) < -1 ||\n        Math.min(from[0], to[0]) > 641 ||\n        Math.max(from[1], to[1]) < -1 ||\n        Math.min(from[1], to[1]) > 641\n      )\n        continue;\n      p.line(...from, ...to);\n    }\n  }\n}\n",
       "operations": [
         {
           "id": "layout.regular-grid",
@@ -190,20 +433,6 @@
           },
           "attestationPath": "catalog/validation/gradient-path.json",
           "attestationSha256": "6c9bcfb81a652e971a4ad832676bd055570e169bd9abd5dd6583b13f63fa3ebb"
-        },
-        {
-          "id": "color.cyclic-palette",
-          "version": "0.1.0",
-          "description": "Immutable ordered opaque sRGB8 palette sampled by a phase in cycles, with linear encoded-channel interpolation and fixed RGB24 quantization.",
-          "catalogPath": "catalog/operations/cyclic-palette.json",
-          "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "validated-scoped"
-          },
-          "attestationPath": "catalog/validation/cyclic-palette.json",
-          "attestationSha256": "e46e0f6305e33bac990c79b47c8450fbef4ae2bc10ddce107d079d700222028c"
         }
       ],
       "studio": true
@@ -211,13 +440,17 @@
     {
       "slug": "placement-marks",
       "title": "Placement Marks",
-      "description": "PlacementMarks fills the canvas with differently sized rings. It finds places for them, then lets you change their colors or replace them with diamonds without moving them.",
+      "description": "This study proposes seeded circles and keeps only placements with room between them. Attempts gives the sampler more chances, while the radius interval and separation change what can fit. Radial source and Diamonds change the supplied proposal or the painted form.",
       "category": "Shapes & space",
-      "markdown": "# Scatter shapes with room between them\n\nPlacementMarks fills the canvas with differently sized rings. It finds places for them,\nthen lets you change their colors or replace them with diamonds without moving them.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **R** | Try a new random arrangement. |\n| **N** | Try 10,000 placements instead of 5,000, giving more shapes a chance to fill gaps. |\n| **G** | Increase spacing between shapes; switch between touching-distance and extra clearance. |\n| **I** | Raise the smallest proposed radius from 4 to 8 pixels. |\n| **O** | Lower the largest proposed radius from 64 to 32 pixels. |\n| **M** | Replace rings with diamonds at the same positions. |\n| **C** | Change the palette; keep the arrangement. |\n| **X** | Switch between random placements and a supplied arrangement in radial bands. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nStart with shape size and spacing, then choose the drawing treatment. `PlacementComposition.java`\nsets the possible positions and radii. `PlacementMarks.pde` draws the rings or diamonds;\nreplace that drawing code to use the same places for your own forms.\n\n| Setting | How it affects the arrangement |\n| --- | --- |\n| Radius interval | Sets the smallest and largest shapes to try. |\n| Placement attempts | Gives the sketch more chances to find space; it is not a requested number of visible shapes. |\n| Separation scale | At 1, circles may touch. Above 1, they have extra space proportional to their sizes. Below 1, they may overlap. |\n| Center rectangle | Chooses where shape centers may fall; large shapes can extend outside it. |\n| Seed | Makes the random arrangement repeatable. |\n\nR, N, I and O affect the random arrangement only. Edit `PlacementComposition.radial` for\nthe supplied bands. Restart the sketch to restore the starting settings. Keep your marks\nwithin the circles used for spacing if you want the painted forms to stay apart.\n",
+      "markdown": "# Place separated forms\n\nThis study proposes seeded circles and keeps only placements with room between them. Attempts gives the sampler more chances, while the radius interval and separation change what can fit. Radial source and Diamonds change the supplied proposal or the painted form.",
       "sourcePath": "packages/javascript/examples/placement-marks/README.md",
       "guidePath": "docs/placement-marks.md",
       "guideSha256": "d71f49f2e407162638209a39c491571ba7e247e4b00258e8a94f661d89b13103",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/placement-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/basic.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/basic.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { createSeededPlacementMarks, createRadialPlacementMarks, vertexInto } from \"../../../../packages/javascript/examples/placement-marks/placement-marks.js\";\n\nfunction placements(p: any, l: Layer) {\n  const q = l.params,\n    model = q.radial\n      ? createRadialPlacementMarks(Number(q.separation))\n      : createSeededPlacementMarks(\n          l.seed,\n          Number(q.attempts),\n          Number(q.minimum),\n          Number(q.maximum),\n          Number(q.separation),\n        );\n  const pt = new Float64Array(2),\n    vertices = q.diamonds ? 4 : 64;\n  p.noFill();\n  p.strokeWeight(1);\n  p.strokeCap(p.ROUND);\n  p.strokeJoin(p.ROUND);\n  for (let i = 0; i < model.placements.size; i++) {\n    p.stroke(\n      ...channels(\n        l.palette[model.placements.sourceIndexAt(i) % l.palette.length],\n      ),\n    );\n    p.beginShape();\n    for (let v = 0; v < vertices; v++) {\n      vertexInto(model.placements, i, v, Boolean(q.diamonds), pt);\n      p.vertex(pt[0], pt[1]);\n    }\n    p.endShape(p.CLOSE);\n  }\n}\n",
       "operations": [
         {
           "id": "sampling.seeded-circle-placement-2d",
@@ -253,13 +486,17 @@
     {
       "slug": "lattice-marks",
       "title": "Lattice Marks",
-      "description": "LatticeMarks draws angular paths that move between neighboring grid cells. Each path claims the cells it visits, leaving later paths to find room around it. Draw the routes as connected lines or as dots.",
+      "description": "Paths claim cells on a square lattice in order. Paths and Moves set the amount of routing, while Dots and Grid switch the visible treatment. The palette follows each route in its generated order.",
       "category": "Fields & paths",
-      "markdown": "# Route paths through a grid\n\nLatticeMarks draws angular paths that move between neighboring grid cells. Each path\nclaims the cells it visits, leaving later paths to find room around it. Draw the routes\nas connected lines or as dots.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **C** | Change the palette without changing routes. |\n| **M** | Switch connected lines to dots at visited cells. |\n| **W** | Make lines or marks wider: 0.35 or 0.65 of a cell. |\n| **L** | Allow up to 36 moves per path instead of 12. |\n| **N** | Try 36 starting cells instead of 12. |\n| **R** | Generate another set of routes. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nSupply grid dimensions, an ordered list of starts, a seed and a move limit to\n`OccupiedLatticePaths2D`. The result gives you the visited cells for each route. Scale\nthose cell coordinates to your canvas and replace the drawing in `LatticeMarks.pde`\nwith your own line or mark treatment.\n\nPaths can stop before reaching the move limit when no neighboring cell is free. A start\nalready claimed by an earlier path may produce no path. Increasing the start count does\nnot guarantee more visible routes. Cell occupancy separates the paths’ centers; it does\nnot prevent very thick marks from touching.\n",
+      "markdown": "# Grow occupied lattice routes\n\nPaths claim cells on a square lattice in order. Paths and Moves set the amount of routing, while Dots and Grid switch the visible treatment. The palette follows each route in its generated order.",
       "sourcePath": "packages/javascript/examples/lattice-marks/README.md",
       "guidePath": "docs/lattice-marks.md",
       "guideSha256": "dd4f9276dfd732fd8fedab917e9a26d70995373db94496b034c0a994a10cfa39",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/lattice-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/basic.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/basic.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { createPathMarks } from \"../../../../packages/javascript/examples/path-marks/path-marks.js\";\nimport { occupiedLatticePaths2D } from \"../../../../packages/javascript/src/occupied-lattice-paths.js\";\nimport { cyclicPalette } from \"../../../../packages/javascript/src/cyclic-palette.js\";\n\nfunction paths(p: any, l: Layer) {\n  const q = l.params,\n    model = createPathMarks(l.seed, Number(q.steps), Number(q.distance));\n  p.noFill();\n  p.strokeWeight(1);\n  p.strokeCap(p.ROUND);\n  const from = [0, 0],\n    to = [0, 0];\n  for (let i = 0; i < model.paths.length; i++) {\n    const path = model.paths[i];\n    p.stroke(...channels(l.palette[i % l.palette.length]), 150);\n    for (let step = 0; step < path.steps; step += q.trace ? 1 : 4) {\n      path.pointInto(step + 1, to);\n      if (q.trace) {\n        path.pointInto(step, from);\n      } else {\n        const a = path.headingAt(step) + Math.PI / 2,\n          dx = Math.cos(a) * Number(q.markLength) * 0.5,\n          dy = Math.sin(a) * Number(q.markLength) * 0.5;\n        from[0] = to[0] - dx;\n        from[1] = to[1] - dy;\n        to[0] += dx;\n        to[1] += dy;\n      }\n      if (\n        Math.max(from[0], to[0]) < -1 ||\n        Math.min(from[0], to[0]) > 641 ||\n        Math.max(from[1], to[1]) < -1 ||\n        Math.min(from[1], to[1]) > 641\n      )\n        continue;\n      p.line(...from, ...to);\n    }\n  }\n}\n\nfunction lattice(p: any, l: Layer) {\n  const q = l.params,\n    count = Number(q.count),\n    steps = Number(q.steps);\n  const starts = Array.from({ length: count }, (_, i) => {\n    const s = (13 * i) % 36;\n    return [2 + 4 * (s % 6), 2 + 4 * Math.floor(s / 6)];\n  });\n  const paths = occupiedLatticePaths2D({\n    dimensions: [24, 24],\n    starts,\n    maxSteps: steps,\n    maxCells: count * (steps + 1),\n    random: { seed: l.seed },\n  });\n  const palette = cyclicPalette({ colors: l.palette });\n  const pixel = (x: number) => 44 + 24 * x;\n  if (q.grid) {\n    p.stroke(205, 200, 190);\n    p.strokeWeight(1);\n    for (let i = 0; i <= 24; i++) {\n      p.line(32, 32 + 24 * i, 608, 32 + 24 * i);\n      p.line(32 + 24 * i, 32, 32 + 24 * i, 608);\n    }\n  }\n  p.strokeCap(p.ROUND);\n  p.strokeJoin(p.ROUND);\n  for (let i = 0; i < paths.pathCount; i++) {\n    const n = paths.pathLengthAt(i);\n    if (!n) continue;\n    const col = palette.sample(i * 0.173);\n    if (q.dots) {\n      p.noStroke();\n      p.fill(...channels(col));\n      for (let j = 0; j < n; j++) {\n        const [x, y] = paths.cellAt(i, j);\n        p.circle(pixel(x), pixel(y), q.dotSize);\n      }\n      continue;\n    }\n    p.strokeWeight(q.weight);\n    for (const offset of [3, 0]) {\n      p.stroke(...(offset ? [30, 30, 30, 70] : channels(col)));\n      for (let j = 1; j < n; j++) {\n        const a = paths.cellAt(i, j - 1),\n          b = paths.cellAt(i, j);\n        p.line(\n          pixel(a[0]) + offset,\n          pixel(a[1]) + offset,\n          pixel(b[0]) + offset,\n          pixel(b[1]) + offset,\n        );\n      }\n    }\n    p.stroke(...channels(col));\n    p.strokeWeight(2);\n    p.fill(255, 250, 230);\n    for (const j of n > 1 ? [0, n - 1] : [0]) {\n      const a = paths.cellAt(i, j);\n      p.circle(pixel(a[0]), pixel(a[1]), 8);\n    }\n  }\n}\n",
       "operations": [
         {
           "id": "path.occupied-lattice-paths-2d",
@@ -295,13 +532,17 @@
     {
       "slug": "band-marks",
       "title": "Band Marks",
-      "description": "BandMarks draws fine, wandering lines that often curl around shared areas of the canvas. Imagine an invisible height map: each line tries to stay near the height where it began. A looser tolerance gives it more freedom to wander away from that level.",
+      "description": "Seeded noise paths are drawn as connected bands or perpendicular ticks. Paths sets how many are made; Tolerance and Field scale shape which field values the paths accept. Stroke weight adjusts the painted marks, and Ticks changes their treatment.",
       "category": "Fields & paths",
-      "markdown": "# Draw winding bands of lines\n\nBandMarks draws fine, wandering lines that often curl around shared areas of the canvas.\nImagine an invisible height map: each line tries to stay near the height where it began.\nA looser tolerance gives it more freedom to wander away from that level.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **T** | Switch tolerance from 0.002 to 0.008, allowing a wider band of field values and changing the routes. |\n| **C** | Change the palette without changing paths. |\n| **M** | Replace connected lines with short strokes placed across them. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nEdit `rebuildPaths()` to choose where the lines begin and how they move.\n\n| Parameter | What it changes |\n| --- | --- |\n| `start` | Where each line begins. |\n| `tolerance` | How closely the line must stay near its starting field value. |\n| `fieldScale` | The spatial scale of the invisible pattern the lines follow. |\n| `stepDistance` | How far a proposed movement reaches. |\n| `attempts` | How many movements are tried; rejected movements do not lengthen the line. |\n\n`NoiseBandPath2D` returns the points and directions. Replace the drawing loop to decorate\nthe same routes with other marks. These paths are not complete contour lines: they may\ncross themselves or one another, and their lengths vary. Use [PathClipMarks](/techniques/path-clip-marks)\nto reveal the resulting lines only inside a chosen outline.\n",
+      "markdown": "# Layer noise paths\n\nSeeded noise paths are drawn as connected bands or perpendicular ticks. Paths sets how many are made; Tolerance and Field scale shape which field values the paths accept. Stroke weight adjusts the painted marks, and Ticks changes their treatment.",
       "sourcePath": "packages/javascript/examples/band-marks/README.md",
       "guidePath": "docs/band-marks.md",
       "guideSha256": "9a98596f68a67d28d41b2208e0190e4227f1f109483c974ff8c308640e7e1fa4",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/band-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/geometry.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/geometry.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { noiseBandPath2D } from \"../../../../packages/javascript/src/noise-band-path.js\";\n\ntype Q = Record<string, any>;\n\nconst colors = (layer: Layer): number[] => layer.palette;\n\nconst colour = (p: any, value: number, alpha = 255) =>\n  p.stroke(...channels(value), alpha);\n\nconst pick = (palette: number[], index: number) =>\n  palette[index % palette.length];\n\nfunction band(p: any, l: Layer) {\n  const q = l.params as Q,\n    palette = colors(l);\n  p.noFill();\n  p.strokeWeight(q.weight);\n  for (let i = 0; i < q.count; i++) {\n    const path = noiseBandPath2D({\n      field: { seed: (l.seed + 17) >>> 0 },\n      start: [40 + 80 * (i % 8), 40 + 80 * Math.floor(i / 8)],\n      heading: 0,\n      seed: (l.seed + i) >>> 0,\n      attempts: 700,\n      stepDistance: 1,\n      fieldScale: q.fieldScale,\n      fieldOffset: [7.3, 11.7],\n      tolerance: q.tolerance,\n      maxVertices: 701,\n    });\n    const a = [0, 0],\n      b = [0, 0];\n    colour(p, pick(palette, i), 150);\n    for (let j = 1; j < path.size; j += q.ticks ? 8 : 1) {\n      path.pointInto(j, a);\n      if (q.ticks) {\n        const h = path.headingAt(j - 1),\n          dx = -Math.sin(h) * 3,\n          dy = Math.cos(h) * 3;\n        p.line(a[0] - dx, a[1] - dy, a[0] + dx, a[1] + dy);\n      } else {\n        path.pointInto(j - 1, b);\n        p.line(b[0], b[1], a[0], a[1]);\n      }\n    }\n  }\n}\n",
       "operations": [
         {
           "id": "path.noise-band-trace-2d",
@@ -318,18 +559,22 @@
           "attestationSha256": "f580b7772ec87f2fd4295ac904ea60ea53e7750cb15ceb6093ede88186d68dbf"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "branch-marks",
       "title": "Branch Marks",
-      "description": "BranchMarks starts with a trunk and grows smaller branches from its endpoints. Change the branching angles and depth to make a broader tree, a narrow spray or a group of trees. Colors and line treatment can change without regrowing the branches.",
+      "description": "A seeded endpoint-branch tree expands from one root or a small forest. Generations controls depth, Base weight tapers the root drawing, and Tip size controls the terminal dots. Binary changes the available child slots.",
       "category": "Fields & paths",
-      "markdown": "# Grow trees and branching sprays\n\nBranchMarks starts with a trunk and grows smaller branches from its endpoints. Change\nthe branching angles and depth to make a broader tree, a narrow spray or a group of trees.\nColors and line treatment can change without regrowing the branches.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **N** | Add or remove a generation of branches. |\n| **G** | Make the spread narrow in later generations, or keep it constant. |\n| **W** | Use wider branching angles. |\n| **B** | Switch between three possible children and two narrow side branches. |\n| **R** | Grow a different random tree. |\n| **X** | Switch from one tree to a group of trees. |\n| **C** | Change colors along the generations. |\n| **M** | Switch thin lines to tapered widths with dots at branch tips. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nEdit `BranchComposition.rules` to shape the growth. A starting branch has a position,\ndirection and length. Each generation describes how short its children become and where\nthey may turn. An upward direction in Processing is `-PI/2`.\n\n| Rule | Visible effect |\n| --- | --- |\n| Child length scale | How quickly branches become shorter. |\n| Turn interval | How far children spread from their parent’s direction. |\n| Child probability | How often a possible branch actually appears. |\n| Number of generations | How many levels of smaller branches can develop. |\n\n`BranchMarks.pde` draws the resulting segments. Change its stroke widths, colors and tip\nmarks for a different treatment. Adding generations can increase the amount of geometry\nquickly. For branches made by cutting into existing strokes, try [CutBranchMarks](/techniques/cut-branch-marks).\n",
+      "markdown": "# Grow endpoint branches\n\nA seeded endpoint-branch tree expands from one root or a small forest. Generations controls depth, Base weight tapers the root drawing, and Tip size controls the terminal dots. Binary changes the available child slots.",
       "sourcePath": "packages/javascript/examples/branch-marks/README.md",
       "guidePath": "docs/branch-marks.md",
       "guideSha256": "e102fbee42114c3a7614908f22fceed632e1789410f6dc85e7e2db23660fea8c",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/branch-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/geometry.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/geometry.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { seededEndpointBranches2D } from \"../../../../packages/javascript/src/branch-tree.js\";\nimport { seededCirclePlacement2D } from \"../../../../packages/javascript/src/circle-placements.js\";\n\ntype Q = Record<string, any>;\n\nconst colors = (layer: Layer): number[] => layer.palette;\n\nconst colour = (p: any, value: number, alpha = 255) =>\n  p.stroke(...channels(value), alpha);\n\nconst fill = (p: any, value: number, alpha = 255) =>\n  p.fill(...channels(value), alpha);\n\nconst pick = (palette: number[], index: number) =>\n  palette[index % palette.length];\n\nfunction branch(p: any, l: Layer) {\n  const q = l.params as Q,\n    rules: any[] = [];\n  for (let g = 0; g < q.generations; g++) {\n    const spread = q.binary ? 0.12 : 0.5;\n    const probability = q.binary ? 0.8 : 0.7;\n    const row: any[] = [\n      { probability, turn: [-spread, -spread * 0.5] },\n      { probability, turn: [spread * 0.5, spread] },\n    ];\n    if (!q.binary)\n      row.push({ probability: 0.4, turn: [-spread * 0.2, spread * 0.2] });\n    rules.push({ lengthScale: [0.65, 0.85], slots: row });\n  }\n  const roots = q.forest\n      ? seededCirclePlacement2D({\n          seed: l.seed,\n          attempts: 6,\n          origin: [90, 260],\n          extent: [460, 280],\n          radiusRange: [28, 42],\n          separationScale: 1,\n        })\n      : null,\n    trees: any[] = [];\n  if (roots) {\n    const pt = new Float64Array(2);\n    for (let i = 0; i < roots.size; i++) {\n      roots.pointInto(i, pt);\n      trees.push(\n        seededEndpointBranches2D({\n          seed: (l.seed + i) >>> 0,\n          root: {\n            origin: [pt[0], pt[1]],\n            heading: -Math.PI / 2,\n            length: roots.radiusAt(i),\n          },\n          rules,\n          maxSegments: 10000,\n        }),\n      );\n    }\n  } else\n    trees.push(\n      seededEndpointBranches2D({\n        seed: l.seed,\n        root: { origin: [320, 590], heading: -Math.PI / 2, length: 105 },\n        rules,\n        maxSegments: 10000,\n      }),\n    );\n  const palette = colors(l),\n    s = new Float64Array(4);\n  p.noFill();\n  p.strokeCap(p.ROUND);\n  for (const tree of trees)\n    for (let i = 0; i < tree.size; i++) {\n      tree.segmentInto(i, s);\n      colour(p, pick(palette, Math.floor(tree.generationAt(i) / 2)));\n      p.strokeWeight(Math.max(0.2, (q.weight * tree.lengthAt(i)) / 100));\n      p.line(s[0], s[1], s[2], s[3]);\n      if (q.tipSize && tree.childCountAt(i) === 0) {\n        p.noStroke();\n        fill(p, pick(palette, palette.length - 1));\n        p.circle(s[2], s[3], q.tipSize);\n      }\n    }\n}\n",
       "operations": [
         {
           "id": "topology.seeded-endpoint-branches-2d",
@@ -360,18 +605,22 @@
           "attestationSha256": "4745c2c5c75ceeeef5ce71c775a08ff5f0b7c18e9c9caed9325f289ef4cc1c9b"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "cut-branch-marks",
       "title": "Cut Branch Marks",
-      "description": "CutBranchMarks repeatedly cuts and branches an initial line, building a fine, tree-like drawing. The starting stroke sets the overall direction; branch angles and the amount of growth change its character.",
+      "description": "A seeded line pool repeatedly cuts retained segments. Cuts gives it more opportunities to develop, while Cut angle controls the spread. Stroke weight and segment opacity change the accumulated drawing treatment.",
       "category": "Fields & paths",
-      "markdown": "# Grow fine branches from a stroke\n\nCutBranchMarks repeatedly cuts and branches an initial line, building a fine, tree-like\ndrawing. The starting stroke sets the overall direction; branch angles and the amount of\ngrowth change its character.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **C** | Cycle the drawing color without changing branches. |\n| **A** | Switch to narrower branch angles, or restore the wider spread. |\n| **W** | Switch between 9,000 and 90,000 cutting attempts for sparse or denser growth. |\n| **T** | Replace the vertical starting stroke with a diagonal stroke. |\n| **R** | Grow a different drawing from the current settings. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nChange the starting endpoints in `CutBranchComposition.java` to aim and place the growth.\nUse `LinePool2D` to perform the cuts, then draw its returned segments with your preferred\ncolors and stroke widths in `CutBranchMarks.pde`.\n\n| Setting | Visible effect |\n| --- | --- |\n| Starting segment | Places and aims the initial growth. |\n| Cutting attempts | Gives the drawing more opportunities to develop fine branches. |\n| First-cut angle scale | Controls the spread of new branches. |\n| Minimum cut length | Stops very short segments from being cut again. |\n\nAn attempt may leave the drawing unchanged, so the attempt count is not a branch count.\nFor a tree described by explicit generations of children, use [BranchMarks](/techniques/branch-marks).\n",
+      "markdown": "# Cut a line into branches\n\nA seeded line pool repeatedly cuts retained segments. Cuts gives it more opportunities to develop, while Cut angle controls the spread. Stroke weight and segment opacity change the accumulated drawing treatment.",
       "sourcePath": "packages/javascript/examples/cut-branch-marks/README.md",
       "guidePath": "docs/cut-branch-marks.md",
       "guideSha256": "8b9f65671ab595d15b8ae0e6b323487dd48fcd3dc7c3e3eb4627539f177f7390",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/cut-branch-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/geometry.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/geometry.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { seededLinePool2D } from \"../../../../packages/javascript/src/line-pool.js\";\n\ntype Q = Record<string, any>;\n\nconst colors = (layer: Layer): number[] => layer.palette;\n\nconst colour = (p: any, value: number, alpha = 255) =>\n  p.stroke(...channels(value), alpha);\n\nconst pick = (palette: number[], index: number) =>\n  palette[index % palette.length];\n\nfunction cutBranch(p: any, l: Layer) {\n  const q = l.params as Q,\n    pool = seededLinePool2D({\n      seed: l.seed,\n      segment: [120, 620, 520, 120],\n      attempts: q.attempts,\n      firstCutAngleScale: q.angle,\n      minCutLength: 4,\n      maxSegments: q.attempts * 2 + 1,\n    }),\n    s = [0, 0, 0, 0];\n  p.noFill();\n  p.strokeWeight(q.weight);\n  colour(p, pick(colors(l), 0), q.opacity);\n  for (let i = 0; i < pool.size; i++) {\n    pool.segmentInto(i, s);\n    p.line(s[0], s[1], s[2], s[3]);\n  }\n}\n",
       "operations": [
         {
           "id": "topology.seeded-line-pool-2d",
@@ -388,18 +637,22 @@
           "attestationSha256": "533fc37573e5fee27fb8f6192f13f9237137b985ce408f7bf10fac6747fd8695"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "loop-marks",
       "title": "Loop Marks",
-      "description": "LoopMarks draws four smooth closed outlines with small tiles following their edges. Change a control point to stretch each outline, or switch to fans of triangles that fill the same shapes from their centers.",
+      "description": "Closed splines carry oriented tiles along their outlines. Tile scale resizes the tiles, and Outline weight adjusts the spline strokes. Enable Fans to fill the loops with triangles and adjust Fan opacity. Moved control offsets one control point on each loop in either mode; the supplied starting arrangement is fixed.",
       "category": "Shapes & space",
-      "markdown": "# Shape closed loops and decorate their edges\n\nLoopMarks draws four smooth closed outlines with small tiles following their edges.\nChange a control point to stretch each outline, or switch to fans of triangles that fill\nthe same shapes from their centers.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **T** | Move one control point on each loop, stretching that part of its outline. |\n| **C** | Change the palette while keeping the shapes. |\n| **M** | Switch edge-following tiles to triangle fans. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nEdit the control-point coordinates in `rebuildCurves()` to shape each loop.\n`ClosedSpline2D` turns those points into a smooth closed curve and lets you ask for positions\nand directions along it. The curve passes through your control points and bends smoothly\nbetween them.\n\n| Setting to edit | Visible effect |\n| --- | --- |\n| Control points | Where the outline bulges, narrows or stretches. |\n| Distance between tiles | How closely marks gather along the edge. |\n| Tile size | How much of the outline the marks cover. |\n| Fan colors and opacity | The bands of color inside the filled version. |\n\nThe tile loop in `draw()` places a mark every 18 units of approximate curve length.\nReplace its rectangle with another mark and use the sampled direction to rotate it.\nLoops can cross themselves. Triangle fans are a drawing treatment for these examples,\nnot a general way to fill every possible concave outline.\n",
+      "markdown": "# Draw closed loops\n\nClosed splines carry oriented tiles along their outlines. Tile scale resizes the tiles, and Outline weight adjusts the spline strokes. Enable Fans to fill the loops with triangles and adjust Fan opacity. Moved control offsets one control point on each loop in either mode; the supplied starting arrangement is fixed.",
       "sourcePath": "packages/javascript/examples/loop-marks/README.md",
       "guidePath": "docs/loop-marks.md",
       "guideSha256": "7cf26c61b3fb8b415597f0fe404d9ec15ef09a2cfa643403a59327b9e4a24f84",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/loop-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/geometry.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/geometry.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { createLoopMarks, loopFanTriangles, loopTileCommands } from \"../../../../packages/javascript/examples/loop-marks/loop-marks.js\";\n\ntype Q = Record<string, any>;\n\nconst colors = (layer: Layer): number[] => layer.palette;\n\nconst colour = (p: any, value: number, alpha = 255) =>\n  p.stroke(...channels(value), alpha);\n\nconst fill = (p: any, value: number, alpha = 255) =>\n  p.fill(...channels(value), alpha);\n\nconst pick = (palette: number[], index: number) =>\n  palette[index % palette.length];\n\nfunction loops(p: any, l: Layer) {\n  const q = l.params as Q,\n    model = createLoopMarks(!!q.moved),\n    palette = colors(l);\n  if (q.fans) {\n    p.noStroke();\n    for (const t of loopFanTriangles(model, false)) {\n      fill(p, pick(palette, Math.floor(t.cx / 100)), q.opacity);\n      p.triangle(t.cx, t.cy, t.x1, t.y1, t.x2, t.y2);\n    }\n    return;\n  }\n  for (const raw of loopTileCommands(model, false)) {\n    const c: any = raw;\n    if (c.kind === \"segment2\") {\n      colour(p, pick(palette, Math.floor(c.from[0] / 100)), 100);\n      p.strokeWeight(q.outlineWeight);\n      p.line(...c.from, ...c.to);\n    } else {\n      const vs: any[] = c.vertices,\n        cx = (vs[0][0] + vs[2][0]) * 0.5,\n        cy = (vs[0][1] + vs[2][1]) * 0.5;\n      p.noStroke();\n      fill(p, pick(palette, Math.floor(cx / 100)));\n      p.beginShape();\n      for (const v of vs)\n        p.vertex(\n          cx + (v[0] - cx) * q.tileScale,\n          cy + (v[1] - cy) * q.tileScale,\n        );\n      p.endShape(p.CLOSE);\n    }\n  }\n}\n",
       "operations": [
         {
           "id": "geometry.closed-spline-2d",
@@ -416,18 +669,22 @@
           "attestationSha256": "e2811e2451cc88b9a46b519c3e26813e63f46a7b61c5b5cb384b7a2e2f379c23"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "region-marks",
       "title": "Region Marks",
-      "description": "RegionMarks divides a rectangle into a patchwork of smaller rectangles, then decorates each with a dot or a small grid of marks. You can change the decoration without changing the layout.",
+      "description": "A seeded quadrant partition makes a patchwork, then draws circles inside each region. Replacements and Selection fraction change the partition; Inset, Mark scale, and Nine marks control the decoration. More replacements can produce smaller cells.",
       "category": "Layouts",
-      "markdown": "# Divide a surface into smaller regions\n\nRegionMarks divides a rectangle into a patchwork of smaller rectangles, then decorates\neach with a dot or a small grid of marks. You can change the decoration without changing\nthe layout.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **N** | Switch between 100 and 200 splits; more splits produce more, smaller regions. |\n| **G** | Change which part of the evolving region list can be selected for another split; this changes the mix and placement of sizes. |\n| **R** | Generate a different layout. |\n| **M** | Switch each region between a central dot and a 3×3 group of marks. |\n| **C** | Change the palette while keeping the regions. |\n| **X** | Switch to an editable arrangement of eleven supplied rectangles. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nEach split replaces one rectangle with four smaller ones. Edit the starting rectangle,\nsplit count and selection settings in `RegionComposition.java`. The drawing loop in\n`RegionMarks.pde` receives each rectangle’s position and size: use those to place a pattern,\na symbol or another drawing inside it.\n\nN, G and R affect the generated layout only. Restart to restore the starting settings.\nMore splits require more work and can create very small cells; they do not guarantee an\neven grid. For cuts at positions you choose, see [CutMarks](/techniques/cut-marks). For interchangeable\nimages and drawings inside regions, see [MaskedPartitionMarks](/source/docs/masked-partition-marks.md).\n",
+      "markdown": "# Divide a surface into regions\n\nA seeded quadrant partition makes a patchwork, then draws circles inside each region. Replacements and Selection fraction change the partition; Inset, Mark scale, and Nine marks control the decoration. More replacements can produce smaller cells.",
       "sourcePath": "packages/javascript/examples/region-marks/README.md",
       "guidePath": "docs/region-marks.md",
       "guideSha256": "f77fccea99c4de57ecc9217dd1b0d9f47d0287b27b7c0f0ae8ad4dee4e878fa4",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/region-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/geometry.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/geometry.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { seededQuadrantPartition2D } from \"../../../../packages/javascript/src/quadrant-partition.js\";\n\ntype Q = Record<string, any>;\n\nconst colors = (layer: Layer): number[] => layer.palette;\n\nconst fill = (p: any, value: number, alpha = 255) =>\n  p.fill(...channels(value), alpha);\n\nconst pick = (palette: number[], index: number) =>\n  palette[index % palette.length];\n\nfunction regions(p: any, l: Layer) {\n  const q = l.params as Q,\n    model = seededQuadrantPartition2D({\n      seed: l.seed,\n      replacements: q.replacements,\n      origin: [0, 0],\n      extent: [640, 640],\n      selectionFraction: q.fraction,\n    }),\n    b = new Float64Array(4),\n    pt = new Float64Array(2),\n    palette = colors(l);\n  p.noStroke();\n  for (let i = 0; i < model.size; i++) {\n    model.boundsInto(i, b);\n    const w = b[2] - b[0],\n      h = b[3] - b[1];\n    fill(p, pick(palette, model.idAt(i)), 180);\n    p.rect(b[0] + q.inset, b[1] + q.inset, w - q.inset * 2, h - q.inset * 2);\n    fill(p, pick(palette, i + 1), 230);\n    if (q.grid) {\n      for (let n = 0; n < 9; n++) {\n        const x = b[0] + w * (((n % 3) + 0.5) / 3),\n          y = b[1] + h * ((Math.floor(n / 3) + 0.5) / 3);\n        p.circle(x, y, (Math.min(w, h) * q.markScale) / 3);\n      }\n    } else p.circle(b[0] + w / 2, b[1] + h / 2, Math.min(w, h) * q.markScale);\n  }\n}\n",
       "operations": [
         {
           "id": "layout.seeded-quadrant-partition-2d",
@@ -442,34 +699,24 @@
           },
           "attestationPath": "catalog/validation/seeded-quadrant-partition.json",
           "attestationSha256": "4220e91a893ec72fc70720cd5e94a5594eee922383e0c8302c8678485ea581fd"
-        },
-        {
-          "id": "layout.regular-grid",
-          "version": "0.1.0",
-          "description": "An immutable row-major rectangular sequence of planar positions with explicit point counts and spacing.",
-          "catalogPath": "catalog/operations/regular-grid.json",
-          "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "validated-scoped"
-          },
-          "attestationPath": "catalog/validation/regular-grid.json",
-          "attestationSha256": "ae10c758b2076da46598946c62e87f894fb8a27bd91369c7717b475165f8bfbc"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "panel-marks",
       "title": "Panel Marks",
-      "description": "PanelMarks cuts an integer cell grid into ordered rectangular panels. Draw nested inset outlines inside each panel or switch to solid tinted regions. Change the layout by choosing how many cuts to attempt and how to select the cutting axis.",
+      "description": "Binary cuts split a panel layout over a bounded number of attempts. Axis policy chooses how cuts are oriented, while inset, outline weight, and Solid control the visible panel treatment. The seed determines the partition sequence.",
       "category": "Layouts",
-      "markdown": "# Divide a grid into panels\n\nPanelMarks cuts an integer cell grid into ordered rectangular panels. Draw nested inset\noutlines inside each panel or switch to solid tinted regions. Change the layout by choosing\nhow many cuts to attempt and how to select the cutting axis.\n\n## Controls\n\n| Control | What changes on the canvas |\n| --- | --- |\n| Attempts | Choose 80, 240 or 20 cutting attempts. |\n| Axis policy | Cut along the longest side or choose the axis randomly. |\n| Palette | Recolor the same panels. |\n| Decoration | Switch nested outlines to solid panels. |\n\n## Make it your own\n\nThe existing example supplies a 60 × 60 grid to `layout.binary-cell-partition-2d`.\nThe result gives ordered panels that can hold your own drawings. Grid size, attempt count,\ncolors and decoration are choices for this example, not operation defaults or recommended\nranges. See the example source for its complete cutting configuration.\n",
+      "markdown": "# Partition nested panels\n\nBinary cuts split a panel layout over a bounded number of attempts. Axis policy chooses how cuts are oriented, while inset, outline weight, and Solid control the visible panel treatment. The seed determines the partition sequence.",
       "sourcePath": "packages/javascript/examples/panel-marks/README.md",
       "guidePath": "apps/web/content/panel-marks.md",
       "guideSha256": "ad287b2881bb13e98a8bdf592eb7616e065e395bba3ef9210afb29b92732dc43",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/panel-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/geometry.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/geometry.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { binaryCellPartition2D } from \"../../../../packages/javascript/src/binary-cell-partition.js\";\n\ntype Q = Record<string, any>;\n\nconst colors = (layer: Layer): number[] => layer.palette;\n\nconst colour = (p: any, value: number, alpha = 255) =>\n  p.stroke(...channels(value), alpha);\n\nconst fill = (p: any, value: number, alpha = 255) =>\n  p.fill(...channels(value), alpha);\n\nconst pick = (palette: number[], index: number) =>\n  palette[index % palette.length];\n\nfunction panels(p: any, l: Layer) {\n  const q = l.params as Q,\n    layout = binaryCellPartition2D({\n      seed: l.seed,\n      columns: q.columns,\n      rows: q.columns,\n      attempts: q.attempts,\n      axisPolicy: q.axis,\n    }),\n    b = [0, 0, 0, 0],\n    palette = colors(l),\n    scale = 600 / q.columns;\n  p.rectMode(p.CORNER);\n  for (let i = 0; i < layout.size; i++) {\n    layout.boundsInto(i, b);\n    const x = 20 + b[0] * scale,\n      y = 20 + b[1] * scale,\n      w = (b[2] - b[0]) * scale,\n      h = (b[3] - b[1]) * scale;\n    if (q.solid) {\n      colour(p, pick(palette, i));\n      fill(p, pick(palette, i), 100);\n      p.strokeWeight(q.weight);\n      p.rect(x + q.inset, y + q.inset, w - 2 * q.inset, h - 2 * q.inset);\n    } else {\n      p.noFill();\n      colour(p, pick(palette, i), 210);\n      p.strokeWeight(q.weight);\n      for (\n        let z = q.inset;\n        w - 2 * z > 0 && h - 2 * z > 0;\n        z += Math.max(3, q.inset + 2)\n      )\n        p.rect(x + z, y + z, w - 2 * z, h - 2 * z);\n    }\n  }\n}\n",
       "operations": [
         {
           "id": "layout.binary-cell-partition-2d",
@@ -486,18 +733,22 @@
           "attestationSha256": "7b2f021174461b6298fba31cb8ba00e4132d099e63ae080accf23a3457f49c75"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "cut-marks",
       "title": "Cut Marks",
-      "description": "CutMarks starts with a divided rectangle. Click a region to select it, cut it into two, or remove it to leave an opening. Other regions stay where they are, letting you develop a layout one edit at a time.",
+      "description": "This browser study applies seeded retained rectangle cuts and draws the resulting regions. Cut rounds and Cut spread change the hierarchy; Inset and opacity change its treatment. Staggered adds an extra cut across a child region every third round.",
       "category": "Layouts",
-      "markdown": "# Split and remove regions by hand\n\nCutMarks starts with a divided rectangle. Click a region to select it, cut it into two,\nor remove it to leave an opening. Other regions stay where they are, letting you develop\na layout one edit at a time.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **Mouse click** | Select a rectangle; a darker outline marks the selection. |\n| **X** | Split the selected rectangle into left and right halves. |\n| **Y** | Split it into top and bottom halves. |\n| **Delete / Backspace** | Remove the selected rectangle, leaving a hole. |\n| **A** | Switch the starting cut arrangement; this rebuilds the layout and replaces manual edits. |\n| **D** | Switch solid fills to outlined regions with cross marks. |\n| **H** | Switch the preset holes on or off; this also rebuilds the layout. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nUse `RetainedRectangles2D` to start with a rectangle and cut a chosen live region at\na supplied coordinate. The example’s keyboard controls cut at the midpoint, but your\ncode can choose another interior position. A split replaces its rectangle with two\nchildren; after splitting, the example selects the first child.\n\nReplace the decoration loop to draw different content in each region. Region IDs let\nyou keep colors or other choices attached to regions that have not changed. If no region\nis selected, split and remove controls do nothing. Extremely small regions may no longer\nhave room for a midpoint cut.\n\nFor automatic unequal panels, try [PanelMarks](/techniques/panel-marks). For pictures\ninside your regions, continue with [LayerMarks](/source/docs/layer-marks.md).\n",
+      "markdown": "# Build retained cuts\n\nThis browser study applies seeded retained rectangle cuts and draws the resulting regions. Cut rounds and Cut spread change the hierarchy; Inset and opacity change its treatment. Staggered adds an extra cut across a child region every third round.",
       "sourcePath": "packages/javascript/examples/cut-marks/README.md",
       "guidePath": "docs/cut-marks.md",
       "guideSha256": "57a2a6fc413961a2c5820a62701940a015fa9a7f8ae66d465b4441d4a68cc78d",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/cut-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/geometry.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/geometry.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { gradientNoise2D01 } from \"../../../../packages/javascript/src/gradient-noise-2d-01.js\";\nimport { retainedRectangleCuts2D } from \"../../../../packages/javascript/src/retained-rectangle-cuts.js\";\n\ntype Q = Record<string, any>;\n\nconst colors = (layer: Layer): number[] => layer.palette;\n\nconst fill = (p: any, value: number, alpha = 255) =>\n  p.fill(...channels(value), alpha);\n\nconst pick = (palette: number[], index: number) =>\n  palette[index % palette.length];\n\nfunction cuts(p: any, l: Layer) {\n  const q = l.params as Q,\n    model = retainedRectangleCuts2D({ bounds: [24, 24, 616, 616] }),\n    field = gradientNoise2D01({ seed: l.seed }),\n    palette = colors(l);\n  for (let i = 0; i < q.cuts; i++) {\n    const leaf = model.leaves()[i % model.size],\n      b = leaf.bounds,\n      axis = i % 2 ? \"Y\" : \"X\",\n      ratio = 0.5 + (field.sample(i, 0) - 0.5) * 2 * q.spread,\n      coord =\n        axis === \"X\"\n          ? b[0] + (b[2] - b[0]) * ratio\n          : b[1] + (b[3] - b[1]) * ratio;\n    model.cut(leaf.id, axis, coord);\n    if (q.staggered && i % 3 === 0) {\n      const child = model.leaves()[model.size - 1],\n        d = child.bounds;\n      model.cut(\n        child.id,\n        axis === \"X\" ? \"Y\" : \"X\",\n        axis === \"X\"\n          ? d[1] + (d[3] - d[1]) * (0.3 + 0.4 * field.sample(i, 1))\n          : d[0] + (d[2] - d[0]) * (0.3 + 0.4 * field.sample(i, 1)),\n      );\n    }\n  }\n  p.noStroke();\n  for (const leaf of model.leaves()) {\n    const b = leaf.bounds;\n    fill(p, pick(palette, leaf.id), q.opacity);\n    p.rect(\n      b[0] + q.inset,\n      b[1] + q.inset,\n      b[2] - b[0] - 2 * q.inset,\n      b[3] - b[1] - 2 * q.inset,\n    );\n  }\n}\n",
       "operations": [
         {
           "id": "layout.retained-rectangle-cuts-2d",
@@ -512,20 +763,38 @@
           },
           "attestationPath": "catalog/validation/retained-rectangle-cuts-2d.json",
           "attestationSha256": "cf6471d861eae774696a0aa9c11ea139920ef430e911cc54d727aed7338a81b2"
+        },
+        {
+          "id": "field.gradient-noise-2d-01",
+          "version": "0.1.0",
+          "description": "An immutable seeded single-octave 2D gradient field with pure binary64 samples in [0,1]. Independently specified; not Processing noise compatibility.",
+          "catalogPath": "catalog/operations/gradient-noise-2d-01.json",
+          "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "validated-scoped"
+          },
+          "attestationPath": "catalog/validation/gradient-noise-2d-01.json",
+          "attestationSha256": "e5da67f86b528624e95faf8129aa515accaef18e21e29a04241e5e9857bc813d"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "polygon-marks",
       "title": "Polygon Marks",
-      "description": "PolygonMarks fills the canvas with colored, rotated forms. Switch between rounded convex shapes and diamonds, or make them thinner to leave a different pattern of gaps.",
+      "description": "Seeded polygon proposals are accepted only when they avoid earlier placements. Proposals, aspect ratio, and maximum size control the input shapes, while outline weight and Shape select their appearance. The palette colors accepted forms in order.",
       "category": "Shapes & space",
-      "markdown": "# Pack elongated shapes without overlap\n\nPolygonMarks fills the canvas with colored, rotated forms. Switch between rounded\nconvex shapes and diamonds, or make them thinner to leave a different pattern of gaps.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **A** | Reduce thickness relative to length from 0.8 to 0.2, then find which thinner shapes fit. |\n| **M** | Switch rounded forms to diamonds and recalculate which shapes fit. |\n| **C** | Change colors without moving or replacing shapes. |\n| **R** | Try new positions, lengths and angles. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nThe sketch first proposes shapes, then `ConvexPolygonPlacements2D` keeps those that\nfit without overlapping earlier accepted shapes. Edit the proposal construction for\nyour own outlines and the PDE’s drawing loop for their appearance.\n\nChanging thickness or shape reuses the proposed positions and angles, but can change which\nproposals fit. Proposal order matters: earlier shapes get first choice of space. Supply\nstrictly convex outlines, without dents or inward corners. Concave shapes need a different\napproach. If adding thick outlines or decorative marks, leave enough room for that extra\npaint beyond the shapes used for spacing.\n",
+      "markdown": "# Filter polygon placements\n\nSeeded polygon proposals are accepted only when they avoid earlier placements. Proposals, aspect ratio, and maximum size control the input shapes, while outline weight and Shape select their appearance. The palette colors accepted forms in order.",
       "sourcePath": "packages/javascript/examples/polygon-marks/README.md",
       "guidePath": "docs/polygon-marks.md",
       "guideSha256": "46d32a22d3ec40ac1ad67601ee210d5b3ef1725346fa68d9ba5f4a54e600a1fa",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/polygon-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/geometry.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/geometry.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { orderedConvexPolygonFilter2D } from \"../../../../packages/javascript/src/convex-polygon-placements.js\";\nimport { seededTrianglePoints2D } from \"../../../../packages/javascript/src/triangle-points.js\";\n\ntype Q = Record<string, any>;\n\nconst colors = (layer: Layer): number[] => layer.palette;\n\nconst colour = (p: any, value: number, alpha = 255) =>\n  p.stroke(...channels(value), alpha);\n\nconst pick = (palette: number[], index: number) =>\n  palette[index % palette.length];\n\nfunction polygons(p: any, l: Layer) {\n  const q = l.params as Q,\n    samples = seededTrianglePoints2D({\n      seed: l.seed,\n      count: q.proposals,\n      triangle: [\n        [24, 616],\n        [616, 616],\n        [320, 24],\n      ],\n    }),\n    proposals: any[] = [];\n  for (let i = 0; i < q.proposals; i++) {\n    const [x, y] = samples.pointAt(i),\n      a = (x + y) * 0.01,\n      len = 8 + q.size * (y / 640),\n      n = q.shape === \"diamond\" ? 4 : 12,\n      poly = [];\n    for (let j = 0; j < n; j++) {\n      const t = (j * Math.PI * 2) / n;\n      const u = Math.cos(t) * len,\n        v = Math.sin(t) * len * q.ratio;\n      poly.push([\n        x + u * Math.cos(a) - v * Math.sin(a),\n        y + u * Math.sin(a) + v * Math.cos(a),\n      ]);\n    }\n    proposals.push(poly);\n  }\n  const kept = orderedConvexPolygonFilter2D({ polygons: proposals });\n  p.noFill();\n  p.strokeWeight(q.weight);\n  for (let i = 0; i < kept.size; i++) {\n    colour(p, pick(colors(l), i), 210);\n    p.beginShape();\n    for (let j = 0; j < kept.vertexCountAt(i); j++)\n      p.vertex(kept.xAt(i, j), kept.yAt(i, j));\n    p.endShape(p.CLOSE);\n  }\n}\n",
       "operations": [
         {
           "id": "sampling.ordered-convex-polygon-filter-2d",
@@ -540,20 +809,38 @@
           },
           "attestationPath": "catalog/validation/ordered-convex-polygon-filter-2d.json",
           "attestationSha256": "57ff92b4325d989713361cab588db7fa6a7462a7c155626584fedfb527b80735"
+        },
+        {
+          "id": "sampling.seeded-triangle-points-2d",
+          "version": "0.1.0",
+          "description": "retained batch of seeded uniform planar points in one explicitly supplied triangle. It computes point geometry only.",
+          "catalogPath": "catalog/operations/seeded-triangle-points.json",
+          "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "unvalidated"
+          },
+          "attestationPath": "catalog/validation/seeded-triangle-points.json",
+          "attestationSha256": "01c7ad94a3e0b07636d03ef73dc54dd0d148ff7fc98234fb59197bd9fb9af89d"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "facet-marks",
       "title": "Facet Marks",
-      "description": "FacetMarks connects scattered points into triangles. Draw them as colored faces, a wire network or grain-filled shapes. Switching the drawing style keeps the triangle arrangement in place.",
+      "description": "Seeded sites are triangulated into a Delaunay mesh. Sites changes the mesh scale, while Mode selects filled faces, wire edges, or grain. Grain density, wire weight, and fill opacity tune the selected treatment.",
       "category": "Shapes & space",
-      "markdown": "# Turn points into a faceted drawing\n\nFacetMarks connects scattered points into triangles. Draw them as colored faces, a wire\nnetwork or grain-filled shapes. Switching the drawing style keeps the triangle arrangement\nin place.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **M** | Cycle between filled triangles, wire edges and grain points. |\n| **C** | Switch palettes without moving the points or triangles. |\n| **P** | Show or hide dark dots at the points used to build the triangles. |\n| **N** | Switch between fewer points and more points; more points make a finer triangle network. |\n| **X** | Switch point placement from a disc to the centers of divided rectangular cells. |\n| **R** | Generate a different point arrangement and its triangles. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nStart with a list of point positions and use `Delaunay2D` to connect them. Edit the site\ncreation in `FacetComposition.java` to use a different arrangement. Draw the returned\ntriangles in `FacetMarks.pde`, choosing fills, outlines or marks within each face.\n\nThe point arrangement controls the large shapes in the picture; color and grain change\nhow those shapes read. More points usually produce smaller triangles and require more work.\nTriangulation connects points; it does not pack shapes or produce Voronoi cells.\n",
+      "markdown": "# Turn sites into facets\n\nSeeded sites are triangulated into a Delaunay mesh. Sites changes the mesh scale, while Mode selects filled faces, wire edges, or grain. Grain density, wire weight, and fill opacity tune the selected treatment.",
       "sourcePath": "packages/javascript/examples/facet-marks/README.md",
       "guidePath": "docs/facet-marks.md",
       "guideSha256": "76a794c93de6c493ad1169c737d385a743bfe6b65e19bcb2a713d6a666d3bc0c",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/facet-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/geometry.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/geometry.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { delaunay2D } from \"../../../../packages/javascript/src/delaunay.js\";\nimport { seededTrianglePoints2D } from \"../../../../packages/javascript/src/triangle-points.js\";\nimport { createGrainComposition } from \"../../../../packages/javascript/examples/grain-marks/grain-marks.js\";\n\ntype Q = Record<string, any>;\n\nconst colors = (layer: Layer): number[] => layer.palette;\n\nconst colour = (p: any, value: number, alpha = 255) =>\n  p.stroke(...channels(value), alpha);\n\nconst fill = (p: any, value: number, alpha = 255) =>\n  p.fill(...channels(value), alpha);\n\nconst pick = (palette: number[], index: number) =>\n  palette[index % palette.length];\n\nfunction facets(p: any, l: Layer) {\n  const q = l.params as Q,\n    samples = seededTrianglePoints2D({\n      seed: l.seed,\n      count: q.sites,\n      triangle: [\n        [36, 596],\n        [604, 596],\n        [320, 44],\n      ],\n    }),\n    sites = Array.from({ length: samples.size }, (_, index) =>\n      samples.pointAt(index),\n    );\n  const mesh = delaunay2D({ points: sites, maxWork: 50000000 }),\n    a = [0, 0],\n    b = [0, 0],\n    c = [0, 0],\n    palette = colors(l);\n  for (let i = 0; i < mesh.faceCount; i++) {\n    const ix = mesh.triangleAt(i);\n    mesh.pointInto(ix[0], a);\n    mesh.pointInto(ix[1], b);\n    mesh.pointInto(ix[2], c);\n    const col = pick(palette, i);\n    if (q.mode === \"wire\") {\n      p.noFill();\n      colour(p, col);\n      p.strokeWeight(q.weight);\n      p.triangle(...a, ...b, ...c);\n    } else if (q.mode === \"fill\") {\n      p.noStroke();\n      fill(p, col, q.opacity);\n      p.triangle(...a, ...b, ...c);\n    } else {\n      p.noStroke();\n      fill(p, col, 210);\n      const area =\n          Math.abs(\n            (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]),\n          ) * 0.5,\n        count = Math.min(800, Math.floor(area * q.grain)),\n        points = seededTrianglePoints2D({\n          seed: (l.seed + i) >>> 0,\n          count,\n          triangle: [a, b, c],\n        });\n      for (let j = 0; j < points.size; j++) {\n        const pt = points.pointAt(j);\n        p.circle(pt[0], pt[1], 1.5);\n      }\n    }\n  }\n}\n\nfunction grain(p: any, l: Layer) {\n  const q = l.params as Q,\n    dist =\n      q.distribution === \"uniform\" ? 0 : q.distribution === \"vertex\" ? 1 : 2,\n    model = createGrainComposition(l.seed, q.density, dist, !!q.cells),\n    palette = colors(l);\n  p.strokeWeight(q.weight);\n  for (let i = 0; i < model.size; i++) {\n    const points = model.regionAt(i);\n    for (let j = 0; j < points.size; j++) {\n      const pt = points.pointAt(j),\n        col = pick(palette, i + j);\n      if (q.strokes) {\n        colour(p, col, 190);\n        p.line(pt[0] - q.size, pt[1], pt[0] + q.size, pt[1]);\n      } else {\n        p.noStroke();\n        fill(p, col, 200);\n        p.circle(pt[0], pt[1], q.size);\n      }\n    }\n  }\n}\n",
       "operations": [
         {
           "id": "topology.delaunay-2d",
@@ -570,20 +857,6 @@
           "attestationSha256": "15c54d5d6b7a411a30a1c67806ebe91ff566d22ebda73f4f80a86c933f4f3d44"
         },
         {
-          "id": "layout.seeded-quadrant-partition-2d",
-          "version": "0.1.0",
-          "description": "Generate an immutable, mutation-ordered sequence of equal-quadrant rectangular leaves from explicit seed, rectangle, replacement count and eligible-list fraction.",
-          "catalogPath": "catalog/operations/seeded-quadrant-partition.json",
-          "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "unvalidated"
-          },
-          "attestationPath": "catalog/validation/seeded-quadrant-partition.json",
-          "attestationSha256": "4220e91a893ec72fc70720cd5e94a5594eee922383e0c8302c8678485ea581fd"
-        },
-        {
           "id": "sampling.seeded-triangle-points-2d",
           "version": "0.1.0",
           "description": "retained batch of seeded uniform planar points in one explicitly supplied triangle. It computes point geometry only.",
@@ -596,34 +869,24 @@
           },
           "attestationPath": "catalog/validation/seeded-triangle-points.json",
           "attestationSha256": "01c7ad94a3e0b07636d03ef73dc54dd0d148ff7fc98234fb59197bd9fb9af89d"
-        },
-        {
-          "id": "color.cyclic-palette",
-          "version": "0.1.0",
-          "description": "Immutable ordered opaque sRGB8 palette sampled by a phase in cycles, with linear encoded-channel interpolation and fixed RGB24 quantization.",
-          "catalogPath": "catalog/operations/cyclic-palette.json",
-          "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "validated-scoped"
-          },
-          "attestationPath": "catalog/validation/cyclic-palette.json",
-          "attestationSha256": "e46e0f6305e33bac990c79b47c8450fbef4ae2bc10ddce107d079d700222028c"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "grain-marks",
       "title": "Grain Marks",
-      "description": "GrainMarks fills a triangle with tiny dots. Increase the density for a fuller texture, gather points toward one part of the shape, or replace dots with short strokes. You can also spread the grain across a patchwork of cells.",
+      "description": "Seeded triangle samples become dots or short strokes. Density, mark size, and stroke weight set the texture; Distribution selects uniform, vertex, or edge concentration. Cell triangles samples seeded quadrant cells, while Strokes changes the marks.",
       "category": "Shapes & space",
-      "markdown": "# Fill shapes with grain\n\nGrainMarks fills a triangle with tiny dots. Increase the density for a fuller texture,\ngather points toward one part of the shape, or replace dots with short strokes. You can\nalso spread the grain across a patchwork of cells.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **C** | Recolor the same points. |\n| **M** | Replace dots with short horizontal strokes at the same centers. |\n| **N** | Double the example’s point density, from 0.1 to 0.2 points per square pixel. |\n| **B** | Cycle between even coverage and two uneven distributions that gather points in different parts of each triangle. |\n| **R** | Try a new scatter; in cell mode, also change the layout. |\n| **X** | Switch between one triangle and a divided rectangle filled with grain. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nUse `TrianglePoints2D.seeded` with three triangle corners, a seed and a point count to\nget positions for your own dots, strokes or small shapes. Draw those positions with ordinary\nProcessing calls. Keep the positions if you want to try another color or mark without\nreshuffling the texture.\n\n| Setting | What you control |\n| --- | --- |\n| Triangle corners | The area in which mark centers are placed. |\n| Point count | How many marks are placed in that triangle. |\n| Mark size and opacity | How dense or light the texture looks, without moving its centers. |\n| Seed | Which repeatable scattering you get. |\n\nThe example calculates point count from triangle area and density in its Java composition\ntab. Edit the PDE to change the marks. `TrianglePoints2D.map` also lets you supply the\nsampling values yourself for more control over concentration.\n\nOnly the mark centers are placed inside the triangle: long strokes or large dots may\ncross its edge. Use a mask if the entire painted shape must stay inside.\n",
+      "markdown": "# Fill triangles with grain\n\nSeeded triangle samples become dots or short strokes. Density, mark size, and stroke weight set the texture; Distribution selects uniform, vertex, or edge concentration. Cell triangles samples seeded quadrant cells, while Strokes changes the marks.",
       "sourcePath": "packages/javascript/examples/grain-marks/README.md",
       "guidePath": "docs/grain-marks.md",
       "guideSha256": "f5c927e2485c027ab8594c0576c28d43aa60c35247def8bd2dbf3ba38b1c5a2c",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/grain-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/geometry.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/geometry.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { createGrainComposition } from \"../../../../packages/javascript/examples/grain-marks/grain-marks.js\";\n\ntype Q = Record<string, any>;\n\nconst colors = (layer: Layer): number[] => layer.palette;\n\nconst colour = (p: any, value: number, alpha = 255) =>\n  p.stroke(...channels(value), alpha);\n\nconst fill = (p: any, value: number, alpha = 255) =>\n  p.fill(...channels(value), alpha);\n\nconst pick = (palette: number[], index: number) =>\n  palette[index % palette.length];\n\nfunction grain(p: any, l: Layer) {\n  const q = l.params as Q,\n    dist =\n      q.distribution === \"uniform\" ? 0 : q.distribution === \"vertex\" ? 1 : 2,\n    model = createGrainComposition(l.seed, q.density, dist, !!q.cells),\n    palette = colors(l);\n  p.strokeWeight(q.weight);\n  for (let i = 0; i < model.size; i++) {\n    const points = model.regionAt(i);\n    for (let j = 0; j < points.size; j++) {\n      const pt = points.pointAt(j),\n        col = pick(palette, i + j);\n      if (q.strokes) {\n        colour(p, col, 190);\n        p.line(pt[0] - q.size, pt[1], pt[0] + q.size, pt[1]);\n      } else {\n        p.noStroke();\n        fill(p, col, 200);\n        p.circle(pt[0], pt[1], q.size);\n      }\n    }\n  }\n}\n",
       "operations": [
         {
           "id": "sampling.seeded-triangle-points-2d",
@@ -668,18 +931,22 @@
           "attestationSha256": "4220e91a893ec72fc70720cd5e94a5594eee922383e0c8302c8678485ea581fd"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "pull-marks",
       "title": "Pull Marks",
-      "description": "PullMarks deforms a grid around circular areas of influence. Switch to closed contours to see the same deformation applied to another kind of drawing. Lines may fold and cross as they are pulled.",
+      "description": "Seeded scanlines are deformed by a radial pull. Radius and power define the influence, while Lines, Jitter, and Weight set the drawing density and character. The palette colors the resulting scanlines.",
       "category": "Transforms",
-      "markdown": "# Fold grids and contours around chosen centers\n\nPullMarks deforms a grid around circular areas of influence. Switch to closed contours\nto see the same deformation applied to another kind of drawing. Lines may fold and cross\nas they are pulled.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **R** | Increase the influence radius from 120 to 180, affecting a larger area. |\n| **P** | Switch power from 2 to 0.5, changing how the pull is distributed across each circle. |\n| **C** | Change colors without changing the deformation. |\n| **M** | Switch between the grid and closed contours. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nEdit the influence centers in `rebuildFieldAndOutputs()`. Each influence has a radius\nand power; `RadialPull2D` maps your supplied points to new positions. Draw those positions\nas lines or attach your own marks to them.\n\nMove the centers to relocate the folds. Change the radius to widen their reach, then\ncompare power settings on the same input drawing. More closely sampled lines follow\nsharp changes more faithfully; a long segment can jump across a fold.\n\nThis effect does not keep shapes apart or guarantee a smooth, reversible deformation.\nFor a full luminous grid composition, see [Curvespace](/source/docs/curvespace-recreation.md).\n",
+      "markdown": "# Pull scanlines around a center\n\nSeeded scanlines are deformed by a radial pull. Radius and power define the influence, while Lines, Jitter, and Weight set the drawing density and character. The palette colors the resulting scanlines.",
       "sourcePath": "packages/javascript/examples/pull-marks/README.md",
       "guidePath": "docs/pull-marks.md",
       "guideSha256": "d266570bdc42b8ababb1492e602cff64b4de9eb8176b38fc18c66bf32b77ecd3",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/pull-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/effects.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/effects.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { radialPull2D } from \"../../../../packages/javascript/src/index.js\";\n\ntype Query = Record<string, number | string | boolean>;\n\nconst q = (layer: Layer) => layer.params as Query;\n\nconst palette = (layer: Layer): number[] => layer.palette;\n\nconst n = (query: Query, key: string) => query[key] as number;\n\nconst color = (value: number): [number, number, number] => [\n  (value >>> 16) & 255,\n  (value >>> 8) & 255,\n  value & 255,\n];\n\nconst paletteAt = (layer: Layer, index: number) => {\n  const colors = palette(layer);\n  return color(colors[index % colors.length]);\n};\n\nconst rng = (seed: number) => {\n  let state = seed >>> 0;\n  return () =>\n    ((state = (state + 0x6d2b79f5) >>> 0),\n    (Math.imul(state ^ (state >>> 15), 1 | state) ^\n      Math.imul(state ^ (state >>> 7), 61 | state) ^\n      state) >>>\n      0) / 4294967296;\n};\n\nfunction line(\n  p: any,\n  points: readonly number[],\n  rgb: readonly number[],\n  weight = 1,\n): void {\n  p.stroke(rgb[0], rgb[1], rgb[2]);\n  p.strokeWeight(weight);\n  p.noFill();\n  p.beginShape();\n  for (let i = 0; i < points.length; i += 2) p.vertex(points[i], points[i + 1]);\n  p.endShape();\n}\n\nfunction drawPull(p: any, layer: Layer): void {\n  const x = q(layer),\n    random = rng(layer.seed),\n    radius = n(x, \"radius\"),\n    field = radialPull2D({\n      influences: [\n        [210, 250, radius, n(x, \"power\")],\n        [430, 360, radius, n(x, \"power\")],\n      ],\n    });\n  p.noFill();\n  p.strokeCap(p.ROUND);\n  for (let row = 0; row < n(x, \"lines\"); row += 1) {\n    const points: number[] = [];\n    const y = 80 + (row * 480) / Math.max(1, n(x, \"lines\") - 1);\n    for (let i = 0; i <= 96; i += 1) {\n      const out = [0, 0];\n      field.transformInto(\n        40 + (i * 560) / 96,\n        y + (random() - 0.5) * n(x, \"jitter\"),\n        out,\n      );\n      points.push(out[0], out[1]);\n    }\n    line(p, points, paletteAt(layer, row), n(x, \"weight\"));\n  }\n}\n",
       "operations": [
         {
           "id": "geometry.radial-pull-2d",
@@ -694,48 +961,24 @@
           },
           "attestationPath": "catalog/validation/radial-pull-2d.json",
           "attestationSha256": "65c4792fb72f914612a3f03cbefca975f850c4bde52cb32e75efc8e1cc905e31"
-        },
-        {
-          "id": "geometry.closed-spline-2d",
-          "version": "0.1.0",
-          "description": "Retain a closed uniform Catmull-Rom spline from explicit planar controls with direct parameter and approximate distance queries.",
-          "catalogPath": "catalog/operations/closed-spline-2d.json",
-          "sha256": "59a28d5feee19597ebfd97eb9ca5a1ecc77c5f06d4cc57dc2b39a70998a10b3b",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "unvalidated"
-          },
-          "attestationPath": "catalog/validation/closed-spline-2d.json",
-          "attestationSha256": "e2811e2451cc88b9a46b519c3e26813e63f46a7b61c5b5cb384b7a2e2f379c23"
-        },
-        {
-          "id": "color.cyclic-palette",
-          "version": "0.1.0",
-          "description": "Immutable ordered opaque sRGB8 palette sampled by a phase in cycles, with linear encoded-channel interpolation and fixed RGB24 quantization.",
-          "catalogPath": "catalog/operations/cyclic-palette.json",
-          "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "validated-scoped"
-          },
-          "attestationPath": "catalog/validation/cyclic-palette.json",
-          "attestationSha256": "e46e0f6305e33bac990c79b47c8450fbef4ae2bc10ddce107d079d700222028c"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "projection-marks",
       "title": "Projection Marks",
-      "description": "A contour and a family of straight lines bend toward the boundaries of several circles. The original lines remain faintly visible, making the deformation easy to compare.",
+      "description": "Parallel paths are projected through two discs in sequence. Radius controls their reach and Strength controls the projection amount. Lines and Weight change the drawn path family. The supplied starting arrangement is fixed; each projection acts on the result of the preceding disc.",
       "category": "Transforms",
-      "markdown": "# Bend lines around circular influences\n\nA contour and a family of straight lines bend toward the boundaries of several circles. The\noriginal lines remain faintly visible, making the deformation easy to compare.\n\n[Install the Java library](/source/docs/building-java-from-source.md), then open **ProjectionMarks** in\nProcessing’s contributed-library examples and save a copy.\n\n| Key | Visible change |\n| --- | --- |\n| M | Cycle between partial movement, full movement toward circle edges, and the original drawing. |\n| O | Apply the circles in the opposite order, changing how overlapping influences bend the drawing. |\n| C | Switches the projected-line color. |\n| S | Saves the displayed image. |\n\nSupply your own points and ordered circles, then draw the returned points as contours, lines,\nor marks. Keep point grouping and drawing outside the projection so the same deformation can\nserve several visual treatments. The example precomputes the strength and order combinations,\nthen switches among them.\n\nCircle order matters. A later circle can move a point back inside an earlier one, and straight\nsegments between projected samples can cross a circle. This is a deformation tool, not clipping\nor collision avoidance. A point exactly at a circle center uses the positive-x direction. See\nthe [projection API](/source/catalog/operations/sequential-disc-projection-2d.json) and [Java\nperformance guidance](/source/docs/java-performance.md) for advanced detail.\n",
+      "markdown": "# Project paths around discs\n\nParallel paths are projected through two discs in sequence. Radius controls their reach and Strength controls the projection amount. Lines and Weight change the drawn path family. The supplied starting arrangement is fixed; each projection acts on the result of the preceding disc.",
       "sourcePath": "packages/javascript/examples/projection-marks/README.md",
       "guidePath": "docs/projection-marks.md",
       "guideSha256": "0d132c8454c96d8d24e2acd4453b207ab6f46cee7252322ff0b312596502fd69",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/projection-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/effects.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/effects.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { sequentialDiscProjection2D } from \"../../../../packages/javascript/src/index.js\";\n\ntype Query = Record<string, number | string | boolean>;\n\nconst q = (layer: Layer) => layer.params as Query;\n\nconst palette = (layer: Layer): number[] => layer.palette;\n\nconst n = (query: Query, key: string) => query[key] as number;\n\nconst color = (value: number): [number, number, number] => [\n  (value >>> 16) & 255,\n  (value >>> 8) & 255,\n  value & 255,\n];\n\nconst paletteAt = (layer: Layer, index: number) => {\n  const colors = palette(layer);\n  return color(colors[index % colors.length]);\n};\n\nfunction line(\n  p: any,\n  points: readonly number[],\n  rgb: readonly number[],\n  weight = 1,\n): void {\n  p.stroke(rgb[0], rgb[1], rgb[2]);\n  p.strokeWeight(weight);\n  p.noFill();\n  p.beginShape();\n  for (let i = 0; i < points.length; i += 2) p.vertex(points[i], points[i + 1]);\n  p.endShape();\n}\n\nfunction drawProjection(p: any, layer: Layer): void {\n  const x = q(layer),\n    count = n(x, \"lines\"),\n    points: number[][] = [],\n    discs = [\n      [230, 250, n(x, \"radius\")],\n      [410, 350, n(x, \"radius\") * 0.78],\n    ];\n  for (let row = 0; row < count; row += 1)\n    for (let i = 0; i <= 90; i += 1)\n      points.push([\n        55 + (i * 530) / 90,\n        90 + (row * 470) / Math.max(1, count - 1),\n      ]);\n  const output = sequentialDiscProjection2D({\n    points,\n    discs,\n    strength: n(x, \"strength\"),\n    maxTests: points.length * discs.length,\n  }).points();\n  for (let row = 0; row < count; row += 1) {\n    const path: number[] = [];\n    for (let i = 0; i <= 90; i += 1) {\n      const point = 2 * (row * 91 + i);\n      path.push(output[point], output[point + 1]);\n    }\n    line(p, path, paletteAt(layer, row), n(x, \"weight\"));\n  }\n}\n",
       "operations": [
         {
           "id": "geometry.sequential-disc-projection-2d",
@@ -752,47 +995,23 @@
           "attestationSha256": "305d5056bba660da2dbbcea48aaa3ecc99ede44b78def4427959179856ff9e5c"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "path-clip-marks",
       "title": "Path Clip Marks",
-      "description": "It turns several precomputed paths into line segments, clips them to a notched region, and draws only the parts inside. The outside movement remains available as a faint overlay.",
+      "description": "Seeded wandering paths are converted to segments and clipped against a notched boundary. Paths, Steps, and Wander shape the source motion; Notch floor changes the clipping region. Clipping removes portions outside the boundary without steering the paths.",
       "category": "Transforms",
-      "markdown": "# Clip field-generated paths to a region\n\nIt turns several precomputed paths into line segments, clips them to a notched region, and\ndraws only the parts inside. The outside movement remains available as a faint overlay.\n\n[Install the Java library](/source/docs/building-java-from-source.md), then open **PathClipMarks** in\nProcessing’s contributed-library examples and save a copy.\n\n| Key | Visible change |\n| --- | --- |\n| N | Switches the notch shape and reclips the same paths. |\n| C | Switches path colors. |\n| O | Shows or hides the unclipped paths. |\n| 0 | Restores the starting view. |\n| S | Saves the displayed image. |\n\nGenerate positions with any path source, connect consecutive positions into segments, then clip\nthose segments. `sourceToPath` and `sourceToStep` identify each input segment; `sourceIndexAt`\nidentifies each returned piece. Use those values for path color, step marks, or other styling.\nDraw returned pieces separately so excluded gaps stay open.\n\nChanging the boundary clips the same movement again; it does not steer or regenerate a path.\nClipping trims mathematical centerlines, so a thick painted stroke can pass the edge. Use a\nmask when you only need visibility, and retain clipped geometry until the source or boundary\nchanges. Advanced details are in [Java performance guidance](/source/docs/java-performance.md).\n",
+      "markdown": "# Clip paths to a notch\n\nSeeded wandering paths are converted to segments and clipped against a notched boundary. Paths, Steps, and Wander shape the source motion; Notch floor changes the clipping region. Clipping removes portions outside the boundary without steering the paths.",
       "sourcePath": "packages/javascript/examples/path-clip-marks/README.md",
       "guidePath": "docs/path-clip-marks.md",
       "guideSha256": "c87aa93c5e13a2824a9bc93bafb4b0bef9f13d77ba3a50d2883a6bd494ef9da1",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/path-clip-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/effects.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/effects.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { clipSegmentsSimplePolygon2D } from \"../../../../packages/javascript/src/index.js\";\n\ntype Query = Record<string, number | string | boolean>;\n\nconst q = (layer: Layer) => layer.params as Query;\n\nconst palette = (layer: Layer): number[] => layer.palette;\n\nconst n = (query: Query, key: string) => query[key] as number;\n\nconst color = (value: number): [number, number, number] => [\n  (value >>> 16) & 255,\n  (value >>> 8) & 255,\n  value & 255,\n];\n\nconst paletteAt = (layer: Layer, index: number) => {\n  const colors = palette(layer);\n  return color(colors[index % colors.length]);\n};\n\nconst rng = (seed: number) => {\n  let state = seed >>> 0;\n  return () =>\n    ((state = (state + 0x6d2b79f5) >>> 0),\n    (Math.imul(state ^ (state >>> 15), 1 | state) ^\n      Math.imul(state ^ (state >>> 7), 61 | state) ^\n      state) >>>\n      0) / 4294967296;\n};\n\nfunction line(\n  p: any,\n  points: readonly number[],\n  rgb: readonly number[],\n  weight = 1,\n): void {\n  p.stroke(rgb[0], rgb[1], rgb[2]);\n  p.strokeWeight(weight);\n  p.noFill();\n  p.beginShape();\n  for (let i = 0; i < points.length; i += 2) p.vertex(points[i], points[i + 1]);\n  p.endShape();\n}\n\nfunction drawClip(p: any, layer: Layer): void {\n  const x = q(layer),\n    random = rng(layer.seed),\n    rows = n(x, \"paths\"),\n    segments: number[][] = [],\n    polygon = [\n      [80, 80],\n      [560, 80],\n      [560, 560],\n      [380, 560],\n      [380, n(x, \"notch\")],\n      [260, n(x, \"notch\")],\n      [260, 560],\n      [80, 560],\n    ];\n  for (let row = 0; row < rows; row += 1) {\n    let px = 20,\n      py = 100 + (row * 440) / Math.max(1, rows - 1);\n    for (let step = 0; step < n(x, \"steps\"); step += 1) {\n      const nx = px + 7,\n        ny = py + (random() - 0.5) * n(x, \"wander\");\n      segments.push([px, py, nx, ny]);\n      px = nx;\n      py = ny;\n    }\n  }\n  const clipped = clipSegmentsSimplePolygon2D({\n    polygon,\n    segments,\n    maxWork: 1200000,\n    maxOutputSegments: 5000,\n  }).toValues();\n  p.noFill();\n  for (let i = 0; i < clipped.segments.length; i += 1) {\n    const s = clipped.segments[i];\n    p.stroke(...paletteAt(layer, clipped.sourceIndices[i] % rows));\n    p.strokeWeight(n(x, \"weight\"));\n    p.line(...s);\n  }\n}\n",
       "operations": [
-        {
-          "id": "field.gradient-noise-2d-01",
-          "version": "0.1.0",
-          "description": "An immutable seeded single-octave 2D gradient field with pure binary64 samples in [0,1]. Independently specified; not Processing noise compatibility.",
-          "catalogPath": "catalog/operations/gradient-noise-2d-01.json",
-          "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "validated-scoped"
-          },
-          "attestationPath": "catalog/validation/gradient-noise-2d-01.json",
-          "attestationSha256": "e5da67f86b528624e95faf8129aa515accaef18e21e29a04241e5e9857bc813d"
-        },
-        {
-          "id": "path.gradient-trace-2d",
-          "version": "0.1.0",
-          "description": "Retain a finite two-dimensional trajectory by sampling an explicit gradient field at each evolving position and advancing a fixed distance. Reuse its positions and headings for different marks.",
-          "catalogPath": "catalog/operations/gradient-path.json",
-          "sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "validated-scoped"
-          },
-          "attestationPath": "catalog/validation/gradient-path.json",
-          "attestationSha256": "6c9bcfb81a652e971a4ad832676bd055570e169bd9abd5dd6583b13f63fa3ebb"
-        },
         {
           "id": "geometry.clip-segments-simple-polygon-2d",
           "version": "0.1.0",
@@ -808,18 +1027,22 @@
           "attestationSha256": "95455c1778e05966357f810ca8a184584ae9e59db36b9fcac4ba91aacfd5d03f"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "ramp-marks",
       "title": "Ramp Marks",
-      "description": "RampMarks colors a fixed grid of circles with a gradient. Move the color stops to control where transitions happen, then switch from a left-to-right gradient to color radiating from the center. The circles never move during these edits.",
+      "description": "A fixed dot field samples a stop ramp across the canvas or from its center. Spacing and dot size set the mark grid, Radial changes the sampling coordinate, and Radial spread changes how quickly colors move through the ramp.",
       "category": "Color & raster",
-      "markdown": "# Choose where colors change\n\nRampMarks colors a fixed grid of circles with a gradient. Move the color stops to\ncontrol where transitions happen, then switch from a left-to-right gradient to color\nradiating from the center. The circles never move during these edits.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **T** | Move the second color stop from 0.25 to 0.6, stretching one transition and shortening the next. |\n| **C** | Choose another set of colors. |\n| **F** | Switch a left-to-right gradient to a center-outward gradient. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nIn `rebuildRamp()`, give `StopRamp.create` matching arrays of positions and colors.\nA stop says which color belongs at a particular value; colors between stops are blended.\nAsk `ramp.sample(value)` for a color and use it in your own `fill()` or `stroke()` call.\n\n| Choice | What you see |\n| --- | --- |\n| Stops close together | A color transition happens over a shorter distance. |\n| Stops farther apart | A longer, more gradual transition. |\n| Value from horizontal position | Colors change across the width of the canvas. |\n| Value from distance to a center | Colors spread outward around that center. |\n\nPositions must increase. Values before the first stop use its color, and values after\nthe last use the last color. You can also color by path progress, height or an image value;\nthe ramp does not decide where your marks go.\n",
+      "markdown": "# Sample a color ramp\n\nA fixed dot field samples a stop ramp across the canvas or from its center. Spacing and dot size set the mark grid, Radial changes the sampling coordinate, and Radial spread changes how quickly colors move through the ramp.",
       "sourcePath": "packages/javascript/examples/ramp-marks/README.md",
       "guidePath": "docs/ramp-marks.md",
       "guideSha256": "585216143d56087e4e236c59bf853c6270a789df0f92182eb5590b057b2a30c9",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/ramp-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/effects.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/effects.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { stopRamp } from \"../../../../packages/javascript/src/index.js\";\n\nconst SIDE = 640;\n\ntype Query = Record<string, number | string | boolean>;\n\nconst q = (layer: Layer) => layer.params as Query;\n\nconst palette = (layer: Layer): number[] => layer.palette;\n\nconst n = (query: Query, key: string) => query[key] as number;\n\nconst b = (query: Query, key: string) => query[key] as boolean;\n\nconst color = (value: number): [number, number, number] => [\n  (value >>> 16) & 255,\n  (value >>> 8) & 255,\n  value & 255,\n];\n\nfunction drawRamp(p: any, layer: Layer): void {\n  const x = q(layer),\n    colors = palette(layer),\n    stops = colors.map((value: number, i: number) => ({\n      position: i / (colors.length - 1),\n      color: value,\n    })),\n    ramp = stopRamp({ stops }),\n    step = n(x, \"spacing\");\n  p.noStroke();\n  for (let y = step / 2; y < SIDE; y += step)\n    for (let px = step / 2; px < SIDE; px += step) {\n      const t = b(x, \"radial\")\n        ? Math.hypot(px - 320, y - 320) / (320 * n(x, \"spread\"))\n        : px / SIDE;\n      p.fill(...color(ramp.sample(t)));\n      p.circle(px, y, n(x, \"size\"));\n    }\n}\n",
       "operations": [
         {
           "id": "color.stop-ramp",
@@ -836,18 +1059,22 @@
           "attestationSha256": "af957f168638406457c8d5e4beac5f1d70697de13477f8187825ee655bd0c65c"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "warp-marks",
       "title": "Warp Marks",
-      "description": "WarpMarks bends a dot or stripe pattern into flowing shapes. It works on the finished image, so the marks, their colors and their widths distort together.",
+      "description": "A seeded field displaces pixels in a generated striped source. Strength controls the displacement distance, Scale changes the field, and Stripe changes the source artwork. The palette colors the source before the warp.",
       "category": "Color & raster",
-      "markdown": "# Bend a finished drawing\n\nWarpMarks bends a dot or stripe pattern into flowing shapes. It works on the finished\nimage, so the marks, their colors and their widths distort together.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **W** | Cycle distortion strength through 32, 64 and 0; zero shows the original pattern. |\n| **F** | Switch between a noise-driven warp and a repeating wave-based warp. |\n| **P** | Switch the original drawing between dots and stripes. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nReplace the source-pattern drawing with your own image, then change the displacement\nfield to decide where pixels are sampled from. `RasterRemap2D` builds the resulting image.\nA displacement asks where to read the original image for each output pixel; it does not\nmove the original path geometry.\n\n| Choice | Visible effect |\n| --- | --- |\n| Source image | The material being bent: dots, stripes, a photograph or another drawing. |\n| Displacement strength | How far sampling moves from each pixel’s original position. |\n| Field pattern | Where the image stretches, compresses and turns. |\n\nKeep the source image while comparing warps. At the image edges, sampling repeats edge\ncolors rather than creating new content. Use a mask afterward if only part of the canvas\nshould show the effect.\n",
+      "markdown": "# Warp generated stripes\n\nA seeded field displaces pixels in a generated striped source. Strength controls the displacement distance, Scale changes the field, and Stripe changes the source artwork. The palette colors the source before the warp.",
       "sourcePath": "packages/javascript/examples/warp-marks/README.md",
       "guidePath": "docs/warp-marks.md",
       "guideSha256": "70dc1245d8ed6bc3c8190e7c71e6b37f7e0712de9f37e307d33a161e3c534f82",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/warp-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/effects.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/effects.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { bilinearRasterRemap2D, gradientNoise3D01 } from \"../../../../packages/javascript/src/index.js\";\n\nconst SIDE = 640;\n\nconst TAU = Math.PI * 2;\n\ntype Query = Record<string, number | string | boolean>;\n\nconst q = (layer: Layer) => layer.params as Query;\n\nconst palette = (layer: Layer): number[] => layer.palette;\n\nconst n = (query: Query, key: string) => query[key] as number;\n\nconst color = (value: number): [number, number, number] => [\n  (value >>> 16) & 255,\n  (value >>> 8) & 255,\n  value & 255,\n];\n\nconst paletteAt = (layer: Layer, index: number) => {\n  const colors = palette(layer);\n  return color(colors[index % colors.length]);\n};\n\nconst rng = (seed: number) => {\n  let state = seed >>> 0;\n  return () =>\n    ((state = (state + 0x6d2b79f5) >>> 0),\n    (Math.imul(state ^ (state >>> 15), 1 | state) ^\n      Math.imul(state ^ (state >>> 7), 61 | state) ^\n      state) >>>\n      0) / 4294967296;\n};\n\nfunction packed(rgb: readonly number[]): number {\n  return (0xff000000 | (rgb[0] << 16) | (rgb[1] << 8) | rgb[2]) >>> 0;\n}\n\nfunction putRaster(\n  p: any,\n  raster: { width: number; height: number; pixels: number[] },\n): void {\n  p.loadPixels();\n  for (let y = 0; y < SIDE; y += 1)\n    for (let x = 0; x < SIDE; x += 1) {\n      const pixel =\n        raster.pixels[\n          Math.floor((y * raster.height) / SIDE) * raster.width +\n            Math.floor((x * raster.width) / SIDE)\n        ];\n      const offset = 4 * (y * SIDE + x);\n      p.pixels[offset] = (pixel >>> 16) & 255;\n      p.pixels[offset + 1] = (pixel >>> 8) & 255;\n      p.pixels[offset + 2] = pixel & 255;\n      p.pixels[offset + 3] = pixel >>> 24;\n    }\n  p.updatePixels();\n}\n\nfunction generatedRaster(\n  layer: Layer,\n  size: number,\n  stripe: number,\n): { width: number; height: number; pixels: number[] } {\n  const random = rng(layer.seed),\n    pixels = new Array<number>(size * size);\n  const colors = palette(layer);\n  for (let y = 0; y < size; y += 1)\n    for (let x = 0; x < size; x += 1) {\n      const index =\n        ((Math.floor((x + y * 0.55 + random() * stripe) / stripe) %\n          colors.length) +\n          colors.length) %\n        colors.length;\n      pixels[y * size + x] = packed(paletteAt(layer, index));\n    }\n  return { width: size, height: size, pixels };\n}\n\nfunction drawWarp(p: any, layer: Layer): void {\n  const x = q(layer),\n    size = 160,\n    source = generatedRaster(layer, size, n(x, \"stripe\")),\n    noise = gradientNoise3D01({ seed: layer.seed }),\n    coordinates: number[][] = [];\n  for (let py = 0; py < size; py += 1)\n    for (let px = 0; px < size; px += 1) {\n      const angle =\n        noise.sample(px / n(x, \"scale\"), py / n(x, \"scale\"), 0) * TAU;\n      coordinates.push([\n        px + Math.cos(angle) * n(x, \"strength\"),\n        py + Math.sin(angle) * n(x, \"strength\"),\n      ]);\n    }\n  putRaster(\n    p,\n    bilinearRasterRemap2D({\n      source,\n      outputWidth: size,\n      outputHeight: size,\n      sourceCoordinates: coordinates,\n    }).toValues(),\n  );\n}\n",
       "operations": [
         {
           "id": "raster.bilinear-remap-2d",
@@ -864,46 +1091,36 @@
           "attestationSha256": "07a12dbb7bde2c7143f5843d468ad902499983ff3336bd040134701aa59260af"
         },
         {
-          "id": "field.gradient-noise-2d-01",
+          "id": "field.gradient-noise-3d-01",
           "version": "0.1.0",
-          "description": "An immutable seeded single-octave 2D gradient field with pure binary64 samples in [0,1]. Independently specified; not Processing noise compatibility.",
-          "catalogPath": "catalog/operations/gradient-noise-2d-01.json",
-          "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+          "description": "Immutable seeded single-octave three-coordinate gradient field with pure binary64 samples in[0,1]; independent of Processing noise.",
+          "catalogPath": "catalog/operations/gradient-noise-3d-01.json",
+          "sha256": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82",
           "support": {
             "core": "conformant",
             "native": "validated-scoped",
-            "technique": "validated-scoped"
+            "technique": "unvalidated"
           },
-          "attestationPath": "catalog/validation/gradient-noise-2d-01.json",
-          "attestationSha256": "e5da67f86b528624e95faf8129aa515accaef18e21e29a04241e5e9857bc813d"
-        },
-        {
-          "id": "color.cyclic-palette",
-          "version": "0.1.0",
-          "description": "Immutable ordered opaque sRGB8 palette sampled by a phase in cycles, with linear encoded-channel interpolation and fixed RGB24 quantization.",
-          "catalogPath": "catalog/operations/cyclic-palette.json",
-          "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "validated-scoped"
-          },
-          "attestationPath": "catalog/validation/cyclic-palette.json",
-          "attestationSha256": "e46e0f6305e33bac990c79b47c8450fbef4ae2bc10ddce107d079d700222028c"
+          "attestationPath": "catalog/validation/gradient-noise-3d-01.json",
+          "attestationSha256": "fb9e9a21c90e5692f19a9a78d6c557e29d3c4d99e93054f9042ba6839e690bb0"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "blur-marks",
       "title": "Blur Marks",
-      "description": "It draws one translucent arrangement, then shows it sharp, softened in both directions, blurred horizontally, or blurred vertically. You can place or blend the softened image elsewhere in a composition.",
+      "description": "This study first generates a seeded band image, then filters it with a bounded separable blur kernel. Radius changes the kernel reach and Stripe changes the source band width. Horizontal only restricts the filter to its horizontal pass; it is not a blend with another layer.",
       "category": "Color & raster",
-      "markdown": "# Soften a drawing\n\nIt draws one translucent arrangement, then shows it sharp, softened in both directions, blurred\nhorizontally, or blurred vertically. You can place or blend the softened image elsewhere in a\ncomposition.\n\n[Install the Java library](/source/docs/building-java-from-source.md), then open **BlurMarks** in\nProcessing’s contributed-library examples and save a copy.\n\n| Key | Visible change |\n| --- | --- |\n| M | Cycles sharp, soft, horizontal, and vertical layers. |\n| B | Blends the selected layer with the sharp drawing from left to right. |\n| S | Saves the displayed image. |\n\nReplace the initial drawing with a completed RGB or ARGB image. Use separate horizontal and\nvertical weight arrays to choose the direction of spread; a one-value `[1]` axis has no spread.\nFilter a full drawing before a later crop when neighboring content should soften together.\nFilter an isolated crop when its own edges should stay separate.\n\nBlur uses clamped edge samples, so edge colors continue outward. Keep the filtered images so\nchanging how they are blended does not repeat the blur. For the filter settings and work\nlimits, see the [separable blur API](/source/catalog/operations/separable-blur-2d.json) and [Java\nperformance guidance](/source/docs/java-performance.md).\n",
+      "markdown": "# Blur generated bands\n\nThis study first generates a seeded band image, then filters it with a bounded separable blur kernel. Radius changes the kernel reach and Stripe changes the source band width. Horizontal only restricts the filter to its horizontal pass; it is not a blend with another layer.",
       "sourcePath": "packages/javascript/examples/blur-marks/README.md",
       "guidePath": "docs/blur-marks.md",
       "guideSha256": "676d1fe2ff851e2b9a3520c92523ec31cd715856b6b4acad0a1f063ab33ebfff",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/blur-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/effects.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/effects.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { separableBlur2D } from \"../../../../packages/javascript/src/index.js\";\n\nconst SIDE = 640;\n\ntype Query = Record<string, number | string | boolean>;\n\nconst q = (layer: Layer) => layer.params as Query;\n\nconst palette = (layer: Layer): number[] => layer.palette;\n\nconst n = (query: Query, key: string) => query[key] as number;\n\nconst b = (query: Query, key: string) => query[key] as boolean;\n\nconst color = (value: number): [number, number, number] => [\n  (value >>> 16) & 255,\n  (value >>> 8) & 255,\n  value & 255,\n];\n\nconst paletteAt = (layer: Layer, index: number) => {\n  const colors = palette(layer);\n  return color(colors[index % colors.length]);\n};\n\nconst rng = (seed: number) => {\n  let state = seed >>> 0;\n  return () =>\n    ((state = (state + 0x6d2b79f5) >>> 0),\n    (Math.imul(state ^ (state >>> 15), 1 | state) ^\n      Math.imul(state ^ (state >>> 7), 61 | state) ^\n      state) >>>\n      0) / 4294967296;\n};\n\nfunction packed(rgb: readonly number[]): number {\n  return (0xff000000 | (rgb[0] << 16) | (rgb[1] << 8) | rgb[2]) >>> 0;\n}\n\nfunction putRaster(\n  p: any,\n  raster: { width: number; height: number; pixels: number[] },\n): void {\n  p.loadPixels();\n  for (let y = 0; y < SIDE; y += 1)\n    for (let x = 0; x < SIDE; x += 1) {\n      const pixel =\n        raster.pixels[\n          Math.floor((y * raster.height) / SIDE) * raster.width +\n            Math.floor((x * raster.width) / SIDE)\n        ];\n      const offset = 4 * (y * SIDE + x);\n      p.pixels[offset] = (pixel >>> 16) & 255;\n      p.pixels[offset + 1] = (pixel >>> 8) & 255;\n      p.pixels[offset + 2] = pixel & 255;\n      p.pixels[offset + 3] = pixel >>> 24;\n    }\n  p.updatePixels();\n}\n\nfunction generatedRaster(\n  layer: Layer,\n  size: number,\n  stripe: number,\n): { width: number; height: number; pixels: number[] } {\n  const random = rng(layer.seed),\n    pixels = new Array<number>(size * size);\n  const colors = palette(layer);\n  for (let y = 0; y < size; y += 1)\n    for (let x = 0; x < size; x += 1) {\n      const index =\n        ((Math.floor((x + y * 0.55 + random() * stripe) / stripe) %\n          colors.length) +\n          colors.length) %\n        colors.length;\n      pixels[y * size + x] = packed(paletteAt(layer, index));\n    }\n  return { width: size, height: size, pixels };\n}\n\nfunction drawBlur(p: any, layer: Layer): void {\n  const x = q(layer),\n    size = 128,\n    source = generatedRaster(layer, size, n(x, \"stripe\")),\n    radius = n(x, \"radius\"),\n    kernel = Array.from(\n      { length: radius * 2 + 1 },\n      (_, i) => radius + 1 - Math.abs(i - radius),\n    );\n  putRaster(\n    p,\n    separableBlur2D({\n      source,\n      kernelX: kernel,\n      kernelY: b(x, \"horizontal\") ? [1] : kernel,\n      maxSamples: size * size * (kernel.length * (b(x, \"horizontal\") ? 1 : 2)),\n    }).toValues(),\n  );\n}\n",
       "operations": [
         {
           "id": "raster.separable-blur-2d",
@@ -918,48 +1135,24 @@
           },
           "attestationPath": "catalog/validation/separable-blur-2d.json",
           "attestationSha256": "8d197b1870594e55c2963420fa8a7d3168fa91cacd51eaa35f8173cb64ace0a8"
-        },
-        {
-          "id": "raster.crossfade-2d",
-          "version": "0.1.0",
-          "description": "Crossfade two same-sized straight ARGB8 rasters using explicit per-pixel weights and premultiplied working channels.",
-          "catalogPath": "catalog/operations/raster-crossfade.json",
-          "sha256": "bdf78f9411fe1f6c2d9b9ec998b5f952e8b7c951fa6e347682bd86f3c025aac0",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "unvalidated"
-          },
-          "attestationPath": "catalog/validation/raster-crossfade.json",
-          "attestationSha256": "6b541dca53192367257286d86c6cdcf2412b1be5adf72bdae28454cb78646a6c"
-        },
-        {
-          "id": "raster.masked-source-over-2d",
-          "version": "0.1.0",
-          "description": "Composite same-sized straight ARGB8 rasters using an explicit scalar visibility mask.",
-          "catalogPath": "catalog/operations/masked-source-over.json",
-          "sha256": "c8e2077cd3a238ec5c7a1242892d0d3215e103761fbb0d5031daef08c42d16c2",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "unvalidated"
-          },
-          "attestationPath": "catalog/validation/masked-source-over.json",
-          "attestationSha256": "ca8ca1f309d57dddfd8ecf1130849c6bd1633c7c89a34eb6834579d444839954"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "profile-marks",
       "title": "Profile Marks",
-      "description": "ProfileMarks builds a form from circular rings at different heights. Try a straight cylinder, a pinched waist or a pointed form, then change how smooth or faceted it looks. The example uses Processing’s P3D renderer and lighting.",
+      "description": "A fixed profile becomes a shaded radial mesh. Form 0 selects a cylinder, 1 a waist, and 2 a pointed profile; Slices controls angular resolution, and Height and Radius set its proportions. Caps closes the ends where the selected form allows it.",
       "category": "3D forms",
-      "markdown": "# Build a 3D form from its silhouette\n\nProfileMarks builds a form from circular rings at different heights. Try a straight\ncylinder, a pinched waist or a pointed form, then change how smooth or faceted it looks.\nThe example uses Processing’s P3D renderer and lighting.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **P** | Cycle between the cylinder, waist and pointed profiles. |\n| **D** | Switch between 8 broad sides and 32 narrower sides. |\n| **B** | Open or close the first end of the form. |\n| **T** | Open or close the last end of the form. |\n| **C** | Recolor the same shape. |\n| **X** | Show all three forms side by side, or show the selected form alone. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nOpen `ProfileComposition.java` and change the list of `[height, radius]` pairs. A larger\nradius makes the form wider at that height; several changes along the list create shoulders,\nnecks and bulges. Heights must increase. A radius of zero is allowed at an end to make a\npoint, but not between the ends.\n\n`RadialProfile3D` connects the rings into triangles. Use Processing’s translate and rotate\ncalls to place the mesh, and change the PDE’s colors and lights to alter its appearance.\nThe mesh identifies height bands so you can color each band separately.\n\nA cap toggle has no visible effect on an already pointed end. This operation makes forms\naround one straight axis; for a washer-like form with a hole, use [AnnularMarks](/techniques/annular-marks).\n",
+      "markdown": "# Build a radial profile\n\nA fixed profile becomes a shaded radial mesh. Form 0 selects a cylinder, 1 a waist, and 2 a pointed profile; Slices controls angular resolution, and Height and Radius set its proportions. Caps closes the ends where the selected form allows it.",
       "sourcePath": "packages/javascript/examples/profile-marks/README.md",
       "guidePath": "docs/profile-marks.md",
       "guideSha256": "2bac846026f6543e463661a4ac726fce086abee8736755da7242843aa2cc7d3c",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/profile-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/effects.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/effects.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { RadialProfile3D } from \"../../../../packages/javascript/src/index.js\";\n\ntype Query = Record<string, number | string | boolean>;\n\nconst q = (layer: Layer) => layer.params as Query;\n\nconst palette = (layer: Layer): number[] => layer.palette;\n\nconst n = (query: Query, key: string) => query[key] as number;\n\nconst b = (query: Query, key: string) => query[key] as boolean;\n\nconst color = (value: number): [number, number, number] => [\n  (value >>> 16) & 255,\n  (value >>> 8) & 255,\n  value & 255,\n];\n\nconst paletteAt = (layer: Layer, index: number) => {\n  const colors = palette(layer);\n  return color(colors[index % colors.length]);\n};\n\nconst faceCount = (mesh: any) =>\n  typeof mesh.faceCount === \"function\" ? mesh.faceCount() : mesh.faceCount;\n\nfunction mesh(p: any, shape: any, layer: Layer, phase = 0): void {\n  const normal = new Float64Array(3),\n    triangle = new Int32Array(3),\n    vertex = new Float64Array(3);\n  p.beginShape(p.TRIANGLES);\n  for (let face = 0; face < faceCount(shape); face += 1) {\n    const rgb = paletteAt(layer, face + phase);\n    p.fill(...rgb);\n    shape.normalInto(face, normal, 0);\n    p.normal(normal[0], normal[1], normal[2]);\n    shape.triangleInto(face, triangle, 0);\n    for (let corner = 0; corner < 3; corner += 1) {\n      shape.vertexInto(triangle[corner], vertex, 0);\n      p.vertex(vertex[0], vertex[1], vertex[2]);\n    }\n  }\n  p.endShape();\n}\n\nfunction profile(kind: number, height: number, radius: number): number[][] {\n  const points: number[][] = [];\n  for (let i = 0; i <= 12; i += 1) {\n    const t = i / 12;\n    let r = radius;\n    if (kind === 1) r *= 0.38 + 0.62 * Math.abs(2 * t - 1);\n    if (kind === 2) r *= 1 - t;\n    points.push([-height / 2 + height * t, Math.max(0, r)]);\n  }\n  return points;\n}\n\nfunction drawProfile(p: any, layer: Layer): void {\n  const x = q(layer),\n    shape = RadialProfile3D.generate({\n      profile: profile(n(x, \"form\"), n(x, \"height\"), n(x, \"radius\")),\n      slices: n(x, \"slices\"),\n      capStart: b(x, \"caps\"),\n      capEnd: b(x, \"caps\"),\n      maxFaces: 3000,\n    });\n  p.noStroke();\n  p.noLights();\n  p.ambientLight(110);\n  p.directionalLight(255, 255, 255, -0.3, 0.5, -1);\n  p.push();\n  p.rotateX(0.85);\n  p.rotateY(0.35);\n  mesh(p, shape, layer);\n  p.pop();\n}\n",
       "operations": [
         {
           "id": "mesh.radial-profile-surface-3d",
@@ -974,34 +1167,24 @@
           },
           "attestationPath": "catalog/validation/radial-profile-surface.json",
           "attestationSha256": "6ffbe45fa6ff108795636d2479ad37f976d22265e01e5c6c9f65afe7fd129085"
-        },
-        {
-          "id": "color.cyclic-palette",
-          "version": "0.1.0",
-          "description": "Immutable ordered opaque sRGB8 palette sampled by a phase in cycles, with linear encoded-channel interpolation and fixed RGB24 quantization.",
-          "catalogPath": "catalog/operations/cyclic-palette.json",
-          "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "validated-scoped"
-          },
-          "attestationPath": "catalog/validation/cyclic-palette.json",
-          "attestationSha256": "e46e0f6305e33bac990c79b47c8450fbef4ae2bc10ddce107d079d700222028c"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "annular-marks",
       "title": "Annular Marks",
-      "description": "AnnularMarks draws a lit, washer-like solid with a hole through its center. Make the ring broader, make it deeper, or reduce the number of sides for a more angular form. The example uses Processing’s P3D renderer.",
+      "description": "A fixed annular mesh is controlled by outer and inner radius, depth, and angular slices. It always retains a central opening, so Inner radius must remain smaller than Outer radius. The palette colors the generated faces.",
       "category": "3D forms",
-      "markdown": "# Build solid rings with open centers\n\nAnnularMarks draws a lit, washer-like solid with a hole through its center. Make the\nring broader, make it deeper, or reduce the number of sides for a more angular form.\nThe example uses Processing’s P3D renderer.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **W** | Shrink the hole radius from 110 to 60 while keeping the outer radius at 150, making the ring broader. |\n| **D** | Increase depth from 30 to 90. |\n| **F** | Switch from 48 sides to 12, making the rim more visibly faceted. |\n| **C** | Change face colors without changing the shape. |\n| **M** | Show one ring or a group of three. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nEdit `rebuildMesh()` to supply outer radius, inner radius, bottom and top heights,\nand the number of sides to `AnnularMesh3D`. The result includes the inner wall, outer\nwall and the two flat ring-shaped ends.\n\nThe inner radius must be smaller than the outer radius and greater than zero. Change\ncolors by face type to make the inner wall or end faces stand out. Use Processing transforms\nto position several copies of the same mesh. More sides make a smoother-looking rim at\nthe cost of more triangles to draw.\n",
+      "markdown": "# Build an annular solid\n\nA fixed annular mesh is controlled by outer and inner radius, depth, and angular slices. It always retains a central opening, so Inner radius must remain smaller than Outer radius. The palette colors the generated faces.",
       "sourcePath": "packages/javascript/examples/annular-marks/README.md",
       "guidePath": "docs/annular-marks.md",
       "guideSha256": "78e675b6b6e85d979a1ccd2e525db6aac1e2e551c9acd72c8e918f344eba8fc7",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/annular-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/effects.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/effects.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { annularSolid3D } from \"../../../../packages/javascript/src/index.js\";\n\ntype Query = Record<string, number | string | boolean>;\n\nconst q = (layer: Layer) => layer.params as Query;\n\nconst palette = (layer: Layer): number[] => layer.palette;\n\nconst n = (query: Query, key: string) => query[key] as number;\n\nconst color = (value: number): [number, number, number] => [\n  (value >>> 16) & 255,\n  (value >>> 8) & 255,\n  value & 255,\n];\n\nconst paletteAt = (layer: Layer, index: number) => {\n  const colors = palette(layer);\n  return color(colors[index % colors.length]);\n};\n\nconst faceCount = (mesh: any) =>\n  typeof mesh.faceCount === \"function\" ? mesh.faceCount() : mesh.faceCount;\n\nfunction mesh(p: any, shape: any, layer: Layer, phase = 0): void {\n  const normal = new Float64Array(3),\n    triangle = new Int32Array(3),\n    vertex = new Float64Array(3);\n  p.beginShape(p.TRIANGLES);\n  for (let face = 0; face < faceCount(shape); face += 1) {\n    const rgb = paletteAt(layer, face + phase);\n    p.fill(...rgb);\n    shape.normalInto(face, normal, 0);\n    p.normal(normal[0], normal[1], normal[2]);\n    shape.triangleInto(face, triangle, 0);\n    for (let corner = 0; corner < 3; corner += 1) {\n      shape.vertexInto(triangle[corner], vertex, 0);\n      p.vertex(vertex[0], vertex[1], vertex[2]);\n    }\n  }\n  p.endShape();\n}\n\nfunction drawAnnular(p: any, layer: Layer): void {\n  const x = q(layer),\n    shape = annularSolid3D({\n      outerRadius: n(x, \"outer\"),\n      innerRadius: n(x, \"inner\"),\n      bottomZ: -n(x, \"depth\") / 2,\n      topZ: n(x, \"depth\") / 2,\n      slices: n(x, \"slices\"),\n      maxFaces: 1000,\n    });\n  p.noStroke();\n  p.noLights();\n  p.ambientLight(120);\n  p.directionalLight(255, 255, 255, -0.2, 0.5, -1);\n  p.push();\n  p.rotateX(0.9);\n  p.rotateY(0.35);\n  mesh(p, shape, layer);\n  p.pop();\n}\n",
       "operations": [
         {
           "id": "mesh.annular-solid-3d",
@@ -1018,18 +1201,22 @@
           "attestationSha256": "6a9aff83092541c0281368c4af4f50e6fc97b74d7d3440a858b4fd8bc11ffa16"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "depth-marks",
       "title": "Depth Marks",
-      "description": "DepthMarks uses a slice through a three-dimensional field to vary the colors of short strokes. It can also color a rounded mesh, using each face’s position in space. The example uses Processing’s P3D renderer.",
+      "description": "A radial mesh is colored by a seeded three-dimensional noise sample. Radius, Height, and Slices set the form, while Depth sample chooses a slice through the field. The palette maps those field values onto the visible faces.",
       "category": "3D forms",
-      "markdown": "# Color a drawing with a three-dimensional field\n\nDepthMarks uses a slice through a three-dimensional field to vary the colors of short\nstrokes. It can also color a rounded mesh, using each face’s position in space. The\nexample uses Processing’s P3D renderer.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **Z** | Switch the field depth from 0.25 to 1.25, revealing another pattern without moving the strokes. |\n| **C** | Change the palette. |\n| **M** | Switch between the flat stroke view and the mesh view. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nUse `GradientNoise3D01` to sample a value at `(x, y, z)`, then turn that value into a\ncolor or another mark attribute. Changing z chooses a different slice of the field;\nit does not move the camera or the artwork itself.\n\nEdit the coordinate scale to change how quickly the pattern varies across space. Keep\nthe same geometry and try new depths or palettes, or replace the profile used in the mesh\nview. Lighting also affects the mesh’s appearance, so it will not look exactly like the\nflat stroke view.\n",
+      "markdown": "# Shade a depth field mesh\n\nA radial mesh is colored by a seeded three-dimensional noise sample. Radius, Height, and Slices set the form, while Depth sample chooses a slice through the field. The palette maps those field values onto the visible faces.",
       "sourcePath": "packages/javascript/examples/depth-marks/README.md",
       "guidePath": "docs/depth-marks.md",
       "guideSha256": "66f20a2fdcc15888fc4b81e98f4d7a05a2dda64c4fd8897cd56b73b2abb71db4",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/depth-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/effects.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/effects.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { RadialProfile3D, gradientNoise3D01 } from \"../../../../packages/javascript/src/index.js\";\n\ntype Query = Record<string, number | string | boolean>;\n\nconst q = (layer: Layer) => layer.params as Query;\n\nconst palette = (layer: Layer): number[] => layer.palette;\n\nconst n = (query: Query, key: string) => query[key] as number;\n\nconst color = (value: number): [number, number, number] => [\n  (value >>> 16) & 255,\n  (value >>> 8) & 255,\n  value & 255,\n];\n\nconst paletteAt = (layer: Layer, index: number) => {\n  const colors = palette(layer);\n  return color(colors[index % colors.length]);\n};\n\nconst faceCount = (mesh: any) =>\n  typeof mesh.faceCount === \"function\" ? mesh.faceCount() : mesh.faceCount;\n\nfunction mesh(p: any, shape: any, layer: Layer, phase = 0): void {\n  const normal = new Float64Array(3),\n    triangle = new Int32Array(3),\n    vertex = new Float64Array(3);\n  p.beginShape(p.TRIANGLES);\n  for (let face = 0; face < faceCount(shape); face += 1) {\n    const rgb = paletteAt(layer, face + phase);\n    p.fill(...rgb);\n    shape.normalInto(face, normal, 0);\n    p.normal(normal[0], normal[1], normal[2]);\n    shape.triangleInto(face, triangle, 0);\n    for (let corner = 0; corner < 3; corner += 1) {\n      shape.vertexInto(triangle[corner], vertex, 0);\n      p.vertex(vertex[0], vertex[1], vertex[2]);\n    }\n  }\n  p.endShape();\n}\n\nfunction profile(kind: number, height: number, radius: number): number[][] {\n  const points: number[][] = [];\n  for (let i = 0; i <= 12; i += 1) {\n    const t = i / 12;\n    let r = radius;\n    if (kind === 1) r *= 0.38 + 0.62 * Math.abs(2 * t - 1);\n    if (kind === 2) r *= 1 - t;\n    points.push([-height / 2 + height * t, Math.max(0, r)]);\n  }\n  return points;\n}\n\nfunction drawDepth(p: any, layer: Layer): void {\n  const x = q(layer),\n    noise = gradientNoise3D01({ seed: layer.seed }),\n    radius = n(x, \"radius\"),\n    slices = n(x, \"slices\"),\n    shape = RadialProfile3D.generate({\n      profile: profile(2, n(x, \"height\"), radius),\n      slices,\n      capStart: false,\n      capEnd: false,\n      maxFaces: 3000,\n    });\n  p.noStroke();\n  p.noLights();\n  p.ambientLight(120);\n  p.directionalLight(255, 255, 255, -0.2, 0.4, -1);\n  p.push();\n  p.rotateX(0.85);\n  p.rotateY(0.35);\n  p.beginShape(p.TRIANGLES);\n  const normal = new Float64Array(3),\n    triangle = new Int32Array(3),\n    vertex = new Float64Array(3);\n  for (let face = 0; face < faceCount(shape); face += 1) {\n    const rgb = paletteAt(\n      layer,\n      Math.floor(\n        noise.sample(face / slices, n(x, \"depth\"), 0) * palette(layer).length,\n      ),\n    );\n    p.fill(...rgb);\n    shape.normalInto(face, normal);\n    p.normal(...normal);\n    shape.triangleInto(face, triangle);\n    for (const corner of triangle) {\n      shape.vertexInto(corner, vertex);\n      p.vertex(...vertex);\n    }\n  }\n  p.endShape();\n  p.pop();\n}\n",
       "operations": [
         {
           "id": "field.gradient-noise-3d-01",
@@ -1058,48 +1245,24 @@
           },
           "attestationPath": "catalog/validation/radial-profile-surface.json",
           "attestationSha256": "6ffbe45fa6ff108795636d2479ad37f976d22265e01e5c6c9f65afe7fd129085"
-        },
-        {
-          "id": "layout.regular-grid",
-          "version": "0.1.0",
-          "description": "An immutable row-major rectangular sequence of planar positions with explicit point counts and spacing.",
-          "catalogPath": "catalog/operations/regular-grid.json",
-          "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "validated-scoped"
-          },
-          "attestationPath": "catalog/validation/regular-grid.json",
-          "attestationSha256": "ae10c758b2076da46598946c62e87f894fb8a27bd91369c7717b475165f8bfbc"
-        },
-        {
-          "id": "color.cyclic-palette",
-          "version": "0.1.0",
-          "description": "Immutable ordered opaque sRGB8 palette sampled by a phase in cycles, with linear encoded-channel interpolation and fixed RGB24 quantization.",
-          "catalogPath": "catalog/operations/cyclic-palette.json",
-          "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "validated-scoped"
-          },
-          "attestationPath": "catalog/validation/cyclic-palette.json",
-          "attestationSha256": "e46e0f6305e33bac990c79b47c8450fbef4ae2bc10ddce107d079d700222028c"
         }
       ],
-      "studio": false
+      "studio": true
     },
     {
       "slug": "spring-marks",
       "title": "Spring Marks",
-      "description": "SpringMarks shows an arrangement of points that move toward target positions, overshoot and settle. Draw the motion as dots, velocity strokes or a bending wire network. The sketch starts paused: disturb the targets, then run it to see movement.",
+      "description": "Independent seeded bodies move toward targets for an explicit number of ticks. Bodies, Strength, Damping, and target radius change the simulation; Ticks selects a repeatable snapshot instead of running in wall time. The palette colors the settled or moving lines.",
       "category": "Motion",
-      "markdown": "# Give an arrangement spring motion\n\nSpringMarks shows an arrangement of points that move toward target positions, overshoot\nand settle. Draw the motion as dots, velocity strokes or a bending wire network. The\nsketch starts paused: disturb the targets, then run it to see movement.\n\n## Controls\n\n| Key | What changes on the canvas |\n| --- | --- |\n| **D** | Disturb the targets so the arrangement has somewhere new to move. |\n| **Space** | Run or pause the motion. |\n| **.** | Advance one step while paused. |\n| **K** | Switch pull strength between 0.025 and 0.05; the higher value pulls points more strongly toward targets. |\n| **V** | Switch motion retention between 0.7 and 0.9; the higher value keeps more motion between steps, so it takes longer to settle. |\n| **M** | Cycle dots, velocity strokes and the connected wire drawing. |\n| **H** | Show or hide motion trails. |\n| **T** | Show or hide the target guides. |\n| **C** | Change the palette. |\n| **0** | Return to the starting picture and settings. |\n| **S** | Save the displayed picture as a PNG. |\n\n## Make it your own\n\nUse `TargetSprings2D` when you have positions and want them to move toward supplied\ntargets. Change target placement in `SpringComposition.java`, then choose how to draw\nthe moving positions in `SpringMarks.pde`.\n\nStronger pull and less damping can produce more overshoot; they are not simple speed\ncontrols. Compare settings by resetting, disturbing the targets and advancing the same\nnumber of steps. Style changes while paused leave the point positions unchanged.\n\nThe wire keeps its original connections as it bends, so edges may cross. This is not a\ncollision simulation. For mouse-controlled targets, try [PointerMarks](/source/docs/pointer-marks.md).\n",
+      "markdown": "# Snapshot spring motion\n\nIndependent seeded bodies move toward targets for an explicit number of ticks. Bodies, Strength, Damping, and target radius change the simulation; Ticks selects a repeatable snapshot instead of running in wall time. The palette colors the settled or moving lines.",
       "sourcePath": "packages/javascript/examples/spring-marks/README.md",
       "guidePath": "docs/spring-marks.md",
       "guideSha256": "1018f07e95bfc8a7714ddaf61635caff21a440c3be35a3a286e29cc22d2b9474",
+      "browserGuidePath": "apps/web/content/browser-guides.json",
+      "browserGuideSha256": "0fc49a7dcf49e4d8de966ca990803471bd04d380a5488ec28fd683c2f0320423",
       "exampleUrl": "/native/examples/spring-marks/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/effects.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/effects.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { targetSprings2D } from \"../../../../packages/javascript/src/index.js\";\n\nconst TAU = Math.PI * 2;\n\ntype Query = Record<string, number | string | boolean>;\n\nconst q = (layer: Layer) => layer.params as Query;\n\nconst palette = (layer: Layer): number[] => layer.palette;\n\nconst n = (query: Query, key: string) => query[key] as number;\n\nconst color = (value: number): [number, number, number] => [\n  (value >>> 16) & 255,\n  (value >>> 8) & 255,\n  value & 255,\n];\n\nconst paletteAt = (layer: Layer, index: number) => {\n  const colors = palette(layer);\n  return color(colors[index % colors.length]);\n};\n\nconst rng = (seed: number) => {\n  let state = seed >>> 0;\n  return () =>\n    ((state = (state + 0x6d2b79f5) >>> 0),\n    (Math.imul(state ^ (state >>> 15), 1 | state) ^\n      Math.imul(state ^ (state >>> 7), 61 | state) ^\n      state) >>>\n      0) / 4294967296;\n};\n\nfunction line(\n  p: any,\n  points: readonly number[],\n  rgb: readonly number[],\n  weight = 1,\n): void {\n  p.stroke(rgb[0], rgb[1], rgb[2]);\n  p.strokeWeight(weight);\n  p.noFill();\n  p.beginShape();\n  for (let i = 0; i < points.length; i += 2) p.vertex(points[i], points[i + 1]);\n  p.endShape();\n}\n\nfunction drawSpring(p: any, layer: Layer): void {\n  const x = q(layer),\n    random = rng(layer.seed),\n    count = n(x, \"count\"),\n    bodies = [],\n    targets: number[][] = [];\n  for (let i = 0; i < count; i += 1) {\n    const angle = (TAU * i) / count;\n    targets.push([\n      320 + Math.cos(angle) * n(x, \"radius\"),\n      320 + Math.sin(angle) * n(x, \"radius\"),\n    ]);\n    bodies.push({\n      position: [320 + (random() - 0.5) * 360, 320 + (random() - 0.5) * 360],\n      velocity: [0, 0],\n      strength: n(x, \"strength\"),\n      retention: n(x, \"damping\"),\n    });\n  }\n  let state: any = { bodies };\n  for (let tick = 0; tick < n(x, \"ticks\"); tick += 1)\n    state = targetSprings2D({ state, targets }).toValues();\n  p.noFill();\n  for (let i = 0; i < count; i += 1) {\n    const point = state.bodies[i].position;\n    p.stroke(...paletteAt(layer, i));\n    p.strokeWeight(n(x, \"weight\"));\n    p.line(point[0], point[1], targets[i][0], targets[i][1]);\n    p.fill(...paletteAt(layer, i));\n    p.circle(point[0], point[1], 5);\n    p.noFill();\n  }\n}\n",
       "operations": [
         {
           "id": "motion.target-springs-2d",
@@ -1114,37 +1277,9 @@
           },
           "attestationPath": "catalog/validation/target-springs-2d.json",
           "attestationSha256": "55f33c74d2849c7c98f5246db0f42306f0d68930ec6c80878f7349d0c222e810"
-        },
-        {
-          "id": "topology.delaunay-2d",
-          "version": "0.1.0",
-          "description": "Produce owned exact planar Delaunay topology from an ordered finite binary64 site list and explicit deterministic work budget. It computes canonical unique vertices, input mappings, positive indexed faces, unique edges and final face incidence only; it has no random stream, renderer, palette, clipping, site sampler or draw side effect.",
-          "catalogPath": "catalog/operations/delaunay-2d.json",
-          "sha256": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "unvalidated"
-          },
-          "attestationPath": "catalog/validation/delaunay-2d.json",
-          "attestationSha256": "15c54d5d6b7a411a30a1c67806ebe91ff566d22ebda73f4f80a86c933f4f3d44"
-        },
-        {
-          "id": "layout.regular-grid",
-          "version": "0.1.0",
-          "description": "An immutable row-major rectangular sequence of planar positions with explicit point counts and spacing.",
-          "catalogPath": "catalog/operations/regular-grid.json",
-          "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734",
-          "support": {
-            "core": "conformant",
-            "native": "validated-scoped",
-            "technique": "validated-scoped"
-          },
-          "attestationPath": "catalog/validation/regular-grid.json",
-          "attestationSha256": "ae10c758b2076da46598946c62e87f894fb8a27bd91369c7717b475165f8bfbc"
         }
       ],
-      "studio": false
+      "studio": true
     }
   ]
 }

@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import SketchCanvas from "./SketchCanvas";
+import { LayerControls } from "./LayerControls";
 import {
   createDocument,
   createLayer,
@@ -9,12 +10,7 @@ import {
   techniques,
   validateDocument,
 } from "@/lib/studio";
-import type {
-  Layer,
-  StudioDocument,
-  TechniqueId,
-  Technique,
-} from "@/lib/studio-types";
+import type { Layer, StudioDocument, TechniqueId } from "@/lib/studio-types";
 const STORE = "procedurals-studio-v1",
   copy = (x: StudioDocument) => validateDocument(JSON.parse(JSON.stringify(x)));
 type Hist = {
@@ -53,11 +49,6 @@ function reduce(
     };
   return s;
 }
-const isInput = (t: EventTarget | null) =>
-  t instanceof HTMLInputElement ||
-  t instanceof HTMLSelectElement ||
-  t instanceof HTMLTextAreaElement ||
-  (t instanceof HTMLElement && t.isContentEditable);
 export function Studio() {
   const q = useSearchParams(),
     requested = q.get("technique"),
@@ -71,7 +62,6 @@ export function Studio() {
       hydrated: false,
     })),
     [selected, setSelected] = useState(0),
-    [active, setActive] = useState(0),
     [status, setStatus] = useState<string | null>(null),
     [renderError, setRenderError] = useState<string | null>(null),
     [title, setTitle] = useState("Untitled project"),
@@ -107,7 +97,6 @@ export function Studio() {
     if (restoredRoute.current === route) return;
     restoredRoute.current = route;
     setSelected(0);
-    setActive(0);
     setProjectId(null);
     setTitle("Untitled project");
     try {
@@ -161,7 +150,6 @@ export function Studio() {
     const layers = [...doc.layers, createLayer(id)];
     commit({ ...doc, layers });
     setSelected(layers.length - 1);
-    setActive(0);
   };
   const remove = () => {
     if (!layer) return;
@@ -177,6 +165,7 @@ export function Studio() {
       ...layer,
       id: createLayer(layer.technique).id,
       params: { ...layer.params },
+      palette: [...layer.palette],
     });
     commit({ ...doc, layers });
     setSelected(selected + 1);
@@ -189,52 +178,6 @@ export function Studio() {
     commit({ ...doc, layers });
     setSelected(to);
   };
-  const reseed = () =>
-    layer && at(selected, { seed: Math.floor(Math.random() * 4294967296) });
-  const nudge = (d: number) => {
-    const p = technique?.parameters[active];
-    if (!p || !layer) return;
-    const current = layer.params[p.key];
-    let next: string | boolean | number;
-    if (p.type === "boolean") next = !current;
-    else if (p.type === "select") {
-      const options = p.options!;
-      const index = options.findIndex((option) => option.value === current);
-      next = options[(index + d + options.length) % options.length].value;
-    } else
-      next = Number(
-        Math.max(
-          p.min!,
-          Math.min(p.max!, (current as number) + d * p.step!),
-        ).toFixed(8),
-      );
-    at(selected, {
-      params: {
-        ...layer.params,
-        [p.key]: next,
-      },
-    });
-  };
-  useEffect(() => {
-    const key = (e: KeyboardEvent) => {
-      if (isInput(e.target) || e.altKey) return;
-      const key = e.key.toLowerCase();
-      if ((e.metaKey || e.ctrlKey) && key !== "z") return;
-      if (key === "z") dispatch({ kind: e.shiftKey ? "redo" : "undo" });
-      else if (key === "d") duplicate();
-      else if (key === "r") reseed();
-      else if (e.key === "[") nudge(-1);
-      else if (e.key === "]") nudge(1);
-      else if (/^[1-8]$/.test(e.key) && doc.layers[+e.key - 1]) {
-        setSelected(+e.key - 1);
-        setActive(0);
-      } else if (e.key === "Delete" || e.key === "Backspace") remove();
-      else return;
-      e.preventDefault();
-    };
-    window.addEventListener("keydown", key);
-    return () => window.removeEventListener("keydown", key);
-  }, [doc, selected, active, layer, technique]);
   const importFile = (input: HTMLInputElement) => {
     const f = input.files?.[0];
     if (!f) return;
@@ -378,7 +321,6 @@ export function Studio() {
                   aria-pressed={i === selected}
                   onClick={() => {
                     setSelected(i);
-                    setActive(0);
                   }}
                 >
                   {i + 1}. {techniques.find((t) => t.id === l.technique)?.title}
@@ -423,11 +365,6 @@ export function Studio() {
         </section>
         <section className="canvas-wrap">
           <SketchCanvas document={doc} onError={setRenderError} />
-          <p className="shortcuts">
-            Keys: Z undo · Shift Z redo · D duplicate · R reseed · [ ] adjust
-            control · 1–8 select layer · Delete remove. Shortcuts pause in
-            inputs.
-          </p>
           <div className="panel-actions">
             <button className="action secondary" onClick={png}>
               Export PNG
@@ -453,15 +390,13 @@ export function Studio() {
         <section className="studio-panel">
           <h2>Inspector</h2>
           {layer && technique ? (
-            <Inspector
+            <LayerControls
               layer={layer}
               technique={technique}
-              active={active}
-              setActive={setActive}
-              change={(x) => at(selected, x)}
+              onChange={(x) => at(selected, x)}
             />
           ) : (
-            <p className="shortcuts">Add a layer to begin.</p>
+            <p className="control-description">Add a layer to begin.</p>
           )}
           <div className="control">
             <label htmlFor="background">Background</label>
@@ -489,134 +424,5 @@ export function Studio() {
         </section>
       </div>
     </main>
-  );
-}
-function Inspector({
-  layer,
-  technique,
-  active,
-  setActive,
-  change,
-}: {
-  layer: Layer;
-  technique: Technique;
-  active: number;
-  setActive: (n: number) => void;
-  change: (value: Partial<Layer>) => void;
-}) {
-  return (
-    <>
-      <p className="control-description">{technique.description}</p>
-      <div className="control">
-        <label htmlFor="keyboard-control">Keyboard control</label>
-        <select
-          id="keyboard-control"
-          value={active}
-          onChange={(event) => setActive(Number(event.target.value))}
-        >
-          {technique.parameters.map((parameter, index) => (
-            <option key={parameter.key} value={index}>
-              {parameter.label}
-            </option>
-          ))}
-        </select>
-        <small>
-          Click the canvas, then use [ and ] to change{" "}
-          {technique.parameters[active]?.label.toLowerCase()}.
-        </small>
-      </div>
-      <div className="control">
-        <label htmlFor="opacity">
-          Opacity <output>{Math.round(layer.opacity * 100)}%</output>
-        </label>
-        <input
-          id="opacity"
-          type="range"
-          min="0"
-          max="1"
-          step=".01"
-          value={layer.opacity}
-          onChange={(e) => change({ opacity: +e.target.value })}
-        />
-      </div>
-      <div className="control">
-        <label htmlFor="seed">Seed</label>
-        <input
-          id="seed"
-          type="number"
-          min="0"
-          max="4294967295"
-          step="1"
-          value={layer.seed}
-          onChange={(e) => {
-            const value = Math.floor(
-              Math.max(0, Math.min(4294967295, Number(e.target.value) || 0)),
-            );
-            change({ seed: value });
-          }}
-        />
-      </div>
-      {technique.parameters.map((p, i) => {
-        const v = layer.params[p.key],
-          set = (x: number | string | boolean) =>
-            change({ params: { ...layer.params, [p.key]: x } });
-        if (p.type === "boolean")
-          return (
-            <div className="control" key={p.key}>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={v as boolean}
-                  onFocus={() => setActive(i)}
-                  onChange={(e) => set(e.target.checked)}
-                />{" "}
-                {p.label}
-              </label>
-              <small>{p.description}</small>
-            </div>
-          );
-        if (p.type === "select")
-          return (
-            <div className="control" key={p.key}>
-              <label htmlFor={p.key}>{p.label}</label>
-              <select
-                id={p.key}
-                value={v as string}
-                onFocus={() => setActive(i)}
-                onChange={(e) => set(e.target.value)}
-              >
-                {p.options?.map((o) => (
-                  <option key={o.value} value={o.value}>
-                    {o.label}
-                  </option>
-                ))}
-              </select>
-              <small>{p.description}</small>
-            </div>
-          );
-        return (
-          <div className="control" key={p.key}>
-            <label htmlFor={p.key}>
-              {p.label}
-              <output>{v}</output>
-            </label>
-            <input
-              id={p.key}
-              type="range"
-              min={p.min}
-              max={p.max}
-              step={p.step}
-              value={v as number}
-              onFocus={() => setActive(i)}
-              onChange={(e) => set(+e.target.value)}
-            />
-            <small>
-              {p.description}
-              {active === i ? " Use [ and ] to adjust." : ""}
-            </small>
-          </div>
-        );
-      })}
-    </>
   );
 }

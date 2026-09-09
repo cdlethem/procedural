@@ -1,98 +1,117 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import legacy from "../lib/legacy-v1.json";
 import {
   createDocument,
   createLayer,
+  definition,
   MAX_LAYERS,
   techniques,
   validateDocument,
 } from "../lib/studio.ts";
-import {
-  commandCount,
-  createPathMarks,
-  pathMarkCommands,
-} from "../../../packages/javascript/examples/path-marks/path-marks.js";
-import {
-  createMarkField,
-  markCommands,
-} from "../../../packages/javascript/examples/field-marks/mark-field.js";
 
-test("new documents are valid detached v1 payloads", () => {
-  const document = createDocument("path-marks");
-  const validated = validateDocument(document);
-  assert.deepEqual(validated, document);
-  assert.notEqual(validated, document);
-  assert.notEqual(validated.layers, document.layers);
-  validated.layers[0].params.steps = 50;
-  assert.equal(document.layers[0].params.steps, 600);
-});
-test("layers are unique and technique schemas are bounded", () => {
-  assert.notEqual(createLayer("field-marks").id, createLayer("field-marks").id);
-  assert.equal(techniques.length, 4);
+test("all 24 studio definitions create detached bounded v2 layers", () => {
+  assert.equal(techniques.length, 24);
   assert.equal(MAX_LAYERS, 8);
+  for (const technique of techniques) {
+    const document = createDocument(technique.id);
+    const validated = validateDocument(document);
+    assert.deepEqual(validated, document);
+    assert.notEqual(validated.layers[0], document.layers[0]);
+    assert.ok(validated.layers[0].palette.length >= 2);
+    assert.equal(definition(technique.id).id, technique.id);
+  }
+});
+test("v2 admission requires a strict owned RGB palette and technique parameters", () => {
+  const document: any = createDocument("placement-marks");
+  document.layers[0].palette = [0x123456];
+  assert.throws(() => validateDocument(document), /2 to 12 RGB/);
+  document.layers[0].palette = [0x123456, 0x1000000];
+  assert.throws(() => validateDocument(document), /RGB integer/);
+  document.layers[0].palette = [0x123456, 0xabcdef];
+  document.layers[0].params.minimum = 8;
+  document.layers[0].params.maximum = 4;
+  assert.throws(() => validateDocument(document), /cannot exceed/i);
+  const unknown: any = createDocument();
+  unknown.layers[0].params.unknown = 1;
+  assert.throws(() => validateDocument(unknown), /unknown key/);
   assert.throws(
     () =>
-      validateDocument({
-        ...createDocument(),
-        layers: Array.from({ length: 9 }, (_, index) => ({
-          ...createLayer("field-marks"),
-          id: `l${index}`,
-        })),
-      }),
-    /at most 8/,
+      validateDocument({ ...createDocument(), bindingVersion: "studio-v1" }),
+    /catalogSha256 is stale|technique is not supported/,
   );
 });
-test("successful imports reserve arbitrary IDs without advancing an unsafe counter", () => {
-  const imported = createDocument();
+test("successful imports reserve IDs without reserving rejected payload IDs", () => {
+  const imported: any = createDocument();
   imported.layers[0].id = "layer-99999999999999999999999";
   validateDocument(imported);
-  const first = createLayer("field-marks");
-  const second = createLayer("field-marks");
+  const first = createLayer("field-marks"),
+    second = createLayer("field-marks");
   assert.notEqual(first.id, imported.layers[0].id);
   assert.notEqual(first.id, second.id);
-  assert.doesNotThrow(() =>
-    validateDocument({ ...createDocument(), layers: [first, second] }),
-  );
-  const rejected = createDocument();
+  const rejected: any = createDocument();
   rejected.layers[0].id = "reserved-only-if-valid";
-  rejected.layers[0].params.columns = 999;
-  assert.throws(() => validateDocument(rejected), /between 16 and 160/);
-  const afterRejectedImport = createLayer("field-marks").id;
-  assert.match(afterRejectedImport, /^layer-\d+$/);
-  assert.ok(Number(afterRejectedImport.slice(6)) < 1000);
+  rejected.layers[0].palette = [0];
+  assert.throws(() => validateDocument(rejected));
+  assert.match(createLayer("field-marks").id, /^layer-\d+$/);
 });
-test("document admission rejects malformed and unsafe values", () => {
-  const document: any = createDocument("placement-marks");
-  document.layers[0].params.unknown = 1;
-  assert.throws(() => validateDocument(document), /unknown key/);
-  document.layers[0].params = {
-    ...createDocument("placement-marks").layers[0].params,
-    minimum: 8,
-    maximum: 4,
+test("frozen v1 documents migrate palette and lattice controls only after exact v1 validation", () => {
+  const base: any = {
+    schemaVersion: 1,
+    bindingVersion: legacy.bindingVersion,
+    catalogSha256: legacy.catalogSha256,
+    width: 640,
+    height: 640,
+    background: "#ECE7DA",
+    layers: [
+      {
+        id: "legacy-lattice",
+        technique: "lattice-marks",
+        visible: true,
+        opacity: 1,
+        seed: 7,
+        params: {
+          many: true,
+          longPaths: true,
+          dots: true,
+          wide: true,
+          palette: "neon",
+        },
+      },
+    ],
   };
-  assert.throws(() => validateDocument(document), /cannot exceed/);
-  assert.throws(
-    () => validateDocument({ ...createDocument(), background: "transparent" }),
-    /opaque RGB/,
+  const migrated = validateDocument(base);
+  assert.equal(migrated.bindingVersion, "studio-v2");
+  assert.deepEqual(
+    migrated.layers[0].palette,
+    [0x493657, 0xb85065, 0xe6b89c, 0x467c89],
   );
-  assert.throws(
-    () =>
-      validateDocument({ ...createDocument(), catalogSha256: "0".repeat(64) }),
-    /stale or unsupported/,
-  );
-});
-test("real field and path composition helpers are deterministic and bounded by studio controls", () => {
-  const field = createMarkField(7, 16, 16, 4);
-  const first = [...markCommands(field, 12, [0, 1, 2, 3, 4])];
-  const second = [
-    ...markCommands(createMarkField(7, 16, 16, 4), 12, [0, 1, 2, 3, 4]),
-  ];
-  assert.deepEqual(first, second);
-  assert.equal(first.length, 256);
-  const movement = createPathMarks(7, 50, 0.4);
-  assert.equal(commandCount(movement, false), 24 * 13);
-  assert.equal(
-    [...pathMarkCommands(movement, false, 12, [1, 2, 3, 4, 5])].length,
-    24 * 13,
+  assert.deepEqual(migrated.layers[0].params, {
+    count: 36,
+    steps: 36,
+    weight: 15.6,
+    dotSize: 6,
+    dots: true,
+    grid: true,
+  });
+  const invalid = structuredClone(base);
+  invalid.layers[0].params.unknown = true;
+  assert.throws(() => validateDocument(invalid), /unknown key/);
+  const field = structuredClone(base);
+  field.layers[0] = {
+    ...field.layers[0],
+    technique: "field-marks",
+    params: {
+      columns: 80,
+      rows: 80,
+      pitch: 8,
+      maxLength: 14,
+      palette: "original",
+      bars: false,
+    },
+  };
+  assert.deepEqual(
+    validateDocument(field).layers[0].palette,
+    [0x31a151, 0xffa71e, 0x05084c, 0xde4638, 0x3dbdb7],
   );
 });

@@ -6,8 +6,8 @@
     "node": ">=22"
   },
   "scripts": {
-    "generate": "node scripts/generate-gallery.mjs",
-    "check:generated": "node scripts/generate-gallery.mjs --check",
+    "generate": "node scripts/generate-gallery.mjs && node scripts/generate-api.mjs",
+    "check:generated": "node scripts/generate-gallery.mjs --check && node scripts/generate-api.mjs --check",
     "capture:previews": "python3 ../../tools/with_native_render_lock.py -- node scripts/capture-previews.mjs",
     "dev": "npm run generate && next dev",
     "build": "npm run generate && next build",
@@ -25,6 +25,7 @@
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
+    "@babel/parser": "^8.0.4",
     "@types/node": "^26.5.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",

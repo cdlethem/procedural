@@ -17,11 +17,14 @@ linked evidence. Do not treat old pending statements as new assignments.
   numerical-helper provenance, public exports and a SpringMarks focused-button shortcut
   bug. Core fixtures, native controls/reset/save, representative images and installed
   package exports are reviewed. See [port integration](docs/port-integration-status.md).
-- The [web app](apps/README.md) now provides 24 interactive p5 gallery studies and a
-  four-technique layered studio with keyboard controls, undo/redo, local recovery,
-  JSON/PNG export and Go project storage. [Root app review](evidence/web/app-review.json)
-  records real browser checks and visual inspection. This is an app-specific document
-  compositor, not the general portable recipe executor or MCP implementation.
+- The [web app](apps/README.md) provides 24 techniques in both its gallery and layered
+  studio, plus formatted API pages for all 31 operations. Shared numeric controls,
+  custom per-layer palettes, inline highlighted source, undo/redo, local recovery,
+  JSON/PNG export and Go storage are implemented. App keyboard shortcuts are removed.
+  [Version 2 root review](evidence/web/app-v2-review.json) records production browser
+  checks and visual inspection; [initial review](evidence/web/app-review.json) is historical.
+  Tailnet deployment: https://eunoia.tailf03dad.ts.net:8443/ (Next 3000, Go 8088).
+  This remains an app-specific compositor, separate from portable recipes and MCP.
 - Packages are local reviewed artifacts, not registry publications. Java completion
   does not imply equivalent ports, a general recipe executor or full-corpus coverage.
 
@@ -62,9 +65,10 @@ within their recorded scope. Follow the next user assignment; the [roadmap](docs
   explicit extensions outside the accepted Java surface, not missing promised implementations.
 - A Java recipe prototype exists, documented in [recipe preview](docs/java-recipe-preview.md).
   It is not a general portable executor. The [web architecture](docs/web-app-architecture.md)
-  freezes the separate app boundary: four studio techniques, at most eight layers, static
-  Canvas2D composition, catalog-bound JSON and a trusted local Go store. More studio
-  bindings, portable target export, multi-user hosting and prompt/MCP remain future work.
+  freezes the separate app boundary: all 24 browser techniques, at most eight layers,
+  transparent Canvas2D/WebGL composition, versioned JSON with exact v1 migration,
+  and a trusted local Go store. Arbitrary operation graphs, portable target export,
+  multi-user hosting and prompt/MCP remain future work.
 
 ## Evidence and navigation
 

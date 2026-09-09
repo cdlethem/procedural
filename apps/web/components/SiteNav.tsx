@@ -8,6 +8,7 @@ export function SiteNav() {
       <nav aria-label="Main navigation">
         <Link href="/">Gallery</Link>
         <Link href="/studio">Studio</Link>
+        <Link href="/api-reference">API Reference</Link>
       </nav>
     </header>
   );

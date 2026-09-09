@@ -37,6 +37,10 @@ const page = await context.newPage();
 const errors = [];
 page.on("pageerror", (e) => errors.push(String(e)));
 const scenarios = [];
+const gallery = JSON.parse(
+  await readFile(join(app, "lib/generated-gallery.json"), "utf8"),
+);
+const techniqueIds = gallery.techniques.map((technique) => technique.slug);
 const hash = (b) => createHash("sha256").update(b).digest("hex");
 async function screenshot(name) {
   const file = join(out, name + ".png");
@@ -49,7 +53,9 @@ async function rendered() {
       Number(
         document.querySelector("[data-render-revision]")?.dataset
           .renderRevision,
-      ) > 0,
+      ) > 0 &&
+      document.querySelector("[data-render-revision]")?.dataset.renderStatus ===
+        "ready",
     {},
     { timeout: 45000 },
   );
@@ -69,10 +75,40 @@ async function edit(action) {
 }
 const pixels = () =>
   page.locator(".canvas-wrap canvas").evaluate((c) => c.toDataURL());
+const artwork = () =>
+  page.locator(".canvas-wrap canvas").evaluate((canvas) => {
+    const data = canvas.getContext("2d").getImageData(0, 0, 640, 640).data;
+    const counts = new Map();
+    for (let index = 0; index < data.length; index += 4) {
+      const key =
+        (data[index] << 24) |
+        (data[index + 1] << 16) |
+        (data[index + 2] << 8) |
+        data[index + 3];
+      counts.set(key, (counts.get(key) ?? 0) + 1);
+    }
+    const largest = Math.max(...counts.values());
+    return { png: canvas.toDataURL(), painted: data.length / 4 - largest };
+  });
+async function setReactInput(locator, value) {
+  await locator.evaluate((element, next) => {
+    const setter = Object.getOwnPropertyDescriptor(
+      HTMLInputElement.prototype,
+      "value",
+    ).set;
+    setter.call(element, next);
+    element.dispatchEvent(new Event("input", { bubbles: true }));
+    element.dispatchEvent(new Event("change", { bubbles: true }));
+  }, value);
+}
 const doc = () =>
-  page.evaluate(() =>
-    JSON.parse(localStorage.getItem("procedurals-studio-v1")),
-  );
+  page.evaluate(() => {
+    const key = Object.keys(localStorage).find((name) =>
+      name.startsWith("procedurals-studio-v"),
+    );
+    if (!key) throw new Error("studio local document is missing");
+    return JSON.parse(localStorage.getItem(key));
+  });
 try {
   await page.goto(base);
   await page.locator(".study-card").first().waitFor();
@@ -82,28 +118,71 @@ try {
   await page.getByPlaceholder("Search studies").fill("");
   await screenshot("gallery");
   scenarios.push("gallery search and 24 study navigation");
+  for (const id of techniqueIds) {
+    await page.goto(base + "/techniques/" + id);
+    await rendered();
+    assert.equal(await page.locator(".canvas-wrap canvas").count(), 1);
+    assert.equal(await page.locator('[data-render-status="error"]').count(), 0);
+    assert.ok(
+      (await artwork()).painted > 300,
+      `${id} detail canvas has visible artwork`,
+    );
+    await page.locator(".source-panel summary").click();
+    await page.locator(".source-panel pre code").waitFor();
+    assert.ok(
+      (await page.locator(".source-panel pre code").textContent()).trim()
+        .length > 20,
+      `${id} exposes inline source`,
+    );
+    const ranges = page.locator(".technique-playground input[type=range]");
+    assert.ok(
+      (await ranges.count()) > 1,
+      `${id} exposes a numeric technique control`,
+    );
+    const beforeNumeric = await pixels();
+    await edit(() =>
+      ranges.nth(1).evaluate((element) => {
+        const input = element;
+        const next = input.value === input.max ? input.min : input.max;
+        const setter = Object.getOwnPropertyDescriptor(
+          HTMLInputElement.prototype,
+          "value",
+        ).set;
+        setter.call(input, next);
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      }),
+    );
+    assert.notEqual(
+      await pixels(),
+      beforeNumeric,
+      `${id} numeric control changes pixels`,
+    );
+    const beforePalette = await pixels();
+    const paletteLength = await page
+      .locator(".technique-playground .palette-control input[type=color]")
+      .count();
+    for (let index = 1; index <= paletteLength; index++)
+      await edit(() =>
+        setReactInput(
+          page.getByLabel(`Palette color ${index}`, { exact: true }),
+          "#ff00aa",
+        ),
+      );
+    assert.notEqual(
+      await pixels(),
+      beforePalette,
+      `${id} palette changes pixels`,
+    );
+  }
   await page.goto(base + "/techniques/field-marks");
-  const frame = page.frameLocator("iframe");
-  await frame.locator("#art canvas").waitFor();
-  await frame.locator("#art").evaluate(async (art) => {
-    while (Number(art.dataset.revision) < 1)
-      await new Promise((r) => setTimeout(r, 20));
-  });
-  const original = await frame.locator("canvas").evaluate((c) => c.toDataURL());
-  await frame.locator("#length").selectOption("32");
-  assert.notEqual(
-    await frame.locator("canvas").evaluate((c) => c.toDataURL()),
-    original,
-  );
+  await rendered();
   await screenshot("technique");
-  scenarios.push("embedded p5 detail controls change real pixels");
+  scenarios.push(
+    "24 shared detail renderers, inline source, numeric and palette pixel changes",
+  );
   if (!process.argv.includes("--gallery-only")) {
-    for (const id of [
-      "field-marks",
-      "path-marks",
-      "placement-marks",
-      "lattice-marks",
-    ]) {
+    for (const id of techniqueIds) {
       await page.goto(base + "/studio?technique=" + id);
       await rendered();
       assert.equal(
@@ -111,11 +190,34 @@ try {
         1,
         "one p5 instance",
       );
-      assert.ok((await pixels()).length > 3000, `${id} nonempty canvas`);
+      assert.equal(
+        await page.locator('[data-render-status="error"]').count(),
+        0,
+      );
+      assert.ok(
+        (await artwork()).painted > 300,
+        `${id} visible studio artwork`,
+      );
+      const canvas = await page
+        .locator(".canvas-wrap canvas")
+        .evaluate((node) => ({
+          width: node.width,
+          height: node.height,
+          png: node.toDataURL("image/png"),
+        }));
+      assert.deepEqual(
+        [canvas.width, canvas.height],
+        [640, 640],
+        `${id} native canvas dimensions`,
+      );
+      await writeFile(
+        join(out, `canvas-${id}.png`),
+        Buffer.from(canvas.png.slice(canvas.png.indexOf(",") + 1), "base64"),
+      );
       await screenshot("studio-" + id);
     }
     scenarios.push(
-      "four studio technique renderers mount without browser errors",
+      "24 studio technique renderers mount without browser errors",
     );
     await page.goto(base + "/studio?technique=field-marks");
     await rendered();
@@ -126,7 +228,7 @@ try {
       );
     });
     await edit(() =>
-      page.locator("#opacity").evaluate((el) => {
+      page.getByLabel(/Opacity/).evaluate((el) => {
         Object.getOwnPropertyDescriptor(
           HTMLInputElement.prototype,
           "value",
@@ -136,11 +238,16 @@ try {
       }),
     );
     assert.equal((await doc()).layers[0].opacity, 0.5);
+    const background = (await doc()).background;
     const alphaError = await page
       .locator(".canvas-wrap canvas")
-      .evaluate((c) => {
+      .evaluate((c, backgroundHex) => {
         const pixels = c.getContext("2d").getImageData(0, 0, 640, 640).data,
-          background = [236, 231, 218];
+          background = [
+            Number.parseInt(backgroundHex.slice(1, 3), 16),
+            Number.parseInt(backgroundHex.slice(3, 5), 16),
+            Number.parseInt(backgroundHex.slice(5, 7), 16),
+          ];
         let max = 0;
         for (let i = 0; i < pixels.length; i++) {
           if (i % 4 === 3) continue;
@@ -151,7 +258,7 @@ try {
         }
         delete window.__fullPixels;
         return max;
-      });
+      }, background);
     assert.ok(alphaError <= 2, `group opacity pixel error ${alphaError}`);
     await edit(() =>
       page.getByRole("button", { name: "Undo", exact: true }).click(),
@@ -160,23 +267,27 @@ try {
     scenarios.push(
       "group opacity applies to completed layer, with exact undo pixels",
     );
+    const beforeKeys = JSON.stringify(await doc());
     await page.locator(".canvas-wrap canvas").click();
-    await edit(() => page.keyboard.press("r"));
-    assert.notEqual(await pixels(), baseline, "seed shortcut changes pixels");
-    const beforeInput = JSON.stringify(await doc());
-    await page.getByLabel("Seed", { exact: true }).focus();
     await page.keyboard.press("r");
+    await page.keyboard.press("]");
+    await page.waitForTimeout(150);
     assert.equal(
       JSON.stringify(await doc()),
-      beforeInput,
-      "typing does not trigger layer shortcut",
+      beforeKeys,
+      "studio has no global keyboard shortcuts",
     );
-    await page.locator(".canvas-wrap canvas").click();
-    await edit(() => page.keyboard.press("]"));
+    const beforeStudioPalette = await pixels();
+    await edit(() =>
+      setReactInput(
+        page.getByLabel("Palette color 1", { exact: true }),
+        "#00e0ff",
+      ),
+    );
     assert.notEqual(
-      JSON.stringify(await doc()),
-      beforeInput,
-      "focused parameter shortcut changes document",
+      await pixels(),
+      beforeStudioPalette,
+      "studio palette changes pixels",
     );
     await edit(() =>
       page.getByLabel("Add layer", { exact: true }).selectOption("path-marks"),
@@ -223,15 +334,16 @@ try {
       page.getByRole("button", { name: "Undo", exact: true }).click(),
     );
     assert.equal((await doc()).layers.length, 2);
-    await page.locator(".canvas-wrap canvas").click();
-    await edit(() => page.keyboard.press("Shift+Z"));
+    await edit(() =>
+      page.getByRole("button", { name: "Redo", exact: true }).click(),
+    );
     assert.equal((await doc()).layers.length, 3);
     await edit(() =>
       page.getByRole("button", { name: "Delete", exact: true }).click(),
     );
     assert.equal((await doc()).layers.length, 2);
     scenarios.push(
-      "keyboard tweaking/focus isolation, targeted visibility, duplicate, undo/redo and delete",
+      "no global shortcuts, custom palette, targeted visibility, duplicate, undo/redo and delete",
     );
     const exported = page.waitForEvent("download");
     await page
@@ -304,7 +416,7 @@ try {
         .click(),
     );
     await edit(() =>
-      page.locator("#opacity").evaluate((el) => {
+      page.getByLabel(/Opacity/).evaluate((el) => {
         Object.getOwnPropertyDescriptor(
           HTMLInputElement.prototype,
           "value",
@@ -322,8 +434,9 @@ try {
       .filter({ hasText: "Project service unavailable" })
       .waitFor();
     const offlinePixels = await pixels();
-    await page.locator(".canvas-wrap canvas").click();
-    await edit(() => page.keyboard.press("r"));
+    await edit(() =>
+      page.getByRole("button", { name: "New seed", exact: true }).click(),
+    );
     assert.notEqual(
       await pixels(),
       offlinePixels,
@@ -334,6 +447,32 @@ try {
       "local rendering and editing remain available when Go service is offline",
     );
   }
+  await page.goto(base + "/api-reference");
+  await page.locator(".api-list a").first().waitFor();
+  assert.equal(await page.locator(".api-list a").count(), 31, "31 API entries");
+  const operationLinks = await page
+    .locator(".api-list a")
+    .evaluateAll((links) => links.map((link) => link.getAttribute("href")));
+  for (const href of operationLinks) {
+    await page.goto(base + href);
+    await page.locator(".api-reference h1").waitFor();
+    assert.ok(
+      (await page.locator(".api-section").count()) >= 5,
+      `${href} renders operation detail sections`,
+    );
+    assert.equal(
+      await page
+        .locator(
+          'a[href^="catalog/"], a[href^="survey/"], a[href^="packages/"]',
+        )
+        .count(),
+      0,
+      `${href} has no raw repository links`,
+    );
+  }
+  scenarios.push(
+    "31 API index entries and rendered operation details without raw repository links",
+  );
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(base);
   await page.locator(".study-card").first().waitFor();
@@ -345,11 +484,10 @@ try {
   );
   await screenshot("gallery-mobile");
   await page.goto(base + "/techniques/field-marks");
-  const mobileFrame = page.frameLocator("iframe");
-  await mobileFrame.locator("#art canvas").waitFor();
+  await rendered();
   assert.ok(
-    await mobileFrame
-      .locator("canvas")
+    await page
+      .locator(".technique-playground canvas")
       .evaluate((c) => c.getBoundingClientRect().right <= innerWidth + 1),
     "mobile detail canvas fits frame",
   );

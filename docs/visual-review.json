@@ -2,6 +2,179 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "web-app-v2-production",
+      "title": "Expanded studio, API pages and inline sketch source",
+      "category": "Root reviewed app integration",
+      "description": "Production v2 UI and all 24 real app canvases; scoped app evidence, not shared target admission.",
+      "evidence": "evidence/web/app-v2-review.json",
+      "images": [
+        {
+          "label": "gallery",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/gallery.png",
+          "sha256": "b9e07d96ed3b2313acf34a7a6557b7752f7978c37ec00543c2dcd01fbe8b074f"
+        },
+        {
+          "label": "studio contact",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/studio-contact.png",
+          "sha256": "d7ded0e81f04a5ef68637268bf446373fe1e8500f1ff5a078166827e8de06af8"
+        },
+        {
+          "label": "studio composition",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/studio-composition.png",
+          "sha256": "cbe205e083979f7e770c00c18d2d373c8f269e9536bc30c1a378aa7408368e15"
+        },
+        {
+          "label": "studio mobile",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/studio-mobile.png",
+          "sha256": "1cf47978511b264154c59d6c9685c67bb60d240f76844171f7e2a73ae7dd0127"
+        },
+        {
+          "label": "source panel",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/source-panel.png",
+          "sha256": "0156709711f22a454a295ad1ff784c55e4d5af04f90882d80bfa9a123f8baf68"
+        },
+        {
+          "label": "api reference",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/api-reference.png",
+          "sha256": "b5cbd9841313333c3f874fb24259b618d5823098d12e27f0cf471132133e119a"
+        },
+        {
+          "label": "api mobile",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/api-mobile.png",
+          "sha256": "90d133955ddc1593774bd8e0e59f268a106dea455d33b8adec3d152d40aa35ae"
+        }
+      ]
+    },
+    {
+      "id": "web-app-v2-canvases",
+      "title": "24 default studio canvases",
+      "category": "Root reviewed app integration",
+      "description": "Native 640px production app canvas exports inspected as a contact sheet; actual layer compositions.",
+      "evidence": "evidence/web/app-v2-review.json",
+      "images": [
+        {
+          "label": "Field Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-field-marks.png",
+          "sha256": "965d44ad18563ca9e66461689e8c72888c89ee77fbc38c3895ad9ad5955a1de8"
+        },
+        {
+          "label": "Path Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-path-marks.png",
+          "sha256": "8ffdd24e152235a069aca93d4f284c139248606aeae103413e75da7412edc3cf"
+        },
+        {
+          "label": "Placement Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-placement-marks.png",
+          "sha256": "95639214d2d270320f2a268a70d395f5266c1881ad5879454c789ceb75a76645"
+        },
+        {
+          "label": "Lattice Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-lattice-marks.png",
+          "sha256": "cd4734ab23753dbae09bed898891ca5e74b83bf5c8f2f8dde96e34841d04807d"
+        },
+        {
+          "label": "Band Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-band-marks.png",
+          "sha256": "761bac05b7b6681075833f1be2699b268c3e78c622c9b389996dfbc032cf0ef5"
+        },
+        {
+          "label": "Branch Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-branch-marks.png",
+          "sha256": "c888bd0abd2d14919242b848e03aba9c0baa928e3cd90b0a04b737f6f511da36"
+        },
+        {
+          "label": "Cut Branch Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-cut-branch-marks.png",
+          "sha256": "9ada3d6ffb45993fd7af2653b88ec8dc83fe5d2308c8c2607db316ff0243c187"
+        },
+        {
+          "label": "Loop Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-loop-marks.png",
+          "sha256": "4197eebae12152ffdf61bda7aca38cf878d9fa44b58f89fb42feadabde3ae53a"
+        },
+        {
+          "label": "Region Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-region-marks.png",
+          "sha256": "4531f038580e09520cb96cab7b1a60ce7a310a9a5a04dca533866f3db97f896b"
+        },
+        {
+          "label": "Panel Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-panel-marks.png",
+          "sha256": "f2860b749b9197f7643f873d71232a2f541eb3f764087e2d8d637d76bb13c309"
+        },
+        {
+          "label": "Cut Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-cut-marks.png",
+          "sha256": "c52ad88c6eaec8658661caf510ec5a952409425b11b6a944600be6dd75e2cfe5"
+        },
+        {
+          "label": "Polygon Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-polygon-marks.png",
+          "sha256": "cd351e7c7e730e5997e9af6d7ded8ba26ac03bdafd49403be32ba46af5e982f6"
+        },
+        {
+          "label": "Facet Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-facet-marks.png",
+          "sha256": "930854f9c879777e8f9c14ab2c499e6d10749da922f6de7789d51ffe45283fef"
+        },
+        {
+          "label": "Grain Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-grain-marks.png",
+          "sha256": "83188b95b8c4343dcae7aa200829489466f24f98399dde1425fb6a62517b2932"
+        },
+        {
+          "label": "Pull Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-pull-marks.png",
+          "sha256": "73dfc3067a37d91d4c03b93b7c57b5decd4734e95be28f9a5eda93839afcc0b8"
+        },
+        {
+          "label": "Projection Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-projection-marks.png",
+          "sha256": "cc71b4e30ff0e4dbd742e2acce4d2c6851ac05865f4473cf3e059f3ca8093037"
+        },
+        {
+          "label": "Path Clip Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-path-clip-marks.png",
+          "sha256": "c37d001211ca40633c6df2630ca5e26da8a696c8fcc495cbedcf2cb812b8c0d1"
+        },
+        {
+          "label": "Ramp Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-ramp-marks.png",
+          "sha256": "94cd812a84a62db9e516a62c080bfa0df7e302db117248dabe2779a593e27b0d"
+        },
+        {
+          "label": "Warp Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-warp-marks.png",
+          "sha256": "7bf218d102bd5c7474e6db166651011f6ad24300f3f781f5d2608be061af02bd"
+        },
+        {
+          "label": "Blur Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-blur-marks.png",
+          "sha256": "d0569eb12f12f3f38b1e671cfd0055a770150580d1e2191e7d33c38f31149c58"
+        },
+        {
+          "label": "Profile Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-profile-marks.png",
+          "sha256": "ff04d7bc54876b69e868f82dd145ee7c346dce30e742e8bd7f640da32f0b1d59"
+        },
+        {
+          "label": "Annular Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-annular-marks.png",
+          "sha256": "96e36e023500f2d3ba442f02949c43e26152f2fce5729483d6f2ce54eb17f5c3"
+        },
+        {
+          "label": "Depth Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-depth-marks.png",
+          "sha256": "02e31afeb2b71cc86f46ecd4894e6e1c1cd87b3d43b025babd3b286defbaeff5"
+        },
+        {
+          "label": "Spring Marks",
+          "path": ".work/web-app-review/studio-v2-production-2026-09-09/canvas-spring-marks.png",
+          "sha256": "cbf75631bc879f37a03d5609ccbfc71652dcaffb9380bbe80416629de9aaee02"
+        }
+      ]
+    },
+    {
       "id": "web-app-production",
       "title": "Web gallery and layered studio",
       "category": "Root reviewed app integration",

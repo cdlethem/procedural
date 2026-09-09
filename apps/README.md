@@ -1,7 +1,7 @@
 # Procedurals gallery and studio
 
 A Next.js gallery of **24 interactive p5.js studies**, with a separate canvas studio for
-layering Field Marks, Path Marks, Placement Marks and Lattice Marks. A Go service saves
+layering all 24 techniques and an API reference for all 31 package operations. A Go service saves
 projects as JSON. Rendering runs locally in the browser and uses the existing package.
 
 ## Run
@@ -34,23 +34,26 @@ The gallery, local editing, JSON and PNG export work independently of server sto
 
 ## Explore and compose
 
-Search or filter the gallery and open a study to use its original browser controls and
-read its technique guide. The **Open in studio** action starts one of the four compatible
-techniques as an editable layer. Other studies remain independently interactive in the gallery.
+Search or filter the gallery and open a study for an interactive canvas, sliders, exact
+numeric inputs, color controls, and a technique guide. **Sketch source** expands a formatted,
+highlighted view of the actual drawing code with a copy button. Operation links open API
+pages containing input/query/output fields, constraints, semantics and binding information.
 
-In the studio, add and select layers, change their settings, hide or reorder them, and
-adjust opacity. Each layer uses its own seed. Undo/redo preserves document edits. Local
-recovery keeps the latest document in this browser; explicit server saves keep named projects.
-JSON export/import moves an editable document between browsers. PNG export saves the
-currently rendered canvas. The inspector shows controls and keyboard hints. Choose a **Keyboard control**, focus the
-canvas, and use `[` / `]` to adjust it. `1`–`8` selects a layer, `R` changes its seed,
-`D` duplicates it, and Delete removes it. `Z` / Shift-Z undo and redo; Ctrl/Cmd-Z also
-works. Shortcuts pause while typing or adjusting a form control.
+**Open in studio** starts any study as a layer. Add and select layers, change their settings,
+hide or reorder them, and adjust opacity. Each layer owns an ordered palette of 2–12 colors,
+editable with color pickers or hex values. Seeded techniques also expose seed controls.
+Undo/redo preserves document edits. Local recovery keeps the latest document in this browser;
+explicit server saves keep named projects. JSON export/import moves editable documents
+between browsers. PNG export saves the currently rendered canvas.
 
-These controls select bounded example configurations. They are not new package operation
-defaults or recommended artistic ranges. Studio documents are versioned app documents,
-separate from the portable recipe grammar. Unknown or stale bindings and invalid imports
-are rejected. Only the four listed studio techniques can be layered in this version.
+3D techniques render to transparent WebGL buffers before composition. Raster techniques
+create their own source artwork; they do not filter lower layers. Spring motion exposes
+an explicit tick count, so changing its settings produces repeatable snapshots.
+
+These bounded controls are example configurations, not package operation defaults or
+recommended artistic ranges. Studio documents use the `studio-v2` app binding, separate
+from the portable recipe grammar. Imports from the original `studio-v1` release migrate
+their palettes and controls; other stale or invalid bindings are rejected.
 
 ## Development and verification
 
@@ -68,10 +71,10 @@ Run real-browser integration checks against a running app:
 python3 tools/with_native_render_lock.py -- node apps/web/scripts/test-browser.mjs
 ```
 
-Rebuild previews after changing native examples:
+Rebuild previews from a running app after changing studio adapters:
 
 ```sh
-npm --prefix apps/web run capture:previews
+WEB_BASE_URL=http://127.0.0.1:3000 npm --prefix apps/web run capture:previews
 ```
 
 Gallery metadata is generated from the catalog and existing Markdown by

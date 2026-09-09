@@ -7,10 +7,12 @@ import {
   mkdirSync,
   existsSync,
   cpSync,
+  rmSync,
 } from "node:fs";
 import { resolve, dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
+import { sketchSources } from "./sketch-source.mjs";
 const app = resolve(dirname(fileURLToPath(import.meta.url)), ".."),
   root = resolve(app, "../..");
 const read = (p) => readFileSync(join(root, p), "utf8");
@@ -116,6 +118,26 @@ const definitions = [
   ],
 ];
 const slugs = new Set(definitions.map((d) => d[0]));
+const sources = sketchSources(root);
+const browserGuidePath = "apps/web/content/browser-guides.json";
+const browserGuides = existsSync(join(root, browserGuidePath))
+  ? JSON.parse(read(browserGuidePath)) : {};
+// These compositions expose the operations actually called by the live web adapter.
+// Original native examples have their own separately recorded composition membership.
+const webOperations = {
+  "path-marks": ["regular-grid", "gradient-noise-2d-01", "gradient-path"],
+  "region-marks": ["seeded-quadrant-partition"],
+  "cut-marks": ["retained-rectangle-cuts-2d", "gradient-noise-2d-01"],
+  "polygon-marks": ["ordered-convex-polygon-filter-2d", "seeded-triangle-points"],
+  "facet-marks": ["delaunay-2d", "seeded-triangle-points"],
+  "pull-marks": ["radial-pull-2d"],
+  "path-clip-marks": ["clip-segments-simple-polygon-2d"],
+  "warp-marks": ["bilinear-raster-remap", "gradient-noise-3d-01"],
+  "blur-marks": ["separable-blur-2d"],
+  "profile-marks": ["radial-profile-surface"],
+  "depth-marks": ["gradient-noise-3d-01", "radial-profile-surface"],
+  "spring-marks": ["target-springs-2d"],
+};
 const dirs = readdirSync(join(root, "packages/javascript/examples"), {
   withFileTypes: true,
 })
@@ -136,29 +158,33 @@ const techniques = definitions.map(([slug, category, contracts], index) => {
   const guidePath = existsSync(join(root, `docs/${slug}.md`))
     ? `docs/${slug}.md`
     : `apps/web/content/${slug}.md`;
-  let markdown = read(guidePath);
-  // Original guides remain linked in full; web copy omits installation instructions.
+  let markdown = browserGuides[slug] ?? read(guidePath);
+  // Adapt the existing artist copy to browser controls, with no raw-file navigation.
   markdown = markdown.replace(
-    /\[Install the Java library\][\s\S]*?Save a copy before editing\.\s*/g,
+    /\[Install the Java library\][\s\S]*?(?:Save a copy before editing\.|save a copy\.)\s*/g,
     "",
   );
+  markdown = markdown.replace(/^## Controls\s*\n[\s\S]*?(?=^## |$(?![\s\S]))/gm, "");
+  markdown = markdown.replace(/^\| Key \|[^\n]*\n(?:\|[^\n]*\n)+/gm, "");
+  markdown = markdown.replace(/\[([^\]]+)\]\(\.\.\/catalog\/operations\/([^)]*)\.json\)/g, "[$1](/api-reference/$2)");
   markdown = markdown.replace(
-    /\]\(([^):]+\.md)(#[^)]*)?\)/g,
-    (_, target, anchor = "") => {
+    /\[([^\]]+)\]\(([^):]+\.md)(#[^)]*)?\)/g,
+    (_, label, target, anchor = "") => {
       const name = target.replace(/^.*\//, "").replace(/\.md$/, "");
-      return `](${slugs.has(name) ? `/techniques/${name}` : `/source/docs/${target}`}${anchor})`;
+      return slugs.has(name) ? `[${label}](/techniques/${name}${anchor})` : label;
     },
   );
-  markdown = markdown.replace(
-    /\]\(\.\.\/catalog\/([^)]*)\)/g,
-    "](/source/catalog/$1)",
-  );
+  markdown = markdown.replace(/\]\(\/api-reference\/([a-z0-9-]+)\)/g, (_, stem) => {
+    const catalogPath = `catalog/operations/${stem}.json`;
+    if (!existsSync(join(root, catalogPath))) throw Error(`Unknown operation link: ${stem}`);
+    return `](/api-reference/${JSON.parse(read(catalogPath)).id})`;
+  });
   const description = markdown
     .replace(/^# .*\n+/, "")
     .split(/\n\s*\n/)[0]
     .replace(/\n/g, " ")
     .replace(/`/g, "");
-  const operations = contracts.map((name) => {
+  const operations = (webOperations[slug] ?? contracts).map((name) => {
     const catalogPath = `catalog/operations/${name}.json`,
       c = JSON.parse(read(catalogPath));
     const attestation = attestations.find((a) => a.data.operation?.id === c.id);
@@ -196,9 +222,11 @@ const techniques = definitions.map(([slug, category, contracts], index) => {
     sourcePath,
     guidePath,
     guideSha256: hash(guidePath),
+    ...(browserGuides[slug] ? { browserGuidePath, browserGuideSha256: hash(browserGuidePath) } : {}),
     exampleUrl: `/native/examples/${slug}/index.html`,
+    ...sources.get(slug),
     operations,
-    studio: index < 4,
+    studio: true,
   };
 });
 const bindings = techniques
@@ -212,7 +240,7 @@ const bindings = techniques
     })),
   }));
 const studioBinding = {
-  version: "studio-v1",
+  version: "studio-v2",
   catalogSha256: createHash("sha256")
     .update(JSON.stringify(bindings))
     .digest("hex"),
@@ -247,18 +275,8 @@ if (process.argv.includes("--check")) {
       ),
     );
   }
-  // Browser source downloads preserve original documentation and license notices.
-  for (const name of [
-    "docs",
-    "catalog/operations",
-    "catalog/validation",
-    "packages/javascript/examples",
-    "apps/web/content",
-  ])
-    cpSync(join(root, name), join(pub, "source", name), {
-      recursive: true,
-      filter: (src) => !src.endsWith(".png") && !src.endsWith(".pdf"),
-    });
+  // This retired generated directory held raw documentation downloads.
+  rmSync(join(pub, "source"), { recursive: true, force: true });
   for (const name of ["LICENSE", "THIRD_PARTY_NOTICES.md"])
     cpSync(join(root, name), join(pub, "native", name));
   const p5 = join(app, "node_modules/p5/lib/p5.min.js");

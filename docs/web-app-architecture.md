@@ -5,68 +5,83 @@ workflows; it does not change operation contracts or target acceptance.
 
 ## Artist experience
 
-The gallery leads with rendered artwork, search, and technique families. Each detail
-page combines an interactive existing p5.js example, its controls, explanatory Markdown,
-and operation provenance. Existing native examples remain editable source. Every available
-browser workflow belongs in the gallery; studio compatibility is a separate dimension.
+The gallery leads with rendered artwork, search, and technique families. All 24 browser
+techniques open an interactive p5 canvas with shared studio controls, an adapted artist
+guide, and links to formatted operation documentation. An expandable, highlighted Sketch
+source component displays the actual adapter function and its local dependencies. Source
+excerpts are extracted from TypeScript syntax trees, so they track the renderer. No raw
+repository files are navigation targets. The API reference covers all 31 operations.
 
-The studio is an ordered stack of independently generated artwork layers. Begin with
-FieldMarks, PathMarks, PlacementMarks, and LatticeMarks: fields, trajectories, separated
-forms, and occupied lattice paths. Add, select, duplicate, reorder, hide, remove, and
-change opacity; each selected technique supplies parameter controls and visible shortcut
-hints. Keyboard commands only run outside text/slider/select editing. Undo/redo, local
-autosave, JSON import/export, PNG download, and explicit server save/load make edits useful.
-Mobile layouts stack panels without hiding controls. Canvas renders at 640 square and
-scales for display. Layer order is array order, back to front, source-over compositing.
-Each layer is drawn into a transparent buffer; group opacity is rounded to the nearest
-8-bit alpha before compositing the completed layer.
+The studio is an ordered stack of independently generated artwork layers. Add, select,
+duplicate, reorder, hide, remove, and change opacity. Numeric settings use sliders plus
+exact numeric inputs; modes use selectors and checkboxes. Every layer owns an ordered RGB
+palette of 2–12 colors, editable with pickers and hex fields. All app keyboard shortcuts
+and their hints have been removed; ordinary browser/form keyboard behavior remains.
+Undo/redo, local autosave, JSON import/export, PNG download, and server save/load preserve
+edits. Mobile panels stack. The canvas renders at 640 square and scales for display.
 
-## Boundaries frozen for implementation
+Layer order is array order, back to front. Each layer draws into a transparent buffer;
+source-over group opacity is rounded to nearest 8-bit alpha before composition. 3D
+techniques require p5 WebGL and their output becomes a raster layer. Temporary WebGL
+contexts are released after composition. Raster techniques generate/filter their own
+source artwork; they are not implicit effects on other layers. Spring motion uses an
+explicit bounded tick parameter for repeatable snapshots rather than wall time.
 
-Next.js App Router owns navigation, Markdown presentation, and React controls. p5 runs
-client-side, has an explicit mount/unmount lifecycle, and never uses wall time for static
-studio output. Real existing composition helpers import the package algorithms. A failed
-render reports its error and does not publish a partially successful frame. Full
-recomputation is allowed; any retained geometry optimization needs an invalidation test.
-Gallery examples may animate according to their own documented controls.
+## Application boundaries
+
+Next.js App Router owns navigation, Markdown presentation, and React controls. The same
+TechniquePlayground/LayerControls and renderer are used for gallery studies and studio
+layers. p5 runs client-side with explicit mount/unmount lifecycle. A failed render reports
+its error and leaves the last successful canvas intact. Full recomputation is allowed;
+future retained geometry optimizations require invalidation tests.
+
+Adapters under `apps/web/lib/adapters/` declare parameters, app defaults, renderer needs,
+and cross-parameter validation. Drawing functions consume validated layers through existing
+package cores and example helpers. App ranges are bounded composition choices, not new
+public operation defaults or evidence-backed artistic recommendations. These interactive
+compositions are not pixel replicas of all the original native example modes.
 
 Go standard-library HTTP serves project CRUD through a same-origin Next rewrite. Disk
-writes are atomic, IDs are server-generated, requests and project counts are bounded.
-It stores opaque versioned studio documents; the browser validates technique identities,
-parameters and execution budgets before use. It does not interpret host code or claim
-portable recipe validation. This initial service is for a trusted local installation;
-multi-user hosting requires authentication, ownership, and deployment configuration.
-Gallery and local editing continue when the storage service is unavailable.
+writes are atomic; IDs are server-generated; requests and project counts are bounded.
+It stores opaque versioned documents. The browser validates technique identities,
+parameters and execution budgets before use. The service is for a trusted local
+installation, without accounts or per-user ownership. Gallery and local editing continue
+when server storage is unavailable. Multi-user hosting remains separate work.
 
-`apps/web/lib/studio-types.ts` specifies the app document envelope. Version 1 fixes the
-canvas at 640x640, requires the studio binding version and catalog digest, limits layers to 8, uses explicit per-layer uint32 seeds, opaque RGB
-background, visible flags and opacity in [0,1]. Technique definitions own app-specific
-controls and bounded example configurations, distinct from operation defaults or artistic
-recommendations. Import rejects unknown keys, techniques, parameters, invalid values,
-non-finite numbers and unsupported versions before state replacement. App binding metadata
-records operation IDs, versions and content hashes from catalog authority; stale generation
-fails a check. No cache or p5 object is serialized. Change the binding version when the studio adapter
-or example mapping semantics change; changing an operation contract changes the generated digest.
+The schemaVersion 1 envelope now carries bindingVersion `studio-v2`: 640×640 canvas,
+at most eight layers, explicit uint32 seed, ordered RGB palette, opaque RGB background,
+visible flag and opacity in [0,1]. Imports reject unknown keys, techniques, parameters,
+non-finite values and unsupported versions before state replacement. Binding metadata
+records actual app operation IDs, versions and catalog hashes. Changes to adapter
+semantics require a new binding version; changed operation contracts change the digest.
+No p5 object or executable code is serialized.
 
-The studio is deliberately a workflow compositor, with named substitution points in
-existing compositions. It is not the general portable recipe executor specified in
-`design/recipes/`. Those contracts and Java work remain independent. Exposing all low-level
-operations as arbitrary nodes requires typed ports, explicit construction/query bindings,
-and error/budget rules; opaque layers must never be described as that completed system.
+Only the exact original `studio-v1` binding is migrated. The frozen registry validates
+old controls first, then materializes original/neon palettes and maps lattice flags to
+numeric settings. Existing geometry/style choices remain represented. Unknown or stale
+bindings continue to fail. Prior app acceptance records remain historical snapshots.
+
+API metadata is generated from catalog schemas, behavior, errors, and target attestations.
+JavaScript export mappings are checked against the actual package. Formatted API pages
+expose nested fields, scalar/array constraints, defaults when recorded, queries, semantics,
+errors, target support, and motivating sketch provenance. Displayed implementation availability
+and catalog target acceptance are distinct; app rendering does not promote target support.
 
 ## Prompt direction
 
-A future prompt interface should propose a validated editable document or a visible set of
-changes to the current document. The same controls, undo history, seed and renderer then
-remain available. MCP would be a transport into that model, not an arbitrary-code runtime.
-Prompt execution is outside this first app implementation. Before implementing it, create
-the required prompt-to-recipe-evaluation skill and evaluate semantic and visual outcomes.
+The studio composes named workflows. It is not the portable recipe executor in
+`design/recipes/` or an arbitrary graph of low-level operations. Such graphs require typed
+ports and explicit construction/query/error/budget rules. A future prompt interface should
+propose a validated editable document or visible changes to it, preserving manual controls,
+undo history, seed and renderer. MCP would transport those edits rather than execute
+arbitrary generated code. Before implementing prompt planning, create the required
+prompt-to-recipe-evaluation skill and evaluate semantic and visual outcomes.
 
 ## Verification
 
-Build/type-check Next, test Go CRUD and persistence, test document admission and command
-output, and exercise real browser gallery, parameter edits, keyboard focus isolation,
-layer ordering, undo, round trips, PNG and server save/load. All browser rendering uses
+Typecheck and build Next; test document validation/migration and native core adapter calls;
+exercise all gallery/studio renderers, numeric and palette edits, layer opacity/order,
+undo, imports, PNG and server save/load in a real browser. All browser rendering uses
 `tools/with_native_render_lock.py`; root inspects representative screenshots and records
-navigation in the visual-review gallery. This is app integration evidence, not expanded
-shared target support or source reproduction acceptance.
+navigation in the visual-review gallery. Evidence describes these app scenarios, not
+expanded shared target support or source-reproduction acceptance.

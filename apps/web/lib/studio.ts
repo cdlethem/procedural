@@ -1,254 +1,52 @@
 import type {
   Layer,
-  Parameter,
   StudioDocument,
   Technique,
   TechniqueId,
 } from "./studio-types";
 import gallery from "./generated-gallery.json";
+import legacy from "./legacy-v1.json";
+import { basicDefinitions } from "./adapters/basic";
+import { geometryDefinitions } from "./adapters/geometry";
+import { effectsDefinitions } from "./adapters/effects";
+import type { StudioDefinition } from "./adapters/types";
 
 export const MAX_LAYERS = 8;
-
 type Value = number | string | boolean;
-type Definition = Technique & { defaults: Record<string, Value> };
-
-const paletteOptions = [
-  { value: "original", label: "Original" },
-  { value: "neon", label: "Neon" },
+const definitions: readonly StudioDefinition[] = [
+  ...basicDefinitions,
+  ...geometryDefinitions,
+  ...effectsDefinitions,
 ];
-
-const definitions: readonly Definition[] = [
-  {
-    id: "field-marks",
-    title: "Field marks",
-    description: "A sampled noise field drawn as short lines or bars.",
-    parameters: [
-      number("columns", "Columns", "Number of field columns.", 80, 16, 160, 1),
-      number("rows", "Rows", "Number of field rows.", 80, 16, 160, 1),
-      number("pitch", "Pitch", "Distance between field samples.", 8, 4, 16, 1),
-      number(
-        "maxLength",
-        "Maximum length",
-        "Longest mark in pixels.",
-        14,
-        1,
-        32,
-        1,
-      ),
-      select(
-        "palette",
-        "Palette",
-        "Colour sequence for marks.",
-        "original",
-        paletteOptions,
-      ),
-      boolean("bars", "Bars", "Draw filled bars instead of line marks.", false),
-    ],
-    defaults: {
-      columns: 80,
-      rows: 80,
-      pitch: 8,
-      maxLength: 14,
-      palette: "original",
-      bars: false,
-    },
-  },
-  {
-    id: "path-marks",
-    title: "Path marks",
-    description: "Marks or traces sampled along seeded gradient paths.",
-    parameters: [
-      number("steps", "Steps", "Steps per retained path.", 600, 50, 2000, 1),
-      number(
-        "distance",
-        "Step distance",
-        "Distance travelled at each path step.",
-        0.4,
-        0.1,
-        1,
-        0.1,
-      ),
-      number(
-        "markLength",
-        "Mark length",
-        "Length of each perpendicular mark.",
-        12,
-        1,
-        32,
-        1,
-      ),
-      boolean(
-        "trace",
-        "Trace",
-        "Draw movement segments instead of endpoint marks.",
-        false,
-      ),
-      select(
-        "palette",
-        "Palette",
-        "Colour sequence for paths.",
-        "original",
-        paletteOptions,
-      ),
-    ],
-    defaults: {
-      steps: 600,
-      distance: 0.4,
-      markLength: 12,
-      trace: false,
-      palette: "original",
-    },
-  },
-  {
-    id: "placement-marks",
-    title: "Placement marks",
-    description: "Separated circles drawn as rings or diamonds.",
-    parameters: [
-      number(
-        "attempts",
-        "Proposals",
-        "Seeded circle proposals to consider.",
-        3000,
-        100,
-        5000,
-        1,
-      ),
-      number(
-        "minimum",
-        "Minimum radius",
-        "Smallest seeded circle radius.",
-        4,
-        2,
-        32,
-        1,
-      ),
-      number(
-        "maximum",
-        "Maximum radius",
-        "Largest seeded circle radius.",
-        48,
-        4,
-        64,
-        1,
-      ),
-      number(
-        "separation",
-        "Separation",
-        "Extra space between accepted circles.",
-        1,
-        0.5,
-        2,
-        0.1,
-      ),
-      boolean(
-        "radial",
-        "Radial source",
-        "Use the authored radial proposal source.",
-        false,
-      ),
-      boolean("diamonds", "Diamonds", "Draw four-cornered forms.", false),
-      select(
-        "palette",
-        "Palette",
-        "Colour sequence for forms.",
-        "original",
-        paletteOptions,
-      ),
-    ],
-    defaults: {
-      attempts: 3000,
-      minimum: 4,
-      maximum: 48,
-      separation: 1,
-      radial: false,
-      diamonds: false,
-      palette: "original",
-    },
-  },
-  {
-    id: "lattice-marks",
-    title: "Lattice marks",
-    description: "Ordered occupied paths across a square lattice.",
-    parameters: [
-      boolean("many", "Many paths", "Grow 36 paths instead of 12.", false),
-      boolean(
-        "longPaths",
-        "Long paths",
-        "Allow 36 cells per path instead of 12.",
-        false,
-      ),
-      boolean(
-        "dots",
-        "Dots",
-        "Draw cells as dots instead of connected paths.",
-        false,
-      ),
-      boolean("wide", "Wide strokes", "Use a wider path stroke.", false),
-      select(
-        "palette",
-        "Palette",
-        "Colour sequence for paths.",
-        "original",
-        paletteOptions,
-      ),
-    ],
-    defaults: {
-      many: false,
-      longPaths: false,
-      dots: false,
-      wide: false,
-      palette: "original",
-    },
-  },
-];
-
-function number(
-  key: string,
-  label: string,
-  description: string,
-  _default: number,
-  min: number,
-  max: number,
-  step: number,
-): Parameter {
-  return { key, label, description, type: "number", min, max, step };
-}
-function boolean(
-  key: string,
-  label: string,
-  description: string,
-  _default: boolean,
-): Parameter {
-  return { key, label, description, type: "boolean" };
-}
-function select(
-  key: string,
-  label: string,
-  description: string,
-  _default: string,
-  options: { value: string; label: string }[],
-): Parameter {
-  return { key, label, description, type: "select", options };
-}
+const ORIGINAL = [0x31a151, 0xffa71e, 0x05084c, 0xde4638, 0x3dbdb7];
+const NEON = [0x2e0551, 0xff00c7, 0x01afc2, 0xfdbe03, 0xf4f9fd];
+const LATTICE_ORIGINAL = [0x173f5f, 0xaf5441, 0xe9c46a, 0x347969];
+const LATTICE_NEON = [0x493657, 0xb85065, 0xe6b89c, 0x467c89];
 
 export const techniques: Technique[] = definitions.map(
-  ({ defaults: _defaults, ...technique }) => ({
-    ...technique,
-    parameters: technique.parameters.map((parameter) => ({
+  ({
+    defaults: _defaults,
+    validate: _validate,
+    renderer: _renderer,
+    ...item
+  }) => ({
+    ...item,
+    parameters: item.parameters.map((parameter) => ({
       ...parameter,
       options: parameter.options?.map((option) => ({ ...option })),
     })),
   }),
 );
-
 let nextLayer = 1;
 const reservedLayerIds = new Set<string>();
-function definition(id: TechniqueId): Definition {
+export function definition(id: TechniqueId): StudioDefinition {
   const found = definitions.find((item) => item.id === id);
   if (!found) throw new Error(`Unknown studio technique: ${String(id)}`);
   return found;
 }
-
+function paletteFor(id: string): number[] {
+  return id === "lattice-marks" ? [...LATTICE_ORIGINAL] : [...ORIGINAL];
+}
 export function createLayer(id: TechniqueId): Layer {
   const item = definition(id);
   let layerId: string;
@@ -258,20 +56,20 @@ export function createLayer(id: TechniqueId): Layer {
   reservedLayerIds.add(layerId);
   return {
     id: layerId,
-    technique: id,
+    technique: item.id,
     visible: true,
     opacity: 1,
     seed: 42,
+    palette: paletteFor(item.id),
     params: { ...item.defaults },
   };
 }
-
 export function createDocument(
   id: TechniqueId = "field-marks",
 ): StudioDocument {
   return {
     schemaVersion: 1,
-    bindingVersion: "studio-v1",
+    bindingVersion: "studio-v2",
     catalogSha256: gallery.studioBinding.catalogSha256,
     width: 640,
     height: 640,
@@ -302,13 +100,70 @@ function finite(value: unknown, path: string): number {
   return value;
 }
 function integer(value: unknown, path: string): number {
-  const number = finite(value, path);
-  if (!Number.isInteger(number)) throw new Error(`${path} must be an integer`);
-  return number;
+  const result = finite(value, path);
+  if (!Number.isInteger(result)) throw new Error(`${path} must be an integer`);
+  return result;
 }
-
-/** Strictly admits the data-only v1 studio envelope and returns a detached copy. */
-export function validateDocument(input: unknown): StudioDocument {
+function background(value: unknown, path: string): string {
+  if (typeof value !== "string" || !/^#[0-9a-fA-F]{6}$/.test(value))
+    throw new Error(`${path} must be an opaque RGB colour such as #ece7da`);
+  return value.toLowerCase();
+}
+function checkedPalette(value: unknown, path: string): number[] {
+  if (!Array.isArray(value) || value.length < 2 || value.length > 12)
+    throw new Error(`${path} must contain 2 to 12 RGB colours`);
+  return value.map((item, index) => {
+    const rgb = integer(item, `${path}[${index}]`);
+    if (rgb < 0 || rgb > 0xffffff)
+      throw new Error(`${path}[${index}] must be an RGB integer`);
+    return rgb;
+  });
+}
+function parameters(
+  value: unknown,
+  item: StudioDefinition,
+  path: string,
+): Record<string, Value> {
+  const source = object(value, path);
+  exact(source, Object.keys(item.defaults), path);
+  const copied: Record<string, Value> = {};
+  for (const parameter of item.parameters) {
+    const entry = source[parameter.key],
+      parameterPath = `${path}.${parameter.key}`;
+    if (parameter.type === "boolean") {
+      if (typeof entry !== "boolean")
+        throw new Error(`${parameterPath} must be true or false`);
+    } else if (parameter.type === "select") {
+      if (
+        typeof entry !== "string" ||
+        !parameter.options?.some((option) => option.value === entry)
+      )
+        throw new Error(`${parameterPath} is not an available option`);
+    } else {
+      const number = finite(entry, parameterPath);
+      if (number < parameter.min! || number > parameter.max!)
+        throw new Error(
+          `${parameterPath} must be between ${parameter.min} and ${parameter.max}`,
+        );
+      if (
+        Math.abs(
+          (number - parameter.min!) / parameter.step! -
+            Math.round((number - parameter.min!) / parameter.step!),
+        ) > 1e-9
+      )
+        throw new Error(`${parameterPath} must use step ${parameter.step}`);
+    }
+    copied[parameter.key] = entry as Value;
+  }
+  item.validate?.(copied);
+  return copied;
+}
+function validateEnvelope(
+  input: unknown,
+  version: string,
+  digest: string,
+  legacyMode: boolean,
+): { background: string; layers: Record<string, unknown>[] } {
   const document = object(input, "Document");
   exact(
     document,
@@ -325,32 +180,34 @@ export function validateDocument(input: unknown): StudioDocument {
   );
   if (document.schemaVersion !== 1)
     throw new Error("Document schemaVersion must be 1");
-  if (document.bindingVersion !== gallery.studioBinding.version)
-    throw new Error(
-      `Document bindingVersion must be ${gallery.studioBinding.version}`,
-    );
-  if (document.catalogSha256 !== gallery.studioBinding.catalogSha256)
+  if (document.bindingVersion !== version)
+    throw new Error(`Document bindingVersion must be ${version}`);
+  if (document.catalogSha256 !== digest)
     throw new Error("Document catalogSha256 is stale or unsupported");
   if (document.width !== 640 || document.height !== 640)
     throw new Error("Document canvas must be 640 by 640");
-  if (
-    typeof document.background !== "string" ||
-    !/^#[0-9a-fA-F]{6}$/.test(document.background)
-  )
-    throw new Error(
-      "Document background must be an opaque RGB colour such as #ece7da",
-    );
+  const ground = background(document.background, "Document background");
   if (!Array.isArray(document.layers))
     throw new Error("Document layers must be an array");
   if (document.layers.length > MAX_LAYERS)
     throw new Error(`Document supports at most ${MAX_LAYERS} layers`);
   const ids = new Set<string>();
-  const layers = document.layers.map((value, index): Layer => {
-    const path = `Document layers[${index}]`;
-    const layer = object(value, path);
+  const layers = document.layers.map((entry, index) => {
+    const path = `Document layers[${index}]`,
+      layer = object(entry, path);
     exact(
       layer,
-      ["id", "technique", "visible", "opacity", "seed", "params"],
+      legacyMode
+        ? ["id", "technique", "visible", "opacity", "seed", "params"]
+        : [
+            "id",
+            "technique",
+            "visible",
+            "opacity",
+            "seed",
+            "palette",
+            "params",
+          ],
       path,
     );
     if (typeof layer.id !== "string" || !/^[a-zA-Z0-9_-]{1,64}$/.test(layer.id))
@@ -359,10 +216,7 @@ export function validateDocument(input: unknown): StudioDocument {
       );
     if (ids.has(layer.id)) throw new Error(`${path}.id must be unique`);
     ids.add(layer.id);
-    if (
-      typeof layer.technique !== "string" ||
-      !definitions.some((item) => item.id === layer.technique)
-    )
+    if (typeof layer.technique !== "string")
       throw new Error(`${path}.technique is not supported`);
     if (typeof layer.visible !== "boolean")
       throw new Error(`${path}.visible must be true or false`);
@@ -372,60 +226,116 @@ export function validateDocument(input: unknown): StudioDocument {
     const seed = integer(layer.seed, `${path}.seed`);
     if (seed < 0 || seed > 0xffffffff)
       throw new Error(`${path}.seed must be a uint32`);
-    const item = definition(layer.technique as TechniqueId);
-    const params = object(layer.params, `${path}.params`);
-    exact(params, Object.keys(item.defaults), `${path}.params`);
-    const copied: Record<string, Value> = {};
-    for (const parameter of item.parameters) {
-      const value = params[parameter.key];
-      const parameterPath = `${path}.params.${parameter.key}`;
-      if (parameter.type === "boolean") {
-        if (typeof value !== "boolean")
-          throw new Error(`${parameterPath} must be true or false`);
-      } else if (parameter.type === "select") {
-        if (
-          typeof value !== "string" ||
-          !parameter.options?.some((option) => option.value === value)
-        )
-          throw new Error(`${parameterPath} is not an available option`);
-      } else {
-        const numeric = finite(value, parameterPath);
-        if (numeric < parameter.min! || numeric > parameter.max!)
-          throw new Error(
-            `${parameterPath} must be between ${parameter.min} and ${parameter.max}`,
-          );
-        if (
-          Math.abs(
-            (numeric - parameter.min!) / parameter.step! -
-              Math.round((numeric - parameter.min!) / parameter.step!),
-          ) > 1e-9
-        )
-          throw new Error(`${parameterPath} must use step ${parameter.step}`);
-      }
-      copied[parameter.key] = value as Value;
+    return layer;
+  });
+  return { background: ground, layers };
+}
+function legacyDefinition(id: string): StudioDefinition {
+  const found = (legacy.techniques as unknown as StudioDefinition[]).find(
+    (item) => item.id === id,
+  );
+  if (!found) throw new Error("Document layers technique is not supported");
+  return found;
+}
+function migrateV1(input: unknown): StudioDocument {
+  const old = validateEnvelope(
+    input,
+    legacy.bindingVersion,
+    legacy.catalogSha256,
+    true,
+  );
+  const ids = new Set<string>();
+  const layers = old.layers.map((layer, index): Layer => {
+    const path = `Document layers[${index}]`,
+      id = layer.id as string,
+      technique = layer.technique as string,
+      oldDefinition = legacyDefinition(technique),
+      oldParams = parameters(layer.params, oldDefinition, `${path}.params`),
+      paletteName = oldParams.palette;
+    if (paletteName !== "original" && paletteName !== "neon")
+      throw new Error(`${path}.params.palette is not an available option`);
+    const item = definition(technique),
+      params: Record<string, Value> = { ...oldParams };
+    delete params.palette;
+    if (technique === "lattice-marks") {
+      const source = oldParams as Record<string, Value>;
+      Object.assign(params, {
+        count: source.many ? 36 : 12,
+        steps: source.longPaths ? 36 : 12,
+        weight: source.wide ? 15.6 : 8.4,
+        dotSize: 6,
+        dots: source.dots,
+        grid: true,
+      });
+      delete params.many;
+      delete params.longPaths;
+      delete params.wide;
     }
-    if (
-      item.id === "placement-marks" &&
-      (copied.minimum as number) > (copied.maximum as number)
-    )
-      throw new Error(`${path}.params.minimum cannot exceed maximum`);
+    const checked = parameters(params, item, `${path}.params`);
+    ids.add(id);
     return {
-      id: layer.id,
+      id,
       technique: item.id,
-      visible: layer.visible,
-      opacity,
-      seed,
-      params: copied,
+      visible: layer.visible as boolean,
+      opacity: layer.opacity as number,
+      seed: layer.seed as number,
+      palette:
+        technique === "lattice-marks"
+          ? paletteName === "neon"
+            ? [...LATTICE_NEON]
+            : [...LATTICE_ORIGINAL]
+          : paletteName === "neon"
+            ? [...NEON]
+            : [...ORIGINAL],
+      params: checked,
     };
   });
   for (const id of ids) reservedLayerIds.add(id);
   return {
     schemaVersion: 1,
-    bindingVersion: "studio-v1",
+    bindingVersion: "studio-v2",
     catalogSha256: gallery.studioBinding.catalogSha256,
     width: 640,
     height: 640,
-    background: document.background.toLowerCase(),
+    background: old.background,
+    layers,
+  };
+}
+/** Strictly admits v2 documents and migrates only the frozen exact v1 binding. */
+export function validateDocument(input: unknown): StudioDocument {
+  const probe = object(input, "Document");
+  if (probe.bindingVersion === legacy.bindingVersion) return migrateV1(input);
+  const current = validateEnvelope(
+    input,
+    "studio-v2",
+    gallery.studioBinding.catalogSha256,
+    false,
+  );
+  const ids = new Set<string>();
+  const layers = current.layers.map((layer, index): Layer => {
+    const path = `Document layers[${index}]`,
+      item = definition(layer.technique as string),
+      checked = parameters(layer.params, item, `${path}.params`),
+      id = layer.id as string;
+    ids.add(id);
+    return {
+      id,
+      technique: item.id,
+      visible: layer.visible as boolean,
+      opacity: layer.opacity as number,
+      seed: layer.seed as number,
+      palette: checkedPalette(layer.palette, `${path}.palette`),
+      params: checked,
+    };
+  });
+  for (const id of ids) reservedLayerIds.add(id);
+  return {
+    schemaVersion: 1,
+    bindingVersion: "studio-v2",
+    catalogSha256: gallery.studioBinding.catalogSha256,
+    width: 640,
+    height: 640,
+    background: current.background,
     layers,
   };
 }
