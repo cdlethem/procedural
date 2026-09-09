@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Layer marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(720px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Layer marks</h1>
+  <p>A fixed four-quadrant retained partition over one source image, displayed
+    as a canvas-positioned pass (global rings, unclipped image), a locally
+    cropped-and-decorated pass with sharp or soft region edges, or a
+    horizontal crossfade between both passes.</p>
+  <div id="controls" aria-label="Layer marks controls">
+    <button data-action="m"><kbd>M</kbd> mode</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated layer study"></div>
+  <p id="status" role="status">Preparing layers&hellip;</p>
+  <p>M cycles the four modes; S saves the displayed raster without redraw.
+    Edit <code>sketch.js</code>: <code>drawSource</code> is the retained
+    source content (swap it for a loaded image), and <code>drawPicture</code>/
+    <code>drawLocal</code> are the two region content recipes - the picture
+    pass ignores which region is compositing it, while the local pass crops
+    and repositions per region.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>
