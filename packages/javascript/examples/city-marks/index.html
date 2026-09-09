@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>City marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(960px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>City marks</h1>
+  <p>A structural recreation of Manolo ide's <code>ciscis002</code>: a seeded
+    quadrant partition supplies building sites, Delaunay triangulation turns
+    them into a mesh of building footprints, and one java.util.Random-driven
+    policy assigns each building a height, a cyclic-palette color, a ground
+    tone, and hundreds of individually lit or dark windows.</p>
+  <div id="controls" aria-label="City marks controls">
+    <button data-action="c"><kbd>C</kbd> color offset</button>
+    <button data-action="h"><kbd>H</kbd> height</button>
+    <button data-action="r"><kbd>R</kbd> new seed</button>
+    <button data-action="0"><kbd>0</kbd> reset</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated city"></div>
+  <p id="status" role="status">Building the city&hellip;</p>
+  <p>C shifts the palette; H toggles between tall and low building heights;
+    R generates a new seed (a fresh partition, mesh, and building policy); 0
+    resets to seed 42; S saves without redraw. This is a structural
+    recreation - the same generation pipeline and building count as the
+    Java source, not a pixel reproduction claim. Each window box is drawn as
+    its two largest (front/back) faces rather than all six, a rendering
+    accommodation for WebGL immediate-mode performance at this object count
+    (hundreds of thousands of windows); position, size, count, and lit state
+    are unaffected.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>
