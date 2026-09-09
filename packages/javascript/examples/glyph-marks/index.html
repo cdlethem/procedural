@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glyph marks - procedurals</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body{margin:0;padding:24px;background:#f5f2e9;color:#242324;font:16px system-ui,sans-serif}
+    main{max-width:720px;margin:auto}h1{margin:0 0 8px;font-size:28px}p{line-height:1.5;max-width:67ch}
+    #controls{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}button{font:inherit;padding:8px 10px;background:#fff;color:inherit;border:1px solid #777;border-radius:4px;cursor:pointer}
+    kbd{font:inherit;border:1px solid #888;border-radius:3px;padding:1px 4px;background:#fff}canvas{display:block;width:min(640px,100%);height:auto}#status{min-height:1.5em}
+    code{font-size:.9em}a{color:#254b7e}
+  </style>
+</head>
+<body><main>
+  <h1>Glyph marks</h1>
+  <p>Repeated digits accumulate along 48 seeded gradient paths. Change the
+    visible prefix, stride, glyphs, mark transfer, color, integration distance,
+    and field scale independently.</p>
+  <div id="controls" aria-label="Glyph marks controls">
+    <button data-action="n"><kbd>N</kbd> shorter trail</button>
+    <button data-action="d"><kbd>D</kbd> sparser stamps</button>
+    <button data-action="g"><kbd>G</kbd> letters</button>
+    <button data-action="m"><kbd>M</kbd> dots</button>
+    <button data-action="c"><kbd>C</kbd> color</button>
+    <button data-action="v"><kbd>V</kbd> integration distance</button>
+    <button data-action="f"><kbd>F</kbd> field scale</button>
+    <button data-action="r"><kbd>R</kbd> new seed</button>
+    <button data-action="0"><kbd>0</kbd> reset</button>
+    <button data-action="s"><kbd>S</kbd> save PNG</button>
+  </div>
+  <div id="art" aria-label="Generated glyph trails"></div>
+  <p id="status" role="status">Loading GlyphMarks&hellip;</p>
+  <p>N uses the first 80 rather than 160 retained points; D stamps every fourth
+    retained point; G and M change only the mark transfer; C changes only the
+    ramp. V and F regenerate paths while retaining each start, symbol, and
+    size. R changes all seeded metadata; 0 restores seed 42; S saves the cached
+    canvas. The explicit bundled DejaVu Sans font is hash-checked before any
+    drawing; the example fails visibly rather than selecting a fallback font.</p>
+</main><script src="/p5.js"></script><script type="module" src="./sketch.js"></script></body>
+</html>
