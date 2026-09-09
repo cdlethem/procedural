@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "operation": "raster.bilinear-remap-2d",
+  "node_version": "v22.22.1",
+  "scope": "Actual JS module golden, carrier and access checks against the frozen bilinear-raster-remap fixtures. No renderer/acceptance claim.",
+  "input_sha256_before": {
+    "catalog/operations/bilinear-raster-remap.json": "b8fe845f220644ee7c3bf24e7df9c3aecf5195edcce7b69f51fe530f176ee176",
+    "fixtures/operations/bilinear-raster-remap.json": "2b9a1912e315977b219b1b5dace6cafdffd649346f3b43d0ec13f2a59cf7ff0f",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "tests/native/raster-remap-javascript.mjs": "d5939af1c261c11190ab16c0d5cbe9c556d8265dccaaf84fda8574b56a7e4d75"
+  },
+  "input_sha256_after": {
+    "catalog/operations/bilinear-raster-remap.json": "b8fe845f220644ee7c3bf24e7df9c3aecf5195edcce7b69f51fe530f176ee176",
+    "fixtures/operations/bilinear-raster-remap.json": "2b9a1912e315977b219b1b5dace6cafdffd649346f3b43d0ec13f2a59cf7ff0f",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "tests/native/raster-remap-javascript.mjs": "d5939af1c261c11190ab16c0d5cbe9c556d8265dccaaf84fda8574b56a7e4d75"
+  },
+  "scenarios": {
+    "fixture_cases": 13,
+    "ownership_access": [
+      "input containers detached",
+      "pixels/toValues export detached",
+      "pixelAt index/range precedence"
+    ],
+    "native_only": [
+      "nonfinite-coordinate-carriers (JavaScript applicable carriers)",
+      "passive-input-carriers-only"
+    ]
+  },
+  "allocation_failure": {
+    "executed": false,
+    "source_review": "Output exports allocate detached arrays and do not mutate retained private arrays; a failed generation exposes no result. No controlled host allocation failure injected."
+  }
+}

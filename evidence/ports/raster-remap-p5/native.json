@@ -1,0 +1,73 @@
+{
+  "input_sha256_before": {
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "packages/javascript/examples/warp-marks/sketch.js": "e4122d81f4854bbbdb56a71438cb8cb470314eed4564c27910c56213aeaa05b9",
+    "packages/javascript/examples/warp-marks/warp-marks.js": "7ce10a730dce26f9183b4f5c494af7a85093aa648769550fce7419144484711a",
+    "packages/javascript/examples/warp-marks/index.html": "460af05d02054bd1584b33eb680262a204adbc9ca015e509b231e9389f4c2927",
+    "tools/serve_warp_marks.mjs": "38824b3768dada162997255e739832d2b29942537bd677fe30ee8299868883e6",
+    "tools/run_p5_warp_marks.mjs": "3e8bee2a4f1a3ecb38f79cc72392dac59ece03da1817ab260376ff35945caecb"
+  },
+  "input_sha256_after": {
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "packages/javascript/examples/warp-marks/sketch.js": "e4122d81f4854bbbdb56a71438cb8cb470314eed4564c27910c56213aeaa05b9",
+    "packages/javascript/examples/warp-marks/warp-marks.js": "7ce10a730dce26f9183b4f5c494af7a85093aa648769550fce7419144484711a",
+    "packages/javascript/examples/warp-marks/index.html": "460af05d02054bd1584b33eb680262a204adbc9ca015e509b231e9389f4c2927",
+    "tools/serve_warp_marks.mjs": "38824b3768dada162997255e739832d2b29942537bd677fe30ee8299868883e6",
+    "tools/run_p5_warp_marks.mjs": "3e8bee2a4f1a3ecb38f79cc72392dac59ece03da1817ab260376ff35945caecb"
+  },
+  "status": "passed",
+  "browser": "153.0.8010.12",
+  "frames": [
+    {
+      "name": "baseline",
+      "hash": "73f5b751f3ea31fb05342adaef062b1efc951c5c9884c9653aab5d988f7b1d1d"
+    },
+    {
+      "name": "2-w",
+      "hash": "93f39316b95553436efc76aa788a81d21a46e28aa293db131e91e3f9c020e3f9"
+    },
+    {
+      "name": "3-w",
+      "hash": "515e39d47a680f7d3e45bfb50c7986fd30f95a126579efdf311a956e01fae17e"
+    },
+    {
+      "name": "4-f",
+      "hash": "515e39d47a680f7d3e45bfb50c7986fd30f95a126579efdf311a956e01fae17e"
+    },
+    {
+      "name": "5-p",
+      "hash": "5e839d26c362e6da7c8f2f91a22ef7cd7cc2cddb887acfc9e4259260b2705cc0"
+    },
+    {
+      "name": "6-w",
+      "hash": "edd7236a01e58605137a2ea2279d6ec2671cca267c039a5b87d4051574fb7217"
+    },
+    {
+      "name": "reset",
+      "hash": "73f5b751f3ea31fb05342adaef062b1efc951c5c9884c9653aab5d988f7b1d1d"
+    }
+  ],
+  "errors": [],
+  "scope": "Actual p5 edits, reset identity, download and cached revision. No Java pixel parity claim.",
+  "artifacts_sha256": {
+    ".work/port-warp-native-main2/6-w.png": "6bdc0d7c6adb73141ee48b53b564d6d17316c4c642b26c451d0e6b682c3ef97d",
+    ".work/port-warp-native-main2/2-w.png": "930a8cd7e83c15b4252620da61ae819dfe34dec0f1887db546e11b7af26ba719",
+    ".work/port-warp-native-main2/5-p.png": "aff3e2f991c3eb8b977649a73eae840b8e586a4e0b66577735e1311d0f44fbd2",
+    ".work/port-warp-native-main2/3-w.png": "3d90ff30b9b7187bc094953aad70ea4125067f932418a86eecbe34ee8056ec6b",
+    ".work/port-warp-native-main2/saved.png": "8f63f96408a9f15236dc72bcb75ad43b50923e09bfc2936e8b4598f1a96df16c",
+    ".work/port-warp-native-main2/reset.png": "26a100d1c39d5f3d718f0234d9b7891f1405e6d409360c54dbcffad5ed0a4cf3",
+    ".work/port-warp-native-main2/baseline.png": "26a100d1c39d5f3d718f0234d9b7891f1405e6d409360c54dbcffad5ed0a4cf3",
+    ".work/port-warp-native-main2/4-f.png": "3d90ff30b9b7187bc094953aad70ea4125067f932418a86eecbe34ee8056ec6b"
+  },
+  "saved_pixels_equal_reset": true,
+  "zero_strength_matches_native_source": true,
+  "zero_strength_field_edit_preserves_pixels": true,
+  "runtime_sha256": {
+    ".work/environments/p5js/node_modules/p5/lib/p5.min.js": "87adc350e8ec0e9bced22d4f03c181bdd208dc997d3956ab3ec2e90537643c9a",
+    ".work/environments/p5js/node_modules/playwright/package.json": "8bc2ddebe8d9b051b9ecb87d62c6c63877e59d08617f32c3215681ca8bb70998"
+  }
+}

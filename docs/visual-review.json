@@ -2,6 +2,30 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "port-warp-p5",
+      "title": "WarpMarks \u2014 reviewed p5 port",
+      "category": "Root reviewed browser workflow",
+      "description": "Noise displacement, identity source and paired-sine stripe transfer.",
+      "evidence": "evidence/ports/raster-remap-p5/root-review.json",
+      "images": [
+        {
+          "label": "Warped dots",
+          "path": ".work/port-warp-native-main2/baseline.png",
+          "sha256": "26a100d1c39d5f3d718f0234d9b7891f1405e6d409360c54dbcffad5ed0a4cf3"
+        },
+        {
+          "label": "Zero strength",
+          "path": ".work/port-warp-native-main2/3-w.png",
+          "sha256": "3d90ff30b9b7187bc094953aad70ea4125067f932418a86eecbe34ee8056ec6b"
+        },
+        {
+          "label": "Stripe transfer",
+          "path": ".work/port-warp-native-main2/6-w.png",
+          "sha256": "6bdc0d7c6adb73141ee48b53b564d6d17316c4c642b26c451d0e6b682c3ef97d"
+        }
+      ]
+    },
+    {
       "id": "port-ramp-p5",
       "title": "RampMarks \u2014 reviewed p5 port",
       "category": "Root reviewed browser workflow",

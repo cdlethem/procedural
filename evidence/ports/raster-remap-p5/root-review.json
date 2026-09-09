@@ -1,0 +1,41 @@
+{
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "scope": "JavaScript direct-module raster remap and source-checkout p5 WarpMarks; no root-barrel/package/other-target/source reproduction claim.",
+  "origin": {
+    "pinned_commit": "47ec5b2b",
+    "core_commit": "828cdb85",
+    "workflow_commit": "fdb5f4f5"
+  },
+  "implementation_sha256": {
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "packages/javascript/examples/warp-marks/sketch.js": "e4122d81f4854bbbdb56a71438cb8cb470314eed4564c27910c56213aeaa05b9",
+    "packages/javascript/examples/warp-marks/warp-marks.js": "7ce10a730dce26f9183b4f5c494af7a85093aa648769550fce7419144484711a",
+    "packages/javascript/examples/warp-marks/index.html": "460af05d02054bd1584b33eb680262a204adbc9ca015e509b231e9389f4c2927",
+    "tools/serve_warp_marks.mjs": "38824b3768dada162997255e739832d2b29942537bd677fe30ee8299868883e6",
+    "tools/run_p5_warp_marks.mjs": "3e8bee2a4f1a3ecb38f79cc72392dac59ece03da1817ab260376ff35945caecb",
+    "tests/native/raster-remap-javascript.mjs": "d5939af1c261c11190ab16c0d5cbe9c556d8265dccaaf84fda8574b56a7e4d75",
+    "tests/native/warp-marks-model.mjs": "8f9b1bbfe19499cc49ae4aaf2f4b25bf50438bdeb42cf4a9f18a7c5531f02e22"
+  },
+  "evidence_sha256": {
+    "evidence/ports/raster-remap-p5/core.json": "33c65cc4006d4c6e51ff95d5d8c642bfa5f64b3f2c45beb6f13e9136138d1af8",
+    "evidence/ports/raster-remap-p5/model.json": "4d04c964d3b3618faf0d00dcc4f3ee75bff7d2f009c041ac8976540b7812f170",
+    "evidence/ports/raster-remap-p5/native.json": "c04153416e024867322361fc96ccdf413e6105aadd994f61149801197ee9f496",
+    "fixtures/operations/bilinear-raster-remap.json": "2b9a1912e315977b219b1b5dace6cafdffd649346f3b43d0ec13f2a59cf7ff0f"
+  },
+  "verified": [
+    "Root read core interpolation/validation and browser RGBA/ARGB conversion and retention; Terra independent core review passed.",
+    "13shared fixtures plus ownership/carrier/index checks and existing identity/displacement model pass.",
+    "Actual Chromium7views under shared native lease: zero strength matches actual source, field edit at zero preserves output, reset/save pixels exact.",
+    "Root viewed noise-warped dots and paired-sine stripe transfer."
+  ],
+  "limits": [
+    "Host Math.sin/cos in example displacement: no Java/browser pixel parity.",
+    "Native workflow has opaque source; transparent core fixtures do not establish general native alpha equivalence.",
+    "Initial root observer matched source and visible canvases; corrected to #art canvas and reran.",
+    "Root-barrel exports/distribution deferred to common compatibility batch."
+  ]
+}

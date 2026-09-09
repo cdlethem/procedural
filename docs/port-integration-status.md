@@ -1,0 +1,39 @@
+# Port integration status
+
+Root review is pinned to `origin/porting/backlog` commit `47ec5b2b` in the isolated
+`.work/port-review` checkout. The port author's checkout and branch are unchanged.
+
+Accepted JavaScript source-checkout slices:
+
+- StopRamp and RampMarks: `evidence/ports/stop-ramp-p5/root-review.json`.
+- Bilinear raster remapping and WarpMarks:
+  `evidence/ports/raster-remap-p5/root-review.json`.
+
+These have root-reviewed core fixtures and actual browser edits/reset/save. They use
+direct module imports. Common root-barrel exports and package-distribution validation
+remain pending; py5/Android claims are not imported with these files.
+
+Remaining original JavaScript branch work: Delaunay, closed spline, noise-band paths,
+target springs, occupied-lattice paths and line pools; LoopMarks, BandMarks and
+CutBranchMarks workflows. Springs passed an independent source/fixture review, but
+root integration/native scope still needs acceptance. Existing operation contracts and
+shared fixtures stay authoritative, including any intentional host API differences.
+
+## Spline provenance issue
+
+The branch's `closed-spline.js` says its hypot code was ported from OpenJDK17
+`java.lang.FdLibm.Hypot`. Root's worker verified the structural match against the local
+Temurin17.0.20.1+1 `src.zip`: FdLibm.java SHA256
+`24b6dc21d26d6f4f578ea35126a32b55311164e583d0b25e03b72b40f3f41887`.
+That source includes an Oracle copyright and GPLv2/ClassPath Exception header, while
+the JS/Python translations omit upstream notices and the project notices have no entry.
+Do not merge those translations under an implicit project MIT claim.
+
+Investigate the original netlib fdlibm hypot implementation with preserved source notices
+and verify exact arithmetic behavior before choosing a replacement. A provenance label
+alone does not make a copied implementation independent. Trigonometric fdlibm translations
+also require their own complete source/notice review. No tolerance relaxation is authorized.
+
+All native browser/Processing runs use the shared machine lock at
+`tools/with_native_render_lock.py`. Gallery images remain ignored. Root alone writes shared
+acceptance records; the Android ProfileMarks draft in main remains untouched.

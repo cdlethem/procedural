@@ -1,5 +1,16 @@
 # Project state
 
+## Raster-remap p5 slice reviewed
+
+Root imported JS remap/WarpMarks from828cdb85/fdb5f4f5; read core and pixel conversions.
+Terra independent core review passed.13fixtures/model and Chromium7views pass; zero
+strength matches actual source, field edit at zero unchanged, reset/save exact. Root
+viewed dot warp and stripe transfer. evidence/ports/raster-remap-p5/root-review.json
+accepts direct-module core/native only. Shared root exports/package compatibility pending.
+Remaining6cores/3workflows from original JS batch; Python/Android remain on feature branch.
+Provenance investigation of OpenJDK spline hypot delegated to port_core_review. Preserve
+main Android draft; pinned review checkout47ec5b2b remains isolated.
+
 ## Port integration resumed; first p5 slice reviewed
 
 User explicitly requested port branch review/integration. Pinned origin/porting/backlog
