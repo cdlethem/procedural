@@ -6,6 +6,12 @@ import type {
 } from "./studio-types";
 import gallery from "./generated-gallery.json";
 import legacy from "./legacy-v1.json";
+import legacyV2 from "./legacy-v2.json";
+import { validateCutEdits } from "./cut-model";
+import {
+  IDENTITY_LAYER_TRANSFORM,
+  type LayerTransform,
+} from "./layer-transform";
 import { basicDefinitions } from "./adapters/basic";
 import { geometryDefinitions } from "./adapters/geometry";
 import { effectsDefinitions } from "./adapters/effects";
@@ -61,6 +67,8 @@ export function createLayer(id: TechniqueId): Layer {
     opacity: 1,
     seed: 42,
     palette: paletteFor(item.id),
+    cutEdits: [],
+    transform: { ...IDENTITY_LAYER_TRANSFORM },
     params: { ...item.defaults },
   };
 }
@@ -69,7 +77,7 @@ export function createDocument(
 ): StudioDocument {
   return {
     schemaVersion: 1,
-    bindingVersion: "studio-v2",
+    bindingVersion: "studio-v3",
     catalogSha256: gallery.studioBinding.catalogSha256,
     width: 640,
     height: 640,
@@ -119,6 +127,23 @@ function checkedPalette(value: unknown, path: string): number[] {
     return rgb;
   });
 }
+function checkedTransform(value: unknown, path: string): LayerTransform {
+  const source = object(value, path);
+  exact(source, ["x", "y", "scale", "rotation"], path);
+  const x = finite(source.x, `${path}.x`);
+  const y = finite(source.y, `${path}.y`);
+  const scale = finite(source.scale, `${path}.scale`);
+  const rotation = finite(source.rotation, `${path}.rotation`);
+  if (x < -640 || x > 1280)
+    throw new Error(`${path}.x must be between -640 and 1280`);
+  if (y < -640 || y > 1280)
+    throw new Error(`${path}.y must be between -640 and 1280`);
+  if (scale < 0.05 || scale > 4)
+    throw new Error(`${path}.scale must be between 0.05 and 4`);
+  if (rotation < -180 || rotation > 180)
+    throw new Error(`${path}.rotation must be between -180 and 180`);
+  return { x, y, scale, rotation };
+}
 function parameters(
   value: unknown,
   item: StudioDefinition,
@@ -162,7 +187,7 @@ function validateEnvelope(
   input: unknown,
   version: string,
   digest: string,
-  legacyMode: boolean,
+  layerVersion: 1 | 2 | 3,
 ): { background: string; layers: Record<string, unknown>[] } {
   const document = object(input, "Document");
   exact(
@@ -197,7 +222,7 @@ function validateEnvelope(
       layer = object(entry, path);
     exact(
       layer,
-      legacyMode
+      layerVersion === 1
         ? ["id", "technique", "visible", "opacity", "seed", "params"]
         : [
             "id",
@@ -207,6 +232,7 @@ function validateEnvelope(
             "seed",
             "palette",
             "params",
+            ...(layerVersion === 3 ? ["cutEdits", "transform"] : []),
           ],
       path,
     );
@@ -242,7 +268,7 @@ function migrateV1(input: unknown): StudioDocument {
     input,
     legacy.bindingVersion,
     legacy.catalogSha256,
-    true,
+    1,
   );
   const ids = new Set<string>();
   const layers = old.layers.map((layer, index): Layer => {
@@ -288,12 +314,14 @@ function migrateV1(input: unknown): StudioDocument {
             ? [...NEON]
             : [...ORIGINAL],
       params: checked,
+      cutEdits: [],
+      transform: { ...IDENTITY_LAYER_TRANSFORM },
     };
   });
   for (const id of ids) reservedLayerIds.add(id);
   return {
     schemaVersion: 1,
-    bindingVersion: "studio-v2",
+    bindingVersion: "studio-v3",
     catalogSha256: gallery.studioBinding.catalogSha256,
     width: 640,
     height: 640,
@@ -301,15 +329,16 @@ function migrateV1(input: unknown): StudioDocument {
     layers,
   };
 }
-/** Strictly admits v2 documents and migrates only the frozen exact v1 binding. */
+/** Strictly admits v3 documents and migrates only the frozen exact v1/v2 bindings. */
 export function validateDocument(input: unknown): StudioDocument {
   const probe = object(input, "Document");
   if (probe.bindingVersion === legacy.bindingVersion) return migrateV1(input);
+  const fromV2 = probe.bindingVersion === legacyV2.bindingVersion;
   const current = validateEnvelope(
     input,
-    "studio-v2",
-    gallery.studioBinding.catalogSha256,
-    false,
+    fromV2 ? legacyV2.bindingVersion : "studio-v3",
+    fromV2 ? legacyV2.catalogSha256 : gallery.studioBinding.catalogSha256,
+    fromV2 ? 2 : 3,
   );
   const ids = new Set<string>();
   const layers = current.layers.map((layer, index): Layer => {
@@ -317,8 +346,16 @@ export function validateDocument(input: unknown): StudioDocument {
       item = definition(layer.technique as string),
       checked = parameters(layer.params, item, `${path}.params`),
       id = layer.id as string;
+    if (fromV2) {
+      const old = (legacyV2.techniques as unknown as StudioDefinition[]).find(
+        (entry) => entry.id === item.id,
+      );
+      if (!old)
+        throw new Error(`${path}.technique was not available in studio-v2`);
+      parameters(layer.params, old, `${path}.params`);
+    }
     ids.add(id);
-    return {
+    const result: Layer = {
       id,
       technique: item.id,
       visible: layer.visible as boolean,
@@ -326,12 +363,19 @@ export function validateDocument(input: unknown): StudioDocument {
       seed: layer.seed as number,
       palette: checkedPalette(layer.palette, `${path}.palette`),
       params: checked,
+      cutEdits: (fromV2 ? [] : layer.cutEdits) as Layer["cutEdits"],
+      transform: fromV2
+        ? { ...IDENTITY_LAYER_TRANSFORM }
+        : checkedTransform(layer.transform, `${path}.transform`),
     };
+    validateCutEdits(result);
+    result.cutEdits = result.cutEdits.map((edit) => ({ ...edit }));
+    return result;
   });
   for (const id of ids) reservedLayerIds.add(id);
   return {
     schemaVersion: 1,
-    bindingVersion: "studio-v2",
+    bindingVersion: "studio-v3",
     catalogSha256: gallery.studioBinding.catalogSha256,
     width: 640,
     height: 640,

@@ -2,6 +2,90 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "web-app-v3-production",
+      "title": "Layer placement, visual picker and human API guides",
+      "category": "Root reviewed app integration",
+      "description": "Scoped production v3 UI review, including transformed compositions and responsive controls. Shared target acceptance unchanged.",
+      "evidence": "evidence/web/app-v3-review.json",
+      "images": [
+        {
+          "label": "studio desktop",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/studio-desktop.png",
+          "sha256": "88edeb5073daa483571014eb1f9e3353df0834b126e5bb1cf818819fee4a30b9"
+        },
+        {
+          "label": "studio wide",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/studio-wide.png",
+          "sha256": "b86deba151d28d518aefdd7e12a8d616bf8567ea11bee138f84667d47aa2ecf4"
+        },
+        {
+          "label": "studio placement",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/studio-placement.png",
+          "sha256": "824fefa65293a8750fcbcfbc915873e1cb01bd3bf2e398202a78d1017a6fd08e"
+        },
+        {
+          "label": "studio style",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/studio-style.png",
+          "sha256": "c2644470bcbbbe6ee68e254c1ed9cce82c3be4fc10351cef665f07fc9f1e82a1"
+        },
+        {
+          "label": "studio transformed composition",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/studio-transformed-composition.png",
+          "sha256": "2e4f80b9b39280f7abe34d23aeb5bdd391b92ee46c6b850ef22d718279d8f065"
+        },
+        {
+          "label": "studio mobile layout",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/studio-mobile-layout.png",
+          "sha256": "a754355af30c7b95bfd120dce9dafdbc7d29466d651a6bbcab24fcc5dd4bddda"
+        },
+        {
+          "label": "layer picker",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/layer-picker.png",
+          "sha256": "9c5ba1dcd168186ad072ee7fbba4255eb3ce2b3d21f88b0b3072ebabd8fb51b4"
+        },
+        {
+          "label": "layer picker mobile",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/layer-picker-mobile.png",
+          "sha256": "7ef6b49172af67935b021a6ec97c8d738ddb9dc9c8d91d66892566bcd14605d6"
+        },
+        {
+          "label": "guide layout.regular grid",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/guide-layout.regular-grid.png",
+          "sha256": "b8709c7a69a1a5ff3b0d17cc1bba68fb49414efaab0558d2c3e808567ad07591"
+        },
+        {
+          "label": "guide path.noise band trace 2d",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/guide-path.noise-band-trace-2d.png",
+          "sha256": "e53b349edc6670a9ea7cbc95bb14dc1ea8c110136963df0906dd4a9fa4a7da8c"
+        },
+        {
+          "label": "guide raster.bilinear remap 2d",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/guide-raster.bilinear-remap-2d.png",
+          "sha256": "a505355ebed8e243e35af286369390b0b6424bd0b190f16f54d62496341273ef"
+        },
+        {
+          "label": "guide mobile",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/guide-mobile.png",
+          "sha256": "bc48fb31d7a16fe146ddc7e15e973bc8a0b678660eb19fdc42f3c5fd18956293"
+        },
+        {
+          "label": "cut controls source",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/cut-controls-source.png",
+          "sha256": "39c45c048000e43f458a580245bc286ee5899362828edc1863882b33dc35f417"
+        },
+        {
+          "label": "cut selected",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/cut-selected.png",
+          "sha256": "2bb86eaf521c0bc1e618c00298c79856689f88957dedfab8b3e087757eaced04"
+        },
+        {
+          "label": "warp controls source",
+          "path": ".work/web-app-review/studio-v3-production-2026-09-09/warp-controls-source.png",
+          "sha256": "eec9e052927d1106c9e74e54bce2978324c1914a2c5ee8a5aff8cdd2a56ceea3"
+        }
+      ]
+    },
+    {
       "id": "web-app-v2-production",
       "title": "Expanded studio, API pages and inline sketch source",
       "category": "Root reviewed app integration",

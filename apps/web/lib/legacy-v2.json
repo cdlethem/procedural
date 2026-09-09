@@ -1,0 +1,1352 @@
+{
+  "note": "Frozen app binding from release 1ea2d83a; used only for strict migration.",
+  "bindingVersion": "studio-v2",
+  "catalogSha256": "42ce74a16d7e40d346306aa6e4843ae20de3fd77e0d6711d6fd53a118a08a15a",
+  "techniques": [
+    {
+      "id": "field-marks",
+      "title": "Field marks",
+      "description": "A sampled noise field drawn as short lines or bars.",
+      "parameters": [
+        {
+          "key": "columns",
+          "label": "Columns",
+          "description": "Number of field columns.",
+          "type": "number",
+          "min": 16,
+          "max": 160,
+          "step": 1
+        },
+        {
+          "key": "rows",
+          "label": "Rows",
+          "description": "Number of field rows.",
+          "type": "number",
+          "min": 16,
+          "max": 160,
+          "step": 1
+        },
+        {
+          "key": "pitch",
+          "label": "Pitch",
+          "description": "Distance between field samples in pixels.",
+          "type": "number",
+          "min": 4,
+          "max": 16,
+          "step": 1
+        },
+        {
+          "key": "maxLength",
+          "label": "Maximum length",
+          "description": "Longest mark in pixels.",
+          "type": "number",
+          "min": 1,
+          "max": 64,
+          "step": 1
+        },
+        {
+          "key": "bars",
+          "label": "Bars",
+          "description": "Draw filled bars instead of line marks.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "columns": 80,
+        "rows": 80,
+        "pitch": 8,
+        "maxLength": 14,
+        "bars": false
+      }
+    },
+    {
+      "id": "path-marks",
+      "title": "Path marks",
+      "description": "Marks or traces along seeded gradient paths.",
+      "parameters": [
+        {
+          "key": "steps",
+          "label": "Steps",
+          "description": "Steps per path.",
+          "type": "number",
+          "min": 50,
+          "max": 2000,
+          "step": 1
+        },
+        {
+          "key": "distance",
+          "label": "Step distance",
+          "description": "Distance travelled at each path step.",
+          "type": "number",
+          "min": 0.1,
+          "max": 2,
+          "step": 0.05
+        },
+        {
+          "key": "markLength",
+          "label": "Mark length",
+          "description": "Length of perpendicular marks.",
+          "type": "number",
+          "min": 1,
+          "max": 64,
+          "step": 1
+        },
+        {
+          "key": "trace",
+          "label": "Trace",
+          "description": "Draw connected paths instead of perpendicular marks.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "steps": 600,
+        "distance": 0.4,
+        "markLength": 12,
+        "trace": false
+      }
+    },
+    {
+      "id": "placement-marks",
+      "title": "Placement marks",
+      "description": "Circle placements rendered as rings or diamonds.",
+      "parameters": [
+        {
+          "key": "attempts",
+          "label": "Proposals",
+          "description": "Circle proposals to consider, not a guaranteed shape count.",
+          "type": "number",
+          "min": 100,
+          "max": 5000,
+          "step": 1
+        },
+        {
+          "key": "minimum",
+          "label": "Minimum radius",
+          "description": "Smallest proposed radius.",
+          "type": "number",
+          "min": 2,
+          "max": 32,
+          "step": 1
+        },
+        {
+          "key": "maximum",
+          "label": "Maximum radius",
+          "description": "Largest proposed radius.",
+          "type": "number",
+          "min": 4,
+          "max": 64,
+          "step": 1
+        },
+        {
+          "key": "separation",
+          "label": "Separation",
+          "description": "Spacing relative to the proposed circle radii.",
+          "type": "number",
+          "min": 0.5,
+          "max": 2,
+          "step": 0.05
+        },
+        {
+          "key": "radial",
+          "label": "Radial source",
+          "description": "Use the supplied radial proposal layout instead of random proposals.",
+          "type": "boolean"
+        },
+        {
+          "key": "diamonds",
+          "label": "Diamonds",
+          "description": "Draw four-cornered forms in the same placements.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "attempts": 3000,
+        "minimum": 4,
+        "maximum": 48,
+        "separation": 1,
+        "radial": false,
+        "diamonds": false
+      }
+    },
+    {
+      "id": "lattice-marks",
+      "title": "Lattice marks",
+      "description": "Ordered paths claiming cells across a square lattice.",
+      "parameters": [
+        {
+          "key": "count",
+          "label": "Paths",
+          "description": "Number of ordered starting cells.",
+          "type": "number",
+          "min": 1,
+          "max": 36,
+          "step": 1
+        },
+        {
+          "key": "steps",
+          "label": "Moves",
+          "description": "Maximum moves per route; blocked routes can stop early.",
+          "type": "number",
+          "min": 1,
+          "max": 72,
+          "step": 1
+        },
+        {
+          "key": "weight",
+          "label": "Stroke width",
+          "description": "Route width in pixels.",
+          "type": "number",
+          "min": 1,
+          "max": 20,
+          "step": 0.1
+        },
+        {
+          "key": "dotSize",
+          "label": "Dot size",
+          "description": "Diameter of cell marks.",
+          "type": "number",
+          "min": 2,
+          "max": 20,
+          "step": 0.5
+        },
+        {
+          "key": "dots",
+          "label": "Dots",
+          "description": "Draw dots instead of connected routes.",
+          "type": "boolean"
+        },
+        {
+          "key": "grid",
+          "label": "Grid",
+          "description": "Show the underlying lattice.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "count": 12,
+        "steps": 12,
+        "weight": 8.4,
+        "dotSize": 6,
+        "dots": false,
+        "grid": true
+      }
+    },
+    {
+      "id": "band-marks",
+      "title": "Band marks",
+      "description": "Seeded noise paths rendered as bands or perpendicular ticks.",
+      "parameters": [
+        {
+          "key": "count",
+          "label": "Paths",
+          "description": "Number of noise paths.",
+          "type": "number",
+          "min": 8,
+          "max": 120,
+          "step": 1
+        },
+        {
+          "key": "tolerance",
+          "label": "Tolerance",
+          "description": "Noise-band acceptance tolerance.",
+          "type": "number",
+          "min": 0.001,
+          "max": 0.02,
+          "step": 0.001
+        },
+        {
+          "key": "fieldScale",
+          "label": "Field scale",
+          "description": "Scale of the path direction field.",
+          "type": "number",
+          "min": 0.002,
+          "max": 0.02,
+          "step": 0.001
+        },
+        {
+          "key": "weight",
+          "label": "Stroke weight",
+          "description": "Width of path marks.",
+          "type": "number",
+          "min": 0.25,
+          "max": 3,
+          "step": 0.05
+        },
+        {
+          "key": "ticks",
+          "label": "Ticks",
+          "description": "Draw perpendicular ticks instead of connected paths.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "count": 24,
+        "tolerance": 0.005,
+        "fieldScale": 0.006,
+        "weight": 0.8,
+        "ticks": false
+      }
+    },
+    {
+      "id": "branch-marks",
+      "title": "Branch marks",
+      "description": "Retained endpoint branch trees.",
+      "parameters": [
+        {
+          "key": "generations",
+          "label": "Generations",
+          "description": "Branch rule generations.",
+          "type": "number",
+          "min": 3,
+          "max": 7,
+          "step": 1
+        },
+        {
+          "key": "weight",
+          "label": "Base weight",
+          "description": "Root stroke weight.",
+          "type": "number",
+          "min": 0.3,
+          "max": 5,
+          "step": 0.1
+        },
+        {
+          "key": "tipSize",
+          "label": "Tip size",
+          "description": "Terminal-dot diameter.",
+          "type": "number",
+          "min": 0,
+          "max": 10,
+          "step": 0.5
+        },
+        {
+          "key": "forest",
+          "label": "Forest",
+          "description": "Place several roots.",
+          "type": "boolean"
+        },
+        {
+          "key": "binary",
+          "label": "Binary",
+          "description": "Use two child slots.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "generations": 5,
+        "weight": 2,
+        "tipSize": 4,
+        "forest": false,
+        "binary": false
+      }
+    },
+    {
+      "id": "cut-branch-marks",
+      "title": "Cut branch marks",
+      "description": "A line pool repeatedly cut into retained segments.",
+      "parameters": [
+        {
+          "key": "attempts",
+          "label": "Cuts",
+          "description": "Line-pool cut attempts.",
+          "type": "number",
+          "min": 500,
+          "max": 24000,
+          "step": 100
+        },
+        {
+          "key": "angle",
+          "label": "Cut angle",
+          "description": "First-cut angle scale.",
+          "type": "number",
+          "min": 0.2,
+          "max": 1.8,
+          "step": 0.05
+        },
+        {
+          "key": "weight",
+          "label": "Stroke weight",
+          "description": "Retained segment stroke width.",
+          "type": "number",
+          "min": 0.15,
+          "max": 2,
+          "step": 0.05
+        },
+        {
+          "key": "opacity",
+          "label": "Opacity",
+          "description": "Segment opacity.",
+          "type": "number",
+          "min": 20,
+          "max": 220,
+          "step": 1
+        }
+      ],
+      "defaults": {
+        "attempts": 6000,
+        "angle": 1.1,
+        "weight": 0.6,
+        "opacity": 105
+      }
+    },
+    {
+      "id": "loop-marks",
+      "title": "Loop marks",
+      "description": "Closed spline loops with tiles or translucent triangle fans.",
+      "parameters": [
+        {
+          "key": "tileScale",
+          "label": "Tile scale",
+          "description": "Scale of each oriented tile.",
+          "type": "number",
+          "min": 0.3,
+          "max": 2.5,
+          "step": 0.05
+        },
+        {
+          "key": "outlineWeight",
+          "label": "Outline weight",
+          "description": "Spline outline stroke width.",
+          "type": "number",
+          "min": 0.2,
+          "max": 3,
+          "step": 0.05
+        },
+        {
+          "key": "opacity",
+          "label": "Fan opacity",
+          "description": "Triangle-fan opacity.",
+          "type": "number",
+          "min": 20,
+          "max": 220,
+          "step": 1
+        },
+        {
+          "key": "fans",
+          "label": "Fans",
+          "description": "Fill loops with triangle fans.",
+          "type": "boolean"
+        },
+        {
+          "key": "moved",
+          "label": "Moved control",
+          "description": "Offset one control point in each loop.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "tileScale": 1,
+        "outlineWeight": 0.8,
+        "opacity": 120,
+        "fans": false,
+        "moved": false
+      }
+    },
+    {
+      "id": "region-marks",
+      "title": "Region marks",
+      "description": "Seeded quadrant cells with circle marks.",
+      "parameters": [
+        {
+          "key": "replacements",
+          "label": "Replacements",
+          "description": "Quadrant partition replacements.",
+          "type": "number",
+          "min": 8,
+          "max": 220,
+          "step": 1
+        },
+        {
+          "key": "fraction",
+          "label": "Selection fraction",
+          "description": "Fraction of cells eligible for replacement.",
+          "type": "number",
+          "min": 0.1,
+          "max": 1,
+          "step": 0.05
+        },
+        {
+          "key": "inset",
+          "label": "Inset",
+          "description": "Cell inset in pixels.",
+          "type": "number",
+          "min": 0,
+          "max": 16,
+          "step": 0.5
+        },
+        {
+          "key": "markScale",
+          "label": "Mark scale",
+          "description": "Circle diameter relative to its cell.",
+          "type": "number",
+          "min": 0.05,
+          "max": 0.8,
+          "step": 0.01
+        },
+        {
+          "key": "grid",
+          "label": "Nine marks",
+          "description": "Draw a 3 by 3 mark grid.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "replacements": 80,
+        "fraction": 0.5,
+        "inset": 1,
+        "markScale": 0.28,
+        "grid": false
+      }
+    },
+    {
+      "id": "panel-marks",
+      "title": "Panel marks",
+      "description": "Integer-grid binary partitions drawn as panels.",
+      "parameters": [
+        {
+          "key": "attempts",
+          "label": "Attempts",
+          "description": "Binary partition attempts.",
+          "type": "number",
+          "min": 5,
+          "max": 300,
+          "step": 1
+        },
+        {
+          "key": "columns",
+          "label": "Grid columns",
+          "description": "Integer partition grid width.",
+          "type": "number",
+          "min": 20,
+          "max": 90,
+          "step": 1
+        },
+        {
+          "key": "inset",
+          "label": "Inset",
+          "description": "Panel inset in pixels.",
+          "type": "number",
+          "min": 0,
+          "max": 10,
+          "step": 0.5
+        },
+        {
+          "key": "weight",
+          "label": "Outline weight",
+          "description": "Panel outline width.",
+          "type": "number",
+          "min": 0.2,
+          "max": 3,
+          "step": 0.1
+        },
+        {
+          "key": "axis",
+          "label": "Axis policy",
+          "description": "Cut-axis selection.",
+          "type": "select",
+          "options": [
+            {
+              "value": "LONGEST",
+              "label": "LONGEST"
+            },
+            {
+              "value": "RANDOM",
+              "label": "RANDOM"
+            }
+          ]
+        },
+        {
+          "key": "solid",
+          "label": "Solid",
+          "description": "Fill panels instead of nested outlines.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "attempts": 80,
+        "columns": 60,
+        "inset": 2,
+        "weight": 1,
+        "axis": "LONGEST",
+        "solid": false
+      }
+    },
+    {
+      "id": "cut-marks",
+      "title": "Cut marks",
+      "description": "Seeded retained unequal rectangles.",
+      "parameters": [
+        {
+          "key": "cuts",
+          "label": "Cut rounds",
+          "description": "Number of retained cut rounds.",
+          "type": "number",
+          "min": 2,
+          "max": 24,
+          "step": 1
+        },
+        {
+          "key": "spread",
+          "label": "Cut spread",
+          "description": "Random cut-ratio spread around the midpoint.",
+          "type": "number",
+          "min": 0.05,
+          "max": 0.45,
+          "step": 0.01
+        },
+        {
+          "key": "inset",
+          "label": "Inset",
+          "description": "Rectangle inset in pixels.",
+          "type": "number",
+          "min": 0,
+          "max": 12,
+          "step": 0.5
+        },
+        {
+          "key": "opacity",
+          "label": "Opacity",
+          "description": "Filled-region opacity.",
+          "type": "number",
+          "min": 30,
+          "max": 240,
+          "step": 1
+        },
+        {
+          "key": "staggered",
+          "label": "Staggered",
+          "description": "Use independent second horizontal cuts.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "cuts": 10,
+        "spread": 0.25,
+        "inset": 1,
+        "opacity": 190,
+        "staggered": false
+      }
+    },
+    {
+      "id": "polygon-marks",
+      "title": "Polygon marks",
+      "description": "Greedy non-overlapping convex polygon placements.",
+      "parameters": [
+        {
+          "key": "proposals",
+          "label": "Proposals",
+          "description": "Convex polygon proposals to filter.",
+          "type": "number",
+          "min": 40,
+          "max": 700,
+          "step": 1
+        },
+        {
+          "key": "ratio",
+          "label": "Aspect ratio",
+          "description": "Minor-to-major polygon ratio.",
+          "type": "number",
+          "min": 0.15,
+          "max": 1,
+          "step": 0.01
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "description": "Maximum polygon half-length.",
+          "type": "number",
+          "min": 8,
+          "max": 100,
+          "step": 1
+        },
+        {
+          "key": "weight",
+          "label": "Outline weight",
+          "description": "Polygon stroke width.",
+          "type": "number",
+          "min": 0.2,
+          "max": 4,
+          "step": 0.1
+        },
+        {
+          "key": "shape",
+          "label": "Shape",
+          "description": "Proposal outline.",
+          "type": "select",
+          "options": [
+            {
+              "value": "capsule",
+              "label": "capsule"
+            },
+            {
+              "value": "diamond",
+              "label": "diamond"
+            }
+          ]
+        }
+      ],
+      "defaults": {
+        "proposals": 300,
+        "ratio": 0.65,
+        "size": 70,
+        "weight": 1,
+        "shape": "capsule"
+      }
+    },
+    {
+      "id": "facet-marks",
+      "title": "Facet marks",
+      "description": "Delaunay facets with fill, wire, or grain rendering.",
+      "parameters": [
+        {
+          "key": "sites",
+          "label": "Sites",
+          "description": "Number of seeded facet sites.",
+          "type": "number",
+          "min": 12,
+          "max": 180,
+          "step": 1
+        },
+        {
+          "key": "grain",
+          "label": "Grain density",
+          "description": "Points sampled per facet area.",
+          "type": "number",
+          "min": 0,
+          "max": 0.16,
+          "step": 0.005
+        },
+        {
+          "key": "weight",
+          "label": "Wire weight",
+          "description": "Facet edge stroke width.",
+          "type": "number",
+          "min": 0.2,
+          "max": 3,
+          "step": 0.1
+        },
+        {
+          "key": "opacity",
+          "label": "Fill opacity",
+          "description": "Facet fill opacity.",
+          "type": "number",
+          "min": 20,
+          "max": 240,
+          "step": 1
+        },
+        {
+          "key": "mode",
+          "label": "Mode",
+          "description": "Facet drawing mode.",
+          "type": "select",
+          "options": [
+            {
+              "value": "fill",
+              "label": "fill"
+            },
+            {
+              "value": "wire",
+              "label": "wire"
+            },
+            {
+              "value": "grain",
+              "label": "grain"
+            }
+          ]
+        }
+      ],
+      "defaults": {
+        "sites": 72,
+        "grain": 0.025,
+        "weight": 1,
+        "opacity": 150,
+        "mode": "fill"
+      }
+    },
+    {
+      "id": "grain-marks",
+      "title": "Grain marks",
+      "description": "Triangle samples with selectable distributions.",
+      "parameters": [
+        {
+          "key": "density",
+          "label": "Density",
+          "description": "Samples per triangle pixel.",
+          "type": "number",
+          "min": 0.002,
+          "max": 0.15,
+          "step": 0.002
+        },
+        {
+          "key": "size",
+          "label": "Mark size",
+          "description": "Dot or line size.",
+          "type": "number",
+          "min": 0.5,
+          "max": 8,
+          "step": 0.25
+        },
+        {
+          "key": "weight",
+          "label": "Stroke weight",
+          "description": "Line mark stroke width.",
+          "type": "number",
+          "min": 0.2,
+          "max": 3,
+          "step": 0.1
+        },
+        {
+          "key": "distribution",
+          "label": "Distribution",
+          "description": "Triangle coordinate distribution.",
+          "type": "select",
+          "options": [
+            {
+              "value": "uniform",
+              "label": "uniform"
+            },
+            {
+              "value": "vertex",
+              "label": "vertex"
+            },
+            {
+              "value": "edge",
+              "label": "edge"
+            }
+          ]
+        },
+        {
+          "key": "cells",
+          "label": "Cell triangles",
+          "description": "Sample triangles from seeded quadrant cells.",
+          "type": "boolean"
+        },
+        {
+          "key": "strokes",
+          "label": "Strokes",
+          "description": "Draw short strokes instead of dots.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "density": 0.018,
+        "size": 2,
+        "weight": 1,
+        "distribution": "uniform",
+        "cells": false,
+        "strokes": false
+      }
+    },
+    {
+      "id": "pull-marks",
+      "title": "Pull marks",
+      "description": "Radial fields pull retained scanlines.",
+      "parameters": [
+        {
+          "key": "radius",
+          "label": "Radius",
+          "description": "Pull reach.",
+          "type": "number",
+          "min": 80,
+          "max": 280,
+          "step": 1
+        },
+        {
+          "key": "power",
+          "label": "Power",
+          "description": "Pull falloff power.",
+          "type": "number",
+          "min": 0.3,
+          "max": 4,
+          "step": 0.1
+        },
+        {
+          "key": "lines",
+          "label": "Lines",
+          "description": "Scanline count.",
+          "type": "number",
+          "min": 8,
+          "max": 48,
+          "step": 1
+        },
+        {
+          "key": "jitter",
+          "label": "Jitter",
+          "description": "Seeded line offset.",
+          "type": "number",
+          "min": 0,
+          "max": 8,
+          "step": 0.5
+        },
+        {
+          "key": "weight",
+          "label": "Weight",
+          "description": "Line weight.",
+          "type": "number",
+          "min": 0.5,
+          "max": 4,
+          "step": 0.5
+        }
+      ],
+      "defaults": {
+        "radius": 170,
+        "power": 1.5,
+        "lines": 26,
+        "jitter": 1,
+        "weight": 1
+      }
+    },
+    {
+      "id": "projection-marks",
+      "title": "Projection marks",
+      "description": "Sequential discs push paths outward.",
+      "parameters": [
+        {
+          "key": "radius",
+          "label": "Radius",
+          "description": "Disc reach.",
+          "type": "number",
+          "min": 40,
+          "max": 180,
+          "step": 1
+        },
+        {
+          "key": "strength",
+          "label": "Strength",
+          "description": "Projection amount.",
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "step": 0.05
+        },
+        {
+          "key": "lines",
+          "label": "Lines",
+          "description": "Path count.",
+          "type": "number",
+          "min": 6,
+          "max": 32,
+          "step": 1
+        },
+        {
+          "key": "weight",
+          "label": "Weight",
+          "description": "Line weight.",
+          "type": "number",
+          "min": 0.5,
+          "max": 4,
+          "step": 0.5
+        }
+      ],
+      "defaults": {
+        "radius": 105,
+        "strength": 0.6,
+        "lines": 18,
+        "weight": 1
+      }
+    },
+    {
+      "id": "path-clip-marks",
+      "title": "Path clip marks",
+      "description": "Seeded wandering segments clipped by a notch.",
+      "parameters": [
+        {
+          "key": "paths",
+          "label": "Paths",
+          "description": "Path count.",
+          "type": "number",
+          "min": 3,
+          "max": 18,
+          "step": 1
+        },
+        {
+          "key": "steps",
+          "label": "Steps",
+          "description": "Segments per path.",
+          "type": "number",
+          "min": 30,
+          "max": 80,
+          "step": 1
+        },
+        {
+          "key": "wander",
+          "label": "Wander",
+          "description": "Vertical step variation.",
+          "type": "number",
+          "min": 1,
+          "max": 20,
+          "step": 1
+        },
+        {
+          "key": "notch",
+          "label": "Notch floor",
+          "description": "Notch vertical position.",
+          "type": "number",
+          "min": 180,
+          "max": 480,
+          "step": 1
+        },
+        {
+          "key": "weight",
+          "label": "Weight",
+          "description": "Line weight.",
+          "type": "number",
+          "min": 0.5,
+          "max": 3,
+          "step": 0.5
+        }
+      ],
+      "defaults": {
+        "paths": 8,
+        "steps": 70,
+        "wander": 9,
+        "notch": 300,
+        "weight": 1
+      }
+    },
+    {
+      "id": "ramp-marks",
+      "title": "Ramp marks",
+      "description": "Palette stops colour a dot field.",
+      "parameters": [
+        {
+          "key": "spacing",
+          "label": "Spacing",
+          "description": "Distance between dots.",
+          "type": "number",
+          "min": 12,
+          "max": 48,
+          "step": 1
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "description": "Dot diameter.",
+          "type": "number",
+          "min": 2,
+          "max": 36,
+          "step": 1
+        },
+        {
+          "key": "spread",
+          "label": "Radial spread",
+          "description": "Radial ramp scale.",
+          "type": "number",
+          "min": 0.5,
+          "max": 2,
+          "step": 0.1
+        },
+        {
+          "key": "radial",
+          "label": "Radial",
+          "description": "Sample the ramp radially.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "spacing": 24,
+        "size": 15,
+        "spread": 1,
+        "radial": false
+      }
+    },
+    {
+      "id": "warp-marks",
+      "title": "Warp marks",
+      "description": "A generated palette raster remapped through noise.",
+      "parameters": [
+        {
+          "key": "strength",
+          "label": "Strength",
+          "description": "Pixel displacement.",
+          "type": "number",
+          "min": 0,
+          "max": 40,
+          "step": 1
+        },
+        {
+          "key": "scale",
+          "label": "Scale",
+          "description": "Noise field scale.",
+          "type": "number",
+          "min": 8,
+          "max": 80,
+          "step": 1
+        },
+        {
+          "key": "stripe",
+          "label": "Stripe",
+          "description": "Generated source band width.",
+          "type": "number",
+          "min": 3,
+          "max": 30,
+          "step": 1
+        }
+      ],
+      "defaults": {
+        "strength": 14,
+        "scale": 34,
+        "stripe": 12
+      }
+    },
+    {
+      "id": "blur-marks",
+      "title": "Blur marks",
+      "description": "A generated palette raster filtered by a separable kernel.",
+      "parameters": [
+        {
+          "key": "radius",
+          "label": "Radius",
+          "description": "Blur-kernel radius.",
+          "type": "number",
+          "min": 1,
+          "max": 12,
+          "step": 1
+        },
+        {
+          "key": "stripe",
+          "label": "Stripe",
+          "description": "Generated source band width.",
+          "type": "number",
+          "min": 3,
+          "max": 30,
+          "step": 1
+        },
+        {
+          "key": "horizontal",
+          "label": "Horizontal only",
+          "description": "Restrict blur to horizontal pass.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "radius": 5,
+        "stripe": 10,
+        "horizontal": false
+      }
+    },
+    {
+      "id": "profile-marks",
+      "title": "Profile marks",
+      "description": "A normal-lit radial profile mesh.",
+      "parameters": [
+        {
+          "key": "form",
+          "label": "Form",
+          "description": "Cylinder, waist, or point.",
+          "type": "number",
+          "min": 0,
+          "max": 2,
+          "step": 1
+        },
+        {
+          "key": "slices",
+          "label": "Slices",
+          "description": "Mesh angular slices.",
+          "type": "number",
+          "min": 8,
+          "max": 64,
+          "step": 1
+        },
+        {
+          "key": "height",
+          "label": "Height",
+          "description": "Profile height.",
+          "type": "number",
+          "min": 180,
+          "max": 440,
+          "step": 1
+        },
+        {
+          "key": "radius",
+          "label": "Radius",
+          "description": "Profile radius.",
+          "type": "number",
+          "min": 50,
+          "max": 200,
+          "step": 1
+        },
+        {
+          "key": "caps",
+          "label": "Caps",
+          "description": "Close both profile ends.",
+          "type": "boolean"
+        }
+      ],
+      "defaults": {
+        "form": 1,
+        "slices": 32,
+        "height": 330,
+        "radius": 120,
+        "caps": true
+      }
+    },
+    {
+      "id": "annular-marks",
+      "title": "Annular marks",
+      "description": "A normal-lit indexed annular solid.",
+      "parameters": [
+        {
+          "key": "outer",
+          "label": "Outer radius",
+          "description": "Outer ring radius.",
+          "type": "number",
+          "min": 90,
+          "max": 220,
+          "step": 1
+        },
+        {
+          "key": "inner",
+          "label": "Inner radius",
+          "description": "Inner ring radius.",
+          "type": "number",
+          "min": 20,
+          "max": 80,
+          "step": 1
+        },
+        {
+          "key": "depth",
+          "label": "Depth",
+          "description": "Ring depth.",
+          "type": "number",
+          "min": 20,
+          "max": 180,
+          "step": 1
+        },
+        {
+          "key": "slices",
+          "label": "Slices",
+          "description": "Mesh angular slices.",
+          "type": "number",
+          "min": 8,
+          "max": 80,
+          "step": 1
+        }
+      ],
+      "defaults": {
+        "outer": 160,
+        "inner": 78,
+        "depth": 80,
+        "slices": 40
+      }
+    },
+    {
+      "id": "depth-marks",
+      "title": "Depth marks",
+      "description": "Noise-coloured normal-lit profile facets.",
+      "parameters": [
+        {
+          "key": "radius",
+          "label": "Radius",
+          "description": "Form radius.",
+          "type": "number",
+          "min": 70,
+          "max": 220,
+          "step": 1
+        },
+        {
+          "key": "height",
+          "label": "Height",
+          "description": "Form height.",
+          "type": "number",
+          "min": 180,
+          "max": 440,
+          "step": 1
+        },
+        {
+          "key": "slices",
+          "label": "Slices",
+          "description": "Mesh angular slices.",
+          "type": "number",
+          "min": 8,
+          "max": 64,
+          "step": 1
+        },
+        {
+          "key": "depth",
+          "label": "Depth sample",
+          "description": "Noise depth coordinate.",
+          "type": "number",
+          "min": 0,
+          "max": 4,
+          "step": 0.05
+        }
+      ],
+      "defaults": {
+        "radius": 180,
+        "height": 360,
+        "slices": 32,
+        "depth": 0.5
+      }
+    },
+    {
+      "id": "spring-marks",
+      "title": "Spring marks",
+      "description": "Seeded bodies advanced by explicit spring ticks.",
+      "parameters": [
+        {
+          "key": "count",
+          "label": "Bodies",
+          "description": "Number of independent springs.",
+          "type": "number",
+          "min": 6,
+          "max": 72,
+          "step": 1
+        },
+        {
+          "key": "ticks",
+          "label": "Ticks",
+          "description": "Explicit simulation steps.",
+          "type": "number",
+          "min": 0,
+          "max": 180,
+          "step": 1
+        },
+        {
+          "key": "strength",
+          "label": "Strength",
+          "description": "Target spring strength.",
+          "type": "number",
+          "min": 0.005,
+          "max": 0.25,
+          "step": 0.005
+        },
+        {
+          "key": "damping",
+          "label": "Damping",
+          "description": "Velocity retention.",
+          "type": "number",
+          "min": 0.5,
+          "max": 0.99,
+          "step": 0.01
+        },
+        {
+          "key": "radius",
+          "label": "Target radius",
+          "description": "Target ring radius.",
+          "type": "number",
+          "min": 60,
+          "max": 250,
+          "step": 1
+        },
+        {
+          "key": "weight",
+          "label": "Weight",
+          "description": "Line weight.",
+          "type": "number",
+          "min": 0.5,
+          "max": 4,
+          "step": 0.5
+        }
+      ],
+      "defaults": {
+        "count": 28,
+        "ticks": 48,
+        "strength": 0.06,
+        "damping": 0.86,
+        "radius": 190,
+        "weight": 1
+      }
+    }
+  ]
+}

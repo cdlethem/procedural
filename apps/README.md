@@ -35,13 +35,22 @@ The gallery, local editing, JSON and PNG export work independently of server sto
 ## Explore and compose
 
 Search or filter the gallery and open a study for an interactive canvas, sliders, exact
-numeric inputs, color controls, and a technique guide. **Sketch source** expands a formatted,
+numeric inputs, color controls, and a technique guide. **Sketch source** starts open with a formatted,
 highlighted view of the actual drawing code with a copy button. Operation links open API
-pages containing input/query/output fields, constraints, semantics and binding information.
+pages explaining the operation, constructor inputs and returned data with runnable JavaScript
+examples. Expand the detailed contract for constraints, semantics and binding information.
 
-**Open in studio** starts any study as a layer. Add and select layers, change their settings,
-hide or reorder them, and adjust opacity. Each layer owns an ordered palette of 2–12 colors,
+**Open in studio** starts any study as a layer. **Add layer** opens a searchable thumbnail
+picker for the available techniques. Select layers, change their settings,
+hide or reorder them, and adjust opacity. Move layers by dragging on the canvas or setting
+Position X/Y in the inspector; Scale and Rotation let you resize and turn each layer
+around its center. The inspector groups these controls into Placement, Technique and Style
+tabs. Reset placement restores the original position and size. Each layer owns an ordered palette of 2–12 colors,
 editable with color pickers or hex values. Seeded techniques also expose seed controls.
+Click the canvas and press **R** to reseed eligible techniques. For CutMarks, select a
+region in **Cut regions** mode and use **X** for a vertical cut, **Y** for a horizontal cut, or the visible buttons
+to cut/remove it. Canvas hints list available actions. Changing the seed or base layout
+clears manual cuts; palette and other styling edits preserve them.
 Undo/redo preserves document edits. Local recovery keeps the latest document in this browser;
 explicit server saves keep named projects. JSON export/import moves editable documents
 between browsers. PNG export saves the currently rendered canvas.
@@ -51,9 +60,9 @@ create their own source artwork; they do not filter lower layers. Spring motion 
 an explicit tick count, so changing its settings produces repeatable snapshots.
 
 These bounded controls are example configurations, not package operation defaults or
-recommended artistic ranges. Studio documents use the `studio-v2` app binding, separate
-from the portable recipe grammar. Imports from the original `studio-v1` release migrate
-their palettes and controls; other stale or invalid bindings are rejected.
+recommended artistic ranges. Studio documents use the `studio-v3` app binding, separate
+from the portable recipe grammar. Imports from the exact `studio-v1` and `studio-v2` releases migrate
+their palettes and controls with empty manual-cut histories; other stale or invalid bindings are rejected.
 
 ## Development and verification
 

@@ -20,10 +20,13 @@ linked evidence. Do not treat old pending statements as new assignments.
 - The [web app](apps/README.md) provides 24 techniques in both its gallery and layered
   studio, plus formatted API pages for all 31 operations. Shared numeric controls,
   custom per-layer palettes, inline highlighted source, undo/redo, local recovery,
-  JSON/PNG export and Go storage are implemented. App keyboard shortcuts are removed.
-  [Version 2 root review](evidence/web/app-v2-review.json) records production browser
-  checks and visual inspection; [initial review](evidence/web/app-review.json) is historical.
-  Tailnet deployment: https://eunoia.tailf03dad.ts.net:8443/ (Next 3000, Go 8088).
+  JSON/PNG export and Go storage are implemented. Studio v3 adds per-layer movement,
+  scale and rotation, a thumbnail picker, a compact tabbed inspector, focused reseed/cut
+  actions and human-readable constructor/output guides. Sketch source opens by default.
+  [Version 3 root review](evidence/web/app-v3-review.json) records production browser
+  checks and visual inspection; earlier web reviews remain historical.
+  Tailnet deployment: https://eunoia.tailf03dad.ts.net:8443/ (Next 3002, Go 8088),
+  served from the reviewed `.work/web-ui-release` checkout to isolate concurrent work.
   This remains an app-specific compositor, separate from portable recipes and MCP.
 - Packages are local reviewed artifacts, not registry publications. Java completion
   does not imply equivalent ports, a general recipe executor or full-corpus coverage.
@@ -66,9 +69,11 @@ within their recorded scope. Follow the next user assignment; the [roadmap](docs
 - A Java recipe prototype exists, documented in [recipe preview](docs/java-recipe-preview.md).
   It is not a general portable executor. The [web architecture](docs/web-app-architecture.md)
   freezes the separate app boundary: all 24 browser techniques, at most eight layers,
-  transparent Canvas2D/WebGL composition, versioned JSON with exact v1 migration,
+  transparent Canvas2D/WebGL composition, per-layer affine placement, versioned JSON
+  with exact v1/v2 migration,
   and a trusted local Go store. Arbitrary operation graphs, portable target export,
-  multi-user hosting and prompt/MCP remain future work.
+  multi-user hosting remain future work. Concurrent additive prompt/MCP harness work is
+  separate and excluded from the reviewed app release.
 
 ## Evidence and navigation
 

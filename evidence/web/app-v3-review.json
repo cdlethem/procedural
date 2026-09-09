@@ -1,0 +1,172 @@
+{
+  "kind": "root-web-app-review",
+  "date": "2026-09-09",
+  "owner": "root",
+  "status": "accepted-scoped",
+  "supersedes": "evidence/web/app-v2-review.json",
+  "baseline_commit": "1ea2d83a",
+  "scope": "Studio v3 interaction and documentation refinement; app integration only, no shared operation contract or target acceptance changes.",
+  "capabilities": {
+    "techniques": 24,
+    "api_pages": 31,
+    "placement": "Per-layer origin on 640px canvas, uniform scale and clockwise rotation; exact inputs and direct movement. One drag commits one undo step.",
+    "picker": "Searchable modal with actual sketch thumbnails and category filters.",
+    "inspector": "Adjacent panes and Placement/Technique/Style tabs; normal responsive page flow without clipped internal inspector scrolling.",
+    "actions": "Focused canvas R reseeds; Ctrl/Cmd Z history; selected CutMarks regions support X/Y split, removal and selection clearing. No parameter-toggle keys.",
+    "docs": "31 authored explanations of constructor inputs and useful output access, executable JavaScript snippets and logged output, interactive example links, optional detailed contracts. Sketch source is expanded by default.",
+    "migration": "Exact frozen v1/v2 documents migrate to studio-v3 with identity placement and no manual cuts."
+  },
+  "validation": {
+    "unit_tests": "15 passed: strict admission, ownership, migration, affine mapping and retained cut replay.",
+    "build": "Isolated Next production build passed.",
+    "browser_scenarios": [
+      "gallery search and 24 study navigation",
+      "24 shared detail renderers, inline source, numeric and palette pixel changes",
+      "24 studio technique renderers mount and each picker card adds a layer without browser errors",
+      "group opacity applies to completed layer, with exact undo pixels",
+      "no parameter-toggle shortcuts, custom palette, targeted visibility, duplicate, undo/redo and delete",
+      "JSON roundtrip, rejected import preserves state, PNG export",
+      "Go save/load through Next proxy and local browser recovery",
+      "local rendering and editing remain available when Go service is offline",
+      "focused reseed boundaries and CutMarks edit/undo/export/storage interactions",
+      "layer transform controls, live drag/undo, transformed CutMarks, persistence, WebGL and raster compositing",
+      "31 API index entries and rendered operation details without raw repository links",
+      "responsive gallery, embedded example, and studio at 390px width"
+    ],
+    "supplement": {
+      "status": "passed",
+      "pages": 31,
+      "checks": [
+        "31 human guides, constructor fields, exact displayed executable source, no page overflow",
+        "desktop and mobile guide captures; expanded detailed contract",
+        "CutMarks selection and controls; complex warp controls; source open",
+        "adjacent studio panes; inspector tab keyboard navigation; visual picker images, search, category, Escape and focus restoration; mobile layouts"
+      ],
+      "errors": []
+    },
+    "default_images": "All 24 final native canvas PNGs are byte-identical to the preserved v2 production baseline.",
+    "root_visual_review": "Inspected all three inspector tabs, wide and mobile layout, desktop/mobile picker, separately translated/scaled/rotated composition, selected CutMarks, representative full guides and source pages.",
+    "deployment": "HTTPS 200 for gallery, studio, operation docs, interactive technique, preview PNG and Go health."
+  },
+  "limits": [
+    "Transforms composite each completed 640px layer buffer; enlargement does not regenerate additional geometry beyond that buffer.",
+    "Studio remains an app compositor with at most eight layers, not a portable operation graph.",
+    "Concurrent additive harness work is preserved but excluded from this release and acceptance."
+  ],
+  "deployment": {
+    "url": "https://eunoia.tailf03dad.ts.net:8443/",
+    "next_port": 3002,
+    "go_port": 8088,
+    "checkout": ".work/web-ui-release",
+    "isolation": "Production runs from the reviewed checkout to avoid concurrent shared-file edits."
+  },
+  "source_sha256": {
+    "apps/README.md": "7dc5087cb2b8b656682ffc24ec9a3c4715312ef277e127ab2cf47ad70d59d8a8",
+    "apps/web/app/api-reference/[id]/page.tsx": "b15b717aaa84b0c570a655e079f18fa70d0c66ec6b96aed9f7642be4270dda4e",
+    "apps/web/app/api-reference/page.tsx": "8cc88b7e6f5e179e4a3a66fd95314e972da50ff588e05f24efcfb3a24ef16af1",
+    "apps/web/app/globals.css": "55dd5827dee13245d4de089d2a142e1d96e2fc8e469dcf3ee48a5b87dd8b744f",
+    "apps/web/components/LayerControls.tsx": "be1f30ed985de9c9e0dd8cb4e11ba58012395ef3ef9c9e6700bec66bde39f5c2",
+    "apps/web/components/SourcePanel.tsx": "c0319e85d7c5f5627a14374f75754c26346791a21045df6263d8551b6f494299",
+    "apps/web/components/Studio.tsx": "b248ad37828b540b0b2f52ea995220deb917eb5b0d8957d295543437c977ad9e",
+    "apps/web/components/TechniquePlayground.tsx": "bbda84fab1f5e6c63b57f9894a1d5d01fc6d95080a1a1ebab8c10a9241a7aadc",
+    "apps/web/content/browser-guides.json": "a39446c815bed03f96e85d0369b8bb37d77f8d025d5a199ada9b9271feb7f823",
+    "apps/web/lib/adapters/geometry.ts": "060816bd44dc327d640f21f9a985710c139603106d847f0d11bb435d0e64e8c3",
+    "apps/web/lib/generated-api.json": "6074f4acda20c93593b54cdedd9b676b7575ee5aaf5038f5af46f5ba538804dc",
+    "apps/web/lib/generated-gallery.json": "08a4080589c556388487db51bfb5c5636a6aa6114b936e20cff034a3db2f309f",
+    "apps/web/lib/render-studio.ts": "2a86798269fdf6608026fe88438d1d20a48ebdb54ebe136706839befda096a86",
+    "apps/web/lib/studio-types.ts": "15900cd4b0dc7c7b8d692aefde87142da9ef1ee2e7ee356a58a1782c188c5f93",
+    "apps/web/lib/studio.ts": "2e30515aa2356df9e11b83245fc3ab20bca12f64ac949eaea6e6d19232f15ed0",
+    "apps/web/scripts/generate-api.mjs": "c98736e1468a65ac6d746eaf264ad9852bfaea23fc356d47b5af605b209245c5",
+    "apps/web/scripts/generate-gallery.mjs": "609b056485722807ce5eeda513b9042f5d4ba99d45034ecb826b94b31a73598f",
+    "apps/web/scripts/test-browser.mjs": "cfa43a551bf6354a3bc71133f00c8065d7cbc142e0ffc951216b5fff269ce9a2",
+    "apps/web/tests/effects-adapters.test.ts": "620e5de93ae8273a4413ba93574cbc09b41811705806eb18daac990cd03ccc59",
+    "apps/web/tests/studio.test.ts": "e45459d218a09448ca84b1e31b29ccbddd2cadd2f28947d2b8f87a70f3c058cb",
+    "docs/web-app-architecture.md": "2973e2146844384dee166ce6f0d3a47eaf4a98e381ca0e45c162cda271e60f12",
+    "apps/web/components/InteractiveCanvas.tsx": "2e298bdf095ce3368cb784393396e6711597df8c89dd6252df6921b7bd1ab086",
+    "apps/web/components/LayerPicker.module.css": "3f9df7e8459eedd2851a71a93e1f39fcf65b78691a18990ff2c76752fec9b9c4",
+    "apps/web/components/LayerPicker.tsx": "6fd2949ec8721d7a54748e1fc9f51f46fd7791c4ee93cdb51e1e3948528fdeb4",
+    "apps/web/components/TransformControls.tsx": "fc688122112f763c6c90843fe55addf7c89662c7ac426dcab349e4a6566cb72c",
+    "apps/web/content/api-guides.mjs": "1adb8f382c4bca41ed6bd8bbe96c15d7973d54e4b05136a2522d22a73a127e4b",
+    "apps/web/content/api-inputs.mjs": "f5fa9c6b86898f0df1c4166936dfcd65ecf843cf910d30920cf5994f454442ec",
+    "apps/web/lib/cut-model.ts": "02c573a15362a4fce3ebb8951864ee9e61402ae44b785c6bb7023ec197121d56",
+    "apps/web/lib/layer-transform.ts": "94f519e9cfb68b15bb54109a62d5b58c95c14649cc38407fc7ab86ce2470f47a",
+    "apps/web/lib/legacy-v2.json": "bc1bc9d33372f796b61bd03f2022e7aca020c82ad60c5a8fb05450bb895e822b",
+    "apps/web/tests/cut-model.test.ts": "7e464d0881124875cd9f2cd40e5aded8c9d297b5bb1954a85e7a484a92c12fb4",
+    "apps/web/tests/layer-transform.test.ts": "4a46cee0c70774046f4b186d213167b54078a7d2f2aa5fd45e7ad286d34182d3",
+    "apps/web/components/SketchCanvas.tsx": "8121e15a564a11ac00c2226accfaa362c79ecb5c668145a1111059c0a7f7f6f6"
+  },
+  "artifacts": [
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/report.json",
+      "sha256": "abd537dad089a47245de5c8bfe6225f94e76922ed39e06d3cb56f0b3417e7cc9"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/guide-review.json",
+      "sha256": "6c42948ac8f248732a0f896f91aff51da706fca18f5188647fa041ff9b890b21"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/preview-manifest.json",
+      "sha256": "b2b72c38750d14b5f2f73414b44b43e2cf26e627f6ebc59bcc498a7566cf9149"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/studio-desktop.png",
+      "sha256": "88edeb5073daa483571014eb1f9e3353df0834b126e5bb1cf818819fee4a30b9"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/studio-wide.png",
+      "sha256": "b86deba151d28d518aefdd7e12a8d616bf8567ea11bee138f84667d47aa2ecf4"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/studio-placement.png",
+      "sha256": "824fefa65293a8750fcbcfbc915873e1cb01bd3bf2e398202a78d1017a6fd08e"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/studio-style.png",
+      "sha256": "c2644470bcbbbe6ee68e254c1ed9cce82c3be4fc10351cef665f07fc9f1e82a1"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/studio-transformed-composition.png",
+      "sha256": "2e4f80b9b39280f7abe34d23aeb5bdd391b92ee46c6b850ef22d718279d8f065"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/studio-mobile-layout.png",
+      "sha256": "a754355af30c7b95bfd120dce9dafdbc7d29466d651a6bbcab24fcc5dd4bddda"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/layer-picker.png",
+      "sha256": "9c5ba1dcd168186ad072ee7fbba4255eb3ce2b3d21f88b0b3072ebabd8fb51b4"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/layer-picker-mobile.png",
+      "sha256": "7ef6b49172af67935b021a6ec97c8d738ddb9dc9c8d91d66892566bcd14605d6"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/guide-layout.regular-grid.png",
+      "sha256": "b8709c7a69a1a5ff3b0d17cc1bba68fb49414efaab0558d2c3e808567ad07591"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/guide-path.noise-band-trace-2d.png",
+      "sha256": "e53b349edc6670a9ea7cbc95bb14dc1ea8c110136963df0906dd4a9fa4a7da8c"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/guide-raster.bilinear-remap-2d.png",
+      "sha256": "a505355ebed8e243e35af286369390b0b6424bd0b190f16f54d62496341273ef"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/guide-mobile.png",
+      "sha256": "bc48fb31d7a16fe146ddc7e15e973bc8a0b678660eb19fdc42f3c5fd18956293"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/cut-controls-source.png",
+      "sha256": "39c45c048000e43f458a580245bc286ee5899362828edc1863882b33dc35f417"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/cut-selected.png",
+      "sha256": "2bb86eaf521c0bc1e618c00298c79856689f88957dedfab8b3e087757eaced04"
+    },
+    {
+      "path": ".work/web-app-review/studio-v3-production-2026-09-09/warp-controls-source.png",
+      "sha256": "eec9e052927d1106c9e74e54bce2978324c1914a2c5ee8a5aff8cdd2a56ceea3"
+    }
+  ]
+}

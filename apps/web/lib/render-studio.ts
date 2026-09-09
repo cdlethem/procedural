@@ -36,7 +36,20 @@ export function renderStudio(p: any, document: StudioDocument): void {
         candidate.push();
         candidate.drawingContext.globalCompositeOperation = "source-over";
         candidate.tint(255, Math.round(layer.opacity * 255));
-        candidate.image(layerBuffer, 0, 0, 640, 640);
+        if (
+          layer.transform.x === 320 &&
+          layer.transform.y === 320 &&
+          layer.transform.scale === 1 &&
+          layer.transform.rotation === 0
+        ) {
+          // Preserve the established identity composite exactly, pixel for pixel.
+          candidate.image(layerBuffer, 0, 0, 640, 640);
+        } else {
+          candidate.translate(layer.transform.x, layer.transform.y);
+          candidate.rotate((layer.transform.rotation * Math.PI) / 180);
+          candidate.scale(layer.transform.scale);
+          candidate.image(layerBuffer, -320, -320, 640, 640);
+        }
         candidate.noTint();
         candidate.pop();
       } finally {

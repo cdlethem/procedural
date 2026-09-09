@@ -7,13 +7,11 @@ import {
   type StudioDefinition,
 } from "./types";
 import { noiseBandPath2D } from "../../../../packages/javascript/src/noise-band-path.js";
-import { gradientNoise2D01 } from "../../../../packages/javascript/src/gradient-noise-2d-01.js";
 import { seededLinePool2D } from "../../../../packages/javascript/src/line-pool.js";
 import { seededEndpointBranches2D } from "../../../../packages/javascript/src/branch-tree.js";
 import { seededCirclePlacement2D } from "../../../../packages/javascript/src/circle-placements.js";
 import { seededQuadrantPartition2D } from "../../../../packages/javascript/src/quadrant-partition.js";
 import { binaryCellPartition2D } from "../../../../packages/javascript/src/binary-cell-partition.js";
-import { retainedRectangleCuts2D } from "../../../../packages/javascript/src/retained-rectangle-cuts.js";
 import { orderedConvexPolygonFilter2D } from "../../../../packages/javascript/src/convex-polygon-placements.js";
 import { delaunay2D } from "../../../../packages/javascript/src/delaunay.js";
 import { seededTrianglePoints2D } from "../../../../packages/javascript/src/triangle-points.js";
@@ -23,6 +21,7 @@ import {
   loopTileCommands,
 } from "../../../../packages/javascript/examples/loop-marks/loop-marks.js";
 import { createGrainComposition } from "../../../../packages/javascript/examples/grain-marks/grain-marks.js";
+import { createCutModel } from "../cut-model";
 
 type Q = Record<string, any>;
 const colors = (layer: Layer): number[] => layer.palette;
@@ -617,31 +616,8 @@ function panels(p: any, l: Layer) {
 }
 function cuts(p: any, l: Layer) {
   const q = l.params as Q,
-    model = retainedRectangleCuts2D({ bounds: [24, 24, 616, 616] }),
-    field = gradientNoise2D01({ seed: l.seed }),
+    model = createCutModel(l),
     palette = colors(l);
-  for (let i = 0; i < q.cuts; i++) {
-    const leaf = model.leaves()[i % model.size],
-      b = leaf.bounds,
-      axis = i % 2 ? "Y" : "X",
-      ratio = 0.5 + (field.sample(i, 0) - 0.5) * 2 * q.spread,
-      coord =
-        axis === "X"
-          ? b[0] + (b[2] - b[0]) * ratio
-          : b[1] + (b[3] - b[1]) * ratio;
-    model.cut(leaf.id, axis, coord);
-    if (q.staggered && i % 3 === 0) {
-      const child = model.leaves()[model.size - 1],
-        d = child.bounds;
-      model.cut(
-        child.id,
-        axis === "X" ? "Y" : "X",
-        axis === "X"
-          ? d[1] + (d[3] - d[1]) * (0.3 + 0.4 * field.sample(i, 1))
-          : d[0] + (d[2] - d[0]) * (0.3 + 0.4 * field.sample(i, 1)),
-      );
-    }
-  }
   p.noStroke();
   for (const leaf of model.leaves()) {
     const b = leaf.bounds;

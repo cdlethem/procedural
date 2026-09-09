@@ -91,8 +91,10 @@ test("every effect constructs its package-backed composition on a transparent ta
       opacity: 1,
       seed: 42,
       palette: [0x173f5f, 0xe9c46a, 0xe76f51],
+      cutEdits: [],
+      transform: { x: 320, y: 320, scale: 1, rotation: 0 },
       params: { ...definition.defaults },
-    } as any);
+    });
   }
   assert.ok(calls > 100, "adapters emitted drawing calls");
 });

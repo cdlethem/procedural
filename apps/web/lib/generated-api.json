@@ -199,6 +199,40 @@
         "module": "packages/javascript/src/annular-mesh.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Build an annular mesh",
+        "summary": "Make indexed ring geometry you can light or export.",
+        "useWhen": "Use it when your sketch needs a hollow solid, not a ready-made p5 shape.",
+        "inputs": {
+          "outerRadius": "Distance from the Z axis to the outside wall, in your drawing units. It must be greater than innerRadius.",
+          "innerRadius": "Radius of the central hole, in the same units. It must be positive and smaller than outerRadius; increasing it makes the ring thinner.",
+          "bottomZ": "Z coordinate of the bottom face. Choose a value below topZ.",
+          "topZ": "Z coordinate of the top face. The difference topZ − bottomZ sets the solid’s height.",
+          "slices": "Integer number of angular sections around the ring, at least 3. More sections make the circular outline finer and increase mesh size.",
+          "maxFaces": "Positive integer limit on generated triangles. This mesh needs 8 × slices faces; a smaller budget fails instead of returning a partial solid."
+        },
+        "output": "vertexAt(index) reads local [x,y,z] positions, triangleAt(face) reads three indices, and normalAt(face) supplies its lighting normal. Loop the getter faceCount, call p.beginShape(p.TRIANGLES), emit its indexed vertices, then p.endShape(); toValues() is an export copy, not an image.",
+        "code": "const mesh = annularSolid3D({\n  outerRadius: 20,\n  innerRadius: 8,\n  bottomZ: -4,\n  topZ: 4,\n  slices: 12,\n  maxFaces: 96,\n});\nconsole.log({\n  vertices: mesh.vertexCount,\n  faces: mesh.faceCount,\n  first: mesh.vertexAt(0),\n  normal: mesh.normalAt(0),\n});",
+        "tryThis": "In a p5 WEBGL sketch, use TRIANGLES and call `p.normal(...mesh.normalAt(face))` before emitting the three indexed vertices for each face. Add your own lights, camera and material.",
+        "pitfalls": [],
+        "importLine": "import { annularSolid3D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "vertices": 48,
+            "faces": 96,
+            "first": [
+              20,
+              0,
+              -4
+            ],
+            "normal": [
+              0.9659258262890684,
+              0.2588190451025207,
+              0
+            ]
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -369,6 +403,34 @@
         "module": "packages/javascript/src/raster-remap.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Remap a small raster",
+        "summary": "Sample a source raster at explicit source coordinates.",
+        "useWhen": "Use it for a controlled warp whose coordinate map you already know.",
+        "inputs": {
+          "source": "A plain `{width, height, pixels}` object. Width and height are positive pixel counts; `pixels` contains exactly width × height unsigned `0xAARRGGBB` integers in row order. Convert p5.Image RGBA channels to this packed format first.",
+          "outputWidth": "Positive integer width of the new raster. This sets the number of sampling positions in each output row.",
+          "outputHeight": "Positive integer height of the new raster. Together with outputWidth it determines the required map length.",
+          "sourceCoordinates": "One source `[x, y]` pair for each output pixel, in row order. Coordinates are in source pixel units: integer positions copy pixels, fractional positions interpolate nearby colors. Coordinates beyond an edge clamp to that edge. This is a destination-to-source map."
+        },
+        "output": "pixelAt(index) and pixels() return packed unsigned ARGB8/AARRGGBB values; toValues().pixels is detached data, not p5's RGBA buffer.",
+        "code": "const raster = bilinearRasterRemap2D({\n  source: {\n    width: 2,\n    height: 2,\n    pixels: [0xff000000, 0xffffffff, 0xffff0000, 0xff00ff00],\n  },\n  outputWidth: 2,\n  outputHeight: 2,\n  sourceCoordinates: [\n    [0, 0],\n    [1, 0],\n    [0, 1],\n    [1, 1],\n  ],\n});\nconsole.log(raster.toValues());",
+        "tryThis": "Create `const image = p.createImage(raster.width, raster.height)` and call `image.loadPixels()`. Convert each packed ARGB32 pixel to RGBA slots: for pixel i, write red `(pixel >>> 16) & 255`, green `(pixel >>> 8) & 255`, blue `pixel & 255`, alpha `pixel >>> 24` at `image.pixels[4*i…4*i+3]`, then call `image.updatePixels()` and draw it with `p.image(image, 0, 0)`. Change sourceCoordinates to move sampling positions; outputWidth and outputHeight set the output grid.",
+        "pitfalls": [],
+        "importLine": "import { bilinearRasterRemap2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "width": 2,
+            "height": 2,
+            "pixels": [
+              4278190080,
+              4294967295,
+              4294901760,
+              4278255360
+            ]
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -504,6 +566,34 @@
         ],
         "module": "packages/javascript/src/binary-cell-partition.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Split an integer grid into panels",
+        "summary": "Retain ordered rectangles made by bounded binary cuts.",
+        "useWhen": "Use it when a panel layout should be reproducible from a seed.",
+        "inputs": {
+          "seed": "An integer from 0 to 4294967295. Reuse it with the same inputs to reproduce the result; change it to explore another arrangement.",
+          "columns": "Positive integer width of the starting grid in cells. Cuts fall on integer cell boundaries; multiply returned bounds by your cell size when drawing.",
+          "rows": "Positive integer height of the starting grid in cells. Together with columns it defines the rectangle to subdivide.",
+          "attempts": "Nonnegative integer number of split attempts. An attempt may select a cell that cannot split, so this is not the final panel count.",
+          "axisPolicy": "`\"RANDOM\"` chooses seeded cut axes. `\"LONGEST\"` cuts along the selected cell’s longer dimension; ties follow the contract’s fixed rule."
+        },
+        "output": "size is the panel count and boundsAt(index) returns [left,top,right,bottom], so loop size and draw each rectangle with width right-left and height bottom-top. toValues() is a detached layout snapshot.",
+        "code": "const layout = binaryCellPartition2D({\n  seed: 42,\n  columns: 8,\n  rows: 8,\n  attempts: 6,\n  axisPolicy: \"RANDOM\",\n});\nconsole.log({ cells: layout.size, first: layout.boundsAt(0) });",
+        "tryThis": "Draw each boundsAt() rectangle with your own fill and inset.",
+        "pitfalls": [],
+        "importLine": "import { binaryCellPartition2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "cells": 6,
+            "first": [
+              0,
+              1,
+              8,
+              5
+            ]
+          }
+        ]
       },
       "support": [
         {
@@ -667,6 +757,43 @@
         ],
         "module": "packages/javascript/src/segment-clip.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Clip marks to a polygon",
+        "summary": "Keep the pieces of line segments that lie inside a simple polygon.",
+        "useWhen": "Use it to crop a mark system without changing its generator.",
+        "inputs": {
+          "polygon": "At least three distinct `[x, y]` vertices around the clipping boundary. Concave outlines and either winding work. Do not repeat the first vertex at the end; edges must not cross or touch non-neighboring edges.",
+          "segments": "Line segments as `[x1, y1, x2, y2]`, in the same coordinate system as the polygon. A segment can produce multiple pieces inside a concave outline. Zero-length segments and point-only contacts produce no piece.",
+          "maxWork": "Nonnegative integer geometry-work budget. For V polygon vertices and S segments, allow at least V² + S × (8V² + 16V + 8). This is an operation budget, not a duration in milliseconds.",
+          "maxOutputSegments": "Nonnegative integer limit on all retained pieces. Allow more than the input count when a concave boundary can split one line into several pieces. Exceeding it fails the call without partial output."
+        },
+        "output": "segmentAt(index) returns each retained [x1,y1,x2,y2] piece in input order; use size as the p.line() loop bound. toValues() is an export copy.",
+        "code": "const clipped = clipSegmentsSimplePolygon2D({\n  polygon: [\n    [0, 0],\n    [4, 0],\n    [4, 4],\n    [0, 4],\n  ],\n  segments: [[-1, 2, 5, 2]],\n  maxWork: 216,\n  maxOutputSegments: 16,\n});\nconsole.log(clipped.toValues());",
+        "tryThis": "Pass the retained segments to p.line() in their returned order.",
+        "pitfalls": [],
+        "importLine": "import { clipSegmentsSimplePolygon2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "segments": [
+              [
+                0,
+                2,
+                4,
+                2
+              ]
+            ],
+            "sourceIndices": [
+              0
+            ],
+            "intervals": [
+              [
+                0.16666666666666666,
+                0.8333333333333334
+              ]
+            ]
+          }
+        ]
       },
       "support": [
         {
@@ -864,6 +991,31 @@
         "module": "packages/javascript/src/closed-spline.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Trace a closed spline",
+        "summary": "Create a smooth looping path from control points.",
+        "useWhen": "Use it when marks should follow a reusable curved perimeter.",
+        "inputs": {
+          "controls": "At least three ordered `[x, y]` points. The curve passes through them and closes from the last back to the first automatically. Repeated points are allowed; the curve may overshoot between controls.",
+          "subdivisions": "Positive integer number of chords per control-to-control span used to estimate arc length. Increase it for finer distance-based sampling. It refines the length lookup, not the underlying Catmull–Rom curve."
+        },
+        "output": "`sampleParameter(t)` and `sampleDistance(distance)` return `{x, y, tangentX, tangentY}`. Draw with `p.vertex(sample.x, sample.y)`; use `Math.atan2(sample.tangentY, sample.tangentX)` to orient a mark. `length` is an approximate perimeter from the subdivision table; `serialize()` returns the original configuration.",
+        "code": "const loop = closedSpline2D({\n  controls: [\n    [0, 0],\n    [2, 0],\n    [2, 2],\n    [0, 2],\n  ],\n  subdivisions: 2,\n});\nconsole.log({ length: loop.length, point: loop.sampleDistance(1) });",
+        "tryThis": "Parameter t advances one control-point span per unit and wraps at the control count. Distance is in drawing units and wraps at length. Sample at equal distance intervals to distribute marks around the loop.",
+        "pitfalls": [],
+        "importLine": "import { closedSpline2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "length": 8.246211251235321,
+            "point": {
+              "x": 0.9626847794502349,
+              "y": -0.24977713242560712,
+              "tangentX": 2.498662794553643,
+              "tangentY": -0.029857499854668124
+            }
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -982,6 +1134,22 @@
         ],
         "module": "packages/javascript/src/cyclic-palette.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Cycle through RGB colors",
+        "summary": "Make an immutable palette sampler that wraps a phase.",
+        "useWhen": "Use it when multiple marks need a repeatable color sequence.",
+        "inputs": {
+          "colors": "One or more colors as unsigned `0xRRGGBB` integers, in cycle order. Samples interpolate between neighbors, including the last back to the first. Repeated colors can hold a hue longer; a one-color palette is constant."
+        },
+        "output": "`sample(phase)` returns one `0xRRGGBB` integer. A phase from 0 to 1 travels through the entire palette; values wrap, so 0 and 1 select the same color. `serialize()` returns a copy of the palette configuration.",
+        "code": "const palette = cyclicPalette({ colors: [0x224466, 0xdd8844, 0x66aa88] });\nconsole.log(palette.sample(0.5).toString(16));",
+        "tryThis": "For p5 in RGB mode, convert the result c with `p.fill((c >>> 16) & 255, (c >>> 8) & 255, c & 255)`. Sampling at index / markCount distributes a color cycle across your marks.",
+        "pitfalls": [],
+        "importLine": "import { cyclicPalette } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          "a29966"
+        ]
       },
       "support": [
         {
@@ -1261,6 +1429,30 @@
         "module": "packages/javascript/src/delaunay.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Triangulate points",
+        "summary": "Build a retained Delaunay mesh from planar sites.",
+        "useWhen": "Use it when you want facets or adjacency from your own point set.",
+        "inputs": {
+          "points": "Your sites as finite `[x, y]` pairs. Duplicate coordinates merge and unique sites sort by X then Y, so returned vertex indices may differ from input indices. Collinear sites have no triangles.",
+          "maxWork": "Nonnegative integer budget for preprocessing, hull tests, face searches and edge legalization. It must cover at least the input count; larger point sets may need much more. An exhausted budget throws without returning a partial mesh."
+        },
+        "output": "pointAt(index) returns each local [x,y] site and triangleAt(index) returns three site indices; loop faceCount and use those indices to fill p5 facets. toValues() is a detached mesh description.",
+        "code": "const mesh = delaunay2D({\n  points: [\n    [0, 0],\n    [1, 0],\n    [1, 1],\n    [0, 1],\n    [0.25, 0.25],\n  ],\n  maxWork: 100,\n});\nconsole.log({ faces: mesh.faceCount, triangle: mesh.triangleAt(0) });",
+        "tryThis": "Fill each triangle with a palette color in p5.",
+        "pitfalls": [],
+        "importLine": "import { delaunay2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "faces": 4,
+            "triangle": [
+              0,
+              2,
+              1
+            ]
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -1412,6 +1604,22 @@
         "module": "packages/javascript/src/gradient-noise-2d-01.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Sample a seeded 2D field",
+        "summary": "Create a pure gradient-noise sampler with values from zero to one.",
+        "useWhen": "Use it to steer angles, lengths, or color phases.",
+        "inputs": {
+          "seed": "An integer from 0 to 4294967295 that selects a repeatable 2D field. Construct once, then call sample(x, y) at many coordinates. Changing the seed changes the field; sampling does not advance random state."
+        },
+        "output": "`sample(x, y)` returns a number from 0 to 1 at your field coordinates. It does not create points or draw marks. `serialize()` returns `{seed}` so you can recreate the same field.",
+        "code": "const field = gradientNoise2D01({ seed: 42 });\nconsole.log(field.sample(1.25, 3.5));",
+        "tryThis": "For a full-turn heading, use `field.sample(x * 0.01, y * 0.01) * Math.PI * 2`. The 0.01 is your chosen drawing-to-field scale, not a required default.",
+        "pitfalls": [],
+        "importLine": "import { gradientNoise2D01 } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          0.7435302734375
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -1529,6 +1737,22 @@
         ],
         "module": "packages/javascript/src/gradient-noise-3d-01.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Sample a seeded 3D field",
+        "summary": "Create a pure three-dimensional gradient-noise sampler.",
+        "useWhen": "Use it when a third coordinate represents depth, frame, or another explicit axis.",
+        "inputs": {
+          "seed": "An integer from 0 to 4294967295 that selects a repeatable 3D field. Construct once, then call sample(x, y, z). You supply z explicitly, so it can represent depth or an animation coordinate."
+        },
+        "output": "`sample(x, y, z)` returns a number from 0 to 1. Use it as a color phase, displacement or heading input. Repeated sampling at the same coordinates gives the same value; `serialize()` returns `{seed}`.",
+        "code": "const field = gradientNoise3D01({ seed: 42 });\nconsole.log(field.sample(1.25, 3.5, 0.5));",
+        "tryThis": "Advance z by an explicit amount per frame for an evolving field. Keep the seed and frame-to-z mapping to reproduce the animation later.",
+        "pitfalls": [],
+        "importLine": "import { gradientNoise3D01 } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          0.49249267578125
+        ]
       },
       "support": [
         {
@@ -1731,6 +1955,36 @@
         "module": "packages/javascript/src/gradient-path.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Follow a field",
+        "summary": "Retain a path by sampling a seeded direction field at each step.",
+        "useWhen": "Use it when marks should inherit motion from a field.",
+        "inputs": {
+          "field": "A descriptor `{seed: 42}` for the package’s 2D noise field. This field seed selects the terrain being sampled; pass data rather than a p5 noise function.",
+          "start": "The initial `[x, y]` point in drawing units. It is retained as point 0, before any movement.",
+          "steps": "Nonnegative integer number of advances. The returned path has steps + 1 positions and steps headings.",
+          "stepDistance": "Nonnegative drawing distance for each advance. Larger values separate consecutive points more; zero keeps every point at the start.",
+          "fieldScale": "Multiply each drawing coordinate by this value before sampling the field. Larger magnitudes sample a wider span of the field across the same drawing; zero samples one fixed location. Negative values are allowed.",
+          "fieldOffset": "A finite `[x, y]` translation applied after fieldScale, in field coordinates. Change it to sample a different part of the same seeded field without moving the path’s starting point.",
+          "angleBase": "Heading offset in radians, applied at every step. The heading is angleBase + noiseValue × angleScale; this is not just the initial direction.",
+          "angleScale": "Number of radians represented by the field’s 0–1 span. For example, 2π maps that span around a full turn; 0 produces a straight path at angleBase."
+        },
+        "output": "pointAt(index) reads positions 0 through steps, while headingAt(index) reads headings 0 through steps-1; toValues() returns ordered positions and headings arrays.",
+        "code": "const path = gradientPath2D({\n  field: { seed: 42 },\n  start: [-0.25, 0.5],\n  steps: 3,\n  stepDistance: 0.4,\n  fieldScale: 0.01,\n  fieldOffset: [0, 0],\n  angleBase: 0,\n  angleScale: 6.283185307179586,\n});\nconst values = path.toValues();\nconsole.log({\n  points: values.positions.length,\n  end: values.positions.at(-1),\n  heading: path.headingAt(2),\n});",
+        "tryThis": "Use pointAt(index) and headingAt(index) to draw a short perpendicular mark at every retained step.",
+        "pitfalls": [],
+        "importLine": "import { gradientPath2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "points": 4,
+            "end": [
+              -1.449923722802246,
+              0.4943838070428874
+            ],
+            "heading": 3.1588656217076356
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -1906,6 +2160,30 @@
         "module": "packages/javascript/src/masked-source-over.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Composite through a mask",
+        "summary": "Blend a source raster over a destination with per-pixel mask weights.",
+        "useWhen": "Use it when your mask is already computed and needs exact composition.",
+        "inputs": {
+          "source": "A plain `{width, height, pixels}` object. Width and height are positive pixel counts; `pixels` contains exactly width × height unsigned `0xAARRGGBB` integers in row order. Convert p5.Image RGBA channels to this packed format first.",
+          "destination": "The background raster in the same `{width, height, pixels}` format and with exactly the same dimensions as source. It is left unchanged; the operation creates a new raster.",
+          "mask": "One finite value from 0 to 1 per pixel, in row order. Zero keeps the destination; one uses the source’s full alpha; intermediate values reduce source opacity before source-over blending."
+        },
+        "output": "pixelAt(index) and pixels() return packed unsigned ARGB8/AARRGGBB values; toValues().pixels provides detached data.",
+        "code": "const raster = maskedSourceOver2D({\n  source: { width: 1, height: 1, pixels: [0xff112233] },\n  destination: { width: 1, height: 1, pixels: [0xffaabbcc] },\n  mask: [0.5],\n});\nconsole.log(raster.toValues());",
+        "tryThis": "Create `const image = p.createImage(raster.width, raster.height)` and call `image.loadPixels()`. Convert each packed ARGB32 pixel to RGBA slots: for pixel i, write red `(pixel >>> 16) & 255`, green `(pixel >>> 8) & 255`, blue `pixel & 255`, alpha `pixel >>> 24` at `image.pixels[4*i…4*i+3]`, then call `image.updatePixels()` and draw it with `p.image(image, 0, 0)`.",
+        "pitfalls": [],
+        "importLine": "import { maskedSourceOver2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "width": 1,
+            "height": 1,
+            "pixels": [
+              4284379008
+            ]
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -2060,6 +2338,43 @@
         ],
         "module": "packages/javascript/src/nearest-segment-contact.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Find first segment contact",
+        "summary": "Query nearest contacts between ordered segment sets.",
+        "useWhen": "Use it when a drawing needs a deterministic closest obstacle relationship.",
+        "inputs": {
+          "queries": "Directed `[x1, y1, x2, y2]` segments. The first endpoint is the search origin; reversing endpoints can change which contact is first. Each query gets one hit or an explicit miss.",
+          "obstacles": "Obstacle segments in the same `[x1, y1, x2, y2]` format and coordinate units. Input order breaks ties when contacts lie at the same query position. Endpoint contacts and collinear overlaps count.",
+          "maxWork": "Nonnegative integer pair-test budget. Set it to at least queries.length × obstacles.length. The operation tests the complete supplied sets and does not shorten later obstacles after a hit."
+        },
+        "output": "hitAt(queryIndex) returns null or {obstacleIndex,t,x,y}; the index matches queries, so use x and y to end or highlight that query stroke. toValues().hits instead exports each point as [x,y].",
+        "code": "const contacts = nearestSegmentContact2D({\n  queries: [[0, 0, 10, 0]],\n  obstacles: [[3, -2, 3, 2]],\n  maxWork: 1,\n});\nconsole.log({ hit: contacts.hitAt(0), exported: contacts.toValues() });",
+        "tryThis": "Use returned contact coordinates to place a highlight or stop a stroke.",
+        "pitfalls": [],
+        "importLine": "import { nearestSegmentContact2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "hit": {
+              "obstacleIndex": 0,
+              "t": 0.3,
+              "x": 3,
+              "y": 0
+            },
+            "exported": {
+              "hits": [
+                {
+                  "obstacleIndex": 0,
+                  "t": 0.3,
+                  "point": [
+                    3,
+                    0
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       "support": [
         {
@@ -2275,6 +2590,37 @@
         ],
         "module": "packages/javascript/src/noise-band-path.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Trace within a noise band",
+        "summary": "Grow a bounded path while a noise condition accepts steps.",
+        "useWhen": "Use it for organic strands with an explicit work limit.",
+        "inputs": {
+          "field": "A descriptor `{seed: 42}` for the package’s 2D noise field. This field seed selects the terrain being sampled; pass data rather than a p5 noise function.",
+          "start": "Starting `[x, y]` position, always retained. Its noise value establishes the reference level for every proposal in this path.",
+          "heading": "Initial direction in radians. Zero points along positive X; positive angles turn toward positive Y. On a usual p5 canvas that appears clockwise.",
+          "seed": "An integer from 0 to 4294967295 for the path’s proposal turns. This is separate from field.seed: change it to try another route through the same noise field.",
+          "attempts": "Nonnegative integer number of proposals. Rejected proposals do not add a point, but subsequent attempts continue. This is not a requested number of vertices.",
+          "stepDistance": "Nonnegative distance between the current point and a proposed next point. Zero permits repeated positions when the band accepts them.",
+          "fieldScale": "Multiply each drawing coordinate by this value before sampling the field. Larger magnitudes sample a wider span of the field across the same drawing; zero samples one fixed location. Negative values are allowed.",
+          "fieldOffset": "A finite `[x, y]` translation applied after fieldScale, in field coordinates. Change it to sample a different part of the same seeded field without moving the path’s starting point.",
+          "tolerance": "Nonnegative allowed difference from the starting noise value. A proposal is accepted only when its absolute difference is strictly less than tolerance. Zero accepts none; larger values relax the band.",
+          "maxVertices": "Positive integer limit including the starting point. Set attempts + 1 to allow every proposal to succeed. An accepted proposal beyond this capacity throws rather than truncating the path."
+        },
+        "output": "pointAt(index) reads the start plus each accepted [x,y] step and headingAt(index) reads accepted headings; size, accepted, and rejected show what the fixed attempt budget produced. toValues() is copied geometry.",
+        "code": "const path = noiseBandPath2D({\n  field: { seed: 1 },\n  start: [0, 0],\n  heading: 0,\n  seed: 1,\n  attempts: 3,\n  stepDistance: 1,\n  fieldScale: 0.01,\n  fieldOffset: [0, 0],\n  tolerance: 1,\n  maxVertices: 4,\n});\nconsole.log({ points: path.size, end: path.pointAt(path.size - 1) });",
+        "tryThis": "Turn headings into cross marks or connected strokes.",
+        "pitfalls": [],
+        "importLine": "import { noiseBandPath2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "points": 4,
+            "end": [
+              2.3495795578642675,
+              0.9237970478532749
+            ]
+          }
+        ]
       },
       "support": [
         {
@@ -2534,6 +2880,34 @@
         "module": "packages/javascript/src/occupied-lattice-paths.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Grow occupied grid paths",
+        "summary": "Retain non-overwriting paths through a rectangular lattice.",
+        "useWhen": "Use it for tile routes and constrained line work.",
+        "inputs": {
+          "dimensions": "Positive integer `[columns, rows]` cell counts. Coordinates run from 0 through columns − 1 and rows − 1; this is a grid, not a canvas size in pixels.",
+          "starts": "Ordered integer `[x, y]` starting cells within the grid. Paths grow in this order and share occupancy, so earlier paths can block later starts. A blocked start returns an empty path.",
+          "maxSteps": "Nonnegative integer move limit per path. Each successful move visits a free north/east/south/west neighbor. A path may stop earlier when all neighbors are occupied or outside the grid.",
+          "maxCells": "Integer cell-work capacity. It must cover starts.length × (maxSteps + 1), even if paths would actually become blocked earlier. The operation checks this before growing any paths.",
+          "random": "Either `{seed: 42}` or `{state: [s0, s1, s2, s3]}`. Each number is an integer from 0 to 4294967295; the four state words cannot all be zero. State can continue random choices, but does not preserve previous calls’ occupancy."
+        },
+        "output": "pathCount is the number of paths; pathLengthAt(path) and cellAt(path,cell) let you draw every retained integer [x,y] cell. completionReasonAt(path) explains where a route stopped; toValues() copies that collection.",
+        "code": "const paths = occupiedLatticePaths2D({\n  dimensions: [3, 3],\n  starts: [[1, 1]],\n  maxSteps: 2,\n  maxCells: 6,\n  random: { seed: 42 },\n});\nconsole.log({\n  pathCount: paths.pathCount,\n  firstLength: paths.pathLengthAt(0),\n  firstCell: paths.cellAt(0, 0),\n  reason: paths.completionReasonAt(0),\n});",
+        "tryThis": "Map each returned cell to your canvas grid.",
+        "pitfalls": [],
+        "importLine": "import { occupiedLatticePaths2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "pathCount": 1,
+            "firstLength": 3,
+            "firstCell": [
+              1,
+              1
+            ],
+            "reason": "step-limit"
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -2710,6 +3084,48 @@
         "module": "packages/javascript/src/circle-placements.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Keep separated circles",
+        "summary": "Filter caller-provided circles in proposal order.",
+        "useWhen": "Use it after making your own circle candidates.",
+        "inputs": {
+          "centres": "Proposed circle centers as `[x, y]` pairs, in priority order. Earlier accepted circles can exclude later proposals; the operation does not move any center.",
+          "radii": "One positive radius per center, in the same drawing units. These are radii, so use twice each value as a p5 circle diameter.",
+          "separationScale": "A positive multiplier on the sum of two radii. At 1 circles may touch; below 1 they may overlap; above 1 they have size-relative clearance. It is not a fixed pixel gap."
+        },
+        "output": "`size` is the accepted circle count. `pointAt(index)` and `radiusAt(index)` supply its center and radius; `sourceIndexAt(index)` identifies the original proposal. `toValues()` copies accepted centers, radii, source indices and the attempt count.",
+        "code": "const kept = orderedCircleFilter2D({\n  centres: [\n    [0, 0],\n    [2, 0],\n  ],\n  radii: [1, 1],\n  separationScale: 1,\n});\nconsole.log({\n  count: kept.size,\n  source: kept.sourceIndexAt(0),\n  exported: kept.toValues(),\n});",
+        "tryThis": "Draw only the accepted centres and radii.",
+        "pitfalls": [],
+        "importLine": "import { orderedCircleFilter2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "count": 2,
+            "source": 0,
+            "exported": {
+              "centres": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ],
+              "radii": [
+                1,
+                1
+              ],
+              "sourceIndices": [
+                0,
+                1
+              ],
+              "attempts": 2
+            }
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -2856,6 +3272,62 @@
         ],
         "module": "packages/javascript/src/convex-polygon-placements.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Keep non-overlapping polygons",
+        "summary": "Filter convex polygon proposals in their supplied order.",
+        "useWhen": "Use it to preserve a deliberate proposal sequence while avoiding collisions.",
+        "inputs": {
+          "polygons": "An ordered list of polygon proposals, each containing at least three `[x, y]` vertices around a strictly convex outline. Earlier accepted polygons win. Edge or point contact, overlap and containment exclude a later polygon; do not repeat the closing vertex."
+        },
+        "output": "size is the retained count; vertexCountAt(polygon), xAt(polygon,vertex), and yAt(polygon,vertex) provide each accepted loop for p.beginShape()/vertex(). toValues().polygons copies those loops.",
+        "code": "const kept = orderedConvexPolygonFilter2D({\n  polygons: [\n    [\n      [0, 0],\n      [4, 0],\n      [4, 4],\n      [0, 4],\n    ],\n    [\n      [10, 10],\n      [14, 10],\n      [14, 14],\n    ],\n  ],\n});\nconsole.log({\n  vertices: kept.vertexCountAt(0),\n  first: [kept.xAt(0, 0), kept.yAt(0, 0)],\n  exported: kept.toValues().polygons,\n});",
+        "tryThis": "Stroke the accepted polygon vertices in p5.",
+        "pitfalls": [],
+        "importLine": "import { orderedConvexPolygonFilter2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "vertices": 4,
+            "first": [
+              0,
+              0
+            ],
+            "exported": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  0,
+                  4
+                ]
+              ],
+              [
+                [
+                  10,
+                  10
+                ],
+                [
+                  14,
+                  10
+                ],
+                [
+                  14,
+                  14
+                ]
+              ]
+            ]
+          }
+        ]
       },
       "support": [
         {
@@ -3132,6 +3604,33 @@
         "module": "packages/javascript/src/radial-profile.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Revolve a profile into a surface",
+        "summary": "Create a retained mesh from a radial profile and angular slices.",
+        "useWhen": "Use it when a silhouette should become editable 3D geometry.",
+        "inputs": {
+          "profile": "At least two `[z, radius]` pairs describing a silhouette around the Z axis. Z must strictly increase. Interior radii must be positive; either endpoint can have radius 0 to form a pole. Two zero-radius endpoints alone cannot form a surface.",
+          "slices": "Integer number of sections around the axis, at least 3. Increasing it refines the circular direction; add profile points to refine the silhouette along Z.",
+          "capStart": "Boolean requesting a flat cap when the first profile radius is positive. A zero-radius start pole already closes the surface.",
+          "capEnd": "Boolean requesting a flat cap when the last profile radius is positive. A zero-radius end pole already closes the surface.",
+          "maxFaces": "Positive integer triangle budget covering the side bands and requested caps. If the mesh would exceed it, generation fails without publishing partial geometry."
+        },
+        "output": "vertexAt(index) returns local [x,y,z], triangleAt(face) returns vertex indices, and normalAt(face) returns a face normal. Loop faceCount(), call p.beginShape(p.TRIANGLES), emit its indexed vertices, then p.endShape(); toValues() is detached geometry, not a rendered view.",
+        "code": "const mesh = RadialProfile3D.generate({\n  profile: [\n    [0, 2],\n    [1, 0.75],\n    [3, 2],\n  ],\n  slices: 4,\n  capStart: true,\n  capEnd: true,\n  maxFaces: 1000,\n});\nconsole.log({ faces: mesh.faceCount(), vertex: mesh.vertexAt(0) });",
+        "tryThis": "In p5 WEBGL, call `p.normal(...mesh.normalAt(face))` before emitting the indexed vertices of each triangle. Add your own camera, lights and material; this operation only supplies geometry.",
+        "pitfalls": [],
+        "importLine": "import { RadialProfile3D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "faces": 24,
+            "vertex": [
+              2,
+              0,
+              0
+            ]
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -3288,6 +3787,25 @@
         ],
         "module": "packages/javascript/src/radial-pull.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Pull points radially",
+        "summary": "Build an influence model that displaces points around radial controls.",
+        "useWhen": "Use it to warp your own geometry without touching its topology.",
+        "inputs": {
+          "influences": "Ordered `[centerX, centerY, radius, power]` tuples. Radius and power must be positive. Points inside each radius receive an inward displacement whose falloff uses (distance/radius)^power. Larger power increases that pull at a fixed interior distance. Contributions use the original point and add together; overlapping pulls may fold geometry."
+        },
+        "output": "transform([x,y]) returns a local [x,y] pair; transform(x,y) returns {x,y}. Apply it once per vertex before your drawing call; serialize() copies influence data.",
+        "code": "const pull = radialPull2D({ influences: [[0, 0, 10, 2]] });\nconsole.log(pull.transform(5, 0));",
+        "tryThis": "Apply the model to each point before drawing a shape.",
+        "pitfalls": [],
+        "importLine": "import { radialPull2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "x": -2.5,
+            "y": 0
+          }
+        ]
       },
       "support": [
         {
@@ -3463,6 +3981,30 @@
         ],
         "module": "packages/javascript/src/raster-crossfade.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Crossfade two rasters",
+        "summary": "Blend matching rasters with explicit per-pixel weights.",
+        "useWhen": "Use it for a calculated transition rather than a renderer blend mode.",
+        "inputs": {
+          "first": "A plain `{width, height, pixels}` object. Width and height are positive pixel counts; `pixels` contains exactly width × height unsigned `0xAARRGGBB` integers in row order. Convert p5.Image RGBA channels to this packed format first.",
+          "second": "The second raster, with the same dimensions and packed pixel format as first. Neither input raster is modified.",
+          "weights": "One finite 0–1 value per pixel in row order. Zero selects first, one selects second, and intermediate values blend their alpha and premultiplied color. Use a constant array for a uniform fade or varying weights for a spatial transition."
+        },
+        "output": "pixelAt(index) and pixels() return packed unsigned ARGB8/AARRGGBB values; toValues().pixels is detached data rather than p5 RGBA channels.",
+        "code": "const raster = rasterCrossfade2D({\n  first: { width: 1, height: 1, pixels: [0xff112233] },\n  second: { width: 1, height: 1, pixels: [0xffaabbcc] },\n  weights: [0.5],\n});\nconsole.log(raster.toValues());",
+        "tryThis": "Create `const image = p.createImage(raster.width, raster.height)` and call `image.loadPixels()`. Convert each packed ARGB32 pixel to RGBA slots: for pixel i, write red `(pixel >>> 16) & 255`, green `(pixel >>> 8) & 255`, blue `pixel & 255`, alpha `pixel >>> 24` at `image.pixels[4*i…4*i+3]`, then call `image.updatePixels()` and draw it with `p.image(image, 0, 0)`.",
+        "pitfalls": [],
+        "importLine": "import { rasterCrossfade2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "width": 1,
+            "height": 1,
+            "pixels": [
+              4284379008
+            ]
+          }
+        ]
       },
       "support": [
         {
@@ -3683,6 +4225,31 @@
         "module": "packages/javascript/src/regular-grid.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Make regular positions",
+        "summary": "Create a row-major rectangular sequence of points.",
+        "useWhen": "Use it as a repeatable starting layout for marks.",
+        "inputs": {
+          "origin": "The first `[x, y]` position in your drawing units. This is the location of the top-left grid point when drawing with p5’s usual axes.",
+          "spacing": "Positive `[horizontalDistance, verticalDistance]` between neighboring points. These are center-to-center distances; choose your mark size separately.",
+          "columns": "Nonnegative integer number of points in each row. Zero produces an empty grid.",
+          "rows": "Nonnegative integer number of rows. The total point count is columns × rows; zero produces an empty grid."
+        },
+        "output": "pointAt(index) returns each row-major local [x,y] position; loop size to place marks. serialize() copies {origin,spacing,columns,rows}; zero columns or rows makes an empty sequence.",
+        "code": "const grid = regularGrid({\n  origin: [10, 20],\n  spacing: [8, 12],\n  columns: 3,\n  rows: 2,\n});\nconsole.log({ count: grid.size, last: grid.pointAt(5) });",
+        "tryThis": "Loop over grid.size and draw a mark at each point.",
+        "pitfalls": [],
+        "importLine": "import { regularGrid } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "count": 6,
+            "last": [
+              26,
+              32
+            ]
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -3832,6 +4399,70 @@
         ],
         "module": "packages/javascript/src/retained-rectangle-cuts.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Edit retained rectangles",
+        "summary": "Start with one rectangle and make direct stable-ID cuts or removals.",
+        "useWhen": "Use it for interactive region editing.",
+        "inputs": {
+          "bounds": "The initial rectangle as `[minX, minY, maxX, maxY]`, with each minimum strictly below its maximum. Maxima are coordinates, not width/height. The rectangle starts with stable ID 0; pass that ID to cut or remove."
+        },
+        "output": "cut(id, axis, coordinate) mutates the retained layout and returns stable child IDs; leaves() returns current {id,bounds:[left,top,right,bottom]} entries for drawing and selection. toValues() is a detached snapshot.",
+        "code": "const layout = retainedRectangleCuts2D({ bounds: [0, 0, 10, 8] });\nconst children = layout.cut(0, \"X\", 4);\nconsole.log({ children, leaves: layout.leaves(), exported: layout.toValues() });",
+        "tryThis": "For each leaf, draw `p.rect(left, top, right - left, bottom - top)`. `cut(id, 'X', x)` makes a vertical division and `cut(id, 'Y', y)` a horizontal one; the coordinate must lie strictly inside the chosen region. `remove(id)` removes a leaf. Store those commands to replay an editing session.",
+        "pitfalls": [],
+        "importLine": "import { retainedRectangleCuts2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "children": [
+              1,
+              2
+            ],
+            "leaves": [
+              {
+                "id": 1,
+                "bounds": [
+                  0,
+                  0,
+                  4,
+                  8
+                ]
+              },
+              {
+                "id": 2,
+                "bounds": [
+                  4,
+                  0,
+                  10,
+                  8
+                ]
+              }
+            ],
+            "exported": {
+              "nextId": 3,
+              "leaves": [
+                {
+                  "id": 1,
+                  "bounds": [
+                    0,
+                    0,
+                    4,
+                    8
+                  ]
+                },
+                {
+                  "id": 2,
+                  "bounds": [
+                    4,
+                    0,
+                    10,
+                    8
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       "support": [
         {
@@ -4039,6 +4670,33 @@
         ],
         "module": "packages/javascript/src/circle-placements.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Place circles from a seed",
+        "summary": "Propose and retain separated circles under an explicit attempt budget.",
+        "useWhen": "Use it for reproducible scattered forms.",
+        "inputs": {
+          "seed": "An integer from 0 to 4294967295. Reuse it with the same inputs to reproduce the result; change it to explore another arrangement.",
+          "attempts": "Nonnegative integer count of circle proposals. Only proposals that pass separation are kept; more attempts do not guarantee a particular circle count or a filled canvas.",
+          "origin": "The `[x, y]` origin of the rectangle in which centers are proposed. This limits centers, not the full circles.",
+          "extent": "Positive `[width, height]` of the center-proposal rectangle. Circle edges may extend outside it; add your own containment rule if needed.",
+          "radiusRange": "Positive `[minimumRadius, maximumRadius]`, with minimum no larger than maximum. Equal values make fixed-size circles. The proposal distribution favors smaller radii rather than sampling them uniformly.",
+          "separationScale": "A positive multiplier on the sum of two radii. At 1 circles may touch; below 1 they may overlap; above 1 they have size-relative clearance. It is not a fixed pixel gap."
+        },
+        "output": "pointAt(index) and radiusAt(index) provide each accepted circle in proposal order; sourceIndexAt(index) points back to the accepted proposal. toValues() copies placements.",
+        "code": "const circles = seededCirclePlacement2D({\n  seed: 42,\n  attempts: 20,\n  origin: [0, 0],\n  extent: [40, 40],\n  radiusRange: [2, 5],\n  separationScale: 1,\n});\nconsole.log({ kept: circles.size, first: circles.pointAt(0) });",
+        "tryThis": "Draw circles or replace them with your own symbols.",
+        "pitfalls": [],
+        "importLine": "import { seededCirclePlacement2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "kept": 15,
+            "first": [
+              16.548066530376673,
+              38.79149153828621
+            ]
+          }
+        ]
       },
       "support": [
         {
@@ -4350,6 +5008,33 @@
         "module": "packages/javascript/src/branch-tree.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Grow retained branches",
+        "summary": "Generate endpoint branches from explicit rules and a seed.",
+        "useWhen": "Use it when a tree needs repeatable topology before styling.",
+        "inputs": {
+          "seed": "An integer from 0 to 4294967295. Reuse it with the same inputs to reproduce the result; change it to explore another arrangement.",
+          "root": "The first branch as `{origin: [x, y], heading, length}`. Heading is in radians and length is nonnegative. Zero heading points along positive X; length is in your drawing units.",
+          "rules": "One rule per generation, in order. Each is `{lengthScale: [min, max], slots: [{probability, turn: [min, max]}, ...]}`. Length scales are ordered nonnegative multipliers on parent length; turns are ordered radian offsets from parent heading; probability is 0–1. Each slot can create a child at a parent endpoint.",
+          "maxSegments": "Positive integer limit on all retained segments including the root. More generations or child slots can grow the tree quickly; exceeding the limit fails the complete call."
+        },
+        "output": "segmentAt(index) returns local [x1,y1,x2,y2] and generationAt(index) identifies its branch generation, so loop size and style each p.line(). toValues() copies it.",
+        "code": "const tree = seededEndpointBranches2D({\n  seed: 4,\n  root: { origin: [0, 0], heading: 0, length: 10 },\n  rules: [\n    { lengthScale: [0.7, 0.7], slots: [{ probability: 1, turn: [0, 0] }] },\n  ],\n  maxSegments: 2,\n});\nconsole.log({ segments: tree.size, first: tree.segmentAt(0) });",
+        "tryThis": "Use generationAt() to vary stroke color or width.",
+        "pitfalls": [],
+        "importLine": "import { seededEndpointBranches2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "segments": 2,
+            "first": [
+              0,
+              0,
+              10,
+              0
+            ]
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -4539,6 +5224,35 @@
         ],
         "module": "packages/javascript/src/line-pool.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Repeatedly cut a line",
+        "summary": "Build a bounded retained pool of line segments.",
+        "useWhen": "Use it for branching cut structures with stable segment access.",
+        "inputs": {
+          "seed": "An integer from 0 to 4294967295. Reuse it with the same inputs to reproduce the result; change it to explore another arrangement.",
+          "segment": "Initial `[x1, y1, x2, y2]` line in your drawing units. It is retained even with zero attempts. Later cuts shorten selected segments and may append branches.",
+          "attempts": "Nonnegative integer number of attempts to cut a selected segment. Segments shorter than minCutLength are skipped; successful cuts do not all create the same number of branches.",
+          "firstCutAngleScale": "Nonnegative multiplier on the generated first-cut angular spread, measured in radians. Larger values spread first-cut branches farther from their parent direction. Repeat cuts use their own fixed turn rule.",
+          "minCutLength": "Positive drawing length threshold for selecting a segment to cut. Shorter segments are skipped. This does not promise that all output branches exceed the threshold.",
+          "maxSegments": "Positive integer capacity including the original line and appended children. If a cut would exceed it, the call throws with no partial pool."
+        },
+        "output": "segmentAt(index) returns each local [x1,y1,x2,y2] in retained order, so loop size and draw p.line() directly. toValues() copies segment data.",
+        "code": "const pool = seededLinePool2D({\n  seed: 12,\n  segment: [0, 0, 10, 0],\n  attempts: 2,\n  firstCutAngleScale: 1,\n  minCutLength: 1,\n  maxSegments: 5,\n});\nconsole.log({ segments: pool.size, first: pool.segmentAt(0) });",
+        "tryThis": "Draw each retained segment in its stored order.",
+        "pitfalls": [],
+        "importLine": "import { seededLinePool2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "segments": 3,
+            "first": [
+              0,
+              0,
+              1.5607142667059506,
+              0
+            ]
+          }
+        ]
       },
       "support": [
         {
@@ -4745,6 +5459,34 @@
         "module": "packages/javascript/src/quadrant-partition.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Subdivide seeded regions",
+        "summary": "Replace eligible rectangles with quadrant cells.",
+        "useWhen": "Use it for a repeatable mosaic skeleton.",
+        "inputs": {
+          "seed": "An integer from 0 to 4294967295. Reuse it with the same inputs to reproduce the result; change it to explore another arrangement.",
+          "replacements": "Nonnegative integer number of leaf replacements. Each selected rectangle becomes four quadrants, so the result has 1 + 3 × replacements cells.",
+          "origin": "The `[x, y]` lower-coordinate corner of the starting rectangle. With p5’s downward Y axis this is its top-left corner.",
+          "extent": "Positive `[width, height]` of the starting rectangle in drawing units. Child rectangles occupy quadrants of this area.",
+          "selectionFraction": "A value greater than 0 and no greater than 1. It limits selection to a prefix of the current ordered cell list: 1 considers all cells; smaller values favor earlier cells. It controls which cells split, not how many split."
+        },
+        "output": "boundsAt(index) returns [left,top,right,bottom] and idAt(index) returns the stable live ID, so loop size and draw each cell with width right-left and height bottom-top. toValues() copies the layout.",
+        "code": "const layout = seededQuadrantPartition2D({\n  seed: 42,\n  replacements: 2,\n  origin: [0, 0],\n  extent: [16, 16],\n  selectionFraction: 1,\n});\nconsole.log({ cells: layout.size, first: layout.boundsAt(0) });",
+        "tryThis": "Draw a different mark inside every returned bounds.",
+        "pitfalls": [],
+        "importLine": "import { seededQuadrantPartition2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "cells": 7,
+            "first": [
+              0,
+              0,
+              8,
+              8
+            ]
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -4914,6 +5656,30 @@
         "module": "packages/javascript/src/triangle-points.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Sample points in a triangle",
+        "summary": "Generate uniform retained triangle samples from a seed.",
+        "useWhen": "Use it for dots, grain, or point-driven marks inside a triangle.",
+        "inputs": {
+          "seed": "An integer from 0 to 4294967295. Reuse it with the same inputs to reproduce the result; change it to explore another arrangement.",
+          "count": "Nonnegative integer number of points to produce. This is an exact output count; zero returns an empty set.",
+          "triangle": "Three finite `[x, y]` vertices in drawing units, forming a triangle with nonzero area. Points are sampled uniformly over its area; either winding is accepted."
+        },
+        "output": "pointAt(index) returns each sampled local [x,y] coordinate; loop size to place dots or mark origins. toValues() copies them.",
+        "code": "const points = seededTrianglePoints2D({\n  seed: 42,\n  count: 6,\n  triangle: [\n    [0, 0],\n    [10, 0],\n    [0, 10],\n  ],\n});\nconsole.log({ count: points.size, first: points.pointAt(0) });",
+        "tryThis": "Draw each point as a dot or use it as a mark origin.",
+        "pitfalls": [],
+        "importLine": "import { seededTrianglePoints2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "count": 6,
+            "first": [
+              0.19432708573588575,
+              6.237637336269391
+            ]
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -5082,6 +5848,32 @@
         "module": "packages/javascript/src/separable-blur.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Blur with explicit kernels",
+        "summary": "Apply horizontal and vertical kernels to a raster.",
+        "useWhen": "Use it when blur parameters must be data rather than renderer state.",
+        "inputs": {
+          "source": "A plain `{width, height, pixels}` object. Width and height are positive pixel counts; `pixels` contains exactly width × height unsigned `0xAARRGGBB` integers in row order. Convert p5.Image RGBA channels to this packed format first.",
+          "kernelX": "An odd-length list of nonnegative horizontal weights, with at least one positive value. The middle entry aligns with the current pixel. Weights are normalized, so [1, 2, 1] and [2, 4, 2] express the same kernel. [1] leaves this axis unblurred.",
+          "kernelY": "Vertical weights with the same rules as kernelX. Use a wider kernel for a broader vertical blur, or [1] for horizontal-only filtering. Samples beyond an edge clamp to that edge.",
+          "maxSamples": "Positive integer work budget of at least width × height × (kernelX.length + kernelY.length). Zero-weight taps still count. The operation checks this before filtering."
+        },
+        "output": "pixelAt(index) and pixels() return packed unsigned ARGB8/AARRGGBB values; toValues().pixels is detached data rather than p5 RGBA channels.",
+        "code": "const raster = separableBlur2D({\n  source: { width: 2, height: 1, pixels: [0xff112233, 0xffaabbcc] },\n  kernelX: [1, 2, 1],\n  kernelY: [1],\n  maxSamples: 100,\n});\nconsole.log(raster.toValues());",
+        "tryThis": "Create `const image = p.createImage(raster.width, raster.height)` and call `image.loadPixels()`. Convert each packed ARGB32 pixel to RGBA slots: for pixel i, write red `(pixel >>> 16) & 255`, green `(pixel >>> 8) & 255`, blue `pixel & 255`, alpha `pixel >>> 24` at `image.pixels[4*i…4*i+3]`, then call `image.updatePixels()` and draw it with `p.image(image, 0, 0)`.",
+        "pitfalls": [],
+        "importLine": "import { separableBlur2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "width": 2,
+            "height": 1,
+            "pixels": [
+              4281813081,
+              4286879142
+            ]
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -5236,6 +6028,40 @@
         "module": "packages/javascript/src/disc-projection.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Project points out of discs",
+        "summary": "Move points through ordered disc influences.",
+        "useWhen": "Use it for a simple geometry adjustment before drawing.",
+        "inputs": {
+          "points": "Finite `[x, y]` positions to adjust. The result keeps the same count and order; the input list remains unchanged.",
+          "discs": "Ordered `[centerX, centerY, radius]` circles, with positive radii. A point inside a disc moves toward its edge before the next disc is tested. Order therefore matters; a later move can enter an earlier disc again.",
+          "strength": "A value from 0 to 1. Zero leaves points unchanged; one moves an interior point to the current disc’s edge; intermediate values move it partway. An exact-center point moves along positive X.",
+          "maxTests": "Nonnegative integer budget of at least points.length × discs.length, including when strength is zero. This is one pass through the discs, not an iterative collision solver."
+        },
+        "output": "pointInto(index,out,offset) writes each final local [x,y], while points() returns a packed coordinate array and toValues().points returns [x,y] pairs. Loop size to draw those points.",
+        "code": "const result = sequentialDiscProjection2D({\n  points: [[5, 0]],\n  discs: [[0, 0, 10]],\n  strength: 0.5,\n  maxTests: 1,\n});\nconst point = [0, 0];\nresult.pointInto(0, point, 0);\nconsole.log({ point, packed: result.points(), exported: result.toValues().points });",
+        "tryThis": "Draw the projected points with your own symbols.",
+        "pitfalls": [],
+        "importLine": "import { sequentialDiscProjection2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "point": [
+              7.5,
+              0
+            ],
+            "packed": [
+              7.5,
+              0
+            ],
+            "exported": [
+              [
+                7.5,
+                0
+              ]
+            ]
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -5386,6 +6212,22 @@
         ],
         "module": "packages/javascript/src/stop-ramp.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Sample color stops",
+        "summary": "Create an immutable color ramp from positioned RGB stops.",
+        "useWhen": "Use it when colors should change along a distance or phase.",
+        "inputs": {
+          "stops": "One or more `{position, color}` records. Positions must strictly increase within 0–1; colors are unsigned `0xRRGGBB` integers. Closer stops create faster color changes. The first and last colors hold outside their positions; this ramp does not wrap."
+        },
+        "output": "sample(position) returns RGB24 at any finite position and holds the endpoint color outside the stop range; serialize() copies the ordered stops.",
+        "code": "const ramp = stopRamp({\n  stops: [\n    { position: 0.25, color: 0xff0000 },\n    { position: 0.75, color: 0x0000ff },\n  ],\n});\nconsole.log(ramp.sample(0.5).toString(16));",
+        "tryThis": "Map a mark index to a position before sampling.",
+        "pitfalls": [],
+        "importLine": "import { stopRamp } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          "800080"
+        ]
       },
       "support": [
         {
@@ -5612,6 +6454,56 @@
         "module": "packages/javascript/src/target-springs.js",
         "package": "@procedurals/javascript"
       },
+      "guide": {
+        "title": "Step points toward targets",
+        "summary": "Advance a retained spring state by one explicit update.",
+        "useWhen": "Use it for deterministic motion with no wall-clock dependency.",
+        "inputs": {
+          "state": "`{bodies: [...]}`, where each body is `{position: [x, y], velocity: [vx, vy], strength, retention}`. Position is in drawing units and velocity is distance per logical step. Nonnegative strength scales attraction toward the target; retention from 0–1 controls how much velocity survives for the next step. Even retention 0 allows the current position advance.",
+          "targets": "One finite `[x, y]` target per body, in matching order and drawing units. Each call advances exactly one logical step; call it again with the returned state to animate. Targets can change between calls."
+        },
+        "output": "The returned state exposes size, positionAt(index), and velocityAt(index); toValues() returns {bodies:[{position,velocity,strength,retention}]} for persistence or the next update.",
+        "code": "const targets = [[1, 1]];\nconst next = targetSprings2D({\n  state: {\n    bodies: [{ position: [0, 0], velocity: [0, 0], strength: 1, retention: 1 }],\n  },\n  targets,\n});\nconst following = targetSprings2D({ state: next.toValues(), targets });\nconsole.log({ first: next.toValues(), second: following.toValues() });",
+        "tryThis": "Draw positions from next.toValues().bodies, then pass that same value as state for the next explicit frame.",
+        "pitfalls": [],
+        "importLine": "import { targetSprings2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "first": {
+              "bodies": [
+                {
+                  "position": [
+                    1,
+                    1
+                  ],
+                  "velocity": [
+                    1,
+                    1
+                  ],
+                  "strength": 1,
+                  "retention": 1
+                }
+              ]
+            },
+            "second": {
+              "bodies": [
+                {
+                  "position": [
+                    2,
+                    2
+                  ],
+                  "velocity": [
+                    1,
+                    1
+                  ],
+                  "strength": 1,
+                  "retention": 1
+                }
+              ]
+            }
+          }
+        ]
+      },
       "support": [
         {
           "target": "processing-java",
@@ -5792,6 +6684,34 @@
         ],
         "module": "packages/javascript/src/triangle-points.js",
         "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Map chosen triangle coordinates",
+        "summary": "Turn supplied unit pairs into retained points in a triangle.",
+        "useWhen": "Use it when you want a custom distribution instead of seeded uniform samples.",
+        "inputs": {
+          "triangle": "Three finite `[x, y]` vertices with nonzero area, in your drawing units. Either winding works. The mapping preserves your coordinate-pair order.",
+          "unitCoordinates": "Your chosen `[u, v]` pairs, each value between 0 and 1 inclusive. The map uses sqrt(u) to convert the unit square to triangle area coordinates. Uniform independent pairs give area-uniform points; patterned pairs create your own distribution. The operation itself draws no random numbers."
+        },
+        "output": "pointAt(index) returns each mapped local [x,y] in unitCoordinates order; loop size to draw those points. toValues() copies them.",
+        "code": "const points = mapTriangleCoordinates2D({\n  triangle: [\n    [0, 0],\n    [10, 0],\n    [0, 10],\n  ],\n  unitCoordinates: [\n    [0.25, 0.5],\n    [0.81, 0.2],\n  ],\n});\nconsole.log(points.toValues());",
+        "tryThis": "Generate unit coordinates with your own rule, then map them once.",
+        "pitfalls": [],
+        "importLine": "import { mapTriangleCoordinates2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "points": [
+              [
+                2.5,
+                2.5
+              ],
+              [
+                7.2,
+                1.8
+              ]
+            ]
+          }
+        ]
       },
       "support": [
         {

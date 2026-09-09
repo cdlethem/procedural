@@ -11,6 +11,11 @@ export type Parameter = {
   step?: number;
   options?: { value: string; label: string }[];
 };
+import type { LayerTransform } from "./layer-transform";
+
+export type CutEdit =
+  | { kind: "cut"; id: number; axis: "X" | "Y"; coordinate: number }
+  | { kind: "remove"; id: number };
 export type Layer = {
   id: string;
   technique: TechniqueId;
@@ -18,11 +23,13 @@ export type Layer = {
   opacity: number;
   seed: number;
   palette: number[];
+  cutEdits: CutEdit[];
+  transform: LayerTransform;
   params: Record<string, number | string | boolean>;
 };
 export type StudioDocument = {
   schemaVersion: 1;
-  bindingVersion: "studio-v2";
+  bindingVersion: "studio-v3";
   catalogSha256: string;
   width: 640;
   height: 640;

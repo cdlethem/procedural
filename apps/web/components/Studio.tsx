@@ -1,8 +1,10 @@
 "use client";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import SketchCanvas from "./SketchCanvas";
+import { InteractiveCanvas } from "./InteractiveCanvas";
 import { LayerControls } from "./LayerControls";
+import { LayerPicker } from "./LayerPicker";
+import { TransformControls } from "./TransformControls";
 import {
   createDocument,
   createLayer,
@@ -20,6 +22,7 @@ type Hist = {
   hydrated: boolean;
 };
 type Project = { id: string; title: string; updatedAt: string };
+type InspectorTab = "placement" | "technique" | "style";
 function reduce(
   s: Hist,
   a: { kind: "commit" | "undo" | "redo" | "restore"; doc?: StudioDocument },
@@ -55,18 +58,24 @@ export function Studio() {
     requestedId = techniques.some((t) => t.id === requested)
       ? (requested as TechniqueId)
       : undefined;
-  const [h, dispatch] = useReducer(reduce, requestedId, (id): Hist => ({
-      doc: createDocument(id),
-      past: [],
-      future: [],
-      hydrated: false,
-    })),
+  const [h, dispatch] = useReducer(
+      reduce,
+      requestedId,
+      (id): Hist => ({
+        doc: createDocument(id),
+        past: [],
+        future: [],
+        hydrated: false,
+      }),
+    ),
     [selected, setSelected] = useState(0),
     [status, setStatus] = useState<string | null>(null),
     [renderError, setRenderError] = useState<string | null>(null),
     [title, setTitle] = useState("Untitled project"),
     [projectId, setProjectId] = useState<string | null>(null),
-    [projects, setProjects] = useState<Project[]>([]);
+    [projects, setProjects] = useState<Project[]>([]),
+    [pickerOpen, setPickerOpen] = useState(false),
+    [inspectorTab, setInspectorTab] = useState<InspectorTab>("technique");
   const file = useRef<HTMLInputElement>(null),
     doc = h.doc,
     layer = doc.layers[selected],
@@ -87,9 +96,22 @@ export function Studio() {
   ) =>
     commit({
       ...doc,
-      layers: doc.layers.map((l, n) =>
-        n === i ? { ...l, ...change, params: change.params ?? l.params } : l,
-      ),
+      layers: doc.layers.map((l, n) => {
+        if (n !== i) return l;
+        const params = change.params ?? l.params;
+        const clearsEdits =
+          l.technique === "cut-marks" &&
+          ((change.seed !== undefined && change.seed !== l.seed) ||
+            ["cuts", "spread", "staggered"].some(
+              (key) => params[key] !== l.params[key],
+            ));
+        return {
+          ...l,
+          ...change,
+          params,
+          cutEdits: clearsEdits ? [] : (change.cutEdits ?? l.cutEdits),
+        };
+      }),
     });
   const restoredRoute = useRef<string | null>(null);
   useEffect(() => {
@@ -119,6 +141,9 @@ export function Studio() {
   useEffect(() => {
     setSelected((index) => Math.min(index, Math.max(0, doc.layers.length - 1)));
   }, [doc.layers.length]);
+  useEffect(() => {
+    setInspectorTab("technique");
+  }, [layer?.id]);
   useEffect(() => {
     if (!h.hydrated) return;
     try {
@@ -166,6 +191,7 @@ export function Studio() {
       id: createLayer(layer.technique).id,
       params: { ...layer.params },
       palette: [...layer.palette],
+      cutEdits: layer.cutEdits.map((edit) => ({ ...edit })),
     });
     commit({ ...doc, layers });
     setSelected(selected + 1);
@@ -270,6 +296,13 @@ export function Studio() {
           <h1>Studio</h1>
         </div>
         <div className="panel-actions">
+          <button
+            className="action secondary"
+            type="button"
+            onClick={() => setPickerOpen(true)}
+          >
+            Add layer
+          </button>
           <input
             aria-label="Project title"
             value={title}
@@ -328,26 +361,6 @@ export function Studio() {
               </li>
             ))}
           </ul>
-          <div className="control">
-            <label htmlFor="add">Add layer</label>
-            <select
-              id="add"
-              defaultValue=""
-              onChange={(e) => {
-                if (e.target.value) add(e.target.value as TechniqueId);
-                e.target.value = "";
-              }}
-            >
-              <option value="" disabled>
-                Choose a technique
-              </option>
-              {techniques.map((t) => (
-                <option key={t.id} value={t.id}>
-                  {t.title}
-                </option>
-              ))}
-            </select>
-          </div>
           <div className="panel-actions">
             <button className="action secondary" onClick={() => move(-1)}>
               Move up
@@ -362,9 +375,49 @@ export function Studio() {
               Delete
             </button>
           </div>
+          <div className="control">
+            <label htmlFor="background">Background</label>
+            <input
+              id="background"
+              type="color"
+              value={doc.background}
+              onChange={(e) =>
+                commit({ ...doc, background: e.target.value })
+              }
+            />
+          </div>
+          <details className="studio-projects">
+            <summary>Saved projects</summary>
+            <div className="panel-actions">
+              <button className="action secondary" onClick={refresh}>
+                Refresh
+              </button>
+            </div>
+            <ul className="project-list">
+              {projects.map((p) => (
+                <li key={p.id}>
+                  <button onClick={() => load(p.id)}>
+                    {p.title}
+                    <small>{new Date(p.updatedAt).toLocaleString()}</small>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </details>
         </section>
         <section className="canvas-wrap">
-          <SketchCanvas document={doc} onError={setRenderError} />
+          <InteractiveCanvas
+            document={doc}
+            layer={layer}
+            onChangeLayer={(change) => at(selected, change)}
+            onUndo={() => dispatch({ kind: "undo" })}
+            onRedo={() => dispatch({ kind: "redo" })}
+            canUndo={Boolean(h.past.length)}
+            canRedo={Boolean(h.future.length)}
+            onError={setRenderError}
+            showHistory={false}
+            transformsEnabled
+          />
           <div className="panel-actions">
             <button className="action secondary" onClick={png}>
               Export PNG
@@ -390,39 +443,71 @@ export function Studio() {
         <section className="studio-panel">
           <h2>Inspector</h2>
           {layer && technique ? (
-            <LayerControls
-              layer={layer}
-              technique={technique}
-              onChange={(x) => at(selected, x)}
-            />
+            <div className="inspector-tabs">
+              <div aria-label="Inspector sections" role="tablist">
+                {([
+                  ["placement", "Placement"],
+                  ["technique", "Technique"],
+                  ["style", "Style"],
+                ] as const).map(([id, label]) => (
+                  <button
+                    aria-controls={`inspector-${id}`}
+                    aria-selected={inspectorTab === id}
+                    id={`inspector-tab-${id}`}
+                    key={id}
+                    onClick={() => setInspectorTab(id)}
+                    onKeyDown={(event) => {
+                      const tabs = ["placement", "technique", "style"] as const;
+                      const index = tabs.indexOf(id);
+                      const next = event.key === "ArrowRight" ? (index + 1) % 3
+                        : event.key === "ArrowLeft" ? (index + 2) % 3
+                        : event.key === "Home" ? 0 : event.key === "End" ? 2 : -1;
+                      if (next < 0) return;
+                      event.preventDefault();
+                      setInspectorTab(tabs[next]);
+                      event.currentTarget.parentElement?.querySelector<HTMLButtonElement>(`#inspector-tab-${tabs[next]}`)?.focus();
+                    }}
+                    role="tab"
+                    tabIndex={inspectorTab === id ? 0 : -1}
+                    type="button"
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+              <div
+                aria-labelledby={`inspector-tab-${inspectorTab}`}
+                id={`inspector-${inspectorTab}`}
+                role="tabpanel"
+              >
+                {inspectorTab === "placement" ? (
+                  <TransformControls
+                    layer={layer}
+                    onChange={(x) => at(selected, x)}
+                  />
+                ) : (
+                  <LayerControls
+                    layer={layer}
+                    technique={technique}
+                    onChange={(x) => at(selected, x)}
+                    section={inspectorTab}
+                  />
+                )}
+              </div>
+            </div>
           ) : (
             <p className="control-description">Add a layer to begin.</p>
           )}
-          <div className="control">
-            <label htmlFor="background">Background</label>
-            <input
-              id="background"
-              type="color"
-              value={doc.background}
-              onChange={(e) => commit({ ...doc, background: e.target.value })}
-            />
-          </div>
-          <h2>Saved projects</h2>
-          <button className="action secondary" onClick={refresh}>
-            Refresh
-          </button>
-          <ul className="project-list">
-            {projects.map((p) => (
-              <li key={p.id}>
-                <button onClick={() => load(p.id)}>
-                  {p.title}
-                  <small>{new Date(p.updatedAt).toLocaleString()}</small>
-                </button>
-              </li>
-            ))}
-          </ul>
         </section>
       </div>
+      <LayerPicker
+        open={pickerOpen}
+        onClose={() => setPickerOpen(false)}
+        onSelect={(id) => {
+          add(id as TechniqueId);
+          setPickerOpen(false);
+        }}
+      />
     </main>
   );
 }

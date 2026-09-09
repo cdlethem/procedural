@@ -240,7 +240,7 @@ const bindings = techniques
     })),
   }));
 const studioBinding = {
-  version: "studio-v2",
+  version: "studio-v3",
   catalogSha256: createHash("sha256")
     .update(JSON.stringify(bindings))
     .digest("hex"),
