@@ -47,6 +47,7 @@ const techniqueTitle = new Map(
 const interactionsOnly = process.argv.includes("--interactions-only");
 const transformsOnly = process.argv.includes("--transforms-only");
 const galleryOnly = process.argv.includes("--gallery-only");
+const workspaceOnly = process.argv.includes("--workspace-only");
 const hash = (b) => createHash("sha256").update(b).digest("hex");
 async function screenshot(name) {
   const file = join(out, name + ".png");
@@ -61,7 +62,7 @@ async function rendered() {
           .renderRevision,
       ) > 0 &&
       document.querySelector("[data-render-revision]")?.dataset.renderStatus ===
-        "ready",
+        "ready" && (!document.querySelector(".studio-workspace") || document.querySelector(".studio-workspace")?.dataset.hydrated === "true"),
     {},
     { timeout: 45000 },
   );
@@ -157,6 +158,11 @@ async function addLayerFromPicker(id) {
   });
   assert.equal(await card.count(), 1, `${id} has one matching picker card`);
   await edit(() => card.click());
+}
+async function clickExport(name) {
+  await page.getByRole("button", { name: "Export", exact: true }).click();
+  await page.getByRole("dialog", { name: "Export composition" }).getByRole("button", { name, exact: true }).click();
+  await page.getByRole("button", { name: "Close Export composition" }).click();
 }
 async function selectInspectorTab(name) {
   await page.getByRole("tab", { name, exact: true }).click();
@@ -370,7 +376,7 @@ async function interactionChecks() {
     "Ctrl Z restores exact numeric-seed-cleared pixels",
   );
   const exported = page.waitForEvent("download");
-  await page.getByRole("button", { name: "Export JSON", exact: true }).click();
+  await clickExport("Export JSON");
   const exportPath = join(out, "cutmarks-roundtrip.json");
   await (await exported).saveAs(exportPath);
   assert.deepEqual(
@@ -535,7 +541,7 @@ async function transformChecks() {
   const cutDocument = await doc();
   const cutPixels = await pixels();
   const exported = page.waitForEvent("download");
-  await page.getByRole("button", { name: "Export JSON", exact: true }).click();
+  await clickExport("Export JSON");
   const exportPath = join(out, "transform-cut-roundtrip.json");
   await (await exported).saveAs(exportPath);
   assert.deepEqual(JSON.parse(await readFile(exportPath, "utf8")), cutDocument);
@@ -556,8 +562,95 @@ async function transformChecks() {
     "layer transform controls, live drag/undo, transformed CutMarks, persistence, WebGL and raster compositing",
   );
 }
+async function workspaceChecks() {
+  await page.goto(base + "/studio?technique=field-marks");
+  await rendered();
+  const original = await page.evaluate(() => JSON.parse(localStorage.getItem("procedurals-studio-v1")));
+  const crowded = { ...original, layers: Array.from({ length: 8 }, (_, i) => ({
+    ...structuredClone(original.layers[0]), id: `workspace-${i}`,
+    content: { ...structuredClone(original.layers[0].content), palette: Array.from({ length: 12 }, (_, n) => n * 0x151515), params: { ...original.layers[0].content.params, columns: 16, rows: 16 } },
+  })) };
+  await page.locator('input[type="file"]').setInputFiles({ name: "workspace.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(crowded)) });
+  await page.waitForFunction(() => JSON.parse(localStorage.getItem("procedurals-studio-v1")).layers.length === 8);
+  await rendered();
+  await page.getByRole("tab", { name: "Style", exact: true }).click();
+  await page.setViewportSize({ width: 1280, height: 720 });
+  const assertShell = async () => {
+    const bounds = await page.evaluate(() => {
+      const canvas = document.querySelector("canvas").getBoundingClientRect();
+      return { width: document.body.scrollWidth, height: document.body.scrollHeight, vw: innerWidth, vh: innerHeight,
+        canvas: { left: canvas.left, top: canvas.top, right: canvas.right, bottom: canvas.bottom, width: canvas.width, height: canvas.height },
+        native: [document.querySelector("canvas").width, document.querySelector("canvas").height] };
+    });
+    assert.ok(bounds.width <= bounds.vw + 1 && bounds.height <= bounds.vh + 1, "workspace does not overflow viewport");
+    assert.ok(bounds.canvas.left >= 0 && bounds.canvas.top >= 0 && bounds.canvas.right <= bounds.vw && bounds.canvas.bottom <= bounds.vh, "canvas stays entirely on screen");
+    assert.ok(Math.abs(bounds.canvas.width - bounds.canvas.height) < 1, "fitted canvas remains square");
+    assert.deepEqual(bounds.native, [640, 640], "display fit retains native resolution");
+  };
+  await assertShell();
+  const before = await page.locator("canvas").boundingBox();
+  await page.getByLabel("Layer controls", { exact: true }).evaluate(el => { el.scrollTop = el.scrollHeight; });
+  const lastControl = await page.getByLabel("Palette color 12 hex", { exact: true }).boundingBox();
+  const scrollPanel = await page.getByLabel("Layer controls", { exact: true }).boundingBox();
+  assert.ok(lastControl.y >= scrollPanel.y && lastControl.y + lastControl.height <= scrollPanel.y + scrollPanel.height, "last palette control can be brought into view");
+  assert.deepEqual(await page.locator("canvas").boundingBox(), before, "scrolling controls does not displace artwork");
+  assert.equal(await page.getByRole("button", { name: "Add layer", exact: true }).isDisabled(), true);
+  await screenshot("workspace-desktop");
+  await page.getByRole("tab", { name: "Prompt", exact: true }).click();
+  await page.getByRole("textbox", { name: "Prompt", exact: true }).fill("Keep this draft when switching panels.");
+  await page.getByRole("tab", { name: "Inspector", exact: true }).click();
+  await page.getByRole("tab", { name: "Prompt", exact: true }).click();
+  assert.equal(await page.getByRole("textbox", { name: "Prompt", exact: true }).inputValue(), "Keep this draft when switching panels.");
+  await page.getByLabel("Prompt editor", { exact: true }).evaluate(el => { el.scrollTop = el.scrollHeight; });
+  const generate = await page.getByRole("button", { name: "Generate", exact: true }).boundingBox();
+  assert.ok(generate.y + generate.height <= 720, "generate action stays on screen");
+  await screenshot("workspace-prompt");
+  await page.setViewportSize({ width: 390, height: 844 });
+  await assertShell();
+  await page.getByRole("button", { name: /^Layers/ }).click();
+  await page.getByLabel("Layer stack", { exact: true }).evaluate(el => { el.scrollTop = el.scrollHeight; });
+  await page.locator(".layer-name").last().click();
+  assert.equal(await page.locator(".layer-name").last().getAttribute("aria-pressed"), "true");
+  await page.getByRole("button", { name: "Close layers", exact: true }).click();
+  await page.getByRole("button", { name: "Inspector", exact: true }).click();
+  await page.getByRole("tab", { name: "Style", exact: true }).click();
+  await page.getByLabel("Layer controls", { exact: true }).evaluate(el => { el.scrollTop = el.scrollHeight; });
+  await assertShell();
+  await screenshot("workspace-mobile-inspector");
+  await page.getByRole("button", { name: "Close editor", exact: true }).click();
+  await screenshot("workspace-mobile-canvas");
+  await page.getByRole("button", { name: "Prompt", exact: true }).click();
+  assert.equal(await page.getByRole("textbox", { name: "Prompt", exact: true }).inputValue(), "Keep this draft when switching panels.");
+  await page.keyboard.press("Escape");
+  assert.equal(await page.getByRole("button", { name: "Prompt", exact: true }).getAttribute("aria-expanded"), "false");
+  await page.setViewportSize({ width: 844, height: 390 });
+  await assertShell();
+  await page.getByRole("button", { name: "Inspector", exact: true }).click();
+  await page.getByLabel("Layer controls", { exact: true }).evaluate(el => { el.scrollTop = el.scrollHeight; });
+  await screenshot("workspace-short-screen");
+  await page.getByRole("button", { name: "Close editor", exact: true }).click();
+  await page.getByRole("button", { name: "Export", exact: true }).click();
+  await page.getByRole("dialog", { name: "Export composition" }).waitFor();
+  const dialogBounds = await page.getByRole("dialog", { name: "Export composition" }).boundingBox();
+  assert.ok(dialogBounds.y >= 0 && dialogBounds.y + dialogBounds.height <= 390, "export dialog fits short viewport");
+  await page.keyboard.press("Escape");
+  assert.equal(await page.getByRole("button", { name: "Export", exact: true }).evaluate(el => el === document.activeElement), true, "dialog restores focus");
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.getByRole("button", { name: "Delete", exact: true }).click();
+  await page.getByRole("button", { name: "Add layer", exact: true }).click();
+  const picker = page.getByRole("dialog", { name: "Choose a layer" });
+  await picker.waitFor();
+  await picker.getByRole("button", { name: `Add ${techniqueTitle.get(techniqueIds.at(-1))} layer`, exact: true }).scrollIntoViewIfNeeded();
+  const close = await picker.getByRole("button", { name: "Close", exact: true }).boundingBox();
+  assert.ok(close.y > 0 && close.y + close.height < 900, "picker navigation stays visible while browsing");
+  await screenshot("workspace-picker");
+  await picker.getByRole("button", { name: "Close", exact: true }).click();
+  scenarios.push("viewport-fit workspace: eight layers, twelve palette controls, independent scrolling, persistent prompt draft, mobile/short-screen drawers, export focus, and bounded picker");
+}
 try {
-  if (transformsOnly) {
+  if (workspaceOnly) {
+    await workspaceChecks();
+  } else if (transformsOnly) {
     await transformChecks();
   } else if (interactionsOnly) {
     await interactionChecks();
@@ -806,7 +899,7 @@ try {
       );
       await edit(() =>
         page
-          .getByRole("button", { name: "Hide field-marks", exact: true })
+          .getByRole("button", { name: /^Hide field marks$/i, exact: true })
           .click(),
       );
       assert.equal(workflow(await doc()).visible, false);
@@ -831,9 +924,7 @@ try {
         "no parameter-toggle shortcuts, custom palette, targeted visibility, duplicate, undo/redo and delete",
       );
       const exported = page.waitForEvent("download");
-      await page
-        .getByRole("button", { name: "Export JSON", exact: true })
-        .click();
+      await clickExport("Export JSON");
       const download = await exported;
       const exportPath = join(out, "roundtrip.json");
       await download.saveAs(exportPath);
@@ -855,9 +946,7 @@ try {
       );
       assert.deepEqual(await doc(), exportedDoc);
       const pngDownload = page.waitForEvent("download");
-      await page
-        .getByRole("button", { name: "Export PNG", exact: true })
-        .click();
+      await clickExport("Export PNG");
       await (await pngDownload).saveAs(join(out, "export.png"));
       assert.ok((await readFile(join(out, "export.png"))).length > 1000);
       scenarios.push(
@@ -880,7 +969,7 @@ try {
         await edit(() =>
           page.getByRole("button", { name: "Delete", exact: true }).click(),
         );
-        await page.locator("summary").filter({ hasText: "Saved projects" }).click();
+        await page.getByRole("button", { name: "Open projects", exact: true }).click();
         await edit(() =>
           page.getByRole("button", { name: new RegExp(title) }).click(),
         );
@@ -900,7 +989,7 @@ try {
       );
       await edit(() =>
         page
-          .getByRole("button", { name: "Show field-marks", exact: true })
+          .getByRole("button", { name: /^Show field marks$/i, exact: true })
           .click(),
       );
       await selectInspectorTab("Style");

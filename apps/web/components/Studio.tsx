@@ -1,7 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState, type KeyboardEvent } from "react";
 import { useSearchParams } from "next/navigation";
+import { StudioIcon } from "./StudioIcon";
+import { StudioDialog } from "./StudioDialog";
+import styles from "./Studio.module.css";
 import { HarnessCanvas } from "./HarnessCanvas";
 import { InteractiveCanvas } from "./InteractiveCanvas";
 import { LayerControls } from "./LayerControls";
@@ -43,6 +46,20 @@ import {
 } from "@/lib/harness-client";
 import { computeRebaseDelta } from "@/lib/harness-render";
 import type { Layer, StudioDocument, TechniqueId } from "@/lib/studio-types";
+
+const displayLayerTitle = (layer: DocumentLayer) => layer.kind === "workflow"
+  ? techniques.find((item) => item.id === layer.content.technique)?.title ?? layerTitle(layer)
+  : layer.kind === "source" ? "Generated p5.js" : layerTitle(layer);
+
+function navigateTabs(event: KeyboardEvent<HTMLDivElement>) {
+  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+  const tabs = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+  const index = tabs.indexOf(event.target as HTMLButtonElement);
+  if (index < 0) return;
+  event.preventDefault();
+  const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (index + (event.key === "ArrowLeft" ? -1 : 1) + tabs.length) % tabs.length;
+  tabs[next]?.focus(); tabs[next]?.click();
+}
 
 const STORE = "procedurals-studio-v1";
 type Project = { id: string; title: string; updatedAt: string };
@@ -250,7 +267,10 @@ export function Studio() {
       ? (requested as TechniqueId)
       : undefined;
   const [history, dispatch] = useReducer(reduce, requestedId, (id): Hist => ({
-    doc: createDocumentV3(id),
+    doc: (() => {
+      const initial = createDocumentV3(id);
+      return { ...initial, layers: initial.layers.map((item, index) => ({ ...item, id: `initial-${index}` })) };
+    })(),
     past: [],
     future: [],
     hydrated: false,
@@ -262,7 +282,16 @@ export function Studio() {
     [projectId, setProjectId] = useState<string | null>(null),
     [projects, setProjects] = useState<Project[]>([]),
     [pickerOpen, setPickerOpen] = useState(false),
-    [tab, setTab] = useState<InspectorTab>("technique");
+    [tab, setTab] = useState<InspectorTab>("technique"),
+    [editRequest, setEditRequest] = useState(0),
+    [rightTab, setRightTab] = useState<"inspector" | "prompt">("inspector"),
+    [compact, setCompact] = useState(false),
+    [mobilePanel, setMobilePanel] = useState<"layers" | "inspector" | "prompt" | null>(null),
+    [dialog, setDialog] = useState<"projects" | "export" | "help" | null>(null),
+    [projectSearch, setProjectSearch] = useState(""),
+    [canvasActions, setCanvasActions] = useState<HTMLDivElement | null>(null),
+    [saving, setSaving] = useState(false),
+    [savedRevision, setSavedRevision] = useState<string | null>(null);
   const [handle, setHandle] = useState<string | null>(null),
     [revision, setRevision] = useState<string | null>(null),
     [run, setRun] = useState<PromptRunView | null>(null),
@@ -566,6 +595,8 @@ export function Studio() {
       });
   };
   const save = async () => {
+    if (saving) return;
+    setSaving(true);
     try {
       const response = await fetch(
           projectId ? `/api/projects/${projectId}` : "/api/projects",
@@ -578,12 +609,13 @@ export function Studio() {
         body = await response.json();
       if (!response.ok) throw Error(body.error?.message ?? response.statusText);
       setProjectId(body.id);
+      setSavedRevision(canonicalJson({ title, document }));
       await refresh();
     } catch (error) {
       setStatus(
         `Could not save project: ${error instanceof Error ? error.message : String(error)}`,
       );
-    }
+    } finally { setSaving(false); }
   };
   const load = async (id: string) => {
     try {
@@ -594,6 +626,8 @@ export function Studio() {
       setProjectId(id);
       setTitle(body.title);
       setSelected(0);
+      setDialog(null);
+      setSavedRevision(canonicalJson({ title: body.title, document: validateStudioDocument(body.document) }));
     } catch (error) {
       setStatus(
         `Could not load project: ${error instanceof Error ? error.message : String(error)}`,
@@ -653,6 +687,7 @@ export function Studio() {
     scope: PromptScope,
     target: PromptTarget,
   ) => {
+    setRightTab("prompt");
     const token = ++pollToken.current;
     try {
       const current = documentRef.current,
@@ -952,280 +987,142 @@ export function Studio() {
     },
     [],
   );
+  const openPanel = (panel: "layers" | "inspector" | "prompt") => {
+    if (panel !== "layers") setRightTab(panel);
+    setMobilePanel((current) => current === panel ? null : panel);
+  };
+  const showPrompt = () => { setRightTab("prompt"); setMobilePanel("prompt"); };
+  const closePanel = () => setMobilePanel(null);
+  useEffect(() => {
+    if (!mobilePanel || !window.matchMedia("(max-width: 1050px)").matches) return;
+    const panel = window.document.getElementById(mobilePanel === "layers" ? "studio-layers" : "studio-inspector");
+    panel?.querySelector<HTMLButtonElement>("button")?.focus();
+  }, [mobilePanel]);
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 1050px)");
+    const update = () => setCompact(media.matches);
+    update(); media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+  const isSaved = savedRevision === canonicalJson({ title, document });
+  const candidateActive = Boolean(candidateDocument && !candidate?.stale);
   return (
-    <main className="studio prompt-studio">
-      <header className="studio-head">
-        <div>
-          <p className="eyebrow">Composition workspace</p>
-          <h1>Studio</h1>
+    <main data-hydrated={history.hydrated} className={`${styles.workspace} studio-workspace`} onKeyDown={(event) => {
+      if (event.key === "Escape" && mobilePanel) { closePanel(); window.document.getElementById(`toggle-${mobilePanel}`)?.focus(); }
+    }}>
+      <header className={styles.topbar}>
+        <div className={styles.projectIdentity}>
+          <h1>Studio<span>/</span></h1>
+          <input aria-label="Project title" value={title} onChange={(event) => setTitle(event.target.value)} maxLength={120} />
+          <span className={styles.saveState}>{saving ? "Saving…" : isSaved ? "Saved" : "Local draft"}</span>
         </div>
-        <div className="panel-actions">
-          <button
-            className="action secondary"
-            type="button"
-            onClick={() => setPickerOpen(true)}
-          >
-            Add layer
-          </button>
-          <input
-            aria-label="Project title"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-            maxLength={120}
-          />
-          <button
-            className="action secondary"
-            onClick={undo}
-            disabled={!history.past.length}
-          >
-            Undo
-          </button>
-          <button
-            className="action secondary"
-            onClick={redo}
-            disabled={!history.future.length}
-          >
-            Redo
-          </button>
-          <button className="action" onClick={() => void save()}>
-            Save project
-          </button>
+        <div className={styles.topActions}>
+          <div className={styles.historyButtons}>
+            <button type="button" aria-label="Undo" title="Undo" onClick={undo} disabled={!history.past.length}><StudioIcon name="undo" /></button>
+            <button type="button" aria-label="Redo" title="Redo" onClick={redo} disabled={!history.future.length}><StudioIcon name="redo" /></button>
+          </div>
+          <button type="button" onClick={() => setDialog("projects")} aria-label="Open projects" title="Open projects"><StudioIcon name="folder" /><span>Open</span></button>
+          <button type="button" onClick={() => setDialog("export")}><StudioIcon name="download" /><span>Export</span></button>
+          <button className={styles.primary} type="button" onClick={() => void save()} disabled={saving}><StudioIcon name={isSaved ? "check" : "folder"} /><span>{saving ? "Saving…" : "Save project"}</span></button>
         </div>
       </header>
-      {(status || renderError) && (
-        <p className="service-error" role="alert">
-          {status || renderError}
-        </p>
-      )}
-      <div className="studio-layout">
-        <section className="studio-panel">
-          <h2>Layers</h2>
-          <p className="control-description">
-            Back to front, from top to bottom.
-          </p>
-          <ul className="layer-list">
-            {document.layers.map((item, index) => (
-              <li key={item.id}>
-                <button
-                  className="icon-button"
-                  aria-label={`${item.visible ? "Hide" : "Show"} ${layerTitle(item)}`}
-                  onClick={() =>
-                    commit({
-                      ...document,
-                      layers: document.layers.map((value, itemIndex) =>
-                        itemIndex === index
-                          ? { ...value, visible: !value.visible }
-                          : value,
-                      ),
-                    })
-                  }
-                >
-                  {item.visible ? "◉" : "○"}
-                </button>
-                <button
-                  className={`layer-name ${index === selected ? "selected" : ""}`}
-                  aria-pressed={index === selected}
-                  onClick={() => setSelected(index)}
-                >
-                  {index + 1}. {layerTitle(item)}
-                </button>
-              </li>
-            ))}
-          </ul>
-          <div className="panel-actions">
-            <button className="action secondary" onClick={() => move(-1)}>
-              Move up
-            </button>
-            <button className="action secondary" onClick={() => move(1)}>
-              Move down
-            </button>
-            <button
-              className="action secondary"
-              onClick={duplicate}
-              disabled={layer?.kind !== "workflow"}
-            >
-              Duplicate
-            </button>
-            <button className="action secondary" onClick={remove}>
-              Delete
-            </button>
-          </div>
-          <div className="control">
-            <label htmlFor="background">Background</label>
-            <input
-              id="background"
-              type="color"
-              value={document.background}
-              onChange={(event) =>
-                commit({ ...document, background: event.target.value })
-              }
-            />
-          </div>
-          <details className="studio-projects">
-            <summary>Saved projects</summary>
-            <div className="panel-actions">
-              <button
-                className="action secondary"
-                onClick={() => void refresh()}
-              >
-                Refresh
-              </button>
-            </div>
-            <ul className="project-list">
-              {projects.map((project) => (
-                <li key={project.id}>
-                  <button onClick={() => void load(project.id)}>
-                    {project.title}
-                    <small>
-                      {new Date(project.updatedAt).toLocaleString()}
-                    </small>
+      {(status || renderError) && <div className={styles.notice} role="alert"><p>{status || renderError}</p><button aria-label="Dismiss message" onClick={() => { setStatus(null); setRenderError(null); }}><StudioIcon name="close" /></button></div>}
+      <div className={styles.body} data-mobile-panel={mobilePanel ?? "none"}>
+        {mobilePanel && <button className={styles.panelBackdrop} aria-label="Close panel" onClick={closePanel} tabIndex={-1} />}
+        <aside className={styles.layers} id="studio-layers" aria-label="Layers" data-open={mobilePanel === "layers"}>
+          <header className={styles.panelHeading}><h2>Layers <span>{document.layers.length}/{MAX_LAYERS}</span></h2><button type="button" aria-label="Close layers" className={styles.mobileClose} onClick={closePanel}><StudioIcon name="close" /></button></header>
+          <div className={styles.addLayer}><button className={styles.primary} type="button" onClick={() => setPickerOpen(true)} disabled={document.layers.length >= MAX_LAYERS}><StudioIcon name="plus" />Add layer</button></div>
+          <p className={styles.stackHint}>Back → front</p>
+          <div className={styles.layerScroll} tabIndex={0} aria-label="Layer stack">
+            <ul className="layer-list">
+              {document.layers.map((item, index) => (
+                <li key={item.id} data-selected={index === selected} data-visible={item.visible}>
+                  <button className="layer-name" aria-pressed={index === selected} onClick={() => { setSelected(index); setRightTab("inspector"); }}>
+                    <span className={styles.layerThumbnail}>{item.kind === "workflow" ? <img src={`/previews/${item.content.technique}.png`} alt="" /> : item.kind === "source" && item.content.previewArtifactHash ? <img src={`/harness/artifact/${item.content.previewArtifactHash}`} alt="" /> : <StudioIcon name="layers" />}</span>
+                    <span className={styles.layerLabel}><strong>{displayLayerTitle(item)}</strong><small>{String(index + 1).padStart(2, "0")} · {item.kind === "source" ? "Generated layer" : "Package study"}</small></span>
                   </button>
+                  <button className={styles.visibility} aria-label={`${item.visible ? "Hide" : "Show"} ${displayLayerTitle(item)}`} title={item.visible ? "Hide layer" : "Show layer"} onClick={() => commit({ ...document, layers: document.layers.map((value, itemIndex) => itemIndex === index ? { ...value, visible: !value.visible } : value) })}><StudioIcon name={item.visible ? "eye" : "hidden"} /></button>
                 </li>
               ))}
             </ul>
-          </details>
-        </section>
-        <section className="canvas-wrap">
-          {candidateDocument && (
-            <div className="panel-actions">
-              <p className="control-description" role="status">
-                Candidate preview — it has not changed your document.
-              </p>
-              <button
-                className="action secondary"
-                onClick={() => {
-                  ++pollToken.current;
-                  setCandidate(null);
-                  setCandidateDocument(null);
-                }}
-              >
-                Discard candidate
-              </button>
-            </div>
-          )}
-          <InteractiveCanvas
-            document={workflowDocument(document)}
-            layer={selectedWorkflow}
-            onChangeLayer={(change) => at(selected, change)}
-            onUndo={undo}
-            onRedo={redo}
-            canUndo={Boolean(history.past.length)}
-            canRedo={Boolean(history.future.length)}
-            onError={setRenderError}
-            showHistory={false}
-            transformsEnabled={!candidateDocument || candidate?.stale}
-            renderOverride={(projection) => (
-              <HarnessCanvas
-                document={
-                  candidateDocument && !candidate?.stale
-                    ? displayedDocument
-                    : withWorkflowProjection(displayedDocument, projection)
-                }
-                onError={setRenderError}
-              />
-            )}
-          />
-          <div className="panel-actions">
-            <button className="action secondary" onClick={exportPng}>
-              Export PNG
-            </button>
-            <button className="action secondary" onClick={exportJson}>
-              Export JSON
-            </button>
-            <button
-              className="action secondary"
-              onClick={() => file.current?.click()}
-            >
-              Import JSON
-            </button>
-            <input
-              className="file-input"
-              ref={file}
-              type="file"
-              accept="application/json"
-              onChange={(event) => importFile(event.currentTarget)}
-            />
+            {document.layers.length === 0 && <div className={styles.empty}><StudioIcon name="layers" /><h3>A blank canvas</h3><p>Add a study or describe a new layer in Prompt.</p><button onClick={showPrompt}>Create with a prompt</button></div>}
           </div>
-        </section>
-        <section className="studio-panel">
-          <h2>Inspector</h2>
-          {layer?.kind === "source" ? (
-            <><SaveLayerPanel key={`${layer.id}-${layer.content.previewArtifactHash}`} layer={layer} document={document} disabled={sourceUpdating || Boolean(candidateDocument && !candidate?.stale)} /><SourceControls
-              layer={layer}
-              controls={controls}
-              pending={sourceUpdating}
-              onChange={(next) => void updateSourceControls(layer, next)}
-              onChangeLayer={(change) =>
-                commit({
-                  ...document,
-                  layers: document.layers.map((item) =>
-                    item.id === layer.id ? { ...item, ...change } : item,
-                  ),
-                })
-              }
-            />
-            </>
-          ) : selectedWorkflow && technique ? (
-            <div className="inspector-tabs">
-              <div aria-label="Inspector sections" role="tablist">
-                {(
-                  [
-                    ["placement", "Placement"],
-                    ["technique", "Technique"],
-                    ["style", "Style"],
-                  ] as const
-                ).map(([id, label]) => (
-                  <button
-                    aria-selected={tab === id}
-                    key={id}
-                    onClick={() => setTab(id)}
-                    role="tab"
-                    type="button"
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-              {tab === "placement" ? (
-                <TransformControls
-                  layer={selectedWorkflow}
-                  onChange={(change) => at(selected, change)}
-                />
-              ) : (
-                <LayerControls
-                  layer={selectedWorkflow}
-                  technique={technique}
-                  onChange={(change) => at(selected, change)}
-                  section={tab}
-                />
-              )}
+          <footer className={styles.layerFooter}>
+            <div className={styles.layerActions} role="group" aria-label="Selected layer actions">
+              <button aria-label="Move up" title="Move up" onClick={() => move(-1)} disabled={!layer || selected === 0}><StudioIcon name="up" /></button>
+              <button aria-label="Move down" title="Move down" onClick={() => move(1)} disabled={!layer || selected === document.layers.length - 1}><StudioIcon name="down" /></button>
+              <button aria-label="Duplicate" title="Duplicate layer" onClick={duplicate} disabled={layer?.kind !== "workflow" || document.layers.length >= MAX_LAYERS}><StudioIcon name="copy" /></button>
+              <button aria-label="Delete" title="Delete layer" onClick={remove} disabled={!layer}><StudioIcon name="trash" /></button>
             </div>
-          ) : (
-            <p className="control-description">Select a layer to inspect it.</p>
-          )}
+            <label className={styles.background}>Canvas background<input aria-label="Background" type="color" value={document.background} onChange={(event) => commit({ ...document, background: event.target.value })} /></label>
+          </footer>
+        </aside>
+        <section className={styles.canvasPane} aria-label="Canvas workspace" inert={Boolean(compact && mobilePanel)}>
+          <header className={styles.canvasHeading}><span><i />{candidateActive ? "Candidate preview" : "Canvas"}</span><span>640 × 640 <b>·</b> Fit</span><button className={styles.shortHelp} aria-label="Canvas help" onClick={() => setDialog("help")}>?</button></header>
+          {candidateDocument && <div className={styles.candidateBanner}><div><strong>{candidate?.stale ? "Your document has changed" : "A new direction to review"}</strong><p>{candidate?.stale ? "Rebase the candidate to keep your latest edits." : "Preview only. Apply it to keep this change."}</p></div><button className={styles.primary} onClick={showPrompt}>{candidate?.stale ? "Review & rebase" : "Review & apply"}</button><button aria-label="Discard candidate" title="Discard candidate" onClick={() => { ++pollToken.current; setCandidate(null); setCandidateDocument(null); }}><StudioIcon name="close" /></button></div>}
+          <div className={styles.stage}>
+            <div className={`${styles.canvasWell} canvas-wrap`}>
+              <InteractiveCanvas
+                document={workflowDocument(document)} layer={selectedWorkflow} onChangeLayer={(change) => at(selected, change)}
+                onUndo={undo} onRedo={redo} canUndo={Boolean(history.past.length)} canRedo={Boolean(history.future.length)} onError={setRenderError}
+                showHistory={false} transformsEnabled={!candidateDocument || candidate?.stale} actionsContainer={canvasActions}
+                renderOverride={(projection) => <HarnessCanvas document={candidateActive ? displayedDocument : withWorkflowProjection(displayedDocument, projection)} onError={setRenderError} />}
+              />
+            </div>
+          </div>
+          <div className={styles.canvasTools} ref={setCanvasActions} />
+          <footer className={styles.canvasFooter}><span>{layer ? displayLayerTitle(layer) : "No layer selected"}</span><button type="button" onClick={() => setDialog("help")}>Canvas help <span>?</span></button></footer>
         </section>
-        <PromptPanel
-          selectedLayerId={layer?.id}
-          documentHandle={handle}
-          revisionHash={revision}
-          run={run}
-          candidate={candidate}
-          status={null}
-          onGenerate={start}
-          onCancel={cancel}
-          onApply={apply}
-          onRebase={rebase}
-        />
+        <aside className={styles.inspector} id="studio-inspector" aria-label="Layer editor and prompts" data-open={mobilePanel === "inspector" || mobilePanel === "prompt"}>
+          <header className={styles.editorHeading}>
+            <div className={styles.editorTabs} role="tablist" aria-label="Studio tools" onKeyDown={navigateTabs}>
+              <button role="tab" id="inspector-tab" aria-controls="inspector-content" aria-selected={rightTab === "inspector"} onClick={() => { setRightTab("inspector"); setMobilePanel((current) => current ? "inspector" : null); }}><StudioIcon name="controls" />Inspector</button>
+              <button role="tab" id="prompt-tab" aria-controls="prompt-content" aria-selected={rightTab === "prompt"} onClick={() => { setRightTab("prompt"); setMobilePanel((current) => current ? "prompt" : null); }}><StudioIcon name="prompt" />Prompt{run?.state === "running" && <i className={styles.runningDot} />}</button>
+            </div>
+            <button type="button" aria-label="Close editor" className={styles.mobileClose} onClick={closePanel}><StudioIcon name="close" /></button>
+          </header>
+          <div className={styles.inspectorContent} role="tabpanel" id="inspector-content" aria-labelledby="inspector-tab" hidden={rightTab !== "inspector"}>
+            <header className={styles.selectedHeading}><p>Selected layer</p><h2>{layer ? displayLayerTitle(layer) : "Nothing selected"}</h2>{layer?.kind === "source" && <button onClick={() => { setEditRequest((value) => value + 1); showPrompt(); }}><StudioIcon name="prompt" />Revise with a prompt</button>}</header>
+            {selectedWorkflow && technique && <div className={styles.controlTabs} role="tablist" aria-label="Inspector sections" onKeyDown={navigateTabs}>
+              {([["technique", "Technique"], ["placement", "Placement"], ["style", "Style"]] as const).map(([id, label]) => <button aria-selected={tab === id} key={id} onClick={() => setTab(id)} role="tab" type="button">{label}</button>)}
+            </div>}
+            <div className={styles.controlsScroll} tabIndex={0} aria-label="Layer controls">
+              {layer?.kind === "source" ? <>
+                <SourceControls layer={layer} controls={controls} pending={sourceUpdating} onChange={(next) => void updateSourceControls(layer, next)} onChangeLayer={(change) => commit({ ...document, layers: document.layers.map((item) => item.id === layer.id ? { ...item, ...change } : item) })} />
+                <details className={styles.saveDisclosure}><summary>Save to your layer collection</summary><SaveLayerPanel key={`${layer.id}-${layer.content.previewArtifactHash}`} layer={layer} document={document} disabled={sourceUpdating || candidateActive} /></details>
+              </> : selectedWorkflow && technique ? tab === "placement" ? <TransformControls layer={selectedWorkflow} onChange={(change) => at(selected, change)} /> : <LayerControls layer={selectedWorkflow} technique={technique} onChange={(change) => at(selected, change)} section={tab} /> : <div className={styles.empty}><p>Choose a layer to edit its controls, placement, and colors.</p></div>}
+            </div>
+          </div>
+          <div className={styles.promptContent} role="tabpanel" id="prompt-content" aria-labelledby="prompt-tab" hidden={rightTab !== "prompt"}>
+            <PromptPanel editRequest={editRequest} selectedLayerId={layer?.id} documentHandle={handle} revisionHash={revision} run={run} candidate={candidate} status={null} onGenerate={start} onCancel={cancel} onApply={apply} onRebase={rebase} />
+          </div>
+        </aside>
       </div>
-      <LayerPicker
-        onSelectSaved={addSaved}
-        open={pickerOpen}
-        onClose={() => setPickerOpen(false)}
-        onSelect={(id) => {
-          add(id as TechniqueId);
-          setPickerOpen(false);
-        }}
-      />
+      <nav className={styles.mobileDock} aria-label="Workspace panels">
+        <button id="toggle-layers" aria-controls="studio-layers" aria-expanded={mobilePanel === "layers"} onClick={() => openPanel("layers")}><StudioIcon name="layers" />Layers<span>{document.layers.length}</span></button>
+        <button id="toggle-inspector" aria-controls="studio-inspector" aria-expanded={mobilePanel === "inspector"} onClick={() => openPanel("inspector")}><StudioIcon name="controls" />Inspector</button>
+        <button id="toggle-prompt" aria-controls="studio-inspector" aria-expanded={mobilePanel === "prompt"} onClick={() => openPanel("prompt")}><StudioIcon name="prompt" />Prompt{run?.state === "running" && <i className={styles.runningDot} />}</button>
+      </nav>
+      <footer className={styles.statusbar}><span><i />{isSaved ? "Project saved" : "Local recovery enabled"}</span><span>{document.layers.length} of {MAX_LAYERS} layers <b>·</b> p5.js</span></footer>
+      <input className="file-input" ref={file} type="file" accept="application/json" onChange={(event) => importFile(event.currentTarget)} />
+      <LayerPicker onSelectSaved={addSaved} open={pickerOpen} onClose={() => setPickerOpen(false)} onSelect={(id) => { add(id as TechniqueId); setPickerOpen(false); }} />
+      <StudioDialog open={dialog === "projects"} title="Saved projects" onClose={() => setDialog(null)}>
+        <p>Return to a saved composition, or import a document.</p>
+        <div className={styles.fileActions}><button onClick={() => void refresh()}>Refresh</button><button onClick={() => { setDialog(null); file.current?.click(); }}>Import JSON</button></div>
+        <input type="search" aria-label="Search projects" placeholder="Find a project…" value={projectSearch} onChange={(event) => setProjectSearch(event.target.value)} />
+        <ul className={styles.projectList}>{projects.filter((project) => project.title.toLowerCase().includes(projectSearch.toLowerCase())).map((project) => <li key={project.id}><button onClick={() => void load(project.id)}><StudioIcon name="folder" /><span><strong>{project.title}</strong><small>{new Date(project.updatedAt).toLocaleString()}</small></span></button></li>)}</ul>
+        {projects.length === 0 && <p>No saved projects yet. Save your current composition to keep it here.</p>}
+      </StudioDialog>
+      <StudioDialog open={dialog === "export"} title="Export composition" onClose={() => setDialog(null)}>
+        <p>Take a snapshot of the canvas or keep an editable document.</p>
+        <div className={styles.exportOptions}><button aria-label="Export PNG" onClick={exportPng}><StudioIcon name="download" /><span><strong>Export PNG</strong><small>Full resolution image · 640 × 640</small></span></button><button aria-label="Export JSON" onClick={exportJson}><StudioIcon name="layers" /><span><strong>Export JSON</strong><small>Editable layers and settings</small></span></button></div>
+        <p className={styles.exportNote}>Generated layers in JSON refer to this installation’s source and preview files. Keep the artifact store with your document.</p>
+      </StudioDialog>
+      <StudioDialog open={dialog === "help"} title="Canvas controls" onClose={() => setDialog(null)}>
+        <p>Drag a workflow layer on the canvas to move it. Use <strong>Placement</strong> to set its position, scale, and rotation.</p>
+        <dl className={styles.shortcuts}><div><dt>R</dt><dd>New seed for eligible workflows</dd></div><div><dt>Ctrl / ⌘ Z</dt><dd>Undo canvas edits; add Shift to redo</dd></div><div><dt>X / Y</dt><dd>Cut a selected CutMarks region vertically / horizontally</dd></div><div><dt>Delete</dt><dd>Remove the selected cut region</dd></div><div><dt>Escape</dt><dd>Clear the region selection or cancel a drag</dd></div></dl>
+        <p>Click the canvas before using these shortcuts. In CutMarks, switch between <strong>Move layer</strong> and <strong>Cut regions</strong> in the canvas toolbar. Changing the seed or base layout clears manual cuts.</p>
+      </StudioDialog>
     </main>
   );
 }

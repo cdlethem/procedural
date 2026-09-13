@@ -9,18 +9,23 @@ until you apply it.
 
 ## Studio: make a layered image
 
-1. Open **Studio** and choose a workflow from **Add layer**. You can combine up to eight
-   layers.
+1. Open **Studio** and choose a workflow from **Add layer** in the layer stack. You can
+   combine up to eight layers. On smaller screens, open **Layers** from the bottom bar first.
 2. Select a layer, then edit its visible controls. Workflow layers keep their palettes,
    seeds, cut edits, and placement controls. Move layers up or down to change draw order;
    hide a layer to compare it with the composition beneath it.
-3. Describe a layer, an edit to the selected layer, or a full composition in the prompt
-   panel, then choose **Generate**. The canvas can show the labelled candidate preview;
+3. Switch the right editor to **Prompt** (or open **Prompt** from the bottom bar). Describe
+   a layer, an edit to the selected layer, or a full composition, then choose **Generate**. The canvas can show the labelled candidate preview;
    apply it only when it is the direction you want. Generating again, editing, or undoing
    discards that preview without changing the committed document.
 4. Use **Undo** to return to the preceding committed document revision. Applying a
    candidate and changing one of its declared generated controls each make one undoable
    revision.
+
+The canvas fits the available space while keeping its 640px resolution. Layers, controls,
+and prompt details scroll inside their own panels. **Generate** and candidate actions remain
+accessible in the prompt editor. Switch back to **Inspector** to adjust a selected layer;
+switching panels preserves your prompt draft.
 
 Generated source layers keep their source artifact and replay inputs in the same history as
 workflow layers. Their declared controls remain visible in the inspector. Open the collapsed
@@ -45,8 +50,8 @@ leave the current artwork in place.
 
 ## Revise a generated layer
 
-In **Studio**, select the generated layer, choose **Edit selected layer** in the prompt
-panel, and describe your change. For example: “Keep the branching pattern, make the lines
+In **Studio**, select the generated layer and choose **Revise with a prompt** in the
+Inspector. This opens Prompt with **Edit selected layer** selected. Describe your change. For example: “Keep the branching pattern, make the lines
 thinner, and add more space between branches.” The prompt receives the layer’s exact current
 source files, declared controls, and current replay inputs. Review the candidate and choose
 **Apply edit**; **Undo** restores the previous version. Edits stay within the selected layer.
@@ -60,8 +65,8 @@ or undo history. Leaving the page discards unsaved exploration state.
 
 ## Keep layers for other sketches
 
-Below a generated layer in Explorations, or in its Studio inspector, enter a **Layer name**
-and choose **Save layer to gallery**. This saves a snapshot of that layer with its source,
+Below a generated layer in Explorations, or under **Save to your layer collection** in
+its Studio inspector, enter a **Layer name** and choose **Save layer to gallery**. This saves a snapshot of that layer with its source,
 controls, seeds, and rendered preview on this installation. In Studio, apply a candidate
 before saving its revision. Give a revised version a new name to keep both versions.
 
@@ -96,6 +101,9 @@ Browser recovery stores the current Studio document locally. Named server projec
 trusted local Go store. Both accept the current strict `harness-v1` document envelope and
 the older exact `studio-v1`, `studio-v2`, and `studio-v3` workflow documents. Loading and
 saving validate JSON structure only: they never execute generated source.
+
+In Studio, **Open** opens saved projects and **Import JSON**. The **Export** menu provides
+**Export PNG** and **Export JSON**.
 
 **Export PNG** saves the currently composited raster. **Export JSON** saves the document,
 including content-addressed hashes for generated source and preview artifacts. Those hashes

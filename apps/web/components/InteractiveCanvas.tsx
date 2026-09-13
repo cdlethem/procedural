@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import SketchCanvas from "./SketchCanvas";
 import { canReseed } from "./LayerControls";
 import { cutRegions, MAX_CUT_EDITS } from "@/lib/cut-model";
@@ -19,6 +20,7 @@ export function InteractiveCanvas({
   showHistory = true,
   transformsEnabled = false,
   renderOverride,
+  actionsContainer,
 }: {
   document: StudioDocument;
   layer?: Layer;
@@ -36,6 +38,8 @@ export function InteractiveCanvas({
    * override draws the complete document in its owning adapter.
    */
   renderOverride?: (document: StudioDocument) => ReactNode;
+  /** Studio places canvas actions in a fixed toolbar outside the fitted artwork. */
+  actionsContainer?: HTMLElement | null;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const drag = useRef<{
@@ -133,6 +137,108 @@ export function InteractiveCanvas({
       ((event.clientY - rect.top) * 640) / rect.height,
     ] as [number, number];
   };
+  const canvasActions = (
+      <div className="canvas-actions">
+        {transformsEnabled &&
+          layer?.visible &&
+          layer.opacity > 0 &&
+          mode === "move" && (
+            <small>
+              Drag the canvas to move the selected layer. Use Placement to
+              resize or rotate it.
+            </small>
+          )}
+        {layer && canReseed(layer) && (
+          <button className="action secondary" type="button" onClick={reseed}>
+            New seed
+          </button>
+        )}
+        {transformsEnabled && layer?.technique === "cut-marks" && (
+          <div
+            className="canvas-mode"
+            role="group"
+            aria-label="CutMarks canvas mode"
+          >
+            <button
+              className={`action secondary ${mode === "move" ? "active" : ""}`}
+              type="button"
+              onClick={() => {
+                setMode("move");
+                setSelectedRegion(null);
+              }}
+            >
+              Move layer
+            </button>
+            <button
+              className={`action secondary ${mode === "cut" ? "active" : ""}`}
+              type="button"
+              onClick={() => setMode("cut")}
+            >
+              Cut regions
+            </button>
+          </div>
+        )}
+        {cutActive && (
+          <>
+            <button
+              className="action secondary"
+              type="button"
+              disabled={!region || layer!.cutEdits.length >= MAX_CUT_EDITS}
+              onClick={() => edit("X")}
+            >
+              Cut X
+            </button>
+            <button
+              className="action secondary"
+              type="button"
+              disabled={!region || layer!.cutEdits.length >= MAX_CUT_EDITS}
+              onClick={() => edit("Y")}
+            >
+              Cut Y
+            </button>
+            <button
+              className="action secondary"
+              type="button"
+              disabled={!region || layer!.cutEdits.length >= MAX_CUT_EDITS}
+              onClick={remove}
+            >
+              Remove region
+            </button>
+            <small>
+              Canvas keys: X cuts vertically, Y cuts horizontally, Delete
+              removes, Escape deselects. Changing cut rounds, spread, or
+              staggered rebuilds the base and clears manual cuts.
+            </small>
+          </>
+        )}
+        {layer && canReseed(layer) && (
+          <small>
+            Focus the canvas, then press R for a new seed. Ctrl/⌘ Z undoes
+            canvas edits.
+          </small>
+        )}
+        {showHistory && (
+          <>
+            <button
+              className="action secondary"
+              type="button"
+              disabled={!canUndo}
+              onClick={onUndo}
+            >
+              Undo
+            </button>
+            <button
+              className="action secondary"
+              type="button"
+              disabled={!canRedo}
+              onClick={onRedo}
+            >
+              Redo
+            </button>
+          </>
+        )}
+      </div>
+  );
   return (
     <div
       ref={host}
@@ -307,106 +413,7 @@ export function InteractiveCanvas({
           </g>
         </svg>
       )}
-      <div className="canvas-actions">
-        {transformsEnabled &&
-          layer?.visible &&
-          layer.opacity > 0 &&
-          mode === "move" && (
-            <small>
-              Drag the canvas to move the selected layer. Use Placement to
-              resize or rotate it.
-            </small>
-          )}
-        {layer && canReseed(layer) && (
-          <button className="action secondary" type="button" onClick={reseed}>
-            New seed
-          </button>
-        )}
-        {transformsEnabled && layer?.technique === "cut-marks" && (
-          <div
-            className="canvas-mode"
-            role="group"
-            aria-label="CutMarks canvas mode"
-          >
-            <button
-              className={`action secondary ${mode === "move" ? "active" : ""}`}
-              type="button"
-              onClick={() => {
-                setMode("move");
-                setSelectedRegion(null);
-              }}
-            >
-              Move layer
-            </button>
-            <button
-              className={`action secondary ${mode === "cut" ? "active" : ""}`}
-              type="button"
-              onClick={() => setMode("cut")}
-            >
-              Cut regions
-            </button>
-          </div>
-        )}
-        {cutActive && (
-          <>
-            <button
-              className="action secondary"
-              type="button"
-              disabled={!region || layer!.cutEdits.length >= MAX_CUT_EDITS}
-              onClick={() => edit("X")}
-            >
-              Cut X
-            </button>
-            <button
-              className="action secondary"
-              type="button"
-              disabled={!region || layer!.cutEdits.length >= MAX_CUT_EDITS}
-              onClick={() => edit("Y")}
-            >
-              Cut Y
-            </button>
-            <button
-              className="action secondary"
-              type="button"
-              disabled={!region || layer!.cutEdits.length >= MAX_CUT_EDITS}
-              onClick={remove}
-            >
-              Remove region
-            </button>
-            <small>
-              Canvas keys: X cuts vertically, Y cuts horizontally, Delete
-              removes, Escape deselects. Changing cut rounds, spread, or
-              staggered rebuilds the base and clears manual cuts.
-            </small>
-          </>
-        )}
-        {layer && canReseed(layer) && (
-          <small>
-            Focus the canvas, then press R for a new seed. Ctrl/⌘ Z undoes
-            canvas edits.
-          </small>
-        )}
-        {showHistory && (
-          <>
-            <button
-              className="action secondary"
-              type="button"
-              disabled={!canUndo}
-              onClick={onUndo}
-            >
-              Undo
-            </button>
-            <button
-              className="action secondary"
-              type="button"
-              disabled={!canRedo}
-              onClick={onRedo}
-            >
-              Redo
-            </button>
-          </>
-        )}
-      </div>
+      {actionsContainer ? createPortal(canvasActions, actionsContainer) : canvasActions}
     </div>
   );
 }

@@ -1,0 +1,143 @@
+{
+  "kind": "root-studio-workspace-review",
+  "date": "2026-09-13",
+  "owner": "root",
+  "status": "accepted-scoped",
+  "scope": "Studio workspace design and responsive layout, preserving existing app behavior. No new portable operations or target support.",
+  "baseline": "42cca06f",
+  "supersedes_scope": "Studio layout observations in app-v3-review.json and generated-layer-review.json; their historical behavior and model evidence remain intact.",
+  "behavior": [
+    "Viewport-sized shell with a fitted square canvas, independently scrolling layer stack and inspector, consistent typography, spacing, colors and actions.",
+    "Inspector and Prompt tabs retain prompt drafts. Generated layers offer a direct revision shortcut and saved-layer disclosure. Candidate review and Generate/Cancel remain bounded in the editor.",
+    "Small screens use dismissible Layers/Inspector/Prompt drawers. Short landscape screens retain the canvas and a scrollable action toolbar.",
+    "Searchable project and layer dialogs, separate export dialog, canvas help, keyboard tab navigation and focus restoration.",
+    "Canvas retains native 640 by 640 drawing resolution. Document formats, compositor, model coordinator and storage contracts are unchanged."
+  ],
+  "validation": {
+    "unit_tests": "41/41 web and MCP tests passed in isolated checkout; TypeScript passed.",
+    "build": "Production Next build passed; existing jobs.ts filesystem tracing warning remains.",
+    "browser": {
+      "status": "passed",
+      "scope": "Web app integration, not portable recipe or expanded catalog support.",
+      "scenarios": [
+        "gallery search and 24 study navigation",
+        "24 shared detail renderers, inline source, numeric and palette pixel changes",
+        "24 studio technique renderers mount and each picker card adds a layer without browser errors",
+        "group opacity applies to completed layer, with exact undo pixels",
+        "no parameter-toggle shortcuts, custom palette, targeted visibility, duplicate, undo/redo and delete",
+        "JSON roundtrip, rejected import preserves state, PNG export",
+        "Go save/load through Next proxy and local browser recovery",
+        "local rendering and editing remain available when Go service is offline",
+        "focused reseed boundaries and CutMarks edit/undo/export/storage interactions",
+        "layer transform controls, live drag/undo, transformed CutMarks, persistence, WebGL and raster compositing",
+        "31 API index entries and rendered operation details without raw repository links",
+        "responsive gallery, embedded example, and studio at 390px width"
+      ],
+      "browser": "153.0.8010.12",
+      "errors": []
+    },
+    "workspace": {
+      "status": "passed",
+      "scope": "Web app integration, not portable recipe or expanded catalog support.",
+      "scenarios": [
+        "viewport-fit workspace: eight layers, twelve palette controls, independent scrolling, persistent prompt draft, mobile/short-screen drawers, export focus, and bounded picker"
+      ],
+      "browser": "153.0.8010.12",
+      "errors": []
+    },
+    "generated_layers": {
+      "status": "passed",
+      "savedId": "saved-213b9f3b-4714-4f07-bceb-f7394696613c",
+      "errors": [],
+      "transport": "Completed real model run replay; source bytes, candidate apply, save/reuse, export, named projects and browser rendering live."
+    },
+    "generated_scenarios": "Revision scope, preview without mutation, pending-save guard, apply/undo/redo, exact source, saved-layer reuse, JSON export and named-project reload passed.",
+    "visual_review": "Root inspected production desktop, prompt and mobile views; eight-layer/long-palette stress, short landscape and picker screenshots. Fixed initial picker compression and short-screen canvas sizing before acceptance.",
+    "corrections": "Full regression exposed stale count assertions inherited from concurrent gallery work and a case-sensitive layer label selector; restored this release baseline and corrected the selector. Final complete suite passed.",
+    "commands": [
+      "npm --prefix apps/web test",
+      "npm --prefix apps/web run typecheck",
+      "PROCEDURALS_API_URL=http://127.0.0.1:8088 npm --prefix apps/web run build",
+      "WEB_BASE_URL=http://127.0.0.1:3011 PLAYWRIGHT_BROWSERS_PATH=/home/colin/dev/procedural/.work/toolchains/playwright python3 tools/with_native_render_lock.py -- node apps/web/scripts/test-browser.mjs",
+      "Same native command with --workspace-only",
+      "WEB_BASE_URL=http://127.0.0.1:3010 PLAYWRIGHT_BROWSERS_PATH=/home/colin/dev/procedural/.work/toolchains/playwright python3 tools/with_native_render_lock.py -- node .work/studio-redesign/generated.mjs"
+    ]
+  },
+  "deployment": {
+    "url": "https://eunoia.tailf03dad.ts.net:8443/studio",
+    "checkout": ".work/studio-ux-work",
+    "service": "procedurals-web.service, port 3002; Go project service remains on 8088",
+    "preserved_files": 5665,
+    "sha256": "All prior production files preserved exactly",
+    "old": ".work/web-layer-release/.work/harness",
+    "new": ".work/studio-ux-work/.work/harness",
+    "http_checks": {
+      "/": 200,
+      "/studio": 200,
+      "/harness": 200,
+      "/explorations": 200,
+      "/docs/prompt-studio": 200,
+      "/api/projects": 200,
+      "/harness/layers": 200,
+      "tailnet/studio": 200
+    },
+    "cleanup": "Verification-only generated layer and named project removed after exact title/document checks. Prior production checkout retained for rollback."
+  },
+  "images": [
+    {
+      "label": "Production desktop workspace",
+      "path": ".work/studio-redesign/desktop-final.png",
+      "sha256": "4d7328bacf768bd1a7d8e828a4c71caf1daada4b33ecee0b0d88524ba9617e17"
+    },
+    {
+      "label": "Production prompt editor",
+      "path": ".work/studio-redesign/prompt-final.png",
+      "sha256": "297a1b67c83eac5af1d8262aa8ad243cf112f68438ad82d24ff23488d730047a"
+    },
+    {
+      "label": "Production mobile canvas",
+      "path": ".work/studio-redesign/mobile-final.png",
+      "sha256": "77452e1e202d372e3ece92c7b4e298e0141c479e4bce8ead0572226d0fface16"
+    },
+    {
+      "label": "Production mobile inspector",
+      "path": ".work/studio-redesign/mobile-inspector-final.png",
+      "sha256": "194990f22ac1886d9cd7df78fb3f5438060af3196e619dee9b59d14dda12694c"
+    },
+    {
+      "label": "Eight layers and twelve-color palette",
+      "path": ".work/studio-ux-work/.work/web-app-review/integration/workspace-desktop.png",
+      "sha256": "f7a46b9d1cd5573e1f5b068092945b1f018185f770d14d0de7e2e84bd9b5702a"
+    },
+    {
+      "label": "Short landscape inspector",
+      "path": ".work/studio-ux-work/.work/web-app-review/integration/workspace-short-screen.png",
+      "sha256": "9d76b0cb8a39b71f8e8e41b8cf639e29c838da9edb02b80d708b0bbbd25abc40"
+    },
+    {
+      "label": "Scrollable layer picker with fixed search",
+      "path": ".work/studio-ux-work/.work/web-app-review/integration/workspace-picker.png",
+      "sha256": "d64b1a77e6d585b4c6318307d419487c250d2109f429b676217221d189874e5d"
+    },
+    {
+      "label": "Generated revision candidate actions",
+      "path": ".work/studio-redesign/generated-preview.png",
+      "sha256": "35a7ac78440a636307d82d1131e320bb8aa23df93298b52edb4cf9f84b535531"
+    }
+  ],
+  "implementation_sha256": {
+    "apps/web/components/Studio.tsx": "ea3711faf557f09bd46873542b966b17795ae141a6b48ecfa477239baded6c60",
+    "apps/web/components/InteractiveCanvas.tsx": "f5d46651aaa6afe8787fd2e1407882c395381f953b59a2743c814abdc76554ef",
+    "apps/web/components/PromptPanel.tsx": "5e1000e2d6b9b050fc87b1dda4106da3804bfa4dcb69b29ac528949115ad837e",
+    "apps/web/components/LayerPicker.module.css": "71b1551709a4817711785508b36962711707670e93868bf1c6dda5eb55f33dd0",
+    "apps/web/components/Studio.module.css": "126852cbfd7936c2aa66101e8c4ec64c525d864ccf55262b005e3d5e9ce6281b",
+    "apps/web/components/StudioIcon.tsx": "ca9f936c354c3c03606f9accd5f1f9ef31cc85ea1037869aafe10a6c87a2dda6",
+    "apps/web/components/StudioDialog.tsx": "d2d4cff08984715c51549a42784f69256e2f66e41a6366c4a4576ef7cd419c85",
+    "apps/web/scripts/test-browser.mjs": "236eac51fe62f4872642dc08fe8fcaa881d7d520d4605135753e3ee0d8d675b9"
+  },
+  "limits": [
+    "Release isolates concurrent unfinished gallery expansion; counts remain 24 studies and 31 API entries.",
+    "Generated-layer UI checks replay a previously completed real model run. This task does not claim a new model-quality benchmark.",
+    "Layout reviewed at desktop 1440x900, mobile 390x844, landscape 844x390; not a universal browser or accessibility certification."
+  ]
+}

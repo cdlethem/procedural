@@ -40,6 +40,13 @@ highlighted view of the actual drawing code with a copy button. Operation links 
 pages explaining the operation, constructor inputs and returned data with runnable JavaScript
 examples. Expand the detailed contract for constraints, semantics and binding information.
 
+**Studio** is a viewport-sized workspace: a layer stack on the left, a fitted canvas in the
+center, and an editor on the right. The layer stack and inspector scroll independently;
+adding layers, expanding source, or browsing long palettes keeps the canvas in place. Switch
+the right editor between **Inspector** and **Prompt**; prompt drafts survive tab changes.
+On smaller screens, the **Layers**, **Inspector**, and **Prompt** buttons open drawers.
+The canvas keeps its 640 × 640 drawing resolution at every display size.
+
 **Open in studio** starts any study as a layer. **Add layer** opens a searchable thumbnail
 picker for the available techniques. Select layers, change their settings,
 hide or reorder them, and adjust opacity. Move layers by dragging on the canvas or setting
@@ -52,7 +59,9 @@ region in **Cut regions** mode and use **X** for a vertical cut, **Y** for a hor
 to cut/remove it. Canvas hints list available actions. Changing the seed or base layout
 clears manual cuts; palette and other styling edits preserve them.
 Undo/redo preserves document edits. Local recovery keeps the latest document in this browser;
-explicit server saves keep named projects. JSON export/import moves editable documents
+explicit **Save project** actions keep named projects. **Open** opens the searchable project
+library and JSON import; **Export** offers PNG and editable JSON downloads. **Canvas help**
+collects keyboard shortcuts and cut/move instructions. JSON export/import moves editable documents
 between browsers. PNG export saves the currently rendered canvas.
 
 3D techniques render to transparent WebGL buffers before composition. Raster techniques

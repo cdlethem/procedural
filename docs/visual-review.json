@@ -2,6 +2,55 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "studio-workspace",
+      "title": "Studio workspace redesign",
+      "category": "Root reviewed production UI",
+      "description": "Fitted canvas, independent scrolling, mobile drawers and preserved prompt revision controls.",
+      "evidence": "evidence/web/studio-workspace-review.json",
+      "images": [
+        {
+          "label": "Production desktop workspace",
+          "path": ".work/studio-redesign/desktop-final.png",
+          "sha256": "4d7328bacf768bd1a7d8e828a4c71caf1daada4b33ecee0b0d88524ba9617e17"
+        },
+        {
+          "label": "Production prompt editor",
+          "path": ".work/studio-redesign/prompt-final.png",
+          "sha256": "297a1b67c83eac5af1d8262aa8ad243cf112f68438ad82d24ff23488d730047a"
+        },
+        {
+          "label": "Production mobile canvas",
+          "path": ".work/studio-redesign/mobile-final.png",
+          "sha256": "77452e1e202d372e3ece92c7b4e298e0141c479e4bce8ead0572226d0fface16"
+        },
+        {
+          "label": "Production mobile inspector",
+          "path": ".work/studio-redesign/mobile-inspector-final.png",
+          "sha256": "194990f22ac1886d9cd7df78fb3f5438060af3196e619dee9b59d14dda12694c"
+        },
+        {
+          "label": "Eight layers and twelve-color palette",
+          "path": ".work/studio-ux-work/.work/web-app-review/integration/workspace-desktop.png",
+          "sha256": "f7a46b9d1cd5573e1f5b068092945b1f018185f770d14d0de7e2e84bd9b5702a"
+        },
+        {
+          "label": "Short landscape inspector",
+          "path": ".work/studio-ux-work/.work/web-app-review/integration/workspace-short-screen.png",
+          "sha256": "9d76b0cb8a39b71f8e8e41b8cf639e29c838da9edb02b80d708b0bbbd25abc40"
+        },
+        {
+          "label": "Scrollable layer picker with fixed search",
+          "path": ".work/studio-ux-work/.work/web-app-review/integration/workspace-picker.png",
+          "sha256": "d64b1a77e6d585b4c6318307d419487c250d2109f429b676217221d189874e5d"
+        },
+        {
+          "label": "Generated revision candidate actions",
+          "path": ".work/studio-redesign/generated-preview.png",
+          "sha256": "35a7ac78440a636307d82d1131e320bb8aa23df93298b52edb4cf9f84b535531"
+        }
+      ]
+    },
+    {
       "id": "generated-layer-revisions",
       "title": "Generated layer revisions and saved collection",
       "category": "Root reviewed web integration",

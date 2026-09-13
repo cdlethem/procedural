@@ -21,11 +21,15 @@ linked evidence. Do not treat old pending statements as new assignments.
   custom per-layer palettes, inline highlighted source, undo/redo, local recovery,
   JSON/PNG export and Go storage are implemented. Studio v3 adds per-layer movement,
   scale and rotation, a thumbnail picker, a compact tabbed inspector, focused reseed/cut
-  actions and human-readable constructor/output guides. Sketch source opens by default.
+  actions and human-readable constructor/output guides. The redesigned Studio has a fitted
+  canvas, independently scrolling layer/inspector panels, mobile drawers, and separate
+  project/export dialogs. Prompt drafts persist across editor tabs.
+  [Workspace review](evidence/web/studio-workspace-review.json) records layout stress checks
+  and preserved editing, generation, export and storage behavior. Sketch source opens by default.
   [Version 3 root review](evidence/web/app-v3-review.json) records production browser
   checks and visual inspection; earlier web reviews remain historical.
   Tailnet deployment: https://eunoia.tailf03dad.ts.net:8443/ (Next 3002, Go 8088),
-  served from the reviewed `.work/web-layer-release` checkout to isolate concurrent work.
+  served from the reviewed `.work/studio-ux-work` checkout to isolate concurrent work.
   The `procedurals-web` and `procedurals-api` user services own Next and Go respectively.
   This remains an app-specific compositor, separate from portable recipes and MCP.
 - Packages are local reviewed artifacts, not registry publications. Java completion
@@ -82,7 +86,7 @@ within their recorded scope. Follow the next user assignment; the [roadmap](docs
   layers category or Studio picker. Follow-ups receive exact current source and replay inputs;
   Studio edits remain explicitly applied and undoable. See the [successor review](evidence/web/generated-layer-review.json).
   Named projects remain in `.work/web-projects`; deployed prompt artifacts and saved layers
-  live in `.work/web-layer-release/.work/harness`. JSON references require that artifact service.
+  live in `.work/studio-ux-work/.work/harness`. JSON references require that artifact service.
   Processing Java, portable recipe expansion and blind benchmarks remain outside this slice.
 
 ## Evidence and navigation
