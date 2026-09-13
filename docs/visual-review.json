@@ -2,6 +2,45 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "p5-gallery-deployment",
+      "title": "Six geometry studies on the live site",
+      "category": "Root reviewed production deployment",
+      "description": "Actual HTTPS Studio baselines, pixel-identical to the reviewed gallery adapters.",
+      "evidence": "evidence/web/p5-gallery-expansion/deployment.json",
+      "images": [
+        {
+          "label": "cell-mosaic \u2014 deployed Studio baseline",
+          "path": ".work/p5-tenfold/studio-before-fix/cell-mosaic.png",
+          "sha256": "363daa4eed41ba140d2fcf27fc0b97128a2058e8d31b58836834d7d4dfdb577f"
+        },
+        {
+          "label": "cell-echoes \u2014 deployed Studio baseline",
+          "path": ".work/p5-tenfold/studio-before-fix/cell-echoes.png",
+          "sha256": "2ec6f0424c3a3a03dc57f57560e1817113099ef95fb26495a31357dc0d3b6030"
+        },
+        {
+          "label": "stitched-paths \u2014 deployed Studio baseline",
+          "path": ".work/p5-tenfold/studio-before-fix/stitched-paths.png",
+          "sha256": "0c8422859b718a79df9caee136169fcb9dbd6b3643fe7c6dce25b1b3399089b1"
+        },
+        {
+          "label": "orbit-beads \u2014 deployed Studio baseline",
+          "path": ".work/p5-tenfold/studio-before-fix/orbit-beads.png",
+          "sha256": "b8545362bed0eedac63ece03b3df0b9e94c1a11ba4de3619a4377f49f9bfedc8"
+        },
+        {
+          "label": "contour-terrain \u2014 deployed Studio baseline",
+          "path": ".work/p5-tenfold/studio-before-fix/contour-terrain.png",
+          "sha256": "efade17f2a1e3c2f44ab938e4043164e915dc969e4fc1ecbfb27788f7e055d3b"
+        },
+        {
+          "label": "contour-blobs \u2014 deployed Studio baseline",
+          "path": ".work/p5-tenfold/studio-before-fix/contour-blobs.png",
+          "sha256": "763b1ece2437f0fb2cf0ce70319a351471cdcc47a11311634697fb5b3a5a68f1"
+        }
+      ]
+    },
+    {
       "id": "palette-library",
       "title": "Reusable palette library",
       "category": "Root reviewed production UI and native palette revision",

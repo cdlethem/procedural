@@ -1,0 +1,713 @@
+{
+  "kind": "p5-gallery-live-deployment-review",
+  "status": "passed",
+  "owner": "root",
+  "reviewer": "root",
+  "checkedAt": "2026-09-13T07:33:03.135801+00:00",
+  "url": "https://eunoia.tailf03dad.ts.net:8443",
+  "mergedCommit": "57f33189f78ce2f149175eeddf27cff9d4c92f4d",
+  "productionBuild": "passed in isolated checkout; existing dynamic-filesystem tracing warning only",
+  "initialRelease": ".work/p5-expansion-live",
+  "observedActiveRelease": ".work/web-palettes-release",
+  "releaseSuccession": "Root deployed the committed p5 expansion; a concurrent palette integration subsequently switched the frontend release. The six study adapters/cores match the committed expansion in both checkouts, and the successor includes the Studio dispatch addition. This record reviews those six studies only, not the concurrent palette feature.",
+  "dataPreservation": "Root kept the existing API service and project store; initial release linked the existing harness artifact directory. Concurrent successor deployment owns its data bindings.",
+  "routes": {
+    "status": "passed",
+    "base": "https://eunoia.tailf03dad.ts.net:8443",
+    "galleryStudies": 30,
+    "apiOperations": 34,
+    "routes": [
+      {
+        "route": "/",
+        "status": 200,
+        "bytes": 157056
+      },
+      {
+        "route": "/studio",
+        "status": 200,
+        "bytes": 7327
+      },
+      {
+        "route": "/api-reference",
+        "status": 200,
+        "bytes": 29469
+      },
+      {
+        "route": "/techniques/field-marks",
+        "status": 200,
+        "bytes": 20021
+      },
+      {
+        "route": "/techniques/path-marks",
+        "status": 200,
+        "bytes": 22069
+      },
+      {
+        "route": "/techniques/placement-marks",
+        "status": 200,
+        "bytes": 20266
+      },
+      {
+        "route": "/techniques/lattice-marks",
+        "status": 200,
+        "bytes": 28431
+      },
+      {
+        "route": "/techniques/band-marks",
+        "status": 200,
+        "bytes": 21200
+      },
+      {
+        "route": "/techniques/branch-marks",
+        "status": 200,
+        "bytes": 24975
+      },
+      {
+        "route": "/techniques/cut-branch-marks",
+        "status": 200,
+        "bytes": 18912
+      },
+      {
+        "route": "/techniques/loop-marks",
+        "status": 200,
+        "bytes": 20871
+      },
+      {
+        "route": "/techniques/region-marks",
+        "status": 200,
+        "bytes": 21124
+      },
+      {
+        "route": "/techniques/panel-marks",
+        "status": 200,
+        "bytes": 21201
+      },
+      {
+        "route": "/techniques/cut-marks",
+        "status": 200,
+        "bytes": 22358
+      },
+      {
+        "route": "/techniques/polygon-marks",
+        "status": 200,
+        "bytes": 22207
+      },
+      {
+        "route": "/techniques/facet-marks",
+        "status": 200,
+        "bytes": 26581
+      },
+      {
+        "route": "/techniques/grain-marks",
+        "status": 200,
+        "bytes": 21881
+      },
+      {
+        "route": "/techniques/pull-marks",
+        "status": 200,
+        "bytes": 22933
+      },
+      {
+        "route": "/techniques/projection-marks",
+        "status": 200,
+        "bytes": 21957
+      },
+      {
+        "route": "/techniques/path-clip-marks",
+        "status": 200,
+        "bytes": 24191
+      },
+      {
+        "route": "/techniques/ramp-marks",
+        "status": 200,
+        "bytes": 18826
+      },
+      {
+        "route": "/techniques/warp-marks",
+        "status": 200,
+        "bytes": 26007
+      },
+      {
+        "route": "/techniques/blur-marks",
+        "status": 200,
+        "bytes": 24870
+      },
+      {
+        "route": "/techniques/profile-marks",
+        "status": 200,
+        "bytes": 23895
+      },
+      {
+        "route": "/techniques/annular-marks",
+        "status": 200,
+        "bytes": 21931
+      },
+      {
+        "route": "/techniques/depth-marks",
+        "status": 200,
+        "bytes": 26408
+      },
+      {
+        "route": "/techniques/spring-marks",
+        "status": 200,
+        "bytes": 24937
+      },
+      {
+        "route": "/techniques/cell-mosaic",
+        "status": 200,
+        "bytes": 24993
+      },
+      {
+        "route": "/techniques/cell-echoes",
+        "status": 200,
+        "bytes": 23709
+      },
+      {
+        "route": "/techniques/stitched-paths",
+        "status": 200,
+        "bytes": 25826
+      },
+      {
+        "route": "/techniques/orbit-beads",
+        "status": 200,
+        "bytes": 24908
+      },
+      {
+        "route": "/techniques/contour-terrain",
+        "status": 200,
+        "bytes": 24624
+      },
+      {
+        "route": "/techniques/contour-blobs",
+        "status": 200,
+        "bytes": 26084
+      },
+      {
+        "route": "/api-reference/mesh.annular-solid-3d",
+        "status": 200,
+        "bytes": 59370
+      },
+      {
+        "route": "/api-reference/raster.bilinear-remap-2d",
+        "status": 200,
+        "bytes": 43419
+      },
+      {
+        "route": "/api-reference/layout.binary-cell-partition-2d",
+        "status": 200,
+        "bytes": 29380
+      },
+      {
+        "route": "/api-reference/geometry.clip-segments-simple-polygon-2d",
+        "status": 200,
+        "bytes": 42541
+      },
+      {
+        "route": "/api-reference/geometry.closed-spline-2d",
+        "status": 200,
+        "bytes": 42271
+      },
+      {
+        "route": "/api-reference/color.cyclic-palette",
+        "status": 200,
+        "bytes": 33713
+      },
+      {
+        "route": "/api-reference/topology.delaunay-2d",
+        "status": 200,
+        "bytes": 58765
+      },
+      {
+        "route": "/api-reference/field.gradient-noise-2d-01",
+        "status": 200,
+        "bytes": 33323
+      },
+      {
+        "route": "/api-reference/field.gradient-noise-3d-01",
+        "status": 200,
+        "bytes": 25320
+      },
+      {
+        "route": "/api-reference/path.gradient-trace-2d",
+        "status": 200,
+        "bytes": 55216
+      },
+      {
+        "route": "/api-reference/geometry.marching-squares-2d",
+        "status": 200,
+        "bytes": 38467
+      },
+      {
+        "route": "/api-reference/raster.masked-source-over-2d",
+        "status": 200,
+        "bytes": 38880
+      },
+      {
+        "route": "/api-reference/geometry.nearest-segment-contact-2d",
+        "status": 200,
+        "bytes": 34395
+      },
+      {
+        "route": "/api-reference/path.noise-band-trace-2d",
+        "status": 200,
+        "bytes": 55607
+      },
+      {
+        "route": "/api-reference/path.occupied-lattice-paths-2d",
+        "status": 200,
+        "bytes": 52980
+      },
+      {
+        "route": "/api-reference/sampling.ordered-circle-filter-2d",
+        "status": 200,
+        "bytes": 54139
+      },
+      {
+        "route": "/api-reference/sampling.ordered-convex-polygon-filter-2d",
+        "status": 200,
+        "bytes": 31649
+      },
+      {
+        "route": "/api-reference/mesh.radial-profile-surface-3d",
+        "status": 200,
+        "bytes": 63613
+      },
+      {
+        "route": "/api-reference/geometry.radial-pull-2d",
+        "status": 200,
+        "bytes": 31366
+      },
+      {
+        "route": "/api-reference/raster.crossfade-2d",
+        "status": 200,
+        "bytes": 38198
+      },
+      {
+        "route": "/api-reference/layout.regular-grid",
+        "status": 200,
+        "bytes": 44091
+      },
+      {
+        "route": "/api-reference/geometry.resample-polyline-2d",
+        "status": 200,
+        "bytes": 37733
+      },
+      {
+        "route": "/api-reference/layout.retained-rectangle-cuts-2d",
+        "status": 200,
+        "bytes": 34530
+      },
+      {
+        "route": "/api-reference/sampling.seeded-circle-placement-2d",
+        "status": 200,
+        "bytes": 51966
+      },
+      {
+        "route": "/api-reference/topology.seeded-endpoint-branches-2d",
+        "status": 200,
+        "bytes": 62052
+      },
+      {
+        "route": "/api-reference/topology.seeded-line-pool-2d",
+        "status": 200,
+        "bytes": 52042
+      },
+      {
+        "route": "/api-reference/layout.seeded-quadrant-partition-2d",
+        "status": 200,
+        "bytes": 58427
+      },
+      {
+        "route": "/api-reference/sampling.seeded-triangle-points-2d",
+        "status": 200,
+        "bytes": 44495
+      },
+      {
+        "route": "/api-reference/raster.separable-blur-2d",
+        "status": 200,
+        "bytes": 41140
+      },
+      {
+        "route": "/api-reference/geometry.sequential-disc-projection-2d",
+        "status": 200,
+        "bytes": 38483
+      },
+      {
+        "route": "/api-reference/color.stop-ramp",
+        "status": 200,
+        "bytes": 31626
+      },
+      {
+        "route": "/api-reference/motion.target-springs-2d",
+        "status": 200,
+        "bytes": 50876
+      },
+      {
+        "route": "/api-reference/sampling.triangle-coordinate-map-2d",
+        "status": 200,
+        "bytes": 42023
+      },
+      {
+        "route": "/api-reference/geometry.voronoi-cells-2d",
+        "status": 200,
+        "bytes": 34552
+      }
+    ]
+  },
+  "studySourceSha256": {
+    "packages/javascript/src/voronoi-cells-2d.js": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6",
+    "packages/javascript/src/resample-polyline-2d.js": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42",
+    "packages/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+    "apps/web/lib/adapters/expansion.ts": "e296b0db8e99e2b3fa71f70413427cebfe4a1ff83ef2177b0615c8bea367b0c8"
+  },
+  "liveStudioDispatchSha256": "2700c91cdf913b90df3b06f7bc440b31fa25ffd64cadbe18396bfab078f5a9e3",
+  "nativeReportSha256": "e59a7893e31ae9e8c1bb2d8fb4793515a1a13d901ff73314436023ad703ceb57",
+  "studioReportSha256": "ee73f20b1442cb8911d0dcc0065c3ae66d0112ae314e7b68458356ba4cdab06a",
+  "visualReview": "Root inspected the six-image gallery contact sheet. Every live Studio baseline is pixel-identical to its gallery baseline; native and gallery controls/reload/reset/save passed.",
+  "studies": [
+    {
+      "slug": "cell-mosaic",
+      "status": "passed",
+      "structuralControl": {
+        "label": "Cells",
+        "value": 72
+      },
+      "reset": "exact",
+      "reload": "exact",
+      "save": "downloaded without redraw",
+      "liveStudio": {
+        "slug": "cell-mosaic",
+        "state": "ready",
+        "text": "",
+        "errors": [],
+        "sha256": "363daa4eed41ba140d2fcf27fc0b97128a2058e8d31b58836834d7d4dfdb577f",
+        "png": ".work/p5-tenfold/studio-before-fix/cell-mosaic.png",
+        "paintedPixels": 314411
+      },
+      "frames": [
+        {
+          "label": "gallery-baseline",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-mosaic/gallery-baseline.png",
+          "sha256": "363daa4eed41ba140d2fcf27fc0b97128a2058e8d31b58836834d7d4dfdb577f"
+        },
+        {
+          "label": "gallery-structural-edit",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-mosaic/gallery-structural-edit.png",
+          "sha256": "2b43f0009f35799115b98839df930926b821ebdc298e861fb38e8c6e5d20361b"
+        },
+        {
+          "label": "gallery-palette-transfer",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-mosaic/gallery-palette-transfer.png",
+          "sha256": "011230edf0efa6578742b2a47032fa628f825196933e30ca642a111195277033"
+        },
+        {
+          "label": "native-baseline",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-mosaic/native-baseline.png",
+          "sha256": "942a5d469a4dd3645f1e6d53499b0cf35065295e342eb36a0fbf7d2d1dab7f51"
+        },
+        {
+          "label": "native-structural-edit",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-mosaic/native-structural-edit.png",
+          "sha256": "ee7def1c1bd68d3fb6422ef19da3800441ea7a02e45e6595de26f5e67d7bbe96"
+        },
+        {
+          "label": "native-palette-transfer",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-mosaic/native-palette-transfer.png",
+          "sha256": "a0b68c04695d9560bae9562dfc12c2497dbfc31b4fe1118c1233c47246d789cd"
+        },
+        {
+          "label": "native-reset",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-mosaic/native-reset.png",
+          "sha256": "942a5d469a4dd3645f1e6d53499b0cf35065295e342eb36a0fbf7d2d1dab7f51"
+        }
+      ]
+    },
+    {
+      "slug": "cell-echoes",
+      "status": "passed",
+      "structuralControl": {
+        "label": "Echoes",
+        "value": 12
+      },
+      "reset": "exact",
+      "reload": "exact",
+      "save": "downloaded without redraw",
+      "liveStudio": {
+        "slug": "cell-echoes",
+        "state": "ready",
+        "text": "",
+        "errors": [],
+        "sha256": "2ec6f0424c3a3a03dc57f57560e1817113099ef95fb26495a31357dc0d3b6030",
+        "png": ".work/p5-tenfold/studio-before-fix/cell-echoes.png",
+        "paintedPixels": 102722
+      },
+      "frames": [
+        {
+          "label": "gallery-baseline",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-echoes/gallery-baseline.png",
+          "sha256": "2ec6f0424c3a3a03dc57f57560e1817113099ef95fb26495a31357dc0d3b6030"
+        },
+        {
+          "label": "gallery-structural-edit",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-echoes/gallery-structural-edit.png",
+          "sha256": "71e533f05a789f39880fcb4fdeb0faae1622435960a04fc4f5842ff8877f828c"
+        },
+        {
+          "label": "gallery-palette-transfer",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-echoes/gallery-palette-transfer.png",
+          "sha256": "0c071621033e643b3bda1d66d1513fa361ce752b38c67a8a41dc0dd72f4b0895"
+        },
+        {
+          "label": "native-baseline",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-echoes/native-baseline.png",
+          "sha256": "d7c89086d158a9a7df606996dbf3af6f7d818ec86008140a1bf35e933d0efe16"
+        },
+        {
+          "label": "native-structural-edit",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-echoes/native-structural-edit.png",
+          "sha256": "f4d35ff837c98e60135fdc8eeee17e3972eb79817073b48c52ffcc1a5a7430b4"
+        },
+        {
+          "label": "native-palette-transfer",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-echoes/native-palette-transfer.png",
+          "sha256": "f2ce7a6dbe735aa8f3c888f94cd67f5bab3fc88a9b335e3c82afc0b144dc69bd"
+        },
+        {
+          "label": "native-reset",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/cell-echoes/native-reset.png",
+          "sha256": "d7c89086d158a9a7df606996dbf3af6f7d818ec86008140a1bf35e933d0efe16"
+        }
+      ]
+    },
+    {
+      "slug": "stitched-paths",
+      "status": "passed",
+      "structuralControl": {
+        "label": "Stitches per path",
+        "value": 105
+      },
+      "reset": "exact",
+      "reload": "exact",
+      "save": "downloaded without redraw",
+      "liveStudio": {
+        "slug": "stitched-paths",
+        "state": "ready",
+        "text": "",
+        "errors": [],
+        "sha256": "0c8422859b718a79df9caee136169fcb9dbd6b3643fe7c6dce25b1b3399089b1",
+        "png": ".work/p5-tenfold/studio-before-fix/stitched-paths.png",
+        "paintedPixels": 30058
+      },
+      "frames": [
+        {
+          "label": "gallery-baseline",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/stitched-paths/gallery-baseline.png",
+          "sha256": "0c8422859b718a79df9caee136169fcb9dbd6b3643fe7c6dce25b1b3399089b1"
+        },
+        {
+          "label": "gallery-structural-edit",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/stitched-paths/gallery-structural-edit.png",
+          "sha256": "586f71146f20b854dd1a8bfb831403c7a06b51b1dbe94b636bd6cded464b0aa4"
+        },
+        {
+          "label": "gallery-palette-transfer",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/stitched-paths/gallery-palette-transfer.png",
+          "sha256": "a9863b410e9205313f2187dc23cf655958c6da08fc9c0ecd91ceac6e9807e2ce"
+        },
+        {
+          "label": "native-baseline",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/stitched-paths/native-baseline.png",
+          "sha256": "2ee04174485d77e5afaab8216a913f3b79890e413239892c98520044c74f3b91"
+        },
+        {
+          "label": "native-structural-edit",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/stitched-paths/native-structural-edit.png",
+          "sha256": "8639fe222a2cfd1d357a7a0684073fbd0f64a109ad301a44515a084ca2e06424"
+        },
+        {
+          "label": "native-palette-transfer",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/stitched-paths/native-palette-transfer.png",
+          "sha256": "806a6b6e8c1b70742f5682e769ce0ee5a08ee211ad9723c697052e097df327d8"
+        },
+        {
+          "label": "native-reset",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/stitched-paths/native-reset.png",
+          "sha256": "2ee04174485d77e5afaab8216a913f3b79890e413239892c98520044c74f3b91"
+        }
+      ]
+    },
+    {
+      "slug": "orbit-beads",
+      "status": "passed",
+      "structuralControl": {
+        "label": "Beads per orbit",
+        "value": 130
+      },
+      "reset": "exact",
+      "reload": "exact",
+      "save": "downloaded without redraw",
+      "liveStudio": {
+        "slug": "orbit-beads",
+        "state": "ready",
+        "text": "",
+        "errors": [],
+        "sha256": "b8545362bed0eedac63ece03b3df0b9e94c1a11ba4de3619a4377f49f9bfedc8",
+        "png": ".work/p5-tenfold/studio-before-fix/orbit-beads.png",
+        "paintedPixels": 13838
+      },
+      "frames": [
+        {
+          "label": "gallery-baseline",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/orbit-beads/gallery-baseline.png",
+          "sha256": "b8545362bed0eedac63ece03b3df0b9e94c1a11ba4de3619a4377f49f9bfedc8"
+        },
+        {
+          "label": "gallery-structural-edit",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/orbit-beads/gallery-structural-edit.png",
+          "sha256": "2f16ae8523402ffc1ab7df1a5bf9c23a33bf40b1370e662a0185ba7e971aa752"
+        },
+        {
+          "label": "gallery-palette-transfer",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/orbit-beads/gallery-palette-transfer.png",
+          "sha256": "94d6433b6ae32bb2fff1688b995b06892cc62413b841f36e8c81e63add4bd446"
+        },
+        {
+          "label": "native-baseline",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/orbit-beads/native-baseline.png",
+          "sha256": "682cbd78b1b5d11e76d78c2510a5c7fe4cda2200ebd9dc14bd77d0988b73dd6c"
+        },
+        {
+          "label": "native-structural-edit",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/orbit-beads/native-structural-edit.png",
+          "sha256": "bb736379d3057d2f3633f41fa201a2fece6a07282a8441b4affd91de2d9bdd9c"
+        },
+        {
+          "label": "native-palette-transfer",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/orbit-beads/native-palette-transfer.png",
+          "sha256": "e7615a6b5d343682c7e7b4fdc8ee4fc10bb1d79aa160e8b658d0c60b15245400"
+        },
+        {
+          "label": "native-reset",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/orbit-beads/native-reset.png",
+          "sha256": "682cbd78b1b5d11e76d78c2510a5c7fe4cda2200ebd9dc14bd77d0988b73dd6c"
+        }
+      ]
+    },
+    {
+      "slug": "contour-terrain",
+      "status": "passed",
+      "structuralControl": {
+        "label": "Terrain scale",
+        "value": 0.012
+      },
+      "reset": "exact",
+      "reload": "exact",
+      "save": "downloaded without redraw",
+      "liveStudio": {
+        "slug": "contour-terrain",
+        "state": "ready",
+        "text": "",
+        "errors": [],
+        "sha256": "efade17f2a1e3c2f44ab938e4043164e915dc969e4fc1ecbfb27788f7e055d3b",
+        "png": ".work/p5-tenfold/studio-before-fix/contour-terrain.png",
+        "paintedPixels": 59341
+      },
+      "frames": [
+        {
+          "label": "gallery-baseline",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-terrain/gallery-baseline.png",
+          "sha256": "efade17f2a1e3c2f44ab938e4043164e915dc969e4fc1ecbfb27788f7e055d3b"
+        },
+        {
+          "label": "gallery-structural-edit",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-terrain/gallery-structural-edit.png",
+          "sha256": "051c64b3f9b55f3abdb833f1045d9118ee1a2f84a57f50475074856c86c15ca6"
+        },
+        {
+          "label": "gallery-palette-transfer",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-terrain/gallery-palette-transfer.png",
+          "sha256": "b8b16299ae3064fd6c8297d3eb238dd802d5078fe3929821eb6abc55fa03a8fa"
+        },
+        {
+          "label": "native-baseline",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-terrain/native-baseline.png",
+          "sha256": "6f2f68f9c58d2280b0a6be82d29fcee79ba6dca97bae2755073131680d100d35"
+        },
+        {
+          "label": "native-structural-edit",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-terrain/native-structural-edit.png",
+          "sha256": "3bfc4d8aeea36b67b065f52ead2b6b709ece5183b5e9d06ffa34f2d78d24b273"
+        },
+        {
+          "label": "native-palette-transfer",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-terrain/native-palette-transfer.png",
+          "sha256": "63bea6448c2fe4f954074b77d381a9ae18d3cb386849f637fac5cbb320c8bd19"
+        },
+        {
+          "label": "native-reset",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-terrain/native-reset.png",
+          "sha256": "6f2f68f9c58d2280b0a6be82d29fcee79ba6dca97bae2755073131680d100d35"
+        }
+      ]
+    },
+    {
+      "slug": "contour-blobs",
+      "status": "passed",
+      "structuralControl": {
+        "label": "First level",
+        "value": 0.85
+      },
+      "reset": "exact",
+      "reload": "exact",
+      "save": "downloaded without redraw",
+      "liveStudio": {
+        "slug": "contour-blobs",
+        "state": "ready",
+        "text": "",
+        "errors": [],
+        "sha256": "763b1ece2437f0fb2cf0ce70319a351471cdcc47a11311634697fb5b3a5a68f1",
+        "png": ".work/p5-tenfold/studio-before-fix/contour-blobs.png",
+        "paintedPixels": 22219
+      },
+      "frames": [
+        {
+          "label": "gallery-baseline",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-blobs/gallery-baseline.png",
+          "sha256": "763b1ece2437f0fb2cf0ce70319a351471cdcc47a11311634697fb5b3a5a68f1"
+        },
+        {
+          "label": "gallery-structural-edit",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-blobs/gallery-structural-edit.png",
+          "sha256": "d0ea41f6ed13e7d6174c98b13a8346c4a1701be74eef46dbc21d457e15dbf706"
+        },
+        {
+          "label": "gallery-palette-transfer",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-blobs/gallery-palette-transfer.png",
+          "sha256": "725e0a571fbedd7771367ac8f44dc5c067cc46f1cd9f2a87b9b2af43592cac08"
+        },
+        {
+          "label": "native-baseline",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-blobs/native-baseline.png",
+          "sha256": "4d89de76d2ad488eaf8f54933bed210cfda4fc5e5841c9407f1a50e525666ad4"
+        },
+        {
+          "label": "native-structural-edit",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-blobs/native-structural-edit.png",
+          "sha256": "b1d1c0172f8bab21e0ed274eb3dec0f2af66192cc784951c000144e24ca171da"
+        },
+        {
+          "label": "native-palette-transfer",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-blobs/native-palette-transfer.png",
+          "sha256": "11b4cd9b837681041ca649598fcfd6bcac012040e136fcb36de94196665c90ef"
+        },
+        {
+          "label": "native-reset",
+          "path": ".work/p5-expansion-live/.work/deploy-live-check/contour-blobs/native-reset.png",
+          "sha256": "4d89de76d2ad488eaf8f54933bed210cfda4fc5e5841c9407f1a50e525666ad4"
+        }
+      ]
+    }
+  ],
+  "successorMergedCommit": "b263f90cf3eb8105b0ea08da394c4618acd37524",
+  "successorReview": "evidence/web/palette-library-review.json"
+}
