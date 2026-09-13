@@ -1,0 +1,191 @@
+{
+  "id": "layout.lloyd-relaxation-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "decision_cluster": "layout.lloyd-relaxation-2d",
+  "description": "Synchronously move sites toward bounded Voronoi centroids.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-geometry-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "sites": {
+        "type": "array",
+        "maxItems": 4294967295,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "bounds": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 4,
+        "maxItems": 4
+      },
+      "iterations": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "strength": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "sites",
+      "bounds",
+      "iterations",
+      "strength",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "sites": {
+        "type": "array",
+        "maxItems": 4294967295,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "required": [
+      "sites"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached one-for-one synchronously updated sites.",
+  "behavior": {
+    "validation": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+    "environment": "No ambient RNG, noise, clock, renderer, assets or retained state. All geometry uses caller coordinates; p5 examples use their own canvas convention. Randomness, where present, is explicit input/output rngState.",
+    "numerics": "Separate IEEE754 binary64 arithmetic, Math.hypot and host sin/cos/sqrt for the named formulas. Check computed numeric intermediates for finiteness and throw NUMERIC_OVERFLOW on nonfinite results. No epsilon in classification or topology, no adaptive exact predicates or near-degeneracy guarantee. General scalar/coordinate comparisons allow absolute 1e-9 plus relative 1e-12; topology, indices, order, booleans and RNG states compare exactly. Analytical shared fixtures use exact JSON output.",
+    "algorithm": "Input: sites (xy array), bounds (existing Voronoi bounds schema), iterations\n(nonnegative integer), strength ([0,1]), maxWork. Output: {sites}. This compound\noperation must call existing voronoiCells2D each pass, preserving one output\nsite per source index. Zero passes copies input, still validating all sites and\nbounds according to Voronoi's domains. For nonempty polygon, compute signed-area\ncentroid by shoelace: Cx=sum((xi+xj)*cross)/(3*sum(cross)), likewise y. Empty or\nzero-area cells leave the site unchanged. Replace each coordinate by\nold+strength*(centroid-old); strength0 returns exact old coordinate after cell\nwork, strength1 exact centroid. Every pass is synchronous from prior sites.\nNo random jitter or duplicate-site repair. Output cell generation remains a\nsubstitution point: caller can use final sites in the existing Voronoi operation.\n\nBudget: reserve N+iterations first (safe arithmetic), then for iterations>0 let\npassBudget=floor((maxWork-N-iterations)/iterations). Each Voronoi call receives\nfloor(passBudget/2); the other half is a separate centroid allowance. Charge one\ncentroid unit per returned polygon vertex and one per site update, including\nempty cells. Insufficient allowance throws WORK_LIMIT; unused allowances are\nnot transferred between phases or passes. Zero iterations only requires N and\nreturns copied sites; empty input may return immediately after budget validation.\nThis deliberately conservative composition does not guess the child operation's\nactual spent work. Validate finite sites and ordered finite bounds independently\nbefore the zero-pass early return. Bounds match the Voronoi array schema.",
+    "native_surface": "p5.js named export lloydRelaxation2D(input) from packages/javascript/src/lloyd-relaxation-2d.js. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed input.",
+    "WORK_LIMIT": "Allocation insufficient.",
+    "NUMERIC_OVERFLOW": "Nonfinite computed value."
+  },
+  "parameters": {
+    "sites": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "bounds": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "iterations": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "strength": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/lloyd-relaxation-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 design studies with meaningful structure edit and styling transfer, native reset/reload/save and root visual review; no corpus recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and fixture challenge",
+    "status": "Approved for p5 implementation against this frozen contract; support acceptance pending execution."
+  }
+}

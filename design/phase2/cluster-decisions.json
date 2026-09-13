@@ -2607,6 +2607,636 @@
         "decision": "design/capabilities/p5-gallery-expansion.md",
         "rationale": "Extract ordered isoline segments from an explicit row-major scalar grid with a fixed high-corner saddle rule. Independently specified under explicit maintainer authorization; no corpus candidates subsumed."
       }
+    },
+    {
+      "id": "geometry.chaikin-polyline-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for the expanded p5 study gallery; no corpus candidate reassignment or recreation credit.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required plain data and explicit maxWork; see the reviewed catalog input schema.",
+        "outputs": "Detached traversal-order xy points.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after independent architecture challenge",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Refine an explicit polyline by fixed Chaikin cuts."
+      }
+    },
+    {
+      "id": "geometry.simplify-polyline-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for the expanded p5 study gallery; no corpus candidate reassignment or recreation credit.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required plain data and explicit maxWork; see the reviewed catalog input schema.",
+        "outputs": "Detached retained points and ascending source indices.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after independent architecture challenge",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Deterministically simplify an open polyline."
+      }
+    },
+    {
+      "id": "geometry.offset-polyline-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for the expanded p5 study gallery; no corpus candidate reassignment or recreation credit.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required plain data and explicit maxWork; see the reviewed catalog input schema.",
+        "outputs": "Detached traversal-order offset xy points.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after independent architecture challenge",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Offset a route with signed left normals and bounded joins."
+      }
+    },
+    {
+      "id": "geometry.convex-hull-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for the expanded p5 study gallery; no corpus candidate reassignment or recreation credit.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required plain data and explicit maxWork; see the reviewed catalog input schema.",
+        "outputs": "Detached lexicographically started positive hull and indices.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after independent architecture challenge",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Return a positive-winding hull with source identities."
+      }
+    },
+    {
+      "id": "geometry.triangulate-simple-polygon-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for the expanded p5 study gallery; no corpus candidate reassignment or recreation credit.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required plain data and explicit maxWork; see the reviewed catalog input schema.",
+        "outputs": "Detached unchanged points and positive original-index triples.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after independent architecture challenge",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Ear-clip a strict simple polygon into original-index triangles."
+      }
+    },
+    {
+      "id": "geometry.assemble-segment-chains-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for the expanded p5 study gallery; no corpus candidate reassignment or recreation credit.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required plain data and explicit maxWork; see the reviewed catalog input schema.",
+        "outputs": "Detached exact-coordinate chains and original segment IDs.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after independent architecture challenge",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Assemble exact-coordinate edges into deterministic chains."
+      }
+    },
+    {
+      "id": "sampling.poisson-disc-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for the expanded p5 study gallery; no corpus candidate reassignment or recreation credit.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required plain data and explicit maxWork; see the reviewed catalog input schema.",
+        "outputs": "Detached insertion-order points, final rngState, exhausted exactly when active list is empty.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after independent architecture challenge",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Generate bounded minimum-distance points from explicit LCG32 rngState."
+      }
+    },
+    {
+      "id": "layout.lloyd-relaxation-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for the expanded p5 study gallery; no corpus candidate reassignment or recreation credit.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required plain data and explicit maxWork; see the reviewed catalog input schema.",
+        "outputs": "Detached one-for-one synchronously updated sites.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after independent architecture challenge",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Synchronously move sites toward bounded Voronoi centroids."
+      }
+    },
+    {
+      "id": "layout.skyline-pack-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for the expanded p5 study gallery; no corpus candidate reassignment or recreation credit.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required plain data and explicit maxWork; see the reviewed catalog input schema.",
+        "outputs": "Detached input-order placements and ascending original unplaced indices.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after independent architecture challenge",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Pack supplied rectangles in input order by deterministic lowest skyline placement."
+      }
+    },
+    {
+      "id": "path.cost-grid-paths-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for the expanded p5 study gallery; no corpus candidate reassignment or recreation credit.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required plain data and explicit maxWork; see the reviewed catalog input schema.",
+        "outputs": "Detached row-major finite/null distances and null/index predecessor entries.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after independent architecture challenge",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Compute deterministic four-neighbor least-cost distances and predecessor indices."
+      }
+    },
+    {
+      "id": "raster.bayer-dither",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for p5 raster/color/mesh studies; no survey candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive plain data and explicit work allowance; see reviewed catalog schema.",
+        "outputs": "Detached stable row-major plain output.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Draft proposal only."
+      }
+    },
+    {
+      "id": "raster.floyd-steinberg-dither",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for p5 raster/color/mesh studies; no survey candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive plain data and explicit work allowance; see reviewed catalog schema.",
+        "outputs": "Detached stable row-major plain output.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Draft proposal only."
+      }
+    },
+    {
+      "id": "raster.convolve-2d-signed",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for p5 raster/color/mesh studies; no survey candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive plain data and explicit work allowance; see reviewed catalog schema.",
+        "outputs": "Detached stable row-major plain output.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Draft proposal only."
+      }
+    },
+    {
+      "id": "raster.binary-morphology-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for p5 raster/color/mesh studies; no survey candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive plain data and explicit work allowance; see reviewed catalog schema.",
+        "outputs": "Detached stable row-major plain output.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Draft proposal only."
+      }
+    },
+    {
+      "id": "field.euclidean-distance-transform-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for p5 raster/color/mesh studies; no survey candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive plain data and explicit work allowance; see reviewed catalog schema.",
+        "outputs": "Detached stable row-major plain output.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Draft proposal only."
+      }
+    },
+    {
+      "id": "color.oklab-ramp",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for p5 raster/color/mesh studies; no survey candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive plain data and explicit work allowance; see reviewed catalog schema.",
+        "outputs": "Detached stable ordered plain output.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Draft proposal only."
+      }
+    },
+    {
+      "id": "color.median-cut-quantize",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for p5 raster/color/mesh studies; no survey candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive plain data and explicit work allowance; see reviewed catalog schema.",
+        "outputs": "Detached stable ordered plain output.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Draft proposal only."
+      }
+    },
+    {
+      "id": "mesh.extrude-simple-polygon-3d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for p5 raster/color/mesh studies; no survey candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive plain data and explicit work allowance; see reviewed catalog schema.",
+        "outputs": "Detached stable ordered plain output.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Draft proposal only."
+      }
+    },
+    {
+      "id": "mesh.parallel-transport-ribbon-3d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for p5 raster/color/mesh studies; no survey candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive plain data and explicit work allowance; see reviewed catalog schema.",
+        "outputs": "Detached stable ordered plain output.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Draft proposal only."
+      }
+    },
+    {
+      "id": "mesh.loop-subdivide-triangles-3d",
+      "status": "reviewed",
+      "reason": "Root-selected independent computation for p5 raster/color/mesh studies; no survey candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive plain data and explicit work allowance; see reviewed catalog schema.",
+        "outputs": "Detached stable ordered plain output.",
+        "invariants": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Draft proposal only."
+      }
+    },
+    {
+      "id": "layout.adjacency-tile-collapse-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent state/topology computation for p5 design studies; no surveyed-candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive data, explicit state and work; see reviewed catalog input schema.",
+        "outputs": "Successful tiles has columns*rows entries, one tile per initial domain, satisfying every in-range directional adjacency. rngState follows only explicit collapse draws.",
+        "invariants": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Collapse explicit tile domains using ordered adjacency propagation, cardinality selection and weighted LCG choices without backtracking."
+      }
+    },
+    {
+      "id": "field.damped-wave-step-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent state/topology computation for p5 design studies; no surveyed-candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive data, explicit state and work; see reviewed catalog input schema.",
+        "outputs": "Both returned arrays have columns*rows finite values. Pinned cells retain exact zero displacement and velocity.",
+        "invariants": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Advance supplied displacement and velocity grids by one simultaneous semi-implicit damped-wave update."
+      }
+    },
+    {
+      "id": "field.elementary-cellular-rows",
+      "status": "reviewed",
+      "reason": "Root-selected independent state/topology computation for p5 design studies; no surveyed-candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive data, explicit state and work; see reviewed catalog input schema.",
+        "outputs": "columns equals initial.length; output cells has columns*rows entries and row zero equals initial.",
+        "invariants": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Generate ordered space-time rows from an explicit elementary three-cell binary rule."
+      }
+    },
+    {
+      "id": "field.gray-scott-step-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent state/topology computation for p5 design studies; no surveyed-candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive data, explicit state and work; see reviewed catalog input schema.",
+        "outputs": "Both returned arrays have columns*rows finite signed values; every update reads only the supplied old state.",
+        "invariants": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Advance supplied Gray\u2013Scott concentration grids by one explicit simultaneous reaction/diffusion update."
+      }
+    },
+    {
+      "id": "field.life-like-step-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent state/topology computation for p5 design studies; no surveyed-candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive data, explicit state and work; see reviewed catalog input schema.",
+        "outputs": "The returned binary grid has columns*rows cells; no update reads a newly written cell.",
+        "invariants": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Advance a binary grid synchronously under explicit Moore-neighborhood birth and survival rules."
+      }
+    },
+    {
+      "id": "grammar.parallel-token-rewrite",
+      "status": "reviewed",
+      "reason": "Root-selected independent state/topology computation for p5 design studies; no surveyed-candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive data, explicit state and work; see reviewed catalog input schema.",
+        "outputs": "Returned tokens preserve generation/production order and do not exceed maxTokens; unmatched tokens pass through once per generation.",
+        "invariants": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Rewrite explicit token productions in simultaneous generations with bounded token and work counts."
+      }
+    },
+    {
+      "id": "path.rk4-vector-grid-trace-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent state/topology computation for p5 design studies; no surveyed-candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive data, explicit state and work; see reviewed catalog input schema.",
+        "outputs": "points.length=completedSteps+1; first point is supplied start. Only complete accepted steps are retained. Completed steps never exceed requested steps.",
+        "invariants": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Trace an explicit bilinearly sampled vector grid with a fixed-step RK4 integrator."
+      }
+    },
+    {
+      "id": "field.scalar-grid-curl-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent state/topology computation for p5 design studies; no surveyed-candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive data, explicit state and work; see reviewed catalog input schema.",
+        "outputs": "vectors has columns*rows finite pairs in row-major order; each pair is [dScalar/dy,-dScalar/dx].",
+        "invariants": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Differentiate an explicit scalar grid with physical spacing and return its rotated planar gradient."
+      }
+    },
+    {
+      "id": "topology.seeded-depth-first-spanning-tree",
+      "status": "reviewed",
+      "reason": "Root-selected independent state/topology computation for p5 design studies; no surveyed-candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive data, explicit state and work; see reviewed catalog input schema.",
+        "outputs": "A success has vertexCount-1 discovery-order directed edges and vertexCount parents/depths. Only root has parent -1 and depth 0. The random DFS distribution is not uniform over spanning trees.",
+        "invariants": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Generate discovery-ordered spanning-tree topology from a connected supplied graph using an explicit randomized DFS schedule."
+      }
+    },
+    {
+      "id": "geometry.token-turtle-2d",
+      "status": "reviewed",
+      "reason": "Root-selected independent state/topology computation for p5 design studies; no surveyed-candidate reassignment.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "Required passive data, explicit state and work; see reviewed catalog input schema.",
+        "outputs": "segments,sourceIndices,depths have equal lengths<=maxSegments. Segments remain in DRAW token order, including zero-length draws. Final pose is detached.",
+        "invariants": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root after architecture and analytical review",
+        "decision": "design/capabilities/p5-tenfold.md",
+        "rationale": "Interpret explicit token commands into retained planar segments with stack-restored pose and branch depth."
+      }
     }
   ],
   "records": {

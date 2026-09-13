@@ -1,0 +1,201 @@
+{
+  "id": "field.life-like-step-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "decision_cluster": "field.life-like-step-2d",
+  "description": "Advance a binary grid synchronously under explicit Moore-neighborhood birth and survival rules.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-systems-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "cells": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "columns": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "birth": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 8
+        },
+        "minItems": 0,
+        "maxItems": 9
+      },
+      "survival": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 8
+        },
+        "minItems": 0,
+        "maxItems": 9
+      },
+      "boundary": {
+        "type": "string",
+        "enum": [
+          "DEAD",
+          "WRAP"
+        ]
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "cells",
+      "columns",
+      "rows",
+      "birth",
+      "survival",
+      "boundary",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "cells": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "cells"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "The returned binary grid has columns*rows cells; no update reads a newly written cell.",
+  "behavior": {
+    "validation": "Exactly the input and nested-union keys shown by the schema, ordinary dense arrays and passive own data properties. Numeric carriers are finite binary64 and never booleans; integral fields are exact integers in schema domain. Reject accessors, host instances and coercion. Complete static validation of every field/element precedes work preflight, RNG draws or output allocation. Products defining array lengths must be exact and <=4294967295 or INVALID_INPUT, even if all individual dimensions are valid. Canonicalize input zeros to +0.",
+    "work": "maxWork is a required nonnegative safe integer. Count arithmetic is exact; an unsafe work sum/product or insufficient allowance is WORK_LIMIT. A charge checks before its action; rejected actions do not execute. The operation-specific schedule is normative. Static input validation has unavoidable input-sized cost. Budgets are abstract work, not memory or latency guarantees; host allocation failure remains a host error.",
+    "numerics": "Separate binary64 primitive rounding, no reassociation/FMA. Every computed primitive must be finite or NUMERIC_OVERFLOW, including division by an underflowed zero denominator. No numerical repair, implicit epsilon or state clipping. Exposed zeros are +0. General finite output fields use absolute 1e-9 plus relative 1e-12; integer/topology/order/state/token values compare exactly. The bound fixture file contains only exact analytical outputs; approximate RK4 linear-field and nonzero-angle turtle geometry tests remain separate future property tests.",
+    "ownership": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+    "grid": "For grid operations C=columns,R=rows,G=C*R, flattened row-major index y*C+x. Scalar/vector/binary state arrays have exactly G elements; vector pairs use caller X/Y axes. Discrete CLAMP selects nearest valid index; WRAP uses nonnegative modulo. Named neighbor offsets are counted separately even when small dimensions map them to the same cell. Spacing is positive [hx,hy]; discrete periodic axes have periods C*hx,R*hy, not duplicated endpoint grids.",
+    "algorithm": "Life-like cellular step\n\nProposed ID: `field.life-like-step-2d`; state transform.\n\nArtist output: next binary grid under an explicit totalistic birth/survival rule.\nStudies: colony carpets; cell-age relief, with age accumulation explicitly in the caller.\nThis is simultaneous local state evolution, not the existing occupancy-claim path walk.\n\nInput:\n\n```text\n{cells:[0|1,...], columns:integer>=1, rows:integer>=1,\n birth:[integer in 0..8,...], survival:[integer in 0..8,...],\n boundary:\"DEAD\"|\"WRAP\", maxWork:integer}\n```\n\nBoth rule lists are strictly increasing, duplicate-free and may be empty.\nOutput `{cells:[0|1,...]}`. Reserve W=9G. Count the eight Moore offsets in dy=-1..1,\nthen dx=-1..1 order, omitting only offset[0,0]. DEAD makes out-of-grid samples zero;\nWRAP counts all eight offsets even if they address duplicate cells or the center itself.\nAlive cells survive iff the count is in survival; dead cells are born iff it is in birth.\nNo asynchronous traversal, history, age, RNG or automatic stopping. O(G) work/storage.\n",
+    "native_surface": "p5.js named export lifeLikeStep2D(input) from packages/javascript/src/life-like-step-2d.js; plain output matching output_schema. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed shape, supplied scalar/carrier/domain, impossible array representation, or operation-specific static constraint.",
+    "WORK_LIMIT": "The exact required or next charged work exceeds maxWork or safe work representation."
+  },
+  "parameters": {
+    "cells": {
+      "unit": "row-major binary cell values",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "columns": {
+      "unit": "grid sample/cell count along X",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "rows": {
+      "unit": "grid sample/cell count along Y or output generation-row count",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "birth": {
+      "unit": "live-neighbor counts causing birth",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "survival": {
+      "unit": "live-neighbor counts allowing survival",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "boundary": {
+      "unit": "explicit sampling or neighbor boundary policy",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "abstract operation-specific work units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/life-like-step-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 design studies, explicit initial state and bounded replay counts, meaningful structural edits and output reuse, native reset/replay/save and root image review. No original recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against frozen catalog; support acceptance pending execution."
+  }
+}

@@ -1,3 +1,4 @@
+import { tenfoldApiGuides } from "./tenfold-api.mjs";
 import { apiInputs } from "./api-inputs.mjs";
 
 const guide = (
@@ -632,8 +633,9 @@ console.log(points.toValues());`,
   ),
 };
 
+Object.assign(apiGuides, tenfoldApiGuides);
 for (const [id, guide] of Object.entries(apiGuides)) {
-  const inputs = apiInputs[id];
+  const inputs = apiInputs[id] ?? guide.inputs;
   if (!inputs) throw new Error(`Missing authored inputs: ${id}`);
   guide.inputs = inputs;
   delete guide.inputNames;

@@ -1,0 +1,181 @@
+{
+  "status": "passed",
+  "scope": "Thirty p5-only independently specified core operations. Analytical fixtures, independent scalar/grid oracles, topology/ordering/ownership/budget regressions, plus finite shared-study command checks. Timings are whole-suite wall observations, not performance guarantees.",
+  "operations": [
+    "layout.adjacency-tile-collapse-2d",
+    "geometry.assemble-segment-chains-2d",
+    "raster.bayer-dither",
+    "raster.binary-morphology-2d",
+    "geometry.chaikin-polyline-2d",
+    "geometry.convex-hull-2d",
+    "raster.convolve-2d-signed",
+    "path.cost-grid-paths-2d",
+    "field.damped-wave-step-2d",
+    "field.elementary-cellular-rows",
+    "field.euclidean-distance-transform-2d",
+    "mesh.extrude-simple-polygon-3d",
+    "raster.floyd-steinberg-dither",
+    "field.gray-scott-step-2d",
+    "field.life-like-step-2d",
+    "layout.lloyd-relaxation-2d",
+    "mesh.loop-subdivide-triangles-3d",
+    "color.median-cut-quantize",
+    "geometry.offset-polyline-2d",
+    "color.oklab-ramp",
+    "grammar.parallel-token-rewrite",
+    "mesh.parallel-transport-ribbon-3d",
+    "sampling.poisson-disc-2d",
+    "path.rk4-vector-grid-trace-2d",
+    "field.scalar-grid-curl-2d",
+    "topology.seeded-depth-first-spanning-tree",
+    "geometry.simplify-polyline-2d",
+    "layout.skyline-pack-2d",
+    "geometry.token-turtle-2d",
+    "geometry.triangulate-simple-polygon-2d"
+  ],
+  "checks": [
+    {
+      "script": "tests/native/p5-tenfold-color.mjs",
+      "exit_code": 0,
+      "stdout": "p5 tenfold color passed",
+      "stderr": "",
+      "elapsed_ms": 74.37
+    },
+    {
+      "script": "tests/native/p5-tenfold-geometry-a.mjs",
+      "exit_code": 0,
+      "stdout": "p5-tenfold geometry A: 26 fixture cases and core properties passed",
+      "stderr": "",
+      "elapsed_ms": 98.66
+    },
+    {
+      "script": "tests/native/p5-tenfold-geometry-b.mjs",
+      "exit_code": 0,
+      "stdout": "p5 tenfold geometry B passed",
+      "stderr": "",
+      "elapsed_ms": 78.19
+    },
+    {
+      "script": "tests/native/p5-tenfold-geometry-review.mjs",
+      "exit_code": 0,
+      "stdout": "p5 tenfold geometry review passed",
+      "stderr": "",
+      "elapsed_ms": 77.16
+    },
+    {
+      "script": "tests/native/p5-tenfold-materials-review.mjs",
+      "exit_code": 0,
+      "stdout": "p5 tenfold materials independent review passed",
+      "stderr": "",
+      "elapsed_ms": 73.03
+    },
+    {
+      "script": "tests/native/p5-tenfold-mesh.mjs",
+      "exit_code": 0,
+      "stdout": "p5 mesh cores passed",
+      "stderr": "",
+      "elapsed_ms": 80.96
+    },
+    {
+      "script": "tests/native/p5-tenfold-raster.mjs",
+      "exit_code": 0,
+      "stdout": "p5 tenfold raster passed checksum=c4f7d8cbe6cbc4b8",
+      "stderr": "",
+      "elapsed_ms": 97.87
+    },
+    {
+      "script": "tests/native/p5-tenfold-systems-a.mjs",
+      "exit_code": 0,
+      "stdout": "p5-tenfold systems A passed",
+      "stderr": "",
+      "elapsed_ms": 82.7
+    },
+    {
+      "script": "tests/native/p5-tenfold-systems-b1.mjs",
+      "exit_code": 0,
+      "stdout": "p5 systems b1 passed",
+      "stderr": "",
+      "elapsed_ms": 103.04
+    },
+    {
+      "script": "tests/native/p5-tenfold-systems-b2.mjs",
+      "exit_code": 0,
+      "stdout": "p5 systems b2 passed",
+      "stderr": "",
+      "elapsed_ms": 69.46
+    },
+    {
+      "script": "tests/native/p5-materials-a-studies.mjs",
+      "exit_code": 0,
+      "stdout": "p5 materials A studies passed 14 draws",
+      "stderr": "",
+      "elapsed_ms": 179.94
+    },
+    {
+      "script": "tests/native/p5-materials-b-studies.mjs",
+      "exit_code": 0,
+      "stdout": "p5 materials B studies passed",
+      "stderr": "",
+      "elapsed_ms": 67.7
+    },
+    {
+      "script": "tests/native/p5-systems-b-studies.mjs",
+      "exit_code": 0,
+      "stdout": "p5 systems B study smoke passed",
+      "stderr": "",
+      "elapsed_ms": 232.57
+    }
+  ],
+  "implementation_sha256": {
+    "packages/javascript/src/adjacency-tile-collapse-2d.js": "ad70df385f1066de90fdb0b04ac84535cd9370a522b3ed91b996235d936c51e4",
+    "packages/javascript/src/assemble-segment-chains-2d.js": "8ab83d01e0dcff42e6e75b183aa26596511ed5bc5a1a734c2791ff2455096291",
+    "packages/javascript/src/bayer-dither.js": "2c6b749115c51e0569be56612fb9a1edcf1f5906718389a0157f5d8c2dcf4a43",
+    "packages/javascript/src/binary-morphology-2d.js": "112b2e90fae068250c8cf16b2906cabf463b21e3138bb0be164c9b68e3198151",
+    "packages/javascript/src/chaikin-polyline-2d.js": "5f7dd247985be361679e15f4fb2a7bd5e033927b53e1d6a1a85d2a30685ebb97",
+    "packages/javascript/src/convex-hull-2d.js": "d156a22647adb5fe931c8740ee2c74eae7f4b243de8bc6fedc714e49139c0075",
+    "packages/javascript/src/convolve-2d-signed.js": "88a639ede86d5f656ad83fddc3f4063da7b97c824cf6afd77344038aac03309d",
+    "packages/javascript/src/cost-grid-paths-2d.js": "73f133373556969568b16baab369aedd944c7fa08671bbf418db319e32f364b6",
+    "packages/javascript/src/damped-wave-step-2d.js": "6d309ed8b0bf78d5abb5097d24839f62019e57a0c4aadac41e2d9d51d96aeeaa",
+    "packages/javascript/src/elementary-cellular-rows.js": "cf99a0c8cea6f0f645df343765218bf91c372a3aeaefe7fb8cbb2c3aaffd4af6",
+    "packages/javascript/src/euclidean-distance-transform-2d.js": "d23b9f390d8f5bf2b913b9d046671969226cc4d0062d799035c715d6b5f23fb7",
+    "packages/javascript/src/extrude-simple-polygon-3d.js": "7b13ac647e6115dbcdd29ae1346eb7df84894af97fa4def05624b34e37e16740",
+    "packages/javascript/src/floyd-steinberg-dither.js": "9ff206e74a55a799e9cecb7844b8f7640ec1a20cf726b8e2ed30f547e7f73283",
+    "packages/javascript/src/gray-scott-step-2d.js": "3106ec4ffbb2b8a2bab29406f9d49a62e4831ccf67af18a320b899cd494adfbc",
+    "packages/javascript/src/internal/geometry-a-utils.js": "b13eec1218c84e3758c8b831182518a2b069be6fb355561bd512a259c3c94a45",
+    "packages/javascript/src/internal/geometry-b-utils.js": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773",
+    "packages/javascript/src/internal/mesh-study-utils.js": "3e7f9501ece2259c768e296978b2d9c9292437ea561a4120566211a4a14561bd",
+    "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+    "packages/javascript/src/internal/systems-a-utils.js": "c6e4920c72648b559fb70395a51ead4deb47e972cd91ae54145d1b1c1e5d5204",
+    "packages/javascript/src/life-like-step-2d.js": "37b145560381679290e862addbff05ed4adf94b1b90fdfd90400116132c1fd4f",
+    "packages/javascript/src/lloyd-relaxation-2d.js": "85d30436973e1010a49ae159f10ca00e0c0b6b546d95345b175c5b55bf6ff5b3",
+    "packages/javascript/src/loop-subdivide-triangles-3d.js": "848f5258859d0fafa0ac82a4b71dc04612f5c219fa926c2e3d9f4f24f229eab0",
+    "packages/javascript/src/median-cut-quantize.js": "10c334b0897c28a6ea722407a50f30dc74c4e6da2d7134322155266950d3ccf8",
+    "packages/javascript/src/offset-polyline-2d.js": "eb42f6a1bba9bf15cfc6d873fba8896bce09a5b5f9168ffd199119e643c38382",
+    "packages/javascript/src/oklab-ramp.js": "b0523d44f8556694f9c81bb8c561a9d2550a9f309ead76f4aa67400811bd44de",
+    "packages/javascript/src/parallel-token-rewrite.js": "0801534342dafd5b394e900a19edf051645a1f0666bf9f52744d6ae28936c7c9",
+    "packages/javascript/src/parallel-transport-ribbon-3d.js": "9f5d099e4777ffeb2e897c5155466fe797d010dc31b96edb4d5d9a7c59393fdf",
+    "packages/javascript/src/poisson-disc-2d.js": "ccdf5f339ad29589ad44ae5a1585283a52bb033c1240ba86314a83254df4cb19",
+    "packages/javascript/src/rk4-vector-grid-trace-2d.js": "f29ad04d1629d04c1d21cc15f901abb6404c6b6afc9af1699f1c070e99f0e281",
+    "packages/javascript/src/scalar-grid-curl-2d.js": "6b3237010420fbe77d2770aa8d71436c223522506e68244944bb053e8b1eef89",
+    "packages/javascript/src/seeded-depth-first-spanning-tree.js": "7b2d71cef7caad248bc511d715a68ac379addc6bed3adc22605502bc05b82c57",
+    "packages/javascript/src/simplify-polyline-2d.js": "b874b18cf0ee75397f09676d5bfe4f66fbeb8987e260577a0579a613799b1feb",
+    "packages/javascript/src/skyline-pack-2d.js": "427c4ebd2d16b163abdc31e8ffe1348b0d9e10e96f6b7dfdd2524fbebe763de7",
+    "packages/javascript/src/token-turtle-2d.js": "24ecdf07d999153c7f611e2c743553450d15e7be929dff4c31edf210b57026fb",
+    "packages/javascript/src/triangulate-simple-polygon-2d.js": "bfbf0df2fd29df8590daa74c629312e14b36342e8577078e1e2f369362ed2760"
+  },
+  "test_sha256": {
+    "tests/native/p5-tenfold-color.mjs": "dfe3755b404aa525599824ad90d2e0445a9b9a31a9ba448abf8784484996edf2",
+    "tests/native/p5-tenfold-geometry-a.mjs": "af59e34275ef3b4d2bfbb6488ac62cb39140b7c67afd5232917fa00ff4991dba",
+    "tests/native/p5-tenfold-geometry-b.mjs": "915367d310d81413b0241b21ce0ed4ef5f889eaf9f034662bb0c318fd64724eb",
+    "tests/native/p5-tenfold-geometry-review.mjs": "582d39926395ad96e8d2a76b271ab2f74fb1bc8ff9dd67a9025476c1a72df20b",
+    "tests/native/p5-tenfold-materials-review.mjs": "04d84e8c01325b8fde7c30b43eb5a356d3d3e1f97f11a4c5d99c117343db79d6",
+    "tests/native/p5-tenfold-mesh.mjs": "a217aeedae2953188c5907859d649bb508b71913ecc7184ffdbf9368dac77bd9",
+    "tests/native/p5-tenfold-raster.mjs": "17f271bc8e04fcad6ac9ae991bc220780f891eb5845e0f530a2cefc10ecd9141",
+    "tests/native/p5-tenfold-systems-a.mjs": "7bdcdc8b10c068fa841d85b69c5d471e6dac2df3ad301934aa0d56ddbd0a4b39",
+    "tests/native/p5-tenfold-systems-b1.mjs": "d8c60c7bef1ad95434859e2c08e1f0a75c54142951b3b7616a46a180a1d857fd",
+    "tests/native/p5-tenfold-systems-b2.mjs": "6c92ddd31789c7694afaf0b583bd1a34a57c056b2cc3e0b12e6bc17cdea3da9b",
+    "tests/native/p5-materials-a-studies.mjs": "6a8bf9a9bac96aed8ff879283426f5a8f3b803fef86d992f7a5b2fa13db6c2fe",
+    "tests/native/p5-materials-b-studies.mjs": "49b40afffe7c0fbd1f413b3d047b481e920ea5c91bb36bcd49f453ae02c246be",
+    "tests/native/p5-systems-b-studies.mjs": "3dbe983046356c2db9565c3545470c6c3a467430cf9841005e70797fccd6f794"
+  }
+}

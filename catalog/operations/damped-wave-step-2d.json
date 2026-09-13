@@ -1,0 +1,256 @@
+{
+  "id": "field.damped-wave-step-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "decision_cluster": "field.damped-wave-step-2d",
+  "description": "Advance supplied displacement and velocity grids by one simultaneous semi-implicit damped-wave update.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-systems-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "state": {
+        "type": "object",
+        "properties": {
+          "displacement": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 1,
+            "maxItems": 4294967295
+          },
+          "velocity": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 1,
+            "maxItems": 4294967295
+          }
+        },
+        "required": [
+          "displacement",
+          "velocity"
+        ],
+        "additionalProperties": false
+      },
+      "columns": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "spacing": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "speed": {
+        "type": "number",
+        "minimum": 0
+      },
+      "damping": {
+        "type": "number",
+        "minimum": 0
+      },
+      "dt": {
+        "type": "number",
+        "minimum": 0
+      },
+      "pinned": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "boundary": {
+        "type": "string",
+        "enum": [
+          "CLAMP",
+          "WRAP"
+        ]
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "state",
+      "columns",
+      "rows",
+      "spacing",
+      "speed",
+      "damping",
+      "dt",
+      "pinned",
+      "boundary",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "displacement": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "velocity": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "displacement",
+      "velocity"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Both returned arrays have columns*rows finite values. Pinned cells retain exact zero displacement and velocity.",
+  "behavior": {
+    "validation": "Exactly the input and nested-union keys shown by the schema, ordinary dense arrays and passive own data properties. Numeric carriers are finite binary64 and never booleans; integral fields are exact integers in schema domain. Reject accessors, host instances and coercion. Complete static validation of every field/element precedes work preflight, RNG draws or output allocation. Products defining array lengths must be exact and <=4294967295 or INVALID_INPUT, even if all individual dimensions are valid. Canonicalize input zeros to +0.",
+    "work": "maxWork is a required nonnegative safe integer. Count arithmetic is exact; an unsafe work sum/product or insufficient allowance is WORK_LIMIT. A charge checks before its action; rejected actions do not execute. The operation-specific schedule is normative. Static input validation has unavoidable input-sized cost. Budgets are abstract work, not memory or latency guarantees; host allocation failure remains a host error.",
+    "numerics": "Separate binary64 primitive rounding, no reassociation/FMA. Every computed primitive must be finite or NUMERIC_OVERFLOW, including division by an underflowed zero denominator. No numerical repair, implicit epsilon or state clipping. Exposed zeros are +0. General finite output fields use absolute 1e-9 plus relative 1e-12; integer/topology/order/state/token values compare exactly. The bound fixture file contains only exact analytical outputs; approximate RK4 linear-field and nonzero-angle turtle geometry tests remain separate future property tests.",
+    "ownership": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+    "grid": "For grid operations C=columns,R=rows,G=C*R, flattened row-major index y*C+x. Scalar/vector/binary state arrays have exactly G elements; vector pairs use caller X/Y axes. Discrete CLAMP selects nearest valid index; WRAP uses nonnegative modulo. Named neighbor offsets are counted separately even when small dimensions map them to the same cell. Spacing is positive [hx,hy]; discrete periodic axes have periods C*hx,R*hy, not duplicated endpoint grids.",
+    "laplacian": "Laplacian over old state: lapX=((left-center)+(right-center))/(hx*hx); lapY=((up-center)+(down-center))/(hy*hy); lap=lapX+lapY. Evaluate separately rounded primitives in written order, X before Y. CLAMP/WRAP select neighbors as described by grid behavior; all output cells read the complete old state.",
+    "algorithm": "Damped wave-grid step\n\nProposed ID: `field.damped-wave-step-2d`; state transform.\n\nArtist output: displacement and velocity arrays for ripple interference and vibrating\nwoven contours. This differs from reaction diffusion through its second-order state and\nwave propagation. Caller owns initial impulses, iteration count and rendering.\n\nInput:\n\n```text\n{state:{displacement:[number,...],velocity:[number,...]},\n columns:integer>=1, rows:integer>=1, spacing:[positive,positive],\n speed:number>=0, damping:number>=0, dt:number>=0,\n pinned:[0|1,...], boundary:\"CLAMP\"|\"WRAP\", maxWork:integer}\n```\n\nOutput `{displacement:[number,...],velocity:[number,...]}`. A pinned cell must have\nexact zero supplied displacement and velocity; otherwise INVALID_INPUT. Pins remain zero.\nReserve W=7G, then compute speedSquared=speed*speed once, checked even if all cells are\npinned. For each unpinned cell compute the old-displacement Laplacian, then\n`acceleration=speedSquared*lap-damping*oldVelocity`,\n`nextVelocity=oldVelocity+dt*acceleration`,\n`nextDisplacement=oldDisplacement+dt*nextVelocity`. This is an explicitly specified\nsemi-implicit update, not an exact wave solver. Read old state everywhere and write both\nnew arrays atomically. No stability clamping; finite negative/large amplitudes are valid.\nSpacing uses distance units, speed distance/time, damping inverse time and dt time.\nWork/storage O(G).\n",
+    "native_surface": "p5.js named export dampedWaveStep2D(input) from packages/javascript/src/damped-wave-step-2d.js; plain output matching output_schema. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed shape, supplied scalar/carrier/domain, impossible array representation, or operation-specific static constraint.",
+    "WORK_LIMIT": "The exact required or next charged work exceeds maxWork or safe work representation.",
+    "NUMERIC_OVERFLOW": "A computed floating primitive is nonfinite; no partial state or geometry escapes."
+  },
+  "parameters": {
+    "state": {
+      "unit": "explicit finite old model state",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "columns": {
+      "unit": "grid sample/cell count along X",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "rows": {
+      "unit": "grid sample/cell count along Y or output generation-row count",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "spacing": {
+      "unit": "positive caller distance between adjacent samples",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "speed": {
+      "unit": "caller distance per time",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "damping": {
+      "unit": "inverse time",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "dt": {
+      "unit": "caller time interval",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "pinned": {
+      "unit": "row-major exact binary pin mask",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "boundary": {
+      "unit": "explicit sampling or neighbor boundary policy",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "abstract operation-specific work units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/damped-wave-step-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 design studies, explicit initial state and bounded replay counts, meaningful structural edits and output reuse, native reset/replay/save and root image review. No original recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against frozen catalog; support acceptance pending execution."
+  }
+}

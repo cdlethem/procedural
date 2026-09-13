@@ -1,0 +1,92 @@
+{
+  "operation": "raster.floyd-steinberg-dither",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "a934c941ad3768e5696456c33e1ad6dbefb7163adee18e97a3b412aeec11a384",
+  "oracle": "Root-reviewed independent analytical states, exact topology and integer-grid formulas, authored before implementation. Color/transport floating properties require separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "single",
+      "input": {
+        "values": [
+          0.5
+        ],
+        "columns": 1,
+        "rows": 1,
+        "threshold": 0.5,
+        "maxWork": 1
+      },
+      "output": {
+        "bits": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "scan",
+      "input": {
+        "values": [
+          0.4,
+          0.4,
+          0.4,
+          0.4
+        ],
+        "columns": 2,
+        "rows": 2,
+        "threshold": 0.5,
+        "maxWork": 10
+      },
+      "output": {
+        "bits": [
+          0,
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "values": [
+          0.5
+        ],
+        "columns": 1,
+        "rows": 1,
+        "threshold": 0.5,
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "malformed",
+      "input": {
+        "values": [
+          2
+        ],
+        "columns": 1,
+        "rows": 1,
+        "threshold": 0.5,
+        "maxWork": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "last-write-budget",
+      "input": {
+        "values": [
+          0.4,
+          0.4,
+          0.4,
+          0.4
+        ],
+        "columns": 2,
+        "rows": 2,
+        "threshold": 0.5,
+        "maxWork": 9
+      },
+      "error": "WORK_LIMIT"
+    }
+  ]
+}

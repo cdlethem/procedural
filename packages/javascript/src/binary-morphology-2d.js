@@ -1,0 +1,11 @@
+import { passiveRecord, passiveArray, valueAt, positiveDimension, workLimit, checkedProduct, checkedWork } from "./internal/raster-study-utils.js";
+const KEYS=["mask","columns","rows","element","elementColumns","elementRows","mode","boundary","maxWork"];
+export class BinaryMorphology2DError extends Error { constructor(code) { super(code); this.name="BinaryMorphology2DError"; this.code=code; } }
+function bools(raw, count, E) { passiveArray(raw,E); if(raw.length!==count)throw new E("INVALID_INPUT"); const out=new Array(count);for(let i=0;i<count;i+=1){const value=Object.getOwnPropertyDescriptor(raw,String(i)).value;if(typeof value!=="boolean")throw new E("INVALID_INPUT");out[i]=value;}return out; }
+export function binaryMorphology2D(input) {
+ const E=BinaryMorphology2DError;passiveRecord(input,KEYS,E);const columns=positiveDimension(valueAt(input,"columns",E),E),rows=positiveDimension(valueAt(input,"rows",E),E),ec=positiveDimension(valueAt(input,"elementColumns",E),E),er=positiveDimension(valueAt(input,"elementRows",E),E),mode=valueAt(input,"mode",E),boundary=valueAt(input,"boundary",E),maxWork=workLimit(valueAt(input,"maxWork",E),E);
+ if((ec&1)===0||(er&1)===0||(mode!=="dilate"&&mode!=="erode")||(boundary!=="zero"&&boundary!=="one"))throw new E("INVALID_INPUT");const cells=checkedProduct([columns,rows],E,"INVALID_INPUT"),elementCells=checkedProduct([ec,er],E,"INVALID_INPUT"),mask=bools(valueAt(input,"mask",E),cells,E),element=bools(valueAt(input,"element",E),elementCells,E);const active=[];for(let i=0;i<elementCells;i+=1)if(element[i])active.push(i);checkedWork(checkedProduct([cells,active.length],E),maxWork,E);if(active.length===0)throw new E("INVALID_INPUT");
+ const output=new Array(cells),cx=Math.floor(ec/2),cy=Math.floor(er/2),offGrid=boundary==="one";
+ for(let y=0;y<rows;y+=1)for(let x=0;x<columns;x+=1){let result=mode==="erode";for(const tap of active){const ox=(tap%ec)-cx,oy=Math.floor(tap/ec)-cy;const sx=mode==="dilate"?x-ox:x+ox,sy=mode==="dilate"?y-oy:y+oy;const sample=sx<0||sx>=columns||sy<0||sy>=rows?offGrid:mask[sy*columns+sx];if(mode==="dilate"){if(sample){result=true;break;}}else if(!sample){result=false;break;}}output[y*columns+x]=result;}
+ return {mask:output};
+}

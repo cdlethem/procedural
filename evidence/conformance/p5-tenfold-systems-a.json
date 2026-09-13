@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "operations": [
+    "field.rk4-vector-grid-trace-2d",
+    "field.gray-scott-step-2d",
+    "field.life-like-step-2d",
+    "field.elementary-cellular-rows",
+    "field.scalar-grid-curl-2d"
+  ],
+  "fixture_cases": {
+    "rk4-vector-grid-trace-2d": 16,
+    "gray-scott-step-2d": 11,
+    "life-like-step-2d": 9,
+    "elementary-cellular-rows": 11,
+    "scalar-grid-curl-2d": 10
+  },
+  "fixture_sha256": {
+    "rk4-vector-grid-trace-2d": "7303dbac48a8aae9a3fcbf95816e8a1c2d1831c0f40af45e826c638943fedca4",
+    "gray-scott-step-2d": "f300431d8f5617bbf13598a32d6f61e5dbba422d55527bae37290c0e0685843f",
+    "life-like-step-2d": "6c3e2a2e7ec498fc3d6f8f2b8850c25b9c1d52ef04847e04145d3a3bc7ca13e0",
+    "elementary-cellular-rows": "42b1560fbd656dc5b5db279b437a83bdb736a8f34f829bbd3539bf814a026b9e",
+    "scalar-grid-curl-2d": "979752c5eb694411093ce3281ec58a65ce4ca14b822d14512f608867894d0fe2"
+  },
+  "timing": {
+    "rk4": {
+      "repetitions": 3,
+      "elapsed_ms": 0.622,
+      "checksum": "4fa4a4b4822d8eded96a5d4ff66d1af4fb160448e71b6214ed2a5a4bf6ed02a8"
+    },
+    "gray": {
+      "repetitions": 3,
+      "elapsed_ms": 0.229,
+      "checksum": "dff57742d82c42d455764525726ab5690466337a232dd47e9ccd8e9a72dd1251"
+    },
+    "life": {
+      "repetitions": 3,
+      "elapsed_ms": 0.113,
+      "checksum": "09519915e318ffff215597855a6d23516eecf2f2015cdc677ac2ac2f35329477"
+    },
+    "elementary": {
+      "repetitions": 3,
+      "elapsed_ms": 0.24,
+      "checksum": "c50eef0b29dab8c34b13ab1dfd40036d315d1689a8f40afccc3b78b1a193a787"
+    },
+    "curl": {
+      "repetitions": 3,
+      "elapsed_ms": 0.065,
+      "checksum": "b941e5b90f77738e09b20b4a56f0cf911724839233199c584004a2f1bb3eedbb"
+    }
+  },
+  "scope": "Pure JavaScript systems-core fixture and property conformance only; no renderer, native workflow, support, or acceptance claim."
+}

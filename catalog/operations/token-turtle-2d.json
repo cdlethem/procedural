@@ -1,0 +1,320 @@
+{
+  "id": "geometry.token-turtle-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "geometry.token-turtle-2d",
+  "description": "Interpret explicit token commands into retained planar segments with stack-restored pose and branch depth.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-systems-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "tokens": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 0,
+        "maxItems": 4294967295
+      },
+      "commands": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "DRAW",
+                    "MOVE"
+                  ]
+                },
+                "distance": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "token",
+                "kind",
+                "distance"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "TURN"
+                  ]
+                },
+                "angle": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "token",
+                "kind",
+                "angle"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "PUSH",
+                    "POP"
+                  ]
+                }
+              },
+              "required": [
+                "token",
+                "kind"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "minItems": 0,
+        "maxItems": 4294967295
+      },
+      "start": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "heading": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "position",
+          "heading"
+        ],
+        "additionalProperties": false
+      },
+      "unknown": {
+        "type": "string",
+        "enum": [
+          "IGNORE",
+          "ERROR"
+        ]
+      },
+      "maxSegments": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "maxStackDepth": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "tokens",
+      "commands",
+      "start",
+      "unknown",
+      "maxSegments",
+      "maxStackDepth",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "segments": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "minItems": 0,
+        "maxItems": 4294967295
+      },
+      "sourceIndices": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967294
+        },
+        "minItems": 0,
+        "maxItems": 4294967295
+      },
+      "depths": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "minItems": 0,
+        "maxItems": 4294967295
+      },
+      "position": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "heading": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "segments",
+      "sourceIndices",
+      "depths",
+      "position",
+      "heading"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "segments,sourceIndices,depths have equal lengths<=maxSegments. Segments remain in DRAW token order, including zero-length draws. Final pose is detached.",
+  "behavior": {
+    "validation": "Exactly the input and nested-union keys shown by the schema, ordinary dense arrays and passive own data properties. Numeric carriers are finite binary64 and never booleans; integral fields are exact integers in schema domain. Reject accessors, host instances and coercion. Complete static validation of every field/element precedes work preflight, RNG draws or output allocation. Products defining array lengths must be exact and <=4294967295 or INVALID_INPUT, even if all individual dimensions are valid. Canonicalize input zeros to +0.",
+    "work": "maxWork is a required nonnegative safe integer. Count arithmetic is exact; an unsafe work sum/product or insufficient allowance is WORK_LIMIT. A charge checks before its action; rejected actions do not execute. The operation-specific schedule is normative. Static input validation has unavoidable input-sized cost. Budgets are abstract work, not memory or latency guarantees; host allocation failure remains a host error.",
+    "numerics": "Separate binary64 primitive rounding, no reassociation/FMA. Every computed primitive must be finite or NUMERIC_OVERFLOW, including division by an underflowed zero denominator. No numerical repair, implicit epsilon or state clipping. Exposed zeros are +0. General finite output fields use absolute 1e-9 plus relative 1e-12; integer/topology/order/state/token values compare exactly. The bound fixture file contains only exact analytical outputs; approximate RK4 linear-field and nonzero-angle turtle geometry tests remain separate future property tests.",
+    "ownership": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+    "tokens": "A token is a nonempty string treated as one atomic symbol. Compare exact UTF-16 code-unit sequences with no Unicode normalization or character splitting. Rule/command token keys are unique; unknown tokens follow the operation-specific passthrough or unknown-token policy.",
+    "algorithm": "Table-driven planar turtle\n\nProposed ID: `geometry.token-turtle-2d`; generator.\n\nArtist output: retained segments with source token and branch-depth identity. Studies:\nbracketed botanical fans; geometric space-filling paths. It consumes explicit tokens,\nincluding candidate17 output, without hiding rewriting or assuming an L-system alphabet.\n\nInput:\n\n```text\n{tokens:[token,...], commands:[command,...],\n start:{position:[number,number],heading:number}, unknown:\"IGNORE\"|\"ERROR\",\n maxSegments:integer in [0,4294967295],\n maxStackDepth:integer in [0,4294967295], maxWork:integer}\n```\n\nCommand union (exact keys per variant): `{token,kind:\"DRAW\"|\"MOVE\",distance:number}`;\n`{token,kind:\"TURN\",angle:number}`; `{token,kind:\"PUSH\"|\"POP\"}`. Tokens follow candidate17's\nstring domain, with unique command tokens. Signed distance is allowed; angles/headings\nare radians without implicit wrapping. No implicit F, +, [, ] or style commands.\n\nOutput:\n`{segments:[[x1,y1,x2,y2],...],sourceIndices:[integer,...],depths:[integer,...],\nposition:[x,y],heading:number}`.\n\nReserve W=commands.length+3*tokens.length. Visit tokens in order. Unknown tokens either\ndo nothing or raise UNKNOWN_TOKEN with tokenIndex. DRAW/MOVE computes\n`dx=distance*cos(heading)`, `dy=distance*sin(heading)`, then x+dx and y+dy, checked in that\norder. DRAW checks maxSegments before calculation, appends a segment even if zero length,\nand records token index and current stack depth. MOVE only updates pose. TURN adds angle.\nPUSH checks depth limit then copies the current pose; POP requires a nonempty stack and\nrestores its final pose. Unbalanced final nonempty stack raises UNBALANCED_STACK, without\npartial output. Exceeding capacity raises OUTPUT_LIMIT or STACK_LIMIT, with tokenIndex;\nempty pop raises STACK_UNDERFLOW with tokenIndex. Work O(tokens+commands), retained output\nO(draws), temporary stack O(maximum actual depth), never preallocated to maxStackDepth.\n",
+    "native_surface": "p5.js named export tokenTurtle2D(input) from packages/javascript/src/token-turtle-2d.js; plain output matching output_schema. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed shape, supplied scalar/carrier/domain, impossible array representation, or operation-specific static constraint.",
+    "WORK_LIMIT": "The exact required or next charged work exceeds maxWork or safe work representation.",
+    "NUMERIC_OVERFLOW": "A computed floating primitive is nonfinite; no partial state or geometry escapes.",
+    "UNKNOWN_TOKEN": "A token has no command under ERROR policy; tokenIndex identifies it.",
+    "OUTPUT_LIMIT": "The next DRAW exceeds maxSegments; tokenIndex identifies it.",
+    "STACK_LIMIT": "The next PUSH exceeds maxStackDepth; tokenIndex identifies it.",
+    "STACK_UNDERFLOW": "POP has no stored pose; tokenIndex identifies it.",
+    "UNBALANCED_STACK": "Interpretation ended with a nonempty pose stack."
+  },
+  "parameters": {
+    "tokens": {
+      "unit": "ordered atomic token strings",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "commands": {
+      "unit": "token-to-command union; radians and caller distance units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "start": {
+      "unit": "explicit caller position and/or heading; heading radians",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "unknown": {
+      "unit": "explicit unknown-token policy",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "maxSegments": {
+      "unit": "maximum retained DRAW segments",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "maxStackDepth": {
+      "unit": "maximum simultaneously stored poses",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "abstract operation-specific work units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/token-turtle-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 design studies, explicit initial state and bounded replay counts, meaningful structural edits and output reuse, native reset/replay/save and root image review. No original recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against frozen catalog; support acceptance pending execution."
+  }
+}

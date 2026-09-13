@@ -1,0 +1,163 @@
+{
+  "operation": "color.median-cut-quantize",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "461a0d5411043dfa8e06d84781a1ab8f952262ac2e369eb976c3831409039593",
+  "oracle": "Root-reviewed independent analytical states, exact topology and integer-grid formulas, authored before implementation. Color/transport floating properties require separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "two",
+      "input": {
+        "colors": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "count": 2,
+        "maxWork": 14
+      },
+      "output": {
+        "palette": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "indices": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "identical",
+      "input": {
+        "colors": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "count": 3,
+        "maxWork": 39
+      },
+      "output": {
+        "palette": [
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "indices": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "colors": [
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "count": 1,
+        "maxWork": 2
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "empty",
+      "input": {
+        "colors": [],
+        "count": 1,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "box-replacement-order",
+      "input": {
+        "colors": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "count": 3,
+        "maxWork": 64
+      },
+      "output": {
+        "palette": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0.5,
+            0.5
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "indices": [
+          1,
+          2,
+          0,
+          1
+        ]
+      }
+    }
+  ]
+}

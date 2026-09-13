@@ -1,0 +1,158 @@
+{
+  "id": "mesh.extrude-simple-polygon-3d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "mesh.extrude-simple-polygon-3d",
+  "description": "Draft proposal only.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-materials-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "polygon": {
+        "type": "array",
+        "minItems": 3,
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 4294967295
+      },
+      "height": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "polygon",
+      "height",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "positions": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "maxItems": 4294967295
+      },
+      "indices": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "positions",
+      "indices"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached stable ordered plain output.",
+  "behavior": {
+    "validation": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+    "environment": "No RNG, noise, time, rendering, assets, host state, mutation or retained aliases. Data uses caller coordinate/color conventions as specified.",
+    "numerics": "Separate IEEE754 binary64 arithmetic, Math.hypot and host sin/cos/sqrt for the named formulas. Check computed numeric intermediates for finiteness and throw NUMERIC_OVERFLOW on nonfinite results. No epsilon in classification or topology, no adaptive exact predicates or near-degeneracy guarantee. General scalar/coordinate comparisons allow absolute 1e-9 plus relative 1e-12; topology, indices, order, booleans and RNG states compare exactly. Analytical shared fixtures use exact JSON output.",
+    "algorithm": "Input {polygon,height,maxWork}; simple ring >=3, finite height>0. Output {positions,indices}. Compose\nforthcoming triangulate-simple-polygon-2d only: it returns unchanged source points and positive (CCW) cap\ntriangles in original IDs; this operation contains no ear algorithm. Bottom positions source [x,y,0], top\n[x,y,height]. Face order is all bottom caps [c,b,a], all top caps [a+N,b+N,c+N], then walls by ascending\noriginal edge index. Determine signed area; use source edge [a,b] if CCW or [b,a] if CW, then emit\n[a,b,b+N],[a,b+N,a+N]. Thus negative-winding input remains valid while source edge ordering remains fixed.\nTriangulator preflight is N^3+N^2; total work is that declared dependency charge +2N+6T+6N, precharged.\nExact fixture: CCW triangle [[0,0],[1,0],[0,1]], h=2, cap [0,1,2], positions\n[[0,0,0],[1,0,0],[0,1,0],[0,0,2],[1,0,2],[0,1,2]], faces\n[[2,1,0],[3,4,5],[0,1,4],[0,4,3],[1,2,5],[1,5,4],[2,0,3],[2,3,5]]. CW square h1 produces same outward wall normals as CCW. Studies: extruded Voronoi\nglass; logo plaque.",
+    "budget": "Triangulator N^3+N^2 charge plus 2N+6T+6N, all safely precharged.",
+    "native_surface": "p5.js named export extrudeSimplePolygon3D(input) from packages/javascript/src/extrude-simple-polygon-3d.js. Other targets deferred.",
+    "dependency": "Call triangulateSimplePolygon2D({points:polygon,maxWork:N*N*N+N*N}) from geometry.triangulate-simple-polygon-2d version0.1.0; propagate its stable errors unchanged. T=N-2 for preflight. Total required work=N*N*N+N*N+8*N+6*(N-2), with output positions2*N and faces2*(N-2)+2*N checked representable before allocation."
+  },
+  "errors": {
+    "INVALID_INPUT": "Includes propagated triangulator invalid input.",
+    "INVALID_TOPOLOGY": "Propagated triangulator topology failure.",
+    "WORK_LIMIT": "Includes dependency/total budget.",
+    "NUMERIC_OVERFLOW": "Includes dependency arithmetic."
+  },
+  "parameters": {
+    "polygon": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "height": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/extrude-simple-polygon-3d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 studies with meaningful structural edit and styling transfer, native controls/reset/replay/save and root visual inspection. No source recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against the frozen catalog; support acceptance pending execution."
+  }
+}

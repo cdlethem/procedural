@@ -117,7 +117,7 @@ class ReviewedExportTests(unittest.TestCase):
             self.assertIsNone(historical_export_bytes(root, relative, digest('before')))
 
     def test_successor_preserves_both_historical_exports_and_rejects_mutation(self):
-        from tools.reviewed_export_extension import SUCCESSOR, HELPER, TRIANGLE, BRANCH, PROFILE, JS_PORTS, P5_BATCH, P5_GALLERY
+        from tools.reviewed_export_extension import SUCCESSOR, HELPER, TRIANGLE, BRANCH, PROFILE, JS_PORTS, P5_BATCH, P5_GALLERY, P5_TENFOLD
         import shutil
         repository = Path(__file__).resolve().parents[1]
         previous = json.loads((repository / REVIEW).read_text())
@@ -130,8 +130,9 @@ class ReviewedExportTests(unittest.TestCase):
         ports = json.loads((repository / JS_PORTS).read_text())
         batch = json.loads((repository / P5_BATCH).read_text())
         gallery = json.loads((repository / P5_GALLERY).read_text())
-        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, CORRECTION, ROOT_CORRECTION, SOURCE_COMPARISON, PROFILE, JS_PORTS, P5_BATCH, P5_GALLERY, *PATHS}
-        for record in (correction, root_correction, profile, ports, batch, gallery):
+        tenfold = json.loads((repository / P5_TENFOLD).read_text())
+        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, CORRECTION, ROOT_CORRECTION, SOURCE_COMPARISON, PROFILE, JS_PORTS, P5_BATCH, P5_GALLERY, P5_TENFOLD, *PATHS}
+        for record in (correction, root_correction, profile, ports, batch, gallery, tenfold):
             files.update(record['implementation_sha256'])
             files.update(record['evidence_sha256'])
         for review in (previous, successor, triangle, branch):
@@ -149,6 +150,21 @@ class ReviewedExportTests(unittest.TestCase):
                 shutil.copyfile(repository / name, root / name)
             relative = 'packages/javascript/src/index.js'
             digest = lambda value: hashlib.sha256(value.encode()).hexdigest()
+            tenfold_prior = tenfold['extensions'][relative]['before']
+            self.assertEqual(historical_export_bytes(root, relative, digest(tenfold_prior)), tenfold_prior.encode())
+            for mutate in (
+                lambda r: r.update(status='draft'),
+                lambda r: r.update(reviewer='worker'),
+                lambda r: r.update(previous_review_sha256='0' * 64),
+                lambda r: r['implementation_sha256'].pop('packages/javascript/src/chaikin-polyline-2d.js'),
+                lambda r: r['evidence_sha256'].pop(P5_GALLERY),
+                lambda r: r['previous_bytes'].update({HELPER: 'forged'}),
+                lambda r: r['extensions'][relative].update(after='forged'),
+            ):
+                record = json.loads(json.dumps(tenfold)); mutate(record)
+                (root / P5_TENFOLD).write_text(json.dumps(record))
+                self.assertIsNone(historical_export_bytes(root, relative, digest(tenfold_prior)))
+            (root / P5_TENFOLD).write_bytes((repository / P5_TENFOLD).read_bytes())
             gallery_prior = gallery['extensions'][relative]['before']
             self.assertEqual(historical_export_bytes(root, relative, digest(gallery_prior)), gallery_prior.encode())
             for mutate in (

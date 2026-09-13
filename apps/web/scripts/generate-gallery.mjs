@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+import { tenfoldStudies } from "../content/tenfold-studies.mjs";
 /** Deterministic catalog/docs consumer. No operation defaults or acceptance are authored here. */
 import {
   readFileSync,
@@ -125,6 +125,7 @@ definitions.push(
   ["contour-terrain", "Fields & paths", ["marching-squares-2d", "gradient-noise-2d-01"]],
   ["contour-blobs", "Fields & paths", ["marching-squares-2d"]],
 );
+definitions.push(...tenfoldStudies.map(study => [study.slug, study.category, study.operations]));
 const slugs = new Set(definitions.map((d) => d[0]));
 // Reviewed p5 completion includes editable native examples without studio adapters.
 // Keep their membership explicit so an unreviewed addition still fails generation.

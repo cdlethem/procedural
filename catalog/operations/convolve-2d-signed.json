@@ -1,0 +1,195 @@
+{
+  "id": "raster.convolve-2d-signed",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "raster.convolve-2d-signed",
+  "description": "Draft proposal only.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-materials-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "values": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4294967295
+      },
+      "columns": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "kernel": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4294967295
+      },
+      "kernelColumns": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "kernelRows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "boundary": {
+        "type": "string",
+        "enum": [
+          "zero",
+          "clamp"
+        ]
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "values",
+      "columns",
+      "rows",
+      "kernel",
+      "kernelColumns",
+      "kernelRows",
+      "boundary",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "values": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "values"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached stable row-major plain output.",
+  "behavior": {
+    "validation": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+    "environment": "No RNG, noise, time, rendering, assets, host state, mutation or retained aliases. Data uses caller coordinate/color conventions as specified.",
+    "numerics": "Separate IEEE754 binary64 arithmetic, Math.hypot and host sin/cos/sqrt for the named formulas. Check computed numeric intermediates for finiteness and throw NUMERIC_OVERFLOW on nonfinite results. No epsilon in classification or topology, no adaptive exact predicates or near-degeneracy guarantee. General scalar/coordinate comparisons allow absolute 1e-9 plus relative 1e-12; topology, indices, order, booleans and RNG states compare exactly. Analytical shared fixtures use exact JSON output.",
+    "algorithm": "Input {values,columns,rows,kernel,kernelColumns,kernelRows,boundary,maxWork}; exact grid/kernel\nproducts, odd positive kernel dimensions, boundary zero|clamp. Output {values}. This is convolution,\nnot correlation: for output x,y, sequentially sum K[ky*kC+kx]*sample(x+cx-kx,y+cy-ky), with\ncx=floor(kC/2), cy=floor(kR/2); zero is 0 off-grid and clamp clamps coordinates. No normalization/clamp.\nWork=cells*kernelCells before allocation. Fixtures: [2]*[3]=[6]; 3x1 [1,2,4] convolved with [1,2,4]\nunder zero -> [4,12,16], distinguishing reversed convolution from correlation. Studies: embossed dots;\nink-spread screen.",
+    "budget": "Precharge columns*rows*kernelColumns*kernelRows safely.",
+    "native_surface": "p5.js named export convolve2DSigned(input) from packages/javascript/src/convolve-2d-signed.js. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed shape/domain/nonfinite input.",
+    "WORK_LIMIT": "Budget exceeded or unsafe work arithmetic.",
+    "NUMERIC_OVERFLOW": "Nonfinite computed intermediate."
+  },
+  "parameters": {
+    "values": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "columns": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "rows": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "kernel": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "kernelColumns": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "kernelRows": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "boundary": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/convolve-2d-signed.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 studies with meaningful structural edit and styling transfer, native controls/reset/replay/save and root visual inspection. No source recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against the frozen catalog; support acceptance pending execution."
+  }
+}

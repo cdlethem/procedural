@@ -1,0 +1,511 @@
+{
+  "operation": "layout.adjacency-tile-collapse-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "62e4a9196e96f258b15851400104dbb1d5af4463fe67927f432340849baf8181",
+  "oracle": "Root reviewed independent analytical grid states, token/graph ordering, explicit LCG recurrence and budget arithmetic before implementation. Nonzero-angle and nonconstant RK4 numerical properties remain separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "alternating-forced-second-cell",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "right": [
+          [
+            1
+          ],
+          [
+            0
+          ]
+        ],
+        "down": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "weights": [
+          1,
+          1
+        ],
+        "domains": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "rngState": 0,
+        "maxWork": 38
+      },
+      "output": {
+        "tiles": [
+          0,
+          1
+        ],
+        "rngState": 1013904223
+      },
+      "rationale": "Exact charged work38; propagation forces the second cell without another RNG draw."
+    },
+    {
+      "id": "alternating-high-bit-state",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "right": [
+          [
+            1
+          ],
+          [
+            0
+          ]
+        ],
+        "down": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "weights": [
+          1,
+          1
+        ],
+        "domains": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "rngState": 2147483648,
+        "maxWork": 38
+      },
+      "output": {
+        "tiles": [
+          1,
+          0
+        ],
+        "rngState": 3161387871
+      }
+    },
+    {
+      "id": "independent-cells-consume-two-draws",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "right": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "down": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "weights": [
+          1,
+          1
+        ],
+        "domains": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "rngState": 0,
+        "maxWork": 100
+      },
+      "output": {
+        "tiles": [
+          0,
+          0
+        ],
+        "rngState": 1196435762
+      }
+    },
+    {
+      "id": "precollapsed-grid-consumes-no-draw",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "right": [
+          [
+            1
+          ],
+          [
+            0
+          ]
+        ],
+        "down": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "weights": [
+          1,
+          1
+        ],
+        "domains": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "rngState": 42,
+        "maxWork": 100
+      },
+      "output": {
+        "tiles": [
+          0,
+          1
+        ],
+        "rngState": 42
+      }
+    },
+    {
+      "id": "vertical-directed-adjacency",
+      "input": {
+        "columns": 1,
+        "rows": 2,
+        "right": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "down": [
+          [
+            1
+          ],
+          [
+            0
+          ]
+        ],
+        "weights": [
+          1,
+          1
+        ],
+        "domains": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "rngState": 0,
+        "maxWork": 38
+      },
+      "output": {
+        "tiles": [
+          0,
+          1
+        ],
+        "rngState": 1013904223
+      }
+    },
+    {
+      "id": "weighted-selection-differs-from-uniform",
+      "input": {
+        "columns": 1,
+        "rows": 1,
+        "right": [
+          [],
+          [],
+          []
+        ],
+        "down": [
+          [],
+          [],
+          []
+        ],
+        "weights": [
+          1,
+          3,
+          1
+        ],
+        "domains": [
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "rngState": 0,
+        "maxWork": 19
+      },
+      "output": {
+        "tiles": [
+          1
+        ],
+        "rngState": 1013904223
+      }
+    },
+    {
+      "id": "singleton-no-neighbors",
+      "input": {
+        "columns": 1,
+        "rows": 1,
+        "right": [
+          []
+        ],
+        "down": [
+          []
+        ],
+        "weights": [
+          99
+        ],
+        "domains": [
+          [
+            0
+          ]
+        ],
+        "rngState": 42,
+        "maxWork": 5
+      },
+      "output": {
+        "tiles": [
+          0
+        ],
+        "rngState": 42
+      }
+    },
+    {
+      "id": "work-one-below-final-scan",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "right": [
+          [
+            1
+          ],
+          [
+            0
+          ]
+        ],
+        "down": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "weights": [
+          1,
+          1
+        ],
+        "domains": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "rngState": 0,
+        "maxWork": 37
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "initial-contradiction",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "right": [
+          [
+            1
+          ],
+          [
+            0
+          ]
+        ],
+        "down": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "weights": [
+          1,
+          1
+        ],
+        "domains": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "rngState": 0,
+        "maxWork": 100
+      },
+      "error": "CONTRADICTION",
+      "error_detail": {
+        "cellIndex": 0
+      }
+    },
+    {
+      "id": "empty-domain-invalid",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "right": [
+          [
+            1
+          ],
+          [
+            0
+          ]
+        ],
+        "down": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "weights": [
+          1,
+          1
+        ],
+        "domains": [
+          [
+            0,
+            1
+          ],
+          []
+        ],
+        "rngState": 0,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "zero-weight-invalid",
+      "input": {
+        "columns": 2,
+        "rows": 1,
+        "right": [
+          [
+            1
+          ],
+          [
+            0
+          ]
+        ],
+        "down": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "weights": [
+          1,
+          0
+        ],
+        "domains": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "rngState": 0,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "weighted-sum-overflow",
+      "input": {
+        "columns": 1,
+        "rows": 1,
+        "right": [
+          [],
+          []
+        ],
+        "down": [
+          [],
+          []
+        ],
+        "weights": [
+          1e+308,
+          1e+308
+        ],
+        "domains": [
+          [
+            0,
+            1
+          ]
+        ],
+        "rngState": 0,
+        "maxWork": 13
+      },
+      "error": "NUMERIC_OVERFLOW"
+    }
+  ]
+}

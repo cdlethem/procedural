@@ -1,0 +1,179 @@
+{
+  "id": "field.elementary-cellular-rows",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "field.elementary-cellular-rows",
+  "description": "Generate ordered space-time rows from an explicit elementary three-cell binary rule.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-systems-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "initial": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "rule": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 255
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "boundary": {
+        "type": "string",
+        "enum": [
+          "ZERO",
+          "WRAP"
+        ]
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "initial",
+      "rule",
+      "rows",
+      "boundary",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "columns": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "cells": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "columns",
+      "rows",
+      "cells"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "columns equals initial.length; output cells has columns*rows entries and row zero equals initial.",
+  "behavior": {
+    "validation": "Exactly the input and nested-union keys shown by the schema, ordinary dense arrays and passive own data properties. Numeric carriers are finite binary64 and never booleans; integral fields are exact integers in schema domain. Reject accessors, host instances and coercion. Complete static validation of every field/element precedes work preflight, RNG draws or output allocation. Products defining array lengths must be exact and <=4294967295 or INVALID_INPUT, even if all individual dimensions are valid. Canonicalize input zeros to +0.",
+    "work": "maxWork is a required nonnegative safe integer. Count arithmetic is exact; an unsafe work sum/product or insufficient allowance is WORK_LIMIT. A charge checks before its action; rejected actions do not execute. The operation-specific schedule is normative. Static input validation has unavoidable input-sized cost. Budgets are abstract work, not memory or latency guarantees; host allocation failure remains a host error.",
+    "numerics": "Separate binary64 primitive rounding, no reassociation/FMA. Every computed primitive must be finite or NUMERIC_OVERFLOW, including division by an underflowed zero denominator. No numerical repair, implicit epsilon or state clipping. Exposed zeros are +0. General finite output fields use absolute 1e-9 plus relative 1e-12; integer/topology/order/state/token values compare exactly. The bound fixture file contains only exact analytical outputs; approximate RK4 linear-field and nonzero-angle turtle geometry tests remain separate future property tests.",
+    "ownership": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+    "grid": "For grid operations C=columns,R=rows,G=C*R, flattened row-major index y*C+x. Scalar/vector/binary state arrays have exactly G elements; vector pairs use caller X/Y axes. Discrete CLAMP selects nearest valid index; WRAP uses nonnegative modulo. Named neighbor offsets are counted separately even when small dimensions map them to the same cell. Spacing is positive [hx,hy]; discrete periodic axes have periods C*hx,R*hy, not duplicated endpoint grids.",
+    "algorithm": "Elementary cellular rows\n\nProposed ID: `field.elementary-cellular-rows`; generator.\n\nArtist output: a space-time grid from a one-dimensional three-cell rule. Studies:\nspace-time tapestries; radial rule bands where rows are drawn as successive rings.\nUnlike candidate13, the rule distinguishes ordered left/center/right configurations.\n\nInput:\n\n```text\n{initial:[0|1,...], rule:integer in 0..255, rows:integer>=1,\n boundary:\"ZERO\"|\"WRAP\", maxWork:integer}\n```\n\nInitial length C>=1; output length C*rows must fit the shared representation limit.\nOutput `{columns:C,rows:rows,cells:[0|1,...]}`. Row0 copies initial. For later rows,\nread only the previous row and set `pattern=4*left+2*center+right`,\n`next=(rule >>> pattern)&1`. ZERO supplies0 outside the row; WRAP uses nonnegative\nmodulo, including duplicated neighbors for C=1/2. No random initial row is generated.\nReserve `W=C+4*C*(rows-1)`; O(C*rows) work/output and O(C) extra state at most.\n",
+    "native_surface": "p5.js named export elementaryCellularRows(input) from packages/javascript/src/elementary-cellular-rows.js; plain output matching output_schema. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed shape, supplied scalar/carrier/domain, impossible array representation, or operation-specific static constraint.",
+    "WORK_LIMIT": "The exact required or next charged work exceeds maxWork or safe work representation."
+  },
+  "parameters": {
+    "initial": {
+      "unit": "ordered binary initial row",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "rule": {
+      "unit": "eight-bit elementary cellular lookup",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "rows": {
+      "unit": "grid sample/cell count along Y or output generation-row count",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "boundary": {
+      "unit": "explicit sampling or neighbor boundary policy",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "abstract operation-specific work units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/elementary-cellular-rows.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 design studies, explicit initial state and bounded replay counts, meaningful structural edits and output reuse, native reset/replay/save and root image review. No original recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against frozen catalog; support acceptance pending execution."
+  }
+}

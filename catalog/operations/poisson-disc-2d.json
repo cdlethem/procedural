@@ -1,0 +1,200 @@
+{
+  "id": "sampling.poisson-disc-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "sampling.poisson-disc-2d",
+  "description": "Generate bounded minimum-distance points from explicit LCG32 rngState.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-geometry-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "bounds": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 4,
+        "maxItems": 4
+      },
+      "radius": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "attemptsPerActive": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "maxPoints": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "rngState": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "bounds",
+      "radius",
+      "attemptsPerActive",
+      "maxPoints",
+      "rngState",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "maxItems": 4294967295
+      },
+      "rngState": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "exhausted": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "points",
+      "rngState",
+      "exhausted"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached insertion-order points, final rngState, exhausted exactly when active list is empty.",
+  "behavior": {
+    "validation": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+    "environment": "No ambient RNG, noise, clock, renderer, assets or retained state. All geometry uses caller coordinates; p5 examples use their own canvas convention. Randomness, where present, is explicit input/output rngState.",
+    "numerics": "Separate IEEE754 binary64 arithmetic, Math.hypot and host sin/cos/sqrt for the named formulas. Check computed numeric intermediates for finiteness and throw NUMERIC_OVERFLOW on nonfinite results. No epsilon in classification or topology, no adaptive exact predicates or near-degeneracy guarantee. General scalar/coordinate comparisons allow absolute 1e-9 plus relative 1e-12; topology, indices, order, booleans and RNG states compare exactly. Analytical shared fixtures use exact JSON output.",
+    "algorithm": "Input: bounds [minX,minY,maxX,maxY] with strict positive finite width/height,\nradius (>0), attemptsPerActive (positive integer), maxPoints (nonnegative integer),\nrngState (uint32), maxWork. Output: {points,rngState,exhausted}. Own local LCG32:\nstate=(1664525*state+1013904223) mod 2^32, each unit draw advances then divides\nby 2^32. MaxPoints0 returns empty points, unchanged state, exhausted=false.\nOtherwise first point consumes x then y draws and lies in the closed bounds (endpoint rounding is retained).\nMaintain insertion-ordered points and active indices. Each active iteration\nconsumes one draw to select floor(u*active.length). Try candidates in order:\nradius draw first, angle draw second; rho=radius*sqrt(1+3*u), angle=2*pi*v.\nCandidate=activePoint+rho*[cos(angle),sin(angle)]. Reject outside closed\nbounds or distance < radius from any point. Accept the first passing candidate,\nappend it to points and active list, then restart active selection. After all k\nfail, remove selected active entry by swapping with last then popping. Stop at\nmaxPoints or empty active list. exhausted is true exactly when active is empty.\n\nUse sparse uniform grid cells of radius/sqrt(2), searching dx/dy offsets -2..2\nin y-major order. This is an acceleration only; candidate acceptance is identical\nto a complete existing-point distance test. Reject cell-size underflow, or unsafe\ninteger cell coordinates with NUMERIC_OVERFLOW; no dense domain-sized allocation.\nCharge one work unit per RNG draw, one per candidate, and one per actual existing\npoint distance comparison, before each event; maxWork exhaustion throws atomically.\nInput validation/storage setup is O(N) in accepted points. Representation/finite\nchecks precede appending. Budget is explicit algorithm events, not time guarantee.",
+    "native_surface": "p5.js named export poissonDisc2D(input) from packages/javascript/src/poisson-disc-2d.js. Other targets deferred.",
+    "candidate_order": "Charge the candidate event before its radius and angle draws. First-point coordinates are minX+u*width, minY+v*height, retaining closed-boundary endpoint rounding. Validate ordered bounds before maxPoints zero; compute checked width/height and positive represented cell size only when maxPoints>0. Point distance uses Math.hypot(dx,dy). Cell buckets retain point insertion order. Check neighboring cells in dy=-2..2 then dx=-2..2 order; charge each actual point comparison, stopping at first distance < radius. Selection uses floor(u*active.length). Output rngState is the final private LCG state. maxPoints zero has exhausted=false."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed input.",
+    "WORK_LIMIT": "Event charge exceeds maxWork.",
+    "NUMERIC_OVERFLOW": "Computed value/cell index is nonfinite or unsafe."
+  },
+  "parameters": {
+    "bounds": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "radius": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "attemptsPerActive": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxPoints": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "rngState": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/poisson-disc-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 design studies with meaningful structure edit and styling transfer, native reset/reload/save and root visual review; no corpus recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and fixture challenge",
+    "status": "Approved for p5 implementation against this frozen contract; support acceptance pending execution."
+  }
+}

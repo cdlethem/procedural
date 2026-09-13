@@ -1,0 +1,132 @@
+{
+  "operation": "path.cost-grid-paths-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "proposal_catalog_sha256": null,
+  "oracle": "Root reviewed analytical coordinates, topology, budgets and explicit LCG recurrence, authored before implementation. General numeric properties require separate runtime checks.",
+  "cases": [
+    {
+      "id": "unit-grid",
+      "input": {
+        "columns": 2,
+        "rows": 2,
+        "costs": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "start": 0,
+        "maxWork": 36
+      },
+      "output": {
+        "distances": [
+          0,
+          1,
+          1,
+          2
+        ],
+        "predecessors": [
+          null,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "obstacles",
+      "input": {
+        "columns": 2,
+        "rows": 2,
+        "costs": [
+          1,
+          null,
+          null,
+          1
+        ],
+        "start": 0,
+        "maxWork": 36
+      },
+      "output": {
+        "distances": [
+          0,
+          null,
+          null,
+          null
+        ],
+        "predecessors": [
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "id": "zero-tie",
+      "input": {
+        "columns": 2,
+        "rows": 2,
+        "costs": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "start": 0,
+        "maxWork": 36
+      },
+      "output": {
+        "distances": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "predecessors": [
+          null,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "columns": 2,
+        "rows": 2,
+        "costs": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "start": 0,
+        "maxWork": 35
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "invalid-start",
+      "input": {
+        "columns": 1,
+        "rows": 1,
+        "costs": [
+          null
+        ],
+        "start": 0,
+        "maxWork": 6
+      },
+      "error": "INVALID_INPUT"
+    }
+  ],
+  "future_test_notes": [
+    "queued equal relaxation",
+    "reachable overflow",
+    "detached ownership"
+  ],
+  "catalog_sha256": "8a8661ac5c683e0a174c9afe1013bcd455be6cb05b76524d970a6646730d671c"
+}

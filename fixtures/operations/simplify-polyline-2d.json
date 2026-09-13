@@ -1,0 +1,196 @@
+{
+  "operation": "geometry.simplify-polyline-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "proposal_catalog_sha256": null,
+  "oracle": "Root reviewed analytical coordinates, topology, budgets and explicit LCG recurrence, authored before implementation. General numeric properties require separate runtime checks.",
+  "cases": [
+    {
+      "id": "tolerance-one",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "tolerance": 1,
+        "maxWork": 9
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "id": "tolerance-zero",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "tolerance": 0,
+        "maxWork": 9
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "id": "clamped-projection",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "tolerance": 0,
+        "maxWork": 9
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "id": "coincident-endpoints",
+      "input": {
+        "points": [
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "tolerance": 0,
+        "maxWork": 9
+      },
+      "output": {
+        "points": [
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "tolerance": 0,
+        "maxWork": 8
+      },
+      "error": "WORK_LIMIT"
+    }
+  ],
+  "future_test_notes": [
+    "earliest equal maximum",
+    "detached ownership",
+    "nonfinite projection"
+  ],
+  "catalog_sha256": "e0012dd8edad7be850d36d38da7945506107f8afaa8aa30ab2665a25bb84cb47"
+}

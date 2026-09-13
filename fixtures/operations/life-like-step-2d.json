@@ -1,0 +1,230 @@
+{
+  "operation": "field.life-like-step-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "7843f5f141b92ae9225fb137809f02aa40222fa9605b307408112e019709e102",
+  "oracle": "Root reviewed independent analytical grid states, token/graph ordering, explicit LCG recurrence and budget arithmetic before implementation. Nonzero-angle and nonconstant RK4 numerical properties remain separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "horizontal-blinker",
+      "input": {
+        "cells": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "columns": 3,
+        "rows": 3,
+        "birth": [
+          3
+        ],
+        "survival": [
+          2,
+          3
+        ],
+        "boundary": "DEAD",
+        "maxWork": 81
+      },
+      "output": {
+        "cells": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "id": "vertical-blinker-returns",
+      "input": {
+        "cells": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "columns": 3,
+        "rows": 3,
+        "birth": [
+          3
+        ],
+        "survival": [
+          2,
+          3
+        ],
+        "boundary": "DEAD",
+        "maxWork": 81
+      },
+      "output": {
+        "cells": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "tiny-wrap-counts-eight-offsets",
+      "input": {
+        "cells": [
+          1
+        ],
+        "columns": 1,
+        "rows": 1,
+        "birth": [],
+        "survival": [
+          8
+        ],
+        "boundary": "WRAP",
+        "maxWork": 9
+      },
+      "output": {
+        "cells": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "tiny-dead-boundary",
+      "input": {
+        "cells": [
+          1
+        ],
+        "columns": 1,
+        "rows": 1,
+        "birth": [],
+        "survival": [
+          8
+        ],
+        "boundary": "DEAD",
+        "maxWork": 9
+      },
+      "output": {
+        "cells": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "birth-at-zero",
+      "input": {
+        "cells": [
+          0,
+          0
+        ],
+        "columns": 2,
+        "rows": 1,
+        "birth": [
+          0
+        ],
+        "survival": [],
+        "boundary": "DEAD",
+        "maxWork": 18
+      },
+      "output": {
+        "cells": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "empty-rules-clear",
+      "input": {
+        "cells": [
+          1,
+          1
+        ],
+        "columns": 2,
+        "rows": 1,
+        "birth": [],
+        "survival": [],
+        "boundary": "WRAP",
+        "maxWork": 18
+      },
+      "output": {
+        "cells": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "duplicate-rule-invalid",
+      "input": {
+        "cells": [
+          1
+        ],
+        "columns": 1,
+        "rows": 1,
+        "birth": [
+          3,
+          3
+        ],
+        "survival": [
+          8
+        ],
+        "boundary": "WRAP",
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "boolean-cell-invalid",
+      "input": {
+        "cells": [
+          true
+        ],
+        "columns": 1,
+        "rows": 1,
+        "birth": [],
+        "survival": [
+          8
+        ],
+        "boundary": "WRAP",
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "work-one-below",
+      "input": {
+        "cells": [
+          1
+        ],
+        "columns": 1,
+        "rows": 1,
+        "birth": [],
+        "survival": [
+          8
+        ],
+        "boundary": "WRAP",
+        "maxWork": 8
+      },
+      "error": "WORK_LIMIT"
+    }
+  ]
+}

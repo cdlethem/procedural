@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "target": "p5js-core",
+  "scope": "Frozen geometry B core fixture, deterministic ordering, ownership and modest Node timing observations only; no native rendering, package, target-support or acceptance claim.",
+  "command": "node tests/native/p5-tenfold-geometry-b.mjs",
+  "result": {
+    "fixture_cases": 26,
+    "additional_properties": [
+      "Poisson sparse-grid candidates agree with brute-force pair separation",
+      "chain orientation and source IDs are deterministic",
+      "cost-grid strict-improvement predecessor order is stable",
+      "Lloyd reserves separate child and centroid allowances"
+    ]
+  },
+  "runtime": "Node.js v22.22.1",
+  "timings": {
+    "method": "one warmup then three deterministic repetitions of all five direct-import cores; elapsed values are observations on this machine, not limits or promises.",
+    "tiny": { "repetitions": 3, "elapsed_ms": 0.41738 },
+    "study": { "repetitions": 3, "elapsed_ms": 6.164452 },
+    "stress": { "repetitions": 3, "elapsed_ms": 26.246639 }
+  },
+  "fixture_sha256": {
+    "fixtures/operations/assemble-segment-chains-2d.json": "e799264943a538431de0086ce55541a1965f751f55ff1f1fe6e437ed9ae28cf0",
+    "fixtures/operations/poisson-disc-2d.json": "0e6dce82c388f898db842ea06d25e68d2ad76bfcafc52d78da54efe723b7eaf8",
+    "fixtures/operations/lloyd-relaxation-2d.json": "9d4608a71e87bf17206fc1eaf3584cf69b0ec3e7d651897757e50ada952d16a3",
+    "fixtures/operations/skyline-pack-2d.json": "35d04840d36d8a64931fd6c40ea19a1a8e92d283905121e7caad7ace37ee4678",
+    "fixtures/operations/cost-grid-paths-2d.json": "411b7bfa3c83aa14bc010b83e8cf8ab840d8c9dd0c31df238b9969ae3f844e2c"
+  },
+  "source_sha256": {
+    "packages/javascript/src/assemble-segment-chains-2d.js": "8ab83d01e0dcff42e6e75b183aa26596511ed5bc5a1a734c2791ff2455096291",
+    "packages/javascript/src/poisson-disc-2d.js": "ccdf5f339ad29589ad44ae5a1585283a52bb033c1240ba86314a83254df4cb19",
+    "packages/javascript/src/lloyd-relaxation-2d.js": "85d30436973e1010a49ae159f10ca00e0c0b6b546d95345b175c5b55bf6ff5b3",
+    "packages/javascript/src/skyline-pack-2d.js": "427c4ebd2d16b163abdc31e8ffe1348b0d9e10e96f6b7dfdd2524fbebe763de7",
+    "packages/javascript/src/cost-grid-paths-2d.js": "d1d0efedcf784c4b36d1735ae960bcf6afad68feeca43e2c2c7c2c0ae008f983",
+    "packages/javascript/src/internal/geometry-b-utils.js": "72e6dae1c98dc48285764908c38999127390520902d69a2dadebf7fa2b53c773",
+    "tests/native/p5-tenfold-geometry-b.mjs": "915367d310d81413b0241b21ce0ed4ef5f889eaf9f034662bb0c318fd64724eb"
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "id": "mesh.loop-subdivide-triangles-3d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "mesh.loop-subdivide-triangles-3d",
+  "description": "Draft proposal only.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-materials-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "positions": {
+        "type": "array",
+        "minItems": 3,
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "maxItems": 4294967295
+      },
+      "indices": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "maxItems": 4294967295
+      },
+      "levels": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 30
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "positions",
+      "indices",
+      "levels",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "positions": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "maxItems": 4294967295
+      },
+      "indices": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "positions",
+      "indices"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached stable ordered plain output.",
+  "behavior": {
+    "validation": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+    "environment": "No RNG, noise, time, rendering, assets, host state, mutation or retained aliases. Data uses caller coordinate/color conventions as specified.",
+    "numerics": "Separate IEEE754 binary64 arithmetic, Math.hypot and host sin/cos/sqrt for the named formulas. Check computed numeric intermediates for finiteness and throw NUMERIC_OVERFLOW on nonfinite results. No epsilon in classification or topology, no adaptive exact predicates or near-degeneracy guarantee. General scalar/coordinate comparisons allow absolute 1e-9 plus relative 1e-12; topology, indices, order, booleans and RNG states compare exactly. Analytical shared fixtures use exact JSON output.",
+    "algorithm": "Input {positions,indices,levels,maxWork}; indexed triangles, levels 0..30. Output {positions,indices}.\nAllow manifold boundaries. Reject duplicate faces, repeated face vertex, isolated vertex, any edge used\n>2 times, inconsistent shared direction, disconnected vertex link/bowtie. Sort undirected edges\nlexicographically (minID,maxID) for new-vertex order; sum neighbors in ascending old ID. Interior edge\npoint=.375(A+B)+.125(C+D); boundary edge midpoint=(A+B)/2. Interior old valence n vertex is\n(1-nbeta)V+beta*sum(neighbors), beta=3/16 for n=3 else\n(1/n)*(5/8-(3/8+1/4*cos(2pi/n))^2). Boundary old vertex with exactly two boundary neighbors is\n.75V+.125(N0+N1). Each source [a,b,c] emits [a,eab,eca],[b,ebc,eab],[c,eca,ebc],[eab,ebc,eca].\nTopology validation is required even at level0. Before generation reserve the conservative recurrence specified in behavior.budget;\noverflow/excess is WORK_LIMIT. Do not recharge actual counts or reclaim unused allowance. Fixtures: tetra with origin and unit axes, level1 V=10,F=16 and\nold origin=(3/16,3/16,3/16); exact single triangle boundary level1 has old positions\n[.125,.125,0],[.75,.125,0],[.125,.75,0], edge midpoints [.5,0,0],[0,.5,0],[.5,.5,0] at IDs 3,4,5\n(lexicographic edges 01,02,12), and faces [0,3,4],[1,5,3],[2,4,5],[3,5,4]. Studies: soften extruded\nsilhouette; smooth faceted terrain. Primary:\nhttps://www.microsoft.com/en-us/research/publication/smooth-subdivision-surfaces-based-on-triangles/",
+    "budget": "Use conservative counts V=input vertex count,F=input face count and W=0. For each requested refinement level add 2*V+10*F to W, then set V=V+3*F and F=4*F using the prior counts. Finally add V+3*F for final topology validation (also for levels0). All sums/products and every conservative vertex/face count must be safe and representable; otherwise WORK_LIMIT. Require W<=maxWork before generated storage. Do not charge again or reclaim unused allowance from actual E<3F. Per-pass sorting adds logarithmic comparison cost; the budget counts topology/output entries, not milliseconds or every primitive comparison.",
+    "native_surface": "p5.js named export loopSubdivideTriangles3D(input) from packages/javascript/src/loop-subdivide-triangles-3d.js. Other targets deferred.",
+    "topology": "All triangle indices must be in range. Geometry may be degenerate, but topology must be an orientable combinatorial 2-manifold with boundary. Each interior vertex link must be a single cycle; a boundary vertex link a single path with exactly two boundary neighbors. Reject disconnected links, duplicate unoriented faces, repeated indices within a face, isolated vertices, edges used more than twice or shared in equal directions, and any other link violation with INVALID_TOPOLOGY. Check input topology even for levels0; check each generated level. Old vertices precede newly created lexicographically ordered edge vertices. Use (1-n*beta)*V+beta*sumNeighborCoordinates, with neighbors ascending original index; boundary expression is0.75*V+0.125*(N0+N1)."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed domain/input.",
+    "INVALID_TOPOLOGY": "Invalid mesh topology.",
+    "WORK_LIMIT": "Budget or safe arithmetic.",
+    "NUMERIC_OVERFLOW": "Nonfinite computed intermediate."
+  },
+  "parameters": {
+    "positions": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "indices": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "levels": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/loop-subdivide-triangles-3d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 studies with meaningful structural edit and styling transfer, native controls/reset/replay/save and root visual inspection. No source recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against the frozen catalog; support acceptance pending execution."
+  }
+}

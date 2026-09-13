@@ -1,0 +1,147 @@
+{
+  "id": "color.oklab-ramp",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "color.oklab-ramp",
+  "description": "Draft proposal only.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-materials-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "stops": {
+        "type": "array",
+        "minItems": 2,
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "maxItems": 4294967295
+      },
+      "count": {
+        "type": "integer",
+        "minimum": 2,
+        "maximum": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "stops",
+      "count",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "colors": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "colors"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached stable ordered plain output.",
+  "behavior": {
+    "validation": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+    "environment": "No RNG, noise, time, rendering, assets, host state, mutation or retained aliases. Data uses caller coordinate/color conventions as specified.",
+    "numerics": "Separate IEEE754 binary64 arithmetic, Math.hypot and host sin/cos/sqrt for the named formulas. Check computed numeric intermediates for finiteness and throw NUMERIC_OVERFLOW on nonfinite results. No epsilon in classification or topology, no adaptive exact predicates or near-degeneracy guarantee. General scalar/coordinate comparisons allow absolute 1e-9 plus relative 1e-12; topology, indices, order, booleans and RNG states compare exactly. Analytical shared fixtures use exact JSON output.",
+    "algorithm": "Input {stops,count,maxWork}, >=2 encoded sRGB triples in [0,1], count>=2. Output {colors}, encoded\nsRGB triples. Decode each component c by c/12.92 if c<=.04045, otherwise ((c+.055)/1.055)^2.4. At\nu=k/(count-1), select span min(floor(u*(N-1)),N-2), t=u*(N-1)-span, convert stops to Oklab, lerp L,a,b,\ninverse convert, clamp each reconstructed linear RGB component independently to [0,1], then encode linear\nc by 12.92c if c<=.0031308, otherwise 1.055*c^(1/2.4)-.055. Output k=0 and k=count-1 are copied exact\ninput endpoint triples. Forward LMS rows:\n(.4122214708,.5363325363,.0514459929),(.2119034982,.6806995451,.1073969566),\n(.0883024619,.2817188376,.6299787005), cube roots, then\n(.2104542553,.7936177850,-.0040720468),(1.9779984951,-2.4285922050,.4505937099),\n(.0259040371,.7827717662,-.8086757660). Inverse uses\nl'=L+.3963377774a+.2158037573b, m'=L-.1055613458a-.0638541728b,\ns'=L-.0894841775a-1.2914855480b; cube; then\n(4.0767416621,-3.3077115913,.2309699292),(-1.2684380046,2.6097574011,-.3413193965),\n(-.0041960863,-.7034186147,1.7076147010). Work=stops+count. Fixtures: exact black/white endpoint\ncopies; red-to-blue count3 has an approximate specified interior tolerance per channel 1e-9.\nStudies: terrain ramp; ribbon palette. Primary: https://bottosson.github.io/posts/oklab/",
+    "budget": "Precharge stops.length+count safely.",
+    "native_surface": "p5.js named export oklabRamp(input) from packages/javascript/src/oklab-ramp.js. Other targets deferred.",
+    "arithmetic_order": "Matrix row sums are (a*x+b*y)+c*z with separate checked operations. Interpolation is start+t*(end-start) per L,a,b component. Cube by (x*x)*x, and use Math.cbrt for forward LMS. Encoded output k=0 and k=count-1 copies endpoints exactly; internal stop positions are evaluated through the declared matrices. Clamp reconstructed linear channels to [0,1] before the stated encoding formula; this is component clipping, not perceptual gamut mapping."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed domain/input.",
+    "WORK_LIMIT": "Budget or safe arithmetic.",
+    "NUMERIC_OVERFLOW": "Nonfinite computed intermediate."
+  },
+  "parameters": {
+    "stops": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "count": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/oklab-ramp.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 studies with meaningful structural edit and styling transfer, native controls/reset/replay/save and root visual inspection. No source recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against the frozen catalog; support acceptance pending execution."
+  }
+}

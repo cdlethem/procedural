@@ -1,0 +1,1 @@
+import { createStudySketch } from "../study-controls.js"; import { drawObstacleRoads, pathsBSettings } from "../paths-b-studies.js"; createStudySketch({slug:"obstacle-roads",title:"Obstacle roads",...pathsBSettings["obstacle-roads"],draw:drawObstacleRoads});

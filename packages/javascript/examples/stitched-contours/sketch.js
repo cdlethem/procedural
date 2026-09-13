@@ -1,0 +1,1 @@
+import { createStudySketch } from "../study-controls.js"; import { drawStitchedContours, pathsBSettings } from "../paths-b-studies.js"; createStudySketch({slug:"stitched-contours",title:"Stitched contours",...pathsBSettings["stitched-contours"],draw:drawStitchedContours});

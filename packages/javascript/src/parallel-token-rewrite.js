@@ -1,0 +1,7 @@
+import { array, at, integer, record, work } from "./internal/geometry-b-utils.js";
+class RewriteError extends Error { constructor(code, detail) { super(code); this.name="RewriteError"; this.code=code; if(detail!==undefined)this.detail=detail; } }
+const E=RewriteError; const token=(x)=>{if(typeof x!=="string"||x.length===0)throw new E("INVALID_INPUT");return x;};
+export function parallelTokenRewrite(input) {
+  record(E,input,["axiom","rules","iterations","maxTokens","maxWork"]);const axiom=array(E,at(E,input,"axiom")).map(token),raw=array(E,at(E,input,"rules")),iterations=integer(E,at(E,input,"iterations"),0,4294967295),maxTokens=integer(E,at(E,input,"maxTokens"),0,4294967295),maxWork=integer(E,at(E,input,"maxWork"),0,Number.MAX_SAFE_INTEGER);const rules=new Map();let setup=axiom.length+raw.length;
+  for(const r of raw){record(E,r,["symbol","replacement"]);const symbol=token(at(E,r,"symbol")),replacement=array(E,at(E,r,"replacement")).map(token);if(rules.has(symbol))throw new E("INVALID_INPUT");rules.set(symbol,replacement);setup+=replacement.length;}work(E,setup,maxWork);if(axiom.length>maxTokens)throw new E("OUTPUT_LIMIT");let spent=setup,current=axiom.slice();for(let g=0;g<iterations;g++){spent=work(E,spent+1,maxWork);const next=[];for(const t of current){spent=work(E,spent+1,maxWork);const replacement=rules.get(t)||[t];if(next.length+replacement.length>maxTokens)throw new E("OUTPUT_LIMIT");spent=work(E,spent+replacement.length,maxWork);for(const emitted of replacement)next.push(emitted);}current=next;}return {tokens:current.slice()};
+}

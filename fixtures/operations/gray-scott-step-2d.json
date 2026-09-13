@@ -1,0 +1,396 @@
+{
+  "operation": "field.gray-scott-step-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "b7930b8a02939cfa742810f3e66f370b698e71d0408873bb81d4f47c41334a54",
+  "oracle": "Root reviewed independent analytical grid states, token/graph ordering, explicit LCG recurrence and budget arithmetic before implementation. Nonzero-angle and nonconstant RK4 numerical properties remain separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "uniform-reaction",
+      "input": {
+        "state": {
+          "u": [
+            0.5
+          ],
+          "v": [
+            0.25
+          ]
+        },
+        "columns": 1,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "diffusionU": 0,
+        "diffusionV": 0,
+        "feed": 0.125,
+        "kill": 0.125,
+        "dt": 0.5,
+        "boundary": "WRAP",
+        "maxWork": 9
+      },
+      "output": {
+        "u": [
+          0.515625
+        ],
+        "v": [
+          0.234375
+        ]
+      }
+    },
+    {
+      "id": "consecutive-reaction",
+      "input": {
+        "state": {
+          "u": [
+            0.515625
+          ],
+          "v": [
+            0.234375
+          ]
+        },
+        "columns": 1,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "diffusionU": 0,
+        "diffusionV": 0,
+        "feed": 0.125,
+        "kill": 0.125,
+        "dt": 0.5,
+        "boundary": "WRAP",
+        "maxWork": 9
+      },
+      "output": {
+        "u": [
+          0.5317363739013672
+        ],
+        "v": [
+          0.2192401885986328
+        ]
+      },
+      "rationale": "Exact fractions 278783/524288 and 114945/524288, derived independently from the previous state."
+    },
+    {
+      "id": "simultaneous-wrap-diffusion",
+      "input": {
+        "state": {
+          "u": [
+            1,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            0,
+            0
+          ]
+        },
+        "columns": 3,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "diffusionU": 0.25,
+        "diffusionV": 0,
+        "feed": 0,
+        "kill": 0,
+        "dt": 1,
+        "boundary": "WRAP",
+        "maxWork": 27
+      },
+      "output": {
+        "u": [
+          0.5,
+          0.25,
+          0.25
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "clamped-edge-diffusion",
+      "input": {
+        "state": {
+          "u": [
+            1,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            0,
+            0
+          ]
+        },
+        "columns": 3,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "diffusionU": 0.25,
+        "diffusionV": 0,
+        "feed": 0,
+        "kill": 0,
+        "dt": 1,
+        "boundary": "CLAMP",
+        "maxWork": 27
+      },
+      "output": {
+        "u": [
+          0.75,
+          0.25,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "physical-spacing",
+      "input": {
+        "state": {
+          "u": [
+            1,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            0,
+            0
+          ]
+        },
+        "columns": 3,
+        "rows": 1,
+        "spacing": [
+          2,
+          1
+        ],
+        "diffusionU": 1,
+        "diffusionV": 0,
+        "feed": 0,
+        "kill": 0,
+        "dt": 0.5,
+        "boundary": "WRAP",
+        "maxWork": 27
+      },
+      "output": {
+        "u": [
+          0.75,
+          0.125,
+          0.125
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "equilibrium",
+      "input": {
+        "state": {
+          "u": [
+            1,
+            1,
+            1
+          ],
+          "v": [
+            0,
+            0,
+            0
+          ]
+        },
+        "columns": 3,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "diffusionU": 0.25,
+        "diffusionV": 0.5,
+        "feed": 0.0625,
+        "kill": 0.125,
+        "dt": 0.25,
+        "boundary": "WRAP",
+        "maxWork": 27
+      },
+      "output": {
+        "u": [
+          1,
+          1,
+          1
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "finite-negative-output-is-not-clipped",
+      "input": {
+        "state": {
+          "u": [
+            0
+          ],
+          "v": [
+            1
+          ]
+        },
+        "columns": 1,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "diffusionU": 0,
+        "diffusionV": 0,
+        "feed": 0,
+        "kill": 2,
+        "dt": 1,
+        "boundary": "CLAMP",
+        "maxWork": 9
+      },
+      "output": {
+        "u": [
+          0
+        ],
+        "v": [
+          -1
+        ]
+      }
+    },
+    {
+      "id": "negative-state-is-reusable",
+      "input": {
+        "state": {
+          "u": [
+            0
+          ],
+          "v": [
+            -1
+          ]
+        },
+        "columns": 1,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "diffusionU": 0,
+        "diffusionV": 0,
+        "feed": 0,
+        "kill": 2,
+        "dt": 1,
+        "boundary": "CLAMP",
+        "maxWork": 9
+      },
+      "output": {
+        "u": [
+          0
+        ],
+        "v": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "work-one-below",
+      "input": {
+        "state": {
+          "u": [
+            0
+          ],
+          "v": [
+            1
+          ]
+        },
+        "columns": 1,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "diffusionU": 0,
+        "diffusionV": 0,
+        "feed": 0,
+        "kill": 2,
+        "dt": 1,
+        "boundary": "CLAMP",
+        "maxWork": 8
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "negative-coefficient-invalid",
+      "input": {
+        "state": {
+          "u": [
+            0
+          ],
+          "v": [
+            1
+          ]
+        },
+        "columns": 1,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "diffusionU": 0,
+        "diffusionV": 0,
+        "feed": -1,
+        "kill": 2,
+        "dt": 1,
+        "boundary": "CLAMP",
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "reaction-overflow",
+      "input": {
+        "state": {
+          "u": [
+            1e+308
+          ],
+          "v": [
+            2
+          ]
+        },
+        "columns": 1,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "diffusionU": 0,
+        "diffusionV": 0,
+        "feed": 0,
+        "kill": 2,
+        "dt": 1,
+        "boundary": "CLAMP",
+        "maxWork": 9
+      },
+      "error": "NUMERIC_OVERFLOW"
+    }
+  ]
+}

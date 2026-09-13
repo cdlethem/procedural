@@ -1,0 +1,385 @@
+{
+  "operation": "mesh.extrude-simple-polygon-3d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "0ad42afef703a17709ecf2b7495ee495befa4e018c83ebfe7f18b85ca9c60647",
+  "oracle": "Root-reviewed independent analytical states, exact topology and integer-grid formulas, authored before implementation. Color/transport floating properties require separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "triangle",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "height": 2,
+        "maxWork": 100
+      },
+      "output": {
+        "positions": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            2
+          ],
+          [
+            1,
+            0,
+            2
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "indices": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            3,
+            4,
+            5
+          ],
+          [
+            0,
+            1,
+            4
+          ],
+          [
+            0,
+            4,
+            3
+          ],
+          [
+            1,
+            2,
+            5
+          ],
+          [
+            1,
+            5,
+            4
+          ],
+          [
+            2,
+            0,
+            3
+          ],
+          [
+            2,
+            3,
+            5
+          ]
+        ]
+      }
+    },
+    {
+      "id": "height",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "height": 0,
+        "maxWork": 100
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "budget",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "height": 1,
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "bad",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "height": 1,
+        "maxWork": 10
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "clockwise-caps-and-walls",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "height": 1,
+        "maxWork": 66
+      },
+      "output": {
+        "positions": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ]
+        ],
+        "indices": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            5,
+            4,
+            3
+          ],
+          [
+            1,
+            0,
+            3
+          ],
+          [
+            1,
+            3,
+            4
+          ],
+          [
+            2,
+            1,
+            4
+          ],
+          [
+            2,
+            4,
+            5
+          ],
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            0,
+            5,
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "id": "exact-total-budget",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "height": 2,
+        "maxWork": 66
+      },
+      "output": {
+        "positions": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            2
+          ],
+          [
+            1,
+            0,
+            2
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "indices": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            3,
+            4,
+            5
+          ],
+          [
+            0,
+            1,
+            4
+          ],
+          [
+            0,
+            4,
+            3
+          ],
+          [
+            1,
+            2,
+            5
+          ],
+          [
+            1,
+            5,
+            4
+          ],
+          [
+            2,
+            0,
+            3
+          ],
+          [
+            2,
+            3,
+            5
+          ]
+        ]
+      }
+    },
+    {
+      "id": "one-below-total-budget",
+      "input": {
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "height": 2,
+        "maxWork": 65
+      },
+      "error": "WORK_LIMIT"
+    }
+  ]
+}

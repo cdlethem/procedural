@@ -1,0 +1,191 @@
+{
+  "id": "layout.skyline-pack-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "layout.skyline-pack-2d",
+  "description": "Pack supplied rectangles in input order by deterministic lowest skyline placement.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-geometry-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "width": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "height": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "rectangles": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "width": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "width",
+      "height",
+      "rectangles",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "placements": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "index": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "index",
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
+        },
+        "maxItems": 4294967295
+      },
+      "unplaced": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "placements",
+      "unplaced"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached input-order placements and ascending original unplaced indices.",
+  "behavior": {
+    "validation": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+    "environment": "No ambient RNG, noise, clock, renderer, assets or retained state. All geometry uses caller coordinates; p5 examples use their own canvas convention. Randomness, where present, is explicit input/output rngState.",
+    "numerics": "Separate IEEE754 binary64 arithmetic, Math.hypot and host sin/cos/sqrt for the named formulas. Check computed numeric intermediates for finiteness and throw NUMERIC_OVERFLOW on nonfinite results. No epsilon in classification or topology, no adaptive exact predicates or near-degeneracy guarantee. General scalar/coordinate comparisons allow absolute 1e-9 plus relative 1e-12; topology, indices, order, booleans and RNG states compare exactly. Analytical shared fixtures use exact JSON output.",
+    "algorithm": "Input: width,height (>0), rectangles (array {width,height} both >0), maxWork.\nOutput: {placements,unplaced}; placement {index,x,y,width,height}, unplaced is\nascending original indices. Process rectangles in supplied order, no rotation,\npadding or implicit sorting. Skyline initially one horizontal span [0,width] at\ny=0. Candidate x positions are each current span's start. Candidate y is maximum\nheight of skyline spans with left < x+rect.width and right > x (positive-width overlap only). Reject right/bottom\noverflow. Select smallest y+rect.height, then smallest x. Insert the new top\nheight across its width, retaining left/right fragments, and merge adjacent\nequal-height spans. Failure places nothing and preserves skyline; continue.\nCoordinates at touching boundaries count as fitting. Returned placement order\nis input processing order with failures omitted. Preflight 8*N*N*N+N <= maxWork, covering the naive candidate/span scan.\nThis is a deterministic heuristic, not globally optimal bin packing.",
+    "native_surface": "p5.js named export skylinePack2D(input) from packages/javascript/src/skyline-pack-2d.js. Other targets deferred.",
+    "placement_order": "No rotation, sorting or implicit padding. Return placed records in original processing order and unplaced IDs ascending. Reject nonfinite fit arithmetic even for a candidate that would not fit. Do not count zero-width span-boundary touching as overlap."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed input.",
+    "WORK_LIMIT": "Preflight exceeds work budget.",
+    "NUMERIC_OVERFLOW": "Computed value nonfinite."
+  },
+  "parameters": {
+    "width": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "height": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "rectangles": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/skyline-pack-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 design studies with meaningful structure edit and styling transfer, native reset/reload/save and root visual review; no corpus recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and fixture challenge",
+    "status": "Approved for p5 implementation against this frozen contract; support acceptance pending execution."
+  }
+}

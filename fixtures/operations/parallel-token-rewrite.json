@@ -1,0 +1,323 @@
+{
+  "operation": "grammar.parallel-token-rewrite",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "b17e54d9ec73483b73be6c18590f61e8d03a3372d83c25a8a93c4ca8f2e1751f",
+  "oracle": "Root reviewed independent analytical grid states, token/graph ordering, explicit LCG recurrence and budget arithmetic before implementation. Nonzero-angle and nonconstant RK4 numerical properties remain separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "parallel-fibonacci",
+      "input": {
+        "axiom": [
+          "A"
+        ],
+        "rules": [
+          {
+            "symbol": "A",
+            "replacement": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "symbol": "B",
+            "replacement": [
+              "A"
+            ]
+          }
+        ],
+        "iterations": 3,
+        "maxTokens": 5,
+        "maxWork": 25
+      },
+      "output": {
+        "tokens": [
+          "A",
+          "B",
+          "A",
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "id": "erase-then-empty-generation",
+      "input": {
+        "axiom": [
+          "A"
+        ],
+        "rules": [
+          {
+            "symbol": "A",
+            "replacement": []
+          }
+        ],
+        "iterations": 2,
+        "maxTokens": 1,
+        "maxWork": 5
+      },
+      "output": {
+        "tokens": []
+      }
+    },
+    {
+      "id": "rewrite-only-previous-generation",
+      "input": {
+        "axiom": [
+          "A"
+        ],
+        "rules": [
+          {
+            "symbol": "A",
+            "replacement": [
+              "B"
+            ]
+          },
+          {
+            "symbol": "B",
+            "replacement": [
+              "C"
+            ]
+          }
+        ],
+        "iterations": 1,
+        "maxTokens": 1,
+        "maxWork": 8
+      },
+      "output": {
+        "tokens": [
+          "B"
+        ]
+      }
+    },
+    {
+      "id": "zero-iterations-copy",
+      "input": {
+        "axiom": [
+          "A"
+        ],
+        "rules": [
+          {
+            "symbol": "A",
+            "replacement": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "symbol": "B",
+            "replacement": [
+              "A"
+            ]
+          }
+        ],
+        "iterations": 0,
+        "maxTokens": 5,
+        "maxWork": 6
+      },
+      "output": {
+        "tokens": [
+          "A"
+        ]
+      }
+    },
+    {
+      "id": "unmatched-pass-through",
+      "input": {
+        "axiom": [
+          "A",
+          "X"
+        ],
+        "rules": [
+          {
+            "symbol": "A",
+            "replacement": [
+              "B"
+            ]
+          }
+        ],
+        "iterations": 1,
+        "maxTokens": 2,
+        "maxWork": 9
+      },
+      "output": {
+        "tokens": [
+          "B",
+          "X"
+        ]
+      }
+    },
+    {
+      "id": "empty-axiom-still-pays-generations",
+      "input": {
+        "axiom": [],
+        "rules": [],
+        "iterations": 3,
+        "maxTokens": 0,
+        "maxWork": 3
+      },
+      "output": {
+        "tokens": []
+      }
+    },
+    {
+      "id": "no-rules-two-generations",
+      "input": {
+        "axiom": [
+          "A",
+          "B"
+        ],
+        "rules": [],
+        "iterations": 2,
+        "maxTokens": 2,
+        "maxWork": 12
+      },
+      "output": {
+        "tokens": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "id": "tokens-are-not-split-into-characters",
+      "input": {
+        "axiom": [
+          "AB"
+        ],
+        "rules": [
+          {
+            "symbol": "AB",
+            "replacement": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "symbol": "A",
+            "replacement": [
+              "X"
+            ]
+          }
+        ],
+        "iterations": 1,
+        "maxTokens": 2,
+        "maxWork": 10
+      },
+      "output": {
+        "tokens": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "id": "work-one-below",
+      "input": {
+        "axiom": [
+          "A"
+        ],
+        "rules": [
+          {
+            "symbol": "A",
+            "replacement": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "symbol": "B",
+            "replacement": [
+              "A"
+            ]
+          }
+        ],
+        "iterations": 3,
+        "maxTokens": 5,
+        "maxWork": 24
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "output-capacity-before-emission",
+      "input": {
+        "axiom": [
+          "A"
+        ],
+        "rules": [
+          {
+            "symbol": "A",
+            "replacement": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "symbol": "B",
+            "replacement": [
+              "A"
+            ]
+          }
+        ],
+        "iterations": 3,
+        "maxTokens": 4,
+        "maxWork": 25
+      },
+      "error": "OUTPUT_LIMIT"
+    },
+    {
+      "id": "duplicate-production-invalid",
+      "input": {
+        "axiom": [
+          "A"
+        ],
+        "rules": [
+          {
+            "symbol": "A",
+            "replacement": [
+              "B"
+            ]
+          },
+          {
+            "symbol": "A",
+            "replacement": [
+              "C"
+            ]
+          }
+        ],
+        "iterations": 3,
+        "maxTokens": 5,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "empty-token-invalid",
+      "input": {
+        "axiom": [
+          ""
+        ],
+        "rules": [
+          {
+            "symbol": "A",
+            "replacement": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "symbol": "B",
+            "replacement": [
+              "A"
+            ]
+          }
+        ],
+        "iterations": 3,
+        "maxTokens": 5,
+        "maxWork": 25
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

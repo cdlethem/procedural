@@ -1,0 +1,378 @@
+{
+  "operation": "field.scalar-grid-curl-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "98243d349977f758fe8afd75f9c661e1e38123ae4062b2c54926ce551e80ade2",
+  "oracle": "Root reviewed independent analytical grid states, token/graph ordering, explicit LCG recurrence and budget arithmetic before implementation. Nonzero-angle and nonconstant RK4 numerical properties remain separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "physical-affine-gradient",
+      "input": {
+        "values": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "columns": 2,
+        "rows": 2,
+        "spacing": [
+          2,
+          3
+        ],
+        "boundary": "ONE_SIDED",
+        "maxWork": 20
+      },
+      "output": {
+        "vectors": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "two-column-periodic-derivatives",
+      "input": {
+        "values": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "columns": 2,
+        "rows": 2,
+        "spacing": [
+          2,
+          3
+        ],
+        "boundary": "WRAP",
+        "maxWork": 20
+      },
+      "output": {
+        "vectors": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "constant-field",
+      "input": {
+        "values": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "columns": 2,
+        "rows": 2,
+        "spacing": [
+          2,
+          3
+        ],
+        "boundary": "ONE_SIDED",
+        "maxWork": 20
+      },
+      "output": {
+        "vectors": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "periodic-central-difference",
+      "input": {
+        "values": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "columns": 3,
+        "rows": 2,
+        "spacing": [
+          1,
+          1
+        ],
+        "boundary": "WRAP",
+        "maxWork": 30
+      },
+      "output": {
+        "vectors": [
+          [
+            0,
+            -0.5
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0.5
+          ],
+          [
+            0,
+            -0.5
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0.5
+          ]
+        ]
+      }
+    },
+    {
+      "id": "horizontal-slope",
+      "input": {
+        "values": [
+          0,
+          4,
+          0,
+          4
+        ],
+        "columns": 2,
+        "rows": 2,
+        "spacing": [
+          2,
+          1
+        ],
+        "boundary": "ONE_SIDED",
+        "maxWork": 20
+      },
+      "output": {
+        "vectors": [
+          [
+            0,
+            -2
+          ],
+          [
+            0,
+            -2
+          ],
+          [
+            0,
+            -2
+          ],
+          [
+            0,
+            -2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "vertical-slope",
+      "input": {
+        "values": [
+          0,
+          0,
+          4,
+          4
+        ],
+        "columns": 2,
+        "rows": 2,
+        "spacing": [
+          1,
+          2
+        ],
+        "boundary": "ONE_SIDED",
+        "maxWork": 20
+      },
+      "output": {
+        "vectors": [
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "quadratic-interior-vs-edge",
+      "input": {
+        "values": [
+          0,
+          1,
+          4,
+          0,
+          1,
+          4,
+          0,
+          1,
+          4
+        ],
+        "columns": 3,
+        "rows": 3,
+        "spacing": [
+          1,
+          1
+        ],
+        "boundary": "ONE_SIDED",
+        "maxWork": 45
+      },
+      "output": {
+        "vectors": [
+          [
+            0,
+            -1
+          ],
+          [
+            0,
+            -2
+          ],
+          [
+            0,
+            -3
+          ],
+          [
+            0,
+            -1
+          ],
+          [
+            0,
+            -2
+          ],
+          [
+            0,
+            -3
+          ],
+          [
+            0,
+            -1
+          ],
+          [
+            0,
+            -2
+          ],
+          [
+            0,
+            -3
+          ]
+        ]
+      }
+    },
+    {
+      "id": "work-one-below",
+      "input": {
+        "values": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "columns": 2,
+        "rows": 2,
+        "spacing": [
+          2,
+          3
+        ],
+        "boundary": "ONE_SIDED",
+        "maxWork": 19
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "tiny-spacing-overflow",
+      "input": {
+        "values": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "columns": 2,
+        "rows": 2,
+        "spacing": [
+          5e-324,
+          1
+        ],
+        "boundary": "ONE_SIDED",
+        "maxWork": 20
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "later-scalar-invalid-before-work",
+      "input": {
+        "values": [
+          0,
+          1,
+          0,
+          false
+        ],
+        "columns": 2,
+        "rows": 2,
+        "spacing": [
+          2,
+          3
+        ],
+        "boundary": "ONE_SIDED",
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+import { createStudySketch } from "../study-controls.js"; import { drawPackedPosters, pathsBSettings } from "../paths-b-studies.js"; createStudySketch({slug:"packed-posters",title:"Packed posters",...pathsBSettings["packed-posters"],draw:drawPackedPosters});

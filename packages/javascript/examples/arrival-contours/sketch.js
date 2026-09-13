@@ -1,0 +1,1 @@
+import { createStudySketch } from "../study-controls.js"; import { drawArrivalContours, pathsBSettings } from "../paths-b-studies.js"; createStudySketch({slug:"arrival-contours",title:"Arrival contours",...pathsBSettings["arrival-contours"],draw:drawArrivalContours});

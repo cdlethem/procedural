@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "scope": "Five frozen p5 JavaScript raster cores: fixture conformance, passive-input/ownership/error probes, and pure-core performance observations; no browser-native, package, catalog, or technique-support acceptance claim.",
+  "runtime": "node v22.22.1; linux x64",
+  "operations": [
+    "raster.floyd-steinberg-dither",
+    "raster.bayer-dither",
+    "raster.convolve-2d-signed",
+    "raster.binary-morphology-2d",
+    "field.euclidean-distance-transform-2d"
+  ],
+  "checks": {
+    "command": "node tests/native/p5-tenfold-raster.mjs",
+    "result": "p5 tenfold raster passed checksum=c4f7d8cbe6cbc4b8",
+    "coverage": "All shared fixture cases; asymmetric 2D convolution; morphology boundary properties; EDT versus independent exhaustive oracle for all 512 3x3 masks; EDT ties and no-feature result; getter/passive validation; detached input/output; and validation-before-budget error precedence."
+  },
+  "performance_observations": {
+    "method": "One deterministic pure-core pass of all five operations over generated square grids; output checksum is SHA-256 of the combined JSON outputs truncated to 16 hex characters. Timings are observations, not limits or portable guarantees.",
+    "runs": [
+      { "label": "tiny", "grid": "16x16", "elapsed_ms": 1.890867, "checksum": "a4c20f530d761a96" },
+      { "label": "study", "grid": "128x128", "elapsed_ms": 34.080589, "checksum": "ab5d7d8d77b52b6a" },
+      { "label": "stress", "grid": "256x256", "elapsed_ms": 98.061824, "checksum": "4db515264bd35939" }
+    ]
+  },
+  "source_sha256": {
+    "catalog/operations/floyd-steinberg-dither.json": "a934c941ad3768e5696456c33e1ad6dbefb7163adee18e97a3b412aeec11a384",
+    "catalog/operations/bayer-dither.json": "3b033745983a2e8c09b7a65b5b9356b2f448c8383247255ea628264848fb3c1d",
+    "catalog/operations/convolve-2d-signed.json": "7a2ba3fa1248fea4882e3aa995900be5712a8acab8e92626baafb87d1a5b8046",
+    "catalog/operations/binary-morphology-2d.json": "16333d923094ea8a4f6c6b7593e7630bc99d498586a8a841542c2430898838fd",
+    "catalog/operations/euclidean-distance-transform-2d.json": "0fb09c95dd2aaa5d1ef8c9d69e2d1e9de4e2191e39bec0acdc727e5a1bf039d8",
+    "fixtures/operations/floyd-steinberg-dither.json": "c3781f2477ecec6203e2fe3c0441718ad8e43ac1dd3ab2ab5d713b9fdb1c55dd",
+    "fixtures/operations/bayer-dither.json": "7e51bb5c576b5f12abbd51c3a480f0164d1c224db11d425917857ddf75861b0f",
+    "fixtures/operations/convolve-2d-signed.json": "ef0f2e0d89ae1c4b96bd03a16448d384f0b7fdd93f8c09b92acf3da6c89c7593",
+    "fixtures/operations/binary-morphology-2d.json": "7cf778e27bbce1fcc442239338907868d8ae9be705dbd4ce73374354367c1feb",
+    "fixtures/operations/euclidean-distance-transform-2d.json": "b9f7e6c76fcbd9bb4506e2b6311ce8f5cafaa2523ae52777fc91682bd961548b",
+    "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+    "packages/javascript/src/floyd-steinberg-dither.js": "9ff206e74a55a799e9cecb7844b8f7640ec1a20cf726b8e2ed30f547e7f73283",
+    "packages/javascript/src/bayer-dither.js": "2c6b749115c51e0569be56612fb9a1edcf1f5906718389a0157f5d8c2dcf4a43",
+    "packages/javascript/src/convolve-2d-signed.js": "88a639ede86d5f656ad83fddc3f4063da7b97c824cf6afd77344038aac03309d",
+    "packages/javascript/src/binary-morphology-2d.js": "112b2e90fae068250c8cf16b2906cabf463b21e3138bb0be164c9b68e3198151",
+    "packages/javascript/src/euclidean-distance-transform-2d.js": "d23b9f390d8f5bf2b913b9d046671969226cc4d0062d799035c715d6b5f23fb7",
+    "tests/native/p5-tenfold-raster.mjs": "17f271bc8e04fcad6ac9ae991bc220780f891eb5845e0f530a2cefc10ecd9141"
+  }
+}

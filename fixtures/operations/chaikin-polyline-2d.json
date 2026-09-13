@@ -1,0 +1,163 @@
+{
+  "operation": "geometry.chaikin-polyline-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "proposal_catalog_sha256": null,
+  "oracle": "Root reviewed analytical coordinates, topology, budgets and explicit LCG recurrence, authored before implementation. General numeric properties require separate runtime checks.",
+  "cases": [
+    {
+      "id": "open-pass",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "closed": false,
+        "iterations": 1,
+        "maxWork": 6
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "closed-pass",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "closed": true,
+        "iterations": 1,
+        "maxWork": 6
+      },
+      "output": {
+        "points": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "zero-copy",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "closed": false,
+        "iterations": 0,
+        "maxWork": 3
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "closed": false,
+        "iterations": 1,
+        "maxWork": 5
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "invalid",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "closed": false,
+        "iterations": 0,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    }
+  ],
+  "future_test_notes": [
+    "mutate input/output after call to prove detachment",
+    "overflowing iteration preflight"
+  ],
+  "catalog_sha256": "09af54b33d4653f004e650b6c7db0ffdff7b5c25a9d885d7ec1f4d6ecfc126e9"
+}

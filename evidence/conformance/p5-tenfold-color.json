@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "scope": "Frozen p5 JavaScript color-core fixture conformance, passive-input/ownership/error checks, and an independent Oklab interior numerical oracle; no browser-native, package, catalog, or technique-support acceptance claim.",
+  "runtime": "node v22.22.1; linux x64",
+  "operations": ["color.oklab-ramp", "color.median-cut-quantize"],
+  "checks": {
+    "command": "node tests/native/p5-tenfold-color.mjs",
+    "result": "p5 tenfold color passed",
+    "coverage": "All shared fixture cases, exact copied Oklab endpoints, red-blue interior interpolation compared within 1e-9 to an independently transcribed published-matrix oracle, root-corrected RGBW median-cut box replacement ordering, unsplittable boxes, passive getter rejection, detached output, and work-limit preflight."
+  },
+  "source_sha256": {
+    "catalog/operations/oklab-ramp.json": "c76e82bb32b75ba1734a4351d97c064ecdcec3ef118b939e4279d2ff407565c4",
+    "catalog/operations/median-cut-quantize.json": "461a0d5411043dfa8e06d84781a1ab8f952262ac2e369eb976c3831409039593",
+    "fixtures/operations/oklab-ramp.json": "b8def34e8cd2bdca3309d062466f132795c7ab69f518e96b3a6a697b9a85ef7f",
+    "fixtures/operations/median-cut-quantize.json": "cfe4b9042458d54c5ed1c5041f56fb4bc0050821a48ddcb20a2cba7817937383",
+    "packages/javascript/src/internal/raster-study-utils.js": "52ef5217964f12fce23083896d20966ea6ef6e565a7094b62fbe6f69d4b60658",
+    "packages/javascript/src/oklab-ramp.js": "b0523d44f8556694f9c81bb8c561a9d2550a9f309ead76f4aa67400811bd44de",
+    "packages/javascript/src/median-cut-quantize.js": "10c334b0897c28a6ea722407a50f30dc74c4e6da2d7134322155266950d3ccf8",
+    "tests/native/p5-tenfold-color.mjs": "dfe3755b404aa525599824ad90d2e0445a9b9a31a9ba448abf8784484996edf2"
+  }
+}

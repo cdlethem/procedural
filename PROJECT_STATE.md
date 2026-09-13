@@ -13,11 +13,11 @@ linked evidence. Do not treat old pending statements as new assignments.
   [Completion review](evidence/distribution/java-completion-review.json) evaluates the
   [five requirements](docs/java-completion-plan.md); the installed start-page successor
   changes documentation/navigation without changing runtime classes.
-- The p5 surface now has **34 conformant cores, 34 scoped native operations and 43 editable
+- The p5 surface now has **64 conformant cores, 64 scoped native operations and 103 editable
   workflows**. Completion evidence includes controls, reset/reload and save behavior;
   technique support remains four scoped attestations. See [port integration](docs/port-integration-status.md).
-- The [web app](apps/README.md) provides 30 techniques in both its gallery and layered
-  studio, plus formatted API pages for all 34 operations. Shared numeric controls,
+- The [web app](apps/README.md) provides 90 techniques in both its gallery and layered
+  studio, plus formatted API pages for all 64 operations. Shared numeric controls,
   custom per-layer palettes, inline highlighted source, undo/redo, local recovery,
   JSON/PNG export and Go storage are implemented. Studio v3 adds per-layer movement,
   scale and rotation, a thumbnail picker, a compact tabbed inspector, focused reseed/cut
@@ -44,7 +44,7 @@ support dimensions, not sums or counts of all example workflows. Recompute from
 | Target | Conformant core | Scoped native | Scoped technique |
 |---|---:|---:|---:|
 | Processing Java | 31 | 31 | 26 |
-| p5.js | 34 | 34 | 4 |
+| p5.js | 64 | 64 | 4 |
 | py5 | 10 | 10 | 4 |
 | Processing Android | 10 | 10 | 4 |
 
@@ -60,6 +60,13 @@ The [p5 expansion review](evidence/web/p5-gallery-expansion/root-review.json) bi
 native edits/reset/save, packaging and visual evidence; previous Studio catalogs migrate
 explicitly. This expansion is deployed with the palette library; the palette integration review also
 records the corrected Studio adapter dispatch for these six studies.
+
+The [tenfold p5 expansion](evidence/web/p5-tenfold/root-review.json) adds 30 independent
+operations and 60 original studies across paths, fields, symbolic systems, raster/color and
+projected meshes. All 60 have matching gallery/Studio/native pixels and checked edits,
+reset/reload/save. The [artist guide](docs/p5-gallery-expansion.md) maps tasks to examples.
+Production deployment of this reviewed batch is in progress; the live site still serves the
+prior palette release until the successor build and HTTPS checks pass.
 
 ## Current work and remaining decisions
 
@@ -79,7 +86,7 @@ within their recorded scope. Follow the next user assignment; the [roadmap](docs
   explicit extensions outside the accepted Java surface, not missing promised implementations.
 - A Java recipe prototype exists, documented in [recipe preview](docs/java-recipe-preview.md).
   It is not a general portable executor. The [web architecture](docs/web-app-architecture.md)
-  freezes the separate app boundary: all 30 browser techniques, at most eight layers,
+  freezes the separate app boundary: all 90 browser techniques, at most eight layers,
   transparent Canvas2D/WebGL composition, per-layer affine placement, versioned JSON
   with exact v1/v2 migration and trusted local Go storage. Portable operation graphs and
   multi-user hosting remain future work.

@@ -8,6 +8,7 @@ import gallery from "./generated-gallery.json";
 import legacy from "./legacy-v1.json";
 import legacyV2 from "./legacy-v2.json";
 import legacyV3 from "./legacy-v3.json";
+import legacyV3Expansion from "./legacy-v3-expansion.json";
 import { validateCutEdits } from "./cut-model";
 import {
   IDENTITY_LAYER_TRANSFORM,
@@ -16,6 +17,9 @@ import {
 import { basicDefinitions } from "./adapters/basic";
 import { geometryDefinitions } from "./adapters/geometry";
 import { effectsDefinitions } from "./adapters/effects";
+import { pathsDefinitions } from "./adapters/paths";
+import { systemsDefinitions } from "./adapters/systems";
+import { materialsDefinitions } from "./adapters/materials";
 import { expansionDefinitions } from "./adapters/expansion";
 import type { StudioDefinition } from "./adapters/types";
 
@@ -26,6 +30,9 @@ const definitions: readonly StudioDefinition[] = [
   ...geometryDefinitions,
   ...effectsDefinitions,
   ...expansionDefinitions,
+  ...materialsDefinitions,
+  ...systemsDefinitions,
+  ...pathsDefinitions,
 ];
 const ORIGINAL = [0x31a151, 0xffa71e, 0x05084c, 0xde4638, 0x3dbdb7];
 const NEON = [0x2e0551, 0xff00c7, 0x01afc2, 0xfdbe03, 0xf4f9fd];
@@ -337,13 +344,13 @@ export function validateDocument(input: unknown): StudioDocument {
   const probe = object(input, "Document");
   if (probe.bindingVersion === legacy.bindingVersion) return migrateV1(input);
   const fromV2 = probe.bindingVersion === legacyV2.bindingVersion;
-  const fromPreviousV3 = probe.bindingVersion === legacyV3.bindingVersion &&
-    probe.catalogSha256 === legacyV3.catalogSha256;
+  const previousV3 = [legacyV3, legacyV3Expansion].find(previous => probe.bindingVersion === previous.bindingVersion && probe.catalogSha256 === previous.catalogSha256);
+  const fromPreviousV3 = previousV3 !== undefined;
   const current = validateEnvelope(
     input,
     fromV2 ? legacyV2.bindingVersion : "studio-v3",
     fromV2 ? legacyV2.catalogSha256 : fromPreviousV3
-      ? legacyV3.catalogSha256 : gallery.studioBinding.catalogSha256,
+      ? previousV3!.catalogSha256 : gallery.studioBinding.catalogSha256,
     fromV2 ? 2 : 3,
   );
   const ids = new Set<string>();
@@ -352,7 +359,7 @@ export function validateDocument(input: unknown): StudioDocument {
       item = definition(layer.technique as string),
       checked = parameters(layer.params, item, `${path}.params`),
       id = layer.id as string;
-    if (fromPreviousV3 && !legacyV3.techniques.some(
+    if (fromPreviousV3 && !previousV3!.techniques.some(
       (entry) => entry.technique === item.id,
     )) throw new Error(`${path}.technique was not available in the previous studio-v3 binding`);
     if (fromV2) {

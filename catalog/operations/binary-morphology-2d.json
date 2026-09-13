@@ -1,0 +1,209 @@
+{
+  "id": "raster.binary-morphology-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "raster.binary-morphology-2d",
+  "description": "Draft proposal only.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-materials-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "mask": {
+        "type": "array",
+        "items": {
+          "type": "boolean"
+        },
+        "maxItems": 4294967295
+      },
+      "columns": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "element": {
+        "type": "array",
+        "items": {
+          "type": "boolean"
+        },
+        "maxItems": 4294967295
+      },
+      "elementColumns": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "elementRows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "mode": {
+        "type": "string",
+        "enum": [
+          "dilate",
+          "erode"
+        ]
+      },
+      "boundary": {
+        "type": "string",
+        "enum": [
+          "zero",
+          "one"
+        ]
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "mask",
+      "columns",
+      "rows",
+      "element",
+      "elementColumns",
+      "elementRows",
+      "mode",
+      "boundary",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "mask": {
+        "type": "array",
+        "items": {
+          "type": "boolean"
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "mask"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached stable row-major plain output.",
+  "behavior": {
+    "validation": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+    "environment": "No RNG, noise, time, rendering, assets, host state, mutation or retained aliases. Data uses caller coordinate/color conventions as specified.",
+    "numerics": "Separate IEEE754 binary64 arithmetic, Math.hypot and host sin/cos/sqrt for the named formulas. Check computed numeric intermediates for finiteness and throw NUMERIC_OVERFLOW on nonfinite results. No epsilon in classification or topology, no adaptive exact predicates or near-degeneracy guarantee. General scalar/coordinate comparisons allow absolute 1e-9 plus relative 1e-12; topology, indices, order, booleans and RNG states compare exactly. Analytical shared fixtures use exact JSON output.",
+    "algorithm": "Input {mask,columns,rows,element,elementColumns,elementRows,mode,boundary,maxWork}; boolean arrays,\nnonempty odd element, mode dilate|erode, boundary zero|one. Output {mask}. Let offset=(ex-cx,ey-cy).\nDilation samples mask(x-offset.x,y-offset.y), reflecting the structuring element; erosion samples\nmask(x+offset.x,y+offset.y). Inspect true element entries in row-major order, OR for dilation and AND for\nerosion; off-grid is boundary bit. No iteration field: callers compose calls. Work=cells*trueElementCount.\nFixtures: asymmetric elementColumns=3,elementRows=1, element [T,F,F], center seed dilates one pixel left and erodes using the opposite\noffset; full 3x3 eroded under zero loses border. Studies: inflate ink; erode Bayer grain. Require at least one true structuring-element entry. All-false elements are INVALID_INPUT. Element center is floor(elementColumns/2),floor(elementRows/2).",
+    "budget": "Precharge cells*trueElementCount safely.",
+    "native_surface": "p5.js named export binaryMorphology2D(input) from packages/javascript/src/binary-morphology-2d.js. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed shape/domain/nonfinite input.",
+    "WORK_LIMIT": "Budget exceeded or unsafe work arithmetic.",
+    "NUMERIC_OVERFLOW": "Nonfinite computed intermediate."
+  },
+  "parameters": {
+    "mask": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "columns": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "rows": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "element": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "elementColumns": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "elementRows": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "mode": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "boundary": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/binary-morphology-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 studies with meaningful structural edit and styling transfer, native controls/reset/replay/save and root visual inspection. No source recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against the frozen catalog; support acceptance pending execution."
+  }
+}

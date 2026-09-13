@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "scope": "Production build of the reviewed working-tree web source before main integration. Live deployment checked separately.",
+  "commands": [
+    "npm --prefix apps/web run build",
+    "npm --prefix apps/web run typecheck",
+    "npm --prefix apps/web run test",
+    "python3 tools/check_catalog.py --write-reference",
+    "python3 -m unittest tests.test_reviewed_export_extension"
+  ],
+  "results": {
+    "web_tests_passed": 113,
+    "web_tests_failed": 0,
+    "gallery_studies": 90,
+    "api_entries": 64,
+    "catalog": "valid",
+    "typecheck": "passed",
+    "export_compatibility_tests": "passed",
+    "production_build": "passed"
+  },
+  "warning": "Existing Next filesystem tracing warning in harness/jobs.ts dynamic paths remains; production build succeeds.",
+  "log_sha256": "ec5c57898c33c6a86218d9bb4c20702b1bf7b9edd17ae7982c37c94d5eb5e2de"
+}

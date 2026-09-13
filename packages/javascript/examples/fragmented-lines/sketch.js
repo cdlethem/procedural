@@ -1,0 +1,1 @@
+import { createStudySketch } from "../study-controls.js"; import { drawFragmentedLines, pathsBSettings } from "../paths-b-studies.js"; createStudySketch({slug:"fragmented-lines",title:"Fragmented lines",...pathsBSettings["fragmented-lines"],draw:drawFragmentedLines});

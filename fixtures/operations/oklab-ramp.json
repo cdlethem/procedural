@@ -1,0 +1,116 @@
+{
+  "operation": "color.oklab-ramp",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "c76e82bb32b75ba1734a4351d97c064ecdcec3ef118b939e4279d2ff407565c4",
+  "oracle": "Root-reviewed independent analytical states, exact topology and integer-grid formulas, authored before implementation. Color/transport floating properties require separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "endpoints",
+      "input": {
+        "stops": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "count": 2,
+        "maxWork": 4
+      },
+      "output": {
+        "colors": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "repeated-endpoints",
+      "input": {
+        "stops": [
+          [
+            0.5,
+            0.5,
+            0.5
+          ],
+          [
+            0.5,
+            0.5,
+            0.5
+          ]
+        ],
+        "count": 2,
+        "maxWork": 4
+      },
+      "output": {
+        "colors": [
+          [
+            0.5,
+            0.5,
+            0.5
+          ],
+          [
+            0.5,
+            0.5,
+            0.5
+          ]
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "stops": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "count": 2,
+        "maxWork": 3
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "bad",
+      "input": {
+        "stops": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ]
+        ],
+        "count": 2,
+        "maxWork": 4
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

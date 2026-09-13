@@ -1,0 +1,172 @@
+{
+  "id": "geometry.offset-polyline-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "decision_cluster": "geometry.offset-polyline-2d",
+  "description": "Offset a route with signed left normals and bounded joins.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-geometry-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "maxItems": 4294967295,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "minItems": 2
+      },
+      "closed": {
+        "type": "boolean"
+      },
+      "distance": {
+        "type": "number"
+      },
+      "miterLimit": {
+        "type": "number",
+        "minimum": 1
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "points",
+      "closed",
+      "distance",
+      "miterLimit",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "maxItems": 4294967295,
+        "items": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "required": [
+      "points"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached traversal-order offset xy points.",
+  "behavior": {
+    "validation": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee.",
+    "environment": "No ambient RNG, noise, clock, renderer, assets or retained state. All geometry uses caller coordinates; p5 examples use their own canvas convention. Randomness, where present, is explicit input/output rngState.",
+    "numerics": "Separate IEEE754 binary64 arithmetic, Math.hypot and host sin/cos/sqrt for the named formulas. Check computed numeric intermediates for finiteness and throw NUMERIC_OVERFLOW on nonfinite results. No epsilon in classification or topology, no adaptive exact predicates or near-degeneracy guarantee. General scalar/coordinate comparisons allow absolute 1e-9 plus relative 1e-12; topology, indices, order, booleans and RNG states compare exactly. Analytical shared fixtures use exact JSON output.",
+    "algorithm": "Input: points (at least two xy points), closed (boolean), distance (finite),\nmiterLimit (finite >=1), maxWork. Output: {points}. Adjacent coincidences are\nINVALID_INPUT, including a repeated closing point. Closed input requires at\nleast three points. Unit left normal of edge dx,dy is [-dy/length,dx/length].\nDistance is signed in this coordinate convention. Open endpoints use the single\nadjacent normal. At an interior corner with incoming/outgoing unit directions,\ncross==0 and dot<0 is INVALID_INPUT (exact reversal), including distance==0.\nSame-direction parallel edges emit the vertex plus distance*incoming normal.\nOtherwise intersect the two offset infinite lines; use that miter if its distance\nfrom the original vertex <= abs(distance)*miterLimit. A longer miter emits two\nbevel endpoints, incoming then outgoing. Zero distance returns the source vertex\nonce after validating direction/reversal constraints. No caps, thickness region,\nself-intersection cleanup or polygon Boolean behavior is implied. Preflight\n4*N <= maxWork. Closed output begins at the join of source vertex zero; it does\nnot append its initial point. Output order follows source traversal.",
+    "native_surface": "p5.js named export offsetPolyline2D(input) from packages/javascript/src/offset-polyline-2d.js. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed or degenerate route.",
+    "WORK_LIMIT": "Preflight exceeds budget.",
+    "NUMERIC_OVERFLOW": "Nonfinite computed value."
+  },
+  "parameters": {
+    "points": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "closed": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "distance": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "miterLimit": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/offset-polyline-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 design studies with meaningful structure edit and styling transfer, native reset/reload/save and root visual review; no corpus recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and fixture challenge",
+    "status": "Approved for p5 implementation against this frozen contract; support acceptance pending execution."
+  }
+}

@@ -1,0 +1,9 @@
+import { array, at, computed, finite, integer, record, work } from "./internal/geometry-b-utils.js";
+class CostGridPathsError extends Error { constructor(code) { super(code); this.name="CostGridPathsError"; this.code=code; } }
+const E=CostGridPathsError;
+export function costGridPaths2D(input) {
+  record(E,input,["columns","rows","costs","start","maxWork"]);const columns=integer(E,at(E,input,"columns"),1,4294967295),rows=integer(E,at(E,input,"rows"),1,4294967295),raw=array(E,at(E,input,"costs")),start=integer(E,at(E,input,"start"),0,Number.MAX_SAFE_INTEGER),maxWork=integer(E,at(E,input,"maxWork"),0,Number.MAX_SAFE_INTEGER);const n=columns*rows;if(!Number.isSafeInteger(n))throw new E("WORK_LIMIT");if(raw.length!==n)throw new E("INVALID_INPUT");const costs=new Array(n);for(let i=0;i<n;i+=1){const v=at(E,raw,i);if(v!==null&&!(typeof v==="number"&&Number.isFinite(v)&&v>=0))throw new E("INVALID_INPUT");costs[i]=v===null?null:(v===0?0:v);}if(start>=n||costs[start]===null)throw new E("INVALID_INPUT");const preflight=n*n+5*n;work(E,preflight,maxWork);
+  const distances=new Array(n).fill(null),predecessors=new Array(n).fill(null),settled=new Array(n).fill(false);distances[start]=0;
+  for(;;){let current=-1,best=Infinity;for(let i=0;i<n;i+=1)if(!settled[i]&&distances[i]!==null&&(distances[i]<best||(distances[i]===best&&i<current))){current=i;best=distances[i];}if(current<0)break;settled[current]=true;const col=current%columns,row=Math.floor(current/columns),neighbors=[];if(row>0)neighbors.push(current-columns);if(col+1<columns)neighbors.push(current+1);if(row+1<rows)neighbors.push(current+columns);if(col>0)neighbors.push(current-1);for(const next of neighbors)if(!settled[next]&&costs[next]!==null){const candidate=computed(E,best+costs[next]);if(distances[next]===null||candidate<distances[next]){distances[next]=candidate;predecessors[next]=current;}}
+  }return {distances:distances.map(v=>v===0?0:v),predecessors:predecessors.slice()};
+}

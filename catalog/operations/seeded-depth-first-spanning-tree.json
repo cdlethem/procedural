@@ -1,0 +1,200 @@
+{
+  "id": "topology.seeded-depth-first-spanning-tree",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "topology.seeded-depth-first-spanning-tree",
+  "description": "Generate discovery-ordered spanning-tree topology from a connected supplied graph using an explicit randomized DFS schedule.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-systems-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "vertexCount": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "edges": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967294
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "minItems": 0,
+        "maxItems": 4294967295
+      },
+      "root": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967294
+      },
+      "rngState": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "vertexCount",
+      "edges",
+      "root",
+      "rngState",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "edges": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967294
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "minItems": 0,
+        "maxItems": 4294967295
+      },
+      "parents": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": -1,
+          "maximum": 4294967294
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "depths": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967294
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "rngState": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      }
+    },
+    "required": [
+      "edges",
+      "parents",
+      "depths",
+      "rngState"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "A success has vertexCount-1 discovery-order directed edges and vertexCount parents/depths. Only root has parent -1 and depth 0. The random DFS distribution is not uniform over spanning trees.",
+  "behavior": {
+    "validation": "Exactly the input and nested-union keys shown by the schema, ordinary dense arrays and passive own data properties. Numeric carriers are finite binary64 and never booleans; integral fields are exact integers in schema domain. Reject accessors, host instances and coercion. Complete static validation of every field/element precedes work preflight, RNG draws or output allocation. Products defining array lengths must be exact and <=4294967295 or INVALID_INPUT, even if all individual dimensions are valid. Canonicalize input zeros to +0.",
+    "work": "maxWork is a required nonnegative safe integer. Count arithmetic is exact; an unsafe work sum/product or insufficient allowance is WORK_LIMIT. A charge checks before its action; rejected actions do not execute. The operation-specific schedule is normative. Static input validation has unavoidable input-sized cost. Budgets are abstract work, not memory or latency guarantees; host allocation failure remains a host error.",
+    "numerics": "Separate binary64 primitive rounding, no reassociation/FMA. Every computed primitive must be finite or NUMERIC_OVERFLOW, including division by an underflowed zero denominator. No numerical repair, implicit epsilon or state clipping. Exposed zeros are +0. General finite output fields use absolute 1e-9 plus relative 1e-12; integer/topology/order/state/token values compare exactly. The bound fixture file contains only exact analytical outputs; approximate RK4 linear-field and nonzero-angle turtle geometry tests remain separate future property tests.",
+    "ownership": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+    "rng": "rngState is an integer in `[0,4294967295]`, including zero. A draw first sets\n`state=(1664525*state+1013904223) mod 4294967296`, then returns `u=state/4294967296`.\nThe multiplication and addition are exact integer arithmetic before reduction. JavaScript\nmay use unsigned `Math.imul` arithmetic if it produces those exact uint32 states. For\nuniform selection among K ordered candidates use `floor(u*K)`. Both operations return\n`rngState` containing the final state; they do not use a seed expander or fork a stream.\nThe multiplication by K uses binary64, with K within the array-length domain; clamp an\notherwise rounded index K to K-1. This is bounded mapping, not unbiased rejection sampling.\n",
+    "algorithm": "Seeded depth-first spanning tree\n\nProposed ID: `topology.seeded-depth-first-spanning-tree`; generator.\n\nArtist output: parent/child topology reusable for corridor labyrinths and radial vein\ntrees. Input graph edges may come from a grid or existing Delaunay output. This is a\nrandomized DFS distribution, **not a uniformly sampled spanning tree**. It does not invent\nan embedding, connect disconnected components or generate branch lengths.\n\nInput:\n\n```text\n{vertexCount:integer in [1,4294967295],edges:[[integer,integer],...],\n root:integer in [0,vertexCount-1],rngState:uint32,maxWork:integer}\n```\n\nEach edge has 0<=a<b<vertexCount. Edges must be strictly lexicographically increasing;\nduplicates and self-edges are invalid. Isolated vertices are represented through\nvertexCount. Output `{edges:[[parent,child],...],parents:[integer,...],depths:[integer,...],\nrngState:uint32}`. Output edges are directed discovery-order edges, not sorted undirected\npairs. Root parent=-1 and depth0; all other parents/depths correspond to first discovery.\n\nReserve setup W0=V+2E before owned graph/traversal storage. Build ascending neighbor lists;\nstrictly sorted input edges permit ordered appends without a separate random/sort phase.\nMark root visited, push it. Repeatedly take stack top v, scan **all** its neighbors in\nascending order, charging1 before every neighbor visit, and collect the currently unvisited\ncandidates. If none, pop v without a draw. Otherwise charge1 for the choice, draw exactly\nonce even for a singleton candidate list, select floor(u*K) with the shared mapping, mark\nthat vertex visited, append [v,child], set parent/depth and push child. The next loop starts\nat the new top; when returning to v, rescan its full neighbor list with fresh charges.\nOn empty stack, if discovered count<V raise DISCONNECTED; otherwise return the tree/state.\nNo result escapes on disconnection, and the caller's RNG value remains an immutable input.\n\nTime can include repeated neighbor scans and is bounded by charged visits, not assumed\nlinear DFS with a different cursor-based random policy. Storage O(V+E), with candidate\nscratch reused per scan and a stack bounded by V. V=1/E=0 succeeds with W=1 and zero draws.\n",
+    "native_surface": "p5.js named export seededDepthFirstSpanningTree(input) from packages/javascript/src/seeded-depth-first-spanning-tree.js; plain output matching output_schema. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed shape, supplied scalar/carrier/domain, impossible array representation, or operation-specific static constraint.",
+    "WORK_LIMIT": "The exact required or next charged work exceeds maxWork or safe work representation.",
+    "DISCONNECTED": "The root traversal ended before discovering every supplied vertex; no partial forest is returned."
+  },
+  "parameters": {
+    "vertexCount": {
+      "unit": "explicit graph vertex count",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "edges": {
+      "unit": "ordered graph vertex-index pairs",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "root": {
+      "unit": "root vertex index",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "rngState": {
+      "unit": "unsigned 32-bit LCG state",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "abstract operation-specific work units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/seeded-depth-first-spanning-tree.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 design studies, explicit initial state and bounded replay counts, meaningful structural edits and output reuse, native reset/replay/save and root image review. No original recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against frozen catalog; support acceptance pending execution."
+  }
+}

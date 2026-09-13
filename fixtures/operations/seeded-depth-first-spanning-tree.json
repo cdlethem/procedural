@@ -1,0 +1,849 @@
+{
+  "operation": "topology.seeded-depth-first-spanning-tree",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "cda68a463c55e0960ff04811c996dc24f81c257f6aa1222ce4ffeddc34471b12",
+  "oracle": "Root reviewed independent analytical grid states, token/graph ordering, explicit LCG recurrence and budget arithmetic before implementation. Nonzero-angle and nonconstant RK4 numerical properties remain separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "forced-path-consumes-two-draws",
+      "input": {
+        "vertexCount": 3,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "root": 0,
+        "rngState": 0,
+        "maxWork": 16
+      },
+      "output": {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "parents": [
+          -1,
+          0,
+          1
+        ],
+        "depths": [
+          0,
+          1,
+          2
+        ],
+        "rngState": 1196435762
+      }
+    },
+    {
+      "id": "reverse-root-path",
+      "input": {
+        "vertexCount": 3,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "root": 2,
+        "rngState": 0,
+        "maxWork": 16
+      },
+      "output": {
+        "edges": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "parents": [
+          1,
+          2,
+          -1
+        ],
+        "depths": [
+          2,
+          1,
+          0
+        ],
+        "rngState": 1196435762
+      }
+    },
+    {
+      "id": "ascending-star-choice",
+      "input": {
+        "vertexCount": 3,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "root": 0,
+        "rngState": 0,
+        "maxWork": 17
+      },
+      "output": {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "parents": [
+          -1,
+          0,
+          0
+        ],
+        "depths": [
+          0,
+          1,
+          1
+        ],
+        "rngState": 1196435762
+      }
+    },
+    {
+      "id": "high-bit-star-choice",
+      "input": {
+        "vertexCount": 3,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "root": 0,
+        "rngState": 2147483648,
+        "maxWork": 17
+      },
+      "output": {
+        "edges": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "parents": [
+          -1,
+          0,
+          0
+        ],
+        "depths": [
+          0,
+          1,
+          1
+        ],
+        "rngState": 3343919410
+      }
+    },
+    {
+      "id": "continued-stream-star-choice",
+      "input": {
+        "vertexCount": 3,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "root": 0,
+        "rngState": 1196435762,
+        "maxWork": 17
+      },
+      "output": {
+        "edges": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "parents": [
+          -1,
+          0,
+          0
+        ],
+        "depths": [
+          0,
+          1,
+          1
+        ],
+        "rngState": 2868466484
+      }
+    },
+    {
+      "id": "cycle-retains-first-discovery-tree",
+      "input": {
+        "vertexCount": 3,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "root": 0,
+        "rngState": 0,
+        "maxWork": 21
+      },
+      "output": {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "parents": [
+          -1,
+          0,
+          1
+        ],
+        "depths": [
+          0,
+          1,
+          2
+        ],
+        "rngState": 1196435762
+      }
+    },
+    {
+      "id": "single-vertex-no-randomness",
+      "input": {
+        "vertexCount": 1,
+        "edges": [],
+        "root": 0,
+        "rngState": 42,
+        "maxWork": 1
+      },
+      "output": {
+        "edges": [],
+        "parents": [
+          -1
+        ],
+        "depths": [
+          0
+        ],
+        "rngState": 42
+      }
+    },
+    {
+      "id": "disconnected-is-not-partial-success",
+      "input": {
+        "vertexCount": 2,
+        "edges": [],
+        "root": 0,
+        "rngState": 0,
+        "maxWork": 2
+      },
+      "error": "DISCONNECTED"
+    },
+    {
+      "id": "work-one-below",
+      "input": {
+        "vertexCount": 3,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "root": 0,
+        "rngState": 0,
+        "maxWork": 15
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "reversed-edge-invalid",
+      "input": {
+        "vertexCount": 3,
+        "edges": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "root": 0,
+        "rngState": 0,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "duplicate-edge-invalid",
+      "input": {
+        "vertexCount": 3,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "root": 0,
+        "rngState": 0,
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "lcg-ten-forced-moves-0",
+      "input": {
+        "vertexCount": 11,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            9,
+            10
+          ]
+        ],
+        "root": 0,
+        "rngState": 0,
+        "maxWork": 80
+      },
+      "output": {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            9,
+            10
+          ]
+        ],
+        "parents": [
+          -1,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "depths": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "rngState": 2498801434
+      },
+      "rationale": "Ten forced singleton choices consume ten LCG transitions; final state from the independently tabulated integer recurrence."
+    },
+    {
+      "id": "lcg-ten-forced-moves-1",
+      "input": {
+        "vertexCount": 11,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            9,
+            10
+          ]
+        ],
+        "root": 0,
+        "rngState": 1,
+        "maxWork": 80
+      },
+      "output": {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            9,
+            10
+          ]
+        ],
+        "parents": [
+          -1,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "depths": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "rngState": 2745540835
+      },
+      "rationale": "Ten forced singleton choices consume ten LCG transitions; final state from the independently tabulated integer recurrence."
+    },
+    {
+      "id": "lcg-ten-forced-moves-42",
+      "input": {
+        "vertexCount": 11,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            9,
+            10
+          ]
+        ],
+        "root": 0,
+        "rngState": 42,
+        "maxWork": 80
+      },
+      "output": {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            9,
+            10
+          ]
+        ],
+        "parents": [
+          -1,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "depths": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "rngState": 4271921684
+      },
+      "rationale": "Ten forced singleton choices consume ten LCG transitions; final state from the independently tabulated integer recurrence."
+    },
+    {
+      "id": "lcg-ten-forced-moves-2147483648",
+      "input": {
+        "vertexCount": 11,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            9,
+            10
+          ]
+        ],
+        "root": 0,
+        "rngState": 2147483648,
+        "maxWork": 80
+      },
+      "output": {
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            9,
+            10
+          ]
+        ],
+        "parents": [
+          -1,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "depths": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "rngState": 351317786
+      },
+      "rationale": "Ten forced singleton choices consume ten LCG transitions; final state from the independently tabulated integer recurrence."
+    }
+  ]
+}

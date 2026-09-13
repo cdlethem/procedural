@@ -1,0 +1,167 @@
+{
+  "id": "field.euclidean-distance-transform-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "field.euclidean-distance-transform-2d",
+  "description": "Draft proposal only.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-materials-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "mask": {
+        "type": "array",
+        "items": {
+          "type": "boolean"
+        },
+        "maxItems": 4294967295
+      },
+      "columns": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "mask",
+      "columns",
+      "rows",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "distances": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "maxItems": 4294967295
+      },
+      "nearestIndices": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "distances",
+      "nearestIndices"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached stable row-major plain output.",
+  "behavior": {
+    "validation": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+    "environment": "No RNG, noise, time, rendering, assets, host state, mutation or retained aliases. Data uses caller coordinate/color conventions as specified.",
+    "numerics": "Grid/feature indices and envelope squared distances use exact integer arithmetic. Only returned distances convert exact squared values to binary64 then use Math.sqrt. General distances compare with absolute 1e-9 plus relative 1e-12; indices/null/order exactly. Analytical fixture square roots are the specified correctly rounded binary64 profile. No Infinity or BigInt is returned.",
+    "algorithm": "Input boolean mask has columns*rows entries. True cells are features. Return Euclidean pixel-center distances and nearest original row-major feature indices; equal squared distance chooses the smallest feature index. If no feature, both arrays contain null. Compute separably in O(G) envelope events, not all-pairs searches. First compute nearest feature column within each row by forward/backward scans; ties use lower column. Retain exact integer squared horizontal distances and feature indices; rows without features have null. Then each column solves the lower envelope of parabolas f[q]+(y-q)^2 for rows q with nonnull row results. Process q ascending. For a newer q and retained older v, the first integer y at which q is strictly better is floorDiv((f[q]+q*q)-(f[v]+v*v),2*(q-v))+1. Use exact signed integer floor division (toward negative infinity), exact integer squares and sums; JavaScript BigInt is the native profile. Maintain candidate rows and increasing integer start positions: the first starts at0; if a new switch is <= the last start, pop and recompute; if empty, new start0. A switch >=rows means the new candidate can be discarded for this finite grid. Otherwise append at its switch. Query y ascending, advancing when y>=next start. Earlier rows win equal squared distance, and their horizontal ties already choose lower columns, giving global smallest feature ID. Output distance is Math.sqrt(Number(exactSquaredDistance)), correctly rounding the integer to binary64 before square root. Internal exact integers are not exposed in JSON. This preserves nearest-feature identities even where coordinate squares exceed binary64 exact-integer range.",
+    "budget": "Preflight 6*G <= maxWork safely before output allocation. This is an explicit grid-entry work allowance; the row scans and amortized envelope events are O(G), with O(G) retained arrays and O(max(columns,rows)) scratch. Exact integer arithmetic is on values bounded by the array/dimension representation limit; no arbitrary user-sized integers enter the API.",
+    "native_surface": "p5.js named export euclideanDistanceTransform2D(input) from packages/javascript/src/euclidean-distance-transform-2d.js. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed shape/domain/nonfinite input.",
+    "WORK_LIMIT": "Budget exceeded or unsafe work arithmetic.",
+    "NUMERIC_OVERFLOW": "Nonfinite computed intermediate."
+  },
+  "parameters": {
+    "mask": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "columns": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "rows": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/euclidean-distance-transform-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 studies with meaningful structural edit and styling transfer, native controls/reset/replay/save and root visual inspection. No source recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against the frozen catalog; support acceptance pending execution."
+  }
+}

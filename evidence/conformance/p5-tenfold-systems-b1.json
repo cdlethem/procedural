@@ -1,0 +1,15 @@
+{
+  "status":"passed",
+  "target":"p5js-core",
+  "scope":"Frozen damped-wave and parallel-token-rewrite fixtures plus focused ownership checks; no renderer, native surface, support or acceptance claim.",
+  "command":"node tests/native/p5-tenfold-systems-b1.mjs",
+  "runtime":"Node.js v22.22.1",
+  "observations":{"tiny":"fixture cases execute synchronously with bounded declared work","study":"wave updates are synchronous and rewrite retains only adjacent generations","stress":"no benchmark promise recorded"},
+  "sha256":{
+    "fixtures/operations/damped-wave-step-2d.json":"d89eb3307e3b53afe239b2f7bfc8fc52ceb4784274419b4d94163f925ea597b1",
+    "fixtures/operations/parallel-token-rewrite.json":"c5bbb932122b54cbcc06e721684f9736e411fa1af524b2621e21c17ca9a149ff",
+    "packages/javascript/src/damped-wave-step-2d.js":"a650d4ef2a56d4537b003f4bd10255736ce6707c22de1f6d00dcbfccc78d4de5",
+    "packages/javascript/src/parallel-token-rewrite.js":"e2ef00463651b766bcabb1ba6c849921748e9003c663a01fcbfd585a2ab295c5",
+    "tests/native/p5-tenfold-systems-b1.mjs":"4ec68c30053dbec61f1d1b86dd0f656527c9e2465453cc00ef53b74746e10aee"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "operation": "layout.skyline-pack-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "proposal_catalog_sha256": null,
+  "oracle": "Root reviewed analytical coordinates, topology, budgets and explicit LCG recurrence, authored before implementation. General numeric properties require separate runtime checks.",
+  "cases": [
+    {
+      "id": "mixed",
+      "input": {
+        "width": 4,
+        "height": 3,
+        "rectangles": [
+          {
+            "width": 3,
+            "height": 2
+          },
+          {
+            "width": 2,
+            "height": 2
+          },
+          {
+            "width": 1,
+            "height": 3
+          },
+          {
+            "width": 1,
+            "height": 1
+          }
+        ],
+        "maxWork": 516
+      },
+      "output": {
+        "placements": [
+          {
+            "index": 0,
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 2
+          },
+          {
+            "index": 2,
+            "x": 3,
+            "y": 0,
+            "width": 1,
+            "height": 3
+          },
+          {
+            "index": 3,
+            "x": 0,
+            "y": 2,
+            "width": 1,
+            "height": 1
+          }
+        ],
+        "unplaced": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "empty",
+      "input": {
+        "width": 4,
+        "height": 3,
+        "rectangles": [],
+        "maxWork": 0
+      },
+      "output": {
+        "placements": [],
+        "unplaced": []
+      }
+    },
+    {
+      "id": "touches",
+      "input": {
+        "width": 2,
+        "height": 1,
+        "rectangles": [
+          {
+            "width": 1,
+            "height": 1
+          },
+          {
+            "width": 1,
+            "height": 1
+          }
+        ],
+        "maxWork": 66
+      },
+      "output": {
+        "placements": [
+          {
+            "index": 0,
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          },
+          {
+            "index": 1,
+            "x": 1,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          }
+        ],
+        "unplaced": []
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "width": 1,
+        "height": 1,
+        "rectangles": [
+          {
+            "width": 1,
+            "height": 1
+          }
+        ],
+        "maxWork": 8
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "invalid",
+      "input": {
+        "width": 0,
+        "height": 1,
+        "rectangles": [],
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    }
+  ],
+  "future_test_notes": [
+    "tie x selection",
+    "detached ownership",
+    "nonfinite skyline height"
+  ],
+  "catalog_sha256": "3a18b6431b1cc1f75ba4fee400f4edc45ed046f90c584f7410d60a76660b4a89"
+}

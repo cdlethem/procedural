@@ -1,12 +1,13 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, join, relative, resolve, sep } from "node:path";
 import { parse } from "@babel/parser";
 
 /** Extract the actual technique function and its local dependencies, not a second demo. */
 export function sketchSources(root) {
   const results = new Map();
-  for (const group of ["basic", "geometry", "effects", "expansion"]) {
+  for (const group of ["basic", "geometry", "effects", "expansion", "paths", "systems", "materials"]) {
     const path = `apps/web/lib/adapters/${group}.ts`;
+    if (["paths", "systems", "materials"].includes(group) && !existsSync(join(root, path))) continue;
     const source = readFileSync(join(root, path), "utf8");
     const ast = parse(source, { sourceType: "module", plugins: ["typescript"] });
     const declarations = new Map();
@@ -38,6 +39,20 @@ export function sketchSources(root) {
       const call = node.consequent.find((value) => value.type === "ReturnStatement")?.argument;
       if (call?.type !== "CallExpression" || call.callee.type !== "Identifier")
         throw Error(`Unsupported source dispatch for ${node.test.value}`);
+      // Native examples and web adapters may share an ordinary drawing module.
+      // Show that module's real drawing function instead of an empty import wrapper.
+      if (!declarations.has(call.callee.name)) {
+        const statement = imports.find((entry) => entry.specifiers.some((specifier) => specifier.local.name === call.callee.name));
+        const specifier = statement?.specifiers.find((entry) => entry.local.name === call.callee.name);
+        if (specifier?.type !== "ImportSpecifier") throw Error(`Missing drawing declaration for ${node.test.value}`);
+        const target = resolve(root, dirname(path), statement.source.value);
+        const examples = resolve(root, "packages/javascript/examples") + sep;
+        if (!target.startsWith(examples) || !target.endsWith(".js"))
+          throw Error(`Drawing source must be an editable JavaScript example: ${node.test.value}`);
+        const importedName = specifier.imported.name ?? specifier.imported.value;
+        results.set(node.test.value, exampleDrawingSource(root, target, importedName));
+        return;
+      }
       const selected = new Set();
       const names = new Set();
       const collect = (name) => {
@@ -63,4 +78,46 @@ export function sketchSources(root) {
     });
   }
   return results;
+}
+
+/** Follow local declarations only; public operation/RNG imports remain visible imports. */
+function exampleDrawingSource(root, target, entrypoint) {
+  const source = readFileSync(target, "utf8");
+  const ast = parse(source, { sourceType: "module" });
+  const declarations = new Map(), imports = [];
+  for (const statement of ast.program.body) {
+    const node = statement.declaration ?? statement;
+    if (node.type === "ImportDeclaration") imports.push(node);
+    if (node.type === "FunctionDeclaration") declarations.set(node.id.name, node);
+    if (node.type === "VariableDeclaration") for (const item of node.declarations)
+      if (item.id.type === "Identifier") declarations.set(item.id.name, node);
+  }
+  if (!declarations.has(entrypoint)) throw Error(`Missing example drawing function ${entrypoint}`);
+  const selected = new Set(), names = new Set();
+  const visit = (node) => {
+    if (!node || typeof node !== "object") return;
+    if (Array.isArray(node)) { node.forEach(visit); return; }
+    if (node.type === "Identifier") { names.add(node.name); collect(node.name); }
+    for (const [key, value] of Object.entries(node))
+      if (!["loc", "start", "end", "comments", "tokens"].includes(key)) visit(value);
+  };
+  const collect = (name) => {
+    const declaration = declarations.get(name);
+    if (!declaration || selected.has(declaration)) return;
+    selected.add(declaration); visit(declaration);
+  };
+  collect(entrypoint);
+  const importText = imports.flatMap((statement) => {
+    const bindings = statement.specifiers.filter((specifier) => names.has(specifier.local.name));
+    if (!bindings.length) return [];
+    if (bindings.some((specifier) => specifier.type !== "ImportSpecifier"))
+      throw Error(`Example drawing dependencies require named imports: ${target}`);
+    return [`import { ${bindings.map((specifier) => source.slice(specifier.start, specifier.end)).join(", ")} } from ${JSON.stringify(statement.source.value)};`];
+  });
+  const body = [...selected].sort((a, b) => a.start - b.start).map((node) => source.slice(node.start, node.end));
+  const path = relative(root, target).split(sep).join("/");
+  return {
+    sketchSourcePath: path,
+    sketchSource: `// Actual shared native and app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to ${path}.\n\n${importText.join("\n")}\n\n${body.join("\n\n")}\n`,
+  };
 }

@@ -1,0 +1,235 @@
+{
+  "id": "layout.adjacency-tile-collapse-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "layout.adjacency-tile-collapse-2d",
+  "description": "Collapse explicit tile domains using ordered adjacency propagation, cardinality selection and weighted LCG choices without backtracking.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-systems-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "columns": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "right": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967294
+          },
+          "minItems": 0,
+          "maxItems": 4294967295
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "down": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967294
+          },
+          "minItems": 0,
+          "maxItems": 4294967295
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "weights": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "domains": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967294
+          },
+          "minItems": 1,
+          "maxItems": 4294967295
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "rngState": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "columns",
+      "rows",
+      "right",
+      "down",
+      "weights",
+      "domains",
+      "rngState",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "tiles": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967294
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "rngState": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      }
+    },
+    "required": [
+      "tiles",
+      "rngState"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Successful tiles has columns*rows entries, one tile per initial domain, satisfying every in-range directional adjacency. rngState follows only explicit collapse draws.",
+  "behavior": {
+    "validation": "Exactly the input and nested-union keys shown by the schema, ordinary dense arrays and passive own data properties. Numeric carriers are finite binary64 and never booleans; integral fields are exact integers in schema domain. Reject accessors, host instances and coercion. Complete static validation of every field/element precedes work preflight, RNG draws or output allocation. Products defining array lengths must be exact and <=4294967295 or INVALID_INPUT, even if all individual dimensions are valid. Canonicalize input zeros to +0.",
+    "work": "maxWork is a required nonnegative safe integer. Count arithmetic is exact; an unsafe work sum/product or insufficient allowance is WORK_LIMIT. A charge checks before its action; rejected actions do not execute. The operation-specific schedule is normative. Static input validation has unavoidable input-sized cost. Budgets are abstract work, not memory or latency guarantees; host allocation failure remains a host error.",
+    "numerics": "Separate binary64 primitive rounding, no reassociation/FMA. Every computed primitive must be finite or NUMERIC_OVERFLOW, including division by an underflowed zero denominator. No numerical repair, implicit epsilon or state clipping. Exposed zeros are +0. General finite output fields use absolute 1e-9 plus relative 1e-12; integer/topology/order/state/token values compare exactly. The bound fixture file contains only exact analytical outputs; approximate RK4 linear-field and nonzero-angle turtle geometry tests remain separate future property tests.",
+    "ownership": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+    "grid": "For grid operations C=columns,R=rows,G=C*R, flattened row-major index y*C+x. Scalar/vector/binary state arrays have exactly G elements; vector pairs use caller X/Y axes. Discrete CLAMP selects nearest valid index; WRAP uses nonnegative modulo. Named neighbor offsets are counted separately even when small dimensions map them to the same cell. Spacing is positive [hx,hy]; discrete periodic axes have periods C*hx,R*hy, not duplicated endpoint grids.",
+    "rng": "rngState is an integer in `[0,4294967295]`, including zero. A draw first sets\n`state=(1664525*state+1013904223) mod 4294967296`, then returns `u=state/4294967296`.\nThe multiplication and addition are exact integer arithmetic before reduction. JavaScript\nmay use unsigned `Math.imul` arithmetic if it produces those exact uint32 states. For\nuniform selection among K ordered candidates use `floor(u*K)`. Both operations return\n`rngState` containing the final state; they do not use a seed expander or fork a stream.\nThe multiplication by K uses binary64, with K within the array-length domain; clamp an\notherwise rounded index K to K-1. This is bounded mapping, not unbiased rejection sampling.\n",
+    "algorithm": "Bounded adjacency tile collapse\n\nProposed ID: `layout.adjacency-tile-collapse-2d`; constrained generator.\n\nArtist output: tile IDs satisfying caller-supplied horizontal/vertical compatibility.\nStudies: edge-matched cable fields; terrain adjacency mosaics. This proposal deliberately\nuses minimum domain cardinality, not weighted entropy, and has **no backtracking**.\nCONTRADICTION does not prove that the original constraint system was unsatisfiable.\n\nInput:\n\n```text\n{columns:integer>=1,rows:integer>=1,\n right:[[tileIndex,...],...],down:[[tileIndex,...],...],\n weights:[positive number,...],domains:[[tileIndex,...],...],\n rngState:uint32,maxWork:integer}\n```\n\nT=right.length>=1. Down and weights have length T. Every adjacency row is strictly\nincreasing, duplicate-free indices0..T-1 and may be empty. Domains has G nonempty strictly\nincreasing index lists. Tile IDs are these array indices. right[a] lists tiles allowed to\nthe right of a; down[a] lists tiles allowed below a. Left/up constraints are their inverse\nrelations, not separately supplied tables. Outer edges impose no neighbor constraint;\nthere is no wrap or implicit socket rule. Output `{tiles:[tileIndex,...],rngState:uint32}`.\n\nAfter static validation charge setup\n`G+sum(domain lengths)+2*T+sum(right row lengths)+sum(down row lengths)` before copying\ndomains or building membership structures. This is input-sized preparation; no T-by-T\nmatrix is required. Use indexed adjacency membership with O(1) expected lookup or an\nequivalent implementation that preserves the charged pair-test schedule.\n\nAn arc is `(sourceCell,direction)` to an in-range neighbor. Direction order is\nRIGHT,DOWN,LEFT,UP. Initialize a FIFO queue with all arcs, source row-major then direction\norder. Maintain at most one queued occurrence of each arc; remove its pending flag when\ndequeued. Charge1 before each dequeue. Revise the source domain: visit source candidates\nascending; for each, visit target candidates ascending, charging1 before each compatibility\ntest and stop at the first supporting target. Keep supported source candidates in order.\nCommit this revised domain after its candidate scan. Empty => CONTRADICTION with cellIndex.\nIf changed, enqueue all incoming neighbor->source arcs in the source's RIGHT,DOWN,LEFT,UP\nneighbor order, suppressing already pending arcs. Include the just-visited target neighbor.\n\nWhen the queue drains, charge G atomically for a selection scan. Choose the cell of smallest\ndomain cardinality>1, breaking ties by row-major index. If none, return singleton tile IDs\nand unchanged current RNG state. Otherwise charge `2*domainSize+1` before weighted selection.\nSum positive candidate weights in ascending tile order with checked arithmetic, then draw\nexactly once. Set target=u*totalWeight; choose the first ascending candidate whose cumulative\nweight is strictly greater than target. A rounded target==totalWeight selects the final\ncandidate. Collapse that cell to its chosen singleton, enqueue incoming arcs as above,\nand propagate again. No draw occurs for an already singleton cell or a propagation prune.\nNo hidden retries, random tie-breaks, entropy jitter or restart on contradiction.\n\nWorst-case time is governed by charged arc candidate-pair tests and selection scans;\ndomains only shrink. Storage O(G*T+adjacency entries) in the worst case, with O(G) queued\narc capacity. A work failure discards private domains/state. No partially solved grid is\nreturned as success. Weighted accumulation overflow => NUMERIC_OVERFLOW before its draw.\n",
+    "native_surface": "p5.js named export adjacencyTileCollapse2D(input) from packages/javascript/src/adjacency-tile-collapse-2d.js; plain output matching output_schema. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed shape, supplied scalar/carrier/domain, impossible array representation, or operation-specific static constraint.",
+    "WORK_LIMIT": "The exact required or next charged work exceeds maxWork or safe work representation.",
+    "NUMERIC_OVERFLOW": "A computed floating primitive is nonfinite; no partial state or geometry escapes.",
+    "CONTRADICTION": "Propagation emptied a cell domain; cellIndex identifies it. This does not prove original unsatisfiability."
+  },
+  "parameters": {
+    "columns": {
+      "unit": "grid sample/cell count along X",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "rows": {
+      "unit": "grid sample/cell count along Y or output generation-row count",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "right": {
+      "unit": "ascending compatible tile indices to the right",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "down": {
+      "unit": "ascending compatible tile indices below",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "weights": {
+      "unit": "positive relative tile-selection weights",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "domains": {
+      "unit": "row-major ascending initial tile domains",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "rngState": {
+      "unit": "unsigned 32-bit LCG state",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "abstract operation-specific work units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/adjacency-tile-collapse-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 design studies, explicit initial state and bounded replay counts, meaningful structural edits and output reuse, native reset/replay/save and root image review. No original recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against frozen catalog; support acceptance pending execution."
+  }
+}

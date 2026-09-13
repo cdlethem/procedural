@@ -1,0 +1,1 @@
+import { createStudySketch } from "../study-controls.js"; import { drawSpacedSymbols, pathsBSettings } from "../paths-b-studies.js"; createStudySketch({slug:"spaced-symbols",title:"Spaced symbols",...pathsBSettings["spaced-symbols"],draw:drawSpacedSymbols});

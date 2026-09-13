@@ -1,0 +1,1 @@
+import { createStudySketch } from "../study-controls.js"; import { drawCentroidTrails, pathsBSettings } from "../paths-b-studies.js"; createStudySketch({slug:"centroid-trails",title:"Centroid trails",...pathsBSettings["centroid-trails"],draw:drawCentroidTrails});

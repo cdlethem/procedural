@@ -1,0 +1,212 @@
+{
+  "operation": "geometry.offset-polyline-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "proposal_catalog_sha256": null,
+  "oracle": "Root reviewed analytical coordinates, topology, budgets and explicit LCG recurrence, authored before implementation. General numeric properties require separate runtime checks.",
+  "cases": [
+    {
+      "id": "miter",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "closed": false,
+        "distance": 1,
+        "miterLimit": 2,
+        "maxWork": 12
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "bevel",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "closed": false,
+        "distance": 1,
+        "miterLimit": 1,
+        "maxWork": 12
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "negative",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "closed": false,
+        "distance": -1,
+        "miterLimit": 1,
+        "maxWork": 8
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            -1
+          ],
+          [
+            2,
+            -1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "zero",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "closed": false,
+        "distance": 0,
+        "miterLimit": 1,
+        "maxWork": 12
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "reversal",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "closed": false,
+        "distance": 1,
+        "miterLimit": 1,
+        "maxWork": 12
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "budget",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "closed": false,
+        "distance": 1,
+        "miterLimit": 2,
+        "maxWork": 7
+      },
+      "error": "WORK_LIMIT"
+    }
+  ],
+  "future_test_notes": [
+    "closed seam order",
+    "detached ownership",
+    "nonfinite intersection"
+  ],
+  "catalog_sha256": "5ef8d7371f5a92165e2217de0b6f932a1763a736cbb01e9e65901c8d5ae265cd"
+}

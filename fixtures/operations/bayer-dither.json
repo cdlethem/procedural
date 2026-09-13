@@ -1,0 +1,129 @@
+{
+  "operation": "raster.bayer-dither",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "3b033745983a2e8c09b7a65b5b9356b2f448c8383247255ea628264848fb3c1d",
+  "oracle": "Root-reviewed independent analytical states, exact topology and integer-grid formulas, authored before implementation. Color/transport floating properties require separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "order1",
+      "input": {
+        "values": [
+          0.125,
+          0.375,
+          0.625,
+          0.875
+        ],
+        "columns": 2,
+        "rows": 2,
+        "order": 1,
+        "maxWork": 4
+      },
+      "output": {
+        "bits": [
+          1,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "order2-half",
+      "input": {
+        "values": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "columns": 4,
+        "rows": 4,
+        "order": 2,
+        "maxWork": 32
+      },
+      "output": {
+        "bits": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "order2-position",
+      "input": {
+        "values": [
+          0.04,
+          0.54,
+          0.17,
+          0.67
+        ],
+        "columns": 4,
+        "rows": 1,
+        "order": 2,
+        "maxWork": 8
+      },
+      "output": {
+        "bits": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "values": [
+          0.5
+        ],
+        "columns": 1,
+        "rows": 1,
+        "order": 1,
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "malformed",
+      "input": {
+        "values": [
+          0.5
+        ],
+        "columns": 1,
+        "rows": 1,
+        "order": 0,
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

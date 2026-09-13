@@ -1,0 +1,10 @@
+import { passiveRecord, passiveArray, valueAt, number, positiveDimension, workLimit, checkedProduct, checkedWork } from "./internal/raster-study-utils.js";
+const KEYS=["values","columns","rows","kernel","kernelColumns","kernelRows","boundary","maxWork"];
+export class Convolve2DSignedError extends Error { constructor(code) { super(code); this.name="Convolve2DSignedError"; this.code=code; } }
+export function convolve2DSigned(input) {
+ const E=Convolve2DSignedError; passiveRecord(input,KEYS,E); const columns=positiveDimension(valueAt(input,"columns",E),E),rows=positiveDimension(valueAt(input,"rows",E),E),kc=positiveDimension(valueAt(input,"kernelColumns",E),E),kr=positiveDimension(valueAt(input,"kernelRows",E),E),boundary=valueAt(input,"boundary",E),maxWork=workLimit(valueAt(input,"maxWork",E),E);
+ if((kc&1)===0||(kr&1)===0||(boundary!=="zero"&&boundary!=="clamp"))throw new E("INVALID_INPUT"); const cells=checkedProduct([columns,rows],E,"INVALID_INPUT"), taps=checkedProduct([kc,kr],E,"INVALID_INPUT"),raw=passiveArray(valueAt(input,"values",E),E),rk=passiveArray(valueAt(input,"kernel",E),E); if(raw.length!==cells||rk.length!==taps)throw new E("INVALID_INPUT");
+ const values=new Array(cells),kernel=new Array(taps); for(let i=0;i<cells;i+=1)values[i]=number(Object.getOwnPropertyDescriptor(raw,String(i)).value,E); for(let i=0;i<taps;i+=1)kernel[i]=number(Object.getOwnPropertyDescriptor(rk,String(i)).value,E); checkedWork(checkedProduct([cells,taps],E),maxWork,E); const output=new Array(cells),cx=Math.floor(kc/2),cy=Math.floor(kr/2);
+ for(let y=0;y<rows;y+=1)for(let x=0;x<columns;x+=1){let sum=0;for(let ky=0;ky<kr;ky+=1)for(let kx=0;kx<kc;kx+=1){let sx=x+cx-kx,sy=y+cy-ky;let sample=0;if(boundary==="clamp"){sx=Math.max(0,Math.min(columns-1,sx));sy=Math.max(0,Math.min(rows-1,sy));sample=values[sy*columns+sx];}else if(sx>=0&&sx<columns&&sy>=0&&sy<rows)sample=values[sy*columns+sx]; sum += kernel[ky*kc+kx]*sample;if(!Number.isFinite(sum))throw new E("NUMERIC_OVERFLOW");}output[y*columns+x]=sum===0?0:sum;}
+ return {values:output};
+}

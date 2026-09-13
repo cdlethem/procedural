@@ -1,0 +1,145 @@
+{
+  "status": "passed",
+  "runtime": {
+    "node": "v22.22.1",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "operations": [
+    "geometry.chaikin-polyline-2d",
+    "geometry.simplify-polyline-2d",
+    "geometry.offset-polyline-2d",
+    "geometry.convex-hull-2d",
+    "geometry.triangulate-simple-polygon-2d"
+  ],
+  "fixture_cases": {
+    "chaikin-polyline-2d": 5,
+    "simplify-polyline-2d": 5,
+    "offset-polyline-2d": 6,
+    "convex-hull-2d": 5,
+    "triangulate-simple-polygon-2d": 5
+  },
+  "fixture_sha256": {
+    "chaikin-polyline-2d": "1a14364ed49e268d5f64283d08f2b932c46bfdca78cff2bc0152c9000ce0eda9",
+    "simplify-polyline-2d": "69869c0a30698df212ea72536889a6b590f0a55b1620d7fa1b92e66f8ce51bc9",
+    "offset-polyline-2d": "0171be9c87efb4e9563aa81236d87e42b8c3da49e3005b979d6d5a7544352902",
+    "convex-hull-2d": "a75c2bbf370a83eb6cb066414992f79d1592c086cab2ff4330972f246c324a60",
+    "triangulate-simple-polygon-2d": "aedc984323036f6bd3dbbb32cd0bc8d972df076e40c61c87f56e814eeac42477"
+  },
+  "source_sha256": {
+    "before": {
+      "internal/geometry-a-utils.js": "b13eec1218c84e3758c8b831182518a2b069be6fb355561bd512a259c3c94a45",
+      "chaikin-polyline-2d.js": "5f7dd247985be361679e15f4fb2a7bd5e033927b53e1d6a1a85d2a30685ebb97",
+      "simplify-polyline-2d.js": "b874b18cf0ee75397f09676d5bfe4f66fbeb8987e260577a0579a613799b1feb",
+      "offset-polyline-2d.js": "eb42f6a1bba9bf15cfc6d873fba8896bce09a5b5f9168ffd199119e643c38382",
+      "convex-hull-2d.js": "d156a22647adb5fe931c8740ee2c74eae7f4b243de8bc6fedc714e49139c0075",
+      "triangulate-simple-polygon-2d.js": "bfbf0df2fd29df8590daa74c629312e14b36342e8577078e1e2f369362ed2760"
+    },
+    "after": {
+      "internal/geometry-a-utils.js": "b13eec1218c84e3758c8b831182518a2b069be6fb355561bd512a259c3c94a45",
+      "chaikin-polyline-2d.js": "5f7dd247985be361679e15f4fb2a7bd5e033927b53e1d6a1a85d2a30685ebb97",
+      "simplify-polyline-2d.js": "b874b18cf0ee75397f09676d5bfe4f66fbeb8987e260577a0579a613799b1feb",
+      "offset-polyline-2d.js": "eb42f6a1bba9bf15cfc6d873fba8896bce09a5b5f9168ffd199119e643c38382",
+      "convex-hull-2d.js": "d156a22647adb5fe931c8740ee2c74eae7f4b243de8bc6fedc714e49139c0075",
+      "triangulate-simple-polygon-2d.js": "bfbf0df2fd29df8590daa74c629312e14b36342e8577078e1e2f369362ed2760"
+    }
+  },
+  "scenarios": [
+    "shared exact fixtures",
+    "otherwise-valid getter rejection",
+    "all-five input/output detachment",
+    "Chaikin endpoint and seam properties",
+    "simplification order",
+    "hull identity",
+    "strict topology and overflow",
+    "CCW/CW triangle orientation and area"
+  ],
+  "timing": {
+    "chaikin": {
+      "tiny": {
+        "repetitions": 3,
+        "elapsed_ms": 0.023,
+        "checksum": "5d5d2fdd651356e95bbbf8b6ba7ab94bc59256e72fd107cdad13e587e5678884"
+      },
+      "study": {
+        "repetitions": 3,
+        "elapsed_ms": 0.124,
+        "checksum": "ab314c2acd49300419e6452935ce52a85705fddc6fae2dabb2da79dcc06461b3"
+      },
+      "stress": {
+        "repetitions": 3,
+        "elapsed_ms": 0.395,
+        "checksum": "6433c8429493d320613d80de9909c53a32da29f61af70d00a5aae00497efd3d8"
+      }
+    },
+    "simplify": {
+      "tiny": {
+        "repetitions": 3,
+        "elapsed_ms": 0.024,
+        "checksum": "736523cef4310ff4d47e435df1db325cbd9a3b6ec2a834323f11e85c4db8f418"
+      },
+      "study": {
+        "repetitions": 3,
+        "elapsed_ms": 0.415,
+        "checksum": "55b292cd501b405c2efadced6a84fea8085d2b9ad25e3f71c1b54959adfc9bce"
+      },
+      "stress": {
+        "repetitions": 3,
+        "elapsed_ms": 3.158,
+        "checksum": "d3bffb211a3b3e271a023406bd8119058a3823d3fb4834b756b84ff03d80dd41"
+      }
+    },
+    "offset": {
+      "tiny": {
+        "repetitions": 3,
+        "elapsed_ms": 0.016,
+        "checksum": "074869df08b1983d8d331d1688ed89f4ed6e664c5d15bf42d98f5fa216f2a693"
+      },
+      "study": {
+        "repetitions": 3,
+        "elapsed_ms": 0.16,
+        "checksum": "70b99c1d24a287e8f3886d192340fb5b7acb2ccdd0ed852f78b5aa9b8f987840"
+      },
+      "stress": {
+        "repetitions": 3,
+        "elapsed_ms": 0.851,
+        "checksum": "01f83852cb4eaff3550a7c9756e9de21030cd6cc7839e76eb69bc386f774b8b3"
+      }
+    },
+    "hull": {
+      "tiny": {
+        "repetitions": 3,
+        "elapsed_ms": 0.021,
+        "checksum": "48eabb74ae5e1d543996e350d529a362381f702fd4054f9992091c9a9881459e"
+      },
+      "study": {
+        "repetitions": 3,
+        "elapsed_ms": 0.226,
+        "checksum": "54e8e1d6d0a3ff659de20bc2425de0d2230c9cef590685c00dd557eb7cf6ab5f"
+      },
+      "stress": {
+        "repetitions": 3,
+        "elapsed_ms": 1.632,
+        "checksum": "1ab56dbaec9873a12202cc45107563f30bf95c3122523746476bfa2278a1e423"
+      }
+    },
+    "triangulate": {
+      "tiny": {
+        "repetitions": 3,
+        "elapsed_ms": 0.015,
+        "checksum": "0ee23ffa40ce12335388fa3f29bcf5a24a84b9ae8ac535b4a3977b0e8ba6361b"
+      },
+      "study": {
+        "repetitions": 3,
+        "elapsed_ms": 0.143,
+        "checksum": "b465a37dc74436c299f14d8e9c7e7083aecad4e4500f722f3c66565873b0f99b"
+      },
+      "stress": {
+        "repetitions": 3,
+        "elapsed_ms": 0.952,
+        "checksum": "114ba16871b57682aaab068ff8474487f621665979e061f72bfe806a4d83d2c5"
+      }
+    }
+  },
+  "scope": "Pure JavaScript p5-target core conformance only: no renderer, native workflow, support, or acceptance claim."
+}

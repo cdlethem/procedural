@@ -2591,6 +2591,933 @@
           "sha256": "c6863c43de2ae3ba47021b674324c619e86e2060fbbc4a4ae237abeac217af59"
         }
       ]
+    },
+    {
+      "id": "p5-tenfold-paths",
+      "title": "Path geometry, sites and layouts",
+      "category": "Root reviewed p5 original studies",
+      "description": "Baseline and structural images inspected by root; matching native/Studio pixels and edit/reset/save checks are bound in the review. These are original designs, not corpus recreation claims.",
+      "evidence": "evidence/web/p5-tenfold/root-review.json",
+      "images": [
+        {
+          "label": "arrival-contours \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/arrival-contours/gallery-baseline.png",
+          "sha256": "59a028c609df266e497c8a9cd63459e13ddbb18f136d4384e09f47c4f7c6832f"
+        },
+        {
+          "label": "arrival-contours \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/arrival-contours/gallery-structural-edit.png",
+          "sha256": "d176940f29a5f61e613a0a0c9f67d3b707772013d92e0ea77a3009b57766064b"
+        },
+        {
+          "label": "arrival-contours \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/arrival-contours/native-palette-transfer.png",
+          "sha256": "eca6348c52e6fbec055554331bdd4a40940e265fcb04ce9edee93cec2a5039ae"
+        },
+        {
+          "label": "aspect-tiles \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/aspect-tiles/gallery-baseline.png",
+          "sha256": "f9ef230735839d92a75923dd89388af211fcd7447ba4624068ab0b28c0d9dd2b"
+        },
+        {
+          "label": "aspect-tiles \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/aspect-tiles/gallery-structural-edit.png",
+          "sha256": "f1cccf62ae648160597575618df387aedcf5c5afd98b960ec3c326d4f1ef2408"
+        },
+        {
+          "label": "aspect-tiles \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/aspect-tiles/native-palette-transfer.png",
+          "sha256": "a6c7c6a3fba2617913f26de4e36a622e275172a8f03aad2456d25381099c9068"
+        },
+        {
+          "label": "blue-noise-stipple \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/blue-noise-stipple/gallery-baseline.png",
+          "sha256": "3b7f3e8c32c7e9ebe7969470ac34a02d35662b5835be43f44dd86bd0f7432736"
+        },
+        {
+          "label": "blue-noise-stipple \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/blue-noise-stipple/gallery-structural-edit.png",
+          "sha256": "1bb185c6716eb3e982ecdb256fea1eb4c3c0de9247bbd10009c809f7cdefd27d"
+        },
+        {
+          "label": "blue-noise-stipple \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/blue-noise-stipple/native-palette-transfer.png",
+          "sha256": "0ae7ada76e162559efa91fb81dac955a239271a3189550e8d6cc52ea14160ffa"
+        },
+        {
+          "label": "centroid-trails \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/centroid-trails/gallery-baseline.png",
+          "sha256": "9369133be775b700e93de374592de518c6620721af65826c040c9b8a475a4da5"
+        },
+        {
+          "label": "centroid-trails \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/centroid-trails/gallery-structural-edit.png",
+          "sha256": "1dfe0c7e1c8fa1352b705d690447af3c8a800dc7f9b353b299988095ddceb93a"
+        },
+        {
+          "label": "centroid-trails \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/centroid-trails/native-palette-transfer.png",
+          "sha256": "00cb9c0136a9b3482c4470bc904af4490b87bcf0532394e33b71b62adc81e592"
+        },
+        {
+          "label": "concave-grain \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/concave-grain/gallery-baseline.png",
+          "sha256": "4d2533bd06f1d13513636b27bf759022fd9423702768b9dcc53048b0cc38b348"
+        },
+        {
+          "label": "concave-grain \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/concave-grain/gallery-structural-edit.png",
+          "sha256": "e990cab553a621ded6b10001e089699c300ebdfdc330ff11d8c7e3a843550908"
+        },
+        {
+          "label": "concave-grain \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/concave-grain/native-palette-transfer.png",
+          "sha256": "707e7d6a9f6466b5fc1efab27d7cea80377945652c8f3d9ae4e8524a44add977"
+        },
+        {
+          "label": "contour-abstraction \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/contour-abstraction/gallery-baseline.png",
+          "sha256": "cbbb548c4ccdca7eb7210c594edd84f17503c675a78ab3b238c140105e444359"
+        },
+        {
+          "label": "contour-abstraction \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/contour-abstraction/gallery-structural-edit.png",
+          "sha256": "b903ecbe810127492f15edbafc98c31fd2a2b4b98489ee4731b1917aec6dc42e"
+        },
+        {
+          "label": "contour-abstraction \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/contour-abstraction/native-palette-transfer.png",
+          "sha256": "f703f946101db991b4a63d401a22f4ba95e8d646adc692bec99c1dc4db031ebc"
+        },
+        {
+          "label": "faceted-silhouettes \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/faceted-silhouettes/gallery-baseline.png",
+          "sha256": "fb42ded7e5c2f72afd2e0a3550293c0b39b6be92a2a5bb3ca157f694e57a9d91"
+        },
+        {
+          "label": "faceted-silhouettes \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/faceted-silhouettes/gallery-structural-edit.png",
+          "sha256": "e565dd89f0b5faaffdbe35036284ffa04c63112fedc6c4671d6a17fad1c4d179"
+        },
+        {
+          "label": "faceted-silhouettes \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/faceted-silhouettes/native-palette-transfer.png",
+          "sha256": "c5eb42c963f9c1b52140533b9df7ac1bab0c8a8b49e3e41af9037357d8dc85c4"
+        },
+        {
+          "label": "flowing-brushes \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/flowing-brushes/gallery-baseline.png",
+          "sha256": "1ef2bf768ccc275c86670b3d77acc1a4d58673fc7e68b9a21b33f851c72b246b"
+        },
+        {
+          "label": "flowing-brushes \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/flowing-brushes/gallery-structural-edit.png",
+          "sha256": "6b05c7dc5141493b320a582cd45664f089e5b08e785eb1946d4a28f1700602e6"
+        },
+        {
+          "label": "flowing-brushes \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/flowing-brushes/native-palette-transfer.png",
+          "sha256": "1b766eeb9d5a38340d4d0ca3914e05a1abca20adf631b97ef68cfd2d021fdffb"
+        },
+        {
+          "label": "fragmented-lines \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/fragmented-lines/gallery-baseline.png",
+          "sha256": "1d0b38ccee9a1edea5788a60fc928ba6c2729b53cbee7d62d50bf3e6650dbb08"
+        },
+        {
+          "label": "fragmented-lines \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/fragmented-lines/gallery-structural-edit.png",
+          "sha256": "941eb7c022f01d1092ef4a054046b89df892d37e40990250e556f903ba9e7a5c"
+        },
+        {
+          "label": "fragmented-lines \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/fragmented-lines/native-palette-transfer.png",
+          "sha256": "66c79b995dd1e00683434558233b0e55913d7fec2fc41e5150cacaa599bcc001"
+        },
+        {
+          "label": "gesture-skeletons \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/gesture-skeletons/gallery-baseline.png",
+          "sha256": "1d8806eb2ddba90816394f7696bf9a123b697996e85158f30c5c58063c782cfa"
+        },
+        {
+          "label": "gesture-skeletons \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/gesture-skeletons/gallery-structural-edit.png",
+          "sha256": "3199a715c2c16112d2f7be489883aea389b868001224c49a784bd8b33c4aef59"
+        },
+        {
+          "label": "gesture-skeletons \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/gesture-skeletons/native-palette-transfer.png",
+          "sha256": "0cfa5ebbb2ecb67900bd302c2f83887491bc0d5513aad97ba74e7f01f8de7ecc"
+        },
+        {
+          "label": "nested-contour-strokes \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/nested-contour-strokes/gallery-baseline.png",
+          "sha256": "8960f2fa47fc3c04b5e0549f3230d4685874992be8efbffde44cd76021fa11e9"
+        },
+        {
+          "label": "nested-contour-strokes \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/nested-contour-strokes/gallery-structural-edit.png",
+          "sha256": "3443c463e21fbc5c99bd2f62e1f62b592514f56e0e1aa6cdab10222dffd36ed5"
+        },
+        {
+          "label": "nested-contour-strokes \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/nested-contour-strokes/native-palette-transfer.png",
+          "sha256": "ed7f7503538bec3c90cb1a126b17a400d47f703f215a3730464126e18c4eeac6"
+        },
+        {
+          "label": "obstacle-roads \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/obstacle-roads/gallery-baseline.png",
+          "sha256": "63e48b0bb2e03c469c213d77b6710b4216af870e4da5d35456909ffdeec5c033"
+        },
+        {
+          "label": "obstacle-roads \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/obstacle-roads/gallery-structural-edit.png",
+          "sha256": "5c988fc310e704e1f51fb31213de119b6fe0fac0852f38b34fd82ae772fbe3c4"
+        },
+        {
+          "label": "obstacle-roads \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/obstacle-roads/native-palette-transfer.png",
+          "sha256": "8c22d1b0b92f69f676557b700239cbc37c62d75c6656eb54ca3f39c1472b76c1"
+        },
+        {
+          "label": "packed-posters \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/packed-posters/gallery-baseline.png",
+          "sha256": "174c6bd36b8eea5d98631576a18e60310f9b1c9e499866992ff69cb0de60ea29"
+        },
+        {
+          "label": "packed-posters \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/packed-posters/gallery-structural-edit.png",
+          "sha256": "555e8afac6ad76b839ea97d942465b3190c9509525e344d01e76a62112272c41"
+        },
+        {
+          "label": "packed-posters \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/packed-posters/native-palette-transfer.png",
+          "sha256": "729c42ad34e4289b71ca32de1e728319c11dbdea508894309527ae48e26e4433"
+        },
+        {
+          "label": "relaxed-stones \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/relaxed-stones/gallery-baseline.png",
+          "sha256": "ed879af2785e207b6e3447c197acdf6fe407061c0da6e947e95ea9b0ae571eba"
+        },
+        {
+          "label": "relaxed-stones \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/relaxed-stones/gallery-structural-edit.png",
+          "sha256": "db05ba702070156f02dc7b57663a9e9b3f66eefc69148c5798cdf1c64ff86098"
+        },
+        {
+          "label": "relaxed-stones \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/relaxed-stones/native-palette-transfer.png",
+          "sha256": "5bd9af1ac690c8d1e24a60bc0942354c350968a82de9f69e43ed4d02f1d9eb17"
+        },
+        {
+          "label": "road-margins \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/road-margins/gallery-baseline.png",
+          "sha256": "6d454478dd059677fc0ff47ecb8f9c660061c51d0a2c0b6548e5410bbc84cc79"
+        },
+        {
+          "label": "road-margins \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/road-margins/gallery-structural-edit.png",
+          "sha256": "7aeac24086dd441678a622cf8aaf3760282627c066acbfaeb64437f9d49f2e28"
+        },
+        {
+          "label": "road-margins \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/road-margins/native-palette-transfer.png",
+          "sha256": "b9d0ef07b1512b09e5b45ee5c6112b4aacf31cfe89944d475430deafcd0d70d6"
+        },
+        {
+          "label": "rounded-panels \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/rounded-panels/gallery-baseline.png",
+          "sha256": "a336c2c55d3ad01ea8727d6a39342912d882920fba5d28b8d88d519ba034b0cd"
+        },
+        {
+          "label": "rounded-panels \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/rounded-panels/gallery-structural-edit.png",
+          "sha256": "5ea58cdeb0e9fdb31e981071c6d8b0dd8e5a5b0343bf8587b894d175de8f8bea"
+        },
+        {
+          "label": "rounded-panels \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/rounded-panels/native-palette-transfer.png",
+          "sha256": "34c365e16d36c233a645422811434020f0d7d723ad997fcbb2db5a4d05413177"
+        },
+        {
+          "label": "scatter-envelopes \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/scatter-envelopes/gallery-baseline.png",
+          "sha256": "d5f57d8986d4b08b6d9428bf0adc310d08c330ff143b94b2d30e2c90b3abb7ea"
+        },
+        {
+          "label": "scatter-envelopes \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/scatter-envelopes/gallery-structural-edit.png",
+          "sha256": "71be969df738c5699f1d7dce5b61b97abf5ae709f4bef1c04b629bcb4ea831f0"
+        },
+        {
+          "label": "scatter-envelopes \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/scatter-envelopes/native-palette-transfer.png",
+          "sha256": "896d84a356b50074a390d5920400a099cbe5f34d907c3d9335b6ea8410df49bc"
+        },
+        {
+          "label": "spaced-symbols \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/spaced-symbols/gallery-baseline.png",
+          "sha256": "0f6012b73239f3064546edb5adcff7d4365e5fb5fab66c898bbadc1d922f99f1"
+        },
+        {
+          "label": "spaced-symbols \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/spaced-symbols/gallery-structural-edit.png",
+          "sha256": "06cb1eaf88647c70476f81cafa38ff9e92b1d0fb066c05097c332c157bd7e44d"
+        },
+        {
+          "label": "spaced-symbols \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/spaced-symbols/native-palette-transfer.png",
+          "sha256": "b2845ef97d6066b9b4c32b694735a1da54fdf32a402a92c24a4456dd24e97ae2"
+        },
+        {
+          "label": "stitched-contours \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/stitched-contours/gallery-baseline.png",
+          "sha256": "84699c42fd8fc151d0fcf474fcf49351e842d11c31fdcbfadf31c3a63e402332"
+        },
+        {
+          "label": "stitched-contours \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/stitched-contours/gallery-structural-edit.png",
+          "sha256": "5cd8da4bb5eeea84d2ee71d29077d7434c7c776afb3a8cc2ea658ea55c703b78"
+        },
+        {
+          "label": "stitched-contours \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/stitched-contours/native-palette-transfer.png",
+          "sha256": "5b13d82e65b912e8158343da3200f42daa53158c947585c07efecfa1bb0882c7"
+        },
+        {
+          "label": "terraced-islands \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/terraced-islands/gallery-baseline.png",
+          "sha256": "c7dd81f0065895a1d9a80b464cfd678176d0704feefdaecb1460457ca4e97e3b"
+        },
+        {
+          "label": "terraced-islands \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/terraced-islands/gallery-structural-edit.png",
+          "sha256": "053d04d4d7fdea40916e9e7c15bf3966a3a6571d74592308eeefa8a6bfaac24c"
+        },
+        {
+          "label": "terraced-islands \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/terraced-islands/native-palette-transfer.png",
+          "sha256": "a5ea091f133d7b42dff230df44f7a4f33273081d50ddfa8076fdc2719d0a05d7"
+        }
+      ]
+    },
+    {
+      "id": "p5-tenfold-systems",
+      "title": "Fields, grammars, tiles and networks",
+      "category": "Root reviewed p5 original studies",
+      "description": "Baseline and structural images inspected by root; matching native/Studio pixels and edit/reset/save checks are bound in the review. These are original designs, not corpus recreation claims.",
+      "evidence": "evidence/web/p5-tenfold/root-review.json",
+      "images": [
+        {
+          "label": "branching-networks \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-systems-b-final/branching-networks/gallery-baseline.png",
+          "sha256": "165c565c394f88d6e66805dfa70890af1bd74d9f0311f6d67a3ef349e79b9d83"
+        },
+        {
+          "label": "branching-networks \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-systems-b-final/branching-networks/gallery-structural-edit.png",
+          "sha256": "9c022dbf41d4853e33182d61793103e9172cf2301aad817f6b88b44fc077a7de"
+        },
+        {
+          "label": "branching-networks \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-systems-b-final/branching-networks/native-palette-transfer.png",
+          "sha256": "f81d8b4d119a3bbf7f5f2c176c08972479601c27a3509c79ea54ca3fa85d204e"
+        },
+        {
+          "label": "branching-sentences \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-systems-b-final/branching-sentences/gallery-baseline.png",
+          "sha256": "67d2c8e8c91a4e47df78c2aa51f6b25fd28c091031897a966a251dae3bb4f1be"
+        },
+        {
+          "label": "branching-sentences \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-systems-b-final/branching-sentences/gallery-structural-edit.png",
+          "sha256": "14575a6a631afeb9cdf8fbb28d9a06f7dbd4073511d42aa06562b32173b45293"
+        },
+        {
+          "label": "branching-sentences \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-systems-b-final/branching-sentences/native-palette-transfer.png",
+          "sha256": "c4946358f48f61075636b82334b6b0a692a5648604ff410010753421a73b88c7"
+        },
+        {
+          "label": "compatible-mosaics \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-systems-b-final/compatible-mosaics/gallery-baseline.png",
+          "sha256": "853acc6eea23e69a213761a493f4bdb45f70a09063a35b1812a668d540e1907f"
+        },
+        {
+          "label": "compatible-mosaics \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-systems-b-final/compatible-mosaics/gallery-structural-edit.png",
+          "sha256": "b0ae00aed5dbeddec60247da5f66b87a9ecb50a7490b69ef4648229921e7681b"
+        },
+        {
+          "label": "compatible-mosaics \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-systems-b-final/compatible-mosaics/native-palette-transfer.png",
+          "sha256": "acb1040477346b777ed1f3192da2cc68ab7ce14abef45b7ebd10b14713cccc04"
+        },
+        {
+          "label": "curved-trajectories \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/curved-trajectories/gallery-baseline.png",
+          "sha256": "66a6378ce85d398d47c5c24fa9379b48455f1ce57bc97d2696050b55e1f537be"
+        },
+        {
+          "label": "curved-trajectories \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/curved-trajectories/gallery-structural-edit.png",
+          "sha256": "6efe6b3f4f61f5f7fda8186ec0e02da2284c6df65bfeff58e0745bb388b9d83d"
+        },
+        {
+          "label": "curved-trajectories \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/curved-trajectories/native-palette-transfer.png",
+          "sha256": "f50e82442d415556bb0f0b2ce057ffec11176feb3fce281310cf75162aa755e8"
+        },
+        {
+          "label": "flow-needles \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/flow-needles/gallery-baseline.png",
+          "sha256": "f2857ab25fb4dbbb583f6971e44f81a5b99d06c58b4617251e0c9b9bb544ff55"
+        },
+        {
+          "label": "flow-needles \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/flow-needles/gallery-structural-edit.png",
+          "sha256": "c1fa7fa9e693e97c3ad93f1be4e49bf6b4222dcf149907154fd32df3c7282aba"
+        },
+        {
+          "label": "flow-needles \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/flow-needles/native-palette-transfer.png",
+          "sha256": "527e7dc5d6fb9b7cf97f31bc0437e82f6d57e97b330def3a7e74db4b9acc737c"
+        },
+        {
+          "label": "geometric-generations \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/geometric-generations/gallery-baseline.png",
+          "sha256": "eb3a9a0934e9883d8e1132821c1dfcff905d35983685e025552bb964cfa29501"
+        },
+        {
+          "label": "geometric-generations \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/geometric-generations/gallery-structural-edit.png",
+          "sha256": "8e9fd8df24a68973c90b6cb9b78f20950d0d247bb7dfb9dd1b738fd28045802a"
+        },
+        {
+          "label": "geometric-generations \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/geometric-generations/native-palette-transfer.png",
+          "sha256": "a69fc5223efcbda113220086715234ead5557a0b7a870d20066c83a9c42d4728"
+        },
+        {
+          "label": "maze-gardens \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-systems-b-final/maze-gardens/gallery-baseline.png",
+          "sha256": "8b18a1e51212ea574a38fdb63bd9369e2a6e0db3bd00b4b5e380aa25035e3bbe"
+        },
+        {
+          "label": "maze-gardens \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-systems-b-final/maze-gardens/gallery-structural-edit.png",
+          "sha256": "80836feda7b9b9f77363fea7996e6d943a61986ca3d33607deee9e2d73b9ac73"
+        },
+        {
+          "label": "maze-gardens \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-systems-b-final/maze-gardens/native-palette-transfer.png",
+          "sha256": "0f018581823e287e318818ccdcfb82efd7324d3c8a67f749ac67abe2e7df2705"
+        },
+        {
+          "label": "organic-cells \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/organic-cells/gallery-baseline.png",
+          "sha256": "c6723ca64f18d746b5c547e1d8f13b07f326ea290995a1d23f07a543b8534b17"
+        },
+        {
+          "label": "organic-cells \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/organic-cells/gallery-structural-edit.png",
+          "sha256": "a62f8eab043118c86bbfc6985758208986daf4b96fa12f8c2652bb97d6e5822b"
+        },
+        {
+          "label": "organic-cells \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/organic-cells/native-palette-transfer.png",
+          "sha256": "66846444da3d873c7f43b00f5f97fca49bc70220606b42cb7a91b5763f053c1d"
+        },
+        {
+          "label": "pinned-waves \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-systems-b-final/pinned-waves/gallery-baseline.png",
+          "sha256": "99238a203e7fd42addfc63430b581e0cee2bcdf29b0af8145cc84cfa9a96c693"
+        },
+        {
+          "label": "pinned-waves \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-systems-b-final/pinned-waves/gallery-structural-edit.png",
+          "sha256": "fddf23d8784566b0c5791e5861f473679259260c0d141c2298b263ba329878a3"
+        },
+        {
+          "label": "pinned-waves \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-systems-b-final/pinned-waves/native-palette-transfer.png",
+          "sha256": "419d8f520014011d8abe0dc36a6574902826ecd2cc969674f4576997760cd7f5"
+        },
+        {
+          "label": "reaction-spots \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/reaction-spots/gallery-baseline.png",
+          "sha256": "2ab90aff2d3192e526d8a6c6d543cc2063ebb10f1ed95b036f36a12724517dc4"
+        },
+        {
+          "label": "reaction-spots \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/reaction-spots/gallery-structural-edit.png",
+          "sha256": "efe7483d4b5762e07b7a9bf0a1aed7b3b857f4ffb3f95f7fd11812ab44b8f853"
+        },
+        {
+          "label": "reaction-spots \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/reaction-spots/native-palette-transfer.png",
+          "sha256": "a071b55a4e7fa6409342cc39e706c414ef9910465c883977bea1ef9d3a2aed7b"
+        },
+        {
+          "label": "reaction-stripes \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/reaction-stripes/gallery-baseline.png",
+          "sha256": "5534006c3d593da92e72b492d27428897a703b80fd66347e21d6ad2f7efbc5ca"
+        },
+        {
+          "label": "reaction-stripes \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/reaction-stripes/gallery-structural-edit.png",
+          "sha256": "ead3e8e4dc07966b9cbd3b1d5931ffb3cd35000217bbc4ccaca265b8c39bd934"
+        },
+        {
+          "label": "reaction-stripes \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/reaction-stripes/native-palette-transfer.png",
+          "sha256": "52352939471bbaead4c2020f6fa5e458dc0b26f4ded18a58e20a99e8e4369731"
+        },
+        {
+          "label": "recursive-tiles \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-systems-b-final/recursive-tiles/gallery-baseline.png",
+          "sha256": "0b347975eb2f89b3bd17b60a424054f4bc78d2988050a2a149815fd12548fac1"
+        },
+        {
+          "label": "recursive-tiles \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-systems-b-final/recursive-tiles/gallery-structural-edit.png",
+          "sha256": "224e302392136430b797e99c0510d81355b2b1b17e94399b86d37f24ee7f540a"
+        },
+        {
+          "label": "recursive-tiles \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-systems-b-final/recursive-tiles/native-palette-transfer.png",
+          "sha256": "a9d85c57ec0ace12578f90b43fc2f14e2e38b094a75a958f6d73a4201ca10d69"
+        },
+        {
+          "label": "ripple-interference \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-systems-b-final/ripple-interference/gallery-baseline.png",
+          "sha256": "a6f78fc1a3e18969a10e64baa4db01d0ac88d4be55ca49110be0d56f1ce09a36"
+        },
+        {
+          "label": "ripple-interference \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-systems-b-final/ripple-interference/gallery-structural-edit.png",
+          "sha256": "42b8db7a889ed79bbeb747dc5537e1f1d2a7b655a53c2ebc57371cb1eac8ad4d"
+        },
+        {
+          "label": "ripple-interference \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-systems-b-final/ripple-interference/native-palette-transfer.png",
+          "sha256": "fe097a7f4dd8ffca4260d69b48879d3c6b67a6f18159f48c6d8880c6111ed1ca"
+        },
+        {
+          "label": "stream-ribbons \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/stream-ribbons/gallery-baseline.png",
+          "sha256": "c24ff660474ed0cab06bde685c104773cc1ffd6fff945f5dccafbfb3c0838703"
+        },
+        {
+          "label": "stream-ribbons \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/stream-ribbons/gallery-structural-edit.png",
+          "sha256": "65e80ff9ea92e9857c9119d44207994cbd93cdc89cdbda7cac36251e25cec3f8"
+        },
+        {
+          "label": "stream-ribbons \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/stream-ribbons/native-palette-transfer.png",
+          "sha256": "b6f64175f347d3407658aed9ddb2502074a2340dcd6e45094364a4881e323f19"
+        },
+        {
+          "label": "swirling-particles \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/swirling-particles/gallery-baseline.png",
+          "sha256": "4ebb58fff6cedd94e7e95c8f0b4daad0655618832f4b2c330398457397835556"
+        },
+        {
+          "label": "swirling-particles \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/swirling-particles/gallery-structural-edit.png",
+          "sha256": "4ca32bb05bc756f2a2d1378613981d0a1b7bc2ad81f6b21c2c92bacc16b63222"
+        },
+        {
+          "label": "swirling-particles \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/swirling-particles/native-palette-transfer.png",
+          "sha256": "4977004f0933b33e701b98ed974db19c4d1734b9505b9b1c9dbd11459e53c9f8"
+        },
+        {
+          "label": "tiled-circuits \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-systems-b-final/tiled-circuits/gallery-baseline.png",
+          "sha256": "e228e7f3a9cf7e661d9e317469f498510850efb95fe53f99230ca23ef3e9ad04"
+        },
+        {
+          "label": "tiled-circuits \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-systems-b-final/tiled-circuits/gallery-structural-edit.png",
+          "sha256": "004fe01b2522da9a353e3f27312be7f480db06bbad2332cd62aa71c0607f0c82"
+        },
+        {
+          "label": "tiled-circuits \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-systems-b-final/tiled-circuits/native-palette-transfer.png",
+          "sha256": "45eb4f1ff058c5edf333bad61f8956cb70eec89e18ae546f214731aa96a18fe3"
+        },
+        {
+          "label": "triangle-glyphs \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/triangle-glyphs/gallery-baseline.png",
+          "sha256": "6de6c662a7b0af02c4b2468ba88c3ac755f3506adbe65173ce342acef7437798"
+        },
+        {
+          "label": "triangle-glyphs \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/triangle-glyphs/gallery-structural-edit.png",
+          "sha256": "222d38c7bb6e8b5e528f0cd9716ab322e1abeb6ab8a0cc0e49eb5e4817f8f5d2"
+        },
+        {
+          "label": "triangle-glyphs \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/triangle-glyphs/native-palette-transfer.png",
+          "sha256": "8330453335b85771d6ce32d950f4020ba9a1ee05632bfaa1c5557238712c1d80"
+        },
+        {
+          "label": "turtle-canopies \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-systems-b-final/turtle-canopies/gallery-baseline.png",
+          "sha256": "615c5a33cc47cc0566beba86cf8598b7db439ffb7cadbd4b70bcb73bb56ba4c3"
+        },
+        {
+          "label": "turtle-canopies \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-systems-b-final/turtle-canopies/gallery-structural-edit.png",
+          "sha256": "00878e0fce7223579c1ae7288d5703be5bd96d6030e0e8348554cee09e95e332"
+        },
+        {
+          "label": "turtle-canopies \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-systems-b-final/turtle-canopies/native-palette-transfer.png",
+          "sha256": "22237192c8bdec4fdaa1ec6bc0e3c2eb675b48494d2e233ca740ba5ee471dca5"
+        },
+        {
+          "label": "woven-grammar \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-systems-b-final/woven-grammar/gallery-baseline.png",
+          "sha256": "01db8c2c13514965797a639cfb1c91dbf28d78e51cecadd83d8bfd18c7801b44"
+        },
+        {
+          "label": "woven-grammar \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-systems-b-final/woven-grammar/gallery-structural-edit.png",
+          "sha256": "763593fd521baaad557a13244262e14c763afbba31bd28cbf719f3396a6d88ab"
+        },
+        {
+          "label": "woven-grammar \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-systems-b-final/woven-grammar/native-palette-transfer.png",
+          "sha256": "6886b542952c59d2a885166ea63eccc61617bc207183f0da1d2c08587ded0df8"
+        },
+        {
+          "label": "woven-rows \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/woven-rows/gallery-baseline.png",
+          "sha256": "d864c4cacddf319df49f6c4407560abd4f0ae303dc72393c9ec3b54e1bdfc0dd"
+        },
+        {
+          "label": "woven-rows \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/woven-rows/gallery-structural-edit.png",
+          "sha256": "7a0892fbc8a9c9f5531e3ab8d9cf2f7603e7a5c791d33ab87d7682d40943573e"
+        },
+        {
+          "label": "woven-rows \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/woven-rows/native-palette-transfer.png",
+          "sha256": "b03e8d22adc0daa8af1c05f6f4b33e4df4a7cd509fe887844e7cfa61e19d8060"
+        }
+      ]
+    },
+    {
+      "id": "p5-tenfold-materials",
+      "title": "Raster, color and projected meshes",
+      "category": "Root reviewed p5 original studies",
+      "description": "Baseline and structural images inspected by root; matching native/Studio pixels and edit/reset/save checks are bound in the review. These are original designs, not corpus recreation claims.",
+      "evidence": "evidence/web/p5-tenfold/root-review.json",
+      "images": [
+        {
+          "label": "bayer-weave \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/bayer-weave/gallery-baseline.png",
+          "sha256": "163222693a1ebc21dd2a1bf027b41e20c40fa2faa0ebc8abfa5edaf787980943"
+        },
+        {
+          "label": "bayer-weave \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/bayer-weave/gallery-structural-edit.png",
+          "sha256": "695f7d6f9504b0ab71fa00252d0dd702f92f5719f0aa3e96e68468992391592c"
+        },
+        {
+          "label": "bayer-weave \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/bayer-weave/native-palette-transfer.png",
+          "sha256": "eae1907cbb625e4bb65c83562286cb32b308f2ee53b5d6280d251493d401eb5d"
+        },
+        {
+          "label": "diffusion-engraving \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/diffusion-engraving/gallery-baseline.png",
+          "sha256": "10a609a7bce6d95d448dcd9fc62aee22b3d1f9402b38416ee5c5ab5fe3e552ce"
+        },
+        {
+          "label": "diffusion-engraving \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/diffusion-engraving/gallery-structural-edit.png",
+          "sha256": "c2a691b157fe476f1cfcb1f484bb2c04da3d0508047620504ec834882f1a58a2"
+        },
+        {
+          "label": "diffusion-engraving \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/diffusion-engraving/native-palette-transfer.png",
+          "sha256": "08766731530782ee46df8f7f892e8ceeb62cd6f39a36c5a8045be9006142f465"
+        },
+        {
+          "label": "dilated-stamps \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/dilated-stamps/gallery-baseline.png",
+          "sha256": "c0fcd3ec5221b260e6e95587cbd31eded9b3bde9885be0364f3f2b7b4fe48b5c"
+        },
+        {
+          "label": "dilated-stamps \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/dilated-stamps/gallery-structural-edit.png",
+          "sha256": "be0674f92b8c0efffbb5b7ed053dd8cfde228546f7c5eeca1670e7dbeef11324"
+        },
+        {
+          "label": "dilated-stamps \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/dilated-stamps/native-palette-transfer.png",
+          "sha256": "4ebeeaa6cb0968c2815926d2fae12ef85602f058bfe11eb90f5c8d30c4f5d8b5"
+        },
+        {
+          "label": "distance-halos \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/distance-halos/gallery-baseline.png",
+          "sha256": "90098cbf86dda3a2bf3d919ab76d19ce95695c858eacc451d102bd4081230bee"
+        },
+        {
+          "label": "distance-halos \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/distance-halos/gallery-structural-edit.png",
+          "sha256": "c5dedaf9d01a802b9dbd128b4c269155a6d418037efc7c16b43d97f97faa6729"
+        },
+        {
+          "label": "distance-halos \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/distance-halos/native-palette-transfer.png",
+          "sha256": "0e3e347a145c35da3cbcecba196c9e7816e2f020d3ae47d6ed10feca07623f29"
+        },
+        {
+          "label": "dithered-ribbons \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/dithered-ribbons/gallery-baseline.png",
+          "sha256": "cd5534c367a3ee93b5b195654d8e30d4dc5feb56ac0f651f7107026c88613274"
+        },
+        {
+          "label": "dithered-ribbons \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/dithered-ribbons/gallery-structural-edit.png",
+          "sha256": "0f5f8c2ad6a4b6dcd0ec9e702d3f19c72cea7de4c21352b5f972acf360e7dd9b"
+        },
+        {
+          "label": "dithered-ribbons \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/dithered-ribbons/native-palette-transfer.png",
+          "sha256": "3c15b8b67912317b79cab0d30b99d40717e4059ccfee1fe54fb42996bb8fa429"
+        },
+        {
+          "label": "embossed-field \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/embossed-field/gallery-baseline.png",
+          "sha256": "202f5247e1b5b3b5bf4c3c1c4c5f60982a3d09f3a9ba99ed876f5b093d0257b7"
+        },
+        {
+          "label": "embossed-field \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/embossed-field/gallery-structural-edit.png",
+          "sha256": "113536ac89e259e351ecbeb705ae79ae0439e7a4cf541bd6b765e0c4320cf25e"
+        },
+        {
+          "label": "embossed-field \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/embossed-field/native-palette-transfer.png",
+          "sha256": "33690be21163e54403474709d9fbb818b99d2cbf9aaffef01d1a022a3701299f"
+        },
+        {
+          "label": "eroded-lace \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/eroded-lace/gallery-baseline.png",
+          "sha256": "2fdb00c724ac95113458c965158e8809110682c8da74582ef2bcd1e8d304b854"
+        },
+        {
+          "label": "eroded-lace \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/eroded-lace/gallery-structural-edit.png",
+          "sha256": "f7fad42d0306fd5ce53f9f5827debeb92453a164ccd6ab86d34485ba4139a3f2"
+        },
+        {
+          "label": "eroded-lace \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/eroded-lace/native-palette-transfer.png",
+          "sha256": "75e60ec0e93cdf05b4709583717d3b32c6f35f2c29acc853ee2468de120ed9d6"
+        },
+        {
+          "label": "extruded-seals \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-mesh-final/extruded-seals/gallery-baseline.png",
+          "sha256": "bb00d479514ba323b66b731dff905ec3dc1976ad2268232254c8d5daf717f783"
+        },
+        {
+          "label": "extruded-seals \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-mesh-final/extruded-seals/gallery-structural-edit.png",
+          "sha256": "011bdcc3cf15d93be1a4603c872bc317a2a32dfb5e873ce0a31198b280f93c97"
+        },
+        {
+          "label": "extruded-seals \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-mesh-final/extruded-seals/native-palette-transfer.png",
+          "sha256": "623c9f8308b058db045267dff7f53e016c879764fe7194779dc8125e6109c374"
+        },
+        {
+          "label": "nearest-feature-mosaic \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/nearest-feature-mosaic/gallery-baseline.png",
+          "sha256": "564ae6ac2b4c19839a14bf41ca0c632297d0de15f0b34fc07777d0937cef5688"
+        },
+        {
+          "label": "nearest-feature-mosaic \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/nearest-feature-mosaic/gallery-structural-edit.png",
+          "sha256": "a231da459dd51d60abb5698996ca8e7ee62cdf51f5aff38584341646bad5aedb"
+        },
+        {
+          "label": "nearest-feature-mosaic \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/nearest-feature-mosaic/native-palette-transfer.png",
+          "sha256": "4c3ae439f7d047ae123a84ef5866bc1b00804295522b8f22dcef5be46f3ae724"
+        },
+        {
+          "label": "oklab-orbits \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/oklab-orbits/gallery-baseline.png",
+          "sha256": "ce86d8fef41a9f62ca5fb6e27645efd009026f10c741f427ddd96eff61fccc2c"
+        },
+        {
+          "label": "oklab-orbits \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/oklab-orbits/gallery-structural-edit.png",
+          "sha256": "18c0c6ad53842abd5d30db526ea134050bd4a6074b36480032fd629b2012b8b3"
+        },
+        {
+          "label": "oklab-orbits \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/oklab-orbits/native-palette-transfer.png",
+          "sha256": "d0bdf1691f3c79308428a3241e293a6f94bf580345c9afc6f84922d9ff9b4404"
+        },
+        {
+          "label": "ordered-halftone \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/ordered-halftone/gallery-baseline.png",
+          "sha256": "fd2a22ecee2ab641e31cb33cfe8d4295be1c828a255217af77250266c6648f62"
+        },
+        {
+          "label": "ordered-halftone \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/ordered-halftone/gallery-structural-edit.png",
+          "sha256": "518c0a6e5882e976f69c3bb0ebfa3c53a924e241e333ec73a53b4d97630d0b04"
+        },
+        {
+          "label": "ordered-halftone \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/ordered-halftone/native-palette-transfer.png",
+          "sha256": "aafc2dfc5815719fa5794c584006a9fb8f2d3206b8677045475801b79e0cb1a2"
+        },
+        {
+          "label": "perceptual-bands \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/perceptual-bands/gallery-baseline.png",
+          "sha256": "15d22f473805116f33f9d154517fcf0899fd7f3ab5a3bab0e32458b27f05cf2e"
+        },
+        {
+          "label": "perceptual-bands \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/perceptual-bands/gallery-structural-edit.png",
+          "sha256": "7d50bce0bfc9f07d3e787e5730f31be83460edd2ddbca3c5d16cc11e6f59d8dc"
+        },
+        {
+          "label": "perceptual-bands \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/perceptual-bands/native-palette-transfer.png",
+          "sha256": "1b86ee8cdb5965568f4b89ef27c958b2179bc098275b14e87d8641cd38733934"
+        },
+        {
+          "label": "quantized-stripes \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/quantized-stripes/gallery-baseline.png",
+          "sha256": "79a97680d89ff0aebc959cec8ab5566f8ad374d0a61297967345c47bb6e05bab"
+        },
+        {
+          "label": "quantized-stripes \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/quantized-stripes/gallery-structural-edit.png",
+          "sha256": "49a5cc5bc7bd3e7d1d2cbb6042f62cd4f0d88ac652e5f728ae95209c827a892d"
+        },
+        {
+          "label": "quantized-stripes \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/quantized-stripes/native-palette-transfer.png",
+          "sha256": "7f88759c679cfb966138a6f45b3ee689b958a4e37f688a83c9a9470ac16c16dc"
+        },
+        {
+          "label": "reduced-mosaic \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/reduced-mosaic/gallery-baseline.png",
+          "sha256": "1872814da66f35db48492245235e6b2dc52cec6d9f33affd447219e9b73ebed3"
+        },
+        {
+          "label": "reduced-mosaic \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/reduced-mosaic/gallery-structural-edit.png",
+          "sha256": "136039b5356e6691b282523c7c22ad5988ede298f6428228ef36986d5e233694"
+        },
+        {
+          "label": "reduced-mosaic \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/reduced-mosaic/native-palette-transfer.png",
+          "sha256": "15f6e41451e8d9f36a58dc5764b3c16399b7267ba9d7cb2824a0400425ff80a8"
+        },
+        {
+          "label": "rounded-polyhedra \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-mesh-final/rounded-polyhedra/gallery-baseline.png",
+          "sha256": "1e07c393db921a8f656f4b2963ffc1235858f53e397e8970aa07d51c214d9078"
+        },
+        {
+          "label": "rounded-polyhedra \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-mesh-final/rounded-polyhedra/gallery-structural-edit.png",
+          "sha256": "9a9b0fe616606078a6749fa07c623498cf2b449781b04c15a134faedb73951ca"
+        },
+        {
+          "label": "rounded-polyhedra \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-mesh-final/rounded-polyhedra/native-palette-transfer.png",
+          "sha256": "eccb3f847f2c64b127f44d89e7dccc7701521f247adf26aac0e6ab9db4bf5ffa"
+        },
+        {
+          "label": "signed-edge-print \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-02/signed-edge-print/gallery-baseline.png",
+          "sha256": "357a7499169d34cb5d50fe4cf1dbbdc9849efd587c95cdf19ac276a159571fde"
+        },
+        {
+          "label": "signed-edge-print \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-02/signed-edge-print/gallery-structural-edit.png",
+          "sha256": "8f67800bf823c9a95bb5145f84bbc47b9a017876d0ec3070b99971699f81bce7"
+        },
+        {
+          "label": "signed-edge-print \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-02/signed-edge-print/native-palette-transfer.png",
+          "sha256": "26d1c6ad6ab136635add71b96dae9d232c3d9febcde6a16ff8d2d2bb4a342ff0"
+        },
+        {
+          "label": "stepped-blocks \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-mesh-final/stepped-blocks/gallery-baseline.png",
+          "sha256": "b91438335f830b6e3591a9c52704b4a8f39a5a8e37a8d4640f493929282b2d09"
+        },
+        {
+          "label": "stepped-blocks \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-mesh-final/stepped-blocks/gallery-structural-edit.png",
+          "sha256": "b9d4b27977fe10164a728007f75df5a04549db5dcccbffe95ce8ecb939e237d9"
+        },
+        {
+          "label": "stepped-blocks \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-mesh-final/stepped-blocks/native-palette-transfer.png",
+          "sha256": "dd78be88ce60447e5cd3f0e29d2c3dbee1466bfa86aa54c4b8443c47ead6379d"
+        },
+        {
+          "label": "subdivided-shells \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-mesh-final/subdivided-shells/gallery-baseline.png",
+          "sha256": "2d7c57adf641508b2ee2855fa6530d361ff44bfe12f6886d6d4a5efcd5f957b3"
+        },
+        {
+          "label": "subdivided-shells \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-mesh-final/subdivided-shells/gallery-structural-edit.png",
+          "sha256": "ab21e442d298243e339e8909a62da94bb93183be2984e58a2dff32f9d6f3e9dd"
+        },
+        {
+          "label": "subdivided-shells \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-mesh-final/subdivided-shells/native-palette-transfer.png",
+          "sha256": "037848b72111e6ad6bb9bcef03555be1354f88011d5d3c3daa4dda25127d186b"
+        },
+        {
+          "label": "transported-ribbons \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-mesh-final/transported-ribbons/gallery-baseline.png",
+          "sha256": "ab91be8da5a590f5556ee6437183c75f359d5556ad922f1f89b20e04e9f6d65d"
+        },
+        {
+          "label": "transported-ribbons \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-mesh-final/transported-ribbons/gallery-structural-edit.png",
+          "sha256": "babadac631fa25c291a1c7b5b9ae185965b8d2c878416356db781c2ad68ef31d"
+        },
+        {
+          "label": "transported-ribbons \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-mesh-final/transported-ribbons/native-palette-transfer.png",
+          "sha256": "1152dc2be5124febe33ea96e3bd0c6f9eb3a30a1e52b36096458b630cf4b7ee1"
+        },
+        {
+          "label": "twisting-streamers \u2014 gallery-baseline",
+          "path": ".work/p5-tenfold/render-mesh-final/twisting-streamers/gallery-baseline.png",
+          "sha256": "f01168da1da6c2cf8bfb99ad9fda63038fcea127f3a718ded246f6ac82518cfb"
+        },
+        {
+          "label": "twisting-streamers \u2014 gallery-structural-edit",
+          "path": ".work/p5-tenfold/render-mesh-final/twisting-streamers/gallery-structural-edit.png",
+          "sha256": "bc3d8aa4f61adb20112ecd6ec14b56fda5fe519e7541e94f8280e740b0509c67"
+        },
+        {
+          "label": "twisting-streamers \u2014 native-palette-transfer",
+          "path": ".work/p5-tenfold/render-mesh-final/twisting-streamers/native-palette-transfer.png",
+          "sha256": "6fe581455e6e990e99412a02f1e9bffa245109be897d2be0a37f4bc7298751c8"
+        }
+      ]
     }
   ]
 }

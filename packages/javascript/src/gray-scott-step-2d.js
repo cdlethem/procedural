@@ -1,0 +1,9 @@
+import { charge, computed, fail, get, integer, product, record, pair, scalarArray, work } from "./internal/systems-a-utils.js";
+const KEYS=["state","columns","rows","spacing","diffusionU","diffusionV","feed","kill","dt","boundary","maxWork"];
+export function grayScottStep2D(input) {
+  record(input,KEYS); const columns=integer(get(input,"columns"),1,4294967295),rows=integer(get(input,"rows"),1,4294967295),size=product(columns,rows),state=get(input,"state"); record(state,["u","v"]); const u=scalarArray(get(state,"u"),size),v=scalarArray(get(state,"v"),size),[hx,hy]=pair(get(input,"spacing"),true), diffusionU=get(input,"diffusionU"),diffusionV=get(input,"diffusionV"),feed=get(input,"feed"),kill=get(input,"kill"),dt=get(input,"dt"),boundary=get(input,"boundary"),max=work(get(input,"maxWork"));
+  for(const value of [diffusionU,diffusionV,feed,kill,dt])if(typeof value!=="number"||!Number.isFinite(value)||value<0)fail("INVALID_INPUT");if(boundary!=="CLAMP"&&boundary!=="WRAP")fail("INVALID_INPUT");charge(9*size,max);
+  const sample=(data,x,y)=>{if(boundary==="WRAP")return data[((y+rows)%rows)*columns+(x+columns)%columns];return data[Math.max(0,Math.min(rows-1,y))*columns+Math.max(0,Math.min(columns-1,x))];};const outU=new Array(size),outV=new Array(size),hx2=computed(hx*hx),hy2=computed(hy*hy);
+  for(let y=0;y<rows;y++)for(let x=0;x<columns;x++){const i=y*columns+x,lap=(data)=>computed(computed(computed(sample(data,x-1,y)-computed(2*data[i]))+sample(data,x+1,y))/hx2+computed(computed(sample(data,x,y-1)-computed(2*data[i]))+sample(data,x,y+1))/hy2),lu=lap(u),lv=lap(v),reaction=computed(computed(u[i]*v[i])*v[i]),du=computed(computed(computed(diffusionU*lu)-reaction)+computed(feed*computed(1-u[i]))),dv=computed(computed(computed(diffusionV*lv)+reaction)-computed(computed(feed+kill)*v[i]));outU[i]=computed(u[i]+computed(dt*du));outV[i]=computed(v[i]+computed(dt*dv));}
+  return {u:outU,v:outV};
+}

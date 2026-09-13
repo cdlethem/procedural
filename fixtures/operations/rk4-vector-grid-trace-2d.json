@@ -1,0 +1,875 @@
+{
+  "operation": "path.rk4-vector-grid-trace-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "c628a93303f8c18cb5719d7d5202d9059f1e9a07109c398328f0b991ab14f277",
+  "oracle": "Root reviewed independent analytical grid states, token/graph ordering, explicit LCG recurrence and budget arithmetic before implementation. Nonzero-angle and nonconstant RK4 numerical properties remain separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "constant-velocity",
+      "input": {
+        "vectors": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "columns": 3,
+        "rows": 3,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          2,
+          2
+        ],
+        "start": [
+          1,
+          1
+        ],
+        "dt": 0.5,
+        "steps": 2,
+        "boundary": "CLAMP",
+        "maxWork": 44
+      },
+      "output": {
+        "points": [
+          [
+            1,
+            1
+          ],
+          [
+            1.5,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "completedSteps": 2,
+        "termination": "STEPS"
+      },
+      "rationale": "Constant vector field integrates exactly; W=9+17*2+1."
+    },
+    {
+      "id": "work-one-below",
+      "input": {
+        "vectors": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "columns": 3,
+        "rows": 3,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          2,
+          2
+        ],
+        "start": [
+          1,
+          1
+        ],
+        "dt": 0.5,
+        "steps": 2,
+        "boundary": "CLAMP",
+        "maxWork": 43
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "reject-outside-stage",
+      "input": {
+        "vectors": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          0.75,
+          0.5
+        ],
+        "dt": 0.5,
+        "steps": 1,
+        "boundary": "STOP",
+        "maxWork": 22
+      },
+      "output": {
+        "points": [
+          [
+            0.75,
+            0.5
+          ]
+        ],
+        "completedSteps": 0,
+        "termination": "BOUNDARY"
+      }
+    },
+    {
+      "id": "clamp-field-not-position",
+      "input": {
+        "vectors": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          0.75,
+          0.5
+        ],
+        "dt": 0.5,
+        "steps": 1,
+        "boundary": "CLAMP",
+        "maxWork": 22
+      },
+      "output": {
+        "points": [
+          [
+            0.75,
+            0.5
+          ],
+          [
+            1.25,
+            0.5
+          ]
+        ],
+        "completedSteps": 1,
+        "termination": "STEPS"
+      }
+    },
+    {
+      "id": "accepted-prefix-before-boundary",
+      "input": {
+        "vectors": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          0.25,
+          0.5
+        ],
+        "dt": 0.5,
+        "steps": 2,
+        "boundary": "STOP",
+        "maxWork": 39
+      },
+      "output": {
+        "points": [
+          [
+            0.25,
+            0.5
+          ],
+          [
+            0.75,
+            0.5
+          ]
+        ],
+        "completedSteps": 1,
+        "termination": "BOUNDARY"
+      }
+    },
+    {
+      "id": "zero-steps-outside-start",
+      "input": {
+        "vectors": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          2,
+          2
+        ],
+        "dt": 0.5,
+        "steps": 0,
+        "boundary": "STOP",
+        "maxWork": 5
+      },
+      "output": {
+        "points": [
+          [
+            2,
+            2
+          ]
+        ],
+        "completedSteps": 0,
+        "termination": "STEPS"
+      }
+    },
+    {
+      "id": "zero-dt-retains-repeated-points",
+      "input": {
+        "vectors": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          0.75,
+          0.5
+        ],
+        "dt": 0,
+        "steps": 3,
+        "boundary": "STOP",
+        "maxWork": 56
+      },
+      "output": {
+        "points": [
+          [
+            0.75,
+            0.5
+          ],
+          [
+            0.75,
+            0.5
+          ],
+          [
+            0.75,
+            0.5
+          ],
+          [
+            0.75,
+            0.5
+          ]
+        ],
+        "completedSteps": 3,
+        "termination": "STEPS"
+      }
+    },
+    {
+      "id": "bilinear-row-order",
+      "input": {
+        "vectors": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          0,
+          0.5
+        ],
+        "dt": 0.5,
+        "steps": 1,
+        "boundary": "STOP",
+        "maxWork": 22
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0.5
+          ],
+          [
+            0.5,
+            0.5
+          ]
+        ],
+        "completedSteps": 1,
+        "termination": "STEPS"
+      }
+    },
+    {
+      "id": "final-gridline-endpoint",
+      "input": {
+        "vectors": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          1,
+          0.5
+        ],
+        "dt": 0.5,
+        "steps": 1,
+        "boundary": "CLAMP",
+        "maxWork": 22
+      },
+      "output": {
+        "points": [
+          [
+            1,
+            0.5
+          ],
+          [
+            2,
+            0.5
+          ]
+        ],
+        "completedSteps": 1,
+        "termination": "STEPS"
+      }
+    },
+    {
+      "id": "collapsed-represented-extent",
+      "input": {
+        "vectors": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          1e+16,
+          0
+        ],
+        "spacing": [
+          0.25,
+          1
+        ],
+        "start": [
+          0.75,
+          0.5
+        ],
+        "dt": 0.5,
+        "steps": 0,
+        "boundary": "STOP",
+        "maxWork": 5
+      },
+      "error": "GRID_COLLAPSE"
+    },
+    {
+      "id": "invalid-later-component-before-work",
+      "input": {
+        "vectors": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            true
+          ]
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          0.75,
+          0.5
+        ],
+        "dt": 0.5,
+        "steps": 1,
+        "boundary": "STOP",
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "finite-velocity-overflow",
+      "input": {
+        "vectors": [
+          [
+            1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ]
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          0.75,
+          0.5
+        ],
+        "dt": 1,
+        "steps": 1,
+        "boundary": "CLAMP",
+        "maxWork": 22
+      },
+      "error": "NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "ty-zero-skips-unused-overflowing-row",
+      "input": {
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          0.25,
+          0
+        ],
+        "dt": 0.5,
+        "steps": 1,
+        "boundary": "CLAMP",
+        "maxWork": 22,
+        "vectors": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            -1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            0.25,
+            0
+          ],
+          [
+            0.75,
+            0
+          ]
+        ],
+        "completedSteps": 1,
+        "termination": "STEPS"
+      }
+    },
+    {
+      "id": "ty-one-skips-unused-overflowing-row",
+      "input": {
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          0.25,
+          1
+        ],
+        "dt": 0.5,
+        "steps": 1,
+        "boundary": "CLAMP",
+        "maxWork": 22,
+        "vectors": [
+          [
+            -1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            0.25,
+            1
+          ],
+          [
+            0.75,
+            1
+          ]
+        ],
+        "completedSteps": 1,
+        "termination": "STEPS"
+      }
+    },
+    {
+      "id": "tx-zero-skips-opposite-endpoint-subtraction",
+      "input": {
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          0,
+          0
+        ],
+        "dt": 1,
+        "steps": 1,
+        "boundary": "STOP",
+        "maxWork": 22,
+        "vectors": [
+          [
+            -1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "completedSteps": 0,
+        "termination": "BOUNDARY"
+      }
+    },
+    {
+      "id": "tx-one-skips-opposite-endpoint-subtraction",
+      "input": {
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "start": [
+          1,
+          0
+        ],
+        "dt": 1,
+        "steps": 1,
+        "boundary": "STOP",
+        "maxWork": 22,
+        "vectors": [
+          [
+            -1e+308,
+            0
+          ],
+          [
+            1e+308,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "output": {
+        "points": [
+          [
+            1,
+            0
+          ]
+        ],
+        "completedSteps": 0,
+        "termination": "BOUNDARY"
+      }
+    }
+  ]
+}

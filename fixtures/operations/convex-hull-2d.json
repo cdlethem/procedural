@@ -1,0 +1,160 @@
+{
+  "operation": "geometry.convex-hull-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "proposal_catalog_sha256": null,
+  "cases": [
+    {
+      "id": "square",
+      "input": {
+        "points": [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0.5,
+            0.5
+          ]
+        ],
+        "maxWork": 42
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "sourceIndices": [
+          1,
+          2,
+          0,
+          3
+        ]
+      }
+    },
+    {
+      "id": "line",
+      "input": {
+        "points": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "maxWork": 12
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "sourceIndices": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "id": "empty",
+      "input": {
+        "points": [],
+        "maxWork": 0
+      },
+      "output": {
+        "points": [],
+        "sourceIndices": []
+      }
+    },
+    {
+      "id": "one",
+      "input": {
+        "points": [
+          [
+            3,
+            4
+          ]
+        ],
+        "maxWork": 2
+      },
+      "output": {
+        "points": [
+          [
+            3,
+            4
+          ]
+        ],
+        "sourceIndices": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "maxWork": 5
+      },
+      "error": "WORK_LIMIT"
+    }
+  ],
+  "future_test_notes": [
+    "signed-zero",
+    "ownership"
+  ],
+  "catalog_sha256": "80bd320181da0436b907edc0956f4bd171063189f3a7a5b7aa562c335a3945d6",
+  "oracle": "Root reviewed analytical coordinates, topology, budgets and explicit LCG recurrence, authored before implementation. General numeric properties require separate runtime checks."
+}

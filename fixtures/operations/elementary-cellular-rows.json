@@ -1,0 +1,258 @@
+{
+  "operation": "field.elementary-cellular-rows",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "8b3409e8fef51e936d5b776197bfb46ddefcdfcb964d410e3eb04d12e36294ab",
+  "oracle": "Root reviewed independent analytical grid states, token/graph ordering, explicit LCG recurrence and budget arithmetic before implementation. Nonzero-angle and nonconstant RK4 numerical properties remain separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "rule90-space-time",
+      "input": {
+        "initial": [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "rule": 90,
+        "rows": 4,
+        "boundary": "ZERO",
+        "maxWork": 65
+      },
+      "output": {
+        "columns": 5,
+        "rows": 4,
+        "cells": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "id": "rule30-wrap",
+      "input": {
+        "initial": [
+          0,
+          1,
+          0
+        ],
+        "rule": 30,
+        "rows": 3,
+        "boundary": "WRAP",
+        "maxWork": 27
+      },
+      "output": {
+        "columns": 3,
+        "rows": 3,
+        "cells": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "row-zero-only",
+      "input": {
+        "initial": [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "rule": 90,
+        "rows": 1,
+        "boundary": "ZERO",
+        "maxWork": 5
+      },
+      "output": {
+        "columns": 5,
+        "rows": 1,
+        "cells": [
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "rule-zero-clears",
+      "input": {
+        "initial": [
+          1,
+          0,
+          1
+        ],
+        "rule": 0,
+        "rows": 2,
+        "boundary": "ZERO",
+        "maxWork": 15
+      },
+      "output": {
+        "columns": 3,
+        "rows": 2,
+        "cells": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "rule255-fills",
+      "input": {
+        "initial": [
+          0,
+          0
+        ],
+        "rule": 255,
+        "rows": 2,
+        "boundary": "ZERO",
+        "maxWork": 10
+      },
+      "output": {
+        "columns": 2,
+        "rows": 2,
+        "cells": [
+          0,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "singleton-wrap-xor",
+      "input": {
+        "initial": [
+          1
+        ],
+        "rule": 90,
+        "rows": 3,
+        "boundary": "WRAP",
+        "maxWork": 9
+      },
+      "output": {
+        "columns": 1,
+        "rows": 3,
+        "cells": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "singleton-center-rule",
+      "input": {
+        "initial": [
+          1
+        ],
+        "rule": 204,
+        "rows": 3,
+        "boundary": "WRAP",
+        "maxWork": 9
+      },
+      "output": {
+        "columns": 1,
+        "rows": 3,
+        "cells": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "work-one-below",
+      "input": {
+        "initial": [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "rule": 90,
+        "rows": 4,
+        "boundary": "ZERO",
+        "maxWork": 64
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "rule-is-not-truncated",
+      "input": {
+        "initial": [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "rule": 256,
+        "rows": 4,
+        "boundary": "ZERO",
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "empty-initial-invalid",
+      "input": {
+        "initial": [],
+        "rule": 90,
+        "rows": 4,
+        "boundary": "ZERO",
+        "maxWork": 65
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "unrepresentable-output-grid",
+      "input": {
+        "initial": [
+          0,
+          1
+        ],
+        "rule": 90,
+        "rows": 4294967295,
+        "boundary": "ZERO",
+        "maxWork": 9007199254740991
+      },
+      "error": "INVALID_INPUT"
+    }
+  ]
+}

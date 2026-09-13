@@ -1,0 +1,389 @@
+{
+  "operation": "field.damped-wave-step-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "382ac13f0ae6f075adc5e800c74533c50b65cccc476b6bf269efeff612b31fa0",
+  "oracle": "Root reviewed independent analytical grid states, token/graph ordering, explicit LCG recurrence and budget arithmetic before implementation. Nonzero-angle and nonconstant RK4 numerical properties remain separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "wave-impulse",
+      "input": {
+        "state": {
+          "displacement": [
+            1,
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0,
+            0
+          ]
+        },
+        "columns": 3,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "speed": 0.5,
+        "damping": 0,
+        "dt": 1,
+        "pinned": [
+          0,
+          0,
+          0
+        ],
+        "boundary": "WRAP",
+        "maxWork": 21
+      },
+      "output": {
+        "displacement": [
+          0.5,
+          0.25,
+          0.25
+        ],
+        "velocity": [
+          -0.5,
+          0.25,
+          0.25
+        ]
+      }
+    },
+    {
+      "id": "consecutive-wave-step",
+      "input": {
+        "state": {
+          "displacement": [
+            0.5,
+            0.25,
+            0.25
+          ],
+          "velocity": [
+            -0.5,
+            0.25,
+            0.25
+          ]
+        },
+        "columns": 3,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "speed": 0.5,
+        "damping": 0,
+        "dt": 1,
+        "pinned": [
+          0,
+          0,
+          0
+        ],
+        "boundary": "WRAP",
+        "maxWork": 21
+      },
+      "output": {
+        "displacement": [
+          -0.125,
+          0.5625,
+          0.5625
+        ],
+        "velocity": [
+          -0.625,
+          0.3125,
+          0.3125
+        ]
+      }
+    },
+    {
+      "id": "physical-spacing",
+      "input": {
+        "state": {
+          "displacement": [
+            1,
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            0,
+            0
+          ]
+        },
+        "columns": 3,
+        "rows": 1,
+        "spacing": [
+          2,
+          1
+        ],
+        "speed": 1,
+        "damping": 0,
+        "dt": 0.5,
+        "pinned": [
+          0,
+          0,
+          0
+        ],
+        "boundary": "WRAP",
+        "maxWork": 21
+      },
+      "output": {
+        "displacement": [
+          0.875,
+          0.0625,
+          0.0625
+        ],
+        "velocity": [
+          -0.25,
+          0.125,
+          0.125
+        ]
+      }
+    },
+    {
+      "id": "zero-dt-preserves-state",
+      "input": {
+        "state": {
+          "displacement": [
+            1,
+            0,
+            0
+          ],
+          "velocity": [
+            2,
+            -1,
+            0.5
+          ]
+        },
+        "columns": 3,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "speed": 0.5,
+        "damping": 0,
+        "dt": 0,
+        "pinned": [
+          0,
+          0,
+          0
+        ],
+        "boundary": "WRAP",
+        "maxWork": 21
+      },
+      "output": {
+        "displacement": [
+          1,
+          0,
+          0
+        ],
+        "velocity": [
+          2,
+          -1,
+          0.5
+        ]
+      }
+    },
+    {
+      "id": "pinned-boundaries",
+      "input": {
+        "state": {
+          "displacement": [
+            0,
+            0,
+            0
+          ],
+          "velocity": [
+            0,
+            1,
+            0
+          ]
+        },
+        "columns": 3,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "speed": 1,
+        "damping": 0,
+        "dt": 0.5,
+        "pinned": [
+          1,
+          0,
+          1
+        ],
+        "boundary": "CLAMP",
+        "maxWork": 21
+      },
+      "output": {
+        "displacement": [
+          0,
+          0.5,
+          0
+        ],
+        "velocity": [
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "id": "semi-implicit-damping",
+      "input": {
+        "state": {
+          "displacement": [
+            1
+          ],
+          "velocity": [
+            2
+          ]
+        },
+        "columns": 1,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "speed": 0,
+        "damping": 0.5,
+        "dt": 0.5,
+        "pinned": [
+          0
+        ],
+        "boundary": "CLAMP",
+        "maxWork": 7
+      },
+      "output": {
+        "displacement": [
+          1.75
+        ],
+        "velocity": [
+          1.5
+        ]
+      }
+    },
+    {
+      "id": "negative-amplitude-preserved",
+      "input": {
+        "state": {
+          "displacement": [
+            -2
+          ],
+          "velocity": [
+            0
+          ]
+        },
+        "columns": 1,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "speed": 0,
+        "damping": 0,
+        "dt": 1,
+        "pinned": [
+          0
+        ],
+        "boundary": "CLAMP",
+        "maxWork": 7
+      },
+      "output": {
+        "displacement": [
+          -2
+        ],
+        "velocity": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "nonzero-pin-invalid",
+      "input": {
+        "state": {
+          "displacement": [
+            1
+          ],
+          "velocity": [
+            2
+          ]
+        },
+        "columns": 1,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "speed": 0,
+        "damping": 0.5,
+        "dt": 0.5,
+        "pinned": [
+          1
+        ],
+        "boundary": "CLAMP",
+        "maxWork": 0
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "work-one-below",
+      "input": {
+        "state": {
+          "displacement": [
+            1
+          ],
+          "velocity": [
+            2
+          ]
+        },
+        "columns": 1,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "speed": 0,
+        "damping": 0.5,
+        "dt": 0.5,
+        "pinned": [
+          0
+        ],
+        "boundary": "CLAMP",
+        "maxWork": 6
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "speed-square-overflow",
+      "input": {
+        "state": {
+          "displacement": [
+            1
+          ],
+          "velocity": [
+            2
+          ]
+        },
+        "columns": 1,
+        "rows": 1,
+        "spacing": [
+          1,
+          1
+        ],
+        "speed": 1e+308,
+        "damping": 0.5,
+        "dt": 0.5,
+        "pinned": [
+          0
+        ],
+        "boundary": "CLAMP",
+        "maxWork": 7
+      },
+      "error": "NUMERIC_OVERFLOW"
+    }
+  ]
+}

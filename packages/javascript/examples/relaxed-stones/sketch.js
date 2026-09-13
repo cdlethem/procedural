@@ -1,0 +1,1 @@
+import { createStudySketch } from "../study-controls.js"; import { drawRelaxedStones, pathsBSettings } from "../paths-b-studies.js"; createStudySketch({slug:"relaxed-stones",title:"Relaxed stones",...pathsBSettings["relaxed-stones"],draw:drawRelaxedStones});

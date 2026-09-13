@@ -1,0 +1,177 @@
+{
+  "id": "mesh.parallel-transport-ribbon-3d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "mesh.parallel-transport-ribbon-3d",
+  "description": "Draft proposal only.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-materials-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "minItems": 2,
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "maxItems": 4294967295
+      },
+      "widths": {
+        "type": "array",
+        "minItems": 2,
+        "items": {
+          "type": "number",
+          "minimum": 0
+        },
+        "maxItems": 4294967295
+      },
+      "initialNormal": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "points",
+      "widths",
+      "initialNormal",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "positions": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "maxItems": 4294967295
+      },
+      "indices": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "positions",
+      "indices"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Detached stable ordered plain output.",
+  "behavior": {
+    "validation": "Accept exactly the required schema keys in plain passive JSON-compatible objects and dense ordinary arrays, with finite binary64 values and safe integer descriptors; no coercion, defaults, accessors, booleans-as-numbers or retained aliases. Complete static shape/value validation precedes work preflight. Geometric/topology tests run after preflight. Failure throws Error with stable code, no partial result. Outputs are detached. Canonicalize exposed signed zero to +0. Array lengths must fit 4294967295; unsafe requested growth/work arithmetic gives WORK_LIMIT before allocation. Host resource exhaustion is a host error, not an allocation guarantee. All grid/kernel/element dimensions are positive integers; each corresponding array length/product must fit 4294967295 and match exactly, otherwise INVALID_INPUT before work.",
+    "environment": "No RNG, noise, time, rendering, assets, host state, mutation or retained aliases. Data uses caller coordinate/color conventions as specified.",
+    "numerics": "Separate IEEE754 binary64 arithmetic, Math.hypot and host sin/cos/sqrt for the named formulas. Check computed numeric intermediates for finiteness and throw NUMERIC_OVERFLOW on nonfinite results. No epsilon in classification or topology, no adaptive exact predicates or near-degeneracy guarantee. General scalar/coordinate comparisons allow absolute 1e-9 plus relative 1e-12; topology, indices, order, booleans and RNG states compare exactly. Analytical shared fixtures use exact JSON output.",
+    "algorithm": "Input {points,widths,initialNormal,maxWork}; >=2 3D points, widths length equal, finite nonnegative full\nwidths, finite normal. Output {positions,indices}. Reject zero adjacent segment, exact reversal (unit\ntangent dot exactly -1), and initial normal parallel to first tangent. Endpoint tangent is adjacent unit\nsegment; interior tangent normalizes adjacent unit sum. Orthogonalize initial normal. Transport with minimal\nRodrigues rotation, axis=normalized cross, sin=|cross|, cos=dot; same-direction copies. After every\ntransport, reorthogonalize normal against current tangent and normalize; failure is NUMERIC_OVERFLOW.\nPositions are point +/- (width/2)*normal; faces [L,R,Rnext],[L,Rnext,Lnext]. Closed seam is excluded.\nWork=24N+6(N-1). Fixtures: x-axis, width2 -> y +/-1; right angle is finite/orthogonal.\nStudies: flight ribbons; folded contour paper.",
+    "budget": "Precharge 24N+6(N-1) safely.",
+    "native_surface": "p5.js named export parallelTransportRibbon3D(input) from packages/javascript/src/parallel-transport-ribbon-3d.js. Other targets deferred.",
+    "frame_rules": "A supplied zero adjacent segment, adjacent unit directions with dot exactly -1, or zero projected initialNormal is INVALID_INPUT. Compute interior point tangents as normalized sums of adjacent unit directions. For each new tangent, cross(previousTangent,currentTangent) supplies axis and sine; cosine is their dot. Zero cross with positive dot copies normal; a zero-cross reversal is INVALID_INPUT. Rodrigues vector rotation is n*cos + (axis cross n)*sin + axis*(axis dot n)*(1-cos), evaluated left-to-right per component. Reproject n-currentTangent*(n dot currentTangent), normalize by Math.hypot; zero or nonfinite generated frame is NUMERIC_OVERFLOW. Full widths produce plus first, minus second positions at each point; L=2*i,R=2*i+1. An input ending at its initial coordinate is still an open strip with independent endpoint frames; no seam closing/correction. Preflight output2*N positions and2*(N-1) faces."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed domain/input.",
+    "WORK_LIMIT": "Budget or safe arithmetic.",
+    "NUMERIC_OVERFLOW": "Nonfinite computed intermediate."
+  },
+  "parameters": {
+    "points": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "widths": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "initialNormal": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See normative schema and algorithm.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/parallel-transport-ribbon-3d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 studies with meaningful structural edit and styling transfer, native controls/reset/replay/save and root visual inspection. No source recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against the frozen catalog; support acceptance pending execution."
+  }
+}

@@ -1,0 +1,1 @@
+import { createStudySketch } from "../study-controls.js"; import { drawAspectTiles, pathsBSettings } from "../paths-b-studies.js"; createStudySketch({slug:"aspect-tiles",title:"Aspect tiles",...pathsBSettings["aspect-tiles"],draw:drawAspectTiles});

@@ -220,7 +220,7 @@ def _validate_p5_gallery(root, snapshots):
     older = json.loads(_read(root, P5_BATCH))
     test = 'tests/test_reviewed_export_extension.py'
     required = {HELPER, JS_INDEX, test, *(f'packages/javascript/src/{stem}.js' for stem in P5_GALLERY_STEMS)}
-    if (not _accepted(review) or not _bindings(root, review, {})
+    if (not _accepted(review) or not _bindings(root, review, snapshots)
             or not required.issubset(review['implementation_sha256'])
             or P5_BATCH not in review['evidence_sha256']
             or review['previous_review_sha256'] != _digest(_read(root, P5_BATCH))):
@@ -233,6 +233,36 @@ def _validate_p5_gallery(root, snapshots):
     entry = review['extensions'][JS_INDEX]
     if (set(entry) != {'before', 'after'} or entry['before'] != prior[JS_INDEX]
             or entry['after'] != prior[JS_INDEX] + P5_GALLERY_ADDITIONS
+            or entry['after'].encode() != snapshots.get(JS_INDEX, _read(root, JS_INDEX))):
+        return False
+    snapshots.update({name: value.encode() for name, value in prior.items()})
+    return True
+
+
+P5_TENFOLD = 'evidence/conformance/p5-tenfold-export-compatibility-review.json'
+P5_TENFOLD_BINDINGS = (('adjacency-tile-collapse-2d', 'adjacencyTileCollapse2D'), ('assemble-segment-chains-2d', 'assembleSegmentChains2D'), ('bayer-dither', 'bayerDither'), ('binary-morphology-2d', 'binaryMorphology2D'), ('chaikin-polyline-2d', 'chaikinPolyline2D'), ('convex-hull-2d', 'convexHull2D'), ('convolve-2d-signed', 'convolve2DSigned'), ('cost-grid-paths-2d', 'costGridPaths2D'), ('damped-wave-step-2d', 'dampedWaveStep2D'), ('elementary-cellular-rows', 'elementaryCellularRows'), ('euclidean-distance-transform-2d', 'euclideanDistanceTransform2D'), ('extrude-simple-polygon-3d', 'extrudeSimplePolygon3D'), ('floyd-steinberg-dither', 'floydSteinbergDither'), ('gray-scott-step-2d', 'grayScottStep2D'), ('life-like-step-2d', 'lifeLikeStep2D'), ('lloyd-relaxation-2d', 'lloydRelaxation2D'), ('loop-subdivide-triangles-3d', 'loopSubdivideTriangles3D'), ('median-cut-quantize', 'medianCutQuantize'), ('offset-polyline-2d', 'offsetPolyline2D'), ('oklab-ramp', 'oklabRamp'), ('parallel-token-rewrite', 'parallelTokenRewrite'), ('parallel-transport-ribbon-3d', 'parallelTransportRibbon3D'), ('poisson-disc-2d', 'poissonDisc2D'), ('rk4-vector-grid-trace-2d', 'rk4VectorGridTrace2D'), ('scalar-grid-curl-2d', 'scalarGridCurl2D'), ('seeded-depth-first-spanning-tree', 'seededDepthFirstSpanningTree'), ('simplify-polyline-2d', 'simplifyPolyline2D'), ('skyline-pack-2d', 'skylinePack2D'), ('token-turtle-2d', 'tokenTurtle2D'), ('triangulate-simple-polygon-2d', 'triangulateSimplePolygon2D'))
+P5_TENFOLD_ADDITIONS = ''.join(f'export {{ {name} }} from "./{stem}.js";\n' for stem, name in P5_TENFOLD_BINDINGS)
+
+
+def _validate_p5_tenfold(root, snapshots):
+    review = json.loads(_read(root, P5_TENFOLD))
+    older = json.loads(_read(root, P5_GALLERY))
+    test = 'tests/test_reviewed_export_extension.py'
+    prior_names = {HELPER, JS_INDEX, test}
+    required = prior_names | {f'packages/javascript/src/{stem}.js' for stem, _ in P5_TENFOLD_BINDINGS}
+    if (not _accepted(review) or not _bindings(root, review, {})
+            or not required.issubset(review['implementation_sha256'])
+            or P5_GALLERY not in review['evidence_sha256']
+            or review['previous_review_sha256'] != _digest(_read(root, P5_GALLERY))):
+        return False
+    prior = review['previous_bytes']
+    if set(prior) != prior_names or set(review['extensions']) != {JS_INDEX}:
+        return False
+    if any(_digest(prior[name].encode()) != older['implementation_sha256'][name] for name in prior):
+        return False
+    entry = review['extensions'][JS_INDEX]
+    if (set(entry) != {'before', 'after'} or entry['before'] != prior[JS_INDEX]
+            or entry['after'] != prior[JS_INDEX] + P5_TENFOLD_ADDITIONS
             or entry['after'].encode() != _read(root, JS_INDEX)):
         return False
     snapshots.update({name: value.encode() for name, value in prior.items()})
@@ -252,6 +282,11 @@ def historical_export_bytes(root, relative, expected):
     try:
         snapshots = {}
         successor_match = None
+        if (root / P5_TENFOLD).exists():
+            if not _validate_p5_tenfold(root, snapshots):
+                return None
+            if relative == JS_INDEX and _digest(snapshots[JS_INDEX]) == expected:
+                successor_match = snapshots[JS_INDEX]
         if (root / P5_GALLERY).exists():
             if not _validate_p5_gallery(root, snapshots):
                 return None

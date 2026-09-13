@@ -1,0 +1,123 @@
+{
+  "operation": "sampling.poisson-disc-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "proposal_catalog_sha256": null,
+  "cases": [
+    {
+      "id": "unit",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "radius": 1,
+        "attemptsPerActive": 1,
+        "maxPoints": 1,
+        "rngState": 0,
+        "maxWork": 2
+      },
+      "output": {
+        "points": [
+          [
+            0.23606797284446657,
+            0.278566908556968
+          ]
+        ],
+        "rngState": 1196435762,
+        "exhausted": false
+      }
+    },
+    {
+      "id": "tiny",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          0.1,
+          0.1
+        ],
+        "radius": 1,
+        "attemptsPerActive": 1,
+        "maxPoints": 2,
+        "rngState": 0,
+        "maxWork": 6
+      },
+      "output": {
+        "points": [
+          [
+            0.02360679728444666,
+            0.027856690855696798
+          ]
+        ],
+        "rngState": 1649599747,
+        "exhausted": true
+      }
+    },
+    {
+      "id": "zero",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "radius": 1,
+        "attemptsPerActive": 1,
+        "maxPoints": 0,
+        "rngState": 7,
+        "maxWork": 0
+      },
+      "output": {
+        "points": [],
+        "rngState": 7,
+        "exhausted": false
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "radius": 1,
+        "attemptsPerActive": 1,
+        "maxPoints": 1,
+        "rngState": 0,
+        "maxWork": 1
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "invalid",
+      "input": {
+        "bounds": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "radius": 0,
+        "attemptsPerActive": 1,
+        "maxPoints": 1,
+        "rngState": 0,
+        "maxWork": 2
+      },
+      "error": "INVALID_INPUT"
+    }
+  ],
+  "future_test_notes": [
+    "swap-pop",
+    "grid-brute",
+    "ownership"
+  ],
+  "catalog_sha256": "1524ff9322eb4f9219de7666dd086fcba8c2a248aefab7784f74d0d5d4456678",
+  "oracle": "Root reviewed analytical coordinates, topology, budgets and explicit LCG recurrence, authored before implementation. General numeric properties require separate runtime checks."
+}

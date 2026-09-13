@@ -1,0 +1,259 @@
+{
+  "id": "field.gray-scott-step-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "transform",
+  "decision_cluster": "field.gray-scott-step-2d",
+  "description": "Advance supplied Gray\u2013Scott concentration grids by one explicit simultaneous reaction/diffusion update.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-systems-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "state": {
+        "type": "object",
+        "properties": {
+          "u": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 1,
+            "maxItems": 4294967295
+          },
+          "v": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 1,
+            "maxItems": 4294967295
+          }
+        },
+        "required": [
+          "u",
+          "v"
+        ],
+        "additionalProperties": false
+      },
+      "columns": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "spacing": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "diffusionU": {
+        "type": "number",
+        "minimum": 0
+      },
+      "diffusionV": {
+        "type": "number",
+        "minimum": 0
+      },
+      "feed": {
+        "type": "number",
+        "minimum": 0
+      },
+      "kill": {
+        "type": "number",
+        "minimum": 0
+      },
+      "dt": {
+        "type": "number",
+        "minimum": 0
+      },
+      "boundary": {
+        "type": "string",
+        "enum": [
+          "CLAMP",
+          "WRAP"
+        ]
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "state",
+      "columns",
+      "rows",
+      "spacing",
+      "diffusionU",
+      "diffusionV",
+      "feed",
+      "kill",
+      "dt",
+      "boundary",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "u": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "v": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      }
+    },
+    "required": [
+      "u",
+      "v"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Both returned arrays have columns*rows finite signed values; every update reads only the supplied old state.",
+  "behavior": {
+    "validation": "Exactly the input and nested-union keys shown by the schema, ordinary dense arrays and passive own data properties. Numeric carriers are finite binary64 and never booleans; integral fields are exact integers in schema domain. Reject accessors, host instances and coercion. Complete static validation of every field/element precedes work preflight, RNG draws or output allocation. Products defining array lengths must be exact and <=4294967295 or INVALID_INPUT, even if all individual dimensions are valid. Canonicalize input zeros to +0.",
+    "work": "maxWork is a required nonnegative safe integer. Count arithmetic is exact; an unsafe work sum/product or insufficient allowance is WORK_LIMIT. A charge checks before its action; rejected actions do not execute. The operation-specific schedule is normative. Static input validation has unavoidable input-sized cost. Budgets are abstract work, not memory or latency guarantees; host allocation failure remains a host error.",
+    "numerics": "Separate binary64 primitive rounding, no reassociation/FMA. Every computed primitive must be finite or NUMERIC_OVERFLOW, including division by an underflowed zero denominator. No numerical repair, implicit epsilon or state clipping. Exposed zeros are +0. General finite output fields use absolute 1e-9 plus relative 1e-12; integer/topology/order/state/token values compare exactly. The bound fixture file contains only exact analytical outputs; approximate RK4 linear-field and nonzero-angle turtle geometry tests remain separate future property tests.",
+    "ownership": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+    "grid": "For grid operations C=columns,R=rows,G=C*R, flattened row-major index y*C+x. Scalar/vector/binary state arrays have exactly G elements; vector pairs use caller X/Y axes. Discrete CLAMP selects nearest valid index; WRAP uses nonnegative modulo. Named neighbor offsets are counted separately even when small dimensions map them to the same cell. Spacing is positive [hx,hy]; discrete periodic axes have periods C*hx,R*hy, not duplicated endpoint grids.",
+    "laplacian": "Laplacian over old state: lapX=((left-center)+(right-center))/(hx*hx); lapY=((up-center)+(down-center))/(hy*hy); lap=lapX+lapY. Evaluate separately rounded primitives in written order, X before Y. CLAMP/WRAP select neighbors as described by grid behavior; all output cells read the complete old state.",
+    "algorithm": "Gray\u2013Scott reaction/diffusion step\n\nProposed ID: `field.gray-scott-step-2d`; state transform.\n\nArtist output: next chemical concentration grids for reaction islands and stripe-grown\nmasks. The reusable output is scalar data for marching squares, palettes or image masks.\nIt owns one update; initialization, seeding disturbances, frame loops and rendering stay\noutside. Studies must show an explicit bounded number of replayed steps.\n\nInput:\n\n```text\n{state:{u:[number,...],v:[number,...]}, columns:integer>=1, rows:integer>=1,\n spacing:[positive,positive], diffusionU:number>=0, diffusionV:number>=0,\n feed:number>=0, kill:number>=0, dt:number>=0,\n boundary:\"CLAMP\"|\"WRAP\", maxWork:integer}\n```\n\nOutput: `{u:[number,...],v:[number,...]}`. U/V are finite signed scalars, deliberately\nnot constrained to [0,1], so an unstable but finite result remains valid input to the next\ncall. No concentration clipping or assertion of physical stability is implied.\n\nReserve W=9G before output allocation. Visit cells row-major. Compute lapU then lapV by\nthe shared stencil. Then `reaction=(u*v)*v`, `du=(diffusionU*lapU-reaction)+feed*(1-u)`,\n`dv=(diffusionV*lapV+reaction)-(feed+kill)*v`,\n`uNext=u+dt*du`, `vNext=v+dt*dv`, in written order. Evaluate the complete expressions\neven when dt or coefficients are zero. Work/storage O(G); no RNG or hidden timestep.\n",
+    "native_surface": "p5.js named export grayScottStep2D(input) from packages/javascript/src/gray-scott-step-2d.js; plain output matching output_schema. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed shape, supplied scalar/carrier/domain, impossible array representation, or operation-specific static constraint.",
+    "WORK_LIMIT": "The exact required or next charged work exceeds maxWork or safe work representation.",
+    "NUMERIC_OVERFLOW": "A computed floating primitive is nonfinite; no partial state or geometry escapes."
+  },
+  "parameters": {
+    "state": {
+      "unit": "explicit finite old model state",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "columns": {
+      "unit": "grid sample/cell count along X",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "rows": {
+      "unit": "grid sample/cell count along Y or output generation-row count",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "spacing": {
+      "unit": "positive caller distance between adjacent samples",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "diffusionU": {
+      "unit": "distance squared per time",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "diffusionV": {
+      "unit": "distance squared per time",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "feed": {
+      "unit": "inverse time",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "kill": {
+      "unit": "inverse time",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "dt": {
+      "unit": "caller time interval",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "boundary": {
+      "unit": "explicit sampling or neighbor boundary policy",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "abstract operation-specific work units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/gray-scott-step-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 design studies, explicit initial state and bounded replay counts, meaningful structural edits and output reuse, native reset/replay/save and root image review. No original recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against frozen catalog; support acceptance pending execution."
+  }
+}

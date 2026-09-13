@@ -1,0 +1,254 @@
+{
+  "id": "path.rk4-vector-grid-trace-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "path.rk4-vector-grid-trace-2d",
+  "description": "Trace an explicit bilinearly sampled vector grid with a fixed-step RK4 integrator.",
+  "capability_decision": "design/capabilities/p5-tenfold.md",
+  "design_review": "design/operations/p5-tenfold-systems-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "vectors": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "minItems": 4,
+        "maxItems": 4294967295
+      },
+      "columns": {
+        "type": "integer",
+        "minimum": 2,
+        "maximum": 4294967295
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 2,
+        "maximum": 4294967295
+      },
+      "origin": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "spacing": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "start": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "dt": {
+        "type": "number",
+        "minimum": 0
+      },
+      "steps": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967294
+      },
+      "boundary": {
+        "type": "string",
+        "enum": [
+          "CLAMP",
+          "STOP"
+        ]
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "vectors",
+      "columns",
+      "rows",
+      "origin",
+      "spacing",
+      "start",
+      "dt",
+      "steps",
+      "boundary",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "completedSteps": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967294
+      },
+      "termination": {
+        "type": "string",
+        "enum": [
+          "STEPS",
+          "BOUNDARY"
+        ]
+      }
+    },
+    "required": [
+      "points",
+      "completedSteps",
+      "termination"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "points.length=completedSteps+1; first point is supplied start. Only complete accepted steps are retained. Completed steps never exceed requested steps.",
+  "behavior": {
+    "validation": "Exactly the input and nested-union keys shown by the schema, ordinary dense arrays and passive own data properties. Numeric carriers are finite binary64 and never booleans; integral fields are exact integers in schema domain. Reject accessors, host instances and coercion. Complete static validation of every field/element precedes work preflight, RNG draws or output allocation. Products defining array lengths must be exact and <=4294967295 or INVALID_INPUT, even if all individual dimensions are valid. Canonicalize input zeros to +0.",
+    "work": "maxWork is a required nonnegative safe integer. Count arithmetic is exact; an unsafe work sum/product or insufficient allowance is WORK_LIMIT. A charge checks before its action; rejected actions do not execute. The operation-specific schedule is normative. Static input validation has unavoidable input-sized cost. Budgets are abstract work, not memory or latency guarantees; host allocation failure remains a host error.",
+    "numerics": "Separate binary64 primitive rounding, no reassociation/FMA. Every computed primitive must be finite or NUMERIC_OVERFLOW, including division by an underflowed zero denominator. No numerical repair, implicit epsilon or state clipping. Exposed zeros are +0. General finite output fields use absolute 1e-9 plus relative 1e-12; integer/topology/order/state/token values compare exactly. The bound fixture file contains only exact analytical outputs; approximate RK4 linear-field and nonzero-angle turtle geometry tests remain separate future property tests.",
+    "ownership": "Read only caller inputs; output records and arrays are detached. No input record, array, RNG object, renderer, host state or callback is retained. All generated state remains private until success. No partial result on error; a successful RK4 boundary termination is its explicit retained-prefix result, not an error. Scalars and immutable strings are values.",
+    "grid": "For grid operations C=columns,R=rows,G=C*R, flattened row-major index y*C+x. Scalar/vector/binary state arrays have exactly G elements; vector pairs use caller X/Y axes. Discrete CLAMP selects nearest valid index; WRAP uses nonnegative modulo. Named neighbor offsets are counted separately even when small dimensions map them to the same cell. Spacing is positive [hx,hy]; discrete periodic axes have periods C*hx,R*hy, not duplicated endpoint grids.",
+    "algorithm": "RK4 traces through an explicit vector grid\n\nProposed ID: `path.rk4-vector-grid-trace-2d`; transform/generator.\n\nArtist output: a retained path following a supplied velocity field. This adds vector-grid\nsampling and fourth-order integration to the existing fixed-step gradient-heading trace.\nStudies: vortex streamlines; ribbons steered through a separately authored obstacle field.\nThe obstacle solver is not supplied by this operation and must not be hidden in its study.\n\nInput:\n\n```text\n{vectors:[[number,number],...], columns:integer>=2, rows:integer>=2,\n origin:[number,number], spacing:[positive,positive], start:[number,number],\n dt:number>=0, steps:integer in [0,4294967294],\n boundary:\"CLAMP\"|\"STOP\", maxWork:integer}\n```\n\nOutput: `{points:[[x,y],...], completedSteps:integer, termination:\"STEPS\"|\"BOUNDARY\"}`.\nThe first point is always the supplied start; point count is completedSteps+1. Velocity\ncomponents use caller distance per time unit; dt uses the matching time unit. No tangent,\nnormalization, adaptive integration, obstacles or closed-path detection is included.\n\nReserve `W=G+17*steps+1` before coordinate construction or trace storage. The allowance\naccounts for four four-corner field samples plus one append per requested step, even if\nSTOP ends early. O(G+steps) work and retained storage; the output contains only accepted\nsteps. Construct `maxX=origin.x+(C-1)*hx`, `maxY=origin.y+(R-1)*hy` with checked arithmetic,\nincluding for zero steps. The domain is that closed rectangle.\nIf either represented maximum is <= its origin, raise GRID_COLLAPSE: positive supplied\nspacing did not produce a representable positive overall extent. This is distinct from\nnonfinite arithmetic and is included in this proposal after root boundary review.\n\nSampler S(p): STOP returns the boundary signal when p is outside; CLAMP clamps only the\nquery coordinate, never the retained path point. Thus CLAMP traces may leave the rectangle.\nCompute fractional grid coordinates after the boundary policy as (query-origin)/spacing,\nthen clamp these fractions to [0,C-1]/[0,R-1] to bound division-rounding excursions.\nUse floor indices, except the final grid line uses the preceding cell with local\ncoordinate 1; exact query==represented maximum also selects that endpoint rule.\nThe uniform-grid arithmetic is specified this way rather than inferring distinct rounded\nphysical coordinates for every interior grid line. For each component, let a,b be top-left/top-right and c,d bottom-left/bottom-right. A row interpolation returns its left endpoint directly if tx==0, its right endpoint directly if tx==1, otherwise evaluates left+tx*(right-left) with checked primitives. If ty==0, evaluate only the top row; the bottom row interpolation must not execute. If ty==1, evaluate only the bottom row; the top row interpolation must not execute. Otherwise evaluate top, then bottom, then top+ty*(bottom-top). All supplied grid numbers are still statically validated before work preflight or sampling, including unused rows/endpoints. This endpoint evaluation order is an explicit root resolution.\n\nFor each step, in order, `k1=S(p)`, `k2=S(p+(dt/2)*k1)`,\n`k3=S(p+(dt/2)*k2)`, `k4=S(p+dt*k3)`. For each component compute\n`sum=((k1+2*k2)+2*k3)+k4`, `next=p+(dt/6)*sum`. Check every primitive. STOP rejects the\nwhole current step if any stage query or final next point leaves the domain; retain the\nprevious prefix and report BOUNDARY. Stage overflow is an error, not a boundary signal.\nOtherwise append next and continue. No stationary shortcut: dt=0 repeats positions and\nstill evaluates stages. Zero steps returns STEPS without querying start, even if outside.\n",
+    "native_surface": "p5.js named export rk4VectorGridTrace2D(input) from packages/javascript/src/rk4-vector-grid-trace-2d.js; plain output matching output_schema. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed shape, supplied scalar/carrier/domain, impossible array representation, or operation-specific static constraint.",
+    "WORK_LIMIT": "The exact required or next charged work exceeds maxWork or safe work representation.",
+    "NUMERIC_OVERFLOW": "A computed floating primitive is nonfinite; no partial state or geometry escapes.",
+    "GRID_COLLAPSE": "A positive supplied grid spacing yields a nonpositive represented overall extent."
+  },
+  "parameters": {
+    "vectors": {
+      "unit": "caller distance per caller time, row-major vector pairs",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "columns": {
+      "unit": "grid sample/cell count along X",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "rows": {
+      "unit": "grid sample/cell count along Y or output generation-row count",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "origin": {
+      "unit": "caller distance units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "spacing": {
+      "unit": "positive caller distance between adjacent samples",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "start": {
+      "unit": "explicit caller position and/or heading; heading radians",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "dt": {
+      "unit": "caller time interval",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "steps": {
+      "unit": "requested integration step count",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "boundary": {
+      "unit": "explicit sampling or neighbor boundary policy",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "abstract operation-specific work units",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent p5-only design proposal; no corpus-observed default or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/rk4-vector-grid-trace-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original p5 design studies, explicit initial state and bounded replay counts, meaningful structural edits and output reuse, native reset/replay/save and root image review. No original recreation or other-target claim."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root after independent architecture and analytical review",
+    "status": "Approved for p5 implementation against frozen catalog; support acceptance pending execution."
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "operation": "raster.binary-morphology-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "16333d923094ea8a4f6c6b7593e7630bc99d498586a8a841542c2430898838fd",
+  "oracle": "Root-reviewed independent analytical states, exact topology and integer-grid formulas, authored before implementation. Color/transport floating properties require separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "left",
+      "input": {
+        "mask": [
+          false,
+          true,
+          false
+        ],
+        "columns": 3,
+        "rows": 1,
+        "element": [
+          true,
+          false,
+          false
+        ],
+        "elementColumns": 3,
+        "elementRows": 1,
+        "mode": "dilate",
+        "boundary": "zero",
+        "maxWork": 3
+      },
+      "output": {
+        "mask": [
+          true,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "id": "erode",
+      "input": {
+        "mask": [
+          true,
+          true,
+          true
+        ],
+        "columns": 3,
+        "rows": 1,
+        "element": [
+          true
+        ],
+        "elementColumns": 1,
+        "elementRows": 1,
+        "mode": "erode",
+        "boundary": "zero",
+        "maxWork": 3
+      },
+      "output": {
+        "mask": [
+          true,
+          true,
+          true
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "mask": [
+          true
+        ],
+        "columns": 1,
+        "rows": 1,
+        "element": [
+          true
+        ],
+        "elementColumns": 1,
+        "elementRows": 1,
+        "mode": "dilate",
+        "boundary": "zero",
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "bad",
+      "input": {
+        "mask": [
+          true
+        ],
+        "columns": 1,
+        "rows": 1,
+        "element": [],
+        "elementColumns": 1,
+        "elementRows": 1,
+        "mode": "dilate",
+        "boundary": "zero",
+        "maxWork": 1
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "asymmetric-erosion",
+      "input": {
+        "mask": [
+          false,
+          true,
+          false
+        ],
+        "columns": 3,
+        "rows": 1,
+        "element": [
+          true,
+          false,
+          false
+        ],
+        "elementColumns": 3,
+        "elementRows": 1,
+        "mode": "erode",
+        "boundary": "zero",
+        "maxWork": 3
+      },
+      "output": {
+        "mask": [
+          false,
+          false,
+          true
+        ]
+      }
+    },
+    {
+      "id": "zero-boundary-erosion",
+      "input": {
+        "mask": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "columns": 3,
+        "rows": 3,
+        "element": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "elementColumns": 3,
+        "elementRows": 3,
+        "mode": "erode",
+        "boundary": "zero",
+        "maxWork": 81
+      },
+      "output": {
+        "mask": [
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  ]
+}

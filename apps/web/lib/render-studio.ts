@@ -1,3 +1,6 @@
+import { drawMaterials, materialsDefinitions } from "./adapters/materials";
+import { drawSystems, systemsDefinitions } from "./adapters/systems";
+import { drawPaths, pathsDefinitions } from "./adapters/paths";
 import type { Layer, StudioDocument } from "./studio-types";
 import { definition, validateDocument } from "./studio";
 import { basicDefinitions, drawBasic } from "./adapters/basic";
@@ -12,8 +15,11 @@ const geometryIds = new Set(
 const effectsIds = new Set(
   effectsDefinitions.map((definition) => definition.id),
 );
+const pathsIds = new Set(pathsDefinitions.map(item => item.id));
+const systemsIds = new Set(systemsDefinitions.map(item => item.id));
+const materialsIds = new Set(materialsDefinitions.map(item => item.id));
 const expansionIds = new Set(expansionDefinitions.map((definition) => definition.id));
-const drawingConstants = ["CLOSE", "CORNER", "ROUND", "TRIANGLES"] as const;
+const drawingConstants = ["CLOSE", "CORNER", "CENTER", "ROUND", "TRIANGLES"] as const;
 
 /** Draws a whole document to a candidate graphics buffer, publishing it only after success. */
 export function renderStudio(p: any, document: StudioDocument): void {
@@ -95,6 +101,9 @@ function drawLayer(p: any, layer: Layer): void {
   if (basicIds.has(layer.technique)) return drawBasic(p, layer);
   if (geometryIds.has(layer.technique)) return drawGeometry(p, layer);
   if (effectsIds.has(layer.technique)) return drawEffects(p, layer);
+  if (pathsIds.has(layer.technique)) return drawPaths(p, layer);
+  if (systemsIds.has(layer.technique)) return drawSystems(p, layer);
+  if (materialsIds.has(layer.technique)) return drawMaterials(p, layer);
   if (expansionIds.has(layer.technique)) return drawExpansion(p, layer);
   throw new Error(`Unknown studio technique: ${String(layer.technique)}`);
 }

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "operations": [
+    "mesh.extrude-simple-polygon-3d",
+    "mesh.parallel-transport-ribbon-3d",
+    "mesh.loop-subdivide-triangles-3d"
+  ],
+  "fixture_sha256": {
+    "extrude-simple-polygon-3d": "ff0b5ee5a3c4055880650cf107225bce215beaa6a971f1a1905d9067ecf2b1f3",
+    "parallel-transport-ribbon-3d": "980ce7b16ac9ab3dc1ec11ca45b757b825910e343eb602b1fded8ff12776d756",
+    "loop-subdivide-triangles-3d": "388a58d6a86d71ee5c31d44b15b41fe14d23044b49cf1ff9f5ba5ec880dcbb11"
+  },
+  "scope": "Pure JavaScript mesh-core conformance only; no renderer, native workflow, support, or acceptance claim."
+}

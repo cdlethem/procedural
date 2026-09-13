@@ -1,0 +1,201 @@
+{
+  "operation": "geometry.assemble-segment-chains-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "proposal_catalog_sha256": null,
+  "oracle": "Root reviewed analytical coordinates, topology, budgets and explicit LCG recurrence, authored before implementation. General numeric properties require separate runtime checks.",
+  "cases": [
+    {
+      "id": "open-reversed",
+      "input": {
+        "segments": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "maxWork": 40
+      },
+      "output": {
+        "chains": [
+          {
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "segmentIndices": [
+              1,
+              0
+            ],
+            "closed": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "cycle",
+      "input": {
+        "segments": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ]
+        ],
+        "maxWork": 84
+      },
+      "output": {
+        "chains": [
+          {
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "segmentIndices": [
+              2,
+              1,
+              0
+            ],
+            "closed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "empty",
+      "input": {
+        "segments": [],
+        "maxWork": 0
+      },
+      "output": {
+        "chains": []
+      }
+    },
+    {
+      "id": "degree-three",
+      "input": {
+        "segments": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ]
+        ],
+        "maxWork": 84
+      },
+      "error": "INVALID_TOPOLOGY"
+    },
+    {
+      "id": "budget",
+      "input": {
+        "segments": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        ],
+        "maxWork": 11
+      },
+      "error": "WORK_LIMIT"
+    }
+  ],
+  "future_test_notes": [
+    "duplicate undirected edge",
+    "signed-zero keys",
+    "detached ownership"
+  ],
+  "catalog_sha256": "0bcca5f3566425488335e16b27225831f37e1f923c4b473b8211c974432a18d5"
+}

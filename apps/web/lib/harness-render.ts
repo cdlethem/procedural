@@ -1,3 +1,6 @@
+import { drawMaterials, materialsDefinitions } from "./adapters/materials";
+import { drawSystems, systemsDefinitions } from "./adapters/systems";
+import { drawPaths, pathsDefinitions } from "./adapters/paths";
 import type { Layer } from "./studio-types";
 import { definition } from "./studio";
 import {
@@ -14,8 +17,11 @@ import { drawExpansion, expansionDefinitions } from "./adapters/expansion";
 const basicIds = new Set(basicDefinitions.map((item) => item.id));
 const geometryIds = new Set(geometryDefinitions.map((item) => item.id));
 const effectsIds = new Set(effectsDefinitions.map((item) => item.id));
+const pathsIds = new Set(pathsDefinitions.map(item => item.id));
+const systemsIds = new Set(systemsDefinitions.map(item => item.id));
+const materialsIds = new Set(materialsDefinitions.map(item => item.id));
 const expansionIds = new Set(expansionDefinitions.map((item) => item.id));
-const constants = ["CLOSE", "CORNER", "ROUND", "TRIANGLES"] as const;
+const constants = ["CLOSE", "CORNER", "CENTER", "ROUND", "TRIANGLES"] as const;
 
 /** Isolated harness compositor. Generated source is represented only by its trusted raster. */
 export function renderHarness(
@@ -92,6 +98,9 @@ function drawWorkflow(p: any, layer: Extract<DocumentLayer, { kind: "workflow" }
   if (basicIds.has(workflow.technique)) return drawBasic(p, workflow);
   if (geometryIds.has(workflow.technique)) return drawGeometry(p, workflow);
   if (effectsIds.has(workflow.technique)) return drawEffects(p, workflow);
+  if (pathsIds.has(workflow.technique)) return drawPaths(p, workflow);
+  if (systemsIds.has(workflow.technique)) return drawSystems(p, workflow);
+  if (materialsIds.has(workflow.technique)) return drawMaterials(p, workflow);
   if (expansionIds.has(workflow.technique)) return drawExpansion(p, workflow);
   throw new Error(`Unknown studio technique: ${String(workflow.technique)}`);
 }

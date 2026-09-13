@@ -1,0 +1,125 @@
+{
+  "operation": "raster.convolve-2d-signed",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "7a2ba3fa1248fea4882e3aa995900be5712a8acab8e92626baafb87d1a5b8046",
+  "oracle": "Root-reviewed independent analytical states, exact topology and integer-grid formulas, authored before implementation. Color/transport floating properties require separate tolerance-based checks.",
+  "cases": [
+    {
+      "id": "identity",
+      "input": {
+        "values": [
+          2
+        ],
+        "columns": 1,
+        "rows": 1,
+        "kernel": [
+          3
+        ],
+        "kernelColumns": 1,
+        "kernelRows": 1,
+        "boundary": "zero",
+        "maxWork": 1
+      },
+      "output": {
+        "values": [
+          6
+        ]
+      }
+    },
+    {
+      "id": "reversed",
+      "input": {
+        "values": [
+          1,
+          2,
+          4
+        ],
+        "columns": 3,
+        "rows": 1,
+        "kernel": [
+          1,
+          2,
+          4
+        ],
+        "kernelColumns": 3,
+        "kernelRows": 1,
+        "boundary": "zero",
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          4,
+          12,
+          16
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "values": [
+          1
+        ],
+        "columns": 1,
+        "rows": 1,
+        "kernel": [
+          1
+        ],
+        "kernelColumns": 1,
+        "kernelRows": 1,
+        "boundary": "zero",
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "bad-even",
+      "input": {
+        "values": [
+          1
+        ],
+        "columns": 1,
+        "rows": 1,
+        "kernel": [
+          1,
+          1
+        ],
+        "kernelColumns": 2,
+        "kernelRows": 1,
+        "boundary": "zero",
+        "maxWork": 2
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "clamped-reversed",
+      "input": {
+        "values": [
+          1,
+          2,
+          4
+        ],
+        "columns": 3,
+        "rows": 1,
+        "kernel": [
+          1,
+          2,
+          4
+        ],
+        "kernelColumns": 3,
+        "kernelRows": 1,
+        "boundary": "clamp",
+        "maxWork": 9
+      },
+      "output": {
+        "values": [
+          8,
+          12,
+          20
+        ]
+      }
+    }
+  ]
+}

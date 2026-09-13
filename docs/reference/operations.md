@@ -4,6 +4,132 @@
 
 Contracts describe intended behavior. Implementation and native/reproduction evidence are separate.
 
+## layout.adjacency-tile-collapse-2d (0.1.0)
+
+Collapse explicit tile domains using ordered adjacency propagation, cardinality selection and weighted LCG choices without backtracking.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "right": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967294
+        },
+        "minItems": 0,
+        "maxItems": 4294967295
+      },
+      "minItems": 1,
+      "maxItems": 4294967295
+    },
+    "down": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967294
+        },
+        "minItems": 0,
+        "maxItems": 4294967295
+      },
+      "minItems": 1,
+      "maxItems": 4294967295
+    },
+    "weights": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "minItems": 1,
+      "maxItems": 4294967295
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967294
+        },
+        "minItems": 1,
+        "maxItems": 4294967295
+      },
+      "minItems": 1,
+      "maxItems": 4294967295
+    },
+    "rngState": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "columns",
+    "rows",
+    "right",
+    "down",
+    "weights",
+    "domains",
+    "rngState",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| columns | grid sample/cell count along X | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| rows | grid sample/cell count along Y or output generation-row count | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| right | ascending compatible tile indices to the right | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| down | ascending compatible tile indices below | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| weights | positive relative tile-selection weights | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| domains | row-major ascending initial tile domains | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| rngState | unsigned 32-bit LCG state | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxWork | abstract operation-specific work units | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/adjacency-tile-collapse-2d.json).
+
 ## mesh.annular-solid-3d (0.1.0)
 
 Generate an owned indexed-triangle closed annular solid from explicit inner and outer radii, two axial planes, angular subdivision, and a required face budget. It retains local positions, flat unit normals, face kinds, and angular-cell identity; it does not draw.
@@ -83,6 +209,166 @@ Motivating evidence:
 - [`2017/Generativos/aros#0`](../../survey/out/2017/Generativos/aros/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/annular-solid-3d.json).
+
+## geometry.assemble-segment-chains-2d (0.1.0)
+
+Assemble exact-coordinate edges into deterministic chains.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "segments": {
+      "type": "array",
+      "maxItems": 4294967295,
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "segments",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| segments | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/assemble-segment-chains-2d.json).
+
+## raster.bayer-dither (0.1.0)
+
+Draft proposal only.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "maxItems": 4294967295
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 26
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "values",
+    "columns",
+    "rows",
+    "order",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| values | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| columns | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| rows | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| order | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/bayer-dither.json).
 
 ## raster.bilinear-remap-2d (0.1.0)
 
@@ -262,6 +548,189 @@ Motivating evidence:
 - [`2018/Generativos/barab#0`](../../survey/out/2018/Generativos/barab/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/binary-cell-partition-2d.json).
+
+## raster.binary-morphology-2d (0.1.0)
+
+Draft proposal only.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "mask": {
+      "type": "array",
+      "items": {
+        "type": "boolean"
+      },
+      "maxItems": 4294967295
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "element": {
+      "type": "array",
+      "items": {
+        "type": "boolean"
+      },
+      "maxItems": 4294967295
+    },
+    "elementColumns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "elementRows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "dilate",
+        "erode"
+      ]
+    },
+    "boundary": {
+      "type": "string",
+      "enum": [
+        "zero",
+        "one"
+      ]
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "mask",
+    "columns",
+    "rows",
+    "element",
+    "elementColumns",
+    "elementRows",
+    "mode",
+    "boundary",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| mask | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| columns | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| rows | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| element | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| elementColumns | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| elementRows | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| mode | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| boundary | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/binary-morphology-2d.json).
+
+## geometry.chaikin-polyline-2d (0.1.0)
+
+Refine an explicit polyline by fixed Chaikin cuts.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "maxItems": 4294967295,
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "minItems": 2
+    },
+    "closed": {
+      "type": "boolean"
+    },
+    "iterations": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "closed",
+    "iterations",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| closed | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| iterations | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/chaikin-polyline-2d.json).
 
 ## geometry.clip-segments-simple-polygon-2d (0.1.0)
 
@@ -483,6 +952,244 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/closed-spline-2d.json).
 
+## geometry.convex-hull-2d (0.1.0)
+
+Return a positive-winding hull with source identities.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "maxItems": 4294967295,
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/convex-hull-2d.json).
+
+## raster.convolve-2d-signed (0.1.0)
+
+Draft proposal only.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 4294967295
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "kernel": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 4294967295
+    },
+    "kernelColumns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "kernelRows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "boundary": {
+      "type": "string",
+      "enum": [
+        "zero",
+        "clamp"
+      ]
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "values",
+    "columns",
+    "rows",
+    "kernel",
+    "kernelColumns",
+    "kernelRows",
+    "boundary",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| values | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| columns | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| rows | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| kernel | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| kernelColumns | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| kernelRows | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| boundary | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/convolve-2d-signed.json).
+
+## path.cost-grid-paths-2d (0.1.0)
+
+Compute deterministic four-neighbor least-cost distances and predecessor indices.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "costs": {
+      "type": "array",
+      "items": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "minimum": 0
+      },
+      "maxItems": 4294967295
+    },
+    "start": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "columns",
+    "rows",
+    "costs",
+    "start",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| columns | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| rows | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| costs | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| start | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/cost-grid-paths-2d.json).
+
 ## color.cyclic-palette (0.1.0)
 
 Immutable ordered opaque sRGB8 palette sampled by a phase in cycles, with linear encoded-channel interpolation and fixed RGB24 quantization.
@@ -555,6 +1262,143 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/cyclic-palette.json).
 
+## field.damped-wave-step-2d (0.1.0)
+
+Advance supplied displacement and velocity grids by one simultaneous semi-implicit damped-wave update.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "state": {
+      "type": "object",
+      "properties": {
+        "displacement": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "maxItems": 4294967295
+        },
+        "velocity": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "maxItems": 4294967295
+        }
+      },
+      "required": [
+        "displacement",
+        "velocity"
+      ],
+      "additionalProperties": false
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "spacing": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "speed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "damping": {
+      "type": "number",
+      "minimum": 0
+    },
+    "dt": {
+      "type": "number",
+      "minimum": 0
+    },
+    "pinned": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "enum": [
+          0,
+          1
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 4294967295
+    },
+    "boundary": {
+      "type": "string",
+      "enum": [
+        "CLAMP",
+        "WRAP"
+      ]
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "state",
+    "columns",
+    "rows",
+    "spacing",
+    "speed",
+    "damping",
+    "dt",
+    "pinned",
+    "boundary",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| state | explicit finite old model state | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| columns | grid sample/cell count along X | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| rows | grid sample/cell count along Y or output generation-row count | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| spacing | positive caller distance between adjacent samples | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| speed | caller distance per time | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| damping | inverse time | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| dt | caller time interval | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| pinned | row-major exact binary pin mask | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| boundary | explicit sampling or neighbor boundary policy | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxWork | abstract operation-specific work units | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/damped-wave-step-2d.json).
+
 ## topology.delaunay-2d (0.1.0)
 
 Produce owned exact planar Delaunay topology from an ordered finite binary64 site list and explicit deterministic work budget. It computes canonical unique vertices, input mappings, positive indexed faces, unique edges and final face incidence only; it has no random stream, renderer, palette, clipping, site sampler or draw side effect.
@@ -626,6 +1470,291 @@ Motivating evidence:
 - [`2019/generativos/lightcity#1`](../../survey/out/2019/generativos/lightcity/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/delaunay-2d.json).
+
+## field.elementary-cellular-rows (0.1.0)
+
+Generate ordered space-time rows from an explicit elementary three-cell binary rule.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "initial": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "enum": [
+          0,
+          1
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 4294967295
+    },
+    "rule": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "boundary": {
+      "type": "string",
+      "enum": [
+        "ZERO",
+        "WRAP"
+      ]
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "initial",
+    "rule",
+    "rows",
+    "boundary",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| initial | ordered binary initial row | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| rule | eight-bit elementary cellular lookup | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| rows | grid sample/cell count along Y or output generation-row count | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| boundary | explicit sampling or neighbor boundary policy | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxWork | abstract operation-specific work units | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/elementary-cellular-rows.json).
+
+## field.euclidean-distance-transform-2d (0.1.0)
+
+Draft proposal only.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "mask": {
+      "type": "array",
+      "items": {
+        "type": "boolean"
+      },
+      "maxItems": 4294967295
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "mask",
+    "columns",
+    "rows",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| mask | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| columns | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| rows | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/euclidean-distance-transform-2d.json).
+
+## mesh.extrude-simple-polygon-3d (0.1.0)
+
+Draft proposal only.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "polygon": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "maxItems": 4294967295
+    },
+    "height": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "polygon",
+    "height",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| polygon | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| height | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/extrude-simple-polygon-3d.json).
+
+## raster.floyd-steinberg-dither (0.1.0)
+
+Draft proposal only.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "maxItems": 4294967295
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "values",
+    "columns",
+    "rows",
+    "threshold",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| values | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| columns | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| rows | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| threshold | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/floyd-steinberg-dither.json).
 
 ## field.gradient-noise-2d-01 (0.1.0)
 
@@ -909,6 +2038,426 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/gradient-path.json).
 
+## field.gray-scott-step-2d (0.1.0)
+
+Advance supplied Gray–Scott concentration grids by one explicit simultaneous reaction/diffusion update.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "state": {
+      "type": "object",
+      "properties": {
+        "u": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "maxItems": 4294967295
+        },
+        "v": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "maxItems": 4294967295
+        }
+      },
+      "required": [
+        "u",
+        "v"
+      ],
+      "additionalProperties": false
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "spacing": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "diffusionU": {
+      "type": "number",
+      "minimum": 0
+    },
+    "diffusionV": {
+      "type": "number",
+      "minimum": 0
+    },
+    "feed": {
+      "type": "number",
+      "minimum": 0
+    },
+    "kill": {
+      "type": "number",
+      "minimum": 0
+    },
+    "dt": {
+      "type": "number",
+      "minimum": 0
+    },
+    "boundary": {
+      "type": "string",
+      "enum": [
+        "CLAMP",
+        "WRAP"
+      ]
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "state",
+    "columns",
+    "rows",
+    "spacing",
+    "diffusionU",
+    "diffusionV",
+    "feed",
+    "kill",
+    "dt",
+    "boundary",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| state | explicit finite old model state | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| columns | grid sample/cell count along X | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| rows | grid sample/cell count along Y or output generation-row count | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| spacing | positive caller distance between adjacent samples | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| diffusionU | distance squared per time | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| diffusionV | distance squared per time | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| feed | inverse time | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| kill | inverse time | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| dt | caller time interval | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| boundary | explicit sampling or neighbor boundary policy | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxWork | abstract operation-specific work units | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/gray-scott-step-2d.json).
+
+## field.life-like-step-2d (0.1.0)
+
+Advance a binary grid synchronously under explicit Moore-neighborhood birth and survival rules.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "cells": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "enum": [
+          0,
+          1
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 4294967295
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "birth": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 8
+      },
+      "minItems": 0,
+      "maxItems": 9
+    },
+    "survival": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 8
+      },
+      "minItems": 0,
+      "maxItems": 9
+    },
+    "boundary": {
+      "type": "string",
+      "enum": [
+        "DEAD",
+        "WRAP"
+      ]
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "cells",
+    "columns",
+    "rows",
+    "birth",
+    "survival",
+    "boundary",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| cells | row-major binary cell values | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| columns | grid sample/cell count along X | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| rows | grid sample/cell count along Y or output generation-row count | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| birth | live-neighbor counts causing birth | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| survival | live-neighbor counts allowing survival | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| boundary | explicit sampling or neighbor boundary policy | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxWork | abstract operation-specific work units | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/life-like-step-2d.json).
+
+## layout.lloyd-relaxation-2d (0.1.0)
+
+Synchronously move sites toward bounded Voronoi centroids.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "sites": {
+      "type": "array",
+      "maxItems": 4294967295,
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "bounds": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "iterations": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "strength": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "sites",
+    "bounds",
+    "iterations",
+    "strength",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| sites | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| bounds | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| iterations | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| strength | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/lloyd-relaxation-2d.json).
+
+## mesh.loop-subdivide-triangles-3d (0.1.0)
+
+Draft proposal only.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "positions": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "maxItems": 4294967295
+    },
+    "indices": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "maxItems": 4294967295
+    },
+    "levels": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 30
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "positions",
+    "indices",
+    "levels",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| positions | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| indices | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| levels | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/loop-subdivide-triangles-3d.json).
+
 ## geometry.marching-squares-2d (0.1.0)
 
 Extract ordered isoline segments from an explicit row-major scalar grid with a fixed high-corner saddle rule.
@@ -990,7 +2539,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | unvalidated | unvalidated | unvalidated | not attested |
-| p5js | [conformant](../../evidence/web/p5-gallery-expansion/root-review.json) | [validated-scoped](../../evidence/web/p5-gallery-expansion/root-review.json) | unvalidated | [review](../../evidence/web/p5-gallery-expansion/root-review.json) |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -1108,6 +2657,73 @@ Motivating evidence:
 - [`2017/Generativos/Eyes/eyes002#1`](../../survey/out/2017/Generativos/Eyes/eyes002/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/masked-source-over.json).
+
+## color.median-cut-quantize (0.1.0)
+
+Draft proposal only.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "colors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "maxItems": 4294967295
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "colors",
+    "count",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| colors | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| count | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/median-cut-quantize.json).
 
 ## geometry.nearest-segment-contact-2d (0.1.0)
 
@@ -1461,6 +3077,153 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/occupied-lattice-paths-2d.json).
 
+## geometry.offset-polyline-2d (0.1.0)
+
+Offset a route with signed left normals and bounded joins.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "maxItems": 4294967295,
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "minItems": 2
+    },
+    "closed": {
+      "type": "boolean"
+    },
+    "distance": {
+      "type": "number"
+    },
+    "miterLimit": {
+      "type": "number",
+      "minimum": 1
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "closed",
+    "distance",
+    "miterLimit",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| closed | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| distance | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| miterLimit | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/offset-polyline-2d.json).
+
+## color.oklab-ramp (0.1.0)
+
+Draft proposal only.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "stops": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "maxItems": 4294967295
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "stops",
+    "count",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| stops | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| count | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/oklab-ramp.json).
+
 ## sampling.ordered-circle-filter-2d (0.1.0)
 
 Retain supplied circles in order when their radius-dependent exclusion test permits them alongside earlier accepted circles.
@@ -1603,6 +3366,275 @@ Motivating evidence:
 - [`2017/Generativos/celular2#1`](../../survey/out/2017/Generativos/celular2/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/ordered-convex-polygon-filter-2d.json).
+
+## grammar.parallel-token-rewrite (0.1.0)
+
+Rewrite explicit token productions in simultaneous generations with bounded token and work counts.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "axiom": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "maxItems": 4294967295
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "minLength": 1
+          },
+          "replacement": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "maxItems": 4294967295
+          }
+        },
+        "required": [
+          "symbol",
+          "replacement"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 4294967295
+    },
+    "iterations": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxTokens": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "axiom",
+    "rules",
+    "iterations",
+    "maxTokens",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| axiom | ordered atomic token strings | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| rules | ordered simultaneous token productions | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| iterations | rewrite generation count | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxTokens | maximum retained generation token count | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxWork | abstract operation-specific work units | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/parallel-token-rewrite.json).
+
+## mesh.parallel-transport-ribbon-3d (0.1.0)
+
+Draft proposal only.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "maxItems": 4294967295
+    },
+    "widths": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "maxItems": 4294967295
+    },
+    "initialNormal": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "widths",
+    "initialNormal",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| widths | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| initialNormal | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/parallel-transport-ribbon-3d.json).
+
+## sampling.poisson-disc-2d (0.1.0)
+
+Generate bounded minimum-distance points from explicit LCG32 rngState.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "bounds": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "radius": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "attemptsPerActive": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "maxPoints": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "rngState": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "bounds",
+    "radius",
+    "attemptsPerActive",
+    "maxPoints",
+    "rngState",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| bounds | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| radius | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| attemptsPerActive | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxPoints | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| rngState | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/poisson-disc-2d.json).
 
 ## mesh.radial-profile-surface-3d (0.1.0)
 
@@ -2081,7 +4113,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | unvalidated | unvalidated | unvalidated | not attested |
-| p5js | [conformant](../../evidence/web/p5-gallery-expansion/root-review.json) | [validated-scoped](../../evidence/web/p5-gallery-expansion/root-review.json) | unvalidated | [review](../../evidence/web/p5-gallery-expansion/root-review.json) |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 
@@ -2150,6 +4182,218 @@ Motivating evidence:
 - [`2019/generativos/griton#0`](../../survey/out/2019/generativos/griton/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/retained-rectangle-cuts-2d.json).
+
+## path.rk4-vector-grid-trace-2d (0.1.0)
+
+Trace an explicit bilinearly sampled vector grid with a fixed-step RK4 integrator.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "vectors": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "minItems": 4,
+      "maxItems": 4294967295
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 4294967295
+    },
+    "origin": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "spacing": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "start": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "dt": {
+      "type": "number",
+      "minimum": 0
+    },
+    "steps": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294
+    },
+    "boundary": {
+      "type": "string",
+      "enum": [
+        "CLAMP",
+        "STOP"
+      ]
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "vectors",
+    "columns",
+    "rows",
+    "origin",
+    "spacing",
+    "start",
+    "dt",
+    "steps",
+    "boundary",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| vectors | caller distance per caller time, row-major vector pairs | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| columns | grid sample/cell count along X | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| rows | grid sample/cell count along Y or output generation-row count | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| origin | caller distance units | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| spacing | positive caller distance between adjacent samples | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| start | explicit caller position and/or heading; heading radians | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| dt | caller time interval | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| steps | requested integration step count | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| boundary | explicit sampling or neighbor boundary policy | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxWork | abstract operation-specific work units | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/rk4-vector-grid-trace-2d.json).
+
+## field.scalar-grid-curl-2d (0.1.0)
+
+Differentiate an explicit scalar grid with physical spacing and return its rotated planar gradient.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 4,
+      "maxItems": 4294967295
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 4294967295
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 4294967295
+    },
+    "spacing": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "boundary": {
+      "type": "string",
+      "enum": [
+        "ONE_SIDED",
+        "WRAP"
+      ]
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "values",
+    "columns",
+    "rows",
+    "spacing",
+    "boundary",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| values | row-major caller scalar values | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| columns | grid sample/cell count along X | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| rows | grid sample/cell count along Y or output generation-row count | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| spacing | positive caller distance between adjacent samples | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| boundary | explicit sampling or neighbor boundary policy | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxWork | abstract operation-specific work units | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/scalar-grid-curl-2d.json).
 
 ## sampling.seeded-circle-placement-2d (0.1.0)
 
@@ -2267,6 +4511,87 @@ Motivating evidence:
 - [`2017/Generativos/studio#0`](../../survey/out/2017/Generativos/studio/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/seeded-circle-placement.json).
+
+## topology.seeded-depth-first-spanning-tree (0.1.0)
+
+Generate discovery-ordered spanning-tree topology from a connected supplied graph using an explicit randomized DFS schedule.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "vertexCount": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967294
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "minItems": 0,
+      "maxItems": 4294967295
+    },
+    "root": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967294
+    },
+    "rngState": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "vertexCount",
+    "edges",
+    "root",
+    "rngState",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| vertexCount | explicit graph vertex count | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| edges | ordered graph vertex-index pairs | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| root | root vertex index | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| rngState | unsigned 32-bit LCG state | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxWork | abstract operation-specific work units | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/seeded-depth-first-spanning-tree.json).
 
 ## topology.seeded-endpoint-branches-2d (0.1.0)
 
@@ -2925,6 +5250,155 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/sequential-disc-projection-2d.json).
 
+## geometry.simplify-polyline-2d (0.1.0)
+
+Deterministically simplify an open polyline.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "maxItems": 4294967295,
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "minItems": 1
+    },
+    "tolerance": {
+      "type": "number",
+      "minimum": 0
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "tolerance",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| tolerance | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/simplify-polyline-2d.json).
+
+## layout.skyline-pack-2d (0.1.0)
+
+Pack supplied rectangles in input order by deterministic lowest skyline placement.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "width": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "height": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "rectangles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "width": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "height": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "required": [
+          "width",
+          "height"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "width",
+    "height",
+    "rectangles",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| width | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| height | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| rectangles | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/skyline-pack-2d.json).
+
 ## color.stop-ramp (0.1.0)
 
 Immutable noncyclic positioned RGB24 color stops with piecewise linear sampling and endpoint holds.
@@ -3141,6 +5615,187 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/target-springs-2d.json).
 
+## geometry.token-turtle-2d (0.1.0)
+
+Interpret explicit token commands into retained planar segments with stack-restored pose and branch depth.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "tokens": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "maxItems": 4294967295
+    },
+    "commands": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "token": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "DRAW",
+                  "MOVE"
+                ]
+              },
+              "distance": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "token",
+              "kind",
+              "distance"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "token": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "TURN"
+                ]
+              },
+              "angle": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "token",
+              "kind",
+              "angle"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "token": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "PUSH",
+                  "POP"
+                ]
+              }
+            },
+            "required": [
+              "token",
+              "kind"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "minItems": 0,
+      "maxItems": 4294967295
+    },
+    "start": {
+      "type": "object",
+      "properties": {
+        "position": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "heading": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "position",
+        "heading"
+      ],
+      "additionalProperties": false
+    },
+    "unknown": {
+      "type": "string",
+      "enum": [
+        "IGNORE",
+        "ERROR"
+      ]
+    },
+    "maxSegments": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxStackDepth": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "tokens",
+    "commands",
+    "start",
+    "unknown",
+    "maxSegments",
+    "maxStackDepth",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| tokens | ordered atomic token strings | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| commands | token-to-command union; radians and caller distance units | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| start | explicit caller position and/or heading; heading radians | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| unknown | explicit unknown-token policy | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxSegments | maximum retained DRAW segments | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxStackDepth | maximum simultaneously stored poses | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+| maxWork | abstract operation-specific work units | null | null | Independent p5-only design proposal; no corpus-observed default or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/token-turtle-2d.json).
+
 ## sampling.triangle-coordinate-map-2d (0.1.0)
 
 retained planar mapping of caller-provided unit-coordinate pairs through one explicitly supplied ordered triangle. It owns no random stream or distribution claim.
@@ -3244,6 +5899,70 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/triangle-coordinate-map.json).
 
+## geometry.triangulate-simple-polygon-2d (0.1.0)
+
+Ear-clip a strict simple polygon into original-index triangles.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "maxItems": 4294967295,
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "minItems": 3
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See normative schema and algorithm. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/triangulate-simple-polygon-2d.json).
+
 ## geometry.voronoi-cells-2d (0.1.0)
 
 Return nearest-site cells clipped to an explicit axis-aligned rectangle.
@@ -3301,7 +6020,7 @@ Current implementation status comes from a separately reviewed attestation, not 
 | target | core | native integration | technique | evidence scope |
 |---|---|---|---|---|
 | processing-java | unvalidated | unvalidated | unvalidated | not attested |
-| p5js | [conformant](../../evidence/web/p5-gallery-expansion/root-review.json) | [validated-scoped](../../evidence/web/p5-gallery-expansion/root-review.json) | unvalidated | [review](../../evidence/web/p5-gallery-expansion/root-review.json) |
+| p5js | [conformant](../../evidence/web/p5-tenfold/root-review.json) | [validated-scoped](../../evidence/web/p5-tenfold/root-review.json) | unvalidated | [review](../../evidence/web/p5-tenfold/root-review.json) |
 | py5 | unvalidated | unvalidated | unvalidated | not attested |
 | processing-android | unvalidated | unvalidated | unvalidated | not attested |
 

@@ -1,0 +1,1 @@
+import { createStudySketch } from "../study-controls.js"; import { drawBlueNoiseStipple, pathsBSettings } from "../paths-b-studies.js"; createStudySketch({slug:"blue-noise-stipple",title:"Blue-noise stipple",...pathsBSettings["blue-noise-stipple"],draw:drawBlueNoiseStipple});

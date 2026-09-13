@@ -1,0 +1,181 @@
+{
+  "operation": "layout.lloyd-relaxation-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "proposal_catalog_sha256": null,
+  "cases": [
+    {
+      "id": "one",
+      "input": {
+        "sites": [
+          [
+            0,
+            0
+          ]
+        ],
+        "bounds": [
+          0,
+          0,
+          2,
+          2
+        ],
+        "iterations": 1,
+        "strength": 1,
+        "maxWork": 11
+      },
+      "output": {
+        "sites": [
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "half",
+      "input": {
+        "sites": [
+          [
+            0,
+            0
+          ]
+        ],
+        "bounds": [
+          0,
+          0,
+          2,
+          2
+        ],
+        "iterations": 1,
+        "strength": 0.5,
+        "maxWork": 11
+      },
+      "output": {
+        "sites": [
+          [
+            0.5,
+            0.5
+          ]
+        ]
+      }
+    },
+    {
+      "id": "budget",
+      "input": {
+        "sites": [
+          [
+            0,
+            0
+          ]
+        ],
+        "bounds": [
+          0,
+          0,
+          2,
+          2
+        ],
+        "iterations": 1,
+        "strength": 1,
+        "maxWork": 10
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "duplicate",
+      "input": {
+        "sites": [
+          [
+            0.25,
+            1
+          ],
+          [
+            0.25,
+            1
+          ]
+        ],
+        "bounds": [
+          0,
+          0,
+          2,
+          2
+        ],
+        "iterations": 1,
+        "strength": 1,
+        "maxWork": 14
+      },
+      "output": {
+        "sites": [
+          [
+            1,
+            1
+          ],
+          [
+            0.25,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "duplicate-budget",
+      "input": {
+        "sites": [
+          [
+            0.25,
+            1
+          ],
+          [
+            0.25,
+            1
+          ]
+        ],
+        "bounds": [
+          0,
+          0,
+          2,
+          2
+        ],
+        "iterations": 1,
+        "strength": 1,
+        "maxWork": 13
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "zero-iteration-copy",
+      "input": {
+        "sites": [
+          [
+            0,
+            0
+          ]
+        ],
+        "bounds": [
+          0,
+          0,
+          2,
+          2
+        ],
+        "iterations": 0,
+        "strength": 1,
+        "maxWork": 1
+      },
+      "output": {
+        "sites": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    }
+  ],
+  "future_test_notes": [
+    "zero pass validation",
+    "ownership"
+  ],
+  "catalog_sha256": "a9d3fbc46feecb704985901e0c98fa084ff2949a6d45600f4e95a5983867700b",
+  "oracle": "Root reviewed analytical coordinates, topology, budgets and explicit LCG recurrence, authored before implementation. General numeric properties require separate runtime checks."
+}
