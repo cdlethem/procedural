@@ -117,6 +117,14 @@ const definitions = [
     ["target-springs-2d", "delaunay-2d", "regular-grid"],
   ],
 ];
+definitions.push(
+  ["cell-mosaic", "Shapes & space", ["voronoi-cells-2d"]],
+  ["cell-echoes", "Shapes & space", ["voronoi-cells-2d"]],
+  ["stitched-paths", "Fields & paths", ["resample-polyline-2d"]],
+  ["orbit-beads", "Shapes & space", ["resample-polyline-2d"]],
+  ["contour-terrain", "Fields & paths", ["marching-squares-2d", "gradient-noise-2d-01"]],
+  ["contour-blobs", "Fields & paths", ["marching-squares-2d"]],
+);
 const slugs = new Set(definitions.map((d) => d[0]));
 // Reviewed p5 completion includes editable native examples without studio adapters.
 // Keep their membership explicit so an unreviewed addition still fails generation.

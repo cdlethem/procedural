@@ -1,0 +1,189 @@
+{
+  "kind": "operation-implementation-attestation",
+  "schema_version": 1,
+  "status": "accepted",
+  "owner": "root",
+  "reviewer": "root",
+  "operation": {
+    "id": "geometry.marching-squares-2d",
+    "version": "0.1.0",
+    "catalog_path": "catalog/operations/marching-squares-2d.json",
+    "catalog_sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676"
+  },
+  "targets": {
+    "processing-java": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "p5js": {
+      "core": {
+        "status": "conformant",
+        "implementation_sha256": {
+          "tools/reviewed_export_extension.py": "d119e16b3469ac7ca5f2b71cab8048b1077ea0aaf128a9707c4d67f66d7fb501",
+          "tests/test_reviewed_export_extension.py": "a27bbd8e8b06dd86d6356e54fbbc22a1635050ff32336b821be35dcd1aefff6e",
+          "packages/javascript/src/index.js": "5fff11f18e6e039d524d5d280bfd3af9e2785d47e8c8e5fc9ba8254bf1432790",
+          "packages/javascript/src/voronoi-cells-2d.js": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6",
+          "packages/javascript/src/resample-polyline-2d.js": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42",
+          "packages/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+          "tests/native/p5-expansion-javascript.mjs": "2bdd4f9a6010c435a10b195873399e5c72da1aae61bfde2bb940dfa5e32db999",
+          "tools/run_p5_gallery_expansion.mjs": "520426c3ccca80eb68d5acd2a40d3d11a272d4a286def106fb19aa54f320e991",
+          "apps/web/lib/adapters/expansion.ts": "e296b0db8e99e2b3fa71f70413427cebfe4a1ff83ef2177b0615c8bea367b0c8",
+          "apps/web/lib/studio.ts": "6ae18687c77555bf2e6db5d0fd6879e5bcedffe46839b8501bc9f2a36b6a1581",
+          "apps/web/lib/studio-document.ts": "8ae4158d45e7f5b94619396945d0151f917a033636b9dc9d37f4287b0d9e57d9",
+          "apps/web/lib/render-studio.ts": "0c0fe507132fdd1dc53764792d157c46ccb8b5a1d3b0fba2e1bc2c1808c0645f",
+          "apps/web/lib/legacy-v3.json": "08acd3be9bbf5ba87d9d83d0142261260164c759798477d656ea2b41a8e78e7e",
+          "apps/web/tests/expansion-adapters.test.ts": "a7ccb4fd95fdeec610c3b5d1387d326c7e93e7462cba6302e4f2c7e710f8d19c",
+          "apps/web/tests/studio.test.ts": "979cea60376eac2d7baa28744b97aab4a184480ba08d0ae45174c1a58a88f7a1",
+          "apps/web/tests/studio-v3.test.ts": "70e7b836cc6769822a0530e90890dc5fab3ae6785ae1e98131252fce8958d170",
+          "packages/javascript/examples/cell-mosaic/sketch.js": "02b22bf3c864643f7451800140976c5601b8ef7c2388ffdf3c33b1a50a9614d4",
+          "packages/javascript/examples/cell-mosaic/index.html": "0ea6222afaaf24e573e121d488b3f95b0cbb21f7530b8b43116c918f9321ce42",
+          "packages/javascript/examples/cell-mosaic/README.md": "21893b8228a06e9209437ddce9095352b230fd947fbc95063a0b6e34d48cac66",
+          "packages/javascript/examples/cell-mosaic/expansion-studies.js": "b5ad12caf3bc34421d59cada62ca91ce11444f22f567a14fc568e056c892bbfa",
+          "packages/javascript/examples/cell-echoes/sketch.js": "91555423f4caa19787fd7faa795e36b0bd9d00e761cdfaccb695936ac0fb6518",
+          "packages/javascript/examples/cell-echoes/index.html": "edad7f23d14160218a75a801acf9815be30f7582e4dce48bd87f2cde8c3c6766",
+          "packages/javascript/examples/cell-echoes/README.md": "c443a1e8dfce81f756f2d621a5139a40cf9dd6c7af99d7c7bcfc89970f0a501c",
+          "packages/javascript/examples/stitched-paths/sketch.js": "ed6a47bc01bb674287ad08bc9c7581436c2e5142d1ae729918a8e026a1471cdf",
+          "packages/javascript/examples/stitched-paths/index.html": "13cf0a77871e7e93e4b0739095187239393b3e2224b88ce6a78f1a75db88e1c5",
+          "packages/javascript/examples/stitched-paths/README.md": "35d9e06c240fde1748bc898b7995ac0fec78e330f440d82a7b07d770aa934452",
+          "packages/javascript/examples/orbit-beads/sketch.js": "424a80589a3e1c5d3aa5392c80b836bd2ad590ded0a0aa7c3e3aff409d342434",
+          "packages/javascript/examples/orbit-beads/index.html": "edae5d35311b0c6828b25c8c426fb111cf222a5040bace5f11290c059d3348b4",
+          "packages/javascript/examples/orbit-beads/README.md": "9dc5c9e0d1fda0f5b792b3a389255f43f34fd44c5673206c1435cec648653310",
+          "packages/javascript/examples/contour-terrain/sketch.js": "f257446d8899dd0ee54c1a08aad3393e972e546d0f36c4c1fbb7409341385830",
+          "packages/javascript/examples/contour-terrain/index.html": "3757e47388c38d353bab80d02b705ed60e0795f43a1e3b555881930c85339bbe",
+          "packages/javascript/examples/contour-terrain/README.md": "1bdcecdb145a28c992ba19bac2747d65b08790f84c508a65d235903db668dadd",
+          "packages/javascript/examples/contour-blobs/sketch.js": "1653743655fd07dbc0ec9d03c18c5e9d2dc7dc393e18c5a2116e420226537ca8",
+          "packages/javascript/examples/contour-blobs/index.html": "4b1c98db9e6dee08209a1c4685980410988e73744e4de1420f9fe04224dbd211",
+          "packages/javascript/examples/contour-blobs/README.md": "22d68783857a88b6fe55fc2a75edc382ab964e06e847d3002bd60d18c17cd986"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/p5-expansion-javascript.json": "1ad074e8161914d36f7fbb6f7c98bc7b1ee4d6be5c7b8c6b3758888555a33d7a",
+          "evidence/web/p5-gallery-expansion/native.json": "c7e56787fe081aed4e0b20968fd05ad99c906f185fde524b1fc0d77c81d85ee3",
+          "evidence/web/p5-gallery-expansion/package.json": "98a22725d3188fb2a3cff48208302e36d830901f11fcb61160bf889287890b60",
+          "evidence/conformance/p5-gallery-export-compatibility-review.json": "0099cbdf9e6dd5f6dab35aa69a9bf3244642c0165ec7ab3034abb54cf0c6c328",
+          "evidence/web/p5-gallery-expansion/production.json": "63eefeaf6823f514999d6d61ce09c2d70bca762b1ced242cb84424447cf552e4",
+          "design/capabilities/p5-gallery-expansion.md": "94aa859fddb635c8798a8559f9597962d33645cd1f5a8936728182397a116345",
+          "design/operations/p5-gallery-expansion-contract-review.md": "1e89f025390185dcf759a62cfeedb4b48e3aa2f3322862597274ee7eb4d6225b",
+          "evidence/parameter-experiments/p5-gallery-expansion/experiment.json": "0a7900acbad2071d46d77f2850841592a0cbb474b340a396b8e0e1bee7e279d2",
+          "fixtures/operations/voronoi-cells-2d.json": "d5da4750bc9f83512e19f188f6af8a2231090679e0fa3b0486ba9183eb319b91",
+          "fixtures/operations/resample-polyline-2d.json": "904e4e5419fcc24130bcaf7b03096bc5eff642cb3018fb8826e6b8a8980ed0ba",
+          "fixtures/operations/marching-squares-2d.json": "cf463d6de63e7bb7c84b1c548701deb235c4c66585d46d2e62510b7f93fedb1e"
+        },
+        "acceptance_review": {
+          "path": "evidence/web/p5-gallery-expansion/root-review.json",
+          "sha256": "6ad7a6511f73686b0cde0f7bd792354aa5a17557b361100fd5588ee01485fdc7"
+        },
+        "runtime_profile": {
+          "name": "Node22; p5.js2.3.2 Chromium153 Canvas2D density1",
+          "scope": "Pure explicit geometry and two original design studies per operation; other ports and surveyed-original reproduction deferred."
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/conformance/p5-expansion-javascript.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ]
+      },
+      "native": {
+        "status": "validated-scoped",
+        "implementation_sha256": {
+          "tools/reviewed_export_extension.py": "d119e16b3469ac7ca5f2b71cab8048b1077ea0aaf128a9707c4d67f66d7fb501",
+          "tests/test_reviewed_export_extension.py": "a27bbd8e8b06dd86d6356e54fbbc22a1635050ff32336b821be35dcd1aefff6e",
+          "packages/javascript/src/index.js": "5fff11f18e6e039d524d5d280bfd3af9e2785d47e8c8e5fc9ba8254bf1432790",
+          "packages/javascript/src/voronoi-cells-2d.js": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6",
+          "packages/javascript/src/resample-polyline-2d.js": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42",
+          "packages/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+          "tests/native/p5-expansion-javascript.mjs": "2bdd4f9a6010c435a10b195873399e5c72da1aae61bfde2bb940dfa5e32db999",
+          "tools/run_p5_gallery_expansion.mjs": "520426c3ccca80eb68d5acd2a40d3d11a272d4a286def106fb19aa54f320e991",
+          "apps/web/lib/adapters/expansion.ts": "e296b0db8e99e2b3fa71f70413427cebfe4a1ff83ef2177b0615c8bea367b0c8",
+          "apps/web/lib/studio.ts": "6ae18687c77555bf2e6db5d0fd6879e5bcedffe46839b8501bc9f2a36b6a1581",
+          "apps/web/lib/studio-document.ts": "8ae4158d45e7f5b94619396945d0151f917a033636b9dc9d37f4287b0d9e57d9",
+          "apps/web/lib/render-studio.ts": "0c0fe507132fdd1dc53764792d157c46ccb8b5a1d3b0fba2e1bc2c1808c0645f",
+          "apps/web/lib/legacy-v3.json": "08acd3be9bbf5ba87d9d83d0142261260164c759798477d656ea2b41a8e78e7e",
+          "apps/web/tests/expansion-adapters.test.ts": "a7ccb4fd95fdeec610c3b5d1387d326c7e93e7462cba6302e4f2c7e710f8d19c",
+          "apps/web/tests/studio.test.ts": "979cea60376eac2d7baa28744b97aab4a184480ba08d0ae45174c1a58a88f7a1",
+          "apps/web/tests/studio-v3.test.ts": "70e7b836cc6769822a0530e90890dc5fab3ae6785ae1e98131252fce8958d170",
+          "packages/javascript/examples/cell-mosaic/sketch.js": "02b22bf3c864643f7451800140976c5601b8ef7c2388ffdf3c33b1a50a9614d4",
+          "packages/javascript/examples/cell-mosaic/index.html": "0ea6222afaaf24e573e121d488b3f95b0cbb21f7530b8b43116c918f9321ce42",
+          "packages/javascript/examples/cell-mosaic/README.md": "21893b8228a06e9209437ddce9095352b230fd947fbc95063a0b6e34d48cac66",
+          "packages/javascript/examples/cell-mosaic/expansion-studies.js": "b5ad12caf3bc34421d59cada62ca91ce11444f22f567a14fc568e056c892bbfa",
+          "packages/javascript/examples/cell-echoes/sketch.js": "91555423f4caa19787fd7faa795e36b0bd9d00e761cdfaccb695936ac0fb6518",
+          "packages/javascript/examples/cell-echoes/index.html": "edad7f23d14160218a75a801acf9815be30f7582e4dce48bd87f2cde8c3c6766",
+          "packages/javascript/examples/cell-echoes/README.md": "c443a1e8dfce81f756f2d621a5139a40cf9dd6c7af99d7c7bcfc89970f0a501c",
+          "packages/javascript/examples/stitched-paths/sketch.js": "ed6a47bc01bb674287ad08bc9c7581436c2e5142d1ae729918a8e026a1471cdf",
+          "packages/javascript/examples/stitched-paths/index.html": "13cf0a77871e7e93e4b0739095187239393b3e2224b88ce6a78f1a75db88e1c5",
+          "packages/javascript/examples/stitched-paths/README.md": "35d9e06c240fde1748bc898b7995ac0fec78e330f440d82a7b07d770aa934452",
+          "packages/javascript/examples/orbit-beads/sketch.js": "424a80589a3e1c5d3aa5392c80b836bd2ad590ded0a0aa7c3e3aff409d342434",
+          "packages/javascript/examples/orbit-beads/index.html": "edae5d35311b0c6828b25c8c426fb111cf222a5040bace5f11290c059d3348b4",
+          "packages/javascript/examples/orbit-beads/README.md": "9dc5c9e0d1fda0f5b792b3a389255f43f34fd44c5673206c1435cec648653310",
+          "packages/javascript/examples/contour-terrain/sketch.js": "f257446d8899dd0ee54c1a08aad3393e972e546d0f36c4c1fbb7409341385830",
+          "packages/javascript/examples/contour-terrain/index.html": "3757e47388c38d353bab80d02b705ed60e0795f43a1e3b555881930c85339bbe",
+          "packages/javascript/examples/contour-terrain/README.md": "1bdcecdb145a28c992ba19bac2747d65b08790f84c508a65d235903db668dadd",
+          "packages/javascript/examples/contour-blobs/sketch.js": "1653743655fd07dbc0ec9d03c18c5e9d2dc7dc393e18c5a2116e420226537ca8",
+          "packages/javascript/examples/contour-blobs/index.html": "4b1c98db9e6dee08209a1c4685980410988e73744e4de1420f9fe04224dbd211",
+          "packages/javascript/examples/contour-blobs/README.md": "22d68783857a88b6fe55fc2a75edc382ab964e06e847d3002bd60d18c17cd986"
+        },
+        "evidence_sha256": {
+          "evidence/conformance/p5-expansion-javascript.json": "1ad074e8161914d36f7fbb6f7c98bc7b1ee4d6be5c7b8c6b3758888555a33d7a",
+          "evidence/web/p5-gallery-expansion/native.json": "c7e56787fe081aed4e0b20968fd05ad99c906f185fde524b1fc0d77c81d85ee3",
+          "evidence/web/p5-gallery-expansion/package.json": "98a22725d3188fb2a3cff48208302e36d830901f11fcb61160bf889287890b60",
+          "evidence/conformance/p5-gallery-export-compatibility-review.json": "0099cbdf9e6dd5f6dab35aa69a9bf3244642c0165ec7ab3034abb54cf0c6c328",
+          "evidence/web/p5-gallery-expansion/production.json": "63eefeaf6823f514999d6d61ce09c2d70bca762b1ced242cb84424447cf552e4",
+          "design/capabilities/p5-gallery-expansion.md": "94aa859fddb635c8798a8559f9597962d33645cd1f5a8936728182397a116345",
+          "design/operations/p5-gallery-expansion-contract-review.md": "1e89f025390185dcf759a62cfeedb4b48e3aa2f3322862597274ee7eb4d6225b",
+          "evidence/parameter-experiments/p5-gallery-expansion/experiment.json": "0a7900acbad2071d46d77f2850841592a0cbb474b340a396b8e0e1bee7e279d2",
+          "fixtures/operations/voronoi-cells-2d.json": "d5da4750bc9f83512e19f188f6af8a2231090679e0fa3b0486ba9183eb319b91",
+          "fixtures/operations/resample-polyline-2d.json": "904e4e5419fcc24130bcaf7b03096bc5eff642cb3018fb8826e6b8a8980ed0ba",
+          "fixtures/operations/marching-squares-2d.json": "cf463d6de63e7bb7c84b1c548701deb235c4c66585d46d2e62510b7f93fedb1e"
+        },
+        "acceptance_review": {
+          "path": "evidence/web/p5-gallery-expansion/root-review.json",
+          "sha256": "6ad7a6511f73686b0cde0f7bd792354aa5a17557b361100fd5588ee01485fdc7"
+        },
+        "runtime_profile": {
+          "name": "Node22; p5.js2.3.2 Chromium153 Canvas2D density1",
+          "scope": "Pure explicit geometry and two original design studies per operation; other ports and surveyed-original reproduction deferred."
+        },
+        "evidence_predicates": [
+          {
+            "path": "evidence/web/p5-gallery-expansion/native.json",
+            "pointer": "/status",
+            "equals": "passed"
+          }
+        ]
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "py5": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    },
+    "processing-android": {
+      "core": {
+        "status": "unvalidated"
+      },
+      "native": {
+        "status": "unvalidated"
+      },
+      "technique": {
+        "status": "unvalidated"
+      }
+    }
+  }
+}

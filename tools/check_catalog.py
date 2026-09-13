@@ -21,6 +21,7 @@ from tools.operation_attestations import display_dimension, load_attestations
 ROOT = Path(__file__).resolve().parents[1]
 REFERENCE = Path('docs/reference/operations.md')
 CAPABILITY_DEPENDENCY_ADMISSION = 'capability_dependency'
+INDEPENDENT_DESIGN_ADMISSION = 'independent_design'
 EXACT_JSON_OUTPUT = 'exact-json-output'
 MATERIALIZED_OUTPUT = 'materialized-output'
 CIRCLE_PLACEMENT_OUTPUT = 'circle-placement-output'
@@ -1501,7 +1502,16 @@ def check(root: Path = ROOT, *, write_reference: bool = False) -> list[str]:
                 errors.append(f'{prefix}: missing {key}')
         cluster = next((item for item in ledger.get('clusters', [])
                         if item.get('id') == op['decision_cluster']), None)
-        if cluster is not None and cluster.get('admission_kind') == CAPABILITY_DEPENDENCY_ADMISSION:
+        if cluster is not None and cluster.get('admission_kind') == INDEPENDENT_DESIGN_ADMISSION:
+            admission = cluster.get('independent_admission', {})
+            decision = admission.get('decision') if isinstance(admission, dict) else None
+            if not isinstance(decision, str) or not (root / decision).is_file():
+                errors.append(f'{prefix}: missing independent admission decision {decision!r}')
+            if op['provenance'] != []:
+                errors.append(f'{prefix}: independent design provenance must be []')
+            if op['capability_decision'] != decision:
+                errors.append(f'{prefix}: capability_decision must equal independent admission decision')
+        elif cluster is not None and cluster.get('admission_kind') == CAPABILITY_DEPENDENCY_ADMISSION:
             admission = cluster.get('dependency_admission', {})
             decision = admission.get('decision') if isinstance(admission, dict) else None
             if not isinstance(decision, str) or not (root / decision).is_file():

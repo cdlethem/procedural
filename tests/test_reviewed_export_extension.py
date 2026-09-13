@@ -117,7 +117,7 @@ class ReviewedExportTests(unittest.TestCase):
             self.assertIsNone(historical_export_bytes(root, relative, digest('before')))
 
     def test_successor_preserves_both_historical_exports_and_rejects_mutation(self):
-        from tools.reviewed_export_extension import SUCCESSOR, HELPER, TRIANGLE, BRANCH, PROFILE, JS_PORTS, P5_BATCH
+        from tools.reviewed_export_extension import SUCCESSOR, HELPER, TRIANGLE, BRANCH, PROFILE, JS_PORTS, P5_BATCH, P5_GALLERY
         import shutil
         repository = Path(__file__).resolve().parents[1]
         previous = json.loads((repository / REVIEW).read_text())
@@ -129,8 +129,9 @@ class ReviewedExportTests(unittest.TestCase):
         profile = json.loads((repository / PROFILE).read_text())
         ports = json.loads((repository / JS_PORTS).read_text())
         batch = json.loads((repository / P5_BATCH).read_text())
-        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, CORRECTION, ROOT_CORRECTION, SOURCE_COMPARISON, PROFILE, JS_PORTS, P5_BATCH, *PATHS}
-        for record in (correction, root_correction, profile, ports, batch):
+        gallery = json.loads((repository / P5_GALLERY).read_text())
+        files = {REVIEW, SUCCESSOR, TRIANGLE, BRANCH, CORRECTION, ROOT_CORRECTION, SOURCE_COMPARISON, PROFILE, JS_PORTS, P5_BATCH, P5_GALLERY, *PATHS}
+        for record in (correction, root_correction, profile, ports, batch, gallery):
             files.update(record['implementation_sha256'])
             files.update(record['evidence_sha256'])
         for review in (previous, successor, triangle, branch):
@@ -148,6 +149,21 @@ class ReviewedExportTests(unittest.TestCase):
                 shutil.copyfile(repository / name, root / name)
             relative = 'packages/javascript/src/index.js'
             digest = lambda value: hashlib.sha256(value.encode()).hexdigest()
+            gallery_prior = gallery['extensions'][relative]['before']
+            self.assertEqual(historical_export_bytes(root, relative, digest(gallery_prior)), gallery_prior.encode())
+            for mutate in (
+                lambda r: r.update(status='draft'),
+                lambda r: r.update(owner='worker'),
+                lambda r: r.update(previous_review_sha256='0' * 64),
+                lambda r: r['implementation_sha256'].pop('packages/javascript/src/voronoi-cells-2d.js'),
+                lambda r: r['evidence_sha256'].pop(P5_BATCH),
+                lambda r: r['previous_bytes'].update({HELPER: 'forged'}),
+                lambda r: r['extensions'][relative].update(after='forged'),
+            ):
+                record = json.loads(json.dumps(gallery)); mutate(record)
+                (root / P5_GALLERY).write_text(json.dumps(record))
+                self.assertIsNone(historical_export_bytes(root, relative, digest(gallery_prior)))
+            (root / P5_GALLERY).write_bytes((repository / P5_GALLERY).read_bytes())
             current_prior = batch['extensions'][relative]['before']
             self.assertEqual(historical_export_bytes(root, relative, digest(current_prior)), current_prior.encode())
             for mutate in (

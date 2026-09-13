@@ -12,6 +12,26 @@ const fieldScale =
 const fieldOffset =
   "A finite `[x, y]` translation applied after fieldScale, in field coordinates. Change it to sample a different part of the same seeded field without moving the path’s starting point.";
 export const apiInputs = {
+  "geometry.voronoi-cells-2d": {
+    sites: "Ordered finite [x, y] points, in your drawing units. Moving one changes its nearest-site region. Sites may lie outside the bounds; exact duplicates belong to their first occurrence.",
+    bounds: "[minX, minY, maxX, maxY] with strictly positive width and height. Every returned cell is clipped to this rectangle.",
+    maxWork: "Nonnegative safe integer work allowance. The operation charges sites.length squared, then one unit per polygon edge visited while clipping. An insufficient budget throws WORK_LIMIT without returning partial cells.",
+  },
+  "geometry.resample-polyline-2d": {
+    points: "At least one finite [x, y] point in path order. Adjacent points form straight segments; repeated points are allowed. The operation samples this supplied shape without fitting a spline.",
+    closed: "Use false for an open path with both endpoints included, or true to include the final-to-first edge without appending an extra closing sample. Floating-point rounding may still repeat distances or points.",
+    count: "Required number of returned samples: at least 2 for an open path or 1 for a closed path, at most 4294967295 for JavaScript array representation. That ceiling is not an allocation guarantee. Spacing is total traveled length divided by count − 1 (open) or count (closed). Corners are not necessarily sample positions.",
+    maxWork: "Nonnegative safe integer allowance, at least points.length + count. A smaller budget throws WORK_LIMIT before sampling.",
+  },
+  "geometry.marching-squares-2d": {
+    values: "Flat row-major scalar samples: values[y * columns + x]. Supply exactly columns × rows finite numbers; create the field separately from extracting its contours.",
+    columns: "Number of grid samples across, at least 2. There are columns − 1 cells across.",
+    rows: "Number of grid samples down, at least 2. There are rows − 1 cells down.",
+    origin: "Finite [x, y] position of the top-left grid sample, in your drawing units.",
+    spacing: "Positive [x, y] distance between neighboring samples. The final grid sample is at origin + [(columns − 1) × spacing[0], (rows − 1) × spacing[1]].",
+    threshold: "Finite scalar level to trace. Values equal to the threshold count as high. Call again with the same values and a different level for layered contours.",
+    maxWork: "Nonnegative safe integer allowance, at least columns × rows + (columns − 1) × (rows − 1). A smaller budget throws WORK_LIMIT without returning partial segments.",
+  },
   "mesh.annular-solid-3d": {
     outerRadius:
       "Distance from the Z axis to the outside wall, in your drawing units. It must be greater than innerRadius.",

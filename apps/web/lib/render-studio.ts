@@ -3,6 +3,7 @@ import { definition, validateDocument } from "./studio";
 import { basicDefinitions, drawBasic } from "./adapters/basic";
 import { drawGeometry, geometryDefinitions } from "./adapters/geometry";
 import { drawEffects, effectsDefinitions } from "./adapters/effects";
+import { drawExpansion, expansionDefinitions } from "./adapters/expansion";
 
 const basicIds = new Set(basicDefinitions.map((definition) => definition.id));
 const geometryIds = new Set(
@@ -11,6 +12,7 @@ const geometryIds = new Set(
 const effectsIds = new Set(
   effectsDefinitions.map((definition) => definition.id),
 );
+const expansionIds = new Set(expansionDefinitions.map((definition) => definition.id));
 const drawingConstants = ["CLOSE", "CORNER", "ROUND", "TRIANGLES"] as const;
 
 /** Draws a whole document to a candidate graphics buffer, publishing it only after success. */
@@ -93,5 +95,6 @@ function drawLayer(p: any, layer: Layer): void {
   if (basicIds.has(layer.technique)) return drawBasic(p, layer);
   if (geometryIds.has(layer.technique)) return drawGeometry(p, layer);
   if (effectsIds.has(layer.technique)) return drawEffects(p, layer);
+  if (expansionIds.has(layer.technique)) return drawExpansion(p, layer);
   throw new Error(`Unknown studio technique: ${String(layer.technique)}`);
 }

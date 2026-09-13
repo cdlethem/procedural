@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import legacyV3 from "../lib/legacy-v3.json";
 import { createDocument } from "../lib/studio";
 import { renderHarness, computeRebaseDelta } from "../lib/harness-render";
 import { createDocumentV3, STUDIO_BINDING, P5_RUNNER_PROFILE, validateStudioDocument, type StudioDocumentV3 } from "../lib/studio-document";
@@ -7,6 +8,26 @@ import { createDocumentV3, STUDIO_BINDING, P5_RUNNER_PROFILE, validateStudioDocu
 const hash = "0".repeat(64);
 const graphics = () => ({ width: 640, height: 640, pixelDensity: () => 1, drawingContext: {}, background() {}, push() {}, pop() {}, tint() {}, noTint() {}, clear() {}, image() {}, remove() {} });
 const p = { P2D: "p2d", WEBGL: "webgl", createGraphics: graphics, clear() {}, image() {} };
+
+test("saved mixed Studio documents migrate the exact previous catalog without changing layer content", () => {
+  const current = createDocumentV3();
+  current.layers.push({
+    id: "saved-source", kind: "source", visible: true, opacity: 0.6,
+    content: {
+      language: "p5js", sourceArtifactHash: hash, previewArtifactHash: "1".repeat(64),
+      runnerProfile: P5_RUNNER_PROFILE, entrypoint: "sketch.js", background: "transparent",
+      randomSeed: 91, noiseSeed: 5, tick: 3, controls: { density: 18 },
+    },
+  });
+  const saved = { ...current, catalogSha256: legacyV3.catalogSha256 };
+  const imported = validateStudioDocument(saved);
+  assert.deepEqual(imported, current);
+  assert.notEqual(imported.layers[1].content, saved.layers[1].content);
+  assert.throws(() => validateStudioDocument({ ...saved, catalogSha256: "unknown" }), /stale or unsupported/);
+  const forged = validateStudioDocument(createDocument("orbit-beads"));
+  forged.catalogSha256 = legacyV3.catalogSha256;
+  assert.throws(() => validateStudioDocument(forged), /not available in the previous studio-v3 binding/);
+});
 
 test("app documents migrate to harness-v1 workflow layers", () => {
   const migrated = validateStudioDocument(createDocument());

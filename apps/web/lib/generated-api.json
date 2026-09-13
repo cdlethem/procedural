@@ -2014,6 +2014,183 @@
       "sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c"
     },
     {
+      "id": "geometry.marching-squares-2d",
+      "version": "0.1.0",
+      "role": "generator",
+      "description": "Extract ordered isoline segments from an explicit row-major scalar grid with a fixed high-corner saddle rule.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "columns": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 9007199254740991
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 9007199254740991
+          },
+          "origin": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "spacing": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "threshold": {
+            "type": "number"
+          },
+          "maxWork": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "values",
+          "columns",
+          "rows",
+          "origin",
+          "spacing",
+          "threshold",
+          "maxWork"
+        ],
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "segments": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            }
+          },
+          "cellIndices": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          }
+        },
+        "required": [
+          "segments",
+          "cellIndices"
+        ],
+        "additionalProperties": false
+      },
+      "errors": {
+        "INVALID_INPUT": "Malformed input, nonfinite supplied number or violated shape/domain constraint.",
+        "WORK_LIMIT": "Required work exceeds explicit maxWork, or work-count arithmetic is not a safe integer.",
+        "NUMERIC_OVERFLOW": "A computed geometry or scalar intermediate is nonfinite."
+      },
+      "errorOrder": [],
+      "behavior": {
+        "validation": "Accept exactly the input keys and plain JSON-compatible objects/arrays, finite numeric values (not booleans), and safe integer count/budget fields. Validate complete input before computation. maxWork is required nonnegative safe integer. No coercion, defaults or hidden allocation retries. Failure throws an Error with stable code. No partial result. Canonicalize exposed signed zero to +0.",
+        "environment": "No RNG, noise, time, renderer, assets or host state. Coordinates use caller units, x right and y down in p5 examples; algorithm works in either coordinate orientation. Inputs are copied or read only, output detached; no retained aliases.",
+        "numerics": "IEEE754 binary64 separate arithmetic operations, no epsilon in classification or topology. Reject every nonfinite computed intermediate with NUMERIC_OVERFLOW. General coordinate and length comparisons allow absolute 1e-9 plus relative 1e-12; integer indices, output order and topology compare exactly. Analytical shared fixtures use exactly representable cases and exact comparison. No exact-predicate robustness promise for nearly degenerate inputs.",
+        "algorithm": "Require values.length=columns*rows (safe integer product), both spacing components>0. Grid value index y*columns+x, coordinates origin+[x*spacing.x,y*spacing.y]. Visit cells row-major y=0..rows-2,x=0..columns-2. Cell source index=y*(columns-1)+x. Corners 0=top-left,1=top-right,2=bottom-right,3=bottom-left; high means value>=threshold. Edges 0=top,1=right,2=bottom,3=left. Cross only edges whose endpoint classifications differ. Interpolate horizontal edges left->right, vertical edges top->bottom, t=(threshold-va)/(vb-va), point=A+t*(B-A); t=0 or 1 returns exact endpoint. Constant/equal edges never cross.",
+        "saddle_and_order": "Two crossings make one segment pairing ascending edge IDs. Four crossings: emit segments around each high corner, corner 0 pairs (0,3),1 pairs (0,1),2 pairs (1,2),3 pairs (2,3). This separates diagonally high corners, regardless of center value; no asymptotic decider. Sort each pair ascending then pairs lexicographically. Emit endpoint coordinates in that edge order, suppress exactly zero-length segments. Duplicate segments from different cells are retained. No joining, filled contours, saddle smoothing or level deduplication.",
+        "budget": "Validate grid and charge columns*rows+(columns-1)*(rows-1) work before output allocation; sum/products must be safe integers and <=maxWork else WORK_LIMIT. O(rows*columns) work/storage; at most two segments per cell. Nonfinite grid coordinate/interpolation arithmetic is NUMERIC_OVERFLOW even if no segment is ultimately emitted.",
+        "native_surface": "p5.js named export marchingSquares2D(input) from packages/javascript/src/marching-squares-2d.js; plain output matching output_schema. Other targets deferred."
+      },
+      "provenance": [],
+      "javascript": {
+        "exports": [
+          "marchingSquares2D"
+        ],
+        "module": "packages/javascript/src/marching-squares-2d.js",
+        "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Draw contours from a scalar grid",
+        "summary": "Extract isoline segments at one explicit threshold.",
+        "useWhen": "Use it for topographic strokes, overlapping hill contours and other sampled scalar fields.",
+        "inputs": {
+          "values": "Flat row-major scalar samples: values[y * columns + x]. Supply exactly columns × rows finite numbers; create the field separately from extracting its contours.",
+          "columns": "Number of grid samples across, at least 2. There are columns − 1 cells across.",
+          "rows": "Number of grid samples down, at least 2. There are rows − 1 cells down.",
+          "origin": "Finite [x, y] position of the top-left grid sample, in your drawing units.",
+          "spacing": "Positive [x, y] distance between neighboring samples. The final grid sample is at origin + [(columns − 1) × spacing[0], (rows − 1) × spacing[1]].",
+          "threshold": "Finite scalar level to trace. Values equal to the threshold count as high. Call again with the same values and a different level for layered contours.",
+          "maxWork": "Nonnegative safe integer allowance, at least columns × rows + (columns − 1) × (rows − 1). A smaller budget throws WORK_LIMIT without returning partial segments."
+        },
+        "output": "The plain result {segments,cellIndices} contains [x1,y1,x2,y2] strokes in cell order and the row-major source-cell index for each. A cell produces zero, one or two strokes. The result is a segment collection; it does not join loops or create filled regions.",
+        "code": "const result = marchingSquares2D({\n  values: [0, 1, 0, 1],\n  columns: 2,\n  rows: 2,\n  origin: [0, 0],\n  spacing: [10, 10],\n  threshold: 0.5,\n  maxWork: 5,\n});\nconsole.log(result);",
+        "tryThis": "Draw each segment with p.line(...segment). Retain your scalar samples and repeat the call at several thresholds, assigning a different palette color to each level.",
+        "pitfalls": [
+          "Ambiguous saddle cells keep diagonal high corners separate using a fixed rule, regardless of the center value.",
+          "Values equal to the threshold count as high; constant edges do not cross, and zero-length strokes are omitted."
+        ],
+        "importLine": "import { marchingSquares2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "segments": [
+              [
+                5,
+                0,
+                5,
+                10
+              ]
+            ],
+            "cellIndices": [
+              0
+            ]
+          }
+        ]
+      },
+      "support": [
+        {
+          "target": "processing-java",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "p5js",
+          "core": "conformant",
+          "native": "validated-scoped",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "py5",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "processing-android",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        }
+      ],
+      "sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676"
+    },
+    {
       "id": "raster.masked-source-over-2d",
       "version": "0.1.0",
       "role": "transform",
@@ -4277,6 +4454,215 @@
         }
       ],
       "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+    },
+    {
+      "id": "geometry.resample-polyline-2d",
+      "version": "0.1.0",
+      "role": "generator",
+      "description": "Sample an explicit open or closed polyline at uniformly spaced traveled distances without smoothing its corners.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "closed": {
+            "type": "boolean"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4294967295
+          },
+          "maxWork": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "points",
+          "closed",
+          "count",
+          "maxWork"
+        ],
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "distances": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "sourceSegments": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "totalLength": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "points",
+          "distances",
+          "sourceSegments",
+          "totalLength"
+        ],
+        "additionalProperties": false
+      },
+      "errors": {
+        "INVALID_INPUT": "Malformed input, nonfinite supplied number or violated shape/domain constraint.",
+        "WORK_LIMIT": "Required work exceeds explicit maxWork, or work-count arithmetic is not a safe integer.",
+        "NUMERIC_OVERFLOW": "A computed geometry or scalar intermediate is nonfinite."
+      },
+      "errorOrder": [],
+      "behavior": {
+        "validation": "Accept exactly the input keys and plain JSON-compatible objects/arrays, finite numeric values (not booleans), and safe integer count/budget fields. Validate complete input before computation. maxWork is required nonnegative safe integer. No coercion, defaults or hidden allocation retries. Failure throws an Error with stable code. No partial result. Canonicalize exposed signed zero to +0.",
+        "environment": "No RNG, noise, time, renderer, assets or host state. Coordinates use caller units, x right and y down in p5 examples; algorithm works in either coordinate orientation. Inputs are copied or read only, output detached; no retained aliases.",
+        "numerics": "IEEE754 binary64 separate arithmetic operations, no epsilon in classification or topology. Reject every nonfinite computed intermediate with NUMERIC_OVERFLOW. General coordinate and length comparisons allow absolute 1e-9 plus relative 1e-12; integer indices, output order and topology compare exactly. Analytical shared fixtures use exactly representable cases and exact comparison. No exact-predicate robustness promise for nearly degenerate inputs.",
+        "algorithm": "Require at least one input point. closed=false requires count>=2; closed=true count>=1. count<=4294967295 is the p5 array-length representation bound, not a recommended range or allocation promise. Source segments are adjacent pairs indexed 0..N-2; closed adds last->first at N-1 (also for N=1). Segment length=Math.hypot(dx,dy), total sequential sum. Ignore zero-length segments and cumulative plateaus (new total==old total) for lookup without changing source indices. For open output sample k=0..count-1 distance totalLength*(k/(count-1)); last distance exactly totalLength and last point exactly final supplied point. Closed distance totalLength*(k/count), with no deliberately appended endpoint. Binary64 rounding may repeat distances/points, including a rounded final distance equal to totalLength; retain these samples without repair or deduplication. At exact internal cumulative distance choose outgoing first segment whose cumulative end > distance; final open endpoint chooses last positive retained segment. Interpolate t=(distance-startLength)/(endLength-startLength), point=start+t*(end-start); t=0 returns exact start. If totalLength==0 repeat first input point count times with distances 0 and sourceSegments 0.",
+        "budget": "Require N+count<=maxWork before segment allocation or sampling; otherwise WORK_LIMIT. N+count must be safe integer. O(N+count) work using monotonically advancing segment cursor, O(N+count) storage. count describes output sampling, not simplification or exact corner inclusion. sourceSegments refer to original input edges; no tangent is returned.",
+        "native_surface": "p5.js named export resamplePolyline2D(input) from packages/javascript/src/resample-polyline-2d.js; plain output matching output_schema. Other targets deferred."
+      },
+      "provenance": [],
+      "javascript": {
+        "exports": [
+          "resamplePolyline2D"
+        ],
+        "module": "packages/javascript/src/resample-polyline-2d.js",
+        "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Space marks by traveled distance",
+        "summary": "Sample an existing polyline uniformly without smoothing its corners.",
+        "useWhen": "Use it for beads, cross stitches and repeated symbols along open or closed paths.",
+        "inputs": {
+          "points": "At least one finite [x, y] point in path order. Adjacent points form straight segments; repeated points are allowed. The operation samples this supplied shape without fitting a spline.",
+          "closed": "Use false for an open path with both endpoints included, or true to include the final-to-first edge without appending an extra closing sample. Floating-point rounding may still repeat distances or points.",
+          "count": "Required number of returned samples: at least 2 for an open path or 1 for a closed path, at most 4294967295 for JavaScript array representation. That ceiling is not an allocation guarantee. Spacing is total traveled length divided by count − 1 (open) or count (closed). Corners are not necessarily sample positions.",
+          "maxWork": "Nonnegative safe integer allowance, at least points.length + count. A smaller budget throws WORK_LIMIT before sampling."
+        },
+        "output": "The plain result has points, distances, sourceSegments and totalLength. Each sample carries its traveled distance and original input-edge index; sourceSegments selects the outgoing nonzero edge at an exact internal corner. No tangent is returned. All-coincident input repeats its first point with zero distances and source indices.",
+        "code": "const result = resamplePolyline2D({\n  points: [[0, 0], [6, 0], [6, 8]],\n  closed: false,\n  count: 8,\n  maxWork: 100,\n});\nconsole.log(result);",
+        "tryThis": "Draw a circle at each returned point. To orient a mark, look up its original sourceSegments edge and use that edge's direction; changing count controls mark density independently of path construction.",
+        "pitfalls": [
+          "Equal travel distance does not imply equal straight-line separation across corners.",
+          "Joining only the returned samples can cut across a corner; retain your original polyline when drawing its outline."
+        ],
+        "importLine": "import { resamplePolyline2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          {
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ],
+              [
+                6,
+                4
+              ],
+              [
+                6,
+                6
+              ],
+              [
+                6,
+                8
+              ]
+            ],
+            "distances": [
+              0,
+              2,
+              4,
+              6,
+              8,
+              10,
+              12,
+              14
+            ],
+            "sourceSegments": [
+              0,
+              0,
+              0,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "totalLength": 14
+          }
+        ]
+      },
+      "support": [
+        {
+          "target": "processing-java",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "p5js",
+          "core": "conformant",
+          "native": "validated-scoped",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "py5",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "processing-android",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        }
+      ],
+      "sha256": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e"
     },
     {
       "id": "layout.retained-rectangle-cuts-2d",
@@ -6740,6 +7126,178 @@
         }
       ],
       "sha256": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f"
+    },
+    {
+      "id": "geometry.voronoi-cells-2d",
+      "version": "0.1.0",
+      "role": "generator",
+      "description": "Return nearest-site cells clipped to an explicit axis-aligned rectangle.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "sites": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "bounds": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "maxWork": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "sites",
+          "bounds",
+          "maxWork"
+        ],
+        "additionalProperties": false
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "cells": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        },
+        "required": [
+          "cells"
+        ],
+        "additionalProperties": false
+      },
+      "errors": {
+        "INVALID_INPUT": "Malformed input, nonfinite supplied number or violated shape/domain constraint.",
+        "WORK_LIMIT": "Required work exceeds explicit maxWork, or work-count arithmetic is not a safe integer.",
+        "NUMERIC_OVERFLOW": "A computed geometry or scalar intermediate is nonfinite."
+      },
+      "errorOrder": [],
+      "behavior": {
+        "validation": "Accept exactly the input keys and plain JSON-compatible objects/arrays, finite numeric values (not booleans), and safe integer count/budget fields. Validate complete input before computation. maxWork is required nonnegative safe integer. No coercion, defaults or hidden allocation retries. Failure throws an Error with stable code. No partial result. Canonicalize exposed signed zero to +0.",
+        "environment": "No RNG, noise, time, renderer, assets or host state. Coordinates use caller units, x right and y down in p5 examples; algorithm works in either coordinate orientation. Inputs are copied or read only, output detached; no retained aliases.",
+        "numerics": "IEEE754 binary64 separate arithmetic operations, no epsilon in classification or topology. Reject every nonfinite computed intermediate with NUMERIC_OVERFLOW. General coordinate and length comparisons allow absolute 1e-9 plus relative 1e-12; integer indices, output order and topology compare exactly. Analytical shared fixtures use exactly representable cases and exact comparison. No exact-predicate robustness promise for nearly degenerate inputs.",
+        "algorithm": "bounds=[minX,minY,maxX,maxY] with minX<maxX and minY<maxY. Sites may lie outside bounds; empty sites yields cells=[]. Produce one cell per site in original order. Exact duplicate sites (signed zero equal) belong only to first site; later cells=[]. Start each cell [(minX,minY),(maxX,minY),(maxX,maxY),(minX,maxY)]. For each other site in input order, skip equal duplicate, clip by a*(x-midX)+b*(y-midY)<=0 where a=other.x-site.x,b=other.y-site.y,midX=site.x+a/2,midY=site.y+b/2. Visit polygon edges previous->current with previous initialized last vertex; inside-inside append current, outside-inside append intersection then current, inside-outside append intersection, outside-outside append nothing. Intersection t=dPrevious/(dPrevious-dCurrent), point=previous+t*(current-previous). Boundary is inside. No coordinate snapping.",
+        "canonicalization": "After each clip remove consecutive exactly equal points including duplicate closing point. Retain collinear vertices. At completion remove cells with fewer than three vertices or exactly zero signed double area (sum cross-products in polygon order). Preserve rectangle winding; rotate each nonempty polygon to lexicographically smallest [x,y] vertex, first occurrence wins. Empty/point/line cells are []. Numeric rounding can collapse cells; no repair or exact geometric guarantee.",
+        "budget": "Before processing, charge N*N work for duplicate/comparison preflight (safe arithmetic required). Then charge one work unit for each polygon edge visited during clipping. If total would exceed maxWork, throw WORK_LIMIT before that visit. Empty input costs 0. Worst-case O(N^3) clipping work, O(N^2) retained output, bounded by supplied maxWork; no universal latency guarantee.",
+        "native_surface": "p5.js named export voronoiCells2D(input) from packages/javascript/src/voronoi-cells-2d.js; plain output matching output_schema. Other targets deferred."
+      },
+      "provenance": [],
+      "javascript": {
+        "exports": [
+          "voronoiCells2D"
+        ],
+        "module": "packages/javascript/src/voronoi-cells-2d.js",
+        "package": "@procedurals/javascript"
+      },
+      "guide": {
+        "title": "Divide a rectangle into nearest-site cells",
+        "summary": "Create polygon regions around supplied sites.",
+        "useWhen": "Use it for mosaics, nested cell outlines or independently styled regions.",
+        "inputs": {
+          "sites": "Ordered finite [x, y] points, in your drawing units. Moving one changes its nearest-site region. Sites may lie outside the bounds; exact duplicates belong to their first occurrence.",
+          "bounds": "[minX, minY, maxX, maxY] with strictly positive width and height. Every returned cell is clipped to this rectangle.",
+          "maxWork": "Nonnegative safe integer work allowance. The operation charges sites.length squared, then one unit per polygon edge visited while clipping. An insufficient budget throws WORK_LIMIT without returning partial cells."
+        },
+        "output": "The plain result {cells} contains one polygon per input site, in the same order. Each polygon is an array of [x,y] vertices with implicit closure; [] represents an empty or later-duplicate cell. Outputs are detached from your inputs.",
+        "code": "const result = voronoiCells2D({\n  sites: [[2, 5], [8, 5]],\n  bounds: [0, 0, 10, 10],\n  maxWork: 100,\n});\nconsole.log(result.cells);",
+        "tryThis": "For each nonempty cell call p.beginShape(), emit its vertices, then p.endShape(p.CLOSE). Change the sites to edit boundaries; reuse the same polygons for different drawing treatments.",
+        "pitfalls": [
+          "Nearly degenerate geometry uses binary64 arithmetic without an exact-predicate guarantee.",
+          "Shrinking a cell toward its site is a drawing choice, not an equal-distance polygon inset."
+        ],
+        "importLine": "import { voronoiCells2D } from \"@procedurals/javascript\";",
+        "exampleResult": [
+          [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                10
+              ],
+              [
+                0,
+                10
+              ]
+            ],
+            [
+              [
+                5,
+                0
+              ],
+              [
+                10,
+                0
+              ],
+              [
+                10,
+                10
+              ],
+              [
+                5,
+                10
+              ]
+            ]
+          ]
+        ]
+      },
+      "support": [
+        {
+          "target": "processing-java",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "p5js",
+          "core": "conformant",
+          "native": "validated-scoped",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "py5",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        },
+        {
+          "target": "processing-android",
+          "core": "unvalidated",
+          "native": "unvalidated",
+          "technique": "unvalidated"
+        }
+      ],
+      "sha256": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298"
     }
   ]
 }

@@ -7,6 +7,7 @@ import type {
 import gallery from "./generated-gallery.json";
 import legacy from "./legacy-v1.json";
 import legacyV2 from "./legacy-v2.json";
+import legacyV3 from "./legacy-v3.json";
 import { validateCutEdits } from "./cut-model";
 import {
   IDENTITY_LAYER_TRANSFORM,
@@ -15,6 +16,7 @@ import {
 import { basicDefinitions } from "./adapters/basic";
 import { geometryDefinitions } from "./adapters/geometry";
 import { effectsDefinitions } from "./adapters/effects";
+import { expansionDefinitions } from "./adapters/expansion";
 import type { StudioDefinition } from "./adapters/types";
 
 export const MAX_LAYERS = 8;
@@ -23,6 +25,7 @@ const definitions: readonly StudioDefinition[] = [
   ...basicDefinitions,
   ...geometryDefinitions,
   ...effectsDefinitions,
+  ...expansionDefinitions,
 ];
 const ORIGINAL = [0x31a151, 0xffa71e, 0x05084c, 0xde4638, 0x3dbdb7];
 const NEON = [0x2e0551, 0xff00c7, 0x01afc2, 0xfdbe03, 0xf4f9fd];
@@ -329,15 +332,18 @@ function migrateV1(input: unknown): StudioDocument {
     layers,
   };
 }
-/** Strictly admits v3 documents and migrates only the frozen exact v1/v2 bindings. */
+/** Admit the current binding and migrate frozen predecessors with their exact membership. */
 export function validateDocument(input: unknown): StudioDocument {
   const probe = object(input, "Document");
   if (probe.bindingVersion === legacy.bindingVersion) return migrateV1(input);
   const fromV2 = probe.bindingVersion === legacyV2.bindingVersion;
+  const fromPreviousV3 = probe.bindingVersion === legacyV3.bindingVersion &&
+    probe.catalogSha256 === legacyV3.catalogSha256;
   const current = validateEnvelope(
     input,
     fromV2 ? legacyV2.bindingVersion : "studio-v3",
-    fromV2 ? legacyV2.catalogSha256 : gallery.studioBinding.catalogSha256,
+    fromV2 ? legacyV2.catalogSha256 : fromPreviousV3
+      ? legacyV3.catalogSha256 : gallery.studioBinding.catalogSha256,
     fromV2 ? 2 : 3,
   );
   const ids = new Set<string>();
@@ -346,6 +352,9 @@ export function validateDocument(input: unknown): StudioDocument {
       item = definition(layer.technique as string),
       checked = parameters(layer.params, item, `${path}.params`),
       id = layer.id as string;
+    if (fromPreviousV3 && !legacyV3.techniques.some(
+      (entry) => entry.technique === item.id,
+    )) throw new Error(`${path}.technique was not available in the previous studio-v3 binding`);
     if (fromV2) {
       const old = (legacyV2.techniques as unknown as StudioDefinition[]).find(
         (entry) => entry.id === item.id,

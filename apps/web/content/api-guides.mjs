@@ -22,6 +22,56 @@ const guide = (
 });
 
 const apiGuides = {
+  "geometry.voronoi-cells-2d": guide(
+    "Divide a rectangle into nearest-site cells",
+    "Create polygon regions around supplied sites.",
+    "Use it for mosaics, nested cell outlines or independently styled regions.",
+    ["sites", "bounds", "maxWork"],
+    "The plain result {cells} contains one polygon per input site, in the same order. Each polygon is an array of [x,y] vertices with implicit closure; [] represents an empty or later-duplicate cell. Outputs are detached from your inputs.",
+    `const result = voronoiCells2D({
+  sites: [[2, 5], [8, 5]],
+  bounds: [0, 0, 10, 10],
+  maxWork: 100,
+});
+console.log(result.cells);`,
+    "For each nonempty cell call p.beginShape(), emit its vertices, then p.endShape(p.CLOSE). Change the sites to edit boundaries; reuse the same polygons for different drawing treatments.",
+    ["Nearly degenerate geometry uses binary64 arithmetic without an exact-predicate guarantee.", "Shrinking a cell toward its site is a drawing choice, not an equal-distance polygon inset."],
+  ),
+  "geometry.resample-polyline-2d": guide(
+    "Space marks by traveled distance",
+    "Sample an existing polyline uniformly without smoothing its corners.",
+    "Use it for beads, cross stitches and repeated symbols along open or closed paths.",
+    ["points", "closed", "count", "maxWork"],
+    "The plain result has points, distances, sourceSegments and totalLength. Each sample carries its traveled distance and original input-edge index; sourceSegments selects the outgoing nonzero edge at an exact internal corner. No tangent is returned. All-coincident input repeats its first point with zero distances and source indices.",
+    `const result = resamplePolyline2D({
+  points: [[0, 0], [6, 0], [6, 8]],
+  closed: false,
+  count: 8,
+  maxWork: 100,
+});
+console.log(result);`,
+    "Draw a circle at each returned point. To orient a mark, look up its original sourceSegments edge and use that edge's direction; changing count controls mark density independently of path construction.",
+    ["Equal travel distance does not imply equal straight-line separation across corners.", "Joining only the returned samples can cut across a corner; retain your original polyline when drawing its outline."],
+  ),
+  "geometry.marching-squares-2d": guide(
+    "Draw contours from a scalar grid",
+    "Extract isoline segments at one explicit threshold.",
+    "Use it for topographic strokes, overlapping hill contours and other sampled scalar fields.",
+    ["values", "columns", "rows", "origin", "spacing", "threshold", "maxWork"],
+    "The plain result {segments,cellIndices} contains [x1,y1,x2,y2] strokes in cell order and the row-major source-cell index for each. A cell produces zero, one or two strokes. The result is a segment collection; it does not join loops or create filled regions.",
+    `const result = marchingSquares2D({
+  values: [0, 1, 0, 1],
+  columns: 2,
+  rows: 2,
+  origin: [0, 0],
+  spacing: [10, 10],
+  threshold: 0.5,
+  maxWork: 5,
+});
+console.log(result);`,
+    "Draw each segment with p.line(...segment). Retain your scalar samples and repeat the call at several thresholds, assigning a different palette color to each level.",
+    ["Ambiguous saddle cells keep diagonal high corners separate using a fixed rule, regardless of the center value.", "Values equal to the threshold count as high; constant edges do not cross, and zero-length strokes are omitted."],
+  ),
   "mesh.annular-solid-3d": guide(
     "Build an annular mesh",
     "Make indexed ring geometry you can light or export.",

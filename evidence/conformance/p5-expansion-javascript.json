@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "node_version": "v22.22.1",
+  "scope": "Three p5-only pure cores: exact analytical fixtures plus validation, ownership, overflow, endpoint and bounded-work checks. No rendering or support acceptance claim.",
+  "operations": [
+    "geometry.voronoi-cells-2d",
+    "geometry.resample-polyline-2d",
+    "geometry.marching-squares-2d"
+  ],
+  "input_sha256_before": {
+    "catalog/operations/voronoi-cells-2d.json": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298",
+    "fixtures/operations/voronoi-cells-2d.json": "d5da4750bc9f83512e19f188f6af8a2231090679e0fa3b0486ba9183eb319b91",
+    "packages/javascript/src/voronoi-cells-2d.js": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6",
+    "catalog/operations/resample-polyline-2d.json": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e",
+    "fixtures/operations/resample-polyline-2d.json": "904e4e5419fcc24130bcaf7b03096bc5eff642cb3018fb8826e6b8a8980ed0ba",
+    "packages/javascript/src/resample-polyline-2d.js": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42",
+    "catalog/operations/marching-squares-2d.json": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676",
+    "fixtures/operations/marching-squares-2d.json": "cf463d6de63e7bb7c84b1c548701deb235c4c66585d46d2e62510b7f93fedb1e",
+    "packages/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+    "tests/native/p5-expansion-javascript.mjs": "2bdd4f9a6010c435a10b195873399e5c72da1aae61bfde2bb940dfa5e32db999"
+  },
+  "input_sha256_after": {
+    "catalog/operations/voronoi-cells-2d.json": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298",
+    "fixtures/operations/voronoi-cells-2d.json": "d5da4750bc9f83512e19f188f6af8a2231090679e0fa3b0486ba9183eb319b91",
+    "packages/javascript/src/voronoi-cells-2d.js": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6",
+    "catalog/operations/resample-polyline-2d.json": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e",
+    "fixtures/operations/resample-polyline-2d.json": "904e4e5419fcc24130bcaf7b03096bc5eff642cb3018fb8826e6b8a8980ed0ba",
+    "packages/javascript/src/resample-polyline-2d.js": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42",
+    "catalog/operations/marching-squares-2d.json": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676",
+    "fixtures/operations/marching-squares-2d.json": "cf463d6de63e7bb7c84b1c548701deb235c4c66585d46d2e62510b7f93fedb1e",
+    "packages/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+    "tests/native/p5-expansion-javascript.mjs": "2bdd4f9a6010c435a10b195873399e5c72da1aae61bfde2bb940dfa5e32db999"
+  },
+  "scenarios": {
+    "fixture_cases": 26,
+    "native_only": [
+      "plain-data carriers",
+      "detached input and output",
+      "Voronoi tiling and nearest-site inequality",
+      "polyline direction, seam and length",
+      "contour shared endpoints and affine coordinates",
+      "invalid data before budget",
+      "computed overflow",
+      "exact t=1 endpoints"
+    ],
+    "performance": {
+      "voronoi": {
+        "tiny": {
+          "n": 4,
+          "elapsed_ms": 0.151,
+          "checksum": "394e9ac5229dfa89b0daaa305feedeac0acc5ade51c27aecab77e1ed5b1ab7d9",
+          "repetitions": 3
+        },
+        "study": {
+          "n": 64,
+          "elapsed_ms": 9.9,
+          "checksum": "4b2b0ad494ad1c22e7e9336c26850c9905c03f6ce359de15aba4798c14632cf9",
+          "repetitions": 3
+        },
+        "stress": {
+          "n": 144,
+          "elapsed_ms": 11.901,
+          "checksum": "ae04ade008f095a5dbf764f71e0c27c2198b741dd877e15b90ff9fa0a66daf93",
+          "repetitions": 3
+        }
+      },
+      "resample": {
+        "tiny": {
+          "n": 4,
+          "elapsed_ms": 0.04,
+          "checksum": "4dafe6172633781977042018e65b3e121545485e5a542687b63ea1b1c9487d51",
+          "repetitions": 3
+        },
+        "study": {
+          "n": 160,
+          "elapsed_ms": 1.03,
+          "checksum": "a4315d287a37845fca280c908c132cb65e43502b2d4b4d9ca79229c5f3b2edea",
+          "repetitions": 3
+        },
+        "stress": {
+          "n": 2000,
+          "elapsed_ms": 5.058,
+          "checksum": "0622df0cf21cb83ee01f6d432d3bed659087038a4850ad16be8410e2ced352a4",
+          "repetitions": 3
+        }
+      },
+      "marching": {
+        "tiny": {
+          "n": 4,
+          "elapsed_ms": 0.048,
+          "checksum": "c9d0264d36497b50ae1e5d9500366ce0a1733b4e951e6b572804c637f8dd970e",
+          "repetitions": 3
+        },
+        "study": {
+          "n": 81,
+          "elapsed_ms": 6.278,
+          "checksum": "f96866ac2ba0043d2e821d06899c2e677a8b6adee9c9777ce830e882f761bc5e",
+          "repetitions": 3
+        },
+        "stress": {
+          "n": 128,
+          "elapsed_ms": 11.526,
+          "checksum": "3be00d4c1958a54d558a015311f953e482ded6865e250a25aca2215d41870971",
+          "repetitions": 3
+        }
+      }
+    }
+  }
+}

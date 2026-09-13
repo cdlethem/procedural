@@ -126,6 +126,32 @@ Palette entry selection is generic; the palette literals are artwork.
         })
         return ledger, cluster_id
 
+    def independent_design_ledger(self):
+        ledger = copy.deepcopy(self.ledger)
+        cluster_id = "design.test-operation"
+        ledger["clusters"].append({
+            "id": cluster_id,
+            "status": "reviewed",
+            "reason": "A root-reviewed independent operation design.",
+            "admission_kind": "independent_design",
+            "architecture": {
+                "level": "operation_candidate",
+                "status": "reviewed",
+                "inputs": "finite planar coordinate and explicit seed",
+                "outputs": "one deterministic scalar sample",
+                "invariants": "no rendering or host state",
+                "open_questions": [],
+            },
+            "independent_admission": {
+                "status": "reviewed",
+                "owner": "root",
+                "reviewer": "independent architecture reviewer",
+                "decision": "design/capabilities/independent-test.md",
+                "rationale": "This operation is independently designed and claims no corpus extraction.",
+            },
+        })
+        return ledger, cluster_id
+
     def test_triage_is_not_a_final_review_and_complete_review_is_separately_checkable(self):
         self.assertEqual([], self.check())
         self.assertTrue(any("unresolved" in e for e in self.check(require_reviewed=True)))
@@ -249,6 +275,24 @@ Palette entry selection is generic; the palette literals are artwork.
         ledger["clusters"][-1]["admission_kind"] = "invented"
         self.assertTrue(any("unknown admission kind" in error
                             for error in self.check(ledger, contract_cluster=cluster_id)))
+
+    def test_independent_design_admission_accepts_no_candidate_cluster(self):
+        ledger, cluster_id = self.independent_design_ledger()
+        self.assertEqual([], self.check(ledger, contract_cluster=cluster_id))
+
+    def test_independent_design_admission_requires_reviewer_rationale_and_no_members(self):
+        ledger, cluster_id = self.independent_design_ledger()
+        admission = ledger["clusters"][-1]["independent_admission"]
+        admission["reviewer"] = ""
+        admission["rationale"] = ""
+        errors = self.check(ledger, contract_cluster=cluster_id)
+        self.assertTrue(any("independent_admission requires a reviewer" in error for error in errors))
+        self.assertTrue(any("independent_admission requires a rationale" in error for error in errors))
+        admission["reviewer"] = "independent architecture reviewer"
+        admission["rationale"] = "This operation is independently designed and claims no corpus extraction."
+        ledger["records"]["sample#0"]["cluster_id"] = cluster_id
+        errors = self.check(ledger, contract_cluster=cluster_id)
+        self.assertTrue(any("independent design cannot assign candidate members" in error for error in errors))
 
     def test_audit_fields_are_checked_without_contract_gate(self):
         ledger = copy.deepcopy(self.ledger)

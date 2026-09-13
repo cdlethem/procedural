@@ -8,6 +8,7 @@
  */
 import { createDocument, definition, MAX_LAYERS, validateDocument } from "./studio";
 import type { Layer } from "./studio-types";
+import legacyV3 from "./legacy-v3.json";
 
 export const STUDIO_BINDING = "harness-v1";
 export const P5_RUNNER_PROFILE = "p5-static-640-v1";
@@ -224,7 +225,7 @@ function documentLayer(value: unknown, path: string): DocumentLayer {
     return { ...shared, kind: "recipe", content: recipeContent(source.content, `${path}.content`) };
   throw new Error(`${path}.kind must be workflow, source or recipe`);
 }
-/** Strictly admits harness-v1 documents. */
+/** Admit harness-v1 documents, including the exact compatible pre-expansion catalog. */
 export function validateDocumentV3(input: unknown): StudioDocumentV3 {
   const source = object(input, "Document");
   exact(
@@ -235,7 +236,8 @@ export function validateDocumentV3(input: unknown): StudioDocumentV3 {
   if (source.schemaVersion !== 2) throw new Error("Document schemaVersion must be 2");
   if (source.bindingVersion !== STUDIO_BINDING)
     throw new Error(`Document bindingVersion must be ${STUDIO_BINDING}`);
-  if (source.catalogSha256 !== catalogDigest())
+  const fromPreviousV3 = source.catalogSha256 === legacyV3.catalogSha256;
+  if (source.catalogSha256 !== catalogDigest() && !fromPreviousV3)
     throw new Error("Document catalogSha256 is stale or unsupported");
   if (source.width !== 640 || source.height !== 640)
     throw new Error("Document canvas must be 640 by 640");
@@ -247,6 +249,9 @@ export function validateDocumentV3(input: unknown): StudioDocumentV3 {
   const ids = new Set<string>(),
     layers = source.layers.map((entry, index) => {
       const layer = documentLayer(entry, `Document layers[${index}]`);
+      if (fromPreviousV3 && layer.kind === "workflow" && !legacyV3.techniques.some(
+        (entry) => entry.technique === layer.content.technique,
+      )) throw new Error(`Document layers[${index}].technique was not available in the previous studio-v3 binding`);
       if (ids.has(layer.id)) throw new Error(`Document layers[${index}].id must be unique`);
       ids.add(layer.id);
       return layer;

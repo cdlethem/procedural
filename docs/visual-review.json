@@ -2,6 +2,105 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "p5-gallery-expansion",
+      "title": "Six p5 geometry studies",
+      "category": "Root reviewed p5-only expansion",
+      "description": "Original design studies with baseline and structural edits; scoped Canvas2D review, not corpus recreations.",
+      "evidence": "evidence/web/p5-gallery-expansion/root-review.json",
+      "images": [
+        {
+          "label": "cell-mosaic \u2014 gallery-baseline",
+          "path": ".work/p5-expansion/native-bound/cell-mosaic/gallery-baseline.png",
+          "sha256": "363daa4eed41ba140d2fcf27fc0b97128a2058e8d31b58836834d7d4dfdb577f"
+        },
+        {
+          "label": "cell-mosaic \u2014 gallery-structural-edit",
+          "path": ".work/p5-expansion/native-bound/cell-mosaic/gallery-structural-edit.png",
+          "sha256": "2b43f0009f35799115b98839df930926b821ebdc298e861fb38e8c6e5d20361b"
+        },
+        {
+          "label": "cell-mosaic \u2014 native-baseline",
+          "path": ".work/p5-expansion/native-bound/cell-mosaic/native-baseline.png",
+          "sha256": "942a5d469a4dd3645f1e6d53499b0cf35065295e342eb36a0fbf7d2d1dab7f51"
+        },
+        {
+          "label": "cell-echoes \u2014 gallery-baseline",
+          "path": ".work/p5-expansion/native-bound/cell-echoes/gallery-baseline.png",
+          "sha256": "2ec6f0424c3a3a03dc57f57560e1817113099ef95fb26495a31357dc0d3b6030"
+        },
+        {
+          "label": "cell-echoes \u2014 gallery-structural-edit",
+          "path": ".work/p5-expansion/native-bound/cell-echoes/gallery-structural-edit.png",
+          "sha256": "71e533f05a789f39880fcb4fdeb0faae1622435960a04fc4f5842ff8877f828c"
+        },
+        {
+          "label": "cell-echoes \u2014 native-baseline",
+          "path": ".work/p5-expansion/native-bound/cell-echoes/native-baseline.png",
+          "sha256": "d7c89086d158a9a7df606996dbf3af6f7d818ec86008140a1bf35e933d0efe16"
+        },
+        {
+          "label": "stitched-paths \u2014 gallery-baseline",
+          "path": ".work/p5-expansion/native-bound/stitched-paths/gallery-baseline.png",
+          "sha256": "0c8422859b718a79df9caee136169fcb9dbd6b3643fe7c6dce25b1b3399089b1"
+        },
+        {
+          "label": "stitched-paths \u2014 gallery-structural-edit",
+          "path": ".work/p5-expansion/native-bound/stitched-paths/gallery-structural-edit.png",
+          "sha256": "586f71146f20b854dd1a8bfb831403c7a06b51b1dbe94b636bd6cded464b0aa4"
+        },
+        {
+          "label": "stitched-paths \u2014 native-baseline",
+          "path": ".work/p5-expansion/native-bound/stitched-paths/native-baseline.png",
+          "sha256": "2ee04174485d77e5afaab8216a913f3b79890e413239892c98520044c74f3b91"
+        },
+        {
+          "label": "orbit-beads \u2014 gallery-baseline",
+          "path": ".work/p5-expansion/native-bound/orbit-beads/gallery-baseline.png",
+          "sha256": "b8545362bed0eedac63ece03b3df0b9e94c1a11ba4de3619a4377f49f9bfedc8"
+        },
+        {
+          "label": "orbit-beads \u2014 gallery-structural-edit",
+          "path": ".work/p5-expansion/native-bound/orbit-beads/gallery-structural-edit.png",
+          "sha256": "2f16ae8523402ffc1ab7df1a5bf9c23a33bf40b1370e662a0185ba7e971aa752"
+        },
+        {
+          "label": "orbit-beads \u2014 native-baseline",
+          "path": ".work/p5-expansion/native-bound/orbit-beads/native-baseline.png",
+          "sha256": "682cbd78b1b5d11e76d78c2510a5c7fe4cda2200ebd9dc14bd77d0988b73dd6c"
+        },
+        {
+          "label": "contour-terrain \u2014 gallery-baseline",
+          "path": ".work/p5-expansion/native-bound/contour-terrain/gallery-baseline.png",
+          "sha256": "efade17f2a1e3c2f44ab938e4043164e915dc969e4fc1ecbfb27788f7e055d3b"
+        },
+        {
+          "label": "contour-terrain \u2014 gallery-structural-edit",
+          "path": ".work/p5-expansion/native-bound/contour-terrain/gallery-structural-edit.png",
+          "sha256": "051c64b3f9b55f3abdb833f1045d9118ee1a2f84a57f50475074856c86c15ca6"
+        },
+        {
+          "label": "contour-terrain \u2014 native-baseline",
+          "path": ".work/p5-expansion/native-bound/contour-terrain/native-baseline.png",
+          "sha256": "6f2f68f9c58d2280b0a6be82d29fcee79ba6dca97bae2755073131680d100d35"
+        },
+        {
+          "label": "contour-blobs \u2014 gallery-baseline",
+          "path": ".work/p5-expansion/native-bound/contour-blobs/gallery-baseline.png",
+          "sha256": "763b1ece2437f0fb2cf0ce70319a351471cdcc47a11311634697fb5b3a5a68f1"
+        },
+        {
+          "label": "contour-blobs \u2014 gallery-structural-edit",
+          "path": ".work/p5-expansion/native-bound/contour-blobs/gallery-structural-edit.png",
+          "sha256": "d0ea41f6ed13e7d6174c98b13a8346c4a1701be74eef46dbc21d457e15dbf706"
+        },
+        {
+          "label": "contour-blobs \u2014 native-baseline",
+          "path": ".work/p5-expansion/native-bound/contour-blobs/native-baseline.png",
+          "sha256": "4d89de76d2ad488eaf8f54933bed210cfda4fc5e5841c9407f1a50e525666ad4"
+        }
+      ]
+    },
+    {
       "id": "studio-workspace",
       "title": "Studio workspace redesign",
       "category": "Root reviewed production UI",

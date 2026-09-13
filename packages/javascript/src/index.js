@@ -27,3 +27,6 @@ export { sequentialDiscProjection2D, DiscProjectionError } from "./disc-projecti
 export { annularSolid3D, MeshError as AnnularMeshError, FaceLimitError as AnnularFaceLimitError, MeshArithmeticError as AnnularMeshArithmeticError } from "./annular-mesh.js";
 export { separableBlur2D, SeparableBlurError } from "./separable-blur.js";
 export { nearestSegmentContact2D, ContactError } from "./nearest-segment-contact.js";
+export { voronoiCells2D } from "./voronoi-cells-2d.js";
+export { resamplePolyline2D } from "./resample-polyline-2d.js";
+export { marchingSquares2D } from "./marching-squares-2d.js";

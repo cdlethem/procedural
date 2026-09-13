@@ -1,0 +1,169 @@
+{
+  "id": "geometry.resample-polyline-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "geometry.resample-polyline-2d",
+  "description": "Sample an explicit open or closed polyline at uniformly spaced traveled distances without smoothing its corners.",
+  "capability_decision": "design/capabilities/p5-gallery-expansion.md",
+  "design_review": "design/operations/p5-gallery-expansion-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "closed": {
+        "type": "boolean"
+      },
+      "count": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4294967295
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "points",
+      "closed",
+      "count",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "points": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "distances": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "sourceSegments": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "totalLength": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "points",
+      "distances",
+      "sourceSegments",
+      "totalLength"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Sample an explicit open or closed polyline at uniformly spaced traveled distances without smoothing its corners. Outputs are detached; order and indices are stable.",
+  "behavior": {
+    "validation": "Accept exactly the input keys and plain JSON-compatible objects/arrays, finite numeric values (not booleans), and safe integer count/budget fields. Validate complete input before computation. maxWork is required nonnegative safe integer. No coercion, defaults or hidden allocation retries. Failure throws an Error with stable code. No partial result. Canonicalize exposed signed zero to +0.",
+    "environment": "No RNG, noise, time, renderer, assets or host state. Coordinates use caller units, x right and y down in p5 examples; algorithm works in either coordinate orientation. Inputs are copied or read only, output detached; no retained aliases.",
+    "numerics": "IEEE754 binary64 separate arithmetic operations, no epsilon in classification or topology. Reject every nonfinite computed intermediate with NUMERIC_OVERFLOW. General coordinate and length comparisons allow absolute 1e-9 plus relative 1e-12; integer indices, output order and topology compare exactly. Analytical shared fixtures use exactly representable cases and exact comparison. No exact-predicate robustness promise for nearly degenerate inputs.",
+    "algorithm": "Require at least one input point. closed=false requires count>=2; closed=true count>=1. count<=4294967295 is the p5 array-length representation bound, not a recommended range or allocation promise. Source segments are adjacent pairs indexed 0..N-2; closed adds last->first at N-1 (also for N=1). Segment length=Math.hypot(dx,dy), total sequential sum. Ignore zero-length segments and cumulative plateaus (new total==old total) for lookup without changing source indices. For open output sample k=0..count-1 distance totalLength*(k/(count-1)); last distance exactly totalLength and last point exactly final supplied point. Closed distance totalLength*(k/count), with no deliberately appended endpoint. Binary64 rounding may repeat distances/points, including a rounded final distance equal to totalLength; retain these samples without repair or deduplication. At exact internal cumulative distance choose outgoing first segment whose cumulative end > distance; final open endpoint chooses last positive retained segment. Interpolate t=(distance-startLength)/(endLength-startLength), point=start+t*(end-start); t=0 returns exact start. If totalLength==0 repeat first input point count times with distances 0 and sourceSegments 0.",
+    "budget": "Require N+count<=maxWork before segment allocation or sampling; otherwise WORK_LIMIT. N+count must be safe integer. O(N+count) work using monotonically advancing segment cursor, O(N+count) storage. count describes output sampling, not simplification or exact corner inclusion. sourceSegments refer to original input edges; no tangent is returned.",
+    "native_surface": "p5.js named export resamplePolyline2D(input) from packages/javascript/src/resample-polyline-2d.js; plain output matching output_schema. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed input, nonfinite supplied number or violated shape/domain constraint.",
+    "WORK_LIMIT": "Required work exceeds explicit maxWork, or work-count arithmetic is not a safe integer.",
+    "NUMERIC_OVERFLOW": "A computed geometry or scalar intermediate is nonfinite."
+  },
+  "parameters": {
+    "points": {
+      "unit": "See input schema and normative behavior.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "closed": {
+      "unit": "See input schema and normative behavior.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "count": {
+      "unit": "See input schema and normative behavior.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See input schema and normative behavior.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/resample-polyline-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original design studies, baseline plus structural edit and style transfer, actual p5 Canvas2D; not surveyed-original recreations."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root with independent architecture challenge",
+    "status": "Approved for p5 implementation; support acceptance pending execution."
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "operation": "geometry.marching-squares-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676",
+  "oracle": "Root analytical axis-aligned, integer-length and half-edge cases; expected outputs authored before implementation.",
+  "cases": [
+    {
+      "id": "constant",
+      "input": {
+        "values": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "threshold": 0.5,
+        "maxWork": 100
+      },
+      "output": {
+        "segments": [],
+        "cellIndices": []
+      }
+    },
+    {
+      "id": "vertical",
+      "input": {
+        "values": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "threshold": 0.5,
+        "maxWork": 100
+      },
+      "output": {
+        "segments": [
+          [
+            0.5,
+            0,
+            0.5,
+            1
+          ]
+        ],
+        "cellIndices": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "horizontal",
+      "input": {
+        "values": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "threshold": 0.5,
+        "maxWork": 100
+      },
+      "output": {
+        "segments": [
+          [
+            1,
+            0.5,
+            0,
+            0.5
+          ]
+        ],
+        "cellIndices": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "high-diagonal-02",
+      "input": {
+        "values": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "threshold": 0.5,
+        "maxWork": 100
+      },
+      "output": {
+        "segments": [
+          [
+            0.5,
+            0,
+            0,
+            0.5
+          ],
+          [
+            1,
+            0.5,
+            0.5,
+            1
+          ]
+        ],
+        "cellIndices": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "high-diagonal-13",
+      "input": {
+        "values": [
+          0,
+          1,
+          1,
+          0
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "threshold": 0.5,
+        "maxWork": 100
+      },
+      "output": {
+        "segments": [
+          [
+            0.5,
+            0,
+            1,
+            0.5
+          ],
+          [
+            0.5,
+            1,
+            0,
+            0.5
+          ]
+        ],
+        "cellIndices": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "equal-corner-suppressed",
+      "input": {
+        "values": [
+          0,
+          -1,
+          -1,
+          -1
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "threshold": 0,
+        "maxWork": 100
+      },
+      "output": {
+        "segments": [],
+        "cellIndices": []
+      }
+    },
+    {
+      "id": "equal-edge",
+      "input": {
+        "values": [
+          0,
+          0,
+          -1,
+          -1
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "threshold": 0,
+        "maxWork": 100
+      },
+      "output": {
+        "segments": [
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "cellIndices": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "wrong-grid-length",
+      "input": {
+        "values": [
+          0,
+          1
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "threshold": 0.5,
+        "maxWork": 100
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "budget",
+      "input": {
+        "values": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "columns": 2,
+        "rows": 2,
+        "origin": [
+          0,
+          0
+        ],
+        "spacing": [
+          1,
+          1
+        ],
+        "threshold": 0.5,
+        "maxWork": 4
+      },
+      "error": "WORK_LIMIT"
+    }
+  ]
+}

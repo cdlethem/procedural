@@ -909,6 +909,96 @@ Motivating evidence:
 
 Full behavioral contract: [catalog](../../catalog/operations/gradient-path.json).
 
+## geometry.marching-squares-2d (0.1.0)
+
+Extract ordered isoline segments from an explicit row-major scalar grid with a fixed high-corner saddle rule.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "columns": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 9007199254740991
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 9007199254740991
+    },
+    "origin": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "spacing": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "threshold": {
+      "type": "number"
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "values",
+    "columns",
+    "rows",
+    "origin",
+    "spacing",
+    "threshold",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| values | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| columns | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| rows | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| origin | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| spacing | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| threshold | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-gallery-expansion/root-review.json) | [validated-scoped](../../evidence/web/p5-gallery-expansion/root-review.json) | unvalidated | [review](../../evidence/web/p5-gallery-expansion/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/marching-squares-2d.json).
+
 ## raster.masked-source-over-2d (0.1.0)
 
 Composite same-sized straight ARGB8 rasters using an explicit scalar visibility mask.
@@ -1931,6 +2021,74 @@ Motivating evidence:
 - [`2019/generativos/paraisooscuro#3`](../../survey/out/2019/generativos/paraisooscuro/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/regular-grid.json).
+
+## geometry.resample-polyline-2d (0.1.0)
+
+Sample an explicit open or closed polyline at uniformly spaced traveled distances without smoothing its corners.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "closed": {
+      "type": "boolean"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "points",
+    "closed",
+    "count",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| points | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| closed | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| count | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-gallery-expansion/root-review.json) | [validated-scoped](../../evidence/web/p5-gallery-expansion/root-review.json) | unvalidated | [review](../../evidence/web/p5-gallery-expansion/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/resample-polyline-2d.json).
 
 ## layout.retained-rectangle-cuts-2d (0.1.0)
 
@@ -3085,3 +3243,69 @@ Motivating evidence:
 - [`2018/Generativos/puntis3#1`](../../survey/out/2018/Generativos/puntis3/notes.md)
 
 Full behavioral contract: [catalog](../../catalog/operations/triangle-coordinate-map.json).
+
+## geometry.voronoi-cells-2d (0.1.0)
+
+Return nearest-site cells clipped to an explicit axis-aligned rectangle.
+
+Contract status: reviewed.
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "sites": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "bounds": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "maxWork": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": [
+    "sites",
+    "bounds",
+    "maxWork"
+  ],
+  "additionalProperties": false
+}
+```
+
+| parameter | unit | default | encouraged range | evidence |
+|---|---|---|---|---|
+| sites | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| bounds | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+| maxWork | See input schema and normative behavior. | null | null | Independent design choice; no corpus-observed or measured recommended range. |
+
+`null` means no default or encouraged range is approved.
+
+Current implementation status comes from a separately reviewed attestation, not this immutable contract.
+
+| target | core | native integration | technique | evidence scope |
+|---|---|---|---|---|
+| processing-java | unvalidated | unvalidated | unvalidated | not attested |
+| p5js | [conformant](../../evidence/web/p5-gallery-expansion/root-review.json) | [validated-scoped](../../evidence/web/p5-gallery-expansion/root-review.json) | unvalidated | [review](../../evidence/web/p5-gallery-expansion/root-review.json) |
+| py5 | unvalidated | unvalidated | unvalidated | not attested |
+| processing-android | unvalidated | unvalidated | unvalidated | not attested |
+
+Motivating evidence:
+
+
+Full behavioral contract: [catalog](../../catalog/operations/voronoi-cells-2d.json).

@@ -16,6 +16,9 @@ const packageBindings = await import(
   pathToFileURL(join(root, "packages/javascript/src/index.js")).href
 );
 const bindings = {
+  "voronoi-cells-2d": ["voronoi-cells-2d", "voronoiCells2D"],
+  "resample-polyline-2d": ["resample-polyline-2d", "resamplePolyline2D"],
+  "marching-squares-2d": ["marching-squares-2d", "marchingSquares2D"],
   "annular-solid-3d": ["annular-mesh", "annularSolid3D"],
   "bilinear-raster-remap": ["raster-remap", "bilinearRasterRemap2D"],
   "binary-cell-partition-2d": [

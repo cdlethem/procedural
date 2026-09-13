@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import legacy from "../lib/legacy-v1.json";
 import legacyV2 from "../lib/legacy-v2.json";
+import legacyV3 from "../lib/legacy-v3.json";
 import { cutRegions } from "../lib/cut-model.ts";
 import {
   createDocument,
@@ -12,8 +13,8 @@ import {
   validateDocument,
 } from "../lib/studio.ts";
 
-test("all 24 studio definitions create detached bounded v3 layers", () => {
-  assert.equal(techniques.length, 24);
+test("all 30 studio definitions create detached bounded v3 layers", () => {
+  assert.equal(techniques.length, 30);
   assert.equal(MAX_LAYERS, 8);
   for (const technique of techniques) {
     const document = createDocument(technique.id);
@@ -164,7 +165,7 @@ test("frozen v1 documents migrate palette and lattice controls only after exact 
 });
 
 test("exact v2 documents migrate all techniques without changing their drawing settings", () => {
-  for (const technique of techniques) {
+  for (const technique of legacyV2.techniques) {
     const current = createDocument(technique.id);
     const old: any = structuredClone(current);
     old.bindingVersion = legacyV2.bindingVersion;
@@ -223,4 +224,22 @@ test("manual cuts are detached, replayable document state with strict admission"
   const missing: any = createDocument("cut-marks");
   delete missing.layers[0].cutEdits;
   assert.throws(() => validateDocument(missing), /missing cutEdits/);
+});
+
+
+test("the previous exact v3 binding preserves existing projects after additive expansion", () => {
+  const current = createDocument("cut-marks");
+  const region = cutRegions(current.layers[0])[0];
+  current.layers[0].cutEdits = [{ kind: "cut", id: region.id, axis: "X", coordinate: (region.bounds[0] + region.bounds[2]) / 2 }];
+  current.layers[0].transform = { x: 260, y: 355, scale: 0.8, rotation: 23 };
+  current.layers[0].palette = [0x102030, 0xf0e0d0];
+  const saved = { ...current, catalogSha256: legacyV3.catalogSha256 };
+  const imported = validateDocument(saved);
+  assert.deepEqual(imported, current);
+  assert.notEqual(imported.layers[0].cutEdits, saved.layers[0].cutEdits);
+  assert.notEqual(imported.layers[0].transform, saved.layers[0].transform);
+  assert.deepEqual(cutRegions(imported.layers[0]), cutRegions(saved.layers[0]));
+  assert.throws(() => validateDocument({ ...saved, catalogSha256: "unknown" }), /stale or unsupported/);
+  const forged = { ...createDocument("cell-mosaic"), catalogSha256: legacyV3.catalogSha256 };
+  assert.throws(() => validateDocument(forged), /not available in the previous studio-v3 binding/);
 });

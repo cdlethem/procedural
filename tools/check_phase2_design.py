@@ -37,6 +37,7 @@ ALLOWED_RECORD_STATUSES = frozenset({
 AUDIT_SCOPES = frozenset({"whole_computation", "component_extraction"})
 AUDIT_REMAINDER_DISPOSITIONS = frozenset({"recipe", "adapter", "deferred", "out_of_scope"})
 CAPABILITY_DEPENDENCY_ADMISSION = "capability_dependency"
+INDEPENDENT_DESIGN_ADMISSION = "independent_design"
 
 
 @dataclass(frozen=True)
@@ -403,6 +404,32 @@ def _validate_capability_dependency_admission(cluster: dict, expected_records: d
             errors.append(f"{key}: capability dependency cannot assign ordinary candidate members")
 
 
+def _validate_independent_design_admission(cluster: dict, ledger_records: dict,
+                                           errors: list[str]) -> None:
+    """Validate a root-reviewed operation that makes no corpus extraction claim."""
+    cluster_id = cluster.get("id", "<unnamed cluster>")
+    if cluster.get("status") != "reviewed":
+        errors.append(f"{cluster_id}: independent design cluster status must be reviewed")
+    _validate_reviewed_architecture(cluster_id, cluster, errors)
+    admission = cluster.get("independent_admission")
+    if not isinstance(admission, dict):
+        errors.append(f"{cluster_id}: independent design requires independent_admission")
+        return
+    if admission.get("status") != "reviewed":
+        errors.append(f"{cluster_id}: independent_admission status must be reviewed")
+    if admission.get("owner") != "root":
+        errors.append(f"{cluster_id}: independent_admission owner must be root")
+    if not _nonempty_string(admission.get("reviewer")):
+        errors.append(f"{cluster_id}: independent_admission requires a reviewer")
+    if not _is_repo_relative_path(admission.get("decision")):
+        errors.append(f"{cluster_id}: independent_admission decision must be a nonempty repository-relative path")
+    if not _nonempty_string(admission.get("rationale")):
+        errors.append(f"{cluster_id}: independent_admission requires a rationale")
+    for key, record in ledger_records.items():
+        if record.get("cluster_id") == cluster_id:
+            errors.append(f"{key}: independent design cannot assign candidate members")
+
+
 def _validate_contract_cluster(ledger: dict, cluster_id: str, errors: list[str]) -> None:
     clusters = ledger.get("clusters", [])
     cluster = next((item for item in clusters if item.get("id") == cluster_id), None)
@@ -414,6 +441,10 @@ def _validate_contract_cluster(ledger: dict, cluster_id: str, errors: list[str])
         # validate() has already checked the admission and architecture.  This path
         # deliberately has no kept representative or candidate-member audit: it is
         # an independently specified dependency, not a candidate cluster.
+        return
+    if admission_kind == INDEPENDENT_DESIGN_ADMISSION:
+        # This is a reviewed, independently designed operation, so it has neither
+        # a representative corpus candidate nor a member audit.
         return
     if admission_kind is not None:
         errors.append(f"{cluster_id}: unknown admission kind {admission_kind!r}")
@@ -465,11 +496,16 @@ def validate(ledger: dict, database: Path = DATABASE, survey_root: Path | None =
         admission_kind = cluster.get("admission_kind")
         if admission_kind is None:
             continue
-        if admission_kind != CAPABILITY_DEPENDENCY_ADMISSION:
+        if admission_kind == CAPABILITY_DEPENDENCY_ADMISSION:
+            _validate_capability_dependency_admission(
+                cluster, expected["records"], ledger.get("records", {}), errors)
+            continue
+        if admission_kind == INDEPENDENT_DESIGN_ADMISSION:
+            _validate_independent_design_admission(cluster, ledger.get("records", {}), errors)
+            continue
+        else:
             errors.append(f"{cluster.get('id', '<unnamed cluster>')}: unknown admission kind {admission_kind!r}")
             continue
-        _validate_capability_dependency_admission(
-            cluster, expected["records"], ledger.get("records", {}), errors)
     kept_clusters = {record.get("cluster_id") for record in ledger.get("records", {}).values()
                      if record.get("disposition") == "keep"}
     for key, record in ledger.get("records", {}).items():

@@ -140,6 +140,40 @@ class CatalogTests(unittest.TestCase):
         fixture_path.write_text(json.dumps(fixture))
         return op, ledger_path
 
+    def independent_design_op(self):
+        ledger_path = self.root / 'design/phase2/cluster-decisions.json'
+        ledger = json.loads(ledger_path.read_text())
+        cluster_id = 'design.independent-grid'
+        decision_path = 'docs/independent-design-admission.md'
+        ledger['clusters'].append({
+            'id': cluster_id,
+            'status': 'reviewed',
+            'reason': 'A root-reviewed independent operation design.',
+            'admission_kind': 'independent_design',
+            'architecture': {
+                'level': 'operation_candidate',
+                'status': 'reviewed',
+                'inputs': 'finite dimensions and seed',
+                'outputs': 'deterministic positions',
+                'invariants': 'no source candidate is claimed',
+                'open_questions': [],
+            },
+            'independent_admission': {
+                'status': 'reviewed',
+                'owner': 'root',
+                'reviewer': 'independent reviewer',
+                'decision': decision_path,
+                'rationale': 'This operation is independently designed and has no corpus extraction claim.',
+            },
+        })
+        ledger_path.write_text(json.dumps(ledger))
+        decision = self.root / decision_path
+        decision.parent.mkdir(parents=True, exist_ok=True)
+        decision.write_text('Reviewed independent design admission.\n')
+        op = copy.deepcopy(self.op)
+        op.update(decision_cluster=cluster_id, provenance=[], capability_decision=decision_path)
+        return op
+
     def materialized_output_fixture(self):
         op = copy.deepcopy(self.op)
         op.pop('point_schema')
@@ -406,6 +440,20 @@ class CatalogTests(unittest.TestCase):
         ledger['clusters'][-1]['dependency_admission']['motivating_candidates'][0]['source_sha256'] = 'forged'
         ledger_path.write_text(json.dumps(ledger))
         self.assertTrue(any('stale source' in error for error in check(self.root, write_reference=True)))
+
+    def test_independent_design_requires_empty_provenance_and_matching_decision(self):
+        op = self.independent_design_op()
+        self.write_op(op)
+        self.assertEqual(check(self.root, write_reference=True), [])
+        op['provenance'] = [copy.deepcopy(self.op['provenance'][0])]
+        self.write_op(op)
+        self.assertTrue(any('independent design provenance must be []' in error
+                            for error in check(self.root, write_reference=True)))
+        op['provenance'] = []
+        op['capability_decision'] = 'design/capabilities/cp1-field-marks.md'
+        self.write_op(op)
+        self.assertTrue(any('capability_decision must equal independent admission decision' in error
+                            for error in check(self.root, write_reference=True)))
 
     def test_optional_query_schemas_validate_noise_style_fixtures(self):
         op = copy.deepcopy(self.op)

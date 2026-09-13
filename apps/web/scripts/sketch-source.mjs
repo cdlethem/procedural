@@ -5,7 +5,7 @@ import { parse } from "@babel/parser";
 /** Extract the actual technique function and its local dependencies, not a second demo. */
 export function sketchSources(root) {
   const results = new Map();
-  for (const group of ["basic", "geometry", "effects"]) {
+  for (const group of ["basic", "geometry", "effects", "expansion"]) {
     const path = `apps/web/lib/adapters/${group}.ts`;
     const source = readFileSync(join(root, path), "utf8");
     const ast = parse(source, { sourceType: "module", plugins: ["typescript"] });

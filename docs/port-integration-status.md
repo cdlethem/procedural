@@ -3,8 +3,14 @@
 The reviewed twelve-core/twelve-workflow p5.js batch at `2f9418e3` remains the
 integration foundation. The subsequent completion packet adds thirteen editable browser
 workflows and reconciles the already reviewed radial-profile target records. Current shared
-support is **31 conformant JavaScript cores, 31 operations with scoped native coverage, and
+support is **34 conformant JavaScript cores, 34 operations with scoped native coverage, and
 four with technique coverage**. These dimensions are separate, not additive.
+
+The [p5-only geometry expansion](../evidence/web/p5-gallery-expansion/root-review.json)
+adds Voronoi cells, polyline resampling and marching squares, with six editable
+original design studies. There are now 43 package workflows and 30 web gallery/Studio
+studies. The new three operations do not claim Java or other-port support, and the
+studies do not add surveyed-original recreation or technique-attestation counts.
 
 | Added core | Browser use reviewed here |
 | --- | --- |

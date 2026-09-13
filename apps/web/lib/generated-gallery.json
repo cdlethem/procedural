@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "studioBinding": {
     "version": "studio-v3",
-    "catalogSha256": "42ce74a16d7e40d346306aa6e4843ae20de3fd77e0d6711d6fd53a118a08a15a",
+    "catalogSha256": "fc3cb24a8f91b7bdb43fbc5e0696aeb54d7f8cd97674728ffcef77af0b7b1612",
     "techniques": [
       {
         "technique": "field-marks",
@@ -311,6 +311,71 @@
             "id": "motion.target-springs-2d",
             "version": "0.1.0",
             "sha256": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3"
+          }
+        ]
+      },
+      {
+        "technique": "cell-mosaic",
+        "operations": [
+          {
+            "id": "geometry.voronoi-cells-2d",
+            "version": "0.1.0",
+            "sha256": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298"
+          }
+        ]
+      },
+      {
+        "technique": "cell-echoes",
+        "operations": [
+          {
+            "id": "geometry.voronoi-cells-2d",
+            "version": "0.1.0",
+            "sha256": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298"
+          }
+        ]
+      },
+      {
+        "technique": "stitched-paths",
+        "operations": [
+          {
+            "id": "geometry.resample-polyline-2d",
+            "version": "0.1.0",
+            "sha256": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e"
+          }
+        ]
+      },
+      {
+        "technique": "orbit-beads",
+        "operations": [
+          {
+            "id": "geometry.resample-polyline-2d",
+            "version": "0.1.0",
+            "sha256": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e"
+          }
+        ]
+      },
+      {
+        "technique": "contour-terrain",
+        "operations": [
+          {
+            "id": "geometry.marching-squares-2d",
+            "version": "0.1.0",
+            "sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676"
+          },
+          {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+          }
+        ]
+      },
+      {
+        "technique": "contour-blobs",
+        "operations": [
+          {
+            "id": "geometry.marching-squares-2d",
+            "version": "0.1.0",
+            "sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676"
           }
         ]
       }
@@ -1277,6 +1342,200 @@
           },
           "attestationPath": "catalog/validation/target-springs-2d.json",
           "attestationSha256": "55f33c74d2849c7c98f5246db0f42306f0d68930ec6c80878f7349d0c222e810"
+        }
+      ],
+      "studio": true
+    },
+    {
+      "slug": "cell-mosaic",
+      "title": "Cell Mosaic",
+      "description": "Turn a rectangle into an irregular field of colored tiles. Each supplied site owns its nearest region; jittering the sites changes the seams, while the palette and facets change the surface treatment.",
+      "category": "Shapes & space",
+      "markdown": "# Cell mosaic\n\nTurn a rectangle into an irregular field of colored tiles. Each supplied site owns its nearest region; jittering the sites changes the seams, while the palette and facets change the surface treatment.\n\nStart with the default arrangement, then increase **Disorder** to loosen its rows. **Tile inset** scales every tile toward its site and opens transparent gaps, letting a Studio layer beneath show through.\n\n| Control | Canvas effect |\n|---|---|\n| Cells | More sites make more, usually smaller regions. |\n| Disorder | Moves sites away from their regular row positions. |\n| Tile inset | Opens gaps by shrinking polygons toward their sites. |\n| Facets | Adds translucent triangular color accents inside each tile. |\n| Site dots | Reveals the points controlling the boundaries. |\n| Seed | Chooses another repeatable site arrangement. |\n| Palette | Colors tiles and their accents without changing cell geometry. |\n\nThe sketch calls [Voronoi cells](/api-reference/geometry.voronoi-cells-2d), then draws the returned polygons. Replace the fills with your own marks. The inset is a proportional scale around a site; it does not create a constant-width border.\n",
+      "sourcePath": "packages/javascript/examples/cell-mosaic/README.md",
+      "guidePath": "apps/web/content/cell-mosaic.md",
+      "guideSha256": "11fc384652e70814daed6fed068d1006cc555b275dbebe80cc39a68fbd9407a7",
+      "exampleUrl": "/native/examples/cell-mosaic/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/expansion.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/expansion.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { voronoiCells2D } from \"../../../../packages/javascript/src/voronoi-cells-2d.js\";\nimport { JavaRandom } from \"../../../../packages/javascript/examples/city-marks/city-marks.js\";\n\ntype Point = [number, number];\n\ntype Controls = Record<string, any>;\n\nfunction palette(layer: Layer, index: number): [number, number, number] {\n  return channels(layer.palette[index % layer.palette.length]);\n}\n\nfunction polygon(p: any, points: number[][]): void {\n  p.beginShape();\n  for (const [x, y] of points) p.vertex(x, y);\n  p.endShape(p.CLOSE);\n}\n\nfunction cellMosaic(p: any, layer: Layer): void {\n  const q = layer.params as Controls, random = new JavaRandom(layer.seed);\n  const columns = Math.ceil(Math.sqrt(q.sites)), rows = Math.ceil(q.sites / columns);\n  const sites: Point[] = Array.from({ length: q.sites }, (_, i) => [\n    32 + ((i % columns) + 0.5 + (random.nextDouble() - 0.5) * q.disorder) * 576 / columns,\n    32 + (Math.floor(i / columns) + 0.5 + (random.nextDouble() - 0.5) * q.disorder) * 576 / rows,\n  ]);\n  const { cells } = voronoiCells2D({ sites, bounds: [32, 32, 608, 608], maxWork: 2_000_000 });\n  p.noStroke();\n  for (let i = 0; i < cells.length; i++) {\n    const [cx, cy] = sites[i];\n    const tile = cells[i].map(([x, y]: number[]) => [cx + (x - cx) * (1 - q.inset), cy + (y - cy) * (1 - q.inset)]);\n    p.fill(...palette(layer, i), 225);\n    polygon(p, tile);\n    if (q.facets) {\n      p.fill(...palette(layer, i + 1), 80);\n      for (let v = 0; v < tile.length; v += 2) {\n        const a = tile[v], b = tile[(v + 1) % tile.length];\n        p.triangle(cx, cy, a[0], a[1], b[0], b[1]);\n      }\n    }\n    if (q.dots) {\n      p.fill(...palette(layer, i + 2), 240);\n      p.circle(cx, cy, 4);\n    }\n  }\n}\n",
+      "operations": [
+        {
+          "id": "geometry.voronoi-cells-2d",
+          "version": "0.1.0",
+          "description": "Return nearest-site cells clipped to an explicit axis-aligned rectangle.",
+          "catalogPath": "catalog/operations/voronoi-cells-2d.json",
+          "sha256": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "unvalidated"
+          },
+          "attestationPath": "catalog/validation/voronoi-cells-2d.json",
+          "attestationSha256": "7353144c93dc44796d412014f9d64ca484099199eaaaa438f5cbc326edee84a9"
+        }
+      ],
+      "studio": true
+    },
+    {
+      "slug": "cell-echoes",
+      "title": "Cell Echoes",
+      "description": "Fill irregular cells with nested polygon outlines. Each echo repeats the cell's shape at a smaller scale, creating a woven field of angular rings with transparent space between the lines.",
+      "category": "Shapes & space",
+      "markdown": "# Cell echoes\n\nFill irregular cells with nested polygon outlines. Each echo repeats the cell's shape at a smaller scale, creating a woven field of angular rings with transparent space between the lines.\n\nTry fewer **Cells** and more **Echoes** for broad nested forms. Reduce **Site spread** to crowd the controlling points toward the center and stretch outer regions toward the frame.\n\n| Control | Canvas effect |\n|---|---|\n| Cells | Changes the number of independently nested regions. |\n| Echoes | Adds or removes outlines inside every cell. |\n| Site spread | Expands or contracts the arrangement of controlling points. |\n| Line weight | Thickens the polygon outlines. |\n| Alternating colors | Cycles the palette through echoes within each cell. |\n| Seed | Repositions the supplied sites repeatably. |\n| Palette | Changes outline colors while retaining their geometry. |\n\nThe same [Voronoi polygons](/api-reference/geometry.voronoi-cells-2d) can support filled tiles, line work or other marks. Echoes are simple scaled copies around each site, so their gaps are not uniform polygon offsets.\n",
+      "sourcePath": "packages/javascript/examples/cell-echoes/README.md",
+      "guidePath": "apps/web/content/cell-echoes.md",
+      "guideSha256": "b7a313aae0499e6143d450cb7c8aea9c28d3b75d68eede384f8777e0c1ea6d04",
+      "exampleUrl": "/native/examples/cell-echoes/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/expansion.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/expansion.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { voronoiCells2D } from \"../../../../packages/javascript/src/voronoi-cells-2d.js\";\nimport { JavaRandom } from \"../../../../packages/javascript/examples/city-marks/city-marks.js\";\n\ntype Point = [number, number];\n\ntype Controls = Record<string, any>;\n\nfunction palette(layer: Layer, index: number): [number, number, number] {\n  return channels(layer.palette[index % layer.palette.length]);\n}\n\nfunction polygon(p: any, points: number[][]): void {\n  p.beginShape();\n  for (const [x, y] of points) p.vertex(x, y);\n  p.endShape(p.CLOSE);\n}\n\nfunction cellEchoes(p: any, layer: Layer): void {\n  const q = layer.params as Controls, random = new JavaRandom(layer.seed);\n  const sites: Point[] = Array.from({ length: q.sites }, () => [\n    320 + (random.nextDouble() - 0.5) * 550 * q.spread,\n    320 + (random.nextDouble() - 0.5) * 550 * q.spread,\n  ]);\n  const { cells } = voronoiCells2D({ sites, bounds: [32, 32, 608, 608], maxWork: 2_000_000 });\n  p.noFill();\n  p.strokeWeight(q.weight);\n  for (let i = 0; i < cells.length; i++) {\n    const [cx, cy] = sites[i];\n    for (let echo = 1; echo <= q.echoes; echo++) {\n      const scale = echo / (q.echoes + 0.6);\n      p.stroke(...palette(layer, i + (q.alternating ? echo : 0)), 205);\n      polygon(p, cells[i].map(([x, y]: number[]) => [cx + (x - cx) * scale, cy + (y - cy) * scale]));\n    }\n  }\n}\n",
+      "operations": [
+        {
+          "id": "geometry.voronoi-cells-2d",
+          "version": "0.1.0",
+          "description": "Return nearest-site cells clipped to an explicit axis-aligned rectangle.",
+          "catalogPath": "catalog/operations/voronoi-cells-2d.json",
+          "sha256": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "unvalidated"
+          },
+          "attestationPath": "catalog/validation/voronoi-cells-2d.json",
+          "attestationSha256": "7353144c93dc44796d412014f9d64ca484099199eaaaa438f5cbc326edee84a9"
+        }
+      ],
+      "studio": true
+    },
+    {
+      "slug": "stitched-paths",
+      "title": "Stitched Paths",
+      "description": "Lay short cross stitches along undulating rows. Marks follow equal traveled distances on each supplied path, so they remain evenly paced when the wave becomes taller or bends more sharply.",
+      "category": "Fields & paths",
+      "markdown": "# Stitched paths\n\nLay short cross stitches along undulating rows. Marks follow equal traveled distances on each supplied path, so they remain evenly paced when the wave becomes taller or bends more sharply.\n\nRaise **Wave height** while keeping **Stitches per path** fixed to watch the marks spread along the longer route. Turn off **Connecting thread** to leave only the stitched marks.\n\n| Control | Canvas effect |\n|---|---|\n| Rows | Adds independent wave paths across the composition. |\n| Wave height | Increases the vertical excursion of each row. |\n| Wave count | Adds undulations from left to right. |\n| Stitches per path | Changes the number of marks distributed along each full path. |\n| Stitch length | Extends each mark perpendicular to its source edge. |\n| Connecting thread | Reveals the original path beneath its stitches. |\n| Seed | Changes each row's wave phase. |\n| Palette | Colors rows without altering placement. |\n\nThe sketch supplies ordinary wave polylines to [Polyline resampling](/api-reference/geometry.resample-polyline-2d). Each returned point includes its source-edge index, used here to orient a stitch. Replace the wave vertices with your own open drawing, and replace stitches with circles or symbols.\n",
+      "sourcePath": "packages/javascript/examples/stitched-paths/README.md",
+      "guidePath": "apps/web/content/stitched-paths.md",
+      "guideSha256": "a0e81ab5b40c32b69fa744bcb4bb4c6dcc6ca0490b93d2470d12e7202c00b580",
+      "exampleUrl": "/native/examples/stitched-paths/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/expansion.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/expansion.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { resamplePolyline2D } from \"../../../../packages/javascript/src/resample-polyline-2d.js\";\nimport { JavaRandom } from \"../../../../packages/javascript/examples/city-marks/city-marks.js\";\n\ntype Point = [number, number];\n\ntype Controls = Record<string, any>;\n\nfunction palette(layer: Layer, index: number): [number, number, number] {\n  return channels(layer.palette[index % layer.palette.length]);\n}\n\nfunction stitchedPaths(p: any, layer: Layer): void {\n  const q = layer.params as Controls, random = new JavaRandom(layer.seed);\n  p.noFill();\n  p.strokeCap(p.ROUND);\n  for (let row = 0; row < q.rows; row++) {\n    const phase = random.nextDouble() * Math.PI * 2;\n    const baseline = 84 + row * 472 / (q.rows - 1);\n    const points: Point[] = Array.from({ length: 161 }, (_, i) => {\n      const t = i / 160;\n      return [40 + t * 560, baseline + Math.sin(t * q.waves * Math.PI * 2 + phase) * q.amplitude];\n    });\n    const sampled = resamplePolyline2D({ points, closed: false, count: q.stitches, maxWork: 1000 });\n    if (q.thread) {\n      p.stroke(...palette(layer, row), 90);\n      p.strokeWeight(0.6);\n      p.beginShape();\n      for (const [x, y] of points) p.vertex(x, y);\n      p.endShape();\n    }\n    p.stroke(...palette(layer, row), 240);\n    p.strokeWeight(1.4);\n    for (let i = 0; i < sampled.points.length; i++) {\n      const [x, y] = sampled.points[i], segment = sampled.sourceSegments[i];\n      const a = points[segment], b = points[segment + 1];\n      const dx = b[0] - a[0], dy = b[1] - a[1], length = Math.hypot(dx, dy);\n      const nx = -dy / length * q.length / 2, ny = dx / length * q.length / 2;\n      p.line(x - nx, y - ny, x + nx, y + ny);\n    }\n  }\n}\n",
+      "operations": [
+        {
+          "id": "geometry.resample-polyline-2d",
+          "version": "0.1.0",
+          "description": "Sample an explicit open or closed polyline at uniformly spaced traveled distances without smoothing its corners.",
+          "catalogPath": "catalog/operations/resample-polyline-2d.json",
+          "sha256": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "unvalidated"
+          },
+          "attestationPath": "catalog/validation/resample-polyline-2d.json",
+          "attestationSha256": "f72781cd851b74ed9a891bc73a9db309d427ba3e22105bcef7693ed84bcc99d2"
+        }
+      ],
+      "studio": true
+    },
+    {
+      "slug": "orbit-beads",
+      "title": "Orbit Beads",
+      "description": "Arrange beads around nested, softly lobed loops. Every loop is sampled by traveled distance, creating a radial drawing whose mark spacing follows the path instead of equal angle steps.",
+      "category": "Shapes & space",
+      "markdown": "# Orbit beads\n\nArrange beads around nested, softly lobed loops. Every loop is sampled by traveled distance, creating a radial drawing whose mark spacing follows the path instead of equal angle steps.\n\nIncrease **Lobe depth** to turn circular orbits into more expressive outlines. **Beads per orbit** controls density independently; inner loops carry the same number of beads in a smaller space.\n\n| Control | Canvas effect |\n|---|---|\n| Orbits | Adds nested paths between the center and outer ring. |\n| Beads per orbit | Changes the number of equally paced marks on every closed path. |\n| Lobes | Adds broad radial waves around the outlines. |\n| Lobe depth | Strengthens the radial waves; zero makes circles. |\n| Bead size | Enlarges each mark without moving its center. |\n| Orbit lines | Shows the original closed paths beneath the beads. |\n| Seed | Rotates the lobe phase. |\n| Palette | Colors successive orbits. |\n\n[Polyline resampling](/api-reference/geometry.resample-polyline-2d) handles each closed outline without appending an extra closing sample. The visible orbit is a supplied polyline approximation of the radial drawing; replace its vertices to explore angular rings or irregular closed shapes.\n",
+      "sourcePath": "packages/javascript/examples/orbit-beads/README.md",
+      "guidePath": "apps/web/content/orbit-beads.md",
+      "guideSha256": "0657820d935cd6348bc182eed0ac45fb75178bd15dedd776e23e3aabb46fd2be",
+      "exampleUrl": "/native/examples/orbit-beads/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/expansion.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/expansion.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { resamplePolyline2D } from \"../../../../packages/javascript/src/resample-polyline-2d.js\";\nimport { JavaRandom } from \"../../../../packages/javascript/examples/city-marks/city-marks.js\";\n\ntype Point = [number, number];\n\ntype Controls = Record<string, any>;\n\nfunction palette(layer: Layer, index: number): [number, number, number] {\n  return channels(layer.palette[index % layer.palette.length]);\n}\n\nfunction polygon(p: any, points: number[][]): void {\n  p.beginShape();\n  for (const [x, y] of points) p.vertex(x, y);\n  p.endShape(p.CLOSE);\n}\n\nfunction orbitBeads(p: any, layer: Layer): void {\n  const q = layer.params as Controls, random = new JavaRandom(layer.seed);\n  const phase = random.nextDouble() * Math.PI * 2;\n  for (let orbit = 0; orbit < q.orbits; orbit++) {\n    const radius = 46 + orbit * 184 / (q.orbits - 1);\n    const points: Point[] = Array.from({ length: 240 }, (_, i) => {\n      const angle = i / 240 * Math.PI * 2;\n      const r = radius * (1 + q.depth * Math.sin(angle * q.lobes + phase + orbit * 0.27));\n      return [320 + Math.cos(angle) * r, 320 + Math.sin(angle) * r];\n    });\n    const sampled = resamplePolyline2D({ points, closed: true, count: q.beads, maxWork: 1000 });\n    if (q.thread) {\n      p.noFill();\n      p.stroke(...palette(layer, orbit), 95);\n      p.strokeWeight(0.65);\n      polygon(p, points);\n    }\n    p.noStroke();\n    p.fill(...palette(layer, orbit), 235);\n    for (const [x, y] of sampled.points) p.circle(x, y, q.size);\n  }\n}\n",
+      "operations": [
+        {
+          "id": "geometry.resample-polyline-2d",
+          "version": "0.1.0",
+          "description": "Sample an explicit open or closed polyline at uniformly spaced traveled distances without smoothing its corners.",
+          "catalogPath": "catalog/operations/resample-polyline-2d.json",
+          "sha256": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "unvalidated"
+          },
+          "attestationPath": "catalog/validation/resample-polyline-2d.json",
+          "attestationSha256": "f72781cd851b74ed9a891bc73a9db309d427ba3e22105bcef7693ed84bcc99d2"
+        }
+      ],
+      "studio": true
+    },
+    {
+      "slug": "contour-terrain",
+      "title": "Contour Terrain",
+      "description": "Trace colored height lines through a sampled noise field. Several thresholds reveal hills, valleys and narrow passages as an open drawing of contour strokes.",
+      "category": "Fields & paths",
+      "markdown": "# Contour terrain\n\nTrace colored height lines through a sampled noise field. Several thresholds reveal hills, valleys and narrow passages as an open drawing of contour strokes.\n\nAdjust **Terrain scale** to change feature size, then increase **Grid samples** if finer bends need more detail. The field stays fixed when changing grid resolution; the contour approximation becomes finer.\n\n| Control | Canvas effect |\n|---|---|\n| Contour levels | Adds thresholds within the same scalar interval. |\n| Terrain scale | Larger values make smaller, more frequent terrain features. |\n| Grid samples | Refines the square sample grid. |\n| Line weight | Thickens all contour strokes. |\n| Index lines | Emphasizes every fourth threshold. |\n| Seed | Chooses a different repeatable noise field. |\n| Palette | Colors successive height levels without changing geometry. |\n\nThe sketch samples [Gradient noise](/api-reference/field.gradient-noise-2d-01), then calls [Marching squares](/api-reference/geometry.marching-squares-2d) once per threshold. Returned strokes are drawn directly; contours are not joined into closed paths or filled regions. The transparent drawing can sit over another Studio layer.\n",
+      "sourcePath": "packages/javascript/examples/contour-terrain/README.md",
+      "guidePath": "apps/web/content/contour-terrain.md",
+      "guideSha256": "3227087e7b3401d5d078125b409e25178e49f8b9a15c920a2c6225ed813fbf51",
+      "exampleUrl": "/native/examples/contour-terrain/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/expansion.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/expansion.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { marchingSquares2D } from \"../../../../packages/javascript/src/marching-squares-2d.js\";\nimport { gradientNoise2D01 } from \"../../../../packages/javascript/src/gradient-noise-2d-01.js\";\n\ntype Controls = Record<string, any>;\n\nfunction palette(layer: Layer, index: number): [number, number, number] {\n  return channels(layer.palette[index % layer.palette.length]);\n}\n\nfunction contourTerrain(p: any, layer: Layer): void {\n  const q = layer.params as Controls, field = gradientNoise2D01({ seed: layer.seed });\n  const n = q.resolution, spacing = 576 / (n - 1);\n  const values: number[] = [];\n  for (let y = 0; y < n; y++) {\n    for (let x = 0; x < n; x++) values.push(field.sample((32 + x * spacing) * q.scale, (32 + y * spacing) * q.scale));\n  }\n  p.noFill();\n  p.strokeCap(p.ROUND);\n  for (let level = 0; level < q.levels; level++) {\n    const threshold = 0.22 + (level + 0.5) / q.levels * 0.56;\n    const { segments } = marchingSquares2D({ values, columns: n, rows: n, origin: [32, 32], spacing: [spacing, spacing], threshold, maxWork: 20_000 });\n    p.stroke(...palette(layer, level), 220);\n    p.strokeWeight(q.weight * (q.indexLines && level % 4 === 0 ? 1.9 : 1));\n    for (const [x1, y1, x2, y2] of segments) p.line(x1, y1, x2, y2);\n  }\n}\n",
+      "operations": [
+        {
+          "id": "geometry.marching-squares-2d",
+          "version": "0.1.0",
+          "description": "Extract ordered isoline segments from an explicit row-major scalar grid with a fixed high-corner saddle rule.",
+          "catalogPath": "catalog/operations/marching-squares-2d.json",
+          "sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "unvalidated"
+          },
+          "attestationPath": "catalog/validation/marching-squares-2d.json",
+          "attestationSha256": "fac865ee2113517dd3f83409a0bb43db1fad966208e785a2ea8c1711eb236a1a"
+        },
+        {
+          "id": "field.gradient-noise-2d-01",
+          "version": "0.1.0",
+          "description": "An immutable seeded single-octave 2D gradient field with pure binary64 samples in [0,1]. Independently specified; not Processing noise compatibility.",
+          "catalogPath": "catalog/operations/gradient-noise-2d-01.json",
+          "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "validated-scoped"
+          },
+          "attestationPath": "catalog/validation/gradient-noise-2d-01.json",
+          "attestationSha256": "e5da67f86b528624e95faf8129aa515accaef18e21e29a04241e5e9857bc813d"
+        }
+      ],
+      "studio": true
+    },
+    {
+      "slug": "contour-blobs",
+      "title": "Contour Blobs",
+      "description": "Draw nested contours around overlapping soft hills. Nearby peaks share outer contours, while higher levels separate into smaller islands around the strongest parts of the field.",
+      "category": "Fields & paths",
+      "markdown": "# Contour blobs\n\nDraw nested contours around overlapping soft hills. Nearby peaks share outer contours, while higher levels separate into smaller islands around the strongest parts of the field.\n\nIncrease **Hill radius** to spread peaks until their surrounding contours merge. Change **First level** to move the whole stack of contour thresholds through the same field.\n\n| Control | Canvas effect |\n|---|---|\n| Hills | Adds seeded peaks to the supplied scalar field. |\n| Hill radius | Widens each peak, encouraging neighboring contours to merge. |\n| First level | Chooses the lowest scalar threshold to trace. |\n| Contour levels | Adds nested thresholds above the first level. |\n| Line weight | Thickens the contour strokes. |\n| Peak marks | Shows a small cross at each supplied hill center. |\n| Seed | Repositions the hills and varies their widths. |\n| Palette | Colors successive thresholds. |\n\nThe input field is a sum of soft radial peaks. [Marching squares](/api-reference/geometry.marching-squares-2d) extracts its line segments, which the sketch draws directly. You can substitute your own scalar grid while keeping the contour drawing. A threshold above every sample produces no contour at that level.\n",
+      "sourcePath": "packages/javascript/examples/contour-blobs/README.md",
+      "guidePath": "apps/web/content/contour-blobs.md",
+      "guideSha256": "58c3cde86231ffe4dbb33bb2e2cd8696435efcbd36771ac146506362261c2a64",
+      "exampleUrl": "/native/examples/contour-blobs/index.html",
+      "sketchSourcePath": "apps/web/lib/adapters/expansion.ts",
+      "sketchSource": "// Actual app drawing code. p is a p5 graphics buffer; layer contains the controls, seed and palette.\n// Imports are relative to apps/web/lib/adapters/expansion.ts.\n\nimport type { Layer } from \"../studio-types\";\nimport { channels } from \"./types\";\nimport { marchingSquares2D } from \"../../../../packages/javascript/src/marching-squares-2d.js\";\nimport { JavaRandom } from \"../../../../packages/javascript/examples/city-marks/city-marks.js\";\n\ntype Controls = Record<string, any>;\n\nfunction palette(layer: Layer, index: number): [number, number, number] {\n  return channels(layer.palette[index % layer.palette.length]);\n}\n\nfunction contourBlobs(p: any, layer: Layer): void {\n  const q = layer.params as Controls, random = new JavaRandom(layer.seed);\n  const hills = Array.from({ length: q.sources }, () => ({\n    x: 105 + random.nextDouble() * 430,\n    y: 105 + random.nextDouble() * 430,\n    radius: q.radius * (0.75 + random.nextDouble() * 0.5),\n  }));\n  const n = 81, spacing = 576 / (n - 1), values: number[] = [];\n  // The caller supplies a field: a simple sum of soft radial peaks.\n  for (let y = 0; y < n; y++) {\n    for (let x = 0; x < n; x++) {\n      let value = 0;\n      for (const hill of hills) {\n        const dx = 32 + x * spacing - hill.x, dy = 32 + y * spacing - hill.y;\n        value += Math.exp(-(dx * dx + dy * dy) / (2 * hill.radius * hill.radius));\n      }\n      values.push(value);\n    }\n  }\n  p.noFill();\n  p.strokeCap(p.ROUND);\n  p.strokeWeight(q.weight);\n  for (let level = 0; level < q.levels; level++) {\n    const { segments } = marchingSquares2D({ values, columns: n, rows: n, origin: [32, 32], spacing: [spacing, spacing], threshold: q.threshold + level * 0.14, maxWork: 20_000 });\n    p.stroke(...palette(layer, level), 235);\n    for (const [x1, y1, x2, y2] of segments) p.line(x1, y1, x2, y2);\n  }\n  if (q.centers) {\n    p.strokeWeight(1.5);\n    hills.forEach((hill, index) => {\n      p.stroke(...palette(layer, index), 230);\n      p.line(hill.x - 3, hill.y, hill.x + 3, hill.y);\n      p.line(hill.x, hill.y - 3, hill.x, hill.y + 3);\n    });\n  }\n}\n",
+      "operations": [
+        {
+          "id": "geometry.marching-squares-2d",
+          "version": "0.1.0",
+          "description": "Extract ordered isoline segments from an explicit row-major scalar grid with a fixed high-corner saddle rule.",
+          "catalogPath": "catalog/operations/marching-squares-2d.json",
+          "sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676",
+          "support": {
+            "core": "conformant",
+            "native": "validated-scoped",
+            "technique": "unvalidated"
+          },
+          "attestationPath": "catalog/validation/marching-squares-2d.json",
+          "attestationSha256": "fac865ee2113517dd3f83409a0bb43db1fad966208e785a2ea8c1711eb236a1a"
         }
       ],
       "studio": true

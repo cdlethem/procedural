@@ -1,7 +1,7 @@
 # Procedurals gallery and studio
 
-A Next.js gallery of **24 interactive p5.js studies**, with a separate canvas studio for
-layering all 24 techniques and an API reference for all 31 package operations. A Go service saves
+A Next.js gallery of **30 interactive p5.js studies**, with a separate canvas studio for
+layering all 30 techniques and an API reference for all 34 package operations. A Go service saves
 projects as JSON. Rendering runs locally in the browser and uses the existing package.
 
 ## Run
@@ -31,6 +31,10 @@ image capture; gallery links still work but image thumbnails need the capture st
 Project files live in `.work/web-projects/`. This initial installation uses one trusted
 local project store; it has no accounts or per-user ownership. Keep that scope when hosting.
 The gallery, local editing, JSON and PNG export work independently of server storage.
+
+New studies include cell mosaics, nested cell outlines, stitched paths, beaded orbits,
+terrain contours and overlapping hill contours. They use three p5-only additions:
+Voronoi cells, polyline resampling and marching squares.
 
 ## Explore and compose
 

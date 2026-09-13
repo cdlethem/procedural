@@ -1,0 +1,22 @@
+{
+  "id": "p5-gallery-expansion",
+  "question": "Do the three independently designed operations expose useful structural edits without requiring artist algorithm changes?",
+  "decision": "retain-unbounded",
+  "hypothesis": "Moving/changing sites changes mosaic regions; sample count changes mark density without smoothing source geometry; threshold changes contour extent independently of grid resolution.",
+  "source_sketches": [],
+  "provenance": "Original design studies explicitly authorized beyond survey; no corpus ranges claimed.",
+  "parameters": [
+    "sites/bounds",
+    "points/closed/count",
+    "values/columns/rows/origin/spacing/threshold"
+  ],
+  "baseline": {
+    "seed": 42,
+    "renderer": "p5 Canvas2D",
+    "deterministic": true
+  },
+  "values": "Each new study baseline and one changed structural control, plus palette transfer; exact values recorded in native report. Library has no defaults/recommended ranges; UI values are bounded composition configurations.",
+  "comparison": "Native 640x640 images, same seed, pixel differences plus root visual inspection.",
+  "retention_rule": "Retain if baseline and edited output remain recognizable, visibly different and show the documented structural effect. Otherwise fix composition or remove unsupported control copy. Do not infer useful global ranges from two samples.",
+  "limits": "Integer/domain hard bounds are mathematical/representation constraints; maxWork is explicit caller budget, not measured runtime guarantee."
+}

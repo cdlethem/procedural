@@ -657,12 +657,12 @@ try {
   } else {
     await page.goto(base);
     await page.locator(".study-card").first().waitFor();
-    assert.equal(await page.locator('.study-card[href^="/techniques/"]').count(), 24);
+    assert.equal(await page.locator('.study-card[href^="/techniques/"]').count(), 30);
     await page.getByPlaceholder("Search studies and saved layers").fill("lattice");
     assert.equal(await page.locator('.study-card[href^="/techniques/"]').count(), 1);
     await page.getByPlaceholder("Search studies and saved layers").fill("");
     await screenshot("gallery");
-    scenarios.push("gallery search and 24 study navigation");
+    scenarios.push("gallery search and 30 study navigation");
     for (const id of techniqueIds) {
       await page.goto(base + "/techniques/" + id);
       await rendered();
@@ -744,7 +744,7 @@ try {
     await page.locator(".source-panel pre code").waitFor();
     await screenshot("technique");
     scenarios.push(
-      "24 shared detail renderers, inline source, numeric and palette pixel changes",
+      "30 shared detail renderers, inline source, numeric and palette pixel changes",
     );
     if (!galleryOnly) {
       for (const id of techniqueIds) {
@@ -796,7 +796,7 @@ try {
         );
       }
       scenarios.push(
-        "24 studio technique renderers mount and each picker card adds a layer without browser errors",
+        "30 studio technique renderers mount and each picker card adds a layer without browser errors",
       );
       await page.goto(base + "/studio?technique=field-marks");
       await rendered();
@@ -1033,8 +1033,8 @@ try {
     await page.locator(".api-list a").first().waitFor();
     assert.equal(
       await page.locator(".api-list a").count(),
-      31,
-      "31 API entries",
+      34,
+      "34 API entries",
     );
     const operationLinks = await page
       .locator(".api-list a")
@@ -1057,7 +1057,7 @@ try {
       );
     }
     scenarios.push(
-      "31 API index entries and rendered operation details without raw repository links",
+      "34 API index entries and rendered operation details without raw repository links",
     );
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(base);

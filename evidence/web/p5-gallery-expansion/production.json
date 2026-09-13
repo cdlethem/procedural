@@ -1,0 +1,818 @@
+{
+  "status": "passed",
+  "scope": "Six original design studies, p5 Canvas2D Chromium. Actual gallery adapter baseline/structural edit/palette transfer/reload and standalone example controls/reset/save. No corpus recreation or other-target claim.",
+  "input_sha256_before": {
+    "tools/run_p5_gallery_expansion.mjs": "520426c3ccca80eb68d5acd2a40d3d11a272d4a286def106fb19aa54f320e991",
+    "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    "packages/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    "packages/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    "packages/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/index.js": "5fff11f18e6e039d524d5d280bfd3af9e2785d47e8c8e5fc9ba8254bf1432790",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+    "packages/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    "packages/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    "packages/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/resample-polyline-2d.js": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42",
+    "packages/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    "packages/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    "packages/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "packages/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "packages/javascript/src/voronoi-cells-2d.js": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/examples/cell-mosaic/README.md": "21893b8228a06e9209437ddce9095352b230fd947fbc95063a0b6e34d48cac66",
+    "packages/javascript/examples/cell-mosaic/index.html": "0ea6222afaaf24e573e121d488b3f95b0cbb21f7530b8b43116c918f9321ce42",
+    "packages/javascript/examples/cell-mosaic/sketch.js": "02b22bf3c864643f7451800140976c5601b8ef7c2388ffdf3c33b1a50a9614d4",
+    "packages/javascript/examples/cell-echoes/README.md": "c443a1e8dfce81f756f2d621a5139a40cf9dd6c7af99d7c7bcfc89970f0a501c",
+    "packages/javascript/examples/cell-echoes/index.html": "edad7f23d14160218a75a801acf9815be30f7582e4dce48bd87f2cde8c3c6766",
+    "packages/javascript/examples/cell-echoes/sketch.js": "91555423f4caa19787fd7faa795e36b0bd9d00e761cdfaccb695936ac0fb6518",
+    "packages/javascript/examples/stitched-paths/README.md": "35d9e06c240fde1748bc898b7995ac0fec78e330f440d82a7b07d770aa934452",
+    "packages/javascript/examples/stitched-paths/index.html": "13cf0a77871e7e93e4b0739095187239393b3e2224b88ce6a78f1a75db88e1c5",
+    "packages/javascript/examples/stitched-paths/sketch.js": "ed6a47bc01bb674287ad08bc9c7581436c2e5142d1ae729918a8e026a1471cdf",
+    "packages/javascript/examples/orbit-beads/README.md": "9dc5c9e0d1fda0f5b792b3a389255f43f34fd44c5673206c1435cec648653310",
+    "packages/javascript/examples/orbit-beads/index.html": "edae5d35311b0c6828b25c8c426fb111cf222a5040bace5f11290c059d3348b4",
+    "packages/javascript/examples/orbit-beads/sketch.js": "424a80589a3e1c5d3aa5392c80b836bd2ad590ded0a0aa7c3e3aff409d342434",
+    "packages/javascript/examples/contour-terrain/README.md": "1bdcecdb145a28c992ba19bac2747d65b08790f84c508a65d235903db668dadd",
+    "packages/javascript/examples/contour-terrain/index.html": "3757e47388c38d353bab80d02b705ed60e0795f43a1e3b555881930c85339bbe",
+    "packages/javascript/examples/contour-terrain/sketch.js": "f257446d8899dd0ee54c1a08aad3393e972e546d0f36c4c1fbb7409341385830",
+    "packages/javascript/examples/contour-blobs/README.md": "22d68783857a88b6fe55fc2a75edc382ab964e06e847d3002bd60d18c17cd986",
+    "packages/javascript/examples/contour-blobs/index.html": "4b1c98db9e6dee08209a1c4685980410988e73744e4de1420f9fe04224dbd211",
+    "packages/javascript/examples/contour-blobs/sketch.js": "1653743655fd07dbc0ec9d03c18c5e9d2dc7dc393e18c5a2116e420226537ca8",
+    "apps/web/lib/adapters/basic.ts": "5c76b57ea73585663874025bda94557fe524fcb0efab1f0137fb9e5c8b000564",
+    "apps/web/lib/adapters/effects.ts": "ce4b2d8f2f2cef5758b2d2b47a056e144d733b74220321e2b3a70eae0fbf3b3b",
+    "apps/web/lib/adapters/expansion.ts": "e296b0db8e99e2b3fa71f70413427cebfe4a1ff83ef2177b0615c8bea367b0c8",
+    "apps/web/lib/adapters/geometry.ts": "060816bd44dc327d640f21f9a985710c139603106d847f0d11bb435d0e64e8c3",
+    "apps/web/lib/adapters/types.ts": "183f7ab9a0510271c0413f29dc47318596fbcfbb13952cf1404a38d5fbe7370e",
+    "packages/javascript/examples/cell-mosaic/expansion-studies.js": "b5ad12caf3bc34421d59cada62ca91ce11444f22f567a14fc568e056c892bbfa"
+  },
+  "studioBinding": {
+    "version": "studio-v3",
+    "catalogSha256": "fc3cb24a8f91b7bdb43fbc5e0696aeb54d7f8cd97674728ffcef77af0b7b1612",
+    "techniques": [
+      {
+        "technique": "field-marks",
+        "operations": [
+          {
+            "id": "layout.regular-grid",
+            "version": "0.1.0",
+            "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+          },
+          {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+          },
+          {
+            "id": "color.cyclic-palette",
+            "version": "0.1.0",
+            "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
+          }
+        ]
+      },
+      {
+        "technique": "path-marks",
+        "operations": [
+          {
+            "id": "layout.regular-grid",
+            "version": "0.1.0",
+            "sha256": "e9bf8725a7abcdb894586bb20cdc5ec2a56ec3e487e630f86ae62252d315f734"
+          },
+          {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+          },
+          {
+            "id": "path.gradient-trace-2d",
+            "version": "0.1.0",
+            "sha256": "139ba7609d3d28a6775cbcc228fa931d947f1fa32af73556c82cba423a2e661c"
+          }
+        ]
+      },
+      {
+        "technique": "placement-marks",
+        "operations": [
+          {
+            "id": "sampling.seeded-circle-placement-2d",
+            "version": "0.1.0",
+            "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267"
+          },
+          {
+            "id": "sampling.ordered-circle-filter-2d",
+            "version": "0.1.0",
+            "sha256": "d4e93aa0dc219b0730af1e3eecad5cb9a8be3030e9f0761b9b23d0886f6c2083"
+          }
+        ]
+      },
+      {
+        "technique": "lattice-marks",
+        "operations": [
+          {
+            "id": "path.occupied-lattice-paths-2d",
+            "version": "0.1.0",
+            "sha256": "dbcb29575544aa194dd8baf4615bb404633046d3f8a92c76b45d13af73b4d01d"
+          },
+          {
+            "id": "color.cyclic-palette",
+            "version": "0.1.0",
+            "sha256": "d18e3894c7a5a725952bc03918c5ffe29266a9ba81dcd6813d30711646a991a9"
+          }
+        ]
+      },
+      {
+        "technique": "band-marks",
+        "operations": [
+          {
+            "id": "path.noise-band-trace-2d",
+            "version": "0.1.0",
+            "sha256": "245c3350d3cc139d9f208fa768f14e5439bd434c58afaf2e4f63d6f66763588f"
+          }
+        ]
+      },
+      {
+        "technique": "branch-marks",
+        "operations": [
+          {
+            "id": "topology.seeded-endpoint-branches-2d",
+            "version": "0.1.0",
+            "sha256": "38984f84dfcf5837386e0d830c8bf1f5554b04adcc6e36187c8a497899681881"
+          },
+          {
+            "id": "sampling.seeded-circle-placement-2d",
+            "version": "0.1.0",
+            "sha256": "04de90b19cbd39a5aa4840dfd1ee80cbeb96b69b9981af95b176be7bc0480267"
+          }
+        ]
+      },
+      {
+        "technique": "cut-branch-marks",
+        "operations": [
+          {
+            "id": "topology.seeded-line-pool-2d",
+            "version": "0.1.0",
+            "sha256": "7236eaf10bdd8cb21107096f7962e248967c9aa6813573f11784a63ba0007e4a"
+          }
+        ]
+      },
+      {
+        "technique": "loop-marks",
+        "operations": [
+          {
+            "id": "geometry.closed-spline-2d",
+            "version": "0.1.0",
+            "sha256": "59a28d5feee19597ebfd97eb9ca5a1ecc77c5f06d4cc57dc2b39a70998a10b3b"
+          }
+        ]
+      },
+      {
+        "technique": "region-marks",
+        "operations": [
+          {
+            "id": "layout.seeded-quadrant-partition-2d",
+            "version": "0.1.0",
+            "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1"
+          }
+        ]
+      },
+      {
+        "technique": "panel-marks",
+        "operations": [
+          {
+            "id": "layout.binary-cell-partition-2d",
+            "version": "0.1.0",
+            "sha256": "62f7b5c8c0dc020a639d821c9e2114e1792cb3da29623035491255294c89e345"
+          }
+        ]
+      },
+      {
+        "technique": "cut-marks",
+        "operations": [
+          {
+            "id": "layout.retained-rectangle-cuts-2d",
+            "version": "0.1.0",
+            "sha256": "e8797eb0b44201752042091b568090d1355a9f2338ae27164b1671a505829e4c"
+          },
+          {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+          }
+        ]
+      },
+      {
+        "technique": "polygon-marks",
+        "operations": [
+          {
+            "id": "sampling.ordered-convex-polygon-filter-2d",
+            "version": "0.1.0",
+            "sha256": "64ec6cbf60c04c612cbf2f8ad0c427853b48c3c7585ebf2cdd0938151604599e"
+          },
+          {
+            "id": "sampling.seeded-triangle-points-2d",
+            "version": "0.1.0",
+            "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+          }
+        ]
+      },
+      {
+        "technique": "facet-marks",
+        "operations": [
+          {
+            "id": "topology.delaunay-2d",
+            "version": "0.1.0",
+            "sha256": "e73d947703e0b0f798c95a3d3d0274b0e597aabc0e43a74303c971a5b39febcf"
+          },
+          {
+            "id": "sampling.seeded-triangle-points-2d",
+            "version": "0.1.0",
+            "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+          }
+        ]
+      },
+      {
+        "technique": "grain-marks",
+        "operations": [
+          {
+            "id": "sampling.seeded-triangle-points-2d",
+            "version": "0.1.0",
+            "sha256": "610e25f26407f4c0cea1ca5335c28d46c2ff49453bec949dbc84bd3a34903bb8"
+          },
+          {
+            "id": "sampling.triangle-coordinate-map-2d",
+            "version": "0.1.0",
+            "sha256": "81992a9369392ef272262104c36111d31ed3ea838bea8c7d53c9d3854ffcf78f"
+          },
+          {
+            "id": "layout.seeded-quadrant-partition-2d",
+            "version": "0.1.0",
+            "sha256": "effcfead03c5de7cb92bc7430dbee965cf6368baaea43743b429659e36c8ffe1"
+          }
+        ]
+      },
+      {
+        "technique": "pull-marks",
+        "operations": [
+          {
+            "id": "geometry.radial-pull-2d",
+            "version": "0.1.0",
+            "sha256": "63e089d2ab61b4a4e8cb1f48684cb69e7268574ebebd15d34e405b9595366788"
+          }
+        ]
+      },
+      {
+        "technique": "projection-marks",
+        "operations": [
+          {
+            "id": "geometry.sequential-disc-projection-2d",
+            "version": "0.1.0",
+            "sha256": "f7e90d17f37d87fe1ae63975ed5fcae3e79e3d1d59d0eb7b78da6114078dd206"
+          }
+        ]
+      },
+      {
+        "technique": "path-clip-marks",
+        "operations": [
+          {
+            "id": "geometry.clip-segments-simple-polygon-2d",
+            "version": "0.1.0",
+            "sha256": "c10f0619f16d5aca4bce2f7ab6a02f2693f7d59e2177b39521410959b27a4292"
+          }
+        ]
+      },
+      {
+        "technique": "ramp-marks",
+        "operations": [
+          {
+            "id": "color.stop-ramp",
+            "version": "0.1.0",
+            "sha256": "7a2d7c1e2e1df26e07a4b88012f8164bef611b76eb8920f22ce0bc1167b95fc6"
+          }
+        ]
+      },
+      {
+        "technique": "warp-marks",
+        "operations": [
+          {
+            "id": "raster.bilinear-remap-2d",
+            "version": "0.1.0",
+            "sha256": "b8fe845f220644ee7c3bf24e7df9c3aecf5195edcce7b69f51fe530f176ee176"
+          },
+          {
+            "id": "field.gradient-noise-3d-01",
+            "version": "0.1.0",
+            "sha256": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82"
+          }
+        ]
+      },
+      {
+        "technique": "blur-marks",
+        "operations": [
+          {
+            "id": "raster.separable-blur-2d",
+            "version": "0.1.0",
+            "sha256": "f17c33f68218f36bdbecf131377bc868d409b0c1db9844cad39e6f6f1c59743f"
+          }
+        ]
+      },
+      {
+        "technique": "profile-marks",
+        "operations": [
+          {
+            "id": "mesh.radial-profile-surface-3d",
+            "version": "0.1.0",
+            "sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa"
+          }
+        ]
+      },
+      {
+        "technique": "annular-marks",
+        "operations": [
+          {
+            "id": "mesh.annular-solid-3d",
+            "version": "0.1.0",
+            "sha256": "856da2ea0449233334c5e152f9eae1c589a9b2b6656ced8af93e73daac39ee6a"
+          }
+        ]
+      },
+      {
+        "technique": "depth-marks",
+        "operations": [
+          {
+            "id": "field.gradient-noise-3d-01",
+            "version": "0.1.0",
+            "sha256": "b8fbe28e287089f21c2cd590af3eec36be077bb77cb18d717a1778c380be7d82"
+          },
+          {
+            "id": "mesh.radial-profile-surface-3d",
+            "version": "0.1.0",
+            "sha256": "5a4fc449a8a64e40f60691d954c70beb5a5ff59ce8d35642e12a9146154f7caa"
+          }
+        ]
+      },
+      {
+        "technique": "spring-marks",
+        "operations": [
+          {
+            "id": "motion.target-springs-2d",
+            "version": "0.1.0",
+            "sha256": "978d6aa4146ef8cd502fdd93a9a0ba3884e435bdba25ad4f8f22814e608f2eb3"
+          }
+        ]
+      },
+      {
+        "technique": "cell-mosaic",
+        "operations": [
+          {
+            "id": "geometry.voronoi-cells-2d",
+            "version": "0.1.0",
+            "sha256": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298"
+          }
+        ]
+      },
+      {
+        "technique": "cell-echoes",
+        "operations": [
+          {
+            "id": "geometry.voronoi-cells-2d",
+            "version": "0.1.0",
+            "sha256": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298"
+          }
+        ]
+      },
+      {
+        "technique": "stitched-paths",
+        "operations": [
+          {
+            "id": "geometry.resample-polyline-2d",
+            "version": "0.1.0",
+            "sha256": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e"
+          }
+        ]
+      },
+      {
+        "technique": "orbit-beads",
+        "operations": [
+          {
+            "id": "geometry.resample-polyline-2d",
+            "version": "0.1.0",
+            "sha256": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e"
+          }
+        ]
+      },
+      {
+        "technique": "contour-terrain",
+        "operations": [
+          {
+            "id": "geometry.marching-squares-2d",
+            "version": "0.1.0",
+            "sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676"
+          },
+          {
+            "id": "field.gradient-noise-2d-01",
+            "version": "0.1.0",
+            "sha256": "54f0cdff32d3ff0311e2f75668c353980ccba97acb83b39e76efdc38f23e799c"
+          }
+        ]
+      },
+      {
+        "technique": "contour-blobs",
+        "operations": [
+          {
+            "id": "geometry.marching-squares-2d",
+            "version": "0.1.0",
+            "sha256": "9fc20807ef24d7e5b2ce65f35e46a80072c4d9aaa69787b317abd9296b711676"
+          }
+        ]
+      }
+    ]
+  },
+  "studies": [
+    {
+      "slug": "cell-mosaic",
+      "status": "passed",
+      "structuralControl": {
+        "label": "Cells",
+        "value": 72
+      },
+      "paintedPixels": 314411,
+      "frames": [
+        {
+          "label": "gallery-baseline",
+          "path": ".work/p5-expansion/native-production/cell-mosaic/gallery-baseline.png",
+          "sha256": "363daa4eed41ba140d2fcf27fc0b97128a2058e8d31b58836834d7d4dfdb577f"
+        },
+        {
+          "label": "gallery-structural-edit",
+          "path": ".work/p5-expansion/native-production/cell-mosaic/gallery-structural-edit.png",
+          "sha256": "2b43f0009f35799115b98839df930926b821ebdc298e861fb38e8c6e5d20361b"
+        },
+        {
+          "label": "gallery-palette-transfer",
+          "path": ".work/p5-expansion/native-production/cell-mosaic/gallery-palette-transfer.png",
+          "sha256": "011230edf0efa6578742b2a47032fa628f825196933e30ca642a111195277033"
+        },
+        {
+          "label": "native-baseline",
+          "path": ".work/p5-expansion/native-production/cell-mosaic/native-baseline.png",
+          "sha256": "942a5d469a4dd3645f1e6d53499b0cf35065295e342eb36a0fbf7d2d1dab7f51"
+        },
+        {
+          "label": "native-structural-edit",
+          "path": ".work/p5-expansion/native-production/cell-mosaic/native-structural-edit.png",
+          "sha256": "ee7def1c1bd68d3fb6422ef19da3800441ea7a02e45e6595de26f5e67d7bbe96"
+        },
+        {
+          "label": "native-palette-transfer",
+          "path": ".work/p5-expansion/native-production/cell-mosaic/native-palette-transfer.png",
+          "sha256": "a0b68c04695d9560bae9562dfc12c2497dbfc31b4fe1118c1233c47246d789cd"
+        },
+        {
+          "label": "native-reset",
+          "path": ".work/p5-expansion/native-production/cell-mosaic/native-reset.png",
+          "sha256": "942a5d469a4dd3645f1e6d53499b0cf35065295e342eb36a0fbf7d2d1dab7f51"
+        }
+      ],
+      "reset": "exact",
+      "reload": "exact",
+      "save": "downloaded without redraw"
+    },
+    {
+      "slug": "cell-echoes",
+      "status": "passed",
+      "structuralControl": {
+        "label": "Echoes",
+        "value": 12
+      },
+      "paintedPixels": 102722,
+      "frames": [
+        {
+          "label": "gallery-baseline",
+          "path": ".work/p5-expansion/native-production/cell-echoes/gallery-baseline.png",
+          "sha256": "2ec6f0424c3a3a03dc57f57560e1817113099ef95fb26495a31357dc0d3b6030"
+        },
+        {
+          "label": "gallery-structural-edit",
+          "path": ".work/p5-expansion/native-production/cell-echoes/gallery-structural-edit.png",
+          "sha256": "71e533f05a789f39880fcb4fdeb0faae1622435960a04fc4f5842ff8877f828c"
+        },
+        {
+          "label": "gallery-palette-transfer",
+          "path": ".work/p5-expansion/native-production/cell-echoes/gallery-palette-transfer.png",
+          "sha256": "0c071621033e643b3bda1d66d1513fa361ce752b38c67a8a41dc0dd72f4b0895"
+        },
+        {
+          "label": "native-baseline",
+          "path": ".work/p5-expansion/native-production/cell-echoes/native-baseline.png",
+          "sha256": "d7c89086d158a9a7df606996dbf3af6f7d818ec86008140a1bf35e933d0efe16"
+        },
+        {
+          "label": "native-structural-edit",
+          "path": ".work/p5-expansion/native-production/cell-echoes/native-structural-edit.png",
+          "sha256": "f4d35ff837c98e60135fdc8eeee17e3972eb79817073b48c52ffcc1a5a7430b4"
+        },
+        {
+          "label": "native-palette-transfer",
+          "path": ".work/p5-expansion/native-production/cell-echoes/native-palette-transfer.png",
+          "sha256": "f2ce7a6dbe735aa8f3c888f94cd67f5bab3fc88a9b335e3c82afc0b144dc69bd"
+        },
+        {
+          "label": "native-reset",
+          "path": ".work/p5-expansion/native-production/cell-echoes/native-reset.png",
+          "sha256": "d7c89086d158a9a7df606996dbf3af6f7d818ec86008140a1bf35e933d0efe16"
+        }
+      ],
+      "reset": "exact",
+      "reload": "exact",
+      "save": "downloaded without redraw"
+    },
+    {
+      "slug": "stitched-paths",
+      "status": "passed",
+      "structuralControl": {
+        "label": "Stitches per path",
+        "value": 105
+      },
+      "paintedPixels": 30058,
+      "frames": [
+        {
+          "label": "gallery-baseline",
+          "path": ".work/p5-expansion/native-production/stitched-paths/gallery-baseline.png",
+          "sha256": "0c8422859b718a79df9caee136169fcb9dbd6b3643fe7c6dce25b1b3399089b1"
+        },
+        {
+          "label": "gallery-structural-edit",
+          "path": ".work/p5-expansion/native-production/stitched-paths/gallery-structural-edit.png",
+          "sha256": "586f71146f20b854dd1a8bfb831403c7a06b51b1dbe94b636bd6cded464b0aa4"
+        },
+        {
+          "label": "gallery-palette-transfer",
+          "path": ".work/p5-expansion/native-production/stitched-paths/gallery-palette-transfer.png",
+          "sha256": "a9863b410e9205313f2187dc23cf655958c6da08fc9c0ecd91ceac6e9807e2ce"
+        },
+        {
+          "label": "native-baseline",
+          "path": ".work/p5-expansion/native-production/stitched-paths/native-baseline.png",
+          "sha256": "2ee04174485d77e5afaab8216a913f3b79890e413239892c98520044c74f3b91"
+        },
+        {
+          "label": "native-structural-edit",
+          "path": ".work/p5-expansion/native-production/stitched-paths/native-structural-edit.png",
+          "sha256": "8639fe222a2cfd1d357a7a0684073fbd0f64a109ad301a44515a084ca2e06424"
+        },
+        {
+          "label": "native-palette-transfer",
+          "path": ".work/p5-expansion/native-production/stitched-paths/native-palette-transfer.png",
+          "sha256": "806a6b6e8c1b70742f5682e769ce0ee5a08ee211ad9723c697052e097df327d8"
+        },
+        {
+          "label": "native-reset",
+          "path": ".work/p5-expansion/native-production/stitched-paths/native-reset.png",
+          "sha256": "2ee04174485d77e5afaab8216a913f3b79890e413239892c98520044c74f3b91"
+        }
+      ],
+      "reset": "exact",
+      "reload": "exact",
+      "save": "downloaded without redraw"
+    },
+    {
+      "slug": "orbit-beads",
+      "status": "passed",
+      "structuralControl": {
+        "label": "Beads per orbit",
+        "value": 130
+      },
+      "paintedPixels": 13838,
+      "frames": [
+        {
+          "label": "gallery-baseline",
+          "path": ".work/p5-expansion/native-production/orbit-beads/gallery-baseline.png",
+          "sha256": "b8545362bed0eedac63ece03b3df0b9e94c1a11ba4de3619a4377f49f9bfedc8"
+        },
+        {
+          "label": "gallery-structural-edit",
+          "path": ".work/p5-expansion/native-production/orbit-beads/gallery-structural-edit.png",
+          "sha256": "2f16ae8523402ffc1ab7df1a5bf9c23a33bf40b1370e662a0185ba7e971aa752"
+        },
+        {
+          "label": "gallery-palette-transfer",
+          "path": ".work/p5-expansion/native-production/orbit-beads/gallery-palette-transfer.png",
+          "sha256": "94d6433b6ae32bb2fff1688b995b06892cc62413b841f36e8c81e63add4bd446"
+        },
+        {
+          "label": "native-baseline",
+          "path": ".work/p5-expansion/native-production/orbit-beads/native-baseline.png",
+          "sha256": "682cbd78b1b5d11e76d78c2510a5c7fe4cda2200ebd9dc14bd77d0988b73dd6c"
+        },
+        {
+          "label": "native-structural-edit",
+          "path": ".work/p5-expansion/native-production/orbit-beads/native-structural-edit.png",
+          "sha256": "bb736379d3057d2f3633f41fa201a2fece6a07282a8441b4affd91de2d9bdd9c"
+        },
+        {
+          "label": "native-palette-transfer",
+          "path": ".work/p5-expansion/native-production/orbit-beads/native-palette-transfer.png",
+          "sha256": "e7615a6b5d343682c7e7b4fdc8ee4fc10bb1d79aa160e8b658d0c60b15245400"
+        },
+        {
+          "label": "native-reset",
+          "path": ".work/p5-expansion/native-production/orbit-beads/native-reset.png",
+          "sha256": "682cbd78b1b5d11e76d78c2510a5c7fe4cda2200ebd9dc14bd77d0988b73dd6c"
+        }
+      ],
+      "reset": "exact",
+      "reload": "exact",
+      "save": "downloaded without redraw"
+    },
+    {
+      "slug": "contour-terrain",
+      "status": "passed",
+      "structuralControl": {
+        "label": "Terrain scale",
+        "value": 0.012
+      },
+      "paintedPixels": 59341,
+      "frames": [
+        {
+          "label": "gallery-baseline",
+          "path": ".work/p5-expansion/native-production/contour-terrain/gallery-baseline.png",
+          "sha256": "efade17f2a1e3c2f44ab938e4043164e915dc969e4fc1ecbfb27788f7e055d3b"
+        },
+        {
+          "label": "gallery-structural-edit",
+          "path": ".work/p5-expansion/native-production/contour-terrain/gallery-structural-edit.png",
+          "sha256": "051c64b3f9b55f3abdb833f1045d9118ee1a2f84a57f50475074856c86c15ca6"
+        },
+        {
+          "label": "gallery-palette-transfer",
+          "path": ".work/p5-expansion/native-production/contour-terrain/gallery-palette-transfer.png",
+          "sha256": "b8b16299ae3064fd6c8297d3eb238dd802d5078fe3929821eb6abc55fa03a8fa"
+        },
+        {
+          "label": "native-baseline",
+          "path": ".work/p5-expansion/native-production/contour-terrain/native-baseline.png",
+          "sha256": "6f2f68f9c58d2280b0a6be82d29fcee79ba6dca97bae2755073131680d100d35"
+        },
+        {
+          "label": "native-structural-edit",
+          "path": ".work/p5-expansion/native-production/contour-terrain/native-structural-edit.png",
+          "sha256": "3bfc4d8aeea36b67b065f52ead2b6b709ece5183b5e9d06ffa34f2d78d24b273"
+        },
+        {
+          "label": "native-palette-transfer",
+          "path": ".work/p5-expansion/native-production/contour-terrain/native-palette-transfer.png",
+          "sha256": "63bea6448c2fe4f954074b77d381a9ae18d3cb386849f637fac5cbb320c8bd19"
+        },
+        {
+          "label": "native-reset",
+          "path": ".work/p5-expansion/native-production/contour-terrain/native-reset.png",
+          "sha256": "6f2f68f9c58d2280b0a6be82d29fcee79ba6dca97bae2755073131680d100d35"
+        }
+      ],
+      "reset": "exact",
+      "reload": "exact",
+      "save": "downloaded without redraw"
+    },
+    {
+      "slug": "contour-blobs",
+      "status": "passed",
+      "structuralControl": {
+        "label": "First level",
+        "value": 0.85
+      },
+      "paintedPixels": 22219,
+      "frames": [
+        {
+          "label": "gallery-baseline",
+          "path": ".work/p5-expansion/native-production/contour-blobs/gallery-baseline.png",
+          "sha256": "763b1ece2437f0fb2cf0ce70319a351471cdcc47a11311634697fb5b3a5a68f1"
+        },
+        {
+          "label": "gallery-structural-edit",
+          "path": ".work/p5-expansion/native-production/contour-blobs/gallery-structural-edit.png",
+          "sha256": "d0ea41f6ed13e7d6174c98b13a8346c4a1701be74eef46dbc21d457e15dbf706"
+        },
+        {
+          "label": "gallery-palette-transfer",
+          "path": ".work/p5-expansion/native-production/contour-blobs/gallery-palette-transfer.png",
+          "sha256": "725e0a571fbedd7771367ac8f44dc5c067cc46f1cd9f2a87b9b2af43592cac08"
+        },
+        {
+          "label": "native-baseline",
+          "path": ".work/p5-expansion/native-production/contour-blobs/native-baseline.png",
+          "sha256": "4d89de76d2ad488eaf8f54933bed210cfda4fc5e5841c9407f1a50e525666ad4"
+        },
+        {
+          "label": "native-structural-edit",
+          "path": ".work/p5-expansion/native-production/contour-blobs/native-structural-edit.png",
+          "sha256": "b1d1c0172f8bab21e0ed274eb3dec0f2af66192cc784951c000144e24ca171da"
+        },
+        {
+          "label": "native-palette-transfer",
+          "path": ".work/p5-expansion/native-production/contour-blobs/native-palette-transfer.png",
+          "sha256": "11b4cd9b837681041ca649598fcfd6bcac012040e136fcb36de94196665c90ef"
+        },
+        {
+          "label": "native-reset",
+          "path": ".work/p5-expansion/native-production/contour-blobs/native-reset.png",
+          "sha256": "4d89de76d2ad488eaf8f54933bed210cfda4fc5e5841c9407f1a50e525666ad4"
+        }
+      ],
+      "reset": "exact",
+      "reload": "exact",
+      "save": "downloaded without redraw"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "input_sha256_after": {
+    "tools/run_p5_gallery_expansion.mjs": "520426c3ccca80eb68d5acd2a40d3d11a272d4a286def106fb19aa54f320e991",
+    "packages/javascript/src/annular-mesh.js": "8a8bc736cc715f7fecd51a0f9fda78bbc20edbfb30b8c5d76d22b2a3472cc761",
+    "packages/javascript/src/binary-cell-partition.js": "0a1c1cc5cb4c46df89ea29d6b5cd4eb2c9b73f731ab33d2bac340868b17e4f00",
+    "packages/javascript/src/branch-tree.js": "d446de59c9a69f4e1b4004ce4bfdcc33a6e011b89a5d0b684af541807e9320c6",
+    "packages/javascript/src/circle-placements.js": "1d4c1896f99fc9213d225caf488b22053f854951b4ee281f1cdf9887dab4e567",
+    "packages/javascript/src/closed-spline.js": "9128b8bc5a8b9af92a4d8cd2ecf9bf90cabe45e7e2896ef9e57c26fcbf9403ea",
+    "packages/javascript/src/convex-polygon-placements.js": "be322e5589873c503f1ba4cb0a2539c0793fc6ca2ef1d0925a3f87af96206f52",
+    "packages/javascript/src/cyclic-palette.js": "e5a9d9aa485a946ce27137dba28919d68a85dd80b46090c06da1451a612dc36b",
+    "packages/javascript/src/delaunay.js": "06cfe494634e112247093e4a0c00b4ef6ccabf209e3750687ba3dae1106dfe47",
+    "packages/javascript/src/disc-projection.js": "c311669e297253ee62cb5a012b3ea9f70ff144460c860679fca4b90356ff4ae1",
+    "packages/javascript/src/fdlibm-trig.js": "87b2c51a45396b41c5b6d590d40fb721bc41e48714a82f36a037133042bc697f",
+    "packages/javascript/src/gradient-noise-2d-01.js": "4f4ca9d9ead2aecbedb79ee5f5a5ac8c14c182df468ca246fc8fe49dbc19d43e",
+    "packages/javascript/src/gradient-noise-3d-01.js": "918fb5a3ae9be1c52795549207c5e269841ae02f2b5711e3395c04a63ce31b3c",
+    "packages/javascript/src/gradient-path.js": "95cb60c4f4ef90ba4cdd20ab54aca08887628cd918483c48d029eac703cf9a3a",
+    "packages/javascript/src/index.js": "5fff11f18e6e039d524d5d280bfd3af9e2785d47e8c8e5fc9ba8254bf1432790",
+    "packages/javascript/src/line-pool.js": "15dc7c35bee6c4b0b5166fe41d877d4e24ddbe61c18f4e125d74e75fcc9d5dae",
+    "packages/javascript/src/marching-squares-2d.js": "404fbde4cf3fed27822fc01723a6a1be9004078378969bcbbdb2a7d04eaaf18d",
+    "packages/javascript/src/masked-source-over.js": "4819596de3318ecccafb5ce3b41759f40d2c636f378b90b1fc9b64449037811d",
+    "packages/javascript/src/nearest-segment-contact.js": "7e1da27de6fb9b709d101e609ca82858096657cd24b8654d2c7277e6dc0ebc2d",
+    "packages/javascript/src/noise-band-path.js": "c128216b9edd682308f4080781b42e2ff07bf139e7811d45dbe4e88523d4973f",
+    "packages/javascript/src/occupied-lattice-paths.js": "4a9458f783d771338c5298ff627ea800c0e092417511a8c0918c882cfd5d0b82",
+    "packages/javascript/src/quadrant-partition.js": "a9aa40259306bfc80cb5e1591058fce1cb9ac9315143430af5a1bef33a30cc3f",
+    "packages/javascript/src/radial-profile.js": "364a4e611213dbf5d3fe450aa580afb96f7cae6470ddf197945e8e299ee6ee7d",
+    "packages/javascript/src/radial-pull.js": "d75743c7b3c88740b7d4081afcb5c84b12d944ec2eadc25b1f0f511f369c214c",
+    "packages/javascript/src/raster-crossfade.js": "69195d041aa5641d6c87ef6e0b89d277e46047de06ad88d219e5e83465165d19",
+    "packages/javascript/src/raster-remap.js": "0bbc1f4f5ed2691ef2f78f5ef9a6b9e5f8534652760e31bc3168399d5938243c",
+    "packages/javascript/src/regular-grid.js": "66982da81a5afb55d9af30eb4acf154b198ca8537f7e43d4686a373d7443b278",
+    "packages/javascript/src/resample-polyline-2d.js": "0cadef92e1a999ebe8f58bc17b7dc82341db03b190cf4ebf8087058657b0ff42",
+    "packages/javascript/src/retained-rectangle-cuts.js": "2f962f969eafafb2b7ba225a7cc79a78afb7fc388e7b2cf3ca63122c7e056866",
+    "packages/javascript/src/segment-clip.js": "abfc73683587a3ebd34b52dbc65d50269742cc17a5ce03fe31510ce593b3e1b4",
+    "packages/javascript/src/separable-blur.js": "6e72c88e6fee6e00874ce4113ecf66078f42c6cddca039582b4ae1df633b6632",
+    "packages/javascript/src/stop-ramp.js": "fcb2a25725d9394190274189c6e6b9d5c6fb80cfa9d3e2ca9c546baa64821e50",
+    "packages/javascript/src/target-springs.js": "6ce079af786cbc2edc2c38e0f868fe0493d9838e4cbc361221449f02a91eb4c7",
+    "packages/javascript/src/triangle-points.js": "08fab8124f8b29bd5205c9bae51b133519c9d4a48a4ef281b419217cc9015290",
+    "packages/javascript/src/voronoi-cells-2d.js": "e711b13d660c6c1020daca2bc7d58f655cd614238e0fd0f4155af524ac3fe1a6",
+    "packages/javascript/src/internal/drawing-state.js": "06a5565872323673bb68f3c5337bc23ef4a9d3ee35a4a8edbaa8388cf87aa82c",
+    "packages/javascript/src/internal/drawing.js": "c220de1dfd214f143e5de314fb762a5105f4c2525574e0007951cc5113451aac",
+    "packages/javascript/src/internal/exact-rational.js": "d6cfd772267fddea5d5ce486fedb7ed2384cc527fa6037831cbce54fc86438d6",
+    "packages/javascript/src/internal/fdlibm-hypot.js": "f4cab5e978054be721d2de4102ab84d53fd93e6c26ba4027841e2ec87ceb0ecf",
+    "packages/javascript/src/internal/fdlibm-pow.js": "3a4c3062cfc9138c999137729a973fffe85f4cf020dc55402bb790d9f5582472",
+    "packages/javascript/src/internal/noise-hash.js": "1a234fbcef735fdb73ea74812564d2dbddd79478664198bc23f4438cfab277a6",
+    "packages/javascript/src/internal/p5-frame.js": "658fc9bfd729faddba13329646168cf9ea61cd3f5535991653625b73c4f41ae7",
+    "packages/javascript/examples/cell-mosaic/README.md": "21893b8228a06e9209437ddce9095352b230fd947fbc95063a0b6e34d48cac66",
+    "packages/javascript/examples/cell-mosaic/index.html": "0ea6222afaaf24e573e121d488b3f95b0cbb21f7530b8b43116c918f9321ce42",
+    "packages/javascript/examples/cell-mosaic/sketch.js": "02b22bf3c864643f7451800140976c5601b8ef7c2388ffdf3c33b1a50a9614d4",
+    "packages/javascript/examples/cell-echoes/README.md": "c443a1e8dfce81f756f2d621a5139a40cf9dd6c7af99d7c7bcfc89970f0a501c",
+    "packages/javascript/examples/cell-echoes/index.html": "edad7f23d14160218a75a801acf9815be30f7582e4dce48bd87f2cde8c3c6766",
+    "packages/javascript/examples/cell-echoes/sketch.js": "91555423f4caa19787fd7faa795e36b0bd9d00e761cdfaccb695936ac0fb6518",
+    "packages/javascript/examples/stitched-paths/README.md": "35d9e06c240fde1748bc898b7995ac0fec78e330f440d82a7b07d770aa934452",
+    "packages/javascript/examples/stitched-paths/index.html": "13cf0a77871e7e93e4b0739095187239393b3e2224b88ce6a78f1a75db88e1c5",
+    "packages/javascript/examples/stitched-paths/sketch.js": "ed6a47bc01bb674287ad08bc9c7581436c2e5142d1ae729918a8e026a1471cdf",
+    "packages/javascript/examples/orbit-beads/README.md": "9dc5c9e0d1fda0f5b792b3a389255f43f34fd44c5673206c1435cec648653310",
+    "packages/javascript/examples/orbit-beads/index.html": "edae5d35311b0c6828b25c8c426fb111cf222a5040bace5f11290c059d3348b4",
+    "packages/javascript/examples/orbit-beads/sketch.js": "424a80589a3e1c5d3aa5392c80b836bd2ad590ded0a0aa7c3e3aff409d342434",
+    "packages/javascript/examples/contour-terrain/README.md": "1bdcecdb145a28c992ba19bac2747d65b08790f84c508a65d235903db668dadd",
+    "packages/javascript/examples/contour-terrain/index.html": "3757e47388c38d353bab80d02b705ed60e0795f43a1e3b555881930c85339bbe",
+    "packages/javascript/examples/contour-terrain/sketch.js": "f257446d8899dd0ee54c1a08aad3393e972e546d0f36c4c1fbb7409341385830",
+    "packages/javascript/examples/contour-blobs/README.md": "22d68783857a88b6fe55fc2a75edc382ab964e06e847d3002bd60d18c17cd986",
+    "packages/javascript/examples/contour-blobs/index.html": "4b1c98db9e6dee08209a1c4685980410988e73744e4de1420f9fe04224dbd211",
+    "packages/javascript/examples/contour-blobs/sketch.js": "1653743655fd07dbc0ec9d03c18c5e9d2dc7dc393e18c5a2116e420226537ca8",
+    "apps/web/lib/adapters/basic.ts": "5c76b57ea73585663874025bda94557fe524fcb0efab1f0137fb9e5c8b000564",
+    "apps/web/lib/adapters/effects.ts": "ce4b2d8f2f2cef5758b2d2b47a056e144d733b74220321e2b3a70eae0fbf3b3b",
+    "apps/web/lib/adapters/expansion.ts": "e296b0db8e99e2b3fa71f70413427cebfe4a1ff83ef2177b0615c8bea367b0c8",
+    "apps/web/lib/adapters/geometry.ts": "060816bd44dc327d640f21f9a985710c139603106d847f0d11bb435d0e64e8c3",
+    "apps/web/lib/adapters/types.ts": "183f7ab9a0510271c0413f29dc47318596fbcfbb13952cf1404a38d5fbe7370e",
+    "packages/javascript/examples/cell-mosaic/expansion-studies.js": "b5ad12caf3bc34421d59cada62ca91ce11444f22f567a14fc568e056c892bbfa"
+  }
+}

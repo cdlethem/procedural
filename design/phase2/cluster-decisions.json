@@ -2544,6 +2544,69 @@
           }
         ]
       }
+    },
+    {
+      "id": "geometry.voronoi-cells-2d",
+      "status": "reviewed",
+      "reason": "Return nearest-site cells clipped to an explicit axis-aligned rectangle.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "sites,bounds,maxWork",
+        "outputs": "cells",
+        "invariants": "Return nearest-site cells clipped to an explicit axis-aligned rectangle. Outputs are detached; order and indices are stable.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root with independent architecture challenge",
+        "decision": "design/capabilities/p5-gallery-expansion.md",
+        "rationale": "Return nearest-site cells clipped to an explicit axis-aligned rectangle. Independently specified under explicit maintainer authorization; no corpus candidates subsumed."
+      }
+    },
+    {
+      "id": "geometry.resample-polyline-2d",
+      "status": "reviewed",
+      "reason": "Sample an explicit open or closed polyline at uniformly spaced traveled distances without smoothing its corners.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "points,closed,count,maxWork",
+        "outputs": "points,distances,sourceSegments,totalLength",
+        "invariants": "Sample an explicit open or closed polyline at uniformly spaced traveled distances without smoothing its corners. Outputs are detached; order and indices are stable.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root with independent architecture challenge",
+        "decision": "design/capabilities/p5-gallery-expansion.md",
+        "rationale": "Sample an explicit open or closed polyline at uniformly spaced traveled distances without smoothing its corners. Independently specified under explicit maintainer authorization; no corpus candidates subsumed."
+      }
+    },
+    {
+      "id": "geometry.marching-squares-2d",
+      "status": "reviewed",
+      "reason": "Extract ordered isoline segments from an explicit row-major scalar grid with a fixed high-corner saddle rule.",
+      "admission_kind": "independent_design",
+      "architecture": {
+        "level": "operation_candidate",
+        "status": "reviewed",
+        "inputs": "values,columns,rows,origin,spacing,threshold,maxWork",
+        "outputs": "segments,cellIndices",
+        "invariants": "Extract ordered isoline segments from an explicit row-major scalar grid with a fixed high-corner saddle rule. Outputs are detached; order and indices are stable.",
+        "open_questions": []
+      },
+      "independent_admission": {
+        "status": "reviewed",
+        "owner": "root",
+        "reviewer": "root with independent architecture challenge",
+        "decision": "design/capabilities/p5-gallery-expansion.md",
+        "rationale": "Extract ordered isoline segments from an explicit row-major scalar grid with a fixed high-corner saddle rule. Independently specified under explicit maintainer authorization; no corpus candidates subsumed."
+      }
     }
   ],
   "records": {

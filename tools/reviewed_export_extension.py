@@ -155,7 +155,7 @@ def _validate_p5_batch(root, snapshots):
     review = json.loads(_read(root, P5_BATCH))
     test = 'tests/test_reviewed_export_extension.py'
     required = {HELPER, JS_INDEX, test, *P5_BATCH_MODULES}
-    if (not _accepted(review) or not _bindings(root, review, {})
+    if (not _accepted(review) or not _bindings(root, review, snapshots)
             or not required.issubset(review['implementation_sha256'])
             or JS_PORTS not in review['evidence_sha256']
             or review['previous_review_sha256'] != _digest(_read(root, JS_PORTS))):
@@ -172,7 +172,7 @@ def _validate_p5_batch(root, snapshots):
     if (set(entry) != {'before', 'after'} or entry['before'] != prior[JS_INDEX]
             or prior[JS_INDEX] != older['extensions'][JS_INDEX]['after']
             or entry['after'] != prior[JS_INDEX] + P5_BATCH_ADDITIONS
-            or entry['after'].encode() != _read(root, JS_INDEX)):
+            or entry['after'].encode() != snapshots.get(JS_INDEX, _read(root, JS_INDEX))):
         return False
     snapshots.update({name: value.encode() for name, value in prior.items()})
     return True
@@ -208,6 +208,37 @@ def _validate_js_ports(root, snapshots):
     return True
 
 
+P5_GALLERY = 'evidence/conformance/p5-gallery-export-compatibility-review.json'
+P5_GALLERY_STEMS = ('voronoi-cells-2d', 'resample-polyline-2d', 'marching-squares-2d')
+P5_GALLERY_ADDITIONS = ''.join(
+    f'export {{ {name} }} from "./{stem}.js";\n'
+    for name, stem in zip(('voronoiCells2D', 'resamplePolyline2D', 'marchingSquares2D'), P5_GALLERY_STEMS))
+
+
+def _validate_p5_gallery(root, snapshots):
+    review = json.loads(_read(root, P5_GALLERY))
+    older = json.loads(_read(root, P5_BATCH))
+    test = 'tests/test_reviewed_export_extension.py'
+    required = {HELPER, JS_INDEX, test, *(f'packages/javascript/src/{stem}.js' for stem in P5_GALLERY_STEMS)}
+    if (not _accepted(review) or not _bindings(root, review, {})
+            or not required.issubset(review['implementation_sha256'])
+            or P5_BATCH not in review['evidence_sha256']
+            or review['previous_review_sha256'] != _digest(_read(root, P5_BATCH))):
+        return False
+    prior = review['previous_bytes']
+    if set(prior) != {HELPER, JS_INDEX, test} or set(review['extensions']) != {JS_INDEX}:
+        return False
+    if any(_digest(prior[name].encode()) != older['implementation_sha256'][name] for name in prior):
+        return False
+    entry = review['extensions'][JS_INDEX]
+    if (set(entry) != {'before', 'after'} or entry['before'] != prior[JS_INDEX]
+            or entry['after'] != prior[JS_INDEX] + P5_GALLERY_ADDITIONS
+            or entry['after'].encode() != _read(root, JS_INDEX)):
+        return False
+    snapshots.update({name: value.encode() for name, value in prior.items()})
+    return True
+
+
 def historical_export_bytes(root, relative, expected):
     """Return only exact reviewed historical entrypoint bytes.
 
@@ -221,6 +252,11 @@ def historical_export_bytes(root, relative, expected):
     try:
         snapshots = {}
         successor_match = None
+        if (root / P5_GALLERY).exists():
+            if not _validate_p5_gallery(root, snapshots):
+                return None
+            if relative == JS_INDEX and _digest(snapshots[JS_INDEX]) == expected:
+                successor_match = snapshots[JS_INDEX]
         if (root / P5_BATCH).exists():
             if not _validate_p5_batch(root, snapshots):
                 return None

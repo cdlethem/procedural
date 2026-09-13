@@ -1,0 +1,363 @@
+{
+  "operation": "geometry.resample-polyline-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "fa2cb4d64c9ed2b38022e9d5bbaa4b3be8e70782642e826c954acc5b2f6e4a6e",
+  "oracle": "Root analytical axis-aligned, integer-length and half-edge cases; expected outputs authored before implementation.",
+  "cases": [
+    {
+      "id": "open-line",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "closed": false,
+        "count": 3,
+        "maxWork": 100
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "distances": [
+          0,
+          2,
+          4
+        ],
+        "sourceSegments": [
+          0,
+          0,
+          0
+        ],
+        "totalLength": 4
+      }
+    },
+    {
+      "id": "corner-outgoing",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "closed": false,
+        "count": 3,
+        "maxWork": 100
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "distances": [
+          0,
+          2,
+          4
+        ],
+        "sourceSegments": [
+          0,
+          1,
+          1
+        ],
+        "totalLength": 4
+      }
+    },
+    {
+      "id": "duplicate-segment",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "closed": false,
+        "count": 3,
+        "maxWork": 100
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "distances": [
+          0,
+          2,
+          4
+        ],
+        "sourceSegments": [
+          1,
+          1,
+          1
+        ],
+        "totalLength": 4
+      }
+    },
+    {
+      "id": "closed-square",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "closed": true,
+        "count": 4,
+        "maxWork": 100
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "distances": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "sourceSegments": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "totalLength": 8
+      }
+    },
+    {
+      "id": "coincident",
+      "input": {
+        "points": [
+          [
+            3,
+            4
+          ]
+        ],
+        "closed": false,
+        "count": 2,
+        "maxWork": 100
+      },
+      "output": {
+        "points": [
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "distances": [
+          0,
+          0
+        ],
+        "sourceSegments": [
+          0,
+          0
+        ],
+        "totalLength": 0
+      }
+    },
+    {
+      "id": "empty",
+      "input": {
+        "points": [],
+        "closed": false,
+        "count": 3,
+        "maxWork": 100
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "open-count-one",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "closed": false,
+        "count": 1,
+        "maxWork": 100
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "budget",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "closed": false,
+        "count": 3,
+        "maxWork": 4
+      },
+      "error": "WORK_LIMIT"
+    },
+    {
+      "id": "unrepresentable-output-count",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ]
+        ],
+        "closed": true,
+        "count": 4294967296,
+        "maxWork": 9007199254740991
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "closed-subnormal-rounded-seam",
+      "input": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            5e-324,
+            0
+          ]
+        ],
+        "closed": true,
+        "count": 5,
+        "maxWork": 7
+      },
+      "output": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            5e-324,
+            0
+          ],
+          [
+            5e-324,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "distances": [
+          0,
+          0,
+          5e-324,
+          5e-324,
+          1e-323
+        ],
+        "sourceSegments": [
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "totalLength": 1e-323
+      }
+    }
+  ]
+}

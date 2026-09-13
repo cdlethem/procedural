@@ -1,0 +1,196 @@
+{
+  "id": "geometry.marching-squares-2d",
+  "version": "0.1.0",
+  "status": "reviewed",
+  "role": "generator",
+  "decision_cluster": "geometry.marching-squares-2d",
+  "description": "Extract ordered isoline segments from an explicit row-major scalar grid with a fixed high-corner saddle rule.",
+  "capability_decision": "design/capabilities/p5-gallery-expansion.md",
+  "design_review": "design/operations/p5-gallery-expansion-contract-review.md",
+  "provenance": [],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "values": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "columns": {
+        "type": "integer",
+        "minimum": 2,
+        "maximum": 9007199254740991
+      },
+      "rows": {
+        "type": "integer",
+        "minimum": 2,
+        "maximum": 9007199254740991
+      },
+      "origin": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "spacing": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "threshold": {
+        "type": "number"
+      },
+      "maxWork": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      }
+    },
+    "required": [
+      "values",
+      "columns",
+      "rows",
+      "origin",
+      "spacing",
+      "threshold",
+      "maxWork"
+    ],
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "segments": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "cellIndices": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "required": [
+      "segments",
+      "cellIndices"
+    ],
+    "additionalProperties": false
+  },
+  "fixture_format": "exact-json-output",
+  "output_invariants": "Extract ordered isoline segments from an explicit row-major scalar grid with a fixed high-corner saddle rule. Outputs are detached; order and indices are stable.",
+  "behavior": {
+    "validation": "Accept exactly the input keys and plain JSON-compatible objects/arrays, finite numeric values (not booleans), and safe integer count/budget fields. Validate complete input before computation. maxWork is required nonnegative safe integer. No coercion, defaults or hidden allocation retries. Failure throws an Error with stable code. No partial result. Canonicalize exposed signed zero to +0.",
+    "environment": "No RNG, noise, time, renderer, assets or host state. Coordinates use caller units, x right and y down in p5 examples; algorithm works in either coordinate orientation. Inputs are copied or read only, output detached; no retained aliases.",
+    "numerics": "IEEE754 binary64 separate arithmetic operations, no epsilon in classification or topology. Reject every nonfinite computed intermediate with NUMERIC_OVERFLOW. General coordinate and length comparisons allow absolute 1e-9 plus relative 1e-12; integer indices, output order and topology compare exactly. Analytical shared fixtures use exactly representable cases and exact comparison. No exact-predicate robustness promise for nearly degenerate inputs.",
+    "algorithm": "Require values.length=columns*rows (safe integer product), both spacing components>0. Grid value index y*columns+x, coordinates origin+[x*spacing.x,y*spacing.y]. Visit cells row-major y=0..rows-2,x=0..columns-2. Cell source index=y*(columns-1)+x. Corners 0=top-left,1=top-right,2=bottom-right,3=bottom-left; high means value>=threshold. Edges 0=top,1=right,2=bottom,3=left. Cross only edges whose endpoint classifications differ. Interpolate horizontal edges left->right, vertical edges top->bottom, t=(threshold-va)/(vb-va), point=A+t*(B-A); t=0 or 1 returns exact endpoint. Constant/equal edges never cross.",
+    "saddle_and_order": "Two crossings make one segment pairing ascending edge IDs. Four crossings: emit segments around each high corner, corner 0 pairs (0,3),1 pairs (0,1),2 pairs (1,2),3 pairs (2,3). This separates diagonally high corners, regardless of center value; no asymptotic decider. Sort each pair ascending then pairs lexicographically. Emit endpoint coordinates in that edge order, suppress exactly zero-length segments. Duplicate segments from different cells are retained. No joining, filled contours, saddle smoothing or level deduplication.",
+    "budget": "Validate grid and charge columns*rows+(columns-1)*(rows-1) work before output allocation; sum/products must be safe integers and <=maxWork else WORK_LIMIT. O(rows*columns) work/storage; at most two segments per cell. Nonfinite grid coordinate/interpolation arithmetic is NUMERIC_OVERFLOW even if no segment is ultimately emitted.",
+    "native_surface": "p5.js named export marchingSquares2D(input) from packages/javascript/src/marching-squares-2d.js; plain output matching output_schema. Other targets deferred."
+  },
+  "errors": {
+    "INVALID_INPUT": "Malformed input, nonfinite supplied number or violated shape/domain constraint.",
+    "WORK_LIMIT": "Required work exceeds explicit maxWork, or work-count arithmetic is not a safe integer.",
+    "NUMERIC_OVERFLOW": "A computed geometry or scalar intermediate is nonfinite."
+  },
+  "parameters": {
+    "values": {
+      "unit": "See input schema and normative behavior.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "columns": {
+      "unit": "See input schema and normative behavior.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "rows": {
+      "unit": "See input schema and normative behavior.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "origin": {
+      "unit": "See input schema and normative behavior.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "spacing": {
+      "unit": "See input schema and normative behavior.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "threshold": {
+      "unit": "See input schema and normative behavior.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    },
+    "maxWork": {
+      "unit": "See input schema and normative behavior.",
+      "default": null,
+      "encouraged_range": null,
+      "evidence": "Independent design choice; no corpus-observed or measured recommended range."
+    }
+  },
+  "targets": {
+    "processing-java": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "p5js": {
+      "required": true,
+      "implementation_status": "pending",
+      "native_status": "unvalidated",
+      "reproduction_status": "unvalidated",
+      "delivery_scope": "p5-only independent design studies; no original reconstruction claim."
+    },
+    "py5": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    },
+    "processing-android": {
+      "required": false,
+      "implementation_status": "deferred",
+      "native_status": "deferred",
+      "reproduction_status": "deferred",
+      "delivery_scope": "Deferred by maintainer scope; no support claim."
+    }
+  },
+  "fixtures": "fixtures/operations/marching-squares-2d.json",
+  "reproduction": {
+    "level": "technique",
+    "status": "unvalidated",
+    "acceptance": "Two original design studies, baseline plus structural edit and style transfer, actual p5 Canvas2D; not surveyed-original recreations."
+  },
+  "review": {
+    "owner": "root",
+    "reviewer": "root with independent architecture challenge",
+    "status": "Approved for p5 implementation; support acceptance pending execution."
+  }
+}

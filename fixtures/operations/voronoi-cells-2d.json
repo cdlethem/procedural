@@ -1,0 +1,251 @@
+{
+  "operation": "geometry.voronoi-cells-2d",
+  "version": "0.1.0",
+  "fixture_format": "exact-json-output",
+  "comparison": "exact",
+  "catalog_sha256": "dda5746cfd2ad4181bafde90011ed40158369f8c124ae822547dab5e37732298",
+  "oracle": "Root analytical axis-aligned, integer-length and half-edge cases; expected outputs authored before implementation.",
+  "cases": [
+    {
+      "id": "empty",
+      "input": {
+        "sites": [],
+        "bounds": [
+          0,
+          0,
+          4,
+          4
+        ],
+        "maxWork": 1000
+      },
+      "output": {
+        "cells": []
+      }
+    },
+    {
+      "id": "single",
+      "input": {
+        "sites": [
+          [
+            2,
+            2
+          ]
+        ],
+        "bounds": [
+          0,
+          0,
+          4,
+          4
+        ],
+        "maxWork": 1000
+      },
+      "output": {
+        "cells": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "vertical-bisector",
+      "input": {
+        "sites": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "bounds": [
+          0,
+          0,
+          4,
+          4
+        ],
+        "maxWork": 1000
+      },
+      "output": {
+        "cells": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              2,
+              4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "duplicate-first-owner",
+      "input": {
+        "sites": [
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "bounds": [
+          0,
+          0,
+          4,
+          4
+        ],
+        "maxWork": 1000
+      },
+      "output": {
+        "cells": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          []
+        ]
+      }
+    },
+    {
+      "id": "outside-empty-cell",
+      "input": {
+        "sites": [
+          [
+            -10,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "bounds": [
+          0,
+          0,
+          4,
+          4
+        ],
+        "maxWork": 1000
+      },
+      "output": {
+        "cells": [
+          [],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "invalid-bounds",
+      "input": {
+        "sites": [],
+        "bounds": [
+          1,
+          0,
+          0,
+          4
+        ],
+        "maxWork": 1000
+      },
+      "error": "INVALID_INPUT"
+    },
+    {
+      "id": "budget",
+      "input": {
+        "sites": [
+          [
+            2,
+            2
+          ]
+        ],
+        "bounds": [
+          0,
+          0,
+          4,
+          4
+        ],
+        "maxWork": 0
+      },
+      "error": "WORK_LIMIT"
+    }
+  ]
+}
