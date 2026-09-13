@@ -115,3 +115,22 @@ single portable sketch export; a preview PNG is not editable source.
 
 Prompt generation is currently scoped to p5.js. It does not add Processing Java support,
 portable recipe execution, or any new catalog target support.
+
+## Create and reuse palettes
+
+Open **Palettes** from the main navigation. **Create palette** lets you pick colors, enter
+six-digit hex values, and change their order. Or describe a mood under **Create with a
+prompt**, choose a color count, and select **Generate colors**. You can adjust the result
+before naming and saving it. Collections contain 2–12 colors.
+
+Use **Saved palettes** in a package layer’s **Style** controls to apply a collection or save
+its current colors. Application is undoable. Editing or deleting the saved collection does
+not alter colors already used in a sketch. The same picker works in gallery study controls.
+
+For a generated layer, choose **Revise with a palette** in its inspector. The palette opens
+in Prompt with an edit request. Select **Generate**, then review and apply the candidate.
+You can also **Choose a palette** when writing a new prompt in Studio or Explorations.
+The exact selected colors accompany your request; the preview shows how the model used them.
+
+The library supports search, rename, color edits, duplication, and deletion. Saved palettes
+are shared across this installation, including other browsers connected to it.

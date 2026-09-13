@@ -12,11 +12,11 @@ export type ModelProfile = { url: string; model: string; temperature: number; ma
 
 const DEFAULT_URL = "http://127.0.0.1:8080/v1";
 
-export async function modelProfile(): Promise<ModelProfile> {
+export async function modelProfile(signal?: AbortSignal): Promise<ModelProfile> {
   const url = (process.env.PROCEDURALS_MODEL_URL ?? DEFAULT_URL).replace(/\/$/, "");
   let model = process.env.PROCEDURALS_MODEL_NAME ?? "";
   if (!model) {
-    const response = await fetch(`${url}/models`, { headers: authorization() });
+    const response = await fetch(`${url}/models`, { headers: authorization(), signal });
     if (!response.ok)
       fail(
         "capability",

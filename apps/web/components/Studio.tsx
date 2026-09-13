@@ -7,6 +7,8 @@ import { StudioDialog } from "./StudioDialog";
 import styles from "./Studio.module.css";
 import { HarnessCanvas } from "./HarnessCanvas";
 import { InteractiveCanvas } from "./InteractiveCanvas";
+import { PalettePicker } from "./PaletteLibrary";
+import type { PaletteDraft } from "@/lib/palettes";
 import { LayerControls } from "./LayerControls";
 import { SaveLayerPanel } from "./SaveLayerPanel";
 import { fetchSavedLayer, insertSavedLayer, type SavedLayer } from "@/lib/saved-layers";
@@ -284,6 +286,7 @@ export function Studio() {
     [pickerOpen, setPickerOpen] = useState(false),
     [tab, setTab] = useState<InspectorTab>("technique"),
     [editRequest, setEditRequest] = useState(0),
+    [paletteEditRequest, setPaletteEditRequest] = useState<{ sequence: number; palette: PaletteDraft } | null>(null),
     [rightTab, setRightTab] = useState<"inspector" | "prompt">("inspector"),
     [compact, setCompact] = useState(false),
     [mobilePanel, setMobilePanel] = useState<"layers" | "inspector" | "prompt" | null>(null),
@@ -1088,13 +1091,15 @@ export function Studio() {
             </div>}
             <div className={styles.controlsScroll} tabIndex={0} aria-label="Layer controls">
               {layer?.kind === "source" ? <>
+                <p className="control-description">Choose saved colors to prepare a palette revision. Review the generated preview before applying.</p>
+                <PalettePicker label="Revise with a palette" useLabel="Prepare palette revision" disabled={sourceUpdating || run?.state === "running"} onUse={(palette) => { setPaletteEditRequest({ sequence: Date.now(), palette }); showPrompt(); }} />
                 <SourceControls layer={layer} controls={controls} pending={sourceUpdating} onChange={(next) => void updateSourceControls(layer, next)} onChangeLayer={(change) => commit({ ...document, layers: document.layers.map((item) => item.id === layer.id ? { ...item, ...change } : item) })} />
                 <details className={styles.saveDisclosure}><summary>Save to your layer collection</summary><SaveLayerPanel key={`${layer.id}-${layer.content.previewArtifactHash}`} layer={layer} document={document} disabled={sourceUpdating || candidateActive} /></details>
               </> : selectedWorkflow && technique ? tab === "placement" ? <TransformControls layer={selectedWorkflow} onChange={(change) => at(selected, change)} /> : <LayerControls layer={selectedWorkflow} technique={technique} onChange={(change) => at(selected, change)} section={tab} /> : <div className={styles.empty}><p>Choose a layer to edit its controls, placement, and colors.</p></div>}
             </div>
           </div>
           <div className={styles.promptContent} role="tabpanel" id="prompt-content" aria-labelledby="prompt-tab" hidden={rightTab !== "prompt"}>
-            <PromptPanel editRequest={editRequest} selectedLayerId={layer?.id} documentHandle={handle} revisionHash={revision} run={run} candidate={candidate} status={null} onGenerate={start} onCancel={cancel} onApply={apply} onRebase={rebase} />
+            <PromptPanel paletteEditRequest={paletteEditRequest} editRequest={editRequest} selectedLayerId={layer?.id} documentHandle={handle} revisionHash={revision} run={run} candidate={candidate} status={null} onGenerate={start} onCancel={cancel} onApply={apply} onRebase={rebase} />
           </div>
         </aside>
       </div>

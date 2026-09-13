@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { PromptPalette } from "./PaletteLibrary";
+import { withPalettePrompt, type PaletteDraft } from "@/lib/palettes";
 
 export type PromptScope = "add-layer" | "edit-layer" | "composition";
 export type PromptTarget = "p5js";
@@ -32,6 +34,7 @@ export type PromptCandidateView = {
 export type PromptPanelProps = {
   /** The handle is shown so an artist can tell which published revision a run uses. */
   editRequest?: number;
+  paletteEditRequest?: { sequence: number; palette: PaletteDraft } | null;
   selectedLayerId?: string;
   documentHandle?: string | null;
   revisionHash?: string | null;
@@ -64,6 +67,7 @@ function count(run: PromptRunView | null | undefined, key: "toolCalls" | "render
 /** Prompt coordinator controls deliberately stay presentational: the studio owns documents and authority. */
 export function PromptPanel({
   editRequest = 0,
+  paletteEditRequest,
   selectedLayerId,
   documentHandle,
   revisionHash,
@@ -76,6 +80,13 @@ export function PromptPanel({
   onRebase,
 }: PromptPanelProps) {
   const [prompt, setPrompt] = useState("");
+  const [palette, setPalette] = useState<PaletteDraft | null>(null);
+  useEffect(() => {
+    if (!paletteEditRequest) return;
+    setPalette(structuredClone(paletteEditRequest.palette));
+    setScope("edit-layer");
+    setPrompt((value) => value || "Recolor the selected layer using this palette. Preserve its geometry, layout, seeds, transparency, and editable controls.");
+  }, [paletteEditRequest]);
   const [scope, setScope] = useState<PromptScope>("add-layer");
   useEffect(() => { if (editRequest > 0) setScope("edit-layer"); }, [editRequest]);
   const [submitting, setSubmitting] = useState(false);
@@ -88,7 +99,7 @@ export function PromptPanel({
     if (text.length < 3 || running || (scope === "edit-layer" && !selectedLayerId)) return;
     setSubmitting(true);
     try {
-      await onGenerate(text, scope, "p5js");
+      await onGenerate(withPalettePrompt(text, palette), scope, "p5js");
     } finally {
       setSubmitting(false);
     }
@@ -114,6 +125,7 @@ export function PromptPanel({
         <div className="prompt-intro"><span className="prompt-kicker">A new direction</span><h2 id="prompt-panel-title">What do you want<br />to make?</h2><p>Describe an image or a change. You’ll review a preview before it becomes part of your sketch.</p></div>
         <div className="control"><label htmlFor="prompt-scope">Scope</label><select id="prompt-scope" value={scope} onChange={(event) => setScope(event.target.value as PromptScope)} disabled={running}>{(Object.keys(scopeLabels) as PromptScope[]).map((value) => <option value={value} key={value} disabled={value === "edit-layer" && !selectedLayerId}>{scopeLabels[value]}</option>)}</select></div>
         <div className="control"><label htmlFor="studio-prompt">Prompt</label><textarea id="studio-prompt" value={prompt} onChange={(event) => setPrompt(event.target.value)} placeholder={scope === "edit-layer" ? "Keep the pattern, soften the colors, and give the marks more room to breathe…" : "Sparse navy curves with small coral dots on warm cream…"} rows={6} maxLength={4000} disabled={running} /></div>
+        <PromptPalette palette={palette} onChange={setPalette} disabled={running} />
         {scope === "edit-layer" && <p className="control-description">The selected layer’s current source and controls are included with your request.</p>}
         {run && <div className="prompt-run" aria-live="polite">
           <p className="prompt-run-state"><strong>{run.state === "running" ? "Creating your preview…" : run.state === "succeeded" ? "Preview complete" : run.state === "cancelled" ? "Generation cancelled" : "Generation failed"}</strong>{running && activeStep ? ` · ${activeStep}` : ""}</p>

@@ -145,3 +145,25 @@ or production build. The production server uses the build's rewrite configuratio
 
 See [architecture](../docs/web-app-architecture.md) for app boundaries and
 [prompt harness design](../docs/prompt-studio-harness.md) for the wider staged direction.
+
+## Reusable palettes
+
+Open **Palettes** in the main navigation to create a named color collection. Pick colors or
+enter hex values, reorder them, and add or remove colors (2–12). **Generate colors** turns a
+short description into an editable draft using the configured prompt model. Review it and
+choose **Save palette**. Palettes can be renamed, edited, duplicated, searched, and deleted.
+
+In Studio, open a package layer’s **Style → Saved palettes** to apply a collection in one
+undoable edit, or save that layer’s current colors. The same picker is available in gallery
+study controls. Each application copies the colors: later library edits/deletion leave
+existing sketches unchanged.
+
+For generated layers, **Revise with a palette** prepares a prompt edit with the exact chosen
+colors. Choose **Generate**, review the candidate, and **Apply edit**. **Choose a palette**
+also adds colors to new Studio and Explorations prompts. Generated artwork uses model-driven
+source revisions; its color interpretation remains subject to preview review.
+
+The library is shared on this installation and stored in `.work/harness/palettes/` beside
+prompt artifacts (under the active release checkout when deployed). Project JSON retains
+applied colors/source references independently of the palette record. Prompt palette
+creation uses the same model configuration as artwork generation and never executes source.

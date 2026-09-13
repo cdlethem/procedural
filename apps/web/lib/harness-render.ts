@@ -9,10 +9,12 @@ import {
 import { basicDefinitions, drawBasic } from "./adapters/basic";
 import { drawGeometry, geometryDefinitions } from "./adapters/geometry";
 import { drawEffects, effectsDefinitions } from "./adapters/effects";
+import { drawExpansion, expansionDefinitions } from "./adapters/expansion";
 
 const basicIds = new Set(basicDefinitions.map((item) => item.id));
 const geometryIds = new Set(geometryDefinitions.map((item) => item.id));
 const effectsIds = new Set(effectsDefinitions.map((item) => item.id));
+const expansionIds = new Set(expansionDefinitions.map((item) => item.id));
 const constants = ["CLOSE", "CORNER", "ROUND", "TRIANGLES"] as const;
 
 /** Isolated harness compositor. Generated source is represented only by its trusted raster. */
@@ -90,6 +92,7 @@ function drawWorkflow(p: any, layer: Extract<DocumentLayer, { kind: "workflow" }
   if (basicIds.has(workflow.technique)) return drawBasic(p, workflow);
   if (geometryIds.has(workflow.technique)) return drawGeometry(p, workflow);
   if (effectsIds.has(workflow.technique)) return drawEffects(p, workflow);
+  if (expansionIds.has(workflow.technique)) return drawExpansion(p, workflow);
   throw new Error(`Unknown studio technique: ${String(workflow.technique)}`);
 }
 function drawSource(p: any, layer: Extract<DocumentLayer, { kind: "source" }>, images: Record<string, unknown>): void {

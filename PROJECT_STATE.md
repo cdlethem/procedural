@@ -29,7 +29,7 @@ linked evidence. Do not treat old pending statements as new assignments.
   [Version 3 root review](evidence/web/app-v3-review.json) records production browser
   checks and visual inspection; earlier web reviews remain historical.
   Tailnet deployment: https://eunoia.tailf03dad.ts.net:8443/ (Next 3002, Go 8088),
-  served from the reviewed `.work/studio-ux-work` checkout to isolate concurrent work.
+  served from the reviewed `.work/web-palettes-release` checkout to isolate concurrent work.
   The `procedurals-web` and `procedurals-api` user services own Next and Go respectively.
   This remains an app-specific compositor, separate from portable recipes and MCP.
 - Packages are local reviewed artifacts, not registry publications. Java completion
@@ -58,7 +58,8 @@ Three independently designed p5-only geometry operations add six original galler
 Voronoi cells, polyline resampling and marching squares. Java remains at 31 operations.
 The [p5 expansion review](evidence/web/p5-gallery-expansion/root-review.json) binds core,
 native edits/reset/save, packaging and visual evidence; previous Studio catalogs migrate
-explicitly. This expansion is available in the repository; live deployment remains separate.
+explicitly. This expansion is deployed with the palette library; the palette integration review also
+records the corrected Studio adapter dispatch for these six studies.
 
 ## Current work and remaining decisions
 
@@ -92,8 +93,14 @@ within their recorded scope. Follow the next user assignment; the [roadmap](docs
   layers category or Studio picker. Follow-ups receive exact current source and replay inputs;
   Studio edits remain explicitly applied and undoable. See the [successor review](evidence/web/generated-layer-review.json).
   Named projects remain in `.work/web-projects`; deployed prompt artifacts and saved layers
-  live in `.work/studio-ux-work/.work/harness`. JSON references require that artifact service.
+  live in `.work/web-palettes-release/.work/harness`. JSON references require that artifact service.
   Processing Java, portable recipe expansion and blind benchmarks remain outside this slice.
+- Named palettes can be created manually or with the configured prompt model, edited,
+  reordered, duplicated and deleted. Shared storage lives in the deployed harness `palettes/`
+  directory. Workflow layers and gallery previews apply detached colors; Studio source-layer
+  revisions and Explorations prompts include the selected palette’s exact RGB values.
+  [Palette review](evidence/web/palette-library-review.json) records persistence, browser
+  application/undo, prompt behavior and native evidence limits.
 
 ## Evidence and navigation
 

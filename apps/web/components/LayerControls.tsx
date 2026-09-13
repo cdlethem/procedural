@@ -1,5 +1,7 @@
 "use client";
 
+import { PalettePicker } from "./PaletteLibrary";
+import { paletteHex, paletteNumbers } from "@/lib/palettes";
 import type { Layer, Technique } from "@/lib/studio-types";
 
 const hex = (value: number) =>
@@ -195,6 +197,7 @@ export function LayerControls({
         <fieldset className="palette-control">
           <legend>Palette</legend>
           <small>Ordered RGB colors used by this layer.</small>
+          <PalettePicker currentColors={layer.palette.map(paletteHex)} onUse={(palette) => onChange({ palette: paletteNumbers(palette) })} />
           {layer.palette.map((color, index) => (
             <div className="palette-color" key={`${layer.id}-color-${index}`}>
               <input

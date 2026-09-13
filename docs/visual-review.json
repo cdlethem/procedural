@@ -2,6 +2,45 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "palette-library",
+      "title": "Reusable palette library",
+      "category": "Root reviewed production UI and native palette revision",
+      "description": "Manual and prompt palette editing, mobile collection access, and a reviewed source recoloring. See evidence for model retry and transport limits.",
+      "evidence": "evidence/web/palette-library-review.json",
+      "images": [
+        {
+          "label": "Palette library management",
+          "path": ".work/web-palettes-release/.work/palettes/browser/library.png",
+          "sha256": "ae20abae8e0d4503831563ed5b4607ff647c642f845d59b47b6dda861d3c02e2"
+        },
+        {
+          "label": "Manual palette editor",
+          "path": ".work/web-palettes-release/.work/palettes/browser/manual-editor.png",
+          "sha256": "de85ab3864ec0c3e99be434dbc1b6a26f455d39556ba791a96c6e467cf0cb7aa"
+        },
+        {
+          "label": "Prompt result as an editable draft",
+          "path": ".work/web-palettes-release/.work/palettes/browser/prompt-editor.png",
+          "sha256": "97f4a75e74c0595949c908e812293736d10b81edbc88efc735220e2fad1234d0"
+        },
+        {
+          "label": "Mobile palette editor",
+          "path": ".work/web-palettes-release/.work/palettes/browser/mobile-editor.png",
+          "sha256": "bed303b5fd62b98727f51cc6e18bb2e4f00fe8379a55f5cc81ac972190165c28"
+        },
+        {
+          "label": "Applied generated-layer palette revision on live Studio",
+          "path": ".work/palettes/source-applied.png",
+          "sha256": "3689401f1b0902c301f3dc449e6419a84def3c77354e2fe9894b3b02e0d7624b"
+        },
+        {
+          "label": "Native source recoloring, transparent background",
+          "path": ".work/web-palettes-release/.work/harness/artifacts/bd0aa2261f61dd1c203d235aafa92f4a6c1777d372a9bae73e8a8290bafdad55/image.png",
+          "sha256": "bd0aa2261f61dd1c203d235aafa92f4a6c1777d372a9bae73e8a8290bafdad55"
+        }
+      ]
+    },
+    {
       "id": "p5-gallery-expansion",
       "title": "Six p5 geometry studies",
       "category": "Root reviewed p5-only expansion",

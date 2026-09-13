@@ -1,0 +1,200 @@
+{
+  "kind": "root-web-palette-library-review",
+  "date": "2026-09-13",
+  "owner": "root",
+  "status": "accepted-scoped",
+  "scope": "Shared named palette library, manual and prompt creation, management, detached workflow application and palette-guided generated-source revisions.",
+  "baseline": "57f33189",
+  "design": "design/capabilities/web-palette-library.md",
+  "artist_task": "Define a color collection once, refine its colors/order, and reuse it in different layers and sketches.",
+  "computation_removed": "Repeated RGB entry and prompt formatting. This is app orchestration around existing palette inputs; no new portable algorithm or corpus recreation claim.",
+  "semantics": [
+    "Named snapshots contain 2\u201312 ordered opaque RGB hex colors, matching existing workflow bounds. Duplicate colors and ordering are meaningful and retained.",
+    "Manual color/hex editing, reorder, add/remove, rename, duplicate and delete; prompt output remains an editable unsaved draft until explicit save.",
+    "Atomic JSON storage under harness/palettes. Revision checks reject stale edits/deletes. Existing sketches own detached color values and do not change when a library record changes.",
+    "Studio workflow Style controls and gallery study controls share the picker. Applying a palette is one undoable edit and preserves the other layer inputs.",
+    "Studio generated-layer shortcut prepares edit scope and selected palette; artist generates/reviews/applies using the existing candidate flow. Studio and Explorations generation can include chosen exact RGB values.",
+    "Palette dialog is portaled outside responsive drawers, with bounded scrolling and native modal focus/Escape behavior.",
+    "Final integration connects the six existing expansion workflows to their already reviewed adapters in the harness compositor, correcting a missing dispatch found by the full browser suite. No operation semantics changed."
+  ],
+  "validation": {
+    "unit_tests": "52/52 passed; palette persistence, detached values, concurrent-edit/deletion conflicts, invalid names/colors/count, model response validation and abort propagation included.",
+    "build": "Final production Next build and TypeScript passed. Existing jobs.ts filesystem tracing warning remains.",
+    "api": {
+      "status": "passed",
+      "scenarios": [
+        "Real production CRUD",
+        "Optimistic conflict guards",
+        "Invalid RGB/count and oversized body rejection",
+        "Cross-site mutation rejection",
+        "Path traversal rejection"
+      ]
+    },
+    "palette_browser": {
+      "status": "passed",
+      "scenarios": [
+        "Manual hex/picker editor, ordering, invalid color guard, save and reload",
+        "Duplicate, rename, and delete through real collection storage",
+        "Saved palette changes actual workflow pixels; geometry unchanged; undo/redo, recovery and JSON export preserve exact colors",
+        "Save current layer colors; twelve-color modal scroll stays bounded on mobile and Escape closes it",
+        "Prompt response populates editable unsaved draft; model failure preserves it",
+        "Same saved palette applies in standalone gallery study controls",
+        "Generated-layer palette shortcut prepares edit scope with exact colors; request leaves committed source intact",
+        "Explorations includes exact saved colors alongside artist request"
+      ],
+      "errors": [],
+      "limits": "Palette generation UI replays a validated response; generated-art run is intercepted to inspect its request. Library storage, workflow drawing, export and document contexts are live."
+    },
+    "full_browser": {
+      "status": "passed",
+      "scope": "Web app integration, not portable recipe or expanded catalog support.",
+      "scenarios": [
+        "gallery search and 30 study navigation",
+        "30 shared detail renderers, inline source, numeric and palette pixel changes",
+        "30 studio technique renderers mount and each picker card adds a layer without browser errors",
+        "group opacity applies to completed layer, with exact undo pixels",
+        "no parameter-toggle shortcuts, custom palette, targeted visibility, duplicate, undo/redo and delete",
+        "JSON roundtrip, rejected import preserves state, PNG export",
+        "Go save/load through Next proxy and local browser recovery",
+        "local rendering and editing remain available when Go service is offline",
+        "focused reseed boundaries and CutMarks edit/undo/export/storage interactions",
+        "layer transform controls, live drag/undo, transformed CutMarks, persistence, WebGL and raster compositing",
+        "34 API index entries and rendered operation details without raw repository links",
+        "responsive gallery, embedded example, and studio at 390px width"
+      ],
+      "browser": "153.0.8010.12",
+      "errors": []
+    },
+    "palette_model": {
+      "request": {
+        "prompt": "A muted coastal palette: deep ink blue, sea-glass green, pale seafoam, warm sand, and a small coral accent. Avoid neon colors.",
+        "count": 5
+      },
+      "result": {
+        "palette": {
+          "name": "Muted Coastal",
+          "colors": [
+            "#1b3a57",
+            "#7a9e9f",
+            "#d4e5e2",
+            "#d9c7a9",
+            "#d98a7e"
+          ]
+        }
+      },
+      "elapsed_seconds": 3.2
+    },
+    "source_revision": {
+      "initial_run": "run-7dbb42fc-840c-4233-8b46-8573d5ef2310",
+      "initial_outcome": "Model returned placeholder candidate id pending without source or render. Candidate validation rejected it; no artwork accepted.",
+      "retry_run": "run-ba3bff2f-cf18-40e6-b568-0abb5ef7fbfb",
+      "candidate_id": "cand-67d6da6a-41c1-4a23-9355-5d2ef824086e",
+      "model": "/home/colin/models/Qwen3.8-27B-Q8_0.gguf",
+      "renders": 1,
+      "retry_prompt": "Use this ordered color palette for the artwork: #1b3a57, #7a9e9f, #d4e5e2, #d9c7a9, #d98a7e. Preserve the requested structure; use these exact RGB colors as the base colors.\n\nRecolor the selected source layer: use sea-glass green #7a9e9f for the central disk and ink blue #1b3a57 for its twelve rings. Preserve the ring count, geometry, layout, seeds, transparency, and diskRadius control. Keep the same layer id. Use candidate.create with the full revised files, render the candidate, and return the real candidate id from that tool. Do not return a placeholder or claim completion without a rendered candidate.",
+      "result": "Root inspected exact before/after source: only fill/stroke RGB and comments changed. Twelve rings, diskRadius, geometry, replay inputs and transparency preserved. Native 640px image has the requested disk RGB #7a9e9f; source stroke is #1b3a57.",
+      "application": {
+        "status": "passed",
+        "candidateId": "cand-67d6da6a-41c1-4a23-9355-5d2ef824086e",
+        "errors": [],
+        "transport": "Completed real source-revision run replayed; candidate validation/application, artifact loading, canvas composition and undo/redo live.",
+        "pixel_check": "Final live browser waited for center pixel RGB (122,158,159) after redo before capturing."
+      }
+    },
+    "visual_review": "Root inspected library, manual/prompt editors, mobile modal, exact source diff, native raster and final applied Studio canvas.",
+    "commands": [
+      "npm --prefix apps/web test",
+      "npm --prefix apps/web run typecheck",
+      "PROCEDURALS_API_URL=http://127.0.0.1:8088 npm --prefix .work/web-palettes-release/apps/web run build",
+      "WEB_BASE_URL=http://127.0.0.1:3011 PALETTE_SOURCE_DOCUMENT=/home/colin/dev/procedural/.work/palettes/source-document.json PLAYWRIGHT_BROWSERS_PATH=/home/colin/dev/procedural/.work/toolchains/playwright python3 tools/with_native_render_lock.py -- node apps/web/scripts/test-palettes.mjs",
+      "WEB_BASE_URL=http://127.0.0.1:3011 PLAYWRIGHT_BROWSERS_PATH=/home/colin/dev/procedural/.work/toolchains/playwright python3 tools/with_native_render_lock.py -- node apps/web/scripts/test-browser.mjs",
+      "apps/web/node_modules/.bin/tsx .work/palettes/source-retry.mts (harness worker acquires shared render lease)",
+      "PLAYWRIGHT_BROWSERS_PATH=/home/colin/dev/procedural/.work/toolchains/playwright python3 tools/with_native_render_lock.py -- node .work/palettes/source-apply.mjs"
+    ]
+  },
+  "deployment": {
+    "url": "https://eunoia.tailf03dad.ts.net:8443/palettes",
+    "checkout": ".work/web-palettes-release",
+    "frontend": "procedurals-web.service on 3002",
+    "projects": "Existing Go service on 8088; project storage unchanged",
+    "preserved_files": 5727,
+    "sha256": "All prior production files preserved exactly",
+    "old": ".work/p5-expansion-live/.work/harness",
+    "new": ".work/web-palettes-release/.work/harness",
+    "checks": {
+      "/": 200,
+      "/studio": 200,
+      "/palettes": 200,
+      "/explorations": 200,
+      "/docs/prompt-studio": 200,
+      "/api/projects": 200,
+      "/harness/palettes": 200,
+      "/harness/layers": 200,
+      "tailnet/palettes": 200,
+      "tailnet/harness/palettes": 200,
+      "restart_persistence": "Exact palette record preserved after process restart; verification-only record deleted."
+    },
+    "integration": "Deployment preflight detected the concurrent p5 expansion release; verified its clean matching baseline and refreshed from its authoritative data before switching. Prior releases retained.",
+    "cleanup": "Browser/API/restart verification palettes deleted by exact id/revision; no sample palettes seeded into the user collection."
+  },
+  "images": [
+    {
+      "label": "Palette library management",
+      "path": ".work/web-palettes-release/.work/palettes/browser/library.png",
+      "sha256": "ae20abae8e0d4503831563ed5b4607ff647c642f845d59b47b6dda861d3c02e2"
+    },
+    {
+      "label": "Manual palette editor",
+      "path": ".work/web-palettes-release/.work/palettes/browser/manual-editor.png",
+      "sha256": "de85ab3864ec0c3e99be434dbc1b6a26f455d39556ba791a96c6e467cf0cb7aa"
+    },
+    {
+      "label": "Prompt result as an editable draft",
+      "path": ".work/web-palettes-release/.work/palettes/browser/prompt-editor.png",
+      "sha256": "97f4a75e74c0595949c908e812293736d10b81edbc88efc735220e2fad1234d0"
+    },
+    {
+      "label": "Mobile palette editor",
+      "path": ".work/web-palettes-release/.work/palettes/browser/mobile-editor.png",
+      "sha256": "bed303b5fd62b98727f51cc6e18bb2e4f00fe8379a55f5cc81ac972190165c28"
+    },
+    {
+      "label": "Applied generated-layer palette revision on live Studio",
+      "path": ".work/palettes/source-applied.png",
+      "sha256": "3689401f1b0902c301f3dc449e6419a84def3c77354e2fe9894b3b02e0d7624b"
+    },
+    {
+      "label": "Native source recoloring, transparent background",
+      "path": ".work/web-palettes-release/.work/harness/artifacts/bd0aa2261f61dd1c203d235aafa92f4a6c1777d372a9bae73e8a8290bafdad55/image.png",
+      "sha256": "bd0aa2261f61dd1c203d235aafa92f4a6c1777d372a9bae73e8a8290bafdad55"
+    }
+  ],
+  "implementation_sha256": {
+    "apps/README.md": "7d776a1b1bcf51dd3ffcd445645a37fa9c36801a1f03ff506e188af4a361f12a",
+    "apps/web/components/Explorations.tsx": "0d425526788ece18a17f8f244a62c495e534c23b2a33a88817b875736b83a800",
+    "apps/web/components/LayerControls.tsx": "a4ee1adc23f20a55d5ee4e856e72fd110e303ae52453656bf10c136576e8d422",
+    "apps/web/components/PromptPanel.tsx": "528af8aa3f8f983b2eae8d2156d723660089b4565101b55e5d75ade5d1b15909",
+    "apps/web/components/SiteNav.tsx": "04f821a649e803a3e575ac093d2e89d0872243d4720f3675422c06c96c34657e",
+    "apps/web/components/Studio.module.css": "d454ba0ab54b22d583e219f64adb030edec3c405906161b85cae0d2c40608309",
+    "apps/web/components/Studio.tsx": "3e79ce1f9069d1692512f6d6d57e0f8a449a05cf0d255564813325590641a32e",
+    "apps/web/lib/harness/model.ts": "6059d22bd1dd364b6fe1dc2621d533e1655086889473580f7a8a41cda7f9863c",
+    "docs/prompt-studio-guide.md": "21240ef5312e7c4f0929416d5da6757c8edb5fe281f7c734840a3df994d20e3a",
+    "apps/web/app/harness/palettes/generate/route.ts": "cb4d067a3f47cf708a38451626a0efe718aae3cd1507f870637fe42f9a373b9e",
+    "apps/web/app/harness/palettes/route.ts": "9d9ce1fb56142f64003f1e06fae56d954f3ecfaca8b1d7379cc669d4f2f85159",
+    "apps/web/app/palettes/page.tsx": "bf9742cfc16dfbed01af3919bd31a1fbe8130525777c12ddf907311b2dac10b3",
+    "apps/web/components/PaletteLibrary.module.css": "ebc8a0204100eaa0e350619abb0c577b93e868ab87a4298a3953183e332adfce",
+    "apps/web/components/PaletteLibrary.tsx": "85501d1929e3c9b1cdfa53a7632fe7ee131e7aeaa5a216417eb01876e6c765e3",
+    "apps/web/lib/harness/palette-generation.ts": "fadc7cba0cca00bd35a039d55cf13d9870bbcc42ebfc470f59d745fe8e9fb121",
+    "apps/web/lib/harness/palettes.ts": "2e6129a7ac44a440e8b34a67363cf7444e32315116bf3953e2d1a3c0a477887c",
+    "apps/web/lib/palettes.ts": "46a4f42e75d339425b84e258947822fa8c08ea1d6fa14abf355ae3d46e59951b",
+    "apps/web/scripts/test-palettes.mjs": "897936b8e40b31859f200c875fdf77ff70731a04eb023f399a4000c727d36ca9",
+    "apps/web/tests/palettes.test.ts": "1da0a279a37b2e2fdcd703a5da6a3b5a0df594812185c99c5c18cd2fabf39bef",
+    "apps/web/lib/harness-render.ts": "2700c91cdf913b90df3b06f7bc440b31fa25ffd64cadbe18396bfab078f5a9e3"
+  },
+  "limits": [
+    "Palette library is shared within this trusted local installation. Browser-only offline palette management is not implemented; existing direct workflow color controls remain local.",
+    "Generated source uses model-driven revisions, not deterministic recoloring. One palette creation and one successful retry do not establish general prompt quality.",
+    "Browser generation tests replay completed responses or intercept requests. Live model generation/native rendering and live browser candidate application were checked separately; no uninterrupted browser-to-model claim.",
+    "No portable operation, new target acceptance or corpus recreation coverage is added."
+  ]
+}
