@@ -29,7 +29,7 @@ linked evidence. Do not treat old pending statements as new assignments.
   [Version 3 root review](evidence/web/app-v3-review.json) records production browser
   checks and visual inspection; earlier web reviews remain historical.
   Tailnet deployment: https://eunoia.tailf03dad.ts.net:8443/ (Next 3002, Go 8088),
-  served from the reviewed `.work/web-palettes-release` checkout to isolate concurrent work.
+  served from the reviewed `.work/p5-tenfold-release` checkout to isolate concurrent work.
   The `procedurals-web` and `procedurals-api` user services own Next and Go respectively.
   This remains an app-specific compositor, separate from portable recipes and MCP.
 - Packages are local reviewed artifacts, not registry publications. Java completion
@@ -65,8 +65,9 @@ The [tenfold p5 expansion](evidence/web/p5-tenfold/root-review.json) adds 30 ind
 operations and 60 original studies across paths, fields, symbolic systems, raster/color and
 projected meshes. All 60 have matching gallery/Studio/native pixels and checked edits,
 reset/reload/save. The [artist guide](docs/p5-gallery-expansion.md) maps tasks to examples.
-Production deployment of this reviewed batch is in progress; the live site still serves the
-prior palette release until the successor build and HTTPS checks pass.
+This batch is merged at `4724f0d7` and deployed. The [deployment review](evidence/web/p5-tenfold/deployment.json)
+records 120 exact HTTPS gallery/Studio pixel comparisons across all 60 additions, 161 successful
+route checks, and preservation of palette, saved-layer, prompt-artifact and Go storage.
 
 ## Current work and remaining decisions
 
@@ -100,7 +101,7 @@ within their recorded scope. Follow the next user assignment; the [roadmap](docs
   layers category or Studio picker. Follow-ups receive exact current source and replay inputs;
   Studio edits remain explicitly applied and undoable. See the [successor review](evidence/web/generated-layer-review.json).
   Named projects remain in `.work/web-projects`; deployed prompt artifacts and saved layers
-  live in `.work/web-palettes-release/.work/harness`. JSON references require that artifact service.
+  live in the shared `.work/web-palettes-release/.work/harness` directory, linked by the current release. JSON references require that artifact service.
   Processing Java, portable recipe expansion and blind benchmarks remain outside this slice.
 - Named palettes can be created manually or with the configured prompt model, edited,
   reordered, duplicated and deleted. Shared storage lives in the deployed harness `palettes/`

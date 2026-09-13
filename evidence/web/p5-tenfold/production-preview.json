@@ -1,0 +1,779 @@
+{
+  "status": "passed",
+  "base": "http://localhost:3114",
+  "scope": "Production gallery and Studio baselines for selected reviewed studies; exact comparison to accepted development images. Read-only route and shared-store availability checks.",
+  "studies": [
+    {
+      "slug": "relaxed-stones",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "ed879af2785e207b6e3447c197acdf6fe407061c0da6e947e95ea9b0ae571eba",
+          "expected": "ed879af2785e207b6e3447c197acdf6fe407061c0da6e947e95ea9b0ae571eba",
+          "path": ".work/p5-tenfold/production-preview-final/relaxed-stones-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "ed879af2785e207b6e3447c197acdf6fe407061c0da6e947e95ea9b0ae571eba",
+          "expected": "ed879af2785e207b6e3447c197acdf6fe407061c0da6e947e95ea9b0ae571eba",
+          "path": ".work/p5-tenfold/production-preview-final/relaxed-stones-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedResponses": []
+    },
+    {
+      "slug": "reaction-spots",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "2ab90aff2d3192e526d8a6c6d543cc2063ebb10f1ed95b036f36a12724517dc4",
+          "expected": "2ab90aff2d3192e526d8a6c6d543cc2063ebb10f1ed95b036f36a12724517dc4",
+          "path": ".work/p5-tenfold/production-preview-final/reaction-spots-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "2ab90aff2d3192e526d8a6c6d543cc2063ebb10f1ed95b036f36a12724517dc4",
+          "expected": "2ab90aff2d3192e526d8a6c6d543cc2063ebb10f1ed95b036f36a12724517dc4",
+          "path": ".work/p5-tenfold/production-preview-final/reaction-spots-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedResponses": []
+    },
+    {
+      "slug": "perceptual-bands",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "15d22f473805116f33f9d154517fcf0899fd7f3ab5a3bab0e32458b27f05cf2e",
+          "expected": "15d22f473805116f33f9d154517fcf0899fd7f3ab5a3bab0e32458b27f05cf2e",
+          "path": ".work/p5-tenfold/production-preview-final/perceptual-bands-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "15d22f473805116f33f9d154517fcf0899fd7f3ab5a3bab0e32458b27f05cf2e",
+          "expected": "15d22f473805116f33f9d154517fcf0899fd7f3ab5a3bab0e32458b27f05cf2e",
+          "path": ".work/p5-tenfold/production-preview-final/perceptual-bands-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedResponses": []
+    },
+    {
+      "slug": "rounded-panels",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "a336c2c55d3ad01ea8727d6a39342912d882920fba5d28b8d88d519ba034b0cd",
+          "expected": "a336c2c55d3ad01ea8727d6a39342912d882920fba5d28b8d88d519ba034b0cd",
+          "path": ".work/p5-tenfold/production-preview-final/rounded-panels-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "a336c2c55d3ad01ea8727d6a39342912d882920fba5d28b8d88d519ba034b0cd",
+          "expected": "a336c2c55d3ad01ea8727d6a39342912d882920fba5d28b8d88d519ba034b0cd",
+          "path": ".work/p5-tenfold/production-preview-final/rounded-panels-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedResponses": []
+    },
+    {
+      "slug": "rounded-polyhedra",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "1e07c393db921a8f656f4b2963ffc1235858f53e397e8970aa07d51c214d9078",
+          "expected": "1e07c393db921a8f656f4b2963ffc1235858f53e397e8970aa07d51c214d9078",
+          "path": ".work/p5-tenfold/production-preview-final/rounded-polyhedra-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "1e07c393db921a8f656f4b2963ffc1235858f53e397e8970aa07d51c214d9078",
+          "expected": "1e07c393db921a8f656f4b2963ffc1235858f53e397e8970aa07d51c214d9078",
+          "path": ".work/p5-tenfold/production-preview-final/rounded-polyhedra-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedResponses": []
+    },
+    {
+      "slug": "tiled-circuits",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "e228e7f3a9cf7e661d9e317469f498510850efb95fe53f99230ca23ef3e9ad04",
+          "expected": "e228e7f3a9cf7e661d9e317469f498510850efb95fe53f99230ca23ef3e9ad04",
+          "path": ".work/p5-tenfold/production-preview-final/tiled-circuits-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "e228e7f3a9cf7e661d9e317469f498510850efb95fe53f99230ca23ef3e9ad04",
+          "expected": "e228e7f3a9cf7e661d9e317469f498510850efb95fe53f99230ca23ef3e9ad04",
+          "path": ".work/p5-tenfold/production-preview-final/tiled-circuits-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedResponses": []
+    }
+  ],
+  "routes": [
+    {
+      "path": "/harness/palettes",
+      "status": 200
+    },
+    {
+      "path": "/harness/layers",
+      "status": 200
+    },
+    {
+      "path": "/api/projects",
+      "status": 200
+    },
+    {
+      "path": "/palettes",
+      "status": 200
+    },
+    {
+      "path": "/studio",
+      "status": 200
+    },
+    {
+      "path": "/api-reference",
+      "status": 200
+    },
+    {
+      "path": "/techniques/field-marks",
+      "status": 200
+    },
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/techniques/lattice-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/path-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/cut-branch-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/placement-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/band-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/loop-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/region-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/branch-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/panel-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/projection-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/path-clip-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/polygon-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/cut-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/grain-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/pull-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/facet-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/ramp-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/spring-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/profile-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/annular-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/warp-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/blur-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/depth-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/cell-mosaic",
+      "status": 200
+    },
+    {
+      "path": "/techniques/cell-echoes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/stitched-paths",
+      "status": 200
+    },
+    {
+      "path": "/techniques/orbit-beads",
+      "status": 200
+    },
+    {
+      "path": "/techniques/rounded-panels",
+      "status": 200
+    },
+    {
+      "path": "/techniques/contour-terrain",
+      "status": 200
+    },
+    {
+      "path": "/techniques/flowing-brushes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/contour-abstraction",
+      "status": 200
+    },
+    {
+      "path": "/techniques/contour-blobs",
+      "status": 200
+    },
+    {
+      "path": "/techniques/gesture-skeletons",
+      "status": 200
+    },
+    {
+      "path": "/techniques/road-margins",
+      "status": 200
+    },
+    {
+      "path": "/techniques/nested-contour-strokes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/scatter-envelopes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/terraced-islands",
+      "status": 200
+    },
+    {
+      "path": "/techniques/faceted-silhouettes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/stitched-contours",
+      "status": 200
+    },
+    {
+      "path": "/techniques/concave-grain",
+      "status": 200
+    },
+    {
+      "path": "/techniques/fragmented-lines",
+      "status": 200
+    },
+    {
+      "path": "/techniques/blue-noise-stipple",
+      "status": 200
+    },
+    {
+      "path": "/techniques/relaxed-stones",
+      "status": 200
+    },
+    {
+      "path": "/techniques/spaced-symbols",
+      "status": 200
+    },
+    {
+      "path": "/techniques/centroid-trails",
+      "status": 200
+    },
+    {
+      "path": "/techniques/aspect-tiles",
+      "status": 200
+    },
+    {
+      "path": "/techniques/packed-posters",
+      "status": 200
+    },
+    {
+      "path": "/techniques/obstacle-roads",
+      "status": 200
+    },
+    {
+      "path": "/techniques/arrival-contours",
+      "status": 200
+    },
+    {
+      "path": "/techniques/reaction-spots",
+      "status": 200
+    },
+    {
+      "path": "/techniques/curved-trajectories",
+      "status": 200
+    },
+    {
+      "path": "/techniques/stream-ribbons",
+      "status": 200
+    },
+    {
+      "path": "/techniques/woven-rows",
+      "status": 200
+    },
+    {
+      "path": "/techniques/reaction-stripes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/organic-cells",
+      "status": 200
+    },
+    {
+      "path": "/techniques/geometric-generations",
+      "status": 200
+    },
+    {
+      "path": "/techniques/triangle-glyphs",
+      "status": 200
+    },
+    {
+      "path": "/techniques/pinned-waves",
+      "status": 200
+    },
+    {
+      "path": "/techniques/swirling-particles",
+      "status": 200
+    },
+    {
+      "path": "/techniques/flow-needles",
+      "status": 200
+    },
+    {
+      "path": "/techniques/branching-sentences",
+      "status": 200
+    },
+    {
+      "path": "/techniques/ripple-interference",
+      "status": 200
+    },
+    {
+      "path": "/techniques/woven-grammar",
+      "status": 200
+    },
+    {
+      "path": "/techniques/turtle-canopies",
+      "status": 200
+    },
+    {
+      "path": "/techniques/recursive-tiles",
+      "status": 200
+    },
+    {
+      "path": "/techniques/compatible-mosaics",
+      "status": 200
+    },
+    {
+      "path": "/techniques/ordered-halftone",
+      "status": 200
+    },
+    {
+      "path": "/techniques/maze-gardens",
+      "status": 200
+    },
+    {
+      "path": "/techniques/tiled-circuits",
+      "status": 200
+    },
+    {
+      "path": "/techniques/branching-networks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/diffusion-engraving",
+      "status": 200
+    },
+    {
+      "path": "/techniques/dithered-ribbons",
+      "status": 200
+    },
+    {
+      "path": "/techniques/bayer-weave",
+      "status": 200
+    },
+    {
+      "path": "/techniques/nearest-feature-mosaic",
+      "status": 200
+    },
+    {
+      "path": "/techniques/embossed-field",
+      "status": 200
+    },
+    {
+      "path": "/techniques/signed-edge-print",
+      "status": 200
+    },
+    {
+      "path": "/techniques/eroded-lace",
+      "status": 200
+    },
+    {
+      "path": "/techniques/distance-halos",
+      "status": 200
+    },
+    {
+      "path": "/techniques/perceptual-bands",
+      "status": 200
+    },
+    {
+      "path": "/techniques/dilated-stamps",
+      "status": 200
+    },
+    {
+      "path": "/techniques/oklab-orbits",
+      "status": 200
+    },
+    {
+      "path": "/techniques/quantized-stripes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/extruded-seals",
+      "status": 200
+    },
+    {
+      "path": "/techniques/reduced-mosaic",
+      "status": 200
+    },
+    {
+      "path": "/techniques/stepped-blocks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/twisting-streamers",
+      "status": 200
+    },
+    {
+      "path": "/techniques/rounded-polyhedra",
+      "status": 200
+    },
+    {
+      "path": "/techniques/transported-ribbons",
+      "status": 200
+    },
+    {
+      "path": "/techniques/subdivided-shells",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.assemble-segment-chains-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.bayer-dither",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.adjacency-tile-collapse-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/mesh.annular-solid-3d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.binary-cell-partition-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.binary-morphology-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.bilinear-remap-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.chaikin-polyline-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.convex-hull-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.closed-spline-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.convolve-2d-signed",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.clip-segments-simple-polygon-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/path.cost-grid-paths-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/color.cyclic-palette",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.damped-wave-step-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.elementary-cellular-rows",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/mesh.extrude-simple-polygon-3d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.euclidean-distance-transform-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.gradient-noise-3d-01",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.floyd-steinberg-dither",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.gradient-noise-2d-01",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/topology.delaunay-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/path.gradient-trace-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.gray-scott-step-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.life-like-step-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/mesh.loop-subdivide-triangles-3d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.lloyd-relaxation-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/color.median-cut-quantize",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.marching-squares-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.nearest-segment-contact-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.masked-source-over-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/path.noise-band-trace-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/color.oklab-ramp",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/sampling.ordered-convex-polygon-filter-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.offset-polyline-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/path.occupied-lattice-paths-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/grammar.parallel-token-rewrite",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/sampling.ordered-circle-filter-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/mesh.parallel-transport-ribbon-3d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/sampling.poisson-disc-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.radial-pull-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.regular-grid",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.retained-rectangle-cuts-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.crossfade-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.resample-polyline-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/path.rk4-vector-grid-trace-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/mesh.radial-profile-surface-3d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.scalar-grid-curl-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/topology.seeded-depth-first-spanning-tree",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/sampling.seeded-circle-placement-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/topology.seeded-line-pool-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/topology.seeded-endpoint-branches-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.separable-blur-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.seeded-quadrant-partition-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/sampling.seeded-triangle-points-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.sequential-disc-projection-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.simplify-polyline-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.skyline-pack-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/color.stop-ramp",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.triangulate-simple-polygon-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/motion.target-springs-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/sampling.triangle-coordinate-map-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.token-turtle-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.voronoi-cells-2d",
+      "status": 200
+    }
+  ]
+}

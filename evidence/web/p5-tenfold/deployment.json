@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "owner": "root",
+  "reviewer": "root",
+  "url": "https://eunoia.tailf03dad.ts.net:8443/",
+  "source_commit": "4724f0d7c106a590a2394da5c31af2add975f86a",
+  "release_checkout": "/home/colin/dev/procedural/.work/p5-tenfold-release",
+  "scope": "Deploy the main-merged thirty-operation/sixty-study batch; live totals 90 gallery studies and 64 API entries. Actual HTTPS gallery and Studio pixels verified for all 60 new studies.",
+  "checks": {
+    "isolated_production_build": "passed",
+    "build_environment": {
+      "PROCEDURALS_API_URL": "http://127.0.0.1:8088"
+    },
+    "preview_studies": 6,
+    "live_studies": 60,
+    "live_pixel_comparisons": 120,
+    "http_routes": 161,
+    "http_routes_status": 200,
+    "page_errors": 0,
+    "console_errors": 0,
+    "failed_browser_requests": 0,
+    "web_service": "active",
+    "api_service": "active"
+  },
+  "storage": {
+    "shared_harness_realpath": "/home/colin/dev/procedural/.work/web-palettes-release/.work/harness",
+    "same_harness_inode": 72893293,
+    "go_api_pid_unchanged": "1967361",
+    "palette_saved_layer_and_project_response_sha256": {
+      "/harness/palettes": "d07b140094d1a55fff7f94ed20b966a1311056febcbdd9ce7fd373513c6a6f32",
+      "/harness/layers": "c824a9aa7d2e3471306648c6d4baa1abbcb97ff0276181ab4722ca27127cdba0",
+      "/api/projects": "7cdcc1c2c3c145f282148a6dbceffb25e4d5264623fdc29963d35472e5c0097d"
+    },
+    "method": "New release symlinks the same existing harness directory; Go service and project store were not restarted or moved. Before/after read-only responses match exactly."
+  },
+  "initial_attempt": {
+    "result": "rolled back and corrected",
+    "reason": "First build omitted the build-time API origin, so /api/projects reached 8080 and returned 404 despite correct gallery/Studio images. Previous reviewed frontend was restored while rebuilding with the existing API on 8088. Final verification includes project requests and rejects all failed application requests.",
+    "render_report": "evidence/web/p5-tenfold/initial-live-render-attempt.json"
+  },
+  "build_log_sha256": "b81ca295b5387f484c68427283f2d19486beb4cb6e142c3f580ba89c79c709b0",
+  "evidence_sha256": {
+    "evidence/web/p5-tenfold/root-review.json": "a3b4ad3c4cbd32c3b31fc0b92f38c05ad53c1ea8d9d6dcced913236edd5b6a30",
+    "evidence/web/p5-tenfold/live-native.json": "50cb0f313b3c4dc6f1b1a93ff9ac0ebfd6ed091c3cc67ffa8f8780729940203a",
+    "evidence/web/p5-tenfold/production-preview.json": "39e131588e7365fc2d229ed1676a50238089074243b42f147df2cb7e21758a2a",
+    "evidence/web/p5-tenfold/initial-live-render-attempt.json": "2ba4ced2c66b058e69a075bd82551bc24d3b7a557f7ecc73a544aef9a6021b7b"
+  },
+  "verifier_sha256": "05674acce7432ca3f33daedcb1f0fc8f51cb1f24424f0927e689bb0778ff3d44",
+  "limits": [
+    "Chromium Canvas2D verification; no other-target claim.",
+    "This is an isolated build of the merged source, not a registry package publication."
+  ]
+}

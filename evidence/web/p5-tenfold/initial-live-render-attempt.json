@@ -1,0 +1,2329 @@
+{
+  "status": "passed",
+  "base": "https://eunoia.tailf03dad.ts.net:8443",
+  "scope": "Production gallery and Studio baselines for selected reviewed studies; exact comparison to accepted development images. Read-only route and shared-store availability checks.",
+  "studies": [
+    {
+      "slug": "bayer-weave",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "163222693a1ebc21dd2a1bf027b41e20c40fa2faa0ebc8abfa5edaf787980943",
+          "expected": "163222693a1ebc21dd2a1bf027b41e20c40fa2faa0ebc8abfa5edaf787980943",
+          "path": ".work/p5-tenfold/live-production/bayer-weave-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "163222693a1ebc21dd2a1bf027b41e20c40fa2faa0ebc8abfa5edaf787980943",
+          "expected": "163222693a1ebc21dd2a1bf027b41e20c40fa2faa0ebc8abfa5edaf787980943",
+          "path": ".work/p5-tenfold/live-production/bayer-weave-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "aspect-tiles",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "f9ef230735839d92a75923dd89388af211fcd7447ba4624068ab0b28c0d9dd2b",
+          "expected": "f9ef230735839d92a75923dd89388af211fcd7447ba4624068ab0b28c0d9dd2b",
+          "path": ".work/p5-tenfold/live-production/aspect-tiles-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "f9ef230735839d92a75923dd89388af211fcd7447ba4624068ab0b28c0d9dd2b",
+          "expected": "f9ef230735839d92a75923dd89388af211fcd7447ba4624068ab0b28c0d9dd2b",
+          "path": ".work/p5-tenfold/live-production/aspect-tiles-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "arrival-contours",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "59a028c609df266e497c8a9cd63459e13ddbb18f136d4384e09f47c4f7c6832f",
+          "expected": "59a028c609df266e497c8a9cd63459e13ddbb18f136d4384e09f47c4f7c6832f",
+          "path": ".work/p5-tenfold/live-production/arrival-contours-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "59a028c609df266e497c8a9cd63459e13ddbb18f136d4384e09f47c4f7c6832f",
+          "expected": "59a028c609df266e497c8a9cd63459e13ddbb18f136d4384e09f47c4f7c6832f",
+          "path": ".work/p5-tenfold/live-production/arrival-contours-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "blue-noise-stipple",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "3b7f3e8c32c7e9ebe7969470ac34a02d35662b5835be43f44dd86bd0f7432736",
+          "expected": "3b7f3e8c32c7e9ebe7969470ac34a02d35662b5835be43f44dd86bd0f7432736",
+          "path": ".work/p5-tenfold/live-production/blue-noise-stipple-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "3b7f3e8c32c7e9ebe7969470ac34a02d35662b5835be43f44dd86bd0f7432736",
+          "expected": "3b7f3e8c32c7e9ebe7969470ac34a02d35662b5835be43f44dd86bd0f7432736",
+          "path": ".work/p5-tenfold/live-production/blue-noise-stipple-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "branching-networks",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "165c565c394f88d6e66805dfa70890af1bd74d9f0311f6d67a3ef349e79b9d83",
+          "expected": "165c565c394f88d6e66805dfa70890af1bd74d9f0311f6d67a3ef349e79b9d83",
+          "path": ".work/p5-tenfold/live-production/branching-networks-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "165c565c394f88d6e66805dfa70890af1bd74d9f0311f6d67a3ef349e79b9d83",
+          "expected": "165c565c394f88d6e66805dfa70890af1bd74d9f0311f6d67a3ef349e79b9d83",
+          "path": ".work/p5-tenfold/live-production/branching-networks-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "branching-sentences",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "67d2c8e8c91a4e47df78c2aa51f6b25fd28c091031897a966a251dae3bb4f1be",
+          "expected": "67d2c8e8c91a4e47df78c2aa51f6b25fd28c091031897a966a251dae3bb4f1be",
+          "path": ".work/p5-tenfold/live-production/branching-sentences-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "67d2c8e8c91a4e47df78c2aa51f6b25fd28c091031897a966a251dae3bb4f1be",
+          "expected": "67d2c8e8c91a4e47df78c2aa51f6b25fd28c091031897a966a251dae3bb4f1be",
+          "path": ".work/p5-tenfold/live-production/branching-sentences-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "centroid-trails",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "9369133be775b700e93de374592de518c6620721af65826c040c9b8a475a4da5",
+          "expected": "9369133be775b700e93de374592de518c6620721af65826c040c9b8a475a4da5",
+          "path": ".work/p5-tenfold/live-production/centroid-trails-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "9369133be775b700e93de374592de518c6620721af65826c040c9b8a475a4da5",
+          "expected": "9369133be775b700e93de374592de518c6620721af65826c040c9b8a475a4da5",
+          "path": ".work/p5-tenfold/live-production/centroid-trails-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "compatible-mosaics",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "853acc6eea23e69a213761a493f4bdb45f70a09063a35b1812a668d540e1907f",
+          "expected": "853acc6eea23e69a213761a493f4bdb45f70a09063a35b1812a668d540e1907f",
+          "path": ".work/p5-tenfold/live-production/compatible-mosaics-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "853acc6eea23e69a213761a493f4bdb45f70a09063a35b1812a668d540e1907f",
+          "expected": "853acc6eea23e69a213761a493f4bdb45f70a09063a35b1812a668d540e1907f",
+          "path": ".work/p5-tenfold/live-production/compatible-mosaics-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "concave-grain",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "4d2533bd06f1d13513636b27bf759022fd9423702768b9dcc53048b0cc38b348",
+          "expected": "4d2533bd06f1d13513636b27bf759022fd9423702768b9dcc53048b0cc38b348",
+          "path": ".work/p5-tenfold/live-production/concave-grain-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "4d2533bd06f1d13513636b27bf759022fd9423702768b9dcc53048b0cc38b348",
+          "expected": "4d2533bd06f1d13513636b27bf759022fd9423702768b9dcc53048b0cc38b348",
+          "path": ".work/p5-tenfold/live-production/concave-grain-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "contour-abstraction",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "cbbb548c4ccdca7eb7210c594edd84f17503c675a78ab3b238c140105e444359",
+          "expected": "cbbb548c4ccdca7eb7210c594edd84f17503c675a78ab3b238c140105e444359",
+          "path": ".work/p5-tenfold/live-production/contour-abstraction-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "cbbb548c4ccdca7eb7210c594edd84f17503c675a78ab3b238c140105e444359",
+          "expected": "cbbb548c4ccdca7eb7210c594edd84f17503c675a78ab3b238c140105e444359",
+          "path": ".work/p5-tenfold/live-production/contour-abstraction-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "curved-trajectories",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "66a6378ce85d398d47c5c24fa9379b48455f1ce57bc97d2696050b55e1f537be",
+          "expected": "66a6378ce85d398d47c5c24fa9379b48455f1ce57bc97d2696050b55e1f537be",
+          "path": ".work/p5-tenfold/live-production/curved-trajectories-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "66a6378ce85d398d47c5c24fa9379b48455f1ce57bc97d2696050b55e1f537be",
+          "expected": "66a6378ce85d398d47c5c24fa9379b48455f1ce57bc97d2696050b55e1f537be",
+          "path": ".work/p5-tenfold/live-production/curved-trajectories-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "diffusion-engraving",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "10a609a7bce6d95d448dcd9fc62aee22b3d1f9402b38416ee5c5ab5fe3e552ce",
+          "expected": "10a609a7bce6d95d448dcd9fc62aee22b3d1f9402b38416ee5c5ab5fe3e552ce",
+          "path": ".work/p5-tenfold/live-production/diffusion-engraving-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "10a609a7bce6d95d448dcd9fc62aee22b3d1f9402b38416ee5c5ab5fe3e552ce",
+          "expected": "10a609a7bce6d95d448dcd9fc62aee22b3d1f9402b38416ee5c5ab5fe3e552ce",
+          "path": ".work/p5-tenfold/live-production/diffusion-engraving-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "dilated-stamps",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "c0fcd3ec5221b260e6e95587cbd31eded9b3bde9885be0364f3f2b7b4fe48b5c",
+          "expected": "c0fcd3ec5221b260e6e95587cbd31eded9b3bde9885be0364f3f2b7b4fe48b5c",
+          "path": ".work/p5-tenfold/live-production/dilated-stamps-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "c0fcd3ec5221b260e6e95587cbd31eded9b3bde9885be0364f3f2b7b4fe48b5c",
+          "expected": "c0fcd3ec5221b260e6e95587cbd31eded9b3bde9885be0364f3f2b7b4fe48b5c",
+          "path": ".work/p5-tenfold/live-production/dilated-stamps-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "distance-halos",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "90098cbf86dda3a2bf3d919ab76d19ce95695c858eacc451d102bd4081230bee",
+          "expected": "90098cbf86dda3a2bf3d919ab76d19ce95695c858eacc451d102bd4081230bee",
+          "path": ".work/p5-tenfold/live-production/distance-halos-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "90098cbf86dda3a2bf3d919ab76d19ce95695c858eacc451d102bd4081230bee",
+          "expected": "90098cbf86dda3a2bf3d919ab76d19ce95695c858eacc451d102bd4081230bee",
+          "path": ".work/p5-tenfold/live-production/distance-halos-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "dithered-ribbons",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "cd5534c367a3ee93b5b195654d8e30d4dc5feb56ac0f651f7107026c88613274",
+          "expected": "cd5534c367a3ee93b5b195654d8e30d4dc5feb56ac0f651f7107026c88613274",
+          "path": ".work/p5-tenfold/live-production/dithered-ribbons-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "cd5534c367a3ee93b5b195654d8e30d4dc5feb56ac0f651f7107026c88613274",
+          "expected": "cd5534c367a3ee93b5b195654d8e30d4dc5feb56ac0f651f7107026c88613274",
+          "path": ".work/p5-tenfold/live-production/dithered-ribbons-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "embossed-field",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "202f5247e1b5b3b5bf4c3c1c4c5f60982a3d09f3a9ba99ed876f5b093d0257b7",
+          "expected": "202f5247e1b5b3b5bf4c3c1c4c5f60982a3d09f3a9ba99ed876f5b093d0257b7",
+          "path": ".work/p5-tenfold/live-production/embossed-field-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "202f5247e1b5b3b5bf4c3c1c4c5f60982a3d09f3a9ba99ed876f5b093d0257b7",
+          "expected": "202f5247e1b5b3b5bf4c3c1c4c5f60982a3d09f3a9ba99ed876f5b093d0257b7",
+          "path": ".work/p5-tenfold/live-production/embossed-field-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "eroded-lace",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "2fdb00c724ac95113458c965158e8809110682c8da74582ef2bcd1e8d304b854",
+          "expected": "2fdb00c724ac95113458c965158e8809110682c8da74582ef2bcd1e8d304b854",
+          "path": ".work/p5-tenfold/live-production/eroded-lace-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "2fdb00c724ac95113458c965158e8809110682c8da74582ef2bcd1e8d304b854",
+          "expected": "2fdb00c724ac95113458c965158e8809110682c8da74582ef2bcd1e8d304b854",
+          "path": ".work/p5-tenfold/live-production/eroded-lace-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "extruded-seals",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "bb00d479514ba323b66b731dff905ec3dc1976ad2268232254c8d5daf717f783",
+          "expected": "bb00d479514ba323b66b731dff905ec3dc1976ad2268232254c8d5daf717f783",
+          "path": ".work/p5-tenfold/live-production/extruded-seals-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "bb00d479514ba323b66b731dff905ec3dc1976ad2268232254c8d5daf717f783",
+          "expected": "bb00d479514ba323b66b731dff905ec3dc1976ad2268232254c8d5daf717f783",
+          "path": ".work/p5-tenfold/live-production/extruded-seals-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "faceted-silhouettes",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "fb42ded7e5c2f72afd2e0a3550293c0b39b6be92a2a5bb3ca157f694e57a9d91",
+          "expected": "fb42ded7e5c2f72afd2e0a3550293c0b39b6be92a2a5bb3ca157f694e57a9d91",
+          "path": ".work/p5-tenfold/live-production/faceted-silhouettes-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "fb42ded7e5c2f72afd2e0a3550293c0b39b6be92a2a5bb3ca157f694e57a9d91",
+          "expected": "fb42ded7e5c2f72afd2e0a3550293c0b39b6be92a2a5bb3ca157f694e57a9d91",
+          "path": ".work/p5-tenfold/live-production/faceted-silhouettes-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "flow-needles",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "f2857ab25fb4dbbb583f6971e44f81a5b99d06c58b4617251e0c9b9bb544ff55",
+          "expected": "f2857ab25fb4dbbb583f6971e44f81a5b99d06c58b4617251e0c9b9bb544ff55",
+          "path": ".work/p5-tenfold/live-production/flow-needles-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "f2857ab25fb4dbbb583f6971e44f81a5b99d06c58b4617251e0c9b9bb544ff55",
+          "expected": "f2857ab25fb4dbbb583f6971e44f81a5b99d06c58b4617251e0c9b9bb544ff55",
+          "path": ".work/p5-tenfold/live-production/flow-needles-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "flowing-brushes",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "1ef2bf768ccc275c86670b3d77acc1a4d58673fc7e68b9a21b33f851c72b246b",
+          "expected": "1ef2bf768ccc275c86670b3d77acc1a4d58673fc7e68b9a21b33f851c72b246b",
+          "path": ".work/p5-tenfold/live-production/flowing-brushes-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "1ef2bf768ccc275c86670b3d77acc1a4d58673fc7e68b9a21b33f851c72b246b",
+          "expected": "1ef2bf768ccc275c86670b3d77acc1a4d58673fc7e68b9a21b33f851c72b246b",
+          "path": ".work/p5-tenfold/live-production/flowing-brushes-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "fragmented-lines",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "1d0b38ccee9a1edea5788a60fc928ba6c2729b53cbee7d62d50bf3e6650dbb08",
+          "expected": "1d0b38ccee9a1edea5788a60fc928ba6c2729b53cbee7d62d50bf3e6650dbb08",
+          "path": ".work/p5-tenfold/live-production/fragmented-lines-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "1d0b38ccee9a1edea5788a60fc928ba6c2729b53cbee7d62d50bf3e6650dbb08",
+          "expected": "1d0b38ccee9a1edea5788a60fc928ba6c2729b53cbee7d62d50bf3e6650dbb08",
+          "path": ".work/p5-tenfold/live-production/fragmented-lines-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "geometric-generations",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "eb3a9a0934e9883d8e1132821c1dfcff905d35983685e025552bb964cfa29501",
+          "expected": "eb3a9a0934e9883d8e1132821c1dfcff905d35983685e025552bb964cfa29501",
+          "path": ".work/p5-tenfold/live-production/geometric-generations-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "eb3a9a0934e9883d8e1132821c1dfcff905d35983685e025552bb964cfa29501",
+          "expected": "eb3a9a0934e9883d8e1132821c1dfcff905d35983685e025552bb964cfa29501",
+          "path": ".work/p5-tenfold/live-production/geometric-generations-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "gesture-skeletons",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "1d8806eb2ddba90816394f7696bf9a123b697996e85158f30c5c58063c782cfa",
+          "expected": "1d8806eb2ddba90816394f7696bf9a123b697996e85158f30c5c58063c782cfa",
+          "path": ".work/p5-tenfold/live-production/gesture-skeletons-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "1d8806eb2ddba90816394f7696bf9a123b697996e85158f30c5c58063c782cfa",
+          "expected": "1d8806eb2ddba90816394f7696bf9a123b697996e85158f30c5c58063c782cfa",
+          "path": ".work/p5-tenfold/live-production/gesture-skeletons-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "maze-gardens",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "8b18a1e51212ea574a38fdb63bd9369e2a6e0db3bd00b4b5e380aa25035e3bbe",
+          "expected": "8b18a1e51212ea574a38fdb63bd9369e2a6e0db3bd00b4b5e380aa25035e3bbe",
+          "path": ".work/p5-tenfold/live-production/maze-gardens-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "8b18a1e51212ea574a38fdb63bd9369e2a6e0db3bd00b4b5e380aa25035e3bbe",
+          "expected": "8b18a1e51212ea574a38fdb63bd9369e2a6e0db3bd00b4b5e380aa25035e3bbe",
+          "path": ".work/p5-tenfold/live-production/maze-gardens-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "nearest-feature-mosaic",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "564ae6ac2b4c19839a14bf41ca0c632297d0de15f0b34fc07777d0937cef5688",
+          "expected": "564ae6ac2b4c19839a14bf41ca0c632297d0de15f0b34fc07777d0937cef5688",
+          "path": ".work/p5-tenfold/live-production/nearest-feature-mosaic-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "564ae6ac2b4c19839a14bf41ca0c632297d0de15f0b34fc07777d0937cef5688",
+          "expected": "564ae6ac2b4c19839a14bf41ca0c632297d0de15f0b34fc07777d0937cef5688",
+          "path": ".work/p5-tenfold/live-production/nearest-feature-mosaic-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "nested-contour-strokes",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "8960f2fa47fc3c04b5e0549f3230d4685874992be8efbffde44cd76021fa11e9",
+          "expected": "8960f2fa47fc3c04b5e0549f3230d4685874992be8efbffde44cd76021fa11e9",
+          "path": ".work/p5-tenfold/live-production/nested-contour-strokes-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "8960f2fa47fc3c04b5e0549f3230d4685874992be8efbffde44cd76021fa11e9",
+          "expected": "8960f2fa47fc3c04b5e0549f3230d4685874992be8efbffde44cd76021fa11e9",
+          "path": ".work/p5-tenfold/live-production/nested-contour-strokes-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "obstacle-roads",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "63e48b0bb2e03c469c213d77b6710b4216af870e4da5d35456909ffdeec5c033",
+          "expected": "63e48b0bb2e03c469c213d77b6710b4216af870e4da5d35456909ffdeec5c033",
+          "path": ".work/p5-tenfold/live-production/obstacle-roads-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "63e48b0bb2e03c469c213d77b6710b4216af870e4da5d35456909ffdeec5c033",
+          "expected": "63e48b0bb2e03c469c213d77b6710b4216af870e4da5d35456909ffdeec5c033",
+          "path": ".work/p5-tenfold/live-production/obstacle-roads-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "oklab-orbits",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "ce86d8fef41a9f62ca5fb6e27645efd009026f10c741f427ddd96eff61fccc2c",
+          "expected": "ce86d8fef41a9f62ca5fb6e27645efd009026f10c741f427ddd96eff61fccc2c",
+          "path": ".work/p5-tenfold/live-production/oklab-orbits-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "ce86d8fef41a9f62ca5fb6e27645efd009026f10c741f427ddd96eff61fccc2c",
+          "expected": "ce86d8fef41a9f62ca5fb6e27645efd009026f10c741f427ddd96eff61fccc2c",
+          "path": ".work/p5-tenfold/live-production/oklab-orbits-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "ordered-halftone",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "fd2a22ecee2ab641e31cb33cfe8d4295be1c828a255217af77250266c6648f62",
+          "expected": "fd2a22ecee2ab641e31cb33cfe8d4295be1c828a255217af77250266c6648f62",
+          "path": ".work/p5-tenfold/live-production/ordered-halftone-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "fd2a22ecee2ab641e31cb33cfe8d4295be1c828a255217af77250266c6648f62",
+          "expected": "fd2a22ecee2ab641e31cb33cfe8d4295be1c828a255217af77250266c6648f62",
+          "path": ".work/p5-tenfold/live-production/ordered-halftone-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "organic-cells",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "c6723ca64f18d746b5c547e1d8f13b07f326ea290995a1d23f07a543b8534b17",
+          "expected": "c6723ca64f18d746b5c547e1d8f13b07f326ea290995a1d23f07a543b8534b17",
+          "path": ".work/p5-tenfold/live-production/organic-cells-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "c6723ca64f18d746b5c547e1d8f13b07f326ea290995a1d23f07a543b8534b17",
+          "expected": "c6723ca64f18d746b5c547e1d8f13b07f326ea290995a1d23f07a543b8534b17",
+          "path": ".work/p5-tenfold/live-production/organic-cells-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "packed-posters",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "174c6bd36b8eea5d98631576a18e60310f9b1c9e499866992ff69cb0de60ea29",
+          "expected": "174c6bd36b8eea5d98631576a18e60310f9b1c9e499866992ff69cb0de60ea29",
+          "path": ".work/p5-tenfold/live-production/packed-posters-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "174c6bd36b8eea5d98631576a18e60310f9b1c9e499866992ff69cb0de60ea29",
+          "expected": "174c6bd36b8eea5d98631576a18e60310f9b1c9e499866992ff69cb0de60ea29",
+          "path": ".work/p5-tenfold/live-production/packed-posters-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "perceptual-bands",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "15d22f473805116f33f9d154517fcf0899fd7f3ab5a3bab0e32458b27f05cf2e",
+          "expected": "15d22f473805116f33f9d154517fcf0899fd7f3ab5a3bab0e32458b27f05cf2e",
+          "path": ".work/p5-tenfold/live-production/perceptual-bands-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "15d22f473805116f33f9d154517fcf0899fd7f3ab5a3bab0e32458b27f05cf2e",
+          "expected": "15d22f473805116f33f9d154517fcf0899fd7f3ab5a3bab0e32458b27f05cf2e",
+          "path": ".work/p5-tenfold/live-production/perceptual-bands-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "pinned-waves",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "99238a203e7fd42addfc63430b581e0cee2bcdf29b0af8145cc84cfa9a96c693",
+          "expected": "99238a203e7fd42addfc63430b581e0cee2bcdf29b0af8145cc84cfa9a96c693",
+          "path": ".work/p5-tenfold/live-production/pinned-waves-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "99238a203e7fd42addfc63430b581e0cee2bcdf29b0af8145cc84cfa9a96c693",
+          "expected": "99238a203e7fd42addfc63430b581e0cee2bcdf29b0af8145cc84cfa9a96c693",
+          "path": ".work/p5-tenfold/live-production/pinned-waves-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "quantized-stripes",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "79a97680d89ff0aebc959cec8ab5566f8ad374d0a61297967345c47bb6e05bab",
+          "expected": "79a97680d89ff0aebc959cec8ab5566f8ad374d0a61297967345c47bb6e05bab",
+          "path": ".work/p5-tenfold/live-production/quantized-stripes-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "79a97680d89ff0aebc959cec8ab5566f8ad374d0a61297967345c47bb6e05bab",
+          "expected": "79a97680d89ff0aebc959cec8ab5566f8ad374d0a61297967345c47bb6e05bab",
+          "path": ".work/p5-tenfold/live-production/quantized-stripes-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "reaction-spots",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "2ab90aff2d3192e526d8a6c6d543cc2063ebb10f1ed95b036f36a12724517dc4",
+          "expected": "2ab90aff2d3192e526d8a6c6d543cc2063ebb10f1ed95b036f36a12724517dc4",
+          "path": ".work/p5-tenfold/live-production/reaction-spots-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "2ab90aff2d3192e526d8a6c6d543cc2063ebb10f1ed95b036f36a12724517dc4",
+          "expected": "2ab90aff2d3192e526d8a6c6d543cc2063ebb10f1ed95b036f36a12724517dc4",
+          "path": ".work/p5-tenfold/live-production/reaction-spots-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "reaction-stripes",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "5534006c3d593da92e72b492d27428897a703b80fd66347e21d6ad2f7efbc5ca",
+          "expected": "5534006c3d593da92e72b492d27428897a703b80fd66347e21d6ad2f7efbc5ca",
+          "path": ".work/p5-tenfold/live-production/reaction-stripes-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "5534006c3d593da92e72b492d27428897a703b80fd66347e21d6ad2f7efbc5ca",
+          "expected": "5534006c3d593da92e72b492d27428897a703b80fd66347e21d6ad2f7efbc5ca",
+          "path": ".work/p5-tenfold/live-production/reaction-stripes-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "recursive-tiles",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "0b347975eb2f89b3bd17b60a424054f4bc78d2988050a2a149815fd12548fac1",
+          "expected": "0b347975eb2f89b3bd17b60a424054f4bc78d2988050a2a149815fd12548fac1",
+          "path": ".work/p5-tenfold/live-production/recursive-tiles-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "0b347975eb2f89b3bd17b60a424054f4bc78d2988050a2a149815fd12548fac1",
+          "expected": "0b347975eb2f89b3bd17b60a424054f4bc78d2988050a2a149815fd12548fac1",
+          "path": ".work/p5-tenfold/live-production/recursive-tiles-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "reduced-mosaic",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "1872814da66f35db48492245235e6b2dc52cec6d9f33affd447219e9b73ebed3",
+          "expected": "1872814da66f35db48492245235e6b2dc52cec6d9f33affd447219e9b73ebed3",
+          "path": ".work/p5-tenfold/live-production/reduced-mosaic-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "1872814da66f35db48492245235e6b2dc52cec6d9f33affd447219e9b73ebed3",
+          "expected": "1872814da66f35db48492245235e6b2dc52cec6d9f33affd447219e9b73ebed3",
+          "path": ".work/p5-tenfold/live-production/reduced-mosaic-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "relaxed-stones",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "ed879af2785e207b6e3447c197acdf6fe407061c0da6e947e95ea9b0ae571eba",
+          "expected": "ed879af2785e207b6e3447c197acdf6fe407061c0da6e947e95ea9b0ae571eba",
+          "path": ".work/p5-tenfold/live-production/relaxed-stones-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "ed879af2785e207b6e3447c197acdf6fe407061c0da6e947e95ea9b0ae571eba",
+          "expected": "ed879af2785e207b6e3447c197acdf6fe407061c0da6e947e95ea9b0ae571eba",
+          "path": ".work/p5-tenfold/live-production/relaxed-stones-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "ripple-interference",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "a6f78fc1a3e18969a10e64baa4db01d0ac88d4be55ca49110be0d56f1ce09a36",
+          "expected": "a6f78fc1a3e18969a10e64baa4db01d0ac88d4be55ca49110be0d56f1ce09a36",
+          "path": ".work/p5-tenfold/live-production/ripple-interference-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "a6f78fc1a3e18969a10e64baa4db01d0ac88d4be55ca49110be0d56f1ce09a36",
+          "expected": "a6f78fc1a3e18969a10e64baa4db01d0ac88d4be55ca49110be0d56f1ce09a36",
+          "path": ".work/p5-tenfold/live-production/ripple-interference-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "road-margins",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "6d454478dd059677fc0ff47ecb8f9c660061c51d0a2c0b6548e5410bbc84cc79",
+          "expected": "6d454478dd059677fc0ff47ecb8f9c660061c51d0a2c0b6548e5410bbc84cc79",
+          "path": ".work/p5-tenfold/live-production/road-margins-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "6d454478dd059677fc0ff47ecb8f9c660061c51d0a2c0b6548e5410bbc84cc79",
+          "expected": "6d454478dd059677fc0ff47ecb8f9c660061c51d0a2c0b6548e5410bbc84cc79",
+          "path": ".work/p5-tenfold/live-production/road-margins-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "rounded-panels",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "a336c2c55d3ad01ea8727d6a39342912d882920fba5d28b8d88d519ba034b0cd",
+          "expected": "a336c2c55d3ad01ea8727d6a39342912d882920fba5d28b8d88d519ba034b0cd",
+          "path": ".work/p5-tenfold/live-production/rounded-panels-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "a336c2c55d3ad01ea8727d6a39342912d882920fba5d28b8d88d519ba034b0cd",
+          "expected": "a336c2c55d3ad01ea8727d6a39342912d882920fba5d28b8d88d519ba034b0cd",
+          "path": ".work/p5-tenfold/live-production/rounded-panels-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "rounded-polyhedra",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "1e07c393db921a8f656f4b2963ffc1235858f53e397e8970aa07d51c214d9078",
+          "expected": "1e07c393db921a8f656f4b2963ffc1235858f53e397e8970aa07d51c214d9078",
+          "path": ".work/p5-tenfold/live-production/rounded-polyhedra-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "1e07c393db921a8f656f4b2963ffc1235858f53e397e8970aa07d51c214d9078",
+          "expected": "1e07c393db921a8f656f4b2963ffc1235858f53e397e8970aa07d51c214d9078",
+          "path": ".work/p5-tenfold/live-production/rounded-polyhedra-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "scatter-envelopes",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "d5f57d8986d4b08b6d9428bf0adc310d08c330ff143b94b2d30e2c90b3abb7ea",
+          "expected": "d5f57d8986d4b08b6d9428bf0adc310d08c330ff143b94b2d30e2c90b3abb7ea",
+          "path": ".work/p5-tenfold/live-production/scatter-envelopes-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "d5f57d8986d4b08b6d9428bf0adc310d08c330ff143b94b2d30e2c90b3abb7ea",
+          "expected": "d5f57d8986d4b08b6d9428bf0adc310d08c330ff143b94b2d30e2c90b3abb7ea",
+          "path": ".work/p5-tenfold/live-production/scatter-envelopes-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "signed-edge-print",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "357a7499169d34cb5d50fe4cf1dbbdc9849efd587c95cdf19ac276a159571fde",
+          "expected": "357a7499169d34cb5d50fe4cf1dbbdc9849efd587c95cdf19ac276a159571fde",
+          "path": ".work/p5-tenfold/live-production/signed-edge-print-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "357a7499169d34cb5d50fe4cf1dbbdc9849efd587c95cdf19ac276a159571fde",
+          "expected": "357a7499169d34cb5d50fe4cf1dbbdc9849efd587c95cdf19ac276a159571fde",
+          "path": ".work/p5-tenfold/live-production/signed-edge-print-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "spaced-symbols",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "0f6012b73239f3064546edb5adcff7d4365e5fb5fab66c898bbadc1d922f99f1",
+          "expected": "0f6012b73239f3064546edb5adcff7d4365e5fb5fab66c898bbadc1d922f99f1",
+          "path": ".work/p5-tenfold/live-production/spaced-symbols-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "0f6012b73239f3064546edb5adcff7d4365e5fb5fab66c898bbadc1d922f99f1",
+          "expected": "0f6012b73239f3064546edb5adcff7d4365e5fb5fab66c898bbadc1d922f99f1",
+          "path": ".work/p5-tenfold/live-production/spaced-symbols-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "stepped-blocks",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "b91438335f830b6e3591a9c52704b4a8f39a5a8e37a8d4640f493929282b2d09",
+          "expected": "b91438335f830b6e3591a9c52704b4a8f39a5a8e37a8d4640f493929282b2d09",
+          "path": ".work/p5-tenfold/live-production/stepped-blocks-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "b91438335f830b6e3591a9c52704b4a8f39a5a8e37a8d4640f493929282b2d09",
+          "expected": "b91438335f830b6e3591a9c52704b4a8f39a5a8e37a8d4640f493929282b2d09",
+          "path": ".work/p5-tenfold/live-production/stepped-blocks-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "stitched-contours",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "84699c42fd8fc151d0fcf474fcf49351e842d11c31fdcbfadf31c3a63e402332",
+          "expected": "84699c42fd8fc151d0fcf474fcf49351e842d11c31fdcbfadf31c3a63e402332",
+          "path": ".work/p5-tenfold/live-production/stitched-contours-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "84699c42fd8fc151d0fcf474fcf49351e842d11c31fdcbfadf31c3a63e402332",
+          "expected": "84699c42fd8fc151d0fcf474fcf49351e842d11c31fdcbfadf31c3a63e402332",
+          "path": ".work/p5-tenfold/live-production/stitched-contours-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "stream-ribbons",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "c24ff660474ed0cab06bde685c104773cc1ffd6fff945f5dccafbfb3c0838703",
+          "expected": "c24ff660474ed0cab06bde685c104773cc1ffd6fff945f5dccafbfb3c0838703",
+          "path": ".work/p5-tenfold/live-production/stream-ribbons-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "c24ff660474ed0cab06bde685c104773cc1ffd6fff945f5dccafbfb3c0838703",
+          "expected": "c24ff660474ed0cab06bde685c104773cc1ffd6fff945f5dccafbfb3c0838703",
+          "path": ".work/p5-tenfold/live-production/stream-ribbons-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "subdivided-shells",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "2d7c57adf641508b2ee2855fa6530d361ff44bfe12f6886d6d4a5efcd5f957b3",
+          "expected": "2d7c57adf641508b2ee2855fa6530d361ff44bfe12f6886d6d4a5efcd5f957b3",
+          "path": ".work/p5-tenfold/live-production/subdivided-shells-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "2d7c57adf641508b2ee2855fa6530d361ff44bfe12f6886d6d4a5efcd5f957b3",
+          "expected": "2d7c57adf641508b2ee2855fa6530d361ff44bfe12f6886d6d4a5efcd5f957b3",
+          "path": ".work/p5-tenfold/live-production/subdivided-shells-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "swirling-particles",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "4ebb58fff6cedd94e7e95c8f0b4daad0655618832f4b2c330398457397835556",
+          "expected": "4ebb58fff6cedd94e7e95c8f0b4daad0655618832f4b2c330398457397835556",
+          "path": ".work/p5-tenfold/live-production/swirling-particles-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "4ebb58fff6cedd94e7e95c8f0b4daad0655618832f4b2c330398457397835556",
+          "expected": "4ebb58fff6cedd94e7e95c8f0b4daad0655618832f4b2c330398457397835556",
+          "path": ".work/p5-tenfold/live-production/swirling-particles-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "terraced-islands",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "c7dd81f0065895a1d9a80b464cfd678176d0704feefdaecb1460457ca4e97e3b",
+          "expected": "c7dd81f0065895a1d9a80b464cfd678176d0704feefdaecb1460457ca4e97e3b",
+          "path": ".work/p5-tenfold/live-production/terraced-islands-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "c7dd81f0065895a1d9a80b464cfd678176d0704feefdaecb1460457ca4e97e3b",
+          "expected": "c7dd81f0065895a1d9a80b464cfd678176d0704feefdaecb1460457ca4e97e3b",
+          "path": ".work/p5-tenfold/live-production/terraced-islands-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "tiled-circuits",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "e228e7f3a9cf7e661d9e317469f498510850efb95fe53f99230ca23ef3e9ad04",
+          "expected": "e228e7f3a9cf7e661d9e317469f498510850efb95fe53f99230ca23ef3e9ad04",
+          "path": ".work/p5-tenfold/live-production/tiled-circuits-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "e228e7f3a9cf7e661d9e317469f498510850efb95fe53f99230ca23ef3e9ad04",
+          "expected": "e228e7f3a9cf7e661d9e317469f498510850efb95fe53f99230ca23ef3e9ad04",
+          "path": ".work/p5-tenfold/live-production/tiled-circuits-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "transported-ribbons",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "ab91be8da5a590f5556ee6437183c75f359d5556ad922f1f89b20e04e9f6d65d",
+          "expected": "ab91be8da5a590f5556ee6437183c75f359d5556ad922f1f89b20e04e9f6d65d",
+          "path": ".work/p5-tenfold/live-production/transported-ribbons-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "ab91be8da5a590f5556ee6437183c75f359d5556ad922f1f89b20e04e9f6d65d",
+          "expected": "ab91be8da5a590f5556ee6437183c75f359d5556ad922f1f89b20e04e9f6d65d",
+          "path": ".work/p5-tenfold/live-production/transported-ribbons-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "triangle-glyphs",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "6de6c662a7b0af02c4b2468ba88c3ac755f3506adbe65173ce342acef7437798",
+          "expected": "6de6c662a7b0af02c4b2468ba88c3ac755f3506adbe65173ce342acef7437798",
+          "path": ".work/p5-tenfold/live-production/triangle-glyphs-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "6de6c662a7b0af02c4b2468ba88c3ac755f3506adbe65173ce342acef7437798",
+          "expected": "6de6c662a7b0af02c4b2468ba88c3ac755f3506adbe65173ce342acef7437798",
+          "path": ".work/p5-tenfold/live-production/triangle-glyphs-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "turtle-canopies",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "615c5a33cc47cc0566beba86cf8598b7db439ffb7cadbd4b70bcb73bb56ba4c3",
+          "expected": "615c5a33cc47cc0566beba86cf8598b7db439ffb7cadbd4b70bcb73bb56ba4c3",
+          "path": ".work/p5-tenfold/live-production/turtle-canopies-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "615c5a33cc47cc0566beba86cf8598b7db439ffb7cadbd4b70bcb73bb56ba4c3",
+          "expected": "615c5a33cc47cc0566beba86cf8598b7db439ffb7cadbd4b70bcb73bb56ba4c3",
+          "path": ".work/p5-tenfold/live-production/turtle-canopies-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "twisting-streamers",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "f01168da1da6c2cf8bfb99ad9fda63038fcea127f3a718ded246f6ac82518cfb",
+          "expected": "f01168da1da6c2cf8bfb99ad9fda63038fcea127f3a718ded246f6ac82518cfb",
+          "path": ".work/p5-tenfold/live-production/twisting-streamers-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "f01168da1da6c2cf8bfb99ad9fda63038fcea127f3a718ded246f6ac82518cfb",
+          "expected": "f01168da1da6c2cf8bfb99ad9fda63038fcea127f3a718ded246f6ac82518cfb",
+          "path": ".work/p5-tenfold/live-production/twisting-streamers-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "woven-grammar",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "01db8c2c13514965797a639cfb1c91dbf28d78e51cecadd83d8bfd18c7801b44",
+          "expected": "01db8c2c13514965797a639cfb1c91dbf28d78e51cecadd83d8bfd18c7801b44",
+          "path": ".work/p5-tenfold/live-production/woven-grammar-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "01db8c2c13514965797a639cfb1c91dbf28d78e51cecadd83d8bfd18c7801b44",
+          "expected": "01db8c2c13514965797a639cfb1c91dbf28d78e51cecadd83d8bfd18c7801b44",
+          "path": ".work/p5-tenfold/live-production/woven-grammar-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "slug": "woven-rows",
+      "status": "passed",
+      "frames": [
+        {
+          "kind": "gallery",
+          "sha256": "d864c4cacddf319df49f6c4407560abd4f0ae303dc72393c9ec3b54e1bdfc0dd",
+          "expected": "d864c4cacddf319df49f6c4407560abd4f0ae303dc72393c9ec3b54e1bdfc0dd",
+          "path": ".work/p5-tenfold/live-production/woven-rows-gallery.png"
+        },
+        {
+          "kind": "studio",
+          "sha256": "d864c4cacddf319df49f6c4407560abd4f0ae303dc72393c9ec3b54e1bdfc0dd",
+          "expected": "d864c4cacddf319df49f6c4407560abd4f0ae303dc72393c9ec3b54e1bdfc0dd",
+          "path": ".work/p5-tenfold/live-production/woven-rows-studio.png"
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedResponses": [
+        {
+          "url": "https://eunoia.tailf03dad.ts.net:8443/api/projects",
+          "status": 404
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "path": "/palettes",
+      "status": 200
+    },
+    {
+      "path": "/studio",
+      "status": 200
+    },
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/harness/palettes",
+      "status": 200
+    },
+    {
+      "path": "/harness/layers",
+      "status": 200
+    },
+    {
+      "path": "/techniques/field-marks",
+      "status": 200
+    },
+    {
+      "path": "/api-reference",
+      "status": 200
+    },
+    {
+      "path": "/techniques/path-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/placement-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/band-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/lattice-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/branch-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/loop-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/cut-branch-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/region-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/panel-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/cut-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/polygon-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/facet-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/grain-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/pull-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/projection-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/ramp-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/path-clip-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/warp-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/blur-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/annular-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/profile-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/depth-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/cell-echoes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/cell-mosaic",
+      "status": 200
+    },
+    {
+      "path": "/techniques/spring-marks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/stitched-paths",
+      "status": 200
+    },
+    {
+      "path": "/techniques/orbit-beads",
+      "status": 200
+    },
+    {
+      "path": "/techniques/contour-terrain",
+      "status": 200
+    },
+    {
+      "path": "/techniques/contour-blobs",
+      "status": 200
+    },
+    {
+      "path": "/techniques/flowing-brushes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/contour-abstraction",
+      "status": 200
+    },
+    {
+      "path": "/techniques/gesture-skeletons",
+      "status": 200
+    },
+    {
+      "path": "/techniques/rounded-panels",
+      "status": 200
+    },
+    {
+      "path": "/techniques/road-margins",
+      "status": 200
+    },
+    {
+      "path": "/techniques/nested-contour-strokes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/scatter-envelopes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/terraced-islands",
+      "status": 200
+    },
+    {
+      "path": "/techniques/faceted-silhouettes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/stitched-contours",
+      "status": 200
+    },
+    {
+      "path": "/techniques/concave-grain",
+      "status": 200
+    },
+    {
+      "path": "/techniques/fragmented-lines",
+      "status": 200
+    },
+    {
+      "path": "/techniques/blue-noise-stipple",
+      "status": 200
+    },
+    {
+      "path": "/techniques/spaced-symbols",
+      "status": 200
+    },
+    {
+      "path": "/techniques/centroid-trails",
+      "status": 200
+    },
+    {
+      "path": "/techniques/relaxed-stones",
+      "status": 200
+    },
+    {
+      "path": "/techniques/packed-posters",
+      "status": 200
+    },
+    {
+      "path": "/techniques/aspect-tiles",
+      "status": 200
+    },
+    {
+      "path": "/techniques/obstacle-roads",
+      "status": 200
+    },
+    {
+      "path": "/techniques/arrival-contours",
+      "status": 200
+    },
+    {
+      "path": "/techniques/stream-ribbons",
+      "status": 200
+    },
+    {
+      "path": "/techniques/curved-trajectories",
+      "status": 200
+    },
+    {
+      "path": "/techniques/reaction-stripes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/reaction-spots",
+      "status": 200
+    },
+    {
+      "path": "/techniques/organic-cells",
+      "status": 200
+    },
+    {
+      "path": "/techniques/geometric-generations",
+      "status": 200
+    },
+    {
+      "path": "/techniques/triangle-glyphs",
+      "status": 200
+    },
+    {
+      "path": "/techniques/woven-rows",
+      "status": 200
+    },
+    {
+      "path": "/techniques/swirling-particles",
+      "status": 200
+    },
+    {
+      "path": "/techniques/ripple-interference",
+      "status": 200
+    },
+    {
+      "path": "/techniques/flow-needles",
+      "status": 200
+    },
+    {
+      "path": "/techniques/branching-sentences",
+      "status": 200
+    },
+    {
+      "path": "/techniques/pinned-waves",
+      "status": 200
+    },
+    {
+      "path": "/techniques/recursive-tiles",
+      "status": 200
+    },
+    {
+      "path": "/techniques/turtle-canopies",
+      "status": 200
+    },
+    {
+      "path": "/techniques/woven-grammar",
+      "status": 200
+    },
+    {
+      "path": "/techniques/compatible-mosaics",
+      "status": 200
+    },
+    {
+      "path": "/techniques/tiled-circuits",
+      "status": 200
+    },
+    {
+      "path": "/techniques/maze-gardens",
+      "status": 200
+    },
+    {
+      "path": "/techniques/branching-networks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/ordered-halftone",
+      "status": 200
+    },
+    {
+      "path": "/techniques/diffusion-engraving",
+      "status": 200
+    },
+    {
+      "path": "/techniques/dithered-ribbons",
+      "status": 200
+    },
+    {
+      "path": "/techniques/bayer-weave",
+      "status": 200
+    },
+    {
+      "path": "/techniques/embossed-field",
+      "status": 200
+    },
+    {
+      "path": "/techniques/signed-edge-print",
+      "status": 200
+    },
+    {
+      "path": "/techniques/distance-halos",
+      "status": 200
+    },
+    {
+      "path": "/techniques/nearest-feature-mosaic",
+      "status": 200
+    },
+    {
+      "path": "/techniques/eroded-lace",
+      "status": 200
+    },
+    {
+      "path": "/techniques/perceptual-bands",
+      "status": 200
+    },
+    {
+      "path": "/techniques/dilated-stamps",
+      "status": 200
+    },
+    {
+      "path": "/techniques/oklab-orbits",
+      "status": 200
+    },
+    {
+      "path": "/techniques/reduced-mosaic",
+      "status": 200
+    },
+    {
+      "path": "/techniques/quantized-stripes",
+      "status": 200
+    },
+    {
+      "path": "/techniques/extruded-seals",
+      "status": 200
+    },
+    {
+      "path": "/techniques/stepped-blocks",
+      "status": 200
+    },
+    {
+      "path": "/techniques/transported-ribbons",
+      "status": 200
+    },
+    {
+      "path": "/techniques/rounded-polyhedra",
+      "status": 200
+    },
+    {
+      "path": "/techniques/twisting-streamers",
+      "status": 200
+    },
+    {
+      "path": "/techniques/subdivided-shells",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.adjacency-tile-collapse-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.bayer-dither",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.assemble-segment-chains-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.binary-cell-partition-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.bilinear-remap-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/mesh.annular-solid-3d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.chaikin-polyline-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.binary-morphology-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.clip-segments-simple-polygon-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.closed-spline-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.convex-hull-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/path.cost-grid-paths-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/color.cyclic-palette",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.convolve-2d-signed",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.damped-wave-step-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/topology.delaunay-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.elementary-cellular-rows",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.euclidean-distance-transform-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/mesh.extrude-simple-polygon-3d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.floyd-steinberg-dither",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.gradient-noise-3d-01",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.gradient-noise-2d-01",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.gray-scott-step-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/path.gradient-trace-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.life-like-step-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.lloyd-relaxation-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/mesh.loop-subdivide-triangles-3d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.marching-squares-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.masked-source-over-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/color.median-cut-quantize",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.nearest-segment-contact-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/path.noise-band-trace-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/path.occupied-lattice-paths-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.offset-polyline-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/color.oklab-ramp",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/grammar.parallel-token-rewrite",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/sampling.ordered-convex-polygon-filter-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/sampling.ordered-circle-filter-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/mesh.parallel-transport-ribbon-3d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/sampling.poisson-disc-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/mesh.radial-profile-surface-3d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.radial-pull-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.crossfade-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.regular-grid",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.resample-polyline-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.retained-rectangle-cuts-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/field.scalar-grid-curl-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/path.rk4-vector-grid-trace-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/sampling.seeded-circle-placement-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/topology.seeded-depth-first-spanning-tree",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/topology.seeded-endpoint-branches-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/topology.seeded-line-pool-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.seeded-quadrant-partition-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/raster.separable-blur-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.sequential-disc-projection-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/sampling.seeded-triangle-points-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.simplify-polyline-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/layout.skyline-pack-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/color.stop-ramp",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/motion.target-springs-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.token-turtle-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.triangulate-simple-polygon-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/sampling.triangle-coordinate-map-2d",
+      "status": 200
+    },
+    {
+      "path": "/api-reference/geometry.voronoi-cells-2d",
+      "status": 200
+    }
+  ]
+}
