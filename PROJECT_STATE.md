@@ -1,6 +1,6 @@
 # Current project state
 
-Updated 2026-09-09. Read with [AGENTS.md](AGENTS.md); open other docs only for the task.
+Updated 2026-09-13. Read with [AGENTS.md](AGENTS.md); open other docs only for the task.
 This is a snapshot, not a chronological log. Earlier decisions and runs remain in Git and
 linked evidence. Do not treat old pending statements as new assignments.
 
@@ -25,7 +25,7 @@ linked evidence. Do not treat old pending statements as new assignments.
   [Version 3 root review](evidence/web/app-v3-review.json) records production browser
   checks and visual inspection; earlier web reviews remain historical.
   Tailnet deployment: https://eunoia.tailf03dad.ts.net:8443/ (Next 3002, Go 8088),
-  served from the reviewed `.work/web-prompt-release` checkout to isolate concurrent work.
+  served from the reviewed `.work/web-layer-release` checkout to isolate concurrent work.
   The `procedurals-web` and `procedurals-api` user services own Next and Go respectively.
   This remains an app-specific compositor, separate from portable recipes and MCP.
 - Packages are local reviewed artifacts, not registry publications. Java completion
@@ -74,12 +74,15 @@ within their recorded scope. Follow the next user assignment; the [roadmap](docs
   multi-user hosting remain future work.
 - Prompt generation is integrated into `/studio`, with mixed workflow/source documents,
   explicit candidate apply/rebase, undo/redo, source controls and a collapsed code viewer.
-  `/explorations` is an independent one-shot image/code playground in the main navigation;
+  `/explorations` supports follow-up revisions of its generated layers and fresh sketches;
   `/harness` remains a Studio alias. See the [artist guide](docs/prompt-studio-guide.md),
   [integration plan](docs/prompt-web-integration-plan.md) and
   [root review](evidence/web/prompt-web-integration-review.json) for tested scope and limits.
-  Named projects remain in `.work/web-projects`; deployed prompt artifacts are preserved in
-  `.work/web-prompt-release/.work/harness`. JSON references require that artifact service.
+  Generated layers can be saved as named snapshots and reused from the gallery’s Saved
+  layers category or Studio picker. Follow-ups receive exact current source and replay inputs;
+  Studio edits remain explicitly applied and undoable. See the [successor review](evidence/web/generated-layer-review.json).
+  Named projects remain in `.work/web-projects`; deployed prompt artifacts and saved layers
+  live in `.work/web-layer-release/.work/harness`. JSON references require that artifact service.
   Processing Java, portable recipe expansion and blind benchmarks remain outside this slice.
 
 ## Evidence and navigation

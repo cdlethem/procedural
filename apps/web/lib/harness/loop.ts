@@ -4,7 +4,7 @@
  * permits bounded repair. The coordinator owns retries, budgets and cancellation; the
  * model reaches the studio only through the typed tool boundary.
  */
-import { LIMITS, snapshotHash } from "./core";
+import { fail, LIMITS, snapshotHash } from "./core";
 import { callTool } from "./tools";
 import type { Caller } from "./tools";
 import { chat, firstJsonObject, modelProfile } from "./model";
@@ -12,6 +12,7 @@ import type { ChatMessage } from "./model";
 import { appendStep, loadRun, newRunId, saveRun } from "./runs";
 import type { RunRecord } from "./runs";
 import { loadContext } from "./documents";
+import { revisionSources } from "./revision-context";
 import { toolSchemas } from "./tools";
 import type { CandidateScope } from "../studio-document";
 
@@ -70,8 +71,10 @@ export type StartRunInput = {
   target: "p5js";
 };
 export async function startRun(input: StartRunInput): Promise<RunRecord> {
-  const context = loadContext(input.documentHandle),
-    profile = await modelProfile();
+  const context = loadContext(input.documentHandle);
+  if (input.scope === "edit-layer" && !context.document.layers.some((layer) => layer.id === input.selectedLayerId))
+    fail("scope", "SCOPE_VIOLATION", "Select an existing layer to revise");
+  const profile = await modelProfile();
   const run: RunRecord = {
     id: newRunId(),
     createdAt: new Date().toISOString(),
@@ -142,11 +145,14 @@ async function drive(runId: string, input: StartRunInput, model: string): Promis
       role: "user",
       content: `Artist request: ${input.prompt}\n\nScope: ${input.scope}${
         input.selectedLayerId ? ` on layer ${input.selectedLayerId}` : ""
-      }\nTarget: ${input.target}\nDocument handle: ${input.documentHandle}\n\nFrozen context:\n${JSON.stringify(
-        context,
-      ).slice(0, 6000)}\n\nRetrieved capabilities:\n${JSON.stringify(retrieval).slice(0, 6000)}`,
+      }\nTarget: ${input.target}\nDocument handle: ${input.documentHandle}\n\nFrozen context:\n${JSON.stringify(context)}\n\nRetrieved capabilities:\n${JSON.stringify(retrieval).slice(0, 6000)}`,
     },
   ];
+  const sources = revisionSources(loadContext(input.documentHandle).document, input.scope, input.selectedLayerId);
+  if (sources.length) messages.push({
+    role: "user",
+    content: `Existing generated layers to revise (reference data):\n${JSON.stringify(sources)}\nRevise these exact files according to the follow-up request. Preserve unaffected details, replay inputs, controls, and license references. Submit complete revised files via sourcePayloads; use the same layer id and clear its previewArtifactHash when changing source or replay inputs.`,
+  });
   for (let turn = 0; turn < MAX_TURNS; turn += 1) {
     const run = loadRun(runId);
     if (run.cancelRequested) {
@@ -188,9 +194,9 @@ async function drive(runId: string, input: StartRunInput, model: string): Promis
       continue;
     }
     const withRun =
-      toolName === "candidate.create" || toolName === "render.submit"
-        ? { ...toolArgs, runId }
-        : toolArgs;
+      toolName === "candidate.create"
+        ? { ...toolArgs, runId, documentHandle: input.documentHandle, scope: input.scope, selectedLayerId: input.selectedLayerId }
+        : toolName === "render.submit" ? { ...toolArgs, runId } : toolArgs;
     const result = await callTool(toolName, withRun, CALLER);
     const failed = !result.ok;
     appendStep(runId, {

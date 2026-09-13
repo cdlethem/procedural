@@ -443,7 +443,7 @@ export function validateCandidate(
   });
   return report;
 }
-function checkControls(
+export function checkControls(
   manifest: ArtifactManifest,
   values: Record<string, ControlValue>,
   layerId: string,

@@ -5,6 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { HarnessCanvas } from "./HarnessCanvas";
 import { InteractiveCanvas } from "./InteractiveCanvas";
 import { LayerControls } from "./LayerControls";
+import { SaveLayerPanel } from "./SaveLayerPanel";
+import { fetchSavedLayer, insertSavedLayer, type SavedLayer } from "@/lib/saved-layers";
 import { LayerPicker } from "./LayerPicker";
 import {
   PromptPanel,
@@ -242,6 +244,7 @@ function SourceControls({
 
 export function Studio() {
   const query = useSearchParams(),
+    requestedSavedLayer = query.get("savedLayer"),
     requested = query.get("technique"),
     requestedId = techniques.some((technique) => technique.id === requested)
       ? (requested as TechniqueId)
@@ -271,6 +274,7 @@ export function Studio() {
     [applying, setApplying] = useState(false);
   const file = useRef<HTMLInputElement>(null),
     restoredRoute = useRef<string | null>(null),
+    importedSavedLayer = useRef<string | null>(null),
     documentRef = useRef(history.doc),
     startedDocument = useRef<StudioDocumentV3 | null>(null),
     startedLayerId = useRef<string | null>(null),
@@ -435,6 +439,27 @@ export function Studio() {
     commit({ ...current, layers });
     setSelected(layers.length - 1);
   };
+  const addSaved = (saved: SavedLayer) => {
+    try {
+      const next = insertSavedLayer(documentRef.current, saved, `layer-${crypto.randomUUID()}`);
+      commit(next);
+      setSelected(next.layers.length - 1);
+      setPickerOpen(false);
+    } catch (error) { setStatus(error instanceof Error ? error.message : String(error)); }
+  };
+  useEffect(() => {
+    if (!history.hydrated || !requestedSavedLayer || importedSavedLayer.current === requestedSavedLayer) return;
+    let active = true;
+    void fetchSavedLayer(requestedSavedLayer).then((saved) => {
+      if (!active) return;
+      importedSavedLayer.current = requestedSavedLayer;
+      const next = insertSavedLayer(documentRef.current, saved, `layer-${crypto.randomUUID()}`);
+      commit(next);
+      setSelected(next.layers.length - 1);
+      window.history.replaceState(null, "", "/studio");
+    }).catch((error) => { if (active) setStatus(error instanceof Error ? error.message : String(error)); });
+    return () => { active = false; };
+  }, [history.hydrated, requestedSavedLayer, commit]);
   const remove = () => {
     if (layer) {
       commit({
@@ -662,7 +687,7 @@ export function Studio() {
           if (next.run.state === "running") setRun(next.run);
           if (next.run.state === "running")
             return void window.setTimeout(() => void poll(), 800);
-          if (typeof next.run.candidateId !== "string") {
+          if (next.run.state !== "succeeded" || typeof next.run.candidateId !== "string") {
             setRun(next.run);
             return;
           }
@@ -1125,7 +1150,7 @@ export function Studio() {
         <section className="studio-panel">
           <h2>Inspector</h2>
           {layer?.kind === "source" ? (
-            <SourceControls
+            <><SaveLayerPanel key={`${layer.id}-${layer.content.previewArtifactHash}`} layer={layer} document={document} disabled={sourceUpdating || Boolean(candidateDocument && !candidate?.stale)} /><SourceControls
               layer={layer}
               controls={controls}
               pending={sourceUpdating}
@@ -1139,6 +1164,7 @@ export function Studio() {
                 })
               }
             />
+            </>
           ) : selectedWorkflow && technique ? (
             <div className="inspector-tabs">
               <div aria-label="Inspector sections" role="tablist">
@@ -1179,6 +1205,7 @@ export function Studio() {
           )}
         </section>
         <PromptPanel
+          selectedLayerId={layer?.id}
           documentHandle={handle}
           revisionHash={revision}
           run={run}
@@ -1191,6 +1218,7 @@ export function Studio() {
         />
       </div>
       <LayerPicker
+        onSelectSaved={addSaved}
         open={pickerOpen}
         onClose={() => setPickerOpen(false)}
         onSelect={(id) => {

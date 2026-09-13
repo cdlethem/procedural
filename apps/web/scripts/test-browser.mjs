@@ -564,10 +564,10 @@ try {
   } else {
     await page.goto(base);
     await page.locator(".study-card").first().waitFor();
-    assert.equal(await page.locator(".study-card").count(), 24);
-    await page.getByPlaceholder("Search studies").fill("lattice");
-    assert.equal(await page.locator(".study-card").count(), 1);
-    await page.getByPlaceholder("Search studies").fill("");
+    assert.equal(await page.locator('.study-card[href^="/techniques/"]').count(), 24);
+    await page.getByPlaceholder("Search studies and saved layers").fill("lattice");
+    assert.equal(await page.locator('.study-card[href^="/techniques/"]').count(), 1);
+    await page.getByPlaceholder("Search studies and saved layers").fill("");
     await screenshot("gallery");
     scenarios.push("gallery search and 24 study navigation");
     for (const id of techniqueIds) {

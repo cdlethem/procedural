@@ -2,6 +2,45 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "generated-layer-revisions",
+      "title": "Generated layer revisions and saved collection",
+      "category": "Root reviewed web integration",
+      "description": "Actual p5 follow-up output and final production browser UI; completed-run transport replay is disclosed in evidence.",
+      "evidence": "evidence/web/generated-layer-review.json",
+      "images": [
+        {
+          "label": "Studio revised source, save action and unobstructed prompt panel",
+          "path": ".work/layer-revision/studio.png",
+          "sha256": "f4ada7f42e2124bb651645926c6568daa09d1bd0ef1d6184030baaf7bd8defb1"
+        },
+        {
+          "label": "Explorations follow-up result and save action",
+          "path": ".work/layer-revision/explorations.png",
+          "sha256": "eef48daa9b8c07b4a47313af974268eef258564ef985055517db6b800dcc070f"
+        },
+        {
+          "label": "Mobile exploration retains revised image after failed follow-up",
+          "path": ".work/layer-revision/explorations-mobile.png",
+          "sha256": "c6291109d51430b5439e9d614005c6cf62b3d686af875797a7c49b8c9d637e4e"
+        },
+        {
+          "label": "Saved layers gallery category",
+          "path": ".work/layer-revision/gallery.png",
+          "sha256": "391627722a0b68628da2ac742b2edc7e2080e926939a16c46607f2042a6107b8"
+        },
+        {
+          "label": "Original coral disk with twelve rings",
+          "path": ".work/harness/artifacts/7b34bdcc8eaacedc610d3cbb1d8d1b121bdb2943e390aa1e25a62ae0e36d2e38/image.png",
+          "sha256": "7b34bdcc8eaacedc610d3cbb1d8d1b121bdb2943e390aa1e25a62ae0e36d2e38"
+        },
+        {
+          "label": "Revised teal disk with six rings",
+          "path": ".work/harness/artifacts/b82155b28cdd5abf560af60daf781d6e8713c120e13cf8dd126d729a538afc23/image.png",
+          "sha256": "b82155b28cdd5abf560af60daf781d6e8713c120e13cf8dd126d729a538afc23"
+        }
+      ]
+    },
+    {
       "id": "prompt-web-integration",
       "title": "Prompt layers and independent explorations",
       "category": "Root reviewed web integration",

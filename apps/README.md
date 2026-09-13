@@ -70,10 +70,12 @@ their palettes and controls with empty manual-cut histories; other stale or inva
 history. A labelled candidate can temporarily replace the canvas for review while the
 committed document remains unchanged until it is applied. Generated-layer controls remain
 visible in the inspector; the collapsed **Generated source** disclosure is a read-only exact
-source viewer with copy and download actions. **Explorations** is a separate one-off prompt
-sketch playground: each prompt starts a fresh sketch, the last successful image/source stays
-visible while a request is pending or fails, and leaving the page discards its state. It does
-not change Studio state. Read the in-app guide at `/docs/prompt-studio`.
+source viewer with copy and download actions. **Explorations** is a separate prompt
+sketch playground: generate a new sketch or revise a generated layer with a follow-up. The
+last successful image/source stays visible while a request is pending or fails. Name and
+save generated layers from either workspace to reuse them through the gallery’s **Saved
+layers** category or Studio’s **Add layer** picker. Leaving Explorations discards unsaved state. It does
+not change Studio state until a saved layer is explicitly added there. Read the in-app guide at `/docs/prompt-studio`.
 
 The prompt service uses an OpenAI-compatible endpoint at `http://127.0.0.1:8080/v1` by
 default. Set `PROCEDURALS_MODEL_URL`, `PROCEDURALS_MODEL_NAME`, and
@@ -87,6 +89,11 @@ one undoable revision. Document JSON contains local artifact hashes, not generat
 or preview PNG bytes; use a supported per-layer or studio-bundle export when available. A
 mixed composition has no supported single portable sketch export, and a preview PNG is not
 editable source. Save/load validation never executes generated source.
+
+Saved layer snapshots live in `.work/harness/saved-layers/` alongside the content-addressed
+artifact store. Keep both directories when backing up or moving this installation. Copies
+inserted into Studio own their controls and ids; revising them leaves saved originals intact.
+Follow-up prompts receive the current source files and replay inputs.
 
 This scoped surface does not claim Processing Java, portable recipe execution,
 blind-recreation acceptance or additional shared target support.

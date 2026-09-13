@@ -43,14 +43,37 @@ palette and styling changes retain them. Placement, opacity, ordering, visibilit
 history, and the eight-layer maximum are checked when a document is loaded. Clear errors
 leave the current artwork in place.
 
-## Explorations: try one prompt sketch
+## Revise a generated layer
 
-**Explorations** is a separate, one-shot p5.js playground. Enter a prompt and select
-**Generate** to make one static 640px sketch. A successful result shows its image, exact
-source files, and **Copy**/**Download** actions, including **Download PNG**. The next prompt
-starts a fresh sketch. While a request is pending or fails, the last successful image and
-source remain visible. Leaving the page discards exploration state. Explorations does not
-alter Studio documents or their undo history.
+In **Studio**, select the generated layer, choose **Edit selected layer** in the prompt
+panel, and describe your change. For example: “Keep the branching pattern, make the lines
+thinner, and add more space between branches.” The prompt receives the layer’s exact current
+source files, declared controls, and current replay inputs. Review the candidate and choose
+**Apply edit**; **Undo** restores the previous version. Edits stay within the selected layer.
+
+In **Explorations**, generate an initial sketch, then enter a follow-up and choose
+**Revise layer**. If the result contains several generated layers, choose which layer to
+revise. A successful revision replaces that layer in the preview. **Generate new sketch**
+starts over from a blank composition. While either request is pending or fails, the last
+successful image and source remain visible. Explorations does not change Studio’s document
+or undo history. Leaving the page discards unsaved exploration state.
+
+## Keep layers for other sketches
+
+Below a generated layer in Explorations, or in its Studio inspector, enter a **Layer name**
+and choose **Save layer to gallery**. This saves a snapshot of that layer with its source,
+controls, seeds, and rendered preview on this installation. In Studio, apply a candidate
+before saving its revision. Give a revised version a new name to keep both versions.
+
+Open the gallery’s **Saved layers** category to search saved work, inspect its image and
+source, and choose **Add to studio**. Studio’s **Add layer** picker also includes saved
+layers, so you can reuse them in an existing sketch. Each insertion creates an independent,
+editable copy and counts toward the eight-layer limit. Revising a copy leaves the saved
+original intact. The destination sketch keeps its own background.
+
+Saved layers remain available after leaving the page or restarting the app. They belong to
+this installation’s shared local collection; they are separate from package studies.
+Backing up the collection requires the harness store, including its artifact files.
 
 ## Start the local services
 

@@ -31,6 +31,7 @@ export type PromptCandidateView = {
 
 export type PromptPanelProps = {
   /** The handle is shown so an artist can tell which published revision a run uses. */
+  selectedLayerId?: string;
   documentHandle?: string | null;
   revisionHash?: string | null;
   run?: PromptRunView | null;
@@ -61,6 +62,7 @@ function count(run: PromptRunView | null | undefined, key: "toolCalls" | "render
 
 /** Prompt coordinator controls deliberately stay presentational: the studio owns documents and authority. */
 export function PromptPanel({
+  selectedLayerId,
   documentHandle,
   revisionHash,
   run,
@@ -80,7 +82,7 @@ export function PromptPanel({
   const applyScope = candidate?.scope ?? scope;
   const submit = async () => {
     const text = prompt.trim();
-    if (text.length < 3 || running) return;
+    if (text.length < 3 || running || (scope === "edit-layer" && !selectedLayerId)) return;
     setSubmitting(true);
     try {
       await onGenerate(text, scope, "p5js");
@@ -125,17 +127,18 @@ export function PromptPanel({
           disabled={running}
         >
           {(Object.keys(scopeLabels) as PromptScope[]).map((value) => (
-            <option value={value} key={value}>
+            <option value={value} key={value} disabled={value === "edit-layer" && !selectedLayerId}>
               {scopeLabels[value]}
             </option>
           ))}
         </select>
       </div>
+      {scope === "edit-layer" && <p className="control-description">Describe what to change in {selectedLayerId ?? "the selected layer"}. Its current source and controls are included; apply the preview to keep the revision.</p>}
       <p className="control-description">
         Target: <strong>p5.js</strong>
       </p>
       <div className="panel-actions">
-        <button className="action" type="button" onClick={() => void submit()} disabled={running || prompt.trim().length < 3}>
+        <button className="action" type="button" onClick={() => void submit()} disabled={running || prompt.trim().length < 3 || (scope === "edit-layer" && !selectedLayerId)}>
           {running ? "Generating…" : "Generate"}
         </button>
         <button className="action secondary" type="button" onClick={() => void cancel()} disabled={!running || !onCancel}>

@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { fetchSavedLayers, type SavedLayer } from "@/lib/saved-layers";
+import { artifactUrl } from "@/lib/harness-client";
 type Entry = {
   slug: string;
   title: string;
@@ -9,10 +11,14 @@ type Entry = {
   studio: boolean;
 };
 export function Gallery({ techniques }: { techniques: Entry[] }) {
+  const [saved, setSaved] = useState<SavedLayer[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  useEffect(() => { let active = true; fetchSavedLayers().then((items) => { if (active) setSaved(items); }).catch((cause) => { if (active) setError(String(cause)); }); return () => { active = false; }; }, []);
   const [q, setQ] = useState("");
   const [category, setCategory] = useState("All");
   const categories = [
     "All",
+    "Saved layers",
     ...Array.from(new Set(techniques.map((t) => t.category))),
   ];
   const shown = useMemo(
@@ -24,6 +30,7 @@ export function Gallery({ techniques }: { techniques: Entry[] }) {
       ),
     [techniques, q, category],
   );
+  const savedShown = saved.filter((item) => (category === "All" || category === "Saved layers") && `${item.title} ${item.description}`.toLowerCase().includes(q.toLowerCase()));
   return (
     <section className="gallery-section" aria-label="Technique gallery">
       <div className="gallery-tools">
@@ -32,7 +39,7 @@ export function Gallery({ techniques }: { techniques: Entry[] }) {
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Search studies"
+            placeholder="Search studies and saved layers"
           />
         </label>
         <div className="filters" aria-label="Technique category">
@@ -48,9 +55,18 @@ export function Gallery({ techniques }: { techniques: Entry[] }) {
         </div>
       </div>
       <p className="gallery-count">
-        {shown.length} {shown.length === 1 ? "study" : "studies"}
+        {shown.length + savedShown.length} {shown.length + savedShown.length === 1 ? "item" : "items"}
       </p>
       <div className="gallery-grid">
+        {savedShown.map((item) => {
+          const layer = item.document.layers[0];
+          return <Link className="study-card" href={`/layers/${item.id}`} key={item.id}>
+            <div className="thumbnail" style={{ background: item.document.background }}>
+              {layer?.kind === "source" && layer.content.previewArtifactHash && <img src={artifactUrl(layer.content.previewArtifactHash)} alt="" loading="lazy" style={{ opacity: layer.opacity }} />}
+            </div>
+            <div><p className="card-category">Saved layers</p><h2>{item.title}</h2><p>{item.description || "Generated p5.js layer · ready to reuse and revise"}</p></div>
+          </Link>;
+        })}
         {shown.map((t) => (
           <Link
             className="study-card"
@@ -77,8 +93,9 @@ export function Gallery({ techniques }: { techniques: Entry[] }) {
           </Link>
         ))}
       </div>
-      {shown.length === 0 && (
-        <p className="empty">No studies match that search.</p>
+      {error && <p className="service-error" role="alert">Saved layers unavailable: {error}</p>}
+      {shown.length + savedShown.length === 0 && (
+        <p className="empty">No items match. Save a generated layer from Studio or Explorations to find it here.</p>
       )}
     </section>
   );

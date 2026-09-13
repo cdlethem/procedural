@@ -448,7 +448,8 @@ main {
   flex-wrap: wrap;
   margin-top: 1rem;
 }
-.studio button.action {
+.studio button.action,
+.save-layer-panel button.action {
   border: 1px solid var(--ink);
   background: var(--ink);
   color: white;
@@ -460,7 +461,8 @@ main {
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
-.studio button.action.secondary {
+.studio button.action.secondary,
+.save-layer-panel button.action.secondary {
   background: transparent;
   color: var(--ink);
 }
@@ -765,3 +767,11 @@ select:focus-visible {
 .canvas-actions .action { border: 1px solid var(--line); padding: .5rem .65rem; background: var(--panel); color: var(--ink); font: 600 .68rem Arial, sans-serif; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
 .canvas-actions .action:disabled { opacity: .4; cursor: default; }
 .canvas-actions .canvas-mode .action.active { background: var(--teal); border-color: var(--teal); color: white; }
+
+.save-layer-panel { margin-block: 1.25rem; padding-block: 1rem; border-block: 1px solid var(--line); }
+.save-layer-panel h3 { margin-top: 0; }
+.save-layer-panel .control { display: grid; gap: .4rem; margin-block: .8rem; }
+.save-layer-panel input { min-width: 0; width: 100%; padding: .6rem; font: inherit; background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
+
+/* A canvas spanning a sticky grid item must not cover the following prompt row. */
+.prompt-studio .canvas-wrap { position: static; }

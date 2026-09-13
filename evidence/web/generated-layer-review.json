@@ -1,0 +1,129 @@
+{
+  "kind": "root-web-generated-layer-review",
+  "date": "2026-09-13",
+  "owner": "root",
+  "status": "accepted-scoped",
+  "scope": "Follow-up revisions of generated p5.js layers in Studio and Explorations; persistent, browsable saved layer snapshots reusable through gallery and Studio picker.",
+  "supersedes_scope": "The one-shot-only Explorations and no-transfer limits of evidence/web/prompt-web-integration-review.json. Its historical evidence and other limits remain intact.",
+  "artist_task": "Refine existing artwork by describing a change, then keep a named generated layer to use in another sketch.",
+  "behavior": [
+    "Follow-up context includes exact source files, declarations, licensing and current replay inputs; the coordinator fixes candidate scope to the artist request.",
+    "Studio candidate application is explicit and undoable; failed runs do not publish candidates. Saving is disabled while a candidate or control edit is pending.",
+    "Explorations revises the selected generated layer or explicitly generates a fresh composition; failed follow-ups preserve the last successful result.",
+    "Saved layers validate source bytes, declared controls and preview render identity without running source. Snapshots are atomic JSON records alongside immutable artifacts.",
+    "Each reuse gets a fresh id and detached controls; destination background and other layers stay intact, with the existing eight-layer limit.",
+    "Gallery has a Saved layers category with image/source detail pages. Studio picker can insert saved layers directly.",
+    "Sticky Studio canvas no longer overlaps the prompt panel."
+  ],
+  "validation": {
+    "web_tests": "41/41 passed, including persistence, detached copies, stale preview/control rejection and exact follow-up source context.",
+    "typecheck": "passed; final production build also passed TypeScript checks",
+    "production_build": "Passed in .work/web-layer-release with local dependency directory. Existing jobs.ts filesystem tracing warning remains. Initial dependency symlink was rejected by Turbopack; replaced with local dependency copy.",
+    "native_model": {
+      "run_id": "run-d40bba19-b15b-4c43-bbad-6b77615c15ed",
+      "candidate_id": "cand-0c10aff3-fbd8-406c-b1fc-0f75d2465891",
+      "model": "/home/colin/models/Qwen3.8-27B-Q8_0.gguf",
+      "renders": 1,
+      "prompt": "Revise this existing generated layer: make the central disk teal instead of coral and change the twelve navy rings to six. Preserve its layout, declared diskRadius control, seeds, and every other detail. Return the revised source layer with the same id.",
+      "result": "Real p5 render: coral/twelve rings changed to teal/six rings; placement, diskRadius, seeds and tick retained. Root inspected exact source and both rasters. Renderer took shared machine lease."
+    },
+    "browser": {
+      "status": "passed",
+      "errors": [],
+      "savedIds": [
+        "saved-4584344b-8219-4a79-a072-e9dcd9377e46",
+        "saved-dd467d17-ee07-4d8b-8098-1d787d989e7a"
+      ],
+      "transport": "Completed real-model run responses replayed; document contexts, candidate validation/apply, storage, artifacts and browser drawing live."
+    },
+    "browser_scenarios": [
+      "Exploration follow-up uses the preceding document and selected layer id",
+      "Failure preserves prior pixels and source; Studio local state remains separate",
+      "Save from both workspaces, browse/search/detail and reload through real storage",
+      "Gallery link and picker insert independent copies; reload does not duplicate insertion",
+      "Real Studio candidate preview/apply/undo/redo",
+      "Pending preview cannot be saved as the committed layer",
+      "Mobile viewport fits; canvas does not overlap prompt"
+    ],
+    "existing_browser": "test-browser.mjs --interactions-only passed on final production release",
+    "evidence_limit": "Model and isolated render ran separately from browser interaction to avoid lease contention. Browser run transport replayed the completed real run; contexts, candidate validation/application, storage, artifacts and browser drawing were live. No uninterrupted browser-to-model claim.",
+    "commands": [
+      "npm --prefix apps/web test",
+      "npm --prefix apps/web run typecheck",
+      "PROCEDURALS_API_URL=http://127.0.0.1:8088 npm --prefix .work/web-layer-release/apps/web run build",
+      "apps/web/node_modules/.bin/tsx .work/layer-revision/generate.mts",
+      "WEB_BASE_URL=http://127.0.0.1:3011 PLAYWRIGHT_BROWSERS_PATH=/home/colin/dev/procedural/.work/toolchains/playwright python3 tools/with_native_render_lock.py -- node .work/layer-revision/browser.mjs"
+    ]
+  },
+  "deployment": {
+    "url": "https://eunoia.tailf03dad.ts.net:8443/",
+    "checkout": ".work/web-layer-release",
+    "frontend": "procedurals-web.service on 3002",
+    "projects": "Existing Go service on 8088, .work/web-projects unchanged",
+    "storage": ".work/web-layer-release/.work/harness; saved-layers plus artifacts",
+    "preserved_files": 4423,
+    "artifact_copy_sha256": "all prior files match",
+    "previous": ".work/web-prompt-release/.work/harness",
+    "current": ".work/web-layer-release/.work/harness",
+    "restart_persistence": "HTTP save, service restart, HTTP reload: exact record preserved",
+    "http_checks": "Gallery, Studio, Explorations, guide, saved-layer endpoint and project service returned 200; tailnet saved-layer endpoint returned 200.",
+    "historical_release": ".work/web-prompt-release preserved; final copy skips equal immutable files after a redundant copy attempt encountered their read-only modes."
+  },
+  "images": [
+    {
+      "label": "Studio revised source, save action and unobstructed prompt panel",
+      "path": ".work/layer-revision/studio.png",
+      "sha256": "f4ada7f42e2124bb651645926c6568daa09d1bd0ef1d6184030baaf7bd8defb1"
+    },
+    {
+      "label": "Explorations follow-up result and save action",
+      "path": ".work/layer-revision/explorations.png",
+      "sha256": "eef48daa9b8c07b4a47313af974268eef258564ef985055517db6b800dcc070f"
+    },
+    {
+      "label": "Mobile exploration retains revised image after failed follow-up",
+      "path": ".work/layer-revision/explorations-mobile.png",
+      "sha256": "c6291109d51430b5439e9d614005c6cf62b3d686af875797a7c49b8c9d637e4e"
+    },
+    {
+      "label": "Saved layers gallery category",
+      "path": ".work/layer-revision/gallery.png",
+      "sha256": "391627722a0b68628da2ac742b2edc7e2080e926939a16c46607f2042a6107b8"
+    },
+    {
+      "label": "Original coral disk with twelve rings",
+      "path": ".work/harness/artifacts/7b34bdcc8eaacedc610d3cbb1d8d1b121bdb2943e390aa1e25a62ae0e36d2e38/image.png",
+      "sha256": "7b34bdcc8eaacedc610d3cbb1d8d1b121bdb2943e390aa1e25a62ae0e36d2e38"
+    },
+    {
+      "label": "Revised teal disk with six rings",
+      "path": ".work/harness/artifacts/b82155b28cdd5abf560af60daf781d6e8713c120e13cf8dd126d729a538afc23/image.png",
+      "sha256": "b82155b28cdd5abf560af60daf781d6e8713c120e13cf8dd126d729a538afc23"
+    }
+  ],
+  "implementation_sha256": {
+    "apps/web/app/globals.css": "9c69b18cd0a00a16010250d4a69b1e1ad572bb63008e4581145cfffa3f46ec17",
+    "apps/web/app/harness/layers/route.ts": "e30fe507dcf943bd22130e30b7d29b3cd372cc3c2deb2ec7a18453699278f799",
+    "apps/web/app/layers/[id]/page.tsx": "ac433708c34879b22b0c0237d15802acd9fa7ec081ae4a4dbe7fb425885de120",
+    "apps/web/components/Explorations.tsx": "1061fca4bd59a15502c9c903f32b78c06662978dbc72b5d66d5e3f9afe450767",
+    "apps/web/components/Gallery.tsx": "ecf0322e7930ec2d1589e472d969e5c08bb60340b7c53f31e2710b60ff1988d7",
+    "apps/web/components/LayerPicker.tsx": "bae2cfc92fb7e3c1f35750bd939c8b2cbd85d48c2d272c41220e31b6179781a7",
+    "apps/web/components/PromptPanel.tsx": "61c6a146247cc2b5ea0bdf0a036062ae22cc0a2f2e133a7f11ba18a979cf20a2",
+    "apps/web/components/SaveLayerPanel.tsx": "72737be0da708930f1969e9d7c209facac82bc3e1d20dc289b7928744d543f4f",
+    "apps/web/components/SavedLayerView.tsx": "44cd4b4269d2002de220a5d8d55f092113c7327f46d19c0c6f4487af7373c314",
+    "apps/web/components/Studio.tsx": "6b32ac39b7c38c668ae86da3213e879c098e4d8b10377289cb39157e450baa6a",
+    "apps/web/lib/harness/candidates.ts": "e72570a2e0c194e43b9fbbce18040f3ec1f336972868b78e9e11a7fa1a7809c4",
+    "apps/web/lib/harness/layers.ts": "97c9d4129aa810dae7edaf409b3e40ede1d32b6832106aa83c7f24c09a8a4717",
+    "apps/web/lib/harness/loop.ts": "6ae69ae57a5492238fe831508b0f119694be94c2288ea72f733f2ab22fea2f88",
+    "apps/web/lib/harness/revision-context.ts": "27c55c387832bdf583422b7b1b40efec168c70c1e2d148bc76c2dc4ec6a6be71",
+    "apps/web/lib/saved-layers.ts": "329663e515b15dacf93f1a66106c8ec2a423bba08d44961c46f45b7093b356ce",
+    "apps/web/scripts/test-browser.mjs": "47d042bda01577e64e8583fdd269837dcf7b1664fc1119a1251581a6e1a38fec",
+    "apps/web/tests/saved-layers.test.ts": "22dafff54708167c5b951640ce37cfd3174065f4b8652950bf2660cce954e0bc"
+  },
+  "limits": [
+    "p5.js static 640px source layers; no new portable operation or target support",
+    "Collection is shared within this trusted local installation. JSON references require its artifact store; this is not a self-contained cross-machine export",
+    "Explorations has no undo history; unsaved page state is transient. Save separate named snapshots to keep versions",
+    "Prompt quality remains model-dependent; one observed follow-up is not a general visual benchmark"
+  ]
+}
