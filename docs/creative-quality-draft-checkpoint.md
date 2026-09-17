@@ -27,6 +27,6 @@ record was rewritten, no incomplete support was marked accepted, and this checkp
 does not certify the full surveyed corpus. The separate 104-study dynamics candidate
 also remains outside this 95-study checkpoint.
 
-Next integration work is to reconcile the historical bindings, review the remaining
-gallery families against the same creative standard, and promote only a tested release
-that preserves the established 8443 site baseline.
+The tested source now serves the established8443 site; the separate landing redesign
+remains in progress. Next integration work is to reconcile the historical bindings and
+review the remaining gallery families against the same creative standard.

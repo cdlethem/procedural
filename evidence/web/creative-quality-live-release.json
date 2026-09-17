@@ -1,0 +1,38 @@
+{
+  "id": "creative-quality-live-release-2026-09-17",
+  "status": "scoped-draft-release",
+  "source_commit": "eb2bdfdc0e6ef3f229324ad569e14411ae6d0dc6",
+  "predecessor_live_commit": "d76e204cf11c0fa6370e28da381062429e68bdb3",
+  "url": "https://eunoia.tailf03dad.ts.net:8443/",
+  "checkout": ".work/study-quality-release",
+  "scope": {
+    "gallery_studies": 95,
+    "revised_studies": 26,
+    "generated_api_operations": 69,
+    "default_palettes": 50,
+    "completed_ui_baseline_preserved": true,
+    "separate_landing_preview_untouched": true
+  },
+  "checks": [
+    { "command": "npm run check:generated", "result": "passed; 95 workflows and 69 API entries" },
+    { "command": "npm run typecheck", "result": "passed" },
+    { "command": "focused web tests", "result": "58 passed across the changed adapters and Studio migration" },
+    { "command": "PROCEDURALS_API_URL=http://127.0.0.1:8088 npm run build", "result": "passed" },
+    { "command": "capture-previews.mjs against isolated release", "result": "95 of 95 native canvas previews rendered" },
+    { "command": "test-browser.mjs against isolated release", "result": "passed; gallery, 30 study canvases, Studio edits/export/storage/composition, 69 API entries and responsive pages" },
+    { "command": "native p5 focused browser checks", "result": "passed for revised motif, relief, path, mesh, cellular, raster and color-field examples" },
+    { "command": "live HTTPS Playwright verification", "result": "200 for gallery, Reaction Stripes, Studio, API and palettes; 95 cards, 69 API links, 89 static resources all 200, no page errors", "report": ".work/gallery-quality/live-quality-verify.json" }
+  ],
+  "catalog_gate": {
+    "command": "uv run python tools/check_catalog.py",
+    "result": "failed",
+    "reason": "Historical accepted reviews depend on ignored browser evidence absent from a fresh checkout; current changed accepted-file hashes also await an exact reviewed successor chain.",
+    "log": ".work/quality-integration/.work/catalog-quality-draft.log",
+    "target_acceptance_claimed": false
+  },
+  "visual_evidence": {
+    "gallery": ".work/study-quality-release/apps/web/public/previews/manifest.json",
+    "browser": ".work/study-quality-release/.work/web-app-review/integration",
+    "navigation": ".work/visual-review/index.html"
+  }
+}

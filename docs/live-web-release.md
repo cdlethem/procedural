@@ -1,12 +1,13 @@
 # Current live web release
 
 The established site is https://eunoia.tailf03dad.ts.net:8443/ . It serves the completed
-merged gallery/Studio redesign plus five new studies and 50 default palettes from
-`6d4759b8`, using the immutable checkout `.work/external-gallery-review`. Despite its
-historical directory name, this checkout is now production: never edit or build inside it.
-The [release review](../evidence/web/external-expansion-live-release.json) records actual
-HTTPS browser checks; the [restoration review](../evidence/web/completed-redesign-restoration.json)
-retains the earlier recovery evidence.
+merged gallery/Studio redesign, 26 revised studies, five external studies and 50 default
+palettes from `eb2bdfdc`, using the immutable checkout `.work/study-quality-release`.
+Never edit or build inside the current release. The [quality release review](../evidence/web/creative-quality-live-release.json)
+records the scoped checks and actual HTTPS verification. `.work/study-copy-release`
+at `d76e204c` is the previous rollback release; its [review](../evidence/web/study-copy-live-release.json)
+and the [restoration review](../evidence/web/completed-redesign-restoration.json) retain
+the earlier recovery evidence.
 
 The separate landing-page redesign is in progress. Its working checkout, preview server
 and uncommitted files are not the completed-release baseline and must not be overwritten

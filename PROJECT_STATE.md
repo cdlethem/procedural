@@ -50,9 +50,9 @@ The report includes all69 family dispositions and all three denominators:800 ass
   is95 after the five external expansion studies. The app compositor remains separate from portable recipes/MCP.
 - A [draft source checkpoint](docs/creative-quality-draft-checkpoint.md) revises26 of those
   studies for structural controls, saved-work compatibility and layer transparency. Focused
-  web/native checks and a production build pass. The historical catalog binding check remains
-  red, so this is not a new target-acceptance or live-release claim; live8443 remains at
-  `d76e204c` pending a reviewed release.
+  web/native checks, 95 gallery previews, the full browser suite and a production build pass.
+  Live8443 serves the checked `eb2bdfdc` source from `.work/study-quality-release` while
+  the historical catalog binding check remains red. This is not new target acceptance.
 - Layer editing, custom palettes, source inspection, undo/redo, local recovery, JSON/PNG export
   and Go storage are reviewed. [Workspace review](evidence/web/studio-workspace-review.json),
   [v3 review](evidence/web/app-v3-review.json) and [architecture](docs/web-app-architecture.md)
@@ -63,7 +63,7 @@ The report includes all69 family dispositions and all three denominators:800 ass
   Historical [design](evidence/web/ui-design-audit-2026-09-17.json) and
   [brand](evidence/web/procedural-brand-review.json) reviews retain their original bindings.
   Preview: https://eunoia.tailf03dad.ts.net:8444/ (persistent `ui-design-preview`, Next3016).
-  This working-checkout preview is separate from the unchanged8443 release below.
+  This working-checkout preview is separate from the established8443 release below.
 - Prompt drafts and applied source/layer revisions are covered by the
   [prompt integration](evidence/web/prompt-web-integration-review.json) and
   [saved-layer successor](evidence/web/generated-layer-review.json). See the
@@ -72,11 +72,12 @@ The report includes all69 family dispositions and all three denominators:800 ass
   The [50 default palettes](docs/default-palettes.md) now have a separate
   [local data/UI review](evidence/external-art/2026-09/default-palette-review.json), including
   the JavaScript export, offline defaults, editable copies and scoped browser checks.
-- Live8443 serves the completed merged redesign plus five new studies and 50 default palettes
-  from clean main revision `6d4759b8`, immutable release `.work/external-gallery-review`
-  (Next3002, Go8088). The [release review](evidence/web/external-expansion-live-release.json)
-  records actual HTTPS verification; the [restoration review](evidence/web/completed-redesign-restoration.json)
-  retains the source reconciliation and recovery checks.
+- Live8443 serves the completed merged redesign, 26 revised studies, five external studies
+  and 50 default palettes from `eb2bdfdc` in immutable `.work/study-quality-release`
+  (Next3002, Go8088). The [quality release review](evidence/web/creative-quality-live-release.json)
+  records the scoped checks and actual HTTPS verification. The prior
+  [copy release](evidence/web/study-copy-live-release.json) remains the rollback baseline;
+  the [restoration review](evidence/web/completed-redesign-restoration.json) retains its recovery.
   The in-progress landing page remains separate. Future releases must preserve this completed UI
   baseline; see [live release procedure](docs/live-web-release.md).
 - Named projects live in `.work/web-projects`. The current release links shared prompt
