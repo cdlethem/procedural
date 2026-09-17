@@ -10,8 +10,8 @@ const legacy = { ...toggle("legacy","Legacy layout","Retains the earlier saved c
 const sourceControls = (chemical:boolean, sparse=false) => [
   choice("source","Initial field","Choose the spatial source before simulation.",
     sparse?["disc","bands","speckle"]:["disc","bands","checker","speckle"]),
-  n("sourceX","Source X","Moves the initial field horizontally in normalized frame widths.",-.5,.5,-100,100,.01),
-  n("sourceY","Source Y","Moves the initial field vertically in normalized frame widths.",-.5,.5,-100,100,.01),
+  n("sourceX","Source X","Moves the initial field horizontally in normalized frame widths.",-.43,.43,-100,100,.01),
+  n("sourceY","Source Y","Moves the initial field vertically in normalized frame widths.",-.43,.43,-100,100,.01),
   n("frequency","Source frequency","Feature periods across the field; bounded by the fixed grid sampling resolution.",1,8,1,chemical?12:10,1,true),
   n("occupancy","Initial fill",sparse?"Fraction of cells activated from the highest source values.":"Source-value threshold for active starting cells.",
     sparse ? 0 : .1,sparse ? .35 : .7,0,1,.01),

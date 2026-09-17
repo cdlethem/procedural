@@ -87,6 +87,16 @@ test("ranked stripe fill keeps source switching nonempty and deterministic", () 
   assert.doesNotThrow(() => commands(layer("reaction-spots", { source: "checker" })));
 });
 
+test("source offset slider endpoints change the default checker composition", () => {
+  const definition = systemsADefinitions.find(item => item.id === "geometric-generations")!;
+  const offset = definition.parameters.find(item => item.key === "sourceY")!;
+  const base = layer("geometric-generations");
+  assert.notDeepEqual(
+    cellularState("geometric-generations", { ...base.params, sourceY: offset.max! }, base.seed).cells,
+    cellularState("geometric-generations", base.params, base.seed).cells,
+  );
+});
+
 test("Life rules and boundaries reach the portable operation, while paired renderers share cell state", () => {
   const base = layer("organic-cells", { source: "speckle", passes: 8 });
   const life = cellularState("organic-cells", base.params, base.seed).cells;

@@ -5,8 +5,8 @@ const select = (key, label, options) => ({ key, label, type: "select", options }
 
 const sources = (chemical, stripes = false) => [
   select("source", "Initial field", stripes ? ["disc", "bands", "speckle"] : ["disc", "bands", "checker", "speckle"]),
-  num("sourceX", "Source X", -.5, .5, -100, 100, .01),
-  num("sourceY", "Source Y", -.5, .5, -100, 100, .01),
+  num("sourceX", "Source X", -.43, .43, -100, 100, .01),
+  num("sourceY", "Source Y", -.43, .43, -100, 100, .01),
   num("frequency", "Source frequency", 1, 8, 1, chemical ? 12 : 10, 1, true),
   num("occupancy", "Initial fill", stripes ? 0 : .1, stripes ? .35 : .7, 0, 1, .01),
 ];
