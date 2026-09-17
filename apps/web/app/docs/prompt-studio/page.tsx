@@ -8,7 +8,7 @@ const guidePath = path.resolve(process.cwd(), "..", "..", "docs", "prompt-studio
 export default async function PromptStudioGuidePage() {
   const guide = await readFile(guidePath, "utf8");
   return (
-    <main className="detail">
+    <main id="main-content" tabIndex={-1} className="detail">
       <article className="markdown">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{guide}</ReactMarkdown>
       </article>

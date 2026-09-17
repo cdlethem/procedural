@@ -14,7 +14,7 @@ export default async function TechniquePage({
   const technique = gallery.techniques.find((t) => t.slug === slug);
   if (!technique) notFound();
   return (
-    <main className="detail">
+    <main id="main-content" tabIndex={-1} className="detail">
       <Link href="/" className="back">
         ← Gallery
       </Link>

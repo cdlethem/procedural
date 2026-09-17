@@ -1,0 +1,139 @@
+{
+  "kind": "root-ui-brand-review",
+  "date": "2026-09-17",
+  "status": "reviewed-tailnet-preview",
+  "supersedes": {
+    "record": "evidence/web/ui-design-audit-2026-09-17.json",
+    "scope": "Gallery hero, global brand mark and metadata, shared navigation, and the new About page only. The prior audit remains historical; no operation or target acceptance changes."
+  },
+  "preview": {
+    "url": "https://eunoia.tailf03dad.ts.net:8444/",
+    "about": "https://eunoia.tailf03dad.ts.net:8444/about",
+    "process": "ui-design-preview",
+    "port": 3016,
+    "release8443": "Unchanged"
+  },
+  "decisions": [
+    "Hero: Make art. Keep the method. Explicit alternative to black-box image generation.",
+    "Removed the editable-study-count strapline; retained the functional gallery search result count.",
+    "Mark: the same open corner translated by (5,5) twice. Its construction is explained on the About page.",
+    "About: visible source, deliberate edits, seeded variation and returning to a composition. Reproduction depends on code, settings, seed, renderer/version and time/frame.",
+    "Optional AI assistance is framed as proposing editable code, not replacing the inspectable method."
+  ],
+  "verification": {
+    "productionBuild": "Next production compilation and TypeScript passed after final typography adjustment.",
+    "visualReview": "Root inspected native gallery desktop/narrow screenshots and About desktop/mobile screenshots. All captures used the shared machine rendering lease.",
+    "responsive": {
+      "routes": [
+        "/",
+        "/about"
+      ],
+      "widths": [
+        1440,
+        850,
+        768,
+        601,
+        600,
+        390,
+        320
+      ],
+      "horizontalOverflow": false,
+      "navigationFits": true
+    },
+    "accessibility": {
+      "tool": "axe-core 4.10.3",
+      "tags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag21aa"
+      ],
+      "routeViewportScans": 14,
+      "violations": [],
+      "final320pxFollowup": "No violations; gallery heading confirmed two lines."
+    },
+    "navigation": {
+      "skip": "Skip to content",
+      "skipTarget": "main-content",
+      "current": "page",
+      "footerReturn": true,
+      "logoReturn": true,
+      "studioLink": true,
+      "studio": [
+        {
+          "width": 1440,
+          "scrollWidth": 1440,
+          "headerHeight": 65,
+          "canvasWidth": 638,
+          "aboutVisible": true
+        },
+        {
+          "width": 390,
+          "scrollWidth": 390,
+          "headerHeight": 104,
+          "canvasWidth": 352,
+          "aboutVisible": true
+        }
+      ]
+    },
+    "rawChecks": ".work/ui-brand-review/checks.json"
+  },
+  "limits": [
+    "Scoped Chromium review, not full accessibility certification, physical-device testing or cross-engine coverage.",
+    "No renderer, randomness, model behavior, storage or operation contracts were changed or newly certified.",
+    "Existing filesystem-tracing build warning at lib/harness/jobs.ts:58 remains.",
+    "Gallery screenshots include existing saved layers; no saved records were changed by this review."
+  ],
+  "images": [
+    {
+      "label": "gallery — 1440",
+      "path": ".work/ui-brand-review/gallery-1440.png",
+      "sha256": "b50a76e662e81fd04e9846f7e934498c70dbf8838d5ef8b31fba9ced34b4a20e"
+    },
+    {
+      "label": "gallery — 390",
+      "path": ".work/ui-brand-review/gallery-390.png",
+      "sha256": "8b7a3b916d466026d1f7f9f523434f4b8d12d8c8f640d1193f6dad176905026e"
+    },
+    {
+      "label": "gallery — 320",
+      "path": ".work/ui-brand-review/gallery-320.png",
+      "sha256": "5f4fc835f1aaf0894f0a082a312575e6aae0c2170da49a23227efd50f77b516f"
+    },
+    {
+      "label": "about — 1440",
+      "path": ".work/ui-brand-review/about-1440.png",
+      "sha256": "2fa5d7fe79725edec243a2307292a77d9d2b32ac4d034df35919ed39acfcb95d"
+    },
+    {
+      "label": "about — 390",
+      "path": ".work/ui-brand-review/about-390.png",
+      "sha256": "3cffb03318516b247b95687090589311ab2442b4e84abd962ddaf1a1ad801655"
+    }
+  ],
+  "sourceBindings": [
+    {
+      "path": "apps/web/app/page.tsx",
+      "sha256": "d461a1eb47a06a671d4dee4c1d49505b7c97abc015cf4864f53a8aa2d959c599"
+    },
+    {
+      "path": "apps/web/app/layout.tsx",
+      "sha256": "a531b3dd1471a0777c7b722300bbbc505579811d2c7473ff65107438ebfdf3ac"
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "sha256": "121e30d07dab3e08315bacfd77053914e7d0d10c55ff0b650ba73c2082d55fc8"
+    },
+    {
+      "path": "apps/web/app/about/page.tsx",
+      "sha256": "d0cfc5169448a1227ae8feb58841a7c5307e5379e4cd1a7cead0922904f55b86"
+    },
+    {
+      "path": "apps/web/components/SiteNav.tsx",
+      "sha256": "5771c1d8a409b51fa187ff151e3bebc44d49a1a276b9be3a7f409541656ea091"
+    },
+    {
+      "path": "apps/web/components/ProceduralMark.tsx",
+      "sha256": "c72605b90971f446668373f56328ff44a570ab36e15c26281e1ad6aed5235cea"
+    }
+  ]
+}

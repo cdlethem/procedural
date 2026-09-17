@@ -66,7 +66,7 @@ export function SourcePanel({
                 : "Copy"}
           </button>
         </div>
-        <pre aria-label="Formatted TypeScript source">
+        <pre tabIndex={0} aria-label="Formatted TypeScript source">
           <code>{highlight(source)}</code>
         </pre>
       </details>

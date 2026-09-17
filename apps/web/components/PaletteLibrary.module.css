@@ -1,40 +1,40 @@
-.library, .dialog { --ink: #26342e; --muted: #68746b; --line: #dce1d8; --teal: #146b5e; --panel: #faf9f6; color: var(--ink); font: 13px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.library, .dialog { color: var(--ink); font: 14px/1.6 var(--font-ui); }
 .library { min-width: 0; }
-.library h2 { margin: 0; font: 500 23px/1.2 Georgia, serif; letter-spacing: -.03em; }
-.library h3 { font: 600 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; overflow-wrap: anywhere; }
+.library h2 { margin: 0; font: 500 23px/1.2 var(--font-ui); letter-spacing: -.035em; }
+.library h3 { font: 600 14px/1.4 var(--font-ui); margin: 0; overflow-wrap: anywhere; }
 .library p { margin: 8px 0 16px; color: var(--muted); }
-.library button, .dialog > header button, .launcher, .promptPalette button { font: 500 12px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); border: 1px solid var(--line); background: var(--panel); border-radius: 7px; padding: 8px 11px; cursor: pointer; text-transform: none; letter-spacing: 0; min-height: 34px; }
-.library button:hover:not(:disabled), .dialog > header button:hover, .launcher:hover { background: #edf0e8; }
+.library button, .dialog > header button, .launcher, .promptPalette button { font: 500 14px/1.4 var(--font-ui); color: var(--ink); border: 1px solid var(--line); background: var(--panel); border-radius: 2px; padding: 8px 12px; cursor: pointer; text-transform: none; letter-spacing: 0; min-height: 44px; }
+.library button:hover:not(:disabled), .dialog > header button:hover, .launcher:hover { background: var(--surface-muted); }
 .library button:disabled { opacity: .45; cursor: default; }
-.library .primary { color: white; background: #146b5e; border-color: #146b5e; }
-.library .primary:hover:not(:disabled) { background: #0e564b; }
-.library input, .library textarea, .library select { width: 100%; max-width: 100%; min-width: 0; font: inherit; padding: 9px 10px; border: 1px solid #d4dcd0; background: #fff; border-radius: 6px; color: var(--ink); }
+.library .primary { color: var(--panel); background: var(--teal); border-color: var(--teal); }
+.library .primary:hover:not(:disabled) { background: var(--accent-hover); }
+.library input, .library textarea, .library select { width: 100%; max-width: 100%; min-width: 0; min-height: 44px; font: inherit; padding: 9px 10px; border: 1px solid var(--line); background: var(--panel); border-radius: 2px; color: var(--ink); }
 .library input[aria-invalid="true"] { border-color: #a2442d; }
 .library label { display: grid; gap: 6px; font-weight: 500; }
 .library textarea { resize: vertical; min-height: 78px; max-height: 200px; }
-.library :focus-visible, .dialog :focus-visible { outline: 2px solid #146b5e; outline-offset: 3px; }
+.library :focus-visible, .dialog :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
 .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 20px; }
 .toolbar p { margin: 5px 0 0; }
 .toolbar button { flex-shrink: 0; }
 .search { display: flex; gap: 10px; margin: 20px 0; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 16px; align-items: start; }
-.card { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fffdf9; }
-.swatches { display: flex; height: 88px; overflow: hidden; border-radius: 6px; }
+.card { border: 1px solid var(--line); border-radius: 2px; overflow: hidden; background: var(--panel); }
+.swatches { display: flex; height: 88px; overflow: hidden; border-radius: 2px; }
 .swatches span { flex: 1; min-width: 0; }
 .card > .swatches { border-radius: 0; }
 .cardBody { padding: 16px; }
-.cardBody p { font-size: 11px; margin: 4px 0 14px; }
+.cardBody p { font-size: 13px; margin: 4px 0 14px; }
 .cardBody > button { width: 100%; margin-bottom: 10px; }
 .actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .actions button { flex-shrink: 0; }
 .actions label { display: flex; align-items: center; gap: 8px; margin-right: auto; }
 .actions select { width: 70px; }
-.generator, .editor { margin: 20px 0; padding: 18px; border: 1px solid var(--line); border-radius: 9px; min-width: 0; }
-.generator { background: #edf2ea; }
+.generator, .editor { margin: 20px 0; padding: 18px; border: 1px solid var(--line); border-radius: 2px; min-width: 0; }
+.generator { background: var(--surface-muted); }
 .generator legend, .editor legend { padding: 0 5px; font-size: 12px; font-weight: 600; }
 .generator .actions { margin-top: 12px; }
 .editor > label { margin-bottom: 18px; }
-.library .hint { font-size: 11px; margin: 10px 0 18px; }
+.library .hint { font-size: 12px; margin: 10px 0 18px; }
 .colors { display: grid; gap: 8px; margin-bottom: 15px; }
 .color { display: flex; align-items: center; gap: 8px; }
 .color > span { font-size: 10px; color: var(--muted); width: 18px; }
@@ -42,31 +42,31 @@
 .library .color input[type="text"] { flex: 1; width: 80px; font: 12px ui-monospace, monospace; }
 .library .color button { padding: 4px; min-width: 28px; }
 .saveBar { position: sticky; bottom: -24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--panel); border-top: 1px solid var(--line); padding: 16px 0; }
-.saveBar span { color: var(--muted); font-size: 11px; }
+.saveBar span { color: var(--muted); font-size: 12px; }
 .saveBar button { flex-shrink: 0; }
 .library .error { color: #943f29; background: #fff0e8; padding: 12px; border-radius: 6px; }
 .library .notice { color: #285b45; background: #eaf1e5; padding: 12px; border-radius: 6px; }
 .confirm { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 12px; }
-.empty { padding: 28px 15px; text-align: center; border: 1px dashed var(--line); border-radius: 8px; }
-.dialog { width: min(760px, calc(100vw - 24px)); max-width: none; max-height: calc(100dvh - 32px); padding: 0; margin: auto; border: 1px solid #cbd3c5; border-radius: 12px; background: var(--panel); box-shadow: 0 24px 100px #13231740; overflow: hidden; }
+.empty { padding: 28px 16px; text-align: left; border-block: 1px solid var(--line); }
+.dialog { width: min(760px, calc(100vw - 24px)); max-width: none; max-height: calc(100dvh - 32px); padding: 0; margin: auto; border: 1px solid var(--line); border-radius: 2px; background: var(--panel); overflow: hidden; }
 .dialog[open] { display: flex; flex-direction: column; }
-.dialog::backdrop { background: #1b31265e; backdrop-filter: blur(4px); }
+.dialog::backdrop { background: #25292366; }
 .dialog > header { flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 15px 24px; border-bottom: 1px solid var(--line); }
 .dialogScroll { padding: 24px; overflow: auto; min-height: 0; overscroll-behavior: contain; }
 .promptPalette { margin: 0 0 20px; }
 .promptPalette .swatches { height: 26px; margin: 10px 0 6px; }
-.promptPalette .actions { justify-content: space-between; font-size: 11px; }
+.promptPalette .actions { justify-content: space-between; font-size: 12px; }
 .promptPalette .actions span { overflow-wrap: anywhere; min-width: 0; }
-.promptPalette .actions button { font-size: 10px; padding: 4px 7px; min-height: 26px; }
-.page { max-width: 1100px; padding: 48px 24px 80px; }
-.page > h1 { font: 400 clamp(42px, 7vw, 72px)/1 Georgia, serif; letter-spacing: -.045em; margin: 8px 0 16px; }
-.page > p { max-width: 650px; color: #68746b; margin-bottom: 36px; }
+.promptPalette .actions button { font-size: 13px; padding: 8px 10px; min-height: 44px; }
+.page { max-width: 1440px; padding: 48px clamp(20px, 4vw, 64px) 80px; }
+.page > h1 { font: 500 clamp(2.75rem, 5vw, 4.5rem)/1 var(--font-ui); letter-spacing: -.055em; margin: 8px 0 20px; }
+.page > p { max-width: 65ch; color: var(--muted); margin-bottom: 32px; }
 @media (max-width: 600px) {
   .dialogScroll { padding: 18px 14px; }
   .dialog > header { padding: 12px 14px; }
   .generator, .editor { padding: 12px; }
   .color { gap: 5px; }
-  .library .color button { min-width: 25px; }
+  .library .color button { min-width: 40px; }
   .color > span { display: none; }
   .toolbar { align-items: start; }
   .library h2 { font-size: 21px; }

@@ -589,9 +589,9 @@ async function workspaceChecks() {
   };
   await assertShell();
   const before = await page.locator("canvas").boundingBox();
-  await page.getByLabel("Layer controls", { exact: true }).evaluate(el => { el.scrollTop = el.scrollHeight; });
+  await page.locator("#layer-controls").evaluate(el => { el.scrollTop = el.scrollHeight; });
   const lastControl = await page.getByLabel("Palette color 12 hex", { exact: true }).boundingBox();
-  const scrollPanel = await page.getByLabel("Layer controls", { exact: true }).boundingBox();
+  const scrollPanel = await page.locator("#layer-controls").boundingBox();
   assert.ok(lastControl.y >= scrollPanel.y && lastControl.y + lastControl.height <= scrollPanel.y + scrollPanel.height, "last palette control can be brought into view");
   assert.deepEqual(await page.locator("canvas").boundingBox(), before, "scrolling controls does not displace artwork");
   assert.equal(await page.getByRole("button", { name: "Add layer", exact: true }).isDisabled(), true);
@@ -613,11 +613,19 @@ async function workspaceChecks() {
   assert.equal(await page.locator(".layer-name").last().getAttribute("aria-pressed"), "true");
   await page.getByRole("button", { name: "Close layers", exact: true }).click();
   await page.getByRole("button", { name: "Inspector", exact: true }).click();
+  const mobileEditor = page.getByRole("dialog", { name: "Layer editor and prompts" });
+  await page.keyboard.press("Shift+Tab");
+  assert.equal(await mobileEditor.evaluate(el => el.contains(document.activeElement)), true, "reverse Tab stays in the mobile editor");
+  await page.keyboard.press("Tab");
+  assert.equal(await mobileEditor.evaluate(el => el.contains(document.activeElement)), true, "forward Tab stays in the mobile editor");
+  assert.equal(await page.locator(".site-nav").evaluate(el => el.inert), true, "background navigation is inert while a drawer is modal");
   await page.getByRole("tab", { name: "Style", exact: true }).click();
-  await page.getByLabel("Layer controls", { exact: true }).evaluate(el => { el.scrollTop = el.scrollHeight; });
+  await page.locator("#layer-controls").evaluate(el => { el.scrollTop = el.scrollHeight; });
   await assertShell();
   await screenshot("workspace-mobile-inspector");
   await page.getByRole("button", { name: "Close editor", exact: true }).click();
+  await page.waitForFunction(() => document.activeElement.id === "toggle-inspector");
+  assert.equal(await page.locator(".site-nav").evaluate(el => el.inert), false, "closing the drawer restores navigation");
   await screenshot("workspace-mobile-canvas");
   await page.getByRole("button", { name: "Prompt", exact: true }).click();
   assert.equal(await page.getByRole("textbox", { name: "Prompt", exact: true }).inputValue(), "Keep this draft when switching panels.");
@@ -626,7 +634,7 @@ async function workspaceChecks() {
   await page.setViewportSize({ width: 844, height: 390 });
   await assertShell();
   await page.getByRole("button", { name: "Inspector", exact: true }).click();
-  await page.getByLabel("Layer controls", { exact: true }).evaluate(el => { el.scrollTop = el.scrollHeight; });
+  await page.locator("#layer-controls").evaluate(el => { el.scrollTop = el.scrollHeight; });
   await screenshot("workspace-short-screen");
   await page.getByRole("button", { name: "Close editor", exact: true }).click();
   await page.getByRole("button", { name: "Export", exact: true }).click();
@@ -641,10 +649,10 @@ async function workspaceChecks() {
   const picker = page.getByRole("dialog", { name: "Choose a layer" });
   await picker.waitFor();
   await picker.getByRole("button", { name: `Add ${techniqueTitle.get(techniqueIds.at(-1))} layer`, exact: true }).scrollIntoViewIfNeeded();
-  const close = await picker.getByRole("button", { name: "Close", exact: true }).boundingBox();
+  const close = await picker.getByRole("button", { name: "Close layer picker", exact: true }).boundingBox();
   assert.ok(close.y > 0 && close.y + close.height < 900, "picker navigation stays visible while browsing");
   await screenshot("workspace-picker");
-  await picker.getByRole("button", { name: "Close", exact: true }).click();
+  await picker.getByRole("button", { name: "Close layer picker", exact: true }).click();
   scenarios.push("viewport-fit workspace: eight layers, twelve palette controls, independent scrolling, persistent prompt draft, mobile/short-screen drawers, export focus, and bounded picker");
 }
 try {
@@ -657,12 +665,12 @@ try {
   } else {
     await page.goto(base);
     await page.locator(".study-card").first().waitFor();
-    assert.equal(await page.locator('.study-card[href^="/techniques/"]').count(), 30);
-    await page.getByPlaceholder("Search studies and saved layers").fill("lattice");
+    assert.equal(await page.locator('.study-card[href^="/techniques/"]').count(), techniqueIds.length, "every catalog study appears in the gallery");
+    await page.getByRole("searchbox", { name: "Search techniques", exact: true }).fill("lattice");
     assert.equal(await page.locator('.study-card[href^="/techniques/"]').count(), 1);
-    await page.getByPlaceholder("Search studies and saved layers").fill("");
+    await page.getByRole("searchbox", { name: "Search techniques", exact: true }).fill("");
     await screenshot("gallery");
-    scenarios.push("gallery search and 30 study navigation");
+    scenarios.push("gallery search and catalog study navigation");
     for (const id of techniqueIds) {
       await page.goto(base + "/techniques/" + id);
       await rendered();

@@ -48,6 +48,13 @@ The report includes all69 family dispositions and all three denominators:800 ass
   and Go storage are reviewed. [Workspace review](evidence/web/studio-workspace-review.json),
   [v3 review](evidence/web/app-v3-review.json) and [architecture](docs/web-app-architecture.md)
   describe layout, persistence and boundaries.
+- The [UI integration review](evidence/web/ui-main-integration.json) binds the redesign,
+  procedural identity, About page and final **Art with knobs** hero copy for main.
+  Clean-checkout production, workspace and palette/prompt browser checks passed.
+  Historical [design](evidence/web/ui-design-audit-2026-09-17.json) and
+  [brand](evidence/web/procedural-brand-review.json) reviews retain their original bindings.
+  Preview: https://eunoia.tailf03dad.ts.net:8444/ (persistent `ui-design-preview`, Next3016).
+  This working-checkout preview is separate from the unchanged8443 release below.
 - Prompt drafts and applied source/layer revisions are covered by the
   [prompt integration](evidence/web/prompt-web-integration-review.json) and
   [saved-layer successor](evidence/web/generated-layer-review.json). See the

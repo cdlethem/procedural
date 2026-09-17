@@ -63,6 +63,31 @@ function navigateTabs(event: KeyboardEvent<HTMLDivElement>) {
   tabs[next]?.focus(); tabs[next]?.click();
 }
 
+const focusableSelector = [
+  "a[href]",
+  "button:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  '[tabindex]:not([tabindex="-1"])',
+].join(",");
+
+function trapPanelFocus(event: KeyboardEvent<HTMLElement>) {
+  if (event.key !== "Tab") return;
+  const focusable = Array.from(
+    event.currentTarget.querySelectorAll<HTMLElement>(focusableSelector),
+  ).filter((element) => element.getClientRects().length > 0);
+  if (!focusable.length) return;
+  const current = window.document.activeElement;
+  if (event.shiftKey && current === focusable[0]) {
+    event.preventDefault();
+    focusable.at(-1)?.focus();
+  } else if (!event.shiftKey && current === focusable.at(-1)) {
+    event.preventDefault();
+    focusable[0]?.focus();
+  }
+}
+
 const STORE = "procedurals-studio-v1";
 type Project = { id: string; title: string; updatedAt: string };
 type InspectorTab = "placement" | "technique" | "style";
@@ -307,6 +332,7 @@ export function Studio() {
   const file = useRef<HTMLInputElement>(null),
     restoredRoute = useRef<string | null>(null),
     importedSavedLayer = useRef<string | null>(null),
+    mobileTrigger = useRef<HTMLElement | null>(null),
     documentRef = useRef(history.doc),
     startedDocument = useRef<StudioDocumentV3 | null>(null),
     startedLayerId = useRef<string | null>(null),
@@ -990,17 +1016,40 @@ export function Studio() {
     },
     [],
   );
+  const closePanel = () => {
+    setMobilePanel(null);
+    const trigger = mobileTrigger.current;
+    mobileTrigger.current = null;
+    if (trigger) window.requestAnimationFrame(() => trigger.focus());
+  };
   const openPanel = (panel: "layers" | "inspector" | "prompt") => {
     if (panel !== "layers") setRightTab(panel);
-    setMobilePanel((current) => current === panel ? null : panel);
+    if (mobilePanel === panel) return closePanel();
+    if (window.matchMedia("(max-width: 1050px)").matches) {
+      mobileTrigger.current =
+        window.document.activeElement instanceof HTMLElement
+          ? window.document.activeElement
+          : null;
+    }
+    setMobilePanel(panel);
   };
-  const showPrompt = () => { setRightTab("prompt"); setMobilePanel("prompt"); };
-  const closePanel = () => setMobilePanel(null);
+  const showPrompt = () => {
+    setRightTab("prompt");
+    openPanel("prompt");
+  };
   useEffect(() => {
     if (!mobilePanel || !window.matchMedia("(max-width: 1050px)").matches) return;
     const panel = window.document.getElementById(mobilePanel === "layers" ? "studio-layers" : "studio-inspector");
-    panel?.querySelector<HTMLButtonElement>("button")?.focus();
+    (panel?.querySelector<HTMLButtonElement>('button[aria-selected="true"]') ?? panel?.querySelector<HTMLButtonElement>("button"))?.focus();
   }, [mobilePanel]);
+  useEffect(() => {
+    if (!compact || !mobilePanel) return;
+    const navigation = window.document.querySelector<HTMLElement>(".site-nav");
+    if (!navigation) return;
+    const previous = navigation.inert;
+    navigation.inert = true;
+    return () => { navigation.inert = previous; };
+  }, [compact, mobilePanel]);
   useEffect(() => {
     const media = window.matchMedia("(max-width: 1050px)");
     const update = () => setCompact(media.matches);
@@ -1010,10 +1059,10 @@ export function Studio() {
   const isSaved = savedRevision === canonicalJson({ title, document });
   const candidateActive = Boolean(candidateDocument && !candidate?.stale);
   return (
-    <main data-hydrated={history.hydrated} className={`${styles.workspace} studio-workspace`} onKeyDown={(event) => {
-      if (event.key === "Escape" && mobilePanel) { closePanel(); window.document.getElementById(`toggle-${mobilePanel}`)?.focus(); }
+    <main id="main-content" tabIndex={-1} data-hydrated={history.hydrated} className={`${styles.workspace} studio-workspace`} onKeyDown={(event) => {
+      if (event.key === "Escape" && mobilePanel && !(event.target instanceof HTMLElement && event.target.closest("dialog"))) closePanel();
     }}>
-      <header className={styles.topbar}>
+      <header className={styles.topbar} inert={Boolean(compact && mobilePanel)}>
         <div className={styles.projectIdentity}>
           <h1>Studio<span>/</span></h1>
           <input aria-label="Project title" value={title} onChange={(event) => setTitle(event.target.value)} maxLength={120} />
@@ -1025,14 +1074,14 @@ export function Studio() {
             <button type="button" aria-label="Redo" title="Redo" onClick={redo} disabled={!history.future.length}><StudioIcon name="redo" /></button>
           </div>
           <button type="button" onClick={() => setDialog("projects")} aria-label="Open projects" title="Open projects"><StudioIcon name="folder" /><span>Open</span></button>
-          <button type="button" onClick={() => setDialog("export")}><StudioIcon name="download" /><span>Export</span></button>
+          <button type="button" aria-label="Export" title="Export" onClick={() => setDialog("export")}><StudioIcon name="download" /><span>Export</span></button>
           <button className={styles.primary} type="button" onClick={() => void save()} disabled={saving}><StudioIcon name={isSaved ? "check" : "folder"} /><span>{saving ? "Saving…" : "Save project"}</span></button>
         </div>
       </header>
       {(status || renderError) && <div className={styles.notice} role="alert"><p>{status || renderError}</p><button aria-label="Dismiss message" onClick={() => { setStatus(null); setRenderError(null); }}><StudioIcon name="close" /></button></div>}
       <div className={styles.body} data-mobile-panel={mobilePanel ?? "none"}>
         {mobilePanel && <button className={styles.panelBackdrop} aria-label="Close panel" onClick={closePanel} tabIndex={-1} />}
-        <aside className={styles.layers} id="studio-layers" aria-label="Layers" data-open={mobilePanel === "layers"}>
+        <aside className={styles.layers} id="studio-layers" aria-label="Layers" data-open={mobilePanel === "layers"} role={compact && mobilePanel === "layers" ? "dialog" : undefined} aria-modal={compact && mobilePanel === "layers" ? true : undefined} onKeyDown={compact && mobilePanel === "layers" ? trapPanelFocus : undefined}>
           <header className={styles.panelHeading}><h2>Layers <span>{document.layers.length}/{MAX_LAYERS}</span></h2><button type="button" aria-label="Close layers" className={styles.mobileClose} onClick={closePanel}><StudioIcon name="close" /></button></header>
           <div className={styles.addLayer}><button className={styles.primary} type="button" onClick={() => setPickerOpen(true)} disabled={document.layers.length >= MAX_LAYERS}><StudioIcon name="plus" />Add layer</button></div>
           <p className={styles.stackHint}>Back → front</p>
@@ -1076,20 +1125,20 @@ export function Studio() {
           <div className={styles.canvasTools} ref={setCanvasActions} />
           <footer className={styles.canvasFooter}><span>{layer ? displayLayerTitle(layer) : "No layer selected"}</span><button type="button" onClick={() => setDialog("help")}>Canvas help <span>?</span></button></footer>
         </section>
-        <aside className={styles.inspector} id="studio-inspector" aria-label="Layer editor and prompts" data-open={mobilePanel === "inspector" || mobilePanel === "prompt"}>
+        <aside className={styles.inspector} id="studio-inspector" aria-label="Layer editor and prompts" data-open={mobilePanel === "inspector" || mobilePanel === "prompt"} role={compact && (mobilePanel === "inspector" || mobilePanel === "prompt") ? "dialog" : undefined} aria-modal={compact && (mobilePanel === "inspector" || mobilePanel === "prompt") ? true : undefined} onKeyDown={compact && (mobilePanel === "inspector" || mobilePanel === "prompt") ? trapPanelFocus : undefined}>
           <header className={styles.editorHeading}>
             <div className={styles.editorTabs} role="tablist" aria-label="Studio tools" onKeyDown={navigateTabs}>
-              <button role="tab" id="inspector-tab" aria-controls="inspector-content" aria-selected={rightTab === "inspector"} onClick={() => { setRightTab("inspector"); setMobilePanel((current) => current ? "inspector" : null); }}><StudioIcon name="controls" />Inspector</button>
-              <button role="tab" id="prompt-tab" aria-controls="prompt-content" aria-selected={rightTab === "prompt"} onClick={() => { setRightTab("prompt"); setMobilePanel((current) => current ? "prompt" : null); }}><StudioIcon name="prompt" />Prompt{run?.state === "running" && <i className={styles.runningDot} />}</button>
+              <button role="tab" id="inspector-tab" aria-controls="inspector-content" aria-selected={rightTab === "inspector"} tabIndex={rightTab === "inspector" ? 0 : -1} onClick={() => { setRightTab("inspector"); setMobilePanel((current) => current ? "inspector" : null); }}><StudioIcon name="controls" />Inspector</button>
+              <button role="tab" id="prompt-tab" aria-controls="prompt-content" aria-selected={rightTab === "prompt"} tabIndex={rightTab === "prompt" ? 0 : -1} onClick={() => { setRightTab("prompt"); setMobilePanel((current) => current ? "prompt" : null); }}><StudioIcon name="prompt" />Prompt{run?.state === "running" && <i className={styles.runningDot} />}</button>
             </div>
             <button type="button" aria-label="Close editor" className={styles.mobileClose} onClick={closePanel}><StudioIcon name="close" /></button>
           </header>
           <div className={styles.inspectorContent} role="tabpanel" id="inspector-content" aria-labelledby="inspector-tab" hidden={rightTab !== "inspector"}>
             <header className={styles.selectedHeading}><p>Selected layer</p><h2>{layer ? displayLayerTitle(layer) : "Nothing selected"}</h2>{layer?.kind === "source" && <button onClick={() => { setEditRequest((value) => value + 1); showPrompt(); }}><StudioIcon name="prompt" />Revise with a prompt</button>}</header>
             {selectedWorkflow && technique && <div className={styles.controlTabs} role="tablist" aria-label="Inspector sections" onKeyDown={navigateTabs}>
-              {([["technique", "Technique"], ["placement", "Placement"], ["style", "Style"]] as const).map(([id, label]) => <button aria-selected={tab === id} key={id} onClick={() => setTab(id)} role="tab" type="button">{label}</button>)}
+              {([["technique", "Technique"], ["placement", "Placement"], ["style", "Style"]] as const).map(([id, label]) => <button aria-controls="layer-controls" aria-selected={tab === id} id={`${id}-tab`} key={id} onClick={() => setTab(id)} role="tab" tabIndex={tab === id ? 0 : -1} type="button">{label}</button>)}
             </div>}
-            <div className={styles.controlsScroll} tabIndex={0} aria-label="Layer controls">
+            <div className={styles.controlsScroll} id="layer-controls" role={selectedWorkflow && technique ? "tabpanel" : undefined} aria-labelledby={selectedWorkflow && technique ? `${tab}-tab` : undefined} tabIndex={0} aria-label="Layer controls">
               {layer?.kind === "source" ? <>
                 <p className="control-description">Choose saved colors to prepare a palette revision. Review the generated preview before applying.</p>
                 <PalettePicker label="Revise with a palette" useLabel="Prepare palette revision" disabled={sourceUpdating || run?.state === "running"} onUse={(palette) => { setPaletteEditRequest({ sequence: Date.now(), palette }); showPrompt(); }} />
@@ -1103,7 +1152,7 @@ export function Studio() {
           </div>
         </aside>
       </div>
-      <nav className={styles.mobileDock} aria-label="Workspace panels">
+      <nav className={styles.mobileDock} inert={Boolean(compact && mobilePanel)} aria-label="Workspace panels">
         <button id="toggle-layers" aria-controls="studio-layers" aria-expanded={mobilePanel === "layers"} onClick={() => openPanel("layers")}><StudioIcon name="layers" />Layers<span>{document.layers.length}</span></button>
         <button id="toggle-inspector" aria-controls="studio-inspector" aria-expanded={mobilePanel === "inspector"} onClick={() => openPanel("inspector")}><StudioIcon name="controls" />Inspector</button>
         <button id="toggle-prompt" aria-controls="studio-inspector" aria-expanded={mobilePanel === "prompt"} onClick={() => openPanel("prompt")}><StudioIcon name="prompt" />Prompt{run?.state === "running" && <i className={styles.runningDot} />}</button>

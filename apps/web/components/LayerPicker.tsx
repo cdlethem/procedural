@@ -14,7 +14,7 @@ type Technique = {
   category: string;
 };
 
-const techniques = gallery.techniques as Technique[];
+const techniques: Technique[] = gallery.techniques.map((item) => ({ ...item, category: item.category === "Raster & color" ? "Color & raster" : item.category }));
 
 export function LayerPicker({
   open,
@@ -29,6 +29,7 @@ export function LayerPicker({
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
+  const returnFocus = useRef<HTMLElement | null>(null);
   const [saved, setSaved] = useState<SavedLayer[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
@@ -63,13 +64,23 @@ export function LayerPicker({
     const dialog = dialogRef.current;
     if (!dialog) return;
     if (open && !dialog.open) {
+      returnFocus.current =
+        window.document.activeElement instanceof HTMLElement
+          ? window.document.activeElement
+          : null;
       setQuery("");
       setCategory("All");
       dialog.showModal();
-      searchRef.current?.focus();
+      window.requestAnimationFrame(() => searchRef.current?.focus());
     }
     if (!open && dialog.open) dialog.close();
   }, [open]);
+  const close = () => {
+    onClose();
+    const trigger = returnFocus.current;
+    returnFocus.current = null;
+    if (trigger) window.requestAnimationFrame(() => trigger.focus());
+  };
 
   const select = (techniqueId: string) => {
     onSelect(techniqueId);
@@ -81,7 +92,7 @@ export function LayerPicker({
       ref={dialogRef}
       className={styles.dialog}
       aria-labelledby="layer-picker-title"
-      onClose={onClose}
+      onClose={close}
       onKeyDown={(event) => {
         if (event.key === "Escape") {
           event.preventDefault();
@@ -103,6 +114,7 @@ export function LayerPicker({
           <button
             className={styles.close}
             type="button"
+            aria-label="Close layer picker"
             onClick={() => dialogRef.current?.close()}
           >
             Close
@@ -120,7 +132,7 @@ export function LayerPicker({
           />
         </label>
 
-        <div className={styles.chips} aria-label="Technique category">
+        <div className={styles.chips} role="group" aria-label="Filter by technique category">
           {categories.map((item) => (
             <button
               className={category === item ? styles.activeChip : styles.chip}
@@ -133,9 +145,15 @@ export function LayerPicker({
             </button>
           ))}
         </div>
+        <label className={styles.categorySelect}>
+          Category
+          <select value={category} onChange={(event) => setCategory(event.target.value)}>
+            {categories.map((item) => <option key={item}>{item}</option>)}
+          </select>
+        </label>
 
-        <p className={styles.count} aria-live="polite">
-          {shown.length + savedShown.length} layers
+        <p className={styles.count} role="status">
+          Showing {shown.length + savedShown.length} layers
         </p>
         <div className={styles.grid}>
           {savedShown.map((item) => {
@@ -153,7 +171,7 @@ export function LayerPicker({
               onClick={() => select(item.slug)}
               aria-label={`Add ${item.title} layer`}
             >
-              <img src={`/previews/${item.slug}.png`} alt="" />
+              <img src={`/previews/${item.slug}.png`} alt="" loading="lazy" />
               <span className={styles.cardBody}>
                 <span className={styles.category}>{item.category}</span>
                 <strong>{item.title}</strong>
@@ -162,11 +180,11 @@ export function LayerPicker({
               </span>
             </button>
           ))}
+          {shown.length + savedShown.length === 0 && (
+            <p className={styles.empty}>No layers match this search. Try another term or category.</p>
+          )}
         </div>
-        {error && <p role="alert">Saved layers unavailable: {error}</p>}
-        {shown.length + savedShown.length === 0 && (
-          <p className={styles.empty}>No techniques match that search.</p>
-        )}
+        {error && <p className={styles.error} role="alert">Saved layers unavailable: {error}</p>}
       </div>
     </dialog>
   );

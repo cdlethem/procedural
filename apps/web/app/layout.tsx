@@ -3,8 +3,8 @@ import "./globals.css";
 import { SiteNav } from "@/components/SiteNav";
 
 export const metadata: Metadata = {
-  title: "Procedurals — generative art studies",
-  description: "Editable generative art techniques and a layered studio.",
+  title: "Procedurals — art with knobs",
+  description: "An alternative to black-box image generation. Make procedural art with visible rules, editable code, and seeded variation.",
 };
 export default function RootLayout({
   children,

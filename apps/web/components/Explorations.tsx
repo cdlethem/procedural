@@ -96,5 +96,74 @@ export function Explorations() {
   const cancel = async () => { ++generation.current; busyRef.current = false; setBusy(false); const runValue = runId.current; runId.current = null; if (runValue) { const response = await cancelRun(runValue); if (response.ok && mounted.current) setRun(response.run as Run); } };
   const downloadPng = () => { const canvas = window.document.querySelector(`.${styles.canvas} canvas`) as HTMLCanvasElement | null; canvas?.toBlob((blob) => { if (!blob) return; const url = URL.createObjectURL(blob); const anchor = Object.assign(window.document.createElement("a"), { href: url, download: "exploration.png" }); anchor.click(); URL.revokeObjectURL(url); }); };
   const layers = result ? sourceLayers(result) : [];
-  return <main className={styles.explorations}><p className="eyebrow">p5.js sketching</p><h1>Explorations</h1><p className={styles.lead}>Describe an image and receive a static 640px p5.js composition with its exact, reusable source files. Start a new sketch or refine a generated layer with a follow-up prompt. Save layers to keep them for other sketches. <a href="/docs/prompt-studio">Read the guide</a>.</p><div className={styles.layout}><section className={styles.panel}><h2>Prompt</h2><textarea aria-label="Exploration prompt" value={prompt} onChange={(event) => setPrompt(event.target.value)} disabled={busy} placeholder="A translucent coral sun behind ink-blue branching lines" maxLength={4000} /><PromptPalette palette={palette} onChange={setPalette} disabled={busy} />{layers.length > 1 && <label>Layer to revise<select aria-label="Exploration layer to revise" value={selectedLayerId} onChange={(event) => setSelectedLayerId(event.target.value)} disabled={busy}>{layers.map((layer) => <option key={layer.id} value={layer.id}>{layer.id}</option>)}</select></label>}<div className={styles.actions}>{layers.length > 0 && <button type="button" onClick={() => void generate(true)} disabled={busy || prompt.trim().length < 3}>Revise layer</button>}<button type="button" onClick={() => void generate()} disabled={busy || prompt.trim().length < 3}>{busy ? "Generating…" : result ? "Generate new sketch" : "Generate"}</button><button type="button" className="secondary" onClick={() => void cancel()} disabled={!busy}>Cancel</button></div>{run && <p className={styles.status} aria-live="polite">{run.state}{run.currentStep ? ` · ${run.currentStep}` : ""}{run.message ? ` · ${run.message}` : ""}</p>}{status && <p className={styles.error} role="alert">{status}</p>}</section><section className={`${styles.panel} ${styles.preview}`}><h2>Preview</h2>{result ? <><HarnessCanvas document={result} className={styles.canvas} onError={setStatus} /><div className={styles.actions}><button type="button" className="secondary" onClick={downloadPng}>Download PNG</button></div>{layers.length > 0 ? layers.map((layer) => <div key={layer.id}><SaveLayerPanel key={layer.content.previewArtifactHash} layer={layer} document={result} description={resultPrompt} /><SourceArtifactPanel layer={layer} className={styles.source} title={`Source · ${layer.id}`} /></div>) : <p className={styles.error}>This result has no generated source files.</p>}</> : <p>Your last successful image and source remain here while another request runs.</p>}</section></div></main>;
+  const hasPrompt = prompt.trim().length >= 3;
+  const actionHint = busy
+    ? "A request is running. Cancel it before starting another."
+    : hasPrompt
+      ? layers.length > 0 ? "Start a new composition, or revise the selected generated layer." : "Start a new composition from your direction."
+      : "Write at least three characters to enable generation.";
+
+  return <main id="main-content" tabIndex={-1} className={styles.explorations}>
+    <header className={styles.header}>
+      <p className="eyebrow">p5.js sketching</p>
+      <h1>Explorations</h1>
+      <p className={styles.lead}>Describe an image and receive a static 640px p5.js composition with its exact, reusable source files. Start a new sketch or refine a generated layer with a follow-up prompt. Save layers to keep them for other sketches. <a href="/docs/prompt-studio">Read the guide</a>.</p>
+    </header>
+    <div className={styles.layout}>
+      <section className={`${styles.panel} ${styles.promptPanel}`} aria-labelledby="exploration-prompt-heading" aria-busy={busy}>
+        <div className={styles.panelHeading}>
+          <p className={styles.kicker}>01 / direction</p>
+          <h2 id="exploration-prompt-heading">Set the brief</h2>
+        </div>
+        <label className={styles.fieldLabel} htmlFor="exploration-prompt">Exploration prompt</label>
+        <textarea
+          id="exploration-prompt"
+          aria-describedby="exploration-prompt-help"
+          value={prompt}
+          onChange={(event) => setPrompt(event.target.value)}
+          disabled={busy}
+          placeholder="A translucent coral sun behind ink-blue branching lines"
+          maxLength={4000}
+        />
+        <p id="exploration-prompt-help" className={styles.hint}>Name the forms, colors, and mood you want to explore. Your request becomes a reusable p5.js source artifact.</p>
+        <div className={styles.palette}>
+          <span className={styles.fieldLabel}>Color direction</span>
+          <PromptPalette palette={palette} onChange={setPalette} disabled={busy} />
+        </div>
+        {layers.length > 1 && <label className={styles.selectLabel} htmlFor="exploration-layer">Layer to revise
+          <select id="exploration-layer" value={selectedLayerId} onChange={(event) => setSelectedLayerId(event.target.value)} disabled={busy}>
+            {layers.map((layer) => <option key={layer.id} value={layer.id}>{layer.id}</option>)}
+          </select>
+        </label>}
+        <p id="exploration-action-hint" className={styles.actionHint}>{actionHint}</p>
+        <div className={styles.actions}>
+          {layers.length > 0 && <button type="button" className={styles.followUp} onClick={() => void generate(true)} disabled={busy || !hasPrompt} aria-describedby="exploration-action-hint">Follow up on layer</button>}
+          <button type="button" className={styles.primaryAction} onClick={() => void generate()} disabled={busy || !hasPrompt} aria-describedby="exploration-action-hint">{busy ? "Generating…" : "Start new sketch"}</button>
+          <button type="button" className={`secondary ${styles.cancel}`} onClick={() => void cancel()} disabled={!busy}>Cancel request</button>
+        </div>
+        {run && <p className={styles.status} role="status">{run.state}{run.currentStep ? ` · ${run.currentStep}` : ""}{run.message ? ` · ${run.message}` : ""}</p>}
+        {status && <p id="exploration-request-error" className={styles.error} role="alert">{status}</p>}
+      </section>
+      <section className={`${styles.panel} ${styles.preview}`} aria-labelledby="exploration-preview-heading">
+        <div className={styles.panelHeading}>
+          <p className={styles.kicker}>02 / output</p>
+          <h2 id="exploration-preview-heading">Preview and source</h2>
+        </div>
+        {result ? <>
+          <p className={styles.previewNote}>The latest successful sketch stays available while you continue exploring.</p>
+          <HarnessCanvas document={result} className={styles.canvas} onError={setStatus} />
+          <div className={styles.actions}>
+            <button type="button" className={`secondary ${styles.cancel}`} onClick={downloadPng}>Download PNG</button>
+          </div>
+          {layers.length > 0 ? layers.map((layer) => <div key={layer.id} className={styles.layer}>
+            <SaveLayerPanel key={layer.content.previewArtifactHash} layer={layer} document={result} description={resultPrompt} />
+            <SourceArtifactPanel layer={layer} className={styles.source} title={`Source · ${layer.id}`} />
+          </div>) : <p className={styles.error}>This result has no generated source files.</p>}
+        </> : <div className={styles.emptyPreview}>
+          <h3>{busy ? "Preparing your sketch" : "No sketch yet"}</h3>
+          <p>{busy ? "The preview will update when this request completes." : "Write a direction, choose a palette if useful, then start a new sketch. Its rendered preview and exact source files will appear here."}</p>
+        </div>}
+      </section>
+    </div>
+  </main>;
 }

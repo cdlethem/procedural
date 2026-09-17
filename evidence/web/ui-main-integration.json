@@ -1,0 +1,192 @@
+{
+  "kind": "root-ui-main-integration",
+  "date": "2026-09-17",
+  "baseRevision": "c4f9c525dc07f74e51cd56d5d8867b57b8aa098b",
+  "scope": "Reviewed web redesign, procedural identity, About page, search/navigation/accessibility, and final Art with knobs hero copy. No operation, renderer, model, storage or target-support changes.",
+  "supersedes": [
+    "evidence/web/ui-design-audit-2026-09-17.json",
+    "evidence/web/procedural-brand-review.json"
+  ],
+  "historyNote": "Prior records remain historical. This record binds the exact UI source checked for main, including later user-directed hero edits and exclusion of unrelated default-palette styles.",
+  "excluded": [
+    "Default-palette data, functionality, tests and JavaScript export",
+    "External-art collection, research and their gallery entries",
+    "Android and toolchain working changes"
+  ],
+  "verification": {
+    "checkout": ".work/ui-main-integration",
+    "build": "Direct Next production build and TypeScript passed.",
+    "workspace": "test-browser.mjs --workspace-only passed: eight-layer/twelve-color layout, independent scrolling, persistent prompt, mobile/short-screen drawers, export focus and picker.",
+    "palettes": "test-palettes.mjs passed: manual edit/store/reload, duplicate/rename/delete, real canvas palette changes and undo/redo/export, mobile modal bounds, prompt drafts/errors, standalone study and Explorations palette requests.",
+    "browser": [
+      {
+        "route": "/",
+        "width": 1440,
+        "title": "Procedurals — art with knobs",
+        "heading": "Art with knobs",
+        "heroCopy": "Craft procedurally generated images with visible rules, editable code, and seeded variation.",
+        "overflow": false,
+        "violations": []
+      },
+      {
+        "route": "/",
+        "width": 390,
+        "title": "Procedurals — art with knobs",
+        "heading": "Art with knobs",
+        "heroCopy": "Craft procedurally generated images with visible rules, editable code, and seeded variation.",
+        "overflow": false,
+        "violations": []
+      },
+      {
+        "route": "/about",
+        "width": 390,
+        "title": "Why procedural? — Procedurals",
+        "heading": "Not a black box.",
+        "overflow": false,
+        "violations": []
+      },
+      {
+        "route": "/api-reference",
+        "width": 1440,
+        "title": "Procedurals — art with knobs",
+        "heading": "API Reference",
+        "overflow": false,
+        "violations": []
+      }
+    ],
+    "rendering": "Shared machine render lease; root personally inspected the registered screenshots."
+  },
+  "limits": [
+    "Scoped Chromium review, not full WCAG or full-corpus certification.",
+    "Palette-generation responses and artwork prompt requests use existing test interception; no new model generation was performed.",
+    "Existing lib/harness/jobs.ts:58 filesystem-tracing build warning remains.",
+    "The tailnet preview on 8444 remains available; the separate 8443 release is not changed by this source integration."
+  ],
+  "images": [
+    {
+      "label": "gallery-1440",
+      "path": ".work/ui-integration-state/gallery-1440.png",
+      "sha256": "8ebecd00e110da5e4222189f52effb3cc51c2333c28a54101a3c2bf41d470e37"
+    },
+    {
+      "label": "gallery-390",
+      "path": ".work/ui-integration-state/gallery-390.png",
+      "sha256": "911c2f56dbc37f3fc189665a0880dfc351dd8cd55657c4a9e458dae08bc048b5"
+    },
+    {
+      "label": "about-390",
+      "path": ".work/ui-integration-state/about-390.png",
+      "sha256": "3cffb03318516b247b95687090589311ab2442b4e84abd962ddaf1a1ad801655"
+    }
+  ],
+  "sourceBindings": [
+    {
+      "path": "apps/web/app/api-reference/[id]/page.tsx",
+      "sha256": "c15dcfd15ae13f62b0e99e76fe49de331e927e6bdf4a211d4dbacc3c2ccb8d74"
+    },
+    {
+      "path": "apps/web/app/api-reference/page.tsx",
+      "sha256": "6ffcd4da7e831730c7a795deb2cab514f2508fd088b9b3fbc4fba6ab5501f1dd"
+    },
+    {
+      "path": "apps/web/app/docs/prompt-studio/page.tsx",
+      "sha256": "918547eaa7b10ff65262837bfa5e32d00b83a95f41a33d237d99d4701d9b6b55"
+    },
+    {
+      "path": "apps/web/app/globals.css",
+      "sha256": "4d1278fc1f9529c640d5fdbc90718b564044859d32ed0e1643a9a5a526dbf0ba"
+    },
+    {
+      "path": "apps/web/app/layout.tsx",
+      "sha256": "9f895703be2ba64a00ba801f7077a250c7e2a6512d851cfda7d0c4a06ca0eeba"
+    },
+    {
+      "path": "apps/web/app/not-found.tsx",
+      "sha256": "9ea7715d117fb5d0893d261d67e8250de9be6805ee9817b8fd06ee7b61f21408"
+    },
+    {
+      "path": "apps/web/app/page.tsx",
+      "sha256": "28ac1116e3b2c0b9dc1a4f26b6448d2a5e37cc684fdb054e5692688d4dbcf903"
+    },
+    {
+      "path": "apps/web/app/palettes/page.tsx",
+      "sha256": "4f24418dc7a76a6ae9d2f8d5c1711c4098f293baca3c9e95645aa1c0455183e4"
+    },
+    {
+      "path": "apps/web/app/techniques/[slug]/page.tsx",
+      "sha256": "d346805c5c64455511fc9011e83a2a0dba8821866ccdc9b089f12ee6771de622"
+    },
+    {
+      "path": "apps/web/components/Explorations.module.css",
+      "sha256": "1b4633f1babaad382f96c720da878899269a1b907b26309e3125012084800e3e"
+    },
+    {
+      "path": "apps/web/components/Explorations.tsx",
+      "sha256": "4b044e5c28c2db8bd26eb13b14cf42bf61264a7232ab66749b0408a638f03be4"
+    },
+    {
+      "path": "apps/web/components/Gallery.tsx",
+      "sha256": "4264b29aaabbaa2a989f4deb0c0ff3b0ddb49e70ea6eefa75b08b909834b18ab"
+    },
+    {
+      "path": "apps/web/components/LayerPicker.module.css",
+      "sha256": "aee61ebb4e814361349050c88501f0629e2e2c93ef1f421f6ba00e17ebfbbe0d"
+    },
+    {
+      "path": "apps/web/components/LayerPicker.tsx",
+      "sha256": "bb2312040087e8b4caec04e929d22b3c78d9739eb61535256fd52152b87bed04"
+    },
+    {
+      "path": "apps/web/components/SavedLayerView.tsx",
+      "sha256": "6319acc24dbab246f55069eb8e8bf24f8c36fec07e10023ec0e8d411f1f3482b"
+    },
+    {
+      "path": "apps/web/components/SiteNav.tsx",
+      "sha256": "5771c1d8a409b51fa187ff151e3bebc44d49a1a276b9be3a7f409541656ea091"
+    },
+    {
+      "path": "apps/web/components/SourceArtifactPanel.tsx",
+      "sha256": "70244f1b715561a02c8069e96da52233902ea87e1ef615f919deece4a8f176a1"
+    },
+    {
+      "path": "apps/web/components/SourcePanel.tsx",
+      "sha256": "203badf2591d7cfa811dcead83a3372436d230c4f2a02f0f6db0fc0504a5f9bc"
+    },
+    {
+      "path": "apps/web/components/Studio.module.css",
+      "sha256": "906ef9b5fbd7c20bb0ce0c0e6a63cdbc6d0af21b9ac621e2f73741896d061535"
+    },
+    {
+      "path": "apps/web/components/Studio.tsx",
+      "sha256": "1c13b5cf985d4da8bd69e4c561a08f62576b310fd1725a7ccfeb40d47b334259"
+    },
+    {
+      "path": "apps/web/components/StudioDialog.tsx",
+      "sha256": "2f1f098e32a68f3c297dd46733c8637c3b19908c9b0d1bc4dc8bc72bce55a352"
+    },
+    {
+      "path": "apps/web/scripts/test-browser.mjs",
+      "sha256": "97bcb5d2f67a8504d8fddc21d37ed66e44a596780f7f71a5cced0610d409f21c"
+    },
+    {
+      "path": "apps/web/app/about/page.tsx",
+      "sha256": "d0cfc5169448a1227ae8feb58841a7c5307e5379e4cd1a7cead0922904f55b86"
+    },
+    {
+      "path": "apps/web/components/ApiIndex.tsx",
+      "sha256": "16d14b1b5834a0120e60844287a450eb93f5482e3426afe60e79996f22899471"
+    },
+    {
+      "path": "apps/web/components/ProceduralMark.tsx",
+      "sha256": "c72605b90971f446668373f56328ff44a570ab36e15c26281e1ad6aed5235cea"
+    },
+    {
+      "path": "apps/web/components/PaletteLibrary.module.css",
+      "sha256": "942e4da0a793dee7823ad7ce23d844388b8282fcdf96113d90b54bfd3507d998"
+    },
+    {
+      "path": "apps/web/scripts/test-palettes.mjs",
+      "sha256": "240167366ae46426f641bed860227e9b0b12cb93dfb21b2efd877433f10143d4"
+    }
+  ]
+}

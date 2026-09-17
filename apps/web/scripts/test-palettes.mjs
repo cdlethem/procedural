@@ -119,7 +119,7 @@ try {
   await page.goto(base + '/explorations');
   await page.getByLabel('Exploration prompt').fill('Coastal circles');
   await page.getByRole('button', { name: 'Choose a palette', exact: true }).click(); await choose(name, 'Use in prompt');
-  await page.getByRole('button', { name: 'Generate', exact: true }).click(); await page.getByRole('alert').filter({ hasText: 'Prompt payload captured' }).waitFor();
+  await page.getByRole('button', { name: 'Start new sketch', exact: true }).click(); await page.getByRole('alert').filter({ hasText: 'Prompt payload captured' }).waitFor();
   for (const color of colors) assert.ok(captured.prompt.includes(color)); assert.match(captured.prompt, /Coastal circles/);
   scenarios.push('Explorations includes exact saved colors alongside artist request');
   assert.deepEqual(errors, []);

@@ -2,6 +2,186 @@
   "purpose": "Curated review navigation, not an acceptance attestation. Original PNGs stay ignored and linked in place.",
   "groups": [
     {
+      "id": "ui-main-integration",
+      "title": "Art with knobs — reviewed main integration",
+      "category": "Root reviewed clean-checkout UI integration",
+      "description": "Final hero copy, procedural identity and UI redesign tested without unrelated default-palette, research or Android working changes. Production build, workspace and palette/prompt scenarios passed. Source and image bindings are in the integration review.",
+      "evidence": "evidence/web/ui-main-integration.json",
+      "images": [
+        {
+          "label": "Gallery — desktop",
+          "path": ".work/ui-integration-state/gallery-1440.png",
+          "sha256": "8ebecd00e110da5e4222189f52effb3cc51c2333c28a54101a3c2bf41d470e37"
+        },
+        {
+          "label": "Gallery — mobile",
+          "path": ".work/ui-integration-state/gallery-390.png",
+          "sha256": "911c2f56dbc37f3fc189665a0880dfc351dd8cd55657c4a9e458dae08bc048b5"
+        },
+        {
+          "label": "About — mobile",
+          "path": ".work/ui-integration-state/about-390.png",
+          "sha256": "3cffb03318516b247b95687090589311ab2442b4e84abd962ddaf1a1ad801655"
+        }
+      ]
+    },
+    {
+      "id": "compact-gallery-hero",
+      "title": "Art with knobs — compact single-line hero",
+      "category": "Root reviewed tailnet UI preview",
+      "description": "Removes the eyebrow and forced line break from the previous art-with-knobs hero. Reviewed fluid typography, balanced desktop columns and stacked tablet/mobile copy. One heading line and no horizontal overflow at nine widths from 320 to 1440px.",
+      "evidence": ".work/ui-brand-review/compact-hero-checks.json",
+      "images": [
+        {
+          "label": "Desktop",
+          "path": ".work/ui-brand-review/compact-hero-1440.png",
+          "sha256": "ea07f700c1990edb3a8f40f1b068bb69527064c980cf2227861ad55af879a286"
+        },
+        {
+          "label": "Intermediate desktop",
+          "path": ".work/ui-brand-review/compact-hero-851.png",
+          "sha256": "771d3e9a7f690d6c7170fec416f2c3bb062cb700ef3f12f8778ae67335d82d91"
+        },
+        {
+          "label": "Tablet",
+          "path": ".work/ui-brand-review/compact-hero-768.png",
+          "sha256": "2149d0ceb5c686f43bc875a014406db46c406129a717fc509e8b0b1535c3e4f5"
+        },
+        {
+          "label": "Mobile",
+          "path": ".work/ui-brand-review/compact-hero-390.png",
+          "sha256": "c0e392e641f2993935821bc8c682c23559d6a23e069b619f9d4d315ad2a2bdd7"
+        }
+      ]
+    },
+    {
+      "id": "art-with-knobs",
+      "title": "Procedurals — art with knobs",
+      "category": "Root reviewed tailnet UI preview",
+      "description": "User-selected gallery headline and matching browser title. Supersedes the headline in the procedural-brand review; supporting copy, logo and About page unchanged. Production build and desktop/mobile tailnet checks passed.",
+      "evidence": ".work/ui-brand-review/art-with-knobs-checks.json",
+      "images": [
+        {
+          "label": "Gallery — desktop",
+          "path": ".work/ui-brand-review/art-with-knobs-1440.png",
+          "sha256": "3b469431135ada2067a10d655f5716aa0b7c8d014e95a5603b9c2e635ec899f6"
+        },
+        {
+          "label": "Gallery — mobile",
+          "path": ".work/ui-brand-review/art-with-knobs-390.png",
+          "sha256": "b7532790f8918cb7b42591c7575656645996790940c8227c276b2ccc0d494bf7"
+        }
+      ]
+    },
+    {
+      "id": "procedural-brand-review",
+      "title": "Procedurals — make art, keep the method",
+      "category": "Root reviewed tailnet UI preview",
+      "description": "Procedural philosophy, gallery hero and rule-built mark. About page explains visible source, deliberate edits, seeded variation and optional AI code assistance. Identity successor to the print-workshop audit; not an operation or target acceptance.",
+      "evidence": "evidence/web/procedural-brand-review.json",
+      "images": [
+        {
+          "label": "Gallery — desktop",
+          "path": ".work/ui-brand-review/gallery-1440.png",
+          "sha256": "b50a76e662e81fd04e9846f7e934498c70dbf8838d5ef8b31fba9ced34b4a20e"
+        },
+        {
+          "label": "Gallery — mobile",
+          "path": ".work/ui-brand-review/gallery-390.png",
+          "sha256": "8b7a3b916d466026d1f7f9f523434f4b8d12d8c8f640d1193f6dad176905026e"
+        },
+        {
+          "label": "Gallery — narrow two-line hero",
+          "path": ".work/ui-brand-review/gallery-320.png",
+          "sha256": "5f4fc835f1aaf0894f0a082a312575e6aae0c2170da49a23227efd50f77b516f"
+        },
+        {
+          "label": "About — desktop",
+          "path": ".work/ui-brand-review/about-1440.png",
+          "sha256": "2fa5d7fe79725edec243a2307292a77d9d2b32ac4d034df35919ed39acfcb95d"
+        },
+        {
+          "label": "About — mobile",
+          "path": ".work/ui-brand-review/about-390.png",
+          "sha256": "3cffb03318516b247b95687090589311ab2442b4e84abd962ddaf1a1ad801655"
+        }
+      ]
+    },
+    {
+      "id": "ui-design-audit-2026-09-17",
+      "title": "Procedurals — indexed print workshop",
+      "category": "Root reviewed local production UI — not deployed",
+      "description": "UI Skills MCP audit and interface revision. Desktop/mobile navigation, artwork-first index, fitted Studio, accessible drawers, palettes and prompts. Gallery inclusion is navigation, not target support.",
+      "evidence": "evidence/web/ui-design-audit-2026-09-17.json",
+      "images": [
+        {
+          "label": "Gallery — desktop",
+          "path": ".work/ui-design-audit/gallery-desktop.png",
+          "sha256": "c0c164e97a8038b2bf04528f4c00b96a83ed116ef679a73bd305026af61ccfc0"
+        },
+        {
+          "label": "Gallery — mobile",
+          "path": ".work/ui-design-audit/gallery-mobile.png",
+          "sha256": "b65a1544029f0047b55301f99430c5eb5cd4732aa060c8b51c1905a40f03d098"
+        },
+        {
+          "label": "Studio — desktop",
+          "path": ".work/ui-design-audit/studio-desktop.png",
+          "sha256": "3dea7179b7acc087fae3ab153a38116f561b59349021f568d5c9b0a832e02a02"
+        },
+        {
+          "label": "Studio — mobile",
+          "path": ".work/ui-design-audit/studio-mobile.png",
+          "sha256": "87a584f07db50707ba4eeaa60878d57b5603b29f3b98273cf3a94aaaef71d23b"
+        },
+        {
+          "label": "Studio — mobile inspector",
+          "path": ".work/ui-design-audit/studio-mobile-inspector.png",
+          "sha256": "20f656c48cc9fac515a118c327cb5485ce6ad7f73801aada7d95fd77f3089870"
+        },
+        {
+          "label": "Studio — prompt editor",
+          "path": ".work/ui-design-audit/studio-prompt.png",
+          "sha256": "c1f698f0a9bb0c22bf0079cdb2cc7aaa0f91da838d6cc7b879ebf35002fb605d"
+        },
+        {
+          "label": "Layer picker — mobile",
+          "path": ".work/ui-design-audit/layer-picker-mobile.png",
+          "sha256": "8cc501673d8c55d9b6a8159d070e71c100ad798d0a8736385ce8fff4fb948b03"
+        },
+        {
+          "label": "Export dialog",
+          "path": ".work/ui-design-audit/export-dialog.png",
+          "sha256": "78bef22b8a11d94ef5866f66b144f3c02250a56dcc05c1aeda4c8f523076d072"
+        },
+        {
+          "label": "Palette library — desktop",
+          "path": ".work/ui-design-audit/palettes-desktop.png",
+          "sha256": "848e6753568e3def410cb37732964e34b734b7ed1da837c86167bc31f4772bf0"
+        },
+        {
+          "label": "Palette editor — mobile",
+          "path": ".work/ui-design-audit/palette-editor-mobile.png",
+          "sha256": "0e4b25f869717265ad39afca9af8c757048b305c737f2d452780c146a4eff888"
+        },
+        {
+          "label": "Explorations — desktop",
+          "path": ".work/ui-design-audit/explorations-desktop.png",
+          "sha256": "71fe66634693cbd79ffce0ad17e3edef1fb91ac53682ae1cfa8bcc3008489453"
+        },
+        {
+          "label": "Searchable API reference",
+          "path": ".work/ui-design-audit/api-desktop.png",
+          "sha256": "34e62021d8bc79d97a6c11c1508cb04bca6fa7f31e5b00066ca885ef8ae8224c"
+        },
+        {
+          "label": "Editable study",
+          "path": ".work/ui-design-audit/study-desktop.png",
+          "sha256": "834aca12429594de3c0ba8d11104792ef13d715dfd427fa7bff012b65d0c85e4"
+        }
+      ]
+    },
+    {
       "id": "p5-gallery-deployment",
       "title": "Six geometry studies on the live site",
       "category": "Root reviewed production deployment",

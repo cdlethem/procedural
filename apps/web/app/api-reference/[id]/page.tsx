@@ -203,7 +203,7 @@ export default async function OperationReference({
     technique.operations.some((item) => item.id === operation.id),
   );
   return (
-    <main className="api-reference">
+    <main id="main-content" tabIndex={-1} className="api-reference">
       <Link className="back" href="/api-reference">
         ← API Reference
       </Link>
@@ -246,14 +246,14 @@ export default async function OperationReference({
           </div>
           <div>
             <h2>JavaScript</h2>
-            <pre className="api-guide-code">
+            <pre className="api-guide-code" tabIndex={0} aria-label="JavaScript example">
               <code>{highlightExample(example)}</code>
             </pre>
             <h3>Console output</h3>
             <p>
               The example logs these values for the supplied inputs.
             </p>
-            <pre className="api-result">
+            <pre className="api-result" tabIndex={0} aria-label="Example output">
               <code>{JSON.stringify(guide.exampleResult.length === 1 ? guide.exampleResult[0] : guide.exampleResult, null, 2)}</code>
             </pre>
           </div>
@@ -381,7 +381,7 @@ export default async function OperationReference({
                   <code key={name}>{name}</code>
                 ))}
               </p>
-              <pre>
+              <pre tabIndex={0} aria-label="JavaScript import">
                 <code>{`import { ${operation.javascript.exports.join(", ")} } from "${operation.javascript.package}";`}</code>
               </pre>
             </section>

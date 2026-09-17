@@ -56,10 +56,10 @@ thinner, and add more space between branches.” The prompt receives the layer�
 source files, declared controls, and current replay inputs. Review the candidate and choose
 **Apply edit**; **Undo** restores the previous version. Edits stay within the selected layer.
 
-In **Explorations**, generate an initial sketch, then enter a follow-up and choose
-**Revise layer**. If the result contains several generated layers, choose which layer to
-revise. A successful revision replaces that layer in the preview. **Generate new sketch**
-starts over from a blank composition. While either request is pending or fails, the last
+In **Explorations**, enter a direction and choose **Start new sketch**. To continue, enter
+a follow-up and choose **Follow up on layer**. If the result contains several generated
+layers, choose which layer to revise. A successful revision replaces that layer in the
+preview. **Start new sketch** starts over from a blank composition. While either request is pending or fails, the last
 successful image and source remain visible. Explorations does not change Studio’s document
 or undo history. Leaving the page discards unsaved exploration state.
 

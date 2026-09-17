@@ -1,8 +1,13 @@
 # Procedurals gallery and studio
 
-A Next.js gallery of **30 interactive p5.js studies**, with a separate canvas studio for
-layering all 30 techniques and an API reference for all 34 package operations. A Go service saves
-projects as JSON. Rendering runs locally in the browser and uses the existing package.
+A Next.js gallery of interactive p5.js studies, a layered canvas studio, and a searchable
+API reference generated from the package catalog. A Go service saves projects as JSON.
+Rendering runs locally in the browser and uses the existing package.
+
+The **About** page (`/about`) explains the procedural approach: visible rules, deliberate
+edits, and seeded variation instead of black-box image generation. Optional AI tools
+propose editable code; they do not replace the method. Reproduction requires keeping the
+code and settings, including the seed and relevant renderer/time context.
 
 ## Run
 
@@ -38,11 +43,19 @@ Voronoi cells, polyline resampling and marching squares.
 
 ## Explore and compose
 
-Search or filter the gallery and open a study for an interactive canvas, sliders, exact
-numeric inputs, color controls, and a technique guide. **Sketch source** starts open with a formatted,
-highlighted view of the actual drawing code with a copy button. Operation links open API
-pages explaining the operation, constructor inputs and returned data with runnable JavaScript
-examples. Expand the detailed contract for constraints, semantics and binding information.
+Search or filter the numbered study index, then open a study for an interactive canvas,
+sliders, exact numeric inputs, color controls, and a technique guide. On narrow screens,
+use the **Category** menu; **Clear filters** returns to the complete collection.
+**Sketch source** starts open with a formatted, highlighted view of the actual drawing code
+and a copy button. Source panes accept keyboard focus for scrolling.
+
+The API reference is searchable by operation name, identifier, or description. Operation
+pages explain constructor inputs and returned data with runnable JavaScript examples.
+Expand the detailed contract for constraints, semantics, and binding information.
+
+The shared navigation marks the current section and offers a keyboard **Skip to content**
+link. Studio tabs support arrow keys; mobile drawers contain keyboard focus until closed
+and return focus to their opening button.
 
 **Studio** is a viewport-sized workspace: a layer stack on the left, a fitted canvas in the
 center, and an editor on the right. The layer stack and inspector scroll independently;
@@ -84,8 +97,8 @@ history. A labelled candidate can temporarily replace the canvas for review whil
 committed document remains unchanged until it is applied. Generated-layer controls remain
 visible in the inspector; the collapsed **Generated source** disclosure is a read-only exact
 source viewer with copy and download actions. **Explorations** is a separate prompt
-sketch playground: generate a new sketch or revise a generated layer with a follow-up. The
-last successful image/source stays visible while a request is pending or fails. Name and
+sketch playground: choose **Start new sketch** for a fresh composition, or **Follow up on
+layer** to revise a generated layer. The last successful image/source stays visible while a request is pending or fails. Name and
 save generated layers from either workspace to reuse them through the gallery’s **Saved
 layers** category or Studio’s **Add layer** picker. Leaving Explorations discards unsaved state. It does
 not change Studio state until a saved layer is explicitly added there. Read the in-app guide at `/docs/prompt-studio`.

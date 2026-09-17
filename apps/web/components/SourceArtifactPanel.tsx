@@ -67,7 +67,7 @@ export function SourceArtifactPanel({ layer, className, title = "Generated sourc
     {!current.error && current.files.length === 0 && <p aria-live="polite">Loading exact artifact files…</p>}
     {current.files.map((file) => <article key={file.path}>
       <div><h3>{file.path}</h3><button type="button" onClick={() => void copy(file)}>Copy</button><button type="button" onClick={() => download(file)}>Download</button></div>
-      <pre><code>{file.text}</code></pre>
+      <pre tabIndex={0} aria-label={`Source for ${file.path}`}><code>{file.text}</code></pre>
     </article>)}
   </section>;
 }

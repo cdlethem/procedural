@@ -1,9 +1,9 @@
-import Link from "next/link";
+import { ApiIndex } from "@/components/ApiIndex";
 import api from "@/lib/generated-api.json";
 
 export default function ApiReference() {
   return (
-    <main className="api-reference">
+    <main id="main-content" tabIndex={-1} className="api-reference">
       <header className="api-head">
         <p className="eyebrow">Use the building blocks</p>
         <h1>API Reference</h1>
@@ -12,17 +12,12 @@ export default function ApiReference() {
           turn into marks, geometry, or pixels.
         </p>
       </header>
-      <div className="api-list">
-        {api.operations.map((operation) => (
-          <Link href={`/api-reference/${operation.id}`} key={operation.id}>
-            <strong>{operation.guide.title}</strong>
-            <small>
-              <code>{operation.id}</code> · v{operation.version}
-            </small>
-            <span>{operation.guide.summary}</span>
-          </Link>
-        ))}
-      </div>
+      <ApiIndex operations={api.operations.map((operation) => ({
+        id: operation.id,
+        version: operation.version,
+        title: operation.guide.title,
+        summary: operation.guide.summary,
+      }))} />
     </main>
   );
 }
