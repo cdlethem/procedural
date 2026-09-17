@@ -55,6 +55,16 @@ export function sketchSources(root) {
         results.set(node.test.value, exampleDrawingSource(root, target, "drawSystemsAQuality"));
         return;
       }
+      if (group === "geometry" && node.test.value === "loop-marks") {
+        const target = resolve(root, "apps/web/lib/adapters/loop-marks-quality.ts");
+        results.set(node.test.value, exampleDrawingSource(root, target, "drawLoopMarksModern"));
+        return;
+      }
+      if (group === "systems" && ["ripple-interference", "pinned-waves"].includes(node.test.value)) {
+        const target = resolve(root, "apps/web/lib/adapters/systems-b-wave-quality.ts");
+        results.set(node.test.value, exampleDrawingSource(root, target, "drawWaveQuality"));
+        return;
+      }
       if (group === "materials") {
         const fields = {
           "quantized-stripes": "drawQuantizedStripesField",

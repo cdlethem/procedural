@@ -50,12 +50,13 @@ The report includes all69 family dispositions and all three denominators:800 ass
 ## Web application
 
 - The [web app](apps/README.md) has95 gallery/Studio studies and generated API pages for69
-  operations. Five external-expansion studies are integrated; the three survey coverage studies
-  remain packaged native examples. The app compositor remains separate from portable recipes/MCP.
-- The [draft creative-quality checkpoint](docs/creative-quality-draft-checkpoint.md) revises26
-  of those studies. It passed58 focused web tests, native p5 checks, 95 gallery previews and
-  the full browser suite. Live8443 serves `eb2bdfdc`; the historical catalog binding gate
-  remains red, so the checkpoint makes no new target-acceptance claim.
+  operations. The three coverage studies are packaged native examples; the web study count
+  is95 after the five external expansion studies. The app compositor remains separate from portable recipes/MCP.
+- A [draft source checkpoint](docs/creative-quality-draft-checkpoint.md) revises26 of those
+  studies for structural controls, saved-work compatibility and layer transparency. Focused
+  web/native checks, 95 gallery previews, the full browser suite and a production build pass.
+  Live8443 serves the checked `eb2bdfdc` source from `.work/study-quality-release` while
+  the historical catalog binding check remains red. This is not new target acceptance.
 - Layer editing, custom palettes, source inspection, undo/redo, local recovery, JSON/PNG export
   and Go storage are reviewed. [Workspace review](evidence/web/studio-workspace-review.json),
   [v3 review](evidence/web/app-v3-review.json) and [architecture](docs/web-app-architecture.md)
@@ -82,11 +83,12 @@ The report includes all69 family dispositions and all three denominators:800 ass
 - Live8443 serves the completed merged redesign, 26 revised studies, five external studies
   and 50 default palettes from `eb2bdfdc` in immutable `.work/study-quality-release`
   (Next3002, Go8088). The [quality release review](evidence/web/creative-quality-live-release.json)
-  records the scoped checks and actual HTTPS verification. The earlier
+  records the scoped checks and actual HTTPS verification. The prior
   [copy release](evidence/web/study-copy-live-release.json) remains the rollback baseline;
   the [restoration review](evidence/web/completed-redesign-restoration.json) retains its recovery.
-  The in-progress landing page remains separate. Future releases must preserve this completed UI
-  baseline; see [live release procedure](docs/live-web-release.md).
+  The landing/identity redesign is merged in source but not published to8443; that release
+  keeps its own reviewed copy. Future releases must preserve this completed UI baseline;
+  see [live release procedure](docs/live-web-release.md).
 - Named projects live in `.work/web-projects`. The current release links shared prompt
   artifacts, saved layers and palettes under `.work/web-palettes-release/.work/harness`.
 

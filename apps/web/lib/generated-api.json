@@ -7767,8 +7767,7 @@
         "pitfalls": [
           "Coincident points have no invented separation direction.",
           "Damping is per call, so changing dt alone does not preserve the trajectory.",
-          "There are no walls, collisions, flock alignment or retained contact ages.",
-          "This authored force law does not recreate Reas Process 18 or Tissue."
+          "There are no walls, collisions, flock alignment or retained contact ages."
         ],
         "importLine": "import { pairForceStep2D } from \"@procedurals/javascript\";",
         "exampleResult": [
@@ -11463,8 +11462,7 @@
         "tryThis": "Change mode or range, then inspect the detached raster and returned state.",
         "pitfalls": [
           "The operation has no defaults and does not read a renderer or ambient RNG.",
-          "ALPHA_MULTIPLY preserves straight RGB bytes and changes only alpha.",
-          "This is a pixel transform component; it does not reproduce a source shader hash or an entire sketch."
+          "ALPHA_MULTIPLY preserves straight RGB bytes and changes only alpha."
         ],
         "importLine": "import { seededPixelGrain } from \"@procedurals/javascript\";",
         "exampleResult": [
